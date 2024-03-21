@@ -1,9 +1,9 @@
 @if ($isLink ?? false)
-    <a href="{{ $href ?? 'JavaScript:void(0)' }}" class="btn btn-{{ $class ?? 'primary' }} font-weight-bold mr-2">
+    <a href="{{ $href ?? 'JavaScript:void(0)' }}" class="btn btn-{{ $class ?? 'primary' }} font-weight-bold mr-2" id="{{ $id ?? '' }}">
         {{ $slot }}
     </a>
 @else
-    <button type="{{ $type ?? 'button' }}" class="btn btn-{{ $class ?? 'primary' }}">
+    <button type="{{ $type ?? 'button' }}" class="btn btn-{{ $class ?? 'primary' }}" id="{{ $id ?? '' }}">
         {{ $slot }}
     </button>
 @endif

@@ -60,7 +60,7 @@
                           </span>
                           <!--end::Svg Icon-->
                       </span>
-                      <span class="menu-title">Category</span>
+                      <span class="menu-title">QR Code</span>
                       <span class="menu-arrow"></span>
                   </span>
                   <div class="menu-sub menu-sub-accordion">
@@ -69,15 +69,15 @@
                               <span class="menu-bullet">
                                   <span class="bullet bullet-dot"></span>
                               </span>
-                              <span class="menu-title">Category List</span>
+                              <span class="menu-title">QR Code List</span>
                           </a>
                       </div>
                       <div class="menu-item">
-                          <a class="menu-link" href="JavaScript:void(0)">
+                          <a class="menu-link" href="{{ route('user.qr-code.create') }}">
                               <span class="menu-bullet">
                                   <span class="bullet bullet-dot"></span>
                               </span>
-                              <span class="menu-title">Add Category</span>
+                              <span class="menu-title">Add QR Code</span>
                           </a>
                       </div>
                   </div>
@@ -171,6 +171,6 @@
           <!--end::Menu-->
       </div>
       <!--end::Aside menu-->
-      
+
   </div>
   <!--end::Aside-->

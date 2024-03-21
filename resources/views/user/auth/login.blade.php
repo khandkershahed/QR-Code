@@ -81,14 +81,21 @@
                                 </label>
                             </div>
                             @if (Route::has('password.request'))
-                                <div class="form-check d-flex justify-content-center align-items-center mb-3">
-                                    <h6 class="d-flex justify-content-center align-items-center">
+                                <div class="form-check d-flex justify-content-center align-items-center">
+                                    <p class="d-flex justify-content-center align-items-center">
                                         {{ __('Forgot your password?') }}
                                         <a href="{{ route('password.request') }}"
                                             class="btn btn-sm btn-link text-gray fw-bold fs-6">{{ __('Click Here...') }}</a>
-                                    </h6>
+                                    </p>
                                 </div>
-                            @endif
+                                @endif
+                                <div class="form-check d-flex justify-content-center align-items-center mb-3">
+                                    <p class="d-flex justify-content-center align-items-center">
+                                        {{ __("Don't Have an Account?") }}
+                                        <a href="{{ route('register') }}"
+                                            class="btn btn-sm btn-link text-gray fw-bold fs-6">{{ __('Sign Up...') }}</a>
+                                    </p>
+                                </div>
                         </div>
 
                         <!-- Submit button -->
