@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Admin\Contact;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\ContactRequest;
 
 class ContactController extends Controller
 {
@@ -26,9 +28,18 @@ class ContactController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ContactRequest $request)
     {
-        //
+        Contact::create([
+            'name'       => $request->name,
+            'email'      => $request->email,
+            'phone'      => $request->phone,
+            'address'    => $request->address,
+            'notes'      => $request->notes,
+            'ip_address' => request()->ip(),
+        ]);
+        // toastr()->success('Data has been saved successfully!');
+        return redirect()->back();
     }
 
     /**
@@ -50,7 +61,7 @@ class ContactController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ContactRequest $request, string $id)
     {
         //
     }

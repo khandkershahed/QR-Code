@@ -13,6 +13,25 @@ return new class extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
+            $table->string('code')->unique();
+            $table->string('name', 150)->nullable();
+            $table->string('email', 150)->nullable();
+            $table->string('phone', 20)->nullable();
+            $table->string('address', 150)->nullable();
+            $table->string('subject', 255)->nullable();
+            $table->string('ip_address', 100)->nullable();
+            $table->longText('message')->nullable();
+            $table->enum('status', ['pending', 'replied', 'on_going', 'closed'])->default('pending');
+            $table->string('priority', 20)->default('normal');
+            $table->string('attachments')->nullable();
+            $table->unsignedBigInteger('assigned_to')->nullable();
+            $table->longText('response')->nullable();
+            $table->timestamp('response_at')->nullable();
+            $table->string('source', 50)->nullable();
+            $table->boolean('is_banned')->default(false); // New field for banning IP addresses
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
