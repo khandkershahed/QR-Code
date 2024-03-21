@@ -17,7 +17,7 @@ class ActivityLogged
     public $description;
     public $subject;
 
-    /**
+    /** 
      * Create a new event instance.
      */
     public function __construct($description, $subject)
