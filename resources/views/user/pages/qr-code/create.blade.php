@@ -138,6 +138,38 @@
             //     });
             // });
 
+            // $(document).ready(function() {
+            //     $('#generateQRCodeForm').on('submit', function(e) {
+            //         e.preventDefault(); // Prevent default form submission behavior
+
+            //         var formData = new FormData(this);
+
+            //         $.ajax({
+            //             url: '{{ route('user.qr-code.store') }}',
+            //             type: 'POST',
+            //             data: formData,
+            //             processData: false,
+            //             contentType: false,
+            //             success: function(response) {
+            //                 if (response.qrCode) {
+            //                     // Set the SVG content as generated QR code
+            //                     // $('#generatedQRCode').html(response.qrCode);
+            //                     $('#generatedQRCode').attr('src', response.qrCodePath);
+            //                     // Show the download link
+            //                     $('#downloadLink').attr('href', response.qrCodePath).show();
+
+            //                     // Show the QR code container
+            //                     $('#generatedQRCodeContainer').show();
+            //                 } else {
+            //                     console.error('QR code content not found in the response.');
+            //                 }
+            //             },
+            //             error: function(xhr, status, error) {
+            //                 console.error(xhr.responseText);
+            //             }
+            //         });
+            //     });
+            // });
             $(document).ready(function() {
                 $('#generateQRCodeForm').on('submit', function(e) {
                     e.preventDefault(); // Prevent default form submission behavior
@@ -151,17 +183,15 @@
                         processData: false,
                         contentType: false,
                         success: function(response) {
-                            if (response.qrCode) {
-                                // Set the SVG content as generated QR code
-                                // $('#generatedQRCode').html(response.qrCode);
+                            if (response.qrCodePath) {
+                                // Set the QR code image source
                                 $('#generatedQRCode').attr('src', response.qrCodePath);
                                 // Show the download link
                                 $('#downloadLink').attr('href', response.qrCodePath).show();
-
                                 // Show the QR code container
                                 $('#generatedQRCodeContainer').show();
                             } else {
-                                console.error('QR code content not found in the response.');
+                                console.error('QR code path not found in the response.');
                             }
                         },
                         error: function(xhr, status, error) {
@@ -170,6 +200,7 @@
                     });
                 });
             });
+
         </script>
     @endpush
 </x-app-layout>

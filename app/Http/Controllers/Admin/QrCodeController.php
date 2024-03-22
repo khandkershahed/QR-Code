@@ -6,7 +6,9 @@ use Illuminate\Support\Str;
 // use App\Models\Admin\QrCode;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Image;
 
 class QrCodeController extends Controller
 {
@@ -28,42 +30,44 @@ class QrCodeController extends Controller
         $color = $this->hexToRgb($request->color);
         $bg_color = $this->hexToRgb($request->bg_color);
 
-        // Handle logo
-        $code_logo = $request->file('logo');
-        $codeLogoPath = '/upload/qr-code/logo/';
+        $logo = $request->file('logo');
+        $fileName = uniqid() . '.' . $logo->getClientOriginalExtension();
+        $logoPath = $logo->storeAs('public/logos', $fileName);
+        $logoFullPath = storage_path('app/' . $logoPath);
 
-        // Generate a unique filename for the logo
-        $logoFileName = Str::uuid() . '.' . $code_logo->getClientOriginalExtension();
 
-        // Save the logo file to the specified path
-        $code_logo->move(public_path($codeLogoPath), $logoFileName);
-        $logoUrl = public_path('upload/qr-code/logo/' . $logoFileName);
-        $logoImage = base64_encode(file_get_contents($logoUrl));
-
-        // Adjust background color
-        // $bg_color = !empty($bg_color) ? [$bg_color['r'], $bg_color['g'], $bg_color['b']] : 'none';
-
-        // Generate SVG QR code with specified options
-        $qrCode = QrCode::format('svg')
-            ->size(250)
+        // Generate SVG QR code with logo
+        $qrCode= QrCode::format('eps')->size(250)
             ->eye($request->eye)
             ->style($request->style)
             ->backgroundColor($bg_color['r'], $bg_color['g'], $bg_color['b'])
-            ->mergeString($logoImage, 0.5, true) // Adjust merge parameters here
             ->color($color['r'], $color['g'], $color['b'])
+            ->merge($logoFullPath, 0.2, true)
             ->generate($request->name);
 
+        // Debugging: Ensure the QR code data is correct
+        // dd($qrCode);
 
         // Save SVG QR code to storage
-        $qrCodePath = '/upload/qr-code/' . uniqid() . '.svg';
-        file_put_contents(public_path($qrCodePath), $qrCode);
+        // Save EPS QR code to storage
+        $qrCodeFileName = uniqid() . '.eps';
+        $qrCodePath = public_path('upload/qr-code/' . $qrCodeFileName);
+        file_put_contents($qrCodePath, $qrCode);
 
+        // Convert EPS to SVG or PNG as desired
+        $outputFormat = 'svg'; // or 'png'
+        $convertedFilePath = $this->convertEpsToSvgOrPng($qrCodePath, $outputFormat);
 
-        // Return the SVG QR code content as a response
-        return response()->json([
-            'qrCode' => $qrCode,
-            'qrCodePath' => $qrCodePath,
-        ]);
+        // Check if conversion was successful
+        if ($convertedFilePath) {
+            // Do something with the converted image path
+            return response()->json([
+                'qrCodePath' => '/upload/qr-code/' . basename($convertedFilePath), // Return the path to the converted image
+            ]);
+        } else {
+            // Handle conversion failure
+            return response()->json(['error' => 'Failed to convert EPS to ' . $outputFormat], 500);
+        }
         // $qrCode = QrCode::size(150)->color($color)->generate($request->name);
 
         // Save QR code to storage
@@ -101,5 +105,31 @@ class QrCodeController extends Controller
 
         // Return RGB components as an associative array
         return ['r' => $r, 'g' => $g, 'b' => $b];
+    }
+
+    public function convertEpsToSvgOrPng($epsFilePath, $outputFormat)
+    {
+        // Load EPS file
+        $image = Image::make($epsFilePath);
+
+        // Convert to the desired output format
+        switch ($outputFormat) {
+            case 'svg':
+                $image->encode('svg');
+                break;
+            case 'png':
+                $image->encode('png');
+                break;
+            default:
+                // Handle unsupported format
+                return response()->json(['error' => 'Unsupported output format'], 400);
+        }
+
+        // Save the converted image
+        $convertedFilePath = storage_path('app/upload/qr-code/' . uniqid() . '.' . $outputFormat);
+        $image->save($convertedFilePath);
+
+        // Return the path to the converted image
+        return $convertedFilePath;
     }
 }
