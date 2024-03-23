@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Admin\Contact;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -187,6 +188,22 @@ if (!function_exists('createThumbnail')) {
     }
 }
 
+
+if (!function_exists('generate_unique_code')) {
+    function generate_unique_code($prefix = 'MSG')
+    {
+        $date = now()->format('dmy');
+        $pattern = "$prefix-$date-%";
+
+        $latestCode = Contact::where('code', 'LIKE', $pattern)
+            ->orderByDesc('id')
+            ->value('code');
+
+        $serialNumber = $latestCode ? (int) explode('-', $latestCode)[2] + 1 : 1;
+
+        return sprintf('%s-%s-%d', $prefix, $date, $serialNumber);
+    }
+}
 
 
 
