@@ -4,6 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
 
 class ContactRequest extends FormRequest
 {
@@ -12,7 +13,7 @@ class ContactRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,40 +22,38 @@ class ContactRequest extends FormRequest
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
-{
-    $contact = $this->route('contact');  // Assuming 'contact' is the route parameter name for the Contact model instance
+    {
+        $contact = $this->route('contact');  // Assuming 'contact' is the route parameter name for the Contact model instance
 
-    return [
-        'code' => [
-            'required',
-            'string',
-            'max:255',
-            Rule::unique('contacts', 'code')->ignore($contact ? $contact->id : null),
-        ],
-        'name'        => 'nullable|string|max:150',
-        'email'       => 'nullable|email|max:150',
-        'phone'       => 'nullable|string|max:20',
-        'address'     => 'nullable',
-        'subject'     => 'nullable|string|max:250',
-        'message'     => 'nullable',
-        'ip_address'  => 'nullable|ip|max:100',
-        'status'      => 'required|in:pending,replied,on_going,closed',
-        'priority'    => 'required|string|in:normal,high,urgent',
-        'attachments' => 'nullable|string',
-        'assigned_to' => 'nullable|exists:users,id',
-        'response'    => 'nullable|string',
-        'response_at' => 'nullable|date',
-        'source'      => 'nullable|string|max:50',
-        'is_banned'   => 'boolean',
-    ];
-}
+        return [
+            'code' => 'nullable|string|max:255|unique:contacts,code,' . $contact,
+            // 'code' => [
+            //     'required',
+            //     'string',
+            //     'max:255',
+            //     Rule::unique('contacts', 'code')->ignore($contact ? $contact->id : null),
+            // ],
+            'name'        => 'required|string|max:150',
+            'email'       => 'required|email|max:150',
+            'phone'       => 'nullable|string|max:20',
+            'address'     => 'nullable',
+            'subject'     => 'nullable|string|max:250',
+            'message'     => 'required',
+            'ip_address'  => 'nullable|ip|max:100',
+            'status'      => 'nullable|in:pending,replied,on_going,closed',
+            'priority'    => 'nullable|string|in:normal,high,urgent',
+            'attachments' => 'nullable|string',
+            'assigned_to' => 'nullable|exists:users,id',
+            'response'    => 'nullable|string',
+            'response_at' => 'nullable|date',
+            'source'      => 'nullable|string|max:50',
+            'is_banned'   => 'boolean',
+        ];
+    }
 
 
     public function messages(): array
     {
-        $contact = $this->route('contact');  // Assuming 'contact' is the route parameter name for the Contact model instance
-
-
         return [
             'code.required'     => 'The code field is required.',
             'code.unique'       => 'The code has already been taken.',
@@ -76,6 +75,14 @@ class ContactRequest extends FormRequest
             'Subject' => 'Subject',
         ];
     }
+
+    /**
+     * Handle a failed validation attempt.
+     *
+     * @param  \Illuminate\Contracts\Validation\Validator  $validator
+     * @return void
+     */
+
     protected function failedValidation(Validator $validator)
     {
         $this->recordErrorMessages($validator);
@@ -91,9 +98,6 @@ class ContactRequest extends FormRequest
     protected function recordErrorMessages(Validator $validator)
     {
         $errorMessages = $validator->errors()->all();
-
-        foreach ($errorMessages as $errorMessage) {
-            toastr()->error($errorMessage);
-        }
+        return redirect()->back()->withErrors($errorMessages)->withInput();
     }
 }

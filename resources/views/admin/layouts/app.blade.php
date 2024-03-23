@@ -122,7 +122,12 @@
     @stack('scripts')
     <!--end::Page Custom Javascript-->
     <!--end::Javascript-->
-
+    <script>
+        showSuccessMessage('{{ session('success') }}');
+        @foreach ($errors->all() as $error)
+            showErrorMessage('{{ $error }}');
+        @endforeach
+    </script>
 </body>
 
 </html>

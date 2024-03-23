@@ -2,6 +2,60 @@
 //     $('.js-example-basic-multiple, .js-example-basic-single').select2();
 // });
 
+// Sweetalert toastr
+// custom.js
+
+// Function to display success message
+function showSuccessMessageAndFlushSession(message) {
+    Swal.fire({
+        title: 'Success!',
+        text: message,
+        icon: 'success',
+        buttonsStyling: false,
+        customClass: {
+            confirmButton: 'btn btn-primary'
+        }
+    }).then(function() {
+        // After user acknowledges the success message, flush the session
+        $.ajax({
+            url: '/flush-session', // Update the URL with your route for flushing the session
+            method: 'GET',
+            success: function(response) {
+                // Session flushed successfully
+            },
+            error: function(xhr, status, error) {
+                console.error('Error flushing session:', error);
+            }
+        });
+    });
+}
+
+// Function to display error message
+function showErrorMessage(message) {
+    Swal.fire({
+        title: 'Error!',
+        text: message,
+        icon: 'error',
+        buttonsStyling: false,
+        customClass: {
+            confirmButton: 'btn btn-primary'
+        }
+    }).then(function() {
+        // After user acknowledges the success message, flush the session
+        $.ajax({
+            url: '/flush-session', // Update the URL with your route for flushing the session
+            method: 'GET',
+            success: function(response) {
+                // Session flushed successfully
+            },
+            error: function(xhr, status, error) {
+                console.error('Error flushing session:', error);
+            }
+        });
+    });
+}
+
+
 //Select All Checkbox
 $('.metronic_select_all').on('change', function() {
     // Apply check state to all checkboxes

@@ -68,7 +68,6 @@ Route::middleware('auth:admin', 'role:admin')->prefix('admin')->name('admin.')->
             'role'           => RoleController::class,
             'permission'     => PermissionController::class,
             'email-settings' => EmailSettingController::class,
-            'contact'        => ContactController::class,
         ],
         ['except' => ['show']]
     );
@@ -78,6 +77,15 @@ Route::middleware('auth:admin', 'role:admin')->prefix('admin')->name('admin.')->
             'categories'     => CategoryController::class,
         ],
     );
+
+    //Product
+    Route::controller(ContactController::class)->group(function () {
+        Route::get('/contact', 'index')->name('contact.index');
+        Route::get('/contact/create', 'create')->name('contact.create');
+        Route::get('/contact/{id}/edit', 'edit')->name('contact.edit');
+        Route::put('/contact/{id}/update', 'update')->name('contact.update');
+        Route::delete('/contact/{id}/destroy', 'destroy')->name('contact.destroy');
+    });
 
     Route::get('role/{roleId}/give-permission', [RoleController::class, 'givePermission'])->name('role.give-permission');
     Route::patch('role/{roleId}/give-permission', [RoleController::class, 'storePermission'])->name('role.store-permission');

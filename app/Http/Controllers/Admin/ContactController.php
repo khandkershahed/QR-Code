@@ -31,15 +31,18 @@ class ContactController extends Controller
     public function store(ContactRequest $request)
     {
         Contact::create([
+            'code'       => generate_unique_code(),
             'name'       => $request->name,
             'email'      => $request->email,
             'phone'      => $request->phone,
-            'address'    => $request->address,
-            'notes'      => $request->notes,
+            'subject'    => $request->subject,
+            'message'    => $request->message,
+            'status'     => 'pending',
+            'priority'   => 'normal',
             'ip_address' => request()->ip(),
         ]);
         // toastr()->success('Data has been saved successfully!');
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Your Message has been saved successfully. We will contact with you soon.');
     }
 
     /**

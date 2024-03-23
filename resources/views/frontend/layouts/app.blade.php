@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/slick.min.css') }}" />
     <!-- Main Style -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}" />
+    <link href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
 </head>
 
 <body class="home-nine">
@@ -55,8 +56,8 @@
     <!--End pagewrapper-->
 
     <!-- Jquery -->
-    <script src="{{ asset('frontend/assets/js/jquery-3.6.0.min.js') }}"></script>
     <!-- Bootstrap -->
+    <script src="{{ asset('frontend/assets/js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/bootstrap.min.js') }}"></script>
     <!-- Appear Js -->
     <script src="{{ asset('frontend/assets/js/appear.min.js') }}"></script>
@@ -76,10 +77,44 @@
     <script src="{{ asset('frontend/assets/js/isotope.pkgd.min.js') }}"></script>
     <!--  WOW Animation -->
     <script src="{{ asset('frontend/assets/js/aos.js') }}"></script>
+    <script src="{{ asset('admin/assets/plugins/global/plugins.bundle.js') }}"></script>
     <!-- Custom script -->
     <script src="{{ asset('frontend/assets/js/script.js') }}"></script>
     <script src="https://kit.fontawesome.com/69b7156a94.js" crossorigin="anonymous"></script>
-
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                title: 'Success!',
+                text: '{{ session('success') }}',
+                icon: 'success',
+                buttonsStyling: false,
+                customClass: {
+                    confirmButton: 'btn btn-primary'
+                }
+            }).then(() => {
+                // Flush session data
+                {!! session()->forget('success') !!}
+            });
+        </script>
+    @endif
+    @if ($errors->any())
+        <script>
+            @foreach ($errors->all() as $error)
+                Swal.fire({
+                    title: 'Error!',
+                    text: '{{ $error }}',
+                    icon: 'error',
+                    buttonsStyling: false,
+                    customClass: {
+                        confirmButton: 'btn btn-primary'
+                    }
+                }).then(() => {
+                    // Flush session data
+                    {!! session()->flush() !!}
+                });
+            @endforeach
+        </script>
+    @endif
     @stack('scripts')
 </body>
 

@@ -3,15 +3,12 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="description"
-        content="" />
-    <meta name="keywords"
-        content="" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="article" />
-    <meta property="og:title"
-        content="" />
+    <meta property="og:title" content="" />
     <meta property="og:url" content="" />
     <meta property="og:site_name" content="" />
     <link rel="canonical" href="" />
@@ -130,6 +127,12 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <script src="{{ asset('admin/js/custom.js') }}"></script>
+    <script>
+        showSuccessMessage('{{ session('success') }}');
+        @foreach ($errors->all() as $error)
+            showErrorMessage('{{ $error }}');
+        @endforeach
+    </script>
     @stack('scripts')
     <!--end::Page Custom Javascript-->
     <!--end::Javascript-->
