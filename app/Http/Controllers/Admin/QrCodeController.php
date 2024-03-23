@@ -46,9 +46,13 @@ class QrCodeController extends Controller
 
             // Return the URL of the generated QR code image
             if ($qrCodePath) {
-                return response()->json([
-                    'qrCodePath' => asset('storage/qr_codes/'.$qrFileName), // Generate URL using asset() helper
-                ]);
+                if (file_exists(public_path('storage'))) {
+                    return response()->json([
+                        'qrCodePath' => asset('storage/qr_codes/'.$qrFileName), // Generate URL using asset() helper
+                    ]);
+                } else {
+                    return response()->json(['error' => 'Symbolic link not found. Please run php artisan storage:link'], 500);
+                }
             } else {
                 // Handle failure
                 return response()->json(['error' => 'Failed to generate QR code'], 500);
