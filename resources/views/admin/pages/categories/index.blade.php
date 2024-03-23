@@ -2,7 +2,7 @@
     <!--begin::Post-->
     <div class="post d-flex flex-column-fluid" id="kt_post">
         <!--begin::Container-->
-        <div class="container-xxl">
+        <div class="container-fluid">
             <!--begin::Category-->
             <div class="card card-flush">
                 <!--begin::Card header-->

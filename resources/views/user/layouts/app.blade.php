@@ -31,6 +31,10 @@
     <link href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/css/custom.css') }}" rel="stylesheet" type="text/css" />
+
+
+    <link rel="stylesheet" href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}">
+   
     <!--end::Global Stylesheets Bundle-->
     @props(['title'])
     <title>{{ $title ?? config('app.name', 'GO-QR') }}</title>
@@ -60,7 +64,7 @@
                     <!--begin::Post-->
                     <div class="post d-flex flex-column-fluid" id="kt_post">
                         <!--begin::Container-->
-                        <div id="kt_content_container" class="container-xxl">
+                        <div id="kt_content_container" class="container-fluid">
                             <!--begin::Row-->
                             {{ $slot }}
                             <!--end::Row-->
@@ -99,7 +103,7 @@
         $hostUrl = 'admin/assets/';
     @endphp
     <!--begin::Global Javascript Bundle(used by all pages)-->
-    <script src="{{ asset($hostUrl . 'plugins/global/plugins.bundle.js') }}"></script>
+    <script src="{{ asset($hostUrl . 'plugins/global/plugins.bundle.js') }}"></>
     <script src="{{ asset($hostUrl . 'js/scripts.bundle.js') }}"></script>
     <!--end::Global Javascript Bundle-->
     <!--begin::Page Vendors Javascript(used by this page)-->
@@ -128,6 +132,7 @@
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/two-factor-authentication.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/users-search.js') }}"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="{{ asset('admin/assets/plugins/global/plugins.bundle.js') }}"></script>
 
     <script src="{{ asset('admin/js/custom.js') }}"></script>
     @stack('scripts')
