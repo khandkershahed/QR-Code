@@ -31,21 +31,21 @@ class ContactRequest extends FormRequest
             'max:255',
             Rule::unique('contacts', 'code')->ignore($contact ? $contact->id : null),
         ],
-        'name' => 'nullable|string|max:150',
-        'email' => 'nullable|email|max:150',
-        'phone' => 'nullable|string|max:20',
-        'address' => 'nullable|string|max:150',
-        'subject' => 'nullable|string|max:255',
-        'message' => 'nullable|string',
-        'ip_address' => 'nullable|ip|max:100',
-        'status' => 'required|in:pending,replied,on_going,closed',
-        'priority' => 'required|string|in:normal,high,urgent',
+        'name'        => 'nullable|string|max:150',
+        'email'       => 'nullable|email|max:150',
+        'phone'       => 'nullable|string|max:20',
+        'address'     => 'nullable',
+        'subject'     => 'nullable|string|max:250',
+        'message'     => 'nullable',
+        'ip_address'  => 'nullable|ip|max:100',
+        'status'      => 'required|in:pending,replied,on_going,closed',
+        'priority'    => 'required|string|in:normal,high,urgent',
         'attachments' => 'nullable|string',
         'assigned_to' => 'nullable|exists:users,id',
-        'response' => 'nullable|string',
+        'response'    => 'nullable|string',
         'response_at' => 'nullable|date',
-        'source' => 'nullable|string|max:50',
-        'is_banned' => 'boolean',
+        'source'      => 'nullable|string|max:50',
+        'is_banned'   => 'boolean',
     ];
 }
 
@@ -54,24 +54,8 @@ class ContactRequest extends FormRequest
     {
         $contact = $this->route('contact');  // Assuming 'contact' is the route parameter name for the Contact model instance
 
+
         return [
-            'country_id' => 'nullable|exists:countries,id',
-            'code' => [
-                'required',
-                'string',
-                'max:255',
-                Rule::unique('contacts', 'code')->ignore($contact->id),
-            ],
-            'name' => 'nullable|string|max:255',
-            'email' => 'nullable|email|max:255',
-            'phone' => 'nullable|string|max:255',
-            'subject' => 'nullable|string|max:255',
-            'message' => 'nullable|string',
-            'ip_address' => 'nullable|ip|max:100',
-            'status' => 'required|in:pending,replied,on_going,closed',
-        ];
-        return [
-            'country_id.exists' => 'The selected country is invalid.',
             'code.required'     => 'The code field is required.',
             'code.unique'       => 'The code has already been taken.',
             'name.string'       => 'The name must be a string.',
@@ -87,8 +71,29 @@ class ContactRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'group_name' => 'permission Group name',
-            'name' => 'permission name',
+            'name'    => 'Full Name',
+            'email'   => 'Email Id',
+            'Subject' => 'Subject',
         ];
+    }
+    protected function failedValidation(Validator $validator)
+    {
+        $this->recordErrorMessages($validator);
+        parent::failedValidation($validator);
+    }
+
+    /**
+     * Record the error messages displayed to the user.
+     *
+     * @param  \Illuminate\Contracts\Validation\Validator  $validator
+     * @return void
+     */
+    protected function recordErrorMessages(Validator $validator)
+    {
+        $errorMessages = $validator->errors()->all();
+
+        foreach ($errorMessages as $errorMessage) {
+            toastr()->error($errorMessage);
+        }
     }
 }
