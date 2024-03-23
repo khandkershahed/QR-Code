@@ -8,7 +8,7 @@
                             <button class="nav-link active border-0 rounded-0" id="selectType-tab" data-bs-toggle="tab"
                                 data-bs-target="#selectType" type="button" role="tab" aria-controls="selectType"
                                 aria-selected="true">
-                                1. Select Type
+                                1. Select Typee
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
