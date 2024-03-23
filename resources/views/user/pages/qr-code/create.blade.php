@@ -7,7 +7,7 @@
                 <!--begin::Card body-->
                 <div class="card-body p-12">
                     <!--begin::Form-->
-                    <form id="generateQRCodeForm">
+                    <form id="generateQRCodeForm" enctype="multipart/form-data">
                         @csrf
                         <div class="row fav-row">
                             <div class="mb-10 col-lg-6">
@@ -24,7 +24,7 @@
                             <div class="mb-10 col-lg-4">
                                 <x-metronic.label for="eye" class="col-form-label required fw-bold fs-6">
                                     {{ __('Select a eye ') }}</x-metronic.label>
-                                    <x-metronic.select-option id="eye" name="eye" data-hide-search="true"
+                                <x-metronic.select-option id="eye" name="eye" data-hide-search="true"
                                     data-placeholder="Select an option">
                                     <option></option>
                                     <option value="circle">circle</option>
@@ -89,12 +89,14 @@
                                 <div class="row mb-5">
                                     <!--begin::Col-->
                                     <div class="col">
-                                        <a href="#" class="btn btn-light btn-active-light-primary w-100">Preview</a>
+                                        <a href="#"
+                                            class="btn btn-light btn-active-light-primary w-100">Preview</a>
                                     </div>
                                     <!--end::Col-->
                                     <!--begin::Col-->
                                     <div class="col">
-                                        <a id="downloadLink" href="" download style="display: none;" class="btn btn-light btn-active-light-primary w-100">Download</a>
+                                        <a id="downloadLink" href="" download style="display: none;"
+                                            class="btn btn-light btn-active-light-primary w-100">Download</a>
                                     </div>
                                     <!--end::Col-->
                                 </div>
@@ -111,69 +113,10 @@
     </div>
     @push('scripts')
         <script>
-            // $(document).ready(function() {
-            //     $('#generateQRCodeForm').on('submit', function(e) {
-            //         e.preventDefault(); // Prevent default form submission behavior
-
-            //         var formData = new FormData(this);
-
-            //         $.ajax({
-            //             url: '{{ route('user.qr-code.store') }}',
-            //             type: 'POST',
-            //             data: formData,
-            //             processData: false,
-            //             contentType: false,
-            //             success: function(response) {
-            //                 if (response.qrCodePath) {
-            //                     $('#generatedQRCode').attr('src', response.qrCodePath);
-            //                     $('#downloadLink').attr('href', response.qrCodePath).show();
-            //                 } else {
-            //                     console.error('QR code path not found in the response.');
-            //                 }
-            //             },
-            //             error: function(xhr, status, error) {
-            //                 console.error(xhr.responseText);
-            //             }
-            //         });
-            //     });
-            // });
-
-            // $(document).ready(function() {
-            //     $('#generateQRCodeForm').on('submit', function(e) {
-            //         e.preventDefault(); // Prevent default form submission behavior
-
-            //         var formData = new FormData(this);
-
-            //         $.ajax({
-            //             url: '{{ route('user.qr-code.store') }}',
-            //             type: 'POST',
-            //             data: formData,
-            //             processData: false,
-            //             contentType: false,
-            //             success: function(response) {
-            //                 if (response.qrCode) {
-            //                     // Set the SVG content as generated QR code
-            //                     // $('#generatedQRCode').html(response.qrCode);
-            //                     $('#generatedQRCode').attr('src', response.qrCodePath);
-            //                     // Show the download link
-            //                     $('#downloadLink').attr('href', response.qrCodePath).show();
-
-            //                     // Show the QR code container
-            //                     $('#generatedQRCodeContainer').show();
-            //                 } else {
-            //                     console.error('QR code content not found in the response.');
-            //                 }
-            //             },
-            //             error: function(xhr, status, error) {
-            //                 console.error(xhr.responseText);
-            //             }
-            //         });
-            //     });
-            // });
             $(document).ready(function() {
                 $('#generateQRCodeForm').on('submit', function(e) {
                     e.preventDefault(); // Prevent default form submission behavior
-
+                    $('#generateButton').hide();
                     var formData = new FormData(this);
 
                     $.ajax({
@@ -190,6 +133,7 @@
                                 $('#downloadLink').attr('href', response.qrCodePath).show();
                                 // Show the QR code container
                                 $('#generatedQRCodeContainer').show();
+                                $('#generateButton').show();
                             } else {
                                 console.error('QR code path not found in the response.');
                             }
@@ -200,7 +144,6 @@
                     });
                 });
             });
-
         </script>
     @endpush
 </x-app-layout>
