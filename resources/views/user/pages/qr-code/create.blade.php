@@ -651,6 +651,7 @@
         <div class="flex-lg-row-fluid mb-10 mb-lg-0 me-lg-7 me-xl-10">
             <div class="card">
                 <div class="card-body p-12">
+                    <!--begin::Form-->
                     <form id="generateQRCodeForm">
                         @csrf
                         <div class="row fav-row">
@@ -743,69 +744,10 @@
     </div>
     @push('scripts')
         <script>
-            // $(document).ready(function() {
-            //     $('#generateQRCodeForm').on('submit', function(e) {
-            //         e.preventDefault(); // Prevent default form submission behavior
-
-            //         var formData = new FormData(this);
-
-            //         $.ajax({
-            //             url: '{{ route('user.qr-code.store') }}',
-            //             type: 'POST',
-            //             data: formData,
-            //             processData: false,
-            //             contentType: false,
-            //             success: function(response) {
-            //                 if (response.qrCodePath) {
-            //                     $('#generatedQRCode').attr('src', response.qrCodePath);
-            //                     $('#downloadLink').attr('href', response.qrCodePath).show();
-            //                 } else {
-            //                     console.error('QR code path not found in the response.');
-            //                 }
-            //             },
-            //             error: function(xhr, status, error) {
-            //                 console.error(xhr.responseText);
-            //             }
-            //         });
-            //     });
-            // });
-
-            // $(document).ready(function() {
-            //     $('#generateQRCodeForm').on('submit', function(e) {
-            //         e.preventDefault(); // Prevent default form submission behavior
-
-            //         var formData = new FormData(this);
-
-            //         $.ajax({
-            //             url: '{{ route('user.qr-code.store') }}',
-            //             type: 'POST',
-            //             data: formData,
-            //             processData: false,
-            //             contentType: false,
-            //             success: function(response) {
-            //                 if (response.qrCode) {
-            //                     // Set the SVG content as generated QR code
-            //                     // $('#generatedQRCode').html(response.qrCode);
-            //                     $('#generatedQRCode').attr('src', response.qrCodePath);
-            //                     // Show the download link
-            //                     $('#downloadLink').attr('href', response.qrCodePath).show();
-
-            //                     // Show the QR code container
-            //                     $('#generatedQRCodeContainer').show();
-            //                 } else {
-            //                     console.error('QR code content not found in the response.');
-            //                 }
-            //             },
-            //             error: function(xhr, status, error) {
-            //                 console.error(xhr.responseText);
-            //             }
-            //         });
-            //     });
-            // });
             $(document).ready(function() {
                 $('#generateQRCodeForm').on('submit', function(e) {
                     e.preventDefault(); // Prevent default form submission behavior
-
+                    $('#generateButton').hide();
                     var formData = new FormData(this);
 
                     $.ajax({
@@ -822,6 +764,7 @@
                                 $('#downloadLink').attr('href', response.qrCodePath).show();
                                 // Show the QR code container
                                 $('#generatedQRCodeContainer').show();
+                                $('#generateButton').show();
                             } else {
                                 console.error('QR code path not found in the response.');
                             }
@@ -832,37 +775,7 @@
                     });
                 });
             });
-        </script>
-        <script>
-            var myDropzone = new Dropzone("#kt_dropzonejs_example_1", {
-                url: "https://keenthemes.com/scripts/void.php", // Set the url for your upload script location
-                paramName: "file", // The name that will be used to transfer the file
-                maxFiles: 10,
-                maxFilesize: 10, // MB
-                addRemoveLinks: true,
-                accept: function(file, done) {
-                    if (file.name == "wow.jpg") {
-                        done("Naha, you don't.");
-                    } else {
-                        done();
-                    }
-                }
-            });
-        </script>
-        <script>
-            document.querySelectorAll('input[type=color]').forEach(function(picker) {
 
-                var targetLabel = document.querySelector('label[for="' + picker.id + '"]'),
-                    codeArea = document.createElement('span');
-
-                codeArea.innerHTML = picker.value;
-                targetLabel.appendChild(codeArea);
-
-                picker.addEventListener('change', function() {
-                    codeArea.innerHTML = picker.value;
-                    targetLabel.appendChild(codeArea);
-                });
-            });
         </script>
     @endpush
 </x-app-layout>
