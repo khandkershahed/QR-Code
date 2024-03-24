@@ -64,8 +64,8 @@
                 <div class="col-lg-7">
                     <div class="contact-form br-10 bgc-lighter rmt-60 aos-init aos-animate" name="contact-form"
                         data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
-                        <form id="contactForm" class="contactForm" name="contactForm"
-                            action="assets/php/form-process.php" method="post" novalidate="true">
+                        <form id="contactForm" class="contactForm" action="{{ route('contact.add') }}" method="POST" novalidate>
+                            @csrf
                             <img class="shape-one"
                                 src="	https://webtendtheme.net/html/2024/akpager/assets/images/shapes/star-black-shape.png"
                                 alt="Star Shape" />
@@ -79,37 +79,56 @@
                             <div class="row mt-30">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="name">Full Name</label>
-                                        <input type="text" id="name" name="name" class="form-control"
-                                            value="" placeholder="Somaia D. Silva" required=""
+                                        <label for="name">Full Name <span class="text-danger">*</span></label>
+                                        <input type="text" id="name" name="name"
+                                            class="form-control @error('name') is-invalid @enderror" value=""
+                                            placeholder="Somaia D. Silva" required
                                             data-error="Please enter your Name" />
-                                        <div class="help-block with-errors"></div>
+                                        @error('name')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="email" id="email" name="email" class="form-control"
-                                            value="" placeholder="support@gmail.com" required=""
+                                        <label for="email">Email <span class="text-danger">*</span></label>
+                                        <input type="email" id="email" name="email"
+                                            class="form-control @error('email') is-invalid @enderror" value=""
+                                            placeholder="support@gmail.com" required
                                             data-error="Please enter your Email" />
-                                        <div class="help-block with-errors"></div>
+                                        @error('email')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="subject">Subject</label>
-                                        <input type="text" id="subject" name="subject" class="form-control"
-                                            value="" placeholder="I like to discussed" required=""
+                                        <label for="subject">Subject <span class="text-danger">*</span></label>
+                                        <input type="text" id="subject" name="subject"
+                                            class="form-control @error('subject') is-invalid @enderror" value=""
+                                            placeholder="I like to discussed" required
                                             data-error="Please enter your Subject" />
-                                        <div class="help-block with-errors"></div>
+                                        @error('subject')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="message">Message</label>
-                                        <textarea name="message" id="message" class="form-control" rows="4" placeholder="Write Message"
-                                            required="" data-error="Please enter your Message"></textarea>
-                                        <div class="help-block with-errors"></div>
+                                        <label for="message">Message <span class="text-danger">*</span></label>
+                                        <textarea name="message" id="message" class="form-control @error('message') is-invalid @enderror" rows="4"
+                                            placeholder="Write Message" required data-error="Please enter your Message"></textarea>
+                                        @error('message')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-12">
