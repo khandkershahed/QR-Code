@@ -43,7 +43,93 @@
                                 </div>
                                 <div>
                                     <fieldset class="checkbox-group">
-                                        <div class="row">
+                                        <x-qr-code.type :types="[
+                                            [
+                                                'id' => 1,
+                                                'value' => 'website',
+                                                'title' => 'Website',
+                                                'text' => 'Link to an existing web URL and bring traffic online',
+                                                'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/website.svg',
+                                            ],
+                                            [
+                                                'id' => 2,
+                                                'value' => 'pdf',
+                                                'title' => 'Pdf',
+                                                'text' => 'Link a PDF document and distribute it efficiently',
+                                                'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/pdf.svg',
+                                            ],
+                                            [
+                                                'id' => 3,
+                                                'value' => 'image',
+                                                'title' => 'Image',
+                                                'text' => 'Show A Photo',
+                                                'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/image.svg',
+                                            ],
+                                            [
+                                                'id' => 4,
+                                                'value' => 'sms',
+                                                'title' => 'Sms',
+                                                'text' => 'Redirect to your mobile number to receive SMS',
+                                                'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/sms.svg',
+                                            ],
+                                            [
+                                                'id' => 5,
+                                                'value' => 'email',
+                                                'title' => 'Email',
+                                                'text' => 'Link to receive email messages',
+                                                'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/email.svg',
+                                            ],
+                                            [
+                                                'id' => 6,
+                                                'value' => 'mobile_app',
+                                                'title' => 'Mobile_App',
+                                                'text' => 'Link to receive email messages',
+                                                'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/app-download.svg',
+                                            ],
+                                            [
+                                                'id' => 7,
+                                                'value' => 'call',
+                                                'title' => 'Call',
+                                                'text' => 'Link to receive email messages',
+                                                'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/call.svg',
+                                            ],
+                                            [
+                                                'id' => 8,
+                                                'value' => 'location',
+                                                'title' => 'Location',
+                                                'text' => 'Point to any location on Google Maps',
+                                                'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/location.svg',
+                                            ],
+                                            [
+                                                'id' => 9,
+                                                'value' => 'coupon_code',
+                                                'title' => 'Coupon_Code',
+                                                'text' => 'Route to a page displaying coupon code details',
+                                                'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/coupon.svg',
+                                            ],
+                                            [
+                                                'id' => 10,
+                                                'value' => 'social',
+                                                'title' => 'Social',
+                                                'text' => 'Link to an existing web URL and bring traffic online',
+                                                'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/social-media.svg',
+                                            ],
+                                            [
+                                                'id' => 11,
+                                                'value' => 'audio',
+                                                'title' => 'Audio',
+                                                'text' => 'Link to your phone number for quick calls',
+                                                'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/business-page.svg',
+                                            ],
+                                            [
+                                                'id' => 12,
+                                                'value' => 'business_page',
+                                                'title' => 'Business_Page',
+                                                'text' => 'Link to your phone number for quick calls',
+                                                'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/mp3.svg',
+                                            ],
+                                        ]" />
+                                        {{-- <div class="row">
                                             <div class="col-lg-4">
                                                 <div class="checkbox">
                                                     <label for="radio-card-f001" class="radio-card">
@@ -74,7 +160,8 @@
                                             <div class="col-lg-4">
                                                 <div class="checkbox">
                                                     <label for="radio-card-f002" class="radio-card">
-                                                        <input type="radio" name="code_type" value="pdf" id="radio-card-f002" />
+                                                        <input type="radio" name="code_type" value="pdf"
+                                                            id="radio-card-f002" />
                                                         <div class="card-content-wrapper">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content">
@@ -98,7 +185,8 @@
                                             <div class="col-lg-4">
                                                 <div class="checkbox">
                                                     <label for="radio-card-f003" class="radio-card">
-                                                        <input type="radio" name="code_type" value="image" id="radio-card-f003" />
+                                                        <input type="radio" name="code_type" value="image"
+                                                            id="radio-card-f003" />
                                                         <div class="card-content-wrapper">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content">
@@ -121,7 +209,8 @@
                                             <div class="col-lg-4">
                                                 <div class="checkbox">
                                                     <label for="radio-card-f004" class="radio-card">
-                                                        <input type="radio" name="code_type" value="sms" id="radio-card-f004" />
+                                                        <input type="radio" name="code_type" value="sms"
+                                                            id="radio-card-f004" />
                                                         <div class="card-content-wrapper">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content">
@@ -145,7 +234,8 @@
                                             <div class="col-lg-4">
                                                 <div class="checkbox">
                                                     <label for="radio-card-f005" class="radio-card">
-                                                        <input type="radio" name="code_type" value="email" id="radio-card-f005" />
+                                                        <input type="radio" name="code_type" value="email"
+                                                            id="radio-card-f005" />
                                                         <div class="card-content-wrapper">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content">
@@ -169,7 +259,8 @@
                                             <div class="col-lg-4">
                                                 <div class="checkbox">
                                                     <label for="radio-card-f006" class="radio-card">
-                                                        <input type="radio" name="code_type" value="mobile_app" id="radio-card-f006" />
+                                                        <input type="radio" name="code_type" value="mobile_app"
+                                                            id="radio-card-f006" />
                                                         <div class="card-content-wrapper">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content">
@@ -193,7 +284,8 @@
                                             <div class="col-lg-4">
                                                 <div class="checkbox">
                                                     <label for="radio-card-f007" class="radio-card">
-                                                        <input type="radio" name="code_type" value="call" id="radio-card-f007" />
+                                                        <input type="radio" name="code_type" value="call"
+                                                            id="radio-card-f007" />
                                                         <div class="card-content-wrapper">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content">
@@ -217,7 +309,8 @@
                                             <div class="col-lg-4">
                                                 <div class="checkbox">
                                                     <label for="radio-card-f008" class="radio-card">
-                                                        <input type="radio" name="code_type" value="location" id="radio-card-f008" />
+                                                        <input type="radio" name="code_type" value="location"
+                                                            id="radio-card-f008" />
                                                         <div class="card-content-wrapper">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content">
@@ -266,7 +359,8 @@
                                             <div class="col-lg-4">
                                                 <div class="checkbox">
                                                     <label for="radio-card-f010" class="radio-card">
-                                                        <input type="radio" name="code_type" value="social" id="radio-card-f010" />
+                                                        <input type="radio" name="code_type" value="social"
+                                                            id="radio-card-f010" />
                                                         <div class="card-content-wrapper">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content">
@@ -290,7 +384,8 @@
                                             <div class="col-lg-4">
                                                 <div class="checkbox">
                                                     <label for="radio-card-f011" class="radio-card">
-                                                        <input type="radio" name="code_type" value="audio" id="radio-card-f011" />
+                                                        <input type="radio" name="code_type" value="audio"
+                                                            id="radio-card-f011" />
                                                         <div class="card-content-wrapper">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content">
@@ -314,7 +409,8 @@
                                             <div class="col-lg-4">
                                                 <div class="checkbox">
                                                     <label for="radio-card-f012" class="radio-card">
-                                                        <input type="radio" name="code_type" value="business_page" id="radio-card-f012" />
+                                                        <input type="radio" name="code_type" value="business_page"
+                                                            id="radio-card-f012" />
                                                         <div class="card-content-wrapper">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content">
@@ -335,7 +431,7 @@
                                                     </label>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </fieldset>
                                 </div>
                             </div>
@@ -365,864 +461,7 @@
                                         </h3>
                                     </div>
                                     {{-- Customize Nested Tabs For Customize The Design --}}
-                                    <div class="card-body pt-1">
-                                        <ul class="nav nav-pills nav-pills-custom mb-3" role="tablist">
-                                            <li class="nav-item mb-3 me-3 me-lg-6" role="presentation">
-                                                <a class="nav-link btn btn-outline btn-flex btn-color-muted btn-active-color-primary flex-column overflow-hidden w-100px h-85px p-0
-                                                    active"
-                                                    id="kt_stats_widget_16_tab_link_1" data-bs-toggle="pill"
-                                                    href="#kt_stats_widget_16_tab_1" aria-selected="true"
-                                                    role="tab">
-                                                    <div class="nav-icon mb-3 qr-design-chose">
-                                                        <img src="https://dashboard.uniqode.com/assets/logo/qr-customize/Template.svg"
-                                                            alt="">
-                                                    </div>
-                                                    <span
-                                                        class="nav-text text-gray-800 fw-bold fs-6 lh-1">Templates</span>
-                                                    <span
-                                                        class="bullet-custom position-absolute bottom-0 w-100 h-4px bg-primary"></span>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item mb-3 me-3 me-lg-6" role="presentation">
-                                                <a class="nav-link btn btn-outline btn-flex btn-color-muted btn-active-color-primary flex-column overflow-hidden w-100px h-85px p-0
-                                                    "
-                                                    id="kt_stats_widget_16_tab_link_2" data-bs-toggle="pill"
-                                                    href="#kt_stats_widget_16_tab_2" aria-selected="false"
-                                                    tabindex="-1" role="tab">
-                                                    <div class="nav-icon mb-3 qr-design-chose">
-                                                        <img src="https://dashboard.uniqode.com/assets/logo/qr-customize/Logo.svg"
-                                                            alt="">
-                                                    </div>
-
-                                                    <span class="nav-text text-gray-800 fw-bold fs-6 lh-1"> Logo
-                                                    </span>
-                                                    <span
-                                                        class="bullet-custom position-absolute bottom-0 w-100 h-4px bg-primary"></span>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item mb-3 me-3 me-lg-6" role="presentation">
-                                                <a class="nav-link btn btn-outline btn-flex btn-color-muted btn-active-color-primary flex-column overflow-hidden w-100px h-85px p-0
-                                                    "
-                                                    id="kt_stats_widget_16_tab_link_3" data-bs-toggle="pill"
-                                                    href="#kt_stats_widget_16_tab_3" aria-selected="false"
-                                                    tabindex="-1" role="tab">
-                                                    <div class="nav-icon mb-3 qr-design-chose">
-                                                        <img src="https://dashboard.uniqode.com/assets/logo/qr-customize/Eye.svg"
-                                                            alt="">
-                                                    </div>
-
-                                                    <span class="nav-text text-gray-800 fw-bold fs-6 lh-1"> Eyes
-                                                    </span>
-                                                    <span
-                                                        class="bullet-custom position-absolute bottom-0 w-100 h-4px bg-primary"></span>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item mb-3 me-3 me-lg-6" role="presentation">
-                                                <a class="nav-link btn btn-outline btn-flex btn-color-muted btn-active-color-primary flex-column overflow-hidden w-100px h-85px p-0
-                                                    "
-                                                    id="kt_stats_widget_16_tab_link_4" data-bs-toggle="pill"
-                                                    href="#kt_stats_widget_16_tab_4" aria-selected="false"
-                                                    tabindex="-1" role="tab">
-                                                    <div class="nav-icon mb-3 qr-design-chose">
-                                                        <img src="https://dashboard.uniqode.com/assets/logo/qr-customize/Pattern.svg"
-                                                            alt="">
-                                                    </div>
-
-                                                    <span class="nav-text text-gray-800 fw-bold fs-6 lh-1">Pattern
-                                                    </span>
-                                                    <span
-                                                        class="bullet-custom position-absolute bottom-0 w-100 h-4px bg-primary"></span>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item mb-3 me-3 me-lg-6" role="presentation">
-                                                <a class="nav-link btn btn-outline btn-flex btn-color-muted btn-active-color-primary flex-column overflow-hidden w-100px h-85px p-0
-                                                    "
-                                                    id="kt_stats_widget_16_tab_link_5" data-bs-toggle="pill"
-                                                    href="#kt_stats_widget_16_tab_5" aria-selected="false"
-                                                    tabindex="-1" role="tab">
-                                                    <div class="nav-icon mb-3 qr-design-chose">
-                                                        <img src="https://dashboard.uniqode.com/assets/logo/qr-customize/Background.svg"
-                                                            alt="">
-                                                    </div>
-                                                    <span class="nav-text text-gray-800 fw-bold fs-6 lh-1">
-                                                        Background</span>
-                                                    <span
-                                                        class="bullet-custom position-absolute bottom-0 w-100 h-4px bg-primary"></span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <div class="tab-content">
-                                            <div class="tab-pane fade show active" id="kt_stats_widget_16_tab_1"
-                                                role="tabpanel" aria-labelledby="kt_stats_widget_16_tab_link_1">
-                                                <div>
-                                                    <h4>SELECT A TEMPLATE</h4>
-                                                </div>
-                                                <div>
-                                                    {{-- Templates --}}
-                                                    <div class="card ">
-                                                        <div class="card-body rounded-4 py-1 pb-0 px-0 ps-1"
-                                                            style="width: 100%;overflow: auto;">
-                                                            <div style="width:170px; display: flex; gap: 20px;">
-                                                                <label for="radio-card-31" class="radio-card">
-                                                                    <input type="radio" name="radio-card"
-                                                                        id="radio-card-31" />
-                                                                    <div class="card-content-wrapper code-template">
-                                                                        <span class="check-icon"></span>
-                                                                        <div class="card-content">
-                                                                            <img width="140px"
-                                                                                style="padding-top: 5px;"
-                                                                                src="https://d1bqobzsowu5wu.cloudfront.net/public/qr-code-templates/Default/aHR0cHM6Ly9xcmNvZGVzLnByby9zY2FuL3A/dGVtcGxhdGU9dHJ1ZQ%3D%3D-512.svg?16432.09999999404"
-                                                                                alt="" />
-                                                                        </div>
-                                                                    </div>
-                                                                </label>
-
-                                                                <label for="radio-card-32" class="radio-card">
-                                                                    <input type="radio" name="radio-card"
-                                                                        id="radio-card-32" />
-                                                                    <div class="card-content-wrapper code-template">
-                                                                        <span class="check-icon"></span>
-                                                                        <div class="card-content">
-                                                                            <img width="140px"
-                                                                                style="padding-top: 5px;"
-                                                                                src="https://beaconstac-content.s3.amazonaws.com/undefined/qr-codes/Classic%20Swirl/svg/aHR0cHM6Ly9xcmNvZGVzLnByby9zY2FuL3A/dGVtcGxhdGU9dHJ1ZQ%3D%3D-512.svg?16432.09999999404"
-                                                                                alt="" />
-                                                                        </div>
-                                                                    </div>
-                                                                </label>
-                                                                <label for="radio-card-33" class="radio-card">
-                                                                    <input type="radio" name="radio-card"
-                                                                        id="radio-card-33" />
-                                                                    <div class="card-content-wrapper code-template">
-                                                                        <span class="check-icon"></span>
-                                                                        <div class="card-content">
-                                                                            <img width="140px"
-                                                                                style="padding-top: 5px;"
-                                                                                src="https://d1bqobzsowu5wu.cloudfront.net/public/qr-code-templates/Gradient/aHR0cHM6Ly9xcmNvZGVzLnByby9zY2FuL3A/dGVtcGxhdGU9dHJ1ZQ%3D%3D-512.svg?16432.09999999404"
-                                                                                alt="" />
-                                                                        </div>
-                                                                    </div>
-                                                                </label>
-                                                                <label for="radio-card-34" class="radio-card">
-                                                                    <input type="radio" name="radio-card"
-                                                                        id="radio-card-34" />
-                                                                    <div class="card-content-wrapper code-template">
-                                                                        <span class="check-icon"></span>
-                                                                        <div class="card-content">
-                                                                            <img width="140px"
-                                                                                style="padding-top: 5px;"
-                                                                                src="https://beaconstac-content.s3.amazonaws.com/undefined/qr-codes/Blue%20Dream/svg/aHR0cHM6Ly9xcmNvZGVzLnByby9zY2FuL3A/dGVtcGxhdGU9dHJ1ZQ%3D%3D-512.svg?16432.09999999404"
-                                                                                alt="" />
-                                                                        </div>
-                                                                    </div>
-                                                                </label>
-                                                                <label for="radio-card-35" class="radio-card">
-                                                                    <input type="radio" name="radio-card"
-                                                                        id="radio-card-35" />
-                                                                    <div class="card-content-wrapper code-template">
-                                                                        <span class="check-icon"></span>
-                                                                        <div class="card-content">
-                                                                            <img width="140px"
-                                                                                style="padding-top: 5px;"
-                                                                                src="https://beaconstac-content.s3.amazonaws.com/undefined/qr-codes/Retro%20Funk/svg/aHR0cHM6Ly9xcmNvZGVzLnByby9zY2FuL3A/dGVtcGxhdGU9dHJ1ZQ%3D%3D-512.svg?16432.09999999404"
-                                                                                alt="" />
-                                                                        </div>
-                                                                    </div>
-                                                                </label>
-
-                                                                <label for="radio-card-36" class="radio-card">
-                                                                    <input type="radio" name="radio-card"
-                                                                        id="radio-card-36" />
-                                                                    <div class="card-content-wrapper code-template">
-                                                                        <span class="check-icon"></span>
-                                                                        <div class="card-content">
-                                                                            <img width="140px"
-                                                                                style="padding-top: 5px;"
-                                                                                src="https://beaconstac-content.s3.amazonaws.com/undefined/qr-codes/Nature%20Earth/svg/aHR0cHM6Ly9xcmNvZGVzLnByby9zY2FuL3A/dGVtcGxhdGU9dHJ1ZQ%3D%3D-512.svg?16432.09999999404"
-                                                                                alt="" />
-                                                                        </div>
-                                                                    </div>
-                                                                </label>
-                                                                <label for="radio-card-37" class="radio-card">
-                                                                    <input type="radio" name="radio-card"
-                                                                        id="radio-card-37" />
-                                                                    <div class="card-content-wrapper code-template">
-                                                                        <span class="check-icon"></span>
-                                                                        <div class="card-content">
-                                                                            <img width="140px"
-                                                                                style="padding-top: 5px;"
-                                                                                src="https://beaconstac-content.s3.amazonaws.com/undefined/qr-codes/Sunny%20Day/svg/aHR0cHM6Ly9xcmNvZGVzLnByby9zY2FuL3A/dGVtcGxhdGU9dHJ1ZQ%3D%3D-512.svg?16432.09999999404"
-                                                                                alt="" />
-                                                                        </div>
-                                                                    </div>
-                                                                </label>
-                                                                <label for="radio-card-38" class="radio-card">
-                                                                    <input type="radio" name="radio-card"
-                                                                        id="radio-card-38" />
-                                                                    <div class="card-content-wrapper code-template">
-                                                                        <span class="check-icon"></span>
-                                                                        <div class="card-content">
-                                                                            <img width="140px"
-                                                                                style="padding-top: 5px;"
-                                                                                src="https://beaconstac-content.s3.amazonaws.com/undefined/qr-codes/Dark%20Mode/svg/aHR0cHM6Ly9xcmNvZGVzLnByby9zY2FuL3A/dGVtcGxhdGU9dHJ1ZQ%3D%3D-512.svg?16432.09999999404"
-                                                                                alt="" />
-                                                                        </div>
-                                                                    </div>
-                                                                </label>
-                                                                <label for="radio-card-39" class="radio-card">
-                                                                    <input type="radio" name="radio-card"
-                                                                        id="radio-card-39" />
-                                                                    <div class="card-content-wrapper code-template">
-                                                                        <span class="check-icon"></span>
-                                                                        <div class="card-content">
-                                                                            <img width="140px"
-                                                                                style="padding-top: 5px;"
-                                                                                src="https://beaconstac-content.s3.amazonaws.com/undefined/qr-codes/Classic%20Frame/svg/aHR0cHM6Ly9xcmNvZGVzLnByby9zY2FuL3A/dGVtcGxhdGU9dHJ1ZQ%3D%3D-512.svg?16432.09999999404"
-                                                                                alt="" />
-                                                                        </div>
-                                                                    </div>
-                                                                </label>
-                                                                <label for="radio-card-40" class="radio-card">
-                                                                    <input type="radio" name="radio-card"
-                                                                        id="radio-card-40" />
-                                                                    <div class="card-content-wrapper code-template">
-                                                                        <span class="check-icon"></span>
-                                                                        <div class="card-content">
-                                                                            <img width="140px"
-                                                                                style="padding-top: 5px;"
-                                                                                src="https://beaconstac-content.s3.amazonaws.com/undefined/qr-codes/Ocean%20Breeze/svg/aHR0cHM6Ly9xcmNvZGVzLnByby9zY2FuL3A/dGVtcGxhdGU9dHJ1ZQ%3D%3D-512.svg?16432.09999999404"
-                                                                                alt="" />
-                                                                        </div>
-                                                                    </div>
-                                                                </label>
-                                                                <label for="radio-card-41" class="radio-card">
-                                                                    <input type="radio" name="radio-card"
-                                                                        id="radio-card-41" />
-                                                                    <div class="card-content-wrapper code-template">
-                                                                        <span class="check-icon"></span>
-                                                                        <div class="card-content">
-                                                                            <img width="140px"
-                                                                                style="padding-top: 5px;"
-                                                                                src="https://beaconstac-content.s3.amazonaws.com/undefined/qr-codes/Edgy%20Graffiti/svg/aHR0cHM6Ly9xcmNvZGVzLnByby9zY2FuL3A/dGVtcGxhdGU9dHJ1ZQ%3D%3D-512.svg?16432.09999999404"
-                                                                                alt="" />
-                                                                        </div>
-                                                                    </div>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="tab-pane fade " id="kt_stats_widget_16_tab_2" role="tabpanel"
-                                                aria-labelledby="kt_stats_widget_16_tab_link_2">
-                                                <div>
-                                                    <div class="pt-5 text-start mt-4">
-                                                        <h2>SELECT A LOGO</h2>
-                                                        <p>This will appear at the center of your QR code.</p>
-                                                    </div>
-                                                    {{-- Logos Uploade --}}
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="dropzone dz-clickable w-100"
-                                                        id="kt_dropzonejs_example_1">
-                                                        <div class="dz-message needsclick">
-                                                            <i class="ki-duotone ki-file-up fs-3x text-primary"><span
-                                                                    class="path1"></span><span
-                                                                    class="path2"></span></i>
-
-                                                            <div class="ms-4">
-                                                                <h3 class="fs-5 fw-bold text-gray-900 mb-1">Drop files
-                                                                    here
-                                                                    or click to upload.</h3>
-                                                                <span
-                                                                    class="fs-7 fw-semibold text-primary opacity-75">Upload
-                                                                    up to 10 files</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="ps-2">
-                                                        <label for="">Enter Logo Size</label>
-                                                        <input type="number" name="" id=""
-                                                            class="form-control form-control-solid mt-4"
-                                                            placeholder="Enter Logo Size">
-                                                    </div>
-                                                    </div>
-                                                    <p class="text-start pt-5 mb-0">Or Select From Our
-                                                        Gallary</p>
-                                                    {{-- Logo From Our Gallary --}}
-                                                    <div class="pt-2 row">
-                                                        <div class="col-sm-1 mb-1">
-                                                            <a href="#">
-                                                                <img style="width: 45px; border: 1px solid #DBDFE3; border-radius: 4px;"
-                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/app-store.svg">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-sm-1 mb-1">
-                                                            <a href="#">
-                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                                                    src="	https://static.beaconstac.com/assets/img/qr-code-logos/calender.svg">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-sm-1 mb-1">
-                                                            <a href="#">
-                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/email.svg">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-sm-1 mb-1">
-                                                            <a href="#">
-                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/facebook.svg">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-sm-1 mb-1">
-                                                            <a href="#">
-                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/gmail.svg">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-sm-1 mb-1">
-                                                            <a href="#">
-                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/google-bussiness.svg">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-sm-1 mb-1">
-                                                            <a href="#">
-                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/instagram.svg">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-sm-1 mb-1">
-                                                            <a href="#">
-                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/linkedin.svg">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-sm-1 mb-1">
-                                                            <a href="#">
-                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/mp3.svg">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-sm-1 mb-1">
-                                                            <a href="#">
-                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/pdf.svg">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-sm-1 mb-1">
-                                                            <a href="#">
-                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/phone-call.svg">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-sm-1 mb-1">
-                                                            <a href="#">
-                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/pintrest.svg">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-sm-1 mb-1">
-                                                            <a href="#">
-                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/play-store.svg">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-sm-1 mb-1">
-                                                            <a href="#">
-                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/ratings.png">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-sm-1 mb-1">
-                                                            <a href="#">
-                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/twitter.svg">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-sm-1 mb-1">
-                                                            <a href="#">
-                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/youtube.svg">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-sm-1 mb-1">
-                                                            <a href="#">
-                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-1.svg">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-sm-1 mb-1">
-                                                            <a href="#">
-                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-2.svg">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-sm-1 mb-1">
-                                                            <a href="#">
-                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-3.svg">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-sm-1 mb-1">
-                                                            <a href="#">
-                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-4.svg">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-sm-1 mb-1">
-                                                            <a href="#">
-                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-5.svg">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-sm-1 mb-1">
-                                                            <a href="#">
-                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-6.svg">
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="tab-pane fade " id="kt_stats_widget_16_tab_3" role="tabpanel"
-                                                aria-labelledby="kt_stats_widget_16_tab_link_3">
-                                                <div class="pt-5 text-start mt-4">
-                                                    <h2>SELECT EYE-BALL</h2>
-                                                    <p>This will be the color and shape of your QR code's eye-balls</p>
-                                                </div>
-                                                <div class="d-flex">
-                                                    <input type="color" id="colorPicker"
-                                                        style="width: 56px;height: 45px;">
-                                                    <input type="text" id="colorCodeInput"
-                                                        class="form-control form-control-solid w-25" readonly>
-                                                </div>
-                                                <div class="d-flex">
-                                                    <label for="radio-card-311" class="radio-card me-4">
-                                                        <input type="radio" name="radio-card"
-                                                            id="radio-card-311" />
-                                                        <div class="card-content-wrapper i-ball-frame">
-                                                            <span class="check-icon"></span>
-                                                            <div class="card-content 2">
-                                                                <img width="60px" style="padding-top: 5px;"
-                                                                    src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/square.svg"
-                                                                    alt="" />
-                                                            </div>
-                                                        </div>
-                                                    </label>
-                                                    <label for="radio-card-322" class="radio-card me-4">
-                                                        <input type="radio" name="radio-card"
-                                                            id="radio-card-322" />
-                                                        <div class="card-content-wrapper i-ball-frame">
-                                                            <span class="check-icon"></span>
-                                                            <div class="card-content 2">
-                                                                <img width="60px" style="padding-top: 5px;"
-                                                                    src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/rounded.svg"
-                                                                    alt="" />
-                                                            </div>
-                                                        </div>
-                                                    </label>
-                                                    <label for="radio-card-333" class="radio-card me-4">
-                                                        <input type="radio" name="radio-card"
-                                                            id="radio-card-333" />
-                                                        <div class="card-content-wrapper i-ball-frame">
-                                                            <span class="check-icon"></span>
-                                                            <div class="card-content 2">
-                                                                <img width="60px" style="padding-top: 5px;"
-                                                                    src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/left-diamond.svg"
-                                                                    alt="" />
-                                                            </div>
-                                                        </div>
-                                                    </label>
-                                                    <label for="radio-card-344" class="radio-card me-4">
-                                                        <input type="radio" name="radio-card"
-                                                            id="radio-card-344" />
-                                                        <div class="card-content-wrapper i-ball-frame">
-                                                            <span class="check-icon"></span>
-                                                            <div class="card-content 2">
-                                                                <img width="60px" style="padding-top: 5px;"
-                                                                    src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/right-diamond.svg"
-                                                                    alt="" />
-                                                            </div>
-                                                        </div>
-                                                    </label>
-                                                    <label for="radio-card-356" class="radio-card me-4">
-                                                        <input type="radio" name="radio-card"
-                                                            id="radio-card-356" />
-                                                        <div class="card-content-wrapper i-ball-frame">
-                                                            <span class="check-icon"></span>
-                                                            <div class="card-content 2">
-                                                                <img width="60px" style="padding-top: 5px;"
-                                                                    src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/left-leaf.svg"
-                                                                    alt="" />
-                                                            </div>
-                                                        </div>
-                                                    </label>
-                                                    <label for="radio-card-367" class="radio-card me-4">
-                                                        <input type="radio" name="radio-card"
-                                                            id="radio-card-367" />
-                                                        <div class="card-content-wrapper i-ball-frame">
-                                                            <span class="check-icon"></span>
-                                                            <div class="card-content 2">
-                                                                <img width="60px" style="padding-top: 5px;"
-                                                                    src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/right-leaf.svg"
-                                                                    alt="" />
-                                                            </div>
-                                                        </div>
-                                                    </label>
-                                                </div>
-                                                <div class="pt-5 text-start mt-4">
-                                                    <h2>SELECT EYE-FRAME</h2>
-                                                    <p>This will be the color and shape of your QR code's eye-frames</p>
-                                                </div>
-                                                <div class="d-flex">
-                                                    <input type="text" id="colorCodeInput"
-                                                        class="form-control form-control-solid w-25" readonly>
-                                                    <input type="color" id="colorPicker"
-                                                        style="width: 56px;height: 45px;">
-                                                </div>
-                                                <div class="d-flex">
-                                                    <label for="radio-card-378" class="radio-card me-4">
-                                                        <input type="radio" name="radio-card"
-                                                            id="radio-card-378" />
-                                                        <div class="card-content-wrapper i-ball-frame">
-                                                            <span class="check-icon"></span>
-                                                            <div class="card-content 2">
-                                                                <img width="60px" style="padding-top: 5px;"
-                                                                    src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-frames/square.svg"
-                                                                    alt="" />
-                                                            </div>
-                                                        </div>
-                                                    </label>
-                                                    <label for="radio-card-389" class="radio-card me-4">
-                                                        <input type="radio" name="radio-card"
-                                                            id="radio-card-389" />
-                                                        <div class="card-content-wrapper i-ball-frame">
-                                                            <span class="check-icon"></span>
-                                                            <div class="card-content 2">
-                                                                <img width="60px" style="padding-top: 5px;"
-                                                                    src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-frames/rounded.svg"
-                                                                    alt="" />
-                                                            </div>
-                                                        </div>
-                                                    </label>
-                                                    <label for="radio-card-399" class="radio-card me-4">
-                                                        <input type="radio" name="radio-card"
-                                                            id="radio-card-399" />
-                                                        <div class="card-content-wrapper i-ball-frame">
-                                                            <span class="check-icon"></span>
-                                                            <div class="card-content 2">
-                                                                <img width="60px" style="padding-top: 5px;"
-                                                                    src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-frames/left-leaf.svg"
-                                                                    alt="" />
-                                                            </div>
-                                                        </div>
-                                                    </label>
-                                                    <label for="radio-card-434" class="radio-card me-4">
-                                                        <input type="radio" name="radio-card"
-                                                            id="radio-card-434" />
-                                                        <div class="card-content-wrapper i-ball-frame">
-                                                            <span class="check-icon"></span>
-                                                            <div class="card-content 2">
-                                                                <img width="60px" style="padding-top: 5px;"
-                                                                    src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-frames/right-leaf.svg"
-                                                                    alt="" />
-                                                            </div>
-                                                        </div>
-                                                    </label>
-                                                </div>
-                                            </div>
-
-                                            <div class="tab-pane fade " id="kt_stats_widget_16_tab_4" role="tabpanel"
-                                                aria-labelledby="kt_stats_widget_16_tab_link_4">
-                                                <div class="pt-5 text-start mt-4">
-                                                    <h2>SELECT A PATTERN</h2>
-                                                    <p>This will be the color and shape of your QR code's data-pattern
-                                                    </p>
-                                                </div>
-                                                <div>
-                                                    <label for="radio-card-444" class="radio-card me-4">
-                                                        <input type="radio" name="radio-card"
-                                                            id="radio-card-444" />
-                                                        <div class="card-content-wrapper qr-pattern">
-                                                            <span class="check-icon"></span>
-                                                            <div class="card-content 2">
-                                                                <img width="70px" style="padding-top: 5px;"
-                                                                    src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/square.svg"
-                                                                    alt="" />
-                                                            </div>
-                                                        </div>
-                                                    </label>
-                                                    <label for="radio-card-451" class="radio-card me-4">
-                                                        <input type="radio" name="radio-card"
-                                                            id="radio-card-451" />
-                                                        <div class="card-content-wrapper qr-pattern">
-                                                            <span class="check-icon"></span>
-                                                            <div class="card-content 2">
-                                                                <img width="70px" style="padding-top: 5px;"
-                                                                    src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/circle.svg"
-                                                                    alt="" />
-                                                            </div>
-                                                        </div>
-                                                    </label>
-                                                    <label for="radio-card-460" class="radio-card me-4">
-                                                        <input type="radio" name="radio-card"
-                                                            id="radio-card-460" />
-                                                        <div class="card-content-wrapper qr-pattern">
-                                                            <span class="check-icon"></span>
-                                                            <div class="card-content 2">
-                                                                <img width="70px" style="padding-top: 5px;"
-                                                                    src="	https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/kite.svg"
-                                                                    alt="" />
-                                                            </div>
-                                                        </div>
-                                                    </label>
-                                                    <label for="radio-card-471" class="radio-card me-4">
-                                                        <input type="radio" name="radio-card"
-                                                            id="radio-card-471" />
-                                                        <div class="card-content-wrapper qr-pattern">
-                                                            <span class="check-icon"></span>
-                                                            <div class="card-content 2">
-                                                                <img width="70px" style="padding-top: 5px;"
-                                                                    src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/left-diamond.svg"
-                                                                    alt="" />
-                                                            </div>
-                                                        </div>
-                                                    </label>
-                                                    <label for="radio-card-482" class="radio-card me-4">
-                                                        <input type="radio" name="radio-card"
-                                                            id="radio-card-482" />
-                                                        <div class="card-content-wrapper qr-pattern">
-                                                            <span class="check-icon"></span>
-                                                            <div class="card-content 2">
-                                                                <img width="70px" style="padding-top: 5px;"
-                                                                    src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/left-diamond.svg"
-                                                                    alt="" />
-                                                            </div>
-                                                        </div>
-                                                    </label>
-                                                    <label for="radio-card-492" class="radio-card me-4">
-                                                        <input type="radio" name="radio-card"
-                                                            id="radio-card-492" />
-                                                        <div class="card-content-wrapper qr-pattern">
-                                                            <span class="check-icon"></span>
-                                                            <div class="card-content 2">
-                                                                <img width="70px" style="padding-top: 5px;"
-                                                                    src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/right-diamond.svg"
-                                                                    alt="" />
-                                                            </div>
-                                                        </div>
-                                                    </label>
-                                                    <label for="radio-card-5044" class="radio-card me-4">
-                                                        <input type="radio" name="radio-card"
-                                                            id="radio-card-5044" />
-                                                        <div class="card-content-wrapper qr-pattern">
-                                                            <span class="check-icon"></span>
-                                                            <div class="card-content 2">
-                                                                <img width="70px" style="padding-top: 5px;"
-                                                                    src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/thin-square.svg"
-                                                                    alt="" />
-                                                            </div>
-                                                        </div>
-                                                    </label>
-                                                    <label for="radio-card-5122" class="radio-card me-4">
-                                                        <input type="radio" name="radio-card"
-                                                            id="radio-card-5122" />
-                                                        <div class="card-content-wrapper qr-pattern">
-                                                            <span class="check-icon"></span>
-                                                            <div class="card-content 2">
-                                                                <img width="70px" style="padding-top: 5px;"
-                                                                    src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/smooth-round.svg"
-                                                                    alt="" />
-                                                            </div>
-                                                        </div>
-                                                    </label>
-                                                    <label for="radio-card-5233" class="radio-card me-4">
-                                                        <input type="radio" name="radio-card"
-                                                            id="radio-card-5233" />
-                                                        <div class="card-content-wrapper qr-pattern">
-                                                            <span class="check-icon"></span>
-                                                            <div class="card-content 2">
-                                                                <img width="70px" style="padding-top: 5px;"
-                                                                    src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/smooth-round.svg"
-                                                                    alt="" />
-                                                            </div>
-                                                        </div>
-                                                    </label>
-                                                </div>
-                                                <div>
-                                                    <p class="pt-5">COLOR</p>
-                                                    <div class="d-flex">
-                                                        <div class="form-check pe-3">
-                                                            <input class="form-check-input" id="normal_color"
-                                                                type="radio" name="flexRadioDefault"
-                                                                id="flexRadioDefault1">
-                                                            <label class="form-check-label" for="flexRadioDefault1">
-                                                                Solid Color
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" id="gradient_color"
-                                                                type="radio" name="flexRadioDefault"
-                                                                id="flexRadioDefault2">
-                                                            <label class="form-check-label" for="flexRadioDefault2">
-                                                                Gradient
-                                                            </label>
-                                                        </div>
-                                                    </div>
-
-                                                    {{-- Hidden Fields --}}
-                                                    <div>
-                                                        <div class="hidden-field" id="normal_color_show"
-                                                            style="display: none;">
-                                                            <div class="pt-5">
-                                                                <label for="">Color</label> <br>
-                                                                <div class="d-flex">
-                                                                    <input type="text"
-                                                                        id="colorCodeInput-normal_color"
-                                                                        class="form-control form-control-solid w-25"
-                                                                        readonly>
-                                                                    <input type="color" id="colorPicker"
-                                                                        style="width: 56px;height: 45px;">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="hidden-field" id="gradient_color_show"
-                                                            style="display: none;">
-                                                            <div class="pt-5">
-                                                                <label for="">Select Gradient Type</label>
-                                                                <select class="form-select form-select-sm mt-3 w-25"
-                                                                    aria-label="Default select example">
-                                                                    <option selected>None</option>
-                                                                    <option value="2">Radial</option>
-                                                                    <option value="3">Horizontal</option>
-                                                                    <option value="4">Vertical</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="d-flex">
-                                                                <div class="pt-3 pe-4">
-                                                                    <label for="">Color Start</label>
-                                                                    <div class="d-flex">
-                                                                        <input type="text"
-                                                                            id="colorCodeInput-gradient"
-                                                                            class="form-control form-control-solid w-25"
-                                                                            style="width: 160px !important" readonly>
-                                                                        <input type="color" id="colorPicker"
-                                                                            style="width: 56px;height: 45px;">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="pt-3">
-                                                                    <label for="">Color End</label>
-                                                                    <div class="d-flex">
-                                                                        <input type="text"
-                                                                            id="colorCodeInput-gradient-2"
-                                                                            class="form-control form-control-solid w-25"
-                                                                            style="width: 160px !important" readonly>
-                                                                        <input type="color" id="colorPicker"
-                                                                            style="width: 56px;height: 45px;">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    {{-- Hidden Fields --}}
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade " id="kt_stats_widget_16_tab_5" role="tabpanel"
-                                                aria-labelledby="kt_stats_widget_16_tab_link_5">
-                                                <div class="pt-5 text-start mt-4">
-                                                    <h2>SELECT BACKGROUND</h2>
-                                                    <p>Select a background color or image for your QR code</p>
-                                                </div>
-                                                <div>
-                                                    <div class="d-flex">
-                                                        <div class="form-check pe-3">
-                                                            <input class="form-check-input" type="radio"
-                                                                name="flexRadioDefault" id="flexRadioDefault1">
-                                                            <label class="form-check-label" for="flexRadioDefault1">
-                                                                Color
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check pe-3">
-                                                            <input class="form-check-input" type="radio"
-                                                                name="flexRadioDefault" id="flexRadioDefault2">
-                                                            <label class="form-check-label" for="flexRadioDefault2">
-                                                                Image
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio"
-                                                                name="flexRadioDefault" id="flexRadioDefault3">
-                                                            <label class="form-check-label" for="flexRadioDefault3">
-                                                                Transparent
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    {{-- By Default Hidden --}}
-                                                    <div id="content-sections">
-                                                        <div id="color-content" style="display: none;">
-                                                            <div class="card w-50 shadow-sm mt-4">
-                                                                <div class="card-body">
-                                                                    <div class="">
-                                                                        <label for="">Color</label>
-                                                                        <div class="d-flex">
-                                                                            <input type="text"
-                                                                                id="colorCodeInput-normal_color"
-                                                                                class="form-control form-control-solid w-100"
-                                                                                readonly>
-                                                                            <input type="color" id="colorPicker"
-                                                                                style="width: 56px;height: 45px;">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div id="image-content" style="display: none;">
-                                                            <div class="card w-50 shadow-sm mt-4">
-                                                                <div class="card-body">
-                                                                    <div class="dropzone dz-clickable w-100 mt-4"
-                                                                        id="kt_dropzonejs_example_1">
-                                                                        <div class="dz-message needsclick">
-                                                                            <i
-                                                                                class="ki-duotone ki-file-up fs-3x text-primary"><span
-                                                                                    class="path1"></span><span
-                                                                                    class="path2"></span></i>
-
-                                                                            <div class="ms-4">
-                                                                                <h3
-                                                                                    class="fs-5 fw-bold text-gray-900 mb-1">
-                                                                                    Drop
-                                                                                    files here
-                                                                                    or click to upload.</h3>
-                                                                                <span
-                                                                                    class="fs-7 fw-semibold text-primary opacity-75">Upload
-                                                                                    up to 10 files</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div id="transparent-content" style="display: none;">
-                                                            <div class="card w-50 shadow-sm mt-4">
-                                                                <div class="card-body">
-                                                                    <p class="mb-0">The Qr Code Background Will Be
-                                                                        Transparent.</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    {{-- By Default Hidden --}}
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane pt-4" id="done" role="tabpanel"
-                                                aria-labelledby="done-tab">
-                                                asdadasd
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @include('user.pages.qr-code.partials.customize')
                                     {{-- Customize Nested Tabs For Customize The Design End --}}
                                 </div>
                             </div>
@@ -1392,11 +631,11 @@
             });
         </script>
         <script>
-            var myDropzone = new Dropzone("#kt_dropzonejs_example_1", {
+            var myDropzone = new Dropzone("#qr_dropzone", {
                 url: "https://keenthemes.com/scripts/void.php", // Set the url for your upload script location
                 paramName: "file", // The name that will be used to transfer the file
-                maxFiles: 10,
-                maxFilesize: 10, // MB
+                maxFiles: 1,
+                maxFilesize: 2, // MB
                 addRemoveLinks: true,
                 accept: function(file, done) {
                     if (file.name == "wow.jpg") {
@@ -1465,8 +704,6 @@
                 imageContent.style.display = 'none';
                 transparentContent.style.display = 'block';
             });
-
-
         </script>
     @endpush
 </x-app-layout>

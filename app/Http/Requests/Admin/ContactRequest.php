@@ -27,12 +27,6 @@ class ContactRequest extends FormRequest
 
         return [
             'code' => 'nullable|string|max:255|unique:contacts,code,' . $contact,
-            // 'code' => [
-            //     'required',
-            //     'string',
-            //     'max:255',
-            //     Rule::unique('contacts', 'code')->ignore($contact ? $contact->id : null),
-            // ],
             'name'        => 'required|string|max:150',
             'email'       => 'required|email|max:150',
             'phone'       => 'nullable|string|max:20',

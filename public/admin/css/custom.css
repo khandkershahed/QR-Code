@@ -226,6 +226,31 @@ label.radio-card {
     transition: var(--transition);
     height: 130px;
 }
+.code-template{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    width: 150px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    transition: var(--transition);
+    height: 130px;
+}
+.i-ball-frame {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    width: 120px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    transition: var(--transition);
+    height: 80px;
+}
+
 
 .check-icon {
     width: 20px;
