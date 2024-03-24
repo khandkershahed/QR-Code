@@ -74,8 +74,7 @@
                                             <div class="col-lg-4">
                                                 <div class="checkbox">
                                                     <label for="radio-card-f002" class="radio-card">
-                                                        <input type="radio" name="code_type" value="pdf"
-                                                            id="radio-card-f002" />
+                                                        <input type="radio" name="code_type" value="pdf" id="radio-card-f002" />
                                                         <div class="card-content-wrapper">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content">
@@ -99,8 +98,7 @@
                                             <div class="col-lg-4">
                                                 <div class="checkbox">
                                                     <label for="radio-card-f003" class="radio-card">
-                                                        <input type="radio" name="code_type" value="image"
-                                                            id="radio-card-f003" />
+                                                        <input type="radio" name="code_type" value="image" id="radio-card-f003" />
                                                         <div class="card-content-wrapper">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content">
@@ -123,8 +121,7 @@
                                             <div class="col-lg-4">
                                                 <div class="checkbox">
                                                     <label for="radio-card-f004" class="radio-card">
-                                                        <input type="radio" name="code_type" value=""
-                                                            id="radio-card-f004" />
+                                                        <input type="radio" name="code_type" value="sms" id="radio-card-f004" />
                                                         <div class="card-content-wrapper">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content">
@@ -148,8 +145,7 @@
                                             <div class="col-lg-4">
                                                 <div class="checkbox">
                                                     <label for="radio-card-f005" class="radio-card">
-                                                        <input type="radio" name="code_type" value=""
-                                                            id="radio-card-f005" />
+                                                        <input type="radio" name="code_type" value="email" id="radio-card-f005" />
                                                         <div class="card-content-wrapper">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content">
@@ -173,8 +169,7 @@
                                             <div class="col-lg-4">
                                                 <div class="checkbox">
                                                     <label for="radio-card-f006" class="radio-card">
-                                                        <input type="radio" name="code_type" value=""
-                                                            id="radio-card-f006" />
+                                                        <input type="radio" name="code_type" value="mobile_app" id="radio-card-f006" />
                                                         <div class="card-content-wrapper">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content">
@@ -198,8 +193,7 @@
                                             <div class="col-lg-4">
                                                 <div class="checkbox">
                                                     <label for="radio-card-f007" class="radio-card">
-                                                        <input type="radio" name="code_type" value=""
-                                                            id="radio-card-f007" />
+                                                        <input type="radio" name="code_type" value="call" id="radio-card-f007" />
                                                         <div class="card-content-wrapper">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content">
@@ -223,8 +217,7 @@
                                             <div class="col-lg-4">
                                                 <div class="checkbox">
                                                     <label for="radio-card-f008" class="radio-card">
-                                                        <input type="radio" name="code_type" value=""
-                                                            id="radio-card-f008" />
+                                                        <input type="radio" name="code_type" value="location" id="radio-card-f008" />
                                                         <div class="card-content-wrapper">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content">
@@ -248,7 +241,7 @@
                                             <div class="col-lg-4">
                                                 <div class="checkbox">
                                                     <label for="radio-card-f009" class="radio-card">
-                                                        <input type="radio" name="code_type" value=""
+                                                        <input type="radio" name="code_type" value="coupon_code"
                                                             id="radio-card-f009" />
                                                         <div class="card-content-wrapper">
                                                             <span class="check-icon"></span>
@@ -273,8 +266,7 @@
                                             <div class="col-lg-4">
                                                 <div class="checkbox">
                                                     <label for="radio-card-f010" class="radio-card">
-                                                        <input type="radio" name="code_type" value=""
-                                                            id="radio-card-f010" />
+                                                        <input type="radio" name="code_type" value="social" id="radio-card-f010" />
                                                         <div class="card-content-wrapper">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content">
@@ -298,8 +290,7 @@
                                             <div class="col-lg-4">
                                                 <div class="checkbox">
                                                     <label for="radio-card-f011" class="radio-card">
-                                                        <input type="radio" name="code_type" value=""
-                                                            id="radio-card-f011" />
+                                                        <input type="radio" name="code_type" value="audio" id="radio-card-f011" />
                                                         <div class="card-content-wrapper">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content">
@@ -323,8 +314,7 @@
                                             <div class="col-lg-4">
                                                 <div class="checkbox">
                                                     <label for="radio-card-f012" class="radio-card">
-                                                        <input type="radio" name="code_type" value=""
-                                                            id="radio-card-f012" />
+                                                        <input type="radio" name="code_type" value="business_page" id="radio-card-f012" />
                                                         <div class="card-content-wrapper">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content">
@@ -354,6 +344,9 @@
                                 <div class="card">
                                     <div class="card-body">
                                         @include('user.pages.qr-code.partials.form')
+                                        <div class="d-flex justify-content-end">
+                                            <a href="#" class="btn btn-light btn-primary">Next</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1170,7 +1163,7 @@
                                                     {{-- By Default Hidden --}}
                                                     <div id="content-sections">
                                                         <div id="color-content" style="display: none;">
-                                                            <div class="card w-100 shadow-sm mt-4">
+                                                            <div class="card w-50 shadow-sm mt-4">
                                                                 <div class="card-body">
                                                                     <div class="">
                                                                         <label for="">Color</label>
@@ -1187,7 +1180,7 @@
                                                             </div>
                                                         </div>
                                                         <div id="image-content" style="display: none;">
-                                                            <div class="card w-100 shadow-sm mt-4">
+                                                            <div class="card w-50 shadow-sm mt-4">
                                                                 <div class="card-body">
                                                                     <div class="dropzone dz-clickable w-100 mt-4"
                                                                         id="kt_dropzonejs_example_1">
@@ -1213,7 +1206,7 @@
                                                             </div>
                                                         </div>
                                                         <div id="transparent-content" style="display: none;">
-                                                            <div class="card w-100 shadow-sm mt-4">
+                                                            <div class="card w-50 shadow-sm mt-4">
                                                                 <div class="card-body">
                                                                     <p class="mb-0">The Qr Code Background Will Be
                                                                         Transparent.</p>
@@ -1471,23 +1464,6 @@
                 colorContent.style.display = 'none';
                 imageContent.style.display = 'none';
                 transparentContent.style.display = 'block';
-            });
-
-            $(document).ready(function() {
-                // Add event listener to radio inputs
-                $('.form-container').hide();
-                $('input[type="radio"]').change(function() {
-                    // Hide all forms
-                    $('.form-container').hide();
-
-                    // Show the selected form based on the value of the checked radio input
-                    const selectedValue = $('input[type="radio"]:checked').val();
-                    $('#' + selectedValue + '-form').show();
-                });
-
-                // Initially hide all forms except the one corresponding to the initially selected radio input
-                const selectedValue = $('input[type="radio"]:checked').val();
-                $('#' + selectedValue + '-form').show();
             });
         </script>
     @endpush
