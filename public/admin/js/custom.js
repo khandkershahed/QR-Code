@@ -11,7 +11,7 @@ function showSuccessMessageAndFlushSession(message) {
         title: "Success!",
         text: message,
         icon: "success",
-        buttonsStyling: false,
+        buttonsStyling: true,
         customClass: {
             confirmButton: "btn btn-primary",
         },
@@ -36,7 +36,7 @@ function showErrorMessage(message) {
         title: "Error!",
         text: message,
         icon: "error",
-        buttonsStyling: false,
+        buttonsStyling: true,
         customClass: {
             confirmButton: "btn btn-primary",
         },

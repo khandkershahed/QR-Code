@@ -34,7 +34,6 @@
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/slick.min.css') }}" />
     <!-- Main Style -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}" />
-    <link href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
 </head>
 
 <body class="home-nine">
@@ -77,16 +76,17 @@
     <script src="{{ asset('frontend/assets/js/isotope.pkgd.min.js') }}"></script>
     <!--  WOW Animation -->
     <script src="{{ asset('frontend/assets/js/aos.js') }}"></script>
-    <script src="{{ asset('admin/assets/plugins/global/plugins.bundle.js') }}"></script>
     <!-- Custom script -->
     <script src="{{ asset('frontend/assets/js/script.js') }}"></script>
     <script src="https://kit.fontawesome.com/69b7156a94.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @if (session('success'))
         <script>
             Swal.fire({
                 title: 'Success!',
-                text: '{{ session('success') }}',
+                html: '{{ session('success') }}',
                 icon: 'success',
+                showCloseButton: true,
                 buttonsStyling: false,
                 customClass: {
                     confirmButton: 'btn btn-primary'
@@ -101,10 +101,11 @@
         <script>
             @foreach ($errors->all() as $error)
                 Swal.fire({
-                    title: 'Error!',
-                    text: '{{ $error }}',
-                    icon: 'error',
-                    buttonsStyling: false,
+                    title: "<strong>Error!</strong>",
+                    icon: "error",
+                    html: {{ $error }},
+                    showCloseButton: true,
+                    focusConfirm: false,
                     customClass: {
                         confirmButton: 'btn btn-primary'
                     }

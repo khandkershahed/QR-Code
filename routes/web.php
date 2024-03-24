@@ -30,6 +30,9 @@ Route::get('/flush-session', function() {
     return response()->json(['message' => 'Session flushed successfully']);
 });
 
+Route::post('contact/store', [ContactController::class, 'store'])
+        ->name('contact.add');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
