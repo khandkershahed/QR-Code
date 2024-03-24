@@ -344,7 +344,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         @include('user.pages.qr-code.partials.form')
-                                        <div class="d-flex justify-content-end">
+                                        <div class="d-flex justify-content-end pt-5">
                                             <a href="#" class="btn btn-light btn-primary">Next</a>
                                         </div>
                                     </div>
