@@ -138,6 +138,22 @@
         @foreach ($errors->all() as $error)
             showErrorMessage('{{ $error }}');
         @endforeach
+        $(document).ready(function() {
+            // Add event listener to radio inputs
+            $('.form-container').hide();
+            $('input[type="radio"]').change(function() {
+                // Hide all forms
+                $('.form-container').hide();
+
+                // Show the selected form based on the value of the checked radio input
+                const selectedValue = $('input[type="radio"]:checked').val();
+                $('#' + selectedValue + '-form').show();
+            });
+
+            // Initially hide all forms except the one corresponding to the initially selected radio input
+            const selectedValue = $('input[type="radio"]:checked').val();
+            $('#' + selectedValue + '-form').show();
+        });
     </script>
     @stack('scripts')
     <!--end::Page Custom Javascript-->
