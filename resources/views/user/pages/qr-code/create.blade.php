@@ -47,7 +47,7 @@
                                             <div class="col-lg-4">
                                                 <div class="checkbox">
                                                     <label for="radio-card-f001" class="radio-card">
-                                                        <input type="radio" name="website" value="website"
+                                                        <input type="radio" name="code_type" value="website"
                                                             id="radio-card-f001" />
                                                         <div class="card-content-wrapper">
                                                             <span class="check-icon"></span>
@@ -74,7 +74,8 @@
                                             <div class="col-lg-4">
                                                 <div class="checkbox">
                                                     <label for="radio-card-f002" class="radio-card">
-                                                        <input type="radio" name="pdf" id="radio-card-f002" />
+                                                        <input type="radio" name="code_type" value="pdf"
+                                                            id="radio-card-f002" />
                                                         <div class="card-content-wrapper">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content">
@@ -98,7 +99,8 @@
                                             <div class="col-lg-4">
                                                 <div class="checkbox">
                                                     <label for="radio-card-f003" class="radio-card">
-                                                        <input type="radio" name="pdf" id="radio-card-f003" />
+                                                        <input type="radio" name="code_type" value="image"
+                                                            id="radio-card-f003" />
                                                         <div class="card-content-wrapper">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content">
@@ -121,7 +123,8 @@
                                             <div class="col-lg-4">
                                                 <div class="checkbox">
                                                     <label for="radio-card-f004" class="radio-card">
-                                                        <input type="radio" name="sms" id="radio-card-f004" />
+                                                        <input type="radio" name="code_type" value=""
+                                                            id="radio-card-f004" />
                                                         <div class="card-content-wrapper">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content">
@@ -145,7 +148,8 @@
                                             <div class="col-lg-4">
                                                 <div class="checkbox">
                                                     <label for="radio-card-f005" class="radio-card">
-                                                        <input type="radio" name="email" id="radio-card-f005" />
+                                                        <input type="radio" name="code_type" value=""
+                                                            id="radio-card-f005" />
                                                         <div class="card-content-wrapper">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content">
@@ -169,7 +173,7 @@
                                             <div class="col-lg-4">
                                                 <div class="checkbox">
                                                     <label for="radio-card-f006" class="radio-card">
-                                                        <input type="radio" name="email"
+                                                        <input type="radio" name="code_type" value=""
                                                             id="radio-card-f006" />
                                                         <div class="card-content-wrapper">
                                                             <span class="check-icon"></span>
@@ -194,7 +198,8 @@
                                             <div class="col-lg-4">
                                                 <div class="checkbox">
                                                     <label for="radio-card-f007" class="radio-card">
-                                                        <input type="radio" name="email" id="radio-card-f007" />
+                                                        <input type="radio" name="code_type" value=""
+                                                            id="radio-card-f007" />
                                                         <div class="card-content-wrapper">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content">
@@ -218,7 +223,7 @@
                                             <div class="col-lg-4">
                                                 <div class="checkbox">
                                                     <label for="radio-card-f008" class="radio-card">
-                                                        <input type="radio" name="email"
+                                                        <input type="radio" name="code_type" value=""
                                                             id="radio-card-f008" />
                                                         <div class="card-content-wrapper">
                                                             <span class="check-icon"></span>
@@ -243,7 +248,7 @@
                                             <div class="col-lg-4">
                                                 <div class="checkbox">
                                                     <label for="radio-card-f009" class="radio-card">
-                                                        <input type="radio" name="coupon_code"
+                                                        <input type="radio" name="code_type" value=""
                                                             id="radio-card-f009" />
                                                         <div class="card-content-wrapper">
                                                             <span class="check-icon"></span>
@@ -268,7 +273,8 @@
                                             <div class="col-lg-4">
                                                 <div class="checkbox">
                                                     <label for="radio-card-f010" class="radio-card">
-                                                        <input type="radio" name="social" id="radio-card-f010" />
+                                                        <input type="radio" name="code_type" value=""
+                                                            id="radio-card-f010" />
                                                         <div class="card-content-wrapper">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content">
@@ -292,7 +298,7 @@
                                             <div class="col-lg-4">
                                                 <div class="checkbox">
                                                     <label for="radio-card-f011" class="radio-card">
-                                                        <input type="radio" name="social"
+                                                        <input type="radio" name="code_type" value=""
                                                             id="radio-card-f011" />
                                                         <div class="card-content-wrapper">
                                                             <span class="check-icon"></span>
@@ -317,7 +323,8 @@
                                             <div class="col-lg-4">
                                                 <div class="checkbox">
                                                     <label for="radio-card-f012" class="radio-card">
-                                                        <input type="radio" name="social" id="radio-card-f012" />
+                                                        <input type="radio" name="code_type" value=""
+                                                            id="radio-card-f012" />
                                                         <div class="card-content-wrapper">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content">
@@ -1464,6 +1471,22 @@
                 colorContent.style.display = 'none';
                 imageContent.style.display = 'none';
                 transparentContent.style.display = 'block';
+            });
+
+            $(document).ready(function() {
+                // Add event listener to radio inputs
+                $('input[type="radio"]').change(function() {
+                    // Hide all forms
+                    $('.form-container').hide();
+
+                    // Show the selected form based on the value of the checked radio input
+                    const selectedValue = $('input[type="radio"]:checked').val();
+                    $('#' + selectedValue + '-form').show();
+                });
+
+                // Initially hide all forms except the one corresponding to the initially selected radio input
+                const selectedValue = $('input[type="radio"]:checked').val();
+                $('#' + selectedValue + '-form').show();
             });
         </script>
     @endpush
