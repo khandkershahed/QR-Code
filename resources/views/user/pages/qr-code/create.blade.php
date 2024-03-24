@@ -1475,6 +1475,7 @@
 
             $(document).ready(function() {
                 // Add event listener to radio inputs
+                $('.form-container').hide();
                 $('input[type="radio"]').change(function() {
                     // Hide all forms
                     $('.form-container').hide();
