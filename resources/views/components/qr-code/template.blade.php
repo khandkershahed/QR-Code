@@ -7,7 +7,7 @@
                 <div class="code-template">
                     <span class="check-icon"></span>
                     <div class="card-content">
-                        <img width="100px" style="padding-top: 5px;" src="{{ $template['image_url'] }}"
+                        <img width="100px" src="{{ $template['image_url'] }}"
                             alt="" />
                     </div>
                 </div>

@@ -77,7 +77,7 @@
             <div>
                 {{-- Templates --}}
                 <div class="card ">
-                    <div class="card-body rounded-4 p-sm-10">
+                    <div class="card-body rounded-4 p-0">
                         <x-qr-code.template :templates="[
                             ['id' => 31, 'value' => 'template_one', 'image_url' => 'https://d1bqobzsowu5wu.cloudfront.net/public/qr-code-templates/Default/aHR0cHM6Ly9xcmNvZGVzLnByby9zY2FuL3A/dGVtcGxhdGU9dHJ1ZQ%3D%3D-512.svg?16432.09999999404'],
                             ['id' => 32, 'value' => 'template_two', 'image_url' => 'https://beaconstac-content.s3.amazonaws.com/undefined/qr-codes/Classic%20Swirl/svg/aHR0cHM6Ly9xcmNvZGVzLnByby9zY2FuL3A/dGVtcGxhdGU9dHJ1ZQ%3D%3D-512.svg?16432.09999999404'],
@@ -273,8 +273,9 @@
                 <input type="color" id="colorPicker" style="width: 56px;height: 45px;">
                 <input type="text" id="colorCodeInput" class="form-control form-control-solid w-25" readonly>
             </div>
-            <div class="d-lg-flex">
-                <label for="radio-card-311" class="radio-card me-4">
+            <div class="d-lg-flex row gx-10">
+                <div class="col-lg-1">
+                    <label for="radio-card-311" class="radio-card me-4">
                     <input type="radio" name="radio-card" id="radio-card-311" />
                     <div class="i-ball-frame">
                         <span class="check-icon"></span>
@@ -285,7 +286,9 @@
                         </div>
                     </div>
                 </label>
-                <label for="radio-card-322" class="radio-card me-4">
+                </div>
+                <div class="col-lg-1">
+                    <label for="radio-card-322" class="radio-card me-4">
                     <input type="radio" name="radio-card" id="radio-card-322" />
                     <div class="i-ball-frame">
                         <span class="check-icon"></span>
@@ -296,7 +299,9 @@
                         </div>
                     </div>
                 </label>
-                <label for="radio-card-333" class="radio-card me-4">
+                </div>
+                <div class="col-lg-1">
+                    <label for="radio-card-333" class="radio-card me-4">
                     <input type="radio" name="radio-card" id="radio-card-333" />
                     <div class="i-ball-frame">
                         <span class="check-icon"></span>
@@ -307,7 +312,9 @@
                         </div>
                     </div>
                 </label>
-                <label for="radio-card-344" class="radio-card me-4">
+                </div>
+                <div class="col-lg-1">
+                    <label for="radio-card-344" class="radio-card me-4">
                     <input type="radio" name="radio-card" id="radio-card-344" />
                     <div class="i-ball-frame">
                         <span class="check-icon"></span>
@@ -318,7 +325,9 @@
                         </div>
                     </div>
                 </label>
-                <label for="radio-card-356" class="radio-card me-4">
+                </div>
+                <div class="col-lg-1">
+                    <label for="radio-card-356" class="radio-card me-4">
                     <input type="radio" name="radio-card" id="radio-card-356" />
                     <div class="i-ball-frame">
                         <span class="check-icon"></span>
@@ -329,7 +338,9 @@
                         </div>
                     </div>
                 </label>
-                <label for="radio-card-367" class="radio-card me-4">
+                </div>
+                <div class="col-lg-1">
+                    <label for="radio-card-367" class="radio-card me-4">
                     <input type="radio" name="radio-card" id="radio-card-367" />
                     <div class="i-ball-frame">
                         <span class="check-icon"></span>
@@ -340,6 +351,13 @@
                         </div>
                     </div>
                 </label>
+                </div>
+                
+                
+                
+                
+                
+                
             </div>
             <div class="pt-5 text-start mt-4">
                 <h2>SELECT EYE-FRAME</h2>
@@ -506,8 +524,8 @@
                 </label>
             </div>
             <div>
-                <p class="pt-5">COLOR</p>
-                <div class="d-flex">
+                <h2 class="pt-10">COLOR</h2>
+                <div class="d-flex pt-5">
                     <div class="form-check pe-3">
                         <input class="form-check-input" id="normal_color" type="radio" name="flexRadioDefault"
                             id="flexRadioDefault1">
@@ -578,7 +596,7 @@
                 <p>Select a background color or image for your QR code</p>
             </div>
             <div>
-                <div class="d-flex">
+                <div class="d-flex pt-6">
                     <div class="form-check pe-3">
                         <input class="form-check-input" type="radio" name="flexRadioDefault"
                             id="flexRadioDefault1">
@@ -618,7 +636,7 @@
                         </div>
                     </div>
                     <div id="image-content" style="display: none;">
-                        <div class="card w-50 shadow-sm mt-4">
+                        <div class="card w-100 shadow-sm mt-4">
                             <div class="card-body">
                                 <div class="dropzone dz-clickable w-100 mt-4" id="kt_dropzonejs_example_1">
                                     <div class="dz-message needsclick">
@@ -639,9 +657,9 @@
                         </div>
                     </div>
                     <div id="transparent-content" style="display: none;">
-                        <div class="card w-50 shadow-sm mt-4">
+                        <div class="card w-100 shadow-sm mt-4">
                             <div class="card-body">
-                                <p class="mb-0">The Qr Code Background Will Be
+                                <p class="mb-0 fw-bold text-info">The Qr Code Background Will Be
                                     Transparent.</p>
                             </div>
                         </div>

@@ -103,7 +103,7 @@
                                             [
                                                 'id' => 9,
                                                 'value' => 'coupon_code',
-                                                'title' => 'Coupon_Code',
+                                                'title' => 'Coupon Code',
                                                 'text' => 'Route to a page displaying coupon code details',
                                                 'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/coupon.svg',
                                             ],
@@ -124,7 +124,7 @@
                                             [
                                                 'id' => 12,
                                                 'value' => 'business_page',
-                                                'title' => 'Business_Page',
+                                                'title' => 'Business Page',
                                                 'text' => 'Link to your phone number for quick calls',
                                                 'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/mp3.svg',
                                             ],
@@ -464,6 +464,9 @@
                                     @include('user.pages.qr-code.partials.customize')
                                     {{-- Customize Nested Tabs For Customize The Design End --}}
                                 </div>
+                                <div class="d-flex justify-content-end pt-5">
+                                    <a href="#" class="btn btn-light btn-primary">Next</a>
+                                </div>
                             </div>
                             <div class="tab-pane pt-4 step-form-padding" id="done-main" role="tabpanel"
                                 aria-labelledby="done-main-tab">
@@ -471,11 +474,13 @@
                                     <h2>Congratulations! Your QR Code is ready</h2>
                                     <p>Still want to make changes? <a href="#">Modify your QR code</a></p>
                                 </div>
-                                <div class="pt-5">
-                                    <label for="">Enter a name for your QR code <span
-                                            class="text-danger">*</span></label>
+                                <div class="pt-5 pb-5 ps-5">
+                                    <label for="">Enter a name for your QR code</label>
                                     <input type="text" name="" id=""
-                                        class="form-control form-control-sm w-50">
+                                        class="form-control form-control-solid w-100">
+                                </div>
+                                <div class="w-25 mx-auto">
+                                    <img width="300px" src="https://assets-v2.lottiefiles.com/a/1abcc0d6-1163-11ee-9072-a343231e70f1/HGdrITc8PY.gif" alt="">
                                 </div>
                             </div>
                             {{-- Main Form For Qr End --}}
