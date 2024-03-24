@@ -138,6 +138,8 @@
         @foreach ($errors->all() as $error)
             showErrorMessage('{{ $error }}');
         @endforeach
+    </script>
+    <script>
         $(document).ready(function() {
             // Add event listener to radio inputs
             $('.form-container').hide();
