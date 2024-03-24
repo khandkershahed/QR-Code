@@ -473,7 +473,7 @@
                                                                 <label for="radio-card-31" class="radio-card">
                                                                     <input type="radio" name="radio-card"
                                                                         id="radio-card-31" />
-                                                                    <div class="card-content-wrapper">
+                                                                    <div class="card-content-wrapper code-template">
                                                                         <span class="check-icon"></span>
                                                                         <div class="card-content">
                                                                             <img width="140px"
@@ -487,7 +487,7 @@
                                                                 <label for="radio-card-32" class="radio-card">
                                                                     <input type="radio" name="radio-card"
                                                                         id="radio-card-32" />
-                                                                    <div class="card-content-wrapper">
+                                                                    <div class="card-content-wrapper code-template">
                                                                         <span class="check-icon"></span>
                                                                         <div class="card-content">
                                                                             <img width="140px"
@@ -500,7 +500,7 @@
                                                                 <label for="radio-card-33" class="radio-card">
                                                                     <input type="radio" name="radio-card"
                                                                         id="radio-card-33" />
-                                                                    <div class="card-content-wrapper">
+                                                                    <div class="card-content-wrapper code-template">
                                                                         <span class="check-icon"></span>
                                                                         <div class="card-content">
                                                                             <img width="140px"
@@ -513,7 +513,7 @@
                                                                 <label for="radio-card-34" class="radio-card">
                                                                     <input type="radio" name="radio-card"
                                                                         id="radio-card-34" />
-                                                                    <div class="card-content-wrapper">
+                                                                    <div class="card-content-wrapper code-template">
                                                                         <span class="check-icon"></span>
                                                                         <div class="card-content">
                                                                             <img width="140px"
@@ -526,7 +526,7 @@
                                                                 <label for="radio-card-35" class="radio-card">
                                                                     <input type="radio" name="radio-card"
                                                                         id="radio-card-35" />
-                                                                    <div class="card-content-wrapper">
+                                                                    <div class="card-content-wrapper code-template">
                                                                         <span class="check-icon"></span>
                                                                         <div class="card-content">
                                                                             <img width="140px"
@@ -540,7 +540,7 @@
                                                                 <label for="radio-card-36" class="radio-card">
                                                                     <input type="radio" name="radio-card"
                                                                         id="radio-card-36" />
-                                                                    <div class="card-content-wrapper">
+                                                                    <div class="card-content-wrapper code-template">
                                                                         <span class="check-icon"></span>
                                                                         <div class="card-content">
                                                                             <img width="140px"
@@ -553,7 +553,7 @@
                                                                 <label for="radio-card-37" class="radio-card">
                                                                     <input type="radio" name="radio-card"
                                                                         id="radio-card-37" />
-                                                                    <div class="card-content-wrapper">
+                                                                    <div class="card-content-wrapper code-template">
                                                                         <span class="check-icon"></span>
                                                                         <div class="card-content">
                                                                             <img width="140px"
@@ -566,7 +566,7 @@
                                                                 <label for="radio-card-38" class="radio-card">
                                                                     <input type="radio" name="radio-card"
                                                                         id="radio-card-38" />
-                                                                    <div class="card-content-wrapper">
+                                                                    <div class="card-content-wrapper code-template">
                                                                         <span class="check-icon"></span>
                                                                         <div class="card-content">
                                                                             <img width="140px"
@@ -579,7 +579,7 @@
                                                                 <label for="radio-card-39" class="radio-card">
                                                                     <input type="radio" name="radio-card"
                                                                         id="radio-card-39" />
-                                                                    <div class="card-content-wrapper">
+                                                                    <div class="card-content-wrapper code-template">
                                                                         <span class="check-icon"></span>
                                                                         <div class="card-content">
                                                                             <img width="140px"
@@ -592,7 +592,7 @@
                                                                 <label for="radio-card-40" class="radio-card">
                                                                     <input type="radio" name="radio-card"
                                                                         id="radio-card-40" />
-                                                                    <div class="card-content-wrapper">
+                                                                    <div class="card-content-wrapper code-template">
                                                                         <span class="check-icon"></span>
                                                                         <div class="card-content">
                                                                             <img width="140px"
@@ -605,7 +605,7 @@
                                                                 <label for="radio-card-41" class="radio-card">
                                                                     <input type="radio" name="radio-card"
                                                                         id="radio-card-41" />
-                                                                    <div class="card-content-wrapper">
+                                                                    <div class="card-content-wrapper code-template">
                                                                         <span class="check-icon"></span>
                                                                         <div class="card-content">
                                                                             <img width="140px"
@@ -629,7 +629,8 @@
                                                         <p>This will appear at the center of your QR code.</p>
                                                     </div>
                                                     {{-- Logos Uploade --}}
-                                                    <div class="dropzone dz-clickable w-50"
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="dropzone dz-clickable w-100"
                                                         id="kt_dropzonejs_example_1">
                                                         <div class="dz-message needsclick">
                                                             <i class="ki-duotone ki-file-up fs-3x text-primary"><span
@@ -646,150 +647,149 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="mt-2"
-                                                        style="display: flex;
-                                                justify-content: start;
-                                                width: 50%;">
+                                                    <div class="ps-2">
+                                                        <label for="">Enter Logo Size</label>
                                                         <input type="number" name="" id=""
-                                                            class="form-control form-control-solid"
+                                                            class="form-control form-control-solid mt-4"
                                                             placeholder="Enter Logo Size">
                                                     </div>
-                                                    <p class="text-start pt-4 mb-0">Or Select From Our
+                                                    </div>
+                                                    <p class="text-start pt-5 mb-0">Or Select From Our
                                                         Gallary</p>
                                                     {{-- Logo From Our Gallary --}}
-                                                    <div class="pt-2 d-flex mx-auto justify-content-start">
-                                                        <a href="#">
-                                                            <img style="width: 45px;
-                                                    border: 1px solid #DBDFE3;
-                                                    border-radius: 4px;"
-                                                                src="https://static.beaconstac.com/assets/img/qr-code-logos/app-store.svg">
-                                                        </a>
-                                                        <a href="#">
-                                                            <img style="width: 45px;
-                                                    border: 1px solid #DBDFE3;
-                                                    border-radius: 4px;"
-                                                                src="	https://static.beaconstac.com/assets/img/qr-code-logos/calender.svg">
-                                                        </a>
-                                                        <a href="#">
-                                                            <img style="width: 45px;
-                                                    border: 1px solid #DBDFE3;
-                                                    border-radius: 4px;"
-                                                                src="https://static.beaconstac.com/assets/img/qr-code-logos/email.svg">
-                                                        </a>
-                                                        <a href="#">
-                                                            <img style="width: 45px;
-                                                    border: 1px solid #DBDFE3;
-                                                    border-radius: 4px;"
-                                                                src="https://static.beaconstac.com/assets/img/qr-code-logos/facebook.svg">
-                                                        </a>
-                                                        <a href="#">
-                                                            <img style="width: 45px;
-                                                    border: 1px solid #DBDFE3;
-                                                    border-radius: 4px;"
-                                                                src="https://static.beaconstac.com/assets/img/qr-code-logos/gmail.svg">
-                                                        </a>
-                                                        <a href="#">
-                                                            <img style="width: 45px;
-                                                    border: 1px solid #DBDFE3;
-                                                    border-radius: 4px;"
-                                                                src="https://static.beaconstac.com/assets/img/qr-code-logos/google-bussiness.svg">
-                                                        </a>
-                                                        <a href="#">
-                                                            <img style="width: 45px;
-                                                    border: 1px solid #DBDFE3;
-                                                    border-radius: 4px;"
-                                                                src="https://static.beaconstac.com/assets/img/qr-code-logos/instagram.svg">
-                                                        </a>
-                                                        <a href="#">
-                                                            <img style="width: 45px;
-                                                    border: 1px solid #DBDFE3;
-                                                    border-radius: 4px;"
-                                                                src="https://static.beaconstac.com/assets/img/qr-code-logos/linkedin.svg">
-                                                        </a>
-                                                        <a href="#">
-                                                            <img style="width: 45px;
-                                                    border: 1px solid #DBDFE3;
-                                                    border-radius: 4px;"
-                                                                src="https://static.beaconstac.com/assets/img/qr-code-logos/mp3.svg">
-                                                        </a>
-                                                        <a href="#">
-                                                            <img style="width: 45px;
-                                                    border: 1px solid #DBDFE3;
-                                                    border-radius: 4px;"
-                                                                src="https://static.beaconstac.com/assets/img/qr-code-logos/pdf.svg">
-                                                        </a>
-                                                        <a href="#">
-                                                            <img style="width: 45px;
-                                                    border: 1px solid #DBDFE3;
-                                                    border-radius: 4px;"
-                                                                src="https://static.beaconstac.com/assets/img/qr-code-logos/phone-call.svg">
-                                                        </a>
-                                                        <a href="#">
-                                                            <img style="width: 45px;
-                                                    border: 1px solid #DBDFE3;
-                                                    border-radius: 4px;"
-                                                                src="https://static.beaconstac.com/assets/img/qr-code-logos/pintrest.svg">
-                                                        </a>
-                                                        <a href="#">
-                                                            <img style="width: 45px;
-                                                    border: 1px solid #DBDFE3;
-                                                    border-radius: 4px;"
-                                                                src="https://static.beaconstac.com/assets/img/qr-code-logos/play-store.svg">
-                                                        </a>
-                                                        <a href="#">
-                                                            <img style="width: 45px;
-                                                    border: 1px solid #DBDFE3;
-                                                    border-radius: 4px;"
-                                                                src="https://static.beaconstac.com/assets/img/qr-code-logos/ratings.png">
-                                                        </a>
-                                                        <a href="#">
-                                                            <img style="width: 45px;
-                                                    border: 1px solid #DBDFE3;
-                                                    border-radius: 4px;"
-                                                                src="https://static.beaconstac.com/assets/img/qr-code-logos/twitter.svg">
-                                                        </a>
-                                                        <a href="#">
-                                                            <img style="width: 45px;
-                                                    border: 1px solid #DBDFE3;
-                                                    border-radius: 4px;"
-                                                                src="https://static.beaconstac.com/assets/img/qr-code-logos/youtube.svg">
-                                                        </a>
-                                                        <a href="#">
-                                                            <img style="width: 45px;
-                                                    border: 1px solid #DBDFE3;
-                                                    border-radius: 4px;"
-                                                                src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-1.svg">
-                                                        </a>
-                                                        <a href="#">
-                                                            <img style="width: 45px;
-                                                    border: 1px solid #DBDFE3;
-                                                    border-radius: 4px;"
-                                                                src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-2.svg">
-                                                        </a>
-                                                        <a href="#">
-                                                            <img style="width: 45px;
-                                                    border: 1px solid #DBDFE3;
-                                                    border-radius: 4px;"
-                                                                src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-3.svg">
-                                                        </a>
-                                                        <a href="#">
-                                                            <img style="width: 45px;
-                                                    border: 1px solid #DBDFE3;
-                                                    border-radius: 4px;"
-                                                                src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-4.svg">
-                                                        </a>
-                                                        <a href="#">
-                                                            <img style="width: 45px;
-                                                    border: 1px solid #DBDFE3;
-                                                    border-radius: 4px;"
-                                                                src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-5.svg">
-                                                        </a>
-                                                        <a href="#">
-                                                            <img style="width: 45px;
-                                                    border: 1px solid #DBDFE3;
-                                                    border-radius: 4px;"
-                                                                src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-6.svg">
-                                                        </a>
+                                                    <div class="pt-2 row">
+                                                        <div class="col-sm-1 mb-1">
+                                                            <a href="#">
+                                                                <img style="width: 45px; border: 1px solid #DBDFE3; border-radius: 4px;"
+                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/app-store.svg">
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-sm-1 mb-1">
+                                                            <a href="#">
+                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
+                                                                    src="	https://static.beaconstac.com/assets/img/qr-code-logos/calender.svg">
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-sm-1 mb-1">
+                                                            <a href="#">
+                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
+                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/email.svg">
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-sm-1 mb-1">
+                                                            <a href="#">
+                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
+                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/facebook.svg">
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-sm-1 mb-1">
+                                                            <a href="#">
+                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
+                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/gmail.svg">
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-sm-1 mb-1">
+                                                            <a href="#">
+                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
+                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/google-bussiness.svg">
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-sm-1 mb-1">
+                                                            <a href="#">
+                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
+                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/instagram.svg">
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-sm-1 mb-1">
+                                                            <a href="#">
+                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
+                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/linkedin.svg">
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-sm-1 mb-1">
+                                                            <a href="#">
+                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
+                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/mp3.svg">
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-sm-1 mb-1">
+                                                            <a href="#">
+                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
+                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/pdf.svg">
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-sm-1 mb-1">
+                                                            <a href="#">
+                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
+                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/phone-call.svg">
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-sm-1 mb-1">
+                                                            <a href="#">
+                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
+                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/pintrest.svg">
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-sm-1 mb-1">
+                                                            <a href="#">
+                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
+                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/play-store.svg">
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-sm-1 mb-1">
+                                                            <a href="#">
+                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
+                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/ratings.png">
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-sm-1 mb-1">
+                                                            <a href="#">
+                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
+                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/twitter.svg">
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-sm-1 mb-1">
+                                                            <a href="#">
+                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
+                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/youtube.svg">
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-sm-1 mb-1">
+                                                            <a href="#">
+                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
+                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-1.svg">
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-sm-1 mb-1">
+                                                            <a href="#">
+                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
+                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-2.svg">
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-sm-1 mb-1">
+                                                            <a href="#">
+                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
+                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-3.svg">
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-sm-1 mb-1">
+                                                            <a href="#">
+                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
+                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-4.svg">
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-sm-1 mb-1">
+                                                            <a href="#">
+                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
+                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-5.svg">
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-sm-1 mb-1">
+                                                            <a href="#">
+                                                                <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
+                                                                    src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-6.svg">
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -810,7 +810,7 @@
                                                     <label for="radio-card-311" class="radio-card me-4">
                                                         <input type="radio" name="radio-card"
                                                             id="radio-card-311" />
-                                                        <div class="card-content-wrapper">
+                                                        <div class="card-content-wrapper i-ball-frame">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content 2">
                                                                 <img width="60px" style="padding-top: 5px;"
@@ -822,7 +822,7 @@
                                                     <label for="radio-card-322" class="radio-card me-4">
                                                         <input type="radio" name="radio-card"
                                                             id="radio-card-322" />
-                                                        <div class="card-content-wrapper">
+                                                        <div class="card-content-wrapper i-ball-frame">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content 2">
                                                                 <img width="60px" style="padding-top: 5px;"
@@ -834,7 +834,7 @@
                                                     <label for="radio-card-333" class="radio-card me-4">
                                                         <input type="radio" name="radio-card"
                                                             id="radio-card-333" />
-                                                        <div class="card-content-wrapper">
+                                                        <div class="card-content-wrapper i-ball-frame">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content 2">
                                                                 <img width="60px" style="padding-top: 5px;"
@@ -846,7 +846,7 @@
                                                     <label for="radio-card-344" class="radio-card me-4">
                                                         <input type="radio" name="radio-card"
                                                             id="radio-card-344" />
-                                                        <div class="card-content-wrapper">
+                                                        <div class="card-content-wrapper i-ball-frame">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content 2">
                                                                 <img width="60px" style="padding-top: 5px;"
@@ -858,7 +858,7 @@
                                                     <label for="radio-card-356" class="radio-card me-4">
                                                         <input type="radio" name="radio-card"
                                                             id="radio-card-356" />
-                                                        <div class="card-content-wrapper">
+                                                        <div class="card-content-wrapper i-ball-frame">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content 2">
                                                                 <img width="60px" style="padding-top: 5px;"
@@ -870,7 +870,7 @@
                                                     <label for="radio-card-367" class="radio-card me-4">
                                                         <input type="radio" name="radio-card"
                                                             id="radio-card-367" />
-                                                        <div class="card-content-wrapper">
+                                                        <div class="card-content-wrapper i-ball-frame">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content 2">
                                                                 <img width="60px" style="padding-top: 5px;"
@@ -894,7 +894,7 @@
                                                     <label for="radio-card-378" class="radio-card me-4">
                                                         <input type="radio" name="radio-card"
                                                             id="radio-card-378" />
-                                                        <div class="card-content-wrapper">
+                                                        <div class="card-content-wrapper i-ball-frame">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content 2">
                                                                 <img width="60px" style="padding-top: 5px;"
@@ -906,7 +906,7 @@
                                                     <label for="radio-card-389" class="radio-card me-4">
                                                         <input type="radio" name="radio-card"
                                                             id="radio-card-389" />
-                                                        <div class="card-content-wrapper">
+                                                        <div class="card-content-wrapper i-ball-frame">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content 2">
                                                                 <img width="60px" style="padding-top: 5px;"
@@ -918,7 +918,7 @@
                                                     <label for="radio-card-399" class="radio-card me-4">
                                                         <input type="radio" name="radio-card"
                                                             id="radio-card-399" />
-                                                        <div class="card-content-wrapper">
+                                                        <div class="card-content-wrapper i-ball-frame">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content 2">
                                                                 <img width="60px" style="padding-top: 5px;"
@@ -930,7 +930,7 @@
                                                     <label for="radio-card-434" class="radio-card me-4">
                                                         <input type="radio" name="radio-card"
                                                             id="radio-card-434" />
-                                                        <div class="card-content-wrapper">
+                                                        <div class="card-content-wrapper i-ball-frame">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content 2">
                                                                 <img width="60px" style="padding-top: 5px;"
@@ -953,7 +953,7 @@
                                                     <label for="radio-card-444" class="radio-card me-4">
                                                         <input type="radio" name="radio-card"
                                                             id="radio-card-444" />
-                                                        <div class="card-content-wrapper">
+                                                        <div class="card-content-wrapper qr-pattern">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content 2">
                                                                 <img width="70px" style="padding-top: 5px;"
@@ -965,7 +965,7 @@
                                                     <label for="radio-card-451" class="radio-card me-4">
                                                         <input type="radio" name="radio-card"
                                                             id="radio-card-451" />
-                                                        <div class="card-content-wrapper">
+                                                        <div class="card-content-wrapper qr-pattern">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content 2">
                                                                 <img width="70px" style="padding-top: 5px;"
@@ -977,7 +977,7 @@
                                                     <label for="radio-card-460" class="radio-card me-4">
                                                         <input type="radio" name="radio-card"
                                                             id="radio-card-460" />
-                                                        <div class="card-content-wrapper">
+                                                        <div class="card-content-wrapper qr-pattern">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content 2">
                                                                 <img width="70px" style="padding-top: 5px;"
@@ -989,7 +989,7 @@
                                                     <label for="radio-card-471" class="radio-card me-4">
                                                         <input type="radio" name="radio-card"
                                                             id="radio-card-471" />
-                                                        <div class="card-content-wrapper">
+                                                        <div class="card-content-wrapper qr-pattern">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content 2">
                                                                 <img width="70px" style="padding-top: 5px;"
@@ -1001,7 +1001,7 @@
                                                     <label for="radio-card-482" class="radio-card me-4">
                                                         <input type="radio" name="radio-card"
                                                             id="radio-card-482" />
-                                                        <div class="card-content-wrapper">
+                                                        <div class="card-content-wrapper qr-pattern">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content 2">
                                                                 <img width="70px" style="padding-top: 5px;"
@@ -1013,7 +1013,7 @@
                                                     <label for="radio-card-492" class="radio-card me-4">
                                                         <input type="radio" name="radio-card"
                                                             id="radio-card-492" />
-                                                        <div class="card-content-wrapper">
+                                                        <div class="card-content-wrapper qr-pattern">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content 2">
                                                                 <img width="70px" style="padding-top: 5px;"
@@ -1025,7 +1025,7 @@
                                                     <label for="radio-card-5044" class="radio-card me-4">
                                                         <input type="radio" name="radio-card"
                                                             id="radio-card-5044" />
-                                                        <div class="card-content-wrapper">
+                                                        <div class="card-content-wrapper qr-pattern">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content 2">
                                                                 <img width="70px" style="padding-top: 5px;"
@@ -1037,7 +1037,7 @@
                                                     <label for="radio-card-5122" class="radio-card me-4">
                                                         <input type="radio" name="radio-card"
                                                             id="radio-card-5122" />
-                                                        <div class="card-content-wrapper">
+                                                        <div class="card-content-wrapper qr-pattern">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content 2">
                                                                 <img width="70px" style="padding-top: 5px;"
@@ -1049,7 +1049,7 @@
                                                     <label for="radio-card-5233" class="radio-card me-4">
                                                         <input type="radio" name="radio-card"
                                                             id="radio-card-5233" />
-                                                        <div class="card-content-wrapper">
+                                                        <div class="card-content-wrapper qr-pattern">
                                                             <span class="check-icon"></span>
                                                             <div class="card-content 2">
                                                                 <img width="70px" style="padding-top: 5px;"
@@ -1170,7 +1170,7 @@
                                                     {{-- By Default Hidden --}}
                                                     <div id="content-sections">
                                                         <div id="color-content" style="display: none;">
-                                                            <div class="card w-50 shadow-sm mt-4">
+                                                            <div class="card w-100 shadow-sm mt-4">
                                                                 <div class="card-body">
                                                                     <div class="">
                                                                         <label for="">Color</label>
@@ -1187,7 +1187,7 @@
                                                             </div>
                                                         </div>
                                                         <div id="image-content" style="display: none;">
-                                                            <div class="card w-50 shadow-sm mt-4">
+                                                            <div class="card w-100 shadow-sm mt-4">
                                                                 <div class="card-body">
                                                                     <div class="dropzone dz-clickable w-100 mt-4"
                                                                         id="kt_dropzonejs_example_1">
@@ -1213,7 +1213,7 @@
                                                             </div>
                                                         </div>
                                                         <div id="transparent-content" style="display: none;">
-                                                            <div class="card w-50 shadow-sm mt-4">
+                                                            <div class="card w-100 shadow-sm mt-4">
                                                                 <div class="card-body">
                                                                     <p class="mb-0">The Qr Code Background Will Be
                                                                         Transparent.</p>
