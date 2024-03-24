@@ -19,7 +19,7 @@
         <input type="text" name="" class="form-control form-control-sm w-100"
             placeholder="http://127.0.0.1:8000/user/qr-code/create" id="">
     </div>
-    <div class="d-flex justify-content-start pb-5">
+    <div class="d-flex justify-content-end pb-5">
         <a href="#" class="btn btn-light btn-primary">Next</a>
     </div>
 </div>
