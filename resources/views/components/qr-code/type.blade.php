@@ -1,7 +1,7 @@
 <div class="row">
     @foreach ($types as $type)
         <div class="col-lg-4">
-            <input type="radio" class="btn-check" name="qr_type" value="{{ $type['value'] }}" checked="checked"
+            <input type="radio" class="btn-check" name="qr_type" value="{{ $type['value'] }}" {{($loop->first ) ? 'checked' : ''}}
                 id="type-{{ $type['id'] }}" />
             <label class="btn btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center mb-5"
                 for="type-{{ $type['id'] }}">

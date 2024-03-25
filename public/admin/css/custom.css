@@ -244,8 +244,8 @@ label.radio-card {
     align-items: center;
     background: #fff;
     border-radius: 5px;
-    padding: 2px;
-    width: auto;
+    padding: 0px 11px;
+    width: 100%;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
     transition: var(--transition);
     height: auto;

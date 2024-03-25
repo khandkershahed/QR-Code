@@ -406,3 +406,7 @@ $('input[type="radio"]').change(function () {
 // Initially hide all forms except the one corresponding to the initially selected radio input
 const selectedValue = $('input[type="radio"]:checked').val();
 $("#" + selectedValue + "-form").show();
+
+
+//Step Form
+

@@ -87,6 +87,7 @@
                 html: '{{ session('success') }}',
                 icon: 'success',
                 showCloseButton: true,
+
                 buttonsStyling: false,
                 customClass: {
                     confirmButton: 'btn btn-primary'

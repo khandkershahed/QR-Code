@@ -1,4 +1,3 @@
-<div class="card-body pt-1">
     <ul class="nav nav-pills nav-pills-custom mb-5" role="tablist">
         <li class="nav-item mb-3 me-3 me-lg-6" role="presentation">
             <a class="nav-link btn btn-outline btn-flex btn-color-muted btn-active-color-primary flex-column overflow-hidden w-100px h-85px p-0
@@ -79,17 +78,72 @@
                 <div class="card ">
                     <div class="card-body rounded-4 p-0">
                         <x-qr-code.template :templates="[
-                            ['id' => 31, 'value' => 'template_one', 'image_url' => 'https://d1bqobzsowu5wu.cloudfront.net/public/qr-code-templates/Default/aHR0cHM6Ly9xcmNvZGVzLnByby9zY2FuL3A/dGVtcGxhdGU9dHJ1ZQ%3D%3D-512.svg?16432.09999999404'],
-                            ['id' => 32, 'value' => 'template_two', 'image_url' => 'https://beaconstac-content.s3.amazonaws.com/undefined/qr-codes/Classic%20Swirl/svg/aHR0cHM6Ly9xcmNvZGVzLnByby9zY2FuL3A/dGVtcGxhdGU9dHJ1ZQ%3D%3D-512.svg?16432.09999999404'],
-                            ['id' => 33, 'value' => 'template_three', 'image_url' => 'https://d1bqobzsowu5wu.cloudfront.net/public/qr-code-templates/Gradient/aHR0cHM6Ly9xcmNvZGVzLnByby9zY2FuL3A/dGVtcGxhdGU9dHJ1ZQ%3D%3D-512.svg?16432.09999999404'],
-                            ['id' => 34, 'value' => 'template_four', 'image_url' => 'https://beaconstac-content.s3.amazonaws.com/undefined/qr-codes/Blue%20Dream/svg/aHR0cHM6Ly9xcmNvZGVzLnByby9zY2FuL3A/dGVtcGxhdGU9dHJ1ZQ%3D%3D-512.svg?16432.09999999404'],
-                            ['id' => 35, 'value' => 'template_five', 'image_url' => 'https://beaconstac-content.s3.amazonaws.com/undefined/qr-codes/Retro%20Funk/svg/aHR0cHM6Ly9xcmNvZGVzLnByby9zY2FuL3A/dGVtcGxhdGU9dHJ1ZQ%3D%3D-512.svg?16432.09999999404'],
-                            ['id' => 36, 'value' => 'template_six', 'image_url' => 'https://beaconstac-content.s3.amazonaws.com/undefined/qr-codes/Nature%20Earth/svg/aHR0cHM6Ly9xcmNvZGVzLnByby9zY2FuL3A/dGVtcGxhdGU9dHJ1ZQ%3D%3D-512.svg?16432.09999999404'],
-                            ['id' => 37, 'value' => 'template_seven', 'image_url' => 'https://beaconstac-content.s3.amazonaws.com/undefined/qr-codes/Sunny%20Day/svg/aHR0cHM6Ly9xcmNvZGVzLnByby9zY2FuL3A/dGVtcGxhdGU9dHJ1ZQ%3D%3D-512.svg?16432.09999999404'],
-                            ['id' => 38, 'value' => 'template_eight', 'image_url' => 'https://beaconstac-content.s3.amazonaws.com/undefined/qr-codes/Dark%20Mode/svg/aHR0cHM6Ly9xcmNvZGVzLnByby9zY2FuL3A/dGVtcGxhdGU9dHJ1ZQ%3D%3D-512.svg?16432.09999999404'],
-                            ['id' => 39, 'value' => 'template_nine', 'image_url' => 'https://beaconstac-content.s3.amazonaws.com/undefined/qr-codes/Classic%20Frame/svg/aHR0cHM6Ly9xcmNvZGVzLnByby9zY2FuL3A/dGVtcGxhdGU9dHJ1ZQ%3D%3D-512.svg?16432.09999999404'],
-                            ['id' => 40, 'value' => 'template_ten', 'image_url' => 'https://beaconstac-content.s3.amazonaws.com/undefined/qr-codes/Ocean%20Breeze/svg/aHR0cHM6Ly9xcmNvZGVzLnByby9zY2FuL3A/dGVtcGxhdGU9dHJ1ZQ%3D%3D-512.svg?16432.09999999404'],
-                            ['id' => 41, 'value' => 'template_eleven', 'image_url' => 'https://beaconstac-content.s3.amazonaws.com/undefined/qr-codes/Edgy%20Graffiti/svg/aHR0cHM6Ly9xcmNvZGVzLnByby9zY2FuL3A/dGVtcGxhdGU9dHJ1ZQ%3D%3D-512.svg?16432.09999999404'],
+                            [
+                                'id' => 31,
+                                'value' => 'template_one',
+                                'image_url' =>
+                                    'https://d1bqobzsowu5wu.cloudfront.net/public/qr-code-templates/Default/aHR0cHM6Ly9xcmNvZGVzLnByby9zY2FuL3A/dGVtcGxhdGU9dHJ1ZQ%3D%3D-512.svg?16432.09999999404',
+                            ],
+                            [
+                                'id' => 32,
+                                'value' => 'template_two',
+                                'image_url' =>
+                                    'https://beaconstac-content.s3.amazonaws.com/undefined/qr-codes/Classic%20Swirl/svg/aHR0cHM6Ly9xcmNvZGVzLnByby9zY2FuL3A/dGVtcGxhdGU9dHJ1ZQ%3D%3D-512.svg?16432.09999999404',
+                            ],
+                            [
+                                'id' => 33,
+                                'value' => 'template_three',
+                                'image_url' =>
+                                    'https://d1bqobzsowu5wu.cloudfront.net/public/qr-code-templates/Gradient/aHR0cHM6Ly9xcmNvZGVzLnByby9zY2FuL3A/dGVtcGxhdGU9dHJ1ZQ%3D%3D-512.svg?16432.09999999404',
+                            ],
+                            [
+                                'id' => 34,
+                                'value' => 'template_four',
+                                'image_url' =>
+                                    'https://beaconstac-content.s3.amazonaws.com/undefined/qr-codes/Blue%20Dream/svg/aHR0cHM6Ly9xcmNvZGVzLnByby9zY2FuL3A/dGVtcGxhdGU9dHJ1ZQ%3D%3D-512.svg?16432.09999999404',
+                            ],
+                            [
+                                'id' => 35,
+                                'value' => 'template_five',
+                                'image_url' =>
+                                    'https://beaconstac-content.s3.amazonaws.com/undefined/qr-codes/Retro%20Funk/svg/aHR0cHM6Ly9xcmNvZGVzLnByby9zY2FuL3A/dGVtcGxhdGU9dHJ1ZQ%3D%3D-512.svg?16432.09999999404',
+                            ],
+                            [
+                                'id' => 36,
+                                'value' => 'template_six',
+                                'image_url' =>
+                                    'https://beaconstac-content.s3.amazonaws.com/undefined/qr-codes/Nature%20Earth/svg/aHR0cHM6Ly9xcmNvZGVzLnByby9zY2FuL3A/dGVtcGxhdGU9dHJ1ZQ%3D%3D-512.svg?16432.09999999404',
+                            ],
+                            [
+                                'id' => 37,
+                                'value' => 'template_seven',
+                                'image_url' =>
+                                    'https://beaconstac-content.s3.amazonaws.com/undefined/qr-codes/Sunny%20Day/svg/aHR0cHM6Ly9xcmNvZGVzLnByby9zY2FuL3A/dGVtcGxhdGU9dHJ1ZQ%3D%3D-512.svg?16432.09999999404',
+                            ],
+                            [
+                                'id' => 38,
+                                'value' => 'template_eight',
+                                'image_url' =>
+                                    'https://beaconstac-content.s3.amazonaws.com/undefined/qr-codes/Dark%20Mode/svg/aHR0cHM6Ly9xcmNvZGVzLnByby9zY2FuL3A/dGVtcGxhdGU9dHJ1ZQ%3D%3D-512.svg?16432.09999999404',
+                            ],
+                            [
+                                'id' => 39,
+                                'value' => 'template_nine',
+                                'image_url' =>
+                                    'https://beaconstac-content.s3.amazonaws.com/undefined/qr-codes/Classic%20Frame/svg/aHR0cHM6Ly9xcmNvZGVzLnByby9zY2FuL3A/dGVtcGxhdGU9dHJ1ZQ%3D%3D-512.svg?16432.09999999404',
+                            ],
+                            [
+                                'id' => 40,
+                                'value' => 'template_ten',
+                                'image_url' =>
+                                    'https://beaconstac-content.s3.amazonaws.com/undefined/qr-codes/Ocean%20Breeze/svg/aHR0cHM6Ly9xcmNvZGVzLnByby9zY2FuL3A/dGVtcGxhdGU9dHJ1ZQ%3D%3D-512.svg?16432.09999999404',
+                            ],
+                            [
+                                'id' => 41,
+                                'value' => 'template_eleven',
+                                'image_url' =>
+                                    'https://beaconstac-content.s3.amazonaws.com/undefined/qr-codes/Edgy%20Graffiti/svg/aHR0cHM6Ly9xcmNvZGVzLnByby9zY2FuL3A/dGVtcGxhdGU9dHJ1ZQ%3D%3D-512.svg?16432.09999999404',
+                            ],
                         ]" />
                     </div>
                 </div>
@@ -118,9 +172,10 @@
                         </div>
                     </div>
                     <div class="ps-2">
-                        <label for="">Enter Logo Size</label>
-                        <input type="number" name="" id=""
-                            class="form-control form-control-solid mt-4" placeholder="Enter Logo Size">
+                        <x-metronic.label for="qr_logo"
+                                    class="form-label">{{ __('Logo') }}</x-metronic.label>
+                                <x-metronic.input id="qr_logo" type="file" name="qr_logo" :value="old('qr_logo')"
+                                    placeholder="Upload Logo" />
                     </div>
                 </div>
                 <p class="text-start pt-5 mb-0">Or Select From Our
@@ -274,90 +329,43 @@
                 <input type="text" id="colorCodeInput" class="form-control form-control-solid w-25" readonly>
             </div>
             <div class="d-lg-flex row gx-10">
-                <div class="col-lg-1">
-                    <label for="radio-card-311" class="radio-card me-4">
-                    <input type="radio" name="radio-card" id="radio-card-311" />
-                    <div class="i-ball-frame">
-                        <span class="check-icon"></span>
-                        <div class="card-content 2">
-                            <img width="60px" style="padding-top: 5px;"
-                                src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/square.svg"
-                                alt="" />
-                        </div>
-                    </div>
-                </label>
-                </div>
-                <div class="col-lg-1">
-                    <label for="radio-card-322" class="radio-card me-4">
-                    <input type="radio" name="radio-card" id="radio-card-322" />
-                    <div class="i-ball-frame">
-                        <span class="check-icon"></span>
-                        <div class="card-content 2">
-                            <img width="60px" style="padding-top: 5px;"
-                                src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/rounded.svg"
-                                alt="" />
-                        </div>
-                    </div>
-                </label>
-                </div>
-                <div class="col-lg-1">
-                    <label for="radio-card-333" class="radio-card me-4">
-                    <input type="radio" name="radio-card" id="radio-card-333" />
-                    <div class="i-ball-frame">
-                        <span class="check-icon"></span>
-                        <div class="card-content 2">
-                            <img width="60px" style="padding-top: 5px;"
-                                src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/left-diamond.svg"
-                                alt="" />
-                        </div>
-                    </div>
-                </label>
-                </div>
-                <div class="col-lg-1">
-                    <label for="radio-card-344" class="radio-card me-4">
-                    <input type="radio" name="radio-card" id="radio-card-344" />
-                    <div class="i-ball-frame">
-                        <span class="check-icon"></span>
-                        <div class="card-content 2">
-                            <img width="60px" style="padding-top: 5px;"
-                                src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/right-diamond.svg"
-                                alt="" />
-                        </div>
-                    </div>
-                </label>
-                </div>
-                <div class="col-lg-1">
-                    <label for="radio-card-356" class="radio-card me-4">
-                    <input type="radio" name="radio-card" id="radio-card-356" />
-                    <div class="i-ball-frame">
-                        <span class="check-icon"></span>
-                        <div class="card-content 2">
-                            <img width="60px" style="padding-top: 5px;"
-                                src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/left-leaf.svg"
-                                alt="" />
-                        </div>
-                    </div>
-                </label>
-                </div>
-                <div class="col-lg-1">
-                    <label for="radio-card-367" class="radio-card me-4">
-                    <input type="radio" name="radio-card" id="radio-card-367" />
-                    <div class="i-ball-frame">
-                        <span class="check-icon"></span>
-                        <div class="card-content 2">
-                            <img width="60px" style="padding-top: 5px;"
-                                src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/right-leaf.svg"
-                                alt="" />
-                        </div>
-                    </div>
-                </label>
-                </div>
-                
-                
-                
-                
-                
-                
+                <x-qr-code.eye-ball :eyeBalls="[
+                    [
+                        'id' => 311,
+                        'value' => 'eye_ball_1',
+                        'image' => 'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/square.svg',
+                    ],
+                    [
+                        'id' => 322,
+                        'value' => 'eye_ball_2',
+                        'image' => 'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/rounded.svg',
+                    ],
+                    [
+                        'id' => 333,
+                        'value' => 'eye_ball_3',
+                        'image' =>
+                            'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/left-diamond.svg',
+                    ],
+                    [
+                        'id' => 344,
+                        'value' => 'eye_ball_4',
+                        'image' =>
+                            'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/right-diamond.svg',
+                    ],
+                    [
+                        'id' => 356,
+                        'value' => 'eye_ball_5',
+                        'image' =>
+                            'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/left-leaf.svg',
+                    ],
+                    [
+                        'id' => 367,
+                        'value' => 'eye_ball_6',
+                        'image' =>
+                            'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/right-leaf.svg',
+                    ],
+                ]" />
+
             </div>
             <div class="pt-5 text-start mt-4">
                 <h2>SELECT EYE-FRAME</h2>
@@ -367,51 +375,31 @@
                 <input type="text" id="colorCodeInput" class="form-control form-control-solid w-25" readonly>
                 <input type="color" id="colorPicker" style="width: 56px;height: 45px;">
             </div>
-            <div class="d-flex">
-                <label for="radio-card-378" class="radio-card me-4">
-                    <input type="radio" name="radio-card" id="radio-card-378" />
-                    <div class="i-ball-frame">
-                        <span class="check-icon"></span>
-                        <div class="card-content 2">
-                            <img width="60px" style="padding-top: 5px;"
-                                src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-frames/square.svg"
-                                alt="" />
-                        </div>
-                    </div>
-                </label>
-                <label for="radio-card-389" class="radio-card me-4">
-                    <input type="radio" name="radio-card" id="radio-card-389" />
-                    <div class="i-ball-frame">
-                        <span class="check-icon"></span>
-                        <div class="card-content 2">
-                            <img width="60px" style="padding-top: 5px;"
-                                src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-frames/rounded.svg"
-                                alt="" />
-                        </div>
-                    </div>
-                </label>
-                <label for="radio-card-399" class="radio-card me-4">
-                    <input type="radio" name="radio-card" id="radio-card-399" />
-                    <div class="i-ball-frame">
-                        <span class="check-icon"></span>
-                        <div class="card-content 2">
-                            <img width="60px" style="padding-top: 5px;"
-                                src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-frames/left-leaf.svg"
-                                alt="" />
-                        </div>
-                    </div>
-                </label>
-                <label for="radio-card-434" class="radio-card me-4">
-                    <input type="radio" name="radio-card" id="radio-card-434" />
-                    <div class="i-ball-frame">
-                        <span class="check-icon"></span>
-                        <div class="card-content 2">
-                            <img width="60px" style="padding-top: 5px;"
-                                src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-frames/right-leaf.svg"
-                                alt="" />
-                        </div>
-                    </div>
-                </label>
+            <div class="d-lg-flex row gx-10">
+                <x-qr-code.eye-frame :eyeFrames="[
+                    [
+                        'id' => 378,
+                        'value' => 'eye_frame_1',
+                        'image' => 'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-frames/square.svg',
+                    ],
+                    [
+                        'id' => 389,
+                        'value' => 'eye_frame_2',
+                        'image' => 'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-frames/rounded.svg',
+                    ],
+                    [
+                        'id' => 399,
+                        'value' => 'eye_frame_3',
+                        'image' =>
+                            'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-frames/left-leaf.svg',
+                    ],
+                    [
+                        'id' => 434,
+                        'value' => 'eye_frame_4',
+                        'image' =>
+                            'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-frames/right-leaf.svg',
+                    ],
+                ]" />
             </div>
         </div>
 
@@ -422,106 +410,62 @@
                 <p>This will be the color and shape of your QR code's data-pattern
                 </p>
             </div>
-            <div>
-                <label for="radio-card-444" class="radio-card me-4">
-                    <input type="radio" name="radio-card" id="radio-card-444" />
-                    <div class="card-content-wrapper qr-pattern">
-                        <span class="check-icon"></span>
-                        <div class="card-content 2">
-                            <img width="70px" style="padding-top: 5px;"
-                                src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/square.svg"
-                                alt="" />
-                        </div>
-                    </div>
-                </label>
-                <label for="radio-card-451" class="radio-card me-4">
-                    <input type="radio" name="radio-card" id="radio-card-451" />
-                    <div class="card-content-wrapper qr-pattern">
-                        <span class="check-icon"></span>
-                        <div class="card-content 2">
-                            <img width="70px" style="padding-top: 5px;"
-                                src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/circle.svg"
-                                alt="" />
-                        </div>
-                    </div>
-                </label>
-                <label for="radio-card-460" class="radio-card me-4">
-                    <input type="radio" name="radio-card" id="radio-card-460" />
-                    <div class="card-content-wrapper qr-pattern">
-                        <span class="check-icon"></span>
-                        <div class="card-content 2">
-                            <img width="70px" style="padding-top: 5px;"
-                                src="	https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/kite.svg"
-                                alt="" />
-                        </div>
-                    </div>
-                </label>
-                <label for="radio-card-471" class="radio-card me-4">
-                    <input type="radio" name="radio-card" id="radio-card-471" />
-                    <div class="card-content-wrapper qr-pattern">
-                        <span class="check-icon"></span>
-                        <div class="card-content 2">
-                            <img width="70px" style="padding-top: 5px;"
-                                src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/left-diamond.svg"
-                                alt="" />
-                        </div>
-                    </div>
-                </label>
-                <label for="radio-card-482" class="radio-card me-4">
-                    <input type="radio" name="radio-card" id="radio-card-482" />
-                    <div class="card-content-wrapper qr-pattern">
-                        <span class="check-icon"></span>
-                        <div class="card-content 2">
-                            <img width="70px" style="padding-top: 5px;"
-                                src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/left-diamond.svg"
-                                alt="" />
-                        </div>
-                    </div>
-                </label>
-                <label for="radio-card-492" class="radio-card me-4">
-                    <input type="radio" name="radio-card" id="radio-card-492" />
-                    <div class="card-content-wrapper qr-pattern">
-                        <span class="check-icon"></span>
-                        <div class="card-content 2">
-                            <img width="70px" style="padding-top: 5px;"
-                                src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/right-diamond.svg"
-                                alt="" />
-                        </div>
-                    </div>
-                </label>
-                <label for="radio-card-5044" class="radio-card me-4">
-                    <input type="radio" name="radio-card" id="radio-card-5044" />
-                    <div class="card-content-wrapper qr-pattern">
-                        <span class="check-icon"></span>
-                        <div class="card-content 2">
-                            <img width="70px" style="padding-top: 5px;"
-                                src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/thin-square.svg"
-                                alt="" />
-                        </div>
-                    </div>
-                </label>
-                <label for="radio-card-5122" class="radio-card me-4">
-                    <input type="radio" name="radio-card" id="radio-card-5122" />
-                    <div class="card-content-wrapper qr-pattern">
-                        <span class="check-icon"></span>
-                        <div class="card-content 2">
-                            <img width="70px" style="padding-top: 5px;"
-                                src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/smooth-round.svg"
-                                alt="" />
-                        </div>
-                    </div>
-                </label>
-                <label for="radio-card-5233" class="radio-card me-4">
-                    <input type="radio" name="radio-card" id="radio-card-5233" />
-                    <div class="card-content-wrapper qr-pattern">
-                        <span class="check-icon"></span>
-                        <div class="card-content 2">
-                            <img width="70px" style="padding-top: 5px;"
-                                src="https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/smooth-round.svg"
-                                alt="" />
-                        </div>
-                    </div>
-                </label>
+            <div class="row">
+                <x-qr-code.pattern :patterns="[
+                    [
+                        'id' => 431,
+                        'value' => 'pattern_1',
+                        'image' =>
+                            'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/square.svg',
+                    ],
+                    [
+                        'id' => 432,
+                        'value' => 'pattern_2',
+                        'image' =>
+                            'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/circle.svg',
+                    ],
+                    [
+                        'id' => 433,
+                        'value' => 'pattern_3',
+                        'image' => '	https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/kite.svg',
+                    ],
+                    [
+                        'id' => 434,
+                        'value' => 'pattern_4',
+                        'image' =>
+                            'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/left-diamond.svg',
+                    ],
+                    [
+                        'id' => 435,
+                        'value' => 'pattern_5',
+                        'image' =>
+                            'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/left-diamond.svg',
+                    ],
+                    [
+                        'id' => 436,
+                        'value' => 'pattern_6',
+                        'image' =>
+                            'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/right-diamond.svg',
+                    ],
+                    [
+                        'id' => 437,
+                        'value' => 'pattern_7',
+                        'image' =>
+                            'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/thin-square.svg',
+                    ],
+                    [
+                        'id' => 438,
+                        'value' => 'pattern_8',
+                        'image' =>
+                            'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/smooth-round.svg',
+                    ],
+                    [
+                        'id' => 439,
+                        'value' => 'pattern_9',
+                        'image' =>
+                            'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/smooth-round.svg',
+                    ],
+                ]" />
             </div>
             <div>
                 <h2 class="pt-10">COLOR</h2>
@@ -672,4 +616,3 @@
             asdadasd
         </div>
     </div>
-</div>

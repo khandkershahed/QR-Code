@@ -2,12 +2,325 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-9">
-                <div class="bg-white">
+                <div class="card">
+                    <div class="card-body">
+                        <!--begin::Stepper-->
+                        <div class="stepper stepper-pills" id="kt_stepper_example_clickable">
+                            <!--begin::Nav-->
+                            <div class="stepper-nav flex-center flex-wrap mb-10">
+                                <!--begin::Step 1-->
+                                <div class="stepper-item mx-2 my-4 current" data-kt-stepper-element="nav"
+                                    data-kt-stepper-action="step">
+                                    <!--begin::Line-->
+                                    <div class="stepper-line w-40px"></div>
+                                    <!--end::Line-->
+
+                                    <!--begin::Icon-->
+                                    <div class="stepper-icon w-40px h-40px">
+                                        <i class="stepper-check fas fa-check"></i>
+                                        <span class="stepper-number">1</span>
+                                    </div>
+                                    <!--end::Icon-->
+
+                                    <!--begin::Label-->
+                                    <div class="stepper-label">
+                                        <h3 class="stepper-title">
+                                            Select Type
+                                        </h3>
+                                    </div>
+                                    <!--end::Label-->
+                                </div>
+                                <!--end::Step 1-->
+
+                                <!--begin::Step 2-->
+                                <div class="stepper-item mx-2 my-4" data-kt-stepper-element="nav"
+                                    data-kt-stepper-action="step">
+                                    <!--begin::Line-->
+                                    <div class="stepper-line w-40px"></div>
+                                    <!--end::Line-->
+
+                                    <!--begin::Icon-->
+                                    <div class="stepper-icon w-40px h-40px">
+                                        <i class="stepper-check fas fa-check"></i>
+                                        <span class="stepper-number">2</span>
+                                    </div>
+                                    <!--begin::Icon-->
+
+                                    <!--begin::Label-->
+                                    <div class="stepper-label">
+                                        <h3 class="stepper-title">
+                                            Input Data
+                                        </h3>
+                                    </div>
+                                    <!--end::Label-->
+                                </div>
+                                <!--end::Step 2-->
+
+                                <!--begin::Step 3-->
+                                <div class="stepper-item mx-2 my-4" data-kt-stepper-element="nav"
+                                    data-kt-stepper-action="step">
+                                    <!--begin::Line-->
+                                    <div class="stepper-line w-40px"></div>
+                                    <!--end::Line-->
+
+                                    <!--begin::Icon-->
+                                    <div class="stepper-icon w-40px h-40px">
+                                        <i class="stepper-check fas fa-check"></i>
+                                        <span class="stepper-number">3</span>
+                                    </div>
+                                    <!--begin::Icon-->
+
+                                    <!--begin::Label-->
+                                    <div class="stepper-label">
+                                        <h3 class="stepper-title">
+                                            Customize
+                                        </h3>
+                                    </div>
+                                    <!--end::Label-->
+                                </div>
+                                <!--end::Step 3-->
+
+                                <!--begin::Step 4-->
+                                <div class="stepper-item mx-2 my-4" data-kt-stepper-element="nav"
+                                    data-kt-stepper-action="step">
+                                    <!--begin::Line-->
+                                    <div class="stepper-line w-40px"></div>
+                                    <!--end::Line-->
+
+                                    <!--begin::Icon-->
+                                    <div class="stepper-icon w-40px h-40px">
+                                        <i class="stepper-check fas fa-check"></i>
+                                        <span class="stepper-number">4</span>
+                                    </div>
+                                    <!--begin::Icon-->
+
+                                    <!--begin::Label-->
+                                    <div class="stepper-label">
+                                        <h3 class="stepper-title">
+                                            Done
+                                        </h3>
+                                    </div>
+                                    <!--end::Label-->
+                                </div>
+                                <!--end::Step 4-->
+                            </div>
+                            <!--end::Nav-->
+
+                            <!--begin::Form-->
+                            <form class="form w-100 mx-auto" novalidate="novalidate" id="kt_stepper_example_basic_form">
+                                <!--begin::Group-->
+                                <div class="mb-5">
+                                    <!--begin::Step 1-->
+                                    <div class="flex-column current" data-kt-stepper-element="content">
+                                        <div class="card">
+                                            <div class="row">
+                                                <h2 class="text-center mb-0">Create a Dynamic QR Code</h2>
+                                                <p class="text-center mb-0">Modify content as needed, even after going
+                                                    live.</p>
+                                            </div>
+                                            <div class="card-body">
+                                                <x-qr-code.type :types="[
+                                                    [
+                                                        'id' => 1,
+                                                        'value' => 'website',
+                                                        'title' => 'Website',
+                                                        'text' =>
+                                                            'Link to an existing web URL and bring traffic online',
+                                                        'image' =>
+                                                            'https://dashboard.uniqode.com/assets/img/dynamic-qr/website.svg',
+                                                    ],
+                                                    [
+                                                        'id' => 2,
+                                                        'value' => 'pdf',
+                                                        'title' => 'Pdf',
+                                                        'text' => 'Link a PDF document and distribute it efficiently',
+                                                        'image' =>
+                                                            'https://dashboard.uniqode.com/assets/img/dynamic-qr/pdf.svg',
+                                                    ],
+                                                    [
+                                                        'id' => 3,
+                                                        'value' => 'image',
+                                                        'title' => 'Image',
+                                                        'text' => 'Show A Photo',
+                                                        'image' =>
+                                                            'https://dashboard.uniqode.com/assets/img/dynamic-qr/image.svg',
+                                                    ],
+                                                    [
+                                                        'id' => 4,
+                                                        'value' => 'sms',
+                                                        'title' => 'Sms',
+                                                        'text' => 'Redirect to your mobile number to receive SMS',
+                                                        'image' =>
+                                                            'https://dashboard.uniqode.com/assets/img/dynamic-qr/sms.svg',
+                                                    ],
+                                                    [
+                                                        'id' => 5,
+                                                        'value' => 'email',
+                                                        'title' => 'Email',
+                                                        'text' => 'Link to receive email messages',
+                                                        'image' =>
+                                                            'https://dashboard.uniqode.com/assets/img/dynamic-qr/email.svg',
+                                                    ],
+                                                    [
+                                                        'id' => 6,
+                                                        'value' => 'mobile_app',
+                                                        'title' => 'Mobile_App',
+                                                        'text' => 'Link to receive email messages',
+                                                        'image' =>
+                                                            'https://dashboard.uniqode.com/assets/img/dynamic-qr/app-download.svg',
+                                                    ],
+                                                    [
+                                                        'id' => 7,
+                                                        'value' => 'call',
+                                                        'title' => 'Call',
+                                                        'text' => 'Link to receive email messages',
+                                                        'image' =>
+                                                            'https://dashboard.uniqode.com/assets/img/dynamic-qr/call.svg',
+                                                    ],
+                                                    [
+                                                        'id' => 8,
+                                                        'value' => 'location',
+                                                        'title' => 'Location',
+                                                        'text' => 'Point to any location on Google Maps',
+                                                        'image' =>
+                                                            'https://dashboard.uniqode.com/assets/img/dynamic-qr/location.svg',
+                                                    ],
+                                                    [
+                                                        'id' => 9,
+                                                        'value' => 'coupon_code',
+                                                        'title' => 'Coupon Code',
+                                                        'text' => 'Route to a page displaying coupon code details',
+                                                        'image' =>
+                                                            'https://dashboard.uniqode.com/assets/img/dynamic-qr/coupon.svg',
+                                                    ],
+                                                    [
+                                                        'id' => 10,
+                                                        'value' => 'social',
+                                                        'title' => 'Social',
+                                                        'text' =>
+                                                            'Link to an existing web URL and bring traffic online',
+                                                        'image' =>
+                                                            'https://dashboard.uniqode.com/assets/img/dynamic-qr/social-media.svg',
+                                                    ],
+                                                    [
+                                                        'id' => 11,
+                                                        'value' => 'audio',
+                                                        'title' => 'Audio',
+                                                        'text' => 'Link to your phone number for quick calls',
+                                                        'image' =>
+                                                            'https://dashboard.uniqode.com/assets/img/dynamic-qr/business-page.svg',
+                                                    ],
+                                                    [
+                                                        'id' => 12,
+                                                        'value' => 'business_page',
+                                                        'title' => 'Business Page',
+                                                        'text' => 'Link to your phone number for quick calls',
+                                                        'image' =>
+                                                            'https://dashboard.uniqode.com/assets/img/dynamic-qr/mp3.svg',
+                                                    ],
+                                                ]" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end::Step 1-->
+
+                                    <!--begin::Step 2-->
+                                    <div class="flex-column" data-kt-stepper-element="content">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                @include('user.pages.qr-code.partials.form')
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end::Step 2-->
+
+                                    <!--begin::Step 3-->
+                                    <div class="flex-column" data-kt-stepper-element="content">
+                                        <div class="card">
+                                            <div class="row text-center justify-content-center">
+                                                <h2 class="text-center mb-0">Choose QR Code Design!</h2>
+                                            </div>
+                                            <div class="card-body">
+                                                @include('user.pages.qr-code.partials.customize')
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end::Step 3-->
+
+                                    <!--begin::Step 4-->
+                                    <div class="flex-column" data-kt-stepper-element="content">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <div class="pt-5 ps-5">
+                                                    <h2>Congratulations! Your QR Code is ready</h2>
+                                                    {{-- <p>Still want to make changes?
+                                                        <a href="#">Modify your QR code</a>
+                                                    </p> --}}
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="pt-5 pb-5 ps-5">
+                                                    <label for="">Enter a name for your QR code</label>
+                                                    <input type="text" name="" id=""
+                                                        class="form-control form-control-solid w-100">
+                                                </div>
+                                                <div class="w-25 mx-auto">
+                                                    <img width="300px"
+                                                        src="https://assets-v2.lottiefiles.com/a/1abcc0d6-1163-11ee-9072-a343231e70f1/HGdrITc8PY.gif"
+                                                        alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end::Step 4-->
+                                </div>
+
+                                <!--end::Group-->
+
+                                <!--begin::Actions-->
+                                <div class="d-flex flex-stack">
+                                    <!--begin::Wrapper-->
+                                    <div class="me-2">
+                                        <button type="button" class="btn btn-light btn-active-light-primary"
+                                            data-kt-stepper-action="previous">
+                                            Back
+                                        </button>
+                                    </div>
+                                    <!--end::Wrapper-->
+
+                                    <!--begin::Wrapper-->
+                                    <div>
+                                        {{-- <button type="button" class="btn btn-primary" data-kt-stepper-action="submit">
+                                            <span class="indicator-label">
+                                                Submit
+                                            </span>
+                                            <span class="indicator-progress">
+                                                Please wait... <span
+                                                    class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                            </span>
+                                        </button> --}}
+                                        <button type="submit" id="generateButton" data-kt-stepper-action="submit"
+                                            class="btn btn-primary">{{ __('Generate') }}</button>
+
+                                        <button type="button" class="btn btn-primary" data-kt-stepper-action="next">
+                                            Continue
+                                        </button>
+                                    </div>
+                                    <!--end::Wrapper-->
+                                </div>
+                                <!--end::Actions-->
+                            </form>
+                            <!--end::Form-->
+                        </div>
+                        <!--end::Stepper-->
+                    </div>
+                </div>
+                {{-- <div class="bg-white">
                     <ul class="nav nav-tabs qr-code-navs border-0" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active border-0 rounded-0" id="selectType-tab" data-bs-toggle="tab"
-                                data-bs-target="#selectType" type="button" role="tab" aria-controls="selectType"
-                                aria-selected="true">
+                            <button class="nav-link active border-0 rounded-0" id="selectType-tab"
+                                data-bs-toggle="tab" data-bs-target="#selectType" type="button" role="tab"
+                                aria-controls="selectType" aria-selected="true">
                                 1. Select Type
                             </button>
                         </li>
@@ -49,389 +362,98 @@
                                                 'value' => 'website',
                                                 'title' => 'Website',
                                                 'text' => 'Link to an existing web URL and bring traffic online',
-                                                'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/website.svg',
+                                                'image' =>
+                                                    'https://dashboard.uniqode.com/assets/img/dynamic-qr/website.svg',
                                             ],
                                             [
                                                 'id' => 2,
                                                 'value' => 'pdf',
                                                 'title' => 'Pdf',
                                                 'text' => 'Link a PDF document and distribute it efficiently',
-                                                'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/pdf.svg',
+                                                'image' =>
+                                                    'https://dashboard.uniqode.com/assets/img/dynamic-qr/pdf.svg',
                                             ],
                                             [
                                                 'id' => 3,
                                                 'value' => 'image',
                                                 'title' => 'Image',
                                                 'text' => 'Show A Photo',
-                                                'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/image.svg',
+                                                'image' =>
+                                                    'https://dashboard.uniqode.com/assets/img/dynamic-qr/image.svg',
                                             ],
                                             [
                                                 'id' => 4,
                                                 'value' => 'sms',
                                                 'title' => 'Sms',
                                                 'text' => 'Redirect to your mobile number to receive SMS',
-                                                'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/sms.svg',
+                                                'image' =>
+                                                    'https://dashboard.uniqode.com/assets/img/dynamic-qr/sms.svg',
                                             ],
                                             [
                                                 'id' => 5,
                                                 'value' => 'email',
                                                 'title' => 'Email',
                                                 'text' => 'Link to receive email messages',
-                                                'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/email.svg',
+                                                'image' =>
+                                                    'https://dashboard.uniqode.com/assets/img/dynamic-qr/email.svg',
                                             ],
                                             [
                                                 'id' => 6,
                                                 'value' => 'mobile_app',
                                                 'title' => 'Mobile_App',
                                                 'text' => 'Link to receive email messages',
-                                                'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/app-download.svg',
+                                                'image' =>
+                                                    'https://dashboard.uniqode.com/assets/img/dynamic-qr/app-download.svg',
                                             ],
                                             [
                                                 'id' => 7,
                                                 'value' => 'call',
                                                 'title' => 'Call',
                                                 'text' => 'Link to receive email messages',
-                                                'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/call.svg',
+                                                'image' =>
+                                                    'https://dashboard.uniqode.com/assets/img/dynamic-qr/call.svg',
                                             ],
                                             [
                                                 'id' => 8,
                                                 'value' => 'location',
                                                 'title' => 'Location',
                                                 'text' => 'Point to any location on Google Maps',
-                                                'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/location.svg',
+                                                'image' =>
+                                                    'https://dashboard.uniqode.com/assets/img/dynamic-qr/location.svg',
                                             ],
                                             [
                                                 'id' => 9,
                                                 'value' => 'coupon_code',
                                                 'title' => 'Coupon Code',
                                                 'text' => 'Route to a page displaying coupon code details',
-                                                'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/coupon.svg',
+                                                'image' =>
+                                                    'https://dashboard.uniqode.com/assets/img/dynamic-qr/coupon.svg',
                                             ],
                                             [
                                                 'id' => 10,
                                                 'value' => 'social',
                                                 'title' => 'Social',
                                                 'text' => 'Link to an existing web URL and bring traffic online',
-                                                'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/social-media.svg',
+                                                'image' =>
+                                                    'https://dashboard.uniqode.com/assets/img/dynamic-qr/social-media.svg',
                                             ],
                                             [
                                                 'id' => 11,
                                                 'value' => 'audio',
                                                 'title' => 'Audio',
                                                 'text' => 'Link to your phone number for quick calls',
-                                                'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/business-page.svg',
+                                                'image' =>
+                                                    'https://dashboard.uniqode.com/assets/img/dynamic-qr/business-page.svg',
                                             ],
                                             [
                                                 'id' => 12,
                                                 'value' => 'business_page',
                                                 'title' => 'Business Page',
                                                 'text' => 'Link to your phone number for quick calls',
-                                                'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/mp3.svg',
+                                                'image' =>
+                                                    'https://dashboard.uniqode.com/assets/img/dynamic-qr/mp3.svg',
                                             ],
                                         ]" />
-                                        {{-- <div class="row">
-                                            <div class="col-lg-4">
-                                                <div class="checkbox">
-                                                    <label for="radio-card-f001" class="radio-card">
-                                                        <input type="radio" name="code_type" value="website"
-                                                            id="radio-card-f001" />
-                                                        <div class="card-content-wrapper">
-                                                            <span class="check-icon"></span>
-                                                            <div class="card-content">
-                                                                <div class="d-flex align-items-center">
-                                                                    <div style="" class="check_type">
-                                                                        <img class="img-fluid"
-                                                                            src="https://dashboard.uniqode.com/assets/img/dynamic-qr/website.svg"
-                                                                            alt="">
-                                                                    </div>
-                                                                    <div class="text-start ps-4" style="width: 85%">
-                                                                        <h3 class="mb-0">Website</h3>
-                                                                        <p class="mb-0">Link to an existing web URL
-                                                                            and bring
-                                                                            traffic
-                                                                            online</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="checkbox">
-                                                    <label for="radio-card-f002" class="radio-card">
-                                                        <input type="radio" name="code_type" value="pdf"
-                                                            id="radio-card-f002" />
-                                                        <div class="card-content-wrapper">
-                                                            <span class="check-icon"></span>
-                                                            <div class="card-content">
-                                                                <div class="d-flex align-items-center">
-                                                                    <div style="" class="check_type">
-                                                                        <img class="img-fluid"
-                                                                            src="https://dashboard.uniqode.com/assets/img/dynamic-qr/pdf.svg"
-                                                                            alt="">
-                                                                    </div>
-                                                                    <div class="text-start ps-4" style="width: 85%">
-                                                                        <h3 class="mb-0">PDF</h3>
-                                                                        <p class="mb-0">Link a PDF document and
-                                                                            distribute it efficiently</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="checkbox">
-                                                    <label for="radio-card-f003" class="radio-card">
-                                                        <input type="radio" name="code_type" value="image"
-                                                            id="radio-card-f003" />
-                                                        <div class="card-content-wrapper">
-                                                            <span class="check-icon"></span>
-                                                            <div class="card-content">
-                                                                <div class="d-flex align-items-center">
-                                                                    <div style="" class="check_type">
-                                                                        <img class="img-fluid"
-                                                                            src="https://dashboard.uniqode.com/assets/img/dynamic-qr/image.svg"
-                                                                            alt="">
-                                                                    </div>
-                                                                    <div class="text-start ps-4" style="width: 85%">
-                                                                        <h3 class="mb-0">Image</h3>
-                                                                        <p class="mb-0">Show A Photo</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="checkbox">
-                                                    <label for="radio-card-f004" class="radio-card">
-                                                        <input type="radio" name="code_type" value="sms"
-                                                            id="radio-card-f004" />
-                                                        <div class="card-content-wrapper">
-                                                            <span class="check-icon"></span>
-                                                            <div class="card-content">
-                                                                <div class="d-flex align-items-center">
-                                                                    <div style="" class="check_type">
-                                                                        <img class="img-fluid"
-                                                                            src="https://dashboard.uniqode.com/assets/img/dynamic-qr/sms.svg"
-                                                                            alt="">
-                                                                    </div>
-                                                                    <div class="text-start ps-4" style="width: 85%">
-                                                                        <h3 class="mb-0">SMS</h3>
-                                                                        <p class="mb-0">Redirect to your mobile
-                                                                            number to receive SMS</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="checkbox">
-                                                    <label for="radio-card-f005" class="radio-card">
-                                                        <input type="radio" name="code_type" value="email"
-                                                            id="radio-card-f005" />
-                                                        <div class="card-content-wrapper">
-                                                            <span class="check-icon"></span>
-                                                            <div class="card-content">
-                                                                <div class="d-flex align-items-center">
-                                                                    <div style="" class="check_type">
-                                                                        <img class="img-fluid"
-                                                                            src="https://dashboard.uniqode.com/assets/img/dynamic-qr/email.svg"
-                                                                            alt="">
-                                                                    </div>
-                                                                    <div class="text-start ps-4" style="width: 85%">
-                                                                        <h3 class="mb-0">Email</h3>
-                                                                        <p class="mb-0">Link to receive email
-                                                                            messages</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="checkbox">
-                                                    <label for="radio-card-f006" class="radio-card">
-                                                        <input type="radio" name="code_type" value="mobile_app"
-                                                            id="radio-card-f006" />
-                                                        <div class="card-content-wrapper">
-                                                            <span class="check-icon"></span>
-                                                            <div class="card-content">
-                                                                <div class="d-flex align-items-center">
-                                                                    <div style="" class="check_type">
-                                                                        <img class="img-fluid"
-                                                                            src="https://dashboard.uniqode.com/assets/img/dynamic-qr/app-download.svg"
-                                                                            alt="">
-                                                                    </div>
-                                                                    <div class="text-start ps-4" style="width: 85%">
-                                                                        <h3 class="mb-0">Mobile App</h3>
-                                                                        <p class="mb-0">Link to receive email
-                                                                            messages</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="checkbox">
-                                                    <label for="radio-card-f007" class="radio-card">
-                                                        <input type="radio" name="code_type" value="call"
-                                                            id="radio-card-f007" />
-                                                        <div class="card-content-wrapper">
-                                                            <span class="check-icon"></span>
-                                                            <div class="card-content">
-                                                                <div class="d-flex align-items-center">
-                                                                    <div style="" class="check_type">
-                                                                        <img class="img-fluid"
-                                                                            src="https://dashboard.uniqode.com/assets/img/dynamic-qr/call.svg"
-                                                                            alt="">
-                                                                    </div>
-                                                                    <div class="text-start ps-4" style="width: 85%">
-                                                                        <h3 class="mb-0">Call</h3>
-                                                                        <p class="mb-0">Link to receive email
-                                                                            messages</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="checkbox">
-                                                    <label for="radio-card-f008" class="radio-card">
-                                                        <input type="radio" name="code_type" value="location"
-                                                            id="radio-card-f008" />
-                                                        <div class="card-content-wrapper">
-                                                            <span class="check-icon"></span>
-                                                            <div class="card-content">
-                                                                <div class="d-flex align-items-center">
-                                                                    <div style="" class="check_type">
-                                                                        <img class="img-fluid"
-                                                                            src="https://dashboard.uniqode.com/assets/img/dynamic-qr/location.svg"
-                                                                            alt="">
-                                                                    </div>
-                                                                    <div class="text-start ps-4" style="width: 85%">
-                                                                        <h3 class="mb-0">Location</h3>
-                                                                        <p class="mb-0">Point to any location on
-                                                                            Google Maps</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="checkbox">
-                                                    <label for="radio-card-f009" class="radio-card">
-                                                        <input type="radio" name="code_type" value="coupon_code"
-                                                            id="radio-card-f009" />
-                                                        <div class="card-content-wrapper">
-                                                            <span class="check-icon"></span>
-                                                            <div class="card-content">
-                                                                <div class="d-flex align-items-center">
-                                                                    <div style="" class="check_type">
-                                                                        <img class="img-fluid"
-                                                                            src="https://dashboard.uniqode.com/assets/img/dynamic-qr/coupon.svg"
-                                                                            alt="">
-                                                                    </div>
-                                                                    <div class="text-start ps-4" style="width: 85%">
-                                                                        <h3 class="mb-0">Coupon Code</h3>
-                                                                        <p class="mb-0">Route to a page displaying
-                                                                            coupon code details</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="checkbox">
-                                                    <label for="radio-card-f010" class="radio-card">
-                                                        <input type="radio" name="code_type" value="social"
-                                                            id="radio-card-f010" />
-                                                        <div class="card-content-wrapper">
-                                                            <span class="check-icon"></span>
-                                                            <div class="card-content">
-                                                                <div class="d-flex align-items-center">
-                                                                    <div style="" class="check_type">
-                                                                        <img class="img-fluid"
-                                                                            src="https://dashboard.uniqode.com/assets/img/dynamic-qr/social-media.svg"
-                                                                            alt="">
-                                                                    </div>
-                                                                    <div class="text-start ps-4" style="width: 85%">
-                                                                        <h3 class="mb-0">Social</h3>
-                                                                        <p class="mb-0">Link to an existing web URL
-                                                                            and bring traffic online</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="checkbox">
-                                                    <label for="radio-card-f011" class="radio-card">
-                                                        <input type="radio" name="code_type" value="audio"
-                                                            id="radio-card-f011" />
-                                                        <div class="card-content-wrapper">
-                                                            <span class="check-icon"></span>
-                                                            <div class="card-content">
-                                                                <div class="d-flex align-items-center">
-                                                                    <div style="" class="check_type">
-                                                                        <img class="img-fluid"
-                                                                            src="https://dashboard.uniqode.com/assets/img/dynamic-qr/business-page.svg"
-                                                                            alt="">
-                                                                    </div>
-                                                                    <div class="text-start ps-4" style="width: 85%">
-                                                                        <h3 class="mb-0">Audio / Video</h3>
-                                                                        <p class="mb-0">Link to your phone number for
-                                                                            quick calls</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="checkbox">
-                                                    <label for="radio-card-f012" class="radio-card">
-                                                        <input type="radio" name="code_type" value="business_page"
-                                                            id="radio-card-f012" />
-                                                        <div class="card-content-wrapper">
-                                                            <span class="check-icon"></span>
-                                                            <div class="card-content">
-                                                                <div class="d-flex align-items-center">
-                                                                    <div style="" class="check_type">
-                                                                        <img class="img-fluid"
-                                                                            src="https://dashboard.uniqode.com/assets/img/dynamic-qr/mp3.svg"
-                                                                            alt="">
-                                                                    </div>
-                                                                    <div class="text-start ps-4" style="width: 85%">
-                                                                        <h3 class="mb-0">Business Page</h3>
-                                                                        <p class="mb-0">Link to your phone number for
-                                                                            quick calls</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div> --}}
                                     </fieldset>
                                 </div>
                             </div>
@@ -452,7 +474,6 @@
                                     <h2>Design your QR Code</h2>
                                     <p>Customize the design of your QR code with colors, logos and shapes.</p>
                                 </div>
-                                {{-- Main Form For Qr --}}
                                 <div class="card card-flush h-xl-100">
                                     <div class="card-header pt-5">
                                         <h3 class="card-title align-items-start flex-column">
@@ -460,9 +481,7 @@
                                                 Structure!</span>
                                         </h3>
                                     </div>
-                                    {{-- Customize Nested Tabs For Customize The Design --}}
                                     @include('user.pages.qr-code.partials.customize')
-                                    {{-- Customize Nested Tabs For Customize The Design End --}}
                                 </div>
                                 <div class="d-flex justify-content-end pt-5">
                                     <a href="#" class="btn btn-light btn-primary">Next</a>
@@ -480,13 +499,14 @@
                                         class="form-control form-control-solid w-100">
                                 </div>
                                 <div class="w-25 mx-auto">
-                                    <img width="300px" src="https://assets-v2.lottiefiles.com/a/1abcc0d6-1163-11ee-9072-a343231e70f1/HGdrITc8PY.gif" alt="">
+                                    <img width="300px"
+                                        src="https://assets-v2.lottiefiles.com/a/1abcc0d6-1163-11ee-9072-a343231e70f1/HGdrITc8PY.gif"
+                                        alt="">
                                 </div>
                             </div>
-                            {{-- Main Form For Qr End --}}
                         </div>
                     </form>
-                </div>
+                </div> --}}
             </div>
             <div class="col-lg-3">
                 <div class="card">
@@ -505,102 +525,6 @@
         </div>
     </div>
 
-
-    <div class="d-flex flex-column flex-lg-row" style="margin-top: 5rem">
-        <div class="flex-lg-row-fluid mb-10 mb-lg-0 me-lg-7 me-xl-10">
-            <div class="card">
-                <div class="card-body p-12">
-
-                    <form id="generateQRCodeForm">
-                        @csrf
-                        <div class="row fav-row">
-                            <div class="mb-10 col-lg-6">
-                                <x-metronic.label for="data"
-                                    class="form-label">{{ __('Data') }}</x-metronic.label>
-                                <x-metronic.input id="data" type="text" name="name" :value="old('name')"
-                                    placeholder="Enter Your Data" required />
-                            </div>
-                            <div class="mb-10 col-lg-2">
-                                <x-metronic.label for="color"
-                                    class="form-label">{{ __('Color') }}</x-metronic.label>
-                                <x-metronic.input id="color" type="color" name="color" :value="old('color')"
-                                    placeholder="Select Color" />
-                            </div>
-                            <div class="mb-10 col-lg-4">
-                                <x-metronic.label for="eye" class="col-form-label required fw-bold fs-6">
-                                    {{ __('Select a eye ') }}</x-metronic.label>
-                                <x-metronic.select-option id="eye" name="eye" data-hide-search="true"
-                                    data-placeholder="Select an option">
-                                    <option></option>
-                                    <option value="circle">circle</option>
-                                    <option value="square">Square</option>
-                                </x-metronic.select-option>
-                            </div>
-                            <div class="mb-10 col-lg-2">
-                                <x-metronic.label for="bg_color"
-                                    class="form-label">{{ __('Background Color') }}</x-metronic.label>
-                                <x-metronic.input id="bg_color" type="color" name="bg_color" :value="old('bg_color')"
-                                    placeholder="Select Background Color" />
-                            </div>
-                            <div class="mb-10 col-lg-4">
-                                <x-metronic.label for="style" class="col-form-label required fw-bold fs-6">
-                                    {{ __('Select a style ') }}</x-metronic.label>
-                                <x-metronic.select-option id="style" name="style" data-hide-search="true"
-                                    data-placeholder="Select an option">
-                                    <option></option>
-                                    <option value="square">Square</option>
-                                    <option value="dot">Dot</option>
-                                    <option value="round">Round</option>
-                                </x-metronic.select-option>
-                            </div>
-                            <div class="mb-10 col-lg-6">
-                                <x-metronic.label for="logo"
-                                    class="form-label">{{ __('Logo') }}</x-metronic.label>
-                                <x-metronic.input id="logo" type="file" name="logo" :value="old('logo')"
-                                    placeholder="Upload Logo" />
-                            </div>
-                        </div>
-                        <div class="card-footer d-flex justify-content-center align-items-center py-4 px-9">
-                            {{-- <x-metronic.button type="button" id="generateButton" class="primary">
-                                {{ __('Generate') }}
-                            </x-metronic.button> --}}
-                            <button type="submit" id="generateButton"
-                                class="btn btn-primary">{{ __('Generate') }}</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="flex-lg-auto min-w-lg-300px">
-            <div class="card">
-                <div class="card-body p-10">
-                    <span class="text-center fs-2x fw-bolder text-gray-800">Preview</span>
-                    <div class="card card-flush">
-                        <div class="card-body">
-                            <div id="generatedQRCodeContainer" class="mb-5">
-                                <img id="generatedQRCode" src="https://i.ibb.co/XzHNWc0/no-qr.png" alt="QR Code">
-                                {{-- <br> --}}
-                                {{-- <a id="downloadLink" href="" download style="display: none;" class="">Download QR Code</a> --}}
-                            </div>
-                            <div class="mb-0">
-                                <div class="row mb-5">
-                                    <div class="col">
-                                        <a href="#"
-                                            class="btn btn-light btn-active-light-primary w-100">Preview</a>
-                                    </div>
-                                    <div class="col">
-                                        <a id="downloadLink" href="" download style="display: none;"
-                                            class="btn btn-light btn-active-light-primary w-100">Download</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     @push('scripts')
         <script>
             $(document).ready(function() {
@@ -708,6 +632,27 @@
                 colorContent.style.display = 'none';
                 imageContent.style.display = 'none';
                 transparentContent.style.display = 'block';
+            });
+
+            // Stepper lement
+            var element = document.querySelector("#kt_stepper_example_clickable");
+
+            // Initialize Stepper
+            var stepper = new KTStepper(element);
+
+            // Handle navigation click
+            stepper.on("kt.stepper.click", function(stepper) {
+                stepper.goTo(stepper.getClickedStepIndex()); // go to clicked step
+            });
+
+            // Handle next step
+            stepper.on("kt.stepper.next", function(stepper) {
+                stepper.goNext(); // go next step
+            });
+
+            // Handle previous step
+            stepper.on("kt.stepper.previous", function(stepper) {
+                stepper.goPrevious(); // go previous step
             });
         </script>
     @endpush
