@@ -3,15 +3,12 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="description"
-        content="" />
-    <meta name="keywords"
-        content="" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="article" />
-    <meta property="og:title"
-        content="" />
+    <meta property="og:title" content="" />
     <meta property="og:url" content="" />
     <meta property="og:site_name" content="" />
     <link rel="canonical" href="" />
@@ -30,6 +27,11 @@
     <!--begin::Global Stylesheets Bundle(used by all pages)-->
     <link href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('admin/css/custom.css') }}" rel="stylesheet" type="text/css" />
+
+    <link href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
+
+
     <link href="{{ asset('admin/css/custom.css') }}" rel="stylesheet" type="text/css" />
 
 
@@ -64,6 +66,7 @@
                     <!--begin::Post-->
                     <div class="post d-flex flex-column-fluid" id="kt_post">
                         <!--begin::Container-->
+                        <div id="kt_content_container" class="container-fluid">
                         <div id="kt_content_container" class="container-fluid">
                             <!--begin::Row-->
                             {{ $slot }}
@@ -132,9 +135,32 @@
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/two-factor-authentication.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/users-search.js') }}"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="{{ asset('admin/assets/plugins/global/plugins.bundle.js') }}"></script>
 
     <script src="{{ asset('admin/js/custom.js') }}"></script>
+    <script>
+        showSuccessMessage('{{ session('success') }}');
+        @foreach ($errors->all() as $error)
+            showErrorMessage('{{ $error }}');
+        @endforeach
+    </script>
+    <script>
+        $(document).ready(function() {
+            // Add event listener to radio inputs
+            $('.form-container').hide();
+            $('input[type="radio"]').change(function() {
+                // Hide all forms
+                $('.form-container').hide();
+
+                // Show the selected form based on the value of the checked radio input
+                const selectedValue = $('input[type="radio"]:checked').val();
+                $('#' + selectedValue + '-form').show();
+            });
+
+            // Initially hide all forms except the one corresponding to the initially selected radio input
+            const selectedValue = $('input[type="radio"]:checked').val();
+            $('#' + selectedValue + '-form').show();
+        });
+    </script>
     @stack('scripts')
     <!--end::Page Custom Javascript-->
     <!--end::Javascript-->

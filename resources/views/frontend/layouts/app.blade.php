@@ -55,8 +55,8 @@
     <!--End pagewrapper-->
 
     <!-- Jquery -->
-    <script src="{{ asset('frontend/assets/js/jquery-3.6.0.min.js') }}"></script>
     <!-- Bootstrap -->
+    <script src="{{ asset('frontend/assets/js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/bootstrap.min.js') }}"></script>
     <!-- Appear Js -->
     <script src="{{ asset('frontend/assets/js/appear.min.js') }}"></script>
@@ -79,7 +79,44 @@
     <!-- Custom script -->
     <script src="{{ asset('frontend/assets/js/script.js') }}"></script>
     <script src="https://kit.fontawesome.com/69b7156a94.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                title: 'Success!',
+                html: '{{ session('success') }}',
+                icon: 'success',
+                showCloseButton: true,
 
+                buttonsStyling: false,
+                customClass: {
+                    confirmButton: 'btn btn-primary'
+                }
+            }).then(() => {
+                // Flush session data
+                {!! session()->forget('success') !!}
+            });
+        </script>
+    @endif
+    @if ($errors->any())
+        <script>
+            @foreach ($errors->all() as $error)
+                Swal.fire({
+                    title: "<strong>Error!</strong>",
+                    icon: "error",
+                    html: {{ $error }},
+                    showCloseButton: true,
+                    focusConfirm: false,
+                    customClass: {
+                        confirmButton: 'btn btn-primary'
+                    }
+                }).then(() => {
+                    // Flush session data
+                    {!! session()->flush() !!}
+                });
+            @endforeach
+        </script>
+    @endif
     @stack('scripts')
 </body>
 

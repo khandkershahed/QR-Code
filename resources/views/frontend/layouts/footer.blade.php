@@ -65,12 +65,10 @@
         <div class="footer-bottom py-15">
             <div class="row align-items-center">
                 <div class="col-xl-8 col-lg-6">
-                    <div class="footer-bottom-logo mb-25 rmb-0 rmt-25 text-lg-start text-center"
-                        data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
+                    <div class="footer-bottom-logo mb-25 rmb-0 rmt-25 text-lg-start text-center" data-aos="fade-left"
+                        data-aos-duration="1500" data-aos-offset="50">
                         <a href="index.html">
-                            <!-- <img src="assets/images/logos/logo6.png" alt="Logo"
-          /> -->
-                            <h2 class="">GO QR</h2>
+                            <img width="100px" src="https://i.ibb.co/BNBTVN4/logo.png" alt="Logo" />
                         </a>
                     </div>
                 </div>

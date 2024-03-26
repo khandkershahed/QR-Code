@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminProfileController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\VendorProfileController;
 
@@ -24,6 +25,14 @@ Route::get('/services', [HomeController::class, 'services'])->name('services');
 Route::get('/pricing', [HomeController::class, 'pricing'])->name('pricing');
 Route::get('/digital-card', [HomeController::class, 'digitalCard'])->name('digitalCard');
 Route::get('/qr-code', [HomeController::class, 'qrCode'])->name('qrCode');
+Route::get('/flush-session', function() {
+    session()->flush();
+    return response()->json(['message' => 'Session flushed successfully']);
+});
+
+Route::post('contact/store', [ContactController::class, 'store'])
+        ->name('contact.add');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -12,12 +12,17 @@ use Image;
 
 class QrCodeController extends Controller
 {
+    public function index()
+    {
+        return view('user.pages.qr-code.index');
+    }
 
     public function create()
     {
-
         return view('user.pages.qr-code.create');
     }
+
+
 
     public function store(Request $request)
     {
@@ -70,6 +75,13 @@ class QrCodeController extends Controller
 
         // Return RGB components as an associative array
         return ['r' => $r, 'g' => $g, 'b' => $b];
+    }
+
+
+
+    public function edit(string $id)
+    {
+        return view('user.pages.qr-code.edit');
     }
 
 }

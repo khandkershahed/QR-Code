@@ -56,9 +56,6 @@
                             </div>
                         </div>
                         <div class="card-footer d-flex justify-content-center align-items-center py-4 px-9">
-                            {{-- <x-metronic.button type="button" id="generateButton" class="primary">
-                                {{ __('Generate') }}
-                            </x-metronic.button> --}}
                             <button type="submit" id="generateButton"
                                 class="btn btn-primary">{{ __('Generate') }}</button>
                         </div>
@@ -81,8 +78,6 @@
                         <div class="card-body">
                             <div id="generatedQRCodeContainer" class="mb-5">
                                 <img id="generatedQRCode" src="https://i.ibb.co/XzHNWc0/no-qr.png" alt="QR Code">
-                                {{-- <br> --}}
-                                {{-- <a id="downloadLink" href="" download style="display: none;" class="">Download QR Code</a> --}}
                             </div>
                             <div class="mb-0">
                                 <!--begin::Row-->
@@ -127,11 +122,8 @@
                         contentType: false,
                         success: function(response) {
                             if (response.qrCodePath) {
-                                // Set the QR code image source
                                 $('#generatedQRCode').attr('src', response.qrCodePath);
-                                // Show the download link
                                 $('#downloadLink').attr('href', response.qrCodePath).show();
-                                // Show the QR code container
                                 $('#generatedQRCodeContainer').show();
                                 $('#generateButton').show();
                             } else {

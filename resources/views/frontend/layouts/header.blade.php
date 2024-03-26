@@ -5,16 +5,16 @@
             <div class="header-inner py-20 rel d-flex align-items-center">
                 <div class="logo-outer">
                     <div class="logo">
-                        <a href="{{ route('homePage') }}">
-                            <!-- <img
-              src="	https://webtendtheme.net/html/2024/akpager/assets/images/logos/logo6.png"
-              alt="Logo"
-              title="Logo"
-          /> -->
-                            <h3 class="">GO QR</h3>
-                        </a>
+                      <a href="index.html">
+                        <img
+                          width="100px"
+                          src="https://i.ibb.co/BNBTVN4/logo.png"
+                          alt="Logo"
+                          title="Logo"
+                        />
+                      </a>
                     </div>
-                </div>
+                  </div>
 
                 <div class="nav-outer ms-lg-5 ps-lg-5 clearfix">
                     <!-- Main Menu -->
