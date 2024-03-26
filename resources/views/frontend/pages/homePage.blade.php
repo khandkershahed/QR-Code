@@ -1,5 +1,4 @@
 <x-frontend-app-layout :title="'HomePage'">
-    <!-- Hero area start -->
     <section id="about" class="hero-area-nine pt-165 rpt-150 pb-130 rpb-100 rel z-1">
         <div class="container">
             <div class="row gap-70 align-items-center">
@@ -7,11 +6,11 @@
                     <div class="hero-content style-nine mb-100 rmb-55" data-aos="fade-up" data-aos-duration="1500"
                         data-aos-offset="50">
                         <h1 data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
-                            Connectivity & Networking with GO QR CODE
+                            QR Codes & Digital Cards: IRL to URL
                         </h1>
                         <p>
-                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                            laudantium, totam rem aperiam inventore veritatis
+                            From Real World Encounters to Digital Connections: Embracing
+                            URL with QR Codes and Digital Business Cards
                         </p>
                         <form class="newsletter-form mt-40" action="#">
                             <label for="email-address"><i class="fas fa-envelope"></i></label>
@@ -111,44 +110,46 @@
             <ul class="nav advanced-tab mb-55" role="tablist" data-aos="fade-up" data-aos-duration="1500"
                 data-aos-offset="50">
                 <li>
-                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabOne1">
-                        <i class="fas fa-arrow-right"></i> Lead Generation
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#website-qr">
+                        <i class="fas fa-arrow-right"></i> Website
                     </button>
                 </li>
                 <li>
-                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tabOne2">
-                        <i class="fas fa-arrow-right"></i> Customer Support
+                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#form-scan">
+                        <i class="fas fa-arrow-right"></i> Form Scan
                     </button>
                 </li>
                 <li>
-                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabOne3">
-                        <i class="fas fa-arrow-right"></i> Revenue Growth
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#social_contact">
+                        <i class="fas fa-arrow-right"></i> Social Contact
                     </button>
                 </li>
                 <li>
-                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabOne4">
-                        <i class="fas fa-arrow-right"></i> Sales & eCommerce
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#mobleapp">
+                        <i class="fas fa-arrow-right"></i> Mobile App
                     </button>
                 </li>
             </ul>
             <div class="tab-content">
-                <div class="tab-pane fade" id="tabOne1">
+                <div class="tab-pane fade" id="website-qr">
                     <div class="row align-items-center justify-content-between">
                         <div class="col-lg-6">
                             <div class="content rmb-55">
                                 <div class="section-title mb-30">
                                     <h2>
-                                        Dedicated Customer Support Your Satisfaction Our
-                                        Priority
+                                        Connect Anywhere: Transforming Physical Encounters into
+                                        Digital Links
                                     </h2>
                                 </div>
                                 <p>
-                                    AI chatbots are revolutionizing the way businesses
-                                    interact with their customers. These intelligent digital
-                                    assistants are designed to provide instant,
-                                    round-the-clock support, answering queries and resolving
-                                    issues with efficiency and accuracy. By leveraging natural
-                                    language processing and machine learning,
+                                    Experience the seamless transition from face-to-face
+                                    interactions to digital connections with our innovative QR
+                                    code integration. Convert your website link into a dynamic
+                                    QR code, ready to be shared effortlessly on digital
+                                    business cards and beyond. Connect with ease, whether in
+                                    the real world or the digital realm, and expand your
+                                    network without boundaries. Create your personalized QR
+                                    code now and unlock endless possibilities for connectivity
                                 </p>
                                 <ul class="icon-list mt-20 mb-40">
                                     <li>
@@ -170,16 +171,18 @@
                         </div>
                         <div class="col-xl-5 col-lg-6">
                             <div class="image">
-                                <img src="{{ asset('frontend') }}/assets/images/tabs/tab1.png" alt="Tab" />
+                                <img src="https://i.ibb.co/tsyLp2w/a-human-hand-is-holding-a-smartphone-scan-the-qr-code-phone-screen-and-fingers-link-to-the-website-v.jpg"
+                                    alt="Tab" />
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade show active" id="tabOne2">
+                <div class="tab-pane fade show active" id="form-scan">
                     <div class="row align-items-center justify-content-between">
                         <div class="col-xl-5 col-lg-6">
                             <div class="image" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
-                                <img src="{{ asset('frontend') }}/assets/images/tabs/tab1.png" alt="Tab" />
+                                <img src="https://i.ibb.co/fSxh5S1/qr-code-scanning-concept-with-characters-23-2148627986.jpg"
+                                    alt="Tab" />
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -187,17 +190,20 @@
                                 data-aos-offset="50">
                                 <div class="section-title mb-30">
                                     <h2>
-                                        Dedicated Customer Support Your Satisfaction Our
-                                        Priority
+                                        Scan & Connect: Streamlining Networking with QR Code
+                                        Forms
                                     </h2>
                                 </div>
                                 <p>
-                                    AI chatbots are revolutionizing the way businesses
-                                    interact with their customers. These intelligent digital
-                                    assistants are designed to provide instant,
-                                    round-the-clock support, answering queries and resolving
-                                    issues with efficiency and accuracy. By leveraging natural
-                                    language processing and machine learning,
+                                    Simplify networking with our QR code forms,
+                                    revolutionizing the way you gather information and connect
+                                    with others. Seamlessly capture contact details, feedback,
+                                    or survey responses by scanning a QR code, eliminating the
+                                    hassle of manual data entry. Whether at events,
+                                    conferences, or in-store interactions, streamline your
+                                    processes and enhance engagement with our intuitive QR
+                                    code forms. Start optimizing your data collection
+                                    experience today!
                                 </p>
                                 <ul class="icon-list mt-20 mb-40">
                                     <li>
@@ -219,23 +225,25 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="tabOne3">
+                <div class="tab-pane fade" id="social_contact">
                     <div class="row align-items-center justify-content-between">
                         <div class="col-lg-6">
                             <div class="content rmb-55">
                                 <div class="section-title mb-30">
                                     <h2>
-                                        Dedicated Customer Support Your Satisfaction Our
-                                        Priority
+                                        Socialize on the Go: QR Codes for Instant Social
+                                        Connections
                                     </h2>
                                 </div>
                                 <p>
-                                    AI chatbots are revolutionizing the way businesses
-                                    interact with their customers. These intelligent digital
-                                    assistants are designed to provide instant,
-                                    round-the-clock support, answering queries and resolving
-                                    issues with efficiency and accuracy. By leveraging natural
-                                    language processing and machine learning,
+                                    Stay connected effortlessly with our QR codes for social
+                                    contact. Easily share your social media profiles, whether
+                                    it's LinkedIn, Instagram, or Twitter, by simply scanning a
+                                    QR code. Instantly connect with new friends, colleagues,
+                                    or potential collaborators, no matter where you are.
+                                    Enhance your networking game and make lasting connections
+                                    with ease. Start sharing your social presence in a snap
+                                    with our QR code solutions!
                                 </p>
                                 <ul class="icon-list mt-20 mb-40">
                                     <li>
@@ -257,33 +265,36 @@
                         </div>
                         <div class="col-xl-5 col-lg-6">
                             <div class="image">
-                                <img src="{{ asset('frontend') }}/assets/images/tabs/tab1.png" alt="Tab" />
+                                <img src="https://i.ibb.co/QNWcSXM/qr-code-scanning-concept-with-characters-23-2148629215.jpg"
+                                    alt="Tab" />
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="tabOne4">
+                <div class="tab-pane fade" id="mobleapp">
                     <div class="row align-items-center justify-content-between">
                         <div class="col-xl-5 col-lg-6">
                             <div class="image">
-                                <img src="{{ asset('frontend') }}/assets/images/tabs/tab1.png" alt="Tab" />
+                                <img src="https://i.ibb.co/9YsVDsj/89191cover2.jpg" alt="Tab" />
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="content rmt-55">
                                 <div class="section-title mb-30">
                                     <h2>
-                                        Dedicated Customer Support Your Satisfaction Our
-                                        Priority
+                                        App Access Made Easy: QR Codes for Instant Mobile App
+                                        Downloads
                                     </h2>
                                 </div>
                                 <p>
-                                    AI chatbots are revolutionizing the way businesses
-                                    interact with their customers. These intelligent digital
-                                    assistants are designed to provide instant,
-                                    round-the-clock support, answering queries and resolving
-                                    issues with efficiency and accuracy. By leveraging natural
-                                    language processing and machine learning,
+                                    Experience the convenience of instant app access with our
+                                    QR code technology. Simply scan a QR code to download and
+                                    install mobile apps effortlessly. Say goodbye to searching
+                                    through app stores and hello to instant gratification.
+                                    Whether it's for events, promotions, or exclusive offers,
+                                    our QR codes streamline the mobile app download process.
+                                    Embrace the future of app access and make downloading a
+                                    breeze with our QR code solutions!
                                 </p>
                                 <ul class="icon-list mt-20 mb-40">
                                     <li>
@@ -318,8 +329,8 @@
                     <div class="section-title text-center text-white mb-55" data-aos="fade-up"
                         data-aos-duration="1500" data-aos-offset="50">
                         <h2>
-                            Unlocking the Power of Chatbot Capabilities Enhancing Customer
-                            Engagement
+                            QR Connect: Your Bridge to Seamless Digital Interaction and
+                            Networking Experiences
                         </h2>
                     </div>
                 </div>
@@ -332,10 +343,10 @@
                             <img src="{{ asset('frontend') }}/assets/images/icons/iconic-box1.png" alt="Icon" />
                         </div>
                         <div class="content">
-                            <h5><a href="service-details.html">Automate response</a></h5>
+                            <h5><a href="service-details.html">AppLink</a></h5>
                             <p>
-                                The intelligent digital stants are designed provid instant
-                                round-the-clock support
+                                Drive app downloads effortlessly by generating QR codes that
+                                instantly direct users to your mobile app on app stores.
                             </p>
                         </div>
                         <div class="bg">
@@ -351,11 +362,11 @@
                         </div>
                         <div class="content">
                             <h5>
-                                <a href="service-details.html">Artificial intelligence</a>
+                                <a href="service-details.html">LocationLink</a>
                             </h5>
                             <p>
-                                The intelligent digital stants are designed provid instant
-                                round-the-clock support
+                                Enable quick access to specific locations by creating QR
+                                codes that lead users directly to maps or navigation apps.
                             </p>
                         </div>
                         <div class="bg">
@@ -370,10 +381,10 @@
                             <img src="{{ asset('frontend') }}/assets/images/icons/iconic-box3.png" alt="Icon" />
                         </div>
                         <div class="content">
-                            <h5><a href="service-details.html">Mobile & Web Chat</a></h5>
+                            <h5><a href="service-details.html">CallCode</a></h5>
                             <p>
-                                The intelligent digital stants are designed provid instant
-                                round-the-clock support
+                                Enhance accessibility and convenience by generating QR codes
+                                that initiate phone calls when scanned, enabling users to.
                             </p>
                         </div>
                         <div class="bg">
@@ -388,10 +399,10 @@
                             <img src="{{ asset('frontend') }}/assets/images/icons/iconic-box4.png" alt="Icon" />
                         </div>
                         <div class="content">
-                            <h5><a href="service-details.html">Sales & Marketing</a></h5>
+                            <h5><a href="service-details.html">PageLink</a></h5>
                             <p>
-                                The intelligent digital stants are designed provid instant
-                                round-the-clock support
+                                Drive traffic to your business page or website by creating
+                                QR codes that lead users directly to your online presence.
                             </p>
                         </div>
                         <div class="bg">
@@ -412,24 +423,23 @@
                     <div class="about-content-nine text-white rmb-35" data-aos="fade-right" data-aos-duration="1500"
                         data-aos-offset="50">
                         <div class="section-title mb-30">
-                            <h2>
-                                Discover Comprehensive Chatbot Features for Customer
-                                Engagement
-                            </h2>
+                            <h2>Explore More: Dive Deeper into Our Services</h2>
                         </div>
                         <p>
-                            Chatbots offer a diverse range of features designed to enhance
-                            user interactions and streamline customer support.
+                            our services, empowering you to make informed decisions and
+                            maximize the benefits of our QR code solutions. Whether you're
+                            seeking to understand the nuances of app downloads, location
+                            sharing, call initiation, or business page promotion
                         </p>
                         <div class="feature-icon-box mt-35">
                             <div class="icon">
                                 <i class="far fa-check"></i>
                             </div>
                             <div class="content">
-                                <h5>Onboarding, conversion & messages.</h5>
+                                <h5>Boost Interaction</h5>
                                 <p>
-                                    Tasks, such as answering frequently asked questions or
-                                    processing routine transactions
+                                    Utilize QR codes to facilitate instant engagement with
+                                    your audience, whether it's through app downloads.
                                 </p>
                             </div>
                         </div>
@@ -438,10 +448,10 @@
                                 <i class="far fa-check"></i>
                             </div>
                             <div class="content">
-                                <h5>Send messages to targeted audiences</h5>
+                                <h5>Streamline Communication</h5>
                                 <p>
-                                    Tasks, such as answering frequently asked questions or
-                                    processing routine transactions
+                                    Whether it's directing users to your mobile app, guiding
+                                    them to a specific location, initiating phone calls.
                                 </p>
                             </div>
                         </div>
@@ -450,112 +460,14 @@
                 <div class="col-lg-6">
                     <div class="about-nine-right-images mb-20 text-lg-end" data-aos="fade-left"
                         data-aos-duration="1500" data-aos-offset="50">
-                        <img src="{{ asset('frontend') }}/assets/images/about/about-nine.png" alt="About" />
+                        <img src="https://i.ibb.co/G25Bwnn/biometrics-identification-4152283-3457274.webp"
+                            alt="About" />
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- About Area End -->
-
-    <!-- Feature Image box Area Start -->
-    <section id="features" class="feature-image-box-area pt-130 rpt-100 pb-100 rpb-70">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-8 col-lg-11">
-                    <div class="section-title text-center mb-55" data-aos="fade-up" data-aos-duration="1500"
-                        data-aos-offset="50">
-                        <h2>
-                            Unlocking the Potential Chatbot for Seamless Customer
-                            Interactions
-                        </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-xl-4 col-md-6">
-                    <div class="feature-image-box style-two" data-aos="fade-up" data-aos-duration="1500"
-                        data-aos-offset="50">
-                        <img src="{{ asset('frontend') }}/assets/images/fancy-box/feature-image-box1.png" alt="Feature" />
-                        <div class="content">
-                            <h4>
-                                <a href="service-details.html">Comprehensive Chatbot Features Revolutionizing
-                                    Customer
-                                    Engagement</a>
-                            </h4>
-                            <ul class="icon-list">
-                                <li>
-                                    <i class="fa-regular fa-square-check"></i> Get AI Power
-                                    Chat Files
-                                </li>
-                                <li>
-                                    <i class="fa-regular fa-square-check"></i> Message
-                                    Experience
-                                </li>
-                                <li>
-                                    <i class="fa-regular fa-square-check"></i> Connect
-                                    Securely
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-6">
-                    <div class="feature-image-box style-two" data-aos="fade-up" data-aos-delay="100"
-                        data-aos-duration="1500" data-aos-offset="50">
-                        <img src="{{ asset('frontend') }}/assets/images/fancy-box/feature-image-box2.png" alt="Feature" />
-                        <div class="content">
-                            <h4>
-                                <a href="service-details.html">Mastering Chatbot Feature Elevate Customer Service &
-                                    Efficiency</a>
-                            </h4>
-                            <ul class="icon-list">
-                                <li>
-                                    <i class="fa-regular fa-square-check"></i> Get AI Power
-                                    Chat Files
-                                </li>
-                                <li>
-                                    <i class="fa-regular fa-square-check"></i> Message
-                                    Experience
-                                </li>
-                                <li>
-                                    <i class="fa-regular fa-square-check"></i> Connect
-                                    Securely
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-6">
-                    <div class="feature-image-box style-two" data-aos="fade-up" data-aos-delay="200"
-                        data-aos-duration="1500" data-aos-offset="50">
-                        <img src="{{ asset('frontend') }}/assets/images/fancy-box/feature-image-box3.png" alt="Feature" />
-                        <div class="content">
-                            <h4>
-                                <a href="service-details.html">Chatbot Features: Your Guide to Enhanced User
-                                    Engagement</a>
-                            </h4>
-                            <ul class="icon-list">
-                                <li>
-                                    <i class="fa-regular fa-square-check"></i> Get AI Power
-                                    Chat Files
-                                </li>
-                                <li>
-                                    <i class="fa-regular fa-square-check"></i> Message
-                                    Experience
-                                </li>
-                                <li>
-                                    <i class="fa-regular fa-square-check"></i> Connect
-                                    Securely
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Feature Image box Area End -->
 
     <!-- Tooltip Area Start -->
     <section class="tooltip-area bgs-cover rel pt-130 rpt-100"
@@ -570,10 +482,10 @@
                             easily
                         </h2>
                         <p>
-                            AI chatbots are revolutionizing the way businesses interact
-                            with their customers. These intelligent digital assistants are
-                            designed to provide instant, round-the-clock support,
-                            answering queries and resolving
+                            Empower your social growth effortlessly with SocialConnect.
+                            Seamlessly integrate your social networks and unlock new
+                            opportunities for networking and connection. Simplify the
+                            process and amplify your online presence with ease.
                         </p>
                     </div>
                     <a href="contact.html" class="theme-btn">Get Started Now <i class="fas fa-arrow-right"></i></a>
@@ -596,7 +508,7 @@
                     </div>
                     <div class="tooltip-content">
                         <div class="image">
-                            <img src="{{ asset('frontend') }}/assets/images/tooltips/tooltip2.png" alt="Tooltip" />
+                            <img src="https://i.ibb.co/BZdDtxt/tooltip1.png" alt="Tooltip" />
                         </div>
                     </div>
                 </div>
@@ -660,46 +572,59 @@
                 <div class="col-xl-7 col-lg-9 col-md-11">
                     <div class="section-title text-center mb-55 aos-init aos-animate" data-aos="fade-up"
                         data-aos-duration="1500" data-aos-offset="50">
-                        <h2>Create your Modern Website Just Follow 3 Steps</h2>
+                        <h2>Craft Your Custom QR Codes in 4 Easy Steps with Go QR</h2>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-xl-4 col-md-6 aos-init aos-animate" data-aos="fade-up" data-aos-duration="1000"
+                <div class="col-xl-3 col-md-6 aos-init aos-animate" data-aos="fade-up" data-aos-duration="1000"
                     data-aos-offset="50">
                     <div class="numbered-box">
                         <div class="number">1</div>
                         <div class="content">
-                            <h5>Connect Your Account</h5>
-                            <p>
-                                Praesentium voluptatum deleniti atque corrupti quos dolores
-                                quas molestias exceptur occaecatie
+                            <h5>Choose QR Type</h5>
+                            <p style="text-align: justify">
+                                Pick from a variety of QR code types tailored to your needs,
+                                including URL, text, contact information, and more.
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-md-6 aos-init aos-animate" data-aos="fade-up" data-aos-duration="1000"
+                <div class="col-xl-3 col-md-6 aos-init aos-animate" data-aos="fade-up" data-aos-duration="1000"
                     data-aos-delay="200" data-aos-offset="50">
                     <div class="numbered-box">
                         <div class="number">2</div>
                         <div class="content">
-                            <h5>Design by drag &amp; Drop</h5>
-                            <p>
-                                Praesentium voluptatum deleniti atque corrupti quos dolores
-                                quas molestias exceptur occaecatie
+                            <h5>Upload Your Data</h5>
+                            <p style="text-align: justify">
+                                Easily upload your desired content, whether it's a website
+                                link, text, contact details, or any other information you.
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-md-6 aos-init aos-animate" data-aos="fade-up" data-aos-duration="1000"
+                <div class="col-xl-3 col-md-3 aos-init aos-animate" data-aos="fade-up" data-aos-duration="1000"
                     data-aos-delay="400" data-aos-offset="50">
                     <div class="numbered-box">
                         <div class="number">3</div>
                         <div class="content">
-                            <h5>Lunch Your Website</h5>
-                            <p>
-                                Praesentium voluptatum deleniti atque corrupti quos dolores
-                                quas molestias exceptur occaecatie
+                            <h5>Customize Design</h5>
+                            <p style="text-align: justify">
+                                Tailor your QR code to match your brand or style
+                                preferences. Modify colors, add logos, and choose from.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 aos-init aos-animate" data-aos="fade-up" data-aos-duration="1000"
+                    data-aos-delay="400" data-aos-offset="50">
+                    <div class="numbered-box">
+                        <div class="number">3</div>
+                        <div class="content">
+                            <h5>Download It</h5>
+                            <p style="text-align: justify">
+                                It's ready to be shared, printed, or integrated into your
+                                digital materials, empowering seamless connectivity qr.
                             </p>
                         </div>
                     </div>
@@ -717,22 +642,26 @@
                 <div class="col-lg-6">
                     <div class="about-seven-left-images mb-50 aos-init aos-animate" data-aos="fade-left"
                         data-aos-duration="1500" data-aos-offset="50">
-                        <img src="{{ asset('frontend') }}/assets/images/about/about-seven-three1.png" alt="About" />
-                        <div class="about-over">
-                            <img src="{{ asset('frontend') }}/assets/images/about/about-seven-three2.png" alt="About" />
-                        </div>
+                        <img src="https://i.ibb.co/4jZD3km/Adobe-Stock-z-ZCRt-GUk-VT.jpg" alt="About" />
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="about-content-seven aos-init aos-animate" data-aos="fade-right"
                         data-aos-duration="1500" data-aos-offset="50">
                         <div class="section-title mb-30">
-                            <h2>Integrate Seamlessly, Grow Rapidly</h2>
+                            <h2>Unlocking Connectivity: Discover Go QR</h2>
                         </div>
-                        <p>
-                            At vero eos et accusamus et iusto odio dignissimos ducimus
-                            quiy blanditiis praesentium voluptatum deleniti atque corrupti
-                            dolorese quas molestias excepturi sint occaecati cupiditate
+                        <p style="text-align: justify">
+                            Welcome to Go QR, your ultimate destination for effortless QR
+                            code creation. At Go QR, we're committed to simplifying the
+                            process of generating custom QR codes for individuals and
+                            businesses alike. Our intuitive platform empowers you to
+                            quickly and easily create QR codes tailored to your specific
+                            needs. Whether you're sharing website links, contact details,
+                            or promotional offers, Go QR provides the tools you need to
+                            enhance connectivity and streamline communication. Join us as
+                            we embark on a journey to revolutionize the way you connect
+                            with the world.
                         </p>
                         <a href="contact.html" class="theme-btn mt-25 mb-75">Get Started <i
                                 class="fas fa-arrow-right"></i></a>
@@ -780,9 +709,13 @@
                                 </button>
                             </li>
                         </ul>
-                        <p>
-                            AI chatbots are revolutionizing the way businesses interact
-                            with their customers These intelligent digital assistants
+                        <p style="text-align: justify">
+                            the full potential of Go QR with our flexible pricing plans
+                            designed to meet your unique needs. Whether you're a casual
+                            user, a small business, or a large enterprise, we have a plan
+                            tailored just for you. With transparent pricing and no hidden
+                            fees, you can choose the plan that fits your budget and usage
+                            requirements
                         </p>
                         <a href="contact.html" class="theme-btn mt-25">Get Started <i
                                 class="fas fa-arrow-right"></i></a>
@@ -895,127 +828,35 @@
     </section>
     <!-- Pricing Area End -->
 
-    <!-- Testimonials Area Start -->
-    <section id="testimonials" class="testimonials-nine-area py-130 rpy-100 rel z-1">
+    <section>
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-7 col-lg-9 col-md-11">
-                    <div class="section-title text-center mb-55" data-aos="fade-up" data-aos-delay="50"
-                        data-aos-duration="1500" data-aos-offset="50">
-                        <h2>1523+ Global Clients Say About Our Software</h2>
+            <div class="row">
+                <div class="col-lg-7 aos-init aos-animate" data-aos="fade-left" data-aos-duration="1000"
+                    data-aos-offset="50">
+                    <div class="cta-left-content bgc-primary rmb-30"
+                        style="
+              background-image: url('https://webtendtheme.net/html/2024/akpager/{{ asset('frontend') }}/assets/images/shapes/cta-left-circle.png');
+            ">
+                        <div class="section-title mb-15">
+                            <span class="subtitle d-block mb-10 text-white">Website Builder</span>
+                            <h3 class="text-white">
+                                Ready Work Together to Create Website?
+                            </h3>
+                        </div>
+                        <a href="contact.html" class="theme-btn style-four mb-25 text-white">Contact Us <i
+                                class="far fa-arrow-right"></i></a>
                     </div>
                 </div>
-            </div>
-            <div class="testi-slider-three" data-aos="fade-in" data-aos-delay="50" data-aos-duration="1500"
-                data-aos-offset="50">
-                <div class="testimonial-item-two">
-                    <div class="author">
-                        <div class="image">
-                            <img src="{{ asset('frontend') }}/assets/images/testimonials/testi-author1.png" alt="Author" />
-                        </div>
-                        <div class="content">
-                            <h6>Dennis J. Lester</h6>
-                            <span>CEO & Founder</span>
-                            <div class="ratting">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="line"></div>
-                    <div class="author-text">
-                        Alignment refers to the practice of arranging visual elements on
-                        pages such as text, shapes, images, menu items, and CTA buttons
-                        foundation upon which designers gather
+                <div class="col-lg-5 aos-init aos-animate" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="cta-right-image"
+                        style="
+              background-image: url('https://webtendtheme.net/html/2024/akpager/{{ asset('frontend') }}/assets/images/backgrounds/cta-right.jpg');
+            ">
                     </div>
                 </div>
-                <div class="testimonial-item-two">
-                    <div class="author">
-                        <div class="image">
-                            <img src="{{ asset('frontend') }}/assets/images/testimonials/testi-author2.png" alt="Author" />
-                        </div>
-                        <div class="content">
-                            <h6>Rene A. Watkins</h6>
-                            <span>Web Designer</span>
-                            <div class="ratting">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="line"></div>
-                    <div class="author-text">
-                        Alignment refers to the practice of arranging visual elements on
-                        pages such as text, shapes, images, menu items, and CTA buttons
-                        foundation upon which designers gather
-                    </div>
-                </div>
-                <div class="testimonial-item-two">
-                    <div class="author">
-                        <div class="image">
-                            <img src="{{ asset('frontend') }}/assets/images/testimonials/testi-author1.png" alt="Author" />
-                        </div>
-                        <div class="content">
-                            <h6>Dennis J. Lester</h6>
-                            <span>CEO & Founder</span>
-                            <div class="ratting">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="line"></div>
-                    <div class="author-text">
-                        Alignment refers to the practice of arranging visual elements on
-                        pages such as text, shapes, images, menu items, and CTA buttons
-                        foundation upon which designers gather
-                    </div>
-                </div>
-                <div class="testimonial-item-two">
-                    <div class="author">
-                        <div class="image">
-                            <img src="{{ asset('frontend') }}/assets/images/testimonials/testi-author2.png" alt="Author" />
-                        </div>
-                        <div class="content">
-                            <h6>Rene A. Watkins</h6>
-                            <span>Web Designer</span>
-                            <div class="ratting">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="line"></div>
-                    <div class="author-text">
-                        Alignment refers to the practice of arranging visual elements on
-                        pages such as text, shapes, images, menu items, and CTA buttons
-                        foundation upon which designers gather
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="testimonial-nine-shapes">
-            <div class="shape one">
-                <img src="{{ asset('frontend') }}/assets/images/shapes/testimonial-left.png" alt="Shape" />
-            </div>
-            <div class="shape two">
-                <img src="{{ asset('frontend') }}/assets/images/shapes/testimonial-right.png" alt="Shape" />
             </div>
         </div>
     </section>
-    <!-- Testimonials Area End -->
 
     <!-- CTA Area Start -->
     <section class="cta-nine-area py-130 rpy-100"
@@ -1051,16 +892,17 @@
                             <h5 class="accordion-header">
                                 <button class="accordion-button collapsed" data-bs-toggle="collapse"
                                     data-bs-target="#collapseOne1">
-                                    How To Get Our Services?
+                                    What types of QR codes can I create with Go QR?
                                 </button>
                             </h5>
                             <div id="collapseOne1" class="accordion-collapse collapse"
                                 data-bs-parent="#accordionOne">
                                 <div class="accordion-body">
                                     <p>
-                                        At vero eoset accusamus etiusto dignissimos duci
-                                        blanditiis praesentium corrupti dolores molest excepturi
-                                        sint occaecati cupiditate
+                                        Go QR offers a wide range of QR code types, including
+                                        URLs, text, contact information, Wi-Fi credentials, and
+                                        more. Simply select your desired type and input your
+                                        data to generate a customized QR code.
                                     </p>
                                 </div>
                             </div>
@@ -1069,16 +911,17 @@
                             <h5 class="accordion-header">
                                 <button class="accordion-button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseOne2">
-                                    What Is Data Analysis For Business ?
+                                    Can I customize the appearance of my QR codes?
                                 </button>
                             </h5>
                             <div id="collapseOne2" class="accordion-collapse collapse show"
                                 data-bs-parent="#accordionOne">
                                 <div class="accordion-body">
                                     <p>
-                                        At vero eoset accusamus etiusto dignissimos duci
-                                        blanditiis praesentium corrupti dolores molest excepturi
-                                        sint occaecati cupiditate
+                                        Yes, absolutely! Go QR allows you to customize the
+                                        appearance of your QR codes by choosing colors, adding
+                                        logos, and selecting from various design options to
+                                        match your brand or personal style.
                                     </p>
                                 </div>
                             </div>
@@ -1087,16 +930,17 @@
                             <h5 class="accordion-header">
                                 <button class="accordion-button collapsed" data-bs-toggle="collapse"
                                     data-bs-target="#collapseOne3">
-                                    Why Need Marketing Data Analysis ?
+                                    How many QR codes can I generate with each pricing plan?
                                 </button>
                             </h5>
                             <div id="collapseOne3" class="accordion-collapse collapse"
                                 data-bs-parent="#accordionOne">
                                 <div class="accordion-body">
                                     <p>
-                                        At vero eoset accusamus etiusto dignissimos duci
-                                        blanditiis praesentium corrupti dolores molest excepturi
-                                        sint occaecati cupiditate
+                                        The number of QR codes you can generate depends on the
+                                        pricing plan you choose. Our plans offer different
+                                        limits ranging from a few codes for personal use to
+                                        unlimited codes for businesses and organizations.
                                     </p>
                                 </div>
                             </div>
@@ -1105,16 +949,19 @@
                             <h5 class="accordion-header">
                                 <button class="accordion-button collapsed" data-bs-toggle="collapse"
                                     data-bs-target="#collapseOne4">
-                                    Have Any Dedicated Support Team ?
+                                    Is there a limit to the amount of data I can encode in a
+                                    QR code?
                                 </button>
                             </h5>
                             <div id="collapseOne4" class="accordion-collapse collapse"
                                 data-bs-parent="#accordionOne">
                                 <div class="accordion-body">
                                     <p>
-                                        At vero eoset accusamus etiusto dignissimos duci
-                                        blanditiis praesentium corrupti dolores molest excepturi
-                                        sint occaecati cupiditate
+                                        While QR codes have a finite capacity for data, Go QR
+                                        supports encoding a significant amount of information,
+                                        including website links, contact details, text, and
+                                        more. If you have specific requirements, feel free to
+                                        reach out to our support team for assistance.
                                     </p>
                                 </div>
                             </div>
@@ -1123,16 +970,18 @@
                             <h5 class="accordion-header">
                                 <button class="accordion-button collapsed" data-bs-toggle="collapse"
                                     data-bs-target="#collapseOne5">
-                                    Why Join Our Courses ?
+                                    Can I track the performance of my QR codes?
                                 </button>
                             </h5>
                             <div id="collapseOne5" class="accordion-collapse collapse"
                                 data-bs-parent="#accordionOne">
                                 <div class="accordion-body">
                                     <p>
-                                        At vero eoset accusamus etiusto dignissimos duci
-                                        blanditiis praesentium corrupti dolores molest excepturi
-                                        sint occaecati cupiditate
+                                        Yes, Go QR provides analytics tracking to monitor the
+                                        performance of your QR codes. You can track metrics such
+                                        as scans, locations, and devices used to access your QR
+                                        codes, allowing you to gain valuable insights into user
+                                        engagement.
                                     </p>
                                 </div>
                             </div>
@@ -1141,16 +990,18 @@
                             <h5 class="accordion-header">
                                 <button class="accordion-button collapsed" data-bs-toggle="collapse"
                                     data-bs-target="#collapseOne6">
-                                    Have Any Dedicated Support Team ?
+                                    How do I download my QR codes after creating them?
                                 </button>
                             </h5>
                             <div id="collapseOne6" class="accordion-collapse collapse"
                                 data-bs-parent="#accordionOne">
                                 <div class="accordion-body">
                                     <p>
-                                        At vero eoset accusamus etiusto dignissimos duci
-                                        blanditiis praesentium corrupti dolores molest excepturi
-                                        sint occaecati cupiditate
+                                        After customizing your QR code to your liking, simply
+                                        click the download button to save it to your device.
+                                        Your QR code will be downloaded in high resolution,
+                                        ready to be shared, printed, or integrated into your
+                                        digital materials.
                                     </p>
                                 </div>
                             </div>
