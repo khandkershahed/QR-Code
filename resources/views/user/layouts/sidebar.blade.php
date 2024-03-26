@@ -91,6 +91,47 @@
                         </div>
                     </div>
                 </div>
+                <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
+                    <span class="menu-link">
+                        <span class="menu-icon">
+                            <span class="svg-icon svg-icon-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    class="svg-icon svg-icon-2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <rect x="7" y="7" width="4" height="4" rx="1"
+                                        fill="currentColor" />
+                                    <rect x="13" y="7" width="4" height="4" rx="1"
+                                        fill="currentColor" />
+                                    <rect x="7" y="13" width="4" height="4" rx="1"
+                                        fill="currentColor" />
+                                    <rect x="13" y="13" width="4" height="4" rx="1"
+                                        fill="currentColor" />
+                                </svg>
+                            </span>
+                        </span>
+                        <span class="menu-title">NFC Card</span>
+                        <span class="menu-arrow"></span>
+                    </span>
+                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                        <div class="menu-item">
+                            <a class="menu-link active" href="{{ route('user.nfc-card.index') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">NFC Card List</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link" href="{{ route('user.nfc-card.create') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">NFC Card Create</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 <div class="menu-item">
                     <div class="menu-content pt-8 pb-2">
                         <span class="menu-section text-muted text-uppercase fs-8 ls-1">Crafted</span>
