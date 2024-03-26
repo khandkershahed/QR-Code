@@ -3,15 +3,12 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="description"
-        content="" />
-    <meta name="keywords"
-        content="" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="article" />
-    <meta property="og:title"
-        content="" />
+    <meta property="og:title" content="" />
     <meta property="og:url" content="" />
     <meta property="og:site_name" content="Go-QR | Admin Panel" />
     <link rel="canonical" href="" />
@@ -31,6 +28,9 @@
     <link href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
+
+    <link href="{{ asset('admin/assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"
+        type="text/css" />
     <!--end::Global Stylesheets Bundle-->
     @props(['title'])
     <title>{{ $title ?? config('app.name', 'MD Boilarplate') }}</title>
@@ -101,6 +101,7 @@
     <!--begin::Global Javascript Bundle(used by all pages)-->
     <script src="{{ asset($hostUrl . 'plugins/global/plugins.bundle.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/scripts.bundle.js') }}"></script>
+    <script src="{{ asset($hostUrl . 'plugins/custom/datatables/datatables.bundle.js') }}"></script>
     <!--end::Global Javascript Bundle-->
     <!--begin::Page Vendors Javascript(used by this page)-->
     <script src="{{ asset($hostUrl . 'plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
