@@ -159,156 +159,148 @@
                 </div>
                 {{-- Logos Uploade --}}
                 <div class="d-flex align-items-center">
-                    <div class="dropzone dz-clickable w-100" id="qr_dropzone">
-                        <div class="dz-message needsclick">
-                            <i class="ki-duotone ki-file-up fs-3x text-primary"><span class="path1"></span><span
-                                    class="path2"></span></i>
-
-                            <div class="ms-4">
-                                <h3 class="fs-5 fw-bold text-gray-900 mb-1">Drop image
-                                    here or click to upload.</h3>
-                                <span class="fs-7 fw-semibold text-primary opacity-75">Uploadimage</span>
-                            </div>
-                        </div>
+                    <div class="pe-3">
+                        <x-metronic.label for="qr_logo" class="form-label">{{ __('Logo') }}</x-metronic.label>
+                        <x-metronic.input id="qr_logo" type="file" name="qr_logo" :value="old('qr_logo')"
+                            placeholder="Upload Logo" />
                     </div>
-                    <div class="ps-2">
-                        <x-metronic.label for="qr_logo"
-                                    class="form-label">{{ __('Logo') }}</x-metronic.label>
-                                <x-metronic.input id="qr_logo" type="file" name="qr_logo" :value="old('qr_logo')"
-                                    placeholder="Upload Logo" />
+                    <div class="ps-4">
+                        <x-metronic.label for="qr_logo_size" class="form-label">{{ __('Logo Size (in Pixel)') }}</x-metronic.label>
+                        <x-metronic.input id="qr_logo_size" type="number" name="qr_logo_size" :value="old('qr_logo_size')"
+                            placeholder="Logo Size(Eg: 5, 10, 15....)" />
                     </div>
                 </div>
                 <p class="text-start pt-5 mb-0">Or Select From Our
                     Gallary</p>
                 {{-- Logo From Our Gallary --}}
                 <div class="pt-2 row">
-                    <div class="col-sm-1 mb-1">
+                    <div class="col-sm-1 mb-3">
                         <a href="#">
                             <img style="width: 45px; border: 1px solid #DBDFE3; border-radius: 4px;"
                                 src="https://static.beaconstac.com/assets/img/qr-code-logos/app-store.svg">
                         </a>
                     </div>
-                    <div class="col-sm-1 mb-1">
+                    <div class="col-sm-1 mb-3">
                         <a href="#">
                             <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
                                 src="	https://static.beaconstac.com/assets/img/qr-code-logos/calender.svg">
                         </a>
                     </div>
-                    <div class="col-sm-1 mb-1">
+                    <div class="col-sm-1 mb-3">
                         <a href="#">
                             <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
                                 src="https://static.beaconstac.com/assets/img/qr-code-logos/email.svg">
                         </a>
                     </div>
-                    <div class="col-sm-1 mb-1">
+                    <div class="col-sm-1 mb-3">
                         <a href="#">
                             <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
                                 src="https://static.beaconstac.com/assets/img/qr-code-logos/facebook.svg">
                         </a>
                     </div>
-                    <div class="col-sm-1 mb-1">
+                    <div class="col-sm-1 mb-3">
                         <a href="#">
                             <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
                                 src="https://static.beaconstac.com/assets/img/qr-code-logos/gmail.svg">
                         </a>
                     </div>
-                    <div class="col-sm-1 mb-1">
+                    <div class="col-sm-1 mb-3">
                         <a href="#">
                             <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
                                 src="https://static.beaconstac.com/assets/img/qr-code-logos/google-bussiness.svg">
                         </a>
                     </div>
-                    <div class="col-sm-1 mb-1">
+                    <div class="col-sm-1 mb-3">
                         <a href="#">
                             <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
                                 src="https://static.beaconstac.com/assets/img/qr-code-logos/instagram.svg">
                         </a>
                     </div>
-                    <div class="col-sm-1 mb-1">
+                    <div class="col-sm-1 mb-3">
                         <a href="#">
                             <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
                                 src="https://static.beaconstac.com/assets/img/qr-code-logos/linkedin.svg">
                         </a>
                     </div>
-                    <div class="col-sm-1 mb-1">
+                    <div class="col-sm-1 mb-3">
                         <a href="#">
                             <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
                                 src="https://static.beaconstac.com/assets/img/qr-code-logos/mp3.svg">
                         </a>
                     </div>
-                    <div class="col-sm-1 mb-1">
+                    <div class="col-sm-1 mb-3">
                         <a href="#">
                             <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
                                 src="https://static.beaconstac.com/assets/img/qr-code-logos/pdf.svg">
                         </a>
                     </div>
-                    <div class="col-sm-1 mb-1">
+                    <div class="col-sm-1 mb-3">
                         <a href="#">
                             <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
                                 src="https://static.beaconstac.com/assets/img/qr-code-logos/phone-call.svg">
                         </a>
                     </div>
-                    <div class="col-sm-1 mb-1">
+                    <div class="col-sm-1 mb-3">
                         <a href="#">
                             <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
                                 src="https://static.beaconstac.com/assets/img/qr-code-logos/pintrest.svg">
                         </a>
                     </div>
-                    <div class="col-sm-1 mb-1">
+                    <div class="col-sm-1 mb-3">
                         <a href="#">
                             <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
                                 src="https://static.beaconstac.com/assets/img/qr-code-logos/play-store.svg">
                         </a>
                     </div>
-                    <div class="col-sm-1 mb-1">
+                    <div class="col-sm-1 mb-3">
                         <a href="#">
                             <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
                                 src="https://static.beaconstac.com/assets/img/qr-code-logos/ratings.png">
                         </a>
                     </div>
-                    <div class="col-sm-1 mb-1">
+                    <div class="col-sm-1 mb-3">
                         <a href="#">
                             <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
                                 src="https://static.beaconstac.com/assets/img/qr-code-logos/twitter.svg">
                         </a>
                     </div>
-                    <div class="col-sm-1 mb-1">
+                    <div class="col-sm-1 mb-3">
                         <a href="#">
                             <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
                                 src="https://static.beaconstac.com/assets/img/qr-code-logos/youtube.svg">
                         </a>
                     </div>
-                    <div class="col-sm-1 mb-1">
+                    <div class="col-sm-1 mb-3">
                         <a href="#">
                             <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
                                 src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-1.svg">
                         </a>
                     </div>
-                    <div class="col-sm-1 mb-1">
+                    <div class="col-sm-1 mb-3">
                         <a href="#">
                             <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
                                 src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-2.svg">
                         </a>
                     </div>
-                    <div class="col-sm-1 mb-1">
+                    <div class="col-sm-1 mb-3">
                         <a href="#">
                             <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
                                 src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-3.svg">
                         </a>
                     </div>
-                    <div class="col-sm-1 mb-1">
+                    <div class="col-sm-1 mb-3">
                         <a href="#">
                             <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
                                 src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-4.svg">
                         </a>
                     </div>
-                    <div class="col-sm-1 mb-1">
+                    <div class="col-sm-1 mb-3">
                         <a href="#">
                             <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
                                 src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-5.svg">
                         </a>
                     </div>
-                    <div class="col-sm-1 mb-1">
+                    <div class="col-sm-1 mb-3">
                         <a href="#">
                             <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
                                 src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-6.svg">
@@ -573,7 +565,7 @@
                                     <div class="d-flex">
                                         <input type="text" id="colorCodeInput-normal_color"
                                             class="form-control form-control-solid w-100" readonly>
-                                        <input type="color" id="colorPicker" style="width: 56px;height: 45px;">
+                                        <input type="color" name="qr_bg_color" id="colorPicker" style="width: 56px;height: 45px;">
                                     </div>
                                 </div>
                             </div>
@@ -613,6 +605,10 @@
             </div>
         </div>
         <div class="tab-pane pt-4" id="done" role="tabpanel" aria-labelledby="done-tab">
-            asdadasd
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="text-center mb-0 fw-bold text-gray-500">Done</h4>
+                </div>
+            </div>
         </div>
     </div>

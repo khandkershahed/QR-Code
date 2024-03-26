@@ -4,113 +4,77 @@
             <div class="col-lg-9">
                 <div class="card">
                     <div class="card-body">
-                        <!--begin::Stepper-->
                         <div class="stepper stepper-pills" id="kt_stepper_example_clickable">
-                            <!--begin::Nav-->
                             <div class="stepper-nav flex-center flex-wrap mb-10">
-                                <!--begin::Step 1-->
                                 <div class="stepper-item mx-2 my-4 current" data-kt-stepper-element="nav"
                                     data-kt-stepper-action="step">
-                                    <!--begin::Line-->
                                     <div class="stepper-line w-40px"></div>
-                                    <!--end::Line-->
 
-                                    <!--begin::Icon-->
                                     <div class="stepper-icon w-40px h-40px">
                                         <i class="stepper-check fas fa-check"></i>
                                         <span class="stepper-number">1</span>
                                     </div>
-                                    <!--end::Icon-->
 
-                                    <!--begin::Label-->
                                     <div class="stepper-label">
                                         <h3 class="stepper-title">
                                             Select Type
                                         </h3>
                                     </div>
-                                    <!--end::Label-->
                                 </div>
-                                <!--end::Step 1-->
 
-                                <!--begin::Step 2-->
                                 <div class="stepper-item mx-2 my-4" data-kt-stepper-element="nav"
                                     data-kt-stepper-action="step">
-                                    <!--begin::Line-->
                                     <div class="stepper-line w-40px"></div>
-                                    <!--end::Line-->
 
-                                    <!--begin::Icon-->
                                     <div class="stepper-icon w-40px h-40px">
                                         <i class="stepper-check fas fa-check"></i>
                                         <span class="stepper-number">2</span>
                                     </div>
-                                    <!--begin::Icon-->
 
-                                    <!--begin::Label-->
                                     <div class="stepper-label">
                                         <h3 class="stepper-title">
                                             Input Data
                                         </h3>
                                     </div>
-                                    <!--end::Label-->
                                 </div>
-                                <!--end::Step 2-->
 
-                                <!--begin::Step 3-->
                                 <div class="stepper-item mx-2 my-4" data-kt-stepper-element="nav"
                                     data-kt-stepper-action="step">
-                                    <!--begin::Line-->
                                     <div class="stepper-line w-40px"></div>
-                                    <!--end::Line-->
 
-                                    <!--begin::Icon-->
                                     <div class="stepper-icon w-40px h-40px">
                                         <i class="stepper-check fas fa-check"></i>
                                         <span class="stepper-number">3</span>
                                     </div>
-                                    <!--begin::Icon-->
 
-                                    <!--begin::Label-->
                                     <div class="stepper-label">
                                         <h3 class="stepper-title">
                                             Customize
                                         </h3>
                                     </div>
-                                    <!--end::Label-->
                                 </div>
-                                <!--end::Step 3-->
 
-                                <!--begin::Step 4-->
                                 <div class="stepper-item mx-2 my-4" data-kt-stepper-element="nav"
                                     data-kt-stepper-action="step">
-                                    <!--begin::Line-->
                                     <div class="stepper-line w-40px"></div>
-                                    <!--end::Line-->
 
-                                    <!--begin::Icon-->
                                     <div class="stepper-icon w-40px h-40px">
                                         <i class="stepper-check fas fa-check"></i>
                                         <span class="stepper-number">4</span>
                                     </div>
-                                    <!--begin::Icon-->
 
-                                    <!--begin::Label-->
                                     <div class="stepper-label">
                                         <h3 class="stepper-title">
                                             Done
                                         </h3>
                                     </div>
-                                    <!--end::Label-->
                                 </div>
-                                <!--end::Step 4-->
                             </div>
-                            <!--end::Nav-->
 
-                            <!--begin::Form-->
-                            <form class="form w-100 mx-auto" novalidate="novalidate" id="kt_stepper_example_basic_form">
-                                <!--begin::Group-->
+                            <form class="form w-100 mx-auto" novalidate="novalidate" id="kt_stepper_example_basic_form"
+                                action="{{ route('user.qr-code.store') }}" method="POST">
+                                @csrf
                                 <div class="mb-5">
-                                    <!--begin::Step 1-->
                                     <div class="flex-column current" data-kt-stepper-element="content">
                                         <div class="card">
                                             <div class="row">
@@ -119,112 +83,11 @@
                                                     live.</p>
                                             </div>
                                             <div class="card-body">
-                                                <x-qr-code.type :types="[
-                                                    [
-                                                        'id' => 1,
-                                                        'value' => 'website',
-                                                        'title' => 'Website',
-                                                        'text' =>
-                                                            'Link to an existing web URL and bring traffic online',
-                                                        'image' =>
-                                                            'https://dashboard.uniqode.com/assets/img/dynamic-qr/website.svg',
-                                                    ],
-                                                    [
-                                                        'id' => 2,
-                                                        'value' => 'pdf',
-                                                        'title' => 'Pdf',
-                                                        'text' => 'Link a PDF document and distribute it efficiently',
-                                                        'image' =>
-                                                            'https://dashboard.uniqode.com/assets/img/dynamic-qr/pdf.svg',
-                                                    ],
-                                                    [
-                                                        'id' => 3,
-                                                        'value' => 'image',
-                                                        'title' => 'Image',
-                                                        'text' => 'Show A Photo',
-                                                        'image' =>
-                                                            'https://dashboard.uniqode.com/assets/img/dynamic-qr/image.svg',
-                                                    ],
-                                                    [
-                                                        'id' => 4,
-                                                        'value' => 'sms',
-                                                        'title' => 'Sms',
-                                                        'text' => 'Redirect to your mobile number to receive SMS',
-                                                        'image' =>
-                                                            'https://dashboard.uniqode.com/assets/img/dynamic-qr/sms.svg',
-                                                    ],
-                                                    [
-                                                        'id' => 5,
-                                                        'value' => 'email',
-                                                        'title' => 'Email',
-                                                        'text' => 'Link to receive email messages',
-                                                        'image' =>
-                                                            'https://dashboard.uniqode.com/assets/img/dynamic-qr/email.svg',
-                                                    ],
-                                                    [
-                                                        'id' => 6,
-                                                        'value' => 'mobile_app',
-                                                        'title' => 'Mobile_App',
-                                                        'text' => 'Link to receive email messages',
-                                                        'image' =>
-                                                            'https://dashboard.uniqode.com/assets/img/dynamic-qr/app-download.svg',
-                                                    ],
-                                                    [
-                                                        'id' => 7,
-                                                        'value' => 'call',
-                                                        'title' => 'Call',
-                                                        'text' => 'Link to receive email messages',
-                                                        'image' =>
-                                                            'https://dashboard.uniqode.com/assets/img/dynamic-qr/call.svg',
-                                                    ],
-                                                    [
-                                                        'id' => 8,
-                                                        'value' => 'location',
-                                                        'title' => 'Location',
-                                                        'text' => 'Point to any location on Google Maps',
-                                                        'image' =>
-                                                            'https://dashboard.uniqode.com/assets/img/dynamic-qr/location.svg',
-                                                    ],
-                                                    [
-                                                        'id' => 9,
-                                                        'value' => 'coupon_code',
-                                                        'title' => 'Coupon Code',
-                                                        'text' => 'Route to a page displaying coupon code details',
-                                                        'image' =>
-                                                            'https://dashboard.uniqode.com/assets/img/dynamic-qr/coupon.svg',
-                                                    ],
-                                                    [
-                                                        'id' => 10,
-                                                        'value' => 'social',
-                                                        'title' => 'Social',
-                                                        'text' =>
-                                                            'Link to an existing web URL and bring traffic online',
-                                                        'image' =>
-                                                            'https://dashboard.uniqode.com/assets/img/dynamic-qr/social-media.svg',
-                                                    ],
-                                                    [
-                                                        'id' => 11,
-                                                        'value' => 'audio',
-                                                        'title' => 'Audio',
-                                                        'text' => 'Link to your phone number for quick calls',
-                                                        'image' =>
-                                                            'https://dashboard.uniqode.com/assets/img/dynamic-qr/business-page.svg',
-                                                    ],
-                                                    [
-                                                        'id' => 12,
-                                                        'value' => 'business_page',
-                                                        'title' => 'Business Page',
-                                                        'text' => 'Link to your phone number for quick calls',
-                                                        'image' =>
-                                                            'https://dashboard.uniqode.com/assets/img/dynamic-qr/mp3.svg',
-                                                    ],
-                                                ]" />
+                                                @include('user.pages.qr-code.partials.qr_type')
                                             </div>
                                         </div>
                                     </div>
-                                    <!--end::Step 1-->
 
-                                    <!--begin::Step 2-->
                                     <div class="flex-column" data-kt-stepper-element="content">
                                         <div class="card">
                                             <div class="card-body">
@@ -232,9 +95,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!--end::Step 2-->
 
-                                    <!--begin::Step 3-->
                                     <div class="flex-column" data-kt-stepper-element="content">
                                         <div class="card">
                                             <div class="row text-center justify-content-center">
@@ -245,9 +106,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!--end::Step 3-->
 
-                                    <!--begin::Step 4-->
                                     <div class="flex-column" data-kt-stepper-element="content">
                                         <div class="card">
                                             <div class="card-header">
@@ -260,35 +119,29 @@
                                             </div>
                                             <div class="card-body">
                                                 <div class="pt-5 pb-5 ps-5">
-                                                    <label for="">Enter a name for your QR code</label>
-                                                    <input type="text" name="" id=""
-                                                        class="form-control form-control-solid w-100">
+                                                    <x-metronic.label for="qr_name"
+                                                        class="form-label">{{ __('Enter a name for your QR code') }}</x-metronic.label>
+                                                    <x-metronic.input id="qr_name" type="text" name="qr_name"
+                                                        :value="old('qr_name')" placeholder="Enter a name for your QR code" />
                                                 </div>
-                                                <div class="w-25 mx-auto">
+                                                {{-- <div class="w-25 mx-auto">
                                                     <img width="300px"
                                                         src="https://assets-v2.lottiefiles.com/a/1abcc0d6-1163-11ee-9072-a343231e70f1/HGdrITc8PY.gif"
                                                         alt="">
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
                                     </div>
-                                    <!--end::Step 4-->
                                 </div>
 
-                                <!--end::Group-->
-
-                                <!--begin::Actions-->
                                 <div class="d-flex flex-stack">
-                                    <!--begin::Wrapper-->
                                     <div class="me-2">
                                         <button type="button" class="btn btn-light btn-active-light-primary"
                                             data-kt-stepper-action="previous">
                                             Back
                                         </button>
                                     </div>
-                                    <!--end::Wrapper-->
 
-                                    <!--begin::Wrapper-->
                                     <div>
                                         {{-- <button type="button" class="btn btn-primary" data-kt-stepper-action="submit">
                                             <span class="indicator-label">
@@ -299,61 +152,20 @@
                                                     class="spinner-border spinner-border-sm align-middle ms-2"></span>
                                             </span>
                                         </button> --}}
-                                        <button type="submit" id="generateButton" data-kt-stepper-action="submit"
+                                        {{-- <button type="submit" id="generateButton" data-kt-stepper-action="submit"
+                                            class="btn btn-primary">{{ __('Generate') }}</button> --}}
+                                        <button type="submit" id="generateButton"
                                             class="btn btn-primary">{{ __('Generate') }}</button>
 
                                         <button type="button" class="btn btn-primary" data-kt-stepper-action="next">
                                             Continue
                                         </button>
                                     </div>
-                                    <!--end::Wrapper-->
                                 </div>
-                                <!--end::Actions-->
                             </form>
-                            <!--end::Form-->
                         </div>
-                    </form>
-                    <!--end::Form-->
+                    </div>
                 </div>
-                <!--end::Card body-->
-            </div>
-            <!--end::Card-->
-        </div>
-        <!--end::Content-->
-        <!--begin::Sidebar-->
-        <div class="flex-lg-auto min-w-lg-300px">
-            <!--begin::Card-->
-            <div class="card">
-                <!--begin::Card body-->
-                <div class="card-body p-10">
-                    <span class="text-center fs-2x fw-bolder text-gray-800">Preview</span>
-                    <div class="card card-flush">
-                        <div class="card-body">
-                            <div id="generatedQRCodeContainer" class="mb-5">
-                                <img id="generatedQRCode" src="https://i.ibb.co/XzHNWc0/no-qr.png" alt="QR Code">
-                                {{-- <br> --}}
-                                {{-- <a id="downloadLink" href="" download style="display: none;" class="">Download QR Code</a> --}}
-                            </div>
-                            <div class="mb-0">
-                                <!--begin::Row-->
-                                <div class="row mb-5">
-                                    <!--begin::Col-->
-                                    <div class="col">
-                                        <a href="#"
-                                            class="btn btn-light btn-active-light-primary w-100">Preview</a>
-                                    </div>
-                                    <!--end::Col-->
-                                    <!--begin::Col-->
-                                    <div class="col">
-                                        <a id="downloadLink" href="" download style="display: none;"
-                                            class="btn btn-light btn-active-light-primary w-100">Download</a>
-                                    </div>
-                                    <!--end::Col-->
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div> --}}
             </div>
             <div class="col-lg-3">
                 <div class="card">
@@ -405,23 +217,22 @@
                     });
                 });
             });
-
         </script>
         <script>
             var myDropzone = new Dropzone("#kt_dropzonejs_example_1", {
-    url: "https://keenthemes.com/scripts/void.php", // Set the url for your upload script location
-    paramName: "file", // The name that will be used to transfer the file
-    maxFiles: 10,
-    maxFilesize: 10, // MB
-    addRemoveLinks: true,
-    accept: function(file, done) {
-        if (file.name == "wow.jpg") {
-            done("Naha, you don't.");
-        } else {
-            done();
-        }
-    }
-});
+                url: "https://keenthemes.com/scripts/void.php", // Set the url for your upload script location
+                paramName: "file", // The name that will be used to transfer the file
+                maxFiles: 10,
+                maxFilesize: 10, // MB
+                addRemoveLinks: true,
+                accept: function(file, done) {
+                    if (file.name == "wow.jpg") {
+                        done("Naha, you don't.");
+                    } else {
+                        done();
+                    }
+                }
+            });
         </script>
         <script>
             $(document).ready(function() {
@@ -529,9 +340,3 @@
         </script>
     @endpush
 </x-app-layout>
-
-
-
-
-
-

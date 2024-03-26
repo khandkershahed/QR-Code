@@ -7,7 +7,7 @@
             </div>
             <div class="flex-grow-1">
                 <div class="fw-bold">
-                    <img width="80px" src="{{ $eye_frame['image'] }}" alt="" />
+                    <img width="50px" src="{{ $eye_frame['image'] }}" alt="" />
                 </div>
             </div>
         </div>

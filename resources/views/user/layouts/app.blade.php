@@ -36,7 +36,7 @@
 
 
     <link rel="stylesheet" href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}">
-   
+
     <!--end::Global Stylesheets Bundle-->
     @props(['title'])
     <title>{{ $title ?? config('app.name', 'GO-QR') }}</title>
@@ -66,7 +66,6 @@
                     <!--begin::Post-->
                     <div class="post d-flex flex-column-fluid" id="kt_post">
                         <!--begin::Container-->
-                        <div id="kt_content_container" class="container-fluid">
                         <div id="kt_content_container" class="container-fluid">
                             <!--begin::Row-->
                             {{ $slot }}
@@ -106,7 +105,7 @@
         $hostUrl = 'admin/assets/';
     @endphp
     <!--begin::Global Javascript Bundle(used by all pages)-->
-    <script src="{{ asset($hostUrl . 'plugins/global/plugins.bundle.js') }}"></>
+    <script src="{{ asset($hostUrl . 'plugins/global/plugins.bundle.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/scripts.bundle.js') }}"></script>
     <!--end::Global Javascript Bundle-->
     <!--begin::Page Vendors Javascript(used by this page)-->

@@ -26,6 +26,7 @@ class QrCodeController extends Controller
 
     public function store(Request $request)
     {
+        dd($request->all());
 
         $color = $this->hexToRgb($request->color);
         $bg_color = $this->hexToRgb($request->bg_color);

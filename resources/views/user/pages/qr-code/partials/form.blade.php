@@ -6,14 +6,17 @@
         <p class="text-center mb-0">Paste a URL below to link with your QR code.</p>
     </div>
     <div class="row pt-4">
-        <div class="mb-2">
-            <label for="exampleFormControlInput1" class="required form-label">Website Url</label>
-            <input type="text" class="form-control form-control-solid" placeholder="url" />
+        <div class="mb-4">
+            <x-metronic.label for="qr_data_website_url" class="form-label">{{ __('Website Url') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_website_url" type="text" name="qr_data_website_url" :value="old('qr_data_website_url')"
+                placeholder="Website Url" />
+            {{-- <label for="exampleFormControlInput1" class="required form-label">Website Url</label>
+            <input type="text" class="form-control form-control-solid" placeholder="url" /> --}}
         </div>
-        <div>
+        {{-- <div>
             <label for="exampleFormControlInput1" class="required form-label">Others</label>
             <input type="text" class="form-control form-control-solid" placeholder="others if need" />
-        </div>
+        </div> --}}
     </div>
 </div>
 
@@ -29,18 +32,9 @@
     </div>
     <div class="row pt-4">
         <div class="d-flex align-items-center">
-            <div class="dropzone dz-clickable w-100" id="kt_dropzonejs_example_1">
-                <div class="dz-message needsclick">
-                    <i class="ki-duotone ki-file-up fs-3x text-primary">
-                        <span class="path1"></span>
-                        <span class="path2"></span>
-                    </i>
-                    <div class="ms-4">
-                        <h3 class="fs-5 fw-bold text-gray-900 mb-1">Drop files here or click to upload.</h3>
-                        <span class="fs-7 fw-semibold text-primary opacity-75">Upload up to 10 files</span>
-                    </div>
-                </div>
-            </div>
+            <x-metronic.label for="qr_data_pdf" class="form-label">{{ __('Upload Pdf') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_pdf" type="file" name="qr_data_pdf" :value="old('qr_data_pdf')"
+                placeholder="Upload Pdf" />
         </div>
     </div>
 </div>
@@ -52,22 +46,15 @@
     </div>
     <div class="row pt-4">
         <div class="d-flex align-items-center">
-            <div class="dropzone dz-clickable w-100" id="kt_dropzonejs_example_1">
-                <div class="dz-message needsclick">
-                    <i class="ki-duotone ki-file-up fs-3x text-primary">
-                        <span class="path1"></span>
-                        <span class="path2"></span>
-                    </i>
-                    <div class="ms-4">
-                        <h3 class="fs-5 fw-bold text-gray-900 mb-1">Drop files here or click to upload.</h3>
-                        <span class="fs-7 fw-semibold text-primary opacity-75">Upload up to 10 files</span>
-                    </div>
-                </div>
-            </div>
+            <x-metronic.label for="qr_data_image" class="form-label">{{ __('Upload Image') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_image" type="file" name="qr_data_image" :value="old('qr_data_image')"
+                placeholder="Upload Image" />
         </div>
         <div class="pt-4">
-            <label for="exampleFormControlInput1" class="required form-label">Or Paste Link Below</label>
-            <input type="text" class="form-control form-control-solid" placeholder="https://image-link.com" />
+            <x-metronic.label for="qr_data_image_link"
+                class="form-label">{{ __('Or Upload Image Link') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_image_link" type="text" name="qr_data_image_link" :value="old('qr_data_image_link')"
+                placeholder="Or Upload Image Link" />
         </div>
     </div>
 </div>
@@ -79,12 +66,15 @@
     </div>
     <div class="row pt-4">
         <div class="pt-4">
-            <label for="exampleFormControlInput1" class="required form-label">Phone number</label>
-            <input type="text" class="form-control form-control-solid" placeholder="https://image-link.com" />
+            <x-metronic.label for="qr_data_sms_number"
+                class="required form-label">{{ __('Phone Number') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_sms_number" type="text" name="qr_data_sms_number" :value="old('qr_data_sms_number')"
+                placeholder="Phone Number" required />
         </div>
         <div class="pt-4">
-            <label for="exampleFormControlInput1" class="required form-label">Message</label>
-            <textarea class="form-control form-control-solid" name="" id="" rows="3"></textarea>
+            <label for="qr_data_sms_message" class="required form-label">Message</label>
+            <textarea class="form-control form-control-solid" name="qr_data_sms_message" id="qr_data_sms_message" rows="3"
+                required></textarea>
         </div>
     </div>
 </div>
@@ -96,16 +86,20 @@
     </div>
     <div class="row pt-4">
         <div class="pb-4">
-            <label for="exampleFormControlInput1" class="required form-label">Receivers Emails</label>
-            <input type="text" class="form-control form-control-solid" placeholder="sample@mail.com" />
+            <x-metronic.label for="qr_data_email_id"
+                class="required form-label">{{ __('Receiver Email') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_email_id" type="text" name="qr_data_email_id" :value="old('qr_data_email_id')"
+                placeholder="sample@mail.com" required />
         </div>
         <div class="pb-4">
-            <label for="exampleFormControlInput1" class="required form-label">Subject</label>
-            <input type="text" class="form-control form-control-solid" placeholder="Your Email Subject" />
+            <x-metronic.label for="qr_data_email_subject"
+                class="form-label">{{ __('Email Subject') }}</x-metronic.label>
+                <x-metronic.input id="qr_data_email_subject" type="text" name="qr_data_email_subject" :value="old('qr_data_email_subject')"
+                    placeholder="Email Subject" />
         </div>
         <div class="pb-4">
-            <label for="exampleFormControlInput1" class="required form-label">Body</label>
-            <textarea class="form-control form-control-solid" name="" id="" rows="3"></textarea>
+            <label for="qr_data_email_body" class="required form-label">Mail Body</label>
+            <textarea class="form-control form-control-solid" name="qr_data_email_body" id="qr_data_email_body" rows="3" required></textarea>
         </div>
     </div>
 </div>
@@ -117,16 +111,22 @@
     </div>
     <div class="row pt-4">
         <div class="pb-4">
-            <label for="exampleFormControlInput1" class="required form-label">Google Play store URL</label>
-            <input type="text" class="form-control form-control-solid" placeholder="Enter url" />
+            <x-metronic.label for="qr_app_android"
+                class="form-label">{{ __('Google Play store URL') }}</x-metronic.label>
+                <x-metronic.input id="qr_app_android" type="text" name="qr_app_android" :value="old('qr_app_android')"
+                    placeholder="Google Play store URL" />
         </div>
         <div class="pb-4">
-            <label for="exampleFormControlInput1" class="required form-label">App store URL (iPhone)</label>
-            <input type="text" class="form-control form-control-solid" placeholder="Enter url" />
+            <x-metronic.label for="qr_app_iphone"
+                class="form-label">{{ __('App store URL (iPhone)') }}</x-metronic.label>
+                <x-metronic.input id="qr_app_iphone" type="text" name="qr_app_iphone" :value="old('qr_app_iphone')"
+                    placeholder="App store URL (iPhone)" />
         </div>
         <div class="pb-4">
-            <label for="exampleFormControlInput1" class="required form-label">App store URL (iPad and macOS)</label>
-            <input type="text" class="form-control form-control-solid" placeholder="Enter url" />
+            <x-metronic.label for="qr_app_ipad"
+                class="form-label">{{ __('App store URL (iPad and macOS)') }}</x-metronic.label>
+                <x-metronic.input id="qr_app_ipad" type="text" name="qr_app_ipad" :value="old('qr_app_ipad')"
+                    placeholder="App store URL (iPad and macOS)" />
         </div>
     </div>
 </div>
@@ -138,8 +138,10 @@
     </div>
     <div class="row pt-4">
         <div class="pb-4">
-            <label for="exampleFormControlInput1" class="required form-label">Phone number</label>
-            <input type="text" class="form-control form-control-solid" placeholder="Enter Phone Number" />
+            <x-metronic.label for="qr_app_call_number"
+                class="form-label">{{ __('Phone Number') }}</x-metronic.label>
+                <x-metronic.input id="qr_app_call_number" type="text" name="qr_app_call_number" :value="old('qr_app_call_number')"
+                    placeholder="Phone Number" />
         </div>
     </div>
 </div>
@@ -151,8 +153,10 @@
     </div>
     <div class="row pt-4">
         <div class="pb-4">
-            <label for="exampleFormControlInput1" class="required form-label">Search</label>
-            <input type="text" class="form-control form-control-solid" placeholder="Search Google Maps" />
+            <x-metronic.label for="qr_data_location"
+                class="form-label">{{ __('Google Location') }}</x-metronic.label>
+                <x-metronic.input id="qr_data_location" type="text" name="qr_data_location" :value="old('qr_data_location')"
+                    placeholder="Google Location" />
         </div>
         <div class="mt-2">
             <iframe
@@ -164,10 +168,10 @@
 </div>
 {{-- Coupon Form Start --}}
 <div class="form-container" id="coupon_code-form">
-        <div class="row text-center justify-content-center">
-            <h2 class="text-center mb-0">Coupon Code</h2>
-            <p class="text-center mb-0">Create Coupon Code.</p>
-        </div>
+    <div class="row text-center justify-content-center">
+        <h2 class="text-center mb-0">Coupon Code</h2>
+        <p class="text-center mb-0">Create Coupon Code.</p>
+    </div>
     <div class="pb-4 row">
         <div class="pb-4 col-lg-3">
             <label for="exampleFormControlInput1" class="required form-label">Coupon code</label>
@@ -202,7 +206,8 @@
         </div>
         <div class="pb-4 col-lg-3">
             <label for="exampleFormControlInput1" class="required form-label">Description body</label>
-            <input type="text" class="form-control form-control-solid" placeholder="Get Huge Discount On This Holiday Seasion" />
+            <input type="text" class="form-control form-control-solid"
+                placeholder="Get Huge Discount On This Holiday Seasion" />
         </div>
         <div class="pb-4 col-lg-3">
             <label for="exampleFormControlInput1" class="required form-label">Website</label>
@@ -285,8 +290,9 @@
         </div>
         <div class="pb-4 col-lg-2">
             <label for="exampleFormControlInput1" class="required form-label"></label>
-            <input type="color" class="form-control form-control-solid" placeholder="Enter Title"  style="width: 135px;
-            height: 40px;"/>
+            <input type="color" class="form-control form-control-solid" placeholder="Enter Title"
+                style="width: 135px;
+            height: 40px;" />
         </div>
         <div class="pb-4 col-lg-6">
             <label for="exampleFormControlInput1" class="required form-label">Message</label>
@@ -306,8 +312,9 @@
         </div>
         <div class="pb-4 col-lg-2">
             <label for="exampleFormControlInput1" class="required form-label"></label>
-            <input type="color" class="form-control form-control-solid" placeholder="Enter Title" style="width: 135px;
-            height: 40px;"/>
+            <input type="color" class="form-control form-control-solid" placeholder="Enter Title"
+                style="width: 135px;
+            height: 40px;" />
         </div>
         <div class="pb-4 col-lg-6">
             <label for="exampleFormControlInput1" class="required form-label">Facebook Username</label>
@@ -447,8 +454,9 @@
         </div>
         <div class="pt-4 col-lg-2">
             <label for="exampleFormControlInput1" class="required form-label"></label>
-            <input type="color" class="form-control form-control-solid" placeholder="Enter Title"  style="width: 135px;
-            height: 40px;"/>
+            <input type="color" class="form-control form-control-solid" placeholder="Enter Title"
+                style="width: 135px;
+            height: 40px;" />
         </div>
         <div class="pt-4 col-lg-6">
             <label for="exampleFormControlInput1" class="required form-label">Open Day</label>
