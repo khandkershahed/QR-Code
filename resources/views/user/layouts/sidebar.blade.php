@@ -4,8 +4,8 @@
     data-kt-drawer-toggle="#kt_aside_mobile_toggle">
     <div class="aside-logo flex-column-auto" id="kt_aside_logo">
         <a href="{{ route('dashboard') }}">
-            {{-- <img alt="Logo" src="assets/media/logos/logo-1-dark.svg" class="h-25px logo"> --}}
-            <h2 class="text-center text-white fw-bolder mb-0 h-25px logo fs-2">GO QR</h2>
+            <img alt="Logo" src="https://i.ibb.co/BNBTVN4/logo.png
+            " class="h-60px logo">
         </a>
         <div id="kt_aside_toggle" class="btn btn-icon w-auto px-0 btn-active-color-primary aside-toggle active"
             data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body"
@@ -95,9 +95,13 @@
                     <span class="menu-link">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                    <rect x="2" y="2" width="20" height="20" rx="2" fill="currentColor"></rect>
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.5 8.5a.5.5 0 01.5-.5h.5a.5.5 0 01.5.5v7a.5.5 0 01-.5.5h-.5a.5.5 0 01-.5-.5v-7zM10 8a1 1 0 011-1h1a1 1 0 011 1v8a1 1 0 01-1 1h-1a1 1 0 01-1-1v-8zm1 2a.5.5 0 00-.5.5v4a.5.5 0 00.5.5h.5a.5.5 0 00.5-.5v-4a.5.5 0 00-.5-.5h-.5z" fill="#fff"/>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none">
+                                    <rect x="2" y="2" width="20" height="20" rx="2"
+                                        fill="currentColor"></rect>
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M11.5 8.5a.5.5 0 01.5-.5h.5a.5.5 0 01.5.5v7a.5.5 0 01-.5.5h-.5a.5.5 0 01-.5-.5v-7zM10 8a1 1 0 011-1h1a1 1 0 011 1v8a1 1 0 01-1 1h-1a1 1 0 01-1-1v-8zm1 2a.5.5 0 00-.5.5v4a.5.5 0 00.5.5h.5a.5.5 0 00.5-.5v-4a.5.5 0 00-.5-.5h-.5z"
+                                        fill="#fff" />
                                 </svg>
                             </span>
                         </span>
@@ -168,12 +172,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="menu-item">
-                    <div class="menu-content pt-8 pb-2">
-                        <span class="menu-section text-muted text-uppercase fs-8 ls-1">Crafted</span>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
