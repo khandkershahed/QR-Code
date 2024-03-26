@@ -9,7 +9,7 @@
             <div>
                 <button type="button" class="btn btn-primary">
                     <i class="ki-duotone ki-exit-down fs-2"><span class="path1"></span><span class="path2"></span></i>
-                    Create  NFC Cards
+                    Create NFC Cards
                 </button>
             </div>
         </div>
