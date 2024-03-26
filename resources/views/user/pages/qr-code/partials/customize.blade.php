@@ -463,16 +463,16 @@
                 <h2 class="pt-10">COLOR</h2>
                 <div class="d-flex pt-5">
                     <div class="form-check pe-3">
-                        <input class="form-check-input" id="normal_color" type="radio" name="flexRadioDefault"
-                            id="flexRadioDefault1">
-                        <label class="form-check-label" for="flexRadioDefault1">
+                        <input class="form-check-input" id="solid_color" type="radio" name="qr_color_type"
+                            id="solid_color" value="solid_color">
+                        <label class="form-check-label" for="solid_color">
                             Solid Color
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" id="gradient_color" type="radio" name="flexRadioDefault"
-                            id="flexRadioDefault2">
-                        <label class="form-check-label" for="flexRadioDefault2">
+                        <input class="form-check-input" id="gradient_color" type="radio" name="qr_color_type"
+                            id="gradient_color" value="gradient_color">
+                        <label class="form-check-label" for="gradient_color">
                             Gradient
                         </label>
                     </div>
@@ -486,12 +486,12 @@
                             <div class="d-flex">
                                 <input type="text" id="colorCodeInput-normal_color"
                                     class="form-control form-control-solid w-25" readonly>
-                                <input type="color" id="colorPicker" style="width: 56px;height: 45px;">
+                                <input type="color" id="colorPicker" style="width: 56px;height: 45px;" name="qr_solid_color">
                             </div>
                         </div>
                     </div>
                     <div class="hidden-field" id="gradient_color_show" style="display: none;">
-                        <div class="pt-5">
+                        {{-- <div class="pt-5">
                             <label for="">Select Gradient Type</label>
                             <select class="form-select form-select-sm mt-3 w-25" aria-label="Default select example">
                                 <option selected>None</option>
@@ -499,7 +499,7 @@
                                 <option value="3">Horizontal</option>
                                 <option value="4">Vertical</option>
                             </select>
-                        </div>
+                        </div> --}}
                         <div class="d-flex">
                             <div class="pt-3 pe-4">
                                 <label for="">Color Start</label>
@@ -507,7 +507,7 @@
                                     <input type="text" id="colorCodeInput-gradient"
                                         class="form-control form-control-solid w-25" style="width: 160px !important"
                                         readonly>
-                                    <input type="color" id="colorPicker" style="width: 56px;height: 45px;">
+                                    <input type="color" id="colorPicker" name="qr_gradient_color_start" style="width: 56px;height: 45px;">
                                 </div>
                             </div>
                             <div class="pt-3">
@@ -516,7 +516,7 @@
                                     <input type="text" id="colorCodeInput-gradient-2"
                                         class="form-control form-control-solid w-25" style="width: 160px !important"
                                         readonly>
-                                    <input type="color" id="colorPicker" style="width: 56px;height: 45px;">
+                                    <input type="color" id="colorPicker" name="qr_gradient_color_end" style="width: 56px;height: 45px;">
                                 </div>
                             </div>
                         </div>
@@ -534,23 +534,23 @@
             <div>
                 <div class="d-flex pt-6">
                     <div class="form-check pe-3">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault"
-                            id="flexRadioDefault1">
-                        <label class="form-check-label" for="flexRadioDefault1">
+                        <input class="form-check-input" type="radio" name="qr_bg_type" value="color"
+                            id="color">
+                        <label class="form-check-label" for="color">
                             Color
                         </label>
                     </div>
-                    <div class="form-check pe-3">
+                    {{-- <div class="form-check pe-3">
                         <input class="form-check-input" type="radio" name="flexRadioDefault"
                             id="flexRadioDefault2">
                         <label class="form-check-label" for="flexRadioDefault2">
                             Image
                         </label>
-                    </div>
+                    </div> --}}
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault"
-                            id="flexRadioDefault3">
-                        <label class="form-check-label" for="flexRadioDefault3">
+                        <input class="form-check-input" type="radio" name="qr_bg_type" value="transparent"
+                            id="transparent">
+                        <label class="form-check-label" for="transparent">
                             Transparent
                         </label>
                     </div>
@@ -571,7 +571,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="image-content" style="display: none;">
+                    {{-- <div id="image-content" style="display: none;">
                         <div class="card w-100 shadow-sm mt-4">
                             <div class="card-body">
                                 <div class="dropzone dz-clickable w-100 mt-4" id="kt_dropzonejs_example_1">
@@ -591,7 +591,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <div id="transparent-content" style="display: none;">
                         <div class="card w-100 shadow-sm mt-4">
                             <div class="card-body">

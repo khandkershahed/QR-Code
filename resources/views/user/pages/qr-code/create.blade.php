@@ -154,7 +154,7 @@
                                         </button> --}}
                                         {{-- <button type="submit" id="generateButton" data-kt-stepper-action="submit"
                                             class="btn btn-primary">{{ __('Generate') }}</button> --}}
-                                        <button type="submit" id="generateButton"
+                                        <button type="submit" id="generateButton" data-kt-stepper-action="submit"
                                             class="btn btn-primary">{{ __('Generate') }}</button>
 
                                         <button type="button" class="btn btn-primary" data-kt-stepper-action="next">
