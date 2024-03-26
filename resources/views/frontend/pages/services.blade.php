@@ -20,26 +20,22 @@
                     <div class="about-content-five rmb-55" data-aos="fade-left" data-aos-duration="1500"
                         data-aos-offset="50">
                         <div class="section-title mb-30">
-                            <h2>Smart Way To Provide Best Customer Data</h2>
+                            <h2>QR Code Genius: Simplifying Your Digital Connections</h2>
                         </div>
                         <p>
-                            Sed ut perspiciatis unde omnis iste natus voluptatem
-                            accusantium doloremque laudantium totames aperiam eaque quae
-                            abillo inventore quasi architecto beatae vitae dicta sunt
-                            explicabos
+                            QR Code Genius is your go-to platform for creating, managing, and analyzing QR codes
+                            effortlessly. Whether you're a marketer, entrepreneur, or educator, QR Code Genius provides
+                            the tools you need to enhance your digital presence and engage your audience seamlessly.
                         </p>
                         <ul class="icon-list style-two mt-40 mb-45">
                             <li>
-                                <i class="fa-regular fa-circle-check"></i> Connect with leads with zero
-                                hassle.
+                                <i class="fa-regular fa-circle-check"></i> Intuitive QR Code Generation
                             </li>
                             <li>
-                                <i class="fa-regular fa-circle-check"></i> Take quick payments direct from
-                                meetings
+                                <i class="fa-regular fa-circle-check"></i> Centralized Management Hub
                             </li>
                             <li>
-                                <i class="fa-regular fa-circle-check"></i> Start finding leads that get
-                                coverts quickly
+                                <i class="fa-regular fa-circle-check"></i> Insightful Analytics
                             </li>
                         </ul>
                         <a href="about.html" class="theme-btn">Learn More <i class="fas fa-arrow-right"></i></a>
@@ -50,19 +46,6 @@
                         <div class="for-responsive">
                             <img src="https://webtendtheme.net/html/2024/akpager/assets/images/about/services-page.png"
                                 alt="About" />
-                        </div>
-                        <div class="first-part" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/about/services-page.png"
-                                alt="About" />
-                        </div>
-                        <div class="last-part" data-aos="fade-right" data-aos-duration="1500" data-aos-offset="50">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/about/services-page.png"
-                                alt="About" />
-                        </div>
-                        <div class="logo">
-                            <a href="index.html"><img
-                                    src="https://webtendtheme.net/html/2024/akpager/assets/images/logos/logo-top.png"
-                                    alt="Logo" /></a>
                         </div>
                     </div>
                 </div>
@@ -78,7 +61,7 @@
                 <div class="col-xl-7 col-lg-9">
                     <div class="section-title text-center mb-55" data-aos="fade-up" data-aos-duration="1500"
                         data-aos-offset="50">
-                        <h2>Powerful approach to project planning and creation</h2>
+                        <h2>GoQR: Empowering Your Business with QR Code Solutions</h2>
                     </div>
                 </div>
             </div>
@@ -90,11 +73,10 @@
                         </div>
                         <div class="content">
                             <h5>
-                                <a href="service-details.html">Proactive Blocklist Tracking</a>
+                                <a href="service-details.html">Seamless QR Code Generation</a>
                             </h5>
                             <p>
-                                Sed ut perspiciatis unde omnis iste natus doloremque
-                                laudantium totamto
+                                Generate QR codes quickly and easily with our intuitive interface.
                             </p>
                         </div>
                         <div class="bg">
@@ -111,11 +93,10 @@
                         </div>
                         <div class="content">
                             <h5>
-                                <a href="service-details.html">Faster Time to Inbox</a>
+                                <a href="service-details.html">Customizable Design Options</a>
                             </h5>
                             <p>
-                                Sed ut perspiciatis unde omnis iste natus doloremque
-                                laudantium totamto
+                                Personalize QR codes with your brand's colors, logos, and design elements.
                             </p>
                         </div>
                         <div class="bg">
@@ -132,11 +113,10 @@
                         </div>
                         <div class="content">
                             <h5>
-                                <a href="service-details.html">Build Confidence with BIMI</a>
+                                <a href="service-details.html">Dynamic QR Code Management</a>
                             </h5>
                             <p>
-                                Sed ut perspiciatis unde omnis iste natus doloremque
-                                laudantium totamto
+                                Keep QR codes current with the latest information, ensuring always relevant.
                             </p>
                         </div>
                         <div class="bg">
@@ -152,11 +132,10 @@
                         </div>
                         <div class="content">
                             <h5>
-                                <a href="service-details.html">Manage Dedicated IPs</a>
+                                <a href="service-details.html">Advanced Analytics and Insights</a>
                             </h5>
                             <p>
-                                Sed ut perspiciatis unde omnis iste natus doloremque
-                                laudantium totamto
+                                Gain valuable insights into QR code performance, scan rates, and user engagement.
                             </p>
                         </div>
                         <div class="bg">
@@ -173,11 +152,10 @@
                         </div>
                         <div class="content">
                             <h5>
-                                <a href="service-details.html">Dynamic suppression List</a>
+                                <a href="service-details.html">Secure and Reliable Platform</a>
                             </h5>
                             <p>
-                                Sed ut perspiciatis unde omnis iste natus doloremque
-                                laudantium totamto
+                                Rest assured that your QR codes and data are safe and secure with our reliable platform.
                             </p>
                         </div>
                         <div class="bg">
@@ -193,10 +171,10 @@
                             <i class="fa-solid fa-shield-halved"></i>
                         </div>
                         <div class="content">
-                            <h5><a href="service-details.html">Verify DNS Records</a></h5>
+                            <h5><a href="service-details.html">Cross-Platform Compatibility</a></h5>
                             <p>
-                                Sed ut perspiciatis unde omnis iste natus doloremque
-                                laudantium totamto
+                                Ensure seamless integration across various devices and platforms, reaching your audience
+                                wherever they are.
                             </p>
                         </div>
                         <div class="bg">
@@ -219,8 +197,8 @@
                     <div class="cta-content text-white rmb-35" data-aos="fade-left" data-aos-duration="1500"
                         data-aos-offset="50">
                         <div class="section-title mb-40">
-                            <span class="subtitle d-block mb-10">Website Builder</span>
-                            <h2>Ready Work Together to Create Website?</h2>
+                            <span class="subtitle d-block mb-10">GoQR - Simplifying QR Code Management</span>
+                            <h2>Platform for effortlessly generating, customizing, and tracking QR codes</h2>
                         </div>
                         <a href="contact.html" class="theme-btn">Contact Us <i class="fas fa-arrow-right"></i></a>
                     </div>
@@ -244,7 +222,7 @@
                 <div class="col-xl-7 col-lg-9 col-md-11">
                     <div class="section-title text-center mb-60" data-aos="fade-up" data-aos-duration="1500"
                         data-aos-offset="50">
-                        <h2>Easy to Start, Easy to Scale Website Builder Plans</h2>
+                        <h2>Quick start, effortless scaling with our QR plans.</h2>
                     </div>
                 </div>
             </div>

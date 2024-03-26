@@ -1,91 +1,129 @@
-<footer class="main-footer footer-five text-black pt-100 rel z-1">
+<footer class="main-footer footer-one rel z-1 mt-100">
     <div class="container">
-        <div class="for-middle-border pb-50">
-            <div class="row justify-content-between">
-                <div class="col-lg-5 col-md-7">
-                    <div class="footer-widget widget-about" data-aos="fade-up" data-aos-duration="1500"
+        <div class="footer-newsletter text-white"
+            style="padding: 40px 60px;
+        border-radius: 15px;
+        margin-bottom: -130px;
+        background: #0096d8;
+        position: relative; z-index: 5'">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-lg-5">
+                    <div class="logo-part aos-init aos-animate" data-aos="fade-left" data-aos-duration="1500"
                         data-aos-offset="50">
-                        <div class="section-title">
-                            <h2>Get Our Newsletters</h2>
+                        <div class="logo mb-10">
+                            <a href="index.html"><img width="100px" src="https://i.ibb.co/BNBTVN4/logo.png"
+                                    alt="Logo"></a>
                         </div>
-                        <form action="#">
-                            <div class="newsletter-form bgc-lighter">
-                                <input type="email" placeholder="Email Address" required="" />
-                                <button type="submit">
-                                    <b>Sign Up <i class="fas fa-arrow-right"></i></b>
-                                </button>
-                            </div>
-                            <div class="radio-part">
-                                <input id="update-news" type="radio" />
-                                <label for="update-news">Get 7 days updates news & offers</label>
-                            </div>
+                        <p>Digital Business Consulting Agency</p>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-7">
+                    <div class="form-part aos-init aos-animate" data-aos="fade-right" data-aos-duration="1500"
+                        data-aos-offset="50">
+                        <h5>Subscribe Our Newsletter</h5>
+                        <form class="newsletter-form mt-15" action="#">
+                            <input type="email" placeholder="Email Address" required="">
+                            <button type="submit">Sign Up <i class="fas fa-arrow-right"></i></button>
                         </form>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="footer-widget widget-contact-info" data-aos="fade-up" data-aos-delay="100"
-                        data-aos-duration="1500" data-aos-offset="50">
-                        <h6 class="footer-title">Get In Touch</h6>
-                        <ul>
-                            <li>
-                                <a href="mailto:support@gmail.com">support@gmail.com</a>
-                            </li>
-                            <li>55 main Street, 2nd block Melbourne, Australia</li>
-                            <li><a href="calto:+00012345688">+000 (123) 456 88</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-6 ms-lg-auto">
-                    <div class="footer-widget widget-links" data-aos="fade-up" data-aos-delay="100"
-                        data-aos-duration="1500" data-aos-offset="50">
-                        <h6 class="footer-title">Resources</h6>
-                        <ul>
-                            <li><a href="{{ route('contact') }}">Contact</a></li>
-                            <li><a href="{{ route('services') }}">Services</a></li>
-                            <li><a href="{{ route('about') }}">About Us</a></li>
-                            <li><a href="services.html">Benefits</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-6">
-                    <div class="footer-widget widget-links" data-aos="fade-up" data-aos-delay="150"
-                        data-aos-duration="1500" data-aos-offset="50">
-                        <h6 class="footer-title">Quick Link</h6>
-                        <ul>
-                            <li><a href="services.html">Features</a></li>
-                            <li><a href="{{ route('pricing') }}">Pricing Plan</a></li>
-                            <li><a href="about.html">Best Program</a></li>
-                            <li><a href="contact.html">Press Kit</a></li>
-                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="footer-bottom py-15">
-            <div class="row align-items-center">
-                <div class="col-xl-8 col-lg-6">
-                    <div class="footer-bottom-logo mb-25 rmb-0 rmt-25 text-lg-start text-center" data-aos="fade-left"
-                        data-aos-duration="1500" data-aos-offset="50">
-                        <a href="index.html">
-                            <img width="100px" src="https://i.ibb.co/BNBTVN4/logo.png" alt="Logo" />
-                        </a>
+    </div>
+    <div class="container-fluid" style="background: black; padding-top: 10rem">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                    <div class="footer-widget widget-about aos-init" data-aos="fade-up" data-aos-duration="1500"
+                        data-aos-offset="50">
+                        <h6 class="footer-title text-white">About Company</h6>
+                        <p class="text-muted">Connect with us and stay updated on the latest news, offers, and updates.</p>
+                        <div class="social-style-one">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-lg-6">
-                    <div class="copyright-text mb-25 pt-10 text-lg-end text-center" data-aos="fade-right"
+                <div class="col-xl-3 col-lg-4 col-sm-6 order-xl-2">
+                    <div class="footer-widget widget-contact aos-init" data-aos="fade-up" data-aos-delay="400"
                         data-aos-duration="1500" data-aos-offset="50">
-                        <p>
-                            Copyright @2024, <a href="index.html">Brothers It</a> All
-                            Rights Reserved
-                        </p>
+                        <h6 class="footer-title text-white">Contact</h6>
+                        <ul>
+                            <li><i class="fa fa-map-marker-alt"></i> 55 Main Street, 2nd block Melbourne, Australia
+                            </li>
+                            <li><i class="fa fa-envelope"></i> <a href="mailto:support@gmail.com">support@gmail.com</a>
+                            </li>
+                            <li><i class="fa fa-phone"></i> <a href="callto:+0001234455">+000 (123) 44 55</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="row">
+                        <div class="col-sm-4 col-6">
+                            <div class="footer-widget widget-links aos-init" data-aos="fade-up" data-aos-delay="100"
+                                data-aos-duration="1500" data-aos-offset="50">
+                                <h6 class="footer-title text-white">Resources</h6>
+                                <ul>
+                                    <li><a href="shop.html">Product</a></li>
+                                    <li><a href="services.html">Services</a></li>
+                                    <li><a href="about.html">About Us</a></li>
+                                    <li><a href="services.html">Benefits</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-6">
+                            <div class="footer-widget widget-links aos-init" data-aos="fade-up" data-aos-delay="200"
+                                data-aos-duration="1500" data-aos-offset="50">
+                                <h6 class="footer-title text-white">Quick Link</h6>
+                                <ul>
+                                    <li><a href="services.html">Features</a></li>
+                                    <li><a href="pricing.html">Pricing Plan</a></li>
+                                    <li><a href="about.html">Best Program</a></li>
+                                    <li><a href="contact.html">Press Kit</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-6">
+                            <div class="footer-widget widget-links aos-init" data-aos="fade-up" data-aos-delay="300"
+                                data-aos-duration="1500" data-aos-offset="50">
+                                <h6 class="footer-title text-white">Company</h6>
+                                <ul>
+                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="team.html">Team Member</a></li>
+                                    <li><a href="about.html">Reviews</a></li>
+                                    <li><a href="blog.html">Latest News</a></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!-- Scroll Top Button -->
-            <button class="scroll-top scroll-to-target" data-target="html">
-                <span class="fas fa-angle-double-up"></span>
-            </button>
+            <div class="footer-bottom mt-30 py-15">
+                <div class="row align-items-center">
+                    <div class="col-xl-4 col-lg-6">
+                        <div class="copyright-text pt-10 text-lg-start text-center aos-init" data-aos="fade-left"
+                            data-aos-duration="1000" data-aos-offset="50">
+                            <p>Copyright @2024, <a href="index.html">Go QR </a> All Rights Reserved</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-6">
+                        <div class="footer-bottom-menu text-lg-end text-center aos-init" data-aos="fade-right"
+                            data-aos-duration="1000" data-aos-offset="50">
+                            <ul class="d-flex justify-content-end ">
+                                <li class="pe-3"><a href="faqs.html">Faqs</a></li>
+                                <li class="pe-3"><a href="about.html">Setting</a></li>
+                                <li class="pe-3"><a href="about.html">Privacy</a></li>
+                                <li class="pe-3"><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Scroll Top Button -->
+                <button class="scroll-top scroll-to-target" data-target="html" style="display: inline-block;"><span
+                        class="far fa-angle-double-up"></span></button>
+            </div>
         </div>
     </div>
 </footer>

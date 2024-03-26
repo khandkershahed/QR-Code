@@ -8680,7 +8680,7 @@ a.theme-btn {
   height: calc(100% + 200px);
   background: -webkit-linear-gradient(209deg, #8F00FF 2.36%, rgba(255, 255, 255, 0.3) 40.01%, rgba(252, 120, 11, 0.2) 65.07%, rgba(59, 11, 252, 0.8) 107.82%);
   background: -o-linear-gradient(209deg, #8F00FF 2.36%, rgba(255, 255, 255, 0.3) 40.01%, rgba(252, 120, 11, 0.2) 65.07%, rgba(59, 11, 252, 0.8) 107.82%);
-  background: linear-gradient(241deg, #8F00FF 2.36%, rgba(255, 255, 255, 0.3) 40.01%, rgba(252, 120, 11, 0.2) 65.07%, rgba(59, 11, 252, 0.8) 107.82%); }
+  background: linear-gradient(241deg, #009fde 2.36%, rgba(255, 255, 255, 0.3) 40.01%, rgba(252, 120, 11, 0.2) 65.07%, rgb(0 152 217) 107.82%);
   .hero-nine-shapes:after {
     content: '';
     z-index: -2;
