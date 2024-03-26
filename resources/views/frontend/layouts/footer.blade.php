@@ -1,9 +1,9 @@
-<footer class="main-footer footer-one rel z-1 mt-100">
+<footer class="rel z-1 mt-100">
     <div class="container">
         <div class="footer-newsletter text-white"
             style="padding: 40px 60px;
         border-radius: 15px;
-        margin-bottom: -130px;
+        margin-bottom: -195px;
         background: #0096d8;
         position: relative; z-index: 5'">
             <div class="row align-items-center justify-content-between">
@@ -14,7 +14,6 @@
                             <a href="{{ route('homePage') }}"><img width="100px" src="https://i.ibb.co/BNBTVN4/logo.png"
                                     alt="Logo"></a>
                         </div>
-                        <p>Digital Business Consulting Agency</p>
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-7">

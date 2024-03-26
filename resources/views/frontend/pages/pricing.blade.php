@@ -7,12 +7,12 @@
             <div class="banner-inner pt-70 rpt-60 text-black">
                 <h1 class="page-title aos-init aos-animate" data-aos="fade-up" data-aos-duration="1500"
                     data-aos-offset="50">
-                    Pricing
+                   Our Pricing
                 </h1>
             </div>
         </div>
     </section>
-    <section class="pricing-three-area bgc-lighter bgp-bottom pt-130 rpt-100 pb-100 rpb-70 rel z-1">
+    <section class="pricing-three-area bgp-bottom pt-130 rpt-100 pb-100 rpb-70 rel z-1">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-6 col-lg-9 col-md-11">
@@ -48,7 +48,7 @@
                                 </div>
                                 <div class="text">Smart Pricing for good services</div>
                                 <a href="#" class="theme-btn">Choose Package <i
-                                        class="far fa-arrow-right"></i></a>
+                                        class="fas fa-arrow-right"></i></a>
                                 <h4 class="title">Regular Plan</h4>
                                 <ul class="list">
                                     <li>Email marketing</li>
@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="text">Smart Pricing for good services</div>
                                 <a href="#" class="theme-btn">Choose Package <i
-                                        class="far fa-arrow-right"></i></a>
+                                        class="fas fa-arrow-right"></i></a>
                                 <h4 class="title">Standard Plan</h4>
                                 <ul class="list">
                                     <li>Email marketing</li>
@@ -90,7 +90,7 @@
                                 </div>
                                 <div class="text">Smart Pricing for good services</div>
                                 <a href="#" class="theme-btn">Choose Package <i
-                                        class="far fa-arrow-right"></i></a>
+                                        class="fas fa-arrow-right"></i></a>
                                 <h4 class="title">Premium Plan</h4>
                                 <ul class="list">
                                     <li>Email marketing</li>
@@ -115,7 +115,7 @@
                                 </div>
                                 <div class="text">Smart Pricing for good services</div>
                                 <a href="#" class="theme-btn">Choose Package <i
-                                        class="far fa-arrow-right"></i></a>
+                                        class="fas fa-arrow-right"></i></a>
                                 <h4 class="title">Regular Plan</h4>
                                 <ul class="list">
                                     <li>Email marketing</li>
@@ -136,7 +136,7 @@
                                 </div>
                                 <div class="text">Smart Pricing for good services</div>
                                 <a href="#" class="theme-btn">Choose Package <i
-                                        class="far fa-arrow-right"></i></a>
+                                        class="fas fa-arrow-right"></i></a>
                                 <h4 class="title">Standard Plan</h4>
                                 <ul class="list">
                                     <li>Email marketing</li>
@@ -157,7 +157,7 @@
                                 </div>
                                 <div class="text">Smart Pricing for good services</div>
                                 <a href="#" class="theme-btn">Choose Package <i
-                                        class="far fa-arrow-right"></i></a>
+                                        class="fas fa-arrow-right"></i></a>
                                 <h4 class="title">Premium Plan</h4>
                                 <ul class="list">
                                     <li>Email marketing</li>

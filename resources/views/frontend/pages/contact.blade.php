@@ -12,6 +12,14 @@
             </div>
         </div>
     </section>
+    <div class="contact-page-map">
+        <div class="our-location">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d96777.16150026117!2d-74.00840582560909!3d40.71171357405996!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1706508986625!5m2!1sen!2sbd"
+                style="border: 0; width: 100%" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
     <section class="contact-page py-130 rpy-100">
         <div class="container">
             <div class="row gap-100 align-items-center">
@@ -64,7 +72,8 @@
                 <div class="col-lg-7">
                     <div class="contact-form br-10 bgc-lighter rmt-60 aos-init aos-animate" name="contact-form"
                         data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
-                        <form id="contactForm" class="contactForm" action="{{ route('contact.add') }}" method="POST" novalidate>
+                        <form id="contactForm" class="contactForm" action="{{ route('contact.add') }}" method="POST"
+                            novalidate>
                             @csrf
                             <img class="shape-one"
                                 src="	https://webtendtheme.net/html/2024/akpager/assets/images/shapes/star-black-shape.png"
@@ -147,12 +156,4 @@
             </div>
         </div>
     </section>
-    <div class="contact-page-map">
-        <div class="our-location">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d96777.16150026117!2d-74.00840582560909!3d40.71171357405996!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1706508986625!5m2!1sen!2sbd"
-                style="border: 0; width: 100%" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-    </div>
 </x-frontend-app-layout>
