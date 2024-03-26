@@ -14,7 +14,6 @@
                             <a href="index.html"><img width="100px" src="https://i.ibb.co/BNBTVN4/logo.png"
                                     alt="Logo"></a>
                         </div>
-                        <p>Digital Business Consulting Agency</p>
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-7">
