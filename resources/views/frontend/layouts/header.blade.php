@@ -5,16 +5,11 @@
             <div class="header-inner py-20 rel d-flex align-items-center">
                 <div class="logo-outer">
                     <div class="logo">
-                      <a href="index.html">
-                        <img
-                          width="100px"
-                          src="https://i.ibb.co/BNBTVN4/logo.png"
-                          alt="Logo"
-                          title="Logo"
-                        />
-                      </a>
+                        <a href="{{ route('homePage') }}">
+                            <img width="100px" src="https://i.ibb.co/BNBTVN4/logo.png" alt="Logo" title="Logo" />
+                        </a>
                     </div>
-                  </div>
+                </div>
 
                 <div class="nav-outer ms-lg-5 ps-lg-5 clearfix">
                     <!-- Main Menu -->
@@ -25,7 +20,6 @@
                                     <img src="assets/images/logos/logo6.png" alt="Logo" title="Logo" />
                                 </a>
                             </div>
-
                             <!-- Toggle Button -->
                             <button type="button" class="navbar-toggle" data-bs-toggle="collapse"
                                 data-bs-target=".navbar-collapse">
@@ -34,7 +28,6 @@
                                 <span class="icon-bar bg-dark"></span>
                             </button>
                         </div>
-
                         <div class="navbar-collapse collapse clearfix">
                             <ul class="navigation onepage clearfix">
                                 <li><a href="{{ route('homePage') }}">HOME</a></li>
@@ -62,8 +55,9 @@
                 <!-- Menu Button -->
                 <div class="menu-btns ms-lg-auto">
                     <a href="{{ route('register') }}" class="light-btn">Sign Up</a>
-                    <a href="{{ route('contact') }}" class="theme-btn style-two">Get Started <i
-                            class="fa-solid fa-arrow-right"></i></a>
+                    <a href="{{ route('contact') }}" class="theme-btn style-two">Get Started
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
         </div>

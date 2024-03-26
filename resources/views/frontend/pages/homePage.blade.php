@@ -16,7 +16,7 @@
                             <label for="email-address"><i class="fas fa-envelope"></i></label>
                             <input id="email-address" type="email" placeholder="Email Address" required="" />
                             <button type="submit">
-                                <b>Free Trail <i class="fas fa-arrow-right"></i></b>
+                                <b>Subscribe Now <i class="fas fa-arrow-right"></i></b>
                             </button>
                         </form>
                         <ul class="icon-list pt-15">
@@ -165,7 +165,7 @@
                                         Experience
                                     </li>
                                 </ul>
-                                <a href="#" class="theme-btn style-two">Learn More <i
+                                <a href="{{ route('services') }}" class="theme-btn style-two">Learn More <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -219,7 +219,7 @@
                                         Experience
                                     </li>
                                 </ul>
-                                <a href="#" class="theme-btn style-two">Learn More <i
+                                <a href="{{ route('services') }}" class="theme-btn style-two">Learn More <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -259,7 +259,7 @@
                                         Experience
                                     </li>
                                 </ul>
-                                <a href="#" class="theme-btn style-two">Learn More <i
+                                <a href="{{ route('services') }}" class="theme-btn style-two">Learn More <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -310,7 +310,7 @@
                                         Experience
                                     </li>
                                 </ul>
-                                <a href="#" class="theme-btn style-two">Learn More <i
+                                <a href="{{ route('services') }}" class="theme-btn style-two">Learn More <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -488,7 +488,7 @@
                             process and amplify your online presence with ease.
                         </p>
                     </div>
-                    <a href="contact.html" class="theme-btn">Get Started Now <i class="fas fa-arrow-right"></i></a>
+                    <a href="{{ route('register') }}" class="theme-btn">Get Started Now <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
             <div class="tooltips-wrap">
@@ -663,7 +663,7 @@
                             we embark on a journey to revolutionize the way you connect
                             with the world.
                         </p>
-                        <a href="contact.html" class="theme-btn mt-25 mb-75">Get Started <i
+                        <a href="{{ route('register') }}" class="theme-btn mt-25 mb-75">Get Started <i
                                 class="fas fa-arrow-right"></i></a>
                         <div class="row">
                             <div class="col-6">
@@ -717,7 +717,7 @@
                             fees, you can choose the plan that fits your budget and usage
                             requirements
                         </p>
-                        <a href="contact.html" class="theme-btn mt-25">Get Started <i
+                        <a href="{{ route('register') }}" class="theme-btn mt-25">Get Started <i
                                 class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
@@ -828,7 +828,7 @@
     </section>
     <!-- Pricing Area End -->
 
-   
+
 
     <!-- CTA Area Start -->
     <section class="cta-nine-area py-130 rpy-100"
@@ -841,7 +841,7 @@
                         <span class="subtitle-three mb-10">Get Started Us</span>
                         <h2>Get Ready to Grow your social networking?</h2>
                     </div>
-                    <a href="contact.html" class="theme-btn style-two">Contact Us <i
+                    <a href="{{ route('contact') }}" class="theme-btn style-two">Contact Us <i
                             class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
