@@ -25,6 +25,11 @@ Route::get('/services', [HomeController::class, 'services'])->name('services');
 Route::get('/pricing', [HomeController::class, 'pricing'])->name('pricing');
 Route::get('/digital-card', [HomeController::class, 'digitalCard'])->name('digitalCard');
 Route::get('/qr-code', [HomeController::class, 'qrCode'])->name('qrCode');
+Route::get('/NFC-CARD', [HomeController::class, 'nfcCard'])->name('nfcCard');
+Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
+Route::get('/policy', [HomeController::class, 'policy'])->name('policy');
+Route::get('/terms', [HomeController::class, 'terms'])->name('terms');
+
 Route::get('/flush-session', function() {
     session()->flush();
     return response()->json(['message' => 'Session flushed successfully']);
