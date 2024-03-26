@@ -828,35 +828,7 @@
     </section>
     <!-- Pricing Area End -->
 
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-7 aos-init aos-animate" data-aos="fade-left" data-aos-duration="1000"
-                    data-aos-offset="50">
-                    <div class="cta-left-content bgc-primary rmb-30"
-                        style="
-              background-image: url('https://webtendtheme.net/html/2024/akpager/{{ asset('frontend') }}/assets/images/shapes/cta-left-circle.png');
-            ">
-                        <div class="section-title mb-15">
-                            <span class="subtitle d-block mb-10 text-white">Website Builder</span>
-                            <h3 class="text-white">
-                                Ready Work Together to Create Website?
-                            </h3>
-                        </div>
-                        <a href="contact.html" class="theme-btn style-four mb-25 text-white">Contact Us <i
-                                class="far fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-5 aos-init aos-animate" data-aos="fade-right" data-aos-duration="1000">
-                    <div class="cta-right-image"
-                        style="
-              background-image: url('https://webtendtheme.net/html/2024/akpager/{{ asset('frontend') }}/assets/images/backgrounds/cta-right.jpg');
-            ">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+   
 
     <!-- CTA Area Start -->
     <section class="cta-nine-area py-130 rpy-100"

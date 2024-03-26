@@ -67,9 +67,9 @@
                                 <h6 class="footer-title text-white">Resources</h6>
                                 <ul>
                                     <li><a href="shop.html">Product</a></li>
-                                    <li><a href="services.html">Services</a></li>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="services.html">Benefits</a></li>
+                                    <li><a href="{{route('services')}}">Services</a></li>
+                                    <li><a href="{{ route('about') }}">About Us</a></li>
+                                    <li><a href="{{route('services')}}">Benefits</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -90,7 +90,7 @@
                                 data-aos-duration="1500" data-aos-offset="50">
                                 <h6 class="footer-title text-white">Company</h6>
                                 <ul>
-                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="{{ route('about') }}">About</a></li>
                                     <li><a href="team.html">Team Member</a></li>
                                     <li><a href="about.html">Reviews</a></li>
                                     <li><a href="blog.html">Latest News</a></li>
@@ -115,14 +115,14 @@
                                 <li class="pe-3"><a href="faqs.html">Faqs</a></li>
                                 <li class="pe-3"><a href="about.html">Setting</a></li>
                                 <li class="pe-3"><a href="about.html">Privacy</a></li>
-                                <li class="pe-3"><a href="contact.html">Contact</a></li>
+                                <li class="pe-3"><a href="{{ route('contact') }}">Contact</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <!-- Scroll Top Button -->
-                <button class="scroll-top scroll-to-target" data-target="html" style="display: inline-block;"><span
-                        class="far fa-angle-double-up"></span></button>
+                <button class="scroll-top scroll-to-target me-3" data-target="html" style="display: inline-block;"><span
+                        class="fas fa-angle-double-up"></span></button>
             </div>
         </div>
     </div>
