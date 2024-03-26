@@ -11,7 +11,7 @@
                     <div class="logo-part aos-init aos-animate" data-aos="fade-left" data-aos-duration="1500"
                         data-aos-offset="50">
                         <div class="logo mb-10">
-                            <a href="index.html"><img width="100px" src="https://i.ibb.co/BNBTVN4/logo.png"
+                            <a href="{{ route('homePage') }}"><img width="100px" src="https://i.ibb.co/BNBTVN4/logo.png"
                                     alt="Logo"></a>
                         </div>
                     </div>
@@ -39,10 +39,10 @@
                         <p class="text-muted">Connect with us and stay updated on the latest news, offers, and updates.
                         </p>
                         <div class="social-style-one">
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                            <a href="javascript:void(0)"><i class="fab fa-twitter"></i></a>
+                            <a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a>
+                            <a href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
+                            <a href="javascript:void(0)"><i class="fab fa-pinterest-p"></i></a>
                         </div>
                     </div>
                 </div>
@@ -77,9 +77,9 @@
                                 data-aos-duration="1500" data-aos-offset="50">
                                 <h6 class="footer-title text-white">Quick Link</h6>
                                 <ul>
-                                    <li><a href="pricing.html">Pricing</a></li>
-                                    <li><a href="pricing.html">QR Code</a></li>
-                                    <li><a href="about.html">Business Card</a></li>
+                                    <li><a href="{{ route('pricing') }}">Pricing</a></li>
+                                    <li><a href="{{ route('qrCode') }}">QR Code</a></li>
+                                    <li><a href="{{ route('nfcCard') }}">Business Card</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -88,9 +88,9 @@
                                 data-aos-duration="1500" data-aos-offset="50">
                                 <h6 class="footer-title text-white">Condition</h6>
                                 <ul>
-                                    <li><a href="{{ route('about') }}">Terms</a></li>
-                                    <li><a href="team.html">Policy</a></li>
-                                    <li><a href="team.html">Faq</a></li>
+                                    <li><a href="{{ route('terms') }}">Terms</a></li>
+                                    <li><a href="{{ route('policy') }}">Policy</a></li>
+                                    <li><a href="{{ route('faq') }}">Faq</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -102,7 +102,7 @@
                     <div class="col-xl-12 col-lg-6">
                         <div class="copyright-text pt-10 text-lg-start text-center aos-init" data-aos="fade-left"
                             data-aos-duration="1000" data-aos-offset="50">
-                            <p>Copyright @2024, <a href="index.html">Go QR </a> All Rights Reserved</p>
+                            <p>Copyright @2024, <a href="{{ route('homePage') }}">Go QR </a> All Rights Reserved</p>
                         </div>
                     </div>
                 </div>
