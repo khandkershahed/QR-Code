@@ -406,13 +406,13 @@
                 <x-qr-code.pattern :patterns="[
                     [
                         'id' => 431,
-                        'value' => 'pattern_1',
+                        'value' => 'square',
                         'image' =>
                             'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/square.svg',
                     ],
                     [
                         'id' => 432,
-                        'value' => 'pattern_2',
+                        'value' => 'dot',
                         'image' =>
                             'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/circle.svg',
                     ],
@@ -423,37 +423,37 @@
                     ],
                     [
                         'id' => 434,
-                        'value' => 'pattern_4',
+                        'value' => 'dot',
                         'image' =>
                             'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/left-diamond.svg',
                     ],
                     [
                         'id' => 435,
-                        'value' => 'pattern_5',
+                        'value' => 'dot',
                         'image' =>
                             'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/left-diamond.svg',
                     ],
                     [
                         'id' => 436,
-                        'value' => 'pattern_6',
+                        'value' => 'diamond',
                         'image' =>
                             'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/right-diamond.svg',
                     ],
                     [
                         'id' => 437,
-                        'value' => 'pattern_7',
+                        'value' => 'diamond',
                         'image' =>
                             'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/thin-square.svg',
                     ],
                     [
                         'id' => 438,
-                        'value' => 'pattern_8',
+                        'value' => 'circle',
                         'image' =>
                             'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/smooth-round.svg',
                     ],
                     [
                         'id' => 439,
-                        'value' => 'pattern_9',
+                        'value' => 'circle',
                         'image' =>
                             'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/smooth-round.svg',
                     ],
@@ -535,22 +535,22 @@
                 <div class="d-flex pt-6">
                     <div class="form-check pe-3">
                         <input class="form-check-input" type="radio" name="qr_bg_type" value="color"
-                            id="color">
-                        <label class="form-check-label" for="color">
+                            id="background_color">
+                        <label class="form-check-label" for="background_color">
                             Color
                         </label>
                     </div>
                     {{-- <div class="form-check pe-3">
                         <input class="form-check-input" type="radio" name="flexRadioDefault"
-                            id="flexRadioDefault2">
-                        <label class="form-check-label" for="flexRadioDefault2">
+                            id="background_image">
+                        <label class="form-check-label" for="background_image">
                             Image
                         </label>
                     </div> --}}
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="qr_bg_type" value="transparent"
-                            id="transparent">
-                        <label class="form-check-label" for="transparent">
+                            id="background_transparent">
+                        <label class="form-check-label" for="background_transparent">
                             Transparent
                         </label>
                     </div>

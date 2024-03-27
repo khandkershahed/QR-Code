@@ -71,7 +71,7 @@
                                 </div>
                             </div>
 
-                            <form class="form w-100 mx-auto" novalidate="novalidate" id="kt_stepper_example_basic_form"
+                            <form class="form w-100 mx-auto" novalidate="novalidate" id="generateQRCodeForm"
                                 action="{{ route('user.qr-code.store') }}" method="POST">
                                 @csrf
                                 <div class="mb-5">
@@ -185,55 +185,8 @@
     </div>
 
     @push('scripts')
-        <script>
-            $(document).ready(function() {
-                $('#generateQRCodeForm').on('submit', function(e) {
-                    e.preventDefault(); // Prevent default form submission behavior
-                    $('#generateButton').hide();
-                    var formData = new FormData(this);
 
-                    $.ajax({
-                        url: '{{ route('user.qr-code.store') }}',
-                        type: 'POST',
-                        data: formData,
-                        processData: false,
-                        contentType: false,
-                        success: function(response) {
-                            if (response.qrCodePath) {
-                                // Set the QR code image source
-                                $('#generatedQRCode').attr('src', response.qrCodePath);
-                                // Show the download link
-                                $('#downloadLink').attr('href', response.qrCodePath).show();
-                                // Show the QR code container
-                                $('#generatedQRCodeContainer').show();
-                                $('#generateButton').show();
-                            } else {
-                                console.error('QR code path not found in the response.');
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            console.error(xhr.responseText);
-                        }
-                    });
-                });
-            });
-        </script>
-        <script>
-            var myDropzone = new Dropzone("#kt_dropzonejs_example_1", {
-                url: "https://keenthemes.com/scripts/void.php", // Set the url for your upload script location
-                paramName: "file", // The name that will be used to transfer the file
-                maxFiles: 10,
-                maxFilesize: 10, // MB
-                addRemoveLinks: true,
-                accept: function(file, done) {
-                    if (file.name == "wow.jpg") {
-                        done("Naha, you don't.");
-                    } else {
-                        done();
-                    }
-                }
-            });
-        </script>
+
         <script>
             $(document).ready(function() {
                 $('#colorPicker').on('input', function() {
@@ -259,16 +212,8 @@
             });
         </script>
         <script>
-            $(document).ready(function() {
-                $('#colorPicker').on('input', function() {
-                    var selectedColor = $(this).val();
-                    $('#colorCodeInput').val(selectedColor);
-                });
-            });
-        </script>
-        <script>
             // Get references to radio buttons and divs
-            const normalColorRadio = document.getElementById('normal_color');
+            const normalColorRadio = document.getElementById('solid_color');
             const gradientColorRadio = document.getElementById('gradient_color');
             const normalColorDiv = document.getElementById('normal_color_show');
             const gradientColorDiv = document.getElementById('gradient_color_show');
@@ -288,32 +233,32 @@
         </script>
         <script>
             // Get references to radio buttons and content sections
-            const colorRadio = document.getElementById('flexRadioDefault1');
-            const imageRadio = document.getElementById('flexRadioDefault2');
-            const transparentRadio = document.getElementById('flexRadioDefault3');
+            const colorRadio = document.getElementById('background_color');
+            // const imageRadio = document.getElementById('background_image');
+            const transparentRadio = document.getElementById('background_transparent');
             const colorContent = document.getElementById('color-content');
-            const imageContent = document.getElementById('image-content');
+            // const imageContent = document.getElementById('image-content');
             const transparentContent = document.getElementById('transparent-content');
 
             // Add event listeners to radio buttons
             colorRadio.addEventListener('change', function() {
                 // Show color content and hide others
                 colorContent.style.display = 'block';
-                imageContent.style.display = 'none';
+                // imageContent.style.display = 'none';
                 transparentContent.style.display = 'none';
             });
 
-            imageRadio.addEventListener('change', function() {
-                // Show image content and hide others
-                colorContent.style.display = 'none';
-                imageContent.style.display = 'block';
-                transparentContent.style.display = 'none';
-            });
+            // imageRadio.addEventListener('change', function() {
+            //     // Show image content and hide others
+            //     colorContent.style.display = 'none';
+            //     imageContent.style.display = 'block';
+            //     transparentContent.style.display = 'none';
+            // });
 
             transparentRadio.addEventListener('change', function() {
                 // Show transparent content and hide others
                 colorContent.style.display = 'none';
-                imageContent.style.display = 'none';
+                // imageContent.style.display = 'none';
                 transparentContent.style.display = 'block';
             });
 
@@ -337,6 +282,43 @@
             stepper.on("kt.stepper.previous", function(stepper) {
                 stepper.goPrevious(); // go previous step
             });
+        </script>
+
+        <script>
+            $(document).ready(function() {
+                $('#generateQRCodeForm').on('submit', function(e) {
+                    e.preventDefault(); // Prevent default form submission behavior
+                    // $('#generateButton').hide();
+                    var formData = new FormData(this);
+
+                    $.ajax({
+                        url: '{{ route('user.qr-code.store') }}',
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function(response) {
+                            if (response.qrCodePath) {
+                                $('#generatedQRCode').attr('src', response.qrCodePath);
+                                $('#downloadLink').attr('href', response.qrCodePath).show();
+                                $('#generatedQRCodeContainer').show();
+                                $('#generateButton').show();
+                            } else {
+                                console.error('QR code path not found in the response.');
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(xhr.responseText);
+                        }
+                    });
+                });
+            });
+        </script>
+        <script>
+            // var myForm = $('#generateQRCodeForm');
+            // myForm.find('input').on('keyup change', function() {
+            //     alert()
+            // });
         </script>
     @endpush
 </x-app-layout>

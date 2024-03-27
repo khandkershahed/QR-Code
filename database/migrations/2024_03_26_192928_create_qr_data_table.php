@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('qr_data', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('code_id')->nullable()->constrained('qr_codes')->onDelete('cascade');
+            $table->foreignId('code_id')->nullable()->constrained('qrs')->onDelete('cascade');
             $table->text('qr_data_website_url')->nullable();
             $table->string('qr_data_pdf')->nullable();
             $table->string('qr_data_image')->nullable();

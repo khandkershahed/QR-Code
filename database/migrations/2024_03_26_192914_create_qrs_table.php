@@ -36,6 +36,8 @@ return new class extends Migration
             $table->string('qr_name')->nullable();
             $table->string('qr_image')->nullable();
             $table->text('qr_url')->nullable();
+            $table->integer('scan_count')->nullable();
+            $table->timestamp('scanned_at')->nullable();
             $table->timestamps();
         });
     }

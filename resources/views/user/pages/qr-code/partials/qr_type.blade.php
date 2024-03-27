@@ -43,7 +43,7 @@
                                                     [
                                                         'id' => 6,
                                                         'value' => 'mobile_app',
-                                                        'title' => 'Mobile_App',
+                                                        'title' => 'Mobile App',
                                                         'text' => 'Link to receive email messages',
                                                         'image' =>
                                                             'https://dashboard.uniqode.com/assets/img/dynamic-qr/app-download.svg',

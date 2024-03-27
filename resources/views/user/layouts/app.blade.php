@@ -115,16 +115,11 @@
 
     <!--end::datatable Javascript Bundle-->
     <script src="{{ asset($hostUrl . 'plugins/custom/datatables/datatables.bundle.js') }}"></script>
-    <link href="{{ asset('admin/assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"
-        type="text/css" />
     <!--end::Global Javascript Bundle-->
     <!--begin::Page Vendors Javascript(used by this page)-->
     <script src="{{ asset($hostUrl . 'plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
-    <script src="{{ asset($hostUrl . 'plugins/custom/datatables/datatables.bundle.js') }}"></script>
     <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
     <script src="{{ asset($hostUrl . 'plugins/custom/formrepeater/formrepeater.bundle.js') }}"></script>
-    <script src="{{ asset($hostUrl . 'plugins/global/plugins.bundle.js') }}"></script>
-
     <!--end::Page Vendors Javascript-->
     <!--begin::Page Custom Javascript(used by this page)-->
     <script src="{{ asset($hostUrl . 'js/custom/account/settings/signin-methods.js') }}"></script>
@@ -146,12 +141,49 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <script src="{{ asset('admin/js/custom.js') }}"></script>
-    <script>
+    {{-- <script>
         showSuccessMessage('{{ session('success') }}');
         @foreach ($errors->all() as $error)
             showErrorMessage('{{ $error }}');
         @endforeach
-    </script>
+    </script> --}}
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                title: 'Success!',
+                html: '{{ session('success') }}',
+                icon: 'success',
+                showCloseButton: true,
+
+                buttonsStyling: false,
+                customClass: {
+                    confirmButton: 'btn btn-primary'
+                }
+            }).then(() => {
+                // Flush session data
+                {!! session()->forget('success') !!}
+            });
+        </script>
+    @endif
+    @if ($errors->any())
+        <script>
+            @foreach ($errors->all() as $error)
+                Swal.fire({
+                    title: "<strong>Error!</strong>",
+                    icon: "error",
+                    html: {{ $error }},
+                    showCloseButton: true,
+                    focusConfirm: false,
+                    customClass: {
+                        confirmButton: 'btn btn-primary'
+                    }
+                }).then(() => {
+                    // Flush session data
+                    {!! session()->flush() !!}
+                });
+            @endforeach
+        </script>
+    @endif
     <script>
         $(document).ready(function() {
             // Add event listener to radio inputs

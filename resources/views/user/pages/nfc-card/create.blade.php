@@ -616,7 +616,7 @@
         </div>
     </div>
     @push('scripts')
-        <script>
+        {{-- <script>
             // Stepper lement
             var element = document.querySelector("#kt_stepper_example_clickable");
 
@@ -637,7 +637,7 @@
             stepper.on("kt.stepper.previous", function(stepper) {
                 stepper.goPrevious(); // go previous step
             });
-        </script>
+        </script> --}}
         <script>
             $('#kt_docs_repeater_basic').repeater({
                 initEmpty: false,
