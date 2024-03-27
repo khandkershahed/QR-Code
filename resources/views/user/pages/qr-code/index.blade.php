@@ -1,4 +1,7 @@
 <x-app-layout :title="'QR Code List'">
+
+    {!! QrCode::size(500)->eye('left-leaf',0.1)->style('hexagonal',0.8)->errorCorrection('H')->generate('Make me into a QrCode!'); !!}
+
     <div class="row">
         <div class="col-lg-12 d-flex  justify-content-between align-items-center bg-white mb-6 p-3 rounded-2 ">
             <div>

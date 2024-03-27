@@ -316,11 +316,12 @@
                 <h2>SELECT EYE-BALL</h2>
                 <p>This will be the color and shape of your QR code's eye-balls</p>
             </div>
-            <div class="d-flex">
-                <input type="color" id="colorPicker" style="width: 56px;height: 45px;">
+            <div class="d-flex mb-4">
+                <label class="form-label" for="colorPicker">Eye Ball Color</label>
+                <input type="color" id="colorPicker" style="width: 56px;height: 45px;" name="qr_eye_ball_color">
                 <input type="text" id="colorCodeInput" class="form-control form-control-solid w-25" readonly>
             </div>
-            <div class="d-lg-flex row gx-10">
+            <div class="d-lg-flex row gx-10 mb-4">
                 <x-qr-code.eye-ball :eyeBalls="[
                     [
                         'id' => 311,
@@ -363,11 +364,12 @@
                 <h2>SELECT EYE-FRAME</h2>
                 <p>This will be the color and shape of your QR code's eye-frames</p>
             </div>
-            <div class="d-flex">
+            <div class="d-flex mb-4">
+                <label class="form-label" for="colorPicker">Eye Frame Color</label>
                 <input type="text" id="colorCodeInput" class="form-control form-control-solid w-25" readonly>
-                <input type="color" id="colorPicker" style="width: 56px;height: 45px;">
+                <input type="color" id="colorPicker" style="width: 56px;height: 45px;" name="qr_eye_frame_color">
             </div>
-            <div class="d-lg-flex row gx-10">
+            <div class="d-lg-flex row gx-10 mb-4">
                 <x-qr-code.eye-frame :eyeFrames="[
                     [
                         'id' => 378,
@@ -406,7 +408,7 @@
                 <x-qr-code.pattern :patterns="[
                     [
                         'id' => 431,
-                        'value' => 'square',
+                        'value' => 'square_0.5',
                         'image' =>
                             'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/square.svg',
                     ],
@@ -418,42 +420,36 @@
                     ],
                     [
                         'id' => 433,
-                        'value' => 'pattern_3',
+                        'value' => 'diamond',
                         'image' => '	https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/kite.svg',
                     ],
                     [
                         'id' => 434,
-                        'value' => 'dot',
-                        'image' =>
-                            'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/left-diamond.svg',
-                    ],
-                    [
-                        'id' => 435,
-                        'value' => 'dot',
+                        'value' => 'hexagonal',
                         'image' =>
                             'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/left-diamond.svg',
                     ],
                     [
                         'id' => 436,
-                        'value' => 'diamond',
+                        'value' => 'cuboidal',
                         'image' =>
                             'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/right-diamond.svg',
                     ],
                     [
                         'id' => 437,
-                        'value' => 'diamond',
+                        'value' => 'square_0.9',
                         'image' =>
                             'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/thin-square.svg',
                     ],
                     [
                         'id' => 438,
-                        'value' => 'circle',
+                        'value' => 'round',
                         'image' =>
                             'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/smooth-round.svg',
                     ],
                     [
                         'id' => 439,
-                        'value' => 'circle',
+                        'value' => 'round',
                         'image' =>
                             'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/smooth-round.svg',
                     ],
@@ -491,15 +487,17 @@
                         </div>
                     </div>
                     <div class="hidden-field" id="gradient_color_show" style="display: none;">
-                        {{-- <div class="pt-5">
+                        <div class="pt-5 pb-4">
                             <label for="">Select Gradient Type</label>
-                            <select class="form-select form-select-sm mt-3 w-25" aria-label="Default select example">
-                                <option selected>None</option>
-                                <option value="2">Radial</option>
-                                <option value="3">Horizontal</option>
-                                <option value="4">Vertical</option>
+                            <select class="form-select form-select-sm mt-3 w-25" name="qr_gradient_color_type" aria-label="Default select example">
+                                <option>None</option>
+                                <option value="vertical">Vertical</option>
+                                <option value="horizontal">Horizontal</option>
+                                <option value="diagonal">Diagonal</option>
+                                <option value="inverse_diagonal">Inverse_Diagonal</option>
+                                <option value="radial">Radial</option>
                             </select>
-                        </div> --}}
+                        </div>
                         <div class="d-flex">
                             <div class="pt-3 pe-4">
                                 <label for="">Color Start</label>
