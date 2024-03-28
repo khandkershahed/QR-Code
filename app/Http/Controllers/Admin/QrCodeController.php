@@ -169,8 +169,8 @@ class QrCodeController extends Controller
         $qrData = QrData::create([
             'code_id' => $qr->id,
             'qr_data_website_url' => $request->qr_data_website_url,
-            'qr_data_pdf' => $pdfFullPath,
-            'qr_data_image' => $dataImageFullPath,
+            'qr_data_pdf' => ($request->hasFile('qr_data_pdf') ? $pdfFullPath : ''),
+            'qr_data_image' => ($request->hasFile('qr_data_image') ? $dataImageFullPath : ''),
             'qr_data_image_link' => $request->qr_data_image_link,
             'qr_data_sms_number' => $request->qr_data_sms_number,
             'qr_data_sms_message' => $request->qr_data_sms_message,
