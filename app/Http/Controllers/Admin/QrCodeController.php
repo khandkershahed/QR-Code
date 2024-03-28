@@ -48,7 +48,8 @@ class QrCodeController extends Controller
         // dd($request->all());
         // Assuming the typePrefix and $today variables are defined somewhere in your code
         $typePrefix = 'QR'; // Example prefix
-        $today = Carbon::now()->format('dmY');
+        // $today = Carbon::now()->format('dmY');
+        $today = date('dmY');
         $userId = Auth::user()->id;
         $lastCode = Qr::where('code', 'like', $typePrefix . $today . $userId . '%')
             ->orderBy('id', 'desc')
@@ -225,9 +226,9 @@ class QrCodeController extends Controller
         }
         if (!empty($qr_pattern)) {
             if($qr_pattern == 'square_0.5'){
-                $qrCode->style('square', 0.1);
+                $qrCode->style('square', 0.5);
             }elseif($qr_pattern == 'square_0.9'){
-                $qrCode->style('square', 0.9875);
+                $qrCode->style('square', 0.8);
             }else{
                 $qrCode->style($qr_pattern, 0.5);
             }
