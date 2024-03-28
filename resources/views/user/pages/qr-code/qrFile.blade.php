@@ -1,4 +1,4 @@
-<x-admin-guest-layout :title="{{ $qr->code }}">
+<x-admin-guest-layout :title="'{{ $qr->code }}'">
     <div class="d-flex flex-column flex-root">
         <!--begin::Authentication - Error 500 -->
         <div class="d-flex flex-column flex-column-fluid">
