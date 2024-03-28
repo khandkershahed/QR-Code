@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use Image;
 // use App\Models\Admin\QrCode;
+use Carbon\Carbon;
 use App\Models\Admin\Qr;
 use Illuminate\Support\Str;
 use App\Models\Admin\QrData;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use SimpleSoftwareIO\QrCode\Generator;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Admin\QrCodeRequest;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
@@ -31,6 +33,19 @@ class QrCodeController extends Controller
     public function store(QrCodeRequest $request)
     {
         // dd($request->all());
+        // Assuming the typePrefix and $today variables are defined somewhere in your code
+        $typePrefix = 'QR'; // Example prefix
+        $today = Carbon::now()->format('dmY');
+        $userId = Auth::user()->id;
+        $lastCode = Qr::where('code', 'like', $typePrefix . $today . $userId . '%')
+            ->orderBy('id', 'desc')
+            ->first();
+
+        // Determine the new number for the QR code
+        $newNumber = $lastCode ? (int)substr($lastCode->code, -1) + 1 : 1;
+
+        $code = $typePrefix . $today . $userId . $newNumber;
+
         $data = [
             'qr_data_website_url'               => $request->qr_data_website_url,
             'qr_data_pdf'                       => $request->qr_data_pdf,
@@ -86,17 +101,42 @@ class QrCodeController extends Controller
         // Upload logo file if provided
         if ($request->hasFile('qr_logo')) {
             $logo = $request->file('qr_logo');
-            $fileName = uniqid() . '.' . $logo->getClientOriginalExtension();
-            $logoPath = $logo->storeAs('public/qr_codes/logos', $fileName);
-            $logoFullPath = storage_path('app/' . $logoPath);
-            // Save the logo path to the corresponding QR record
-            // $qr->update(['qr_logo' => $logoFullPath]);
+            if ($logo->isValid()) {
+                $fileName = $code . '.' . $logo->getClientOriginalExtension();
+                $logoPath = $logo->storeAs('public/qr_codes/logos', $fileName);
+                $logoFullPath = storage_path('app/' . $logoPath);
+                // Uncomment the following line to save the logo path to the corresponding QR record
+                // $qr->update(['qr_logo' => $logoFullPath]);
+            }
         }
+
+        if ($request->hasFile('qr_data_pdf')) {
+            $pdf = $request->file('qr_data_pdf');
+            if ($pdf->isValid()) {
+                $pdfFileName = $code . '.' . $pdf->getClientOriginalExtension();
+                $pdfPath = $pdf->storeAs('public/qr_codes/pdfs', $pdfFileName);
+                $pdfFullPath = storage_path('app/' . $pdfPath);
+                // Uncomment the following line to save the PDF path to the corresponding QR record
+                // $qr->update(['qr_data_pdf' => $pdfFullPath]);
+            }
+        }
+
+        if ($request->hasFile('qr_data_image')) {
+            $dataImage = $request->file('qr_data_image');
+            if ($dataImage->isValid()) {
+                $imageFileName = $code . '.' . $dataImage->getClientOriginalExtension();
+                $dataImagePath = $dataImage->storeAs('public/qr_codes/dataImages', $imageFileName);
+                $dataImageFullPath = storage_path('app/' . $dataImagePath);
+                // Uncomment the following line to save the image path to the corresponding QR record
+                // $qr->update(['qr_data_image' => $dataImageFullPath]);
+            }
+        }
+
 
         // Store data into the 'qrs' table
         // $qr = Qr::create([
         //     'user_id'                 => Auth::user()->id,
-        //     // 'code'                    => $request->code,
+        //     'code'                    => $request->code,
         //     'qr_type'                 => $qr_type,
         //     'qr_template'             => $qr_template,
         //     'qr_logo_size'            => $qr_logo_size,
@@ -149,126 +189,87 @@ class QrCodeController extends Controller
         //     'qr_data_audio_file' => $request->qr_data_audio_file,
         //     'qr_data_audio_link' => $request->qr_data_audio_link,
         // ]);
-        $qrCode = QrCode::format('png')->size(230);
+        // $qrCode = QrCode::format('png')->size(230);
+        $qrCode = $qrcode = new Generator;
+        $qrCode->format('png')->size(230);
 
-        if(!empty($qr_logo)){
+        if (!empty($qr_logo)) {
             $qrCode->merge($logoFullPath, 0.3, true);
         }
-        if(!empty($qr_eye_ball)){
-            $qrCode->eye("\"{$qr_eye_ball}\"", 0.5);
+        if (!empty($qr_eye_ball)) {
+            $qrCode->eye($qr_eye_ball, 0.5);
         }
-        // ->eye($request->eye)
-        // ->style($qr_pattern);
+        if (!empty($qr_eye_ball_color)) {
+            $qrCode->eyeColor(0, $qr_eye_ball_color['r'], $qr_eye_ball_color['g'], $qr_eye_ball_color['b'], $qr_eye_frame_color['r'], $qr_eye_frame_color['g'], $qr_eye_frame_color['b'],);
+            $qrCode->eyeColor(1, $qr_eye_ball_color['r'], $qr_eye_ball_color['g'], $qr_eye_ball_color['b'], $qr_eye_frame_color['r'], $qr_eye_frame_color['g'], $qr_eye_frame_color['b'],);
+            $qrCode->eyeColor(2, $qr_eye_ball_color['r'], $qr_eye_ball_color['g'], $qr_eye_ball_color['b'], $qr_eye_frame_color['r'], $qr_eye_frame_color['g'], $qr_eye_frame_color['b'],);
+        }
+        if (!empty($qr_pattern)) {
+            $qrCode->style($qr_pattern, 0.5);
+        }
+
+        if (!empty($qr_color_type)) {
+            if ($qr_color_type == 'solid_color') {
+                if (!empty($qr_solid_color)) {
+                    $qrCode->color($qr_solid_color['r'], $qr_solid_color['g'], $qr_solid_color['b']);
+                }
+            }
+            if ($qr_color_type == 'gradient_color') {
+                if (!empty($qr_gradient_color_type)) {
+                    $qrCode->style($qr_gradient_color_start['r'], $qr_gradient_color_start['g'], $qr_gradient_color_start['b'], $qr_gradient_color_end['r'], $qr_gradient_color_end['g'], $qr_gradient_color_end['b'], "\'{$qr_gradient_color_type}\'");
+                }
+            }
+        }
+
+        if (!empty($qr_bg_type)) {
+            if ($qr_bg_type == 'color') {
+                $qrCode->color($qr_bg_color['r'], $qr_bg_color['g'], $qr_bg_color['b']);
+            }
+            // if ($qr_bg_type == 'color') {
+            //     $qrCode->color($qr_bg_color['r'], $qr_bg_color['g'], $qr_bg_color['b']);
+            // }
+
+        }
 
 
-        if ($qr_type == 'website' ) {
+        if ($qr_type == 'website') {
+            $qrCode->generate($data['qr_data_website_url']);
+        } elseif ($qr_type == 'pdf') {
+            $qrCode->generate($pdfFullPath);
+        } elseif ($qr_type == 'image') {
+            $qrCode->generate($dataImageFullPath);
+        } elseif ($qr_type == 'sms') {
+            $qrCode->SMS($data['qr_data_sms_number'], $data['qr_data_sms_message']);
+        } elseif ($qr_type == 'email') {
+            $qrCode->email($data['qr_data_email_id'], $data['qr_data_email_subject'], $data['qr_data_email_body']);
+        } elseif ($qr_type == 'mobile_app') {
+            $qrCode->generate($data['qr_app_android'],$data['qr_data_app_iphone'],$data['qr_data_app_ipad']);
 
-            $qrCode->backgroundColor($qr_bg_color['r'], $qr_bg_color['g'], $qr_bg_color['b'])
-            ->color($qr_solid_color['r'], $qr_solid_color['g'], $qr_solid_color['b'])
 
-            ->generate($data);
-        }elseif ($qr_type == 'pdf' ) {
-            $qrCode = QrCode::format('png')->size(230)
-            ->eye($request->eye)
-            ->style($qr_pattern)
-            ->backgroundColor($qr_bg_color['r'], $qr_bg_color['g'], $qr_bg_color['b'])
-            ->color($qr_solid_color['r'], $qr_solid_color['g'], $qr_solid_color['b'])
 
-            ->generate($data);
-        }elseif ($qr_type == 'image' ) {
-            $qrCode = QrCode::format('png')->size(230)
-            ->eye($request->eye)
-            ->style($qr_pattern)
-            ->backgroundColor($qr_bg_color['r'], $qr_bg_color['g'], $qr_bg_color['b'])
-            ->color($qr_solid_color['r'], $qr_solid_color['g'], $qr_solid_color['b'])
-
-            ->generate($data);
-        }elseif ($qr_type == 'sms' ) {
-            $qrCode = QrCode::format('png')->size(230)
-            ->eye($request->eye)
-            ->style($qr_pattern)
-            ->backgroundColor($qr_bg_color['r'], $qr_bg_color['g'], $qr_bg_color['b'])
-            ->color($qr_solid_color['r'], $qr_solid_color['g'], $qr_solid_color['b'])
-
-            ->SMS($data['qr_data_sms_number'], $data['qr_data_sms_message']);
-        }elseif ($qr_type == 'email' ) {
-            $qrCode = QrCode::format('png')->size(230)
-            ->eye($request->eye)
-            ->style($qr_pattern)
-            ->backgroundColor($qr_bg_color['r'], $qr_bg_color['g'], $qr_bg_color['b'])
-            ->color($qr_solid_color['r'], $qr_solid_color['g'], $qr_solid_color['b'])
-
-            ->email($data['qr_data_sms_number'], $data['qr_data_sms_message']);
-        }elseif ($qr_type == 'mobile_app' ) {
-            $qrCode = QrCode::format('png')->size(230)
-            ->eye($request->eye)
-            ->style($qr_pattern)
-            ->backgroundColor($qr_bg_color['r'], $qr_bg_color['g'], $qr_bg_color['b'])
-            ->color($qr_solid_color['r'], $qr_solid_color['g'], $qr_solid_color['b'])
-
-            ->generate($data);
-        }elseif ($qr_type == 'call' ) {
-            $qrCode = QrCode::format('png')->size(230)
-            ->eye($request->eye)
-            ->style($qr_pattern)
-            ->backgroundColor($qr_bg_color['r'], $qr_bg_color['g'], $qr_bg_color['b'])
-            ->color($qr_solid_color['r'], $qr_solid_color['g'], $qr_solid_color['b'])
-
-            ->generate($data);
-        }elseif ($qr_type == 'location' ) {
-            $qrCode = QrCode::format('png')->size(230)
-            ->eye($request->eye)
-            ->style($qr_pattern)
-            ->backgroundColor($qr_bg_color['r'], $qr_bg_color['g'], $qr_bg_color['b'])
-            ->color($qr_solid_color['r'], $qr_solid_color['g'], $qr_solid_color['b'])
-
-            ->generate($data);
-        }elseif ($qr_type == 'coupon_code' ) {
-            $qrCode = QrCode::format('png')->size(230)
-            ->eye($request->eye)
-            ->style($qr_pattern)
-            ->backgroundColor($qr_bg_color['r'], $qr_bg_color['g'], $qr_bg_color['b'])
-            ->color($qr_solid_color['r'], $qr_solid_color['g'], $qr_solid_color['b'])
-
-            ->generate($data);
-        }elseif ($qr_type == 'social' ) {
-            $qrCode = QrCode::format('png')->size(230)
-            ->eye($request->eye)
-            ->style($qr_pattern)
-            ->backgroundColor($qr_bg_color['r'], $qr_bg_color['g'], $qr_bg_color['b'])
-            ->color($qr_solid_color['r'], $qr_solid_color['g'], $qr_solid_color['b'])
-
-            ->generate($data);
-        }elseif ($qr_type == 'audio' ) {
-            $qrCode = QrCode::format('png')->size(230)
-            ->eye($request->eye)
-            ->style($qr_pattern)
-            ->backgroundColor($qr_bg_color['r'], $qr_bg_color['g'], $qr_bg_color['b'])
-            ->color($qr_solid_color['r'], $qr_solid_color['g'], $qr_solid_color['b'])
-
-            ->generate($data);
-        }elseif ($qr_type == 'business_page' ) {
-            $qrCode = QrCode::format('png')->size(230)
-            ->eye($request->eye)
-            ->style($qr_pattern)
-            ->backgroundColor($qr_bg_color['r'], $qr_bg_color['g'], $qr_bg_color['b'])
-            ->color($qr_solid_color['r'], $qr_solid_color['g'], $qr_solid_color['b'])
-
-            ->generate($data);
-        }else{
-            $qrCode = QrCode::format('png')->size(250)
-            ->eye($request->eye)
-            ->style($qr_pattern)
-            ->backgroundColor($qr_bg_color['r'], $qr_bg_color['g'], $qr_bg_color['b'])
-            ->color($qr_solid_color['r'], $qr_solid_color['g'], $qr_solid_color['b'])
-
-            ->generate($data);
+        }
+        // elseif ($qr_type == 'call') {
+        //     $qrCode->phoneNumber($data['qr_data_call_number']);
+        // }
+        // elseif ($qr_type == 'location') {
+        //     $qrCode->geo($data);
+        // } elseif ($qr_type == 'coupon_code') {
+        //     $qrCode->generate($data['']);
+        // } elseif ($qr_type == 'social') {
+        //     $qrCode->generate($data['']);
+        // } elseif ($qr_type == 'audio') {
+        //     $qrCode->generate($data['']);
+        // } elseif ($qr_type == 'business_page') {
+        //     $qrCode->generate($data['']);
+        // }
+        else {
+            $qrCode->generate($data['']);
         }
 
 
 
 
-        $qrFileName = $qr_name . '.png';
+        $qrFileName = $code . '.png';
         $qrCodePath = 'public/qr_codes/' . $qrFileName;
         Storage::put($qrCodePath, $qrCode);
 

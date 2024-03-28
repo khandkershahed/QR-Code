@@ -317,7 +317,7 @@
                 <p>This will be the color and shape of your QR code's eye-balls</p>
             </div>
             <div class="d-flex mb-4">
-                <label class="form-label" for="colorPicker">Eye Ball Color</label>
+                <label class="form-label" for="colorPicker">Eye Ball Color</label><br>
                 <input type="color" id="colorPicker" style="width: 56px;height: 45px;" name="qr_eye_ball_color">
                 <input type="text" id="colorCodeInput" class="form-control form-control-solid w-25" readonly>
             </div>
@@ -325,35 +325,35 @@
                 <x-qr-code.eye-ball :eyeBalls="[
                     [
                         'id' => 311,
-                        'value' => 'eye_ball_1',
+                        'value' => 'square',
                         'image' => 'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/square.svg',
                     ],
                     [
                         'id' => 322,
-                        'value' => 'eye_ball_2',
+                        'value' => 'square',
                         'image' => 'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/rounded.svg',
                     ],
                     [
                         'id' => 333,
-                        'value' => 'eye_ball_3',
+                        'value' => 'left-diamond',
                         'image' =>
                             'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/left-diamond.svg',
                     ],
                     [
                         'id' => 344,
-                        'value' => 'eye_ball_4',
+                        'value' => 'right-diamond',
                         'image' =>
                             'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/right-diamond.svg',
                     ],
                     [
                         'id' => 356,
-                        'value' => 'eye_ball_5',
+                        'value' => 'left-leaf',
                         'image' =>
                             'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/left-leaf.svg',
                     ],
                     [
                         'id' => 367,
-                        'value' => 'eye_ball_6',
+                        'value' => 'right-leaf',
                         'image' =>
                             'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/right-leaf.svg',
                     ],
@@ -365,11 +365,11 @@
                 <p>This will be the color and shape of your QR code's eye-frames</p>
             </div>
             <div class="d-flex mb-4">
-                <label class="form-label" for="colorPicker">Eye Frame Color</label>
+                <label class="form-label" for="colorPicker">Eye Frame Color</label> <br>
                 <input type="text" id="colorCodeInput" class="form-control form-control-solid w-25" readonly>
                 <input type="color" id="colorPicker" style="width: 56px;height: 45px;" name="qr_eye_frame_color">
             </div>
-            <div class="d-lg-flex row gx-10 mb-4">
+            {{-- <div class="d-lg-flex row gx-10 mb-4">
                 <x-qr-code.eye-frame :eyeFrames="[
                     [
                         'id' => 378,
@@ -394,7 +394,7 @@
                             'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-frames/right-leaf.svg',
                     ],
                 ]" />
-            </div>
+            </div> --}}
         </div>
 
         <div class="tab-pane fade " id="kt_stats_widget_16_tab_4" role="tabpanel"
@@ -491,7 +491,7 @@
                             <label for="">Select Gradient Type</label>
                             <select class="form-select form-select-sm mt-3 w-25" name="qr_gradient_color_type" aria-label="Default select example">
                                 <option>None</option>
-                                <option value="vertical">Vertical</option>
+                                <option value="vertical" selected>Vertical</option>
                                 <option value="horizontal">Horizontal</option>
                                 <option value="diagonal">Diagonal</option>
                                 <option value="inverse_diagonal">Inverse_Diagonal</option>

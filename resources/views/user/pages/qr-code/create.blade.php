@@ -72,7 +72,7 @@
                             </div>
 
                             <form class="form w-100 mx-auto" novalidate="novalidate" id="generateQRCodeForm"
-                                action="{{ route('user.qr-code.store') }}" method="POST">
+                                action="{{ route('user.qr-code.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-5">
                                     <div class="flex-column current" data-kt-stepper-element="content">
@@ -122,7 +122,7 @@
                                                     <x-metronic.label for="qr_name"
                                                         class="form-label">{{ __('Enter a name for your QR code') }}</x-metronic.label>
                                                     <x-metronic.input id="qr_name" type="text" name="qr_name"
-                                                        :value="old('qr_name')" placeholder="Enter a name for your QR code" />
+                                                        :value="old('qr_name')" placeholder="Enter a name for your QR code" required/>
                                                 </div>
                                                 {{-- <div class="w-25 mx-auto">
                                                     <img width="300px"
@@ -170,9 +170,9 @@
             <div class="col-lg-3">
                 <div class="card">
                     <div class="card-body">
-                        <div class="d-flex flex-column justify-content-center align-items-center">
+                        <div class="d-flex flex-column justify-content-center align-items-center" id="generatedQRCodeContainer">
                             <h3>Preview</h3>
-                            <img class="img-fluid" src="https://i.ibb.co/XzHNWc0/no-qr.png" alt="QR Code">
+                            <img id="generatedQRCode" class="img-fluid" src="https://i.ibb.co/XzHNWc0/no-qr.png" alt="QR Code">
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-around align-items-center">
