@@ -177,7 +177,7 @@
                     </div>
                     <div class="card-footer d-flex justify-content-around align-items-center">
                         <a href="#" class="btn btn-light btn-active-light-primary w-100 me-2">Preview</a>
-                        <a href="#" class="btn btn-light btn-primary w-100">Download</a>
+                        <a id="downloadLink" href="" download class="btn btn-light btn-primary w-100" style="display: none;">Download</a>
                     </div>
                 </div>
             </div>
@@ -299,8 +299,10 @@
                         contentType: false,
                         success: function(response) {
                             if (response.qrCodePath) {
+                                $('#generatedQRCode').attr('src', '');
                                 $('#generatedQRCode').attr('src', response.qrCodePath);
                                 $('#downloadLink').attr('href', response.qrCodePath).show();
+                                $('#generatedQRCodeContainer').clear();
                                 $('#generatedQRCodeContainer').show();
                                 $('#generateButton').show();
                             } else {

@@ -9,4 +9,9 @@ class Qr extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function qrData()
+    {
+        return $this->hasOne(QrData::class, 'code_id');
+    }
 }

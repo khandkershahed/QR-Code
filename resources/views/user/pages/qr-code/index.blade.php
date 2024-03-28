@@ -1,6 +1,6 @@
 <x-app-layout :title="'QR Code List'">
 
-    {!! QrCode::size(500)->eye('left-leaf',0.1)->eyeColor(0, 255, 255, 255, 0, 0, 0)->eyeColor(1, 222, 18, 222,222, 18, 222 )->eyeColor(2, 222, 18, 222,222, 18, 222 )->style('dot', 0.8)->errorCorrection('H')->generate('Make me into a QrCode!'); !!}
+    {{-- {!! QrCode::size(500)->eye('left-leaf',0.1)->eyeColor(0, 255, 255, 255, 0, 0, 0)->eyeColor(1, 222, 18, 222,222, 18, 222 )->eyeColor(2, 222, 18, 222,222, 18, 222 )->style('dot', 0.8)->errorCorrection('H')->generate('Make me into a QrCode!'); !!} --}}
 
     <div class="row">
         <div class="col-lg-12 d-flex  justify-content-between align-items-center bg-white mb-6 p-3 rounded-2 ">
@@ -80,144 +80,76 @@
                             </tr>
                         </thead>
                         <tbody class="fw-semibold text-gray-600">
-                            <tr class="odd">
-                                <td>
-                                    1
-                                </td>
-                                <td>
-                                    <img class="img-fluid w-50px"
-                                        src="https://b2024479.smushcdn.com/2024479/wp-content/uploads/2020/05/HelloTech-qr-code-1024x1024.jpg?lossy=1&strip=1&webp=1"
-                                        alt="">
-                                </td>
-                                <td data-order="2022-03-10T14:40:00+05:00">
-                                    {{-- title --}}
-                                    <span><span class="fw-bold text-black">Title : </span>WEBSITE 27/03/2024</span><br>
-                                    <span><span class="fw-bold text-black">Link :
-                                        </span>https://qrcodes.pro/MpmtUh</span><br>
-                                    <span><span class="fw-bold text-black">Org : </span>russel hossain</span><br>
-                                    <span><span class="fw-bold text-black">Created at :</span>:March 27, 2024</span><br>
-                                </td>
-                                <td class="text-start">
-                                    <button class="btn btn-light-primary">QR Code</button>
-                                </td>
-                                <td class="text-start">
-                                    <button class="btn btn-light-primary">94</button>
-                                </td>
-                                <td>
-                                    <div class="badge badge-light-success">Active</div>
-                                </td>
-                                <td class="pe-0">
-                                    <a href="#" class="btn btn-light btn-active-light-primary btn-sm"
-                                        data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end"
-                                        data-kt-menu-flip="top-end">
-                                        Actions
-                                        <span class="svg-icon fs-5 m-0">
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                                viewBox="0 0 24 24" version="1.1">
-                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                    <polygon points="0 0 24 0 24 24 0 24"></polygon>
-                                                    <path
-                                                        d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z"
-                                                        fill="currentColor" fill-rule="nonzero"
-                                                        transform="translate(12.000003, 11.999999) rotate(-180.000000) translate(-12.000003, -11.999999)">
-                                                    </path>
-                                                </g>
-                                            </svg>
-                                        </span>
-                                    </a>
-                                    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
-                                        data-kt-menu="true" style="">
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3"
-                                                data-kt-docs-table-filter="edit_row">
-                                                Edit
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
+                            @foreach ($qrs as $qr)
+                                <tr class="odd">
+                                    <td>
+                                        {{ $loop->iteration }}
+                                    </td>
+                                    <td>
+                                        <img class="img-fluid w-50px"
+                                            src="{{ $qr->qr_url }}"
+                                            alt="">
+                                    </td>
+                                    <td data-order="2022-03-10T14:40:00+05:00">
+                                        {{-- title --}}
+                                        <span><span class="fw-bold text-black">Title : </span>{{ $qr->qr_name }}</span><br>
+                                        <span><span class="fw-bold text-black">Link :
+                                            </span>{{ $qr->qr_url }}</span><br>
+                                        <span><span class="fw-bold text-black">Org : </span>{{ Auth::user()->name }}</span><br>
+                                        <span><span class="fw-bold text-black">Created at :</span>:{{ $qr->created_at }}</span><br>
+                                    </td>
+                                    <td class="text-start">
+                                        <button class="btn btn-light-primary">QR Code</button>
+                                    </td>
+                                    <td class="text-start">
+                                        <button class="btn btn-light-primary">94</button>
+                                    </td>
+                                    <td>
+                                        <div class="badge badge-light-success">Active</div>
+                                    </td>
+                                    <td class="pe-0">
+                                        <a href="#" class="btn btn-light btn-active-light-primary btn-sm"
+                                            data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end"
+                                            data-kt-menu-flip="top-end">
+                                            Actions
+                                            <span class="svg-icon fs-5 m-0">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
+                                                    viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <polygon points="0 0 24 0 24 24 0 24"></polygon>
+                                                        <path
+                                                            d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z"
+                                                            fill="currentColor" fill-rule="nonzero"
+                                                            transform="translate(12.000003, 11.999999) rotate(-180.000000) translate(-12.000003, -11.999999)">
+                                                        </path>
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                        </a>
+                                        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
+                                            data-kt-menu="true" style="">
+                                            <!--begin::Menu item-->
+                                            <div class="menu-item px-3">
+                                                <a href="#" class="menu-link px-3"
+                                                    data-kt-docs-table-filter="edit_row">
+                                                    Edit
+                                                </a>
+                                            </div>
+                                            <!--end::Menu item-->
 
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3"
-                                                data-kt-docs-table-filter="delete_row">
-                                                Delete
-                                            </a>
+                                            <!--begin::Menu item-->
+                                            <div class="menu-item px-3">
+                                                <a href="#" class="menu-link px-3"
+                                                    data-kt-docs-table-filter="delete_row">
+                                                    Delete
+                                                </a>
+                                            </div>
+                                            <!--end::Menu item-->
                                         </div>
-                                        <!--end::Menu item-->
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="odd">
-                                <td>
-                                    2
-                                </td>
-                                <td>
-                                    <img class="img-fluid w-50px"
-                                        src="https://b2024479.smushcdn.com/2024479/wp-content/uploads/2020/05/HelloTech-qr-code-1024x1024.jpg?lossy=1&strip=1&webp=1"
-                                        alt="">
-                                </td>
-                                <td data-order="2022-03-10T14:40:00+05:00">
-                                    {{-- title --}}
-                                    <span><span class="fw-bold text-black">Title : </span>WEBSITE 27/03/2024</span><br>
-                                    <span><span class="fw-bold text-black">Link :
-                                        </span>https://qrcodes.pro/MpmtUh</span><br>
-                                    <span><span class="fw-bold text-black">Org : </span>russel hossain</span><br>
-                                    <span><span class="fw-bold text-black">Created at :</span>:March 27,
-                                        2024</span><br>
-                                </td>
-                                <td class="text-start">
-                                    <button class="btn btn-light-primary">Business Card</button>
-                                </td>
-                                <td class="text-start">
-                                    <button class="btn btn-light-primary">20</button>
-                                </td>
-                                <td>
-                                    <div class="badge badge-light-warning">Pending</div>
-                                </td>
-                                <td class="pe-0">
-                                    <a href="#" class="btn btn-light btn-active-light-primary btn-sm"
-                                        data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end"
-                                        data-kt-menu-flip="top-end">
-                                        Actions
-                                        <span class="svg-icon fs-5 m-0">
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
-                                                height="24px" viewBox="0 0 24 24" version="1.1">
-                                                <g stroke="none" stroke-width="1" fill="none"
-                                                    fill-rule="evenodd">
-                                                    <polygon points="0 0 24 0 24 24 0 24"></polygon>
-                                                    <path
-                                                        d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z"
-                                                        fill="currentColor" fill-rule="nonzero"
-                                                        transform="translate(12.000003, 11.999999) rotate(-180.000000) translate(-12.000003, -11.999999)">
-                                                    </path>
-                                                </g>
-                                            </svg>
-                                        </span>
-                                    </a>
-                                    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
-                                        data-kt-menu="true" style="">
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3"
-                                                data-kt-docs-table-filter="edit_row">
-                                                Edit
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3"
-                                                data-kt-docs-table-filter="delete_row">
-                                                Delete
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-                                    </div>
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
