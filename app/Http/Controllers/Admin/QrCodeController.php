@@ -33,11 +33,13 @@ class QrCodeController extends Controller
     public function showQr($Qr)
     {
         $qr = Qr::with('qrData')->where('code', $Qr)->first();
-
-        return view('user.pages.qr-code.qrFile',$qr);
-
-
+        if($qr){
+            return view('user.pages.qr-code.qrFile', compact('qr'));
+        }else{
+            return redirect()->route('homePage')->with('error', 'Sorry No Data Found');
+        }
     }
+
 
 
 
