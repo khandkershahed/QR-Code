@@ -274,7 +274,7 @@ class QrCodeController extends Controller
         // }
         else {
             $qrCodeString = $qrCode->generate($data['qr_data_website_url']);
-            dd('5');
+            // dd('5');
         }
 
 
