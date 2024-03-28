@@ -51,8 +51,8 @@ class QrCodeRequest extends FormRequest
 
                 // Validation rules for fields in the 'qr_data' table
                 'qr_data_website_url' => 'nullable|url', // Validate qr_data_website_url as a valid URL
-                'qr_data_pdf' => 'nullable|string|max:255', // Validate qr_data_pdf as a string with max length 255
-                'qr_data_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate qr_data_image as an image file (adjust mime types and max size as needed)
+                // 'qr_data_pdf' => 'nullable|string|max:255', // Validate qr_data_pdf as a string with max length 255
+                // 'qr_data_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate qr_data_image as an image file (adjust mime types and max size as needed)
                 'qr_data_image_link' => 'nullable|url', // Validate qr_data_image_link as a valid URL
                 'qr_data_sms_number' => 'nullable|string|max:255', // Validate qr_data_sms_number as a string with max length 255
                 'qr_data_sms_message' => 'nullable|string|max:255', // Validate qr_data_sms_message as a string with max length 255
