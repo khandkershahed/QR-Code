@@ -12,7 +12,7 @@
     <meta property="og:url" content="" />
     <meta property="og:site_name" content="Go-QR | Admin Panel" />
     <link rel="canonical" href="" />
-    <link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+    <link rel="shortcut icon" href="https://i.ibb.co/BNBTVN4/logo.png" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!--begin::Fonts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
