@@ -6,7 +6,7 @@
             <div class="d-flex flex-column flex-column-fluid text-center p-10 py-lg-15">
                 <!--begin::Logo-->
                 <a href="{{ url('/') }}" class="mb-10 pt-lg-10">
-                    <img alt="Logo" src="{{ asset('admin/assets/media/logos/logo-1.svg') }}" class="h-40px mb-5" />
+                    <img alt="Logo" src="https://i.ibb.co/BNBTVN4/logo.png" class="h-40px mb-5" />
                 </a>
                 <!--end::Logo-->
                 <!--begin::Wrapper-->

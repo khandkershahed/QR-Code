@@ -30,6 +30,14 @@ class QrCodeController extends Controller
     {
         return view('user.pages.qr-code.create');
     }
+    public function showQr($Qr)
+    {
+        $qr = Qr::with('qrData')->where('code', $Qr)->first();
+
+        return view('user.pages.qr-code.qrFile',$qr);
+
+
+    }
 
 
 
@@ -162,11 +170,11 @@ class QrCodeController extends Controller
             $dataImage = $request->file('qr_data_image');
             if ($dataImage->isValid()) {
                 $imageFileName = $code . '.' . $dataImage->getClientOriginalExtension();
-                $dataImagePath = $dataImage->storeAs('public/qr_codes/dataImages', $imageFileName);
+                $dataImagePath = $dataImage->storeAs('public/qr_codes/images', $imageFileName);
                 $dataImageFullPath = storage_path('app/' . $dataImagePath);
             }
         }
-
+        $qrDataLink = route('showQr',$code);
         // Create QR Data record
         $qrData = QrData::create([
             'code_id' => $qr->id,
@@ -247,10 +255,10 @@ class QrCodeController extends Controller
             $qrCodeString = $qrCode->generate($data['qr_data_website_url']);
         }
         elseif ($qr_type == 'pdf') {
-            $qrCodeString = $qrCode->generate($pdfFullPath);
+            $qrCodeString = $qrCode->generate($qrDataLink);
         }
         elseif ($qr_type == 'image') {
-            $qrCodeString = $qrCode->generate($dataImageFullPath);
+            $qrCodeString = $qrCode->generate($qrDataLink);
         }
         elseif ($qr_type == 'sms') {
             $qrCodeString = $qrCode->SMS($data['qr_data_sms_number'], $data['qr_data_sms_message']);

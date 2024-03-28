@@ -15,3 +15,5 @@ Route::middleware('auth')->prefix('user')->name('user.')->group(function () {
         ],
     );
 });
+Route::get('/{Qr}', [QrCodeController::class, 'showQr'])->name('showQr');
+
