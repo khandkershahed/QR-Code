@@ -6,15 +6,9 @@
             overflow: hidden;
         }
 
-        /* inner wrapper: make responsive */
         .responsive-wrapper {
             position: relative;
             height: 0;
-            /* gets height from padding-bottom */
-
-            /* put following styles (necessary for overflow and scrolling handling on mobile devices) inline in .responsive-wrapper around iframe because not stable in CSS:
-    -webkit-overflow-scrolling: touch; overflow: auto; */
-
         }
 
         .responsive-wrapper iframe {
@@ -27,16 +21,10 @@
             margin: 0;
             padding: 0;
             border: none;
-        }
-
-        /* padding-bottom = h/w as % -- sets aspect ratio */
-        /* YouTube video aspect ratio */
-        .responsive-wrapper-wxh-572x612 {
+        }        .responsive-wrapper-wxh-572x612 {
             padding-bottom: 107%;
         }
 
-        /* general styles */
-        /* ============== */
         .set-border {
             border: 5px inset #4f4f4f;
         }
@@ -64,10 +52,10 @@
         <!--begin::Authentication - Error 500 -->
         <div class="d-flex flex-column flex-column-fluid">
             <!--begin::Content-->
-            <div class="d-flex flex-column flex-column-fluid text-center p-10 py-lg-15">
+            <div class="d-flex flex-column flex-column-fluid text-center">
                 <!--begin::Logo-->
-                <a href="{{ url('/') }}" class="mb-10 pt-lg-10">
-                    <img alt="Logo" src="https://i.ibb.co/BNBTVN4/logo.png" class="h-40px mb-5" />
+                <a href="{{ url('/') }}" class="pt-lg-10">
+                    <img alt="Logo" src="https://i.ibb.co/BNBTVN4/logo.png" class="h-40px" />
                 </a>
                 <!--end::Logo-->
 
