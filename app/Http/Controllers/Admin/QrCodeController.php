@@ -162,7 +162,7 @@ class QrCodeController extends Controller
             if ($pdf->isValid()) {
                 $pdfFileName = $code . '.' . $pdf->getClientOriginalExtension();
                 $pdfPath = $pdf->storeAs('public/qr_codes/pdfs', $pdfFileName);
-                $pdfFullPath = asset('storage/qr_codes/pdfs/' . $pdfPath);
+                $pdfFullPath = url('/storage/qr_codes/pdfs/' . $pdfFileName);
                 // $pdfFullPath = storage_path('app/' . $pdfPath);
             }
         }
@@ -174,7 +174,7 @@ class QrCodeController extends Controller
             if ($dataImage->isValid()) {
                 $imageFileName = $code . '.' . $dataImage->getClientOriginalExtension();
                 $dataImagePath = $dataImage->storeAs('public/qr_codes/images', $imageFileName);
-                $dataImageFullPath = asset('storage/qr_codes/images/' . $imageFileName);
+                $dataImageFullPath = url('/storage/qr_codes/images/' . $imageFileName);
             }
         }
         $qrDataLink = route('showQr',$code);
