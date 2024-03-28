@@ -134,43 +134,45 @@ class QrCodeController extends Controller
         // // Store data into the 'qr_data' table
 
         // Upload logo file if provided
+        // Handle QR Logo
         if ($request->hasFile('qr_logo')) {
             $logo = $request->file('qr_logo');
             if ($logo->isValid()) {
                 $fileName = $code . '.' . $logo->getClientOriginalExtension();
                 $logoPath = $logo->storeAs('public/qr_codes/logos', $fileName);
                 $logoFullPath = storage_path('app/' . $logoPath);
-                // Uncomment the following line to save the logo path to the corresponding QR record
+                // Save the logo path to the corresponding QR record
                 $qr->update(['qr_logo' => $logoFullPath]);
             }
         }
-
+            // Handle QR PDF
+        $pdfFullPath = '';
         if ($request->hasFile('qr_data_pdf')) {
             $pdf = $request->file('qr_data_pdf');
             if ($pdf->isValid()) {
                 $pdfFileName = $code . '.' . $pdf->getClientOriginalExtension();
                 $pdfPath = $pdf->storeAs('public/qr_codes/pdfs', $pdfFileName);
                 $pdfFullPath = storage_path('app/' . $pdfPath);
-                // Uncomment the following line to save the PDF path to the corresponding QR record
-                // $qr->update(['qr_data_pdf' => $pdfFullPath]);
             }
         }
 
+        // Handle QR Data Image
+        $dataImageFullPath = '';
         if ($request->hasFile('qr_data_image')) {
             $dataImage = $request->file('qr_data_image');
             if ($dataImage->isValid()) {
                 $imageFileName = $code . '.' . $dataImage->getClientOriginalExtension();
                 $dataImagePath = $dataImage->storeAs('public/qr_codes/dataImages', $imageFileName);
                 $dataImageFullPath = storage_path('app/' . $dataImagePath);
-                // Uncomment the following line to save the image path to the corresponding QR record
-                // $qr->update(['qr_data_image' => $dataImageFullPath]);
             }
         }
+
+        // Create QR Data record
         $qrData = QrData::create([
             'code_id' => $qr->id,
             'qr_data_website_url' => $request->qr_data_website_url,
-            'qr_data_pdf' => ($request->hasFile('qr_data_pdf') ? $pdfFullPath : ''),
-            'qr_data_image' => ($request->hasFile('qr_data_image') ? $dataImageFullPath : ''),
+            'qr_data_pdf' => $pdfFullPath,
+            'qr_data_image' => $dataImageFullPath,
             'qr_data_image_link' => $request->qr_data_image_link,
             'qr_data_sms_number' => $request->qr_data_sms_number,
             'qr_data_sms_message' => $request->qr_data_sms_message,
