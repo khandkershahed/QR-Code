@@ -152,7 +152,7 @@ class QrCodeController extends Controller
                 $pdfPath = $pdf->storeAs('public/qr_codes/pdfs', $pdfFileName);
                 $pdfFullPath = storage_path('app/' . $pdfPath);
                 // Uncomment the following line to save the PDF path to the corresponding QR record
-                $qr->update(['qr_data_pdf' => $pdfFullPath]);
+                // $qr->update(['qr_data_pdf' => $pdfFullPath]);
             }
         }
 
@@ -163,7 +163,7 @@ class QrCodeController extends Controller
                 $dataImagePath = $dataImage->storeAs('public/qr_codes/dataImages', $imageFileName);
                 $dataImageFullPath = storage_path('app/' . $dataImagePath);
                 // Uncomment the following line to save the image path to the corresponding QR record
-                $qr->update(['qr_data_image' => $dataImageFullPath]);
+                // $qr->update(['qr_data_image' => $dataImageFullPath]);
             }
         }
         $qrData = QrData::create([
