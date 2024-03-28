@@ -132,35 +132,7 @@ class QrCodeController extends Controller
         ]);
 
         // // Store data into the 'qr_data' table
-        $qrData = QrData::create([
-            'code_id' => $qr->id,
-            'qr_data_website_url' => $request->qr_data_website_url,
-            'qr_data_pdf' => $request->qr_data_pdf,
-            'qr_data_image' => $request->qr_data_image,
-            'qr_data_image_link' => $request->qr_data_image_link,
-            'qr_data_sms_number' => $request->qr_data_sms_number,
-            'qr_data_sms_message' => $request->qr_data_sms_message,
-            'qr_data_email_id' => $request->qr_data_email_id,
-            'qr_data_email_subject' => $request->qr_data_email_subject,
-            'qr_data_email_body' => $request->qr_data_email_body,
-            'qr_app_android' => $request->qr_app_android,
-            'qr_data_app_iphone' => $request->qr_data_app_iphone,
-            'qr_data_app_ipad' => $request->qr_data_app_ipad,
-            'qr_data_call_number' => $request->qr_data_call_number,
-            'qr_data_location' => $request->qr_data_location,
-            'qr_data_coupon_code' => $request->qr_data_coupon_code,
-            'qr_data_coupon_expire_date' => $request->qr_data_coupon_expire_date,
-            'qr_data_coupon_header' => $request->qr_data_coupon_header,
-            'qr_data_coupon_message' => $request->qr_data_coupon_message,
-            'qr_data_coupon_description_header' => $request->qr_data_coupon_description_header,
-            'qr_data_coupon_description_body' => $request->qr_data_coupon_description_body,
-            'qr_data_coupon_website' => $request->qr_data_coupon_website,
-            'qr_data_coupon_company' => $request->qr_data_coupon_company,
-            'qr_data_coupon_policy' => $request->qr_data_coupon_policy,
-            'qr_data_coupon_logo' => $request->qr_data_coupon_logo,
-            'qr_data_audio_file' => $request->qr_data_audio_file,
-            'qr_data_audio_link' => $request->qr_data_audio_link,
-        ]);
+
         // Upload logo file if provided
         if ($request->hasFile('qr_logo')) {
             $logo = $request->file('qr_logo');
@@ -194,6 +166,35 @@ class QrCodeController extends Controller
                 $qr->update(['qr_data_image' => $dataImageFullPath]);
             }
         }
+        $qrData = QrData::create([
+            'code_id' => $qr->id,
+            'qr_data_website_url' => $request->qr_data_website_url,
+            'qr_data_pdf' => $pdfFullPath,
+            'qr_data_image' => $dataImageFullPath,
+            'qr_data_image_link' => $request->qr_data_image_link,
+            'qr_data_sms_number' => $request->qr_data_sms_number,
+            'qr_data_sms_message' => $request->qr_data_sms_message,
+            'qr_data_email_id' => $request->qr_data_email_id,
+            'qr_data_email_subject' => $request->qr_data_email_subject,
+            'qr_data_email_body' => $request->qr_data_email_body,
+            'qr_app_android' => $request->qr_app_android,
+            'qr_data_app_iphone' => $request->qr_data_app_iphone,
+            'qr_data_app_ipad' => $request->qr_data_app_ipad,
+            'qr_data_call_number' => $request->qr_data_call_number,
+            'qr_data_location' => $request->qr_data_location,
+            'qr_data_coupon_code' => $request->qr_data_coupon_code,
+            'qr_data_coupon_expire_date' => $request->qr_data_coupon_expire_date,
+            'qr_data_coupon_header' => $request->qr_data_coupon_header,
+            'qr_data_coupon_message' => $request->qr_data_coupon_message,
+            'qr_data_coupon_description_header' => $request->qr_data_coupon_description_header,
+            'qr_data_coupon_description_body' => $request->qr_data_coupon_description_body,
+            'qr_data_coupon_website' => $request->qr_data_coupon_website,
+            'qr_data_coupon_company' => $request->qr_data_coupon_company,
+            'qr_data_coupon_policy' => $request->qr_data_coupon_policy,
+            'qr_data_coupon_logo' => $request->qr_data_coupon_logo,
+            'qr_data_audio_file' => $request->qr_data_audio_file,
+            'qr_data_audio_link' => $request->qr_data_audio_link,
+        ]);
         // $qrCode = QrCode::format('png')->size(230);
         $qrCode = new Generator;
         $qrCode->format('png')->size(230);
