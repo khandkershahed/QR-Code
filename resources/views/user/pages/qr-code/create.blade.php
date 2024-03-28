@@ -172,7 +172,7 @@
                     <div class="card-body">
                         <div class="d-flex flex-column justify-content-center align-items-center" id="generatedQRCodeContainer">
                             <h3>Preview</h3>
-                            <img id="generatedQRCode" class="img-fluid" src="https://i.ibb.co/XzHNWc0/no-qr.png" alt="QR Code">
+                            <img id="generatedQRCode" class="img-fluid" src="https://goqr.flixzaglobal.com/storage/qr_codes/QR2803202411.png" alt="QR Code">
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-around align-items-center">

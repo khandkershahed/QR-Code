@@ -238,6 +238,8 @@ class QrCodeController extends Controller
             }
         }
 
+        $qrCode->errorCorrection('H');
+
         if ($qr_type == 'website') {
             $qrCodeString = $qrCode->generate($data['qr_data_website_url']);
         }
