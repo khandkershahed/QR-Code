@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('nfc_cards', function (Blueprint $table) {
+        Schema::create('nfc_data', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade');
-            $table->string('code')->nullable();
-            $table->string('nfc_type')->nullable();
-            $table->string('nfc_template')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('nfc_cards');
+        Schema::dropIfExists('nfc_data');
     }
 };

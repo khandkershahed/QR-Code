@@ -1,67 +1,18 @@
 <x-app-layout :title="'QR Code List'">
 
     {{-- {!! QrCode::size(500)->eye('left-leaf',0.1)->eyeColor(0, 255, 255, 255, 0, 0, 0)->eyeColor(1, 222, 18, 222,222, 18, 222 )->eyeColor(2, 222, 18, 222,222, 18, 222 )->style('dot', 0.8)->errorCorrection('H')->generate('Make me into a QrCode!'); !!} --}}
-
-    <div class="row">
-        <div class="col-lg-12 d-flex  justify-content-between align-items-center bg-white mb-6 p-3 rounded-2 ">
-            <div>
-                <h2>QR Codes</h2>
-                <p class="mb-0">View and manage your QR Codes</p>
-            </div>
-
-            <div>
-                <button type="button" class="btn btn-primary">
-                    <i class="ki-duotone ki-exit-down fs-2"><span class="path1"></span><span class="path2"></span></i>
-                    Create QR Codes
-                </button>
-            </div>
-        </div>
-    </div>
     <div class="row">
         <div class="col-lg-12">
             <div class="card card-p-0 card-flush p-3 pt-0">
                 <div class="card-header align-items-center py-5 gap-2 gap-md-5">
                     <div class="card-title">
-                        <div class="d-flex align-items-center position-relative my-1">
-                            <span class="svg-icon fs-1 position-absolute ms-4">...</span>
-                            <input type="text" data-kt-filter="search"
-                                class="form-control form-control-solid w-250px ps-14" placeholder="Search Report" />
-                        </div>
-                        <div id="qr_code_1_export" class="d-none"></div>
+                        <h2 class="mb-0">View and manage your QR Codes</h2>
                     </div>
                     <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
-                        <button type="button" class="btn btn-light-primary" data-kt-menu-trigger="click"
-                            data-kt-menu-placement="bottom-end">
-                            <i class="ki-duotone ki-exit-down fs-2"><span class="path1"></span><span
-                                    class="path2"></span></i>
-                            Export Report
-                        </button>
-                        <div id="qr_code_export_menu"
-                            class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-200px py-4"
-                            data-kt-menu="true">
-                            <div class="menu-item px-3">
-                                <a href="#" class="menu-link px-3" data-kt-export="copy">
-                                    Copy to clipboard
-                                </a>
-                            </div>
-                            <div class="menu-item px-3">
-                                <a href="#" class="menu-link px-3" data-kt-export="excel">
-                                    Export as Excel
-                                </a>
-                            </div>
-                            <div class="menu-item px-3">
-                                <a href="#" class="menu-link px-3" data-kt-export="csv">
-                                    Export as CSV
-                                </a>
-                            </div>
-                            <div class="menu-item px-3">
-                                <a href="#" class="menu-link px-3" data-kt-export="pdf">
-                                    Export as PDF
-                                </a>
-                            </div>
-                        </div>
-
-                        <div id="qr_code_buttons" class="d-none"></div>
+                        <a href="{{ route('user.qr-code.create') }}"
+                            class="btn btn-sm btn-primary rounded-2 me-3">
+                            Create QR Codes
+                        </a>
                     </div>
                 </div>
                 <div class="card-body">

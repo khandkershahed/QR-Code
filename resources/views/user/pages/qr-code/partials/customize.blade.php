@@ -1,5 +1,5 @@
     <ul class="nav nav-pills nav-pills-custom mb-5" role="tablist">
-        <li class="nav-item mb-3 me-3 me-lg-6" role="presentation">
+        {{-- <li class="nav-item mb-3 pe-3 pe-lg-10" role="presentation">
             <a class="nav-link btn btn-outline btn-flex btn-color-muted btn-active-color-primary flex-column overflow-hidden w-100px h-85px p-0
                 active"
                 id="kt_stats_widget_16_tab_link_1" data-bs-toggle="pill" href="#kt_stats_widget_16_tab_1"
@@ -10,10 +10,10 @@
                 <span class="nav-text text-gray-800 fw-bold fs-6 lh-1">Templates</span>
                 <span class="bullet-custom position-absolute bottom-0 w-100 h-4px bg-primary"></span>
             </a>
-        </li>
-        <li class="nav-item mb-3 me-3 me-lg-6" role="presentation">
+        </li> --}}
+        <li class="nav-item mb-3 pe-3 pe-lg-10" role="presentation">
             <a class="nav-link btn btn-outline btn-flex btn-color-muted btn-active-color-primary flex-column overflow-hidden w-100px h-85px p-0
-                "
+                active"
                 id="kt_stats_widget_16_tab_link_2" data-bs-toggle="pill" href="#kt_stats_widget_16_tab_2"
                 aria-selected="false" tabindex="-1" role="tab">
                 <div class="nav-icon mb-3 qr-design-chose">
@@ -25,7 +25,7 @@
                 <span class="bullet-custom position-absolute bottom-0 w-100 h-4px bg-primary"></span>
             </a>
         </li>
-        <li class="nav-item mb-3 me-3 me-lg-6" role="presentation">
+        <li class="nav-item mb-3 pe-3 pe-lg-10" role="presentation">
             <a class="nav-link btn btn-outline btn-flex btn-color-muted btn-active-color-primary flex-column overflow-hidden w-100px h-85px p-0
                 "
                 id="kt_stats_widget_16_tab_link_3" data-bs-toggle="pill" href="#kt_stats_widget_16_tab_3"
@@ -39,7 +39,7 @@
                 <span class="bullet-custom position-absolute bottom-0 w-100 h-4px bg-primary"></span>
             </a>
         </li>
-        <li class="nav-item mb-3 me-3 me-lg-6" role="presentation">
+        <li class="nav-item mb-3 pe-3 pe-lg-10" role="presentation">
             <a class="nav-link btn btn-outline btn-flex btn-color-muted btn-active-color-primary flex-column overflow-hidden w-100px h-85px p-0
                 "
                 id="kt_stats_widget_16_tab_link_4" data-bs-toggle="pill" href="#kt_stats_widget_16_tab_4"
@@ -53,7 +53,7 @@
                 <span class="bullet-custom position-absolute bottom-0 w-100 h-4px bg-primary"></span>
             </a>
         </li>
-        <li class="nav-item mb-3 me-3 me-lg-6" role="presentation">
+        <li class="nav-item mb-3 pe-3 pe-lg-10" role="presentation">
             <a class="nav-link btn btn-outline btn-flex btn-color-muted btn-active-color-primary flex-column overflow-hidden w-100px h-85px p-0
                 "
                 id="kt_stats_widget_16_tab_link_5" data-bs-toggle="pill" href="#kt_stats_widget_16_tab_5"
@@ -68,13 +68,12 @@
         </li>
     </ul>
     <div class="tab-content">
-        <div class="tab-pane fade show active" id="kt_stats_widget_16_tab_1" role="tabpanel"
+        {{-- <div class="tab-pane fade" id="kt_stats_widget_16_tab_1" role="tabpanel"
             aria-labelledby="kt_stats_widget_16_tab_link_1">
             <div>
                 <h4>SELECT A TEMPLATE</h4>
             </div>
             <div>
-                {{-- Templates --}}
                 <div class="card ">
                     <div class="card-body rounded-4 p-0">
                         <x-qr-code.template :templates="[
@@ -148,9 +147,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
-        <div class="tab-pane fade " id="kt_stats_widget_16_tab_2" role="tabpanel"
+        <div class="tab-pane fade  show active" id="kt_stats_widget_16_tab_2" role="tabpanel"
             aria-labelledby="kt_stats_widget_16_tab_link_2">
             <div>
                 <div class="pt-5 text-start mt-4">
@@ -170,9 +169,8 @@
                             placeholder="Logo Size(Eg: 5, 10, 15....)" />
                     </div>
                 </div>
-                <p class="text-start pt-5 mb-0">Or Select From Our
+                {{-- <p class="text-start pt-5 mb-0">Or Select From Our
                     Gallary</p>
-                {{-- Logo From Our Gallary --}}
                 <div class="pt-2 row">
                     <div class="col-sm-1 mb-3">
                         <a href="#">
@@ -306,22 +304,22 @@
                                 src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-6.svg">
                         </a>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
 
         <div class="tab-pane fade " id="kt_stats_widget_16_tab_3" role="tabpanel"
             aria-labelledby="kt_stats_widget_16_tab_link_3">
-            <div class="pt-5 text-start mt-4">
+            <div class="row pt-3 pt-lg-6">
                 <h2>SELECT EYE-BALL</h2>
                 <p>This will be the color and shape of your QR code's eye-balls</p>
             </div>
-            <div class="d-flex mb-4">
-                <label class="form-label" for="colorPicker">Eye Ball Color</label><br>
+            <div class="row p-5 pt-3 pt-lg-6">
+                <label class="form-label p-0 pb-3" for="colorPicker">Eye Ball Color</label>
+                <input type="text" id="colorCodeInput" class="form-control form-control-solid w-75 w-lg-25" readonly>
                 <input type="color" id="colorPicker" style="width: 56px;height: 45px;" name="qr_eye_ball_color">
-                <input type="text" id="colorCodeInput" class="form-control form-control-solid w-25" readonly>
             </div>
-            <div class="d-lg-flex row gx-10 mb-4">
+            <div class="row pt-3 pt-lg-6">
                 <x-qr-code.eye-ball :eyeBalls="[
                     [
                         'id' => 311,
@@ -360,13 +358,13 @@
                 ]" />
 
             </div>
-            <div class="pt-5 text-start mt-4">
+            <div class="row pt-3 pt-lg-6">
                 <h2>SELECT EYE-FRAME</h2>
                 <p>This will be the color and shape of your QR code's eye-frames</p>
             </div>
-            <div class="d-flex mb-4">
-                <label class="form-label" for="colorPicker">Eye Frame Color</label> <br>
-                <input type="text" id="colorCodeInput" class="form-control form-control-solid w-25" readonly>
+            <div class="row p-5 pt-3 pt-lg-6">
+                <label class="form-label p-0 pb-3" for="colorPicker">Eye Frame Color</label>
+                <input type="text" id="colorCodeInput" class="form-control form-control-solid w-75 w-lg-25" readonly>
                 <input type="color" id="colorPicker" style="width: 56px;height: 45px;" name="qr_eye_frame_color">
             </div>
             {{-- <div class="d-lg-flex row gx-10 mb-4">

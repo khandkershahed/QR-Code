@@ -33,7 +33,7 @@
         type="text/css" />
     <!--end::Global Stylesheets Bundle-->
     @props(['title'])
-    <title>{{ $title ?? config('app.name', 'MD Boilarplate') }}</title>
+    <title>{{ $title ?? config('app.name', 'Go QR') }}</title>
 </head>
 
 <body id="kt_body"
