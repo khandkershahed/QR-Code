@@ -1,5 +1,22 @@
 <x-app-layout :title="'NFC Card List'">
-
+    <style>
+        /* Add your custom CSS styles here */
+        #epaper-container {
+            position: relative;
+        }
+        #epaper-image {
+            max-width: 100%;
+            height: auto;
+        }
+        .area-tooltip {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: none;
+        }
+    </style>
     <div class="row">
         <div class="col-lg-12">
             <div class="card card-p-0 card-flush p-3 pt-0">
@@ -177,7 +194,10 @@
             </div>
         </div>
     </div>
+
+
     @push('scripts')
+
         <script>
             "use strict";
 

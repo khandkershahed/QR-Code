@@ -13,6 +13,21 @@ return new class extends Migration
     {
         Schema::create('nfc_data', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('card_id')->nullable()->constrained('nfc_cards')->onDelete('cascade');
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('prefix')->nullable();
+            $table->string('suffix')->nullable();
+            $table->string('designation')->nullable();
+            $table->string('department')->nullable();
+            $table->string('pronouns')->nullable();
+            $table->string('company')->nullable();
+            $table->text('summary')->nullable();
+            $table->string('company_logo')->nullable();
+            $table->string('logo_Size')->nullable();
+            $table->text('address')->nullable();
+            $table->string('location_latitude')->nullable();
+            $table->string('location_longitude')->nullable();
             $table->timestamps();
         });
     }

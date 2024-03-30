@@ -109,14 +109,14 @@
                                             <div class="fv-row mb-5">
                                                 <label class="form-label">First name</label>
                                                 <input type="text" class="form-control form-control-solid"
-                                                    name="profile_image" placeholder="" value="" />
+                                                    name="first_name" placeholder="" value="" />
                                             </div>
                                         </div>
                                         <div class="col-lg-4">
                                             <div class="fv-row mb-5">
                                                 <label class="form-label">Designation</label>
                                                 <input type="text" class="form-control form-control-solid"
-                                                    name="profile_image" placeholder="CXO, Founding Designer"
+                                                    name="designation" placeholder="CXO, Founding Designer"
                                                     value="" />
                                             </div>
                                         </div>
@@ -124,7 +124,7 @@
                                             <div class="fv-row mb-5">
                                                 <label class="form-label">Department</label>
                                                 <input type="text" class="form-control form-control-solid"
-                                                    name="profile_image" placeholder="CXO, Founding Designer"
+                                                    name="department" placeholder="CXO, Founding Designer"
                                                     value="" />
                                             </div>
                                         </div>
