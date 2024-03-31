@@ -26,7 +26,7 @@ class PlanSeeder extends Seeder
                 'title'          => 'Monthly Plan One',
                 'slug'          => 'monthly-plan-one',
                 'billing_cycle' => 'monthly',
-                'stripe_plan'   => 'price_1NbdJDGJK8rdnFGBuGTZ0hJb',
+                'stripe_plan'   => 'price_1P0994E4DyE4po5jNdH6JcT0',
                 'price'         => 5,
                 'status'        => 'active',
                 // 'descriptions' => 'Active Plan'
@@ -35,7 +35,7 @@ class PlanSeeder extends Seeder
                 'title'          => 'Monthly Plan Two',
                 'slug'          => 'monthly-plan-two',
                 'billing_cycle' => 'monthly',
-                'stripe_plan'   => 'price_1NbdJlGJK8rdnFGB6VvRqDiN',
+                'stripe_plan'   => 'price_1P09A8E4DyE4po5j89CPTUCI',
                 'price'         => 15,
                 'status'        => 'active',
                 // 'descriptions' => 'Premium Plan'
@@ -44,7 +44,7 @@ class PlanSeeder extends Seeder
                 'title'        => 'Monthly Plan Three',
                 'slug'        => 'monthly-plan-three',
                 'billing_cycle'=>'monthly',
-                'stripe_plan' => 'price_1NbdKHGJK8rdnFGBxqQs66Ls',
+                'stripe_plan' => 'price_1P09AxE4DyE4po5jbil5S92T',
                 'price'       => 40,
                 'status'      => 'active',
                 // 'descriptions' => 'Yearly Plan'
@@ -53,7 +53,7 @@ class PlanSeeder extends Seeder
                 'title'          => 'Yearly Plan One',
                 'slug'          => 'yearly-plan-one',
                 'billing_cycle' => 'yearly',
-                'stripe_plan'   => 'price_1NbdJDGJK8rdnFGBuGTZ0hJb',
+                'stripe_plan'   => 'price_1P09GhE4DyE4po5ju0IuVQZC',
                 'price'         => 55,
                 'status'        => 'active',
                 // 'descriptions' => 'Active Plan'
@@ -62,7 +62,7 @@ class PlanSeeder extends Seeder
                 'title'          => 'Yearly Plan Two',
                 'slug'          => 'yearly-plan-two',
                 'billing_cycle' => 'yearly',
-                'stripe_plan'   => 'price_1NbdJlGJK8rdnFGB6VvRqDiN',
+                'stripe_plan'   => 'price_1P09EHE4DyE4po5jkq1NMLqg',
                 'price'         => 180,
                 'status'        => 'active',
                 // 'descriptions' => 'Premium Plan'
@@ -71,7 +71,7 @@ class PlanSeeder extends Seeder
                 'title'        => 'Yearly Plan Three',
                 'slug'        => 'yearly-plan-three',
                 'billing_cycle'=>'yearly',
-                'stripe_plan' => 'price_1NbdKHGJK8rdnFGBxqQs66Ls',
+                'stripe_plan' => 'price_1P09FpE4DyE4po5jKlv2uQNK',
                 'price'       => 480,
                 'status'      => 'active',
                 // 'descriptions' => 'Yearly Plan'
