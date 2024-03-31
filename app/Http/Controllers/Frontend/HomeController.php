@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Plan;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -22,7 +23,11 @@ class HomeController extends Controller
         return view('frontend.pages.services');
     }
     public function pricing() {
-        return view('frontend.pages.pricing');
+        $data = [
+            'monthly_plans' => Plan::orderBy('price','asc')->where('billing_cycle', 'monthly')->get(),
+            'yearly_plans' => Plan::orderBy('price','asc')->where('billing_cycle', 'yearly')->get(),
+        ];
+        return view('frontend.pages.pricing',$data);
     }
     public function digitalCard() {
         return view('frontend.pages.digitalCard');

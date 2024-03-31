@@ -7,7 +7,7 @@
             <div class="banner-inner pt-70 rpt-60 text-black">
                 <h1 class="page-title aos-init aos-animate" data-aos="fade-up" data-aos-duration="1500"
                     data-aos-offset="50">
-                   Our Pricing
+                    Our Pricing
                 </h1>
             </div>
         </div>
@@ -23,7 +23,8 @@
                 </div>
                 <div class="col-lg-7 text-center aos-init aos-animate" data-aos="fade-up" data-aos-delay="50"
                     data-aos-duration="1500" data-aos-offset="50">
-                    <span class="save-percent" style="background-image: url({{ asset('frontend/assets/images/shapes/title-shape.png') }});">Save
+                    <span class="save-percent"
+                        style="background-image: url({{ asset('frontend/assets/images/shapes/title-shape.png') }});">Save
                         40%</span>
                     <ul class="nav pricing-tab mb-55" role="tablist">
                         <li>
@@ -39,136 +40,62 @@
             <div class="tab-content">
                 <div class="tab-pane fade" id="monthly">
                     <div class="row justify-content-center">
-                        <div class="col-xl-4 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
-                            data-aos-duration="1500" data-aos-offset="50">
-                            <div class="pricing-item style-three">
-                                <div class="circle"><img src="{{ asset('frontend/assets/images/shapes/price-circle.png') }}" alt="Shape">
+                        @foreach ($monthly_plans as $monthly_plan)
+                            <div class="col-xl-4 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
+                                data-aos-duration="1500" data-aos-offset="50">
+                                <div class="pricing-item style-three">
+                                    <div class="circle"><img
+                                            src="{{ asset('frontend/assets/images/shapes/price-circle.png') }}"
+                                            alt="Shape">
+                                    </div>
+                                    <div class="price"><span
+                                            class="prev fs-2 me-2">{{ $monthly_plan->currency }}</span>{{ $monthly_plan->price }}<span
+                                            class="next">/month</span>
+                                    </div>
+                                    <div class="text">Smart Pricing for good services</div>
+                                    <a href="{{ route('user.subscribe.post', $monthly_plan->slug) }}" class="theme-btn">Choose Package <i
+                                            class="fas fa-arrow-right"></i></a>
+                                    <h4 class="title">{{ $monthly_plan->title }}</h4>
+                                    <ul class="list">
+                                        @if (!empty($monthly_plan->descriptions))
+                                            @foreach (json_decode($monthly_plan->descriptions ?? '[]') as $description)
+                                                <li>{{ $description }}</li>
+                                            @endforeach
+                                        @endif
+                                    </ul>
                                 </div>
-                                <div class="price"><span class="prev">$</span>19<span class="next">/month</span>
-                                </div>
-                                <div class="text">Smart Pricing for good services</div>
-                                <a href="#" class="theme-btn">Choose Package <i
-                                        class="fas fa-arrow-right"></i></a>
-                                <h4 class="title">Regular Plan</h4>
-                                <ul class="list">
-                                    <li>Email marketing</li>
-                                    <li>Unlimited chat history</li>
-                                    <li>Unlimited landing pages</li>
-                                    <li class="hide">Automation templates</li>
-                                    <li class="hide">Great Customer Support</li>
-                                    <li class="hide">Unlimited lead funnels</li>
-                                </ul>
                             </div>
-                        </div>
-                        <div class="col-xl-4 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
-                            data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
-                            <div class="pricing-item style-three">
-                                <div class="circle"><img src="{{ asset('frontend/assets/images/shapes/price-circle.png') }}" alt="Shape">
-                                </div>
-                                <div class="price"><span class="prev">$</span>39<span class="next">/month</span>
-                                </div>
-                                <div class="text">Smart Pricing for good services</div>
-                                <a href="#" class="theme-btn">Choose Package <i
-                                        class="fas fa-arrow-right"></i></a>
-                                <h4 class="title">Standard Plan</h4>
-                                <ul class="list">
-                                    <li>Email marketing</li>
-                                    <li>Unlimited chat history</li>
-                                    <li>Unlimited landing pages</li>
-                                    <li>Automation templates</li>
-                                    <li>Great Customer Support</li>
-                                    <li>Unlimited lead funnels</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
-                            data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
-                            <div class="pricing-item style-three">
-                                <div class="circle"><img src="{{ asset('frontend/assets/images/shapes/price-circle.png') }}" alt="Shape">
-                                </div>
-                                <div class="price"><span class="prev">$</span>93<span class="next">/month</span>
-                                </div>
-                                <div class="text">Smart Pricing for good services</div>
-                                <a href="#" class="theme-btn">Choose Package <i
-                                        class="fas fa-arrow-right"></i></a>
-                                <h4 class="title">Premium Plan</h4>
-                                <ul class="list">
-                                    <li>Email marketing</li>
-                                    <li>Unlimited chat history</li>
-                                    <li>Unlimited landing pages</li>
-                                    <li>Automation templates</li>
-                                    <li>Great Customer Support</li>
-                                    <li>Unlimited lead funnels</li>
-                                </ul>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="tab-pane fade yearly show active" id="yearly">
                     <div class="row justify-content-center">
-                        <div class="col-xl-4 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
-                            data-aos-duration="1500" data-aos-offset="50">
-                            <div class="pricing-item style-three">
-                                <div class="circle"><img src="{{ asset('frontend/assets/images/shapes/price-circle.png') }}" alt="Shape">
+                        @foreach ($yearly_plans as $yearly_plan)
+                            <div class="col-xl-4 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
+                                data-aos-duration="1500" data-aos-offset="50">
+                                <div class="pricing-item style-three">
+                                    <div class="circle"><img
+                                            src="{{ asset('frontend/assets/images/shapes/price-circle.png') }}"
+                                            alt="Shape">
+                                    </div>
+                                    <div class="price"><span
+                                            class="prev fs-2 me-2">{{ $yearly_plan->currency }}</span>{{ $yearly_plan->price }}<span
+                                            class="next">/month</span>
+                                    </div>
+                                    <div class="text">Smart Pricing for good services</div>
+                                    <a href="{{ route('user.subscribe.post', $yearly_plan->slug) }}" class="theme-btn">Choose Package <i
+                                            class="fas fa-arrow-right"></i></a>
+                                    <h4 class="title">{{ $yearly_plan->title }}</h4>
+                                    <ul class="list">
+                                        @if (!empty($yearly_plan->descriptions))
+                                            @foreach (json_decode($yearly_plan->descriptions ?? '[]') as $description)
+                                            <li>{{ $description }}</li>
+                                            @endforeach
+                                        @endif
+                                    </ul>
                                 </div>
-                                <div class="price"><span class="prev">$</span>19<span class="next">/month</span>
-                                </div>
-                                <div class="text">Smart Pricing for good services</div>
-                                <a href="#" class="theme-btn">Choose Package <i
-                                        class="fas fa-arrow-right"></i></a>
-                                <h4 class="title">Regular Plan</h4>
-                                <ul class="list">
-                                    <li>Email marketing</li>
-                                    <li>Unlimited chat history</li>
-                                    <li>Unlimited landing pages</li>
-                                    <li class="hide">Automation templates</li>
-                                    <li class="hide">Great Customer Support</li>
-                                    <li class="hide">Unlimited lead funnels</li>
-                                </ul>
                             </div>
-                        </div>
-                        <div class="col-xl-4 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
-                            data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
-                            <div class="pricing-item style-three">
-                                <div class="circle"><img src="{{ asset('frontend/assets/images/shapes/price-circle.png') }}" alt="Shape">
-                                </div>
-                                <div class="price"><span class="prev">$</span>39<span class="next">/month</span>
-                                </div>
-                                <div class="text">Smart Pricing for good services</div>
-                                <a href="#" class="theme-btn">Choose Package <i
-                                        class="fas fa-arrow-right"></i></a>
-                                <h4 class="title">Standard Plan</h4>
-                                <ul class="list">
-                                    <li>Email marketing</li>
-                                    <li>Unlimited chat history</li>
-                                    <li>Unlimited landing pages</li>
-                                    <li>Automation templates</li>
-                                    <li>Great Customer Support</li>
-                                    <li>Unlimited lead funnels</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
-                            data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
-                            <div class="pricing-item style-three">
-                                <div class="circle"><img src="{{ asset('frontend/assets/images/shapes/price-circle.png') }}" alt="Shape">
-                                </div>
-                                <div class="price"><span class="prev">$</span>93<span class="next">/month</span>
-                                </div>
-                                <div class="text">Smart Pricing for good services</div>
-                                <a href="#" class="theme-btn">Choose Package <i
-                                        class="fas fa-arrow-right"></i></a>
-                                <h4 class="title">Premium Plan</h4>
-                                <ul class="list">
-                                    <li>Email marketing</li>
-                                    <li>Unlimited chat history</li>
-                                    <li>Unlimited landing pages</li>
-                                    <li>Automation templates</li>
-                                    <li>Great Customer Support</li>
-                                    <li>Unlimited lead funnels</li>
-                                </ul>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

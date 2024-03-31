@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\Subscription\PlanController;
 
 Route::middleware('guest:admin')->prefix('admin')->name('admin.')->group(function () {
 
@@ -68,6 +69,7 @@ Route::middleware('auth:admin', 'role:admin')->prefix('admin')->name('admin.')->
             'role'           => RoleController::class,
             'permission'     => PermissionController::class,
             'email-settings' => EmailSettingController::class,
+            'plans'           => PlanController::class,
         ],
         ['except' => ['show']]
     );
