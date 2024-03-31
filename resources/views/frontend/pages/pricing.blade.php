@@ -53,8 +53,8 @@
                                             class="next">/month</span>
                                     </div>
                                     <div class="text">Smart Pricing for good services</div>
-                                    <a href="{{ route('user.subscribe.post', $monthly_plan->slug) }}" class="theme-btn">Choose Package <i
-                                            class="fas fa-arrow-right"></i></a>
+                                    <a href="{{ route('user.subscribe.post', $monthly_plan->slug) }}"
+                                        class="theme-btn">Choose Package <i class="fas fa-arrow-right"></i></a>
                                     <h4 class="title">{{ $monthly_plan->title }}</h4>
                                     <ul class="list">
                                         @if (!empty($monthly_plan->descriptions))
@@ -83,13 +83,13 @@
                                             class="next">/month</span>
                                     </div>
                                     <div class="text">Smart Pricing for good services</div>
-                                    <a href="{{ route('user.subscribe.post', $yearly_plan->slug) }}" class="theme-btn">Choose Package <i
-                                            class="fas fa-arrow-right"></i></a>
+                                    <a href="{{ route('user.subscribe.post', $yearly_plan->slug) }}"
+                                        class="theme-btn">Choose Package <i class="fas fa-arrow-right"></i></a>
                                     <h4 class="title">{{ $yearly_plan->title }}</h4>
                                     <ul class="list">
                                         @if (!empty($yearly_plan->descriptions))
                                             @foreach (json_decode($yearly_plan->descriptions ?? '[]') as $description)
-                                            <li>{{ $description }}</li>
+                                                <li>{{ $description }}</li>
                                             @endforeach
                                         @endif
                                     </ul>
