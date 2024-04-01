@@ -14,17 +14,12 @@
     <link rel="canonical" href="" />
     <link rel="shortcut icon" href="https://i.ibb.co/BNBTVN4/logo.png" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!--begin::Fonts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
-    <!--end::Fonts-->
-    <!--begin::Page Vendor Stylesheets(used by this page)-->
     <link href="{{ asset('admin/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet"
         type="text/css" />
     <link href="{{ asset('admin/assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"
         type="text/css" />
     <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
-    <!--end::Page Vendor Stylesheets-->
-    <!--begin::Global Stylesheets Bundle(used by all pages)-->
     <link href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/css/custom.css') }}" rel="stylesheet" type="text/css" />
@@ -42,7 +37,6 @@
         type="text/css" />
 
 
-    <!--end::Global Stylesheets Bundle-->
     @props(['title'])
     <title>{{ $title ?? config('app.name', 'GO-QR') }}</title>
 </head>
@@ -50,49 +44,24 @@
 <body id="kt_body"
     class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed aside-enabled aside-fixed"
     style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px">
-    <!--begin::Main-->
-    <!--begin::Root-->
     <div class="d-flex flex-column flex-root">
-        <!--begin::Page-->
         <div class="page d-flex flex-row flex-column-fluid">
-            <!--begin::Aside-->
             @include('user.layouts.sidebar')
-            <!--end::Aside-->
-            <!--begin::Wrapper-->
             <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
-                <!--begin::Header-->
                 @include('user.layouts.header')
-                <!--end::Header-->
-                <!--begin::Content-->
                 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-                    <!--begin::Toolbar-->
                     @include('user.layouts.toolbar')
-                    <!--end::Toolbar-->
-                    <!--begin::Post-->
                     <div class="post d-flex flex-column-fluid" id="kt_post">
-                        <!--begin::Container-->
                         <div id="kt_content_container" class="container-fluid">
-                            <!--begin::Row-->
                             {{ $slot }}
-                            <!--end::Row-->
                         </div>
-                        <!--end::Container-->
                     </div>
-                    <!--end::Post-->
                 </div>
-                <!--end::Content-->
-                <!--begin::Footer-->
                 @include('user.layouts.footer')
-                <!--end::Footer-->
             </div>
-            <!--end::Wrapper-->
         </div>
-        <!--end::Page-->
     </div>
-    <!--end::Root-->
-    <!--begin::Scrolltop-->
     <div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
-        <!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
         <span class="svg-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <rect opacity="0.5" x="13" y="6" width="13" height="2" rx="1"
@@ -102,26 +71,17 @@
                     fill="currentColor" />
             </svg>
         </span>
-        <!--end::Svg Icon-->
     </div>
-    <!--end::Scrolltop-->
-    <!--begin::Javascript-->
     @php
         $hostUrl = 'admin/assets/';
     @endphp
-    <!--begin::Global Javascript Bundle(used by all pages)-->
     <script src="{{ asset($hostUrl . 'plugins/global/plugins.bundle.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/scripts.bundle.js') }}"></script>
 
-    <!--end::datatable Javascript Bundle-->
     <script src="{{ asset($hostUrl . 'plugins/custom/datatables/datatables.bundle.js') }}"></script>
-    <!--end::Global Javascript Bundle-->
-    <!--begin::Page Vendors Javascript(used by this page)-->
     <script src="{{ asset($hostUrl . 'plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
     <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
     <script src="{{ asset($hostUrl . 'plugins/custom/formrepeater/formrepeater.bundle.js') }}"></script>
-    <!--end::Page Vendors Javascript-->
-    <!--begin::Page Custom Javascript(used by this page)-->
     <script src="{{ asset($hostUrl . 'js/custom/account/settings/signin-methods.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/account/settings/profile-details.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/account/settings/deactivate-account.js') }}"></script>
@@ -139,6 +99,7 @@
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/two-factor-authentication.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/users-search.js') }}"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://kit.fontawesome.com/69b7156a94.js" crossorigin="anonymous"></script>
 
     <script src="{{ asset('admin/js/custom.js') }}"></script>
     {{-- <script>
@@ -203,8 +164,6 @@
         });
     </script>
     @stack('scripts')
-    <!--end::Page Custom Javascript-->
-    <!--end::Javascript-->
 
 </body>
 
