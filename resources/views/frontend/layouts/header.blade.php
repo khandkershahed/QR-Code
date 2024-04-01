@@ -54,7 +54,11 @@
 
                 <!-- Menu Button -->
                 <div class="menu-btns ms-lg-auto">
-                    <a href="{{ route('register') }}" class="light-btn">Sign Up</a>
+                    @auth
+                        <a href="{{ route('register') }}" class="light-btn">Sign Up</a>
+                        @else
+                        <a href="{{ route('register') }}" class="light-btn">Sign Up</a>
+                    @endauth
                     <a href="{{ route('contact') }}" class="theme-btn style-two">Get Started
                         <i class="fa-solid fa-arrow-right"></i>
                     </a>
