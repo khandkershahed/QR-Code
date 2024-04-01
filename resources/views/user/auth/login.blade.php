@@ -15,7 +15,7 @@
                                         <div class="form-outline">
                                             <x-input-label class="form-label" for="email" :value="__('Email')" />
                                             <x-text-input id="email"
-                                                class="form-control form-control-sm p-0 w-75 rounded-0" type="email"
+                                                class="form-control form-control-sm p-0 px-2 w-75 rounded-0" type="email"
                                                 name="email" :value="old('email')" required autocomplete="username" />
                                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
 
@@ -24,7 +24,7 @@
                                             <x-input-label class="form-label" for="password" :value="__('Password')" />
 
                                             <x-text-input id="password"
-                                                class="form-control form-control-sm p-0 w-75 rounded-0" type="password"
+                                                class="form-control form-control-sm p-0 px-2 w-75 rounded-0" type="password"
                                                 name="password" required autocomplete="new-password" />
                                             <x-input-error :messages="$errors->get('password')" class="mt-2" />
                                         </div>
@@ -53,7 +53,7 @@
                                         <div
                                             class="form-check ps-0 d-flex justify-content-start align-items-center mb-3">
                                             <p class="d-flex  justify-content-start align-items-center">
-                                                Don't Have an Accoun<span class="text-white">t?</span>
+                                                Don't Have an Account ?<span class="text-white"></span>
                                                 <a href="{{ route('register') }}"
                                                     class="btn btn-sm btn-link text-warning fw-bold fs-6"
                                                     style="color: var(--)">{{ __('Sign Up') }}</a>
