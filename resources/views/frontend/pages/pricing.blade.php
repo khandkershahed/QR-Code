@@ -1,7 +1,7 @@
 <x-frontend-app-layout :title="'Pricing'">
     <section class="page-banner-area overlay py-250 rpy-120 rel z-1 bgs-cover text-center"
         style="
-      background-image: url(https://webtendtheme.net/html/2024/akpager/assets/images/backgrounds/banner.jpg);
+      background-image: url(https://img.freepik.com/free-photo/high-angle-cash-calculator_23-2149103926.jpg?t=st=1711992497~exp=1711996097~hmac=cba674665bb01df3d0bf2d4b9dcb482d199fafdfc976f1390185593de8dbb984&w=1380);
     ">
         <div class="container">
             <div class="banner-inner pt-70 rpt-60 text-black">
@@ -28,11 +28,11 @@
                         40%</span>
                     <ul class="nav pricing-tab mb-55" role="tablist">
                         <li>
-                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#monthly">Monthly</button>
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#monthly">QR Code</button>
                         </li>
                         <li>
                             <button class="nav-link active" data-bs-toggle="tab"
-                                data-bs-target="#yearly">Yearly</button>
+                                data-bs-target="#yearly">Business Card</button>
                         </li>
                     </ul>
                 </div>
@@ -52,7 +52,7 @@
                                             class="prev fs-2 me-2">{{ $monthly_plan->currency }}</span>{{ $monthly_plan->price }}<span
                                             class="next">/month</span>
                                     </div>
-                                    <div class="text">Smart Pricing for good services</div>
+                                    <div class="text">10 Qr Code For One Month</div>
                                     <a href="{{ route('user.subscribe.post', $monthly_plan->slug) }}"
                                         class="theme-btn">Choose Package <i class="fas fa-arrow-right"></i></a>
                                     <h4 class="title">{{ $monthly_plan->title }}</h4>
@@ -82,7 +82,7 @@
                                             class="prev fs-2 me-2">{{ $yearly_plan->currency }}</span>{{ $yearly_plan->price }}<span
                                             class="next">/month</span>
                                     </div>
-                                    <div class="text">Smart Pricing for good services</div>
+                                    <div class="text">5 Business Card</div>
                                     <a href="{{ route('user.subscribe.post', $yearly_plan->slug) }}"
                                         class="theme-btn">Choose Package <i class="fas fa-arrow-right"></i></a>
                                     <h4 class="title">{{ $yearly_plan->title }}</h4>
