@@ -28,11 +28,11 @@
                         40%</span>
                     <ul class="nav pricing-tab mb-55" role="tablist">
                         <li>
-                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#monthly">QR Code</button>
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#monthly">Monthly</button>
                         </li>
                         <li>
                             <button class="nav-link active" data-bs-toggle="tab"
-                                data-bs-target="#yearly">Business Card</button>
+                                data-bs-target="#yearly">Yearly</button>
                         </li>
                     </ul>
                 </div>
