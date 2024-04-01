@@ -1,7 +1,8 @@
 <x-app-layout :title="'NFC Card Create'">
+    <h1 class="text-center mb-10 mt-5">Make Your NFC Profile !</h1>
     <div class="row">
         <div class="col-lg-9">
-            <div class="card">
+            <div class="card" style="height: 700px; overflow: auto;">
                 <div class="card-body p-0">
                     <div class="stepper stepper-pills p-0" id="kt_stepper_example_clickable">
                         <div class="stepper-nav flex-center flex-wrap border-bottom">
@@ -14,7 +15,7 @@
 
                                 <div class="stepper-label bg-light-primary p-2">
                                     <h3 class="stepper-title">
-                                        Select Template
+                                        <i class="fa-solid fa-synagogue pe-3"></i>  Select Template
                                     </h3>
                                 </div>
                             </div>
@@ -28,7 +29,7 @@
 
                                 <div class="stepper-label">
                                     <h3 class="stepper-title">
-                                        Input Data
+                                        <i class="fa-solid fa-file-import pe-3"></i>  Input Data
                                     </h3>
                                 </div>
                             </div>
@@ -42,7 +43,7 @@
 
                                 <div class="stepper-label">
                                     <h3 class="stepper-title">
-                                        Customize
+                                        <i class="fa-solid fa-sliders pe-3"></i> Customize
                                     </h3>
                                 </div>
                             </div>
@@ -56,7 +57,7 @@
 
                                 <div class="stepper-label">
                                     <h3 class="stepper-title">
-                                        Done
+                                        <i class="fa-solid fa-thumbs-up pe-3"></i>  Done
                                     </h3>
                                 </div>
                             </div>
@@ -107,9 +108,9 @@
                                             </div>
                                         </div>
                                         <div class="card-body">
-                                            <div class="w-25 mx-auto">
-                                                <img width="300px"
-                                                    src="https://assets-v2.lottiefiles.com/a/1abcc0d6-1163-11ee-9072-a343231e70f1/HGdrITc8PY.gif"
+                                            <div class="mx-auto d-flex justify-content-center">
+                                                <img width="img-fluid"
+                                                    src="https://i.ibb.co/5nFS23D/documents-filling-office-worker-corporate-employee-item-credit-card-folder-contract-employment-56688.jpg"
                                                     alt="">
                                             </div>
                                         </div>
@@ -139,16 +140,15 @@
             </div>
         </div>
         <div class="col-lg-3">
-            <div class="card">
+            <div class="card" style="height: 700px; overflow: auto;">
                 <div class="card-body">
                     <div class="d-flex flex-column justify-content-center align-items-center">
                         <h3>Preview</h3>
-                        <img class="" style="height: 530px;" src="https://i.ibb.co/268574S/3.png" alt="QR Code">
+                        <img class=""style="height: 530px;" src="https://i.ibb.co/268574S/3.png" alt="QR Code">
                     </div>
                 </div>
                 <div class="card-footer d-flex justify-content-around align-items-center">
-                    <a href="#" class="btn btn-light btn-active-light-primary w-100 me-2">Preview</a>
-                    <a href="#" class="btn btn-light btn-primary w-100">Download</a>
+                    <a href="#" class="btn btn-light btn-light-primary w-100"><i class="fa-solid fa-file-export pe-3"></i>Download</a>
                 </div>
             </div>
         </div>
