@@ -143,6 +143,7 @@
                 <div class="card-body">
                     <div class="d-flex flex-column justify-content-center align-items-center">
                         <h3>Preview</h3>
+                        @include('user.pages.nfc-card.partials.nfc_preview')
                         <img class="" style="height: 530px;" src="https://i.ibb.co/268574S/3.png" alt="QR Code">
                     </div>
                 </div>
