@@ -15,7 +15,7 @@
 
                                 <div class="stepper-label bg-light-primary p-2">
                                     <h3 class="stepper-title">
-                                        <i class="fa-solid fa-synagogue pe-3"></i>  Select Template
+                                        <i class="fa-solid fa-synagogue pe-3"></i> Select Template
                                     </h3>
                                 </div>
                             </div>
@@ -29,7 +29,7 @@
 
                                 <div class="stepper-label">
                                     <h3 class="stepper-title">
-                                        <i class="fa-solid fa-file-import pe-3"></i>  Input Data
+                                        <i class="fa-solid fa-file-import pe-3"></i> Input Data
                                     </h3>
                                 </div>
                             </div>
@@ -57,7 +57,7 @@
 
                                 <div class="stepper-label">
                                     <h3 class="stepper-title">
-                                        <i class="fa-solid fa-thumbs-up pe-3"></i>  Done
+                                        <i class="fa-solid fa-thumbs-up pe-3"></i> Done
                                     </h3>
                                 </div>
                             </div>
@@ -145,11 +145,11 @@
                     <div class="d-flex flex-column justify-content-center align-items-center">
                         <h3>Preview</h3>
                         @include('user.pages.nfc-card.partials.nfc_preview')
-                        <img class="" style="height: 530px;" src="https://i.ibb.co/268574S/3.png" alt="QR Code">
                     </div>
                 </div>
                 <div class="card-footer d-flex justify-content-around align-items-center">
-                    <a href="#" class="btn btn-light btn-light-primary w-100"><i class="fa-solid fa-file-export pe-3"></i>Download</a>
+                    <a href="#" class="btn btn-light btn-light-primary w-100"><i
+                            class="fa-solid fa-file-export pe-3"></i>Download</a>
                 </div>
             </div>
         </div>

@@ -1,6 +1,3 @@
-
-
-
 .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-link {
     background-color: #d5d5d5;
@@ -229,7 +226,7 @@ label.radio-card {
     transition: var(--transition);
     height: 130px;
 }
-.code-template{
+.code-template {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -237,7 +234,8 @@ label.radio-card {
     border-radius: 5px;
     padding: 10px;
     width: 150px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+        rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
     transition: var(--transition);
     height: 130px;
 }
@@ -249,11 +247,11 @@ label.radio-card {
     border-radius: 5px;
     padding: 0px 11px;
     width: 100%;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+        rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
     transition: var(--transition);
     height: auto;
 }
-
 
 .check-icon {
     width: 20px;
@@ -338,6 +336,327 @@ code {
     width: auto;
     height: auto;
 }
+
+/* NFC Cards */
+/* Card One Start */
+.nfc-profile-img-one {
+    width: 100px;
+    border-radius: 12px;
+}
+.nfc-profile-img-one img {
+    width: 100px;
+    border-radius: 12px;
+    border: 2px solid #;
+}
+.nfc-one-card-frame {
+    border: 3px solid #524a4a;
+    border-radius: 20px;
+    background-color: #ffff;
+}
+
+.nfc-one-title {
+    color: #6c757d;
+}
+
+.nfc-one .card-header img {
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    height: 100%;
+    /* Ensure the image takes full height of the container */
+    width: 100%;
+    /* Ensure the image takes full width of the container */
+    object-fit: cover;
+    /* Use cover to make sure the image covers the entire container */
+}
+
+.nfc-one p {
+    font-size: 14px;
+}
+
+.nfc-bio-one {
+    border-top: 1px solid #c3c3c3;
+    border-bottom: 1px solid #c3c3c3;
+}
+
+.nfc-contact-one a {
+    background-color: #fff5e5;
+    color: #ff9900;
+    padding: 5px 8px;
+    border-radius: 100%;
+}
+
+.nfc-social-one a {
+    background-color: #fff5e5;
+    color: #ff9900;
+    padding: 3px 6px;
+    border-radius: 5px;
+}
+.nfc-shapes-one {
+    margin-top: -85px;
+}
+
+@media only screen and (max-width: 578px) {
+    .nfc-shapes-one {
+        margin-top: -80px;
+    }
+    .nfc-bio-one {
+        padding-top: 15px;
+    }
+}
+
+/* Card One End */
+
+/* Card Two Start */
+.nfc-two-card-frame {
+    border: 5px solid #ff9900;
+    border-radius: 25px;
+    /* background-color: #eee; */
+}
+
+.nfc-two-title {
+    color: white;
+}
+.nfc-contact-two a {
+    background-color: #feeded;
+    color: #ff9900;
+    padding: 5px 8px;
+    border-radius: 100%;
+}
+.nfc-two .card-header {
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    background: #ff9900;
+    color: white;
+}
+
+.nfc-tow-p-img {
+    display: flex;
+    justify-content: end;
+    position: relative;
+    margin-top: -5rem;
+}
+
+.nfc-tow-p-img img {
+    width: 130px;
+    height: 130px;
+    border-radius: 100%;
+    border: 4px solid #fff;
+    object-fit: cover;
+}
+
+.nfc-contact-two {
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
+}
+.nfc-call-two-action a {
+    background-color: #ff9900 !important;
+}
+.nfc-card-body-two {
+    background-color: #eee;
+}
+
+.nfc-social-two a {
+    background-color: #feeded;
+    color: #ff9900;
+    padding: 3px 6px;
+    border-radius: 5px;
+}
+.nfc-call-two-action a {
+    background-color: #fff5e5;
+    color: #ff9900;
+    padding: 14px 10px;
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
+    border-top: 0;
+}
+/* Card Two End */
+/* Card Three Start */
+.nfc-call-three-action {
+    width: 70%;
+    margin: auto;
+}
+.nfc-three-card-frame {
+    background-color: transparent;
+}
+.nfc-three .card-header {
+    background-color: #b01ded;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    height: 100%;
+    /* Ensure the image takes full height of the container */
+    width: 100%;
+    /* Ensure the image takes full width of the container */
+    object-fit: cover;
+    /* Use cover to make sure the image covers the entire container */
+}
+.card-header-three img {
+    width: 100%;
+    object-fit: cover;
+    height: 450px;
+    max-height: 100%;
+    border-radius: 18px;
+    margin-bottom: -4rem;
+}
+.card-header-three {
+    margin-bottom: -5rem;
+}
+.nfc-header-three {
+    border-top-left-radius: 30px !important;
+    border-top-right-radius: 80% !important;
+    color: white;
+}
+.nfc-logo-three {
+    margin: auto;
+    background-color: white;
+    width: 65px;
+    height: auto;
+    border-radius: 100%;
+}
+.nfc-logo-three img {
+    width: 65px;
+    object-fit: cover;
+    height: auto;
+    border-radius: 100%;
+}
+.nfc-three-card-frame {
+    border: 5px solid #524a4a;
+    border-radius: 25px;
+    background-color: none !important;
+}
+.nfc-contact-three {
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
+}
+.nfc-call-three-action a {
+    font-weight: bold;
+    background-color: #b01ded;
+    color: #b01ded !important;
+    padding: 5px 8px;
+    border-radius: 0%;
+}
+.nfc-call-three-action a:hover {
+    background-color: #b01ded;
+    color: #fff !important;
+    padding: 5px 8px;
+    border-radius: 0%;
+}
+.nfc-contact-three a {
+    background-color: #b01ded57;
+    color: #b01ded;
+    padding: 5px 8px;
+    border-radius: 3%;
+}
+
+.nfc-social-three a {
+    background-color: #b01ded57;
+    color: #b01ded;
+    padding: 3px 6px;
+    border-radius: 5px;
+}
+.nfc-shapes-three {
+    margin-top: -85px;
+}
+/* Card Three End */
+
+/* Card four Start */
+.nfc-call-four-action {
+    width: 70%;
+    margin: auto;
+}
+.nfc-four-card-frame {
+    background-color: transparent;
+}
+.nfc-four .card-header {
+    background-color: #0ea17d;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    height: 100%;
+    /* Ensure the image takes full height of the container */
+    width: 100%;
+    /* Ensure the image takes full width of the container */
+    object-fit: cover;
+    /* Use cover to make sure the image covers the entire container */
+}
+.card-header-four img {
+    width: 100%;
+    object-fit: cover;
+    height: 450px;
+    max-height: 100%;
+    border-radius: 18px;
+    margin-bottom: -4rem;
+}
+.card-header-four {
+    margin-bottom: -5rem;
+}
+.nfc-header-four {
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 0% !important;
+    color: white;
+}
+.nfc-logo-four {
+    margin: auto;
+    background-color: white;
+    width: 65px;
+    height: auto;
+    border-radius: 10%;
+}
+.nfc-logo-four img {
+    width: 65px;
+    object-fit: cover;
+    height: auto;
+    border-radius: 100%;
+}
+.nfc-four-card-frame {
+    border: 5px solid #0ea17d;
+    border-radius: 25px;
+    background-color: none !important;
+}
+.nfc-contact-four {
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
+}
+.nfc-call-four-action a {
+    font-weight: bold;
+    background-color: #0ea17d;
+    color: #0ea17d !important;
+    padding: 5px 8px;
+    border-radius: 0%;
+}
+.nfc-call-four-action a:hover {
+    background-color: #0ea17d;
+    color: #fff !important;
+    padding: 5px 8px;
+    border-radius: 0%;
+}
+.nfc-contact-four a {
+    background-color: #0ea17d57;
+    color: #0ea17d;
+    padding: 5px 8px;
+    border-radius: 3%;
+}
+
+.nfc-social-four {
+    padding: 3px 6px;
+    border-radius: 5px;
+    margin-top: -15px;
+    z-index: 5;
+}
+.nfc-social-four a {
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    color: #0ea17d;
+    padding: 3px 6px;
+    border-radius: 5px;
+    margin-top: -10px;
+    position: relative;
+    z-index: 55;
+}
+.nfc-shapes-four {
+    margin-top: -85px;
+}
+/* Card Two End */
+
+/* NFC Cards End */
 
 @media only screen and (max-width: 1400px) {
     .card-content-wrapper {
