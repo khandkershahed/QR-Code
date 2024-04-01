@@ -9,7 +9,8 @@
                         <div class="col-lg-6 px-0">
                             <div class="screen">
                                 <div class="screen__content">
-                                    <form class="login" method="POST" action="{{ route('login') }}">
+                                    <form class="login" method="post" action="{{route('login')}}" onsubmit="return validation();"  enctype="multipart/form-data">
+                                    {{-- <form class="login" action="{{ route('login') }}" method="POST"> --}}
                                         @csrf
                                         <h3 class="mb-4">Login</h3>
                                         <div class="form-outline">

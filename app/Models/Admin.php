@@ -8,12 +8,13 @@ use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Cashier\Billable;
 
 class Admin extends Authenticatable
 {
     protected $guard = 'admin';
 
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, Billable;
 
     /**
      * The attributes that aren't mass assignable.
