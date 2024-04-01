@@ -409,4 +409,42 @@ $("#" + selectedValue + "-form").show();
 
 
 //Step Form
+// NFC-card Template
+var nfcForm = $('#generateNfcCardForm');
+nfcForm.find('input, textarea').on('keyup change', function () {
+    var profile_image      = $("input[name = 'profile_image']", this).val();
+    var first_name         = $("input[name = 'first_name']", this).val();
+    var last_name          = $("input[name = 'last_name']", this).val();
+    var prefix             = $("input[name = 'prefix']", this).val();
+    var suffix             = $("input[name = 'suffix']", this).val();
+    var designation        = $("input[name = 'designation']", this).val();
+    var department         = $("input[name = 'department']", this).val();
+    var pronouns           = $("input[name = 'pronouns']", this).val();
+    var company            = $("input[name = 'company']", this).val();
+    var location_latitude  = $("input[name = 'location_latitude']", this).val();
+    var location_longitude = $("input[name = 'location_longitude']", this).val();
+    var company_logo       = $("input[name = 'company_logo']", this).val();
+    var logo_Size          = $("input[name = 'logo_Size']", this).val();
+    var summary            = $("input[name = 'summary']", this).val();
+    var address            = $("input[name = 'address']", this).val();
+    alert(first_name);
+
+    $('.profile_image').attr('src', profile_image);
+    $('.first_name').html(first_name);
+    $('.last_name').html(last_name);
+    $('.prefix').html(prefix);
+    $('.suffix').html(suffix);
+    $('.designation').html(designation);
+    $('.department').html(department);
+    $('.pronouns').html(pronouns);
+    $('.company').html(company);
+    $('.location_latitude').html(location_latitude);
+    $('.location_longitude').html(location_longitude);
+    $('.company_logo').attr('src', logo_Size);
+    $('.logo_Size').html(logo_Size);
+    $('.summary').html(summary);
+    $('.address').html(address);
+})
+
+
 

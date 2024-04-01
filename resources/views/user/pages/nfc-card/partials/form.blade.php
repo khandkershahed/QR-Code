@@ -10,6 +10,19 @@
         <div class="mt-10">
             <h4 class="fw-bold">About</h4>
         </div>
+        <div class="mb-4 col-sm-12 col-md-3">
+            <x-metronic.label for="profile_image" class="form-label">{{ __('Profile Image') }}</x-metronic.label>
+            <input id="profile_image" type="file" class="form-control" name="profile_image"
+                :value="old('profile_image')" onchange="previewprofileImage(this)" accept="image/*" />
+        </div>
+        <div class="mb-4 col-sm-12 col-md-1 d-lg-block d-sm-none">
+            <x-metronic.label for="profile_image_preview" class="form-label">{{ __('Preview') }}</x-metronic.label>
+            <div>
+                <img width="50px" height="50px" class="rounded-circle border profile_image" id="profile_image_preview"
+                    src="" alt="">
+            </div>
+        </div>
+
         <div class="mb-4 col-sm-12 col-md-4">
             <x-metronic.label for="first_name" class="form-label">{{ __('First Name') }}</x-metronic.label>
             <x-metronic.input id="first_name" type="text" name="first_name" :value="old('first_name')" placeholder="John" />
@@ -49,13 +62,13 @@
             <x-metronic.label for="location_latitude"
                 class="form-label">{{ __('Location Latitude') }}</x-metronic.label>
             <x-metronic.input id="location_latitude" type="text" name="location_latitude" :value="old('location_latitude')"
-                placeholder="Doe" />
+                placeholder="62.23.37" />
         </div>
         <div class="mb-4 col-sm-12 col-md-4">
             <x-metronic.label for="location_longitude"
                 class="form-label">{{ __('Location Longitude') }}</x-metronic.label>
             <x-metronic.input id="location_longitude" type="text" name="location_longitude" :value="old('location_longitude')"
-                placeholder="Doe" />
+                placeholder="62.23.37" />
         </div>
         <div class="mb-4 col-sm-12 col-md-3">
             <x-metronic.label for="company_logo" class="form-label">{{ __('Company Logo') }}</x-metronic.label>
@@ -65,12 +78,12 @@
         <div class="mb-4 col-sm-12 col-md-1 d-lg-block d-sm-none">
             <x-metronic.label for="company_logo_preview" class="form-label">{{ __('Preview') }}</x-metronic.label>
             <div>
-                <img width="50px" height="50px" class="rounded-circle border" id="company_logo_preview"
+                <img width="50px" height="50px" class="rounded-circle border company_logo" id="company_logo_preview"
                     src="" alt="">
             </div>
         </div>
 
-        <div class="mb-4 col-sm-12 col-md-2">
+        {{-- <div class="mb-4 col-sm-12 col-md-2">
             <x-metronic.label for="asdasda" class="form-label">{{ __('Preview') }}</x-metronic.label> <br>
             <input type="range" class="mt-4" class="form-range" id="asdasda"
                 oninput="updateInputValue(this.value)">
@@ -78,7 +91,7 @@
         <div class="mb-4 col-sm-12 col-md-2">
             <x-metronic.label for="logo_Size" class="form-label">{{ __('Logo Size (in px)') }}</x-metronic.label>
             <x-metronic.input id="logo_Size" type="text" name="logo_Size" :value="old('logo_Size')" placeholder="Doe" />
-        </div>
+        </div> --}}
         <div class="mb-4 col-sm-12 col-md-6">
             <x-metronic.label for="summary" class="form-label">{{ __('Summary') }}</x-metronic.label>
             <textarea name="summary" class="form-control" id="summary" rows="3"
@@ -86,7 +99,7 @@
         </div>
         <div class="mb-4 col-sm-12 col-md-6">
             <x-metronic.label for="address" class="form-label">{{ __('Address') }}</x-metronic.label>
-            <textarea name="address" class="form-control" id="address" rows="3" :value="old('address')"></textarea>
+            <textarea name="address" class="form-control" id="address" rows="3"></textarea>
         </div>
         <div class="mt-10">
             <h4 class="fw-bold">Contact Details</h4>

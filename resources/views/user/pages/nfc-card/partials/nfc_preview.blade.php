@@ -1,6 +1,6 @@
-<div class="card nfc-one-card-frame nfc-one" id="template-one">
+<div class="card nfc-card nfc-one-card-frame nfc-one template-one" style="display: none;" id="template-one">
     <div class="card-header p-0 border-0">
-        <img class="img-fluid"
+        <img class="img-fluid profile_image"
             src="https://annemariesegal.com/wp-content/uploads/2017/04/adobestock_86346713-cropped-young-woman-in-suit.jpg?w=1200"
             alt="">
         <div class="nfc-shapes-one">
@@ -15,19 +15,19 @@
         <div class="d-flex  justify-content-between ">
             <div>
                 <div class="d-flex align-items-center">
-                    <h6 class="mb-0 nfc-one-title">Sazeduzzamn</h6>
+                    <h6 class="mb-0 nfc-one-title first_name">Sazeduzzamn</h6>
                     <span class="px-2">|</span>
-                    <h6 class="mb-0 nfc-one-title">Saju</h6>
+                    <h6 class="mb-0 nfc-one-title last_name">Saju</h6>
                 </div>
-                <p class="mb-0 text-muted">(Male)</p>
+                <p class="mb-0 text-mutedpronouns">(he/him)</p>
                 <div class="pt-2">
-                    <p class="mb-0 fw-bold nfc-one-title">Frontend Developer</h6>
-                    <p class="mb-0 text-muted"><span>Amazon Ltd.</span></p>
-                    <p class="mb-0 text-muted"><span>Dhaka, Bangladesh</span></p>
+                    <p class="mb-0 fw-bold nfc-one-title designation">Frontend Developer</h6>
+                    <p class="mb-0 text-muted"><span class="company">Amazon Ltd.</span></p>
+                    <p class="mb-0 text-muted"><span class="address">Dhaka, Bangladesh</span></p>
                 </div>
             </div>
             <div class="nfc-profile-img-one">
-                <img class="img-fluid"
+                <img class="img-fluid company_logo"
                     src="https://annemariesegal.com/wp-content/uploads/2017/04/adobestock_86346713-cropped-young-woman-in-suit.jpg?w=1200"
                     alt="">
             </div>
@@ -35,7 +35,7 @@
         <div class="nfc-bio-one my-2">
             <p class="mb-0 fw-bold text-muted">About</p>
             <p style="text-align: justify;">
-                <small>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus omnis,
+                <small class="summary">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus omnis,
                     sint dolore iusto et consequatur!</small>
             </p>
         </div>
@@ -69,30 +69,30 @@
 </div>
 
 {{-- Card Two --}}
-<div class="card nfc-two-card-frame nfc-two d-none" id="template-two">
+<div class="card nfc-card nfc-two-card-frame nfc-two template-two" style="display: none;" id="template-two">
     <div class="card-header py-4 px-4 border-0">
         <div class="d-flex align-items-center">
-            <h6 class="mb-0 nfc-two-title">Sazeduzzamn</h6>
+            <h6 class="mb-0 nfc-two-title first_name">Sazeduzzamn</h6>
             <span class="px-2">|</span>
-            <h6 class="mb-0 nfc-two-title">Saju</h6>
+            <h6 class="mb-0 nfc-two-title last_name">Saju</h6>
         </div>
-        <p class="mb-0 text-white">(Male)</p>
+        <p class="mb-0 text-whitepronouns">(he/him)</p>
         <div class="pt-2">
-            <p class="mb-0 fw-bold nfc-two-title">Frontend Developer</h6>
-            <p class="mb-0 text-white"><span>Amazon Ltd.</span></p>
-            <p class="mb-0 text-white"><span>Dhaka, Bangladesh</span></p>
+            <p class="mb-0 fw-bold nfc-two-title designation">Frontend Developer</h6>
+            <p class="mb-0 text-white"><span class="company">Amazon Ltd.</span></p>
+            <p class="mb-0 text-white"><span class="address">Dhaka, Bangladesh</span></p>
         </div>
     </div>
     <div class="card-body px-4 nfc-card-body-two">
         <div class="nfc-tow-p-img">
-            <img class="img-fluid"
+            <img class="img-fluid profile_image"
                 src="https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg"
                 alt="">
         </div>
         <div class="nfc-bio-two my-2">
             <p class="mb-0 fw-bold text-muted">About</p>
             <p style="text-align: justify;">
-                <small>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus omnis,
+                <small class="summary">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus omnis,
                     sint dolore iusto et consequatur!</small>
             </p>
         </div>
@@ -149,9 +149,9 @@
 </div>
 
 {{-- Card Three --}}
-<div class="card nfc-three-card-frame nfc-three d-none" id="template-three">
+<div class="card nfc-card nfc-three-card-frame nfc-three template-three" style="display: none;" id="template-three">
     <div class="card-header card-header-three p-0 border-0">
-        <img class=""
+        <img class="profile_image"
             src="https://annemariesegal.com/wp-content/uploads/2017/04/adobestock_86346713-cropped-young-woman-in-suit.jpg?w=1200"
             alt="">
     </div>
@@ -159,20 +159,20 @@
         <div class="d-flex justify-content-between  align-items-lg-end   ">
             <div>
                 <div class="d-flex align-items-center">
-                    <h6 class="mb-0 nfc-three-title">Sazeduzzamn</h6>
+                    <h6 class="mb-0 nfc-three-title first_name">Sazeduzzamn</h6>
                     <span class="px-2">|</span>
-                    <h6 class="mb-0 nfc-three-title">Saju</h6>
+                    <h6 class="mb-0 nfc-three-title last_name">Saju</h6>
                 </div>
-                <p class="mb-0 text-light ">(Male)</p>
+                <p class="mb-0 text-light pronouns">(he/him)</p>
                 <div class="pt-2">
-                    <p class="mb-0 fw-bold nfc-three-title">Frontend Developer</h6>
-                    <p class="mb-0 text-light"><span>Amazon Ltd.</span></p>
-                    <p class="mb-0 text-light"><span>Dhaka, Bangladesh</span></p>
+                    <p class="mb-0 fw-bold nfc-three-title designation">Frontend Developer</h6>
+                    <p class="mb-0 text-light"><span class="company">Amazon Ltd.</span></p>
+                    <p class="mb-0 text-light"><span class="address">Dhaka, Bangladesh</span></p>
                 </div>
             </div>
             <div>
                 <div class="d-flex justify-content-center nfc-logo-three">
-                    <img width="65px"
+                    <img width="65px" class="company_logo"
                         src="https://i.ibb.co/YfBmcnz/bird-colorful-gradient-design-vector-343694-2506-removebg-preview.png"
                         alt="">
                 </div>
@@ -230,9 +230,9 @@
 </div>
 
 {{-- Card Three --}}
-<div class="card nfc-four-card-frame nfc-four d-none" id="template-four">
+<div class="card nfc-card nfc-four-card-frame nfc-four template-four" style="display: none;" id="template-four">
     <div class="card-header card-header-four p-0 border-0">
-        <img class=""
+        <img class="profile_image"
             src="https://annemariesegal.com/wp-content/uploads/2017/04/adobestock_86346713-cropped-young-woman-in-suit.jpg?w=1200"
             alt="">
     </div>
@@ -240,20 +240,20 @@
         <div class="d-flex justify-content-between  align-items-lg-center    ">
             <div>
                 <div class="d-flex align-items-center">
-                    <h6 class="mb-0 nfc-four-title">Sazeduzzamn</h6>
+                    <h6 class="mb-0 nfc-four-title first_name">Sazeduzzamn</h6>
                     <span class="px-2">|</span>
-                    <h6 class="mb-0 nfc-four-title">Saju</h6>
+                    <h6 class="mb-0 nfc-four-title last_name">Saju</h6>
                 </div>
-                <p class="mb-0 text-light ">(Male)</p>
+                <p class="mb-0 text-light pronouns">(he/him)</p>
                 <div class="pt-2">
-                    <p class="mb-0 fw-bold nfc-four-title">Frontend Developer</h6>
-                    <p class="mb-0 text-light"><span>Amazon Ltd.</span></p>
-                    <p class="mb-0 text-light"><span>Dhaka, Bangladesh</span></p>
+                    <p class="mb-0 fw-bold nfc-four-title designation">Frontend Developer</h6>
+                    <p class="mb-0 text-light"><span class="company">Amazon Ltd.</span></p>
+                    <p class="mb-0 text-light"><span class="address">Dhaka, Bangladesh</span></p>
                 </div>
             </div>
             <div>
                 <div class="d-flex justify-content-center nfc-logo-four">
-                    <img width="65px"
+                    <img width="65px" class="company_logo"
                         src="https://i.ibb.co/YfBmcnz/bird-colorful-gradient-design-vector-343694-2506-removebg-preview.png"
                         alt="">
                 </div>

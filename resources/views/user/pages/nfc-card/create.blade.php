@@ -63,7 +63,7 @@
                             </div>
                         </div>
 
-                        <form class="form w-100 mx-auto" novalidate="novalidate" id="generateQRCodeForm"
+                        <form class="form w-100 mx-auto" novalidate="novalidate" id="generateNfcCardForm"
                             action="{{ route('user.nfc-card.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-5">
@@ -155,6 +155,67 @@
         </div>
     </div>
     @push('scripts')
+        <script>
+            $(document).ready(function() {
+                // NFC Template
+                $('input[name="nfc_template"]').change(function() {
+                    $(".nfc-card").hide();
+                    const nfcTemplateValue = $('input[name="nfc_template"]:checked').val();
+                    if (nfcTemplateValue != null) {
+                        $("." + nfcTemplateValue).show();
+                    } else {
+                        $(".nfc-card").hide();
+                    }
+                });
+                const initiallySelectedValue = $('input[name="nfc_template"]:checked').val();
+                $("#" + initiallySelectedValue).show();
+
+                // NFC card Input
+                $(document).ready(function() {
+                    $('#generateNfcCardForm input:not([type="radio"]), #generateNfcCardForm textarea').on(
+                        'keyup change',
+                        function() {
+                            var profile_image = $("input[name='profile_image']").val();
+                            var first_name = $("input[name='first_name']").val();
+                            var last_name = $("input[name='last_name']").val();
+                            var prefix = $("input[name='prefix']").val();
+                            var suffix = $("input[name='suffix']").val();
+                            var designation = $("input[name='designation']").val();
+                            var department = $("input[name='department']").val();
+                            var pronouns = $("input[name='pronouns']").val();
+                            var company = $("input[name='company']").val();
+                            var location_latitude = $("input[name='location_latitude']").val();
+                            var location_longitude = $("input[name='location_longitude']").val();
+                            var company_logo = $("input[name='company_logo']").val();
+                            var logo_Size = $("input[name='logo_Size']").val();
+                            var summary = $("textarea[name='summary']").val();
+                            var address = $("textarea[name='address']").val();
+
+                            $('.profile_image').attr('src', profile_image);
+                            $('.first_name').text(first_name);
+                            $('.last_name').text(last_name);
+                            $('.prefix').text(prefix);
+                            $('.suffix').text(suffix);
+                            $('.designation').text(designation);
+                            $('.department').text(department);
+                            $('.pronouns').text(pronouns);
+                            $('.company').text(company);
+                            $('.location_latitude').text(location_latitude);
+                            $('.location_longitude').text(location_longitude);
+                            $('.company_logo').attr('src', company_logo);
+                            $('.logo_Size').text(logo_Size);
+                            $('.summary').text(summary);
+                            $('.address').text(address);
+
+                            // For debugging
+                            console.log("First Name:", first_name);
+                        });
+                });
+
+
+            });
+        </script>
+
         <script>
             // Get references to radio buttons and content sections
             const colorRadio = document.getElementById('background_color');
@@ -298,17 +359,31 @@
             });
         </script>
         <script>
-            function previewImage(input) {
-                var preview = document.getElementById('company_logo_preview');
+            function previewprofileImage(input) {
+                var preview = $('.profile_image'); // Select the preview element using its class
                 var file = input.files[0];
                 var reader = new FileReader();
                 reader.onloadend = function() {
-                    preview.src = reader.result;
+                    preview.attr('src', reader.result); // Set the src attribute using .attr() method
                 }
                 if (file) {
                     reader.readAsDataURL(file);
                 } else {
-                    preview.src = "";
+                    preview.attr('src', ""); // Clear the src attribute if no file is selected
+                }
+            }
+
+            function previewImage(input) {
+                var preview = $('.company_logo'); // Select the preview element using its class
+                var file = input.files[0];
+                var reader = new FileReader();
+                reader.onloadend = function() {
+                    preview.attr('src', reader.result); // Set the src attribute using .attr() method
+                }
+                if (file) {
+                    reader.readAsDataURL(file);
+                } else {
+                    preview.attr('src', ""); // Clear the src attribute if no file is selected
                 }
             }
         </script>

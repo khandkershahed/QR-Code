@@ -78,6 +78,7 @@
     <script src="{{ asset($hostUrl . 'plugins/global/plugins.bundle.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/scripts.bundle.js') }}"></script>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ asset($hostUrl . 'plugins/custom/datatables/datatables.bundle.js') }}"></script>
     <script src="{{ asset($hostUrl . 'plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
     <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
