@@ -9,15 +9,17 @@
                         <div class="col-lg-6 px-0">
                             <div class="screen">
                                 <div class="screen__content">
-                                    <form class="login" method="POST" action="{{route('login')}}" onsubmit="return validation();"  enctype="multipart/form-data">
-                                    {{-- <form class="login" action="{{ route('login') }}" method="POST"> --}}
+                                    <form class="login" method="POST" action="{{ route('login') }}"
+                                        onsubmit="return validation();" enctype="multipart/form-data">
+                                        {{-- <form class="login" action="{{ route('login') }}" method="POST"> --}}
                                         @csrf
                                         <h3 class="mb-4">Login</h3>
                                         <div class="form-outline">
                                             <x-input-label class="form-label" for="email" :value="__('Email')" />
                                             <x-text-input id="email"
-                                                class="form-control form-control-sm p-0 px-2 w-75 rounded-0" type="email"
-                                                name="email" :value="old('email')" required autocomplete="username" />
+                                                class="form-control form-control-sm p-0 px-2 w-75 rounded-0"
+                                                type="email" name="email" :value="old('email')" required
+                                                autocomplete="username" />
                                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
 
                                         </div>
@@ -25,8 +27,8 @@
                                             <x-input-label class="form-label" for="password" :value="__('Password')" />
 
                                             <x-text-input id="password"
-                                                class="form-control form-control-sm p-0 px-2 w-75 rounded-0" type="password"
-                                                name="password" required autocomplete="new-password" />
+                                                class="form-control form-control-sm p-0 px-2 w-75 rounded-0"
+                                                type="password" name="password" required autocomplete="new-password" />
                                             <x-input-error :messages="$errors->get('password')" class="mt-2" />
                                         </div>
                                         <div class="form-outline pt-3">

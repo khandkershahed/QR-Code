@@ -337,6 +337,13 @@ code {
     height: auto;
 }
 
+.sign_up_form {
+    height: 100vh;
+    position: relative;
+    top: 3rem;
+    bottom: 3rem;
+}
+
 /* NFC Cards */
 /* Card One Start */
 .nfc-profile-img-one {
@@ -346,7 +353,7 @@ code {
 .nfc-profile-img-one img {
     width: 100px;
     border-radius: 12px;
-    border: 2px solid #;
+    border: 2px solid;
 }
 .nfc-one-card-frame {
     border: 3px solid #524a4a;
@@ -401,6 +408,12 @@ code {
     }
     .nfc-bio-one {
         padding-top: 15px;
+    }
+    .sign_up_form {
+        height: 100vh;
+        position: relative;
+        top: 10rem !important;
+        bottom: 3rem;
     }
 }
 

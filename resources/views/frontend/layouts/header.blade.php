@@ -17,7 +17,7 @@
                         <div class="navbar-header py-10">
                             <div class="mobile-logo">
                                 <a href="{{ route('homePage') }}">
-                                    <img src="assets/images/logos/logo6.png" alt="Logo" title="Logo" />
+                                    <img width="60px" src="https://i.ibb.co/BNBTVN4/logo.png" alt="Logo" title="Logo" />
                                 </a>
                             </div>
                             <!-- Toggle Button -->
