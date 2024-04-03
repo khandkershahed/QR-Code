@@ -1,13 +1,8 @@
 <x-admin-app-layout :title="'Subscribed Emails List'">
-    <!--begin::Card-->
     <div class="card card-flush">
-        <!--begin::Card header-->
         <div class="card-header mt-6">
-            <!--begin::Card title-->
             <div class="card-title">
-                <!--begin::Search-->
                 <div class="d-flex align-items-center position-relative my-1 me-5">
-                    <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
                     <span class="svg-icon svg-icon-1 position-absolute ms-6">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none">
@@ -18,68 +13,125 @@
                                 fill="currentColor" />
                         </svg>
                     </span>
-                    <!--end::Svg Icon-->
                     <input type="text" data-kt-example-table-filter="search"
                         class="form-control form-control-solid w-250px ps-15" placeholder="Search Email" />
                 </div>
-                <!--end::Search-->
             </div>
-            <!--end::Card title-->
-            <!--begin::Card toolbar-->
 
         </div>
         <div class="card-body pt-0">
-            <!--begin::Table-->
             <table class="table align-middle table-row-dashed fs-6 gy-5 mb-0" id="kt_example_table">
-                <!--begin::Table head-->
                 <thead>
-                    <!--begin::Table row-->
                     <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                         <th class="min-w-125px">Email</th>
                         <th class="min-w-250px">IP Address</th>
                         <th class="min-w-125px">Subscribe Date</th>
                         <th class="text-end min-w-100px">Actions</th>
                     </tr>
-                    <!--end::Table row-->
                 </thead>
-                <!--end::Table head-->
-                <!--begin::Table body-->
                 <tbody class="fw-bold text-gray-600">
                     @foreach ($emails as $email)
                         <tr>
-                            <!--begin::Name=-->
                             <td>{{ $email->email }}</td>
                             <td>{{ $email->ip_address }}</td>
-                            <!--end::Name=-->
                             <td>{{ $email->created_at }}</td>
                             <td class="text-end">
-                                <!--begin::Update-->
-                                <a href="{{ route('admin.email.edit',$email->id) }}" class="btn btn-icon btn-active-light-primary w-30px h-30px me-3">
-                                    <!--begin::Svg Icon | path: icons/duotune/general/gen019.svg-->
+                                <a href="" class="btn btn-icon btn-active-light-primary w-30px h-30px me-3"
+                                    data-bs-toggle="modal" data-bs-target="#replayEmail">
                                     <span class="svg-icon svg-icon-3">
-                                        <i class="fas fa-pen"></i>
+                                        <i class="fas fa-reply"></i>
                                     </span>
-                                    <!--end::Svg Icon-->
                                 </a>
-                                <!--end::Update-->
-                                <!--begin::Delete-->
-                                <a href="{{ route('admin.newsletter.destroy',$email->id) }}" class="btn btn-icon btn-active-light-danger w-30px h-30px delete">
-                                    <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
+                                <a href="{{ route('admin.newsletter.destroy', $email->id) }}"
+                                    class="btn btn-icon btn-active-light-danger w-30px h-30px delete">
                                     <span class="svg-icon svg-icon-3">
                                         <i class="fas fa-trash-alt"></i>
                                     </span>
-                                    <!--end::Svg Icon-->
                                 </a>
-                                <!--end::Delete-->
                             </td>
-                            <!--end::Action=-->
                         </tr>
                     @endforeach
-
                 </tbody>
-                <!--end::Table body-->
             </table>
-            <!--end::Table-->
         </div>
     </div>
+    {{-- Replay Modal --}}
+
+    <div class="modal fade" tabindex="-1" id="replayEmail" data-bs-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content position-absolute">
+                <div class="modal-header">
+                    <h5 class="modal-header py-3">Reply Mail</h5>
+
+                    <!--begin::Close-->
+                    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
+                        aria-label="Close">
+                        <h1 class="m-0 p-0 fs-1 text-danger">X</h1>
+                    </div>
+                    <!--end::Close-->
+                </div>
+
+                <div class="modal-body">
+                    <form action="" method="post">
+                        <div class="row">
+                            
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @push('scripts')
+        <script>
+            // Make the DIV element draggable:
+            var element = document.querySelector('#replayEmail');
+            dragElement(element);
+
+            function dragElement(elmnt) {
+                var pos1 = 0,
+                    pos2 = 0,
+                    pos3 = 0,
+                    pos4 = 0;
+                if (elmnt.querySelector('.modal-content')) {
+                    // if present, the header is where you move the DIV from:
+                    elmnt.querySelector('.modal-content').onmousedown = dragMouseDown;
+                } else {
+                    // otherwise, move the DIV from anywhere inside the DIV:
+                    elmnt.onmousedown = dragMouseDown;
+                }
+
+                function dragMouseDown(e) {
+                    e = e || window.event;
+                    // get the mouse cursor position at startup:
+                    pos3 = e.clientX;
+                    pos4 = e.clientY;
+                    document.onmouseup = closeDragElement;
+                    // call a function whenever the cursor moves:
+                    document.onmousemove = elementDrag;
+                }
+
+                function elementDrag(e) {
+                    e = e || window.event;
+                    // calculate the new cursor position:
+                    pos1 = pos3 - e.clientX;
+                    pos2 = pos4 - e.clientY;
+                    pos3 = e.clientX;
+                    pos4 = e.clientY;
+                    // set the element's new position:
+                    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+                    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+                }
+
+                function closeDragElement() {
+                    // stop moving when mouse button is released:
+                    document.onmouseup = null;
+                    document.onmousemove = null;
+                }
+            }
+        </script>
+    @endpush
 </x-admin-app-layout>
