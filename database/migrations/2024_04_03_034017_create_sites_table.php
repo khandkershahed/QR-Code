@@ -30,7 +30,7 @@ return new class extends Migration
             $table->string('phone_two', 20)->nullable();
             $table->string('whatsapp_number', 20)->nullable();
             $table->string('default_language', 50)->nullable();
-	        $table->string('default_language', 50)->nullable();
+	        $table->string('default_currency', 50)->nullable();
             $table->string('contact_email', 100)->nullable();
             $table->string('support_email', 100)->nullable();
             $table->string('info_email', 100)->nullable();
