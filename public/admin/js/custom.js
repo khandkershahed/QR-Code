@@ -6,7 +6,7 @@
 // custom.js
 
 // Function to display success message
-function showSuccessMessageAndFlushSession(message) {
+function showSuccessMessage(message) {
     Swal.fire({
         title: "Success!",
         text: message,
@@ -15,19 +15,7 @@ function showSuccessMessageAndFlushSession(message) {
         customClass: {
             confirmButton: "btn btn-primary",
         },
-    }).then(function () {
-        // After user acknowledges the success message, flush the session
-        $.ajax({
-            url: "/flush-session", // Update the URL with your route for flushing the session
-            method: "GET",
-            success: function (response) {
-                // Session flushed successfully
-            },
-            error: function (xhr, status, error) {
-                console.error("Error flushing session:", error);
-            },
-        });
-    });
+    })
 }
 
 // Function to display error message

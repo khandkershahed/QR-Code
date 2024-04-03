@@ -1,48 +1,48 @@
-<style>
-    .sign_up_box {
-        height: 100vh;
-        position: relative;
-        top: 3rem;
-        bottom: 3rem;
-
-    }
-
-    .sign_up_row {
-        box-shadow: 0 15px 16.83px 0.17px rgba(0, 0, 0, .05);
-        border-radius: 20px;
-        padding: 20px;
-    }
-
-    @media only screen and (max-width: 578px) {
-        .nfc-shapes-one {
-            margin-top: -80px;
-        }
-
-        .nfc-bio-one {
-            padding-top: 15px;
-        }
-
+<x-frontend-app-layout :title="'Register New Account'">
+    <x-auth-session-status class="mb-4 login_box" :status="session('status')" />
+    <style>
         .sign_up_box {
             height: 100vh;
             position: relative;
-            top: 10rem;
+            top: 3rem;
             bottom: 3rem;
 
-        }
-
-        .sing_up_box_card {
-            padding: 10px;
         }
 
         .sign_up_row {
             box-shadow: 0 15px 16.83px 0.17px rgba(0, 0, 0, .05);
             border-radius: 20px;
-            padding: 32px;
+            padding: 20px;
         }
-    }
-</style>
-<x-frontend-app-layout :title="'Register New Account'">
-    <x-auth-session-status class="mb-4 login_box" :status="session('status')" />
+
+        @media only screen and (max-width: 578px) {
+            .nfc-shapes-one {
+                margin-top: -80px;
+            }
+
+            .nfc-bio-one {
+                padding-top: 15px;
+            }
+
+            .sign_up_box {
+                height: 100vh;
+                position: relative;
+                top: 10rem;
+                bottom: 3rem;
+
+            }
+
+            .sing_up_box_card {
+                padding: 10px;
+            }
+
+            .sign_up_row {
+                box-shadow: 0 15px 16.83px 0.17px rgba(0, 0, 0, .05);
+                border-radius: 20px;
+                padding: 32px;
+            }
+        }
+    </style>
     <div class="contianer d-flex justify-content-center align-items-center sign_up_box">
         <div class="row align-items-center">
             <div class="col-lg-8 offset-lg-2 mx-auto">
@@ -154,6 +154,4 @@
             </div>
         </div>
     </div>
-    {{-- <x-guest-layout>
-    </x-guest-layout> --}}
 </x-frontend-app-layout>

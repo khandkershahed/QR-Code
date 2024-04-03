@@ -39,8 +39,9 @@ class SiteController extends Controller
     // }
 
 
-    function site(SiteRequest $request)
+    public function site(Request $request)
     {
+
         $webSetting = Site::firstOrNew([]);
 
         $faviconMainFile   = $request->file('site_icon');
