@@ -44,14 +44,14 @@
 <x-frontend-app-layout :title="'Register New Account'">
     <x-auth-session-status class="mb-4 login_box" :status="session('status')" />
     <div class="contianer d-flex justify-content-center align-items-center sign_up_box">
-        <div class="row align-items-center ">
-            <div class="col-lg-12">
+        <div class="row align-items-center">
+            <div class="col-lg-8 offset-lg-2 mx-auto">
                 <div class="row g-0 align-items-center sign_up_row">
                     <div class="col-lg-6 ">
+                        <h2 class="fw-bold mb-25">Sign <span>Up</span> Now</h2>
                         <div class="card border-0 shadow-none "
                             style="background: hsla(0, 0%, 100%, 0.55);backdrop-filter: blur(30px);">
                             <div class="card-body p-5 sing_up_box_card">
-                                <h2 class="fw-bold mb-25">Sign <span>Up</span> Now</h2>
                                 <form method="POST" action="{{ route('register') }}">
                                     @csrf
                                     <!-- 2 column grid layout with text inputs for the first and last names -->
@@ -122,7 +122,7 @@
                                             <input class="form-check-input p-0" type="checkbox" value=""
                                                 id="" style="width: 20px; height: 20px;" />
                                             <label class="form-check-label" for="">I agree all statements in
-                                                Terms of service</label>
+                                                Terms of Policy</label>
                                         </div>
                                     </div>
                                     <div class="form-check d-flex justify-content-start align-items-center mb-2 ps-0">
@@ -145,8 +145,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 ">
-                        <img src="https://colorlib.com/etc/regform/colorlib-regform-7/images/signup-image.jpg"
+                    <div class="col-lg-6">
+                        <img class="img-fluid"
+                            src="https://img.freepik.com/premium-vector/qr-code-scanning-vector-illustration-concept-people-use-smartphone-scan-qr-code-pay_178888-1602.jpg"
                             class="w-100 rounded-4 shadow-4" alt="" />
                     </div>
                 </div>

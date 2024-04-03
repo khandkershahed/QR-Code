@@ -17,7 +17,8 @@
                         <div class="navbar-header py-10">
                             <div class="mobile-logo">
                                 <a href="{{ route('homePage') }}">
-                                    <img width="60px" src="https://i.ibb.co/BNBTVN4/logo.png" alt="Logo" title="Logo" />
+                                    <img width="60px" src="https://i.ibb.co/BNBTVN4/logo.png" alt="Logo"
+                                        title="Logo" />
                                 </a>
                             </div>
                             <!-- Toggle Button -->
@@ -56,7 +57,7 @@
                 <div class="menu-btns ms-lg-auto">
                     @auth
                         <a href="{{ route('register') }}" class="light-btn">Sign Up</a>
-                        @else
+                    @else
                         <a href="{{ route('register') }}" class="light-btn">Sign Up</a>
                     @endauth
                     <a href="{{ route('contact') }}" class="theme-btn style-two">Get Started

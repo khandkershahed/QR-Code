@@ -76,6 +76,6 @@ class PlanController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Plan::findOrFail($id)->delete();
     }
 }
