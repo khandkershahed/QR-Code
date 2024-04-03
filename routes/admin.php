@@ -1,13 +1,18 @@
 <?php
 
+use App\Models\Admin\NewsLetter;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LogController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\SiteController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\DynamicCssController;
+use App\Http\Controllers\Admin\NewsLetterController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\ActivityLogController;
+use App\Http\Controllers\Subscription\PlanController;
 use App\Http\Controllers\Admin\EmailSettingController;
 use App\Http\Controllers\Admin\Auth\PasswordController;
 use App\Http\Controllers\Admin\Auth\NewPasswordController;
@@ -17,8 +22,6 @@ use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
-use App\Http\Controllers\Admin\SiteController;
-use App\Http\Controllers\Subscription\PlanController;
 
 Route::middleware('guest:admin')->prefix('admin')->name('admin.')->group(function () {
 
@@ -70,7 +73,7 @@ Route::middleware('auth:admin', 'role:admin')->prefix('admin')->name('admin.')->
             'role'           => RoleController::class,
             'permission'     => PermissionController::class,
             'email-settings' => EmailSettingController::class,
-            'plans'           => PlanController::class,
+            'plans'          => PlanController::class,
         ],
         ['except' => ['show']]
     );
@@ -81,13 +84,25 @@ Route::middleware('auth:admin', 'role:admin')->prefix('admin')->name('admin.')->
         ],
     );
 
-    //Product
+    Route::controller(DynamicCssController::class)->group(function () {
+        Route::get('/dynamic-css', 'index')->name('css.index');
+        Route::put('/dynamic-css/{id}/update', 'update')->name('css.update');
+    });
+    //Contact
     Route::controller(ContactController::class)->group(function () {
         Route::get('/contact', 'index')->name('contact.index');
         Route::get('/contact/create', 'create')->name('contact.create');
         Route::get('/contact/{id}/edit', 'edit')->name('contact.edit');
         Route::put('/contact/{id}/update', 'update')->name('contact.update');
         Route::delete('/contact/{id}/destroy', 'destroy')->name('contact.destroy');
+    });
+    //NewsLetter
+    Route::controller(NewsLetterController::class)->group(function () {
+        Route::get('/newsletter', 'index')->name('newsletter.index');
+        Route::post('/newsletter/store', 'store')->name('newsletter.store');
+        Route::get('/newsletter/{id}/edit', 'edit')->name('newsletter.edit');
+        Route::put('/newsletter/{id}/update', 'update')->name('newsletter.update');
+        Route::delete('/newsletter/{id}/destroy', 'destroy')->name('newsletter.destroy');
     });
 
     Route::get('website/setting', [SiteController::class, 'index'])->name('setting.index');

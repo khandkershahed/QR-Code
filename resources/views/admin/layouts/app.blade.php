@@ -88,7 +88,33 @@
         @foreach ($errors->all() as $error)
             showErrorMessage('{{ $error }}');
         @endforeach
+
+        $(document).ready(function() {
+            // Attach an input event listener to the color input
+            $('.colorCode').on('input', function() {
+                // Get the entered color code
+                var colorCode = $(this).val();
+
+                // Update the content of the preview element
+                $(this).closest('.row').find('.colorCodePreview').text(colorCode);
+            });
+
+            function updateClock() {
+                // Get the current time using moment.js
+                var currentTime = moment().format('YYYY-MM-DD HH:mm:ss');
+
+                // Update the content of the live clock element
+                $('#liveClock').text('Current Time: ' + currentTime);
+            }
+
+            // Call updateClock function every second
+            setInterval(updateClock, 1000);
+
+            // Run updateClock initially to set the initial time
+            updateClock();
+        });
     </script>
+
 </body>
 
 </html>

@@ -12,9 +12,10 @@
                             From Real World Encounters to Digital Connections: Embracing
                             URL with QR Codes and Digital Business Cards
                         </p>
-                        <form class="newsletter-form mt-40" action="#">
+                        <form class="newsletter-form mt-40" action="{{route('newsletter.store')}}" method="POST">
+                            @csrf
                             <label for="email-address"><i class="fas fa-envelope"></i></label>
-                            <input id="email-address" type="email" placeholder="Email Address" required="" />
+                            <input id="email-address" type="email" name="email" placeholder="Email Address" required/>
                             <button type="submit">
                                 <b>Subscribe Now <i class="fas fa-arrow-right"></i></b>
                             </button>

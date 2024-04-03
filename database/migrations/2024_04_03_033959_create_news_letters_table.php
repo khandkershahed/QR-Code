@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('email')->unique()->nullable();
             $table->string('ip_address')->nullable();
             $table->string('location')->nullable();
+            $table->string('status')->nullable();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\NewsLetterController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\VendorProfileController;
 
@@ -37,6 +38,8 @@ Route::get('/flush-session', function() {
 
 Route::post('contact/store', [ContactController::class, 'store'])
         ->name('contact.add');
+Route::post('newsletter/store', [NewsLetterController::class, 'store'])
+        ->name('newsletter.store');
 
 
 Route::get('/dashboard', function () {
