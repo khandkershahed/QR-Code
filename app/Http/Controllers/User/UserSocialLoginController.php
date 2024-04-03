@@ -30,7 +30,7 @@ class UserSocialLoginController extends Controller
 
                 Auth::login($finduser);
 
-                return redirect()->intended('home');
+                return redirect()->intended(RouteServiceProvider::HOME);
 
             }else{
                 $newUser = User::create([
@@ -42,7 +42,7 @@ class UserSocialLoginController extends Controller
 
                 Auth::login($newUser);
 
-                return redirect()->intended('home');
+                return redirect()->intended(RouteServiceProvider::HOME);
             }
 
         } catch (Exception $e) {
@@ -68,7 +68,7 @@ class UserSocialLoginController extends Controller
 
                 Auth::login($finduser);
 
-                return redirect()->intended('dashboard');
+                return redirect()->intended(RouteServiceProvider::HOME);
 
             }else{
                 $newUser = User::create([
@@ -80,7 +80,7 @@ class UserSocialLoginController extends Controller
 
                 Auth::login($newUser);
 
-                return redirect()->intended('dashboard');
+                return redirect()->intended(RouteServiceProvider::HOME);
             }
 
         } catch (Exception $e) {
