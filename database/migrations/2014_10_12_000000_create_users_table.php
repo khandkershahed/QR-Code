@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('password');
             $table->string('profile_image')->nullable();
             $table->string('company_logo')->nullable();
-            $table->string('password');
             $table->rememberToken();
             $table->string('facebook_id')->nullable();
             $table->string('google_id')->nullable();
