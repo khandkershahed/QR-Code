@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\NewsLetterController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\User\UserSocialLoginController;
 use App\Http\Controllers\VendorProfileController;
 
 /*
@@ -30,6 +31,19 @@ Route::get('/NFC-CARD', [HomeController::class, 'nfcCard'])->name('nfcCard');
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 Route::get('/policy', [HomeController::class, 'policy'])->name('policy');
 Route::get('/terms', [HomeController::class, 'terms'])->name('terms');
+
+
+Route::controller(UserSocialLoginController::class)->group(function(){
+    Route::get('auth/google', 'redirectToGoogle')->name('auth.google');
+    Route::get('auth/google/callback', 'handleGoogleCallback')->name('callback.google');
+    Route::get('/auth/facebook', 'redirectFacebook')->name('auth.facebook');
+    Route::get('auth/facebook/callback', 'facebookCallback')->name('callback.facebook');
+    Route::get('auth/github', 'redirectToGithub')->name('auth.github');
+    Route::get('auth/github/callback', 'handleGithubCallback')->name('callback.github');
+});
+
+
+
 
 Route::get('/flush-session', function() {
     session()->flush();

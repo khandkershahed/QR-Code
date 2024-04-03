@@ -40,9 +40,9 @@
                                         </div>
                                         @if (Route::has('password.request'))
                                             <div
-                                                class="form-check ps-0 pt-4 mb-0 d-flex justify-content-start align-items-center">
+                                                class="form-check ps-0 pt-2 mb-0 d-flex justify-content-start align-items-center">
                                                 <p class="d-flex justify-content-start align-items-center">
-                                                <div class="ps-1">
+                                                <div class="ps-0">
                                                     <span class=""> {{ __('Forgot your password?') }}</span>
                                                 </div>
                                                 <div class="ps-1">
@@ -54,18 +54,41 @@
                                             </div>
                                         @endif
                                         <div
-                                            class="form-check ps-0 d-flex justify-content-start align-items-center mb-3">
-                                            <p class="d-flex  justify-content-start align-items-center">
+                                            class="form-check ps-0 d-flex justify-content-start align-items-center mb-1">
+                                            <p class="d-flex  justify-content-start align-items-center mb-0">
                                                 Don't Have an Account ?<span class="text-white"></span>
                                                 <a href="{{ route('register') }}"
                                                     class="btn btn-sm btn-link text-warning fw-bold fs-6"
                                                     style="color: var(--)">{{ __('Sign Up') }}</a>
                                             </p>
                                         </div>
-                                        <button class="button login__submit rounded-0" type="submit">
+                                        <button class="button login__submit rounded-0 mt-3" type="submit">
                                             <span class="button__text">{{ __('Log in') }}</span>
                                             <i class="button__icon fas fa-chevron-right"></i>
                                         </button>
+                                        <div class="d-flex align-items-center justify-content-center mt-2">
+                                            <a href="{{ route('auth.google') }}">
+                                                <img src="https://developers.google.com/identity/images/btn_google_signin_dark_normal_web.png"
+                                                    style="margin-left: 3em;">
+                                            </a>
+                                        </div>
+
+
+                                        {{-- <div class="d-flex align-items-center justify-content-center mt-2">
+                                            <a class="ml-1 btn btn-primary" href="{{ route('auth.facebook') }}"
+                                                style="margin-top: 0px !important;background: #4c6ef5;color: #ffffff;padding: 7px 10px;border-radius:2px;"
+                                                id="btn-fblogin">
+                                                <i class="fa fa-facebook-square" aria-hidden="true"></i> Login with
+                                                Facebook
+                                            </a>
+                                        </div> --}}
+
+                                        {{-- <div class="d-flex align-items-center justify-content-center mt-2">
+                                            <a class="btn" href="{{ route('auth.github') }}"
+                                                style="background: black; padding: 7px; width: 80%; text-align: center; display: block; border-radius:2px; color: #ffffff;">
+                                                Login with Github
+                                            </a>
+                                        </div> --}}
                                     </form>
                                 </div>
                                 <div class="screen__background">

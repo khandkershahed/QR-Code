@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="row gy-5 g-xl-8">
-        <h1 class="text-center">Hello <span class="text-success">Rashed</span> Welcome To Your Dashboard.!</h1>
+        <h1 class="text-center">Hello <span class="text-success">{{ Auth::user()->name }}</span> Welcome To Your Dashboard.!</h1>
         <div class="row">
             <div class="col-lg-8 offset-lg-2 mx-auto">
                 <div class="row my-10">
