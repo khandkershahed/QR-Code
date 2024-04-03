@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\Admin\SiteController;
 use App\Http\Controllers\Subscription\PlanController;
 
 Route::middleware('guest:admin')->prefix('admin')->name('admin.')->group(function () {
@@ -88,6 +89,9 @@ Route::middleware('auth:admin', 'role:admin')->prefix('admin')->name('admin.')->
         Route::put('/contact/{id}/update', 'update')->name('contact.update');
         Route::delete('/contact/{id}/destroy', 'destroy')->name('contact.destroy');
     });
+
+
+    Route::put('site/setting', [SiteController::class, 'site'])->name('site.setting');
 
     Route::get('role/{roleId}/give-permission', [RoleController::class, 'givePermission'])->name('role.give-permission');
     Route::patch('role/{roleId}/give-permission', [RoleController::class, 'storePermission'])->name('role.store-permission');

@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('sites', function (Blueprint $table) {
             $table->id();
-            $table->string('system_name')->nullable();
-            $table->string('frontend_website_name')->nullable();
+            $table->string('website_name')->nullable();
             $table->string('site_motto')->nullable();
             $table->string('site_icon')->nullable();
             $table->text('about')->nullable();
@@ -23,12 +22,10 @@ return new class extends Migration
             $table->string('system_logo_white')->nullable();
             $table->string('system_logo_black')->nullable();
             $table->string('system_timezone')->nullable(); // assuming timezone is a html text like 'UTC', 'EST', etc valueeee, select option
-
             $table->string('base_color')->nullable();
             $table->string('base_hover_color')->nullable();
             $table->string('secondary_base_color')->nullable();
             $table->string('secondary_base_hover_color')->nullable();
-
             $table->string('phone_one', 20)->nullable();
             $table->string('phone_two', 20)->nullable();
             $table->string('whatsapp_number', 20)->nullable();
