@@ -90,7 +90,7 @@ Route::middleware('auth:admin', 'role:admin')->prefix('admin')->name('admin.')->
         Route::delete('/contact/{id}/destroy', 'destroy')->name('contact.destroy');
     });
 
-
+    Route::get('website/setting', [SiteController::class, 'index'])->name('setting.index');
     Route::put('site/setting', [SiteController::class, 'site'])->name('site.setting');
 
     Route::get('role/{roleId}/give-permission', [RoleController::class, 'givePermission'])->name('role.give-permission');
