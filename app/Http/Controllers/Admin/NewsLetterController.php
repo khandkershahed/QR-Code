@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\NewsLetter;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class NewsLetterController extends Controller
@@ -32,7 +33,7 @@ class NewsLetterController extends Controller
             'ip_address' => $request->ip(),
             'location'   => $request->location,
             'status'     => $request->status ?? 'subscribed',
-            'created_at' => date('dmy_His'),
+            'created_at' => Carbon::now(),
         ]);
         return redirect()->back()->with('success','Data has been saved successfully!');
     }

@@ -20,8 +20,9 @@
                     <div class="form-part aos-init aos-animate" data-aos="fade-right" data-aos-duration="1500"
                         data-aos-offset="50">
                         <h5>Subscribe Our Newsletter</h5>
-                        <form class="newsletter-form mt-15" action="#">
-                            <input type="email" placeholder="Email Address" required="">
+                            <form class="newsletter-form mt-15" action="{{route('newsletter.store')}}" method="POST">
+                                @csrf
+                            <input type="email" placeholder="Email Address" name="email" required>
                             <button type="submit">Sign Up <i class="fas fa-arrow-right"></i></button>
                         </form>
                     </div>
