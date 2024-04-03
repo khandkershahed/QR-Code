@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('site_icon')->nullable();
             $table->text('about')->nullable();
 	        $table->text('address_line_one')->nullable();
-	        $table->text('address_line_one')->nullable();
+	        $table->text('address_line_two')->nullable();
             $table->string('system_logo_white')->nullable();
             $table->string('system_logo_black')->nullable();
             $table->string('system_timezone')->nullable(); // assuming timezone is a html text like 'UTC', 'EST', etc valueeee, select option
