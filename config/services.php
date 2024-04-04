@@ -32,22 +32,23 @@ return [
     ],
 
     'google' => [
-        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_id'     => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-        // 'redirect' => 'http://127.0.0.1:8000/auth/google/callback',
-        'redirect' => 'https://goqr.flixzaglobal.com/auth/google/callback',
+        'redirect'      => 'https://goqr.flixzaglobal.com/auth/google/callback',
+        // 'redirect'   => 'http ://127.0.0.1: 8000/auth/google/callback',
     ],
 
     'facebook' => [
-        'client_id' => 'mamurjorid',
-        'client_secret' => 'mamurjorsecret',
-        'redirect' => 'http://127.0.0.1:8000/auth/facebook/callback',
+        'client_id'     => env('FACEBOOK_CLIENT_ID'),
+        'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
+        'redirect'      => 'http://goqr.flixzaglobal.com/auth/facebook/callback',
+        // 'redirect'      => 'http://127.0.0.1:8000/auth/facebook/callback',
     ],
 
     'github' => [
-        'client_id' => env('GITHUB_CLIENT_ID'),
+        'client_id'     => env('GITHUB_CLIENT_ID'),
         'client_secret' => env('GITHUB_CLIENT_SECRET'),
-        'redirect' => 'http://127.0.0.1:8000/auth/github/callback',
+        'redirect'      => 'http://127.0.0.1:8000/auth/github/callback',
     ],
 
 ];

@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Laravel\Cashier\Billable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Admin\UserNotification;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -39,4 +40,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function userNotifications()
+    {
+        return $this->hasMany(UserNotification::class);
+    }
 }
