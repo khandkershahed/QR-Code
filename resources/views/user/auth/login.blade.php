@@ -1,116 +1,129 @@
-<x-frontend-app-layout :title="'Login Page'">
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4 login_box" :status="session('status')" />
-    <div class="container container-box-login">
-        <div class="row login-row" style="height: 100vh;position: relative;top: 12rem;">
-            <div class="row">
-                <div class="col-lg-8 offset-lg-2 mx-auto">
-                    <div class="row align-items-center bg-white shadow-sm">
-                        <div class="col-lg-6 px-0">
-                            <div class="screen">
-                                <div class="screen__content">
-                                    <form class="login" method="POST" action="{{ route('login') }}"
-                                        onsubmit="return validation();" enctype="multipart/form-data">
-                                        {{-- <form class="login" action="{{ route('login') }}" method="POST"> --}}
-                                        @csrf
-                                        <h3 class="mb-4">Login</h3>
-                                        <div class="form-outline">
-                                            <x-input-label class="form-label" for="email" :value="__('Email')" />
-                                            <x-text-input id="email"
-                                                class="form-control form-control-sm p-0 px-2 w-75 rounded-0"
-                                                type="email" name="email" :value="old('email')" required
-                                                autocomplete="username" />
-                                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+<x-admin-guest-layout>
+    <div class="d-flex flex-column flex-root" id="kt_app_root">
+        <div class="d-flex flex-column flex-lg-row flex-column-fluid">
+            <div class="d-flex flex-column flex-lg-row-fluid w-lg-50 p-10 order-2 order-lg-1">
+                <div class="d-flex flex-center flex-column flex-lg-row-fluid">
+                    <div class="w-lg-500px p-10">
 
-                                        </div>
-                                        <div class="form-outline">
-                                            <x-input-label class="form-label" for="password" :value="__('Password')" />
+                        <form class="form w-100 fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate"
+                            id="kt_sign_in_form" data-kt-redirect-url="/metronic8/demo1/index.html" action="#">
+                            <div class="text-center mb-11">
+                                <h1 class="text-gray-900 fw-bolder mb-3">
+                                    Sign In
+                                </h1>
 
-                                            <x-text-input id="password"
-                                                class="form-control form-control-sm p-0 px-2 w-75 rounded-0"
-                                                type="password" name="password" required autocomplete="new-password" />
-                                            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-                                        </div>
-                                        <div class="form-outline pt-3">
-                                            <input class="form-check-input p-0" type="checkbox" value=""
-                                                style="width: 20px;height: 20px;" id="remember_me" name="remember" />
-                                            <label class="form-check-label" for="remember_me">
-                                                {{ __('Remember me') }}
-                                            </label>
-                                        </div>
-                                        @if (Route::has('password.request'))
-                                            <div
-                                                class="form-check ps-0 pt-2 mb-0 d-flex justify-content-start align-items-center">
-                                                <p class="d-flex justify-content-start align-items-center">
-                                                <div class="ps-0">
-                                                    <span class=""> {{ __('Forgot your password?') }}</span>
-                                                </div>
-                                                <div class="ps-1">
-                                                    <a href="{{ route('password.request') }}"
-                                                        class="btn btn-sm btn-link text-warning fw-bold fs-6"
-                                                        style="color: var(--)">{{ __('Click Here') }}</a>
-                                                </div>
-                                                </p>
-                                            </div>
-                                        @endif
-                                        <div
-                                            class="form-check ps-0 d-flex justify-content-start align-items-center mb-1">
-                                            <p class="d-flex  justify-content-start align-items-center mb-0">
-                                                Don't Have an Account ?<span class="text-white"></span>
-                                                <a href="{{ route('register') }}"
-                                                    class="btn btn-sm btn-link text-warning fw-bold fs-6"
-                                                    style="color: var(--)">{{ __('Sign Up') }}</a>
-                                            </p>
-                                        </div>
-                                        <button class="button login__submit rounded-0 mt-3" type="submit">
-                                            <span class="button__text">{{ __('Log in') }}</span>
-                                            <i class="button__icon fas fa-chevron-right"></i>
-                                        </button>
-                                        <div class="d-flex align-items-center justify-content-center mt-2">
-                                            <a href="{{ route('auth.google') }}">
-                                                <img src="https://developers.google.com/identity/images/btn_google_signin_dark_normal_web.png"
-                                                    style="margin-left: 3em;">
-                                            </a>
-                                        </div>
-
-
-                                        <div class="d-flex align-items-center justify-content-center mt-2">
-                                            <a class="ml-1 btn btn-primary" href="{{ route('auth.facebook') }}"
-                                                style="margin-top: 0px !important;background: #4c6ef5;color: #ffffff;padding: 7px 10px;border-radius:2px;"
-                                                id="btn-fblogin">
-                                                <i class="fa fa-facebook-square" aria-hidden="true"></i> Login with
-                                                Facebook
-                                            </a>
-                                        </div>
-
-                                        {{-- <div class="d-flex align-items-center justify-content-center mt-2">
-                                            <a class="btn" href="{{ route('auth.github') }}"
-                                                style="background: black; padding: 7px; width: 80%; text-align: center; display: block; border-radius:2px; color: #ffffff;">
-                                                Login with Github
-                                            </a>
-                                        </div> --}}
-                                    </form>
-                                </div>
-                                <div class="screen__background">
-                                    <span class="screen__background__shape screen__background__shape4"></span>
-                                    <span class="screen__background__shape screen__background__shape3"></span>
-                                    <span class="screen__background__shape screen__background__shape2"></span>
-                                    <span class="screen__background__shape screen__background__shape1"></span>
+                                <div class="text-gray-500 fw-semibold fs-6">
+                                    Your Social Campaigns
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-6 login-secoand-box">
-                            <h4 class="text-center">Thank you for choosing us.</h4>
-                            <p class="text-center">Access your account securely and conveniently to unlock a world of
-                                personalized experiences. Simply enter your credentials below to gain access to your
-                                profile</p>
-                            <img class="img-fluid"
-                                src="https://img.freepik.com/premium-vector/qr-code-scanning-concept-people-use-smartphone-scan-qr-code-payment-everything_566886-10826.jpg"
-                                alt="">
-                        </div>
+
+                            <div class="row g-3 mb-9">
+                                <div class="col-md-6">
+                                    <a href="#"
+                                        class="btn btn-flex border btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
+                                        <img alt="Logo"
+                                            src="https://preview.keenthemes.com/metronic8/demo1/assets/media/svg/brand-logos/google-icon.svg"
+                                            class="h-15px me-3">
+                                        Sign in with Google
+                                    </a>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <a href="#"
+                                        class="btn btn-flex border btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
+                                        <img alt="Logo"
+                                            src="https://i.ibb.co/4twXxBk/png-clipart-facebook-logo-computer-icons-facebook-logo-facebook-thumbnail-removebg-preview.png"
+                                            class="theme-light-show h-25px me-3">
+                                        Sign in with Apple
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="separator separator-content my-14">
+                                <span class="w-125px text-gray-500 fw-semibold fs-7">Or with email</span>
+                            </div>
+
+                            <div class="fv-row mb-8 fv-plugins-icon-container">
+                                <input type="text" placeholder="Email" name="email" autocomplete="off"
+                                    class="form-control bg-transparent">
+                                <div
+                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
+                                </div>
+                            </div>
+
+                            <div class="fv-row mb-3 fv-plugins-icon-container">
+                                <input type="password" placeholder="Password" name="password" autocomplete="off"
+                                    class="form-control bg-transparent">
+                                <div
+                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
+                                </div>
+                            </div>
+
+                            <div class="d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8">
+                                <div></div>
+
+                                <a href="/metronic8/demo1/authentication/layouts/corporate/reset-password.html"
+                                    class="link-primary">
+                                    Forgot Password ?
+                                </a>
+                            </div>
+
+                            <div class="d-grid mb-10">
+                                <button type="submit" id="kt_sign_in_submit" class="btn btn-primary">
+                                    <span class="indicator-label">
+                                        Sign In</span>
+                                    <span class="indicator-progress">
+                                        Please wait... <span
+                                            class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                    </span>
+                            </div>
+                            <div class="text-gray-500 text-center fw-semibold fs-6">
+                                Not a Member yet?
+                                <a href="javascript:void()" type="submit" class="link-primary fw-semibold">
+                                    Sign Up
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="w-lg-500px d-flex justify-content-center px-10 mx-auto">
+                    <div class="d-flex fw-semibold text-primary fs-base gap-5">
+                        <a href="/metronic8/demo1/pages/team.html" target="_blank">Terms</a>
+
+                        <a href="/metronic8/demo1/pages/pricing/column.html" target="_blank">Plans</a>
+
+                        <a href="/metronic8/demo1/pages/contact.html" target="_blank">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex flex-lg-row-fluid w-lg-50 bgi-size-cover bgi-position-center order-1 order-lg-2"
+                style="background-image: url(https://preview.keenthemes.com/metronic8/demo1/assets/media/misc/auth-bg.png)">
+                <div class="d-flex flex-column flex-center py-7 py-lg-15 px-5 px-md-15 w-100">
+                    <a href="/metronic8/demo1/index.html" class="mb-0 mb-lg-12">
+                        <img alt="Logo" src="https://i.ibb.co/BNBTVN4/logo.png" class="h-60px h-lg-75px">
+                    </a>
+
+                    <img class="d-none d-lg-block mx-auto w-275px w-md-50 w-xl-500px mb-10 mb-lg-20"
+                        src="https://preview.keenthemes.com/metronic8/demo1/assets/media/misc/auth-screens.png"
+                        alt="">
+
+                    <h1 class="d-none d-lg-block text-white fs-2qx fw-bolder text-center mb-7">
+                        Fast, Efficient and Productive
+                    </h1>
+
+                    <div class="d-none d-lg-block text-white fs-base text-center">
+                        In this kind of post, <a href="#" class="opacity-75-hover text-warning fw-bold me-1">the
+                            blogger</a>
+
+                        introduces a person they’ve interviewed <br> and provides some background information about
+
+                        <a href="#" class="opacity-75-hover text-warning fw-bold me-1">the interviewee</a>
+                        and their <br> work following this is a transcript of the interview.
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</x-frontend-app-layout>
+</x-admin-guest-layout>
