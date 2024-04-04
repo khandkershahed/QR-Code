@@ -11,6 +11,7 @@ use App\Models\Admin\QrData;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 use SimpleSoftwareIO\QrCode\Generator;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Admin\QrCodeRequest;
@@ -20,22 +21,31 @@ class QrCodeController extends Controller
 {
     public function index()
     {
-        $data =[
-            'qrs' => Qr::with('qrData')->where('user_id', Auth::user()->id)->get(),
-        ];
-        return view('user.pages.qr-code.index',$data);
+        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
+
+        $qrs = $isUserRoute ?
+            Qr::with('qrData')->where('user_id', Auth::user()->id)->get() :
+            Qr::with('qrData')->latest('id')->get();
+
+        $view = $isUserRoute ? 'user.pages.qr-code.index' : 'admin.pages.qr-code.index';
+
+        return view($view, ['qrs' => $qrs]);
     }
 
     public function create()
     {
-        return view('user.pages.qr-code.create');
+        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
+        $view = $isUserRoute ? 'user.pages.qr-code.create' : 'admin.pages.qr-code.create';
+        return view($view);
     }
+
+    
     public function showQr($Qr)
     {
         $qr = Qr::with('qrData')->where('code', $Qr)->first();
-        if($qr){
+        if ($qr) {
             return view('user.pages.qr-code.qrFile', compact('qr'));
-        }else{
+        } else {
             return redirect()->route('homePage')->with('error', 'Sorry No Data Found');
         }
     }
@@ -156,7 +166,7 @@ class QrCodeController extends Controller
                 $qr->update(['qr_logo' => $logoFullPath]);
             }
         }
-            // Handle QR PDF
+        // Handle QR PDF
         $pdfFullPath = '';
         if ($request->hasFile('qr_data_pdf')) {
             $pdf = $request->file('qr_data_pdf');
@@ -178,7 +188,7 @@ class QrCodeController extends Controller
                 $dataImageFullPath = url('/storage/qr_codes/images/' . $imageFileName);
             }
         }
-        $qrDataLink = route('showQr',$code);
+        $qrDataLink = route('showQr', $code);
         // Create QR Data record
         $qrData = QrData::create([
             'code_id' => $qr->id,
@@ -225,11 +235,11 @@ class QrCodeController extends Controller
             $qrCode->eyeColor(2, $qr_eye_ball_color['r'], $qr_eye_ball_color['g'], $qr_eye_ball_color['b'], $qr_eye_frame_color['r'], $qr_eye_frame_color['g'], $qr_eye_frame_color['b'],);
         }
         if (!empty($qr_pattern)) {
-            if($qr_pattern == 'square_0.5'){
+            if ($qr_pattern == 'square_0.5') {
                 $qrCode->style('square', 0.5);
-            }elseif($qr_pattern == 'square_0.9'){
+            } elseif ($qr_pattern == 'square_0.9') {
                 $qrCode->style('square', 0.8);
-            }else{
+            } else {
                 $qrCode->style($qr_pattern, 0.5);
             }
         }
@@ -257,25 +267,17 @@ class QrCodeController extends Controller
 
         if ($qr_type == 'website') {
             $qrCodeString = $qrCode->generate($data['qr_data_website_url']);
-        }
-        elseif ($qr_type == 'pdf') {
+        } elseif ($qr_type == 'pdf') {
             $qrCodeString = $qrCode->generate($qrDataLink);
-        }
-        elseif ($qr_type == 'image') {
+        } elseif ($qr_type == 'image') {
             $qrCodeString = $qrCode->generate($qrDataLink);
-        }
-        elseif ($qr_type == 'sms') {
+        } elseif ($qr_type == 'sms') {
             $qrCodeString = $qrCode->SMS($data['qr_data_sms_number'], $data['qr_data_sms_message']);
-
-
-        }
-        elseif ($qr_type == 'email') {
+        } elseif ($qr_type == 'email') {
             $qrCodeString = $qrCode->email($data['qr_data_email_id'], $data['qr_data_email_subject'], $data['qr_data_email_body']);
-        }
-        elseif ($qr_type == 'mobile_app') {
-            $qrCodeString = $qrCode->generate($data['qr_app_android'],$data['qr_data_app_iphone'],$data['qr_data_app_ipad']);
-        }
-        elseif ($qr_type == 'call') {
+        } elseif ($qr_type == 'mobile_app') {
+            $qrCodeString = $qrCode->generate($data['qr_app_android'], $data['qr_data_app_iphone'], $data['qr_data_app_ipad']);
+        } elseif ($qr_type == 'call') {
             $qrCodeString = $qrCode->phoneNumber($data['qr_data_call_number']);
         }
         // elseif ($qr_type == 'location') {
@@ -299,7 +301,7 @@ class QrCodeController extends Controller
         $qrFileName = $code . '.png';
         $qrCodePath = 'public/qr_codes/' . $qrFileName;
         Storage::put($qrCodePath, $qrCodeString);
-        $qr->update(['qr_image' => $qrFileName,'qr_url' => asset('storage/qr_codes/' . $qrFileName)]);
+        $qr->update(['qr_image' => $qrFileName, 'qr_url' => asset('storage/qr_codes/' . $qrFileName)]);
 
         // Return the URL of the generated QR code image
         if ($qrCodePath) {

@@ -22,6 +22,8 @@ use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\Admin\UserManagementController;
+use App\Http\Controllers\Admin\UserNotificationController;
 
 Route::middleware('guest:admin')->prefix('admin')->name('admin.')->group(function () {
 
@@ -79,8 +81,10 @@ Route::middleware('auth:admin', 'role:admin')->prefix('admin')->name('admin.')->
     );
     Route::resources(
         [
-            'user'           => UserController::class,
-            'categories'     => CategoryController::class,
+            'user'                  => UserController::class,
+            'user-management'       => UserManagementController::class,
+            'user-notification'     => UserNotificationController::class,
+            'categories'            => CategoryController::class,
         ],
     );
 
