@@ -1,12 +1,15 @@
-<x-admin-guest-layout>
+<x-admin-guest-layout :title="'Login Page'">
     <div class="d-flex flex-column flex-root" id="kt_app_root">
         <div class="d-flex flex-column flex-lg-row flex-column-fluid">
             <div class="d-flex flex-column flex-lg-row-fluid w-lg-50 p-10 order-2 order-lg-1">
                 <div class="d-flex flex-center flex-column flex-lg-row-fluid">
                     <div class="w-lg-500px p-10">
 
-                        <form class="form w-100 fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate"
-                            id="kt_sign_in_form" data-kt-redirect-url="/metronic8/demo1/index.html" action="#">
+                        {{-- <form class="form w-100 fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate"
+                            id="kt_sign_in_form" data-kt-redirect-url="/metronic8/demo1/index.html" action="#"> --}}
+                        <form class="login" method="POST" action="{{ route('login') }}" onsubmit="return validation();"
+                            enctype="multipart/form-data">
+                            @csrf
                             <div class="text-center mb-11">
                                 <h1 class="text-gray-900 fw-bolder mb-3">
                                     Sign In
@@ -19,7 +22,7 @@
 
                             <div class="row g-3 mb-9">
                                 <div class="col-md-6">
-                                    <a href="#"
+                                    <a href="{{ route('auth.google') }}"
                                         class="btn btn-flex border btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
                                         <img alt="Logo"
                                             src="https://preview.keenthemes.com/metronic8/demo1/assets/media/svg/brand-logos/google-icon.svg"
@@ -29,7 +32,7 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <a href="#"
+                                    <a href="{{ route('auth.facebook') }}"
                                         class="btn btn-flex border btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
                                         <img alt="Logo"
                                             src="https://i.ibb.co/4twXxBk/png-clipart-facebook-logo-computer-icons-facebook-logo-facebook-thumbnail-removebg-preview.png"
@@ -44,32 +47,40 @@
                             </div>
 
                             <div class="fv-row mb-8 fv-plugins-icon-container">
-                                <input type="text" placeholder="Email" name="email" autocomplete="off"
-                                    class="form-control bg-transparent">
-                                <div
-                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
-                                </div>
+                                <x-input-label class="form-label" for="email" :value="__('Email')" />
+                                <x-text-input id="email"
+                                    class="form-control bg-transparent rounded-2" type="email"
+                                    name="email" :value="old('email')" required autocomplete="username" />
+                                <x-input-error :messages="$errors->get('email')" class="mt-2" />
                             </div>
 
-                            <div class="fv-row mb-3 fv-plugins-icon-container">
-                                <input type="password" placeholder="Password" name="password" autocomplete="off"
-                                    class="form-control bg-transparent">
-                                <div
-                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
-                                </div>
+                            <div class="fv-row mb-5 fv-plugins-icon-container">
+                                <x-input-label class="form-label" for="password" :value="__('Password')" />
+                                <x-text-input id="password"
+                                    class="form-control bg-transparent rounded-2" type="password"
+                                    name="password" required autocomplete="new-password" />
+                                <x-input-error :messages="$errors->get('password')" class="mt-2" />
                             </div>
 
                             <div class="d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8">
-                                <div></div>
+                                <div>
+                                    <input class="form-check-input p-0" type="checkbox" value=""
+                                        style="width: 20px;height: 20px;" id="remember_me" name="remember" />
+                                    <label class="form-check-label" for="remember_me">
+                                        {{ __('Remember me') }}
+                                    </label>
+                                </div>
 
-                                <a href="/metronic8/demo1/authentication/layouts/corporate/reset-password.html"
-                                    class="link-primary">
-                                    Forgot Password ?
-                                </a>
+                                @if (Route::has('password.request'))
+                                    <a href="{{ route('password.request') }}"
+                                        class="link-primary">
+                                        {{ __('Forgot your password ?') }}
+                                    </a>
+                                @endif
                             </div>
 
                             <div class="d-grid mb-10">
-                                <button type="submit" id="kt_sign_in_submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary">
                                     <span class="indicator-label">
                                         Sign In</span>
                                     <span class="indicator-progress">
@@ -79,15 +90,15 @@
                             </div>
                             <div class="text-gray-500 text-center fw-semibold fs-6">
                                 Not a Member yet?
-                                <a href="javascript:void()" type="submit" class="link-primary fw-semibold">
-                                    Sign Up
+                                <a href="{{ route('register') }}" type="submit" class="link-primary fw-semibold">
+                                    {{ __('Sign Up') }}
                                 </a>
                             </div>
                         </form>
                     </div>
                 </div>
 
-                <div class="w-lg-500px d-flex justify-content-center px-10 mx-auto">
+                {{-- <div class="w-lg-500px d-flex justify-content-center px-10 mx-auto">
                     <div class="d-flex fw-semibold text-primary fs-base gap-5">
                         <a href="/metronic8/demo1/pages/team.html" target="_blank">Terms</a>
 
@@ -95,7 +106,7 @@
 
                         <a href="/metronic8/demo1/pages/contact.html" target="_blank">Contact Us</a>
                     </div>
-                </div>
+                </div> --}}
             </div>
 
             <div class="d-flex flex-lg-row-fluid w-lg-50 bgi-size-cover bgi-position-center order-1 order-lg-2"
