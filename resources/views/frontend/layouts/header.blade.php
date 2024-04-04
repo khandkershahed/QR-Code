@@ -56,7 +56,7 @@
                 <!-- Menu Button -->
                 <div class="menu-btns ms-lg-auto">
                     @auth
-                        <a href="{{ route('dashboard') }}" class="light-btn">My Dashboard</a>
+                        <a href="{{ route('dashboard') }}" class="light-btn"><i class="fas fa-user me-3"></i> My Dashboard</a>
                     @else
                         <a href="{{ route('register') }}" class="light-btn">Sign Up</a>
                     @endauth
