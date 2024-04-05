@@ -161,6 +161,25 @@ $(document).ready(function () {
     inputElement.addEventListener("input", function () {
         meter.check();
     });
+
+    document.querySelectorAll('.password_confirmation').forEach(function(element) {
+        element.addEventListener('keyup', function() {
+            var password = document.querySelector('.password_input').value;
+            var passwordConfirmation = this.value;
+            var messageElement = document.querySelector('.password-confirmation-message');
+
+            if (password === passwordConfirmation) {
+                messageElement.textContent = 'Password confirmed';
+                messageElement.classList.remove('text-danger');
+                messageElement.classList.add('text-success');
+            } else {
+                messageElement.textContent = 'Passwords do not match';
+                messageElement.classList.remove('text-success');
+                messageElement.classList.add('text-danger');
+            }
+        });
+    });
+
 });
 
 // Delete action with reload page
@@ -400,21 +419,21 @@ $("#" + selectedValue + "-form").show();
 // NFC-card Template
 var nfcForm = $('#generateNfcCardForm');
 nfcForm.find('input, textarea').on('keyup change', function () {
-    var profile_image      = $("input[name = 'profile_image']", this).val();
-    var first_name         = $("input[name = 'first_name']", this).val();
-    var last_name          = $("input[name = 'last_name']", this).val();
-    var prefix             = $("input[name = 'prefix']", this).val();
-    var suffix             = $("input[name = 'suffix']", this).val();
-    var designation        = $("input[name = 'designation']", this).val();
-    var department         = $("input[name = 'department']", this).val();
-    var pronouns           = $("input[name = 'pronouns']", this).val();
-    var company            = $("input[name = 'company']", this).val();
-    var location_latitude  = $("input[name = 'location_latitude']", this).val();
+    var profile_image = $("input[name = 'profile_image']", this).val();
+    var first_name = $("input[name = 'first_name']", this).val();
+    var last_name = $("input[name = 'last_name']", this).val();
+    var prefix = $("input[name = 'prefix']", this).val();
+    var suffix = $("input[name = 'suffix']", this).val();
+    var designation = $("input[name = 'designation']", this).val();
+    var department = $("input[name = 'department']", this).val();
+    var pronouns = $("input[name = 'pronouns']", this).val();
+    var company = $("input[name = 'company']", this).val();
+    var location_latitude = $("input[name = 'location_latitude']", this).val();
     var location_longitude = $("input[name = 'location_longitude']", this).val();
-    var company_logo       = $("input[name = 'company_logo']", this).val();
-    var logo_Size          = $("input[name = 'logo_Size']", this).val();
-    var summary            = $("input[name = 'summary']", this).val();
-    var address            = $("input[name = 'address']", this).val();
+    var company_logo = $("input[name = 'company_logo']", this).val();
+    var logo_Size = $("input[name = 'logo_Size']", this).val();
+    var summary = $("input[name = 'summary']", this).val();
+    var address = $("input[name = 'address']", this).val();
     alert(first_name);
 
     $('.profile_image').attr('src', profile_image);

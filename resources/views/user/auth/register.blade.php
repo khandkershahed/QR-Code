@@ -5,8 +5,7 @@
                 <div class="d-flex flex-center flex-column flex-lg-row-fluid">
                     <div class="w-lg-500px p-10">
                         <form class="form w-100 fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate"
-                            id="kt_sign_up_form" data-kt-redirect-url="https://goqr.flixzaglobal.com/" method="POST"
-                            action="{{ route('register') }}">
+                            method="POST" action="{{ route('register') }}">
                             @csrf
                             <div class="text-center mb-11">
                                 <h1 class="text-gray-900 fw-bolder mb-3">
@@ -19,7 +18,7 @@
                             </div>
                             <div class="row g-3 mb-9">
                                 <div class="col-md-6">
-                                    <a href="#"
+                                    <a href="{{ route('auth.google') }}"
                                         class="btn btn-flex border btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
                                         <img alt="Logo"
                                             src="https://preview.keenthemes.com/metronic8/demo1/assets/media/svg/brand-logos/google-icon.svg"
@@ -29,7 +28,7 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <a href="#"
+                                    <a href="{{ route('auth.facebook') }}"
                                         class="btn btn-flex border btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
                                         <img alt="Logo"
                                             src="https://i.ibb.co/4twXxBk/png-clipart-facebook-logo-computer-icons-facebook-logo-facebook-thumbnail-removebg-preview.png"
@@ -42,30 +41,24 @@
                                     class="w-125px text-gray-500 fw-semibold fs-7">Or with email</span></div>
 
                             <div class="fv-row mb-8 fv-plugins-icon-container">
-                                <input type="text" placeholder="Full Name" name="" autocomplete="off"
-                                    class="form-control bg-transparent">
-                                <div
-                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
-                                </div>
+                                <x-input-label class="form-label" for="name" :value="__('Full Name')" />
+                                <x-text-input id="name" class="form-control bg-transparent" type="text"
+                                    name="name" :value="old('name')" required autofocus autocomplete="name" />
+                                <x-input-error :messages="$errors->get('name')" class="mt-2" />
                             </div>
                             <div class="fv-row mb-8 fv-plugins-icon-container">
-                                <input type="text" placeholder="Email" name="email" autocomplete="off"
-                                    class="form-control bg-transparent">
-                                <div
-                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
-                                </div>
+                                <x-input-label class="form-label text-start" for="email" :value="__('Email')" />
+                                <x-text-input id="email" class="form-control bg-transparent" type="email"
+                                    name="email" :value="old('email')" required autocomplete="username" />
+                                <x-input-error :messages="$errors->get('email')" class="mt-2" />
                             </div>
                             <div class="fv-row mb-8 fv-plugins-icon-container" data-kt-password-meter="true">
                                 <div class="mb-1">
                                     <div class="position-relative mb-3">
-                                        <input class="form-control bg-transparent" type="password"
-                                            placeholder="Password" name="password" autocomplete="off">
-
-                                        <span
-                                            class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2"
-                                            data-kt-password-meter-control="visibility">
-                                            <i class="ki-duotone ki-eye-slash fs-2"></i> <i
-                                                class="ki-duotone ki-eye fs-2 d-none"></i> </span>
+                                        <x-input-label class="form-label" for="password" :value="__('Password')" />
+                                        <x-text-input id="password" class="form-control bg-transparent password_input"
+                                            type="password" name="password" required autocomplete="new-password" />
+                                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
                                     </div>
 
                                     <div class="d-flex align-items-center mb-3"
@@ -88,17 +81,19 @@
                                 </div>
                             </div>
                             <div class="fv-row mb-8 fv-plugins-icon-container">
-                                <input type="text" placeholder="Repeat Password" name="confirm-password"
-                                    autocomplete="off" class="form-control bg-transparent">
-                                <div
-                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
-                                </div>
+                                <x-input-label class="form-label" for="password_confirmation" :value="__('Confirm Password')" />
+                                <x-text-input id="password_confirmation"
+                                    class="form-control bg-transparent password_confirmation" type="password"
+                                    name="password_confirmation" required autocomplete="new-password" />
+                                <div id="password-confirmation-message"
+                                    class="password-confirmation-message"></div>
+                                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                             </div>
                             <div class="fv-row mb-8 fv-plugins-icon-container">
                                 <label class="form-check form-check-inline">
                                     <input class="form-check-input" type="checkbox" name="toc" value="1">
                                     <span class="form-check-label fw-semibold text-gray-700 fs-base ms-1">
-                                        I Accept the <a href="#" class="ms-1 link-primary">Terms</a>
+                                        I Accept the <a href="#" class="ms-1 link-primary">Terms & Conditions</a>
                                     </span>
                                 </label>
                                 <div
@@ -148,7 +143,7 @@
                         Fast, Efficient and Productive
                     </h1>
                     <div class="d-none d-lg-block text-white fs-base text-center">
-                        In this kind of post, 
+                        In this kind of post,
                         <a href="#" class="opacity-75-hover text-warning fw-bold me-1">the blogger</a>
                         introduces a person they’ve interviewed <br> and provides some background information about
                         <a href="#" class="opacity-75-hover text-warning fw-bold me-1">the interviewee</a>
@@ -158,4 +153,24 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.querySelectorAll('.password_confirmation').forEach(function(element) {
+        element.addEventListener('keyup', function() {
+            var password = document.querySelector('.password_input').value;
+            var passwordConfirmation = this.value;
+            var messageElement = document.querySelector('.password-confirmation-message');
+
+            if (password === passwordConfirmation) {
+                messageElement.textContent = 'Password confirmed';
+                messageElement.classList.remove('text-danger');
+                messageElement.classList.add('text-success');
+            } else {
+                messageElement.textContent = 'Passwords do not match';
+                messageElement.classList.remove('text-success');
+                messageElement.classList.add('text-danger');
+            }
+        });
+    });
+    </script>
 </x-admin-guest-layout>
