@@ -504,9 +504,9 @@
                             </div>
                             {{-- Admin Notifcation box --}}
                             <div class="pt-15 text-white">
-                                <h6 class="text-white mb-4">Dear, <span class="text-warning fw-bold">your name</span>
+                                <h6 class="text-white mb-4">Dear, <span class="text-warning fw-bold">{{ Auth::user()->name }}</span>
                                 </h6>
-                                <p></p>
+                                <p>Admin notification for you</p>
                                 <div class="card">
                                     <div class="card-body">
                                         <p class="text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit.
