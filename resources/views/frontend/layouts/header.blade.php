@@ -36,6 +36,21 @@
                                 <li>
                                     <a href="{{ route('digitalCard') }}">DIGITAL BUSINESS CARDS</a>
                                 </li>
+                                <li class="dropdown position-static">
+                                    <a href="#">pages</a>
+                                    <ul class="w-100" style="display: none;">
+                                        <li><a href="about.html">About Us</a></li>
+                                        <li><a href="faqs.html">faqs</a></li>
+                                        <li><a href="team.html">Team Members</a></li>
+                                        <li><a href="pricing.html">Pricing Plan</a></li>
+                                        <li><a href="contact.html">Contact us</a></li>
+                                        <li><a href="coming-soon.html">Coming Soon</a></li>
+                                        <li><a href="404.html">404 error</a></li>
+                                    </ul>
+                                    <div class="dropdown-btn">
+                                        <span class="far fa-angle-down"></span>
+                                    </div>
+                                </li>
                                 <li><a href="{{ route('pricing') }}">PRICING</a></li>
                                 <li><a href="{{ route('services') }}">Services</a></li>
                             </ul>
@@ -56,7 +71,8 @@
                 <!-- Menu Button -->
                 <div class="menu-btns ms-lg-auto">
                     @auth
-                        <a href="{{ route('dashboard') }}" class="light-btn"><i class="fas fa-user me-3"></i> My Dashboard</a>
+                        <a href="{{ route('dashboard') }}" class="light-btn"><i class="fas fa-user me-3"></i> My
+                            Dashboard</a>
                     @else
                         <a href="{{ route('register') }}" class="light-btn">Sign Up</a>
                     @endauth
