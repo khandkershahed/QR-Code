@@ -1,7 +1,7 @@
 <x-admin-app-layout :title="'Plan Create'">
 
     <div class="card card-flash">
-        <div class="card-body scroll-y mx-5 mx-xl-15 my-7">
+        <div class="card-body scroll-y mx-5">
             <form class="form" action="{{ route('admin.plans.store') }}" method="POST">
                 @csrf
                 <div class="row">
@@ -73,25 +73,31 @@
                             </option>
                         </x-metronic.select-option>
                     </div>
-                    <div class="col-lg-12 mt-3 mb-5 border p-4">
-                        <div class="table-responsive col-md-12">
-                            <table class="table table-bordered col-md-12 product text-center">
+                    <div class="col-lg-12 mt-3 mb-5 p-4">
+                        <p class="fw-bold">Add Provided Services</p>
+                        <div class="table-responsive">
+                            <table class="table product text-center table-striped ">
                                 <thead>
-                                    <tr>
-                                        <th style="padding:7px !important;"> Plan Details</th>
-                                        <th style="padding:7px !important;"> <a href="javascript:void(0)"
-                                                class="bg-success addRow p-1 px-2"><i
-                                                    class="fas fa-plus icons_design text-white"></i></a>
+                                    <tr class="align-items-center bg-light-primary rounded-2">
+                                        <th width="5%" class="text-center fw-bold py-0 pb-5"> Sl</th>
+                                        <th width="90%" class="text-center fw-bold py-0 pb-5"> Plan Details</th>
+                                        <th width="5%">
+                                            <a href="javascript:void(0)"
+                                                class="btn btn-success px-5 py-3 addRow btn-sm">
+                                                <i class="fas fa-plus icons_design text-white pe-0"></i>
+                                            </a>
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody class="repeater">
                                     <tr>
-                                        <td> <input type="text" class="form-control form-control-sm"
-                                                name="descriptions[]" required></td>
+                                        <td class="text-center">1</td>
+                                        <td> <input type="text" class="form-control form-control-sm w-100"
+                                                name="descriptions[]" placeholder="5 Qr & 3 Nfc" required></td>
                                         <td class="text-center" style="vertical-align: middle;"> <a
-                                                href="javascript:void(0)" class="bg-danger removeRow p-1 px-2"><i
-                                                    class="fas fa-minus icons_design text-white"></i></a></td>
+                                                href="javascript:void(0)"
+                                                class="btn btn-danger px-5 py-3 addRow btn-sm removeRow"><i
+                                                    class="fas fa-minus icons_design text-white pe-0"></i></a></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -99,8 +105,6 @@
                     </div>
 
                 </div>
-
-
                 <div class="text-center pt-15">
                     <x-metronic.button type="submit" class="primary">
                         {{ __('Save Changes') }}
@@ -116,8 +120,8 @@
                 // Add Row
                 $(".addRow").on("click", function() {
                     var newRow =
-                        '<tr><td><input type="text" class="form-control form-control-sm" name="descriptions[]" required></td>' +
-                        '<td class="text-center" style="vertical-align: middle;"><a href="javascript:void(0)" class="bg-danger removeRow p-1 px-2">' +
+                        '<tr><td>1</td> <td><input type="text" class="form-control form-control-sm w-100" name="descriptions[]" placeholder="Enter Service" required></td>' +
+                        '<td class="text-center" style="vertical-align: middle;"><a href="javascript:void(0)" class="btn btn-danger px-5 py-3 addRow btn-sm removeRow">' +
                         '<i class="fas fa-minus icons_design text-white"></i></a></td></tr>';
 
                     $(".repeater").append(newRow);

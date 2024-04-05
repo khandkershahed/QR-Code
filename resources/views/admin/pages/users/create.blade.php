@@ -1,12 +1,10 @@
-<x-admin-app-layout :title="'User Add'">
+<x-admin-app-layout :title="'Add User'">
 
     <div class="card card-flash">
-        <!--begin::card body-->
-        <div class="card-body scroll-y mx-5 mx-xl-15 my-7">
-            <!--begin::Form-->
+
+        <div class="card-body scroll-y mx-5 my-7">
             <form class="form" method="POST" action="{{ route('admin.user.store') }}">
                 @csrf
-                <!--begin::Scroll-->
                 <div class="d-flex flex-column scroll-y me-n7 pe-7" data-kt-scroll="true"
                     data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto"
                     data-kt-scroll-offset="300px">
@@ -36,67 +34,62 @@
                                 class="form-control-solid mb-3 mb-lg-0" name="password_confirmation"
                                 placeholder="Confirm the password"></x-metronic.input>
                         </div>
-                        <!--begin::Input group-->
-                        <div class="mb-7">
-                            <!--begin::Label-->
-                            <label class="required fw-bold fs-6 mb-5">Role</label>
-                            <!--end::Label-->
-                            <!--begin::Roles-->
-                            @foreach ($roles as $role)
-                                <!--begin::Input row-->
-                                <div class="d-flex fv-row">
-                                    <!--begin::Radio-->
-                                    <div class="form-check form-check-custom form-check-solid">
-                                        <!--begin::Input-->
+                        <div class="d-flex align-items-end ">
+                            <div class="ms-3 p-3 w-25" style="border: 1px dashed green;">
+                                <label class="required fw-bold fs-6 mb-5">Role</label>
+                                @foreach ($roles as $role)
+                                    <div class="d-flex fv-row">
+                                        <div class="form-check form-check-custom form-check-solid mb-2">
 
-                                        <x-metronic.checkbox id="role-name-{{ $role->id }}" type="checkbox"
-                                            name="roles[]" :value="$role->name"></x-metronic.checkbox>
+                                            <x-metronic.checkbox id="role-name-{{ $role->id }}" type="radio"
+                                                name="roles[]" :value="$role->name"></x-metronic.checkbox>
 
 
-                                        {{-- <input class="form-check-input me-3" name="roles[]" type="radio" value="0"
-                                        id="kt_modal_update_role_option_0" checked='checked' /> --}}
-                                        <!--end::Input-->
-                                        <!--begin::Label-->
-                                        <x-metronic.label for="role-name-{{ $role->id }}"
-                                            class="form-check-label">{{ $role->name }}</x-metronic.label>
-                                        {{-- <label class="form-check-label" for="kt_modal_update_role_option_0">
-                                        <div class="fw-bolder text-gray-800">
-                                            {{ $role->name }}</div>
-                                        <div class="text-gray-600">Best for
-                                            business owners and company
-                                            administrators</div>
-                                    </label> --}}
-                                        <!--end::Label-->
+                                            {{-- <input class="form-check-input me-3" name="roles[]" type="radio" value="0"
+                                            id="kt_modal_update_role_option_0" checked='checked' /> --}}
+                                            <x-metronic.label for="role-name-{{ $role->id }}"
+                                                class="form-check-radio ps-2 text-capitalize ">{{ $role->name }}</x-metronic.label>
+                                            {{-- <label class="form-check-label" for="kt_modal_update_role_option_0">
+                                            <div class="fw-bolder text-gray-800">
+                                                {{ $role->name }}</div>
+                                            <div class="text-gray-600">Best for
+                                                business owners and company
+                                                administrators</div>
+                                        </label> --}}
+                                        </div>
                                     </div>
-                                    <!--end::Radio-->
+                                @endforeach
+                            </div>
+                            <div class="w-50 ms-5 bg-light-warning p-5 rounded-2">
+                                <h4 class="text-danger">Warning</h4>
+                                <ul>
+                                    <li>Authentication and Authorization: Implement a robust authentication system to
+                                        verify the identity</li>
+                                    <li>User Registration: Design a user-friendly registration process for admins.</li>
+                                    <li>User Notifications: Notify admins about important events related to user
+                                        accounts</li>
+                                    <li>User Notifications: Notify admins about important events related to user
+                                        accounts</li>
+                                </ul>
+                            </div>
+                            <div class="w-25">
+                                <div class="text-end">
+                                    <x-metronic.button type="submit" class="primary">
+                                        {{ __('Submit') }}
+                                    </x-metronic.button>
                                 </div>
-                                <!--end::Input row-->
-                                <div class='separator separator-dashed my-5'></div>
-                            @endforeach
-                            <!--end::Roles-->
+                            </div>
                         </div>
-                        <!--end::Input group-->
                     </div>
                 </div>
-                <!--end::Scroll-->
-                <!--begin::Actions-->
-                <div class="text-center pt-15">
-                    <x-metronic.button type="submit" class="primary">
-                        {{ __('Submit') }}
-                    </x-metronic.button>
-                </div>
-                <!--end::Actions-->
             </form>
-            <!--end::Form-->
         </div>
-        <!--end::Modal body-->
     </div>
     {{-- <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <form method="POST" action="{{ route('admin.user.store') }}">
                 @csrf
 
-                <!-- Name -->
                 <div>
                     <x-input-label for="name" :value="__('Name')" />
                     <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
@@ -104,7 +97,6 @@
                     <x-input-error :messages="$errors->get('name')" class="mt-2" />
                 </div>
 
-                <!-- Email Address -->
                 <div class="mt-4">
                     <x-input-label for="email" :value="__('Email')" />
                     <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
@@ -112,7 +104,6 @@
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
 
-                <!-- Password -->
                 <div class="mt-4">
                     <x-input-label for="password" :value="__('Password')" />
 
@@ -122,7 +113,6 @@
                     <x-input-error :messages="$errors->get('password')" class="mt-2" />
                 </div>
 
-                <!-- Confirm Password -->
                 <div class="mt-4">
                     <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
 
