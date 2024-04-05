@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-9">
-                <div class="card">
+                <div class="card mt-10">
                     <div class="card-body">
                         <div class="stepper stepper-pills" id="kt_stepper_example_clickable">
                             <div class="stepper-nav flex-center flex-wrap mb-10">
@@ -109,20 +109,38 @@
 
                                     <div class="flex-column" data-kt-stepper-element="content">
                                         <div class="card">
-                                            <div class="card-header">
-                                                <div class="pt-5 ps-5">
-                                                    <h2>Congratulations! Your QR Code is ready</h2>
-                                                    {{-- <p>Still want to make changes?
-                                                        <a href="#">Modify your QR code</a>
-                                                    </p> --}}
-                                                </div>
+                                            <div class="pt-5 ps-5">
+                                                <h2 class="text-center">Congratulations!</h2>
+                                                <p class="text-center">Some Information Need To
+                                                    Ready The QR</p>
+                                                {{-- <p>Still want to make changes?
+                                                    <a href="#">Modify your QR code</a>
+                                                </p> --}}
                                             </div>
-                                            <div class="card-body">
-                                                <div class="pt-5 pb-5 ps-5">
-                                                    <x-metronic.label for="qr_name"
-                                                        class="form-label">{{ __('Enter a name for your QR code') }}</x-metronic.label>
-                                                    <x-metronic.input id="qr_name" type="text" name="qr_name"
-                                                        :value="old('qr_name')" placeholder="Enter a name for your QR code" required/>
+                                            <div class="card-body px-0">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="pt-5 pb-5">
+                                                            <x-metronic.label for="qr_name"
+                                                                class="form-label">{{ __('Enter a name for your QR code') }}</x-metronic.label>
+                                                            <x-metronic.input id="qr_name" type="text"
+                                                                name="qr_name" :value="old('qr_name')"
+                                                                placeholder="Enter a name for your QR code" required />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="pt-5 pb-5">
+                                                            <x-metronic.label for="status"
+                                                                class="form-label">{{ __('Enter a name for your QR code') }}
+                                                                <span class="text-danger">*</span></x-metronic.label>
+                                                            <select class="form-select" data-control="select2"
+                                                                data-placeholder="Select an option" required>
+                                                                <option>Select Status</option>
+                                                                <option value="static">Static</option>
+                                                                <option value="dynamic">Dynamic</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 {{-- <div class="w-25 mx-auto">
                                                     <img width="300px"
@@ -168,16 +186,19 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="card">
+                <div class="card mt-10">
                     <div class="card-body">
-                        <div class="d-flex flex-column justify-content-center align-items-center" id="generatedQRCodeContainer">
+                        <div class="d-flex flex-column justify-content-center align-items-center"
+                            id="generatedQRCodeContainer">
                             <h3>Preview</h3>
-                            <img id="generatedQRCode" class="img-fluid" src="https://i.ibb.co/XzHNWc0/no-qr.png" alt="QR Code">
+                            <img id="generatedQRCode" class="img-fluid" src="https://i.ibb.co/XzHNWc0/no-qr.png"
+                                alt="QR Code">
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-around align-items-center">
                         <a href="#" class="btn btn-light btn-active-light-primary w-100 me-2">Preview</a>
-                        <a id="downloadLink" href="" download class="btn btn-light btn-primary w-100" style="display: none;">Download</a>
+                        <a id="downloadLink" href="" download class="btn btn-light btn-primary w-100"
+                            style="display: none;">Download</a>
                     </div>
                 </div>
             </div>
@@ -185,8 +206,6 @@
     </div>
 
     @push('scripts')
-
-
         <script>
             $(document).ready(function() {
                 $('#colorPicker').on('input', function() {

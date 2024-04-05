@@ -105,7 +105,7 @@
                     </div>
 
                 </div>
-                <div class="text-center pt-15">
+                <div class="text-end pt-5">
                     <x-metronic.button type="submit" class="primary">
                         {{ __('Save Changes') }}
                     </x-metronic.button>

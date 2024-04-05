@@ -3,7 +3,7 @@
     <div class="card card-flash">
 
         <!--begin::Modal body-->
-        <div class="card-body scroll-y mx-5 mx-xl-15 my-7">
+        <div class="card-body scroll-y">
             <!--begin::Form-->
             <form class="form" action="{{ route('admin.permission.store') }}" method="POST">
                 @csrf
@@ -29,7 +29,7 @@
                 </div>
 
 
-                <div class="text-center pt-15">
+                <div class="text-end pt-15">
                     <x-metronic.button type="submit" class="primary">
                         {{ __('Submit') }}
                     </x-metronic.button>
