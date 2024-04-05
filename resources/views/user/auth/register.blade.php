@@ -91,7 +91,7 @@
                             </div>
                             <div class="fv-row mb-8 fv-plugins-icon-container">
                                 <label class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="toc" value="1">
+                                    <input class="form-check-input" type="checkbox" name="toc" value="1" required checked>
                                     <span class="form-check-label fw-semibold text-gray-700 fs-base ms-1">
                                         I Accept the <a href="#" class="ms-1 link-primary">Terms & Conditions</a>
                                     </span>
@@ -113,22 +113,14 @@
                             </div>
                             <div class="text-gray-500 text-center fw-semibold fs-6">
                                 Already have an Account?
-                                <a href="javascript:void()" type="submit" class="link-primary fw-semibold">
+                                <a href="{{ route('login') }}" type="submit" class="link-primary fw-semibold">
                                     Sign in
                                 </a>
                             </div>
                         </form>
                     </div>
                 </div>
-                <div class="w-lg-500px d-flex justify-content-center px-10 mx-auto">
-                    <div class="d-flex fw-semibold text-primary fs-base gap-5">
-                        <a href="/metronic8/demo1/pages/team.html" target="_blank">Terms</a>
 
-                        <a href="/metronic8/demo1/pages/pricing/column.html" target="_blank">Plans</a>
-
-                        <a href="/metronic8/demo1/pages/contact.html" target="_blank">Contact Us</a>
-                    </div>
-                </div>
             </div>
             <div class="d-flex flex-lg-row-fluid w-lg-50 bgi-size-cover bgi-position-center order-1 order-lg-2"
                 style="background-image: url(https://preview.keenthemes.com/metronic8/demo1/assets/media/misc/auth-bg.png)">
