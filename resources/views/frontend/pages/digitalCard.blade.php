@@ -1,6 +1,5 @@
 <x-frontend-app-layout :title="'Digital Card'">
-    <section class="hero-area-three bgs-cover bgc-lighter pt-210 rpt-150 pb-100"
-        style="background-image: url(https://webtendtheme.net/html/2024/akpager/assets/images/hero/hero-three.png);">
+    <section class="hero-area-three bgs-cover bgc-lighter pt-210 rpt-150 pb-100">
         <div class="container">
             <div class="row gap-55 align-items-center">
                 <div class="col-lg-6">

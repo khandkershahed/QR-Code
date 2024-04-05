@@ -77,7 +77,7 @@
 
         // ## Submenu Dropdown Toggle
         if ($('.main-header .navigation li.dropdown ul').length) {
-            $('.main-header .navigation li.dropdown').append('<div class="dropdown-btn"><span class="far fa-angle-down"></span></div>');
+            $('.main-header .navigation li.dropdown').append('<div class="dropdown-btn"><span class="fas fa-angle-down"></span></div>');
 
             //Dropdown Button
             $('.main-header .navigation li.dropdown .dropdown-btn').on('click', function () {
@@ -101,7 +101,7 @@
 
         // ## Sidebar Menu
         if ($('.sidebar-menu li.dropdown ul').length) {
-            $('.sidebar-menu li.dropdown').append('<div class="dropdown-btn"><span class="far fa-angle-down"></span></div>');
+            $('.sidebar-menu li.dropdown').append('<div class="dropdown-btn"><span class="fas fa-angle-down"></span></div>');
 
             //Dropdown Button
             $('.sidebar-menu li.dropdown .dropdown-btn').on('click', function () {

@@ -11373,7 +11373,8 @@ a.theme-btn.style-four:hover {
 
 .main-menu .navbar-collapse li ul {
     position: absolute;
-    left: inherit;
+    left: 0;
+    right: 0;
     top: 100%;
     min-width: 250px;
     z-index: 100;
@@ -11385,6 +11386,13 @@ a.theme-btn.style-four:hover {
         -2px 0px 5px 1px rgba(0, 0, 0, 0.05);
 }
 
+.menu_icons{
+    padding: 10px 10px;
+    background: #eee;
+    border-radius: 100%;
+    color: black;
+    font-size: 12px;
+}
 @media only screen and (max-width: 991px) {
     .main-menu .navbar-collapse li ul {
         position: relative;
