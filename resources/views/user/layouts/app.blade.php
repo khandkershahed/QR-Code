@@ -109,7 +109,7 @@
             showErrorMessage('{{ $error }}');
         @endforeach
     </script> --}}
-    @if (session('success'))
+    {{-- @if (session('success'))
         <script>
             Swal.fire({
                 title: 'Success!',
@@ -145,7 +145,7 @@
                 });
             @endforeach
         </script>
-    @endif
+    @endif --}}
     <script>
         $(document).ready(function() {
             // Add event listener to radio inputs

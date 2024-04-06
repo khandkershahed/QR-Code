@@ -22,6 +22,9 @@ use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\Admin\FaqController;
+use App\Http\Controllers\Admin\NfcCardController;
+use App\Http\Controllers\Admin\QrCodeController;
 use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\Admin\UserNotificationController;
 
@@ -76,6 +79,7 @@ Route::middleware('auth:admin', 'role:admin')->prefix('admin')->name('admin.')->
             'permission'     => PermissionController::class,
             'email-settings' => EmailSettingController::class,
             'plans'          => PlanController::class,
+            'faq'            => FaqController::class,
         ],
         ['except' => ['show']]
     );
@@ -85,6 +89,8 @@ Route::middleware('auth:admin', 'role:admin')->prefix('admin')->name('admin.')->
             'user-management'       => UserManagementController::class,
             'user-notification'     => UserNotificationController::class,
             'categories'            => CategoryController::class,
+            'qr-code'               => QrCodeController::class,
+            'nfc-card'              => NfcCardController::class,
         ],
     );
 

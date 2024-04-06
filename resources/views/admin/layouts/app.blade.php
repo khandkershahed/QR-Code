@@ -84,10 +84,10 @@
     <script src="{{ asset('admin/js/custom.js') }}"></script>
     @stack('scripts')
     <script>
-        showSuccessMessage('{{ session('success') }}');
-        @foreach ($errors->all() as $error)
-            showErrorMessage('{{ $error }}');
-        @endforeach
+        // showSuccessMessage('{{ session('success') }}');
+        // @foreach ($errors->all() as $error)
+        //     showErrorMessage('{{ $error }}');
+        // @endforeach
 
         $(document).ready(function() {
             // Attach an input event listener to the color input

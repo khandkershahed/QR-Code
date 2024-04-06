@@ -29,14 +29,7 @@
                         <!--end::Search-->
                     </div>
                     <!--end::Card title-->
-                    <!--begin::Card toolbar-->
-                    <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
-                        <!--begin::Add product-->
-                        <a href="{{ route('admin.categories.create') }}" class="btn btn-primary">Add
-                            Category</a>
-                        <!--end::Add product-->
-                    </div>
-                    <!--end::Card toolbar-->
+                    
                 </div>
                 <!--end::Card header-->
                 <!--begin::Card body-->

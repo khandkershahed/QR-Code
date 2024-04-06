@@ -2,8 +2,18 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Events\ActivityLogged;
+use Illuminate\Validation\Rules;
+use Spatie\Permission\Models\Role;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Auth\Events\Registered;
+use App\Providers\RouteServiceProvider;
 
 class UserManagementController extends Controller
 {
@@ -12,7 +22,7 @@ class UserManagementController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.pages.user-management.index', ['users' => User::get()]);
     }
 
     /**
@@ -20,8 +30,9 @@ class UserManagementController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.user-management.create', ['roles' => Role::get()]);
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -44,15 +55,36 @@ class UserManagementController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('admin.pages.user-management.edit', [
+            'user' => User::find($id),
+            'roles' => Role::get(),
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $user): RedirectResponse
     {
-        //
+        $request->validate([
+            'name' => ['nullable', 'string', 'max:255'],
+            'email' => ['nullable', 'string', 'email', 'max:255', 'unique:' . User::class . ',email,' . $user->id],
+            'password' => ['nullable', 'confirmed', Rules\Password::defaults()],
+        ]);
+
+        $user->update([
+            'name'     => $request->name ? $request->name  : $user->name,
+            'email'    => $request->email ? $request->email : $user->email,
+            'password' => $request->password ? Hash::make($request->password) : $user->password,
+        ]);
+
+        if ($request->roles) {
+            $user->syncRoles($request->roles);
+        }
+
+        event(new ActivityLogged('User updated', $user));
+
+        return redirect()->back()->with('success', 'User updated successfully');
     }
 
     /**
@@ -60,6 +92,11 @@ class UserManagementController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        event(new ActivityLogged('User deleted', $user));
+
+        // return redirect()->back()->with('success', 'User deleted successfully');
     }
 }

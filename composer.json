@@ -16,6 +16,7 @@
         "laravel/sanctum": "^3.2",
         "laravel/socialite": "^5.12",
         "laravel/tinker": "^2.8",
+        "php-flasher/flasher-laravel": "^1.15",
         "simplesoftwareio/simple-qrcode": "^4.2",
         "spatie/laravel-permission": "^6.3",
         "yajra/laravel-datatables": "10.0"

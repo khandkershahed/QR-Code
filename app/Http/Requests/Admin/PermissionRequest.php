@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
 
 class PermissionRequest extends FormRequest
 {
@@ -54,5 +55,26 @@ class PermissionRequest extends FormRequest
             'group_name' => 'permission Group name',
             'name' => 'permission name',
         ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        $this->recordErrorMessages($validator);
+        parent::failedValidation($validator);
+    }
+
+    /**
+     * Record the error messages displayed to the user.
+     *
+     * @param  \Illuminate\Contracts\Validation\Validator  $validator
+     * @return void
+     */
+    protected function recordErrorMessages(Validator $validator)
+    {
+        $errorMessages = $validator->errors()->all();
+
+        foreach ($errorMessages as $errorMessage) {
+            flash()->addError($errorMessage);
+        }
     }
 }

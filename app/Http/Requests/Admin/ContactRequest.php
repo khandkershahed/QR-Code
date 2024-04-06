@@ -92,6 +92,9 @@ class ContactRequest extends FormRequest
     protected function recordErrorMessages(Validator $validator)
     {
         $errorMessages = $validator->errors()->all();
-        return redirect()->back()->withErrors($errorMessages)->withInput();
+
+        foreach ($errorMessages as $errorMessage) {
+            flash()->addError($errorMessage);
+        }
     }
 }

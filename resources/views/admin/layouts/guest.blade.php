@@ -52,6 +52,17 @@
     <!--begin::Page Custom Javascript(used by this page)-->
     <script src="{{ asset('admin/assets/js/custom/authentication/sign-in/general.js') }}"></script>
     <!--end::Page Custom Javascript-->
+    <script>
+        document.querySelectorAll('.toggle-password').forEach(function(toggle) {
+            toggle.addEventListener('click', function() {
+                const passwordInput = this.closest('.position-relative').querySelector('input');
+                const isVisible = passwordInput.getAttribute('type') === 'text';
+                passwordInput.setAttribute('type', isVisible ? 'password' : 'text');
+                this.querySelector('.bi-eye').classList.toggle('d-none');
+                this.querySelector('.bi-eye-slash').classList.toggle('d-none');
+            });
+        });
+    </script>
     <!--end::Javascript-->
 </body>
 <!--end::Body-->

@@ -32,9 +32,15 @@
                                     {{ __('Forgot password ?') }}</a>
                             @endif
                         </div>
-                        <x-metronic.input type="password" name="password"
-                            class="form-control form-control-lg form-control-solid" placeholder="Enter your password"
-                            autocomplete="off"></x-metronic.input>
+                        <div class="position-relative mb-3">
+                            <x-metronic.input type="password" name="password"
+                                class="form-control form-control-lg form-control-solid" placeholder="Enter your password"
+                                autocomplete="off"></x-metronic.input>
+                                <span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2 toggle-password" data-kt-password-meter-control="visibility">
+                                    <i class="bi bi-eye-slash fs-2"></i>
+                                    <i class="bi bi-eye fs-2 d-none"></i>
+                                </span>
+                        </div>
                     </div>
                     <div class="fv-row mb-10">
                         <div class="d-flex flex-stack mb-2">
@@ -49,10 +55,10 @@
                     </div>
 
                     <div class="text-center">
-                        <x-metronic.button type="submit" class="primary btn-lg w-100 mb-5">
-                            <span class="indicator-label"> {{ __('Continue') }}</span>
-                        </x-metronic.button>
-                        <div class="text-center text-muted text-uppercase fw-bolder mb-5">or</div>
+                        <button type="submit" class="btn btn-lg btn-primary w-100 mb-5 rounded-3">
+                            <span class="indicator-label">{{ __('Sign In') }}</span>
+                        </button>
+                        {{-- <div class="text-center text-muted text-uppercase fw-bolder mb-5">or</div>
                         <a href="#" class="btn btn-flex flex-center btn-light btn-lg w-100 mb-5">
                             <img alt="Logo" src="{{ asset('admin/assets/media/svg/brand-logos/google-icon.svg') }}"
                                 class="h-20px me-3" />Continue with Google</a>
@@ -61,17 +67,11 @@
                                 class="h-20px me-3" />Continue with Facebook</a>
                         <a href="#" class="btn btn-flex flex-center btn-light btn-lg w-100">
                             <img alt="Logo" src="{{ asset('admin/assets/media/svg/brand-logos/apple-black.svg') }}"
-                                class="h-20px me-3" />Continue with Apple</a>
+                                class="h-20px me-3" />Continue with Apple</a> --}}
                     </div>
                 </form>
             </div>
         </div>
-        <div class="d-flex flex-center flex-column-auto p-10">
-            <div class="d-flex align-items-center fw-bold fs-6">
-                <a href="https://keenthemes.com" class="text-muted text-hover-primary px-2">About</a>
-                <a href="mailto:support@keenthemes.com" class="text-muted text-hover-primary px-2">Contact</a>
-                <a href="https://1.envato.market/EA4JP" class="text-muted text-hover-primary px-2">Contact Us</a>
-            </div>
-        </div>
+
     </div>
 </x-admin-guest-layout>
