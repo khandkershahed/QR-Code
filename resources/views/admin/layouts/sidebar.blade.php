@@ -29,7 +29,7 @@
             data-kt-scroll-offset="0" style="height: 318px;">
             <div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500"
                 id="#kt_aside_menu" data-kt-menu="true" data-kt-menu-expand="false">
-                <div class="menu-item">
+                <div class="menu-item here">
                     <a class="menu-link" href="{{ route('admin.dashboard') }}">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
@@ -49,7 +49,7 @@
                         <span class="menu-title">Dashboard</span>
                     </a>
                 </div>
-                <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
+                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
@@ -71,9 +71,9 @@
                         <span class="menu-title">QR Code</span>
                         <span class="menu-arrow"></span>
                     </span>
-                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                    <div class="menu-sub menu-sub-accordion">
                         <div class="menu-item">
-                            <a class="menu-link active" href="{{ route('user.qr-code.index') }}">
+                            <a class="menu-link" href="{{ route('user.qr-code.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -171,14 +171,15 @@
                         </div>
                     </div>
                 </div>
-                <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
+                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                     class="svg-icon svg-icon-2">
-                                    <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <rect x="3" y="3" width="18" height="18" rx="2"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
                                     <rect x="7" y="7" width="4" height="4" rx="1"
                                         fill="currentColor" />
                                     <rect x="13" y="7" width="4" height="4" rx="1"
@@ -193,9 +194,9 @@
                         <span class="menu-title">Subscption</span>
                         <span class="menu-arrow"></span>
                     </span>
-                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                    <div class="menu-sub menu-sub-accordion">
                         <div class="menu-item">
-                            <a class="menu-link active" href="{{ route('admin.plans.index') }}">
+                            <a class="menu-link" href="{{ route('admin.plans.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -217,8 +218,8 @@
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm002.svg-->
                             <span class="svg-icon svg-icon-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none">
                                     <path
                                         d="M21 10H13V11C13 11.6 12.6 12 12 12C11.4 12 11 11.6 11 11V10H3C2.4 10 2 10.4 2 11V13H22V11C22 10.4 21.6 10 21 10Z"
                                         fill="currentColor" />
@@ -329,7 +330,7 @@
                             </span>
                             <div class="menu-sub menu-sub-accordion">
                                 <div class="menu-item">
-                                    <a class="menu-link" href="{{route('admin.user.index')}}">
+                                    <a class="menu-link" href="{{ route('admin.user.index') }}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -400,7 +401,7 @@
                             </span>
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-title">Admin Management</span>
+                        <span class="menu-title">Seller Management</span>
                         <span class="menu-arrow"></span>
                     </span>
                     <div class="menu-sub menu-sub-accordion">
@@ -409,64 +410,50 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Admins</span>
+                                <span class="menu-title">Seller</span>
                                 <span class="menu-arrow"></span>
                             </span>
                             <div class="menu-sub menu-sub-accordion">
                                 <div class="menu-item">
-                                    <a class="menu-link" href="{{route('admin.user.index')}}">
+                                    <a class="menu-link" href="{{ route('admin.user.index') }}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
-                                        <span class="menu-title">Admins List</span>
+                                        <span class="menu-title">Seller List</span>
                                     </a>
                                 </div>
                                 <div class="menu-item">
-                                    <a class="menu-link" href="{{ route('admin.user.create') }}">
+                                    <a class="menu-link" href="{{ route('admin.user.index') }}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
-                                        <span class="menu-title">Add Admin</span>
+                                        <span class="menu-title">Seller Statistic</span>
                                     </a>
                                 </div>
                             </div>
-                        </div>
-                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                            <span class="menu-link">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Roles</span>
-                                <span class="menu-arrow"></span>
-                            </span>
-                            <div class="menu-sub menu-sub-accordion">
-                                <div class="menu-item">
-                                    <a class="menu-link" href="{{ route('admin.role.index') }}">
-                                        <span class="menu-bullet">
-                                            <span class="bullet bullet-dot"></span>
-                                        </span>
-                                        <span class="menu-title">Roles List</span>
-                                    </a>
-                                </div>
-                                <div class="menu-item">
-                                    <a class="menu-link" href="{{ route('admin.role.create') }}">
-                                        <span class="menu-bullet">
-                                            <span class="bullet bullet-dot"></span>
-                                        </span>
-                                        <span class="menu-title">Add Role</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="menu-item">
-                            <a class="menu-link" href="{{ route('admin.permission.index') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Permissions</span>
-                            </a>
                         </div>
                     </div>
+                </div>
+                <div class="menu-item">
+                    <a class="menu-link" href="{{ route('admin.dashboard') }}">
+                        <span class="menu-icon">
+                            <span class="svg-icon svg-icon-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none">
+                                    <rect x="2" y="2" width="9" height="9" rx="2"
+                                        fill="currentColor">
+                                    </rect>
+                                    <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2"
+                                        fill="currentColor"></rect>
+                                    <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2"
+                                        fill="currentColor"></rect>
+                                    <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2"
+                                        fill="currentColor"></rect>
+                                </svg>
+                            </span>
+                        </span>
+                        <span class="menu-title">Setting</span>
+                    </a>
                 </div>
 
             </div>

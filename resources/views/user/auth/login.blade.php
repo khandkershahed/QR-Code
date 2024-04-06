@@ -48,18 +48,23 @@
 
                             <div class="fv-row mb-8 fv-plugins-icon-container">
                                 <x-input-label class="form-label" for="email" :value="__('Email')" />
-                                <x-text-input id="email"
-                                    class="form-control bg-transparent rounded-2" type="email"
-                                    name="email" :value="old('email')" required autocomplete="username" />
+                                <x-text-input id="email" class="form-control bg-transparent rounded-2"
+                                    type="email" name="email" :value="old('email')" required autocomplete="username" />
                                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
                             </div>
 
                             <div class="fv-row mb-5 fv-plugins-icon-container">
                                 <x-input-label class="form-label" for="password" :value="__('Password')" />
-                                <x-text-input id="password"
-                                    class="form-control bg-transparent rounded-2" type="password"
-                                    name="password" required autocomplete="new-password" />
-                                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                                <div class="input-group">
+                                    <span class="input-group-text " id="toggle_password">
+                                        <i class="fas fa-lock text-success"></i>
+                                        <i class="fas fa-unlock" style="display: none"></i>
+                                    </span>
+                                    <x-text-input id="password" aria-describedby="toggle_password"
+                                        class="form-control bg-transparent password_input" type="password"
+                                        name="password" required autocomplete="new-password" />
+                                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                                </div>
                             </div>
 
                             <div class="d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8">
@@ -72,8 +77,7 @@
                                 </div>
 
                                 @if (Route::has('password.request'))
-                                    <a href="{{ route('password.request') }}"
-                                        class="link-primary">
+                                    <a href="{{ route('password.request') }}" class="link-primary">
                                         {{ __('Forgot your password ?') }}
                                     </a>
                                 @endif
@@ -137,4 +141,32 @@
             </div>
         </div>
     </div>
+    <!-- Add jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#toggle_password').click(function() {
+                var input = $("#password");
+                var icon1 = $(this).find('.fa-lock');
+                var icon2 = $(this).find('.fa-unlock');
+
+                if (input.attr('type') === 'password') {
+                    input.attr('type', 'text');
+                    icon1.hide().removeClass('text-danger').addClass('text-success');
+                    icon2.show().removeClass('text-success').addClass('text-danger');
+                } else {
+                    input.attr('type', 'password');
+                    icon1.show().removeClass('text-success').addClass('text-danger');
+                    icon2.hide().removeClass('text-danger').addClass('text-success');
+                }
+
+                // Reset input type after 3 seconds (3000 milliseconds)
+                setTimeout(function() {
+                    input.attr('type', 'password');
+                    icon1.show().removeClass('text-success').addClass('text-danger');
+                    icon2.hide().removeClass('text-danger').addClass('text-success');
+                }, 3000);
+            });
+        });
+    </script>
 </x-admin-guest-layout>

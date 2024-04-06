@@ -39,6 +39,7 @@ body {
     line-height: 30px;
     font-size: 16px;
     font-family: var(--base-font);
+    /* Root */
     --base-font: "Inter", sans-serif;
     --heading-font: "Work Sans", sans-serif;
     --primary-color: #008fd3;
@@ -46,8 +47,17 @@ body {
     --heading-color: #001726;
     --base-color: #696969;
     --lighter-color: #f1f5ff;
+    --white: white;
     --navyblue-color: #00194c;
     --border-color: rgba(1, 13, 9, 0.1);
+    --home-baner-bg: linear-gradient(
+        241deg,
+        #009fde 2.36%,
+        rgba(255, 255, 255, 0.3) 40.01%,
+        rgba(252, 120, 11, 0.2) 65.07%,
+        rgb(0 152 217) 107.82%
+    );
+    /* Root */
 }
 
 a {
@@ -104,7 +114,7 @@ h6 a {
 .text-white .h5 a,
 .text-white .h6,
 .text-white .h6 a {
-    color: white;
+    color: var(--white);
 }
 
 ul,
@@ -489,7 +499,7 @@ input[type="radio"] {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
-    background-color: #010101;
+    background-color: var(--heading-color);
     background-repeat: no-repeat;
     background-position: center center;
 }
@@ -554,7 +564,7 @@ input[type="radio"] {
 
 .pagination li.active .page-link,
 .pagination li:hover:not(.disabled) .page-link {
-    color: white;
+    color: var(--white);
     background: var(--primary-color);
     border-color: var(--primary-color);
 }
@@ -575,14 +585,14 @@ input[type="radio"] {
     margin: 10px 5px 0;
     width: 40px;
     height: 40px;
-    background: #273557;
+    background: var(--lighter-color);
     line-height: 40px;
     border-radius: 50%;
     text-align: center;
 }
 
 .social-style-one a:hover {
-    color: white;
+    color: var(--white);
     background: var(--primary-color);
 }
 
@@ -613,7 +623,7 @@ input[type="radio"] {
 
 .slider-arrow .slick-arrow:focus,
 .slider-arrow .slick-arrow:hover {
-    color: white;
+    color: var(--white);
     background: var(--primary-color);
     border-color: var(--primary-color);
 }
@@ -684,7 +694,7 @@ input[type="radio"] {
 }
 
 .text-white .slick-dots li.slick-active:after {
-    border-color: white;
+    border-color: var(--white);
 }
 
 /*** Scroll Top style ***/
@@ -799,7 +809,7 @@ input[type="radio"] {
     top: 0;
     left: 0;
     opacity: 0.8;
-    background-color: white;
+    background-color: var(--white);
 }
 
 /* Backgruond Size */
@@ -934,7 +944,7 @@ input[type="radio"] {
 }
 
 .home-three .text-white .subtitle-one {
-    color: white;
+    color: var(--white);
     background: rgba(255, 255, 255, 0.15);
 }
 
@@ -963,7 +973,7 @@ input[type="radio"] {
 }
 
 .home-four .footer-bottom .scroll-top {
-    color: white;
+    color: var(--white);
     background: var(--primary-color);
 }
 
@@ -980,7 +990,7 @@ input[type="radio"] {
 }
 
 .home-five .section-title h4 span {
-    color: white;
+    color: var(--white);
     padding: 0 5px;
     border-radius: 5px;
     background: var(--primary-color);
@@ -993,7 +1003,7 @@ input[type="radio"] {
 }
 
 .home-five .subtitle-one.style-three {
-    color: white;
+    color: var(--white);
     background: var(--primary-color);
 }
 
@@ -1009,7 +1019,7 @@ input[type="radio"] {
 }
 
 .home-six .scroll-top {
-    color: white;
+    color: var(--white);
     border: 1px solid;
     line-height: 38px;
 }
@@ -1073,7 +1083,7 @@ input[type="radio"] {
 }
 
 .home-eight .theme-btn.style-two {
-    color: white;
+    color: var(--white);
     background-image: -webkit-gradient(
         linear,
         right top,
@@ -4344,7 +4354,7 @@ h6,
 /*******************************************************/
 .theme-btn,
 a.theme-btn {
-    color: white;
+    color: var(--white);
     cursor: pointer;
     -webkit-transition: 0.3s;
     -o-transition: 0.3s;
@@ -4501,7 +4511,7 @@ a.theme-btn.style-four {
 
 .theme-btn.style-four:hover,
 a.theme-btn.style-four:hover {
-    color: white;
+    color: var(--white);
 }
 
 /* Details Btn */
@@ -4520,7 +4530,7 @@ a.theme-btn.style-four:hover {
 }
 
 .details-btn:hover {
-    color: white;
+    color: var(--white);
     background: var(--heading-color);
 }
 
@@ -4557,7 +4567,7 @@ a.theme-btn.style-four:hover {
 
 /* Read More Two */
 .read-more-two {
-    color: white;
+    color: var(--white);
     font-weight: 500;
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -4794,7 +4804,7 @@ a.theme-btn.style-four:hover {
 .iconic-box:hover .read-more,
 .iconic-box:hover .content p,
 .iconic-box:hover .content h4 a {
-    color: white;
+    color: var(--white);
 }
 
 .iconic-box:hover .icon:after {
@@ -4817,7 +4827,7 @@ a.theme-btn.style-four:hover {
 }
 
 .iconic-box.style-two .icon {
-    color: white;
+    color: var(--white);
 }
 
 .iconic-box.style-two .icon:after {
@@ -4829,7 +4839,7 @@ a.theme-btn.style-four:hover {
 }
 
 .iconic-box.style-two h5 a {
-    color: white;
+    color: var(--white);
 }
 
 .iconic-box.style-two p {
@@ -4856,7 +4866,7 @@ a.theme-btn.style-four:hover {
 }
 
 .iconic-box.style-two:hover .read-more {
-    color: white;
+    color: var(--white);
 }
 
 .iconic-box.style-three {
@@ -4886,7 +4896,7 @@ a.theme-btn.style-four:hover {
 }
 
 .iconic-box.style-three h5 a {
-    color: white;
+    color: var(--white);
 }
 
 .iconic-box.style-three p {
@@ -4948,7 +4958,7 @@ a.theme-btn.style-four:hover {
 }
 
 .iconic-box.style-four:hover .icon {
-    color: white;
+    color: var(--white);
 }
 
 .iconic-box.style-four:hover .icon:after {
@@ -4989,7 +4999,7 @@ a.theme-btn.style-four:hover {
 
 .iconic-box.style-five:hover {
     background: white;
-    border-color: white;
+    border-color: var(--white);
     -webkit-box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.1);
     box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.1);
 }
@@ -5034,7 +5044,7 @@ a.theme-btn.style-four:hover {
 
 .iconic-box.style-six:hover {
     background: white;
-    border-color: white;
+    border-color: var(--white);
     -webkit-box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.1);
     box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.1);
 }
@@ -5074,7 +5084,7 @@ a.theme-btn.style-four:hover {
 .iconic-box.style-seven .icon {
     width: 60px;
     height: 60px;
-    color: white;
+    color: var(--white);
     font-size: 30px;
     line-height: 60px;
     text-align: center;
@@ -5145,7 +5155,7 @@ a.theme-btn.style-four:hover {
 }
 
 .iconic-box.style-seven:hover h5 a {
-    color: white;
+    color: var(--white);
 }
 
 .iconic-box.style-seven:hover .bg {
@@ -5205,11 +5215,11 @@ a.theme-btn.style-four:hover {
 }
 
 .iconic-box.style-eight:hover .icon {
-    color: white;
+    color: var(--white);
 }
 
 .iconic-box.style-eight:hover h5 a {
-    color: white;
+    color: var(--white);
 }
 
 .iconic-box.style-nine {
@@ -5255,7 +5265,7 @@ a.theme-btn.style-four:hover {
 .iconic-box.style-nine.text-white .icon {
     width: auto;
     height: auto;
-    color: white;
+    color: var(--white);
     font-size: 30px;
     text-align: left;
     margin-bottom: 16px;
@@ -5311,7 +5321,7 @@ a.theme-btn.style-four:hover {
 }
 
 .iconic-box.style-ten:hover .icon {
-    border-color: white;
+    border-color: var(--white);
     background: var(--primary-color);
 }
 
@@ -5463,7 +5473,7 @@ a.theme-btn.style-four:hover {
 .fancy-box:hover .content h5 a,
 .fancy-box:hover .content .read-more,
 .fancy-box:hover .content .icon-title > i {
-    color: white;
+    color: var(--white);
 }
 
 .fancy-box:hover .content .bg {
@@ -5503,7 +5513,7 @@ a.theme-btn.style-four:hover {
 
 .fancy-box.style-two:hover .content h6 a,
 .fancy-box.style-two:hover .content .category {
-    color: white;
+    color: var(--white);
 }
 
 .fancy-box.style-two:hover .content h6 a {
@@ -5566,7 +5576,7 @@ a.theme-btn.style-four:hover {
 }
 
 .icon-list.style-two li i {
-    color: white;
+    color: var(--white);
     font-size: 10px;
     width: 20px;
     height: 20px;
@@ -5639,7 +5649,7 @@ a.theme-btn.style-four:hover {
 }
 
 .counter-item.style-two .count-text {
-    color: white;
+    color: var(--white);
 }
 
 .counter-item.style-two hr {
@@ -5733,7 +5743,7 @@ a.theme-btn.style-four:hover {
 }
 
 .counter-item.style-four .counter-title {
-    color: white;
+    color: var(--white);
     font-size: 18px;
     font-family: var(--heading-font);
 }
@@ -5884,7 +5894,7 @@ a.theme-btn.style-four:hover {
 }
 
 .counter-item-two:hover .icon {
-    color: white;
+    color: var(--white);
 }
 
 .counter-item-two:hover .icon:after {
@@ -5936,7 +5946,7 @@ a.theme-btn.style-four:hover {
 }
 
 .counter-timeline-item .icon {
-    color: white;
+    color: var(--white);
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -5987,7 +5997,7 @@ a.theme-btn.style-four:hover {
 }
 
 .counter-timeline-item .count-text {
-    color: white;
+    color: var(--white);
     display: block;
     font-size: 48px;
     font-weight: 600;
@@ -6002,7 +6012,7 @@ a.theme-btn.style-four:hover {
 }
 
 .counter-timeline-item .counter-title {
-    color: white;
+    color: var(--white);
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -6073,7 +6083,7 @@ a.theme-btn.style-four:hover {
 }
 
 .course-nav li.active {
-    color: white;
+    color: var(--white);
 }
 
 .course-nav li.active:before {
@@ -6358,7 +6368,7 @@ a.theme-btn.style-four:hover {
     -webkit-box-flex: 0;
     -ms-flex: none;
     flex: none;
-    color: white;
+    color: var(--white);
     font-size: 20px;
     margin-right: 20px;
     width: 50px;
@@ -6427,7 +6437,7 @@ a.theme-btn.style-four:hover {
 .testimonial-item .testi-footer .ratting i {
     width: 26px;
     height: 26px;
-    color: white;
+    color: var(--white);
     font-size: 13px;
     margin: 0 5px 0 0;
     line-height: 26px;
@@ -6640,7 +6650,7 @@ a.theme-btn.style-four:hover {
 .testimonial-item-two .author .ratting i {
     width: 20px;
     height: 20px;
-    color: white;
+    color: var(--white);
     font-size: 10px;
     margin: 0 8px 0 0;
     line-height: 20px;
@@ -6764,7 +6774,7 @@ a.theme-btn.style-four:hover {
 .testimonial-item-three .ratting i {
     width: 26px;
     height: 26px;
-    color: white;
+    color: var(--white);
     font-size: 13px;
     margin: 0 5px 0 0;
     line-height: 26px;
@@ -6878,7 +6888,7 @@ a.theme-btn.style-four:hover {
 
 .testi-slider-six .slick-arrow:focus,
 .testi-slider-six .slick-arrow:hover {
-    color: white;
+    color: var(--white);
     background: var(--secondary-color);
 }
 
@@ -6992,7 +7002,7 @@ a.theme-btn.style-four:hover {
 }
 
 .testimonials-arrows .slick-arrow:hover {
-    color: white;
+    color: var(--white);
     background: var(--primary-color);
 }
 
@@ -7475,7 +7485,7 @@ a.theme-btn.style-four:hover {
 }
 
 .blog-item.style-two .image .date {
-    color: white;
+    color: var(--white);
     background: var(--primary-color);
 }
 
@@ -8010,7 +8020,7 @@ a.theme-btn.style-four:hover {
 }
 
 .advanced-tab.style-four li button.active {
-    color: white;
+    color: var(--white);
     text-decoration: underline;
     border-color: var(--primary-color);
     -webkit-text-decoration-color: #9fa4ad;
@@ -8099,7 +8109,7 @@ a.theme-btn.style-four:hover {
     -webkit-box-flex: 0;
     -ms-flex: none;
     flex: none;
-    color: white;
+    color: var(--white);
     font-weight: 600;
     padding: 9px 24px;
     border-radius: 12px;
@@ -8253,7 +8263,7 @@ a.theme-btn.style-four:hover {
 }
 
 .team-member .image .social-media a {
-    color: white;
+    color: var(--white);
     margin: 0 8px;
     font-size: 14px;
 }
@@ -8396,7 +8406,7 @@ a.theme-btn.style-four:hover {
 
 .pricing-item.style-two .popular {
     z-index: -2;
-    color: white;
+    color: var(--white);
     position: absolute;
     left: 0;
     top: 2px;
@@ -8494,7 +8504,7 @@ a.theme-btn.style-four:hover {
 }
 
 .pricing-item.style-two:hover:before {
-    border-color: white;
+    border-color: var(--white);
     -webkit-box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.1);
     box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.1);
 }
@@ -8504,7 +8514,7 @@ a.theme-btn.style-four:hover {
 }
 
 .pricing-item.style-two:hover .title {
-    color: white;
+    color: var(--white);
     background: var(--primary-color);
 }
 
@@ -8513,7 +8523,7 @@ a.theme-btn.style-four:hover {
 }
 
 .pricing-item.style-two:hover .theme-btn {
-    color: white;
+    color: var(--white);
     background-position: 0 0;
     border-color: var(--heading-color);
 }
@@ -8550,7 +8560,7 @@ a.theme-btn.style-four:hover {
 .pricing-item.style-three:hover .title,
 .pricing-item.style-three:hover .list li,
 .pricing-item.style-three:hover .price .next {
-    color: white;
+    color: var(--white);
 }
 
 .pricing-item.style-three:hover .list li.hide {
@@ -8562,7 +8572,7 @@ a.theme-btn.style-four:hover {
 }
 
 .pricing-item.style-three:hover .theme-btn {
-    border-color: white;
+    border-color: var(--white);
 }
 
 .pricing-item.style-four {
@@ -8686,7 +8696,7 @@ a.theme-btn.style-four:hover {
 .pricing-item.style-four:hover .title,
 .pricing-item.style-four:hover .icon-list li,
 .pricing-item.style-four:hover .price .next {
-    color: white;
+    color: var(--white);
 }
 
 .pricing-item.style-four:hover hr {
@@ -8695,7 +8705,7 @@ a.theme-btn.style-four:hover {
 }
 
 .pricing-item.style-four:hover .theme-btn {
-    color: white;
+    color: var(--white);
     background-position: 0 0;
     border-color: var(--heading-color);
 }
@@ -8727,7 +8737,7 @@ a.theme-btn.style-four:hover {
 }
 
 .pricing-item.style-five .title-price .title {
-    color: white;
+    color: var(--white);
     padding: 3px 10px;
     border-radius: 5px;
     margin-bottom: 22px;
@@ -8757,7 +8767,7 @@ a.theme-btn.style-four:hover {
 }
 
 .pricing-item.style-five:hover {
-    border-color: white;
+    border-color: var(--white);
     -webkit-box-shadow: 0px 10px 60px rgba(141, 141, 141, 0.1);
     box-shadow: 0px 10px 60px rgba(141, 141, 141, 0.1);
 }
@@ -8783,7 +8793,7 @@ a.theme-btn.style-four:hover {
 }
 
 .pricing-item.style-six h5 {
-    color: white;
+    color: var(--white);
     margin-bottom: 10px;
 }
 
@@ -8797,7 +8807,7 @@ a.theme-btn.style-four:hover {
 }
 
 .pricing-item.style-six .icon-list li {
-    color: white;
+    color: var(--white);
     font-weight: 400;
 }
 
@@ -8814,7 +8824,7 @@ a.theme-btn.style-four:hover {
 .pricing-item.bgc-navyblue .next,
 .pricing-item.bgc-navyblue .price,
 .pricing-item.bgc-navyblue .list li {
-    color: white;
+    color: var(--white);
 }
 
 .pricing-item.bgc-primary .list li:before,
@@ -9154,7 +9164,7 @@ a.theme-btn.style-four:hover {
 }
 
 .project-nav li.active {
-    color: white;
+    color: var(--white);
     background: var(--primary-color);
 }
 
@@ -9259,7 +9269,7 @@ a.theme-btn.style-four:hover {
 }
 
 .project-item.style-two:hover .details-btn {
-    color: white;
+    color: var(--white);
     background: var(--heading-color);
 }
 
@@ -9840,7 +9850,7 @@ a.theme-btn.style-four:hover {
 }
 
 .numbered-box.style-two:hover .number {
-    color: white;
+    color: var(--white);
 }
 
 .numbered-box.style-three {
@@ -9894,7 +9904,7 @@ a.theme-btn.style-four:hover {
     -webkit-box-flex: 0;
     -ms-flex: none;
     flex: none;
-    color: white;
+    color: var(--white);
     font-size: 12px;
     margin-top: 7px;
     margin-right: 25px;
@@ -10350,7 +10360,7 @@ a.theme-btn.style-four:hover {
 }
 
 .marquee-iconic-box .icon {
-    color: white;
+    color: var(--white);
     font-size: 35px;
     margin-right: 20px;
     width: 60px;
@@ -10938,7 +10948,7 @@ a.theme-btn.style-four:hover {
 }
 
 .blockquote-three.text-white .text {
-    color: white;
+    color: var(--white);
 }
 
 /*******************************************************/
@@ -11386,7 +11396,7 @@ a.theme-btn.style-four:hover {
         -2px 0px 5px 1px rgba(0, 0, 0, 0.05);
 }
 
-.menu_icons{
+.menu_icons {
     padding: 10px 10px;
     background: #eee;
     border-radius: 100%;
@@ -11485,7 +11495,7 @@ a.theme-btn.style-four:hover {
 }
 
 .menu-btns button {
-    color: white;
+    color: var(--white);
     cursor: pointer;
     margin-left: 33px;
     background-color: transparent;
@@ -11529,12 +11539,12 @@ a.theme-btn.style-four:hover {
 @media only screen and (min-width: 992px) {
     .main-header.header-white .navbar-collapse > ul > li > a,
     .main-header.header-white .navbar-collapse > ul > li > .dropdown-btn {
-        color: white;
+        color: var(--white);
     }
 }
 
 .main-header.header-white .nav-search > button {
-    color: white;
+    color: var(--white);
 }
 
 .main-header.header-white .navbar-toggle .icon-bar {
@@ -11542,7 +11552,7 @@ a.theme-btn.style-four:hover {
 }
 
 .main-header.header-white .light-btn {
-    color: white;
+    color: var(--white);
     text-decoration: underline;
 }
 
@@ -11777,7 +11787,7 @@ a.theme-btn.style-four:hover {
     font-size: 16px;
     padding: 10px 15px;
     margin-bottom: 20px;
-    border-color: white;
+    border-color: var(--white);
 }
 
 .form-back-drop {
@@ -11846,7 +11856,7 @@ a.theme-btn.style-four:hover {
 
 .header-top .top-left > ul > li a:hover,
 .header-top .top-right > ul > li a:hover {
-    color: white;
+    color: var(--white);
 }
 
 .header-top .top-left > ul .nice-select,
@@ -11860,7 +11870,7 @@ a.theme-btn.style-four:hover {
 
 .header-top .top-left > ul .nice-select .current,
 .header-top .top-right > ul .nice-select .current {
-    color: white;
+    color: var(--white);
 }
 
 .header-top .top-left > ul .nice-select:after,
@@ -11870,7 +11880,7 @@ a.theme-btn.style-four:hover {
     height: 8px;
     top: 50%;
     margin-top: -6px;
-    border-color: white;
+    border-color: var(--white);
 }
 
 .header-top .top-left > ul .nice-select .list,
@@ -11889,7 +11899,7 @@ a.theme-btn.style-four:hover {
 }
 
 .header-top .top-left > ul > li a {
-    color: white;
+    color: var(--white);
     margin-left: 5px;
     text-decoration: underline;
 }
@@ -11901,7 +11911,7 @@ a.theme-btn.style-four:hover {
 }
 
 .header-top .top-middle {
-    color: white;
+    color: var(--white);
     font-weight: 600;
 }
 
@@ -11912,7 +11922,7 @@ a.theme-btn.style-four:hover {
 }
 
 .header-top .top-right .social-icons a i {
-    color: white;
+    color: var(--white);
 }
 
 .header-top .top-right .social-icons a:not(:last-child) {
@@ -11920,7 +11930,7 @@ a.theme-btn.style-four:hover {
 }
 
 .bgc-primary .top-left ul li i {
-    color: white;
+    color: var(--white);
     margin-right: 0;
     margin-left: 10px;
     -webkit-transform: rotate(-45deg);
@@ -11935,7 +11945,7 @@ a.theme-btn.style-four:hover {
 
 /* Sidebar Menu */
 .sidebar-menu li {
-    color: white;
+    color: var(--white);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -11944,7 +11954,7 @@ a.theme-btn.style-four:hover {
 }
 
 .sidebar-menu li a {
-    color: white;
+    color: var(--white);
     font-size: 18px;
     font-weight: 500;
     padding: 6px 20px;
@@ -12119,7 +12129,7 @@ a.theme-btn.style-four:hover {
 }
 
 .hero-content.style-four .icon-list li {
-    color: white;
+    color: var(--white);
     margin-left: 28px;
     margin-right: 28px;
 }
@@ -12206,7 +12216,7 @@ a.theme-btn.style-four:hover {
 .clients-reviews .reviews .ratting i {
     width: 26px;
     height: 26px;
-    color: white;
+    color: var(--white);
     font-size: 12px;
     margin: 0 5px 0 0;
     line-height: 26px;
@@ -12570,27 +12580,9 @@ a.theme-btn.style-four:hover {
     overflow: hidden;
     width: 100%;
     height: calc(100% + 200px);
-    background: -webkit-linear-gradient(
-        209deg,
-        #8f00ff 2.36%,
-        rgba(255, 255, 255, 0.3) 40.01%,
-        rgba(252, 120, 11, 0.2) 65.07%,
-        rgba(59, 11, 252, 0.8) 107.82%
-    );
-    background: -o-linear-gradient(
-        209deg,
-        #8f00ff 2.36%,
-        rgba(255, 255, 255, 0.3) 40.01%,
-        rgba(252, 120, 11, 0.2) 65.07%,
-        rgba(59, 11, 252, 0.8) 107.82%
-    );
-    background: linear-gradient(
-        241deg,
-        #009fde 2.36%,
-        rgba(255, 255, 255, 0.3) 40.01%,
-        rgba(252, 120, 11, 0.2) 65.07%,
-        rgb(0 152 217) 107.82%
-    );
+    background: var(--home-baner-bg);
+    background: var(--home-baner-bg);
+    background: var(--home-baner-bg);
 }
 
 .hero-nine-shapes:after {
@@ -12825,7 +12817,7 @@ a.theme-btn.style-four:hover {
 }
 
 .banner-inner .blog-meta li a {
-    color: white;
+    color: var(--white);
 }
 
 .breadcrumb {
@@ -12856,7 +12848,7 @@ a.theme-btn.style-four:hover {
 
 .breadcrumb .breadcrumb-item {
     padding: 0;
-    color: white;
+    color: var(--white);
     font-weight: 400;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -12870,7 +12862,7 @@ a.theme-btn.style-four:hover {
 }
 
 .breadcrumb .breadcrumb-item a {
-    color: white;
+    color: var(--white);
 }
 
 .breadcrumb .breadcrumb-item.active {
@@ -12885,7 +12877,7 @@ a.theme-btn.style-four:hover {
     -webkit-box-flex: 0;
     -ms-flex: none;
     flex: none;
-    color: white;
+    color: var(--white);
     content: "\f105";
     font-family: "Font Awesome 5 Pro";
 }
@@ -13031,7 +13023,7 @@ a.theme-btn.style-four:hover {
 }
 
 .management-bottom .check-list-item.one i {
-    color: white;
+    color: var(--white);
     background: var(--heading-color);
 }
 
@@ -13070,7 +13062,7 @@ a.theme-btn.style-four:hover {
 }
 
 .management-bottom .check-list-item.three i {
-    color: white;
+    color: var(--white);
     background: #0095ff;
 }
 
@@ -13155,7 +13147,7 @@ a.theme-btn.style-four:hover {
 }
 
 .about-four-content .clients-reviews .clients .text {
-    color: white;
+    color: var(--white);
     font-size: 12px;
     font-weight: 600;
     margin-left: -15px;
@@ -13257,7 +13249,7 @@ a.theme-btn.style-four:hover {
 }
 
 .ai-content .theme-btn.style-three:hover {
-    color: white;
+    color: var(--white);
 }
 
 /* Home Seven */
@@ -14662,7 +14654,7 @@ a.theme-btn.style-four:hover {
 }
 
 .tag-coulds a:hover {
-    color: white;
+    color: var(--white);
     background: var(--primary-color);
     border-color: var(--primary-color);
 }
@@ -14684,14 +14676,14 @@ a.theme-btn.style-four:hover {
 }
 
 .widget-cta h3 {
-    color: white;
+    color: var(--white);
     max-width: 195px;
     margin-bottom: 20px;
     letter-spacing: -0.9px;
 }
 
 .widget-cta h5 {
-    color: white;
+    color: var(--white);
     max-width: 185px;
     margin-bottom: 20px;
 }
@@ -14856,7 +14848,7 @@ a.theme-btn.style-four:hover {
 }
 
 .footer-title {
-    color: white;
+    color: var(--white);
     font-size: 18px;
     margin-bottom: 22px;
 }
@@ -14871,7 +14863,7 @@ a.theme-btn.style-four:hover {
 }
 
 .widget-links ul li a:hover {
-    color: white;
+    color: var(--white);
 }
 
 .widget-links ul li:not(:last-child) {
@@ -14889,7 +14881,7 @@ a.theme-btn.style-four:hover {
     -ms-flex: none;
     flex: none;
     width: 20px;
-    color: white;
+    color: var(--white);
     margin-top: 10px;
     margin-right: 10px;
 }
@@ -14899,7 +14891,7 @@ a.theme-btn.style-four:hover {
 }
 
 .widget-contact ul li a:hover {
-    color: white;
+    color: var(--white);
 }
 
 .widget-contact ul li:not(:last-child) {
@@ -14989,7 +14981,7 @@ a.theme-btn.style-four:hover {
 }
 
 .footer-bottom .copyright-text a {
-    color: white;
+    color: var(--white);
 }
 
 .footer-bottom .footer-bottom-menu ul {
@@ -15019,7 +15011,7 @@ a.theme-btn.style-four:hover {
 }
 
 .footer-bottom .footer-bottom-menu ul li a:hover {
-    color: white;
+    color: var(--white);
 }
 
 .footer-bottom .scroll-top {
@@ -15040,11 +15032,11 @@ a.theme-btn.style-four:hover {
 }
 
 .screen {
-    background: linear-gradient(90deg, #5D54A4, #7C78B8);
+    background: linear-gradient(90deg, #5d54a4, #7c78b8);
     position: relative;
     height: 600px;
     width: auto;
-    box-shadow: 0px 0px 24px #5C5696;
+    box-shadow: 0px 0px 24px #5c5696;
 }
 
 .screen__content {
@@ -15072,7 +15064,7 @@ a.theme-btn.style-four:hover {
 .screen__background__shape1 {
     height: 520px;
     width: 520px;
-    background: #FFF;
+    background: #fff;
     top: -50px;
     right: 120px;
     border-radius: 0 72px 0 0;
@@ -15081,7 +15073,7 @@ a.theme-btn.style-four:hover {
 .screen__background__shape2 {
     height: 220px;
     width: 220px;
-    background: #6C63AC;
+    background: #6c63ac;
     top: -172px;
     right: 0;
     border-radius: 32px;
@@ -15090,7 +15082,7 @@ a.theme-btn.style-four:hover {
 .screen__background__shape3 {
     height: 540px;
     width: 190px;
-    background: linear-gradient(270deg, #5D54A4, #6A679E);
+    background: linear-gradient(270deg, #5d54a4, #6a679e);
     top: -24px;
     right: 0;
     border-radius: 32px;
@@ -15099,7 +15091,7 @@ a.theme-btn.style-four:hover {
 .screen__background__shape4 {
     height: 400px;
     width: 200px;
-    background: #7E7BB9;
+    background: #7e7bb9;
     top: 420px;
     right: 50px;
     border-radius: 60px;
@@ -15119,26 +15111,26 @@ a.theme-btn.style-four:hover {
 .login__icon {
     position: absolute;
     top: 37px;
-    color: #7875B5;
+    color: #7875b5;
     margin-left: 6px;
 }
 
 .login__input {
     border: none;
-    border-bottom: 2px solid #D1D1D4;
+    border-bottom: 2px solid #d1d1d4;
     background: none;
     padding: 10px;
     padding-left: 24px;
     font-weight: 700;
     width: 100%;
-    transition: .2s;
+    transition: 0.2s;
 }
 
 .login__input:active,
 .login__input:focus,
 .login__input:hover {
     outline: none;
-    border-bottom-color: #6A679E;
+    border-bottom-color: #6a679e;
 }
 
 .login__submit {
@@ -15147,29 +15139,29 @@ a.theme-btn.style-four:hover {
     margin-top: 30px;
     padding: 16px 20px;
     border-radius: 26px;
-    border: 1px solid #D4D3E8;
+    border: 1px solid #d4d3e8;
     text-transform: uppercase;
     font-weight: 700;
     display: flex;
     align-items: center;
     width: 100%;
-    color: #4C489D;
-    box-shadow: 0px 2px 2px #5C5696;
+    color: #4c489d;
+    box-shadow: 0px 2px 2px #5c5696;
     cursor: pointer;
-    transition: .2s;
+    transition: 0.2s;
 }
 
 .login__submit:active,
 .login__submit:focus,
 .login__submit:hover {
-    border-color: #6A679E;
+    border-color: #6a679e;
     outline: none;
 }
 
 .button__icon {
     font-size: 24px;
     margin-left: auto;
-    color: #7875B5;
+    color: #7875b5;
 }
 
 .social-login {
@@ -15192,7 +15184,7 @@ a.theme-btn.style-four:hover {
     padding: 20px 10px;
     color: #fff;
     text-decoration: none;
-    text-shadow: 0px 0px 8px #7875B5;
+    text-shadow: 0px 0px 8px #7875b5;
 }
 
 .social-login__icon:hover {
@@ -15257,7 +15249,7 @@ a.theme-btn.style-four:hover {
 }
 
 .main-footer.footer-two .footer-bottom {
-    color: white;
+    color: var(--white);
     border-top: none;
 }
 
@@ -15266,7 +15258,7 @@ a.theme-btn.style-four:hover {
 }
 
 .main-footer.footer-two .footer-bottom .footer-bottom-menu a {
-    color: white;
+    color: var(--white);
 }
 
 .main-footer.footer-two .footer-bottom .footer-bottom-menu a:hover {
@@ -15471,7 +15463,7 @@ a.theme-btn.style-four:hover {
 
 /* Footer Four */
 .main-footer.footer-four .widget-newsletter h3 {
-    color: white;
+    color: var(--white);
 }
 
 @media only screen and (max-width: 767px) {

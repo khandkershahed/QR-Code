@@ -56,9 +56,16 @@
                                 <div class="mb-1">
                                     <div class="position-relative mb-3">
                                         <x-input-label class="form-label" for="password" :value="__('Password')" />
-                                        <x-text-input id="password" class="form-control bg-transparent password_input"
-                                            type="password" name="password" required autocomplete="new-password" />
-                                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                                        <div class="input-group">
+                                            <span class="input-group-text" id="toggle_password">
+                                                <i class="fas fa-lock text-success"></i>
+                                                <i class="fas fa-unlock" style="display: none"></i>
+                                            </span>
+                                            <x-text-input id="password" aria-describedby="toggle_password"
+                                                class="form-control bg-transparent password_input" type="password"
+                                                name="password" required autocomplete="new-password" />
+                                            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                                        </div>
                                     </div>
 
                                     <div class="d-flex align-items-center mb-3"
@@ -81,13 +88,21 @@
                                 </div>
                             </div>
                             <div class="fv-row mb-8 fv-plugins-icon-container">
-                                <x-input-label class="form-label" for="password_confirmation" :value="__('Confirm Password')" />
-                                <x-text-input id="password_confirmation"
-                                    class="form-control bg-transparent password_confirmation" type="password"
-                                    name="password_confirmation" required autocomplete="new-password" />
-                                <div id="password-confirmation-message"
-                                    class="password-confirmation-message"></div>
+                                <x-input-label class="form-label" for="password_confirmation" :value="__('Confirm Password')" /> <br>
+
+                                <div class="input-group ">
+                                    <span class="input-group-text" id="toggle_confirm_password">
+                                        <i class="fas fa-lock text-success"></i>
+                                        <i class="fas fa-unlock" style="display: none"></i>
+                                    </span>
+                                    <x-text-input id="password_confirmation" aria-describedby="toggle_confirm_password"
+                                        class="form-control bg-transparent password_confirmation flex-column"
+                                        type="password" name="password_confirmation" required
+                                        autocomplete="new-password" />
+                                </div>
+                                <div id="password-confirmation-message" class="password-confirmation-message"></div>
                                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+
                             </div>
                             <div class="fv-row mb-8 fv-plugins-icon-container">
                                 <label class="form-check form-check-inline">
@@ -113,7 +128,7 @@
                             </div>
                             <div class="text-gray-500 text-center fw-semibold fs-6">
                                 Already have an Account?
-                                <a href="javascript:void()" type="submit" class="link-primary fw-semibold">
+                                <a href="{{ route('login') }}" type="submit" class="link-primary fw-semibold">
                                     Sign in
                                 </a>
                             </div>
@@ -156,21 +171,73 @@
 
     <script>
         document.querySelectorAll('.password_confirmation').forEach(function(element) {
-        element.addEventListener('keyup', function() {
-            var password = document.querySelector('.password_input').value;
-            var passwordConfirmation = this.value;
-            var messageElement = document.querySelector('.password-confirmation-message');
+            element.addEventListener('keyup', function() {
+                var password = document.querySelector('.password_input').value;
+                var passwordConfirmation = this.value;
+                var messageElement = document.querySelector('.password-confirmation-message');
 
-            if (password === passwordConfirmation) {
-                messageElement.textContent = 'Password confirmed';
-                messageElement.classList.remove('text-danger');
-                messageElement.classList.add('text-success');
-            } else {
-                messageElement.textContent = 'Passwords do not match';
-                messageElement.classList.remove('text-success');
-                messageElement.classList.add('text-danger');
-            }
+                if (password === passwordConfirmation) {
+                    messageElement.textContent = 'Password confirmed';
+                    messageElement.classList.remove('text-danger');
+                    messageElement.classList.add('text-success');
+                } else {
+                    messageElement.textContent = 'Passwords do not match';
+                    messageElement.classList.remove('text-success');
+                    messageElement.classList.add('text-danger');
+                }
+            });
         });
-    });
+    </script>
+    <!-- Add jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#toggle_confirm_password').click(function() {
+                var input = $("#password_confirmation");
+                var icon1 = $(this).find('.fa-lock');
+                var icon2 = $(this).find('.fa-unlock');
+
+                if (input.attr('type') === 'password') {
+                    input.attr('type', 'text');
+                    icon1.hide().removeClass('text-danger').addClass('text-success');
+                    icon2.show().removeClass('text-success').addClass('text-danger');
+                } else {
+                    input.attr('type', 'password');
+                    icon1.show().removeClass('text-success').addClass('text-danger');
+                    icon2.hide().removeClass('text-danger').addClass('text-success');
+                }
+
+                // Reset input type after 3 seconds (3000 milliseconds)
+                setTimeout(function() {
+                    input.attr('type', 'password');
+                    icon1.show().removeClass('text-success').addClass('text-danger');
+                    icon2.hide().removeClass('text-danger').addClass('text-success');
+                }, 3000);
+            });
+
+            $('#toggle_password').click(function() {
+                var input = $("#password");
+                var icon1 = $(this).find('.fa-lock');
+                var icon2 = $(this).find('.fa-unlock');
+
+                if (input.attr('type') === 'password') {
+                    input.attr('type', 'text');
+                    icon1.hide().removeClass('text-danger').addClass('text-success');
+                    icon2.show().removeClass('text-success').addClass('text-danger');
+                } else {
+                    input.attr('type', 'password');
+                    icon1.show().removeClass('text-success').addClass('text-danger');
+                    icon2.hide().removeClass('text-danger').addClass('text-success');
+                }
+
+                // Reset input type after 3 seconds (3000 milliseconds)
+                setTimeout(function() {
+                    input.attr('type', 'password');
+                    icon1.show().removeClass('text-success').addClass('text-danger');
+                    icon2.hide().removeClass('text-danger').addClass('text-success');
+                }, 3000);
+            });
+        });
     </script>
 </x-admin-guest-layout>
