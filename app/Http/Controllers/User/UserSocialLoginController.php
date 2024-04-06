@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\UserRegistration;
 use App\Providers\RouteServiceProvider;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -39,7 +40,7 @@ class UserSocialLoginController extends Controller
                     'google_id'=> $user->id,
                     'password' => encrypt('123456dummy')
                 ]);
-
+                $newUser->notify(new UserRegistration($user->name));
                 Auth::login($newUser);
 
                 return redirect()->intended(RouteServiceProvider::HOME);
@@ -77,7 +78,7 @@ class UserSocialLoginController extends Controller
                     'facebook_id'=> $user->id,
                     'password' => encrypt('Test123456')
                 ]);
-
+$newUser->notify(new UserRegistration($user->name));
                 Auth::login($newUser);
 
                 return redirect()->intended(RouteServiceProvider::HOME);
@@ -119,7 +120,7 @@ class UserSocialLoginController extends Controller
                         'github_id'=> $user->id,
                         'password' => encrypt('123456dummy')
                     ]);
-
+$newUser->notify(new UserRegistration($user->name));
                 Auth::login($newUser);
 
                 return redirect()->intended(RouteServiceProvider::HOME);

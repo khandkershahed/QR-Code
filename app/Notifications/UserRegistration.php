@@ -11,16 +11,18 @@ use Illuminate\Queue\SerializesModels;
 
 class UserRegistration extends Notification
 {
-    use Queueable, SerializesModels;
     public $data;
+    public $logoUrl;
+    public $logoLink;
+
     /**
      * Create a new notification instance.
      */
-    public function __construct(array $data)
+    public function __construct($data)
     {
         $this->data = $data;
+        $this->logoUrl = 'https://i.ibb.co/BNBTVN4/logo.png';
     }
-
 
     /**
      * Get the notification's delivery channels.
@@ -29,14 +31,12 @@ class UserRegistration extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['mail','database'];
+        return ['mail'];
     }
-
-
     public function envelope()
     {
         return new Envelope(
-            subject: 'Reset Password',
+            subject: 'Account successfully created in GO QR.',
         );
     }
     /**
@@ -45,9 +45,12 @@ class UserRegistration extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->from('support@flixzaglobal.com', 'GO QR')
+            ->subject('Account successfully created in GO QR.')
+            ->view('vendor.mail.template.user_registration', [
+                'data' => $this->data,
+                'logoUrl' => $this->logoUrl,
+            ]);
     }
 
     /**
@@ -58,7 +61,10 @@ class UserRegistration extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            //
+            // 'name' => $this->data,
+            // 'link' => route('client-database.index'),
+            // 'message1' => 'New Client is Registered In Ngen It.',
+            // 'message2' => ' Need To Approve.',
         ];
     }
 }
