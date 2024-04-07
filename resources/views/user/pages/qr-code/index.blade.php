@@ -116,7 +116,7 @@
                                                             <!--begin::Menu item-->
                                                             @if (!empty($qr->qr_png))
                                                                 <div class="menu-item px-3">
-                                                                    <a href="{{ $qr->qr_png_url }}" class="menu-link px-3"
+                                                                    <a href="{{ $qr->qr_png_url }}" class="menu-link px-3" download
                                                                         data-kt-docs-table-filter="edit_row">
                                                                         PNG
                                                                     </a>
@@ -127,7 +127,7 @@
                                                             <!--begin::Menu item-->
                                                             @if (!empty($qr->qr_svg))
                                                                 <div class="menu-item px-3">
-                                                                    <a href="{{ $qr->qr_svg_url }}" class="menu-link px-3"
+                                                                    <a href="{{ $qr->qr_svg_url }}" class="menu-link px-3" download
                                                                         data-kt-docs-table-filter="edit_row">
                                                                         SVG
                                                                     </a>
@@ -135,7 +135,7 @@
                                                             @endif
                                                             @if (!empty($qr->qr_eps))
                                                                 <div class="menu-item px-3">
-                                                                    <a href="{{ $qr->qr_eps_url }}" class="menu-link px-3"
+                                                                    <a href="{{ $qr->qr_eps_url }}" class="menu-link px-3" download
                                                                         data-kt-docs-table-filter="edit_row">
                                                                         EPS
                                                                     </a>
@@ -143,7 +143,7 @@
                                                             @endif
                                                             @if (!empty($qr->qr_jpg))
                                                                 <div class="menu-item px-3">
-                                                                    <a href="{{ $qr->qr_jpg_url }}" class="menu-link px-3"
+                                                                    <a href="{{ $qr->qr_jpg_url }}" class="menu-link px-3" download
                                                                         data-kt-docs-table-filter="edit_row">
                                                                         JPG
                                                                     </a>
@@ -151,7 +151,7 @@
                                                             @endif
                                                             @if (!empty($qr->qr_pdf))
                                                                 <div class="menu-item px-3">
-                                                                    <a href="{{ $qr->qr_pdf_url }}" class="menu-link px-3"
+                                                                    <a href="{{ $qr->qr_pdf_url }}" class="menu-link px-3" download
                                                                         data-kt-docs-table-filter="edit_row">
                                                                         PDF
                                                                     </a>
@@ -185,81 +185,83 @@
                                         </thead>
                                         <tbody class="fw-semibold text-gray-600">
                                             @foreach ($qrs as $qr)
-                                                <tr class="odd">
-                                                    <td>
-                                                        {{ $loop->iteration }}
-                                                    </td>
-                                                    <td>
-                                                        <img class="img-fluid w-50px" src="{{ $qr->qr_url }}"
-                                                            alt="">
-                                                    </td>
-                                                    <td data-order="2022-03-10T14:40:00+05:00">
-                                                        {{-- title --}}
-                                                        <span><span class="fw-bold text-black">Title :
-                                                            </span>{{ $qr->qr_name }}</span><br>
-                                                        <span><span class="fw-bold text-black">Link :
-                                                            </span>{{ $qr->qr_url }}</span><br>
-                                                        <span><span class="fw-bold text-black">Org :
-                                                            </span>{{ Auth::user()->name }}</span><br>
-                                                        <span><span class="fw-bold text-black">Created at
-                                                                :</span>:{{ $qr->created_at }}</span><br>
-                                                    </td>
-                                                    <td class="text-start">
-                                                        <button class="btn btn-light-primary">QR Code</button>
-                                                    </td>
-                                                    <td class="text-start">
-                                                        <button class="btn btn-light-primary">94</button>
-                                                    </td>
-                                                    <td>
-                                                        <div class="badge badge-light-success">Active</div>
-                                                    </td>
-                                                    <td class="pe-0 text-end">
-                                                        <a href="#"
-                                                            class="btn btn-light btn-active-light-primary btn-sm"
-                                                            data-kt-menu-trigger="click"
-                                                            data-kt-menu-placement="bottom-end"
-                                                            data-kt-menu-flip="top-end">
-                                                            Actions
-                                                            <span class="svg-icon fs-5 m-0">
-                                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                    width="24px" height="24px" viewBox="0 0 24 24"
-                                                                    version="1.1">
-                                                                    <g stroke="none" stroke-width="1" fill="none"
-                                                                        fill-rule="evenodd">
-                                                                        <polygon points="0 0 24 0 24 24 0 24">
-                                                                        </polygon>
-                                                                        <path
-                                                                            d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z"
-                                                                            fill="currentColor" fill-rule="nonzero"
-                                                                            transform="translate(12.000003, 11.999999) rotate(-180.000000) translate(-12.000003, -11.999999)">
-                                                                        </path>
-                                                                    </g>
-                                                                </svg>
-                                                            </span>
-                                                        </a>
-                                                        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
-                                                            data-kt-menu="true" style="">
-                                                            <!--begin::Menu item-->
-                                                            <div class="menu-item px-3">
-                                                                <a href="#" class="menu-link px-3"
-                                                                    data-kt-docs-table-filter="edit_row">
-                                                                    Edit
-                                                                </a>
-                                                            </div>
-                                                            <!--end::Menu item-->
+                                                @if ($qr->qr_scan_status == 'dynamic')
+                                                    <tr class="odd">
+                                                        <td>
+                                                            {{ $loop->iteration }}
+                                                        </td>
+                                                        <td>
+                                                            <img class="img-fluid w-50px" src="{{ $qr->qr_url }}"
+                                                                alt="">
+                                                        </td>
+                                                        <td data-order="2022-03-10T14:40:00+05:00">
+                                                            {{-- title --}}
+                                                            <span><span class="fw-bold text-black">Title :
+                                                                </span>{{ $qr->qr_name }}</span><br>
+                                                            <span><span class="fw-bold text-black">Link :
+                                                                </span>{{ $qr->qr_url }}</span><br>
+                                                            <span><span class="fw-bold text-black">Org :
+                                                                </span>{{ Auth::user()->name }}</span><br>
+                                                            <span><span class="fw-bold text-black">Created at
+                                                                    :</span>:{{ $qr->created_at }}</span><br>
+                                                        </td>
+                                                        <td class="text-start">
+                                                            <button class="btn btn-light-primary">QR Code</button>
+                                                        </td>
+                                                        <td class="text-start">
+                                                            <button class="btn btn-light-primary">94</button>
+                                                        </td>
+                                                        <td>
+                                                            <div class="badge badge-light-success">Active</div>
+                                                        </td>
+                                                        <td class="pe-0 text-end">
+                                                            <a href="#"
+                                                                class="btn btn-light btn-active-light-primary btn-sm"
+                                                                data-kt-menu-trigger="click"
+                                                                data-kt-menu-placement="bottom-end"
+                                                                data-kt-menu-flip="top-end">
+                                                                Actions
+                                                                <span class="svg-icon fs-5 m-0">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                        width="24px" height="24px" viewBox="0 0 24 24"
+                                                                        version="1.1">
+                                                                        <g stroke="none" stroke-width="1" fill="none"
+                                                                            fill-rule="evenodd">
+                                                                            <polygon points="0 0 24 0 24 24 0 24">
+                                                                            </polygon>
+                                                                            <path
+                                                                                d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z"
+                                                                                fill="currentColor" fill-rule="nonzero"
+                                                                                transform="translate(12.000003, 11.999999) rotate(-180.000000) translate(-12.000003, -11.999999)">
+                                                                            </path>
+                                                                        </g>
+                                                                    </svg>
+                                                                </span>
+                                                            </a>
+                                                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
+                                                                data-kt-menu="true" style="">
+                                                                <!--begin::Menu item-->
+                                                                <div class="menu-item px-3">
+                                                                    <a href="#" class="menu-link px-3"
+                                                                        data-kt-docs-table-filter="edit_row">
+                                                                        Edit
+                                                                    </a>
+                                                                </div>
+                                                                <!--end::Menu item-->
 
-                                                            <!--begin::Menu item-->
-                                                            <div class="menu-item px-3">
-                                                                <a href="#" class="menu-link px-3"
-                                                                    data-kt-docs-table-filter="delete_row">
-                                                                    Delete
-                                                                </a>
+                                                                <!--begin::Menu item-->
+                                                                <div class="menu-item px-3">
+                                                                    <a href="#" class="menu-link px-3"
+                                                                        data-kt-docs-table-filter="delete_row">
+                                                                        Delete
+                                                                    </a>
+                                                                </div>
+                                                                <!--end::Menu item-->
                                                             </div>
-                                                            <!--end::Menu item-->
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                        </td>
+                                                    </tr>
+                                                @endif
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -284,81 +286,83 @@
                                         </thead>
                                         <tbody class="fw-semibold text-gray-600">
                                             @foreach ($qrs as $qr)
-                                                <tr class="odd">
-                                                    <td>
-                                                        {{ $loop->iteration }}
-                                                    </td>
-                                                    <td>
-                                                        <img class="img-fluid w-50px" src="{{ $qr->qr_url }}"
-                                                            alt="">
-                                                    </td>
-                                                    <td data-order="2022-03-10T14:40:00+05:00">
-                                                        {{-- title --}}
-                                                        <span><span class="fw-bold text-black">Title :
-                                                            </span>{{ $qr->qr_name }}</span><br>
-                                                        <span><span class="fw-bold text-black">Link :
-                                                            </span>{{ $qr->qr_url }}</span><br>
-                                                        <span><span class="fw-bold text-black">Org :
-                                                            </span>{{ Auth::user()->name }}</span><br>
-                                                        <span><span class="fw-bold text-black">Created at
-                                                                :</span>:{{ $qr->created_at }}</span><br>
-                                                    </td>
-                                                    <td class="text-start">
-                                                        <button class="btn btn-light-primary">QR Code</button>
-                                                    </td>
-                                                    <td class="text-start">
-                                                        <button class="btn btn-light-primary">94</button>
-                                                    </td>
-                                                    <td>
-                                                        <div class="badge badge-light-success">Active</div>
-                                                    </td>
-                                                    <td class="pe-0 text-end">
-                                                        <a href="#"
-                                                            class="btn btn-light btn-active-light-primary btn-sm"
-                                                            data-kt-menu-trigger="click"
-                                                            data-kt-menu-placement="bottom-end"
-                                                            data-kt-menu-flip="top-end">
-                                                            Actions
-                                                            <span class="svg-icon fs-5 m-0">
-                                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                    width="24px" height="24px" viewBox="0 0 24 24"
-                                                                    version="1.1">
-                                                                    <g stroke="none" stroke-width="1" fill="none"
-                                                                        fill-rule="evenodd">
-                                                                        <polygon points="0 0 24 0 24 24 0 24">
-                                                                        </polygon>
-                                                                        <path
-                                                                            d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z"
-                                                                            fill="currentColor" fill-rule="nonzero"
-                                                                            transform="translate(12.000003, 11.999999) rotate(-180.000000) translate(-12.000003, -11.999999)">
-                                                                        </path>
-                                                                    </g>
-                                                                </svg>
-                                                            </span>
-                                                        </a>
-                                                        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
-                                                            data-kt-menu="true" style="">
-                                                            <!--begin::Menu item-->
-                                                            <div class="menu-item px-3">
-                                                                <a href="#" class="menu-link px-3"
-                                                                    data-kt-docs-table-filter="edit_row">
-                                                                    Edit
-                                                                </a>
-                                                            </div>
-                                                            <!--end::Menu item-->
+                                                @if ($qr->qr_scan_status == 'static')
+                                                    <tr class="odd">
+                                                        <td>
+                                                            {{ $loop->iteration }}
+                                                        </td>
+                                                        <td>
+                                                            <img class="img-fluid w-50px" src="{{ $qr->qr_url }}"
+                                                                alt="">
+                                                        </td>
+                                                        <td data-order="2022-03-10T14:40:00+05:00">
+                                                            {{-- title --}}
+                                                            <span><span class="fw-bold text-black">Title :
+                                                                </span>{{ $qr->qr_name }}</span><br>
+                                                            <span><span class="fw-bold text-black">Link :
+                                                                </span>{{ $qr->qr_url }}</span><br>
+                                                            <span><span class="fw-bold text-black">Org :
+                                                                </span>{{ Auth::user()->name }}</span><br>
+                                                            <span><span class="fw-bold text-black">Created at
+                                                                    :</span>:{{ $qr->created_at }}</span><br>
+                                                        </td>
+                                                        <td class="text-start">
+                                                            <button class="btn btn-light-primary">QR Code</button>
+                                                        </td>
+                                                        <td class="text-start">
+                                                            <button class="btn btn-light-primary">94</button>
+                                                        </td>
+                                                        <td>
+                                                            <div class="badge badge-light-success">Active</div>
+                                                        </td>
+                                                        <td class="pe-0 text-end">
+                                                            <a href="#"
+                                                                class="btn btn-light btn-active-light-primary btn-sm"
+                                                                data-kt-menu-trigger="click"
+                                                                data-kt-menu-placement="bottom-end"
+                                                                data-kt-menu-flip="top-end">
+                                                                Actions
+                                                                <span class="svg-icon fs-5 m-0">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                        width="24px" height="24px" viewBox="0 0 24 24"
+                                                                        version="1.1">
+                                                                        <g stroke="none" stroke-width="1" fill="none"
+                                                                            fill-rule="evenodd">
+                                                                            <polygon points="0 0 24 0 24 24 0 24">
+                                                                            </polygon>
+                                                                            <path
+                                                                                d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z"
+                                                                                fill="currentColor" fill-rule="nonzero"
+                                                                                transform="translate(12.000003, 11.999999) rotate(-180.000000) translate(-12.000003, -11.999999)">
+                                                                            </path>
+                                                                        </g>
+                                                                    </svg>
+                                                                </span>
+                                                            </a>
+                                                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
+                                                                data-kt-menu="true" style="">
+                                                                <!--begin::Menu item-->
+                                                                <div class="menu-item px-3">
+                                                                    <a href="#" class="menu-link px-3"
+                                                                        data-kt-docs-table-filter="edit_row">
+                                                                        Edit
+                                                                    </a>
+                                                                </div>
+                                                                <!--end::Menu item-->
 
-                                                            <!--begin::Menu item-->
-                                                            <div class="menu-item px-3">
-                                                                <a href="#" class="menu-link px-3"
-                                                                    data-kt-docs-table-filter="delete_row">
-                                                                    Delete
-                                                                </a>
+                                                                <!--begin::Menu item-->
+                                                                <div class="menu-item px-3">
+                                                                    <a href="#" class="menu-link px-3"
+                                                                        data-kt-docs-table-filter="delete_row">
+                                                                        Delete
+                                                                    </a>
+                                                                </div>
+                                                                <!--end::Menu item-->
                                                             </div>
-                                                            <!--end::Menu item-->
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                        </td>
+                                                    </tr>
+                                                @endif
                                             @endforeach
                                         </tbody>
                                     </table>
