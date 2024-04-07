@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('notifications', function (Blueprint $table) {
+        Schema::create('notification_messages', function (Blueprint $table) {
             $table->id();
             $table->foreignId('admin_id')->nullable()->constrained('admins')->onDelete('cascade');
             $table->string('title', 255)->nullable();
             $table->longText('message')->nullable();
+            $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('notifications');
+        Schema::dropIfExists('notification_messages');
     }
 };

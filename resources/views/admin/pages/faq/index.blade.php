@@ -45,6 +45,7 @@
                         <th class="" width="60%">Question</th>
                         <th class="" width="10%">Order</th>
                         <th class="text-center" width="10%">Action</th>
+                    </tr>
                 </thead>
                 <tbody class="fw-bold text-gray-600 text-center">
                     @if ($faqs)

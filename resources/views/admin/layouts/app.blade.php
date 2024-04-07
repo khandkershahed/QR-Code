@@ -71,7 +71,7 @@
     <script src="{{ asset($hostUrl . 'plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
     {{-- <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script> --}}
     <script src="{{ asset($hostUrl . 'plugins/custom/formrepeater/formrepeater.bundle.js') }}"></script>
-
+    <script src="{{ asset($hostUrl . 'plugins/custom/tinymce/tinymce.bundle.js') }}"></script>
     {{-- <script src="{{ asset($hostUrl . 'js/custom/account/settings/signin-methods.js') }}"></script> --}}
     <script src="{{ asset($hostUrl . 'js/custom/account/settings/profile-details.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/account/settings/deactivate-account.js') }}"></script>
@@ -99,7 +99,7 @@
                 tableRows.forEach(row => {
                     const dateRow = row.querySelectorAll('td');
                     const realDate = moment(dateRow[3].innerHTML, "DD MMM YYYY, LT")
-                .format(); // select date from 4th column in table
+                        .format(); // select date from 4th column in table
                     dateRow[3].setAttribute('data-order', realDate);
                 });
 
@@ -144,7 +144,7 @@
                         // Get clicked export value
                         const exportValue = e.target.getAttribute('data-kt-export');
                         const target = document.querySelector('.dt-buttons .buttons-' +
-                        exportValue);
+                            exportValue);
 
                         // Trigger click event on hidden datatable export buttons
                         target.click();
@@ -184,10 +184,16 @@
     </script>
     @stack('scripts')
     <script>
-        // showSuccessMessage('{{ session('success') }}');
-        // @foreach ($errors->all() as $error)
-        //     showErrorMessage('{{ $error }}');
-        // @endforeach
+        var options = {
+            selector: ".tinymce"
+        };
+
+        if (KTApp.isDarkMode()) {
+            options["skin"] = "oxide-dark";
+            options["content_css"] = "dark";
+        }
+
+        tinymce.init(options);
 
         $(document).ready(function() {
             // Attach an input event listener to the color input

@@ -44,6 +44,6 @@ class User extends Authenticatable
 
     public function userNotifications()
     {
-        return $this->hasMany(UserNotification::class);
+        return $this->hasMany(UserNotification::class, 'user_id');
     }
 }

@@ -2,19 +2,29 @@
 
 namespace App\Http\Controllers\User\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\LoginRequest;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
+use App\Models\Admin\UserNotification;
+use App\Providers\RouteServiceProvider;
+use App\Http\Requests\Auth\LoginRequest;
+use App\Models\Admin\NotificationMessage;
 
 class AuthenticatedSessionController extends Controller
 {
     /**
      * Display the login view.
      */
+    public function dashboard(): View
+    {
+        $data =[
+            'notifications' => UserNotification::where('user_id', Auth::user()->id)->with('notificationMessage')->orderBy('created_at', 'desc')->get(),
+        ];
+        return view('dashboard', $data);
+    }
+
     public function create(): View
     {
         return view('user.auth.login');

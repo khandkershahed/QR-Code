@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Models\Admin\Notification;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Admin\UserNotification;
+use App\Models\Admin\NotificationMessage;
 
 class UserNotificationController extends Controller
 {
@@ -17,13 +18,8 @@ class UserNotificationController extends Controller
     {
         // Fetch all users
         $users = User::all();
-
-        // Fetch notifications for each user
-        $notificationsByUser = [];
-        foreach ($users as $user) {
-            $notificationsByUser[$user->id] = $user->userNotifications()->orderBy('created_at', 'desc')->get();
-        }
-        return view('admin.pages.notification.index', compact('notificationsByUser'));
+        $notifications = NotificationMessage::with('users')->orderBy('created_at', 'desc')->get();
+        return view('admin.pages.notification.index', compact('users', 'notifications'));
     }
 
     /**
@@ -39,6 +35,8 @@ class UserNotificationController extends Controller
      */
     public function store(Request $request)
     {
+
+        // dd($request->all());
         // Validate request
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
@@ -47,10 +45,11 @@ class UserNotificationController extends Controller
         ]);
 
         // Create a new notification
-        $notification = Notification::create([
-            'admin_id' => auth()->id(), // Assuming you have admin authentication
-            'title' => $validatedData['title'],
-            'message' => $validatedData['message'],
+        $notification = NotificationMessage::create([
+            'admin_id' => Auth::guard('admin')->user()->id, // Assuming you have admin authentication
+            'title'    => $validatedData['title'],
+            'message'  => $validatedData['message'],
+            'status'   => $request->status,
         ]);
 
         // Attach notification to selected users
@@ -61,7 +60,7 @@ class UserNotificationController extends Controller
             ]);
         }
 
-        return redirect()->route('notifications.index')->with('success', 'Notification created successfully!');
+        return redirect()->back()->with('success', 'Notification created successfully!');
     }
 
     /**
@@ -85,21 +84,27 @@ class UserNotificationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $notification = Notification::findOrFail($id);
-
-        // Validate request
+            // Validate request
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'message' => 'required|string',
+            'users' => 'required|array',
         ]);
 
-        // Update notification
+        // Find the notification to update
+        $notification = NotificationMessage::findOrFail($id);
+
+        // Update the notification
         $notification->update([
-            'title' => $validatedData['title'],
-            'message' => $validatedData['message'],
+            'title'    => $validatedData['title'],
+            'message'  => $validatedData['message'],
+            'status'   => $request->status,
         ]);
 
-        return redirect()->route('notifications.index')->with('success', 'Notification updated successfully!');
+        // Sync the associated users
+        $notification->users()->sync($validatedData['users']);
+
+        return redirect()->back()->with('success', 'Notification updated successfully!');
     }
 
     /**
@@ -107,9 +112,9 @@ class UserNotificationController extends Controller
      */
     public function destroy(string $id)
     {
-        $notification = Notification::findOrFail($id);
+        $notification = NotificationMessage::findOrFail($id);
         $notification->delete();
 
-        return redirect()->route('notifications.index')->with('success', 'Notification deleted successfully!');
+        return redirect()->back()->with('success', 'Notification deleted successfully!');
     }
 }

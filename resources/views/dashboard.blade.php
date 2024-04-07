@@ -227,8 +227,8 @@
                         <div>
                             <div class="d-flex justify-content-between align-items-center ">
                                 <div>
-                                    <h4 class="text-white">Summury</h4>
-                                    <p class="p-0 m-0 text-white text-warning">05 April 2024</p>
+                                    <h4 class="text-white">Notification</h4>
+                                    <p class="p-0 m-0 text-white text-warning">{{ now()->format('d F Y') }}</p>
                                     <!-- Modal trigger button -->
                                     <button type="button"
                                         class="p-0 mt-3 shadow-none border-0 bg-transparent text-white"
@@ -507,22 +507,13 @@
                                 <h6 class="text-white mb-4">Dear, <span class="text-warning fw-bold">{{ Auth::user()->name }}</span>
                                 </h6>
                                 <p>Admin notification for you</p>
-                                <div class="card">
-                                    <div class="card-body">
-                                        <p class="text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                            Facere quibusdam amet quis, perspiciatis animi repudiandae adipisci ducimus
-                                            enim recusandae ullam quidem, aperiam atque mollitia voluptatem. Quasi
-                                            repudiandae nemo quisquam amet delectus excepturi in aliquam corrupti,
-                                            officiis iste doloremque dolorum et harum explicabo ducimus eaque deleniti
-                                            perferendis ratione! Totam, expedita, magnam ipsa minima aliquam aperiam
-                                            sunt veritatis ullam eos velit cupiditate neque natus incidunt porro
-                                            doloremque nesciunt fugit ad quasi deleniti nemo dolores fuga accusantium
-                                            illo. Quo nemo aperiam provident quaerat tempora repudiandae odit omnis
-                                            eius? Provident, cumque. Numquam suscipit temporibus doloremque rerum
-                                            sapiente quis tenetur? Laborum numquam mollitia obcaecati. Voluptates,
-                                            possimus. Itaque dolorem quisquam natus vero, non velit debitis esse!</p>
+                                @foreach ($notifications as $notification)
+                                    <div class="card">
+                                        <div class="card-body w-lg-550px w-325px scroll-x scroll-y text-black">
+                                            {!! $notification->notificationMessage->message !!}
+                                        </div>
                                     </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>

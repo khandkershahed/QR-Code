@@ -303,7 +303,7 @@
                         <span class="menu-arrow"></span>
                     </span>
                     <div
-                        class="menu-sub menu-sub-accordion {{ Route::is('admin.user-management.index') ? 'here show' : '' }}">
+                        class="menu-sub menu-sub-accordion {{ Route::is('admin.user-management.index','admin.user-notification.index') ? 'here show' : '' }}">
                         <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
                             <span class="menu-link">
                                 <span class="menu-bullet">
@@ -313,7 +313,7 @@
                                 <span class="menu-arrow"></span>
                             </span>
                             <div
-                                class="menu-sub menu-sub-accordion {{ Route::is('admin.user-management.index') ? 'here show' : '' }}">
+                                class="menu-sub menu-sub-accordion {{ Route::is('admin.user-management.index','admin.user-notification.index') ? 'here show' : '' }}">
                                 <div class="menu-item">
                                     <a class="menu-link {{ Route::is('admin.user-management.index') ? 'active' : '' }}"
                                         href="{{ route('admin.user-management.index') }}">
@@ -321,6 +321,15 @@
                                             <span class="bullet bullet-dot"></span>
                                         </span>
                                         <span class="menu-title">Users List</span>
+                                    </a>
+                                </div>
+                                <div class="menu-item">
+                                    <a class="menu-link {{ Route::is('admin.user-notification.index') ? 'active' : '' }}"
+                                        href="{{ route('admin.user-notification.index') }}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">Send Notification</span>
                                     </a>
                                 </div>
                                 {{-- <div class="menu-item">
