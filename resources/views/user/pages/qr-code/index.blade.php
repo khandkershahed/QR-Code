@@ -114,39 +114,49 @@
                                                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
                                                             data-kt-menu="true" style="">
                                                             <!--begin::Menu item-->
-                                                            <div class="menu-item px-3">
-                                                                <a href="#" class="menu-link px-3"
-                                                                    data-kt-docs-table-filter="edit_row">
-                                                                    PNG
-                                                                </a>
-                                                            </div>
+                                                            @if (!empty($qr->qr_png))
+                                                                <div class="menu-item px-3">
+                                                                    <a href="{{ $qr->qr_png }}" class="menu-link px-3"
+                                                                        data-kt-docs-table-filter="edit_row">
+                                                                        PNG
+                                                                    </a>
+                                                                </div>
+                                                            @endif
                                                             <!--end::Menu item-->
 
                                                             <!--begin::Menu item-->
-                                                            <div class="menu-item px-3">
-                                                                <a href="#" class="menu-link px-3"
-                                                                    data-kt-docs-table-filter="delete_row">
-                                                                    SVG
-                                                                </a>
-                                                            </div>
-                                                            <div class="menu-item px-3">
-                                                                <a href="#" class="menu-link px-3"
-                                                                    data-kt-docs-table-filter="delete_row">
-                                                                    EPS
-                                                                </a>
-                                                            </div>
-                                                            <div class="menu-item px-3">
-                                                                <a href="#" class="menu-link px-3"
-                                                                    data-kt-docs-table-filter="delete_row">
-                                                                    JPG
-                                                                </a>
-                                                            </div>
-                                                            <div class="menu-item px-3">
-                                                                <a href="#" class="menu-link px-3"
-                                                                    data-kt-docs-table-filter="delete_row">
-                                                                    PDF
-                                                                </a>
-                                                            </div>
+                                                            @if (!empty($qr->qr_svg))
+                                                                <div class="menu-item px-3">
+                                                                    <a href="{{ $qr->qr_svg }}" class="menu-link px-3"
+                                                                        data-kt-docs-table-filter="edit_row">
+                                                                        SVG
+                                                                    </a>
+                                                                </div>
+                                                            @endif
+                                                            @if (!empty($qr->qr_eps))
+                                                                <div class="menu-item px-3">
+                                                                    <a href="{{ $qr->qr_eps }}" class="menu-link px-3"
+                                                                        data-kt-docs-table-filter="edit_row">
+                                                                        EPS
+                                                                    </a>
+                                                                </div>
+                                                            @endif
+                                                            @if (!empty($qr->qr_jpg))
+                                                                <div class="menu-item px-3">
+                                                                    <a href="{{ $qr->qr_jpg }}" class="menu-link px-3"
+                                                                        data-kt-docs-table-filter="edit_row">
+                                                                        JPG
+                                                                    </a>
+                                                                </div>
+                                                            @endif
+                                                            @if (!empty($qr->qr_pdf))
+                                                                <div class="menu-item px-3">
+                                                                    <a href="{{ $qr->qr_pdf }}" class="menu-link px-3"
+                                                                        data-kt-docs-table-filter="edit_row">
+                                                                        PDF
+                                                                    </a>
+                                                                </div>
+                                                            @endif
                                                             <!--end::Menu item-->
                                                         </div>
                                                     </td>
