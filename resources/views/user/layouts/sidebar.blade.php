@@ -31,7 +31,8 @@
             <div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500"
                 id="#kt_aside_menu" data-kt-menu="true" data-kt-menu-expand="false">
                 <div class="menu-item">
-                    <a class="menu-link" href="{{ route('dashboard') }}">
+                    <a class="menu-link {{ Route::is('dashboard') ? 'active' : '' }}"
+                        href="{{ route('dashboard') }}">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -50,7 +51,8 @@
                         <span class="menu-title">Dashboard</span>
                     </a>
                 </div>
-                <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
+                <div data-kt-menu-trigger="click"
+                    class="menu-item {{ Route::is('user.qr-code.index', 'user.qr-code.create') ? 'here show' : '' }} menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
@@ -72,9 +74,11 @@
                         <span class="menu-title">QR Code</span>
                         <span class="menu-arrow"></span>
                     </span>
-                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                    <div
+                        class="menu-sub menu-sub-accordion {{ Route::is('user.qr-code.index', 'user.qr-code.create') ? 'menu-active-bg' : '' }}">
                         <div class="menu-item">
-                            <a class="menu-link active" href="{{ route('user.qr-code.index') }}">
+                            <a class="menu-link {{ Route::is('user.qr-code.index') ? 'active' : '' }}"
+                                href="{{ route('user.qr-code.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -82,7 +86,8 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="{{ route('user.qr-code.create') }}">
+                            <a class="menu-link {{ Route::is('user.qr-code.create') ? 'active' : '' }}"
+                                href="{{ route('user.qr-code.create') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -91,7 +96,8 @@
                         </div>
                     </div>
                 </div>
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                <div data-kt-menu-trigger="click"
+                    class="menu-item menu-accordion {{ Route::is('user.nfc-card.index', 'user.nfc-card.create') ? 'here show' : '' }}">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
@@ -108,9 +114,11 @@
                         <span class="menu-title">NFC Card</span>
                         <span class="menu-arrow"></span>
                     </span>
-                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                    <div
+                        class="menu-sub menu-sub-accordion {{ Route::is('user.nfc-card.index', 'user.nfc-card.create') ? 'menu-active-bg' : '' }}">
                         <div class="menu-item">
-                            <a class="menu-link active" href="{{ route('user.nfc-card.index') }}">
+                            <a class="menu-link {{ Route::is('user.nfc-card.index') ? 'active' : '' }}"
+                                href="{{ route('user.nfc-card.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -118,7 +126,8 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="{{ route('user.nfc-card.create') }}">
+                            <a class="menu-link {{ Route::is('user.nfc-card.create') ? 'active' : '' }}"
+                                href="{{ route('user.nfc-card.create') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>

@@ -13,29 +13,31 @@
                                 fill="currentColor" />
                         </svg>
                     </span>
-                    <input type="text" data-kt-example-table-filter="search"
+                    <input type="text" data-kt-filter="search"
                         class="form-control form-control-solid w-250px ps-15" placeholder="Search Email" />
                 </div>
             </div>
 
         </div>
         <div class="card-body pt-0">
-            <table class="table align-middle table-row-dashed fs-6 gy-5 mb-0" id="kt_example_table">
+            <table class="table align-middle table-row-dashed fs-6 gy-5 mb-0 datatable" id="kt_example_table">
                 <thead>
                     <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                        <th class="min-w-125px">Email</th>
-                        <th class="min-w-250px">IP Address</th>
-                        <th class="min-w-125px">Subscribe Date</th>
-                        <th class="text-end min-w-100px">Actions</th>
+                        <th width="5%" class="text-center">Sl No.</th>
+                        <th width="45%" class="text-center">Email</th>
+                        <th width="20%" class="text-center">IP Address</th>
+                        <th width="15%" class="text-center">Subscribe Date</th>
+                        <th width="15" class="text-center">Actions</th>
                     </tr>
                 </thead>
-                <tbody class="fw-bold text-gray-600">
+                <tbody class="fw-bold text-gray-600 text-center">
                     @foreach ($emails as $email)
                         <tr>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $email->email }}</td>
                             <td>{{ $email->ip_address }}</td>
                             <td>{{ $email->created_at }}</td>
-                            <td class="text-end">
+                            <td class="text-center">
                                 <a href="" class="btn btn-icon btn-active-light-primary w-30px h-30px me-3"
                                     data-bs-toggle="modal" data-bs-target="#replayEmail">
                                     <span class="svg-icon svg-icon-3">
@@ -74,7 +76,7 @@
                 <div class="modal-body">
                     <form action="" method="post">
                         <div class="row">
-                            
+
                         </div>
                     </form>
                 </div>

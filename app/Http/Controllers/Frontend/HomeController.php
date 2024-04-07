@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Faq;
 use App\Models\Admin\Plan;
 use Illuminate\Http\Request;
 
@@ -39,7 +40,10 @@ class HomeController extends Controller
         return view('frontend.pages.nfcCard');
     }
     public function faq() {
-        return view('frontend.pages.faq');
+        $data = [
+            'faqs' => Faq::oldest('order')->get(['question','answer','id']),
+        ];
+        return view('frontend.pages.faq',$data);
     }
     public function policy() {
         return view('frontend.pages.policy');

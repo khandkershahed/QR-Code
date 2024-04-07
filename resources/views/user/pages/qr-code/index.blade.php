@@ -39,19 +39,19 @@
                                         class="table align-middle border rounded table-row-dashed table-striped table-hover  fs-6 g-5"
                                         id="qr_code">
                                         <thead>
-                                            <tr class="text-gray-500 fw-bold fs-7 text-uppercase">
-                                                <th class="">SL</th>
-                                                <th class="">Image</th>
-                                                <th class="">Content</th>
-                                                <th class="">Type</th>
-                                                <th class="">Scaned</th>
-                                                <th class="">Status</th>
-                                                <th class="text-end">Action</th>
+                                            <tr class="text-gray-500 fw-bold fs-7 text-uppercase text-center">
+                                                <th width="5">SL</th>
+                                                <th width="10">Image</th>
+                                                <th width="35">Content</th>
+                                                <th width="15">Type</th>
+                                                <th width="10">Scaned</th>
+                                                <th width="10">Status</th>
+                                                <th width="15">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody class="fw-semibold text-gray-600">
                                             @foreach ($qrs as $qr)
-                                                <tr class="odd">
+                                                <tr class="odd text-center">
                                                     <td>
                                                         {{ $loop->iteration }}
                                                     </td>
@@ -80,12 +80,20 @@
                                                         <div class="badge badge-light-success">Active</div>
                                                     </td>
                                                     <td class="pe-0 text-end">
+                                                        {{-- <a href="{{ route('user.qr-code.edit', $qr->id) }}"
+                                                            class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                                            <i class="fas fa-pen"></i>
+                                                        </a> --}}
+                                                        <a href="{{ route('user.qr-code.destroy', $qr->id) }}"
+                                                            class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1 delete">
+                                                            <i class="fas fa-trash-alt text-danger"></i>
+                                                        </a>
                                                         <a href="#"
                                                             class="btn btn-light btn-active-light-primary btn-sm"
                                                             data-kt-menu-trigger="click"
                                                             data-kt-menu-placement="bottom-end"
                                                             data-kt-menu-flip="top-end">
-                                                            Actions
+                                                            Download
                                                             <span class="svg-icon fs-5 m-0">
                                                                 <svg xmlns="http://www.w3.org/2000/svg"
                                                                     xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -109,7 +117,7 @@
                                                             <div class="menu-item px-3">
                                                                 <a href="#" class="menu-link px-3"
                                                                     data-kt-docs-table-filter="edit_row">
-                                                                    Edit
+                                                                    PNG
                                                                 </a>
                                                             </div>
                                                             <!--end::Menu item-->
@@ -118,7 +126,25 @@
                                                             <div class="menu-item px-3">
                                                                 <a href="#" class="menu-link px-3"
                                                                     data-kt-docs-table-filter="delete_row">
-                                                                    Delete
+                                                                    SVG
+                                                                </a>
+                                                            </div>
+                                                            <div class="menu-item px-3">
+                                                                <a href="#" class="menu-link px-3"
+                                                                    data-kt-docs-table-filter="delete_row">
+                                                                    EPS
+                                                                </a>
+                                                            </div>
+                                                            <div class="menu-item px-3">
+                                                                <a href="#" class="menu-link px-3"
+                                                                    data-kt-docs-table-filter="delete_row">
+                                                                    JPG
+                                                                </a>
+                                                            </div>
+                                                            <div class="menu-item px-3">
+                                                                <a href="#" class="menu-link px-3"
+                                                                    data-kt-docs-table-filter="delete_row">
+                                                                    PDF
                                                                 </a>
                                                             </div>
                                                             <!--end::Menu item-->

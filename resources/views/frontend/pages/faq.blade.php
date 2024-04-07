@@ -24,25 +24,24 @@
                 <div class="col-lg-7">
                     <div class="accordion aos-init aos-animate" id="accordionOne" data-aos="fade-up"
                         data-aow-delay="100" data-aos-duration="1500" data-aos-offset="50">
-                        <div class="accordion-item">
-                            <h5 class="accordion-header">
-                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseOne1">
-                                    What types of QR codes can I create with Go QR?
-                                </button>
-                            </h5>
-                            <div id="collapseOne1" class="accordion-collapse collapse" data-bs-parent="#accordionOne">
-                                <div class="accordion-body">
-                                    <p>
-                                        Go QR offers a wide range of QR code types, including
-                                        URLs, text, contact information, Wi-Fi credentials, and
-                                        more. Simply select your desired type and input your
-                                        data to generate a customized QR code.
-                                    </p>
+                        @if (count($faqs) > 0)
+                            @foreach ($faqs as $faq)
+                                <div class="accordion-item">
+                                    <h5 class="accordion-header">
+                                        <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                            data-bs-target="#collapse{{ $faq->id }}">
+                                            {{ $faq->question }}
+                                        </button>
+                                    </h5>
+                                    <div id="collapse{{ $faq->id }}" class="accordion-collapse collapse" data-bs-parent="#accordionOne">
+                                        <div class="accordion-body">
+                                            <p>{{ $faq->answer }}</p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
+                            @endforeach
+                        @endif
+                        {{-- <div class="accordion-item">
                             <h5 class="accordion-header">
                                 <button class="accordion-button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseOne2">
@@ -136,7 +135,7 @@
                                     </p>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

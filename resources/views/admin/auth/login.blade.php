@@ -13,7 +13,8 @@
                     @csrf
 
                     <div class="text-center mb-10">
-                        <h1 class="text-dark mb-3">GO QR</h1><p>Welcome To Admin</p>
+                        <h1 class="text-dark mb-3">GO QR</h1>
+                        <p>Welcome To Admin</p>
                     </div>
                     <div class="fv-row mb-10">
                         <x-metronic.label
@@ -28,23 +29,16 @@
                             <x-metronic.label
                                 class="form-label fw-bolder text-dark fs-6 mb-0">{{ __('Password') }}</x-metronic.label>
                         </div>
-                        <div class="input-group">
-                            <span class="input-group-text" id="toggle_password">
-                                <i class="fas fa-lock text-success"></i>
-                                <i class="fas fa-unlock" style="display: none"></i>
-                            </span>
-                            <x-metronic.input type="password" name="password" aria-describedby="toggle_password"
-                                class="form-control form-control-lg form-control-solid" id="password"
-                                placeholder="Enter your password" autocomplete="off"></x-metronic.input>
-                        </div>
                         <div class="position-relative mb-3">
                             <x-metronic.input type="password" name="password"
-                                class="form-control form-control-lg form-control-solid" placeholder="Enter your password"
-                                autocomplete="off"></x-metronic.input>
-                                <span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2 toggle-password" data-kt-password-meter-control="visibility">
-                                    <i class="bi bi-eye-slash fs-2"></i>
-                                    <i class="bi bi-eye fs-2 d-none"></i>
-                                </span>
+                                class="form-control form-control-lg form-control-solid"
+                                placeholder="Enter your password" autocomplete="off"></x-metronic.input>
+                            <span
+                                class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2 toggle-password"
+                                data-kt-password-meter-control="visibility">
+                                <i class="bi bi-eye-slash fs-2"></i>
+                                <i class="bi bi-eye fs-2 d-none"></i>
+                            </span>
                         </div>
                     </div>
                     <div class="fv-row mb-10">
@@ -86,5 +80,5 @@
         </div>
 
     </div>
-    
+
 </x-admin-guest-layout>

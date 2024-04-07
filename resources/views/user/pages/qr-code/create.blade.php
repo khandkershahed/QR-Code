@@ -133,7 +133,7 @@
                                                             <x-metronic.label for="status"
                                                                 class="form-label">{{ __('Enter a name for your QR code') }}
                                                                 <span class="text-danger">*</span></x-metronic.label>
-                                                            <select class="form-select" data-control="select2"
+                                                            <select class="form-select" data-control="select2" name="qr_scan_status"
                                                                 data-placeholder="Select an option" required>
                                                                 <option>Select Status</option>
                                                                 <option value="static">Static</option>
