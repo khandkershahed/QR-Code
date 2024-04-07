@@ -77,8 +77,7 @@
                                         <i class="fas fa-pen"></i>
                                     </a>
                                     <a href="{{ route('admin.faq.destroy', $faq->id) }}"
-                                        class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1 delete"
-                                        data-kt-docs-table-filter="delete_row">
+                                        class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1 delete">
                                         <i class="fas fa-trash-alt text-danger"></i>
                                     </a>
                                 </td>
