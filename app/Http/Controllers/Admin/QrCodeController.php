@@ -351,12 +351,12 @@ class QrCodeController extends Controller
                     break;
             }
 
-            $Directory = 'public/qr_codes/' . $qr->code . $format;
+            $Directory = 'public/qr_codes/' . $format;
             if (!Storage::exists($Directory)) {
                 Storage::makeDirectory($Directory);
             }
             // Save the QR code to storage
-            $qrFileName = $code . '.' . $format;
+            $qrFileName = $qr->code . '.' . $format;
             $qrCodePath = 'public/qr_codes/' . $format . '/' . $qrFileName;
             Storage::put($qrCodePath, $qrCodeString);
 
