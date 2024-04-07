@@ -351,7 +351,7 @@ class QrCodeController extends Controller
                     break;
             }
 
-            $Directory = 'public/qr_codes/' . $format;
+            $Directory = 'public/qr_codes/' . $qr->code . $format;
             if (!Storage::exists($Directory)) {
                 Storage::makeDirectory($Directory);
             }
