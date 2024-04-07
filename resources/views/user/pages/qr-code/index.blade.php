@@ -116,7 +116,7 @@
                                                             <!--begin::Menu item-->
                                                             @if (!empty($qr->qr_png))
                                                                 <div class="menu-item px-3">
-                                                                    <a href="{{ $qr->qr_png }}" class="menu-link px-3"
+                                                                    <a href="{{ $qr->qr_png_url }}" class="menu-link px-3"
                                                                         data-kt-docs-table-filter="edit_row">
                                                                         PNG
                                                                     </a>
@@ -127,7 +127,7 @@
                                                             <!--begin::Menu item-->
                                                             @if (!empty($qr->qr_svg))
                                                                 <div class="menu-item px-3">
-                                                                    <a href="{{ $qr->qr_svg }}" class="menu-link px-3"
+                                                                    <a href="{{ $qr->qr_svg_url }}" class="menu-link px-3"
                                                                         data-kt-docs-table-filter="edit_row">
                                                                         SVG
                                                                     </a>
@@ -135,7 +135,7 @@
                                                             @endif
                                                             @if (!empty($qr->qr_eps))
                                                                 <div class="menu-item px-3">
-                                                                    <a href="{{ $qr->qr_eps }}" class="menu-link px-3"
+                                                                    <a href="{{ $qr->qr_eps_url }}" class="menu-link px-3"
                                                                         data-kt-docs-table-filter="edit_row">
                                                                         EPS
                                                                     </a>
@@ -143,7 +143,7 @@
                                                             @endif
                                                             @if (!empty($qr->qr_jpg))
                                                                 <div class="menu-item px-3">
-                                                                    <a href="{{ $qr->qr_jpg }}" class="menu-link px-3"
+                                                                    <a href="{{ $qr->qr_jpg_url }}" class="menu-link px-3"
                                                                         data-kt-docs-table-filter="edit_row">
                                                                         JPG
                                                                     </a>
@@ -151,7 +151,7 @@
                                                             @endif
                                                             @if (!empty($qr->qr_pdf))
                                                                 <div class="menu-item px-3">
-                                                                    <a href="{{ $qr->qr_pdf }}" class="menu-link px-3"
+                                                                    <a href="{{ $qr->qr_pdf_url }}" class="menu-link px-3"
                                                                         data-kt-docs-table-filter="edit_row">
                                                                         PDF
                                                                     </a>
