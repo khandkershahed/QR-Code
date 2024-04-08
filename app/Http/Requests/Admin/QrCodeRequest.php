@@ -29,7 +29,7 @@ class QrCodeRequest extends FormRequest
                 'code' => 'nullable|string|max:255|unique:qrs,code,' . $qr,
                 'qr_type' => 'nullable|string|max:255', // Validate qr_type as a string with max length 255
                 'qr_template' => 'nullable|string|max:255', // Validate qr_template as a string with max length 255
-                'qr_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate qr_logo as an image file (adjust mime types and max size as needed)
+                // 'qr_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate qr_logo as an image file (adjust mime types and max size as needed)
                 'qr_logo_size' => 'nullable|string|max:255', // Validate qr_logo_size as a string with max length 255
                 'qr_eye_ball' => 'nullable|string|max:255', // Validate qr_eye_ball as a string with max length 255
                 'qr_eye_ball_color' => 'nullable|string|max:255', // Validate qr_eye_ball_color as a string with max length 255
