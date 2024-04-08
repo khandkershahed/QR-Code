@@ -274,10 +274,10 @@ class QrCodeController extends Controller
         foreach ($formats as $format => $field) {
 
             $qrCode = new Generator;
-            if ($format === 'jpg' && $format === 'pdf') {
+            if ($format === 'jpg' || $format === 'pdf') {
                 $qrCode->format('png')->size(230);
-            }else{
-                    $qrCode->format($format)->size(230);
+            } else {
+                $qrCode->format($format)->size(230);
             }
 
             if (!empty($qr_logo)) {
