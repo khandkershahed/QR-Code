@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers\User\Auth;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Notifications\UserRegistration;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules;
+use App\Http\Controllers\Controller;
+use App\Mail\UserRegistrationMail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
-use Illuminate\View\View;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Auth\Events\Registered;
+use App\Notifications\UserRegistration;
+use App\Providers\RouteServiceProvider;
 
 class RegisteredUserController extends Controller
 {
@@ -44,8 +46,9 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($user));
-        $user->notify(new UserRegistration($user->name));
+        // $user->notify(new UserRegistration($user->name));
         Auth::login($user);
+        Mail::to($user->email)->send(new UserRegistrationMail($user->name));
         flash()->addSuccess('You have successfully registered.');
         return redirect(RouteServiceProvider::HOME);
     }

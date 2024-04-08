@@ -5,8 +5,10 @@ namespace App\Http\Controllers\User;
 use Exception;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Mail\UserRegistrationMail;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use App\Notifications\UserRegistration;
 use App\Providers\RouteServiceProvider;
 use Laravel\Socialite\Facades\Socialite;
@@ -78,8 +80,9 @@ class UserSocialLoginController extends Controller
                     'facebook_id'=> $user->id,
                     'password' => encrypt('Test123456')
                 ]);
-$newUser->notify(new UserRegistration($user->name));
+                // $newUser->notify(new UserRegistration($user->name));
                 Auth::login($newUser);
+                Mail::to($user->email)->send(new UserRegistrationMail($user->name));
 
                 return redirect()->intended(RouteServiceProvider::HOME);
             }
@@ -120,8 +123,9 @@ $newUser->notify(new UserRegistration($user->name));
                         'github_id'=> $user->id,
                         'password' => encrypt('123456dummy')
                     ]);
-$newUser->notify(new UserRegistration($user->name));
-                Auth::login($newUser);
+// $newUser->notify(new UserRegistration($user->name));
+Auth::login($newUser);
+Mail::to($user->email)->send(new UserRegistrationMail($user->name));
 
                 return redirect()->intended(RouteServiceProvider::HOME);
             }

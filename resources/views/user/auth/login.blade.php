@@ -37,7 +37,7 @@
                                         <img alt="Logo"
                                             src="https://i.ibb.co/4twXxBk/png-clipart-facebook-logo-computer-icons-facebook-logo-facebook-thumbnail-removebg-preview.png"
                                             class="theme-light-show h-25px me-3">
-                                        Sign in with Apple
+                                        Sign in with Facebook
                                     </a>
                                 </div>
                             </div>
