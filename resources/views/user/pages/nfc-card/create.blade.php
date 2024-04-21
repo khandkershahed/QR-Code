@@ -128,7 +128,6 @@
                                 <div>
                                     <button type="submit" id="generateButton" data-kt-stepper-action="submit"
                                         class="btn btn-primary">{{ __('Submit Now') }}</button>
-
                                     <button type="button" class="btn btn-primary" data-kt-stepper-action="next">
                                         Continue
                                     </button>

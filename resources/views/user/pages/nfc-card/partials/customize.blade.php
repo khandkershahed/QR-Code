@@ -24,7 +24,7 @@
                                    </div>
                                    <div class="col-lg-2 ps-0">
                                        <div>
-                                           <input type="color" name="primary_color_picker" id="primary_color_picker"
+                                           <input type="color" name="primary_color" id="primary_color_picker"
                                                value="" style="width: 50px;height: 43px;"
                                                class="form-control form-control-solid">
                                        </div>
@@ -42,7 +42,7 @@
                                    </div>
                                    <div class="col-lg-2 ps-0">
                                        <div>
-                                           <input type="color" name="primary_color_text_picker"
+                                           <input type="color" name="primary_text_color"
                                                id="primary_color_text_picker" value=""
                                                style="width: 50px;height: 43px;"
                                                class="form-control form-control-solid">
@@ -61,7 +61,7 @@
                                    </div>
                                    <div class="col-lg-2 ps-0">
                                        <div>
-                                           <input type="color" name="secondary_color_text_picker"
+                                           <input type="color" name="secondary_color"
                                                id="secondary_color_text_picker" value=""
                                                style="width: 50px;height: 43px;"
                                                class="form-control form-control-solid">
@@ -87,7 +87,7 @@
                            <div class="col-lg-4">
                                <label for="Font">Font</label>
                                <select class="form-select form-select-sm form-select-solid" data-control="select2"
-                                   data-placeholder="Select an option">
+                                   name="font_family" data-placeholder="Select an option">
                                    <option></option>
                                    <option value="1">Poppins</option>
                                    <option value="2">Times New Roman</option>
@@ -97,7 +97,7 @@
                            </div>
                            <div class="col-lg-4">
                                <label for="Font">Title Font Size</label>
-                               <input type="text" name="" id=""
+                               <input type="text" name="font_size" id=""
                                    class="form-control form-control-sm form-control-solid">
                            </div>
                        </div>
@@ -126,7 +126,7 @@
                                    </div>
                                    <div class="col-lg-2 ps-0">
                                        <div>
-                                           <input type="color" name="button_color_picker"
+                                           <input type="color" name="button_color"
                                                id="button_color_picker" value=""
                                                style="width: 50px;height: 43px;"
                                                class="form-control form-control-solid">
@@ -160,7 +160,7 @@
                                 </div>
                                 <div class="col-lg-2 ps-0">
                                     <div>
-                                        <input type="color" name="form_color_picker"
+                                        <input type="color" name="form_color"
                                             id="form_color_picker" value=""
                                             style="width: 50px;height: 43px;"
                                             class="form-control form-control-solid">
