@@ -60,4 +60,7 @@ class HomeController extends Controller
     public function dynamicNfc() {
         return view('frontend.pages.dynamicNfc');
     }
+    public function mailTest() {
+        return view('frontend.pages.mailTest');
+    }
 }

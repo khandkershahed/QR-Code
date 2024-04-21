@@ -34,6 +34,7 @@ Route::get('/dynamic-nfc', [HomeController::class, 'dynamicNfc'])->name('dynamic
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 Route::get('/policy', [HomeController::class, 'policy'])->name('policy');
 Route::get('/terms', [HomeController::class, 'terms'])->name('terms');
+Route::get('/mail-test', [HomeController::class, 'mailTest'])->name('mailTest');
 
 
 Route::controller(UserSocialLoginController::class)->group(function(){
