@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
 use App\Models\Admin\Faq;
 use App\Models\Admin\Plan;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -62,5 +63,19 @@ class HomeController extends Controller
     }
     public function mailTest() {
         return view('frontend.pages.mailTest');
+    }
+    public function mailTestStore(Request $request) {
+        $email = $request->input('email');
+        $email_subject = $request->input('email_subject');
+        $email_body = $request->input('email_body');
+
+        // Send the email
+        Mail::raw($email_body, function($message) use ($email, $email_subject) {
+            $message->to($email)
+                    ->subject($email_subject);
+        });
+        
+
+        return redirect()->back()->with('success', "Mail Sent Successfully");
     }
 }
