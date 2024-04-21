@@ -180,7 +180,7 @@
         KTUtil.onDOMContentLoaded(function() {
             KTDatatablesExample.init();
         });
-        // Datatable End
+        // Datatable End 
     </script>
     @stack('scripts')
     <script>

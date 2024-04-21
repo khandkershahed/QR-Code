@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <h1 class="text-center pt-5">Hello <span class="text-success">{{ Auth::user()->name }}</span> Welcome To Your
                 Dashboard.!</h1>
