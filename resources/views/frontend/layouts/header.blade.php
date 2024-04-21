@@ -208,14 +208,8 @@
                                                         <h3>Some NFC Template</h3>
                                                         <p>Measure your networking with digital business cards</p>
                                                         <div class="d-flex">
-                                                            <img class="img-fluid me-2" width="150px"
-                                                                src="https://cdn1.vectorstock.com/i/1000x1000/10/60/qr-code-sample-vector-12061060.jpg"
-                                                                alt="">
-                                                            <img class="img-fluid me-2" width="150px"
-                                                                src="https://cdn1.vectorstock.com/i/1000x1000/10/60/qr-code-sample-vector-12061060.jpg"
-                                                                alt="">
-                                                            <img class="img-fluid" width="150px"
-                                                                src="https://cdn1.vectorstock.com/i/1000x1000/10/60/qr-code-sample-vector-12061060.jpg"
+                                                            <img class="img-fluid me-2"
+                                                                src="https://d33v4339jhl8k0.cloudfront.net/docs/assets/62a7296313dd0f2bb7daeac5/images/63773acdbedde91b3d8c95ff/file-WiV9vxVvCU.png"
                                                                 alt="">
                                                         </div>
                                                         <div class="mt-4">

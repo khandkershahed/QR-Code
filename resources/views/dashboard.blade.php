@@ -229,50 +229,6 @@
                                 <div>
                                     <h4 class="text-white">Notification</h4>
                                     <p class="p-0 m-0 text-white text-warning">{{ now()->format('d F Y') }}</p>
-                                    <!-- Modal trigger button -->
-                                    <button type="button"
-                                        class="p-0 mt-3 shadow-none border-0 bg-transparent text-white"
-                                        data-bs-toggle="modal" data-bs-target="#modalId05">
-                                        Check Statistic
-                                    </button>
-
-                                    <!-- Modal Body -->
-                                    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-                                    <div class="modal fade" id="modalId05" tabindex="-1" data-bs-backdrop="static"
-                                        data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId"
-                                        aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-fullscreen "
-                                            role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="modalTitleId">
-                                                        My Card Performance
-                                                    </h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <img src="https://i.ibb.co/YB1zCNT/Screenshot-1.png"
-                                                        alt="">
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">
-                                                        Close
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Optional: Place to the bottom of scripts -->
-                                    <script>
-                                        const myModal = new bootstrap.Modal(
-                                            document.getElementById("modalId"),
-                                            options,
-                                        );
-                                    </script>
-
                                 </div>
                                 {{-- Admin Notifcation box End --}}
                                 <div>
@@ -540,9 +496,12 @@
                             </div>
 
                             <div class="text-center">
-                                <a href="#" class="btn btn-sm btn-dark fw-bold" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_upgrade_plan">
+                                <a href="{{ route('pricing') }}" class="btn btn-sm btn-dark fw-bold">
                                     Upgrade Now
+                                </a>
+                                <a href="#" class="btn btn-sm btn-dark fw-bold"
+                                data-bs-toggle="modal" data-bs-target="#modalId">
+                                   Check Invoice
                                 </a>
                             </div>
                         </div>
@@ -552,6 +511,12 @@
                             alt="">
                         {{-- <img class="mx-auto h-150px h-lg-200px  theme-dark-show" src="https://preview.keenthemes.com/metronic8/demo1/assets/media/illustrations/misc/upgrade.svg" alt="">    --}}
                     </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="d-flex justify-content-center mt-5">
+                    <img class="img-fluid" src="https://i.ibb.co/YB1zCNT/Screenshot-1.png"
+                    alt="">
                 </div>
             </div>
         </div>
