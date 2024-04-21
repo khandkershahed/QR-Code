@@ -30,9 +30,6 @@ class HomeController extends Controller
         ];
         return view('frontend.pages.pricing',$data);
     }
-    public function digitalCard() {
-        return view('frontend.pages.digitalCard');
-    }
     public function qrCode() {
         return view('frontend.pages.qrCode');
     }
@@ -50,5 +47,17 @@ class HomeController extends Controller
     }
     public function terms() {
         return view('frontend.pages.terms');
+    }
+    public function cardGuide() {
+        return view('frontend.pages.cardGuide');
+    }
+    public function digitalCard() {
+        return view('frontend.pages.digitalCard');
+    }
+    public function staticNfc() {
+        return view('frontend.pages.staticNfc');
+    }
+    public function dynamicNfc() {
+        return view('frontend.pages.dynamicNfc');
     }
 }

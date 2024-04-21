@@ -17,6 +17,11 @@ return new class extends Migration
             $table->string('code')->nullable();
             $table->string('nfc_type')->nullable();
             $table->string('nfc_template')->nullable();
+            $table->string('primary_color')->nullable();
+            $table->string('primary_text_color')->nullable();
+            $table->string('secondary_color_text')->nullable();
+            $table->string('button_color')->nullable();
+            $table->string('form_color')->nullable();
             $table->timestamps();
         });
     }
