@@ -45,7 +45,7 @@
                                                         <p>Measure your networking with digital business cards</p>
                                                         <div>
                                                             <img class="img-fluid"
-                                                                src="https://www.uniqode.com/videos/Header/header-qr.png"
+                                                                src="https://www.uniqode.com/_next/static/media/find-campaign.a5267f65.png"
                                                                 alt="">
                                                         </div>
                                                     </div>
