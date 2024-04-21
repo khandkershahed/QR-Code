@@ -32,7 +32,7 @@ return [
     |            "postmark", "log", "array", "failover"
     |
     */
-
+    'verify_peer' => false,
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
@@ -150,12 +150,6 @@ return [
         ],
     ],
 
-    'stream' => [
-        'ssl' => [
-            'verify_peer' => false,
-            'verify_peer_name' => false,
-            'allow_self_signed' => true,
-        ],
-    ],
+
 
 ];
