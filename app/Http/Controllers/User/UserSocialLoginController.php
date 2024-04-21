@@ -40,7 +40,7 @@ class UserSocialLoginController extends Controller
                     'name' => $user->name,
                     'email' => $user->email,
                     'google_id'=> $user->id,
-                    'password' => encrypt('123456dummy')
+                    'password' => encrypt('goQRDummy')
                 ]);
                 $newUser->notify(new UserRegistration($user->name));
                 Auth::login($newUser);
@@ -78,7 +78,7 @@ class UserSocialLoginController extends Controller
                     'name' => $user->name,
                     'email' => $user->email,
                     'facebook_id'=> $user->id,
-                    'password' => encrypt('Test123456')
+                    'password' => encrypt('goQRDummy')
                 ]);
                 // $newUser->notify(new UserRegistration($user->name));
                 Auth::login($newUser);
@@ -121,7 +121,7 @@ class UserSocialLoginController extends Controller
                 $newUser = User::updateOrCreate(['email' => $user->email],[
                         'name' => $user->name,
                         'github_id'=> $user->id,
-                        'password' => encrypt('123456dummy')
+                        'password' => encrypt('goQRDummy')
                     ]);
 // $newUser->notify(new UserRegistration($user->name));
 Auth::login($newUser);
