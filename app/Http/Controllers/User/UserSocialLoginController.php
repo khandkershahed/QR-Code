@@ -42,7 +42,8 @@ class UserSocialLoginController extends Controller
                     'google_id'=> $user->id,
                     'password' => encrypt('goQRDummy')
                 ]);
-                $newUser->notify(new UserRegistration($user->name));
+                // $newUser->notify(new UserRegistration($user->name));
+                Mail::to($user->email)->send(new UserRegistrationMail($user->name));
                 Auth::login($newUser);
 
                 return redirect()->intended(RouteServiceProvider::HOME);
