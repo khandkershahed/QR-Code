@@ -33,7 +33,9 @@
                             <ul class="navigation onepage clearfix">
                                 <li><a href="{{ route('homePage') }}">HOME</a></li>
                                 <li class="dropdown position-static">
-                                    <a href="{{ route('qrCode') }}" onclick="window.location.href = '{{ route('qrCode') }}'; return false;">QR CODES</a>
+                                    <a href="{{ route('qrCode') }}"
+                                        onclick="window.location.href = '{{ route('qrCode') }}'; return false;">QR
+                                        CODES</a>
                                     <ul class="w-100" style="display: none;">
                                         <div class="row">
                                             <div class="col-lg-4">
@@ -42,7 +44,7 @@
                                                     <div class="card-body">
                                                         <h6>PRODUCT</h6>
                                                         <h3>QR Code Generator</h3>
-                                                        <p>Measure your networking with digital business cards</p>
+                                                        <p>Elevate your networking game with the precision of QR codes. </p>
                                                         <div>
                                                             <img class="img-fluid"
                                                                 src="https://www.uniqode.com/_next/static/media/find-campaign.a5267f65.png"
@@ -62,7 +64,7 @@
                                                                         aria-hidden="true"></i>
                                                                 </div>
                                                                 <div>
-                                                                    <p class="m-0 p-0">Dynamic QR Code Generator</p>
+                                                                    <p class="m-0 p-0">QR Code Guide</p>
                                                                 </div>
                                                             </a>
                                                             <a href="" class="d-flex align-items-center mb-2">
@@ -71,7 +73,7 @@
                                                                         aria-hidden="true"></i>
                                                                 </div>
                                                                 <div>
-                                                                    <p class="m-0 p-0">Choose The Best QR Code Generator
+                                                                    <p class="m-0 p-0">Digital QR Code
                                                                     </p>
                                                                 </div>
                                                             </a>
@@ -81,16 +83,7 @@
                                                                         aria-hidden="true"></i>
                                                                 </div>
                                                                 <div>
-                                                                    <p class="m-0 p-0">QR Statistic</p>
-                                                                </div>
-                                                            </a>
-                                                            <a href="" class="d-flex align-items-center mb-2">
-                                                                <div class="pe-2">
-                                                                    <i class="fas fa-arrow-right menu_icons"
-                                                                        aria-hidden="true"></i>
-                                                                </div>
-                                                                <div>
-                                                                    <p class="m-0 p-0">Static QR</p>
+                                                                    <p class="m-0 p-0">Statistic QR</p>
                                                                 </div>
                                                             </a>
                                                             <a href="" class="d-flex align-items-center mb-2">
@@ -103,6 +96,9 @@
                                                                 </div>
                                                             </a>
                                                         </div>
+                                                        <div>
+                                                            <p class="pt-3">Scan, connect, explore. QR code business cards unlock a world of information with a simple scan, making networking efficient.</p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -112,7 +108,7 @@
                                                     <div class="card-body">
                                                         <h6>Template</h6>
                                                         <h3>Some QR Code Template</h3>
-                                                        <p>Measure your networking with digital business cards</p>
+                                                        <p>Empower your networking endeavors with our advanced QR Code Generator, simplifying connections and expanding opportunities effortlessly.</p>
                                                         <div class="d-flex">
                                                             <img class="img-fluid me-2" width="150px"
                                                                 src="https://cdn1.vectorstock.com/i/1000x1000/10/60/qr-code-sample-vector-12061060.jpg"
@@ -126,13 +122,13 @@
                                                         </div>
                                                         <div class="mt-4">
                                                             <a href="{{ route('pricing') }}"
-                                                                class="btn btn-primary">Start Your Free Trial</a>
+                                                                class="btn btn-primary text-white">Start Your Free Trial</a>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row p-3">
+                                        {{-- <div class="row p-3">
                                             <div class="col-lg-3">
                                                 <a href="" class="d-flex align-items-center mb-2">
                                                     <div class="pe-2">
@@ -177,7 +173,7 @@
                                                     </div>
                                                 </a>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </ul>
                                 </li>
                                 <li class="dropdown position-static">
@@ -191,7 +187,7 @@
                                                     style="background-color:#ddefff; height: 28rem">
                                                     <div class="card-body">
                                                         <h6>PRODUCT</h6>
-                                                        <h3>QR Code Generator</h3>
+                                                        <h3>NFC Card Generator</h3>
                                                         <p>Measure your networking with digital business cards</p>
                                                         <div>
                                                             <img class="img-fluid"
@@ -225,44 +221,39 @@
                                                     <div class="card-body">
                                                         <h6>Information</h6>
                                                         <div class="pt-50">
-                                                            <a href="" class="d-flex align-items-center mb-2">
+                                                            <a href="{{ route('cardGuide') }}"
+                                                                class="d-flex align-items-center mb-2">
                                                                 <div class="pe-2">
                                                                     <i class="fas fa-arrow-right menu_icons"
                                                                         aria-hidden="true"></i>
                                                                 </div>
                                                                 <div>
-                                                                    <p class="m-0 p-0">Dynamic NFC Generator</p>
+                                                                    <p class="m-0 p-0">Card Buying Guide</p>
                                                                 </div>
                                                             </a>
-                                                            <a href="" class="d-flex align-items-center mb-2">
+                                                            <a href="{{ route('digitalCard') }}"
+                                                                class="d-flex align-items-center mb-2">
                                                                 <div class="pe-2">
                                                                     <i class="fas fa-arrow-right menu_icons"
                                                                         aria-hidden="true"></i>
                                                                 </div>
                                                                 <div>
-                                                                    <p class="m-0 p-0">Choose The Best NFC Generator
+                                                                    <p class="m-0 p-0">Digital Business Cards
                                                                     </p>
                                                                 </div>
                                                             </a>
-                                                            <a href="" class="d-flex align-items-center mb-2">
+                                                            <a href="{{ route('staticNfc') }}"
+                                                                class="d-flex align-items-center mb-2">
                                                                 <div class="pe-2">
                                                                     <i class="fas fa-arrow-right menu_icons"
                                                                         aria-hidden="true"></i>
                                                                 </div>
                                                                 <div>
-                                                                    <p class="m-0 p-0">NFC Statistic</p>
+                                                                    <p class="m-0 p-0">Statistic NFC</p>
                                                                 </div>
                                                             </a>
-                                                            <a href="" class="d-flex align-items-center mb-2">
-                                                                <div class="pe-2">
-                                                                    <i class="fas fa-arrow-right menu_icons"
-                                                                        aria-hidden="true"></i>
-                                                                </div>
-                                                                <div>
-                                                                    <p class="m-0 p-0">Static NFC</p>
-                                                                </div>
-                                                            </a>
-                                                            <a href="" class="d-flex align-items-center mb-2">
+                                                            <a href="{{ route('dynamicNfc') }}"
+                                                                class="d-flex align-items-center mb-2">
                                                                 <div class="pe-2">
                                                                     <i class="fas fa-arrow-right menu_icons"
                                                                         aria-hidden="true"></i>
@@ -272,11 +263,14 @@
                                                                 </div>
                                                             </a>
                                                         </div>
+                                                        <div>
+                                                            <p class="pt-3">Tap, connect, impress. NFC business cards bridge the physical and digital worlds seamlessly, leaving a lasting impression effortlessly.</p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row p-3">
+                                        {{-- <div class="row p-3">
                                             <div class="col-lg-3">
                                                 <a href="" class="d-flex align-items-center mb-2">
                                                     <div class="pe-2">
@@ -321,7 +315,7 @@
                                                     </div>
                                                 </a>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </ul>
                                 </li>
                                 <li><a href="{{ route('pricing') }}">PRICING</a></li>
