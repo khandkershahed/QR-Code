@@ -6,8 +6,7 @@
                 <div class="logo-outer">
                     <div class="logo">
                         <a href="{{ route('homePage') }}">
-                            <img width="100px" src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('https://i.ibb.co/BNBTVN4/logo.png') }}
-                            " alt="Logo" title="Logo" />
+                            <img width="100px" src="{{ (!empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white))) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('https://i.ibb.co/BNBTVN4/logo.png') }}" alt="Logo" title="Logo" />
                         </a>
                     </div>
                 </div>
@@ -18,8 +17,8 @@
                         <div class="navbar-header py-10">
                             <div class="mobile-logo">
                                 <a href="{{ route('homePage') }}">
-                                    <img width="60px" src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('https://i.ibb.co/BNBTVN4/logo.png') }}
-                                    " alt="Logo"
+                                    <img width="60px" src="{{ (!empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white))) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('https://i.ibb.co/BNBTVN4/logo.png') }}"
+                                    alt="Logo"
                                         title="Logo" />
                                 </a>
                             </div>
