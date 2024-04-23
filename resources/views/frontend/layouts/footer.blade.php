@@ -40,10 +40,10 @@
                         <p class="text-muted">Connect with us and stay updated on the latest news, offers, and updates.
                         </p>
                         <div class="social-style-one">
-                            <a href="javascript:void(0)"><i class="fab fa-twitter"></i></a>
-                            <a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a>
-                            <a href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
-                            <a href="javascript:void(0)"><i class="fab fa-pinterest-p"></i></a>
+                            <a href="{{ $site->twitter_url }}"><i class="fab fa-twitter"></i></a>
+                            <a href="{{ $site->facebook_url }}"><i class="fab fa-facebook-f"></i></a>
+                            <a href="{{ $site->instagram_url }}"><i class="fab fa-instagram"></i></a>
+                            <a href="{{ $site->pinterest_url }}"><i class="fab fa-pinterest-p"></i></a>
                         </div>
                     </div>
                 </div>
@@ -52,11 +52,12 @@
                         data-aos-duration="1500" data-aos-offset="50">
                         <h6 class="footer-title text-white">Contact</h6>
                         <ul>
-                            <li><i class="fa fa-map-marker-alt"></i> 55 Main Street, 2nd block Melbourne, Australia
+                            <li>
+                                <i class="fa fa-map-marker-alt"></i> {{ $site->address_line_one }}, {{ $site->address_line_two }}
                             </li>
-                            <li><i class="fa fa-envelope"></i> <a href="mailto:support@gmail.com">support@goqr.mail.com</a>
+                            <li><i class="fa fa-envelope"></i> <a href="mailto:{{ $site->contact_email }}">{{ $site->contact_email }}</a>
                             </li>
-                            <li><i class="fa fa-phone"></i> <a href="callto:+0001234455">+000 (123) 44 55</a></li>
+                            <li><i class="fa fa-phone"></i> <a href="callto:{{ $site->phone_one }}">{{ $site->phone_one }}</a></li>
                         </ul>
                     </div>
                 </div>
