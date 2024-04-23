@@ -31,6 +31,10 @@ Route::get('/card-buying-guide', [HomeController::class, 'cardGuide'])->name('ca
 Route::get('/digital-business-card', [HomeController::class, 'digitalCard'])->name('digitalCard');
 Route::get('/static-nfc', [HomeController::class, 'staticNfc'])->name('staticNfc');
 Route::get('/dynamic-nfc', [HomeController::class, 'dynamicNfc'])->name('dynamicNfc');
+Route::get('/qr-buying-guide', [HomeController::class, 'qrGuide'])->name('qrGuide');
+Route::get('/digital-qr-code', [HomeController::class, 'digitalQr'])->name('digitalQr');
+Route::get('/static-qr', [HomeController::class, 'staticQr'])->name('staticQr');
+Route::get('/dynamic-qr', [HomeController::class, 'dynamicQr'])->name('dynamicQr');
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 Route::get('/policy', [HomeController::class, 'policy'])->name('policy');
 Route::get('/terms', [HomeController::class, 'terms'])->name('terms');

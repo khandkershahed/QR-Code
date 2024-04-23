@@ -61,6 +61,18 @@ class HomeController extends Controller
     public function dynamicNfc() {
         return view('frontend.pages.dynamicNfc');
     }
+    public function qrGuide() {
+        return view('frontend.pages.qrGuide');
+    }
+    public function digitalQr() {
+        return view('frontend.pages.digitalQr');
+    }
+    public function staticQr() {
+        return view('frontend.pages.staticQr');
+    }
+    public function dynamicQr() {
+        return view('frontend.pages.dynamicQr');
+    }
     public function mailTest() {
         return view('frontend.pages.mailTest');
     }
@@ -74,7 +86,7 @@ class HomeController extends Controller
             $message->to($email)
                     ->subject($email_subject);
         });
-        
+
 
         return redirect()->back()->with('success', "Mail Sent Successfully");
     }
