@@ -31,7 +31,7 @@
                             placeholder="Enter Site Icon"></x-metronic.input>
                     </div>
                     <div class="col-lg-1">
-                        <img src="http://placehold.it/180"
+                        <img src="{{ (!empty($site->site_icon) && file_exists(public_path('storage/webSetting/siteIcon/' . $site->site_icon))) ? asset('storage/webSetting/siteIcon/' . $site->site_icon) : asset('http://placehold.it/180') }}"
                             class="rounded-circle mt-8" width="60px" height="60px" alt="">
                     </div>
                     <div class="col-lg-3">
@@ -43,12 +43,12 @@
                             :value="$site ? $site->system_logo_white : ''" placeholder="Enter System Logo White"></x-metronic.input>
                     </div>
                     <div class="col-lg-1">
-                        <img src="http://placehold.it/180"
+                        <img src="{{ (!empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white))) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('http://placehold.it/180') }}"
                             class="rounded-circle mt-8" width="60px" height="60px" alt="">
                     </div>
 
 
-                    <div class="col-lg-3">
+                    {{-- <div class="col-lg-3">
                         <x-metronic.label for="system_logo_black"
                             class="col-form-label fw-bold fs-6">{{ __('System Logo Black') }}</x-metronic.label>
 
@@ -57,9 +57,9 @@
                     </div>
                     <div class="col-lg-1">
                         <img id="preview"
-                            src="http://placehold.it/180"
+                            src=""
                             class="rounded-circle mt-8" width="60px" height="60px" alt="Preview Image">
-                    </div>
+                    </div> --}}
 
 
                     <div class="col-lg-4">
