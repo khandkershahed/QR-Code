@@ -69,11 +69,11 @@
                         <h6 class="footer-title text-white">Contact</h6>
                         <ul>
                             <li>
-                                <i class="fa fa-map-marker-alt"></i> {{ $site->address_line_one }}, {{ $site->address_line_two }}
+                                <i class="fa fa-map-marker-alt"></i> {{ !empty($site->address_line_one) ? $site->address_line_one : '' }}, {{ !empty($site->address_line_one) ? $site->address_line_two : '' }}
                             </li>
-                            <li><i class="fa fa-envelope"></i> <a href="mailto:{{ $site->contact_email }}">{{ $site->contact_email }}</a>
+                            <li><i class="fa fa-envelope"></i> <a href="mailto:{{ !empty($site->contact_email) ? $site->contact_email : '' }}">{{ !empty($site->contact_email) ? $site->contact_email : '' }}</a>
                             </li>
-                            <li><i class="fa fa-phone"></i> <a href="callto:{{ $site->phone_one }}">{{ $site->phone_one }}</a></li>
+                            <li><i class="fa fa-phone"></i> <a href="callto:{{ !empty($site->phone_one) ? $site->phone_one : '' }}">{{ !empty($site->phone_one) ? $site->phone_one : '' }}</a></li>
                         </ul>
                     </div>
                 </div>
