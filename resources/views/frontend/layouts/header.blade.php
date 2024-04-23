@@ -58,7 +58,7 @@
                                                     <div class="card-body">
                                                         <h6>Information</h6>
                                                         <div class="pt-50">
-                                                            <a href="" class="d-flex align-items-center mb-2">
+                                                            <a href="{{ route('') }}" class="d-flex align-items-center mb-2">
                                                                 <div class="pe-2">
                                                                     <i class="fas fa-arrow-right menu_icons"
                                                                         aria-hidden="true"></i>
