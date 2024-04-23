@@ -115,7 +115,7 @@ class SiteController extends Controller
             'system_logo_black'          => $globalFunSystemLogoBlack['status'] == 1 ? $globalFunSystemLogoBlack['file_name'] : $webSetting->system_logo_black,
             'about'                      => $request->about,
             'address_line_one'           => $request->address_line_one,
-            'address_line_one'           => $request->address_line_one,
+            'address_line_two'           => $request->address_line_two,
             'system_timezone'            => $request->system_timezone,
             'base_color'                 => $request->base_color,
             'base_hover_color'           => $request->base_hover_color,
