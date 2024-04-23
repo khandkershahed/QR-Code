@@ -12,7 +12,7 @@
                         data-aos-offset="50">
                         <div class="logo mb-10">
                             <a href="{{ route('homePage') }}">
-                                <img width="100px" src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : https://i.ibb.co/BNBTVN4/logo.png }}"
+                                <img width="100px" src="{{ (!empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white))) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('https://i.ibb.co/BNBTVN4/logo.png') }}"
                                     alt="Logo"></a>
                         </div>
                     </div>
