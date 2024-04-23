@@ -204,6 +204,14 @@
                             placeholder="Enter Youtube Url"></x-metronic.input>
                     </div>
                     <div class="col-lg-4">
+                        <x-metronic.label for="pinterest_url"
+                            class="col-form-label fw-bold fs-6">{{ __('Pinterest Url') }}
+                        </x-metronic.label>
+
+                        <x-metronic.input id="pinterest_url" type="text" name="pinterest_url" :value="$site ? $site->pinterest_url : ''"
+                            placeholder="Enter Youtube Url"></x-metronic.input>
+                    </div>
+                    <div class="col-lg-4">
                         <x-metronic.label for="service_days"
                             class="col-form-label fw-bold fs-6">{{ __('Service Days') }}
                         </x-metronic.label>

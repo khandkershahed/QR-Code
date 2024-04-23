@@ -11,7 +11,8 @@
                     <div class="logo-part aos-init aos-animate" data-aos="fade-left" data-aos-duration="1500"
                         data-aos-offset="50">
                         <div class="logo mb-10">
-                            <a href="{{ route('homePage') }}"><img width="100px" src="https://i.ibb.co/BNBTVN4/logo.png"
+                            <a href="{{ route('homePage') }}">
+                                <img width="100px" src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : https://i.ibb.co/BNBTVN4/logo.png }}"
                                     alt="Logo"></a>
                         </div>
                     </div>
@@ -40,10 +41,25 @@
                         <p class="text-muted">Connect with us and stay updated on the latest news, offers, and updates.
                         </p>
                         <div class="social-style-one">
-                            <a href="{{ $site->twitter_url }}"><i class="fab fa-twitter"></i></a>
-                            <a href="{{ $site->facebook_url }}"><i class="fab fa-facebook-f"></i></a>
+                            @if (!empty($site->twitter_url))
+                                <a href="{{ $site->twitter_url }}"><i class="fab fa-twitter"></i></a>
+                            @endif
+                            @if (!empty($site->facebook_url))
+                                <a href="{{ $site->facebook_url }}"><i class="fab fa-facebook-f"></i></a>
+                            @endif
+                            @if (!empty($site->instagram_url))
+                                <a href="{{ $site->instagram_url }}"><i class="fab fa-instagram"></i></a>
+                            @endif
+                            @if (!empty($site->pinterest_url))
+                                <a href="{{ $site->pinterest_url }}"><i class="fab fa-pinterest-p"></i></a>
+                            @endif
+                            @if (!empty($site->youtube_url))
+                                <a href="{{ $site->youtube_url }}"><i class="fab fa-youtube"></i></a>
+                            @endif
+                            {{-- <a href="{{ $site->facebook_url }}"><i class="fab fa-facebook-f"></i></a>
                             <a href="{{ $site->instagram_url }}"><i class="fab fa-instagram"></i></a>
                             <a href="{{ $site->pinterest_url }}"><i class="fab fa-pinterest-p"></i></a>
+                            <a href="{{ $site->youtube_url }}"><i class="fab fa-youtube"></i></a> --}}
                         </div>
                     </div>
                 </div>
