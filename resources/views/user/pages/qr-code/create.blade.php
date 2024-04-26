@@ -346,7 +346,8 @@
                         contentType: false,
                         success: function(response) {
                             // Display the QR code image
-                            $('#qr-code-img').attr('src', response.qr_code);
+                            $('#generatedQRCode').attr('src', '');
+                            $('#generatedQRCode').attr('src', response.qr_code);
                         },
                         error: function(xhr, status, error) {
                             console.error(error);
