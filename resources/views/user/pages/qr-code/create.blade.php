@@ -354,9 +354,6 @@
                         error: function(xhr, status, error) {
                             console.error(error);
                         }
-                        error: function(xhr, status, error) {
-                            console.error(error);
-                        }
                     });
                 });
             });
