@@ -1,4 +1,4 @@
-    @foreach ($eyeBalls as $eye_ball)
+    @foreach ($eyeBalls as $eye_ball) 
         <div class="col-lg-2 pt-5">
             <label class="btn btn-outline btn-outline-dashed d-flex flex-stack text-start py-6 px-3 mb-5">
                 <div class="d-flex align-items-center">

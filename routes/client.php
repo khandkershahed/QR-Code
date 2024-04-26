@@ -23,5 +23,11 @@ Route::middleware('auth')->prefix('user')->name('user.')->group(function () {
         Route::get('stripe/checkout', 'stripeCheckout')->name('stripe.checkout');
         Route::get('stripe/checkout/success', 'stripeCheckoutSuccess')->name('stripe.checkout.success');
     });
+    Route::post('qrcode/preview', [QrCodeController::class, 'qrPreview'])->name('qr.preview');
+
+
+
+
+
 });
 Route::get('/{Qr}', [QrCodeController::class, 'showQr'])->name('showQr');

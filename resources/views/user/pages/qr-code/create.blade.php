@@ -133,7 +133,8 @@
                                                             <x-metronic.label for="status"
                                                                 class="form-label">{{ __('Enter a name for your QR code') }}
                                                                 <span class="text-danger">*</span></x-metronic.label>
-                                                            <select class="form-select" data-control="select2" name="qr_scan_status"
+                                                            <select class="form-select" data-control="select2"
+                                                                name="qr_scan_status"
                                                                 data-placeholder="Select an option" required>
                                                                 <option>Select Status</option>
                                                                 <option value="static">Static</option>
@@ -161,17 +162,7 @@
                                     </div>
 
                                     <div>
-                                        {{-- <button type="button" class="btn btn-primary" data-kt-stepper-action="submit">
-                                            <span class="indicator-label">
-                                                Submit
-                                            </span>
-                                            <span class="indicator-progress">
-                                                Please wait... <span
-                                                    class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                                            </span>
-                                        </button> --}}
-                                        {{-- <button type="submit" id="generateButton" data-kt-stepper-action="submit"
-                                            class="btn btn-primary">{{ __('Generate') }}</button> --}}
+
                                         <button type="submit" id="generateButton" data-kt-stepper-action="submit"
                                             class="btn btn-primary">{{ __('Generate') }}</button>
 
@@ -188,11 +179,15 @@
             <div class="col-lg-3">
                 <div class="card mt-10">
                     <div class="card-body">
-                        <div class="d-flex flex-column justify-content-center align-items-center"
-                            id="generatedQRCodeContainer">
+                        <div class="d-flex flex-column justify-content-center align-items-center">
+                            {{-- id="generatedQRCodeContainer" --}}
                             <h3>Preview</h3>
-                            <img id="generatedQRCode" class="img-fluid" src="https://i.ibb.co/XzHNWc0/no-qr.png"
-                                alt="QR Code">
+                            <div id="generatedQRCodeContainer">
+                                <img id="generatedQRCode" class="img-fluid" src="https://i.ibb.co/XzHNWc0/no-qr.png"
+                                    alt="QR Code">
+                            </div>
+
+                            {{-- {!! QrCode::size(220)->eye('left-leaf', 0.1)->eyeColor(0, 255, 255, 255, 0, 0, 0)->eyeColor(1, 222, 18, 222, 222, 18, 222)->eyeColor(2, 222, 18, 222, 222, 18, 222)->style('dot', 0.8)->errorCorrection('H')->generate('Make me into a QrCode!') !!} --}}
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-around align-items-center">
@@ -336,10 +331,29 @@
             });
         </script>
         <script>
-            // var myForm = $('#generateQRCodeForm');
-            // myForm.find('input').on('keyup change', function() {
-            //     alert()
-            // });
+            $(document).ready(function() {
+                $('#generateQRCodeForm').on('keyup change', 'input, textarea, select', function(e) {
+                    e.preventDefault(); // Prevent default form submission behavior
+
+                    // Get the form data
+                    var formData = new FormData($(this).closest('form')[0]);
+
+                    $.ajax({
+                        url: '{{ route('user.qr.preview') }}', // Replace this with the URL of your Laravel route or endpoint
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function(response) {
+                            // Update the HTML content of the container div with the new QR code
+                            $('#generatedQRCodeContainer').html(response);
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(error);
+                        }
+                    });
+                });
+            });
         </script>
     @endpush
 </x-app-layout>

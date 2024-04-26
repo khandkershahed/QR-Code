@@ -115,6 +115,7 @@ Route::middleware('auth:admin', 'role:admin')->prefix('admin')->name('admin.')->
         Route::delete('/newsletter/{id}/destroy', 'destroy')->name('newsletter.destroy');
     });
 
+    Route::get('qrcode/preview', [QrCodeController::class, 'qrPreview'])->name('qr.preview');
     Route::get('website/setting', [SiteController::class, 'index'])->name('setting.index');
     Route::put('site/setting', [SiteController::class, 'site'])->name('site.setting');
 

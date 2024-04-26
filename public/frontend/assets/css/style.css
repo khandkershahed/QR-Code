@@ -11514,9 +11514,9 @@ a.theme-btn.style-four:hover {
 .menu-btns .light-btn i {
     font-size: 0.8em;
     margin-left: 9px;
-    -webkit-transform: rotate(-30deg);
-    -ms-transform: rotate(-30deg);
-    transform: rotate(-30deg);
+    /* -webkit-transform: rotate(-30deg);
+    -ms-transform: rotate(-30deg); */
+    /* transform: rotate(-30deg); */
 }
 
 @media only screen and (max-width: 991px) {
