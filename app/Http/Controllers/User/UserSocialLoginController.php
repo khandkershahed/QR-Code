@@ -44,9 +44,9 @@ class UserSocialLoginController extends Controller
                 ]);
                 // $newUser->notify(new UserRegistration($user->name));
                 Auth::login($newUser);
-                Mail::to($user->email)->send(new UserRegistrationMail($user->name));
 
                 return redirect()->intended(RouteServiceProvider::HOME);
+                Mail::to($user->email)->send(new UserRegistrationMail($user->name));
             }
 
         } catch (Exception $e) {
