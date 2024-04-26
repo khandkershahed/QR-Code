@@ -611,7 +611,10 @@ class QrCodeController extends Controller
         }
 
 
-        return $qrCodeString;
+        $qrCodeDataUrl = 'data:image/png;base64,' . base64_encode($qrCodeString);
+
+    // Return the data URL
+    return response()->json(['qr_code' => $qrCodeDataUrl]);
     }
 
     private function hexToRgb($hex)
