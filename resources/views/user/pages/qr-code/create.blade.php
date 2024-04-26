@@ -344,12 +344,16 @@
                         data: formData,
                         processData: false,
                         contentType: false,
+                        responseType: 'blob', // Set the response type to blob
                         success: function(response) {
-                            // Update the HTML content of the container div with the new QR code
-                            var imageURL = 'data:image/png;base64,' + btoa(response);
+                            // Create a blob URL for the binary response
+                            var blobUrl = URL.createObjectURL(response);
                             // Update the source of the QR code image
-                            $('#generatedQRCode').attr('src', imageURL);
+                            $('#generatedQRCode').attr('src', blobUrl);
                         },
+                        error: function(xhr, status, error) {
+                            console.error(error);
+                        }
                         error: function(xhr, status, error) {
                             console.error(error);
                         }
