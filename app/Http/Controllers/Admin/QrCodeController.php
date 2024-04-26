@@ -383,31 +383,6 @@ class QrCodeController extends Controller
         }
     }
 
-    private function hexToRgb($hex)
-    {
-        $hex = ltrim($hex, '#');
-        list($r, $g, $b) = sscanf($hex, "%02x%02x%02x");
-        return ['r' => $r, 'g' => $g, 'b' => $b];
-    }
-
-
-
-    public function edit(string $id)
-    {
-        return view('user.pages.qr-code.edit');
-    }
-
-
-    public function destroy(string $id)
-    {
-        Qr::find($id)->delete();
-        $qr_data = QrData::where('code_id' , $id)->first();
-        if (!empty($qr_data)) {
-            $qr_data->delete();
-        }
-    }
-
-
     public function qrPreview(Request $request)
     {
 
@@ -638,6 +613,33 @@ class QrCodeController extends Controller
 
         return $qrCodeString;
     }
+
+    private function hexToRgb($hex)
+    {
+        $hex = ltrim($hex, '#');
+        list($r, $g, $b) = sscanf($hex, "%02x%02x%02x");
+        return ['r' => $r, 'g' => $g, 'b' => $b];
+    }
+
+
+
+    public function edit(string $id)
+    {
+        return view('user.pages.qr-code.edit');
+    }
+
+
+    public function destroy(string $id)
+    {
+        Qr::find($id)->delete();
+        $qr_data = QrData::where('code_id' , $id)->first();
+        if (!empty($qr_data)) {
+            $qr_data->delete();
+        }
+    }
+
+
+
 }
 
 

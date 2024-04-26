@@ -346,7 +346,9 @@
                         contentType: false,
                         success: function(response) {
                             // Update the HTML content of the container div with the new QR code
-                            $('#generatedQRCodeContainer').html(response);
+                            var imageURL = 'data:image/png;base64,' + btoa(response);
+                            // Update the source of the QR code image
+                            $('#generatedQRCode').attr('src', imageURL);
                         },
                         error: function(xhr, status, error) {
                             console.error(error);
