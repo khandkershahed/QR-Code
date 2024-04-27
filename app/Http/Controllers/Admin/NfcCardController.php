@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class NfcCardController extends Controller
 {
@@ -28,7 +29,6 @@ class NfcCardController extends Controller
      */
     public function store(Request $request)
     {
-       
     }
 
     /**
@@ -61,5 +61,14 @@ class NfcCardController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function updateNFCTemplateSession(Request $request)
+    {
+        $nfcTemplateValue = $request->input('nfc_template');
+        Session::forget('nfc_template');
+        Session::put('nfc_template', $nfcTemplateValue);
+
+        return response()->json(['success' => true]);
     }
 }

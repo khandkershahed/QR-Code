@@ -1,311 +1,440 @@
+<div class="nfc-preview">
+</div>
+
+
 <div class="card nfc-card nfc-one-card-frame nfc-one template-one" style="display: none;" id="template-one">
-    <div class="card-header p-0 border-0">
-        <img class="img-fluid profile_image"
-            src="https://annemariesegal.com/wp-content/uploads/2017/04/adobestock_86346713-cropped-young-woman-in-suit.jpg?w=1200"
-            alt="">
-        <div class="nfc-shapes-one">
-            <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                <path fill="#fff" fill-opacity="1"
-                    d="M0,224L40,202.7C80,181,160,139,240,144C320,149,400,203,480,240C560,277,640,299,720,288C800,277,880,235,960,186.7C1040,139,1120,85,1200,64C1280,43,1360,53,1400,58.7L1440,64L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z">
-                </path>
-            </svg>
-        </div>
-    </div>
-    <div class="card-body">
-        <div class="d-flex  justify-content-between ">
-            <div>
-                <div class="d-flex align-items-center">
-                    <h6 class="mb-0 nfc-one-title first_name">Sazeduzzamn</h6>
-                    <span class="px-2">|</span>
-                    <h6 class="mb-0 nfc-one-title last_name">Saju</h6>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 d-flex justify-content-center align-items-center px-0">
+                <div class="nfc-mobile-frame">
+                    <div class="card p-0 border-0 shadow-none tem-one-scroll">
+                        <div class="card-header p-0 border-0">
+                            <div class="nfc-one-cover-img-box">
+                                <div class="nfc-one-cover-img"
+                                    style="
+                        background-image: url(https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsX29mZmljZV8xOV9waG90b19vZl9hX2FzaWFuX2J1c2luZXNzbWFuX2lzb2xhdGVkX29uX2Ffd18yNjRjN2Y5ZS03ZDBiLTQ2ODgtYjkzOS01MjM3ZDExNGYxNDVfMS5qcGc.jpg);
+                      ">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-0 tem-one-about-content">
+                            <div class="d-flex">
+                                <div class="tem-one-profile">
+                                    <div class="p-3">
+                                        <div>
+                                            <h1 class="tem-one-name">Sazeduzzaman Saju</h1>
+                                            <h4 class="tem-one-designation">
+                                                Frontend Developer
+                                            </h4>
+                                        </div>
+                                        <!-- contact -->
+                                        <div>
+                                            <small class="tem-one-address">Ulica Zvonka Brkića 58 ,</small>
+                                            <small class="tem-one-address">Rab</small>
+                                            <small class="tem-one-address">Croatia</small>
+                                            <br />
+                                            <small class="tem-one-address">+385 91 561 0409</small>
+                                            <div class="tem-one-social-icons mt-3">
+                                                <a href="#" class="fa fa-facebook"></a>
+                                                <a href="#" class="fa fa-instagram"></a>
+                                                <a href="#" class="fa fa-youtube"></a>
+                                                <a href="#" class="fa fa-google"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-center tem-one-profile-image">
+                                    <div class="tem-one-profile-img text-center">
+                                        <img src="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsX29mZmljZV8xOV9waG90b19vZl9hX2FzaWFuX2J1c2luZXNzbWFuX2lzb2xhdGVkX29uX2Ffd18yNjRjN2Y5ZS03ZDBiLTQ2ODgtYjkzOS01MjM3ZDExNGYxNDVfMS5qcGc.jpg"
+                                            alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- BIo -->
+                            <div class="tem-one-bio-box px-3 pt-4">
+                                <h6 class="tem-one-bio-title">BIO</h6>
+                                <p>
+                                    Book enthusiast, nature lover, avid learner, coffee
+                                    addict, aspiring writer, music aficionado, travel
+                                    enthusiast, optimistic dreamer.
+                                </p>
+                            </div>
+                            <!-- Service -->
+                            <div class="tem-one-service-box px-3 py-4">
+                                <h6 class="tem-one-service-title">Service</h6>
+                                <p>
+                                    Professional, reliable service provider committed to
+                                    exceeding expectations with quality, efficiency, and
+                                    personalized care for every client's needs.
+                                </p>
+                                <div class="slick-slider">
+                                    <div>
+                                        <img class="img-fluid"
+                                            style="
+                            background-size: cover;
+                            width: 100%;
+                            height: 300px;
+                            object-fit: cover;
+                          "
+                                            src="https://www.awardstrophyworld.com/cdn/shop/files/TrophySlider-MOBILE.jpg?v=1691869489&width=1278"
+                                            alt="Slide 1" />
+                                    </div>
+                                    <div>
+                                        <img class="img-fluid"
+                                            style="
+                            background-size: cover;
+                            width: 100%;
+                            height: 300px;
+                            object-fit: cover;
+                          "
+                                            src="https://img.asmedia.epimg.net/resizer/v2/KQHEREZJPZFUNRC3WQYWA3QBXI.jpg?auth=a869899f0991310a88875490e300e1de99703103383da19f43218303861bcb70&width=1200&height=1200&smart=true"
+                                            alt="Slide 2" />
+                                    </div>
+                                    <div>
+                                        <img class="img-fluid"
+                                            style="
+                            background-size: cover;
+                            width: 100%;
+                            height: 300px;
+                            object-fit: cover;
+                          "
+                                            src="https://metro.co.uk/wp-content/uploads/2022/12/GettyImages-1450072343.jpg?quality=90&strip=all&w=1024&h=630&crop=1"
+                                            alt="Slide 3" />
+                                    </div>
+                                    <!-- Add more divs with images for additional slides -->
+                                </div>
+                            </div>
+                            <!-- Service -->
+                            <div class="tem-one-bio-box px-3 pt-4">
+                                <h6 class="tem-one-bio-title">Company</h6>
+                                <div class="d-flex">
+                                    <div class="tem-one-about-first">
+                                        <p class="fw-bold mb-0">Ngen It LTD</p>
+                                        <p class="mb-0">
+                                            <span>257/A, San-fca</span>
+                                            <br />
+                                            <span>Calefornia,USA</span>
+                                        </p>
+                                        <p>+03 58685125</p>
+                                    </div>
+                                    <div class="tem-one-about-secontd">
+                                        <p class="fw-bold mb-0">About</p>
+                                        <p>
+                                            Passionate team dedicated to excellence, creativity,
+                                            and customer satisfaction.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Service -->
+                            <div class="tem-one-service-box px-3 py-4">
+                                <h6 class="tem-one-service-title">Contact</h6>
+                                <p class="mb-0">
+                                    @: szamansaju@gmail.com
+                                    <small class="fw-bold">(Work)</small>
+                                </p>
+                                <p class="mb-0">
+                                    p: +385 91 561 0409
+                                    <small class="fw-bold">(Personal)</small>
+                                </p>
+                                <div class="pt-2">
+                                    <form action="" method="post">
+                                        <div class="row">
+                                            <div class="col mb-2">
+                                                <div>
+                                                    <label for="client_name">Name
+                                                        <span class="text-danger">*</span></label>
+                                                    <input type="text" name="client_name" required
+                                                        class="form-control form-control-sm" id="" />
+                                                </div>
+                                            </div>
+                                            <div class="col mb-2">
+                                                <div>
+                                                    <label for="client_email">Email
+                                                        <span class="text-danger">*</span></label>
+                                                    <input type="text" name="client_email" required
+                                                        class="form-control form-control-sm" id="" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col mb-2">
+                                                <div>
+                                                    <label for="client_name">Phone</label>
+                                                    <input type="text" name="client_phone"
+                                                        class="form-control form-control-sm" id="" />
+                                                </div>
+                                            </div>
+                                            <div class="col mb-2">
+                                                <div>
+                                                    <label for="headline">Headline</label>
+                                                    <input type="text" name="headline"
+                                                        class="form-control form-control-sm" id="" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col mb-2">
+                                                <div>
+                                                    <label for="client_message">Message</label>
+                                                    <br />
+                                                    <textarea name="client_message" id="" class="form-control" rows="3"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col mb-2 text-end">
+                                                <button type="submit" class="btn btn-danger btn-sm mt-2">
+                                                    Submit
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div>
+                                    <div class="d-flex justify-content-center pt-5">
+                                        <img class="" width="150px"
+                                            src="https://cdn.britannica.com/17/155017-050-9AC96FC8/Example-QR-code.jpg"
+                                            alt="" />
+                                    </div>
+                                </div>
+                                <div class="sticky-bottom mt-5">
+                                    <button class="btn-primary btn w-100">
+                                        Connect Now
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <p class="mb-0 text-mutedpronouns">(he/him)</p>
-                <div class="pt-2">
-                    <p class="mb-0 fw-bold nfc-one-title designation">Frontend Developer</h6>
-                    <p class="mb-0 text-muted"><span class="company">Amazon Ltd.</span></p>
-                    <p class="mb-0 text-muted"><span class="address">Dhaka, Bangladesh</span></p>
-                </div>
             </div>
-            <div class="nfc-profile-img-one">
-                <img class="img-fluid company_logo"
-                    src="https://annemariesegal.com/wp-content/uploads/2017/04/adobestock_86346713-cropped-young-woman-in-suit.jpg?w=1200"
-                    alt="">
-            </div>
-        </div>
-        <div class="nfc-bio-one my-2">
-            <p class="mb-0 fw-bold text-muted">About</p>
-            <p style="text-align: justify;">
-                <small class="summary">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus omnis,
-                    sint dolore iusto et consequatur!</small>
-            </p>
-        </div>
-        <div class="nfc-contact-one">
-            <div class="d-flex align-items-center">
-                <a href="">
-                    <i class="fa-solid fa-phone"></i>
-                </a>
-                <!-- Contact Info -->
-                <div class="ps-3">
-                    <p class="m-0">01576614451</p>
-                    <p class="m-0"><small>Work/Home/Personal</small></p>
-                </div>
-            </div>
-        </div>
-        <div class="nfc-social-one mt-3 d-flex justify-content-center">
-            <div>
-                <a href="" class="mb-2"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="" class="mb-2"><i class="fa-brands fa-instagram"></i></a>
-                <a href="" class="mb-2"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a href="" class="mb-2"><i class="fa-regular fa-envelope"></i></a>
-                <a href="" class="mb-2"><i class="fa-brands fa-pinterest-p"></i></a>
-                <a href="" class="mb-2"><i class="fa-brands fa-youtube"></i></a>
-                <a href="" class="mb-2"><i class="fa-brands fa-whatsapp"></i></a>
-            </div>
-        </div>
-        <div class="nfc-call-one-action mt-3">
-            <a href="#" class="w-100 btn text-white" style="background-color: #ff9900;">Contact Now</a>
         </div>
     </div>
 </div>
 
 {{-- Card Two --}}
 <div class="card nfc-card nfc-two-card-frame nfc-two template-two" style="display: none;" id="template-two">
-    <div class="card-header py-4 px-4 border-0">
-        <div class="d-flex align-items-center">
-            <h6 class="mb-0 nfc-two-title first_name">Sazeduzzamn</h6>
-            <span class="px-2">|</span>
-            <h6 class="mb-0 nfc-two-title last_name">Saju</h6>
-        </div>
-        <p class="mb-0 text-whitepronouns">(he/him)</p>
-        <div class="pt-2">
-            <p class="mb-0 fw-bold nfc-two-title designation">Frontend Developer</h6>
-            <p class="mb-0 text-white"><span class="company">Amazon Ltd.</span></p>
-            <p class="mb-0 text-white"><span class="address">Dhaka, Bangladesh</span></p>
-        </div>
-    </div>
-    <div class="card-body px-4 nfc-card-body-two">
-        <div class="nfc-tow-p-img">
-            <img class="img-fluid profile_image"
-                src="https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg"
-                alt="">
-        </div>
-        <div class="nfc-bio-two my-2">
-            <p class="mb-0 fw-bold text-muted">About</p>
-            <p style="text-align: justify;">
-                <small class="summary">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus omnis,
-                    sint dolore iusto et consequatur!</small>
-            </p>
-        </div>
-    </div>
-    <div class="card-body bg-white nfc-contact-two">
-        <div class="nfc-contact-one">
-            <div class="d-flex align-items-center mb-2">
-                <a href="">
-                    <i class="fa-solid fa-phone"></i>
-                </a>
-                <!-- Contact Info -->
-                <div class="ps-3">
-                    <p class="m-0 text-muted fw-bold">01576614451</p>
-                    <p class="m-0 text-muted"><small>Work/Home/Personal</small></p>
-                </div>
-            </div>
-            <div class="d-flex align-items-center mb-2">
-                <a href="">
-                    <i class="fa-solid fa-envelope"></i>
-                </a>
-                <!-- Contact Info -->
-                <div class="ps-3">
-                    <p class="m-0 text-muted fw-bold">szamansaju@gmail.com</p>
-                    <p class="m-0 text-muted"><small>Work/Home/Personal</small></p>
-                </div>
-            </div>
-            <div class="d-flex align-items-center mb-2">
-                <a href="">
-                    <i class="fa-solid fa-globe"></i>
-                </a>
-                <!-- Contact Info -->
-                <div class="ps-3">
-                    <p class="m-0 text-muted fw-bold">https://dashboard.uniqode.com/</p>
-                    <p class="m-0 text-muted"><small>Work/Home/Personal</small></p>
-                </div>
-            </div>
-            <div class="nfc-social-two mt-3 d-flex justify-content-center pt-3">
-                <div>
-                    <a href="" class="mb-2"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="" class="mb-2"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="" class="mb-2"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="" class="mb-2"><i class="fa-regular fa-envelope"></i></a>
-                    <a href="" class="mb-2"><i class="fa-brands fa-pinterest-p"></i></a>
-                    <a href="" class="mb-2"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="" class="mb-2"><i class="fa-brands fa-whatsapp"></i></a>
-                </div>
-            </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 d-flex justify-content-center align-items-center px-0">
+                <div class="nfc-mobile-frame">
+                    <div class="card p-0 border-0 shadow-none tem-one-scroll">
+                        <div class="card-header p-0 border-0 border-0">
+                            <div class="nfc-one-cover-img-box">
+                                <div class="nfc-one-cover-img"
+                                    style="background-image: url(https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/8a6fd685408335.5d7a95b718a67.jpg);">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-0 tem-one-about-content">
+                            <div class="d-flex justify-content-center">
+                                <div class="tem-one-profile d-flex justify-content-around">
+                                    <div class="p-3 text-center">
+                                        <div>
+                                            <img width="80px" height="80px"
+                                                style="object-fit: cover; border-radius: 50px;"
+                                                src="https://www.shutterstock.com/image-photo/head-shot-portrait-close-smiling-600nw-1714666150.jpg"
+                                                alt="" />
+                                        </div>
+                                        <div>
+                                            <h1 class="tem-one-name">Sazeduzzaman Saju</h1>
+                                            <h6 class="tem-one-designation fw-bold">
+                                                Frontend Developer
+                                            </h6>
+                                        </div>
+                                        <!-- contact -->
+                                        <div class="text-center">
+                                            <small class="tem-one-address">Ulica Zvonka Brkića 58 ,</small>
+                                            <small class="tem-one-address">Rab</small>
+                                            <small class="tem-one-address">Croatia</small>
+                                            <br />
+                                            <small class="tem-one-address">+385 91 561 0409</small>
+                                            <div class="tem-one-social-icons mt-3 d-flex justify-content-center">
+                                                <a href="#" class="fa fa-facebook"></a>
+                                                <a href="#" class="fa fa-instagram"></a>
+                                                <a href="#" class="fa fa-youtube"></a>
+                                                <a href="#" class="fa fa-google"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- BIo -->
+                            <div class="tem-one-bio-box px-3 pt-4">
+                                <h6 class="tem-one-bio-title">BIO</h6>
+                                <p>
+                                    Book enthusiast, nature lover, avid learner, coffee
+                                    addict, aspiring writer, music aficionado, travel
+                                    enthusiast, optimistic dreamer.
+                                </p>
+                            </div>
+                            <!-- Service -->
+                            <div class="tem-one-service-box px-3 py-4">
+                                <h6 class="tem-one-service-title">Service</h6>
+                                <p>
+                                    Professional, reliable service provider committed to
+                                    exceeding expectations with quality, efficiency, and
+                                    personalized care for every client's needs.
+                                </p>
+                                <div class="row g-x-1">
+                                    <div class="card col-6 p-0 border-0 rounded-0">
+                                        <div class="card-header p-0 border-0">
+                                            <h6 class="text-center mb-0 p-2 tem-one-services-title">WEB DEVELOPMENT
+                                            </h6>
+                                        </div>
+                                        <div class="card-body p-0">
+                                            <div>
+                                                <a href="">
+                                                    <img style="
+                                width: 100%;
+                                height: 100%;
+                                background-size: cover;
+                                object-fit: cover;
+                              "
+                                                        src="https://img.freepik.com/free-vector/website-development-banner_33099-1687.jpg"
+                                                        alt="Slide 1" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card col-6 p-0 border-0 rounded-0">
+                                        <div class="card-header p-0 border-0">
+                                            <h6 class="text-center mb-0 p-2 tem-one-services-title">GRAPHIC DESIGN</h6>
+                                        </div>
+                                        <div class="card-body p-0">
+                                            <div>
+                                                <a href="">
+                                                    <img style="
+                                width: 100%;
+                                height: 100%;
+                                background-size: cover;
+                                object-fit: cover;
+                              "
+                                                        src="https://media.geeksforgeeks.org/wp-content/uploads/20240227164613/GRAPHIC-DESIGN-BANNER-copy.webp"
+                                                        alt="Slide 2" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Add more divs with images for additional slides -->
+                                </div>
 
+                            </div>
+                            <!-- Service -->
+                            <div class="tem-one-bio-box px-3 pt-4">
+                                <h6 class="tem-one-bio-title">Company</h6>
+                                <div class="d-flex">
+                                    <div class="tem-one-about-first">
+                                        <p class="fw-bold mb-0">Ngen It LTD</p>
+                                        <p class="mb-0">
+                                            <span>257/A, San-fca</span>
+                                            <br />
+                                            <span>Calefornia,USA</span>
+                                        </p>
+                                        <p>+03 58685125</p>
+                                    </div>
+                                    <div class="tem-one-about-secontd">
+                                        <p class="fw-bold mb-0">About</p>
+                                        <p>
+                                            Passionate team dedicated to excellence, creativity,
+                                            and customer satisfaction.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Service -->
+                            <div class="tem-one-service-box px-3 py-4">
+                                <h6 class="tem-one-service-title">Contact</h6>
+                                <p class="mb-0">
+                                    @: szamansaju@gmail.com
+                                    <small class="fw-bold">(Work)</small>
+                                </p>
+                                <p class="mb-0">
+                                    p: +385 91 561 0409
+                                    <small class="fw-bold">(Personal)</small>
+                                </p>
+                                <div class="pt-4">
+                                    <form action="" method="post">
+                                        <div class="row">
+                                            <div class="col mb-2">
+                                                <div>
+                                                    <small for="client_name">Name
+                                                        <span class="text-danger">*</span></small>
+                                                    <input type="text" name="client_name" required
+                                                        class="form-control form-control-sm" id="" />
+                                                </div>
+                                            </div>
+                                            <div class="col mb-2">
+                                                <div>
+                                                    <small for="client_email">Email
+                                                        <span class="text-danger">*</span></small>
+                                                    <input type="text" name="client_email" required
+                                                        class="form-control form-control-sm" id="" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col mb-2">
+                                                <div>
+                                                    <small for="client_name">Phone</small>
+                                                    <input type="text" name="client_phone"
+                                                        class="form-control form-control-sm" id="" />
+                                                </div>
+                                            </div>
+                                            <div class="col mb-2">
+                                                <div>
+                                                    <small for="headline">Headline</small>
+                                                    <input type="text" name="headline"
+                                                        class="form-control form-control-sm" id="" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col mb-2">
+                                                <div>
+                                                    <small for="client_message">Message</small>
+                                                    <br />
+                                                    <textarea name="client_message" id="" class="form-control" rows="3"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col mb-2 text-center">
+                                                <button type="submit" class="btn btn-danger btn-sm mt-2">
+                                                    Submit
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div>
+                                    <h6 class="tem-one-bio-title text-white pt-5">Scan Me</h6>
+                                    <div class="d-flex justify-content-center">
+                                        <img class="" width="150px"
+                                            src="https://cdn.britannica.com/17/155017-050-9AC96FC8/Example-QR-code.jpg"
+                                            alt="" />
+                                    </div>
+                                </div>
+                                <div class="sticky-bottom mt-5">
+                                    <button class="btn-info btn w-100 text-white">
+                                        Connect Now
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="nfc-call-two-action mt-3">
-        <a href="#" class="w-100 btn text-white">Contact Now</a>
     </div>
 </div>
 
 {{-- Card Three --}}
 <div class="card nfc-card nfc-three-card-frame nfc-three template-three" style="display: none;" id="template-three">
-    <div class="card-header card-header-three p-0 border-0">
-        <img class="profile_image"
-            src="https://annemariesegal.com/wp-content/uploads/2017/04/adobestock_86346713-cropped-young-woman-in-suit.jpg?w=1200"
-            alt="">
-    </div>
-    <div class="card-header py-4 px-4 border-0 nfc-header-three">
-        <div class="d-flex justify-content-between  align-items-lg-end   ">
-            <div>
-                <div class="d-flex align-items-center">
-                    <h6 class="mb-0 nfc-three-title first_name">Sazeduzzamn</h6>
-                    <span class="px-2">|</span>
-                    <h6 class="mb-0 nfc-three-title last_name">Saju</h6>
-                </div>
-                <p class="mb-0 text-light pronouns">(he/him)</p>
-                <div class="pt-2">
-                    <p class="mb-0 fw-bold nfc-three-title designation">Frontend Developer</h6>
-                    <p class="mb-0 text-light"><span class="company">Amazon Ltd.</span></p>
-                    <p class="mb-0 text-light"><span class="address">Dhaka, Bangladesh</span></p>
-                </div>
-            </div>
-            <div>
-                <div class="d-flex justify-content-center nfc-logo-three">
-                    <img width="65px" class="company_logo"
-                        src="https://i.ibb.co/YfBmcnz/bird-colorful-gradient-design-vector-343694-2506-removebg-preview.png"
-                        alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card-body bg-white nfc-contact-three">
-        <div class="nfc-contact-three">
-            <div class="d-flex align-items-center mb-2">
-                <a href="">
-                    <i class="fa-solid fa-phone"></i>
-                </a>
-                <!-- Contact Info -->
-                <div class="ps-3">
-                    <p class="m-0 text-muted fw-bold">01576614451</p>
-                    <p class="m-0 text-muted"><small>Work/Home/Personal</small></p>
-                </div>
-            </div>
-            <div class="d-flex align-items-center mb-2">
-                <a href="">
-                    <i class="fa-solid fa-envelope"></i>
-                </a>
-                <!-- Contact Info -->
-                <div class="ps-3">
-                    <p class="m-0 text-muted fw-bold">szamansaju@gmail.com</p>
-                    <p class="m-0 text-muted"><small>Work/Home/Personal</small></p>
-                </div>
-            </div>
-            <div class="d-flex align-items-center mb-2">
-                <a href="">
-                    <i class="fa-solid fa-globe"></i>
-                </a>
-                <!-- Contact Info -->
-                <div class="ps-3">
-                    <p class="m-0 text-muted fw-bold">https://dashboard.uniqode.com/</p>
-                    <p class="m-0 text-muted"><small>Work/Home/Personal</small></p>
-                </div>
-            </div>
-            <div class="nfc-social-three mt-3 d-flex justify-content-center pt-3">
-                <div>
-                    <a href="" class="mb-2"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="" class="mb-2"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="" class="mb-2"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="" class="mb-2"><i class="fa-regular fa-envelope"></i></a>
-                    <a href="" class="mb-2"><i class="fa-brands fa-pinterest-p"></i></a>
-                    <a href="" class="mb-2"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="" class="mb-2"><i class="fa-brands fa-whatsapp"></i></a>
-                </div>
-            </div>
-            <div class="nfc-call-three-action mt-3">
-                <a href="#" class="w-100 btn text-white">Contact Now</a>
-            </div>
-        </div>
-    </div>
+
 </div>
 
 {{-- Card Three --}}
 <div class="card nfc-card nfc-four-card-frame nfc-four template-four" style="display: none;" id="template-four">
-    <div class="card-header card-header-four p-0 border-0">
-        <img class="profile_image"
-            src="https://annemariesegal.com/wp-content/uploads/2017/04/adobestock_86346713-cropped-young-woman-in-suit.jpg?w=1200"
-            alt="">
-    </div>
-    <div class="card-header py-5 px-4 border-0 nfc-header-four">
-        <div class="d-flex justify-content-between  align-items-lg-center    ">
-            <div>
-                <div class="d-flex align-items-center">
-                    <h6 class="mb-0 nfc-four-title first_name">Sazeduzzamn</h6>
-                    <span class="px-2">|</span>
-                    <h6 class="mb-0 nfc-four-title last_name">Saju</h6>
-                </div>
-                <p class="mb-0 text-light pronouns">(he/him)</p>
-                <div class="pt-2">
-                    <p class="mb-0 fw-bold nfc-four-title designation">Frontend Developer</h6>
-                    <p class="mb-0 text-light"><span class="company">Amazon Ltd.</span></p>
-                    <p class="mb-0 text-light"><span class="address">Dhaka, Bangladesh</span></p>
-                </div>
-            </div>
-            <div>
-                <div class="d-flex justify-content-center nfc-logo-four">
-                    <img width="65px" class="company_logo"
-                        src="https://i.ibb.co/YfBmcnz/bird-colorful-gradient-design-vector-343694-2506-removebg-preview.png"
-                        alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="nfc-social-four  d-flex justify-content-center">
-        <div>
-            <a href="" class="mb-2"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="" class="mb-2"><i class="fa-brands fa-instagram"></i></a>
-            <a href="" class="mb-2"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="" class="mb-2"><i class="fa-regular fa-envelope"></i></a>
-            <a href="" class="mb-2"><i class="fa-brands fa-pinterest-p"></i></a>
-            <a href="" class="mb-2"><i class="fa-brands fa-youtube"></i></a>
-            <a href="" class="mb-2"><i class="fa-brands fa-whatsapp"></i></a>
-        </div>
-    </div>
-    <div class="card-body bg-white nfc-contact-four">
-        <div class="nfc-contact-four">
-            <div class="d-flex align-items-center mb-2">
-                <a href="">
-                    <i class="fa-solid fa-phone"></i>
-                </a>
-                <!-- Contact Info -->
-                <div class="ps-3">
-                    <p class="m-0 text-muted fw-bold">01576614451</p>
-                    <p class="m-0 text-muted"><small>Work/Home/Personal</small></p>
-                </div>
-            </div>
-            <div class="d-flex align-items-center mb-2">
-                <a href="">
-                    <i class="fa-solid fa-envelope"></i>
-                </a>
-                <!-- Contact Info -->
-                <div class="ps-3">
-                    <p class="m-0 text-muted fw-bold">szamansaju@gmail.com</p>
-                    <p class="m-0 text-muted"><small>Work/Home/Personal</small></p>
-                </div>
-            </div>
-            <div class="d-flex align-items-center mb-2">
-                <a href="">
-                    <i class="fa-solid fa-globe"></i>
-                </a>
-                <!-- Contact Info -->
-                <div class="ps-3">
-                    <p class="m-0 text-muted fw-bold">https://dashboard.uniqode.com/</p>
-                    <p class="m-0 text-muted"><small>Work/Home/Personal</small></p>
-                </div>
-            </div>
-            <div class="nfc-call-four-action mt-3">
-                <a href="#" class="w-100 btn text-white">Contact Now</a>
-            </div>
-        </div>
-    </div>
+
 </div>
