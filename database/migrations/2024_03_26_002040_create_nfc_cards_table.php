@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('background_color')->nullable();
             $table->string('button_color')->nullable();
             $table->string('frame_color')->nullable();
-            $table->string('font_style')->nullable();
+            $table->string('font_family')->nullable();
             $table->string('font_size')->nullable();
             $table->string('nfc_qr')->nullable();
             $table->string('nfc_url')->nullable();

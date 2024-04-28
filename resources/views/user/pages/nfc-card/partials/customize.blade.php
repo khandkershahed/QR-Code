@@ -18,7 +18,7 @@
                                    <label for="primary_color">Primary Color</label>
                                    <div class="col-lg-10 pe-0">
                                        <div>
-                                           <input type="text" name="primary_color" id="primary_color" value="#000"
+                                           <input type="text" name="primary_color_picker" id="primary_color" value="#000"
                                                class="form-control form-control-solid">
                                        </div>
                                    </div>
@@ -33,16 +33,16 @@
                            </div>
                            <div class="col-lg-4">
                                <div class="row">
-                                   <label for="primary_color_text">Primary Text Color</label>
+                                   <label for="primary_color_text">Text Color</label>
                                    <div class="col-lg-10 pe-0">
                                        <div>
-                                           <input type="text" name="primary_color_text" id="primary_color_text"
+                                           <input type="text" name="text_color_picker" id="primary_color_text"
                                                value="#000" class="form-control form-control-solid">
                                        </div>
                                    </div>
                                    <div class="col-lg-2 ps-0">
                                        <div>
-                                           <input type="color" name="primary_text_color"
+                                           <input type="color" name="text_color"
                                                id="primary_color_text_picker" value=""
                                                style="width: 50px;height: 43px;"
                                                class="form-control form-control-solid">
@@ -50,18 +50,19 @@
                                    </div>
                                </div>
                            </div>
+
                            <div class="col-lg-4">
                                <div class="row">
-                                   <label for="secondary_color_text">Secondary color</label>
+                                   <label for="secondary_color_text">Title color</label>
                                    <div class="col-lg-10 pe-0">
                                        <div>
-                                           <input type="text" name="secondary_color_text" id="secondary_color_text"
+                                           <input type="text" name="title_color_picker" id="secondary_color_text"
                                                value="#000" class="form-control form-control-solid">
                                        </div>
                                    </div>
                                    <div class="col-lg-2 ps-0">
                                        <div>
-                                           <input type="color" name="secondary_color"
+                                           <input type="color" name="title_color"
                                                id="secondary_color_text_picker" value=""
                                                style="width: 50px;height: 43px;"
                                                class="form-control form-control-solid">
@@ -69,6 +70,25 @@
                                    </div>
                                </div>
                            </div>
+                           <div class="col-lg-4">
+                            <div class="row">
+                                <label for="secondary_color_text">Background color</label>
+                                <div class="col-lg-10 pe-0">
+                                    <div>
+                                        <input type="text" name="background_color_picker" id="secondary_color_text"
+                                            value="#000" class="form-control form-control-solid">
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 ps-0">
+                                    <div>
+                                        <input type="color" name="background_color"
+                                            id="secondary_color_text_picker" value=""
+                                            style="width: 50px;height: 43px;"
+                                            class="form-control form-control-solid">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                        </div>
                    </div>
                </div>
@@ -89,10 +109,8 @@
                                <select class="form-select form-select-sm form-select-solid" data-control="select2"
                                    name="font_family" data-placeholder="Select an option">
                                    <option></option>
-                                   <option value="1">Poppins</option>
-                                   <option value="2">Times New Roman</option>
-                                   <option value="2">Raleway</option>
-                                   <option value="2">Roboto</option>
+                                   <option value="bebas_neue">Bebas Neue</option>
+                                   <option value="raleway">Raleway</option>
                                </select>
                            </div>
                            <div class="col-lg-4">
@@ -160,7 +178,7 @@
                                 </div>
                                 <div class="col-lg-2 ps-0">
                                     <div>
-                                        <input type="color" name="form_color"
+                                        <input type="color" name="frame_color"
                                             id="form_color_picker" value=""
                                             style="width: 50px;height: 43px;"
                                             class="form-control form-control-solid">

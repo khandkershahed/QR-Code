@@ -1,7 +1,7 @@
 <x-app-layout :title="'NFC Card Create'">
     <h1 class="text-center mb-10 mt-5">Make Your NFC Profile !</h1>
     <div class="row">
-        <div class="col-lg-9">
+        <div class="col-lg-8">
             <div class="card" style="height: 700px; overflow: auto;">
                 <div class="card-body p-0">
                     <div class="stepper stepper-pills p-0" id="kt_stepper_example_clickable">
@@ -138,7 +138,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-4">
             <div class="card" style="height: 700px; overflow: auto;">
                 <div class="card-body">
                     <div class="d-flex flex-column justify-content-center align-items-center">
@@ -157,40 +157,17 @@
         <script>
             $(document).ready(function() {
                 // NFC Template
-                // $('input[name="nfc_template"]').change(function() {
-                //     $(".nfc-card").hide();
-                //     const nfcTemplateValue = $('input[name="nfc_template"]:checked').val();
-                //     if (nfcTemplateValue != null) {
-                //         localStorage.setItem('nfc_template', nfcTemplateValue);
-                //         $("." + nfcTemplateValue).show();
-                //     } else {
-                //         $(".nfc-card").hide();
-                //     }
-                // });
                 $('input[name="nfc_template"]').change(function() {
                     $(".nfc-card").hide();
                     const nfcTemplateValue = $('input[name="nfc_template"]:checked').val();
                     if (nfcTemplateValue != null) {
                         localStorage.setItem('nfc_template', nfcTemplateValue);
-                        $.ajax({
-                            type: 'POST',
-                            url: '{{ route('user.updateNfcSession') }}',
-                            data: {
-                                _token: '{{ csrf_token() }}',
-                                nfc_template: nfcTemplateValue
-                            },
-                            success: function(response) {
-                                // Show the corresponding NFC card template
-                                $("." + nfcTemplateValue).show();
-                            },
-                            error: function(xhr, textStatus, errorThrown) {
-                                alert('Error updating NFC session:', errorThrown);
-                            }
-                        });
+                        $("." + nfcTemplateValue).show();
                     } else {
                         $(".nfc-card").hide();
                     }
                 });
+
                 const initiallySelectedValue = $('input[name="nfc_template"]:checked').val();
                 $("#" + initiallySelectedValue).show();
 
@@ -202,8 +179,6 @@
                             var profile_image = $("input[name='profile_image']").val();
                             var first_name = $("input[name='first_name']").val();
                             var last_name = $("input[name='last_name']").val();
-                            var prefix = $("input[name='prefix']").val();
-                            var suffix = $("input[name='suffix']").val();
                             var designation = $("input[name='designation']").val();
                             var department = $("input[name='department']").val();
                             var pronouns = $("input[name='pronouns']").val();
@@ -218,8 +193,6 @@
                             $('.profile_image').attr('src', profile_image);
                             $('.first_name').text(first_name);
                             $('.last_name').text(last_name);
-                            $('.prefix').text(prefix);
-                            $('.suffix').text(suffix);
                             $('.designation').text(designation);
                             $('.department').text(department);
                             $('.pronouns').text(pronouns);
@@ -397,8 +370,8 @@
                 }
             }
 
-            function previewImage(input) {
-                var preview = $('.company_logo'); // Select the preview element using its class
+            function previewBannerImage(input) {
+                var preview = $('.banner_image'); // Select the preview element using its class
                 var file = input.files[0];
                 var reader = new FileReader();
                 reader.onloadend = function() {
@@ -410,6 +383,61 @@
                     preview.attr('src', ""); // Clear the src attribute if no file is selected
                 }
             }
+
+            function previewServiceOneImage(input) {
+                var preview = $('.service_one_image'); // Select the preview element using its class
+                var file = input.files[0];
+                var reader = new FileReader();
+                reader.onloadend = function() {
+                    preview.attr('src', reader.result); // Set the src attribute using .attr() method
+                }
+                if (file) {
+                    reader.readAsDataURL(file);
+                } else {
+                    preview.attr('src', ""); // Clear the src attribute if no file is selected
+                }
+            }
+
+            function previewServiceTwoImage(input) {
+                var preview = $('.service_two_image'); // Select the preview element using its class
+                var file = input.files[0];
+                var reader = new FileReader();
+                reader.onloadend = function() {
+                    preview.attr('src', reader.result); // Set the src attribute using .attr() method
+                }
+                if (file) {
+                    reader.readAsDataURL(file);
+                } else {
+                    preview.attr('src', ""); // Clear the src attribute if no file is selected
+                }
+            }
+
+            function previewServiceThreeImage(input) {
+                var preview = $('.service_three_image'); // Select the preview element using its class
+                var file = input.files[0];
+                var reader = new FileReader();
+                reader.onloadend = function() {
+                    preview.attr('src', reader.result); // Set the src attribute using .attr() method
+                }
+                if (file) {
+                    reader.readAsDataURL(file);
+                } else {
+                    preview.attr('src', ""); // Clear the src attribute if no file is selected
+                }
+            }
+        </script>
+
+        <script>
+            // Initialize Slick Slider
+            $(document).ready(function() {
+                $(".slick-slider").slick({
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    draggable: false,
+                    autoplaySpeed: 2000, // Adjust autoplay speed in milliseconds
+                });
+            });
         </script>
     @endpush
 </x-app-layout>
