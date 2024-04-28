@@ -240,9 +240,7 @@
                                     </ul>
                                 </li>
                                 <li class="dropdown ">
-                                    <a href="{{ route('digitalCard') }}"
-                                        onclick="window.location.href = '{{ route('digitalCard') }}'; return false;">DIGITAL
-                                        Pricing</a>
+                                    <a href="">Pricing</a>
                                     <ul class="" style="display: none;">
                                         <li><a href="{{ route('user.pricing') }}">User Pricing</a></li>
                                         <li><a href="{{ route('reseller.pricing') }}">Reseller Pricing</a></li>
