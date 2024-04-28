@@ -474,7 +474,7 @@
                             </div>
 
                             <div class="text-center">
-                                <a href="{{ route('user.pricing') }}" class="btn btn-sm btn-dark fw-bold">
+                                <a href="{{ route('normaluser.pricing') }}" class="btn btn-sm btn-dark fw-bold">
                                     Upgrade Now
                                 </a>
                                 <a href="#" class="btn btn-sm btn-dark fw-bold"

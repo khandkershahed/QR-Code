@@ -131,7 +131,7 @@
                                                                 alt="Some QR Code Template">
                                                         </div>
                                                         <div class="mt-4">
-                                                            <a href="{{ route('user.pricing') }}"
+                                                            <a href="{{ route('normaluser.pricing') }}"
                                                                 class="btn btn-primary text-white">Start Your Free
                                                                 Trial</a>
                                                         </div>
@@ -244,7 +244,7 @@
                                         onclick="window.location.href = '{{ route('digitalCard') }}'; return false;">DIGITAL
                                         Pricing</a>
                                     <ul class="" style="display: none;">
-                                        <li><a href="{{ route('user.pricing') }}">User Pricing</a></li>
+                                        <li><a href="{{ route('normaluser.pricing') }}">User Pricing</a></li>
                                         <li><a href="{{ route('reseller.pricing') }}">Reseller Pricing</a></li>
                                     </ul>
                                 </li>
