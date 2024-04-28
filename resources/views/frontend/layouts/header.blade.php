@@ -171,7 +171,7 @@
                                                                 alt="Some NFC Template">
                                                         </div>
                                                         <div class="mt-4">
-                                                            <a href="{{ route('pricing') }}"
+                                                            <a href=""
                                                                 class="btn btn-primary text-white">Start Your Free
                                                                 Trial</a>
                                                         </div>

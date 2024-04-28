@@ -24,12 +24,19 @@ class HomeController extends Controller
     public function services() {
         return view('frontend.pages.services');
     }
-    public function pricing() {
+    public function userPricing() {
         $data = [
             'monthly_plans' => Plan::orderBy('price','asc')->where('billing_cycle', 'monthly')->get(),
             'yearly_plans' => Plan::orderBy('price','asc')->where('billing_cycle', 'yearly')->get(),
         ];
-        return view('frontend.pages.pricing',$data);
+        return view('frontend.pages.userPricing',$data);
+    }
+    public function resellerPricing() {
+        $data = [
+            'monthly_plans' => Plan::orderBy('price','asc')->where('billing_cycle', 'monthly')->get(),
+            'yearly_plans' => Plan::orderBy('price','asc')->where('billing_cycle', 'yearly')->get(),
+        ];
+        return view('frontend.pages.resellerPricing',$data);
     }
     public function qrCode() {
         return view('frontend.pages.qrCode');

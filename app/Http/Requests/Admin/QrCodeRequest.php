@@ -24,58 +24,58 @@ class QrCodeRequest extends FormRequest
     {
         $qr = $this->route('qr-code');
         return [
-                // Validation rules for fields in the 'qrs' table
-                'user_id' => 'nullable|exists:users,id', // Ensure user_id exists in the users table
-                'code' => 'nullable|string|max:255|unique:qrs,code,' . $qr,
-                'qr_type' => 'nullable|string|max:255', // Validate qr_type as a string with max length 255
-                'qr_template' => 'nullable|string|max:255', // Validate qr_template as a string with max length 255
-                // 'qr_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate qr_logo as an image file (adjust mime types and max size as needed)
-                'qr_logo_size' => 'nullable|string|max:255', // Validate qr_logo_size as a string with max length 255
-                'qr_eye_ball' => 'nullable|string|max:255', // Validate qr_eye_ball as a string with max length 255
-                'qr_eye_ball_color' => 'nullable|string|max:255', // Validate qr_eye_ball_color as a string with max length 255
-                'qr_eye_frame' => 'nullable|string|max:255', // Validate qr_eye_frame as a string with max length 255
-                'qr_eye_frame_color' => 'nullable|string|max:255', // Validate qr_eye_frame_color as a string with max length 255
-                'qr_pattern' => 'nullable|string|max:255', // Validate qr_pattern as a string with max length 255
-                'qr_pattern_color' => 'nullable|string|max:255', // Validate qr_pattern_color as a string with max length 255
-                'qr_color_type' => 'nullable|string|max:255', // Validate qr_color_type as a string with max length 255
-                'qr_solid_color' => 'nullable|string|max:255', // Validate qr_solid_color as a string with max length 255
-                'qr_gradient_color_type' => 'nullable|string|max:255', // Validate qr_gradient_color_type as a string with max length 255
-                'qr_gradient_color_start' => 'nullable|string|max:255', // Validate qr_gradient_color_start as a string with max length 255
-                'qr_gradient_color_end' => 'nullable|string|max:255', // Validate qr_gradient_color_end as a string with max length 255
-                'qr_bg_type' => 'nullable|string|max:255', // Validate qr_bg_type as a string with max length 255
-                'qr_bg_color' => 'nullable|string|max:255', // Validate qr_bg_color as a string with max length 255
-                'qr_bg_image' => 'nullable|string|max:255', // Validate qr_bg_image as a string with max length 255
-                'qr_name' => 'nullable|string|max:255', // Validate qr_name as a string with max length 255
-                'qr_image' => 'nullable|string|max:255', // Validate qr_image as a string with max length 255
-                'qr_url' => 'nullable|url', // Validate qr_url as a valid URL
+            // Validation rules for fields in the 'qrs' table
+            'user_id' => 'nullable|exists:users,id', // Ensure user_id exists in the users table
+            'code' => 'nullable|string|max:255|unique:qrs,code,' . $qr,
+            'qr_type' => 'nullable|string|max:255', // Validate qr_type as a string with max length 255
+            'qr_template' => 'nullable|string|max:255', // Validate qr_template as a string with max length 255
+            // 'qr_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate qr_logo as an image file (adjust mime types and max size as needed)
+            'qr_logo_size' => 'nullable|string|max:255', // Validate qr_logo_size as a string with max length 255
+            'qr_eye_ball' => 'nullable|string|max:255', // Validate qr_eye_ball as a string with max length 255
+            'qr_eye_ball_color' => 'nullable|string|max:255', // Validate qr_eye_ball_color as a string with max length 255
+            'qr_eye_frame' => 'nullable|string|max:255', // Validate qr_eye_frame as a string with max length 255
+            'qr_eye_frame_color' => 'nullable|string|max:255', // Validate qr_eye_frame_color as a string with max length 255
+            'qr_pattern' => 'nullable|string|max:255', // Validate qr_pattern as a string with max length 255
+            'qr_pattern_color' => 'nullable|string|max:255', // Validate qr_pattern_color as a string with max length 255
+            'qr_color_type' => 'nullable|string|max:255', // Validate qr_color_type as a string with max length 255
+            'qr_solid_color' => 'nullable|string|max:255', // Validate qr_solid_color as a string with max length 255
+            'qr_gradient_color_type' => 'nullable|string|max:255', // Validate qr_gradient_color_type as a string with max length 255
+            'qr_gradient_color_start' => 'nullable|string|max:255', // Validate qr_gradient_color_start as a string with max length 255
+            'qr_gradient_color_end' => 'nullable|string|max:255', // Validate qr_gradient_color_end as a string with max length 255
+            'qr_bg_type' => 'nullable|string|max:255', // Validate qr_bg_type as a string with max length 255
+            'qr_bg_color' => 'nullable|string|max:255', // Validate qr_bg_color as a string with max length 255
+            'qr_bg_image' => 'nullable|string|max:255', // Validate qr_bg_image as a string with max length 255
+            'qr_name' => 'nullable|string|max:255', // Validate qr_name as a string with max length 255
+            'qr_image' => 'nullable|string|max:255', // Validate qr_image as a string with max length 255
+            'qr_url' => 'nullable|url', // Validate qr_url as a valid URL
 
-                // Validation rules for fields in the 'qr_data' table
-                'qr_data_website_url' => 'nullable|url', // Validate qr_data_website_url as a valid URL
-                // 'qr_data_pdf' => 'nullable|string|max:255', // Validate qr_data_pdf as a string with max length 255
-                // 'qr_data_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate qr_data_image as an image file (adjust mime types and max size as needed)
-                'qr_data_image_link' => 'nullable|url', // Validate qr_data_image_link as a valid URL
-                'qr_data_sms_number' => 'nullable|string|max:255', // Validate qr_data_sms_number as a string with max length 255
-                'qr_data_sms_message' => 'nullable|string|max:255', // Validate qr_data_sms_message as a string with max length 255
-                'qr_data_email_id' => 'nullable|string|email|max:255', // Validate qr_data_email_id as a valid email address with max length 255
-                'qr_data_email_subject' => 'nullable|string|max:255', // Validate qr_data_email_subject as a string with max length 255
-                'qr_data_email_body' => 'nullable|string', // Validate qr_data_email_body as a string
-                'qr_app_android' => 'nullable|url', // Validate qr_app_android as a valid URL
-                'qr_data_app_iphone' => 'nullable|url', // Validate qr_data_app_iphone as a valid URL
-                'qr_data_app_ipad' => 'nullable|url', // Validate qr_data_app_ipad as a valid URL
-                'qr_data_call_number' => 'nullable|string|max:255', // Validate qr_data_call_number as a string with max length 255
-                'qr_data_location' => 'nullable|string|max:255', // Validate qr_data_location as a string with max length 255
-                'qr_data_coupon_code' => 'nullable|string|max:255', // Validate qr_data_coupon_code as a string with max length 255
-                'qr_data_coupon_expire_date' => 'nullable|date', // Validate qr_data_coupon_expire_date as a valid date
-                'qr_data_coupon_header' => 'nullable|string|max:255', // Validate qr_data_coupon_header as a string with max length 255
-                'qr_data_coupon_message' => 'nullable|string|max:255', // Validate qr_data_coupon_message as a string with max length 255
-                'qr_data_coupon_description_header' => 'nullable|string', // Validate qr_data_coupon_description_header as a string
-                'qr_data_coupon_description_body' => 'nullable|string', // Validate qr_data_coupon_description_body as a string
-                'qr_data_coupon_website' => 'nullable|url', // Validate qr_data_coupon_website as a valid URL
-                'qr_data_coupon_company' => 'nullable|string|max:255', // Validate qr_data_coupon_company as a string with max length 255
-                'qr_data_coupon_policy' => 'nullable|string', // Validate qr_data_coupon_policy as a string
-                'qr_data_coupon_logo' => 'nullable|string|max:255', // Validate qr_data_coupon_logo as a string with max length 255
-                'qr_data_audio_file' => 'nullable|string|max:255', // Validate qr_data_audio_file as a string with max length 255
-                'qr_data_audio_link' => 'nullable|url', // Validate qr_data_audio_link as a valid URL
+            // Validation rules for fields in the 'qr_data' table
+            'qr_data_website_url' => 'nullable|url', // Validate qr_data_website_url as a valid URL
+            // 'qr_data_pdf' => 'nullable|string|max:255', // Validate qr_data_pdf as a string with max length 255
+            // 'qr_data_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate qr_data_image as an image file (adjust mime types and max size as needed)
+            'qr_data_image_link' => 'nullable|url', // Validate qr_data_image_link as a valid URL
+            'qr_data_sms_number' => 'nullable|string|max:255', // Validate qr_data_sms_number as a string with max length 255
+            'qr_data_sms_message' => 'nullable|string|max:255', // Validate qr_data_sms_message as a string with max length 255
+            'qr_data_email_id' => 'nullable|string|email|max:255', // Validate qr_data_email_id as a valid email address with max length 255
+            'qr_data_email_subject' => 'nullable|string|max:255', // Validate qr_data_email_subject as a string with max length 255
+            'qr_data_email_body' => 'nullable|string', // Validate qr_data_email_body as a string
+            'qr_app_android' => 'nullable|url', // Validate qr_app_android as a valid URL
+            'qr_data_app_iphone' => 'nullable|url', // Validate qr_data_app_iphone as a valid URL
+            'qr_data_app_ipad' => 'nullable|url', // Validate qr_data_app_ipad as a valid URL
+            'qr_data_call_number' => 'nullable|string|max:255', // Validate qr_data_call_number as a string with max length 255
+            'qr_data_location' => 'nullable|string|max:255', // Validate qr_data_location as a string with max length 255
+            'qr_data_coupon_code' => 'nullable|string|max:255', // Validate qr_data_coupon_code as a string with max length 255
+            'qr_data_coupon_expire_date' => 'nullable|date', // Validate qr_data_coupon_expire_date as a valid date
+            'qr_data_coupon_header' => 'nullable|string|max:255', // Validate qr_data_coupon_header as a string with max length 255
+            'qr_data_coupon_message' => 'nullable|string|max:255', // Validate qr_data_coupon_message as a string with max length 255
+            'qr_data_coupon_description_header' => 'nullable|string', // Validate qr_data_coupon_description_header as a string
+            'qr_data_coupon_description_body' => 'nullable|string', // Validate qr_data_coupon_description_body as a string
+            'qr_data_coupon_website' => 'nullable|url', // Validate qr_data_coupon_website as a valid URL
+            'qr_data_coupon_company' => 'nullable|string|max:255', // Validate qr_data_coupon_company as a string with max length 255
+            'qr_data_coupon_policy' => 'nullable|string', // Validate qr_data_coupon_policy as a string
+            'qr_data_coupon_logo' => 'nullable|string|max:255', // Validate qr_data_coupon_logo as a string with max length 255
+            'qr_data_audio_file' => 'nullable|string|max:255', // Validate qr_data_audio_file as a string with max length 255
+            'qr_data_audio_link' => 'nullable|url', // Validate qr_data_audio_link as a valid URL
 
         ];
     }
@@ -101,7 +101,7 @@ class QrCodeRequest extends FormRequest
             'qr_eye_ball.max' => 'The QR eye ball may not be greater than :max characters.',
             'qr_eye_ball_color.string' => 'The QR eye ball color must be a string.',
             'qr_eye_ball_color.max' => 'The QR eye ball color may not be greater than :max characters.',
-                    'qr_eye_frame.string' => 'The QR eye frame must be a string.',
+            'qr_eye_frame.string' => 'The QR eye frame must be a string.',
             'qr_eye_frame.max' => 'The QR eye frame may not be greater than :max characters.',
             'qr_eye_frame_color.string' => 'The QR eye frame color must be a string.',
             'qr_eye_frame_color.max' => 'The QR eye frame color may not be greater than :max characters.',
@@ -167,8 +167,7 @@ class QrCodeRequest extends FormRequest
             'qr_data_coupon_logo.string' => 'The QR coupon logo must be a string.',
             'qr_data_coupon_logo.max' => 'The QR coupon logo may not be greater than :max characters.',
             'qr_data_audio_file.string' => 'The QR audio file must be a string.',
-            ];
-
+        ];
     }
 
 
@@ -176,57 +175,57 @@ class QrCodeRequest extends FormRequest
     {
         return [
             // Attributes for fields in the 'qrs' table
-            'user_id' => 'User ID',
-            'code' => 'Code',
-            'qr_type' => 'QR Type',
-            'qr_template' => 'QR Template',
-            'qr_logo' => 'QR Logo',
-            'qr_logo_size' => 'QR Logo Size',
-            'qr_eye_ball' => 'QR Eye Ball',
-            'qr_eye_ball_color' => 'QR Eye Ball Color',
-            'qr_eye_frame' => 'QR Eye Frame',
-            'qr_eye_frame_color' => 'QR Eye Frame Color',
-            'qr_pattern' => 'QR Pattern',
-            'qr_pattern_color' => 'QR Pattern Color',
-            'qr_color_type' => 'QR Color Type',
-            'qr_solid_color' => 'QR Solid Color',
-            'qr_gradient_color_type' => 'QR Gradient Color Type',
-            'qr_gradient_color_start' => 'QR Gradient Color Start',
-            'qr_gradient_color_end' => 'QR Gradient Color End',
-            'qr_bg_type' => 'QR Background Type',
-            'qr_bg_color' => 'QR Background Color',
-            'qr_bg_image' => 'QR Background Image',
-            'qr_name' => 'QR Name',
-            'qr_image' => 'QR Image',
-            'qr_url' => 'QR URL',
+            'user_id'                           => 'User ID',
+            'code'                              => 'Code',
+            'qr_type'                           => 'QR Type',
+            'qr_template'                       => 'QR Template',
+            'qr_logo'                           => 'QR Logo',
+            'qr_logo_size'                      => 'QR Logo Size',
+            'qr_eye_ball'                       => 'QR Eye Ball',
+            'qr_eye_ball_color'                 => 'QR Eye Ball Color',
+            'qr_eye_frame'                      => 'QR Eye Frame',
+            'qr_eye_frame_color'                => 'QR Eye Frame Color',
+            'qr_pattern'                        => 'QR Pattern',
+            'qr_pattern_color'                  => 'QR Pattern Color',
+            'qr_color_type'                     => 'QR Color Type',
+            'qr_solid_color'                    => 'QR Solid Color',
+            'qr_gradient_color_type'            => 'QR Gradient Color Type',
+            'qr_gradient_color_start'           => 'QR Gradient Color Start',
+            'qr_gradient_color_end'             => 'QR Gradient Color End',
+            'qr_bg_type'                        => 'QR Background Type',
+            'qr_bg_color'                       => 'QR Background Color',
+            'qr_bg_image'                       => 'QR Background Image',
+            'qr_name'                           => 'QR Name',
+            'qr_image'                          => 'QR Image',
+            'qr_url'                            => 'QR URL',
 
             // Attributes for fields in the 'qr_data' table
-            'qr_data_website_url' => 'Website URL',
-            'qr_data_pdf' => 'PDF',
-            'qr_data_image' => 'Image',
-            'qr_data_image_link' => 'Image Link',
-            'qr_data_sms_number' => 'SMS Number',
-            'qr_data_sms_message' => 'SMS Message',
-            'qr_data_email_id' => 'Email ID',
-            'qr_data_email_subject' => 'Email Subject',
-            'qr_data_email_body' => 'Email Body',
-            'qr_app_android' => 'Android App',
-            'qr_data_app_iphone' => 'iPhone App',
-            'qr_data_app_ipad' => 'iPad App',
-            'qr_data_call_number' => 'Call Number',
-            'qr_data_location' => 'Location',
-            'qr_data_coupon_code' => 'Coupon Code',
-            'qr_data_coupon_expire_date' => 'Coupon Expiry Date',
-            'qr_data_coupon_header' => 'Coupon Header',
-            'qr_data_coupon_message' => 'Coupon Message',
+            'qr_data_website_url'               => 'Website URL',
+            'qr_data_pdf'                       => 'PDF',
+            'qr_data_image'                     => 'Image',
+            'qr_data_image_link'                => 'Image Link',
+            'qr_data_sms_number'                => 'SMS Number',
+            'qr_data_sms_message'               => 'SMS Message',
+            'qr_data_email_id'                  => 'Email ID',
+            'qr_data_email_subject'             => 'Email Subject',
+            'qr_data_email_body'                => 'Email Body',
+            'qr_app_android'                    => 'Android App',
+            'qr_data_app_iphone'                => 'iPhone App',
+            'qr_data_app_ipad'                  => 'iPad App',
+            'qr_data_call_number'               => 'Call Number',
+            'qr_data_location'                  => 'Location',
+            'qr_data_coupon_code'               => 'Coupon Code',
+            'qr_data_coupon_expire_date'        => 'Coupon Expiry Date',
+            'qr_data_coupon_header'             => 'Coupon Header',
+            'qr_data_coupon_message'            => 'Coupon Message',
             'qr_data_coupon_description_header' => 'Coupon Description Header',
-            'qr_data_coupon_description_body' => 'Coupon Description Body',
-            'qr_data_coupon_website' => 'Coupon Website',
-            'qr_data_coupon_company' => 'Coupon Company',
-            'qr_data_coupon_policy' => 'Coupon Policy',
-            'qr_data_coupon_logo' => 'Coupon Logo',
-            'qr_data_audio_file' => 'Audio File',
-            'qr_data_audio_link' => 'Audio Link',
+            'qr_data_coupon_description_body'   => 'Coupon Description Body',
+            'qr_data_coupon_website'            => 'Coupon Website',
+            'qr_data_coupon_company'            => 'Coupon Company',
+            'qr_data_coupon_policy'             => 'Coupon Policy',
+            'qr_data_coupon_logo'               => 'Coupon Logo',
+            'qr_data_audio_file'                => 'Audio File',
+            'qr_data_audio_link'                => 'Audio Link',
         ];
     }
 
@@ -247,9 +246,8 @@ class QrCodeRequest extends FormRequest
     {
         $errorMessages = $validator->errors()->all();
         foreach ($errorMessages as $errorMessage) {
-            flash()->addError($errorMessage);
+            // flash()->addError($errorMessage);
+            session()->flash('error', ['message' => $errorMessage]);
         }
     }
-
-
 }

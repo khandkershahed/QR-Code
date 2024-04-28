@@ -18,10 +18,16 @@ return new class extends Migration
             $table->string('nfc_type')->nullable();
             $table->string('nfc_template')->nullable();
             $table->string('primary_color')->nullable();
-            $table->string('primary_text_color')->nullable();
-            $table->string('secondary_color_text')->nullable();
+            $table->string('text_color')->nullable();
+            $table->string('title_color')->nullable();
+            $table->string('background_color')->nullable();
             $table->string('button_color')->nullable();
-            $table->string('form_color')->nullable();
+            $table->string('frame_color')->nullable();
+            $table->string('font_style')->nullable();
+            $table->string('font_size')->nullable();
+            $table->string('nfc_qr')->nullable();
+            $table->string('nfc_url')->nullable();
+            $table->integer('scan_count')->nullable();
             $table->timestamps();
         });
     }

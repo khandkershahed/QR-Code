@@ -9,4 +9,8 @@ class NfcCard extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    public function nfcData()
+    {
+        return $this->hasOne(NfcData::class, 'card_id');
+    }
 }
