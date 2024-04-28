@@ -24,7 +24,7 @@ Route::get('/', [HomeController::class, 'homePage'])->name('homePage');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/services', [HomeController::class, 'services'])->name('services');
-Route::get('/user-pricing', [HomeController::class, 'userPricing'])->name('user.pricing');
+Route::get('/user-pricing', [HomeController::class, 'userPricing'])->name('normaluser.pricing');
 Route::get('/reseller-pricing', [HomeController::class, 'resellerPricing'])->name('reseller.pricing');
 Route::get('/qr-code', [HomeController::class, 'qrCode'])->name('qrCode');
 Route::get('/nfc-card', [HomeController::class, 'nfcCard'])->name('nfcCard');
@@ -92,4 +92,4 @@ require __DIR__ . '/admin.php';
 require __DIR__ . '/client.php';
 
 
-Route::get('/user-pricing', [HomeController::class, 'userPricing'])->name('pricing');
+// Route::get('/user-pricing', [HomeController::class, 'userPricing'])->name('pricing');
