@@ -44,9 +44,9 @@ class QrCodeRequest extends FormRequest
             'qr_gradient_color_end' => 'nullable|string|max:255', // Validate qr_gradient_color_end as a string with max length 255
             'qr_bg_type' => 'nullable|string|max:255', // Validate qr_bg_type as a string with max length 255
             'qr_bg_color' => 'nullable|string|max:255', // Validate qr_bg_color as a string with max length 255
-            'qr_bg_image' => 'nullable|string|max:255', // Validate qr_bg_image as a string with max length 255
+            'qr_bg_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validate qr_bg_image as a string with max length 255
             'qr_name' => 'nullable|string|max:255', // Validate qr_name as a string with max length 255
-            'qr_image' => 'nullable|string|max:255', // Validate qr_image as a string with max length 255
+            'qr_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validate qr_image as a string with max length 255
             'qr_url' => 'nullable|url', // Validate qr_url as a valid URL
 
             // Validation rules for fields in the 'qr_data' table

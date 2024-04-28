@@ -38,7 +38,7 @@
                         <thead>
                             <tr class="text-gray-500 fw-bold fs-7 text-uppercase">
                                 <th class="">SL</th>
-                                <th class="">Image</th>
+                                {{-- <th class="">Image</th> --}}
                                 <th class="">NAME </th>
                                 {{-- <th class="">Scaned</th> --}}
                                 <th class="">LINK</th>
@@ -50,15 +50,16 @@
                             @foreach ($nfc_cards as $nfc_card)
                                 <tr>
                                     <td>
-                                        1
+                                        {{ $loop->iteration }}
                                     </td>
-                                    <td>
+                                    {{-- <td>
                                         <img class="img-fluid w-50px"
                                             src="https://appserver.beaconstac.com//static/images/dbc/ashley.png"
                                             alt="">
-                                    </td>
+                                    </td> --}}
                                     <td>
-                                        <div class="text-success">{{ $nfc_card->nfcData->first_name }} {{ $nfc_card->nfcData->last_name }}</div>
+                                        <div class="text-success">{{ optional($nfc_card->nfcData)->first_name }} {{ optional($nfc_card->nfcData)->last_name }}
+                                        </div>
                                     </td>
                                     {{-- <td class="text-start">
                                         <button class="btn btn-light-primary">94</button>

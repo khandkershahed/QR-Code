@@ -107,7 +107,7 @@ class HomeController extends Controller
         $data =[
             'nfc_card' => NfcCard::with('nfcData')->where('code',$code)->first(),
         ];
-        if ($data['nfc_card']->nfc_template == 'template_one') {
+        if ($data['nfc_card']->nfc_template == 'template-one') {
             return view('frontend.pages.nfc.template_one',$data);
         } else {
             return view('frontend.pages.nfc.template_two',$data);

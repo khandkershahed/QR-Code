@@ -3,6 +3,7 @@
 use App\Models\Admin\Contact;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
+use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 
 // if (!function_exists('myHelper')) { // example of a helper function
@@ -12,45 +13,39 @@ use Illuminate\Support\Facades\Storage;
 //     }
 // }
 
-if (!function_exists('uploadImage')) {
-    function uploadImage($image, $folder, $width = null, $height = null, $createThumbnail = false)
+if (!function_exists('customUpload')) {
+    function customUpload(UploadedFile $mainFile, string $uploadPath, $name, ?int $reqWidth = null, ?int $reqHeight = null): array
     {
-        // Validate file
-        validateImage($image);
+        try {
+            $originalName = pathinfo($mainFile->getClientOriginalName(), PATHINFO_FILENAME);
 
-        // Create directory if it doesn't exist
-        $path = createDirectory($folder);
+            $hashedName = substr($mainFile->hashName(), -12);
 
-        // Check if file already exists
-        $filename = $image->getClientOriginalName();
-        checkIfFileExists($folder, $filename);
+            $fileName = $name . '_' . $hashedName;
 
-        // Extract metadata from the image
-        $metadata = extractMetadata($image);
 
-        // Resize and compress the image
-        if ($width || $height) {
-            list($tempImage, $width, $height, $originalWidth, $originalHeight) = resizeImage($image, $width, $height);
+            if (!File::isDirectory($uploadPath) && !File::makeDirectory($uploadPath, 0777, true, true)) {
+                throw new \RuntimeException("Failed to create the directory: $uploadPath");
+            }
 
-            // Compress the image
-            $imageData = compressImage($tempImage, $image->getClientOriginalExtension(), $originalWidth, $originalHeight);
 
-            // Store the file
-            Storage::disk('public')->put($folder . '/' . $filename, $imageData);
-        } else {
-            // Store the file
-            $image->storeAs('public/' . $folder, $filename);
+            $mainFile->storeAs($uploadPath, $fileName);
+
+            $output = [
+                'status'         => 1,
+                'file_name'      => $fileName,
+                'file_extension' => $mainFile->getClientOriginalExtension(),
+                'file_size'      => $mainFile->getSize(),
+                'file_type'      => $mainFile->getMimeType(),
+            ];
+
+            return array_map('htmlspecialchars', $output);
+        } catch (\Exception $e) {
+            return [
+                'status' => 0,
+                'error_message' => $e->getMessage(),
+            ];
         }
-
-        // Create a thumbnail if requested
-        if ($createThumbnail) {
-            createThumbnail($image, $path, $filename, $image->getClientOriginalExtension(), $originalWidth, $originalHeight);
-        }
-
-        return [
-            'filename' => $filename,
-            'metadata' => $metadata,
-        ];
     }
 }
 

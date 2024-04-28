@@ -121,7 +121,7 @@
                             <!-- Service -->
                             <div class="tem-one-service-box px-3 py-4">
                                 <h6 class="tem-one-service-title">Contact</h6>
-                                <p class="mb-0 email_personal">
+                                <p class="mb-0 email_work">
                                     @: szamansaju@gmail.com
                                     <small class="fw-bold">(Work)</small>
                                 </p>

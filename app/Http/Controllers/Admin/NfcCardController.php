@@ -218,20 +218,45 @@ class NfcCardController extends Controller
         ]);
 
         // Upload images
-        $this->uploadImage($request->file('banner_image'), 'banner_image', $code);
-        $this->uploadImage($request->file('profile_image'), 'profile_image', $code);
-        $this->uploadImage($request->file('service_one_image'), 'service_one_image', $code);
-        $this->uploadImage($request->file('service_two_image'), 'service_two_image', $code);
-        $this->uploadImage($request->file('service_three_image'), 'service_three_image', $code);
+        $files = [
+            'banner_image' => $request->file('banner_image'),
+            'profile_image' => $request->file('profile_image'),
+            'service_one_image' => $request->file('service_one_image'),
+            'service_two_image' => $request->file('service_two_image'),
+            'service_three_image' => $request->file('service_three_image'),
+        ];
 
-        // Create NFC data
+        // $filePath = storage_path('app/public/nfc/' . $code . '/');
+        $filePath = 'public/nfc/' . $code . '/';
+
+        // $uploadedFiles = [];
+        // foreach ($files as $key => $file) {
+        //     if (!empty($file)) {
+        //         $uploadedFiles[$key] = customUpload($file, $filePath);
+        //     } else {
+        //         $uploadedFiles[$key] = ['status' => 0];
+        //     }
+        // }
+        $uploadedFiles = [];
+        foreach ($files as $key => $file) {
+            if (!empty($file)) {
+                $uploadedFiles[$key] = customUpload($file, $filePath,$key);
+                if ($uploadedFiles[$key]['status'] === 0) {
+
+                    return redirect()->back()->with('error' , $uploadedFiles[$key]['error_message']);
+                }
+            } else {
+                $uploadedFiles[$key] = ['status' => 0];
+            }
+        }
+
         $nfc_data = NfcData::create([
-            'card_id'                     => $nfc_card->id,
-            'banner_image'                => $request->file('banner_image') ? 'banner_image.' . $request->file('banner_image')->getClientOriginalExtension() : null,
-            'profile_image'               => $request->file('profile_image') ? 'profile_image.' . $request->file('profile_image')->getClientOriginalExtension() : null,
-            'service_one_image'           => $request->file('service_one_image') ? 'service_one_image.' . $request->file('service_one_image')->getClientOriginalExtension() : null,
-            'service_two_image'           => $request->file('service_two_image') ? 'service_two_image.' . $request->file('service_two_image')->getClientOriginalExtension() : null,
-            'service_three_image'         => $request->file('service_three_image') ? 'service_three_image.' . $request->file('service_three_image')->getClientOriginalExtension() : null,
+            'card_id' => $nfc_card->id,
+            'banner_image' => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_name'] : null,
+            'profile_image' => $uploadedFiles['profile_image']['status'] == 1 ? $uploadedFiles['profile_image']['file_name'] : null,
+            'service_one_image' => $uploadedFiles['service_one_image']['status'] == 1 ? $uploadedFiles['service_one_image']['file_name'] : null,
+            'service_two_image' => $uploadedFiles['service_two_image']['status'] == 1 ? $uploadedFiles['service_two_image']['file_name'] : null,
+            'service_three_image' => $uploadedFiles['service_three_image']['status'] == 1 ? $uploadedFiles['service_three_image']['file_name'] : null,
             'first_name'                  => $request->first_name,
             'last_name'                   => $request->last_name,
             'designation'                 => $request->designation,
@@ -284,18 +309,6 @@ class NfcCardController extends Controller
         $newNumber = $lastCode ? (int)substr($lastCode->code, -1) + 1 : 1;
         return $typePrefix . $today . $userId . $newNumber;
     }
-
-    private function uploadImage($file, $fieldName, $code)
-    {
-        if ($file && $file->isValid()) {
-            $fileName = $fieldName . '.' . $file->getClientOriginalExtension();
-            $filePath = 'storage/nfc/' . $code . '/' . $fileName;
-            Storage::put($filePath, $file);
-        }
-    }
-
-
-
 
 
 
