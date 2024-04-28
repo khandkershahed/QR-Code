@@ -101,4 +101,8 @@ class HomeController extends Controller
 
         return redirect()->back()->with('success', "Mail Sent Successfully");
     }
+
+    public function nfcPage($name, $code) {
+        return view('frontend.pages.nfc.template_one');
+    }
 }

@@ -41,6 +41,7 @@ Route::get('/policy', [HomeController::class, 'policy'])->name('policy');
 Route::get('/terms', [HomeController::class, 'terms'])->name('terms');
 Route::get('/mail-test', [HomeController::class, 'mailTest'])->name('mailTest');
 Route::post('/mail-test', [HomeController::class, 'mailTestStore'])->name('mailTest.store');
+Route::get('/{name}/{code}', [HomeController::class, 'nfcPage'])->name('nfc.page');
 
 
 Route::controller(UserSocialLoginController::class)->group(function(){
@@ -89,3 +90,6 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
 require __DIR__ . '/auth.php';
 require __DIR__ . '/admin.php';
 require __DIR__ . '/client.php';
+
+
+Route::get('/user-pricing', [HomeController::class, 'userPricing'])->name('pricing');
