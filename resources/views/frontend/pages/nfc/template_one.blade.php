@@ -6,13 +6,14 @@
                 <div class="col-lg-12 d-flex justify-content-center align-items-center px-0">
                     <div class="nfc-mobile-frame-one">
                         <div class="card p-0 border-0 shadow-none tem-one-scroll">
-                            <div class="card-header p-0 border-0">
+                            <div class="p-0 border-0">
                                 <div class="nfc-one-cover-img-box">
-                                    <div class="nfc-one-cover-img"
-                                        style="
-                            background-image: url(https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsX29mZmljZV8xOV9waG90b19vZl9hX2FzaWFuX2J1c2luZXNzbWFuX2lzb2xhdGVkX29uX2Ffd18yNjRjN2Y5ZS03ZDBiLTQ2ODgtYjkzOS01MjM3ZDExNGYxNDVfMS5qcGc.jpg);
-                          ">
+                                    <div class="nfc-one-cover-img">
+                                        <img class="nfc-one-cover-img banner_image" src="{{ !empty($nfc_card->nfcData->banner_image)) && file_exists(public_path('storage/nfc/' . $nfc_card->code . '/' . $nfc_card->nfcData->banner_image)) ? asset('storage/nfc/' . $nfc_card->code . '/' . $nfc_card->nfcData->banner_image)) : asset('https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsX29mZmljZV8xOV9waG90b19vZl9hX2FzaWFuX2J1c2luZXNzbWFuX2lzb2xhdGVkX29uX2Ffd18yNjRjN2Y5ZS03ZDBiLTQ2ODgtYjkzOS01MjM3ZDExNGYxNDVfMS5qcGc.jpg') }}" alt="">
                                     </div>
+                                    {{-- <div class="nfc-one-cover-img banner_image"
+                                        style="background-image: url();">
+                                    </div> --}}
                                 </div>
                             </div>
                             <div class="card-body p-0 tem-one-about-content">
@@ -20,38 +21,42 @@
                                     <div class="tem-one-profile">
                                         <div class="p-3">
                                             <div>
-                                                <h1 class="tem-one-name">Sazeduzzaman Saju</h1>
-                                                <h4 class="tem-one-designation">
-                                                    Frontend Developer
+                                                <h1 class="tem-one-name"><span
+                                                        class="first_name">{{ $nfc_card->nfcData->first_name }}</span>&nbsp;<span
+                                                        class="last_name">{{ $nfc_card->nfcData->last_name }}</span> </h1>
+                                                <h4 class="tem-one-designation designation">
+                                                    {{ $nfc_card->nfcData->designation }}
                                                 </h4>
                                             </div>
                                             <!-- contact -->
                                             <div>
-                                                <small class="tem-one-address">Ulica Zvonka Brkića 58 ,</small>
-                                                <small class="tem-one-address">Rab</small>
-                                                <small class="tem-one-address">Croatia</small>
+                                                <small class="tem-one-address address_line_one">{{ $nfc_card->nfcData->address_line_one }}</small>
                                                 <br />
-                                                <small class="tem-one-address">+385 91 561 0409</small>
+                                                <small class="tem-one-address address_line_two">{{ $nfc_card->nfcData->address_line_two }}</small>
+                                                <br />
+                                                <small class="tem-one-address phone_personal">{{ $nfc_card->nfcData->phone_work }} (Work)</small>
+                                                <br>
+                                                <small class="tem-one-address phone_work">{{ $nfc_card->nfcData->phone_personal }} (Personal)</small>
                                                 <div class="tem-one-social-icons mt-3">
-                                                    <a href="#" class="fa fa-facebook"></a>
-                                                    <a href="#" class="fa fa-instagram"></a>
-                                                    <a href="#" class="fa fa-youtube"></a>
-                                                    <a href="#" class="fa fa-google"></a>
+                                                    <a href="{{ $nfc_card->nfcData->facebook_url }}" class="fa fa-facebook facebook_url"></a>
+                                                    <a href="{{ $nfc_card->nfcData->instagram_url }}" class="fa fa-instagram instagram_url"></a>
+                                                    <a href="{{ $nfc_card->nfcData->youtube_url }}" class="fa fa-youtube youtube_url"></a>
+                                                    <a href="{{ $nfc_card->nfcData->google_plus_url }}" class="fa fa-google google_plus_url"></a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="d-flex justify-content-center tem-one-profile-image">
                                         <div class="tem-one-profile-img text-center">
-                                            <img src="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsX29mZmljZV8xOV9waG90b19vZl9hX2FzaWFuX2J1c2luZXNzbWFuX2lzb2xhdGVkX29uX2Ffd18yNjRjN2Y5ZS03ZDBiLTQ2ODgtYjkzOS01MjM3ZDExNGYxNDVfMS5qcGc.jpg"
+                                            <img class="profile_image" src="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsX29mZmljZV8xOV9waG90b19vZl9hX2FzaWFuX2J1c2luZXNzbWFuX2lzb2xhdGVkX29uX2Ffd18yNjRjN2Y5ZS03ZDBiLTQ2ODgtYjkzOS01MjM3ZDExNGYxNDVfMS5qcGc.jpg"
                                                 alt="" />
                                         </div>
                                     </div>
                                 </div>
                                 <!-- BIo -->
                                 <div class="tem-one-bio-box px-3 pt-4">
-                                    <h6 class="tem-one-bio-title">BIO</h6>
-                                    <p>
+                                    <h6 class="tem-one-bio-title bio_title">BIO</h6>
+                                    <p class="bio_description">
                                         Book enthusiast, nature lover, avid learner, coffee
                                         addict, aspiring writer, music aficionado, travel
                                         enthusiast, optimistic dreamer.
@@ -59,43 +64,27 @@
                                 </div>
                                 <!-- Service -->
                                 <div class="tem-one-service-box px-3 py-4">
-                                    <h6 class="tem-one-service-title">Service</h6>
-                                    <p>
+                                    <h6 class="tem-one-service-title service_section_title">Service</h6>
+                                    <p class="service_section_description">
                                         Professional, reliable service provider committed to
                                         exceeding expectations with quality, efficiency, and
                                         personalized care for every client's needs.
                                     </p>
                                     <div class="slick-slider">
                                         <div>
-                                            <img class="img-fluid"
-                                                style="
-                                background-size: cover;
-                                width: 100%;
-                                height: 300px;
-                                object-fit: cover;
-                              "
+                                            <img class="img-fluid service_one_image"
                                                 src="https://www.awardstrophyworld.com/cdn/shop/files/TrophySlider-MOBILE.jpg?v=1691869489&width=1278"
                                                 alt="Slide 1" />
                                         </div>
                                         <div>
-                                            <img class="img-fluid"
-                                                style="
-                                background-size: cover;
-                                width: 100%;
-                                height: 300px;
-                                object-fit: cover;
-                              "
+                                            <img class="img-fluid service_two_image"
+                                                style="background-size: cover;width: 100%;height: 300px;object-fit: cover;"
                                                 src="https://img.asmedia.epimg.net/resizer/v2/KQHEREZJPZFUNRC3WQYWA3QBXI.jpg?auth=a869899f0991310a88875490e300e1de99703103383da19f43218303861bcb70&width=1200&height=1200&smart=true"
                                                 alt="Slide 2" />
                                         </div>
                                         <div>
-                                            <img class="img-fluid"
-                                                style="
-                                background-size: cover;
-                                width: 100%;
-                                height: 300px;
-                                object-fit: cover;
-                              "
+                                            <img class="img-fluid service_three_image"
+                                                style="background-size: cover;width: 100%;height: 300px;object-fit: cover;"
                                                 src="https://metro.co.uk/wp-content/uploads/2022/12/GettyImages-1450072343.jpg?quality=90&strip=all&w=1024&h=630&crop=1"
                                                 alt="Slide 3" />
                                         </div>
@@ -104,20 +93,21 @@
                                 </div>
                                 <!-- Service -->
                                 <div class="tem-one-bio-box px-3 pt-4">
-                                    <h6 class="tem-one-bio-title">Company</h6>
+                                    <h6 class="tem-one-bio-title company_title">Company</h6>
                                     <div class="d-flex">
                                         <div class="tem-one-about-first">
-                                            <p class="fw-bold mb-0">Ngen It LTD</p>
+                                            <p class="fw-bold mb-0 company_name">Ngen It LTD</p>
                                             <p class="mb-0">
-                                                <span>257/A, San-fca</span>
+                                                <span class="company_address_line_one">257/A, San-fca</span>
                                                 <br />
-                                                <span>Calefornia,USA</span>
+                                                <span class="company_address_line_two">Calefornia,USA</span>
                                             </p>
-                                            <p>+03 58685125</p>
+                                            <p class="company_phone">+03 58685125</p>
+                                            <p class="company_email">ngenitltd@gmail.com</p>
                                         </div>
                                         <div class="tem-one-about-secontd">
-                                            <p class="fw-bold mb-0">About</p>
-                                            <p>
+                                            <p class="fw-bold mb-0 company_about_title">About</p>
+                                            <p class="company_about_description">
                                                 Passionate team dedicated to excellence, creativity,
                                                 and customer satisfaction.
                                             </p>
@@ -127,11 +117,11 @@
                                 <!-- Service -->
                                 <div class="tem-one-service-box px-3 py-4">
                                     <h6 class="tem-one-service-title">Contact</h6>
-                                    <p class="mb-0">
+                                    <p class="mb-0 email_personal">
                                         @: szamansaju@gmail.com
                                         <small class="fw-bold">(Work)</small>
                                     </p>
-                                    <p class="mb-0">
+                                    <p class="mb-0 phone_personal">
                                         p: +385 91 561 0409
                                         <small class="fw-bold">(Personal)</small>
                                     </p>
@@ -197,7 +187,7 @@
                                         </div>
                                     </div>
                                     <div class="sticky-bottom mt-5">
-                                        <button class="btn-primary btn w-100 nfc_contact_btn">
+                                        <button class="btn-primary btn w-100">
                                             Connect Now
                                         </button>
                                     </div>

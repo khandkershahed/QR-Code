@@ -285,7 +285,7 @@ class NfcCardController extends Controller
     {
         if ($file && $file->isValid()) {
             $fileName = $fieldName . '.' . $file->getClientOriginalExtension();
-            $filePath = 'public/nfc/' . $code . '/' . $fileName;
+            $filePath = 'storage/nfc/' . $code . '/' . $fileName;
             Storage::put($filePath, $file);
         }
     }
