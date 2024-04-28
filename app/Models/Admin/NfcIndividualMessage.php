@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class NfcIndividualMessage extends Model
 {
     use HasFactory;
+    
     protected $guarded = [];
 }

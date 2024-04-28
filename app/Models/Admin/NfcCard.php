@@ -13,4 +13,8 @@ class NfcCard extends Model
     {
         return $this->hasOne(NfcData::class, 'card_id');
     }
+    public function nfcMessages()
+    {
+        return $this->hasMany(NfcIndividualMessage::class, 'nfc_id');
+    }
 }

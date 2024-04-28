@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Admin\Contact;
+use App\Models\Admin\NfcIndividualMessage;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -196,6 +197,21 @@ if (!function_exists('generate_unique_code')) {
         $serialNumber = $latestCode ? (int) explode('-', $latestCode)[2] + 1 : 1;
 
         return sprintf('%s-%s-%d', $prefix, $date, $serialNumber);
+    }
+}
+
+if (!function_exists('generate_unique_nfc_message_code')) {
+    function generate_unique_nfc_message_code($prefix)
+    {
+        $pattern = "$prefix-%";
+
+        $latestCode = NfcIndividualMessage::where('code', 'LIKE', $pattern)
+            ->orderByDesc('id')
+            ->value('code');
+
+        $serialNumber = $latestCode ? (int) explode('-', $latestCode)[2] + 1 : 1;
+
+        return sprintf('%s-%d', $prefix, $serialNumber);
     }
 }
 

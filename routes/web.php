@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\NewsLetterController;
+use App\Http\Controllers\Admin\NfcIndividualMessageController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\User\UserSocialLoginController;
 use App\Http\Controllers\VendorProfileController;
@@ -43,6 +44,11 @@ Route::get('/mail-test', [HomeController::class, 'mailTest'])->name('mailTest');
 Route::post('/mail-test', [HomeController::class, 'mailTestStore'])->name('mailTest.store');
 Route::get('/nfc/{name}/{code}', [HomeController::class, 'nfcPage'])->name('nfc.page');
 
+Route::resources(
+    [
+        'individual-message'  => NfcIndividualMessageController::class,
+    ],
+);
 
 Route::controller(UserSocialLoginController::class)->group(function(){
     Route::get('auth/google', 'redirectToGoogle')->name('auth.google');

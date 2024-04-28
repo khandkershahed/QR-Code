@@ -441,7 +441,11 @@
                                             <small class="fw-bold">(Personal)</small>
                                         </p>
                                         <div class="pt-4">
-                                            <form action="" method="post">
+                                            <form action="{{ route('individual-message.store') }}" method="post">
+                                                @csrf
+                                                <input type="hidden" name="user_id" value="{{ optional($nfc_card)->user_id }}">
+                                                <input type="hidden" name="nfc_id" value="{{ optional($nfc_card)->id }}">
+                                                <input type="hidden" name="nfc_code" value="{{ optional($nfc_card)->code }}">
                                                 <div class="row">
                                                     <div class="col mb-2">
                                                         <div>
@@ -494,20 +498,20 @@
                                                 </div>
                                             </form>
                                         </div>
-                                        <div>
-                                            <h6 class="tem-two-bio-title text-white pt-5">
-                                                Scan Me
-                                            </h6>
-                                            <div class="d-flex justify-content-center">
-                                                <img class="" width="150px"
-                                                    src="https://cdn.britannica.com/17/155017-050-9AC96FC8/Example-QR-code.jpg"
-                                                    alt="" />
+                                        @if (!empty($nfc_card->nfc_qr))
+                                            <div>
+                                                <h6 class="tem-two-bio-title text-white pt-5">
+                                                    Scan Me
+                                                </h6>
+                                                <div class="d-flex justify-content-center">
+                                                    <img class="" width="200px"
+                                                        src="{{ asset('storage/nfc/' . $nfc_card->code . '/' . $nfc_card->nfc_qr) }}"
+                                                        alt="" />
+                                                </div>
                                             </div>
-                                        </div>
+                                        @endif
                                         <div class="sticky-bottom mt-5">
-                                            <button class="btn-info btn w-100 text-white nfc_contact_btn">
-                                                Connect Now
-                                            </button>
+                                            <a href="tel:+{{ optional($nfc_card->nfcData)->phone_personal }}" class="btn-primary btn w-100 nfc_contact_btn">Connect Now</a>
                                         </div>
                                     </div>
                                 </div>

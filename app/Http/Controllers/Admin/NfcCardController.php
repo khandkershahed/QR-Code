@@ -22,7 +22,7 @@ class NfcCardController extends Controller
     public function index()
     {
         $data =[
-            'nfc_cards' => NfcCard::with('nfcData')->where('user_id', Auth::user()->id)->get(),
+            'nfc_cards' => NfcCard::with('nfcData','nfcMessages')->where('user_id', Auth::user()->id)->get(),
         ];
         return view('user.pages.nfc-card.index',$data);
     }
@@ -192,30 +192,31 @@ class NfcCardController extends Controller
         // Generate NFC URL and QR code
         $nfc_url = route('nfc.page', ['name' => $request->first_name . '-' . $request->last_name, 'code' => $code]);
         $qrCodeString = '';
-        // $qrCodeString = QrCode::size(300)->format('png')->generate($nfc_url);
+        $qrCodeString = QrCode::size(300)->format('png')->generate($nfc_url);
         $qrFileName = $code . '_nfc_qr.png';
-        $qrCodePath = 'public/nfc/' . $code . '/' . $qrFileName;
+        $qrCodePath = 'public/nfc/' . $code . '/';
+        // $qrCodePath = 'public/nfc/' . $code . '/' . $qrFileName;
         Storage::put($qrCodePath, $qrCodeString);
 
         // Create NFC card
         $nfc_card = NfcCard::create([
-            'user_id'          => Auth::user()->id,
-            'code'             => $code,
-            'nfc_type'         => $request->nfc_type,
-            'nfc_template'     => $request->nfc_template,
-            'primary_color'    => $request->primary_color,
-            'text_color'       => $request->text_color,
-            'title_color'      => $request->title_color,
-            'background_color' => $request->background_color,
-            'button_bg_color'     => $request->button_bg_color,
-            'button_title_color'     => $request->button_title_color,
-            'frame_color'      => $request->frame_color,
-            'font_family'      => $request->font_family,
-            'font_size'        => $request->font_size,
-            'nfc_qr'           => $qrFileName,
-            'nfc_url'          => $nfc_url,
-            'scan_count'       => $request->scan_count,
-            'created_at'       => Carbon::now(),
+            'user_id'            => Auth::user()->id,
+            'code'               => $code,
+            'nfc_type'           => $request->nfc_type,
+            'nfc_template'       => $request->nfc_template,
+            'primary_color'      => $request->primary_color,
+            'text_color'         => $request->text_color,
+            'title_color'        => $request->title_color,
+            'background_color'   => $request->background_color,
+            'button_bg_color'    => $request->button_bg_color,
+            'button_title_color' => $request->button_title_color,
+            'frame_color'        => $request->frame_color,
+            'font_family'        => $request->font_family,
+            'font_size'          => $request->font_size,
+            'nfc_qr'             => $qrFileName,
+            'nfc_url'            => $nfc_url,
+            'scan_count'         => $request->scan_count,
+            'created_at'         => Carbon::now(),
         ]);
 
         // Upload images
@@ -230,14 +231,6 @@ class NfcCardController extends Controller
         // $filePath = storage_path('app/public/nfc/' . $code . '/');
         $filePath = 'public/nfc/' . $code . '/';
 
-        // $uploadedFiles = [];
-        // foreach ($files as $key => $file) {
-        //     if (!empty($file)) {
-        //         $uploadedFiles[$key] = customUpload($file, $filePath);
-        //     } else {
-        //         $uploadedFiles[$key] = ['status' => 0];
-        //     }
-        // }
         $uploadedFiles = [];
         foreach ($files as $key => $file) {
             if (!empty($file)) {

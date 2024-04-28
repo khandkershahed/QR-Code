@@ -376,13 +376,17 @@
                                             <small class="fw-bold">(Personal)</small>
                                         </p>
                                         <div class="pt-2">
-                                            <form action="" method="post">
+                                            <form action="{{ route('individual-message.store') }}" method="post">
+                                                @csrf
+                                                <input type="hidden" name="user_id" value="{{ optional($nfc_card)->user_id }}">
+                                                <input type="hidden" name="nfc_id" value="{{ optional($nfc_card)->id }}">
+                                                <input type="hidden" name="nfc_code" value="{{ optional($nfc_card)->code }}">
                                                 <div class="row">
                                                     <div class="col mb-2">
                                                         <div>
                                                             <label for="client_name">Name
                                                                 <span class="text-danger">*</span></label>
-                                                            <input type="text" name="client_name" required
+                                                            <input type="text" name="nt_name" required
                                                                 class="form-control form-control-sm" id="" />
                                                         </div>
                                                     </div>
@@ -390,7 +394,7 @@
                                                         <div>
                                                             <label for="client_email">Email
                                                                 <span class="text-danger">*</span></label>
-                                                            <input type="text" name="client_email" required
+                                                            <input type="text" name="t_email" required
                                                                 class="form-control form-control-sm" id="" />
                                                         </div>
                                                     </div>
@@ -399,7 +403,7 @@
                                                     <div class="col mb-2">
                                                         <div>
                                                             <label for="client_name">Phone</label>
-                                                            <input type="text" name="client_phone"
+                                                            <input type="text" name="t_phone"
                                                                 class="form-control form-control-sm" id="" />
                                                         </div>
                                                     </div>
@@ -416,7 +420,7 @@
                                                         <div>
                                                             <label for="client_message">Message</label>
                                                             <br />
-                                                            <textarea name="client_message" id="" class="form-control" rows="3"></textarea>
+                                                            <textarea name="message" id="" class="form-control" rows="3"></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -429,17 +433,21 @@
                                                 </div>
                                             </form>
                                         </div>
-                                        <div>
-                                            <div class="d-flex justify-content-center pt-5">
-                                                <img class="" width="150px"
-                                                    src="https://cdn.britannica.com/17/155017-050-9AC96FC8/Example-QR-code.jpg"
-                                                    alt="" />
+                                        @if (!empty($nfc_card->nfc_qr))
+                                            <div>
+                                                <h6 class="tem-two-bio-title text-white pt-5">
+                                                    Scan Me
+                                                </h6>
+                                                <div class="d-flex justify-content-center">
+                                                    <img class="" width="200px"
+                                                        src="{{ asset('storage/nfc/' . $nfc_card->code . '/' . $nfc_card->nfc_qr) }}"
+                                                        alt="" />
+                                                </div>
                                             </div>
-                                        </div>
+                                        @endif
                                         <div class="sticky-bottom mt-5">
-                                            <button class="btn-primary btn w-100 nfc_contact_btn">
-                                                Connect Now
-                                            </button>
+                                            <a href="tel:+{{ optional($nfc_card->nfcData)->phone_personal }}" class="btn-primary btn w-100 nfc_contact_btn">Connect Now</a>
+
                                         </div>
                                     </div>
                                 </div>
