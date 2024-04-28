@@ -11,8 +11,9 @@
                     <div class="logo-part aos-init aos-animate" data-aos="fade-left" data-aos-duration="1500"
                         data-aos-offset="50">
                         <div class="logo mb-10">
-                            <a href="{{ route('homePage') }}"><img width="100px"
-                                    src="https://i.ibb.co/BNBTVN4/logo.png" alt="Logo"></a>
+                            <a href="{{ route('homePage') }}">
+                                <img width="100px" src="{{ (!empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white))) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('https://i.ibb.co/BNBTVN4/logo.png') }}"
+                                    alt="Logo"></a>
                         </div>
                     </div>
                 </div>
@@ -40,10 +41,10 @@
                         <p class="text-muted">Connect with us and stay updated on the latest news, offers, and updates.
                         </p>
                         <div class="social-style-one">
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                            <a href="javascript:void(0)"><i class="fab fa-twitter"></i></a>
+                            <a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a>
+                            <a href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
+                            <a href="javascript:void(0)"><i class="fab fa-pinterest-p"></i></a>
                         </div>
                     </div>
                 </div>
@@ -52,12 +53,12 @@
                         data-aos-duration="1500" data-aos-offset="50">
                         <h6 class="footer-title text-white">Contact</h6>
                         <ul>
-                            <li><i class="fa fa-map-marker-alt"></i> 55 Main Street, 2nd block Melbourne, Australia
+                            <li>
+                                <i class="fa fa-map-marker-alt"></i> {{ !empty($site->address_line_one) ? $site->address_line_one : '' }} {{ !empty($site->address_line_two) ? ', ' . $site->address_line_two : '' }}
                             </li>
-                            <li><i class="fa fa-envelope"></i> <a
-                                    href="mailto:support@gmail.com">support@goqr.mail.com</a>
+                            <li><i class="fa fa-envelope"></i> <a href="mailto:support@gmail.com">support@goqr.mail.com</a>
                             </li>
-                            <li><i class="fa fa-phone"></i> <a href="callto:+0001234455">+000 (123) 44 55</a></li>
+                            <li><i class="fa fa-phone"></i> <a href="callto:{{ !empty($site->phone_one) ? $site->phone_one : '' }}">{{ !empty($site->phone_one) ? $site->phone_one : '' }}</a></li>
                         </ul>
                     </div>
                 </div>

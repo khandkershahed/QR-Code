@@ -40,7 +40,7 @@
                             </div>
                             <div class="content">
                                 <span class="title">Location</span>
-                                <span class="text">55 Main Street, 2nd block Melbourne, Australia</span>
+                                <span class="text">{{ !empty($site->address_line_one) ? $site->address_line_one : '' }} {{ !empty($site->address_line_two) ? ', ' . $site->address_line_two : '' }}</span>
                             </div>
                         </div>
                         <div class="contact-info-item style-two aos-init" data-aos="fade-up" data-aos-delay="100"
@@ -51,7 +51,7 @@
                             <div class="content">
                                 <span class="title">Email Address</span>
                                 <span class="text">
-                                    <a href="mailto:support@gmail.com">support@gmail.com</a>
+                                    <a href="mailto:{{ !empty($site->contact_email) ? $site->contact_email : '' }}">{{ !empty($site->contact_email) ? $site->contact_email : '' }}</a>
                                 </span>
                             </div>
                         </div>
@@ -63,7 +63,7 @@
                             <div class="content">
                                 <span class="title">Make A Call</span>
                                 <span class="text">
-                                    <a href="calto:+000(123)456889">+000 (123) 456 889</a>
+                                    <a href="callto:{{ !empty($site->phone_one) ? $site->phone_one : '' }}">{{ !empty($site->phone_one) ? $site->phone_one : '' }}</a>
                                 </span>
                             </div>
                         </div>

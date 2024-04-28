@@ -24,31 +24,27 @@ class UserSocialLoginController extends Controller
     public function handleGoogleCallback()
     {
         try {
-
             $user = Socialite::driver('google')->user();
 
-            $finduser = User::where('google_id', $user->id)->first();
+            $findUser = User::where('google_id', $user->id)->first();
 
-            if($finduser){
-
-                Auth::login($finduser);
-
-                return redirect()->intended(RouteServiceProvider::HOME);
-
-            }else{
+            if ($findUser) {
+                Auth::login($findUser);
+            } else {
                 $newUser = User::create([
                     'name' => $user->name,
                     'email' => $user->email,
-                    'google_id'=> $user->id,
-                    'password' => encrypt('goQRDummy')
+                    'google_id' => $user->id,
+                    'password' => bcrypt('goQRDummy') // Use bcrypt for password hashing
                 ]);
-                // $newUser->notify(new UserRegistration($user->name));
-                Auth::login($newUser);
-                Mail::to($user->email)->send(new UserRegistrationMail($user->name));
 
-                return redirect()->intended(RouteServiceProvider::HOME);
+                // Send registration email
+                // Mail::to($user->email)->send(new UserRegistrationMail($user->name));
+
+                Auth::login($newUser);
             }
 
+            return redirect()->intended(RouteServiceProvider::HOME);
         } catch (Exception $e) {
             dd($e->getMessage());
         }

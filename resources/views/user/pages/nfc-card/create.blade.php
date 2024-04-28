@@ -157,11 +157,36 @@
         <script>
             $(document).ready(function() {
                 // NFC Template
+                // $('input[name="nfc_template"]').change(function() {
+                //     $(".nfc-card").hide();
+                //     const nfcTemplateValue = $('input[name="nfc_template"]:checked').val();
+                //     if (nfcTemplateValue != null) {
+                //         localStorage.setItem('nfc_template', nfcTemplateValue);
+                //         $("." + nfcTemplateValue).show();
+                //     } else {
+                //         $(".nfc-card").hide();
+                //     }
+                // });
                 $('input[name="nfc_template"]').change(function() {
                     $(".nfc-card").hide();
                     const nfcTemplateValue = $('input[name="nfc_template"]:checked').val();
                     if (nfcTemplateValue != null) {
-                        $("." + nfcTemplateValue).show();
+                        localStorage.setItem('nfc_template', nfcTemplateValue);
+                        $.ajax({
+                            type: 'POST',
+                            url: '{{ route('user.updateNfcSession') }}',
+                            data: {
+                                _token: '{{ csrf_token() }}',
+                                nfc_template: nfcTemplateValue
+                            },
+                            success: function(response) {
+                                // Show the corresponding NFC card template
+                                $("." + nfcTemplateValue).show();
+                            },
+                            error: function(xhr, textStatus, errorThrown) {
+                                alert('Error updating NFC session:', errorThrown);
+                            }
+                        });
                     } else {
                         $(".nfc-card").hide();
                     }

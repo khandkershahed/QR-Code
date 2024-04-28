@@ -6,10 +6,11 @@
                 <div class="logo-outer">
                     <div class="logo">
                         <a href="{{ route('homePage') }}">
-                            <img width="100px" src="https://i.ibb.co/BNBTVN4/logo.png" alt="Logo" title="Logo" />
+                            <img width="100px" src="{{ (!empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white))) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('https://i.ibb.co/BNBTVN4/logo.png') }}" alt="Logo" title="Logo" />
                         </a>
                     </div>
                 </div>
+
 
                 <div class="nav-outer ms-lg-5 ps-lg-5 clearfix">
                     <!-- Main Menu -->
@@ -17,7 +18,8 @@
                         <div class="navbar-header py-10">
                             <div class="mobile-logo">
                                 <a href="{{ route('homePage') }}">
-                                    <img width="60px" src="https://i.ibb.co/BNBTVN4/logo.png" alt="Logo"
+                                    <img width="60px" src="{{ (!empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white))) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('https://i.ibb.co/BNBTVN4/logo.png') }}"
+                                    alt="Logo"
                                         title="Logo" />
                                 </a>
                             </div>
@@ -59,8 +61,7 @@
                                                     <div class="card-body">
                                                         <h6>Information</h6>
                                                         <div class="pt-50">
-                                                            <a href="{{ route('qrGuide') }}"
-                                                                class="d-flex align-items-center mb-2">
+                                                            <a href="{{ route('qrGuide') }}" class="d-flex align-items-center mb-2">
                                                                 <div class="pe-2">
                                                                     <i class="fas fa-arrow-right menu_icons"
                                                                         aria-hidden="true"></i>
@@ -69,8 +70,7 @@
                                                                     <p class="m-0 p-0">QR Code Guide</p>
                                                                 </div>
                                                             </a>
-                                                            <a href="{{ route('digitalQr') }}"
-                                                                class="d-flex align-items-center mb-2">
+                                                            <a href="" class="d-flex align-items-center mb-2">
                                                                 <div class="pe-2">
                                                                     <i class="fas fa-arrow-right menu_icons"
                                                                         aria-hidden="true"></i>
@@ -80,8 +80,7 @@
                                                                     </p>
                                                                 </div>
                                                             </a>
-                                                            <a href="{{ route('staticQr') }}"
-                                                                class="d-flex align-items-center mb-2">
+                                                            <a href="" class="d-flex align-items-center mb-2">
                                                                 <div class="pe-2">
                                                                     <i class="fas fa-arrow-right menu_icons"
                                                                         aria-hidden="true"></i>
@@ -90,8 +89,7 @@
                                                                     <p class="m-0 p-0">Statistic QR</p>
                                                                 </div>
                                                             </a>
-                                                            <a href="{{ route('dynamicQr') }}"
-                                                                class="d-flex align-items-center mb-2">
+                                                            <a href="" class="d-flex align-items-center mb-2">
                                                                 <div class="pe-2">
                                                                     <i class="fas fa-arrow-right menu_icons"
                                                                         aria-hidden="true"></i>
@@ -258,7 +256,7 @@
                 <!-- Menu Button -->
                 <div class="menu-btns ms-lg-auto">
                     @auth
-                        <a href="{{ route('dashboard') }}" class="light-btn"><i class="fas fa-user me-3"></i> My
+                        <a href="{{ route('dashboard') }}" class="light-btn"><i class="fas fa-user me-1"></i> My
                             Dashboard</a>
                     @else
                         <a href="{{ route('register') }}" class="light-btn">Sign Up</a>

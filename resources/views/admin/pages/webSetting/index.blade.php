@@ -31,7 +31,7 @@
                             placeholder="Enter Site Icon"></x-metronic.input>
                     </div>
                     <div class="col-lg-1">
-                        <img src="http://placehold.it/180"
+                        <img src="{{ (!empty($site->site_icon) && file_exists(public_path('storage/webSetting/siteIcon/' . $site->site_icon))) ? asset('storage/webSetting/siteIcon/' . $site->site_icon) : asset('http://placehold.it/180') }}"
                             class="rounded-circle mt-8" width="60px" height="60px" alt="">
                     </div>
                     <div class="col-lg-3">
@@ -43,12 +43,12 @@
                             :value="$site ? $site->system_logo_white : ''" placeholder="Enter System Logo White"></x-metronic.input>
                     </div>
                     <div class="col-lg-1">
-                        <img src="http://placehold.it/180"
+                        <img src="{{ (!empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white))) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('http://placehold.it/180') }}"
                             class="rounded-circle mt-8" width="60px" height="60px" alt="">
                     </div>
 
 
-                    <div class="col-lg-3">
+                    {{-- <div class="col-lg-3">
                         <x-metronic.label for="system_logo_black"
                             class="col-form-label fw-bold fs-6">{{ __('System Logo Black') }}</x-metronic.label>
 
@@ -57,9 +57,9 @@
                     </div>
                     <div class="col-lg-1">
                         <img id="preview"
-                            src="http://placehold.it/180"
+                            src=""
                             class="rounded-circle mt-8" width="60px" height="60px" alt="Preview Image">
-                    </div>
+                    </div> --}}
 
 
                     <div class="col-lg-4">
@@ -204,6 +204,14 @@
                             placeholder="Enter Youtube Url"></x-metronic.input>
                     </div>
                     <div class="col-lg-4">
+                        <x-metronic.label for="pinterest_url"
+                            class="col-form-label fw-bold fs-6">{{ __('Pinterest Url') }}
+                        </x-metronic.label>
+
+                        <x-metronic.input id="pinterest_url" type="text" name="pinterest_url" :value="$site ? $site->pinterest_url : ''"
+                            placeholder="Enter Youtube Url"></x-metronic.input>
+                    </div>
+                    <div class="col-lg-4">
                         <x-metronic.label for="service_days"
                             class="col-form-label fw-bold fs-6">{{ __('Service Days') }}
                         </x-metronic.label>
@@ -234,7 +242,7 @@
                         </x-metronic.label>
 
                         <textarea name="address_line_one" id="address_line_one" cols="1" rows="1" class="form-control"
-                            placeholder="Enter address_line_one"></textarea>
+                            placeholder="Enter address_line_one">{!! $site->address_line_one !!}</textarea>
                     </div>
                     <div class="col-lg-6">
                         <x-metronic.label for="address_line_two"
@@ -242,7 +250,7 @@
                         </x-metronic.label>
 
                         <textarea name="address_line_two" id="address_line_two" cols="1" rows="1" class="form-control"
-                            placeholder="Enter address_line_two"></textarea>
+                            placeholder="Enter address_line_two">{!! $site->address_line_two !!}</textarea>
                     </div>
                     <div class="col-lg-12">
                         <div class="text-end pt-15">

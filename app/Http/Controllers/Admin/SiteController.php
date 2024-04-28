@@ -44,16 +44,21 @@ class SiteController extends Controller
 
         $webSetting = Site::firstOrNew([]);
 
-        $faviconMainFile   = $request->file('site_icon');
-        $logoWhiteMainFile = $request->file('system_logo_white');
-        $logoBlackMainFile = $request->file('system_logo_black');
-        $uploadPath      = storage_path('app/public/');
+        $webSetting                = Site::firstOrNew([]);
 
-        if ($request->hasFile('system_logo_white')) {
-            if (!empty($webSetting->system_logo_white)) {
+        $siteIconMainFile          = $request->file('site_icon');
+        // dd($siteIconMainFile);
+        $systemLogoWhiteMainFile   = $request->file('system_logo_white');
+        $systemLogoBlackMainFile   = $request->file('system_logo_black');
+
+        $siteIconUploadPath        = storage_path('app/public/webSetting/siteIcon/');
+        $systemLogoWhiteUploadPath = storage_path('app/public/webSetting/systemLogoWhite/');
+        $systemLogoBlackUploadPath = storage_path('app/public/webSetting/systemLogoBlack/');
+
+        if ($request->hasFile('site_icon')) {
+            if (!empty($webSetting->site_icon)) {
                 $filePaths = [
-                    storage_path("app/public/" . $webSetting->system_logo_white),
-                    storage_path("app/public/requestImg/" . $webSetting->system_logo_white)
+                    storage_path("app/public/webSetting/siteIcon/" . $webSetting->site_icon),
                 ];
 
                 foreach ($filePaths as $filePath) {
@@ -62,16 +67,32 @@ class SiteController extends Controller
                     }
                 }
             }
-            $glogoWhiteMainFile = uploadImage($logoWhiteMainFile, $uploadPath);
+            $globalFunSiteIcon  = uploadImage($siteIconMainFile, $siteIconUploadPath);
         } else {
-            $glogoWhiteMainFile = ['status' => 0];
+            $globalFunSiteIcon = ['status' => 0];
+        }
+
+        if ($request->hasFile('system_logo_white')) {
+            if (!empty($webSetting->system_logo_white)) {
+                $filePaths = [
+                    storage_path("app/public/webSetting/systemLogoWhite/" . $webSetting->system_logo_white),
+                ];
+
+                foreach ($filePaths as $filePath) {
+                    if (File::exists($filePath)) {
+                        File::delete($filePath);
+                    }
+                }
+            }
+            $globalFunSystemLogoWhite  = uploadImage($systemLogoWhiteMainFile, $systemLogoWhiteUploadPath);
+        } else {
+            $globalFunSystemLogoWhite = ['status' => 0];
         }
 
         if ($request->hasFile('system_logo_black')) {
             if (!empty($webSetting->system_logo_black)) {
                 $filePaths = [
-                    storage_path("app/public/" . $webSetting->system_logo_black),
-                    storage_path("app/public/requestImg/" . $webSetting->system_logo_black)
+                    storage_path("app/public/webSetting/systemLogoBlack/" . $webSetting->system_logo_black),
                 ];
 
                 foreach ($filePaths as $filePath) {
@@ -80,38 +101,21 @@ class SiteController extends Controller
                     }
                 }
             }
-            $globallogoBlackMainFile = uploadImage($logoBlackMainFile, $uploadPath);
+            $globalFunSystemLogoBlack  = uploadImage($systemLogoBlackMainFile, $systemLogoBlackUploadPath);
         } else {
-            $globallogoBlackMainFile = ['status' => 0];
+            $globalFunSystemLogoBlack = ['status' => 0];
         }
 
-        if ($request->hasFile('site_icon')) {
-            if (!empty($webSetting->site_icon)) {
-                $filePaths = [
-                    storage_path("app/public/" . $webSetting->site_icon),
-                    storage_path("app/public/requestImg/" . $webSetting->site_icon)
-                ];
-
-                foreach ($filePaths as $filePath) {
-                    if (File::exists($filePath)) {
-                        File::delete($filePath);
-                    }
-                }
-            }
-            $globalFunImgFavicon = uploadImage($faviconMainFile, $uploadPath, 44, 44);
-        } else {
-            $globalFunImgFavicon = ['status' => 0];
-        }
 
         Site::updateOrCreate([], [
             'website_name'               => $request->website_name,
             'site_motto'                 => $request->site_motto,
-            'site_icon'                  => $globalFunImgFavicon['status']     == 1 ? $faviconMainFile->hashName()  : $webSetting->site_icon,
+            'site_icon'                  => $globalFunSiteIcon['status'] == 1 ? $globalFunSiteIcon['file_name'] : $webSetting->site_icon,
+            'system_logo_white'          => $globalFunSystemLogoWhite['status'] == 1 ? $globalFunSystemLogoWhite['file_name'] : $webSetting->system_logo_white,
+            'system_logo_black'          => $globalFunSystemLogoBlack['status'] == 1 ? $globalFunSystemLogoBlack['file_name'] : $webSetting->system_logo_black,
             'about'                      => $request->about,
             'address_line_one'           => $request->address_line_one,
-            'address_line_one'           => $request->address_line_one,
-            'system_logo_white'          => $glogoWhiteMainFile['status']      == 1 ? $logoWhiteMainFile->hashName(): $webSetting->system_logo_white,
-            'system_logo_black'          => $globallogoBlackMainFile['status'] == 1 ? $logoBlackMainFile->hashName(): $webSetting->system_logo_black,
+            'address_line_two'           => $request->address_line_two,
             'system_timezone'            => $request->system_timezone,
             'base_color'                 => $request->base_color,
             'base_hover_color'           => $request->base_hover_color,
@@ -130,6 +134,7 @@ class SiteController extends Controller
             'instagram_url'              => $request->instagram_url,
             'linkedin_url'               => $request->linkedin_url,
             'youtube_url'                => $request->youtube_url,
+            'pinterest_url'               => $request->pinterest_url,
             'service_days'               => $request->service_days,
             'service_time'               => $request->service_time,
 

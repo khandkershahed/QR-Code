@@ -38,6 +38,7 @@ return new class extends Migration
             $table->string('twitter_url', 255)->nullable();
             $table->string('instagram_url', 255)->nullable();
             $table->string('linkedin_url', 255)->nullable();
+            $table->string('pinterest_url', 255)->nullable();
             $table->string('youtube_url', 255)->nullable();
             $table->string('service_days', 100)->nullable();
             $table->string('service_time', 100)->nullable();
