@@ -6,6 +6,7 @@ use App\Models\Admin\Faq;
 use App\Models\Admin\Plan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\NfcCard;
 use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
@@ -103,6 +104,14 @@ class HomeController extends Controller
     }
 
     public function nfcPage($name, $code) {
-        return view('frontend.pages.nfc.template_one');
+        $data =[
+            'nfc_card' => NfcCard::with('nfcData')->where('code',$code)->first(),
+        ];
+        if ($data['nfc_card']->nfc_template == 'template_one') {
+            return view('frontend.pages.nfc.template_one',$data);
+        } else {
+            return view('frontend.pages.nfc.template_two',$data);
+        }
+
     }
 }

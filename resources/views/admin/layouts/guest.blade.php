@@ -26,6 +26,10 @@
     <!--begin::Global Stylesheets Bundle(used by all pages)-->
     <link href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
     <!--end::Global Stylesheets Bundle-->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -51,6 +55,11 @@
     <!--end::Global Javascript Bundle-->
     <!--begin::Page Custom Javascript(used by this page)-->
     <script src="{{ asset('admin/assets/js/custom/authentication/sign-in/general.js') }}"></script>
+
+    <script src="https://kit.fontawesome.com/4cba8ce13c.js"></script>
+    <!-- Slick JS -->
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <!--end::Page Custom Javascript-->
     <script>
         document.querySelectorAll('.toggle-password').forEach(function(toggle) {
@@ -60,6 +69,16 @@
                 passwordInput.setAttribute('type', isVisible ? 'password' : 'text');
                 this.querySelector('.bi-eye').classList.toggle('d-none');
                 this.querySelector('.bi-eye-slash').classList.toggle('d-none');
+            });
+        });
+
+        $(document).ready(function() {
+            $(".slick-slider").slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                draggable: false,
+                autoplaySpeed: 2000, // Adjust autoplay speed in milliseconds
             });
         });
     </script>
