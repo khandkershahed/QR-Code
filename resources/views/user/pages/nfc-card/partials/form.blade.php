@@ -22,7 +22,7 @@
                             <x-metronic.label for="profile_image"
                                 class="form-label">{{ __('Banner Image') }}</x-metronic.label>
                             <input id="profile_image" type="file" class="form-control" name="banner_image"
-                                :value="old('banner_image')" onchange="previewprofileImage(this)" accept="image/*" />
+                                :value="old('banner_image')" onchange="previewBannerImage(this)" accept="image/*" />
                         </div>
                     </div>
                     <div class="col-lg-1 d-lg-block d-sm-none">
@@ -30,7 +30,7 @@
                             <x-metronic.label for="profile_image_preview"
                                 class="form-label">{{ __('Preview') }}</x-metronic.label>
                             <div>
-                                <img width="50px" height="50px" class="rounded-circle border profile_image"
+                                <img width="50px" height="50px" class="rounded-circle border banner_image"
                                     id="profile_image_preview" src="" alt="">
                             </div>
                         </div>
