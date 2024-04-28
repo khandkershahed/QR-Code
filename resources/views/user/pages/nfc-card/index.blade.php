@@ -103,8 +103,7 @@
 
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-3">
-                                                <a href="#" class="menu-link px-3"
-                                                    data-kt-docs-table-filter="delete_row">
+                                                <a href="{{ route('user.nfc-card.destroy',$nfc_card->id) }}" class="menu-link px-3 delete">
                                                     Delete
                                                 </a>
                                             </div>

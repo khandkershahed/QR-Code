@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Admin;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Admin\NfcCard;
+use App\Models\Admin\NfcData;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Admin\NfcCardRequest;
-use App\Models\Admin\NfcData;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class NfcCardController extends Controller
@@ -341,7 +342,18 @@ class NfcCardController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $nfc = NfcCard::findOrFail($id);
+        $folderPath = storage_path('app/public/nfc/' . $nfc->code);
+        // dd($folderPath);
+        // Delete the folder and its contents
+        if (File::exists($folderPath)) {
+            File::deleteDirectory($folderPath);
+        }
+        $nfc->delete();
+        $nfc_data = NfcData::where('card_id' , $id)->first();
+        if (!empty($nfc_data)) {
+            $nfc_data->delete();
+        }
     }
 
     public function updateNFCTemplateSession(Request $request)
