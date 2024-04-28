@@ -3,7 +3,6 @@
 use App\Models\Admin\Contact;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
-use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 
 // if (!function_exists('myHelper')) { // example of a helper function
