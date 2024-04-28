@@ -228,7 +228,7 @@ class NfcCardController extends Controller
             'service_three_image' => $request->file('service_three_image'),
         ];
 
-        $filePath = storage_path('app/public/nfc/' . $code . '/');
+        $filePath = storage_path('app/public/nfc/' . $code );
         // $filePath = 'public/nfc/' . $code . '/';
 
         $uploadedFiles = [];
