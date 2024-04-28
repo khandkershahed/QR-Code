@@ -122,7 +122,8 @@
                                                     <x-metronic.label for="qr_name"
                                                         class="form-label">{{ __('Enter a name for your QR code') }}</x-metronic.label>
                                                     <x-metronic.input id="qr_name" type="text" name="qr_name"
-                                                        :value="old('qr_name')" placeholder="Enter a name for your QR code" required/>
+                                                        :value="old('qr_name')" placeholder="Enter a name for your QR code"
+                                                        required />
                                                 </div>
                                                 {{-- <div class="w-25 mx-auto">
                                                     <img width="300px"
@@ -170,14 +171,17 @@
             <div class="col-lg-3">
                 <div class="card">
                     <div class="card-body">
-                        <div class="d-flex flex-column justify-content-center align-items-center" id="generatedQRCodeContainer">
+                        <div class="d-flex flex-column justify-content-center align-items-center"
+                            id="generatedQRCodeContainer">
                             <h3>Preview</h3>
-                            <img id="generatedQRCode" class="img-fluid" src="https://i.ibb.co/XzHNWc0/no-qr.png" alt="QR Code">
+                            <img id="generatedQRCode" class="img-fluid" src="https://i.ibb.co/XzHNWc0/no-qr.png"
+                                alt="QR Code">
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-around align-items-center">
                         <a href="#" class="btn btn-light btn-active-light-primary w-100 me-2">Preview</a>
-                        <a id="downloadLink" href="javascripti:void()" download class="btn btn-light btn-primary w-100" style="display: none;">Download</a>
+                        <a id="downloadLink" href="javascripti:void()" download
+                            class="btn btn-light btn-primary w-100" style="display: none;">Download</a>
                     </div>
                 </div>
             </div>
@@ -185,13 +189,18 @@
     </div>
 
     @push('scripts')
-
-
         <script>
             $(document).ready(function() {
                 $('#colorPicker').on('input', function() {
                     var selectedColor = $(this).val();
                     $('#colorCodeInput').val(selectedColor);
+                });
+            });
+            $(document).ready(function() {
+                $('#colorPicker2').on('input', function() {
+                    var selectedColor2 = $(this).val();
+                    $('#colorCodeInput2').val(selectedColor2);
+                    console.log("Selected color code:", selectedColor2);
                 });
             });
         </script>

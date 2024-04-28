@@ -7,7 +7,7 @@
             <div class="banner-inner pt-70 rpt-60 text-black">
                 <h1 class="page-title aos-init aos-animate" data-aos="fade-up" data-aos-duration="1500"
                     data-aos-offset="50">
-                    Our Pricing
+                    Reseller Pricing
                 </h1>
             </div>
         </div>

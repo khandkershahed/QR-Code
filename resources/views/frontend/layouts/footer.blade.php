@@ -80,7 +80,7 @@
                                 data-aos-duration="1500" data-aos-offset="50">
                                 <h6 class="footer-title text-white">Quick Link</h6>
                                 <ul>
-                                    <li><a href="{{ route('pricing') }}">Pricing</a></li>
+                                    <li><a href="{{ route('user.pricing') }}">Pricing</a></li>
                                     <li><a href="{{ route('qrCode') }}">QR Code</a></li>
                                     <li><a href="{{ route('nfcCard') }}">Business Card</a></li>
                                 </ul>

@@ -216,7 +216,7 @@
                         </div>
                         <div class="menu-item">
                             <a class="menu-link "
-                                href="{{ route('pricing') }}"> {{-- {{ Route::is('user.qr-code.create') ? 'active' : '' }} --}}
+                                href="{{ route('user.pricing') }}"> {{-- {{ Route::is('user.qr-code.create') ? 'active' : '' }} --}}
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>

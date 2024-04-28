@@ -164,7 +164,8 @@
                             placeholder="Upload Logo" />
                     </div>
                     <div class="ps-4">
-                        <x-metronic.label for="qr_logo_size" class="form-label">{{ __('Logo Size (in Pixel)') }}</x-metronic.label>
+                        <x-metronic.label for="qr_logo_size"
+                            class="form-label">{{ __('Logo Size (in Pixel)') }}</x-metronic.label>
                         <x-metronic.input id="qr_logo_size" type="number" name="qr_logo_size" :value="old('qr_logo_size')"
                             placeholder="Logo Size(Eg: 5, 10, 15....)" />
                     </div>
@@ -363,9 +364,9 @@
                 <p>This will be the color and shape of your QR code's eye-frames</p>
             </div>
             <div class="row p-5 pt-3 pt-lg-6">
-                <label class="form-label p-0 pb-3" for="colorPicker">Eye Frame Color</label>
-                <input type="text" id="colorCodeInput" class="form-control form-control-solid w-75 w-lg-25" readonly>
-                <input type="color" id="colorPicker" style="width: 56px;height: 45px;" name="qr_eye_frame_color">
+                <label class="form-label p-0 pb-3" for="colorPicker2">Eye Frame Color</label>
+                <input type="text" id="colorCodeInput2" class="form-control form-control-solid w-75 w-lg-25" readonly>
+                <input type="color" id="colorPicker2" style="width: 56px;height: 45px;" name="qr_eye_frame_color">
             </div>
             {{-- <div class="d-lg-flex row gx-10 mb-4">
                 <x-qr-code.eye-frame :eyeFrames="[
@@ -480,14 +481,16 @@
                             <div class="d-flex">
                                 <input type="text" id="colorCodeInput-normal_color"
                                     class="form-control form-control-solid w-25" readonly>
-                                <input type="color" id="colorPicker" style="width: 56px;height: 45px;" name="qr_solid_color">
+                                <input type="color" id="colorPicker" style="width: 56px;height: 45px;"
+                                    name="qr_solid_color">
                             </div>
                         </div>
                     </div>
                     <div class="hidden-field" id="gradient_color_show" style="display: none;">
                         <div class="pt-5 pb-4">
                             <label for="">Select Gradient Type</label>
-                            <select class="form-select form-select-sm mt-3 w-25" name="qr_gradient_color_type" aria-label="Default select example">
+                            <select class="form-select form-select-sm mt-3 w-25" name="qr_gradient_color_type"
+                                aria-label="Default select example">
                                 <option>None</option>
                                 <option value="vertical" selected>Vertical</option>
                                 <option value="horizontal">Horizontal</option>
@@ -503,7 +506,8 @@
                                     <input type="text" id="colorCodeInput-gradient"
                                         class="form-control form-control-solid w-25" style="width: 160px !important"
                                         readonly>
-                                    <input type="color" id="colorPicker" name="qr_gradient_color_start" style="width: 56px;height: 45px;">
+                                    <input type="color" id="colorPicker" name="qr_gradient_color_start"
+                                        style="width: 56px;height: 45px;">
                                 </div>
                             </div>
                             <div class="pt-3">
@@ -512,7 +516,8 @@
                                     <input type="text" id="colorCodeInput-gradient-2"
                                         class="form-control form-control-solid w-25" style="width: 160px !important"
                                         readonly>
-                                    <input type="color" id="colorPicker" name="qr_gradient_color_end" style="width: 56px;height: 45px;">
+                                    <input type="color" id="colorPicker" name="qr_gradient_color_end"
+                                        style="width: 56px;height: 45px;">
                                 </div>
                             </div>
                         </div>
@@ -561,7 +566,8 @@
                                     <div class="d-flex">
                                         <input type="text" id="colorCodeInput-normal_color"
                                             class="form-control form-control-solid w-100" readonly>
-                                        <input type="color" name="qr_bg_color" id="colorPicker" style="width: 56px;height: 45px;">
+                                        <input type="color" name="qr_bg_color" id="colorPicker"
+                                            style="width: 56px;height: 45px;">
                                     </div>
                                 </div>
                             </div>
