@@ -448,62 +448,62 @@ class QrCodeController extends Controller
 
         // Upload logo file if provided
         // Handle QR Logo
-        if ($request->hasFile('qr_logo')) {
-            $logo = $request->file('qr_logo');
-            if ($logo->isValid()) {
-                $code = $request->input('code');
-                $fileName = $qr->code . '.' . $logo->getClientOriginalExtension();
+        // if ($request->hasFile('qr_logo')) {
+        //     $logo = $request->file('qr_logo');
+        //     if ($logo->isValid()) {
+        //         $code = $request->input('code');
+        //         $fileName = $qr->code . '.' . $logo->getClientOriginalExtension();
 
-                // Load the original logo image using GD
-                $originalImage = imagecreatefromstring(file_get_contents($logo->getPathname()));
-                $logoWidth = imagesx($originalImage);
-                $logoHeight = imagesy($originalImage);
+        //         // Load the original logo image using GD
+        //         $originalImage = imagecreatefromstring(file_get_contents($logo->getPathname()));
+        //         $logoWidth = imagesx($originalImage);
+        //         $logoHeight = imagesy($originalImage);
 
-                // Create a new image with a light background
-                $background = imagecreatetruecolor($logoWidth, $logoHeight);
-                $backgroundColor = imagecolorallocate($background, 175, 175, 175); // Light gray color
-                imagefill($background, 0, 0, $backgroundColor);
+        //         // Create a new image with a light background
+        //         $background = imagecreatetruecolor($logoWidth, $logoHeight);
+        //         $backgroundColor = imagecolorallocate($background, 175, 175, 175); // Light gray color
+        //         imagefill($background, 0, 0, $backgroundColor);
 
-                // Merge the original logo with the background
-                imagecopy($background, $originalImage, 0, 0, 0, 0, $logoWidth, $logoHeight);
+        //         // Merge the original logo with the background
+        //         imagecopy($background, $originalImage, 0, 0, 0, 0, $logoWidth, $logoHeight);
 
-                // Save the merged image
-                $logoPath = 'public/qr_codes/logos/' . $fileName;
-                $logoFPath = $logo->storeAs('public/qr_codes/logos', $fileName);
-                $logoFullPath = storage_path('app/' . $logoFPath);
-                imagepng($background, storage_path('app/' . $logoPath));
+        //         // Save the merged image
+        //         $logoPath = 'public/qr_codes/logos/' . $fileName;
+        //         $logoFPath = $logo->storeAs('public/qr_codes/logos', $fileName);
+        //         $logoFullPath = storage_path('app/' . $logoFPath);
+        //         imagepng($background, storage_path('app/' . $logoPath));
 
-                // Free up memory
-                imagedestroy($originalImage);
-                imagedestroy($background);
+        //         // Free up memory
+        //         imagedestroy($originalImage);
+        //         imagedestroy($background);
 
-                // Save the logo path to the corresponding QR record
-                $qr->update(['qr_logo' => $logoPath]);
-            }
-        }
+        //         // Save the logo path to the corresponding QR record
+        //         $qr->update(['qr_logo' => $logoPath]);
+        //     }
+        // }
 
         // Handle QR PDF
-        $pdfFullPath = '';
-        if ($request->hasFile('qr_data_pdf')) {
-            $pdf = $request->file('qr_data_pdf');
-            if ($pdf->isValid()) {
-                $pdfFileName = $code . '.' . $pdf->getClientOriginalExtension();
-                $pdfPath = $pdf->storeAs('public/qr_codes/pdfs', $pdfFileName);
-                $pdfFullPath = url('/storage/qr_codes/pdfs/' . $pdfFileName);
-                // $pdfFullPath = storage_path('app/' . $pdfPath);
-            }
-        }
+        // $pdfFullPath = '';
+        // if ($request->hasFile('qr_data_pdf')) {
+        //     $pdf = $request->file('qr_data_pdf');
+        //     if ($pdf->isValid()) {
+        //         $pdfFileName = $code . '.' . $pdf->getClientOriginalExtension();
+        //         $pdfPath = $pdf->storeAs('public/qr_codes/pdfs', $pdfFileName);
+        //         $pdfFullPath = url('/storage/qr_codes/pdfs/' . $pdfFileName);
+        //         // $pdfFullPath = storage_path('app/' . $pdfPath);
+        //     }
+        // }
 
-        // Handle QR Data Image
-        $dataImageFullPath = '';
-        if ($request->hasFile('qr_data_image')) {
-            $dataImage = $request->file('qr_data_image');
-            if ($dataImage->isValid()) {
-                $imageFileName = $code . '.' . $dataImage->getClientOriginalExtension();
-                $dataImagePath = $dataImage->storeAs('public/qr_codes/images', $imageFileName);
-                $dataImageFullPath = url('/storage/qr_codes/images/' . $imageFileName);
-            }
-        }
+        // // Handle QR Data Image
+        // $dataImageFullPath = '';
+        // if ($request->hasFile('qr_data_image')) {
+        //     $dataImage = $request->file('qr_data_image');
+        //     if ($dataImage->isValid()) {
+        //         $imageFileName = $code . '.' . $dataImage->getClientOriginalExtension();
+        //         $dataImagePath = $dataImage->storeAs('public/qr_codes/images', $imageFileName);
+        //         $dataImageFullPath = url('/storage/qr_codes/images/' . $imageFileName);
+        //     }
+        // }
         // $qrDataLink = route('showQr', $qr->code);
         // Create QR Data record
 
@@ -537,9 +537,9 @@ class QrCodeController extends Controller
                 $qrCode->format('svg')->size(230);
             }
 
-            if (!empty($qr_logo)) {
-                $qrCode->merge($logoFullPath, 0.3, true);
-            }
+            // if (!empty($qr_logo)) {
+            //     $qrCode->merge($logoFullPath, 0.3, true);
+            // }
             if (!empty($qr_eye_ball)) {
                 $qrCode->eye($qr_eye_ball, 0.5);
             }
