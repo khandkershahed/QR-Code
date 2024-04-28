@@ -30,11 +30,11 @@
                                         </div>
                                         <!-- contact -->
                                         <div>
-                                            <small class="tem-one-address">Ulica Zvonka Brkića 58 ,</small>
-                                            <small class="tem-one-address">Rab</small>
-                                            <small class="tem-one-address">Croatia</small>
+                                            <small class="tem-one-address address_line_one">Ulica Zvonka Brkića 58</small>
                                             <br />
-                                            <small class="tem-one-address">+385 91 561 0409</small>
+                                            <small class="tem-one-address address_line_two">Rab, Croatia</small>
+                                            <br />
+                                            <small class="tem-one-address phone_personal">+385 91 561 0409</small>
                                             <div class="tem-one-social-icons mt-3">
                                                 <a href="#" class="fa fa-facebook"></a>
                                                 <a href="#" class="fa fa-instagram"></a>
@@ -53,7 +53,7 @@
                             </div>
                             <!-- BIo -->
                             <div class="tem-one-bio-box px-3 pt-4">
-                                <h6 class="tem-one-bio-title">BIO</h6>
+                                <h6 class="tem-one-bio-title bio_title">BIO</h6>
                                 <p>
                                     Book enthusiast, nature lover, avid learner, coffee
                                     addict, aspiring writer, music aficionado, travel

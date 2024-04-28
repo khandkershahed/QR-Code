@@ -172,39 +172,61 @@
                 $("#" + initiallySelectedValue).show();
 
                 // NFC card Input
+                // $('#generateNfcCardForm input:not([type="radio"]), #generateNfcCardForm textarea').on(
+                //     'keyup change',
+                //     function() {
+                //         var profile_image = $("input[name='profile_image']").val();
+                //         var first_name = $("input[name='first_name']").val();
+                //         var last_name = $("input[name='last_name']").val();
+                //         var designation = $("input[name='designation']").val();
+                //         var department = $("input[name='department']").val();
+                //         var pronouns = $("input[name='pronouns']").val();
+                //         var company = $("input[name='company']").val();
+                //         var location_latitude = $("input[name='location_latitude']").val();
+                //         var location_longitude = $("input[name='location_longitude']").val();
+                //         var company_logo = $("input[name='company_logo']").val();
+                //         var logo_Size = $("input[name='logo_Size']").val();
+                //         var summary = $("textarea[name='summary']").val();
+                //         var address = $("textarea[name='address']").val();
+
+                //         $('.profile_image').attr('src', profile_image);
+                //         $('.first_name').text(first_name);
+                //         $('.last_name').text(last_name);
+                //         $('.designation').text(designation);
+                //         $('.department').text(department);
+                //         $('.pronouns').text(pronouns);
+                //         $('.company').text(company);
+                //         $('.location_latitude').text(location_latitude);
+                //         $('.location_longitude').text(location_longitude);
+                //         $('.company_logo').attr('src', company_logo);
+                //         $('.logo_Size').text(logo_Size);
+                //         $('.summary').text(summary);
+                //         $('.address').text(address);
+
+                //         // For debugging
+                //         console.log("First Name:", first_name);
+                //     });
                 $('#generateNfcCardForm input:not([type="radio"]), #generateNfcCardForm textarea').on(
                     'keyup change',
                     function() {
-                        var profile_image = $("input[name='profile_image']").val();
-                        var first_name = $("input[name='first_name']").val();
-                        var last_name = $("input[name='last_name']").val();
-                        var designation = $("input[name='designation']").val();
-                        var department = $("input[name='department']").val();
-                        var pronouns = $("input[name='pronouns']").val();
-                        var company = $("input[name='company']").val();
-                        var location_latitude = $("input[name='location_latitude']").val();
-                        var location_longitude = $("input[name='location_longitude']").val();
-                        var company_logo = $("input[name='company_logo']").val();
-                        var logo_Size = $("input[name='logo_Size']").val();
-                        var summary = $("textarea[name='summary']").val();
-                        var address = $("textarea[name='address']").val();
+                        // Extract input value and name
+                        var inputValue = $(this).val();
+                        var inputName = $(this).attr('name');
 
-                        $('.profile_image').attr('src', profile_image);
-                        $('.first_name').text(first_name);
-                        $('.last_name').text(last_name);
-                        $('.designation').text(designation);
-                        $('.department').text(department);
-                        $('.pronouns').text(pronouns);
-                        $('.company').text(company);
-                        $('.location_latitude').text(location_latitude);
-                        $('.location_longitude').text(location_longitude);
-                        $('.company_logo').attr('src', company_logo);
-                        $('.logo_Size').text(logo_Size);
-                        $('.summary').text(summary);
-                        $('.address').text(address);
+                        // Update corresponding NFC card element
+                        var nfcCardElement = $('.nfc-card .' + inputName);
+                        if (nfcCardElement.length > 0) {
+                            if ($(this).is('input[type="file"]')) {
+                                if ($(this).prop('files') && $(this).prop('files')[0]) {
+                                    nfcCardElement.attr('src', URL.createObjectURL($(this).prop('files')[0]));
+                                }
+                            } else {
+                                nfcCardElement.text(inputValue);
+                            }
+                        }
 
                         // For debugging
-                        console.log("First Name:", first_name);
+                        console.log("Input Name:", inputName, "Input Value:", inputValue);
                     });
             });
         </script>
