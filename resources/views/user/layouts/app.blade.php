@@ -11,7 +11,6 @@
     <meta property="og:title" content="" />
     <meta property="og:url" content="" />
     <meta property="og:site_name" content="" />
-    <link rel="canonical" href="" />
     <link rel="shortcut icon" href="https://i.ibb.co/BNBTVN4/logo.png" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />

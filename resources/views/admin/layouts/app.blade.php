@@ -12,7 +12,6 @@
     <meta property="og:title" content="" />
     <meta property="og:url" content="" />
     <meta property="og:site_name" content="Go-QR | Admin Panel" />
-    <link rel="canonical" href="" />
     <link rel="shortcut icon" href="https://i.ibb.co/BNBTVN4/logo.png" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
     <link href="{{ asset('admin/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet"
@@ -21,7 +20,6 @@
         type="text/css" />
     <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     <link href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
-    <link href="" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
 
     <link href="{{ asset('admin/assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"
@@ -180,7 +178,7 @@
         KTUtil.onDOMContentLoaded(function() {
             KTDatatablesExample.init();
         });
-        // Datatable End 
+        // Datatable End
     </script>
     @stack('scripts')
     <script>

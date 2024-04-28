@@ -41,7 +41,7 @@
         </div>
         <div class="nfc-contact-one">
             <div class="d-flex align-items-center">
-                <a href="">
+                <a href="tel:+0001234455">
                     <i class="fa-solid fa-phone"></i>
                 </a>
                 <!-- Contact Info -->
@@ -53,13 +53,13 @@
         </div>
         <div class="nfc-social-one mt-3 d-flex justify-content-center">
             <div>
-                <a href="" class="mb-2"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="" class="mb-2"><i class="fa-brands fa-instagram"></i></a>
-                <a href="" class="mb-2"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a href="" class="mb-2"><i class="fa-regular fa-envelope"></i></a>
-                <a href="" class="mb-2"><i class="fa-brands fa-pinterest-p"></i></a>
-                <a href="" class="mb-2"><i class="fa-brands fa-youtube"></i></a>
-                <a href="" class="mb-2"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="#" class="mb-2"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="mb-2"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="mb-2"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#" class="mb-2"><i class="fa-regular fa-envelope"></i></a>
+                <a href="#" class="mb-2"><i class="fa-brands fa-pinterest-p"></i></a>
+                <a href="#" class="mb-2"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#" class="mb-2"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
         </div>
         <div class="nfc-call-one-action mt-3">
@@ -100,7 +100,7 @@
     <div class="card-body bg-white nfc-contact-two">
         <div class="nfc-contact-one">
             <div class="d-flex align-items-center mb-2">
-                <a href="">
+                <a href="tel:+0001234455">
                     <i class="fa-solid fa-phone"></i>
                 </a>
                 <!-- Contact Info -->
@@ -110,7 +110,7 @@
                 </div>
             </div>
             <div class="d-flex align-items-center mb-2">
-                <a href="">
+                <a href="support@goqr.mail.com">
                     <i class="fa-solid fa-envelope"></i>
                 </a>
                 <!-- Contact Info -->
@@ -120,7 +120,7 @@
                 </div>
             </div>
             <div class="d-flex align-items-center mb-2">
-                <a href="">
+                <a href="https://galaxymediaus.com/">
                     <i class="fa-solid fa-globe"></i>
                 </a>
                 <!-- Contact Info -->
@@ -131,13 +131,13 @@
             </div>
             <div class="nfc-social-two mt-3 d-flex justify-content-center pt-3">
                 <div>
-                    <a href="" class="mb-2"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="" class="mb-2"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="" class="mb-2"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="" class="mb-2"><i class="fa-regular fa-envelope"></i></a>
-                    <a href="" class="mb-2"><i class="fa-brands fa-pinterest-p"></i></a>
-                    <a href="" class="mb-2"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="" class="mb-2"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#" class="mb-2"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="mb-2"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="mb-2"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" class="mb-2"><i class="fa-regular fa-envelope"></i></a>
+                    <a href="#" class="mb-2"><i class="fa-brands fa-pinterest-p"></i></a>
+                    <a href="#" class="mb-2"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="mb-2"><i class="fa-brands fa-whatsapp"></i></a>
                 </div>
             </div>
 
@@ -182,7 +182,7 @@
     <div class="card-body bg-white nfc-contact-three">
         <div class="nfc-contact-three">
             <div class="d-flex align-items-center mb-2">
-                <a href="">
+                <a href="tel:+0001234455">
                     <i class="fa-solid fa-phone"></i>
                 </a>
                 <!-- Contact Info -->
@@ -192,7 +192,7 @@
                 </div>
             </div>
             <div class="d-flex align-items-center mb-2">
-                <a href="">
+                <a href="support@goqr.mail.com">
                     <i class="fa-solid fa-envelope"></i>
                 </a>
                 <!-- Contact Info -->
@@ -202,7 +202,7 @@
                 </div>
             </div>
             <div class="d-flex align-items-center mb-2">
-                <a href="">
+                <a href="https://galaxymediaus.com/">
                     <i class="fa-solid fa-globe"></i>
                 </a>
                 <!-- Contact Info -->
@@ -213,13 +213,13 @@
             </div>
             <div class="nfc-social-three mt-3 d-flex justify-content-center pt-3">
                 <div>
-                    <a href="" class="mb-2"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="" class="mb-2"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="" class="mb-2"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="" class="mb-2"><i class="fa-regular fa-envelope"></i></a>
-                    <a href="" class="mb-2"><i class="fa-brands fa-pinterest-p"></i></a>
-                    <a href="" class="mb-2"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="" class="mb-2"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#" class="mb-2"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="mb-2"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="mb-2"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" class="mb-2"><i class="fa-regular fa-envelope"></i></a>
+                    <a href="#" class="mb-2"><i class="fa-brands fa-pinterest-p"></i></a>
+                    <a href="#" class="mb-2"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="mb-2"><i class="fa-brands fa-whatsapp"></i></a>
                 </div>
             </div>
             <div class="nfc-call-three-action mt-3">
@@ -262,19 +262,19 @@
     </div>
     <div class="nfc-social-four  d-flex justify-content-center">
         <div>
-            <a href="" class="mb-2"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="" class="mb-2"><i class="fa-brands fa-instagram"></i></a>
-            <a href="" class="mb-2"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="" class="mb-2"><i class="fa-regular fa-envelope"></i></a>
-            <a href="" class="mb-2"><i class="fa-brands fa-pinterest-p"></i></a>
-            <a href="" class="mb-2"><i class="fa-brands fa-youtube"></i></a>
-            <a href="" class="mb-2"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="#" class="mb-2"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="mb-2"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="mb-2"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" class="mb-2"><i class="fa-regular fa-envelope"></i></a>
+            <a href="#" class="mb-2"><i class="fa-brands fa-pinterest-p"></i></a>
+            <a href="#" class="mb-2"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" class="mb-2"><i class="fa-brands fa-whatsapp"></i></a>
         </div>
     </div>
     <div class="card-body bg-white nfc-contact-four">
         <div class="nfc-contact-four">
             <div class="d-flex align-items-center mb-2">
-                <a href="">
+                <a href="tel:+0001234455">
                     <i class="fa-solid fa-phone"></i>
                 </a>
                 <!-- Contact Info -->
@@ -284,7 +284,7 @@
                 </div>
             </div>
             <div class="d-flex align-items-center mb-2">
-                <a href="">
+                <a href="support@goqr.mail.com">
                     <i class="fa-solid fa-envelope"></i>
                 </a>
                 <!-- Contact Info -->
@@ -294,7 +294,7 @@
                 </div>
             </div>
             <div class="d-flex align-items-center mb-2">
-                <a href="">
+                <a href="https://galaxymediaus.com/">
                     <i class="fa-solid fa-globe"></i>
                 </a>
                 <!-- Contact Info -->

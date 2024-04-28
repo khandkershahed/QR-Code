@@ -11,8 +11,8 @@
                     <div class="logo-part aos-init aos-animate" data-aos="fade-left" data-aos-duration="1500"
                         data-aos-offset="50">
                         <div class="logo mb-10">
-                            <a href="{{ route('homePage') }}"><img width="100px" src="https://i.ibb.co/BNBTVN4/logo.png"
-                                    alt="Logo"></a>
+                            <a href="{{ route('homePage') }}"><img width="100px"
+                                    src="https://i.ibb.co/BNBTVN4/logo.png" alt="Logo"></a>
                         </div>
                     </div>
                 </div>
@@ -20,8 +20,8 @@
                     <div class="form-part aos-init aos-animate" data-aos="fade-right" data-aos-duration="1500"
                         data-aos-offset="50">
                         <h5>Subscribe Our Newsletter</h5>
-                            <form class="newsletter-form mt-15" action="{{route('newsletter.store')}}" method="POST">
-                                @csrf
+                        <form class="newsletter-form mt-15" action="{{ route('newsletter.store') }}" method="POST">
+                            @csrf
                             <input type="email" placeholder="Email Address" name="email" required>
                             <button type="submit">Sign Up <i class="fas fa-arrow-right"></i></button>
                         </form>
@@ -40,10 +40,10 @@
                         <p class="text-muted">Connect with us and stay updated on the latest news, offers, and updates.
                         </p>
                         <div class="social-style-one">
-                            <a href="javascript:void(0)"><i class="fab fa-twitter"></i></a>
-                            <a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a>
-                            <a href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
-                            <a href="javascript:void(0)"><i class="fab fa-pinterest-p"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-pinterest-p"></i></a>
                         </div>
                     </div>
                 </div>
@@ -54,7 +54,8 @@
                         <ul>
                             <li><i class="fa fa-map-marker-alt"></i> 55 Main Street, 2nd block Melbourne, Australia
                             </li>
-                            <li><i class="fa fa-envelope"></i> <a href="mailto:support@gmail.com">support@goqr.mail.com</a>
+                            <li><i class="fa fa-envelope"></i> <a
+                                    href="mailto:support@gmail.com">support@goqr.mail.com</a>
                             </li>
                             <li><i class="fa fa-phone"></i> <a href="callto:+0001234455">+000 (123) 44 55</a></li>
                         </ul>

@@ -44,11 +44,12 @@
                                                     <div class="card-body">
                                                         <h6>PRODUCT</h6>
                                                         <h3>QR Code Generator</h3>
-                                                        <p>Elevate your networking game with the precision of QR codes. </p>
+                                                        <p>Elevate your networking game with the precision of QR codes.
+                                                        </p>
                                                         <div>
                                                             <img class="img-fluid"
                                                                 src="https://www.uniqode.com/_next/static/media/find-campaign.a5267f65.png"
-                                                                alt="">
+                                                                alt="QR Code Generator">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -58,7 +59,8 @@
                                                     <div class="card-body">
                                                         <h6>Information</h6>
                                                         <div class="pt-50">
-                                                            <a href="{{ route('') }}" class="d-flex align-items-center mb-2">
+                                                            <a href="{{ route('qrGuide') }}"
+                                                                class="d-flex align-items-center mb-2">
                                                                 <div class="pe-2">
                                                                     <i class="fas fa-arrow-right menu_icons"
                                                                         aria-hidden="true"></i>
@@ -67,7 +69,8 @@
                                                                     <p class="m-0 p-0">QR Code Guide</p>
                                                                 </div>
                                                             </a>
-                                                            <a href="" class="d-flex align-items-center mb-2">
+                                                            <a href="{{ route('digitalQr') }}"
+                                                                class="d-flex align-items-center mb-2">
                                                                 <div class="pe-2">
                                                                     <i class="fas fa-arrow-right menu_icons"
                                                                         aria-hidden="true"></i>
@@ -77,7 +80,8 @@
                                                                     </p>
                                                                 </div>
                                                             </a>
-                                                            <a href="" class="d-flex align-items-center mb-2">
+                                                            <a href="{{ route('staticQr') }}"
+                                                                class="d-flex align-items-center mb-2">
                                                                 <div class="pe-2">
                                                                     <i class="fas fa-arrow-right menu_icons"
                                                                         aria-hidden="true"></i>
@@ -86,7 +90,8 @@
                                                                     <p class="m-0 p-0">Statistic QR</p>
                                                                 </div>
                                                             </a>
-                                                            <a href="" class="d-flex align-items-center mb-2">
+                                                            <a href="{{ route('dynamicQr') }}"
+                                                                class="d-flex align-items-center mb-2">
                                                                 <div class="pe-2">
                                                                     <i class="fas fa-arrow-right menu_icons"
                                                                         aria-hidden="true"></i>
@@ -97,7 +102,9 @@
                                                             </a>
                                                         </div>
                                                         <div>
-                                                            <p class="pt-3">Scan, connect, explore. QR code business cards unlock a world of information with a simple scan, making networking efficient.</p>
+                                                            <p class="pt-3">Scan, connect, explore. QR code business
+                                                                cards unlock a world of information with a simple scan,
+                                                                making networking efficient.</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -108,72 +115,29 @@
                                                     <div class="card-body">
                                                         <h6>Template</h6>
                                                         <h3>Some QR Code Template</h3>
-                                                        <p>Empower your networking endeavors with our advanced QR Code Generator, simplifying connections and expanding opportunities effortlessly.</p>
+                                                        <p>Empower your networking endeavors with our advanced QR Code
+                                                            Generator, simplifying connections and expanding
+                                                            opportunities effortlessly.</p>
                                                         <div class="d-flex">
                                                             <img class="img-fluid me-2" width="150px"
                                                                 src="https://cdn1.vectorstock.com/i/1000x1000/10/60/qr-code-sample-vector-12061060.jpg"
-                                                                alt="">
+                                                                alt="Some QR Code Template">
                                                             <img class="img-fluid me-2" width="150px"
                                                                 src="https://cdn1.vectorstock.com/i/1000x1000/10/60/qr-code-sample-vector-12061060.jpg"
-                                                                alt="">
+                                                                alt="Some QR Code Template">
                                                             <img class="img-fluid" width="150px"
                                                                 src="https://cdn1.vectorstock.com/i/1000x1000/10/60/qr-code-sample-vector-12061060.jpg"
-                                                                alt="">
+                                                                alt="Some QR Code Template">
                                                         </div>
                                                         <div class="mt-4">
                                                             <a href="{{ route('pricing') }}"
-                                                                class="btn btn-primary text-white">Start Your Free Trial</a>
+                                                                class="btn btn-primary text-white">Start Your Free
+                                                                Trial</a>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        {{-- <div class="row p-3">
-                                            <div class="col-lg-3">
-                                                <a href="" class="d-flex align-items-center mb-2">
-                                                    <div class="pe-2">
-                                                        <i class="fas fa-arrow-right menu_icons"
-                                                            aria-hidden="true"></i>
-                                                    </div>
-                                                    <div>
-                                                        <p class="m-0 p-0">Dynamic QR Code Generator</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <a href="" class="d-flex align-items-center mb-2">
-                                                    <div class="pe-2">
-                                                        <i class="fas fa-arrow-right menu_icons"
-                                                            aria-hidden="true"></i>
-                                                    </div>
-                                                    <div>
-                                                        <p class="m-0 p-0">Dynamic QR Code Generator</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <a href="" class="d-flex align-items-center mb-2">
-                                                    <div class="pe-2">
-                                                        <i class="fas fa-arrow-right menu_icons"
-                                                            aria-hidden="true"></i>
-                                                    </div>
-                                                    <div>
-                                                        <p class="m-0 p-0">Dynamic QR Code Generator</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <a href="" class="d-flex align-items-center mb-2">
-                                                    <div class="pe-2">
-                                                        <i class="fas fa-arrow-right menu_icons"
-                                                            aria-hidden="true"></i>
-                                                    </div>
-                                                    <div>
-                                                        <p class="m-0 p-0">Dynamic QR Code Generator</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div> --}}
                                     </ul>
                                 </li>
                                 <li class="dropdown position-static">
@@ -192,7 +156,7 @@
                                                         <div>
                                                             <img class="img-fluid"
                                                                 src="https://www.uniqode.com/videos/Header/header-qr.png"
-                                                                alt="">
+                                                                alt="Some NFC Template">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -206,7 +170,7 @@
                                                         <div class="d-flex">
                                                             <img class="img-fluid me-2"
                                                                 src="https://d33v4339jhl8k0.cloudfront.net/docs/assets/62a7296313dd0f2bb7daeac5/images/63773acdbedde91b3d8c95ff/file-WiV9vxVvCU.png"
-                                                                alt="">
+                                                                alt="Some NFC Template">
                                                         </div>
                                                         <div class="mt-4">
                                                             <a href="{{ route('pricing') }}"
@@ -264,58 +228,14 @@
                                                             </a>
                                                         </div>
                                                         <div>
-                                                            <p class="pt-3">Tap, connect, impress. NFC business cards bridge the physical and digital worlds seamlessly, leaving a lasting impression effortlessly.</p>
+                                                            <p class="pt-3">Tap, connect, impress. NFC business cards
+                                                                bridge the physical and digital worlds seamlessly,
+                                                                leaving a lasting impression effortlessly.</p>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        {{-- <div class="row p-3">
-                                            <div class="col-lg-3">
-                                                <a href="" class="d-flex align-items-center mb-2">
-                                                    <div class="pe-2">
-                                                        <i class="fas fa-arrow-right menu_icons"
-                                                            aria-hidden="true"></i>
-                                                    </div>
-                                                    <div>
-                                                        <p class="m-0 p-0">Dynamic QR Code Generator</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <a href="" class="d-flex align-items-center mb-2">
-                                                    <div class="pe-2">
-                                                        <i class="fas fa-arrow-right menu_icons"
-                                                            aria-hidden="true"></i>
-                                                    </div>
-                                                    <div>
-                                                        <p class="m-0 p-0">Dynamic QR Code Generator</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <a href="" class="d-flex align-items-center mb-2">
-                                                    <div class="pe-2">
-                                                        <i class="fas fa-arrow-right menu_icons"
-                                                            aria-hidden="true"></i>
-                                                    </div>
-                                                    <div>
-                                                        <p class="m-0 p-0">Dynamic QR Code Generator</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <a href="" class="d-flex align-items-center mb-2">
-                                                    <div class="pe-2">
-                                                        <i class="fas fa-arrow-right menu_icons"
-                                                            aria-hidden="true"></i>
-                                                    </div>
-                                                    <div>
-                                                        <p class="m-0 p-0">Dynamic QR Code Generator</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div> --}}
                                     </ul>
                                 </li>
                                 <li><a href="{{ route('pricing') }}">PRICING</a></li>
@@ -330,7 +250,7 @@
                 <div class="nav-search ms-xl-2 ms-4 me-lg-auto py-10">
                     <button class="fa-solid fa-magnifying-glass"></button>
                     <form action="#" class="hide">
-                        <input type="text" placeholder="Search" class="searchbox" required="" />
+                        <input type="text" placeholder="Search" class="searchbox" required />
                         <button type="submit" class="searchbutton fa-solid fa-magnifying-glass"></button>
                     </form>
                 </div>

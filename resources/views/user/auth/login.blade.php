@@ -4,9 +4,6 @@
             <div class="d-flex flex-column flex-lg-row-fluid w-lg-50 p-10 order-2 order-lg-1">
                 <div class="d-flex flex-center flex-column flex-lg-row-fluid">
                     <div class="w-lg-500px p-10">
-
-                        {{-- <form class="form w-100 fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate"
-                            id="kt_sign_in_form" data-kt-redirect-url="/metronic8/demo1/index.html" action="#"> --}}
                         <form class="login" method="POST" action="{{ route('login') }}" onsubmit="return validation();"
                             enctype="multipart/form-data">
                             @csrf
@@ -116,7 +113,7 @@
             <div class="d-flex flex-lg-row-fluid w-lg-50 bgi-size-cover bgi-position-center order-1 order-lg-2"
                 style="background-image: url(https://preview.keenthemes.com/metronic8/demo1/assets/media/misc/auth-bg.png)">
                 <div class="d-flex flex-column flex-center py-7 py-lg-15 px-5 px-md-15 w-100">
-                    <a href="/metronic8/demo1/index.html" class="mb-0 mb-lg-12">
+                    <a href="{{ route('homePage') }}" class="mb-0 mb-lg-12">
                         <img alt="Logo" src="https://i.ibb.co/BNBTVN4/logo.png" class="h-60px h-lg-75px">
                     </a>
 
@@ -129,12 +126,12 @@
                     </h1>
 
                     <div class="d-none d-lg-block text-white fs-base text-center">
-                        In this kind of post, <a href="#" class="opacity-75-hover text-warning fw-bold me-1">the
+                        In this kind of post, <a href="{{ route('terms') }}" class="opacity-75-hover text-warning fw-bold me-1">the
                             blogger</a>
 
                         introduces a person they’ve interviewed <br> and provides some background information about
 
-                        <a href="#" class="opacity-75-hover text-warning fw-bold me-1">the interviewee</a>
+                        <a href="{{ route('policy') }}" class="opacity-75-hover text-warning fw-bold me-1">the interviewee</a>
                         and their <br> work following this is a transcript of the interview.
                     </div>
                 </div>

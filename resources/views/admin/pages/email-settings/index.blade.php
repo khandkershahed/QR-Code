@@ -92,39 +92,3 @@
         </script>
     @endpush
 </x-admin-app-layout>
-{{-- @foreach ($permissions as $permission)
-    <tr>
-        <td>{{ $permission->name }}</td>
-        <td>
-            @foreach ($permission->roles as $role)
-                @php
-                    $badgeColors = [
-                        'badge-primary',
-                        'badge-secondary',
-                        'badge-success',
-                        'badge-danger',
-                        'badge-warning',
-                        'badge-info',
-                        'badge-dark',
-                    ];
-                    $badgeColor = $badgeColors[array_rand($badgeColors)];
-                @endphp
-
-                <a href="" class="badge {{ $badgeColor }} fs-7 m-1">{{ $role->name }}</a>
-            @endforeach
-        </td>
-        <td>{{ $permission->created_at }}</td>
-        <td class="text-end">
-            <a href="{{ route('admin.permission.edit',$permission->id) }}" class="btn btn-icon btn-active-light-primary w-30px h-30px me-3">
-                <span class="svg-icon svg-icon-3">
-                    <i class="fas fa-pen"></i>
-                </span>
-            </a>
-            <a href="{{ route('admin.permission.destroy',$permission->id) }}" class="btn btn-icon btn-active-light-danger w-30px h-30px delete">
-                <span class="svg-icon svg-icon-3">
-                    <i class="fas fa-trash-alt"></i>
-                </span>
-            </a>
-        </td>
-    </tr>
-@endforeach --}}

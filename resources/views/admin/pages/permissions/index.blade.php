@@ -64,7 +64,7 @@
                                         $badgeColor = $badgeColors[array_rand($badgeColors)];
                                     @endphp
 
-                                    <a href="" class="badge {{ $badgeColor }} fs-7 m-1">{{ $role->name }}</a>
+                                    <a href="#" class="badge {{ $badgeColor }} fs-7 m-1">{{ $role->name }}</a>
                                 @endforeach
                             </td>
                             <td>{{ $permission->created_at }}</td>

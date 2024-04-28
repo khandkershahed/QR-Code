@@ -38,7 +38,7 @@
                             <td>{{ $email->ip_address }}</td>
                             <td>{{ $email->created_at }}</td>
                             <td class="text-center">
-                                <a href="" class="btn btn-icon btn-active-light-primary w-30px h-30px me-3"
+                                <a href="#" class="btn btn-icon btn-active-light-primary w-30px h-30px me-3"
                                     data-bs-toggle="modal" data-bs-target="#replayEmail">
                                     <span class="svg-icon svg-icon-3">
                                         <i class="fas fa-reply"></i>

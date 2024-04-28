@@ -90,7 +90,7 @@
                                     <!--end::Col-->
                                     <!--begin::Col-->
                                     <div class="col">
-                                        <a id="downloadLink" href="" download style="display: none;"
+                                        <a id="downloadLink" href="javascripti:void()" download style="display: none;"
                                             class="btn btn-light btn-active-light-primary w-100">Download</a>
                                     </div>
                                     <!--end::Col-->
