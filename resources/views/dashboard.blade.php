@@ -57,8 +57,7 @@
                                                                 fill="currentColor" />
                                                         </svg>
                                                     </span>
-                                                    <a href="#" class="text-primary fw-bold fs-6">Business
-                                                        Cards</a>
+                                                    <a href="#" class="text-primary fw-bold fs-6">QR </a>
                                                 </div>
 
 
