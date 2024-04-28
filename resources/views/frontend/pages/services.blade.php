@@ -200,13 +200,13 @@
                             <span class="subtitle d-block mb-10">GoQR - Simplifying QR Code Management</span>
                             <h2>Platform for effortlessly generating, customizing, and tracking QR codes</h2>
                         </div>
-                        <a href="contact.html" class="theme-btn">Contact Us <i class="fas fa-arrow-right"></i></a>
+                        <a href="{{ route('contact') }}" class="theme-btn">Contact Us <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="cta-btn text-lg-center text-start ps-lg-0 ps-2" data-aos="fade-right"
                         data-aos-duration="1500" data-aos-offset="50">
-                        <a href="https://www.youtube.com/watch?v=9Y7ma241N8k" class="mfp-iframe video-play"><i
+                        <a href="https://www.youtube.com/watch?v=PSpMW3c7x2g" class="mfp-iframe video-play"><i
                                 class="fas fa-play"></i></a>
                     </div>
                 </div>
@@ -219,97 +219,87 @@
     <section class="pricing-area-six bgc-lighter overflow-hidden rel z-1 pt-125 rpt-95 pb-100 rpb-70">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-xl-7 col-lg-9 col-md-11">
-                    <div class="section-title text-center mb-60" data-aos="fade-up" data-aos-duration="1500"
-                        data-aos-offset="50">
-                        <h2>Quick start, effortless scaling with our QR plans.</h2>
+                <div class="col-xl-6 col-lg-9 col-md-11">
+                    <div class="section-title text-center mb-45 aos-init aos-animate" data-aos="fade-up"
+                        data-aos-duration="1500" data-aos-offset="50">
+                        <h2>Explore Our Pricing Package and choose your plan</h2>
                     </div>
+                </div>
+                <div class="col-lg-7 text-center aos-init aos-animate" data-aos="fade-up" data-aos-delay="50"
+                    data-aos-duration="1500" data-aos-offset="50">
+                    <span class="save-percent"
+                        style="background-image: url({{ asset('frontend/assets/images/shapes/title-shape.png') }});">Save
+                        40%</span>
+                    <ul class="nav pricing-tab mb-55" role="tablist">
+                        <li>
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#monthly">Monthly</button>
+                        </li>
+                        <li>
+                            <button class="nav-link active" data-bs-toggle="tab"
+                                data-bs-target="#yearly">Yearly</button>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-6 col-lg-9 col-md-11">
-                        <div class="section-title text-center mb-45 aos-init aos-animate" data-aos="fade-up"
-                            data-aos-duration="1500" data-aos-offset="50">
-                            <h2>Explore Our Pricing Package and choose your plan</h2>
-                        </div>
-                    </div>
-                    <div class="col-lg-7 text-center aos-init aos-animate" data-aos="fade-up" data-aos-delay="50"
-                        data-aos-duration="1500" data-aos-offset="50">
-                        <span class="save-percent"
-                            style="background-image: url({{ asset('frontend/assets/images/shapes/title-shape.png') }});">Save
-                            40%</span>
-                        <ul class="nav pricing-tab mb-55" role="tablist">
-                            <li>
-                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#monthly">Monthly</button>
-                            </li>
-                            <li>
-                                <button class="nav-link active" data-bs-toggle="tab"
-                                    data-bs-target="#yearly">Yearly</button>
-                            </li>
-                        </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade" id="monthly">
+                    <div class="row justify-content-center">
+                        @foreach ($monthly_plans as $monthly_plan)
+                            <div class="col-xl-4 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
+                                data-aos-duration="1500" data-aos-offset="50">
+                                <div class="pricing-item style-three bg-white">
+                                    <div class="circle"><img
+                                            src="{{ asset('frontend/assets/images/shapes/price-circle.png') }}"
+                                            alt="Shape">
+                                    </div>
+                                    <div class="price"><span
+                                            class="prev fs-2 me-2">{{ $monthly_plan->currency }}</span>{{ $monthly_plan->price }}<span
+                                            class="next">/month</span>
+                                    </div>
+                                    <div class="text">10 Qr Code For One Month</div>
+                                    <a href="{{ route('user.subscribe.post', $monthly_plan->slug) }}"
+                                        class="theme-btn">Choose Package <i class="fas fa-arrow-right"></i></a>
+                                    <h4 class="title">{{ $monthly_plan->title }}</h4>
+                                    <ul class="list">
+                                        @if (!empty($monthly_plan->descriptions))
+                                            @foreach (json_decode($monthly_plan->descriptions ?? '[]') as $description)
+                                                <li>{{ $description }}</li>
+                                            @endforeach
+                                        @endif
+                                    </ul>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
-                <div class="tab-content">
-                    <div class="tab-pane fade" id="monthly">
-                        <div class="row justify-content-center">
-                            @foreach ($monthly_plans as $monthly_plan)
-                                <div class="col-xl-4 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
-                                    data-aos-duration="1500" data-aos-offset="50">
-                                    <div class="pricing-item style-three">
-                                        <div class="circle"><img
-                                                src="{{ asset('frontend/assets/images/shapes/price-circle.png') }}"
-                                                alt="Shape">
-                                        </div>
-                                        <div class="price"><span
-                                                class="prev fs-2 me-2">{{ $monthly_plan->currency }}</span>{{ $monthly_plan->price }}<span
-                                                class="next">/month</span>
-                                        </div>
-                                        <div class="text">10 Qr Code For One Month</div>
-                                        <a href="{{ route('user.subscribe.post', $monthly_plan->slug) }}"
-                                            class="theme-btn">Choose Package <i class="fas fa-arrow-right"></i></a>
-                                        <h4 class="title">{{ $monthly_plan->title }}</h4>
-                                        <ul class="list">
-                                            @if (!empty($monthly_plan->descriptions))
-                                                @foreach (json_decode($monthly_plan->descriptions ?? '[]') as $description)
-                                                    <li>{{ $description }}</li>
-                                                @endforeach
-                                            @endif
-                                        </ul>
+                <div class="tab-pane fade yearly show active" id="yearly">
+                    <div class="row justify-content-center">
+                        @foreach ($yearly_plans as $yearly_plan)
+                            <div class="col-xl-4 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
+                                data-aos-duration="1500" data-aos-offset="50">
+                                <div class="pricing-item style-three bg-white">
+                                    <div class="circle"><img
+                                            src="{{ asset('frontend/assets/images/shapes/price-circle.png') }}"
+                                            alt="Shape">
                                     </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    <div class="tab-pane fade yearly show active" id="yearly">
-                        <div class="row justify-content-center">
-                            @foreach ($yearly_plans as $yearly_plan)
-                                <div class="col-xl-4 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
-                                    data-aos-duration="1500" data-aos-offset="50">
-                                    <div class="pricing-item style-three">
-                                        <div class="circle"><img
-                                                src="{{ asset('frontend/assets/images/shapes/price-circle.png') }}"
-                                                alt="Shape">
-                                        </div>
-                                        <div class="price"><span
-                                                class="prev fs-2 me-2">{{ $yearly_plan->currency }}</span>{{ $yearly_plan->price }}<span
-                                                class="next">/month</span>
-                                        </div>
-                                        <div class="text">5 Business Card</div>
-                                        <a href="{{ route('user.subscribe.post', $yearly_plan->slug) }}"
-                                            class="theme-btn">Choose Package <i class="fas fa-arrow-right"></i></a>
-                                        <h4 class="title">{{ $yearly_plan->title }}</h4>
-                                        <ul class="list">
-                                            @if (!empty($yearly_plan->descriptions))
-                                                @foreach (json_decode($yearly_plan->descriptions ?? '[]') as $description)
-                                                    <li>{{ $description }}</li>
-                                                @endforeach
-                                            @endif
-                                        </ul>
+                                    <div class="price"><span
+                                            class="prev fs-2 me-2">{{ $yearly_plan->currency }}</span>{{ $yearly_plan->price }}<span
+                                            class="next">/month</span>
                                     </div>
+                                    <div class="text">5 Business Card</div>
+                                    <a href="{{ route('user.subscribe.post', $yearly_plan->slug) }}"
+                                        class="theme-btn">Choose Package <i class="fas fa-arrow-right"></i></a>
+                                    <h4 class="title">{{ $yearly_plan->title }}</h4>
+                                    <ul class="list">
+                                        @if (!empty($yearly_plan->descriptions))
+                                            @foreach (json_decode($yearly_plan->descriptions ?? '[]') as $description)
+                                                <li>{{ $description }}</li>
+                                            @endforeach
+                                        @endif
+                                    </ul>
                                 </div>
-                            @endforeach
-                        </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

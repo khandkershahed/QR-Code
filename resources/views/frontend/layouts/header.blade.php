@@ -6,7 +6,9 @@
                 <div class="logo-outer">
                     <div class="logo">
                         <a href="{{ route('homePage') }}">
-                            <img width="100px" src="{{ (!empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white))) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('https://i.ibb.co/BNBTVN4/logo.png') }}" alt="Logo" title="Logo" />
+                            <img width="100px"
+                                src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('https://i.ibb.co/BNBTVN4/logo.png') }}"
+                                alt="Logo" title="Logo" />
                         </a>
                     </div>
                 </div>
@@ -18,9 +20,9 @@
                         <div class="navbar-header py-10">
                             <div class="mobile-logo">
                                 <a href="{{ route('homePage') }}">
-                                    <img width="60px" src="{{ (!empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white))) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('https://i.ibb.co/BNBTVN4/logo.png') }}"
-                                    alt="Logo"
-                                        title="Logo" />
+                                    <img width="60px"
+                                        src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('https://i.ibb.co/BNBTVN4/logo.png') }}"
+                                        alt="Logo" title="Logo" />
                                 </a>
                             </div>
                             <!-- Toggle Button -->
@@ -61,7 +63,8 @@
                                                     <div class="card-body">
                                                         <h6>Information</h6>
                                                         <div class="pt-50">
-                                                            <a href="{{ route('qrGuide') }}" class="d-flex align-items-center mb-2">
+                                                            <a href="{{ route('qrGuide') }}"
+                                                                class="d-flex align-items-center mb-2">
                                                                 <div class="pe-2">
                                                                     <i class="fas fa-arrow-right menu_icons"
                                                                         aria-hidden="true"></i>
@@ -128,7 +131,7 @@
                                                                 alt="Some QR Code Template">
                                                         </div>
                                                         <div class="mt-4">
-                                                            <a href="{{ route('pricing') }}"
+                                                            <a href="{{ route('user.pricing') }}"
                                                                 class="btn btn-primary text-white">Start Your Free
                                                                 Trial</a>
                                                         </div>
@@ -171,8 +174,8 @@
                                                                 alt="Some NFC Template">
                                                         </div>
                                                         <div class="mt-4">
-                                                            <a href="" 
-                                                                class="btn btn-primary text-white">Start Your Free
+                                                            <a href="" class="btn btn-primary text-white">Start
+                                                                Your Free
                                                                 Trial</a>
                                                         </div>
                                                     </div>
@@ -236,7 +239,15 @@
                                         </div>
                                     </ul>
                                 </li>
-                                <li><a href="{{ route('pricing') }}">PRICING</a></li>
+                                <li class="dropdown ">
+                                    <a href="{{ route('digitalCard') }}"
+                                        onclick="window.location.href = '{{ route('digitalCard') }}'; return false;">DIGITAL
+                                        Pricing</a>
+                                    <ul class="" style="display: none;">
+                                        <li><a href="{{ route('user.pricing') }}">User Pricing</a></li>
+                                        <li><a href="{{ route('reseller.pricing') }}">Reseller Pricing</a></li>
+                                    </ul>
+                                </li>
                                 <li><a href="{{ route('services') }}">Services</a></li>
                             </ul>
                         </div>

@@ -43430,7 +43430,8 @@ a:hover {
 
 .btn.btn-outline.btn-outline-dashed {
     border-width: 1px;
-    border-style: dashed
+    border-style: dashed;
+    height: 100px;
 }
 
 .btn-check:active+.btn.btn-outline.btn-outline-dashed,
