@@ -54,7 +54,7 @@
                             <!-- BIo -->
                             <div class="tem-one-bio-box px-3 pt-4">
                                 <h6 class="tem-one-bio-title bio_title">BIO</h6>
-                                <p>
+                                <p class="bio_description">
                                     Book enthusiast, nature lover, avid learner, coffee
                                     addict, aspiring writer, music aficionado, travel
                                     enthusiast, optimistic dreamer.
