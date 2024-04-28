@@ -366,7 +366,7 @@
                                     </div>
                                     <!-- Service -->
                                     <div class="tem-one-service-box px-3 py-4">
-                                        <h6 class="tem-one-service-title">{{ optional($nfc_card->nfcData)->company_about_description }}</h6>
+                                        <h6 class="tem-one-service-title">Contact</h6>
                                         <p class="mb-0">
                                             @: {{ optional($nfc_card->nfcData)->email_work }}
                                             <small class="fw-bold">(Work)</small>

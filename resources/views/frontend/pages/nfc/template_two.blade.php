@@ -3,261 +3,262 @@
 
 <head>
     <title>{{ optional($nfc_card->nfcData)->first_name }} {{ optional($nfc_card->nfcData)->last_name }}/title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" />
-    <link rel="shortcut icon" href="https://i.ibb.co/BNBTVN4/logo.png" type="image/x-icon" />
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" />
+        <link rel="shortcut icon" href="https://i.ibb.co/BNBTVN4/logo.png" type="image/x-icon" />
 
-    <!-- Bootstrap CSS v5.2.1 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
-    <!-- Slick CSS -->
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
-    <!-- Style Here -->
-    <style>
-        :root {
-            @if ($nfc_card->font_family == 'bebas_neue')
+        <!-- Bootstrap CSS v5.2.1 -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+            crossorigin="anonymous" />
+        <!-- Slick CSS -->
+        <link rel="stylesheet" type="text/css"
+            href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+        <link rel="stylesheet" type="text/css"
+            href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+        <!-- Style Here -->
+        <style>
+            :root {
+                @if ($nfc_card->font_family == 'bebas_neue')
                 --body-font-family: "Bebas Neue", sans-serif !important;
             @elseif ($nfc_card->font_family == 'raleway')
                 --body-font-family: "Raleway", sans-serif !important;
             @endif
-            --white: #fff;
-            --tem-two-name-color: #fff;
-            --tem-two-name-font-size: 40px;
-            --tem-two-designation-color: #fff;
-            --tem-two-bio-title-color: {{ $nfc_card->background_color }};
-            --tem-two-profile-image-bg: {{ $nfc_card->background_color }};
-            --tem-two-social-icons-color: #fff;
-            --tem-two-social-icons-bg: #fff;
-            --tem-two-social-icons-font-size: 18px;
-            --tem-two-bio-title-font-size: {{ $nfc_card->font_size }};
-            --tem-two-service-title-color: {{ $nfc_card->title_color }};
-            --tem-two-service-title-font-size: 20px;
-            --tem-two-service-box-bg: {{ $nfc_card->background_color }};
-            --button_bg_color: {{ $nfc_card->button_bg_color }};
-            --button_title_color: {{ $nfc_card->button_title_color }};
-            --tem-two-address-color: #fff;
-        }
-
-        /* CSS for centering the mobile frame */
-
-        .nfc-mobile-frame-two {
-            width: 420px;
-            height: 768px;
-            /* border: 2px solid #1026bf; */
-            border-radius: 20px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        /* CSS for the card inside the mobile frame */
-        .nfc-mobile-frame-two .card {
-            background-color: var(--white);
-            width: 100%;
-            height: 100%;
-            border-radius: 20px;
-            overflow-y: auto;
-        }
-
-        .nfc-mobile-frame-two .card title {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-        }
-
-        .nfc-two-cover-img-box {
-            position: relative;
-            max-width: 100%;
-        }
-
-        .nfc-two-cover-img {
-            background-size: cover;
-            height: 300px;
-            background-position: center;
-        }
-
-        .tem-two-name {
-            color: var(--tem-two-name-color);
-            font-family: var(--tem-two-name-font-family);
-            font-weight: 400;
-            font-style: normal;
-            font-size: var(--tem-two-name-font-size);
-        }
-
-        .tem-two-designation {
-            color: var(--tem-two-designation-color);
-            font-family: var(--tem-two-designation-font-family);
-            font-weight: 400;
-            font-style: normal;
-        }
-
-        .tem-two-bio-title {
-            text-align: center;
-            color: var(--tem-two-bio-title-color);
-            font-family: "Bebas Neue", sans-serif;
-            font-size: var(--tem-two-bio-title-font-size);
-        }
-
-        .tem-two-bio-box p {
-            text-align: center;
-        }
-
-        .tem-two-service-title {
-            color: var(--tem-two-service-title-color);
-            font-family: "Bebas Neue", sans-serif;
-            font-size: var(--tem-two-bio-title-font-size);
-        }
-
-        .tem-two-service-box {
-            text-align: center;
-            background-color: var(--tem-two-service-box-bg);
-            color: var(--white);
-        }
-
-        .tem-two-service-box p {
-            text-align: center;
-        }
-
-        .tem-two-profile-img {
-            width: 100%;
-            overflow: hidden;
-        }
-
-        .tem-two-profile-img img {
-            width: 45%;
-            height: 45%;
-            object-fit: cover;
-        }
-
-        .tem-two-profile-image {
-            background-color: var(--tem-profile-image-bg);
-            width: 20%;
-            border-bottom-right-radius: 20px;
-        }
-
-        .tem-two-profile {
-            background-color: var(--tem-two-profile-image-bg);
-            width: 85%;
-            border-bottom-left-radius: 20px;
-            border-bottom-right-radius: 20px;
-            border-top-left-radius: 20px;
-            border-top-right-radius: 20px;
-            margin-top: -100px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .tem-two-social-icons {
-            display: flex;
-            justify-content: start;
-        }
-
-        .tem-two-social-icons a {
-            /* background-color:var(--tem-two-social-icons-bg); */
-            text-decoration: none;
-            padding: 0px;
-            display: inline-block;
-            font-size: var(--tem-two-social-icons-font-size);
-            /* Adjust the size of the icons as needed */
-            margin: 0 10px;
-            /* Adjust the spacing between icons as needed */
-            color: var(--tem-two-social-icons-color);
-            /* Adjust the color of the icons as needed */
-        }
-
-        .nfc_contact_btn {
-            background-color: var(--button_bg_color) !important;
-            color: var(--button_title_color) !important;
-        }
-
-
-        /* Hover effect */
-        .tem-two-social-icons a:hover {
-            color: #007bff;
-            /* Change color on hover */
-        }
-
-        .tem-two-address {
-            color: var(--tem-two-address-color);
-        }
-
-        /* Customize slick slider container */
-        .slick-slider {
-            width: 100%;
-            /* Adjust slider width as needed */
-            margin: 0 auto;
-            /* Center the slider */
-        }
-
-        .slick-next {
-            right: -5px;
-        }
-
-        .slick-prev {
-            left: -5px;
-            position: absolute;
-            z-index: 1;
-        }
-
-        .tem-two-about-first {
-            width: 35%;
-        }
-
-        .tem-two-about-secontd {
-            width: 65%;
-        }
-
-        .tem-two-tem-two-social-icons a {
-            display: flex;
-            background-color: var(--tem-two-social-icons-bg);
-            margin-left: 10px;
-            padding: 10px;
-            text-decoration: none;
-            color: var(--tem-two-social-icons-color);
-        }
-
-        .tem-two-scroll::-webkit-scrollbar {
-            width: 0em;
-        }
-
-        .tem-two-scroll::-webkit-scrollbar-track {
-            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-        }
-
-        .tem-two-scroll::-webkit-scrollbar-thumb {
-            background-color: darkgrey;
-            outline: 1px solid slategrey;
-        }
-
-        .tem-two-service-title {
-            font-family: var(--tem-two-name-font-family);
-            background-color: var(--tem-two-service-box-bg);
-            border: 0;
-        }
-
-        .tem-one-services-title {
-            font-family: var(--tem-two-name-font-family);
-            background-color: var(--tem-two-service-box-bg);
-            color: var(--tem-two-service-title-color);
-            border: 0;
-            font-size: var(--tem-two-service-title-font-size);
-        }
-
-        /* Media query for smaller screens */
-        @media only screen and (max-width: 600px) {
-            .nfc-mobile-frame-two {
-                height: 100vh;
-                /* Let height adjust based on content */
+                --white: #fff;
+                --tem-two-name-color: #fff;
+                --tem-two-name-font-size: 40px;
+                --tem-two-designation-color: #fff;
+                --tem-two-bio-title-color: {{ $nfc_card->background_color }};
+                --tem-two-profile-image-bg: {{ $nfc_card->background_color }};
+                --tem-two-social-icons-color: #fff;
+                --tem-two-social-icons-bg: #fff;
+                --tem-two-social-icons-font-size: 18px;
+                --tem-two-bio-title-font-size: {{ $nfc_card->font_size }};
+                --tem-two-service-title-color: {{ $nfc_card->title_color }};
+                --tem-two-service-title-font-size: 20px;
+                --tem-two-service-box-bg: {{ $nfc_card->background_color }};
+                --button_bg_color: {{ $nfc_card->button_bg_color }};
+                --button_title_color: {{ $nfc_card->button_title_color }};
+                --tem-two-address-color: #fff;
             }
-        }
-    </style>
-    <!-- Style Here End -->
+
+            /* CSS for centering the mobile frame */
+
+            .nfc-mobile-frame-two {
+                width: 420px;
+                height: 768px;
+                /* border: 2px solid #1026bf; */
+                border-radius: 20px;
+                overflow: hidden;
+                position: relative;
+            }
+
+            /* CSS for the card inside the mobile frame */
+            .nfc-mobile-frame-two .card {
+                background-color: var(--white);
+                width: 100%;
+                height: 100%;
+                border-radius: 20px;
+                overflow-y: auto;
+            }
+
+            .nfc-mobile-frame-two .card title {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+            }
+
+            .nfc-two-cover-img-box {
+                position: relative;
+                max-width: 100%;
+            }
+
+            .nfc-two-cover-img {
+                background-size: cover;
+                height: 300px;
+                background-position: center;
+            }
+
+            .tem-two-name {
+                color: var(--tem-two-name-color);
+                font-family: var(--tem-two-name-font-family);
+                font-weight: 400;
+                font-style: normal;
+                font-size: var(--tem-two-name-font-size);
+            }
+
+            .tem-two-designation {
+                color: var(--tem-two-designation-color);
+                font-family: var(--tem-two-designation-font-family);
+                font-weight: 400;
+                font-style: normal;
+            }
+
+            .tem-two-bio-title {
+                text-align: center;
+                color: var(--tem-two-bio-title-color);
+                font-family: "Bebas Neue", sans-serif;
+                font-size: var(--tem-two-bio-title-font-size);
+            }
+
+            .tem-two-bio-box p {
+                text-align: center;
+            }
+
+            .tem-two-service-title {
+                color: var(--tem-two-service-title-color);
+                font-family: "Bebas Neue", sans-serif;
+                font-size: var(--tem-two-bio-title-font-size);
+            }
+
+            .tem-two-service-box {
+                text-align: center;
+                background-color: var(--tem-two-service-box-bg);
+                color: var(--white);
+            }
+
+            .tem-two-service-box p {
+                text-align: center;
+            }
+
+            .tem-two-profile-img {
+                width: 100%;
+                overflow: hidden;
+            }
+
+            .tem-two-profile-img img {
+                width: 45%;
+                height: 45%;
+                object-fit: cover;
+            }
+
+            .tem-two-profile-image {
+                background-color: var(--tem-profile-image-bg);
+                width: 20%;
+                border-bottom-right-radius: 20px;
+            }
+
+            .tem-two-profile {
+                background-color: var(--tem-two-profile-image-bg);
+                width: 85%;
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+                border-top-left-radius: 20px;
+                border-top-right-radius: 20px;
+                margin-top: -100px;
+                position: relative;
+                z-index: 2;
+            }
+
+            .tem-two-social-icons {
+                display: flex;
+                justify-content: start;
+            }
+
+            .tem-two-social-icons a {
+                /* background-color:var(--tem-two-social-icons-bg); */
+                text-decoration: none;
+                padding: 0px;
+                display: inline-block;
+                font-size: var(--tem-two-social-icons-font-size);
+                /* Adjust the size of the icons as needed */
+                margin: 0 10px;
+                /* Adjust the spacing between icons as needed */
+                color: var(--tem-two-social-icons-color);
+                /* Adjust the color of the icons as needed */
+            }
+
+            .nfc_contact_btn {
+                background-color: var(--button_bg_color) !important;
+                color: var(--button_title_color) !important;
+            }
+
+
+            /* Hover effect */
+            .tem-two-social-icons a:hover {
+                color: #007bff;
+                /* Change color on hover */
+            }
+
+            .tem-two-address {
+                color: var(--tem-two-address-color);
+            }
+
+            /* Customize slick slider container */
+            .slick-slider {
+                width: 100%;
+                /* Adjust slider width as needed */
+                margin: 0 auto;
+                /* Center the slider */
+            }
+
+            .slick-next {
+                right: -5px;
+            }
+
+            .slick-prev {
+                left: -5px;
+                position: absolute;
+                z-index: 1;
+            }
+
+            .tem-two-about-first {
+                width: 35%;
+            }
+
+            .tem-two-about-secontd {
+                width: 65%;
+            }
+
+            .tem-two-tem-two-social-icons a {
+                display: flex;
+                background-color: var(--tem-two-social-icons-bg);
+                margin-left: 10px;
+                padding: 10px;
+                text-decoration: none;
+                color: var(--tem-two-social-icons-color);
+            }
+
+            .tem-two-scroll::-webkit-scrollbar {
+                width: 0em;
+            }
+
+            .tem-two-scroll::-webkit-scrollbar-track {
+                box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            }
+
+            .tem-two-scroll::-webkit-scrollbar-thumb {
+                background-color: darkgrey;
+                outline: 1px solid slategrey;
+            }
+
+            .tem-two-service-title {
+                font-family: var(--tem-two-name-font-family);
+                background-color: var(--tem-two-service-box-bg);
+                border: 0;
+            }
+
+            .tem-one-services-title {
+                font-family: var(--tem-two-name-font-family);
+                background-color: var(--tem-two-service-box-bg);
+                color: var(--tem-two-service-title-color);
+                border: 0;
+                font-size: var(--tem-two-service-title-font-size);
+            }
+
+            /* Media query for smaller screens */
+            @media only screen and (max-width: 600px) {
+                .nfc-mobile-frame-two {
+                    height: 100vh;
+                    /* Let height adjust based on content */
+                }
+            }
+        </style>
+        <!-- Style Here End -->
 </head>
 
 <body>
@@ -282,28 +283,41 @@
                                                 <div>
                                                     <img width="80px" height="80px"
                                                         style="object-fit: cover; border-radius: 50px"
-                                                        src="{{ asset('storage/nfc/' . $nfc_card->code . '/' . $nfc_card->nfcData->banner_image) }}"
+                                                        src="{{ !empty($nfc_card->nfcData->profile_image) && file_exists(public_path('storage/nfc/' . $nfc_card->code . '/' . optional($nfc_card->nfcData)->profile_image)) ? asset('storage/nfc/' . $nfc_card->code . '/' . optional($nfc_card->nfcData)->profile_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
                                                         alt="" />
                                                 </div>
                                                 <div>
-                                                    <h1 class="tem-two-name">Sazeduzzaman Saju</h1>
+                                                    <h1 class="tem-two-name"><span
+                                                            class="first_name">{{ optional($nfc_card->nfcData)->first_name }}</span>&nbsp;<span
+                                                            class="last_name">{{ optional($nfc_card->nfcData)->last_name }}</span>
+                                                    </h1>
                                                     <h6 class="tem-two-designation fw-bold">
-                                                        Frontend Developer
+                                                        {{ optional($nfc_card->nfcData)->designation }}
                                                     </h6>
                                                 </div>
                                                 <!-- contact -->
                                                 <div class="text-center">
-                                                    <small class="tem-two-address">Ulica Zvonka Brkića 58 ,</small>
-                                                    <small class="tem-two-address">Rab</small>
-                                                    <small class="tem-two-address">Croatia</small>
+                                                    <small
+                                                        class="tem-two-address">{{ optional($nfc_card->nfcData)->address_line_one }}</small>
+                                                    <br>
+                                                    <small
+                                                        class="tem-two-address">{{ optional($nfc_card->nfcData)->address_line_two }}</small>
                                                     <br />
-                                                    <small class="tem-two-address">+385 91 561 0409</small>
+                                                    <small
+                                                        class="tem-two-address">{{ optional($nfc_card->nfcData)->phone_personal }}(Work)</small>
+                                                    <br>
+                                                    <small
+                                                        class="tem-two-address">{{ optional($nfc_card->nfcData)->phone_work }}(Personal)</small>
                                                     <div
                                                         class="tem-two-social-icons mt-3 d-flex justify-content-center">
-                                                        <a href="#" class="fa fa-facebook"></a>
-                                                        <a href="#" class="fa fa-instagram"></a>
-                                                        <a href="#" class="fa fa-youtube"></a>
-                                                        <a href="#" class="fa fa-google"></a>
+                                                        <a href="{{ optional($nfc_card->nfcData)->facebook_url }}"
+                                                            class="fa fa-facebook"></a>
+                                                        <a href="{{ optional($nfc_card->nfcData)->instagram_url }}"
+                                                            class="fa fa-instagram"></a>
+                                                        <a href="{{ optional($nfc_card->nfcData)->youtube_url }}"
+                                                            class="fa fa-youtube"></a>
+                                                        <a href="{{ optional($nfc_card->nfcData)->google_plus_url }}"
+                                                            class="fa fa-google"></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -311,26 +325,24 @@
                                     </div>
                                     <!-- BIo -->
                                     <div class="tem-two-bio-box px-3 pt-4">
-                                        <h6 class="tem-two-bio-title">BIO</h6>
+                                        <h6 class="tem-two-bio-title">{{ optional($nfc_card->nfcData)->bio_title }}
+                                        </h6>
                                         <p>
-                                            Book enthusiast, nature lover, avid learner, coffee
-                                            addict, aspiring writer, music aficionado, travel
-                                            enthusiast, optimistic dreamer.
+                                            {{ optional($nfc_card->nfcData)->bio_description }}
                                         </p>
                                     </div>
                                     <!-- Service -->
                                     <div class="tem-two-service-box px-3 py-4">
-                                        <h6 class="tem-two-service-title">Service</h6>
+                                        <h6 class="tem-two-service-title">
+                                            {{ optional($nfc_card->nfcData)->service_section_title }}</h6>
                                         <p>
-                                            Professional, reliable service provider committed to
-                                            exceeding expectations with quality, efficiency, and
-                                            personalized care for every client's needs.
+                                            {{ optional($nfc_card->nfcData)->service_section_description }}
                                         </p>
                                         <div class="row g-x-1">
                                             <div class="card col-6 p-0 border-0 rounded-0">
                                                 <div class="card-header p-0 border-0">
                                                     <h6 class="text-center mb-0 p-2 tem-one-services-title">
-                                                        WEB DEVELOPMENT
+                                                        {{ optional($nfc_card->nfcData)->service_one_title }}
                                                     </h6>
                                                 </div>
                                                 <div class="card-body p-0">
@@ -342,7 +354,7 @@
                                     background-size: cover;
                                     object-fit: cover;
                                   "
-                                                                src="https://img.freepik.com/free-vector/website-development-banner_33099-1687.jpg"
+                                                                src="{{ !empty($nfc_card->nfcData->service_one_image) && file_exists(public_path('storage/nfc/' . $nfc_card->code . '/' . optional($nfc_card->nfcData)->service_one_image)) ? asset('storage/nfc/' . $nfc_card->code . '/' . optional($nfc_card->nfcData)->service_one_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
                                                                 alt="Slide 1" />
                                                         </a>
                                                     </div>
@@ -351,7 +363,7 @@
                                             <div class="card col-6 p-0 border-0 rounded-0">
                                                 <div class="card-header p-0 border-0">
                                                     <h6 class="text-center mb-0 p-2 tem-one-services-title">
-                                                        GRAPHIC DESIGN
+                                                        {{ optional($nfc_card->nfcData)->service_two_title }}
                                                     </h6>
                                                 </div>
                                                 <div class="card-body p-0">
@@ -363,7 +375,28 @@
                                     background-size: cover;
                                     object-fit: cover;
                                   "
-                                                                src="https://media.geeksforgeeks.org/wp-content/uploads/20240227164613/GRAPHIC-DESIGN-BANNER-copy.webp"
+                                                                src="{{ !empty($nfc_card->nfcData->service_two_image) && file_exists(public_path('storage/nfc/' . $nfc_card->code . '/' . optional($nfc_card->nfcData)->service_two_image)) ? asset('storage/nfc/' . $nfc_card->code . '/' . optional($nfc_card->nfcData)->service_two_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
+                                                                alt="Slide 2" />
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card col-6 p-0 border-0 rounded-0">
+                                                <div class="card-header p-0 border-0">
+                                                    <h6 class="text-center mb-0 p-2 tem-one-services-title">
+                                                        {{ optional($nfc_card->nfcData)->service_three_title }}
+                                                    </h6>
+                                                </div>
+                                                <div class="card-body p-0">
+                                                    <div>
+                                                        <a href="">
+                                                            <img style="
+                                    width: 100%;
+                                    height: 100%;
+                                    background-size: cover;
+                                    object-fit: cover;
+                                  "
+                                                                src="{{ !empty($nfc_card->nfcData->service_three_image) && file_exists(public_path('storage/nfc/' . $nfc_card->code . '/' . optional($nfc_card->nfcData)->service_three_image)) ? asset('storage/nfc/' . $nfc_card->code . '/' . optional($nfc_card->nfcData)->service_two_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
                                                                 alt="Slide 2" />
                                                         </a>
                                                     </div>
@@ -374,22 +407,24 @@
                                     </div>
                                     <!-- Service -->
                                     <div class="tem-two-bio-box px-3 pt-4">
-                                        <h6 class="tem-two-bio-title">Company</h6>
+                                        <h6 class="tem-two-bio-title">{{ optional($nfc_card->nfcData)->company_title }}
+                                        </h6>
                                         <div class="d-flex">
                                             <div class="tem-two-about-first">
-                                                <p class="fw-bold mb-0">Ngen It LTD</p>
+                                                <p class="fw-bold mb-0">
+                                                    {{ optional($nfc_card->nfcData)->company_name }}</p>
                                                 <p class="mb-0">
-                                                    <span>257/A, San-fca</span>
+                                                    <span>{{ optional($nfc_card->nfcData)->company_address_line_one }}</span>
                                                     <br />
-                                                    <span>Calefornia,USA</span>
+                                                    <span>{{ optional($nfc_card->nfcData)->company_address_line_two }}</span>
                                                 </p>
                                                 <p>+03 58685125</p>
                                             </div>
                                             <div class="tem-two-about-secontd">
-                                                <p class="fw-bold mb-0">About</p>
+                                                <p class="fw-bold mb-0">
+                                                    {{ optional($nfc_card->nfcData)->company_about_title }}</p>
                                                 <p>
-                                                    Passionate team dedicated to excellence, creativity,
-                                                    and customer satisfaction.
+                                                    {{ optional($nfc_card->nfcData)->company_about_description }}
                                                 </p>
                                             </div>
                                         </div>
@@ -398,11 +433,11 @@
                                     <div class="tem-two-service-box px-3 py-4">
                                         <h6 class="tem-two-service-title">Contact</h6>
                                         <p class="mb-0">
-                                            @: szamansaju@gmail.com
+                                            @: {{ optional($nfc_card->nfcData)->email_work }}
                                             <small class="fw-bold">(Work)</small>
                                         </p>
                                         <p class="mb-0">
-                                            p: +385 91 561 0409
+                                            p: {{ optional($nfc_card->nfcData)->phone_personal }}
                                             <small class="fw-bold">(Personal)</small>
                                         </p>
                                         <div class="pt-4">
