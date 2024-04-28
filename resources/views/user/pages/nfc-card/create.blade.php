@@ -1,5 +1,10 @@
 <x-app-layout :title="'NFC Card Create'">
     <h1 class="text-center mb-10 mt-5">Make Your NFC Profile !</h1>
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
     <div class="row">
         <div class="col-lg-8">
             <div class="card" style="height: 700px; overflow: auto;">

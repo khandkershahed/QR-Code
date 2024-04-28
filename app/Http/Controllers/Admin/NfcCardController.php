@@ -20,7 +20,10 @@ class NfcCardController extends Controller
      */
     public function index()
     {
-        return view('user.pages.nfc-card.index');
+        $data =[
+            'nfc_cards' => NfcCard::with('nfcData')->where('user_id', Auth::user()->id)->get(),
+        ];
+        return view('user.pages.nfc-card.index',$data);
     }
 
     /**
@@ -203,7 +206,8 @@ class NfcCardController extends Controller
             'text_color'       => $request->text_color,
             'title_color'      => $request->title_color,
             'background_color' => $request->background_color,
-            'button_color'     => $request->button_color,
+            'button_bg_color'     => $request->button_bg_color,
+            'button_title_color'     => $request->button_title_color,
             'frame_color'      => $request->frame_color,
             'font_family'      => $request->font_family,
             'font_size'        => $request->font_size,

@@ -145,7 +145,7 @@ class NfcCardRequest extends FormRequest
         $errorMessages = $validator->errors()->all();
         foreach ($errorMessages as $errorMessage) {
             // flash()->addError($errorMessage);
-            session()->flash('error', ['message' => $errorMessage]);
+            session()->flash('error',  $errorMessage);
         }
     }
 }

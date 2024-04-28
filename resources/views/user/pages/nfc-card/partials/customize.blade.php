@@ -134,7 +134,7 @@
                        <div class="row py-5">
                            <div class="col-lg-4">
                                <div class="row">
-                                   <label for="buttonContact">Contact Button Color</label>
+                                   <label for="buttonContact">Contact Button Background Color</label>
                                    <div class="col-lg-10 pe-0">
                                        <div>
                                            <input type="text" name="buttonContact" id="buttonContact"
@@ -143,7 +143,26 @@
                                    </div>
                                    <div class="col-lg-2 ps-0">
                                        <div>
-                                           <input type="color" name="button_color"
+                                           <input type="color" name="button_bg_color"
+                                               id="button_color_picker" value=""
+                                               style="width: 50px;height: 43px;"
+                                               class="form-control form-control-solid">
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="col-lg-4">
+                               <div class="row">
+                                   <label for="buttonContact">Contact Button Title Color</label>
+                                   <div class="col-lg-10 pe-0">
+                                       <div>
+                                           <input type="text" name="buttonContact" id="buttonContact"
+                                               value="#000" class="form-control form-control-solid">
+                                       </div>
+                                   </div>
+                                   <div class="col-lg-2 ps-0">
+                                       <div>
+                                           <input type="color" name="button_title_color"
                                                id="button_color_picker" value=""
                                                style="width: 50px;height: 43px;"
                                                class="form-control form-control-solid">

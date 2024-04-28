@@ -317,7 +317,7 @@
                     <div class="col-lg-3">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2">Company Email</x-metronic.label>
-                            <x-metronic.input type="text" name="company_email"
+                            <x-metronic.input type="email" name="company_email"
                                 class="form-control form-control-solid mb-3 mb-lg-0" placeholder="USA"
                                 value="" />
                         </div>
