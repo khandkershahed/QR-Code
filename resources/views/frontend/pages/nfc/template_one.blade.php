@@ -386,7 +386,7 @@
                                                         <div>
                                                             <label for="client_name">Name
                                                                 <span class="text-danger">*</span></label>
-                                                            <input type="text" name="nt_name" required
+                                                            <input type="text" name="name" required
                                                                 class="form-control form-control-sm" id="" />
                                                         </div>
                                                     </div>
@@ -394,7 +394,7 @@
                                                         <div>
                                                             <label for="client_email">Email
                                                                 <span class="text-danger">*</span></label>
-                                                            <input type="text" name="t_email" required
+                                                            <input type="text" name="email" required
                                                                 class="form-control form-control-sm" id="" />
                                                         </div>
                                                     </div>
@@ -403,7 +403,7 @@
                                                     <div class="col mb-2">
                                                         <div>
                                                             <label for="client_name">Phone</label>
-                                                            <input type="text" name="t_phone"
+                                                            <input type="text" name="phone"
                                                                 class="form-control form-control-sm" id="" />
                                                         </div>
                                                     </div>

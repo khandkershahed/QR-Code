@@ -209,7 +209,7 @@ if (!function_exists('generate_unique_nfc_message_code')) {
             ->orderByDesc('id')
             ->value('code');
 
-        $serialNumber = $latestCode ? (int) explode('-', $latestCode)[2] + 1 : 1;
+        $serialNumber = $latestCode ? (int) explode('-', $latestCode)[1] + 1 : 1;
 
         return sprintf('%s-%d', $prefix, $serialNumber);
     }
