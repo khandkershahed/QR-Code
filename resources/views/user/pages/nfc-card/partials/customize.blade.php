@@ -13,7 +13,7 @@
 
                    <div id="kt_accordion_2_item_1" class="fs-6 collapse show ps-10" data-bs-parent="#kt_accordion_2">
                        <div class="row py-5">
-                           <div class="col-lg-4">
+                           {{-- <div class="col-lg-4">
                                <div class="row">
                                    <label for="primary_color">Primary Color</label>
                                    <div class="col-lg-10 pe-0">
@@ -30,8 +30,8 @@
                                        </div>
                                    </div>
                                </div>
-                           </div>
-                           <div class="col-lg-4">
+                           </div> --}}
+                           {{-- <div class="col-lg-4">
                                <div class="row">
                                    <label for="primary_color_text">Text Color</label>
                                    <div class="col-lg-10 pe-0">
@@ -49,27 +49,7 @@
                                        </div>
                                    </div>
                                </div>
-                           </div>
-
-                           <div class="col-lg-4">
-                               <div class="row">
-                                   <label for="secondary_color_text">Title color</label>
-                                   <div class="col-lg-10 pe-0">
-                                       <div>
-                                           <input type="text" name="title_color_picker" id="secondary_color_text"
-                                               value="#000" class="form-control form-control-solid">
-                                       </div>
-                                   </div>
-                                   <div class="col-lg-2 ps-0">
-                                       <div>
-                                           <input type="color" name="title_color"
-                                               id="secondary_color_text_picker" value=""
-                                               style="width: 50px;height: 43px;"
-                                               class="form-control form-control-solid">
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
+                           </div> --}}
                            <div class="col-lg-4">
                             <div class="row">
                                 <label for="secondary_color_text">Background color</label>
@@ -89,6 +69,25 @@
                                 </div>
                             </div>
                         </div>
+                           <div class="col-lg-4">
+                               <div class="row">
+                                   <label for="secondary_color_text">Title color (With BG Include)</label>
+                                   <div class="col-lg-10 pe-0">
+                                       <div>
+                                           <input type="text" name="title_color_picker" id="secondary_color_text"
+                                               value="#000" class="form-control form-control-solid">
+                                       </div>
+                                   </div>
+                                   <div class="col-lg-2 ps-0">
+                                       <div>
+                                           <input type="color" name="title_color"
+                                               id="secondary_color_text_picker" value=""
+                                               style="width: 50px;height: 43px;"
+                                               class="form-control form-control-solid">
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
                        </div>
                    </div>
                </div>

@@ -1,5 +1,5 @@
 <div class="card nfc-card nfc-one-card-frame nfc-one template-one" style="display: none;" id="template-one">
-    <div class="card-header p-0 border-0">
+    <div class="p-0 border-0">
         <img class="img-fluid profile_image"
             src="https://annemariesegal.com/wp-content/uploads/2017/04/adobestock_86346713-cropped-young-woman-in-suit.jpg?w=1200"
             alt="">
