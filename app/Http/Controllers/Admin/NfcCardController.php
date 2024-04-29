@@ -21,10 +21,10 @@ class NfcCardController extends Controller
      */
     public function index()
     {
-        $data =[
-            'nfc_cards' => NfcCard::with('nfcData','nfcMessages')->where('user_id', Auth::user()->id)->get(),
+        $data = [
+            'nfc_cards' => NfcCard::with('nfcData', 'nfcMessages')->where('user_id', Auth::user()->id)->get(),
         ];
-        return view('user.pages.nfc-card.index',$data);
+        return view('user.pages.nfc-card.index', $data);
     }
 
     /**
@@ -189,14 +189,55 @@ class NfcCardController extends Controller
         // Generate NFC code
         $code = $this->generateNfcCode();
 
+
+        // Image Upload
+        $files = [
+            'banner_image' => $request->file('banner_image'),
+            'profile_image' => $request->file('profile_image'),
+            'service_one_image' => $request->file('service_one_image'),
+            'service_two_image' => $request->file('service_two_image'),
+            'service_three_image' => $request->file('service_three_image'),
+        ];
+
+        $filePath = 'public/nfc/' . $code . '/';
+        // $filePath = storage_path('app/public/nfc/' . $code . '/'); // Corrected $filePath
+
+        $uploadedFiles = [];
+        foreach ($files as $key => $file) {
+            if (!empty($file)) {
+                $uploadedFiles[$key] = customUpload($file, $filePath, $key);
+                if ($uploadedFiles[$key]['status'] === 0) {
+                    return redirect()->back()->with('error', $uploadedFiles[$key]['error_message']);
+                }
+            } else {
+                $uploadedFiles[$key] = ['status' => 0];
+            }
+        }
+
+
+
+
         // Generate NFC URL and QR code
         $nfc_url = route('nfc.page', ['name' => $request->first_name . '-' . $request->last_name, 'code' => $code]);
+
         $qrCodeString = '';
         // $qrCodeString = QrCode::size(300)->format('png')->generate($nfc_url);
+        // $qrFileName = $code . '_nfc_qr.png';
+        // $qrCodePath = 'public/nfc/' . $code . '/';
+        // Storage::local('disc')->put($qrCodePath, $qrCodeString);
+        // if (!empty($mainFile)) {
+        //     $globalFunImage = customUpload($qrCodeString, $qrCodePath, $code);
+        // } else {
+        //     $globalFunImage = ['status' => 0];
+        // }
+
+        // Generate QR code
+        $qrCodeString = QrCode::size(300)->format('png')->generate($nfc_url);
+        // Save the QR code to storage
         $qrFileName = $code . '_nfc_qr.png';
-        $qrCodePath = 'public/nfc/' . $code . '/';
-        // $qrCodePath = 'public/nfc/' . $code . '/' . $qrFileName;
+        $qrCodePath = 'public/nfc/' . $code . '/' . $qrFileName;
         Storage::put($qrCodePath, $qrCodeString);
+        // $field . '_url' => asset('storage/qr_codes/' . $format . '/' . $qrFileName)
 
         // Create NFC card
         $nfc_card = NfcCard::create([
@@ -220,37 +261,14 @@ class NfcCardController extends Controller
         ]);
 
         // Upload images
-        $files = [
-            'banner_image' => $request->file('banner_image'),
-            'profile_image' => $request->file('profile_image'),
-            'service_one_image' => $request->file('service_one_image'),
-            'service_two_image' => $request->file('service_two_image'),
-            'service_three_image' => $request->file('service_three_image'),
-        ];
-
-        $filePath = storage_path('app/public/nfc/' . $code );
-        // $filePath = 'public/nfc/' . $code . '/';
-
-        $uploadedFiles = [];
-        foreach ($files as $key => $file) {
-            if (!empty($file)) {
-                $uploadedFiles[$key] = customUpload($file, $filePath,$key);
-                if ($uploadedFiles[$key]['status'] === 0) {
-
-                    return redirect()->back()->with('error' , $uploadedFiles[$key]['error_message']);
-                }
-            } else {
-                $uploadedFiles[$key] = ['status' => 0];
-            }
-        }
 
         $nfc_data = NfcData::create([
-            'card_id' => $nfc_card->id,
-            'banner_image' => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_name'] : null,
-            'profile_image' => $uploadedFiles['profile_image']['status'] == 1 ? $uploadedFiles['profile_image']['file_name'] : null,
-            'service_one_image' => $uploadedFiles['service_one_image']['status'] == 1 ? $uploadedFiles['service_one_image']['file_name'] : null,
-            'service_two_image' => $uploadedFiles['service_two_image']['status'] == 1 ? $uploadedFiles['service_two_image']['file_name'] : null,
-            'service_three_image' => $uploadedFiles['service_three_image']['status'] == 1 ? $uploadedFiles['service_three_image']['file_name'] : null,
+            'card_id'                     => $nfc_card->id,
+            'banner_image'                => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_name'] : null,
+            'profile_image'               => $uploadedFiles['profile_image']['status'] == 1 ? $uploadedFiles['profile_image']['file_name'] : null,
+            'service_one_image'           => $uploadedFiles['service_one_image']['status'] == 1 ? $uploadedFiles['service_one_image']['file_name'] : null,
+            'service_two_image'           => $uploadedFiles['service_two_image']['status'] == 1 ? $uploadedFiles['service_two_image']['file_name'] : null,
+            'service_three_image'         => $uploadedFiles['service_three_image']['status'] == 1 ? $uploadedFiles['service_three_image']['file_name'] : null,
             'first_name'                  => $request->first_name,
             'last_name'                   => $request->last_name,
             'designation'                 => $request->designation,
@@ -343,7 +361,7 @@ class NfcCardController extends Controller
             File::deleteDirectory($folderPath);
         }
         $nfc->delete();
-        $nfc_data = NfcData::where('card_id' , $id)->first();
+        $nfc_data = NfcData::where('card_id', $id)->first();
         if (!empty($nfc_data)) {
             $nfc_data->delete();
         }
