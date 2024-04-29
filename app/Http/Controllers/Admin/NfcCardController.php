@@ -194,7 +194,8 @@ class NfcCardController extends Controller
         $qrCodeString = '';
         // $qrCodeString = QrCode::size(300)->format('png')->generate($nfc_url);
         $qrFileName = $code . '_nfc_qr.png';
-        $qrCodePath = 'public/nfc/' . $code . '/';
+        // $qrCodePath = 'public/nfc/' . $code . '/';
+        $qrCodePath = storage_path('app/public/nfc/' . $code );
         // $qrCodePath = 'public/nfc/' . $code . '/' . $qrFileName;
         Storage::put($qrCodePath, $qrCodeString);
 
@@ -245,12 +246,12 @@ class NfcCardController extends Controller
         }
 
         $nfc_data = NfcData::create([
-            'card_id' => $nfc_card->id,
-            'banner_image' => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_name'] : null,
-            'profile_image' => $uploadedFiles['profile_image']['status'] == 1 ? $uploadedFiles['profile_image']['file_name'] : null,
-            'service_one_image' => $uploadedFiles['service_one_image']['status'] == 1 ? $uploadedFiles['service_one_image']['file_name'] : null,
-            'service_two_image' => $uploadedFiles['service_two_image']['status'] == 1 ? $uploadedFiles['service_two_image']['file_name'] : null,
-            'service_three_image' => $uploadedFiles['service_three_image']['status'] == 1 ? $uploadedFiles['service_three_image']['file_name'] : null,
+            'card_id'                     => $nfc_card->id,
+            'banner_image'                => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_name'] : null,
+            'profile_image'               => $uploadedFiles['profile_image']['status'] == 1 ? $uploadedFiles['profile_image']['file_name'] : null,
+            'service_one_image'           => $uploadedFiles['service_one_image']['status'] == 1 ? $uploadedFiles['service_one_image']['file_name'] : null,
+            'service_two_image'           => $uploadedFiles['service_two_image']['status'] == 1 ? $uploadedFiles['service_two_image']['file_name'] : null,
+            'service_three_image'         => $uploadedFiles['service_three_image']['status'] == 1 ? $uploadedFiles['service_three_image']['file_name'] : null,
             'first_name'                  => $request->first_name,
             'last_name'                   => $request->last_name,
             'designation'                 => $request->designation,
