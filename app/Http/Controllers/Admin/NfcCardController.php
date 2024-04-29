@@ -198,9 +198,9 @@ class NfcCardController extends Controller
             'service_two_image' => $request->file('service_two_image'),
             'service_three_image' => $request->file('service_three_image'),
         ];
-        // storage_path('app/public/brand/image/')
-        // $filePath = 'public/nfc/' . $code . '/';
-        $filePath = storage_path('app/public/nfc/' . $code . '/'); // Corrected $filePath
+
+        $filePath = 'public/nfc/' . $code . '/';
+        // $filePath = storage_path('app/public/nfc/' . $code . '/'); // Corrected $filePath
 
         $uploadedFiles = [];
         foreach ($files as $key => $file) {
@@ -222,8 +222,8 @@ class NfcCardController extends Controller
         $qrCodeString = '';
         // $qrCodeString = QrCode::size(300)->format('png')->generate($nfc_url);
         $qrFileName = $code . '_nfc_qr.png';
-        // $qrCodePath = 'public/nfc/' . $code . '/';
-        $qrCodePath = storage_path('app/public/nfc/' . $code . '/');
+        $qrCodePath = 'public/nfc/' . $code . '/';
+        // $qrCodePath = storage_path('app/public/nfc/' . $code . '/');
         // dd($qrCodePath);
         // $qrCodePath = 'public/nfc/' . $code . '/' . $qrFileName;
         Storage::put($qrCodePath, $qrCodeString);
