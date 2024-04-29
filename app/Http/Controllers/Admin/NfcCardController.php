@@ -21,10 +21,10 @@ class NfcCardController extends Controller
      */
     public function index()
     {
-        $data =[
-            'nfc_cards' => NfcCard::with('nfcData','nfcMessages')->where('user_id', Auth::user()->id)->get(),
+        $data = [
+            'nfc_cards' => NfcCard::with('nfcData', 'nfcMessages')->where('user_id', Auth::user()->id)->get(),
         ];
-        return view('user.pages.nfc-card.index',$data);
+        return view('user.pages.nfc-card.index', $data);
     }
 
     /**
@@ -189,13 +189,41 @@ class NfcCardController extends Controller
         // Generate NFC code
         $code = $this->generateNfcCode();
 
+
+        // Image Upload
+        $files = [
+            'banner_image' => $request->file('banner_image'),
+            'profile_image' => $request->file('profile_image'),
+            'service_one_image' => $request->file('service_one_image'),
+            'service_two_image' => $request->file('service_two_image'),
+            'service_three_image' => $request->file('service_three_image'),
+        ];
+        // storage_path('app/public/brand/image/')
+        // $filePath = 'public/nfc/' . $code . '/';
+        $filePath = storage_path('app/public/nfc/' . $code . '/'); // Corrected $filePath
+
+        $uploadedFiles = [];
+        foreach ($files as $key => $file) {
+            if (!empty($file)) {
+                $uploadedFiles[$key] = customUpload($file, $filePath, $key);
+                if ($uploadedFiles[$key]['status'] === 0) {
+                    return redirect()->back()->with('error', $uploadedFiles[$key]['error_message']);
+                }
+            } else {
+                $uploadedFiles[$key] = ['status' => 0];
+            }
+        }
+
+
+
+
         // Generate NFC URL and QR code
         $nfc_url = route('nfc.page', ['name' => $request->first_name . '-' . $request->last_name, 'code' => $code]);
         $qrCodeString = '';
         // $qrCodeString = QrCode::size(300)->format('png')->generate($nfc_url);
         $qrFileName = $code . '_nfc_qr.png';
         // $qrCodePath = 'public/nfc/' . $code . '/';
-        $qrCodePath = storage_path('app/public/nfc/' . $code );
+        $qrCodePath = storage_path('app/public/nfc/' . $code . '/');
         // dd($qrCodePath);
         // $qrCodePath = 'public/nfc/' . $code . '/' . $qrFileName;
         Storage::put($qrCodePath, $qrCodeString);
@@ -222,29 +250,6 @@ class NfcCardController extends Controller
         ]);
 
         // Upload images
-        $files = [
-            'banner_image' => $request->file('banner_image'),
-            'profile_image' => $request->file('profile_image'),
-            'service_one_image' => $request->file('service_one_image'),
-            'service_two_image' => $request->file('service_two_image'),
-            'service_three_image' => $request->file('service_three_image'),
-        ];
-        // storage_path('app/public/brand/image/')
-        $filePath = storage_path('app/public/nfc/' . $code .'/' );
-        // $filePath = 'public/nfc/' . $code . '/';
-
-        $uploadedFiles = [];
-        foreach ($files as $key => $file) {
-            if (!empty($file)) {
-                $uploadedFiles[$key] = customUpload($file, $filePath,$key);
-                if ($uploadedFiles[$key]['status'] === 0) {
-
-                    return redirect()->back()->with('error' , $uploadedFiles[$key]['error_message']);
-                }
-            } else {
-                $uploadedFiles[$key] = ['status' => 0];
-            }
-        }
 
         $nfc_data = NfcData::create([
             'card_id'                     => $nfc_card->id,
@@ -345,7 +350,7 @@ class NfcCardController extends Controller
             File::deleteDirectory($folderPath);
         }
         $nfc->delete();
-        $nfc_data = NfcData::where('card_id' , $id)->first();
+        $nfc_data = NfcData::where('card_id', $id)->first();
         if (!empty($nfc_data)) {
             $nfc_data->delete();
         }
