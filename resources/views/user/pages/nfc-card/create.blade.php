@@ -151,10 +151,10 @@
                         @include('user.pages.nfc-card.partials.nfc_preview')
                     </div>
                 </div>
-                <div class="card-footer d-flex justify-content-around align-items-center">
+                {{-- <div class="card-footer d-flex justify-content-around align-items-center">
                     <a href="#" class="btn btn-light btn-light-primary w-100"><i
                             class="fa-solid fa-file-export pe-3"></i>Download</a>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -223,8 +223,15 @@
                         if (nfcCardElement.length > 0) {
                             if ($(this).is('input[type="file"]')) {
                                 if ($(this).prop('files') && $(this).prop('files')[0]) {
-                                    nfcCardElement.attr('src', URL.createObjectURL($(this).prop('files')[0]));
+                                    var file = $(this).prop('files')[0];
+                                    var reader = new FileReader();
+                                    reader.onload = function(e) {
+                                        nfcCardElement.attr('src', e.target.result);
+                                    }
+                                    reader.readAsDataURL(file);
                                 }
+                            } else if ($(this).is('input[type="url"]')) {
+                                nfcCardElement.attr('href', inputValue);
                             } else {
                                 nfcCardElement.text(inputValue);
                             }
@@ -232,7 +239,8 @@
 
                         // For debugging
                         console.log("Input Name:", inputName, "Input Value:", inputValue);
-                    });
+                    }
+                );
             });
         </script>
 

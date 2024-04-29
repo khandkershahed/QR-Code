@@ -220,7 +220,7 @@ class NfcCardController extends Controller
         // Generate NFC URL and QR code
         $nfc_url = route('nfc.page', ['name' => $request->first_name . '-' . $request->last_name, 'code' => $code]);
         $qrCodeString = '';
-        // $qrCodeString = QrCode::size(300)->format('png')->generate($nfc_url);
+        $qrCodeString = QrCode::size(300)->format('png')->generate($nfc_url);
         $qrFileName = $code . '_nfc_qr.png';
         $qrCodePath = 'public/nfc/' . $code . '/';
         // $qrCodePath = storage_path('app/public/nfc/' . $code . '/');
