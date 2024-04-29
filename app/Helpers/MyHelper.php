@@ -26,6 +26,9 @@ if (!function_exists('customUpload')) {
             // if (!File::isDirectory($uploadPath)) {
             //     File::makeDirectory($uploadPath, 0777, true, true);
             // }
+            if (!posix_chmod(storage_path('app/public/nfc/'), 0755)) {
+                throw new \RuntimeException("Failed to set permissions for directory: $uploadPath");
+            };
             if (!File::isDirectory($uploadPath) && !File::makeDirectory($uploadPath, 0777, true, true)) {
                 throw new \RuntimeException("Failed to create the directory: $uploadPath");
             }
@@ -33,7 +36,6 @@ if (!function_exists('customUpload')) {
 
             // $mainFile->storeAs($uploadPath, $fileName);
             $mainFile->storeAs($uploadPath, $fileName);
-            chmod(storage_path('app/public/nfc/'), 0755);
             $output = [
                 'status'         => 1,
                 'file_name'      => $fileName,
