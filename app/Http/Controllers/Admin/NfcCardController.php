@@ -309,7 +309,7 @@ class NfcCardController extends Controller
             'created_at'                  => Carbon::now(),
         ]);
 
-        return redirect()->route('user.qr-code.index')->with('success', 'NFC Created successfully.');
+        return redirect()->route('user.nfc-card.index')->with('success', 'NFC Created successfully.');
     }
 
     private function generateNfcCode()

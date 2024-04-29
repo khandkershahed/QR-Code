@@ -23,17 +23,17 @@ if (!function_exists('customUpload')) {
 
             $fileName = $name . '_' . $hashedName;
 
-            // Set umask to allow group write permissions
-            umask(0002);
-
-            if (!File::isDirectory($uploadPath) && !File::makeDirectory($uploadPath, 0755, true, true)) {
+            // if (!File::isDirectory($uploadPath)) {
+            //     File::makeDirectory($uploadPath, 0777, true, true);
+            // }
+            if (!File::isDirectory($uploadPath) && !File::makeDirectory($uploadPath, 0777, true, true)) {
                 throw new \RuntimeException("Failed to create the directory: $uploadPath");
             }
 
-            // Store the file with the specified name and path
-            $mainFile->storeAs($uploadPath, $fileName);
 
-            // Prepare output data
+            // $mainFile->storeAs($uploadPath, $fileName);
+            $mainFile->storeAs($uploadPath, $fileName);
+            chmod($uploadPath, 0777);
             $output = [
                 'status'         => 1,
                 'file_name'      => $fileName,
@@ -42,10 +42,8 @@ if (!function_exists('customUpload')) {
                 'file_type'      => $mainFile->getMimeType(),
             ];
 
-            // Return the output with sanitized values
             return array_map('htmlspecialchars', $output);
         } catch (\Exception $e) {
-            // Handle exceptions and return error message
             return [
                 'status' => 0,
                 'error_message' => $e->getMessage(),
@@ -53,7 +51,6 @@ if (!function_exists('customUpload')) {
         }
     }
 }
-
 
 if (!function_exists('handaleFileUpload')) {
     function handaleFileUpload(UploadedFile $file, $folder = 'default')
