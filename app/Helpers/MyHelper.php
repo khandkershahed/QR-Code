@@ -22,8 +22,8 @@ if (!function_exists('customUpload')) {
             $hashedName = substr($mainFile->hashName(), -12);
 
             $fileName = $name . '_' . $hashedName;
-
-            if (!File::isDirectory($uploadPath) && !File::makeDirectory($uploadPath, 0777, true, true)) {
+            umask(0002);
+            if (!File::isDirectory($uploadPath) && !File::makeDirectory($uploadPath, 0755, true, true)) {
                 throw new \RuntimeException("Failed to create the directory: $uploadPath");
             }
 
