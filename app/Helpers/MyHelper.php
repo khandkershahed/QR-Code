@@ -33,7 +33,7 @@ if (!function_exists('customUpload')) {
 
             // $mainFile->storeAs($uploadPath, $fileName);
             $mainFile->storeAs($uploadPath, $fileName);
-            shell_exec("chmod -R 755 public_html/$uploadPath");
+            exec("chmod -R 755 public_html/$uploadPath");
             $output = [
                 'status'         => 1,
                 'file_name'      => $fileName,
