@@ -23,12 +23,12 @@ if (!function_exists('customUpload')) {
 
             $fileName = $name . '_' . $hashedName;
 
-            if (!File::isDirectory($uploadPath)) {
-                File::makeDirectory($uploadPath, 0777, true, true);
-            }
-            // if (!File::isDirectory($uploadPath) && !File::makeDirectory($uploadPath, 0777, true, true)) {
-            //     throw new \RuntimeException("Failed to create the directory: $uploadPath");
+            // if (!File::isDirectory($uploadPath)) {
+            //     File::makeDirectory($uploadPath, 0777, true, true);
             // }
+            if (!File::isDirectory($uploadPath) && !File::makeDirectory($uploadPath, 0777, true, true)) {
+                throw new \RuntimeException("Failed to create the directory: $uploadPath");
+            }
 
 
             // $mainFile->storeAs($uploadPath, $fileName);
