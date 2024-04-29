@@ -9,7 +9,7 @@
         <div class="col-lg-8">
             <div class="card" style="height: 700px; overflow: auto;">
                 <div class="card-body p-0">
-                    <div class="stepper stepper-pills p-0" id="kt_stepper_example_clickable">
+                    <div class="stepper stepper-pills p-0" id="kt_create_account_stepper">
                         <div class="stepper-nav flex-center flex-wrap border-bottom">
                             <div class="stepper-item mx-2 my-4 bg-light-primary pe-3 rounded-2 current"
                                 data-kt-stepper-element="nav" data-kt-stepper-action="step">
@@ -67,8 +67,7 @@
                                 </div>
                             </div>
                         </div>
-
-                        <form class="form w-100 mx-auto" novalidate="novalidate" id="generateNfcCardForm"
+                        <form class="form w-100 mx-auto" novalidate="novalidate" id="kt_create_account_form"
                             action="{{ route('user.nfc-card.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-5">
@@ -162,6 +161,15 @@
         <script>
             $(document).ready(function() {
                 // NFC Template
+                const nfcTemplateValue = $('input[name="nfc_template"]:checked').val();
+                    if (nfcTemplateValue != null) {
+                        localStorage.setItem('nfc_template', nfcTemplateValue);
+                        $("." + nfcTemplateValue).show();
+                    } else {
+                        $(".nfc-card").hide();
+                    }
+
+
                 $('input[name="nfc_template"]').change(function() {
                     $(".nfc-card").hide();
                     const nfcTemplateValue = $('input[name="nfc_template"]:checked').val();

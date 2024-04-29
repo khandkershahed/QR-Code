@@ -90,8 +90,16 @@
     <script src="{{ asset($hostUrl . 'js/custom/account/settings/profile-details.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/account/settings/deactivate-account.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/apps/ecommerce/catalog/save-product.js') }}"></script>
+
+
+
     <script src="{{ asset($hostUrl . 'js/widgets.bundle.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/widgets.js') }}"></script>
+
+    <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/create-account.js') }}"></script>
+
+
+
     <script src="{{ asset($hostUrl . 'js/custom/apps/chat/chat.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/upgrade-plan.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/create-app.js') }}"></script>

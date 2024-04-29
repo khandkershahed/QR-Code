@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row fv-row">
     @foreach ($types as $type)
         <div class="col-lg-4">
             <input type="radio" class="btn-check" name="qr_type" value="{{ $type['value'] }}" {{($loop->first ) ? 'checked' : ''}}

@@ -7,16 +7,10 @@
     </div>
     <div class="row pt-4">
         <div class="mb-4">
-            <x-metronic.label for="qr_data_website_url" class="form-label">{{ __('Website Url') }}</x-metronic.label>
+            <x-metronic.label for="qr_data_website_url" class="form-label required">{{ __('Website Url') }}</x-metronic.label>
             <x-metronic.input id="qr_data_website_url" type="text" name="qr_data_website_url" :value="old('qr_data_website_url')"
                 placeholder="Website Url" />
-            {{-- <label for="exampleFormControlInput1" class="required form-label">Website Url</label>
-            <input type="text" class="form-control form-control-solid" placeholder="url" /> --}}
         </div>
-        {{-- <div>
-            <label for="exampleFormControlInput1" class="required form-label">Others</label>
-            <input type="text" class="form-control form-control-solid" placeholder="others if need" />
-        </div> --}}
     </div>
 </div>
 

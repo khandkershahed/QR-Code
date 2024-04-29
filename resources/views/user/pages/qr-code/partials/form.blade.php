@@ -7,16 +7,11 @@
     </div>
     <div class="row pt-4">
         <div class="mb-4">
-            <x-metronic.label for="qr_data_website_url" class="form-label">{{ __('Website Url') }}</x-metronic.label>
-            <x-metronic.input id="qr_data_website_url" type="text" name="qr_data_website_url" :value="old('qr_data_website_url')"
+            <x-metronic.label for="qr_data_website_url"
+                class="form-label required">{{ __('Website Url') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_website_url" type="text" name="qr_data_website_url"
                 placeholder="Website Url" />
-            {{-- <label for="exampleFormControlInput1" class="required form-label">Website Url</label>
-            <input type="text" class="form-control form-control-solid" placeholder="url" /> --}}
         </div>
-        {{-- <div>
-            <label for="exampleFormControlInput1" class="required form-label">Others</label>
-            <input type="text" class="form-control form-control-solid" placeholder="others if need" />
-        </div> --}}
     </div>
 </div>
 
@@ -94,12 +89,13 @@
         <div class="pb-4">
             <x-metronic.label for="qr_data_email_subject"
                 class="form-label">{{ __('Email Subject') }}</x-metronic.label>
-                <x-metronic.input id="qr_data_email_subject" type="text" name="qr_data_email_subject" :value="old('qr_data_email_subject')"
-                    placeholder="Email Subject" />
+            <x-metronic.input id="qr_data_email_subject" type="text" name="qr_data_email_subject" :value="old('qr_data_email_subject')"
+                placeholder="Email Subject" />
         </div>
         <div class="pb-4">
             <label for="qr_data_email_body" class="required form-label">Mail Body</label>
-            <textarea class="form-control form-control-solid" name="qr_data_email_body" id="qr_data_email_body" rows="3" required></textarea>
+            <textarea class="form-control form-control-solid" name="qr_data_email_body" id="qr_data_email_body" rows="3"
+                required></textarea>
         </div>
     </div>
 </div>
@@ -113,20 +109,20 @@
         <div class="pb-4">
             <x-metronic.label for="qr_app_android"
                 class="form-label">{{ __('Google Play store URL') }}</x-metronic.label>
-                <x-metronic.input id="qr_app_android" type="text" name="qr_app_android" :value="old('qr_app_android')"
-                    placeholder="Google Play store URL" />
+            <x-metronic.input id="qr_app_android" type="text" name="qr_app_android" :value="old('qr_app_android')"
+                placeholder="Google Play store URL" />
         </div>
         <div class="pb-4">
             <x-metronic.label for="qr_data_app_iphone"
                 class="form-label">{{ __('App store URL (iPhone)') }}</x-metronic.label>
-                <x-metronic.input id="qr_data_app_iphone" type="text" name="qr_data_app_iphone" :value="old('qr_data_app_iphone')"
-                    placeholder="App store URL (iPhone)" />
+            <x-metronic.input id="qr_data_app_iphone" type="text" name="qr_data_app_iphone" :value="old('qr_data_app_iphone')"
+                placeholder="App store URL (iPhone)" />
         </div>
         <div class="pb-4">
             <x-metronic.label for="qr_data_app_ipad"
                 class="form-label">{{ __('App store URL (iPad and macOS)') }}</x-metronic.label>
-                <x-metronic.input id="qr_data_app_ipad" type="text" name="qr_data_app_ipad" :value="old('qr_data_app_ipad')"
-                    placeholder="App store URL (iPad and macOS)" />
+            <x-metronic.input id="qr_data_app_ipad" type="text" name="qr_data_app_ipad" :value="old('qr_data_app_ipad')"
+                placeholder="App store URL (iPad and macOS)" />
         </div>
     </div>
 </div>
@@ -140,8 +136,8 @@
         <div class="pb-4">
             <x-metronic.label for="qr_data_call_number"
                 class="form-label">{{ __('Phone Number') }}</x-metronic.label>
-                <x-metronic.input id="qr_data_call_number" type="text" name="qr_data_call_number" :value="old('qr_data_call_number')"
-                    placeholder="Phone Number" />
+            <x-metronic.input id="qr_data_call_number" type="text" name="qr_data_call_number" :value="old('qr_data_call_number')"
+                placeholder="Phone Number" />
         </div>
     </div>
 </div>
@@ -155,8 +151,8 @@
         <div class="pb-4">
             <x-metronic.label for="qr_data_location"
                 class="form-label">{{ __('Select Location') }}</x-metronic.label>
-                <x-metronic.input id="qr_data_location" type="text" name="qr_data_location" :value="old('qr_data_location')"
-                    placeholder="Select Location" />
+            <x-metronic.input id="qr_data_location" type="text" name="qr_data_location" :value="old('qr_data_location')"
+                placeholder="Select Location" />
         </div>
         <div class="mt-2">
             <iframe
@@ -174,16 +170,15 @@
     </div>
     <div class="pb-4 row">
         <div class="pb-4 col-lg-3">
-            <x-metronic.label for="qr_data_coupon_code"
-                class="form-label">{{ __('Coupon code') }}</x-metronic.label>
-                <x-metronic.input id="qr_data_coupon_code" type="text" name="qr_data_coupon_code" :value="old('qr_data_coupon_code')"
-                    placeholder="Coupon code" />
+            <x-metronic.label for="qr_data_coupon_code" class="form-label">{{ __('Coupon code') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_coupon_code" type="text" name="qr_data_coupon_code" :value="old('qr_data_coupon_code')"
+                placeholder="Coupon code" />
         </div>
         <div class="pb-4 col-lg-3">
             <x-metronic.label for="qr_data_coupon_expire_date"
                 class="form-label">{{ __('Expires on') }}</x-metronic.label>
-                <x-metronic.input id="qr_data_coupon_expire_date" type="date" name="qr_data_coupon_expire_date" :value="old('qr_data_coupon_expire_date')"
-                    placeholder="Expires on" />
+            <x-metronic.input id="qr_data_coupon_expire_date" type="date" name="qr_data_coupon_expire_date"
+                :value="old('qr_data_coupon_expire_date')" placeholder="Expires on" />
         </div>
         {{-- <div class="pb-4 col-lg-3">
             <label for="exampleFormControlInput1" class="required form-label">Timezone</label>
@@ -196,52 +191,48 @@
             </select>
         </div> --}}
         <div class="pb-4 col-lg-3">
-            <x-metronic.label for="qr_data_coupon_header"
-                class="form-label">{{ __('Header') }}</x-metronic.label>
-                <x-metronic.input id="qr_data_coupon_header" type="text" name="qr_data_coupon_header" :value="old('qr_data_coupon_header')"
-                    placeholder="Header" />
+            <x-metronic.label for="qr_data_coupon_header" class="form-label">{{ __('Header') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_coupon_header" type="text" name="qr_data_coupon_header"
+                :value="old('qr_data_coupon_header')" placeholder="Header" />
         </div>
         <div class="pb-4 col-lg-3">
-            <x-metronic.label for="qr_data_coupon_message"
-                class="form-label">{{ __('Message') }}</x-metronic.label>
-                <x-metronic.input id="qr_data_coupon_message" type="text" name="qr_data_coupon_message" :value="old('qr_data_coupon_message')"
-                    placeholder="Message" />
+            <x-metronic.label for="qr_data_coupon_message" class="form-label">{{ __('Message') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_coupon_message" type="text" name="qr_data_coupon_message"
+                :value="old('qr_data_coupon_message')" placeholder="Message" />
         </div>
         <div class="pb-4 col-lg-3">
             <x-metronic.label for="qr_data_coupon_description_header"
                 class="form-label">{{ __('Description header') }}</x-metronic.label>
-                <x-metronic.input id="qr_data_coupon_description_header" type="text" name="qr_data_coupon_description_header" :value="old('qr_data_coupon_description_header')"
-                    placeholder="Holiday Season Sale" />
+            <x-metronic.input id="qr_data_coupon_description_header" type="text"
+                name="qr_data_coupon_description_header" :value="old('qr_data_coupon_description_header')" placeholder="Holiday Season Sale" />
         </div>
         <div class="pb-4 col-lg-3">
             <x-metronic.label for="qr_data_coupon_description_body"
                 class="form-label">{{ __('Description Body') }}</x-metronic.label>
-                <x-metronic.input id="qr_data_coupon_description_body" type="text" name="qr_data_coupon_description_body" :value="old('qr_data_coupon_description_body')"
-                    placeholder="Get Huge Discount On This Holiday Seasion" />
+            <x-metronic.input id="qr_data_coupon_description_body" type="text"
+                name="qr_data_coupon_description_body" :value="old('qr_data_coupon_description_body')"
+                placeholder="Get Huge Discount On This Holiday Seasion" />
         </div>
         <div class="pb-4 col-lg-3">
-            <x-metronic.label for="qr_data_coupon_website"
-                class="form-label">{{ __('Website') }}</x-metronic.label>
-                <x-metronic.input id="qr_data_coupon_website" type="text" name="qr_data_coupon_website" :value="old('qr_data_coupon_website')"
-                    placeholder="http://www.website.com" />
+            <x-metronic.label for="qr_data_coupon_website" class="form-label">{{ __('Website') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_coupon_website" type="text" name="qr_data_coupon_website"
+                :value="old('qr_data_coupon_website')" placeholder="http://www.website.com" />
         </div>
         <div class="pb-4 col-lg-3">
-            <x-metronic.label for="qr_data_coupon_company"
-                class="form-label">{{ __('Company') }}</x-metronic.label>
-                <x-metronic.input id="qr_data_coupon_company" type="text" name="qr_data_coupon_company" :value="old('qr_data_coupon_company')"
-                    placeholder="Company Name" />
+            <x-metronic.label for="qr_data_coupon_company" class="form-label">{{ __('Company') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_coupon_company" type="text" name="qr_data_coupon_company"
+                :value="old('qr_data_coupon_company')" placeholder="Company Name" />
         </div>
         <div class="pb-4 col-lg-6">
             <x-metronic.label for="qr_data_coupon_policy"
                 class="form-label">{{ __('Terms & conditions') }}</x-metronic.label>
-                <x-metronic.input id="qr_data_coupon_policy" type="text" name="qr_data_coupon_policy" :value="old('qr_data_coupon_policy')"
-                    placeholder="Policy" />
+            <x-metronic.input id="qr_data_coupon_policy" type="text" name="qr_data_coupon_policy"
+                :value="old('qr_data_coupon_policy')" placeholder="Policy" />
         </div>
         <div class="pb-4 col-lg-6">
-            <x-metronic.label for="qr_data_coupon_logo"
-                class="form-label">{{ __('Coupon Logo') }}</x-metronic.label>
-                <x-metronic.input id="qr_data_coupon_logo" type="file" name="qr_data_coupon_logo" :value="old('qr_data_coupon_logo')"
-                    placeholder="Coupon Logo" />
+            <x-metronic.label for="qr_data_coupon_logo" class="form-label">{{ __('Coupon Logo') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_coupon_logo" type="file" name="qr_data_coupon_logo" :value="old('qr_data_coupon_logo')"
+                placeholder="Coupon Logo" />
         </div>
     </div>
 </div>
@@ -374,12 +365,12 @@
     </div>
     <div class="pb-4 row">
         <x-metronic.label for="qr_data_audio_file"
-                class="form-label">{{ __('Audio File (mp3,web)') }}</x-metronic.label>
-                <x-metronic.input id="qr_data_audio_file" type="file" name="qr_data_audio_file" :value="old('qr_data_audio_file')"
-                    placeholder="Audio File (mp3,web)" />
+            class="form-label">{{ __('Audio File (mp3,web)') }}</x-metronic.label>
+        <x-metronic.input id="qr_data_audio_file" type="file" name="qr_data_audio_file" :value="old('qr_data_audio_file')"
+            placeholder="Audio File (mp3,web)" />
         <div class="pt-4 col-lg-6">
             <x-metronic.label for="qr_data_audio_link"
-            class="form-label">{{ __('Or Paste Link Below') }}</x-metronic.label>
+                class="form-label">{{ __('Or Paste Link Below') }}</x-metronic.label>
             <x-metronic.input id="qr_data_audio_link" type="file" name="qr_data_audio_link" :value="old('qr_data_audio_link')"
                 placeholder="Audio File link" />
         </div>
