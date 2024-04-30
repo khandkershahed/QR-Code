@@ -158,7 +158,7 @@
                             </span>
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-title">Tempalte</span>
+                        <span class="menu-title">Template</span>
                         <span class="menu-arrow"></span>
                     </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
@@ -181,7 +181,7 @@
                     </div>
                 </div>
                 <div data-kt-menu-trigger="click"
-                    class="menu-item {{ Route::is('profile.edit') ? 'here show' : '' }} menu-accordion">
+                    class="menu-item {{ Route::is('profile.edit','user.plan') ? 'here show' : '' }} menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
@@ -204,7 +204,16 @@
                         <span class="menu-arrow"></span>
                     </span>
                     <div
-                        class="menu-sub menu-sub-accordion {{ Route::is('profile.edit') ? 'menu-active-bg' : '' }}">
+                        class="menu-sub menu-sub-accordion {{ Route::is('profile.edit','user.plan') ? 'menu-active-bg' : '' }}">
+                        <div class="menu-item">
+                            <a class="menu-link {{ Route::is('user.plan') ? 'active' : '' }}"
+                                href="{{ route('user.plan') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">My Plan</span>
+                            </a>
+                        </div>
                         <div class="menu-item">
                             <a class="menu-link {{ Route::is('profile.edit') ? 'active' : '' }}"
                                 href="{{ route('profile.edit') }}">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Admin\Plan;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -40,7 +41,7 @@ class ProfileController extends Controller
     /**
      * Delete the user's account.
      */
-    public function destroy(Request $request) 
+    public function destroy(Request $request)
     {
         // $request->validateWithBag('userDeletion', [
         //     'password' => ['required', 'current_password'],
@@ -61,5 +62,17 @@ class ProfileController extends Controller
         $user->delete();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+    }
+
+    public function userPlan(): View
+    {
+        $user = Auth::user();
+        $data = [
+            'monthly_plans' => Plan::orderBy('price','asc')->where('billing_cycle', 'monthly')->get(),
+            'yearly_plans' => Plan::orderBy('price','asc')->where('billing_cycle', 'yearly')->get(),
+            'subscription' => $user->subscription('default'),
+        ];
+
+        return view('user.profile.subscription_plan', $data);
     }
 }

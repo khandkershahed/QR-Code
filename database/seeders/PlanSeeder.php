@@ -23,7 +23,7 @@ class PlanSeeder extends Seeder
                 // 'descriptions' => 'Basic Plan'
             ],
             [
-                'title'          => 'Monthly Plan One',
+                'title'         => 'Monthly Plan One',
                 'slug'          => 'monthly-plan-one',
                 'billing_cycle' => 'monthly',
                 'stripe_plan'   => 'price_1P0994E4DyE4po5jNdH6JcT0',
@@ -32,7 +32,7 @@ class PlanSeeder extends Seeder
                 // 'descriptions' => 'Active Plan'
             ],
             [
-                'title'          => 'Monthly Plan Two',
+                'title'         => 'Monthly Plan Two',
                 'slug'          => 'monthly-plan-two',
                 'billing_cycle' => 'monthly',
                 'stripe_plan'   => 'price_1P09A8E4DyE4po5j89CPTUCI',

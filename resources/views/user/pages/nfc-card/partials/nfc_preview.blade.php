@@ -191,9 +191,7 @@
                                     </div>
                                 </div>
                                 <div class="sticky-bottom mt-5">
-                                    <button class="btn-primary btn w-100">
-                                        Connect Now
-                                    </button>
+                                    <a href="#" class="btn-primary btn w-100 nfc_contact_btn">Connect Now</a>
                                 </div>
                             </div>
                         </div>
@@ -423,9 +421,7 @@
                                     </div>
                                 </div>
                                 <div class="sticky-bottom mt-5">
-                                    <button class="btn-info btn w-100 text-white">
-                                        Connect Now
-                                    </button>
+                                    <a href="#" class="btn-primary btn w-100 nfc_contact_btn">Connect Now</a>
                                 </div>
                             </div>
                         </div>

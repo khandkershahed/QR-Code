@@ -447,7 +447,6 @@
                                         @endif
                                         <div class="sticky-bottom mt-5">
                                             <a href="tel:+{{ optional($nfc_card->nfcData)->phone_personal }}" class="btn-primary btn w-100 nfc_contact_btn">Connect Now</a>
-
                                         </div>
                                     </div>
                                 </div>

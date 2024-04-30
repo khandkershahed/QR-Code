@@ -162,12 +162,12 @@
             $(document).ready(function() {
                 // NFC Template
                 const nfcTemplateValue = $('input[name="nfc_template"]:checked').val();
-                    if (nfcTemplateValue != null) {
-                        localStorage.setItem('nfc_template', nfcTemplateValue);
-                        $("." + nfcTemplateValue).show();
-                    } else {
-                        $(".nfc-card").hide();
-                    }
+                if (nfcTemplateValue != null) {
+                    localStorage.setItem('nfc_template', nfcTemplateValue);
+                    $("." + nfcTemplateValue).show();
+                } else {
+                    $(".nfc-card").hide();
+                }
 
 
                 $('input[name="nfc_template"]').change(function() {
@@ -184,41 +184,7 @@
                 const initiallySelectedValue = $('input[name="nfc_template"]:checked').val();
                 $("#" + initiallySelectedValue).show();
 
-                // NFC card Input
-                // $('#generateNfcCardForm input:not([type="radio"]), #generateNfcCardForm textarea').on(
-                //     'keyup change',
-                //     function() {
-                //         var profile_image = $("input[name='profile_image']").val();
-                //         var first_name = $("input[name='first_name']").val();
-                //         var last_name = $("input[name='last_name']").val();
-                //         var designation = $("input[name='designation']").val();
-                //         var department = $("input[name='department']").val();
-                //         var pronouns = $("input[name='pronouns']").val();
-                //         var company = $("input[name='company']").val();
-                //         var location_latitude = $("input[name='location_latitude']").val();
-                //         var location_longitude = $("input[name='location_longitude']").val();
-                //         var company_logo = $("input[name='company_logo']").val();
-                //         var logo_Size = $("input[name='logo_Size']").val();
-                //         var summary = $("textarea[name='summary']").val();
-                //         var address = $("textarea[name='address']").val();
 
-                //         $('.profile_image').attr('src', profile_image);
-                //         $('.first_name').text(first_name);
-                //         $('.last_name').text(last_name);
-                //         $('.designation').text(designation);
-                //         $('.department').text(department);
-                //         $('.pronouns').text(pronouns);
-                //         $('.company').text(company);
-                //         $('.location_latitude').text(location_latitude);
-                //         $('.location_longitude').text(location_longitude);
-                //         $('.company_logo').attr('src', company_logo);
-                //         $('.logo_Size').text(logo_Size);
-                //         $('.summary').text(summary);
-                //         $('.address').text(address);
-
-                //         // For debugging
-                //         console.log("First Name:", first_name);
-                //     });
                 $('#generateNfcCardForm input:not([type="radio"]), #generateNfcCardForm textarea').on(
                     'keyup change',
                     function() {
@@ -249,10 +215,44 @@
                         console.log("Input Name:", inputName, "Input Value:", inputValue);
                     }
                 );
+
+
             });
         </script>
 
         <script>
+            // Change BG
+            function changeBackgroundColor() {
+                var selectedBgColor = $('input[name="background_color"]').val();
+                $('.tem-two-bio-title, .tem-two-profile, .tem-two-service-box, .tem-two-service-title, .tem-one-bio-title, .tem-one-profile, .tem-one-service-box, .tem-one-service-title, .tem-one-services-title, .tem-two-services-title')
+                    .css('background-color', selectedBgColor);
+                $('.tem-two-bio-title, .tem-one-bio-title').css('color', selectedBgColor);
+            }
+
+            function changeTitleColor() {
+                var selectedTitleColor = $('input[name="title_color"]').val();
+                $('.tem-two-service-title, .tem-one-service-title, .tem-one-services-title, .tem-two-services-title').css(
+                    'color', selectedTitleColor);
+            }
+
+            function contactBgColor() {
+                var selectedBgColor = $('input[name="button_bg_color"]').val();
+                $('.nfc_contact_btn').css('background-color', selectedBgColor);
+            }
+
+            function contactTitleColor() {
+                var selectedTitleColor = $('input[name="button_title_color"]').val();
+                $('.nfc_contact_btn').css('color', selectedTitleColor);
+            }
+
+            function changeFontSize() {
+                var selectedFontSize = $('input[name="font_size"]').val();
+                // alert(selectedFontSize);
+                $('.tem-two-bio-title, .tem-two-service-title, .tem-one-bio-title, .tem-one-service-title').css('font-size',
+                    selectedFontSize + 'px');
+            }
+
+
             // Get references to radio buttons and content sections
             const colorRadio = document.getElementById('background_color');
             // const imageRadio = document.getElementById('background_image');

@@ -63,7 +63,7 @@
                                     <div>
                                         <input type="color" name="background_color"
                                             id="secondary_color_text_picker" value=""
-                                            style="width: 50px;height: 43px;"
+                                            style="width: 50px;height: 43px;" oninput="changeBackgroundColor()"
                                             class="form-control form-control-solid">
                                     </div>
                                 </div>
@@ -82,7 +82,7 @@
                                        <div>
                                            <input type="color" name="title_color"
                                                id="secondary_color_text_picker" value=""
-                                               style="width: 50px;height: 43px;"
+                                               style="width: 50px;height: 43px;" oninput="changeTitleColor()"
                                                class="form-control form-control-solid">
                                        </div>
                                    </div>
@@ -114,7 +114,7 @@
                            </div>
                            <div class="col-lg-4">
                                <label for="Font">Title Font Size</label>
-                               <input type="text" name="font_size" id=""
+                               <input type="number" name="font_size" id="" oninput="changeFontSize()"
                                    class="form-control form-control-sm form-control-solid">
                            </div>
                        </div>
@@ -145,7 +145,7 @@
                                        <div>
                                            <input type="color" name="button_bg_color"
                                                id="button_color_picker" value=""
-                                               style="width: 50px;height: 43px;"
+                                               style="width: 50px;height: 43px;" oninput="contactBgColor()"
                                                class="form-control form-control-solid">
                                        </div>
                                    </div>
@@ -164,7 +164,7 @@
                                        <div>
                                            <input type="color" name="button_title_color"
                                                id="button_color_picker" value=""
-                                               style="width: 50px;height: 43px;"
+                                               style="width: 50px;height: 43px;" oninput="contactTitleColor()"
                                                class="form-control form-control-solid">
                                        </div>
                                    </div>
