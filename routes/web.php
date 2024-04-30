@@ -80,6 +80,9 @@ Route::post('newsletter/store', [NewsLetterController::class, 'store'])
 Route::get('/admin/dashboard', function () {
     return view('admin/dashboard');
 })->middleware(['auth:admin', 'verified'])->name('admin.dashboard');
+Route::get('/reseller/dashboard', function () {
+    return view('reseller/dashboard');
+})->middleware(['auth', 'verified'])->name('reseller.dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -97,6 +100,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
 require __DIR__ . '/auth.php';
 require __DIR__ . '/admin.php';
 require __DIR__ . '/client.php';
+require __DIR__ . '/reseller.php';
 
 
 // Route::get('/user-pricing', [HomeController::class, 'userPricing'])->name('pricing');
