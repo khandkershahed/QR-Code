@@ -2,8 +2,14 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card card-p-0 card-flush p-3 mt-10">
+                <div class="card-header align-items-center py-5 gap-2 gap-md-5">
+                    <div class="card-title">
+                        <h2 class="mb-0">My Subscription Plan Details</h2>
+                    </div>
+
+                </div>
                 <div class="card-body">
-                    {{-- @if ($subscription == null)
+                    @if ($subscription == null)
                         <div class="row">
                             <div class="col-lg-6 offset-lg-3">
                                 <h4 class="text-danger">You have not subscribed to any plan.</h4>
@@ -85,23 +91,21 @@
                             </div>
                         </div>
                     @else
-
-                    @endif --}}
-
-                    <div class="row">
                         <div class="row">
-                            <div class="col-lg-8 offset-lg-2">
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        Plan name:
+                            <div class="row">
+                                <div class="col-lg-8 offset-lg-2">
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            Plan name:
+                                        </div>
+                                        <div class="col-lg-4"></div>
+                                        <div class="col-lg-4"></div>
+                                        <div class="col-lg-4"></div>
                                     </div>
-                                    <div class="col-lg-4"></div>
-                                    <div class="col-lg-4"></div>
-                                    <div class="col-lg-4"></div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
             </div>
         </div>
