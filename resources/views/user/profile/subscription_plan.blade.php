@@ -1,4 +1,5 @@
 <x-app-layout :title="'My Subscription Plan'">
+   
     <div class="row">
         <div class="col-lg-12">
             <div class="card card-p-0 card-flush p-3 mt-10">
@@ -23,13 +24,14 @@
                                             <h1 class="fs-2hx fw-bold mb-5">Choose Your Plan</h1>
 
                                             <div class="text-gray-600 fw-semibold fs-5">
-                                                If you need more info about our pricing, please check <a href="#"
-                                                    class="link-primary fw-bold">Pricing Guidelines</a>.
+                                                If you need more info about our pricing, please check <a
+                                                    href="#" class="link-primary fw-bold">Pricing
+                                                    Guidelines</a>.
                                             </div>
                                         </div>
 
-                                        <div class="nav-group nav-group-outline mx-auto mb-15" data-kt-buttons="true"
-                                            data-kt-initialized="1">
+                                        <div class="nav-group nav-group-outline mx-auto mb-15"
+                                            data-kt-buttons="true" data-kt-initialized="1">
                                             <button
                                                 class="btn btn-color-gray-600 btn-active btn-active-secondary px-6 py-3 me-2 active"
                                                 data-kt-plan="month">
@@ -50,11 +52,13 @@
                                                         <div
                                                             class="w-100 d-flex flex-column flex-center rounded-3 bg-light bg-opacity-75 py-15 px-10">
                                                             <div class="mb-7 text-center">
-                                                                <h1 class="text-gray-900 mb-5 fw-bolder">{{ $monthly_plan->title }}</h1>
+                                                                <h1 class="text-gray-900 mb-5 fw-bolder">
+                                                                    {{ $monthly_plan->title }}</h1>
 
 
                                                                 <div class="text-center">
-                                                                    <span class="mb-2 text-primary">{{ $monthly_plan->currency }}</span>
+                                                                    <span
+                                                                        class="mb-2 text-primary">{{ $monthly_plan->currency }}</span>
 
                                                                     <span class="fs-3x fw-bold text-primary"
                                                                         data-kt-plan-price-month="39"
@@ -73,14 +77,16 @@
                                                                         <span
                                                                             class="fw-semibold fs-6 text-gray-800 flex-grow-1 pe-3">
                                                                             {{ $description }}</span>
-                                                                        <i class="ki-duotone ki-check-circle fs-1 text-success"><span
+                                                                        <i
+                                                                            class="ki-duotone ki-check-circle fs-1 text-success"><span
                                                                                 class="path1"></span><span
                                                                                 class="path2"></span></i>
                                                                     </div>
                                                                 @endforeach
                                                             </div>
 
-                                                            <a href="{{ route('user.subscribe.post', $monthly_plan->slug) }}" class="btn btn-sm btn-primary">Select</a>
+                                                            <a href="{{ route('user.subscribe.post', $monthly_plan->slug) }}"
+                                                                class="btn btn-sm btn-primary">Select</a>
                                                         </div>
                                                     </div>
                                                 </div>
