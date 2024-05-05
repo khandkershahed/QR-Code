@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Notifications\UserRegistration;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Log;
 use Laravel\Socialite\Facades\Socialite;
 
 class UserSocialLoginController extends Controller
@@ -46,7 +47,8 @@ class UserSocialLoginController extends Controller
 
             return redirect()->intended(RouteServiceProvider::HOME);
         } catch (Exception $e) {
-            dd($e->getMessage());
+            Log::error($e->getMessage());
+            return redirect()->route('login')->with('error', 'Google cannot recognize you as authorized user. Try again or Login/SignUp manually');
         }
     }
 
@@ -64,17 +66,16 @@ class UserSocialLoginController extends Controller
 
             $finduser = User::where('facebook_id', $user->id)->first();
 
-            if($finduser){
+            if ($finduser) {
 
                 Auth::login($finduser);
 
                 return redirect()->intended(RouteServiceProvider::HOME);
-
-            }else{
+            } else {
                 $newUser = User::create([
                     'name' => $user->name,
                     'email' => $user->email,
-                    'facebook_id'=> $user->id,
+                    'facebook_id' => $user->id,
                     'password' => encrypt('goQRDummy')
                 ]);
                 // $newUser->notify(new UserRegistration($user->name));
@@ -83,9 +84,9 @@ class UserSocialLoginController extends Controller
 
                 return redirect()->intended(RouteServiceProvider::HOME);
             }
-
         } catch (Exception $e) {
-            dd($e->getMessage());
+            Log::error($e->getMessage());
+            return redirect()->route('login')->with('error', 'Google cannot recognize you as authorized user. Try again or Login/SignUp manually');
         }
     }
 
@@ -108,29 +109,27 @@ class UserSocialLoginController extends Controller
 
             $finduser = User::where('github_id', $user->id)->first();
 
-            if($finduser){
+            if ($finduser) {
 
                 Auth::login($finduser);
 
                 return redirect()->intended(RouteServiceProvider::HOME);
-
-            }else{
-                $newUser = User::updateOrCreate(['email' => $user->email],[
-                        'name' => $user->name,
-                        'github_id'=> $user->id,
-                        'password' => encrypt('goQRDummy')
-                    ]);
-// $newUser->notify(new UserRegistration($user->name));
-Auth::login($newUser);
-Mail::to($user->email)->send(new UserRegistrationMail($user->name));
+            } else {
+                $newUser = User::updateOrCreate(['email' => $user->email], [
+                    'name' => $user->name,
+                    'github_id' => $user->id,
+                    'password' => encrypt('goQRDummy')
+                ]);
+                // $newUser->notify(new UserRegistration($user->name));
+                Auth::login($newUser);
+                Mail::to($user->email)->send(new UserRegistrationMail($user->name));
 
                 return redirect()->intended(RouteServiceProvider::HOME);
             }
-
         } catch (Exception $e) {
-            dd($e->getMessage());
+
+            Log::error($e->getMessage());
+            return redirect()->route('login')->with('error', 'Google cannot recognize you as authorized user. Try again or Login/SignUp manually');
         }
     }
-
-
 }

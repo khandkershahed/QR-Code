@@ -185,7 +185,7 @@
                 $("#" + initiallySelectedValue).show();
 
 
-                $('#generateNfcCardForm input:not([type="radio"]), #generateNfcCardForm textarea').on(
+                $('#kt_create_account_form input:not([type="radio"]), #kt_create_account_form textarea').on(
                     'keyup change',
                     function() {
                         // Extract input value and name
