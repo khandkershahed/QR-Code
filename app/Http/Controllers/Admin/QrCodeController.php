@@ -364,7 +364,7 @@ class QrCodeController extends Controller
                     $qrCode->color($qr_bg_color['r'], $qr_bg_color['g'], $qr_bg_color['b']);
                 }
             }
-            $Directory = 'public/qr_codes/' . $format;
+            $Directory = 'public/qrCodes/' . $format;
             if (!Storage::exists($Directory)) {
                 Storage::makeDirectory($Directory);
             }
