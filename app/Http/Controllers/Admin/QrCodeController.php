@@ -61,9 +61,17 @@ class QrCodeController extends Controller
         if ($qr) {
             if (!empty($qr->qrData->qr_data_website_url)) {
                 return redirect()->to($qr->qrData->qr_data_website_url);
+            }elseif (!empty($qr->qrData->qr_data_call_number)) {
+                $phoneNumber = $qr->qrData->qr_data_call_number;
+                $telUri = 'tel:' . $phoneNumber;
+                return redirect()->to($telUri);
+             }elseif (!empty($qr->qrData->qr_data_sms_number) && !empty($qr->qrData->qr_data_sms_message)) {
+                $phoneNumber = $qr->qrData->qr_data_sms_number;
+                $smsMessage = $qr->qrData->qr_data_sms_message;
+                $smsUrl = 'sms:' . $phoneNumber . '?body=' . urlencode($smsMessage);
+                return redirect()->to($smsUrl);
             } else {
                 return redirect()->route('homePage')->with('error', 'Sorry No Data Found');
-
             }
 
             return view('user.pages.qr-code.qrFile', compact('qr'));
