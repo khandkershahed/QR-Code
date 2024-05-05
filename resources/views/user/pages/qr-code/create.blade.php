@@ -4,7 +4,7 @@
             <div class="col-lg-9">
                 <div class="card mt-10">
                     <div class="card-body">
-                        <div class="stepper stepper-pills p-0" id="kt_create_account_stepper-qr">
+                        <div class="stepper stepper-pills p-0" id="generateQRCode">
                             <div class="stepper-nav flex-center flex-wrap mb-10 fv-row">
                                 <div class="stepper-item mx-2 my-4 current" data-kt-stepper-element="nav"
                                     data-kt-stepper-action="step">
@@ -260,13 +260,11 @@
                 colorContent.style.display = 'none';
                 transparentContent.style.display = 'block';
             });
-
-
         </script>
 
-{{-- For Valitdation --}}
+        {{-- For Valitdation --}}
 
-{{-- For Valitdation End --}}
+        {{-- For Valitdation End --}}
         {{-- <script>
             $(document).ready(function() {
                 $('#generateQRCodeForm').on('submit', function(e) {
@@ -323,6 +321,24 @@
                         }
                     });
                 });
+            });
+        </script>
+
+        <script>
+            // Stepper lement
+            var element = document.querySelector("#generateQRCode");
+
+            // Initialize Stepper
+            var stepper = new KTStepper(element);
+
+            // Handle next step
+            stepper.on("kt.stepper.next", function(stepper) {
+                stepper.goNext(); // go next step
+            });
+
+            // Handle previous step
+            stepper.on("kt.stepper.previous", function(stepper) {
+                stepper.goPrevious(); // go previous step
             });
         </script>
     @endpush

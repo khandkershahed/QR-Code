@@ -61,9 +61,32 @@ class QrCodeController extends Controller
         if ($qr) {
             if (!empty($qr->qrData->qr_data_website_url)) {
                 return redirect()->to($qr->qrData->qr_data_website_url);
+            } elseif (!empty($qr->qrData->qr_data_call_number)) {
+                $phoneNumber = $qr->qrData->qr_data_call_number;
+                $telUri = 'tel:' . $phoneNumber;
+                return redirect()->to($telUri);
+             } elseif (!empty($qr->qrData->qr_data_sms_number) && !empty($qr->qrData->qr_data_sms_message)) {
+                $phoneNumber = $qr->qrData->qr_data_sms_number;
+                $smsMessage = $qr->qrData->qr_data_sms_message;
+                $smsUrl = 'sms:' . $phoneNumber . '?body=' . urlencode($smsMessage);
+                return redirect()->to($smsUrl);
+            } elseif (!empty($qr->qrData->qr_data_email_id)) {
+                $emailId = $qr->qrData->qr_data_email_id;
+                $subject = $qr->qrData->qr_data_email_subject ?? '';
+                $body = $qr->qrData->qr_data_email_body ?? '';
+                $mailtoUrl = 'mailto:' . $emailId . '?subject=' . urlencode($subject) . '&body=' . urlencode($body);
+                return redirect()->to($mailtoUrl);
+            } elseif (!empty($qr->qrData->qr_app_android)) {
+                $androidAppLink = $qr->qrData->qr_app_android;
+                return redirect()->to($androidAppLink);
+            } elseif (!empty($qr->qrData->qr_data_app_iphone)) {
+                $iosAppLink = $qr->qrData->qr_data_app_iphone;
+                return redirect()->to($iosAppLink);
+            } elseif (!empty($qr->qrData->qr_data_app_ipad)) {
+                $ipadAppLink = $qr->qrData->qr_data_app_ipad;
+                return redirect()->to($ipadAppLink);
             } else {
                 return redirect()->route('homePage')->with('error', 'Sorry No Data Found');
-
             }
 
             return view('user.pages.qr-code.qrFile', compact('qr'));
@@ -243,33 +266,34 @@ class QrCodeController extends Controller
         $qrDataLink = route('showQr', $qr->code);
         // Create QR Data record
         $qrData = QrData::create([
-            'code_id' => $qr->id,
-            'qr_data_website_url' => $request->qr_data_website_url,
-            'qr_data_pdf' => $pdfFullPath,
-            'qr_data_image' => $dataImageFullPath,
-            'qr_data_image_link' => $request->qr_data_image_link,
-            'qr_data_sms_number' => $request->qr_data_sms_number,
-            'qr_data_sms_message' => $request->qr_data_sms_message,
-            'qr_data_email_id' => $request->qr_data_email_id,
-            'qr_data_email_subject' => $request->qr_data_email_subject,
-            'qr_data_email_body' => $request->qr_data_email_body,
-            'qr_app_android' => $request->qr_app_android,
-            'qr_data_app_iphone' => $request->qr_data_app_iphone,
-            'qr_data_app_ipad' => $request->qr_data_app_ipad,
-            'qr_data_call_number' => $request->qr_data_call_number,
-            'qr_data_location' => $request->qr_data_location,
-            'qr_data_coupon_code' => $request->qr_data_coupon_code,
-            'qr_data_coupon_expire_date' => $request->qr_data_coupon_expire_date,
-            'qr_data_coupon_header' => $request->qr_data_coupon_header,
-            'qr_data_coupon_message' => $request->qr_data_coupon_message,
+            'code_id'                           => $qr->id,
+            'qr_data_website_url'               => $request->qr_data_website_url,
+            'qr_data_pdf'                       => $pdfFullPath,
+            'qr_data_image'                     => $dataImageFullPath,
+            'qr_data_image_link'                => $request->qr_data_image_link,
+            'qr_data_sms_number'                => $request->qr_data_sms_number,
+            'qr_data_sms_message'               => $request->qr_data_sms_message,
+            'qr_data_email_id'                  => $request->qr_data_email_id,
+            'qr_data_email_subject'             => $request->qr_data_email_subject,
+            'qr_data_email_body'                => $request->qr_data_email_body,
+            'qr_app_android'                    => $request->qr_app_android,
+            'qr_data_app_iphone'                => $request->qr_data_app_iphone,
+            'qr_data_app_ipad'                  => $request->qr_data_app_ipad,
+            'qr_data_call_number'               => $request->qr_data_call_number,
+            'qr_data_location_latitude'         => $request->qr_data_location_latitude,
+            'qr_data_location_longitude'        => $request->qr_data_location_longitude,
+            'qr_data_coupon_code'               => $request->qr_data_coupon_code,
+            'qr_data_coupon_expire_date'        => $request->qr_data_coupon_expire_date,
+            'qr_data_coupon_header'             => $request->qr_data_coupon_header,
+            'qr_data_coupon_message'            => $request->qr_data_coupon_message,
             'qr_data_coupon_description_header' => $request->qr_data_coupon_description_header,
-            'qr_data_coupon_description_body' => $request->qr_data_coupon_description_body,
-            'qr_data_coupon_website' => $request->qr_data_coupon_website,
-            'qr_data_coupon_company' => $request->qr_data_coupon_company,
-            'qr_data_coupon_policy' => $request->qr_data_coupon_policy,
-            'qr_data_coupon_logo' => $request->qr_data_coupon_logo,
-            'qr_data_audio_file' => $request->qr_data_audio_file,
-            'qr_data_audio_link' => $request->qr_data_audio_link,
+            'qr_data_coupon_description_body'   => $request->qr_data_coupon_description_body,
+            'qr_data_coupon_website'            => $request->qr_data_coupon_website,
+            'qr_data_coupon_company'            => $request->qr_data_coupon_company,
+            'qr_data_coupon_policy'             => $request->qr_data_coupon_policy,
+            'qr_data_coupon_logo'               => $request->qr_data_coupon_logo,
+            'qr_data_audio_file'                => $request->qr_data_audio_file,
+            'qr_data_audio_link'                => $request->qr_data_audio_link,
         ]);
 
 
@@ -340,46 +364,21 @@ class QrCodeController extends Controller
                     $qrCode->color($qr_bg_color['r'], $qr_bg_color['g'], $qr_bg_color['b']);
                 }
             }
-
-            // $qrCode;
-
-            $qrCodeString = $qrCode->errorCorrection('H')->generate($qrDataLink);
-
-            // switch ($qr_type) {
-            //     case 'website':
-            //         $qrCodeString = $qrCode->generate($data['qr_data_website_url']);
-            //         break;
-            //     case 'pdf':
-            //         $qrCodeString = $qrCode->generate($qrDataLink);
-            //         break;
-            //     case 'image':
-            //         $qrCodeString = $qrCode->generate($qrDataLink);
-            //         break;
-            //     case 'sms':
-            //         $qrCodeString = $qrCode->SMS($data['qr_data_sms_number'], $data['qr_data_sms_message']);
-            //         break;
-            //     case 'email':
-            //         $qrCodeString = $qrCode->email($data['qr_data_email_id'], $data['qr_data_email_subject'], $data['qr_data_email_body']);
-            //         break;
-            //     case 'mobile_app':
-            //         $qrCodeString = $qrCode->generate($data['qr_app_android'], $data['qr_data_app_iphone'], $data['qr_data_app_ipad']);
-            //         break;
-            //     case 'call':
-            //         $qrCodeString = $qrCode->phoneNumber($data['qr_data_call_number']);
-            //         break;
-            //     default:
-            //         $qrCodeString = $qrCode->generate($data['qr_data_website_url']);
-            //         break;
-            // }
-
             $Directory = 'public/qr_codes/' . $format;
             if (!Storage::exists($Directory)) {
                 Storage::makeDirectory($Directory);
             }
-            // Save the QR code to storage
+            // $qrCode;
             $qrFileName = $qr->code . '.' . $format;
-            $qrCodePath = 'public/qr_codes/' . $format . '/' . $qrFileName;
-            Storage::put($qrCodePath, $qrCodeString);
+            $qrCodeString = $qrCode->margin(100)->errorCorrection('H')->generate($qrDataLink, '../public/qrCodes/' . $format . '/' . $qrFileName);
+
+
+
+
+            // Save the QR code to storage
+            // $qrFileName = $qr->code . '.' . $format;
+            // $qrCodePath = 'public/qr_codes/' . $format . '/' . $qrFileName;
+            // Storage::put($qrCodePath, $qrCodeString);
 
             // Update the database with the file name and URL
             $qr->update([
@@ -390,7 +389,7 @@ class QrCodeController extends Controller
 
 
         // Return the URL of the generated QR code image
-        if ($qrCodePath) {
+        if ($qrCodeString) {
             return redirect()->route('user.qr-code.index')->with('success', 'You have successfully generated QR Code.');
             // if (file_exists(public_path('storage'))) {
             //     return response()->json([
