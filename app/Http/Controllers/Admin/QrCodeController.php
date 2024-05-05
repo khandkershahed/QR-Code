@@ -327,34 +327,34 @@ class QrCodeController extends Controller
 
             $qrCode->errorCorrection('H');
 
+            $qrCodeString = $qrCode->generate($qrDataLink);
 
-
-            switch ($qr_type) {
-                case 'website':
-                    $qrCodeString = $qrCode->generate($data['qr_data_website_url']);
-                    break;
-                case 'pdf':
-                    $qrCodeString = $qrCode->generate($qrDataLink);
-                    break;
-                case 'image':
-                    $qrCodeString = $qrCode->generate($qrDataLink);
-                    break;
-                case 'sms':
-                    $qrCodeString = $qrCode->SMS($data['qr_data_sms_number'], $data['qr_data_sms_message']);
-                    break;
-                case 'email':
-                    $qrCodeString = $qrCode->email($data['qr_data_email_id'], $data['qr_data_email_subject'], $data['qr_data_email_body']);
-                    break;
-                case 'mobile_app':
-                    $qrCodeString = $qrCode->generate($data['qr_app_android'], $data['qr_data_app_iphone'], $data['qr_data_app_ipad']);
-                    break;
-                case 'call':
-                    $qrCodeString = $qrCode->phoneNumber($data['qr_data_call_number']);
-                    break;
-                default:
-                    $qrCodeString = $qrCode->generate($data['qr_data_website_url']);
-                    break;
-            }
+            // switch ($qr_type) {
+            //     case 'website':
+            //         $qrCodeString = $qrCode->generate($data['qr_data_website_url']);
+            //         break;
+            //     case 'pdf':
+            //         $qrCodeString = $qrCode->generate($qrDataLink);
+            //         break;
+            //     case 'image':
+            //         $qrCodeString = $qrCode->generate($qrDataLink);
+            //         break;
+            //     case 'sms':
+            //         $qrCodeString = $qrCode->SMS($data['qr_data_sms_number'], $data['qr_data_sms_message']);
+            //         break;
+            //     case 'email':
+            //         $qrCodeString = $qrCode->email($data['qr_data_email_id'], $data['qr_data_email_subject'], $data['qr_data_email_body']);
+            //         break;
+            //     case 'mobile_app':
+            //         $qrCodeString = $qrCode->generate($data['qr_app_android'], $data['qr_data_app_iphone'], $data['qr_data_app_ipad']);
+            //         break;
+            //     case 'call':
+            //         $qrCodeString = $qrCode->phoneNumber($data['qr_data_call_number']);
+            //         break;
+            //     default:
+            //         $qrCodeString = $qrCode->generate($data['qr_data_website_url']);
+            //         break;
+            // }
 
             $Directory = 'public/qr_codes/' . $format;
             if (!Storage::exists($Directory)) {

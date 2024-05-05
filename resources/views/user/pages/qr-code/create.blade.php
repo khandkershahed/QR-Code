@@ -267,7 +267,7 @@
 {{-- For Valitdation --}}
 
 {{-- For Valitdation End --}}
-        <script>
+        {{-- <script>
             $(document).ready(function() {
                 $('#generateQRCodeForm').on('submit', function(e) {
                     e.preventDefault(); // Prevent default form submission behavior
@@ -298,7 +298,7 @@
                     });
                 });
             });
-        </script>
+        </script> --}}
         <script>
             $(document).ready(function() {
                 $('#generateQRCodeForm').on('keyup change', 'input, textarea, select', function(e) {
