@@ -56,7 +56,7 @@
                                                         {{ $loop->iteration }}
                                                     </td>
                                                     <td>
-                                                        <img class="img-fluid w-50px" src="{{ $qr->qr_url }}"
+                                                        <img class="img-fluid w-50px" src="{{ $qr->qr_png_url }}"
                                                             alt="">
                                                     </td>
                                                     <td data-order="2022-03-10T14:40:00+05:00">
@@ -64,7 +64,7 @@
                                                         <span><span class="fw-bold text-black">Title :
                                                             </span>{{ $qr->qr_name }}</span><br>
                                                         <span><span class="fw-bold text-black">Link :
-                                                            </span>{{ $qr->qr_url }}</span><br>
+                                                            </span>{{ $qr->qr_png_url }}</span><br>
                                                         <span><span class="fw-bold text-black">Org :
                                                             </span>{{ Auth::user()->name }}</span><br>
                                                         <span><span class="fw-bold text-black">Created at
@@ -74,7 +74,7 @@
                                                         <button class="btn btn-light-primary">QR Code</button>
                                                     </td>
                                                     <td class="text-start">
-                                                        <button class="btn btn-light-primary">{{count($qr->qrScan)}}</button>
+                                                        <button class="btn btn-light-primary">{{!empty($qr->qrScan) ? count($qr->qrScan) : 0}}</button>
                                                     </td>
                                                     <td>
                                                         <div class="badge badge-light-success">Active</div>
