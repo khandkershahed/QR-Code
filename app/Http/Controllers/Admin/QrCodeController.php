@@ -44,7 +44,7 @@ class QrCodeController extends Controller
     {
 
         $qr = Qr::with('qrData')->where('code', $Qr)->first();
-        $maps = QrScan::where('code', $Qr)->get(['ip_address']);
+        $maps = QrScan::where('qr_code', $Qr)->get(['ip_address']);
 
         return view('user.pages.qr-code.qrSummary', compact('qr','maps'));
     }

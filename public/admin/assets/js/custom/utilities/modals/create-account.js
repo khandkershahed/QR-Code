@@ -56,6 +56,21 @@ var KTCreateAccount = (function () {
                 a.push(
                     FormValidation.formValidation(i, {
                         fields: {
+
+                        },
+                        plugins: {
+                            trigger: new FormValidation.plugins.Trigger(),
+                            bootstrap: new FormValidation.plugins.Bootstrap5({
+                                rowSelector: ".fv-row",
+                                eleInvalidClass: "",
+                                eleValidClass: "",
+                            }),
+                        },
+                    })
+                ),
+                a.push(
+                    FormValidation.formValidation(i, {
+                        fields: {
                             banner_image: {
                                 validators: {
                                     notEmpty: {
