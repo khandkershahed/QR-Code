@@ -50,6 +50,13 @@ class QrCodeController extends Controller
             'ip_address' => $request->ip(),
         ]);
         if ($qr) {
+            if (!empty($qr->qrData->qr_data_website_url)) {
+                return redirect()->to($qr->qrData->qr_data_website_url);
+            } else {
+                return redirect()->route('homePage')->with('error', 'Sorry No Data Found');
+
+            }
+
             return view('user.pages.qr-code.qrFile', compact('qr'));
         } else {
             return redirect()->route('homePage')->with('error', 'Sorry No Data Found');
