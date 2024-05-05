@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 use SimpleSoftwareIO\QrCode\Generator;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Admin\QrCodeRequest;
+use App\Models\Admin\QrScan;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class QrCodeController extends Controller
@@ -24,8 +25,8 @@ class QrCodeController extends Controller
         $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
 
         $qrs = $isUserRoute ?
-            Qr::with('qrData')->where('user_id', Auth::user()->id)->get() :
-            Qr::with('qrData')->latest('id')->get();
+            Qr::with('qrData','qrScan')->where('user_id', Auth::user()->id)->get() :
+            Qr::with('qrData','qrScan')->latest('id')->get();
 
         $view = $isUserRoute ? 'user.pages.qr-code.index' : 'admin.pages.qr-code.index';
 
@@ -40,9 +41,14 @@ class QrCodeController extends Controller
     }
 
 
-    public function showQr($Qr)
+    public function showQr(Request $request, string $Qr)
     {
         $qr = Qr::with('qrData')->where('code', $Qr)->first();
+        QrScan::create([
+            'code_id'    => $qr->id,
+            'qr_code'    => $qr->code,
+            'ip_address' => $request->ip(),
+        ]);
         if ($qr) {
             return view('user.pages.qr-code.qrFile', compact('qr'));
         } else {
@@ -55,8 +61,7 @@ class QrCodeController extends Controller
 
     public function store(QrCodeRequest $request)
     {
-        // dd($request->all());
-        // Assuming the typePrefix and $today variables are defined somewhere in your code
+
         $typePrefix = 'QR'; // Example prefix
         // $today = Carbon::now()->format('dmY');
         $today = date('dmY');
@@ -188,14 +193,14 @@ class QrCodeController extends Controller
             }
         }
 
-            // $logo = $request->file('qr_logo');
-            // if ($logo->isValid()) {
-            //     $fileName = $code . '.' . $logo->getClientOriginalExtension();
-            //     $logoPath = $logo->storeAs('public/qr_codes/logos', $fileName);
-            //     $logoFullPath = storage_path('app/' . $logoPath);
-            //     // Save the logo path to the corresponding QR record
-            //     $qr->update(['qr_logo' => $logoFullPath]);
-            // }
+        // $logo = $request->file('qr_logo');
+        // if ($logo->isValid()) {
+        //     $fileName = $code . '.' . $logo->getClientOriginalExtension();
+        //     $logoPath = $logo->storeAs('public/qr_codes/logos', $fileName);
+        //     $logoFullPath = storage_path('app/' . $logoPath);
+        //     // Save the logo path to the corresponding QR record
+        //     $qr->update(['qr_logo' => $logoFullPath]);
+        // }
 
         // Handle QR PDF
         $pdfFullPath = '';
@@ -370,7 +375,7 @@ class QrCodeController extends Controller
 
         // Return the URL of the generated QR code image
         if ($qrCodePath) {
-            return redirect()->route('user.qr-code.index')->with('success','You have successfully generated QR Code.');
+            return redirect()->route('user.qr-code.index')->with('success', 'You have successfully generated QR Code.');
             // if (file_exists(public_path('storage'))) {
             //     return response()->json([
             //         'qrCodePath' => asset('storage/qr_codes/png/' . $qr->qr_png), // Generate URL using asset() helper
@@ -381,7 +386,7 @@ class QrCodeController extends Controller
         } else {
             // Handle failure
             // return response()->json(['error' => 'Failed to generate QR code'], 500);
-            return redirect()->back()->with('error','Failed to generate QR code.');
+            return redirect()->back()->with('error', 'Failed to generate QR code.');
         }
     }
 
@@ -587,12 +592,12 @@ class QrCodeController extends Controller
                 case 'website':
                     $qrCodeString = $qrCode->generate($data['qr_data_website_url']);
                     break;
-                // case 'pdf':
-                //     $qrCodeString = $qrCode->generate($qrDataLink);
-                //     break;
-                // case 'image':
-                //     $qrCodeString = $qrCode->generate($qrDataLink);
-                //     break;
+                    // case 'pdf':
+                    //     $qrCodeString = $qrCode->generate($qrDataLink);
+                    //     break;
+                    // case 'image':
+                    //     $qrCodeString = $qrCode->generate($qrDataLink);
+                    //     break;
                 case 'sms':
                     $qrCodeString = $qrCode->SMS($data['qr_data_sms_number'], $data['qr_data_sms_message']);
                     break;
@@ -609,14 +614,13 @@ class QrCodeController extends Controller
                     $qrCodeString = $qrCode->generate($data['qr_data_website_url']);
                     break;
             }
-
         }
 
 
         $qrCodeDataUrl = 'data:image/png;base64,' . base64_encode($qrCodeString);
 
-    // Return the data URL
-    return response()->json(['qr_code' => $qrCodeDataUrl]);
+        // Return the data URL
+        return response()->json(['qr_code' => $qrCodeDataUrl]);
     }
 
     private function hexToRgb($hex)
@@ -637,14 +641,11 @@ class QrCodeController extends Controller
     public function destroy(string $id)
     {
         Qr::find($id)->delete();
-        $qr_data = QrData::where('code_id' , $id)->first();
+        $qr_data = QrData::where('code_id', $id)->first();
         if (!empty($qr_data)) {
             $qr_data->delete();
         }
     }
-
-
-
 }
 
 

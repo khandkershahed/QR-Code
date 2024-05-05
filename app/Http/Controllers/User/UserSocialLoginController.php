@@ -31,6 +31,7 @@ class UserSocialLoginController extends Controller
 
             if ($findUser) {
                 Auth::login($findUser);
+                return redirect()->intended(RouteServiceProvider::HOME)->with('success', 'You have logged in Successfully.');
             } else {
                 $newUser = User::create([
                     'name' => $user->name,
@@ -45,7 +46,7 @@ class UserSocialLoginController extends Controller
                 Auth::login($newUser);
             }
 
-            return redirect()->intended(RouteServiceProvider::HOME);
+            return redirect()->intended(RouteServiceProvider::HOME)->with('success', 'You have logged in Successfully.');
         } catch (Exception $e) {
             Log::error($e->getMessage());
             return redirect()->route('login')->with('error', 'Google cannot recognize you as authorized user. Try again or Login/SignUp manually');
@@ -69,8 +70,7 @@ class UserSocialLoginController extends Controller
             if ($finduser) {
 
                 Auth::login($finduser);
-
-                return redirect()->intended(RouteServiceProvider::HOME);
+                return redirect()->intended(RouteServiceProvider::HOME)->with('success', 'You have logged in Successfully.');
             } else {
                 $newUser = User::create([
                     'name' => $user->name,
@@ -82,7 +82,7 @@ class UserSocialLoginController extends Controller
                 Auth::login($newUser);
                 Mail::to($user->email)->send(new UserRegistrationMail($user->name));
 
-                return redirect()->intended(RouteServiceProvider::HOME);
+                return redirect()->intended(RouteServiceProvider::HOME)->with('success', 'You have logged in Successfully.');
             }
         } catch (Exception $e) {
             Log::error($e->getMessage());
@@ -113,7 +113,7 @@ class UserSocialLoginController extends Controller
 
                 Auth::login($finduser);
 
-                return redirect()->intended(RouteServiceProvider::HOME);
+                return redirect()->intended(RouteServiceProvider::HOME)->with('success', 'You have logged in Successfully.');
             } else {
                 $newUser = User::updateOrCreate(['email' => $user->email], [
                     'name' => $user->name,
@@ -124,7 +124,7 @@ class UserSocialLoginController extends Controller
                 Auth::login($newUser);
                 Mail::to($user->email)->send(new UserRegistrationMail($user->name));
 
-                return redirect()->intended(RouteServiceProvider::HOME);
+                return redirect()->intended(RouteServiceProvider::HOME)->with('success', 'You have logged in Successfully.');
             }
         } catch (Exception $e) {
 

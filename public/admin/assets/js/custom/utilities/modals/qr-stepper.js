@@ -1,3 +1,5 @@
+
+// QR Code
 "use strict";
 var KTCreateAccount = (function () {
     var e,
@@ -11,8 +13,8 @@ var KTCreateAccount = (function () {
         init: function () {
             (e = document.querySelector("#kt_modal_create_account")) &&
                 new bootstrap.Modal(e),
-                (t = document.querySelector("#kt_create_account_stepper")),
-                (i = t.querySelector("#kt_create_account_form")),
+                (t = document.querySelector("#kt_create_account_stepper-qr")),
+                (i = t.querySelector("#kt_create_account_form-qr")),
                 (o = t.querySelector('[data-kt-stepper-action="submit"]')),
                 (s = t.querySelector('[data-kt-stepper-action="next"]')),
                 (r = new KTStepper(t)).on("kt.stepper.changed", function (e) {
@@ -56,90 +58,7 @@ var KTCreateAccount = (function () {
                 a.push(
                     FormValidation.formValidation(i, {
                         fields: {
-                            banner_image: {
-                                validators: {
-                                    notEmpty: {
-                                        message: "Banner Is Required",
-                                    },
-                                },
-                            },
-                            profile_image: {
-                                validators: {
-                                    notEmpty: {
-                                        message: "Profile Img Required",
-                                    },
-                                },
-                            },
-                            first_name: {
-                                validators: {
-                                    notEmpty: {
-                                        message: "First Name Is Required",
-                                    },
-                                },
-                            },
-                            last_name: {
-                                validators: {
-                                    notEmpty: {
-                                        message: "Last Name Is Required",
-                                    },
-                                },
-                            },
-                            designation: {
-                                validators: {
-                                    notEmpty: {
-                                        message: "Designation Is Required",
-                                    },
-                                },
-                            },
-                            address_line_one: {
-                                validators: {
-                                    notEmpty: {
-                                        message: "Designation Is Required",
-                                    },
-                                },
-                            },
-                            address_line_two: {
-                                validators: {
-                                    notEmpty: {
-                                        message: "Designation Is Required",
-                                    },
-                                },
-                            },
-                            phone_work: {
-                                validators: {
-                                    notEmpty: {
-                                        message: "Phone Is Required",
-                                    },
-                                },
-                            },
-                            phone_personal: {
-                                validators: {
-                                    notEmpty: {
-                                        message: "Phone Is Required",
-                                    },
-                                },
-                            },
-                            email_work: {
-                                validators: {
-                                    notEmpty: {
-                                        message: "Email Is Required",
-                                    },
-                                },
-                            },
-                            email_personal: {
-                                validators: {
-                                    notEmpty: {
-                                        message: "Email Is Required",
-                                    },
-                                },
-                            },
-                            qr_data_website_url: {
-                                validators: {
-                                    notEmpty: {
-                                        message: "Email Is Required",
-                                    },
-                                },
-                            },
+                           
                         },
                         plugins: {
                             trigger: new FormValidation.plugins.Trigger(),

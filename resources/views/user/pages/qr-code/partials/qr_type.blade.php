@@ -13,7 +13,7 @@
         'text' => 'Link a PDF document and distribute it efficiently',
         'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/pdf.svg',
     ],
-    [
+    [ 
         'id' => 3,
         'value' => 'image',
         'title' => 'Image',
