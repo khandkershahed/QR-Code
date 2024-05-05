@@ -4,7 +4,7 @@
             <div class="col-lg-9">
                 <div class="card mt-10">
                     <div class="card-body">
-                        <div class="stepper stepper-pills p-0" id="kt_stepper_example_basic">
+                        <div class="stepper stepper-pills p-0" id="generateQRCode">
                             <div class="stepper-nav flex-center flex-wrap mb-10 fv-row">
                                 <div class="stepper-item mx-2 my-4 current" data-kt-stepper-element="nav"
                                     data-kt-stepper-action="step">
@@ -71,7 +71,7 @@
                                 </div>
                             </div>
 
-                            <form class="form w-100 mx-auto fv-row" novalidate="novalidate" id="kt_stepper_example_basic_form"
+                            <form class="form w-100 mx-auto fv-row" novalidate="novalidate" id="generateQRCodeForm"
                                 action="{{ route('user.qr-code.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-5">
@@ -260,16 +260,14 @@
                 colorContent.style.display = 'none';
                 transparentContent.style.display = 'block';
             });
-
-
         </script>
 
-{{-- For Valitdation --}}
+        {{-- For Valitdation --}}
 
-{{-- For Valitdation End --}}
+        {{-- For Valitdation End --}}
         {{-- <script>
             $(document).ready(function() {
-                $('#kt_stepper_example_basic_form').on('submit', function(e) {
+                $('#generateQRCodeForm').on('submit', function(e) {
                     e.preventDefault(); // Prevent default form submission behavior
                     // $('#generateButton').hide();
                     var formData = new FormData(this);
@@ -301,7 +299,7 @@
         </script> --}}
         <script>
             $(document).ready(function() {
-                $('#kt_stepper_example_basic_form').on('keyup change', 'input, textarea, select', function(e) {
+                $('#generateQRCodeForm').on('keyup change', 'input, textarea, select', function(e) {
                     e.preventDefault(); // Prevent default form submission behavior
 
                     // Get the form data
@@ -323,6 +321,24 @@
                         }
                     });
                 });
+            });
+        </script>
+
+        <script>
+            // Stepper lement
+            var element = document.querySelector("#generateQRCode");
+
+            // Initialize Stepper
+            var stepper = new KTStepper(element);
+
+            // Handle next step
+            stepper.on("kt.stepper.next", function(stepper) {
+                stepper.goNext(); // go next step
+            });
+
+            // Handle previous step
+            stepper.on("kt.stepper.previous", function(stepper) {
+                stepper.goPrevious(); // go previous step
             });
         </script>
     @endpush

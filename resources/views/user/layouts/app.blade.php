@@ -86,10 +86,10 @@
     <script src="{{ asset($hostUrl . 'plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
     <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
     <script src="{{ asset($hostUrl . 'plugins/custom/formrepeater/formrepeater.bundle.js') }}"></script>
-    <script src="{{ asset($hostUrl . 'js/custom/account/settings/signin-methods.js') }}"></script>
+    {{-- <script src="{{ asset($hostUrl . 'js/custom/account/settings/signin-methods.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/account/settings/profile-details.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/account/settings/deactivate-account.js') }}"></script>
-    <script src="{{ asset($hostUrl . 'js/custom/apps/ecommerce/catalog/save-product.js') }}"></script>
+    <script src="{{ asset($hostUrl . 'js/custom/apps/ecommerce/catalog/save-product.js') }}"></script> --}}
 
 
 
