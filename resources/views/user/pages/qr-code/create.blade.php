@@ -292,7 +292,7 @@ var KTCreateAccount = (function () {
         a = [];
     return {
         init: function () {
-            (e = document.querySelector("#kt_modal_create_account")) &&
+            (e = document.querySelector("#kt_create_account_stepper-qr")) &&
                 new bootstrap.Modal(e),
                 (t = document.querySelector("#kt_create_account_stepper-qr")),
                 (i = t.querySelector("#kt_create_account_form-qr")),
