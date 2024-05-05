@@ -177,7 +177,7 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="card mt-10">
+                <div class="card mt-10 position-fixed">
                     <div class="card-body">
                         <div class="d-flex flex-column justify-content-center align-items-center">
                             {{-- id="generatedQRCodeContainer" --}}
