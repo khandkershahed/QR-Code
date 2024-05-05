@@ -97,7 +97,7 @@
     <script src="{{ asset($hostUrl . 'js/custom/widgets.js') }}"></script>
 
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/create-account.js') }}"></script>
-    <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/qr-stepper.js') }}"></script>
+    {{-- <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/qr-stepper.js') }}"></script> --}}
 
 
 
