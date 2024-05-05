@@ -280,9 +280,9 @@ class QrCodeController extends Controller
 
             $qrCode = new Generator;
             if ($format === 'jpg' || $format === 'pdf') {
-                $qrCode->format('png')->size(230);
+                $qrCode->format('png')->size(300);
             } else {
-                $qrCode->format($format)->size(230);
+                $qrCode->format($format)->size(300);
             }
 
             if (!empty($qr_logo)) {
@@ -325,9 +325,9 @@ class QrCodeController extends Controller
                 }
             }
 
-            $qrCode->errorCorrection('H');
+            // $qrCode;
 
-            $qrCodeString = $qrCode->generate($qrDataLink);
+            $qrCodeString = $qrCode->errorCorrection('H')->generate($qrDataLink);
 
             // switch ($qr_type) {
             //     case 'website':
