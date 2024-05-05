@@ -4,7 +4,7 @@
             <div class="col-lg-9">
                 <div class="card mt-10">
                     <div class="card-body">
-                        <div class="stepper stepper-pills p-0" id="kt_create_account_stepper-qr">
+                        <div class="stepper stepper-pills p-0" id="kt_stepper_example_clickable">
                             <div class="stepper-nav flex-center flex-wrap mb-10 fv-row">
                                 <div class="stepper-item mx-2 my-4 current" data-kt-stepper-element="nav"
                                     data-kt-stepper-action="step">
