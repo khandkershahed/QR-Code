@@ -74,7 +74,7 @@
                                                         <button class="btn btn-light-primary">QR Code</button>
                                                     </td>
                                                     <td class="text-start">
-                                                        <button class="btn btn-light-primary">{{$qr->qrScan->count()}}</button>
+                                                        <button class="btn btn-light-primary">{{count($qr->qrScan)}}</button>
                                                     </td>
                                                     <td>
                                                         <div class="badge badge-light-success">Active</div>
