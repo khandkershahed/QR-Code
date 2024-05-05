@@ -40,6 +40,15 @@ class QrCodeController extends Controller
         return view($view);
     }
 
+    public function qrSummary($Qr)
+    {
+
+        $qr = Qr::with('qrData')->where('code', $Qr)->first();
+        $maps = QrScan::where('code', $Qr)->get(['ip_address']);
+
+        return view('user.pages.qr-code.qrSummary', compact('qr','maps'));
+    }
+
 
     public function showQr(Request $request, string $Qr)
     {

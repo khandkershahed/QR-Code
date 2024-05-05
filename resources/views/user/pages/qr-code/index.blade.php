@@ -74,7 +74,7 @@
                                                         <button class="btn btn-light-primary">QR Code</button>
                                                     </td>
                                                     <td class="text-start">
-                                                        <button class="btn btn-light-primary">{{ \App\Models\Admin\QrScan::where('code_id', $qr->id)->count() }}</button>
+                                                        <a href="{{route('user.qr.summary',$qr->code)}}" class="btn btn-light-primary">{{ \App\Models\Admin\QrScan::where('code_id', $qr->id)->count() }}</a>
                                                     </td>
                                                     <td>
                                                         <div class="badge badge-light-success">Active</div>

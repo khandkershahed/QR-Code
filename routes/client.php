@@ -24,6 +24,7 @@ Route::middleware('auth')->prefix('user')->name('user.')->group(function () {
         Route::get('stripe/checkout/success', 'stripeCheckoutSuccess')->name('stripe.checkout.success');
     });
     Route::post('qrcode/preview', [QrCodeController::class, 'qrPreview'])->name('qr.preview');
+    Route::get('qrcode/summary/{id}', [QrCodeController::class, 'qrSummary'])->name('qr.summary');
     Route::post('/update-nfc-session', [NfcCardController::class, 'updateNFCTemplateSession'])->name('updateNfcSession');
 
 
