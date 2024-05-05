@@ -208,7 +208,7 @@ class QrCodeController extends Controller
             $pdf = $request->file('qr_data_pdf');
             if ($pdf->isValid()) {
                 $pdfFileName = $code . '.' . $pdf->getClientOriginalExtension();
-                $pdfPath = $pdf->storeAs('public/qr_codes/pdfs', $pdfFileName);
+                $pdfPath = $pdf->storeAs('public/qr_codes/pdfs/', $pdfFileName);
                 $pdfFullPath = url('/storage/qr_codes/pdfs/' . $pdfFileName);
                 // $pdfFullPath = storage_path('app/' . $pdfPath);
             }
@@ -220,7 +220,7 @@ class QrCodeController extends Controller
             $dataImage = $request->file('qr_data_image');
             if ($dataImage->isValid()) {
                 $imageFileName = $code . '.' . $dataImage->getClientOriginalExtension();
-                $dataImagePath = $dataImage->storeAs('public/qr_codes/images', $imageFileName);
+                $dataImagePath = $dataImage->storeAs('public/qr_codes/images/', $imageFileName);
                 $dataImageFullPath = url('/storage/qr_codes/images/' . $imageFileName);
             }
         }
