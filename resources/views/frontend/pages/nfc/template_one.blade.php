@@ -315,33 +315,35 @@
                                         </p>
                                     </div>
                                     <!-- Service -->
-                                    <div class="tem-one-service-box px-3 py-4">
-                                        <h6 class="tem-one-service-title">{{ optional($nfc_card->nfcData)->service_section_title }}</h6>
-                                        <p>
-                                            {{ optional($nfc_card->nfcData)->service_section_description }}
-                                        </p>
-                                        <div class="slick-slider">
-                                            <div>
-                                                <img class="img-fluid"
-                                                    style="background-size: cover;width: 100%;height: 300px;object-fit: cover;"
-                                                    src="{{ !empty($nfc_card->nfcData->service_one_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->service_one_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->service_one_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
-                                                    alt="Slide 1" />
+                                    @if (!empty($nfc_card->nfcData->service_one_image) || !empty($nfc_card->nfcData->service_two_image) || !empty($nfc_card->nfcData->service_three_image))
+                                        <div class="tem-one-service-box px-3 py-4">
+                                            <h6 class="tem-one-service-title">{{ optional($nfc_card->nfcData)->service_section_title }}</h6>
+                                            <p>
+                                                {{ optional($nfc_card->nfcData)->service_section_description }}
+                                            </p>
+                                            <div class="slick-slider">
+                                                <div>
+                                                    <img class="img-fluid"
+                                                        style="background-size: cover;width: 100%;height: 300px;object-fit: cover;"
+                                                        src="{{ !empty($nfc_card->nfcData->service_one_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->service_one_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->service_one_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
+                                                        alt="Slide 1" />
+                                                </div>
+                                                <div>
+                                                    <img class="img-fluid"
+                                                        style="background-size: cover;width: 100%;height: 300px;object-fit: cover;"
+                                                        src="{{ !empty($nfc_card->nfcData->service_two_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->service_two_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->service_two_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
+                                                        alt="Slide 2" />
+                                                </div>
+                                                <div>
+                                                    <img class="img-fluid"
+                                                        style="background-size: cover;width: 100%;height: 300px;object-fit: cover;"
+                                                        src="{{ !empty($nfc_card->nfcData->service_three_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->service_three_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->service_three_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
+                                                        alt="Slide 3" />
+                                                </div>
+                                                <!-- Add more divs with images for additional slides -->
                                             </div>
-                                            <div>
-                                                <img class="img-fluid"
-                                                    style="background-size: cover;width: 100%;height: 300px;object-fit: cover;"
-                                                    src="{{ !empty($nfc_card->nfcData->service_two_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->service_two_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->service_two_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
-                                                    alt="Slide 2" />
-                                            </div>
-                                            <div>
-                                                <img class="img-fluid"
-                                                    style="background-size: cover;width: 100%;height: 300px;object-fit: cover;"
-                                                    src="{{ !empty($nfc_card->nfcData->service_three_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->service_three_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->service_three_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
-                                                    alt="Slide 3" />
-                                            </div>
-                                            <!-- Add more divs with images for additional slides -->
                                         </div>
-                                    </div>
+                                    @endif
                                     <!-- Service -->
                                     <div class="tem-one-bio-box px-3 pt-4">
                                         <h6 class="tem-one-bio-title">{{ optional($nfc_card->nfcData)->company_title }}</h6>
