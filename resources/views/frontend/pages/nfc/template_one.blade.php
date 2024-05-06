@@ -322,24 +322,30 @@
                                                 {{ optional($nfc_card->nfcData)->service_section_description }}
                                             </p>
                                             <div class="slick-slider">
-                                                <div>
-                                                    <img class="img-fluid"
-                                                        style="background-size: cover;width: 100%;height: 300px;object-fit: cover;"
-                                                        src="{{ !empty($nfc_card->nfcData->service_one_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->service_one_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->service_one_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
-                                                        alt="Slide 1" />
-                                                </div>
-                                                <div>
-                                                    <img class="img-fluid"
-                                                        style="background-size: cover;width: 100%;height: 300px;object-fit: cover;"
-                                                        src="{{ !empty($nfc_card->nfcData->service_two_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->service_two_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->service_two_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
-                                                        alt="Slide 2" />
-                                                </div>
-                                                <div>
-                                                    <img class="img-fluid"
-                                                        style="background-size: cover;width: 100%;height: 300px;object-fit: cover;"
-                                                        src="{{ !empty($nfc_card->nfcData->service_three_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->service_three_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->service_three_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
-                                                        alt="Slide 3" />
-                                                </div>
+                                                @if (!empty($nfc_card->nfcData->service_one_image))
+                                                    <div>
+                                                        <img class="img-fluid"
+                                                            style="background-size: cover;width: 100%;height: 300px;object-fit: cover;"
+                                                            src="{{ !empty($nfc_card->nfcData->service_one_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->service_one_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->service_one_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
+                                                            alt="Slide 1" />
+                                                    </div>
+                                                @endif
+                                                @if (!empty($nfc_card->nfcData->service_two_image))
+                                                    <div>
+                                                        <img class="img-fluid"
+                                                            style="background-size: cover;width: 100%;height: 300px;object-fit: cover;"
+                                                            src="{{ !empty($nfc_card->nfcData->service_one_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->service_one_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->service_one_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
+                                                            alt="Slide 1" />
+                                                    </div>
+                                                @endif
+                                                @if (!empty($nfc_card->nfcData->service_three_image))
+                                                    <div>
+                                                        <img class="img-fluid"
+                                                            style="background-size: cover;width: 100%;height: 300px;object-fit: cover;"
+                                                            src="{{ !empty($nfc_card->nfcData->service_one_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->service_one_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->service_one_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
+                                                            alt="Slide 1" />
+                                                    </div>
+                                                @endif
                                                 <!-- Add more divs with images for additional slides -->
                                             </div>
                                         </div>

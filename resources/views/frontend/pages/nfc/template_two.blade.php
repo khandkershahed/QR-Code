@@ -339,54 +339,60 @@
                                                 {{ optional($nfc_card->nfcData)->service_section_description }}
                                             </p>
                                             <div class="row g-x-1">
-                                                <div class="card col-6 p-0 border-0 rounded-0">
-                                                    <div class="card-header p-0 border-0">
-                                                        <h6 class="text-center mb-0 p-2 tem-one-services-title">
-                                                            {{ optional($nfc_card->nfcData)->service_one_title }}
-                                                        </h6>
-                                                    </div>
-                                                    <div class="card-body p-0">
-                                                        <div>
-                                                            <a href="">
-                                                                <img style="  width: 100%;  height: 100%;  background-size: cover;  object-fit: cover;"
-                                                                    src="{{ !empty($nfc_card->nfcData->service_one_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->service_one_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->service_one_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
-                                                                    alt="Slide 1" />
-                                                            </a>
+                                                @if (!empty($nfc_card->nfcData->service_one_image))
+                                                    <div class="card col-6 p-0 border-0 rounded-0">
+                                                        <div class="card-header p-0 border-0">
+                                                            <h6 class="text-center mb-0 p-2 tem-one-services-title">
+                                                                {{ optional($nfc_card->nfcData)->service_one_title }}
+                                                            </h6>
+                                                        </div>
+                                                        <div class="card-body p-0">
+                                                            <div>
+                                                                <a href="">
+                                                                    <img style="  width: 100%;  height: 100%;  background-size: cover;  object-fit: cover;"
+                                                                        src="{{ !empty($nfc_card->nfcData->service_one_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->service_one_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->service_one_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
+                                                                        alt="Slide 1" />
+                                                                </a>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="card col-6 p-0 border-0 rounded-0">
-                                                    <div class="card-header p-0 border-0">
-                                                        <h6 class="text-center mb-0 p-2 tem-one-services-title">
-                                                            {{ optional($nfc_card->nfcData)->service_two_title }}
-                                                        </h6>
-                                                    </div>
-                                                    <div class="card-body p-0">
-                                                        <div>
-                                                            <a href="">
-                                                                <img style="  width: 100%;  height: 100%;  background-size: cover;  object-fit: cover;"
-                                                                    src="{{ !empty($nfc_card->nfcData->service_two_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->service_two_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->service_two_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
-                                                                    alt="Slide 2" />
-                                                            </a>
+                                                @endif
+                                                @if (!empty($nfc_card->nfcData->service_two_image))
+                                                    <div class="card col-6 p-0 border-0 rounded-0">
+                                                        <div class="card-header p-0 border-0">
+                                                            <h6 class="text-center mb-0 p-2 tem-one-services-title">
+                                                                {{ optional($nfc_card->nfcData)->service_one_title }}
+                                                            </h6>
+                                                        </div>
+                                                        <div class="card-body p-0">
+                                                            <div>
+                                                                <a href="">
+                                                                    <img style="  width: 100%;  height: 100%;  background-size: cover;  object-fit: cover;"
+                                                                        src="{{ !empty($nfc_card->nfcData->service_one_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->service_one_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->service_one_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
+                                                                        alt="Slide 1" />
+                                                                </a>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="card col-6 p-0 border-0 rounded-0">
-                                                    <div class="card-header p-0 border-0">
-                                                        <h6 class="text-center mb-0 p-2 tem-one-services-title">
-                                                            {{ optional($nfc_card->nfcData)->service_three_title }}
-                                                        </h6>
-                                                    </div>
-                                                    <div class="card-body p-0">
-                                                        <div>
-                                                            <a href="">
-                                                                <img style="  width: 100%;  height: 100%;  background-size: cover;  object-fit: cover;"
-                                                                    src="{{ !empty($nfc_card->nfcData->service_three_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->service_three_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->service_two_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
-                                                                    alt="Slide 2" />
-                                                            </a>
+                                                @endif
+                                                @if (!empty($nfc_card->nfcData->service_three_image))
+                                                    <div class="card col-6 p-0 border-0 rounded-0">
+                                                        <div class="card-header p-0 border-0">
+                                                            <h6 class="text-center mb-0 p-2 tem-one-services-title">
+                                                                {{ optional($nfc_card->nfcData)->service_one_title }}
+                                                            </h6>
+                                                        </div>
+                                                        <div class="card-body p-0">
+                                                            <div>
+                                                                <a href="">
+                                                                    <img style="  width: 100%;  height: 100%;  background-size: cover;  object-fit: cover;"
+                                                                        src="{{ !empty($nfc_card->nfcData->service_one_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->service_one_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->service_one_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
+                                                                        alt="Slide 1" />
+                                                                </a>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                @endif
                                                 <!-- Add more divs with images for additional slides -->
                                             </div>
                                         </div>
