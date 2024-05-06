@@ -266,7 +266,7 @@
                                 <div class="card-header p-0 border-0">
                                     <div class="nfc-one-cover-img-box">
                                         <div class="nfc-one-cover-img"
-                                            style="background-image: url({{ !empty($nfc_card->nfcData->banner_image) && file_exists(public_path('storage/nfc/' . $nfc_card->code . '/' . optional($nfc_card->nfcData)->banner_image)) ? asset('storage/nfc/' . $nfc_card->code . '/' . optional($nfc_card->nfcData)->banner_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }})">
+                                            style="background-image: url({{ !empty($nfc_card->nfcData->banner_image) && file_exists(public_path('storage/' . optional($nfc_card->nfcData)->banner_image)) ? asset('storage/' . optional($nfc_card->nfcData)->banner_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }})">
                                         </div>
                                     </div>
                                 </div>
@@ -303,7 +303,7 @@
                                         </div>
                                         <div class="d-flex justify-content-center tem-one-profile-image">
                                             <div class="tem-one-profile-img text-center">
-                                                <img src="{{ !empty($nfc_card->nfcData->profile_image) && file_exists(public_path('storage/nfc/' . $nfc_card->code . '/' . optional($nfc_card->nfcData)->profile_image)) ? asset('storage/nfc/' . $nfc_card->code . '/' . optional($nfc_card->nfcData)->profile_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}" alt="" />
+                                                <img src="{{ !empty($nfc_card->nfcData->profile_image) && file_exists(public_path('storage/' . optional($nfc_card->nfcData)->profile_image)) ? asset('storage/' . optional($nfc_card->nfcData)->profile_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}" alt="" />
                                             </div>
                                         </div>
                                     </div>
@@ -324,19 +324,19 @@
                                             <div>
                                                 <img class="img-fluid"
                                                     style="background-size: cover;width: 100%;height: 300px;object-fit: cover;"
-                                                    src="{{ !empty($nfc_card->nfcData->service_one_image) && file_exists(public_path('storage/nfc/' . $nfc_card->code . '/' . optional($nfc_card->nfcData)->service_one_image)) ? asset('storage/nfc/' . $nfc_card->code . '/' . optional($nfc_card->nfcData)->service_one_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
+                                                    src="{{ !empty($nfc_card->nfcData->service_one_image) && file_exists(public_path('storage/' . optional($nfc_card->nfcData)->service_one_image)) ? asset('storage/' . optional($nfc_card->nfcData)->service_one_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
                                                     alt="Slide 1" />
                                             </div>
                                             <div>
                                                 <img class="img-fluid"
                                                     style="background-size: cover;width: 100%;height: 300px;object-fit: cover;"
-                                                    src="{{ !empty($nfc_card->nfcData->service_two_image) && file_exists(public_path('storage/nfc/' . $nfc_card->code . '/' . optional($nfc_card->nfcData)->service_two_image)) ? asset('storage/nfc/' . $nfc_card->code . '/' . optional($nfc_card->nfcData)->service_two_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
+                                                    src="{{ !empty($nfc_card->nfcData->service_two_image) && file_exists(public_path('storage/' . optional($nfc_card->nfcData)->service_two_image)) ? asset('storage/' . optional($nfc_card->nfcData)->service_two_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
                                                     alt="Slide 2" />
                                             </div>
                                             <div>
                                                 <img class="img-fluid"
                                                     style="background-size: cover;width: 100%;height: 300px;object-fit: cover;"
-                                                    src="{{ !empty($nfc_card->nfcData->service_three_image) && file_exists(public_path('storage/nfc/' . $nfc_card->code . '/' . optional($nfc_card->nfcData)->service_three_image)) ? asset('storage/nfc/' . $nfc_card->code . '/' . optional($nfc_card->nfcData)->service_three_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
+                                                    src="{{ !empty($nfc_card->nfcData->service_three_image) && file_exists(public_path('storage/' . optional($nfc_card->nfcData)->service_three_image)) ? asset('storage/' . optional($nfc_card->nfcData)->service_three_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
                                                     alt="Slide 3" />
                                             </div>
                                             <!-- Add more divs with images for additional slides -->
@@ -440,7 +440,7 @@
                                                 </h6>
                                                 <div class="d-flex justify-content-center">
                                                     <img class="" width="200px"
-                                                        src="{{ asset('storage/nfc/' . $nfc_card->code . '/' . $nfc_card->nfc_qr) }}"
+                                                        src="{{ asset('storage/' . $nfc_card->nfc_qr) }}"
                                                         alt="" />
                                                 </div>
                                             </div>

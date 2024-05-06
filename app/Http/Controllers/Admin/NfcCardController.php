@@ -192,14 +192,14 @@ class NfcCardController extends Controller
 
         // Image Upload
         $files = [
-            'banner_image' => $request->file('banner_image'),
-            'profile_image' => $request->file('profile_image'),
-            'service_one_image' => $request->file('service_one_image'),
-            'service_two_image' => $request->file('service_two_image'),
-            'service_three_image' => $request->file('service_three_image'),
+            $code.'banner_image' => $request->file('banner_image'),
+            $code.'profile_image' => $request->file('profile_image'),
+            $code.'service_one_image' => $request->file('service_one_image'),
+            $code.'service_two_image' => $request->file('service_two_image'),
+            $code.'service_three_image' => $request->file('service_three_image'),
         ];
 
-        $filePath = 'public/nfc/' . $code . '/';
+        $filePath = 'public/';
         // $filePath = storage_path('app/public/nfc/' . $code . '/'); // Corrected $filePath
 
         $uploadedFiles = [];
@@ -235,7 +235,7 @@ class NfcCardController extends Controller
         $qrCodeString = QrCode::size(300)->format('png')->generate($nfc_url);
         // Save the QR code to storage
         $qrFileName = $code . '_nfc_qr.png';
-        $qrCodePath = 'public/nfc/' . $code . '/' . $qrFileName;
+        $qrCodePath = 'public/' . $qrFileName;
         Storage::put($qrCodePath, $qrCodeString);
         // $field . '_url' => asset('storage/qr_codes/' . $format . '/' . $qrFileName)
 
