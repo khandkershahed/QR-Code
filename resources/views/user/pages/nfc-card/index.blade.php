@@ -71,7 +71,7 @@
                                             class="text-primary">{{ $nfc_card->nfc_url }}</a>
                                     </td>
                                     <td class="text-start">
-                                        <button class="btn btn-light-primary">Approved</button>
+                                        <button class="btn btn-light-primary">Active</button>
                                     </td>
                                     <td class="pe-0">
                                         <a href="#" class="btn btn-light btn-active-light-primary btn-sm"
