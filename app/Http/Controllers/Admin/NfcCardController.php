@@ -22,7 +22,7 @@ class NfcCardController extends Controller
     public function index()
     {
         $data = [
-            'nfc_cards' => NfcCard::with('nfcData', 'nfcMessages')->where('user_id', Auth::user()->id)->get(),
+            'nfc_cards' => NfcCard::with('nfcData', 'nfcMessages')->where('user_id', Auth::user()->id)->latest('id')->get(),
         ];
         return view('user.pages.nfc-card.index', $data);
     }
