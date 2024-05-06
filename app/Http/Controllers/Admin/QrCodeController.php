@@ -324,7 +324,7 @@ class QrCodeController extends Controller
 
             $formatDirectory = 'qr_codes/qrs/' . $format;
             $qrFileName = $qr->code . '.' . $format;
-            $qrCodePath = '../public/' . $formatDirectory . '/' . $qrFileName;
+            $qrCodePath = '../public/storage/' . $formatDirectory . '/' . $qrFileName;
 
             if (!Storage::exists($formatDirectory)) {
                 Storage::makeDirectory($formatDirectory, 0775, true);
