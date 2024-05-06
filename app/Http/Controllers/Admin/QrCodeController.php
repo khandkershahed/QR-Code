@@ -25,8 +25,8 @@ class QrCodeController extends Controller
         $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
 
         $qrs = $isUserRoute ?
-            Qr::with('qrData','qrScan')->where('user_id', Auth::user()->id)->latest('id')->get() :
-            Qr::with('qrData','qrScan')->latest('id')->get();
+            Qr::with('qrData', 'qrScan')->where('user_id', Auth::user()->id)->latest('id')->get() :
+            Qr::with('qrData', 'qrScan')->latest('id')->get();
 
         $view = $isUserRoute ? 'user.pages.qr-code.index' : 'admin.pages.qr-code.index';
 
@@ -46,7 +46,7 @@ class QrCodeController extends Controller
         $qr = Qr::with('qrData')->where('code', $Qr)->first();
         $maps = QrScan::where('qr_code', $Qr)->get(['ip_address']);
 
-        return view('user.pages.qr-code.qrSummary', compact('qr','maps'));
+        return view('user.pages.qr-code.qrSummary', compact('qr', 'maps'));
     }
 
 
@@ -65,7 +65,7 @@ class QrCodeController extends Controller
                 $phoneNumber = $qr->qrData->qr_data_call_number;
                 $telUri = 'tel:' . $phoneNumber;
                 return redirect()->to($telUri);
-             } elseif (!empty($qr->qrData->qr_data_sms_number) && !empty($qr->qrData->qr_data_sms_message)) {
+            } elseif (!empty($qr->qrData->qr_data_sms_number) && !empty($qr->qrData->qr_data_sms_message)) {
                 $phoneNumber = $qr->qrData->qr_data_sms_number;
                 $smsMessage = $qr->qrData->qr_data_sms_message;
                 $smsUrl = 'sms:' . $phoneNumber . '?body=' . urlencode($smsMessage);
@@ -332,42 +332,30 @@ class QrCodeController extends Controller
                 }
             }
 
-            if (!empty($qr_bg_type)) {
-                if ($qr_bg_type == 'color') {
-                    $qrCode->color($qr_bg_color['r'], $qr_bg_color['g'], $qr_bg_color['b']);
-                }
-            }
-            $formatDirectory = 'qrCodes/' . $format;
-            $directory = storage_path('app/' . $formatDirectory);
+            $formatDirectory = 'qrCodes/' . $qr->code;
+            $directory = storage_path('app/public/' . $formatDirectory);
 
             if (!Storage::exists($formatDirectory)) {
-                Storage::makeDirectory($formatDirectory);
+                Storage::makeDirectory($formatDirectory, 0775, true);
             }
 
-            // $qrCode;
+            $qrCodeString = $qrCode->errorCorrection('H')->generate($qrDataLink);
+
             $qrFileName = $qr->code . '.' . $format;
-            $qrCodeString = $qrCode->margin(100)->errorCorrection('H')->generate($qrDataLink, $directory . '/' . $qrFileName);
-
-
-
-            // Save the QR code to storage
-            // $qrFileName = $qr->code . '.' . $format;
-            // $qrCodePath = 'public/qr_codes/' . $format . '/' . $qrFileName;
-            // Storage::put($qrCodePath, $qrCodeString);
+            $qrCodePath = 'public/' . $formatDirectory . '/' . $qrFileName;
+            Storage::put($qrCodePath, $qrCodeString);
 
             // Update the database with the file name and URL
             $qr->update([
                 $field => $qrFileName,
                 $field . '_url' => asset('storage/qrCodes/' . $format . '/' . $qrFileName)
             ]);
-
         }
 
 
         // Return the URL of the generated QR code image
         if ($qrCodeString) {
             return redirect()->route('user.qr-code.index')->with('success', 'You have successfully generated QR Code.');
-
         } else {
             return redirect()->back()->with('error', 'Failed to generate QR code.');
         }

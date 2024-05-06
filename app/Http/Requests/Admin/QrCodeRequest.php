@@ -55,7 +55,7 @@ class QrCodeRequest extends FormRequest
             // 'qr_data_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate qr_data_image as an image file (adjust mime types and max size as needed)
             'qr_data_image_link' => 'nullable|url', // Validate qr_data_image_link as a valid URL
             'qr_data_sms_number' => 'nullable|string|max:255', // Validate qr_data_sms_number as a string with max length 255
-            'qr_data_sms_message' => 'nullable|string|max:255', // Validate qr_data_sms_message as a string with max length 255
+            'qr_data_sms_message' => 'nullable|string', // Validate qr_data_sms_message as a string with max length 255
             'qr_data_email_id' => 'nullable|string|email|max:255', // Validate qr_data_email_id as a valid email address with max length 255
             'qr_data_email_subject' => 'nullable|string|max:255', // Validate qr_data_email_subject as a string with max length 255
             'qr_data_email_body' => 'nullable|string', // Validate qr_data_email_body as a string
