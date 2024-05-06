@@ -291,7 +291,11 @@ class QrCodeController extends Controller
         // Loop through each format
         foreach ($formats as $format => $field) {
             $qrCode = new Generator;
-            $qrCode->format($format)->size(300);
+            if ($format === 'jpg' || $format === 'pdf') {
+                $qrCode->format('png')->size(300);
+            } else {
+                $qrCode->format($format)->size(300);
+            }
 
             if (!empty($qr_logo)) {
                 $qrCode->merge($logoFullPath, 0.3, true);
