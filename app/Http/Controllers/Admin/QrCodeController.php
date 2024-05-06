@@ -133,7 +133,7 @@ class QrCodeController extends Controller
         $qr_gradient_color_start = $this->hexToRgb($request->qr_gradient_color_start ?? '#000000');
         $qr_gradient_color_end   = $this->hexToRgb($request->qr_gradient_color_end ?? '#000000');
         $qr_bg_type              = $request->qr_bg_type;
-        $qr_bg_color             = $this->hexToRgb($request->qr_bg_color ?? '#FFFFFF');
+        $qr_bg_color             = $this->hexToRgb($request->qr_bg_color ?? '#ffffff00');
         $qr_bg_image             = $request->qr_bg_image;
         $qr_name                 = $request->qr_name;
         $qr_scan_status          = $request->qr_scan_status;
@@ -332,6 +332,11 @@ class QrCodeController extends Controller
                     $qrCode->gradient($qr_gradient_color_start['r'], $qr_gradient_color_start['g'], $qr_gradient_color_start['b'], $qr_gradient_color_end['r'], $qr_gradient_color_end['g'], $qr_gradient_color_end['b'], $qr_gradient_color_type);
                 }
             }
+            if (!empty($qr_bg_type)) {
+                if ($qr_bg_type == 'color' && !empty($qr_bg_color)) {
+                    $qrCode->backgroundColor($qr_bg_color['r'], $qr_bg_color['g'], $qr_bg_color['b'] , 75);
+                }
+            }
 
             $formatDirectory = 'qr_codes/qrs/' . $format;
             $qrFileName = $qr->code . '.' . $format;
@@ -362,6 +367,18 @@ class QrCodeController extends Controller
     public function qrPreview(Request $request)
     {
 
+        $typePrefix = 'QR'; // Example prefix
+        // $today = Carbon::now()->format('dmY');
+        $today = date('dmY');
+        $userId = Auth::user()->id;
+        $lastCode = Qr::where('code', 'like', $typePrefix . $today . $userId . '%')
+            ->orderBy('id', 'desc')
+            ->first();
+
+        // Determine the new number for the QR code
+        $newNumber = $lastCode ? (int)substr($lastCode->code, -1) + 1 : 1;
+
+        $code = $typePrefix . $today . $userId . $newNumber;
 
         $data = [
             'qr_data_website_url'               => $request->qr_data_website_url,
@@ -458,64 +475,15 @@ class QrCodeController extends Controller
         //     }
         // }
 
-        // Handle QR PDF
-        // $pdfFullPath = '';
-        // if ($request->hasFile('qr_data_pdf')) {
-        //     $pdf = $request->file('qr_data_pdf');
-        //     if ($pdf->isValid()) {
-        //         $pdfFileName = $code . '.' . $pdf->getClientOriginalExtension();
-        //         $pdfPath = $pdf->storeAs('public/qr_codes/pdfs', $pdfFileName);
-        //         $pdfFullPath = url('/storage/qr_codes/pdfs/' . $pdfFileName);
-        //         // $pdfFullPath = storage_path('app/' . $pdfPath);
-        //     }
-        // }
-
-        // // Handle QR Data Image
-        // $dataImageFullPath = '';
-        // if ($request->hasFile('qr_data_image')) {
-        //     $dataImage = $request->file('qr_data_image');
-        //     if ($dataImage->isValid()) {
-        //         $imageFileName = $code . '.' . $dataImage->getClientOriginalExtension();
-        //         $dataImagePath = $dataImage->storeAs('public/qr_codes/images', $imageFileName);
-        //         $dataImageFullPath = url('/storage/qr_codes/images/' . $imageFileName);
-        //     }
-        // }
-        // $qrDataLink = route('showQr', $qr->code);
-        // Create QR Data record
 
 
 
 
-        if ($request->hasFile('qr_logo')) {
-            $formats = [
-                // 'png' => 'qr_png',
-                'jpg' => 'qr_jpg',
-                'eps' => 'qr_eps',
-                'pdf' => 'qr_pdf',
-            ];
-        } else {
-            $formats = [
-                // 'png' => 'qr_png',
-                'svg' => 'qr_svg',
-                'eps' => 'qr_eps',
-                'jpg' => 'qr_jpg',
-                'pdf' => 'qr_pdf',
-            ];
-        }
 
-        // Loop through each format
-        foreach ($formats as $format => $field) {
 
-            $qrCode = new Generator;
-            if ($format === 'jpg' || $format === 'pdf') {
-                $qrCode->format('png')->size(230);
-            } else {
-                $qrCode->format('svg')->size(230);
-            }
 
-            // if (!empty($qr_logo)) {
-            //     $qrCode->merge($logoFullPath, 0.3, true);
-            // }
+        $qrCode = QrCode::format('png')->size(230);
+
             if (!empty($qr_eye_ball)) {
                 $qrCode->eye($qr_eye_ball, 0.5);
             }
@@ -548,25 +516,25 @@ class QrCodeController extends Controller
             }
 
             if (!empty($qr_bg_type)) {
-                if ($qr_bg_type == 'color') {
-                    $qrCode->color($qr_bg_color['r'], $qr_bg_color['g'], $qr_bg_color['b']);
+                if ($qr_bg_type == 'color' && !empty($qr_bg_color)) {
+                    $qrCode->backgroundColor($qr_bg_color['r'], $qr_bg_color['g'], $qr_bg_color['b'] , 75);
                 }
             }
 
             $qrCode->errorCorrection('H');
 
 
-
+            $qrDataLink = route('showQr', $code);
             switch ($qr_type) {
                 case 'website':
                     $qrCodeString = $qrCode->generate($data['qr_data_website_url']);
                     break;
-                    // case 'pdf':
-                    //     $qrCodeString = $qrCode->generate($qrDataLink);
-                    //     break;
-                    // case 'image':
-                    //     $qrCodeString = $qrCode->generate($qrDataLink);
-                    //     break;
+                case 'pdf':
+                    $qrCodeString = $qrCode->generate($qrDataLink);
+                    break;
+                case 'image':
+                    $qrCodeString = $qrCode->generate($qrDataLink);
+                    break;
                 case 'sms':
                     $qrCodeString = $qrCode->SMS($data['qr_data_sms_number'], $data['qr_data_sms_message']);
                     break;
@@ -583,7 +551,6 @@ class QrCodeController extends Controller
                     $qrCodeString = $qrCode->generate($data['qr_data_website_url']);
                     break;
             }
-        }
 
 
         $qrCodeDataUrl = 'data:image/png;base64,' . base64_encode($qrCodeString);
@@ -620,7 +587,30 @@ class QrCodeController extends Controller
 
 
 
+// Handle QR PDF
+        // $pdfFullPath = '';
+        // if ($request->hasFile('qr_data_pdf')) {
+        //     $pdf = $request->file('qr_data_pdf');
+        //     if ($pdf->isValid()) {
+        //         $pdfFileName = $code . '.' . $pdf->getClientOriginalExtension();
+        //         $pdfPath = $pdf->storeAs('public/qr_codes/pdfs', $pdfFileName);
+        //         $pdfFullPath = url('/storage/qr_codes/pdfs/' . $pdfFileName);
+        //         // $pdfFullPath = storage_path('app/' . $pdfPath);
+        //     }
+        // }
 
+        // // Handle QR Data Image
+        // $dataImageFullPath = '';
+        // if ($request->hasFile('qr_data_image')) {
+        //     $dataImage = $request->file('qr_data_image');
+        //     if ($dataImage->isValid()) {
+        //         $imageFileName = $code . '.' . $dataImage->getClientOriginalExtension();
+        //         $dataImagePath = $dataImage->storeAs('public/qr_codes/images', $imageFileName);
+        //         $dataImageFullPath = url('/storage/qr_codes/images/' . $imageFileName);
+        //     }
+        // }
+        // $qrDataLink = route('showQr', $qr->code);
+        // Create QR Data record
 //Backup Code
 // $qrCode = new Generator;
         // $qrCode->format('png')->size(230);
