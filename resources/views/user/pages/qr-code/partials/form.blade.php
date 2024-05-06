@@ -149,25 +149,23 @@
     </div>
     <div class="row pt-4">
         <div class="pb-4">
-            <x-metronic.label for="qr_data_location"
-                class="form-label">{{ __('Select Location') }}</x-metronic.label>
-            <x-metronic.input id="qr_data_location" type="text" name="qr_data_location" :value="old('qr_data_location')"
-                placeholder="Select Location" />
+            <x-metronic.label for="qr_data_location_latitude"
+                class="form-label">{{ __('Select Location Latitude') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_location_latitude" type="text" name="qr_data_location_latitude" :value="old('qr_data_location_latitude')"
+                placeholder="Select Latitude" />
         </div>
         <div class="pb-4">
-            <x-metronic.label for="qr_data_location"
-                class="form-label">{{ __('Select Location') }}</x-metronic.label>
-            <x-metronic.input id="qr_data_location" type="text" name="qr_data_location" :value="old('qr_data_location')"
-                placeholder="Select Location" />
+            <x-metronic.label for="qr_data_location_longitude"
+                class="form-label">{{ __('Select Location Longitude') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_location_longitude" type="text" name="qr_data_location_longitude" :value="old('qr_data_location_longitude')"
+                placeholder="Select Longitude" />
         </div>
         <div class="mt-2">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d116833.95338886736!2d90.41968899999999!3d23.7808405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b087026b81%3A0x8fa563bbdd5904c2!2sDhaka!5e0!3m2!1sen!2sbd!4v1711272535856!5m2!1sen!2sbd"
-                width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div id="map" style="height: 400px;"></div>
         </div>
     </div>
 </div>
+
 {{-- Coupon Form Start --}}
 <div class="form-container" id="coupon_code-form">
     <div class="row text-center justify-content-center">

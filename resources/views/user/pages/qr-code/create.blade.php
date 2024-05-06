@@ -325,6 +325,30 @@
         </script>
 
         <script>
+            function initMap() {
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    center: {
+                        lat: 23.7808405,
+                        lng: 90.41968899999999
+                    }, // Default center (Dhaka)
+                    zoom: 12
+                });
+
+                var marker = new google.maps.Marker({
+                    map: map
+                });
+
+                map.addListener('click', function(event) {
+                    marker.setPosition(event.latLng);
+                    document.getElementById('qr_data_location_latitude').value = event.latLng.lat();
+                    document.getElementById('qr_data_location_longitude').value = event.latLng.lng();
+                });
+            }
+        </script>
+        
+
+
+        <script>
             // Stepper lement
             var element = document.querySelector("#generateQRCode");
 
