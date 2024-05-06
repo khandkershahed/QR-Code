@@ -23,8 +23,8 @@
         :root {
             @if ($nfc_card->font_family == 'bebas_neue')
                 --body-font-family: "Bebas Neue", sans-serif !important;
-            @elseif
-                ($nfc_card->font_family == 'raleway') --body-font-family: "Raleway", sans-serif !important;
+            @elseif ($nfc_card->font_family == 'raleway')
+                --body-font-family: "Raleway", sans-serif !important;
             @endif
             --white: #fff;
             --tem-two-name-color: #fff;
