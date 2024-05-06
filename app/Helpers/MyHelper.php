@@ -30,9 +30,11 @@ if (!function_exists('customUpload')) {
             //     throw new \RuntimeException("Failed to set permissions for directory: $uploadPath");
             // };
             if (!is_dir($uploadPath)) {
+                umask(0); // Set umask to 0 temporarily
                 if (!mkdir($uploadPath, 0777, true)) {
                     abort(404, "Failed to create the directory: $uploadPath");
                 }
+                umask(0022); // Reset umask to default (optional)
             }
 
 
