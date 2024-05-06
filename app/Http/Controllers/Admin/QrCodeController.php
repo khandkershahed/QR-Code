@@ -345,7 +345,7 @@ class QrCodeController extends Controller
 
             $qr->update([
                 $field => $qrFileName,
-                $field . '_url' => asset($formatDirectory . '/' . $qrFileName)
+                $field . '_url' => asset('storage/' . $formatDirectory . '/' . $qrFileName)
             ]);
         }
 
