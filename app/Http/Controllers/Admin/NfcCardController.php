@@ -192,11 +192,11 @@ class NfcCardController extends Controller
 
         // Image Upload
         $files = [
-            $code.'banner_image' => $request->file('banner_image'),
-            $code.'profile_image' => $request->file('profile_image'),
-            $code.'service_one_image' => $request->file('service_one_image'),
-            $code.'service_two_image' => $request->file('service_two_image'),
-            $code.'service_three_image' => $request->file('service_three_image'),
+            'banner_image' => $request->file('banner_image'),
+            'profile_image' => $request->file('profile_image'),
+            'service_one_image' => $request->file('service_one_image'),
+            'service_two_image' => $request->file('service_two_image'),
+            'service_three_image' => $request->file('service_three_image'),
         ];
 
         $filePath = 'public/nfc/';
@@ -205,7 +205,7 @@ class NfcCardController extends Controller
         $uploadedFiles = [];
         foreach ($files as $key => $file) {
             if (!empty($file)) {
-                $uploadedFiles[$key] = customUpload($file, $filePath, $key);
+                $uploadedFiles[$key] = customUpload($file, $filePath, $name= $code.'_'.$key);
                 if ($uploadedFiles[$key]['status'] === 0) {
                     return redirect()->back()->with('error', $uploadedFiles[$key]['error_message']);
                 }
