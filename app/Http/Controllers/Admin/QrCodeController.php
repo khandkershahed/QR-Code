@@ -25,7 +25,7 @@ class QrCodeController extends Controller
         $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
 
         $qrs = $isUserRoute ?
-            Qr::with('qrData','qrScan')->where('user_id', Auth::user()->id)->get() :
+            Qr::with('qrData','qrScan')->where('user_id', Auth::user()->id)->latest('id')->get() :
             Qr::with('qrData','qrScan')->latest('id')->get();
 
         $view = $isUserRoute ? 'user.pages.qr-code.index' : 'admin.pages.qr-code.index';
