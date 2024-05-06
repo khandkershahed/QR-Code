@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\NewsLetterController;
 use App\Http\Controllers\Admin\NfcIndividualMessageController;
+use App\Http\Controllers\Admin\QrCodeController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\User\UserSocialLoginController;
 use App\Http\Controllers\VendorProfileController;
@@ -102,5 +103,10 @@ require __DIR__ . '/admin.php';
 require __DIR__ . '/client.php';
 require __DIR__ . '/reseller.php';
 
-
+Route::post('/qr-builder', [QrCodeController::class, 'do_qr_builder'])->name('do_qr_builder');
+Route::get('/', [QrCodeController::class, 'index'])->name('qr_builder');
+Route::get('/phone', [QrCodeController::class, 'phone'])->name('qr_phone');
+Route::get('/email', [QrCodeController::class, 'email'])->name('qr_email');
+Route::get('/geo', [QrCodeController::class, 'geo'])->name('qr_geo');
+Route::get('/sms', [QrCodeController::class, 'sms'])->name('qr_sms');
 // Route::get('/user-pricing', [HomeController::class, 'userPricing'])->name('pricing');

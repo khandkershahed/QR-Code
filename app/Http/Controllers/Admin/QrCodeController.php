@@ -121,19 +121,19 @@ class QrCodeController extends Controller
         $qr_template             = $request->qr_template;
         $qr_logo                 = $request->qr_logo;
         $qr_logo_size            = $request->qr_logo_size;
-        $qr_eye_ball             = $request->qr_eye_ball;
-        $qr_eye_ball_color       = $this->hexToRgb($request->qr_eye_ball_color);
-        $qr_eye_frame            = $request->qr_eye_frame;
-        $qr_eye_frame_color      = $this->hexToRgb($request->qr_eye_frame_color);
-        $qr_pattern              = $request->qr_pattern;
-        $qr_pattern_color        = $this->hexToRgb($request->qr_pattern_color);
+        $qr_eye_ball             = $request->qr_eye_ball ?? 'square';
+        $qr_eye_ball_color       = $this->hexToRgb($request->qr_eye_ball_color ?? '#000000');
+        $qr_eye_frame            = $request->qr_eye_frame ?? 'square';
+        $qr_eye_frame_color      = $this->hexToRgb($request->qr_eye_frame_color ?? '#000000');
+        $qr_pattern              = $request->qr_pattern ?? 'square';
+        $qr_pattern_color        = $this->hexToRgb($request->qr_pattern_color ?? '#000000');
         $qr_color_type           = $request->qr_color_type;
-        $qr_solid_color          = $this->hexToRgb($request->qr_solid_color);
+        $qr_solid_color          = $this->hexToRgb($request->qr_solid_color ?? '#000000');
         $qr_gradient_color_type  = $request->qr_gradient_color_type;
-        $qr_gradient_color_start = $this->hexToRgb($request->qr_gradient_color_start);
-        $qr_gradient_color_end   = $this->hexToRgb($request->qr_gradient_color_end);
+        $qr_gradient_color_start = $this->hexToRgb($request->qr_gradient_color_start ?? '#000000');
+        $qr_gradient_color_end   = $this->hexToRgb($request->qr_gradient_color_end ?? '#000000');
         $qr_bg_type              = $request->qr_bg_type;
-        $qr_bg_color             = $this->hexToRgb($request->qr_bg_color);
+        $qr_bg_color             = $this->hexToRgb($request->qr_bg_color ?? '#FFFFFF');
         $qr_bg_image             = $request->qr_bg_image;
         $qr_name                 = $request->qr_name;
         $qr_scan_status          = $request->qr_scan_status;
@@ -290,11 +290,18 @@ class QrCodeController extends Controller
 
         // Loop through each format
         foreach ($formats as $format => $field) {
-            $qrCode = new Generator;
+            // $qr = QrCode::format($qr_img_type);
+        // $qr->size($qr_size);
+        // $qr->errorCorrection($qr_correction);
+        // $qr->encoding($qr_encoding);
+        // $qr->eye($qr_eye);
+        // $qr->margin($qr_margin);
+        // $qr->style($qr_style);
+        // $qr->color($qr_color->red(), $qr_color->green(), $qr_color->blue());
             if ($format === 'jpg' || $format === 'pdf') {
-                $qrCode->format('png')->size(300);
+                $qrCode = QrCode::format('png')->size(300);
             } else {
-                $qrCode->format($format)->size(300);
+                $qrCode = QrCode::format($format)->size(300);
             }
 
             if (!empty($qr_logo)) {
@@ -314,7 +321,7 @@ class QrCodeController extends Controller
                 } elseif ($qr_pattern == 'square_0.9') {
                     $qrCode->style('square', 0.8);
                 } else {
-                    $qrCode->style($qr_pattern, 0.5);
+                    $qrCode->style($qr_pattern);
                 }
             }
             if (!empty($qr_color_type)) {
@@ -334,7 +341,7 @@ class QrCodeController extends Controller
                 Storage::makeDirectory($formatDirectory, 0775, true);
             }
 
-            $qrCodeString = $qrCode->errorCorrection('H')->generate($qrDataLink, $qrCodePath);
+            $qrCodeString = $qrCode->margin(4)->errorCorrection('H')->encoding('UTF-8')->generate($qrDataLink, $qrCodePath);
 
             $qr->update([
                 $field => $qrFileName,
