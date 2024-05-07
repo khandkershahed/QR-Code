@@ -74,7 +74,7 @@ class QrCodeRequest extends FormRequest
             'qr_data_coupon_company' => 'nullable|string|max:255', // Validate qr_data_coupon_company as a string with max length 255
             'qr_data_coupon_policy' => 'nullable|string', // Validate qr_data_coupon_policy as a string
             'qr_data_coupon_logo' => 'nullable|string|max:255', // Validate qr_data_coupon_logo as a string with max length 255
-            'qr_data_audio_file' => 'nullable|string|max:255', // Validate qr_data_audio_file as a string with max length 255
+            // 'qr_data_audio_file' => 'nullable|string', // Validate qr_data_audio_file as a string with max length 255
             'qr_data_audio_link' => 'nullable|url', // Validate qr_data_audio_link as a valid URL
 
         ];
