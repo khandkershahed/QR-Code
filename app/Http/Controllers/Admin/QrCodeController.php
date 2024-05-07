@@ -59,7 +59,7 @@ class QrCodeController extends Controller
             'ip_address' => $request->ip(),
         ]);
         if (!empty($qr)) {
-            // dd($qr->qrData);
+            dd($qr->qr_type);
             if (!empty($qr->qrData->qr_data_website_url)) {
                 return redirect()->to($qr->qrData->qr_data_website_url);
             } elseif (!empty($qr->qrData->qr_data_call_number)) {
@@ -86,6 +86,8 @@ class QrCodeController extends Controller
             } elseif (!empty($qr->qrData->qr_data_app_ipad)) {
                 $ipadAppLink = $qr->qrData->qr_data_app_ipad;
                 return redirect()->to($ipadAppLink);
+            } elseif (!empty($qr->qrData->qr_data_audio_file) || !empty($qr->qrData->qr_data_audio_link)) {
+                return view('user.pages.qr-code.qrFile', compact('qr'));
             } else {
                 return view('user.pages.qr-code.qrFile', compact('qr'));
             }
@@ -214,7 +216,7 @@ class QrCodeController extends Controller
         // }
 
         // Handle QR PDF
-
+$code = $qr->code;
         $uploadedPdfFile = '';
         if ($request->hasFile('qr_data_pdf')) {
             $pdf = $request->file('qr_data_pdf');
