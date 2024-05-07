@@ -227,7 +227,7 @@ $code = $qr->code;
                 // $pdfFileName = $code . '.' . $pdf->getClientOriginalExtension();
                 // $pdfPath = $pdf->storeAs('public/qr_codes/pdfs', $pdfFileName);
                 // // $pdfFullPath = url('/storage/qr_codes/pdfs/' . $pdfFileName);
-                $pdfFullPath = storage_path('app/' . $filepath . '/' .$filename);
+                // $pdfFullPath = storage_path('app/' . $filepath . '/' .$filename);
             }
         }else {
             $uploadedPdfFile = ['status' => 0];
