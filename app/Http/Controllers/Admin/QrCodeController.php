@@ -58,8 +58,8 @@ class QrCodeController extends Controller
             'qr_code'    => $qr->code,
             'ip_address' => $request->ip(),
         ]);
-        dd($qr->qrData);
         if (!empty($qr)) {
+            // dd($qr->qrData);
             if (!empty($qr->qrData->qr_data_website_url)) {
                 return redirect()->to($qr->qrData->qr_data_website_url);
             } elseif (!empty($qr->qrData->qr_data_call_number)) {
@@ -87,10 +87,8 @@ class QrCodeController extends Controller
                 $ipadAppLink = $qr->qrData->qr_data_app_ipad;
                 return redirect()->to($ipadAppLink);
             } else {
-                return redirect()->route('homePage')->with('error', 'Sorry No Data Found');
+                return view('user.pages.qr-code.qrFile', compact('qr'));
             }
-
-            return view('user.pages.qr-code.qrFile', compact('qr'));
         } else {
             return redirect()->route('homePage')->with('error', 'Sorry No Data Found');
         }

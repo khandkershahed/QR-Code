@@ -23,7 +23,6 @@ if (!function_exists('customUpload')) {
 
             $fileName = $name . '_' . $hashedName;
 
-            
             if (!is_dir($uploadPath)) {
                 if (!mkdir($uploadPath, 0777, true)) {
                     abort(404, "Failed to create the directory: $uploadPath");
