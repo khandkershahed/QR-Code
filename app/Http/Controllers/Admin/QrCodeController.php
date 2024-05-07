@@ -58,7 +58,7 @@ class QrCodeController extends Controller
             'qr_code'    => $qr->code,
             'ip_address' => $request->ip(),
         ]);
-        if ($qr) {
+        if (!empty($qr)) {
             if (!empty($qr->qrData->qr_data_website_url)) {
                 return redirect()->to($qr->qrData->qr_data_website_url);
             } elseif (!empty($qr->qrData->qr_data_call_number)) {
