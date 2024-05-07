@@ -221,13 +221,13 @@ class NfcCardController extends Controller
         $nfc_url = route('nfc.page', ['name' => $request->first_name . '-' . $request->last_name, 'code' => $code]);
 
         $qrCodeString = '';
-       
 
-        // Generate QR code
-        $qrCodeString = QrCode::size(300)->format('png')->generate($nfc_url);
-        // Save the QR code to storage
         $qrFileName = $code . '_nfc_qr.png';
         $qrCodePath = 'public/nfc/' . $qrFileName;
+        // Generate QR code
+        $qrCodeString = QrCode::size(300)->format('png')->margin(2)->errorCorrection('H')->encoding('UTF-8')->generate($nfc_url, $qrCodePath);
+        // Save the QR code to storage
+
         Storage::put($qrCodePath, $qrCodeString);
         // $field . '_url' => asset('storage/qr_codes/' . $format . '/' . $qrFileName)
 

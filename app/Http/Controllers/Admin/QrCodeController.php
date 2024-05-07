@@ -215,25 +215,44 @@ class QrCodeController extends Controller
         // }
 
         // Handle QR PDF
-        $pdfFullPath = '';
+
+        $uploadedPdfFile = '';
         if ($request->hasFile('qr_data_pdf')) {
             $pdf = $request->file('qr_data_pdf');
             if ($pdf->isValid()) {
-                $pdfFileName = $code . '.' . $pdf->getClientOriginalExtension();
-                $pdfPath = $pdf->storeAs('public/qr_codes/pdfs', $pdfFileName);
-                $pdfFullPath = url('/storage/qr_codes/pdfs/' . $pdfFileName);
-                // $pdfFullPath = storage_path('app/' . $pdfPath);
+                $filename = $code.'_pdf';
+                $filepath = 'public/qr_codes/pdfs/';
+                $uploadedPdfFile = customUpload($pdf, $filepath, $filename);
+                // $pdfFileName = $code . '.' . $pdf->getClientOriginalExtension();
+                // $pdfPath = $pdf->storeAs('public/qr_codes/pdfs', $pdfFileName);
+                // // $pdfFullPath = url('/storage/qr_codes/pdfs/' . $pdfFileName);
+                $pdfFullPath = storage_path('app/' . $filepath . '/' .$filename);
             }
         }
 
         // Handle QR Data Image
-        $dataImageFullPath = '';
+        $uploadedImgFile = '';
         if ($request->hasFile('qr_data_image')) {
             $dataImage = $request->file('qr_data_image');
             if ($dataImage->isValid()) {
-                $imageFileName = $code . '.' . $dataImage->getClientOriginalExtension();
-                $dataImagePath = $dataImage->storeAs('public/qr_codes/images', $imageFileName);
-                $dataImageFullPath = url('/storage/qr_codes/images/' . $imageFileName);
+                $imagefilename = $code.'_pdf';
+                $imagefilepath = 'public/qr_codes/images/';
+                $uploadedImgFile = customUpload($dataImage, $imagefilepath, $imagefilename);
+                // $imageFileName = $code . '.' . $dataImage->getClientOriginalExtension();
+                // $dataImagePath = $dataImage->storeAs('public/qr_codes/images', $imageFileName);
+                // $dataImageFullPath = url('/storage/qr_codes/images/' . $imageFileName);
+            }
+        }
+        $uploadedAdoFile = '';
+        if ($request->hasFile('qr_data_audio_file')) {
+            $dataAudio = $request->file('qr_data_audio_file');
+            if ($dataAudio->isValid()) {
+                $audiofilename = $code.'_pdf';
+                $audiofilepath = 'public/qr_codes/audios/';
+                $uploadedAdoFile = customUpload($dataAudio, $audiofilepath, $audiofilename);
+                // $imageFileName = $code . '.' . $dataImage->getClientOriginalExtension();
+                // $dataImagePath = $dataImage->storeAs('public/qr_codes/images', $imageFileName);
+                // $dataImageFullPath = url('/storage/qr_codes/images/' . $imageFileName);
             }
         }
         $qrDataLink = route('showQr', $qr->code);
@@ -241,8 +260,8 @@ class QrCodeController extends Controller
         $qrData = QrData::create([
             'code_id'                           => $qr->id,
             'qr_data_website_url'               => $request->qr_data_website_url,
-            'qr_data_pdf'                       => $pdfFullPath,
-            'qr_data_image'                     => $dataImageFullPath,
+            'qr_data_pdf'                       => $uploadedPdfFile['status'] == 1 ? $uploadedPdfFile['file_name'] : null,
+            'qr_data_image'                     => $uploadedImgFile['status'] == 1 ? $uploadedImgFile['file_name'] : null,
             'qr_data_image_link'                => $request->qr_data_image_link,
             'qr_data_sms_number'                => $request->qr_data_sms_number,
             'qr_data_sms_message'               => $request->qr_data_sms_message,
@@ -265,7 +284,7 @@ class QrCodeController extends Controller
             'qr_data_coupon_company'            => $request->qr_data_coupon_company,
             'qr_data_coupon_policy'             => $request->qr_data_coupon_policy,
             'qr_data_coupon_logo'               => $request->qr_data_coupon_logo,
-            'qr_data_audio_file'                => $request->qr_data_audio_file,
+            'qr_data_audio_file'                => $uploadedAdoFile['status'] == 1 ? $uploadedAdoFile['file_name'] : null,
             'qr_data_audio_link'                => $request->qr_data_audio_link,
         ]);
 

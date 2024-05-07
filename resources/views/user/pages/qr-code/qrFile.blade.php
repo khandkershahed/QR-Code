@@ -55,14 +55,17 @@
                 <div class="card-body">
                     @if ($qr->qr_type == 'image')
                         @if (!empty($qr->qrData->qr_data_image))
-                            <img class="img-fluid" src="{{ $qr->qrData->qr_data_image }}" alt="">
+                            <img class="img-fluid"
+                                src="{{ asset('storage/qr_codes/images/' . $qr->qrData->qr_data_image) }}"
+                                alt="">
                         @else
                             <img class="img-fluid" src="{{ $qr->qrData->qr_data_image_link }}" alt="">
                         @endif
                     @elseif ($qr->qr_type == 'pdf')
                         <div class="row mb-5">
                             <h5 class="text-center fw-bold">If any Problem to view pdf or need to download. <a
-                                    href="{{ $qr->qrData->qr_data_pdf }}" download>Click Here...</a></h5>
+                                    href="{{ asset('storage/qr_codes/images/' . $qr->qrData->qr_data_pdf) }}"
+                                    download>Click Here...</a></h5>
                         </div>
                         <div id="Iframe-Master-CC-and-Rs"
                             class="set-margin set-padding set-border set-box-shadow center-block-horiz">
@@ -70,7 +73,7 @@
                            responsive-wrapper-wxh-572x612"
                                 style="-webkit-overflow-scrolling: touch; overflow: auto;">
 
-                                <iframe src="{{ $qr->qrData->qr_data_pdf }}">
+                                <iframe src="{{ asset('storage/qr_codes/images/' . $qr->qrData->qr_data_pdf) }}">
                                     <p style="font-size: 110%;"><em><strong>ERROR: </strong>
                                             An &#105;frame should be displayed here but your browser version does not
                                             support &#105;frames. </em>Please update your browser to its most recent
@@ -86,6 +89,30 @@
                                     support &#105;frames. </em>Please update your browser to its most recent
                                 version and try again.</p>
                         </iframe> --}}
+                    @elseif ($qr->qr_type == 'audio')
+                        <div class="row mb-5">
+                            <h5 class="text-center fw-bold">If any Problem to view pdf or need to download.
+                                @if (!empty($qr->qrData->qr_data_image))
+                                    <a href="{{ asset('storage/qr_codes/audios/' . $qr->qrData->qr_data_audio_file) }}"
+                                        download>Click Here...</a>
+                                @else
+                                    <a href="{{ $qr->qrData->qr_data_audio_link }}" download>Click Here...</a>
+                                @endif
+
+                            </h5>
+                        </div>
+                        <div id="Iframe-Master-CC-and-Rs"
+                            class="set-margin set-padding set-border set-box-shadow center-block-horiz">
+                            <div class="responsive-wrapper
+                           responsive-wrapper-wxh-572x612"
+                                style="-webkit-overflow-scrolling: touch; overflow: auto;">
+                                <audio controls autoplay>
+                                    <source src="{{ asset('storage/qr_codes/audios/' . $qr->qrData->qr_data_audio_file) }}" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                </audio>
+
+                            </div>
+                        </div>
                     @endif
                 </div>
             </div>

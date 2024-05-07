@@ -23,12 +23,7 @@ if (!function_exists('customUpload')) {
 
             $fileName = $name . '_' . $hashedName;
 
-            // if (!File::isDirectory($uploadPath)) {
-            //     File::makeDirectory($uploadPath, 0777, true, true);
-            // }
-            // if (!posix_chmod(storage_path('app/public/nfc/'), 0755)) {
-            //     throw new \RuntimeException("Failed to set permissions for directory: $uploadPath");
-            // };
+            
             if (!is_dir($uploadPath)) {
                 if (!mkdir($uploadPath, 0777, true)) {
                     abort(404, "Failed to create the directory: $uploadPath");
