@@ -64,7 +64,7 @@
                     @elseif ($qr->qr_type == 'pdf')
                         <div class="row mb-5">
                             <h5 class="text-center fw-bold">If any Problem to view pdf or need to download. <a
-                                    href="{{ asset('storage/qr_codes/images/' . $qr->qrData->qr_data_pdf) }}"
+                                    href="{{ asset('storage/qr_codes/pdfs/' . $qr->qrData->qr_data_pdf) }}"
                                     download>Click Here...</a></h5>
                         </div>
                         <div id="Iframe-Master-CC-and-Rs"
@@ -73,7 +73,7 @@
                            responsive-wrapper-wxh-572x612"
                                 style="-webkit-overflow-scrolling: touch; overflow: auto;">
 
-                                <iframe src="{{ asset('storage/qr_codes/images/' . $qr->qrData->qr_data_pdf) }}">
+                                <iframe src="{{ asset('storage/qr_codes/pdfs/' . $qr->qrData->qr_data_pdf) }}">
                                     <p style="font-size: 110%;"><em><strong>ERROR: </strong>
                                             An &#105;frame should be displayed here but your browser version does not
                                             support &#105;frames. </em>Please update your browser to its most recent
