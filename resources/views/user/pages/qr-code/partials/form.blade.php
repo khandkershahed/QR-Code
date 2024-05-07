@@ -375,7 +375,7 @@
         <div class="pt-4 col-lg-6">
             <x-metronic.label for="qr_data_audio_link"
                 class="form-label">{{ __('Or Paste Link Below') }}</x-metronic.label>
-            <x-metronic.input id="qr_data_audio_link" type="file" name="qr_data_audio_link" :value="old('qr_data_audio_link')"
+            <x-metronic.input id="qr_data_audio_link" type="url" name="qr_data_audio_link" :value="old('qr_data_audio_link')"
                 placeholder="Audio File link" />
         </div>
     </div>
