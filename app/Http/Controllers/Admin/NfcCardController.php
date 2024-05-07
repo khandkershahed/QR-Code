@@ -310,8 +310,13 @@ class NfcCardController extends Controller
         $today = now()->format('dmY');
         $userId = Auth::user()->id;
         $lastCode = NfcCard::where('code', 'like', $typePrefix . $today . $userId . '%')->orderByDesc('id')->first();
-        $newNumber = $lastCode ? (int)substr($lastCode->code, -1) + 1 : 1;
-        return $typePrefix . $today . $userId . $newNumber;
+        $newNumber = $lastCode ? (int)substr($lastCode->code, -2) + 1 : 1;
+
+        // // Generate the new QR code
+        // $code = $typePrefix . $today . $userId . str_pad($newNumber, 2, '0', STR_PAD_LEFT);
+
+        // $newNumber = $lastCode ? (int)substr($lastCode->code, -1) + 1 : 1;
+        return $typePrefix . $today . $userId . str_pad($newNumber, 2, '0', STR_PAD_LEFT);
     }
 
 
