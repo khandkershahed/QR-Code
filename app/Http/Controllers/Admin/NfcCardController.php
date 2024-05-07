@@ -228,7 +228,7 @@ class NfcCardController extends Controller
         $qrCodeString = QrCode::size(300)->format('png')->margin(2)->errorCorrection('H')->encoding('UTF-8')->generate($nfc_url, $qrCodePath);
         // Save the QR code to storage
 
-        Storage::put($qrCodePath, $qrCodeString);
+        // Storage::put($qrCodePath, $qrCodeString);
         // $field . '_url' => asset('storage/qr_codes/' . $format . '/' . $qrFileName)
 
         // Create NFC card

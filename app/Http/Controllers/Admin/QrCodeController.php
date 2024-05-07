@@ -238,7 +238,7 @@ class QrCodeController extends Controller
         if ($request->hasFile('qr_data_image')) {
             $dataImage = $request->file('qr_data_image');
             if ($dataImage->isValid()) {
-                $imagefilename = $code . '_pdf';
+                $imagefilename = $code . '_image';
                 $imagefilepath = 'public/qr_codes/images/';
                 $uploadedImgFile = customUpload($dataImage, $imagefilepath, $imagefilename);
                 // $imageFileName = $code . '.' . $dataImage->getClientOriginalExtension();
