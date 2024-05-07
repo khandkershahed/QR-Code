@@ -228,6 +228,8 @@ class QrCodeController extends Controller
                 // // $pdfFullPath = url('/storage/qr_codes/pdfs/' . $pdfFileName);
                 $pdfFullPath = storage_path('app/' . $filepath . '/' .$filename);
             }
+        }else {
+            $uploadedPdfFile = ['status' => 0];
         }
 
         // Handle QR Data Image
@@ -242,6 +244,8 @@ class QrCodeController extends Controller
                 // $dataImagePath = $dataImage->storeAs('public/qr_codes/images', $imageFileName);
                 // $dataImageFullPath = url('/storage/qr_codes/images/' . $imageFileName);
             }
+        }else {
+            $uploadedImgFile = ['status' => 0];
         }
         $uploadedAdoFile = '';
         if ($request->hasFile('qr_data_audio_file')) {
@@ -254,6 +258,8 @@ class QrCodeController extends Controller
                 // $dataImagePath = $dataImage->storeAs('public/qr_codes/images', $imageFileName);
                 // $dataImageFullPath = url('/storage/qr_codes/images/' . $imageFileName);
             }
+        }else {
+            $uploadedAdoFile = ['status' => 0];
         }
         $qrDataLink = route('showQr', $qr->code);
         // Create QR Data record
