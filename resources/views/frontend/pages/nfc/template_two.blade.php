@@ -500,7 +500,7 @@
                                                 </h6>
                                                 <div class="d-flex justify-content-center">
                                                     <img class="" width="200px"
-                                                        src="{{ asset('storage/nfc/' . $nfc_card->nfc_qr) }}"
+                                                        src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
                                                         alt="" />
                                                 </div>
                                             </div>
