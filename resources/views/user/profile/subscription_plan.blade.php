@@ -1,117 +1,136 @@
 <x-app-layout :title="'My Subscription Plan'">
-   
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="card card-p-0 card-flush p-3 mt-10">
-                <div class="card-header align-items-center py-5 gap-2 gap-md-5">
-                    <div class="card-title">
-                        <h2 class="mb-0">My Subscription Plan Details</h2>
-                    </div>
+    <div id="kt_app_content_container" class="app-container  container-xxl ">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card" id="kt_pricing">
+                    <div class="card-body p-lg-17">
+                        @if ($subscription == null)
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div
+                                        class="notice d-flex bg-light-warning rounded border-warning border border-dashed  p-6">
+                                        <!--begin::Icon-->
+                                        <i class="ki-duotone ki-bank fs-2tx text-primary me-4"><span
+                                                class="path1"></span><span class="path2"></span></i> <!--end::Icon-->
 
-                </div>
-                <div class="card-body">
-                    @if ($subscription == null)
-                        <div class="row">
-                            <div class="col-lg-6 offset-lg-3">
-                                <h4 class="text-danger">You have not subscribed to any plan.</h4>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div>
-                                <div class="card-body p-lg-17">
-                                    <div class="d-flex flex-column">
-                                        <div class="mb-13 text-center">
-                                            <h1 class="fs-2hx fw-bold mb-5">Choose Your Plan</h1>
+                                        <!--begin::Wrapper-->
+                                        <div class="d-flex flex-stack flex-grow-1 flex-wrap flex-md-nowrap">
+                                            <!--begin::Content-->
+                                            <div class="mb-3 mb-md-0 fw-semibold">
+                                                <h4 class="text-warning-900 fw-bold">You Have Not Subscribe To Any Plan
+                                                </h4>
 
-                                            <div class="text-gray-600 fw-semibold fs-5">
-                                                If you need more info about our pricing, please check <a
-                                                    href="#" class="link-primary fw-bold">Pricing
-                                                    Guidelines</a>.
+                                                <div class="fs-6 text-gray-700 pe-7">Withdraw money securily to your
+                                                    bank account. Commision is $25 per transaction under $50,000</div>
                                             </div>
+                                            <!--end::Content-->
+
+                                            <!--begin::Action-->
+                                            <a href="#"
+                                                class="btn btn-warning px-6 align-self-center text-nowrap">
+                                                Upgrade Plan</a>
+                                            <!--end::Action-->
                                         </div>
+                                        <!--end::Wrapper-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div>
+                                    <div class="card-body p-lg-17">
+                                        <div class="d-flex flex-column">
+                                            <div class="mb-13 text-center">
+                                                <h1 class="fs-2hx fw-bold mb-5">Choose Your Plan</h1>
 
-                                        <div class="nav-group nav-group-outline mx-auto mb-15"
-                                            data-kt-buttons="true" data-kt-initialized="1">
-                                            <button
-                                                class="btn btn-color-gray-600 btn-active btn-active-secondary px-6 py-3 me-2 active"
-                                                data-kt-plan="month">
-                                                Monthly
-                                            </button>
+                                                <div class="text-gray-600 fw-semibold fs-5">
+                                                    If you need more info about our pricing, please check <a
+                                                        href="#" class="link-primary fw-bold">Pricing
+                                                        Guidelines</a>.
+                                                </div>
+                                            </div>
 
-                                            <button
-                                                class="btn btn-color-gray-600 btn-active btn-active-secondary px-6 py-3"
-                                                data-kt-plan="annual">
-                                                Annual
-                                            </button>
-                                        </div>
+                                            <div class="nav-group nav-group-outline mx-auto mb-15"
+                                                data-kt-buttons="true" data-kt-initialized="1">
+                                                <button
+                                                    class="btn btn-color-gray-600 btn-active btn-active-secondary px-6 py-3 me-2 active"
+                                                    data-kt-plan="month">
+                                                    Monthly
+                                                </button>
 
-                                        <div class="row g-10">
-                                            @foreach ($monthly_plans as $monthly_plan)
-                                                <div class="col-xl-4">
-                                                    <div class="d-flex h-100 align-items-center">
-                                                        <div
-                                                            class="w-100 d-flex flex-column flex-center rounded-3 bg-light bg-opacity-75 py-15 px-10">
-                                                            <div class="mb-7 text-center">
-                                                                <h1 class="text-gray-900 mb-5 fw-bolder">
-                                                                    {{ $monthly_plan->title }}</h1>
+                                                <button
+                                                    class="btn btn-color-gray-600 btn-active btn-active-secondary px-6 py-3"
+                                                    data-kt-plan="annual">
+                                                    Annual
+                                                </button>
+                                            </div>
 
-
-                                                                <div class="text-center">
-                                                                    <span
-                                                                        class="mb-2 text-primary">{{ $monthly_plan->currency }}</span>
-
-                                                                    <span class="fs-3x fw-bold text-primary"
-                                                                        data-kt-plan-price-month="39"
-                                                                        data-kt-plan-price-annual="399">
-                                                                        {{ $monthly_plan->price }}</span>
-
-                                                                    <span class="fs-7 fw-semibold opacity-50">/
-                                                                        <span data-kt-element="period">Mon</span>
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="w-100 mb-10">
-                                                                @foreach (json_decode($monthly_plan->descriptions ?? '[]') as $description)
-                                                                    <div class="d-flex align-items-center mb-5">
+                                            <div class="row g-10">
+                                                @foreach ($monthly_plans as $monthly_plan)
+                                                    <div class="col-xl-4">
+                                                        <div class="d-flex h-100 align-items-center">
+                                                            <div
+                                                                class="w-100 d-flex flex-column flex-center rounded-3 bg-light bg-opacity-75 py-15 px-10">
+                                                                <div class="mb-7 text-center">
+                                                                    <p>Startup</p>
+                                                                    <h1 class="text-gray-900 mb-5 fw-bolder">
+                                                                        {{ $monthly_plan->title }}</h1>
+                                                                    <div class="text-center">
                                                                         <span
-                                                                            class="fw-semibold fs-6 text-gray-800 flex-grow-1 pe-3">
-                                                                            {{ $description }}</span>
-                                                                        <i
-                                                                            class="ki-duotone ki-check-circle fs-1 text-success"><span
-                                                                                class="path1"></span><span
-                                                                                class="path2"></span></i>
-                                                                    </div>
-                                                                @endforeach
-                                                            </div>
+                                                                            class="mb-2 text-primary">{{ $monthly_plan->currency }}</span>
 
-                                                            <a href="{{ route('user.subscribe.post', $monthly_plan->slug) }}"
-                                                                class="btn btn-sm btn-primary">Select</a>
+                                                                        <span class="fs-3x fw-bold text-primary"
+                                                                            data-kt-plan-price-month="39"
+                                                                            data-kt-plan-price-annual="399">
+                                                                            {{ $monthly_plan->price }}</span>
+
+                                                                        <span class="fs-7 fw-semibold opacity-50">/
+                                                                            <span data-kt-element="period">Mon</span>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="w-100 mb-10">
+                                                                    @foreach (json_decode($monthly_plan->descriptions ?? '[]') as $description)
+                                                                        <div class="d-flex align-items-center mb-5">
+                                                                            <span
+                                                                                class="fw-semibold fs-6 text-gray-800 flex-grow-1 pe-3">
+                                                                                {{ $description }}</span>
+                                                                            <i
+                                                                                class="ki-duotone ki-check-circle fs-1 text-success"><span
+                                                                                    class="path1"></span><span
+                                                                                    class="path2"></span></i>
+                                                                        </div>
+                                                                    @endforeach
+                                                                </div>
+
+                                                                <a href="{{ route('user.subscribe.post', $monthly_plan->slug) }}"
+                                                                    class="btn btn-sm btn-primary">Select</a>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            @endforeach
+                                                @endforeach
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    @else
-                        <div class="row">
+                        @else
                             <div class="row">
-                                <div class="col-lg-8 offset-lg-2">
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            Plan name:
+                                <div class="row">
+                                    <div class="col-lg-8 offset-lg-2">
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                Plan name:
+                                            </div>
+                                            <div class="col-lg-4"></div>
+                                            <div class="col-lg-4"></div>
+                                            <div class="col-lg-4"></div>
                                         </div>
-                                        <div class="col-lg-4"></div>
-                                        <div class="col-lg-4"></div>
-                                        <div class="col-lg-4"></div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    @endif
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>

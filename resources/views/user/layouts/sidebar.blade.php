@@ -223,15 +223,15 @@
                                 <span class="menu-title">My Profile</span>
                             </a>
                         </div>
-                        <div class="menu-item">
+                        {{-- <div class="menu-item">
                             <a class="menu-link "
-                                href="{{ route('normaluser.pricing') }}"> {{-- {{ Route::is('user.qr-code.create') ? 'active' : '' }} --}}
+                                href="{{ route('normaluser.pricing') }}"> 
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
                                 <span class="menu-title">Pricing</span>
                             </a>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
