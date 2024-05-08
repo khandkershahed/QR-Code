@@ -1,5 +1,5 @@
 <x-admin-app-layout :title="'User Details of ' . $user->name">
-    <!--begin::Layout-->
+    <!--begin::Layout--> 
     <div class="d-flex flex-column flex-lg-row">
         <!--begin::Sidebar-->
         <div class="flex-column flex-lg-row-auto w-lg-250px w-xl-350px mb-10">
@@ -263,7 +263,7 @@
     </div>
     <!--end::Layout-->
     <!--begin::Modals-->
-    
+
     <!--begin::Modal - Update email-->
     <div class="modal fade metronic_modal" id="update_email_{{ $user->id }}" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered mw-650px">

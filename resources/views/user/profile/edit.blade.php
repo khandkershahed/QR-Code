@@ -1,5 +1,356 @@
 <x-app-layout :title="'My Profile : ' . Auth::user()->name">
-    <div class="container-fluid">
+    <style>
+        .nav-tabs .nav-item.show .nav-link,
+        .nav-tabs .nav-link {
+            background-color: transparent;
+        }
+    </style>
+    <div class="d-flex flex-column flex-lg-row">
+        <div class="flex-column flex-lg-row-auto w-lg-250px w-xl-350px mb-10">
+            <div class="card mb-5 mb-xl-8">
+                <div class="card-body">
+                    <div class="d-flex flex-center flex-column py-5">
+                        <div class="symbol symbol-100px symbol-circle mb-7">
+                            <img src="{{ !empty($user->profile_image) && file_exists(public_path('storage/user/profile_image/' . $user->profile_image)) ? asset('storage/user/profile_image/' . $user->profile_image) : asset('https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->name)) }}"
+                                alt="{{ $user->name }}">
+                        </div>
+                        <a href="#"
+                            class="fs-3 text-gray-800 text-hover-primary fw-bolder mb-3">{{ $user->name }}</a>
+                        @if (!empty($user->designation))
+                            <div class="mb-9">
+                                <div class="badge badge-lg badge-light-primary d-inline">{{ $user->designation }}</div>
+                            </div>
+                        @endif
+                        <div class="fw-bolder mb-3">Assigned Tickets
+                            <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="popover"
+                                data-bs-trigger="hover" data-bs-html="true"
+                                data-bs-content="Number of support tickets assigned, closed and pending this week."></i>
+                        </div>
+                        <div class="d-flex flex-wrap flex-center">
+                            <div class="border border-gray-300 border-dashed rounded py-3 px-3 mb-3">
+                                <div class="fs-4 fw-bolder text-gray-700">
+                                    <span class="w-75px">243</span>
+                                    <span class="svg-icon svg-icon-3 svg-icon-success">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none">
+                                            <rect opacity="0.5" x="13" y="6" width="13" height="2"
+                                                rx="1" transform="rotate(90 13 6)" fill="currentColor" />
+                                            <path
+                                                d="M12.5657 8.56569L16.75 12.75C17.1642 13.1642 17.8358 13.1642 18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25L12.7071 5.70711C12.3166 5.31658 11.6834 5.31658 11.2929 5.70711L5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75C6.16421 13.1642 6.83579 13.1642 7.25 12.75L11.4343 8.56569C11.7467 8.25327 12.2533 8.25327 12.5657 8.56569Z"
+                                                fill="currentColor" />
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="fw-bold text-muted">Total</div>
+                            </div>
+                            <div class="border border-gray-300 border-dashed rounded py-3 px-3 mx-4 mb-3">
+                                <div class="fs-4 fw-bolder text-gray-700">
+                                    <span class="w-50px">56</span>
+                                    <span class="svg-icon svg-icon-3 svg-icon-danger">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none">
+                                            <rect opacity="0.5" x="11" y="18" width="13" height="2"
+                                                rx="1" transform="rotate(-90 11 18)" fill="currentColor" />
+                                            <path
+                                                d="M11.4343 15.4343L7.25 11.25C6.83579 10.8358 6.16421 10.8358 5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75L11.2929 18.2929C11.6834 18.6834 12.3166 18.6834 12.7071 18.2929L18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25C17.8358 10.8358 17.1642 10.8358 16.75 11.25L12.5657 15.4343C12.2533 15.7467 11.7467 15.7467 11.4343 15.4343Z"
+                                                fill="currentColor" />
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="fw-bold text-muted">Solved</div>
+                            </div>
+                            <div class="border border-gray-300 border-dashed rounded py-3 px-3 mb-3">
+                                <div class="fs-4 fw-bolder text-gray-700">
+                                    <span class="w-50px">188</span>
+                                    <span class="svg-icon svg-icon-3 svg-icon-success">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none">
+                                            <rect opacity="0.5" x="13" y="6" width="13" height="2"
+                                                rx="1" transform="rotate(90 13 6)" fill="currentColor" />
+                                            <path
+                                                d="M12.5657 8.56569L16.75 12.75C17.1642 13.1642 17.8358 13.1642 18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25L12.7071 5.70711C12.3166 5.31658 11.6834 5.31658 11.2929 5.70711L5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75C6.16421 13.1642 6.83579 13.1642 7.25 12.75L11.4343 8.56569C11.7467 8.25327 12.2533 8.25327 12.5657 8.56569Z"
+                                                fill="currentColor" />
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="fw-bold text-muted">Open</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-stack fs-4 py-3">
+                        <div class="fw-bolder rotate collapsible" data-bs-toggle="collapse"
+                            data-bs-target="#user_collapse_details_{{ $user->id }}" role="button"
+                            aria-expanded="false" aria-controls="user_collapse_details_{{ $user->id }}">
+                            Details
+                            <span class="ms-2 rotate-180">
+                                <span class="svg-icon svg-icon-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none">
+                                        <path
+                                            d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
+                                            fill="currentColor" />
+                                    </svg>
+                                </span>
+                            </span>
+                        </div>
+                        <span data-bs-toggle="tooltip" data-bs-trigger="hover" title="Edit User Details">
+                            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#update_account_{{ $user->id }}"
+                                class="btn btn-sm btn-light-primary">Edit</a>
+                        </span>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="collapse show" id="user_collapse_details_{{ $user->id }}">
+                        <div class="pb-5 fs-6">
+                            @if (!empty($user->email))
+                                <div class="fw-bolder mt-5">Email</div>
+                                <div class="text-gray-600">
+                                    <a href="#" class="text-gray-600 text-hover-primary">{{ $user->email }}</a>
+                                </div>
+                            @endif
+                            @if (!empty($user->address))
+                                <div class="fw-bolder mt-5">Address</div>
+                                <div class="text-gray-600">{{ $user->address_line_one }}
+                                    {{ !empty($user->address_line_two) ? ',' : '' }}
+                                    {{ $user->address_line_two }}</div>
+                            @endif
+                            <div class="fw-bolder mt-5">Language</div>
+                            <div class="text-gray-600">English</div>
+                            <div class="fw-bolder mt-5">Last Login</div>
+                            <div class="text-gray-600">25 Jul 2022, 2:40 pm</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="flex-lg-row-fluid ms-lg-15">
+            <ul class="nav nav-custom nav-tabs nav-line-tabs nav-line-tabs-2x border-0 fs-4 fw-bold mb-8">
+                <li class="nav-item">
+                    <a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab"
+                        href="#kt_user_view_overview_tab">Overview</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-active-primary pb-4" data-kt-countup-tabs="true" data-bs-toggle="tab"
+                        href="#kt_user_view_overview_security">Security</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                        href="#kt_user_view_overview_events_and_logs_tab">Events &amp; Logs</a>
+                </li>
+                <li class="nav-item ms-auto">
+                    <a href="#" class="btn btn-primary ps-7" data-kt-menu-trigger="click"
+                        data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">Actions
+                        <span class="svg-icon svg-icon-2 me-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none">
+                                <path
+                                    d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
+                                    fill="currentColor" />
+                            </svg>
+                        </span>
+                        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold py-4 w-250px fs-6"
+                            data-kt-menu="true">
+
+                            <div class="menu-item px-5">
+                                <div class="menu-content text-muted pb-2 px-5 fs-7 text-uppercase">Account</div>
+                            </div>
+                            <div class="menu-item px-5">
+                                <a href="javascript:void(0)" class="menu-link px-5">Reports</a>
+                            </div>
+                            <div class="menu-item px-5 my-1">
+                                <a href="{{ route('admin.user.edit', $user->id) }}" class="menu-link px-5">Account
+                                    Settings</a>
+                            </div>
+                            <div class="menu-item px-5">
+                                <a href="{{ route('admin.user.destroy', $user->id) }}"
+                                    class="menu-link text-danger px-5 delete">Delete This User</a>
+                            </div>
+                        </div>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="kt_user_view_overview_tab" role="tabpanel">
+                    @include('user.profile.partials.overview')
+                </div>
+                <div class="tab-pane fade" id="kt_user_view_overview_security" role="tabpanel">
+                    @include('user.profile.partials.security')
+                </div>
+                <div class="tab-pane fade" id="kt_user_view_overview_events_and_logs_tab" role="tabpanel">
+                    @include('user.profile.partials.activity_logs')
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade metronic_modal" id="update_email_{{ $user->id }}" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered mw-650px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="fw-bolder">Update Email</h2>
+                    <div class="btn btn-icon btn-sm btn-active-icon-primary" data-kt-modal-action="close">
+                        <span class="svg-icon svg-icon-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1"
+                                    transform="rotate(-45 6 17.3137)" fill="currentColor" />
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1"
+                                    transform="rotate(45 7.41422 6)" fill="currentColor" />
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+                <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
+                    <form class="form" method="POST" action="{{ route('admin.user.update', $user->id) }}">
+                        @csrf
+                        @method('PATCH')
+                        <div
+                            class="notice d-flex bg-light-primary rounded border-primary border border-dashed mb-9 p-6">
+                            <span class="svg-icon svg-icon-2tx svg-icon-primary me-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none">
+                                    <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10"
+                                        fill="currentColor" />
+                                    <rect x="11" y="14" width="7" height="2" rx="1"
+                                        transform="rotate(-90 11 14)" fill="currentColor" />
+                                    <rect x="11" y="17" width="2" height="2" rx="1"
+                                        transform="rotate(-90 11 17)" fill="currentColor" />
+                                </svg>
+                            </span>
+                            <div class="d-flex flex-stack flex-grow-1">
+                                <div class="fw-bold">
+                                    <div class="fs-6 text-gray-700">Please note that a valid email address is required
+                                        to complete the email verification.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fv-row mb-7">
+                            <label class="fs-6 fw-bold form-label mb-2">
+                                <span class="required">Email Address</span>
+                            </label>
+                            <input class="form-control form-control-solid" type="email"
+                                placeholder="example@domain.com" name="email"
+                                value="{{ old('email', $user->email) }}" />
+                            <div class="invalid-feedback">
+                                Please input valid Email.
+                            </div>
+                        </div>
+                        <div class="text-center pt-15">
+                            <x-metronic.button type="submit" class="primary">
+                                {{ __('Save Changes') }}
+                            </x-metronic.button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade metronic_modal" id="update_password_{{ $user->id }}" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered mw-650px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="fw-bolder">Update User Password</h2>
+                    <!--begin::Close-->
+                    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
+                        aria-label="Close">
+                        <span class="svg-icon svg-icon-2x fs-1">X</span>
+                    </div>
+                    <!--end::Close-->
+                </div>
+                <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
+                    <form class="form" method="POST" action="{{ route('admin.user.update', $user->id) }}"
+                        novalidate>
+                        @csrf
+                        @method('PATCH')
+                        <div class="fv-row mb-10">
+                            <label class="required form-label fs-6 mb-2">Current Password</label>
+                            <input class="form-control form-control-lg form-control-solid" type="password"
+                                placeholder="" name="current_password" autocomplete="off" required />
+                            <div class="invalid-feedback">
+                                Please input your current password.
+                            </div>
+                        </div>
+                        <div class="mb-10 fv-row" data-kt-password-meter="true">
+                            <div class="mb-1">
+                                <label class="required form-label fw-bold fs-6 mb-2">New Password</label>
+                                <div class="position-relative mb-3">
+                                    <input class="form-control form-control-lg form-control-solid" type="password"
+                                        placeholder="" name="password" autocomplete="off" required />
+                                    <span
+                                        class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2"
+                                        data-kt-password-meter-control="visibility">
+                                        <i class="bi bi-eye-slash fs-2"></i>
+                                        <i class="bi bi-eye fs-2 d-none"></i>
+                                    </span>
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please input your new password.
+                                </div>
+                                <div class="d-flex align-items-center mb-3"
+                                    data-kt-password-meter-control="highlight">
+                                    <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                                    <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                                    <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                                    <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px"></div>
+                                </div>
+                            </div>
+                            <div class="text-muted">Use 8 or more characters with a mix of letters, numbers &amp;
+                                symbols.</div>
+                        </div>
+                        <div class="fv-row mb-10">
+                            <label class="required form-label fw-bold fs-6 mb-2">Confirm New Password</label>
+                            <input class="form-control form-control-lg form-control-solid" type="password"
+                                placeholder="Retype your new password" name="password_confirmation"
+                                autocomplete="off" required />
+                            <div class="invalid-feedback">
+                                Please Retype your new password.
+                            </div>
+                        </div>
+                        <div class="text-center pt-15">
+                            <x-metronic.button type="submit" class="primary">
+                                {{ __('Save Changes') }}
+                            </x-metronic.button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade metronic_modal" id="update_account_{{ $user->id }}" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered mw-650px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="fw-bolder">Update User Role</h2>
+                    <div class="btn btn-icon btn-sm btn-active-icon-primary" data-kt-modal-action="close">
+                        <span class="svg-icon svg-icon-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1"
+                                    transform="rotate(-45 6 17.3137)" fill="currentColor" />
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1"
+                                    transform="rotate(45 7.41422 6)" fill="currentColor" />
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+                <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
+                    <form class="form" method="POST" action="{{ route('admin.user.update', $user->id) }}">
+                        @csrf
+                        @method('PATCH')
+                        div
+
+                        <div class="text-center pt-15">
+                            <x-metronic.button type="submit" class="primary">
+                                {{ __('Save Changes') }}
+                            </x-metronic.button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
                 <div id="kt_app_content_container" class="app-container  container-xxl">
@@ -71,7 +422,8 @@
 
 
                                                 <a href="#" class="btn btn-sm btn-primary me-3"
-                                                    data-bs-toggle="modal" data-bs-target="#kt_modal_offer_a_deal">Hire
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#kt_modal_offer_a_deal">Hire
                                                     Me</a>
 
                                                 <div class="me-0">
@@ -866,11 +1218,12 @@
                                                                 stroke="transparent" stroke-opacity="1"
                                                                 stroke-linecap="round" stroke-width="2"
                                                                 stroke-dasharray="0" class="apexcharts-bar-area"
-                                                                index="0" clip-path="url(#gridRectMask92ul4qb9)"
+                                                                index="0"
+                                                                clip-path="url(#gridRectMask92ul4qb9)"
                                                                 pathTo="M 112.31207885742188 274.731 L 112.31207885742188 158.06308333333334 C 112.31207885742188 155.06308333333334 115.31207885742188 152.06308333333334 118.31207885742188 152.06308333333334 L 118.31207885742188 152.06308333333334 C 120.55163879394532 152.06308333333334 122.79119873046875 155.06308333333334 122.79119873046875 158.06308333333334 L 122.79119873046875 274.731 C 122.79119873046875 277.731 119.79119873046875 280.731 116.79119873046875 280.731 L 116.79119873046875 280.731 C 114.55163879394532 280.731 112.31207885742188 277.731 112.31207885742188 274.731 Z "
                                                                 pathFrom="M 112.31207885742188 280.731 L 112.31207885742188 280.731 L 122.79119873046875 280.731 L 122.79119873046875 280.731 L 122.79119873046875 280.731 L 122.79119873046875 280.731 L 122.79119873046875 280.731 L 112.31207885742188 280.731 Z"
-                                                                cy="152.06208333333333" cx="194.50621134440104" j="1"
-                                                                val="55" barHeight="128.66791666666668"
+                                                                cy="152.06208333333333" cx="194.50621134440104"
+                                                                j="1" val="55" barHeight="128.66791666666668"
                                                                 barWidth="12.479119873046875"></path>
                                                             <path id="SvgjsPath1134"
                                                                 d="M 195.50621134440104 274.731 L 195.50621134440104 153.38425 C 195.50621134440104 150.38425 198.50621134440104 147.38425 201.50621134440104 147.38425 L 201.50621134440104 147.38425 C 203.7457712809245 147.38425 205.9853312174479 150.38425 205.9853312174479 153.38425 L 205.9853312174479 274.731 C 205.9853312174479 277.731 202.9853312174479 280.731 199.9853312174479 280.731 L 199.9853312174479 280.731 C 197.7457712809245 280.731 195.50621134440104 277.731 195.50621134440104 274.731 Z "
@@ -878,7 +1231,8 @@
                                                                 stroke="transparent" stroke-opacity="1"
                                                                 stroke-linecap="round" stroke-width="2"
                                                                 stroke-dasharray="0" class="apexcharts-bar-area"
-                                                                index="0" clip-path="url(#gridRectMask92ul4qb9)"
+                                                                index="0"
+                                                                clip-path="url(#gridRectMask92ul4qb9)"
                                                                 pathTo="M 195.50621134440104 274.731 L 195.50621134440104 153.38425 C 195.50621134440104 150.38425 198.50621134440104 147.38425 201.50621134440104 147.38425 L 201.50621134440104 147.38425 C 203.7457712809245 147.38425 205.9853312174479 150.38425 205.9853312174479 153.38425 L 205.9853312174479 274.731 C 205.9853312174479 277.731 202.9853312174479 280.731 199.9853312174479 280.731 L 199.9853312174479 280.731 C 197.7457712809245 280.731 195.50621134440104 277.731 195.50621134440104 274.731 Z "
                                                                 pathFrom="M 195.50621134440104 280.731 L 195.50621134440104 280.731 L 205.9853312174479 280.731 L 205.9853312174479 280.731 L 205.9853312174479 280.731 L 205.9853312174479 280.731 L 205.9853312174479 280.731 L 195.50621134440104 280.731 Z"
                                                                 cy="147.38325" cx="277.7003438313802" j="2"
@@ -890,7 +1244,8 @@
                                                                 stroke="transparent" stroke-opacity="1"
                                                                 stroke-linecap="round" stroke-width="2"
                                                                 stroke-dasharray="0" class="apexcharts-bar-area"
-                                                                index="0" clip-path="url(#gridRectMask92ul4qb9)"
+                                                                index="0"
+                                                                clip-path="url(#gridRectMask92ul4qb9)"
                                                                 pathTo="M 278.7003438313802 274.731 L 278.7003438313802 155.72366666666667 C 278.7003438313802 152.72366666666667 281.7003438313802 149.72366666666667 284.7003438313802 149.72366666666667 L 284.7003438313802 149.72366666666667 C 286.9399037679037 149.72366666666667 289.1794637044271 152.72366666666667 289.1794637044271 155.72366666666667 L 289.1794637044271 274.731 C 289.1794637044271 277.731 286.1794637044271 280.731 283.1794637044271 280.731 L 283.1794637044271 280.731 C 280.9399037679037 280.731 278.7003438313802 277.731 278.7003438313802 274.731 Z "
                                                                 pathFrom="M 278.7003438313802 280.731 L 278.7003438313802 280.731 L 289.1794637044271 280.731 L 289.1794637044271 280.731 L 289.1794637044271 280.731 L 289.1794637044271 280.731 L 289.1794637044271 280.731 L 278.7003438313802 280.731 Z"
                                                                 cy="149.72266666666667" cx="360.8944763183594" j="3"
@@ -902,7 +1257,8 @@
                                                                 stroke="transparent" stroke-opacity="1"
                                                                 stroke-linecap="round" stroke-width="2"
                                                                 stroke-dasharray="0" class="apexcharts-bar-area"
-                                                                index="0" clip-path="url(#gridRectMask92ul4qb9)"
+                                                                index="0"
+                                                                clip-path="url(#gridRectMask92ul4qb9)"
                                                                 pathTo="M 361.8944763183594 274.731 L 361.8944763183594 144.02658333333335 C 361.8944763183594 141.02658333333335 364.8944763183594 138.02658333333335 367.8944763183594 138.02658333333335 L 367.8944763183594 138.02658333333335 C 370.13403625488286 138.02658333333335 372.3735961914063 141.02658333333335 372.3735961914063 144.02658333333335 L 372.3735961914063 274.731 C 372.3735961914063 277.731 369.3735961914063 280.731 366.3735961914063 280.731 L 366.3735961914063 280.731 C 364.13403625488286 280.731 361.8944763183594 277.731 361.8944763183594 274.731 Z "
                                                                 pathFrom="M 361.8944763183594 280.731 L 361.8944763183594 280.731 L 372.3735961914063 280.731 L 372.3735961914063 280.731 L 372.3735961914063 280.731 L 372.3735961914063 280.731 L 372.3735961914063 280.731 L 361.8944763183594 280.731 Z"
                                                                 cy="138.02558333333334" cx="444.0886088053386" j="4"
@@ -914,7 +1270,8 @@
                                                                 stroke="transparent" stroke-opacity="1"
                                                                 stroke-linecap="round" stroke-width="2"
                                                                 stroke-dasharray="0" class="apexcharts-bar-area"
-                                                                index="0" clip-path="url(#gridRectMask92ul4qb9)"
+                                                                index="0"
+                                                                clip-path="url(#gridRectMask92ul4qb9)"
                                                                 pathTo="M 445.0886088053386 274.731 L 445.0886088053386 151.04483333333334 C 445.0886088053386 148.04483333333334 448.0886088053386 145.04483333333334 451.0886088053386 145.04483333333334 L 451.0886088053386 145.04483333333334 C 453.32816874186204 145.04483333333334 455.5677286783855 148.04483333333334 455.5677286783855 151.04483333333334 L 455.5677286783855 274.731 C 455.5677286783855 277.731 452.5677286783855 280.731 449.5677286783855 280.731 L 449.5677286783855 280.731 C 447.32816874186204 280.731 445.0886088053386 277.731 445.0886088053386 274.731 Z "
                                                                 pathFrom="M 445.0886088053386 280.731 L 445.0886088053386 280.731 L 455.5677286783855 280.731 L 455.5677286783855 280.731 L 455.5677286783855 280.731 L 455.5677286783855 280.731 L 455.5677286783855 280.731 L 445.0886088053386 280.731 Z"
                                                                 cy="145.04383333333334" cx="527.2827412923177" j="5"
@@ -950,19 +1307,21 @@
                                                                 class="apexcharts-bar-shadows apexcharts-hidden-element-shown">
                                                             </g>
                                                         </g>
-                                                        <g id="SvgjsG1141" class="apexcharts-series" rel="2"
-                                                            seriesName="Revenue" data:realIndex="1">
+                                                        <g id="SvgjsG1141" class="apexcharts-series"
+                                                            rel="2" seriesName="Revenue"
+                                                            data:realIndex="1">
                                                             <path id="SvgjsPath1146"
                                                                 d="M 41.597066243489586 274.731 L 41.597066243489586 108.93533333333335 C 41.597066243489586 105.93533333333335 44.597066243489586 102.93533333333335 47.597066243489586 102.93533333333335 L 47.597066243489586 102.93533333333335 C 49.83662618001303 102.93533333333335 52.07618611653646 105.93533333333335 52.07618611653646 108.93533333333335 L 52.07618611653646 274.731 C 52.07618611653646 277.731 49.07618611653646 280.731 46.07618611653646 280.731 L 46.07618611653646 280.731 C 43.83662618001303 280.731 41.597066243489586 277.731 41.597066243489586 274.731 Z "
                                                                 fill="rgba(219,223,233,1)" fill-opacity="1"
                                                                 stroke="transparent" stroke-opacity="1"
                                                                 stroke-linecap="round" stroke-width="2"
                                                                 stroke-dasharray="0" class="apexcharts-bar-area"
-                                                                index="1" clip-path="url(#gridRectMask92ul4qb9)"
+                                                                index="1"
+                                                                clip-path="url(#gridRectMask92ul4qb9)"
                                                                 pathTo="M 41.597066243489586 274.731 L 41.597066243489586 108.93533333333335 C 41.597066243489586 105.93533333333335 44.597066243489586 102.93533333333335 47.597066243489586 102.93533333333335 L 47.597066243489586 102.93533333333335 C 49.83662618001303 102.93533333333335 52.07618611653646 105.93533333333335 52.07618611653646 108.93533333333335 L 52.07618611653646 274.731 C 52.07618611653646 277.731 49.07618611653646 280.731 46.07618611653646 280.731 L 46.07618611653646 280.731 C 43.83662618001303 280.731 41.597066243489586 277.731 41.597066243489586 274.731 Z "
                                                                 pathFrom="M 41.597066243489586 280.731 L 41.597066243489586 280.731 L 52.07618611653646 280.731 L 52.07618611653646 280.731 L 52.07618611653646 280.731 L 52.07618611653646 280.731 L 52.07618611653646 280.731 L 41.597066243489586 280.731 Z"
-                                                                cy="102.93433333333334" cx="123.79119873046875" j="0"
-                                                                val="76" barHeight="177.79566666666668"
+                                                                cy="102.93433333333334" cx="123.79119873046875"
+                                                                j="0" val="76" barHeight="177.79566666666668"
                                                                 barWidth="12.479119873046875"></path>
                                                             <path id="SvgjsPath1148"
                                                                 d="M 124.79119873046875 274.731 L 124.79119873046875 87.88058333333333 C 124.79119873046875 84.88058333333333 127.79119873046875 81.88058333333333 130.79119873046875 81.88058333333333 L 130.79119873046875 81.88058333333333 C 133.0307586669922 81.88058333333333 135.27031860351562 84.88058333333333 135.27031860351562 87.88058333333333 L 135.27031860351562 274.731 C 135.27031860351562 277.731 132.27031860351562 280.731 129.27031860351562 280.731 L 129.27031860351562 280.731 C 127.03075866699218 280.731 124.79119873046875 277.731 124.79119873046875 274.731 Z "
@@ -970,7 +1329,8 @@
                                                                 stroke="transparent" stroke-opacity="1"
                                                                 stroke-linecap="round" stroke-width="2"
                                                                 stroke-dasharray="0" class="apexcharts-bar-area"
-                                                                index="1" clip-path="url(#gridRectMask92ul4qb9)"
+                                                                index="1"
+                                                                clip-path="url(#gridRectMask92ul4qb9)"
                                                                 pathTo="M 124.79119873046875 274.731 L 124.79119873046875 87.88058333333333 C 124.79119873046875 84.88058333333333 127.79119873046875 81.88058333333333 130.79119873046875 81.88058333333333 L 130.79119873046875 81.88058333333333 C 133.0307586669922 81.88058333333333 135.27031860351562 84.88058333333333 135.27031860351562 87.88058333333333 L 135.27031860351562 274.731 C 135.27031860351562 277.731 132.27031860351562 280.731 129.27031860351562 280.731 L 129.27031860351562 280.731 C 127.03075866699218 280.731 124.79119873046875 277.731 124.79119873046875 274.731 Z "
                                                                 pathFrom="M 124.79119873046875 280.731 L 124.79119873046875 280.731 L 135.27031860351562 280.731 L 135.27031860351562 280.731 L 135.27031860351562 280.731 L 135.27031860351562 280.731 L 135.27031860351562 280.731 L 124.79119873046875 280.731 Z"
                                                                 cy="81.87958333333333" cx="206.9853312174479" j="1"
@@ -982,7 +1342,8 @@
                                                                 stroke="transparent" stroke-opacity="1"
                                                                 stroke-linecap="round" stroke-width="2"
                                                                 stroke-dasharray="0" class="apexcharts-bar-area"
-                                                                index="1" clip-path="url(#gridRectMask92ul4qb9)"
+                                                                index="1"
+                                                                clip-path="url(#gridRectMask92ul4qb9)"
                                                                 pathTo="M 207.9853312174479 274.731 L 207.9853312174479 50.44991666666666 C 207.9853312174479 47.44991666666666 210.9853312174479 44.44991666666666 213.9853312174479 44.44991666666666 L 213.9853312174479 44.44991666666666 C 216.22489115397133 44.44991666666666 218.46445109049478 47.44991666666666 218.46445109049478 50.44991666666666 L 218.46445109049478 274.731 C 218.46445109049478 277.731 215.46445109049478 280.731 212.46445109049478 280.731 L 212.46445109049478 280.731 C 210.22489115397133 280.731 207.9853312174479 277.731 207.9853312174479 274.731 Z "
                                                                 pathFrom="M 207.9853312174479 280.731 L 207.9853312174479 280.731 L 218.46445109049478 280.731 L 218.46445109049478 280.731 L 218.46445109049478 280.731 L 218.46445109049478 280.731 L 218.46445109049478 280.731 L 207.9853312174479 280.731 Z"
                                                                 cy="44.44891666666666" cx="290.1794637044271" j="2"
@@ -994,7 +1355,8 @@
                                                                 stroke="transparent" stroke-opacity="1"
                                                                 stroke-linecap="round" stroke-width="2"
                                                                 stroke-dasharray="0" class="apexcharts-bar-area"
-                                                                index="1" clip-path="url(#gridRectMask92ul4qb9)"
+                                                                index="1"
+                                                                clip-path="url(#gridRectMask92ul4qb9)"
                                                                 pathTo="M 291.1794637044271 274.731 L 291.1794637044271 57.468166666666654 C 291.1794637044271 54.468166666666654 294.1794637044271 51.468166666666654 297.1794637044271 51.468166666666654 L 297.1794637044271 51.468166666666654 C 299.41902364095057 51.468166666666654 301.658583577474 54.468166666666654 301.658583577474 57.468166666666654 L 301.658583577474 274.731 C 301.658583577474 277.731 298.658583577474 280.731 295.658583577474 280.731 L 295.658583577474 280.731 C 293.41902364095057 280.731 291.1794637044271 277.731 291.1794637044271 274.731 Z "
                                                                 pathFrom="M 291.1794637044271 280.731 L 291.1794637044271 280.731 L 301.658583577474 280.731 L 301.658583577474 280.731 L 301.658583577474 280.731 L 301.658583577474 280.731 L 301.658583577474 280.731 L 291.1794637044271 280.731 Z"
                                                                 cy="51.46716666666666" cx="373.3735961914063" j="3"
@@ -1006,7 +1368,8 @@
                                                                 stroke="transparent" stroke-opacity="1"
                                                                 stroke-linecap="round" stroke-width="2"
                                                                 stroke-dasharray="0" class="apexcharts-bar-area"
-                                                                index="1" clip-path="url(#gridRectMask92ul4qb9)"
+                                                                index="1"
+                                                                clip-path="url(#gridRectMask92ul4qb9)"
                                                                 pathTo="M 374.3735961914063 274.731 L 374.3735961914063 83.20175 C 374.3735961914063 80.20175 377.3735961914063 77.20175 380.3735961914063 77.20175 L 380.3735961914063 77.20175 C 382.61315612792976 77.20175 384.8527160644532 80.20175 384.8527160644532 83.20175 L 384.8527160644532 274.731 C 384.8527160644532 277.731 381.8527160644532 280.731 378.8527160644532 280.731 L 378.8527160644532 280.731 C 376.61315612792976 280.731 374.3735961914063 277.731 374.3735961914063 274.731 Z "
                                                                 pathFrom="M 374.3735961914063 280.731 L 374.3735961914063 280.731 L 384.8527160644532 280.731 L 384.8527160644532 280.731 L 384.8527160644532 280.731 L 384.8527160644532 280.731 L 384.8527160644532 280.731 L 374.3735961914063 280.731 Z"
                                                                 cy="77.20075" cx="456.5677286783855" j="4"
@@ -1018,7 +1381,8 @@
                                                                 stroke="transparent" stroke-opacity="1"
                                                                 stroke-linecap="round" stroke-width="2"
                                                                 stroke-dasharray="0" class="apexcharts-bar-area"
-                                                                index="1" clip-path="url(#gridRectMask92ul4qb9)"
+                                                                index="1"
+                                                                clip-path="url(#gridRectMask92ul4qb9)"
                                                                 pathTo="M 457.5677286783855 274.731 L 457.5677286783855 41.09225 C 457.5677286783855 38.09225 460.5677286783855 35.09225 463.5677286783855 35.09225 L 463.5677286783855 35.09225 C 465.80728861490894 35.09225 468.0468485514324 38.09225 468.0468485514324 41.09225 L 468.0468485514324 274.731 C 468.0468485514324 277.731 465.0468485514324 280.731 462.0468485514324 280.731 L 462.0468485514324 280.731 C 459.80728861490894 280.731 457.5677286783855 277.731 457.5677286783855 274.731 Z "
                                                                 pathFrom="M 457.5677286783855 280.731 L 457.5677286783855 280.731 L 468.0468485514324 280.731 L 468.0468485514324 280.731 L 468.0468485514324 280.731 L 468.0468485514324 280.731 L 468.0468485514324 280.731 L 457.5677286783855 280.731 Z"
                                                                 cy="35.09125" cx="539.7618611653646" j="5"
@@ -1063,8 +1427,8 @@
                                                     </g>
                                                     <line id="SvgjsLine1170" x1="0" y1="0"
                                                         x2="499.164794921875" y2="0" stroke="#b6b6b6"
-                                                        stroke-dasharray="0" stroke-width="1" stroke-linecap="butt"
-                                                        class="apexcharts-ycrosshairs"></line>
+                                                        stroke-dasharray="0" stroke-width="1"
+                                                        stroke-linecap="butt" class="apexcharts-ycrosshairs"></line>
                                                     <line id="SvgjsLine1171" x1="0" y1="0"
                                                         x2="499.164794921875" y2="0" stroke-dasharray="0"
                                                         stroke-width="0" stroke-linecap="butt"
@@ -1073,9 +1437,10 @@
                                                         transform="translate(0, 0)">
                                                         <g id="SvgjsG1173" class="apexcharts-xaxis-texts-g"
                                                             transform="translate(0, -4)"><text id="SvgjsText1175"
-                                                                font-family="inherit" x="41.597066243489586" y="309.73"
-                                                                text-anchor="middle" dominant-baseline="auto"
-                                                                font-size="12px" font-weight="400" fill="#99a1b7"
+                                                                font-family="inherit" x="41.597066243489586"
+                                                                y="309.73" text-anchor="middle"
+                                                                dominant-baseline="auto" font-size="12px"
+                                                                font-weight="400" fill="#99a1b7"
                                                                 class="apexcharts-text apexcharts-xaxis-label "
                                                                 style="font-family: inherit;">
                                                                 <tspan id="SvgjsTspan1176">Feb</tspan>
@@ -1180,7 +1545,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     @include('user.profile.partials.update-profile-information-form')
     @include('user.profile.partials.update-password-form')
     @include('user.profile.partials.delete-user-form')

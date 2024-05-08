@@ -1,14 +1,6 @@
 <x-app-layout :title="'QR Code Generate'">
     <div class="container-fluid">
-        {!! QrCode::eye('left-leaf',0.1)->style('dot')->eyeColor(0, 0, 0, 0)->generate('Make me into a QrCode!') !!}
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        {!! QrCode::size(230)->eye('left-leaf',0.1)->eyeColor(0, 222, 18, 222,222, 18, 222 )->eyeColor(1, 222, 18, 222,222, 18, 222 )->eyeColor(2, 222, 18, 222,222, 18, 222 )->style('cuboidal')->errorCorrection('H')->generate('Make me into a QrCode!'); !!}
-        <div class="row">
+       <div class="row">
             <div class="col-lg-9">
                 <div class="card mt-10">
                     <div class="card-body">
