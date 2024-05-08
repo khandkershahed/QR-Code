@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\NewsLetterController;
 use App\Http\Controllers\Admin\NfcIndividualMessageController;
 use App\Http\Controllers\Admin\QrCodeController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Reseller\ResellerSocialLoginController;
+use App\Http\Controllers\ResellerProfileController;
 use App\Http\Controllers\User\UserSocialLoginController;
 use App\Http\Controllers\VendorProfileController;
 
@@ -60,6 +62,15 @@ Route::controller(UserSocialLoginController::class)->group(function(){
     Route::get('auth/github/callback', 'handleGithubCallback')->name('callback.github');
 });
 
+Route::controller(ResellerSocialLoginController::class)->name('reseller.')->group(function(){
+    Route::get('auth/google', 'redirectToGoogle')->name('auth.google');
+    Route::get('auth/google/callback', 'handleGoogleCallback')->name('callback.google');
+    Route::get('/auth/facebook', 'redirectFacebook')->name('auth.facebook');
+    Route::get('auth/facebook/callback', 'facebookCallback')->name('callback.facebook');
+    Route::get('auth/github', 'redirectToGithub')->name('auth.github');
+    Route::get('auth/github/callback', 'handleGithubCallback')->name('callback.github');
+});
+
 
 
 
@@ -81,9 +92,7 @@ Route::post('newsletter/store', [NewsLetterController::class, 'store'])
 Route::get('/admin/dashboard', function () {
     return view('admin/dashboard');
 })->middleware(['auth:admin', 'verified'])->name('admin.dashboard');
-Route::get('/reseller/dashboard', function () {
-    return view('reseller/dashboard');
-})->middleware(['auth', 'verified'])->name('reseller.dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -96,6 +105,11 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::get('/profile', [AdminProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [AdminProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [AdminProfileController::class, 'destroy'])->name('profile.destroy');
+});
+Route::middleware('auth:reseller')->prefix('reseller')->name('reseller.')->group(function () {
+    Route::get('/profile', [ResellerProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ResellerProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ResellerProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 require __DIR__ . '/auth.php';

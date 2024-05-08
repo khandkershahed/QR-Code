@@ -1,7 +1,6 @@
-<x-admin-app-layout>
+<x-reseller-app-layout>
     <div class="row gap-5">
-
-        <h1 class="text-center mb-0 text-success">{{ Auth::guard('admin')->user()->name }}</h1>
+        <h1 class="text-center mb-0 text-success">{{ Auth::guard('reseller')->user()->name }}</h1>
         <h1 class="text-center">Welcome To Your Dashboard</h1>
         <div class="col bg-warning p-10 rounded-2">
             <div class="d-flex justify-content-between align-items-center ">
@@ -74,4 +73,4 @@
             <a href="#" class="text-white fw-bold fs-6 mt-2">Bug Reports</a>
         </div>
     </div>
-</x-admin-app-layout>
+</x-reseller-app-layout>

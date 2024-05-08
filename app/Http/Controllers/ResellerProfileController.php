@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Reseller;
 use Illuminate\View\View;
 use App\Models\Admin\Plan;
 use Illuminate\Http\Request;
@@ -18,8 +18,9 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Http\Requests\ResellerProfileUpdateRequest;
 
-class ProfileController extends Controller
+class ResellerProfileController extends Controller
 {
     /**
      * Display the user's profile form.
@@ -28,43 +29,27 @@ class ProfileController extends Controller
     {
         // dd($request->input('device'));
 
-        return view('user.profile.edit', [
-            'user' => $request->user(),
-            'notifications' => UserNotification::where('user_id', Auth::user()->id)->with('notificationMessage')->orderBy('created_at', 'desc')->get(),
+        return view('reseller.profile.edit', [
+            'reseller' => $request->user(),
+            // 'notifications' => UserNotification::where('user_id', Auth::user()->id)->with('notificationMessage')->orderBy('created_at', 'desc')->get(),
         ]);
     }
 
-    /**
-     * Update the user's profile information.
-     */
-    // public function update(ProfileUpdateRequest $request): RedirectResponse
-    // {
-    //     $request->user()->fill($request->validated());
-
-    //     if ($request->user()->isDirty('email')) {
-    //         $request->user()->email_verified_at = null;
-    //     }
-
-    //     $request->user()->save();
-
-    //     return Redirect::route('profile.edit')->with('status', 'profile-updated');
-    // }
 
 
-    public function update(ProfileUpdateRequest $request, User $user): RedirectResponse
+
+    public function update(ResellerProfileUpdateRequest $request, Reseller $user): RedirectResponse
     {
-        // dd($request->all());
 
-        // Initialize default values
-        $imagePath = 'public/user/profile_image/';
-        $logoPath = 'public/user/company_logo/';
+        $imagePath = 'public/reseller/profile_image/';
+        $logoPath = 'public/reseller/company_logo/';
         // Handle profile image upload
         if ($request->hasFile('profile_image')) {
             $profile_image = customUpload($request->file('profile_image'), $imagePath , 'profile_image');
             if ($profile_image['status'] == 1) {
-                        File::delete(public_path('/storage/user/profile_image/') . $request->user()->profile_image);
-                        File::delete(public_path('/storage/user/profile_image/requestImg/') . $request->user()->profile_image);
-                        File::delete(public_path('/storage/user/profile_image/thumb/') . $request->user()->profile_image);
+                        File::delete(public_path('/storage/reseller/profile_image/') . $request->user()->profile_image);
+                        File::delete(public_path('/storage/reseller/profile_image/requestImg/') . $request->user()->profile_image);
+                        File::delete(public_path('/storage/reseller/profile_image/thumb/') . $request->user()->profile_image);
                     }
 
         }else{
@@ -75,9 +60,9 @@ class ProfileController extends Controller
         if ($request->hasFile('company_logo')) {
             $company_logo = customUpload($request->file('company_logo'), $logoPath , 'company_logo');
             if ($company_logo['status'] == 1) {
-                File::delete(public_path('storage/user/company_logo/') . $request->user()->company_logo);
-                File::delete(public_path('storage/user/company_logo/requestImg/') . $request->user()->company_logo);
-                File::delete(public_path('storage/user/company_logo/thumb/') . $request->user()->company_logo);
+                File::delete(public_path('storage/reseller/company_logo/') . $request->user()->company_logo);
+                File::delete(public_path('storage/reseller/company_logo/requestImg/') . $request->user()->company_logo);
+                File::delete(public_path('storage/reseller/company_logo/thumb/') . $request->user()->company_logo);
             }
         }else{
             $company_logo['status'] = 0;
@@ -106,14 +91,12 @@ class ProfileController extends Controller
             'password'         => $request->filled('password') ? Hash::make($request->password) : $request->user()->password,
         ]);
 
-        // Reset email verification if email is updated
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
 
         $request->user()->save();
-        // event(new ActivityLogged('User updated', $user));
-        return redirect()->route('profile.edit')->with('success', 'profile-updated');
+        return redirect()->route('reseller.profile.edit')->with('success', 'profile-updated');
     }
 
     /**
@@ -129,22 +112,9 @@ class ProfileController extends Controller
      */
     public function destroy(Request $request)
     {
-        // $request->validateWithBag('userDeletion', [
-        //     'password' => ['required', 'current_password'],
-        // ]);
 
-        // $user = $request->user();
-
-        // Auth::logout();
-
-        // $user->delete();
-
-        // $request->session()->invalidate();
-        // $request->session()->regenerateToken();
-
-        // return Redirect::to('/'); 
         $user = $request->user();
-        Auth::logout();
+        Auth::guard('reseller')->logout();
         $user->delete();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
@@ -152,13 +122,13 @@ class ProfileController extends Controller
 
     public function userPlan(): View
     {
-        $user = Auth::user();
+        $user = Auth::guard('reseller')->user();
         $data = [
             'monthly_plans' => Plan::orderBy('price', 'asc')->where('billing_cycle', 'monthly')->get(),
             'yearly_plans' => Plan::orderBy('price', 'asc')->where('billing_cycle', 'yearly')->get(),
             'subscription' => $user->subscription('default'),
         ];
 
-        return view('user.profile.subscription_plan', $data);
+        return view('reseller.profile.subscription_plan', $data);
     }
 }

@@ -2,8 +2,9 @@
 
 namespace App\Exceptions;
 
-use Arr;
+// use Arr;
 use Throwable;
+use Illuminate\Support\Arr;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
@@ -29,11 +30,32 @@ class Handler extends ExceptionHandler
             //
         });
     }
+    // protected function unauthenticated($request, AuthenticationException $exception)
+    // {
+    //     $guard = Arr::first($exception->guards());
+    //     return $this->shouldReturnJson($request, $exception)
+    //         ? response()->json(['message' => $exception->getMessage()], 401)
+    //         : redirect()->guest($guard === 'admin' ? route('admin.login') : route('login'));
+    // }
     protected function unauthenticated($request, AuthenticationException $exception)
     {
         $guard = Arr::first($exception->guards());
+
+        switch ($guard) {
+            case 'admin':
+                $redirectTo = route('admin.login');
+                break;
+            case 'reseller':
+                $redirectTo = route('reseller.login');
+                break;
+            default:
+                $redirectTo = route('login');
+                break;
+        }
+
         return $this->shouldReturnJson($request, $exception)
             ? response()->json(['message' => $exception->getMessage()], 401)
-            : redirect()->guest($guard === 'admin' ? route('admin.login') : route('login'));
+            : redirect()->guest($redirectTo);
     }
+
 }

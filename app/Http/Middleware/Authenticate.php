@@ -16,11 +16,14 @@ class Authenticate extends Middleware
             if ($request->routeIs('admin.*') && !$request->user('admin')) {
                 return route('admin.login');
             }
+            if ($request->routeIs('reseller.*') && !$request->user('reseller')) {
+                return route('reseller.login');
+            }
             if ($request->routeIs('user.*') && !$request->user('web')) {
                 return route('login');
             }
         }
 
-        return null; 
+        return null;
     }
 }

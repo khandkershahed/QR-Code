@@ -25,6 +25,9 @@ class RedirectIfAuthenticated
                     case 'admin':
                         return redirect(RouteServiceProvider::ADMIN_HOME);
                         break;
+                    case 'reseller':
+                        return redirect(RouteServiceProvider::RESELLER_HOME);
+                        break;
                     default:
                         return redirect(RouteServiceProvider::HOME);
                         break;
