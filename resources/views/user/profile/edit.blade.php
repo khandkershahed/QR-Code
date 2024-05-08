@@ -138,36 +138,7 @@
                     <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
                         href="#kt_user_view_overview_events_and_logs_tab">Events &amp; Logs</a>
                 </li>
-                <li class="nav-item ms-auto">
-                    <a href="#" class="btn btn-primary ps-7" data-kt-menu-trigger="click"
-                        data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">Actions
-                        <span class="svg-icon svg-icon-2 me-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24" fill="none">
-                                <path
-                                    d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
-                                    fill="currentColor" />
-                            </svg>
-                        </span>
-                        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold py-4 w-250px fs-6"
-                            data-kt-menu="true">
-
-                            <div class="menu-item px-5">
-                                <div class="menu-content text-muted pb-2 px-5 fs-7 text-uppercase">Account</div>
-                            </div>
-                            <div class="menu-item px-5">
-                                <a href="javascript:void(0)" class="menu-link px-5">Reports</a>
-                            </div>
-                            <div class="menu-item px-5 my-1">
-                                <a href="{{ route('admin.user.edit', $user->id) }}" class="menu-link px-5">Account
-                                    Settings</a>
-                            </div>
-                            <div class="menu-item px-5">
-                                <a href="{{ route('admin.user.destroy', $user->id) }}"
-                                    class="menu-link text-danger px-5 delete">Delete This User</a>
-                            </div>
-                        </div>
-                </li>
+                
             </ul>
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="kt_user_view_overview_tab" role="tabpanel">
@@ -259,7 +230,7 @@
                     <!--end::Close-->
                 </div>
                 <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
-                    <form class="form" method="POST" action="{{ route('admin.user.update', $user->id) }}"
+                    <form class="form" method="POST" action="{{ route('profile.update', $user->id) }}"
                         novalidate>
                         @csrf
                         @method('PATCH')
@@ -485,7 +456,7 @@
             </div>
         </div>
     </div>
-    @include('user.profile.partials.update-profile-information-form')
+    {{-- @include('user.profile.partials.update-profile-information-form')
     @include('user.profile.partials.update-password-form')
-    @include('user.profile.partials.delete-user-form')
+    @include('user.profile.partials.delete-user-form') --}}
 </x-app-layout>
