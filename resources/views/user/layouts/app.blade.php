@@ -51,7 +51,7 @@
     <div class="d-flex flex-column flex-root">
         <div class="page d-flex flex-row flex-column-fluid">
             @include('user.layouts.sidebar')
-            <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+            <div class="wrapper d-flex flex-column flex-row-fluid pt-15" id="kt_wrapper">
                 @include('user.layouts.header')
                 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
                     {{-- @include('user.layouts.toolbar') --}}
