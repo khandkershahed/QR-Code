@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Contracts\Validation\Validator;
 
 class ProfileUpdateRequest extends FormRequest
 {
@@ -15,9 +16,33 @@ class ProfileUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
+        
         return [
-            'name' => ['string', 'max:255'],
-            'email' => ['email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
+            'name'              => ['string', 'max:255'],
+            'email'             => ['email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
+            'profile_image'     => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'company_logo'      => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        $this->recordErrorMessages($validator);
+        parent::failedValidation($validator);
+    }
+
+    /**
+     * Record the error messages displayed to the user.
+     *
+     * @param  \Illuminate\Contracts\Validation\Validator  $validator
+     * @return void
+     */
+    protected function recordErrorMessages(Validator $validator)
+    {
+        $errorMessages = $validator->errors()->all();
+        foreach ($errorMessages as $errorMessage) {
+            // flash()->addError($errorMessage);
+            session()->flash('error', ['message' => $errorMessage]);
+        }
     }
 }

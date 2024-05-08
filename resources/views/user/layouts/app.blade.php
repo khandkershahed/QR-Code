@@ -53,7 +53,7 @@
             <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
                 @include('user.layouts.header')
                 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-                    @include('user.layouts.toolbar')
+                    {{-- @include('user.layouts.toolbar') --}}
                     <div class="post d-flex flex-column-fluid" id="kt_post">
                         <div id="kt_content_container" class="container-fluid">
                             {{ $slot }}
