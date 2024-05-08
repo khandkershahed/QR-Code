@@ -218,248 +218,188 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="card border-0 h-md-100" data-bs-theme="light"
-                    style="background: linear-gradient(112.14deg, #00D2FF 0%, #3A7BD5 100%)">
-                    <div class="card-header border-0 py-5">
-                        <div>
-                            <div class="d-flex justify-content-between align-items-center ">
-                                <div>
-                                    <h4 class="text-white">Notification</h4>
-                                    <p class="p-0 m-0 text-white text-warning">{{ now()->format('d F Y') }}</p>
-                                </div>
-                                {{-- Admin Notifcation box End --}}
-                                <div>
-                                    <div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static"
-                                        data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId"
-                                        aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg"
-                                            role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="modalTitleId">
-                                                        Your Subscription Summury
-                                                    </h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="mt-n1">
-                                                        <div class="d-flex flex-stack pb-10">
-                                                            <a href="http://127.0.0.1:8000/dashboard">
-                                                                <img alt="Logo"
-                                                                    src="https://i.ibb.co/BNBTVN4/logo.png
-                                                            "
-                                                                    class="h-60px logo">
-                                                            </a>
+        <div class="row g-5 gx-xl-10 mb-5 mb-xl-10">
+            <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-3 mb-md-5 mb-xl-10">
+                <div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-end h-md-50 mb-5 mb-xl-10"
+                    style="background-color: #15a5aa;background-image:url('https://preview.keenthemes.com/metronic8/demo1/assets/media/patterns/vector-1.png')">
+                    <div class="card-header pt-5">
+                        <div class="card-title d-flex flex-column">
+                            <span class="fs-2hx fw-bold text-white me-2 lh-1 ls-n2">69</span>
 
+                            <span class="text-white opacity-75 pt-1 fw-semibold fs-6">Total QR Created</span>
+                        </div>
+                    </div>
 
-                                                            <div
-                                                                class="fw-bold fs-6 flex-column  text-gray-800 d-flex align-items-end flex-wrap">
-                                                                <span class="pe-2 fs-1 ">QR Code Code</span>
-                                                                <span class="pe-2">02 May 2021</span>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="m-0">
-                                                            <div class="fw-bold fs-3 text-gray-800 mb-8">Invoice #34782
-                                                            </div>
-
-                                                            <div class="row g-5 mb-11">
-                                                                <div class="col-sm-6">
-                                                                    <div class="fw-semibold fs-7 text-gray-600 mb-1">
-                                                                        Issue
-                                                                        Date:
-                                                                    </div>
-
-                                                                    <div class="fw-bold fs-6 text-gray-800">5 Apr 2021
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="row g-5 mb-12">
-                                                                <div class="col-sm-6">
-                                                                    <div class="fw-semibold fs-7 text-gray-600 mb-1">
-                                                                        Issue
-                                                                        For:
-                                                                    </div>
-
-                                                                    <div class="fw-bold fs-6 text-gray-800">Your Name
-                                                                    </div>
-
-                                                                    <div class="fw-semibold fs-7 text-gray-600">
-                                                                        8692 Wild Rose Drive <br>
-                                                                        Ph: 01576614451
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-sm-6">
-                                                                    <div class="fw-semibold fs-7 text-gray-600 mb-1">
-                                                                        Issued
-                                                                        By:
-                                                                    </div>
-
-                                                                    <div class="fw-bold fs-6 text-gray-800">QR Code
-                                                                        Code
-                                                                    </div>
-
-                                                                    <div class="fw-semibold fs-7 text-gray-600">
-                                                                        9858 South 53rd Ave.<br>
-                                                                        Matthews, NC 28104
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-
-                                                            <div class="flex-grow-1">
-                                                                <div class="table-responsive border-bottom mb-9">
-                                                                    <table class="table mb-3">
-                                                                        <thead>
-                                                                            <tr
-                                                                                class="border-bottom fs-6 fw-bold text-muted">
-                                                                                <th class="min-w-175px pb-2">Plan</th>
-                                                                                <th class="min-w-175px pb-2">
-                                                                                    Description
-                                                                                </th>
-                                                                                <th class="min-w-70px text-end pb-2">
-                                                                                    Plan
-                                                                                </th>
-                                                                                <th class="min-w-80px text-end pb-2">
-                                                                                    Rate
-                                                                                </th>
-                                                                                <th class="min-w-100px text-end pb-2">
-                                                                                    Amount</th>
-                                                                                <th class="min-w-100px text-end pb-2">
-                                                                                    Action</th>
-                                                                            </tr>
-                                                                        </thead>
-
-                                                                        <tbody>
-                                                                            <tr
-                                                                                class="fw-bold text-gray-700 fs-5 text-end">
-                                                                                <td
-                                                                                    class="d-flex align-items-center pt-6">
-                                                                                    <i
-                                                                                        class="fa fa-genderless text-danger fs-2 me-2"></i>
-
-                                                                                    Monthly Plan
-                                                                                </td>
-
-                                                                                <td class="pt-6">10 Qr Code With 5
-                                                                                    NFC
-                                                                                </td>
-                                                                                <td class="pt-6">80</td>
-                                                                                <td class="pt-6">$40.00</td>
-                                                                                <td
-                                                                                    class="pt-6 text-gray-900 fw-bolder">
-                                                                                    $3200.00
-                                                                                </td>
-                                                                                <td class="pe-0">
-                                                                                    <a href="#"
-                                                                                        class="btn btn-light btn-active-light-primary btn-sm"
-                                                                                        data-kt-menu-trigger="click"
-                                                                                        data-kt-menu-placement="bottom-end"
-                                                                                        data-kt-menu-flip="top-end">
-                                                                                        Actions
-                                                                                        <span
-                                                                                            class="svg-icon fs-5 m-0">
-                                                                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                                xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                                                width="24px"
-                                                                                                height="24px"
-                                                                                                viewBox="0 0 24 24"
-                                                                                                version="1.1">
-                                                                                                <g stroke="none"
-                                                                                                    stroke-width="1"
-                                                                                                    fill="none"
-                                                                                                    fill-rule="evenodd">
-                                                                                                    <polygon
-                                                                                                        points="0 0 24 0 24 24 0 24">
-                                                                                                    </polygon>
-                                                                                                    <path
-                                                                                                        d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z"
-                                                                                                        fill="currentColor"
-                                                                                                        fill-rule="nonzero"
-                                                                                                        transform="translate(12.000003, 11.999999) rotate(-180.000000) translate(-12.000003, -11.999999)">
-                                                                                                    </path>
-                                                                                                </g>
-                                                                                            </svg>
-                                                                                        </span>
-                                                                                    </a>
-                                                                                    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
-                                                                                        data-kt-menu="true"
-                                                                                        style="">
-                                                                                        <div class="menu-item px-3">
-                                                                                            <a href="#"
-                                                                                                class="menu-link px-3"
-                                                                                                data-kt-docs-table-filter="edit_row">
-                                                                                                Edit
-                                                                                            </a>
-                                                                                        </div>
-
-                                                                                        <div class="menu-item px-3">
-                                                                                            <a href="#"
-                                                                                                class="menu-link px-3"
-                                                                                                data-kt-docs-table-filter="delete_row">
-                                                                                                Delete
-                                                                                            </a>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </td>
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div>
-
-                                                                <div class="d-flex justify-content-end">
-                                                                    <div class="mw-300px">
-                                                                        <div class="d-flex flex-stack mb-3">
-                                                                            <div
-                                                                                class="fw-semibold pe-10 text-gray-600 fs-7">
-                                                                                Subtotal:</div>
-
-                                                                            <div
-                                                                                class="text-end fw-bold fs-6 text-gray-800">
-                                                                                $
-                                                                                20,600.00</div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="card-body d-flex align-items-end pt-0">
+                        <div class="d-flex align-items-center flex-column mt-3 w-100">
+                            <div
+                                class="d-flex justify-content-between fw-bold fs-6 text-white opacity-75 w-100 mt-auto mb-2">
+                                <span>43 Pending QR</span>
+                                <span>72%</span>
                             </div>
-                            {{-- Admin Notifcation box --}}
-                            <div class="pt-15 text-white">
-                                <h6 class="text-white mb-4">Dear, <span class="text-warning fw-bold">{{ Auth::user()->name }}</span>
-                                </h6>
-                                <p>Admin notification for you</p>
-                                @foreach ($notifications as $notification)
-                                    <div class="card">
-                                        <div class="card-body w-lg-550px w-325px scroll-x scroll-y text-black">
-                                            {!! $notification->notificationMessage->message !!}
-                                        </div>
-                                    </div>
-                                @endforeach
+
+                            <div class="h-8px mx-3 w-100 bg-white bg-opacity-50 rounded">
+                                <div class="bg-white rounded h-8px" role="progressbar" style="width: 72%;"
+                                    aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <div class="card card-flush h-md-50 mb-5 mb-xl-10">
+                    <div class="card-header pt-5">
+                        <div class="card-title d-flex flex-column">
+                            <span class="fs-2hx fw-bold text-gray-900 me-2 lh-1 ls-n2">357</span>
+
+                            <span class="text-gray-500 pt-1 fw-semibold fs-6">People View</span>
+                        </div>
+                    </div>
+
+                    <div class="card-body d-flex flex-column justify-content-end pe-0">
+                        <span class="fs-6 fw-bolder text-gray-800 d-block mb-2">QR & NFC Viewer</span>
+
+                        <div class="symbol-group symbol-hover flex-nowrap">
+                            <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip"
+                                data-bs-original-title="Alan Warden" data-kt-initialized="1">
+                                <span class="symbol-label bg-warning text-inverse-warning fw-bold">A</span>
+                            </div>
+                            <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip"
+                                aria-label="Michael Eberon" data-bs-original-title="Michael Eberon"
+                                data-kt-initialized="1">
+                                <img alt="Pic"
+                                    src="https://preview.keenthemes.com/metronic8/demo1/assets/media/avatars/300-12.jpg">
+                            </div>
+                            <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip"
+                                data-bs-original-title="Susan Redwood" data-kt-initialized="1">
+                                <span class="symbol-label bg-primary text-inverse-primary fw-bold">S</span>
+                            </div>
+                            <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip"
+                                aria-label="Melody Macy" data-bs-original-title="Melody Macy"
+                                data-kt-initialized="1">
+                                <img alt="Pic"
+                                    src="https://preview.keenthemes.com/metronic8/demo1/assets/media/avatars/300-12.jpg">
+                            </div>
+                            <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip"
+                                data-bs-original-title="Perry Matthew" data-kt-initialized="1">
+                                <span class="symbol-label bg-danger text-inverse-danger fw-bold">P</span>
+                            </div>
+                            <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip"
+                                aria-label="Barry Walter" data-bs-original-title="Barry Walter"
+                                data-kt-initialized="1">
+                                <img alt="Pic"
+                                    src="https://preview.keenthemes.com/metronic8/demo1/assets/media/avatars/300-12.jpg  ">
+                            </div>
+                            <a href="#" class="symbol symbol-35px symbol-circle" data-bs-toggle="modal"
+                                data-bs-target="#kt_modal_view_users">
+                                <span class="symbol-label bg-dark text-gray-300 fs-8 fw-bold">+42</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-lg-6">
+
+            <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-3 mb-md-5 mb-xl-10">
+
+                <div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-end h-md-50 mb-5 mb-xl-10"
+                    style="background-color: #3228b4;background-image:url('https://preview.keenthemes.com/metronic8/demo1/assets/media/patterns/vector-1.png')">
+                    <div class="card-header pt-5">
+                        <div class="card-title d-flex flex-column">
+                            <span class="fs-2hx fw-bold text-white me-2 lh-1 ls-n2">69</span>
+                            <span class="text-white opacity-75 pt-1 fw-semibold fs-6">Total NFC Created</span>
+                        </div>
+                    </div>
+
+                    <div class="card-body d-flex align-items-end pt-0">
+                        <div class="d-flex align-items-center flex-column mt-3 w-100">
+                            <div
+                                class="d-flex justify-content-between fw-bold fs-6 text-white opacity-75 w-100 mt-auto mb-2">
+                                <span>43 Pending NFC</span>
+                                <span>72%</span>
+                            </div>
+
+                            <div class="h-8px mx-3 w-100 bg-white bg-opacity-50 rounded">
+                                <div class="bg-white rounded h-8px" role="progressbar" style="width: 72%;"
+                                    aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-flush h-lg-50">
+                    <div class="card-header pt-5">
+                        <h3 class="card-title text-gray-800 fw-bold">External Links</h3>
+                    </div>
+
+                    <div class="card-body pt-5">
+                        <div class="d-flex flex-stack">
+                            <a href="#" class="text-primary fw-semibold fs-6 me-2">Create QR</a>
+
+                            <button type="button"
+                                class="btn btn-icon btn-sm h-auto btn-color-gray-500 btn-active-color-primary justify-content-end">
+                                <i class="ki-duotone ki-exit-right-corner fs-2"><span class="path1"></span><span
+                                        class="path2"></span></i> </button>
+                        </div>
+
+                        <div class="separator separator-dashed my-3"></div>
+
+                        <div class="d-flex flex-stack">
+                            <a href="#" class="text-primary fw-semibold fs-6 me-2">Create NFC</a>
+
+                            <button type="button"
+                                class="btn btn-icon btn-sm h-auto btn-color-gray-500 btn-active-color-primary justify-content-end">
+                                <i class="ki-duotone ki-exit-right-corner fs-2"><span class="path1"></span><span
+                                        class="path2"></span></i> </button>
+                        </div>
+
+                        <div class="separator separator-dashed my-3"></div>
+
+                        <div class="d-flex flex-stack">
+                            <a href="#" class="text-primary fw-semibold fs-6 me-2">Check Plans</a>
+
+                            <button type="button"
+                                class="btn btn-icon btn-sm h-auto btn-color-gray-500 btn-active-color-primary justify-content-end">
+                                <i class="ki-duotone ki-exit-right-corner fs-2"><span class="path1"></span><span
+                                        class="path2"></span></i> </button>
+                        </div>
+                        <div class="separator separator-dashed my-3"></div>
+
+                        <div class="d-flex flex-stack">
+                            <a href="#" class="text-primary fw-semibold fs-6 me-2">Upgrade Plan</a>
+
+                            <button type="button"
+                                class="btn btn-icon btn-sm h-auto btn-color-gray-500 btn-active-color-primary justify-content-end">
+                                <i class="ki-duotone ki-exit-right-corner fs-2"><span class="path1"></span><span
+                                        class="path2"></span></i> </button>
+                        </div>
+                        <div class="separator separator-dashed my-3"></div>
+
+                        <div class="d-flex flex-stack">
+                            <a href="#" class="text-primary fw-semibold fs-6 me-2">Resale QR & NFC</a>
+
+                            <button type="button"
+                                class="btn btn-icon btn-sm h-auto btn-color-gray-500 btn-active-color-primary justify-content-end">
+                                <i class="ki-duotone ki-exit-right-corner fs-2"><span class="path1"></span><span
+                                        class="path2"></span></i> </button>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <div class="col-xxl-6">
+
                 <div class="card card-flush h-md-100">
                     <div class="card-body d-flex flex-column justify-content-between mt-9 bgi-no-repeat bgi-size-cover bgi-position-x-center pb-0"
-                        style="background-position: 100% 50%; background-image:url('/metronic8/demo1/assets/media/stock/900x600/42.png')">
+                        style="background-position: 100% 50%; background-image:url('https://preview.keenthemes.com/metronic8/demo1/assets/media/stock/900x600/42.png')">
                         <div class="mb-10">
                             <div class="fs-2hx fw-bold text-gray-800 text-center mb-13">
                                 <span class="me-2">
-                                    Try our all new feature with
+                                    Try our all new Feature with
                                     <br>
                                     <span class="position-relative d-inline-block text-danger">
                                         <a href="/metronic8/demo1/pages/user-profile/overview.html"
@@ -473,27 +413,18 @@
                             </div>
 
                             <div class="text-center">
-                                <a href="{{ route('normaluser.pricing') }}" class="btn btn-sm btn-dark fw-bold">
+                                <a href="{{ route('user.plan') }}" class="btn btn-sm btn-dark fw-bold">
                                     Upgrade Now
-                                </a>
-                                <a href="#" class="btn btn-sm btn-dark fw-bold"
-                                data-bs-toggle="modal" data-bs-target="#modalId">
-                                   Check Invoice
                                 </a>
                             </div>
                         </div>
 
                         <img class="mx-auto h-150px h-lg-200px  theme-light-show"
-                            src="https://preview.keenthemes.com/metronic8/demo1/assets/media/illustrations/misc/upgrade.svg"
+                            src="	https://preview.keenthemes.com/metronic8/demo1/assets/media/illustrations/misc/upgrade.svg"
                             alt="">
-                        {{-- <img class="mx-auto h-150px h-lg-200px  theme-dark-show" src="https://preview.keenthemes.com/metronic8/demo1/assets/media/illustrations/misc/upgrade.svg" alt="">    --}}
+                        <img class="mx-auto h-150px h-lg-200px  theme-dark-show"
+                            src="/metronic8/demo1/assets/media/illustrations/misc/upgrade-dark.svg" alt="">
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="d-flex justify-content-center mt-5">
-                    <img class="img-fluid" src="https://i.ibb.co/YB1zCNT/Screenshot-1.png"
-                    alt="">
                 </div>
             </div>
         </div>
