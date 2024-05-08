@@ -334,7 +334,7 @@
                     </div>
                 </div>
                 <div class="modal-body scroll-y">
-                    <form class="form" method="POST" action="{{ route('admin.user.update', $user->id) }}">
+                    <form class="form" method="POST" action="{{ route('profile.update', $user->id) }}">
                         @csrf
                         @method('PATCH')
                         <div class="row">
