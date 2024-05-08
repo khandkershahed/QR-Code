@@ -317,10 +317,10 @@
         </div>
     </div>
     <div class="modal fade metronic_modal" id="update_account_{{ $user->id }}" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered mw-650px">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2 class="fw-bolder">Update User Role</h2>
+                    <h2 class="fw-bolder">Update Your Profile</h2>
                     <div class="btn btn-icon btn-sm btn-active-icon-primary" data-kt-modal-action="close">
                         <span class="svg-icon svg-icon-1">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -477,7 +477,7 @@
                             </div>
                         </div>
 
-                        <div class="text-center pt-15">
+                        <div class="text-end pt-10">
                             <x-metronic.button type="submit" class="primary">
                                 {{ __('Save Changes') }}
                             </x-metronic.button>
