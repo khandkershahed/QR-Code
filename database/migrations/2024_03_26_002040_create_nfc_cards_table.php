@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('nfc_cards', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade');
+            $table->foreignId('reseller_id')->nullable()->constrained('resellers')->onDelete('cascade');
             $table->string('code')->nullable();
             $table->string('nfc_type')->nullable();
             $table->string('nfc_template')->nullable();

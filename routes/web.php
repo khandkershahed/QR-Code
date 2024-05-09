@@ -62,13 +62,13 @@ Route::controller(UserSocialLoginController::class)->group(function(){
     Route::get('auth/github/callback', 'handleGithubCallback')->name('callback.github');
 });
 
-Route::controller(ResellerSocialLoginController::class)->name('reseller.')->group(function(){
-    Route::get('auth/google', 'redirectToGoogle')->name('auth.google');
-    Route::get('auth/google/callback', 'handleGoogleCallback')->name('callback.google');
-    Route::get('/auth/facebook', 'redirectFacebook')->name('auth.facebook');
-    Route::get('auth/facebook/callback', 'facebookCallback')->name('callback.facebook');
-    Route::get('auth/github', 'redirectToGithub')->name('auth.github');
-    Route::get('auth/github/callback', 'handleGithubCallback')->name('callback.github');
+Route::controller(ResellerSocialLoginController::class)->group(function(){
+    Route::get('reseller/auth/google', 'redirectToGoogle')->name('reseller.auth.google');
+    Route::get('reseller/auth/google/callback', 'handleGoogleCallback')->name('reseller.callback.google');
+    Route::get('reseller/auth/facebook', 'redirectFacebook')->name('reseller.auth.facebook');
+    Route::get('reseller/auth/facebook/callback', 'facebookCallback')->name('reseller.callback.facebook');
+    Route::get('reseller/auth/github', 'redirectToGithub')->name('reseller.auth.github');
+    Route::get('reseller/auth/github/callback', 'handleGithubCallback')->name('reseller.callback.github');
 });
 
 

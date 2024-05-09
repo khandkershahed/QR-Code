@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('qrs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade');
+            $table->foreignId('reseller_id')->nullable()->constrained('resellers')->onDelete('cascade');
             $table->string('code')->nullable();
             $table->string('qr_type')->nullable();
             $table->string('qr_template')->nullable();
