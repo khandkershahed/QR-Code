@@ -7866,7 +7866,7 @@ a.theme-btn.style-four:hover {
 .advanced-tab li a,
 .advanced-tab li button {
     font-size: 22px;
-    padding: 0 0 15px;
+    padding: 16px 48px;
     display: inline-block;
     background: transparent;
     border-bottom: 2px solid transparent;
@@ -7890,9 +7890,6 @@ a.theme-btn.style-four:hover {
 .advanced-tab li a i,
 .advanced-tab li button i {
     margin-right: 15px;
-    -webkit-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    transform: rotate(-45deg);
 }
 
 @media only screen and (max-width: 1299px) {
@@ -7905,6 +7902,9 @@ a.theme-btn.style-four:hover {
 .advanced-tab li a.active,
 .advanced-tab li button.active {
     border-color: var(--primary-color);
+    background: white;
+    padding: 16px 48px;
+    border-radius: 5px;
 }
 
 .advanced-tab.style-two {
@@ -8004,8 +8004,20 @@ a.theme-btn.style-four:hover {
     display: inline-flex;
     border-radius: 0 0 12px 12px;
 }
+.advanced-tab.style-fours {
+    background: #EAECEF;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    width: 625px !important;
+    padding: 10px;
+    border-radius: 10px;
+}
 
 .advanced-tab.style-four li {
+    margin: 0;
+}
+.advanced-tab.style-fours li {
     margin: 0;
 }
 
@@ -8752,6 +8764,8 @@ a.theme-btn.style-four:hover {
 .pricing-item.style-five .text {
     margin-top: 25px;
     margin-bottom: 30px;
+    font-size: 13px;
+    line-height: 1.5;
 }
 
 .pricing-item.style-five .icon-list {

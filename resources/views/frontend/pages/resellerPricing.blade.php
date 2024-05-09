@@ -18,84 +18,179 @@
                 <div class="col-xl-6 col-lg-9 col-md-11">
                     <div class="section-title text-center mb-45 aos-init aos-animate" data-aos="fade-up"
                         data-aos-duration="1500" data-aos-offset="50">
-                        <h2>Explore Our Pricing Package and choose your plan</h2>
+                        <h2>QR Code & NFC Generator
+                            Pricing & Plans</h2>
+                        <p>Choose a QR Code pricing plan that best suits your business.</p>
                     </div>
-                </div>
-                <div class="col-lg-7 text-center aos-init aos-animate" data-aos="fade-up" data-aos-delay="50"
-                    data-aos-duration="1500" data-aos-offset="50">
-                    <span class="save-percent"
-                        style="background-image: url({{ asset('frontend/assets/images/shapes/title-shape.png') }});">Save
-                        40%</span>
-                    <ul class="nav pricing-tab mb-55" role="tablist">
-                        <li>
-                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#monthly">Monthly</button>
-                        </li>
-                        <li>
-                            <button class="nav-link active" data-bs-toggle="tab"
-                                data-bs-target="#yearly">Yearly</button>
-                        </li>
-                    </ul>
                 </div>
             </div>
-            <div class="tab-content">
-                <div class="tab-pane fade" id="monthly">
-                    <div class="row justify-content-center">
-                        @foreach ($monthly_plans as $monthly_plan)
-                            <div class="col-xl-4 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
-                                data-aos-duration="1500" data-aos-offset="50">
-                                <div class="pricing-item style-three">
-                                    <div class="circle"><img
-                                            src="{{ asset('frontend/assets/images/shapes/price-circle.png') }}"
-                                            alt="Shape">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="tap-five-content rmb-55 aos-init aos-animate" data-aos="fade-left"
+                        data-aos-duration="1500" data-aos-offset="50">
+                        <ul class="nav advanced-tab style-fours mb-40 d-flex justify-content-center mx-auto"
+                            role="tablist">
+                            <li class="">
+                                <button class="nav-link active text-decoration-none pt-3 text-black" data-bs-toggle="tab" data-bs-target="#tabFour1">
+                                    <i class="fa fa-user" aria-hidden="true"></i> For Individuals</button>
+                            </li>
+                            <li class="">
+                                <button class="nav-link text-decoration-none pt-3 text-black" data-bs-toggle="tab" data-bs-target="#tabFour2">
+                                    <i class="fa fa-user" aria-hidden="true"></i> For Businesses</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade active show" id="tabFour1">
+                                <div class="row justify-content-center">
+                                    <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                                        <div class="pricing-item style-five">
+                                            <div class="title-price">
+                                                <h5 class="title">Regular</h5>
+                                                <div class="price"><span class="prev">$</span>15.<span class="next">/m</span></div>
+                                            </div>
+                                            <hr>
+                                            <div class="text">For small businesses looking to reach more consumers</div>
+                                            <ul class="icon-list">
+                                                <li><i class="fas fa-check"></i> 2 Limited sites available</li>
+                                                <li><i class="fas fa-check"></i> 1 GB storage per site</li>
+                                                <li><i class="fas fa-check"></i> Up to 5 pages per site</li>
+                                                <li class="hide"><i class="fas fa-check"></i> Free SSL for custom domain</li>
+                                                <li class="hide"><i class="fas fa-check"></i> Connect custom domain</li>
+                                            </ul>
+                                            <a href="#" class="theme-btn style-two">Package <i class="fas fa-arrow-right"></i></a>
+                                        </div>
                                     </div>
-                                    <div class="price"><span
-                                            class="prev fs-2 me-2">{{ $monthly_plan->currency }}</span>{{ $monthly_plan->price }}<span
-                                            class="next">/month</span>
+                                    <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
+                                        <div class="pricing-item style-five">
+                                            <div class="title-price">
+                                                <h5 class="title color-two">Standard</h5>
+                                                <div class="price"><span class="prev">$</span>35.<span class="next">/m</span></div>
+                                            </div>
+                                            <hr>
+                                            <div class="text">For mid-scale businesses with advanced QR Code needs</div>
+                                            <ul class="icon-list">
+                                                <li><i class="fas fa-check"></i> 2 Limited sites available</li>
+                                                <li><i class="fas fa-check"></i> 1 GB storage per site</li>
+                                                <li><i class="fas fa-check"></i> Up to 5 pages per site</li>
+                                                <li><i class="fas fa-check"></i> Free SSL for custom domain</li>
+                                                <li class="hide"><i class="fas fa-check"></i> Connect custom domain</li>
+                                            </ul>
+                                            <a href="#" class="theme-btn style-two">Package <i class="fas fa-arrow-right"></i></a>
+                                        </div>
                                     </div>
-                                    <div class="text">10 Qr Code For One Month</div>
-                                    <a href="{{ route('user.subscribe.post', $monthly_plan->slug) }}"
-                                        class="theme-btn">Choose Package <i class="fas fa-arrow-right"></i></a>
-                                    <h4 class="title">{{ $monthly_plan->title }}</h4>
-                                    <ul class="list">
-                                        @if (!empty($monthly_plan->descriptions))
-                                            @foreach (json_decode($monthly_plan->descriptions ?? '[]') as $description)
-                                                <li>{{ $description }}</li>
-                                            @endforeach
-                                        @endif
-                                    </ul>
+                                    <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
+                                        <div class="pricing-item style-five">
+                                            <div class="title-price">
+                                                <h5 class="title color-four">Diamond</h5>
+                                                <div class="price"><span class="prev">$</span>98.<span class="next">/m</span></div>
+                                            </div>
+                                            <hr>
+                                            <div class="text">For teams to collaborate and manage QR Codes</div>
+                                            <ul class="icon-list">
+                                                <li><i class="fas fa-check"></i> 2 Limited sites available</li>
+                                                <li><i class="fas fa-check"></i> 1 GB storage per site</li>
+                                                <li><i class="fas fa-check"></i> Up to 5 pages per site</li>
+                                                <li><i class="fas fa-check"></i> Free SSL for custom domain</li>
+                                                <li><i class="fas fa-check"></i> Connect custom domain</li>
+                                            </ul>
+                                            <a href="#" class="theme-btn style-two">Package <i class="fas fa-arrow-right"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
+                                        <div class="pricing-item style-five">
+                                            <div class="title-price">
+                                                <h5 class="title color-five">Shedule Demo</h5>
+                                            </div>
+                                            <hr>
+                                            <div class="text">For businesses with security, control, and flexibility needs</div>
+                                            <ul class="icon-list">
+                                                <li><i class="fas fa-check"></i> 2 Limited sites available</li>
+                                                <li><i class="fas fa-check"></i> 1 GB storage per site</li>
+                                                <li><i class="fas fa-check"></i> Up to 5 pages per site</li>
+                                                <li><i class="fas fa-check"></i> Free SSL for custom domain</li>
+                                                <li><i class="fas fa-check"></i> Connect custom domain</li>
+                                            </ul>
+                                            <a href="#" class="theme-btn style-two">Package <i class="fas fa-arrow-right"></i></a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        @endforeach
-                    </div>
-                </div>
-                <div class="tab-pane fade yearly show active" id="yearly">
-                    <div class="row justify-content-center">
-                        @foreach ($yearly_plans as $yearly_plan)
-                            <div class="col-xl-4 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
-                                data-aos-duration="1500" data-aos-offset="50">
-                                <div class="pricing-item style-three">
-                                    <div class="circle"><img
-                                            src="{{ asset('frontend/assets/images/shapes/price-circle.png') }}"
-                                            alt="Shape">
+                            <div class="tab-pane fade" id="tabFour2">
+                                <div class="row justify-content-center">
+                                    <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                                        <div class="pricing-item style-five">
+                                            <div class="title-price">
+                                                <h5 class="title">Regular</h5>
+                                                <div class="price"><span class="prev">$</span>15.<span class="next">/m</span></div>
+                                            </div>
+                                            <hr>
+                                            <div class="text">For small businesses looking to reach more consumers</div>
+                                            <ul class="icon-list">
+                                                <li><i class="fas fa-check"></i> 2 Limited sites available</li>
+                                                <li><i class="fas fa-check"></i> 1 GB storage per site</li>
+                                                <li><i class="fas fa-check"></i> Up to 5 pages per site</li>
+                                                <li class="hide"><i class="fas fa-check"></i> Free SSL for custom domain</li>
+                                                <li class="hide"><i class="fas fa-check"></i> Connect custom domain</li>
+                                            </ul>
+                                            <a href="#" class="theme-btn style-two">Package <i class="fas fa-arrow-right"></i></a>
+                                        </div>
                                     </div>
-                                    <div class="price"><span
-                                            class="prev fs-2 me-2">{{ $yearly_plan->currency }}</span>{{ $yearly_plan->price }}<span
-                                            class="next">/month</span>
+                                    <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
+                                        <div class="pricing-item style-five">
+                                            <div class="title-price">
+                                                <h5 class="title color-two">Standard</h5>
+                                                <div class="price"><span class="prev">$</span>35.<span class="next">/m</span></div>
+                                            </div>
+                                            <hr>
+                                            <div class="text">For mid-scale businesses with advanced QR Code needs</div>
+                                            <ul class="icon-list">
+                                                <li><i class="fas fa-check"></i> 2 Limited sites available</li>
+                                                <li><i class="fas fa-check"></i> 1 GB storage per site</li>
+                                                <li><i class="fas fa-check"></i> Up to 5 pages per site</li>
+                                                <li><i class="fas fa-check"></i> Free SSL for custom domain</li>
+                                                <li class="hide"><i class="fas fa-check"></i> Connect custom domain</li>
+                                            </ul>
+                                            <a href="#" class="theme-btn style-two">Package <i class="fas fa-arrow-right"></i></a>
+                                        </div>
                                     </div>
-                                    <div class="text">5 Business Card</div>
-                                    <a href="{{ route('user.subscribe.post', $yearly_plan->slug) }}"
-                                        class="theme-btn">Choose Package <i class="fas fa-arrow-right"></i></a>
-                                    <h4 class="title">{{ $yearly_plan->title }}</h4>
-                                    <ul class="list">
-                                        @if (!empty($yearly_plan->descriptions))
-                                            @foreach (json_decode($yearly_plan->descriptions ?? '[]') as $description)
-                                                <li>{{ $description }}</li>
-                                            @endforeach
-                                        @endif
-                                    </ul>
+                                    <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
+                                        <div class="pricing-item style-five">
+                                            <div class="title-price">
+                                                <h5 class="title color-four">Diamond</h5>
+                                                <div class="price"><span class="prev">$</span>98.<span class="next">/m</span></div>
+                                            </div>
+                                            <hr>
+                                            <div class="text">For teams to collaborate and manage QR Codes</div>
+                                            <ul class="icon-list">
+                                                <li><i class="fas fa-check"></i> 2 Limited sites available</li>
+                                                <li><i class="fas fa-check"></i> 1 GB storage per site</li>
+                                                <li><i class="fas fa-check"></i> Up to 5 pages per site</li>
+                                                <li><i class="fas fa-check"></i> Free SSL for custom domain</li>
+                                                <li><i class="fas fa-check"></i> Connect custom domain</li>
+                                            </ul>
+                                            <a href="#" class="theme-btn style-two">Package <i class="fas fa-arrow-right"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
+                                        <div class="pricing-item style-five">
+                                            <div class="title-price">
+                                                <h5 class="title color-five">Shedule Demo</h5>
+                                            </div>
+                                            <hr>
+                                            <div class="text">For businesses with security, control, and flexibility needs</div>
+                                            <ul class="icon-list">
+                                                <li><i class="fas fa-check"></i> 2 Limited sites available</li>
+                                                <li><i class="fas fa-check"></i> 1 GB storage per site</li>
+                                                <li><i class="fas fa-check"></i> Up to 5 pages per site</li>
+                                                <li><i class="fas fa-check"></i> Free SSL for custom domain</li>
+                                                <li><i class="fas fa-check"></i> Connect custom domain</li>
+                                            </ul>
+                                            <a href="#" class="theme-btn style-two">Package <i class="fas fa-arrow-right"></i></a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
