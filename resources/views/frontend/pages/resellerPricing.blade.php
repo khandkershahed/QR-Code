@@ -84,8 +84,12 @@
                                                 <h5 class="title color-four">Diamond</h5>
                                                 <div class="price"><span class="prev">$</span>98.<span class="next">/m</span></div>
                                             </div>
-                                            <hr>
-                                            <div class="text">For teams to collaborate and manage QR Codes</div>
+                                            <hr class="mb-0 pb-0">
+                                            <div class="text mt-2">
+                                                <div>
+                                                    <input class="rounded-0" type="number" placeholder="Email Address" name="" required="" data-sider-select-id="f326c25b-059b-4359-be62-e557f5c18ca4">
+                                                </div>
+                                            </div>
                                             <ul class="icon-list">
                                                 <li><i class="fas fa-check"></i> 2 Limited sites available</li>
                                                 <li><i class="fas fa-check"></i> 1 GB storage per site</li>

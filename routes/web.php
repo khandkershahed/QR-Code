@@ -30,6 +30,7 @@ Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/services', [HomeController::class, 'services'])->name('services');
 Route::get('/user-pricing', [HomeController::class, 'userPricing'])->name('normaluser.pricing');
 Route::get('/reseller-pricing', [HomeController::class, 'resellerPricing'])->name('reseller.pricing');
+Route::get('/pricing', [HomeController::class, 'pricing'])->name('pricing');
 Route::get('/qr-code', [HomeController::class, 'qrCode'])->name('qrCode');
 Route::get('/nfc-card', [HomeController::class, 'nfcCard'])->name('nfcCard');
 Route::get('/card-buying-guide', [HomeController::class, 'cardGuide'])->name('cardGuide');

@@ -239,13 +239,14 @@
                                         </div>
                                     </ul>
                                 </li>
-                                <li class="dropdown ">
+                                {{-- <li class="dropdown ">
                                     <a href="">Pricing</a>
                                     <ul class="" style="display: none;">
                                         <li><a href="{{ route('normaluser.pricing') }}">User Pricing</a></li>
                                         <li><a href="{{ route('reseller.pricing') }}">Reseller Pricing</a></li>
                                     </ul>
-                                </li>
+                                </li> --}}
+                                <li><a href="{{ route('pricing') }}">Pricing</a></li>
                                 <li><a href="{{ route('services') }}">Services</a></li>
                             </ul>
                         </div>

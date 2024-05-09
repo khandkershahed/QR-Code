@@ -36,6 +36,13 @@ class HomeController extends Controller
         ];
         return view('frontend.pages.userPricing',$data);
     }
+    public function pricing() {
+        $data = [
+            'monthly_plans' => Plan::orderBy('price','asc')->where('billing_cycle', 'monthly')->get(),
+            'yearly_plans' => Plan::orderBy('price','asc')->where('billing_cycle', 'yearly')->get(),
+        ];
+        return view('frontend.pages.resellerPricing',$data);
+    }
     public function resellerPricing() {
         $data = [
             'monthly_plans' => Plan::orderBy('price','asc')->where('billing_cycle', 'monthly')->get(),
