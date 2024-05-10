@@ -1,6 +1,6 @@
 <x-app-layout :title="'QR Code Generate'">
     <div class="container-fluid">
-        <div class="row">
+       <div class="row">
             <div class="col-lg-9">
                 <div class="card mt-10">
                     <div class="card-body">
@@ -72,7 +72,7 @@
                             </div>
 
                             <form class="form w-100 mx-auto fv-row" novalidate="novalidate" id="generateQRCodeForm"
-                                action="{{ route('user.qr-code.store') }}" method="POST" enctype="multipart/form-data">
+                                action="{{ route('reseller.qr-code.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-5">
                                     <div class="flex-column current" data-kt-stepper-element="content">
@@ -83,7 +83,7 @@
                                                     live.</p>
                                             </div>
                                             <div class="card-body">
-                                                @include('user.pages.qr-code.partials.qr_type')
+                                                @include('reseller.pages.qr-code.partials.qr_type')
                                             </div>
                                         </div>
                                     </div>
@@ -91,7 +91,7 @@
                                     <div class="flex-column" data-kt-stepper-element="content">
                                         <div class="card">
                                             <div class="card-body">
-                                                @include('user.pages.qr-code.partials.form')
+                                                @include('reseller.pages.qr-code.partials.form')
                                             </div>
                                         </div>
                                     </div>
@@ -102,7 +102,7 @@
                                                 <h2 class="text-center mb-0">Choose QR Code Design!</h2>
                                             </div>
                                             <div class="card-body">
-                                                @include('user.pages.qr-code.partials.customize')
+                                                @include('reseller.pages.qr-code.partials.customize')
                                             </div>
                                         </div>
                                     </div>
@@ -182,7 +182,10 @@
                         <div class="d-flex flex-column justify-content-center align-items-center">
                             {{-- id="generatedQRCodeContainer" --}}
                             <h3>Preview</h3>
-                            @include('user.pages.qr-code.partials.qr_preview')
+                            <div id="generatedQRCodeContainer">
+                                <img id="generatedQRCode" class="img-fluid" src="https://i.ibb.co/XzHNWc0/no-qr.png"
+                                    alt="QR Code">
+                            </div>
 
                             {{-- {!! QrCode::size(220)->eye('left-leaf', 0.1)->eyeColor(0, 255, 255, 255, 0, 0, 0)->eyeColor(1, 222, 18, 222, 222, 18, 222)->eyeColor(2, 222, 18, 222, 222, 18, 222)->style('dot', 0.8)->errorCorrection('H')->generate('Make me into a QrCode!') !!} --}}
                         </div>
@@ -198,22 +201,6 @@
     </div>
 
     @push('scripts')
-        <script>
-            $(document).ready(function() {
-                $('input[name="qr_type"]').change(function() {
-                    $(".qr-card").hide();
-                    const qrTemplateValue = $('input[name="qr_type"]:checked').val();
-                    if (qrTemplateValue != null) {
-                        $("." + qrTemplateValue).show();
-                    } else {
-                        $(".qr-card").hide();
-                    }
-                });
-
-                const initiallySelectedValue = $('input[name="qr_type"]:checked').val();
-                $("." + initiallySelectedValue).show();
-            });
-        </script>
         <script>
             $(document).ready(function() {
                 $('#colorPicker').on('input', function() {
@@ -286,7 +273,7 @@
                     var formData = new FormData(this);
 
                     $.ajax({
-                        url: '{{ route('user.qr-code.store') }}',
+                        url: '{{ route('reseller.qr-code.store') }}',
                         type: 'POST',
                         data: formData,
                         processData: false,
@@ -312,28 +299,28 @@
         </script> --}}
         <script>
             $(document).ready(function() {
-                $('#generateQRCodeForm input:not([name="qr_type"])').on('keyup change', 'input, textarea, select',
-                    function(e) {
-                        e.preventDefault(); // Prevent default form submission behavior
+                $('#generateQRCodeForm').on('keyup change', 'input, textarea, select', function(e) {
+                    e.preventDefault(); // Prevent default form submission behavior
 
-                        // Get the form data
-                        var formData = new FormData($(this).closest('form')[0]);
+                    // Get the form data
+                    var formData = new FormData($(this).closest('form')[0]);
 
-                        $.ajax({
-                            url: '{{ route('user.qr.preview') }}', // Replace this with the URL of your Laravel route or endpoint
-                            type: 'POST',
-                            data: formData,
-                            processData: false,
-                            contentType: false,
-                            success: function(response) {
-                                // Display the QR code image
-                                $('.generatedQRCode').attr('src', response.qr_code);
-                            },
-                            error: function(xhr, status, error) {
-                                console.error(error);
-                            }
-                        });
+                    $.ajax({
+                        url: '{{ route('reseller.qr.preview') }}', // Replace this with the URL of your Laravel route or endpoint
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function(response) {
+                            // Display the QR code image
+                            $('#generatedQRCode').attr('src', '');
+                            $('#generatedQRCode').attr('src', response.qr_code);
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(error);
+                        }
                     });
+                });
             });
         </script>
 
