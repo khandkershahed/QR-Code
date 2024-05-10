@@ -312,10 +312,10 @@
         </script> --}}
         <script>
             $(document).ready(function() {
-                $('#generateQRCodeForm input:not([name="qr_type"])').on('keyup change', 'input, textarea, select',
+                $('#generateQRCodeForm input:not([name="qr_type"]), #generateQRCodeForm textarea, #generateQRCodeForm select').on('keyup change',
                     function(e) {
                         e.preventDefault(); // Prevent default form submission behavior
-
+                        alert(5);
                         // Get the form data
                         var formData = new FormData($(this).closest('form')[0]);
 
