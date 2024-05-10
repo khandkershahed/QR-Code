@@ -326,12 +326,9 @@
                             contentType: false,
                             success: function(response) {
                                 // Display the QR code image
-                                $('.generatedQRCode').attr('src', '');
                                 $('.generatedQRCode').attr('src', response.qr_code);
                             },
                             error: function(xhr, status, error) {
-                                $('.generatedQRCode').attr('src', '');
-                                $('.generatedQRCode').attr('src', response.qr_code);
                                 console.error(error);
                             }
                         });
