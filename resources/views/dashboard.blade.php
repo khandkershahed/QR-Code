@@ -1,8 +1,8 @@
 <x-app-layout>
     <div class="container-fluid">
         <div class="row">
-            <h1 class="text-center pt-5">Hello <span class="text-success">{{ Auth::user()->name }}</span> Welcome To Your
-                Dashboard.!</h1>
+            <h1 class="text-center pt-5">Hello <span class="text-success">{{ Auth::user()->name }}.</span> Welcome To Your
+                Dashboard!</h1>
             <div class="col-lg-12">
                 <div class="row my-10">
                     {{-- OverView --}}

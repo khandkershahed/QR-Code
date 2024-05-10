@@ -109,6 +109,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
 });
 Route::middleware('auth:reseller')->prefix('reseller')->name('reseller.')->group(function () {
     Route::get('/profile', [ResellerProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/my-plan', [ResellerProfileController::class, 'resellerPlan'])->name('plan');
     Route::patch('/profile', [ResellerProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ResellerProfileController::class, 'destroy'])->name('profile.destroy');
 });

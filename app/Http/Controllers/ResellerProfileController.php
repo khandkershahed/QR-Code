@@ -120,7 +120,7 @@ class ResellerProfileController extends Controller
         $request->session()->regenerateToken();
     }
 
-    public function userPlan(): View
+    public function resellerPlan(): View
     {
         $user = Auth::guard('reseller')->user();
         $data = [

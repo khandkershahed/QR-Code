@@ -43,7 +43,7 @@
                                 <span class="w-125px text-gray-500 fw-semibold fs-7">Or with email</span>
                             </div>
 
-                            <div class="fv-row mb-8 fv-plugins-icon-container">
+                            {{-- <div class="fv-row mb-8 fv-plugins-icon-container">
                                 <x-input-label class="form-label" for="email" :value="__('Email')" />
                                 <x-text-input id="email" class="form-control bg-transparent rounded-2"
                                     type="email" name="email" :value="old('email')" required autocomplete="username" />
@@ -61,6 +61,31 @@
                                         class="form-control bg-transparent password_input" type="password"
                                         name="password" required autocomplete="new-password" />
                                     <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                                </div>
+                            </div> --}}
+                            <div class="fv-row mb-10">
+                                <x-metronic.label
+                                    class="form-label fs-6 fw-bolder text-dark">{{ __('Email') }}</x-metronic.label>
+                                <x-metronic.input type="email" name="email"
+                                    class="form-control form-control-lg form-control-solid"
+                                    placeholder="Enter your email address" value="{{ old('email') }}"
+                                    autocomplete="off"></x-metronic.input>
+                            </div>
+                            <div class="fv-row mb-10">
+                                <div class="d-flex flex-stack mb-2">
+                                    <x-metronic.label
+                                        class="form-label fw-bolder text-dark fs-6 mb-0">{{ __('Password') }}</x-metronic.label>
+                                </div>
+                                <div class="position-relative mb-3">
+                                    <x-metronic.input type="password" name="password"
+                                        class="form-control form-control-lg form-control-solid"
+                                        placeholder="Enter your password" autocomplete="off"></x-metronic.input>
+                                    <span
+                                        class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2 toggle-password"
+                                        data-kt-password-meter-control="visibility">
+                                        <i class="bi bi-eye-slash fs-2"></i>
+                                        <i class="bi bi-eye fs-2 d-none"></i>
+                                    </span>
                                 </div>
                             </div>
 
@@ -126,12 +151,14 @@
                     </h1>
 
                     <div class="d-none d-lg-block text-white fs-base text-center">
-                        In this kind of post, <a href="{{ route('terms') }}" class="opacity-75-hover text-warning fw-bold me-1">the
+                        In this kind of post, <a href="{{ route('terms') }}"
+                            class="opacity-75-hover text-warning fw-bold me-1">the
                             blogger</a>
 
                         introduces a person they’ve interviewed <br> and provides some background information about
 
-                        <a href="{{ route('policy') }}" class="opacity-75-hover text-warning fw-bold me-1">the interviewee</a>
+                        <a href="{{ route('policy') }}" class="opacity-75-hover text-warning fw-bold me-1">the
+                            interviewee</a>
                         and their <br> work following this is a transcript of the interview.
                     </div>
                 </div>

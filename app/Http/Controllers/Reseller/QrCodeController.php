@@ -21,22 +21,14 @@ class QrCodeController extends Controller
 {
     public function index()
     {
-        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
-
-        $qrs = $isUserRoute ?
-            Qr::with('qrData', 'qrScan')->where('user_id', Auth::user()->id)->latest('id')->get() :
-            Qr::with('qrData', 'qrScan')->latest('id')->get();
-
-        $view = $isUserRoute ? 'user.pages.qr-code.index' : 'admin.pages.qr-code.index';
-
-        return view($view, ['qrs' => $qrs]);
+        return view('reseller.pages.qr-code.index', [
+            'qrs' => Qr::with('qrData', 'qrScan')->where('user_id', Auth::user()->id)->latest('id')->get(),
+        ]);
     }
 
     public function create()
     {
-        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
-        $view = $isUserRoute ? 'user.pages.qr-code.create' : 'admin.pages.qr-code.create';
-        return view($view);
+        return view('reseller.pages.qr-code.create');
     }
 
     public function qrSummary($Qr)
@@ -45,7 +37,7 @@ class QrCodeController extends Controller
         $qr = Qr::with('qrData')->where('code', $Qr)->first();
         $maps = QrScan::where('qr_code', $Qr)->get(['ip_address']);
 
-        return view('user.pages.qr-code.qrSummary', compact('qr', 'maps'));
+        return view('reseller.pages.qr-code.qrSummary', compact('qr', 'maps'));
     }
 
 
@@ -58,7 +50,6 @@ class QrCodeController extends Controller
             'ip_address' => $request->ip(),
         ]);
         if (!empty($qr)) {
-            // dd($qr->qr_type);
             if (!empty($qr->qrData->qr_data_website_url)) {
                 return redirect()->to($qr->qrData->qr_data_website_url);
             } elseif (!empty($qr->qrData->qr_data_call_number)) {
@@ -86,9 +77,9 @@ class QrCodeController extends Controller
                 $ipadAppLink = $qr->qrData->qr_data_app_ipad;
                 return redirect()->to($ipadAppLink);
             } elseif (!empty($qr->qrData->qr_data_audio_file) || !empty($qr->qrData->qr_data_audio_link)) {
-                return view('user.pages.qr-code.qrFile', compact('qr'));
+                return view('reseller.pages.qr-code.qrFile', compact('qr'));
             } else {
-                return view('user.pages.qr-code.qrFile', compact('qr'));
+                return view('reseller.pages.qr-code.qrFile', compact('qr'));
             }
         } else {
             return redirect()->route('homePage')->with('error', 'Sorry No Data Found');
@@ -356,7 +347,7 @@ class QrCodeController extends Controller
 
         // Return the URL of the generated QR code image
         if ($qr->wasRecentlyCreated) {
-            return redirect()->route('user.qr-code.index')->with('success', 'You have successfully generated QR Code.');
+            return redirect()->route('reseller.qr-code.index')->with('success', 'You have successfully generated QR Code.');
         } else {
             return redirect()->back()->with('error', 'Failed to generate QR code.');
         }
@@ -435,7 +426,7 @@ class QrCodeController extends Controller
 
 
 
-   
+
 
 
 
@@ -529,7 +520,7 @@ class QrCodeController extends Controller
 
     public function edit(string $id)
     {
-        return view('user.pages.qr-code.edit');
+        return view('reseller.pages.qr-code.edit');
     }
 
 

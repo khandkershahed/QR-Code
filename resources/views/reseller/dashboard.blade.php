@@ -1,7 +1,7 @@
-<x-reseller-app-layout>
+<x-reseller-app-layout :title="'Reseller Dashboard'">
     <div class="row gap-5">
-        <h1 class="text-center mb-0 text-success">{{ Auth::guard('reseller')->user()->name }}</h1>
-        <h1 class="text-center">Welcome To Your Dashboard</h1>
+        <h1 class="text-center pt-5">Hello <span class="text-success">{{ Auth::guard('reseller')->user()->name }}.</span> Welcome To Your
+            Reseller Dashboard!</h1>
         <div class="col bg-warning p-10 rounded-2">
             <div class="d-flex justify-content-between align-items-center ">
                 <div>
