@@ -315,7 +315,6 @@
                 $('#generateQRCodeForm input:not([name="qr_type"]), #generateQRCodeForm textarea, #generateQRCodeForm select').on('keyup change',
                     function(e) {
                         e.preventDefault(); // Prevent default form submission behavior
-                        alert(5);
                         // Get the form data
                         var formData = new FormData($(this).closest('form')[0]);
 
@@ -327,9 +326,12 @@
                             contentType: false,
                             success: function(response) {
                                 // Display the QR code image
+                                $('.generatedQRCode').attr('src', '');
                                 $('.generatedQRCode').attr('src', response.qr_code);
                             },
                             error: function(xhr, status, error) {
+                                $('.generatedQRCode').attr('src', '');
+                                $('.generatedQRCode').attr('src', response.qr_code);
                                 console.error(error);
                             }
                         });
