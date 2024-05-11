@@ -88,6 +88,8 @@ class QrCodeController extends Controller
                 return redirect()->to($ipadAppLink);
             } elseif (!empty($qr->qrData->qr_data_audio_file) || !empty($qr->qrData->qr_data_audio_link)) {
                 return view('user.pages.qr-code.qrFile', compact('qr'));
+            } elseif (!empty($qr->qrData->latitude) && !empty($qr->qrData->longitude)) {
+                $redirectUrl = "https://www.google.com/maps/search/?api=1&query={$qr->qrData->latitude},{$qr->qrData->longitude}";
             } else {
                 return view('user.pages.qr-code.qrFile', compact('qr'));
             }

@@ -28,6 +28,8 @@ return new class extends Migration
             $table->text('qr_data_app_ipad')->nullable();
             $table->string('qr_data_call_number')->nullable();
             $table->string('qr_data_location')->nullable();
+            $table->string('qr_data_location_latitude')->nullable();
+            $table->string('qr_data_location_longitude')->nullable();
             $table->string('qr_data_coupon_code')->nullable();
             $table->date('qr_data_coupon_expire_date')->nullable();
             $table->text('qr_data_coupon_header')->nullable();
