@@ -269,17 +269,11 @@
 
                         <a href="{{ route('dashboard') }}" class="light-btn"><i class="fas fa-user me-1"></i> My
                             Dashboard</a>
+                            
                     @else
                     {{-- <div class="navbar-collapse collapse clearfix"> --}}
-                        <ul class="navigation onepage clearfix">
-                        <li class="dropdown ">
-                            <a href="javascript:void(0)">Sign Up</a>
-                            <ul class="" style="display: none;">
-                                <li><a href="{{ route('register') }}">User Sign Up</a></li>
-                                <li><a href="{{ route('reseller.register') }}">Reseller Sign Up</a></li>
-                            </ul>
-                        </li>
-                        </ul>
+                        
+                        <a href="{{ route('register') }}" class="light-btn"><i class="fas fa-user me-1"></i> Sign Up</a>
                     {{-- </div> --}}
                         {{-- <a href="{{ route('register') }}" class="light-btn">Sign Up</a> --}}
                     @endauth

@@ -1,6 +1,6 @@
 <x-app-layout :title="'QR Code Generate'">
     <div class="container-fluid">
-       <div class="row">
+        <div class="row">
             <div class="col-lg-9">
                 <div class="card mt-10">
                     <div class="card-body">
@@ -177,21 +177,16 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="card mt-10 position-fixed">
-                    <div class="card-body">
+                <div class="card mt-10 position-fixed bg-transparent shadow-sm ">
+                    <div class="card-body  bg-transparent ">
                         <div class="d-flex flex-column justify-content-center align-items-center">
                             {{-- id="generatedQRCodeContainer" --}}
                             <h3>Preview</h3>
                             <div id="generatedQRCodeContainer">
-                                <img id="generatedQRCode" class="img-fluid" src="https://i.ibb.co/XzHNWc0/no-qr.png"
+                                <img id="generatedQRCode" class="img-fluid" src="https://i.ibb.co/9HVCyGM/website.png"
                                     alt="QR Code">
                             </div>
-
-                            {{-- {!! QrCode::size(220)->eye('left-leaf', 0.1)->eyeColor(0, 255, 255, 255, 0, 0, 0)->eyeColor(1, 222, 18, 222, 222, 18, 222)->eyeColor(2, 222, 18, 222, 222, 18, 222)->style('dot', 0.8)->errorCorrection('H')->generate('Make me into a QrCode!') !!} --}}
                         </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-around align-items-center">
-                        <a href="#" class="btn btn-light btn-active-light-primary w-100 me-2">Preview</a>
                         <a id="downloadLink" href="javascripti:void()" download
                             class="btn btn-light btn-primary w-100" style="display: none;">Download</a>
                     </div>

@@ -332,7 +332,7 @@
 
                     <div class="card-body pt-5">
                         <div class="d-flex flex-stack">
-                            <a href="#" class="text-primary fw-semibold fs-6 me-2">Create QR</a>
+                            <a href="{{ route('user.qr-code.create') }}" class="text-primary fw-semibold fs-6 me-2">Create QR</a>
 
                             <button type="button"
                                 class="btn btn-icon btn-sm h-auto btn-color-gray-500 btn-active-color-primary justify-content-end">
@@ -343,7 +343,7 @@
                         <div class="separator separator-dashed my-3"></div>
 
                         <div class="d-flex flex-stack">
-                            <a href="#" class="text-primary fw-semibold fs-6 me-2">Create NFC</a>
+                            <a href="{{ route('user.nfc-card.create') }}" class="text-primary fw-semibold fs-6 me-2">Create NFC</a>
 
                             <button type="button"
                                 class="btn btn-icon btn-sm h-auto btn-color-gray-500 btn-active-color-primary justify-content-end">
@@ -354,7 +354,7 @@
                         <div class="separator separator-dashed my-3"></div>
 
                         <div class="d-flex flex-stack">
-                            <a href="#" class="text-primary fw-semibold fs-6 me-2">Check Plans</a>
+                            <a href="#" class="text-primary fw-semibold fs-6 me-2">Current Status</a>
 
                             <button type="button"
                                 class="btn btn-icon btn-sm h-auto btn-color-gray-500 btn-active-color-primary justify-content-end">
@@ -364,7 +364,7 @@
                         <div class="separator separator-dashed my-3"></div>
 
                         <div class="d-flex flex-stack">
-                            <a href="#" class="text-primary fw-semibold fs-6 me-2">Upgrade Plan</a>
+                            <a href="{{ route('user.plan') }}" class="text-primary fw-semibold fs-6 me-2">Upgrade Plan</a>
 
                             <button type="button"
                                 class="btn btn-icon btn-sm h-auto btn-color-gray-500 btn-active-color-primary justify-content-end">

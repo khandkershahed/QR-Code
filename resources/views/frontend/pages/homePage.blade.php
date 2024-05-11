@@ -6,7 +6,7 @@
                     <div class="hero-content style-nine mb-100 rmb-55" data-aos="fade-up" data-aos-duration="1500"
                         data-aos-offset="50">
                         <h1 data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
-                            QR Codes & Digital Cards: IRL to URL
+                            QR Codes & NFC Cards: IRL to URL
                         </h1>
                         <p>
                             From Real World Encounters to Digital Connections: Embracing
