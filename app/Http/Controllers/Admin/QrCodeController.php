@@ -89,7 +89,15 @@ class QrCodeController extends Controller
             } elseif (!empty($qr->qrData->qr_data_audio_file) || !empty($qr->qrData->qr_data_audio_link)) {
                 return view('user.pages.qr-code.qrFile', compact('qr'));
             } elseif (!empty($qr->qrData->qr_data_location_latitude) && !empty($qr->qrData->qr_data_location_longitude)) {
-                $redirectUrl = "https://www.google.com/maps/search/?api=1&query={$qr->qrData->qr_data_location_latitude},{$qr->qrData->qr_data_location_longitude}";
+                $latitude = $qr->qrData->qr_data_location_latitude;
+                $longitude = $qr->qrData->qr_data_location_longitude;
+                if ($request->isMobile() && $request->header('User-Agent') && stripos($request->header('User-Agent'), 'android') !== false) {
+                    $redirectUrl = "geo:{$latitude},{$longitude}";
+                } else {
+                    $redirectUrl = "https://www.google.com/maps?q={$latitude},{$longitude}";
+                }
+                return redirect()->to($redirectUrl);
+
             } else {
                 return view('user.pages.qr-code.qrFile', compact('qr'));
             }
