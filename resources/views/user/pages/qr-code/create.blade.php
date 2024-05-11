@@ -182,16 +182,10 @@
                         <div class="d-flex flex-column justify-content-center align-items-center">
                             {{-- id="generatedQRCodeContainer" --}}
                             <h3>Preview</h3>
-<<<<<<< HEAD
                             <div id="generatedQRCodeContainer">
                                 <img id="generatedQRCode" class="img-fluid" src="https://i.ibb.co/9HVCyGM/website.png"
                                     alt="QR Code">
                             </div>
-=======
-                            @include('user.pages.qr-code.partials.qr_preview')
-
-                            {{-- {!! QrCode::size(220)->eye('left-leaf', 0.1)->eyeColor(0, 255, 255, 255, 0, 0, 0)->eyeColor(1, 222, 18, 222, 222, 18, 222)->eyeColor(2, 222, 18, 222, 222, 18, 222)->style('dot', 0.8)->errorCorrection('H')->generate('Make me into a QrCode!') !!} --}}
->>>>>>> a0057859a90d6cae9a89312a1368c9ac3f6f8c56
                         </div>
                         <a id="downloadLink" href="javascripti:void()" download
                             class="btn btn-light btn-primary w-100" style="display: none;">Download</a>
