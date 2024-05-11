@@ -38,6 +38,10 @@ return new class extends Migration
             $table->longText('qr_data_coupon_description_body')->nullable();
             $table->text('qr_data_coupon_website')->nullable();
             $table->string('qr_data_coupon_company')->nullable();
+            $table->string('qr_data_coupon_background_color')->nullable();
+            $table->string('qr_data_coupon_title_color')->nullable();
+            $table->string('qr_data_coupon_button_bg_color')->nullable();
+            $table->string('qr_data_coupon_button_title_color')->nullable();
             $table->mediumText('qr_data_coupon_policy')->nullable();
             $table->string('qr_data_coupon_logo')->nullable();
             $table->text('qr_data_audio_file')->nullable();

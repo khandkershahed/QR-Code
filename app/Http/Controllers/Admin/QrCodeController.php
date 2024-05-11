@@ -102,6 +102,8 @@ class QrCodeController extends Controller
 
                 return redirect()->to($redirectUrl);
 
+            } elseif (!empty($qr->qr_type) && $qr->qr_type == 'coupon_code') {
+                return view('user.pages.qr-code.show.qrCoupon', compact('qr'));
             } else {
                 return view('user.pages.qr-code.qrFile', compact('qr'));
             }
@@ -276,6 +278,17 @@ class QrCodeController extends Controller
         } else {
             $uploadedAdoFile = ['status' => 0];
         }
+        $uploadedcouponLogoFile = '';
+        if ($request->hasFile('qr_data_coupon_logo')) {
+            $datacoupon = $request->file('qr_data_coupon_logo');
+            if ($datacoupon->isValid()) {
+                $couponfilename = $code . '_pdf';
+                $couponfilepath = 'public/qr_codes/coupons/';
+                $uploadedcouponLogoFile = customUpload($datacoupon, $couponfilepath, $couponfilename);
+            }
+        } else {
+            $uploadedcouponLogoFile = ['status' => 0];
+        }
         $qrDataLink = route('showQr', $qr->code);
         // Create QR Data record
         $qrData = QrData::create([
@@ -304,7 +317,11 @@ class QrCodeController extends Controller
             'qr_data_coupon_website'            => $request->qr_data_coupon_website,
             'qr_data_coupon_company'            => $request->qr_data_coupon_company,
             'qr_data_coupon_policy'             => $request->qr_data_coupon_policy,
-            'qr_data_coupon_logo'               => $request->qr_data_coupon_logo,
+            'qr_data_coupon_logo'               => $uploadedcouponLogoFile['status'] == 1 ? $uploadedcouponLogoFile['file_name'] : null,
+            'qr_data_coupon_background_color'   => $request->qr_data_coupon_background_color,
+            'qr_data_coupon_title_color'        => $request->qr_data_coupon_title_color,
+            'qr_data_coupon_button_bg_color'    => $request->qr_data_coupon_button_bg_color,
+            'qr_data_coupon_button_title_color' => $request->qr_data_coupon_button_title_color,
             'qr_data_audio_file'                => $uploadedAdoFile['status'] == 1 ? $uploadedAdoFile['file_name'] : null,
             'qr_data_audio_link'                => $request->qr_data_audio_link,
         ]);

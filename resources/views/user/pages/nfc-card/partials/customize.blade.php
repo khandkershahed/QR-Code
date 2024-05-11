@@ -51,24 +51,25 @@
                                </div>
                            </div> --}}
                            <div class="col-lg-4">
-                            <div class="row">
-                                <label for="secondary_color_text">Background color</label>
-                                <div class="col-lg-10 pe-0">
-                                    <div>
-                                        <input type="text" name="background_color_picker" id="secondary_color_text"
-                                            value="#000" class="form-control form-control-solid">
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 ps-0">
-                                    <div>
-                                        <input type="color" name="background_color"
-                                            id="secondary_color_text_picker" value=""
-                                            style="width: 50px;height: 43px;" oninput="changeBackgroundColor()"
-                                            class="form-control form-control-solid">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                               <div class="row">
+                                   <label for="secondary_color_text">Background color</label>
+                                   <div class="col-lg-10 pe-0">
+                                       <div>
+                                           <input type="text" name="background_color_picker"
+                                               id="secondary_color_text" value="#000"
+                                               class="form-control form-control-solid">
+                                       </div>
+                                   </div>
+                                   <div class="col-lg-2 ps-0">
+                                       <div>
+                                           <input type="color" name="background_color"
+                                               id="secondary_color_text_picker" value=""
+                                               style="width: 50px;height: 43px;" oninput="changeBackgroundColor()"
+                                               class="form-control form-control-solid">
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
                            <div class="col-lg-4">
                                <div class="row">
                                    <label for="secondary_color_text">Title color (With BG Include)</label>
@@ -80,10 +81,9 @@
                                    </div>
                                    <div class="col-lg-2 ps-0">
                                        <div>
-                                           <input type="color" name="title_color"
-                                               id="secondary_color_text_picker" value=""
-                                               style="width: 50px;height: 43px;" oninput="changeTitleColor()"
-                                               class="form-control form-control-solid">
+                                           <input type="color" name="title_color" id="secondary_color_text_picker"
+                                               value="" style="width: 50px;height: 43px;"
+                                               oninput="changeTitleColor()" class="form-control form-control-solid">
                                        </div>
                                    </div>
                                </div>
@@ -137,16 +137,15 @@
                                    <label for="buttonContact">Contact Button Background Color</label>
                                    <div class="col-lg-10 pe-0">
                                        <div>
-                                           <input type="text" name="buttonContact" id="buttonContact"
-                                               value="#000" class="form-control form-control-solid">
+                                           <input type="text" name="buttonContact" id="buttonContact" value="#000"
+                                               class="form-control form-control-solid">
                                        </div>
                                    </div>
                                    <div class="col-lg-2 ps-0">
                                        <div>
-                                           <input type="color" name="button_bg_color"
-                                               id="button_color_picker" value=""
-                                               style="width: 50px;height: 43px;" oninput="contactBgColor()"
-                                               class="form-control form-control-solid">
+                                           <input type="color" name="button_bg_color" id="button_color_picker"
+                                               value="" style="width: 50px;height: 43px;"
+                                               oninput="contactBgColor()" class="form-control form-control-solid">
                                        </div>
                                    </div>
                                </div>
@@ -162,10 +161,9 @@
                                    </div>
                                    <div class="col-lg-2 ps-0">
                                        <div>
-                                           <input type="color" name="button_title_color"
-                                               id="button_color_picker" value=""
-                                               style="width: 50px;height: 43px;" oninput="contactTitleColor()"
-                                               class="form-control form-control-solid">
+                                           <input type="color" name="button_title_color" id="button_color_picker"
+                                               value="" style="width: 50px;height: 43px;"
+                                               oninput="contactTitleColor()" class="form-control form-control-solid">
                                        </div>
                                    </div>
                                </div>
@@ -184,27 +182,26 @@
                    </div>
 
                    <div id="kt_accordion_2_item_4" class="collapse fs-6 ps-10" data-bs-parent="#kt_accordion_2">
-                    <div class="row py-5">
-                        <div class="col-lg-4">
-                            <div class="row">
-                                <label for="formColor">Frame Color Color</label>
-                                <div class="col-lg-10 pe-0">
-                                    <div>
-                                        <input type="text" name="formColor" id="formColor"
-                                            value="#000" class="form-control form-control-solid">
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 ps-0">
-                                    <div>
-                                        <input type="color" name="frame_color"
-                                            id="form_color_picker" value=""
-                                            style="width: 50px;height: 43px;"
-                                            class="form-control form-control-solid">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                       <div class="row py-5">
+                           <div class="col-lg-4">
+                               <div class="row">
+                                   <label for="formColor">Frame Color Color</label>
+                                   <div class="col-lg-10 pe-0">
+                                       <div>
+                                           <input type="text" name="formColor" id="formColor" value="#000"
+                                               class="form-control form-control-solid">
+                                       </div>
+                                   </div>
+                                   <div class="col-lg-2 ps-0">
+                                       <div>
+                                           <input type="color" name="frame_color" id="form_color_picker"
+                                               value="" style="width: 50px;height: 43px;"
+                                               class="form-control form-control-solid">
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
                    </div>
                </div>
            </div>

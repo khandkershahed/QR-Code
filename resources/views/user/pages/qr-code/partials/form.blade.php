@@ -184,16 +184,6 @@
             <x-metronic.input id="qr_data_coupon_expire_date" type="date" name="qr_data_coupon_expire_date"
                 :value="old('qr_data_coupon_expire_date')" placeholder="Expires on" />
         </div>
-        {{-- <div class="pb-4 col-lg-3">
-            <label for="exampleFormControlInput1" class="required form-label">Timezone</label>
-            <select name="" id="" class="form-select-solid form-select">
-                <option value="" disabled>Africa</option>
-                <option value="" disabled>London</option>
-                <option value="" disabled>Bangladesh</option>
-                <option value="" disabled>Pakistan</option>
-                <option value="" disabled>USA</option>
-            </select>
-        </div> --}}
         <div class="pb-4 col-lg-3">
             <x-metronic.label for="qr_data_coupon_header" class="form-label">{{ __('Header') }}</x-metronic.label>
             <x-metronic.input id="qr_data_coupon_header" type="text" name="qr_data_coupon_header"
@@ -219,7 +209,7 @@
         </div>
         <div class="pb-4 col-lg-3">
             <x-metronic.label for="qr_data_coupon_website" class="form-label">{{ __('Website') }}</x-metronic.label>
-            <x-metronic.input id="qr_data_coupon_website" type="text" name="qr_data_coupon_website"
+            <x-metronic.input id="qr_data_coupon_website" type="url" name="qr_data_coupon_website"
                 :value="old('qr_data_coupon_website')" placeholder="http://www.website.com" />
         </div>
         <div class="pb-4 col-lg-3">
@@ -227,6 +217,81 @@
             <x-metronic.input id="qr_data_coupon_company" type="text" name="qr_data_coupon_company"
                 :value="old('qr_data_coupon_company')" placeholder="Company Name" />
         </div>
+        <div class="col-lg-3 pb-4">
+            <div class="row">
+                <label for="secondary_color_text">Background color</label>
+                <div class="col-lg-10 pe-0">
+                    <div>
+                        <input type="text" name="background_color_picker" id="secondary_color_text"
+                            value="#000" class="form-control form-control-solid">
+                    </div>
+                </div>
+                <div class="col-lg-2 ps-0">
+                    <div>
+                        <input type="color" name="qr_data_coupon_background_color"
+                            id="secondary_color_text_picker" value=""
+                            style="width: 50px;height: 43px;" oninput="changecouponBackgroundColor()"
+                            class="form-control form-control-solid">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 pb-4">
+            <div class="row">
+                <label for="secondary_color_text">Title color (With BG Include)</label>
+                <div class="col-lg-10 pe-0">
+                    <div>
+                        <input type="text" name="title_color_picker" id="secondary_color_text"
+                            value="#000" class="form-control form-control-solid">
+                    </div>
+                </div>
+                <div class="col-lg-2 ps-0">
+                    <div>
+                        <input type="color" name="qr_data_coupon_title_color" id="secondary_color_text_picker"
+                            value="" style="width: 50px;height: 43px;"
+                            oninput="changecouponTitleColor()" class="form-control form-control-solid">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 pb-4">
+            <div class="row">
+                <label for="buttonContact">Website Button Background Color</label>
+                <div class="col-lg-10 pe-0">
+                    <div>
+                        <input type="text" name="buttonContact" id="buttonContact" value="#000"
+                            class="form-control form-control-solid">
+                    </div>
+                </div>
+                <div class="col-lg-2 ps-0">
+                    <div>
+                        <input type="color" name="qr_data_coupon_button_bg_color" id="button_color_picker"
+                            value="" style="width: 50px;height: 43px;"
+                            oninput="changecouponwebsiteBgColor()" class="form-control form-control-solid">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 pb-4">
+            <div class="row">
+                <label for="buttonContact">Website Button Title Color</label>
+                <div class="col-lg-10 pe-0">
+                    <div>
+                        <input type="text" name="buttonContact" id="buttonContact"
+                            value="#000" class="form-control form-control-solid">
+                    </div>
+                </div>
+                <div class="col-lg-2 ps-0">
+                    <div>
+                        <input type="color" name="qr_data_coupon_button_title_color" id="button_color_picker"
+                            value="" style="width: 50px;height: 43px;"
+                            oninput="changecouponwebsiteTitleColor()" class="form-control form-control-solid">
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="pb-4 col-lg-6">
             <x-metronic.label for="qr_data_coupon_policy"
                 class="form-label">{{ __('Terms & conditions') }}</x-metronic.label>

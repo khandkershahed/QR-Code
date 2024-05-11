@@ -204,12 +204,94 @@
                     } else {
                         $(".qr-card").hide();
                     }
+                    if (qrTemplateValue == 'coupon_code') {
+                        $("#generatedQRCodeContainer").hide();
+                        $("#qrCouponPreview").show();
+                    } else {
+                        $("#generatedQRCodeContainer").show();
+                        $("#qrCouponPreview").hide();
+                    }
                 });
 
                 const initiallySelectedValue = $('input[name="qr_type"]:checked').val();
                 $("." + initiallySelectedValue).show();
             });
         </script>
+
+
+        <script>
+            $('input[name="qr_data_coupon_code"], input[name="qr_data_coupon_expire_date"], input[name="qr_data_coupon_header"], input[name="qr_data_coupon_message"], input[name="qr_data_coupon_description_header"], input[name="qr_data_coupon_description_body"], input[name="qr_data_coupon_website"], input[name="qr_data_coupon_company"], input[name="qr_data_coupon_policy"], input[name="qr_data_coupon_logo"]')
+                .on('keyup change', function() {
+
+                    var inputValue = $(this).val();
+                    var inputName = $(this).attr('name');
+
+                    // Update corresponding NFC card element
+                    var qrCodeElement = $('.qr_card_preview .' + inputName);
+                    if (qrCodeElement.length > 0) {
+                        if ($(this).is('input[type="file"]')) {
+                            if ($(this).prop('files') && $(this).prop('files')[0]) {
+                                var file = $(this).prop('files')[0];
+                                var reader = new FileReader();
+                                reader.onload = function(e) {
+                                    qrCodeElement.attr('src', e.target.result);
+                                };
+                                reader.readAsDataURL(file);
+                            }
+                        } else if ($(this).is('input[type="url"]')) {
+                            qrCodeElement.attr('href', inputValue);
+                        } else if ($(this).is('input[type="date"]')) {
+                            var dateParts = inputValue.split('-');
+                            if (dateParts.length === 3) {
+                                var dateParts = inputValue.split('-');
+                                if (dateParts.length === 3) {
+                                    var year = dateParts[0];
+                                    var month = dateParts[1];
+                                    var day = dateParts[2];
+                                    var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
+                                        'September', 'October', 'November', 'December'
+                                    ];
+                                    var monthName = months[parseInt(month) - 1];
+                                    var formattedDate = monthName + ' ' + parseInt(day) + ', ' + year;
+                                    qrCodeElement.text(formattedDate);
+                                }
+                            }
+                        } else {
+                            qrCodeElement.text(inputValue);
+                        }
+                    }
+
+                    // For debugging
+                    console.log("Input Name:", inputName, "Input Value:", inputValue);
+                });
+
+            function changecouponBackgroundColor() {
+                var selectedBgColor = $('input[name="qr_data_coupon_background_color"]').val();
+                $('.nfc-mobile-frame').css('background-color', selectedBgColor);
+                $('.qr_data_coupon_message').css('color', selectedBgColor);
+            }
+
+            function changecouponTitleColor() {
+                var selectedTitleColor = $('input[name="qr_data_coupon_title_color"]').val();
+                $('.qr_data_coupon_company, .qr_data_coupon_header, .title_color').css(
+                    'color', selectedTitleColor);
+            }
+
+            function changecouponwebsiteBgColor() {
+                var selectedBgColor = $('input[name="qr_data_coupon_button_bg_color"]').val();
+                $('.qr_data_coupon_website').css('background-color', selectedBgColor);
+            }
+
+            function changecouponwebsiteTitleColor() {
+                var selectedTitleColor = $('input[name="qr_data_coupon_button_title_color"]').val();
+                $('.qr_data_coupon_website').css('color', selectedTitleColor);
+            }
+        </script>
+
+
+
+
+
         <script>
             $(document).ready(function() {
                 $('#colorPicker').on('input', function() {
@@ -307,29 +389,31 @@
             });
         </script> --}}
         <script>
-            $(document).ready(function() {
-                $('#generateQRCodeForm input:not([name="qr_type"]), #generateQRCodeForm textarea, #generateQRCodeForm select')
-                    .on('keyup change',
-                        function(e) {
-                            e.preventDefault(); // Prevent default form submission behavior
-                            // Get the form data
-                            var formData = new FormData($(this).closest('form')[0]);
+            // $(document).ready(function() {
+            // $('#generateQRCodeForm input:not([name="qr_type"]), #generateQRCodeForm input:not([name="qr_data_coupon_code"]),#generateQRCodeForm input:not([name="qr_data_coupon_expire_date"]),#generateQRCodeForm input:not([name="qr_data_coupon_header"]),#generateQRCodeForm input:not([name="qr_data_coupon_message"]),#generateQRCodeForm input:not([name="qr_data_coupon_description_header"]),#generateQRCodeForm input:not([name="qr_data_coupon_description_body"]),#generateQRCodeForm input:not([name="qr_data_coupon_website"]),#generateQRCodeForm input:not([name="qr_data_coupon_company"]),#generateQRCodeForm input:not([name="qr_data_coupon_policy"]),#generateQRCodeForm input:not([name="qr_data_coupon_logo"]) ,#generateQRCodeForm textarea, #generateQRCodeForm select')
+            $('#generateQRCodeForm input, #generateQRCodeForm textarea, #generateQRCodeForm select').not(
+                '[name="qr_type"], [name="qr_data_coupon_code"], [name="qr_data_coupon_expire_date"], [name="qr_data_coupon_header"], [name="qr_data_coupon_message"], [name="qr_data_coupon_description_header"], [name="qr_data_coupon_description_body"], [name="qr_data_coupon_website"], [name="qr_data_coupon_company"], [name="qr_data_coupon_policy"], [name="qr_data_coupon_logo"]'
+            ).on('keyup change', function(e) {
+                e.preventDefault(); // Prevent default form submission behavior
+                // Get the form data
+                var formData = new FormData($(this).closest('form')[0]);
 
-                            $.ajax({
-                                url: '{{ route('user.qr.preview') }}', // Replace this with the URL of your Laravel route or endpoint
-                                type: 'POST',
-                                data: formData,
-                                processData: false,
-                                contentType: false,
-                                success: function(response) {
-                                    // Display the QR code image
-                                    $('.generatedQRCode').attr('src', response.qr_code);
-                                },
-                                error: function(xhr, status, error) {
-                                    console.error(error);
-                                }
-                            });
-                        });
+                $.ajax({
+                    url: '{{ route('user.qr.preview') }}', // Replace this with the URL of your Laravel route or endpoint
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        // Display the QR code image
+                        $("#generatedQRCodeContainer").show();
+                        $("#qrCouponPreview").hide();
+                        $('.generatedQRCode').attr('src', response.qr_code);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                    }
+                });
             });
         </script>
 
@@ -360,16 +444,10 @@
         <script>
             // Stepper lement
             var element = document.querySelector("#generateQRCode");
-
-            // Initialize Stepper
             var stepper = new KTStepper(element);
-
-            // Handle next step
             stepper.on("kt.stepper.next", function(stepper) {
                 stepper.goNext(); // go next step
             });
-
-            // Handle previous step
             stepper.on("kt.stepper.previous", function(stepper) {
                 stepper.goPrevious(); // go previous step
             });
