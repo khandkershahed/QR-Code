@@ -3,9 +3,8 @@
     data-kt-drawer-width="{default:'200px', '300px': '250px'}" data-kt-drawer-direction="start"
     data-kt-drawer-toggle="#kt_aside_mobile_toggle">
     <div class="aside-logo flex-column-auto" id="kt_aside_logo">
-        <a href="{{ route('dashboard') }}">
-            <img alt="Logo" src="https://i.ibb.co/BNBTVN4/logo.png
-            " class="h-60px logo">
+        <a href="{{ route('reseller.dashboard') }}">
+            <img alt="Logo" src="https://i.ibb.co/BNBTVN4/logo.png" class="h-60px logo">
         </a>
         <div id="kt_aside_toggle" class="btn btn-icon w-auto px-0 btn-active-color-primary aside-toggle active"
             data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body"
@@ -31,7 +30,8 @@
             <div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500"
                 id="#kt_aside_menu" data-kt-menu="true" data-kt-menu-expand="false">
                 <div class="menu-item">
-                    <a class="menu-link {{ Route::is('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">
+                    <a class="menu-link {{ Route::is('reseller.dashboard') ? 'active' : '' }}"
+                        href="{{ route('reseller.dashboard') }}">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -51,7 +51,7 @@
                     </a>
                 </div>
                 <div data-kt-menu-trigger="click"
-                    class="menu-item {{ Route::is('user.qr-code.index', 'user.qr-code.create') ? 'here show' : '' }} menu-accordion">
+                    class="menu-item {{ Route::is('reseller.qr-code.index', 'reseller.qr-code.create') ? 'here show' : '' }} menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
@@ -74,29 +74,30 @@
                         <span class="menu-arrow"></span>
                     </span>
                     <div
-                        class="menu-sub menu-sub-accordion {{ Route::is('user.qr-code.index', 'user.qr-code.create') ? 'menu-active-bg' : '' }}">
+                        class="menu-sub menu-sub-accordion {{ Route::is('reseller.qr-code.index', 'reseller.qr-code.create') ? 'menu-active-bg' : '' }}">
                         <div class="menu-item">
-                            <a class="menu-link {{ Route::is('user.qr-code.index') ? 'active' : '' }}"
-                                href="{{ route('user.qr-code.index') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">QR Code List</span>
-                            </a>
-                        </div>
-                        <div class="menu-item">
-                            <a class="menu-link {{ Route::is('user.qr-code.create') ? 'active' : '' }}"
-                                href="{{ route('user.qr-code.create') }}">
+                            <a class="menu-link {{ Route::is('reseller.qr-code.create') ? 'active' : '' }}"
+                                href="{{ route('reseller.qr-code.create') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
                                 <span class="menu-title">QR Code Create</span>
                             </a>
                         </div>
+                        <div class="menu-item">
+                            <a class="menu-link {{ Route::is('reseller.qr-code.index') ? 'active' : '' }}"
+                                href="{{ route('reseller.qr-code.index') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">QR Code List</span>
+                            </a>
+                        </div>
+
                     </div>
                 </div>
                 <div data-kt-menu-trigger="click"
-                    class="menu-item menu-accordion {{ Route::is('user.nfc-card.index', 'user.nfc-card.create') ? 'here show' : '' }}">
+                    class="menu-item menu-accordion {{ Route::is('reseller.nfc-card.index', 'reseller.nfc-card.create') ? 'here show' : '' }}">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
@@ -114,23 +115,23 @@
                         <span class="menu-arrow"></span>
                     </span>
                     <div
-                        class="menu-sub menu-sub-accordion {{ Route::is('user.nfc-card.index', 'user.nfc-card.create') ? 'menu-active-bg' : '' }}">
+                        class="menu-sub menu-sub-accordion {{ Route::is('reseller.nfc-card.index', 'reseller.nfc-card.create') ? 'menu-active-bg' : '' }}">
                         <div class="menu-item">
-                            <a class="menu-link {{ Route::is('user.nfc-card.index') ? 'active' : '' }}"
-                                href="{{ route('user.nfc-card.index') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">NFC Card List</span>
-                            </a>
-                        </div>
-                        <div class="menu-item">
-                            <a class="menu-link {{ Route::is('user.nfc-card.create') ? 'active' : '' }}"
-                                href="{{ route('user.nfc-card.create') }}">
+                            <a class="menu-link {{ Route::is('reseller.nfc-card.create') ? 'active' : '' }}"
+                                href="{{ route('reseller.nfc-card.create') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
                                 <span class="menu-title">NFC Card Create</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link {{ Route::is('reseller.nfc-card.index') ? 'active' : '' }}"
+                                href="{{ route('reseller.nfc-card.index') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">NFC Card List</span>
                             </a>
                         </div>
                     </div>
@@ -181,14 +182,15 @@
                     </div>
                 </div>
                 <div data-kt-menu-trigger="click"
-                    class="menu-item {{ Route::is('profile.edit','user.plan') ? 'here show' : '' }} menu-accordion">
+                    class="menu-item {{ Route::is('profile.edit', 'reseller.plan') ? 'here show' : '' }} menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                     class="svg-icon svg-icon-2">
-                                    <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <rect x="3" y="3" width="18" height="18" rx="2"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
                                     <rect x="7" y="7" width="4" height="4" rx="1"
                                         fill="currentColor" />
                                     <rect x="13" y="7" width="4" height="4" rx="1"
@@ -204,10 +206,10 @@
                         <span class="menu-arrow"></span>
                     </span>
                     <div
-                        class="menu-sub menu-sub-accordion {{ Route::is('profile.edit','user.plan') ? 'menu-active-bg' : '' }}">
+                        class="menu-sub menu-sub-accordion {{ Route::is('profile.edit', 'reseller.plan') ? 'menu-active-bg' : '' }}">
                         <div class="menu-item">
-                            <a class="menu-link {{ Route::is('user.plan') ? 'active' : '' }}"
-                                href="{{ route('user.plan') }}">
+                            <a class="menu-link {{ Route::is('reseller.plan') ? 'active' : '' }}"
+                                href="{{ route('reseller.plan') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -225,7 +227,7 @@
                         </div>
                         {{-- <div class="menu-item">
                             <a class="menu-link "
-                                href="{{ route('normaluser.pricing') }}"> 
+                                href="{{ route('normalreseller.pricing') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>

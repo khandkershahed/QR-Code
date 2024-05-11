@@ -24,14 +24,8 @@
     <link href="{{ asset('admin/css/custom.css') }}" rel="stylesheet" type="text/css" />
 
     <link href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
-
-
     <link href="{{ asset('admin/css/custom.css') }}" rel="stylesheet" type="text/css" />
-
-
     <link rel="stylesheet" href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}">
-
-
     <link href="{{ asset('admin/assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"
         type="text/css" />
 
@@ -51,7 +45,7 @@
     <div class="d-flex flex-column flex-root">
         <div class="page d-flex flex-row flex-column-fluid">
             @include('reseller.layouts.sidebar')
-            <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+            <div class="wrapper d-flex flex-column flex-row-fluid pt-15" id="kt_wrapper">
                 @include('reseller.layouts.header')
                 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
                     {{-- @include('reseller.layouts.toolbar') --}}
