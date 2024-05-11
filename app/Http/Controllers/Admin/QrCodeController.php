@@ -91,11 +91,15 @@ class QrCodeController extends Controller
             } elseif (!empty($qr->qrData->qr_data_location_latitude) && !empty($qr->qrData->qr_data_location_longitude)) {
                 $latitude = $qr->qrData->qr_data_location_latitude;
                 $longitude = $qr->qrData->qr_data_location_longitude;
-                if ($request->isMobile() && $request->header('User-Agent') && stripos($request->header('User-Agent'), 'android') !== false) {
+                $userAgent = $request->header('User-Agent');
+                $isMobile = preg_match("/(android|iphone|ipod|ipad)/i", $userAgent);
+
+                if ($isMobile) {
                     $redirectUrl = "geo:{$latitude},{$longitude}";
                 } else {
                     $redirectUrl = "https://www.google.com/maps?q={$latitude},{$longitude}";
                 }
+
                 return redirect()->to($redirectUrl);
 
             } else {
