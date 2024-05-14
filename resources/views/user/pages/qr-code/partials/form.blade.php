@@ -151,14 +151,14 @@
         <div class="pb-4">
             <x-metronic.label for="qr_data_location_latitude"
                 class="form-label">{{ __('Select Location Latitude') }}</x-metronic.label>
-            <x-metronic.input id="qr_data_location_latitude" type="text" name="qr_data_location_latitude" :value="old('qr_data_location_latitude')"
-                placeholder="Select Latitude" />
+            <x-metronic.input id="qr_data_location_latitude" type="text" name="qr_data_location_latitude"
+                :value="old('qr_data_location_latitude')" placeholder="Select Latitude" />
         </div>
         <div class="pb-4">
             <x-metronic.label for="qr_data_location_longitude"
                 class="form-label">{{ __('Select Location Longitude') }}</x-metronic.label>
-            <x-metronic.input id="qr_data_location_longitude" type="text" name="qr_data_location_longitude" :value="old('qr_data_location_longitude')"
-                placeholder="Select Longitude" />
+            <x-metronic.input id="qr_data_location_longitude" type="text" name="qr_data_location_longitude"
+                :value="old('qr_data_location_longitude')" placeholder="Select Longitude" />
         </div>
         <div class="mt-2">
             <div id="map" style="height: 400px;"></div>
@@ -228,9 +228,8 @@
                 </div>
                 <div class="col-lg-2 ps-0">
                     <div>
-                        <input type="color" name="qr_data_coupon_background_color"
-                            id="secondary_color_text_picker" value=""
-                            style="width: 50px;height: 43px;" oninput="changecouponBackgroundColor()"
+                        <input type="color" name="qr_data_coupon_background_color" id="secondary_color_text_picker"
+                            value="" style="width: 50px;height: 43px;" oninput="changecouponBackgroundColor()"
                             class="form-control form-control-solid">
                     </div>
                 </div>
@@ -241,15 +240,15 @@
                 <label for="secondary_color_text">Title color (With BG Include)</label>
                 <div class="col-lg-10 pe-0">
                     <div>
-                        <input type="text" name="title_color_picker" id="secondary_color_text"
-                            value="#000" class="form-control form-control-solid">
+                        <input type="text" name="title_color_picker" id="secondary_color_text" value="#000"
+                            class="form-control form-control-solid">
                     </div>
                 </div>
                 <div class="col-lg-2 ps-0">
                     <div>
                         <input type="color" name="qr_data_coupon_title_color" id="secondary_color_text_picker"
-                            value="" style="width: 50px;height: 43px;"
-                            oninput="changecouponTitleColor()" class="form-control form-control-solid">
+                            value="" style="width: 50px;height: 43px;" oninput="changecouponTitleColor()"
+                            class="form-control form-control-solid">
                     </div>
                 </div>
             </div>
@@ -267,8 +266,8 @@
                 <div class="col-lg-2 ps-0">
                     <div>
                         <input type="color" name="qr_data_coupon_button_bg_color" id="button_color_picker"
-                            value="" style="width: 50px;height: 43px;"
-                            oninput="changecouponwebsiteBgColor()" class="form-control form-control-solid">
+                            value="" style="width: 50px;height: 43px;" oninput="changecouponwebsiteBgColor()"
+                            class="form-control form-control-solid">
                     </div>
                 </div>
             </div>
@@ -278,8 +277,8 @@
                 <label for="buttonContact">Website Button Title Color</label>
                 <div class="col-lg-10 pe-0">
                     <div>
-                        <input type="text" name="buttonContact" id="buttonContact"
-                            value="#000" class="form-control form-control-solid">
+                        <input type="text" name="buttonContact" id="buttonContact" value="#000"
+                            class="form-control form-control-solid">
                     </div>
                 </div>
                 <div class="col-lg-2 ps-0">
@@ -300,7 +299,7 @@
         </div>
         <div class="pb-4 col-lg-6">
             <x-metronic.label for="qr_data_coupon_logo" class="form-label">{{ __('Coupon Logo') }}</x-metronic.label>
-            <x-metronic.input id="qr_data_coupon_logo" type="file" name="qr_data_coupon_logo" :value="old('qr_data_coupon_logo')"
+            <x-metronic.input id="qr_data_coupon_logo" type="f  ile" name="qr_data_coupon_logo" :value="old('qr_data_coupon_logo')"
                 placeholder="Coupon Logo" />
         </div>
     </div>
@@ -313,27 +312,50 @@
         <p class="text-center mb-0">Link to your social media channels for more engagement.</p>
     </div>
     <div class="row pt-4">
-        <div class="pb-4 col-lg-12">
+        <div class="pb-4 col-lg-5">
             <label for="exampleFormControlInput1" class="required form-label">Logo</label>
-            <input type="image" src="" alt="">
+            <input type="file" class="form-control form-control-solid" name="logo" />
         </div>
-        <div class="pb-4 col-lg-12">
+        <div class="col-lg-1 d-lg-block d-sm-none">
+            <div class="fv-row my-3 pt-5">
+                <div>
+                    <img width="50px" height="50px" class="rounded-circle border banner_image"
+                        id="profile_image_preview" src="" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="pb-4 col-lg-5">
             <label for="exampleFormControlInput1" class="required form-label">Image</label>
-
+            <input type="file" class="form-control form-control-solid" name="social_banner" />
+        </div>
+        <div class="col-lg-1 d-lg-block d-sm-none">
+            <div class="fv-row my-3 pt-5">
+                <div>
+                    <img width="50px" height="50px" class="rounded-circle border banner_image"
+                        id="profile_image_preview" src="" alt="">
+                </div>
+            </div>
         </div>
         <div class="pb-4 col-lg-6">
             <label for="exampleFormControlInput1" class="required form-label">Title</label>
             <input type="text" class="form-control form-control-solid" placeholder="Enter Title" />
         </div>
-        <div class="pb-4 col-lg-4">
-            <label for="exampleFormControlInput1" class="required form-label">Title Color</label>
-            <input type="text" class="form-control form-control-solid" placeholder="Enter Title" />
+        <div class="col-lg-6 pb-4">
+            <div class="row gx-0">
+                <div class="col-lg-8">
+                    <label for="exampleFormControlInput1" class="required form-label">Title Color</label>
+                    <input type="text" class="form-control form-control-solid" placeholder="Enter Title" />
+                </div>
+                <div class="col-lg-2">
+                    <label for="exampleFormControlInput1" class="required form-label"></label>
+                    <input type="color" class="form-control form-control-solid" placeholder="Enter Title"
+                        style="width: 135px;
+                    height: 40px;" />
+                </div>
+            </div>
         </div>
-        <div class="pb-4 col-lg-2">
-            <label for="exampleFormControlInput1" class="required form-label"></label>
-            <input type="color" class="form-control form-control-solid" placeholder="Enter Title"
-                style="width: 135px;
-            height: 40px;" />
+        <div>
+            <p class="fw-bold pt-5 mb-0">Body</p>
         </div>
         <div class="pb-4 col-lg-6">
             <label for="exampleFormControlInput1" class="required form-label">Message</label>
@@ -347,15 +369,24 @@
             <label for="exampleFormControlInput1" class="required form-label">Subtext</label>
             <input type="text" class="form-control form-control-solid" placeholder="Enter Subtext" />
         </div>
-        <div class="pb-4 col-lg-4">
-            <label for="exampleFormControlInput1" class="required form-label">Background Color</label>
-            <input type="text" class="form-control form-control-solid" placeholder="Enter Title" />
+        <div class="col-lg-6 pb-4">
+            <div class="row gx-0">
+                <div class="col-lg-8">
+                    <label for="exampleFormControlInput1" class="required form-label">Background Color</label>
+                    <input type="text" class="form-control form-control-solid" placeholder="Enter Title" />
+                </div>
+                <div class="col-lg-2">
+                    <label for="exampleFormControlInput1" class="required form-label"></label>
+                    <input type="color" class="form-control form-control-solid"
+                        placeholder="Select background color"
+                        style="width: 135px;
+                    height: 40px;" />
+                </div>
+            </div>
         </div>
-        <div class="pb-4 col-lg-2">
-            <label for="exampleFormControlInput1" class="required form-label"></label>
-            <input type="color" class="form-control form-control-solid" placeholder="Enter Title"
-                style="width: 135px;
-            height: 40px;" />
+        <div>
+            <p class="fw-bold pt-5 mb-0">LINKS</p>
+            <p>At least one field is mandatory *</p>
         </div>
         <div class="pb-4 col-lg-6">
             <label for="exampleFormControlInput1" class="required form-label">Facebook Username</label>
@@ -426,9 +457,9 @@
 
 {{-- Business Page Form Start --}}
 <div class="row form-container" id="business_page-form">
-    <div class="pt-5 ps-5">
-        <h2>Business Page</h2>
-        <p>Share a card for your business</p>
+    <div class="row text-center justify-content-center">
+        <h2 class="text-center mb-0">Business Page</h2>
+        <p class="text-center mb-0">Share a Card For Your Business</p>
     </div>
     <div class="pb-4 row">
         <div class="pt-4 col-lg-6">
@@ -465,17 +496,8 @@
                 style="width: 135px;
             height: 40px;" />
         </div>
-        <div class="pt-4 col-lg-6">
-            <label for="exampleFormControlInput1" class="required form-label">Open Day</label>
-            <input type="text" class="form-control form-control-solid" placeholder="Monday" />
-        </div>
-        <div class="pt-4 col-lg-3">
-            <label for="exampleFormControlInput1" class="required form-label">Start Time</label>
-            <input type="text" class="form-control form-control-solid" placeholder="08:00" />
-        </div>
-        <div class="pt-4 col-lg-3">
-            <label for="exampleFormControlInput1" class="required form-label">End Time</label>
-            <input type="text" class="form-control form-control-solid" placeholder="20:00" />
+        <div>
+            <h6 class="fw-bold pt-5 mb-0">Contact Info</h6>
         </div>
         <div class="pt-4 col-lg-6">
             <label for="exampleFormControlInput1" class="required form-label">Name</label>
@@ -487,11 +509,219 @@
         </div>
         <div class="pt-4 col-lg-6">
             <label for="exampleFormControlInput1" class="required form-label">Email</label>
-            <input type="text" class="form-control form-control-solid" placeholder="example@gmail.com" />
+            <input type="text" class="form-control form-control-solid" placeholder="Your Email" />
         </div>
         <div class="pt-4 col-lg-6">
             <label for="exampleFormControlInput1" class="required form-label">Address</label>
-            <input type="text" class="form-control form-control-solid" placeholder="example@gmail.com" />
+            <input type="text" class="form-control form-control-solid" placeholder="Your Address" />
+        </div>
+        <div class="pt-4 col-lg-12">
+            <label for="exampleFormControlInput1" class="required form-label">Location</label>
+            <input type="text" class="form-control form-control-solid" placeholder="Your Location" />
+        </div>
+        <div>
+            <h6 class="fw-bold pt-5 mb-0">Shedule Info</h6>
+        </div>
+        <div class="col-lg-12">
+            <div class="row align-items-center">
+                <div class="col-lg-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
+                            checked>
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Monday
+                        </label>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <select class="form-select mb-2" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option value="1">08:00</option>
+                        <option value="2">Two</option>
+                        <option value="3">20:00</option>
+                    </select>
+                </div>
+                <div class="col-lg-4">
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option selected>Open this select menu</option>
+                        <option value="1">20:00</option>
+                        <option value="2">Two</option>
+                        <option value="3">08:00</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-4">
+                    <div class="form-check">
+                        <input class="form-check-input " type="checkbox" value="" id="flexCheckChecked"
+                            checked>
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Tuesday
+                        </label>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <select class="form-select mb-2" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option value="1">08:00</option>
+                        <option value="2">Two</option>
+                        <option value="3">20:00</option>
+                    </select>
+                </div>
+                <div class="col-lg-4">
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option selected>Open this select menu</option>
+                        <option value="1">20:00</option>
+                        <option value="2">Two</option>
+                        <option value="3">08:00</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
+                            checked>
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Wednesday
+                        </label>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <select class="form-select mb-2" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option value="1">08:00</option>
+                        <option value="2">Two</option>
+                        <option value="3">20:00</option>
+                    </select>
+                </div>
+                <div class="col-lg-4">
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option selected>Open this select menu</option>
+                        <option value="1">20:00</option>
+                        <option value="2">Two</option>
+                        <option value="3">08:00</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
+                            checked>
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Thursday
+                        </label>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <select class="form-select mb-2" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option value="1">08:00</option>
+                        <option value="2">Two</option>
+                        <option value="3">20:00</option>
+                    </select>
+                </div>
+                <div class="col-lg-4">
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option selected>Open this select menu</option>
+                        <option value="1">20:00</option>
+                        <option value="2">Two</option>
+                        <option value="3">08:00</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
+                            checked>
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Friday
+                        </label>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <select class="form-select mb-2" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option value="1">08:00</option>
+                        <option value="2">Two</option>
+                        <option value="3">20:00</option>
+                    </select>
+                </div>
+                <div class="col-lg-4">
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option selected>Open this select menu</option>
+                        <option value="1">20:00</option>
+                        <option value="2">Two</option>
+                        <option value="3">08:00</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
+                            checked>
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Saturday
+                        </label>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <select class="form-select mb-2" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option value="1">08:00</option>
+                        <option value="2">Two</option>
+                        <option value="3">20:00</option>
+                    </select>
+                </div>
+                <div class="col-lg-4">
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option selected>Open this select menu</option>
+                        <option value="1">20:00</option>
+                        <option value="2">Two</option>
+                        <option value="3">08:00</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
+                            checked>
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Sunday
+                        </label>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <select class="form-select mb-2" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option value="1">08:00</option>
+                        <option value="2">Two</option>
+                        <option value="3">20:00</option>
+                    </select>
+                </div>
+                <div class="col-lg-4">
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option selected>Open this select menu</option>
+                        <option value="1">20:00</option>
+                        <option value="2">Two</option>
+                        <option value="3">08:00</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h6 class="fw-bold pt-5 mb-0">Brand Info</h6>
         </div>
         <div class="pt-4 col-lg-12">
             <label for="exampleFormControlInput1" class="required form-label">Brand Logo</label>
@@ -537,7 +767,51 @@
         <p>Upload audio file that your QR code should link to.</p>
     </div>
     <div class="pb-4 row">
-        
+
     </div>
 </div>
-
+{{-- Restaurant Form --}}
+<div class="form-container" id="facebook_page-form">
+    <div class="row text-center justify-content-center">
+        <h2 class="text-center mb-0">Facebook Form</h2>
+        <p class="text-center mb-0">Upload audio file that your QR code should link to.</p>
+    </div>
+    <div class="pb-4 row">
+        <div class="col-lg-12 pb-4">
+            <label for="exampleFormControlInput1" class="required form-label">Facebook page username</label>
+            <input type="url" class="form-control form-control-solid" name="page_url"
+                placeholder="https://www.facebook.com/" />
+        </div>
+        <div class="col-lg-12 pb-4">
+            <label for="exampleFormControlInput1" class="required form-label">Header</label>
+            <input type="url" class="form-control form-control-solid" name="page_header"
+                placeholder="Like Us On !" />
+        </div>
+        <div class="pb-4 col-lg-5">
+            <label for="exampleFormControlInput1" class="required form-label">Logo <small>(1920x1080 pixels. 5MB max
+                    file size.)</small></label>
+            <input type="file" class="form-control form-control-solid" name="logo" />
+        </div>
+        <div class="col-lg-1 d-lg-block d-sm-none">
+            <div class="fv-row my-3 pt-5">
+                <div>
+                    <img width="50px" height="50px" class="rounded-circle border banner_image"
+                        id="profile_image_preview" src="" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="pb-4 col-lg-5">
+            <label for="exampleFormControlInput1" class="required form-label">Image <small>(192x192 pixels. 5MB max
+                    file size.)</small></label>
+            <input type="file" class="form-control form-control-solid" name="social_banner" />
+        </div>
+        <div class="col-lg-1 d-lg-block d-sm-none">
+            <div class="fv-row my-3 pt-5">
+                <div>
+                    <img width="50px" height="50px" class="rounded-circle border banner_image"
+                        id="profile_image_preview" src="" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

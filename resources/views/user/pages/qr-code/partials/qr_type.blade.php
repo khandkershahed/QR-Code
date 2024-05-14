@@ -88,13 +88,13 @@
         'value' => 'restaurant',
         'title' => 'Restaurant Menu',
         'text' => 'Link to your restaurant and upload menu',
-        'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/mp3.svg',
+        'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/resturent.svg',
     ],
     [
         'id' => 14,
         'value' => 'facebook_page',
         'title' => 'Facebook Page',
         'text' => 'Link to your facebook page.',
-        'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/mp3.svg',
+        'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/facebook.svg',
     ],
 ]" />

@@ -265,18 +265,7 @@
         </div>
         <div class="pb-4 col-lg-12">
             <label for="exampleFormControlInput1" class="required form-label">Image</label>
-            <div class="dropzone dz-clickable w-100" id="kt_dropzonejs_example_1">
-                <div class="dz-message needsclick">
-                    <i class="ki-duotone ki-file-up fs-3x text-primary">
-                        <span class="path1"></span>
-                        <span class="path2"></span>
-                    </i>
-                    <div class="ms-4">
-                        <h3 class="fs-5 fw-bold text-gray-900 mb-1">Drop files here or click to upload.</h3>
-                        <span class="fs-7 fw-semibold text-primary opacity-75">Upload up to 10 files</span>
-                    </div>
-                </div>
-            </div>
+            <input type="file" class="form-control form-control-solid" placeholder="Enter Title" />
         </div>
         <div class="pb-4 col-lg-6">
             <label for="exampleFormControlInput1" class="required form-label">Title</label>
