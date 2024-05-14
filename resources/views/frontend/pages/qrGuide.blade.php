@@ -1,6 +1,6 @@
 <x-frontend-app-layout :title="'QR-Code'">
     <section class="page-banner-area overlay py-250 rpy-120 rel z-1 bgs-cover text-center"
-        style="background-image: url(https://webtendtheme.net/html/2024/akpager/assets/images/backgrounds/banner.jpg);">
+        style="background-image: url(https://webtendtheme.net/html/2024/akpager/assets/images/backgrounds/banner.jpg); height: 400px;">
         <div class="container">
             <div class="banner-inner pt-70 rpt-60 text-black">
                 <h1 class="page-title  aos-init aos-animate" data-aos="fade-up" data-aos-duration="1500"

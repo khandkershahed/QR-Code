@@ -2,12 +2,12 @@
     <section class="page-banner-area overlay py-250 rpy-120 rel z-1 bgs-cover text-center"
         style="
       background-image: url(https://img.freepik.com/free-photo/high-angle-cash-calculator_23-2149103926.jpg?t=st=1711992497~exp=1711996097~hmac=cba674665bb01df3d0bf2d4b9dcb482d199fafdfc976f1390185593de8dbb984&w=1380);
-    ">
+      height: 400px;">
         <div class="container">
             <div class="banner-inner pt-70 rpt-60 text-black">
                 <h1 class="page-title aos-init aos-animate" data-aos="fade-up" data-aos-duration="1500"
                     data-aos-offset="50">
-                    Reseller Pricing
+                    Our Pricing
                 </h1>
             </div>
         </div>
@@ -31,63 +31,80 @@
                         <ul class="nav advanced-tab style-fours mb-40 d-flex justify-content-center mx-auto"
                             role="tablist">
                             <li class="">
-                                <button class="nav-link active text-decoration-none pt-3 text-black" data-bs-toggle="tab" data-bs-target="#tabFour1">
+                                <button class="nav-link active text-decoration-none pt-3 text-black"
+                                    data-bs-toggle="tab" data-bs-target="#tabFour1">
                                     <i class="fa fa-user" aria-hidden="true"></i> For Individuals</button>
                             </li>
                             <li class="">
-                                <button class="nav-link text-decoration-none pt-3 text-black" data-bs-toggle="tab" data-bs-target="#tabFour2">
+                                <button class="nav-link text-decoration-none pt-3 text-black" data-bs-toggle="tab"
+                                    data-bs-target="#tabFour2">
                                     <i class="fa fa-user" aria-hidden="true"></i> For Businesses</button>
                             </li>
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane fade active show" id="tabFour1">
                                 <div class="row justify-content-center">
-                                    <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                                    <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
+                                        data-aos-duration="1500" data-aos-offset="50">
                                         <div class="pricing-item style-five">
                                             <div class="title-price">
                                                 <h5 class="title">Regular</h5>
-                                                <div class="price"><span class="prev">$</span>15.<span class="next">/m</span></div>
+                                                <div class="price"><span class="prev">$</span>15.<span
+                                                        class="next">/m</span></div>
                                             </div>
                                             <hr>
-                                            <div class="text">For small businesses looking to reach more consumers</div>
+                                            <div class="text">For small businesses looking to reach more consumers
+                                            </div>
                                             <ul class="icon-list">
                                                 <li><i class="fas fa-check"></i> 2 Limited sites available</li>
                                                 <li><i class="fas fa-check"></i> 1 GB storage per site</li>
                                                 <li><i class="fas fa-check"></i> Up to 5 pages per site</li>
-                                                <li class="hide"><i class="fas fa-check"></i> Free SSL for custom domain</li>
-                                                <li class="hide"><i class="fas fa-check"></i> Connect custom domain</li>
+                                                <li class="hide"><i class="fas fa-check"></i> Free SSL for custom
+                                                    domain</li>
+                                                <li class="hide"><i class="fas fa-check"></i> Connect custom domain
+                                                </li>
                                             </ul>
-                                            <a href="#" class="theme-btn style-two">Package <i class="fas fa-arrow-right"></i></a>
+                                            <a href="#" class="theme-btn style-two">Package <i
+                                                    class="fas fa-arrow-right"></i></a>
                                         </div>
                                     </div>
-                                    <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
+                                    <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
+                                        data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
                                         <div class="pricing-item style-five">
                                             <div class="title-price">
                                                 <h5 class="title color-two">Standard</h5>
-                                                <div class="price"><span class="prev">$</span>35.<span class="next">/m</span></div>
+                                                <div class="price"><span class="prev">$</span>35.<span
+                                                        class="next">/m</span></div>
                                             </div>
                                             <hr>
-                                            <div class="text">For mid-scale businesses with advanced QR Code needs</div>
+                                            <div class="text">For mid-scale businesses with advanced QR Code needs
+                                            </div>
                                             <ul class="icon-list">
                                                 <li><i class="fas fa-check"></i> 2 Limited sites available</li>
                                                 <li><i class="fas fa-check"></i> 1 GB storage per site</li>
                                                 <li><i class="fas fa-check"></i> Up to 5 pages per site</li>
                                                 <li><i class="fas fa-check"></i> Free SSL for custom domain</li>
-                                                <li class="hide"><i class="fas fa-check"></i> Connect custom domain</li>
+                                                <li class="hide"><i class="fas fa-check"></i> Connect custom domain
+                                                </li>
                                             </ul>
-                                            <a href="#" class="theme-btn style-two">Package <i class="fas fa-arrow-right"></i></a>
+                                            <a href="#" class="theme-btn style-two">Package <i
+                                                    class="fas fa-arrow-right"></i></a>
                                         </div>
                                     </div>
-                                    <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
+                                    <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
+                                        data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
                                         <div class="pricing-item style-five">
                                             <div class="title-price">
                                                 <h5 class="title color-four">Diamond</h5>
-                                                <div class="price"><span class="prev">$</span>98.<span class="next">/m</span></div>
+                                                <div class="price"><span class="prev">$</span>98.<span
+                                                        class="next">/m</span></div>
                                             </div>
                                             <hr class="mb-0 pb-0">
                                             <div class="text mt-2">
                                                 <div>
-                                                    <input class="rounded-0" type="number" placeholder="Email Address" name="" required="" data-sider-select-id="f326c25b-059b-4359-be62-e557f5c18ca4">
+                                                    <input class="rounded-0" type="number" placeholder="Email Address"
+                                                        name="" required=""
+                                                        data-sider-select-id="f326c25b-059b-4359-be62-e557f5c18ca4">
                                                 </div>
                                             </div>
                                             <ul class="icon-list">
@@ -97,16 +114,19 @@
                                                 <li><i class="fas fa-check"></i> Free SSL for custom domain</li>
                                                 <li><i class="fas fa-check"></i> Connect custom domain</li>
                                             </ul>
-                                            <a href="#" class="theme-btn style-two">Package <i class="fas fa-arrow-right"></i></a>
+                                            <a href="#" class="theme-btn style-two">Package <i
+                                                    class="fas fa-arrow-right"></i></a>
                                         </div>
                                     </div>
-                                    <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
+                                    <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
+                                        data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
                                         <div class="pricing-item style-five">
                                             <div class="title-price">
                                                 <h5 class="title color-five">Shedule Demo</h5>
                                             </div>
                                             <hr>
-                                            <div class="text">For businesses with security, control, and flexibility needs</div>
+                                            <div class="text">For businesses with security, control, and flexibility
+                                                needs</div>
                                             <ul class="icon-list">
                                                 <li><i class="fas fa-check"></i> 2 Limited sites available</li>
                                                 <li><i class="fas fa-check"></i> 1 GB storage per site</li>
@@ -114,54 +134,68 @@
                                                 <li><i class="fas fa-check"></i> Free SSL for custom domain</li>
                                                 <li><i class="fas fa-check"></i> Connect custom domain</li>
                                             </ul>
-                                            <a href="#" class="theme-btn style-two">Package <i class="fas fa-arrow-right"></i></a>
+                                            <a href="#" class="theme-btn style-two">Package <i
+                                                    class="fas fa-arrow-right"></i></a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="tabFour2">
                                 <div class="row justify-content-center">
-                                    <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                                    <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
+                                        data-aos-duration="1500" data-aos-offset="50">
                                         <div class="pricing-item style-five">
                                             <div class="title-price">
                                                 <h5 class="title">Regular</h5>
-                                                <div class="price"><span class="prev">$</span>15.<span class="next">/m</span></div>
+                                                <div class="price"><span class="prev">$</span>15.<span
+                                                        class="next">/m</span></div>
                                             </div>
                                             <hr>
-                                            <div class="text">For small businesses looking to reach more consumers</div>
+                                            <div class="text">For small businesses looking to reach more consumers
+                                            </div>
                                             <ul class="icon-list">
                                                 <li><i class="fas fa-check"></i> 2 Limited sites available</li>
                                                 <li><i class="fas fa-check"></i> 1 GB storage per site</li>
                                                 <li><i class="fas fa-check"></i> Up to 5 pages per site</li>
-                                                <li class="hide"><i class="fas fa-check"></i> Free SSL for custom domain</li>
-                                                <li class="hide"><i class="fas fa-check"></i> Connect custom domain</li>
+                                                <li class="hide"><i class="fas fa-check"></i> Free SSL for custom
+                                                    domain</li>
+                                                <li class="hide"><i class="fas fa-check"></i> Connect custom domain
+                                                </li>
                                             </ul>
-                                            <a href="#" class="theme-btn style-two">Package <i class="fas fa-arrow-right"></i></a>
+                                            <a href="#" class="theme-btn style-two">Package <i
+                                                    class="fas fa-arrow-right"></i></a>
                                         </div>
                                     </div>
-                                    <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
+                                    <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
+                                        data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
                                         <div class="pricing-item style-five">
                                             <div class="title-price">
                                                 <h5 class="title color-two">Standard</h5>
-                                                <div class="price"><span class="prev">$</span>35.<span class="next">/m</span></div>
+                                                <div class="price"><span class="prev">$</span>35.<span
+                                                        class="next">/m</span></div>
                                             </div>
                                             <hr>
-                                            <div class="text">For mid-scale businesses with advanced QR Code needs</div>
+                                            <div class="text">For mid-scale businesses with advanced QR Code needs
+                                            </div>
                                             <ul class="icon-list">
                                                 <li><i class="fas fa-check"></i> 2 Limited sites available</li>
                                                 <li><i class="fas fa-check"></i> 1 GB storage per site</li>
                                                 <li><i class="fas fa-check"></i> Up to 5 pages per site</li>
                                                 <li><i class="fas fa-check"></i> Free SSL for custom domain</li>
-                                                <li class="hide"><i class="fas fa-check"></i> Connect custom domain</li>
+                                                <li class="hide"><i class="fas fa-check"></i> Connect custom domain
+                                                </li>
                                             </ul>
-                                            <a href="#" class="theme-btn style-two">Package <i class="fas fa-arrow-right"></i></a>
+                                            <a href="#" class="theme-btn style-two">Package <i
+                                                    class="fas fa-arrow-right"></i></a>
                                         </div>
                                     </div>
-                                    <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
+                                    <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
+                                        data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
                                         <div class="pricing-item style-five">
                                             <div class="title-price">
                                                 <h5 class="title color-four">Diamond</h5>
-                                                <div class="price"><span class="prev">$</span>98.<span class="next">/m</span></div>
+                                                <div class="price"><span class="prev">$</span>98.<span
+                                                        class="next">/m</span></div>
                                             </div>
                                             <hr>
                                             <div class="text">For teams to collaborate and manage QR Codes</div>
@@ -172,16 +206,19 @@
                                                 <li><i class="fas fa-check"></i> Free SSL for custom domain</li>
                                                 <li><i class="fas fa-check"></i> Connect custom domain</li>
                                             </ul>
-                                            <a href="#" class="theme-btn style-two">Package <i class="fas fa-arrow-right"></i></a>
+                                            <a href="#" class="theme-btn style-two">Package <i
+                                                    class="fas fa-arrow-right"></i></a>
                                         </div>
                                     </div>
-                                    <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
+                                    <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
+                                        data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
                                         <div class="pricing-item style-five">
                                             <div class="title-price">
                                                 <h5 class="title color-five">Shedule Demo</h5>
                                             </div>
                                             <hr>
-                                            <div class="text">For businesses with security, control, and flexibility needs</div>
+                                            <div class="text">For businesses with security, control, and flexibility
+                                                needs</div>
                                             <ul class="icon-list">
                                                 <li><i class="fas fa-check"></i> 2 Limited sites available</li>
                                                 <li><i class="fas fa-check"></i> 1 GB storage per site</li>
@@ -189,7 +226,8 @@
                                                 <li><i class="fas fa-check"></i> Free SSL for custom domain</li>
                                                 <li><i class="fas fa-check"></i> Connect custom domain</li>
                                             </ul>
-                                            <a href="#" class="theme-btn style-two">Package <i class="fas fa-arrow-right"></i></a>
+                                            <a href="#" class="theme-btn style-two">Package <i
+                                                    class="fas fa-arrow-right"></i></a>
                                         </div>
                                     </div>
                                 </div>
