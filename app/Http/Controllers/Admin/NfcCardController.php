@@ -35,6 +35,11 @@ class NfcCardController extends Controller
         return view('user.pages.nfc-card.create');
     }
 
+    public function nfcTemplate()
+    {
+        return view('template.nfc_template');
+    }
+
     /**
      * Store a newly created resource in storage.
      */

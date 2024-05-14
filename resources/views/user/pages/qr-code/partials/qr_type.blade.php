@@ -13,7 +13,7 @@
         'text' => 'Link a PDF document and distribute it efficiently',
         'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/pdf.svg',
     ],
-    [ 
+    [
         'id' => 3,
         'value' => 'image',
         'title' => 'Image',
@@ -81,6 +81,20 @@
         'value' => 'business_page',
         'title' => 'Business Page',
         'text' => 'Link to your phone number for quick calls',
+        'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/mp3.svg',
+    ],
+    [
+        'id' => 13,
+        'value' => 'restaurant',
+        'title' => 'Restaurant Menu',
+        'text' => 'Link to your restaurant and upload menu',
+        'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/mp3.svg',
+    ],
+    [
+        'id' => 14,
+        'value' => 'facebook_page',
+        'title' => 'Facebook Page',
+        'text' => 'Link to your facebook page.',
         'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/mp3.svg',
     ],
 ]" />

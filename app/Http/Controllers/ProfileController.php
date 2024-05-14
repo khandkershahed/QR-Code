@@ -24,6 +24,10 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
+    public function userInvoice()
+    {
+        return view('user.profile.invoice');
+    }
     public function edit(Request $request): View
     {
         // dd($request->input('device'));
@@ -142,7 +146,7 @@ class ProfileController extends Controller
         // $request->session()->invalidate();
         // $request->session()->regenerateToken();
 
-        // return Redirect::to('/'); 
+        // return Redirect::to('/');
         $user = $request->user();
         Auth::logout();
         $user->delete();

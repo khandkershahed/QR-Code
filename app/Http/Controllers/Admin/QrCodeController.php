@@ -39,6 +39,11 @@ class QrCodeController extends Controller
         $view = $isUserRoute ? 'user.pages.qr-code.create' : 'admin.pages.qr-code.create';
         return view($view);
     }
+    public function qrTemplate()
+    {
+        return view('template.qr_template');
+    }
+    
 
     public function qrSummary($Qr)
     {

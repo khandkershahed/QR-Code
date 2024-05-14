@@ -163,7 +163,7 @@
                     </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
-                            <a class="menu-link" href="../../demo1/dist/widgets/lists.html">
+                            <a class="menu-link" href="{{ route('user.qr.template') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -171,7 +171,7 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="../../demo1/dist/widgets/statistics.html">
+                            <a class="menu-link" href="{{ route('user.nfc.template') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -215,6 +215,15 @@
                             </a>
                         </div>
                         <div class="menu-item">
+                            <a class="menu-link {{ Route::is('user.plan') ? 'active' : '' }}"
+                                href="{{ route('user.invoice') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">My Invoice Lists</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
                             <a class="menu-link {{ Route::is('profile.edit') ? 'active' : '' }}"
                                 href="{{ route('profile.edit') }}">
                                 <span class="menu-bullet">
@@ -225,7 +234,7 @@
                         </div>
                         {{-- <div class="menu-item">
                             <a class="menu-link "
-                                href="{{ route('normaluser.pricing') }}"> 
+                                href="{{ route('normaluser.pricing') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>

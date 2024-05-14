@@ -315,33 +315,11 @@
     <div class="row pt-4">
         <div class="pb-4 col-lg-12">
             <label for="exampleFormControlInput1" class="required form-label">Logo</label>
-            <div class="dropzone dz-clickable w-100" id="kt_dropzonejs_example_1">
-                <div class="dz-message needsclick">
-                    <i class="ki-duotone ki-file-up fs-3x text-primary">
-                        <span class="path1"></span>
-                        <span class="path2"></span>
-                    </i>
-                    <div class="ms-4">
-                        <h3 class="fs-5 fw-bold text-gray-900 mb-1">Drop files here or click to upload.</h3>
-                        <span class="fs-7 fw-semibold text-primary opacity-75">Upload up to 10 files</span>
-                    </div>
-                </div>
-            </div>
+            <input type="image" src="" alt="">
         </div>
         <div class="pb-4 col-lg-12">
             <label for="exampleFormControlInput1" class="required form-label">Image</label>
-            <div class="dropzone dz-clickable w-100" id="kt_dropzonejs_example_1">
-                <div class="dz-message needsclick">
-                    <i class="ki-duotone ki-file-up fs-3x text-primary">
-                        <span class="path1"></span>
-                        <span class="path2"></span>
-                    </i>
-                    <div class="ms-4">
-                        <h3 class="fs-5 fw-bold text-gray-900 mb-1">Drop files here or click to upload.</h3>
-                        <span class="fs-7 fw-semibold text-primary opacity-75">Upload up to 10 files</span>
-                    </div>
-                </div>
-            </div>
+
         </div>
         <div class="pb-4 col-lg-6">
             <label for="exampleFormControlInput1" class="required form-label">Title</label>
@@ -425,8 +403,8 @@
 {{-- Audio Form Start --}}
 <div class="form-container" id="audio-form">
     <div class="row text-center justify-content-center">
-        <h2 class="text-center mb-0">Social Media</h2>
-        <p class="text-center mb-0">Link to your social media channels for more engagement.</p>
+        <h2 class="text-center mb-0">MP3/Audio</h2>
+        <p class="text-center mb-0">Upload MP3/Audio File</p>
     </div>
     <div class="pt-5 ps-5">
         <h2>Upload audio</h2>
@@ -547,3 +525,19 @@
         </div>
     </div>
 </div>
+
+{{-- Restaurant Form --}}
+<div class="form-container" id="restaurant-form">
+    <div class="row text-center justify-content-center">
+        <h2 class="text-center mb-0">Restaurant Form</h2>
+        <p class="text-center mb-0">Upload MP3/Audio File</p>
+    </div>
+    <div class="pt-5 ps-5">
+        <h2>Restaurant Form</h2>
+        <p>Upload audio file that your QR code should link to.</p>
+    </div>
+    <div class="pb-4 row">
+        
+    </div>
+</div>
+

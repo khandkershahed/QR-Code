@@ -24,7 +24,8 @@ class SubscriptionController extends Controller
         $data['plan'] = Plan::where('slug', $id)->first();
         $data['intent'] = auth()->user()->createSetupIntent();
 
-        return view("frontend.pages.subscribe", $data);
+        // return view("frontend.pages.subscribe", $data);
+        return view("user.pages.subscription.subscribe", $data);
     }
 
     public function subscription(Request $request)
