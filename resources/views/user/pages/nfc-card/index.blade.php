@@ -39,7 +39,7 @@
                         <thead>
                             <tr class="text-gray-500 fw-bold fs-7 text-uppercase">
                                 <th class="">SL</th>
-                                {{-- <th class="">Image</th> --}}
+                                <th class="">Image</th>
                                 <th class="">NAME </th>
                                 {{-- <th class="">Scaned</th> --}}
                                 <th class="">LINK</th>
@@ -53,11 +53,17 @@
                                     <td>
                                         {{ $loop->iteration }}
                                     </td>
-                                    {{-- <td>
-                                        <img class="img-fluid w-50px"
-                                            src="https://appserver.beaconstac.com//static/images/dbc/ashley.png"
-                                            alt="">
-                                    </td> --}}
+                                    <td>
+                                        @if ($nfc_card->nfc_template == 'template-one')
+                                            <img class="img-fluid w-50px"
+                                                src="{{ asset('frontend/assets/images/nfc-templates/template_one.jpg') }}"
+                                                alt="">
+                                        @else
+                                            <img class="img-fluid w-50px"
+                                                src="{{ asset('frontend/assets/images/nfc-templates/template_two.jpg') }}"
+                                                alt="">
+                                        @endif
+                                    </td>
                                     <td>
                                         <div class="text-success">{{ optional($nfc_card->nfcData)->first_name }}
                                             {{ optional($nfc_card->nfcData)->last_name }}
@@ -158,14 +164,15 @@
                                     @foreach ($nfc_card->nfcMessages as $nfc_message)
                                         <tr>
                                             <td>
-                                                    {{ optional($nfc_message)->name }}
+                                                {{ optional($nfc_message)->name }}
                                             </td>
                                             <td class="text-start">
-                                                <a href="mailto:{{ optional($nfc_message)->email }}" target="_blank">{{ optional($nfc_message)->email }}</a>
+                                                <a href="mailto:{{ optional($nfc_message)->email }}"
+                                                    target="_blank">{{ optional($nfc_message)->email }}</a>
 
                                             </td>
                                             <td>
-                                                    {{ optional($nfc_message)->ip_address }}
+                                                {{ optional($nfc_message)->ip_address }}
                                             </td>
                                             <td class="text-start">
                                                 {{ optional($nfc_message)->message }}
