@@ -1,11 +1,10 @@
-<x-app-layout>
+<x-app-layout :title="'My Dashboard'">
     <div class="container-fluid">
         <div class="row">
             <h1 class="text-center pt-5">Hello <span class="text-success">{{ Auth::user()->name }}.</span> Welcome To Your
                 Dashboard!</h1>
-            <div class="col-lg-12">
+            {{-- <div class="col-lg-12">
                 <div class="row my-10">
-                    {{-- OverView --}}
                     <div class="col-lg-4">
                         <div class="card card-xl-stretch">
                             <div class="card-header border-0 bg-danger py-5">
@@ -74,7 +73,6 @@
                             </div>
                         </div>
                     </div>
-                    {{-- Best performing QR codes --}}
                     <div class="col-lg-4">
                         <div class="card card-xl-stretch">
                             <div class="card-header border-0 bg-info py-5">
@@ -144,7 +142,6 @@
                             </div>
                         </div>
                     </div>
-                    {{-- Least performing QR codes --}}
                     <div class="col-lg-4">
                         <div class="card card-xl-stretch">
                             <div class="card-header border-0 bg-warning py-5">
@@ -216,7 +213,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
         <div class="row g-5 gx-xl-10 mb-5 mb-xl-10">
             <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-3 mb-md-5 mb-xl-10">
@@ -224,7 +221,7 @@
                     style="background-color: #15a5aa;background-image:url('https://preview.keenthemes.com/metronic8/demo1/assets/media/patterns/vector-1.png')">
                     <div class="card-header pt-5">
                         <div class="card-title d-flex flex-column">
-                            <span class="fs-2hx fw-bold text-white me-2 lh-1 ls-n2">69</span>
+                            <span class="fs-2hx fw-bold text-white me-2 lh-1 ls-n2">{{ $qrs->count() }}</span>
 
                             <span class="text-white opacity-75 pt-1 fw-semibold fs-6">Total QR Created</span>
                         </div>
@@ -234,12 +231,12 @@
                         <div class="d-flex align-items-center flex-column mt-3 w-100">
                             <div
                                 class="d-flex justify-content-between fw-bold fs-6 text-white opacity-75 w-100 mt-auto mb-2">
-                                <span>43 Pending QR</span>
-                                <span>72%</span>
+                                <span>{{ $qr_pending }} Pending QR</span>
+                                <span>{{ $qr_completion_percentage }}%</span>
                             </div>
 
                             <div class="h-8px mx-3 w-100 bg-white bg-opacity-50 rounded">
-                                <div class="bg-white rounded h-8px" role="progressbar" style="width: 72%;"
+                                <div class="bg-white rounded h-8px" role="progressbar" style="width: {{ $qr_completion_percentage }}%;"
                                     aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
@@ -304,7 +301,7 @@
                     style="background-color: #3228b4;background-image:url('https://preview.keenthemes.com/metronic8/demo1/assets/media/patterns/vector-1.png')">
                     <div class="card-header pt-5">
                         <div class="card-title d-flex flex-column">
-                            <span class="fs-2hx fw-bold text-white me-2 lh-1 ls-n2">69</span>
+                            <span class="fs-2hx fw-bold text-white me-2 lh-1 ls-n2">{{ $nfc_cards->count() }}</span>
                             <span class="text-white opacity-75 pt-1 fw-semibold fs-6">Total NFC Created</span>
                         </div>
                     </div>
@@ -313,12 +310,12 @@
                         <div class="d-flex align-items-center flex-column mt-3 w-100">
                             <div
                                 class="d-flex justify-content-between fw-bold fs-6 text-white opacity-75 w-100 mt-auto mb-2">
-                                <span>43 Pending NFC</span>
-                                <span>72%</span>
+                                <span>{{ $nfc_pending }} Pending NFC</span>
+                                <span>{{ $nfc_completion_percentage }}%</span>
                             </div>
 
                             <div class="h-8px mx-3 w-100 bg-white bg-opacity-50 rounded">
-                                <div class="bg-white rounded h-8px" role="progressbar" style="width: 72%;"
+                                <div class="bg-white rounded h-8px" role="progressbar" style="width: {{ $nfc_completion_percentage }}%;"
                                     aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>

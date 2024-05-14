@@ -41,9 +41,9 @@ class QrCodeController extends Controller
     }
     public function qrTemplate()
     {
-        return view('template.qr_template');
+        return view('user.pages.template.qr_template');
     }
-    
+
 
     public function qrSummary($Qr)
     {

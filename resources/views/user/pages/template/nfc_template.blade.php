@@ -1,4 +1,4 @@
-<x-app-layout :title="'My All Invoices'">
+<x-app-layout :title="'NFC Templates'">
     <div class="row">
         <div class="col-lg-12">
             <div class="card card-p-0 card-flush p-3 mt-10">

@@ -37,7 +37,7 @@ class NfcCardController extends Controller
 
     public function nfcTemplate()
     {
-        return view('template.nfc_template');
+        return view('user.pages.template.nfc_template');
     }
 
     /**

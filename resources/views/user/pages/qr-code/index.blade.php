@@ -16,429 +16,134 @@
                 </div>
                 <div class="card-body">
                     <div>
-                        <ul class="nav nav-tabs nav-line-tabs mb-5 fs-6">
-                            <li class="nav-item">
-                                <a class="nav-link bg-transparent  text-muted active p-0" data-bs-toggle="tab"
-                                    href="#kt_tab_pane_1">All List</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link bg-transparent  text-muted p-0" data-bs-toggle="tab"
-                                    href="#kt_tab_pane_2">Dynamic List</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link bg-transparent  text-muted p-0" data-bs-toggle="tab"
-                                    href="#kt_tab_pane_3">Static List</a>
-                            </li>
-                        </ul>
-
-                        <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="kt_tab_pane_1" role="tabpanel">
-                                <div>
-                                    <h1 class="text-center">All Qr List</h1>
-                                    <table
-                                        class="table align-middle border rounded table-row-dashed table-striped table-hover  fs-6 g-5"
-                                        id="qr_code">
-                                        <thead>
-                                            <tr class="text-gray-500 fw-bold fs-7 text-uppercase text-center">
-                                                <th width="5">SL</th>
-                                                <th width="10">Image</th>
-                                                <th width="35">Content</th>
-                                                <th width="15">Type</th>
-                                                <th width="10">Scaned</th>
-                                                <th width="10">Status</th>
-                                                <th width="15">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="fw-semibold text-gray-600">
-                                            @foreach ($qrs as $qr)
-                                                <tr class="odd text-center">
-                                                    <td>
-                                                        {{ $loop->iteration }}
-                                                    </td>
-                                                    <td>
-                                                        <img class="img-fluid w-50px" src="{{ $qr->qr_png_url }}"
-                                                            alt="">
-                                                    </td>
-                                                    <td data-order="2022-03-10T14:40:00+05:00">
-                                                        {{-- title --}}
-                                                        <span><span class="fw-bold text-black">Title :
-                                                            </span>{{ $qr->qr_name }}</span><br>
-                                                        <span><span class="fw-bold text-black">Link :
-                                                            </span><a href="{{ $qr->qr_png_url }}" target="_blank">{{ $qr->qr_png_url }}</a></span><br>
-                                                        <span><span class="fw-bold text-black">Org :
-                                                            </span>{{ Auth::user()->name }}</span><br>
-                                                        <span><span class="fw-bold text-black">Created at
-                                                                :</span>:{{ $qr->created_at }}</span><br>
-                                                    </td>
-                                                    <td class="text-start">
-                                                        <button class="btn btn-light-primary">QR Code</button>
-                                                    </td>
-                                                    <td class="text-start">
-                                                        <a href="{{route('user.qr.summary',$qr->code)}}" class="btn btn-light-primary">{{ \App\Models\Admin\QrScan::where('code_id', $qr->id)->count() }}</a>
-                                                    </td>
-                                                    <td>
-                                                        <div class="badge badge-light-success">Active</div>
-                                                    </td>
-                                                    <td class="pe-0 text-end">
-                                                        {{-- <a href="{{ route('user.qr-code.edit', $qr->id) }}"
-                                                            class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                                            <i class="fas fa-pen"></i>
-                                                        </a> --}}
-                                                        <a href="{{ route('user.qr-code.destroy', $qr->id) }}"
-                                                            class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1 delete">
-                                                            <i class="fas fa-trash-alt text-danger"></i>
+                        <h1 class="text-center">All Qr List</h1>
+                        <table
+                            class="table align-middle border rounded table-row-dashed table-striped table-hover  fs-6 g-5"
+                            id="qr_code">
+                            <thead>
+                                <tr class="text-gray-500 fw-bold fs-7 text-uppercase text-center">
+                                    <th width="5">SL</th>
+                                    <th width="10">Image</th>
+                                    <th width="35">Content</th>
+                                    <th width="15">Type</th>
+                                    <th width="10">Scaned</th>
+                                    <th width="10">Status</th>
+                                    <th width="15">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="fw-semibold text-gray-600">
+                                @foreach ($qrs as $qr)
+                                    <tr class="odd text-center">
+                                        <td>
+                                            {{ $loop->iteration }}
+                                        </td>
+                                        <td>
+                                            <img class="img-fluid w-50px" src="{{ $qr->qr_png_url }}" alt="">
+                                        </td>
+                                        <td data-order="2022-03-10T14:40:00+05:00">
+                                            {{-- title --}}
+                                            <span><span class="fw-bold text-black">Title :
+                                                </span>{{ $qr->qr_name }}</span><br>
+                                            <span><span class="fw-bold text-black">Link :
+                                                </span><a href="{{ $qr->qr_png_url }}"
+                                                    target="_blank">{{ $qr->qr_png_url }}</a></span><br>
+                                            <span><span class="fw-bold text-black">Org :
+                                                </span>{{ Auth::user()->name }}</span><br>
+                                            <span><span class="fw-bold text-black">Created at
+                                                    :</span>:{{ $qr->created_at }}</span><br>
+                                        </td>
+                                        <td class="text-start">
+                                            <button class="btn btn-light-primary">QR Code</button>
+                                        </td>
+                                        <td class="text-start">
+                                            <a href="{{ route('user.qr.summary', $qr->code) }}"
+                                                class="btn btn-light-primary">{{ \App\Models\Admin\QrScan::where('code_id', $qr->id)->count() }}</a>
+                                        </td>
+                                        <td>
+                                            <div class="badge badge-light-success">Active</div>
+                                        </td>
+                                        <td class="pe-0 text-end">
+                                            {{-- <a href="{{ route('user.qr-code.edit', $qr->id) }}"
+                                                class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                                <i class="fas fa-pen"></i>
+                                            </a> --}}
+                                            <a href="{{ route('user.qr-code.destroy', $qr->id) }}"
+                                                class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1 delete">
+                                                <i class="fas fa-trash-alt text-danger"></i>
+                                            </a>
+                                            <a href="#" class="btn btn-light btn-active-light-primary btn-sm"
+                                                data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end"
+                                                data-kt-menu-flip="top-end">
+                                                Download
+                                                <span class="svg-icon fs-5 m-0">
+                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                                                        height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none"
+                                                            fill-rule="evenodd">
+                                                            <polygon points="0 0 24 0 24 24 0 24"></polygon>
+                                                            <path
+                                                                d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z"
+                                                                fill="currentColor" fill-rule="nonzero"
+                                                                transform="translate(12.000003, 11.999999) rotate(-180.000000) translate(-12.000003, -11.999999)">
+                                                            </path>
+                                                        </g>
+                                                    </svg>
+                                                </span>
+                                            </a>
+                                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
+                                                data-kt-menu="true" style="">
+                                                <!--begin::Menu item-->
+                                                @if (!empty($qr->qr_png))
+                                                    <div class="menu-item px-3">
+                                                        <a href="{{ $qr->qr_png_url }}" class="menu-link px-3" download
+                                                            data-kt-docs-table-filter="edit_row">
+                                                            PNG
                                                         </a>
-                                                        <a href="#"
-                                                            class="btn btn-light btn-active-light-primary btn-sm"
-                                                            data-kt-menu-trigger="click"
-                                                            data-kt-menu-placement="bottom-end"
-                                                            data-kt-menu-flip="top-end">
-                                                            Download
-                                                            <span class="svg-icon fs-5 m-0">
-                                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                    width="24px" height="24px" viewBox="0 0 24 24"
-                                                                    version="1.1">
-                                                                    <g stroke="none" stroke-width="1" fill="none"
-                                                                        fill-rule="evenodd">
-                                                                        <polygon points="0 0 24 0 24 24 0 24"></polygon>
-                                                                        <path
-                                                                            d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z"
-                                                                            fill="currentColor" fill-rule="nonzero"
-                                                                            transform="translate(12.000003, 11.999999) rotate(-180.000000) translate(-12.000003, -11.999999)">
-                                                                        </path>
-                                                                    </g>
-                                                                </svg>
-                                                            </span>
+                                                    </div>
+                                                @endif
+                                                <!--end::Menu item-->
+
+                                                <!--begin::Menu item-->
+                                                @if (!empty($qr->qr_svg))
+                                                    <div class="menu-item px-3">
+                                                        <a href="{{ $qr->qr_svg_url }}" class="menu-link px-3" download
+                                                            data-kt-docs-table-filter="edit_row">
+                                                            SVG
                                                         </a>
-                                                        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
-                                                            data-kt-menu="true" style="">
-                                                            <!--begin::Menu item-->
-                                                            @if (!empty($qr->qr_png))
-                                                                <div class="menu-item px-3">
-                                                                    <a href="{{ $qr->qr_png_url }}" class="menu-link px-3" download
-                                                                        data-kt-docs-table-filter="edit_row">
-                                                                        PNG
-                                                                    </a>
-                                                                </div>
-                                                            @endif
-                                                            <!--end::Menu item-->
-
-                                                            <!--begin::Menu item-->
-                                                            @if (!empty($qr->qr_svg))
-                                                                <div class="menu-item px-3">
-                                                                    <a href="{{ $qr->qr_svg_url }}" class="menu-link px-3" download
-                                                                        data-kt-docs-table-filter="edit_row">
-                                                                        SVG
-                                                                    </a>
-                                                                </div>
-                                                            @endif
-                                                            @if (!empty($qr->qr_eps))
-                                                                <div class="menu-item px-3">
-                                                                    <a href="{{ $qr->qr_eps_url }}" class="menu-link px-3" download
-                                                                        data-kt-docs-table-filter="edit_row">
-                                                                        EPS
-                                                                    </a>
-                                                                </div>
-                                                            @endif
-                                                            @if (!empty($qr->qr_jpg))
-                                                                <div class="menu-item px-3">
-                                                                    <a href="{{ $qr->qr_jpg_url }}" class="menu-link px-3" download
-                                                                        data-kt-docs-table-filter="edit_row">
-                                                                        JPG
-                                                                    </a>
-                                                                </div>
-                                                            @endif
-                                                            @if (!empty($qr->qr_pdf))
-                                                                <div class="menu-item px-3">
-                                                                    <a href="{{ $qr->qr_pdf_url }}" class="menu-link px-3" download
-                                                                        data-kt-docs-table-filter="edit_row">
-                                                                        PDF
-                                                                    </a>
-                                                                </div>
-                                                            @endif
-                                                            <!--end::Menu item-->
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="kt_tab_pane_2" role="tabpanel">
-                                <div>
-                                    <h1 class="text-center">All Dynamic List</h1>
-                                    <table
-                                        class="table align-middle border rounded table-row-dashed table-striped table-hover  fs-6 g-5"
-                                        id="qr_code">
-                                        <thead>
-                                            <tr class="text-gray-500 fw-bold fs-7 text-uppercase">
-                                                <th class="">SL</th>
-                                                <th class="">Image</th>
-                                                <th class="">Content</th>
-                                                <th class="">Type</th>
-                                                <th class="">Scaned</th>
-                                                <th class="">Status</th>
-                                                <th class="text-end">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="fw-semibold text-gray-600">
-                                            @foreach ($qrs as $qr)
-                                                @if ($qr->qr_scan_status == 'dynamic')
-                                                    <tr class="odd">
-                                                        <td>
-                                                            {{ $loop->iteration }}
-                                                        </td>
-                                                        <td>
-                                                            <img class="img-fluid w-50px" src="{{ $qr->qr_url }}"
-                                                                alt="">
-                                                        </td>
-                                                        <td data-order="2022-03-10T14:40:00+05:00">
-                                                            {{-- title --}}
-                                                            <span><span class="fw-bold text-black">Title :
-                                                                </span>{{ $qr->qr_name }}</span><br>
-                                                            <span><span class="fw-bold text-black">Link :
-                                                                </span><a href="{{ $qr->qr_url }}" target="_blank">{{ $qr->qr_url }}</a></span><br>
-                                                            <span><span class="fw-bold text-black">Org :
-                                                                </span>{{ Auth::user()->name }}</span><br>
-                                                            <span><span class="fw-bold text-black">Created at
-                                                                    :</span>:{{ $qr->created_at }}</span><br>
-                                                        </td>
-                                                        <td class="text-start">
-                                                            <button class="btn btn-light-primary">QR Code</button>
-                                                        </td>
-                                                        <td class="text-start">
-                                                            <button class="btn btn-light-primary">94</button>
-                                                        </td>
-                                                        <td>
-                                                            <div class="badge badge-light-success">Active</div>
-                                                        </td>
-                                                        <td class="pe-0 text-end">
-                                                            {{-- <a href="{{ route('user.qr-code.edit', $qr->id) }}"
-                                                                class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                                                <i class="fas fa-pen"></i>
-                                                            </a> --}}
-                                                            <a href="{{ route('user.qr-code.destroy', $qr->id) }}"
-                                                                class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1 delete">
-                                                                <i class="fas fa-trash-alt text-danger"></i>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="btn btn-light btn-active-light-primary btn-sm"
-                                                                data-kt-menu-trigger="click"
-                                                                data-kt-menu-placement="bottom-end"
-                                                                data-kt-menu-flip="top-end">
-                                                                Download
-                                                                <span class="svg-icon fs-5 m-0">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                                        xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                        width="24px" height="24px" viewBox="0 0 24 24"
-                                                                        version="1.1">
-                                                                        <g stroke="none" stroke-width="1" fill="none"
-                                                                            fill-rule="evenodd">
-                                                                            <polygon points="0 0 24 0 24 24 0 24"></polygon>
-                                                                            <path
-                                                                                d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z"
-                                                                                fill="currentColor" fill-rule="nonzero"
-                                                                                transform="translate(12.000003, 11.999999) rotate(-180.000000) translate(-12.000003, -11.999999)">
-                                                                            </path>
-                                                                        </g>
-                                                                    </svg>
-                                                                </span>
-                                                            </a>
-                                                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
-                                                                data-kt-menu="true" style="">
-                                                                <!--begin::Menu item-->
-                                                                @if (!empty($qr->qr_png))
-                                                                    <div class="menu-item px-3">
-                                                                        <a href="{{ $qr->qr_png_url }}" class="menu-link px-3" download
-                                                                            data-kt-docs-table-filter="edit_row">
-                                                                            PNG
-                                                                        </a>
-                                                                    </div>
-                                                                @endif
-                                                                <!--end::Menu item-->
-
-                                                                <!--begin::Menu item-->
-                                                                @if (!empty($qr->qr_svg))
-                                                                    <div class="menu-item px-3">
-                                                                        <a href="{{ $qr->qr_svg_url }}" class="menu-link px-3" download
-                                                                            data-kt-docs-table-filter="edit_row">
-                                                                            SVG
-                                                                        </a>
-                                                                    </div>
-                                                                @endif
-                                                                @if (!empty($qr->qr_eps))
-                                                                    <div class="menu-item px-3">
-                                                                        <a href="{{ $qr->qr_eps_url }}" class="menu-link px-3" download
-                                                                            data-kt-docs-table-filter="edit_row">
-                                                                            EPS
-                                                                        </a>
-                                                                    </div>
-                                                                @endif
-                                                                @if (!empty($qr->qr_jpg))
-                                                                    <div class="menu-item px-3">
-                                                                        <a href="{{ $qr->qr_jpg_url }}" class="menu-link px-3" download
-                                                                            data-kt-docs-table-filter="edit_row">
-                                                                            JPG
-                                                                        </a>
-                                                                    </div>
-                                                                @endif
-                                                                @if (!empty($qr->qr_pdf))
-                                                                    <div class="menu-item px-3">
-                                                                        <a href="{{ $qr->qr_pdf_url }}" class="menu-link px-3" download
-                                                                            data-kt-docs-table-filter="edit_row">
-                                                                            PDF
-                                                                        </a>
-                                                                    </div>
-                                                                @endif
-                                                                <!--end::Menu item-->
-                                                            </div>
-                                                        </td>
-                                                    </tr>
+                                                    </div>
                                                 @endif
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="kt_tab_pane_3" role="tabpanel">
-                                <div>
-                                    <h1 class="text-center">All Static List</h1>
-                                    <table
-                                        class="table align-middle border rounded table-row-dashed table-striped table-hover  fs-6 g-5"
-                                        id="qr_code">
-                                        <thead>
-                                            <tr class="text-gray-500 fw-bold fs-7 text-uppercase">
-                                                <th class="">SL</th>
-                                                <th class="">Image</th>
-                                                <th class="">Content</th>
-                                                <th class="">Type</th>
-                                                <th class="">Scaned</th>
-                                                <th class="">Status</th>
-                                                <th class="text-end">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="fw-semibold text-gray-600">
-                                            @foreach ($qrs as $qr)
-                                                @if ($qr->qr_scan_status == 'static')
-                                                    <tr class="odd">
-                                                        <td>
-                                                            {{ $loop->iteration }}
-                                                        </td>
-                                                        <td>
-                                                            <img class="img-fluid w-50px" src="{{ $qr->qr_url }}"
-                                                                alt="">
-                                                        </td>
-                                                        <td data-order="2022-03-10T14:40:00+05:00">
-                                                            {{-- title --}}
-                                                            <span><span class="fw-bold text-black">Title :
-                                                                </span>{{ $qr->qr_name }}</span><br>
-                                                            <span><span class="fw-bold text-black">Link :
-                                                                </span>{{ $qr->qr_url }}</span><br>
-                                                            <span><span class="fw-bold text-black">Org :
-                                                                </span>{{ Auth::user()->name }}</span><br>
-                                                            <span><span class="fw-bold text-black">Created at
-                                                                    :</span>:{{ $qr->created_at }}</span><br>
-                                                        </td>
-                                                        <td class="text-start">
-                                                            <button class="btn btn-light-primary">{{ ucfirst($qr->qr_scan_status) }}</button>
-                                                        </td>
-                                                        <td class="text-start">
-                                                            <button class="btn btn-light-primary">94</button>
-                                                        </td>
-                                                        <td>
-                                                            <div class="badge badge-light-success">Active</div>
-                                                        </td>
-                                                        <td class="pe-0 text-end">
-                                                            {{-- <a href="{{ route('user.qr-code.edit', $qr->id) }}"
-                                                                class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                                                <i class="fas fa-pen"></i>
-                                                            </a> --}}
-                                                            <a href="{{ route('user.qr-code.destroy', $qr->id) }}"
-                                                                class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1 delete">
-                                                                <i class="fas fa-trash-alt text-danger"></i>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="btn btn-light btn-active-light-primary btn-sm"
-                                                                data-kt-menu-trigger="click"
-                                                                data-kt-menu-placement="bottom-end"
-                                                                data-kt-menu-flip="top-end">
-                                                                Download
-                                                                <span class="svg-icon fs-5 m-0">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                                        xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                        width="24px" height="24px" viewBox="0 0 24 24"
-                                                                        version="1.1">
-                                                                        <g stroke="none" stroke-width="1" fill="none"
-                                                                            fill-rule="evenodd">
-                                                                            <polygon points="0 0 24 0 24 24 0 24"></polygon>
-                                                                            <path
-                                                                                d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z"
-                                                                                fill="currentColor" fill-rule="nonzero"
-                                                                                transform="translate(12.000003, 11.999999) rotate(-180.000000) translate(-12.000003, -11.999999)">
-                                                                            </path>
-                                                                        </g>
-                                                                    </svg>
-                                                                </span>
-                                                            </a>
-                                                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
-                                                                data-kt-menu="true" style="">
-                                                                <!--begin::Menu item-->
-                                                                @if (!empty($qr->qr_png))
-                                                                    <div class="menu-item px-3">
-                                                                        <a href="{{ $qr->qr_png_url }}" class="menu-link px-3" download
-                                                                            data-kt-docs-table-filter="edit_row">
-                                                                            PNG
-                                                                        </a>
-                                                                    </div>
-                                                                @endif
-                                                                <!--end::Menu item-->
-
-                                                                <!--begin::Menu item-->
-                                                                @if (!empty($qr->qr_svg))
-                                                                    <div class="menu-item px-3">
-                                                                        <a href="{{ $qr->qr_svg_url }}" class="menu-link px-3" download
-                                                                            data-kt-docs-table-filter="edit_row">
-                                                                            SVG
-                                                                        </a>
-                                                                    </div>
-                                                                @endif
-                                                                @if (!empty($qr->qr_eps))
-                                                                    <div class="menu-item px-3">
-                                                                        <a href="{{ $qr->qr_eps_url }}" class="menu-link px-3" download
-                                                                            data-kt-docs-table-filter="edit_row">
-                                                                            EPS
-                                                                        </a>
-                                                                    </div>
-                                                                @endif
-                                                                @if (!empty($qr->qr_jpg))
-                                                                    <div class="menu-item px-3">
-                                                                        <a href="{{ $qr->qr_jpg_url }}" class="menu-link px-3" download
-                                                                            data-kt-docs-table-filter="edit_row">
-                                                                            JPG
-                                                                        </a>
-                                                                    </div>
-                                                                @endif
-                                                                @if (!empty($qr->qr_pdf))
-                                                                    <div class="menu-item px-3">
-                                                                        <a href="{{ $qr->qr_pdf_url }}" class="menu-link px-3" download
-                                                                            data-kt-docs-table-filter="edit_row">
-                                                                            PDF
-                                                                        </a>
-                                                                    </div>
-                                                                @endif
-                                                                <!--end::Menu item-->
-                                                            </div>
-                                                        </td>
-                                                    </tr>
+                                                @if (!empty($qr->qr_eps))
+                                                    <div class="menu-item px-3">
+                                                        <a href="{{ $qr->qr_eps_url }}" class="menu-link px-3" download
+                                                            data-kt-docs-table-filter="edit_row">
+                                                            EPS
+                                                        </a>
+                                                    </div>
                                                 @endif
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
+                                                @if (!empty($qr->qr_jpg))
+                                                    <div class="menu-item px-3">
+                                                        <a href="{{ $qr->qr_jpg_url }}" class="menu-link px-3" download
+                                                            data-kt-docs-table-filter="edit_row">
+                                                            JPG
+                                                        </a>
+                                                    </div>
+                                                @endif
+                                                @if (!empty($qr->qr_pdf))
+                                                    <div class="menu-item px-3">
+                                                        <a href="{{ $qr->qr_pdf_url }}" class="menu-link px-3" download
+                                                            data-kt-docs-table-filter="edit_row">
+                                                            PDF
+                                                        </a>
+                                                    </div>
+                                                @endif
+                                                <!--end::Menu item-->
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

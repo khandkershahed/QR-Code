@@ -1,8 +1,8 @@
-<x-app-layout :title="'My All Invoices'">
+<x-app-layout :title="'QR Templates'">
     <div class="row">
         <div class="col-lg-12">
             <div class="card card-p-0 card-flush p-3 mt-10">
-                
+
                 <div class="card-body">
 
                 </div>
@@ -14,3 +14,4 @@
 
     @endpush
 </x-app-layout>
+

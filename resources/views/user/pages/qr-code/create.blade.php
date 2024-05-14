@@ -128,7 +128,8 @@
                                                                 placeholder="Enter a name for your QR code" required />
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-6">
+                                                    <input type="hidden" name="qr_scan_status" value="dynamic">
+                                                    {{-- <div class="col-lg-6">
                                                         <div class="pt-5 pb-5">
                                                             <x-metronic.label for="status"
                                                                 class="form-label">{{ __('Enter a name for your QR code') }}
@@ -141,7 +142,7 @@
                                                                 <option value="dynamic">Dynamic</option>
                                                             </select>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                                 {{-- <div class="w-25 mx-auto">
                                                     <img width="300px"
@@ -389,7 +390,7 @@
             });
         </script> --}}
         <script>
-            // $(document).ready(function() { 2   
+            // $(document).ready(function() { 2
             // $('#generateQRCodeForm input:not([name="qr_type"]), #generateQRCodeForm input:not([name="qr_data_coupon_code"]),#generateQRCodeForm input:not([name="qr_data_coupon_expire_date"]),#generateQRCodeForm input:not([name="qr_data_coupon_header"]),#generateQRCodeForm input:not([name="qr_data_coupon_message"]),#generateQRCodeForm input:not([name="qr_data_coupon_description_header"]),#generateQRCodeForm input:not([name="qr_data_coupon_description_body"]),#generateQRCodeForm input:not([name="qr_data_coupon_website"]),#generateQRCodeForm input:not([name="qr_data_coupon_company"]),#generateQRCodeForm input:not([name="qr_data_coupon_policy"]),#generateQRCodeForm input:not([name="qr_data_coupon_logo"]) ,#generateQRCodeForm textarea, #generateQRCodeForm select')
             $('#generateQRCodeForm input, #generateQRCodeForm textarea, #generateQRCodeForm select').not(
                 '[name="qr_type"], [name="qr_data_coupon_code"], [name="qr_data_coupon_expire_date"], [name="qr_data_coupon_header"], [name="qr_data_coupon_message"], [name="qr_data_coupon_description_header"], [name="qr_data_coupon_description_body"], [name="qr_data_coupon_website"], [name="qr_data_coupon_company"], [name="qr_data_coupon_policy"], [name="qr_data_coupon_logo"]'

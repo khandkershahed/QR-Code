@@ -36,7 +36,7 @@
             class="img-fluid generatedQRCode">
     </div>
     <div class="card qr-card coupon_code" style="display: none;">
-        <img src="{{ asset('frontend/assets/images/qrpreview/Coupon.png') }}" alt="coupon_code"
+        <img src="{{ asset('frontend/assets/images/qrpreview/Coupon.jpg') }}" alt="coupon_code"
             class="img-fluid generatedQRCode">
     </div>
     <div class="card qr-card social" style="display: none;">
