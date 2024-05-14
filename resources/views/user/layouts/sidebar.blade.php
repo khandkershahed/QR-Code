@@ -181,14 +181,15 @@
                     </div>
                 </div>
                 <div data-kt-menu-trigger="click"
-                    class="menu-item {{ Route::is('profile.edit','user.plan') ? 'here show' : '' }} menu-accordion">
+                    class="menu-item {{ Route::is('profile.edit', 'user.plan') ? 'here show' : '' }} menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                     class="svg-icon svg-icon-2">
-                                    <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <rect x="3" y="3" width="18" height="18" rx="2"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
                                     <rect x="7" y="7" width="4" height="4" rx="1"
                                         fill="currentColor" />
                                     <rect x="13" y="7" width="4" height="4" rx="1"
@@ -204,14 +205,14 @@
                         <span class="menu-arrow"></span>
                     </span>
                     <div
-                        class="menu-sub menu-sub-accordion {{ Route::is('profile.edit','user.plan') ? 'menu-active-bg' : '' }}">
+                        class="menu-sub menu-sub-accordion {{ Route::is('profile.edit', 'user.plan') ? 'menu-active-bg' : '' }}">
                         <div class="menu-item">
                             <a class="menu-link {{ Route::is('user.plan') ? 'active' : '' }}"
-                                href="{{ route('user.plan') }}">
+                                href="{{ route('user.invoice') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">My Plan</span>
+                                <span class="menu-title">My Invoice</span>
                             </a>
                         </div>
                         <div class="menu-item">
@@ -220,7 +221,16 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">My Invoice Lists</span>
+                                <span class="menu-title">Plans List</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link {{ Route::is('user.plan') ? 'active' : '' }}"
+                                href="{{ route('user.plan') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Upgrade Plan</span>
                             </a>
                         </div>
                         <div class="menu-item">

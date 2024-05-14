@@ -2,18 +2,14 @@
     <div class="row">
         <div class="col-lg-12">
             <div id="kt_app_content" class="app-content  flex-column-fluid ">
-                <div id="kt_app_content_container" class="app-container  container-xxl ">
+                <div id="kt_app_content_container" class="app-container  container-lg  ">
                     <div class="card">
-                        <div class="card-body py-20">
-                            <div class="mw-lg-950px mx-auto w-100">
+                        <div class="card-body p-5">
+                            <div class="mx-auto px-2">
                                 <div class="d-flex justify-content-between flex-column flex-sm-row mb-19">
                                     <div class="text-sm-start">
                                         <h4 class="fw-bolder text-gray-800 fs-2qx pe-5 pb-7">INVOICE</h4>
-                                        <a href="#">
-                                            <img alt="Logo" class="img-fluid" width="50px"
-                                                src="https://i.ibb.co/BNBTVN4/logo.png">
-                                        </a>
-                                        <div class="text-sm-start fw-semibold fs-4 text-muted mt-7">
+                                        <div class="text-sm-start fw-semibold fs-4 text-muted mt-2">
                                             <div>GoQR <br> 711-2880 Nulla St, Mankato</div>
                                             <div>{{ date('d-m-y') }}</div>
                                             <div>255545488</div>
@@ -136,9 +132,10 @@
                                     </div>
                                 </div>
                                 <div class="mt-lg-20 pt-13">
-                                    <div class="my-1 me-5 text-end ">
+                                    <div class="my-1 text-end ">
                                         <button type="button" class="btn btn-success my-1 me-12"
                                             onclick="window.print();">Print Invoice</button>
+                                        <button type="button" class="btn btn-info my-1">Upgrade Plan</button>
                                     </div>
                                 </div>
                             </div>
@@ -148,7 +145,6 @@
             </div>
         </div>
     </div>
-
     @push('scripts')
     @endpush
 </x-app-layout>
