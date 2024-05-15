@@ -1,4 +1,5 @@
 <x-admin-app-layout :title="'FAQ List'">
+    
     <div class="card card-flush">
         <div class="card-header mt-6">
             <div class="card-title">

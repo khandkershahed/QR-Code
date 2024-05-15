@@ -281,7 +281,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
                     <span class="menu-link">
                         <span class="menu-icon">
@@ -429,7 +428,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div data-kt-menu-trigger="click"
                     class="menu-item menu-accordion  {{ Route::is('admin.setting.index', 'admin.css.index','admin.email-settings.index') ? 'here show' : '' }}">
                     <span class="menu-link">
@@ -485,7 +483,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

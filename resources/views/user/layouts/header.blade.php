@@ -19,7 +19,6 @@
             @if ($title ?? null)
                 <h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">{{ $title }}</h1>
                 <span class="h-20px border-gray-300 border-start mx-4"></span>
-            @else
             @endif
 
 

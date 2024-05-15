@@ -17,12 +17,12 @@
             </div>
             <div id="kt_accordion_2_item_1" class="fs-6 collapse show ps-10" data-bs-parent="#kt_accordion_2">
                 <div class="row p-2">
-                    <div class="col-lg-2">
+                    <div class="col-lg-3">
                         <div class="fv-row my-3">
                             <x-metronic.label for="profile_image"
-                                class="form-label required">{{ __('Banner Image') }}</x-metronic.label>
+                                class="form-label required"> {{ __('Banner Image') }}</x-metronic.label>
                             <input id="profile_image" type="file" class="form-control" name="banner_image"
-                                :value="old('banner_image')" onchange="previewBannerImage(this)" accept="image/*" />
+                                 onchange="previewBannerImage(this)" accept="image/*" />
                         </div>
                     </div>
                     <div class="col-lg-1 d-lg-block d-sm-none">
@@ -35,7 +35,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-3">
                         <div class="fv-row my-3">
                             <x-metronic.label for="profile_image"
                                 class="form-label required">{{ __('Profile Image') }}</x-metronic.label>
@@ -53,7 +53,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2 required">First Name</x-metronic.label>
                             <x-metronic.input type="text" name="first_name"
@@ -61,7 +61,7 @@
                                 value="" />
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2 required">Last Name</x-metronic.label>
                             <x-metronic.input type="text" name="last_name"
@@ -69,7 +69,7 @@
                                 value="" />
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2 required">Designation</x-metronic.label>
                             <x-metronic.input type="text" name="designation"
@@ -77,7 +77,7 @@
                                 value="" />
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2 required">Address Line One</x-metronic.label>
                             <x-metronic.input type="text" name="address_line_one"
@@ -85,7 +85,7 @@
                                 value="" />
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2 required">Address Line Two</x-metronic.label>
                             <x-metronic.input type="text" name="address_line_two"
@@ -93,7 +93,7 @@
                                 value="" />
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2 required">Phone Work</x-metronic.label>
                             <x-metronic.input type="text" name="phone_work"
@@ -101,7 +101,7 @@
                                 value="" />
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2 required">Phone Personal</x-metronic.label>
                             <x-metronic.input type="text" name="phone_personal"
@@ -109,7 +109,7 @@
                                 value="" />
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2 required">Email Work</x-metronic.label>
                             <x-metronic.input type="email" name="email_work"
@@ -117,7 +117,7 @@
                                 value="" />
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2 required">Email Personal</x-metronic.label>
                             <x-metronic.input type="email" name="email_personal"
@@ -172,7 +172,7 @@
             </div>
             <div id="kt_accordion_2_item_3" class="collapse fs-6 ps-10" data-bs-parent="#kt_accordion_2">
                 <div class="row p-2">
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2">Service Section Title</x-metronic.label>
                             <x-metronic.input type="text" name="service_section_title"
@@ -181,7 +181,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2">Service Section
                                 Description</x-metronic.label>
@@ -189,7 +189,7 @@
                                 placeholder="Professional, reliable service provider committed to exceeding expectations with quality, efficiency, and personalized care for every client's needs."></textarea>
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2">Service One Title</x-metronic.label>
                             <x-metronic.input type="text" name="service_one_title"
@@ -197,7 +197,7 @@
                                 value="" />
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2">Service One Image</x-metronic.label>
                             <x-metronic.input type="file" name="service_one_image"
@@ -205,14 +205,14 @@
                                 value="" />
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2">Service One Description</x-metronic.label>
                             <textarea class="form-control form-control-solid" rows="1" name="service_one_description"
                                 placeholder="Professional, reliable service provider committed to exceeding expectations with quality, efficiency, and personalized care for every client's needs."></textarea>
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2">Service Two Title</x-metronic.label>
                             <x-metronic.input type="text" name="service_two_title"
@@ -220,7 +220,7 @@
                                 value="" />
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2">Service Two Image</x-metronic.label>
                             <x-metronic.input type="file" name="service_two_image"
@@ -228,14 +228,14 @@
                                 value="" />
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2">Service Two Description</x-metronic.label>
                             <textarea class="form-control form-control-solid" rows="1" name="service_two_description"
                                 placeholder="Professional, reliable service provider committed to exceeding expectations with quality, efficiency, and personalized care for every client's needs."></textarea>
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2">Service Three Title</x-metronic.label>
                             <x-metronic.input type="text" name="service_three_title"
@@ -243,7 +243,7 @@
                                 value="" />
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2">Service Three Image</x-metronic.label>
                             <x-metronic.input type="file" name="service_three_image"
@@ -274,7 +274,7 @@
             </div>
             <div id="kt_accordion_2_item_4" class="collapse fs-6 ps-10" data-bs-parent="#kt_accordion_2">
                 <div class="row p-2">
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2">Company Title</x-metronic.label>
                             <x-metronic.input type="text" name="company_title"
@@ -282,7 +282,7 @@
                                 value="" />
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2">Company Name</x-metronic.label>
                             <x-metronic.input type="text" name="company_name"
@@ -290,15 +290,15 @@
                                 value="" />
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="fv-row my-3">
-                            <x-metronic.label class="fw-semibold fs-6 mb-2">company_address_line_one</x-metronic.label>
+                            <x-metronic.label class="fw-semibold fs-6 mb-2">Company_address_line_one</x-metronic.label>
                             <x-metronic.input type="text" name="company_address_line_one"
                                 class="form-control form-control-solid mb-3 mb-lg-0"
                                 placeholder="257/A, San-fca Calefornia," value="" />
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2">Company Address Line Two</x-metronic.label>
                             <x-metronic.input type="text" name="company_address_line_two"
@@ -306,7 +306,7 @@
                                 value="" />
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2">Company Phone</x-metronic.label>
                             <x-metronic.input type="text" name="company_phone"
@@ -314,7 +314,7 @@
                                 value="" />
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2">Company Email</x-metronic.label>
                             <x-metronic.input type="email" name="company_email"
@@ -322,7 +322,7 @@
                                 value="" />
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2">Company About Title</x-metronic.label>
                             <x-metronic.input type="text" name="company_about_title"
@@ -330,7 +330,7 @@
                                 value="" />
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2">Company About
                                 Description</x-metronic.label>
@@ -353,7 +353,7 @@
             </div>
             <div id="kt_accordion_2_item_5" class="collapse fs-6 ps-10" data-bs-parent="#kt_accordion_2">
                 <div class="row p-2">
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2">Facebook URL</x-metronic.label>
                             <x-metronic.input type="url" name="facebook_url"
@@ -361,7 +361,7 @@
                                 placeholder="Facebook URL" />
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2">Instagram URL</x-metronic.label>
                             <x-metronic.input type="url" name="instagram_url"
@@ -369,7 +369,7 @@
                                 placeholder="Instagram URL" />
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2">Twitter URL</x-metronic.label>
                             <x-metronic.input type="url" name="twitter_url"
@@ -377,7 +377,7 @@
                                 placeholder="Twitter URL" />
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2">Youtube URL</x-metronic.label>
                             <x-metronic.input type="url" name="youtube_url"
@@ -385,15 +385,15 @@
                                 placeholder="Youtube URL" />
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    {{-- <div class="col-lg-4">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2">Google URL</x-metronic.label>
                             <x-metronic.input type="url" name="google_url"
                                 class="form-control form-control-solid mb-3 mb-lg-0" value=""
                                 placeholder="Google URL" />
                         </div>
-                    </div>
-                    <div class="col-lg-3">
+                    </div> --}}
+                    <div class="col-lg-4">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2">Pinterest URL</x-metronic.label>
                             <x-metronic.input type="url" name="pinterest_url"
@@ -401,7 +401,7 @@
                                 placeholder="Pinterest URL" />
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2">Linkedin URL</x-metronic.label>
                             <x-metronic.input type="url" name="linkedin_url"
@@ -409,7 +409,7 @@
                                 placeholder="Linkedin URL" />
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2">Google Plus URL</x-metronic.label>
                             <x-metronic.input type="url" name="google_plus_url"
@@ -417,22 +417,22 @@
                                 placeholder="Google Plus URL" />
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    {{-- <div class="col-lg-6">
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2">Gmail URL</x-metronic.label>
                             <x-metronic.input type="url" name="gmail_url"
                                 class="form-control form-control-solid mb-3 mb-lg-0" value=""
                                 placeholder="Gmail URL" />
                         </div>
-                    </div>
-                    <div class="col-lg-6">
+                    </div> --}}
+                    {{-- <div class="col-lg-6">
                         <div class="fv-row my-3">
-                            <x-metronic.label class="fw-semibold fs-6 mb-2">Apple UR</x-metronic.label>
+                            <x-metronic.label class="fw-semibold fs-6 mb-2">Apple URL</x-metronic.label>
                             <x-metronic.input type="url" name="apple_url"
                                 class="form-control form-control-solid mb-3 mb-lg-0" value=""
                                 placeholder="Apple URL" />
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
