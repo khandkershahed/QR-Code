@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Admin\QrCodeRequest;
 use App\Models\Admin\QrScan;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Stevebauman\Location\Facades\Location;
 
 class QrCodeController extends Controller
 {
@@ -50,8 +51,39 @@ class QrCodeController extends Controller
 
         $qr = Qr::with('qrData')->where('code', $Qr)->first();
         $maps = QrScan::where('qr_code', $Qr)->get(['ip_address']);
+        $unique_ips = $maps->unique('ip_address');
 
-        return view('user.pages.qr-code.qrSummary', compact('qr', 'maps'));
+        $users = [];
+        foreach ($unique_ips as $unique_ip) {
+            $unique_ip = $unique_ip->ip_address;
+            $user = Location::get($unique_ip);
+            $users[] = $user;
+        }
+        $locations = [];
+        foreach ($maps as $map) {
+            $ip = $map->ip_address;
+            $location = Location::get($ip);
+            $locations[] = $location;
+        }
+
+        $cities = [];
+        $totalScans = count($maps);
+
+        foreach ($locations as $map) {
+            $city = $map->cityName;
+            if (!isset($cities[$city])) {
+                $cities[$city] = [
+                    'state_province' => $map->regionName,
+                    'country' => $map->countryName,
+                    'scans' => 1,
+                ];
+            } else {
+                $cities[$city]['scans']++;
+            }
+        }
+
+        // dd($cities);
+        return view('user.pages.qr-code.qrSummary', compact('qr', 'maps', 'locations','cities','totalScans','users'));
     }
 
 
@@ -106,7 +138,6 @@ class QrCodeController extends Controller
                 }
 
                 return redirect()->to($redirectUrl);
-
             } elseif (!empty($qr->qr_type) && $qr->qr_type == 'coupon_code') {
                 return view('user.pages.qr-code.show.qrCoupon', compact('qr'));
             } else {

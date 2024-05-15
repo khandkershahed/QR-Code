@@ -534,21 +534,12 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <select class="form-select mb-2" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">08:00</option>
-                        <option value="2">Two</option>
-                        <option value="3">20:00</option>
-                    </select>
+                    <x-metronic.input id="qr_data_start_time_monday" type="time" name="qr_data_start_time_monday"
+                        :value="old('qr_data_start_time_monday')" placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option selected>Open this select menu</option>
-                        <option value="1">20:00</option>
-                        <option value="2">Two</option>
-                        <option value="3">08:00</option>
-                    </select>
+                    <x-metronic.input id="qr_data_end_time_monday" type="time" name="qr_data_end_time_monday"
+                        :value="old('qr_data_end_time_monday')" placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
             <div class="row align-items-center">
@@ -562,21 +553,12 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <select class="form-select mb-2" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">08:00</option>
-                        <option value="2">Two</option>
-                        <option value="3">20:00</option>
-                    </select>
+                    <x-metronic.input id="qr_data_start_time_tuesday" type="time"
+                        name="qr_data_start_time_tuesday" :value="old('qr_data_start_time_tuesday')" placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option selected>Open this select menu</option>
-                        <option value="1">20:00</option>
-                        <option value="2">Two</option>
-                        <option value="3">08:00</option>
-                    </select>
+                    <x-metronic.input id="qr_data_end_time_tuesday" type="time" name="qr_data_end_time_tuesday"
+                        :value="old('qr_data_end_time_tuesday')" placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
             <div class="row align-items-center">
@@ -590,21 +572,12 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <select class="form-select mb-2" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">08:00</option>
-                        <option value="2">Two</option>
-                        <option value="3">20:00</option>
-                    </select>
+                    <x-metronic.input id="qr_data_start_time_wednesday" type="time"
+                        name="qr_data_start_time_wednesday" :value="old('qr_data_start_time_wednesday')" placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option selected>Open this select menu</option>
-                        <option value="1">20:00</option>
-                        <option value="2">Two</option>
-                        <option value="3">08:00</option>
-                    </select>
+                    <x-metronic.input id="qr_data_end_time_wednesday" type="time"
+                        name="qr_data_end_time_wednesday" :value="old('qr_data_end_time_wednesday')" placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
             <div class="row align-items-center">
@@ -618,21 +591,12 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <select class="form-select mb-2" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">08:00</option>
-                        <option value="2">Two</option>
-                        <option value="3">20:00</option>
-                    </select>
+                    <x-metronic.input id="qr_data_start_time_thursday" type="time"
+                        name="qr_data_start_time_thursday" :value="old('qr_data_start_time_thursday')" placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option selected>Open this select menu</option>
-                        <option value="1">20:00</option>
-                        <option value="2">Two</option>
-                        <option value="3">08:00</option>
-                    </select>
+                    <x-metronic.input id="qr_data_end_time_thursday" type="time" name="qr_data_end_time_thursday"
+                        :value="old('qr_data_end_time_thursday')" placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
             <div class="row align-items-center">
@@ -646,21 +610,12 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <select class="form-select mb-2" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">08:00</option>
-                        <option value="2">Two</option>
-                        <option value="3">20:00</option>
-                    </select>
+                    <x-metronic.input id="qr_data_start_time_friday" type="time" name="qr_data_start_time_friday"
+                        :value="old('qr_data_start_time_friday')" placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option selected>Open this select menu</option>
-                        <option value="1">20:00</option>
-                        <option value="2">Two</option>
-                        <option value="3">08:00</option>
-                    </select>
+                    <x-metronic.input id="qr_data_end_time_friday" type="time" name="qr_data_end_time_friday"
+                        :value="old('qr_data_end_time_friday')" placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
             <div class="row align-items-center">
@@ -674,21 +629,12 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <select class="form-select mb-2" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">08:00</option>
-                        <option value="2">Two</option>
-                        <option value="3">20:00</option>
-                    </select>
+                    <x-metronic.input id="qr_data_start_time_saturday" type="time"
+                        name="qr_data_start_time_saturday" :value="old('qr_data_start_time_saturday')" placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option selected>Open this select menu</option>
-                        <option value="1">20:00</option>
-                        <option value="2">Two</option>
-                        <option value="3">08:00</option>
-                    </select>
+                    <x-metronic.input id="qr_data_end_time_saturday" type="time" name="qr_data_end_time_saturday"
+                        :value="old('qr_data_end_time_saturday')" placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
             <div class="row align-items-center">
@@ -702,21 +648,12 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <select class="form-select mb-2" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">08:00</option>
-                        <option value="2">Two</option>
-                        <option value="3">20:00</option>
-                    </select>
+                    <x-metronic.input id="qr_data_start_time_sunday" type="time" name="qr_data_start_time_sunday"
+                        :value="old('qr_data_start_time_sunday')" placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option selected>Open this select menu</option>
-                        <option value="1">20:00</option>
-                        <option value="2">Two</option>
-                        <option value="3">08:00</option>
-                    </select>
+                    <x-metronic.input id="qr_data_end_time_sunday" type="time" name="qr_data_end_time_sunday"
+                        :value="old('qr_data_end_time_sunday')" placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
         </div>
@@ -725,33 +662,15 @@
         </div>
         <div class="pt-4 col-lg-12">
             <label for="exampleFormControlInput1" class="required form-label">Brand Logo</label>
-            <div class="dropzone dz-clickable w-100" id="kt_dropzonejs_example_1">
-                <div class="dz-message needsclick">
-                    <i class="ki-duotone ki-file-up fs-3x text-primary">
-                        <span class="path1"></span>
-                        <span class="path2"></span>
-                    </i>
-                    <div class="ms-4">
-                        <h3 class="fs-5 fw-bold text-gray-900 mb-1">Drop files here or click to upload.</h3>
-                        <span class="fs-7 fw-semibold text-primary opacity-75">Upload up to 10 files</span>
-                    </div>
-                </div>
-            </div>
+            <x-metronic.label for="qr_data_image" class="form-label">{{ __('Upload Image') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_image" type="file" name="qr_data_image" :value="old('qr_data_image')"
+                placeholder="Upload Image" />
         </div>
         <div class="pt-4 col-lg-12">
             <label for="exampleFormControlInput1" class="required form-label">Brand Image</label>
-            <div class="dropzone dz-clickable w-100" id="kt_dropzonejs_example_1">
-                <div class="dz-message needsclick">
-                    <i class="ki-duotone ki-file-up fs-3x text-primary">
-                        <span class="path1"></span>
-                        <span class="path2"></span>
-                    </i>
-                    <div class="ms-4">
-                        <h3 class="fs-5 fw-bold text-gray-900 mb-1">Drop files here or click to upload.</h3>
-                        <span class="fs-7 fw-semibold text-primary opacity-75">Upload up to 10 files</span>
-                    </div>
-                </div>
-            </div>
+            <x-metronic.label for="qr_data_image" class="form-label">{{ __('Upload Image') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_image" type="file" name="qr_data_image" :value="old('qr_data_image')"
+                placeholder="Upload Image" />
         </div>
     </div>
 </div>

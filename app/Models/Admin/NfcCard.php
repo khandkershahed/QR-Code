@@ -2,6 +2,7 @@
 
 namespace App\Models\Admin;
 
+use App\Models\NfcScan;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,5 +17,9 @@ class NfcCard extends Model
     public function nfcMessages()
     {
         return $this->hasMany(NfcIndividualMessage::class, 'nfc_id');
+    }
+    public function nfcScan()
+    {
+        return $this->hasMany(NfcScan::class, 'nfc_id');
     }
 }

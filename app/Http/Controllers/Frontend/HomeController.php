@@ -7,6 +7,7 @@ use App\Models\Admin\Plan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\NfcCard;
+use App\Models\NfcScan;
 use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
@@ -38,8 +39,8 @@ class HomeController extends Controller
     }
     public function pricing() {
         $data = [
-            'monthly_plans' => Plan::orderBy('price','asc')->where('billing_cycle', 'monthly')->get(),
-            'yearly_plans' => Plan::orderBy('price','asc')->where('billing_cycle', 'yearly')->get(),
+            'individual_plans' => Plan::orderBy('price','asc')->get(),
+            'business_plans' => Plan::orderBy('price','asc')->where('billing_cycle', 'yearly')->get(),
         ];
         return view('frontend.pages.resellerPricing',$data);
     }
@@ -110,10 +111,18 @@ class HomeController extends Controller
         return redirect()->back()->with('success', "Mail Sent Successfully");
     }
 
-    public function nfcPage($name, $code) {
+    public function nfcPage(Request $request, string $code) {
+
         $data =[
-            'nfc_card' => NfcCard::with('nfcData')->where('code',$code)->first(),
+            'nfc_card' => NfcCard::with('nfcData','nfcScan')->where('code',$code)->first(),
         ];
+        if (!empty($data['nfc_card'])) {
+            NfcScan::create([
+                'nfc_id'     => $data['nfc_card']->id,
+                'nfc_code'   => $data['nfc_card']->code,
+                'ip_address' => $request->ip(),
+            ]);
+        }
         if ($data['nfc_card']->nfc_template == 'template-one') {
             return view('frontend.pages.nfc.template_one',$data);
         } else {

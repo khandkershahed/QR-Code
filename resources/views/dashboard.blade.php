@@ -1,7 +1,8 @@
 <x-app-layout :title="'My Dashboard'">
     <div class="container-fluid">
         <div class="row">
-            <h1 class="text-center py-10">Hello <span class="text-success">{{ Auth::user()->name }}.</span> Welcome To Your Dashboard!</h1>
+            <h1 class="text-center py-10">Hello <span class="text-success">{{ Auth::user()->name }}.</span> Welcome To
+                Your Dashboard!</h1>
             {{-- <div class="col-lg-12">
                 <div class="row my-10">
                     <div class="col-lg-4">
@@ -235,60 +236,72 @@
                             </div>
 
                             <div class="h-8px mx-3 w-100 bg-white bg-opacity-50 rounded">
-                                <div class="bg-white rounded h-8px" role="progressbar" style="width: {{ $qr_completion_percentage }}%;"
-                                    aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="bg-white rounded h-8px" role="progressbar"
+                                    style="width: {{ $qr_completion_percentage }}%;" aria-valuenow="50"
+                                    aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="card card-flush h-md-50 mb-5 mb-xl-10">
+                <div class="card card-flush h-md-30 mb-5 mb-xl-10">
                     <div class="card-header pt-5">
                         <div class="card-title d-flex flex-column">
-                            <span class="fs-2hx fw-bold text-gray-900 me-2 lh-1 ls-n2">357</span>
+                            <span class="fs-2hx fw-bold text-gray-900 me-2 lh-1 ls-n2">{{ count($qr_users) }}</span>
 
                             <span class="text-gray-500 pt-1 fw-semibold fs-6">People View</span>
                         </div>
                     </div>
 
-                    <div class="card-body d-flex flex-column justify-content-end pe-0">
-                        <span class="fs-6 fw-bolder text-gray-800 d-block mb-2">QR & NFC Viewer</span>
+                    <div class="card-body  pe-0">
+                        <span class="fs-6 fw-bolder text-gray-800 d-block mb-2">QR Code Viewers</span>
 
                         <div class="symbol-group symbol-hover flex-nowrap">
-                            <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip"
-                                data-bs-original-title="Alan Warden" data-kt-initialized="1">
-                                <span class="symbol-label bg-warning text-inverse-warning fw-bold">A</span>
-                            </div>
-                            <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip"
-                                aria-label="Michael Eberon" data-bs-original-title="Michael Eberon"
-                                data-kt-initialized="1">
-                                <img alt="Pic"
-                                    src="https://preview.keenthemes.com/metronic8/demo1/assets/media/avatars/300-12.jpg">
-                            </div>
-                            <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip"
-                                data-bs-original-title="Susan Redwood" data-kt-initialized="1">
-                                <span class="symbol-label bg-primary text-inverse-primary fw-bold">S</span>
-                            </div>
-                            <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip"
-                                aria-label="Melody Macy" data-bs-original-title="Melody Macy"
-                                data-kt-initialized="1">
-                                <img alt="Pic"
-                                    src="https://preview.keenthemes.com/metronic8/demo1/assets/media/avatars/300-12.jpg">
-                            </div>
-                            <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip"
-                                data-bs-original-title="Perry Matthew" data-kt-initialized="1">
-                                <span class="symbol-label bg-danger text-inverse-danger fw-bold">P</span>
-                            </div>
-                            <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip"
-                                aria-label="Barry Walter" data-bs-original-title="Barry Walter"
-                                data-kt-initialized="1">
-                                <img alt="Pic"
-                                    src="https://preview.keenthemes.com/metronic8/demo1/assets/media/avatars/300-12.jpg  ">
-                            </div>
-                            <a href="#" class="symbol symbol-35px symbol-circle" data-bs-toggle="modal"
-                                data-bs-target="#kt_modal_view_users">
-                                <span class="symbol-label bg-dark text-gray-300 fs-8 fw-bold">+42</span>
-                            </a>
+
+                            @foreach (array_slice($qr_users, 0, 5) as $qr_user)
+                                <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip"
+                                    data-bs-original-title="{{ $qr_user['countryName'] }}" data-kt-initialized="1">
+                                    <span
+                                        class="symbol-label bg-warning text-inverse-warning fw-bold">{{ $qr_user['countryCode'] }}</span>
+                                </div>
+                            @endforeach
+
+                            @if (count($qr_users) > 5)
+                                <a href="javascript:void(0)" class="symbol symbol-35px symbol-circle">
+                                    <span
+                                        class="symbol-label bg-dark text-gray-300 fs-8 fw-bold">+{{ $qr_users->count() - 5 }}</span>
+                                </a>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-flush h-md-30 mb-5 mb-xl-10">
+                    <div class="card-header pt-5">
+                        <div class="card-title d-flex flex-column">
+                            <span class="fs-2hx fw-bold text-gray-900 me-2 lh-1 ls-n2">{{ count($nfc_users) }}</span>
+
+                            <span class="text-gray-500 pt-1 fw-semibold fs-6">People View</span>
+                        </div>
+                    </div>
+
+                    <div class="card-body  pe-0">
+                        <span class="fs-6 fw-bolder text-gray-800 d-block mb-2">NFC Viewer</span>
+
+                        <div class="symbol-group symbol-hover flex-nowrap">
+                            @foreach (array_slice($nfc_users, 0, 5) as $nfc_user)
+                                <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip"
+                                    data-bs-original-title="{{ $nfc_user['countryName'] }}" data-kt-initialized="1">
+                                    <span
+                                        class="symbol-label bg-warning text-inverse-warning fw-bold">{{ $nfc_user['countryCode'] }}</span>
+                                </div>
+                            @endforeach
+
+                            @if (count($nfc_users) > 5)
+                                <a href="javascript:void(0)" class="symbol symbol-35px symbol-circle">
+                                    <span
+                                        class="symbol-label bg-dark text-gray-300 fs-8 fw-bold">+{{ $nfc_users->count() - 5 }}</span>
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -296,7 +309,7 @@
 
             <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-3 mb-md-5 mb-xl-10">
 
-                <div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-end h-md-50 mb-5 mb-xl-10"
+                <div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-end h-md-60 mb-5 mb-xl-10"
                     style="background-color: #3228b4;background-image:url('https://preview.keenthemes.com/metronic8/demo1/assets/media/patterns/vector-1.png')">
                     <div class="card-header pt-5">
                         <div class="card-title d-flex flex-column">
@@ -314,8 +327,9 @@
                             </div>
 
                             <div class="h-8px mx-3 w-100 bg-white bg-opacity-50 rounded">
-                                <div class="bg-white rounded h-8px" role="progressbar" style="width: {{ $nfc_completion_percentage }}%;"
-                                    aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="bg-white rounded h-8px" role="progressbar"
+                                    style="width: {{ $nfc_completion_percentage }}%;" aria-valuenow="50"
+                                    aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                     </div>
@@ -328,7 +342,8 @@
 
                     <div class="card-body pt-5">
                         <div class="d-flex flex-stack">
-                            <a href="{{ route('user.qr-code.create') }}" class="text-primary fw-semibold fs-6 me-2">Create QR</a>
+                            <a href="{{ route('user.qr-code.create') }}"
+                                class="text-primary fw-semibold fs-6 me-2">Create QR</a>
 
                             <button type="button"
                                 class="btn btn-icon btn-sm h-auto btn-color-gray-500 btn-active-color-primary justify-content-end">
@@ -339,7 +354,8 @@
                         <div class="separator separator-dashed my-3"></div>
 
                         <div class="d-flex flex-stack">
-                            <a href="{{ route('user.nfc-card.create') }}" class="text-primary fw-semibold fs-6 me-2">Create NFC</a>
+                            <a href="{{ route('user.nfc-card.create') }}"
+                                class="text-primary fw-semibold fs-6 me-2">Create NFC</a>
 
                             <button type="button"
                                 class="btn btn-icon btn-sm h-auto btn-color-gray-500 btn-active-color-primary justify-content-end">
@@ -360,7 +376,8 @@
                         <div class="separator separator-dashed my-3"></div>
 
                         <div class="d-flex flex-stack">
-                            <a href="{{ route('user.plan') }}" class="text-primary fw-semibold fs-6 me-2">Upgrade Plan</a>
+                            <a href="{{ route('user.plan') }}" class="text-primary fw-semibold fs-6 me-2">Upgrade
+                                Plan</a>
 
                             <button type="button"
                                 class="btn btn-icon btn-sm h-auto btn-color-gray-500 btn-active-color-primary justify-content-end">

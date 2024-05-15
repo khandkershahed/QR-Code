@@ -20,6 +20,7 @@
         "php-flasher/flasher-laravel": "^1.15",
         "simplesoftwareio/simple-qrcode": "^4.2",
         "spatie/laravel-permission": "^6.3",
+        "stevebauman/location": "^7.2",
         "symfony/http-client": "^6.4",
         "symfony/mailgun-mailer": "^6.4",
         "yajra/laravel-datatables": "10.0"

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Carbon\Carbon;
+use App\Models\NfcScan;
 use Illuminate\Http\Request;
 use App\Models\Admin\NfcCard;
 use App\Models\Admin\NfcData;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use Stevebauman\Location\Facades\Location;
 use App\Http\Requests\Admin\NfcCardRequest;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
@@ -331,7 +333,48 @@ class NfcCardController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $maps = NfcScan::where('nfc_code', $id)->get(['ip_address']);
+        $unique_ips = $maps->unique('ip_address');
+
+        $users = [];
+        foreach ($unique_ips as $unique_ip) {
+            $unique_ip = $unique_ip->ip_address;
+            $user = Location::get($unique_ip);
+            $users[] = $user;
+        }
+        $locations = [];
+        foreach ($maps as $map) {
+            $ip = $map->ip_address;
+            $location = Location::get($ip);
+            $locations[] = $location;
+        }
+
+        $cities = [];
+        $totalScans = count($maps);
+
+        foreach ($locations as $map) {
+            $city = $map->cityName;
+            if (!isset($cities[$city])) {
+                $cities[$city] = [
+                    'state_province' => $map->regionName,
+                    'country' => $map->countryName,
+                    'scans' => 1,
+                ];
+            } else {
+                $cities[$city]['scans']++;
+            }
+        }
+
+        $data = [
+            'nfc_card'   => NfcCard::with('nfcData', 'nfcMessages','nfcScan')->where('code', $id)->first(),
+            'maps'       => $maps,
+            'locations'  => $locations,
+            'cities'     => $cities,
+            'totalScans' => $totalScans,
+            'users'      => $users,
+        ];
+        return view('user.pages.nfc-card.show',$data);
+
     }
 
     /**

@@ -6,7 +6,7 @@
             <div class="card card-p-0 card-flush p-3 mt-10">
                 <div class="card-header align-items-center py-5 gap-2 gap-md-5">
                     <div class="card-title">
-                        <h2 class="mb-0">Manage your QR Codes</h2>
+                        <h2 class="mb-0">Manage your QR Codes | Total Created : {{$qrs->count()}} | My Plan Limitation:  | Remaining: </h2>
                     </div>
                     <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
                         <a href="{{ route('user.qr-code.create') }}" class="btn btn-sm btn-primary rounded-2 me-3">
@@ -16,7 +16,6 @@
                 </div>
                 <div class="card-body">
                     <div>
-                        <h1 class="text-center">All Qr List</h1>
                         <table
                             class="table align-middle border rounded table-row-dashed table-striped table-hover  fs-6 g-5"
                             id="qr_code">
@@ -57,7 +56,7 @@
                                         </td>
                                         <td class="text-start">
                                             <a href="{{ route('user.qr.summary', $qr->code) }}"
-                                                class="btn btn-light-primary">{{ \App\Models\Admin\QrScan::where('code_id', $qr->id)->count() }}</a>
+                                                class="btn btn-light-primary">{{ $qr->qrScan->count() }}</a>
                                         </td>
                                         <td>
                                             <div class="badge badge-light-success">Active</div>

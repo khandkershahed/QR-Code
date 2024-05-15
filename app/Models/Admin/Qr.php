@@ -16,6 +16,6 @@ class Qr extends Model
     }
     public function qrScan()
     {
-        return $this->hasOne(QrScan::class, 'code_id');
+        return $this->hasMany(QrScan::class, 'code_id');
     }
 }

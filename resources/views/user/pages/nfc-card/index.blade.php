@@ -104,8 +104,11 @@
                                             data-kt-menu="true" style="">
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-3">
-                                                <a href="#" class="menu-link px-3" data-bs-toggle="modal"
+                                                {{-- <a href="#" class="menu-link px-3" data-bs-toggle="modal"
                                                     data-bs-target="#message_modal_{{ $nfc_card->id }}">
+                                                    All messages
+                                                </a> --}}
+                                                <a href="{{ route('user.nfc-card.show', $nfc_card->code) }}" class="menu-link px-3">
                                                     All messages
                                                 </a>
                                             </div>

@@ -44,100 +44,35 @@
                         <div class="tab-content">
                             <div class="tab-pane fade active show" id="tabFour1">
                                 <div class="row justify-content-center">
-                                    <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
-                                        data-aos-duration="1500" data-aos-offset="50">
-                                        <div class="pricing-item style-five">
-                                            <div class="title-price">
-                                                <h5 class="title">Regular</h5>
-                                                <div class="price"><span class="prev">$</span>15.<span
-                                                        class="next">/m</span></div>
-                                            </div>
-                                            <hr>
-                                            <div class="text">For small businesses looking to reach more consumers
-                                            </div>
-                                            <ul class="icon-list">
-                                                <li><i class="fas fa-check"></i> 2 Limited sites available</li>
-                                                <li><i class="fas fa-check"></i> 1 GB storage per site</li>
-                                                <li><i class="fas fa-check"></i> Up to 5 pages per site</li>
-                                                <li class="hide"><i class="fas fa-check"></i> Free SSL for custom
-                                                    domain</li>
-                                                <li class="hide"><i class="fas fa-check"></i> Connect custom domain
-                                                </li>
-                                            </ul>
-                                            <a href="#" class="theme-btn style-two">Package <i
-                                                    class="fas fa-arrow-right"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
-                                        data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
-                                        <div class="pricing-item style-five">
-                                            <div class="title-price">
-                                                <h5 class="title color-two">Standard</h5>
-                                                <div class="price"><span class="prev">$</span>35.<span
-                                                        class="next">/m</span></div>
-                                            </div>
-                                            <hr>
-                                            <div class="text">For mid-scale businesses with advanced QR Code needs
-                                            </div>
-                                            <ul class="icon-list">
-                                                <li><i class="fas fa-check"></i> 2 Limited sites available</li>
-                                                <li><i class="fas fa-check"></i> 1 GB storage per site</li>
-                                                <li><i class="fas fa-check"></i> Up to 5 pages per site</li>
-                                                <li><i class="fas fa-check"></i> Free SSL for custom domain</li>
-                                                <li class="hide"><i class="fas fa-check"></i> Connect custom domain
-                                                </li>
-                                            </ul>
-                                            <a href="#" class="theme-btn style-two">Package <i
-                                                    class="fas fa-arrow-right"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
-                                        data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
-                                        <div class="pricing-item style-five">
-                                            <div class="title-price">
-                                                <h5 class="title color-four">Diamond</h5>
-                                                <div class="price"><span class="prev">$</span>98.<span
-                                                        class="next">/m</span></div>
-                                            </div>
-                                            <hr class="mb-0 pb-0">
-                                            <div class="text mt-2">
-                                                <div>
-                                                    <input class="rounded-0" type="number" placeholder="Email Address"
-                                                        name="" required=""
-                                                        data-sider-select-id="f326c25b-059b-4359-be62-e557f5c18ca4">
+                                    @foreach ($individual_plans as $individual_plan)
+                                        <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
+                                            data-aos-duration="1500" data-aos-offset="50">
+                                            <div class="pricing-item style-five">
+                                                <div class="title-price">
+                                                    <h5 class="title">{{ $individual_plan->name }}</h5>
+                                                    <div class="price"><span
+                                                            class="prev">$</span>{{ $individual_plan->price }}<span
+                                                            class="next">/m</span></div>
                                                 </div>
+                                                <hr>
+                                                <div class="text">For small businesses looking to reach more consumers
+                                                </div>
+                                                @php
+                                                    $descriptions1 = json_decode($individual_plan->descriptions, true);
+                                                    $descriptions = json_decode($descriptions1, true);
+                                                @endphp
+                                                @if (!empty($descriptions))
+                                                    <ul class="icon-list">
+                                                        @foreach ($descriptions as $description)
+                                                            <li><i class="ion-checkmark"></i> {{ $description }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+                                                <a href="{{ route('user.subscribe.post', $individual_plan->slug) }}" class="theme-btn style-two">Package <i
+                                                        class="fas fa-arrow-right"></i></a>
                                             </div>
-                                            <ul class="icon-list">
-                                                <li><i class="fas fa-check"></i> 2 Limited sites available</li>
-                                                <li><i class="fas fa-check"></i> 1 GB storage per site</li>
-                                                <li><i class="fas fa-check"></i> Up to 5 pages per site</li>
-                                                <li><i class="fas fa-check"></i> Free SSL for custom domain</li>
-                                                <li><i class="fas fa-check"></i> Connect custom domain</li>
-                                            </ul>
-                                            <a href="#" class="theme-btn style-two">Package <i
-                                                    class="fas fa-arrow-right"></i></a>
                                         </div>
-                                    </div>
-                                    <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
-                                        data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
-                                        <div class="pricing-item style-five">
-                                            <div class="title-price">
-                                                <h5 class="title color-five">Shedule Demo</h5>
-                                            </div>
-                                            <hr>
-                                            <div class="text">For businesses with security, control, and flexibility
-                                                needs</div>
-                                            <ul class="icon-list">
-                                                <li><i class="fas fa-check"></i> 2 Limited sites available</li>
-                                                <li><i class="fas fa-check"></i> 1 GB storage per site</li>
-                                                <li><i class="fas fa-check"></i> Up to 5 pages per site</li>
-                                                <li><i class="fas fa-check"></i> Free SSL for custom domain</li>
-                                                <li><i class="fas fa-check"></i> Connect custom domain</li>
-                                            </ul>
-                                            <a href="#" class="theme-btn style-two">Package <i
-                                                    class="fas fa-arrow-right"></i></a>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="tabFour2">
