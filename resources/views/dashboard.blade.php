@@ -259,11 +259,13 @@
                         <div class="symbol-group symbol-hover flex-nowrap">
 
                             @foreach (array_slice($qr_users, 0, 5) as $qr_user)
-                                <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip"
-                                    data-bs-original-title="{{ $qr_user['countryName'] }}" data-kt-initialized="1">
-                                    <span
-                                        class="symbol-label bg-warning text-inverse-warning fw-bold">{{ $qr_user['countryCode'] }}</span>
-                                </div>
+                                @if ($qr_user !== false)
+                                    <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip"
+                                        data-bs-original-title="{{ $qr_user->countryName }}" data-kt-initialized="1">
+                                        <span
+                                            class="symbol-label bg-warning text-inverse-warning fw-bold">{{ $qr_user->countryCode  }}</span>
+                                    </div>
+                                @endif
                             @endforeach
 
                             @if (count($qr_users) > 5)
@@ -289,11 +291,13 @@
 
                         <div class="symbol-group symbol-hover flex-nowrap">
                             @foreach (array_slice($nfc_users, 0, 5) as $nfc_user)
-                                <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip"
-                                    data-bs-original-title="{{ $nfc_user['countryName'] }}" data-kt-initialized="1">
-                                    <span
-                                        class="symbol-label bg-warning text-inverse-warning fw-bold">{{ $nfc_user['countryCode'] }}</span>
-                                </div>
+                                @if ($nfc_user !== false)
+                                    <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip"
+                                        data-bs-original-title="{{ $nfc_user->countryName }}" data-kt-initialized="1">
+                                        <span
+                                            class="symbol-label bg-warning text-inverse-warning fw-bold">{{ $nfc_user->countryCode }}</span>
+                                    </div>
+                                @endif
                             @endforeach
 
                             @if (count($nfc_users) > 5)

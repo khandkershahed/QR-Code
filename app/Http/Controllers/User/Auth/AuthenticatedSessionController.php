@@ -47,11 +47,11 @@ class AuthenticatedSessionController extends Controller
         $qr_users = [];
         foreach ($qr_unique_ips as $qr_unique_ip) {
             $qr_user = Location::get($qr_unique_ip->ip_address);
-            if ($qr_user !== false) {
+            // if ($qr_user !== false) {
                 $qr_users[] = $qr_user;
-            } else {
-                Log::error("Failed to retrieve location for IP address: {$qr_unique_ip->ip_address}");
-            }
+            // } else {
+            //     Log::error("Failed to retrieve location for IP address: {$qr_unique_ip->ip_address}");
+            // }
         }
         // dd($qr_unique_ips);
 
@@ -65,11 +65,11 @@ class AuthenticatedSessionController extends Controller
 
         foreach ($nfc_unique_ips as $nfc_unique_ip) {
             $nfc_user = Location::get($nfc_unique_ip->ip_address);
-            if ($nfc_user !== false) {
+            // if ($nfc_user !== false) {
                 $nfc_users[] = $nfc_user;
-            } else {
-                Log::error("Failed to retrieve location for IP address: {$nfc_unique_ip->ip_address}");
-            }
+            // } else {
+            //     Log::error("Failed to retrieve location for IP address: {$nfc_unique_ip->ip_address}");
+            // }
         }
 
         return view('dashboard', compact('notifications', 'qrs', 'nfc_cards', 'nfc_pending', 'qr_pending', 'nfc_completion_percentage', 'qr_completion_percentage', 'qr_users', 'nfc_users'));
