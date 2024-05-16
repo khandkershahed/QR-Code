@@ -1,7 +1,14 @@
 <style>
-    .slick-next:before, .slick-prev:before{
+    .slick-next:before,
+    .slick-prev:before {
         color: #1c344f;
     }
+
+    .slick-next:before,
+    .slick-prev:before {
+        left: 22px;
+    }
+
     .nfc-mobile-frame_four {
         max-width: 420px;
         /* min-height: 100vh; */
@@ -36,6 +43,13 @@
         background-size: cover;
         height: 300px;
         background-position: center;
+    }
+
+    .slick-initialized .slick-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
     }
 
     /* Media query for smaller screens */
@@ -88,7 +102,7 @@
                             <div class="text-end" style="margin-top: -70px; position: relative">
                                 <img style="width: 150px;border-width: 6px;border-style: solid;"
                                     src="https://my.cybercard.ma/uploads/vcards/profiles/221/smiling-doctor-sitting-isolated-grey_651396-917.jpg"
-                                    class="img-fluid banner-image profile_image" alt="banner" />
+                                    class="img-fluid banner-image profile_image" alt="profile" />
                             </div>
                             <div class="px-3">
                                 <!-- personal Detailis -->
@@ -289,8 +303,8 @@
                                         <span class="fw-bold company_about_title">About company</span> <br />
                                         <span class="company_about_description">
                                             Lorem ipsum dolor sit amet consectetur adipisicing
-                                        elit. Repellat consequatur aut error. Accusantium
-                                        illo, optio vel numquam quam maxime? Dolorem.
+                                            elit. Repellat consequatur aut error. Accusantium
+                                            illo, optio vel numquam quam maxime? Dolorem.
                                         </span>
                                     </p>
                                 </div>
@@ -299,45 +313,28 @@
                                     style="
                             background-image: url(https://my.cybercard.ma/images/slider-bg.png?e98f043e310dd6f02946933959a990ff);
                           ">
-                                    <h3 class="fw-bold text-center pt-4 service_section_title" style="color: #1c344f; margin-bottom: 2rem">
+                                    <h3 class="fw-bold text-center pt-4 service_section_title"
+                                        style="color: #1c344f; margin-bottom: 2rem">
                                         Service
                                     </h3>
                                     <div class="slick-slider p-4">
-                                        <div>
+                                        <div class="">
                                             <img class="img-fluid service_one_image"
-                                                style="background-size: cover;width: 100%;height: 300px;object-fit: cover;border-top-right-radius: 40px;"
+                                                style="background-size: cover;width: 100% !important;height: 300px;object-fit: cover;border-top-right-radius: 40px;border-top-left-radius: 0px; border-bottom-left-radius: 40px; border-bottom-right-radius: 0;"
                                                 src="https://www.awardstrophyworld.com/cdn/shop/files/TrophySlider-MOBILE.jpg?v=1691869489&width=1278"
                                                 alt="Slide 1" />
-                                            <div class="text-white"
-                                                style="background-color: #1c344f;border-bottom-left-radius: 40px;">
-                                                <p class="p-2 mb-0 text-center service_one_title">
-                                                    Web Development
-                                                </p>
-                                            </div>
                                         </div>
-                                        <div>
+                                        <div class="">
                                             <img class="img-fluid service_two_image"
-                                                style="background-size: cover;width: 100%;height: 300px;object-fit: cover;border-top-right-radius: 40px;"
+                                                style="background-size: cover;width: 100% !important;height: 300px;object-fit: cover;border-top-right-radius: 40px;border-top-left-radius: 0px; border-bottom-left-radius: 40px; border-bottom-right-radius: 0;"
                                                 src="https://img.asmedia.epimg.net/resizer/v2/KQHEREZJPZFUNRC3WQYWA3QBXI.jpg?auth=a869899f0991310a88875490e300e1de99703103383da19f43218303861bcb70&width=1200&height=1200&smart=true"
                                                 alt="Slide 2" />
-                                            <div class="text-white"
-                                                style="background-color: #1c344f;border-bottom-left-radius: 40px;">
-                                                <p class="p-2 mb-0 text-center service_two_title">
-                                                    Web Development
-                                                </p>
-                                            </div>
                                         </div>
-                                        <div>
+                                        <div class="">
                                             <img class="img-fluid service_three_image"
-                                                style="background-size: cover;width: 100%;height: 300px;object-fit: cover;border-top-right-radius: 40px;"
+                                                style="background-size: cover;width: 100% !important;height: 300px;object-fit: cover;border-top-right-radius: 40px;border-top-left-radius: 0px; border-bottom-left-radius: 40px; border-bottom-right-radius: 0;"
                                                 src="https://metro.co.uk/wp-content/uploads/2022/12/GettyImages-1450072343.jpg?quality=90&strip=all&w=1024&h=630&crop=1"
                                                 alt="Slide 3" />
-                                            <div class="text-white"
-                                                style="background-color: #1c344f;border-bottom-left-radius: 10px;border-bottom-left-radius: 40px;">
-                                                <p class="p-2 mb-0 text-center service_three_title">
-                                                    Web Development
-                                                </p>
-                                            </div>
                                         </div>
 
                                         <!-- Add more divs with images for additional slides -->
