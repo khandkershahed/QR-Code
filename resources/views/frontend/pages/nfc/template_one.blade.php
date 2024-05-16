@@ -273,7 +273,7 @@
                                 <div class="card-body p-0 tem-one-about-content">
                                     <div class="d-flex">
                                         <div class="tem-one-profile">
-                                            <div class="p-3">
+                                            <div class="p-3"> 
                                                 <div>
                                                     <h1 class="tem-one-name"><span
                                                             class="first_name">{{ optional($nfc_card->nfcData)->first_name }}</span>&nbsp;<span

@@ -1,7 +1,9 @@
 <style>
-    .slick-next:before, .slick-prev:before{
+    .slick-next:before,
+    .slick-prev:before {
         color: #1c344f;
     }
+
     .nfc-mobile-frame_four {
         max-width: 420px;
         /* min-height: 100vh; */
@@ -106,8 +108,8 @@
                                     </div>
                                 </div>
                                 <!-- Social -->
-                                <div class="rounded-5 mt-5 d-flex justify-content-center align-items-center"
-                                    style="background-color: #f6f6f7; border-radius: 0">
+                                <div class="rounded-5 mt-5 d-flex justify-content-center align-items-center py-2"
+                                    style="background-color: #f6f6f7; border-radius: 0;">
 
                                     <a href="" class="fa fa-facebook facebook_url icon fa-2x"
                                         style="text-decoration: none;width: 20%;color: #1c344f;">
@@ -158,19 +160,9 @@
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="card border-0 contact-info_four"
-                                                style="
-                                  background-color: #1c344f;
-                                  border-radius: 15px;
-                                  margin-left: -10px;
-                                  padding: 20px;
-                                  position: relative;
-                                  ">
+                                                style="background-color: #1c344f;border-radius: 15px;margin-left: -10px;padding: 20px;position: relative;">
                                                 <div class="card-body p-0"
-                                                    style="
-                                    background-image: url(https://my.cybercard.ma/images/contact-card-bg.png?4da69f117ea28772ef2ce81e91826424);
-                                    background-repeat: no-repeat;
-                                    background-size: contain;
-                                    ">
+                                                    style="background-image: url(https://my.cybercard.ma/images/contact-card-bg.png?4da69f117ea28772ef2ce81e91826424);background-repeat: no-repeat;background-size: contain;">
                                                     <div class="row">
                                                         <div class="col-lg-2 text-center text-lg-start">
                                                             <img class=""
@@ -289,17 +281,18 @@
                                         <span class="fw-bold company_about_title">About company</span> <br />
                                         <span class="company_about_description">
                                             Lorem ipsum dolor sit amet consectetur adipisicing
-                                        elit. Repellat consequatur aut error. Accusantium
-                                        illo, optio vel numquam quam maxime? Dolorem.
+                                            elit. Repellat consequatur aut error. Accusantium
+                                            illo, optio vel numquam quam maxime? Dolorem.
                                         </span>
                                     </p>
                                 </div>
                                 <!-- Service -->
                                 <div class="my-5"
                                     style="
-                            background-image: url(https://my.cybercard.ma/images/slider-bg.png?e98f043e310dd6f02946933959a990ff);
+                            background-image: url('https://my.cybercard.ma/images/slider-bg.png?e98f043e310dd6f02946933959a990ff');
                           ">
-                                    <h3 class="fw-bold text-center pt-4 service_section_title" style="color: #1c344f; margin-bottom: 2rem">
+                                    <h3 class="fw-bold text-center pt-4 service_section_title"
+                                        style="color: #1c344f; margin-bottom: 2rem">
                                         Service
                                     </h3>
                                     <div class="slick-slider p-4">
