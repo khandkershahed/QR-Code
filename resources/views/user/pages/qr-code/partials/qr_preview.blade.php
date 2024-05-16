@@ -36,7 +36,7 @@
             class="img-fluid generatedQRCode">
     </div>
     <div class="card qr-card coupon_code" style="display: none;">
-        <img src="{{ asset('frontend/assets/images/qrpreview/Coupon.jpg') }}" alt="coupon_code"
+        <img src="{{ asset('frontend/assets/images/qrpreview/coupon.png') }}" alt="coupon_code"
             class="img-fluid generatedQRCode">
     </div>
     <div class="card qr-card social" style="display: none;">
@@ -55,6 +55,7 @@
 
 <div id="qrCouponPreview" style="display: none;">
     <div class="preview">
+        @include('user.pages.qr-code.preview.qr_coupon_preview')
         <style>
             @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 

@@ -299,7 +299,7 @@
         </div>
         <div class="pb-4 col-lg-6">
             <x-metronic.label for="qr_data_coupon_logo" class="form-label">{{ __('Coupon Logo') }}</x-metronic.label>
-            <x-metronic.input id="qr_data_coupon_logo" type="f  ile" name="qr_data_coupon_logo" :value="old('qr_data_coupon_logo')"
+            <x-metronic.input id="qr_data_coupon_logo" type="file" name="qr_data_coupon_logo" :value="old('qr_data_coupon_logo')"
                 placeholder="Coupon Logo" />
         </div>
     </div>

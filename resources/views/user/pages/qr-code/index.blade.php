@@ -52,7 +52,7 @@
                                                     :</span>:{{ $qr->created_at }}</span><br>
                                         </td>
                                         <td class="text-start">
-                                            <button class="btn btn-light-primary">QR Code</button>
+                                            <button class="btn btn-light-primary">{{ucfirst($qr->qr_type)}}</button>
                                         </td>
                                         <td class="text-start">
                                             <a href="{{ route('user.qr.summary', $qr->code) }}"
