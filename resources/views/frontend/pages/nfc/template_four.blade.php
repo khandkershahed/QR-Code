@@ -30,7 +30,7 @@
                 --tem-one-name-font-family: "Raleway", sans-serif !important;
                 --body-font-family: "Raleway", sans-serif !important;
             @endif
-
+ 
             --white: #fff;
             --tem-one-name-color: #fff;
             --tem-one-name-font-size: 40px;
