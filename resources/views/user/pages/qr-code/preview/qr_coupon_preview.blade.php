@@ -22,118 +22,81 @@
     }
 
     /* Custom CSS for card styling */
-
-
 </style>
 
 {{--
 <div class="card rounded-0 border-0">
     <div class="card-body rounded-0"> --}}
-        <div class="row">
-            <div class="col-lg-12">
-                <!-- First Part -->
-                <div class="d-flex justify-content-center qr_data_coupon_logo"
-                    style="
-              background-image: url(https://i.ibb.co/wJKbkb9/coupon-first.png);
-              height: 320px;
-              background-repeat: no-repeat;
-              background-position: center;
-              ">
-                    <div class="text-center d-flex flex-column justify-content-center align-items-center">
-                        <h1 class=""
-                            style="
-                  color: #ffff;
-                  font-family: var(--tem-one-name-font-family);
-                ">
-                            30% Discount
-                        </h1>
-                        <h1 class="fw-bolder text-white"
-                            style="
-                  font-family: var(--tem-one-name-font-family);
-                  font-size: 55px;
-                ">
-                            Big Sale <span style="color: #fd0834">Discount</span>
-                        </h1>
-                        <h3 class=""
-                            style="
-                  color: #15487f;
-                  font-family: var(--tem-one-name-font-family);
-                ">
-                            GALAXXY MEDIA LLC.
-                        </h3>
-                    </div>
+<div class="qr_card_preview">
+    <div class="row">
+        <div class="col-lg-12 ">
+            <!-- First Part -->
+            <div class="d-flex justify-content-center qr_data_coupon_logo"
+                style="
+                  background-image: url(https://i.ibb.co/wJKbkb9/coupon-first.png);
+                  height: 320px;
+                  background-repeat: no-repeat;
+                  background-position: center;
+                  ">
+                <div class="text-center d-flex flex-column justify-content-center align-items-center">
+                    <h1 class="qr_data_coupon_header" style="color: #ffff;font-family: var(--tem-one-name-font-family);">
+                        30% Discount
+                    </h1>
+                    <h1 class="fw-bolder text-white qr_data_coupon_message"
+                        style="font-family: var(--tem-one-name-font-family);font-size: 55px;">
+                        Big Sale <span class="qr_data_coupon_description_body" style="color: #fd0834">Discount</span>
+                    </h1>
+                    <h3 class="qr_data_coupon_company"
+                        style="color: #15487f;font-family: var(--tem-one-name-font-family);">
+                        GALAXXY MEDIA LLC.
+                    </h3>
                 </div>
-                <!-- Second Part -->
-                <div class="d-flex justify-content-center"
-                    style="
-              background-image: url(https://i.ibb.co/p4zLfcR/coupon-last.png);
-              height: 320px;
-              margin-top: -25px;
-              background-repeat: no-repeat;
-              background-position: center;
-            ">
-                    <div class="text-center d-flex justify-content-center flex-column align-items-center">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control border-0 text-white rounded-0"
-                                value="Recipient's username" aria-label="Recipient's username"
-                                aria-describedby="button-addon2" style="background-color: #15487f" />
-                            <button class="btn rounded-0 fs-5"
-                                style="
-                    background-color: #fff;
-                    font-family: var(--tem-one-name-font-family);
-                  "
-                                type="button" id="button-addon2">
-                                Button
-                            </button>
-                        </div>
-                        <div class="p-3 mx-auto rounded-circle" style="background-color: #eeee; width: 20%">
-                            <img width="50px" class="img-fluid" src="https://i.ibb.co/BNBTVN4/logo.png"
-                                alt="" />
-                        </div>
-                        <h1 class="fw-bold mb-0 py-3"
-                            style="
-                  color: #fff;
-                  font-family: var(--tem-one-name-font-family);
-                ">
-                            HOLIDAY SEASONAL SALE !
-                        </h1>
-                        <h4 class=""
-                            style="
-                  color: #fff;
-                  font-family: var(--tem-one-name-font-family);
-                ">
-                            VALIDITY TILL-
-                            <span style="color: #fd0834">MAY 15, 2024</span>
-                        </h4>
+            </div>
+            <!-- Second Part -->
+            <div class="d-flex justify-content-center"
+                style="background-image: url(https://i.ibb.co/p4zLfcR/coupon-last.png);height: 320px;margin-top: -25px;background-repeat: no-repeat;background-position: center;">
+                <div class="text-center d-flex justify-content-center flex-column align-items-center">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control border-0 text-white rounded-0 qr_data_coupon_code"
+                            value="CP248567" aria-label="CP248567" aria-describedby="button-addon2"
+                            style="background-color: #15487f" />
+                        <button class="btn rounded-0 fs-5"
+                            style="background-color: #fff;font-family: var(--tem-one-name-font-family);" type="button"
+                            id="button-addon2">
+                            Copy
+                        </button>
                     </div>
+                    <div class="p-3 mx-auto rounded-circle" style="background-color: #eeee; width: 20%">
+                        <img width="50px" class="img-fluid qr_data_coupon_logo"
+                            src="https://i.ibb.co/BNBTVN4/logo.png" alt="" />
+                    </div>
+                    <h1 class="fw-bold mb-0 py-3 qr_data_coupon_description_header"
+                        style="color: #fff;font-family: var(--tem-one-name-font-family);">
+                        HOLIDAY SEASONAL SALE !
+                    </h1>
+                    <h4 class="" style="color: #fff;font-family: var(--tem-one-name-font-family);">
+                        VALIDITY TILL-
+                        <span class="qr_data_coupon_expire_date" style="color: #fd0834">MAY 15, 2024</span>
+                    </h4>
                 </div>
             </div>
         </div>
-        <div class="pt-4 px-0 px-lg-5">
-            <p class="mb-0" style="text-align: justify">
-                <span class="text-danger fw-bolder">NB: Terms & Condition</span>
-                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. In
-                    eum ea laudantium incidunt corrupti et alias laborum
-                    impedit, veritatis maiores incidunt corrupti.</span>
-            </p>
-        </div>
-        <div class="mx-auto px-0 px-lg-5">
-            <a href="#" class="btn w-100 mt-4 fs-4"
-                style="
-            background-color: #ffa500;
-            color: #fff;
-            font-family: var(--tem-one-name-font-family);
-          ">VISIT
-                WEBSITE</a>
-            <a href="#" class="btn w-100 mt-4 fs-4"
-                style="
-            background-color: #ffa500;
-            color: #fff;
-            font-family: var(--tem-one-name-font-family);
-          ">VISIT
-                WEBSITE</a>
-        </div>
-    {{-- </div>
+    </div>
+    <div class="pt-4 px-0 px-lg-5">
+        <p class="mb-0" style="text-align: justify">
+            <span class="text-danger fw-bolder">NB: Terms & Condition</span>
+            <span class="qr_data_coupon_policy">Lorem ipsum dolor sit amet consectetur adipisicing elit. In
+                eum ea laudantium incidunt corrupti et alias laborum
+                impedit, veritatis maiores incidunt corrupti.</span>
+        </p>
+    </div>
+    <div class="mx-auto px-0 px-lg-5">
+        <a href="#" class="btn w-100 mt-4 fs-4 qr_data_coupon_website"
+            style="background-color: #ffa500;color: #fff;font-family: var(--tem-one-name-font-family);">VISIT
+            WEBSITE</a>
+    </div>
+</div>
+{{-- </div>
 </div> --}}
 
 @push('scripts')

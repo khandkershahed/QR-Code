@@ -173,51 +173,60 @@
         <p class="text-center mb-0">Create Coupon Code.</p>
     </div>
     <div class="pb-4 row">
-        <div class="pb-4 col-lg-3">
+        <div class="pb-4 col-lg-4">
+            <x-metronic.label for="qr_data_coupon_header" class="form-label">{{ __('Header') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_coupon_header" type="text" name="qr_data_coupon_header"
+                :value="old('qr_data_coupon_header')" placeholder="30% Discount" />
+        </div>
+        <div class="pb-4 col-lg-4">
+            <x-metronic.label for="qr_data_coupon_message" class="form-label">{{ __('Message Line One') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_coupon_message" type="text" name="qr_data_coupon_message"
+                :value="old('qr_data_coupon_message')" placeholder="Big Sale" />
+        </div>
+        <div class="pb-4 col-lg-4">
+            <x-metronic.label for="qr_data_coupon_description_body"
+                class="form-label">{{ __('Message Line Two') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_coupon_description_body" type="text"
+                name="qr_data_coupon_description_body" :value="old('qr_data_coupon_description_body')"
+                placeholder="Discount" />
+        </div>
+        <div class="pb-4 col-lg-4">
+            <x-metronic.label for="qr_data_coupon_company" class="form-label">{{ __('Company Name') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_coupon_company" type="text" name="qr_data_coupon_company"
+                :value="old('qr_data_coupon_company')" placeholder="GALAXXY MEDIA LLC." />
+        </div>
+        <div class="pb-4 col-lg-4">
             <x-metronic.label for="qr_data_coupon_code" class="form-label">{{ __('Coupon code') }}</x-metronic.label>
             <x-metronic.input id="qr_data_coupon_code" type="text" name="qr_data_coupon_code" :value="old('qr_data_coupon_code')"
                 placeholder="Coupon code" />
         </div>
-        <div class="pb-4 col-lg-3">
+        <div class="pb-4 col-lg-4">
+            <x-metronic.label for="qr_data_coupon_logo" class="form-label">{{ __('Coupon Logo') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_coupon_logo" type="file" name="qr_data_coupon_logo" :value="old('qr_data_coupon_logo')"
+                placeholder="Coupon Logo" />
+        </div>
+
+        <div class="pb-4 col-lg-4">
             <x-metronic.label for="qr_data_coupon_expire_date"
                 class="form-label">{{ __('Expires on') }}</x-metronic.label>
             <x-metronic.input id="qr_data_coupon_expire_date" type="date" name="qr_data_coupon_expire_date"
                 :value="old('qr_data_coupon_expire_date')" placeholder="Expires on" />
         </div>
-        <div class="pb-4 col-lg-3">
-            <x-metronic.label for="qr_data_coupon_header" class="form-label">{{ __('Header') }}</x-metronic.label>
-            <x-metronic.input id="qr_data_coupon_header" type="text" name="qr_data_coupon_header"
-                :value="old('qr_data_coupon_header')" placeholder="Header" />
-        </div>
-        <div class="pb-4 col-lg-3">
-            <x-metronic.label for="qr_data_coupon_message" class="form-label">{{ __('Message') }}</x-metronic.label>
-            <x-metronic.input id="qr_data_coupon_message" type="text" name="qr_data_coupon_message"
-                :value="old('qr_data_coupon_message')" placeholder="Message" />
-        </div>
-        <div class="pb-4 col-lg-3">
+
+        <div class="pb-4 col-lg-4">
             <x-metronic.label for="qr_data_coupon_description_header"
                 class="form-label">{{ __('Description header') }}</x-metronic.label>
             <x-metronic.input id="qr_data_coupon_description_header" type="text"
                 name="qr_data_coupon_description_header" :value="old('qr_data_coupon_description_header')" placeholder="Holiday Season Sale" />
         </div>
-        <div class="pb-4 col-lg-3">
-            <x-metronic.label for="qr_data_coupon_description_body"
-                class="form-label">{{ __('Description Body') }}</x-metronic.label>
-            <x-metronic.input id="qr_data_coupon_description_body" type="text"
-                name="qr_data_coupon_description_body" :value="old('qr_data_coupon_description_body')"
-                placeholder="Get Huge Discount On This Holiday Seasion" />
-        </div>
-        <div class="pb-4 col-lg-3">
-            <x-metronic.label for="qr_data_coupon_website" class="form-label">{{ __('Website') }}</x-metronic.label>
+
+        <div class="pb-4 col-lg-4">
+            <x-metronic.label for="qr_data_coupon_website" class="form-label">{{ __('Website URL') }}</x-metronic.label>
             <x-metronic.input id="qr_data_coupon_website" type="url" name="qr_data_coupon_website"
                 :value="old('qr_data_coupon_website')" placeholder="http://www.website.com" />
         </div>
-        <div class="pb-4 col-lg-3">
-            <x-metronic.label for="qr_data_coupon_company" class="form-label">{{ __('Company') }}</x-metronic.label>
-            <x-metronic.input id="qr_data_coupon_company" type="text" name="qr_data_coupon_company"
-                :value="old('qr_data_coupon_company')" placeholder="Company Name" />
-        </div>
-        <div class="col-lg-3 pb-4">
+
+        <div class="col-lg-4 pb-4">
             <div class="row">
                 <label for="secondary_color_text">Background color</label>
                 <div class="col-lg-10 pe-0">
@@ -235,7 +244,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 pb-4">
+        <div class="col-lg-4 pb-4">
             <div class="row">
                 <label for="secondary_color_text">Title color (With BG Include)</label>
                 <div class="col-lg-10 pe-0">
@@ -254,7 +263,7 @@
             </div>
         </div>
 
-        <div class="col-lg-3 pb-4">
+        <div class="col-lg-4 pb-4">
             <div class="row">
                 <label for="buttonContact">Website Button Background Color</label>
                 <div class="col-lg-10 pe-0">
@@ -272,7 +281,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 pb-4">
+        <div class="col-lg-4 pb-4">
             <div class="row">
                 <label for="buttonContact">Website Button Title Color</label>
                 <div class="col-lg-10 pe-0">
@@ -291,17 +300,13 @@
             </div>
         </div>
 
-        <div class="pb-4 col-lg-6">
+        <div class="pb-4 col-lg-8">
             <x-metronic.label for="qr_data_coupon_policy"
                 class="form-label">{{ __('Terms & conditions') }}</x-metronic.label>
             <x-metronic.input id="qr_data_coupon_policy" type="text" name="qr_data_coupon_policy"
                 :value="old('qr_data_coupon_policy')" placeholder="Policy" />
         </div>
-        <div class="pb-4 col-lg-6">
-            <x-metronic.label for="qr_data_coupon_logo" class="form-label">{{ __('Coupon Logo') }}</x-metronic.label>
-            <x-metronic.input id="qr_data_coupon_logo" type="file" name="qr_data_coupon_logo" :value="old('qr_data_coupon_logo')"
-                placeholder="Coupon Logo" />
-        </div>
+
     </div>
 </div>
 
