@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Subscription;
 
-use App\Http\Controllers\Controller;
-use App\Models\Admin\Plan;
+use Stripe\Plan;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\Admin\Plan as ModelPlan;
 
 class PlanController extends Controller
 {
@@ -14,7 +15,7 @@ class PlanController extends Controller
     public function index()
     {
         return view('admin.pages.plans.index', [
-            'plans' => Plan::latest('id')->get()
+            'plans' => ModelPlan::latest('id')->get()
         ]);
     }
 
@@ -31,6 +32,15 @@ class PlanController extends Controller
      */
     public function store(Request $request)
     {
+        $plan = Plan::create([
+            'amount' => $request->amount,
+            'currency' => $request->currency,
+            'interval' => $request->billing_period,
+            'interval_count' => $request->interval_count,
+            'product' => [
+                'name' => $request->name
+            ]
+        ]);
         $data = $request->all();
         // $data['descriptions'] = json_encode($request->input('descriptions')); // Convert array to JSON
         if ($request->has('descriptions')) {
@@ -38,7 +48,7 @@ class PlanController extends Controller
         } else {
             $data['descriptions'] = json_encode([]); // Set to empty array if not provided
         }
-        Plan::create($data);
+        ModelPlan::create($data);
         return redirect()->back()->with('success', 'Plan Created successfully');
     }
 
@@ -55,7 +65,7 @@ class PlanController extends Controller
      */
     public function edit(string $id)
     {
-        return view('admin.pages.plans.edit', ['plan' => Plan::find($id)]);
+        return view('admin.pages.plans.edit', ['plan' => ModelPlan::find($id)]);
     }
 
     /**
@@ -63,7 +73,7 @@ class PlanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $plan = Plan::findOrFail($id);
+        $plan = ModelPlan::findOrFail($id);
         $plan->fill($request->all());
         $plan->descriptions = $request->filled('descriptions') ? $request->input('descriptions') : [];
         $plan->save();
@@ -76,6 +86,6 @@ class PlanController extends Controller
      */
     public function destroy(string $id)
     {
-        Plan::findOrFail($id)->delete();
+        ModelPlan::findOrFail($id)->delete();
     }
 }

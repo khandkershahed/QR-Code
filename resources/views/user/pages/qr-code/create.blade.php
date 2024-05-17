@@ -222,7 +222,7 @@
 
 
         <script>
-            $('input[name="qr_data_coupon_code"], input[name="qr_data_coupon_expire_date"], input[name="qr_data_coupon_header"], input[name="qr_data_coupon_message"], input[name="qr_data_coupon_description_header"], input[name="qr_data_coupon_description_body"], input[name="qr_data_coupon_website"], input[name="qr_data_coupon_company"], input[name="qr_data_coupon_policy"], input[name="qr_data_coupon_logo"]')
+            $('input[name="qr_data_facebook_page_logo"],input[name="qr_data_facebook_page_header"],input[name="qr_data_facebook_page_title"],input[name="qr_data_facebook_page_background_image"],input[name="qr_data_facebook_page_facebook"],input[name="qr_data_coupon_code"], input[name="qr_data_coupon_expire_date"], input[name="qr_data_coupon_header"], input[name="qr_data_coupon_message"], input[name="qr_data_coupon_description_header"], input[name="qr_data_coupon_description_body"], input[name="qr_data_coupon_website"], input[name="qr_data_coupon_company"], input[name="qr_data_coupon_policy"], input[name="qr_data_coupon_logo"]')
                 .on('keyup change', function() {
 
                     var inputValue = $(this).val();
@@ -242,6 +242,8 @@
                             }
                         } else if ($(this).is('input[type="url"]')) {
                             qrCodeElement.attr('href', inputValue);
+                        } else if ($(this).is('input[name="qr_data_coupon_code"]')) {
+                            qrCodeElement.val(inputValue);
                         } else if ($(this).is('input[type="date"]')) {
                             var dateParts = inputValue.split('-');
                             if (dateParts.length === 3) {
@@ -266,6 +268,97 @@
                     // For debugging
                     console.log("Input Name:", inputName, "Input Value:", inputValue);
                 });
+
+            $('input[name="qr_data_social_logo"],input[name="qr_data_social_header"],input[name="qr_data_social_title"],input[name="qr_data_social_message"],input[name="qr_data_social_background_image"],input[name="qr_data_social_facebook"],input[name="qr_data_social_instagram"],input[name="qr_data_social_linkedin"],input[name="qr_data_social_twitter"],input[name="qr_data_social_youtube"],input[name="qr_data_social_pinterest"],input[name="qr_data_social_website"],input[name="qr_data_social_whatsapp"],input[name="qr_data_social_snapchat"],input[name="qr_data_social_tiktok"]')
+                .on('keyup change', function() {
+                    var inputValue = $(this).val();
+                    var inputName = $(this).attr('name');
+                    var qrCodeElement = $('.qr_card_preview .' + inputName);
+
+                    if (qrCodeElement.length > 0) {
+                        if ($(this).is('input[type="file"]')) {
+                            if (this.files && this.files[0]) {
+                                var reader = new FileReader();
+                                reader.onload = function(e) {
+                                    qrCodeElement.attr('src', e.target.result);
+                                };
+                                reader.readAsDataURL(this.files[0]);
+                            }
+                        } else if ($(this).is('input[type="url"]')) {
+                            qrCodeElement.attr('href', inputValue);
+                        } else if ($(this).is('input[type="date"]')) {
+                            var dateParts = inputValue.split('-');
+                            if (dateParts.length === 3) {
+                                var year = dateParts[0];
+                                var month = dateParts[1];
+                                var day = dateParts[2];
+                                var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
+                                    'September', 'October', 'November', 'December'
+                                ];
+                                var formattedDate = `${months[parseInt(month) - 1]} ${parseInt(day)}, ${year}`;
+                                qrCodeElement.text(formattedDate);
+                            }
+                        } else {
+                            qrCodeElement.text(inputValue);
+                        }
+                    }
+
+                    // Show/hide corresponding social icon based on input value
+                    if (inputValue) {
+                        $("." + inputName + "_icon").show();
+                    } else {
+                        $("." + inputName + "_icon").hide();
+                    }
+                });
+            $('input[name="qr_data_business_page_logo"],input[name="qr_data_business_page_business_name"],input[name="qr_data_business_page_header"],input[name="qr_data_business_page_start_time_monday"],input[name="qr_data_business_page_end_time_monday"],input[name="qr_data_business_page_start_time_tuesday"],input[name="qr_data_business_page_end_time_tuesday"],input[name="qr_data_business_page_start_time_wednesday"],input[name="qr_data_business_page_end_time_wednesday"],input[name="qr_data_business_page_start_time_thursday"],input[name="qr_data_business_page_end_time_thursday"],input[name="qr_data_business_page_start_time_friday"],input[name="qr_data_business_page_end_time_friday"],input[name="qr_data_business_page_start_time_saturday"],input[name="qr_data_business_page_end_time_saturday"],input[name="qr_data_business_page_start_time_sunday"],input[name="qr_data_business_page_end_time_sunday"],input[name="qr_data_business_page_website"],input[name="qr_data_business_page_business_email"],input[name="qr_data_business_page_business_phone"],input[name="qr_data_business_page_business_location"]')
+                .on('keyup change', function() {
+                    var inputValue = $(this: checked);
+                    var inputName = $(this).attr('name');
+                    var qrCodeElement = $('.qr_card_preview .' + inputName);
+
+                    if (qrCodeElement.length > 0) {
+                        if ($(this).is('input[type="file"]')) {
+                            if (this.files && this.files[0]) {
+                                var reader = new FileReader();
+                                reader.onload = function(e) {
+                                    qrCodeElement.attr('src', e.target.result);
+                                };
+                                reader.readAsDataURL(this.files[0]);
+                            }
+                        } else if ($(this).is('input[type="url"]')) {
+                            qrCodeElement.attr('href', inputValue);
+                        } else if ($(this).is('input[type="time"]')) {
+                            if (inputValue) {
+                                $("." + inputName).show();
+                            } else {
+                                $("." + inputName).hide();
+                            }
+                        } else if ($(this).is('input[type="date"]')) {
+                            var dateParts = inputValue.split('-');
+                            if (dateParts.length === 3) {
+                                var year = dateParts[0];
+                                var month = dateParts[1];
+                                var day = dateParts[2];
+                                var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
+                                    'September', 'October', 'November', 'December'
+                                ];
+                                var formattedDate = `${months[parseInt(month) - 1]} ${parseInt(day)}, ${year}`;
+                                qrCodeElement.text(formattedDate);
+                            }
+                        } else {
+                            qrCodeElement.text(inputValue);
+                        }
+                    }
+
+                    // Show/hide corresponding social icon based on input value
+                    if (inputValue) {
+                        $("." + inputName + "_icon").show();
+                    } else {
+                        $("." + inputName + "_icon").hide();
+                    }
+                });
+
+
 
             function changecouponBackgroundColor() {
                 var selectedBgColor = $('input[name="qr_data_coupon_background_color"]').val();
