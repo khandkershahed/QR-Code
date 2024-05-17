@@ -36,9 +36,7 @@
             @endif
         </div>
         <div class="d-flex align-items-stretch justify-content-between flex-lg-grow-1">
-            <div class="d-flex align-items-stretch" id="kt_header_nav">
-
-            </div>
+            <div class="d-flex align-items-stretch" id="kt_header_nav"> </div>
             <div class="d-flex align-items-stretch flex-shrink-0">
                 <div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
                     <div class="btn btn-icon btn-icon-muted btn-active-light btn-active-color-primary w-30px h-30px w-md-40px h-md-40px"
@@ -289,6 +287,7 @@
                                                     fill="currentColor" />
                                             </svg>
                                         </span>
+                                    </a>
                                 </div>
                             </div>
                         </div>
