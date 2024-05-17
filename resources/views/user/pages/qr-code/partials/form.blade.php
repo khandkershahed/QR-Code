@@ -516,11 +516,9 @@
             <h6 class="fw-bold pt-5 mb-0">Schedule Info</h6>
         </div>
         <div class="col-lg-12">
-            <div class="row align-items-center">
-                <div class="col-lg-4">
+            <div class="row align-items-center pb-3">
+                <div class="col-lg-3">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
-                            checked>
                         <label class="form-check-label" for="flexCheckChecked">
                             Monday
                         </label>
@@ -535,11 +533,9 @@
                         :value="old('qr_data_business_page_end_time_monday')" placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
-            <div class="row align-items-center">
-                <div class="col-lg-4">
+            <div class="row align-items-center pb-3">
+                <div class="col-lg-3">
                     <div class="form-check">
-                        <input class="form-check-input " type="checkbox" value="" id="flexCheckChecked"
-                            checked>
                         <label class="form-check-label" for="flexCheckChecked">
                             Tuesday
                         </label>
@@ -554,11 +550,9 @@
                         :value="old('qr_data_business_page_end_time_tuesday')" placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
-            <div class="row align-items-center">
-                <div class="col-lg-4">
+            <div class="row align-items-center pb-3">
+                <div class="col-lg-3">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
-                            checked>
                         <label class="form-check-label" for="flexCheckChecked">
                             Wednesday
                         </label>
@@ -573,11 +567,9 @@
                         name="qr_data_business_page_end_time_wednesday" :value="old('qr_data_business_page_end_time_wednesday')" placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
-            <div class="row align-items-center">
-                <div class="col-lg-4">
+            <div class="row align-items-center pb-3">
+                <div class="col-lg-3">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
-                            checked>
                         <label class="form-check-label" for="flexCheckChecked">
                             Thursday
                         </label>
@@ -592,11 +584,9 @@
                         :value="old('qr_data_business_page_end_time_thursday')" placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
-            <div class="row align-items-center">
-                <div class="col-lg-4">
+            <div class="row align-items-center pb-3">
+                <div class="col-lg-3">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
-                            checked>
                         <label class="form-check-label" for="flexCheckChecked">
                             Friday
                         </label>
@@ -611,11 +601,9 @@
                         :value="old('qr_data_business_page_end_time_friday')" placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
-            <div class="row align-items-center">
-                <div class="col-lg-4">
+            <div class="row align-items-center pb-3">
+                <div class="col-lg-3">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
-                            checked>
                         <label class="form-check-label" for="flexCheckChecked">
                             Saturday
                         </label>
@@ -630,11 +618,9 @@
                         :value="old('qr_data_business_page_end_time_saturday')" placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
-            <div class="row align-items-center">
-                <div class="col-lg-4">
+            <div class="row align-items-center pb-3">
+                <div class="col-lg-3">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
-                            checked>
                         <label class="form-check-label" for="flexCheckChecked">
                             Sunday
                         </label>
@@ -651,7 +637,7 @@
             </div>
         </div>
 
-        <div class="pb-4 col-lg-4">
+        <div class="pb-4 col-lg-6">
             <x-metronic.label for="qr_data_business_page_website"
                 class="form-label">{{ __('Website URL') }}</x-metronic.label>
             <x-metronic.input id="qr_data_business_page_website" type="url" name="qr_data_business_page_website"

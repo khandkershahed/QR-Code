@@ -312,7 +312,7 @@
                 });
             $('input[name="qr_data_business_page_logo"],input[name="qr_data_business_page_business_name"],input[name="qr_data_business_page_header"],input[name="qr_data_business_page_start_time_monday"],input[name="qr_data_business_page_end_time_monday"],input[name="qr_data_business_page_start_time_tuesday"],input[name="qr_data_business_page_end_time_tuesday"],input[name="qr_data_business_page_start_time_wednesday"],input[name="qr_data_business_page_end_time_wednesday"],input[name="qr_data_business_page_start_time_thursday"],input[name="qr_data_business_page_end_time_thursday"],input[name="qr_data_business_page_start_time_friday"],input[name="qr_data_business_page_end_time_friday"],input[name="qr_data_business_page_start_time_saturday"],input[name="qr_data_business_page_end_time_saturday"],input[name="qr_data_business_page_start_time_sunday"],input[name="qr_data_business_page_end_time_sunday"],input[name="qr_data_business_page_website"],input[name="qr_data_business_page_business_email"],input[name="qr_data_business_page_business_phone"],input[name="qr_data_business_page_business_location"]')
                 .on('keyup change', function() {
-                    var inputValue = $(this: checked);
+                    var inputValue = $(this).val();
                     var inputName = $(this).attr('name');
                     var qrCodeElement = $('.qr_card_preview .' + inputName);
 
@@ -326,13 +326,20 @@
                                 reader.readAsDataURL(this.files[0]);
                             }
                         } else if ($(this).is('input[type="url"]')) {
+                            qrCodeElement.text(inputValue);
+                            if (!inputValue.startsWith('http://') && !inputValue.startsWith('https://')) {
+                                inputValue = 'http://' + inputValue;
+                            }
                             qrCodeElement.attr('href', inputValue);
+
                         } else if ($(this).is('input[type="time"]')) {
                             if (inputValue) {
-                                $("." + inputName).show();
+                                $("." + inputName + "_time").show();
+                                qrCodeElement.text(inputValue);
                             } else {
                                 $("." + inputName).hide();
                             }
+
                         } else if ($(this).is('input[type="date"]')) {
                             var dateParts = inputValue.split('-');
                             if (dateParts.length === 3) {
@@ -350,13 +357,14 @@
                         }
                     }
 
-                    // Show/hide corresponding social icon based on input value
+                    // Show/hide corresponding icon based on input value
                     if (inputValue) {
                         $("." + inputName + "_icon").show();
                     } else {
                         $("." + inputName + "_icon").hide();
                     }
                 });
+
 
 
 

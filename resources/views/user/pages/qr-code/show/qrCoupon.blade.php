@@ -1,4 +1,4 @@
-<x-admin-guest-layout :title="'$qr->code '">
+<x-admin-guest-layout :title="$qr->code">
     <link rel="shortcut icon"
         href="https://images.rawpixel.com/image_800/cHJpdmF0ZS9s…03ZDBiLTQ2ODgtYjkzOS01MjM3ZDExNGYxNDVfMS5qcGc.jpg"
         type="image/x-icon" />

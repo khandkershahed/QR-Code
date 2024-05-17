@@ -186,11 +186,11 @@
                     </div>
                     <div class="text-center p-3">
                         <img class="p-3 img-fluid qr_data_business_page_logo"
-                                style="width: 140px;border-radius: 100%;position: relative;z-index: 15;"
-                                src="https://i.ibb.co/BNBTVN4/logo.png" alt="banner" />
+                            style="width: 140px;border-radius: 100%;position: relative;z-index: 15;"
+                            src="https://i.ibb.co/BNBTVN4/logo.png" alt="banner" />
                     </div>
                     <div class="text-center p-3">
-                        <h2 class="mb-0 title fw-bold sub_title-2 qr_data_business_page_business">
+                        <h2 class="mb-0 title fw-bold sub_title-2 qr_data_business_page_business_name">
                             GOFLIXZAS STORE HOUR
                         </h2>
                     </div>
@@ -199,48 +199,74 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="text-center px-0 px-lg-1 m-2 mobile-design">
-                                <div class="row justify-content-between align-items-center shadow-sm mt-0 qr_data_business_page_start_time_monday" style="display: none;">
-                                    <p class="mb-0 fw-bold mt-0 ps-2">Monday</p>
-                                    <p class="mb-0 mt-0 time-start qr_data_business_page_start_time_monday">9:00</p>
-                                    <span class="title fw-bold">To</span>
-                                    <p class="m-0 time-start qr_data_business_page_end_time_monday">11:00</p>
+                                <div class="qr_data_business_page_start_time_monday_time" style="display: none;">
+                                    <div
+                                        class="d-flex justify-content-between align-items-center shadow-sm mt-0">
+                                        <p class="mb-0 fw-bold mt-0 ps-2">Monday</p>
+                                        <p class="mb-0 mt-0 time-start qr_data_business_page_start_time_monday">9:00</p>
+                                        <span class="title fw-bold">To</span>
+                                        <p class="m-0 time-start qr_data_business_page_end_time_monday">11:00</p>
+                                    </div>
                                 </div>
-                                <div class="row justify-content-between align-items-center shadow-sm mt-0 qr_data_business_page_start_time_tuesday" style="display: none;">
-                                    <p class="mb-0 fw-bold mt-0 ps-2">Monday</p>
-                                    <p class="mb-0 mt-0 time-start qr_data_business_page_start_time_tuesday">9:00</p>
-                                    <span class="title fw-bold">To</span>
-                                    <p class="m-0 time-start qr_data_business_page_end_time_tuesday">11:00</p>
+                                <div class="qr_data_business_page_start_time_tuesday_time" style="display: none;">
+                                    <div
+                                        class="d-flex justify-content-between align-items-center shadow-sm mt-0">
+                                        <p class="mb-0 fw-bold mt-0 ps-2">Monday</p>
+                                        <p class="mb-0 mt-0 time-start qr_data_business_page_start_time_tuesday">9:00
+                                        </p>
+                                        <span class="title fw-bold">To</span>
+                                        <p class="m-0 time-start qr_data_business_page_end_time_tuesday">11:00</p>
+                                    </div>
                                 </div>
-                                <div class="row justify-content-between align-items-center shadow-sm mt-0 qr_data_business_page_start_time_wednesday" style="display: none;">
-                                    <p class="mb-0 fw-bold mt-0 ps-2">Monday</p>
-                                    <p class="mb-0 mt-0 time-start qr_data_business_page_start_time_wednesday">9:00</p>
-                                    <span class="title fw-bold">To</span>
-                                    <p class="m-0 time-start qr_data_business_page_end_time_wednesday">11:00</p>
+                                <div class="qr_data_business_page_start_time_wednesday_time" style="display: none;">
+                                    <div
+                                        class="d-flex justify-content-between align-items-center shadow-sm mt-0">
+                                        <p class="mb-0 fw-bold mt-0 ps-2">Monday</p>
+                                        <p class="mb-0 mt-0 time-start qr_data_business_page_start_time_wednesday">9:00
+                                        </p>
+                                        <span class="title fw-bold">To</span>
+                                        <p class="m-0 time-start qr_data_business_page_end_time_wednesday">11:00</p>
+                                    </div>
                                 </div>
-                                <div class="row justify-content-between align-items-center shadow-sm mt-0 qr_data_business_page_start_time_thursday" style="display: none;">
-                                    <p class="mb-0 fw-bold mt-0 ps-2">Monday</p>
-                                    <p class="mb-0 mt-0 time-start qr_data_business_page_start_time_thursday">9:00</p>
-                                    <span class="title fw-bold">To</span>
-                                    <p class="m-0 time-start qr_data_business_page_end_time_thursday">11:00</p>
+                                <div class="qr_data_business_page_start_time_thursday_time" style="display: none;">
+                                    <div
+                                        class="d-flex justify-content-between align-items-center shadow-sm mt-0">
+                                        <p class="mb-0 fw-bold mt-0 ps-2">Monday</p>
+                                        <p class="mb-0 mt-0 time-start qr_data_business_page_start_time_thursday">9:00
+                                        </p>
+                                        <span class="title fw-bold">To</span>
+                                        <p class="m-0 time-start qr_data_business_page_end_time_thursday">11:00</p>
+                                    </div>
                                 </div>
-                                <div class="row justify-content-between align-items-center shadow-sm mt-0 qr_data_business_page_start_time_friday" style="display: none;">
-                                    <p class="mb-0 fw-bold mt-0 ps-2">Monday</p>
-                                    <p class="mb-0 mt-0 time-start qr_data_business_page_start_time_friday">9:00</p>
-                                    <span class="title fw-bold">To</span>
-                                    <p class="m-0 time-start qr_data_business_page_end_time_friday">11:00</p>
+                                <div class="qr_data_business_page_start_time_friday_time" style="display: none;">
+                                    <div
+                                        class="d-flex justify-content-between align-items-center shadow-sm mt-0">
+                                        <p class="mb-0 fw-bold mt-0 ps-2">Monday</p>
+                                        <p class="mb-0 mt-0 time-start qr_data_business_page_start_time_friday">9:00</p>
+                                        <span class="title fw-bold">To</span>
+                                        <p class="m-0 time-start qr_data_business_page_end_time_friday">11:00</p>
+                                    </div>
                                 </div>
-                                <div class="row justify-content-between align-items-center shadow-sm mt-0 qr_data_business_page_start_time_saturday" style="display: none;">
-                                    <p class="mb-0 fw-bold mt-0 ps-2">Monday</p>
-                                    <p class="mb-0 mt-0 time-start qr_data_business_page_start_time_saturday">9:00</p>
-                                    <span class="title fw-bold">To</span>
-                                    <p class="m-0 time-start qr_data_business_page_end_time_saturday">11:00</p>
+                                <div class="qr_data_business_page_start_time_saturday_time" style="display: none;">
+                                    <div
+                                        class="d-flex justify-content-between align-items-center shadow-sm mt-0">
+                                        <p class="mb-0 fw-bold mt-0 ps-2">Monday</p>
+                                        <p class="mb-0 mt-0 time-start qr_data_business_page_start_time_saturday">9:00
+                                        </p>
+                                        <span class="title fw-bold">To</span>
+                                        <p class="m-0 time-start qr_data_business_page_end_time_saturday">11:00</p>
+                                    </div>
                                 </div>
-                                <div class="row justify-content-between align-items-center shadow-sm mt-0 qr_data_business_page_start_time_sunday" style="display: none;">
-                                    <p class="mb-0 fw-bold mt-0 ps-2">Monday</p>
-                                    <p class="mb-0 mt-0 time-start qr_data_business_page_start_time_sunday">9:00</p>
-                                    <span class="title fw-bold">To</span>
-                                    <p class="m-0 time-start qr_data_business_page_end_time_sunday">11:00</p>
+                                <div class="qr_data_business_page_start_time_sunday_time" style="display: none;">
+                                    <div
+                                        class="d-flex justify-content-between align-items-center shadow-sm mt-0">
+                                        <p class="mb-0 fw-bold mt-0 ps-2">Monday</p>
+                                        <p class="mb-0 mt-0 time-start qr_data_business_page_start_time_sunday">9:00</p>
+                                        <span class="title fw-bold">To</span>
+                                        <p class="m-0 time-start qr_data_business_page_end_time_sunday">11:00</p>
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -248,10 +274,12 @@
                     <div class="divider-2 mb-3"></div>
                     <div class="text-center p-3">
                         <h4 class="mb-2 fw-bold title">
-                            <a href="" class="text-decoration-none title qr_data_business_page_website">www.goflixza.com</a>
+                            <a href="http://"
+                                class="text-decoration-none title qr_data_business_page_website">www.goflixza.com</a>
                         </h4>
                         <h2 class="mb-2 fw-bolder">Call</h2>
-                        <h2 class="mb-0 sub_title qr_data_business_page_business_phone" style="font-family: var(--tem-one-name-font-family)">
+                        <h2 class="mb-0 sub_title qr_data_business_page_business_phone"
+                            style="font-family: var(--tem-one-name-font-family)">
                             2560-2586-548
                         </h2>
                     </div>
