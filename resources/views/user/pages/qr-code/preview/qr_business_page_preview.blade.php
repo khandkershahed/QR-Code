@@ -211,7 +211,7 @@
                                 <div class="qr_data_business_page_start_time_tuesday_time" style="display: none;">
                                     <div
                                         class="d-flex justify-content-between align-items-center shadow-sm mt-0">
-                                        <p class="mb-0 fw-bold mt-0 ps-2">Monday</p>
+                                        <p class="mb-0 fw-bold mt-0 ps-2">Tuesday</p>
                                         <p class="mb-0 mt-0 time-start qr_data_business_page_start_time_tuesday">9:00
                                         </p>
                                         <span class="title fw-bold">To</span>
@@ -221,7 +221,7 @@
                                 <div class="qr_data_business_page_start_time_wednesday_time" style="display: none;">
                                     <div
                                         class="d-flex justify-content-between align-items-center shadow-sm mt-0">
-                                        <p class="mb-0 fw-bold mt-0 ps-2">Monday</p>
+                                        <p class="mb-0 fw-bold mt-0 ps-2">Wednesday</p>
                                         <p class="mb-0 mt-0 time-start qr_data_business_page_start_time_wednesday">9:00
                                         </p>
                                         <span class="title fw-bold">To</span>
@@ -231,7 +231,7 @@
                                 <div class="qr_data_business_page_start_time_thursday_time" style="display: none;">
                                     <div
                                         class="d-flex justify-content-between align-items-center shadow-sm mt-0">
-                                        <p class="mb-0 fw-bold mt-0 ps-2">Monday</p>
+                                        <p class="mb-0 fw-bold mt-0 ps-2">Thursday</p>
                                         <p class="mb-0 mt-0 time-start qr_data_business_page_start_time_thursday">9:00
                                         </p>
                                         <span class="title fw-bold">To</span>
@@ -241,7 +241,7 @@
                                 <div class="qr_data_business_page_start_time_friday_time" style="display: none;">
                                     <div
                                         class="d-flex justify-content-between align-items-center shadow-sm mt-0">
-                                        <p class="mb-0 fw-bold mt-0 ps-2">Monday</p>
+                                        <p class="mb-0 fw-bold mt-0 ps-2">Friday</p>
                                         <p class="mb-0 mt-0 time-start qr_data_business_page_start_time_friday">9:00</p>
                                         <span class="title fw-bold">To</span>
                                         <p class="m-0 time-start qr_data_business_page_end_time_friday">11:00</p>
@@ -250,7 +250,7 @@
                                 <div class="qr_data_business_page_start_time_saturday_time" style="display: none;">
                                     <div
                                         class="d-flex justify-content-between align-items-center shadow-sm mt-0">
-                                        <p class="mb-0 fw-bold mt-0 ps-2">Monday</p>
+                                        <p class="mb-0 fw-bold mt-0 ps-2">Saturday</p>
                                         <p class="mb-0 mt-0 time-start qr_data_business_page_start_time_saturday">9:00
                                         </p>
                                         <span class="title fw-bold">To</span>
@@ -260,7 +260,7 @@
                                 <div class="qr_data_business_page_start_time_sunday_time" style="display: none;">
                                     <div
                                         class="d-flex justify-content-between align-items-center shadow-sm mt-0">
-                                        <p class="mb-0 fw-bold mt-0 ps-2">Monday</p>
+                                        <p class="mb-0 fw-bold mt-0 ps-2">Sunday</p>
                                         <p class="mb-0 mt-0 time-start qr_data_business_page_start_time_sunday">9:00</p>
                                         <span class="title fw-bold">To</span>
                                         <p class="m-0 time-start qr_data_business_page_end_time_sunday">11:00</p>

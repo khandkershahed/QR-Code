@@ -202,7 +202,7 @@
                                 Lorem ipsum dolor sit amet consectetur, adipisicing
                                 elit. Iure, commodi!
                             </p>
-                        </div>
+                        </div> 
                         <div>
                             <img class="img-fluid qr_data_social_background_image"
                                 src="https://d3nvy39jvu7woe.cloudfront.net/static/images/social_media/social_media_back.png"

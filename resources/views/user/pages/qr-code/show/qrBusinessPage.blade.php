@@ -236,67 +236,89 @@
                                     <div class="d-flex justify-content-center">
                                         <img class="img-fluid" width="200px"
                                             src="https://i.ibb.co/9rR2kd4/97-971813-molduras-arabescos-image-transparent-download-arabesque-png.png"
-                                            alt="" />
+                                            alt="">
                                     </div>
                                     <div class="text-center p-3">
-                                        <h2 class="mb-0 title fw-bold sub_title-2">
-                                            GOFLIXZAS STORE HOUR
-                                        </h2>
+                                        <img class="p-3 img-fluid qr_data_business_page_logo"
+                                            style="width: 140px;border-radius: 100%;position: relative;z-index: 15;"
+                                            src="{{asset('storage/qr_codes/business_pages/' . $qr->qrData->qr_data_business_page_logo) }}" alt="banner" />
                                     </div>
-                                    <div class="divider"></div>
+                                    @if (!empty($qr->qrData->qr_data_business_page_business_name))
+                                        <div class="text-center p-3">
+                                            <h2 class="mb-0 title fw-bold sub_title-2 qr_data_business_page_business_name">
+                                                {{ $qr->qrData->qr_data_business_page_business_name }}
+                                            </h2>
+                                        </div>
+                                        <div class="divider"></div>
+                                    @endif
                                     <!-- Content -->
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="text-center px-0 px-lg-5 m-2 mobile-design">
-                                                <div
-                                                    class="d-flex justify-content-between align-items-center shadow-sm mt-0">
-                                                    <p class="mb-0 fw-bold mt-0 ps-2">Monday</p>
-                                                    <p class="mb-0 mt-0 time-start">9:00</p>
-                                                    <span class="title fw-bold">To</span>
-                                                    <p class="m-0 time-start">11:00</p>
-                                                </div>
-                                                <div
-                                                    class="d-flex justify-content-between align-items-center shadow-sm mt-0">
-                                                    <p class="mb-0 fw-bold mt-0 ps-2">Monday</p>
-                                                    <p class="mb-0 mt-0 time-start">9:00</p>
-                                                    <span class="title fw-bold">To</span>
-                                                    <p class="m-0 time-start">11:00</p>
-                                                </div>
-                                                <div
-                                                    class="d-flex justify-content-between align-items-center shadow-sm mt-0">
-                                                    <p class="mb-0 fw-bold mt-0 ps-2">Monday</p>
-                                                    <p class="mb-0 mt-0 time-start">9:00</p>
-                                                    <span class="title fw-bold">To</span>
-                                                    <p class="m-0 time-start">11:00</p>
-                                                </div>
-                                                <div
-                                                    class="d-flex justify-content-between align-items-center shadow-sm mt-0">
-                                                    <p class="mb-0 fw-bold mt-0 ps-2">Monday</p>
-                                                    <p class="mb-0 mt-0 time-start">9:00</p>
-                                                    <span class="title fw-bold">To</span>
-                                                    <p class="m-0 time-start">11:00</p>
-                                                </div>
-                                                <div
-                                                    class="d-flex justify-content-between align-items-center shadow-sm mt-0">
-                                                    <p class="mb-0 fw-bold mt-0 ps-2">Monday</p>
-                                                    <p class="mb-0 mt-0 time-start">9:00</p>
-                                                    <span class="title fw-bold">To</span>
-                                                    <p class="m-0 time-start">11:00</p>
-                                                </div>
-                                                <div
-                                                    class="d-flex justify-content-between align-items-center shadow-sm mt-0">
-                                                    <p class="mb-0 fw-bold mt-0 ps-2">Monday</p>
-                                                    <p class="mb-0 mt-0 time-start">9:00</p>
-                                                    <span class="title fw-bold">To</span>
-                                                    <p class="m-0 time-start">11:00</p>
-                                                </div>
-                                                <div
-                                                    class="d-flex justify-content-between align-items-center shadow-sm mt-0">
-                                                    <p class="mb-0 fw-bold mt-0 ps-2">Monday</p>
-                                                    <p class="mb-0 mt-0 time-start">9:00</p>
-                                                    <span class="title fw-bold">To</span>
-                                                    <p class="m-0 time-start">11:00</p>
-                                                </div>
+                                                @if (!empty($qr->qrData->qr_data_business_page_start_time_monday) || !empty($qr->qrData->qr_data_business_page_end_time_monday))
+                                                    <div
+                                                        class="d-flex justify-content-between align-items-center shadow-sm mt-0">
+                                                        <p class="mb-0 fw-bold mt-0 ps-2">Monday</p>
+                                                        <p class="mb-0 mt-0 time-start">{{ $qr->qrData->qr_data_business_page_start_time_monday }}</p>
+                                                        <span class="title fw-bold">To</span>
+                                                        <p class="m-0 time-start">{{ $qr->qrData->qr_data_business_page_end_time_monday }}</p>
+                                                    </div>
+                                                @endif
+                                                @if (!empty($qr->qrData->qr_data_business_page_start_time_tuesday) || !empty($qr->qrData->qr_data_business_page_end_time_tuesday))
+                                                    <div
+                                                        class="d-flex justify-content-between align-items-center shadow-sm mt-0">
+                                                        <p class="mb-0 fw-bold mt-0 ps-2">Tuesday</p>
+                                                        <p class="mb-0 mt-0 time-start">{{ $qr->qrData->qr_data_business_page_start_time_tuesday }}</p>
+                                                        <span class="title fw-bold">To</span>
+                                                        <p class="m-0 time-start">{{ $qr->qrData->qr_data_business_page_end_time_tuesday }}</p>
+                                                    </div>
+                                                @endif
+                                                @if (!empty($qr->qrData->qr_data_business_page_start_time_wednesday) || !empty($qr->qrData->qr_data_business_page_end_time_wednesday))
+                                                    <div
+                                                        class="d-flex justify-content-between align-items-center shadow-sm mt-0">
+                                                        <p class="mb-0 fw-bold mt-0 ps-2">Wednesday</p>
+                                                        <p class="mb-0 mt-0 time-start">{{ $qr->qrData->qr_data_business_page_start_time_wednesday }}</p>
+                                                        <span class="title fw-bold">To</span>
+                                                        <p class="m-0 time-start">{{ $qr->qrData->qr_data_business_page_end_time_wednesday }}</p>
+                                                    </div>
+                                                @endif
+                                                @if (!empty($qr->qrData->qr_data_business_page_start_time_thursday) || !empty($qr->qrData->qr_data_business_page_end_time_thursday))
+                                                    <div
+                                                        class="d-flex justify-content-between align-items-center shadow-sm mt-0">
+                                                        <p class="mb-0 fw-bold mt-0 ps-2">Thursday</p>
+                                                        <p class="mb-0 mt-0 time-start">{{ $qr->qrData->qr_data_business_page_start_time_thursday }}</p>
+                                                        <span class="title fw-bold">To</span>
+                                                        <p class="m-0 time-start">{{ $qr->qrData->qr_data_business_page_end_time_thursday }}</p>
+                                                    </div>
+                                                @endif
+                                                @if (!empty($qr->qrData->qr_data_business_page_start_time_friday) || !empty($qr->qrData->qr_data_business_page_end_time_friday))
+                                                    <div
+                                                        class="d-flex justify-content-between align-items-center shadow-sm mt-0">
+                                                        <p class="mb-0 fw-bold mt-0 ps-2">Friday</p>
+                                                        <p class="mb-0 mt-0 time-start">{{ $qr->qrData->qr_data_business_page_start_time_friday }}</p>
+                                                        <span class="title fw-bold">To</span>
+                                                        <p class="m-0 time-start">{{ $qr->qrData->qr_data_business_page_end_time_friday }}</p>
+                                                    </div>
+                                                @endif
+                                                @if (!empty($qr->qrData->qr_data_business_page_start_time_saturday) || !empty($qr->qrData->qr_data_business_page_end_time_saturday))
+                                                    <div
+                                                        class="d-flex justify-content-between align-items-center shadow-sm mt-0">
+                                                        <p class="mb-0 fw-bold mt-0 ps-2">Saturday</p>
+                                                        <p class="mb-0 mt-0 time-start">{{ $qr->qrData->qr_data_business_page_start_time_saturday }}</p>
+                                                        <span class="title fw-bold">To</span>
+                                                        <p class="m-0 time-start">{{ $qr->qrData->qr_data_business_page_end_time_saturday }}</p>
+                                                    </div>
+                                                @endif
+                                                @if (!empty($qr->qrData->qr_data_business_page_start_time_sunday) || !empty($qr->qrData->qr_data_business_page_end_time_sunday))
+                                                    <div
+                                                        class="d-flex justify-content-between align-items-center shadow-sm mt-0">
+                                                        <p class="mb-0 fw-bold mt-0 ps-2">Sunday</p>
+                                                        <p class="mb-0 mt-0 time-start">{{ $qr->qrData->qr_data_business_page_start_time_sunday }}</p>
+                                                        <span class="title fw-bold">To</span>
+                                                        <p class="m-0 time-start">{{ $qr->qrData->qr_data_business_page_end_time_sunday }}</p>
+                                                    </div>
+                                                @endif
+
                                             </div>
                                         </div>
                                     </div>
@@ -304,11 +326,11 @@
                                     <div class="divider-2 mb-3"></div>
                                     <div class="text-center p-3">
                                         <p class="mb-0 fw-bold title">
-                                            <a href="" class="text-decoration-none title">www.goflixza.com</a>
+                                            <a href="{{ $qr->qrData->qr_data_business_page_website }}" class="text-decoration-none title">{{ $qr->qrData->qr_data_business_page_website }}</a>
                                         </p>
                                         <p class="mb-0 fw-bold">Call</p>
                                         <h2 class="mb-0 sub_title" style="font-family: var(--tem-one-name-font-family)">
-                                            2560-2586-548
+                                            {{ $qr->qrData->qr_data_business_page_business_phone }}
                                         </h2>
                                     </div>
                                     <div class="d-flex justify-content-center">
