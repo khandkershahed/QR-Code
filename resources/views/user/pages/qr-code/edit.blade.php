@@ -6,14 +6,13 @@
                     <div class="card-body">
                         <div class="stepper stepper-pills p-0" id="generateQRCode">
                             <div class="stepper-nav flex-center flex-wrap mb-10 fv-row">
-                               
                                 <div class="stepper-item mx-2 my-4 current" data-kt-stepper-element="nav"
                                     data-kt-stepper-action="step">
                                     <div class="stepper-line w-40px"></div>
 
                                     <div class="stepper-icon w-40px h-40px">
                                         <i class="stepper-check fas fa-check"></i>
-                                        <span class="stepper-number">2</span>
+                                        <span class="stepper-number">1</span>
                                     </div>
 
                                     <div class="stepper-label">
@@ -29,7 +28,7 @@
 
                                     <div class="stepper-icon w-40px h-40px">
                                         <i class="stepper-check fas fa-check"></i>
-                                        <span class="stepper-number">3</span>
+                                        <span class="stepper-number">2</span>
                                     </div>
 
                                     <div class="stepper-label">
@@ -45,7 +44,7 @@
 
                                     <div class="stepper-icon w-40px h-40px">
                                         <i class="stepper-check fas fa-check"></i>
-                                        <span class="stepper-number">4</span>
+                                        <span class="stepper-number">3</span>
                                     </div>
 
                                     <div class="stepper-label">
@@ -57,15 +56,14 @@
                             </div>
 
                             <form class="form w-100 mx-auto fv-row" novalidate="novalidate" id="generateQRCodeForm"
-                                action="{{ route('user.qr-code.store') }}" method="POST" enctype="multipart/form-data">
+                                action="{{ route('user.qr-code.update',$qr->code) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
+                                @method('PUT')
                                 <div class="mb-5">
-
-
                                     <div class="flex-column current" data-kt-stepper-element="content">
                                         <div class="card">
                                             <div class="card-body">
-                                                @include('user.pages.qr-code.partials.form')
+                                                @include('user.pages.qr-code.edit_partials.form')
                                             </div>
                                         </div>
                                     </div>
@@ -76,7 +74,7 @@
                                                 <h2 class="text-center mb-0">Choose QR Code Design!</h2>
                                             </div>
                                             <div class="card-body">
-                                                @include('user.pages.qr-code.partials.customize')
+                                                @include('user.pages.qr-code.edit_partials.customize')
                                             </div>
                                         </div>
                                     </div>
@@ -103,26 +101,8 @@
                                                         </div>
                                                     </div>
                                                     <input type="hidden" name="qr_scan_status" value="dynamic">
-                                                    {{-- <div class="col-lg-6">
-                                                        <div class="pt-5 pb-5">
-                                                            <x-metronic.label for="status"
-                                                                class="form-label">{{ __('Enter a name for your QR code') }}
-                                                                <span class="text-danger">*</span></x-metronic.label>
-                                                            <select class="form-select" data-control="select2"
-                                                                name="qr_scan_status"
-                                                                data-placeholder="Select an option" required>
-                                                                <option>Select Status</option>
-                                                                <option value="static">Static</option>
-                                                                <option value="dynamic">Dynamic</option>
-                                                            </select>
-                                                        </div>
-                                                    </div> --}}
+
                                                 </div>
-                                                {{-- <div class="w-25 mx-auto">
-                                                    <img width="300px"
-                                                        src="https://assets-v2.lottiefiles.com/a/1abcc0d6-1163-11ee-9072-a343231e70f1/HGdrITc8PY.gif"
-                                                        alt="">
-                                                </div> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -158,7 +138,7 @@
                         <div class="d-flex flex-column justify-content-center align-items-center">
                             {{-- id="generatedQRCodeContainer" --}}
                             <h3>Preview</h3>
-                            @include('user.pages.qr-code.partials.qr_preview')
+                            @include('user.pages.qr-code.edit_partials.qr_preview')
                             {{-- {!! QrCode::size(220)->eye('left-leaf', 0.1)->eyeColor(0, 255, 255, 255, 0, 0, 0)->eyeColor(1, 222, 18, 222, 222, 18, 222)->eyeColor(2, 222, 18, 222, 222, 18, 222)->style('dot', 0.8)->errorCorrection('H')->generate('Make me into a QrCode!') !!} --}}
                         </div>
                         <a id="downloadLink" href="javascripti:void()" download
@@ -189,8 +169,9 @@
                     }
                 });
 
-                const initiallySelectedValue = $('input[name="qr_type"]:checked').val();
-                $("." + initiallySelectedValue).show();
+                const initiallySelectedValue = "{{$qr->qr_type}}";
+                alert($("." + initiallySelectedValue + "-form"));
+                $("." + initiallySelectedValue + "-form").show();
             });
         </script>
 
