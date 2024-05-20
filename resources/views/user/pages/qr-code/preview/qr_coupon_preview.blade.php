@@ -42,9 +42,10 @@
                     <h1 class="qr_data_coupon_header" style="color: #ffff;font-family: var(--tem-one-name-font-family);">
                         30% Discount
                     </h1>
-                    <h1 class="fw-bolder text-white qr_data_coupon_message"
+                    <h1 class="fw-bolder text-white"
                         style="font-family: var(--tem-one-name-font-family);font-size: 55px;">
-                        Big Sale <span class="qr_data_coupon_description_body" style="color: #fd0834">Discount</span>
+                        <span class="qr_data_coupon_message">Big Sale</span>
+                         <span class="qr_data_coupon_description_body" style="color: #fd0834">Discount</span>
                     </h1>
                     <h3 class="qr_data_coupon_company"
                         style="color: #15487f;font-family: var(--tem-one-name-font-family);">
@@ -105,13 +106,13 @@
             // Attach click event handler to the button
             $("#button-addon2").click(function() {
                 // Get the value of the input field
-                var inputValue = $(".form-control").val();
+                var inputValue = $(".qr_data_coupon_code").val();
 
                 // Copy the value to clipboard
                 navigator.clipboard.writeText(inputValue).then(
                     function() {
                         // Show success message
-                        alert("Link copied: " + inputValue);
+                        alert("Coupon copied: " + inputValue);
                     },
                     function(err) {
                         // Handle errors

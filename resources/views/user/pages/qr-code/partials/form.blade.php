@@ -179,7 +179,8 @@
                 :value="old('qr_data_coupon_header')" placeholder="30% Discount" />
         </div>
         <div class="pb-4 col-lg-4">
-            <x-metronic.label for="qr_data_coupon_message" class="form-label">{{ __('Message Line One') }}</x-metronic.label>
+            <x-metronic.label for="qr_data_coupon_message"
+                class="form-label">{{ __('Message Line One') }}</x-metronic.label>
             <x-metronic.input id="qr_data_coupon_message" type="text" name="qr_data_coupon_message"
                 :value="old('qr_data_coupon_message')" placeholder="Big Sale" />
         </div>
@@ -187,11 +188,11 @@
             <x-metronic.label for="qr_data_coupon_description_body"
                 class="form-label">{{ __('Message Line Two') }}</x-metronic.label>
             <x-metronic.input id="qr_data_coupon_description_body" type="text"
-                name="qr_data_coupon_description_body" :value="old('qr_data_coupon_description_body')"
-                placeholder="Discount" />
+                name="qr_data_coupon_description_body" :value="old('qr_data_coupon_description_body')" placeholder="Discount" />
         </div>
         <div class="pb-4 col-lg-4">
-            <x-metronic.label for="qr_data_coupon_company" class="form-label">{{ __('Company Name') }}</x-metronic.label>
+            <x-metronic.label for="qr_data_coupon_company"
+                class="form-label">{{ __('Company Name') }}</x-metronic.label>
             <x-metronic.input id="qr_data_coupon_company" type="text" name="qr_data_coupon_company"
                 :value="old('qr_data_coupon_company')" placeholder="GALAXXY MEDIA LLC." />
         </div>
@@ -221,7 +222,8 @@
         </div>
 
         <div class="pb-4 col-lg-4">
-            <x-metronic.label for="qr_data_coupon_website" class="form-label">{{ __('Website URL') }}</x-metronic.label>
+            <x-metronic.label for="qr_data_coupon_website"
+                class="form-label">{{ __('Website URL') }}</x-metronic.label>
             <x-metronic.input id="qr_data_coupon_website" type="url" name="qr_data_coupon_website"
                 :value="old('qr_data_coupon_website')" placeholder="http://www.website.com" />
         </div>
@@ -317,31 +319,53 @@
         <p class="text-center mb-0">Link to your social media channels for more engagement.</p>
     </div>
     <div class="row pt-4">
-        <div class="pb-4 col-lg-5">
-            <label for="exampleFormControlInput1" class="required form-label">Logo</label>
-            <input type="file" class="form-control form-control-solid" name="logo" />
+        <div class="pb-4 col-lg-3">
+            <x-metronic.label for="qr_data_social_logo" class="form-label">{{ __('Logo') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_social_logo" type="file" name="qr_data_social_logo" :value="old('qr_data_social_logo')"
+                placeholder="social Logo" />
         </div>
         <div class="col-lg-1 d-lg-block d-sm-none">
             <div class="fv-row my-3 pt-5">
                 <div>
                     <img width="50px" height="50px" class="rounded-circle border banner_image"
-                        id="profile_image_preview" src="" alt="">
+                        id="profile_image_preview" src="https://i.ibb.co/BNBTVN4/logo.png" alt="">
                 </div>
             </div>
         </div>
-        <div class="pb-4 col-lg-5">
-            <label for="exampleFormControlInput1" class="required form-label">Image</label>
-            <input type="file" class="form-control form-control-solid" name="social_banner" />
+        <div class="pb-4 col-lg-4">
+            <x-metronic.label for="qr_data_social_header" class="form-label">{{ __('Header') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_social_header" type="text" name="qr_data_social_header"
+                :value="old('qr_data_social_header')" placeholder="Folow Us On !" />
+        </div>
+        <div class="pb-4 col-lg-4">
+            <x-metronic.label for="qr_data_social_title" class="form-label">{{ __('Title') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_social_title" type="text" name="qr_data_social_title" :value="old('qr_data_social_title')"
+                placeholder="My Social Platform" />
+        </div>
+        <div class="pb-4 col-lg-4">
+            <x-metronic.label for="qr_data_social_message"
+                class="form-label">{{ __('Body Message') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_social_message" type="text" name="qr_data_social_message"
+                :value="old('qr_data_social_message')"
+                placeholder="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure, commodi!" />
+        </div>
+
+        <div class="pb-4 col-lg-3">
+            <x-metronic.label for="qr_data_social_background_image"
+                class="form-label">{{ __('Background Image') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_social_background_image" type="file"
+                name="qr_data_social_background_image" :value="old('qr_data_social_background_image')" placeholder="Social background image" />
         </div>
         <div class="col-lg-1 d-lg-block d-sm-none">
             <div class="fv-row my-3 pt-5">
                 <div>
                     <img width="50px" height="50px" class="rounded-circle border banner_image"
-                        id="profile_image_preview" src="" alt="">
+                        id="profile_image_preview" src="https://i.ibb.co/BNBTVN4/logo.png" alt="">
                 </div>
             </div>
         </div>
-        <div class="pb-4 col-lg-6">
+
+        {{-- <div class="pb-4 col-lg-6">
             <label for="exampleFormControlInput1" class="required form-label">Title</label>
             <input type="text" class="form-control form-control-solid" placeholder="Enter Title" />
         </div>
@@ -358,81 +382,80 @@
                     height: 40px;" />
                 </div>
             </div>
+        </div> --}}
+
+        <div class="row text-center justify-content-center">
+            <h2 class="text-center mb-0">LINKS</h2>
+            <p class="text-center mb-0">At least one field is mandatory *</p>
         </div>
-        <div>
-            <p class="fw-bold pt-5 mb-0">Body</p>
+
+        <div class="pb-4 col-lg-6">
+            <x-metronic.label for="qr_data_social_facebook"
+                class="form-label">{{ __('Facebook URL') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_social_facebook" type="url" name="qr_data_social_facebook"
+                :value="old('qr_data_social_facebook')" placeholder="http://www.website.com" />
         </div>
         <div class="pb-4 col-lg-6">
-            <label for="exampleFormControlInput1" class="required form-label">Message</label>
-            <input type="text" class="form-control form-control-solid" placeholder="Enter Message" />
+            <x-metronic.label for="qr_data_social_instagram"
+                class="form-label">{{ __('Instagram URL') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_social_instagram" type="url" name="qr_data_social_instagram"
+                :value="old('qr_data_social_instagram')" placeholder="http://www.website.com" />
         </div>
         <div class="pb-4 col-lg-6">
-            <label for="exampleFormControlInput1" class="required form-label">Subtext</label>
-            <input type="text" class="form-control form-control-solid" placeholder="Enter Subtext" />
+            <x-metronic.label for="qr_data_social_linkedin"
+                class="form-label">{{ __('Linkedin URL') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_social_linkedin" type="url" name="qr_data_social_linkedin"
+                :value="old('qr_data_social_linkedin')" placeholder="http://www.website.com" />
         </div>
         <div class="pb-4 col-lg-6">
-            <label for="exampleFormControlInput1" class="required form-label">Subtext</label>
-            <input type="text" class="form-control form-control-solid" placeholder="Enter Subtext" />
+            <x-metronic.label for="qr_data_social_twitter"
+                class="form-label">{{ __('Twitter URL') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_social_twitter" type="url" name="qr_data_social_twitter"
+                :value="old('qr_data_social_twitter')" placeholder="http://www.website.com" />
         </div>
-        <div class="col-lg-6 pb-4">
-            <div class="row gx-0">
-                <div class="col-lg-8">
-                    <label for="exampleFormControlInput1" class="required form-label">Background Color</label>
-                    <input type="text" class="form-control form-control-solid" placeholder="Enter Title" />
-                </div>
-                <div class="col-lg-2">
-                    <label for="exampleFormControlInput1" class="required form-label"></label>
-                    <input type="color" class="form-control form-control-solid"
-                        placeholder="Select background color"
-                        style="width: 135px;
-                    height: 40px;" />
-                </div>
-            </div>
+
+        <div class="pb-4 col-lg-6">
+            <x-metronic.label for="qr_data_social_youtube"
+                class="form-label">{{ __('Youtube URL') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_social_youtube" type="url" name="qr_data_social_youtube"
+                :value="old('qr_data_social_youtube')" placeholder="http://www.website.com" />
         </div>
-        <div>
-            <p class="fw-bold pt-5 mb-0">LINKS</p>
-            <p>At least one field is mandatory *</p>
+
+        <div class="pb-4 col-lg-6">
+            <x-metronic.label for="qr_data_social_pinterest"
+                class="form-label">{{ __('Pinterest URL') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_social_pinterest" type="url" name="qr_data_social_pinterest"
+                :value="old('qr_data_social_pinterest')" placeholder="http://www.website.com" />
+        </div>
+
+        <div class="pb-4 col-lg-6">
+            <x-metronic.label for="qr_data_social_website"
+                class="form-label">{{ __('Website URL') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_social_website" type="url" name="qr_data_social_website"
+                :value="old('qr_data_social_website')" placeholder="http://www.website.com" />
+        </div>
+
+        <div class="pb-4 col-lg-6">
+            <x-metronic.label for="qr_data_social_whatsapp"
+                class="form-label">{{ __('Whatsapp URL') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_social_whatsapp" type="url" name="qr_data_social_whatsapp"
+                :value="old('qr_data_social_whatsapp')" placeholder="http://www.website.com" />
+        </div>
+
+        <div class="pb-4 col-lg-6">
+            <x-metronic.label for="qr_data_social_snapchat"
+                class="form-label">{{ __('Snapchat URL') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_social_snapchat" type="url" name="qr_data_social_snapchat"
+                :value="old('qr_data_social_snapchat')" placeholder="http://www.website.com" />
         </div>
         <div class="pb-4 col-lg-6">
-            <label for="exampleFormControlInput1" class="required form-label">Facebook Username</label>
-            <input type="text" class="form-control form-control-solid" placeholder="https://www.example.com" />
+            <x-metronic.label for="qr_data_social_tiktok"
+                class="form-label">{{ __('Tiktok URL') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_social_tiktok" type="url" name="qr_data_social_tiktok"
+                :value="old('qr_data_social_tiktok')" placeholder="http://www.website.com" />
         </div>
-        <div class="pb-4 col-lg-6">
-            <label for="exampleFormControlInput1" class="required form-label">Instagram Username</label>
-            <input type="text" class="form-control form-control-solid" placeholder="https://www.example.com" />
-        </div>
-        <div class="pb-4 col-lg-6">
-            <label for="exampleFormControlInput1" class="required form-label">Twitter Username</label>
-            <input type="text" class="form-control form-control-solid" placeholder="https://www.example.com" />
-        </div>
-        <div class="pb-4 col-lg-6">
-            <label for="exampleFormControlInput1" class="required form-label">Pinterest Username</label>
-            <input type="text" class="form-control form-control-solid" placeholder="https://www.example.com" />
-        </div>
-        <div class="pb-4 col-lg-6">
-            <label for="exampleFormControlInput1" class="required form-label">Linkedin Username</label>
-            <input type="text" class="form-control form-control-solid" placeholder="https://www.example.com" />
-        </div>
-        <div class="pb-4 col-lg-6">
-            <label for="exampleFormControlInput1" class="required form-label">Whatsapp Username</label>
-            <input type="text" class="form-control form-control-solid" placeholder="https://www.example.com" />
-        </div>
-        <div class="pb-4 col-lg-6">
-            <label for="exampleFormControlInput1" class="required form-label">Youtube Username</label>
-            <input type="text" class="form-control form-control-solid" placeholder="https://www.example.com" />
-        </div>
-        <div class="pb-4 col-lg-6">
-            <label for="exampleFormControlInput1" class="required form-label">Snapchat Username</label>
-            <input type="text" class="form-control form-control-solid" placeholder="https://www.example.com" />
-        </div>
-        <div class="pb-4 col-lg-6">
-            <label for="exampleFormControlInput1" class="required form-label">Tiktok Username</label>
-            <input type="text" class="form-control form-control-solid" placeholder="https://www.example.com" />
-        </div>
-        <div class="pb-4 col-lg-6">
-            <label for="exampleFormControlInput1" class="required form-label">Website Username</label>
-            <input type="text" class="form-control form-control-solid" placeholder="https://www.example.com" />
-        </div>
+
+
     </div>
 </div>
 
@@ -462,207 +485,189 @@
 
 {{-- Business Page Form Start --}}
 <div class="row form-container" id="business_page-form">
-    <div class="row text-center justify-content-center">
+    <div class="row text-center justify-content-center mb-5">
         <h2 class="text-center mb-0">Business Page</h2>
         <p class="text-center mb-0">Share a Card For Your Business</p>
     </div>
     <div class="pb-4 row">
-        <div class="pt-4 col-lg-6">
-            <label for="exampleFormControlInput1" class="required form-label">Business Name</label>
-            <input type="text" class="form-control form-control-solid" placeholder="Enter Name" />
+        <div class="pb-4 col-lg-12">
+            <x-metronic.label for="qr_data_business_page_logo"
+                class="form-label">{{ __('Company Logo') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_business_page_logo" type="file" name="qr_data_business_page_logo"
+                :value="old('qr_data_business_page_logo')" placeholder="Company Logo" />
         </div>
-        <div class="pt-4 col-lg-6">
-            <label for="exampleFormControlInput1" class="required form-label">Headline</label>
-            <input type="text" class="form-control form-control-solid" placeholder="Enter Headline" />
+
+        <div class="pb-4 col-lg-6">
+            <x-metronic.label for="qr_data_business_page_business_name"
+                class="form-label">{{ __('Business Name') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_business_page_business_name" type="text"
+                name="qr_data_business_page_business_name" :value="old('qr_data_business_page_business_name')" placeholder="GOFLIXZAS STORE" />
         </div>
-        <div class="pt-4 col-lg-12">
-            <label for="exampleFormControlInput1" class="required form-label">Message</label>
-            <input type="text" class="form-control form-control-solid" placeholder="Enter Message" />
-        </div>
-        <div class="pt-4 col-lg-6">
-            <label for="exampleFormControlInput1" class="required form-label">Button Title</label>
-            <input type="text" class="form-control form-control-solid" placeholder="Enter Button Title" />
-        </div>
-        <div class="pt-4 col-lg-6">
-            <label for="exampleFormControlInput1" class="required form-label">Button URL</label>
-            <input type="text" class="form-control form-control-solid" placeholder="Enter Button URL" />
-        </div>
-        <div class="pt-4 col-lg-6">
-            <label for="exampleFormControlInput1" class="required form-label">Button URL</label>
-            <input type="text" class="form-control form-control-solid" placeholder="Enter Button URL" />
-        </div>
-        <div class="pt-4 col-lg-4">
-            <label for="exampleFormControlInput1" class="required form-label">Button Color</label>
-            <input type="text" class="form-control form-control-solid" placeholder="Enter Title" />
-        </div>
-        <div class="pt-4 col-lg-2">
-            <label for="exampleFormControlInput1" class="required form-label"></label>
-            <input type="color" class="form-control form-control-solid" placeholder="Enter Title"
-                style="width: 135px;
-            height: 40px;" />
-        </div>
+
+
+        {{-- <div class="pb-4 col-lg-6">
+            <x-metronic.label for="qr_data_business_page_header"
+                class="form-label">{{ __('Header') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_business_page_header" type="text" name="qr_data_business_page_header"
+                :value="old('qr_data_business_page_header')" placeholder="Hour" />
+        </div> --}}
+
         <div>
-            <h6 class="fw-bold pt-5 mb-0">Contact Info</h6>
-        </div>
-        <div class="pt-4 col-lg-6">
-            <label for="exampleFormControlInput1" class="required form-label">Name</label>
-            <input type="text" class="form-control form-control-solid" placeholder="Jhone Doe" />
-        </div>
-        <div class="pt-4 col-lg-6">
-            <label for="exampleFormControlInput1" class="required form-label">Phone</label>
-            <input type="text" class="form-control form-control-solid" placeholder="01*****" />
-        </div>
-        <div class="pt-4 col-lg-6">
-            <label for="exampleFormControlInput1" class="required form-label">Email</label>
-            <input type="text" class="form-control form-control-solid" placeholder="Your Email" />
-        </div>
-        <div class="pt-4 col-lg-6">
-            <label for="exampleFormControlInput1" class="required form-label">Address</label>
-            <input type="text" class="form-control form-control-solid" placeholder="Your Address" />
-        </div>
-        <div class="pt-4 col-lg-12">
-            <label for="exampleFormControlInput1" class="required form-label">Location</label>
-            <input type="text" class="form-control form-control-solid" placeholder="Your Location" />
-        </div>
-        <div>
-            <h6 class="fw-bold pt-5 mb-0">Shedule Info</h6>
+            <h6 class="fw-bold pt-5 mb-0">Schedule Info</h6>
         </div>
         <div class="col-lg-12">
-            <div class="row align-items-center">
-                <div class="col-lg-4">
+            <div class="row align-items-center pb-3">
+                <div class="col-lg-3">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
-                            checked>
                         <label class="form-check-label" for="flexCheckChecked">
                             Monday
                         </label>
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <x-metronic.input id="qr_data_start_time_monday" type="time" name="qr_data_start_time_monday"
-                        :value="old('qr_data_start_time_monday')" placeholder="Audio File (mp3,web)" />
+                    <x-metronic.input id="qr_data_business_page_start_time_monday" type="time" name="qr_data_business_page_start_time_monday"
+                        :value="old('qr_data_business_page_start_time_monday')" placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
-                    <x-metronic.input id="qr_data_end_time_monday" type="time" name="qr_data_end_time_monday"
-                        :value="old('qr_data_end_time_monday')" placeholder="Audio File (mp3,web)" />
+                    <x-metronic.input id="qr_data_business_page_end_time_monday" type="time" name="qr_data_business_page_end_time_monday"
+                        :value="old('qr_data_business_page_end_time_monday')" placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
-            <div class="row align-items-center">
-                <div class="col-lg-4">
+            <div class="row align-items-center pb-3">
+                <div class="col-lg-3">
                     <div class="form-check">
-                        <input class="form-check-input " type="checkbox" value="" id="flexCheckChecked"
-                            checked>
                         <label class="form-check-label" for="flexCheckChecked">
                             Tuesday
                         </label>
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <x-metronic.input id="qr_data_start_time_tuesday" type="time"
-                        name="qr_data_start_time_tuesday" :value="old('qr_data_start_time_tuesday')" placeholder="Audio File (mp3,web)" />
+                    <x-metronic.input id="qr_data_business_page_start_time_tuesday" type="time"
+                        name="qr_data_business_page_start_time_tuesday" :value="old('qr_data_business_page_start_time_tuesday')" placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
-                    <x-metronic.input id="qr_data_end_time_tuesday" type="time" name="qr_data_end_time_tuesday"
-                        :value="old('qr_data_end_time_tuesday')" placeholder="Audio File (mp3,web)" />
+                    <x-metronic.input id="qr_data_business_page_end_time_tuesday" type="time" name="qr_data_business_page_end_time_tuesday"
+                        :value="old('qr_data_business_page_end_time_tuesday')" placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
-            <div class="row align-items-center">
-                <div class="col-lg-4">
+            <div class="row align-items-center pb-3">
+                <div class="col-lg-3">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
-                            checked>
                         <label class="form-check-label" for="flexCheckChecked">
                             Wednesday
                         </label>
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <x-metronic.input id="qr_data_start_time_wednesday" type="time"
-                        name="qr_data_start_time_wednesday" :value="old('qr_data_start_time_wednesday')" placeholder="Audio File (mp3,web)" />
+                    <x-metronic.input id="qr_data_business_page_start_time_wednesday" type="time"
+                        name="qr_data_business_page_start_time_wednesday" :value="old('qr_data_business_page_start_time_wednesday')" placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
-                    <x-metronic.input id="qr_data_end_time_wednesday" type="time"
-                        name="qr_data_end_time_wednesday" :value="old('qr_data_end_time_wednesday')" placeholder="Audio File (mp3,web)" />
+                    <x-metronic.input id="qr_data_business_page_end_time_wednesday" type="time"
+                        name="qr_data_business_page_end_time_wednesday" :value="old('qr_data_business_page_end_time_wednesday')" placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
-            <div class="row align-items-center">
-                <div class="col-lg-4">
+            <div class="row align-items-center pb-3">
+                <div class="col-lg-3">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
-                            checked>
                         <label class="form-check-label" for="flexCheckChecked">
                             Thursday
                         </label>
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <x-metronic.input id="qr_data_start_time_thursday" type="time"
-                        name="qr_data_start_time_thursday" :value="old('qr_data_start_time_thursday')" placeholder="Audio File (mp3,web)" />
+                    <x-metronic.input id="qr_data_business_page_start_time_thursday" type="time"
+                        name="qr_data_business_page_start_time_thursday" :value="old('qr_data_business_page_start_time_thursday')" placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
-                    <x-metronic.input id="qr_data_end_time_thursday" type="time" name="qr_data_end_time_thursday"
-                        :value="old('qr_data_end_time_thursday')" placeholder="Audio File (mp3,web)" />
+                    <x-metronic.input id="qr_data_business_page_end_time_thursday" type="time" name="qr_data_business_page_end_time_thursday"
+                        :value="old('qr_data_business_page_end_time_thursday')" placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
-            <div class="row align-items-center">
-                <div class="col-lg-4">
+            <div class="row align-items-center pb-3">
+                <div class="col-lg-3">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
-                            checked>
                         <label class="form-check-label" for="flexCheckChecked">
                             Friday
                         </label>
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <x-metronic.input id="qr_data_start_time_friday" type="time" name="qr_data_start_time_friday"
-                        :value="old('qr_data_start_time_friday')" placeholder="Audio File (mp3,web)" />
+                    <x-metronic.input id="qr_data_business_page_start_time_friday" type="time" name="qr_data_business_page_start_time_friday"
+                        :value="old('qr_data_business_page_start_time_friday')" placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
-                    <x-metronic.input id="qr_data_end_time_friday" type="time" name="qr_data_end_time_friday"
-                        :value="old('qr_data_end_time_friday')" placeholder="Audio File (mp3,web)" />
+                    <x-metronic.input id="qr_data_business_page_end_time_friday" type="time" name="qr_data_business_page_end_time_friday"
+                        :value="old('qr_data_business_page_end_time_friday')" placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
-            <div class="row align-items-center">
-                <div class="col-lg-4">
+            <div class="row align-items-center pb-3">
+                <div class="col-lg-3">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
-                            checked>
                         <label class="form-check-label" for="flexCheckChecked">
                             Saturday
                         </label>
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <x-metronic.input id="qr_data_start_time_saturday" type="time"
-                        name="qr_data_start_time_saturday" :value="old('qr_data_start_time_saturday')" placeholder="Audio File (mp3,web)" />
+                    <x-metronic.input id="qr_data_business_page_start_time_saturday" type="time"
+                        name="qr_data_business_page_start_time_saturday" :value="old('qr_data_business_page_start_time_saturday')" placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
-                    <x-metronic.input id="qr_data_end_time_saturday" type="time" name="qr_data_end_time_saturday"
-                        :value="old('qr_data_end_time_saturday')" placeholder="Audio File (mp3,web)" />
+                    <x-metronic.input id="qr_data_business_page_end_time_saturday" type="time" name="qr_data_business_page_end_time_saturday"
+                        :value="old('qr_data_business_page_end_time_saturday')" placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
-            <div class="row align-items-center">
-                <div class="col-lg-4">
+            <div class="row align-items-center pb-3">
+                <div class="col-lg-3">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
-                            checked>
                         <label class="form-check-label" for="flexCheckChecked">
                             Sunday
                         </label>
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <x-metronic.input id="qr_data_start_time_sunday" type="time" name="qr_data_start_time_sunday"
-                        :value="old('qr_data_start_time_sunday')" placeholder="Audio File (mp3,web)" />
+                    <x-metronic.input id="qr_data_business_page_start_time_sunday" type="time" name="qr_data_business_page_start_time_sunday"
+                        :value="old('qr_data_business_page_start_time_sunday')" placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
-                    <x-metronic.input id="qr_data_end_time_sunday" type="time" name="qr_data_end_time_sunday"
-                        :value="old('qr_data_end_time_sunday')" placeholder="Audio File (mp3,web)" />
+                    <x-metronic.input id="qr_data_business_page_end_time_sunday" type="time" name="qr_data_business_page_end_time_sunday"
+                        :value="old('qr_data_business_page_end_time_sunday')" placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
         </div>
-        <div>
+
+        <div class="pb-4 col-lg-6">
+            <x-metronic.label for="qr_data_business_page_website"
+                class="form-label">{{ __('Website URL') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_business_page_website" type="url" name="qr_data_business_page_website"
+                :value="old('qr_data_business_page_website')" placeholder="http://www.website.com" />
+        </div>
+
+        {{-- <div class="pb-4 col-lg-6">
+            <x-metronic.label for="qr_data_business_page_business_email"
+                class="form-label">{{ __('Business Email') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_business_page_business_email" type="text" name="qr_data_business_page_business_email"
+                :value="old('qr_data_business_page_business_email')" placeholder="example@example.com" />
+        </div> --}}
+        <div class="pb-4 col-lg-6">
+            <x-metronic.label for="qr_data_business_page_business_phone"
+                class="form-label">{{ __('Business Phone') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_business_page_business_phone" type="text"
+                name="qr_data_business_page_business_phone" :value="old('qr_data_business_page_business_phone')" placeholder="01754*****0" />
+        </div>
+        {{-- <div class="pb-4 col-lg-6">
+            <x-metronic.label for="qr_data_business_page_business_location"
+                class="form-label">{{ __('Business Location') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_business_page_business_location" type="text" name="qr_data_business_page_business_location"
+                :value="old('qr_data_business_page_business_location')" placeholder="Business Location" />
+        </div> --}}
+
+
+
+
+
+        {{-- <div>
             <h6 class="fw-bold pt-5 mb-0">Brand Info</h6>
         </div>
         <div class="pt-4 col-lg-12">
@@ -676,7 +681,7 @@
             <x-metronic.label for="qr_data_image" class="form-label">{{ __('Upload Image') }}</x-metronic.label>
             <x-metronic.input id="qr_data_image" type="file" name="qr_data_image" :value="old('qr_data_image')"
                 placeholder="Upload Image" />
-        </div>
+        </div> --}}
     </div>
 </div>
 
@@ -694,48 +699,62 @@
 
     </div>
 </div>
-{{-- Restaurant Form --}}
+{{-- Facebook Page Form --}}
 <div class="form-container" id="facebook_page-form">
-    <div class="row text-center justify-content-center">
+    <div class="row text-center justify-content-center mb-5">
         <h2 class="text-center mb-0">Facebook Form</h2>
         <p class="text-center mb-0">Upload audio file that your QR code should link to.</p>
     </div>
     <div class="pb-4 row">
-        <div class="col-lg-12 pb-4">
-            <label for="exampleFormControlInput1" class="required form-label">Facebook page username</label>
-            <input type="url" class="form-control form-control-solid" name="page_url"
-                placeholder="https://www.facebook.com/" />
+        <div class="pb-4 col-lg-10">
+            <x-metronic.label for="qr_data_facebook_page_logo"
+                class="form-label">{{ __('Logo') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_facebook_page_logo" type="file" name="qr_data_facebook_page_logo"
+                :value="old('qr_data_facebook_page_logo')" placeholder="facebook_page Logo" />
         </div>
-        <div class="col-lg-12 pb-4">
-            <label for="exampleFormControlInput1" class="required form-label">Header</label>
-            <input type="url" class="form-control form-control-solid" name="page_header"
-                placeholder="Like Us On !" />
-        </div>
-        <div class="pb-4 col-lg-5">
-            <label for="exampleFormControlInput1" class="required form-label">Logo <small>(1920x1080 pixels. 5MB max
-                    file size.)</small></label>
-            <input type="file" class="form-control form-control-solid" name="logo" />
-        </div>
-        <div class="col-lg-1 d-lg-block d-sm-none">
+        {{-- <div class="col-lg-2 d-lg-block d-sm-none">
             <div class="fv-row my-3 pt-5">
                 <div>
                     <img width="50px" height="50px" class="rounded-circle border banner_image"
-                        id="profile_image_preview" src="" alt="">
+                        id="profile_image_preview" src="https://i.ibb.co/BNBTVN4/logo.png" alt="">
                 </div>
             </div>
+        </div> --}}
+        <div class="pb-4 col-lg-4">
+            <x-metronic.label for="qr_data_facebook_page_header"
+                class="form-label">{{ __('Header') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_facebook_page_header" type="text" name="qr_data_facebook_page_header"
+                :value="old('qr_data_facebook_page_header')" placeholder="Folow Us On !" />
         </div>
-        <div class="pb-4 col-lg-5">
-            <label for="exampleFormControlInput1" class="required form-label">Image <small>(192x192 pixels. 5MB max
-                    file size.)</small></label>
-            <input type="file" class="form-control form-control-solid" name="social_banner" />
+        <div class="pb-4 col-lg-4">
+            <x-metronic.label for="qr_data_facebook_page_title"
+                class="form-label">{{ __('Title') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_facebook_page_title" type="text" name="qr_data_facebook_page_title"
+                :value="old('qr_data_facebook_page_title')" placeholder="My facebook_page Platform" />
         </div>
-        <div class="col-lg-1 d-lg-block d-sm-none">
+
+        <div class="pb-4 col-lg-4">
+            <x-metronic.label for="qr_data_facebook_page_facebook"
+                class="form-label">{{ __('Facebook Page URL') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_facebook_page_facebook" type="url"
+                name="qr_data_facebook_page_facebook" :value="old('qr_data_facebook_page_facebook')" placeholder="http://www.website.com" />
+        </div>
+
+        <div class="pb-4 col-lg-10">
+            <x-metronic.label for="qr_data_facebook_page_background_image"
+                class="form-label">{{ __('Banner Image') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_facebook_page_background_image" type="file"
+                name="qr_data_facebook_page_background_image" :value="old('qr_data_facebook_page_background_image')"
+                placeholder="facebook_page background image" />
+        </div>
+
+        {{-- <div class="col-lg-2 d-lg-block d-sm-none">
             <div class="fv-row my-3 pt-5">
                 <div>
                     <img width="50px" height="50px" class="rounded-circle border banner_image"
-                        id="profile_image_preview" src="" alt="">
+                        id="profile_image_preview" src="https://i.ibb.co/BNBTVN4/logo.png" alt="">
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>
