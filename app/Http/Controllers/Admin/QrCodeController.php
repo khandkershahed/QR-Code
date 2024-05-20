@@ -666,7 +666,12 @@ class QrCodeController extends Controller
 
     public function edit(string $id)
     {
-        return view('user.pages.qr-code.edit');
+        $data = [
+            'qr' => Qr::with('qrData')->where('code', $id)->first(),
+        ];
+        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
+        $view = $isUserRoute ? 'user.pages.qr-code.edit' : 'admin.pages.qr-code.edit';
+        return view($view, $data);
     }
 
 
@@ -678,6 +683,7 @@ class QrCodeController extends Controller
             $qr_data->delete();
         }
     }
+
 }
 
 
