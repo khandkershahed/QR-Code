@@ -62,10 +62,10 @@
                                             <div class="badge badge-light-success">Active</div>
                                         </td>
                                         <td class="pe-0 text-end">
-                                            {{-- <a href="{{ route('user.qr-code.edit', $qr->id) }}"
+                                            <a href="{{ route('user.qr-code.edit', $qr->code) }}"
                                                 class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                 <i class="fas fa-pen"></i>
-                                            </a> --}}
+                                            </a>
                                             <a href="{{ route('user.qr-code.destroy', $qr->id) }}"
                                                 class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1 delete">
                                                 <i class="fas fa-trash-alt text-danger"></i>

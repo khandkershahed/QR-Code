@@ -140,6 +140,14 @@ class QrCodeController extends Controller
                 return redirect()->to($redirectUrl);
             } elseif (!empty($qr->qr_type) && $qr->qr_type == 'coupon_code') {
                 return view('user.pages.qr-code.show.qrCoupon', compact('qr'));
+            } elseif (!empty($qr->qr_type) && $qr->qr_type == 'social') {
+                return view('user.pages.qr-code.show.qrSocial', compact('qr'));
+            } elseif (!empty($qr->qr_type) && $qr->qr_type == 'business_page') {
+                return view('user.pages.qr-code.show.qrBusinessPage', compact('qr'));
+            } elseif (!empty($qr->qr_type) && $qr->qr_type == 'restaurant') {
+                return view('user.pages.qr-code.show.qrRestaurant', compact('qr'));
+            } elseif (!empty($qr->qr_type) && $qr->qr_type == 'facebook_page') {
+                return view('user.pages.qr-code.show.qrFacebookPage', compact('qr'));
             } else {
                 return view('user.pages.qr-code.qrFile', compact('qr'));
             }
@@ -258,15 +266,6 @@ class QrCodeController extends Controller
             }
         }
 
-        // $logo = $request->file('qr_logo');
-        // if ($logo->isValid()) {
-        //     $fileName = $code . '.' . $logo->getClientOriginalExtension();
-        //     $logoPath = $logo->storeAs('public/qr_codes/logos', $fileName);
-        //     $logoFullPath = storage_path('app/' . $logoPath);
-        //     // Save the logo path to the corresponding QR record
-        //     $qr->update(['qr_logo' => $logoFullPath]);
-        // }
-
         // Handle QR PDF
         $code = $qr->code;
         $uploadedPdfFile = '';
@@ -325,41 +324,140 @@ class QrCodeController extends Controller
         } else {
             $uploadedcouponLogoFile = ['status' => 0];
         }
+        $uploadedsocialLogoFile = '';
+        if ($request->hasFile('qr_data_social_logo')) {
+            $datasocial = $request->file('qr_data_social_logo');
+            if ($datasocial->isValid()) {
+                $socialfilename = $code . '_pdf';
+                $socialfilepath = 'public/qr_codes/socials/';
+                $uploadedsocialLogoFile = customUpload($datasocial, $socialfilepath, $socialfilename);
+            }
+        } else {
+            $uploadedsocialLogoFile = ['status' => 0];
+        }
+        $uploadedsocialbgFile = '';
+        if ($request->hasFile('qr_data_social_bg')) {
+            $datasocial = $request->file('qr_data_social_bg');
+            if ($datasocial->isValid()) {
+                $socialfilename = $code . '_pdf';
+                $socialfilepath = 'public/qr_codes/socials/';
+                $uploadedsocialbgFile = customUpload($datasocial, $socialfilepath, $socialfilename);
+            }
+        } else {
+            $uploadedsocialbgFile = ['status' => 0];
+        }
+
+        $uploadedfacebook_pageLogoFile = '';
+        if ($request->hasFile('qr_data_facebook_page_logo')) {
+            $datafacebook_page = $request->file('qr_data_facebook_page_logo');
+            if ($datafacebook_page->isValid()) {
+                $facebook_pagefilename = $code . '_pdf';
+                $facebook_pagefilepath = 'public/qr_codes/facebook_pages/';
+                $uploadedfacebook_pageLogoFile = customUpload($datafacebook_page, $facebook_pagefilepath, $facebook_pagefilename);
+            }
+        } else {
+            $uploadedfacebook_pageLogoFile = ['status' => 0];
+        }
+        $uploadedfacebook_pagebgFile = '';
+        if ($request->hasFile('qr_data_facebook_page_bg')) {
+            $datafacebook_page = $request->file('qr_data_facebook_page_bg');
+            if ($datafacebook_page->isValid()) {
+                $facebook_pagefilename = $code . '_pdf';
+                $facebook_pagefilepath = 'public/qr_codes/facebook_pages/';
+                $uploadedfacebook_pagebgFile = customUpload($datafacebook_page, $facebook_pagefilepath, $facebook_pagefilename);
+            }
+        } else {
+            $uploadedfacebook_pagebgFile = ['status' => 0];
+        }
+
+        $uploadedbusiness_pageLogoFile = '';
+        if ($request->hasFile('qr_data_business_page_logo')) {
+            $databusiness_page = $request->file('qr_data_business_page_logo');
+            if ($databusiness_page->isValid()) {
+                $business_pagefilename = $code . '_pdf';
+                $business_pagefilepath = 'public/qr_codes/business_pages/';
+                $uploadedbusiness_pageLogoFile = customUpload($databusiness_page, $business_pagefilepath, $business_pagefilename);
+            }
+        } else {
+            $uploadedbusiness_pageLogoFile = ['status' => 0];
+        }
+
         $qrDataLink = route('showQr', $qr->code);
         // Create QR Data record
         $qrData = QrData::create([
-            'code_id'                           => $qr->id,
-            'qr_data_website_url'               => $request->qr_data_website_url,
-            'qr_data_pdf'                       => $uploadedPdfFile['status'] == 1 ? $uploadedPdfFile['file_name'] : null,
-            'qr_data_image'                     => $uploadedImgFile['status'] == 1 ? $uploadedImgFile['file_name'] : null,
-            'qr_data_image_link'                => $request->qr_data_image_link,
-            'qr_data_sms_number'                => $request->qr_data_sms_number,
-            'qr_data_sms_message'               => $request->qr_data_sms_message,
-            'qr_data_email_id'                  => $request->qr_data_email_id,
-            'qr_data_email_subject'             => $request->qr_data_email_subject,
-            'qr_data_email_body'                => $request->qr_data_email_body,
-            'qr_app_android'                    => $request->qr_app_android,
-            'qr_data_app_iphone'                => $request->qr_data_app_iphone,
-            'qr_data_app_ipad'                  => $request->qr_data_app_ipad,
-            'qr_data_call_number'               => $request->qr_data_call_number,
-            'qr_data_location_latitude'         => $request->qr_data_location_latitude,
-            'qr_data_location_longitude'        => $request->qr_data_location_longitude,
-            'qr_data_coupon_code'               => $request->qr_data_coupon_code,
-            'qr_data_coupon_expire_date'        => $request->qr_data_coupon_expire_date,
-            'qr_data_coupon_header'             => $request->qr_data_coupon_header,
-            'qr_data_coupon_message'            => $request->qr_data_coupon_message,
-            'qr_data_coupon_description_header' => $request->qr_data_coupon_description_header,
-            'qr_data_coupon_description_body'   => $request->qr_data_coupon_description_body,
-            'qr_data_coupon_website'            => $request->qr_data_coupon_website,
-            'qr_data_coupon_company'            => $request->qr_data_coupon_company,
-            'qr_data_coupon_policy'             => $request->qr_data_coupon_policy,
-            'qr_data_coupon_logo'               => $uploadedcouponLogoFile['status'] == 1 ? $uploadedcouponLogoFile['file_name'] : null,
-            'qr_data_coupon_background_color'   => $request->qr_data_coupon_background_color,
-            'qr_data_coupon_title_color'        => $request->qr_data_coupon_title_color,
-            'qr_data_coupon_button_bg_color'    => $request->qr_data_coupon_button_bg_color,
-            'qr_data_coupon_button_title_color' => $request->qr_data_coupon_button_title_color,
-            'qr_data_audio_file'                => $uploadedAdoFile['status'] == 1 ? $uploadedAdoFile['file_name'] : null,
-            'qr_data_audio_link'                => $request->qr_data_audio_link,
+            'code_id'                                    => $qr->id,
+            'qr_data_website_url'                        => $request->qr_data_website_url,
+            'qr_data_pdf'                                => $uploadedPdfFile['status'] == 1 ? $uploadedPdfFile['file_name'] : null,
+            'qr_data_image'                              => $uploadedImgFile['status'] == 1 ? $uploadedImgFile['file_name'] : null,
+            'qr_data_image_link'                         => $request->qr_data_image_link,
+            'qr_data_sms_number'                         => $request->qr_data_sms_number,
+            'qr_data_sms_message'                        => $request->qr_data_sms_message,
+            'qr_data_email_id'                           => $request->qr_data_email_id,
+            'qr_data_email_subject'                      => $request->qr_data_email_subject,
+            'qr_data_email_body'                         => $request->qr_data_email_body,
+            'qr_app_android'                             => $request->qr_app_android,
+            'qr_data_app_iphone'                         => $request->qr_data_app_iphone,
+            'qr_data_app_ipad'                           => $request->qr_data_app_ipad,
+            'qr_data_call_number'                        => $request->qr_data_call_number,
+            'qr_data_location_latitude'                  => $request->qr_data_location_latitude,
+            'qr_data_location_longitude'                 => $request->qr_data_location_longitude,
+            'qr_data_coupon_header'                      => $request->qr_data_coupon_header,
+            'qr_data_coupon_message'                     => $request->qr_data_coupon_message,
+            'qr_data_coupon_description_body'            => $request->qr_data_coupon_description_body,
+            'qr_data_coupon_company'                     => $request->qr_data_coupon_company,
+            'qr_data_coupon_code'                        => $request->qr_data_coupon_code,
+            'qr_data_coupon_logo'                        => $uploadedcouponLogoFile['status']== 1 ? $uploadedcouponLogoFile['file_name'] : null,
+            'qr_data_coupon_expire_date'                 => $request->qr_data_coupon_expire_date,
+            'qr_data_coupon_description_header'          => $request->qr_data_coupon_description_header,
+            'qr_data_coupon_website'                     => $request->qr_data_coupon_website,
+            'qr_data_coupon_background_color'            => $request->qr_data_coupon_background_color,
+            'qr_data_coupon_title_color'                 => $request->qr_data_coupon_title_color,
+            'qr_data_coupon_button_bg_color'             => $request->qr_data_coupon_button_bg_color,
+            'qr_data_coupon_button_title_color'          => $request->qr_data_coupon_button_title_color,
+            'qr_data_coupon_policy'                      => $request->qr_data_coupon_policy,
+            'qr_data_audio_file'                         => $uploadedAdoFile['status'] == 1 ? $uploadedAdoFile['file_name'] : null,
+            'qr_data_audio_link'                         => $request->qr_data_audio_link,
+            'qr_data_social_logo'                        => $uploadedsocialLogoFile['status'] == 1 ? $uploadedsocialLogoFile['file_name'] : null,
+            'qr_data_social_header'                      => $request->qr_data_social_header,
+            'qr_data_social_title'                       => $request->qr_data_social_title,
+            'qr_data_social_message'                     => $request->qr_data_social_message,
+            'qr_data_social_background_image'            => $uploadedsocialbgFile['status'] == 1 ? $uploadedsocialbgFile['file_name'] : null,
+            'qr_data_social_facebook'                    => $request->qr_data_social_facebook,
+            'qr_data_social_instagram'                   => $request->qr_data_social_instagram,
+            'qr_data_social_linkedin'                    => $request->qr_data_social_linkedin,
+            'qr_data_social_twitter'                     => $request->qr_data_social_twitter,
+            'qr_data_social_youtube'                     => $request->qr_data_social_youtube,
+            'qr_data_social_pinterest'                   => $request->qr_data_social_pinterest,
+            'qr_data_social_website'                     => $request->qr_data_social_website,
+            'qr_data_social_whatsapp'                    => $request->qr_data_social_whatsapp,
+            'qr_data_social_snapchat'                    => $request->qr_data_social_snapchat,
+            'qr_data_social_tiktok'                      => $request->qr_data_social_tiktok,
+            'qr_data_facebook_page_logo'                 => $uploadedfacebook_pageLogoFile['status'] == 1 ? $uploadedfacebook_pageLogoFile['file_name'] : null,
+            'qr_data_facebook_page_header'               => $request->qr_data_facebook_page_header,
+            'qr_data_facebook_page_title'                => $request->qr_data_facebook_page_title,
+            'qr_data_facebook_page_background_image'     => $uploadedfacebook_pagebgFile['status'] == 1 ? $uploadedfacebook_pagebgFile['file_name'] : null,
+            'qr_data_facebook_page_facebook'             => $request->qr_data_facebook_page_facebook,
+            'qr_data_business_page_logo'                 => $uploadedbusiness_pageLogoFile['status'] == 1 ? $uploadedbusiness_pageLogoFile['file_name'] : null,
+            'qr_data_business_page_business_name'        => $request->qr_data_business_page_business_name,
+            'qr_data_business_page_header'               => $request->qr_data_business_page_header,
+            'qr_data_business_page_start_time_monday'    => $request->qr_data_business_page_start_time_monday,
+            'qr_data_business_page_end_time_monday'      => $request->qr_data_business_page_end_time_monday,
+            'qr_data_business_page_start_time_tuesday'   => $request->qr_data_business_page_start_time_tuesday,
+            'qr_data_business_page_end_time_tuesday'     => $request->qr_data_business_page_end_time_tuesday,
+            'qr_data_business_page_start_time_wednesday' => $request->qr_data_business_page_start_time_wednesday,
+            'qr_data_business_page_end_time_wednesday'   => $request->qr_data_business_page_end_time_wednesday,
+            'qr_data_business_page_start_time_thursday'  => $request->qr_data_business_page_start_time_thursday,
+            'qr_data_business_page_end_time_thursday'    => $request->qr_data_business_page_end_time_thursday,
+            'qr_data_business_page_start_time_friday'    => $request->qr_data_business_page_start_time_friday,
+            'qr_data_business_page_end_time_friday'      => $request->qr_data_business_page_end_time_friday,
+            'qr_data_business_page_start_time_saturday'  => $request->qr_data_business_page_start_time_saturday,
+            'qr_data_business_page_end_time_saturday'    => $request->qr_data_business_page_end_time_saturday,
+            'qr_data_business_page_start_time_sunday'    => $request->qr_data_business_page_start_time_sunday,
+            'qr_data_business_page_end_time_sunday'      => $request->qr_data_business_page_end_time_sunday,
+            'qr_data_business_page_website'              => $request->qr_data_business_page_website,
+            'qr_data_business_page_business_email'       => $request->qr_data_business_page_business_email,
+            'qr_data_business_page_business_phone'       => $request->qr_data_business_page_business_phone,
+            'qr_data_business_page_business_location'    => $request->qr_data_business_page_business_location,
         ]);
 
 
@@ -383,14 +481,6 @@ class QrCodeController extends Controller
 
         // Loop through each format
         foreach ($formats as $format => $field) {
-            // $qr = QrCode::format($qr_img_type);
-            // $qr->size($qr_size);
-            // $qr->errorCorrection($qr_correction);
-            // $qr->encoding($qr_encoding);
-            // $qr->eye($qr_eye);
-            // $qr->margin($qr_margin);
-            // $qr->style($qr_style);
-            // $qr->color($qr_color->red(), $qr_color->green(), $qr_color->blue());
             if ($format === 'jpg' || $format === 'pdf') {
                 $qrCode = QrCode::format('png')->size(300);
             } else {
@@ -666,7 +756,12 @@ class QrCodeController extends Controller
 
     public function edit(string $id)
     {
-        return view('user.pages.qr-code.edit');
+        $data = [
+            'qr' => Qr::with('qrData')->where('code', $id)->first(),
+        ];
+        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
+        $view = $isUserRoute ? 'user.pages.qr-code.edit' : 'admin.pages.qr-code.edit';
+        return view($view, $data);
     }
 
 
@@ -678,6 +773,7 @@ class QrCodeController extends Controller
             $qr_data->delete();
         }
     }
+
 }
 
 

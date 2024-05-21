@@ -36,34 +36,20 @@
             class="img-fluid generatedQRCode">
     </div>
     <div class="card qr-card coupon_code" style="display: none;">
-        {{-- <img src="{{ asset('frontend/assets/images/qrpreview/coupon.png') }}" alt="coupon_code"
-            class="img-fluid generatedQRCode"> --}}
-        <div class="preview">
-            @include('user.pages.qr-code.preview.qr_coupon_preview')
-        </div>
+        <img src="{{ asset('frontend/assets/images/qrpreview/coupon.png') }}" alt="coupon_code"
+            class="img-fluid generatedQRCode">
     </div>
     <div class="card qr-card social" style="display: none;">
-        {{-- <img src="{{ asset('frontend/assets/images/qrpreview/Social.png') }}" alt="social"
-            class="img-fluid generatedQRCode"> --}}
-        <div class="preview">
-            @include('user.pages.qr-code.preview.qr_social_preview')
-        </div>
+        <img src="{{ asset('frontend/assets/images/qrpreview/Social.png') }}" alt="social"
+            class="img-fluid generatedQRCode">
     </div>
     <div class="card qr-card audio" style="display: none;">
         <img src="{{ asset('frontend/assets/images/qrpreview/audio.png') }}" alt="audio"
             class="img-fluid generatedQRCode">
     </div>
     <div class="card qr-card business_page" style="display: none;">
-        {{-- <img src="{{ asset('frontend/assets/images/qrpreview/BusinessPage.png') }}" alt="business_page"
-            class="img-fluid generatedQRCode"> --}}
-            <div class="preview">
-                @include('user.pages.qr-code.preview.qr_business_page_preview')
-            </div>
-    </div>
-    <div class="card qr-card facebook_page" style="display: none;">
-        <div class="preview">
-            @include('user.pages.qr-code.preview.qr_facebook_page_preview')
-        </div>
+        <img src="{{ asset('frontend/assets/images/qrpreview/BusinessPage.png') }}" alt="business_page"
+            class="img-fluid generatedQRCode">
     </div>
 </div>
 
