@@ -197,6 +197,100 @@
 
     @push('scripts')
         <script>
+            // url: '{{ route('user.restaurant-category.store') }}',
+            function submitCategoryForm(event) {
+                // Prevent the default form submission
+                event.preventDefault();
+
+                // Get the form element using the event target's form property
+                let form = event.target.closest('form');
+                var categoryContainer = $('.categoryContainer');
+                // Debugging
+                console.log(form);
+
+                // Check if form is an HTMLFormElement
+                if (!(form instanceof HTMLFormElement)) {
+                    console.error('The form is not an HTMLFormElement.');
+                    return;
+                }
+
+                // Create a FormData object
+                let formData = new FormData(form);
+
+                // Send the form data using AJAX
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ route('user.restaurant-category.store') }}',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
+                        alert(response.success);
+                        // Optionally, you can close the modal and refresh part of the page here
+                        $('#createCategory').modal('hide');
+                        categoryContainer.html(response.categoryContainer);
+                        // Reload part of the page or add the new category to the UI
+                    },
+                    error: function(response) {
+                        // Handle error here
+                        let errors = response.responseJSON.errors;
+                        let errorMessage = '';
+                        for (const [key, value] of Object.entries(errors)) {
+                            errorMessage += value + '\n';
+                        }
+                        alert(errorMessage);
+                    }
+                });
+            }
+        </script>
+        <script>
+            // url: '{{ route('user.restaurant-category.store') }}',
+            function submitCategoryEditForm(event) {
+                // Prevent the default form submission
+                event.preventDefault();
+
+                // Get the form element using the event target's form property
+                let form = event.target.closest('form');
+                var categoryContainer = $('.categoryContainer');
+                // Debugging
+                console.log(form);
+
+                // Check if form is an HTMLFormElement
+                if (!(form instanceof HTMLFormElement)) {
+                    console.error('The form is not an HTMLFormElement.');
+                    return;
+                }
+                var id = $('input[name="category_id"]').val();
+                // Create a FormData object
+                let formData = new FormData(form);
+
+                // Send the form data using AJAX
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ route('user.editCategory') }}',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
+                        alert(response.success);
+                        // Optionally, you can close the modal and refresh part of the page here
+                        $('.editCategory').modal('hide');
+                        categoryContainer.html(response.categoryContainer);
+                        // Reload part of the page or add the new category to the UI
+                    },
+                    error: function(response) {
+                        // Handle error here
+                        let errors = response.responseJSON.errors;
+                        let errorMessage = '';
+                        for (const [key, value] of Object.entries(errors)) {
+                            errorMessage += value + '\n';
+                        }
+                        alert(errorMessage);
+                    }
+                });
+            }
+        </script>
+        <script>
             $(document).ready(function() {
                 $('input[name="qr_type"]').change(function() {
                     $(".qr-card").hide();

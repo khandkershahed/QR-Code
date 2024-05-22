@@ -8,16 +8,17 @@ use Carbon\Carbon;
 use App\Models\Admin\Qr;
 use Illuminate\Support\Str;
 use App\Models\Admin\QrData;
+use App\Models\Admin\QrScan;
 use Illuminate\Http\Request;
+use App\Models\RestaurantCategory;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use SimpleSoftwareIO\QrCode\Generator;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Admin\QrCodeRequest;
-use App\Models\Admin\QrScan;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Stevebauman\Location\Facades\Location;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class QrCodeController extends Controller
 {
@@ -37,9 +38,13 @@ class QrCodeController extends Controller
     public function create()
     {
         $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
+        $categories = $isUserRoute ?
+            RestaurantCategory::where('user_id', Auth::user()->id)->latest('id')->get() :
+            RestaurantCategory::latest('id')->get();
         $view = $isUserRoute ? 'user.pages.qr-code.create' : 'admin.pages.qr-code.create';
-        return view($view);
+        return view($view, ['categories' => $categories]);
     }
+    
     public function qrTemplate()
     {
         return view('user.pages.template.qr_template');

@@ -90,7 +90,7 @@
             display: none;
         }
     }
-</style>
+</style> 
 
 <div class="qr_card_preview">
     <div class="row">
