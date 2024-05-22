@@ -44,7 +44,7 @@ class QrCodeController extends Controller
         $view = $isUserRoute ? 'user.pages.qr-code.create' : 'admin.pages.qr-code.create';
         return view($view, ['categories' => $categories]);
     }
-    
+
     public function qrTemplate()
     {
         return view('user.pages.template.qr_template');
@@ -505,7 +505,7 @@ class QrCodeController extends Controller
             }
             if (!empty($qr_pattern)) {
                 if ($qr_pattern == 'square_0.5') {
-                    $qrCode->style('square');
+                    $qrCode->style('square', 0.3);
                 } elseif ($qr_pattern == 'square_0.9') {
                     $qrCode->style('square', 0.7);
                 } else {
@@ -685,7 +685,7 @@ class QrCodeController extends Controller
         }
         if (!empty($qr_pattern)) {
             if ($qr_pattern == 'square_0.5') {
-                $qrCode->style('square', 0.5);
+                $qrCode->style('square', 0.3);
             } elseif ($qr_pattern == 'square_0.9') {
                 $qrCode->style('square', 0.8);
             } else {

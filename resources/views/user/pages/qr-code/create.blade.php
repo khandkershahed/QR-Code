@@ -491,9 +491,16 @@
 
         <script>
             $(document).ready(function() {
-                $('#colorPicker').on('input', function() {
+                $('.colorPicker').on('input', function() {
                     var selectedColor = $(this).val();
-                    $('#colorCodeInput').val(selectedColor);
+                    $(this).closest('.colorCodeContainer').find('.colorCodeInput').val(selectedColor);
+                });
+            });
+
+            $(document).ready(function() {
+                $('.colorPicker').on('input', function() {
+                    var selectedColor = $(this).val();
+                    $(this).closest('.colorCodeInput').val(selectedColor);
                 });
             });
         </script>

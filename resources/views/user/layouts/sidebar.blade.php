@@ -75,15 +75,6 @@
                     <div
                         class="menu-sub menu-sub-accordion {{ Route::is('user.qr-code.index', 'user.qr-code.create') ? 'menu-active-bg' : '' }}">
                         <div class="menu-item">
-                            <a class="menu-link {{ Route::is('user.qr-code.index') ? 'active' : '' }}"
-                                href="{{ route('user.qr-code.index') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">QR Code List</span>
-                            </a>
-                        </div>
-                        <div class="menu-item">
                             <a class="menu-link {{ Route::is('user.qr-code.create') ? 'active' : '' }}"
                                 href="{{ route('user.qr-code.create') }}">
                                 <span class="menu-bullet">
@@ -92,6 +83,16 @@
                                 <span class="menu-title">QR Code Create</span>
                             </a>
                         </div>
+                        <div class="menu-item">
+                            <a class="menu-link {{ Route::is('user.qr-code.index') ? 'active' : '' }}"
+                                href="{{ route('user.qr-code.index') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">QR Code List</span>
+                            </a>
+                        </div>
+                        
                     </div>
                 </div>
                 <div data-kt-menu-trigger="click"
