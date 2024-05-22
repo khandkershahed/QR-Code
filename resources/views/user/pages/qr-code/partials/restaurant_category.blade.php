@@ -178,8 +178,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    ​<input type="button" class="btn btn-primary" name="submit" value="Save"
-                        onclick="submitCategoryForm(event)" />
+                    {{-- ​<input type="button" class="btn btn-primary" name="submit" value="Save"
+                        onclick="submitCategoryForm(event)" /> --}}
+                        <input type="button" class="btn btn-primary" name="submit" value="Save" />
                     {{-- <button type="button" class="btn btn-primary" onclick="submitCategoryForm(event)">Save</button> --}}
                 </div>
             </div>
