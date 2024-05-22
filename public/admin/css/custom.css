@@ -49,7 +49,8 @@
 .step-form-padding {
     padding: 10px;
 }
-
+label.btn.toggle-checkbox > i.fa:before { content:"\f096"; }
+    label.btn.toggle-checkbox.active > i.fa:before { content:"\f046"; }
 .check_type {
     width: 15%;
     padding: 10px 10px;

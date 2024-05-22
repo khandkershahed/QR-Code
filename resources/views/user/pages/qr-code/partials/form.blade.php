@@ -525,12 +525,14 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <x-metronic.input id="qr_data_business_page_start_time_monday" type="time" name="qr_data_business_page_start_time_monday"
-                        :value="old('qr_data_business_page_start_time_monday')" placeholder="Audio File (mp3,web)" />
+                    <x-metronic.input id="qr_data_business_page_start_time_monday" type="time"
+                        name="qr_data_business_page_start_time_monday" :value="old('qr_data_business_page_start_time_monday')"
+                        placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
-                    <x-metronic.input id="qr_data_business_page_end_time_monday" type="time" name="qr_data_business_page_end_time_monday"
-                        :value="old('qr_data_business_page_end_time_monday')" placeholder="Audio File (mp3,web)" />
+                    <x-metronic.input id="qr_data_business_page_end_time_monday" type="time"
+                        name="qr_data_business_page_end_time_monday" :value="old('qr_data_business_page_end_time_monday')"
+                        placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
             <div class="row align-items-center pb-3">
@@ -543,11 +545,13 @@
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_start_time_tuesday" type="time"
-                        name="qr_data_business_page_start_time_tuesday" :value="old('qr_data_business_page_start_time_tuesday')" placeholder="Audio File (mp3,web)" />
+                        name="qr_data_business_page_start_time_tuesday" :value="old('qr_data_business_page_start_time_tuesday')"
+                        placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
-                    <x-metronic.input id="qr_data_business_page_end_time_tuesday" type="time" name="qr_data_business_page_end_time_tuesday"
-                        :value="old('qr_data_business_page_end_time_tuesday')" placeholder="Audio File (mp3,web)" />
+                    <x-metronic.input id="qr_data_business_page_end_time_tuesday" type="time"
+                        name="qr_data_business_page_end_time_tuesday" :value="old('qr_data_business_page_end_time_tuesday')"
+                        placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
             <div class="row align-items-center pb-3">
@@ -560,11 +564,13 @@
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_start_time_wednesday" type="time"
-                        name="qr_data_business_page_start_time_wednesday" :value="old('qr_data_business_page_start_time_wednesday')" placeholder="Audio File (mp3,web)" />
+                        name="qr_data_business_page_start_time_wednesday" :value="old('qr_data_business_page_start_time_wednesday')"
+                        placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_end_time_wednesday" type="time"
-                        name="qr_data_business_page_end_time_wednesday" :value="old('qr_data_business_page_end_time_wednesday')" placeholder="Audio File (mp3,web)" />
+                        name="qr_data_business_page_end_time_wednesday" :value="old('qr_data_business_page_end_time_wednesday')"
+                        placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
             <div class="row align-items-center pb-3">
@@ -577,11 +583,13 @@
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_start_time_thursday" type="time"
-                        name="qr_data_business_page_start_time_thursday" :value="old('qr_data_business_page_start_time_thursday')" placeholder="Audio File (mp3,web)" />
+                        name="qr_data_business_page_start_time_thursday" :value="old('qr_data_business_page_start_time_thursday')"
+                        placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
-                    <x-metronic.input id="qr_data_business_page_end_time_thursday" type="time" name="qr_data_business_page_end_time_thursday"
-                        :value="old('qr_data_business_page_end_time_thursday')" placeholder="Audio File (mp3,web)" />
+                    <x-metronic.input id="qr_data_business_page_end_time_thursday" type="time"
+                        name="qr_data_business_page_end_time_thursday" :value="old('qr_data_business_page_end_time_thursday')"
+                        placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
             <div class="row align-items-center pb-3">
@@ -593,12 +601,14 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <x-metronic.input id="qr_data_business_page_start_time_friday" type="time" name="qr_data_business_page_start_time_friday"
-                        :value="old('qr_data_business_page_start_time_friday')" placeholder="Audio File (mp3,web)" />
+                    <x-metronic.input id="qr_data_business_page_start_time_friday" type="time"
+                        name="qr_data_business_page_start_time_friday" :value="old('qr_data_business_page_start_time_friday')"
+                        placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
-                    <x-metronic.input id="qr_data_business_page_end_time_friday" type="time" name="qr_data_business_page_end_time_friday"
-                        :value="old('qr_data_business_page_end_time_friday')" placeholder="Audio File (mp3,web)" />
+                    <x-metronic.input id="qr_data_business_page_end_time_friday" type="time"
+                        name="qr_data_business_page_end_time_friday" :value="old('qr_data_business_page_end_time_friday')"
+                        placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
             <div class="row align-items-center pb-3">
@@ -611,11 +621,13 @@
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_start_time_saturday" type="time"
-                        name="qr_data_business_page_start_time_saturday" :value="old('qr_data_business_page_start_time_saturday')" placeholder="Audio File (mp3,web)" />
+                        name="qr_data_business_page_start_time_saturday" :value="old('qr_data_business_page_start_time_saturday')"
+                        placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
-                    <x-metronic.input id="qr_data_business_page_end_time_saturday" type="time" name="qr_data_business_page_end_time_saturday"
-                        :value="old('qr_data_business_page_end_time_saturday')" placeholder="Audio File (mp3,web)" />
+                    <x-metronic.input id="qr_data_business_page_end_time_saturday" type="time"
+                        name="qr_data_business_page_end_time_saturday" :value="old('qr_data_business_page_end_time_saturday')"
+                        placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
             <div class="row align-items-center pb-3">
@@ -627,12 +639,14 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <x-metronic.input id="qr_data_business_page_start_time_sunday" type="time" name="qr_data_business_page_start_time_sunday"
-                        :value="old('qr_data_business_page_start_time_sunday')" placeholder="Audio File (mp3,web)" />
+                    <x-metronic.input id="qr_data_business_page_start_time_sunday" type="time"
+                        name="qr_data_business_page_start_time_sunday" :value="old('qr_data_business_page_start_time_sunday')"
+                        placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
-                    <x-metronic.input id="qr_data_business_page_end_time_sunday" type="time" name="qr_data_business_page_end_time_sunday"
-                        :value="old('qr_data_business_page_end_time_sunday')" placeholder="Audio File (mp3,web)" />
+                    <x-metronic.input id="qr_data_business_page_end_time_sunday" type="time"
+                        name="qr_data_business_page_end_time_sunday" :value="old('qr_data_business_page_end_time_sunday')"
+                        placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
         </div>
@@ -689,14 +703,301 @@
 <div class="form-container" id="restaurant-form">
     <div class="row text-center justify-content-center">
         <h2 class="text-center mb-0">Restaurant Form</h2>
-        <p class="text-center mb-0">Upload MP3/Audio File</p>
-    </div>
-    <div class="pt-5 ps-5">
-        <h2>Restaurant Form</h2>
-        <p>Upload audio file that your QR code should link to.</p>
+        <p class="text-center mb-0">Upload Your Menu Items For Generate QR Code</p>
     </div>
     <div class="pb-4 row">
+        <div class="card card-flush h-xl-100">
+            <div class="card-body pt-6">
+                <ul class="nav nav-pills nav-pills-custom mb-3 d-flex justify-content-center align-items-center">
+                    <li class="nav-item mb-3 me-3 me-lg-6">
+                        <a href="#"
+                            class="nav-link btn btn-outline btn-flex btn-color-muted btn-active-color-primary flex-column overflow-hidden w-80px h-85px pt-5 pb-2"
+                            data-bs-toggle="modal" data-bs-target="#modalId">
+                            <div class="nav-icon mb-3">
+                                <i class="far fa-plus-square fs-1"></i>
+                            </div>
+                            <span class="nav-text text-gray-800 fw-bold fs-6 lh-1"> Create Category </span>
+                            <span class="bullet-custom position-absolute bottom-0 w-100 h-4px bg-primary"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3 me-3 me-lg-6">
+                        <a class="nav-link btn btn-outline btn-flex btn-color-muted btn-active-color-primary flex-column overflow-hidden w-80px h-85px pt-5 pb-2 active"
+                            id="kt_stats_widget_16_tab_link_1" data-bs-toggle="pill" href="#category">
+                            <div class="nav-icon mb-3">
+                                <i class="far fa-clone fs-1"></i>
+                            </div>
+                            <span class="nav-text text-gray-800 fw-bold fs-6 lh-1"> Category </span>
+                            <span class="bullet-custom position-absolute bottom-0 w-100 h-4px bg-primary"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3 me-3 me-lg-6">
+                        <a class="nav-link btn btn-outline btn-flex btn-color-muted btn-active-color-primary flex-column overflow-hidden w-80px h-85px pt-5 pb-2"
+                            id="kt_stats_widget_16_tab_link_2" data-bs-toggle="pill" href="#brandingMain">
+                            <div class="nav-icon mb-3">
+                                <i class="fas fa-paint-brush fs-1"></i>
+                            </div>
 
+                            <span class="nav-text text-gray-800 fw-bold fs-6 lh-1"> Branding </span>
+
+                            <span class="bullet-custom position-absolute bottom-0 w-100 h-4px bg-primary"></span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="category">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <ul
+                                    class="nav nav-pills nav-pills-custom mb-3 row mt-10">
+                                    <li class="nav-item mb-3 col-lg-2">
+                                        <a class="nav-link btn btn-outline btn-flex btn-color-muted btn-active-color-primary flex-column overflow-hidden"
+                                            id="kt_stats_widget_16_tab_link_2" data-bs-toggle="pill" href="#brandingChild">
+                                            <div class="text-end">
+                                                <i class="fa-solid fa-pen-to-square text-primary" data-bs-toggle="modal" data-bs-target="#modalId"></i>
+                                                <i class="fa-solid fa-trash text-danger" data-bs-toggle="modal" data-bs-target="#modalId"></i>
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <img class="img-fluid" width="50px"
+                                                    src="https://d3nvy39jvu7woe.cloudfront.net/static/images/restaurantmenu/dinner.png"
+                                                    alt="">
+                                            </div>
+                                            <div class="p-2 text-center">
+                                                <p class="mb-0 fw-bolder text-black">Dinner</p>
+                                                <small style="font-size: 10px">06:00pm - 11:00pm</small> <br>
+                                                <small>All Week</small>
+                                            </div>
+                                            <span
+                                                class="bullet-custom position-absolute bottom-0 w-100 h-4px bg-primary"></span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item mb-3 col-lg-2">
+                                        <a class="nav-link btn btn-outline btn-flex btn-color-muted btn-active-color-primary flex-column overflow-hidden"
+                                            id="kt_stats_widget_16_tab_link_2" data-bs-toggle="pill" href="#branding2Child">
+                                            <div class="text-end">
+                                                <i class="fa-solid fa-pen-to-square text-primary" data-bs-toggle="modal" data-bs-target="#modalId"></i>
+                                                <i class="fa-solid fa-trash text-danger" data-bs-toggle="modal" data-bs-target="#modalId"></i>
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <img class="img-fluid" width="50px"
+                                                    src="https://d3nvy39jvu7woe.cloudfront.net/static/images/restaurantmenu/dinner.png"
+                                                    alt="">
+                                            </div>
+                                            <div class="p-2 text-center">
+                                                <p class="mb-0 fw-bolder text-black">Sweet</p>
+                                                <small style="font-size: 10px">06:00pm - 11:00pm</small> <br>
+                                                <small>All Week</small>
+                                            </div>
+                                            <span
+                                                class="bullet-custom position-absolute bottom-0 w-100 h-4px bg-primary"></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane fade" id="brandingChild">
+                                        <div class="col-lg-10">
+                                            <div class="fv-row mb-10 fv-plugins-icon-container">
+                                                <label class="d-flex align-items-center fs-5 fw-semibold mb-2">
+                                                    <span class="required">Upload Menu PDF</span></label>
+                                                <input type="file" class="form-control form-control-lg form-control-solid"
+                                                    name="name" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="branding2Child">
+                                        <div class="col-lg-10">
+                                            <div class="fv-row mb-10 fv-plugins-icon-container">
+                                                <label class="d-flex align-items-center fs-5 fw-semibold mb-2">
+                                                    <span class="required">Upload Menu PDF</span></label>
+                                                <input type="file" class="form-control form-control-lg form-control-solid"
+                                                    name="name" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="brandingMain">
+                        <div>
+                            <form action="">
+                                <div class="row">
+                                    <div class="col-lg-10">
+                                        <div class="fv-row mb-10 fv-plugins-icon-container">
+                                            <label class="d-flex align-items-center fs-5 fw-semibold mb-2">
+                                                <span class="required">Upload Logo</span></label>
+                                            <input type="file" class="form-control form-control-lg form-control-solid"
+                                                name="name" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="fv-row mb-10 fv-plugins-icon-container">
+                                            <label class="d-flex align-items-center fs-5 fw-semibold mb-2">Preview</label>
+                                            <img class="img-fluid rouded-crirlce " width="50px"
+                                                src="https://preview.keenthemes.com/metronic8/demo1/assets/media/illustrations/sketchy-1/9.png"
+                                                alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="fv-row mb-10 fv-plugins-icon-container">
+                                            <label class="d-flex align-items-center fs-5 fw-semibold mb-2">
+                                                <span class="required">Resturent Name</label>
+                                            <input type="text" class="form-control form-control-lg form-control-solid"
+                                                name="name" placeholder="Goflixza">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="fv-row mb-10 fv-plugins-icon-container">
+                                            <label class="d-flex align-items-center fs-5 fw-semibold mb-2">
+                                                <span class="required">Desctioption</label>
+                                            <input type="text" class="form-control form-control-lg form-control-solid"
+                                                name="name" placeholder="About Your Resturent">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="fv-row mb-10 fv-plugins-icon-container">
+                                            <label class="d-flex align-items-center fs-5 fw-semibold mb-2">
+                                                <span class="required">Phone</label>
+                                            <input type="text" class="form-control form-control-lg form-control-solid"
+                                                name="name" placeholder="01*****">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="fv-row mb-10 fv-plugins-icon-container">
+                                            <label class="d-flex align-items-center fs-5 fw-semibold mb-2">
+                                                <span class="required">Location</label>
+                                            <input type="url" class="form-control form-control-lg form-control-solid"
+                                                name="name" placeholder="https://www.goflixza.com/">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{-- Create Category Modal Start --}}
+        <div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+            role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-md" role="document">
+                <form action="" method="post">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalTitleId">
+                                Create New Category
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-lg-10">
+                                    <div class="fv-row mb-10 fv-plugins-icon-container">
+                                        <label class="d-flex align-items-center fs-5 fw-semibold mb-2">
+                                            <span class="required">Upload Icons</span></label>
+                                        <input type="file" class="form-control form-control-lg form-control-solid"
+                                            name="name" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="fv-row mb-10 fv-plugins-icon-container">
+                                        <label class="d-flex align-items-center fs-5 fw-semibold mb-2"></label>
+                                        <img class="img-fluid"
+                                            src="https://preview.keenthemes.com/metronic8/demo1/assets/media/illustrations/sketchy-1/9.png"
+                                            alt="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="fv-row mb-10 fv-plugins-icon-container">
+                                        <label class="d-flex align-items-center fs-5 fw-semibold mb-2">
+                                            <span class="required">Category Name</span></label>
+                                        <input type="text" class="form-control form-control-lg form-control-solid"
+                                            name="name" placeholder="Lunch, Dinner, Snacks etc">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div data-kt-buttons="true"
+                                        style="display: flex;
+                                    justify-content: space-between;
+                                    gap: 20px;">
+                                        <label
+                                            class="btn btn-outline btn-outline-dashed btn-active-light-primary d-flex flex-stack text-start p-6 mb-5">
+                                            <div class="d-flex align-items-center me-2">
+                                                <div
+                                                    class="form-check form-check-custom form-check-solid form-check-primary me-6">
+                                                    <input class="form-check-input" type="radio" name="plan"
+                                                        value="startup" />
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <h2 class="d-flex align-items-center fs-6 fw-bold flex-wrap">
+                                                        Available All Day
+                                                    </h2>
+                                                </div>
+                                            </div>
+                                        </label>
+
+                                        <label
+                                            class="btn btn-outline btn-outline-dashed btn-active-light-primary d-flex flex-stack text-start p-6 mb-5 active">
+                                            <div class="d-flex align-items-center me-2">
+                                                <div
+                                                    class="form-check form-check-custom form-check-solid form-check-primary me-6">
+                                                    <input class="form-check-input" type="radio" name="plan"
+                                                        checked="checked" value="advanced" />
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <h2 class="d-flex align-items-center fs-6 fw-bold flex-wrap">
+                                                        Available All Week
+                                                    </h2>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 mt-10 text-primary ">
+                                    {{-- <i class="fa-solid fa-plus-square fs-3 accordion-icon-off"></i> --}}
+                                    <div class="accordion" id="kt_accordion_1">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="kt_accordion_1_header_3">
+                                                <button class="accordion-button fs-4 fw-semibold collapsed"
+                                                    type="button" data-bs-toggle="collapse"
+                                                    data-bs-target="#kt_accordion_1_body_3" aria-expanded="false"
+                                                    aria-controls="kt_accordion_1_body_3">
+                                                    Schedule a Time Range
+                                                </button>
+                                            </h2>
+                                            <div id="kt_accordion_1_body_3" class="accordion-collapse collapse"
+                                                aria-labelledby="kt_accordion_1_header_3"
+                                                data-bs-parent="#kt_accordion_1">
+                                                <div class="accordion-body row">
+                                                    <p class="text-muted">Set a start and end date for this category
+                                                    </p>
+                                                    <div class="col-lg-6">
+                                                        <label for="start" class="text-muted">Start</label>
+                                                        <input type="time" name="start" id=""
+                                                            class="form-control form-control-lg form-control-solid"
+                                                            name="" placeholder="Start">
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <label for="end" class="text-muted">End</label>
+                                                        <input type="time" name="end" id=""
+                                                            class="form-control form-control-lg form-control-solid"
+                                                            name="" placeholder="end">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        {{-- Create Category Modal End --}}
     </div>
 </div>
 {{-- Facebook Page Form --}}
