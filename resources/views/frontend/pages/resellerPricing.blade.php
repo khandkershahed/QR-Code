@@ -57,9 +57,14 @@
                                                 <hr>
                                                 <div class="text">For small businesses looking to reach more consumers
                                                 </div>
-                                                @if (!empty($individual_plan->descriptions))
+                                                @php
+                                                    $descriptions = is_array($individual_plan->descriptions)
+                                                        ? $individual_plan->descriptions
+                                                        : json_decode($individual_plan->descriptions);
+                                                @endphp
+                                                @if (!empty($descriptions))
                                                     <ul class="icon-list">
-                                                        @foreach ($individual_plan->descriptions as $description)
+                                                        @foreach ($descriptions as $description)
                                                             <li><i class="ion-checkmark"></i> {{ $description }}</li>
                                                         @endforeach
                                                     </ul>
@@ -70,6 +75,7 @@
                                             </div>
                                         </div>
                                     @endforeach
+
 
 
                                 </div>
