@@ -1,6 +1,6 @@
 <x-app-layout :title="'QR Code Generate'">
     <div class="row">
-        <div class="col-lg-9 col-md-7">
+        <div class="col-lg-8 col-md-7">
             <div class="card mt-10">
                 <div class="card-body qr-card-form">
                     <div class="stepper stepper-pills p-0" id="generateQRCode">
@@ -176,7 +176,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-md-5">
+        <div class="col-lg-4 col-md-5">
             <div class="card mt-10 bg-transparent shadow-sm">
                 {{-- position-fixed --}}
                 <div class="card-body bg-transparent">
