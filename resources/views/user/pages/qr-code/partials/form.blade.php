@@ -14,11 +14,6 @@
         </div>
     </div>
 </div>
-
-
-
-
-
 {{-- PDF Form Start --}}
 <div class="form-container" id="pdf-form">
     <div class="row text-center justify-content-center">
@@ -165,7 +160,6 @@
         </div>
     </div>
 </div>
-
 {{-- Coupon Form Start --}}
 <div class="form-container" id="coupon_code-form">
     <div class="row text-center justify-content-center">
@@ -311,7 +305,6 @@
 
     </div>
 </div>
-
 {{-- Social Form Start --}}
 <div class="form-container" id="social-form">
     <div class="row text-center justify-content-center">
@@ -458,7 +451,6 @@
 
     </div>
 </div>
-
 {{-- Audio Form Start --}}
 <div class="form-container" id="audio-form">
     <div class="row text-center justify-content-center">
@@ -482,7 +474,6 @@
         </div>
     </div>
 </div>
-
 {{-- Business Page Form Start --}}
 <div class="row form-container" id="business_page-form">
     <div class="row text-center justify-content-center mb-5">
@@ -684,7 +675,6 @@
         </div> --}}
     </div>
 </div>
-
 {{-- Restaurant Form --}}
 <div class="form-container" id="restaurant-form">
     <div class="row text-center justify-content-center">
@@ -696,7 +686,7 @@
         <p>Upload audio file that your QR code should link to.</p>
     </div>
     <div class="pb-4 row">
-
+        asdasdas
     </div>
 </div>
 {{-- Facebook Page Form --}}
