@@ -1,5 +1,5 @@
 <x-app-layout :title="'QR Code Generate'">
-    <div class="row">
+    <div class="row align-items-center">
         <div class="col-lg-8 col-md-7">
             <div class="card mt-10">
                 <div class="card-body qr-card-form">
@@ -177,7 +177,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-5">
-            <div class="card mt-10 bg-transparent shadow-sm">
+            <div class="card mt-10 bg-transparent">
                 {{-- position-fixed --}}
                 <div class="card-body bg-transparent">
                     <div class="d-flex flex-column justify-content-center align-items-center">
