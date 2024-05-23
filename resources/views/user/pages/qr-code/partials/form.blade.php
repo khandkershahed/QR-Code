@@ -516,12 +516,14 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <x-metronic.input id="qr_data_business_page_start_time_monday" type="time" name="qr_data_business_page_start_time_monday"
-                        :value="old('qr_data_business_page_start_time_monday')" placeholder="Audio File (mp3,web)" />
+                    <x-metronic.input id="qr_data_business_page_start_time_monday" type="time"
+                        name="qr_data_business_page_start_time_monday" :value="old('qr_data_business_page_start_time_monday')"
+                        placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
-                    <x-metronic.input id="qr_data_business_page_end_time_monday" type="time" name="qr_data_business_page_end_time_monday"
-                        :value="old('qr_data_business_page_end_time_monday')" placeholder="Audio File (mp3,web)" />
+                    <x-metronic.input id="qr_data_business_page_end_time_monday" type="time"
+                        name="qr_data_business_page_end_time_monday" :value="old('qr_data_business_page_end_time_monday')"
+                        placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
             <div class="row align-items-center pb-3">
@@ -534,11 +536,13 @@
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_start_time_tuesday" type="time"
-                        name="qr_data_business_page_start_time_tuesday" :value="old('qr_data_business_page_start_time_tuesday')" placeholder="Audio File (mp3,web)" />
+                        name="qr_data_business_page_start_time_tuesday" :value="old('qr_data_business_page_start_time_tuesday')"
+                        placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
-                    <x-metronic.input id="qr_data_business_page_end_time_tuesday" type="time" name="qr_data_business_page_end_time_tuesday"
-                        :value="old('qr_data_business_page_end_time_tuesday')" placeholder="Audio File (mp3,web)" />
+                    <x-metronic.input id="qr_data_business_page_end_time_tuesday" type="time"
+                        name="qr_data_business_page_end_time_tuesday" :value="old('qr_data_business_page_end_time_tuesday')"
+                        placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
             <div class="row align-items-center pb-3">
@@ -551,11 +555,13 @@
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_start_time_wednesday" type="time"
-                        name="qr_data_business_page_start_time_wednesday" :value="old('qr_data_business_page_start_time_wednesday')" placeholder="Audio File (mp3,web)" />
+                        name="qr_data_business_page_start_time_wednesday" :value="old('qr_data_business_page_start_time_wednesday')"
+                        placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_end_time_wednesday" type="time"
-                        name="qr_data_business_page_end_time_wednesday" :value="old('qr_data_business_page_end_time_wednesday')" placeholder="Audio File (mp3,web)" />
+                        name="qr_data_business_page_end_time_wednesday" :value="old('qr_data_business_page_end_time_wednesday')"
+                        placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
             <div class="row align-items-center pb-3">
@@ -568,11 +574,13 @@
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_start_time_thursday" type="time"
-                        name="qr_data_business_page_start_time_thursday" :value="old('qr_data_business_page_start_time_thursday')" placeholder="Audio File (mp3,web)" />
+                        name="qr_data_business_page_start_time_thursday" :value="old('qr_data_business_page_start_time_thursday')"
+                        placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
-                    <x-metronic.input id="qr_data_business_page_end_time_thursday" type="time" name="qr_data_business_page_end_time_thursday"
-                        :value="old('qr_data_business_page_end_time_thursday')" placeholder="Audio File (mp3,web)" />
+                    <x-metronic.input id="qr_data_business_page_end_time_thursday" type="time"
+                        name="qr_data_business_page_end_time_thursday" :value="old('qr_data_business_page_end_time_thursday')"
+                        placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
             <div class="row align-items-center pb-3">
@@ -584,12 +592,14 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <x-metronic.input id="qr_data_business_page_start_time_friday" type="time" name="qr_data_business_page_start_time_friday"
-                        :value="old('qr_data_business_page_start_time_friday')" placeholder="Audio File (mp3,web)" />
+                    <x-metronic.input id="qr_data_business_page_start_time_friday" type="time"
+                        name="qr_data_business_page_start_time_friday" :value="old('qr_data_business_page_start_time_friday')"
+                        placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
-                    <x-metronic.input id="qr_data_business_page_end_time_friday" type="time" name="qr_data_business_page_end_time_friday"
-                        :value="old('qr_data_business_page_end_time_friday')" placeholder="Audio File (mp3,web)" />
+                    <x-metronic.input id="qr_data_business_page_end_time_friday" type="time"
+                        name="qr_data_business_page_end_time_friday" :value="old('qr_data_business_page_end_time_friday')"
+                        placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
             <div class="row align-items-center pb-3">
@@ -602,11 +612,13 @@
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_start_time_saturday" type="time"
-                        name="qr_data_business_page_start_time_saturday" :value="old('qr_data_business_page_start_time_saturday')" placeholder="Audio File (mp3,web)" />
+                        name="qr_data_business_page_start_time_saturday" :value="old('qr_data_business_page_start_time_saturday')"
+                        placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
-                    <x-metronic.input id="qr_data_business_page_end_time_saturday" type="time" name="qr_data_business_page_end_time_saturday"
-                        :value="old('qr_data_business_page_end_time_saturday')" placeholder="Audio File (mp3,web)" />
+                    <x-metronic.input id="qr_data_business_page_end_time_saturday" type="time"
+                        name="qr_data_business_page_end_time_saturday" :value="old('qr_data_business_page_end_time_saturday')"
+                        placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
             <div class="row align-items-center pb-3">
@@ -618,12 +630,14 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <x-metronic.input id="qr_data_business_page_start_time_sunday" type="time" name="qr_data_business_page_start_time_sunday"
-                        :value="old('qr_data_business_page_start_time_sunday')" placeholder="Audio File (mp3,web)" />
+                    <x-metronic.input id="qr_data_business_page_start_time_sunday" type="time"
+                        name="qr_data_business_page_start_time_sunday" :value="old('qr_data_business_page_start_time_sunday')"
+                        placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
-                    <x-metronic.input id="qr_data_business_page_end_time_sunday" type="time" name="qr_data_business_page_end_time_sunday"
-                        :value="old('qr_data_business_page_end_time_sunday')" placeholder="Audio File (mp3,web)" />
+                    <x-metronic.input id="qr_data_business_page_end_time_sunday" type="time"
+                        name="qr_data_business_page_end_time_sunday" :value="old('qr_data_business_page_end_time_sunday')"
+                        placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
         </div>
@@ -679,14 +693,126 @@
 <div class="form-container" id="restaurant-form">
     <div class="row text-center justify-content-center">
         <h2 class="text-center mb-0">Restaurant Form</h2>
-        <p class="text-center mb-0">Upload MP3/Audio File</p>
-    </div>
-    <div class="pt-5 ps-5">
-        <h2>Restaurant Form</h2>
-        <p>Upload audio file that your QR code should link to.</p>
+        <p class="text-center mb-0">Upload Your Menu Items For Generate QR Code</p>
     </div>
     <div class="pb-4 row">
-        asdasdas
+        <div class="card card-flush h-xl-100">
+            <div class="card-body pt-6">
+                <ul class="nav nav-pills nav-pills-custom mb-3 d-flex justify-content-center align-items-center">
+                    <li class="nav-item mb-3 me-3 me-lg-6">
+                        <a href="#"
+                            class="nav-link btn btn-outline btn-flex btn-color-muted btn-active-color-primary flex-column overflow-hidden w-80px h-85px pt-5 pb-2"
+                            data-bs-toggle="modal" data-bs-target="#createCategory">
+                            <div class="nav-icon mb-3">
+                                <i class="far fa-plus-square fs-1"></i>
+                            </div>
+                            <span class="nav-text text-gray-800 fw-bold fs-6 lh-1"> Create Category </span>
+                            <span class="bullet-custom position-absolute bottom-0 w-100 h-4px bg-primary"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3 me-3 me-lg-6">
+                        <a class="nav-link btn btn-outline btn-flex btn-color-muted btn-active-color-primary flex-column overflow-hidden w-80px h-85px pt-5 pb-2 active"
+                            id="kt_stats_widget_16_tab_link_1" data-bs-toggle="pill" href="#category">
+                            <div class="nav-icon mb-3">
+                                <i class="far fa-clone fs-1"></i>
+                            </div>
+                            <span class="nav-text text-gray-800 fw-bold fs-6 lh-1"> Category </span>
+                            <span class="bullet-custom position-absolute bottom-0 w-100 h-4px bg-primary"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3 me-3 me-lg-6">
+                        <a class="nav-link btn btn-outline btn-flex btn-color-muted btn-active-color-primary flex-column overflow-hidden w-80px h-85px pt-5 pb-2"
+                            id="kt_stats_widget_16_tab_link_2" data-bs-toggle="pill" href="#brandingMain">
+                            <div class="nav-icon mb-3">
+                                <i class="fas fa-paint-brush fs-1"></i>
+                            </div>
+
+                            <span class="nav-text text-gray-800 fw-bold fs-6 lh-1"> Branding </span>
+
+                            <span class="bullet-custom position-absolute bottom-0 w-100 h-4px bg-primary"></span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active categoryContainer" id="category">
+                        @include('user.pages.qr-code.partials.restaurant_category')
+                    </div>
+                    <div class="tab-pane fade" id="brandingMain">
+                        <div>
+                            <div class="row">
+                                <div class="col-lg-10">
+                                    <div class="fv-row mb-10 fv-plugins-icon-container">
+                                        <label class="d-flex align-items-center fs-5 fw-semibold mb-2">
+                                            <span class="required">Upload Logo</span></label>
+                                        <input type="file" class="form-control form-control-lg form-control-solid"
+                                            name="qr_data_restaurant_" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="fv-row mb-10 fv-plugins-icon-container">
+                                        <label class="d-flex align-items-center fs-5 fw-semibold mb-2">Preview</label>
+                                        <img class="img-fluid rouded-crirlce " width="50px"
+                                            src="https://preview.keenthemes.com/metronic8/demo1/assets/media/illustrations/sketchy-1/9.png"
+                                            alt="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-10">
+                                    <div class="fv-row mb-10 fv-plugins-icon-container">
+                                        <label class="d-flex align-items-center fs-5 fw-semibold mb-2">
+                                            <span class="required">Background Image</span></label>
+                                        <input type="file" class="form-control form-control-lg form-control-solid"
+                                            name="qr_data_restaurant_" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="fv-row mb-10 fv-plugins-icon-container">
+                                        <label class="d-flex align-items-center fs-5 fw-semibold mb-2">Preview</label>
+                                        <img class="img-fluid rouded-crirlce " width="50px"
+                                            src="https://preview.keenthemes.com/metronic8/demo1/assets/media/illustrations/sketchy-1/9.png"
+                                            alt="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="fv-row mb-10 fv-plugins-icon-container">
+                                        <label class="d-flex align-items-center fs-5 fw-semibold mb-2">
+                                            <span class="required">Restaurant Name</label>
+                                        <input type="text" class="form-control form-control-lg form-control-solid"
+                                            name="qr_data_restaurant_" placeholder="Goflixza">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="fv-row mb-10 fv-plugins-icon-container">
+                                        <label class="d-flex align-items-center fs-5 fw-semibold mb-2">
+                                            <span class="required">Description</label>
+                                        <input type="text" class="form-control form-control-lg form-control-solid"
+                                            name="qr_data_restaurant_" placeholder="About Your Resturent">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="fv-row mb-10 fv-plugins-icon-container">
+                                        <label class="d-flex align-items-center fs-5 fw-semibold mb-2">
+                                            <span class="required">Phone</label>
+                                        <input type="text" class="form-control form-control-lg form-control-solid"
+                                            name="qr_data_restaurant_" placeholder="01*****">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="fv-row mb-10 fv-plugins-icon-container">
+                                        <label class="d-flex align-items-center fs-5 fw-semibold mb-2">
+                                            <span class="required">Location</label>
+                                        <input type="url" class="form-control form-control-lg form-control-solid"
+                                            name="qr_data_restaurant_" placeholder="https://www.goflixza.com/">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{-- Create Category Modal Start --}}
+
+        {{-- Create Category Modal End --}}
     </div>
 </div>
 {{-- Facebook Page Form --}}

@@ -314,10 +314,10 @@
                 <h2>SELECT EYE-BALL</h2>
                 <p>This will be the color and shape of your QR code's eye-balls</p>
             </div>
-            <div class="row p-5 pt-3 pt-lg-6">
+            <div class="row p-5 pt-3 pt-lg-6 colorCodeContainer">
                 <label class="form-label p-0 pb-3" for="colorPicker">Eye Ball Color</label>
-                <input type="text" id="colorCodeInput" class="form-control form-control-solid w-75 w-lg-25" readonly>
-                <input type="color" id="colorPicker" style="width: 56px;height: 45px;" name="qr_eye_ball_color">
+                <input type="text" id="colorCodeInput" class="form-control form-control-solid w-75 w-lg-25 colorCodeInput" readonly>
+                <input type="color" id="colorPicker" style="width: 56px;height: 45px;" class="colorPicker" name="qr_eye_ball_color">
             </div>
             <div class="row pt-3 pt-lg-6">
                 <x-qr-code.eye-ball :eyeBalls="[
@@ -362,10 +362,10 @@
                 <h2>SELECT EYE-FRAME</h2>
                 <p>This will be the color and shape of your QR code's eye-frames</p>
             </div>
-            <div class="row p-5 pt-3 pt-lg-6">
+            <div class="row p-5 pt-3 pt-lg-6 colorCodeContainer">
                 <label class="form-label p-0 pb-3" for="colorPicker">Eye Frame Color</label>
-                <input type="text" id="colorCodeInput" class="form-control form-control-solid w-75 w-lg-25" readonly>
-                <input type="color" id="colorPicker" style="width: 56px;height: 45px;" name="qr_eye_frame_color">
+                <input type="text" id="colorCodeInput" class="form-control form-control-solid w-75 w-lg-25 colorCodeInput" readonly>
+                <input type="color" id="colorPicker" class="colorPicker" style="width: 56px;height: 45px;" name="qr_eye_frame_color">
             </div>
             {{-- <div class="d-lg-flex row gx-10 mb-4">
                 <x-qr-code.eye-frame :eyeFrames="[
@@ -477,10 +477,10 @@
                     <div class="hidden-field" id="normal_color_show" style="display: none;">
                         <div class="pt-5">
                             <label for="">Color</label> <br>
-                            <div class="d-flex">
+                            <div class="d-flex colorCodeContainer">
                                 <input type="text" id="colorCodeInput-normal_color"
-                                    class="form-control form-control-solid w-25" readonly>
-                                <input type="color" id="colorPicker" style="width: 56px;height: 45px;" name="qr_solid_color">
+                                    class="form-control form-control-solid w-25 colorCodeInput" readonly>
+                                <input type="color" id="colorPicker" class="colorPicker" style="width: 56px;height: 45px;" name="qr_solid_color">
                             </div>
                         </div>
                     </div>
@@ -499,20 +499,20 @@
                         <div class="d-flex">
                             <div class="pt-3 pe-4">
                                 <label for="">Color Start</label>
-                                <div class="d-flex">
+                                <div class="d-flex colorCodeContainer">
                                     <input type="text" id="colorCodeInput-gradient"
-                                        class="form-control form-control-solid w-25" style="width: 160px !important"
+                                        class="form-control form-control-solid w-25 colorCodeInput" style="width: 160px !important"
                                         readonly>
-                                    <input type="color" id="colorPicker" name="qr_gradient_color_start" style="width: 56px;height: 45px;">
+                                    <input type="color" id="colorPicker" class="colorPicker" name="qr_gradient_color_start" style="width: 56px;height: 45px;">
                                 </div>
                             </div>
                             <div class="pt-3">
                                 <label for="">Color End</label>
-                                <div class="d-flex">
+                                <div class="d-flex colorCodeContainer">
                                     <input type="text" id="colorCodeInput-gradient-2"
-                                        class="form-control form-control-solid w-25" style="width: 160px !important"
+                                        class="form-control form-control-solid w-25 colorCodeInput" style="width: 160px !important"
                                         readonly>
-                                    <input type="color" id="colorPicker" name="qr_gradient_color_end" style="width: 56px;height: 45px;">
+                                    <input type="color" id="colorPicker" class="colorPicker" name="qr_gradient_color_end" style="width: 56px;height: 45px;">
                                 </div>
                             </div>
                         </div>
@@ -558,10 +558,10 @@
                             <div class="card-body">
                                 <div class="">
                                     <label for="">Color</label>
-                                    <div class="d-flex">
+                                    <div class="d-flex colorCodeContainer">
                                         <input type="text" id="colorCodeInput-normal_color"
-                                            class="form-control form-control-solid w-100" readonly>
-                                        <input type="color" name="qr_bg_color" id="colorPicker" style="width: 56px;height: 45px;">
+                                            class="form-control form-control-solid w-100 colorCodeInput" readonly>
+                                        <input type="color" name="qr_bg_color" id="colorPicker" class="colorPicker" style="width: 56px;height: 45px;">
                                     </div>
                                 </div>
                             </div>

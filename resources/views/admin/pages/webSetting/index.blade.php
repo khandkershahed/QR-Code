@@ -242,7 +242,7 @@
                         </x-metronic.label>
 
                         <textarea name="address_line_one" id="address_line_one" cols="1" rows="1" class="form-control"
-                            placeholder="Enter address_line_one">{!! $site->address_line_one !!}</textarea>
+                            placeholder="Enter address_line_one">{!!$site ? $site->address_line_one : ''!!}</textarea>
                     </div>
                     <div class="col-lg-6">
                         <x-metronic.label for="address_line_two"
@@ -250,7 +250,7 @@
                         </x-metronic.label>
 
                         <textarea name="address_line_two" id="address_line_two" cols="1" rows="1" class="form-control"
-                            placeholder="Enter address_line_two">{!! $site->address_line_two !!}</textarea>
+                            placeholder="Enter address_line_two">{!! $site ? $site->address_line_two : ''!!}</textarea>
                     </div>
                     <div class="col-lg-12">
                         <div class="text-end pt-15">

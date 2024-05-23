@@ -58,8 +58,9 @@
                                                 <div class="text">For small businesses looking to reach more consumers
                                                 </div>
                                                 @php
-                                                    $descriptions1 = json_decode($individual_plan->descriptions, true);
-                                                    $descriptions = json_decode($descriptions1, true);
+                                                    $descriptions = is_array($individual_plan->descriptions)
+                                                        ? $individual_plan->descriptions
+                                                        : json_decode($individual_plan->descriptions);
                                                 @endphp
                                                 @if (!empty($descriptions))
                                                     <ul class="icon-list">
@@ -68,11 +69,15 @@
                                                         @endforeach
                                                     </ul>
                                                 @endif
-                                                <a href="{{ route('user.subscribe.post', $individual_plan->slug) }}" class="theme-btn style-two">Package <i
+                                                <a href="{{ route('user.subscribe.post', $individual_plan->slug) }}"
+                                                    class="theme-btn style-two">Package <i
                                                         class="fas fa-arrow-right"></i></a>
                                             </div>
                                         </div>
                                     @endforeach
+
+
+
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="tabFour2">

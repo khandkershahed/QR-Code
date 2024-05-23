@@ -65,6 +65,11 @@
             @include('user.pages.qr-code.preview.qr_facebook_page_preview')
         </div>
     </div>
+    <div class="card qr-card restaurant" style="display: none;">
+        <div class="preview">
+            @include('user.pages.qr-code.preview.qr_restaurant_preview')
+        </div>
+    </div>
 </div>
 
 <div id="qrCouponPreview" style="display: none;">

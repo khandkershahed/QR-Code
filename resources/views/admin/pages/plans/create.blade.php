@@ -117,21 +117,33 @@
     @push('scripts')
         <script>
             $(document).ready(function() {
-                // Add Row
-                $(".addRow").on("click", function() {
-                    var newRow =
-                        '<tr><td>1</td> <td><input type="text" class="form-control form-control-sm w-100" name="descriptions[]" placeholder="Enter Service" required></td>' +
-                        '<td class="text-center" style="vertical-align: middle;"><a href="javascript:void(0)" class="btn btn-danger px-5 py-3 addRow btn-sm removeRow">' +
-                        '<i class="fas fa-minus icons_design text-white"></i></a></td></tr>';
+            // Add Row
+            var slNo = 1;
 
-                    $(".repeater").append(newRow);
+            function updateSerialNumbers() {
+                $(".repeater tr").each(function(index) {
+                    $(this).find("td:first-child").text(index + 1);
                 });
+            }
 
-                // Remove Row
-                $(".repeater").on("click", ".removeRow", function() {
-                    $(this).closest("tr").remove();
-                });
+            $(".addRow").on("click", function() {
+                slNo++;
+                var newRow =
+                    '<tr><td>' + slNo + '</td>' +
+                    '<td><input type="text" class="form-control form-control-sm w-100" name="descriptions[]" placeholder="Enter Service" required></td>' +
+                    '<td class="text-center" style="vertical-align: middle;"><a href="javascript:void(0)" class="btn btn-danger px-5 py-3 btn-sm removeRow">' +
+                    '<i class="fas fa-minus icons_design text-white"></i></a></td></tr>';
+
+                $(".repeater").append(newRow);
+                updateSerialNumbers();
             });
+
+            $(document).on("click", ".removeRow", function() {
+                $(this).closest("tr").remove();
+                updateSerialNumbers();
+            });
+            });
+
         </script>
     @endpush
 </x-admin-app-layout>

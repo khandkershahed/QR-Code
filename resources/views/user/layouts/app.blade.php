@@ -39,7 +39,7 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
-        
+
 
     @props(['title'])
     <title>{{ $title ?? config('app.name', 'GO-QR') }}</title>
@@ -115,7 +115,13 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://kit.fontawesome.com/69b7156a94.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbfUj9Hr1sqI5sb_nc2XSWFrRun3l_Vto&callback=initMap"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbfUj9Hr1sqI5sb_nc2XSWFrRun3l_Vto&callback=initMap"></script>
+    <!--end::Vendors Javascript-->
+    <script src="https://preview.keenthemes.com/html/metronic/docs/assets/js/custom/documentation/general/draggable/cards.js"></script>
+    <script src="https://preview.keenthemes.com/html/metronic/docs/assets/plugins/custom/draggable/draggable.bundle.js"></script>
+    <script src="https://preview.keenthemes.com/html/metronic/docs/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+    <!--begin::Custom Javascript(used for this page only)-->
     <script src="{{ asset('admin/js/custom.js') }}"></script>
     {{-- <script>
         showSuccessMessage('{{ session('success') }}');
@@ -179,6 +185,24 @@
         });
     </script>
     @stack('scripts')
+
+    <script>
+        var containers = document.querySelectorAll(".draggable-zone");
+
+        if (containers.length === 0) {
+            return false;
+        }
+
+        var swappable = new Sortable.default(containers, {
+            draggable: ".draggable",
+            handle: ".draggable .draggable-handle",
+            mirror: {
+                //appendTo: selector,
+                appendTo: "body",
+                constrainDimensions: true
+            }
+        });
+    </script>
 
 </body>
 
