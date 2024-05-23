@@ -1,209 +1,206 @@
 <x-app-layout :title="'QR Code Generate'">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-9">
-                <div class="card mt-10">
-                    <div class="card-body">
-                        <div class="stepper stepper-pills p-0" id="generateQRCode">
-                            <div class="stepper-nav flex-center flex-wrap mb-10 fv-row">
-                                <div class="stepper-item mx-2 my-4 current" data-kt-stepper-element="nav"
-                                    data-kt-stepper-action="step">
-                                    <div class="stepper-line w-40px"></div>
+    <div class="row">
+        <div class="col-lg-9 col-md-7">
+            <div class="card mt-10">
+                <div class="card-body qr-card-form">
+                    <div class="stepper stepper-pills p-0" id="generateQRCode">
+                        <div class="stepper-nav flex-center flex-wrap mb-10 fv-row">
+                            <div class="stepper-item mx-2 my-4 current" data-kt-stepper-element="nav"
+                                data-kt-stepper-action="step">
+                                <div class="stepper-line w-40px"></div>
 
-                                    <div class="stepper-icon w-40px h-40px">
-                                        <i class="stepper-check fas fa-check"></i>
-                                        <span class="stepper-number">1</span>
-                                    </div>
+                                <div class="stepper-icon w-40px h-40px">
+                                    <i class="stepper-check fas fa-check"></i>
+                                    <span class="stepper-number">1</span>
+                                </div>
 
-                                    <div class="stepper-label">
-                                        <h3 class="stepper-title">
-                                            Select Type
-                                        </h3>
+                                <div class="stepper-label">
+                                    <h3 class="stepper-title">
+                                        Select Type
+                                    </h3>
+                                </div>
+                            </div>
+
+                            <div class="stepper-item mx-2 my-4" data-kt-stepper-element="nav"
+                                data-kt-stepper-action="step">
+                                <div class="stepper-line w-40px"></div>
+
+                                <div class="stepper-icon w-40px h-40px">
+                                    <i class="stepper-check fas fa-check"></i>
+                                    <span class="stepper-number">2</span>
+                                </div>
+
+                                <div class="stepper-label">
+                                    <h3 class="stepper-title">
+                                        Input Data
+                                    </h3>
+                                </div>
+                            </div>
+
+                            <div class="stepper-item mx-2 my-4" data-kt-stepper-element="nav"
+                                data-kt-stepper-action="step">
+                                <div class="stepper-line w-40px"></div>
+
+                                <div class="stepper-icon w-40px h-40px">
+                                    <i class="stepper-check fas fa-check"></i>
+                                    <span class="stepper-number">3</span>
+                                </div>
+
+                                <div class="stepper-label">
+                                    <h3 class="stepper-title">
+                                        Customize
+                                    </h3>
+                                </div>
+                            </div>
+
+                            <div class="stepper-item mx-2 my-4" data-kt-stepper-element="nav"
+                                data-kt-stepper-action="step">
+                                <div class="stepper-line w-40px"></div>
+
+                                <div class="stepper-icon w-40px h-40px">
+                                    <i class="stepper-check fas fa-check"></i>
+                                    <span class="stepper-number">4</span>
+                                </div>
+
+                                <div class="stepper-label">
+                                    <h3 class="stepper-title">
+                                        Done
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form class="form w-100 mx-auto fv-row" novalidate="novalidate" id="generateQRCodeForm"
+                            action="{{ route('user.qr-code.store') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="mb-5">
+                                <div class="flex-column current" data-kt-stepper-element="content">
+                                    <div class="card">
+                                        <div class="row">
+                                            <h2 class="text-center mb-0">Create a Dynamic QR Code</h2>
+                                            <p class="text-center mb-0">Modify content as needed, even after going
+                                                live.</p>
+                                        </div>
+                                        <div class="card-body">
+                                            @include('user.pages.qr-code.partials.qr_type')
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="stepper-item mx-2 my-4" data-kt-stepper-element="nav"
-                                    data-kt-stepper-action="step">
-                                    <div class="stepper-line w-40px"></div>
-
-                                    <div class="stepper-icon w-40px h-40px">
-                                        <i class="stepper-check fas fa-check"></i>
-                                        <span class="stepper-number">2</span>
-                                    </div>
-
-                                    <div class="stepper-label">
-                                        <h3 class="stepper-title">
-                                            Input Data
-                                        </h3>
+                                <div class="flex-column" data-kt-stepper-element="content">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            @include('user.pages.qr-code.partials.form')
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="stepper-item mx-2 my-4" data-kt-stepper-element="nav"
-                                    data-kt-stepper-action="step">
-                                    <div class="stepper-line w-40px"></div>
-
-                                    <div class="stepper-icon w-40px h-40px">
-                                        <i class="stepper-check fas fa-check"></i>
-                                        <span class="stepper-number">3</span>
-                                    </div>
-
-                                    <div class="stepper-label">
-                                        <h3 class="stepper-title">
-                                            Customize
-                                        </h3>
+                                <div class="flex-column" data-kt-stepper-element="content">
+                                    <div class="card">
+                                        <div class="row text-center justify-content-center">
+                                            <h2 class="text-center mb-0">Choose QR Code Design!</h2>
+                                        </div>
+                                        <div class="card-body">
+                                            @include('user.pages.qr-code.partials.customize')
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="stepper-item mx-2 my-4" data-kt-stepper-element="nav"
-                                    data-kt-stepper-action="step">
-                                    <div class="stepper-line w-40px"></div>
-
-                                    <div class="stepper-icon w-40px h-40px">
-                                        <i class="stepper-check fas fa-check"></i>
-                                        <span class="stepper-number">4</span>
-                                    </div>
-
-                                    <div class="stepper-label">
-                                        <h3 class="stepper-title">
-                                            Done
-                                        </h3>
+                                <div class="flex-column" data-kt-stepper-element="content">
+                                    <div class="card">
+                                        <div class="pt-5 ps-5">
+                                            <h2 class="text-center">Congratulations!</h2>
+                                            <p class="text-center">Some Information Need To
+                                                Ready The QR</p>
+                                            {{-- <p>Still want to make changes?
+                                                <a href="#">Modify your QR code</a>
+                                            </p> --}}
+                                        </div>
+                                        <div class="card-body px-0">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="pt-5 pb-5">
+                                                        <x-metronic.label for="qr_name"
+                                                            class="form-label">{{ __('Enter a name for your QR code') }}</x-metronic.label>
+                                                        <x-metronic.input id="qr_name" type="text"
+                                                            name="qr_name" :value="old('qr_name')"
+                                                            placeholder="Enter a name for your QR code" required />
+                                                    </div>
+                                                </div>
+                                                <input type="hidden" name="qr_scan_status" value="dynamic">
+                                                {{-- <div class="col-lg-6">
+                                                    <div class="pt-5 pb-5">
+                                                        <x-metronic.label for="status"
+                                                            class="form-label">{{ __('Enter a name for your QR code') }}
+                                                            <span class="text-danger">*</span></x-metronic.label>
+                                                        <select class="form-select" data-control="select2"
+                                                            name="qr_scan_status"
+                                                            data-placeholder="Select an option" required>
+                                                            <option>Select Status</option>
+                                                            <option value="static">Static</option>
+                                                            <option value="dynamic">Dynamic</option>
+                                                        </select>
+                                                    </div>
+                                                </div> --}}
+                                            </div>
+                                            {{-- <div class="w-25 mx-auto">
+                                                <img width="300px"
+                                                    src="https://assets-v2.lottiefiles.com/a/1abcc0d6-1163-11ee-9072-a343231e70f1/HGdrITc8PY.gif"
+                                                    alt="">
+                                            </div> --}}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <form class="form w-100 mx-auto fv-row" novalidate="novalidate" id="generateQRCodeForm"
-                                action="{{ route('user.qr-code.store') }}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <div class="mb-5">
-                                    <div class="flex-column current" data-kt-stepper-element="content">
-                                        <div class="card">
-                                            <div class="row">
-                                                <h2 class="text-center mb-0">Create a Dynamic QR Code</h2>
-                                                <p class="text-center mb-0">Modify content as needed, even after going
-                                                    live.</p>
-                                            </div>
-                                            <div class="card-body">
-                                                @include('user.pages.qr-code.partials.qr_type')
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="flex-column" data-kt-stepper-element="content">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                @include('user.pages.qr-code.partials.form')
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="flex-column" data-kt-stepper-element="content">
-                                        <div class="card">
-                                            <div class="row text-center justify-content-center">
-                                                <h2 class="text-center mb-0">Choose QR Code Design!</h2>
-                                            </div>
-                                            <div class="card-body">
-                                                @include('user.pages.qr-code.partials.customize')
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="flex-column" data-kt-stepper-element="content">
-                                        <div class="card">
-                                            <div class="pt-5 ps-5">
-                                                <h2 class="text-center">Congratulations!</h2>
-                                                <p class="text-center">Some Information Need To
-                                                    Ready The QR</p>
-                                                {{-- <p>Still want to make changes?
-                                                    <a href="#">Modify your QR code</a>
-                                                </p> --}}
-                                            </div>
-                                            <div class="card-body px-0">
-                                                <div class="row">
-                                                    <div class="col-lg-6">
-                                                        <div class="pt-5 pb-5">
-                                                            <x-metronic.label for="qr_name"
-                                                                class="form-label">{{ __('Enter a name for your QR code') }}</x-metronic.label>
-                                                            <x-metronic.input id="qr_name" type="text"
-                                                                name="qr_name" :value="old('qr_name')"
-                                                                placeholder="Enter a name for your QR code" required />
-                                                        </div>
-                                                    </div>
-                                                    <input type="hidden" name="qr_scan_status" value="dynamic">
-                                                    {{-- <div class="col-lg-6">
-                                                        <div class="pt-5 pb-5">
-                                                            <x-metronic.label for="status"
-                                                                class="form-label">{{ __('Enter a name for your QR code') }}
-                                                                <span class="text-danger">*</span></x-metronic.label>
-                                                            <select class="form-select" data-control="select2"
-                                                                name="qr_scan_status"
-                                                                data-placeholder="Select an option" required>
-                                                                <option>Select Status</option>
-                                                                <option value="static">Static</option>
-                                                                <option value="dynamic">Dynamic</option>
-                                                            </select>
-                                                        </div>
-                                                    </div> --}}
-                                                </div>
-                                                {{-- <div class="w-25 mx-auto">
-                                                    <img width="300px"
-                                                        src="https://assets-v2.lottiefiles.com/a/1abcc0d6-1163-11ee-9072-a343231e70f1/HGdrITc8PY.gif"
-                                                        alt="">
-                                                </div> --}}
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div class="d-flex flex-stack">
+                                <div class="me-2">
+                                    <button type="button" class="btn btn-light btn-active-light-primary"
+                                        data-kt-stepper-action="previous">
+                                        Back
+                                    </button>
                                 </div>
 
-                                <div class="d-flex flex-stack">
-                                    <div class="me-2">
-                                        <button type="button" class="btn btn-light btn-active-light-primary"
-                                            data-kt-stepper-action="previous">
-                                            Back
-                                        </button>
-                                    </div>
+                                <div>
 
-                                    <div>
+                                    <button type="submit" id="generateButton" data-kt-stepper-action="submit"
+                                        class="btn btn-primary">{{ __('Generate') }}</button>
 
-                                        <button type="submit" id="generateButton" data-kt-stepper-action="submit"
-                                            class="btn btn-primary">{{ __('Generate') }}</button>
-
-                                        <button type="button" class="btn btn-primary" data-kt-stepper-action="next">
-                                            Continue
-                                        </button>
-                                    </div>
+                                    <button type="button" class="btn btn-primary" data-kt-stepper-action="next">
+                                        Continue
+                                    </button>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3">
-                <div class="card mt-10 bg-transparent shadow-sm ">
-                    {{-- position-fixed --}}
-                    <div class="card-body bg-transparent ">
-                        <div class="d-flex flex-column justify-content-center align-items-center">
-                            {{-- id="generatedQRCodeContainer" --}}
-                            <h3>Preview</h3>
-                            @include('user.pages.qr-code.partials.qr_preview')
-                            {{-- {!! QrCode::size(220)->eye('left-leaf', 0.1)->eyeColor(0, 255, 255, 255, 0, 0, 0)->eyeColor(1, 222, 18, 222, 222, 18, 222)->eyeColor(2, 222, 18, 222, 222, 18, 222)->style('dot', 0.8)->errorCorrection('H')->generate('Make me into a QrCode!') !!} --}}
-                        </div>
-                        <a id="downloadLink" href="javascripti:void()" download
-                            class="btn btn-light btn-primary w-100" style="display: none;">Download</a>
+        </div>
+        <div class="col-lg-3 col-md-5">
+            <div class="card mt-10 bg-transparent shadow-sm position-fixed">
+                {{-- position-fixed --}}
+                <div class="card-body bg-transparent">
+                    <div class="d-flex flex-column justify-content-center align-items-center">
+                        {{-- id="generatedQRCodeContainer" --}}
+                        <h3>Preview</h3>
+                        @include('user.pages.qr-code.partials.qr_preview')
+                        {{-- {!! QrCode::size(220)->eye('left-leaf', 0.1)->eyeColor(0, 255, 255, 255, 0, 0, 0)->eyeColor(1, 222, 18, 222, 222, 18, 222)->eyeColor(2, 222, 18, 222, 222, 18, 222)->style('dot', 0.8)->errorCorrection('H')->generate('Make me into a QrCode!') !!} --}}
                     </div>
+                    <a id="downloadLink" href="javascripti:void()" download
+                        class="btn btn-light btn-primary w-100" style="display: none;">Download</a>
                 </div>
             </div>
         </div>
     </div>
 
     @push('scripts')
-    <script>
-        var form = document.getElementById("generateQRCodeForm");
+        <script>
+            var form = document.getElementById("generateQRCodeForm");
             document.getElementById("generateButton").addEventListener("click", function() {
                 form.submit();
             });
-    </script>
+        </script>
         <script>
-            
             $(document).ready(function() {
 
                 // url: '{{ route('user.restaurant-category.store') }}',
@@ -304,11 +301,37 @@
         </script>
 
         <script>
+            // $(document).ready(function() {
+            //     $('input[name="qr_type"]').change(function() {
+            //         $(".qr-card").hide();
+            //         const qrTemplateValue = $('input[name="qr_type"]:checked').val();
+            //         if (qrTemplateValue != null) {
+            //             $("." + qrTemplateValue).show();
+            //         } else {
+            //             $(".qr-card").hide();
+            //         }
+            //         if (qrTemplateValue == 'coupon_code') {
+            //             $("#generatedQRCodeContainer").hide();
+            //             $("#qrCouponPreview").show();
+            //         } else {
+            //             $("#generatedQRCodeContainer").show();
+            //             $("#qrCouponPreview").hide();
+            //         }
+            //     });
+
+            //     const initiallySelectedValue = $('input[name="qr_type"]:checked').val();
+            //     $("." + initiallySelectedValue).show();
+            // });
             $(document).ready(function() {
-                $('input[name="qr_type"]').change(function() {
+                // Define a function to handle both click and hover events
+                const initiallySelectedValue = $('input[name="qr_type"]:checked').val();
+                if (initiallySelectedValue) {
+                    $("." + initiallySelectedValue).show();
+                }
+
+                function handleQrTypeChange(qrTemplateValue) {
                     $(".qr-card").hide();
-                    const qrTemplateValue = $('input[name="qr_type"]:checked').val();
-                    if (qrTemplateValue != null) {
+                    if (qrTemplateValue) {
                         $("." + qrTemplateValue).show();
                     } else {
                         $(".qr-card").hide();
@@ -320,10 +343,27 @@
                         $("#generatedQRCodeContainer").show();
                         $("#qrCouponPreview").hide();
                     }
-                });
+                }
 
-                const initiallySelectedValue = $('input[name="qr_type"]:checked').val();
-                $("." + initiallySelectedValue).show();
+                // Bind mouseenter and mouseleave events to elements with class qr_type_hover
+                $('.qr_type_hover').on({
+                    mouseenter: function() {
+                        const qrTemplateValue = $(this).find('input[name="qr_type"]').val();
+                        if (qrTemplateValue) {
+                            handleQrTypeChange(qrTemplateValue);
+                        } else {
+                            console.error("Invalid qrTemplateValue: ", qrTemplateValue);
+                        }
+                        // Here you can add additional logic if needed
+                    },
+                    mouseleave: function() {
+                        const initiallySelectedValue = $('input[name="qr_type"]:checked').val();
+                        if (initiallySelectedValue) {
+                            $(".qr-card").hide();
+                            $("." + initiallySelectedValue).show();
+                        }
+                    }
+                });
             });
         </script>
 

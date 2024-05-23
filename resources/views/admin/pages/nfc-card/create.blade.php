@@ -74,7 +74,7 @@
                                             <p class="text-center mb-0">Modify content as needed, even after going
                                                 live.</p>
                                         </div>
-                                        <div class="card-body">
+                                        <div class="card-body p-1">
                                             @include('user.pages.nfc-card.partials.nfc_template')
                                         </div>
                                     </div>
@@ -82,7 +82,7 @@
 
                                 <div class="flex-column" data-kt-stepper-element="content">
                                     <div class="card">
-                                        <div class="card-body">
+                                        <div class="card-body p-1">
                                             @include('user.pages.nfc-card.partials.form')
                                         </div>
                                     </div>
@@ -93,7 +93,7 @@
                                         <div class="text-center justify-content-center my-15">
                                             <h2 class="text-center mb-0">Choose NFC Card Design!</h2>
                                         </div>
-                                        <div class="card-body">
+                                        <div class="card-body p-1">
                                             @include('user.pages.nfc-card.partials.customize')
                                         </div>
                                     </div>

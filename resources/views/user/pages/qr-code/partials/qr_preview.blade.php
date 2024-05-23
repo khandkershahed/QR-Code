@@ -23,9 +23,7 @@
             class="img-fluid generatedQRCode">
     </div>
     <div class="card qr-card mobile_app" style="display: none;">
-        {{-- <img src="{{ asset('frontend/assets/images/qrpreview/mobile') }}" alt="mobile_app" class="img-fluid generatedQRCode"> --}}
-        <img id="generatedQRCode" class="img-fluid generatedQRCode" src="https://i.ibb.co/XzHNWc0/no-qr.png"
-            alt="QR Code">
+        <img src="{{ asset('frontend/assets/images/qrpreview/mobile.png') }}" alt="mobile_app" class="img-fluid generatedQRCode">
     </div>
     <div class="card qr-card call" style="display: none;">
         <img src="{{ asset('frontend/assets/images/qrpreview/call.png') }}" alt="call"

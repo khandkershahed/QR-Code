@@ -177,7 +177,7 @@
 <div class="qr_card_preview">
     <div class="row">
         <div class="col-lg-12">
-            <div class="card p-0 p-lg-2 bg-none border-0 rounded-0 shadow-none bg-transparent image-overlay">
+            <div class="card p-0 p-lg-2 bg-none border-0 rounded-0 shadow-none bg-transparent image-overlay business-page-preview">
                 <div class="card-body px-0">
                     <div class="d-flex justify-content-center">
                         <img class="img-fluid" width="200px"
@@ -186,12 +186,12 @@
                     </div>
                     <div class="text-center p-3">
                         <img class="p-3 img-fluid qr_data_business_page_logo"
-                            style="width: 140px;border-radius: 100%;position: relative;z-index: 15;"
+                            style="width: 100px;border-radius: 100%;position: relative;z-index: 15;"
                             src="https://i.ibb.co/BNBTVN4/logo.png" alt="banner" />
                     </div>
                     <div class="text-center p-3">
                         <h2 class="mb-0 title fw-bold sub_title-2 qr_data_business_page_business_name">
-                            GOFLIXZAS STORE HOUR
+                            GOFLIXZAS <br> STORE HOUR
                         </h2>
                     </div>
                     <div class="divider"></div>

@@ -110,12 +110,11 @@
         background: 0 0;
     }
 
-    .headling-title {
+    .headling-title-social {
         text-align: center;
-        color: var(--white);
         font-family: var(--tem-one-name-font-family);
         font-size: 40px;
-        color: var(--headling-title-color);
+        color: #ff7355;
     }
 
     .divider {
@@ -177,19 +176,13 @@
 <div class="qr_card_preview">
     <div class="row">
         <div class="col-lg-12 d-flex justify-content-center align-items-center px-0">
-            <div class="nfc-mobile-frame shadow-sm"
-                style="
-            background-image: url(https://blackrocket.com/launchpad/wp-content/uploads/2020/03/shapes-bg-color.png);
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            object-fit: fill;
-          ">
+            <div class="nfc-mobile-frame">
                 <div class="card p-0 bg-none border-0 rounded-0 shadow-none bg-transparent" style="overflow-x: hidden">
-                    <div class="card-header bg-none border-0 rounded-0 shadow-none bg-transparent p-0">
+                    <div
+                        class="card-header bg-none border-0 rounded-0 shadow-none bg-transparent p-0 d-flex justify-content-center align-items-center">
                         <div class="text-center text-lg-center mobile-images-profile pt-5">
-                            <img class="p-3 img-fluid qr_data_social_logo"
-                                style="width: 140px;border-radius: 100%;border: 6px solid var(--border-color);position: relative;z-index: 15;"
+                            <img class="p-5 img-fluid qr_data_social_logo"
+                                style="width: 100px;border-radius: 100%;border: 6px solid var(--border-color);position: relative;z-index: 15;"
                                 src="https://my.cybercard.ma/uploads/vcards/profiles/221/smiling-doctor-sitting-isolated-grey_651396-917.jpg"
                                 alt="banner" />
                         </div>
@@ -197,19 +190,19 @@
                     <div class="card-body p-0">
                         <div>
                             <h1 class="fs-3 text-muted text-center qr_data_social_header">Folow Us On !</h1>
-                            <h1 class="headling-title qr_data_social_title">My Social Platform</h1>
+                            <h1 class="headling-title-social qr_data_social_title">My Social Platform</h1>
                             <p class="tex-muted text-center w-50 mx-auto qr_data_social_message">
                                 Lorem ipsum dolor sit amet consectetur, adipisicing
                                 elit. Iure, commodi!
                             </p>
-                        </div> 
+                        </div>
                         <div>
                             <img class="img-fluid qr_data_social_background_image"
                                 src="https://d3nvy39jvu7woe.cloudfront.net/static/images/social_media/social_media_back.png"
                                 alt="" />
                         </div>
                         <div>
-                            <p class="text-center headling-title mb-0">Check Here</p>
+                            <p class="text-center headling-title-social mb-0">Check Here</p>
                             <div class="divider"></div>
                         </div>
                         <div class="row">
@@ -223,43 +216,52 @@
                                             </i>
                                         </a>
                                     </li>
-                                    <li class="qr_data_social_instagram_icon qr_data_social_icon" style="display: none;">
-                                        <a href="" class="qr_data_social_instagram"><i class="fab fa-instagram link-icon"
-                                                title="INSTAGRAM"></i></a>
+                                    <li class="qr_data_social_instagram_icon qr_data_social_icon"
+                                        style="display: none;">
+                                        <a href="" class="qr_data_social_instagram"><i
+                                                class="fab fa-instagram link-icon" title="INSTAGRAM"></i></a>
                                     </li>
                                     <li class="qr_data_social_linkedin_icon qr_data_social_icon" style="display: none;">
-                                        <a href="" class="qr_data_social_linkedin"><i class="fab fa-linkedin link-icon" title="LINKEDIN"></i></a>
+                                        <a href="" class="qr_data_social_linkedin"><i
+                                                class="fab fa-linkedin link-icon" title="LINKEDIN"></i></a>
                                     </li>
                                     <li class="qr_data_social_twitter_icon qr_data_social_icon" style="display: none;">
-                                        <a href="" class="qr_data_social_twitter"><i class="fab fa-twitter link-icon" title="TWITTER"></i></a>
+                                        <a href="" class="qr_data_social_twitter"><i
+                                                class="fab fa-twitter link-icon" title="TWITTER"></i></a>
                                     </li>
                                 </ul>
                                 <ul class="d-flex justify-content-center align-items-center ps-0"
                                     style="list-style-type: none">
                                     <li class="qr_data_social_youtube_icon qr_data_social_icon" style="display: none;">
-                                        <a href="" class="qr_data_social_youtube"><i class="fab fa-youtube link-icon" title="YOUTUBE"></i></a>
+                                        <a href="" class="qr_data_social_youtube"><i
+                                                class="fab fa-youtube link-icon" title="YOUTUBE"></i></a>
                                     </li>
-                                    <li class="qr_data_social_pinterest_icon qr_data_social_icon" style="display: none;">
-                                        <a href="" class="qr_data_social_pinterest"><i class="fab fa-pinterest link-icon"
-                                                title="PINTEREST"></i></a>
+                                    <li class="qr_data_social_pinterest_icon qr_data_social_icon"
+                                        style="display: none;">
+                                        <a href="" class="qr_data_social_pinterest"><i
+                                                class="fab fa-pinterest link-icon" title="PINTEREST"></i></a>
                                     </li>
                                     <li class="qr_data_social_website_icon qr_data_social_icon" style="display: none;">
-                                        <a href="" class="qr_data_social_website"><i class="fab fa-globe link-icon" title="Website"></i></a>
+                                        <a href="" class="qr_data_social_website"><i
+                                                class="fab fa-globe link-icon" title="Website"></i></a>
                                     </li>
                                 </ul>
                                 <ul class="d-flex justify-content-center align-items-center ps-0"
                                     style="list-style-type: none">
                                     <li class="qr_data_social_whatsapp_icon qr_data_social_icon" style="display: none;">
-                                        <a href="" class="qr_data_social_whatsapp"><i class="fab fa-whatsapp link-icon" title="WHATSAPP"></i></a>
+                                        <a href="" class="qr_data_social_whatsapp"><i
+                                                class="fab fa-whatsapp link-icon" title="WHATSAPP"></i></a>
                                     </li>
                                     <li class="qr_data_social_snapchat_icon qr_data_social_icon" style="display: none;">
-                                        <a href="" class="qr_data_social_snapchat"><i class="fab fa-snapchat link-icon" title="SNAPCHAT"></i></a>
+                                        <a href="" class="qr_data_social_snapchat"><i
+                                                class="fab fa-snapchat link-icon" title="SNAPCHAT"></i></a>
                                     </li>
                                 </ul>
                                 <ul class="d-flex justify-content-center align-items-center ps-0"
                                     style="list-style-type: none">
                                     <li class="qr_data_social_tiktok_icon qr_data_social_icon" style="display: none;">
-                                        <a href="" class="qr_data_social_tiktok"><i class="fab fa-tiktok link-icon" title="TIKTOK"></i></a>
+                                        <a href="" class="qr_data_social_tiktok"><i
+                                                class="fab fa-tiktok link-icon" title="TIKTOK"></i></a>
                                     </li>
                                 </ul>
                             </div>

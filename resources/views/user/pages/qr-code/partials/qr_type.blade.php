@@ -86,7 +86,7 @@
     [
         'id' => 13,
         'value' => 'restaurant',
-        'title' => 'Restaurant Menu',
+        'title' => 'Restaurant',
         'text' => 'Link to your restaurant and upload menu',
         'image' => 'https://i.ibb.co/kx55Xpv/Restaurant-Icon.png',
     ],

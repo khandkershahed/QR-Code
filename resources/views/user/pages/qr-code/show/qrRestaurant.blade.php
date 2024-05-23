@@ -69,8 +69,6 @@
       .nfc-mobile-frame {
         width: 100%;
         max-width: 576px;
-        min-height: 100vh;
-        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
         border-radius: 20px;
         overflow: hidden;
         position: relative;
@@ -81,7 +79,6 @@
         background-color: var(--white);
         width: 100%;
         max-width: 576px;
-        min-height: 100vh;
         border-radius: 20px;
       }
 
@@ -189,7 +186,7 @@
                             <h1
                               class="text-white mb-0"
                               style="
-                                font-size: 80px;
+                                font-size: 5rem;
                                 font-family: var(--tem-one-name-font-family);
                               "
                             >

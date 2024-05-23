@@ -47,7 +47,6 @@
         .nfc-mobile-frame {
             max-width: 576px;
             width: 576px;
-            min-height: 100vh;
             /* border: 2px solid #1026bf; */
             border-radius: 20px;
             overflow: hidden;
@@ -85,7 +84,7 @@
             text-align: center;
             color: var(--white);
             font-family: var(--tem-one-name-font-family);
-            font-size: 70px;
+            font-size: 4.375rem;
             color: var(--white);
         }
 

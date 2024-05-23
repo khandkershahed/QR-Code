@@ -6,8 +6,6 @@
     .nfc-mobile-frame {
         width: 100%;
         max-width: 576px;
-        min-height: 100vh;
-        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
         border-radius: 20px;
         overflow: hidden;
         position: relative;
@@ -18,7 +16,6 @@
         background-color: var(--white);
         width: 100%;
         max-width: 576px;
-        min-height: 100vh;
         border-radius: 20px;
     }
 
@@ -90,13 +87,13 @@
             display: none;
         }
     }
-</style> 
+</style>
 
 <div class="qr_card_preview">
     <div class="row">
         <div class="col-lg-12 d-flex justify-content-center align-items-center px-0">
             <div class="nfc-mobile-frame rounded-0">
-                <div class="card p-0 rounded-0">
+                <div class="card p-0 rounded-0" style="overflow-x: hidden">
                     <div class="card-body p-0 rounded-0 row">
                         <div class="col-lg-6 pe-0 d-flex justify-content-center align-items-center"
                             style="
@@ -120,7 +117,7 @@
                                         </h3>
                                         <h1 class="text-white mb-0"
                                             style="
-                                font-size: 80px;
+                                font-size: 5rem;
                                 font-family: var(--tem-one-name-font-family);
                               ">
                                             Menu
@@ -130,10 +127,10 @@
                                             elit. Omnis, ipsam.
                                         </p>
                                         <a href=""
-                                            class="text-decoration-none text-black bg-white p-2 rounded-2">Call Now:
+                                            class="text-decoration-none text-black bg-white p-2 rounded-2 for-device-text">Call Now:
                                             01576614451</a>
                                         <div class="mt-4">
-                                            <a href="" class="btn btn-danger">View Location</a>
+                                            <a href="" class="btn btn-danger for-device-text">View Location</a>
                                         </div>
                                     </div>
                                 </div>
@@ -143,7 +140,7 @@
                             <h4>All Menus</h4>
                             <div class="w-100 d-flex flex-column justify-content-center align-items-center">
                                 <!-- First Menu -->
-                                <div class="row align-items-center w-100 ps-2"
+                                <div class="row align-items-center w-100"
                                     style="
                             border-top: 1px dashed #e92c28;
                             background: white;
@@ -164,7 +161,7 @@
                                 </div>
                                 <!-- Menu End -->
                                 <!-- First Menu -->
-                                <div class="row align-items-center w-100 ps-2"
+                                <div class="row align-items-center w-100"
                                     style="
                             border-top: 1px dashed #e92c28;
                             background: white;

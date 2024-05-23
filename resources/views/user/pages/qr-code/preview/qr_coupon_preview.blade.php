@@ -87,8 +87,7 @@
         <p class="mb-0" style="text-align: justify">
             <span class="text-danger fw-bolder">NB: Terms & Condition</span>
             <span class="qr_data_coupon_policy">Lorem ipsum dolor sit amet consectetur adipisicing elit. In
-                eum ea laudantium incidunt corrupti et alias laborum
-                impedit, veritatis maiores incidunt corrupti.</span>
+                eum ea laudantium incidunt corrupti et alias laborum</span>
         </p>
     </div>
     <div class="mx-auto px-0 px-lg-5">
