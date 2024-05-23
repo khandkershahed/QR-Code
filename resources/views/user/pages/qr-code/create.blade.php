@@ -177,7 +177,7 @@
             </div>
         </div>
         <div class="col-lg-3 col-md-5">
-            <div class="card mt-10 bg-transparent shadow-sm position-fixed">
+            <div class="card mt-10 bg-transparent shadow-sm">
                 {{-- position-fixed --}}
                 <div class="card-body bg-transparent">
                     <div class="d-flex flex-column justify-content-center align-items-center">
