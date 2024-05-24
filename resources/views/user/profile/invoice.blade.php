@@ -160,6 +160,7 @@
                             id="kt_datatable_example">
                             <thead>
                                 <tr>
+                                    <th>Invoice No</th>
                                     <th>Date</th>
                                     <th>Total</th>
                                     <th>Download</th>
@@ -167,7 +168,9 @@
                             </thead>
                             <tbody>
                                 @forelse ($invoices as $invoice)
+                                {{-- @dd($invoice) --}}
                                     <tr>
+                                        <td>{{ $invoice->number }}</td>
                                         <td>{{ $invoice->date()->toFormattedDateString() }}</td>
                                         <td>{{ $invoice->total() }}</td>
                                         <td>
@@ -200,7 +203,7 @@
                         </div>
                     </div>
                     <div class="modal-body">
-                        <p><strong>ID:</strong> {{ $invoice->id }}</p>
+                        <p><strong>Invoice:</strong> {{ $invoice->number }}</p>
                         <p><strong>Date:</strong> {{ $invoice->date()->toFormattedDateString() }}</p>
                         <p><strong>Total:</strong> {{ $invoice->total() }}</p>
                         <p><strong>Status:</strong> {{ $invoice->status }}</p>
