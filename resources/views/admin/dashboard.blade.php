@@ -20,22 +20,22 @@
 
                     <div class="card-body d-flex align-items-end mb-3">
                         <div class="d-flex align-items-center">
-                            <span class="fs-4hx text-white fw-bold me-6">1.2k</span>
+                            <span class="fs-4hx text-white fw-bold me-6">{{ $qrs->count() }}</span>
 
                             <div class="fw-bold fs-6 text-white">
-                                <span class="d-block">Inbound</span>
-                                <span class="">Calls</span>
+                                <span class="d-block">QR Code</span>
+                                <span class="">Generated</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="card-footer"
+                    {{-- <div class="card-footer"
                         style="border-top: 1px solid rgba(255, 255, 255, 0.3);background: rgba(0, 0, 0, 0.15);">
                         <div class="fw-bold text-white py-2">
                             <span class="fs-1 d-block">935</span>
                             <span class="opacity-50">Problems Solved</span>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
 
@@ -54,22 +54,22 @@
 
                     <div class="card-body d-flex align-items-end mb-3">
                         <div class="d-flex align-items-center">
-                            <span class="fs-4hx text-white fw-bold me-6">427</span>
+                            <span class="fs-4hx text-white fw-bold me-6">{{ $nfc_cards->count() }}</span>
 
                             <div class="fw-bold fs-6 text-white">
-                                <span class="d-block">Outbound</span>
-                                <span class="">Calls</span>
+                                <span class="d-block">NFC Card</span>
+                                <span class="">Created</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="card-footer"
+                    {{-- <div class="card-footer"
                         style="border-top: 1px solid rgba(255, 255, 255, 0.3);background: rgba(0, 0, 0, 0.15);">
                         <div class="fw-bold text-white py-2">
                             <span class="fs-1 d-block">386</span>
                             <span class="opacity-50">Generated Leads</span>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
 

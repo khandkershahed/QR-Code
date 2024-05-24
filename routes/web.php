@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminProfileController;
@@ -90,9 +91,9 @@ Route::post('newsletter/store', [NewsLetterController::class, 'store'])
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/admin/dashboard', function () {
-    return view('admin/dashboard');
-})->middleware(['auth:admin', 'verified'])->name('admin.dashboard');
+// Route::get('/admin/dashboard', function () {
+//     return view('admin/dashboard');
+// })->middleware(['auth:admin', 'verified'])->name('admin.dashboard');
 
 
 Route::middleware('auth')->group(function () {
@@ -104,6 +105,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', [AuthenticatedSessionController::class, 'dashboard'])->name('dashboard');
     Route::get('/profile', [AdminProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [AdminProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [AdminProfileController::class, 'destroy'])->name('profile.destroy');
