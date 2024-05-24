@@ -168,17 +168,19 @@ class QrCodeController extends Controller
     {
 
         $typePrefix = 'QR'; // Example prefix
-        // $today = Carbon::now()->format('dmY');
         $today = date('dmY');
         $userId = Auth::user()->id;
+
+        // Find the last QR code generated for this user today
         $lastCode = Qr::where('code', 'like', $typePrefix . $today . $userId . '%')
             ->orderBy('id', 'desc')
             ->first();
 
         // Determine the new number for the QR code
-        $newNumber = $lastCode ? (int)substr($lastCode->code, -1) + 1 : 1;
+        $newNumber = $lastCode ? (int)substr($lastCode->code, -2) + 1 : 1;
 
-        $code = $typePrefix . $today . $userId . $newNumber;
+        // Generate the new QR code
+        $code = $typePrefix . $today . $userId . str_pad($newNumber, 2, '0', STR_PAD_LEFT);
 
 
 
@@ -493,7 +495,7 @@ class QrCodeController extends Controller
             }
 
             if (!empty($qr_logo)) {
-                $qrCode->merge($logoFullPath, 0.2, true);
+                $qrCode->merge($logoFullPath, $qr_logo_size, true);
             }
             if (!empty($qr_eye_ball)) {
                 $qrCode->eye($qr_eye_ball, 0.5);
@@ -632,39 +634,31 @@ class QrCodeController extends Controller
 
         // Upload logo file if provided
         // Handle QR Logo
-        // if ($request->hasFile('qr_logo')) {
-        //     $logo = $request->file('qr_logo');
-        //     if ($logo->isValid()) {
-        //         $code = $request->input('code');
-        //         $fileName = $qr->code . '.' . $logo->getClientOriginalExtension();
+        if ($request->hasFile('qr_logo')) {
+            $logo = $request->file('qr_logo');
+            if ($logo->isValid()) {
+                // Load the original logo image using GD
+                $originalImage = imagecreatefromstring(file_get_contents($logo->getPathname()));
+                $logoWidth = imagesx($originalImage);
+                $logoHeight = imagesy($originalImage);
 
-        //         // Load the original logo image using GD
-        //         $originalImage = imagecreatefromstring(file_get_contents($logo->getPathname()));
-        //         $logoWidth = imagesx($originalImage);
-        //         $logoHeight = imagesy($originalImage);
+                // Create a new image with a light background
+                $background = imagecreatetruecolor($logoWidth, $logoHeight);
+                $backgroundColor = imagecolorallocate($background, 175, 175, 175); // Light gray color
+                imagefill($background, 0, 0, $backgroundColor);
 
-        //         // Create a new image with a light background
-        //         $background = imagecreatetruecolor($logoWidth, $logoHeight);
-        //         $backgroundColor = imagecolorallocate($background, 175, 175, 175); // Light gray color
-        //         imagefill($background, 0, 0, $backgroundColor);
+                // Merge the original logo with the background
+                imagecopy($background, $originalImage, 0, 0, 0, 0, $logoWidth, $logoHeight);
 
-        //         // Merge the original logo with the background
-        //         imagecopy($background, $originalImage, 0, 0, 0, 0, $logoWidth, $logoHeight);
+                // Save the merged image
+                $logoPath = $qr_logo->getRealPath();
+                imagepng($background, $logoPath);
 
-        //         // Save the merged image
-        //         $logoPath = 'public/qr_codes/logos/' . $fileName;
-        //         $logoFPath = $logo->storeAs('public/qr_codes/logos', $fileName);
-        //         $logoFullPath = storage_path('app/' . $logoFPath);
-        //         imagepng($background, storage_path('app/' . $logoPath));
-
-        //         // Free up memory
-        //         imagedestroy($originalImage);
-        //         imagedestroy($background);
-
-        //         // Save the logo path to the corresponding QR record
-        //         $qr->update(['qr_logo' => $logoPath]);
-        //     }
-        // }
+                // Free up memory
+                imagedestroy($originalImage);
+                imagedestroy($background);
+            }
+        }
 
 
 
@@ -682,7 +676,7 @@ class QrCodeController extends Controller
         // Add the logo to the QR code
         if ($qr_logo) {
             $logoPath = $qr_logo->getRealPath();
-            $qrCode->merge($logoPath, 0.2, true, $qr_logo_size);
+            $qrCode->merge($logoPath, $qr_logo_size, true);
         }
         if (!empty($qr_eye_ball_color)) {
             $qrCode->eyeColor(0, $qr_eye_ball_color['r'], $qr_eye_ball_color['g'], $qr_eye_ball_color['b'], $qr_eye_frame_color['r'], $qr_eye_frame_color['g'], $qr_eye_frame_color['b'],);

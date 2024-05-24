@@ -164,7 +164,16 @@
                     </div>
                     <div class="ps-4">
                         <x-metronic.label for="qr_logo_size" class="form-label">{{ __('Logo Size (in Pixel)') }}</x-metronic.label>
-                        <x-metronic.input id="qr_logo_size" type="number" name="qr_logo_size" :value="old('qr_logo_size')" placeholder="Logo Size(Eg: 5, 10, 15....)" />
+                        {{-- <x-metronic.input id="qr_logo_size" type="number" name="qr_logo_size" :value="old('qr_logo_size')" placeholder="Logo Size(Eg: 5, 10, 15....)" /> --}}
+                        <select class="form-select form-select-sm mt-3 w-25" name="qr_logo_size" aria-label="Default select example">
+                            {{-- <option value="0.3">None</option> --}}
+                            <option value="0.2" >20%</option>
+                            <option value="0.3" >30%</option>
+                            <option value="0.5">50%</option>
+                            <option value="0.6">60%</option>
+                            {{-- <option value="inverse_diagonal">Inverse_Diagonal</option>
+                            <option value="radial">Radial</option> --}}
+                        </select>
                     </div>
                 </div>
                 {{-- <p class="text-start pt-5 mb-0">Or Select From Our
