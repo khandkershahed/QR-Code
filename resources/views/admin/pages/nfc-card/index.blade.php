@@ -24,7 +24,7 @@
             <div class="card card-p-0 card-flush p-3 pt-0">
                 <div class="card-header align-items-center py-5 gap-2 gap-md-5">
                     <div class="card-title">
-                        <h2 class="mb-0">View and manage your NFC Cards</h2>
+                        <h2 class="mb-0">View and manage your NFC Cards | Total NFC Card Generated :  {{$nfc_cards->count()}}</h2>
                     </div>
                     <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
                         <a href="{{ route('user.nfc-card.create') }}" class="btn btn-sm btn-primary rounded-2 me-3">
@@ -35,7 +35,7 @@
                 <div class="card-body">
                     <table
                         class="table align-middle border rounded table-row-dashed table-striped table-hover  fs-6 g-5"
-                        id="qr_code">
+                        id="nfc_card">
                         <thead>
                             <tr class="text-gray-500 fw-bold fs-7 text-uppercase">
                                 <th class="">SL</th>
@@ -170,7 +170,7 @@
                         <div class="card">
                             <table
                                 class="table align-middle border rounded table-row-dashed table-striped table-hover  fs-6 g-5"
-                                id="qr_code">
+                                id="nfc_card">
                                 <thead>
                                     <tr class="text-gray-500 fw-bold fs-7 text-uppercase">
                                         <th width="10%">NAME </th>
@@ -302,11 +302,11 @@
                                 title: documentTitle
                             }
                         ]
-                    }).container().appendTo($('#qr_code_buttons'));
+                    }).container().appendTo($('#nfc_card_buttons'));
 
                     // Hook dropdown menu click event to datatable export buttons
                     const exportButtons = document.querySelectorAll(
-                        '#qr_code_export_menu [data-kt-export]');
+                        '#nfc_card_export_menu [data-kt-export]');
                     exportButtons.forEach(exportButton => {
                         exportButton.addEventListener('click', e => {
                             e.preventDefault();
@@ -333,7 +333,7 @@
                 // Public methods
                 return {
                     init: function() {
-                        table = document.querySelector('#qr_code');
+                        table = document.querySelector('#nfc_card');
 
                         if (!table) {
                             return;
