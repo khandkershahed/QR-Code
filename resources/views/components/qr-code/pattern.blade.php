@@ -1,5 +1,5 @@
 @props([
-    'eyeBalls' => [],
+    'patterns' => [],
     'selectedQrPattern' => null, // Default to null if not provided
 ])
 
