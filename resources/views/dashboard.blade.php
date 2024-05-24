@@ -537,7 +537,7 @@
                             </p>
                             <div class="py-5 mb-15">
                                 <h1 class="text-center mb-0 fw-bold" style="color: orangered;">Thank you for trying
-                                    our Premium service!</h1>
+                                    our <br> Premium service!</h1>
                             </div>
                             <div>
                                 <div id="countdown">
