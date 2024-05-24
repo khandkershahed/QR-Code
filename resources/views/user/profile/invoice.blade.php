@@ -151,11 +151,7 @@
                     <div class="card-title">
                         <h2 class="mb-0">Manage All Invoices | Total : {{ $invoices->count() }} </h2>
                     </div>
-                    <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
-                        <a href="{{ route('user.qr-code.create') }}" class="btn btn-sm btn-primary rounded-2 me-3">
-                            Create QR Codes
-                        </a>
-                    </div>
+
                 </div>
                 <div class="card-body">
                     <div>
@@ -175,7 +171,8 @@
                                         <td>{{ $invoice->date()->toFormattedDateString() }}</td>
                                         <td>{{ $invoice->total() }}</td>
                                         <td>
-                                            <a href="{{ route('invoices.download', $invoice->id) }}"
+                                            <a class="btn btn-info" data-bs-toggle="modal" data-bs-target="#invoiceViewModal_{{ $invoice->id }}">View Details</a>
+                                            <a href="{{ $invoice->invoice_pdf }}" target="_blank"
                                                 class="btn btn-primary">Download</a>
                                         </td>
                                     </tr>
@@ -191,6 +188,41 @@
             </div>
         </div>
     </div>
+    @foreach ($invoices as $invoice)
+        <div class="modal fade" id="invoiceViewModal_{{ $invoice->id }}" data-backdrop="static">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content rounded-0 border-0 shadow-sm">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="invoiceModalLabel{{ $invoice->id }}">Invoice Details</h5>
+                        <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
+                            aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>ID:</strong> {{ $invoice->id }}</p>
+                        <p><strong>Date:</strong> {{ $invoice->date()->toFormattedDateString() }}</p>
+                        <p><strong>Total:</strong> {{ $invoice->total() }}</p>
+                        <p><strong>Status:</strong> {{ $invoice->status }}</p>
+                        <p><strong>Customer:</strong> {{ $invoice->customer_name }} ({{ $invoice->customer_email }})
+                        </p>
+                        <h5>Items</h5>
+                        <ul>
+                            @foreach ($invoice->lines->data as $line)
+                                <li>{{ $line->description }}: {{ $line->amount }}</li>
+                            @endforeach
+                        </ul>
+                        <h5>Invoice PDF</h5>
+                        <a href="{{ $invoice->invoice_pdf }}" target="_blank">Download PDF</a>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Invoice Details Modal -->
+    @endforeach
     @push('scripts')
     @endpush
 </x-app-layout>

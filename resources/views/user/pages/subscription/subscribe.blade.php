@@ -23,11 +23,10 @@
                                             <td class="text-muted">
                                                 <div class="d-flex align-items-center">
                                                     <i class="ki-duotone ki-calendar fs-2 me-2"><span
-                                                            class="path1"></span><span class="path2"></span></i> Date
-                                                    Added
+                                                            class="path1"></span><span class="path2"></span></i> Order Date
                                                 </div>
                                             </td>
-                                            <td class="fw-bold text-end">24/05/2024</td>
+                                            <td class="fw-bold text-end">{{ date('d-m-y') }}</td>
                                         </tr>
                                         <tr>
                                             <td class="text-muted">
@@ -234,190 +233,31 @@
                                         </div>
                                     </div>
                                     <div class="card-body pt-0">
-                                        <form id="payment-form"
-                                            class="form fv-plugins-bootstrap5 fv-plugins-framework"
-                                            action="{{ route('user.subscription.create') }}" method="POST"
-                                            id="payment-form">
+                                        <form id="payment-form" action="{{ route('user.subscription.create') }}" method="POST">
                                             @csrf
-                                            <div class="d-flex flex-column mb-7 fv-row fv-plugins-icon-container">
-                                                <label
-                                                    class="d-flex align-items-center fs-6 fw-semibold form-label mb-2">
-                                                    <span class="required">Name On Card</span>
+                                            <input type="hidden" name="plan" id="plan" value="{{ $plan->id }}">
 
-
-                                                    <span class="ms-1" data-bs-toggle="tooltip"
-                                                        aria-label="Specify a card holder's name"
-                                                        data-bs-original-title="Specify a card holder's name"
-                                                        data-kt-initialized="1">
-                                                        <i class="ki-duotone ki-information-5 text-gray-500 fs-6"><span
-                                                                class="path1"></span><span
-                                                                class="path2"></span><span
-                                                                class="path3"></span></i></span> </label>
-
-                                                <input type="text" class="form-control form-control-solid"
-                                                    placeholder="" name="card_name" value="Max Doe">
-                                                <div
-                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
-                                                </div>
-                                            </div>
-
-                                            <div class="d-flex flex-column mb-7 fv-row fv-plugins-icon-container">
-                                                <label class="required fs-6 fw-semibold form-label mb-2">Card
-                                                    Number</label>
-
-                                                <div class="position-relative">
-                                                    <div id="card-element"></div>
-
-                                                    {{-- <div
-                                                    class="position-absolute translate-middle-y top-50 end-0 me-5">
-                                                    <img src="https://preview.keenthemes.com/metronic8/demo1/assets/media/svg/card-logos/american-express.svg"
-                                                        alt="" class="h-25px">
-                                                </div> --}}
-                                                </div>
-                                                <div
-                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
-                                                </div>
-                                            </div>
-
-                                            <div class="row mb-10">
-                                                <div class="col-md-8 fv-row">
-                                                    <label class="required fs-6 fw-semibold form-label mb-2">Expiration
-                                                        Date</label>
-
-                                                    <div class="row fv-row fv-plugins-icon-container">
-                                                        <div class="col-6">
-                                                            <select name="card_expiry_month"
-                                                                class="form-select form-select-solid select2-hidden-accessible"
-                                                                data-control="select2" data-hide-search="true"
-                                                                data-placeholder="Month"
-                                                                data-select2-id="select2-data-21-0539" tabindex="-1"
-                                                                aria-hidden="true" data-kt-initialized="1">
-                                                                <option data-select2-id="select2-data-23-ctfx">
-                                                                </option>
-                                                                <option value="1">1</option>
-                                                                <option value="2">2</option>
-                                                                <option value="3">3</option>
-                                                                <option value="4">4</option>
-                                                                <option value="5">5</option>
-                                                                <option value="6">6</option>
-                                                                <option value="7">7</option>
-                                                                <option value="8">8</option>
-                                                                <option value="9">9</option>
-                                                                <option value="10">10</option>
-                                                                <option value="11">11</option>
-                                                                <option value="12">12</option>
-                                                            </select><span
-                                                                class="select2 select2-container select2-container--bootstrap5"
-                                                                dir="ltr" data-select2-id="select2-data-22-8awd"
-                                                                style="width: 100%;"><span class="selection"><span
-                                                                        class="select2-selection select2-selection--single form-select form-select-solid"
-                                                                        role="combobox" aria-haspopup="true"
-                                                                        aria-expanded="false" tabindex="0"
-                                                                        aria-disabled="false"
-                                                                        aria-labelledby="select2-card_expiry_month-w4-container"
-                                                                        aria-controls="select2-card_expiry_month-w4-container"><span
-                                                                            class="select2-selection__rendered"
-                                                                            id="select2-card_expiry_month-w4-container"
-                                                                            role="textbox" aria-readonly="true"
-                                                                            title="Month"><span
-                                                                                class="select2-selection__placeholder">Month</span></span><span
-                                                                            class="select2-selection__arrow"
-                                                                            role="presentation"><b
-                                                                                role="presentation"></b></span></span></span><span
-                                                                    class="dropdown-wrapper"
-                                                                    aria-hidden="true"></span></span>
-                                                            <div
-                                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-6">
-                                                            <select name="card_expiry_year"
-                                                                class="form-select form-select-solid select2-hidden-accessible"
-                                                                data-control="select2" data-hide-search="true"
-                                                                data-placeholder="Year"
-                                                                data-select2-id="select2-data-24-trp5" tabindex="-1"
-                                                                aria-hidden="true" data-kt-initialized="1">
-                                                                <option data-select2-id="select2-data-26-2m5x">
-                                                                </option>
-                                                                <option value="2024">2024</option>
-                                                                <option value="2025">2025</option>
-                                                                <option value="2026">2026</option>
-                                                                <option value="2027">2027</option>
-                                                                <option value="2028">2028</option>
-                                                                <option value="2029">2029</option>
-                                                                <option value="2030">2030</option>
-                                                                <option value="2031">2031</option>
-                                                                <option value="2032">2032</option>
-                                                                <option value="2033">2033</option>
-                                                                <option value="2034">2034</option>
-                                                            </select><span
-                                                                class="select2 select2-container select2-container--bootstrap5"
-                                                                dir="ltr" data-select2-id="select2-data-25-7i1j"
-                                                                style="width: 100%;"><span class="selection"><span
-                                                                        class="select2-selection select2-selection--single form-select form-select-solid"
-                                                                        role="combobox" aria-haspopup="true"
-                                                                        aria-expanded="false" tabindex="0"
-                                                                        aria-disabled="false"
-                                                                        aria-labelledby="select2-card_expiry_year-r6-container"
-                                                                        aria-controls="select2-card_expiry_year-r6-container"><span
-                                                                            class="select2-selection__rendered"
-                                                                            id="select2-card_expiry_year-r6-container"
-                                                                            role="textbox" aria-readonly="true"
-                                                                            title="Year"><span
-                                                                                class="select2-selection__placeholder">Year</span></span><span
-                                                                            class="select2-selection__arrow"
-                                                                            role="presentation"><b
-                                                                                role="presentation"></b></span></span></span><span
-                                                                    class="dropdown-wrapper"
-                                                                    aria-hidden="true"></span></span>
-                                                            <div
-                                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 fv-row fv-plugins-icon-container">
-                                                    <label
-                                                        class="d-flex align-items-center fs-6 fw-semibold form-label mb-2">
-                                                        <span class="required">CVV</span>
-                                                        <span class="ms-1" data-bs-toggle="tooltip"
-                                                            aria-label="Enter a card CVV code"
-                                                            data-bs-original-title="Enter a card CVV code"
-                                                            data-kt-initialized="1">
-                                                            <i class="ki-duotone ki-information-5 text-gray-500 fs-6"><span
-                                                                    class="path1"></span><span
-                                                                    class="path2"></span><span
-                                                                    class="path3"></span></i></span> </label>
-
-                                                    <div class="position-relative">
-                                                        <input type="text" class="form-control form-control-solid"
-                                                            minlength="3" maxlength="4" placeholder="CVV"
-                                                            name="card_cvv">
-                                                        <div
-                                                            class="position-absolute translate-middle-y top-50 end-0 me-3">
-                                                            <i class="ki-duotone ki-credit-cart fs-2hx"><span
-                                                                    class="path1"></span><span
-                                                                    class="path2"></span></i>
-                                                        </div>
-                                                    </div>
-                                                    <div
-                                                        class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
+                                            <div class="row mb-4">
+                                                <div class="col-xl-4 col-lg-4">
+                                                    <div class="form-group">
+                                                        <label for="">Name On Card</label>
+                                                        <input type="text" name="name" id="card-holder-name" class="form-control rounded-1" value="" placeholder="Name on the card">
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="text-end pt-15">
-                                                <button type="submit" id="kt_modal_new_card_submit"
-                                                    class="btn btn-primary">
-                                                    <span class="indicator-label">
-                                                        Pay Now
-                                                    </span>
-                                                    <span class="indicator-progress">
-                                                        Please wait... <span
-                                                            class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                                                    </span>
-                                                </button>
+
+                                            <div class="row">
+                                                <div class="col-xl-12 col-lg-12">
+                                                    <div class="form-group">
+                                                        <label for="">Card details</label>
+                                                        <div id="card-element"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-12 col-lg-12 text-end">
+                                                    <button type="submit" class="btn btn-primary" id="card-button" data-secret="{{ $intent->client_secret }}">Purchase</button>
+                                                </div>
                                             </div>
+
                                         </form>
                                     </div>
 

@@ -100,6 +100,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::get('/my-plan', [ProfileController::class, 'userPlan'])->name('user.plan');
     Route::get('/my-invoices', [ProfileController::class, 'userInvoice'])->name('user.invoice');
+    Route::get('/invoices/details/{invoice}', [ProfileController::class, 'userInvoiceShow'])->name('user.invoices.show');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });

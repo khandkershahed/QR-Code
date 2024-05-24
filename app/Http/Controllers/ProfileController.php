@@ -42,6 +42,13 @@ class ProfileController extends Controller
         ];
         return view('user.profile.invoice', $data);
     }
+
+    public function userInvoiceShow(Request $request, $invoiceId)
+    {
+        $invoice = $request->user()->findInvoice($invoiceId);
+
+        return response()->json($invoice);
+    }
     public function edit(Request $request): View
     {
         // dd($request->input('device'));
