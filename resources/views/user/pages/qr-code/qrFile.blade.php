@@ -43,6 +43,20 @@
             margin-left: auto !important;
             margin-right: auto !important;
         }
+
+        @media only screen and (max-width: 767px) {
+            .responsive-wrapper-wxh-572x612 {
+                padding-bottom: 107%;
+                height: 550px;
+            }
+
+            #Iframe-Master-CC-and-Rs {
+                max-width: 512px;
+                max-height: 100%;
+                height: 550px;
+                overflow: hidden;
+            }
+        }
     </style>
     <div class="container">
         <div class="row mb-5 text-center">
@@ -107,7 +121,9 @@
                            responsive-wrapper-wxh-572x612"
                                 style="-webkit-overflow-scrolling: touch; overflow: auto;">
                                 <audio controls autoplay>
-                                    <source src="{{ asset('storage/qr_codes/audios/' . $qr->qrData->qr_data_audio_file) }}" type="audio/mpeg">
+                                    <source
+                                        src="{{ asset('storage/qr_codes/audios/' . $qr->qrData->qr_data_audio_file) }}"
+                                        type="audio/mpeg">
                                     Your browser does not support the audio element.
                                 </audio>
 
