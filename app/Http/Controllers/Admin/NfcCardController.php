@@ -10,6 +10,7 @@ use App\Models\Admin\NfcData;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Stevebauman\Location\Facades\Location;
@@ -23,10 +24,16 @@ class NfcCardController extends Controller
      */
     public function index()
     {
-        $data = [
-            'nfc_cards' => NfcCard::with('nfcData', 'nfcMessages')->where('user_id', Auth::user()->id)->latest('id')->get(),
-        ];
-        return view('user.pages.nfc-card.index', $data);
+        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
+
+        $nfc_cards = $isUserRoute ?
+            NfcCard::with('nfcData', 'nfcMessages')->where('user_id', Auth::user()->id)->latest('id')->get() :
+            NfcCard::with('nfcData', 'nfcMessages')->latest('id')->get();
+
+        $view = $isUserRoute ? 'user.pages.nfc-card.index' : 'admin.pages.nfc-card.index';
+
+        return view($view, ['nfc_cards' => $nfc_cards]);
+
     }
 
     /**
@@ -34,7 +41,9 @@ class NfcCardController extends Controller
      */
     public function create()
     {
-        return view('user.pages.nfc-card.create');
+        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
+       $view = $isUserRoute ? 'user.pages.nfc-card.create' : 'admin.pages.nfc-card.create';
+        return view($view);
     }
 
     public function nfcTemplate()
@@ -232,7 +241,7 @@ class NfcCardController extends Controller
         $qrFileName = $code . '_nfc_qr.png';
         $qrCodePath = '../public/storage/nfc/qrs/' . $qrFileName;
         // Generate QR code
-        $qrCodeString = QrCode::size(300)->format('svg')->margin(2)->errorCorrection('H')->encoding('UTF-8')->generate($nfc_url, $qrCodePath);
+        $qrCodeString = QrCode::size(300)->format('png')->margin(2)->errorCorrection('H')->encoding('UTF-8')->generate($nfc_url, $qrCodePath);
         // Save the QR code to storage
 
         // Storage::put($qrCodePath, $qrCodeString);

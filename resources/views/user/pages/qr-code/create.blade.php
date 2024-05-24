@@ -191,15 +191,23 @@
                 </div>
             </div>
         </div>
+        <div class="categoryModal">
+            @include('user.pages.qr-code.partials.qrCodeModals')
+        </div>
     </div>
+{{-- modals --}}
+
+
+
+
 
     @push('scripts')
-        <script>
+        {{-- <script>
             var form = document.getElementById("generateQRCodeForm");
             document.getElementById("generateButton").addEventListener("click", function() {
                 form.submit();
             });
-        </script>
+        </script> --}}
         <script>
             $(document).ready(function() {
 
@@ -212,6 +220,7 @@
                     let form = event.target.closest('form');
                     // let form = $('#categoryCreateForm')[0];
                     var categoryContainer = $('.categoryContainer');
+                    var categoryModalContainer = $('.categoryModalContainer');
                     // Debugging
                     console.log(form);
 
@@ -236,6 +245,7 @@
                             // Optionally, you can close the modal and refresh part of the page here
                             $('#createCategory').modal('hide');
                             categoryContainer.html(response.categoryContainer);
+                            categoryModalContainer.html(response.modalContainer);
                             // Reload part of the page or add the new category to the UI
                         },
                         error: function(response) {
@@ -261,6 +271,7 @@
                 // Get the form element using the event target's form property
                 let form = event.target.closest('form');
                 var categoryContainer = $('.categoryContainer');
+                var categoryModalContainer = $('.categoryModalContainer');
                 // Debugging
                 console.log(form);
 
@@ -285,6 +296,7 @@
                         // Optionally, you can close the modal and refresh part of the page here
                         $('.editCategory').modal('hide');
                         categoryContainer.html(response.categoryContainer);
+                        categoryModalContainer.html(response.modalContainer);
                         // Reload part of the page or add the new category to the UI
                     },
                     error: function(response) {
@@ -301,27 +313,7 @@
         </script>
 
         <script>
-            // $(document).ready(function() {
-            //     $('input[name="qr_type"]').change(function() {
-            //         $(".qr-card").hide();
-            //         const qrTemplateValue = $('input[name="qr_type"]:checked').val();
-            //         if (qrTemplateValue != null) {
-            //             $("." + qrTemplateValue).show();
-            //         } else {
-            //             $(".qr-card").hide();
-            //         }
-            //         if (qrTemplateValue == 'coupon_code') {
-            //             $("#generatedQRCodeContainer").hide();
-            //             $("#qrCouponPreview").show();
-            //         } else {
-            //             $("#generatedQRCodeContainer").show();
-            //             $("#qrCouponPreview").hide();
-            //         }
-            //     });
 
-            //     const initiallySelectedValue = $('input[name="qr_type"]:checked').val();
-            //     $("." + initiallySelectedValue).show();
-            // });
             $(document).ready(function() {
                 // Define a function to handle both click and hover events
                 const initiallySelectedValue = $('input[name="qr_type"]:checked').val();
