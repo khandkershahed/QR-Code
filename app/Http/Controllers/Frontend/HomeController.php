@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\NfcScan;
 use App\Models\Admin\Faq;
 use App\Models\Admin\Plan;
+use Jenssegers\Agent\Agent;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\Admin\NfcCard;
-use App\Models\NfcScan;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
@@ -135,6 +136,12 @@ class HomeController extends Controller
 
     public function nfcPage(Request $request, string $name, string $code)
     {
+        $agent = new Agent();
+        if ($agent->isDesktop()) {
+            $user_device = $agent->browser();
+        } else {
+            $user_device = $agent->device();
+        }
 
         $data = [
             'nfc_card' => NfcCard::with('nfcData', 'nfcScan')->where('code', $code)->first(),
@@ -142,9 +149,10 @@ class HomeController extends Controller
 
         if (!empty($data['nfc_card'])) {
             NfcScan::create([
-                'nfc_id'     => $data['nfc_card']->id,
-                'nfc_code'   => $data['nfc_card']->code,
-                'ip_address' => $request->ip(),
+                'nfc_id'      => $data['nfc_card']->id,
+                'nfc_code'    => $data['nfc_card']->code,
+                'ip_address'  => $request->ip(),
+                'user_device' => $user_device,
             ]);
 
 

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('nfc_id')->nullable()->constrained('nfc_cards')->onDelete('cascade');
             $table->string('nfc_code')->nullable();
             $table->string('ip_address', 100)->nullable();
+            $table->string('user_device', 200)->nullable();
             $table->timestamps();
         });
     }

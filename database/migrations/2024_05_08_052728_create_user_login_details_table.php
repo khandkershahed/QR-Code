@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('ip_address');
-            $table->text('user_device')->nullable();
-            $table->timestamp('last_activity')->nullable();
+            $table->string('user_device')->nullable();
+            $table->timestamp('login_time')->nullable();
             $table->timestamps();
         });
     }

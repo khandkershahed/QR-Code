@@ -43,10 +43,9 @@
                                             {{-- title --}}
                                             <span><span class="fw-bold text-black">Title :
                                                 </span>{{ $qr->qr_name }}</span><br>
-                                            <span>
-                                                <span class="fw-bold text-black">Link :
-                                                </span><a href="{{ $qr->qr_png_url }}"
-                                                    target="_blank">{{ $qr->qr_png_url }}</a></span><br>
+                                            <span><span class="fw-bold text-black">Link :
+                                                </span><a class="text-primary" href="{{ $qr->qr_png_url }}"
+                                                    target="_blank">Go to Link</a></span><br>
                                             <span><span class="fw-bold text-black">Org :
                                                 </span>{{ Auth::user()->name }}</span><br>
                                             <span><span class="fw-bold text-black">Created at
