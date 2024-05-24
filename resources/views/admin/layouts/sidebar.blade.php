@@ -81,7 +81,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">QR Code List</span>
+                                <span class="menu-title">QR List</span>
                             </a>
                         </div>
                         <div class="menu-item">
@@ -90,7 +90,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">QR Code Create</span>
+                                <span class="menu-title">QR Create</span>
                             </a>
                         </div>
                     </div>
@@ -167,7 +167,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">QR Code Templates</span>
+                                <span class="menu-title">QR Templates</span>
                             </a>
                         </div>
                         <div class="menu-item">

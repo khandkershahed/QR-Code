@@ -256,6 +256,13 @@
             </div>
         </div>
     </div>
+    <div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="flip-countdown"></div>
+            </div>
+        </div>
+    </div>
     <div class="aside-footer flex-column-auto pt-5 pb-7 px-5" id="kt_aside_footer">
         <form method="POST" action="{{ route('logout') }}">
             @csrf
