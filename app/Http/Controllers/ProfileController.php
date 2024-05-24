@@ -25,9 +25,22 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
-    public function userInvoice()
+    public function userInvoice(Request $request)
     {
-        return view('user.profile.invoice');
+        $user = $request->user();
+        $data = [
+            'invoices' => $user->invoices(),
+        ];
+        return view('user.profile.invoice', $data);
+    }
+
+    public function invoiceDetails(Request $request)
+    {
+        $user = $request->user();
+        $data = [
+            'invoices' => $user->invoices(),
+        ];
+        return view('user.profile.invoice', $data);
     }
     public function edit(Request $request): View
     {

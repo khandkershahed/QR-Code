@@ -1,7 +1,8 @@
 <x-app-layout :title="'My All Invoices'">
     <div class="row">
         <div class="col-lg-12">
-            <div id="kt_app_content" class="app-content  flex-column-fluid ">
+
+            {{-- <div id="kt_app_content" class="app-content  flex-column-fluid ">
                 <div id="kt_app_content_container" class="app-container  container-lg  ">
                     <div class="card">
                         <div class="card-body p-5">
@@ -140,6 +141,51 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div> --}}
+        </div>
+        <div class="col-lg-12">
+            <div class="card card-p-0 card-flush p-3 mt-10">
+                <div class="card-header align-items-center py-5 gap-2 gap-md-5">
+                    <div class="card-title">
+                        <h2 class="mb-0">Manage All Invoices | Total : {{ $invoices->count() }} </h2>
+                    </div>
+                    <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
+                        <a href="{{ route('user.qr-code.create') }}" class="btn btn-sm btn-primary rounded-2 me-3">
+                            Create QR Codes
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div>
+                        <table
+                            class="table align-middle border rounded table-row-dashed table-striped table-hover  fs-6 g-5"
+                            id="kt_datatable_example">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Total</th>
+                                    <th>Download</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse ($invoices as $invoice)
+                                    <tr>
+                                        <td>{{ $invoice->date()->toFormattedDateString() }}</td>
+                                        <td>{{ $invoice->total() }}</td>
+                                        <td>
+                                            <a href="{{ route('invoices.download', $invoice->id) }}"
+                                                class="btn btn-primary">Download</a>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="3">No invoices found.</td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
