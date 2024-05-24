@@ -745,13 +745,13 @@
                                         <label class="d-flex align-items-center fs-5 fw-semibold mb-2">
                                             <span class="required">Upload Logo</span></label>
                                         <input type="file" class="form-control form-control-lg form-control-solid"
-                                            name="qr_data_restaurant_" placeholder="">
+                                            name="qr_data_restaurant_logo" placeholder="">
                                     </div>
                                 </div>
                                 <div class="col-lg-2">
                                     <div class="fv-row mb-10 fv-plugins-icon-container">
                                         <label class="d-flex align-items-center fs-5 fw-semibold mb-2">Preview</label>
-                                        <img class="img-fluid rouded-crirlce " width="50px"
+                                        <img class="img-fluid rouded-crirlce qr_data_restaurant_logo" width="50px"
                                             src="https://preview.keenthemes.com/metronic8/demo1/assets/media/illustrations/sketchy-1/9.png"
                                             alt="">
                                     </div>
@@ -761,13 +761,13 @@
                                         <label class="d-flex align-items-center fs-5 fw-semibold mb-2">
                                             <span class="required">Background Image</span></label>
                                         <input type="file" class="form-control form-control-lg form-control-solid"
-                                            name="qr_data_restaurant_" placeholder="">
+                                            name="qr_data_restaurant_bg" placeholder="">
                                     </div>
                                 </div>
                                 <div class="col-lg-2">
                                     <div class="fv-row mb-10 fv-plugins-icon-container">
                                         <label class="d-flex align-items-center fs-5 fw-semibold mb-2">Preview</label>
-                                        <img class="img-fluid rouded-crirlce " width="50px"
+                                        <img class="img-fluid rouded-crirlce qr_data_restaurant_bg" width="50px"
                                             src="https://preview.keenthemes.com/metronic8/demo1/assets/media/illustrations/sketchy-1/9.png"
                                             alt="">
                                     </div>
@@ -777,7 +777,7 @@
                                         <label class="d-flex align-items-center fs-5 fw-semibold mb-2">
                                             <span class="required">Restaurant Name</label>
                                         <input type="text" class="form-control form-control-lg form-control-solid"
-                                            name="qr_data_restaurant_" placeholder="Goflixza">
+                                            name="qr_data_restaurant_name" placeholder="Goflixza">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -785,7 +785,7 @@
                                         <label class="d-flex align-items-center fs-5 fw-semibold mb-2">
                                             <span class="required">Description</label>
                                         <input type="text" class="form-control form-control-lg form-control-solid"
-                                            name="qr_data_restaurant_" placeholder="About Your Resturent">
+                                            name="qr_data_restaurant_description" placeholder="About Your Resturent">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -793,7 +793,7 @@
                                         <label class="d-flex align-items-center fs-5 fw-semibold mb-2">
                                             <span class="required">Phone</label>
                                         <input type="text" class="form-control form-control-lg form-control-solid"
-                                            name="qr_data_restaurant_" placeholder="01*****">
+                                            name="qr_data_restaurant_phone" placeholder="01*****">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -801,7 +801,7 @@
                                         <label class="d-flex align-items-center fs-5 fw-semibold mb-2">
                                             <span class="required">Location</label>
                                         <input type="url" class="form-control form-control-lg form-control-solid"
-                                            name="qr_data_restaurant_" placeholder="https://www.goflixza.com/">
+                                            name="qr_data_restaurant_location" placeholder="map URL / Website Address">
                                     </div>
                                 </div>
                             </div>

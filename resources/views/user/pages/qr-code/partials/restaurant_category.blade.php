@@ -4,15 +4,15 @@
             @if ($categories->count() > 0)
                 @foreach ($categories as $category)
                     <li class="nav-item mb-3 col-lg-2">
+                        <div class="text-center">
+                            <i class="fa-solid fa-pen-to-square text-primary" data-bs-toggle="modal"
+                                data-bs-target="#editCategory{{ $category->id }}"></i>
+                            <a href="javascript:void(0);" class="delete-category ps-3" data-category-id="{{ $category->id }}">
+                                <i class="fa-solid fa-trash text-danger"></i>
+                            </a>
+                        </div>
                         <a class="nav-link btn btn-outline btn-flex btn-color-muted btn-active-color-primary flex-column overflow-hidden"
                             id="kt_stats_widget_16_tab_link_2" data-bs-toggle="pill" href="#brandingChild">
-                            <div class="text-end">
-                                <i class="fa-solid fa-pen-to-square text-primary" data-bs-toggle="modal"
-                                    data-bs-target="#editCategory{{ $category->id }}"></i>
-                                {{-- <i class="fa-solid fa-trash text-danger" data-bs-toggle="modal"
-                                    data-bs-target="#modalId"></i> --}}
-                            </div>
-
                             <div class="d-flex justify-content-center">
                                 <img class="img-fluid" width="50px"
                                     src="{{ asset('storage/qr_codes/restaurants/' . $category->category_icon) }}"
@@ -40,7 +40,7 @@
                 </li>
             @endif
         </ul>
-        <div class="tab-content">
+        {{-- <div class="tab-content">
             <div class="tab-pane fade" id="brandingChild">
                 <div class="col-lg-10">
                     <div class="fv-row mb-10 fv-plugins-icon-container">
@@ -61,7 +61,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>
 

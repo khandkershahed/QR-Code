@@ -465,6 +465,12 @@ class QrCodeController extends Controller
             'qr_data_business_page_business_email'       => $request->qr_data_business_page_business_email,
             'qr_data_business_page_business_phone'       => $request->qr_data_business_page_business_phone,
             'qr_data_business_page_business_location'    => $request->qr_data_business_page_business_location,
+            'qr_data_restaurant_logo'                    => $request->qr_data_restaurant_logo,
+            'qr_data_restaurant_bg'                      => $request->qr_data_restaurant_bg,
+            'qr_data_restaurant_name'                    => $request->qr_data_restaurant_name,
+            'qr_data_restaurant_description'             => $request->qr_data_restaurant_description,
+            'qr_data_restaurant_phone'                   => $request->qr_data_restaurant_phone,
+            'qr_data_restaurant_location'                => $request->qr_data_restaurant_location,
         ]);
 
 
@@ -585,7 +591,7 @@ class QrCodeController extends Controller
 
         // Store data into the 'qrs' table
         $qr->update([
-            
+
             'qr_template'             => $qr_template,
             'qr_logo_size'            => $qr_logo_size,
             'qr_eye_ball'             => $qr_eye_ball,
