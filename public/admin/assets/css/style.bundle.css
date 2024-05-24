@@ -43471,7 +43471,10 @@ a:hover {
 .show>.btn.btn-outline.btn-outline-dashed.btn-outline-default {
     color: #009ef7;
     border-color: #009ef7;
-    background-color: #f1faff !important
+    background-color: #f1faff !important;
+    border-width: 2px;
+    transform: skewY(10deg);
+    transition: all 0.5s cubic-bezier(0.42, 0, 0.58, 1); /* This cubic-bezier function is similar to ease-in-out */
 }
 
 .btn-check:active+.btn.btn-outline.btn-outline-dashed.btn-outline-default .svg-icon,
