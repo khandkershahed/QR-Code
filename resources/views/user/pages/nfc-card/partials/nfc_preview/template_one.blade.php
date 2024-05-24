@@ -102,7 +102,7 @@
                                         <br />
                                         <span class="company_address_line_two">Calefornia,USA</span>
                                     </p>
-                                    <p class="company_phone">+03 58685125</p>
+                                    <p class="company_phone mb-0">+03 58685125</p>
                                     <p class="company_email">ngenitltd@gmail.com</p>
                                 </div>
                                 <div class="tem-one-about-secontd">
