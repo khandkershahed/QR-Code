@@ -505,7 +505,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>        
         {{-- Modal Start For Check Plan  --}}
         <div class="modal fade bg-dark bg-opacity-75 show" id="kt_app_engage_prebuilts_modal" tabindex="-1"
             aria-modal="true" role="dialog" style="display: block">
@@ -698,7 +698,6 @@
                 </div>
             </div>
         </div>
-
         {{-- Modal Start For Check Plan  --}}
     </div>
     @push('scripts')

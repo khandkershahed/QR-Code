@@ -5,6 +5,87 @@
         <p class="text-center mb-0">Fill The Form With Your Info & Go To The Next.</p>
     </div>
     <!--begin::Accordion-->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card-body">
+                <ul class="nav nav-pills nav-pills-custom row position-relative mx-0 mb-9" role="tablist">
+                    <li class="nav-item mx-0 p-0" role="presentation">
+                        <a class="nav-link d-flex justify-content-center w-100 border-0 h-100 active"
+                            data-bs-toggle="pill" href="#kt_list_widget_10_tab_1" aria-selected="true" role="tab">
+                            <span class="nav-text text-gray-800 fw-bold fs-6 mb-3">
+
+                                Profile Area
+                            </span>
+                            <span
+                                class="bullet-custom position-absolute z-index-2 bottom-0 w-100 h-4px bg-primary rounded"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item mx-0 px-0" role="presentation">
+
+                        <a class="nav-link d-flex justify-content-center w-100 border-0 h-100" data-bs-toggle="pill"
+                            href="#kt_list_widget_10_tab_2" aria-selected="false" role="tab" tabindex="-1">
+
+                            <span class="nav-text text-gray-800 fw-bold fs-6 mb-3">
+                                Bio Area
+                            </span>
+                            <span
+                                class="bullet-custom position-absolute z-index-2 bottom-0 w-100 h-4px bg-primary rounded"></span>
+
+                        </a>
+                    </li>
+                    <li class="nav-item mx-0 px-0" role="presentation">
+                        <a class="nav-link d-flex justify-content-center w-100 border-0 h-100" data-bs-toggle="pill"
+                            href="#kt_list_widget_10_tab_3" aria-selected="false" role="tab" tabindex="-1">
+                            <span class="nav-text text-gray-800 fw-bold fs-6 mb-3">
+                                Service Area
+                            </span>
+                            <span
+                                class="bullet-custom position-absolute z-index-2 bottom-0 w-100 h-4px bg-primary rounded"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item mx-0 px-0" role="presentation">
+                        <a class="nav-link d-flex justify-content-center w-100 border-0 h-100" data-bs-toggle="pill"
+                            href="#kt_list_widget_10_tab_4" aria-selected="false" role="tab" tabindex="-1">
+                            <span class="nav-text text-gray-800 fw-bold fs-6 mb-3">
+                                Company Area
+                            </span>
+                            <span
+                                class="bullet-custom position-absolute z-index-2 bottom-0 w-100 h-4px bg-primary rounded"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item col-4 mx-0 px-0" role="presentation">
+                        <a class="nav-link d-flex justify-content-center w-100 border-0 h-100" data-bs-toggle="pill"
+                            href="#kt_list_widget_10_tab_5" aria-selected="false" role="tab" tabindex="-1">
+                            <span class="nav-text text-gray-800 fw-bold fs-6 mb-3">
+
+                                Contact Area
+                            </span>
+                            <span
+                                class="bullet-custom position-absolute z-index-2 bottom-0 w-100 h-4px bg-primary rounded"></span>
+                        </a>
+                    </li>
+                    <span class="position-absolute z-index-1 bottom-0 w-100 h-4px bg-light rounded"></span>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade active show" id="kt_list_widget_10_tab_1" role="tabpanel">
+                        asdasdasdasdasdasdadasd
+                    </div>
+                    <div class="tab-pane fade" id="kt_list_widget_10_tab_2" role="tabpanel">
+                        asdasdasd
+                    </div>
+                    <div class="tab-pane fade" id="kt_list_widget_10_tab_3" role="tabpanel">
+                        asdasdas
+                    </div>
+                    <div class="tab-pane fade" id="kt_list_widget_10_tab_4" role="tabpanel">
+                        asdasdas
+                    </div>
+                    <div class="tab-pane fade" id="kt_list_widget_10_tab_5" role="tabpanel">
+                        asdasdas
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="accordion accordion-icon-toggle" id="kt_accordion_2">
 
         <div class="mb-5 border">
@@ -19,10 +100,10 @@
                 <div class="row p-2">
                     <div class="col-lg-3">
                         <div class="fv-row my-3">
-                            <x-metronic.label for="profile_image"
-                                class="form-label required"> {{ __('Banner Image') }}</x-metronic.label>
+                            <x-metronic.label for="profile_image" class="form-label required">
+                                {{ __('Banner Image') }}</x-metronic.label>
                             <input id="profile_image" type="file" class="form-control" name="banner_image"
-                                 onchange="previewBannerImage(this)" accept="image/*" />
+                                onchange="previewBannerImage(this)" accept="image/*" />
                         </div>
                     </div>
                     <div class="col-lg-1 d-lg-block d-sm-none">
@@ -31,7 +112,7 @@
                                 class="form-label">{{ __('Preview') }}</x-metronic.label>
                             <div>
                                 <img width="50px" height="50px" class="rounded-circle border banner_image"
-                                    id="profile_image_preview" src="" alt="">
+                                    src="https://i.ibb.co/BNBTVN4/logo.png" alt="">
                             </div>
                         </div>
                     </div>
@@ -49,7 +130,7 @@
                                 class="form-label">{{ __('Preview') }}</x-metronic.label>
                             <div>
                                 <img width="50px" height="50px" class="rounded-circle border profile_image"
-                                    id="profile_image_preview" src="" alt="">
+                                    src="https://i.ibb.co/BNBTVN4/logo.png" alt="">
                             </div>
                         </div>
                     </div>
@@ -63,7 +144,7 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="fv-row my-3">
-                            <x-metronic.label class="fw-semibold fs-6 mb-2 required">Last Name</x-metronic.label>
+                            <x-metronic.label class="fw-semibold fs-6 mb-2">Last Name</x-metronic.label>
                             <x-metronic.input type="text" name="last_name"
                                 class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Saju"
                                 value="" />
@@ -79,7 +160,8 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="fv-row my-3">
-                            <x-metronic.label class="fw-semibold fs-6 mb-2 required">Address Line One</x-metronic.label>
+                            <x-metronic.label class="fw-semibold fs-6 mb-2 required">Address Line
+                                One</x-metronic.label>
                             <x-metronic.input type="text" name="address_line_one"
                                 class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Dhaka, Mirpur"
                                 value="" />
@@ -87,7 +169,7 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="fv-row my-3">
-                            <x-metronic.label class="fw-semibold fs-6 mb-2 required">Address Line Two</x-metronic.label>
+                            <x-metronic.label class="fw-semibold fs-6 mb-2">Address Line Two</x-metronic.label>
                             <x-metronic.input type="text" name="address_line_two"
                                 class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Bangladesh"
                                 value="" />
@@ -95,7 +177,7 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="fv-row my-3">
-                            <x-metronic.label class="fw-semibold fs-6 mb-2 required">Phone Work</x-metronic.label>
+                            <x-metronic.label class="fw-semibold fs-6 mb-2">Phone Work</x-metronic.label>
                             <x-metronic.input type="text" name="phone_work"
                                 class="form-control form-control-solid mb-3 mb-lg-0" placeholder="01*******"
                                 value="" />
@@ -111,7 +193,7 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="fv-row my-3">
-                            <x-metronic.label class="fw-semibold fs-6 mb-2 required">Email Work</x-metronic.label>
+                            <x-metronic.label class="fw-semibold fs-6 mb-2">Email Work</x-metronic.label>
                             <x-metronic.input type="email" name="email_work"
                                 class="form-control form-control-solid mb-3 mb-lg-0" placeholder="work@mail.com"
                                 value="" />
