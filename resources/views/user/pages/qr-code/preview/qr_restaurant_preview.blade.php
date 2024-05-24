@@ -107,80 +107,60 @@
                                 <div>
                                     <div class="py-3" style="background-color: rgba(0, 0, 0, 0.561)">
                                         <div>
-                                            <img class="img-fluid"
+                                            <img class="img-fluid qr_data_restaurant_logo"
                                                 src="https://i.ibb.co/wNckFnj/Restaurant-logo-with-chef-drawing-template-on-transparent-background-PNG-removebg-preview.png"
                                                 alt="" />
                                         </div>
-                                        <h3 class="text-white mb-0"
+                                        <h3 class="text-white mb-0 qr_data_restaurant_name"
                                             style="font-family: var(--tem-one-name-font-family)">
-                                            Resturent
+                                            Goflixza
                                         </h3>
                                         <h1 class="text-white mb-0"
                                             style="
-                                font-size: 5rem;
+                                font-size: 4rem;
                                 font-family: var(--tem-one-name-font-family);
                               ">
                                             Menu
                                         </h1>
-                                        <p class="p-3 text-white mb-0">
+                                        <p class="p-3 text-white mb-0 qr_data_restaurant_description">
                                             Lorem ipsum dolor sit amet consectetur adipisicing
                                             elit. Omnis, ipsam.
                                         </p>
-                                        <a href=""
-                                            class="text-decoration-none text-black bg-white p-2 rounded-2 for-device-text">Call Now:
+                                        <a href="tel:+"
+                                            class="text-decoration-none text-black bg-white p-2 rounded-2 for-device-text qr_data_restaurant_phone">Call
+                                            Now:
                                             01576614451</a>
                                         <div class="mt-4">
-                                            <a href="" class="btn btn-danger for-device-text">View Location</a>
+                                            <a href="" class="btn btn-danger for-device-text qr_data_restaurant_location">View Location</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 px-0 d-flex flex-column justify-content-center align-items-center">
+                        <div class="col-lg-6 px-0 d-flex flex-column justify-content-center align-items-center ps-2">
                             <h4>All Menus</h4>
                             <div class="w-100 d-flex flex-column justify-content-center align-items-center">
                                 <!-- First Menu -->
-                                <div class="row align-items-center w-100"
-                                    style="
-                            border-top: 1px dashed #e92c28;
-                            background: white;
-                          ">
-                                    <div class="col-lg-3 px-0">
-                                        <div style="background-color: white">
-                                            <img width="60px" class="img-fluid"
-                                                src="https://d3nvy39jvu7woe.cloudfront.net/static/images/restaurantmenu/breakfast.png"
-                                                alt="" />
+                                @foreach ($categories as $category)
+                                    <div class="row align-items-center w-100"
+                                        style="border-top: 1px dashed #e92c28;background: white;">
+                                        <div class="col-lg-3 px-0">
+                                            <div style="background-color: white">
+                                                <img width="60px" class="img-fluid"
+                                                    src="{{ asset('storage/qr_codes/restaurants/' . $category->category_icon) }}"
+                                                    alt="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-9 pe-0">
+                                            <div>
+                                                <p class="mb-0 text-black fw-bold">{{ $category->category_name }}</p>
+                                                <small class="mb-0 text-black">{{ $category->category_start_time }} - {{ $category->category_end_time }}</small>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-9 pe-0">
-                                        <div>
-                                            <p class="mb-0 text-black fw-bold">Breakfast</p>
-                                            <small class="mb-0 text-black">07:00pm - 07:00pm</small>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                                 <!-- Menu End -->
-                                <!-- First Menu -->
-                                <div class="row align-items-center w-100"
-                                    style="
-                            border-top: 1px dashed #e92c28;
-                            background: white;
-                          ">
-                                    <div class="col-lg-3 px-0">
-                                        <div style="background-color: white">
-                                            <img width="60px" class="img-fluid"
-                                                src="https://d3nvy39jvu7woe.cloudfront.net/static/images/restaurantmenu/breakfast.png"
-                                                alt="" />
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-9 pe-0">
-                                        <div>
-                                            <p class="mb-0 text-black fw-bold">Breakfast</p>
-                                            <small class="mb-0 text-black">07:00pm - 07:00pm</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Menu End -->
+
                             </div>
                         </div>
                     </div>

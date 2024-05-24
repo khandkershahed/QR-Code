@@ -87,11 +87,12 @@ return new class extends Migration
             $table->string('qr_data_business_page_business_email', 192)->nullable();
             $table->string('qr_data_business_page_business_phone', 120)->nullable();
             $table->text('qr_data_business_page_business_location')->nullable();
-            $table->string('qr_data_business_page_business_phone')->nullable();
-            $table->string('qr_data_business_page_business_phone')->nullable();
-            $table->string('qr_data_business_page_business_phone')->nullable();
-            $table->string('qr_data_business_page_business_phone')->nullable();
-            $table->string('qr_data_business_page_business_phone')->nullable();
+            $table->string('qr_data_restaurant_logo')->nullable();
+            $table->string('qr_data_restaurant_bg')->nullable();
+            $table->string('qr_data_restaurant_name')->nullable();
+            $table->string('qr_data_restaurant_description')->nullable();
+            $table->string('qr_data_restaurant_phone')->nullable();
+            $table->string('qr_data_restaurant_location')->nullable();
             $table->timestamps();
         });
     }

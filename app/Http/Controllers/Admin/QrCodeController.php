@@ -465,6 +465,12 @@ class QrCodeController extends Controller
             'qr_data_business_page_business_email'       => $request->qr_data_business_page_business_email,
             'qr_data_business_page_business_phone'       => $request->qr_data_business_page_business_phone,
             'qr_data_business_page_business_location'    => $request->qr_data_business_page_business_location,
+            'qr_data_restaurant_logo'                    => $request->qr_data_restaurant_logo,
+            'qr_data_restaurant_bg'                      => $request->qr_data_restaurant_bg,
+            'qr_data_restaurant_name'                    => $request->qr_data_restaurant_name,
+            'qr_data_restaurant_description'             => $request->qr_data_restaurant_description,
+            'qr_data_restaurant_phone'                   => $request->qr_data_restaurant_phone,
+            'qr_data_restaurant_location'                => $request->qr_data_restaurant_location,
         ]);
 
 
@@ -527,22 +533,46 @@ class QrCodeController extends Controller
                     $qrCode->backgroundColor($qr_bg_color['r'], $qr_bg_color['g'], $qr_bg_color['b'], 75);
                 }
             }
+            // Determine the directory and filename
+                $formatDirectory = 'qr_codes/qrs/' . $format;
+                $qrFileName = $qr->code . '.' . $format;
+                $qrCodePath = '../public/storage/' . $formatDirectory . '/' . $qrFileName;
 
-            $formatDirectory = 'qr_codes/qrs/' . $format;
-            $qrFileName = $qr->code . '.' . $format;
-            $qrCodePath = '../public/storage/' . $formatDirectory . '/' . $qrFileName;
+                if (!Storage::exists($formatDirectory)) {
+                    Storage::makeDirectory($formatDirectory, 0775, true);
+                }
 
-            if (!Storage::exists($formatDirectory)) {
-                Storage::makeDirectory($formatDirectory, 0775, true);
+                // Generate the QR code and save to file
+                if ($format === 'pdf') {
+                    $pdf = \App::make('dompdf.wrapper');
+                    $pdf->loadHTML('<img src="' . $qrCode->generate($qrDataLink) . '" />');
+                    $pdf->save($qrCodePath);
+                } else {
+                    $qrCodeString = $qrCode->margin(4)->errorCorrection('H')->encoding('UTF-8')->generate($qrDataLink, $qrCodePath);
+                }
+
+                // Update the QR record
+                $qr->update([
+                    $field => $qrFileName,
+                    $field . '_url' => asset('storage/' . $formatDirectory . '/' . $qrFileName)
+                ]);
             }
 
-            $qrCodeString = $qrCode->margin(4)->errorCorrection('H')->encoding('UTF-8')->generate($qrDataLink, $qrCodePath);
+        //     $formatDirectory = 'qr_codes/qrs/' . $format;
+        //     $qrFileName = $qr->code . '.' . $format;
+        //     $qrCodePath = '../public/storage/' . $formatDirectory . '/' . $qrFileName;
 
-            $qr->update([
-                $field => $qrFileName,
-                $field . '_url' => asset('storage/' . $formatDirectory . '/' . $qrFileName)
-            ]);
-        }
+        //     if (!Storage::exists($formatDirectory)) {
+        //         Storage::makeDirectory($formatDirectory, 0775, true);
+        //     }
+
+        //     $qrCodeString = $qrCode->margin(4)->errorCorrection('H')->encoding('UTF-8')->generate($qrDataLink, $qrCodePath);
+
+        //     $qr->update([
+        //         $field => $qrFileName,
+        //         $field . '_url' => asset('storage/' . $formatDirectory . '/' . $qrFileName)
+        //     ]);
+        // }
 
 
 
@@ -585,7 +615,7 @@ class QrCodeController extends Controller
 
         // Store data into the 'qrs' table
         $qr->update([
-            
+
             'qr_template'             => $qr_template,
             'qr_logo_size'            => $qr_logo_size,
             'qr_eye_ball'             => $qr_eye_ball,
