@@ -534,29 +534,52 @@ class QrCodeController extends Controller
                 }
             }
             // Determine the directory and filename
-                $formatDirectory = 'qr_codes/qrs/' . $format;
-                $qrFileName = $qr->code . '.' . $format;
-                $qrCodePath = '../public/storage/' . $formatDirectory . '/' . $qrFileName;
+            $formatDirectory = 'qr_codes/qrs/' . $format;
+            $qrFileName = $qr->code . '.' . $format;
+            $qrCodePath = '../public/storage/' . $formatDirectory . '/' . $qrFileName;
 
-                if (!Storage::exists($formatDirectory)) {
-                    Storage::makeDirectory($formatDirectory, 0775, true);
-                }
-
-                // Generate the QR code and save to file
-                if ($format === 'pdf') {
-                    $pdf = \App::make('dompdf.wrapper');
-                    $pdf->loadHTML('<img src="' . $qrCode->generate($qrDataLink) . '" />');
-                    $pdf->save($qrCodePath);
-                } else {
-                    $qrCodeString = $qrCode->margin(4)->errorCorrection('H')->encoding('UTF-8')->generate($qrDataLink, $qrCodePath);
-                }
-
-                // Update the QR record
-                $qr->update([
-                    $field => $qrFileName,
-                    $field . '_url' => asset('storage/' . $formatDirectory . '/' . $qrFileName)
-                ]);
+            if (!Storage::exists($formatDirectory)) {
+                Storage::makeDirectory($formatDirectory, 0775, true);
             }
+
+            // Generate the QR code and save to file
+            if ($format === 'pdf') {
+                $qrCodeImageData = $qrCode->generate($qrDataLink);
+
+                // Check if QR code image data is empty
+                if (!$qrCodeImageData) {
+                    continue;
+                }
+
+                $htmlContent = '<img src="data:image/png;base64,' . base64_encode($qrCodeImageData) . '" />';
+
+                // Create DomPDF instance
+                $pdf = \App::make('dompdf.wrapper');
+
+
+                try {
+                    $pdf->loadHTML($htmlContent, 'UTF-8');
+                } catch (\Exception $e) {
+                    continue; // Skip PDF generation for this format
+                }
+
+                // Save PDF file to the specified path
+                try {
+                    $pdf->save($qrCodePath);
+                } catch (\Exception $e) {
+                    continue; // Skip PDF generation for this format
+                }
+            } else {
+                // Generate QR code for non-PDF formats
+                $qrCodeString = $qrCode->margin(4)->errorCorrection('H')->encoding('UTF-8')->generate($qrDataLink, $qrCodePath);
+            }
+
+            // Update the QR record
+            $qr->update([
+                $field => $qrFileName,
+                $field . '_url' => asset('storage/' . $formatDirectory . '/' . $qrFileName)
+            ]);
+        }
 
         //     $formatDirectory = 'qr_codes/qrs/' . $format;
         //     $qrFileName = $qr->code . '.' . $format;
