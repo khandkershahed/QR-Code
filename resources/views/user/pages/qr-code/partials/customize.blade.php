@@ -362,7 +362,7 @@
                         'image' =>
                             'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/right-leaf.svg',
                     ],
-                ]" />
+                ]" :selectedEyeBall="null" />
 
             </div>
             <div class="row pt-3 pt-lg-6">
@@ -458,7 +458,7 @@
                     //     'image' =>
                     //         'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/smooth-round.svg',
                     // ],
-                ]" />
+                ]" :selectedQrPattern="null"  />
             </div>
             <div>
                 <h2 class="pt-10">COLOR</h2>
