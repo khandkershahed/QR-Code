@@ -524,8 +524,8 @@
                         <!--begin::Options-->
                         <div data-kt-element="options">
                             <!--begin::Notice-->
-                            <div class="pb-5">
-                                <h3 class="text-center  fw-bold">Currently on a </h3>
+                            <div class="pb-5 trial_end">
+                                <h3 class="text-center fw-bold">Currently on a </h3>
                                 <h1 class="text-center mb-0 fw-bold" style="color: orangered;">14-day free trial</h1>
                             </div>
                             <p class="text-muted fs-5 fw-semibold mb-10 text-center mb-1"> Of our Premium Plan. This
@@ -701,4 +701,79 @@
 
         {{-- Modal Start For Check Plan  --}}
     </div>
+    @push('scripts')
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                // User creation timestamp passed from backend
+                var userCreated = new Date("{{ Auth::user()->created_at }}").getTime();
+                var trialPeriod = 14 * 24 * 60 * 60 * 1000; // 14 days in milliseconds
+                var targetDate = userCreated + trialPeriod;
+                var currentDate = new Date().getTime();
+                var timeLeft = (targetDate - currentDate);
+                if (timeLeft <= 0) {
+                    $('.trial_end').append('<h1 class="text-center text-danger pt-4 fw-bold">Your 14 day Free trial has ended. Your NFC and QRs will be deleted.</h1>');
+                }
+                var countdown = document.getElementById("tiles"); // Get the countdown element
+
+                function getCountdown() {
+                    var currentDate = new Date().getTime();
+                    var secondsLeft = (targetDate - currentDate) / 1000;
+
+                    if (secondsLeft <= 0) {
+
+                        // alert("Your trial period has ended. Your data will be deleted.");
+                        countdown.innerHTML = "<span>00</span><span>00</span><span>00</span><span>00</span>";
+                        // Here, you could also trigger an AJAX call to delete the user's data
+                        // deleteUserAccount();
+                        return;
+                    }
+
+                    var days = pad(parseInt(secondsLeft / 86400));
+                    secondsLeft %= 86400;
+
+                    var hours = pad(parseInt(secondsLeft / 3600));
+                    secondsLeft %= 3600;
+
+                    var minutes = pad(parseInt(secondsLeft / 60));
+                    var seconds = pad(parseInt(secondsLeft % 60));
+
+                    // Format countdown string and set tag value
+                    countdown.innerHTML = "<span>" + days + "</span><span>" + hours + "</span><span>" + minutes +
+                        "</span><span>" + seconds + "</span>";
+                }
+
+                function pad(n) {
+                    return (n < 10 ? '0' : '') + n;
+                }
+
+                setInterval(getCountdown, 1000); // Update countdown every second
+
+            });
+
+            // Example function to delete user account (requires backend implementation)
+            // function deleteUserAccount() {
+            //     // Perform an AJAX call to delete the user's data
+            //     fetch('', {
+            //         method: 'POST',
+            //         headers: {
+            //             'Content-Type': 'application/json',
+            //             'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            //         },
+            //         body: JSON.stringify({ userId: {{ Auth::user()->id }} })
+            //     })
+            //     .then(response => response.json())
+            //     .then(data => {
+            //         if (data.success) {
+            //             alert("Your account has been deleted.");
+            //             window.location.href = '/'; // Redirect to the homepage or login page
+            //         } else {
+            //             alert("There was an error deleting your account.");
+            //         }
+            //     })
+            //     .catch(error => {
+            //         console.error('Error:', error);
+            //     });
+            // }
+        </script>
+    @endpush
 </x-app-layout>
