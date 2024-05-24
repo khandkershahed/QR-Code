@@ -1,4 +1,4 @@
-<x-admin-guest-layout :title="'{{ $qr->code }}'">
+<x-admin-guest-layout :title="$qr->code">
     <style>
         #Iframe-Master-CC-and-Rs {
             /* max-width: 512px; */

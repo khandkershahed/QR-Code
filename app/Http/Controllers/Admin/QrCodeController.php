@@ -109,7 +109,6 @@ class QrCodeController extends Controller
             'user_device' => $user_device,
         ]);
         if (!empty($qr)) {
-            // dd($qr->qr_type);
             if (!empty($qr->qrData->qr_data_website_url)) {
                 return redirect()->to($qr->qrData->qr_data_website_url);
             } elseif (!empty($qr->qrData->qr_data_call_number)) {
