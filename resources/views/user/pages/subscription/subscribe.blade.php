@@ -247,7 +247,7 @@
                                             </div>
 
                                             <div class="row">
-                                                <div class="col-xl-12 col-lg-12">
+                                                <div class="col-xl-12 col-lg-12 mb-5">
                                                     <div class="form-group">
                                                         <label for="">Card details</label>
                                                         <div id="card-element"></div>
