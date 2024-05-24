@@ -35,7 +35,7 @@
                 <div class="card-body">
                     <table
                         class="table align-middle border rounded table-row-dashed table-striped table-hover  fs-6 g-5"
-                        id="nfc_card">
+                        id="kt_datatable_example">
                         <thead>
                             <tr class="text-gray-500 fw-bold fs-7 text-uppercase">
                                 <th class="">SL</th>

@@ -18,7 +18,7 @@
                     <div>
                         <table
                             class="table align-middle border rounded table-row-dashed table-striped table-hover  fs-6 g-5"
-                            id="qr_code">
+                            id="kt_datatable_example">
                             <thead>
                                 <tr class="text-gray-500 fw-bold fs-7 text-uppercase text-center">
                                     <th width="5">SL</th>
