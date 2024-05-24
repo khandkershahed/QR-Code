@@ -116,21 +116,21 @@
                     <div
                         class="menu-sub menu-sub-accordion {{ Route::is('user.nfc-card.index', 'user.nfc-card.create') ? 'menu-active-bg' : '' }}">
                         <div class="menu-item">
-                            <a class="menu-link {{ Route::is('user.nfc-card.index') ? 'active' : '' }}"
-                                href="{{ route('user.nfc-card.index') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">NFC Card List</span>
-                            </a>
-                        </div>
-                        <div class="menu-item">
                             <a class="menu-link {{ Route::is('user.nfc-card.create') ? 'active' : '' }}"
                                 href="{{ route('user.nfc-card.create') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
                                 <span class="menu-title">NFC Card Create</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link {{ Route::is('user.nfc-card.index') ? 'active' : '' }}"
+                                href="{{ route('user.nfc-card.index') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">NFC Card List</span>
                             </a>
                         </div>
                     </div>

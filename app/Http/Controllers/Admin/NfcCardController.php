@@ -42,8 +42,7 @@ class NfcCardController extends Controller
      */
     public function create(Request $request)
     {
-        $agent = new Agent();
-        dd($agent->isDesktop());
+        
         $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
        $view = $isUserRoute ? 'user.pages.nfc-card.create' : 'admin.pages.nfc-card.create';
         return view($view);

@@ -257,22 +257,7 @@
                 });
             });
         </script>
-        <script>
-            var myDropzone = new Dropzone("#qr_dropzone", {
-                url: "https://keenthemes.com/scripts/void.php", // Set the url for your upload script location
-                paramName: "file", // The name that will be used to transfer the file
-                maxFiles: 1,
-                maxFilesize: 2, // MB
-                addRemoveLinks: true,
-                accept: function(file, done) {
-                    if (file.name == "wow.jpg") {
-                        done("Naha, you don't.");
-                    } else {
-                        done();
-                    }
-                }
-            });
-        </script>
+        
         <script>
             // Get references to radio buttons and divs
             const normalColorRadio = document.getElementById('solid_color');

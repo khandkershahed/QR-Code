@@ -165,7 +165,7 @@
                     <div class="ps-4">
                         <x-metronic.label for="qr_logo_size" class="form-label">{{ __('Logo Size (in Pixel)') }}</x-metronic.label>
                         {{-- <x-metronic.input id="qr_logo_size" type="number" name="qr_logo_size" :value="old('qr_logo_size')" placeholder="Logo Size(Eg: 5, 10, 15....)" /> --}}
-                        <select class="form-select form-select-sm mt-3 w-25" name="qr_logo_size" aria-label="Default select example">
+                        <select class="form-select w-100" name="qr_logo_size" aria-label="Default select example">
                             {{-- <option value="0.3">None</option> --}}
                             <option value="0.2" >20%</option>
                             <option value="0.3" >30%</option>

@@ -9,7 +9,7 @@
             <div class="mb-4">
                 <x-metronic.label for="qr_data_website_url"
                     class="form-label required">{{ __('Website Url') }}</x-metronic.label>
-                <x-metronic.input id="qr_data_website_url" type="text" name="qr_data_website_url"
+                <x-metronic.input id="qr_data_website_url" type="text" name="qr_data_website_url" :value="$qr->qrData->qr_data_website_url"
                     placeholder="Website Url" />
             </div>
         </div>
@@ -30,7 +30,7 @@
         <div class="row pt-4">
             <div class="d-flex align-items-center">
                 <x-metronic.label for="qr_data_pdf" class="form-label">{{ __('Upload Pdf') }}</x-metronic.label>
-                <x-metronic.input id="qr_data_pdf" type="file" name="qr_data_pdf" :value="old('qr_data_pdf')"
+                <x-metronic.input id="qr_data_pdf" type="file" name="qr_data_pdf" :value="$qr->qrData->qr_data_pdf"
                     placeholder="Upload Pdf" />
             </div>
         </div>
@@ -52,7 +52,7 @@
             <div class="pt-4">
                 <x-metronic.label for="qr_data_image_link"
                     class="form-label">{{ __('Or Upload Image Link') }}</x-metronic.label>
-                <x-metronic.input id="qr_data_image_link" type="text" name="qr_data_image_link" :value="old('qr_data_image_link')"
+                <x-metronic.input id="qr_data_image_link" type="text" name="qr_data_image_link" :value="$qr->qrData->qr_data_image_link"
                     placeholder="Or Upload Image Link" />
             </div>
         </div>
@@ -69,13 +69,13 @@
             <div class="pt-4">
                 <x-metronic.label for="qr_data_sms_number"
                     class="required form-label">{{ __('Phone Number') }}</x-metronic.label>
-                <x-metronic.input id="qr_data_sms_number" type="text" name="qr_data_sms_number" :value="old('qr_data_sms_number')"
+                <x-metronic.input id="qr_data_sms_number" type="text" name="qr_data_sms_number" :value="$qr->qrData->qr_data_sms_number"
                     placeholder="Phone Number" required />
             </div>
             <div class="pt-4">
                 <label for="qr_data_sms_message" class="required form-label">Message</label>
                 <textarea class="form-control form-control-solid" name="qr_data_sms_message" id="qr_data_sms_message" rows="3"
-                    required></textarea>
+                    required>{{ $qr->qrData->qr_data_sms_message }}</textarea>
             </div>
         </div>
     </div>
@@ -91,19 +91,19 @@
             <div class="pb-4">
                 <x-metronic.label for="qr_data_email_id"
                     class="required form-label">{{ __('Receiver Email') }}</x-metronic.label>
-                <x-metronic.input id="qr_data_email_id" type="text" name="qr_data_email_id" :value="old('qr_data_email_id')"
+                <x-metronic.input id="qr_data_email_id" type="text" name="qr_data_email_id" :value="$qr->qrData->qr_data_email_id"
                     placeholder="sample@mail.com" required />
             </div>
             <div class="pb-4">
                 <x-metronic.label for="qr_data_email_subject"
                     class="form-label">{{ __('Email Subject') }}</x-metronic.label>
-                <x-metronic.input id="qr_data_email_subject" type="text" name="qr_data_email_subject" :value="old('qr_data_email_subject')"
+                <x-metronic.input id="qr_data_email_subject" type="text" name="qr_data_email_subject" :value="$qr->qrData->qr_data_email_subject"
                     placeholder="Email Subject" />
             </div>
             <div class="pb-4">
                 <label for="qr_data_email_body" class="required form-label">Mail Body</label>
                 <textarea class="form-control form-control-solid" name="qr_data_email_body" id="qr_data_email_body" rows="3"
-                    required></textarea>
+                    required>{{ $qr->qrData->qr_data_email_body }}</textarea>
             </div>
         </div>
     </div>
@@ -119,19 +119,19 @@
             <div class="pb-4">
                 <x-metronic.label for="qr_app_android"
                     class="form-label">{{ __('Google Play store URL') }}</x-metronic.label>
-                <x-metronic.input id="qr_app_android" type="text" name="qr_app_android" :value="old('qr_app_android')"
+                <x-metronic.input id="qr_app_android" type="text" name="qr_app_android" :value="$qr->qrData->qr_app_android"
                     placeholder="Google Play store URL" />
             </div>
             <div class="pb-4">
                 <x-metronic.label for="qr_data_app_iphone"
                     class="form-label">{{ __('App store URL (iPhone)') }}</x-metronic.label>
-                <x-metronic.input id="qr_data_app_iphone" type="text" name="qr_data_app_iphone" :value="old('qr_data_app_iphone')"
+                <x-metronic.input id="qr_data_app_iphone" type="text" name="qr_data_app_iphone" :value="$qr->qrData->qr_data_app_iphone"
                     placeholder="App store URL (iPhone)" />
             </div>
             <div class="pb-4">
                 <x-metronic.label for="qr_data_app_ipad"
                     class="form-label">{{ __('App store URL (iPad and macOS)') }}</x-metronic.label>
-                <x-metronic.input id="qr_data_app_ipad" type="text" name="qr_data_app_ipad" :value="old('qr_data_app_ipad')"
+                <x-metronic.input id="qr_data_app_ipad" type="text" name="qr_data_app_ipad" :value="$qr->qrData->qr_data_app_ipad"
                     placeholder="App store URL (iPad and macOS)" />
             </div>
         </div>
@@ -148,7 +148,7 @@
             <div class="pb-4">
                 <x-metronic.label for="qr_data_call_number"
                     class="form-label">{{ __('Phone Number') }}</x-metronic.label>
-                <x-metronic.input id="qr_data_call_number" type="text" name="qr_data_call_number" :value="old('qr_data_call_number')"
+                <x-metronic.input id="qr_data_call_number" type="text" name="qr_data_call_number" :value="$qr->qrData->qr_data_call_number"
                     placeholder="Phone Number" />
             </div>
         </div>
@@ -166,13 +166,13 @@
                 <x-metronic.label for="qr_data_location_latitude"
                     class="form-label">{{ __('Select Location Latitude') }}</x-metronic.label>
                 <x-metronic.input id="qr_data_location_latitude" type="text" name="qr_data_location_latitude"
-                    :value="old('qr_data_location_latitude')" placeholder="Select Latitude" />
+                    :value="$qr->qrData->qr_data_location_latitude" placeholder="Select Latitude" />
             </div>
             <div class="pb-4">
                 <x-metronic.label for="qr_data_location_longitude"
                     class="form-label">{{ __('Select Location Longitude') }}</x-metronic.label>
                 <x-metronic.input id="qr_data_location_longitude" type="text" name="qr_data_location_longitude"
-                    :value="old('qr_data_location_longitude')" placeholder="Select Longitude" />
+                    :value="$qr->qrData->qr_data_location_longitude" placeholder="Select Longitude" />
             </div>
             <div class="mt-2">
                 <div id="map" style="height: 400px;"></div>
@@ -192,33 +192,33 @@
             <div class="pb-4 col-lg-4">
                 <x-metronic.label for="qr_data_coupon_header" class="form-label">{{ __('Header') }}</x-metronic.label>
                 <x-metronic.input id="qr_data_coupon_header" type="text" name="qr_data_coupon_header"
-                    :value="old('qr_data_coupon_header')" placeholder="30% Discount" />
+                    :value="$qr->qrData->qr_data_coupon_header" placeholder="30% Discount" />
             </div>
             <div class="pb-4 col-lg-4">
                 <x-metronic.label for="qr_data_coupon_message" class="form-label">{{ __('Message Line One') }}</x-metronic.label>
                 <x-metronic.input id="qr_data_coupon_message" type="text" name="qr_data_coupon_message"
-                    :value="old('qr_data_coupon_message')" placeholder="Big Sale" />
+                    :value="$qr->qrData->qr_data_coupon_message" placeholder="Big Sale" />
             </div>
             <div class="pb-4 col-lg-4">
                 <x-metronic.label for="qr_data_coupon_description_body"
                     class="form-label">{{ __('Message Line Two') }}</x-metronic.label>
                 <x-metronic.input id="qr_data_coupon_description_body" type="text"
-                    name="qr_data_coupon_description_body" :value="old('qr_data_coupon_description_body')"
+                    name="qr_data_coupon_description_body" :value="$qr->qrData->qr_data_coupon_description_body"
                     placeholder="Discount" />
             </div>
             <div class="pb-4 col-lg-4">
                 <x-metronic.label for="qr_data_coupon_company" class="form-label">{{ __('Company Name') }}</x-metronic.label>
                 <x-metronic.input id="qr_data_coupon_company" type="text" name="qr_data_coupon_company"
-                    :value="old('qr_data_coupon_company')" placeholder="GALAXXY MEDIA LLC." />
+                    :value="$qr->qrData->qr_data_coupon_company" placeholder="GALAXXY MEDIA LLC." />
             </div>
             <div class="pb-4 col-lg-4">
                 <x-metronic.label for="qr_data_coupon_code" class="form-label">{{ __('Coupon code') }}</x-metronic.label>
-                <x-metronic.input id="qr_data_coupon_code" type="text" name="qr_data_coupon_code" :value="old('qr_data_coupon_code')"
+                <x-metronic.input id="qr_data_coupon_code" type="text" name="qr_data_coupon_code" :value="$qr->qrData->qr_data_coupon_code"
                     placeholder="Coupon code" />
             </div>
             <div class="pb-4 col-lg-4">
                 <x-metronic.label for="qr_data_coupon_logo" class="form-label">{{ __('Coupon Logo') }}</x-metronic.label>
-                <x-metronic.input id="qr_data_coupon_logo" type="file" name="qr_data_coupon_logo" :value="old('qr_data_coupon_logo')"
+                <x-metronic.input id="qr_data_coupon_logo" type="file" name="qr_data_coupon_logo" :value="$qr->qrData->qr_data_coupon_logo"
                     placeholder="Coupon Logo" />
             </div>
 
@@ -226,20 +226,20 @@
                 <x-metronic.label for="qr_data_coupon_expire_date"
                     class="form-label">{{ __('Expires on') }}</x-metronic.label>
                 <x-metronic.input id="qr_data_coupon_expire_date" type="date" name="qr_data_coupon_expire_date"
-                    :value="old('qr_data_coupon_expire_date')" placeholder="Expires on" />
+                    :value="$qr->qrData->qr_data_coupon_expire_date" placeholder="Expires on" />
             </div>
 
             <div class="pb-4 col-lg-4">
                 <x-metronic.label for="qr_data_coupon_description_header"
                     class="form-label">{{ __('Description header') }}</x-metronic.label>
                 <x-metronic.input id="qr_data_coupon_description_header" type="text"
-                    name="qr_data_coupon_description_header" :value="old('qr_data_coupon_description_header')" placeholder="Holiday Season Sale" />
+                    name="qr_data_coupon_description_header" :value="$qr->qrData->qr_data_coupon_description_header" placeholder="Holiday Season Sale" />
             </div>
 
             <div class="pb-4 col-lg-4">
                 <x-metronic.label for="qr_data_coupon_website" class="form-label">{{ __('Website URL') }}</x-metronic.label>
                 <x-metronic.input id="qr_data_coupon_website" type="url" name="qr_data_coupon_website"
-                    :value="old('qr_data_coupon_website')" placeholder="http://www.website.com" />
+                    :value="$qr->qrData->qr_data_coupon_website" placeholder="http://www.website.com" />
             </div>
 
             <div class="col-lg-4 pb-4">
@@ -248,13 +248,13 @@
                     <div class="col-lg-10 pe-0">
                         <div>
                             <input type="text" name="background_color_picker" id="secondary_color_text"
-                                value="#000" class="form-control form-control-solid">
+                                value="{{ $qr->qrData->qr_data_coupon_background_color }}" class="form-control form-control-solid">
                         </div>
                     </div>
                     <div class="col-lg-2 ps-0">
                         <div>
                             <input type="color" name="qr_data_coupon_background_color" id="secondary_color_text_picker"
-                                value="" style="width: 50px;height: 43px;" oninput="changecouponBackgroundColor()"
+                                value="{{ $qr->qrData->qr_data_coupon_background_color }}" style="width: 50px;height: 43px;" oninput="changecouponBackgroundColor()"
                                 class="form-control form-control-solid">
                         </div>
                     </div>
@@ -265,14 +265,14 @@
                     <label for="secondary_color_text">Title color (With BG Include)</label>
                     <div class="col-lg-10 pe-0">
                         <div>
-                            <input type="text" name="title_color_picker" id="secondary_color_text" value="#000"
+                            <input type="text" name="title_color_picker" id="secondary_color_text" value="{{ $qr->qrData->qr_data_coupon_title_color }}"
                                 class="form-control form-control-solid">
                         </div>
                     </div>
                     <div class="col-lg-2 ps-0">
                         <div>
                             <input type="color" name="qr_data_coupon_title_color" id="secondary_color_text_picker"
-                                value="" style="width: 50px;height: 43px;" oninput="changecouponTitleColor()"
+                                value="{{ $qr->qrData->qr_data_coupon_title_color }}" style="width: 50px;height: 43px;" oninput="changecouponTitleColor()"
                                 class="form-control form-control-solid">
                         </div>
                     </div>
@@ -284,14 +284,14 @@
                     <label for="buttonContact">Website Button Background Color</label>
                     <div class="col-lg-10 pe-0">
                         <div>
-                            <input type="text" name="buttonContact" id="buttonContact" value="#000"
+                            <input type="text" name="buttonContact" id="buttonContact" value="{{ $qr->qrData->qr_data_coupon_button_bg_color }}"
                                 class="form-control form-control-solid">
                         </div>
                     </div>
                     <div class="col-lg-2 ps-0">
                         <div>
                             <input type="color" name="qr_data_coupon_button_bg_color" id="button_color_picker"
-                                value="" style="width: 50px;height: 43px;" oninput="changecouponwebsiteBgColor()"
+                                value="{{ $qr->qrData->qr_data_coupon_button_bg_color }}" style="width: 50px;height: 43px;" oninput="changecouponwebsiteBgColor()"
                                 class="form-control form-control-solid">
                         </div>
                     </div>
@@ -302,14 +302,14 @@
                     <label for="buttonContact">Website Button Title Color</label>
                     <div class="col-lg-10 pe-0">
                         <div>
-                            <input type="text" name="buttonContact" id="buttonContact" value="#000"
+                            <input type="text" name="buttonContact" id="buttonContact" value="{{ $qr->qrData->qr_data_coupon_button_title_color }}"
                                 class="form-control form-control-solid">
                         </div>
                     </div>
                     <div class="col-lg-2 ps-0">
                         <div>
                             <input type="color" name="qr_data_coupon_button_title_color" id="button_color_picker"
-                                value="" style="width: 50px;height: 43px;"
+                                value="{{ $qr->qrData->qr_data_coupon_button_title_color }}" style="width: 50px;height: 43px;"
                                 oninput="changecouponwebsiteTitleColor()" class="form-control form-control-solid">
                         </div>
                     </div>
@@ -320,7 +320,7 @@
                 <x-metronic.label for="qr_data_coupon_policy"
                     class="form-label">{{ __('Terms & conditions') }}</x-metronic.label>
                 <x-metronic.input id="qr_data_coupon_policy" type="text" name="qr_data_coupon_policy"
-                    :value="old('qr_data_coupon_policy')" placeholder="Policy" />
+                    :value="$qr->qrData->qr_data_coupon_policy" placeholder="Policy" />
             </div>
 
         </div>
