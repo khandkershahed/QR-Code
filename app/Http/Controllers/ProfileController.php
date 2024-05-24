@@ -8,6 +8,7 @@ use App\Models\Admin\Plan;
 use Illuminate\Http\Request;
 use App\Events\ActivityLogged;
 use Illuminate\Validation\Rule;
+use App\Models\UserLoginDetails;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -35,6 +36,8 @@ class ProfileController extends Controller
         return view('user.profile.edit', [
             'user' => $request->user(),
             'notifications' => UserNotification::where('user_id', Auth::user()->id)->with('notificationMessage')->orderBy('created_at', 'desc')->get(),
+            'login_sessions'=> UserLoginDetails::where('user_id', Auth::user()->id)->latest('id')->get(),
+            'last_login'    => UserLoginDetails::where('user_id', Auth::user()->id)->latest('id')->first(),
         ]);
     }
 
