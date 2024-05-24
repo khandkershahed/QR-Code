@@ -505,7 +505,7 @@
                     </div>
                 </div>
             </div>
-        </div>        
+        </div>
         {{-- Modal Start For Check Plan  --}}
         <div class="modal fade bg-dark bg-opacity-75 show" id="kt_app_engage_prebuilts_modal" tabindex="-1"
             aria-modal="true" role="dialog" style="display: block">
@@ -513,7 +513,6 @@
                 id="kt_engage_prebuilts_modal_dialog">
                 <div class="modal-content rounded-4">
                     <div class="modal-header flex-stack border-0 px-10 pt-5 pb-0" id="kt_engage_prebuilts_header">
-
                         <div class="btn btn-sm btn-icon btn-active-color-primary me-n2 position-relative z-index-1 default-modal-close"
                             data-bs-dismiss="modal">
                             <i class="fa-solid fa-xmark fs-1"></i>
