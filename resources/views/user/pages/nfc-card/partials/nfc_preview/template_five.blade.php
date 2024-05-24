@@ -160,35 +160,19 @@
                                 <div class="col-lg-12">
                                     <div class="rounded-5 mt-5 pb-4 d-flex justify-content-center align-items-center">
                                         <a href="" class="text-center map_url"
-                                            style="
-                                text-decoration: none;
-                                width: 20%;
-                                color: #fff;
-                              ">
+                                            style="text-decoration: none;width: 20%;color: #fff;">
                                             <i class="fas fa-map-marked-alt icon fa-2x p-3" title="Map"></i>
                                         </a>
                                         <a href="" class="text-center facebook_url"
-                                            style="
-                                text-decoration: none;
-                                width: 20%;
-                                color: #fff;
-                              ">
+                                            style="text-decoration: none;width: 20%;color: #fff;">
                                             <i class="fab fa-facebook facebook-icon icon fa-2x" title="Facebook"></i>
                                         </a>
                                         <a href="" class="text-center youtube_url"
-                                            style="
-                                text-decoration: none;
-                                width: 20%;
-                                color: #fff;
-                              ">
+                                            style="text-decoration: none;width: 20%;color: #fff;">
                                             <i class="fab fa-youtube youtube-icon icon fa-2x" title="Instagram"></i>
                                         </a>
                                         <a href="" class="text-center linkedin_url"
-                                            style="
-                                text-decoration: none;
-                                width: 20%;
-                                color: #fff;
-                              ">
+                                            style="text-decoration: none;width: 20%;color: #fff;">
                                             <i class="fab fa-linkedin linkedin-icon icon fa-2x" title="Instagram"></i>
                                         </a>
                                     </div>
@@ -331,7 +315,7 @@
                                     </div>
                                 </div>
                                 <!-- Bio -->
-                                <div class="my-3 pt-4">
+                                {{-- <div class="my-3 pt-4">
                                     <div>
                                         <p class="bg-black text-white w-25 text-center rounded-2 py-2 mb-0 bio_title">
                                             Bio
@@ -351,7 +335,7 @@
                                         in! Vel illum ex ea pariatur et maxime ducimus eaque
                                         dicta magni adipisci, rem ipsum temporibus!
                                     </p>
-                                </div>
+                                </div> --}}
                                 <!-- Company -->
                                 <div class="my-3 pt-4 text-start">
                                     <div>
@@ -388,62 +372,33 @@
                                         Gallery
                                     </p>
                                     <div class=""
-                                        style="
-                              background-color: black;
-                              height: 3px;
-                              margin-top: -20px;
-                            ">
+                                        style="background-color: black;height: 3px;margin-top: -20px;">
                                     </div>
                                 </div>
                                 <div class=""
-                                    style="
-                            border-radius: 10px;
-                            background-color: #1f1f1f !important;
-                            background-image: url(https://my.cybercard.ma/assets/img/vcard16/gallery-bg.png);
-                            margin-top: 35px !important; margin-bottom: 35px !important;">
+                                    style="border-radius: 10px;background-color: #1f1f1f !important;background-image: url(https://my.cybercard.ma/assets/img/vcard16/gallery-bg.png);margin-top: 35px !important; margin-bottom: 35px !important;">
                                     <div class="slick-slider p-4">
                                         <div>
                                             <img class="img-fluid service_one_image"
-                                                style="
-                                  background-size: cover;
-                                  width: 100%;
-                                  height: 300px;
-                                  object-fit: cover;
-                                  border-radius: 10px;
-                                "
+                                                style="background-size: cover;width: 100%;height: 300px;object-fit: cover;border-radius: 10px;"
                                                 src="https://www.awardstrophyworld.com/cdn/shop/files/TrophySlider-MOBILE.jpg?v=1691869489&width=1278"
                                                 alt="Slide 1" />
                                             <div class="text-white" style="background-color: #000"></div>
                                         </div>
                                         <div>
                                             <img class="img-fluid service_two_image"
-                                                style="
-                                  background-size: cover;
-                                  width: 100%;
-                                  height: 300px;
-                                  object-fit: cover;
-                                  border-radius: 10px;
-                                "
+                                                style="background-size: cover;width: 100%;height: 300px;object-fit: cover;border-radius: 10px;"
                                                 src="https://img.asmedia.epimg.net/resizer/v2/KQHEREZJPZFUNRC3WQYWA3QBXI.jpg?auth=a869899f0991310a88875490e300e1de99703103383da19f43218303861bcb70&width=1200&height=1200&smart=true"
                                                 alt="Slide 2" />
                                             <div class="text-white" style="background-color: #000"></div>
                                         </div>
                                         <div>
                                             <img class="img-fluid service_two_image"
-                                                style="
-                                  background-size: cover;
-                                  width: 100%;
-                                  height: 300px;
-                                  object-fit: cover;
-                                  border-radius: 10px;
-                                "
+                                                style="background-size: cover;width: 100%;height: 300px;object-fit: cover;border-radius: 10px;"
                                                 src="https://metro.co.uk/wp-content/uploads/2022/12/GettyImages-1450072343.jpg?quality=90&strip=all&w=1024&h=630&crop=1"
                                                 alt="Slide 3" />
                                             <div class="text-white"
-                                                style="
-                                  background-color: #000;
-                                  border-bottom-left-radius: 10px;
-                                ">
+                                                style="background-color: #000;border-bottom-left-radius: 10px;">
                                             </div>
                                         </div>
                                         <!-- Add more divs with images for additional slides -->

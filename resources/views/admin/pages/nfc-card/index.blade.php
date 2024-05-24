@@ -24,7 +24,7 @@
             <div class="card card-p-0 card-flush p-3 pt-0">
                 <div class="card-header align-items-center py-5 gap-2 gap-md-5">
                     <div class="card-title">
-                        <h2 class="mb-0">View and manage your NFC Cards | Total NFC Card Generated :  {{$nfc_cards->count()}}</h2>
+                        <h2 class="mb-0">All NFC Cards | Total NFC Card Generated :  {{$nfc_cards->count()}}</h2>
                     </div>
                     <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
                         <a href="{{ route('user.nfc-card.create') }}" class="btn btn-sm btn-primary rounded-2 me-3">

@@ -603,8 +603,8 @@ class QrCodeController extends Controller
 
         $qr_type                 = $request->qr_type;
         $qr_template             = $request->qr_template;
-        $qr_logo                 = $request->qr_logo;
-        $qr_logo_size            = $request->qr_logo_size;
+        $qr_logo                 = $request->file('qr_logo');
+        $qr_logo_size            = $request->input('qr_logo_size', 50); // Default size if not provided
         $qr_eye_ball             = $request->qr_eye_ball;
         $qr_eye_ball_color       = $this->hexToRgb($request->qr_eye_ball_color);
         $qr_eye_frame            = $request->qr_eye_frame;
@@ -677,6 +677,12 @@ class QrCodeController extends Controller
 
         if (!empty($qr_eye_ball)) {
             $qrCode->eye($qr_eye_ball, 0.5);
+        }
+
+        // Add the logo to the QR code
+        if ($qr_logo) {
+            $logoPath = $qr_logo->getRealPath();
+            $qrCode->merge($logoPath, 0.2, true, $qr_logo_size);
         }
         if (!empty($qr_eye_ball_color)) {
             $qrCode->eyeColor(0, $qr_eye_ball_color['r'], $qr_eye_ball_color['g'], $qr_eye_ball_color['b'], $qr_eye_frame_color['r'], $qr_eye_frame_color['g'], $qr_eye_frame_color['b'],);
