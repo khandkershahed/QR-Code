@@ -7,6 +7,7 @@ use Image;
 use Carbon\Carbon;
 use App\Models\Admin\Qr;
 use Illuminate\Support\Str;
+use Jenssegers\Agent\Agent;
 use App\Models\Admin\QrData;
 use App\Models\Admin\QrScan;
 use Illuminate\Http\Request;
@@ -94,11 +95,18 @@ class QrCodeController extends Controller
 
     public function showQr(Request $request, string $Qr)
     {
+        $agent = new Agent();
+        if ($agent->isDesktop()) {
+            $user_device = $agent->browser();
+        } else {
+            $user_device = $agent->device();
+        }
         $qr = Qr::with('qrData')->where('code', $Qr)->first();
         QrScan::create([
             'code_id'    => $qr->id,
             'qr_code'    => $qr->code,
             'ip_address' => $request->ip(),
+            'user_device' => $user_device,
         ]);
         if (!empty($qr)) {
             // dd($qr->qr_type);
@@ -610,7 +618,7 @@ class QrCodeController extends Controller
 
     public function update(QrCodeRequest $request, $id)
     {
-        $qr = Qr::with('qrData')->where('id', $id)->first();
+        $qr = Qr::with('qrData')->where('code', $id)->first();
 
         $qr_type                 = $request->qr_type;
         $qr_template             = $request->qr_template;

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('code_id')->nullable()->constrained('qrs')->onDelete('cascade');
             $table->string('qr_code')->nullable();
             $table->string('ip_address', 100)->nullable();
+            $table->string('user_device', 200)->nullable();
             $table->timestamps();
         });
     }

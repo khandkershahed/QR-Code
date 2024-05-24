@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\User\Auth;
 
+use Carbon\Carbon;
 use App\Models\Admin\Qr;
 use Illuminate\View\View;
+use Jenssegers\Agent\Agent;
 use Illuminate\Http\Request;
 use App\Models\Admin\NfcCard;
+use App\Models\UserLoginDetails;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -88,6 +91,18 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+        $agent = new Agent();
+        if ($agent->isDesktop()) {
+            $user_device = $agent->browser();
+        } else {
+            $user_device = $agent->device();
+        }
+        UserLoginDetails::create([
+            'user_id'       => Auth::user()->id,
+            'ip_address'    => $request->ip(),
+            'user_device'   => $user_device,
+            'login_time'    => Carbon::now(),
+        ]);
         // flash()->addSuccess('You have successfully logged in.');
         return redirect()->intended(RouteServiceProvider::HOME)->with('success', 'You have successfully logged in.');
     }

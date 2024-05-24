@@ -523,7 +523,7 @@
                         <!--begin::Options-->
                         <div data-kt-element="options">
                             <!--begin::Notice-->
-                            <div class="pb-5 trial_end">
+                            <div class="pb-5">
                                 <h3 class="text-center fw-bold">Currently on a </h3>
                                 <h1 class="text-center mb-0 fw-bold" style="color: orangered;">14-day free trial</h1>
                             </div>
@@ -539,7 +539,7 @@
                                 <h1 class="text-center mb-0 fw-bold" style="color: orangered;">Thank you for trying
                                     our Premium service!</h1>
                             </div>
-                            <div>
+                            <div class="trial_end">
                                 <div id="countdown">
                                     <div id='tiles'></div>
                                     <div class="labels">
@@ -701,6 +701,15 @@
     </div>
     @push('scripts')
         <script>
+            $(document).ready(function() {
+                // Open the modal by default when the page loads
+                $('#kt_app_engage_prebuilts_modal').modal('show');
+
+                // Handle the close button click to dismiss the modal
+                $('#kt_app_engage_prebuilts_modal').on('click', '.btn-active-color-primary', function() {
+                    $('#kt_app_engage_prebuilts_modal').modal('hide');
+                });
+            });
             document.addEventListener("DOMContentLoaded", function() {
                 // User creation timestamp passed from backend
                 var userCreated = new Date("{{ Auth::user()->created_at }}").getTime();
@@ -709,7 +718,9 @@
                 var currentDate = new Date().getTime();
                 var timeLeft = (targetDate - currentDate);
                 if (timeLeft <= 0) {
-                    $('.trial_end').append('<h1 class="text-center text-danger pt-4 fw-bold">Your 14 day Free trial has ended. Your NFC and QRs will be deleted.</h1>');
+                    $('.trial_end').html(
+                        '<h1 class="text-center text-danger pt-4 fw-bold">Your 14 day Free trial has ended. Your NFC and QRs will be deleted.</h1>'
+                        );
                 }
                 var countdown = document.getElementById("tiles"); // Get the countdown element
 

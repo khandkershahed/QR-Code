@@ -4660,15 +4660,7 @@ KTUtil.onDOMContentLoaded(function () {
 
 
 
-$(document).ready(function() {
-    // Open the modal by default when the page loads
-    $('#kt_app_engage_prebuilts_modal').modal('show');
 
-    // Handle the close button click to dismiss the modal
-    $('#kt_app_engage_prebuilts_modal').on('click', '.btn-active-color-primary', function() {
-        $('#kt_app_engage_prebuilts_modal').modal('hide');
-    });
-});
 
 
 
