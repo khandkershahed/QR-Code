@@ -90,6 +90,7 @@
                         {{-- <option value="0.3">None</option> --}}
                         <option value="0.2" @selected($qr->qr_logo_size == "0.2")>20%</option>
                         <option value="0.3" @selected($qr->qr_logo_size == "0.3")>30%</option>
+                        <option value="0.3" @selected($qr->qr_logo_size == "0.4")>40%</option>
                         <option value="0.5" @selected($qr->qr_logo_size == "0.5")>50%</option>
                         <option value="0.6" @selected($qr->qr_logo_size == "0.6")>60%</option>
                     </select>
@@ -105,7 +106,7 @@
             <p>This will be the color and shape of your QR code's eye-balls</p>
         </div>
         <div class="row p-5 pt-3 pt-lg-6 colorCodeContainer">
-            <label class="form-label p-0 pb-3" for="colorPicker">Eye Ball Color</label>
+            <label class="form-label p-0 pb-3" for="colorPicker">Eye Frame Color</label>
             <input type="text" id="colorCodeInput" class="form-control form-control-solid w-75 w-lg-25 colorCodeInput" value="{{ $qr->qr_eye_ball_color }}" readonly>
             <input type="color" id="colorPicker" style="width: 56px;height: 45px;" class="colorPicker" name="qr_eye_ball_color" value="{{ $qr->qr_eye_ball_color }}">
         </div>
@@ -153,7 +154,7 @@
             <p>This will be the color and shape of your QR code's eye-frames</p>
         </div>
         <div class="row p-5 pt-3 pt-lg-6 colorCodeContainer">
-            <label class="form-label p-0 pb-3" for="colorPicker">Eye Frame Color</label>
+            <label class="form-label p-0 pb-3" for="colorPicker">Eye Ball Color</label>
             <input type="text" id="colorCodeInput" class="form-control form-control-solid w-75 w-lg-25 colorCodeInput" value="{{ $qr->qr_eye_frame_color }}" readonly>
             <input type="color" id="colorPicker" class="colorPicker" style="width: 56px;height: 45px;" name="qr_eye_frame_color" value="{{ $qr->qr_eye_frame_color }}">
         </div>
