@@ -448,16 +448,13 @@
 
                                 <div class="d-flex flex-stack flex-grow-1 flex-wrap flex-md-nowrap">
                                     <div class="mb-3 mb-md-0 fw-semibold">
-                                        <h4 class="text-gray-900 fw-bold">Database Backup Process Completed!</h4>
+                                        <h4 class="text-gray-900 fw-bold">Your Current Plan <span style="color: orangered">Premium Plan</span></h4>
 
-                                        <div class="fs-6 text-gray-700 pe-7">Login into Admin Dashboard to make sure
-                                            the
-                                            data
-                                            integrity is OK</div>
+                                        <div class="fs-6 text-gray-700 pe-7">You Can Check Your Plan Or Status By Clicking Here!</div>
                                     </div>
 
                                     <a href="#" class="btn btn-primary px-6 align-self-center text-nowrap">
-                                        Check All Messages</a>
+                                        Check Current Status</a>
                                 </div>
                             </div>
 
