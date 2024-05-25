@@ -156,17 +156,24 @@
                     <h2>SELECT A LOGO</h2>
                     <p>This will appear at the center of your QR code.</p>
                 </div>
-                {{-- Logos Uploade --}}
+                {{-- Logo Upload --}}
                 <div class="d-flex align-items-center">
                     <div class="pe-3">
                         <x-metronic.label for="qr_logo" class="form-label">{{ __('Logo') }}</x-metronic.label>
-                        <x-metronic.input id="qr_logo" type="file" name="qr_logo" :value="old('qr_logo')"
-                            placeholder="Upload Logo" />
+                        <x-metronic.input id="qr_logo" type="file" name="qr_logo" accept="image/*" placeholder="Upload Logo" />
                     </div>
                     <div class="ps-4">
                         <x-metronic.label for="qr_logo_size" class="form-label">{{ __('Logo Size (in Pixel)') }}</x-metronic.label>
-                        <x-metronic.input id="qr_logo_size" type="number" name="qr_logo_size" :value="old('qr_logo_size')"
-                            placeholder="Logo Size(Eg: 5, 10, 15....)" />
+                        {{-- <x-metronic.input id="qr_logo_size" type="number" name="qr_logo_size" :value="old('qr_logo_size')" placeholder="Logo Size(Eg: 5, 10, 15....)" /> --}}
+                        <select class="form-select w-100" name="qr_logo_size" aria-label="Default select example">
+                            {{-- <option value="0.3">None</option> --}}
+                            <option value="0.2" >20%</option>
+                            <option value="0.3" >30%</option>
+                            <option value="0.5">50%</option>
+                            <option value="0.6">60%</option>
+                            {{-- <option value="inverse_diagonal">Inverse_Diagonal</option>
+                            <option value="radial">Radial</option> --}}
+                        </select>
                     </div>
                 </div>
                 {{-- <p class="text-start pt-5 mb-0">Or Select From Our
@@ -355,7 +362,7 @@
                         'image' =>
                             'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/right-leaf.svg',
                     ],
-                ]" />
+                ]" :selectedEyeBall="null" />
 
             </div>
             <div class="row pt-3 pt-lg-6">
@@ -451,7 +458,7 @@
                     //     'image' =>
                     //         'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/smooth-round.svg',
                     // ],
-                ]" />
+                ]" :selectedQrPattern="null"  />
             </div>
             <div>
                 <h2 class="pt-10">COLOR</h2>

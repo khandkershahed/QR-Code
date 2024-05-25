@@ -410,7 +410,7 @@
                                                     <br />
                                                     <span>{{ optional($nfc_card->nfcData)->company_address_line_two }}</span>
                                                 </p>
-                                                <p>+03 58685125</p>
+                                                <p class="mb-0">+03 58685125</p>
                                             </div>
                                             <div class="tem-two-about-secontd">
                                                 <p class="fw-bold mb-0">

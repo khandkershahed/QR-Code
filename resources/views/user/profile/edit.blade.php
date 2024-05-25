@@ -114,10 +114,10 @@
                                     {{ !empty($user->address_line_two) ? ',' : '' }}
                                     {{ $user->address_line_two }}</div>
                             @endif
-                            <div class="fw-bolder mt-5">Language</div>
+                            <div class="fw-bolder mt-5">Default Language</div>
                             <div class="text-gray-600">English</div>
                             <div class="fw-bolder mt-5">Last Login</div>
-                            <div class="text-gray-600">25 Jul 2022, 2:40 pm</div>
+                            <div class="text-gray-600">{{ optional($last_login)->login_time }}</div>
                         </div>
                     </div>
 

@@ -26,6 +26,7 @@ Route::middleware('auth')->prefix('user')->name('user.')->group(function () {
         Route::get('stripe/checkout/success', 'stripeCheckoutSuccess')->name('stripe.checkout.success');
     });
     Route::post('restaurant-category/edit', [RestaurantCategoryController::class, 'categoryEdit'])->name('editCategory');
+    Route::post('/restaurant-category/destroy', [RestaurantCategoryController::class, 'destroyCategory'])->name('restaurant-category.destroy');
     Route::post('qrcode/preview', [QrCodeController::class, 'qrPreview'])->name('qr.preview');
     Route::get('qrcode/summary/{id}', [QrCodeController::class, 'qrSummary'])->name('qr.summary');
     Route::get('template/qrcode', [QrCodeController::class, 'qrTemplate'])->name('qr.template');

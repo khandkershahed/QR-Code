@@ -62,6 +62,8 @@ class RestaurantCategoryController extends Controller
         $categories = RestaurantCategory::latest('id')->get();
         return response()->json([
             'categoryContainer' => view('user.pages.qr-code.partials.restaurant_category',[ 'categories' => $categories])->render(),
+            'modalContainer' => view('user.pages.qr-code.partials.qrCodeModals',[ 'categories' => $categories])->render(),
+            'previewContainer' => view('user.pages.qr-code.preview.qr_restaurant_preview',[ 'categories' => $categories])->render(),
             'success' => 'Category created successfully!'
         ]);
         // return response()->json(['success' => 'Category created successfully', 'category' => $categories]);
@@ -117,10 +119,35 @@ class RestaurantCategoryController extends Controller
         // Return a JSON response
         return response()->json([
             'categoryContainer' => view('user.pages.qr-code.partials.restaurant_category', ['categories' => $categories])->render(),
-            'success' => 'Category updated successfully!'
+            'modalContainer' => view('user.pages.qr-code.partials.qrCodeModals',[ 'categories' => $categories])->render(),
+            'previewContainer' => view('user.pages.qr-code.preview.qr_restaurant_preview',[ 'categories' => $categories])->render(),
+            'success' => 'Category updated successfully!',
         ]);
     }
 
+    public function destroyCategory(Request $request)
+    {
+        $category = RestaurantCategory::findOrFail($request->category_id);
+
+        // Delete the category icon if it exists
+        if ($category->category_icon) {
+            Storage::delete('public/qr_codes/restaurants/' . $category->category_icon);
+        }
+
+        // Delete the category
+        $category->delete();
+
+        // Get the updated list of categories
+        $categories = RestaurantCategory::latest('id')->get();
+
+        // Return a JSON response
+        return response()->json([
+            'categoryContainer' => view('user.pages.qr-code.partials.restaurant_category', ['categories' => $categories])->render(),
+            'modalContainer' => view('user.pages.qr-code.partials.qrCodeModals', ['categories' => $categories])->render(),
+            'previewContainer' => view('user.pages.qr-code.preview.qr_restaurant_preview',[ 'categories' => $categories])->render(),
+            'success' => 'Category deleted successfully!',
+        ]);
+    }
     /**
      * Display the specified resource.
      */

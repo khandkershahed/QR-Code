@@ -63,7 +63,7 @@
                     </div>
                     <div class="col-lg-3">
                         <div class="fv-row my-3">
-                            <x-metronic.label class="fw-semibold fs-6 mb-2 required">Last Name</x-metronic.label>
+                            <x-metronic.label class="fw-semibold fs-6 mb-2">Last Name</x-metronic.label>
                             <x-metronic.input type="text" name="last_name"
                                 class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Saju"
                                 value="" />
@@ -87,7 +87,7 @@
                     </div>
                     <div class="col-lg-3">
                         <div class="fv-row my-3">
-                            <x-metronic.label class="fw-semibold fs-6 mb-2 required">Address Line Two</x-metronic.label>
+                            <x-metronic.label class="fw-semibold fs-6 mb-2">Address Line Two</x-metronic.label>
                             <x-metronic.input type="text" name="address_line_two"
                                 class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Bangladesh"
                                 value="" />
@@ -95,7 +95,7 @@
                     </div>
                     <div class="col-lg-3">
                         <div class="fv-row my-3">
-                            <x-metronic.label class="fw-semibold fs-6 mb-2 required">Phone Work</x-metronic.label>
+                            <x-metronic.label class="fw-semibold fs-6 mb-2">Phone Work</x-metronic.label>
                             <x-metronic.input type="text" name="phone_work"
                                 class="form-control form-control-solid mb-3 mb-lg-0" placeholder="01*******"
                                 value="" />
@@ -111,7 +111,7 @@
                     </div>
                     <div class="col-lg-3">
                         <div class="fv-row my-3">
-                            <x-metronic.label class="fw-semibold fs-6 mb-2 required">Email Work</x-metronic.label>
+                            <x-metronic.label class="fw-semibold fs-6 mb-2">Email Work</x-metronic.label>
                             <x-metronic.input type="email" name="email_work"
                                 class="form-control form-control-solid mb-3 mb-lg-0" placeholder="work@mail.com"
                                 value="" />
@@ -292,7 +292,7 @@
                     </div>
                     <div class="col-lg-3">
                         <div class="fv-row my-3">
-                            <x-metronic.label class="fw-semibold fs-6 mb-2">company_address_line_one</x-metronic.label>
+                            <x-metronic.label class="fw-semibold fs-6 mb-2">Company Address Line One</x-metronic.label>
                             <x-metronic.input type="text" name="company_address_line_one"
                                 class="form-control form-control-solid mb-3 mb-lg-0"
                                 placeholder="257/A, San-fca Calefornia," value="" />
