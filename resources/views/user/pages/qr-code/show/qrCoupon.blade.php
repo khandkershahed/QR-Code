@@ -98,7 +98,7 @@
                             style="font-family: var(--tem-one-name-font-family);font-size: 55px;">
                             <span class="qr_data_coupon_message">{{ $qr->qrData->qr_data_coupon_message }}</span>
                             <span class="qr_data_coupon_description_body" style="color: #fd0834">
-                                {{ $qr->qrData->qr_data_coupon_message }}</span>
+                                {{ $qr->qrData->qr_data_coupon_description_body }}</span>
                         </h1>
                         <h3 class="qr_data_coupon_company"
                             style="color: #15487f;font-family: var(--tem-one-name-font-family);">
