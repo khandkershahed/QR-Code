@@ -12,7 +12,7 @@
             </div>
             <div class="flex-grow-1">
                 <div class="fw-bold">
-                    <img width="70px" src="{{ $pattern['image'] }}" alt="" />
+                    <img class="img-fluid" src="{{ $pattern['image'] }}" alt="" />
                 </div>
             </div>
         </div>
