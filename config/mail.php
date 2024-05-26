@@ -34,21 +34,8 @@ return [
     */
 
     'mailers' => [
-        // 'smtp' => [
-        //     'transport' => 'smtp',
-        //     'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
-        //     'port' => env('MAIL_PORT', 587),
-        //     'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-        //     'username' => env('MAIL_USERNAME'),
-        //     'password' => env('MAIL_PASSWORD'),
-        //     'timeout' => null,
-        //     'local_domain' => env('MAIL_EHLO_DOMAIN'),
-        //     'verify_peer' => false,
-        // ],
-
         'smtp' => [
             'transport' => 'smtp',
-            'url' => env('MAIL_URL'),
             'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
             'port' => env('MAIL_PORT', 587),
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
@@ -56,7 +43,6 @@ return [
             'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
             'local_domain' => env('MAIL_EHLO_DOMAIN'),
-            'verify_peer' => false,
         ],
 
         'ses' => [
@@ -66,45 +52,9 @@ return [
         'mailgun' => [
             'transport' => 'mailgun',
         ],
-        'mailersend' => [
-            'transport' => 'mailersend',
-        ],
 
         'postmark' => [
             'transport' => 'postmark',
-        ],
-
-        'mailjet' => [
-            'transport' => 'mailjet',
-            'key' => env('MAILJET_APIKEY'),
-            'secret' => env('MAILJET_APISECRET'),
-            'transactional' => [
-                'call' => true,
-                'options' => [
-                    'url' => 'api.mailjet.com',
-                    'version' => 'v3.1',
-                    'call' => true,
-                    'secured' => true
-                ]
-            ],
-            'common' => [
-                'call' => true,
-                'options' => [
-                    'url' => 'api.mailjet.com',
-                    'version' => 'v3',
-                    'call' => true,
-                    'secured' => true
-                ]
-            ],
-            'v4' => [
-                'call' => true,
-                'options' => [
-                    'url' => 'api.mailjet.com',
-                    'version' => 'v4',
-                    'call' => true,
-                    'secured' => true
-                ]
-            ],
         ],
 
         'sendmail' => [
@@ -142,8 +92,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'admin@goflixza.com'),
-        'name' => env('MAIL_FROM_NAME', 'GO-QR'),
+        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
+        'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 
     /*
@@ -164,7 +114,5 @@ return [
             resource_path('views/vendor/mail'),
         ],
     ],
-
-
 
 ];
