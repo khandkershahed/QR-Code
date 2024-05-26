@@ -148,9 +148,7 @@
                                                                 class="path3"></span></i></span>
                                                 </div>
                                             </td>
-                                            <td class="fw-bold text-end"><a
-                                                    href="/metronic8/demo1/apps/invoices/view/invoice-3.html"
-                                                    class="text-gray-600 text-hover-primary">#INV-000414</a></td>
+                                            <td class="fw-bold text-end"><p class="text-gray-600 text-hover-primary">#INV-000414</p></td>
                                         </tr>
                                         <tr>
                                             <td class="text-muted">
