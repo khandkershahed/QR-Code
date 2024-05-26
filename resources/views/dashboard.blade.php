@@ -481,7 +481,7 @@
                                             class="position-absolute opacity-15 bottom-0 start-0 border-4 border-danger border-bottom w-100"></span>
                                     </span>
                                 </span>
-                                for Free
+                                For Subsciption!
                             </div>
 
                             <div class="text-center d-flex justify-content-center ">
