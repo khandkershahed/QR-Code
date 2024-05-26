@@ -3,15 +3,18 @@
 namespace App\Http\Controllers\User;
 
 use Exception;
+use Carbon\Carbon;
 use App\Models\User;
+use Jenssegers\Agent\Agent;
 use Illuminate\Http\Request;
+use App\Models\UserLoginDetails;
 use App\Mail\UserRegistrationMail;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Notifications\UserRegistration;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Support\Facades\Log;
 use Laravel\Socialite\Facades\Socialite;
 
 class UserSocialLoginController extends Controller
@@ -22,7 +25,7 @@ class UserSocialLoginController extends Controller
         return Socialite::driver('google')->redirect();
     }
 
-    public function handleGoogleCallback()
+    public function handleGoogleCallback(Request $request)
     {
         try {
             $user = Socialite::driver('google')->user();
@@ -45,7 +48,18 @@ class UserSocialLoginController extends Controller
 
                 Auth::login($newUser);
             }
-
+            $agent = new Agent();
+            if ($agent->isDesktop()) {
+                $user_device = $agent->browser();
+            } else {
+                $user_device = $agent->device();
+            }
+            UserLoginDetails::create([
+                'user_id'       => Auth::user()->id,
+                'ip_address'    => $request->ip(),
+                'user_device'   => $user_device,
+                'login_time'    => Carbon::now(),
+            ]);
             return redirect()->intended(RouteServiceProvider::HOME)->with('success', 'You have logged in Successfully.');
         } catch (Exception $e) {
             Log::error($e->getMessage());

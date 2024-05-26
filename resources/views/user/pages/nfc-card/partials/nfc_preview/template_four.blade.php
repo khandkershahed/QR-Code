@@ -144,7 +144,7 @@
                                 <!-- Contact Info -->
                                 <div class="my-3 pt-4">
                                     <div class="row gx-3">
-                                        <div class="col-lg-12 mb-3">
+                                        <div class="col-lg-12 d-flex justify-content-center align-items-center pe-0 mb-3">
                                             <div class="card border-0 contact-info_four"
                                                 style="background-color: #1c344f;border-radius: 15px;margin-left: -10px;padding: 20px;position: relative;">
                                                 <div class="card-body p-0">
@@ -170,7 +170,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-12">
+                                        <div class="col-lg-12 d-flex justify-content-center align-items-center pe-0">
                                             <div class="card border-0 contact-info_four"
                                                 style="background-color: #1c344f;border-radius: 15px;margin-left: -10px;padding: 20px;position: relative;">
                                                 <div class="card-body p-0"
@@ -198,7 +198,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-12 mt-3">
+                                        <div class="col-lg-12 d-flex justify-content-center align-items-center pe-0 mt-3">
                                             <div class="card border-0 contact-info_four"
                                                 style="background-color: #1c344f;border-radius: 15px;margin-left: -10px;padding: 20px;position: relative;">
                                                 <div class="card-body p-0"

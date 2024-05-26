@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminProfileController;
@@ -90,20 +91,22 @@ Route::post('newsletter/store', [NewsLetterController::class, 'store'])
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/admin/dashboard', function () {
-    return view('admin/dashboard');
-})->middleware(['auth:admin', 'verified'])->name('admin.dashboard');
+// Route::get('/admin/dashboard', function () {
+//     return view('admin/dashboard');
+// })->middleware(['auth:admin', 'verified'])->name('admin.dashboard');
 
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::get('/my-plan', [ProfileController::class, 'userPlan'])->name('user.plan');
     Route::get('/my-invoices', [ProfileController::class, 'userInvoice'])->name('user.invoice');
+    Route::get('/invoices/details/{invoice}', [ProfileController::class, 'userInvoiceShow'])->name('user.invoices.show');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', [AuthenticatedSessionController::class, 'dashboard'])->name('dashboard');
     Route::get('/profile', [AdminProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [AdminProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [AdminProfileController::class, 'destroy'])->name('profile.destroy');

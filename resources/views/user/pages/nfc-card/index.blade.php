@@ -58,9 +58,25 @@
                                             <img class="img-fluid w-50px"
                                                 src="{{ asset('frontend/assets/images/nfc-templates/template_one.jpg') }}"
                                                 alt="">
-                                        @else
+                                        @elseif ($nfc_card->nfc_template == 'template-two')
                                             <img class="img-fluid w-50px"
                                                 src="{{ asset('frontend/assets/images/nfc-templates/template_two.jpg') }}"
+                                                alt="">
+                                        @elseif ($nfc_card->nfc_template == 'template-three')
+                                            <img class="img-fluid w-50px"
+                                                src="{{ asset('frontend/assets/images/nfc-templates/template_three.jpg') }}"
+                                                alt="">
+                                        @elseif ($nfc_card->nfc_template == 'template-four')
+                                            <img class="img-fluid w-50px"
+                                                src="{{ asset('frontend/assets/images/nfc-templates/template_four.jpg') }}"
+                                                alt="">
+                                        @elseif ($nfc_card->nfc_template == 'template-five')
+                                            <img class="img-fluid w-50px"
+                                                src="{{ asset('frontend/assets/images/nfc-templates/template_five.jpg') }}"
+                                                alt="">
+                                        @elseif ($nfc_card->nfc_template == 'template-six')
+                                            <img class="img-fluid w-50px"
+                                                src="{{ asset('frontend/assets/images/nfc-templates/template_six.jpg') }}"
                                                 alt="">
                                         @endif
                                     </td>
@@ -108,7 +124,8 @@
                                                     data-bs-target="#message_modal_{{ $nfc_card->id }}">
                                                     All messages
                                                 </a> --}}
-                                                <a href="{{ route('user.nfc-card.show', $nfc_card->code) }}" class="menu-link px-3">
+                                                <a href="{{ route('user.nfc-card.show', $nfc_card->code) }}"
+                                                    class="menu-link px-3">
                                                     All messages
                                                 </a>
                                             </div>
@@ -181,7 +198,8 @@
                                                 {{ optional($nfc_message)->message }}
                                             </td>
                                             <td class="pe-0">
-                                                <a href="#" class="btn btn-light btn-active-light-primary btn-sm"
+                                                <a href="#"
+                                                    class="btn btn-light btn-active-light-primary btn-sm"
                                                     data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end"
                                                     data-kt-menu-flip="top-end">
                                                     Actions

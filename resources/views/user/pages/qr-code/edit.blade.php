@@ -138,7 +138,13 @@
                         <div class="d-flex flex-column justify-content-center align-items-center">
                             {{-- id="generatedQRCodeContainer" --}}
                             <h3>Preview</h3>
-                            @include('user.pages.qr-code.edit_partials.qr_preview')
+                            <div id="generatedQRCodeContainer">
+                                <div class="preview">
+                                    <img id="generatedQRCode" class="img-fluid generatedQRCode" src="{{ $qr->qr_png_url }}" alt="QR Code">
+                                </div>
+                            </div>
+                            {{-- <img src="" alt="website" class="img-fluid" width="300px"> --}}
+                            {{-- @include('user.pages.qr-code.edit_partials.qr_preview') --}}
                             {{-- {!! QrCode::size(220)->eye('left-leaf', 0.1)->eyeColor(0, 255, 255, 255, 0, 0, 0)->eyeColor(1, 222, 18, 222, 222, 18, 222)->eyeColor(2, 222, 18, 222, 222, 18, 222)->style('dot', 0.8)->errorCorrection('H')->generate('Make me into a QrCode!') !!} --}}
                         </div>
                         <a id="downloadLink" href="javascripti:void()" download
@@ -250,28 +256,20 @@
 
         <script>
             $(document).ready(function() {
-                $('#colorPicker').on('input', function() {
+                $('.colorPicker').on('input', function() {
                     var selectedColor = $(this).val();
-                    $('#colorCodeInput').val(selectedColor);
+                    $(this).closest('.colorCodeContainer').find('.colorCodeInput').val(selectedColor);
+                });
+            });
+
+            $(document).ready(function() {
+                $('.colorPicker').on('input', function() {
+                    var selectedColor = $(this).val();
+                    $(this).closest('.colorCodeInput').val(selectedColor);
                 });
             });
         </script>
-        <script>
-            var myDropzone = new Dropzone("#qr_dropzone", {
-                url: "https://keenthemes.com/scripts/void.php", // Set the url for your upload script location
-                paramName: "file", // The name that will be used to transfer the file
-                maxFiles: 1,
-                maxFilesize: 2, // MB
-                addRemoveLinks: true,
-                accept: function(file, done) {
-                    if (file.name == "wow.jpg") {
-                        done("Naha, you don't.");
-                    } else {
-                        done();
-                    }
-                }
-            });
-        </script>
+
         <script>
             // Get references to radio buttons and divs
             const normalColorRadio = document.getElementById('solid_color');

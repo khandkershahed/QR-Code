@@ -47,7 +47,6 @@
         .nfc-mobile-frame {
             max-width: 576px;
             width: 576px;
-            min-height: 100vh;
             /* border: 2px solid #1026bf; */
             border-radius: 20px;
             overflow: hidden;
@@ -154,10 +153,9 @@
 
         .headling-title {
             text-align: center;
-            color: var(--white);
             font-family: var(--tem-one-name-font-family);
             font-size: 40px;
-            color: var(--headling-title-color);
+            color: #ff7355;
         }
 
         .divider {
@@ -230,7 +228,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 d-flex justify-content-center align-items-center px-0">
-                        <div class="nfc-mobile-frame shadow-sm"
+                        <div class="nfc-mobile-frame"
                             style="
                   background-image: url(https://blackrocket.com/launchpad/wp-content/uploads/2020/03/shapes-bg-color.png);
                   background-size: cover;

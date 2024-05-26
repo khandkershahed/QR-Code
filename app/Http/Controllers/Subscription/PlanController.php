@@ -32,15 +32,15 @@ class PlanController extends Controller
      */
     public function store(Request $request)
     {
-        $plan = Plan::create([
-            'amount' => $request->amount,
-            'currency' => $request->currency,
-            'interval' => $request->billing_period,
-            'interval_count' => $request->interval_count,
-            'product' => [
-                'name' => $request->name
-            ]
-        ]);
+        // $plan = Plan::create([
+        //     'amount' => $request->amount,
+        //     'currency' => $request->currency,
+        //     'interval' => $request->billing_period,
+        //     'interval_count' => $request->interval_count,
+        //     'product' => [
+        //         'name' => $request->name
+        //     ]
+        // ]);
         $data = $request->all();
         // $data['descriptions'] = json_encode($request->input('descriptions')); // Convert array to JSON
         if ($request->has('descriptions')) {

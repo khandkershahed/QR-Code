@@ -4656,3 +4656,13 @@ var KTLayoutToolbar = {
 KTUtil.onDOMContentLoaded(function () {
     KTLayoutToolbar.init();
 });
+
+
+
+
+
+
+
+
+
+

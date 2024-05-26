@@ -30,7 +30,7 @@
                 --tem-one-name-font-family: "Raleway", sans-serif !important;
                 --body-font-family: "Raleway", sans-serif !important;
             @endif
- 
+
             --white: #fff;
             --tem-one-name-color: #fff;
             --tem-one-name-font-size: 40px;
@@ -351,7 +351,7 @@
                                                     <div class="text-center">
                                                         <img class=""
                                                             style="margin-bottom: -3rem;position: relative;z-index: 5;border-radius: 100%;width: 100px;"
-                                                            src="https://my.cybercard.ma/uploads/vcards/profiles/221/smiling-doctor-sitting-isolated-grey_651396-917.jpg"
+                                                            src="{{ !empty($nfc_card->nfcData->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
                                                             alt="banner" />
                                                     </div>
                                                     <div>
@@ -435,7 +435,7 @@
                                                     style="background-image: url(https://my.cybercard.ma/images/slider-bg.png?e98f043e310dd6f02946933959a990ff);">
                                                     <h3 class="fw-bold text-center pt-4"
                                                         style="color: #1c344f; margin-bottom: 2rem">
-                                                        Service
+                                                        {{ $nfc_card->nfcData->service_section_title }}
                                                     </h3>
                                                     <div class="slick-slider p-4">
                                                         @if (!empty($nfc_card->nfcData->service_one_image))

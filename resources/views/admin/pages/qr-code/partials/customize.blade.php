@@ -440,12 +440,12 @@
                         'image' =>
                             'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/thin-square.svg',
                     ],
-                    [
-                        'id' => 438,
-                        'value' => 'round',
-                        'image' =>
-                            'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/smooth-round.svg',
-                    ],
+                    // [
+                    //     'id' => 438,
+                    //     'value' => 'round',
+                    //     'image' =>
+                    //         'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/smooth-round.svg',
+                    // ],
                     [
                         'id' => 439,
                         'value' => 'round',

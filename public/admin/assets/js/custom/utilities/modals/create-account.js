@@ -92,13 +92,6 @@ var KTCreateAccount = (function () {
                                     },
                                 },
                             },
-                            last_name: {
-                                validators: {
-                                    notEmpty: {
-                                        message: "Last Name Is Required",
-                                    },
-                                },
-                            },
                             designation: {
                                 validators: {
                                     notEmpty: {
@@ -113,31 +106,10 @@ var KTCreateAccount = (function () {
                                     },
                                 },
                             },
-                            address_line_two: {
-                                validators: {
-                                    notEmpty: {
-                                        message: "Designation Is Required",
-                                    },
-                                },
-                            },
-                            phone_work: {
-                                validators: {
-                                    notEmpty: {
-                                        message: "Phone Is Required",
-                                    },
-                                },
-                            },
                             phone_personal: {
                                 validators: {
                                     notEmpty: {
                                         message: "Phone Is Required",
-                                    },
-                                },
-                            },
-                            email_work: {
-                                validators: {
-                                    notEmpty: {
-                                        message: "Email Is Required",
                                     },
                                 },
                             },

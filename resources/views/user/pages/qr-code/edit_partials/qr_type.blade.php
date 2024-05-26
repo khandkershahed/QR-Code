@@ -86,9 +86,9 @@
     [
         'id' => 13,
         'value' => 'restaurant',
-        'title' => 'Restaurant Menu',
+        'title' => 'Restaurant',
         'text' => 'Link to your restaurant and upload menu',
-        'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/resturent.svg',
+        'image' => 'https://i.ibb.co/kx55Xpv/Restaurant-Icon.png',
     ],
     [
         'id' => 14,

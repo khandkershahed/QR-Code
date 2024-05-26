@@ -39,7 +39,7 @@
         text-align: center;
         color: var(--white);
         font-family: var(--tem-one-name-font-family);
-        font-size: 70px;
+        font-size: 4.375rem;
         color: var(--white);
     }
 
@@ -137,10 +137,10 @@
             <div class="nfc-mobile-frame shadow-sm"
                 style="background-image: linear-gradient(to bottom,#faa21c,#ffa387,#ffbed5,#ffe2ff,#ffffff);">
                 <div class="card p-0 bg-none border-0 rounded-0 shadow-none bg-transparent" style="overflow-x: hidden">
-                    <div class="card-header bg-none border-0 rounded-0 shadow-none bg-transparent p-0">
-                        <div class="text-center text-lg-center mobile-images-profile pt-5">
-                            <img class="p-3 img-fluid qr_data_facebook_page_logo"
-                                style="width: 140px;border-radius: 100%;position: relative;z-index: 15;"
+                    <div class="card-header bg-none border-0 rounded-0 shadow-none bg-transparent p-0 d-flex justify-content-center align-items-center">
+                        <div class="text-center text-lg-center mobile-images-profile pt-5 ">
+                            <img class="p-5 img-fluid qr_data_facebook_page_logo "
+                                style="width: 100px;border-radius: 100%;position: relative;z-index: 15;"
                                 src="https://i.ibb.co/BNBTVN4/logo.png" alt="banner" />
                         </div>
                     </div>

@@ -42,70 +42,25 @@
                 <thead class="border-bottom border-gray-200 fs-7 fw-bolder">
                     <!--begin::Table row-->
                     <tr class="text-start text-muted text-uppercase gs-0">
-                        <th class="min-w-100px">Location</th>
+                        {{-- <th class="min-w-100px">Location</th> --}}
                         <th>Device</th>
                         <th>IP Address</th>
                         <th class="min-w-125px">Time</th>
-                        <th class="min-w-70px">Actions</th>
+                        {{-- <th class="min-w-70px">Actions</th> --}}
                     </tr>
                     <!--end::Table row-->
                 </thead>
                 <!--end::Table head-->
                 <!--begin::Table body-->
                 <tbody class="fs-6 fw-bold text-gray-600">
-                    <tr>
-                        <!--begin::Invoice=-->
-                        <td>Australia</td>
-                        <!--end::Invoice=-->
-                        <!--begin::Status=-->
-                        <td>Chome - Windows</td>
-                        <!--end::Status=-->
-                        <!--begin::Amount=-->
-                        <td>207.26.18.342</td>
-                        <!--end::Amount=-->
-                        <!--begin::Date=-->
-                        <td>23 seconds ago</td>
-                        <!--end::Date=-->
-                        <!--begin::Action=-->
-                        <td>Current session</td>
-                        <!--end::Action=-->
-                    </tr>
-                    <tr>
-                        <!--begin::Invoice=-->
-                        <td>Australia</td>
-                        <!--end::Invoice=-->
-                        <!--begin::Status=-->
-                        <td>Safari - iOS</td>
-                        <!--end::Status=-->
-                        <!--begin::Amount=-->
-                        <td>207.33.48.357</td>
-                        <!--end::Amount=-->
-                        <!--begin::Date=-->
-                        <td>3 days ago</td>
-                        <!--end::Date=-->
-                        <!--begin::Action=-->
-                        <td>
-                            <a href="#" data-kt-users-sign-out="single_user">Sign out</a>
-                        </td>
-                        <!--end::Action=-->
-                    </tr>
-                    <tr>
-                        <!--begin::Invoice=-->
-                        <td>Australia</td>
-                        <!--end::Invoice=-->
-                        <!--begin::Status=-->
-                        <td>Chrome - Windows</td>
-                        <!--end::Status=-->
-                        <!--begin::Amount=-->
-                        <td>207.24.50.215</td>
-                        <!--end::Amount=-->
-                        <!--begin::Date=-->
-                        <td>last week</td>
-                        <!--end::Date=-->
-                        <!--begin::Action=-->
-                        <td>Expired</td>
-                        <!--end::Action=-->
-                    </tr>
+                    @foreach ($login_sessions as $login_session)
+                        <tr>
+                            <td>{{ $login_session->user_device }}</td>
+                            <td>{{ $login_session->ip_address }}</td>
+                            <td>{{ $login_session->login_time }}</td>
+                        </tr>
+                    @endforeach
+
                 </tbody>
                 <!--end::Table body-->
             </table>
@@ -115,9 +70,8 @@
     </div>
     <!--end::Card body-->
 </div>
-<!--end::Card-->
-<!--begin::Card-->
-<div class="card pt-4 mb-6 mb-xl-9">
+
+{{-- <div class="card pt-4 mb-6 mb-xl-9">
     <!--begin::Card header-->
     <div class="card-header border-0">
         <!--begin::Card title-->
@@ -242,8 +196,6 @@
     </div>
     <!--end::Card body-->
 </div>
-<!--end::Card-->
-<!--begin::Card-->
 <div class="card pt-4 mb-6 mb-xl-9">
     <!--begin::Card header-->
     <div class="card-header border-0">
@@ -443,4 +395,4 @@
         <!--end::Table-->
     </div>
     <!--end::Card body-->
-</div>
+</div> --}}

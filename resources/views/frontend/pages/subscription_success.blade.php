@@ -1,4 +1,4 @@
-<x-frontend-app-layout :title="'Subscription Sueccesful'">
+<x-app-layout :title="'Subscription Sueccesful'">
     <section class="py-250 rpy-120">
         <div class="container pt-70 rpt-60">
             <div class="row justify-content-center">
@@ -20,5 +20,5 @@
     @push('scripts')
 
     @endpush
-</x-frontend-app-layout>
+</x-app-layout>
 

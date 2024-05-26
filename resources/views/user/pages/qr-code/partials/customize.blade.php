@@ -156,17 +156,39 @@
                     <h2>SELECT A LOGO</h2>
                     <p>This will appear at the center of your QR code.</p>
                 </div>
-                {{-- Logos Uploade --}}
+                {{-- Logo Upload --}}
                 <div class="d-flex align-items-center">
-                    <div class="pe-3">
-                        <x-metronic.label for="qr_logo" class="form-label">{{ __('Logo') }}</x-metronic.label>
-                        <x-metronic.input id="qr_logo" type="file" name="qr_logo" :value="old('qr_logo')"
-                            placeholder="Upload Logo" />
-                    </div>
-                    <div class="ps-4">
-                        <x-metronic.label for="qr_logo_size" class="form-label">{{ __('Logo Size (in Pixel)') }}</x-metronic.label>
-                        <x-metronic.input id="qr_logo_size" type="number" name="qr_logo_size" :value="old('qr_logo_size')"
-                            placeholder="Logo Size(Eg: 5, 10, 15....)" />
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <div class="pe-3">
+                                <x-metronic.label for="qr_logo" class="form-label">{{ __('Logo') }}</x-metronic.label>
+                                <x-metronic.input id="qr_logo" type="file" name="qr_logo" accept="image/*" placeholder="Upload Logo" />
+                            </div>
+                        </div>
+                        <div class="col-lg-1">
+                            <x-metronic.label for="qr_logo" class="form-label">{{ __('Preview') }}</x-metronic.label>
+                            <img class="img-fluid" src="https://i.ibb.co/BNBTVN4/logo.png" alt="">
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="ps-4">
+                                <x-metronic.label for="qr_logo_size" class="form-label">{{ __('Logo Size (in %)') }}</x-metronic.label>
+                                {{-- <x-metronic.input id="qr_logo_size" type="number" name="qr_logo_size" :value="old('qr_logo_size')" placeholder="Logo Size(Eg: 5, 10, 15....)" /> --}}
+                                <div class="mb-10">
+                                    <input type="range" class="form-range w-100" id="customRange1" name="qr_logo_size" min="0.2" max="0.6" step="0.01" value="0.2" oninput="updateRangeValue(this.value)">
+                                    <span id="rangeValue">20%</span>
+                                </div>
+                                {{-- <option value="0.3">None</option> --}}
+                                {{-- <select class="form-select w-100" name="qr_logo_size" aria-label="Default select example">
+                                    <option value="0.2" >20%</option>
+                                    <option value="0.3" >30%</option>
+                                    <option value="0.4" >40%</option>
+                                    <option value="0.5">50%</option>
+                                    <option value="0.6">60%</option>
+                                </select> --}}
+                                {{-- <option value="inverse_diagonal">Inverse_Diagonal</option>
+                                <option value="radial">Radial</option> --}}
+                            </div>
+                        </div>
                     </div>
                 </div>
                 {{-- <p class="text-start pt-5 mb-0">Or Select From Our
@@ -314,10 +336,10 @@
                 <h2>SELECT EYE-BALL</h2>
                 <p>This will be the color and shape of your QR code's eye-balls</p>
             </div>
-            <div class="row p-5 pt-3 pt-lg-6">
+            <div class="row p-5 pt-3 pt-lg-6 colorCodeContainer">
                 <label class="form-label p-0 pb-3" for="colorPicker">Eye Ball Color</label>
-                <input type="text" id="colorCodeInput" class="form-control form-control-solid w-75 w-lg-25" readonly>
-                <input type="color" id="colorPicker" style="width: 56px;height: 45px;" name="qr_eye_ball_color">
+                <input type="text" id="colorCodeInput" class="form-control form-control-solid w-75 w-lg-25 colorCodeInput" readonly>
+                <input type="color" id="colorPicker" style="width: 56px;height: 45px;" class="colorPicker" name="qr_eye_ball_color">
             </div>
             <div class="row pt-3 pt-lg-6">
                 <x-qr-code.eye-ball :eyeBalls="[
@@ -355,17 +377,17 @@
                         'image' =>
                             'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/right-leaf.svg',
                     ],
-                ]" />
+                ]" :selectedEyeBall="null" />
 
             </div>
             <div class="row pt-3 pt-lg-6">
                 <h2>SELECT EYE-FRAME</h2>
                 <p>This will be the color and shape of your QR code's eye-frames</p>
             </div>
-            <div class="row p-5 pt-3 pt-lg-6">
+            <div class="row p-5 pt-3 pt-lg-6 colorCodeContainer">
                 <label class="form-label p-0 pb-3" for="colorPicker">Eye Frame Color</label>
-                <input type="text" id="colorCodeInput" class="form-control form-control-solid w-75 w-lg-25" readonly>
-                <input type="color" id="colorPicker" style="width: 56px;height: 45px;" name="qr_eye_frame_color">
+                <input type="text" id="colorCodeInput" class="form-control form-control-solid w-75 w-lg-25 colorCodeInput" readonly>
+                <input type="color" id="colorPicker" class="colorPicker" style="width: 56px;height: 45px;" name="qr_eye_frame_color">
             </div>
             {{-- <div class="d-lg-flex row gx-10 mb-4">
                 <x-qr-code.eye-frame :eyeFrames="[
@@ -433,12 +455,12 @@
                         'image' =>
                             'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/right-diamond.svg',
                     ],
-                    [
-                        'id' => 437,
-                        'value' => 'square_0.9',
-                        'image' =>
-                            'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/thin-square.svg',
-                    ],
+                    // [
+                    //     'id' => 437,
+                    //     'value' => 'square_0.9',
+                    //     'image' =>
+                    //         'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/thin-square.svg',
+                    // ],
                     [
                         'id' => 438,
                         'value' => 'round',
@@ -451,7 +473,7 @@
                     //     'image' =>
                     //         'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/smooth-round.svg',
                     // ],
-                ]" />
+                ]" :selectedQrPattern="null"  />
             </div>
             <div>
                 <h2 class="pt-10">COLOR</h2>
@@ -477,10 +499,10 @@
                     <div class="hidden-field" id="normal_color_show" style="display: none;">
                         <div class="pt-5">
                             <label for="">Color</label> <br>
-                            <div class="d-flex">
+                            <div class="d-flex colorCodeContainer">
                                 <input type="text" id="colorCodeInput-normal_color"
-                                    class="form-control form-control-solid w-25" readonly>
-                                <input type="color" id="colorPicker" style="width: 56px;height: 45px;" name="qr_solid_color">
+                                    class="form-control form-control-solid w-25 colorCodeInput" readonly>
+                                <input type="color" id="colorPicker" class="colorPicker" style="width: 56px;height: 45px;" name="qr_solid_color">
                             </div>
                         </div>
                     </div>
@@ -499,20 +521,20 @@
                         <div class="d-flex">
                             <div class="pt-3 pe-4">
                                 <label for="">Color Start</label>
-                                <div class="d-flex">
+                                <div class="d-flex colorCodeContainer">
                                     <input type="text" id="colorCodeInput-gradient"
-                                        class="form-control form-control-solid w-25" style="width: 160px !important"
+                                        class="form-control form-control-solid w-25 colorCodeInput" style="width: 160px !important"
                                         readonly>
-                                    <input type="color" id="colorPicker" name="qr_gradient_color_start" style="width: 56px;height: 45px;">
+                                    <input type="color" id="colorPicker" class="colorPicker" name="qr_gradient_color_start" style="width: 56px;height: 45px;">
                                 </div>
                             </div>
                             <div class="pt-3">
                                 <label for="">Color End</label>
-                                <div class="d-flex">
+                                <div class="d-flex colorCodeContainer">
                                     <input type="text" id="colorCodeInput-gradient-2"
-                                        class="form-control form-control-solid w-25" style="width: 160px !important"
+                                        class="form-control form-control-solid w-25 colorCodeInput" style="width: 160px !important"
                                         readonly>
-                                    <input type="color" id="colorPicker" name="qr_gradient_color_end" style="width: 56px;height: 45px;">
+                                    <input type="color" id="colorPicker" class="colorPicker" name="qr_gradient_color_end" style="width: 56px;height: 45px;">
                                 </div>
                             </div>
                         </div>
@@ -558,10 +580,10 @@
                             <div class="card-body">
                                 <div class="">
                                     <label for="">Color</label>
-                                    <div class="d-flex">
+                                    <div class="d-flex colorCodeContainer">
                                         <input type="text" id="colorCodeInput-normal_color"
-                                            class="form-control form-control-solid w-100" readonly>
-                                        <input type="color" name="qr_bg_color" id="colorPicker" style="width: 56px;height: 45px;">
+                                            class="form-control form-control-solid w-100 colorCodeInput" readonly>
+                                        <input type="color" name="qr_bg_color" id="colorPicker" class="colorPicker" style="width: 56px;height: 45px;">
                                     </div>
                                 </div>
                             </div>

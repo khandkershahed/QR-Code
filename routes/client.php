@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\NfcCardController;
 use App\Http\Controllers\Admin\QrCodeController;
+use App\Http\Controllers\RestaurantCategoryController;
 use App\Http\Controllers\Subscription\SubscriptionController;
 use Illuminate\Support\Facades\Route;
 
@@ -11,8 +12,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth')->prefix('user')->name('user.')->group(function () {
     Route::resources(
         [
-            'qr-code'        => QrCodeController::class,
-            'nfc-card'       => NfcCardController::class,
+            'qr-code'              => QrCodeController::class,
+            'nfc-card'             => NfcCardController::class,
+            'restaurant-category'  => RestaurantCategoryController::class,
         ],
     );
     Route::controller(SubscriptionController::class)->group(function () {
@@ -23,6 +25,8 @@ Route::middleware('auth')->prefix('user')->name('user.')->group(function () {
         Route::get('stripe/checkout', 'stripeCheckout')->name('stripe.checkout');
         Route::get('stripe/checkout/success', 'stripeCheckoutSuccess')->name('stripe.checkout.success');
     });
+    Route::post('restaurant-category/edit', [RestaurantCategoryController::class, 'categoryEdit'])->name('editCategory');
+    Route::post('/restaurant-category/destroy', [RestaurantCategoryController::class, 'destroyCategory'])->name('restaurant-category.destroy');
     Route::post('qrcode/preview', [QrCodeController::class, 'qrPreview'])->name('qr.preview');
     Route::get('qrcode/summary/{id}', [QrCodeController::class, 'qrSummary'])->name('qr.summary');
     Route::get('template/qrcode', [QrCodeController::class, 'qrTemplate'])->name('qr.template');

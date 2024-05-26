@@ -122,7 +122,6 @@
         .showcase {
             max-width: 576px;
             width: 576px;
-            min-height: 100vh;
             /* border: 2px solid #1026bf; */
             border-radius: 20px;
             position: relative;
@@ -239,8 +238,8 @@
                                             alt="">
                                     </div>
                                     <div class="text-center p-3">
-                                        <img class="p-3 img-fluid qr_data_business_page_logo"
-                                            style="width: 140px;border-radius: 100%;position: relative;z-index: 15;"
+                                        <img class="p-5 img-fluid qr_data_business_page_logo"
+                                            style="width: 100px;border-radius: 100%;position: relative;z-index: 15;"
                                             src="{{asset('storage/qr_codes/business_pages/' . $qr->qrData->qr_data_business_page_logo) }}" alt="banner" />
                                     </div>
                                     @if (!empty($qr->qrData->qr_data_business_page_business_name))
