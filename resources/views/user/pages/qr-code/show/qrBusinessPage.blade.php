@@ -277,7 +277,7 @@
                                         <a href="{{ $qr->qrData->qr_data_business_page_website }}" class="text-decoration-none title">{{ $qr->qrData->qr_data_business_page_website }}</a>
                                     </p>
                                     <p class="mb-0 fw-bold">Call</p>
-                                    <h2 class="mb-0 sub_title" style="font-family: var(--tem-one-name-font-family)">
+                                    <h2 class="mb-0 sub_title" style="font-family: var(--tem-one-name-font-family); font-size: 40px;">
                                         {{ $qr->qrData->qr_data_business_page_business_phone }}
                                     </h2>
                                 </div>
