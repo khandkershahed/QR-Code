@@ -13,7 +13,7 @@
             <tr>
                 <td align="center" valign="center" style="text-align:center; padding: 10px 40px">
                     <a href="{{ route('homePage') }}" rel="noopener" target="_blank">
-                        <img alt="Logo" src="{{ $logoUrl }}" width="100px"/>
+                        <img alt="Logo" src="{{ $logoUrl }}" width="100px" />
                     </a>
                 </td>
             </tr>
@@ -25,15 +25,16 @@
                         <div style="padding-bottom: 30px; font-size: 17px;">
                             <strong>Hey {{ $data }}</strong>
                         </div>
-                        <div style="padding-bottom: 30px">Your Account has been successfully created in our website.You can now login to your dashboard from below link:
+                        <div style="padding-bottom: 30px">Your Account has been successfully created in our website.You
+                            can now login to your dashboard from below link:
                         </div>
                         <div style="padding-bottom: 40px; text-align:center;">
-                            <a href="{{ route('login') }}"
-                                rel="noopener"
+                            <a href="{{ route('login') }}" rel="noopener"
                                 style="text-decoration:none;display:inline-block;text-align:center;padding:0.75575rem 1.3rem;font-size:0.925rem;line-height:1.5;border-radius:0.35rem;color:#ffffff;background-color:#009EF7;border:0px;margin-right:0.75rem!important;font-weight:600!important;outline:none!important;vertical-align:middle"
                                 target="_blank">Login To Your Dashboard</a>
                         </div>
-                        <div style="padding-bottom: 30px">Joining with us will give you access to your personal dashboard,
+                        <div style="padding-bottom: 30px">Joining with us will give you access to your personal
+                            dashboard,
                             including information about our products.</div>
                         <div style="padding-bottom: 30px">You can find answers to most questions and get in touch with
                             us at
