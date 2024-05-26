@@ -315,7 +315,7 @@
                 <p>This will be the color and shape of your QR code's eye-balls</p>
             </div>
             <div class="row p-5 pt-3 pt-lg-6">
-                <label class="form-label p-0 pb-3" for="colorPicker">Eye Ball Color</label>
+                <label class="form-label p-0 pb-3" for="colorPicker">Eye Frame Color</label>
                 <input type="text" id="colorCodeInput" class="form-control form-control-solid w-75 w-lg-25" readonly>
                 <input type="color" id="colorPicker" style="width: 56px;height: 45px;" name="qr_eye_ball_color">
             </div>
@@ -363,7 +363,7 @@
                 <p>This will be the color and shape of your QR code's eye-frames</p>
             </div>
             <div class="row p-5 pt-3 pt-lg-6">
-                <label class="form-label p-0 pb-3" for="colorPicker">Eye Frame Color</label>
+                <label class="form-label p-0 pb-3" for="colorPicker">Eye Ball Color</label>
                 <input type="text" id="colorCodeInput" class="form-control form-control-solid w-75 w-lg-25" readonly>
                 <input type="color" id="colorPicker" style="width: 56px;height: 45px;" name="qr_eye_frame_color">
             </div>

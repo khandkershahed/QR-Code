@@ -27,11 +27,31 @@
             <h2 class="text-center mb-0">PDF Form</h2>
             <p class="text-center mb-0">Upload Your PDF File Here For QR Code.</p>
         </div>
-        <div class="row pt-4">
+        {{-- <div class="row pt-4">
             <div class="d-flex align-items-center">
                 <x-metronic.label for="qr_data_pdf" class="form-label">{{ __('Upload Pdf') }}</x-metronic.label>
                 <x-metronic.input id="qr_data_pdf" type="file" name="qr_data_pdf" :value="$qr->qrData->qr_data_pdf"
                     placeholder="Upload Pdf" />
+            </div>
+        </div> --}}
+        <div>
+            <div class="row pt-4">
+                <div class="col-lg-6 mx-auto">
+                    <x-metronic.label for="qr_data_pdf" class="form-label">{{ __('Upload Pdf') }}</x-metronic.label>
+                    <x-metronic.input id="qr_data_pdf" type="file" name="qr_data_pdf" :value="$qr->qrData->qr_data_pdf" accept="application/pdf" placeholder="Upload Pdf"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 mx-auto">
+                    <div id="pdfPreviewContainer">
+                        <iframe id="pdfPreview" src="{{ asset('storage/qr_codes/pdfs/' . $qr->qrData->qr_data_pdf) }}" class="img-fluid qr_data_pdf" style="height: 400px;
+                        overflow: scroll;
+                        width: 100%;"></iframe>
+                    </div>
+                    <div id="noPdfMessage">
+                        Pdf preview
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -343,7 +363,7 @@
 
 {{-- Social Form Start --}}
 @if ($qr->qr_type == 'social')
-    <div class="form-container" id="social-form">
+    <div class="container" id="social-form">
         <div class="row text-center justify-content-center">
             <h2 class="text-center mb-0">Social Media</h2>
             <p class="text-center mb-0">Link to your social media channels for more engagement.</p>
@@ -502,13 +522,13 @@
 
 {{-- Business Page Form Start --}}
 @if ($qr->qr_type == 'business_page')
-<div class="row form-container" id="business_page-form">
+<div class="row container" id="business_page-form">
     <div class="row text-center justify-content-center mb-5">
         <h2 class="text-center mb-0">Business Page</h2>
         <p class="text-center mb-0">Share a Card For Your Business</p>
     </div>
     <div class="pb-4 row">
-        <div class="pb-4 col-lg-12">
+        <div class="pb-4 col-lg-6">
             <x-metronic.label for="qr_data_business_page_logo"
                 class="form-label">{{ __('Company Logo') }}</x-metronic.label>
             <x-metronic.input id="qr_data_business_page_logo" type="file" name="qr_data_business_page_logo"
@@ -703,7 +723,7 @@
 @endif
 {{-- Facebook Page Form --}}
 @if ($qr->qr_type == 'facebook_page')
-<div class="form-container" id="facebook_page-form">
+<div class="container" id="facebook_page-form">
     <div class="row text-center justify-content-center mb-5">
         <h2 class="text-center mb-0">Facebook Form</h2>
         <p class="text-center mb-0">Upload audio file that your QR code should link to.</p>

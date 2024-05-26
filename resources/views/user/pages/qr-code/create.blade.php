@@ -127,8 +127,8 @@
                                                             placeholder="Enter a name for your QR code" required />
                                                     </div>
                                                 </div>
-                                                <input type="hidden" name="qr_scan_status" value="dynamic">
-                                                {{-- <div class="col-lg-6">
+                                                {{-- <input type="hidden" name="qr_scan_status" value="dynamic"> --}}
+                                                <div class="col-lg-6">
                                                     <div class="pt-5 pb-5">
                                                         <x-metronic.label for="status"
                                                             class="form-label">{{ __('Enter a name for your QR code') }}
@@ -138,10 +138,10 @@
                                                             data-placeholder="Select an option" required>
                                                             <option>Select Status</option>
                                                             <option value="static">Static</option>
-                                                            <option value="dynamic">Dynamic</option>
+                                                            <option value="dynamic" selected>Dynamic</option>
                                                         </select>
                                                     </div>
-                                                </div> --}}
+                                                </div>
                                             </div>
                                             {{-- <div class="w-25 mx-auto">
                                                 <img width="300px"
@@ -304,7 +304,7 @@
                 let form = event.target.closest('form');
                 var categoryContainer = $('.categoryContainer');
                 var categoryModalContainer = $('.categoryModalContainer');
-                    var categoryPreviewContainer = $('.restaurant .preview');
+                var categoryPreviewContainer = $('.restaurant .preview');
                 // Debugging
                 console.log(form);
 
@@ -330,7 +330,7 @@
                         $('.editCategory').modal('hide');
                         categoryContainer.html(response.categoryContainer);
                         categoryModalContainer.html(response.modalContainer);
-                            categoryPreviewContainer.html(response.previewContainer);
+                        categoryPreviewContainer.html(response.previewContainer);
                         // Reload part of the page or add the new category to the UI
                     },
                     error: function(response) {
@@ -788,15 +788,40 @@
                 stepper.goPrevious(); // go previous step
             });
         </script>
+        {{-- Logo Size Encrease & Decrease  --}}
         <script>
-              function updateRangeValue(value) {
-        document.getElementById('rangeValue').textContent = Math.round(value * 100) + '%';
-    }
+            function updateRangeValue(value) {
+                document.getElementById('rangeValue').textContent = Math.round(value * 100) + '%';
+            }
 
-    // Initialize the range value on page load
-    document.addEventListener('DOMContentLoaded', (event) => {
-        updateRangeValue(document.getElementById('customRange1').value);
-    });
+            // Initialize the range value on page load
+            document.addEventListener('DOMContentLoaded', (event) => {
+                updateRangeValue(document.getElementById('customRange1').value);
+            });
+        </script>
+        {{-- Pdf Preview  --}}
+        <script>
+        $('input[name="qr_data_pdf"]')
+                .on('keyup change', function() {
+            const file = event.target.files[0];
+            const pdfPreviewContainer = document.getElementById('pdfPreviewContainer');
+            const noPdfMessage = document.getElementById('noPdfMessage');
+            const pdfPreview = document.getElementById('pdfPreview');
+
+            if (file && file.type === "application/pdf") {
+                const fileReader = new FileReader();
+                fileReader.onload = function() {
+                    pdfPreview.src = fileReader.result;
+                    pdfPreviewContainer.style.display = 'block';
+                    noPdfMessage.style.display = 'none';
+                };
+                fileReader.readAsDataURL(file);
+            } else {
+                pdfPreviewContainer.style.display = 'none';
+                noPdfMessage.style.display = 'block';
+                alert("Please upload a valid PDF file.");
+            }
+        });
         </script>
     @endpush
 </x-app-layout>

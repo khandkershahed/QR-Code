@@ -167,7 +167,7 @@
                         </div>
                         <div class="col-lg-1">
                             <x-metronic.label for="qr_logo" class="form-label">{{ __('Preview') }}</x-metronic.label>
-                            <img class="img-fluid" src="https://i.ibb.co/BNBTVN4/logo.png" alt="">
+                            <img class="img-fluid qr_logo" src="https://i.ibb.co/BNBTVN4/logo.png" alt="">
                         </div>
                         <div class="col-lg-6">
                             <div class="ps-4">
@@ -337,7 +337,7 @@
                 <p>This will be the color and shape of your QR code's eye-balls</p>
             </div>
             <div class="row p-5 pt-3 pt-lg-6 colorCodeContainer">
-                <label class="form-label p-0 pb-3" for="colorPicker">Eye Ball Color</label>
+                <label class="form-label p-0 pb-3" for="colorPicker">Eye Frame Color</label>
                 <input type="text" id="colorCodeInput" class="form-control form-control-solid w-75 w-lg-25 colorCodeInput" readonly>
                 <input type="color" id="colorPicker" style="width: 56px;height: 45px;" class="colorPicker" name="qr_eye_ball_color">
             </div>
@@ -346,36 +346,42 @@
                     [
                         'id' => 311,
                         'value' => 'square',
-                        'image' => 'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/square.svg',
+                        'image' => 'frontend/images/eye_ball/square-shape.svg',
+                    ],
+                    [
+                        'id' => 311,
+                        'value' => 'rounded-square',
+                        'image' => 'frontend/images/eye_ball/rounded-square.svg',
                     ],
                     [
                         'id' => 322,
                         'value' => 'circle',
-                        'image' => 'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/rounded.svg',
+                        'image' => 'frontend/images/eye_ball/rounded-shape.svg',
                     ],
                     [
                         'id' => 333,
                         'value' => 'left-diamond',
-                        'image' =>
-                            'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/left-diamond.svg',
+                        'image' => 'frontend/images/eye_ball/left-dimond-shape.svg',
                     ],
                     [
                         'id' => 344,
                         'value' => 'right-diamond',
-                        'image' =>
-                            'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/right-diamond.svg',
+                        'image' => 'frontend/images/eye_ball/right-dimond-shape.svg',
                     ],
                     [
                         'id' => 356,
                         'value' => 'left-leaf',
-                        'image' =>
-                            'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/left-leaf.svg',
+                        'image' => 'frontend/images/eye_ball/rounded-corner-shape.svg',
                     ],
                     [
                         'id' => 367,
                         'value' => 'right-leaf',
-                        'image' =>
-                            'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/right-leaf.svg',
+                        'image' => 'frontend/images/eye_ball/right-leaf-shape.svg',
+                    ],
+                    [
+                        'id' => 367,
+                        'value' => 'right-leaf',
+                        'image' => 'frontend/images/eye_ball/left-leaf-shape.svg',
                     ],
                 ]" :selectedEyeBall="null" />
 
@@ -385,7 +391,7 @@
                 <p>This will be the color and shape of your QR code's eye-frames</p>
             </div>
             <div class="row p-5 pt-3 pt-lg-6 colorCodeContainer">
-                <label class="form-label p-0 pb-3" for="colorPicker">Eye Frame Color</label>
+                <label class="form-label p-0 pb-3" for="colorPicker">Eye Ball Color</label>
                 <input type="text" id="colorCodeInput" class="form-control form-control-solid w-75 w-lg-25 colorCodeInput" readonly>
                 <input type="color" id="colorPicker" class="colorPicker" style="width: 56px;height: 45px;" name="qr_eye_frame_color">
             </div>

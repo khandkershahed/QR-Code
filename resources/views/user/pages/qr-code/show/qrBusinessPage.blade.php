@@ -118,40 +118,6 @@
                     inset 0 0 0 20px rgba(250, 162, 28, 0);
             }
         }
-
-        .showcase {
-            max-width: 576px;
-            width: 576px;
-            /* border: 2px solid #1026bf; */
-            border-radius: 20px;
-            position: relative;
-        }
-
-        .showcase_image {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 99;
-        }
-
-        .showcase .overlay {
-            max-width: 576px;
-            width: 576px;
-            height: 100%;
-            background-color: rgb(255 255 255 / 83%);
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 999;
-        }
-
-        .showcase p {
-            margin-top: 8px;
-            font-size: 1.2em;
-        }
-
         .time-start {
             background: white;
             padding: 16px;
@@ -197,19 +163,6 @@
                 display: none;
             }
 
-            .showcase_image {
-                width: 100%;
-                height: 100%;
-            }
-
-            .showcase .overlay {
-                background-color: rgb(255 255 255 / 83%);
-                position: absolute;
-                top: 0;
-                left: 0;
-                z-index: 999;
-            }
-
             .mobile-design {
                 width: 70%;
                 margin: auto !important;
@@ -221,122 +174,117 @@
 
 <body>
     <main>
-        <section class="showcase">
-            <img class="showcase_image"
-                src="https://images.unsplash.com/photo-1505410603994-c3ac6269711f?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
-                alt="Picture" />
-            <div class="overlay">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div
-                                class="card p-0 p-lg-5 bg-none border-0 rounded-0 shadow-none bg-transparent image-overlay">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-center">
-                                        <img class="img-fluid" width="200px"
-                                            src="https://i.ibb.co/9rR2kd4/97-971813-molduras-arabescos-image-transparent-download-arabesque-png.png"
-                                            alt="">
-                                    </div>
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div
+                            class="card p-0 p-lg-5 bg-none border-0 rounded-0 shadow-none bg-transparent image-overlay">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-center">
+                                    <img class="img-fluid" width="200px"
+                                        src="https://i.ibb.co/9rR2kd4/97-971813-molduras-arabescos-image-transparent-download-arabesque-png.png"
+                                        alt="">
+                                </div>
+                                <div class="text-center">
+                                    <img class="img-fluid qr_data_business_page_logo pt-3"
+                                        style="width: 110px;border-radius: 100%;position: relative;z-index: 15;"
+                                        src="{{asset('storage/qr_codes/business_pages/' . $qr->qrData->qr_data_business_page_logo) }}" alt="banner" />
+                                </div>
+                                @if (!empty($qr->qrData->qr_data_business_page_business_name))
                                     <div class="text-center p-3">
-                                        <img class="p-5 img-fluid qr_data_business_page_logo"
-                                            style="width: 100px;border-radius: 100%;position: relative;z-index: 15;"
-                                            src="{{asset('storage/qr_codes/business_pages/' . $qr->qrData->qr_data_business_page_logo) }}" alt="banner" />
-                                    </div>
-                                    @if (!empty($qr->qrData->qr_data_business_page_business_name))
-                                        <div class="text-center p-3">
-                                            <h2 class="mb-0 title fw-bold sub_title-2 qr_data_business_page_business_name">
-                                                {{ $qr->qrData->qr_data_business_page_business_name }}
-                                            </h2>
-                                        </div>
-                                        <div class="divider"></div>
-                                    @endif
-                                    <!-- Content -->
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="text-center px-0 px-lg-5 m-2 mobile-design">
-                                                @if (!empty($qr->qrData->qr_data_business_page_start_time_monday) || !empty($qr->qrData->qr_data_business_page_end_time_monday))
-                                                    <div
-                                                        class="d-flex justify-content-between align-items-center shadow-sm mt-0">
-                                                        <p class="mb-0 fw-bold mt-0 ps-2">Monday</p>
-                                                        <p class="mb-0 mt-0 time-start">{{ $qr->qrData->qr_data_business_page_start_time_monday }}</p>
-                                                        <span class="title fw-bold">To</span>
-                                                        <p class="m-0 time-start">{{ $qr->qrData->qr_data_business_page_end_time_monday }}</p>
-                                                    </div>
-                                                @endif
-                                                @if (!empty($qr->qrData->qr_data_business_page_start_time_tuesday) || !empty($qr->qrData->qr_data_business_page_end_time_tuesday))
-                                                    <div
-                                                        class="d-flex justify-content-between align-items-center shadow-sm mt-0">
-                                                        <p class="mb-0 fw-bold mt-0 ps-2">Tuesday</p>
-                                                        <p class="mb-0 mt-0 time-start">{{ $qr->qrData->qr_data_business_page_start_time_tuesday }}</p>
-                                                        <span class="title fw-bold">To</span>
-                                                        <p class="m-0 time-start">{{ $qr->qrData->qr_data_business_page_end_time_tuesday }}</p>
-                                                    </div>
-                                                @endif
-                                                @if (!empty($qr->qrData->qr_data_business_page_start_time_wednesday) || !empty($qr->qrData->qr_data_business_page_end_time_wednesday))
-                                                    <div
-                                                        class="d-flex justify-content-between align-items-center shadow-sm mt-0">
-                                                        <p class="mb-0 fw-bold mt-0 ps-2">Wednesday</p>
-                                                        <p class="mb-0 mt-0 time-start">{{ $qr->qrData->qr_data_business_page_start_time_wednesday }}</p>
-                                                        <span class="title fw-bold">To</span>
-                                                        <p class="m-0 time-start">{{ $qr->qrData->qr_data_business_page_end_time_wednesday }}</p>
-                                                    </div>
-                                                @endif
-                                                @if (!empty($qr->qrData->qr_data_business_page_start_time_thursday) || !empty($qr->qrData->qr_data_business_page_end_time_thursday))
-                                                    <div
-                                                        class="d-flex justify-content-between align-items-center shadow-sm mt-0">
-                                                        <p class="mb-0 fw-bold mt-0 ps-2">Thursday</p>
-                                                        <p class="mb-0 mt-0 time-start">{{ $qr->qrData->qr_data_business_page_start_time_thursday }}</p>
-                                                        <span class="title fw-bold">To</span>
-                                                        <p class="m-0 time-start">{{ $qr->qrData->qr_data_business_page_end_time_thursday }}</p>
-                                                    </div>
-                                                @endif
-                                                @if (!empty($qr->qrData->qr_data_business_page_start_time_friday) || !empty($qr->qrData->qr_data_business_page_end_time_friday))
-                                                    <div
-                                                        class="d-flex justify-content-between align-items-center shadow-sm mt-0">
-                                                        <p class="mb-0 fw-bold mt-0 ps-2">Friday</p>
-                                                        <p class="mb-0 mt-0 time-start">{{ $qr->qrData->qr_data_business_page_start_time_friday }}</p>
-                                                        <span class="title fw-bold">To</span>
-                                                        <p class="m-0 time-start">{{ $qr->qrData->qr_data_business_page_end_time_friday }}</p>
-                                                    </div>
-                                                @endif
-                                                @if (!empty($qr->qrData->qr_data_business_page_start_time_saturday) || !empty($qr->qrData->qr_data_business_page_end_time_saturday))
-                                                    <div
-                                                        class="d-flex justify-content-between align-items-center shadow-sm mt-0">
-                                                        <p class="mb-0 fw-bold mt-0 ps-2">Saturday</p>
-                                                        <p class="mb-0 mt-0 time-start">{{ $qr->qrData->qr_data_business_page_start_time_saturday }}</p>
-                                                        <span class="title fw-bold">To</span>
-                                                        <p class="m-0 time-start">{{ $qr->qrData->qr_data_business_page_end_time_saturday }}</p>
-                                                    </div>
-                                                @endif
-                                                @if (!empty($qr->qrData->qr_data_business_page_start_time_sunday) || !empty($qr->qrData->qr_data_business_page_end_time_sunday))
-                                                    <div
-                                                        class="d-flex justify-content-between align-items-center shadow-sm mt-0">
-                                                        <p class="mb-0 fw-bold mt-0 ps-2">Sunday</p>
-                                                        <p class="mb-0 mt-0 time-start">{{ $qr->qrData->qr_data_business_page_start_time_sunday }}</p>
-                                                        <span class="title fw-bold">To</span>
-                                                        <p class="m-0 time-start">{{ $qr->qrData->qr_data_business_page_end_time_sunday }}</p>
-                                                    </div>
-                                                @endif
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Content End -->
-                                    <div class="divider-2 mb-3"></div>
-                                    <div class="text-center p-3">
-                                        <p class="mb-0 fw-bold title">
-                                            <a href="{{ $qr->qrData->qr_data_business_page_website }}" class="text-decoration-none title">{{ $qr->qrData->qr_data_business_page_website }}</a>
-                                        </p>
-                                        <p class="mb-0 fw-bold">Call</p>
-                                        <h2 class="mb-0 sub_title" style="font-family: var(--tem-one-name-font-family)">
-                                            {{ $qr->qrData->qr_data_business_page_business_phone }}
+                                        <h2 class="mb-0 title fw-bold sub_title-2 qr_data_business_page_business_name">
+                                            {{ $qr->qrData->qr_data_business_page_business_name }}
                                         </h2>
                                     </div>
-                                    <div class="d-flex justify-content-center">
-                                        <img class="img-fluid" width="200px" style="transform: rotate(180deg)"
-                                            src="https://i.ibb.co/9rR2kd4/97-971813-molduras-arabescos-image-transparent-download-arabesque-png.png"
-                                            alt="" />
+                                    <div class="divider"></div>
+                                @endif
+                                <!-- Content -->
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="text-center px-0 px-lg-5 m-2 mobile-design">
+                                            @if (!empty($qr->qrData->qr_data_business_page_start_time_monday) || !empty($qr->qrData->qr_data_business_page_end_time_monday))
+                                                <div
+                                                    class="d-flex justify-content-between align-items-center shadow-sm mt-0">
+                                                    <p class="mb-0 fw-bold mt-0 ps-2">Monday</p>
+                                                    <p class="mb-0 mt-0 time-start">{{ $qr->qrData->qr_data_business_page_start_time_monday }}</p>
+                                                    <span class="title fw-bold">To</span>
+                                                    <p class="m-0 time-start">{{ $qr->qrData->qr_data_business_page_end_time_monday }}</p>
+                                                </div>
+                                            @endif
+                                            @if (!empty($qr->qrData->qr_data_business_page_start_time_tuesday) || !empty($qr->qrData->qr_data_business_page_end_time_tuesday))
+                                                <div
+                                                    class="d-flex justify-content-between align-items-center shadow-sm mt-0">
+                                                    <p class="mb-0 fw-bold mt-0 ps-2">Tuesday</p>
+                                                    <p class="mb-0 mt-0 time-start">{{ $qr->qrData->qr_data_business_page_start_time_tuesday }}</p>
+                                                    <span class="title fw-bold">To</span>
+                                                    <p class="m-0 time-start">{{ $qr->qrData->qr_data_business_page_end_time_tuesday }}</p>
+                                                </div>
+                                            @endif
+                                            @if (!empty($qr->qrData->qr_data_business_page_start_time_wednesday) || !empty($qr->qrData->qr_data_business_page_end_time_wednesday))
+                                                <div
+                                                    class="d-flex justify-content-between align-items-center shadow-sm mt-0">
+                                                    <p class="mb-0 fw-bold mt-0 ps-2">Wednesday</p>
+                                                    <p class="mb-0 mt-0 time-start">{{ $qr->qrData->qr_data_business_page_start_time_wednesday }}</p>
+                                                    <span class="title fw-bold">To</span>
+                                                    <p class="m-0 time-start">{{ $qr->qrData->qr_data_business_page_end_time_wednesday }}</p>
+                                                </div>
+                                            @endif
+                                            @if (!empty($qr->qrData->qr_data_business_page_start_time_thursday) || !empty($qr->qrData->qr_data_business_page_end_time_thursday))
+                                                <div
+                                                    class="d-flex justify-content-between align-items-center shadow-sm mt-0">
+                                                    <p class="mb-0 fw-bold mt-0 ps-2">Thursday</p>
+                                                    <p class="mb-0 mt-0 time-start">{{ $qr->qrData->qr_data_business_page_start_time_thursday }}</p>
+                                                    <span class="title fw-bold">To</span>
+                                                    <p class="m-0 time-start">{{ $qr->qrData->qr_data_business_page_end_time_thursday }}</p>
+                                                </div>
+                                            @endif
+                                            @if (!empty($qr->qrData->qr_data_business_page_start_time_friday) || !empty($qr->qrData->qr_data_business_page_end_time_friday))
+                                                <div
+                                                    class="d-flex justify-content-between align-items-center shadow-sm mt-0">
+                                                    <p class="mb-0 fw-bold mt-0 ps-2">Friday</p>
+                                                    <p class="mb-0 mt-0 time-start">{{ $qr->qrData->qr_data_business_page_start_time_friday }}</p>
+                                                    <span class="title fw-bold">To</span>
+                                                    <p class="m-0 time-start">{{ $qr->qrData->qr_data_business_page_end_time_friday }}</p>
+                                                </div>
+                                            @endif
+                                            @if (!empty($qr->qrData->qr_data_business_page_start_time_saturday) || !empty($qr->qrData->qr_data_business_page_end_time_saturday))
+                                                <div
+                                                    class="d-flex justify-content-between align-items-center shadow-sm mt-0">
+                                                    <p class="mb-0 fw-bold mt-0 ps-2">Saturday</p>
+                                                    <p class="mb-0 mt-0 time-start">{{ $qr->qrData->qr_data_business_page_start_time_saturday }}</p>
+                                                    <span class="title fw-bold">To</span>
+                                                    <p class="m-0 time-start">{{ $qr->qrData->qr_data_business_page_end_time_saturday }}</p>
+                                                </div>
+                                            @endif
+                                            @if (!empty($qr->qrData->qr_data_business_page_start_time_sunday) || !empty($qr->qrData->qr_data_business_page_end_time_sunday))
+                                                <div
+                                                    class="d-flex justify-content-between align-items-center shadow-sm mt-0">
+                                                    <p class="mb-0 fw-bold mt-0 ps-2">Sunday</p>
+                                                    <p class="mb-0 mt-0 time-start">{{ $qr->qrData->qr_data_business_page_start_time_sunday }}</p>
+                                                    <span class="title fw-bold">To</span>
+                                                    <p class="m-0 time-start">{{ $qr->qrData->qr_data_business_page_end_time_sunday }}</p>
+                                                </div>
+                                            @endif
+
+                                        </div>
                                     </div>
+                                </div>
+                                <!-- Content End -->
+                                <div class="divider-2 mb-3"></div>
+                                <div class="text-center p-3">
+                                    <p class="mb-0 fw-bold title">
+                                        <a href="{{ $qr->qrData->qr_data_business_page_website }}" class="text-decoration-none title">{{ $qr->qrData->qr_data_business_page_website }}</a>
+                                    </p>
+                                    <p class="mb-0 fw-bold">Call</p>
+                                    <h2 class="mb-0 sub_title" style="font-family: var(--tem-one-name-font-family); font-size: 40px;">
+                                        {{ $qr->qrData->qr_data_business_page_business_phone }}
+                                    </h2>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <img class="img-fluid" width="200px" style="transform: rotate(180deg)"
+                                        src="https://i.ibb.co/9rR2kd4/97-971813-molduras-arabescos-image-transparent-download-arabesque-png.png"
+                                        alt="" />
                                 </div>
                             </div>
                         </div>
