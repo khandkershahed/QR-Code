@@ -788,5 +788,15 @@
                 stepper.goPrevious(); // go previous step
             });
         </script>
+        <script>
+              function updateRangeValue(value) {
+        document.getElementById('rangeValue').textContent = Math.round(value * 100) + '%';
+    }
+
+    // Initialize the range value on page load
+    document.addEventListener('DOMContentLoaded', (event) => {
+        updateRangeValue(document.getElementById('customRange1').value);
+    });
+        </script>
     @endpush
 </x-app-layout>

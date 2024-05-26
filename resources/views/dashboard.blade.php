@@ -483,7 +483,6 @@
                                 </span>
                                 For Subsciption!
                             </div>
-
                             <div class="text-center d-flex justify-content-center ">
                                 <a href="{{ route('user.plan') }}" class="btn btn-sm btn-dark fw-bold me-3">
                                     Upgrade Now
