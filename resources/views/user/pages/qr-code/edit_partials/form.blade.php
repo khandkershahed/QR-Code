@@ -43,7 +43,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-6 mx-auto">
-                    <div id="pdfPreviewContainer" style="display: none;">
+                    <div id="pdfPreviewContainer">
                         <iframe id="pdfPreview" src="{{ asset('storage/qr_codes/pdfs/' . $qr->qrData->qr_data_pdf) }}" class="img-fluid qr_data_pdf" style="height: 400px;
                         overflow: scroll;
                         width: 100%;"></iframe>
