@@ -528,7 +528,7 @@
         <p class="text-center mb-0">Share a Card For Your Business</p>
     </div>
     <div class="pb-4 row">
-        <div class="pb-4 col-lg-12">
+        <div class="pb-4 col-lg-6">
             <x-metronic.label for="qr_data_business_page_logo"
                 class="form-label">{{ __('Company Logo') }}</x-metronic.label>
             <x-metronic.input id="qr_data_business_page_logo" type="file" name="qr_data_business_page_logo"
