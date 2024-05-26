@@ -3,7 +3,7 @@
     'selectedEyeBall' => null, // Default to null if not provided
 ])
 
-   @foreach ($eyeBalls as $eye_ball) 
+   @foreach ($eyeBalls as $eye_ball)
         <div class="col-lg-2 pt-5">
             <label class="btn btn-outline btn-outline-dashed d-flex flex-stack text-start py-6 px-3 mb-5">
                 <div class="d-flex align-items-center">
@@ -13,12 +13,12 @@
 
                     <div class="flex-grow-1">
                         <div class="fw-bold">
-                            <img width="70px" src="{{ $eye_ball['image'] }}" alt="" />
+                            <img class="img-fluid" src="{{ asset($eye_ball['image']) }}" alt="" />
                         </div>
                     </div>
                 </div>
             </label>
-            
+
         </div>
     @endforeach
 

@@ -370,7 +370,6 @@
                 });
             });
         </script>
-
         <script>
             function initMap() {
                 var map = new google.maps.Map(document.getElementById('map'), {
@@ -392,9 +391,6 @@
                 });
             }
         </script>
-
-
-
         <script>
             // Stepper lement
             var element = document.querySelector("#generateQRCode");
