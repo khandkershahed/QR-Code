@@ -140,7 +140,7 @@
                     <div class="card-header bg-none border-0 rounded-0 shadow-none bg-transparent p-0 d-flex justify-content-center align-items-center">
                         <div class="text-center text-lg-center mobile-images-profile pt-5 ">
                             <img class="p-5 img-fluid qr_data_facebook_page_logo "
-                                style="width: 100px;border-radius: 100%;position: relative;z-index: 15;"
+                                style="width: 100px; height: 100px; border-radius: 100%;position: relative;z-index: 15;"
                                 src="https://i.ibb.co/BNBTVN4/logo.png" alt="banner" />
                         </div>
                     </div>

@@ -1,31 +1,42 @@
-<x-admin-guest-layout :title="$qr->code">
-    <link rel="shortcut icon"
-        href="https://images.rawpixel.com/image_800/cHJpdmF0ZS9s…03ZDBiLTQ2ODgtYjkzOS01MjM3ZDExNGYxNDVfMS5qcGc.jpg"
-        type="image/x-icon" />
+{{-- <x-admin-guest-layout :title="$qr->code"> --}}
+<!DOCTYPE html>
+<html lang="en">
 
-    <!-- Bootstrap CSS v5.2.1 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
-    <!-- Slick CSS -->
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
-    <!-- Style Here -->
-
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ $qr->code }}</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet" />
+    <!-- Custom CSS -->
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
         :root {
             --white: #fff;
+            --tem-one-name-color: #fff;
             --body-font-family: "Raleway", sans-serif;
-            --background-color: {{ $qr->qrData->qr_data_coupon_background_color }};
-            --title-color: {{ $qr->qrData->qr_data_coupon_title_color }};
-            --button-bg-color: {{ $qr->qrData->qr_data_coupon_button_bg_color }};
-            --button-title-color: {{ $qr->qrData->qr_data_coupon_button_title_color }};
+            --tem-one-name-font-size: 40px;
+            --tem-one-name-font-family: "Bebas Neue", sans-serif;
+            --tem-one-designation-font-family: "Raleway", sans-serif;
+            --tem-one-designation-color: #fff;
+            --tem-one-bio-title-color: #ffa500;
+            --tem-profile-image-bg: #ffa500;
+            --tem-one-social-icons-color: #fff;
+            --tem-one-social-icons-bg: #fff;
+            --tem-one-social-icons-font-size: 18px;
+            --tem-one-bio-title-font-size: 30px;
+            --tem-one-service-title-color: #fff;
+            --tem-one-service-title-font-size: 20px;
+            --tem-one-service-box-bg: #ffa500;
+            --tem-one-address-color: #fff;
         }
 
-        /* CSS for centering the mobile frame */
+        /* Custom CSS for card styling */
         body {
             display: flex;
             justify-content: center;
@@ -36,152 +47,135 @@
             font-family: var(--body-font-family);
         }
 
-        .nfc-mobile-frame {
-
-            width: 430px;
-            height: 100vh;
-            border: 2px solid var(--background-color);
-            border-radius: 20px;
-            overflow: hidden;
-            position: relative;
-            /* background-color: #FFA500; */
+        .card {
+            /* background-color: yellow; */
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+            height: 100vh !important;
         }
 
-        /* Media query for smaller screens */
-        @media only screen and (max-width: 450px) {
-            .nfc-mobile-frame {
+        .nfc-frame {
+            width: 576px;
+        }
+
+        /* Set placeholder color to white */
+        .form-control {
+            color: white !important;
+            border: 0;
+            font-family: var(--body-font-family) !important;
+        }
+
+        /* Full width and height on mobile */
+        @media (max-width: 576px) {
+            .card {
                 width: 100%;
-                border-radius: 0px;
-                height: 100vh;
-                /* Let height adjust based on content */
-            }
-
-            .discount {
-                transform: rotate(90deg);
-                position: relative;
-                right: 121px !important;
-                top: -80px !important;
-                text-align: center;
-            }
-
-            .date {
-                padding-left: 62px !important;
-                font-size: 14px;
-                padding-top: 5px;
-            }
-
-            .day {
-                padding-left: 63px !important;
-            }
-
-            .code-coupon {
-                padding-left: 40px !important;
-                padding-top: 20px !important;
-            }
-
-            .part-logo {
-                position: relative;
-                left: 129px !important;
-                top: 7px !important;
-                z-index: 5;
-            }
-
-            .company-info {
-                margin-top: -30px;
+                box-shadow: none;
             }
         }
     </style>
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 d-flex justify-content-center align-items-center px-0">
-                    <div class="nfc-mobile-frame" style="background-color: var(--background-color);">
-                        <!-- Company Logo -->
-                        <div class="p-3">
-                            <img width="50px" class="img-fluid"
-                                src="{{asset('storage/qr_codes/coupons/' . $qr->qrData->qr_data_coupon_logo) }}" alt="" />
-                        </div>
-                        <div class="px-4">
-                            <h5 class="" style="color:var(--title-color);">{{ $qr->qrData->qr_data_coupon_company }}</h5>
-                            <h2 class="mb-4 fw-bold" style="color:var(--title-color);">{{ $qr->qrData->qr_data_coupon_header }}</h2>
-                            <div
-                                style="background-image: url('https://i.ibb.co/7JZgTLv/Untitled-1.png');height: 500px;width: 100%;background-repeat: no-repeat;background-size: contain;">
-                                <div class="row pb-10">
-                                    <div>
-                                        <h1 class="text-center p-2 ps-5 text-warning">
-                                            {{ $qr->qrData->qr_data_coupon_message }}
-                                        </h1>
-                                        <div class="d-flex">
-                                            <div>
-                                                <p class="text-start text-muted mb-0 date"
-                                                    style="padding-left: 98px;font-size: 14px;padding-top: 5px;">
-                                                    {{ $qr->qrData->qr_data_coupon_expire_date }}
-                                                </p>
+</head>
 
-                                            </div>
-                                            <div onclick="copycode()">
-                                                <h5 class="text-start text-white mb-0 code-coupon" id="couponCode"
-                                                    style="padding-left: 50px; padding-top: 22px">
-                                                    {{ $qr->qrData->qr_data_coupon_code }}
-                                                </h5>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <h5 class="text-white discount"
-                                                style="transform: rotate(90deg);position: relative;right: 145px;top: -80px;text-align: center;">
-                                                {{ $qr->qrData->qr_data_coupon_message }} <br />
-                                                {{-- <span class="fs-5"> DISCOUNT</span> --}}
-                                            </h5>
-                                        </div>
-                                    </div>
-                                    <div class="">
-                                        <img width="50px" class="img-fluid part-logo"
-                                            style="position: relative;left: 159px;top: 33px;z-index: 5;"
-                                            src="{{asset('storage/qr_codes/coupons/' . $qr->qrData->qr_data_coupon_logo) }}"
-                                            alt="" />
-                                    </div>
-                                    <div
-                                        class="d-flex justify-content-between text-center align-items-center company-info">
-                                        <h4 class="ps-3 text-white">Arshuk</h4>
-                                        <h4 class="pe-3 text-white">adas</h4>
-                                    </div>
-                                    <h5 class="text-white text-center" style="padding-top: 20px">
-                                        {{$qr->qrData->qr_data_coupon_description_header}}
-                                    </h5>
-                                </div>
-                                <div class="row pt-10 mt-5">
-                                    <a href="{{ $qr->qrData->qr_data_coupon_website }}" target="_blank"
-                                        class="btn btn-sm btn-success w-100 rounded-pill mt-3 fw-bolder py-2 fs-5" style="background-color: var(--button-bg-color); color:var(--button-title-color);">
-                                        View Website
-                                    </a>
-                                    {{-- <a class="btn btn-sm btn-success w-100 rounded-pill mt-3 fw-bolder py-2 fs-5">
-                                        View Map
-                                    </a> --}}
-                                </div>
-                                <div>
-                                    <p class="pt-5 ps-2" style="color:var(--title-color);">
-                                        <span
-                                            class="text-danger fw-bold pe-1">Note:</span>{{ $qr->qrData->qr_data_coupon_policy }}
-                                    </p>
-                                </div>
-                            </div>
+<body>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-12 ">
+                <!-- First Part -->
+                <div class="d-flex justify-content-center qr_data_coupon_logo"
+                    style="
+                      background-image: url(https://i.ibb.co/wJKbkb9/coupon-first.png);
+                      height: 320px;
+                      background-repeat: no-repeat;
+                      background-position: center;
+                      ">
+                    <div class="text-center d-flex flex-column justify-content-center align-items-center">
+                        <h1 class="qr_data_coupon_header"
+                            style="color: #ffff;font-family: var(--tem-one-name-font-family);">
+                            {{ $qr->qrData->qr_data_coupon_header }}
+                        </h1>
+                        <h1 class="fw-bolder text-white"
+                            style="font-family: var(--tem-one-name-font-family);font-size: 55px;">
+                            <span class="qr_data_coupon_message">{{ $qr->qrData->qr_data_coupon_message }}</span>
+                            <span class="qr_data_coupon_description_body" style="color: #fd0834">
+                                {{ $qr->qrData->qr_data_coupon_description_body }}</span>
+                        </h1>
+                        <h3 class="qr_data_coupon_company"
+                            style="color: #15487f;font-family: var(--tem-one-name-font-family);">
+                            {{ $qr->qrData->qr_data_coupon_company }}
+                        </h3>
+                    </div>
+                </div>
+                <!-- Second Part -->
+                <div class="d-flex justify-content-center"
+                    style="background-image: url(https://i.ibb.co/p4zLfcR/coupon-last.png);height: 320px;margin-top: -25px;background-repeat: no-repeat;background-position: center;">
+                    <div class="text-center d-flex justify-content-center flex-column align-items-center">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control border-0 text-white rounded-0 qr_data_coupon_code"
+                                value="{{ $qr->qrData->qr_data_coupon_code }}"
+                                aria-label="{{ $qr->qrData->qr_data_coupon_code }}" aria-describedby="button-addon2"
+                                style="background-color: #15487f" />
+                            <button class="btn rounded-0 fs-5"
+                                style="background-color: #fff;font-family: var(--tem-one-name-font-family);"
+                                type="button" id="button-addon2">
+                                Copy
+                            </button>
                         </div>
+                        <div class="p-3 mx-auto rounded-circle" style="background-color: #eeee; width: 20%">
+                            <img width="50px" class="img-fluid qr_data_coupon_logo"
+                                src="{{ asset('storage/qr_codes/coupons/' . $qr->qrData->qr_data_coupon_logo) }}"
+                                alt="" />
+                        </div>
+                        <h1 class="fw-bold mb-0 py-3 qr_data_coupon_description_header"
+                            style="color: #fff;font-family: var(--tem-one-name-font-family);">
+                            {{ $qr->qrData->qr_data_coupon_description_header }}
+                        </h1>
+                        <h4 class="" style="color: #fff;font-family: var(--tem-one-name-font-family);">
+                            VALIDITY TILL-
+                            <span class="qr_data_coupon_expire_date"
+                                style="color: #fd0834">{{ $qr->qrData->qr_data_coupon_expire_date }}</span>
+                        </h4>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    @push('script')
-        <script>
-            let text = document.getElementById('couponCode').innerHTML;
-            const copyContent = async () => {
-                try {
-                    await navigator.clipboard.writeText(text);
-                    alert('Content copied to clipboard');
-                } catch (err) {
-                    console.error('Failed to copy: ', err);
-                }
-            }
-        </script>
-    @endpush
-</x-admin-guest-layout>
+        <div class="pt-4 px-0 px-lg-5">
+            <p class="mb-0" style="text-align: justify">
+                <span class="text-danger fw-bolder">NB: Terms & Condition</span>
+                <span class="qr_data_coupon_policy">{{ $qr->qrData->qr_data_coupon_policy }}</span>
+            </p>
+        </div>
+        <div class="mx-auto px-0 px-lg-5">
+            <a href="{{ $qr->qrData->qr_data_coupon_website }}" class="btn w-100 mt-4 fs-4 qr_data_coupon_website"
+                style="background-color: #ffa500;color: #fff;font-family: var(--tem-one-name-font-family);">VISIT
+                WEBSITE</a>
+        </div>
+    </div>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/4cba8ce13c.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Attach click event handler to the button
+            $("#button-addon2").click(function() {
+                // Get the value of the input field
+                var inputValue = $(".form-control").val();
+
+                // Copy the value to clipboard
+                navigator.clipboard.writeText(inputValue).then(
+                    function() {
+                        // Show success message
+                        alert("Link copied: " + inputValue);
+                    },
+                    function(err) {
+                        // Handle errors
+                        console.error("Error copying text: ", err);
+                    }
+                );
+            });
+        });
+    </script>
+</body>
+
+</html>

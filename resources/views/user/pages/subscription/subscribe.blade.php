@@ -23,7 +23,8 @@
                                             <td class="text-muted">
                                                 <div class="d-flex align-items-center">
                                                     <i class="ki-duotone ki-calendar fs-2 me-2"><span
-                                                            class="path1"></span><span class="path2"></span></i> Order Date
+                                                            class="path1"></span><span class="path2"></span></i> Order
+                                                    Date
                                                 </div>
                                             </td>
                                             <td class="fw-bold text-end">{{ date('d-m-y') }}</td>
@@ -79,19 +80,16 @@
                                             </td>
                                             <td class="fw-bold text-end">
                                                 <div class="d-flex align-items-center justify-content-end">
-
                                                     <div class="symbol symbol-circle symbol-25px overflow-hidden me-3">
-                                                        <a
-                                                            href="/metronic8/demo1/apps/ecommerce/customers/details.html">
-                                                            <div class="symbol-label">
-                                                                <img src="{{ !empty(Auth::user()->profile_image) && file_exists(public_path('storage/user/profile_image/' . Auth::user()->profile_image)) ? asset('storage/user/profile_image/' . Auth::user()->profile_image) : asset('https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->name)) }}"
-                                                                    alt="{{ Auth::user()->name }}" class="w-100">
-                                                            </div>
-                                                        </a>
+                                                        <p class="mb-0">
+                                                        <div class="symbol-label">
+                                                            <img src="{{ !empty(Auth::user()->profile_image) && file_exists(public_path('storage/user/profile_image/' . Auth::user()->profile_image)) ? asset('storage/user/profile_image/' . Auth::user()->profile_image) : asset('https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->name)) }}"
+                                                                alt="{{ Auth::user()->name }}" class="w-100">
+                                                        </div>
+                                                        </p>
                                                     </div>
-                                                    <a href="/metronic8/demo1/apps/ecommerce/customers/details.html"
-                                                        class="text-gray-600 text-hover-primary">{{ Auth::user()->name }}
-                                                    </a>
+                                                    <p class="text-gray-600 text-hover-primary">{{ Auth::user()->name }}
+                                                    </p>
 
                                                 </div>
                                             </td>
@@ -104,9 +102,8 @@
                                                 </div>
                                             </td>
                                             <td class="fw-bold text-end">
-                                                <a href="/metronic8/demo1/apps/user-management/users/view.html"
-                                                    class="text-gray-600 text-hover-primary">
-                                                    {{ Auth::user()->email }} </a>
+                                                <p class="text-gray-600 text-hover-primary">
+                                                    {{ Auth::user()->email }} </p>
                                             </td>
                                         </tr>
                                         <tr>
@@ -151,9 +148,7 @@
                                                                 class="path3"></span></i></span>
                                                 </div>
                                             </td>
-                                            <td class="fw-bold text-end"><a
-                                                    href="/metronic8/demo1/apps/invoices/view/invoice-3.html"
-                                                    class="text-gray-600 text-hover-primary">#INV-000414</a></td>
+                                            <td class="fw-bold text-end"><p class="text-gray-600 text-hover-primary">#INV-000414</p></td>
                                         </tr>
                                         <tr>
                                             <td class="text-muted">
@@ -199,79 +194,53 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-content">
-                    <div class="tab-pane fade show active" id="kt_ecommerce_sales_order_summary" role="tab-panel">
-                        <div class="d-flex flex-column gap-7 gap-lg-10">
-                            <div class="d-flex flex-column flex-xl-row gap-7 gap-lg-10">
-                                <div class="card card-flush py-4 flex-row-fluid position-relative">
-                                    <div
-                                        class="position-absolute top-0 end-0 bottom-0 opacity-10 d-flex align-items-center me-5">
-                                        <i class="ki-solid ki-two-credit-cart" style="font-size: 14em">
-                                        </i>
-                                    </div>
-                                    <div class="card-header">
-                                        <div class="card-title">
-                                            <h2>Billing Address</h2>
+                <div class="row">
+                    <div class="col-lg-6 mx-auto">
+                        <div class="card card-flush py-4 flex-row-fluid position-relative">
+                            <div
+                                class="position-absolute top-0 end-0 bottom-0 opacity-10 d-flex align-items-center me-5">
+                                <i class="ki-solid ki-delivery" style="font-size: 13em">
+                                </i>
+                            </div>
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <h2>Pay Now</h2>
+                                </div>
+                            </div>
+                            <div class="card-body pt-0">
+                                <form id="payment-form" action="{{ route('user.subscription.create') }}"
+                                    method="POST">
+                                    @csrf
+                                    <input type="hidden" name="plan" id="plan" value="{{ $plan->id }}">
+                                    <div class="row mb-4">
+                                        <div class="col-xl-4 col-lg-4">
+                                            <div class="form-group">
+                                                <label for="">Name On Card</label>
+                                                <input type="text" name="name" id="card-holder-name"
+                                                    class="form-control rounded-1" value=""
+                                                    placeholder="Name on the card">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="card-body pt-0">
-                                        Unit 1/23 Hastings Road,<br>
-                                        Melbourne 3000,<br>
-                                        Victoria,<br>
-                                        Australia.
-                                    </div>
-                                </div>
-                                <div class="card card-flush py-4 flex-row-fluid position-relative">
-                                    <div
-                                        class="position-absolute top-0 end-0 bottom-0 opacity-10 d-flex align-items-center me-5">
-                                        <i class="ki-solid ki-delivery" style="font-size: 13em">
-                                        </i>
-                                    </div>
-                                    <div class="card-header">
-                                        <div class="card-title">
-                                            <h2>Pay Now</h2>
+
+                                    <div class="row">
+                                        <div class="col-xl-12 col-lg-12 mb-5">
+                                            <div class="form-group">
+                                                <label for="">Card details</label>
+                                                <div id="card-element" class="border p-4 rounded-1"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12 col-lg-12 text-end">
+                                            <button type="submit" class="btn btn-primary" id="card-button"
+                                                data-secret="{{ $intent->client_secret }}">Purchase</button>
                                         </div>
                                     </div>
-                                    <div class="card-body pt-0">
-                                        <form id="payment-form" action="{{ route('user.subscription.create') }}" method="POST">
-                                            @csrf
-                                            <input type="hidden" name="plan" id="plan" value="{{ $plan->id }}">
 
-                                            <div class="row mb-4">
-                                                <div class="col-xl-4 col-lg-4">
-                                                    <div class="form-group">
-                                                        <label for="">Name On Card</label>
-                                                        <input type="text" name="name" id="card-holder-name" class="form-control rounded-1" value="" placeholder="Name on the card">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-xl-12 col-lg-12 mb-5">
-                                                    <div class="form-group">
-                                                        <label for="">Card details</label>
-                                                        <div id="card-element"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-12 col-lg-12 text-end">
-                                                    <button type="submit" class="btn btn-primary" id="card-button" data-secret="{{ $intent->client_secret }}">Purchase</button>
-                                                </div>
-                                            </div>
-
-                                        </form>
-                                    </div>
-
-                                </div>
-
+                                </form>
                             </div>
 
-
-
-
                         </div>
-
                     </div>
-
                 </div>
 
             </div>

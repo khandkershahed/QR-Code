@@ -20,13 +20,30 @@
         <h2 class="text-center mb-0">PDF Form</h2>
         <p class="text-center mb-0">Upload Your PDF File Here For QR Code.</p>
     </div>
-    <div class="row pt-4">
-        <div class="d-flex align-items-center">
-            <x-metronic.label for="qr_data_pdf" class="form-label">{{ __('Upload Pdf') }}</x-metronic.label>
-            <x-metronic.input id="qr_data_pdf" type="file" name="qr_data_pdf" :value="old('qr_data_pdf')"
-                placeholder="Upload Pdf" />
+    {{-- Pdf Preview --}}
+    <div>
+        <div class="row pt-4">
+            <div class="col-lg-6 mx-auto">
+                <x-metronic.label for="qr_data_pdf" class="form-label">{{ __('Upload Pdf') }}</x-metronic.label>
+                <x-metronic.input id="qr_data_pdf" type="file" name="qr_data_pdf" :value="old('qr_data_pdf')"
+                    accept="application/pdf" placeholder="Upload Pdf" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 mx-auto">
+                <div id="pdfPreviewContainer" style="display: none;">
+                    <iframe id="pdfPreview" class="img-fluid qr_data_pdf"
+                        style="height: 400px;
+                overflow: scroll;
+                width: 100%;"></iframe>
+                </div>
+                <div id="noPdfMessage">
+                    Pdf preview
+                </div>
+            </div>
         </div>
     </div>
+    {{-- PDF Preview End --}}
 </div>
 {{-- Image Form Start --}}
 <div class="form-container" id="image-form">
@@ -35,12 +52,12 @@
         <p class="text-center mb-0">Upload Your Image or Link Here For QR Code.</p>
     </div>
     <div class="row pt-4">
-        <div class="d-flex align-items-center">
+        <div class="col-lg-6">
             <x-metronic.label for="qr_data_image" class="form-label">{{ __('Upload Image') }}</x-metronic.label>
             <x-metronic.input id="qr_data_image" type="file" name="qr_data_image" :value="old('qr_data_image')"
                 placeholder="Upload Image" />
         </div>
-        <div class="pt-4">
+        <div class="col-lg-6">
             <x-metronic.label for="qr_data_image_link"
                 class="form-label">{{ __('Or Upload Image Link') }}</x-metronic.label>
             <x-metronic.input id="qr_data_image_link" type="text" name="qr_data_image_link" :value="old('qr_data_image_link')"
@@ -224,18 +241,15 @@
 
         <div class="col-lg-4 pb-4">
             <div class="row">
-                <label for="secondary_color_text">Background color</label>
-                <div class="col-lg-10 pe-0">
-                    <div>
-                        <input type="text" name="background_color_picker" id="secondary_color_text"
-                            value="#000" class="form-control form-control-solid">
-                    </div>
-                </div>
-                <div class="col-lg-2 ps-0">
-                    <div>
-                        <input type="color" name="qr_data_coupon_background_color" id="secondary_color_text_picker"
-                            value="" style="width: 50px;height: 43px;" oninput="changecouponBackgroundColor()"
-                            class="form-control form-control-solid">
+                <div class="pt-3 pe-4">
+                    <label for="secondary_color_text">Background color</label>
+                    <div class="d-flex colorCodeContainer">
+                        <input type="text" id="colorCodeInput-gradient"
+                            class="form-control form-control-solid w-25 colorCodeInput"
+                            style="width: 160px !important" readonly>
+                        <input type="color" id="colorPicker" class="colorPicker"
+                            name="qr_data_coupon_background_color" style="width: 56px;height: 45px;"
+                            oninput="changecouponBackgroundColor()">
                     </div>
                 </div>
             </div>
@@ -243,18 +257,13 @@
         <div class="col-lg-4 pb-4">
             <div class="row">
                 <label for="secondary_color_text">Title color (With BG Include)</label>
-                <div class="col-lg-10 pe-0">
-                    <div>
-                        <input type="text" name="title_color_picker" id="secondary_color_text" value="#000"
-                            class="form-control form-control-solid">
-                    </div>
-                </div>
-                <div class="col-lg-2 ps-0">
-                    <div>
-                        <input type="color" name="qr_data_coupon_title_color" id="secondary_color_text_picker"
-                            value="" style="width: 50px;height: 43px;" oninput="changecouponTitleColor()"
-                            class="form-control form-control-solid">
-                    </div>
+                <div class="d-flex colorCodeContainer">
+                    <input type="text" id="secondary_color_text-gradient"
+                        class="form-control form-control-solid w-25 colorCodeInput"
+                        style="width: 160px !important" readonly>
+                    <input type="color" id="secondary_color_text_picker" class="colorPicker"
+                        name="qr_data_coupon_title_color" style="width: 56px;height: 45px;"
+                        oninput="changecouponTitleColor()">
                 </div>
             </div>
         </div>
@@ -262,36 +271,28 @@
         <div class="col-lg-4 pb-4">
             <div class="row">
                 <label for="buttonContact">Website Button Background Color</label>
-                <div class="col-lg-10 pe-0">
-                    <div>
-                        <input type="text" name="buttonContact" id="buttonContact" value="#000"
-                            class="form-control form-control-solid">
-                    </div>
-                </div>
-                <div class="col-lg-2 ps-0">
-                    <div>
-                        <input type="color" name="qr_data_coupon_button_bg_color" id="button_color_picker"
-                            value="" style="width: 50px;height: 43px;" oninput="changecouponwebsiteBgColor()"
-                            class="form-control form-control-solid">
-                    </div>
+                <div class="d-flex colorCodeContainer">
+                    <input type="text" id="secondary_color_text-gradient"
+                        class="form-control form-control-solid w-25 colorCodeInput"
+                        style="width: 160px !important" readonly>
+
+                    <input type="color" id="secondary_color_text_picker" class="colorPicker"
+                        name="qr_data_coupon_button_bg_color" style="width: 56px;height: 45px;"
+                        oninput="changecouponwebsiteBgColor()">
                 </div>
             </div>
         </div>
         <div class="col-lg-4 pb-4">
             <div class="row">
                 <label for="buttonContact">Website Button Title Color</label>
-                <div class="col-lg-10 pe-0">
-                    <div>
-                        <input type="text" name="buttonContact" id="buttonContact" value="#000"
-                            class="form-control form-control-solid">
-                    </div>
-                </div>
-                <div class="col-lg-2 ps-0">
-                    <div>
-                        <input type="color" name="qr_data_coupon_button_title_color" id="button_color_picker"
-                            value="" style="width: 50px;height: 43px;"
-                            oninput="changecouponwebsiteTitleColor()" class="form-control form-control-solid">
-                    </div>
+                <div class="d-flex colorCodeContainer">
+                    <input type="text" id="secondary_color_text-gradient"
+                        class="form-control form-control-solid w-25 colorCodeInput"
+                        style="width: 160px !important" readonly>
+
+                    <input type="color" id="secondary_color_text_picker" class="colorPicker"
+                        name="qr_data_coupon_button_title_color" style="width: 56px;height: 45px;"
+                        oninput="changecouponwebsiteTitleColor()">
                 </div>
             </div>
         </div>
@@ -481,7 +482,7 @@
         <p class="text-center mb-0">Share a Card For Your Business</p>
     </div>
     <div class="pb-4 row">
-        <div class="pb-4 col-lg-12">
+        <div class="pb-4 col-lg-6">
             <x-metronic.label for="qr_data_business_page_logo"
                 class="form-label">{{ __('Company Logo') }}</x-metronic.label>
             <x-metronic.input id="qr_data_business_page_logo" type="file" name="qr_data_business_page_logo"
@@ -517,12 +518,12 @@
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_start_time_monday" type="time"
-                        name="qr_data_business_page_start_time_monday" :value="old('qr_data_business_page_start_time_monday')"
+                        name="qr_data_business_page_start_time_monday" :value="'08:00'"
                         placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_end_time_monday" type="time"
-                        name="qr_data_business_page_end_time_monday" :value="old('qr_data_business_page_end_time_monday')"
+                        name="qr_data_business_page_end_time_monday" :value="'21:00'"
                         placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
@@ -536,12 +537,12 @@
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_start_time_tuesday" type="time"
-                        name="qr_data_business_page_start_time_tuesday" :value="old('qr_data_business_page_start_time_tuesday')"
+                        name="qr_data_business_page_start_time_tuesday" :value="'08:00'"
                         placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_end_time_tuesday" type="time"
-                        name="qr_data_business_page_end_time_tuesday" :value="old('qr_data_business_page_end_time_tuesday')"
+                        name="qr_data_business_page_end_time_tuesday" :value="'21:00'"
                         placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
@@ -555,12 +556,12 @@
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_start_time_wednesday" type="time"
-                        name="qr_data_business_page_start_time_wednesday" :value="old('qr_data_business_page_start_time_wednesday')"
+                        name="qr_data_business_page_start_time_wednesday" :value="'08:00'"
                         placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_end_time_wednesday" type="time"
-                        name="qr_data_business_page_end_time_wednesday" :value="old('qr_data_business_page_end_time_wednesday')"
+                        name="qr_data_business_page_end_time_wednesday" :value="'21:00'"
                         placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
@@ -574,12 +575,12 @@
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_start_time_thursday" type="time"
-                        name="qr_data_business_page_start_time_thursday" :value="old('qr_data_business_page_start_time_thursday')"
+                        name="qr_data_business_page_start_time_thursday" :value="'08:00'"
                         placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_end_time_thursday" type="time"
-                        name="qr_data_business_page_end_time_thursday" :value="old('qr_data_business_page_end_time_thursday')"
+                        name="qr_data_business_page_end_time_thursday" :value="'21:00'"
                         placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
@@ -593,12 +594,12 @@
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_start_time_friday" type="time"
-                        name="qr_data_business_page_start_time_friday" :value="old('qr_data_business_page_start_time_friday')"
+                        name="qr_data_business_page_start_time_friday" :value="'08:00'"
                         placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_end_time_friday" type="time"
-                        name="qr_data_business_page_end_time_friday" :value="old('qr_data_business_page_end_time_friday')"
+                        name="qr_data_business_page_end_time_friday" :value="'21:00'"
                         placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
@@ -612,12 +613,12 @@
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_start_time_saturday" type="time"
-                        name="qr_data_business_page_start_time_saturday" :value="old('qr_data_business_page_start_time_saturday')"
+                        name="qr_data_business_page_start_time_saturday" :value="'08:00'"
                         placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_end_time_saturday" type="time"
-                        name="qr_data_business_page_end_time_saturday" :value="old('qr_data_business_page_end_time_saturday')"
+                        name="qr_data_business_page_end_time_saturday" :value="'21:00'"
                         placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
@@ -631,12 +632,12 @@
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_start_time_sunday" type="time"
-                        name="qr_data_business_page_start_time_sunday" :value="old('qr_data_business_page_start_time_sunday')"
+                        name="qr_data_business_page_start_time_sunday" :value="'08:00'"
                         placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_end_time_sunday" type="time"
-                        name="qr_data_business_page_end_time_sunday" :value="old('qr_data_business_page_end_time_sunday')"
+                        name="qr_data_business_page_end_time_sunday" :value="'21:00'"
                         placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
@@ -801,7 +802,8 @@
                                         <label class="d-flex align-items-center fs-5 fw-semibold mb-2">
                                             <span class="required">Location</label>
                                         <input type="url" class="form-control form-control-lg form-control-solid"
-                                            name="qr_data_restaurant_location" placeholder="map URL / Website Address">
+                                            name="qr_data_restaurant_location"
+                                            placeholder="map URL / Website Address">
                                     </div>
                                 </div>
                             </div>

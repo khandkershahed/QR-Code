@@ -204,14 +204,14 @@
                                 <div class="card-body p-0">
                                     <div>
                                         @if (!empty($qr->qrData->qr_data_facebook_page_header))
-                                            <h1 class="fs-3 text-muted text-center">{{$qr_data_facebook_page_header}}</h1>
+                                            <h1 class="fs-3 text-muted text-center">{{$qr->qrData->qr_data_facebook_page_header}}</h1>
                                         @endif
                                         @if (!empty($qr->qrData->qr_data_facebook_page_title))
-                                            <h1 class="headling-title">{{$qr_data_facebook_page_title}}</h1>
+                                            <h1 class="headling-title">{{$qr->qrData->qr_data_facebook_page_title}}</h1>
                                         @endif
                                         @if (!empty($qr->qrData->qr_data_facebook_page_facebook))
                                             <p class="tex-muted text-center w-50 mx-auto">
-                                                <a href="{{$qr_data_facebook_page_facebook}}" class="text-primary fw-bolder fs-4">Go to our Facebook page -→</a>
+                                                <a href="{{$qr->qrData->qr_data_facebook_page_facebook}}" class="text-primary fw-bolder fs-4">Go to our Facebook page -→</a>
                                             </p>
                                         @endif
                                         @if (!empty($qr->qrData->qr_data_facebook_page_facebook))
