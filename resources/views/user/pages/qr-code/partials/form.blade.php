@@ -21,27 +21,29 @@
         <p class="text-center mb-0">Upload Your PDF File Here For QR Code.</p>
     </div>
     {{-- Pdf Preview --}}
-<div>
-    <div class="row pt-4">
-        <div class="col-lg-6 mx-auto">
-            <x-metronic.label for="qr_data_pdf" class="form-label">{{ __('Upload Pdf') }}</x-metronic.label>
-            <x-metronic.input id="qr_data_pdf" type="file" name="qr_data_pdf" :value="old('qr_data_pdf')" accept="application/pdf" placeholder="Upload Pdf"/>
+    <div>
+        <div class="row pt-4">
+            <div class="col-lg-6 mx-auto">
+                <x-metronic.label for="qr_data_pdf" class="form-label">{{ __('Upload Pdf') }}</x-metronic.label>
+                <x-metronic.input id="qr_data_pdf" type="file" name="qr_data_pdf" :value="old('qr_data_pdf')"
+                    accept="application/pdf" placeholder="Upload Pdf" />
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-6 mx-auto">
-            <div id="pdfPreviewContainer" style="display: none;">
-                <iframe id="pdfPreview" class="img-fluid qr_data_pdf" style="height: 400px;
+        <div class="row">
+            <div class="col-lg-6 mx-auto">
+                <div id="pdfPreviewContainer" style="display: none;">
+                    <iframe id="pdfPreview" class="img-fluid qr_data_pdf"
+                        style="height: 400px;
                 overflow: scroll;
                 width: 100%;"></iframe>
-            </div>
-            <div id="noPdfMessage">
-                Pdf preview
+                </div>
+                <div id="noPdfMessage">
+                    Pdf preview
+                </div>
             </div>
         </div>
     </div>
-</div>
-{{-- PDF Preview End --}}
+    {{-- PDF Preview End --}}
 </div>
 {{-- Image Form Start --}}
 <div class="form-container" id="image-form">
@@ -239,18 +241,15 @@
 
         <div class="col-lg-4 pb-4">
             <div class="row">
-                <label for="secondary_color_text">Background color</label>
-                <div class="col-lg-10 pe-0">
-                    <div>
-                        <input type="text" name="background_color_picker" id="secondary_color_text"
-                            value="#000" class="form-control form-control-solid">
-                    </div>
-                </div>
-                <div class="col-lg-2 ps-0">
-                    <div>
-                        <input type="color" name="qr_data_coupon_background_color" id="secondary_color_text_picker"
-                            value="" style="width: 50px;height: 43px;" oninput="changecouponBackgroundColor()"
-                            class="form-control form-control-solid">
+                <div class="pt-3 pe-4">
+                    <label for="secondary_color_text">Background color</label>
+                    <div class="d-flex colorCodeContainer">
+                        <input type="text" id="colorCodeInput-gradient"
+                            class="form-control form-control-solid w-25 colorCodeInput"
+                            style="width: 160px !important" readonly>
+                        <input type="color" id="colorPicker" class="colorPicker"
+                            name="qr_data_coupon_background_color" style="width: 56px;height: 45px;"
+                            oninput="changecouponBackgroundColor()">
                     </div>
                 </div>
             </div>
@@ -258,18 +257,13 @@
         <div class="col-lg-4 pb-4">
             <div class="row">
                 <label for="secondary_color_text">Title color (With BG Include)</label>
-                <div class="col-lg-10 pe-0">
-                    <div>
-                        <input type="text" name="title_color_picker" id="secondary_color_text" value="#000"
-                            class="form-control form-control-solid">
-                    </div>
-                </div>
-                <div class="col-lg-2 ps-0">
-                    <div>
-                        <input type="color" name="qr_data_coupon_title_color" id="secondary_color_text_picker"
-                            value="" style="width: 50px;height: 43px;" oninput="changecouponTitleColor()"
-                            class="form-control form-control-solid">
-                    </div>
+                <div class="d-flex colorCodeContainer">
+                    <input type="text" id="secondary_color_text-gradient"
+                        class="form-control form-control-solid w-25 colorCodeInput"
+                        style="width: 160px !important" readonly>
+                    <input type="color" id="secondary_color_text_picker" class="colorPicker"
+                        name="qr_data_coupon_title_color" style="width: 56px;height: 45px;"
+                        oninput="changecouponTitleColor()">
                 </div>
             </div>
         </div>
@@ -277,36 +271,28 @@
         <div class="col-lg-4 pb-4">
             <div class="row">
                 <label for="buttonContact">Website Button Background Color</label>
-                <div class="col-lg-10 pe-0">
-                    <div>
-                        <input type="text" name="buttonContact" id="buttonContact" value="#000"
-                            class="form-control form-control-solid">
-                    </div>
-                </div>
-                <div class="col-lg-2 ps-0">
-                    <div>
-                        <input type="color" name="qr_data_coupon_button_bg_color" id="button_color_picker"
-                            value="" style="width: 50px;height: 43px;" oninput="changecouponwebsiteBgColor()"
-                            class="form-control form-control-solid">
-                    </div>
+                <div class="d-flex colorCodeContainer">
+                    <input type="text" id="secondary_color_text-gradient"
+                        class="form-control form-control-solid w-25 colorCodeInput"
+                        style="width: 160px !important" readonly>
+
+                    <input type="color" id="secondary_color_text_picker" class="colorPicker"
+                        name="qr_data_coupon_button_bg_color" style="width: 56px;height: 45px;"
+                        oninput="changecouponwebsiteBgColor()">
                 </div>
             </div>
         </div>
         <div class="col-lg-4 pb-4">
             <div class="row">
                 <label for="buttonContact">Website Button Title Color</label>
-                <div class="col-lg-10 pe-0">
-                    <div>
-                        <input type="text" name="buttonContact" id="buttonContact" value="#000"
-                            class="form-control form-control-solid">
-                    </div>
-                </div>
-                <div class="col-lg-2 ps-0">
-                    <div>
-                        <input type="color" name="qr_data_coupon_button_title_color" id="button_color_picker"
-                            value="" style="width: 50px;height: 43px;"
-                            oninput="changecouponwebsiteTitleColor()" class="form-control form-control-solid">
-                    </div>
+                <div class="d-flex colorCodeContainer">
+                    <input type="text" id="secondary_color_text-gradient"
+                        class="form-control form-control-solid w-25 colorCodeInput"
+                        style="width: 160px !important" readonly>
+
+                    <input type="color" id="secondary_color_text_picker" class="colorPicker"
+                        name="qr_data_coupon_button_title_color" style="width: 56px;height: 45px;"
+                        oninput="changecouponwebsiteTitleColor()">
                 </div>
             </div>
         </div>
@@ -816,7 +802,8 @@
                                         <label class="d-flex align-items-center fs-5 fw-semibold mb-2">
                                             <span class="required">Location</label>
                                         <input type="url" class="form-control form-control-lg form-control-solid"
-                                            name="qr_data_restaurant_location" placeholder="map URL / Website Address">
+                                            name="qr_data_restaurant_location"
+                                            placeholder="map URL / Website Address">
                                     </div>
                                 </div>
                             </div>
