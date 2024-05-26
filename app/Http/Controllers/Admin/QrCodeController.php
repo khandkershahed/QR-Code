@@ -102,13 +102,14 @@ class QrCodeController extends Controller
             $user_device = $agent->device();
         }
         $qr = Qr::with('qrData')->where('code', $Qr)->first();
-        QrScan::create([
-            'code_id'    => $qr->id,
-            'qr_code'    => $qr->code,
-            'ip_address' => $request->ip(),
-            'user_device' => $user_device,
-        ]);
+
         if (!empty($qr)) {
+            QrScan::create([
+                'code_id'    => $qr->id,
+                'qr_code'    => $qr->code,
+                'ip_address' => $request->ip(),
+                'user_device' => $user_device,
+            ]);
             if (!empty($qr->qrData->qr_data_website_url)) {
                 return redirect()->to($qr->qrData->qr_data_website_url);
             } elseif (!empty($qr->qrData->qr_data_call_number)) {
