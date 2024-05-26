@@ -349,6 +349,11 @@
                         'image' => 'frontend/images/eye_ball/square-shape.svg',
                     ],
                     [
+                        'id' => 311,
+                        'value' => 'rounded-square',
+                        'image' => 'frontend/images/eye_ball/rounded-square.svg',
+                    ],
+                    [
                         'id' => 322,
                         'value' => 'circle',
                         'image' => 'frontend/images/eye_ball/rounded-shape.svg',
@@ -372,6 +377,11 @@
                         'id' => 367,
                         'value' => 'right-leaf',
                         'image' => 'frontend/images/eye_ball/right-leaf-shape.svg',
+                    ],
+                    [
+                        'id' => 367,
+                        'value' => 'right-leaf',
+                        'image' => 'frontend/images/eye_ball/left-leaf-shape.svg',
                     ],
                 ]" :selectedEyeBall="null" />
 

@@ -427,7 +427,7 @@
                                         @if (count($nfc_users) > 5)
                                             <a href="javascript:void(0)" class="symbol symbol-35px symbol-circle">
                                                 <span
-                                                    class="symbol-label bg-dark text-gray-300 fs-8 fw-bold">+{{ $nfc_users->count() - 5 }}</span>
+                                                    class="symbol-label bg-dark text-gray-300 fs-8 fw-bold">+{{ count($nfc_users) - 5 }}</span>
                                             </a>
                                         @endif
                                     </div>
@@ -448,9 +448,11 @@
 
                                 <div class="d-flex flex-stack flex-grow-1 flex-wrap flex-md-nowrap">
                                     <div class="mb-3 mb-md-0 fw-semibold">
-                                        <h4 class="text-gray-900 fw-bold">Your Current Plan <span style="color: orangered">Premium Plan</span></h4>
+                                        <h4 class="text-gray-900 fw-bold">Your Current Plan <span
+                                                style="color: orangered">Premium Plan</span></h4>
 
-                                        <div class="fs-6 text-gray-700 pe-7">You Can Check Your Plan Or Status By Clicking Here!</div>
+                                        <div class="fs-6 text-gray-700 pe-7">You Can Check Your Plan Or Status By
+                                            Clicking Here!</div>
                                     </div>
 
                                     <a href="#" class="btn btn-primary px-6 align-self-center text-nowrap">
@@ -716,7 +718,7 @@
                 if (timeLeft <= 0) {
                     $('.trial_end').html(
                         '<h1 class="text-center text-danger pt-4 fw-bold">Your 14 day Free trial has ended. Your NFC and QRs will be deleted.</h1>'
-                        );
+                    );
                 }
                 var countdown = document.getElementById("tiles"); // Get the countdown element
 
