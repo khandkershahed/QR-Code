@@ -392,7 +392,7 @@
                                         @if (count($qr_users) > 5)
                                             <a href="javascript:void(0)" class="symbol symbol-35px symbol-circle">
                                                 <span
-                                                    class="symbol-label bg-dark text-gray-300 fs-8 fw-bold">+{{ $qr_users->count() - 5 }}</span>
+                                                    class="symbol-label bg-dark text-gray-300 fs-8 fw-bold">+{{count($qr_users) - 5 }}</span>
                                             </a>
                                         @endif
                                     </div>
