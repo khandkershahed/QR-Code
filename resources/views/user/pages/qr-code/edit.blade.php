@@ -176,8 +176,7 @@
                 });
 
                 const initiallySelectedValue = "{{$qr->qr_type}}";
-                // alert($("." + initiallySelectedValue + "-form"));
-                $("." + initiallySelectedValue + "-form").show();
+                $("." + initiallySelectedValue).show();
             });
         </script>
 
