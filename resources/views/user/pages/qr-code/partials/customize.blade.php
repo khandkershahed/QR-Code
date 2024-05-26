@@ -167,7 +167,7 @@
                         </div>
                         <div class="col-lg-1">
                             <x-metronic.label for="qr_logo" class="form-label">{{ __('Preview') }}</x-metronic.label>
-                            <img class="img-fluid" src="https://i.ibb.co/BNBTVN4/logo.png" alt="">
+                            <img class="img-fluid qr_logo" src="https://i.ibb.co/BNBTVN4/logo.png" alt="">
                         </div>
                         <div class="col-lg-6">
                             <div class="ps-4">
