@@ -27,11 +27,31 @@
             <h2 class="text-center mb-0">PDF Form</h2>
             <p class="text-center mb-0">Upload Your PDF File Here For QR Code.</p>
         </div>
-        <div class="row pt-4">
+        {{-- <div class="row pt-4">
             <div class="d-flex align-items-center">
                 <x-metronic.label for="qr_data_pdf" class="form-label">{{ __('Upload Pdf') }}</x-metronic.label>
                 <x-metronic.input id="qr_data_pdf" type="file" name="qr_data_pdf" :value="$qr->qrData->qr_data_pdf"
                     placeholder="Upload Pdf" />
+            </div>
+        </div> --}}
+        <div>
+            <div class="row pt-4">
+                <div class="col-lg-6 mx-auto">
+                    <x-metronic.label for="qr_data_pdf" class="form-label">{{ __('Upload Pdf') }}</x-metronic.label>
+                    <x-metronic.input id="qr_data_pdf" type="file" name="qr_data_pdf" :value="$qr->qrData->qr_data_pdf" accept="application/pdf" placeholder="Upload Pdf"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 mx-auto">
+                    <div id="pdfPreviewContainer" style="display: none;">
+                        <iframe id="pdfPreview" src="{{ asset('storage/qr_codes/pdfs/' . $qr->qrData->qr_data_pdf) }}" class="img-fluid qr_data_pdf" style="height: 400px;
+                        overflow: scroll;
+                        width: 100%;"></iframe>
+                    </div>
+                    <div id="noPdfMessage">
+                        Pdf preview
+                    </div>
+                </div>
             </div>
         </div>
     </div>
