@@ -482,7 +482,7 @@
         <p class="text-center mb-0">Share a Card For Your Business</p>
     </div>
     <div class="pb-4 row">
-        <div class="pb-4 col-lg-12">
+        <div class="pb-4 col-lg-6">
             <x-metronic.label for="qr_data_business_page_logo"
                 class="form-label">{{ __('Company Logo') }}</x-metronic.label>
             <x-metronic.input id="qr_data_business_page_logo" type="file" name="qr_data_business_page_logo"
@@ -518,12 +518,12 @@
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_start_time_monday" type="time"
-                        name="qr_data_business_page_start_time_monday" :value="old('qr_data_business_page_start_time_monday')"
+                        name="qr_data_business_page_start_time_monday" :value="'08:00'"
                         placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_end_time_monday" type="time"
-                        name="qr_data_business_page_end_time_monday" :value="old('qr_data_business_page_end_time_monday')"
+                        name="qr_data_business_page_end_time_monday" :value="'21:00'"
                         placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
@@ -537,12 +537,12 @@
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_start_time_tuesday" type="time"
-                        name="qr_data_business_page_start_time_tuesday" :value="old('qr_data_business_page_start_time_tuesday')"
+                        name="qr_data_business_page_start_time_tuesday" :value="'08:00'"
                         placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_end_time_tuesday" type="time"
-                        name="qr_data_business_page_end_time_tuesday" :value="old('qr_data_business_page_end_time_tuesday')"
+                        name="qr_data_business_page_end_time_tuesday" :value="'21:00'"
                         placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
@@ -556,12 +556,12 @@
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_start_time_wednesday" type="time"
-                        name="qr_data_business_page_start_time_wednesday" :value="old('qr_data_business_page_start_time_wednesday')"
+                        name="qr_data_business_page_start_time_wednesday" :value="'08:00'"
                         placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_end_time_wednesday" type="time"
-                        name="qr_data_business_page_end_time_wednesday" :value="old('qr_data_business_page_end_time_wednesday')"
+                        name="qr_data_business_page_end_time_wednesday" :value="'21:00'"
                         placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
@@ -575,12 +575,12 @@
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_start_time_thursday" type="time"
-                        name="qr_data_business_page_start_time_thursday" :value="old('qr_data_business_page_start_time_thursday')"
+                        name="qr_data_business_page_start_time_thursday" :value="'08:00'"
                         placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_end_time_thursday" type="time"
-                        name="qr_data_business_page_end_time_thursday" :value="old('qr_data_business_page_end_time_thursday')"
+                        name="qr_data_business_page_end_time_thursday" :value="'21:00'"
                         placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
@@ -594,12 +594,12 @@
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_start_time_friday" type="time"
-                        name="qr_data_business_page_start_time_friday" :value="old('qr_data_business_page_start_time_friday')"
+                        name="qr_data_business_page_start_time_friday" :value="'08:00'"
                         placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_end_time_friday" type="time"
-                        name="qr_data_business_page_end_time_friday" :value="old('qr_data_business_page_end_time_friday')"
+                        name="qr_data_business_page_end_time_friday" :value="'21:00'"
                         placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
@@ -613,12 +613,12 @@
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_start_time_saturday" type="time"
-                        name="qr_data_business_page_start_time_saturday" :value="old('qr_data_business_page_start_time_saturday')"
+                        name="qr_data_business_page_start_time_saturday" :value="'08:00'"
                         placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_end_time_saturday" type="time"
-                        name="qr_data_business_page_end_time_saturday" :value="old('qr_data_business_page_end_time_saturday')"
+                        name="qr_data_business_page_end_time_saturday" :value="'21:00'"
                         placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
@@ -632,12 +632,12 @@
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_start_time_sunday" type="time"
-                        name="qr_data_business_page_start_time_sunday" :value="old('qr_data_business_page_start_time_sunday')"
+                        name="qr_data_business_page_start_time_sunday" :value="'08:00'"
                         placeholder="Audio File (mp3,web)" />
                 </div>
                 <div class="col-lg-4">
                     <x-metronic.input id="qr_data_business_page_end_time_sunday" type="time"
-                        name="qr_data_business_page_end_time_sunday" :value="old('qr_data_business_page_end_time_sunday')"
+                        name="qr_data_business_page_end_time_sunday" :value="'21:00'"
                         placeholder="Audio File (mp3,web)" />
                 </div>
             </div>
