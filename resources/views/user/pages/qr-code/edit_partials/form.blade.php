@@ -38,17 +38,17 @@
             <div class="row pt-4">
                 <div class="col-lg-6 mx-auto">
                     <x-metronic.label for="qr_data_pdf" class="form-label">{{ __('Upload Pdf') }}</x-metronic.label>
-                    <input type="file" id="qr_data_pdf" name="qr_data_pdf" accept="application/pdf" placeholder="Upload Pdf" onchange="showPdfPreview(event)" />
-                    <input type="hidden" id="existing_pdf_name" value="{{ $qr->qrData->qr_data_pdf }}">
-                    <div id="fileLabel">{{ $qr->qrData->qr_data_pdf ? $qr->qrData->qr_data_pdf : 'No file chosen' }}</div>
+                    <x-metronic.input id="qr_data_pdf" type="file" name="qr_data_pdf" :value="$qr->qrData->qr_data_pdf" accept="application/pdf" placeholder="Upload Pdf"/>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-6 mx-auto">
                     <div id="pdfPreviewContainer">
-                        <iframe id="pdfPreview" src="{{ asset('storage/qr_codes/pdfs/' . $qr->qrData->qr_data_pdf) }}" class="img-fluid qr_data_pdf" style="height: 400px; overflow: scroll; width: 100%;"></iframe>
+                        <iframe id="pdfPreview" src="{{ asset('storage/qr_codes/pdfs/' . $qr->qrData->qr_data_pdf) }}" class="img-fluid qr_data_pdf" style="height: 400px;
+                        overflow: scroll;
+                        width: 100%;"></iframe>
                     </div>
-                    <div id="noPdfMessage" style="display: none;">
+                    <div id="noPdfMessage">
                         Pdf preview
                     </div>
                 </div>

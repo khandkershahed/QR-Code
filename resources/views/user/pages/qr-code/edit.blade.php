@@ -56,8 +56,7 @@
                             </div>
 
                             <form class="form w-100 mx-auto fv-row" novalidate="novalidate" id="generateQRCodeForm"
-                                action="{{ route('user.qr-code.update', $qr->code) }}" method="POST"
-                                enctype="multipart/form-data">
+                                action="{{ route('user.qr-code.update',$qr->code) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="mb-5">
@@ -141,16 +140,15 @@
                             <h3>Preview</h3>
                             <div id="generatedQRCodeContainer">
                                 <div class="preview">
-                                    <img id="generatedQRCode" class="img-fluid generatedQRCode"
-                                        src="{{ $qr->qr_png_url }}" alt="QR Code">
+                                    <img id="generatedQRCode" class="img-fluid generatedQRCode" src="{{ $qr->qr_png_url }}" alt="QR Code">
                                 </div>
                             </div>
                             {{-- <img src="" alt="website" class="img-fluid" width="300px"> --}}
                             {{-- @include('user.pages.qr-code.edit_partials.qr_preview') --}}
                             {{-- {!! QrCode::size(220)->eye('left-leaf', 0.1)->eyeColor(0, 255, 255, 255, 0, 0, 0)->eyeColor(1, 222, 18, 222, 222, 18, 222)->eyeColor(2, 222, 18, 222, 222, 18, 222)->style('dot', 0.8)->errorCorrection('H')->generate('Make me into a QrCode!') !!} --}}
                         </div>
-                        <a id="downloadLink" href="javascripti:void()" download class="btn btn-light btn-primary w-100"
-                            style="display: none;">Download</a>
+                        <a id="downloadLink" href="javascripti:void()" download
+                            class="btn btn-light btn-primary w-100" style="display: none;">Download</a>
                     </div>
                 </div>
             </div>
@@ -177,7 +175,7 @@
                     }
                 });
 
-                const initiallySelectedValue = "{{ $qr->qr_type }}";
+                const initiallySelectedValue = "{{$qr->qr_type}}";
                 $("." + initiallySelectedValue).show();
             });
         </script>
@@ -410,38 +408,23 @@
         </script>
         {{-- PDF Preview --}}
         <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const existingFileName = document.getElementById('existing_pdf_name').value;
-                if (existingFileName) {
-                    document.getElementById('fileLabel').innerText = existingFileName;
-                } else {
-                    document.getElementById('fileLabel').innerText = 'No file chosen';
-                }
-            });
-
-            function showPdfPreview(event) {
+            $('input[name="qr_data_pdf"]')
+                    .on('keyup change', function() {
                 const file = event.target.files[0];
                 const pdfPreviewContainer = document.getElementById('pdfPreviewContainer');
                 const noPdfMessage = document.getElementById('noPdfMessage');
                 const pdfPreview = document.getElementById('pdfPreview');
-                const fileLabel = document.getElementById('fileLabel');
 
                 if (file && file.type === "application/pdf") {
-                    fileLabel.innerText = file.name;
                     const fileReader = new FileReader();
                     fileReader.onload = function() {
                         pdfPreview.src = fileReader.result;
-                        pdfPreviewContainer.style.display = 'block';
-                        noPdfMessage.style.display = 'none';
                     };
                     fileReader.readAsDataURL(file);
                 } else {
-                    pdfPreviewContainer.style.display = 'none';
-                    noPdfMessage.style.display = 'block';
-                    fileLabel.innerText = 'No file chosen';
                     alert("Please upload a valid PDF file.");
                 }
-            }
-        </script>
+            });
+            </script>
     @endpush
 </x-app-layout>
