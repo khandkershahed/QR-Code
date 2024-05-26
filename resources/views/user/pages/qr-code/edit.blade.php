@@ -156,7 +156,7 @@
     </div>
 
     @push('scripts')
-        <script>
+        {{-- <script>
             $(document).ready(function() {
                 $('input[name="qr_type"]').change(function() {
                     $(".qr-card").hide();
@@ -178,7 +178,7 @@
                 const initiallySelectedValue = "{{$qr->qr_type}}";
                 $("." + initiallySelectedValue).show();
             });
-        </script>
+        </script> --}}
 
 
         <script>
