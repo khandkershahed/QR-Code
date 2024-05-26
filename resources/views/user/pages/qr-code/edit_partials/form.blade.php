@@ -1,6 +1,6 @@
 {{-- Website Form Start --}}
 @if ($qr->qr_type == 'website')
-    <div class="container" id="website-form">
+    <div class="container" id="websiteform">
         <div class="row text-center justify-content-center">
             <h2 class="text-center mb-0">Website Form</h2>
             <p class="text-center mb-0">Paste a URL below to link with your QR code.</p>
@@ -22,7 +22,7 @@
 
 {{-- PDF Form Start --}}
 @if ($qr->qr_type == 'pdf')
-    <div class="container" id="pdf-form">
+    <div class="container" id="pdfform">
         <div class="row text-center justify-content-center">
             <h2 class="text-center mb-0">PDF Form</h2>
             <p class="text-center mb-0">Upload Your PDF File Here For QR Code.</p>
@@ -58,7 +58,7 @@
 @endif
 {{-- Image Form Start --}}
 @if ($qr->qr_type == 'image')
-    <div class="container" id="image-form">
+    <div class="container" id="imageform">
         <div class="row text-center justify-content-center">
             <h2 class="text-center mb-0">Image Form</h2>
             <p class="text-center mb-0">Upload Your Image or Link Here For QR Code.</p>
@@ -80,7 +80,7 @@
 @endif
 {{-- SMS Form Start --}}
 @if ($qr->qr_type == 'sms')
-    <div class="container" id="sms-form">
+    <div class="container" id="smsform">
         <div class="row text-center justify-content-center">
             <h2 class="text-center mb-0">SMS information</h2>
             <p class="text-center mb-0">Specify details of the text (SMS) to link your QR code to.</p>
@@ -102,7 +102,7 @@
 @endif
 {{-- Email Form Start --}}
 @if ($qr->qr_type == 'email')
-    <div class="container" id="email-form">
+    <div class="container" id="emailform">
         <div class="row text-center justify-content-center">
             <h2 class="text-center mb-0">Email information</h2>
             <p class="text-center mb-0">Specify details of the email message to link your QR code to.</p>
@@ -130,7 +130,7 @@
 @endif
 {{-- Mobile App Form Start --}}
 @if ($qr->qr_type == 'mobile_app')
-    <div class="container" id="mobile_app-form">
+    <div class="container" id="mobile_appform">
         <div class="row text-center justify-content-center">
             <h2 class="text-center mb-0">Mobile App</h2>
             <p class="text-center mb-0">Redirect to app download or in-app pages for Android and iOS users.</p>
@@ -159,7 +159,7 @@
 @endif
 {{-- call Form Start --}}
 @if ($qr->qr_type == 'call')
-    <div class="container" id="call-form">
+    <div class="container" id="callform">
         <div class="row text-center justify-content-center">
             <h2 class="text-center mb-0">Call Information</h2>
             <p class="text-center mb-0">Specify details of the phone number to link your QR code to.</p>
@@ -176,7 +176,7 @@
 @endif
 {{-- location Form Start --}}
 @if ($qr->qr_type == 'location')
-    <div class="container" id="location-form">
+    <div class="container" id="locationform">
         <div class="row text-center justify-content-center">
             <h2 class="text-center mb-0">Choose location</h2>
             <p class="text-center mb-0">Choose a location to link to your QR code.</p>
@@ -203,7 +203,7 @@
 
 {{-- Coupon Form Start --}}
 @if ($qr->qr_type == 'coupon_code')
-    <div class="container" id="coupon_code-form">
+    <div class="container" id="coupon_codeform">
         <div class="row text-center justify-content-center">
             <h2 class="text-center mb-0">Coupon Code</h2>
             <p class="text-center mb-0">Create Coupon Code.</p>
@@ -363,7 +363,7 @@
 
 {{-- Social Form Start --}}
 @if ($qr->qr_type == 'social')
-    <div class="form-container" id="social-form">
+    <div class="form-container" id="socialform">
         <div class="row text-center justify-content-center">
             <h2 class="text-center mb-0">Social Media</h2>
             <p class="text-center mb-0">Link to your social media channels for more engagement.</p>
@@ -496,7 +496,7 @@
 
 {{-- Audio Form Start --}}
 @if ($qr->qr_type == 'audio')
-    <div class="container" id="audio-form">
+    <div class="container" id="audioform">
         <div class="row text-center justify-content-center">
             <h2 class="text-center mb-0">MP3/Audio</h2>
             <p class="text-center mb-0">Upload MP3/Audio File</p>
@@ -522,7 +522,7 @@
 
 {{-- Business Page Form Start --}}
 @if ($qr->qr_type == 'business_page')
-<div class="row form-container" id="business_page-form">
+<div class="row form-container" id="business_pageform">
     <div class="row text-center justify-content-center mb-5">
         <h2 class="text-center mb-0">Business Page</h2>
         <p class="text-center mb-0">Share a Card For Your Business</p>
@@ -707,7 +707,7 @@
 
 {{-- Restaurant Form --}}
 @if ($qr->qr_type == 'restaurant')
-    <div class="container" id="restaurant-form">
+    <div class="container" id="restaurantform">
         <div class="row text-center justify-content-center">
             <h2 class="text-center mb-0">Restaurant Form</h2>
             <p class="text-center mb-0">Upload MP3/Audio File</p>
@@ -723,7 +723,7 @@
 @endif
 {{-- Facebook Page Form --}}
 @if ($qr->qr_type == 'facebook_page')
-<div class="form-container" id="facebook_page-form">
+<div class="form-container" id="facebook_pageform">
     <div class="row text-center justify-content-center mb-5">
         <h2 class="text-center mb-0">Facebook Form</h2>
         <p class="text-center mb-0">Upload audio file that your QR code should link to.</p>
