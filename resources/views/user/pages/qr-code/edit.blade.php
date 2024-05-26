@@ -406,5 +406,25 @@
                 stepper.goPrevious(); // go previous step
             });
         </script>
+        {{-- PDF Preview --}}
+        <script>
+            $('input[name="qr_data_pdf"]')
+                    .on('keyup change', function() {
+                const file = event.target.files[0];
+                const pdfPreviewContainer = document.getElementById('pdfPreviewContainer');
+                const noPdfMessage = document.getElementById('noPdfMessage');
+                const pdfPreview = document.getElementById('pdfPreview');
+
+                if (file && file.type === "application/pdf") {
+                    const fileReader = new FileReader();
+                    fileReader.onload = function() {
+                        pdfPreview.src = fileReader.result;
+                    };
+                    fileReader.readAsDataURL(file);
+                } else {
+                    alert("Please upload a valid PDF file.");
+                }
+            });
+            </script>
     @endpush
 </x-app-layout>

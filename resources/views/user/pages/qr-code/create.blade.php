@@ -803,7 +803,6 @@
         <script>
         $('input[name="qr_data_pdf"]')
                 .on('keyup change', function() {
-                alert('Testing alert');
             const file = event.target.files[0];
             const pdfPreviewContainer = document.getElementById('pdfPreviewContainer');
             const noPdfMessage = document.getElementById('noPdfMessage');
