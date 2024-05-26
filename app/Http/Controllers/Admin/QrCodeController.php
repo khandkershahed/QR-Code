@@ -23,18 +23,23 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class QrCodeController extends Controller
 {
-    public function index()
-    {
-        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
+    public function index(Request $request)
+{
+    $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
+    $user = $request->user();
+    $subscription = $isUserRoute ? $user->subscription() : null;
+    $qrs = $isUserRoute ?
+        Qr::with('qrData', 'qrScan')->where('user_id', $user->id)->latest('id')->get() :
+        Qr::with('qrData', 'qrScan')->latest('id')->get();
 
-        $qrs = $isUserRoute ?
-            Qr::with('qrData', 'qrScan')->where('user_id', Auth::user()->id)->latest('id')->get() :
-            Qr::with('qrData', 'qrScan')->latest('id')->get();
+    $view = $isUserRoute ? 'user.pages.qr-code.index' : 'admin.pages.qr-code.index';
 
-        $view = $isUserRoute ? 'user.pages.qr-code.index' : 'admin.pages.qr-code.index';
-
-        return view($view, ['qrs' => $qrs]);
-    }
+    dd($user->subscribed());
+    return view($view, [
+        'qrs' => $qrs,
+        'subscription' => $subscription,
+    ]);
+}
 
     public function create()
     {
