@@ -1078,6 +1078,7 @@ class QrCodeController extends Controller
         $qr_logo                 = $request->file('qr_logo');
         $qr_logo_size            = $request->input('qr_logo_size', 50); // Default size if not provided
         $qr_logo_space           = $request->input('qr_logo_space', 30); // Default size if not provided
+        $qr_logo_bg_color        = $this->hexToRgb($request->qr_logo_bg_color);
         $qr_eye_ball             = $request->qr_eye_ball;
         $qr_eye_ball_color       = $this->hexToRgb($request->qr_eye_ball_color);
         $qr_eye_frame            = $request->qr_eye_frame;
@@ -1122,7 +1123,7 @@ class QrCodeController extends Controller
 
                 // Create a new image with a light background and padding
                 $background = imagecreatetruecolor($paddedWidth, $paddedHeight);
-                $backgroundColor = imagecolorallocate($background, 175, 175, 175); // Light gray color
+                $backgroundColor = imagecolorallocate($background, $qr_logo_bg_color); // Light gray color
                 imagefill($background, 0, 0, $backgroundColor);
 
                 // Calculate the position to place the original logo image with padding
