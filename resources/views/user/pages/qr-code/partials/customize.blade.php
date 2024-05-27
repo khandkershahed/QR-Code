@@ -169,7 +169,7 @@
                             <x-metronic.label for="qr_logo" class="form-label">{{ __('Preview') }}</x-metronic.label>
                             <img class="img-fluid qr_logo" src="https://i.ibb.co/BNBTVN4/logo.png" alt="">
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-3">
                             <div class="ps-4">
                                 <x-metronic.label for="qr_logo_size" class="form-label">{{ __('Logo Size (in %)') }}</x-metronic.label>
                                 {{-- <x-metronic.input id="qr_logo_size" type="number" name="qr_logo_size" :value="old('qr_logo_size')" placeholder="Logo Size(Eg: 5, 10, 15....)" /> --}}
@@ -177,16 +177,16 @@
                                     <input type="range" class="form-range w-100" id="customRange1" name="qr_logo_size" min="0.1" max="0.4" step="0.01" value="0.1" oninput="updateRangeValue(this.value)">
                                     <span id="rangeValue">10%</span>
                                 </div>
-                                {{-- <option value="0.3">None</option> --}}
-                                {{-- <select class="form-select w-100" name="qr_logo_size" aria-label="Default select example">
-                                    <option value="0.2" >20%</option>
-                                    <option value="0.3" >30%</option>
-                                    <option value="0.4" >40%</option>
-                                    <option value="0.5">50%</option>
-                                    <option value="0.6">60%</option>
-                                </select> --}}
-                                {{-- <option value="inverse_diagonal">Inverse_Diagonal</option>
-                                <option value="radial">Radial</option> --}}
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="ps-4">
+                                <x-metronic.label for="qr_logo_size" class="form-label">{{ __('Logo Space') }}</x-metronic.label>
+                                {{-- <x-metronic.input id="qr_logo_size" type="number" name="qr_logo_size" :value="old('qr_logo_size')" placeholder="Logo Size(Eg: 5, 10, 15....)" /> --}}
+                                <div class="mb-10">
+                                    <input type="range" class="form-range w-100" id="customRange1" name="qr_logo_space" min="10" max="60" step="5" value="30" oninput="updateRangeValue(this.value)">
+                                    <span id="rangeValue">30%</span>
+                                </div>
                             </div>
                         </div>
                     </div>

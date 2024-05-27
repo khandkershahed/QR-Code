@@ -1077,6 +1077,7 @@ class QrCodeController extends Controller
         $qr_template             = $request->qr_template;
         $qr_logo                 = $request->file('qr_logo');
         $qr_logo_size            = $request->input('qr_logo_size', 50); // Default size if not provided
+        $qr_logo_space           = $request->input('qr_logo_space', 30); // Default size if not provided
         $qr_eye_ball             = $request->qr_eye_ball;
         $qr_eye_ball_color       = $this->hexToRgb($request->qr_eye_ball_color);
         $qr_eye_frame            = $request->qr_eye_frame;
@@ -1113,7 +1114,7 @@ class QrCodeController extends Controller
                 $logoHeight = imagesy($originalImage);
 
                 // Define padding size
-                $padding = 40; // Adjust this value as needed
+                $padding = $qr_logo_space; // Adjust this value as needed
 
                 // Calculate new dimensions for the image with padding
                 $paddedWidth = $logoWidth + (2 * $padding);
