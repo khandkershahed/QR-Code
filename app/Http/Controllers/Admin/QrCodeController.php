@@ -1113,7 +1113,7 @@ class QrCodeController extends Controller
                 $logoHeight = imagesy($originalImage);
 
                 // Define padding size
-                $padding = 20; // Adjust this value as needed
+                $padding = 40; // Adjust this value as needed
 
                 // Calculate new dimensions for the image with padding
                 $paddedWidth = $logoWidth + (2 * $padding);
