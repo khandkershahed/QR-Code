@@ -1123,7 +1123,7 @@ class QrCodeController extends Controller
 
                 // Create a new image with a light background and padding
                 $background = imagecreatetruecolor($paddedWidth, $paddedHeight);
-                $backgroundColor = imagecolorallocate($background, $qr_logo_bg_color); // Light gray color
+                $backgroundColor = imagecolorallocate($background,  $qr_logo_bg_color['r'], $qr_logo_bg_color['g'], $qr_logo_bg_color['b']); // Light gray color
                 imagefill($background, 0, 0, $backgroundColor);
 
                 // Calculate the position to place the original logo image with padding
