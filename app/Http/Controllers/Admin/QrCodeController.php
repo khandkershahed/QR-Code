@@ -1175,6 +1175,7 @@ class QrCodeController extends Controller
             $qrCode->merge($logoPath, $qr_logo_size, true);
         }
         if (!empty($qr_saved_logo)) {
+            dd($qr_saved_logo);
             $logoFullPath = '../public/frontend/images/qr_logo/' . $qr_saved_logo . '.png';
             $qrCode->merge($logoFullPath, $qr_logo_size, true);
         }
