@@ -1112,13 +1112,24 @@ class QrCodeController extends Controller
                 $logoWidth = imagesx($originalImage);
                 $logoHeight = imagesy($originalImage);
 
-                // Create a new image with a light background
-                $background = imagecreatetruecolor($logoWidth, $logoHeight);
+                // Define padding size
+                $padding = 20; // Adjust this value as needed
+
+                // Calculate new dimensions for the image with padding
+                $paddedWidth = $logoWidth + (2 * $padding);
+                $paddedHeight = $logoHeight + (2 * $padding);
+
+                // Create a new image with a light background and padding
+                $background = imagecreatetruecolor($paddedWidth, $paddedHeight);
                 $backgroundColor = imagecolorallocate($background, 175, 175, 175); // Light gray color
                 imagefill($background, 0, 0, $backgroundColor);
 
+                // Calculate the position to place the original logo image with padding
+                $xPosition = $padding;
+                $yPosition = $padding;
+
                 // Merge the original logo with the background
-                imagecopy($background, $originalImage, 0, 0, 0, 0, $logoWidth, $logoHeight);
+                imagecopy($background, $originalImage, $xPosition, $yPosition, 0, 0, $logoWidth, $logoHeight);
 
                 // Save the merged image
                 $logoPath = $qr_logo->getRealPath();
