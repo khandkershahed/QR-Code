@@ -198,142 +198,152 @@
                         </div>
                     </div>
                 </div>
-                {{-- <p class="text-start pt-5 mb-0">Or Select From Our
+                <p class="text-start pt-5 mb-0">Or Select From Our
                     Gallary</p>
                 <div class="pt-2 row">
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px; border: 1px solid #DBDFE3; border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/app-store.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="	https://static.beaconstac.com/assets/img/qr-code-logos/calender.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/email.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/facebook.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/gmail.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/google-bussiness.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/instagram.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/linkedin.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/mp3.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/pdf.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/phone-call.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/pintrest.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/play-store.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/ratings.png">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/twitter.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/youtube.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-1.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-2.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-3.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-4.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-5.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-6.svg">
-                        </a>
-                    </div>
-                </div> --}}
+                    <x-qr-code.qr-logo :qrLogos="[
+                        [
+                            'id' => 1,
+                            'value' => 'address-book',
+                            'image' => 'frontend/images/qr_logo/address-book.png',
+                        ],
+                        [
+                            'id' => 2,
+                            'value' => 'badoo',
+                            'image' => 'frontend/images/qr_logo/badoo.png',
+                        ],
+                        [
+                            'id' => 3,
+                            'value' => 'dribbble',
+                            'image' => 'frontend/images/qr_logo/dribbble.png',
+                        ],
+                        [
+                            'id' => 4,
+                            'value' => 'dropbox',
+                            'image' => 'frontend/images/qr_logo/dropbox.png',
+                        ],
+                        [
+                            'id' => 5,
+                            'value' => 'facebook',
+                            'image' => 'frontend/images/qr_logo/facebook.png',
+                        ],
+                        [
+                            'id' => 6,
+                            'value' => 'google-calendar',
+                            'image' => 'frontend/images/qr_logo/google-calendar.png',
+                        ],
+                        [
+                            'id' => 7,
+                            'value' => 'google-forms',
+                            'image' => 'frontend/images/qr_logo/google-forms.png',
+                        ],
+                        [
+                            'id' => 8,
+                            'value' => 'google-maps',
+                            'image' => 'frontend/images/qr_logo/google-maps.png',
+                        ],
+                        [
+                            'id' => 9,
+                            'value' => 'google-meet',
+                            'image' => 'frontend/images/qr_logo/google-meet.png',
+                        ],
+                        [
+                            'id' => 10,
+                            'value' => 'google-sheets',
+                            'image' => 'frontend/images/qr_logo/google-sheets.png',
+                        ],
+                        [
+                            'id' => 11,
+                            'value' => 'google-slides',
+                            'image' => 'frontend/images/qr_logo/google-slides.png',
+                        ],
+                        [
+                            'id' => 12,
+                            'value' => 'instagram',
+                            'image' => 'frontend/images/qr_logo/instagram.png',
+                        ],
+                        [
+                            'id' => 13,
+                            'value' => 'linkedin',
+                            'image' => 'frontend/images/qr_logo/linkedin.png',
+                        ],
+                        [
+                            'id' => 14,
+                            'value' => 'paypal',
+                            'image' => 'frontend/images/qr_logo/paypal.png',
+                        ],
+                        [
+                            'id' => 15,
+                            'value' => 'pinterest',
+                            'image' => 'frontend/images/qr_logo/pinterest.png',
+                        ],
+                        [
+                            'id' => 16,
+                            'value' => 'skype',
+                            'image' => 'frontend/images/qr_logo/skype.png',
+                        ],
+                        [
+                            'id' => 17,
+                            'value' => 'snapchat',
+                            'image' => 'frontend/images/qr_logo/snapchat.png',
+                        ],
+                        [
+                            'id' => 18,
+                            'value' => 'soundcloud',
+                            'image' => 'frontend/images/qr_logo/soundcloud.png',
+                        ],
+                        [
+                            'id' => 19,
+                            'value' => 'spotify',
+                            'image' => 'frontend/images/qr_logo/spotify.png',
+                        ],
+                        [
+                            'id' => 20,
+                            'value' => 'swarm',
+                            'image' => 'frontend/images/qr_logo/swarm.png',
+                        ],
+                        [
+                            'id' => 21,
+                            'value' => 'telegram',
+                            'image' => 'frontend/images/qr_logo/telegram.png',
+                        ],
+                        [
+                            'id' => 22,
+                            'value' => 'twitter',
+                            'image' => 'frontend/images/qr_logo/twitter.png',
+                        ],
+                        [
+                            'id' => 23,
+                            'value' => 'viber',
+                            'image' => 'frontend/images/qr_logo/viber.png',
+                        ],
+                        [
+                            'id' => 24,
+                            'value' => 'vimeo',
+                            'image' => 'frontend/images/qr_logo/vimeo.png',
+                        ],
+                        [
+                            'id' => 25,
+                            'value' => 'vine',
+                            'image' => 'frontend/images/qr_logo/vine.png',
+                        ],
+                        [
+                            'id' => 26,
+                            'value' => 'whatsapp',
+                            'image' => 'frontend/images/qr_logo/whatsapp.png',
+                        ],
+                        [
+                            'id' => 27,
+                            'value' => 'youtube',
+                            'image' => 'frontend/images/qr_logo/youtube.png',
+                        ],
+                        [
+                            'id' => 28,
+                            'value' => 'zoom-meeting',
+                            'image' => 'frontend/images/qr_logo/zoom-meeting.png',
+                        ],
+                    ]" :selectedQrLogo="null" />
+                </div>
             </div>
         </div>
 

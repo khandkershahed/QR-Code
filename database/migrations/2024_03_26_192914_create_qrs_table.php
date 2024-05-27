@@ -19,7 +19,10 @@ return new class extends Migration
             $table->string('qr_type')->nullable();
             $table->string('qr_template')->nullable();
             $table->string('qr_logo')->nullable();
+            $table->string('qr_saved_logo')->nullable();
             $table->string('qr_logo_size')->nullable();
+            $table->string('qr_logo_space')->nullable();
+            $table->string('qr_logo_bg_color')->nullable();
             $table->string('qr_eye_ball')->nullable();
             $table->string('qr_eye_ball_color')->nullable();
             $table->string('qr_eye_frame')->nullable();

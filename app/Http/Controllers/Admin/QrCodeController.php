@@ -201,7 +201,10 @@ class QrCodeController extends Controller
         $qr_type                 = $request->qr_type;
         $qr_template             = $request->qr_template;
         $qr_logo                 = $request->qr_logo;
-        $qr_logo_size            = $request->qr_logo_size;
+        $qr_saved_logo           = $request->qr_saved_logo;
+        $qr_logo_size            = $request->input('qr_logo_size', 50); // Default size if not provided
+        $qr_logo_space           = $request->input('qr_logo_space', 30); // Default size if not provided
+        $qr_logo_bg_color        = $this->hexToRgb($request->qr_logo_bg_color);
         $qr_eye_ball             = $request->qr_eye_ball ?? 'square';
         $qr_eye_ball_color       = $this->hexToRgb($request->qr_eye_ball_color ?? '#000000');
         $qr_eye_frame            = $request->qr_eye_frame ?? 'square';
@@ -228,7 +231,10 @@ class QrCodeController extends Controller
             'code'                    => $code,
             'qr_type'                 => $qr_type,
             'qr_template'             => $qr_template,
+            'qr_saved_logo'           => $qr_saved_logo,
             'qr_logo_size'            => $qr_logo_size,
+            'qr_logo_space'           => $qr_logo_space,
+            'qr_logo_bg_color'        => $request->qr_logo_bg_color,
             'qr_eye_ball'             => $qr_eye_ball,
             'qr_eye_ball_color'       => $request->qr_eye_ball_color,
             'qr_eye_frame'            => $qr_eye_frame,
@@ -256,20 +262,29 @@ class QrCodeController extends Controller
             $logo = $request->file('qr_logo');
             if ($logo->isValid()) {
                 $code = $request->input('code');
-                $fileName = $qr->code . '.' . $logo->getClientOriginalExtension();
-
-                // Load the original logo image using GD
                 $originalImage = imagecreatefromstring(file_get_contents($logo->getPathname()));
                 $logoWidth = imagesx($originalImage);
                 $logoHeight = imagesy($originalImage);
 
-                // Create a new image with a light background
-                $background = imagecreatetruecolor($logoWidth, $logoHeight);
-                $backgroundColor = imagecolorallocate($background, 175, 175, 175); // Light gray color
+                // Define padding size
+                $padding = $qr_logo_space; // Adjust this value as needed
+
+                // Calculate new dimensions for the image with padding
+                $paddedWidth = $logoWidth + (2 * $padding);
+                $paddedHeight = $logoHeight + (2 * $padding);
+
+                // Create a new image with a light background and padding
+                $background = imagecreatetruecolor($paddedWidth, $paddedHeight);
+                $backgroundColor = imagecolorallocate($background,  $qr_logo_bg_color['r'], $qr_logo_bg_color['g'], $qr_logo_bg_color['b']); // Light gray color
                 imagefill($background, 0, 0, $backgroundColor);
 
+                // Calculate the position to place the original logo image with padding
+                $xPosition = $padding;
+                $yPosition = $padding;
+
                 // Merge the original logo with the background
-                imagecopy($background, $originalImage, 0, 0, 0, 0, $logoWidth, $logoHeight);
+                $fileName = $qr->code . '.' . $logo->getClientOriginalExtension();
+                imagecopy($background, $originalImage, $xPosition, $yPosition, 0, 0, $logoWidth, $logoHeight);
 
                 // Save the merged image
                 $logoPath = 'public/qr_codes/logos/' . $fileName;
@@ -323,7 +338,7 @@ class QrCodeController extends Controller
         if ($request->hasFile('qr_data_audio_file')) {
             $dataAudio = $request->file('qr_data_audio_file');
             if ($dataAudio->isValid()) {
-                $audiofilename = $code . '_pdf';
+                $audiofilename = $code . '_audio';
                 $audiofilepath = 'public/qr_codes/audios/';
                 $uploadedAdoFile = customUpload($dataAudio, $audiofilepath, $audiofilename);
                 // $imageFileName = $code . '.' . $dataImage->getClientOriginalExtension();
@@ -337,7 +352,7 @@ class QrCodeController extends Controller
         if ($request->hasFile('qr_data_coupon_logo')) {
             $datacoupon = $request->file('qr_data_coupon_logo');
             if ($datacoupon->isValid()) {
-                $couponfilename = $code . '_pdf';
+                $couponfilename = $code . '_coupon_logo';
                 $couponfilepath = 'public/qr_codes/coupons/';
                 $uploadedcouponLogoFile = customUpload($datacoupon, $couponfilepath, $couponfilename);
             }
@@ -348,7 +363,7 @@ class QrCodeController extends Controller
         if ($request->hasFile('qr_data_social_logo')) {
             $datasocial = $request->file('qr_data_social_logo');
             if ($datasocial->isValid()) {
-                $socialfilename = $code . '_pdf';
+                $socialfilename = $code . '_social_logo';
                 $socialfilepath = 'public/qr_codes/socials/';
                 $uploadedsocialLogoFile = customUpload($datasocial, $socialfilepath, $socialfilename);
             }
@@ -359,7 +374,7 @@ class QrCodeController extends Controller
         if ($request->hasFile('qr_data_social_bg')) {
             $datasocial = $request->file('qr_data_social_bg');
             if ($datasocial->isValid()) {
-                $socialfilename = $code . '_pdf';
+                $socialfilename = $code . '_social_bg';
                 $socialfilepath = 'public/qr_codes/socials/';
                 $uploadedsocialbgFile = customUpload($datasocial, $socialfilepath, $socialfilename);
             }
@@ -371,7 +386,7 @@ class QrCodeController extends Controller
         if ($request->hasFile('qr_data_facebook_page_logo')) {
             $datafacebook_page = $request->file('qr_data_facebook_page_logo');
             if ($datafacebook_page->isValid()) {
-                $facebook_pagefilename = $code . '_pdf';
+                $facebook_pagefilename = $code . '_facebook_page_logo';
                 $facebook_pagefilepath = 'public/qr_codes/facebook_pages/';
                 $uploadedfacebook_pageLogoFile = customUpload($datafacebook_page, $facebook_pagefilepath, $facebook_pagefilename);
             }
@@ -382,7 +397,7 @@ class QrCodeController extends Controller
         if ($request->hasFile('qr_data_facebook_page_bg')) {
             $datafacebook_page = $request->file('qr_data_facebook_page_bg');
             if ($datafacebook_page->isValid()) {
-                $facebook_pagefilename = $code . '_pdf';
+                $facebook_pagefilename = $code . '_facebook_page_bg';
                 $facebook_pagefilepath = 'public/qr_codes/facebook_pages/';
                 $uploadedfacebook_pagebgFile = customUpload($datafacebook_page, $facebook_pagefilepath, $facebook_pagefilename);
             }
@@ -394,7 +409,7 @@ class QrCodeController extends Controller
         if ($request->hasFile('qr_data_business_page_logo')) {
             $databusiness_page = $request->file('qr_data_business_page_logo');
             if ($databusiness_page->isValid()) {
-                $business_pagefilename = $code . '_pdf';
+                $business_pagefilename = $code . '_business_page_logo';
                 $business_pagefilepath = 'public/qr_codes/business_pages/';
                 $uploadedbusiness_pageLogoFile = customUpload($databusiness_page, $business_pagefilepath, $business_pagefilename);
             }
@@ -514,6 +529,10 @@ class QrCodeController extends Controller
             }
 
             if (!empty($qr_logo)) {
+                $qrCode->merge($logoFullPath, $qr_logo_size, true);
+            }
+            if (!empty($qr_saved_logo)) {
+                $logoFullPath = '../public/frontend/images/qr_logo/' . $qr_saved_logo . '.png';
                 $qrCode->merge($logoFullPath, $qr_logo_size, true);
             }
             if (!empty($qr_eye_ball)) {
@@ -1144,12 +1163,6 @@ class QrCodeController extends Controller
         }
 
 
-
-
-
-
-
-
         $qrCode = QrCode::format('png')->size(230);
 
         if (!empty($qr_eye_ball)) {
@@ -1160,6 +1173,10 @@ class QrCodeController extends Controller
         if ($qr_logo) {
             $logoPath = $qr_logo->getRealPath();
             $qrCode->merge($logoPath, $qr_logo_size, true);
+        }
+        if (!empty($qr_saved_logo)) {
+            $logoFullPath = '../public/frontend/images/qr_logo/' . $qr_saved_logo . '.png';
+            $qrCode->merge($logoFullPath, $qr_logo_size, true);
         }
         if (!empty($qr_eye_ball_color)) {
             $qrCode->eyeColor(0, $qr_eye_ball_color['r'], $qr_eye_ball_color['g'], $qr_eye_ball_color['b'], $qr_eye_frame_color['r'], $qr_eye_frame_color['g'], $qr_eye_frame_color['b'],);
