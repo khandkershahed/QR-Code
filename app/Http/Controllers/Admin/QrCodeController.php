@@ -34,7 +34,7 @@ class QrCodeController extends Controller
 
     $view = $isUserRoute ? 'user.pages.qr-code.index' : 'admin.pages.qr-code.index';
 
-    dd($user->subscribed());
+    // dd($user->subscribed());
     return view($view, [
         'qrs' => $qrs,
         'subscription' => $subscription,
