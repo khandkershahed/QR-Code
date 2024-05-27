@@ -1095,6 +1095,7 @@ class QrCodeController extends Controller
         $qr_type                 = $request->qr_type;
         $qr_template             = $request->qr_template;
         $qr_logo                 = $request->file('qr_logo');
+        $qr_saved_logo           = $request->qr_saved_logo;
         $qr_logo_size            = $request->input('qr_logo_size', 50); // Default size if not provided
         $qr_logo_space           = $request->input('qr_logo_space', 30); // Default size if not provided
         $qr_logo_bg_color        = $this->hexToRgb($request->qr_logo_bg_color);
@@ -1175,7 +1176,6 @@ class QrCodeController extends Controller
             $qrCode->merge($logoPath, $qr_logo_size, true);
         }
         if (!empty($qr_saved_logo)) {
-            dd($qr_saved_logo);
             $logoFullPath = '../public/frontend/images/qr_logo/' . $qr_saved_logo . '.png';
             $qrCode->merge($logoFullPath, $qr_logo_size, true);
         }
