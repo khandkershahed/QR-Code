@@ -170,7 +170,7 @@
                             <img class="img-fluid qr_logo" src="https://i.ibb.co/BNBTVN4/logo.png" alt="">
                         </div>
                         <div class="col-lg-6">
-                            <div class="p-5 pt-3 pt-lg-6 colorCodeContainer">
+                            <div class="p-5 row pt-3 pt-lg-6 colorCodeContainer">
                                 <x-metronic.label for="qr_logo_bg_color" class="form-label">{{ __('Logo BG Color') }}</x-metronic.label>
                                 <input type="text" id="colorCodeInput" class="form-control form-control-solid w-75 w-lg-25 colorCodeInput" readonly>
                                 <input type="color" id="colorPicker" style="width: 56px;height: 45px;" class="colorPicker" name="qr_logo_bg_color">
