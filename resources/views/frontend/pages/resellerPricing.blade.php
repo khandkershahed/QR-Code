@@ -1,5 +1,5 @@
 <x-frontend-app-layout :title="'Reseller Pricing'">
-    <section class="page-banner-area overlay py-250 rpy-120 rel z-1 bgs-cover text-center"
+    <section class="page-banner-area overlay py-120 rpy-120 rel z-1 bgs-cover text-center"
         style="
       background-image: url(https://img.freepik.com/free-photo/high-angle-cash-calculator_23-2149103926.jpg?t=st=1711992497~exp=1711996097~hmac=cba674665bb01df3d0bf2d4b9dcb482d199fafdfc976f1390185593de8dbb984&w=1380);
       height: 400px;">

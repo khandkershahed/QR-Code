@@ -1,25 +1,29 @@
-<x-frontend-app-layout :title="'HomePage'">
+<x-frontend-app-layout :title="'GoFlixza || QR Codes for Every Need - Create Yours Today'">
     <section id="about" class="hero-area-nine pt-165 rpt-150 pb-130 rpb-100 rel z-1">
         <div class="container">
             <div class="row gap-70 align-items-center">
                 <div class="col-lg-6">
-                    <div class="hero-content style-nine mb-100 rmb-55" data-aos="fade-up" data-aos-duration="1500"
+                    <div class="hero-content style-nine mb-50 rmb-55" data-aos="fade-up" data-aos-duration="1500"
                         data-aos-offset="50">
                         <h1 data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
-                            QR Codes & NFC Cards: IRL to URL
+                            Beyond the Business Card: Secure Tools for Sharing Links & Contacts in the Digital Age
                         </h1>
                         <p>
                             From Real World Encounters to Digital Connections: Embracing
                             URL with QR Codes and Digital Business Cards
                         </p>
-                        <form class="newsletter-form mt-40" action="{{route('newsletter.store')}}" method="POST">
+                        {{-- <form class="newsletter-form mt-40" action="{{route('newsletter.store')}}" method="POST">
                             @csrf
                             <label for="email-address"><i class="fas fa-envelope"></i></label>
                             <input id="email-address" type="email" name="email" placeholder="Email Address" required/>
                             <button type="submit">
                                 <b>Subscribe Now <i class="fas fa-arrow-right"></i></b>
                             </button>
-                        </form>
+                        </form> --}}
+                        <div>
+                            <a href="{{ route('register') }}" class="theme-btn rounded-0 style-two">Start Trial</a>
+                            <a href="{{ route('pricing') }}" class="theme-btn rounded-0 style-one">View Pricing</a>
+                        </div>
                         <ul class="icon-list pt-15">
                             <li>
                                 <i class="fa-regular fa-circle-check"></i> Free 14-day trial
@@ -351,7 +355,8 @@
                             </p>
                         </div>
                         <div class="bg">
-                            <img src="{{ asset('frontend') }}/assets/images/shapes/iconic-box-three-bg.png" alt="Shape" />
+                            <img src="{{ asset('frontend') }}/assets/images/shapes/iconic-box-three-bg.png"
+                                alt="Shape" />
                         </div>
                     </div>
                 </div>
@@ -371,7 +376,8 @@
                             </p>
                         </div>
                         <div class="bg">
-                            <img src="{{ asset('frontend') }}/assets/images/shapes/iconic-box-three-bg.png" alt="Shape" />
+                            <img src="{{ asset('frontend') }}/assets/images/shapes/iconic-box-three-bg.png"
+                                alt="Shape" />
                         </div>
                     </div>
                 </div>
@@ -389,7 +395,8 @@
                             </p>
                         </div>
                         <div class="bg">
-                            <img src="{{ asset('frontend') }}/assets/images/shapes/iconic-box-three-bg.png" alt="Shape" />
+                            <img src="{{ asset('frontend') }}/assets/images/shapes/iconic-box-three-bg.png"
+                                alt="Shape" />
                         </div>
                     </div>
                 </div>
@@ -407,7 +414,8 @@
                             </p>
                         </div>
                         <div class="bg">
-                            <img src="{{ asset('frontend') }}/assets/images/shapes/iconic-box-three-bg.png" alt="Shape" />
+                            <img src="{{ asset('frontend') }}/assets/images/shapes/iconic-box-three-bg.png"
+                                alt="Shape" />
                         </div>
                     </div>
                 </div>
@@ -489,7 +497,8 @@
                             process and amplify your online presence with ease.
                         </p>
                     </div>
-                    <a href="{{ route('register') }}" class="theme-btn">Get Started Now <i class="fas fa-arrow-right"></i></a>
+                    <a href="{{ route('register') }}" class="theme-btn">Get Started Now <i
+                            class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
             <div class="tooltips-wrap">
@@ -637,7 +646,7 @@
         </div>
     </section>
 
-    <section class="about-area-seven pt-130 rpt-100 pb-75 rpb-50 rel z-1">
+    <section class="about-area-seven pt-130 rpt-100 pb-20 rpb-50 rel z-1">
         <div class="container">
             <div class="row gap-90 align-items-center">
                 <div class="col-lg-6">
@@ -688,168 +697,8 @@
             <span></span><span></span> <span></span><span></span>
         </div>
     </section>
-    <!-- Pricing Area Start -->
-    <section id="pricing" class="pricing-area bg-white pt-100 rpt-150 pb-100 rpb-70 rel">
-        <div class="container">
-            <div class="row justify-content-center justify-content-md-start">
-                <div class="col-xl-4 col-md-8 col-sm-10">
-                    <div class="price-left-tab mt-75 mb-55" data-aos="fade-up" data-aos-duration="1500"
-                        data-aos-offset="50">
-                        <div class="section-title mb-45">
-                            <h2>Explore Our Pricing Package & choose plan</h2>
-                        </div>
-                        <ul class="nav pricing-tab mb-35" role="tablist">
-                            <li>
-                                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#monthly">
-                                    Monthly
-                                </button>
-                            </li>
-                            <li>
-                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#yearly">
-                                    Yearly
-                                </button>
-                            </li>
-                        </ul>
-                        <p style="text-align: justify">
-                            the full potential of Go QR with our flexible pricing plans
-                            designed to meet your unique needs. Whether you're a casual
-                            user, a small business, or a large enterprise, we have a plan
-                            tailored just for you. With transparent pricing and no hidden
-                            fees, you can choose the plan that fits your budget and usage
-                            requirements
-                        </p>
-                        <a href="{{ route('register') }}" class="theme-btn mt-25">Get Started <i
-                                class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="col-xl-8">
-                    <div class="tab-content">
-                        <div class="tab-pane fade show active" id="monthly">
-                            <div class="row justify-content-center">
-                                <div class="col-md-6 col-sm-10" data-aos="fade-up" data-aos-delay="100"
-                                    data-aos-duration="1500" data-aos-offset="50">
-                                    <div class="pricing-item style-three">
-                                        <div class="circle">
-                                            <img src="{{ asset('frontend') }}/assets/images/shapes/price-circle.png" alt="Shape" />
-                                        </div>
-                                        <div class="price">
-                                            <span class="prev">$</span>19<span class="next">/month</span>
-                                        </div>
-                                        <div class="text">Smart Pricing for good services</div>
-                                        <a href="#" class="theme-btn">Choose Package <i
-                                                class="fas fa-arrow-right"></i></a>
-                                        <h4 class="title">Regular Plan</h4>
-                                        <ul class="list">
-                                            <li>Email marketing</li>
-                                            <li>Unlimited chat history</li>
-                                            <li>Unlimited landing pages</li>
-                                            <li class="hide">Automation templates</li>
-                                            <li class="hide">Great Customer Support</li>
-                                            <li class="hide">Unlimited lead funnels</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-sm-10" data-aos="fade-up" data-aos-delay="200"
-                                    data-aos-duration="1500" data-aos-offset="50">
-                                    <div class="pricing-item style-three">
-                                        <div class="circle">
-                                            <img src="{{ asset('frontend') }}/assets/images/shapes/price-circle.png" alt="Shape" />
-                                        </div>
-                                        <div class="price">
-                                            <span class="prev">$</span>39<span class="next">/month</span>
-                                        </div>
-                                        <div class="text">Smart Pricing for good services</div>
-                                        <a href="#" class="theme-btn">Choose Package <i
-                                                class="fas fa-arrow-right"></i></a>
-                                        <h4 class="title">Standard Plan</h4>
-                                        <ul class="list">
-                                            <li>Email marketing</li>
-                                            <li>Unlimited chat history</li>
-                                            <li>Unlimited landing pages</li>
-                                            <li>Automation templates</li>
-                                            <li>Great Customer Support</li>
-                                            <li>Unlimited lead funnels</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="yearly">
-                            <div class="row justify-content-center">
-                                <div class="col-md-6 col-sm-10">
-                                    <div class="pricing-item style-three">
-                                        <div class="circle">
-                                            <img src="{{ asset('frontend') }}/assets/images/shapes/price-circle.png" alt="Shape" />
-                                        </div>
-                                        <div class="price">
-                                            <span class="prev">$</span>79<span class="next">/yearly</span>
-                                        </div>
-                                        <div class="text">Smart Pricing for good services</div>
-                                        <a href="#" class="theme-btn">Choose Package <i
-                                                class="fas fa-arrow-right"></i></a>
-                                        <h4 class="title">Regular Plan</h4>
-                                        <ul class="list">
-                                            <li>Email marketing</li>
-                                            <li>Unlimited chat history</li>
-                                            <li>Unlimited landing pages</li>
-                                            <li class="hide">Automation templates</li>
-                                            <li class="hide">Great Customer Support</li>
-                                            <li class="hide">Unlimited lead funnels</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-sm-10">
-                                    <div class="pricing-item style-three">
-                                        <div class="circle">
-                                            <img src="{{ asset('frontend') }}/assets/images/shapes/price-circle.png" alt="Shape" />
-                                        </div>
-                                        <div class="price">
-                                            <span class="prev">$</span>99<span class="next">/yearly</span>
-                                        </div>
-                                        <div class="text">Smart Pricing for good services</div>
-                                        <a href="#" class="theme-btn">Choose Package <i
-                                                class="fas fa-arrow-right"></i></a>
-                                        <h4 class="title">Standard Plan</h4>
-                                        <ul class="list">
-                                            <li>Email marketing</li>
-                                            <li>Unlimited chat history</li>
-                                            <li>Unlimited landing pages</li>
-                                            <li>Automation templates</li>
-                                            <li>Great Customer Support</li>
-                                            <li>Unlimited lead funnels</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Pricing Area End -->
-
-
-
-    <!-- CTA Area Start -->
-    <section class="cta-nine-area py-130 rpy-100"
-        style="background-image: url('{{ asset('frontend') }}/assets/images/backgrounds/bg-lines.png')">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-6 col-lg-8 col-md-10 text-center" data-aos="fade-up" data-aos-duration="1500"
-                    data-aos-offset="50">
-                    <div class="section-title mb-40">
-                        <span class="subtitle-three mb-10">Get Started Us</span>
-                        <h2>Get Ready to Grow your social networking?</h2>
-                    </div>
-                    <a href="{{ route('contact') }}" class="theme-btn style-two">Contact Us <i
-                            class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
     <!-- CTA Area End -->
-    <section id="faqs" class="faqs-area-seven pt-125 rpt-95 pb-115 rpb-85 rel z-1">
+    <section id="faqs" class="faqs-area-seven pt-50 rpt-95 pb-115 rpb-85 rel z-1">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-7 col-lg-9 aos-init aos-animate" data-aos="fade-up" data-aos-duration="1500"
