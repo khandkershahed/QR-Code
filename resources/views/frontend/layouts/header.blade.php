@@ -246,8 +246,8 @@
                                         <li><a href="{{ route('reseller.pricing') }}">Reseller Pricing</a></li>
                                     </ul>
                                 </li> --}}
-                                <li><a href="{{ route('pricing') }}">Pricing</a></li>
-                                <li><a href="{{ route('services') }}">Services</a></li>
+                                <li><a href="{{ route('pricing') }}">PRICING</a></li>
+                                <li><a href="{{ route('services') }}">SERVICES</a></li>
                             </ul>
                         </div>
                     </nav>
@@ -273,11 +273,11 @@
                     @else
                     {{-- <div class="navbar-collapse collapse clearfix"> --}}
                         
-                        <a href="{{ route('register') }}" class="light-btn"><i class="fas fa-user me-1"></i> Sign Up</a>
+                        <a href="{{ route('login') }}" class="light-btn"><i class="fas fa-user me-1"></i> LOGIN</a>
                     {{-- </div> --}}
                         {{-- <a href="{{ route('register') }}" class="light-btn">Sign Up</a> --}}
                     @endauth
-                    <a href="{{ route('contact') }}" class="theme-btn style-two">Get Started
+                    <a href="{{ route('pricing') }}" class="theme-btn style-two rounded-0">Get Started
                         <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>

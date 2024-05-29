@@ -91,9 +91,9 @@
                                 data-aos-duration="1500" data-aos-offset="50">
                                 <h6 class="footer-title text-white">Condition</h6>
                                 <ul>
-                                    <li><a href="{{ route('terms') }}">Terms</a></li>
-                                    <li><a href="{{ route('policy') }}">Policy</a></li>
-                                    <li><a href="{{ route('faq') }}">Faq</a></li>
+                                    <li><a href="{{ route('terms') }}">Terms & Conditions</a></li>
+                                    <li><a href="{{ route('policy') }}">Privacy Policy</a></li>
+                                    <li><a href="{{ route('faq') }}">FAQ</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -105,7 +105,7 @@
                     <div class="col-xl-12 col-lg-6">
                         <div class="copyright-text pt-10 text-lg-start text-center aos-init" data-aos="fade-left"
                             data-aos-duration="1000" data-aos-offset="50">
-                            <p>Copyright @2024, <a href="{{ route('homePage') }}">Go QR </a> All Rights Reserved</p>
+                            <p>Copyright @2024, <a href="{{ route('homePage') }}">GoFlixza</a> All Rights Reserved</p>
                         </div>
                     </div>
                 </div>
