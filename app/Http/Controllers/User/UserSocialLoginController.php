@@ -146,4 +146,9 @@ class UserSocialLoginController extends Controller
             return redirect()->route('login')->with('error', 'Google cannot recognize you as authorized user. Try again or Login/SignUp manually');
         }
     }
+
+    public function facebookUserDeletion()
+    {
+        return view('frontend.pages.facebookDelete');
+    }
 }

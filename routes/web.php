@@ -60,6 +60,7 @@ Route::controller(UserSocialLoginController::class)->group(function(){
     Route::get('auth/google/callback', 'handleGoogleCallback')->name('callback.google');
     Route::get('/auth/facebook', 'redirectFacebook')->name('auth.facebook');
     Route::get('auth/facebook/callback', 'facebookCallback')->name('callback.facebook');
+    Route::get('facebook/user/deletion', 'facebookUserDeletion')->name('delete.facebook_user');
     Route::get('auth/github', 'redirectToGithub')->name('auth.github');
     Route::get('auth/github/callback', 'handleGithubCallback')->name('callback.github');
 });
