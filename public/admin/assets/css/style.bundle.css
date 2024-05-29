@@ -43469,14 +43469,29 @@ a:hover {
 .btn.btn-outline.btn-outline-dashed.btn-outline-default:focus:not(.btn-active),
 .btn.btn-outline.btn-outline-dashed.btn-outline-default:hover:not(.btn-active),
 .show>.btn.btn-outline.btn-outline-dashed.btn-outline-default {
-    color: #009ef7;
+    color: #fff;
     border-color: #009ef7;
-    background-color: #f1faff !important;
-    border-width: 2px;
-    transform: skewY(10deg);
+    background-color: #009bdd !important;
+    border-width: 1px;
+    transform: scale(1.05); /* Apply a small zoom effect */
     transition: all 0.5s cubic-bezier(0.42, 0, 0.58, 1); /* This cubic-bezier function is similar to ease-in-out */
+    border-radius: 0px;
 }
-
+.btn-check:active+.btn.btn-outline.btn-outline-dashed.btn-outline-default .check-maintext,
+.btn-check:checked+.btn.btn-outline.btn-outline-dashed.btn-outline-default .check-maintext,
+.btn.btn-outline.btn-outline-dashed.btn-outline-default.active .check-maintext,
+.btn.btn-outline.btn-outline-dashed.btn-outline-default.show .check-maintext,
+.btn.btn-outline.btn-outline-dashed.btn-outline-default:active:not(.btn-active) .check-maintext,
+.btn.btn-outline.btn-outline-dashed.btn-outline-default:focus:not(.btn-active) .check-maintext,
+.btn.btn-outline.btn-outline-dashed.btn-outline-default:hover:not(.btn-active) .check-maintext,
+.show>.btn.btn-outline.btn-outline-dashed.btn-outline-default .check-maintext {
+    color: #fff !important;
+    transition: all 0.5s cubic-bezier(0.42, 0, 0.58, 1);
+}
+.btn.btn-outline.btn-outline-dashed.btn-outline-default:not(.active):not(:focus):not(:hover) .check-maintext {
+    color: black;
+    transition: all 0.5s cubic-bezier(0.42, 0, 0.58, 1);
+}
 .btn-check:active+.btn.btn-outline.btn-outline-dashed.btn-outline-default .svg-icon,
 .btn-check:active+.btn.btn-outline.btn-outline-dashed.btn-outline-default i,
 .btn-check:checked+.btn.btn-outline.btn-outline-dashed.btn-outline-default .svg-icon,
@@ -43493,7 +43508,8 @@ a:hover {
 .btn.btn-outline.btn-outline-dashed.btn-outline-default:hover:not(.btn-active) i,
 .show>.btn.btn-outline.btn-outline-dashed.btn-outline-default .svg-icon,
 .show>.btn.btn-outline.btn-outline-dashed.btn-outline-default i {
-    color: #009ef7
+    color: #009ef7;
+    transition: all 0.5s cubic-bezier(0.42, 0, 0.58, 1);
 }
 
 .btn-check:active+.btn.btn-outline.btn-outline-dashed.btn-outline-default.dropdown-toggle:after,
