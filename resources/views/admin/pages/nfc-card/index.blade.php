@@ -20,7 +20,7 @@
         }
     </style>
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12 mt-15">
             <div class="card card-p-0 card-flush p-3 pt-0">
                 <div class="card-header align-items-center py-5 gap-2 gap-md-5">
                     <div class="card-title">

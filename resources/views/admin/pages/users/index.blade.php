@@ -1,5 +1,5 @@
 <x-admin-app-layout :title="'Users List'">
-    <div class="card">
+    <div class="card my-15">
         <div class="card-header border-0 pt-6">
             <div class="card-title">
                 <div class="d-flex align-items-center position-relative my-1">

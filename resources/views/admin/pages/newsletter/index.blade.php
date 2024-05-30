@@ -1,5 +1,5 @@
 <x-admin-app-layout :title="'Subscribed Emails List'">
-    <div class="card card-flush">
+    <div class="card card-flush mt-15">
         <div class="card-header mt-6">
             <div class="card-title">
                 <div class="d-flex align-items-center position-relative my-1 me-5">
