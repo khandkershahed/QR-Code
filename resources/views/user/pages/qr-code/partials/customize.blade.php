@@ -170,163 +170,180 @@
                             <img class="img-fluid qr_logo" src="https://i.ibb.co/BNBTVN4/logo.png" alt="">
                         </div>
                         <div class="col-lg-6">
+                            <div class="row colorCodeContainer ps-5">
+                                <x-metronic.label for="qr_logo_bg_color" class="form-label">{{ __('Logo BG Color') }}</x-metronic.label>
+                                <input type="text" id="colorCodeInput" class="form-control form-control-solid w-75 w-lg-25 colorCodeInput" readonly>
+                                <input type="color" id="colorPicker" style="width: 56px;height: 45px;" class="colorPicker" name="qr_logo_bg_color">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
                             <div class="ps-4">
                                 <x-metronic.label for="qr_logo_size" class="form-label">{{ __('Logo Size (in %)') }}</x-metronic.label>
                                 {{-- <x-metronic.input id="qr_logo_size" type="number" name="qr_logo_size" :value="old('qr_logo_size')" placeholder="Logo Size(Eg: 5, 10, 15....)" /> --}}
                                 <div class="mb-10">
-                                    <input type="range" class="form-range w-100" id="customRange1" name="qr_logo_size" min="0.2" max="0.6" step="0.01" value="0.2" oninput="updateRangeValue(this.value)">
-                                    <span id="rangeValue">20%</span>
+                                    <input type="range" class="form-range w-100" id="customRange1" name="qr_logo_size" min="0.1" max="0.4" step="0.01" value="0.1" oninput="updateRangeValue(this.value)">
+                                    <span id="rangeValue">10%</span>
                                 </div>
-                                {{-- <option value="0.3">None</option> --}}
-                                {{-- <select class="form-select w-100" name="qr_logo_size" aria-label="Default select example">
-                                    <option value="0.2" >20%</option>
-                                    <option value="0.3" >30%</option>
-                                    <option value="0.4" >40%</option>
-                                    <option value="0.5">50%</option>
-                                    <option value="0.6">60%</option>
-                                </select> --}}
-                                {{-- <option value="inverse_diagonal">Inverse_Diagonal</option>
-                                <option value="radial">Radial</option> --}}
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="ps-4">
+                                <x-metronic.label for="qr_logo_size" class="form-label">{{ __('Logo Space') }}</x-metronic.label>
+                                {{-- <x-metronic.input id="qr_logo_size" type="number" name="qr_logo_size" :value="old('qr_logo_size')" placeholder="Logo Size(Eg: 5, 10, 15....)" /> --}}
+                                <div class="mb-10">
+                                    <input type="range" class="form-range w-100" id="customRange1" name="qr_logo_space" min="10" max="60" step="5" value="30" oninput="updateRangeValue(this.value)">
+                                    <span id="rangeValue">30%</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                {{-- <p class="text-start pt-5 mb-0">Or Select From Our
-                    Gallary</p>
+                <p class="text-start pt-5 mb-0">Or Select From Our Gallary</p>
+                <small class="text-start pt-5 mb-0"><strong>Note:</strong> If you choose a logo from the gallery, you won't be able to use a background color because the background is already included with the logo.</small>
                 <div class="pt-2 row">
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px; border: 1px solid #DBDFE3; border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/app-store.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="	https://static.beaconstac.com/assets/img/qr-code-logos/calender.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/email.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/facebook.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/gmail.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/google-bussiness.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/instagram.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/linkedin.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/mp3.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/pdf.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/phone-call.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/pintrest.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/play-store.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/ratings.png">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/twitter.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/youtube.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-1.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-2.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-3.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-4.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-5.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-6.svg">
-                        </a>
-                    </div>
-                </div> --}}
+                    <x-qr-code.qr-logo :qrLogos="[
+                        [
+                            'id' => 1,
+                            'value' => 'address-book',
+                            'image' => 'frontend/images/qr_logo/address-book.png',
+                        ],
+                        [
+                            'id' => 2,
+                            'value' => 'badoo',
+                            'image' => 'frontend/images/qr_logo/badoo.png',
+                        ],
+                        [
+                            'id' => 3,
+                            'value' => 'dribbble',
+                            'image' => 'frontend/images/qr_logo/dribbble.png',
+                        ],
+                        [
+                            'id' => 4,
+                            'value' => 'dropbox',
+                            'image' => 'frontend/images/qr_logo/dropbox.png',
+                        ],
+                        [
+                            'id' => 5,
+                            'value' => 'facebook',
+                            'image' => 'frontend/images/qr_logo/facebook.png',
+                        ],
+                        [
+                            'id' => 6,
+                            'value' => 'google-calendar',
+                            'image' => 'frontend/images/qr_logo/google-calendar.png',
+                        ],
+                        [
+                            'id' => 7,
+                            'value' => 'google-forms',
+                            'image' => 'frontend/images/qr_logo/google-forms.png',
+                        ],
+                        [
+                            'id' => 8,
+                            'value' => 'google-maps',
+                            'image' => 'frontend/images/qr_logo/google-maps.png',
+                        ],
+                        [
+                            'id' => 9,
+                            'value' => 'google-meet',
+                            'image' => 'frontend/images/qr_logo/google-meet.png',
+                        ],
+                        [
+                            'id' => 10,
+                            'value' => 'google-sheets',
+                            'image' => 'frontend/images/qr_logo/google-sheets.png',
+                        ],
+                        [
+                            'id' => 11,
+                            'value' => 'google-slides',
+                            'image' => 'frontend/images/qr_logo/google-slides.png',
+                        ],
+                        [
+                            'id' => 12,
+                            'value' => 'instagram',
+                            'image' => 'frontend/images/qr_logo/instagram.png',
+                        ],
+                        [
+                            'id' => 13,
+                            'value' => 'linkedin',
+                            'image' => 'frontend/images/qr_logo/linkedin.png',
+                        ],
+                        [
+                            'id' => 14,
+                            'value' => 'paypal',
+                            'image' => 'frontend/images/qr_logo/paypal.png',
+                        ],
+                        [
+                            'id' => 15,
+                            'value' => 'pinterest',
+                            'image' => 'frontend/images/qr_logo/pinterest.png',
+                        ],
+                        [
+                            'id' => 16,
+                            'value' => 'skype',
+                            'image' => 'frontend/images/qr_logo/skype.png',
+                        ],
+                        [
+                            'id' => 17,
+                            'value' => 'snapchat',
+                            'image' => 'frontend/images/qr_logo/snapchat.png',
+                        ],
+                        [
+                            'id' => 18,
+                            'value' => 'soundcloud',
+                            'image' => 'frontend/images/qr_logo/soundcloud.png',
+                        ],
+                        [
+                            'id' => 19,
+                            'value' => 'spotify',
+                            'image' => 'frontend/images/qr_logo/spotify.png',
+                        ],
+                        [
+                            'id' => 20,
+                            'value' => 'swarm',
+                            'image' => 'frontend/images/qr_logo/swarm.png',
+                        ],
+                        [
+                            'id' => 21,
+                            'value' => 'telegram',
+                            'image' => 'frontend/images/qr_logo/telegram.png',
+                        ],
+                        [
+                            'id' => 22,
+                            'value' => 'twitter',
+                            'image' => 'frontend/images/qr_logo/twitter.png',
+                        ],
+                        [
+                            'id' => 23,
+                            'value' => 'viber',
+                            'image' => 'frontend/images/qr_logo/viber.png',
+                        ],
+                        [
+                            'id' => 24,
+                            'value' => 'vimeo',
+                            'image' => 'frontend/images/qr_logo/vimeo.png',
+                        ],
+                        [
+                            'id' => 25,
+                            'value' => 'vine',
+                            'image' => 'frontend/images/qr_logo/vine.png',
+                        ],
+                        [
+                            'id' => 26,
+                            'value' => 'whatsapp',
+                            'image' => 'frontend/images/qr_logo/whatsapp.png',
+                        ],
+                        [
+                            'id' => 27,
+                            'value' => 'youtube',
+                            'image' => 'frontend/images/qr_logo/youtube.png',
+                        ],
+                        [
+                            'id' => 28,
+                            'value' => 'zoom-meeting',
+                            'image' => 'frontend/images/qr_logo/zoom-meeting.png',
+                        ],
+                    ]" :selectedQrLogo="null" />
+                </div>
             </div>
         </div>
 

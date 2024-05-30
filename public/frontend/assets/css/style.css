@@ -12,6 +12,7 @@
 /*******************************************************/
 /******************* ## Default Style ******************/
 /*******************************************************/
+@import url('https://fonts.googleapis.com/css2?family=Kurale&display=swap');
 body::-webkit-scrollbar {
     width: 0.5em;
 }
@@ -40,8 +41,8 @@ body {
     font-size: 16px;
     font-family: var(--base-font);
     /* Root */
-    --base-font: "Inter", sans-serif;
-    --heading-font: "Work Sans", sans-serif;
+    --base-font: "Raleway", sans-serif;
+    --heading-font: "Kurale", serif;
     --primary-color: #008fd3;
     --secondary-color: #fec458;
     --heading-color: #001726;
@@ -1156,24 +1157,26 @@ h1,
     line-height: 1.1;
     font-size: 75px;
 }
-
+.page-title{
+    font-size: 3rem;
+}
 h2,
 .h2,
 .counter-item-two .count-text,
 .pricing-item .price {
     line-height: 1.15;
-    font-size: 48px;
+    font-size: 2rem;
 }
 
 h3,
 .h3 {
-    font-size: 30px;
+    font-size: 1.8rem;
 }
 
 h4,
 .h4 {
     line-height: 1.4;
-    font-size: 24px;
+    font-size: 1.5rem;
 }
 
 h5,
@@ -1181,14 +1184,14 @@ h5,
 .numbered-box .number,
 .coming-soon-wrap li {
     line-height: 1.45;
-    font-size: 22px;
+    font-size: 1.2rem;
 }
 
 h6,
 .h6,
 .blockquote-two .blockquote-footer {
     line-height: 1.4;
-    font-size: 16px;
+    font-size: 1rem;
 }
 
 /*******************************************************/
@@ -4441,11 +4444,12 @@ a.theme-btn.style-two {
         var(--navyblue-color) 50%,
         var(--primary-color) 50%
     );
-    background-image: linear-gradient(
+    /* background-image: linear-gradient(
         to left,
         var(--navyblue-color) 50%,
         var(--primary-color) 50%
-    );
+    ); */
+    background-image: linear-gradient(to left, #6bc03b 50%, #d20b29 50%);
 }
 
 .theme-btn.style-three,
@@ -12001,7 +12005,11 @@ a.theme-btn.style-four:hover {
 /*******************************************************/
 .hero-content h1 {
     margin-bottom: 32px;
-    letter-spacing: -2.2px;
+    letter-spacing: 0.3px;
+    font-family: "Kurale", serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 3rem;
 }
 
 @media only screen and (max-width: 991px) {
@@ -12644,15 +12652,10 @@ a.theme-btn.style-four:hover {
 
 @media only screen and (min-width: 1400px) {
     .hero-content.style-nine h1 {
-        font-size: 4.375rem;
+        font-size: 2.5rem;
     }
 }
 
-@media only screen and (min-width: 1200px) and (max-width: 1399px) {
-    .hero-content.style-nine h1 {
-        font-size: 60px;
-    }
-}
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .hero-content.style-nine h1 {
