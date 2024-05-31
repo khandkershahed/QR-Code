@@ -523,9 +523,9 @@ class QrCodeController extends Controller
         // Loop through each format
         foreach ($formats as $format => $field) {
             if ($format === 'jpg' || $format === 'pdf') {
-                $qrCode = QrCode::format('png')->size(300);
+                $qrCode = QrCode::format('png')->size(1000);
             } else {
-                $qrCode = QrCode::format($format)->size(300);
+                $qrCode = QrCode::format($format)->size(1000);
             }
 
             if (!empty($qr_logo)) {
