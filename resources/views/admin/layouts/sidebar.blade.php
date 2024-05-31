@@ -76,21 +76,21 @@
                     <div
                         class="menu-sub menu-sub-accordion {{ Route::is('admin.qr-code.index', 'admin.qr-code.create') ? 'menu-active-bg' : '' }}">
                         <div class="menu-item">
-                            <a class="menu-link {{ Route::is('admin.qr-code.index') ? 'active' : '' }}"
-                                href="{{ route('admin.qr-code.index') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">QR List</span>
-                            </a>
-                        </div>
-                        <div class="menu-item">
                             <a class="menu-link {{ Route::is('admin.qr-code.create') ? 'active' : '' }}"
                                 href="{{ route('admin.qr-code.create') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
                                 <span class="menu-title">QR Create</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link {{ Route::is('admin.qr-code.index') ? 'active' : '' }}"
+                                href="{{ route('admin.qr-code.index') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">QR List</span>
                             </a>
                         </div>
                     </div>
@@ -116,21 +116,21 @@
                     <div
                         class="menu-sub menu-sub-accordion {{ Route::is('admin.nfc-card.index', 'admin.nfc-card.create') ? 'menu-active-bg' : '' }}">
                         <div class="menu-item">
-                            <a class="menu-link {{ Route::is('admin.nfc-card.index') ? 'active' : '' }}"
-                                href="{{ route('admin.nfc-card.index') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">NFC Card List</span>
-                            </a>
-                        </div>
-                        <div class="menu-item">
                             <a class="menu-link {{ Route::is('admin.nfc-card.create') ? 'active' : '' }}"
                                 href="{{ route('admin.nfc-card.create') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
                                 <span class="menu-title">NFC Card Create</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link {{ Route::is('admin.nfc-card.index') ? 'active' : '' }}"
+                                href="{{ route('admin.nfc-card.index') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">NFC Card List</span>
                             </a>
                         </div>
                     </div>

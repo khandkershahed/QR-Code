@@ -1,5 +1,5 @@
 <x-admin-app-layout :title="'Permissions List'">
-    <div class="card card-flush">
+    <div class="card card-flush my-15">
         <div class="card-header mt-6">
             <div class="card-title">
                 <div class="d-flex align-items-center position-relative my-1 me-5">

@@ -1,6 +1,6 @@
 <x-admin-app-layout :title="'Contact Message List'">
     <!--begin::Post-->
-    <div class="post d-flex flex-column-fluid" id="kt_post">
+    <div class="post d-flex flex-column-fluid mt-15" id="kt_post">
         <!--begin::Container-->
         <div class="container-fluid">
             <!--begin::Category-->

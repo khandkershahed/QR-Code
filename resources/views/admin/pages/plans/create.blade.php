@@ -1,6 +1,6 @@
 <x-admin-app-layout :title="'Plan Create'">
 
-    <div class="card card-flash">
+    <div class="card card-flash mt-15">
         <div class="card-body scroll-y mx-5">
             <form class="form" action="{{ route('admin.plans.store') }}" method="POST">
                 @csrf

@@ -1,6 +1,6 @@
 <x-admin-app-layout :title="'Site Setting'">
 
-    <div class="card card-flash">
+    <div class="card card-flash my-15">
 
         <!--begin::Modal body-->
         <div class="card-body scroll-y mx-5 mx-xl-15 my-7">

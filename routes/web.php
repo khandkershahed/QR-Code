@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\QrCodeController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Reseller\ResellerSocialLoginController;
 use App\Http\Controllers\ResellerProfileController;
+use App\Http\Controllers\Test\QrTestController;
 use App\Http\Controllers\User\UserSocialLoginController;
 use App\Http\Controllers\VendorProfileController;
 
@@ -52,9 +53,10 @@ Route::get('/nfc/{name}/{code}', [HomeController::class, 'nfcPage'])->name('nfc.
 Route::resources(
     [
         'individual-message'  => NfcIndividualMessageController::class,
+        'qr-test'             => QrTestController::class,
     ],
 );
-
+Route::post('/generate/qr', [QrTestController::class, 'generateQRCode'])->name('generate.qr');
 Route::controller(UserSocialLoginController::class)->group(function(){
     Route::get('auth/google', 'redirectToGoogle')->name('auth.google');
     Route::get('auth/google/callback', 'handleGoogleCallback')->name('callback.google');

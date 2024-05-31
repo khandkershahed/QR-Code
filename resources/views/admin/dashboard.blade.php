@@ -3,82 +3,68 @@
         <h1 class="text-center mb-0 text-success">{{ Auth::guard('admin')->user()->name }}</h1>
         <h1 class="text-center">Welcome To Your Dashboard</h1>
     </div>
-    <div id="kt_app_content_container" class="mt-10" >
+    <div id="kt_app_content_container" class="mt-10">
         <div class="row g-5 gx-xl-10 mb-5 mb-xl-10">
             <div class="col-xl-3">
-                <div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-end h-xl-100"
-                    style="background-color: #F1416C;background-image:url('/metronic8/demo1/assets/media/svg/shapes/wave-bg-red.svg')">
-                    <div class="card-header pt-5 mb-3">
-                        <div class="d-flex flex-center rounded-circle h-80px w-80px"
-                            style="border: 1px dashed rgba(255, 255, 255, 0.4);background-color: #F1416C">
-                            <i class="ki-duotone ki-call text-white fs-2qx lh-0"><span class="path1"></span><span
-                                    class="path2"></span><span class="path3"></span><span class="path4"></span><span
-                                    class="path5"></span><span class="path6"></span><span class="path7"></span><span
-                                    class="path8"></span></i>
+                <a href="{{ route('admin.qr-code.index') }}">
+                    <div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-end h-xl-100"
+                        style="background-color: #F1416C;background-image:url('https://preview.keenthemes.com/metronic8/demo1/assets/media/svg/shapes/wave-bg-red.svg')">
+                        <div class="card-header pt-5 mb-3">
+                            <div class="d-flex flex-center rounded-circle h-80px w-80px"
+                                style="border: 1px dashed rgba(255, 255, 255, 0.4);background-color: #F1416C">
+                                <i class="fa fa-bell text-white fs-2qx lh-0"></i>
+                            </div>
                         </div>
-                    </div>
+                        <div class="card-body">
+                            <h1 class="text-white mb-0" style="font-size: 3rem">QR Codes</h1>
+                        </div>
+                        <div class="card-body d-flex align-items-end mb-3">
+                            <div class="d-flex align-items-center">
+                                <span class="fs-4hx text-white fw-bold me-6">{{ $qrs->count() }}</span>
 
-                    <div class="card-body d-flex align-items-end mb-3">
-                        <div class="d-flex align-items-center">
-                            <span class="fs-4hx text-white fw-bold me-6">{{ $qrs->count() }}</span>
-
-                            <div class="fw-bold fs-6 text-white">
-                                <span class="d-block">QR Code</span>
-                                <span class="">Generated</span>
+                                <div class="fw-bold fs-6 text-white">
+                                    <span class="d-block">QR Code</span>
+                                    <span class="">Generated</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    {{-- <div class="card-footer"
-                        style="border-top: 1px solid rgba(255, 255, 255, 0.3);background: rgba(0, 0, 0, 0.15);">
-                        <div class="fw-bold text-white py-2">
-                            <span class="fs-1 d-block">935</span>
-                            <span class="opacity-50">Problems Solved</span>
-                        </div>
-                    </div> --}}
-                </div>
+                </a>
             </div>
 
             <div class="col-xl-3">
-                <div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-end h-xl-100"
-                    style="background-color: #7239EA;background-image:url('/metronic8/demo1/assets/media/svg/shapes/wave-bg-purple.svg')">
-                    <div class="card-header pt-5 mb-3">
-                        <div class="d-flex flex-center rounded-circle h-80px w-80px"
-                            style="border: 1px dashed rgba(255, 255, 255, 0.4);background-color: #7239EA">
-                            <i class="ki-duotone ki-call text-white fs-2qx lh-0"><span class="path1"></span><span
-                                    class="path2"></span><span class="path3"></span><span class="path4"></span><span
-                                    class="path5"></span><span class="path6"></span><span class="path7"></span><span
-                                    class="path8"></span></i>
+                <a href="{{ route('admin.nfc-card.index') }}">
+                    <div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-end h-xl-100"
+                        style="background-color: #7239EA;background-image:url('https://preview.keenthemes.com/metronic8/demo1/assets/media/svg/shapes/wave-bg-purple.svg')">
+                        <div class="card-header pt-5 mb-3">
+                            <div class="d-flex flex-center rounded-circle h-80px w-80px"
+                                style="border: 1px dashed rgba(255, 255, 255, 0.4);background-color: #7239EA">
+                                <i class="fa fa-bell text-white fs-2qx lh-0"></i>
+                            </div>
                         </div>
-                    </div>
+                        <div class="card-body">
+                            <h1 class="text-white mb-0" style="font-size: 3rem">NFC Cards</h1>
+                        </div>
+                        <div class="card-body d-flex align-items-end mb-3">
 
-                    <div class="card-body d-flex align-items-end mb-3">
-                        <div class="d-flex align-items-center">
-                            <span class="fs-4hx text-white fw-bold me-6">{{ $nfc_cards->count() }}</span>
-
-                            <div class="fw-bold fs-6 text-white">
-                                <span class="d-block">NFC Card</span>
-                                <span class="">Created</span>
+                            <div class="d-flex align-items-center">
+                                <span class="fs-4hx text-white fw-bold me-6">{{ $nfc_cards->count() }}</span>
+                                <div class="fw-bold fs-6 text-white">
+                                    <span class="d-block">NFC Card</span>
+                                    <span class="">Created</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    {{-- <div class="card-footer"
-                        style="border-top: 1px solid rgba(255, 255, 255, 0.3);background: rgba(0, 0, 0, 0.15);">
-                        <div class="fw-bold text-white py-2">
-                            <span class="fs-1 d-block">386</span>
-                            <span class="opacity-50">Generated Leads</span>
-                        </div>
-                    </div> --}}
-                </div>
+                </a>
             </div>
 
             <div class="col-xl-6">
                 <div class="card card-flush overflow-hidden h-lg-100">
                     <div class="card-header pt-5">
                         <h3 class="card-title align-items-start flex-column">
-                            <span class="card-label fw-bold text-gray-900">Performance</span>
-                            <span class="text-gray-500 mt-1 fw-semibold fs-6">1,046 Inbound Calls today</span>
+                            <span class="card-label fw-bold text-gray-900">Total Users</span>
+                            <span class="text-gray-500 mt-1 fw-semibold fs-6">(This Month & And This Year)</span>
                         </h3>
 
                         <div class="card-toolbar">
@@ -109,9 +95,9 @@
                                         <div class="apexcharts-legend" xmlns="http://www.w3.org/1999/xhtml"
                                             style="max-height: 150px;"></div>
                                     </foreignObject>
-                                    <rect id="SvgjsRect2074" width="0" height="0" x="0" y="0"
-                                        rx="0" ry="0" opacity="1" stroke-width="0"
-                                        stroke="none" stroke-dasharray="0" fill="#fefefe"></rect>
+                                    <rect id="SvgjsRect2074" width="0" height="0" x="0" y="0" rx="0"
+                                        ry="0" opacity="1" stroke-width="0" stroke="none"
+                                        stroke-dasharray="0" fill="#fefefe"></rect>
                                     <g id="SvgjsG2137" class="apexcharts-yaxis" rel="0"
                                         transform="translate(17.835205078125, 0)">
                                         <g id="SvgjsG2138" class="apexcharts-yaxis-texts-g"><text id="SvgjsText2140"
@@ -539,16 +525,9 @@
                     <div class="card-header pt-5">
                         <h3 class="card-title align-items-start flex-column">
                             <span class="card-label fw-bold text-gray-900">Performance</span>
-                            <span class="text-gray-500 mt-1 fw-semibold fs-6">1,046 Inbound Calls today</span>
+                            <span class="text-gray-500 mt-1 fw-semibold fs-6">Total QR, NFC, User Query Are Showing
+                                !</span>
                         </h3>
-
-                        <div class="card-toolbar">
-                            <span class="badge badge-light-danger fs-base mt-n3">
-                                <i class="ki-duotone ki-arrow-down fs-5 text-danger ms-n1"><span
-                                        class="path1"></span><span class="path2"></span></i>
-                                7.4%
-                            </span>
-                        </div>
                     </div>
 
                     <div class="card-body d-flex align-items-end pt-6">
@@ -559,18 +538,18 @@
                                         <div class="bullet bg-success me-3"
                                             style="border-radius: 3px;width: 12px;height: 12px"></div>
 
-                                        <div class="fs-5 fw-bold text-gray-600 me-5">CRM Team Performance:</div>
+                                        <div class="fs-5 fw-bold text-gray-600 me-5">Total QR Code Generate:</div>
 
-                                        <div class="ms-auto fw-bolder text-gray-700 text-end">72.56%</div>
+                                        <div class="ms-auto fw-bolder text-gray-700 text-end">1005</div>
                                     </div>
 
                                     <div class="d-flex fs-6 fw-semibold align-items-center my-4">
                                         <div class="bullet bg-primary me-3"
                                             style="border-radius: 3px;width: 12px;height: 12px"></div>
 
-                                        <div class="fs-5 fw-bold text-gray-600 me-5">Recurring Calls:</div>
+                                        <div class="fs-5 fw-bold text-gray-600 me-5">Total NFC Generate:</div>
 
-                                        <div class="ms-auto fw-bolder text-gray-700 text-end">29.34%</div>
+                                        <div class="ms-auto fw-bolder text-gray-700 text-end">102</div>
                                     </div>
 
                                     <div class="d-flex fs-6 fw-semibold align-items-center">
@@ -578,18 +557,16 @@
                                             style="border-radius: 3px;background-color: #E4E6EF;width: 12px;height: 12px">
                                         </div>
 
-                                        <div class="fs-5 fw-bold text-gray-600 me-5">Tickets Raised:</div>
+                                        <div class="fs-5 fw-bold text-gray-600 me-5">New User Created:</div>
 
-                                        <div class="ms-auto fw-bolder text-gray-700 text-end">17.83%</div>
+                                        <div class="ms-auto fw-bolder text-gray-700 text-end">37</div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-5 d-flex justify-content-end px-0">
-                                <div id="kt_card_widget_19_chart" class="min-h-auto h-150px w-150px"
-                                    data-kt-size="150" data-kt-line="25">
-                                    <span></span><canvas height="150" width="150"></canvas>
-                                </div>
+                            <div class="col-sm-5">
+                                <img src="https://preview.keenthemes.com/metronic8/demo1/assets/media/illustrations/sketchy-1/9.png"
+                                    class="h-200px h-lg-250px my-n6" alt="">
                             </div>
                         </div>
                     </div>
@@ -597,16 +574,16 @@
             </div>
 
             <div class="col-xl-6">
-                <div class="card h-lg-100" style="background: linear-gradient(112.14deg, #FF8A00 0%, #E96922 100%)">
+                <div class="card h-lg-100" style="background: linear-gradient(112.14deg, #00D2FF 0%, #3A7BD5 100%);">
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col-sm-7 pe-0 mb-5 mb-sm-0">
                                 <div class="d-flex justify-content-between h-100 flex-column pt-xl-5 pb-xl-2 ps-xl-7">
                                     <div class="mb-7">
                                         <div class="mb-6">
-                                            <h3 class="fs-2x fw-semibold text-white">Upgrade Your Plan</h3>
-                                            <span class="fw-semibold text-white opacity-75">Flat cartoony and
-                                                illustrations with vivid color</span>
+                                            <h3 class="fs-2x fw-semibold text-white">Create Your Plan</h3>
+                                            <span class="fw-semibold text-white opacity-75">Check Or Create Your
+                                                User Subscription plan For QR & NFC</span>
                                         </div>
 
                                         <div class="d-flex align-items-center flex-wrap d-grid gap-2 ">
@@ -614,15 +591,14 @@
                                                 <div class="symbol symbol-30px symbol-circle me-3">
                                                     <span class="symbol-label"
                                                         style="background: rgba(255, 255, 255, 0.15);">
-                                                        <i class="ki-duotone ki-abstract-41 fs-4 text-white"><span
-                                                                class="path1"></span><span class="path2"></span></i>
+                                                        <i class="fa fa-calendar fs-4 text-white"></i>
                                                     </span>
                                                 </div>
 
                                                 <div class="m-0">
-                                                    <a href="/metronic8/demo1/pages/user-profile/projects.html"
-                                                        class="text-white text-opacity-75 fs-8">Projects</a>
-                                                    <span class="fw-bold text-white fs-7 d-block">Up to 500</span>
+                                                    <a href="{{ route('admin.plans.index') }}"
+                                                        class="text-white text-opacity-75 fs-8">Monthly Plan</a>
+                                                    <span class="fw-bold text-white fs-7 d-block">05</span>
                                                 </div>
                                             </div>
 
@@ -630,32 +606,31 @@
                                                 <div class="symbol symbol-30px symbol-circle me-3">
                                                     <span class="symbol-label"
                                                         style="background: rgba(255, 255, 255, 0.15);">
-                                                        <i class="ki-duotone ki-abstract-26 fs-4 text-white"><span
-                                                                class="path1"></span><span class="path2"></span></i>
+                                                        <i class="fa fa-layer-group fs-4 text-white"></i>
                                                     </span>
                                                 </div>
 
                                                 <div class="m-0">
-                                                    <a href="/metronic8/demo1/apps/user-management/users/list.html"
-                                                        class="text-white text-opacity-75 fs-8">Tasks</a>
-                                                    <span class="fw-bold text-white fs-7 d-block">Unlimited</span>
+                                                    <a href="{{ route('admin.plans.index') }}"
+                                                        class="text-white text-opacity-75 fs-8">Yearly Plan</a>
+                                                    <span class="fw-bold text-white fs-7 d-block">02</span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="m-0">
-                                        <a href="#"
+                                        <a href="{{ route('admin.plans.index') }}"
                                             class="btn btn-color-white bg-white bg-opacity-15 bg-hover-opacity-25 fw-semibold"
                                             data-bs-toggle="modal" data-bs-target="#kt_modal_upgrade_plan">
-                                            Upgrade Plan
+                                            Create Plan !
                                         </a>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-sm-5">
-                                <img src="/metronic8/demo1/assets/media/svg/illustrations/easy/7.svg"
+                                <img src="https://preview.keenthemes.com/metronic8/demo1/assets/media/svg/illustrations/easy/5.svg"
                                     class="h-200px h-lg-250px my-n6" alt="">
                             </div>
                         </div>
