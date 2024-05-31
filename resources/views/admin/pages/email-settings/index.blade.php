@@ -1,7 +1,8 @@
 <x-admin-app-layout :title="'Email Settings List'">
     <div class="card card-flash my-5">
         <div class="card-body pt-0">
-            <table class="emailDT table table-striped  align-middle table-row-dashed fs-6 gy-5 mb-0" id="kt_permissions_table">
+            <table class="emailDT table table-striped  align-middle table-row-dashed fs-6 gy-5 mb-0"
+                id="kt_permissions_table">
                 <thead>
                     <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                         <th class="w-10px pe-2">
