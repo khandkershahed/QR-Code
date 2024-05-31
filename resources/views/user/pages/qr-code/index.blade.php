@@ -45,7 +45,7 @@
                                             <span><span class="fw-bold text-black">Title :
                                                 </span>{{ $qr->qr_name }}</span><br>
                                             <span><span class="fw-bold text-black">Link :
-                                                </span><a class="text-primary" data-bs-toggle="modal" data-bs-target="image-{{ $qr->id }}">Go to Link</a></span><br>
+                                                </span><a class="text-primary" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#image-{{ $qr->id }}">Go to Link</a></span><br>
                                             <span><span class="fw-bold text-black">Org :
                                                 </span>{{ Auth::user()->name }}</span><br>
                                             <span><span class="fw-bold text-black">Created at
