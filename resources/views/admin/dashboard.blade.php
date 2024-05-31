@@ -540,7 +540,7 @@
 
                                         <div class="fs-5 fw-bold text-gray-600 me-5">Total QR Code Generate:</div>
 
-                                        <div class="ms-auto fw-bolder text-gray-700 text-end">1005</div>
+                                        <div class="ms-auto fw-bolder text-gray-700 text-end">{{ $qrs->count() }}</div>
                                     </div>
 
                                     <div class="d-flex fs-6 fw-semibold align-items-center my-4">
@@ -549,7 +549,7 @@
 
                                         <div class="fs-5 fw-bold text-gray-600 me-5">Total NFC Generate:</div>
 
-                                        <div class="ms-auto fw-bolder text-gray-700 text-end">102</div>
+                                        <div class="ms-auto fw-bolder text-gray-700 text-end">{{ $nfc_cards->count() }}</div>
                                     </div>
 
                                     <div class="d-flex fs-6 fw-semibold align-items-center">
@@ -559,7 +559,7 @@
 
                                         <div class="fs-5 fw-bold text-gray-600 me-5">New User Created:</div>
 
-                                        <div class="ms-auto fw-bolder text-gray-700 text-end">37</div>
+                                        <div class="ms-auto fw-bolder text-gray-700 text-end">{{ $users->count() }}</div>
                                     </div>
                                 </div>
                             </div>
