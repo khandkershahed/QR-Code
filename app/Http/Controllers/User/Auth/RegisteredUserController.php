@@ -45,8 +45,6 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        // event(new Registered($user));
-        // $user->notify(new UserRegistration($user->name));
         Auth::login($user);
         Mail::to($user->email)->send(new UserRegistrationMail($user->name));
         flash()->addSuccess('You have successfully registered.');

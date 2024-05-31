@@ -12,6 +12,7 @@ use Illuminate\Http\RedirectResponse;
 use App\Models\Admin\UserNotification;
 use App\Providers\RouteServiceProvider;
 use App\Http\Requests\Admin\LoginRequest;
+use App\Models\User;
 use Stevebauman\Location\Facades\Location;
 
 class AuthenticatedSessionController extends Controller
@@ -26,6 +27,7 @@ class AuthenticatedSessionController extends Controller
         $qrs = Qr::with('qrData', 'qrScan')->latest()->get();
 
         $nfc_cards = NfcCard::with('nfcData', 'nfcMessages', 'nfcScan')->latest()->get();
+        $users = User::latest('id')->get();
 
         $qr_wallet = 10;
         $nfc_wallet = 10;
@@ -67,7 +69,7 @@ class AuthenticatedSessionController extends Controller
             //     Log::error("Failed to retrieve location for IP address: {$nfc_unique_ip->ip_address}");
             // }
         }
-        return view('admin.dashboard', compact('notifications', 'qrs', 'nfc_cards', 'nfc_pending', 'qr_pending', 'nfc_completion_percentage', 'qr_completion_percentage', 'qr_users', 'nfc_users'));
+        return view('admin.dashboard', compact('notifications', 'qrs', 'users', 'nfc_cards', 'nfc_pending', 'qr_pending', 'nfc_completion_percentage', 'qr_completion_percentage', 'qr_users', 'nfc_users'));
     }
 
     public function create(): View

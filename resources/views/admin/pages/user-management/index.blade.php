@@ -74,7 +74,7 @@
                             <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
                                 <a href="javascript:void(0)">
                                     <div class="symbol-label">
-                                        <img src="assets/media/avatars/300-6.jpg" alt="{{ $user->name }}" class="w-100" />
+                                        <img src="{{ asset('https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->name)) }}" alt="{{ $user->name }}" class="w-100" />
                                     </div>
                                 </a>
                             </div>
