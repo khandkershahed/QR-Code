@@ -40,10 +40,11 @@
             <table class="table table-striped align-middle table-row-dashed fs-6 gy-5 mb-0">
                 <thead>
                     <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                        <th width="10%" class="ps-4">Sl</th>
+                        <th width="6%" class="ps-4">Sl</th>
                         <th width="25%">Title</th>
-                        <th width="12%">Price</th>
-                        <th width="12%">Currency</th>
+                        <th width="10%">Price</th>
+                        <th width="10%">type</th>
+                        <th width="10%">Currency</th>
                         <th width="15%">Status</th>
                         <th class="text-end" width="10%">Action</th>
                     </tr>
@@ -57,6 +58,7 @@
                                 {{ $plan->title }}
                             </td>
                             <td>{{ $plan->price }}</td>
+                            <td>{{ $plan->type }}</td>
                             <td>{{ $plan->currency }}</td>
 
                             <td>

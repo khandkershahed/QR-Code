@@ -46,8 +46,8 @@ class HomeController extends Controller
     public function pricing()
     {
         $data = [
-            'individual_plans' => Plan::orderBy('price', 'asc')->get(),
-            'business_plans' => Plan::orderBy('price', 'asc')->where('billing_cycle', 'yearly')->get(),
+            'individual_plans' => Plan::orderBy('price', 'asc')->where('type', 'individual')->get(),
+            'business_plans' => Plan::orderBy('price', 'asc')->where('type', 'business')->get(),
         ];
         return view('frontend.pages.resellerPricing', $data);
     }
