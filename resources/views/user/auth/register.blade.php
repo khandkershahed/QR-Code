@@ -10,11 +10,13 @@
                 <div class="d-flex flex-center flex-column flex-lg-row-fluid">
                     <div class="stepper stepper-pills" id="kt_stepper_example_registration">
                         <div class="text-center py-15">
+                            <a href="/" class="mb-0 mb-lg-12">
+                                <img alt="Logo" src="https://i.ibb.co/BNBTVN4/logo.png" class="h-60px h-lg-75px">
+                            </a>
                             <h1>Buy <strong class="text-warning">PRO PLAN</strong> At <a
                                     href="{{ route('pricing') }}"><strong class="text-primary">$ 588 /Yearly
                                     </strong></a></h1>
-                            <p class="mb-0 text-muted">Invest in the PRO PLAN today and take your capabilities to the
-                                next level!</p>
+                            <p class="mb-0 text-muted">Invest in the PRO PLAN today and take your capabilities to the next level!</p>
                             <p class="mb-0 text-muted">Advanced Tools, Priority Support,Exclusive Content,Early Access
                             </p>
                         </div>
@@ -140,16 +142,15 @@
                                             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
 
                                         </div>
-                                        <div class="col-lg-12 mb-8 fv-plugins-icon-container d-flex justify-content-between align-items-center">
+                                        <div
+                                            class="col-lg-12 mb-8 fv-plugins-icon-container d-flex justify-content-between align-items-center">
                                             <div>
                                                 <label class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" name="toc"
                                                         value="1" required checked>
                                                     <span
                                                         class="form-check-label fw-semibold text-gray-700 fs-base ms-1">
-                                                        I Accept the <a href="#" class="ms-1 link-primary">Terms
-                                                            &
-                                                            Conditions</a>
+                                                        I Accept the <a href="#" class="ms-1 link-primary">Terms & Conditions</a>
                                                     </span>
                                                 </label>
                                                 <div
@@ -224,9 +225,9 @@
             <div class="d-flex flex-lg-row-fluid w-lg-50 bgi-size-cover bgi-position-center order-1 order-lg-2"
                 style="background-image: url(https://preview.keenthemes.com/metronic8/demo1/assets/media/misc/auth-bg.png)">
                 <div class="d-flex flex-column flex-center py-7 py-lg-15 px-5 px-md-15 w-100">
-                    <a href="/metronic8/demo1/index.html" class="mb-0 mb-lg-12">
+                    {{-- <a href="/" class="mb-0 mb-lg-12">
                         <img alt="Logo" src="https://i.ibb.co/BNBTVN4/logo.png" class="h-60px h-lg-75px">
-                    </a>
+                    </a> --}}
                     <img class="d-none d-lg-block mx-auto w-275px w-md-50 w-xl-500px mb-10 mb-lg-20"
                         src="https://preview.keenthemes.com/metronic8/demo1/assets/media/misc/auth-screens.png"
                         alt="">
