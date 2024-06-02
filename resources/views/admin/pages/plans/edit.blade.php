@@ -1,6 +1,6 @@
 <x-admin-app-layout :title="'Plan Edit'">
 
-    <div class="card card-flash">
+    <div class="card card-flash my-15">
         <!--begin::Modal body-->
         <div class="card-body scroll-y mx-5 mx-xl-15 my-7">
             <div class="notice d-flex bg-light-warning rounded border-warning border border-dashed mb-9 p-6">

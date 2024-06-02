@@ -40,7 +40,9 @@
     <div class="page-wrapper">
         <!-- Preloader -->
         <div class="preloader">
-            <div class="custom-loader"></div>
+            {{-- <div class="custom-loader"></div> --}}
+            <img src="{{ asset('frontend') }}/assets/images/client-logos/preloader.svg"
+                                alt="Client Logo" />
         </div>
 
         <!-- header start-->

@@ -201,7 +201,7 @@
                                 </svg>
                             </span>
                         </span>
-                        <span class="menu-title">Subscption</span>
+                        <span class="menu-title">Subscription</span>
                         <span class="menu-arrow"></span>
                     </span>
                     <div
@@ -212,7 +212,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Subscption Plans List</span>
+                                <span class="menu-title">Subscription Plans List</span>
                             </a>
                         </div>
                         <div class="menu-item">
@@ -221,7 +221,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Subscption Plan Create</span>
+                                <span class="menu-title">Subscription Plan Create</span>
                             </a>
                         </div>
                     </div>
