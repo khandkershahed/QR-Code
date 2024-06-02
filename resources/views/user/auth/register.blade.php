@@ -3,6 +3,22 @@
         .form-container-registration {
             display: none;
         }
+
+        /* Custom styling for the card element */
+        .card-element {
+            background-color: #f8f9fa;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Error message styling */
+        .card-errors {
+            color: #dc3545;
+            font-size: 0.875rem;
+            margin-top: 4px;
+        }
     </style>
     <div class="d-flex flex-column flex-root" id="kt_app_root">
         <div class="d-flex flex-column flex-lg-row flex-column-fluid">
@@ -150,7 +166,8 @@
                                                         value="1" required checked>
                                                     <span
                                                         class="form-check-label fw-semibold text-gray-700 fs-base ms-1">
-                                                        I Accept the <a href="#" class="ms-1 link-primary">Terms & Conditions</a>
+                                                        I Accept the <a href="#" class="ms-1 link-primary">Terms
+                                                            & Conditions</a>
                                                     </span>
                                                 </label>
                                                 <div
@@ -191,8 +208,13 @@
                                         <div class="col-lg-12">
                                             <x-input-label class="form-label" for="password_confirmation"
                                                 :value="__('Card details')" />
-                                            <div id="card-element" class="form-control bg-transparent password_input">
+                                            {{-- <div id="card-element" class="form-control bg-transparent password_input">
+                                            </div> --}}
+                                            <div class="card-element">
+                                                <!-- A Stripe Element will be inserted here. -->
                                             </div>
+                                            <!-- Error message placeholder -->
+                                            <div id="card-errors" role="alert"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -205,10 +227,13 @@
                                     </button>
                                 </div>
                                 <div>
-                                    <button type="button" class="btn btn-primary" data-kt-stepper-action="submit" id="card-button"
-                                    data-secret="{{ $intent->client_secret }}">
+                                    <button type="submit" class="btn btn-primary" id="card-button">
                                         Subscribe
                                     </button>
+                                    {{-- <button type="submit" class="btn btn-primary" id="card-button"
+                                    data-secret="{{ $intent->client_secret }}">
+                                        Subscribe
+                                    </button> --}}
                                     {{-- <button type="submit" class="btn btn-primary" id="card-button"
                                                     data-secret="{{ $intent->client_secret }}">Pay</button> --}}
                                     <button type="button" class="btn btn-primary" data-kt-stepper-action="next">
@@ -337,7 +362,7 @@
             });
         </script>
         {{-- For Subscribe Card --}}
-        <script>
+        {{-- <script>
             const stripe = Stripe('{{ env('STRIPE_KEY') }}')
 
             const elements = stripe.elements()
@@ -378,6 +403,56 @@
                     form.submit();
                 }
             })
+        </script> --}}
+        <script>
+            // Create a Stripe instance
+            var stripe = Stripe('{{ env('STRIPE_KEY') }}');
+
+            // Create an instance of Elements
+            var elements = stripe.elements();
+
+            // Create a card Element
+            var card = elements.create('card');
+
+            // Mount the card Element onto the page
+            card.mount('.card-element');
+
+            // Handle real-time validation errors from the card Element
+            card.addEventListener('change', function(event) {
+                var displayError = document.getElementById('card-errors');
+                if (event.error) {
+                    displayError.textContent = event.error.message;
+                } else {
+                    displayError.textContent = '';
+                }
+            });
+
+            // Handle form submission
+            var form = document.getElementById('payment-form');
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                stripe.createToken(card).then(function(result) {
+                    if (result.error) {
+                        // Inform the user if there was an error
+                        var errorElement = document.getElementById('card-errors');
+                        errorElement.textContent = result.error.message;
+                    } else {
+                        // Token represents a valid card token
+                        var token = result.token.id;
+
+                        // Add the token to the form
+                        var hiddenInput = document.createElement('input');
+                        hiddenInput.setAttribute('type', 'hidden');
+                        hiddenInput.setAttribute('name', 'payment_method');
+                        hiddenInput.setAttribute('value', token);
+                        form.appendChild(hiddenInput);
+
+                        // Submit the form
+                        form.submit();
+                    }
+                });
+            });
         </script>
         {{-- Stepper For Registration --}}
         <script>

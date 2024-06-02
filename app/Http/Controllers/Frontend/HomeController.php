@@ -123,7 +123,7 @@ class HomeController extends Controller
     {
         // dd($id);
         $data['plan'] = Plan::where('slug', $id)->first();
-        $data['intent'] = auth()->user()->createSetupIntent();
+        // $data['intent'] = auth()->user()->createSetupIntent();
         return view("user.auth.register", $data);
     }
 
