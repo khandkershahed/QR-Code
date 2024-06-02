@@ -46,8 +46,8 @@ class HomeController extends Controller
     public function pricing()
     {
         $data = [
-            'individual_plans' => Plan::orderBy('price', 'asc')->get(),
-            'business_plans' => Plan::orderBy('price', 'asc')->where('billing_cycle', 'yearly')->get(),
+            'individual_plans' => Plan::orderBy('price', 'asc')->where('type', 'individual')->get(),
+            'business_plans' => Plan::orderBy('price', 'asc')->where('type', 'business')->get(),
         ];
         return view('frontend.pages.resellerPricing', $data);
     }
@@ -118,6 +118,15 @@ class HomeController extends Controller
     {
         return view('frontend.pages.mailTest');
     }
+
+    public function subscribeRegister(Request $request, $id)
+    {
+        // dd($id);
+        $data['plan'] = Plan::where('slug', $id)->first();
+        // $data['intent'] = auth()->user()->createSetupIntent();
+        return view("user.auth.register", $data);
+    }
+
     public function mailTestStore(Request $request)
     {
         $email = $request->input('email');

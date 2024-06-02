@@ -80,6 +80,7 @@
             });
         });
     </script>
+    @stack('scripts')
     <!--end::Javascript-->
 </body>
 <!--end::Body-->

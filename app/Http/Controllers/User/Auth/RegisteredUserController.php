@@ -4,10 +4,11 @@ namespace App\Http\Controllers\User\Auth;
 
 use App\Models\User;
 use Illuminate\View\View;
+use App\Models\Admin\Plan;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
-use App\Http\Controllers\Controller;
 use App\Mail\UserRegistrationMail;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -23,7 +24,8 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('user.auth.register');
+        $data['plan'] = Plan::where('type', 'trial')->first();
+        return view('user.auth.register',$data);
     }
 
     /**
@@ -39,15 +41,30 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        // Find the plan
+        $plan = Plan::find($request->plan);
+
+        // Create a new user
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
-        Auth::login($user);
-        Mail::to($user->email)->send(new UserRegistrationMail($user->name));
-        flash()->addSuccess('You have successfully registered.');
-        return redirect(RouteServiceProvider::HOME);
+
+        $subscription = $user->newSubscription($plan->slug, $plan->stripe_plan)->create($request->payment_method);
+
+
+        if ($subscription) {
+
+            Auth::login($user);
+
+            Mail::to($user->email)->send(new UserRegistrationMail($user->name));
+
+            return redirect(RouteServiceProvider::HOME)->with('success', 'You have successfully registered with the plan.');
+        } else {
+            $user->delete();
+            return redirect()->back()->with('error', 'Subscription failed. Please try again.');
+        }
     }
 }

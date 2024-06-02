@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\QrCodeController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Reseller\ResellerSocialLoginController;
 use App\Http\Controllers\ResellerProfileController;
+use App\Http\Controllers\Subscription\SubscriptionController;
 use App\Http\Controllers\Test\QrTestController;
 use App\Http\Controllers\User\UserSocialLoginController;
 use App\Http\Controllers\VendorProfileController;
@@ -49,6 +50,7 @@ Route::get('/terms', [HomeController::class, 'terms'])->name('terms');
 Route::get('/mail-test', [HomeController::class, 'mailTest'])->name('mailTest');
 Route::post('/mail-test', [HomeController::class, 'mailTestStore'])->name('mailTest.store');
 Route::get('/nfc/{name}/{code}', [HomeController::class, 'nfcPage'])->name('nfc.page');
+Route::get('/user-subscription/register/{id}', [HomeController::class, 'subscribeRegister'])->name('user_subscribe.register');
 
 Route::resources(
     [

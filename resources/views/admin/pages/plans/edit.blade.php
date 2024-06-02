@@ -54,29 +54,43 @@
                         <x-metronic.input id="stripe_plan" type="text" name="stripe_plan" :value="old('stripe_plan', $plan->stripe_plan)"
                             placeholder="Enter the Plan Stripe ID"></x-metronic.input>
                     </div>
-                    <div class="col-lg-4 mb-5">
+                    <div class="col-lg-3 mb-5">
                         <x-metronic.label for="billing_cycle" class="col-form-label required fw-bold fs-6">
                             {{ __('Billing Cycle') }}</x-metronic.label>
                         <x-metronic.select-option id="billing_cycle" name="billing_cycle" data-hide-search="true"
                             data-placeholder="Select an option">
                             <option></option>
+                            <option value="trial_period" @selected($plan->billing_cycle == 'trial_period')>
+                                Trial Period
+                            </option>
                             <option value="monthly" {{ $plan->billing_cycle == 'monthly' ? 'selected' : '' }}>Monthly
                             </option>
                             <option value="half_yearly" {{ $plan->billing_cycle == 'half_yearly' ? 'selected' : '' }}>
                                 Half Yearly
                             </option>
-                            <option></option>
                             <option value="yearly" {{ $plan->billing_cycle == 'yearly' ? 'selected' : '' }}>Yearly
                             </option>
                         </x-metronic.select-option>
                     </div>
-                    <div class="col-lg-4 mb-5">
+                    <div class="col-lg-3 mb-5">
+                        <x-metronic.label for="type" class="col-form-label required fw-bold fs-6">
+                            {{ __('Plan For') }}</x-metronic.label>
+                        <x-metronic.select-option id="type" name="type" data-hide-search="true"
+                            data-placeholder="Select an option">
+                            <option value=""></option>
+                            <option value="individual" @selected($plan->type == 'individual')> Individual
+                            </option>
+                            <option value="business" @selected($plan->type == 'business')> Business
+                            </option>
+                        </x-metronic.select-option>
+                    </div>
+                    <div class="col-lg-3 mb-5">
                         <x-metronic.label for="price" class="col-form-label fw-bold fs-6">{{ __('Price') }}
                         </x-metronic.label>
                         <x-metronic.input id="price" type="number" name="price" :value="old('price', $plan->price)"
                             placeholder="Enter the Plan Price"></x-metronic.input>
                     </div>
-                    <div class="col-lg-4 mb-5">
+                    <div class="col-lg-3 mb-5">
                         <x-metronic.label for="currency" class="col-form-label fw-bold fs-6">{{ __('Currency') }}
                         </x-metronic.label>
                         <x-metronic.input id="currency" type="text" name="currency" :value="old('currency', $plan->currency)"
