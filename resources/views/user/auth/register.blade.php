@@ -29,10 +29,20 @@
                             <a href="/" class="mb-0 mb-lg-12">
                                 <img alt="Logo" src="https://i.ibb.co/BNBTVN4/logo.png" class="h-60px h-lg-75px">
                             </a>
-                            <h1>Buy <strong class="text-warning">{{ $plan->title }}</strong> At <a
-                                    href="{{ route('pricing') }}"><strong class="text-primary">$ {{ $plan->price }} /{{ $plan->billing_cycle }}
-                                    </strong></a></h1>
+                            @if ($plan->billing_cycle == 'trial_period')
+                                <h1>Buy <strong class="text-warning">{{ $plan->title }}</strong> At <a
+                                        href="{{ route('pricing') }}"><strong class="text-primary">$ {{ $plan->price }} /{{ $plan->billing_cycle }}
+                                        </strong></a>
+                                    </h1>
+                            @else
+                                    <h1>Continue with <strong class="text-warning">Trial Plan</strong> </h1>
+                            @endif
+
+                            @if ($plan->billing_cycle == 'trial_period')
+                            <p class="mb-0 text-muted"><a href="{{ route('pricing') }}">Check Othe Plans</a></p>
+                            @else
                             <p class="mb-0 text-muted">Invest in the {{ $plan->title }} today and take your capabilities to the next level!</p>
+                            @endif
                             <p class="mb-0 text-muted">Advanced Tools, Priority Support,Exclusive Content,Early Access
                             </p>
                         </div>
