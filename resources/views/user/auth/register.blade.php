@@ -238,9 +238,9 @@
                                     </button>
                                 </div>
                                 <div>
-                                    {{-- <button type="submit" class="btn btn-primary" id="card-button">
+                                    <button type="submit" class="btn btn-primary" data-kt-stepper-action="submit" id="card-button">
                                         Subscribe
-                                    </button> --}}
+                                    </button>
                                     {{-- <button type="submit" class="btn btn-primary" id="card-button"
                                     data-secret="{{ $intent->client_secret }}">
                                         Subscribe
