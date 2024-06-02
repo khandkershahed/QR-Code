@@ -30,12 +30,13 @@
                                 <img alt="Logo" src="https://i.ibb.co/BNBTVN4/logo.png" class="h-60px h-lg-75px">
                             </a>
                             @if ($plan->billing_cycle == 'trial_period')
-                                <h1>Buy <strong class="text-warning">{{ $plan->title }}</strong> At <a
-                                        href="{{ route('pricing') }}"><strong class="text-primary">$ {{ $plan->price }} /{{ $plan->billing_cycle }}
-                                        </strong></a>
-                                    </h1>
+                            <h1>Continue with <strong class="text-warning">Trial Plan</strong> </h1>
                             @else
-                                    <h1>Continue with <strong class="text-warning">Trial Plan</strong> </h1>
+                            <h1>Buy <strong class="text-warning">{{ $plan->title }}</strong> At <a
+                                href="{{ route('pricing') }}"><strong class="text-primary">$ {{ $plan->price }} /{{ $plan->billing_cycle }}
+                                </strong></a>
+                            </h1>
+
                             @endif
 
                             @if ($plan->billing_cycle == 'trial_period')
