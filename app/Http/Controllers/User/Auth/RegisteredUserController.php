@@ -24,7 +24,7 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        $data['plan'] = Plan::where('type', 'trial')->first();
+        $data['plan'] = Plan::where('billing_cycle', 'trial_period')->first();
         return view('user.auth.register',$data);
     }
 
