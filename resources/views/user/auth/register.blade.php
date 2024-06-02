@@ -171,7 +171,7 @@
                                         </div>
                                         <div
                                             class="col-lg-12 mb-8 fv-plugins-icon-container d-flex justify-content-between align-items-center">
-                                            <div>
+                                            <div class="pt-2">
                                                 <label class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" name="toc"
                                                         value="1" required checked>
@@ -238,9 +238,9 @@
                                     </button>
                                 </div>
                                 <div>
-                                    <button type="submit" class="btn btn-primary" id="card-button">
+                                    {{-- <button type="submit" class="btn btn-primary" id="card-button">
                                         Subscribe
-                                    </button>
+                                    </button> --}}
                                     {{-- <button type="submit" class="btn btn-primary" id="card-button"
                                     data-secret="{{ $intent->client_secret }}">
                                         Subscribe
