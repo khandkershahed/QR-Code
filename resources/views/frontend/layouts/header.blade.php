@@ -255,13 +255,13 @@
                 </div>
 
                 <!-- Nav Search -->
-                <div class="nav-search ms-xl-2 ms-4 me-lg-auto py-10">
+                {{-- <div class="nav-search ms-xl-2 ms-4 me-lg-auto py-10">
                     <button class="fa-solid fa-magnifying-glass"></button>
                     <form action="#" class="hide">
                         <input type="text" placeholder="Search" class="searchbox" required />
                         <button type="submit" class="searchbutton fa-solid fa-magnifying-glass"></button>
                     </form>
-                </div>
+                </div> --}}
 
                 <!-- Menu Button -->
                 <div class="menu-btns ms-lg-auto">
@@ -269,10 +269,10 @@
 
                         <a href="{{ route('dashboard') }}" class="light-btn"><i class="fas fa-user me-1"></i> My
                             Dashboard</a>
-                            
+
                     @else
                     {{-- <div class="navbar-collapse collapse clearfix"> --}}
-                        
+
                         <a href="{{ route('login') }}" class="light-btn"><i class="fas fa-user me-1"></i> LOGIN</a>
                     {{-- </div> --}}
                         {{-- <a href="{{ route('register') }}" class="light-btn">Sign Up</a> --}}

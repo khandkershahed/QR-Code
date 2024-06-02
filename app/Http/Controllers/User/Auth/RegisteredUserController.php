@@ -4,10 +4,11 @@ namespace App\Http\Controllers\User\Auth;
 
 use App\Models\User;
 use Illuminate\View\View;
+use App\Models\Admin\Plan;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
-use App\Http\Controllers\Controller;
 use App\Mail\UserRegistrationMail;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -39,6 +40,10 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        $plan = Plan::find($request->plan);
+
+        $subscription = $request->user()->newSubscription($plan->slug, $plan->stripe_plan)->create($request->token);
+    if ($subscription) {
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -47,7 +52,10 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
         Mail::to($user->email)->send(new UserRegistrationMail($user->name));
-        flash()->addSuccess('You have successfully registered.');
+        flash()->addSuccess('You have successfully registered with plan.');
         return redirect(RouteServiceProvider::HOME);
+        }else {
+            return redirect()->back();
+        }
     }
 }

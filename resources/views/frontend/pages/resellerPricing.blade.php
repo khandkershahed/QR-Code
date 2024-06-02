@@ -69,8 +69,8 @@
                                                         @endforeach
                                                     </ul>
                                                 @endif
-                                                <a href="{{ route('user.subscribe.post', $individual_plan->slug) }}"
-                                                    class="theme-btn style-two">Package <i
+                                                <a href="{{ route('user_subscribe.register', $individual_plan->slug) }}"
+                                                    class="theme-btn style-two">Buy Now <i
                                                         class="fas fa-arrow-right"></i></a>
                                             </div>
                                         </div>
@@ -104,8 +104,8 @@
                                                         @endforeach
                                                     </ul>
                                                 @endif
-                                                <a href="{{ route('user.subscribe.post', $business_plan->slug) }}"
-                                                    class="theme-btn style-two">Package <i
+                                                <a href="{{ route('user_subscribe.register', $business_plan->slug) }}"
+                                                    class="theme-btn style-two">Buy Now <i
                                                         class="fas fa-arrow-right"></i></a>
                                             </div>
                                         </div>

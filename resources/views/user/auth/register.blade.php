@@ -13,10 +13,10 @@
                             <a href="/" class="mb-0 mb-lg-12">
                                 <img alt="Logo" src="https://i.ibb.co/BNBTVN4/logo.png" class="h-60px h-lg-75px">
                             </a>
-                            <h1>Buy <strong class="text-warning">PRO PLAN</strong> At <a
-                                    href="{{ route('pricing') }}"><strong class="text-primary">$ 588 /Yearly
+                            <h1>Buy <strong class="text-warning">{{ $plan->title }}</strong> At <a
+                                    href="{{ route('pricing') }}"><strong class="text-primary">$ {{ $plan->price }} /{{ $plan->billing_cycle }}
                                     </strong></a></h1>
-                            <p class="mb-0 text-muted">Invest in the PRO PLAN today and take your capabilities to the next level!</p>
+                            <p class="mb-0 text-muted">Invest in the {{ $plan->title }} today and take your capabilities to the next level!</p>
                             <p class="mb-0 text-muted">Advanced Tools, Priority Support,Exclusive Content,Early Access
                             </p>
                         </div>
@@ -181,6 +181,7 @@
                                 <div class="flex-column" data-kt-stepper-element="content">
                                     <div class="row py-15">
                                         <div class="col-lg-12 mb-2">
+                                            <input type="hidden" name="plan" id="plan" value="{{ $plan->id }}">
                                             <x-input-label class="form-label" for="name" :value="__('Card Holder Name')" />
                                             <x-text-input id="card_holder_name" class="form-control bg-transparent"
                                                 type="text" name="card_holder_name" :value="old('card_holder_name')" required
@@ -204,15 +205,12 @@
                                     </button>
                                 </div>
                                 <div>
-                                    <button type="button" class="btn btn-primary" data-kt-stepper-action="submit">
-                                        <span class="indicator-label">
-                                            Submit
-                                        </span>
-                                        <span class="indicator-progress">
-                                            Please wait... <span
-                                                class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                                        </span>
+                                    <button type="button" class="btn btn-primary" data-kt-stepper-action="submit" id="card-button"
+                                    data-secret="{{ $intent->client_secret }}">
+                                        Subscribe
                                     </button>
+                                    {{-- <button type="submit" class="btn btn-primary" id="card-button"
+                                                    data-secret="{{ $intent->client_secret }}">Pay</button> --}}
                                     <button type="button" class="btn btn-primary" data-kt-stepper-action="next">
                                         Continue
                                     </button>

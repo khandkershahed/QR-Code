@@ -118,6 +118,15 @@ class HomeController extends Controller
     {
         return view('frontend.pages.mailTest');
     }
+
+    public function subscribeRegister(Request $request, $id)
+    {
+        // dd($id);
+        $data['plan'] = Plan::where('slug', $id)->first();
+        $data['intent'] = auth()->user()->createSetupIntent();
+        return view("user.auth.register", $data);
+    }
+
     public function mailTestStore(Request $request)
     {
         $email = $request->input('email');
