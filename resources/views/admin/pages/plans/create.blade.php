@@ -45,6 +45,8 @@
                             </option>
                             <option value="business">Business
                             </option>
+                            <option value="trial">Trial
+                            </option>
                         </x-metronic.select-option>
                     </div>
                     <div class="col-lg-3 mb-5">

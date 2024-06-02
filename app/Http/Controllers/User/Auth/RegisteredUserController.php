@@ -24,7 +24,8 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('user.auth.register');
+        $data['plan'] = Plan::where('type', 'trial')->first();
+        return view('user.auth.register',$data);
     }
 
     /**
@@ -50,7 +51,7 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        
+
         $subscription = $user->newSubscription($plan->slug, $plan->stripe_plan)->create($request->payment_method);
 
 

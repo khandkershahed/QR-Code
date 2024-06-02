@@ -76,9 +76,11 @@
                         <x-metronic.select-option id="type" name="type" data-hide-search="true"
                             data-placeholder="Select an option">
                             <option value=""></option>
-                            <option value="individual" @selected($plan->type == 'individual')>Individual
+                            <option value="individual" @selected($plan->type == 'individual')> Individual
                             </option>
-                            <option value="business" @selected($plan->type == 'business')>Business
+                            <option value="business" @selected($plan->type == 'business')> Business
+                            </option>
+                            <option value="trial" @selected($plan->type == 'trial')> Trial
                             </option>
                         </x-metronic.select-option>
                     </div>

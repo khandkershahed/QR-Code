@@ -26,8 +26,10 @@ class AuthenticatedSessionController extends Controller
      */
     public function dashboard(): View
     {
-        $userId = Auth::id();
-
+        $user = Auth::user();
+        $userId = $user->id;
+        // $subscription = $user->subscription();
+        // dd($subscription);
         $notifications = UserNotification::where('user_id', $userId)->with('notificationMessage')->latest('created_at')->get();
 
         $qrs = Qr::with('qrData', 'qrScan')->where('user_id', $userId)->latest()->get();
