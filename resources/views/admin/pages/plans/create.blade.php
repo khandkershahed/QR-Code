@@ -25,12 +25,14 @@
                         <x-metronic.select-option id="billing_cycle" name="billing_cycle" data-hide-search="true"
                             data-placeholder="Select an option">
                             <option></option>
+                            <option value="trial_period">
+                                Trial Period
+                            </option>
                             <option value="monthly">Monthly
                             </option>
                             <option value="half_yearly">
                                 Half Yearly
                             </option>
-                            <option></option>
                             <option value="yearly">Yearly
                             </option>
                         </x-metronic.select-option>
@@ -44,8 +46,6 @@
                             <option value="individual">Individual
                             </option>
                             <option value="business">Business
-                            </option>
-                            <option value="trial">Trial
                             </option>
                         </x-metronic.select-option>
                     </div>

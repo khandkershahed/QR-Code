@@ -60,12 +60,14 @@
                         <x-metronic.select-option id="billing_cycle" name="billing_cycle" data-hide-search="true"
                             data-placeholder="Select an option">
                             <option></option>
+                            <option value="trial_period" @selected($plan->billing_cycle == 'trial_period')>
+                                Trial Period
+                            </option>
                             <option value="monthly" {{ $plan->billing_cycle == 'monthly' ? 'selected' : '' }}>Monthly
                             </option>
                             <option value="half_yearly" {{ $plan->billing_cycle == 'half_yearly' ? 'selected' : '' }}>
                                 Half Yearly
                             </option>
-                            <option></option>
                             <option value="yearly" {{ $plan->billing_cycle == 'yearly' ? 'selected' : '' }}>Yearly
                             </option>
                         </x-metronic.select-option>
@@ -79,8 +81,6 @@
                             <option value="individual" @selected($plan->type == 'individual')> Individual
                             </option>
                             <option value="business" @selected($plan->type == 'business')> Business
-                            </option>
-                            <option value="trial" @selected($plan->type == 'trial')> Trial
                             </option>
                         </x-metronic.select-option>
                     </div>
