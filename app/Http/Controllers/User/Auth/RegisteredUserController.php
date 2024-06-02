@@ -53,7 +53,7 @@ class RegisteredUserController extends Controller
 
 
         $subscription = $user->newSubscription($plan->slug, $plan->stripe_plan)->create($request->payment_method);
-
+        $user->syncStripePlan();
 
         if ($subscription) {
 

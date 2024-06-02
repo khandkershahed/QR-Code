@@ -29,7 +29,7 @@ class SubscriptionController extends Controller
         return view("user.pages.subscription.subscribe", $data);
     }
 
-    
+
 
     public function subscription(Request $request)
     {
@@ -37,7 +37,7 @@ class SubscriptionController extends Controller
         $plan = Plan::find($request->plan);
 
         $subscription = $request->user()->newSubscription($plan->slug, $plan->stripe_plan)->create($request->token);
-
+        $request->user()->syncStripePlan();
         return view("frontend.pages.subscription_success");
     }
 
