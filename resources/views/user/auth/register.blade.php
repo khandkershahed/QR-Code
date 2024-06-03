@@ -417,8 +417,8 @@
         </script> --}}
         <script>
             // Create a Stripe instance
-            const stripe = Stripe('{{ env('STRIPE_KEY') }}')
-            // alert(stripe);
+            const stripe = Stripe('{{ env('STRIPE_KEY') }}');
+
             // Create an instance of Elements
             const elements = stripe.elements();
 
@@ -426,7 +426,7 @@
             const card = elements.create('card');
 
             // Mount the card Element onto the page
-            card.mount('.card-element');
+            card.mount('#card-element');
 
             // Handle real-time validation errors from the card Element
             card.addEventListener('change', function(event) {
