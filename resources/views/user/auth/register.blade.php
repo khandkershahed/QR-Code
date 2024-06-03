@@ -417,13 +417,13 @@
         </script> --}}
         <script>
             // Create a Stripe instance
-            var stripe = Stripe('{{ env('STRIPE_KEY') }}');
+            const stripe = Stripe('{{ env('STRIPE_KEY') }}')
             // alert(stripe);
             // Create an instance of Elements
-            var elements = stripe.elements();
+            const elements = stripe.elements();
 
             // Create a card Element
-            var card = elements.create('card');
+            const card = elements.create('card');
 
             // Mount the card Element onto the page
             card.mount('.card-element');
@@ -439,21 +439,21 @@
             });
 
             // Handle form submission
-            var form = document.getElementById('payment-form');
+            const form = document.getElementById('payment-form');
             form.addEventListener('submit', function(event) {
                 event.preventDefault();
 
                 stripe.createToken(card).then(function(result) {
                     if (result.error) {
                         // Inform the user if there was an error
-                        var errorElement = document.getElementById('card-errors');
+                        const errorElement = document.getElementById('card-errors');
                         errorElement.textContent = result.error.message;
                     } else {
                         // Token represents a valid card token
-                        var token = result.token.id;
+                        const token = result.token.id;
 
                         // Add the token to the form
-                        var hiddenInput = document.createElement('input');
+                        const hiddenInput = document.createElement('input');
                         hiddenInput.setAttribute('type', 'hidden');
                         hiddenInput.setAttribute('name', 'payment_method');
                         hiddenInput.setAttribute('value', token);
