@@ -72,8 +72,13 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->session()->put('registration_data', $request->all());
+        if (!empty($request->payment_link)) {
+            return redirect()->to($request->payment_link);
+        } else {
+            return redirect()->route('stripe.callback');
+        }
 
-        return redirect()->to($request->payment_link);
+
     }
 
     public function stripeCallback()
@@ -95,13 +100,10 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($validatedData['password']),
         ]);
 
-        // Log the user in
         Auth::login($user);
 
-        // Send registration email
         Mail::to($user->email)->send(new UserRegistrationMail($user->name));
 
-        // Clear the session data
         session()->forget('registration_data');
 
         // Redirect to the dashboard or landing page

@@ -30,19 +30,20 @@
                                 <img alt="Logo" src="https://i.ibb.co/BNBTVN4/logo.png" class="h-60px h-lg-75px">
                             </a>
                             @if ($plan->billing_cycle == 'trial_period')
-                            <h1>Continue with <strong class="text-warning">Trial Plan</strong> </h1>
+                                <h1>Continue with <strong class="text-warning">Trial Plan</strong> </h1>
                             @else
-                            <h1>Buy <strong class="text-warning">{{ $plan->title }}</strong> At <a
-                                href="{{ route('pricing') }}"><strong class="text-primary">$ {{ $plan->price }} /{{ $plan->billing_cycle }}
-                                </strong></a>
-                            </h1>
-
+                                <h1>Buy <strong class="text-warning">{{ $plan->title }}</strong> At <a
+                                        href="{{ route('pricing') }}"><strong class="text-primary">$ {{ $plan->price }}
+                                            /{{ $plan->billing_cycle }}
+                                        </strong></a>
+                                </h1>
                             @endif
 
                             @if ($plan->billing_cycle == 'trial_period')
-                            <p class="mb-0 text-muted"><a href="{{ route('pricing') }}">Check Othe Plans</a></p>
+                                <p class="mb-0 text-muted"><a href="{{ route('pricing') }}">Check Othe Plans</a></p>
                             @else
-                            <p class="mb-0 text-muted">Invest in the {{ $plan->title }} today and take your capabilities to the next level!</p>
+                                <p class="mb-0 text-muted">Invest in the {{ $plan->title }} today and take your
+                                    capabilities to the next level!</p>
                             @endif
                             <p class="mb-0 text-muted">Advanced Tools, Priority Support,Exclusive Content,Early Access
                             </p>
@@ -86,166 +87,115 @@
                         <form class="form w-lg-500px fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate"
                             method="POST" action="{{ route('register') }}">
                             @csrf
+                            <input type="hidden" name="payment_link" value="{{ $plan->payment_link }}">
                             <div class="mb-5">
-                                <div class="flex-column current" data-kt-stepper-element="content">
-                                    <div class="row">
-                                        <div class="col-lg-6 mb-8 fv-plugins-icon-container">
-                                            <x-input-label class="form-label" for="name" :value="__('Full Name')" />
-                                            <x-text-input id="name" class="form-control bg-transparent"
-                                                type="text" name="name" :value="old('name')" required autofocus
-                                                autocomplete="name" />
-                                            <x-input-error :messages="$errors->get('name')" class="mt-2" />
-                                        </div>
-                                        <div class="col-lg-6 mb-8 fv-plugins-icon-container">
-                                            <x-input-label class="form-label text-start" for="email"
-                                                :value="__('Email')" />
-                                            <x-text-input id="email" class="form-control bg-transparent"
-                                                type="email" name="email" :value="old('email')" required
-                                                autocomplete="username" />
-                                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-                                        </div>
-                                        <div class="col-lg-6 mb-8 fv-plugins-icon-container"
-                                            data-kt-password-meter="true">
-                                            <div class="mb-1">
-                                                <div class="position-relative mb-3">
-                                                    <x-input-label class="form-label" for="password"
-                                                        :value="__('Password')" />
-                                                    <div class="input-group">
-                                                        <span class="input-group-text" id="toggle_password">
-                                                            <i class="fas fa-lock text-success"></i>
-                                                            <i class="fas fa-unlock" style="display: none"></i>
-                                                        </span>
-                                                        <x-text-input id="password" aria-describedby="toggle_password"
-                                                            class="form-control bg-transparent password_input"
-                                                            type="password" name="password" required
-                                                            autocomplete="new-password" />
-                                                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
-                                                    </div>
-                                                </div>
-
-                                                <div class="d-flex align-items-center mb-3"
-                                                    data-kt-password-meter-control="highlight">
-                                                    <div
-                                                        class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2">
-                                                    </div>
-                                                    <div
-                                                        class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2">
-                                                    </div>
-                                                    <div
-                                                        class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2">
-                                                    </div>
-                                                    <div
-                                                        class="flex-grow-1 bg-secondary bg-active-success rounded h-5px">
-                                                    </div>
+                                {{-- <div class="flex-column current" data-kt-stepper-element="content"> --}}
+                                <div class="row">
+                                    <div class="col-lg-6 mb-8 fv-plugins-icon-container">
+                                        <x-input-label class="form-label" for="name" :value="__('Full Name')" />
+                                        <x-text-input id="name" class="form-control bg-transparent" type="text"
+                                            name="name" :value="old('name')" required autofocus autocomplete="name" />
+                                        <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                                    </div>
+                                    <div class="col-lg-6 mb-8 fv-plugins-icon-container">
+                                        <x-input-label class="form-label text-start" for="email" :value="__('Email')" />
+                                        <x-text-input id="email" class="form-control bg-transparent" type="email"
+                                            name="email" :value="old('email')" required autocomplete="username" />
+                                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                                    </div>
+                                    <div class="col-lg-6 mb-8 fv-plugins-icon-container" data-kt-password-meter="true">
+                                        <div class="mb-1">
+                                            <div class="position-relative mb-3">
+                                                <x-input-label class="form-label" for="password" :value="__('Password')" />
+                                                <div class="input-group">
+                                                    <span class="input-group-text" id="toggle_password">
+                                                        <i class="fas fa-lock text-success"></i>
+                                                        <i class="fas fa-unlock" style="display: none"></i>
+                                                    </span>
+                                                    <x-text-input id="password" aria-describedby="toggle_password"
+                                                        class="form-control bg-transparent password_input"
+                                                        type="password" name="password" required
+                                                        autocomplete="new-password" />
+                                                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
                                                 </div>
                                             </div>
 
-                                            <div class="text-muted">
-                                                Use 8 or more characters with a mix of letters, numbers &amp;
-                                                symbols.
+                                            <div class="d-flex align-items-center mb-3"
+                                                data-kt-password-meter-control="highlight">
+                                                <div
+                                                    class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2">
+                                                </div>
+                                                <div
+                                                    class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2">
+                                                </div>
+                                                <div
+                                                    class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2">
+                                                </div>
+                                                <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px">
+                                                </div>
                                             </div>
+                                        </div>
+
+                                        <div class="text-muted">
+                                            Use 8 or more characters with a mix of letters, numbers &amp;
+                                            symbols.
+                                        </div>
+                                        <div
+                                            class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 mb-8 fv-plugins-icon-container">
+                                        <x-input-label class="form-label" for="password_confirmation"
+                                            :value="__('Confirm Password')" />
+                                        <br>
+
+                                        <div class="input-group ">
+                                            <span class="input-group-text" id="toggle_confirm_password">
+                                                <i class="fas fa-lock text-success"></i>
+                                                <i class="fas fa-unlock" style="display: none"></i>
+                                            </span>
+                                            <x-text-input id="password_confirmation"
+                                                aria-describedby="toggle_confirm_password"
+                                                class="form-control bg-transparent password_confirmation flex-column"
+                                                type="password" name="password_confirmation" required
+                                                autocomplete="new-password" />
+                                        </div>
+                                        <div id="password-confirmation-message" class="password-confirmation-message">
+                                        </div>
+                                        <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+
+                                    </div>
+                                    <div
+                                        class="col-lg-12 mb-8 fv-plugins-icon-container d-flex justify-content-between align-items-center">
+                                        <div class="pt-2">
+                                            <label class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="toc"
+                                                    value="1" required checked>
+                                                <span class="form-check-label fw-semibold text-gray-700 fs-base ms-1">
+                                                    I Accept the <a href="#" class="ms-1 link-primary">Terms
+                                                        & Conditions</a>
+                                                </span>
+                                            </label>
                                             <div
                                                 class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 mb-8 fv-plugins-icon-container">
-                                            <x-input-label class="form-label" for="password_confirmation"
-                                                :value="__('Confirm Password')" />
-                                            <br>
-
-                                            <div class="input-group ">
-                                                <span class="input-group-text" id="toggle_confirm_password">
-                                                    <i class="fas fa-lock text-success"></i>
-                                                    <i class="fas fa-unlock" style="display: none"></i>
-                                                </span>
-                                                <x-text-input id="password_confirmation"
-                                                    aria-describedby="toggle_confirm_password"
-                                                    class="form-control bg-transparent password_confirmation flex-column"
-                                                    type="password" name="password_confirmation" required
-                                                    autocomplete="new-password" />
-                                            </div>
-                                            <div id="password-confirmation-message"
-                                                class="password-confirmation-message"></div>
-                                            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-
-                                        </div>
-                                        <div
-                                            class="col-lg-12 mb-8 fv-plugins-icon-container d-flex justify-content-between align-items-center">
-                                            <div class="pt-2">
-                                                <label class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" name="toc"
-                                                        value="1" required checked>
-                                                    <span
-                                                        class="form-check-label fw-semibold text-gray-700 fs-base ms-1">
-                                                        I Accept the <a href="#" class="ms-1 link-primary">Terms
-                                                            & Conditions</a>
-                                                    </span>
-                                                </label>
-                                                <div
-                                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
-                                                </div>
-                                            </div>
-                                            <div class="text-gray-500 text-center fw-semibold fs-6">
-                                                Already have an Account?
-                                                <a href="{{ route('login') }}" type="submit"
-                                                    class="link-primary fw-semibold">
-                                                    Sign in
-                                                </a>
-                                            </div>
+                                        <div class="text-gray-500 text-center fw-semibold fs-6">
+                                            Already have an Account?
+                                            <a href="{{ route('login') }}" type="submit"
+                                                class="link-primary fw-semibold">
+                                                Sign in
+                                            </a>
                                         </div>
                                     </div>
-                                    {{-- <div class="d-grid mb-10">
-                                        <button type="submit" id="kt_sign_up_submit" class="btn btn-primary">
-
-                                            <span class="indicator-label">
-                                                Sign up</span>
-
-                                            <span class="indicator-progress">
-                                                Please wait... <span
-                                                    class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                                            </span>
-                                    </div> --}}
                                 </div>
-                                {{-- <div class="flex-column" data-kt-stepper-element="content">
-                                    <div class="row py-15">
-                                        <div class="col-lg-12 mb-2">
-                                            <input type="hidden" name="plan" id="plan" value="{{ $plan->id }}">
-                                            <x-input-label class="form-label" for="name" :value="__('Card Holder Name')" />
-                                            <x-text-input id="card_holder_name" class="form-control bg-transparent"
-                                                type="text" name="card_holder_name" :value="old('card_holder_name')" required
-                                                autofocus autocomplete="card_holder_name" />
-                                            <x-input-error :messages="$errors->get('name')" class="mt-2" />
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <x-input-label class="form-label" for="password_confirmation"
-                                                :value="__('Card details')" />
-                                            <div class="card-element">
-                                            </div>
-                                            <div id="card-errors" role="alert"></div>
-                                        </div>
-                                    </div>
-                                </div> --}}
+                                {{-- </div> --}}
                             </div>
-                            <div class="d-flex flex-stack">
-                                {{-- <div class="me-2">
-                                    <button type="button" class="btn btn-light btn-active-light-primary"
-                                        data-kt-stepper-action="previous">
-                                        Back
-                                    </button>
-                                </div> --}}
+                            <div class="d-flex justify-content-end">
                                 <div>
-                                    <button type="submit" class="btn btn-primary" data-kt-stepper-action="submit" id="card-button">
+                                    <button type="submit" class="btn btn-primary">
                                         Continue
                                     </button>
-                                    {{-- <button type="submit" class="btn btn-primary" id="card-button"
-                                    data-secret="{{ $intent->client_secret }}">
-                                        Subscribe
-                                    </button> --}}
-                                    {{-- <button type="submit" class="btn btn-primary" id="card-button"
-                                                    data-secret="{{ $intent->client_secret }}">Pay</button> --}}
-                                    {{-- <button type="button" class="btn btn-primary" data-kt-stepper-action="next">
-                                        Continue
-                                    </button> --}}
                                 </div>
                             </div>
                         </form>
