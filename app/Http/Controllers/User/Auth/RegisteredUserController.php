@@ -100,6 +100,8 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($validatedData['password']),
         ]);
 
+        
+
         Auth::login($user);
 
         Mail::to($user->email)->send(new UserRegistrationMail($user->name));
