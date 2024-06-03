@@ -418,7 +418,7 @@
         <script>
             // Create a Stripe instance
             var stripe = Stripe('{{ env('STRIPE_KEY') }}');
-
+            // alert(stripe);
             // Create an instance of Elements
             var elements = stripe.elements();
 
