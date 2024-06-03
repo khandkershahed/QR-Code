@@ -81,7 +81,7 @@ class RegisteredUserController extends Controller
 
     }
 
-    public function stripeCallback()
+    public function stripeCallback(Request $request)
     {
         // Retrieve registration data from session
         $data = session()->get('registration_data');
