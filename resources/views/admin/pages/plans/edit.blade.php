@@ -96,21 +96,28 @@
                         <x-metronic.input id="currency" type="text" name="currency" :value="old('currency', $plan->currency)"
                             placeholder="Enter the Plan Currency"></x-metronic.input>
                     </div>
-                    <div class="col-lg-4 mb-5">
+                    <div class="col-lg-3 mb-5">
+                        <x-metronic.label for="payment_link"
+                            class="required col-form-label fw-bold fs-6">{{ __('Payment Page Link') }}
+                        </x-metronic.label>
+                        <x-metronic.input id="payment_link" type="url" name="payment_link" :value="old('payment_link', $plan->payment_link)" required
+                            placeholder="Stripe payment link"></x-metronic.input>
+                    </div>
+                    <div class="col-lg-3 mb-5">
                         <x-metronic.label for="qr"
                             class="col-form-label fw-bold fs-6">{{ __('Number of QR Code') }}
                         </x-metronic.label>
                         <x-metronic.input id="qr" type="number" name="qr" :value="old('qr', $plan->qr)"
                             placeholder="Number of QR Code"></x-metronic.input>
                     </div>
-                    <div class="col-lg-4 mb-5">
+                    <div class="col-lg-3 mb-5">
                         <x-metronic.label for="nfc"
                             class="col-form-label fw-bold fs-6">{{ __('Number of NFC Card') }}
                         </x-metronic.label>
                         <x-metronic.input id="nfc" type="number" name="nfc" :value="old('nfc', $plan->nfc)"
                             placeholder="Number of NFC Card"></x-metronic.input>
                     </div>
-                    <div class="col-lg-4 mb-5">
+                    <div class="col-lg-3 mb-5">
                         <x-metronic.label for="status" class="col-form-label required fw-bold fs-6">
                             {{ __('Select a Status ') }}</x-metronic.label>
                         <x-metronic.select-option id="status" name="status" data-hide-search="true"

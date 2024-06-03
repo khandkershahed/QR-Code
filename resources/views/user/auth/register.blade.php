@@ -206,7 +206,7 @@
                                             </span>
                                     </div> --}}
                                 </div>
-                                <div class="flex-column" data-kt-stepper-element="content">
+                                {{-- <div class="flex-column" data-kt-stepper-element="content">
                                     <div class="row py-15">
                                         <div class="col-lg-12 mb-2">
                                             <input type="hidden" name="plan" id="plan" value="{{ $plan->id }}">
@@ -219,27 +219,23 @@
                                         <div class="col-lg-12">
                                             <x-input-label class="form-label" for="password_confirmation"
                                                 :value="__('Card details')" />
-                                            {{-- <div id="card-element" class="form-control bg-transparent password_input">
-                                            </div> --}}
                                             <div class="card-element">
-                                                <!-- A Stripe Element will be inserted here. -->
                                             </div>
-                                            <!-- Error message placeholder -->
                                             <div id="card-errors" role="alert"></div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="d-flex flex-stack">
-                                <div class="me-2">
+                                {{-- <div class="me-2">
                                     <button type="button" class="btn btn-light btn-active-light-primary"
                                         data-kt-stepper-action="previous">
                                         Back
                                     </button>
-                                </div>
+                                </div> --}}
                                 <div>
                                     <button type="submit" class="btn btn-primary" data-kt-stepper-action="submit" id="card-button">
-                                        Subscribe
+                                        Continue
                                     </button>
                                     {{-- <button type="submit" class="btn btn-primary" id="card-button"
                                     data-secret="{{ $intent->client_secret }}">
@@ -247,9 +243,9 @@
                                     </button> --}}
                                     {{-- <button type="submit" class="btn btn-primary" id="card-button"
                                                     data-secret="{{ $intent->client_secret }}">Pay</button> --}}
-                                    <button type="button" class="btn btn-primary" data-kt-stepper-action="next">
+                                    {{-- <button type="button" class="btn btn-primary" data-kt-stepper-action="next">
                                         Continue
-                                    </button>
+                                    </button> --}}
                                 </div>
                             </div>
                         </form>

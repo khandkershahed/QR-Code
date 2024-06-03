@@ -21,6 +21,7 @@ return new class extends Migration
             $table->json('descriptions')->nullable();
             $table->double('price')->nullable();
             $table->string('billing_cycle')->nullable();
+            $table->text('payment_link')->nullable();
             $table->string('type')->nullable();
             $table->string('currency')->default('USD')->nullable();
             $table->string('interval')->comment('Interval in days')->nullable();
