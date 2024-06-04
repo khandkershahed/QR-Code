@@ -21,6 +21,11 @@ return [
         'endpoint'  => env('MAILGUN_ENDPOINT', 'api.mailgun.net'),
         // 'scheme'    => 'https',
     ],
+    
+    'stripe' => [
+        'secret' => env('STRIPE_SECRET'),
+        'webhook_secret' => env('STRIPE_WEBHOOK_SECRET'),
+    ],
 
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
