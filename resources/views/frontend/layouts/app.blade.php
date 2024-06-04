@@ -2,15 +2,25 @@
 <html lang="zxx">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8" />
-    <meta name="description" content="" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
-    <!-- Title -->
     @props(['title'])
+    <meta name="title" content="{{ $title ?? config('app.name', '| Go QR') }}">
+    <meta name="description"
+        content="Generate custom QR Codes for URLs, vCards, and create NFC Cards. Personalize with logos, colors, and frames. Create your free QR Codes today!">
+    <meta name="keywords"
+        content="qr code generator, create qr codes, qr code maker, qr generator, qr code creator, qr code, qr code with logo, free qr codes, qr code generator free, nfc card, nfc card generator, restaurant, restaurant qr, geolocation, nfc card, business card, qr code with frames">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="2 days">
+    <meta name="author" content="https://www.goflixza.com/">
+    <!-- Title -->
     <title>{{ $title ?? config('app.name', '| Go QR') }}</title>
+    <meta property="og:type" content="website">
+    <meta property="og:description"
+        content="Generate custom QR Codes for URLs, vCards, and more with our QR Code Generator. Personalize with logos, colors, and frames, and download in high print quality. Create your free QR Codes today!">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:url" content="https://www.goflixza.com/">
     <!-- Favicon Icon -->
     <link rel="shortcut icon" href="https://i.ibb.co/BNBTVN4/logo.png" type="image/x-icon" />
     <!-- Google Fonts -->
@@ -41,8 +51,7 @@
         <!-- Preloader -->
         <div class="preloader">
             {{-- <div class="custom-loader"></div> --}}
-            <img src="{{ asset('frontend') }}/assets/images/client-logos/preloader.svg"
-                                alt="Client Logo" />
+            <img src="{{ asset('frontend') }}/assets/images/client-logos/preloader.svg" alt="Client Logo" />
         </div>
 
         <!-- header start-->
