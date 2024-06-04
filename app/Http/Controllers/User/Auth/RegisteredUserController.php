@@ -71,6 +71,11 @@ class RegisteredUserController extends Controller
     // }
     public function store(Request $request): RedirectResponse
     {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
         $request->session()->put('registration_data', $request->all());
         if (!empty($request->payment_link)) {
             return redirect()->to($request->payment_link);
@@ -83,6 +88,7 @@ class RegisteredUserController extends Controller
 
     public function stripeCallback(Request $request)
     {
+
         // Retrieve registration data from session
         $data = session()->get('registration_data');
         $plan = Plan::find($data['plan']);
