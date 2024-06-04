@@ -85,7 +85,7 @@ class RegisteredUserController extends Controller
     {
         // Retrieve registration data from session
         $data = session()->get('registration_data');
-
+        $plan = Plan::find($data['plan']);
         // Validate registration data
         $validatedData = Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
@@ -100,7 +100,8 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($validatedData['password']),
         ]);
 
-        
+        $subscription = $user->newSubscription($plan->slug, $plan->stripe_plan)->create($request->payment_method);
+        $user->syncStripePlan();
 
         Auth::login($user);
 
