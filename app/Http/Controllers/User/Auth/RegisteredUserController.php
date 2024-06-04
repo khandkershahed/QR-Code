@@ -85,7 +85,6 @@ class RegisteredUserController extends Controller
     {
         // Retrieve registration data from session
         $data = session()->get('registration_data');
-        dd($data);
         $plan = Plan::find($data['plan']);
         // Validate registration data
         $validatedData = Validator::make($data, [

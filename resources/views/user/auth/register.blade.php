@@ -88,6 +88,7 @@
                             method="POST" action="{{ route('register') }}">
                             @csrf
                             <input type="hidden" name="payment_link" value="{{ $plan->payment_link }}">
+                            <input type="hidden" name="plan" value="{{ $plan->id }}">
                             <div class="mb-5">
                                 {{-- <div class="flex-column current" data-kt-stepper-element="content"> --}}
                                 <div class="row">
@@ -169,7 +170,7 @@
                                         class="col-lg-12 mb-8 fv-plugins-icon-container d-flex justify-content-between align-items-center">
                                         <div class="pt-2">
                                             <label class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="toc"
+                                                <input class="form-check-input" type="checkbox" name="terms"
                                                     value="1" required checked>
                                                 <span class="form-check-label fw-semibold text-gray-700 fs-base ms-1">
                                                     I Accept the <a href="#" class="ms-1 link-primary">Terms
