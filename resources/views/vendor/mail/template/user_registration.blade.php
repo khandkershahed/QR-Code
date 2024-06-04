@@ -23,27 +23,28 @@
                         style="text-align:left; margin: 0 20px; padding: 40px; background-color:#ffffff; border-radius: 6px">
                         <!--begin:Email content-->
                         <div style="padding-bottom: 30px; font-size: 17px;">
-                            <strong>Hey {{ $data }}</strong>
+                            <strong>Hi {{ $data }}</strong>
                         </div>
-                        <div style="padding-bottom: 30px">Your Account has been successfully created in our website.You
-                            can now login to your dashboard from below link:
+                        <div style="padding-bottom: 30px">Welcome to GoFlixza! We're thrilled to have you on board.
+                        </div>
+                        <div style="padding-bottom: 30px">
+                            Your account has been successfully created. You can now access your personalized dashboard packed with features to enhance your experience.
                         </div>
                         <div style="padding-bottom: 40px; text-align:center;">
                             <a href="{{ route('login') }}" rel="noopener"
                                 style="text-decoration:none;display:inline-block;text-align:center;padding:0.75575rem 1.3rem;font-size:0.925rem;line-height:1.5;border-radius:0.35rem;color:#ffffff;background-color:#009EF7;border:0px;margin-right:0.75rem!important;font-weight:600!important;outline:none!important;vertical-align:middle"
                                 target="_blank">Login To Your Dashboard</a>
                         </div>
-                        <div style="padding-bottom: 30px">Joining with us will give you access to your personal
-                            dashboard,
-                            including information about our products.</div>
-                        <div style="padding-bottom: 30px">You can find answers to most questions and get in touch with
-                            us at
+                        <div style="padding-bottom: 30px">Need Help?
+                        </div>
+                        <div style="padding-bottom: 30px">Our friendly support team is always happy to assist you. You can find answers to most questions and contact us through
                             <a href="{{ route('contact') }}" rel="noopener" target="_blank"
                                 style="text-decoration:none;color: #009EF7">GO QR Contact</a>.
                         </div>
                         <!--end:Email content-->
-                        <div style="padding-bottom: 10px">Kind regards,
-                            <br>The GO QR Team.
+                        <div style="padding-bottom: 10px">Sincerely,
+                            <br>The GoFlixza Team.
+                        </div>
             <tr>
                 <td align="center" valign="center"
                     style="font-size: 13px; text-align:center;padding: 20px; color: #6d6e7c;">

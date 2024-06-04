@@ -35,7 +35,7 @@ class UserRegistrationMail extends Mailable
     public function build()
     {
         return $this->from('support@flixzaglobal.com', 'GO QR')
-        ->subject('Account successfully created in GO QR.')
+        ->subject('Welcome to GoFlixza! Your Account is Ready.')
         ->view('vendor.mail.template.user_registration', [
             'data' => $this->data,
             'logoUrl' => $this->logoUrl,
@@ -45,7 +45,7 @@ class UserRegistrationMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Account successfully created in GO QR.',
+            subject: 'Welcome to GoFlixza! Your Account is Ready',
         );
     }
 
