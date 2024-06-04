@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Http\Controllers\Subscription;
-// app/Http/Controllers/Subscription/StripeWebhookController.php
 
 use App\Models\User;
 use App\Models\Admin\Plan;
@@ -12,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rules;
 use Laravel\Cashier\Http\Controllers\WebhookController as CashierWebhookController;
 
 class StripeWebhookController extends CashierWebhookController
@@ -57,11 +56,16 @@ class StripeWebhookController extends CashierWebhookController
         ]);
 
         $user->createOrGetStripeCustomer();
-        $user->updateDefaultPaymentMethod($session->payment_method);
+
+        // Retrieve the payment method ID from the session
+        \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
+        $checkoutSession = \Stripe\Checkout\Session::retrieve($session->id);
+        $paymentMethod = $checkoutSession->payment_method;
 
         $plan = Plan::find($registrationData['plan']);
-        $user->newSubscription($plan->slug, $plan->stripe_plan)->create($session->payment_method);
+        $user->newSubscription($plan->slug, $plan->stripe_plan)->create($paymentMethod);
 
         Mail::to($user->email)->send(new UserRegistrationMail($user->name));
     }
+
 }
