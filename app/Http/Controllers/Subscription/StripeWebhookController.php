@@ -26,8 +26,8 @@ class StripeWebhookController extends CashierWebhookController
         $endpoint_secret = config('services.stripe.webhook_secret');
 
         try {
-            $event = Webhook::constructEvent($payload, $sig_header, $endpoint_secret);
-        } catch (SignatureVerificationException $e) {
+            $event = \Stripe\Webhook::constructEvent($payload, $sig_header, $endpoint_secret);
+        } catch (\Stripe\Exception\SignatureVerificationException $e) {
             Log::error('Stripe webhook signature verification failed.', ['exception' => $e]);
             return response()->json(['error' => 'Invalid signature.'], 400);
         }
@@ -67,7 +67,7 @@ class StripeWebhookController extends CashierWebhookController
         $user = User::create([
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
-            'password' => Hash::make($validatedData['password']),
+            'password' => \Illuminate\Support\Facades\Hash::make($validatedData['password']),
         ]);
 
         // Create or get Stripe customer

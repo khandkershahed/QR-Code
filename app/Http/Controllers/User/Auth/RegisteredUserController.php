@@ -81,7 +81,7 @@ class RegisteredUserController extends Controller
     //     // Store registration data along with a unique identifier
     //     $sessionId = session()->getId(); // Get the session ID
     //     Cache::put('registration_data_' . $sessionId, $request->all(), 60);
-
+    // \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
     //     // Create checkout session with client_reference_id set to session ID
     //     $checkoutSession = \Stripe\Checkout\Session::create([
     //         // Other parameters...
@@ -97,34 +97,35 @@ class RegisteredUserController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-            $request->validate([
-                'name' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
-                'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            ]);
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
 
-            // Store registration data along with a unique identifier
-            $sessionId = session()->getId(); // Get the session ID
-            Cache::put('registration_data_' . $sessionId, $request->all(), 60);
+        // Store registration data along with a unique identifier
+        $sessionId = session()->getId(); // Get the session ID
+        Cache::put('registration_data_' . $sessionId, $request->all(), 60);
 
-            // Find the selected plan
-            $plan = Plan::find($request->input('plan'));
-            \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-            // Create checkout session with client_reference_id set to session ID
-            $checkoutSession = \Stripe\Checkout\Session::create([
-                'payment_method_types' => ['card'],
-                'line_items' => [[
-                    'price' => $plan->stripe_plan, // Ensure this is a recurring price ID
-                    'quantity' => 1,
-                ]],
-                'mode' => 'subscription',
-                'success_url' => route('stripe.success', [], true) . "?session_id={CHECKOUT_SESSION_ID}",
-                'cancel_url' => route('stripe.cancel', [], true),
-                'client_reference_id' => $sessionId,
-            ]);
+        // Find the selected plan
+        $plan = Plan::find($request->input('plan'));
+        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
-            return redirect()->to($checkoutSession->url);
-        }
+        // Create checkout session with client_reference_id set to session ID
+        $checkoutSession = \Stripe\Checkout\Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+                'price' => $plan->stripe_plan, // Ensure this is a recurring price ID
+                'quantity' => 1,
+            ]],
+            'mode' => 'subscription',
+            'success_url' => route('stripe.success', [], true) . "?session_id={CHECKOUT_SESSION_ID}",
+            'cancel_url' => route('stripe.cancel', [], true),
+            'client_reference_id' => $sessionId,
+        ]);
+
+        return redirect()->to($checkoutSession->url);
+    }
 
 
     // public function stripeCallback(Request $request)
