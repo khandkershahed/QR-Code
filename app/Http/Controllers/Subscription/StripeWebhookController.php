@@ -106,8 +106,8 @@ class StripeWebhookController extends CashierWebhookController
         ]);
         // Check if the subscription was successfully created
         if ($subscription) {
-            // Retrieve the active subscription using Laravel Cashier's methods
-            $activeSubscription = $request->user()->subscription($plan->slug);
+            // Retrieve the active subscription
+            $activeSubscription = Subscription::where('user_id', $request->user()->id)->active()->first();
 
             // Ensure an active subscription exists
             if ($activeSubscription) {
@@ -123,7 +123,6 @@ class StripeWebhookController extends CashierWebhookController
             return redirect()->route('register')->with('error', 'Error occurred while subscribing to a plan.');
         }
     }
-
 
 
     public function handleWebhook(Request $request)
