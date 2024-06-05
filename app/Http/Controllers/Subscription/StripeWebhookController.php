@@ -43,32 +43,33 @@ class StripeWebhookController extends CashierWebhookController
 
     protected function handleCheckoutSessionCompleted($session)
     {
-        // Retrieve registration data from cache using the session ID
-        $sessionId = $session->client_reference_id;
+        $metadata = $session->metadata;
+
+        // Extract session identifier from metadata
+        $sessionId = $metadata->session_id;
+
+        // Retrieve registration data from session metadata using the session identifier
         $registrationData = Cache::get('registration_data_' . $sessionId);
-
-        Log::info('Registration Data:', ['data' => $registrationData]);
-        Log::info('Checkout Session:', ['session' => $session]);
-
-        // Ensure $registrationData is not null before proceeding
-        if (!$registrationData) {
-            Log::error('Registration data is null.');
-            return response()->json(['error' => 'Registration data is null.'], 400);
-        }
 
         // Validate registration data
         $validatedData = Validator::make($registrationData, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'plan_id' => ['required', 'exists:plans,id'],
         ])->validate();
 
-        // Create user
+        // Create the user
         $user = User::create([
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
-            'password' => \Illuminate\Support\Facades\Hash::make($validatedData['password']),
+            'password' => Hash::make($validatedData['password']),
         ]);
+        // $user = User::create([
+        //     'name' => $metadata['name'],
+        //     'email' => $metadata['email'],
+        //     'password' => Hash::make($metadata['password']),
+        // ]);
 
         // Create or get Stripe customer
         $user->createOrGetStripeCustomer();
@@ -77,7 +78,7 @@ class StripeWebhookController extends CashierWebhookController
         $user->updateDefaultPaymentMethod($session->payment_method);
 
         // Find plan
-        $plan = Plan::find($registrationData['plan']);
+        $plan = Plan::find($metadata['plan_id']);
 
         // Subscribe user to plan
         $user->newSubscription($plan->slug, $plan->stripe_plan)->create($session->payment_method);

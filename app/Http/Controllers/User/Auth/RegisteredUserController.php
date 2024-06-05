@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User\Auth;
 use App\Models\User;
 use Illuminate\View\View;
 use App\Models\Admin\Plan;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 use App\Mail\UserRegistrationMail;
@@ -101,15 +102,23 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'plan' => ['required', 'exists:plans,id'],
         ]);
 
-        // Store registration data along with a unique identifier
-        $sessionId = session()->getId(); // Get the session ID
-        Cache::put('registration_data_' . $sessionId, $request->all(), 60);
-
-        // Find the selected plan
-        $plan = Plan::find($request->input('plan'));
+        // Generate a unique session identifier
+        $sessionId = Str::uuid();
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        // Find the selected plan
+        $plan = Plan::findOrFail($request->input('plan'));
+
+        // Set up metadata with the unique session identifier
+        $metadata = [
+            'session_id' => $sessionId,
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => $request->input('password'),
+            'plan_id' => $plan->id,
+        ];
 
         // Create checkout session with client_reference_id set to session ID
         $checkoutSession = \Stripe\Checkout\Session::create([
@@ -122,44 +131,13 @@ class RegisteredUserController extends Controller
             'success_url' => route('stripe.success', [], true) . "?session_id={CHECKOUT_SESSION_ID}",
             'cancel_url' => route('stripe.cancel', [], true),
             'client_reference_id' => $sessionId,
+            'metadata' => $metadata,
         ]);
 
         return redirect()->to($checkoutSession->url);
     }
 
 
-    // public function stripeCallback(Request $request)
-    // {
-
-    //     // Retrieve registration data from session
-    //     $data = session()->get('registration_data');
-    //     $plan = Plan::find($data['plan']);
-    //     // Validate registration data
-    //     $validatedData = Validator::make($data, [
-    //         'name' => ['required', 'string', 'max:255'],
-    //         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-    //         'password' => ['required', 'confirmed', Rules\Password::defaults()],
-    //     ])->validate();
-
-    //     // Create the user
-    //     $user = User::create([
-    //         'name' => $validatedData['name'],
-    //         'email' => $validatedData['email'],
-    //         'password' => Hash::make($validatedData['password']),
-    //     ]);
-
-    //     $subscription = $user->newSubscription($plan->slug, $plan->stripe_plan)->create($request->payment_method);
-    //     $user->syncStripePlan();
-
-    //     Auth::login($user);
-
-    //     Mail::to($user->email)->send(new UserRegistrationMail($user->name));
-
-    //     session()->forget('registration_data');
-
-    //     // Redirect to the dashboard or landing page
-    //     return redirect(RouteServiceProvider::HOME)->with('success', 'You have successfully registered with the plan.');
-    // }
     public function stripeCallback()
     {
         // Retrieve registration data from session
