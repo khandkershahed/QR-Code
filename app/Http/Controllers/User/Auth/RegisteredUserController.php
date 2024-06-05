@@ -70,29 +70,66 @@ class RegisteredUserController extends Controller
     //         return redirect()->back()->with('error', 'Subscription failed. Please try again.');
     //     }
     // }
+    // public function store(Request $request): RedirectResponse
+    // {
+    //     $request->validate([
+    //         'name' => ['required', 'string', 'max:255'],
+    //         'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+    //         'password' => ['required', 'confirmed', Rules\Password::defaults()],
+    //     ]);
+
+    //     // Store registration data along with a unique identifier
+    //     $sessionId = session()->getId(); // Get the session ID
+    //     Cache::put('registration_data_' . $sessionId, $request->all(), 60);
+
+    //     // Create checkout session with client_reference_id set to session ID
+    //     $checkoutSession = \Stripe\Checkout\Session::create([
+    //         // Other parameters...
+    //         'client_reference_id' => $sessionId,
+    //     ]);
+
+    //     if (!empty($request->payment_link)) {
+    //         return redirect()->to($request->payment_link);
+    //     } else {
+    //         return redirect()->route('stripe.callback');
+    //     }
+    // }
+
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
+            $request->validate([
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
+                'password' => ['required', 'confirmed', RulesPassword::defaults()],
+            ]);
 
-        // Store registration data along with a unique identifier
-        $sessionId = $request->session()->getId();
-        // $request->session()->put('registration_data', $request->all());
-        // $registrationData = [
-        //     'name' => $request->name,
-        //     'email' => $request->email,
-        //     'password' => $request->password,
-        //     'plan' => $request->plan,
-        // ];
-        Cache::put('registration_data_' . $sessionId, $request->all(), 60);
+            // Store registration data along with a unique identifier
+            $sessionId = session()->getId(); // Get the session ID
+            Cache::put('registration_data_' . $sessionId, $request->all(), 60);
 
-        if (!empty($request->payment_link)) {
-            return redirect()->to($request->payment_link);
-        } else {
-            return redirect()->route('stripe.callback');
+            // Find the selected plan
+            $plan = Plan::find($request->input('plan_id'));
+
+            // Create checkout session with client_reference_id set to session ID
+            $checkoutSession = \Stripe\Checkout\Session::create([
+                'payment_method_types' => ['card'],
+                'line_items' => [[
+                    'price_data' => [
+                        'currency' => 'usd',
+                        'product_data' => [
+                            'name' => $plan->title,
+                        ],
+                        'unit_amount' => $plan->price * 100,
+                    ],
+                    'quantity' => 1,
+                ]],
+                'mode' => 'subscription',
+                'success_url' => route('stripe.success', [], true) . "?session_id={CHECKOUT_SESSION_ID}",
+                'cancel_url' => route('stripe.cancel', [], true),
+                'client_reference_id' => $sessionId,
+            ]);
+
+            return redirect()->to($checkoutSession->url);
         }
     }
 
