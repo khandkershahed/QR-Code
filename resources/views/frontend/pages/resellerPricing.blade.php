@@ -52,7 +52,17 @@
                                                     <h5 class="title">{{ $individual_plan->title }}</h5>
                                                     <div class="price"><span
                                                             class="prev">$</span>{{ $individual_plan->price }}<span
-                                                            class="next">/{{ $individual_plan->billing_cycle }}</span></div>
+                                                            class="next">/
+                                                        @if ($individual_plan->billing_cycle == 'yearly')
+                                                            yearly
+                                                        @elseif ($individual_plan->billing_cycle == 'monthly')
+                                                            monthly
+                                                        @elseif ($individual_plan->billing_cycle == 'half_yearly')
+                                                            Half Yearly
+                                                        @else
+                                                            Trial Period
+                                                        @endif
+                                                        </span></div>
                                                 </div>
                                                 <hr>
                                                 {{-- <div class="text">For small businesses looking to reach more consumers

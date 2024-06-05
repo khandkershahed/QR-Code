@@ -9,23 +9,31 @@
                                 <div class="d-flex align-items-center">
                                     <a href="" class="pe-3"><i class="fa-solid fa-arrow-left-long"></i></a>
                                     <h2 class="mb-0"><i class="fa-solid fa-shop pe-3"></i> FLIXZA GLOBAL LLC <span
-                                            class="badge bg-warning text-danger">Test Mode</span></h2>
+                                            class="badge bg-warning text-danger">Payment</span></h2>
                                 </div>
                                 <div class="" style="margin-top: 5rem">
-                                    <p>Subscribe to Go Test</p>
+                                    <p>Subscribe to {{ $plan->title }}</p>
                                     <div>
-                                        <h1>$250.00</h1>
-                                        <p>Per Year</p>
+                                        <h1>{{ $plan->price }}</h1>
+                                        <p>@if ($plan->billing_cycle == 'yearly')
+                                            Per year
+                                        @elseif ($plan->billing_cycle == 'monthly')
+                                        Per month
+                                        @elseif ($plan->billing_cycle == 'half_yearly')
+                                        Per Half Year
+                                        @else
+                                            Trial Period
+                                        @endif</p>
                                     </div>
                                     <div>
                                         <img class="img-fluid" src="https://png.pngtree.com/png-vector/20220829/ourmid/pngtree-vintage-retro-sunset-striped-circle-art-png-image_6129843.png" alt="">
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-start align-items-center">
-                                    <p style="border-right: 1px solid #eee;">Powered By <a href="">FLIXZA GLOBAL LLC</a></p>
+                                    <p style="border-right: 1px solid #eee;">Powered By <a href="{{ route('homePage') }}">FLIXZA GLOBAL LLC</a></p>
                                     <p class="d-flex">
-                                        <a href="">Terms</a>
-                                        <a href="">Privacy</a>
+                                        <a href="{{ route('terms') }}">Terms</a>
+                                        <a href="{{ route('terms') }}">Privacy</a>
                                     </p>
                                 </div>
                             </div>
@@ -33,13 +41,15 @@
                                 <div class="text-center py-4">
                                     <h1>Pay With Card</h1>
                                 </div>
-                                <form action="">
+                                <form action="{{ route('user.subscription.create') }}"
+                                method="POST" id="payment-form">
+                                    @csrf
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="mb-5">
                                                 <label for="exampleInputEmail1" class="form-label">Email</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1"
-                                                    aria-describedby="emailHelp" placeholder="Enter Email">
+                                                <input type="email" class="form-control" id="card-holder-email" name=email
+                                                    aria-describedby="emailHelp" placeholder="demo@example.com">
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
@@ -51,10 +61,10 @@
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="mb-5">
-                                                <label for="exampleInputEmail1" class="form-label">Cardholder
+                                                <label for="card-holder-name" class="form-label">Cardholder
                                                     Name</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1"
-                                                    aria-describedby="emailHelp" placeholder="Enter Cardholder name">
+                                                <input type="text" class="form-control" id="card-holder-name" name=name
+                                                    aria-describedby="emailHelp" placeholder="Name on the card">
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
@@ -306,7 +316,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-lg-12">
+                                        {{-- <div class="col-lg-12">
                                             <div class="p-3" style="border: 1px solid #eee;">
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox"
@@ -317,11 +327,12 @@
                                                 </div>
                                                 <p>Pay faster on FLIXZA GLOBAL LLC and everywhere Link is accepted.</p>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         <div class="col-lg-12">
                                             <div class="py-5">
-                                                <a href="" class="btn btn-primary rounded-pill w-100">View
-                                                    Pricing</a>
+                                                <button type="submit" class="btn btn-primary rounded-2 w-100" id="card-button"
+                                                    data-secret="{{ $intent->client_secret }}">Subscribe</button>
+                                                {{-- <a href="{{ route('pricing') }}" class="btn btn-primary rounded-2 w-100">VSubscribe</a> --}}
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
@@ -351,7 +362,9 @@
 
             const form = document.getElementById('payment-form')
             const cardBtn = document.getElementById('card-button')
-            const cardHolderName = document.getElementById('card-holder-name')
+            const cardHolderName = document.getElementById('card-holder-email')
+            const cardHolderEmail = document.getElementById('card-holder-name')
+            const billingCountry = document.getElementById('billingCountry')
 
             form.addEventListener('submit', async (e) => {
                 e.preventDefault()
@@ -366,6 +379,8 @@
                             card: cardElement,
                             billing_details: {
                                 name: cardHolderName.value
+                                email: cardHolderEmail.value
+                                billingCountry: billingCountry.value
                             }
                         }
                     }

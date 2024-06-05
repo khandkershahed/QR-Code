@@ -89,9 +89,17 @@ class StripeWebhookController extends CashierWebhookController
     //     Mail::to($user->email)->send(new UserRegistrationMail($user->name));
     // }
 
-    public function stripeCheckout()
+    public function stripeCheckout($id)
     {
-        $data['plan'] = Plan::where('billing_cycle', 'trial_period')->first();
+        $data['plan'] = Plan::where('slug', $id)->first();
+        $data['intent'] = auth()->user()->createSetupIntent();
+        return view('frontend.pages.checkout',$data);
+    }
+    public function stripePayment(Request $request)
+    {
+        $plan = Plan::find($request->plan);
+        $subscription = $request->user()->newSubscription($plan->slug, $plan->stripe_plan)->create($request->token);
+        $request->user()->syncStripePlan();
         return view('frontend.pages.checkout',$data);
     }
 

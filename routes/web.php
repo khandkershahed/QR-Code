@@ -55,7 +55,8 @@ Route::get('/nfc/{name}/{code}', [HomeController::class, 'nfcPage'])->name('nfc.
 Route::get('/user-subscription/register/{id}', [HomeController::class, 'subscribeRegister'])->name('user_subscribe.register');
 
 
-Route::get('/stripe/checkout', [StripeWebhookController::class, 'stripeCheckout'])->name('stripe.checkout');
+Route::get('/stripe/checkout/{id}', [StripeWebhookController::class, 'stripeCheckout'])->name('stripe.checkout');
+Route::post('/stripe/payment', [StripeWebhookController::class, 'stripePayment'])->name('stripe.payment');
 Route::post('/stripe/webhook', [StripeWebhookController::class, 'handleWebhook']);
 Route::get('stripe/success', function () {
     return redirect(RouteServiceProvider::HOME)->with('success', 'You have successfully registered with the plan.');
