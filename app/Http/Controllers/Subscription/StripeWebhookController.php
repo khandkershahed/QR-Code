@@ -100,7 +100,7 @@ class StripeWebhookController extends CashierWebhookController
         $plan = Plan::find($request->plan);
         $subscription = $request->user()->newSubscription($plan->slug, $plan->stripe_plan)->create($request->token);
         $request->user()->syncStripePlan();
-        return view('frontend.pages.checkout',$data);
+        return redirect(RouteServiceProvider::HOME)->with('success', 'You have successfully registered with the plan.');
     }
 
     public function handleWebhook(Request $request)

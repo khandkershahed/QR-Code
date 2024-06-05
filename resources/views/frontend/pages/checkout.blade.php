@@ -14,23 +14,28 @@
                                 <div class="" style="margin-top: 5rem">
                                     <p>Subscribe to {{ $plan->title }}</p>
                                     <div>
-                                        <h1>{{ $plan->price }}</h1>
-                                        <p>@if ($plan->billing_cycle == 'yearly')
-                                            Per year
-                                        @elseif ($plan->billing_cycle == 'monthly')
-                                        Per month
-                                        @elseif ($plan->billing_cycle == 'half_yearly')
-                                        Per Half Year
-                                        @else
-                                            Trial Period
-                                        @endif</p>
+                                        <h1>$ {{ $plan->price }}</h1>
+                                        <p>
+                                            @if ($plan->billing_cycle == 'yearly')
+                                                Per year
+                                            @elseif ($plan->billing_cycle == 'monthly')
+                                                Per month
+                                            @elseif ($plan->billing_cycle == 'half_yearly')
+                                                Per Half Year
+                                            @else
+                                                Trial Period
+                                            @endif
+                                        </p>
                                     </div>
                                     <div>
-                                        <img class="img-fluid" src="https://png.pngtree.com/png-vector/20220829/ourmid/pngtree-vintage-retro-sunset-striped-circle-art-png-image_6129843.png" alt="">
+                                        <img class="img-fluid"
+                                            src="https://png.pngtree.com/png-vector/20220829/ourmid/pngtree-vintage-retro-sunset-striped-circle-art-png-image_6129843.png"
+                                            alt="">
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-start align-items-center">
-                                    <p style="border-right: 1px solid #eee;">Powered By <a href="{{ route('homePage') }}">FLIXZA GLOBAL LLC</a></p>
+                                    <p style="border-right: 1px solid #eee;">Powered By <a
+                                            href="{{ route('homePage') }}">FLIXZA GLOBAL LLC</a></p>
                                     <p class="d-flex">
                                         <a href="{{ route('terms') }}">Terms</a>
                                         <a href="{{ route('terms') }}">Privacy</a>
@@ -41,16 +46,16 @@
                                 <div class="text-center py-4">
                                     <h1>Pay With Card</h1>
                                 </div>
-                                <form action="{{ route('user.subscription.create') }}"
-                                method="POST" id="payment-form">
+                                <form action="{{ route('user.subscription.create') }}" method="POST" id="payment-form">
                                     @csrf
                                     <input type="hidden" name="plan" id="plan" value="{{ $plan->id }}">
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="mb-5">
                                                 <label for="exampleInputEmail1" class="form-label">Email</label>
-                                                <input type="email" class="form-control" id="card-holder-email" name=email
-                                                    aria-describedby="emailHelp" placeholder="demo@example.com">
+                                                <input type="email" class="form-control" id="card-holder-email"
+                                                    name=email aria-describedby="emailHelp"
+                                                    placeholder="demo@example.com">
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
@@ -64,8 +69,9 @@
                                             <div class="mb-5">
                                                 <label for="card-holder-name" class="form-label">Cardholder
                                                     Name</label>
-                                                <input type="text" class="form-control" id="card-holder-name" name=name
-                                                    aria-describedby="emailHelp" placeholder="Name on the card">
+                                                <input type="text" class="form-control" id="card-holder-name"
+                                                    name=name aria-describedby="emailHelp"
+                                                    placeholder="Name on the card">
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
@@ -331,7 +337,8 @@
                                         </div> --}}
                                         <div class="col-lg-12">
                                             <div class="py-5">
-                                                <button type="submit" class="btn btn-primary rounded-2 w-100" id="card-button"
+                                                <button type="submit" class="btn btn-primary rounded-2 w-100"
+                                                    id="card-button"
                                                     data-secret="{{ $intent->client_secret }}">Subscribe</button>
                                                 {{-- <a href="{{ route('pricing') }}" class="btn btn-primary rounded-2 w-100">VSubscribe</a> --}}
                                             </div>
@@ -363,8 +370,8 @@
 
             const form = document.getElementById('payment-form')
             const cardBtn = document.getElementById('card-button')
-            const cardHolderName = document.getElementById('card-holder-email')
-            const cardHolderEmail = document.getElementById('card-holder-name')
+            const cardHolderName = document.getElementById('card-holder-name')
+            const cardHolderEmail = document.getElementById('card-holder-email')
             const billingCountry = document.getElementById('billingCountry')
 
             form.addEventListener('submit', async (e) => {
@@ -379,25 +386,30 @@
                         payment_method: {
                             card: cardElement,
                             billing_details: {
-                                name: cardHolderName.value
-                                email: cardHolderEmail.value
-                                billingCountry: billingCountry.value
+                                name: cardHolderName.value,
+                                email: cardHolderEmail.value,
+                                address: {
+                                    country: billingCountry.value
+                                }
                             }
                         }
                     }
                 )
 
                 if (error) {
-                    cardBtn.disable = false
+                    cardBtn.disabled = false
+                    console.error(error)
+                    // Optionally, display error message to the user
                 } else {
                     let token = document.createElement('input')
                     token.setAttribute('type', 'hidden')
                     token.setAttribute('name', 'token')
                     token.setAttribute('value', setupIntent.payment_method)
                     form.appendChild(token)
-                    form.submit();
+                    form.submit()
                 }
             })
         </script>
     @endpush
+
 </x-admin-guest-layout>
