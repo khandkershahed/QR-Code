@@ -50,8 +50,8 @@ class StripeWebhookController extends CashierWebhookController
         ])->validate();
 
         $user = User::create([
-            'name' => $validatedData['name'],
-            'email' => $validatedData['email'],
+            'name'     => $validatedData['name'],
+            'email'    => $validatedData['email'],
             'password' => Hash::make($validatedData['password']),
         ]);
 

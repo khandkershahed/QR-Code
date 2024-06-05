@@ -86,36 +86,47 @@ class RegisteredUserController extends Controller
 
     }
 
-    public function stripeCallback(Request $request)
-    {
+    // public function stripeCallback(Request $request)
+    // {
 
+    //     // Retrieve registration data from session
+    //     $data = session()->get('registration_data');
+    //     $plan = Plan::find($data['plan']);
+    //     // Validate registration data
+    //     $validatedData = Validator::make($data, [
+    //         'name' => ['required', 'string', 'max:255'],
+    //         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+    //         'password' => ['required', 'confirmed', Rules\Password::defaults()],
+    //     ])->validate();
+
+    //     // Create the user
+    //     $user = User::create([
+    //         'name' => $validatedData['name'],
+    //         'email' => $validatedData['email'],
+    //         'password' => Hash::make($validatedData['password']),
+    //     ]);
+
+    //     $subscription = $user->newSubscription($plan->slug, $plan->stripe_plan)->create($request->payment_method);
+    //     $user->syncStripePlan();
+
+    //     Auth::login($user);
+
+    //     Mail::to($user->email)->send(new UserRegistrationMail($user->name));
+
+    //     session()->forget('registration_data');
+
+    //     // Redirect to the dashboard or landing page
+    //     return redirect(RouteServiceProvider::HOME)->with('success', 'You have successfully registered with the plan.');
+    // }
+    public function stripeCallback()
+    {
         // Retrieve registration data from session
         $data = session()->get('registration_data');
-        $plan = Plan::find($data['plan']);
-        // Validate registration data
-        $validatedData = Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ])->validate();
+        if (!$data) {
+            return redirect()->route('register')->withErrors('Registration data not found.');
+        }
 
-        // Create the user
-        $user = User::create([
-            'name' => $validatedData['name'],
-            'email' => $validatedData['email'],
-            'password' => Hash::make($validatedData['password']),
-        ]);
-
-        $subscription = $user->newSubscription($plan->slug, $plan->stripe_plan)->create($request->payment_method);
-        $user->syncStripePlan();
-
-        Auth::login($user);
-
-        Mail::to($user->email)->send(new UserRegistrationMail($user->name));
-
-        session()->forget('registration_data');
-
-        // Redirect to the dashboard or landing page
+        // Assume the user creation was successful in the webhook
         return redirect(RouteServiceProvider::HOME)->with('success', 'You have successfully registered with the plan.');
     }
 
