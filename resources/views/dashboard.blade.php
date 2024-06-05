@@ -528,7 +528,11 @@
                                 <!--begin::Notice-->
                                 <div class="pb-5">
                                     <h3 class="text-center fw-bold">Currently on a </h3>
+                                    @if (!empty($subscription))
+                                    <h1 class="text-center mb-0 fw-bold" style="color: orangered;">{{ $subscription->plan->title }}</h1>
+                                    @else
                                     <h1 class="text-center mb-0 fw-bold" style="color: orangered;">14-day free trial</h1>
+                                    @endif
                                 </div>
                                 <p class="text-muted fs-5 fw-semibold mb-10 text-center mb-1"> Of our Premium Plan. This
                                     trial gives you full
@@ -542,6 +546,8 @@
                                     <h1 class="text-center mb-0 fw-bold" style="color: orangered;">Thank you for trying
                                         our <br> Premium service!</h1>
                                 </div>
+                                @if (!empty($subscription))
+                                @else
                                 <div class="trial_end">
                                     <div id="countdown">
                                         <div id='tiles'></div>
@@ -553,6 +559,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endif
                                 <!--end::Notice-->
                             </div>
                             <!--end::Options-->
