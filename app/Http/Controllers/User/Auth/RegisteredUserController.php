@@ -136,7 +136,7 @@ class RegisteredUserController extends Controller
 
         return redirect()->to($checkoutSession->url);
     }
-
+                                                                     
 
     public function stripeCallback()
     {

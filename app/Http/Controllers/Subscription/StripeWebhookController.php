@@ -35,24 +35,28 @@ class StripeWebhookController extends CashierWebhookController
         // Handle the event
         if ($event->type === 'checkout.session.completed') {
             $session = $event->data->object;
-            $this->handleCheckoutSessionCompleted($session);
+
+            // Extract session identifier from metadata
+            $sessionId = $session->client_reference_id;
+
+            // Retrieve the checkout session based on the client_reference_id
+            $checkoutSession = \Stripe\Checkout\Session::retrieve($sessionId);
+
+            // Retrieve metadata from the checkout session
+            $metadata = $checkoutSession->metadata;
+
+            // Now you have the metadata associated with the client_reference_id
+            // You can proceed to handle the checkout session completion
+            $this->handleCheckoutSessionCompleted($session, $metadata);
         }
 
         return response()->json(['status' => 'success']);
     }
 
-    protected function handleCheckoutSessionCompleted($session)
+    protected function handleCheckoutSessionCompleted($session, $metadata)
     {
-        $metadata = $session->metadata;
-
-        // Extract session identifier from metadata
-        $sessionId = $metadata->session_id;
-
-        // Retrieve registration data from session metadata using the session identifier
-        $registrationData = Cache::get('registration_data_' . $sessionId);
-
         // Validate registration data
-        $validatedData = Validator::make($registrationData, [
+        $validatedData = Validator::make($metadata, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
@@ -65,12 +69,6 @@ class StripeWebhookController extends CashierWebhookController
             'email' => $validatedData['email'],
             'password' => Hash::make($validatedData['password']),
         ]);
-        // $user = User::create([
-        //     'name' => $metadata['name'],
-        //     'email' => $metadata['email'],
-        //     'password' => Hash::make($metadata['password']),
-        // ]);
-
         // Create or get Stripe customer
         $user->createOrGetStripeCustomer();
 
