@@ -37,7 +37,7 @@ Route::middleware('guest')->group(function () {
                 ->name('password.store');
 
     Route::get('/stripe/callback', [RegisteredUserController::class, 'stripeCallback'])->name('stripe.callback');
-    Route::post('/stripe/webhook', [StripeWebhookController::class, 'handleWebhook']);
+    
 });
 
 Route::middleware('auth')->group(function () {
