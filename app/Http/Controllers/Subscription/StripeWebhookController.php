@@ -35,16 +35,17 @@ class StripeWebhookController extends CashierWebhookController
 
         // Handle the event
         if ($event->type === 'checkout.session.completed') {
+            $data = session()->get('registration_data');
             $session = $event->data->object;
-            $this->handleCheckoutSessionCompleted($session);
+            $this->handleCheckoutSessionCompleted($session , $data);
         }
 
         return response()->json(['status' => 'success']);
     }
 
-    protected function handleCheckoutSessionCompleted($session)
+    protected function handleCheckoutSessionCompleted($session, $data)
     {
-        $registrationData = session()->get('registration_data');
+        $registrationData = $data;
         Log::info('Registration Data:', ['data' => $registrationData]);
 
         // Ensure $registrationData is not null before proceeding
