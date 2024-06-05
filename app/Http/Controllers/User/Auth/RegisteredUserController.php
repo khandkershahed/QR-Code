@@ -80,13 +80,14 @@ class RegisteredUserController extends Controller
 
         // Store registration data along with a unique identifier
         $sessionId = $request->session()->getId();
-        $registrationData = [
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => $request->password,
-            // Other registration fields...
-        ];
-        Cache::put('registration_data_' . $sessionId, $registrationData, 60);
+        // $request->session()->put('registration_data', $request->all());
+        // $registrationData = [
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'password' => $request->password,
+        //     'plan' => $request->plan,
+        // ];
+        Cache::put('registration_data_' . $sessionId, $request->all(), 60);
 
         if (!empty($request->payment_link)) {
             return redirect()->to($request->payment_link);
