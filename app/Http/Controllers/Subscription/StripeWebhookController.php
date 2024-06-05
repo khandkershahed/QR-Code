@@ -45,7 +45,13 @@ class StripeWebhookController extends CashierWebhookController
     protected function handleCheckoutSessionCompleted($session)
     {
         $registrationData = session()->get('registration_data');
-        dd($registrationData);
+        Log::info('Registration Data:', ['data' => $registrationData]);
+
+        // Ensure $registrationData is not null before proceeding
+        if (!$registrationData) {
+            Log::error('Registration data is null.');
+            return response()->json(['error' => 'Registration data is null.'], 400);
+        }
         $validatedData = Validator::make($registrationData, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
