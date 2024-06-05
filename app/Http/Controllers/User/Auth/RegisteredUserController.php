@@ -109,7 +109,7 @@ class RegisteredUserController extends Controller
 
             // Find the selected plan
             $plan = Plan::find($request->input('plan'));
-            \Stripe\Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
+            \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
             // Create checkout session with client_reference_id set to session ID
             $checkoutSession = \Stripe\Checkout\Session::create([
                 'payment_method_types' => ['card'],
