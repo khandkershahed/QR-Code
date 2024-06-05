@@ -23,7 +23,8 @@ class StripeWebhookController extends CashierWebhookController
         $payload = @file_get_contents('php://input');
         $sig_header = $request->header('Stripe-Signature');
         $endpoint_secret = config('services.stripe.webhook_secret');
-
+        $data = session()->get('registration_data');
+        Log::info('Registration Session:', ['reg_session' => $data]);
         try {
             $event = Webhook::constructEvent(
                 $payload, $sig_header, $endpoint_secret
@@ -35,7 +36,7 @@ class StripeWebhookController extends CashierWebhookController
 
         // Handle the event
         if ($event->type === 'checkout.session.completed') {
-            $data = session()->get('registration_data');
+
             $session = $event->data->object;
             $this->handleCheckoutSessionCompleted($session , $data);
         }
@@ -47,6 +48,7 @@ class StripeWebhookController extends CashierWebhookController
     {
         $registrationData = $data;
         Log::info('Registration Data:', ['data' => $registrationData]);
+        Log::info('Registration Data:', ['session' => $session]);
 
         // Ensure $registrationData is not null before proceeding
         if (!$registrationData) {
