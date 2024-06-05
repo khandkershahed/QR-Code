@@ -35,7 +35,7 @@ class StripeWebhookController extends CashierWebhookController
         // Handle the event
         if ($event->type === 'checkout.session.completed') {
             $session = $event->data->object;
-
+            \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
             // Extract session identifier from metadata
             $sessionId = $session->client_reference_id;
 
