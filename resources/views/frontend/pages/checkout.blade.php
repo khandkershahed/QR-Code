@@ -1,21 +1,63 @@
 <x-admin-guest-layout :title="'Go Flixza Checkout'">
+    <style>
+        .payment-container {
+            position: absolute;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .devider {
+            height: 2px;
+            position: relative;
+            top: -10px;
+            background-color: #eee
+        }
+
+        .devider-text {
+            background-color: white;
+            position: relative;
+            z-index: 5;
+            width: 50%;
+            margin: auto;
+        }
+
+        .card-column {
+            box-shadow: -15px 0 15px -15px #eee;
+        }
+
+        .colum-padding {
+            padding-top: 3rem;
+        }
+    </style>
     <div class="container">
         <div class="row">
             <div class="col-lg-8 offset-lg-2 mx-auto">
-                <div class="card mt-5">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="d-flex align-items-center">
+                <div class="card">
+                    <div class="card-body pt-0">
+                        <div class="row payment-container">
+                            <div class="col-lg-6 ">
+                                <div class="d-flex align-items-center colum-padding">
                                     <a href="" class="pe-3"><i class="fa-solid fa-arrow-left-long"></i></a>
-                                    <h2 class="mb-0"><i class="fa-solid fa-shop pe-3"></i> FLIXZA GLOBAL LLC <span
-                                            class="badge bg-warning text-danger">Payment</span></h2>
+                                    <div class="d-flex align-items-center">
+                                        <div>
+                                            <i class="fa-solid fa-shop pe-3"></i>
+                                        </div>
+                                        <div>
+                                            <h2 class="mb-0">FLIXZA GLOBAL LLC </h2>
+                                        </div>
+                                        <div>
+                                            <span class="badge bg-warning text-danger">Payment</span>
+                                        </div>
+                                    </div> 
                                 </div>
                                 <div class="" style="margin-top: 5rem">
-                                    <p>Subscribe to {{ $plan->title }}</p>
-                                    <div>
-                                        <h1>$ {{ $plan->price }}</h1>
-                                        <p>
+                                    <p>Subscribe to <strong class="text-info">{{ $plan->title }}</strong></p>
+                                    <div class="d-flex align-items-center">
+                                        <h1 style="font-size: 50px; border-right: 2px solid #eee;"> <strong
+                                                class="pe-3">$ {{ $plan->price }}</strong></h1>
+                                        <p class="ps-3">
                                             @if ($plan->billing_cycle == 'yearly')
                                                 Per year
                                             @elseif ($plan->billing_cycle == 'monthly')
@@ -28,45 +70,73 @@
                                         </p>
                                     </div>
                                     <div>
-                                        <img class="img-fluid"
-                                            src="https://png.pngtree.com/png-vector/20220829/ourmid/pngtree-vintage-retro-sunset-striped-circle-art-png-image_6129843.png"
+                                        <p>For larger teams needing enhanced management and collaboration</p>
+                                    </div>
+                                    <div class="d-flex justify-content-start align-items-center"
+                                        style="
+                                        height: 30rem;
+                                        max-height: 100%;
+                                    ">
+                                        <img class="img-fluid" width="200px"
+                                            src="https://d1wqzb5bdbcre6.cloudfront.net/d111d73576dca0ef5e6e9e0effb33f099d23a7638b56c11b26974698fe0c8c93/68747470733a2f2f66696c65732e7374726970652e636f6d2f6c696e6b732f4d44423859574e6a6446387855455636613231495a464e6e4d56426c6332465a66475a7358327870646d56665447646e6130396a5632314356334d3151324a744e3038346258566d55555a7630304f643664734e7a58"
                                             alt="">
                                     </div>
                                 </div>
-                                <div class="d-flex justify-content-start align-items-center">
-                                    <p style="border-right: 1px solid #eee;">Powered By <a
-                                            href="{{ route('homePage') }}">FLIXZA GLOBAL LLC</a></p>
-                                    <p class="d-flex">
-                                        <a href="{{ route('terms') }}">Terms</a>
-                                        <a href="{{ route('terms') }}">Privacy</a>
+                                <div class="text-start">
+                                    <p>Powered By <a href="{{ route('homePage') }}" class="text-muted">FLIXZA GLOBAL
+                                            LLC</a></p>
+                                    <p class="">
+                                        <a class="text-muted" href="{{ route('terms') }}">Terms</a>
+                                        <a class="text-muted" href="{{ route('terms') }}">Privacy</a>
                                     </p>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
-                                <div class="text-center py-4">
+                            <div class="col-lg-6 card-column">
+                                <div class="text-center  colum-padding">
                                     <h1>Pay With Card</h1>
+                                    <p class="text-center devider-text">Countinue Payment Process</p>
+                                    <div class="devider"></div>
                                 </div>
-                                <form action="{{ route('user.subscription.create') }}" method="POST" id="payment-form">
+                                <form action="{{ route('user.subscription.create') }}" method="POST" id="payment-form"
+                                    class="pt-5">
                                     @csrf
                                     <input type="hidden" name="plan" id="plan" value="{{ $plan->id }}">
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <div class="mb-5">
+                                            <div class="mb-5 pb-3">
                                                 <label for="exampleInputEmail1" class="form-label">Email</label>
                                                 <input type="email" class="form-control" id="card-holder-email"
                                                     name=email aria-describedby="emailHelp"
                                                     placeholder="demo@example.com">
                                             </div>
                                         </div>
-                                        <div class="col-lg-12">
-                                            <div class="mb-5">
+                                        {{-- <div class="col-lg-12">
+                                            <div class="mb-5 pb-3">
                                                 <label for="exampleInputEmail1" class="form-label">Card
                                                     Information</label>
                                                 <div id="card-element" class="border p-3 rounded"></div>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         <div class="col-lg-12">
-                                            <div class="mb-5">
+                                            <div class="mb-5 pb-3">
+                                                <label for="card-number-element">Card Inormation</label>
+                                                <div id="card-element" class="border p-3 rounded"></div>
+                                            </div>
+                                        </div>
+                                        {{-- <div class="col-lg-6 pe-0">
+                                            <div class="mb-5 pb-3">
+                                                <label for="card-expiry-element">Expiration Date</label>
+                                                <div id="card-expiry-element" class="border p-3 rounded"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 ps-0">
+                                            <div class="mb-5 pb-3">
+                                                <label for="card-cvc-element">CVC</label>
+                                                <div id="card-cvc-element" class="border p-3 rounded"></div>
+                                            </div>
+                                        </div> --}}
+                                        <div class="col-lg-12">
+                                            <div class="mb-5 pb-3">
                                                 <label for="card-holder-name" class="form-label">Cardholder
                                                     Name</label>
                                                 <input type="text" class="form-control" id="card-holder-name"
@@ -75,7 +145,7 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
-                                            <div class="mb-5">
+                                            <div class="mb-5 pb-3">
                                                 <label for="exampleInputEmail1" class="form-label">Country Or
                                                     Rigion</label>
                                                 <select id="billingCountry" name="billingCountry" class="form-select"
@@ -323,18 +393,22 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        {{-- <div class="col-lg-12">
-                                            <div class="p-3" style="border: 1px solid #eee;">
+                                        <div class="col-lg-12">
+                                            <div class="p-3 mb-5 pb-3 rounded" style="border: 1px solid #eee;">
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox"
-                                                        id="disabledFieldsetCheck">
-                                                    <label class="form-check-label fw-bold" for="disabledFieldsetCheck">
+                                                        id="disabledFieldsetCheck" checked>
+                                                    <label class="form-check-label fw-bold"
+                                                        for="disabledFieldsetCheck">
                                                         Securely save my information for 1-click checkout
                                                     </label>
                                                 </div>
-                                                <p>Pay faster on FLIXZA GLOBAL LLC and everywhere Link is accepted.</p>
+                                                <div class="ps-4">
+                                                    <p class="ps-5 mb-0">Pay faster on FLIXZA GLOBAL LLC and everywhere
+                                                        Link is accepted.</p>
+                                                </div>
                                             </div>
-                                        </div> --}}
+                                        </div>
                                         <div class="col-lg-12">
                                             <div class="py-5">
                                                 <button type="submit" class="btn btn-primary rounded-2 w-100"
@@ -344,7 +418,8 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
-                                            <p>By confirming your subscription, you allow FLIXZA GLOBAL LLC to charge
+                                            <p class="pt-3">By confirming your subscription, you allow FLIXZA GLOBAL
+                                                LLC to charge
                                                 you for future payments in accordance with their terms. You can always
                                                 cancel your subscription.</p>
                                         </div>
