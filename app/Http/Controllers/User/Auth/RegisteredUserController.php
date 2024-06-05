@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Auth\Events\Registered;
 use App\Notifications\UserRegistration;
 use App\Providers\RouteServiceProvider;
@@ -76,14 +77,22 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-        $request->session()->put('registration_data', $request->all());
+
+        // Store registration data along with a unique identifier
+        $sessionId = $request->session()->getId();
+        $registrationData = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+            // Other registration fields...
+        ];
+        Cache::put('registration_data_' . $sessionId, $registrationData, 60);
+
         if (!empty($request->payment_link)) {
             return redirect()->to($request->payment_link);
         } else {
             return redirect()->route('stripe.callback');
         }
-
-
     }
 
     // public function stripeCallback(Request $request)
@@ -122,7 +131,7 @@ class RegisteredUserController extends Controller
     {
         // Retrieve registration data from session
         $data = session()->get('registration_data');
-        
+
         if (!$data) {
             return redirect()->route('register')->withErrors('Registration data not found.');
         }
