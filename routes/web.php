@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Providers\RouteServiceProvider;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Test\QrTestController;
 use App\Http\Controllers\Admin\QrCodeController;
@@ -55,6 +56,17 @@ Route::get('/user-subscription/register/{id}', [HomeController::class, 'subscrib
 
 
 Route::post('/stripe/webhook', [StripeWebhookController::class, 'handleWebhook']);
+Route::get('stripe/success', function () {
+    return redirect(RouteServiceProvider::HOME)->with('success', 'You have successfully registered with the plan.');
+})->name('stripe.success');
+
+Route::get('stripe/cancel', function () {
+    return redirect()->route('register')->withErrors('Payment was cancelled.');
+})->name('stripe.cancel');
+
+
+
+
 
 Route::resources(
     [
