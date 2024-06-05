@@ -449,7 +449,11 @@
                                 <div class="d-flex flex-stack flex-grow-1 flex-wrap flex-md-nowrap">
                                     <div class="mb-3 mb-md-0 fw-semibold">
                                         <h4 class="text-gray-900 fw-bold">Your Current Plan <span
-                                                style="color: orangered">{{ $subscription->plan->title }}</span></h4>
+                                                style="color: orangered">@if (!empty($subscription))
+                                                {{ $subscription->plan->title }}
+                                                @else
+                                                    Trial Period
+                                                @endif</span></h4>
 
                                         <div class="fs-6 text-gray-700 pe-7">You Can Check Your Plan Or Status By
                                             Clicking Here!</div>

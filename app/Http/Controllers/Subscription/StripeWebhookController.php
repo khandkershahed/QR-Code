@@ -94,32 +94,34 @@ class StripeWebhookController extends CashierWebhookController
     {
         $data['plan'] = Plan::where('slug', $id)->first();
         $data['intent'] = auth()->user()->createSetupIntent();
+        $data['user_id'] = Auth::user()->id;
         return view('frontend.pages.checkout',$data);
     }
     public function stripePayment(Request $request)
     {
-        $request->user()->createOrGetStripeCustomer();
+        $user = User::find($request->user_id);
+        $user->createOrGetStripeCustomer();
         $plan = Plan::find($request->plan);
-        $subscription = $request->user()->newSubscription($plan->slug, $plan->stripe_plan)->create($request->token);
+        $subscription = $user->newSubscription($plan->slug, $plan->stripe_plan)->create($request->token);
         $subscription->update([
             'subscription_ends_at' => now()->addDays($plan->interval),
         ]);
         // Check if the subscription was successfully created
         if ($subscription) {
             // Retrieve the active subscription
-            $activeSubscription = Subscription::where('user_id', $request->user()->id)->active()->first();
+            $activeSubscription = Subscription::where('user_id', $user->id)->active()->first();
 
             // Ensure an active subscription exists
             if ($activeSubscription) {
                 return redirect(RouteServiceProvider::HOME)->with('success', 'You have successfully registered with the ' . $activeSubscription->plan->title );
             } else {
                 // Subscription not found, handle the error
-                $request->user()->delete();
+                $user->delete();
                 return redirect()->route('register')->with('error', 'Error occurred while subscribing to a plan.');
             }
         } else {
             // Subscription creation failed, handle the error
-            $request->user()->delete();
+            $user->delete();
             return redirect()->route('register')->with('error', 'Error occurred while subscribing to a plan.');
         }
     }

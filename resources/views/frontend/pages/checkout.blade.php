@@ -136,6 +136,7 @@
                                         </div> --}}
                                         <div class="col-lg-12">
                                             <div class="mb-5 pb-3">
+                                                <input type="hidden" name="user_id" value="{{ $user_id }}">
                                                 <label for="card-holder-name" class="form-label">Cardholder
                                                     Name</label>
                                                 <input type="text" class="form-control" id="card-holder-name"

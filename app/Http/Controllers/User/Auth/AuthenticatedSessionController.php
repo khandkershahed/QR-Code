@@ -29,7 +29,7 @@ class AuthenticatedSessionController extends Controller
     {
         $user = Auth::user();
         $userId = $user->id;
-        $subscription = Subscription::where('user_id',$user->id)->active()->get();
+        $subscription = Subscription::with('plan')->where('user_id', $user->id)->active()->first();
         // dd($subscription);
         $notifications = UserNotification::where('user_id', $userId)->with('notificationMessage')->latest('created_at')->get();
 
