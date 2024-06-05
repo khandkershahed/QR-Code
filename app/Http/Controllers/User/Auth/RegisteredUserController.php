@@ -114,13 +114,7 @@ class RegisteredUserController extends Controller
             $checkoutSession = \Stripe\Checkout\Session::create([
                 'payment_method_types' => ['card'],
                 'line_items' => [[
-                    'price_data' => [
-                        'currency' => 'usd',
-                        'product_data' => [
-                            'name' => $plan->title,
-                        ],
-                        'unit_amount' => $plan->price * 100,
-                    ],
+                    'price' => $plan->stripe_plan, // Ensure this is a recurring price ID
                     'quantity' => 1,
                 ]],
                 'mode' => 'subscription',
