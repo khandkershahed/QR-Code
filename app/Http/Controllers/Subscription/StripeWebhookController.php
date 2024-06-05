@@ -101,7 +101,9 @@ class StripeWebhookController extends CashierWebhookController
         $request->user()->createOrGetStripeCustomer();
         $plan = Plan::find($request->plan);
         $subscription = $request->user()->newSubscription($plan->slug, $plan->stripe_plan)->create($request->token);
-
+        $subscription->update([
+            'subscription_ends_at' => now()->addDays($plan->interval),
+        ]);
         // Check if the subscription was successfully created
         if ($subscription) {
             // Retrieve the active subscription using Laravel Cashier's methods

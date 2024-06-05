@@ -31,7 +31,7 @@
                                                 <td>{{ $subscription->created_at }}</td>
 
                                                 <td>
-                                                    {{ $subscription->ends_at }}
+                                                    {{ $subscription->subscription_ends_at }}
                                                 </td>
                                                 {{-- <td class="text-end">
                                                     <a href="{{ route('admin.plans.edit', $plan->id) }}"
