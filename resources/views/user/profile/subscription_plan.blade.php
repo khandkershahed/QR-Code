@@ -4,7 +4,55 @@
             <div class="col-lg-12">
                 <div class="card" id="kt_pricing">
                     <div class="card-body p-lg-17">
-                        @if ($subscription == null)
+                        @if (count($subscriptions) > 0)
+                            <div class="row">
+                                <table class="table table-striped align-middle table-row-dashed fs-6 gy-5 mb-0">
+                                    <thead>
+                                        <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+                                            <th width="5%" class="ps-4">Sl</th>
+                                            <th width="20%">Plan Name</th>
+                                            <th width="20%">Subscription Name </th>
+                                            <th width="15%">Price</th>
+                                            <th width="20%">Start Date</th>
+                                            <th width="20%">End Date</th>
+                                            {{-- <th class="text-end" width="10%">Action</th> --}}
+                                        </tr>
+                                    </thead>
+
+                                    <tbody class="fw-bold text-gray-600">
+                                        @foreach ($subscriptions as $subscription)
+                                            <tr>
+                                                <td class="ps-4">{{ $loop->iteration }}</td>
+                                                <td>
+                                                    {{ $subscription->plan->title }}
+                                                </td>
+                                                <td>{{ $subscription->name }}</td>
+                                                <td>{{ $subscription->plan->price }}</td>
+                                                <td>{{ $subscription->created_at }}</td>
+
+                                                <td>
+                                                    {{ $subscription->ends_at }}
+                                                </td>
+                                                {{-- <td class="text-end">
+                                                    <a href="{{ route('admin.plans.edit', $plan->id) }}"
+                                                        class="btn btn-icon btn-active-light-primary w-30px h-30px me-3">
+                                                        <span class="svg-icon svg-icon-3">
+                                                            <i class="fas fa-pen"></i>
+                                                        </span>
+                                                    </a>
+                                                    <a href="{{ route('admin.plans.destroy', $plan->id) }}"
+                                                        class="btn btn-icon btn-active-light-danger w-30px h-30px delete">
+                                                        <span class="svg-icon svg-icon-3">
+                                                            <i class="fas fa-trash-alt"></i>
+                                                        </span>
+                                                    </a>
+                                                </td> --}}
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        @else
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div
@@ -114,21 +162,7 @@
                                     </div>
                                 </div>
                             </div>
-                        @else
-                            <div class="row">
-                                <div class="row">
-                                    <div class="col-lg-8 offset-lg-2">
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                Plan name:
-                                            </div>
-                                            <div class="col-lg-4"></div>
-                                            <div class="col-lg-4"></div>
-                                            <div class="col-lg-4"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                         @endif
                     </div>
                 </div>

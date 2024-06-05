@@ -8,6 +8,7 @@ use App\Models\Admin\Plan;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 use App\Mail\UserRegistrationMail;
+use App\Models\Subscription;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -97,11 +98,31 @@ class StripeWebhookController extends CashierWebhookController
     }
     public function stripePayment(Request $request)
     {
+        $request->user()->createOrGetStripeCustomer();
         $plan = Plan::find($request->plan);
         $subscription = $request->user()->newSubscription($plan->slug, $plan->stripe_plan)->create($request->token);
-        $request->user()->syncStripePlan();
-        return redirect(RouteServiceProvider::HOME)->with('success', 'You have successfully registered with the plan.');
+
+        // Check if the subscription was successfully created
+        if ($subscription) {
+            // Retrieve the active subscription using Laravel Cashier's methods
+            $activeSubscription = $request->user()->subscription($plan->slug);
+
+            // Ensure an active subscription exists
+            if ($activeSubscription) {
+                return redirect(RouteServiceProvider::HOME)->with('success', 'You have successfully registered with the ' . $activeSubscription->plan->title );
+            } else {
+                // Subscription not found, handle the error
+                $request->user()->delete();
+                return redirect()->route('register')->with('error', 'Error occurred while subscribing to a plan.');
+            }
+        } else {
+            // Subscription creation failed, handle the error
+            $request->user()->delete();
+            return redirect()->route('register')->with('error', 'Error occurred while subscribing to a plan.');
+        }
     }
+
+
 
     public function handleWebhook(Request $request)
     {

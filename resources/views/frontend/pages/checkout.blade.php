@@ -46,7 +46,7 @@
                                 <div class="text-center py-4">
                                     <h1>Pay With Card</h1>
                                 </div>
-                                <form action="{{ route('user.subscription.create') }}" method="POST" id="payment-form">
+                                <form action="{{ route('stripe.payment') }}" method="POST" id="payment-form">
                                     @csrf
                                     <input type="hidden" name="plan" id="plan" value="{{ $plan->id }}">
                                     <div class="row">

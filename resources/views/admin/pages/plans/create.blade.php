@@ -50,6 +50,12 @@
                         </x-metronic.select-option>
                     </div>
                     <div class="col-lg-3 mb-5">
+                        <x-metronic.label for="interval" class="required col-form-label fw-bold fs-6">{{ __('Interval (In days)') }}
+                        </x-metronic.label>
+                        <x-metronic.input id="interval" type="number" name="interval" :value="old('interval')"
+                            placeholder="From Start Date to End Days" @required(true)></x-metronic.input>
+                    </div>
+                    <div class="col-lg-3 mb-5">
                         <x-metronic.label for="price" class="col-form-label fw-bold fs-6">{{ __('Price') }}
                         </x-metronic.label>
                         <x-metronic.input id="price" type="number" name="price" :value="old('price')"
