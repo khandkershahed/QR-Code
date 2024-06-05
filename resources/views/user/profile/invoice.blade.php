@@ -212,7 +212,7 @@
                         <h5>Items</h5>
                         <ul>
                             @foreach ($invoice->lines->data as $line)
-                                <li>{{ $line->description }}: {{ $line->amount }}</li>
+                                <li>{{ $line->description }}: $ {{ $line->amount / 100 }}</li>
                             @endforeach
                         </ul>
                         <h5>Invoice PDF</h5>

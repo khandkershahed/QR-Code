@@ -11,7 +11,7 @@
                                         <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                             <th width="5%" class="ps-4">Sl</th>
                                             <th width="20%">Plan Name</th>
-                                            <th width="20%">Subscription Name </th>
+                                            {{-- <th width="20%">Subscription Name </th> --}}
                                             <th width="15%">Price</th>
                                             <th width="20%">Start Date</th>
                                             <th width="20%">End Date</th>
@@ -26,7 +26,7 @@
                                                 <td>
                                                     {{ $subscription->plan->title }}
                                                 </td>
-                                                <td>{{ $subscription->name }}</td>
+                                                {{-- <td>{{ $subscription->name }}</td> --}}
                                                 <td>{{ $subscription->plan->price }}</td>
                                                 <td>{{ $subscription->created_at }}</td>
 
