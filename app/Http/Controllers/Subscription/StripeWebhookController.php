@@ -88,4 +88,9 @@ class StripeWebhookController extends CashierWebhookController
         Mail::to($user->email)->send(new UserRegistrationMail($user->name));
     }
 
+    public function stripeCheckout()
+    {
+        $data['plan'] = Plan::where('billing_cycle', 'trial_period')->first();
+        return view('frontend.pages.checkout',$data);
+    }
 }

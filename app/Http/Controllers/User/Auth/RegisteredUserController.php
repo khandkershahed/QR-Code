@@ -31,70 +31,6 @@ class RegisteredUserController extends Controller
         return view('user.auth.register',$data);
     }
 
-    /**
-     * Handle an incoming registration request.
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
-    // public function store(Request $request): RedirectResponse
-    // {
-    //     $request->session()->put('registration_data', $request->all());
-    //     $request->validate([
-    //         'name' => ['required', 'string', 'max:255'],
-    //         'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-    //         'password' => ['required', 'confirmed', Rules\Password::defaults()],
-    //     ]);
-
-    //     // Find the plan
-    //     $plan = Plan::find($request->plan);
-
-    //     // Create a new user
-    //     $user = User::create([
-    //         'name' => $request->name,
-    //         'email' => $request->email,
-    //         'password' => Hash::make($request->password),
-    //     ]);
-    //     Auth::login($user);
-    //     return redirect()->to('https://buy.stripe.com/test_3cseWR79h3M53bG000');
-    //     $subscription = $user->newSubscription($plan->slug, $plan->stripe_plan)->create($request->payment_method);
-    //     $user->syncStripePlan();
-
-    //     if ($subscription) {
-
-
-
-    //         Mail::to($user->email)->send(new UserRegistrationMail($user->name));
-
-    //         return redirect(RouteServiceProvider::HOME)->with('success', 'You have successfully registered with the plan.');
-    //     } else {
-    //         $user->delete();
-    //         return redirect()->back()->with('error', 'Subscription failed. Please try again.');
-    //     }
-    // }
-    // public function store(Request $request): RedirectResponse
-    // {
-    //     $request->validate([
-    //         'name' => ['required', 'string', 'max:255'],
-    //         'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-    //         'password' => ['required', 'confirmed', Rules\Password::defaults()],
-    //     ]);
-
-    //     // Store registration data along with a unique identifier
-    //     $sessionId = session()->getId(); // Get the session ID
-    //     Cache::put('registration_data_' . $sessionId, $request->all(), 60);
-    // \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-    //     // Create checkout session with client_reference_id set to session ID
-    //     $checkoutSession = \Stripe\Checkout\Session::create([
-    //         // Other parameters...
-    //         'client_reference_id' => $sessionId,
-    //     ]);
-
-    //     if (!empty($request->payment_link)) {
-    //         return redirect()->to($request->payment_link);
-    //     } else {
-    //         return redirect()->route('stripe.callback');
-    //     }
-    // }
 
     public function store(Request $request): RedirectResponse
     {
@@ -105,50 +41,67 @@ class RegisteredUserController extends Controller
             'plan' => ['required', 'exists:plans,id'],
         ]);
 
-        // Generate a unique session identifier
-        $sessionId = Str::uuid();
-        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-        // Find the selected plan
-        $plan = Plan::findOrFail($request->input('plan'));
-
-        // Set up metadata with the unique session identifier
-        $metadata = [
-            'session_id' => $sessionId,
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'password' => $request->input('password'),
-            'plan_id' => $plan->id,
-        ];
-
-        // Create checkout session with client_reference_id set to session ID
-        $checkoutSession = \Stripe\Checkout\Session::create([
-            'payment_method_types' => ['card'],
-            'line_items' => [[
-                'price' => $plan->stripe_plan, // Ensure this is a recurring price ID
-                'quantity' => 1,
-            ]],
-            'mode' => 'subscription',
-            'success_url' => route('stripe.success', [], true) . "?session_id={CHECKOUT_SESSION_ID}",
-            'cancel_url' => route('stripe.cancel', [], true),
-            'client_reference_id' => $sessionId,
-            'metadata' => $metadata,
-        ]);
-
-        return redirect()->to($checkoutSession->url);
+        return view('');
     }
-                                                                     
 
-    public function stripeCallback()
-    {
-        // Retrieve registration data from session
-        $data = session()->get('registration_data');
+    // public function stripeCheckout(): View
+    // {
+    //     $data['plan'] = Plan::where('billing_cycle', 'trial_period')->first();
+    //     return view('user.auth.register',$data);
+    // }
+    // public function store(Request $request): RedirectResponse
+    // {
+    //     $request->validate([
+    //         'name' => ['required', 'string', 'max:255'],
+    //         'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
+    //         'password' => ['required', 'confirmed', Rules\Password::defaults()],
+    //         'plan' => ['required', 'exists:plans,id'],
+    //     ]);
 
-        if (!$data) {
-            return redirect()->route('register')->withErrors('Registration data not found.');
-        }
+    //     // Generate a unique session identifier
+    //     $sessionId = Str::uuid();
+    //     \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+    //     // Find the selected plan
+    //     $plan = Plan::findOrFail($request->input('plan'));
 
-        // Assume the user creation was successful in the webhook
-        return redirect(RouteServiceProvider::HOME)->with('success', 'You have successfully registered with the plan.');
-    }
+    //     // Set up metadata with the unique session identifier
+    //     $metadata = [
+    //         'session_id' => $sessionId,
+    //         'name' => $request->input('name'),
+    //         'email' => $request->input('email'),
+    //         'password' => $request->input('password'),
+    //         'plan_id' => $plan->id,
+    //     ];
+
+    //     // Create checkout session with client_reference_id set to session ID
+    //     $checkoutSession = \Stripe\Checkout\Session::create([
+    //         'payment_method_types' => ['card'],
+    //         'line_items' => [[
+    //             'price' => $plan->stripe_plan, // Ensure this is a recurring price ID
+    //             'quantity' => 1,
+    //         ]],
+    //         'mode' => 'subscription',
+    //         'success_url' => route('stripe.success', [], true) . "?session_id={CHECKOUT_SESSION_ID}",
+    //         'cancel_url' => route('stripe.cancel', [], true),
+    //         'client_reference_id' => $sessionId,
+    //         'metadata' => $metadata,
+    //     ]);
+
+    //     return redirect()->to($checkoutSession->url);
+    // }
+
+
+    // public function stripeCallback()
+    // {
+    //     // Retrieve registration data from session
+    //     $data = session()->get('registration_data');
+
+    //     if (!$data) {
+    //         return redirect()->route('register')->withErrors('Registration data not found.');
+    //     }
+
+    //     // Assume the user creation was successful in the webhook
+    //     return redirect(RouteServiceProvider::HOME)->with('success', 'You have successfully registered with the plan.');
+    // }
 
 }

@@ -1,4 +1,4 @@
-<x-admin-guest-layout>
+<x-admin-guest-layout :title="'Registration'">
     <style>
         .form-container-registration {
             display: none;
