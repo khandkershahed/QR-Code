@@ -44,7 +44,7 @@ class StripeWebhookController extends CashierWebhookController
 
     protected function handleCheckoutSessionCompleted($session)
     {
-        $registrationData = json_decode($session->metadata->registration_data, true);
+        $registrationData = session()->get('registration_data');
 
         $validatedData = Validator::make($registrationData, [
             'name' => ['required', 'string', 'max:255'],

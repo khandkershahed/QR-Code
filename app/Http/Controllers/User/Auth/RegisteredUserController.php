@@ -122,6 +122,7 @@ class RegisteredUserController extends Controller
     {
         // Retrieve registration data from session
         $data = session()->get('registration_data');
+        dd($data);
         if (!$data) {
             return redirect()->route('register')->withErrors('Registration data not found.');
         }
