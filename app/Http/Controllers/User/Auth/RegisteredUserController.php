@@ -108,7 +108,7 @@ class RegisteredUserController extends Controller
             Cache::put('registration_data_' . $sessionId, $request->all(), 60);
 
             // Find the selected plan
-            $plan = Plan::find($request->input('plan_id'));
+            $plan = Plan::find($request->input('plan'));
 
             // Create checkout session with client_reference_id set to session ID
             $checkoutSession = \Stripe\Checkout\Session::create([
