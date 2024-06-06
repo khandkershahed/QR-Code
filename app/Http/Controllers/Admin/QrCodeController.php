@@ -11,6 +11,7 @@ use Jenssegers\Agent\Agent;
 use App\Models\Admin\QrData;
 use App\Models\Admin\QrScan;
 use Illuminate\Http\Request;
+use App\Models\Subscription;
 use App\Models\RestaurantCategory;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;

@@ -7,6 +7,7 @@ use App\Models\NfcScan;
 use Illuminate\Http\Request;
 use App\Models\Admin\NfcCard;
 use App\Models\Admin\NfcData;
+use App\Models\Subscription;
 use Jenssegers\Agent\Facades\Agent;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
