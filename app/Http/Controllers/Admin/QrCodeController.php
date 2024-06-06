@@ -27,7 +27,7 @@ class QrCodeController extends Controller
 {
     $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
     $user = $request->user();
-    $subscription = $isUserRoute ? $user->subscription() : null;
+    $subscription = $isUserRoute ? Subscription::with('plan')->where('user_id', $user->id)->active()->first() : null;
     $qrs = $isUserRoute ?
         Qr::with('qrData', 'qrScan')->where('user_id', $user->id)->latest('id')->get() :
         Qr::with('qrData', 'qrScan')->latest('id')->get();

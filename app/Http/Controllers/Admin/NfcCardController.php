@@ -26,14 +26,16 @@ class NfcCardController extends Controller
     public function index()
     {
         $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
-
+        $user = $request->user();
+        $subscription = $isUserRoute ? Subscription::with('plan')->where('user_id', $user->id)->active()->first() : null;
         $nfc_cards = $isUserRoute ?
             NfcCard::with('nfcData', 'nfcMessages')->where('user_id', Auth::user()->id)->latest('id')->get() :
             NfcCard::with('nfcData', 'nfcMessages')->latest('id')->get();
 
         $view = $isUserRoute ? 'user.pages.nfc-card.index' : 'admin.pages.nfc-card.index';
 
-        return view($view, ['nfc_cards' => $nfc_cards]);
+        return view($view, ['nfc_cards' => $nfc_cards,
+        'subscription' => $subscription,]);
 
     }
 

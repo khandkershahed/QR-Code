@@ -7,12 +7,14 @@
                 <div class="card-header align-items-center py-5 gap-2 gap-md-5">
                     <div class="card-title">
                         <h2 class="mb-0">Manage your QR Codes | Total Created : {{ $qrs->count() }} | My Plan
-                            Limitation: | Remaining: </h2>
+                            Limitation: {{$subscription->plan->qr}} | Remaining: {{($subscription->plan->qr) - ($qrs->count())}}</h2>
                     </div>
                     <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
-                        <a href="{{ route('user.qr-code.create') }}" class="btn btn-sm btn-primary rounded-2 me-3">
-                            Create QR Codes
-                        </a>
+                        @if ((($subscription->plan->qr) - ($qrs->count())) > 0)
+                            <a href="{{ route('user.qr-code.create') }}" class="btn btn-sm btn-primary rounded-2 me-3">
+                                Create QR Codes
+                            </a>
+                        @endif
                     </div>
                 </div>
                 <div class="card-body">
