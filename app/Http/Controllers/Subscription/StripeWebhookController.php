@@ -113,6 +113,7 @@ class StripeWebhookController extends CashierWebhookController
 
             // Ensure an active subscription exists
             if ($activeSubscription) {
+                Mail::to($user->email)->send(new UserRegistrationMail($user->name));
                 return redirect(RouteServiceProvider::HOME)->with('success', 'You have successfully registered with the ' . $activeSubscription->plan->title );
             } else {
                 // Subscription not found, handle the error
