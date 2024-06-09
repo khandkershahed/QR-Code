@@ -13,7 +13,7 @@ class SubscriptionController extends Controller
 {
     public function index()
     {
-        $data['subscriptions'] = Subscription::with('plan','user')->active()->first();
+        $data['subscriptions'] = Subscription::with('plan','user')->active()->get();
         return view('admin.pages.user-subscription.index' , $data);
     }
     public function showSubscriptionForm()
