@@ -12,7 +12,8 @@
 /*******************************************************/
 /******************* ## Default Style ******************/
 /*******************************************************/
-@import url('https://fonts.googleapis.com/css2?family=Kurale&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 body::-webkit-scrollbar {
     width: 0.5em;
 }
@@ -36,13 +37,14 @@ body::-webkit-scrollbar-thumb {
 
 body {
     color: var(--base-color);
-    font-weight: 400;
+    font-weight: 600;
     line-height: 30px;
     font-size: 16px;
     font-family: var(--base-font);
     /* Root */
-    --base-font: "Raleway", sans-serif;
-    --heading-font: "Kurale", serif;
+    --base-font: "Poppins", sans-serif; 
+    /* --heading-font: "Bebas Neue", sans-serif; */
+    --heading-font: "Poppins", sans-serif;
     --primary-color: #008fd3;
     --secondary-color: #fec458;
     --heading-color: #001726;
@@ -4554,7 +4556,7 @@ a.theme-btn.style-four:hover {
 .read-more i {
     float: right;
     font-size: 15px;
-    font-weight: 400;
+    font-weight: 600;
     -webkit-transition: 0.5s;
     -o-transition: 0.5s;
     transition: 0.5s;
@@ -4848,7 +4850,7 @@ a.theme-btn.style-four:hover {
 
 .iconic-box.style-two p {
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 600;
     color: rgba(255, 255, 255, 0.55);
 }
 
@@ -4905,7 +4907,7 @@ a.theme-btn.style-four:hover {
 
 .iconic-box.style-three p {
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 600;
     color: rgba(255, 255, 255, 0.55);
 }
 
@@ -4954,7 +4956,7 @@ a.theme-btn.style-four:hover {
 
 .iconic-box.style-four p {
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 600;
 }
 
 .iconic-box.style-four:hover {
@@ -4998,7 +5000,7 @@ a.theme-btn.style-four:hover {
 
 .iconic-box.style-five p {
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 600;
 }
 
 .iconic-box.style-five:hover {
@@ -5043,7 +5045,7 @@ a.theme-btn.style-four:hover {
 
 .iconic-box.style-six p {
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 600;
 }
 
 .iconic-box.style-six:hover {
@@ -5140,7 +5142,7 @@ a.theme-btn.style-four:hover {
 
 .iconic-box.style-seven p {
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 600;
 }
 
 .iconic-box.style-seven .bg {
@@ -5206,7 +5208,7 @@ a.theme-btn.style-four:hover {
 
 .iconic-box.style-eight p {
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 600;
 }
 
 .iconic-box.style-eight .bg {
@@ -5258,7 +5260,7 @@ a.theme-btn.style-four:hover {
 
 .iconic-box.style-nine p {
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 600;
     margin-bottom: 0;
 }
 
@@ -5315,7 +5317,7 @@ a.theme-btn.style-four:hover {
 
 .iconic-box.style-ten p {
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 600;
 }
 
 .iconic-box.style-ten:hover {
@@ -5574,7 +5576,7 @@ a.theme-btn.style-four:hover {
     -ms-flex: none;
     flex: none;
     margin-top: 2px;
-    font-weight: 400;
+    font-weight: 600;
     margin-right: 15px;
     color: var(--primary-color);
 }
@@ -5592,7 +5594,7 @@ a.theme-btn.style-four:hover {
 
 .icon-list.style-three li {
     padding: 5px;
-    font-weight: 400;
+    font-weight: 600;
     line-height: 20px;
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -5769,7 +5771,7 @@ a.theme-btn.style-four:hover {
 
 .counter-item.style-five .counter-title {
     font-size: 18px;
-    font-weight: 400;
+    font-weight: 600;
     color: var(--base-color);
 }
 
@@ -8212,7 +8214,7 @@ a.theme-btn.style-four:hover {
 .nice-select {
     font-size: 16px;
     border-radius: 7px;
-    font-weight: 400;
+    font-weight: 600;
     padding: 4px 40px 4px 20px;
     background: var(--lighter-color);
     border: 1px solid var(--border-color);
@@ -8352,7 +8354,7 @@ a.theme-btn.style-four:hover {
     -webkit-transition: 0.5s;
     -o-transition: 0.5s;
     transition: 0.5s;
-    font-weight: 400;
+    font-weight: 600;
     color: var(--base-color);
     letter-spacing: -0.48px;
 }
@@ -8826,7 +8828,7 @@ a.theme-btn.style-four:hover {
 
 .pricing-item.style-six .icon-list li {
     color: var(--white);
-    font-weight: 400;
+    font-weight: 600;
 }
 
 .pricing-item.style-six:hover .theme-btn {
@@ -9293,7 +9295,7 @@ a.theme-btn.style-four:hover {
 
 /* Project Details */
 .project-details-content .icon-list li {
-    font-weight: 400;
+    font-weight: 600;
     color: var(--base-color);
     font-family: var(--base-font);
 }
@@ -10499,7 +10501,7 @@ a.theme-btn.style-four:hover {
     height: auto;
     float: right;
     font-size: 18px;
-    font-weight: 400;
+    font-weight: 600;
     content: "\f056";
     color: var(--primary-color);
     background: transparent;
@@ -12006,7 +12008,7 @@ a.theme-btn.style-four:hover {
 .hero-content h1 {
     margin-bottom: 32px;
     letter-spacing: 0.3px;
-    font-family: "Kurale", serif;
+    font-family: var(--heading-font);
     font-weight: 600;
     font-style: normal;
     font-size: 3rem;
@@ -12866,7 +12868,7 @@ a.theme-btn.style-four:hover {
 .breadcrumb .breadcrumb-item {
     padding: 0;
     color: var(--white);
-    font-weight: 400;
+    font-weight: 600;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -13733,7 +13735,7 @@ a.theme-btn.style-four:hover {
 }
 
 .contact-form .form-control {
-    font-weight: 400;
+    font-weight: 600;
     border-radius: 5px;
     background: white;
     padding: 18px 25px;
@@ -15644,6 +15646,6 @@ a.theme-btn.style-four:hover {
 }
 
 .main-footer.footer-five .radio-part label {
-    font-weight: 400;
+    font-weight: 600;
     margin-bottom: 0;
 }
