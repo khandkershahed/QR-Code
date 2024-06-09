@@ -48,12 +48,18 @@
                 </thead>
 
                 <tbody class="fw-bold text-gray-600">
-                    @if (isset($subscription))
+                    @if (count($subscriptions) > 0)
                         @foreach ($subscriptions as $subscription)
                             <tr>
                                 <td class="ps-4">{{ $loop->iteration }}</td>
                                 <td>{{ $subscription->plan->title }}</td>
-                                <td>{{ $subscription->user->name }}</td>
+                                <td>
+                                    @if ($subscription->user)
+                                        {{ $subscription->user->name }}
+                                    @else
+                                        N/A
+                                    @endif
+                                </td>
                                 <td>{{ $subscription->plan->price }}</td>
                                 <td>{{ $subscription->created_at }}</td>
                                 <td>{{ $subscription->subscription_ends_at }}</td>
