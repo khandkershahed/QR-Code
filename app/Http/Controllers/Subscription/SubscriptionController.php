@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Subscription;
 
 use App\Models\Admin\Plan;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -10,6 +11,11 @@ use Illuminate\Support\Facades\Auth;
 
 class SubscriptionController extends Controller
 {
+    public function index()
+    {
+        $data['subscriptions'] = Subscription::with('plan','user')->active()->first();
+        return view('admin.pages.user-subscription.index' , $data);
+    }
     public function showSubscriptionForm()
     {
         $data = [
