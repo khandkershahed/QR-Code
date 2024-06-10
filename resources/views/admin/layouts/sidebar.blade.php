@@ -181,7 +181,7 @@
                     </div>
                 </div>
                 <div data-kt-menu-trigger="click"
-                    class="menu-item {{ Route::is('admin.plans.index', 'admin.plans.create') ? 'here show' : '' }} menu-accordion">
+                    class="menu-item {{ Route::is('admin.user.subscriptions','admin.plans.index', 'admin.plans.create') ? 'here show' : '' }} menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
@@ -205,7 +205,16 @@
                         <span class="menu-arrow"></span>
                     </span>
                     <div
-                        class="menu-sub menu-sub-accordion {{ Route::is('admin.plans.index', 'admin.plans.create') ? 'menu-active-bg' : '' }}">
+                        class="menu-sub menu-sub-accordion {{ Route::is('admin.user.subscriptions','admin.plans.index', 'admin.plans.create') ? 'menu-active-bg' : '' }}">
+                        <div class="menu-item">
+                            <a class="menu-link {{ Route::is('admin.user.subscriptions') ? 'active' : '' }}"
+                                href="{{ route('admin.user.subscriptions') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">All User Subscriptions</span>
+                            </a>
+                        </div>
                         <div class="menu-item">
                             <a class="menu-link {{ Route::is('admin.plans.index') ? 'active' : '' }}"
                                 href="{{ route('admin.plans.index') }}">

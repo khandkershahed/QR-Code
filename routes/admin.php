@@ -27,6 +27,7 @@ use App\Http\Controllers\Admin\NfcCardController;
 use App\Http\Controllers\Admin\QrCodeController;
 use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\Admin\UserNotificationController;
+use App\Http\Controllers\Subscription\SubscriptionController;
 
 Route::middleware('guest:admin')->prefix('admin')->name('admin.')->group(function () {
 
@@ -97,6 +98,10 @@ Route::middleware('auth:admin', 'role:admin')->prefix('admin')->name('admin.')->
     Route::controller(DynamicCssController::class)->group(function () {
         Route::get('/dynamic-css', 'index')->name('css.index');
         Route::put('/dynamic-css/{id}/update', 'update')->name('css.update');
+    });
+    Route::controller(SubscriptionController::class)->group(function () {
+        Route::get('/user-subscription', 'index')->name('user.subscriptions');
+        // Route::put('/dynamic-css/{id}/update', 'update')->name('css.update');
     });
     //Contact
     Route::controller(ContactController::class)->group(function () {
