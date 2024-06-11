@@ -13,7 +13,7 @@
 /******************* ## Default Style ******************/
 /*******************************************************/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Eczar:wght@400..800&display=swap');
 body::-webkit-scrollbar {
     width: 0.5em;
 }
@@ -37,14 +37,14 @@ body::-webkit-scrollbar-thumb {
 
 body {
     color: var(--base-color);
-    font-weight: 600;
+    font-weight: 500;
     line-height: 30px;
     font-size: 16px;
     font-family: var(--base-font);
     /* Root */
     --base-font: "Poppins", sans-serif; 
     /* --heading-font: "Bebas Neue", sans-serif; */
-    --heading-font: "Poppins", sans-serif;
+    --heading-font: "Eczar", serif;
     --primary-color: #008fd3;
     --secondary-color: #fec458;
     --heading-color: #001726;
@@ -1149,7 +1149,7 @@ h6,
 .contact-info-item.style-two .content .text,
 .contact-form .form-group label,
 .shop-shorter .sort-text {
-    font-weight: 600;
+    font-weight: 500;
     color: var(--heading-color);
     font-family: var(--heading-font);
 }
@@ -4365,7 +4365,7 @@ a.theme-btn {
     -o-transition: 0.3s;
     transition: 0.3s;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 500;
     text-align: center;
     padding: 13px 45px;
     -webkit-box-align: center;
@@ -4543,7 +4543,7 @@ a.theme-btn.style-four:hover {
 /* Read More */
 .read-more {
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 500;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
@@ -4556,7 +4556,7 @@ a.theme-btn.style-four:hover {
 .read-more i {
     float: right;
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 500;
     -webkit-transition: 0.5s;
     -o-transition: 0.5s;
     transition: 0.5s;
@@ -4595,7 +4595,7 @@ a.theme-btn.style-four:hover {
 .subtitle-one {
     background: white;
     padding: 7px 25px;
-    font-weight: 600;
+    font-weight: 500;
     border-radius: 12px;
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -4656,7 +4656,7 @@ a.theme-btn.style-four:hover {
 
 .subtitle-three {
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 500;
     display: inline-block;
     color: var(--primary-color);
 }
@@ -4850,7 +4850,7 @@ a.theme-btn.style-four:hover {
 
 .iconic-box.style-two p {
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
     color: rgba(255, 255, 255, 0.55);
 }
 
@@ -4907,7 +4907,7 @@ a.theme-btn.style-four:hover {
 
 .iconic-box.style-three p {
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
     color: rgba(255, 255, 255, 0.55);
 }
 
@@ -4956,7 +4956,7 @@ a.theme-btn.style-four:hover {
 
 .iconic-box.style-four p {
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .iconic-box.style-four:hover {
@@ -5000,7 +5000,7 @@ a.theme-btn.style-four:hover {
 
 .iconic-box.style-five p {
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .iconic-box.style-five:hover {
@@ -5045,7 +5045,7 @@ a.theme-btn.style-four:hover {
 
 .iconic-box.style-six p {
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .iconic-box.style-six:hover {
@@ -5142,7 +5142,7 @@ a.theme-btn.style-four:hover {
 
 .iconic-box.style-seven p {
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .iconic-box.style-seven .bg {
@@ -5208,7 +5208,7 @@ a.theme-btn.style-four:hover {
 
 .iconic-box.style-eight p {
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .iconic-box.style-eight .bg {
@@ -5260,7 +5260,7 @@ a.theme-btn.style-four:hover {
 
 .iconic-box.style-nine p {
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 0;
 }
 
@@ -5317,7 +5317,7 @@ a.theme-btn.style-four:hover {
 
 .iconic-box.style-ten p {
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .iconic-box.style-ten:hover {
@@ -5563,7 +5563,7 @@ a.theme-btn.style-four:hover {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.3;
 }
 
@@ -5576,7 +5576,7 @@ a.theme-btn.style-four:hover {
     -ms-flex: none;
     flex: none;
     margin-top: 2px;
-    font-weight: 600;
+    font-weight: 500;
     margin-right: 15px;
     color: var(--primary-color);
 }
@@ -5594,7 +5594,7 @@ a.theme-btn.style-four:hover {
 
 .icon-list.style-three li {
     padding: 5px;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 20px;
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -5629,7 +5629,7 @@ a.theme-btn.style-four:hover {
 .counter-item .count-text {
     display: block;
     line-height: 1;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 48px;
     margin-bottom: 15px;
     color: var(--primary-color);
@@ -5771,7 +5771,7 @@ a.theme-btn.style-four:hover {
 
 .counter-item.style-five .counter-title {
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--base-color);
 }
 
@@ -6006,7 +6006,7 @@ a.theme-btn.style-four:hover {
     color: var(--white);
     display: block;
     font-size: 48px;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 38px;
     margin-bottom: 12px;
 }
@@ -6173,7 +6173,7 @@ a.theme-btn.style-four:hover {
 
 .course-item .content .category {
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 5px;
     display: inline-block;
     color: var(--primary-color);
@@ -6198,7 +6198,7 @@ a.theme-btn.style-four:hover {
     display: -ms-flexbox;
     display: flex;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
@@ -6392,7 +6392,7 @@ a.theme-btn.style-four:hover {
 
 .testimonial-item .author .title b {
     font-size: 24px;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--heading-color);
 }
 
@@ -7456,11 +7456,11 @@ a.theme-btn.style-four:hover {
 
 .blog-item .image .date span {
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .blog-item .content .category {
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 5px;
     color: var(--primary-color);
     display: inline-block;
@@ -7563,7 +7563,7 @@ a.theme-btn.style-four:hover {
 }
 
 .blog-standard-item .blog-meta li .category {
-    font-weight: 600;
+    font-weight: 500;
     color: var(--primary-color);
     font-family: var(--heading-font);
 }
@@ -8128,7 +8128,7 @@ a.theme-btn.style-four:hover {
     -ms-flex: none;
     flex: none;
     color: var(--white);
-    font-weight: 600;
+    font-weight: 500;
     padding: 9px 24px;
     border-radius: 12px;
     display: -webkit-box;
@@ -8214,7 +8214,7 @@ a.theme-btn.style-four:hover {
 .nice-select {
     font-size: 16px;
     border-radius: 7px;
-    font-weight: 600;
+    font-weight: 500;
     padding: 4px 40px 4px 20px;
     background: var(--lighter-color);
     border: 1px solid var(--border-color);
@@ -8354,7 +8354,7 @@ a.theme-btn.style-four:hover {
     -webkit-transition: 0.5s;
     -o-transition: 0.5s;
     transition: 0.5s;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--base-color);
     letter-spacing: -0.48px;
 }
@@ -8828,7 +8828,7 @@ a.theme-btn.style-four:hover {
 
 .pricing-item.style-six .icon-list li {
     color: var(--white);
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .pricing-item.style-six:hover .theme-btn {
@@ -8938,7 +8938,7 @@ a.theme-btn.style-four:hover {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--base-color);
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -9176,7 +9176,7 @@ a.theme-btn.style-four:hover {
     -webkit-transition: 0.5s;
     -o-transition: 0.5s;
     transition: 0.5s;
-    font-weight: 600;
+    font-weight: 500;
     padding: 2px 22px;
     border-radius: 7px;
     margin-bottom: 10px;
@@ -9249,7 +9249,7 @@ a.theme-btn.style-four:hover {
 }
 
 .project-item.style-two .content .category {
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 10px;
     display: inline-block;
     color: var(--primary-color);
@@ -9295,7 +9295,7 @@ a.theme-btn.style-four:hover {
 
 /* Project Details */
 .project-details-content .icon-list li {
-    font-weight: 600;
+    font-weight: 500;
     color: var(--base-color);
     font-family: var(--base-font);
 }
@@ -9729,7 +9729,7 @@ a.theme-btn.style-four:hover {
     width: 65px;
     height: 65px;
     font-size: 27px;
-    font-weight: 600;
+    font-weight: 500;
     -webkit-transition: 0.5s;
     -o-transition: 0.5s;
     transition: 0.5s;
@@ -10501,7 +10501,7 @@ a.theme-btn.style-four:hover {
     height: auto;
     float: right;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 500;
     content: "\f056";
     color: var(--primary-color);
     background: transparent;
@@ -11297,7 +11297,7 @@ a.theme-btn.style-four:hover {
 .main-menu .navbar-collapse li.dropdown .dropdown-btn {
     cursor: pointer;
     margin-left: 5px;
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: -2px;
     color: var(--heading-color);
 }
@@ -11339,7 +11339,7 @@ a.theme-btn.style-four:hover {
 
 .main-menu .navbar-collapse li.current > a,
 .main-menu .navbar-collapse li.current-menu-item > a {
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .main-menu .navbar-collapse li li {
@@ -11932,7 +11932,7 @@ a.theme-btn.style-four:hover {
 
 .header-top .top-middle {
     color: var(--white);
-    font-weight: 600;
+    font-weight: 500;
 }
 
 @media only screen and (max-width: 575px) {
@@ -12009,7 +12009,7 @@ a.theme-btn.style-four:hover {
     margin-bottom: 32px;
     letter-spacing: 0.3px;
     font-family: var(--heading-font);
-    font-weight: 600;
+    font-weight: 500;
     font-style: normal;
     font-size: 3rem;
 }
@@ -12868,7 +12868,7 @@ a.theme-btn.style-four:hover {
 .breadcrumb .breadcrumb-item {
     padding: 0;
     color: var(--white);
-    font-weight: 600;
+    font-weight: 500;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -13168,7 +13168,7 @@ a.theme-btn.style-four:hover {
 .about-four-content .clients-reviews .clients .text {
     color: var(--white);
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 500;
     margin-left: -15px;
     width: 46px;
     height: 46px;
@@ -13252,7 +13252,7 @@ a.theme-btn.style-four:hover {
 
 /* Home Six */
 .ai-content .subtitle {
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 5px;
     display: inline-block;
     color: var(--primary-color);
@@ -13735,7 +13735,7 @@ a.theme-btn.style-four:hover {
 }
 
 .contact-form .form-control {
-    font-weight: 600;
+    font-weight: 500;
     border-radius: 5px;
     background: white;
     padding: 18px 25px;
@@ -13859,7 +13859,7 @@ a.theme-btn.style-four:hover {
 }
 
 .product-item .content .price {
-    font-weight: 600;
+    font-weight: 500;
     font-family: var(--heading-font);
 }
 
@@ -13934,7 +13934,7 @@ a.theme-btn.style-four:hover {
 .product-details-content .price {
     display: block;
     font-size: 22px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 @media only screen and (max-width: 375px) {
@@ -13962,7 +13962,7 @@ a.theme-btn.style-four:hover {
 
 .product-details-content .add-to-cart input {
     font-size: 22px;
-    font-weight: 600;
+    font-weight: 500;
     max-width: 130px;
     margin-top: 15px;
     margin-right: 22px;
@@ -13991,7 +13991,7 @@ a.theme-btn.style-four:hover {
 
 .product-details-content .category-tags li:first-child a {
     margin-top: 10px;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 18px;
     display: inline-block;
 }
@@ -14447,7 +14447,7 @@ a.theme-btn.style-four:hover {
 }
 
 .cta-left-content .subtitle {
-    font-weight: 600;
+    font-weight: 500;
     color: var(--heading-color);
 }
 
@@ -14658,7 +14658,7 @@ a.theme-btn.style-four:hover {
 }
 
 .tag-coulds a {
-    font-weight: 600;
+    font-weight: 500;
     padding: 4px 18px;
     margin: 10px 5px 0;
     border-radius: 10px;
@@ -15609,7 +15609,7 @@ a.theme-btn.style-four:hover {
 }
 
 .main-footer.footer-five .widget-contact-info ul li a {
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .main-footer.footer-five .newsletter-form {
@@ -15646,6 +15646,6 @@ a.theme-btn.style-four:hover {
 }
 
 .main-footer.footer-five .radio-part label {
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 0;
 }
