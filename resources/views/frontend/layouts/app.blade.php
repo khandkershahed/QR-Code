@@ -44,7 +44,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/slick.min.css') }}" />
     <!-- Main Style -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}" />
-</head>
+</head> 
 
 <body class="home-nine">
     <div class="page-wrapper">
