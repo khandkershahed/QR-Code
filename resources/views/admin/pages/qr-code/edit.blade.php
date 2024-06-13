@@ -1,4 +1,4 @@
-<x-admin-app-layout :title="'QR : ' . $qr->code . ' Edit'">
+<x-app-layout :title="'QR : ' . $qr->code . ' Edit'">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-9">
@@ -138,7 +138,13 @@
                         <div class="d-flex flex-column justify-content-center align-items-center">
                             {{-- id="generatedQRCodeContainer" --}}
                             <h3>Preview</h3>
-                            @include('user.pages.qr-code.edit_partials.qr_preview')
+                            <div id="generatedQRCodeContainer">
+                                <div class="preview">
+                                    <img id="generatedQRCode" class="img-fluid generatedQRCode" src="{{ $qr->qr_png_url }}" alt="QR Code">
+                                </div>
+                            </div>
+                            {{-- <img src="" alt="website" class="img-fluid" width="300px"> --}}
+                            {{-- @include('user.pages.qr-code.edit_partials.qr_preview') --}}
                             {{-- {!! QrCode::size(220)->eye('left-leaf', 0.1)->eyeColor(0, 255, 255, 255, 0, 0, 0)->eyeColor(1, 222, 18, 222, 222, 18, 222)->eyeColor(2, 222, 18, 222, 222, 18, 222)->style('dot', 0.8)->errorCorrection('H')->generate('Make me into a QrCode!') !!} --}}
                         </div>
                         <a id="downloadLink" href="javascripti:void()" download
@@ -150,7 +156,7 @@
     </div>
 
     @push('scripts')
-        <script>
+        {{-- <script>
             $(document).ready(function() {
                 $('input[name="qr_type"]').change(function() {
                     $(".qr-card").hide();
@@ -170,10 +176,9 @@
                 });
 
                 const initiallySelectedValue = "{{$qr->qr_type}}";
-                alert($("." + initiallySelectedValue + "-form"));
-                $("." + initiallySelectedValue + "-form").show();
+                $("." + initiallySelectedValue).show();
             });
-        </script>
+        </script> --}}
 
 
         <script>
@@ -251,28 +256,20 @@
 
         <script>
             $(document).ready(function() {
-                $('#colorPicker').on('input', function() {
+                $('.colorPicker').on('input', function() {
                     var selectedColor = $(this).val();
-                    $('#colorCodeInput').val(selectedColor);
+                    $(this).closest('.colorCodeContainer').find('.colorCodeInput').val(selectedColor);
+                });
+            });
+
+            $(document).ready(function() {
+                $('.colorPicker').on('input', function() {
+                    var selectedColor = $(this).val();
+                    $(this).closest('.colorCodeInput').val(selectedColor);
                 });
             });
         </script>
-        <script>
-            var myDropzone = new Dropzone("#qr_dropzone", {
-                url: "https://keenthemes.com/scripts/void.php", // Set the url for your upload script location
-                paramName: "file", // The name that will be used to transfer the file
-                maxFiles: 1,
-                maxFilesize: 2, // MB
-                addRemoveLinks: true,
-                accept: function(file, done) {
-                    if (file.name == "wow.jpg") {
-                        done("Naha, you don't.");
-                    } else {
-                        done();
-                    }
-                }
-            });
-        </script>
+
         <script>
             // Get references to radio buttons and divs
             const normalColorRadio = document.getElementById('solid_color');
@@ -373,7 +370,6 @@
                 });
             });
         </script>
-
         <script>
             function initMap() {
                 var map = new google.maps.Map(document.getElementById('map'), {
@@ -395,9 +391,6 @@
                 });
             }
         </script>
-
-
-
         <script>
             // Stepper lement
             var element = document.querySelector("#generateQRCode");
@@ -409,5 +402,25 @@
                 stepper.goPrevious(); // go previous step
             });
         </script>
+        {{-- PDF Preview --}}
+        <script>
+            $('input[name="qr_data_pdf"]')
+                    .on('keyup change', function() {
+                const file = event.target.files[0];
+                const pdfPreviewContainer = document.getElementById('pdfPreviewContainer');
+                const noPdfMessage = document.getElementById('noPdfMessage');
+                const pdfPreview = document.getElementById('pdfPreview');
+
+                if (file && file.type === "application/pdf") {
+                    const fileReader = new FileReader();
+                    fileReader.onload = function() {
+                        pdfPreview.src = fileReader.result;
+                    };
+                    fileReader.readAsDataURL(file);
+                } else {
+                    alert("Please upload a valid PDF file.");
+                }
+            });
+            </script>
     @endpush
-</x-admin-app-layout>
+</x-app-layout>

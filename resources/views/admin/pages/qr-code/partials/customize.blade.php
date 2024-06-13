@@ -156,156 +156,194 @@
                     <h2>SELECT A LOGO</h2>
                     <p>This will appear at the center of your QR code.</p>
                 </div>
-                {{-- Logos Uploade --}}
+                {{-- Logo Upload --}}
                 <div class="d-flex align-items-center">
-                    <div class="pe-3">
-                        <x-metronic.label for="qr_logo" class="form-label">{{ __('Logo') }}</x-metronic.label>
-                        <x-metronic.input id="qr_logo" type="file" name="qr_logo" :value="old('qr_logo')"
-                            placeholder="Upload Logo" />
-                    </div>
-                    <div class="ps-4">
-                        <x-metronic.label for="qr_logo_size"
-                            class="form-label">{{ __('Logo Size (in Pixel)') }}</x-metronic.label>
-                        <x-metronic.input id="qr_logo_size" type="number" name="qr_logo_size" :value="old('qr_logo_size')"
-                            placeholder="Logo Size(Eg: 5, 10, 15....)" />
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <div class="pe-3">
+                                <x-metronic.label for="qr_logo" class="form-label">{{ __('Logo') }}</x-metronic.label>
+                                <x-metronic.input id="qr_logo" type="file" name="qr_logo" accept="image/*" placeholder="Upload Logo" />
+                            </div>
+                        </div>
+                        <div class="col-lg-1">
+                            <x-metronic.label for="qr_logo" class="form-label">{{ __('Preview') }}</x-metronic.label>
+                            <img class="img-fluid qr_logo" src="https://i.ibb.co/BNBTVN4/logo.png" alt="">
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row colorCodeContainer ps-5">
+                                <x-metronic.label for="qr_logo_bg_color" class="form-label">{{ __('Logo BG Color') }}</x-metronic.label>
+                                <input type="text" id="colorCodeInput" class="form-control form-control-solid w-75 w-lg-25 colorCodeInput" readonly>
+                                <input type="color" id="colorPicker" style="width: 56px;height: 45px;" class="colorPicker" name="qr_logo_bg_color">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="ps-4">
+                                <x-metronic.label for="qr_logo_size" class="form-label">{{ __('Logo Size (in %)') }}</x-metronic.label>
+                                {{-- <x-metronic.input id="qr_logo_size" type="number" name="qr_logo_size" :value="old('qr_logo_size')" placeholder="Logo Size(Eg: 5, 10, 15....)" /> --}}
+                                <div class="mb-10">
+                                    <input type="range" class="form-range w-100" id="customRange1" name="qr_logo_size" min="0.1" max="0.4" step="0.01" value="0.1" oninput="updateRangeValue(this.value)">
+                                    <span id="rangeValue">10%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="ps-4">
+                                <x-metronic.label for="qr_logo_size" class="form-label">{{ __('Logo Space') }}</x-metronic.label>
+                                {{-- <x-metronic.input id="qr_logo_size" type="number" name="qr_logo_size" :value="old('qr_logo_size')" placeholder="Logo Size(Eg: 5, 10, 15....)" /> --}}
+                                <div class="mb-10">
+                                    <input type="range" class="form-range w-100" id="customRange1" name="qr_logo_space" min="10" max="60" step="5" value="30" oninput="updateRangeValue(this.value)">
+                                    <span id="rangeValue">30%</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                {{-- <p class="text-start pt-5 mb-0">Or Select From Our
-                    Gallary</p>
+                <p class="text-start pt-5 mb-0">Or Select From Our Gallary</p>
+                <small class="text-start pt-5 mb-0"><strong>Note:</strong> If you choose a logo from the gallery, you won't be able to use a background color because the background is already included with the logo.</small>
                 <div class="pt-2 row">
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px; border: 1px solid #DBDFE3; border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/app-store.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="	https://static.beaconstac.com/assets/img/qr-code-logos/calender.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/email.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/facebook.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/gmail.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/google-bussiness.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/instagram.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/linkedin.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/mp3.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/pdf.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/phone-call.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/pintrest.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/play-store.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/ratings.png">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/twitter.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/youtube.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-1.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-2.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-3.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-4.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-5.svg">
-                        </a>
-                    </div>
-                    <div class="col-sm-1 mb-3">
-                        <a href="#">
-                            <img style="width: 45px;border: 1px solid #DBDFE3;border-radius: 4px;"
-                                src="https://static.beaconstac.com/assets/img/qr-code-logos/covid-logo-6.svg">
-                        </a>
-                    </div>
-                </div> --}}
+                    <x-qr-code.qr-logo :qrLogos="[
+                        [
+                            'id' => 1,
+                            'value' => 'address-book',
+                            'image' => 'frontend/images/qr_logo/address-book.png',
+                        ],
+                        [
+                            'id' => 2,
+                            'value' => 'badoo',
+                            'image' => 'frontend/images/qr_logo/badoo.png',
+                        ],
+                        [
+                            'id' => 3,
+                            'value' => 'dribbble',
+                            'image' => 'frontend/images/qr_logo/dribbble.png',
+                        ],
+                        [
+                            'id' => 4,
+                            'value' => 'dropbox',
+                            'image' => 'frontend/images/qr_logo/dropbox.png',
+                        ],
+                        [
+                            'id' => 5,
+                            'value' => 'facebook',
+                            'image' => 'frontend/images/qr_logo/facebook.png',
+                        ],
+                        [
+                            'id' => 6,
+                            'value' => 'google-calendar',
+                            'image' => 'frontend/images/qr_logo/google-calendar.png',
+                        ],
+                        [
+                            'id' => 7,
+                            'value' => 'google-forms',
+                            'image' => 'frontend/images/qr_logo/google-forms.png',
+                        ],
+                        [
+                            'id' => 8,
+                            'value' => 'google-maps',
+                            'image' => 'frontend/images/qr_logo/google-maps.png',
+                        ],
+                        [
+                            'id' => 9,
+                            'value' => 'google-meet',
+                            'image' => 'frontend/images/qr_logo/google-meet.png',
+                        ],
+                        [
+                            'id' => 10,
+                            'value' => 'google-sheets',
+                            'image' => 'frontend/images/qr_logo/google-sheets.png',
+                        ],
+                        [
+                            'id' => 11,
+                            'value' => 'google-slides',
+                            'image' => 'frontend/images/qr_logo/google-slides.png',
+                        ],
+                        [
+                            'id' => 12,
+                            'value' => 'instagram',
+                            'image' => 'frontend/images/qr_logo/instagram.png',
+                        ],
+                        [
+                            'id' => 13,
+                            'value' => 'linkedin',
+                            'image' => 'frontend/images/qr_logo/linkedin.png',
+                        ],
+                        [
+                            'id' => 14,
+                            'value' => 'paypal',
+                            'image' => 'frontend/images/qr_logo/paypal.png',
+                        ],
+                        [
+                            'id' => 15,
+                            'value' => 'pinterest',
+                            'image' => 'frontend/images/qr_logo/pinterest.png',
+                        ],
+                        [
+                            'id' => 16,
+                            'value' => 'skype',
+                            'image' => 'frontend/images/qr_logo/skype.png',
+                        ],
+                        [
+                            'id' => 17,
+                            'value' => 'snapchat',
+                            'image' => 'frontend/images/qr_logo/snapchat.png',
+                        ],
+                        [
+                            'id' => 18,
+                            'value' => 'soundcloud',
+                            'image' => 'frontend/images/qr_logo/soundcloud.png',
+                        ],
+                        [
+                            'id' => 19,
+                            'value' => 'spotify',
+                            'image' => 'frontend/images/qr_logo/spotify.png',
+                        ],
+                        [
+                            'id' => 20,
+                            'value' => 'swarm',
+                            'image' => 'frontend/images/qr_logo/swarm.png',
+                        ],
+                        [
+                            'id' => 21,
+                            'value' => 'telegram',
+                            'image' => 'frontend/images/qr_logo/telegram.png',
+                        ],
+                        [
+                            'id' => 22,
+                            'value' => 'twitter',
+                            'image' => 'frontend/images/qr_logo/twitter.png',
+                        ],
+                        [
+                            'id' => 23,
+                            'value' => 'viber',
+                            'image' => 'frontend/images/qr_logo/viber.png',
+                        ],
+                        [
+                            'id' => 24,
+                            'value' => 'vimeo',
+                            'image' => 'frontend/images/qr_logo/vimeo.png',
+                        ],
+                        [
+                            'id' => 25,
+                            'value' => 'vine',
+                            'image' => 'frontend/images/qr_logo/vine.png',
+                        ],
+                        [
+                            'id' => 26,
+                            'value' => 'whatsapp',
+                            'image' => 'frontend/images/qr_logo/whatsapp.png',
+                        ],
+                        [
+                            'id' => 27,
+                            'value' => 'youtube',
+                            'image' => 'frontend/images/qr_logo/youtube.png',
+                        ],
+                        [
+                            'id' => 28,
+                            'value' => 'zoom-meeting',
+                            'image' => 'frontend/images/qr_logo/zoom-meeting.png',
+                        ],
+                    ]" :selectedQrLogo="null" />
+                </div>
             </div>
         </div>
 
@@ -315,58 +353,64 @@
                 <h2>SELECT EYE-BALL</h2>
                 <p>This will be the color and shape of your QR code's eye-balls</p>
             </div>
-            <div class="row p-5 pt-3 pt-lg-6">
+            <div class="row p-5 pt-3 pt-lg-6 colorCodeContainer">
                 <label class="form-label p-0 pb-3" for="colorPicker">Eye Frame Color</label>
-                <input type="text" id="colorCodeInput" class="form-control form-control-solid w-75 w-lg-25" readonly>
-                <input type="color" id="colorPicker" style="width: 56px;height: 45px;" name="qr_eye_ball_color">
+                <input type="text" id="colorCodeInput" class="form-control form-control-solid w-75 w-lg-25 colorCodeInput" readonly>
+                <input type="color" id="colorPicker" style="width: 56px;height: 45px;" class="colorPicker" name="qr_eye_ball_color">
             </div>
             <div class="row pt-3 pt-lg-6">
                 <x-qr-code.eye-ball :eyeBalls="[
                     [
                         'id' => 311,
                         'value' => 'square',
-                        'image' => 'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/square.svg',
+                        'image' => 'frontend/images/eye_ball/square-shape.svg',
+                    ],
+                    [
+                        'id' => 311,
+                        'value' => 'rounded-square',
+                        'image' => 'frontend/images/eye_ball/rounded-square.svg',
                     ],
                     [
                         'id' => 322,
-                        'value' => 'square',
-                        'image' => 'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/rounded.svg',
+                        'value' => 'circle',
+                        'image' => 'frontend/images/eye_ball/rounded-shape.svg',
                     ],
                     [
                         'id' => 333,
                         'value' => 'left-diamond',
-                        'image' =>
-                            'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/left-diamond.svg',
+                        'image' => 'frontend/images/eye_ball/left-dimond-shape.svg',
                     ],
                     [
                         'id' => 344,
                         'value' => 'right-diamond',
-                        'image' =>
-                            'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/right-diamond.svg',
+                        'image' => 'frontend/images/eye_ball/right-dimond-shape.svg',
                     ],
                     [
                         'id' => 356,
                         'value' => 'left-leaf',
-                        'image' =>
-                            'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/left-leaf.svg',
+                        'image' => 'frontend/images/eye_ball/rounded-corner-shape.svg',
                     ],
                     [
                         'id' => 367,
                         'value' => 'right-leaf',
-                        'image' =>
-                            'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/eye-balls/right-leaf.svg',
+                        'image' => 'frontend/images/eye_ball/right-leaf-shape.svg',
                     ],
-                ]" />
+                    [
+                        'id' => 367,
+                        'value' => 'right-leaf',
+                        'image' => 'frontend/images/eye_ball/left-leaf-shape.svg',
+                    ],
+                ]" :selectedEyeBall="null" />
 
             </div>
             <div class="row pt-3 pt-lg-6">
                 <h2>SELECT EYE-FRAME</h2>
                 <p>This will be the color and shape of your QR code's eye-frames</p>
             </div>
-            <div class="row p-5 pt-3 pt-lg-6">
-                <label class="form-label p-0 pb-3" for="colorPicker2">Eye Frame Color</label>
-                <input type="text" id="colorCodeInput2" class="form-control form-control-solid w-75 w-lg-25" readonly>
-                <input type="color" id="colorPicker2" style="width: 56px;height: 45px;" name="qr_eye_frame_color">
+            <div class="row p-5 pt-3 pt-lg-6 colorCodeContainer">
+                <label class="form-label p-0 pb-3" for="colorPicker">Eye Ball Color</label>
+                <input type="text" id="colorCodeInput" class="form-control form-control-solid w-75 w-lg-25 colorCodeInput" readonly>
+                <input type="color" id="colorPicker" class="colorPicker" style="width: 56px;height: 45px;" name="qr_eye_frame_color">
             </div>
             {{-- <div class="d-lg-flex row gx-10 mb-4">
                 <x-qr-code.eye-frame :eyeFrames="[
@@ -434,25 +478,25 @@
                         'image' =>
                             'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/right-diamond.svg',
                     ],
-                    [
-                        'id' => 437,
-                        'value' => 'square_0.9',
-                        'image' =>
-                            'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/thin-square.svg',
-                    ],
                     // [
-                    //     'id' => 438,
-                    //     'value' => 'round',
+                    //     'id' => 437,
+                    //     'value' => 'square_0.9',
                     //     'image' =>
-                    //         'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/smooth-round.svg',
+                    //         'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/thin-square.svg',
                     // ],
                     [
-                        'id' => 439,
+                        'id' => 438,
                         'value' => 'round',
                         'image' =>
                             'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/smooth-round.svg',
                     ],
-                ]" />
+                    // [
+                    //     'id' => 439,
+                    //     'value' => 'round',
+                    //     'image' =>
+                    //         'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/smooth-round.svg',
+                    // ],
+                ]" :selectedQrPattern="null"  />
             </div>
             <div>
                 <h2 class="pt-10">COLOR</h2>
@@ -478,19 +522,17 @@
                     <div class="hidden-field" id="normal_color_show" style="display: none;">
                         <div class="pt-5">
                             <label for="">Color</label> <br>
-                            <div class="d-flex">
+                            <div class="d-flex colorCodeContainer">
                                 <input type="text" id="colorCodeInput-normal_color"
-                                    class="form-control form-control-solid w-25" readonly>
-                                <input type="color" id="colorPicker" style="width: 56px;height: 45px;"
-                                    name="qr_solid_color">
+                                    class="form-control form-control-solid w-25 colorCodeInput" readonly>
+                                <input type="color" id="colorPicker" class="colorPicker" style="width: 56px;height: 45px;" name="qr_solid_color">
                             </div>
                         </div>
                     </div>
                     <div class="hidden-field" id="gradient_color_show" style="display: none;">
                         <div class="pt-5 pb-4">
                             <label for="">Select Gradient Type</label>
-                            <select class="form-select form-select-sm mt-3 w-25" name="qr_gradient_color_type"
-                                aria-label="Default select example">
+                            <select class="form-select form-select-sm mt-3 w-25" name="qr_gradient_color_type" aria-label="Default select example">
                                 <option>None</option>
                                 <option value="vertical" selected>Vertical</option>
                                 <option value="horizontal">Horizontal</option>
@@ -502,22 +544,20 @@
                         <div class="d-flex">
                             <div class="pt-3 pe-4">
                                 <label for="">Color Start</label>
-                                <div class="d-flex">
+                                <div class="d-flex colorCodeContainer">
                                     <input type="text" id="colorCodeInput-gradient"
-                                        class="form-control form-control-solid w-25" style="width: 160px !important"
+                                        class="form-control form-control-solid w-25 colorCodeInput" style="width: 160px !important"
                                         readonly>
-                                    <input type="color" id="colorPicker" name="qr_gradient_color_start"
-                                        style="width: 56px;height: 45px;">
+                                    <input type="color" id="colorPicker" class="colorPicker" name="qr_gradient_color_start" style="width: 56px;height: 45px;">
                                 </div>
                             </div>
                             <div class="pt-3">
                                 <label for="">Color End</label>
-                                <div class="d-flex">
+                                <div class="d-flex colorCodeContainer">
                                     <input type="text" id="colorCodeInput-gradient-2"
-                                        class="form-control form-control-solid w-25" style="width: 160px !important"
+                                        class="form-control form-control-solid w-25 colorCodeInput" style="width: 160px !important"
                                         readonly>
-                                    <input type="color" id="colorPicker" name="qr_gradient_color_end"
-                                        style="width: 56px;height: 45px;">
+                                    <input type="color" id="colorPicker" class="colorPicker" name="qr_gradient_color_end" style="width: 56px;height: 45px;">
                                 </div>
                             </div>
                         </div>
@@ -563,11 +603,10 @@
                             <div class="card-body">
                                 <div class="">
                                     <label for="">Color</label>
-                                    <div class="d-flex">
+                                    <div class="d-flex colorCodeContainer">
                                         <input type="text" id="colorCodeInput-normal_color"
-                                            class="form-control form-control-solid w-100" readonly>
-                                        <input type="color" name="qr_bg_color" id="colorPicker"
-                                            style="width: 56px;height: 45px;">
+                                            class="form-control form-control-solid w-100 colorCodeInput" readonly>
+                                        <input type="color" name="qr_bg_color" id="colorPicker" class="colorPicker" style="width: 56px;height: 45px;">
                                     </div>
                                 </div>
                             </div>

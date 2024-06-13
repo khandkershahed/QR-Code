@@ -1,4 +1,4 @@
-<x-admin-app-layout :title="'Summary of ' . $nfc_card->code">
+<x-app-layout :title="'Summary of ' . $nfc_card->code">
 
     <div class="container-fluid">
         {{-- <div id="kt_app_toolbar_container" class="app-container  container-fluid d-flex flex-stack mb-10">
@@ -264,4 +264,4 @@
     @endpush
 
 
-</x-admin-app-layout>
+</x-app-layout>

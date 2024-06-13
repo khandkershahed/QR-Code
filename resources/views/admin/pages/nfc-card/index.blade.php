@@ -1,4 +1,4 @@
-<x-admin-app-layout :title="'NFC Card List'">
+<x-app-layout :title="'NFC Card List'">
     <style>
         /* Add your custom CSS styles here */
         #epaper-container {
@@ -20,22 +20,47 @@
         }
     </style>
     <div class="row">
-        <div class="col-lg-12 mt-15">
+        <div class="col-lg-12">
             <div class="card card-p-0 card-flush p-3 pt-0">
                 <div class="card-header align-items-center py-5 gap-2 gap-md-5">
                     <div class="card-title">
-                        <h2 class="mb-0">All NFC Cards | Total NFC Card Generated :  {{$nfc_cards->count()}}</h2>
+                        @if (!empty(optional($subscription)->plan))
+                            <h2 class="mb-0">View and manage your NFC Cards | Total Created : {{ $nfc_cards->count() }}
+                                | My Plan
+                                Limitation: {{ optional($subscription)->plan->nfc }} | Remaining:
+                                {{ optional($subscription)->plan->nfc - $nfc_cards->count() }}</h2>
+                        @else
+                            <h2 class="mb-0">Manage your NFC Cards | Total Created : {{ $nfc_cards->count() }} | My Plan Limitation: 10 (Trial Period) | Remaining: {{ 10 - $nfc_cards->count() }}</h2>
+                        @endif
+
                     </div>
                     <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
-                        <a href="{{ route('user.nfc-card.create') }}" class="btn btn-sm btn-primary rounded-2 me-3">
-                            Create NFC Card
-                        </a>
+                        @if (!empty(optional($subscription)->plan))
+                            @if (optional($subscription)->plan->nfc - $nfc_cards->count() > 0)
+                                <a href="{{ route('user.nfc-card.create') }}"
+                                    class="btn btn-sm btn-primary rounded-2 me-3">
+                                    Create NFC Card
+                                </a>
+                            @endif
+                        @else
+                            @if (10 - $nfc_cards->count() > 0)
+                                <a href="{{ route('user.nfc-card.create') }}"
+                                    class="btn btn-sm btn-primary rounded-2 me-3">
+                                    Create NFC Card
+                                </a>
+                            @endif
+                        @endif
+                        {{-- @if (optional($subscription)->plan->nfc - $nfc_cards->count() > 0)
+                            <a href="{{ route('user.nfc-card.create') }}" class="btn btn-sm btn-primary rounded-2 me-3">
+                                Create NFC Card
+                            </a>
+                        @endif --}}
                     </div>
                 </div>
                 <div class="card-body">
                     <table
                         class="table align-middle border rounded table-row-dashed table-striped table-hover  fs-6 g-5"
-                        id="kt_datatable_example">
+                        id="qr_code">
                         <thead>
                             <tr class="text-gray-500 fw-bold fs-7 text-uppercase">
                                 <th class="">SL</th>
@@ -170,7 +195,7 @@
                         <div class="card">
                             <table
                                 class="table align-middle border rounded table-row-dashed table-striped table-hover  fs-6 g-5"
-                                id="nfc_card">
+                                id="qr_code">
                                 <thead>
                                     <tr class="text-gray-500 fw-bold fs-7 text-uppercase">
                                         <th width="10%">NAME </th>
@@ -302,11 +327,11 @@
                                 title: documentTitle
                             }
                         ]
-                    }).container().appendTo($('#nfc_card_buttons'));
+                    }).container().appendTo($('#qr_code_buttons'));
 
                     // Hook dropdown menu click event to datatable export buttons
                     const exportButtons = document.querySelectorAll(
-                        '#nfc_card_export_menu [data-kt-export]');
+                        '#qr_code_export_menu [data-kt-export]');
                     exportButtons.forEach(exportButton => {
                         exportButton.addEventListener('click', e => {
                             e.preventDefault();
@@ -333,7 +358,7 @@
                 // Public methods
                 return {
                     init: function() {
-                        table = document.querySelector('#nfc_card');
+                        table = document.querySelector('#qr_code');
 
                         if (!table) {
                             return;
@@ -353,4 +378,4 @@
         </script>
     @endpush
 
-</x-admin-app-layout>
+</x-app-layout>

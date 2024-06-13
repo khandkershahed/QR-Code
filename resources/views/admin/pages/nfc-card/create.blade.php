@@ -1,4 +1,4 @@
-<x-admin-app-layout :title="'NFC Card Create'">
+<x-app-layout :title="'NFC Card Create'">
     <h1 class="text-center mb-10 mt-5">Make Your NFC Profile !</h1>
     @if (session('error'))
         <div class="alert alert-danger">
@@ -310,7 +310,7 @@
             }
         </script>
 
-
+     
         <script>
             function previewprofileImage(input) {
                 var preview = $('.profile_image'); // Select the preview element using its class
@@ -396,4 +396,4 @@
             });
         </script>
     @endpush
-</x-admin-app-layout>
+</x-app-layout>
