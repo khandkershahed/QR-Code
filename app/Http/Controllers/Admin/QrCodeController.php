@@ -25,31 +25,62 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 class QrCodeController extends Controller
 {
     public function index(Request $request)
-{
-    $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
-    $user = Auth::user();
-    $subscription = $isUserRoute ? Subscription::with('plan')->where('user_id', $user->id)->active()->first() : null;
-    $qrs = $isUserRoute ?
-        Qr::with('qrData', 'qrScan')->where('user_id', $user->id)->latest('id')->get() :
-        Qr::with('qrData', 'qrScan')->latest('id')->get();
+    {
+        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
+        $user = Auth::user();
+        $subscription = $isUserRoute ? Subscription::with('plan')->where('user_id', $user->id)->active()->first() : null;
+        $qrs = $isUserRoute ?
+            Qr::with('qrData', 'qrScan')->where('user_id', $user->id)->latest('id')->get() :
+            Qr::with('qrData', 'qrScan')->latest('id')->get();
 
-    $view = $isUserRoute ? 'user.pages.qr-code.index' : 'admin.pages.qr-code.index';
+        $view = $isUserRoute ? 'user.pages.qr-code.index' : 'admin.pages.qr-code.index';
 
-    // dd($user->subscribed());
-    return view($view, [
-        'qrs' => $qrs,
-        'subscription' => $subscription,
-    ]);
-}
+        // dd($user->subscribed());
+        return view($view, [
+            'qrs' => $qrs,
+            'subscription' => $subscription,
+        ]);
+    }
 
     public function create()
     {
         $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
-        $categories = $isUserRoute ?
-            RestaurantCategory::where('user_id', Auth::user()->id)->latest('id')->get() :
-            RestaurantCategory::latest('id')->get();
-        $view = $isUserRoute ? 'user.pages.qr-code.create' : 'admin.pages.qr-code.create';
-        return view($view, ['categories' => $categories]);
+
+        $user = Auth::user();
+
+        $createdAtPlus14Days = Carbon::parse($user->created_at)->addDays(14);
+        $today = Carbon::now();
+
+        $subscription = $isUserRoute ? Subscription::with('plan')->where('user_id', $user->id)->active()->first() : null;
+
+        // Retrieve QR codes
+        $qrs = $isUserRoute
+            ? Qr::with('qrData', 'qrScan')->where('user_id', $user->id)->latest('id')->get()
+            : Qr::with('qrData', 'qrScan')->latest('id')->get();
+
+        if (!empty($subscription->plan)) {
+            // Check if the user has remaining QR codes in their subscription plan
+            if ($subscription->plan->qr - $qrs->count() > 0) {
+                $categories = $isUserRoute
+                    ? RestaurantCategory::where('user_id', Auth::user()->id)->latest('id')->get()
+                    : RestaurantCategory::latest('id')->get();
+                $view = $isUserRoute ? 'user.pages.qr-code.create' : 'admin.pages.qr-code.create';
+                return view($view, ['categories' => $categories]);
+            } else {
+                return redirect()->back()->with('error', 'Your QR limitation is exceeded');
+            }
+        } else {
+            // Check if the user has not exceeded the QR code limit or if 14 days have passed since account creation
+            if (10 - $qrs->count() > 0 || $createdAtPlus14Days->lessThan($today)) {
+                $categories = $isUserRoute
+                    ? RestaurantCategory::where('user_id', Auth::user()->id)->latest('id')->get()
+                    : RestaurantCategory::latest('id')->get();
+                $view = $isUserRoute ? 'user.pages.qr-code.create' : 'admin.pages.qr-code.create';
+                return view($view, ['categories' => $categories]);
+            } else {
+                return redirect()->back()->with('error', 'Your QR limitation is exceeded');
+            }
+        }
     }
 
     public function qrTemplate()
@@ -95,7 +126,7 @@ class QrCodeController extends Controller
         }
 
         // dd($cities);
-        return view('user.pages.qr-code.qrSummary', compact('qr', 'maps', 'locations','cities','totalScans','users'));
+        return view('user.pages.qr-code.qrSummary', compact('qr', 'maps', 'locations', 'cities', 'totalScans', 'users'));
     }
 
 
@@ -442,7 +473,7 @@ class QrCodeController extends Controller
             'qr_data_coupon_description_body'            => $request->qr_data_coupon_description_body,
             'qr_data_coupon_company'                     => $request->qr_data_coupon_company,
             'qr_data_coupon_code'                        => $request->qr_data_coupon_code,
-            'qr_data_coupon_logo'                        => $uploadedcouponLogoFile['status']== 1 ? $uploadedcouponLogoFile['file_name'] : null,
+            'qr_data_coupon_logo'                        => $uploadedcouponLogoFile['status'] == 1 ? $uploadedcouponLogoFile['file_name'] : null,
             'qr_data_coupon_expire_date'                 => $request->qr_data_coupon_expire_date,
             'qr_data_coupon_description_header'          => $request->qr_data_coupon_description_header,
             'qr_data_coupon_website'                     => $request->qr_data_coupon_website,
@@ -743,9 +774,9 @@ class QrCodeController extends Controller
             $pdf = $request->file('qr_data_pdf');
             if ($pdf->isValid()) {
                 $oldpdfFile = $qr->qrData->qr_data_pdf;
-                    if ($oldpdfFile) {
-                        Storage::delete('public/qr_codes/pdfs/' . $oldpdfFile);
-                    }
+                if ($oldpdfFile) {
+                    Storage::delete('public/qr_codes/pdfs/' . $oldpdfFile);
+                }
                 $filename = $code . '_pdf';
                 $filepath = 'public/qr_codes/pdfs/';
                 $uploadedPdfFile = customUpload($pdf, $filepath, $filename);
@@ -760,9 +791,9 @@ class QrCodeController extends Controller
             $dataImage = $request->file('qr_data_image');
             if ($dataImage->isValid()) {
                 $oldimageFile = $qr->qrData->qr_data_image;
-                    if ($oldimageFile) {
-                        Storage::delete('public/qr_codes/images/' . $oldimageFile);
-                    }
+                if ($oldimageFile) {
+                    Storage::delete('public/qr_codes/images/' . $oldimageFile);
+                }
                 $imagefilename = $code . '_image';
                 $imagefilepath = 'public/qr_codes/images/';
                 $uploadedImgFile = customUpload($dataImage, $imagefilepath, $imagefilename);
@@ -775,9 +806,9 @@ class QrCodeController extends Controller
             $dataAudio = $request->file('qr_data_audio_file');
             if ($dataAudio->isValid()) {
                 $oldaudioFile = $qr->qrData->qr_data_audio_file;
-                    if ($oldaudioFile) {
-                        Storage::delete('public/qr_codes/audios/' . $oldaudioFile);
-                    }
+                if ($oldaudioFile) {
+                    Storage::delete('public/qr_codes/audios/' . $oldaudioFile);
+                }
                 $audiofilename = $code . '_pdf';
                 $audiofilepath = 'public/qr_codes/audios/';
                 $uploadedAdoFile = customUpload($dataAudio, $audiofilepath, $audiofilename);
@@ -790,9 +821,9 @@ class QrCodeController extends Controller
             $datacoupon = $request->file('qr_data_coupon_logo');
             if ($datacoupon->isValid()) {
                 $oldcouponFile = $qr->qrData->qr_data_coupon_logo;
-                    if ($oldcouponFile) {
-                        Storage::delete('public/qr_codes/coupons/' . $oldcouponFile);
-                    }
+                if ($oldcouponFile) {
+                    Storage::delete('public/qr_codes/coupons/' . $oldcouponFile);
+                }
                 $couponfilename = $code . '_pdf';
                 $couponfilepath = 'public/qr_codes/coupons/';
                 $uploadedcouponLogoFile = customUpload($datacoupon, $couponfilepath, $couponfilename);
@@ -805,9 +836,9 @@ class QrCodeController extends Controller
             $datasocial = $request->file('qr_data_social_logo');
             if ($datasocial->isValid()) {
                 $oldsocial_logoFile = $qr->qrData->qr_data_social_logo;
-                    if ($oldsocial_logoFile) {
-                        Storage::delete('public/qr_codes/socials/' . $oldsocial_logoFile);
-                    }
+                if ($oldsocial_logoFile) {
+                    Storage::delete('public/qr_codes/socials/' . $oldsocial_logoFile);
+                }
                 $socialfilename = $code . '_pdf';
                 $socialfilepath = 'public/qr_codes/socials/';
                 $uploadedsocialLogoFile = customUpload($datasocial, $socialfilepath, $socialfilename);
@@ -820,9 +851,9 @@ class QrCodeController extends Controller
             $datasocial = $request->file('qr_data_social_bg');
             if ($datasocial->isValid()) {
                 $oldsocial_bgFile = $qr->qrData->qr_data_social_bg;
-                    if ($oldsocial_bgFile) {
-                        Storage::delete('public/qr_codes/socials/' . $oldsocial_bgFile);
-                    }
+                if ($oldsocial_bgFile) {
+                    Storage::delete('public/qr_codes/socials/' . $oldsocial_bgFile);
+                }
                 $socialfilename = $code . '_pdf';
                 $socialfilepath = 'public/qr_codes/socials/';
                 $uploadedsocialbgFile = customUpload($datasocial, $socialfilepath, $socialfilename);
@@ -836,9 +867,9 @@ class QrCodeController extends Controller
             $datafacebook_page = $request->file('qr_data_facebook_page_logo');
             if ($datafacebook_page->isValid()) {
                 $oldfacebook_page_logoFile = $qr->qrData->qr_data_facebook_page_logo;
-                    if ($oldfacebook_page_logoFile) {
-                        Storage::delete('public/qr_codes/facebook_pages/' . $oldfacebook_page_logoFile);
-                    }
+                if ($oldfacebook_page_logoFile) {
+                    Storage::delete('public/qr_codes/facebook_pages/' . $oldfacebook_page_logoFile);
+                }
                 $facebook_pagefilename = $code . '_pdf';
                 $facebook_pagefilepath = 'public/qr_codes/facebook_pages/';
                 $uploadedfacebook_pageLogoFile = customUpload($datafacebook_page, $facebook_pagefilepath, $facebook_pagefilename);
@@ -851,9 +882,9 @@ class QrCodeController extends Controller
             $datafacebook_page = $request->file('qr_data_facebook_page_bg');
             if ($datafacebook_page->isValid()) {
                 $oldfacebook_page_bgFile = $qr->qrData->qr_data_facebook_page_bg;
-                    if ($oldfacebook_page_bgFile) {
-                        Storage::delete('public/qr_codes/facebook_pages/' . $oldfacebook_page_bgFile);
-                    }
+                if ($oldfacebook_page_bgFile) {
+                    Storage::delete('public/qr_codes/facebook_pages/' . $oldfacebook_page_bgFile);
+                }
                 $facebook_pagefilename = $code . '_pdf';
                 $facebook_pagefilepath = 'public/qr_codes/facebook_pages/';
                 $uploadedfacebook_pagebgFile = customUpload($datafacebook_page, $facebook_pagefilepath, $facebook_pagefilename);
@@ -867,9 +898,9 @@ class QrCodeController extends Controller
             $databusiness_page = $request->file('qr_data_business_page_logo');
             if ($databusiness_page->isValid()) {
                 $oldbusiness_page_logoFile = $qr->qrData->qr_data_business_page_logo;
-                    if ($oldbusiness_page_logoFile) {
-                        Storage::delete('public/qr_codes/business_pages/' . $oldbusiness_page_logoFile);
-                    }
+                if ($oldbusiness_page_logoFile) {
+                    Storage::delete('public/qr_codes/business_pages/' . $oldbusiness_page_logoFile);
+                }
                 $business_pagefilename = $code . '_pdf';
                 $business_pagefilepath = 'public/qr_codes/business_pages/';
                 $uploadedbusiness_pageLogoFile = customUpload($databusiness_page, $business_pagefilepath, $business_pagefilename);
@@ -903,7 +934,7 @@ class QrCodeController extends Controller
             'qr_data_coupon_description_body'            => $request->qr_data_coupon_description_body,
             'qr_data_coupon_company'                     => $request->qr_data_coupon_company,
             'qr_data_coupon_code'                        => $request->qr_data_coupon_code,
-            'qr_data_coupon_logo'                        => $uploadedcouponLogoFile['status']== 1 ? $uploadedcouponLogoFile['file_name'] : $qrData->qr_data_coupon_logo,
+            'qr_data_coupon_logo'                        => $uploadedcouponLogoFile['status'] == 1 ? $uploadedcouponLogoFile['file_name'] : $qrData->qr_data_coupon_logo,
             'qr_data_coupon_expire_date'                 => $request->qr_data_coupon_expire_date,
             'qr_data_coupon_description_header'          => $request->qr_data_coupon_description_header,
             'qr_data_coupon_website'                     => $request->qr_data_coupon_website,
@@ -1280,7 +1311,6 @@ class QrCodeController extends Controller
             $qr_data->delete();
         }
     }
-
 }
 
 

@@ -92,7 +92,6 @@
                                 <span class="menu-title">QR Code List</span>
                             </a>
                         </div>
-
                     </div>
                 </div>
                 <div data-kt-menu-trigger="click"
