@@ -1075,7 +1075,7 @@ class QrCodeController extends Controller
         }
     }
 
-    public function qrPreview(Request $request)
+    public function qrPreview(QrCodeRequest $request)
     {
 
         $typePrefix = 'QR'; // Example prefix

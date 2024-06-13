@@ -121,19 +121,19 @@
         <div class="pb-4">
             <x-metronic.label for="qr_app_android"
                 class="form-label">{{ __('Google Play store URL') }}</x-metronic.label>
-            <x-metronic.input id="qr_app_android" type="text" name="qr_app_android" :value="old('qr_app_android')"
+            <x-metronic.input id="qr_app_android" type="url" name="qr_app_android" :value="old('qr_app_android')"
                 placeholder="Google Play store URL" />
         </div>
         <div class="pb-4">
             <x-metronic.label for="qr_data_app_iphone"
                 class="form-label">{{ __('App store URL (iPhone)') }}</x-metronic.label>
-            <x-metronic.input id="qr_data_app_iphone" type="text" name="qr_data_app_iphone" :value="old('qr_data_app_iphone')"
+            <x-metronic.input id="qr_data_app_iphone" type="url" name="qr_data_app_iphone" :value="old('qr_data_app_iphone')"
                 placeholder="App store URL (iPhone)" />
         </div>
         <div class="pb-4">
             <x-metronic.label for="qr_data_app_ipad"
                 class="form-label">{{ __('App store URL (iPad and macOS)') }}</x-metronic.label>
-            <x-metronic.input id="qr_data_app_ipad" type="text" name="qr_data_app_ipad" :value="old('qr_data_app_ipad')"
+            <x-metronic.input id="qr_data_app_ipad" type="url" name="qr_data_app_ipad" :value="old('qr_data_app_ipad')"
                 placeholder="App store URL (iPad and macOS)" />
         </div>
     </div>
