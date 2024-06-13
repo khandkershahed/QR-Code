@@ -1,4 +1,4 @@
-<x-app-layout :title="'QR Code List'">
+<x-admin-app-layout :title="'QR Code List'">
 
     {{-- {!! QrCode::size(500)->eye('square')->eyeColor(1, 222, 18, 222,222, 18, 222 )->eyeColor(1, 222, 18, 222,222, 18, 222 )->eyeColor(2, 222, 18, 222,222, 18, 222 )->style('dot', 0.8)->errorCorrection('H')->generate('Make me into a QrCode!'); !!} --}}
     <div class="row">
@@ -299,4 +299,4 @@
             });
         </script>
     @endpush
-</x-app-layout>
+</x-admin-app-layout>

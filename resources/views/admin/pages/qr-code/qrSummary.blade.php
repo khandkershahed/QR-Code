@@ -1,4 +1,4 @@
-<x-app-layout :title="'QR Summary ' . $qr->code">
+<x-admin-app-layout :title="'QR Summary ' . $qr->code">
 
     <div class="container-fluid">
         {{-- <div id="kt_app_toolbar_container" class="app-container  container-fluid d-flex flex-stack mb-10">
@@ -303,4 +303,4 @@
 
 
 
-</x-app-layout>
+</x-admin-app-layout>

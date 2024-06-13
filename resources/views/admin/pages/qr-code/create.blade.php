@@ -1,4 +1,4 @@
-<x-app-layout :title="'QR Code Generate'">
+<x-admin-app-layout :title="'QR Code Generate'">
     <div class="row align-items-center">
         <div class="col-lg-8 col-md-7">
             <div class="card mt-10">
@@ -824,4 +824,4 @@
         });
         </script>
     @endpush
-</x-app-layout>
+</x-admin-app-layout>

@@ -1,4 +1,4 @@
-<x-app-layout :title="'QR : ' . $qr->code . ' Edit'">
+<x-admin-app-layout :title="'QR : ' . $qr->code . ' Edit'">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-9">
@@ -423,4 +423,4 @@
             });
             </script>
     @endpush
-</x-app-layout>
+</x-admin-app-layout>

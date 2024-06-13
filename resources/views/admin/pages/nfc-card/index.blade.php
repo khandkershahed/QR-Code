@@ -1,4 +1,4 @@
-<x-app-layout :title="'NFC Card List'">
+<x-admin-app-layout :title="'NFC Card List'">
     <style>
         /* Add your custom CSS styles here */
         #epaper-container {
@@ -378,4 +378,4 @@
         </script>
     @endpush
 
-</x-app-layout>
+</x-admin-app-layout>
