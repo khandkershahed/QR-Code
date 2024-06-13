@@ -11,6 +11,7 @@ use Jenssegers\Agent\Agent;
 use App\Models\Admin\QrData;
 use App\Models\Admin\QrScan;
 use Illuminate\Http\Request;
+use App\Models\Subscription;
 use App\Models\RestaurantCategory;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -26,8 +27,8 @@ class QrCodeController extends Controller
     public function index(Request $request)
 {
     $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
-    $user = $request->user();
-    $subscription = $isUserRoute ? $user->subscription() : null;
+    $user = Auth::user();
+    $subscription = $isUserRoute ? Subscription::with('plan')->where('user_id', $user->id)->active()->first() : null;
     $qrs = $isUserRoute ?
         Qr::with('qrData', 'qrScan')->where('user_id', $user->id)->latest('id')->get() :
         Qr::with('qrData', 'qrScan')->latest('id')->get();

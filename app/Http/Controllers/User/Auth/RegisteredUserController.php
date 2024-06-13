@@ -36,13 +36,34 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'plan' => ['required', 'exists:plans,id'],
         ]);
 
-        return view('');
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+        $plan = Plan::find($request->plan);
+        Auth::login($user);
+        if ($plan->billing_cycle == 'trial_period') {
+            Mail::to($user->email)->send(new UserRegistrationMail($user->name));
+            return redirect(RouteServiceProvider::HOME)->with('success', 'You have successfully registered with the plan.');
+        } else {
+            return redirect()->route('stripe.checkout',$plan->slug);
+        }
+
+
     }
+
+
+
+
+
+
+
+
 
     // public function stripeCheckout(): View
     // {
@@ -64,14 +85,13 @@ class RegisteredUserController extends Controller
     //     // Find the selected plan
     //     $plan = Plan::findOrFail($request->input('plan'));
 
-    //     // Set up metadata with the unique session identifier
-    //     $metadata = [
-    //         'session_id' => $sessionId,
-    //         'name' => $request->input('name'),
-    //         'email' => $request->input('email'),
-    //         'password' => $request->input('password'),
-    //         'plan_id' => $plan->id,
-    //     ];
+    //     $user = User::create([
+    //         'name' => $request->name,
+    //         'email' => $request->email,
+    //         'password' => Hash::make($request->password),
+    //     ]);
+
+    //     event(new Registered($user));
 
     //     // Create checkout session with client_reference_id set to session ID
     //     $checkoutSession = \Stripe\Checkout\Session::create([
@@ -83,10 +103,13 @@ class RegisteredUserController extends Controller
     //         'mode' => 'subscription',
     //         'success_url' => route('stripe.success', [], true) . "?session_id={CHECKOUT_SESSION_ID}",
     //         'cancel_url' => route('stripe.cancel', [], true),
-    //         'client_reference_id' => $sessionId,
-    //         'metadata' => $metadata,
+    //         'client_reference_id' => $user->id,
+    //         'metadata' => [
+    //             'plan_id' => $plan->id
+    //         ],
     //     ]);
 
+    //     // Redirect to the checkout session URL
     //     return redirect()->to($checkoutSession->url);
     // }
 

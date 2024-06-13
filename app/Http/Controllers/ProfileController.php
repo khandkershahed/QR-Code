@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\View\View;
 use App\Models\Admin\Plan;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
 use App\Events\ActivityLogged;
 use Illuminate\Validation\Rule;
@@ -183,9 +184,19 @@ class ProfileController extends Controller
         $data = [
             'monthly_plans' => Plan::orderBy('price', 'asc')->where('billing_cycle', 'monthly')->get(),
             'yearly_plans' => Plan::orderBy('price', 'asc')->where('billing_cycle', 'yearly')->get(),
-            'subscription' => $user->subscription('default'),
+            'subscriptions' => Subscription::where('user_id',$user->id)->active()->get(),
         ];
 
         return view('user.profile.subscription_plan', $data);
+    }
+    public function UpgradePlan(): View
+    {
+        $user = Auth::user();
+        $data = [
+            'monthly_plans' => Plan::orderBy('price', 'asc')->where('billing_cycle', 'monthly')->get(),
+            'yearly_plans' => Plan::orderBy('price', 'asc')->where('billing_cycle', 'yearly')->get(),
+        ];
+
+        return view('user.profile.user_plans', $data);
     }
 }

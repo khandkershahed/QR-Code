@@ -181,7 +181,7 @@
                     </div>
                 </div>
                 <div data-kt-menu-trigger="click"
-                    class="menu-item {{ Route::is('profile.edit', 'user.plan') ? 'here show' : '' }} menu-accordion">
+                    class="menu-item {{ Route::is('profile.edit','user.plan','user.invoice') ? 'here show' : '' }} menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">

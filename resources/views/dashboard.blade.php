@@ -449,13 +449,17 @@
                                 <div class="d-flex flex-stack flex-grow-1 flex-wrap flex-md-nowrap">
                                     <div class="mb-3 mb-md-0 fw-semibold">
                                         <h4 class="text-gray-900 fw-bold">Your Current Plan <span
-                                                style="color: orangered">Premium Plan</span></h4>
+                                                style="color: orangered">@if (!empty($subscription))
+                                                {{ $subscription->plan->title }}
+                                                @else
+                                                    Trial Period
+                                                @endif</span></h4>
 
                                         <div class="fs-6 text-gray-700 pe-7">You Can Check Your Plan Or Status By
                                             Clicking Here!</div>
                                     </div>
 
-                                    <a href="#" class="btn btn-primary px-6 align-self-center text-nowrap">
+                                    <a href="{{ route('user.plan') }}" class="btn btn-primary px-6 align-self-center text-nowrap">
                                         Check Current Status</a>
                                 </div>
                             </div>
@@ -505,196 +509,205 @@
             </div>
         </div>
         {{-- Modal Start For Check Plan  --}}
-        {{-- <div class="modal fade bg-dark bg-opacity-75 show" id="kt_app_engage_prebuilts_modal" tabindex="-1"
-            aria-modal="true" role="dialog" style="display: block">
-            <div class="modal-dialog modal-dialog-centered modal-lg p-5 p-lg-10"
-                id="kt_engage_prebuilts_modal_dialog">
-                <div class="modal-content rounded-4">
-                    <div class="modal-header flex-stack border-0 px-10 pt-5 pb-0" id="kt_engage_prebuilts_header">
-                        <div class="btn btn-sm btn-icon btn-active-color-primary me-n2 position-relative z-index-1 default-modal-close"
-                            data-bs-dismiss="modal">
-                            <i class="fa-solid fa-xmark fs-1"></i>
+        @if (!empty($subscription))
+            <div class="modal fade bg-dark bg-opacity-75 show" id="kt_app_engage_prebuilts_modal" tabindex="-1"
+                aria-modal="true" role="dialog" style="display: block">
+                <div class="modal-dialog modal-dialog-centered modal-lg p-5 p-lg-10"
+                    id="kt_engage_prebuilts_modal_dialog">
+                    <div class="modal-content rounded-4">
+                        <div class="modal-header flex-stack border-0 px-10 pt-5 pb-0" id="kt_engage_prebuilts_header">
+                            <div class="btn btn-sm btn-icon btn-active-color-primary me-n2 position-relative z-index-1 default-modal-close"
+                                data-bs-dismiss="modal">
+                                <i class="fa-solid fa-xmark fs-1"></i>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="modal-body scroll-y pt-10 pb-15 px-lg-17">
-                        <!--begin::Options-->
-                        <div data-kt-element="options">
-                            <!--begin::Notice-->
-                            <div class="pb-5">
-                                <h3 class="text-center fw-bold">Currently on a </h3>
-                                <h1 class="text-center mb-0 fw-bold" style="color: orangered;">14-day free trial</h1>
-                            </div>
-                            <p class="text-muted fs-5 fw-semibold mb-10 text-center mb-1"> Of our Premium Plan. This
-                                trial gives you full
-                                access to all premium features, including unlimited queries, priority support, and
-                                personalized assistance. Enjoy enhanced response times, detailed answers, and exclusive
-                                updates during this trial period. After the 14 days, all your data will be automatically
-                                deleted without permission. You will receive one email notification before this action
-                                is taken.
-                            </p>
-                            <div class="py-5 mb-15">
-                                <h1 class="text-center mb-0 fw-bold" style="color: orangered;">Thank you for trying
-                                    our <br> Premium service!</h1>
-                            </div>
-                            <div class="trial_end">
-                                <div id="countdown">
-                                    <div id='tiles'></div>
-                                    <div class="labels">
-                                        <li>Days</li>
-                                        <li>Hours</li>
-                                        <li>Mins</li>
-                                        <li>Secs</li>
-                                    </div>
+                        <div class="modal-body scroll-y pt-10 pb-15 px-lg-17">
+                            <!--begin::Options-->
+                            <div data-kt-element="options">
+                                <!--begin::Notice-->
+                                <div class="pb-5">
+                                    <h3 class="text-center fw-bold">Currently on a </h3>
+                                    @if (!empty($subscription))
+                                    <h1 class="text-center mb-0 fw-bold" style="color: orangered;">{{ $subscription->plan->title }}</h1>
+                                    @else
+                                    <h1 class="text-center mb-0 fw-bold" style="color: orangered;">14-day free trial</h1>
+                                    @endif
                                 </div>
-                            </div>
-                            <!--end::Notice-->
-                        </div>
-                        <!--end::Options-->
-
-                        <!--begin::Apps-->
-                        <div class="d-none" data-kt-element="apps">
-                            <!--begin::Heading-->
-                            <h3 class="text-gray-900 fw-bold mb-7">
-                                Authenticator Apps
-                            </h3>
-                            <!--end::Heading-->
-
-                            <!--begin::Description-->
-                            <div class="text-gray-500 fw-semibold fs-6 mb-10">
-                                Using an authenticator app like
-                                <a href="https://support.google.com/accounts/answer/1066447?hl=en"
-                                    target="_blank">Google Authenticator</a>,
-                                <a href="https://www.microsoft.com/en-us/account/authenticator"
-                                    target="_blank">Microsoft Authenticator</a>,
-                                <a href="https://authy.com/download/" target="_blank">Authy</a>, or
-                                <a href="https://support.1password.com/one-time-passwords/"
-                                    target="_blank">1Password</a>,
-                                scan the QR code. It will generate a 6 digit code for you to enter below.
-
-                                <!--begin::QR code image-->
-                                <div class="pt-5 text-center">
-                                    <img src="/metronic8/demo1/assets/media/misc/qr.png" alt=""
-                                        class="mw-150px">
+                                <p class="text-muted fs-5 fw-semibold mb-10 text-center mb-1"> Of our Premium Plan. This
+                                    trial gives you full
+                                    access to all premium features, including unlimited queries, priority support, and
+                                    personalized assistance. Enjoy enhanced response times, detailed answers, and exclusive
+                                    updates during this trial period. After the 14 days, all your data will be automatically
+                                    deleted without permission. You will receive one email notification before this action
+                                    is taken.
+                                </p>
+                                <div class="py-5 mb-15">
+                                    <h1 class="text-center mb-0 fw-bold" style="color: orangered;">Thank you for trying
+                                        our <br> Premium service!</h1>
                                 </div>
-                                <!--end::QR code image-->
-                            </div>
-                            <!--end::Description-->
-
-
-                            <!--begin::Notice-->
-                            <div
-                                class="notice d-flex bg-light-warning rounded border-warning border border-dashed mb-10 p-6">
-                                <!--begin::Icon-->
-                                <i class="ki-duotone ki-information fs-2tx text-warning me-4"><span
-                                        class="path1"></span><span class="path2"></span><span
-                                        class="path3"></span></i> <!--end::Icon-->
-
-                                <!--begin::Wrapper-->
-                                <div class="d-flex flex-stack flex-grow-1 ">
-                                    <!--begin::Content-->
-                                    <div class=" fw-semibold">
-
-                                        <div class="fs-6 text-gray-700 ">If you having trouble using the QR code,
-                                            select manual entry on your app, and enter your username and the code: <div
-                                                class="fw-bold text-gray-900 pt-2">KBSS3QDAAFUMCBY63YCKI5WSSVACUMPN
-                                            </div>
+                                @if (!empty($subscription))
+                                @else
+                                <div class="trial_end">
+                                    <div id="countdown">
+                                        <div id='tiles'></div>
+                                        <div class="labels">
+                                            <li>Days</li>
+                                            <li>Hours</li>
+                                            <li>Mins</li>
+                                            <li>Secs</li>
                                         </div>
                                     </div>
-                                    <!--end::Content-->
-
                                 </div>
-                                <!--end::Wrapper-->
+                                @endif
+                                <!--end::Notice-->
                             </div>
-                            <!--end::Notice-->
+                            <!--end::Options-->
 
-                            <!--begin::Form-->
-                            <form data-kt-element="apps-form" class="form fv-plugins-bootstrap5 fv-plugins-framework"
-                                action="#">
-                                <!--begin::Input group-->
-                                <div class="mb-10 fv-row fv-plugins-icon-container">
-                                    <input type="text" class="form-control form-control-lg form-control-solid"
-                                        placeholder="Enter authentication code" name="code">
-                                    <div
-                                        class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
+                            <!--begin::Apps-->
+                            <div class="d-none" data-kt-element="apps">
+                                <!--begin::Heading-->
+                                <h3 class="text-gray-900 fw-bold mb-7">
+                                    Authenticator Apps
+                                </h3>
+                                <!--end::Heading-->
+
+                                <!--begin::Description-->
+                                <div class="text-gray-500 fw-semibold fs-6 mb-10">
+                                    Using an authenticator app like
+                                    <a href="https://support.google.com/accounts/answer/1066447?hl=en"
+                                        target="_blank">Google Authenticator</a>,
+                                    <a href="https://www.microsoft.com/en-us/account/authenticator"
+                                        target="_blank">Microsoft Authenticator</a>,
+                                    <a href="https://authy.com/download/" target="_blank">Authy</a>, or
+                                    <a href="https://support.1password.com/one-time-passwords/"
+                                        target="_blank">1Password</a>,
+                                    scan the QR code. It will generate a 6 digit code for you to enter below.
+
+                                    <!--begin::QR code image-->
+                                    <div class="pt-5 text-center">
+                                        <img src="/metronic8/demo1/assets/media/misc/qr.png" alt=""
+                                            class="mw-150px">
                                     </div>
+                                    <!--end::QR code image-->
                                 </div>
-                                <!--end::Input group-->
+                                <!--end::Description-->
 
-                                <!--begin::Actions-->
-                                <div class="d-flex flex-center">
-                                    <button type="reset" data-kt-element="apps-cancel" class="btn btn-light me-3">
-                                        Cancel
-                                    </button>
 
-                                    <button type="submit" data-kt-element="apps-submit" class="btn btn-primary">
-                                        <span class="indicator-label">
-                                            Submit
-                                        </span>
-                                        <span class="indicator-progress">
-                                            Please wait... <span
-                                                class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                                        </span>
-                                    </button>
+                                <!--begin::Notice-->
+                                <div
+                                    class="notice d-flex bg-light-warning rounded border-warning border border-dashed mb-10 p-6">
+                                    <!--begin::Icon-->
+                                    <i class="ki-duotone ki-information fs-2tx text-warning me-4"><span
+                                            class="path1"></span><span class="path2"></span><span
+                                            class="path3"></span></i> <!--end::Icon-->
+
+                                    <!--begin::Wrapper-->
+                                    <div class="d-flex flex-stack flex-grow-1 ">
+                                        <!--begin::Content-->
+                                        <div class=" fw-semibold">
+
+                                            <div class="fs-6 text-gray-700 ">If you having trouble using the QR code,
+                                                select manual entry on your app, and enter your username and the code: <div
+                                                    class="fw-bold text-gray-900 pt-2">KBSS3QDAAFUMCBY63YCKI5WSSVACUMPN
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--end::Content-->
+
+                                    </div>
+                                    <!--end::Wrapper-->
                                 </div>
-                                <!--end::Actions-->
-                            </form>
-                            <!--end::Form-->
-                        </div>
-                        <!--end::Options-->
-                        <!--begin::SMS-->
-                        <div class="d-none" data-kt-element="sms">
-                            <!--begin::Heading-->
-                            <h3 class="text-gray-900 fw-bold fs-3 mb-5">
-                                SMS: Verify Your Mobile Number
-                            </h3>
-                            <!--end::Heading-->
+                                <!--end::Notice-->
 
-                            <!--begin::Notice-->
-                            <div class="text-muted fw-semibold mb-10">
-                                Enter your mobile phone number with country code and we will send you a verification
-                                code upon request.
+                                <!--begin::Form-->
+                                <form data-kt-element="apps-form" class="form fv-plugins-bootstrap5 fv-plugins-framework"
+                                    action="#">
+                                    <!--begin::Input group-->
+                                    <div class="mb-10 fv-row fv-plugins-icon-container">
+                                        <input type="text" class="form-control form-control-lg form-control-solid"
+                                            placeholder="Enter authentication code" name="code">
+                                        <div
+                                            class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
+                                        </div>
+                                    </div>
+                                    <!--end::Input group-->
+
+                                    <!--begin::Actions-->
+                                    <div class="d-flex flex-center">
+                                        <button type="reset" data-kt-element="apps-cancel" class="btn btn-light me-3">
+                                            Cancel
+                                        </button>
+
+                                        <button type="submit" data-kt-element="apps-submit" class="btn btn-primary">
+                                            <span class="indicator-label">
+                                                Submit
+                                            </span>
+                                            <span class="indicator-progress">
+                                                Please wait... <span
+                                                    class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <!--end::Actions-->
+                                </form>
+                                <!--end::Form-->
                             </div>
-                            <!--end::Notice-->
+                            <!--end::Options-->
+                            <!--begin::SMS-->
+                            <div class="d-none" data-kt-element="sms">
+                                <!--begin::Heading-->
+                                <h3 class="text-gray-900 fw-bold fs-3 mb-5">
+                                    SMS: Verify Your Mobile Number
+                                </h3>
+                                <!--end::Heading-->
 
-                            <!--begin::Form-->
-                            <form data-kt-element="sms-form" class="form fv-plugins-bootstrap5 fv-plugins-framework"
-                                action="#">
-                                <!--begin::Input group-->
-                                <div class="mb-10 fv-row fv-plugins-icon-container">
-                                    <input type="text" class="form-control form-control-lg form-control-solid"
-                                        placeholder="Mobile number with country code..." name="mobile">
-                                    <div
-                                        class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
+                                <!--begin::Notice-->
+                                <div class="text-muted fw-semibold mb-10">
+                                    Enter your mobile phone number with country code and we will send you a verification
+                                    code upon request.
+                                </div>
+                                <!--end::Notice-->
+
+                                <!--begin::Form-->
+                                <form data-kt-element="sms-form" class="form fv-plugins-bootstrap5 fv-plugins-framework"
+                                    action="#">
+                                    <!--begin::Input group-->
+                                    <div class="mb-10 fv-row fv-plugins-icon-container">
+                                        <input type="text" class="form-control form-control-lg form-control-solid"
+                                            placeholder="Mobile number with country code..." name="mobile">
+                                        <div
+                                            class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
+                                        </div>
                                     </div>
-                                </div>
-                                <!--end::Input group-->
+                                    <!--end::Input group-->
 
-                                <!--begin::Actions-->
-                                <div class="d-flex flex-center">
-                                    <button type="reset" data-kt-element="sms-cancel" class="btn btn-light me-3">
-                                        Cancel
-                                    </button>
+                                    <!--begin::Actions-->
+                                    <div class="d-flex flex-center">
+                                        <button type="reset" data-kt-element="sms-cancel" class="btn btn-light me-3">
+                                            Cancel
+                                        </button>
 
-                                    <button type="submit" data-kt-element="sms-submit" class="btn btn-primary">
-                                        <span class="indicator-label">
-                                            Submit
-                                        </span>
-                                        <span class="indicator-progress">
-                                            Please wait... <span
-                                                class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                                        </span>
-                                    </button>
-                                </div>
-                                <!--end::Actions-->
-                            </form>
-                            <!--end::Form-->
+                                        <button type="submit" data-kt-element="sms-submit" class="btn btn-primary">
+                                            <span class="indicator-label">
+                                                Submit
+                                            </span>
+                                            <span class="indicator-progress">
+                                                Please wait... <span
+                                                    class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <!--end::Actions-->
+                                </form>
+                                <!--end::Form-->
+                            </div>
+                            <!--end::SMS-->
                         </div>
-                        <!--end::SMS-->
                     </div>
                 </div>
             </div>
-        </div> --}}
+        @endif
         {{-- Modal Start For Check Plan  --}}
     </div>
     @push('scripts')

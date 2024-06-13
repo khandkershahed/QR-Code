@@ -7,6 +7,7 @@ use App\Models\NfcScan;
 use Illuminate\Http\Request;
 use App\Models\Admin\NfcCard;
 use App\Models\Admin\NfcData;
+use App\Models\Subscription;
 use Jenssegers\Agent\Facades\Agent;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -26,14 +27,16 @@ class NfcCardController extends Controller
     public function index()
     {
         $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
-
+        $user = Auth::user();
+        $subscription = $isUserRoute ? Subscription::with('plan')->where('user_id', $user->id)->active()->first() : null;
         $nfc_cards = $isUserRoute ?
             NfcCard::with('nfcData', 'nfcMessages')->where('user_id', Auth::user()->id)->latest('id')->get() :
             NfcCard::with('nfcData', 'nfcMessages')->latest('id')->get();
 
         $view = $isUserRoute ? 'user.pages.nfc-card.index' : 'admin.pages.nfc-card.index';
 
-        return view($view, ['nfc_cards' => $nfc_cards]);
+        return view($view, ['nfc_cards' => $nfc_cards,
+        'subscription' => $subscription,]);
 
     }
 

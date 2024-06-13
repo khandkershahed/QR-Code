@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Admin\Qr;
 use Illuminate\View\View;
 use Jenssegers\Agent\Agent;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
 use App\Models\Admin\NfcCard;
 use App\Models\UserLoginDetails;
@@ -28,7 +29,7 @@ class AuthenticatedSessionController extends Controller
     {
         $user = Auth::user();
         $userId = $user->id;
-        $subscription = $user->subscription();
+        $subscription = Subscription::with('plan')->where('user_id', $user->id)->active()->first();
         // dd($subscription);
         $notifications = UserNotification::where('user_id', $userId)->with('notificationMessage')->latest('created_at')->get();
 
@@ -77,7 +78,7 @@ class AuthenticatedSessionController extends Controller
             // }
         }
 
-        return view('dashboard', compact('notifications', 'qrs', 'nfc_cards', 'nfc_pending', 'qr_pending', 'nfc_completion_percentage', 'qr_completion_percentage', 'qr_users', 'nfc_users'));
+        return view('dashboard', compact('subscription','notifications', 'qrs', 'nfc_cards', 'nfc_pending', 'qr_pending', 'nfc_completion_percentage', 'qr_completion_percentage', 'qr_users', 'nfc_users'));
     }
 
     public function create(): View
