@@ -1,34 +1,34 @@
 <x-nfc-card.virtual_card :virtualCardtemplates="[
     [
         'value' => 'virtual-card-one',
-        'image' => 'frontend/assets/images/nfc-templates/template_one.jpg',
+        'image' => 'frontend/images/virtual_card/virtual_card_1.png',
     ],
     [
         'value' => 'virtual-card-two',
-        'image' => 'frontend/assets/images/nfc-templates/template_two.jpg',
+        'image' => 'frontend/images/virtual_card/virtual_card_2.png',
     ],
     [
         'value' => 'virtual-card-three',
-        'image' => 'frontend/assets/images/nfc-templates/template_three.jpg',
+        'image' => 'frontend/images/virtual_card/virtual_card_3.png',
     ],
     [
         'value' => 'virtual-card-four',
-        'image' => 'frontend/assets/images/nfc-templates/template_four.jpg',
+        'image' => 'frontend/images/virtual_card/virtual_card_4.png',
     ],
     [
         'value' => 'virtual-card-five',
-        'image' => 'frontend/assets/images/nfc-templates/template_five.jpg',
+        'image' => 'frontend/images/virtual_card/virtual_card_5.png',
     ],
     [
         'value' => 'virtual-card-six',
-        'image' => 'frontend/assets/images/nfc-templates/template_six.jpg',
+        'image' => 'frontend/images/virtual_card/virtual_card_6.png',
     ],
     [
         'value' => 'virtual-card-seven',
-        'image' => 'frontend/assets/images/nfc-templates/template_six.jpg',
+        'image' => 'frontend/images/virtual_card/virtual_card_7.png',
     ],
     [
         'value' => 'virtual-card-eight',
-        'image' => 'frontend/assets/images/nfc-templates/template_six.jpg',
+        'image' => 'frontend/images/virtual_card/virtual_card_8.png',
     ],
 ]" />
