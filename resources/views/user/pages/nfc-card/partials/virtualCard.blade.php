@@ -1,4 +1,4 @@
-<x-nfc-card.template :templates="[
+<x-nfc-card.virtual_card :virtualCardtemplates="[
     [
         'value' => 'template-one',
         'image' => 'frontend/assets/images/nfc-templates/template_one.jpg',
@@ -21,6 +21,14 @@
     ],
     [
         'value' => 'template-six',
+        'image' => 'frontend/assets/images/nfc-templates/template_six.jpg',
+    ],
+    [
+        'value' => 'template-seven',
+        'image' => 'frontend/assets/images/nfc-templates/template_six.jpg',
+    ],
+    [
+        'value' => 'template-eight',
         'image' => 'frontend/assets/images/nfc-templates/template_six.jpg',
     ],
 ]" />

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('virtual_cards', function (Blueprint $table) {
             $table->id();
             $table->foreignId('card_id')->nullable()->constrained('nfc_cards')->onDelete('cascade');
+            $table->string('virtual_card_template')->nullable();
             $table->string('card_logo')->nullable();
             $table->string('card_bg')->nullable();
             $table->string('card_name')->nullable();

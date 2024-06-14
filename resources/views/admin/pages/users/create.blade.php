@@ -1,4 +1,4 @@
-<x-admin-app-layout :title="'Add User'">
+<x-admin-app-layout :title="'Add Admin'">
 
     <div class="card card-flash">
 
