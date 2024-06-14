@@ -71,62 +71,62 @@ var KTCreateAccount = (function () {
                 a.push(
                     FormValidation.formValidation(i, {
                         fields: {
-                            banner_image: {
-                                validators: {
-                                    notEmpty: {
-                                        message: "Banner Is Required",
-                                    },
-                                },
-                            },
-                            profile_image: {
-                                validators: {
-                                    notEmpty: {
-                                        message: "Profile Img Required",
-                                    },
-                                },
-                            },
-                            first_name: {
-                                validators: {
-                                    notEmpty: {
-                                        message: "First Name Is Required",
-                                    },
-                                },
-                            },
-                            designation: {
-                                validators: {
-                                    notEmpty: {
-                                        message: "Designation Is Required",
-                                    },
-                                },
-                            },
-                            address_line_one: {
-                                validators: {
-                                    notEmpty: {
-                                        message: "Designation Is Required",
-                                    },
-                                },
-                            },
-                            phone_personal: {
-                                validators: {
-                                    notEmpty: {
-                                        message: "Phone Is Required",
-                                    },
-                                },
-                            },
-                            email_personal: {
-                                validators: {
-                                    notEmpty: {
-                                        message: "Email Is Required",
-                                    },
-                                },
-                            },
-                            qr_data_website_url: {
-                                validators: {
-                                    notEmpty: {
-                                        message: "Email Is Required",
-                                    },
-                                },
-                            },
+                            // banner_image: {
+                            //     validators: {
+                            //         notEmpty: {
+                            //             message: "Banner Is Required",
+                            //         },
+                            //     },
+                            // },
+                            // profile_image: {
+                            //     validators: {
+                            //         notEmpty: {
+                            //             message: "Profile Img Required",
+                            //         },
+                            //     },
+                            // },
+                            // first_name: {
+                            //     validators: {
+                            //         notEmpty: {
+                            //             message: "First Name Is Required",
+                            //         },
+                            //     },
+                            // },
+                            // designation: {
+                            //     validators: {
+                            //         notEmpty: {
+                            //             message: "Designation Is Required",
+                            //         },
+                            //     },
+                            // },
+                            // address_line_one: {
+                            //     validators: {
+                            //         notEmpty: {
+                            //             message: "Designation Is Required",
+                            //         },
+                            //     },
+                            // },
+                            // phone_personal: {
+                            //     validators: {
+                            //         notEmpty: {
+                            //             message: "Phone Is Required",
+                            //         },
+                            //     },
+                            // },
+                            // email_personal: {
+                            //     validators: {
+                            //         notEmpty: {
+                            //             message: "Email Is Required",
+                            //         },
+                            //     },
+                            // },
+                            // qr_data_website_url: {
+                            //     validators: {
+                            //         notEmpty: {
+                            //             message: "Email Is Required",
+                            //         },
+                            //     },
+                            // },
                         },
                         plugins: {
                             trigger: new FormValidation.plugins.Trigger(),

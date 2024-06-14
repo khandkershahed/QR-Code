@@ -52716,7 +52716,7 @@ label.rating-label:hover~.rating-label>i {
     height: 40px;
     border-radius: .475rem;
     background-color: #f1faff;
-    margin-right: 1.5rem
+    /* margin-right: 1.5rem */
 }
 
 .stepper.stepper-pills .stepper-item .stepper-icon .stepper-check {
@@ -52739,7 +52739,7 @@ label.rating-label:hover~.rating-label>i {
 .stepper.stepper-pills .stepper-item .stepper-label .stepper-title {
     color: #3f4254;
     font-weight: 600;
-    font-size: 1.25rem;
+    font-size: 1rem;
     margin-bottom: .3rem
 }
 
