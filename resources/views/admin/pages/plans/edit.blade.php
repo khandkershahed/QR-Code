@@ -89,7 +89,7 @@
                         <x-metronic.label for="currency" class="col-form-label fw-bold fs-6">{{ __('Currency') }}
                         </x-metronic.label>
                         <x-metronic.input id="currency" type="url" name="currency" :value="old('currency', $plan->currency)"
-                            required placeholder="Stripe payment link"></x-metronic.input>
+                            required placeholder="Stripe payment link" readonly></x-metronic.input>
                         {{-- <x-metronic.select-option id="currency" name="currency" data-hide-search="true"
                             data-placeholder="Select an option" readonly>
                             <option></option>
