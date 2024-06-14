@@ -13,6 +13,16 @@ return new class extends Migration
     {
         Schema::create('virtual_cards', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('card_id')->nullable()->constrained('nfc_cards')->onDelete('cascade');
+            $table->string('card_logo')->nullable();
+            $table->string('card_name')->nullable();
+            $table->string('card_designation')->nullable();
+            $table->string('card_phone')->nullable();
+            $table->string('card_email')->nullable();
+            $table->string('card_address')->nullable();
+            $table->string('card_bg')->nullable();
+            $table->string('card_font_color')->nullable();
+            $table->string('card_font_style')->nullable();
             $table->timestamps();
         });
     }
