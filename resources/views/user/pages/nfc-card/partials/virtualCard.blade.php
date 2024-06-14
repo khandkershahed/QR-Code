@@ -1,34 +1,34 @@
 <x-nfc-card.virtual_card :virtualCardtemplates="[
     [
-        'value' => 'template-one',
+        'value' => 'virtual-card-one',
         'image' => 'frontend/assets/images/nfc-templates/template_one.jpg',
     ],
     [
-        'value' => 'template-two',
+        'value' => 'virtual-card-two',
         'image' => 'frontend/assets/images/nfc-templates/template_two.jpg',
     ],
     [
-        'value' => 'template-three',
+        'value' => 'virtual-card-three',
         'image' => 'frontend/assets/images/nfc-templates/template_three.jpg',
     ],
     [
-        'value' => 'template-four',
+        'value' => 'virtual-card-four',
         'image' => 'frontend/assets/images/nfc-templates/template_four.jpg',
     ],
     [
-        'value' => 'template-five',
+        'value' => 'virtual-card-five',
         'image' => 'frontend/assets/images/nfc-templates/template_five.jpg',
     ],
     [
-        'value' => 'template-six',
+        'value' => 'virtual-card-six',
         'image' => 'frontend/assets/images/nfc-templates/template_six.jpg',
     ],
     [
-        'value' => 'template-seven',
+        'value' => 'virtual-card-seven',
         'image' => 'frontend/assets/images/nfc-templates/template_six.jpg',
     ],
     [
-        'value' => 'template-eight',
+        'value' => 'virtual-card-eight',
         'image' => 'frontend/assets/images/nfc-templates/template_six.jpg',
     ],
 ]" />
