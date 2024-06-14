@@ -42,7 +42,7 @@ body {
     font-size: 16px;
     font-family: var(--base-font);
     /* Root */
-    --base-font: "Poppins", sans-serif; 
+    --base-font: "Poppins", sans-serif;
     /* --heading-font: "Bebas Neue", sans-serif; */
     --heading-font: "Eczar", serif;
     --primary-color: #008fd3;
@@ -8745,6 +8745,7 @@ a.theme-btn.style-four:hover {
 .pricing-item.style-five .title-price {
     display: -webkit-box;
     display: -ms-flexbox;
+    flex-direction: column;
     display: flex;
     -webkit-box-align: center;
     -ms-flex-align: center;
