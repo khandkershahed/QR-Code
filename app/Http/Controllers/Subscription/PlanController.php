@@ -6,6 +6,7 @@ use Stripe\Plan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Plan as ModelPlan;
+use Illuminate\Support\Facades\Validator;
 
 class PlanController extends Controller
 {
@@ -32,25 +33,124 @@ class PlanController extends Controller
      */
     public function store(Request $request)
     {
-        // $plan = Plan::create([
-        //     'amount' => $request->amount,
-        //     'currency' => $request->currency,
-        //     'interval' => $request->billing_period,
-        //     'interval_count' => $request->interval_count,
-        //     'product' => [
-        //         'name' => $request->name
-        //     ]
-        // ]);
-        $data = $request->all();
-        // $data['descriptions'] = json_encode($request->input('descriptions')); // Convert array to JSON
-        if ($request->has('descriptions')) {
-            $data['descriptions'] = json_encode($request->input('descriptions'));
-        } else {
-            $data['descriptions'] = json_encode([]); // Set to empty array if not provided
+        // Validate the incoming request data
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|string|max:255',
+            'price' => 'required|integer|min:1',
+            'currency' => 'required|string',
+            'billing_cycle' => 'required|string|in:day,week,month,year',
+            'interval' => 'required|integer|min:1',
+        ]);
+
+        // Check if validation fails
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
         }
-        ModelPlan::create($data);
-        return redirect()->back()->with('success', 'Plan Created successfully');
+
+        // Determine interval_count based on billing cycle
+        $interval_count = 1; // Default to 1 for day or week billing cycles
+        if ($request->billing_cycle == 'month') {
+            $interval_count = 12; // If billing cycle is month, set interval_count to 12
+        } elseif ($request->billing_cycle == 'year') {
+            $interval_count = 1; // If billing cycle is year, set interval_count to 1
+        }
+
+        // Create the Stripe Plan using the Stripe API
+        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+        try {
+            $plan = \Stripe\Plan::create([
+                'amount' => $request->price * 100, // Amount should be in cents
+                'currency' => $request->currency,
+                'interval' => $request->billing_cycle,
+                'interval_count' => $interval_count,
+                'product' => [
+                    'name' => $request->title,
+                ],
+            ]);
+            dd($plan);
+            // Prepare data for local storage
+            $data = $request->all();
+            $data['stripe_plan'] = $plan->id;
+
+            // Handle descriptions
+            if ($request->has('descriptions')) {
+                $data['descriptions'] = json_encode($request->input('descriptions'));
+            } else {
+                $data['descriptions'] = json_encode([]); // Set to empty array if not provided
+            }
+
+            // Store the plan in your local database
+            ModelPlan::create($data);
+
+            return redirect()->back()->with('success', 'Plan Created successfully');
+        } catch (\Exception $e) {
+            // Handle Stripe API errors
+            return redirect()->back()->with('error', 'Error creating plan: ' . $e->getMessage());
+        }
     }
+
+    // public function store(Request $request)
+    // {
+    //     // Validate the request
+    //     $validator = Validator::make(
+    //         $request->all(),
+    //         [
+    //             'name' => 'required|string|max:255',
+    //             'amount' => 'required|integer|min:1',
+    //             'currency' => 'required|string',
+    //             'billing_cycle' => 'required|string|in:day,week,month,year',
+    //             'interval' => 'required|integer|min:1',
+    //         ]
+    //     );
+
+    //     // Debug: Dump and die the request data
+    //     if ($validator->fails()) {
+
+    //         $messages = $validator->messages();
+    //         foreach ($messages->all() as $message) {
+    //             flash()->addError($message, 'Failed', ['timeOut' => 30000]);
+    //         }
+    //         return redirect()->back()->withInput();
+    //     }
+
+    //     \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+    //     try {
+    //         // Create the product first
+    //         $product = \Stripe\Product::create([
+    //             'name' => $request->name,
+    //         ]);
+    //         dd($product);
+    //         // Create the plan for the created product
+    //         $plan = \Stripe\Plan::create([
+    //             'amount' => $request->amount * 100, // Stripe expects the amount in cents
+    //             'currency' => $request->currency,
+    //             'interval' => $request->billing_cycle,
+    //             'interval_count' => $request->interval,
+    //             'product' => $product->id,
+    //         ]);
+
+    //         // Prepare data for local storage
+    //         $data = $request->all();
+    //         $data['stripe_plan'] = $plan->id;
+
+    //         // Handle descriptions
+    //         if ($request->has('descriptions')) {
+    //             $data['descriptions'] = json_encode($request->input('descriptions'));
+    //         } else {
+    //             $data['descriptions'] = json_encode([]); // Set to empty array if not provided
+    //         }
+
+    //         // Store the plan in your local database
+    //         ModelPlan::create($data);
+
+    //         return redirect()->back()->with('success', 'Plan Created successfully');
+    //     } catch (\Exception $e) {
+    //         // Handle errors
+    //         return redirect()->back()->with('error', 'Error creating plan: ' . $e->getMessage());
+    //     }
+    // }
 
     /**
      * Display the specified resource.
@@ -69,17 +169,75 @@ class PlanController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified resource
+     *  in storage.
      */
     public function update(Request $request, string $id)
     {
+        // Find the plan by ID
         $plan = ModelPlan::findOrFail($id);
-        $plan->fill($request->all());
-        $plan->descriptions = $request->filled('descriptions') ? $request->input('descriptions') : [];
-        $plan->save();
 
-        return redirect()->back()->with('success', 'Plan Updated successfully');
+        // Validate the incoming request data
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|string|max:255',
+            'price' => 'required|integer|min:1',
+            'currency' => 'required|string',
+            'billing_cycle' => 'required|string|in:day,week,month,year',
+            'interval' => 'required|integer|min:1',
+        ]);
+
+        // Check if validation fails
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        // Determine interval_count based on billing cycle
+        $interval_count = 1; // Default to 1 for day or week billing cycles
+        if ($request->billing_cycle == 'month') {
+            $interval_count = 12; // If billing cycle is month, set interval_count to 12
+        } elseif ($request->billing_cycle == 'year') {
+            $interval_count = 1; // If billing cycle is year, set interval_count to 1
+        }
+
+        // Update the Stripe Plan using the Stripe API
+        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+        try {
+            $stripePlan = \Stripe\Plan::update(
+                $plan->stripe_plan, // Stripe Plan ID
+                [
+                    'amount' => $request->price * 100, // Amount should be in cents
+                    'currency' => $request->currency,
+                    'interval' => $request->billing_cycle,
+                    'interval_count' => $interval_count,
+                    'product' => [
+                        'name' => $request->title,
+                    ],
+                ]
+            );
+
+            // Prepare data for local storage
+            $data = $request->all();
+            $data['stripe_plan'] = $stripePlan->id; // Update local Stripe Plan ID
+
+            // Handle descriptions
+            if ($request->has('descriptions')) {
+                $data['descriptions'] = json_encode($request->input('descriptions'));
+            } else {
+                $data['descriptions'] = json_encode([]); // Set to empty array if not provided
+            }
+
+            // Update the plan in your local database
+            $plan->fill($data);
+            $plan->save();
+
+            return redirect()->back()->with('success', 'Plan Updated successfully');
+        } catch (\Exception $e) {
+            // Handle Stripe API errors
+            return redirect()->back()->with('error', 'Error updating plan: ' . $e->getMessage());
+        }
     }
+
 
     /**
      * Remove the specified resource from storage.
