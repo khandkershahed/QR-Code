@@ -34,6 +34,9 @@
                                 class="form-control-solid mb-3 mb-lg-0" name="password_confirmation"
                                 placeholder="Confirm the password"></x-metronic.input>
                         </div>
+                        <div class="col-lg-12">
+                            <button type="submit" class="btn btn-primary">Created</button>
+                        </div>
                     </div>
                 </div>
             </form>
