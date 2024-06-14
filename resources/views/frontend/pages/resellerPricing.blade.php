@@ -20,7 +20,7 @@
                         data-aos-duration="1500" data-aos-offset="50">
                         <h2>QR Code & NFC Generator
                             Pricing & Plans</h2>
-                        <p>Choose a QR Code pricing plan that best suits your business.</p>
+                        <p>Choose a QR Code pricing plan that best suits your nfc.</p>
                     </div>
                 </div>
             </div>
@@ -33,44 +33,44 @@
                             <li class="">
                                 <button class="nav-link active text-decoration-none pt-3 text-black"
                                     data-bs-toggle="tab" data-bs-target="#tabFour1">
-                                    <i class="fa fa-user" aria-hidden="true"></i> QR CODE </button>
+                                    <i class="fa fa-user" aria-hidden="true"></i> For QRs</button>
                             </li>
                             <li class="">
                                 <button class="nav-link text-decoration-none pt-3 text-black" data-bs-toggle="tab"
                                     data-bs-target="#tabFour2">
-                                    <i class="fa fa-user" aria-hidden="true"></i> NFC WITH VIRTUAL CARD</button>
+                                    <i class="fa fa-user" aria-hidden="true"></i> For NFC Cards</button>
                             </li>
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane fade active show" id="tabFour1">
                                 <div class="row justify-content-center">
-                                    @foreach ($individual_plans as $individual_plan)
+                                    @foreach ($qr_plans as $qr_plan)
                                         <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
                                             data-aos-duration="1500" data-aos-offset="50">
                                             <div class="pricing-item style-five">
                                                 <div class="title-price">
-                                                    <h5 class="title">{{ $individual_plan->title }}</h5>
+                                                    <h5 class="title">{{ $qr_plan->title }}</h5>
                                                     <div class="price"><span
-                                                            class="prev">$</span>{{ $individual_plan->price }}<span
+                                                            class="prev">$</span>{{ $qr_plan->price }}<span
                                                             class="next">/
-                                                        @if ($individual_plan->billing_cycle == 'yearly')
-                                                            yearly
-                                                        @elseif ($individual_plan->billing_cycle == 'monthly')
-                                                            monthly
-                                                        @elseif ($individual_plan->billing_cycle == 'half_yearly')
-                                                            Half Yearly
-                                                        @else
-                                                            Trial Period
-                                                        @endif
+                                                            @if ($qr_plan->billing_cycle == 'yearly')
+                                                                yearly
+                                                            @elseif ($qr_plan->billing_cycle == 'monthly')
+                                                                monthly
+                                                                {{-- @elseif ($qr_plan->billing_cycle == 'half_yearly')
+                                                            Half Yearly --}}
+                                                            @else
+                                                                Trial Period
+                                                            @endif
                                                         </span></div>
                                                 </div>
                                                 <hr>
-                                                {{-- <div class="text">For small businesses looking to reach more consumers
+                                                {{-- <div class="text">For small nfces looking to reach more consumers
                                                 </div> --}}
                                                 @php
-                                                    $descriptions = is_array($individual_plan->descriptions)
-                                                        ? $individual_plan->descriptions
-                                                        : json_decode($individual_plan->descriptions);
+                                                    $descriptions = is_array($qr_plan->descriptions)
+                                                        ? $qr_plan->descriptions
+                                                        : json_decode($qr_plan->descriptions);
                                                 @endphp
                                                 @if (!empty($descriptions))
                                                     <ul class="icon-list">
@@ -79,7 +79,7 @@
                                                         @endforeach
                                                     </ul>
                                                 @endif
-                                                <a href="{{ route('user_subscribe.register', $individual_plan->slug) }}"
+                                                <a href="{{ route('user_subscribe.register', $qr_plan->slug) }}"
                                                     class="theme-btn style-two">Buy Now <i
                                                         class="fas fa-arrow-right"></i></a>
                                             </div>
@@ -89,23 +89,23 @@
                             </div>
                             <div class="tab-pane fade" id="tabFour2">
                                 <div class="row justify-content-center">
-                                    @foreach ($business_plans as $business_plan)
+                                    @foreach ($nfc_plans as $nfc_plan)
                                         <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
                                             data-aos-duration="1500" data-aos-offset="50">
                                             <div class="pricing-item style-five">
                                                 <div class="title-price">
-                                                    <h5 class="title">{{ $business_plan->title }}</h5>
+                                                    <h5 class="title">{{ $nfc_plan->title }}</h5>
                                                     <div class="price"><span
-                                                            class="prev">$</span>{{ $business_plan->price }}<span
-                                                            class="next">/{{ $business_plan->billing_cycle }}</span></div>
+                                                            class="prev">$</span>{{ $nfc_plan->price }}<span
+                                                            class="next">/{{ $nfc_plan->billing_cycle }}</span></div>
                                                 </div>
                                                 <hr>
-                                                {{-- <div class="text">For small businesses looking to reach more consumers
+                                                {{-- <div class="text">For small nfces looking to reach more consumers
                                                 </div> --}}
                                                 @php
-                                                    $descriptions = is_array($business_plan->descriptions)
-                                                        ? $business_plan->descriptions
-                                                        : json_decode($business_plan->descriptions);
+                                                    $descriptions = is_array($nfc_plan->descriptions)
+                                                        ? $nfc_plan->descriptions
+                                                        : json_decode($nfc_plan->descriptions);
                                                 @endphp
                                                 @if (!empty($descriptions))
                                                     <ul class="icon-list">
@@ -114,7 +114,7 @@
                                                         @endforeach
                                                     </ul>
                                                 @endif
-                                                <a href="{{ route('user_subscribe.register', $business_plan->slug) }}"
+                                                <a href="{{ route('user_subscribe.register', $nfc_plan->slug) }}"
                                                     class="theme-btn style-two">Buy Now <i
                                                         class="fas fa-arrow-right"></i></a>
                                             </div>
