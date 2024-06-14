@@ -619,7 +619,7 @@ class QrCodeController extends Controller
                     continue;
                 }
 
-                $htmlContent = '<img src="data:image/png;base64,' . base64_encode($qrCodeImageData) . '" />';
+                $htmlContent = '<img width="520px" src="data:image/png;base64,' . base64_encode($qrCodeImageData) . '" />';
 
                 // Create DomPDF instance
                 $pdf = \App::make('dompdf.wrapper');
