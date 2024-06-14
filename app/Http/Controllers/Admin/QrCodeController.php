@@ -685,6 +685,7 @@ class QrCodeController extends Controller
 
     public function update(QrCodeRequest $request, $id)
     {
+        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
         $qr = Qr::with('qrData')->where('code', $id)->first();
 
         $qr_type                 = $request->qr_type;
@@ -1021,9 +1022,9 @@ class QrCodeController extends Controller
         // Loop through each format
         foreach ($formats as $format => $field) {
             if ($format === 'jpg' || $format === 'pdf') {
-                $qrCode = QrCode::format('png')->size(300);
+                $qrCode = QrCode::format('png')->size(1000);
             } else {
-                $qrCode = QrCode::format($format)->size(300);
+                $qrCode = QrCode::format($format)->size(1000);
             }
 
             if (!empty($qr_logo)) {
@@ -1068,7 +1069,38 @@ class QrCodeController extends Controller
                 Storage::makeDirectory($formatDirectory, 0775, true);
             }
 
-            $qrCodeString = $qrCode->margin(4)->errorCorrection('H')->encoding('UTF-8')->generate($qrDataLink, $qrCodePath);
+            if ($format === 'pdf') {
+                $qrCodeImageData = $qrCode->generate($qrDataLink);
+
+                // Check if QR code image data is empty
+                if (!$qrCodeImageData) {
+                    continue;
+                }
+
+                $htmlContent = '<div class="text-center"><img width="650px" src="data:image/png;base64,' . base64_encode($qrCodeImageData) . '" /></div>';
+
+                // Create DomPDF instance
+                $pdf = \App::make('dompdf.wrapper');
+
+
+                try {
+                    $pdf->loadHTML($htmlContent, 'UTF-8');
+                } catch (\Exception $e) {
+                    continue; // Skip PDF generation for this format
+                }
+
+                // Save PDF file to the specified path
+                try {
+                    $pdf->save($qrCodePath);
+                } catch (\Exception $e) {
+                    continue; // Skip PDF generation for this format
+                }
+            } else {
+                // Generate QR code for non-PDF formats
+                $qrCodeString = $qrCode->margin(4)->errorCorrection('H')->encoding('UTF-8')->generate($qrDataLink, $qrCodePath);
+            }
+
+            // $qrCodeString = $qrCode->margin(4)->errorCorrection('H')->encoding('UTF-8')->generate($qrDataLink, $qrCodePath);
 
             $qr->update([
                 $field => $qrFileName,
@@ -1080,9 +1112,11 @@ class QrCodeController extends Controller
 
         // Return the URL of the generated QR code image
         if ($qr->wasRecentlyCreated) {
-            return redirect()->route('user.qr-code.index')->with('success', 'You have successfully generated QR Code.');
-        } else {
-            return redirect()->back()->with('error', 'Failed to generate QR code.');
+            if ($isUserRoute) {
+                return redirect()->route('user.qr-code.index')->with('success', 'You have successfully generated QR Code.');
+            } else {
+                return redirect()->route('admin.qr-code.index')->with('success', 'You have successfully generated QR Code.');
+            }
         }
     }
 

@@ -105,6 +105,17 @@
 
                                 <div class="flex-column" data-kt-stepper-element="content">
                                     <div class="card">
+                                        <div class="text-center justify-content-center my-15">
+                                            <h2 class="text-center mb-0">Choose Virtual Card Template!</h2>
+                                        </div>
+                                        <div class="card-body">
+                                            @include('user.pages.nfc-card.partials.customize')
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex-column" data-kt-stepper-element="content">
+                                    <div class="card">
                                         <div class="card-header text-center ">
                                             <div class="pt-15 pb-15 ps-5 w-100">
                                                 <h2 class="text-success">Congratulations!</h2>
