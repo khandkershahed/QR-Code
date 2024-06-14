@@ -13,58 +13,77 @@
 
                    <div id="kt_accordion_2_item_1" class="fs-6 collapse show ps-10" data-bs-parent="#kt_accordion_2">
                        <div class="row py-5">
-                           <div class="col-lg-4">
+                           {{-- <div class="col-lg-4">
                                <div class="row">
                                    <label for="primary_color">Primary Color</label>
                                    <div class="col-lg-10 pe-0">
                                        <div>
-                                           <input type="text" name="primary_color" id="primary_color" value="#000"
+                                           <input type="text" name="primary_color_picker" id="primary_color" value="#000"
                                                class="form-control form-control-solid">
                                        </div>
                                    </div>
                                    <div class="col-lg-2 ps-0">
                                        <div>
-                                           <input type="color" name="primary_color_picker" id="primary_color_picker"
+                                           <input type="color" name="primary_color" id="primary_color_picker"
                                                value="" style="width: 50px;height: 43px;"
                                                class="form-control form-control-solid">
                                        </div>
                                    </div>
                                </div>
-                           </div>
-                           <div class="col-lg-4">
+                           </div> --}}
+                           {{-- <div class="col-lg-4">
                                <div class="row">
-                                   <label for="primary_color_text">Primary Text Color</label>
+                                   <label for="primary_color_text">Text Color</label>
                                    <div class="col-lg-10 pe-0">
                                        <div>
-                                           <input type="text" name="primary_color_text" id="primary_color_text"
+                                           <input type="text" name="text_color_picker" id="primary_color_text"
                                                value="#000" class="form-control form-control-solid">
                                        </div>
                                    </div>
                                    <div class="col-lg-2 ps-0">
                                        <div>
-                                           <input type="color" name="primary_color_text_picker"
+                                           <input type="color" name="text_color"
                                                id="primary_color_text_picker" value=""
                                                style="width: 50px;height: 43px;"
                                                class="form-control form-control-solid">
                                        </div>
                                    </div>
                                </div>
+                           </div> --}}
+                           <div class="col-lg-4">
+                               <div class="row">
+                                   <label for="secondary_color_text">Background color</label>
+                                   <div class="col-lg-10 pe-0">
+                                       <div>
+                                           <input type="text" name="background_color_picker"
+                                               id="secondary_color_text" value="#000"
+                                               class="form-control form-control-solid">
+                                       </div>
+                                   </div>
+                                   <div class="col-lg-2 ps-0">
+                                       <div>
+                                           <input type="color" name="background_color"
+                                               id="secondary_color_text_picker" value=""
+                                               style="width: 50px;height: 43px;" oninput="changeBackgroundColor()"
+                                               class="form-control form-control-solid">
+                                       </div>
+                                   </div>
+                               </div>
                            </div>
                            <div class="col-lg-4">
                                <div class="row">
-                                   <label for="secondary_color_text">Secondary color</label>
+                                   <label for="secondary_color_text">Title color (With BG Include)</label>
                                    <div class="col-lg-10 pe-0">
                                        <div>
-                                           <input type="text" name="secondary_color_text" id="secondary_color_text"
+                                           <input type="text" name="title_color_picker" id="secondary_color_text"
                                                value="#000" class="form-control form-control-solid">
                                        </div>
                                    </div>
                                    <div class="col-lg-2 ps-0">
                                        <div>
-                                           <input type="color" name="secondary_color_text_picker"
-                                               id="secondary_color_text_picker" value=""
-                                               style="width: 50px;height: 43px;"
-                                               class="form-control form-control-solid">
+                                           <input type="color" name="title_color" id="secondary_color_text_picker"
+                                               value="" style="width: 50px;height: 43px;"
+                                               oninput="changeTitleColor()" class="form-control form-control-solid">
                                        </div>
                                    </div>
                                </div>
@@ -87,17 +106,15 @@
                            <div class="col-lg-4">
                                <label for="Font">Font</label>
                                <select class="form-select form-select-sm form-select-solid" data-control="select2"
-                                   data-placeholder="Select an option">
+                                   name="font_family" data-placeholder="Select an option">
                                    <option></option>
-                                   <option value="1">Poppins</option>
-                                   <option value="2">Times New Roman</option>
-                                   <option value="2">Raleway</option>
-                                   <option value="2">Roboto</option>
+                                   <option value="bebas_neue">Bebas Neue</option>
+                                   <option value="raleway">Raleway</option>
                                </select>
                            </div>
                            <div class="col-lg-4">
                                <label for="Font">Title Font Size</label>
-                               <input type="text" name="" id=""
+                               <input type="number" name="font_size" id="" oninput="changeFontSize()"
                                    class="form-control form-control-sm form-control-solid">
                            </div>
                        </div>
@@ -117,7 +134,25 @@
                        <div class="row py-5">
                            <div class="col-lg-4">
                                <div class="row">
-                                   <label for="buttonContact">Contact Button Color</label>
+                                   <label for="buttonContact">Contact Button Background Color</label>
+                                   <div class="col-lg-10 pe-0">
+                                       <div>
+                                           <input type="text" name="buttonContact" id="buttonContact" value="#000"
+                                               class="form-control form-control-solid">
+                                       </div>
+                                   </div>
+                                   <div class="col-lg-2 ps-0">
+                                       <div>
+                                           <input type="color" name="button_bg_color" id="button_color_picker"
+                                               value="" style="width: 50px;height: 43px;"
+                                               oninput="contactBgColor()" class="form-control form-control-solid">
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="col-lg-4">
+                               <div class="row">
+                                   <label for="buttonContact">Contact Button Title Color</label>
                                    <div class="col-lg-10 pe-0">
                                        <div>
                                            <input type="text" name="buttonContact" id="buttonContact"
@@ -126,10 +161,9 @@
                                    </div>
                                    <div class="col-lg-2 ps-0">
                                        <div>
-                                           <input type="color" name="button_color_picker"
-                                               id="button_color_picker" value=""
-                                               style="width: 50px;height: 43px;"
-                                               class="form-control form-control-solid">
+                                           <input type="color" name="button_title_color" id="button_color_picker"
+                                               value="" style="width: 50px;height: 43px;"
+                                               oninput="contactTitleColor()" class="form-control form-control-solid">
                                        </div>
                                    </div>
                                </div>
@@ -148,27 +182,26 @@
                    </div>
 
                    <div id="kt_accordion_2_item_4" class="collapse fs-6 ps-10" data-bs-parent="#kt_accordion_2">
-                    <div class="row py-5">
-                        <div class="col-lg-4">
-                            <div class="row">
-                                <label for="formColor">Frame Color Color</label>
-                                <div class="col-lg-10 pe-0">
-                                    <div>
-                                        <input type="text" name="formColor" id="formColor"
-                                            value="#000" class="form-control form-control-solid">
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 ps-0">
-                                    <div>
-                                        <input type="color" name="form_color_picker"
-                                            id="form_color_picker" value=""
-                                            style="width: 50px;height: 43px;"
-                                            class="form-control form-control-solid">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                       <div class="row py-5">
+                           <div class="col-lg-4">
+                               <div class="row">
+                                   <label for="formColor">Frame Color Color</label>
+                                   <div class="col-lg-10 pe-0">
+                                       <div>
+                                           <input type="text" name="formColor" id="formColor" value="#000"
+                                               class="form-control form-control-solid">
+                                       </div>
+                                   </div>
+                                   <div class="col-lg-2 ps-0">
+                                       <div>
+                                           <input type="color" name="frame_color" id="form_color_picker"
+                                               value="" style="width: 50px;height: 43px;"
+                                               class="form-control form-control-solid">
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
                    </div>
                </div>
            </div>

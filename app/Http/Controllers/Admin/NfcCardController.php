@@ -35,20 +35,61 @@ class NfcCardController extends Controller
 
         $view = $isUserRoute ? 'user.pages.nfc-card.index' : 'admin.pages.nfc-card.index';
 
-        return view($view, ['nfc_cards' => $nfc_cards,
-        'subscription' => $subscription,]);
-
+        return view($view, [
+            'nfc_cards' => $nfc_cards,
+            'subscription' => $subscription,
+        ]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
+    // public function create(Request $request)
+    // {
+
+    //     $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
+    //    $view = $isUserRoute ? 'user.pages.nfc-card.create' : 'admin.pages.nfc-card.create';
+    //     return view($view);
+    // }
     public function create(Request $request)
     {
 
         $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
-       $view = $isUserRoute ? 'user.pages.nfc-card.create' : 'admin.pages.nfc-card.create';
-        return view($view);
+
+        $user = Auth::user();
+
+        $createdAtPlus14Days = Carbon::parse($user->created_at)->addDays(14);
+        $today = Carbon::now();
+
+        $subscription = $isUserRoute ? Subscription::with('plan')->where('user_id', $user->id)->active()->first() : null;
+
+        // Retrieve NFC cards
+        $nfc_cards = $isUserRoute
+            ? NfcCard::with('nfcData', 'nfcMessages')->where('user_id', $user->id)->latest('id')->get()
+            : NfcCard::with('nfcData', 'nfcMessages')->latest('id')->get();
+
+        if ($isUserRoute) {
+            if (!empty($subscription->plan)) {
+                // Check if the user has remaining NFC cards in their subscription plan
+                if ($subscription->plan->nfc - $nfc_cards->count() > 0) {
+                    $view = $isUserRoute ? 'user.pages.nfc-card.create' : 'admin.pages.nfc-card.create';
+                    return view($view);
+                } else {
+                    return redirect()->back()->with('error', 'Your NFC Card limitation is exceeded');
+                }
+            } else {
+                // Check if the user has not exceeded the NFC card limit or if 14 days have passed since account creation
+                if (10 - $nfc_cards->count() > 0 || $createdAtPlus14Days->lessThan($today)) {
+                    $view = $isUserRoute ? 'user.pages.nfc-card.create' : 'admin.pages.nfc-card.create';
+                    return view($view);
+                } else {
+                    return redirect()->back()->with('error', 'Your NFC Card limitation is exceeded');
+                }
+            }
+        } else {
+            return view('admin.pages.nfc-card.create');
+        }
+
     }
 
     public function nfcTemplate()
@@ -226,7 +267,7 @@ class NfcCardController extends Controller
         $uploadedFiles = [];
         foreach ($files as $key => $file) {
             if (!empty($file)) {
-                $uploadedFiles[$key] = customUpload($file, $filePath, $name= $code.'_'.$key);
+                $uploadedFiles[$key] = customUpload($file, $filePath, $name = $code . '_' . $key);
                 if ($uploadedFiles[$key]['status'] === 0) {
                     return redirect()->back()->with('error', $uploadedFiles[$key]['error_message']);
                 }
@@ -380,15 +421,14 @@ class NfcCardController extends Controller
         }
 
         $data = [
-            'nfc_card'   => NfcCard::with('nfcData', 'nfcMessages','nfcScan')->where('code', $id)->first(),
+            'nfc_card'   => NfcCard::with('nfcData', 'nfcMessages', 'nfcScan')->where('code', $id)->first(),
             'maps'       => $maps,
             'locations'  => $locations,
             'cities'     => $cities,
             'totalScans' => $totalScans,
             'users'      => $users,
         ];
-        return view('user.pages.nfc-card.show',$data);
-
+        return view('user.pages.nfc-card.show', $data);
     }
 
     /**

@@ -122,13 +122,13 @@
                                                     <div class="pt-5 pb-5">
                                                         <x-metronic.label for="qr_name"
                                                             class="form-label">{{ __('Enter a name for your QR code') }}</x-metronic.label>
-                                                        <x-metronic.input id="qr_name" type="text"
-                                                            name="qr_name" :value="old('qr_name')"
+                                                        <x-metronic.input id="qr_name" type="text" name="qr_name"
+                                                            :value="old('qr_name')"
                                                             placeholder="Enter a name for your QR code" required />
                                                     </div>
                                                 </div>
-                                                <input type="hidden" name="qr_scan_status" value="dynamic">
-                                                {{-- <div class="col-lg-6">
+                                                {{-- <input type="hidden" name="qr_scan_status" value="dynamic"> --}}
+                                                <div class="col-lg-6">
                                                     <div class="pt-5 pb-5">
                                                         <x-metronic.label for="status"
                                                             class="form-label">{{ __('Enter a name for your QR code') }}
@@ -138,10 +138,10 @@
                                                             data-placeholder="Select an option" required>
                                                             <option>Select Status</option>
                                                             <option value="static">Static</option>
-                                                            <option value="dynamic">Dynamic</option>
+                                                            <option value="dynamic" selected>Dynamic</option>
                                                         </select>
                                                     </div>
-                                                </div> --}}
+                                                </div>
                                             </div>
                                             {{-- <div class="w-25 mx-auto">
                                                 <img width="300px"
@@ -186,8 +186,8 @@
                         @include('user.pages.qr-code.partials.qr_preview')
                         {{-- {!! QrCode::size(220)->eye('left-leaf', 0.1)->eyeColor(0, 255, 255, 255, 0, 0, 0)->eyeColor(1, 222, 18, 222, 222, 18, 222)->eyeColor(2, 222, 18, 222, 222, 18, 222)->style('dot', 0.8)->errorCorrection('H')->generate('Make me into a QrCode!') !!} --}}
                     </div>
-                    <a id="downloadLink" href="javascripti:void()" download
-                        class="btn btn-light btn-primary w-100" style="display: none;">Download</a>
+                    <a id="downloadLink" href="javascripti:void()" download class="btn btn-light btn-primary w-100"
+                        style="display: none;">Download</a>
                 </div>
             </div>
         </div>
@@ -195,19 +195,49 @@
             @include('user.pages.qr-code.partials.qrCodeModals')
         </div>
     </div>
-{{-- modals --}}
+    {{-- modals --}}
 
 
 
 
 
     @push('scripts')
-        {{-- <script>
-            var form = document.getElementById("generateQRCodeForm");
-            document.getElementById("generateButton").addEventListener("click", function() {
-                form.submit();
+        <script>
+            $(document).ready(function() {
+                // Handle delete category
+                $(document).on('click', '.delete-category', function(event) {
+                    event.preventDefault();
+
+                    if (!confirm('Are you sure you want to delete this category?')) {
+                        return;
+                    }
+
+
+                    var categoryId = $(this).data('category-id');
+                    var categoryContainer = $('.categoryContainer');
+                    var categoryModalContainer = $('.categoryModalContainer');
+                    var categoryPreviewContainer = $('.restaurant .preview');
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '{{ route('user.restaurant-category.destroy') }}', // Adjust the route as necessary
+                        data: {
+                            _token: '{{ csrf_token() }}',
+                            category_id: categoryId
+                        },
+                        success: function(response) {
+                            alert(response.success);
+                            categoryContainer.html(response.categoryContainer);
+                            categoryModalContainer.html(response.modalContainer);
+                            categoryPreviewContainer.html(response.previewContainer);
+                        },
+                        error: function(response) {
+                            alert('Error deleting category');
+                        }
+                    });
+                });
             });
-        </script> --}}
+        </script>
         <script>
             $(document).ready(function() {
 
@@ -221,6 +251,7 @@
                     // let form = $('#categoryCreateForm')[0];
                     var categoryContainer = $('.categoryContainer');
                     var categoryModalContainer = $('.categoryModalContainer');
+                    var categoryPreviewContainer = $('.restaurant .preview');
                     // Debugging
                     console.log(form);
 
@@ -246,6 +277,7 @@
                             $('#createCategory').modal('hide');
                             categoryContainer.html(response.categoryContainer);
                             categoryModalContainer.html(response.modalContainer);
+                            categoryPreviewContainer.html(response.previewContainer);
                             // Reload part of the page or add the new category to the UI
                         },
                         error: function(response) {
@@ -272,6 +304,7 @@
                 let form = event.target.closest('form');
                 var categoryContainer = $('.categoryContainer');
                 var categoryModalContainer = $('.categoryModalContainer');
+                var categoryPreviewContainer = $('.restaurant .preview');
                 // Debugging
                 console.log(form);
 
@@ -297,6 +330,7 @@
                         $('.editCategory').modal('hide');
                         categoryContainer.html(response.categoryContainer);
                         categoryModalContainer.html(response.modalContainer);
+                        categoryPreviewContainer.html(response.previewContainer);
                         // Reload part of the page or add the new category to the UI
                     },
                     error: function(response) {
@@ -313,7 +347,6 @@
         </script>
 
         <script>
-
             $(document).ready(function() {
                 // Define a function to handle both click and hover events
                 const initiallySelectedValue = $('input[name="qr_type"]:checked').val();
@@ -450,6 +483,60 @@
                     }
                 });
             $('input[name="qr_data_business_page_logo"],input[name="qr_data_business_page_business_name"],input[name="qr_data_business_page_header"],input[name="qr_data_business_page_start_time_monday"],input[name="qr_data_business_page_end_time_monday"],input[name="qr_data_business_page_start_time_tuesday"],input[name="qr_data_business_page_end_time_tuesday"],input[name="qr_data_business_page_start_time_wednesday"],input[name="qr_data_business_page_end_time_wednesday"],input[name="qr_data_business_page_start_time_thursday"],input[name="qr_data_business_page_end_time_thursday"],input[name="qr_data_business_page_start_time_friday"],input[name="qr_data_business_page_end_time_friday"],input[name="qr_data_business_page_start_time_saturday"],input[name="qr_data_business_page_end_time_saturday"],input[name="qr_data_business_page_start_time_sunday"],input[name="qr_data_business_page_end_time_sunday"],input[name="qr_data_business_page_website"],input[name="qr_data_business_page_business_email"],input[name="qr_data_business_page_business_phone"],input[name="qr_data_business_page_business_location"]')
+                .on('keyup change', function() {
+                    var inputValue = $(this).val();
+                    var inputName = $(this).attr('name');
+                    var qrCodeElement = $('.qr_card_preview .' + inputName);
+
+                    if (qrCodeElement.length > 0) {
+                        if ($(this).is('input[type="file"]')) {
+                            if (this.files && this.files[0]) {
+                                var reader = new FileReader();
+                                reader.onload = function(e) {
+                                    qrCodeElement.attr('src', e.target.result);
+                                };
+                                reader.readAsDataURL(this.files[0]);
+                            }
+                        } else if ($(this).is('input[type="url"]')) {
+                            qrCodeElement.text(inputValue);
+                            if (!inputValue.startsWith('http://') && !inputValue.startsWith('https://')) {
+                                inputValue = 'http://' + inputValue;
+                            }
+                            qrCodeElement.attr('href', inputValue);
+
+                        } else if ($(this).is('input[type="time"]')) {
+                            if (inputValue) {
+                                $("." + inputName + "_time").show();
+                                qrCodeElement.text(inputValue);
+                            } else {
+                                $("." + inputName).hide();
+                            }
+
+                        } else if ($(this).is('input[type="date"]')) {
+                            var dateParts = inputValue.split('-');
+                            if (dateParts.length === 3) {
+                                var year = dateParts[0];
+                                var month = dateParts[1];
+                                var day = dateParts[2];
+                                var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
+                                    'September', 'October', 'November', 'December'
+                                ];
+                                var formattedDate = `${months[parseInt(month) - 1]} ${parseInt(day)}, ${year}`;
+                                qrCodeElement.text(formattedDate);
+                            }
+                        } else {
+                            qrCodeElement.text(inputValue);
+                        }
+                    }
+
+                    // Show/hide corresponding icon based on input value
+                    if (inputValue) {
+                        $("." + inputName + "_icon").show();
+                    } else {
+                        $("." + inputName + "_icon").hide();
+                    }
+                });
+            $('input[name="qr_data_restaurant_logo"],input[name="qr_data_restaurant_bg"],input[name="qr_data_restaurant_name"],input[name="qr_data_restaurant_description"],input[name="qr_data_restaurant_phone"],input[name="qr_data_restaurant_location"]')
                 .on('keyup change', function() {
                     var inputValue = $(this).val();
                     var inputName = $(this).attr('name');
@@ -700,6 +787,41 @@
             stepper.on("kt.stepper.previous", function(stepper) {
                 stepper.goPrevious(); // go previous step
             });
+        </script>
+        {{-- Logo Size Encrease & Decrease  --}}
+        <script>
+            function updateRangeValue(value) {
+                document.getElementById('rangeValue').textContent = Math.round(value * 100) + '%';
+            }
+
+            // Initialize the range value on page load
+            document.addEventListener('DOMContentLoaded', (event) => {
+                updateRangeValue(document.getElementById('customRange1').value);
+            });
+        </script>
+        {{-- Pdf Preview  --}}
+        <script>
+        $('input[name="qr_data_pdf"]')
+                .on('keyup change', function() {
+            const file = event.target.files[0];
+            const pdfPreviewContainer = document.getElementById('pdfPreviewContainer');
+            const noPdfMessage = document.getElementById('noPdfMessage');
+            const pdfPreview = document.getElementById('pdfPreview');
+
+            if (file && file.type === "application/pdf") {
+                const fileReader = new FileReader();
+                fileReader.onload = function() {
+                    pdfPreview.src = fileReader.result;
+                    pdfPreviewContainer.style.display = 'block';
+                    noPdfMessage.style.display = 'none';
+                };
+                fileReader.readAsDataURL(file);
+            } else {
+                pdfPreviewContainer.style.display = 'none';
+                noPdfMessage.style.display = 'block';
+                alert("Please upload a valid PDF file.");
+            }
+        });
         </script>
     @endpush
 </x-admin-app-layout>

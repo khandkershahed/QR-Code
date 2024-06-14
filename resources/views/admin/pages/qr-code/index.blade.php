@@ -1,24 +1,45 @@
 <x-admin-app-layout :title="'QR Code List'">
 
-    {{-- {!! QrCode::size(500)->eye('left-leaf',0.1)->eyeColor(0, 255, 255, 255, 0, 0, 0)->eyeColor(1, 222, 18, 222,222, 18, 222 )->eyeColor(2, 222, 18, 222,222, 18, 222 )->style('dot', 0.8)->errorCorrection('H')->generate('Make me into a QrCode!'); !!} --}}
+    {{-- {!! QrCode::size(500)->eye('square')->eyeColor(1, 222, 18, 222,222, 18, 222 )->eyeColor(1, 222, 18, 222,222, 18, 222 )->eyeColor(2, 222, 18, 222,222, 18, 222 )->style('dot', 0.8)->errorCorrection('H')->generate('Make me into a QrCode!'); !!} --}}
     <div class="row">
         <div class="col-lg-12">
             <div class="card card-p-0 card-flush p-3 mt-10">
                 <div class="card-header align-items-center py-5 gap-2 gap-md-5">
                     <div class="card-title">
-                        <h2 class="mb-0">Manage All QR Codes | Total Created : {{$qrs->count()}} </h2>
+                        @if (!empty($subscription->plan))
+                            <h2 class="mb-0">Manage your QR Codes | Total Created : {{ $qrs->count() }} | My Plan
+                                Limitation: {{ $subscription->plan->qr }} | Remaining:
+                                {{ $subscription->plan->qr - $qrs->count() }}</h2>
+                        @else
+                            <h2 class="mb-0">Manage your QR Codes | Total Created : {{ $qrs->count() }} | My Plan
+                                Limitation: 10 (Trial Period) | Remaining:
+                                {{ 10 - $qrs->count() }}</h2>
+                        @endif
                     </div>
                     <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
-                        <a href="{{ route('user.qr-code.create') }}" class="btn btn-sm btn-primary rounded-2 me-3">
-                            Create QR Codes
-                        </a>
+                        @if (!empty($subscription->plan))
+                            @if ($subscription->plan->qr - $qrs->count() > 0)
+                                <a href="{{ route('user.qr-code.create') }}"
+                                    class="btn btn-sm btn-primary rounded-2 me-3">
+                                    Create QR Codes
+                                </a>
+                            @endif
+                        @else
+                            @if (10 - $qrs->count() > 0)
+                                <a href="{{ route('user.qr-code.create') }}"
+                                    class="btn btn-sm btn-primary rounded-2 me-3">
+                                    Create QR Codes
+                                </a>
+                            @endif
+                        @endif
+
                     </div>
                 </div>
                 <div class="card-body">
                     <div>
                         <table
                             class="table align-middle border rounded table-row-dashed table-striped table-hover  fs-6 g-5"
-                            id="kt_datatable_example">
+                            id="qr_code">
                             <thead>
                                 <tr class="text-gray-500 fw-bold fs-7 text-uppercase text-center">
                                     <th width="5">SL</th>
@@ -44,14 +65,43 @@
                                             <span><span class="fw-bold text-black">Title :
                                                 </span>{{ $qr->qr_name }}</span><br>
                                             <span><span class="fw-bold text-black">Link :
-                                                </span><a href="{{ $qr->qr_png_url }}"
-                                                    target="_blank">{{ $qr->qr_png_url }}</a></span><br>
-                                            <span><br>
+                                                </span><a class="text-primary" href="javascript:void(0)"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#image-{{ $qr->id }}">Go to
+                                                    Link</a></span><br>
+                                            <span><span class="fw-bold text-black">Org :
+                                                </span>{{ Auth::user()->name }}</span><br>
                                             <span><span class="fw-bold text-black">Created at
                                                     :</span>:{{ $qr->created_at }}</span><br>
+                                            <div class="modal fade" id="image-{{ $qr->id }}" tabindex="-1"
+                                                data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
+                                                aria-labelledby="modalTitleId" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-md"
+                                                    role="document">
+
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="modalTitleId">
+                                                                QR
+                                                            </h5>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="row">
+                                                                <div class="col-lg-8 offset-lg-2">
+                                                                    <img src="{{ $qr->qr_png_url }}" width="400"
+                                                                        class="">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </td>
                                         <td class="text-start">
-                                            <button class="btn btn-light-primary">{{ucfirst($qr->qr_type)}}</button>
+                                            <button class="btn btn-light-primary">{{ ucfirst($qr->qr_type) }}</button>
                                         </td>
                                         <td class="text-start">
                                             <a href="{{ route('user.qr.summary', $qr->code) }}"
@@ -105,32 +155,32 @@
                                                 <!--begin::Menu item-->
                                                 @if (!empty($qr->qr_svg))
                                                     <div class="menu-item px-3">
-                                                        <a href="{{ $qr->qr_svg_url }}" class="menu-link px-3" download
-                                                            data-kt-docs-table-filter="edit_row">
+                                                        <a href="{{ $qr->qr_svg_url }}" class="menu-link px-3"
+                                                            download data-kt-docs-table-filter="edit_row">
                                                             SVG
                                                         </a>
                                                     </div>
                                                 @endif
                                                 @if (!empty($qr->qr_eps))
                                                     <div class="menu-item px-3">
-                                                        <a href="{{ $qr->qr_eps_url }}" class="menu-link px-3" download
-                                                            data-kt-docs-table-filter="edit_row">
+                                                        <a href="{{ $qr->qr_eps_url }}" class="menu-link px-3"
+                                                            download data-kt-docs-table-filter="edit_row">
                                                             EPS
                                                         </a>
                                                     </div>
                                                 @endif
                                                 @if (!empty($qr->qr_jpg))
                                                     <div class="menu-item px-3">
-                                                        <a href="{{ $qr->qr_jpg_url }}" class="menu-link px-3" download
-                                                            data-kt-docs-table-filter="edit_row">
+                                                        <a href="{{ $qr->qr_jpg_url }}" class="menu-link px-3"
+                                                            download data-kt-docs-table-filter="edit_row">
                                                             JPG
                                                         </a>
                                                     </div>
                                                 @endif
                                                 @if (!empty($qr->qr_pdf))
                                                     <div class="menu-item px-3">
-                                                        <a href="{{ $qr->qr_pdf_url }}" class="menu-link px-3" download
-                                                            data-kt-docs-table-filter="edit_row">
+                                                        <a href="{{ $qr->qr_pdf_url }}" class="menu-link px-3"
+                                                            download data-kt-docs-table-filter="edit_row">
                                                             PDF
                                                         </a>
                                                     </div>
@@ -147,6 +197,7 @@
             </div>
         </div>
     </div>
+
     @push('scripts')
         <script>
             "use strict";

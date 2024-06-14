@@ -123,49 +123,7 @@
     <script src="https://preview.keenthemes.com/html/metronic/docs/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
     <!--begin::Custom Javascript(used for this page only)-->
     <script src="{{ asset('admin/js/custom.js') }}"></script>
-    {{-- <script>
-        showSuccessMessage('{{ session('success') }}');
-        @foreach ($errors->all() as $error)
-            showErrorMessage('{{ $error }}');
-        @endforeach
-    </script> --}}
-    {{-- @if (session('success'))
-        <script>
-            Swal.fire({
-                title: 'Success!',
-                html: '{{ session('success') }}',
-                icon: 'success',
-                showCloseButton: true,
-
-                buttonsStyling: false,
-                customClass: {
-                    confirmButton: 'btn btn-primary'
-                }
-            }).then(() => {
-                // Flush session data
-                {!! session()->forget('success') !!}
-            });
-        </script>
-    @endif
-    @if ($errors->any())
-        <script>
-            @foreach ($errors->all() as $error)
-                Swal.fire({
-                    title: "<strong>Error!</strong>",
-                    icon: "error",
-                    html: {{ $error }},
-                    showCloseButton: true,
-                    focusConfirm: false,
-                    customClass: {
-                        confirmButton: 'btn btn-primary'
-                    }
-                }).then(() => {
-                    // Flush session data
-                    {!! session()->flush() !!}
-                });
-            @endforeach
-        </script>
-    @endif --}}
+    
     <script>
         $(document).ready(function() {
             // Add event listener to radio inputs

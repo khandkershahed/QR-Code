@@ -180,7 +180,7 @@
         });
         // Datatable End
     </script>
-    @stack('scripts')
+
     <script>
         var options = {
             selector: ".tinymce"
@@ -216,6 +216,44 @@
 
             // Run updateClock initially to set the initial time
             updateClock();
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            // Add event listener to radio inputs
+            $('.form-container').hide();
+            $('input[type="radio"]').change(function() {
+                // Hide all forms
+                $('.form-container').hide();
+
+                // Show the selected form based on the value of the checked radio input
+                const selectedValue = $('input[type="radio"]:checked').val();
+                $('#' + selectedValue + '-form').show();
+            });
+
+            // Initially hide all forms except the one corresponding to the initially selected radio input
+            const selectedValue = $('input[type="radio"]:checked').val();
+            $('#' + selectedValue + '-form').show();
+        });
+    </script>
+    @stack('scripts')
+
+    <script>
+        var containers = document.querySelectorAll(".draggable-zone");
+
+        if (containers.length === 0) {
+            return false;
+        }
+
+        var swappable = new Sortable.default(containers, {
+            draggable: ".draggable",
+            handle: ".draggable .draggable-handle",
+            mirror: {
+                //appendTo: selector,
+                appendTo: "body",
+                constrainDimensions: true
+            }
         });
     </script>
 
