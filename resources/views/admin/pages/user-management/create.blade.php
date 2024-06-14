@@ -34,6 +34,13 @@
                                 class="form-control-solid mb-3 mb-lg-0" name="password_confirmation"
                                 placeholder="Confirm the password"></x-metronic.input>
                         </div>
+                        <div class="w-25 mt-3">
+                            <div class="text-end">
+                                <x-metronic.button type="submit" class="primary">
+                                    {{ __('Submit') }}
+                                </x-metronic.button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form>
