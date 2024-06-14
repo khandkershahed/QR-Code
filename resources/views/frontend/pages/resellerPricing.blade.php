@@ -33,12 +33,12 @@
                             <li class="">
                                 <button class="nav-link active text-decoration-none pt-3 text-black"
                                     data-bs-toggle="tab" data-bs-target="#tabFour1">
-                                    <i class="fa fa-user" aria-hidden="true"></i> For Individuals</button>
+                                    <i class="fa fa-user" aria-hidden="true"></i> QR CODE </button>
                             </li>
                             <li class="">
                                 <button class="nav-link text-decoration-none pt-3 text-black" data-bs-toggle="tab"
                                     data-bs-target="#tabFour2">
-                                    <i class="fa fa-user" aria-hidden="true"></i> For Businesses</button>
+                                    <i class="fa fa-user" aria-hidden="true"></i> NFC WITH VIRTUAL CARD</button>
                             </li>
                         </ul>
                         <div class="tab-content">
