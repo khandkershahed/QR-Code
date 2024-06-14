@@ -13,70 +13,77 @@
                         <div class="stepper-nav flex-center flex-wrap border-bottom">
                             <div class="stepper-item mx-2 my-4 bg-light-primary pe-3 rounded-2 current"
                                 data-kt-stepper-element="nav" data-kt-stepper-action="step">
-                                <div class="stepper-icon w-40px h-40px">
+                                <div class="stepper-icon w-30px h-40px me-2">
                                     <i class="stepper-check fas fa-check"></i>
                                     <span class="stepper-number">1</span>
                                 </div>
 
-                                <div class="stepper-label bg-light-primary p-2">
-                                    <h3 class="stepper-title">
-                                        <i class="fa-solid fa-synagogue pe-3"></i> Select Template
+                                <div class="stepper-label bg-light-primary p-4">
+                                    <h3 class="stepper-title mb-0">
+                                        Select Template
                                     </h3>
                                 </div>
                             </div>
-
                             <div class="stepper-item mx-2 my-4 bg-light-primary pe-3 rounded-2"
                                 data-kt-stepper-element="nav" data-kt-stepper-action="step">
-                                <div class="stepper-icon w-40px h-40px">
+                                <div class="stepper-icon w-30px h-40px me-2">
                                     <i class="stepper-check fas fa-check"></i>
                                     <span class="stepper-number">2</span>
                                 </div>
 
-                                <div class="stepper-label">
-                                    <h3 class="stepper-title">
-                                        <i class="fa-solid fa-file-import pe-3"></i> Input Data
+                                <div class="stepper-label p-4">
+                                    <h3 class="stepper-title mb-0">
+                                        Input Data
                                     </h3>
                                 </div>
                             </div>
-
                             <div class="stepper-item mx-2 my-4 bg-light-primary pe-3 rounded-2"
                                 data-kt-stepper-element="nav" data-kt-stepper-action="step">
-                                <div class="stepper-icon w-40px h-40px">
+                                <div class="stepper-icon w-30px h-40px me-2">
                                     <i class="stepper-check fas fa-check"></i>
                                     <span class="stepper-number">3</span>
                                 </div>
 
-                                <div class="stepper-label">
-                                    <h3 class="stepper-title">
-                                        <i class="fa-solid fa-sliders pe-3"></i> Customize
+                                <div class="stepper-label p-4">
+                                    <h3 class="stepper-title mb-0">
+                                        Customize
                                     </h3>
                                 </div>
                             </div>
-
                             <div class="stepper-item mx-2 my-4 bg-light-primary pe-3 rounded-2"
                                 data-kt-stepper-element="nav" data-kt-stepper-action="step">
-                                <div class="stepper-icon w-40px h-40px">
+                                <div class="stepper-icon w-30px h-40px me-2">
                                     <i class="stepper-check fas fa-check"></i>
                                     <span class="stepper-number">4</span>
                                 </div>
-
-                                <div class="stepper-label">
-                                    <h3 class="stepper-title">
-                                        <i class="fa-solid fa-sliders pe-3"></i> Virtual Card
+                                <div class="stepper-label p-4">
+                                    <h3 class="stepper-title mb-0">
+                                        Virtual Card
                                     </h3>
                                 </div>
                             </div>
-
                             <div class="stepper-item mx-2 my-4 bg-light-primary pe-3 rounded-2"
                                 data-kt-stepper-element="nav" data-kt-stepper-action="step">
-                                <div class="stepper-icon w-40px h-40px">
+                                <div class="stepper-icon w-30px h-40px me-2">
+                                    <i class="stepper-check fas fa-check"></i>
+                                    <span class="stepper-number">4</span>
+                                </div>
+                                <div class="stepper-label p-4">
+                                    <h3 class="stepper-title mb-0">
+                                        Card Customize
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="stepper-item mx-2 my-4 bg-light-primary pe-3 rounded-2"
+                                data-kt-stepper-element="nav" data-kt-stepper-action="step">
+                                <div class="stepper-icon w-30px h-40px me-2">
                                     <i class="stepper-check fas fa-check"></i>
                                     <span class="stepper-number">5</span>
                                 </div>
 
-                                <div class="stepper-label">
-                                    <h3 class="stepper-title">
-                                        <i class="fa-solid fa-thumbs-up pe-3"></i> Done
+                                <div class="stepper-label p-4">
+                                    <h3 class="stepper-title mb-0">
+                                        Done
                                     </h3>
                                 </div>
                             </div>
@@ -120,10 +127,21 @@
                                 <div class="flex-column" data-kt-stepper-element="content">
                                     <div class="card">
                                         <div class="text-center justify-content-center my-15">
-                                            <h2 class="text-center mb-0">Choose Virtual Card Design!</h2>
+                                            <h2 class="text-center mb-0">Choose Virtual Card Template!</h2>
                                         </div>
                                         <div class="card-body">
                                             @include('user.pages.nfc-card.partials.virtualCard')
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex-column" data-kt-stepper-element="content">
+                                    <div class="card">
+                                        <div class="text-center justify-content-center my-15">
+                                            <h2 class="text-center mb-0">Customize Your Virtual Card As Need!</h2>
+                                        </div>
+                                        <div class="card-body">
+                                            @include('user.pages.nfc-card.partials.virtualCardCustomization')
                                         </div>
                                     </div>
                                 </div>
