@@ -68,7 +68,7 @@ class PlanController extends Controller
                     'name' => $request->title,
                 ],
             ]);
-            dd($plan);
+            // dd($plan);
             // Prepare data for local storage
             $data = $request->all();
             $data['stripe_plan'] = $plan->id;
@@ -174,14 +174,12 @@ class PlanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        // Find the plan by ID
         $plan = ModelPlan::findOrFail($id);
 
-        // Validate the incoming request data
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
             'price' => 'required|integer|min:1',
-            'currency' => 'required|string',
+            'currency' => 'required|string|size:3', // Validate currency code length
             'billing_cycle' => 'required|string|in:day,week,month,year',
             'interval' => 'required|integer|min:1',
         ]);
@@ -191,34 +189,25 @@ class PlanController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        // Determine interval_count based on billing cycle
-        $interval_count = 1; // Default to 1 for day or week billing cycles
-        if ($request->billing_cycle == 'month') {
-            $interval_count = 12; // If billing cycle is month, set interval_count to 12
-        } elseif ($request->billing_cycle == 'year') {
-            $interval_count = 1; // If billing cycle is year, set interval_count to 1
-        }
-
-        // Update the Stripe Plan using the Stripe API
+        // Set Stripe API key
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
         try {
-            $stripePlan = \Stripe\Plan::update(
-                $plan->stripe_plan, // Stripe Plan ID
-                [
-                    'amount' => $request->price * 100, // Amount should be in cents
-                    'currency' => $request->currency,
-                    'interval' => $request->billing_cycle,
-                    'interval_count' => $interval_count,
-                    'product' => [
-                        'name' => $request->title,
-                    ],
-                ]
-            );
+
+            // $stripe_plan = \Stripe\Plan::retrieve($plan->stripe_plan); // Replace with the ID of the plan to update
+            // // dd($stripe_plan);
+            // $stripe_plan->amount = $request->price * 100; // Update the amount (e.g., $15)
+            // $stripe_plan->interval = $request->billing_cycle; // Update the interval (e.g., yearly)
+            // $stripe_plan->currency = $request->currency; // Update the currency (e.g., euro)
+            // $product = \Stripe\Product::update(
+            //     $stripe_plan->product,
+            //     ['name' => $request->title]
+            // );
+            // $stripe_plan->save();
 
             // Prepare data for local storage
             $data = $request->all();
-            $data['stripe_plan'] = $stripePlan->id; // Update local Stripe Plan ID
+            // Update local Stripe Plan ID
 
             // Handle descriptions
             if ($request->has('descriptions')) {
@@ -231,10 +220,13 @@ class PlanController extends Controller
             $plan->fill($data);
             $plan->save();
 
-            return redirect()->back()->with('success', 'Plan Updated successfully');
-        } catch (\Exception $e) {
+            return redirect()->back()->with('success', 'Plan updated successfully');
+        } catch (\Stripe\Exception\ApiErrorException $e) {
             // Handle Stripe API errors
             return redirect()->back()->with('error', 'Error updating plan: ' . $e->getMessage());
+        } catch (\Exception $e) {
+            // Handle general errors
+            return redirect()->back()->with('error', 'An unexpected error occurred: ' . $e->getMessage());
         }
     }
 

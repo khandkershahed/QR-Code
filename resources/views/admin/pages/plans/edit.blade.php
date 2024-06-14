@@ -45,47 +45,36 @@
                         </x-metronic.label>
 
                         <x-metronic.input id="title" type="text" name="title" :value="old('title', $plan->title)"
-                            placeholder="Enter the Plan Title"></x-metronic.input>
+                            placeholder="Enter the Plan Title" readonly></x-metronic.input>
                     </div>
-                    <div class="col-lg-6 mb-5">
+                    {{-- <div class="col-lg-6 mb-5">
                         <x-metronic.label for="stripe_plan" class="col-form-label fw-bold fs-6">{{ __('Stripe ID') }}
                         </x-metronic.label>
 
                         <x-metronic.input id="stripe_plan" type="text" name="stripe_plan" :value="old('stripe_plan', $plan->stripe_plan)"
                             placeholder="Enter the Plan Stripe ID"></x-metronic.input>
-                    </div>
+                    </div> --}}
                     <div class="col-lg-3 mb-5">
                         <x-metronic.label for="billing_cycle" class="col-form-label required fw-bold fs-6">
                             {{ __('Billing Cycle') }}</x-metronic.label>
-                        <x-metronic.select-option id="billing_cycle" name="billing_cycle" data-hide-search="true"
-                            data-placeholder="Select an option">
+                            <x-metronic.input id="billing_cycle" type="text" name="billing_cycle" :value="old('billing_cycle', $plan->billing_cycle)"
+                                placeholder="Enter the Plan billing_cycle" readonly></x-metronic.input>
+                        {{-- <x-metronic.select-option id="billing_cycle" name="billing_cycle" data-hide-search="true"
+                            data-placeholder="Select an option" readonly>
                             <option></option>
                             <option value="trial_period" @selected($plan->billing_cycle == 'trial_period')>
                                 Trial Period
                             </option>
-                            <option value="monthly" {{ $plan->billing_cycle == 'monthly' ? 'selected' : '' }}>Monthly
+                            <option value="month" {{ $plan->billing_cycle == 'month' ? 'selected' : '' }}>Monthly
                             </option>
-                            <option value="half_yearly" {{ $plan->billing_cycle == 'half_yearly' ? 'selected' : '' }}>
-                                Half Yearly
+                            <option value="year" {{ $plan->billing_cycle == 'year' ? 'selected' : '' }}>Yearly
                             </option>
-                            <option value="yearly" {{ $plan->billing_cycle == 'yearly' ? 'selected' : '' }}>Yearly
-                            </option>
-                        </x-metronic.select-option>
+                        </x-metronic.select-option> --}}
                     </div>
+
                     <div class="col-lg-3 mb-5">
-                        <x-metronic.label for="type" class="col-form-label required fw-bold fs-6">
-                            {{ __('Plan For') }}</x-metronic.label>
-                        <x-metronic.select-option id="type" name="type" data-hide-search="true"
-                            data-placeholder="Select an option">
-                            <option value=""></option>
-                            <option value="individual" @selected($plan->type == 'individual')> Individual
-                            </option>
-                            <option value="business" @selected($plan->type == 'business')> Business
-                            </option>
-                        </x-metronic.select-option>
-                    </div>
-                    <div class="col-lg-3 mb-5">
-                        <x-metronic.label for="interval" class="required col-form-label fw-bold fs-6">{{ __('Interval (In days)') }}
+                        <x-metronic.label for="interval"
+                            class="required col-form-label fw-bold fs-6">{{ __('Interval (In days)') }}
                         </x-metronic.label>
                         <x-metronic.input id="interval" type="number" name="interval" :value="old('interval', $plan->interval)"
                             placeholder="From Start Date to End Days" required></x-metronic.input>
@@ -94,29 +83,48 @@
                         <x-metronic.label for="price" class="col-form-label fw-bold fs-6">{{ __('Price') }}
                         </x-metronic.label>
                         <x-metronic.input id="price" type="number" name="price" :value="old('price', $plan->price)"
-                            placeholder="Enter the Plan Price"></x-metronic.input>
+                            placeholder="Enter the Plan Price" readonly></x-metronic.input>
                     </div>
                     <div class="col-lg-3 mb-5">
                         <x-metronic.label for="currency" class="col-form-label fw-bold fs-6">{{ __('Currency') }}
                         </x-metronic.label>
-                        <x-metronic.input id="currency" type="text" name="currency" :value="old('currency', $plan->currency)"
-                            placeholder="Enter the Plan Currency"></x-metronic.input>
+                        <x-metronic.input id="currency" type="url" name="currency" :value="old('currency', $plan->currency)"
+                            required placeholder="Stripe payment link"></x-metronic.input>
+                        {{-- <x-metronic.select-option id="currency" name="currency" data-hide-search="true"
+                            data-placeholder="Select an option" readonly>
+                            <option></option>
+                            <option value="gbp" @selected($plan->currency == 'gbp')>Pound</option>
+                            <option value="usd" @selected($plan->currency == 'usd')>US Dollar</option>
+                        </x-metronic.select-option> --}}
                     </div>
-                    <div class="col-lg-3 mb-5">
+                    {{-- <div class="col-lg-3 mb-5">
                         <x-metronic.label for="payment_link"
                             class="required col-form-label fw-bold fs-6">{{ __('Payment Page Link') }}
                         </x-metronic.label>
-                        <x-metronic.input id="payment_link" type="url" name="payment_link" :value="old('payment_link', $plan->payment_link)" required
-                            placeholder="Stripe payment link"></x-metronic.input>
-                    </div>
+                        <x-metronic.input id="payment_link" type="url" name="payment_link" :value="old('payment_link', $plan->payment_link)"
+                            required placeholder="Stripe payment link"></x-metronic.input>
+                    </div> --}}
+
                     <div class="col-lg-3 mb-5">
+                        <x-metronic.label for="type" class="col-form-label required fw-bold fs-6">
+                            {{ __('Plan For') }}</x-metronic.label>
+
+                        <x-metronic.select-option id="type" name="type" data-hide-search="true"
+                            data-placeholder="Select an option" onchange="toggleInputs()" required>
+                            <option value=""></option>
+                            <option value="nfc" @selected($plan->type == 'nfc')>NFC</option>
+                            <option value="qr" @selected($plan->type == 'qr')>QR</option>
+                        </x-metronic.select-option>
+                    </div>
+
+                    <div class="col-lg-3 mb-5" id="qr-input" style="display: none;">
                         <x-metronic.label for="qr"
                             class="col-form-label fw-bold fs-6">{{ __('Number of QR Code') }}
                         </x-metronic.label>
                         <x-metronic.input id="qr" type="number" name="qr" :value="old('qr', $plan->qr)"
                             placeholder="Number of QR Code"></x-metronic.input>
                     </div>
-                    <div class="col-lg-3 mb-5">
+                    <div class="col-lg-3 mb-5" id="nfc-input" style="display: none;">
                         <x-metronic.label for="nfc"
                             class="col-form-label fw-bold fs-6">{{ __('Number of NFC Card') }}
                         </x-metronic.label>
@@ -153,8 +161,8 @@
 
                                             <td> <input type="text" class="form-control form-control-sm"
                                                     name="descriptions[]" value="{{ $description }}" required></td>
-                                            <td class="text-center" style="vertical-align: middle;"> <a href="javascript:void(0)"
-                                                    class="bg-danger removeRow p-1 px-2"><i
+                                            <td class="text-center" style="vertical-align: middle;"> <a
+                                                    href="javascript:void(0)" class="bg-danger removeRow p-1 px-2"><i
                                                         class="fas fa-minus icons_design text-white"></i></a></td>
                                         </tr>
                                     @endforeach
@@ -179,6 +187,33 @@
     </div>
 
     @push('scripts')
+        <script>
+            function toggleInputs() {
+                const type = document.getElementById('type').value;
+                const qrInput = document.getElementById('qr-input');
+                const nfcInput = document.getElementById('nfc-input');
+
+                if (type === 'qr') {
+                    qrInput.style.display = 'block';
+                    nfcInput.style.display = 'none';
+                    $('input[name="nfc"]').val('');
+                } else if (type === 'nfc') {
+                    qrInput.style.display = 'none';
+                    nfcInput.style.display = 'block';
+                    $('input[name="qr"]').val('');
+                } else {
+                    qrInput.style.display = 'none';
+                    nfcInput.style.display = 'none';
+                    $('input[name="nfc"]').val('');
+                    $('input[name="qr"]').val('');
+                }
+            }
+
+            // Call toggleInputs on page load to check the initially selected value
+            document.addEventListener('DOMContentLoaded', function() {
+                toggleInputs();
+            });
+        </script>
         <script>
             $(document).ready(function() {
                 // Add Row
