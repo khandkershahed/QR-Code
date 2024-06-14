@@ -9,7 +9,7 @@
         @enderror --}}
         {{-- <x-input id="full_name" type="text" name="full_name" placeholder="Enter full name"
     colSize="col-lg-8"></x-input> --}}
-    @props(['id', 'type', 'name', 'placeholder' => '', 'value', 'readonly' => false])
+    @props(['id'=>'', 'type', 'name', 'placeholder' => '', 'value'=>'', 'readonly' => false])
 
     <input id="{{ $id }}" type="{{ $type }}"
         class="form-control @error($name) is-invalid @enderror" name="{{ $name }}"
