@@ -438,5 +438,29 @@
                 });
             });
         </script>
+        <script>
+            $(document).ready(function() {
+                function updateCardPreview() {
+                    const virtualCardValue = $('input[name="virtual_card_template"]:checked').val();
+                    if (virtualCardValue != null) {
+                        $(".nfc-card").hide();
+                        $("." + virtualCardValue).show();
+                    } else {
+                        $(".nfc-card").hide();
+                    }
+                }
+
+                // Initial card preview update
+                updateCardPreview();
+
+                // On change event for radio buttons
+                $('input[name="virtual_card_template"]').change(function() {
+                    updateCardPreview();
+                });
+
+                // Ensure initially selected value is displayed
+                updateCardPreview();
+            });
+        </script>
     @endpush
 </x-app-layout>
