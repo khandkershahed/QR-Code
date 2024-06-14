@@ -71,7 +71,7 @@
                         </div>
 
                         <form class="form w-100 mx-auto fv-row" novalidate="novalidate" id="generateQRCodeForm"
-                            action="{{ route('user.qr-code.store') }}" method="POST" enctype="multipart/form-data">
+                            action="{{ route('admin.qr-code.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-5">
                                 <div class="flex-column current" data-kt-stepper-element="content">

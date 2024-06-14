@@ -68,7 +68,7 @@
                             </div>
                         </div>
                         <form class="form w-100 mx-auto" novalidate="novalidate" id="kt_create_account_form"
-                            action="{{ route('user.nfc-card.store') }}" method="POST" enctype="multipart/form-data">
+                            action="{{ route('admin.nfc-card.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-5">
                                 <div class="flex-column current" data-kt-stepper-element="content">
