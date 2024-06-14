@@ -62,6 +62,20 @@
 
                                 <div class="stepper-label">
                                     <h3 class="stepper-title">
+                                        <i class="fa-solid fa-sliders pe-3"></i> Virtual Card
+                                    </h3>
+                                </div>
+                            </div>
+
+                            <div class="stepper-item mx-2 my-4 bg-light-primary pe-3 rounded-2"
+                                data-kt-stepper-element="nav" data-kt-stepper-action="step">
+                                <div class="stepper-icon w-40px h-40px">
+                                    <i class="stepper-check fas fa-check"></i>
+                                    <span class="stepper-number">5</span>
+                                </div>
+
+                                <div class="stepper-label">
+                                    <h3 class="stepper-title">
                                         <i class="fa-solid fa-thumbs-up pe-3"></i> Done
                                     </h3>
                                 </div>
@@ -99,6 +113,17 @@
                                         </div>
                                         <div class="card-body">
                                             @include('user.pages.nfc-card.partials.customize')
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex-column" data-kt-stepper-element="content">
+                                    <div class="card">
+                                        <div class="text-center justify-content-center my-15">
+                                            <h2 class="text-center mb-0">Choose Virtual Card Design!</h2>
+                                        </div>
+                                        <div class="card-body">
+                                            @include('user.pages.nfc-card.partials.virtualCard')
                                         </div>
                                     </div>
                                 </div>
@@ -310,7 +335,7 @@
             }
         </script>
 
-     
+
         <script>
             function previewprofileImage(input) {
                 var preview = $('.profile_image'); // Select the preview element using its class
