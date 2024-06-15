@@ -6,13 +6,13 @@
         </div>
     @endif
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-8 mx-0 px-0">
             <div class="stepper stepper-pills" id="kt_stepper_example_clickable">
                 <div class="stepper-nav flex-center flex-wrap mb-10">
                     <div class="stepper-item mx-8 my-4 current" data-kt-stepper-element="nav"
                         data-kt-stepper-action="step">
                         <div class="stepper-wrapper d-flex align-items-center">
-                            <div class="stepper-icon w-40px h-40px">
+                            <div class="stepper-icon w-40px h-40px me-2">
                                 <i class="stepper-check fas fa-check"></i>
                                 <span class="stepper-number">1</span>
                             </div>
@@ -29,7 +29,7 @@
 
                     <div class="stepper-item mx-8 my-4" data-kt-stepper-element="nav" data-kt-stepper-action="step">
                         <div class="stepper-wrapper d-flex align-items-center">
-                            <div class="stepper-icon w-40px h-40px">
+                            <div class="stepper-icon w-40px h-40px me-2">
                                 <i class="stepper-check fas fa-check"></i>
                                 <span class="stepper-number">2</span>
                             </div>
@@ -46,7 +46,7 @@
 
                     <div class="stepper-item mx-8 my-4" data-kt-stepper-element="nav" data-kt-stepper-action="step">
                         <div class="stepper-wrapper d-flex align-items-center">
-                            <div class="stepper-icon w-40px h-40px">
+                            <div class="stepper-icon w-40px h-40px me-2">
                                 <i class="stepper-check fas fa-check"></i>
                                 <span class="stepper-number">3</span>
                             </div>
@@ -63,7 +63,7 @@
 
                     <div class="stepper-item mx-8 my-4" data-kt-stepper-element="nav" data-kt-stepper-action="step">
                         <div class="stepper-wrapper d-flex align-items-center">
-                            <div class="stepper-icon w-40px h-40px">
+                            <div class="stepper-icon w-40px h-40px me-2">
                                 <i class="stepper-check fas fa-check"></i>
                                 <span class="stepper-number">4</span>
                             </div>
@@ -77,21 +77,21 @@
                     </div>
                     <div class="stepper-item mx-8 my-4" data-kt-stepper-element="nav" data-kt-stepper-action="step">
                         <div class="stepper-wrapper d-flex align-items-center">
-                            <div class="stepper-icon w-40px h-40px">
+                            <div class="stepper-icon w-40px h-40px me-2">
                                 <i class="stepper-check fas fa-check"></i>
-                                <span class="stepper-number">5</span>
+                                <span class="stepper-number">4</span>
                             </div>
 
                             <div class="stepper-label">
                                 <h3 class="stepper-title">
-                                    Card Customize
+                                   Card Customize
                                 </h3>
                             </div>
                         </div>
                     </div>
                     <div class="stepper-item mx-8 my-4" data-kt-stepper-element="nav" data-kt-stepper-action="step">
                         <div class="stepper-wrapper d-flex align-items-center">
-                            <div class="stepper-icon w-40px h-40px">
+                            <div class="stepper-icon w-40px h-40px me-2">
                                 <i class="stepper-check fas fa-check"></i>
                                 <span class="stepper-number">5</span>
                             </div>
