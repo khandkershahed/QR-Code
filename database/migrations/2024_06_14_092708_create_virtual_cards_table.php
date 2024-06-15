@@ -16,7 +16,8 @@ return new class extends Migration
             $table->foreignId('card_id')->nullable()->constrained('nfc_cards')->onDelete('cascade');
             $table->string('virtual_card_template')->nullable();
             $table->string('card_logo')->nullable();
-            $table->string('card_bg')->nullable();
+            $table->string('card_bg_front')->nullable();
+            $table->string('card_bg_back')->nullable();
             $table->string('card_name')->nullable();
             $table->string('card_designation')->nullable();
             $table->string('card_phone')->nullable();

@@ -260,7 +260,8 @@ class NfcCardController extends Controller
             'service_two_image'   => $request->file('service_two_image'),
             'service_three_image' => $request->file('service_three_image'),
             'card_logo'           => $request->file('card_logo'),
-            'card_bg'             => $request->file('card_bg'),
+            'card_bg_front'       => $request->file('card_bg_front'),
+            'card_bg_back'        => $request->file('card_bg_back'),
         ];
 
         $filePath = 'public/nfc/';
@@ -368,7 +369,8 @@ class NfcCardController extends Controller
         VirtualCard::create([
             'card_id'          => $nfc_card->id,
             'card_logo'        => $uploadedFiles['card_logo']['status'] == 1 ? $uploadedFiles['card_logo']['file_name'] : null,
-            'card_bg'          => $uploadedFiles['card_bg']['status'] == 1 ? $uploadedFiles['card_bg']['file_name'] : null,
+            'card_bg_front'    => $uploadedFiles['card_bg_front']['status'] == 1 ? $uploadedFiles['card_bg_front']['file_name'] : null,
+            'card_bg_back'     => $uploadedFiles['card_bg_back']['status'] == 1 ? $uploadedFiles['card_bg_back']['file_name'] : null,
             'card_name'        => $request->card_name,
             'card_designation' => $request->card_designation,
             'card_phone'       => $request->card_phone,
@@ -435,7 +437,7 @@ class NfcCardController extends Controller
         }
 
         $data = [
-            'nfc_card'   => NfcCard::with('nfcData', 'nfcMessages', 'nfcScan')->where('code', $id)->first(),
+            'nfc_card'   => NfcCard::with('nfcData', 'nfcMessages', 'nfcScan','virtualCard')->where('code', $id)->first(),
             'maps'       => $maps,
             'locations'  => $locations,
             'cities'     => $cities,
