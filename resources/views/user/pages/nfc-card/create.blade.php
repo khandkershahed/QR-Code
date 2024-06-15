@@ -9,8 +9,7 @@
         <div class="col-lg-8 mx-0 px-0 d-flex flex-column">
             <div class="stepper stepper-pills" id="kt_stepper_example_clickable">
                 <div class="stepper-nav flex-center flex-wrap"
-                    style="background: #0098da;border-bottom: 1px solid #eee;border-top-left-radius: 5px;
-    border-top-right-radius: 5px;">
+                    style="background: #0098da;border-bottom: 1px solid #eee;border-top-left-radius: 5px; border-top-right-radius: 5px;">
                     <div class="stepper-item mx-3 my-4" data-kt-stepper-element="nav" data-kt-stepper-action="step">
                         <div class="stepper-wrapper d-flex align-items-center">
                             <div class="stepper-icon w-40px h-40px me-2">
@@ -233,7 +232,7 @@
                 $("#" + initiallySelectedValue).show();
 
 
-                $('#kt_create_account_form input:not([type="radio"]), #kt_create_account_form textarea').on(
+                $('#kt_stepper_example_clickable input:not([type="radio"]), #kt_stepper_example_clickable textarea').on(
                     'keyup change',
                     function() {
                         // Extract input value and name
