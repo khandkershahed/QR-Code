@@ -11,7 +11,8 @@
                 <div class="stepper-nav flex-center flex-wrap"
                     style="background: #0098da;border-bottom: 1px solid #eee;border-top-left-radius: 5px;
     border-top-right-radius: 5px;">
-                    <div class="stepper-item mx-3 my-4" data-kt-stepper-element="nav" data-kt-stepper-action="step">
+                    <div class="stepper-item mx-3 my-4 current" data-kt-stepper-element="nav"
+                        data-kt-stepper-action="step">
                         <div class="stepper-wrapper d-flex align-items-center">
                             <div class="stepper-icon w-40px h-40px me-2">
                                 <i class="stepper-check fas fa-check"></i>
@@ -50,8 +51,7 @@
                         <div class="stepper-line h-40px"></div>
                     </div>
 
-                    <div class="stepper-item mx-3 my-4 current" data-kt-stepper-element="nav"
-                        data-kt-stepper-action="step">
+                    <div class="stepper-item mx-3 my-4" data-kt-stepper-element="nav" data-kt-stepper-action="step">
                         <div class="stepper-wrapper d-flex align-items-center">
                             <div class="stepper-icon w-40px h-40px me-2">
                                 <i class="stepper-check fas fa-check"></i>
@@ -92,7 +92,7 @@
                     action="{{ route('user.nfc-card.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
-                        <div class="flex-column" data-kt-stepper-element="content">
+                        <div class="flex-column current" data-kt-stepper-element="content">
                             <div class="col-lg-12">
                                 <div class="card flex-grow-1 rounded-0">
                                     <div class="my-15">
@@ -126,7 +126,7 @@
                             </div>
                         </div>
 
-                        <div class="flex-column current" data-kt-stepper-element="content">
+                        <div class="flex-column " data-kt-stepper-element="content">
                             <div class="card flex-grow-1 rounded-0">
                                 <div class="text-center justify-content-center pt-10">
                                     <h2 class="text-center mb-0">Choose Virtual Card Template! <span
@@ -189,7 +189,7 @@
                 </form>
             </div>
         </div>
-        <div class="col-lg-4 d-flex flex-column" id="sticky-column">
+        <div class="col-lg-4 d-flex flex-column">
             <div class="card flex-grow-1 rounded-0">
                 <div class="card-header px-0">
                     <div class="d-flex flex-column justify-content-center align-items-center"
@@ -198,7 +198,7 @@
                         <p class="mb-0 text-white">Your Choosen Template</p>
                     </div>
                 </div>
-                <div class="centered-card-body card-body d-flex flex-column p-0">
+                <div class="card-body d-flex flex-column p-0">
                     @include('user.pages.nfc-card.partials.nfc_preview')
                     @include('user.pages.nfc-card.partials.virtual_card_preview')
                 </div>

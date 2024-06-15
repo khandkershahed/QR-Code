@@ -1,6 +1,7 @@
 <style>
     .nfc-mobile-frame_three {
-        max-width: 430px;
+        max-width: 400px;
+        height: 768px !important;
         /* border: 2px solid #1026bf; */
         overflow: hidden;
         position: relative;

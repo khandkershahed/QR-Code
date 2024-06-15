@@ -54,6 +54,7 @@
         }
 
         .nfc-mobile-frame {
+            height: 768px !important;
             max-width: 576px;
             min-height: 100vh;
             /* border: 2px solid #1026bf; */
