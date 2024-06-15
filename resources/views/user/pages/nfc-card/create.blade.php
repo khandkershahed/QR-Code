@@ -144,7 +144,7 @@
                         <div class="flex-column" data-kt-stepper-element="content">
                             <div class="card">
                                 <div class="text-center justify-content-center my-15">
-                                    <h2 class="text-center mb-0">Choose Virtual Card Template!</h2>
+                                    <h2 class="text-center mb-0">Choose Virtual Card Template! <span class="text-danger">*</span> </h2>
                                 </div>
                                 <div class="card-body">
                                     @include('user.pages.nfc-card.partials.virtualCard')
@@ -213,6 +213,7 @@
                     <div class="d-flex flex-column justify-content-center align-items-center">
                         <h3>Preview</h3>
                         @include('user.pages.nfc-card.partials.nfc_preview')
+                        @include('user.pages.nfc-card.partials.virtual_card_preview')
                     </div>
                 </div>
                 {{-- <div class="card-footer d-flex justify-content-around align-items-center">
@@ -480,6 +481,31 @@
             // Handle previous step
             stepper.on("kt.stepper.previous", function(stepper) {
                 stepper.goPrevious(); // go previous step
+            });
+        </script>
+        <script>
+            $(document).ready(function() {
+                function updateCardPreview() {
+                    const virtualCardValue = $('input[name="virtual_card_template"]:checked').val();
+                    if (virtualCardValue != null) {
+                        $(".virtual_card").hide();
+                        $(".nfc-card").hide();
+                        $("." + virtualCardValue).show();
+                    } else {
+                        $(".nfc-card").hide();
+                    }
+                }
+
+                // Initial card preview update
+                updateCardPreview();
+
+                // On change event for radio buttons
+                $('input[name="virtual_card_template"]').change(function() {
+                    updateCardPreview();
+                });
+
+                // Ensure initially selected value is displayed
+                updateCardPreview();
             });
         </script>
     @endpush

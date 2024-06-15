@@ -1,7 +1,7 @@
 <div class="row">
     @foreach ($virtualCardtemplates as $virtualCardtemplate)
         <div class="col-lg-3">
-            <input type="radio" class="btn-check" name="virtual_card_template" value="{{ $virtualCardtemplate['value'] }}" {{($loop->first ) ? 'checked' : ''}} id="{{ $virtualCardtemplate['value'] }}">
+            <input type="radio" class="btn-check" name="virtual_card_template" value="{{ $virtualCardtemplate['value'] }}" required id="{{ $virtualCardtemplate['value'] }}">
             <label class="btn btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center mb-5"
                 style="height:350px; object-fit:contain; padding:0px !important; display: flex;justify-content: center;"
                 for="{{ $virtualCardtemplate['value'] }}">
