@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-12">
             <!-- Visiting Card Box Container -->
-            <div class="punch-card-container">
+            <div class="punch-card-container" style="background-image: url('https://i.ibb.co/51yxtsc/card-8.png');">
                 <div class="row p-5 align-items-center">
                     <div class="col-lg-6 d-flex justify-content-start font">
                         <div class="">
@@ -51,7 +51,7 @@
                     </div>
                 </div>
             </div>
-            <div class="punch-card-container-back">
+            <div class="punch-card-container-back" style="background-image: url('https://i.ibb.co/51yxtsc/card-8.png');">
                 <div class="row p-5 align-items-center">
                     <div class="col-12 d-flex justify-content-center align-items-center" style="height: 20vh">
                         <img class="punch-card-logo-back card_logo"

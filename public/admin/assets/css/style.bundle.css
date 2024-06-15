@@ -43471,11 +43471,23 @@ a:hover {
 .show>.btn.btn-outline.btn-outline-dashed.btn-outline-default {
     color: #fff;
     border-color: #009ef7;
-    background-color: #009bdd !important;
+    background-color: #2196f340 !important;
     border-width: 1px;
     transform: scale(1.05); /* Apply a small zoom effect */
     transition: all 0.5s cubic-bezier(0.42, 0, 0.58, 1); /* This cubic-bezier function is similar to ease-in-out */
-    border-radius: 0px;
+    border-radius: 10px;
+}
+.centered-card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* Optional, to center-align text inside the card body */
+    height: 100%; /* Ensure the card-body takes up the full height of the card */
+}
+#sticky-column {
+    position: sticky;
+    top: 0;
 }
 .btn-check:active+.btn.btn-outline.btn-outline-dashed.btn-outline-default .check-maintext,
 .btn-check:checked+.btn.btn-outline.btn-outline-dashed.btn-outline-default .check-maintext,
@@ -52737,7 +52749,7 @@ label.rating-label:hover~.rating-label>i {
 }
 
 .stepper.stepper-pills .stepper-item .stepper-label .stepper-title {
-    color: #3f4254;
+    color: #ffffff;
     font-weight: 600;
     font-size: 1rem;
     margin-bottom: .3rem
@@ -52748,11 +52760,16 @@ label.rating-label:hover~.rating-label>i {
 }
 
 .stepper.stepper-pills .stepper-item.current {
-    transition: color .2s ease, background-color .2s ease
+    transition: color .2s ease, 
+    background-color .2s ease;
+    background: white;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 .stepper.stepper-pills .stepper-item.current .stepper-icon {
-    transition: color .2s ease, background-color .2s ease;
+    transition: color .2s ease, 
+    background-color .2s ease;
     background-color: #009ef7
 }
 

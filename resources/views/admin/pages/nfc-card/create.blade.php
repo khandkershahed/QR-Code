@@ -7,7 +7,7 @@
     @endif
     <div class="row">
         <div class="col-lg-8">
-            <div class="card" style="height: 700px; overflow: auto;">
+            <div class="card" style="height: auto; overflow: auto;">
                 <div class="card-body p-0">
                     <div class="stepper stepper-pills p-0" id="kt_create_account_stepper">
                         <div class="stepper-nav flex-center flex-wrap border-bottom">
@@ -154,7 +154,7 @@
             </div>
         </div>
         <div class="col-lg-4">
-            <div class="card" style="height: 700px; overflow: auto;">
+            <div class="card" style="height: auto; overflow: auto;">
                 <div class="card-body">
                     <div class="d-flex flex-column justify-content-center align-items-center">
                         <h3>Preview</h3>
