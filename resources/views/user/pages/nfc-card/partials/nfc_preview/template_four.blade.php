@@ -11,6 +11,7 @@
 
     .nfc-mobile-frame_four {
         max-width: 420px;
+        height: 768px !important;
         /* min-height: 100vh; */
         /* border: 2px solid #1026bf; */
         border-radius: 20px;

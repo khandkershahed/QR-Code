@@ -3,6 +3,7 @@
 
     .nfc-mobile-frame {
         width: 100%;
+        height: 768px !important;
         border-radius: 20px;
         overflow: hidden;
         position: relative;

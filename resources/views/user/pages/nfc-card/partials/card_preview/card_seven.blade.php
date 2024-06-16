@@ -31,7 +31,7 @@
                             <h4 class="fw-bold mb-0 card_name" style="color: #fff">
                                 Nicholas Shelton
                             </h4>
-                            <p class="fw-bold mb-0 text-white card_designation">Frontend Developer</p>
+                            <p class="fw-bold mb-0 card_designation">Frontend Developer</p>
                             <div>
                                 <p class="fw-bold text-white pt-3 mb-0">
                                     <i class="fa-solid fa-phone pe-2"></i> <span class="card_phone">015 7661 4451</span>

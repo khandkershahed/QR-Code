@@ -6,6 +6,7 @@
     .nfc-mobile-frame {
         /* max-width: 100; */
         width: 100%;
+        height: 768px !important;
         /* border: 2px solid #1026bf; */
         border-radius: 20px;
         overflow: hidden;

@@ -88,22 +88,22 @@
                 </div>
                 <div class="col-lg-6 mt-4 mt-lg-0">
                     <div class="text-center text-lg-end content-area">
-                        <h4 class="fw-bold mb-0 card_name_one">Sazeduzzaman Saju</h4>
-                        <p class="fw-bold mb-0 card_designation_one">Frontend Developer</p>
+                        <h4 class="fw-bold mb-0 card_name">Sazeduzzaman Saju</h4>
+                        <p class="fw-bold mb-0 card_designation">Frontend Developer</p>
                         <div class="me-auto mt-2 title-devider-tem-one"></div>
                         <div>
                             <p class="fw-bold pt-3 mb-0">
-                                <span class="card_phone_one">015 7661 4451</span> <i
+                                <span class="card_phone">015 7661 4451</span> <i
                                     class="fa-solid fa-phone tem-one-main-color "></i>
                             </p>
                             <p class="fw-bold mb-0">
-                                <span class="card_email_one">goflixza@mail.com</span> <i
+                                <span class="card_email">goflixza@mail.com</span> <i
                                     class="fa-solid fa-envelope tem-one-main-color "></i>
                             </p>
                         </div>
                         <div>
                             <p class="fw-bold mb-0">
-                                <span class="card_address_one">New York, United States</span> <i
+                                <span class="card_address">New York, United States</span> <i
                                     class="fa-solid fa-map-marker-alt tem-one-main-color"></i>
                             </p>
                         </div>

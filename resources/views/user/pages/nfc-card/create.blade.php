@@ -9,8 +9,10 @@
         <div class="col-lg-8 mx-0 px-0 d-flex flex-column">
             <div class="stepper stepper-pills" id="kt_stepper_example_clickable">
                 <div class="stepper-nav flex-center flex-wrap"
-                    style="background: #0098da;border-bottom: 1px solid #eee;border-top-left-radius: 5px; border-top-right-radius: 5px;">
-                    <div class="stepper-item mx-3 my-4" data-kt-stepper-element="nav" data-kt-stepper-action="step">
+                    style="background: #0098da;border-bottom: 1px solid #eee;border-top-left-radius: 5px;
+    border-top-right-radius: 5px;">
+                    <div class="stepper-item mx-3 my-4 current" data-kt-stepper-element="nav"
+                        data-kt-stepper-action="step">
                         <div class="stepper-wrapper d-flex align-items-center">
                             <div class="stepper-icon w-40px h-40px me-2">
                                 <i class="stepper-check fas fa-check"></i>
@@ -49,8 +51,7 @@
                         <div class="stepper-line h-40px"></div>
                     </div>
 
-                    <div class="stepper-item mx-3 my-4 current" data-kt-stepper-element="nav"
-                        data-kt-stepper-action="step">
+                    <div class="stepper-item mx-3 my-4" data-kt-stepper-element="nav" data-kt-stepper-action="step">
                         <div class="stepper-wrapper d-flex align-items-center">
                             <div class="stepper-icon w-40px h-40px me-2">
                                 <i class="stepper-check fas fa-check"></i>
@@ -87,11 +88,11 @@
                     </div>
                 </div>
 
-                <form class="form mx-auto" novalidate="novalidate" id="kt_stepper_example_clickable"
+                <form class="form mx-auto" novalidate="novalidate" id="kt_stepper_example_clickable_form"
                     action="{{ route('user.nfc-card.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
-                        <div class="flex-column" data-kt-stepper-element="content">
+                        <div class="flex-column current" data-kt-stepper-element="content">
                             <div class="col-lg-12">
                                 <div class="card flex-grow-1 rounded-0">
                                     <div class="my-15">
@@ -125,7 +126,7 @@
                             </div>
                         </div>
 
-                        <div class="flex-column current" data-kt-stepper-element="content">
+                        <div class="flex-column " data-kt-stepper-element="content">
                             <div class="card flex-grow-1 rounded-0">
                                 <div class="text-center justify-content-center pt-10">
                                     <h2 class="text-center mb-0">Choose Virtual Card Template! <span
@@ -175,7 +176,7 @@
                             </button>
                         </div>
                         <div>
-                            <button type="button" class="btn btn-primary" data-kt-stepper-action="submit">
+                            <button type="submit" class="btn btn-primary" data-kt-stepper-action="submit">
                                 <span class="indicator-label">Submit</span>
                                 <span class="indicator-progress">Please wait... <span
                                         class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
@@ -188,7 +189,7 @@
                 </form>
             </div>
         </div>
-        <div class="col-lg-4 d-flex flex-column" id="sticky-column">
+        <div class="col-lg-4 d-flex flex-column">
             <div class="card flex-grow-1 rounded-0">
                 <div class="card-header px-0">
                     <div class="d-flex flex-column justify-content-center align-items-center"
@@ -197,7 +198,7 @@
                         <p class="mb-0 text-white">Your Choosen Template</p>
                     </div>
                 </div>
-                <div class="centered-card-body card-body d-flex flex-column p-0">
+                <div class="card-body d-flex flex-column p-0">
                     @include('user.pages.nfc-card.partials.nfc_preview')
                     @include('user.pages.nfc-card.partials.virtual_card_preview')
                 </div>
@@ -208,7 +209,7 @@
         <script>
             $(document).ready(function() {
                 // NFC Template
-                const nfcTemplateValue = $('input[name="nfc_template"]:checked').val();
+                var nfcTemplateValue = $('input[name="nfc_template"]:checked').val();
                 if (nfcTemplateValue != null) {
                     localStorage.setItem('nfc_template', nfcTemplateValue);
                     $("." + nfcTemplateValue).show();
@@ -219,7 +220,7 @@
 
                 $('input[name="nfc_template"]').change(function() {
                     $(".nfc-card").hide();
-                    const nfcTemplateValue = $('input[name="nfc_template"]:checked').val();
+                    var nfcTemplateValue = $('input[name="nfc_template"]:checked').val();
                     if (nfcTemplateValue != null) {
                         localStorage.setItem('nfc_template', nfcTemplateValue);
                         $("." + nfcTemplateValue).show();
@@ -228,40 +229,43 @@
                     }
                 });
 
-                const initiallySelectedValue = $('input[name="nfc_template"]:checked').val();
-                $("#" + initiallySelectedValue).show();
+                var initiallySelectedValue = $('input[name="nfc_template"]:checked').val();
+                $("." + initiallySelectedValue).show();
 
 
-                $('#kt_stepper_example_clickable input:not([type="radio"]), #kt_stepper_example_clickable textarea').on(
-                    'keyup change',
-                    function() {
+                $('#kt_stepper_example_clickable_form input:not([type="radio"]), #kt_stepper_example_clickable_form textarea, #kt_stepper_example_clickable_form input:not([type="color"])')
+                    .on('keyup change', function() {
                         // Extract input value and name
                         var inputValue = $(this).val();
                         var inputName = $(this).attr('name');
-
+                        // alert(inputValue);
+                        // alert(inputName);
                         // Update corresponding NFC card element
                         var nfcCardElement = $('.nfc-card .' + inputName);
-                        if (nfcCardElement.length > 0) {
+                        var virtualCardElement = $('.virtual_card .' + inputName);
+                        if (nfcCardElement.length > 0 | virtualCardElement.length > 0) {
                             if ($(this).is('input[type="file"]')) {
                                 if ($(this).prop('files') && $(this).prop('files')[0]) {
                                     var file = $(this).prop('files')[0];
                                     var reader = new FileReader();
                                     reader.onload = function(e) {
                                         nfcCardElement.attr('src', e.target.result);
+                                        virtualCardElement.attr('src', e.target.result);
                                     }
                                     reader.readAsDataURL(file);
                                 }
                             } else if ($(this).is('input[type="url"]')) {
                                 nfcCardElement.attr('href', inputValue);
+                                virtualCardElement.attr('href', inputValue);
                             } else {
                                 nfcCardElement.text(inputValue);
+                                virtualCardElement.text(inputValue);
                             }
                         }
 
                         // For debugging
                         console.log("Input Name:", inputName, "Input Value:", inputValue);
-                    }
-                );
+                    });
 
 
             });
@@ -477,17 +481,42 @@
                     }
                 }
 
-                // Initial card preview update
-                updateCardPreview();
+
 
                 // On change event for radio buttons
                 $('input[name="virtual_card_template"]').change(function() {
                     updateCardPreview();
                 });
 
-                // Ensure initially selected value is displayed
-                updateCardPreview();
+
             });
+
+            function changeCardFontColor() {
+                var selectedCardFontColor = $('input[name="card_font_color"]').val();
+                $('.card_name, .card_designation, .card_phone, .card_email, .card_address').css('color', selectedCardFontColor);
+            }
+
+            function changeBgFront(input) {
+                if (input.files && input.files[0]) {
+                    var file = input.files[0];
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('.punch-card-container').css('background-image', 'url(' + e.target.result + ')');
+                    }
+                    reader.readAsDataURL(file);
+                }
+            }
+
+            function changeBgBack(input) {
+                if (input.files && input.files[0]) {
+                    var file = input.files[0];
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('.punch-card-container-back').css('background-image', 'url(' + e.target.result + ')');
+                    }
+                    reader.readAsDataURL(file);
+                }
+            }
         </script>
     @endpush
 </x-app-layout>

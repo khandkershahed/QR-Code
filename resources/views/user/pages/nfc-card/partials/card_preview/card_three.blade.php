@@ -63,22 +63,22 @@
                             alt="Logo" />
                     </div>
                     <div class="text-start content-area font">
-                        <h4 class="fw-bold mb-0 card_name" style="color: #fff">
+                        <h4 class="fw-bold mb-0 card_name card_font_color" style="color: #fff">
                             Nicholas Shelton 3
                         </h4>
-                        <p class="fw-bold mb-0 text-white card_designation">Frontend Developer</p>
+                        <p class="fw-bold mb-0 card_designation card_font_color">Frontend Developer</p>
                         <hr class="title-divider mt-2" />
                         <div>
                             <p class="fw-bold text-white pt-3 mb-0">
-                                <i class="fa-solid fa-phone"></i> <span class="card_phone">015 7661 4451</span>
+                                <i class="fa-solid fa-phone"></i> <span class="card_phone card_font_color">015 7661 4451</span>
                             </p>
                             <p class="fw-bold text-white mb-0">
-                                <i class="fa-solid fa-envelope"></i> <span class="card_email">goflixza@mail.com</span>
+                                <i class="fa-solid fa-envelope"></i> <span class="card_email card_font_color">goflixza@mail.com</span>
                             </p>
                         </div>
                         <div>
                             <p class="fw-bold mb-0 text-white">
-                                <i class="fa-solid fa-map-marker-alt"></i> <span class="card_address">New York, United
+                                <i class="fa-solid fa-map-marker-alt"></i> <span class="card_address card_font_color">New York, United
                                     State</span>
                             </p>
                         </div>
@@ -96,7 +96,7 @@
         <div class="punch-card-container-back" style="background-image: url('https://i.ibb.co/M9VMCKf/card-5.png');">
             <div class="row p-5 align-items-center">
                 <div class="col-12 d-flex justify-content-center align-items-center" style="height: 20vh">
-                    <img class="punch-card-logo-back-three card_logo"
+                    <img class="punch-card-logo-back-three card_logo card_font_color"
                         src="https://i.ibb.co/vhZg1xp/png-clipart-light-white-line-light-angle-white-removebg-preview.png"
                         alt="Logo Back" />
                 </div>

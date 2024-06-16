@@ -23,7 +23,7 @@
                             <h4 class="fw-bold mb-0 card_name" style="color: #fff">
                                 Nicholas Shelton
                             </h4>
-                            <p class="fw-bold mb-0 text-white card_designation">Frontend Developer</p>
+                            <p class="fw-bold mb-0 card_designation">Frontend Developer</p>
                             <div class="me-auto mt-2 title-devider"
                                 style="height: 2px;width: 120px;background-color: #fff;margin: start;position: relative;left: 0px;">
                             </div>
