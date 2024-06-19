@@ -12,8 +12,15 @@
 /*******************************************************/
 /******************* ## Default Style ******************/
 /*******************************************************/
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Eczar:wght@400..800&display=swap');
+
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap");
+
+@font-face {
+    font-family: "Helvetica";
+    font-style: normal;
+    src: url("../fonts/Helvetica/helvetica-light-587ebe5a59211.ttf");
+    /* Other src definitions for different font formats */
+}
 body::-webkit-scrollbar {
     width: 0.5em;
 }
@@ -37,14 +44,14 @@ body::-webkit-scrollbar-thumb {
 
 body {
     color: var(--base-color);
-    font-weight: 500;
+    font-weight: 400;
     line-height: 30px;
     font-size: 16px;
     font-family: var(--base-font);
     /* Root */
-    --base-font: "Poppins", sans-serif;
+    --base-font: "Helvetica";
     /* --heading-font: "Bebas Neue", sans-serif; */
-    --heading-font: "Eczar", serif;
+    --heading-font: "Inter Tight", sans-serif;
     --primary-color: #008fd3;
     --secondary-color: #fec458;
     --heading-color: #001726;
@@ -70,6 +77,7 @@ a {
     -webkit-transition: 0.5s;
     -o-transition: 0.5s;
     transition: 0.5s;
+    font-weight: 500;
     text-decoration: none;
 }
 
@@ -154,7 +162,7 @@ textarea,
 .form-control {
     width: 100%;
     height: auto;
-    font-weight: 500;
+    font-weight: 400;
     padding: 20px 30px;
     border-radius: 15px;
     font-family: var(--heading-font);
@@ -181,7 +189,7 @@ textarea {
 
 label {
     cursor: pointer;
-    font-weight: 500;
+    font-weight: 400;
     margin-bottom: 5px;
     color: var(--base-color);
 }
@@ -502,7 +510,7 @@ input[type="radio"] {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
-    background-color: #1F0060;
+    background-color: #1f0060;
     background-repeat: no-repeat;
     background-position: center center;
 }
@@ -512,7 +520,7 @@ input[type="radio"] {
     height: 75px;
     border-radius: 50%;
     background-color: transparent;
-    border: 2px solid #1F0060;
+    border: 2px solid #1f0060;
     border-top: 2px solid var(--primary-color);
     border-bottom: 2px solid var(--primary-color);
     -webkit-animation: 1s preloader linear infinite;
@@ -540,7 +548,7 @@ input[type="radio"] {
     font-size: 20px;
     -webkit-box-shadow: none;
     box-shadow: none;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 43px;
     border-radius: 50%;
     text-align: center;
@@ -924,7 +932,7 @@ input[type="radio"] {
 }
 
 .home-two .section-title p {
-    font-weight: 500;
+    font-weight: 400;
 }
 
 @media only screen and (min-width: 576px) {
@@ -1056,6 +1064,7 @@ input[type="radio"] {
     --secondary-color: #eb001b;
 }
 
+
 .home-eight .theme-btn {
     background-image: -webkit-gradient(
         linear,
@@ -1149,7 +1158,6 @@ h6,
 .contact-info-item.style-two .content .text,
 .contact-form .form-group label,
 .shop-shorter .sort-text {
-    font-weight: 500;
     color: var(--heading-color);
     font-family: var(--heading-font);
 }
@@ -1159,7 +1167,7 @@ h1,
     line-height: 1.1;
     font-size: 75px;
 }
-.page-title{
+.page-title {
     font-size: 3rem;
 }
 h2,
@@ -4365,13 +4373,12 @@ a.theme-btn {
     -o-transition: 0.3s;
     transition: 0.3s;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 400;
     text-align: center;
     padding: 13px 45px;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    border-radius: 20px;
     display: -webkit-inline-box;
     display: -ms-inline-flexbox;
     display: inline-flex;
@@ -4451,7 +4458,7 @@ a.theme-btn.style-two {
         var(--navyblue-color) 50%,
         var(--primary-color) 50%
     ); */
-    background-image: linear-gradient(to left, #6bc03b 50%, #d20b29 50%);
+    background-image: linear-gradient(to left, #6610f2 50%, #ff7a5d 50%);
 }
 
 .theme-btn.style-three,
@@ -4543,7 +4550,7 @@ a.theme-btn.style-four:hover {
 /* Read More */
 .read-more {
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 400;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
@@ -4556,7 +4563,7 @@ a.theme-btn.style-four:hover {
 .read-more i {
     float: right;
     font-size: 15px;
-    font-weight: 500;
+    font-weight: 400;
     -webkit-transition: 0.5s;
     -o-transition: 0.5s;
     transition: 0.5s;
@@ -4574,7 +4581,7 @@ a.theme-btn.style-four:hover {
 /* Read More Two */
 .read-more-two {
     color: var(--white);
-    font-weight: 500;
+    font-weight: 400;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
@@ -4595,7 +4602,7 @@ a.theme-btn.style-four:hover {
 .subtitle-one {
     background: white;
     padding: 7px 25px;
-    font-weight: 500;
+    font-weight: 400;
     border-radius: 12px;
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -4656,7 +4663,7 @@ a.theme-btn.style-four:hover {
 
 .subtitle-three {
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 400;
     display: inline-block;
     color: var(--primary-color);
 }
@@ -4776,7 +4783,7 @@ a.theme-btn.style-four:hover {
     -o-transition: 0.5s;
     transition: 0.5s;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .iconic-box .content hr {
@@ -4850,7 +4857,7 @@ a.theme-btn.style-four:hover {
 
 .iconic-box.style-two p {
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 400;
     color: rgba(255, 255, 255, 0.55);
 }
 
@@ -4907,7 +4914,7 @@ a.theme-btn.style-four:hover {
 
 .iconic-box.style-three p {
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 400;
     color: rgba(255, 255, 255, 0.55);
 }
 
@@ -4956,7 +4963,7 @@ a.theme-btn.style-four:hover {
 
 .iconic-box.style-four p {
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .iconic-box.style-four:hover {
@@ -5000,7 +5007,7 @@ a.theme-btn.style-four:hover {
 
 .iconic-box.style-five p {
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .iconic-box.style-five:hover {
@@ -5045,7 +5052,7 @@ a.theme-btn.style-four:hover {
 
 .iconic-box.style-six p {
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .iconic-box.style-six:hover {
@@ -5142,7 +5149,7 @@ a.theme-btn.style-four:hover {
 
 .iconic-box.style-seven p {
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .iconic-box.style-seven .bg {
@@ -5208,7 +5215,7 @@ a.theme-btn.style-four:hover {
 
 .iconic-box.style-eight p {
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .iconic-box.style-eight .bg {
@@ -5260,7 +5267,7 @@ a.theme-btn.style-four:hover {
 
 .iconic-box.style-nine p {
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 400;
     margin-bottom: 0;
 }
 
@@ -5317,7 +5324,7 @@ a.theme-btn.style-four:hover {
 
 .iconic-box.style-ten p {
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .iconic-box.style-ten:hover {
@@ -5503,7 +5510,7 @@ a.theme-btn.style-four:hover {
 }
 
 .fancy-box.style-two .content .category {
-    font-weight: 500;
+    font-weight: 400;
     margin-bottom: 4px;
     color: var(--primary-color);
     display: inline-block;
@@ -5533,7 +5540,7 @@ a.theme-btn.style-four:hover {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 1.3;
     margin-bottom: 25px;
     color: var(--heading-color);
@@ -5563,7 +5570,7 @@ a.theme-btn.style-four:hover {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 1.3;
 }
 
@@ -5576,7 +5583,7 @@ a.theme-btn.style-four:hover {
     -ms-flex: none;
     flex: none;
     margin-top: 2px;
-    font-weight: 500;
+    font-weight: 400;
     margin-right: 15px;
     color: var(--primary-color);
 }
@@ -5594,7 +5601,7 @@ a.theme-btn.style-four:hover {
 
 .icon-list.style-three li {
     padding: 5px;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 20px;
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -5629,7 +5636,7 @@ a.theme-btn.style-four:hover {
 .counter-item .count-text {
     display: block;
     line-height: 1;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 48px;
     margin-bottom: 15px;
     color: var(--primary-color);
@@ -5771,7 +5778,7 @@ a.theme-btn.style-four:hover {
 
 .counter-item.style-five .counter-title {
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 400;
     color: var(--base-color);
 }
 
@@ -5895,7 +5902,7 @@ a.theme-btn.style-four:hover {
 
 .counter-item-two .counter-title {
     display: block;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 25px;
 }
 
@@ -6006,7 +6013,7 @@ a.theme-btn.style-four:hover {
     color: var(--white);
     display: block;
     font-size: 48px;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 38px;
     margin-bottom: 12px;
 }
@@ -6023,7 +6030,7 @@ a.theme-btn.style-four:hover {
     display: -ms-flexbox;
     display: flex;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 400;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
@@ -6173,7 +6180,7 @@ a.theme-btn.style-four:hover {
 
 .course-item .content .category {
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 400;
     margin-bottom: 5px;
     display: inline-block;
     color: var(--primary-color);
@@ -6198,7 +6205,7 @@ a.theme-btn.style-four:hover {
     display: -ms-flexbox;
     display: flex;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 400;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
@@ -6392,7 +6399,7 @@ a.theme-btn.style-four:hover {
 
 .testimonial-item .author .title b {
     font-size: 24px;
-    font-weight: 500;
+    font-weight: 400;
     color: var(--heading-color);
 }
 
@@ -6410,7 +6417,7 @@ a.theme-btn.style-four:hover {
 
 .testimonial-item .author-text {
     font-size: 24px;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 1.6;
     margin-bottom: 20px;
     color: var(--heading-color);
@@ -6475,7 +6482,7 @@ a.theme-btn.style-four:hover {
 }
 
 .testimonial-item.style-three .author-text {
-    font-weight: 500;
+    font-weight: 400;
 }
 
 @media only screen and (min-width: 768px) {
@@ -6913,7 +6920,7 @@ a.theme-btn.style-four:hover {
 
 .testimonial-item-four .author-text {
     font-size: 24px;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 1.66;
     margin-bottom: 45px;
     letter-spacing: -0.7px;
@@ -7456,11 +7463,11 @@ a.theme-btn.style-four:hover {
 
 .blog-item .image .date span {
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .blog-item .content .category {
-    font-weight: 500;
+    font-weight: 400;
     margin-bottom: 5px;
     color: var(--primary-color);
     display: inline-block;
@@ -7563,7 +7570,7 @@ a.theme-btn.style-four:hover {
 }
 
 .blog-standard-item .blog-meta li .category {
-    font-weight: 500;
+    font-weight: 400;
     color: var(--primary-color);
     font-family: var(--heading-font);
 }
@@ -8011,7 +8018,7 @@ a.theme-btn.style-four:hover {
     border-radius: 0 0 12px 12px;
 }
 .advanced-tab.style-fours {
-    background: #EAECEF;
+    background: #eaecef;
     display: -webkit-inline-box;
     display: -ms-inline-flexbox;
     display: inline-flex;
@@ -8128,7 +8135,7 @@ a.theme-btn.style-four:hover {
     -ms-flex: none;
     flex: none;
     color: var(--white);
-    font-weight: 500;
+    font-weight: 400;
     padding: 9px 24px;
     border-radius: 12px;
     display: -webkit-box;
@@ -8214,7 +8221,7 @@ a.theme-btn.style-four:hover {
 .nice-select {
     font-size: 16px;
     border-radius: 7px;
-    font-weight: 500;
+    font-weight: 400;
     padding: 4px 40px 4px 20px;
     background: var(--lighter-color);
     border: 1px solid var(--border-color);
@@ -8354,7 +8361,7 @@ a.theme-btn.style-four:hover {
     -webkit-transition: 0.5s;
     -o-transition: 0.5s;
     transition: 0.5s;
-    font-weight: 500;
+    font-weight: 400;
     color: var(--base-color);
     letter-spacing: -0.48px;
 }
@@ -8363,7 +8370,7 @@ a.theme-btn.style-four:hover {
     -webkit-transition: 0.5s;
     -o-transition: 0.5s;
     transition: 0.5s;
-    font-weight: 500;
+    font-weight: 400;
     margin-bottom: 35px;
     color: var(--heading-color);
 }
@@ -8829,7 +8836,7 @@ a.theme-btn.style-four:hover {
 
 .pricing-item.style-six .icon-list li {
     color: var(--white);
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .pricing-item.style-six:hover .theme-btn {
@@ -8875,7 +8882,7 @@ a.theme-btn.style-four:hover {
 }
 
 .save-percent {
-    font-weight: 500;
+    font-weight: 400;
     background-image: url(../images/shapes/title-shape-two.png);
     background-position: center bottom;
     background-repeat: no-repeat;
@@ -8939,7 +8946,7 @@ a.theme-btn.style-four:hover {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    font-weight: 500;
+    font-weight: 400;
     color: var(--base-color);
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -9177,7 +9184,7 @@ a.theme-btn.style-four:hover {
     -webkit-transition: 0.5s;
     -o-transition: 0.5s;
     transition: 0.5s;
-    font-weight: 500;
+    font-weight: 400;
     padding: 2px 22px;
     border-radius: 7px;
     margin-bottom: 10px;
@@ -9250,7 +9257,7 @@ a.theme-btn.style-four:hover {
 }
 
 .project-item.style-two .content .category {
-    font-weight: 500;
+    font-weight: 400;
     margin-bottom: 10px;
     display: inline-block;
     color: var(--primary-color);
@@ -9296,7 +9303,7 @@ a.theme-btn.style-four:hover {
 
 /* Project Details */
 .project-details-content .icon-list li {
-    font-weight: 500;
+    font-weight: 400;
     color: var(--base-color);
     font-family: var(--base-font);
 }
@@ -9609,7 +9616,7 @@ a.theme-btn.style-four:hover {
 }
 
 .tooltip-style-two .tooltip-item .tooltip-content .tooltip-text {
-    font-weight: 500;
+    font-weight: 400;
     padding: 0 10px;
     color: var(--heading-color);
     background: var(--secondary-color);
@@ -9730,7 +9737,7 @@ a.theme-btn.style-four:hover {
     width: 65px;
     height: 65px;
     font-size: 27px;
-    font-weight: 500;
+    font-weight: 400;
     -webkit-transition: 0.5s;
     -o-transition: 0.5s;
     transition: 0.5s;
@@ -10502,7 +10509,7 @@ a.theme-btn.style-four:hover {
     height: auto;
     float: right;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 400;
     content: "\f056";
     color: var(--primary-color);
     background: transparent;
@@ -10767,7 +10774,7 @@ a.theme-btn.style-four:hover {
 
 .blockquote-one .text {
     font-size: 22px;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 1.6;
     margin-bottom: 15px;
     letter-spacing: -0.66px;
@@ -11298,7 +11305,7 @@ a.theme-btn.style-four:hover {
 .main-menu .navbar-collapse li.dropdown .dropdown-btn {
     cursor: pointer;
     margin-left: 5px;
-    font-weight: 500;
+    font-weight: 400;
     margin-bottom: -2px;
     color: var(--heading-color);
 }
@@ -11318,6 +11325,7 @@ a.theme-btn.style-four:hover {
 
 .main-menu .navbar-collapse li a {
     opacity: 1;
+    font-weight: 500;
     display: block;
     font-size: 18px;
     position: relative;
@@ -11340,7 +11348,7 @@ a.theme-btn.style-four:hover {
 
 .main-menu .navbar-collapse li.current > a,
 .main-menu .navbar-collapse li.current-menu-item > a {
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .main-menu .navbar-collapse li li {
@@ -11933,7 +11941,7 @@ a.theme-btn.style-four:hover {
 
 .header-top .top-middle {
     color: var(--white);
-    font-weight: 500;
+    font-weight: 400;
 }
 
 @media only screen and (max-width: 575px) {
@@ -11977,7 +11985,7 @@ a.theme-btn.style-four:hover {
 .sidebar-menu li a {
     color: var(--white);
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 400;
     padding: 6px 20px;
     display: inline-block;
     text-transform: capitalize;
@@ -12010,7 +12018,7 @@ a.theme-btn.style-four:hover {
     margin-bottom: 32px;
     letter-spacing: 0.3px;
     font-family: var(--heading-font);
-    font-weight: 500;
+    font-weight: 600;
     font-style: normal;
     font-size: 3rem;
 }
@@ -12109,7 +12117,7 @@ a.theme-btn.style-four:hover {
 }
 
 .hero-content.style-three .icon-list li {
-    font-weight: 500;
+    font-weight: 400;
     margin: 15px 0 0;
 }
 
@@ -12540,7 +12548,7 @@ a.theme-btn.style-four:hover {
 
 .hero-content.style-eight p {
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .hero-content.style-eight .clients-reviews .clients {
@@ -12576,7 +12584,7 @@ a.theme-btn.style-four:hover {
 }
 
 .hero-content.style-eight .clients-reviews .clients .text {
-    font-weight: 500;
+    font-weight: 400;
     line-height: 19px;
     color: var(--heading-color);
     font-family: var(--heading-font);
@@ -12659,7 +12667,6 @@ a.theme-btn.style-four:hover {
     }
 }
 
-
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .hero-content.style-nine h1 {
         font-size: 55px;
@@ -12668,7 +12675,7 @@ a.theme-btn.style-four:hover {
 
 .hero-content.style-nine p {
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .hero-content.style-nine .newsletter-form {
@@ -12869,7 +12876,7 @@ a.theme-btn.style-four:hover {
 .breadcrumb .breadcrumb-item {
     padding: 0;
     color: var(--white);
-    font-weight: 500;
+    font-weight: 400;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -13169,7 +13176,7 @@ a.theme-btn.style-four:hover {
 .about-four-content .clients-reviews .clients .text {
     color: var(--white);
     font-size: 12px;
-    font-weight: 500;
+    font-weight: 400;
     margin-left: -15px;
     width: 46px;
     height: 46px;
@@ -13253,7 +13260,7 @@ a.theme-btn.style-four:hover {
 
 /* Home Six */
 .ai-content .subtitle {
-    font-weight: 500;
+    font-weight: 400;
     margin-bottom: 5px;
     display: inline-block;
     color: var(--primary-color);
@@ -13736,7 +13743,7 @@ a.theme-btn.style-four:hover {
 }
 
 .contact-form .form-control {
-    font-weight: 500;
+    font-weight: 400;
     border-radius: 5px;
     background: white;
     padding: 18px 25px;
@@ -13806,7 +13813,7 @@ a.theme-btn.style-four:hover {
 }
 
 .shop-shorter .sort-text {
-    font-weight: 500;
+    font-weight: 400;
     margin-right: 25px;
 }
 
@@ -13860,7 +13867,7 @@ a.theme-btn.style-four:hover {
 }
 
 .product-item .content .price {
-    font-weight: 500;
+    font-weight: 400;
     font-family: var(--heading-font);
 }
 
@@ -13935,7 +13942,7 @@ a.theme-btn.style-four:hover {
 .product-details-content .price {
     display: block;
     font-size: 22px;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 @media only screen and (max-width: 375px) {
@@ -13963,7 +13970,7 @@ a.theme-btn.style-four:hover {
 
 .product-details-content .add-to-cart input {
     font-size: 22px;
-    font-weight: 500;
+    font-weight: 400;
     max-width: 130px;
     margin-top: 15px;
     margin-right: 22px;
@@ -13992,7 +13999,7 @@ a.theme-btn.style-four:hover {
 
 .product-details-content .category-tags li:first-child a {
     margin-top: 10px;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 18px;
     display: inline-block;
 }
@@ -14026,7 +14033,7 @@ a.theme-btn.style-four:hover {
 
 .product-information-tab li a {
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 400;
     padding: 11px 45px;
     display: inline-block;
     color: var(--heading-color);
@@ -14448,7 +14455,7 @@ a.theme-btn.style-four:hover {
 }
 
 .cta-left-content .subtitle {
-    font-weight: 500;
+    font-weight: 400;
     color: var(--heading-color);
 }
 
@@ -14583,7 +14590,7 @@ a.theme-btn.style-four:hover {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    font-weight: 500;
+    font-weight: 400;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
@@ -14659,7 +14666,7 @@ a.theme-btn.style-four:hover {
 }
 
 .tag-coulds a {
-    font-weight: 500;
+    font-weight: 400;
     padding: 4px 18px;
     margin: 10px 5px 0;
     border-radius: 10px;
@@ -14806,7 +14813,7 @@ a.theme-btn.style-four:hover {
     padding: 0;
     border: none;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 400;
     background: transparent;
 }
 
@@ -14874,7 +14881,7 @@ a.theme-btn.style-four:hover {
 }
 
 .widget-links ul li {
-    font-weight: 500;
+    font-weight: 400;
     line-height: 1.5;
 }
 
@@ -15610,7 +15617,7 @@ a.theme-btn.style-four:hover {
 }
 
 .main-footer.footer-five .widget-contact-info ul li a {
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .main-footer.footer-five .newsletter-form {
@@ -15647,6 +15654,6 @@ a.theme-btn.style-four:hover {
 }
 
 .main-footer.footer-five .radio-part label {
-    font-weight: 500;
+    font-weight: 400;
     margin-bottom: 0;
 }

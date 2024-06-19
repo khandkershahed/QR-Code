@@ -134,7 +134,7 @@
                                     laudantium totamto aperiame eaque ipsa quae ab illo inventore veritatis</p>
                                 <div class="feature-icon-box text-white mt-30">
                                     <div class="icon">
-                                        <i class="far fa-check"></i>
+                                        <i class="fas fa-check"></i>
                                     </div>
                                     <div class="content">
                                         <h5>Individual lead profile</h5>
@@ -143,7 +143,7 @@
                                 </div>
                                 <div class="feature-icon-box text-white">
                                     <div class="icon">
-                                        <i class="far fa-check"></i>
+                                        <i class="fas fa-check"></i>
                                     </div>
                                     <div class="content">
                                         <h5>Advanced deal tracking</h5>
@@ -156,7 +156,7 @@
                                     laudantium totamto aperiame eaque ipsa quae ab illo inventore veritatis</p>
                                 <div class="feature-icon-box text-white mt-30">
                                     <div class="icon">
-                                        <i class="far fa-check"></i>
+                                        <i class="fas fa-check"></i>
                                     </div>
                                     <div class="content">
                                         <h5>Individual lead profile</h5>
@@ -165,7 +165,7 @@
                                 </div>
                                 <div class="feature-icon-box text-white">
                                     <div class="icon">
-                                        <i class="far fa-check"></i>
+                                        <i class="fas fa-check"></i>
                                     </div>
                                     <div class="content">
                                         <h5>Advanced deal tracking</h5>
@@ -178,7 +178,7 @@
                                     laudantium totamto aperiame eaque ipsa quae ab illo inventore veritatis</p>
                                 <div class="feature-icon-box text-white mt-30">
                                     <div class="icon">
-                                        <i class="far fa-check"></i>
+                                        <i class="fas fa-check"></i>
                                     </div>
                                     <div class="content">
                                         <h5>Individual lead profile</h5>
@@ -187,7 +187,7 @@
                                 </div>
                                 <div class="feature-icon-box text-white">
                                     <div class="icon">
-                                        <i class="far fa-check"></i>
+                                        <i class="fas fa-check"></i>
                                     </div>
                                     <div class="content">
                                         <h5>Advanced deal tracking</h5>

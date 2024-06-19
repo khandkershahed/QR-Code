@@ -640,7 +640,44 @@ progress {
     font-size: .875em;
     color: #7e8299
 }
+.card.custom-card {
+    width: 100%;
+    overflow-y: hidden;
+    margin: 0 auto;
+    border-radius: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
+.card.custom-card .card-body {
+    padding: 10px; /* Add padding inside the card body */
+}
+
+.stepper-nav {
+    flex-shrink: 0;
+}
+
+.card.custom-card {
+    margin: 0 auto;
+    border-radius: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.custom-height {
+    height: 112vh !important;
+}
+.card.custom-card .card-body {
+    flex: 1 1 auto;
+    padding: 10px;
+}
+.sticky-top-preview {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1020; /* Ensure it is above other content */
+}
 .container,
 .container-fluid,
 .container-lg,
@@ -43433,7 +43470,60 @@ a:hover {
     border-style: dashed;
     height: 100px;
 }
+.steaper-header{
+    background: #0098da3d;
+    border-bottom: 1px solid #eee;
+    border-top-left-radius: 5px; 
+    border-top-right-radius: 5px;
+}
 
+
+.qr-info-form {
+    position: relative;
+    min-height: 100%;
+    height: 650px; /* Fixed height for the qr-info-form */
+    overflow: hidden; /* Enable scrolling if content exceeds height */
+    padding-bottom: 30px; /* Space for scroll-down indicator */
+    overflow-x: hidden;
+}
+
+
+.custom-card-body {
+    padding: 1.25rem; /* Adjust padding as needed */
+    max-height: 100%; /* Ensure card body fills its parent container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.custom-card-body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+
+
+@media (min-width: 992px) {
+    /* Adjust the height of the first card as needed */
+    #first-card {
+        position: relative;
+        min-height: 100%;
+        height: 650px; /* Fixed height for the first card */
+    }
+    .fixed-bottom {
+        background: white !important;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+}
+
+@media (max-width: 991.98px) {
+    /* Adjust for smaller screens if necessary */
+    #first-card {
+        height: auto; /* Allow the first card to expand based on content */
+    }
+}
 .btn-check:active+.btn.btn-outline.btn-outline-dashed,
 .btn-check:checked+.btn.btn-outline.btn-outline-dashed,
 .btn.btn-outline.btn-outline-dashed.active,
@@ -43472,18 +43562,10 @@ a:hover {
     color: #fff;
     border-color: #009ef7;
     background-color: #2196f340 !important;
-    border-width: 1px;
-    transform: scale(1.05); /* Apply a small zoom effect */
-    transition: all 0.5s cubic-bezier(0.42, 0, 0.58, 1); /* This cubic-bezier function is similar to ease-in-out */
+    border-width: 2px;
+    transform: scale(1.06);
+    transition: all 0.5s cubic-bezier(0.42, 0, 0.58, 1);
     border-radius: 10px;
-}
-.centered-card-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center; /* Optional, to center-align text inside the card body */
-    height: 100%; /* Ensure the card-body takes up the full height of the card */
 }
 .btn-check:active+.btn.btn-outline.btn-outline-dashed.btn-outline-default .check-maintext,
 .btn-check:checked+.btn.btn-outline.btn-outline-dashed.btn-outline-default .check-maintext,
@@ -52745,7 +52827,7 @@ label.rating-label:hover~.rating-label>i {
 }
 
 .stepper.stepper-pills .stepper-item .stepper-label .stepper-title {
-    color: #ffffff;
+    color: #181c32;
     font-weight: 600;
     font-size: 1rem;
     margin-bottom: .3rem
@@ -52806,7 +52888,7 @@ label.rating-label:hover~.rating-label>i {
 
 .stepper.stepper-pills .stepper-item.completed .stepper-label .stepper-title,
 .stepper.stepper-pills .stepper-item.current:last-child .stepper-label .stepper-title {
-    color: #a1a5b7
+    color: #000000;
 }
 
 .stepper.stepper-pills .stepper-item.completed .stepper-label .stepper-desc,

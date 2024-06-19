@@ -1,5 +1,5 @@
 {{-- Website Form Start --}}
-<div class="text-center justify-content-center my-10">
+<div class="text-center justify-content-center mt-5">
     <h2 class="text-center mb-0">Your NFC Card Details</h2>
     <p class="text-center mb-0">Fill The Form With Your Info & Go To The Next.</p>
 </div>
@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card-body">
-            <ul class="nav nav-pills nav-pills-custom row position-relative mx-0 mb-9 mx-auto d-flex justify-content-center"
+            <ul class="nav nav-pills nav-pills-custom row position-relative mx-0 mb-0 mx-auto d-flex justify-content-center"
                 role="tablist">
                 <li class="nav-item col-2 mx-0 p-0" role="presentation">
                     <a class="nav-link d-flex justify-content-center w-100 border-0 h-100 active"
@@ -67,7 +67,7 @@
                 <span class="position-absolute z-index-1 bottom-0 w-100 h-4px bg-light rounded"></span>
             </ul>
             <div class="tab-content">
-                <div class="tab-pane fade active show" id="kt_list_widget_10_tab_1" role="tabpanel">
+                <div class="tab-pane qr-info-form fade active show" id="kt_list_widget_10_tab_1" role="tabpanel">
                     <div class="row p-2">
                         <div class="col-lg-3">
                             <div class="fv-row my-3">
@@ -79,8 +79,7 @@
                         </div>
                         <div class="col-lg-1 d-lg-block d-sm-none">
                             <div class="fv-row my-3">
-                                <x-metronic.label for="profile_image_preview"
-                                    class="form-label">{{ __('Preview') }}</x-metronic.label>
+                                <x-metronic.label for="profile_image_preview" class="form-label">{{ __('Preview') }}</x-metronic.label>
                                 <div>
                                     <img width="50px" height="50px" class="rounded-circle border banner_image"
                                         src="https://i.ibb.co/BNBTVN4/logo.png" alt="">
@@ -89,17 +88,13 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="fv-row my-3">
-                                <x-metronic.label for="profile_image"
-                                    class="form-label required">{{ __('Profile Image') }}</x-metronic.label>
-                                <input id="profile_image" type="file" class="form-control" name="profile_image"
-                                    :value="old('profile_image')" onchange="previewprofileImage(this)"
-                                    accept="image/*" />
+                                <x-metronic.label for="profile_image" class="form-label required">{{ __('Profile Image') }}</x-metronic.label>
+                                <input id="profile_image" type="file" class="form-control" name="profile_image" :value="old('profile_image')" onchange="previewprofileImage(this)" accept="image/*" />
                             </div>
                         </div>
                         <div class="col-lg-1 d-lg-block d-sm-none">
                             <div class="fv-row my-3">
-                                <x-metronic.label for="profile_image_preview"
-                                    class="form-label">{{ __('Preview') }}</x-metronic.label>
+                                <x-metronic.label for="profile_image_preview" class="form-label">{{ __('Preview') }}</x-metronic.label>
                                 <div>
                                     <img width="50px" height="50px" class="rounded-circle border profile_image"
                                         src="https://i.ibb.co/BNBTVN4/logo.png" alt="">
@@ -108,84 +103,62 @@
                         </div>
                         <div class="col-lg-4">
                             <div class="fv-row my-3">
-                                <x-metronic.label class="fw-semibold fs-6 mb-2 required">First
-                                    Name</x-metronic.label>
-                                <x-metronic.input type="text" name="first_name"
-                                    class="form-control form-control-solid mb-3 mb-lg-0"
-                                    placeholder="Sazeduzzaman" value="" />
+                                <x-metronic.label class="fw-semibold fs-6 mb-2 required">First Name</x-metronic.label>
+                                <x-metronic.input type="text" name="first_name" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Sazeduzzaman" value="" />
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Last Name</x-metronic.label>
-                                <x-metronic.input type="text" name="last_name"
-                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Saju"
-                                    value="" />
+                                <x-metronic.input type="text" name="last_name" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Saju" value="" />
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="fv-row my-3">
-                                <x-metronic.label
-                                    class="fw-semibold fs-6 mb-2 required">Designation</x-metronic.label>
-                                <x-metronic.input type="text" name="designation"
-                                    class="form-control form-control-solid mb-3 mb-lg-0"
-                                    placeholder="Frontend Developer" value="" />
+                                <x-metronic.label class="fw-semibold fs-6 mb-2 required">Designation</x-metronic.label>
+                                <x-metronic.input type="text" name="designation" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Frontend Developer" value="" />
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="fv-row my-3">
-                                <x-metronic.label class="fw-semibold fs-6 mb-2 required">Address Line
-                                    One</x-metronic.label>
-                                <x-metronic.input type="text" name="address_line_one"
-                                    class="form-control form-control-solid mb-3 mb-lg-0"
-                                    placeholder="Dhaka, Mirpur" value="" />
+                                <x-metronic.label class="fw-semibold fs-6 mb-2 required">Address Line One</x-metronic.label>
+                                <x-metronic.input type="text" name="address_line_one" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Dhaka, Mirpur" value="" />
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Address Line Two</x-metronic.label>
-                                <x-metronic.input type="text" name="address_line_two"
-                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Bangladesh"
-                                    value="" />
+                                <x-metronic.input type="text" name="address_line_two" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Bangladesh" value="" />
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Phone Work</x-metronic.label>
-                                <x-metronic.input type="text" name="phone_work"
-                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="01*******"
-                                    value="" />
+                                <x-metronic.input type="text" name="phone_work" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="01*******" value="" />
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="fv-row my-3">
-                                <x-metronic.label class="fw-semibold fs-6 mb-2 required">Phone
-                                    Personal</x-metronic.label>
-                                <x-metronic.input type="text" name="phone_personal"
-                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="01*******"
-                                    value="" />
+                                <x-metronic.label class="fw-semibold fs-6 mb-2 required">Phone Personal</x-metronic.label>
+                                <x-metronic.input type="text" name="phone_personal" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="01*******" value="" />
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Email Work</x-metronic.label>
-                                <x-metronic.input type="email" name="email_work"
-                                    class="form-control form-control-solid mb-3 mb-lg-0"
-                                    placeholder="work@mail.com" value="" />
+                                <x-metronic.input type="email" name="email_work" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="work@mail.com" value="" />
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="fv-row my-3">
-                                <x-metronic.label class="fw-semibold fs-6 mb-2 required">Email
-                                    Personal</x-metronic.label>
-                                <x-metronic.input type="email" name="email_personal"
-                                    class="form-control form-control-solid mb-3 mb-lg-0"
-                                    placeholder="personal@mail.com" value="" />
+                                <x-metronic.label class="fw-semibold fs-6 mb-2 required">Email Personal</x-metronic.label>
+                                <x-metronic.input type="email" name="email_personal" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="personal@mail.com" value="" />
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="kt_list_widget_10_tab_2" role="tabpanel">
+                
+                <div class="tab-pane qr-info-form fade" id="kt_list_widget_10_tab_2" role="tabpanel">
                     <div class="row p-2">
                         <div class="col-lg-12">
                             <div class="fv-row my-3">
@@ -204,7 +177,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="kt_list_widget_10_tab_3" role="tabpanel">
+                <div class="tab-pane qr-info-form fade" id="kt_list_widget_10_tab_3" role="tabpanel">
                     <div class="row p-2">
                         <div class="col-lg-12">
                             <div class="fv-row my-3">
@@ -317,7 +290,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="kt_list_widget_10_tab_4" role="tabpanel">
+                <div class="tab-pane qr-info-form fade" id="kt_list_widget_10_tab_4" role="tabpanel">
                     <div class="row p-2">
                         <div class="col-lg-4">
                             <div class="fv-row my-3">
@@ -388,7 +361,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="kt_list_widget_10_tab_5" role="tabpanel">
+                <div class="tab-pane qr-info-form fade" id="kt_list_widget_10_tab_5" role="tabpanel">
                     <div class="row p-2">
                         <div class="col-lg-4">
                             <div class="fv-row my-3">

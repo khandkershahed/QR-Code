@@ -442,7 +442,7 @@
                         </p>
                         <div class="feature-icon-box mt-35">
                             <div class="icon">
-                                <i class="far fa-check"></i>
+                                <i class="fas fa-check"></i>
                             </div>
                             <div class="content">
                                 <h5>Boost Interaction</h5>
@@ -454,7 +454,7 @@
                         </div>
                         <div class="feature-icon-box">
                             <div class="icon">
-                                <i class="far fa-check"></i>
+                                <i class="fas fa-check"></i>
                             </div>
                             <div class="content">
                                 <h5>Streamline Communication</h5>

@@ -3,36 +3,47 @@
     {{-- {!! QrCode::size(500)->eye('square')->eyeColor(1, 222, 18, 222,222, 18, 222 )->eyeColor(1, 222, 18, 222,222, 18, 222 )->eyeColor(2, 222, 18, 222,222, 18, 222 )->style('dot', 0.8)->errorCorrection('H')->generate('Make me into a QrCode!'); !!} --}}
     <div class="row">
         <div class="col-lg-12">
-            <div class="card card-p-0 card-flush p-3 mt-10">
-                <div class="card-header align-items-center py-5 gap-2 gap-md-5">
-                    <div class="card-title">
+            <div class="d-flex align-items-center rounded py-5 px-5 bg-light-primary" style="border: 1px dashed blue;">
+                <i class="ki-duotone ki-information-5 fs-3x text-warning me-5">
+                    <span class="path1"></span><span class="path2"></span><span class="path3"></span>
+                </i>
+                <!--begin::Description-->
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <div class="text-gray-700 fw-bold d-flex ">
                         @if (!empty($subscription->plan))
-                            <h2 class="mb-0">Manage your QR Codes | Total Created : {{ $qrs->count() }} | My Plan
-                                Limitation: {{ $subscription->plan->qr }} | Remaining:
-                                {{ $subscription->plan->qr - $qrs->count() }}</h2>
+                            <strong class="mb-2"> Total Created QR: {{ $qrs->count() }}|| QR Limitation:
+                                {{ $subscription->plan->qr }}|| QR Remaining:
+                                {{ $subscription->plan->qr - $qrs->count() }}||Total Created QR: {{ $qrs->count() }}
+                            </strong>
                         @else
-                            <h2 class="mb-0">Manage your QR Codes | Total Created : {{ $qrs->count() }} | My Plan
-                                Limitation: 10 (Trial Period) | Remaining:
-                                {{ 10 - $qrs->count() }}</h2>
+                            <strong class="mb-2">Total Created QR: {{ $qrs->count() }} ||
+                                QR Limitation: 10 (Trial Period)|| QR Remaining:
+                                {{ 10 - $qrs->count() }}</strong>
                         @endif
                     </div>
-                    <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
+                    <div>
                         @if (!empty($subscription->plan))
                             @if ($subscription->plan->qr - $qrs->count() > 0)
-                                <a href="{{ route('user.qr-code.create') }}"
-                                    class="btn btn-sm btn-primary rounded-2 me-3">
+                                <a href="{{ route('user.qr-code.create') }}" class="btn btn-sm btn-primary rounded-2 me-3">
                                     Create QR Codes
                                 </a>
                             @endif
                         @else
                             @if (10 - $qrs->count() > 0)
-                                <a href="{{ route('user.qr-code.create') }}"
-                                    class="btn btn-sm btn-primary rounded-2 me-3">
+                                <a href="{{ route('user.qr-code.create') }}" class="btn btn-sm btn-primary rounded-2 me-3">
                                     Create QR Codes
                                 </a>
                             @endif
                         @endif
-
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="card card-p-0 card-flush p-3 mt-10">
+                <div class="py-2 px-2">
+                    <div class="card-title">
+                        <h2 class="mb-0">List Of Your QRs</h2>
                     </div>
                 </div>
                 <div class="card-body">
@@ -144,8 +155,8 @@
                                                 <!--begin::Menu item-->
                                                 @if (!empty($qr->qr_png))
                                                     <div class="menu-item px-3">
-                                                        <a href="{{ $qr->qr_png_url }}" class="menu-link px-3" download
-                                                            data-kt-docs-table-filter="edit_row">
+                                                        <a href="{{ $qr->qr_png_url }}" class="menu-link px-3"
+                                                            download data-kt-docs-table-filter="edit_row">
                                                             PNG
                                                         </a>
                                                     </div>

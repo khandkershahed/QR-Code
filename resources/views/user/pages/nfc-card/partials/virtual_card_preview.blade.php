@@ -16,8 +16,6 @@
 
         width: 415px;
     }
-
-
     .punch-card-container img,
     .punch-card-container-back img {
         margin: 0;
