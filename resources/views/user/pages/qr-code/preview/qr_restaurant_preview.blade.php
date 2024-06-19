@@ -4,7 +4,7 @@
     /* CSS for centering the mobile frame */
 
     .nfc-mobile-frame {
-        height: 768px !important;
+         
         width: 100%;
         max-width: 576px;
         border-radius: 20px;

@@ -1,6 +1,6 @@
 <style>
     .nfc-mobile-frame {
-        height: 768px !important;
+         
         max-width: 400px;
         /* border: 2px solid #1026bf; */
         border-radius: 20px;
@@ -31,7 +31,6 @@
 
     .nfc-one-cover-img {
         background-size: cover;
-        height: 100%;
         background-position: center;
     }
 

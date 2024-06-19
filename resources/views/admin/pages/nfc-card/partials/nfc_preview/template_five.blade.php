@@ -1,7 +1,7 @@
 <style>
     .nfc-mobile-frame_five {
         max-width: 400px;
-        height: 768px !important;
+         
         border-radius: 20px;
         overflow: hidden;
         position: relative;
