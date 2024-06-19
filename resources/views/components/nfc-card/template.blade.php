@@ -4,7 +4,7 @@
             <input type="radio" class="btn-check" name="nfc_template" value="{{ $template['value'] }}"
                 {{ $loop->first ? 'checked' : '' }} id="{{ $template['value'] }}">
             <label class="btn btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center mb-5"
-                style="padding:0px !important; display: flex;justify-content: center; height:270px;
+                style="padding:5px !important; display: flex;justify-content: center; height:285px;
                 width:100%;"
                 for="{{ $template['value'] }}">
                 <img class="nfc-type-mobile" height="300px" width="100%"

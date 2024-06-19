@@ -87,7 +87,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12 d-flex justify-content-center align-items-center px-0">
-            <div class="nfc-mobile-frame_four">
+            <div class="nfc-mobile-frame_four shadow-sm">
                 <div class="card p-0 border-0 shadow-none tem-one-scroll" style="overflow-x: hidden">
                     <div class="card-header p-0 border-0 border-0">
                         <div class="nfc-four-cover-img-box">
