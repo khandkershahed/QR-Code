@@ -166,7 +166,7 @@
         });
     </script>
     <script>
-        $(document).ready(function() {
+         $(document).ready(function() {
             $(".slick-slider").slick({
                 slidesToShow: 1,
                 slidesToScroll: 1,
