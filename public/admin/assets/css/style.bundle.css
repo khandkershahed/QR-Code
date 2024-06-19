@@ -43560,7 +43560,7 @@ a:hover {
 .btn.btn-outline.btn-outline-dashed.btn-outline-default:focus:not(.btn-active),
 .btn.btn-outline.btn-outline-dashed.btn-outline-default:hover:not(.btn-active),
 .show>.btn.btn-outline.btn-outline-dashed.btn-outline-default {
-    color: #fff;
+    color: #16212f ;
     border-color: #009ef7;
     background-color: #2196f340 !important;
     border-width: 2px;
@@ -43576,7 +43576,7 @@ a:hover {
 .btn.btn-outline.btn-outline-dashed.btn-outline-default:focus:not(.btn-active) .check-maintext,
 .btn.btn-outline.btn-outline-dashed.btn-outline-default:hover:not(.btn-active) .check-maintext,
 .show>.btn.btn-outline.btn-outline-dashed.btn-outline-default .check-maintext {
-    color: #fff !important;
+    color: #16212f !important;
     transition: all 0.5s cubic-bezier(0.42, 0, 0.58, 1);
 }
 .btn.btn-outline.btn-outline-dashed.btn-outline-default:not(.active):not(:focus):not(:hover) .check-maintext {
