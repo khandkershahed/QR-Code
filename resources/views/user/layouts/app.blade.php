@@ -97,11 +97,11 @@
     <script src="{{ asset($hostUrl . 'js/widgets.bundle.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/widgets.js') }}"></script>
 
-    <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/create-account.js') }}"></script>
+    {{-- <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/create-account.js') }}"></script> --}}
     {{-- <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/qr-stepper.js') }}"></script> --}}
 
 
-
+{{--
     <script src="{{ asset($hostUrl . 'js/custom/apps/chat/chat.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/upgrade-plan.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/create-app.js') }}"></script>
@@ -111,19 +111,23 @@
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/offer-a-deal/complete.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/offer-a-deal/main.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/two-factor-authentication.js') }}"></script>
-    <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/users-search.js') }}"></script>
+    <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/users-search.js') }}"></script> --}}
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://kit.fontawesome.com/69b7156a94.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbfUj9Hr1sqI5sb_nc2XSWFrRun3l_Vto&callback=initMap"></script>
     <!--end::Vendors Javascript-->
-    <script src="https://preview.keenthemes.com/html/metronic/docs/assets/js/custom/documentation/general/draggable/cards.js"></script>
-    <script src="https://preview.keenthemes.com/html/metronic/docs/assets/plugins/custom/draggable/draggable.bundle.js"></script>
-    <script src="https://preview.keenthemes.com/html/metronic/docs/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+    <script
+        src="https://preview.keenthemes.com/html/metronic/docs/assets/js/custom/documentation/general/draggable/cards.js">
+    </script>
+    <script src="https://preview.keenthemes.com/html/metronic/docs/assets/plugins/custom/draggable/draggable.bundle.js">
+    </script>
+    <script src="https://preview.keenthemes.com/html/metronic/docs/assets/plugins/custom/prismjs/prismjs.bundle.js">
+    </script>
     <!--begin::Custom Javascript(used for this page only)-->
     <script src="{{ asset('admin/js/custom.js') }}"></script>
-    
+
     <script>
         $(document).ready(function() {
             // Add event listener to radio inputs
@@ -159,6 +163,17 @@
                 appendTo: "body",
                 constrainDimensions: true
             }
+        });
+    </script>
+    <script>
+         $(document).ready(function() {
+            $(".slick-slider").slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                draggable: false,
+                autoplaySpeed: 2000, // Adjust autoplay speed in milliseconds
+            });
         });
     </script>
 
