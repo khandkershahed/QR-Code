@@ -465,7 +465,7 @@
                                                             @if (!empty($nfc_card->nfcData->company_name))
                                                                 <h6 class="fw-bold company_name"
                                                                     style="color: #f44336">
-                                                                    NGen It LTD.
+                                                                    {{ optional($nfc_card->nfcData)->company_name }}
                                                                 </h6>
                                                             @endif
                                                             @if (!empty($nfc_card->nfcData->company_phone))
