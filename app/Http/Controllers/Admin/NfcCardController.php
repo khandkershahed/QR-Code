@@ -368,7 +368,7 @@ class NfcCardController extends Controller
 
         VirtualCard::create([
             'card_id'               => $nfc_card->id,
-            'virtual_card_template' => $nfc_card->virtual_card_template,
+            'virtual_card_template' => $request->virtual_card_template,
             'card_logo'             => $uploadedFiles['card_logo']['status']     == 1 ? $uploadedFiles['card_logo']['file_name']     : null,
             'card_bg_front'         => $uploadedFiles['card_bg_front']['status'] == 1 ? $uploadedFiles['card_bg_front']['file_name'] : null,
             'card_bg_back'          => $uploadedFiles['card_bg_back']['status']  == 1 ? $uploadedFiles['card_bg_back']['file_name']  : null,

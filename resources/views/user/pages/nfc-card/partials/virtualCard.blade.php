@@ -1,4 +1,4 @@
-<x-nfc-card.virtual_card :virtualCardtemplates="[
+<x-nfc-cardnfc-card.virtualCard :cardtemplates="[
     [
         'value' => 'virtual-card-one',
         'image' => 'frontend/images/virtual_card/virtual_card_1.png',
