@@ -66,8 +66,8 @@ class NfcCardController extends Controller
 
         // Retrieve NFC cards
         $nfc_cards = $isUserRoute
-            ? NfcCard::with('nfcData', 'nfcMessages')->where('user_id', $user->id)->latest('id')->get()
-            : NfcCard::with('nfcData', 'nfcMessages')->latest('id')->get();
+            ? NfcCard::with('nfcData', 'nfcMessages', 'virtualCard')->where('user_id', $user->id)->latest('id')->get()
+            : NfcCard::with('nfcData', 'nfcMessages', 'virtualCard')->latest('id')->get();
 
         if ($isUserRoute) {
             if (!empty($subscription->plan)) {
@@ -251,7 +251,7 @@ class NfcCardController extends Controller
         // Generate NFC code
         $code = $this->generateNfcCode();
 
-
+        // dd($request->all());
         // Image Upload
         $files = [
             'banner_image'        => $request->file('banner_image'),
@@ -367,17 +367,18 @@ class NfcCardController extends Controller
         ]);
 
         VirtualCard::create([
-            'card_id'          => $nfc_card->id,
-            'card_logo'        => $uploadedFiles['card_logo']['status'] == 1 ? $uploadedFiles['card_logo']['file_name'] : null,
-            'card_bg_front'    => $uploadedFiles['card_bg_front']['status'] == 1 ? $uploadedFiles['card_bg_front']['file_name'] : null,
-            'card_bg_back'     => $uploadedFiles['card_bg_back']['status'] == 1 ? $uploadedFiles['card_bg_back']['file_name'] : null,
-            'card_name'        => $request->card_name,
-            'card_designation' => $request->card_designation,
-            'card_phone'       => $request->card_phone,
-            'card_email'       => $request->card_email,
-            'card_address'     => $request->card_address,
-            'card_font_color'  => $request->card_font_color,
-            'card_font_style'  => $request->card_font_style,
+            'card_id'               => $nfc_card->id,
+            'virtual_card_template' => $nfc_card->virtual_card_template,
+            'card_logo'             => $uploadedFiles['card_logo']['status']     == 1 ? $uploadedFiles['card_logo']['file_name']     : null,
+            'card_bg_front'         => $uploadedFiles['card_bg_front']['status'] == 1 ? $uploadedFiles['card_bg_front']['file_name'] : null,
+            'card_bg_back'          => $uploadedFiles['card_bg_back']['status']  == 1 ? $uploadedFiles['card_bg_back']['file_name']  : null,
+            'card_name'             => $request->card_name,
+            'card_designation'      => $request->card_designation,
+            'card_phone'            => $request->card_phone,
+            'card_email'            => $request->card_email,
+            'card_address'          => $request->card_address,
+            'card_font_color'       => $request->card_font_color,
+            'card_font_style'       => $request->card_font_style,
         ]);
         return redirect()->route('user.nfc-card.index')->with('success', 'NFC Created successfully.');
     }

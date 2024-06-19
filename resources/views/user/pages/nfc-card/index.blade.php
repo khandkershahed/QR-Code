@@ -30,7 +30,8 @@
                                 Limitation: {{ optional($subscription)->plan->nfc }} | Remaining:
                                 {{ optional($subscription)->plan->nfc - $nfc_cards->count() }}</h2>
                         @else
-                            <h2 class="mb-0">Manage your NFC Cards | Total Created : {{ $nfc_cards->count() }} | My Plan Limitation: 10 (Trial Period) | Remaining: {{ 10 - $nfc_cards->count() }}</h2>
+                            <h2 class="mb-0">Manage your NFC Cards | Total Created : {{ $nfc_cards->count() }} | My
+                                Plan Limitation: 10 (Trial Period) | Remaining: {{ 10 - $nfc_cards->count() }}</h2>
                         @endif
 
                     </div>
@@ -63,13 +64,12 @@
                         id="qr_code">
                         <thead>
                             <tr class="text-gray-500 fw-bold fs-7 text-uppercase">
-                                <th class="">SL</th>
-                                <th class="">Image</th>
-                                <th class="">NAME </th>
-                                {{-- <th class="">Scaned</th> --}}
-                                <th class="">LINK</th>
-                                <th class="">Status</th>
-                                <th class="">Action</th>
+                                <th width="5%">SL</th>
+                                <th width="15%">Image</th>
+                                <th width="25%">Name </th>
+                                <th width="25%">Link</th>
+                                <th width="15%">Virtual Card</th>
+                                <th width="15%">Action</th>
                             </tr>
                         </thead>
                         <tbody class="fw-semibold text-gray-600">
@@ -110,15 +110,47 @@
                                             {{ optional($nfc_card->nfcData)->last_name }}
                                         </div>
                                     </td>
-                                    {{-- <td class="text-start">
+                                    {{-- <td>
                                         <button class="btn btn-light-primary">94</button>
                                     </td> --}}
-                                    <td class="text-start">
+                                    <td>
                                         <a href="{{ $nfc_card->nfc_url }}" target="_blank"
                                             class="text-primary">{{ $nfc_card->nfc_url }}</a>
                                     </td>
-                                    <td class="text-start">
-                                        <button class="btn btn-light-primary">Active</button>
+                                    <td>
+                                        @if ($nfc_card->virtualCard->virtual_card_template == 'virtual-card-one')
+                                            <img class="img-fluid w-50px"
+                                                src="{{ asset('frontend/images/virtual_card/virtual_card_1.png') }}"
+                                                alt="">
+                                        @elseif ($nfc_card->virtualCard->virtual_card_template == 'virtual-card-two')
+                                            <img class="img-fluid w-50px"
+                                                src="{{ asset('frontend/images/virtual_card/virtual_card_2.png') }}"
+                                                alt="">
+                                        @elseif ($nfc_card->virtualCard->virtual_card_template == 'virtual-card-three')
+                                            <img class="img-fluid w-50px"
+                                                src="{{ asset('frontend/images/virtual_card/virtual_card_3.png') }}"
+                                                alt="">
+                                        @elseif ($nfc_card->virtualCard->virtual_card_template == 'virtual-card-four')
+                                            <img class="img-fluid w-50px"
+                                                src="{{ asset('frontend/images/virtual_card/virtual_card_4.png') }}"
+                                                alt="">
+                                        @elseif ($nfc_card->virtualCard->virtual_card_template == 'virtual-card-five')
+                                            <img class="img-fluid w-50px"
+                                                src="{{ asset('frontend/images/virtual_card/virtual_card_5.png') }}"
+                                                alt="">
+                                        @elseif ($nfc_card->virtualCard->virtual_card_template == 'virtual-card-six')
+                                            <img class="img-fluid w-50px"
+                                                src="{{ asset('frontend/images/virtual_card/virtual_card_6.png') }}"
+                                                alt="">
+                                        @elseif ($nfc_card->virtualCard->virtual_card_template == 'virtual-card-seven')
+                                            <img class="img-fluid w-50px"
+                                                src="{{ asset('frontend/images/virtual_card/virtual_card_7.png') }}"
+                                                alt="">
+                                        @elseif ($nfc_card->virtualCard->virtual_card_template == 'virtual-card-eight')
+                                            <img class="img-fluid w-50px"
+                                                src="{{ asset('frontend/images/virtual_card/virtual_card_8.png') }}"
+                                                alt="">
+                                        @endif
                                     </td>
                                     <td class="pe-0">
                                         <a href="#" class="btn btn-light btn-active-light-primary btn-sm"
@@ -211,7 +243,7 @@
                                             <td>
                                                 {{ optional($nfc_message)->name }}
                                             </td>
-                                            <td class="text-start">
+                                            <td>
                                                 <a href="mailto:{{ optional($nfc_message)->email }}"
                                                     target="_blank">{{ optional($nfc_message)->email }}</a>
 
@@ -219,7 +251,7 @@
                                             <td>
                                                 {{ optional($nfc_message)->ip_address }}
                                             </td>
-                                            <td class="text-start">
+                                            <td>
                                                 {{ optional($nfc_message)->message }}
                                             </td>
                                             <td class="pe-0">

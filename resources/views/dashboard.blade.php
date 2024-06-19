@@ -392,7 +392,7 @@
                                         @if (count($qr_users) > 5)
                                             <a href="javascript:void(0)" class="symbol symbol-35px symbol-circle">
                                                 <span
-                                                    class="symbol-label bg-dark text-gray-300 fs-8 fw-bold">+{{count($qr_users) - 5 }}</span>
+                                                    class="symbol-label bg-dark text-gray-300 fs-8 fw-bold">+{{ count($qr_users) - 5 }}</span>
                                             </a>
                                         @endif
                                     </div>
@@ -449,17 +449,20 @@
                                 <div class="d-flex flex-stack flex-grow-1 flex-wrap flex-md-nowrap">
                                     <div class="mb-3 mb-md-0 fw-semibold">
                                         <h4 class="text-gray-900 fw-bold">Your Current Plan <span
-                                                style="color: orangered">@if (!empty($subscription))
-                                                {{ $subscription->plan->title }}
+                                                style="color: orangered">
+                                                @if (!empty($subscription))
+                                                    {{ $subscription->plan->title }}
                                                 @else
                                                     Trial Period
-                                                @endif</span></h4>
+                                                @endif
+                                            </span></h4>
 
                                         <div class="fs-6 text-gray-700 pe-7">You Can Check Your Plan Or Status By
                                             Clicking Here!</div>
                                     </div>
 
-                                    <a href="{{ route('user.plan') }}" class="btn btn-primary px-6 align-self-center text-nowrap">
+                                    <a href="{{ route('user.plan') }}"
+                                        class="btn btn-primary px-6 align-self-center text-nowrap">
                                         Check Current Status</a>
                                 </div>
                             </div>
@@ -510,6 +513,7 @@
         </div>
         {{-- Modal Start For Check Plan  --}}
         @if (!empty($subscription))
+        @else
             <div class="modal fade bg-dark bg-opacity-75 show" id="kt_app_engage_prebuilts_modal" tabindex="-1"
                 aria-modal="true" role="dialog" style="display: block">
                 <div class="modal-dialog modal-dialog-centered modal-lg p-5 p-lg-10"
@@ -529,36 +533,43 @@
                                 <div class="pb-5">
                                     <h3 class="text-center fw-bold">Currently on a </h3>
                                     @if (!empty($subscription))
-                                    <h1 class="text-center mb-0 fw-bold" style="color: orangered;">{{ $subscription->plan->title }}</h1>
+                                        <h1 class="text-center mb-0 fw-bold" style="color: orangered;">
+                                            {{ $subscription->plan->title }}</h1>
                                     @else
-                                    <h1 class="text-center mb-0 fw-bold" style="color: orangered;">14-day free trial</h1>
+                                        <h1 class="text-center mb-0 fw-bold" style="color: orangered;">14-day free
+                                            trial</h1>
                                     @endif
                                 </div>
-                                <p class="text-muted fs-5 fw-semibold mb-10 text-center mb-1"> Of our Premium Plan. This
+                                <p class="text-muted fs-5 fw-semibold mb-10 text-center mb-1"> Of our Premium Plan.
+                                    This
                                     trial gives you full
                                     access to all premium features, including unlimited queries, priority support, and
-                                    personalized assistance. Enjoy enhanced response times, detailed answers, and exclusive
-                                    updates during this trial period. After the 14 days, all your data will be automatically
-                                    deleted without permission. You will receive one email notification before this action
+                                    personalized assistance. Enjoy enhanced response times, detailed answers, and
+                                    exclusive
+                                    updates during this trial period. After the 14 days, all your data will be
+                                    automatically
+                                    deleted without permission. You will receive one email notification before this
+                                    action
                                     is taken.
                                 </p>
                                 <div class="py-5 mb-15">
-                                    <h1 class="text-center mb-0 fw-bold" style="color: orangered;">Thank you for trying
+                                    <h1 class="text-center mb-0 fw-bold" style="color: orangered;">Thank you for
+                                        trying
                                         our <br> Premium service!</h1>
                                 </div>
                                 @if (!empty($subscription))
                                 @else
-                                <div class="trial_end">
-                                    <div id="countdown">
-                                        <div id='tiles'></div>
-                                        <div class="labels">
-                                            <li>Days</li>
-                                            <li>Hours</li>
-                                            <li>Mins</li>
-                                            <li>Secs</li>
+                                    <div class="trial_end">
+                                        <div id="countdown">
+                                            <div id='tiles'></div>
+                                            <div class="labels">
+                                                <li>Days</li>
+                                                <li>Hours</li>
+                                                <li>Mins</li>
+                                                <li>Secs</li>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                                 @endif
                                 <!--end::Notice-->
                             </div>
@@ -608,8 +619,9 @@
                                         <div class=" fw-semibold">
 
                                             <div class="fs-6 text-gray-700 ">If you having trouble using the QR code,
-                                                select manual entry on your app, and enter your username and the code: <div
-                                                    class="fw-bold text-gray-900 pt-2">KBSS3QDAAFUMCBY63YCKI5WSSVACUMPN
+                                                select manual entry on your app, and enter your username and the code:
+                                                <div class="fw-bold text-gray-900 pt-2">
+                                                    KBSS3QDAAFUMCBY63YCKI5WSSVACUMPN
                                                 </div>
                                             </div>
                                         </div>
@@ -621,8 +633,8 @@
                                 <!--end::Notice-->
 
                                 <!--begin::Form-->
-                                <form data-kt-element="apps-form" class="form fv-plugins-bootstrap5 fv-plugins-framework"
-                                    action="#">
+                                <form data-kt-element="apps-form"
+                                    class="form fv-plugins-bootstrap5 fv-plugins-framework" action="#">
                                     <!--begin::Input group-->
                                     <div class="mb-10 fv-row fv-plugins-icon-container">
                                         <input type="text" class="form-control form-control-lg form-control-solid"
@@ -635,7 +647,8 @@
 
                                     <!--begin::Actions-->
                                     <div class="d-flex flex-center">
-                                        <button type="reset" data-kt-element="apps-cancel" class="btn btn-light me-3">
+                                        <button type="reset" data-kt-element="apps-cancel"
+                                            class="btn btn-light me-3">
                                             Cancel
                                         </button>
 
@@ -670,8 +683,8 @@
                                 <!--end::Notice-->
 
                                 <!--begin::Form-->
-                                <form data-kt-element="sms-form" class="form fv-plugins-bootstrap5 fv-plugins-framework"
-                                    action="#">
+                                <form data-kt-element="sms-form"
+                                    class="form fv-plugins-bootstrap5 fv-plugins-framework" action="#">
                                     <!--begin::Input group-->
                                     <div class="mb-10 fv-row fv-plugins-icon-container">
                                         <input type="text" class="form-control form-control-lg form-control-solid"
@@ -684,7 +697,8 @@
 
                                     <!--begin::Actions-->
                                     <div class="d-flex flex-center">
-                                        <button type="reset" data-kt-element="sms-cancel" class="btn btn-light me-3">
+                                        <button type="reset" data-kt-element="sms-cancel"
+                                            class="btn btn-light me-3">
                                             Cancel
                                         </button>
 

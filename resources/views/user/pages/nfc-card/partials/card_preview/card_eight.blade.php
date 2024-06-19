@@ -28,14 +28,14 @@
             </div>
             <div class="punch-card-container-back"
                 style="background: -webkit-linear-gradient(to right, #4a00e0, #8e2de2);
-    background: linear-gradient(to right, #4a00e0, #8e2de2);">
+                        background: linear-gradient(to right, #4a00e0, #8e2de2);">
                 <div class="row p-5 align-items-center">
                     <div class="col-9 d-flex justify-content-start align-items-center" style="height: 23vh">
                         <div class="text-start content-area font">
                             <h4 class="fw-bold mb-0 card_name" style="color: #fff">
                                 Nicholas Shelton
                             </h4>
-                            <p class="fw-bold mb-0 text-white card_designation">Frontend Developer</p>
+                            <p class="fw-bold mb-0 card_designation">Frontend Developer</p>
                             <div>
                                 <p class="fw-bold text-white pt-3 mb-0">
                                     <i class="fa-solid fa-phone pe-2"></i> <span class="card_phone">015 7661 4451</span>

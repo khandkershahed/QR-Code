@@ -411,7 +411,7 @@
                                                     <br />
                                                     <span>{{ optional($nfc_card->nfcData)->company_address_line_two }}</span>
                                                 </p>
-                                                <p class="mb-0">+03 58685125</p>
+                                                <p class="mb-0">{{ optional($nfc_card->nfcData)->company_email }}</p>
                                             </div>
                                             <div class="tem-two-about-secontd">
                                                 <p class="fw-bold mb-0">
@@ -425,14 +425,18 @@
                                     <!-- Service -->
                                     <div class="tem-two-service-box px-3 py-4">
                                         <h6 class="tem-two-service-title">Contact</h6>
-                                        <p class="mb-0">
-                                            @: {{ optional($nfc_card->nfcData)->email_work }}
-                                            <small class="fw-bold">(Work)</small>
-                                        </p>
-                                        <p class="mb-0">
-                                            p: {{ optional($nfc_card->nfcData)->phone_personal }}
-                                            <small class="fw-bold">(Personal)</small>
-                                        </p>
+                                        @if (!empty(optional($nfc_card->nfcData)->phone_work))
+                                            <p class="mb-0">
+                                                @: {{ optional($nfc_card->nfcData)->phone_work }}
+                                                <small class="fw-bold">(Work)</small>
+                                            </p>
+                                        @endif
+                                        @if (!empty(optional($nfc_card->nfcData)->phone_personal))
+                                            <p class="mb-0">
+                                                p: {{ optional($nfc_card->nfcData)->phone_personal }}
+                                                <small class="fw-bold">(Personal)</small>
+                                            </p>
+                                        @endif
                                         <div class="pt-4">
                                             <form action="{{ route('individual-message.store') }}" method="post">
                                                 @csrf

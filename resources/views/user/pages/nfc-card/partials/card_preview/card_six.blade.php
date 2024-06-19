@@ -23,23 +23,16 @@
                             <h4 class="fw-bold mb-0 card_name" style="color: #fff">
                                 Nicholas Shelton
                             </h4>
-                            <p class="fw-bold mb-0 text-white card_designation">Frontend Developer</p>
+                            <p class="fw-bold mb-0 card_designation">Frontend Developer</p>
                             <div class="me-auto mt-2 title-devider"
-                                style="
-                    height: 2px;
-                    width: 120px;
-                    background-color: #fff;
-                    margin: start;
-                    position: relative;
-                    left: 0px;
-                  ">
+                                style="height: 2px;width: 120px;background-color: #fff;margin: start;position: relative;left: 0px;">
                             </div>
                             <div>
                                 <p class="fw-bold text-white pt-3 mb-0">
                                     <i class="fa-solid fa-phone pe-2"></i> <span class="card_phone">015 7661 4451</span>
                                 </p>
                                 <p class="fw-bold text-white mb-0">
-                                    <i class="fa-solid fa-envelope pe-2"></i> <span class="card_email">goflixza@mail.com</span> 
+                                    <i class="fa-solid fa-envelope pe-2"></i> <span class="card_email">goflixza@mail.com</span>
                                 </p>
                             </div>
                             <div>

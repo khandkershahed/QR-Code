@@ -26,10 +26,10 @@
                 <div class="row p-5 align-items-center">
                     <div class="col-12 d-flex justify-content-end align-items-center" style="height: 23vh">
                         <div class="text-end content-area font">
-                            <h4 class="fw-bold mb-0 sp-fontcard_name" style="color: #D19A26">
+                            <h4 class="fw-bold mb-0 sp-font card_name" style="color: #D19A26">
                                 SAQIB ALI
                             </h4>
-                            <p class="mb-0card_designation" style="color: #D19A26">
+                            <p class="mb-0 card_designation" style="color: #D19A26">
                                 Director Of Sales
                             </p>
                             <div>
