@@ -37,9 +37,11 @@
                 </div>
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500"
                     data-aos-offset="50">
+                    <a href="{{ route('pricing') }}">
                     <div class="hero-seven-image">
-                        <img src="{{ asset('frontend') }}/assets/images/shapes/hero-seven.png" alt="Hero" />
-                    </div>
+                            <img src="{{ asset('frontend') }}/assets/images/shapes/hero-seven.png" alt="Hero" />
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>

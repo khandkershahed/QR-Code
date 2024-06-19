@@ -465,7 +465,6 @@
                 }
             }
         </script>
-
         <script>
             // Initialize Slick Slider
 
