@@ -118,12 +118,16 @@
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbfUj9Hr1sqI5sb_nc2XSWFrRun3l_Vto&callback=initMap"></script>
     <!--end::Vendors Javascript-->
-    <script src="https://preview.keenthemes.com/html/metronic/docs/assets/js/custom/documentation/general/draggable/cards.js"></script>
-    <script src="https://preview.keenthemes.com/html/metronic/docs/assets/plugins/custom/draggable/draggable.bundle.js"></script>
-    <script src="https://preview.keenthemes.com/html/metronic/docs/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+    <script
+        src="https://preview.keenthemes.com/html/metronic/docs/assets/js/custom/documentation/general/draggable/cards.js">
+    </script>
+    <script src="https://preview.keenthemes.com/html/metronic/docs/assets/plugins/custom/draggable/draggable.bundle.js">
+    </script>
+    <script src="https://preview.keenthemes.com/html/metronic/docs/assets/plugins/custom/prismjs/prismjs.bundle.js">
+    </script>
     <!--begin::Custom Javascript(used for this page only)-->
     <script src="{{ asset('admin/js/custom.js') }}"></script>
-    
+
     <script>
         $(document).ready(function() {
             // Add event listener to radio inputs
@@ -159,6 +163,17 @@
                 appendTo: "body",
                 constrainDimensions: true
             }
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $(".slick-slider").slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                draggable: false,
+                autoplaySpeed: 2000, // Adjust autoplay speed in milliseconds
+            });
         });
     </script>
 

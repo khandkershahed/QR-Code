@@ -469,15 +469,7 @@
 
         <script>
             // Initialize Slick Slider
-            $(document).ready(function() {
-                $(".slick-slider").slick({
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    autoplay: true,
-                    draggable: false,
-                    autoplaySpeed: 2000, // Adjust autoplay speed in milliseconds
-                });
-            });
+            
         </script>
         <script>
             // Stepper lement
