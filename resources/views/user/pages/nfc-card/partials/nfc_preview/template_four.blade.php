@@ -11,7 +11,7 @@
 
     .nfc-mobile-frame_four {
         max-width: 420px;
-         
+
         /* min-height: 100vh; */
         /* border: 2px solid #1026bf; */
         border-radius: 20px;
@@ -421,32 +421,4 @@
         </div>
     </div>
 </div>
-@push('scripts')
-    {{-- <script>
-        $(document).ready(function() {
-            $(".slick-slider").slick({
-                slidesToShow:  1,
-                slidesToScroll: 1,
-                draggable: true, // This line defines draggable
-                autoplay: true,
-                autoplaySpeed: 2000, // Adjust autoplay speed in milliseconds
-                responsive: [{
-                        breakpoint: 768, // define breakpoint at 768px screen width
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1
-                        }
-                    },
-                    {
-                        breakpoint: 1024, // define breakpoint at 1024px screen width
-                        settings: {
-                            slidesToShow: 3,
-                            slidesToScroll: 3
-                        }
-                    }
-                    // Add more breakpoints and settings as needed
-                ]
-            });
-        });
-    </script> --}}
-@endpush
+

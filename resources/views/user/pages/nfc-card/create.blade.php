@@ -225,7 +225,6 @@
     </div>
 
     @push('scripts')
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
             $(document).ready(function() {
                 // Function to match card heights
@@ -469,7 +468,7 @@
 
         <script>
             // Initialize Slick Slider
-            
+
         </script>
         <script>
             // Stepper lement

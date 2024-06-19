@@ -97,11 +97,11 @@
     <script src="{{ asset($hostUrl . 'js/widgets.bundle.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/widgets.js') }}"></script>
 
-    <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/create-account.js') }}"></script>
+    {{-- <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/create-account.js') }}"></script> --}}
     {{-- <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/qr-stepper.js') }}"></script> --}}
 
 
-
+{{--
     <script src="{{ asset($hostUrl . 'js/custom/apps/chat/chat.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/upgrade-plan.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/create-app.js') }}"></script>
@@ -111,7 +111,7 @@
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/offer-a-deal/complete.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/offer-a-deal/main.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/two-factor-authentication.js') }}"></script>
-    <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/users-search.js') }}"></script>
+    <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/users-search.js') }}"></script> --}}
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://kit.fontawesome.com/69b7156a94.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
