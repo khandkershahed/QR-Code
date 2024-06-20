@@ -254,12 +254,12 @@
                                             <!--end::Menu item-->
 
                                             <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
+                                            {{-- <div class="menu-item px-3">
                                                 <a href="{{ route('user.nfc-card.destroy', $nfc_card->id) }}"
                                                     class="menu-link px-3 delete">
                                                     Delete
                                                 </a>
-                                            </div>
+                                            </div> --}}
                                             <!--end::Menu item-->
                                         </div>
                                     </td>
