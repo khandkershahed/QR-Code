@@ -542,7 +542,7 @@
 
         <script>
             $(document).ready(function() {
-                $('#submitButton').on('click', function() {
+                $('#submitButton').on('submit', function() {
                     var $btn = $(this);
                     // Disable the button
                     $btn.prop('disabled', true);
