@@ -44,7 +44,7 @@
         <div class="col-lg-3">
             <div class="card card-flush bg-transparent  mb-10">
                 <div class="card-body pt-2 pb-0">
-                    <img class="img-fluid" src="{{ asset('frontend/assets/images/qrpreview/mobile.png') }}.png"
+                    <img class="img-fluid" src="{{ asset('frontend/assets/images/qrpreview/mobile.png') }}"
                         alt="mobile">
                 </div>
             </div>
@@ -52,7 +52,7 @@
         <div class="col-lg-3">
             <div class="card card-flush bg-transparent  mb-10">
                 <div class="card-body pt-2 pb-0">
-                    <img class="img-fluid" src="{{ asset('frontend/assets/images/qrpreview/call.png') }}.png"
+                    <img class="img-fluid" src="{{ asset('frontend/assets/images/qrpreview/call.png') }}"
                         alt="First Template">
                 </div>
             </div>
