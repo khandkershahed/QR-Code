@@ -5,5 +5,4 @@
             {{ session('error') }}
         </div>
     @endif
-
 </x-app-layout>
