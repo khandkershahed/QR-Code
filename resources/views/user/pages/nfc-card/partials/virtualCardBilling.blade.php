@@ -57,44 +57,44 @@
     <!-- State -->
     <div class="col-lg-3">
         <div class="fv-row my-3">
-            <x-metronic.label for="state" class="form-label required">
+            <x-metronic.label for="shipping_state" class="form-label required">
                 {{ __('State') }}
             </x-metronic.label>
-            <input id="state" type="text" class="form-control form-control-outline mb-3 mb-lg-0" name="state"
-                value="{{ old('state') }}" placeholder="Enter state" />
+            <input id="shipping_state" type="text" class="form-control form-control-solid mb-3 mb-lg-0" name="shipping_state"
+                value="{{ old('shipping_state') }}" placeholder="Enter shipping_state" />
         </div>
     </div>
 
     <!-- Zip -->
     <div class="col-lg-3">
         <div class="fv-row my-3">
-            <x-metronic.label for="zip" class="form-label required">
+            <x-metronic.label for="shipping_zip_code" class="form-label required">
                 {{ __('Zip') }}
             </x-metronic.label>
-            <input id="zip" type="text" class="form-control form-control-outline mb-3 mb-lg-0" name="zip"
-                value="{{ old('zip') }}" placeholder="Enter zip code" />
+            <input id="shipping_zip_code" type="text" class="form-control form-control-solid mb-3 mb-lg-0" name="shipping_zip_code"
+                value="{{ old('shipping_zip_code') }}" placeholder="Enter shipping zip code" />
         </div>
     </div>
 
     <!-- Country -->
     <div class="col-lg-3">
         <div class="fv-row my-3">
-            <x-metronic.label for="country" class="form-label required">
+            <x-metronic.label for="shipping_country" class="form-label required">
                 {{ __('Country') }}
             </x-metronic.label>
-            <input id="country" type="text" class="form-control form-control-outline mb-3 mb-lg-0" name="country"
-                value="{{ old('country') }}" placeholder="Enter country" />
+            <input id="shipping_country" type="text" class="form-control form-control-solid mb-3 mb-lg-0" name="shipping_country"
+                value="{{ old('shipping_country') }}" placeholder="Enter shipping country" />
         </div>
     </div>
 
     <!-- Instruction -->
     <div class="col-lg-12">
         <div class="fv-row my-3">
-            <x-metronic.label for="instruction" class="form-label">
+            <x-metronic.label for="shipping_instruction" class="form-label">
                 {{ __('Instruction') }}
             </x-metronic.label>
-            <textarea id="instruction" class="form-control form-control-outline mb-3 mb-lg-0" name="instruction" rows="3"
-                placeholder="Enter instructions">{{ old('instruction') }}</textarea>
+            <textarea id="shipping_instruction" class="form-control form-control-solid mb-3 mb-lg-0" name="shipping_instruction" rows="3"
+                placeholder="Enter instructions">{{ old('shipping_instruction') }}</textarea>
         </div>
     </div>
 </div>

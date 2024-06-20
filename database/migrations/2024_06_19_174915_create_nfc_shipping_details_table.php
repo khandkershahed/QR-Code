@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('nfc_shipping_details', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('card_id')->nullable()->constrained('nfc_cards')->onDelete('cascade');
+            $table->string('shipping_name')->nullable();
+            $table->string('shipping_phone')->nullable();
+            $table->string('shipping_address')->nullable();
+            $table->string('shipping_city')->nullable();
+            $table->string('shipping_state')->nullable();
+            $table->string('shipping_zip_code')->nullable();
+            $table->string('shipping_country')->nullable();
+            $table->mediumText('shipping_instruction')->nullable();
             $table->timestamps();
         });
     }

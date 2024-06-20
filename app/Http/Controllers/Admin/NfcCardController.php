@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Stevebauman\Location\Facades\Location;
 use App\Http\Requests\Admin\NfcCardRequest;
+use App\Models\Admin\NfcShippingDetails;
 use App\Models\VirtualCard;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
@@ -379,6 +380,17 @@ class NfcCardController extends Controller
             'card_address'          => $request->card_address,
             'card_font_color'       => $request->card_font_color,
             'card_font_style'       => $request->card_font_style,
+        ]);
+        NfcShippingDetails::create([
+            'card_id'              => $nfc_card->id,
+            'shipping_name'        => $request->shipping_name,
+            'shipping_phone'       => $request->shipping_phone,
+            'shipping_address'     => $request->shipping_address,
+            'shipping_city'        => $request->shipping_city,
+            'shipping_state'       => $request->shipping_state,
+            'shipping_zip_code'    => $request->shipping_zip_code,
+            'shipping_country'     => $request->shipping_country,
+            'shipping_instruction' => $request->shipping_instruction,
         ]);
         return redirect()->route('user.nfc-card.index')->with('success', 'NFC Created successfully.');
     }

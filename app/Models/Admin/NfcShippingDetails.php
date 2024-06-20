@@ -9,4 +9,8 @@ class NfcShippingDetails extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    public function nfc()
+    {
+        return $this->belongsTo(NfcCard::class, 'card_id');
+    }
 }
