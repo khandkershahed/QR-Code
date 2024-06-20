@@ -27,6 +27,7 @@ use App\Http\Controllers\Admin\NfcCardController;
 use App\Http\Controllers\Admin\QrCodeController;
 use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\Admin\UserNotificationController;
+use App\Http\Controllers\RequestedCardController;
 use App\Http\Controllers\Subscription\SubscriptionController;
 
 Route::middleware('guest:admin')->prefix('admin')->name('admin.')->group(function () {
@@ -92,6 +93,7 @@ Route::middleware('auth:admin', 'role:admin')->prefix('admin')->name('admin.')->
             'categories'            => CategoryController::class,
             'qr-code'               => QrCodeController::class,
             'nfc-card'              => NfcCardController::class,
+            'requested-card'        => RequestedCardController::class,
         ],
     );
 
