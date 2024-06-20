@@ -1,232 +1,102 @@
    <div class="row">
-       <div class="col-lg-12">
-           <h4>Add A Difrent Color In Your Business Card</h4>
-           <div class="accordion accordion-icon-toggle" id="kt_accordion_2">
-               <div class="mb-5 border">
-                   <div class="accordion-header py-3 d-flex px-3" data-bs-toggle="collapse"
-                       data-bs-target="#kt_accordion_2_item_1">
-                       <span class="accordion-icon">
-                           <i class="fa-solid fa-angles-right"></i>
+       <div class="d-flex flex-column flex-md-row rounded-0  p-10 bg-light">
+           <ul class="nav nav-tabs nav-pills flex-row border-0 flex-md-column me-5 mb-3 mb-md-0 fs-6 min-w-lg-200px bg-white"
+               role="tablist">
+               <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
+                   <a class="nav-link w-100 btn btn-flex btn-active-primary rounded-0 active" data-bs-toggle="tab"
+                       href="#kt_vtab_pane_41" aria-selected="false" role="tab" tabindex="-1">
+                       <i class="fa-solid fa-arrow-right-long  text-active-primary pe-3"></i>
+                       <span class="d-flex flex-column align-items-start">
+                           <span class="fs-4 fw-bold">COLOR</span>
                        </span>
-                       <h3 class="fs-4 fw-semibold mb-0 ms-4">COLOR</h3>
-                   </div>
+                   </a>
+               </li>
+               <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
+                   <a class="nav-link w-100 btn btn-flex btn-active-primary rounded-0" data-bs-toggle="tab"
+                       href="#kt_vtab_pane_51" aria-selected="false" role="tab" tabindex="-1">
+                       <i class="fa-solid fa-arrow-right-long  text-active-primary pe-3"></i>
+                       <span class="d-flex flex-column align-items-start">
+                           <span class="fs-4 fw-bold">FONT STYLE</span>
+                       </span>
+                   </a>
+               </li>
+               <li class="nav-item w-100" role="presentation">
+                   <a class="nav-link w-100 btn btn-flex btn-active-primary rounded-0" data-bs-toggle="tab"
+                       href="#kt_vtab_pane_61" aria-selected="true" role="tab">
+                        <i class="fa-solid fa-arrow-right-long  text-active-primary pe-3"></i>
+                       <span class="d-flex flex-column align-items-start">
+                           <span class="fs-4 fw-bold">Button Color</span>
+                       </span>
+                   </a>
+               </li>
+               <li class="nav-item w-100" role="presentation">
+                   <a class="nav-link w-100 btn btn-flex btn-active-primary rounded-0" data-bs-toggle="tab"
+                       href="#kt_vtab_pane_71" aria-selected="true" role="tab">
+                        <i class="fa-solid fa-arrow-right-long  text-active-primary pe-3"></i>
+                       <span class="d-flex flex-column align-items-start">
+                           <span class="fs-4 fw-bold">Frame Color</span>
+                       </span>
+                   </a>
+               </li>
+           </ul>
 
-                   <div id="kt_accordion_2_item_1" class="fs-6 collapse show ps-10" data-bs-parent="#kt_accordion_2">
-                       <div class="row py-5">
-                           {{-- <div class="col-lg-4">
-                               <div class="row">
-                                   <label for="primary_color">Primary Color</label>
-                                   <div class="col-lg-10 pe-0">
-                                       <div>
-                                           <input type="text" name="primary_color_picker" id="primary_color" value="#000"
-                                               class="form-control form-control-solid">
-                                       </div>
-                                   </div>
-                                   <div class="col-lg-2 ps-0">
-                                       <div>
-                                           <input type="color" name="primary_color" id="primary_color_picker"
-                                               value="" style="width: 50px;height: 43px;"
-                                               class="form-control form-control-solid">
-                                       </div>
-                                   </div>
-                               </div>
-                           </div> --}}
-                           {{-- <div class="col-lg-4">
-                               <div class="row">
-                                   <label for="primary_color_text">Text Color</label>
-                                   <div class="col-lg-10 pe-0">
-                                       <div>
-                                           <input type="text" name="text_color_picker" id="primary_color_text"
-                                               value="#000" class="form-control form-control-solid">
-                                       </div>
-                                   </div>
-                                   <div class="col-lg-2 ps-0">
-                                       <div>
-                                           <input type="color" name="text_color"
-                                               id="primary_color_text_picker" value=""
-                                               style="width: 50px;height: 43px;"
-                                               class="form-control form-control-solid">
-                                       </div>
-                                   </div>
-                               </div>
-                           </div> --}}
-                           <div class="col-lg-4">
-                               <div class="row">
-                                   <label for="secondary_color_text">Background color</label>
-                                   <div class="col-lg-10 pe-0">
-                                       <div>
-                                           <input type="text" name="background_color_picker"
-                                               id="secondary_color_text" value="#000"
-                                               class="form-control form-control-solid">
-                                       </div>
-                                   </div>
-                                   <div class="col-lg-2 ps-0">
-                                       <div>
-                                           <input type="color" name="background_color"
-                                               id="secondary_color_text_picker" value=""
-                                               style="width: 50px;height: 43px;" oninput="changeBackgroundColor()"
-                                               class="form-control form-control-solid">
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                           <div class="col-lg-4">
-                               <div class="row">
-                                   <label for="secondary_color_text">Title color (With BG Include)</label>
-                                   <div class="col-lg-10 pe-0">
-                                       <div>
-                                           <input type="text" name="title_color_picker" id="secondary_color_text"
-                                               value="#000" class="form-control form-control-solid">
-                                       </div>
-                                   </div>
-                                   <div class="col-lg-2 ps-0">
-                                       <div>
-                                           <input type="color" name="title_color" id="secondary_color_text_picker"
-                                               value="" style="width: 50px;height: 43px;"
-                                               oninput="changeTitleColor()" class="form-control form-control-solid">
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
+           <div class="tab-content w-100 bg-white p-3" id="myTabContent">
+               <div class="tab-pane fade active show" id="kt_vtab_pane_41" role="tabpanel">
+                   <div class="row py-5">
+                       <div class="col-lg-6 offset-lg-3 align-items-center mb-3">
+                           <label for="secondary_color_text">Background color</label>
+                           <input type="color" name="background_color" value=""
+                               class="form-control form-control-solid">
+                       </div>
+                       <div class="col-lg-6 offset-lg-3 align-items-center mb-3">
+                           <label for="secondary_color_text">Title color (With BG Include)</label>
+                           <input type="color" name="title_color" value=""
+                               class="form-control form-control-solid">
                        </div>
                    </div>
                </div>
 
-               <div class="mb-5 border">
-                   <div class="accordion-header py-3 d-flex px-3 collapsed" data-bs-toggle="collapse"
-                       data-bs-target="#kt_accordion_2_item_2">
-                       <span class="accordion-icon">
-                           <i class="fa-solid fa-angles-right"></i>
-                       </span>
-                       <h3 class="fs-4 fw-semibold mb-0 ms-4">FONT STYLE</h3>
-                   </div>
-
-                   <div id="kt_accordion_2_item_2" class="collapse fs-6 ps-10" data-bs-parent="#kt_accordion_2">
-                       <div class="row py-5">
-                           <div class="col-lg-4">
-                               <label for="Font">Font</label>
-                               <select class="form-select form-select-sm form-select-solid" data-control="select2"
-                                   name="font_family" data-placeholder="Select an option">
-                                   <option></option>
-                                   <option value="bebas_neue">Bebas Neue</option>
-                                   <option value="raleway">Raleway</option>
-                               </select>
-                           </div>
-                           <div class="col-lg-4">
-                               <label for="Font">Title Font Size</label>
-                               <input type="number" name="font_size" id="" oninput="changeFontSize()"
-                                   class="form-control form-control-sm form-control-solid">
-                           </div>
+               <div class="tab-pane fade" id="kt_vtab_pane_51" role="tabpanel">
+                   <div class="row py-5">
+                       <div class="col-lg-6 offset-lg-3 align-items-center mb-3">
+                           <label for="Font">Font</label>
+                           <select class="form-select form-select-sm form-select-solid" data-control="select2"
+                               name="font_family" data-placeholder="Select an option">
+                               <option></option>
+                               <option value="bebas_neue">Bebas Neue</option>
+                               <option value="raleway">Raleway</option>
+                           </select>
+                       </div>
+                       <div class="col-lg-6 offset-lg-3 align-items-center mb-3">
+                           <label for="Font">Title Font Size</label>
+                           <input type="number" name="font_size" id="" oninput="changeFontSize()"
+                               class="form-control form-control-sm form-control-solid">
                        </div>
                    </div>
                </div>
 
-               <div class="mb-5 border">
-                   <div class="accordion-header py-3 d-flex px-3 collapsed" data-bs-toggle="collapse"
-                       data-bs-target="#kt_accordion_2_item_3">
-                       <span class="accordion-icon">
-                           <i class="fa-solid fa-angles-right"></i>
-                       </span>
-                       <h3 class="fs-4 fw-semibold mb-0 ms-4">Button Color</h3>
-                   </div>
-
-                   <div id="kt_accordion_2_item_3" class="collapse fs-6 ps-10" data-bs-parent="#kt_accordion_2">
-                       <div class="row py-5">
-                           <div class="col-lg-4">
-                               <div class="row">
-                                   <label for="buttonContact">Contact Button Background Color</label>
-                                   <div class="col-lg-10 pe-0">
-                                       <div>
-                                           <input type="text" name="buttonContact" id="buttonContact" value="#000"
-                                               class="form-control form-control-solid">
-                                       </div>
-                                   </div>
-                                   <div class="col-lg-2 ps-0">
-                                       <div>
-                                           <input type="color" name="button_bg_color" id="button_color_picker"
-                                               value="" style="width: 50px;height: 43px;"
-                                               oninput="contactBgColor()" class="form-control form-control-solid">
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                           <div class="col-lg-4">
-                               <div class="row">
-                                   <label for="buttonContact">Contact Button Title Color</label>
-                                   <div class="col-lg-10 pe-0">
-                                       <div>
-                                           <input type="text" name="buttonContact" id="buttonContact"
-                                               value="#000" class="form-control form-control-solid">
-                                       </div>
-                                   </div>
-                                   <div class="col-lg-2 ps-0">
-                                       <div>
-                                           <input type="color" name="button_title_color" id="button_color_picker"
-                                               value="" style="width: 50px;height: 43px;"
-                                               oninput="contactTitleColor()" class="form-control form-control-solid">
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
+               <div class="tab-pane fade " id="kt_vtab_pane_61" role="tabpanel">
+                   <div class="row py-5">
+                       <div class="col-lg-6 offset-lg-3 align-items-center mb-3">
+                           <label for="buttonContact">Contact Button Background Color</label>
+                           <input type="color" name="button_bg_color" value=""
+                               class="form-control form-control-solid">
+                       </div>
+                       <div class="col-lg-6 offset-lg-3 align-items-center mb-3">
+                           <label for="buttonContact">Contact Button Title Color</label>
+                           <input type="color" name="button_title_color" value=""
+                               class="form-control form-control-solid">
                        </div>
                    </div>
                </div>
 
-               <div class="mb-5 border">
-                   <div class="accordion-header py-3 d-flex px-3 collapsed" data-bs-toggle="collapse"
-                       data-bs-target="#kt_accordion_2_item_4">
-                       <span class="accordion-icon">
-                           <i class="fa-solid fa-angles-right"></i>
-                       </span>
-                       <h3 class="fs-4 fw-semibold mb-0 ms-4">Frame Color</h3>
-                   </div>
-
-                   <div id="kt_accordion_2_item_4" class="collapse fs-6 ps-10" data-bs-parent="#kt_accordion_2">
-                       <div class="row py-5">
-                           <div class="col-lg-4">
-                               <div class="row">
-                                   <label for="formColor">Frame Color Color</label>
-                                   <div class="col-lg-10 pe-0">
-                                       <div>
-                                           <input type="text" name="formColor" id="formColor" value="#000"
-                                               class="form-control form-control-solid">
-                                       </div>
-                                   </div>
-                                   <div class="col-lg-2 ps-0">
-                                       <div>
-                                           <input type="color" name="frame_color" id="form_color_picker"
-                                               value="" style="width: 50px;height: 43px;"
-                                               class="form-control form-control-solid">
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
+               <div class="tab-pane fade " id="kt_vtab_pane_71" role="tabpanel">
+                   <div class="row py-5">
+                       <div class="col-lg-6 offset-lg-3 align-items-center">
+                           <label for="formColor">Frame Color Color</label>
+                           <input type="color" name="frame_color" value=""
+                               class="form-control form-control-solid">
                        </div>
-                   </div>
-               </div>
-           </div>
-       </div>
-   </div>
-
-   {{-- Not effected Code  --}}
-   <div class="tab-content">
-       <div class="tab-pane fade " id="kt_stats_widget_16_tab_5" role="tabpanel"
-           aria-labelledby="kt_stats_widget_16_tab_link_5">
-           <div>
-               <div class="d-flex pt-6">
-                   <div class="form-check pe-3">
-                       <input class="form-check-input" type="radio" name="qr_bg_type" value="color"
-                           id="background_color">
-                       <label class="form-check-label" for="background_color">
-                           Color
-                       </label>
-                   </div>
-                   <div class="form-check">
-                       <input class="form-check-input" type="radio" name="qr_bg_type" value="#0000"
-                           id="background_transparent">
-                       <label class="form-check-label" for="background_transparent">
-                           Transparent
-                       </label>
                    </div>
                </div>
            </div>
