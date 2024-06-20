@@ -11,7 +11,7 @@
                 <div class="card-body custom-card-body overflow-auto p-0">
                     <div class="stepper stepper-pills flex-grow-1 d-flex flex-column" id="kt_stepper_example_clickable">
                         <div class="stepper-nav flex-center flex-wrap steaper-header">
-                            <div class="stepper-item mx-3 my-4 current" data-kt-stepper-element="nav" data-kt-stepper-action="step">
+                            <div class="stepper-item mx-3 my-4 p-0 current" data-kt-stepper-element="nav" data-kt-stepper-action="step">
                                 <div class="stepper-wrapper d-flex align-items-center">
                                     <div class="stepper-icon w-40px h-40px me-2">
                                         <i class="stepper-check fas fa-check"></i>
@@ -24,7 +24,7 @@
                                 <div class="stepper-line h-40px"></div>
                             </div>
 
-                            <div class="stepper-item mx-3 my-4" data-kt-stepper-element="nav"
+                            <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
                                 data-kt-stepper-action="step">
                                 <div class="stepper-wrapper d-flex align-items-center">
                                     <div class="stepper-icon w-40px h-40px me-2">
@@ -38,7 +38,7 @@
                                 <div class="stepper-line h-40px"></div>
                             </div>
 
-                            <div class="stepper-item mx-3 my-4" data-kt-stepper-element="nav"
+                            <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
                                 data-kt-stepper-action="step">
                                 <div class="stepper-wrapper d-flex align-items-center">
                                     <div class="stepper-icon w-40px h-40px me-2">
@@ -52,7 +52,7 @@
                                 <div class="stepper-line h-40px"></div>
                             </div>
 
-                            <div class="stepper-item mx-3 my-4" data-kt-stepper-element="nav"
+                            <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
                                 data-kt-stepper-action="step">
                                 <div class="stepper-wrapper d-flex align-items-center">
                                     <div class="stepper-icon w-40px h-40px me-2">
@@ -65,7 +65,7 @@
                                 </div>
                             </div>
 
-                            <div class="stepper-item mx-3 my-4" data-kt-stepper-element="nav"
+                            <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
                                 data-kt-stepper-action="step">
                                 <div class="stepper-wrapper d-flex align-items-center">
                                     <div class="stepper-icon w-40px h-40px me-2">
@@ -78,7 +78,7 @@
                                 </div>
                             </div>
 
-                            <div class="stepper-item mx-3 my-4" data-kt-stepper-element="nav"
+                            <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
                                 data-kt-stepper-action="step">
                                 <div class="stepper-wrapper d-flex align-items-center">
                                     <div class="stepper-icon w-40px h-40px me-2">
