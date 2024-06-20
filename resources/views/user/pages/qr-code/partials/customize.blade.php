@@ -161,8 +161,10 @@
                     <div class="row">
                         <div class="col-lg-5">
                             <div class="pe-3">
-                                <x-metronic.label for="qr_logo" class="form-label">{{ __('Logo') }}</x-metronic.label>
-                                <x-metronic.input id="qr_logo" type="file" name="qr_logo" accept="image/*" placeholder="Upload Logo" />
+                                <x-metronic.label for="qr_logo"
+                                    class="form-label">{{ __('Logo') }}</x-metronic.label>
+                                <x-metronic.input id="qr_logo" type="file" name="qr_logo" accept="image/*"
+                                    placeholder="Upload Logo" />
                             </div>
                         </div>
                         <div class="col-lg-1">
@@ -171,27 +173,33 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="row colorCodeContainer ps-5">
-                                <x-metronic.label for="qr_logo_bg_color" class="form-label">{{ __('Logo BG Color') }}</x-metronic.label>
-                                <input type="text" id="colorCodeInput" class="form-control form-control-solid w-75 w-lg-25 colorCodeInput" readonly>
-                                <input type="color" id="colorPicker" style="width: 56px;height: 45px;" class="colorPicker" name="qr_logo_bg_color">
+                                <x-metronic.label for="qr_logo_bg_color"
+                                    class="form-label">{{ __('Logo BG Color') }}</x-metronic.label>
+                                <input type="color" class="colorPicker w-25" name="qr_logo_bg_color">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="ps-4">
-                                <x-metronic.label for="qr_logo_size" class="form-label">{{ __('Logo Size (in %)') }}</x-metronic.label>
+                                <x-metronic.label for="qr_logo_size"
+                                    class="form-label">{{ __('Logo Size (in %)') }}</x-metronic.label>
                                 {{-- <x-metronic.input id="qr_logo_size" type="number" name="qr_logo_size" :value="old('qr_logo_size')" placeholder="Logo Size(Eg: 5, 10, 15....)" /> --}}
                                 <div class="mb-10">
-                                    <input type="range" class="form-range w-100" id="customRange1" name="qr_logo_size" min="0.1" max="0.4" step="0.01" value="0.3" oninput="updateLogoSizeValue(this.value)">
+                                    <input type="range" class="form-range w-100" id="customRange1" name="qr_logo_size"
+                                        min="0.1" max="0.4" step="0.01" value="0.3"
+                                        oninput="updateLogoSizeValue(this.value)">
                                     <span id="sizeValue">10%</span>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="ps-4">
-                                <x-metronic.label for="qr_logo_size" class="form-label">{{ __('Logo Space') }}</x-metronic.label>
+                                <x-metronic.label for="qr_logo_size"
+                                    class="form-label">{{ __('Logo Space') }}</x-metronic.label>
                                 {{-- <x-metronic.input id="qr_logo_size" type="number" name="qr_logo_size" :value="old('qr_logo_size')" placeholder="Logo Size(Eg: 5, 10, 15....)" /> --}}
                                 <div class="mb-10">
-                                    <input type="range" class="form-range w-100" id="customRange2" name="qr_logo_space" min="10" max="60" step="5" value="30" oninput="updateLogoSpaceValue(this.value)">
+                                    <input type="range" class="form-range w-100" id="customRange2"
+                                        name="qr_logo_space" min="10" max="60" step="5"
+                                        value="30" oninput="updateLogoSpaceValue(this.value)">
                                     <span id="spaceValue">30%</span>
                                 </div>
                             </div>
@@ -199,7 +207,9 @@
                     </div>
                 </div>
                 <p class="text-start pt-5 mb-0">Or Select From Our Gallary</p>
-                <small class="text-start pt-5 mb-0"><strong>Note:</strong> If you choose a logo from the gallery, you won't be able to use a background color because the background is already included with the logo.</small>
+                <small class="text-start pt-5 mb-0"><strong>Note:</strong> If you choose a logo from the gallery, you
+                    won't be able to use a background color because the background is already included with the
+                    logo.</small>
                 <div class="pt-2 row gx-5">
                     <x-qr-code.qr-logo :qrLogos="[
                         [
@@ -355,8 +365,7 @@
             </div>
             <div class="row p-5 pt-3 pt-lg-6 colorCodeContainer">
                 <label class="form-label p-0 pb-3" for="colorPicker">Eye Frame Color</label>
-                <input type="text" id="colorCodeInput" class="form-control form-control-solid w-75 w-lg-25 colorCodeInput" readonly>
-                <input type="color" id="colorPicker" style="width: 56px;height: 45px;" class="colorPicker" name="qr_eye_ball_color">
+                <input type="color" class="colorPicker w-25" name="qr_eye_ball_color">
             </div>
             <div class="row pt-3 pt-lg-6">
                 <x-qr-code.eye-ball :eyeBalls="[
@@ -409,8 +418,7 @@
             </div>
             <div class="row p-5 pt-3 pt-lg-6 colorCodeContainer">
                 <label class="form-label p-0 pb-3" for="colorPicker">Eye Ball Color</label>
-                <input type="text" id="colorCodeInput" class="form-control form-control-solid w-75 w-lg-25 colorCodeInput" readonly>
-                <input type="color" id="colorPicker" class="colorPicker" style="width: 56px;height: 45px;" name="qr_eye_frame_color">
+                <input type="color" class="colorPicker w-25" name="qr_eye_frame_color">
             </div>
             {{-- <div class="d-lg-flex row gx-10 mb-4">
                 <x-qr-code.eye-frame :eyeFrames="[
@@ -496,7 +504,7 @@
                     //     'image' =>
                     //         'https://static.beaconstac.com/assets/img/mobstac-awesome-qr/data-patterns/smooth-round.svg',
                     // ],
-                ]" :selectedQrPattern="null"  />
+                ]" :selectedQrPattern="null" />
             </div>
             <div>
                 <h2 class="pt-10">COLOR</h2>
@@ -523,16 +531,15 @@
                         <div class="pt-5">
                             <label for="">Color</label> <br>
                             <div class="d-flex colorCodeContainer">
-                                <input type="text" id="colorCodeInput-normal_color"
-                                    class="form-control form-control-solid w-25 colorCodeInput" readonly>
-                                <input type="color" id="colorPicker" class="colorPicker" style="width: 56px;height: 45px;" name="qr_solid_color">
+                                <input type="color" class="colorPicker w-25" name="qr_solid_color">
                             </div>
                         </div>
                     </div>
                     <div class="hidden-field" id="gradient_color_show" style="display: none;">
                         <div class="pt-5 pb-4">
                             <label for="">Select Gradient Type</label>
-                            <select class="form-select form-select-sm mt-3 w-25" name="qr_gradient_color_type" aria-label="Default select example">
+                            <select class="form-select form-select-sm mt-3 w-25" name="qr_gradient_color_type"
+                                aria-label="Default select example">
                                 <option>None</option>
                                 <option value="vertical" selected>Vertical</option>
                                 <option value="horizontal">Horizontal</option>
@@ -545,19 +552,13 @@
                             <div class="pt-3 pe-4">
                                 <label for="">Color Start</label>
                                 <div class="d-flex colorCodeContainer">
-                                    <input type="text" id="colorCodeInput-gradient"
-                                        class="form-control form-control-solid w-25 colorCodeInput" style="width: 160px !important"
-                                        readonly>
-                                    <input type="color" id="colorPicker" class="colorPicker" name="qr_gradient_color_start" style="width: 56px;height: 45px;">
+                                    <input type="color" class="colorPicker w-100" name="qr_gradient_color_start">
                                 </div>
                             </div>
                             <div class="pt-3">
                                 <label for="">Color End</label>
                                 <div class="d-flex colorCodeContainer">
-                                    <input type="text" id="colorCodeInput-gradient-2"
-                                        class="form-control form-control-solid w-25 colorCodeInput" style="width: 160px !important"
-                                        readonly>
-                                    <input type="color" id="colorPicker" class="colorPicker" name="qr_gradient_color_end" style="width: 56px;height: 45px;">
+                                    <input type="color" class="colorPicker w-100" name="qr_gradient_color_end">
                                 </div>
                             </div>
                         </div>
@@ -599,16 +600,10 @@
                 {{-- By Default Hidden --}}
                 <div id="content-sections">
                     <div id="color-content" style="display: none;">
-                        <div class="card w-50 shadow-sm mt-4">
-                            <div class="card-body">
-                                <div class="">
-                                    <label for="">Color</label>
-                                    <div class="d-flex colorCodeContainer">
-                                        <input type="text" id="colorCodeInput-normal_color"
-                                            class="form-control form-control-solid w-100 colorCodeInput" readonly>
-                                        <input type="color" name="qr_bg_color" id="colorPicker" class="colorPicker" style="width: 56px;height: 45px;">
-                                    </div>
-                                </div>
+                        <div class="">
+                            <label for="">Color</label>
+                            <div class="d-flex colorCodeContainer">
+                                <input type="color" name="qr_bg_color" class="colorPicker w-25">
                             </div>
                         </div>
                     </div>
