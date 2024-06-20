@@ -15,17 +15,12 @@
         left: 30px;
     }
 
-    .punch-card-container,
-    .punch-card-container-back-one {
-        background-size: cover;
-        background-position: center;
-    }
-
     .punch-card-container-back-one {
         height: 23vh;
         object-fit: fill;
-        background-size: cover;
         background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
         border-radius: 5px;
     }
 
