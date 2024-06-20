@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin\NfcCard;
 use Illuminate\Http\Request;
 
 class RequestedCardController extends Controller
@@ -11,7 +12,10 @@ class RequestedCardController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.requested-card.index');
+        $data =[
+            'nfc_cards' => NfcCard::with('nfcData', 'nfcMessages', 'virtualCard','shippingDetails')->get(),
+        ];
+        return view('admin.pages.requested-card.index',$data);
     }
 
     /**

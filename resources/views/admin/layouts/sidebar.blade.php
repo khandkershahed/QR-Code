@@ -96,7 +96,7 @@
                     </div>
                 </div>
                 <div data-kt-menu-trigger="click"
-                    class="menu-item menu-accordion {{ Route::is('admin.nfc-card.index', 'admin.nfc-card.create') ? 'here show' : '' }}">
+                    class="menu-item menu-accordion {{ Route::is('admin.nfc-card.index', 'admin.nfc-card.create', 'admin.requested-card.index') ? 'here show' : '' }}">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
@@ -114,7 +114,7 @@
                         <span class="menu-arrow"></span>
                     </span>
                     <div
-                        class="menu-sub menu-sub-accordion {{ Route::is('admin.nfc-card.index', 'admin.nfc-card.create') ? 'menu-active-bg' : '' }}">
+                        class="menu-sub menu-sub-accordion {{ Route::is('admin.nfc-card.index', 'admin.nfc-card.create', 'admin.requested-card.index') ? 'menu-active-bg' : '' }}">
                         <div class="menu-item">
                             <a class="menu-link {{ Route::is('admin.nfc-card.create') ? 'active' : '' }}"
                                 href="{{ route('admin.nfc-card.create') }}">
@@ -131,6 +131,15 @@
                                     <span class="bullet bullet-dot"></span>
                                 </span>
                                 <span class="menu-title">NFC Card List</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link {{ Route::is('admin.requested-card.index') ? 'active' : '' }}"
+                                href="{{ route('admin.requested-card.index') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Requested Card List</span>
                             </a>
                         </div>
                     </div>
