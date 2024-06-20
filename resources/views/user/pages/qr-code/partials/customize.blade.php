@@ -200,7 +200,7 @@
                 </div>
                 <p class="text-start pt-5 mb-0">Or Select From Our Gallary</p>
                 <small class="text-start pt-5 mb-0"><strong>Note:</strong> If you choose a logo from the gallery, you won't be able to use a background color because the background is already included with the logo.</small>
-                <div class="pt-2 row">
+                <div class="pt-2 row gx-5">
                     <x-qr-code.qr-logo :qrLogos="[
                         [
                             'id' => 1,
