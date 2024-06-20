@@ -139,13 +139,26 @@
                                                     id="switchLabel">Approved</label>
                                             </div>
                                         </td>
-                                        <td class="text-center">
-                                            <a href="" class="btn btn-sm bg-transparent action-table-btn">
-                                                <i class="fas fa-download fs-2" title="Download PNG"></i>
-                                            </a>
+                                        {{-- <td class="text-center">
+                                            <button class="btn btn-primary download-button"
+                                                data-modal-id="virtual_card_modal_{{ $nfc_card->id }}">
+                                                Download Image
+                                            </button>
                                             <a href="" class="btn btn-sm bg-transparent action-table-btn">
                                                 <i class="fas fa-bezier-curve fs-2" title="Download EPS"></i>
                                             </a>
+                                        </td> --}}
+                                        <td class="text-center">
+                                            <button
+                                                class="border-0 bg-transparent download-button badge bg-primary me-3"
+                                                data-modal-id="virtual_card_modal_{{ $nfc_card->id }}">
+                                                <span title="Download Image">PNG</span>
+                                            </button>
+                                            <button
+                                                class="border-0 bg-transparent download-eps-button badge bg-primary"
+                                                data-modal-id="virtual_card_eps_modal_{{ $nfc_card->id }}">
+                                                <span title="Download EPS">EPS</span>
+                                            </button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -234,13 +247,21 @@
                 </div>
             </div>
         </div>
-
-        {{-- Virtual Card Modal --}}
+    @endforeach
+    @foreach ($nfc_cards as $nfc_card)
         <div class="modal fade" tabindex="-1" id="virtual_card_modal_{{ $nfc_card->id }}">
             <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width: 645px !important;">
                 <div class="modal-content position-absolute">
-                    <div class="modal-body pb-0">
+                    <div class="modal-body pb-0 downloadable-div" id="downloadable_div_{{ $nfc_card->id }}">
+
                         <style>
+                            .downloadable-div {
+                                /* Add any desired styling for your downloadable divs here */
+                                border: 1px solid #ddd;
+                                padding: 10px;
+                                margin: 10px;
+                            }
+
                             .punch-card-container {
                                 width: 600px;
                                 height: 300px;
@@ -653,8 +674,8 @@
                                                                     <i class="fa-solid fa-map-marker-alt"></i>
                                                                 </p>
                                                                 {{-- <p class="fw-bold mb-0" style="color: #D19A26">
-                                                                -Downtown Dubia-Dubai- United Arab Emirates
-                                                            </p> --}}
+                                        -Downtown Dubia-Dubai- United Arab Emirates
+                                    </p> --}}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -786,8 +807,8 @@
                                                                         class="card_address">{{ optional($nfc_card->virtualCard)->card_address }}</span>
                                                                 </p>
                                                                 {{-- <p class="fw-bold mb-0 text-white">
-                                                                -Downtown Dubia-Dubai- United Arab Emirates
-                                                            </p> --}}
+                                        -Downtown Dubia-Dubai- United Arab Emirates
+                                    </p> --}}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -827,7 +848,7 @@
                                             </div>
                                             <div class="punch-card-container-back"
                                                 style="background: -webkit-linear-gradient(to right, #4a00e0, #8e2de2);
-                                                background: linear-gradient(to right, #4a00e0, #8e2de2);">
+                        background: linear-gradient(to right, #4a00e0, #8e2de2);">
                                                 <div class="row p-5 align-items-center">
                                                     <div class="col-8 d-flex justify-content-start align-items-center"
                                                         style="height: 28vh">
@@ -856,8 +877,8 @@
                                                                         class="card_address">{{ optional($nfc_card->virtualCard)->card_address }}</span>
                                                                 </p>
                                                                 {{-- <p class="fw-bold mb-0 text-white">
-                                                            -Downtown Dubia-Dubai- United Arab Emirates
-                                                        </p> --}}
+                                    -Downtown Dubia-Dubai- United Arab Emirates
+                                </p> --}}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -877,10 +898,39 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="modal-footer border-0 pt-0">
                         <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                        {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+    @foreach ($nfc_cards as $nfc_card)
+        <div class="modal fade" tabindex="-1" id="virtual_card_modal_{{ $nfc_card->id }}">
+            <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width: 645px !important;">
+                <div class="modal-content position-absolute">
+                    <div class="modal-body pb-0 downloadable-div" id="downloadable_div_{{ $nfc_card->id }}">
+                        asdasdasdasdassdasd
+                    </div>
+                    <div class="modal-footer border-0 pt-0">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+
+    @foreach ($nfc_cards as $nfc_card)
+        <div class="modal fade" tabindex="-1" id="virtual_card_eps_modal_{{ $nfc_card->id }}">
+            <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width: 645px !important;">
+                <div class="modal-content position-absolute">
+                    <div class="modal-body pb-0 downloadable-div_eps" id="downloadable_div_eps_{{ $nfc_card->id }}">
+                        <div style="width: 100%; height: 300px; background-color: #ff0000;">
+                            Simplified content for testing
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0 pt-0">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
@@ -891,6 +941,75 @@
 
     {{-- Delivery Location Modal End --}}
     @push('scripts')
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+            integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        {{-- FOr EPS --}}
+        {{-- <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.body.addEventListener('click', function(event) {
+                    alert('Working On Generateing EPS')
+
+                });
+            });
+        </script> --}}
+        {{-- For PNG --}}
+        <script>
+            function downloadDiv(div) {
+                // Disable the download button to prevent multiple clicks
+                alert('Download Button Clicked')
+                const downloadButton = document.querySelector('.download-button');
+                downloadButton.disabled = true;
+
+                html2canvas(div)
+                    .then(canvas => {
+                        const imgData = canvas.toDataURL('image/png');
+
+                        // Create a temporary anchor element
+                        const link = document.createElement('a');
+                        link.href = imgData;
+                        link.download = 'nfc-card.png';
+                        link.style.display = 'none';
+                        document.body.appendChild(link);
+                        alert('Working On Generateing Image')
+                        // Trigger the download
+                        link.click();
+
+
+                        // Clean up
+                        document.body.removeChild(link);
+
+                        // Re-enable the download button after a short delay
+                        setTimeout(() => {
+                            downloadButton.disabled = false;
+                        }, 1000); // Adjust delay as needed
+                    })
+                    .catch(error => {
+                        console.error('Error during html2canvas operation:', error);
+
+                        // Re-enable the download button on error
+                        downloadButton.disabled = false;
+                    });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                document.body.addEventListener('click', function(event) {
+                    if (event.target.classList.contains('download-button')) {
+                        const button = event.target;
+                        const modalId = button.getAttribute('data-modal-id');
+                        const modal = document.getElementById(modalId);
+                        const closestDiv = modal.querySelector('.downloadable-div');
+
+                        if (modal && closestDiv) {
+                            downloadDiv(closestDiv);
+                        } else {
+                            console.error("Modal or downloadable div not found!");
+                        }
+                    }
+                });
+            });
+        </script>
+
         <script>
             const myModal = new bootstrap.Modal(
                 document.getElementById("modalId"),
