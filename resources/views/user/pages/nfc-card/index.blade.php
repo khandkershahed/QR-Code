@@ -251,6 +251,12 @@
                                                     All messages
                                                 </a>
                                             </div>
+                                            <div class="menu-item px-3">
+                                                <a href="{{ route('user.nfc-card.edit', $nfc_card->code) }}"
+                                                    class="menu-link px-3">
+                                                    Edit
+                                                </a>
+                                            </div>
                                             <!--end::Menu item-->
 
                                             <!--begin::Menu item-->

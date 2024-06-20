@@ -31,9 +31,9 @@ class NfcCardController extends Controller
         $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
         $user = Auth::user();
         $subscription = $isUserRoute ? Subscription::with('plan')->where('user_id', $user->id)->active()->first() : null;
-        $nfc_cards = $isUserRoute ?
-            NfcCard::with('nfcData', 'nfcMessages')->where('user_id', Auth::user()->id)->latest('id')->get() :
-            NfcCard::with('nfcData', 'nfcMessages')->latest('id')->get();
+        $nfc_cards = $isUserRoute
+            ? NfcCard::with('nfcData', 'nfcMessages', 'virtualCard', 'shippingDetails')->where('user_id', $user->id)->latest('id')->get()
+            : NfcCard::with('nfcData', 'nfcMessages', 'virtualCard', 'shippingDetails')->latest('id')->get();
 
         $view = $isUserRoute ? 'user.pages.nfc-card.index' : 'admin.pages.nfc-card.index';
 
@@ -67,8 +67,8 @@ class NfcCardController extends Controller
 
         // Retrieve NFC cards
         $nfc_cards = $isUserRoute
-            ? NfcCard::with('nfcData', 'nfcMessages', 'virtualCard')->where('user_id', $user->id)->latest('id')->get()
-            : NfcCard::with('nfcData', 'nfcMessages', 'virtualCard')->latest('id')->get();
+            ? NfcCard::with('nfcData', 'nfcMessages', 'virtualCard','shippingDetails')->where('user_id', $user->id)->latest('id')->get()
+            : NfcCard::with('nfcData', 'nfcMessages', 'virtualCard','shippingDetails')->latest('id')->get();
 
         if ($isUserRoute) {
             if (!empty($subscription->plan)) {
@@ -465,7 +465,15 @@ class NfcCardController extends Controller
      */
     public function edit(string $id)
     {
-        return view('user.pages.nfc-card.edit');
+        $data =[
+            'nfc_card' => NfcCard::with('nfcData', 'nfcMessages', 'virtualCard','shippingDetails')->where('user_id', Auth::user()->id)->where('code',$id)->first(),
+        ];
+        if (!empty($data['nfc_card'])) {
+            return view('user.pages.nfc-card.edit');
+        } else {
+            return redirect()->back()->with('error','No Such NFC Card found');
+        }
+
     }
 
     /**
