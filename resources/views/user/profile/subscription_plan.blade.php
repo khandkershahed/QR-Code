@@ -74,9 +74,9 @@
                                             <!--end::Content-->
 
                                             <!--begin::Action-->
-                                            <a href="#"
+                                            {{-- <a href="#"
                                                 class="btn btn-warning px-6 align-self-center text-nowrap">
-                                                Upgrade Plan</a>
+                                                Upgrade Plan</a> --}}
                                             <!--end::Action-->
                                         </div>
                                         <!--end::Wrapper-->
