@@ -39,19 +39,18 @@
                     <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                         <th width="5%" class="ps-4">Sl</th>
                         <th width="20%">Plan Name</th>
-                        <th width="25%">User Name</th>
+                        <th width="15%">User Name</th>
                         <th width="15%">Price</th>
                         <th width="15%">Start Date</th>
                         <th width="15%">End Date</th>
-                        {{-- <th class="text-end" width="10%">Action</th> --}}
+                        <th class="text-center" width="10%">Action</th>
                     </tr>
                 </thead>
-
                 <tbody class="fw-bold text-gray-600">
                     @if (count($subscriptions) > 0)
                         @foreach ($subscriptions as $subscription)
                             <tr>
-                                <td class="ps-4">{{ $loop->iteration }}</td>
+                                <td class="ps-4"></td>
                                 <td>{{ $subscription->plan->title }}</td>
                                 <td>
                                     @if ($subscription->user)
@@ -63,16 +62,55 @@
                                 <td>{{ $subscription->plan->price }}</td>
                                 <td>{{ $subscription->created_at }}</td>
                                 <td>{{ $subscription->subscription_ends_at }}</td>
+                                <td class="text-center">
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <a href="" class="btn btn-sm bg-transparent text-primary"
+                                            data-bs-toggle="modal" title="Show Invoice" data-bs-target="#showInvoice">
+                                            <i class="fas fa-eye fs-5 pe-2 text-primary"></i> Invoice
+                                        </a>
+                                    </div>
+                                </td>
                             </tr>
                         @endforeach
                     @else
                         <tr>
-                            <td class="text-center" colspan="6">No active subscriptions found.</td>
+                            <td class="text-center" colspan="7">No active subscriptions found.</td>
                         </tr>
                     @endif
-
                 </tbody>
             </table>
         </div>
     </div>
+    {{-- Modal --}}
+    <!-- Modal Body -->
+    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+    <div class="modal fade" id="showInvoice" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+        role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitleId">
+                        Modal title
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">Body</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="button" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional: Place to the bottom of scripts -->
+    <script>
+        const myModal = new bootstrap.Modal(
+            document.getElementById("modalId"),
+            options,
+        );
+    </script>
+
 </x-admin-app-layout>

@@ -41460,13 +41460,6 @@ a:hover {
     z-index: 1;
 }
 
-.menu-item {
-    padding: 8px 12px;
-}
-
-.menu-item:hover {
-    background-color: #f0f0f0;
-}
 
 .custom-visible {
     display: block;
