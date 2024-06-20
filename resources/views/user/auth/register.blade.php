@@ -50,8 +50,8 @@
                         </div>
                         <div class="stepper-nav flex-center flex-wrap mb-10">
                             <div class="stepper-item mx-8 my-4 current" data-kt-stepper-element="nav">
-                                <div class="stepper-wrapper d-flex align-items-center">
-                                    <div class="stepper-icon w-40px h-40px">
+                                <div class="stepper-wrapper d-flex align-items-center p-5 rounded-22">
+                                    <div class="stepper-icon w-40px h-40px me-3">
                                         <i class="stepper-check fas fa-check"></i>
                                         <span class="stepper-number">1</span>
                                     </div>
@@ -67,8 +67,8 @@
                                 <div class="stepper-line h-40px"></div>
                             </div>
                             <div class="stepper-item mx-8 my-4" data-kt-stepper-element="nav">
-                                <div class="stepper-wrapper d-flex align-items-center">
-                                    <div class="stepper-icon w-40px h-40px">
+                                <div class="stepper-wrapper d-flex align-items-center  p-5 rounded-22">
+                                    <div class="stepper-icon w-40px h-40px me-3">
                                         <i class="stepper-check fas fa-check"></i>
                                         <span class="stepper-number">2</span>
                                     </div>
@@ -136,11 +136,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div class="text-muted">
-                                            Use 8 or more characters with a mix of letters, numbers &amp;
-                                            symbols.
-                                        </div>
                                         <div
                                             class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
                                         </div>
@@ -192,10 +187,10 @@
                                 </div>
                                 {{-- </div> --}}
                             </div>
-                            <div class="d-flex justify-content-end">
+                            <div class="">
                                 <div>
-                                    <button type="submit" class="btn btn-primary">
-                                        Continue
+                                    <button type="submit" class="btn btn-primary w-100">
+                                        Continue <i class="fa-solid fa-arrow-right-long ps-3"></i>
                                     </button>
                                 </div>
                             </div>
