@@ -53,11 +53,11 @@
                                                     <div class="price"><span
                                                             class="prev">$</span>{{ $qr_plan->price }}<span
                                                             class="next">/
-                                                            @if ($qr_plan->billing_cycle == 'yearly')
-                                                                yearly
-                                                            @elseif ($qr_plan->billing_cycle == 'monthly')
-                                                                monthly
-                                                                {{-- @elseif ($qr_plan->billing_cycle == 'half_yearly')
+                                                            @if ($qr_plan->billing_cycle == 'year')
+                                                                year
+                                                            @elseif ($qr_plan->billing_cycle == 'month')
+                                                                month
+                                                                {{-- @elseif ($qr_plan->billing_cycle == 'half_year')
                                                             Half Yearly --}}
                                                             @else
                                                                 Trial Period
