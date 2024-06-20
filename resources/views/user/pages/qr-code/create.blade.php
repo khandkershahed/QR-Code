@@ -3,7 +3,7 @@
         <div class="col-lg-8 col-md-7">
             <div class="card mt-10">
                 <div class="card-body qr-card-form">
-                    <div class="stepper stepper-pills p-0" id="generateQRCode">
+                    <div class="stepper stepper-pills p-0" id="kt_stepper_example_clickable">
                         <div class="stepper-nav flex-center flex-wrap mb-10 fv-row">
                             <div class="stepper-item mx-2 my-4 current" data-kt-stepper-element="nav"
                                 data-kt-stepper-action="step">
@@ -70,7 +70,7 @@
                             </div>
                         </div>
 
-                        <form class="form w-100 mx-auto fv-row" novalidate="novalidate" id="generateQRCodeForm"
+                        <form class="form w-100 mx-auto fv-row" novalidate="novalidate" id="kt_stepper_example_clickable_form"
                             action="{{ route('user.qr-code.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-5">
@@ -694,7 +694,7 @@
         {{-- For Valitdation End --}}
         {{-- <script>
             $(document).ready(function() {
-                $('#generateQRCodeForm').on('submit', function(e) {
+                $('#kt_stepper_example_clickableForm').on('submit', function(e) {
                     e.preventDefault(); // Prevent default form submission behavior
                     // $('#generateButton').hide();
                     var formData = new FormData(this);
@@ -726,7 +726,7 @@
         </script> --}}
         <script>
             $(document).ready(function() {
-                $('#generateQRCodeForm input, #generateQRCodeForm textarea, #generateQRCodeForm select').not(
+                $('#kt_stepper_example_clickable_form input, #kt_stepper_example_clickable_form textarea, #kt_stepper_example_clickable_form select').not(
                     '[name="qr_type"], [name="qr_data_coupon_code"], [name="qr_data_coupon_expire_date"], [name="qr_data_coupon_header"], [name="qr_data_coupon_message"], [name="qr_data_coupon_description_header"], [name="qr_data_coupon_description_body"], [name="qr_data_coupon_website"], [name="qr_data_coupon_company"], [name="qr_data_coupon_policy"], [name="qr_data_coupon_logo"]'
                 ).on('keyup change', function(e) {
                     e.preventDefault(); // Prevent default form submission behavior
@@ -784,7 +784,7 @@
 
         <script>
             // Stepper lement
-            var element = document.querySelector("#generateQRCode");
+            var element = document.querySelector("#kt_stepper_example_clickable");
             var stepper = new KTStepper(element);
             stepper.on("kt.stepper.next", function(stepper) {
                 stepper.goNext(); // go next step
