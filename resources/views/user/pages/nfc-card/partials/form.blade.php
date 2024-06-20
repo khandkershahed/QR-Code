@@ -210,7 +210,7 @@
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Service Section
                                     Title</x-metronic.label>
                                 <x-metronic.input type="text" name="service_section_title"
-                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Service"
+                                    class="form-control form-control-outline mb-3 mb-lg-0" placeholder="Service"
                                     value="" />
                             </div>
                         </div>
@@ -219,7 +219,7 @@
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Service Section
                                     Description</x-metronic.label>
-                                <textarea class="form-control form-control-solid" rows="3" name="service_section_description"
+                                <textarea class="form-control form-control-outline" rows="3" name="service_section_description"
                                     placeholder="Professional, reliable service provider committed to exceeding expectations with quality, efficiency, and personalized care for every client's needs."></textarea>
                             </div>
                         </div>
@@ -368,7 +368,7 @@
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Company Title</x-metronic.label>
                                 <x-metronic.input type="text" name="company_title"
-                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Company"
+                                    class="form-control form-control-solid   mb-3 mb-lg-0" placeholder="Company"
                                     value="" />
                             </div>
                         </div>
@@ -427,7 +427,7 @@
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Company About
                                     Description</x-metronic.label>
-                                <textarea class="form-control form-control-solid" rows="3" name="company_about_description"
+                                <textarea class="form-control form-control-outline" rows="3" name="company_about_description"
                                     placeholder="Professional, reliable service provider committed to exceeding expectations with quality, efficiency, and personalized care for every client's needs."></textarea>
                             </div>
                         </div>
