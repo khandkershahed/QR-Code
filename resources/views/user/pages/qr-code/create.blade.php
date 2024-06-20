@@ -134,8 +134,8 @@
                                                             class="form-label">{{ __('Enter a name for your QR code') }}
                                                             <span class="text-danger">*</span></x-metronic.label>
                                                         <select class="form-select" data-control="select2"
-                                                            name="qr_scan_status"
-                                                            data-placeholder="Select an option" required>
+                                                            name="qr_scan_status" data-placeholder="Select an option"
+                                                            required>
                                                             <option>Select Status</option>
                                                             <option value="static">Static</option>
                                                             <option value="dynamic" selected>Dynamic</option>
@@ -636,22 +636,7 @@
                 });
             });
         </script>
-        <script>
-            var myDropzone = new Dropzone("#qr_dropzone", {
-                url: "https://keenthemes.com/scripts/void.php", // Set the url for your upload script location
-                paramName: "file", // The name that will be used to transfer the file
-                maxFiles: 1,
-                maxFilesize: 2, // MB
-                addRemoveLinks: true,
-                accept: function(file, done) {
-                    if (file.name == "wow.jpg") {
-                        done("Naha, you don't.");
-                    } else {
-                        done();
-                    }
-                }
-            });
-        </script>
+
         <script>
             // Get references to radio buttons and divs
             const normalColorRadio = document.getElementById('solid_color');
@@ -790,38 +775,55 @@
         </script>
         {{-- Logo Size Encrease & Decrease  --}}
         <script>
-            function updateRangeValue(value) {
-                document.getElementById('rangeValue').textContent = Math.round(value * 100) + '%';
+            function updateLogoSizeValue(value) {
+                document.getElementById('sizeValue').textContent = Math.round(value * 100) + '%';
             }
 
             // Initialize the range value on page load
             document.addEventListener('DOMContentLoaded', (event) => {
-                updateRangeValue(document.getElementById('customRange1').value);
+                updateLogoSizeValue(document.getElementById('customRange1').value);
+            });
+            function updateLogoSpaceValue(value) {
+                document.getElementById('spaceValue').textContent = Math.round(value) + '%';
+            }
+
+            // Initialize the range value on page load
+            document.addEventListener('DOMContentLoaded', (event) => {
+                updateLogoSpaceValue(document.getElementById('customRange2').value);
             });
         </script>
         {{-- Pdf Preview  --}}
         <script>
-        $('input[name="qr_data_pdf"]')
+            $('input[name="qr_data_pdf"]')
                 .on('keyup change', function() {
-            const file = event.target.files[0];
-            const pdfPreviewContainer = document.getElementById('pdfPreviewContainer');
-            const noPdfMessage = document.getElementById('noPdfMessage');
-            const pdfPreview = document.getElementById('pdfPreview');
+                    const file = event.target.files[0];
+                    const pdfPreviewContainer = document.getElementById('pdfPreviewContainer');
+                    const noPdfMessage = document.getElementById('noPdfMessage');
+                    const pdfPreview = document.getElementById('pdfPreview');
 
-            if (file && file.type === "application/pdf") {
-                const fileReader = new FileReader();
-                fileReader.onload = function() {
-                    pdfPreview.src = fileReader.result;
-                    pdfPreviewContainer.style.display = 'block';
-                    noPdfMessage.style.display = 'none';
-                };
-                fileReader.readAsDataURL(file);
-            } else {
-                pdfPreviewContainer.style.display = 'none';
-                noPdfMessage.style.display = 'block';
-                alert("Please upload a valid PDF file.");
-            }
-        });
+                    if (file && file.type === "application/pdf") {
+                        const fileReader = new FileReader();
+                        fileReader.onload = function() {
+                            pdfPreview.src = fileReader.result;
+                            pdfPreviewContainer.style.display = 'block';
+                            noPdfMessage.style.display = 'none';
+                        };
+                        fileReader.readAsDataURL(file);
+                    } else {
+                        pdfPreviewContainer.style.display = 'none';
+                        noPdfMessage.style.display = 'block';
+                        alert("Please upload a valid PDF file.");
+                    }
+                });
+        </script>
+        <script>
+            $(document).ready(function() {
+                $('#generateButton').on('submit', function() {
+                    var $btn = $(this);
+                    // Disable the button
+                    $btn.prop('disabled', true);
+                });
+            });
         </script>
     @endpush
 </x-app-layout>

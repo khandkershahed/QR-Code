@@ -186,7 +186,7 @@
                                         </button>
                                     </div>
                                     <div>
-                                        <button type="submit" class="btn btn-primary"
+                                        <button type="submit" class="btn btn-primary" id="submitButton"
                                             data-kt-stepper-action="submit">
                                             <span class="indicator-label">Submit</span>
                                             <span class="indicator-progress">Please wait... <span
@@ -467,7 +467,6 @@
         </script>
         <script>
             // Initialize Slick Slider
-
         </script>
         <script>
             // Stepper lement
@@ -540,6 +539,19 @@
                     reader.readAsDataURL(file);
                 }
             }
+        </script>
+
+        <script>
+            $(document).ready(function() {
+                $('#submitButton').on('click', function() {
+                    var $btn = $(this);
+                    // Disable the button
+                    $btn.prop('disabled', true);
+                    // Show the progress indicator
+                    $btn.find('.indicator-label').hide();
+                    $btn.find('.indicator-progress').show();
+                });
+            });
         </script>
     @endpush
 </x-app-layout>
