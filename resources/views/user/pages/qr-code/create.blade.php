@@ -710,33 +710,38 @@
             });
         </script> --}}
         <script>
-            // $(document).ready(function() { 2
-            // $('#generateQRCodeForm input:not([name="qr_type"]), #generateQRCodeForm input:not([name="qr_data_coupon_code"]),#generateQRCodeForm input:not([name="qr_data_coupon_expire_date"]),#generateQRCodeForm input:not([name="qr_data_coupon_header"]),#generateQRCodeForm input:not([name="qr_data_coupon_message"]),#generateQRCodeForm input:not([name="qr_data_coupon_description_header"]),#generateQRCodeForm input:not([name="qr_data_coupon_description_body"]),#generateQRCodeForm input:not([name="qr_data_coupon_website"]),#generateQRCodeForm input:not([name="qr_data_coupon_company"]),#generateQRCodeForm input:not([name="qr_data_coupon_policy"]),#generateQRCodeForm input:not([name="qr_data_coupon_logo"]) ,#generateQRCodeForm textarea, #generateQRCodeForm select')
-            $('#generateQRCodeForm input, #generateQRCodeForm textarea, #generateQRCodeForm select').not(
-                '[name="qr_type"], [name="qr_data_coupon_code"], [name="qr_data_coupon_expire_date"], [name="qr_data_coupon_header"], [name="qr_data_coupon_message"], [name="qr_data_coupon_description_header"], [name="qr_data_coupon_description_body"], [name="qr_data_coupon_website"], [name="qr_data_coupon_company"], [name="qr_data_coupon_policy"], [name="qr_data_coupon_logo"]'
-            ).on('keyup change', function(e) {
-                e.preventDefault(); // Prevent default form submission behavior
-                // Get the form data
-                var formData = new FormData($(this).closest('form')[0]);
-
-                $.ajax({
-                    url: '{{ route('user.qr.preview') }}', // Replace this with the URL of your Laravel route or endpoint
-                    type: 'POST',
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function(response) {
-                        // Display the QR code image
-                        $("#generatedQRCodeContainer").show();
-                        $("#qrCouponPreview").hide();
-                        $('.generatedQRCode').attr('src', response.qr_code);
-                    },
-                    error: function(xhr, status, error) {
-                        console.error(error);
-                    }
+            $(document).ready(function() {
+                $('#generateQRCodeForm input, #generateQRCodeForm textarea, #generateQRCodeForm select').not(
+                    '[name="qr_type"], [name="qr_data_coupon_code"], [name="qr_data_coupon_expire_date"], [name="qr_data_coupon_header"], [name="qr_data_coupon_message"], [name="qr_data_coupon_description_header"], [name="qr_data_coupon_description_body"], [name="qr_data_coupon_website"], [name="qr_data_coupon_company"], [name="qr_data_coupon_policy"], [name="qr_data_coupon_logo"]'
+                ).on('keyup change', function(e) {
+                    e.preventDefault(); // Prevent default form submission behavior
+        
+                    // Get the form data
+                    var formData = new FormData($(this).closest('form')[0]);
+        
+                    // Append CSRF token to the form data
+                    formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
+        
+                    $.ajax({
+                        url: '{{ route('user.qr.preview') }}', // Replace this with the URL of your Laravel route or endpoint
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function(response) {
+                            // Display the QR code image
+                            $("#generatedQRCodeContainer").show();
+                            $("#qrCouponPreview").hide();
+                            $('.generatedQRCode').attr('src', response.qr_code);
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(error);
+                        }
+                    });
                 });
             });
         </script>
+        
 
         <script>
             function initMap() {

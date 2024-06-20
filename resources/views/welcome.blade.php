@@ -18,9 +18,6 @@
     <div class="container py-5 my-4">
         <div class="d-flex justify-content-center align-items-center align-self-center mt-5">
             <div class="card">
-                <div class="card-header">
-                    <h5 class="text-gray mb-0 text-center card-title">MD Boilerplate</h5>
-                </div>
                 <div class="card-body">
                     <div
                         class="d-flex justify-content-center align-items-center">
