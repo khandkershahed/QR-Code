@@ -5,7 +5,7 @@
         <h2 class="text-center mb-0">Website Form</h2>
         <p class="text-center mb-0">Paste a URL below to link with your QR code.</p>
     </div>
-    <div class="row pt-4">
+    <div class="row pt-4 bg-light p-5 mt-10 rounded-1">
         <div class="mb-4">
             <x-metronic.label for="qr_data_website_url"
                 class="form-label required">{{ __('Website Url') }}</x-metronic.label>
@@ -22,24 +22,22 @@
     </div>
     {{-- Pdf Preview --}}
     <div>
-        <div class="row pt-4">
-            <div class="col-lg-6 mx-auto">
+        <div class="row pt-4 bg-light p-5 mt-10 rounded-1 w-50 mx-auto">
+            <div class="col-lg-12">
                 <x-metronic.label for="qr_data_pdf" class="form-label">{{ __('Upload Pdf') }}</x-metronic.label>
                 <x-metronic.input id="qr_data_pdf" type="file" name="qr_data_pdf" :value="old('qr_data_pdf')"
                     accept="application/pdf" placeholder="Upload Pdf" />
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-6 mx-auto">
+            <div class="col-lg-12">
                 <div id="pdfPreviewContainer" style="display: none;">
                     <iframe id="pdfPreview" class="img-fluid qr_data_pdf"
                         style="height: 400px;
                 overflow: scroll;
                 width: 100%;"></iframe>
                 </div>
-                <div id="noPdfMessage">
-                    Pdf preview
-                </div>
+                <div id="noPdfMessage"></div>
             </div>
         </div>
     </div>
@@ -51,7 +49,7 @@
         <h2 class="text-center mb-0">Image Form</h2>
         <p class="text-center mb-0">Upload Your Image or Link Here For QR Code.</p>
     </div>
-    <div class="row pt-4">
+    <div class="row pt-4 bg-light p-5 mt-10 rounded-1">
         <div class="col-lg-6">
             <x-metronic.label for="qr_data_image" class="form-label">{{ __('Upload Image') }}</x-metronic.label>
             <x-metronic.input id="qr_data_image" type="file" name="qr_data_image" :value="old('qr_data_image')"
@@ -71,7 +69,7 @@
         <h2 class="text-center mb-0">SMS information</h2>
         <p class="text-center mb-0">Specify details of the text (SMS) to link your QR code to.</p>
     </div>
-    <div class="row pt-4">
+    <div class="row pt-4 bg-light p-5 mt-10 rounded-1">
         <div class="pt-4">
             <x-metronic.label for="qr_data_sms_number"
                 class="required form-label">{{ __('Phone Number') }}</x-metronic.label>
@@ -80,7 +78,7 @@
         </div>
         <div class="pt-4">
             <label for="qr_data_sms_message" class="required form-label">Message</label>
-            <textarea class="form-control form-control-solid" name="qr_data_sms_message" id="qr_data_sms_message" rows="3"
+            <textarea class="form-control form-control-outline" name="qr_data_sms_message" id="qr_data_sms_message" rows="3"
                 required></textarea>
         </div>
     </div>
@@ -91,7 +89,7 @@
         <h2 class="text-center mb-0">Email information</h2>
         <p class="text-center mb-0">Specify details of the email message to link your QR code to.</p>
     </div>
-    <div class="row pt-4">
+    <div class="row pt-4 bg-light p-5 mt-10 rounded-1">
         <div class="pb-4">
             <x-metronic.label for="qr_data_email_id"
                 class="required form-label">{{ __('Receiver Email') }}</x-metronic.label>
@@ -106,7 +104,7 @@
         </div>
         <div class="pb-4">
             <label for="qr_data_email_body" class="required form-label">Mail Body</label>
-            <textarea class="form-control form-control-solid" name="qr_data_email_body" id="qr_data_email_body" rows="3"
+            <textarea class="form-control form-control-outline" name="qr_data_email_body" id="qr_data_email_body" rows="3"
                 required></textarea>
         </div>
     </div>
@@ -117,7 +115,7 @@
         <h2 class="text-center mb-0">Mobile App</h2>
         <p class="text-center mb-0">Redirect to app download or in-app pages for Android and iOS users.</p>
     </div>
-    <div class="row pt-4">
+    <div class="row pt-4 bg-light p-5 mt-10 rounded-1">
         <div class="pb-4">
             <x-metronic.label for="qr_app_android"
                 class="form-label">{{ __('Google Play store URL') }}</x-metronic.label>
@@ -144,7 +142,7 @@
         <h2 class="text-center mb-0">Call Information</h2>
         <p class="text-center mb-0">Specify details of the phone number to link your QR code to.</p>
     </div>
-    <div class="row pt-4">
+    <div class="row pt-4 bg-light p-5 mt-10 rounded-1 w-50 mx-auto">
         <div class="pb-4">
             <x-metronic.label for="qr_data_call_number"
                 class="form-label">{{ __('Phone Number') }}</x-metronic.label>
@@ -159,7 +157,7 @@
         <h2 class="text-center mb-0">Choose location</h2>
         <p class="text-center mb-0">Choose a location to link to your QR code.</p>
     </div>
-    <div class="row pt-4">
+    <div class="row pt-4 bg-light p-5 mt-10 rounded-1">
         <div class="pb-4">
             <x-metronic.label for="qr_data_location_latitude"
                 class="form-label">{{ __('Select Location Latitude') }}</x-metronic.label>
@@ -183,7 +181,7 @@
         <h2 class="text-center mb-0">Coupon Code</h2>
         <p class="text-center mb-0">Create Coupon Code.</p>
     </div>
-    <div class="pb-4 row">
+    <div class="row pt-4 bg-light p-5 mt-10 rounded-1">
         <div class="pb-4 col-lg-4">
             <x-metronic.label for="qr_data_coupon_header" class="form-label">{{ __('Header') }}</x-metronic.label>
             <x-metronic.input id="qr_data_coupon_header" type="text" name="qr_data_coupon_header"
@@ -239,65 +237,42 @@
                 :value="old('qr_data_coupon_website')" placeholder="http://www.website.com" />
         </div>
 
-        <div class="col-lg-4 pb-4">
+        <div class="col-lg-3 pb-4">
             <div class="row">
-                <div class="pt-3 pe-4">
-                    <label for="secondary_color_text">Background color</label>
-                    <div class="d-flex colorCodeContainer">
-                        <input type="text" id="colorCodeInput-gradient"
-                            class="form-control form-control-solid w-25 colorCodeInput"
-                            style="width: 160px !important" readonly>
-                        <input type="color" id="colorPicker" class="colorPicker"
-                            name="qr_data_coupon_background_color" style="width: 56px;height: 45px;"
-                            oninput="changecouponBackgroundColor()">
-                    </div>
+                <label for="secondary_color_text">Background color</label>
+                <div class="d-flex colorCodeContainer">
+                    <input type="color" class="colorPicker mt-2" name="qr_data_coupon_background_color">
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 pb-4">
+        <div class="col-lg-3 pb-4">
             <div class="row">
                 <label for="secondary_color_text">Title color (With BG Include)</label>
                 <div class="d-flex colorCodeContainer">
-                    <input type="text" id="secondary_color_text-gradient"
-                        class="form-control form-control-solid w-25 colorCodeInput"
-                        style="width: 160px !important" readonly>
-                    <input type="color" id="secondary_color_text_picker" class="colorPicker"
-                        name="qr_data_coupon_title_color" style="width: 56px;height: 45px;"
-                        oninput="changecouponTitleColor()">
+                    <input type="color" class="colorPicker mt-2" name="qr_data_coupon_title_color">
                 </div>
             </div>
         </div>
 
-        <div class="col-lg-4 pb-4">
+        <div class="col-lg-3 pb-4">
             <div class="row">
                 <label for="buttonContact">Website Button Background Color</label>
                 <div class="d-flex colorCodeContainer">
-                    <input type="text" id="secondary_color_text-gradient"
-                        class="form-control form-control-solid w-25 colorCodeInput"
-                        style="width: 160px !important" readonly>
-
-                    <input type="color" id="secondary_color_text_picker" class="colorPicker"
-                        name="qr_data_coupon_button_bg_color" style="width: 56px;height: 45px;"
-                        oninput="changecouponwebsiteBgColor()">
+                    <input type="color" class="colorPicker mt-2" name="qr_data_coupon_button_bg_color">
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 pb-4">
+        <div class="col-lg-3 pb-4">
             <div class="row">
                 <label for="buttonContact">Website Button Title Color</label>
                 <div class="d-flex colorCodeContainer">
-                    <input type="text" id="secondary_color_text-gradient"
-                        class="form-control form-control-solid w-25 colorCodeInput"
-                        style="width: 160px !important" readonly>
 
-                    <input type="color" id="secondary_color_text_picker" class="colorPicker"
-                        name="qr_data_coupon_button_title_color" style="width: 56px;height: 45px;"
-                        oninput="changecouponwebsiteTitleColor()">
+                    <input type="color" class="colorPicker mt-2" name="qr_data_coupon_button_title_color">
                 </div>
             </div>
         </div>
 
-        <div class="pb-4 col-lg-8">
+        <div class="pb-4 col-lg-12">
             <x-metronic.label for="qr_data_coupon_policy"
                 class="form-label">{{ __('Terms & conditions') }}</x-metronic.label>
             <x-metronic.input id="qr_data_coupon_policy" type="text" name="qr_data_coupon_policy"
@@ -312,11 +287,25 @@
         <h2 class="text-center mb-0">Social Media</h2>
         <p class="text-center mb-0">Link to your social media channels for more engagement.</p>
     </div>
-    <div class="row pt-4">
-        <div class="pb-4 col-lg-3">
+    <div class="row pt-4 bg-light p-5 mt-10 rounded-1">
+        <div class="pb-4 col-lg-5">
             <x-metronic.label for="qr_data_social_logo" class="form-label">{{ __('Logo') }}</x-metronic.label>
             <x-metronic.input id="qr_data_social_logo" type="file" name="qr_data_social_logo" :value="old('qr_data_social_logo')"
                 placeholder="social Logo" />
+        </div>
+        <div class="col-lg-1 d-lg-block d-sm-none">
+            <div class="fv-row my-3 pt-5">
+                <div>
+                    <img width="50px" height="50px" class="rounded-circle border banner_image"
+                        id="profile_image_preview" src="https://i.ibb.co/BNBTVN4/logo.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="pb-4 col-lg-5">
+            <x-metronic.label for="qr_data_social_background_image"
+                class="form-label">{{ __('Background Image') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_social_background_image" type="file"
+                name="qr_data_social_background_image" :value="old('qr_data_social_background_image')" placeholder="Social background image" />
         </div>
         <div class="col-lg-1 d-lg-block d-sm-none">
             <div class="fv-row my-3 pt-5">
@@ -344,21 +333,6 @@
                 placeholder="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure, commodi!" />
         </div>
 
-        <div class="pb-4 col-lg-3">
-            <x-metronic.label for="qr_data_social_background_image"
-                class="form-label">{{ __('Background Image') }}</x-metronic.label>
-            <x-metronic.input id="qr_data_social_background_image" type="file"
-                name="qr_data_social_background_image" :value="old('qr_data_social_background_image')" placeholder="Social background image" />
-        </div>
-        <div class="col-lg-1 d-lg-block d-sm-none">
-            <div class="fv-row my-3 pt-5">
-                <div>
-                    <img width="50px" height="50px" class="rounded-circle border banner_image"
-                        id="profile_image_preview" src="https://i.ibb.co/BNBTVN4/logo.png" alt="">
-                </div>
-            </div>
-        </div>
-
         {{-- <div class="pb-4 col-lg-6">
             <label for="exampleFormControlInput1" class="required form-label">Title</label>
             <input type="text" class="form-control form-control-solid" placeholder="Enter Title" />
@@ -378,7 +352,7 @@
             </div>
         </div> --}}
 
-        <div class="row text-center justify-content-center">
+        <div class="row text-center justify-content-center mb-3">
             <h2 class="text-center mb-0">LINKS</h2>
             <p class="text-center mb-0">At least one field is mandatory *</p>
         </div>
@@ -458,15 +432,13 @@
         <h2 class="text-center mb-0">MP3/Audio</h2>
         <p class="text-center mb-0">Upload MP3/Audio File</p>
     </div>
-    <div class="pt-5 ps-5">
-        <h2>Upload audio</h2>
-        <p>Upload audio file that your QR code should link to.</p>
-    </div>
-    <div class="pb-4 row">
-        <x-metronic.label for="qr_data_audio_file"
-            class="form-label">{{ __('Audio File (mp3,web)') }}</x-metronic.label>
-        <x-metronic.input id="qr_data_audio_file" type="file" name="qr_data_audio_file" :value="old('qr_data_audio_file')"
-            placeholder="Audio File (mp3,web)" />
+    <div class="row pt-4 bg-light p-5 mt-10 rounded-1">
+        <div class="col-lg-6">
+            <x-metronic.label for="qr_data_audio_file"
+                class="form-label">{{ __('Audio File (mp3,web)') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_audio_file" type="file" name="qr_data_audio_file" :value="old('qr_data_audio_file')"
+                placeholder="Audio File (mp3,web)" />
+        </div>
         <div class="pt-4 col-lg-6">
             <x-metronic.label for="qr_data_audio_link"
                 class="form-label">{{ __('Or Paste Link Below') }}</x-metronic.label>
@@ -481,7 +453,7 @@
         <h2 class="text-center mb-0">Business Page</h2>
         <p class="text-center mb-0">Share a Card For Your Business</p>
     </div>
-    <div class="pb-4 row">
+    <div class="row pt-4 bg-light p-5 mt-5 rounded-1">
         <div class="pb-4 col-lg-6">
             <x-metronic.label for="qr_data_business_page_logo"
                 class="form-label">{{ __('Company Logo') }}</x-metronic.label>
@@ -505,12 +477,12 @@
         </div> --}}
 
         <div>
-            <h6 class="fw-bold pt-5 mb-0">Schedule Info</h6>
+            <h6 class="fw-bold pt-5 mb-5">Schedule Info</h6>
         </div>
         <div class="col-lg-12">
             <div class="row align-items-center pb-3">
-                <div class="col-lg-3">
-                    <div class="form-check">
+                <div class="col-lg-4">
+                    <div class="form-check ps-0 border bg-primary p-3 rounded-2 text-center text-white">
                         <label class="form-check-label" for="flexCheckChecked">
                             Monday
                         </label>
@@ -528,8 +500,8 @@
                 </div>
             </div>
             <div class="row align-items-center pb-3">
-                <div class="col-lg-3">
-                    <div class="form-check">
+                <div class="col-lg-4">
+                    <div class="form-check ps-0 border bg-primary p-3 rounded-2 text-center text-white">
                         <label class="form-check-label" for="flexCheckChecked">
                             Tuesday
                         </label>
@@ -547,8 +519,8 @@
                 </div>
             </div>
             <div class="row align-items-center pb-3">
-                <div class="col-lg-3">
-                    <div class="form-check">
+                <div class="col-lg-4">
+                    <div class="form-check ps-0 border bg-primary p-3 rounded-2 text-center text-white">
                         <label class="form-check-label" for="flexCheckChecked">
                             Wednesday
                         </label>
@@ -566,8 +538,8 @@
                 </div>
             </div>
             <div class="row align-items-center pb-3">
-                <div class="col-lg-3">
-                    <div class="form-check">
+                <div class="col-lg-4">
+                    <div class="form-check ps-0 border bg-primary p-3 rounded-2 text-center text-white">
                         <label class="form-check-label" for="flexCheckChecked">
                             Thursday
                         </label>
@@ -585,8 +557,8 @@
                 </div>
             </div>
             <div class="row align-items-center pb-3">
-                <div class="col-lg-3">
-                    <div class="form-check">
+                <div class="col-lg-4">
+                    <div class="form-check ps-0 border bg-primary p-3 rounded-2 text-center text-white">
                         <label class="form-check-label" for="flexCheckChecked">
                             Friday
                         </label>
@@ -604,8 +576,8 @@
                 </div>
             </div>
             <div class="row align-items-center pb-3">
-                <div class="col-lg-3">
-                    <div class="form-check">
+                <div class="col-lg-4">
+                    <div class="form-check ps-0 border bg-primary p-3 rounded-2 text-center text-white">
                         <label class="form-check-label" for="flexCheckChecked">
                             Saturday
                         </label>
@@ -623,8 +595,8 @@
                 </div>
             </div>
             <div class="row align-items-center pb-3">
-                <div class="col-lg-3">
-                    <div class="form-check">
+                <div class="col-lg-4">
+                    <div class="form-check ps-0 border bg-primary p-3 rounded-2 text-center text-white">
                         <label class="form-check-label" for="flexCheckChecked">
                             Sunday
                         </label>
@@ -696,7 +668,7 @@
         <h2 class="text-center mb-0">Restaurant Form</h2>
         <p class="text-center mb-0">Upload Your Menu Items For Generate QR Code</p>
     </div>
-    <div class="pb-4 row">
+    <div class="row pt-4 bg-light p-5 mt-10 rounded-1">
         <div class="card card-flush h-xl-100">
             <div class="card-body pt-6">
                 <ul class="nav nav-pills nav-pills-custom mb-3 d-flex justify-content-center align-items-center">
@@ -740,70 +712,76 @@
                     </div>
                     <div class="tab-pane fade" id="brandingMain">
                         <div>
-                            <div class="row">
-                                <div class="col-lg-10">
-                                    <div class="fv-row mb-10 fv-plugins-icon-container">
+                            <div class="row pt-4 bg-light p-5 mt-10 rounded-1">
+                                <div class="col-lg-5">
+                                    <div class="fv-row mb-5 fv-plugins-icon-container">
                                         <label class="d-flex align-items-center fs-5 fw-semibold mb-2">
                                             <span class="required">Upload Logo</span></label>
-                                        <input type="file" class="form-control form-control-lg form-control-solid"
+                                        <input type="file"
+                                            class="form-control form-control-lg form-control-outline"
                                             name="qr_data_restaurant_logo" placeholder="">
                                     </div>
                                 </div>
-                                <div class="col-lg-2">
-                                    <div class="fv-row mb-10 fv-plugins-icon-container">
+                                <div class="col-lg-1">
+                                    <div class="fv-row mb-5 fv-plugins-icon-container">
                                         <label class="d-flex align-items-center fs-5 fw-semibold mb-2">Preview</label>
                                         <img class="img-fluid rouded-crirlce qr_data_restaurant_logo" width="50px"
                                             src="https://preview.keenthemes.com/metronic8/demo1/assets/media/illustrations/sketchy-1/9.png"
                                             alt="">
                                     </div>
                                 </div>
-                                <div class="col-lg-10">
-                                    <div class="fv-row mb-10 fv-plugins-icon-container">
+                                <div class="col-lg-5">
+                                    <div class="fv-row mb-5 fv-plugins-icon-container">
                                         <label class="d-flex align-items-center fs-5 fw-semibold mb-2">
                                             <span class="required">Background Image</span></label>
-                                        <input type="file" class="form-control form-control-lg form-control-solid"
+                                        <input type="file"
+                                            class="form-control form-control-lg form-control-outline"
                                             name="qr_data_restaurant_bg" placeholder="">
                                     </div>
                                 </div>
-                                <div class="col-lg-2">
-                                    <div class="fv-row mb-10 fv-plugins-icon-container">
+                                <div class="col-lg-1">
+                                    <div class="fv-row mb-5 fv-plugins-icon-container">
                                         <label class="d-flex align-items-center fs-5 fw-semibold mb-2">Preview</label>
                                         <img class="img-fluid rouded-crirlce qr_data_restaurant_bg" width="50px"
                                             src="https://preview.keenthemes.com/metronic8/demo1/assets/media/illustrations/sketchy-1/9.png"
                                             alt="">
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="fv-row mb-10 fv-plugins-icon-container">
+                                <div class="col-lg-4">
+                                    <div class="fv-row mb-5 fv-plugins-icon-container">
                                         <label class="d-flex align-items-center fs-5 fw-semibold mb-2">
                                             <span class="required">Restaurant Name</label>
-                                        <input type="text" class="form-control form-control-lg form-control-solid"
+                                        <input type="text"
+                                            class="form-control form-control-lg form-control-outline"
                                             name="qr_data_restaurant_name" placeholder="Goflixza">
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="fv-row mb-10 fv-plugins-icon-container">
-                                        <label class="d-flex align-items-center fs-5 fw-semibold mb-2">
-                                            <span class="required">Description</label>
-                                        <input type="text" class="form-control form-control-lg form-control-solid"
-                                            name="qr_data_restaurant_description" placeholder="About Your Resturent">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="fv-row mb-10 fv-plugins-icon-container">
+                                <div class="col-lg-4">
+                                    <div class="fv-row mb-5 fv-plugins-icon-container">
                                         <label class="d-flex align-items-center fs-5 fw-semibold mb-2">
                                             <span class="required">Phone</label>
-                                        <input type="text" class="form-control form-control-lg form-control-solid"
+                                        <input type="text"
+                                            class="form-control form-control-lg form-control-outline"
                                             name="qr_data_restaurant_phone" placeholder="01*****">
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="fv-row mb-10 fv-plugins-icon-container">
+                                <div class="col-lg-4">
+                                    <div class="fv-row mb-5 fv-plugins-icon-container">
                                         <label class="d-flex align-items-center fs-5 fw-semibold mb-2">
                                             <span class="required">Location</label>
-                                        <input type="url" class="form-control form-control-lg form-control-solid"
+                                        <input type="url"
+                                            class="form-control form-control-lg form-control-outline"
                                             name="qr_data_restaurant_location"
                                             placeholder="map URL / Website Address">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="fv-row mb-5 fv-plugins-icon-container">
+                                        <label class="d-flex align-items-center fs-5 fw-semibold mb-2">
+                                            <span class="required">Description</label>
+                                        <input type="text"
+                                            class="form-control form-control-lg form-control-outline"
+                                            name="qr_data_restaurant_description" placeholder="About Your Resturent">
                                     </div>
                                 </div>
                             </div>
@@ -823,12 +801,19 @@
         <h2 class="text-center mb-0">Facebook Form</h2>
         <p class="text-center mb-0">Upload audio file that your QR code should link to.</p>
     </div>
-    <div class="pb-4 row">
-        <div class="pb-4 col-lg-10">
+    <div class="row pt-4 bg-light p-5 mt-10 rounded-1">
+        <div class="pb-4 col-lg-6">
             <x-metronic.label for="qr_data_facebook_page_logo"
                 class="form-label">{{ __('Logo') }}</x-metronic.label>
             <x-metronic.input id="qr_data_facebook_page_logo" type="file" name="qr_data_facebook_page_logo"
                 :value="old('qr_data_facebook_page_logo')" placeholder="facebook_page Logo" />
+        </div>
+        <div class="pb-4 col-lg-6">
+            <x-metronic.label for="qr_data_facebook_page_background_image"
+                class="form-label">{{ __('Banner Image') }}</x-metronic.label>
+            <x-metronic.input id="qr_data_facebook_page_background_image" type="file"
+                name="qr_data_facebook_page_background_image" :value="old('qr_data_facebook_page_background_image')"
+                placeholder="facebook_page background image" />
         </div>
         {{-- <div class="col-lg-2 d-lg-block d-sm-none">
             <div class="fv-row my-3 pt-5">
@@ -856,14 +841,6 @@
                 class="form-label">{{ __('Facebook Page URL') }}</x-metronic.label>
             <x-metronic.input id="qr_data_facebook_page_facebook" type="url"
                 name="qr_data_facebook_page_facebook" :value="old('qr_data_facebook_page_facebook')" placeholder="http://www.website.com" />
-        </div>
-
-        <div class="pb-4 col-lg-10">
-            <x-metronic.label for="qr_data_facebook_page_background_image"
-                class="form-label">{{ __('Banner Image') }}</x-metronic.label>
-            <x-metronic.input id="qr_data_facebook_page_background_image" type="file"
-                name="qr_data_facebook_page_background_image" :value="old('qr_data_facebook_page_background_image')"
-                placeholder="facebook_page background image" />
         </div>
 
         {{-- <div class="col-lg-2 d-lg-block d-sm-none">
