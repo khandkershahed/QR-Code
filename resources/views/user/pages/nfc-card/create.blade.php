@@ -161,7 +161,7 @@
 
                                 <div class="flex-column" data-kt-stepper-element="content">
                                     <div class="card flex-grow-1 rounded-0">
-                                        <div class="card-header text-center">
+                                        <div class="card-header text-center border-0">
                                             <div class="pt-15 pb-15 ps-5 w-100">
                                                 <h2 class="text-success">Congratulations!</h2>
                                                 <p>Your NFC Profile is ready. Add Billing Address For NFC Card Delivery!
@@ -169,7 +169,7 @@
                                             </div>
                                         </div>
                                         <div
-                                            class="centered-card-body card-body d-flex flex-column justify-content-between mb-10">
+                                            class="centered-card-body card-body d-flex flex-column justify-content-between mb-10 pt-0">
                                             @include('user.pages.nfc-card.partials.virtualCardBilling')
                                         </div>
                                     </div>

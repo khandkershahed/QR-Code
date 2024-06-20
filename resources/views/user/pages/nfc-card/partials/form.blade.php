@@ -10,8 +10,8 @@
             <ul class="nav nav-pills nav-pills-custom row position-relative mx-0 mb-0 mx-auto d-flex justify-content-center"
                 role="tablist">
                 <li class="nav-item col-2 mx-0 p-0" role="presentation">
-                    <a class="nav-link d-flex justify-content-center w-100 border-0 h-100 active"
-                        data-bs-toggle="pill" href="#kt_list_widget_10_tab_1" aria-selected="true" role="tab">
+                    <a class="nav-link d-flex justify-content-center w-100 border-0 h-100 active" data-bs-toggle="pill"
+                        href="#kt_list_widget_10_tab_1" aria-selected="true" role="tab">
                         <span class="nav-text text-gray-800 fw-bold fs-6 mb-3">
 
                             Profile Area
@@ -69,7 +69,7 @@
             <div class="tab-content">
                 <div class="tab-pane qr-info-form fade active show" id="kt_list_widget_10_tab_1" role="tabpanel">
                     <div class="row p-2">
-                        <div class="col-lg-3">
+                        <div class="col-lg-5">
                             <div class="fv-row my-3">
                                 <x-metronic.label for="profile_image" class="form-label required">
                                     {{ __('Banner Image') }}</x-metronic.label>
@@ -79,22 +79,27 @@
                         </div>
                         <div class="col-lg-1 d-lg-block d-sm-none">
                             <div class="fv-row my-3">
-                                <x-metronic.label for="profile_image_preview" class="form-label">{{ __('Preview') }}</x-metronic.label>
+                                <x-metronic.label for="profile_image_preview"
+                                    class="form-label">{{ __('Preview') }}</x-metronic.label>
                                 <div>
                                     <img width="50px" height="50px" class="rounded-circle border banner_image"
                                         src="https://i.ibb.co/BNBTVN4/logo.png" alt="">
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-5">
                             <div class="fv-row my-3">
-                                <x-metronic.label for="profile_image" class="form-label required">{{ __('Profile Image') }}</x-metronic.label>
-                                <input id="profile_image" type="file" class="form-control" name="profile_image" :value="old('profile_image')" onchange="previewprofileImage(this)" accept="image/*" />
+                                <x-metronic.label for="profile_image"
+                                    class="form-label required">{{ __('Profile Image') }}</x-metronic.label>
+                                <input id="profile_image" type="file" class="form-control" name="profile_image"
+                                    :value="old('profile_image')" onchange="previewprofileImage(this)"
+                                    accept="image/*" />
                             </div>
                         </div>
                         <div class="col-lg-1 d-lg-block d-sm-none">
                             <div class="fv-row my-3">
-                                <x-metronic.label for="profile_image_preview" class="form-label">{{ __('Preview') }}</x-metronic.label>
+                                <x-metronic.label for="profile_image_preview"
+                                    class="form-label">{{ __('Preview') }}</x-metronic.label>
                                 <div>
                                     <img width="50px" height="50px" class="rounded-circle border profile_image"
                                         src="https://i.ibb.co/BNBTVN4/logo.png" alt="">
@@ -104,60 +109,81 @@
                         <div class="col-lg-4">
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2 required">First Name</x-metronic.label>
-                                <x-metronic.input type="text" name="first_name" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Sazeduzzaman" value="" />
+                                <x-metronic.input type="text" name="first_name"
+                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Robert"
+                                    value="" />
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-4">
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Last Name</x-metronic.label>
-                                <x-metronic.input type="text" name="last_name" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Saju" value="" />
+                                <x-metronic.input type="text" name="last_name"
+                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Bruno"
+                                    value="" />
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-4">
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2 required">Designation</x-metronic.label>
-                                <x-metronic.input type="text" name="designation" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Frontend Developer" value="" />
+                                <x-metronic.input type="text" name="designation"
+                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                    placeholder="Business Owner" value="" />
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="fv-row my-3">
-                                <x-metronic.label class="fw-semibold fs-6 mb-2 required">Address Line One</x-metronic.label>
-                                <x-metronic.input type="text" name="address_line_one" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Dhaka, Mirpur" value="" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="fv-row my-3">
-                                <x-metronic.label class="fw-semibold fs-6 mb-2">Address Line Two</x-metronic.label>
-                                <x-metronic.input type="text" name="address_line_two" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Bangladesh" value="" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-3">
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Phone Work</x-metronic.label>
-                                <x-metronic.input type="text" name="phone_work" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="01*******" value="" />
+                                <x-metronic.input type="text" name="phone_work"
+                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="01*******"
+                                    value="" />
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-3">
                             <div class="fv-row my-3">
-                                <x-metronic.label class="fw-semibold fs-6 mb-2 required">Phone Personal</x-metronic.label>
-                                <x-metronic.input type="text" name="phone_personal" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="01*******" value="" />
+                                <x-metronic.label class="fw-semibold fs-6 mb-2 required">Phone
+                                    Personal</x-metronic.label>
+                                <x-metronic.input type="text" name="phone_personal"
+                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="01*******"
+                                    value="" />
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-3">
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Email Work</x-metronic.label>
-                                <x-metronic.input type="email" name="email_work" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="work@mail.com" value="" />
+                                <x-metronic.input type="email" name="email_work"
+                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="work@mail.com"
+                                    value="" />
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="fv-row my-3">
+                                <x-metronic.label class="fw-semibold fs-6 mb-2 required">Email
+                                    Personal</x-metronic.label>
+                                <x-metronic.input type="email" name="email_personal"
+                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                    placeholder="personal@mail.com" value="" />
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="fv-row my-3">
-                                <x-metronic.label class="fw-semibold fs-6 mb-2 required">Email Personal</x-metronic.label>
-                                <x-metronic.input type="email" name="email_personal" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="personal@mail.com" value="" />
+                                <x-metronic.label
+                                    class="fw-semibold fs-6 mb-2 required">House/Road/City</x-metronic.label>
+                                <x-metronic.input type="text" name="address_line_one"
+                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="New York City"
+                                    value="" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="fv-row my-3">
+                                <x-metronic.label class="fw-semibold fs-6 mb-2">State/Country</x-metronic.label>
+                                <x-metronic.input type="text" name="address_line_two"
+                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="USA"
+                                    value="" />
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="tab-pane qr-info-form fade" id="kt_list_widget_10_tab_2" role="tabpanel">
                     <div class="row p-2">
                         <div class="col-lg-12">
@@ -171,7 +197,7 @@
                         <div class="col-lg-12">
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Bio Description</x-metronic.label>
-                                <textarea class="form-control form-control-solid" rows="10" name="bio_description"
+                                <textarea class="form-control form-control-solid" rows="5" name="bio_description"
                                     placeholder="Book enthusiast, nature lover, avid learner, coffee addict, aspiring writer, music aficionado, travel enthusiast, optimistic dreamer."></textarea>
                             </div>
                         </div>
@@ -198,92 +224,138 @@
                             </div>
                         </div>
                         <div class="col-lg-12">
-                            <div class="row p-3 mb-2" style="border: 1px dashed #eee; background-color: #f5f8fa47 !important;">
-                                <div class="col-lg-6">
-                                    <div class="fv-row my-3">
-                                        <x-metronic.label class="fw-semibold fs-6 mb-2">Service One
-                                            Title</x-metronic.label>
-                                        <x-metronic.input type="text" name="service_one_title"
-                                            class="form-control form-control-solid mb-3 mb-lg-0"
-                                            placeholder="Web Developement" value="" />
+                            <div class="d-flex flex-column flex-md-row rounded border">
+                                <ul class="nav nav-tabs nav-pills flex-row border-0 flex-md-column me-5 mb-3 mb-md-0 fs-6 min-w-lg-200px bg-white"
+                                    role="tablist">
+                                    <li class="nav-item w-100 mx-0 mb-2" role="presentation">
+                                        <a class="nav-link w-100 btn btn-flex btn-active-primary rounded-0 active"
+                                            data-bs-toggle="tab" href="#kt_vtab_pane_4" aria-selected="true"
+                                            role="tab">
+                                            <i class="fa-solid fa-arrow-right-long  text-active-primary pe-3"></i>
+                                            <span class="d-flex flex-column align-items-start">
+                                                <span class="fs-4 fw-bold">Service One</span>
+                                                <span class="fs-7">Add Your Services</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item w-100 mx-0 mb-2" role="presentation">
+                                        <a class="nav-link w-100 btn btn-flex btn-active-primary rounded-0"
+                                            data-bs-toggle="tab" href="#kt_vtab_pane_5" aria-selected="false"
+                                            role="tab" tabindex="-1">
+                                            <i class="fa-solid fa-arrow-right-long  text-active-primary pe-3"></i>
+                                            <span class="d-flex flex-column align-items-start">
+                                                <span class="fs-4 fw-bold">Service Two</span>
+                                                <span class="fs-7">Add Your Services</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item w-100 mx-0 mb-2" role="presentation">
+                                        <a class="nav-link w-100 btn btn-flex btn-active-primary rounded-0"
+                                            data-bs-toggle="tab" href="#kt_vtab_pane_6" aria-selected="false"
+                                            role="tab" tabindex="-1">
+                                            <i class="fa-solid fa-arrow-right-long  text-active-primary pe-3"></i>
+                                            <span class="d-flex flex-column align-items-start">
+                                                <span class="fs-4 fw-bold">Service Three</span>
+                                                <span class="fs-7">Add Your Services</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane bg-white fade active show" id="kt_vtab_pane_4"
+                                        role="tabpanel">
+                                        <div class="row p-3">
+                                            <div class="col-lg-6">
+                                                <div class="fv-row my-3">
+                                                    <x-metronic.label class="fw-semibold fs-6 mb-2">Service One
+                                                        Title</x-metronic.label>
+                                                    <x-metronic.input type="text" name="service_one_title"
+                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                        placeholder="Web Developement" value="" />
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="fv-row my-3">
+                                                    <x-metronic.label class="fw-semibold fs-6 mb-2">Service One
+                                                        Image</x-metronic.label>
+                                                    <x-metronic.input type="file" name="service_one_image"
+                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                        placeholder="Web Developement" value="" />
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="fv-row my-3">
+                                                    <x-metronic.label class="fw-semibold fs-6 mb-2">Service One
+                                                        Description</x-metronic.label>
+                                                    <textarea class="form-control form-control-solid" rows="3" name="service_one_description"
+                                                        placeholder="Professional, reliable service provider committed to exceeding expectations with quality, efficiency, and personalized care for every client's needs."></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="fv-row my-3">
-                                        <x-metronic.label class="fw-semibold fs-6 mb-2">Service One
-                                            Image</x-metronic.label>
-                                        <x-metronic.input type="file" name="service_one_image"
-                                            class="form-control form-control-solid mb-3 mb-lg-0"
-                                            placeholder="Web Developement" value="" />
+
+                                    <div class="tab-pane bg-white fade" id="kt_vtab_pane_5" role="tabpanel">
+                                        <div class="row p-3">
+                                            <div class="col-lg-6">
+                                                <div class="fv-row my-3">
+                                                    <x-metronic.label class="fw-semibold fs-6 mb-2">Service Two
+                                                        Title</x-metronic.label>
+                                                    <x-metronic.input type="text" name="service_two_title"
+                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                        placeholder="Web Developement" value="" />
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="fv-row my-3">
+                                                    <x-metronic.label class="fw-semibold fs-6 mb-2">Service Two
+                                                        Image</x-metronic.label>
+                                                    <x-metronic.input type="file" name="service_two_image"
+                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                        placeholder="Web Developement" value="" />
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="fv-row my-3">
+                                                    <x-metronic.label class="fw-semibold fs-6 mb-2">Service Two
+                                                        Description</x-metronic.label>
+                                                    <textarea class="form-control form-control-solid" rows="3" name="service_two_description"
+                                                        placeholder="Professional, reliable service provider committed to exceeding expectations with quality, efficiency, and personalized care for every client's needs."></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="fv-row my-3">
-                                        <x-metronic.label class="fw-semibold fs-6 mb-2">Service One
-                                            Description</x-metronic.label>
-                                        <textarea class="form-control form-control-solid" rows="3" name="service_one_description"
-                                            placeholder="Professional, reliable service provider committed to exceeding expectations with quality, efficiency, and personalized care for every client's needs."></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="row p-3 mb-2" style="border: 1px dashed #eee; background-color: #f5f8fa47 !important;">
-                                <div class="col-lg-6">
-                                    <div class="fv-row my-3">
-                                        <x-metronic.label class="fw-semibold fs-6 mb-2">Service Two
-                                            Title</x-metronic.label>
-                                        <x-metronic.input type="text" name="service_two_title"
-                                            class="form-control form-control-solid mb-3 mb-lg-0"
-                                            placeholder="Web Developement" value="" />
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="fv-row my-3">
-                                        <x-metronic.label class="fw-semibold fs-6 mb-2">Service Two
-                                            Image</x-metronic.label>
-                                        <x-metronic.input type="file" name="service_two_image"
-                                            class="form-control form-control-solid mb-3 mb-lg-0"
-                                            placeholder="Web Developement" value="" />
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="fv-row my-3">
-                                        <x-metronic.label class="fw-semibold fs-6 mb-2">Service Two
-                                            Description</x-metronic.label>
-                                        <textarea class="form-control form-control-solid" rows="3" name="service_two_description"
-                                            placeholder="Professional, reliable service provider committed to exceeding expectations with quality, efficiency, and personalized care for every client's needs."></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="row p-3 mb-2"
-                                style="border: 1px dashed #eee; background-color: #f5f8fa47 !important;">
-                                <div class="col-lg-6">
-                                    <div class="fv-row my-3">
-                                        <x-metronic.label class="fw-semibold fs-6 mb-2">Service Three
-                                            Title</x-metronic.label>
-                                        <x-metronic.input type="text" name="service_three_title"
-                                            class="form-control form-control-solid mb-3 mb-lg-0"
-                                            placeholder="Web Developement" value="" />
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="fv-row my-3">
-                                        <x-metronic.label class="fw-semibold fs-6 mb-2">Service Three
-                                            Image</x-metronic.label>
-                                        <x-metronic.input type="file" name="service_three_image"
-                                            class="form-control form-control-solid mb-3 mb-lg-0"
-                                            placeholder="Web Developement" value="" />
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="fv-row my-3">
-                                        <x-metronic.label class="fw-semibold fs-6 mb-2">Service Three
-                                            Description</x-metronic.label>
-                                        <textarea class="form-control form-control-solid" rows="3" name="service_three_description"
-                                            placeholder="Professional, reliable service provider committed to exceeding expectations with quality, efficiency, and personalized care for every client's needs."></textarea>
+
+                                    <div class="tab-pane bg-white fade" id="kt_vtab_pane_6" role="tabpanel">
+                                        <div class="row p-3"
+                                            style="border: 1px dashed #eee; background-color: #f5f8fa47 !important;">
+                                            <div class="col-lg-6">
+                                                <div class="fv-row my-3">
+                                                    <x-metronic.label class="fw-semibold fs-6 mb-2">Service Three
+                                                        Title</x-metronic.label>
+                                                    <x-metronic.input type="text" name="service_three_title"
+                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                        placeholder="Web Developement" value="" />
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="fv-row my-3">
+                                                    <x-metronic.label class="fw-semibold fs-6 mb-2">Service Three
+                                                        Image</x-metronic.label>
+                                                    <x-metronic.input type="file" name="service_three_image"
+                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                        placeholder="Web Developement" value="" />
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="fv-row my-3">
+                                                    <x-metronic.label class="fw-semibold fs-6 mb-2">Service Three
+                                                        Description</x-metronic.label>
+                                                    <textarea class="form-control form-control-solid" rows="3" name="service_three_description"
+                                                        placeholder="Professional, reliable service provider committed to exceeding expectations with quality, efficiency, and personalized care for every client's needs."></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -304,14 +376,23 @@
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Company Name</x-metronic.label>
                                 <x-metronic.input type="text" name="company_name"
-                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Ngen It"
+                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Your Company Name"
                                     value="" />
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="fv-row my-3">
-                                <x-metronic.label
-                                    class="fw-semibold fs-6 mb-2">Company Address Line One</x-metronic.label>
+                                <x-metronic.label class="fw-semibold fs-6 mb-2">Company About
+                                    Title</x-metronic.label>
+                                <x-metronic.input type="text" name="company_about_title"
+                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="About"
+                                    value="" />
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="fv-row my-3">
+                                <x-metronic.label class="fw-semibold fs-6 mb-2">Company
+                                    House/Road/City</x-metronic.label>
                                 <x-metronic.input type="text" name="company_address_line_one"
                                     class="form-control form-control-solid mb-3 mb-lg-0"
                                     placeholder="257/A, San-fca Calefornia," value="" />
@@ -319,8 +400,8 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="fv-row my-3">
-                                <x-metronic.label class="fw-semibold fs-6 mb-2">Company Address Line
-                                    Two</x-metronic.label>
+                                <x-metronic.label class="fw-semibold fs-6 mb-2">Company
+                                    State/Country</x-metronic.label>
                                 <x-metronic.input type="text" name="company_address_line_two"
                                     class="form-control form-control-solid mb-3 mb-lg-0" placeholder="USA"
                                     value="" />
@@ -339,15 +420,6 @@
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Company Email</x-metronic.label>
                                 <x-metronic.input type="email" name="company_email"
                                     class="form-control form-control-solid mb-3 mb-lg-0" placeholder="USA"
-                                    value="" />
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="fv-row my-3">
-                                <x-metronic.label class="fw-semibold fs-6 mb-2">Company About
-                                    Title</x-metronic.label>
-                                <x-metronic.input type="text" name="company_about_title"
-                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="About"
                                     value="" />
                             </div>
                         </div>
