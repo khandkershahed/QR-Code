@@ -126,84 +126,84 @@
                                         {{ $loop->iteration }}
                                     </td>
                                     <td>
-                                        @if ($nfc_card->nfc_template == 'template-one')
+                                        @if (optional($nfc_card)->nfc_template == 'template-one')
                                             <img class="img-fluid w-50px"
                                                 src="{{ asset('frontend/assets/images/nfc-templates/template_one.jpg') }}"
                                                 alt="">
-                                        @elseif ($nfc_card->nfc_template == 'template-two')
+                                        @elseif (optional($nfc_card)->nfc_template == 'template-two')
                                             <img class="img-fluid w-50px"
                                                 src="{{ asset('frontend/assets/images/nfc-templates/template_two.jpg') }}"
                                                 alt="">
-                                        @elseif ($nfc_card->nfc_template == 'template-three')
+                                        @elseif (optional($nfc_card)->nfc_template == 'template-three')
                                             <img class="img-fluid w-50px"
                                                 src="{{ asset('frontend/assets/images/nfc-templates/template_three.jpg') }}"
                                                 alt="">
-                                        @elseif ($nfc_card->nfc_template == 'template-four')
+                                        @elseif (optional($nfc_card)->nfc_template == 'template-four')
                                             <img class="img-fluid w-50px"
                                                 src="{{ asset('frontend/assets/images/nfc-templates/template_four.jpg') }}"
                                                 alt="">
-                                        @elseif ($nfc_card->nfc_template == 'template-five')
+                                        @elseif (optional($nfc_card)->nfc_template == 'template-five')
                                             <img class="img-fluid w-50px"
                                                 src="{{ asset('frontend/assets/images/nfc-templates/template_five.jpg') }}"
                                                 alt="">
-                                        @elseif ($nfc_card->nfc_template == 'template-six')
+                                        @elseif (optional($nfc_card)->nfc_template == 'template-six')
                                             <img class="img-fluid w-50px"
                                                 src="{{ asset('frontend/assets/images/nfc-templates/template_six.jpg') }}"
                                                 alt="">
                                         @endif
                                     </td>
                                     <td>
-                                        @if ($nfc_card->virtualCard->virtual_card_template == 'virtual-card-one')
+                                        @if (optional($nfc_card)->virtualCard->virtual_card_template == 'virtual-card-one')
                                             <img class="img-fluid w-50px"
                                                 src="{{ asset('frontend/images/virtual_card/virtual_card_1.png') }}"
                                                 alt="">
-                                        @elseif ($nfc_card->virtualCard->virtual_card_template == 'virtual-card-two')
+                                        @elseif (optional($nfc_card)->virtualCard->virtual_card_template == 'virtual-card-two')
                                             <img class="img-fluid w-50px"
                                                 src="{{ asset('frontend/images/virtual_card/virtual_card_2.png') }}"
                                                 alt="">
-                                        @elseif ($nfc_card->virtualCard->virtual_card_template == 'virtual-card-three')
+                                        @elseif (optional($nfc_card)->virtualCard->virtual_card_template == 'virtual-card-three')
                                             <img class="img-fluid w-50px"
                                                 src="{{ asset('frontend/images/virtual_card/virtual_card_3.png') }}"
                                                 alt="">
-                                        @elseif ($nfc_card->virtualCard->virtual_card_template == 'virtual-card-four')
+                                        @elseif (optional($nfc_card)->virtualCard->virtual_card_template == 'virtual-card-four')
                                             <img class="img-fluid w-50px"
                                                 src="{{ asset('frontend/images/virtual_card/virtual_card_4.png') }}"
                                                 alt="">
-                                        @elseif ($nfc_card->virtualCard->virtual_card_template == 'virtual-card-five')
+                                        @elseif (optional($nfc_card)->virtualCard->virtual_card_template == 'virtual-card-five')
                                             <img class="img-fluid w-50px"
                                                 src="{{ asset('frontend/images/virtual_card/virtual_card_5.png') }}"
                                                 alt="">
-                                        @elseif ($nfc_card->virtualCard->virtual_card_template == 'virtual-card-six')
+                                        @elseif (optional($nfc_card)->virtualCard->virtual_card_template == 'virtual-card-six')
                                             <img class="img-fluid w-50px"
                                                 src="{{ asset('frontend/images/virtual_card/virtual_card_6.png') }}"
                                                 alt="">
-                                        @elseif ($nfc_card->virtualCard->virtual_card_template == 'virtual-card-seven')
+                                        @elseif (optional($nfc_card)->virtualCard->virtual_card_template == 'virtual-card-seven')
                                             <img class="img-fluid w-50px"
                                                 src="{{ asset('frontend/images/virtual_card/virtual_card_7.png') }}"
                                                 alt="">
-                                        @elseif ($nfc_card->virtualCard->virtual_card_template == 'virtual-card-eight')
+                                        @elseif (optional($nfc_card)->virtualCard->virtual_card_template == 'virtual-card-eight')
                                             <img class="img-fluid w-50px"
                                                 src="{{ asset('frontend/images/virtual_card/virtual_card_8.png') }}"
                                                 alt="">
                                         @endif
                                     </td>
                                     <td>
-                                        <div class="text-success">{{ optional($nfc_card->nfcData)->first_name }}
-                                            {{ optional($nfc_card->nfcData)->last_name }}
+                                        <div class="text-success">{{ optional(optional($nfc_card)->nfcData)->first_name }}
+                                            {{ optional(optional($nfc_card)->nfcData)->last_name }}
                                         </div>
                                     </td>
                                     {{-- <td>
                                         <button class="btn btn-light-primary">94</button>
                                     </td> --}}
                                     <td>
-                                        <a href="{{ $nfc_card->nfc_url }}" target="_blank" class="text-primary">
+                                        <a href="{{ optional($nfc_card)->nfc_url }}" target="_blank" class="text-primary">
                                             <button class="btn btn-sm btn-info">NFC <i
                                                     class="fa-solid fa-link ps-2"></i></button>
                                         </a>
                                     </td>
                                     <td>
                                         <a href="javascript:void(0)" data-bs-toggle="modal"
-                                            data-bs-target="#virtual_card_modal_{{ $nfc_card->id }}"
+                                            data-bs-target="#virtual_card_modal_{{ optional($nfc_card)->id }}"
                                             class="text-primary">
                                             <button class="btn btn-sm btn-info"><i class="fa-regular fa-eye pe-2"></i>
                                                 CARD</button>
@@ -211,7 +211,7 @@
                                     </td>
                                     <td>
                                         <a href="javascript:void(0)" data-bs-toggle="modal"
-                                            data-bs-target="#shipping_address_modal_{{ $nfc_card->id }}"
+                                            data-bs-target="#shipping_address_modal_{{ optional($nfc_card)->id }}"
                                             class="text-primary">
                                             <button class="btn btn-sm btn-info"><i class="fa-regular fa-eye pe-2"></i>
                                                 Shipping</button>
@@ -243,10 +243,10 @@
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-3">
                                                 {{-- <a href="#" class="menu-link px-3" data-bs-toggle="modal"
-                                                    data-bs-target="#message_modal_{{ $nfc_card->id }}">
+                                                    data-bs-target="#message_modal_{{ optional($nfc_card)->id }}">
                                                     All messages
                                                 </a> --}}
-                                                <a href="{{ route('user.nfc-card.show', $nfc_card->code) }}"
+                                                <a href="{{ route('user.nfc-card.show', optional($nfc_card)->code) }}"
                                                     class="menu-link px-3">
                                                     All messages
                                                 </a>
@@ -255,7 +255,7 @@
 
                                             <!--begin::Menu item-->
                                             {{-- <div class="menu-item px-3">
-                                                <a href="{{ route('user.nfc-card.destroy', $nfc_card->id) }}"
+                                                <a href="{{ route('user.nfc-card.destroy', optional($nfc_card)->id) }}"
                                                     class="menu-link px-3 delete">
                                                     Delete
                                                 </a>
@@ -275,7 +275,7 @@
 
     {{-- Virtual Card Preview Modal End --}}
     @foreach ($nfc_cards as $nfc_card)
-        <div class="modal fade" tabindex="-1" id="message_modal_{{ $nfc_card->id }}">
+        <div class="modal fade" tabindex="-1" id="message_modal_{{ optional($nfc_card)->id }}">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content position-absolute">
                     <div class="modal-header">
@@ -305,7 +305,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="fw-semibold text-gray-600">
-                                    @foreach ($nfc_card->nfcMessages as $nfc_message)
+                                    @foreach (optional($nfc_card)->nfcMessages as $nfc_message)
                                         <tr>
                                             <td>
                                                 {{ optional($nfc_message)->name }}
@@ -374,7 +374,7 @@
             </div>
         </div>
 
-        <div class="modal fade" tabindex="-1" id="virtual_card_modal_{{ $nfc_card->id }}">
+        <div class="modal fade" tabindex="-1" id="virtual_card_modal_{{ optional($nfc_card)->id }}">
             <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width: 645px !important;">
                 <div class="modal-content position-absolute">
                     <div class="modal-body pb-0">
@@ -468,17 +468,17 @@
                         </style>
                         <div class="card">
                             <div>
-                                @if ($nfc_card->virtualCard->virtual_card_template == 'virtual-card-one')
+                                @if (optional($nfc_card)->virtualCard->virtual_card_template == 'virtual-card-one')
                                     <div class="row mt-5">
                                         <div class="col-12">
                                             <!-- Visiting Card Box Container -->
                                             <div class="punch-card-container"
-                                                style="background-image: url({{ asset('storage/nfc/' . $nfc_card->virtualCard->card_bg_front) }});">
+                                                style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card)->virtualCard->card_bg_front) }});">
                                                 <div class="row p-5 align-items-center" style="height: 33vh;">
                                                     <div class="col-lg-6 text-center text-lg-start">
                                                         <div class="ps-lg-4">
                                                             <img class="punch-card-logo card_logo"
-                                                                src="{{ asset('storage/nfc/' . $nfc_card->virtualCard->card_logo) }}"
+                                                                src="{{ asset('storage/nfc/' . optional($nfc_card)->virtualCard->card_logo) }}"
                                                                 alt="Logo" />
                                                         </div>
                                                         <div class="mt-4 mt-lg-0">
@@ -490,20 +490,20 @@
                                                     <div class="col-lg-6 mt-4 mt-lg-0">
                                                         <div class="text-center text-lg-end content-area">
                                                             <h4 class="fw-bold mb-0 card_name">
-                                                                {{ $nfc_card->virtualCard->card_name }}</h4>
+                                                                {{ optional($nfc_card)->virtualCard->card_name }}</h4>
                                                             <p class="fw-bold mb-0 card_designation">
-                                                                {{ $nfc_card->virtualCard->card_designation }}</p>
+                                                                {{ optional($nfc_card)->virtualCard->card_designation }}</p>
                                                             <div class="me-auto mt-2 title-devider-tem-one"></div>
                                                             <div>
                                                                 <p class="fw-bold pt-3 mb-0">
                                                                     <span
-                                                                        class="card_phone">{{ $nfc_card->virtualCard->card_phone }}</span>
+                                                                        class="card_phone">{{ optional($nfc_card)->virtualCard->card_phone }}</span>
                                                                     <i
                                                                         class="fa-solid fa-phone tem-one-main-color "></i>
                                                                 </p>
                                                                 <p class="fw-bold mb-0">
                                                                     <span
-                                                                        class="card_email">{{ $nfc_card->virtualCard->card_email }}</span>
+                                                                        class="card_email">{{ optional($nfc_card)->virtualCard->card_email }}</span>
                                                                     <i
                                                                         class="fa-solid fa-envelope tem-one-main-color "></i>
                                                                 </p>
@@ -511,7 +511,7 @@
                                                             <div>
                                                                 <p class="fw-bold mb-0">
                                                                     <span
-                                                                        class="card_address">{{ $nfc_card->virtualCard->card_address }}</span>
+                                                                        class="card_address">{{ optional($nfc_card)->virtualCard->card_address }}</span>
                                                                     <i
                                                                         class="fa-solid fa-map-marker-alt tem-one-main-color"></i>
                                                                 </p>
@@ -521,12 +521,12 @@
                                                 </div>
                                             </div>
                                             <div class="punch-card-container-back-one"
-                                                style="background-image: url({{ asset('storage/nfc/' . $nfc_card->virtualCard->card_bg_back) }}); background-repeat: no-repeat; background-size: cover;">
+                                                style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card)->virtualCard->card_bg_back) }}); background-repeat: no-repeat; background-size: cover;">
                                                 <div class="row p-5 align-items-center">
                                                     <div
                                                         class="col-12 d-flex justify-content-center align-items-center">
                                                         <img class="img-fluid card_font_color pt-8" width="200px;"
-                                                            src="{{ asset('storage/nfc/' . $nfc_card->virtualCard->card_logo) }}"
+                                                            src="{{ asset('storage/nfc/' . optional($nfc_card)->virtualCard->card_logo) }}"
                                                             alt="Logo Back" />
                                                     </div>
                                                     <div
@@ -541,40 +541,40 @@
                                             <!-- Visiting Card Box Container End-->
                                         </div>
                                     </div>
-                                @elseif ($nfc_card->virtualCard->virtual_card_template == 'virtual-card-two')
+                                @elseif (optional($nfc_card)->virtualCard->virtual_card_template == 'virtual-card-two')
                                     <div class="row mt-5">
                                         <div class="col-12">
                                             <!-- Visiting Card Box Container -->
                                             <div class="punch-card-container"
-                                                style="background-image: url({{ asset('storage/nfc/' . $nfc_card->virtualCard->card_bg_front) }});">
+                                                style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card)->virtualCard->card_bg_front) }});">
                                                 <div class="row p-5 align-items-center py-8">
                                                     <div class="col-lg-6 text-lg-start text-start">
                                                         <div>
                                                             <img class="punch-card-logo mb-4 card_logo"
-                                                                src="{{ asset('storage/nfc/' . $nfc_card->virtualCard->card_logo) }}"
+                                                                src="{{ asset('storage/nfc/' . optional($nfc_card)->virtualCard->card_logo) }}"
                                                                 alt="Logo">
                                                         </div>
                                                         <div class="text-start content-area font">
                                                             <h4 class="fw-bold mb-0 card_name text-white">
-                                                                {{ $nfc_card->virtualCard->card_name }}</h4>
+                                                                {{ optional($nfc_card)->virtualCard->card_name }}</h4>
                                                             <p class="fw-bold mb-0 card_designation">
-                                                                {{ $nfc_card->virtualCard->card_designation }}
+                                                                {{ optional($nfc_card)->virtualCard->card_designation }}
                                                             </p>
                                                             <div class="title-devider mt-2"></div>
                                                             <div class="contact-info">
                                                                 <p class="fw-bold text-white pt-3 mb-0">
                                                                     <i class="fa-solid fa-phone"></i> <span
-                                                                        class="card_phone">{{ $nfc_card->virtualCard->card_phone }}</span>
+                                                                        class="card_phone">{{ optional($nfc_card)->virtualCard->card_phone }}</span>
                                                                 </p>
                                                                 <p class="fw-bold text-white mb-0">
                                                                     <i class="fa-solid fa-envelope"></i> <span
-                                                                        class="card_email">{{ $nfc_card->virtualCard->card_email }}</span>
+                                                                        class="card_email">{{ optional($nfc_card)->virtualCard->card_email }}</span>
                                                                 </p>
                                                             </div>
                                                             <div>
                                                                 <p class="fw-bold mb-0 text-white">
                                                                     <i class="fa-solid fa-map-marker-alt"></i> <span
-                                                                        class="card_address">{{ $nfc_card->virtualCard->card_address }}</span>
+                                                                        class="card_address">{{ optional($nfc_card)->virtualCard->card_address }}</span>
                                                                 </p>
                                                             </div>
                                                         </div>
@@ -583,12 +583,12 @@
                                                 </div>
                                             </div>
                                             <div class="punch-card-container-back"
-                                                style="background-image: url({{ asset('storage/nfc/' . $nfc_card->virtualCard->card_bg_back) }});">
+                                                style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card)->virtualCard->card_bg_back) }});">
                                                 <div class="row p-5 align-items-center py-8">
                                                     <div class="col-12 d-flex justify-content-center align-items-center"
                                                         style="height: 28vh;">
                                                         <img class="img-fluid card_font_color pt-8" width="300px;"
-                                                            src="{{ asset('storage/nfc/' . $nfc_card->virtualCard->card_logo) }}"
+                                                            src="{{ asset('storage/nfc/' . optional($nfc_card)->virtualCard->card_logo) }}"
                                                             alt="Logo Back" />
                                                     </div>
                                                 </div>
@@ -596,42 +596,42 @@
                                             <!-- Visiting Card Box Container End -->
                                         </div>
                                     </div>
-                                @elseif ($nfc_card->virtualCard->virtual_card_template == 'virtual-card-three')
+                                @elseif (optional($nfc_card)->virtualCard->virtual_card_template == 'virtual-card-three')
                                     <div class="row">
                                         <div
                                             class="col-lg-12 d-flex justify-content-center align-items-center flex-column">
                                             <div class="punch-card-container px-5"
-                                                style="background-image: url({{ asset('storage/nfc/' . $nfc_card->virtualCard->card_bg_front) }});">
+                                                style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card)->virtualCard->card_bg_front) }});">
                                                 <div class="row p-5 px-10 align-items-center">
                                                     <!-- Left column for card details -->
                                                     <div class="col-lg-6 text-lg-start text-start">
                                                         <div>
                                                             <img class="punch-card-logo mb-4 card_logo"
-                                                                src="{{ asset('storage/nfc/' . $nfc_card->virtualCard->card_logo) }}"
+                                                                src="{{ asset('storage/nfc/' . optional($nfc_card)->virtualCard->card_logo) }}"
                                                                 alt="Logo" />
                                                         </div>
                                                         <div class="text-start content-area font">
                                                             <h4 class="fw-bold mb-0 card_name card_font_color"
                                                                 style="color: #fff">
-                                                                {{ $nfc_card->virtualCard->card_name }}
+                                                                {{ optional($nfc_card)->virtualCard->card_name }}
                                                             </h4>
                                                             <p class="fw-bold mb-0 card_designation card_font_color">
-                                                                {{ $nfc_card->virtualCard->card_designation }}</p>
+                                                                {{ optional($nfc_card)->virtualCard->card_designation }}</p>
                                                             <hr class="title-divider mt-2" />
                                                             <div>
                                                                 <p class="fw-bold text-white pt-3 mb-0">
                                                                     <i class="fa-solid fa-phone"></i> <span
-                                                                        class="card_phone card_font_color">{{ $nfc_card->virtualCard->card_phone }}</span>
+                                                                        class="card_phone card_font_color">{{ optional($nfc_card)->virtualCard->card_phone }}</span>
                                                                 </p>
                                                                 <p class="fw-bold text-white mb-0">
                                                                     <i class="fa-solid fa-envelope"></i> <span
-                                                                        class="card_email card_font_color">{{ $nfc_card->virtualCard->card_email }}</span>
+                                                                        class="card_email card_font_color">{{ optional($nfc_card)->virtualCard->card_email }}</span>
                                                                 </p>
                                                             </div>
                                                             <div>
                                                                 <p class="fw-bold mb-0 text-white">
                                                                     <i class="fa-solid fa-map-marker-alt"></i> <span
-                                                                        class="card_address card_font_color">{{ $nfc_card->virtualCard->card_address }}</span>
+                                                                        class="card_address card_font_color">{{ optional($nfc_card)->virtualCard->card_address }}</span>
                                                                 </p>
                                                             </div>
                                                         </div>
@@ -650,24 +650,24 @@
                                                 </div>
                                             </div>
                                             <div class="punch-card-container-back"
-                                                style="background-image: url({{ asset('storage/nfc/' . $nfc_card->virtualCard->card_bg_back) }});">
+                                                style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card)->virtualCard->card_bg_back) }});">
                                                 <div class="row p-5 align-items-center">
                                                     <div class="col-12 d-flex justify-content-center align-items-center"
                                                         style="height: 28vh;">
                                                         <img class="img-fluid card_font_color" width="300px;"
-                                                            src="{{ asset('storage/nfc/' . $nfc_card->virtualCard->card_logo) }}"
+                                                            src="{{ asset('storage/nfc/' . optional($nfc_card)->virtualCard->card_logo) }}"
                                                             alt="Logo Back" />
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                @elseif ($nfc_card->virtualCard->virtual_card_template == 'virtual-card-four')
+                                @elseif (optional($nfc_card)->virtualCard->virtual_card_template == 'virtual-card-four')
                                     <div class="row">
                                         <div class="col-12">
                                             <!-- Visiting Card Box Container -->
                                             <div class="punch-card-container"
-                                                style="background-image: url({{ asset('storage/nfc/' . $nfc_card->virtualCard->card_bg_front) }});">
+                                                style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card)->virtualCard->card_bg_front) }});">
                                                 <div class="row p-5 align-items-center" style="height: 33vh">
                                                     <div class="col-lg-6 d-flex justify-content-start font">
                                                         <div class="">
@@ -683,32 +683,32 @@
                                                     <div class="col-lg-6 text-lg-start text-end">
                                                         <div>
                                                             <img class="punch-card-logo card_logo"
-                                                                src="{{ asset('storage/nfc/' . $nfc_card->virtualCard->card_logo) }}"
+                                                                src="{{ asset('storage/nfc/' . optional($nfc_card)->virtualCard->card_logo) }}"
                                                                 alt="Logo" />
                                                         </div>
                                                         <div class="text-start content-area font">
                                                             <h4 class="fw-bold mb-0 card_name" style="color: #fff">
-                                                                {{ $nfc_card->virtualCard->card_name }}
+                                                                {{ optional($nfc_card)->virtualCard->card_name }}
                                                             </h4>
                                                             <p class="fw-bold mb-0 card_designation">
-                                                                {{ $nfc_card->virtualCard->card_designation }}</p>
+                                                                {{ optional($nfc_card)->virtualCard->card_designation }}</p>
                                                             <div class="me-auto mt-2 title-devider"
                                                                 style="height: 2px;width: 120px;background-color: #fff;margin: start;position: relative;left: 0px;">
                                                             </div>
                                                             <div>
                                                                 <p class="fw-bold text-white pt-3 mb-0">
                                                                     <i class="fa-solid fa-phone"></i> <span
-                                                                        class="card_phone">{{ $nfc_card->virtualCard->card_phone }}</span>
+                                                                        class="card_phone">{{ optional($nfc_card)->virtualCard->card_phone }}</span>
                                                                 </p>
                                                                 <p class="fw-bold text-white mb-0">
                                                                     <i class="fa-solid fa-envelope"></i> <span
-                                                                        class="card_email">{{ $nfc_card->virtualCard->card_email }}</span>
+                                                                        class="card_email">{{ optional($nfc_card)->virtualCard->card_email }}</span>
                                                                 </p>
                                                             </div>
                                                             <div>
                                                                 <p class="fw-bold mb-0 text-white">
                                                                     <i class="fa-solid fa-map-marker-alt"></i> <span
-                                                                        class="card_address">{{ $nfc_card->virtualCard->card_address }}</span>
+                                                                        class="card_address">{{ optional($nfc_card)->virtualCard->card_address }}</span>
                                                                 </p>
                                                             </div>
                                                         </div>
@@ -716,12 +716,12 @@
                                                 </div>
                                             </div>
                                             <div class="punch-card-container-back"
-                                                style="background-image: url({{ asset('storage/nfc/' . $nfc_card->virtualCard->card_bg_back) }});">
+                                                style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card)->virtualCard->card_bg_back) }});">
                                                 <div class="row p-5 align-items-center">
                                                     <div class="col-12 d-flex justify-content-center align-items-center"
                                                         style="height: 28vh">
                                                         <img class="punch-card-logo-back card_logo"
-                                                            src="{{ asset('storage/nfc/' . $nfc_card->virtualCard->card_logo) }}"
+                                                            src="{{ asset('storage/nfc/' . optional($nfc_card)->virtualCard->card_logo) }}"
                                                             alt="Logo Back" />
                                                     </div>
                                                 </div>
@@ -729,7 +729,7 @@
                                             <!-- Visiting Card Box Container End-->
                                         </div>
                                     </div>
-                                @elseif ($nfc_card->virtualCard->virtual_card_template == 'virtual-card-five')
+                                @elseif (optional($nfc_card)->virtualCard->virtual_card_template == 'virtual-card-five')
                                     <div class="row">
                                         <div class="col-12">
                                             <!-- Visiting Card Box Container -->
@@ -740,7 +740,7 @@
                                                         <div class="text-center">
                                                             <div class="d-flex justify-content-center">
                                                                 <img width="70px"
-                                                                    src="{{ asset('storage/nfc/' . $nfc_card->virtualCard->card_logo) }}"
+                                                                    src="{{ asset('storage/nfc/' . optional($nfc_card)->virtualCard->card_logo) }}"
                                                                     alt="" />
                                                             </div>
                                                             <h1 class="fw-bold"
@@ -764,27 +764,27 @@
                                                         <div class="text-end content-area font">
                                                             <h4 class="fw-bold mb-0 sp-font card_name"
                                                                 style="color: #D19A26">
-                                                                {{ $nfc_card->virtualCard->card_name }}
+                                                                {{ optional($nfc_card)->virtualCard->card_name }}
                                                             </h4>
                                                             <p class="mb-0 card_designation" style="color: #D19A26">
-                                                                {{ $nfc_card->virtualCard->card_designation }}
+                                                                {{ optional($nfc_card)->virtualCard->card_designation }}
                                                             </p>
                                                             <div>
                                                                 <p class="fw-bold pt-3 mb-0" style="color: #D19A26">
                                                                     <span
-                                                                        class="card_phone">{{ $nfc_card->virtualCard->card_phone }}</span>
+                                                                        class="card_phone">{{ optional($nfc_card)->virtualCard->card_phone }}</span>
                                                                     <i class="fa-solid fa-phone"></i>
                                                                 </p>
                                                                 <p class="fw-bold mb-4" style="color: #D19A26">
                                                                     <span
-                                                                        class="card_email">{{ $nfc_card->virtualCard->card_email }}</span>
+                                                                        class="card_email">{{ optional($nfc_card)->virtualCard->card_email }}</span>
                                                                     <i class="fa-solid fa-envelope"></i>
                                                                 </p>
                                                             </div>
                                                             <div>
                                                                 <p class="fw-bold mb-0" style="color: #D19A26">
                                                                     <span
-                                                                        class="card_address">{{ $nfc_card->virtualCard->card_address }}</span>
+                                                                        class="card_address">{{ optional($nfc_card)->virtualCard->card_address }}</span>
                                                                     <i class="fa-solid fa-map-marker-alt"></i>
                                                                 </p>
                                                                 {{-- <p class="fw-bold mb-0" style="color: #D19A26">
@@ -798,12 +798,12 @@
                                             <!-- Visiting Card Box Container End-->
                                         </div>
                                     </div>
-                                @elseif ($nfc_card->virtualCard->virtual_card_template == 'virtual-card-six')
+                                @elseif (optional($nfc_card)->virtualCard->virtual_card_template == 'virtual-card-six')
                                     <div class="row">
                                         <div class="col-12">
                                             <!-- Visiting Card Box Container -->
                                             <div class="punch-card-container"
-                                                style="background-image: url({{ asset('storage/nfc/' . $nfc_card->virtualCard->card_bg_front) }});">
+                                                style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card)->virtualCard->card_bg_front) }});">
                                                 <div class="row p-5 align-items-center" style="height: 33vh">
                                                     <div class="col-lg-6 d-flex justify-content-start font">
                                                         <div class="">
@@ -819,28 +819,28 @@
                                                     <div class="col-lg-6 text-lg-start text-end">
                                                         <div class="text-start content-area font">
                                                             <h4 class="fw-bold mb-0 card_name" style="color: #fff">
-                                                                {{ $nfc_card->virtualCard->card_name }}
+                                                                {{ optional($nfc_card)->virtualCard->card_name }}
                                                             </h4>
                                                             <p class="fw-bold mb-0 card_designation">
-                                                                {{ $nfc_card->virtualCard->card_designation }}</p>
+                                                                {{ optional($nfc_card)->virtualCard->card_designation }}</p>
                                                             <div class="me-auto mt-2 title-devider"
                                                                 style="height: 2px;width: 120px;background-color: #fff;margin: start;position: relative;left: 0px;">
                                                             </div>
                                                             <div>
                                                                 <p class="fw-bold text-white pt-3 mb-0">
                                                                     <i class="fa-solid fa-phone pe-2"></i> <span
-                                                                        class="card_phone">{{ $nfc_card->virtualCard->card_phone }}</span>
+                                                                        class="card_phone">{{ optional($nfc_card)->virtualCard->card_phone }}</span>
                                                                 </p>
                                                                 <p class="fw-bold text-white mb-0">
                                                                     <i class="fa-solid fa-envelope pe-2"></i> <span
-                                                                        class="card_email">{{ $nfc_card->virtualCard->card_email }}</span>
+                                                                        class="card_email">{{ optional($nfc_card)->virtualCard->card_email }}</span>
                                                                 </p>
                                                             </div>
                                                             <div>
                                                                 <p class="fw-bold mb-0 text-white">
                                                                     <i class="fa-solid fa-map-marker-alt pe-2"></i>
                                                                     <span
-                                                                        class="card_address">{{ $nfc_card->virtualCard->card_address }}</span>
+                                                                        class="card_address">{{ optional($nfc_card)->virtualCard->card_address }}</span>
                                                                 </p>
                                                             </div>
                                                         </div>
@@ -848,12 +848,12 @@
                                                 </div>
                                             </div>
                                             <div class="punch-card-container-back"
-                                                style="background-image: url({{ asset('storage/nfc/' . $nfc_card->virtualCard->card_bg_back) }});">
+                                                style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card)->virtualCard->card_bg_back) }});">
                                                 <div class="row p-5 align-items-center">
                                                     <div class="col-12 d-flex justify-content-center align-items-center"
                                                         style="height: 28vh">
                                                         <img class="img-fluid card_font_color pt-8" width="300px;"
-                                                            src="{{ asset('storage/nfc/' . $nfc_card->virtualCard->card_logo) }}"
+                                                            src="{{ asset('storage/nfc/' . optional($nfc_card)->virtualCard->card_logo) }}"
                                                             alt="Logo Back" />
                                                     </div>
                                                 </div>
@@ -861,12 +861,12 @@
                                             <!-- Visiting Card Box Container End-->
                                         </div>
                                     </div>
-                                @elseif ($nfc_card->virtualCard->virtual_card_template == 'virtual-card-seven')
+                                @elseif (optional($nfc_card)->virtualCard->virtual_card_template == 'virtual-card-seven')
                                     <div class="row">
                                         <div class="col-12">
                                             <!-- Visiting Card Box Container -->
                                             <div class="punch-card-container"
-                                                style="background-image: url({{ asset('storage/nfc/' . $nfc_card->virtualCard->card_bg_front) }});">
+                                                style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card)->virtualCard->card_bg_front) }});">
                                                 <div class="row p-5 align-items-center">
                                                     <div class="col-lg-6 d-flex justify-content-center align-items-center font"
                                                         style="height: 28vh">
@@ -884,39 +884,39 @@
                                                     <div class="col-lg-6 text-lg-center text-end">
                                                         <div>
                                                             <img class="punch-card-logo-back card_logo"
-                                                                src="{{ asset('storage/nfc/' . $nfc_card->virtualCard->card_logo) }}"
+                                                                src="{{ asset('storage/nfc/' . optional($nfc_card)->virtualCard->card_logo) }}"
                                                                 alt="Logo Back" />
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="punch-card-container-back"
-                                                style="background-image: url({{ asset('storage/nfc/' . $nfc_card->virtualCard->card_bg_back) }});">
+                                                style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card)->virtualCard->card_bg_back) }});">
                                                 <div class="row p-5 px-10 align-items-center">
                                                     <div class="col-12 d-flex justify-content-start align-items-center"
                                                         style="height: 29vh">
                                                         <div class="text-start content-area font">
                                                             <h4 class="fw-bold mb-0 card_name" style="color: #fff">
-                                                                {{ $nfc_card->virtualCard->card_name }}
+                                                                {{ optional($nfc_card)->virtualCard->card_name }}
                                                             </h4>
                                                             <p class="fw-bold mb-0 card_designation">
-                                                                {{ $nfc_card->virtualCard->card_designation }}</p>
+                                                                {{ optional($nfc_card)->virtualCard->card_designation }}</p>
                                                             <div>
                                                                 <p class="fw-bold text-white pt-3 mb-0">
                                                                     <i class="fa-solid fa-phone pe-2"></i> <span
-                                                                        class="card_phone">{{ $nfc_card->virtualCard->card_phone }}</span>
+                                                                        class="card_phone">{{ optional($nfc_card)->virtualCard->card_phone }}</span>
                                                                 </p>
                                                                 <p class="fw-bold text-white mb-0">
                                                                     <i class="fa-solid fa-envelope pe-2 mb-3"></i>
                                                                     <span
-                                                                        class="card_email">{{ $nfc_card->virtualCard->card_email }}</span>
+                                                                        class="card_email">{{ optional($nfc_card)->virtualCard->card_email }}</span>
                                                                 </p>
                                                             </div>
                                                             <div>
                                                                 <p class="fw-bold mb-0 text-white">
                                                                     <i class="fa-solid fa-map-marker-alt pe-2"></i>
                                                                     <span
-                                                                        class="card_address">{{ $nfc_card->virtualCard->card_address }}</span>
+                                                                        class="card_address">{{ optional($nfc_card)->virtualCard->card_address }}</span>
                                                                 </p>
                                                                 {{-- <p class="fw-bold mb-0 text-white">
                                                                 -Downtown Dubia-Dubai- United Arab Emirates
@@ -929,7 +929,7 @@
                                             <!-- Visiting Card Box Container End-->
                                         </div>
                                     </div>
-                                @elseif ($nfc_card->virtualCard->virtual_card_template == 'virtual-card-eight')
+                                @elseif (optional($nfc_card)->virtualCard->virtual_card_template == 'virtual-card-eight')
                                     <div class="row">
                                         <div class="col-12">
                                             <!-- Visiting Card Box Container -->
@@ -952,7 +952,7 @@
                                                     <div class="col-lg-6 text-lg-center text-end">
                                                         <div>
                                                             <img class="punch-card-logo-back card_logo"
-                                                                src="{{ asset('storage/nfc/' . $nfc_card->virtualCard->card_logo) }}"
+                                                                src="{{ asset('storage/nfc/' . optional($nfc_card)->virtualCard->card_logo) }}"
                                                                 alt="Logo Back" />
                                                         </div>
                                                     </div>
@@ -966,26 +966,26 @@
                                                         style="height: 28vh">
                                                         <div class="text-start content-area font">
                                                             <h4 class="fw-bold mb-0 card_name" style="color: #fff">
-                                                                {{ $nfc_card->virtualCard->card_name }}
+                                                                {{ optional($nfc_card)->virtualCard->card_name }}
                                                             </h4>
                                                             <p class="fw-bold mb-0 card_designation">
-                                                                {{ $nfc_card->virtualCard->card_designation }}</p>
+                                                                {{ optional($nfc_card)->virtualCard->card_designation }}</p>
                                                             <div>
                                                                 <p class="fw-bold text-white pt-3 mb-0">
                                                                     <i class="fa-solid fa-phone pe-2"></i> <span
-                                                                        class="card_phone">{{ $nfc_card->virtualCard->card_phone }}</span>
+                                                                        class="card_phone">{{ optional($nfc_card)->virtualCard->card_phone }}</span>
                                                                 </p>
                                                                 <p class="fw-bold text-white mb-0">
                                                                     <i class="fa-solid fa-envelope pe-2 mb-3"></i>
                                                                     <span
-                                                                        class="card_email">{{ $nfc_card->virtualCard->card_email }}</span>
+                                                                        class="card_email">{{ optional($nfc_card)->virtualCard->card_email }}</span>
                                                                 </p>
                                                             </div>
                                                             <div>
                                                                 <p class="fw-bold mb-0 text-white">
                                                                     <i class="fa-solid fa-map-marker-alt pe-2"></i>
                                                                     <span
-                                                                        class="card_address">{{ $nfc_card->virtualCard->card_address }}</span>
+                                                                        class="card_address">{{ optional($nfc_card)->virtualCard->card_address }}</span>
                                                                 </p>
                                                                 {{-- <p class="fw-bold mb-0 text-white">
                                                             -Downtown Dubia-Dubai- United Arab Emirates
@@ -1018,7 +1018,7 @@
             </div>
         </div>
 
-        <div class="modal fade" tabindex="-1" id="shipping_address_modal_{{ $nfc_card->id }}">
+        <div class="modal fade" tabindex="-1" id="shipping_address_modal_{{ optional($nfc_card)->id }}">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content position-absolute">
                     <div class="modal-header">
@@ -1041,49 +1041,49 @@
                                         <x-metronic.label for="name" class="form-label">
                                             {{ __('Contact Person Name') }}
                                         </x-metronic.label>
-                                        <h6 class="p-0 m-0">{{ $nfc_card->shippingDetails->shipping_name }} </h6>
+                                        <h6 class="p-0 m-0">{{ optional($nfc_card)->shippingDetails->shipping_name }} </h6>
                                     </div>
                                     <div class="col-lg-5 mb-5">
                                         <x-metronic.label for="phone" class="form-label">
                                             {{ __('Phone') }}
                                         </x-metronic.label>
-                                        <h6 class="p-0 m-0">{{ $nfc_card->shippingDetails->shipping_phone }} </h6>
+                                        <h6 class="p-0 m-0">{{ optional($nfc_card)->shippingDetails->shipping_phone }} </h6>
                                     </div>
                                     <div class="col-lg-8 mb-5">
                                         <x-metronic.label for="address" class="form-label">
                                             {{ __('Address') }}
                                         </x-metronic.label>
-                                        <h6 class="p-0 m-0">{{ $nfc_card->shippingDetails->shipping_address }} </h6>
+                                        <h6 class="p-0 m-0">{{ optional($nfc_card)->shippingDetails->shipping_address }} </h6>
                                     </div>
                                     <div class="col-lg-4 mb-5">
                                         <x-metronic.label for="city" class="form-label">
                                             {{ __('City') }}
                                         </x-metronic.label>
-                                        <h6 class="p-0 m-0">{{ $nfc_card->shippingDetails->shipping_city }} </h6>
+                                        <h6 class="p-0 m-0">{{ optional($nfc_card)->shippingDetails->shipping_city }} </h6>
                                     </div>
                                     <div class="col-lg-4 mb-5">
                                         <x-metronic.label for="state" class="form-label">
                                             {{ __('State') }}
                                         </x-metronic.label>
-                                        <h6 class="p-0 m-0">{{ $nfc_card->shippingDetails->shipping_state }} </h6>
+                                        <h6 class="p-0 m-0">{{ optional($nfc_card)->shippingDetails->shipping_state }} </h6>
                                     </div>
                                     <div class="col-lg-4 mb-5">
                                         <x-metronic.label for="zip_code" class="form-label">
                                             {{ __('Zip code') }}
                                         </x-metronic.label>
-                                        <h6 class="p-0 m-0">{{ $nfc_card->shippingDetails->shipping_zip_code }} </h6>
+                                        <h6 class="p-0 m-0">{{ optional($nfc_card)->shippingDetails->shipping_zip_code }} </h6>
                                     </div>
                                     <div class="col-lg-4 mb-5">
                                         <x-metronic.label for="country" class="form-label">
                                             {{ __('Country') }}
                                         </x-metronic.label>
-                                        <h6 class="p-0 m-0">{{ $nfc_card->shippingDetails->shipping_country }} </h6>
+                                        <h6 class="p-0 m-0">{{ optional($nfc_card)->shippingDetails->shipping_country }} </h6>
                                     </div>
                                     <div class="col-lg-12 mb-5">
                                         <x-metronic.label for="instruction" class="form-label">
                                             {{ __('Instruction') }}
                                         </x-metronic.label>
-                                        <h6 class="p-0 m-0">{{ $nfc_card->shippingDetails->shipping_instruction }} </h6>
+                                        <h6 class="p-0 m-0">{{ optional($nfc_card)->shippingDetails->shipping_instruction }} </h6>
                                     </div>
                                 </div>
                             </div>

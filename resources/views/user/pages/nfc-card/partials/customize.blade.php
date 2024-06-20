@@ -29,7 +29,7 @@
                        </span>
                    </a>
                </li>
-               <li class="nav-item w-100" role="presentation">
+               {{-- <li class="nav-item w-100" role="presentation">
                    <a class="nav-link w-100 btn btn-flex btn-active-primary rounded-0" data-bs-toggle="tab"
                        href="#kt_vtab_pane_71" aria-selected="true" role="tab">
                         <i class="fa-solid fa-arrow-right-long  text-active-primary pe-3"></i>
@@ -37,7 +37,7 @@
                            <span class="fs-4 fw-bold">Frame Color</span>
                        </span>
                    </a>
-               </li>
+               </li> --}}
            </ul>
 
            <div class="tab-content w-100 bg-white p-3" id="myTabContent">
@@ -45,12 +45,12 @@
                    <div class="row py-5">
                        <div class="col-lg-6 offset-lg-3 align-items-center mb-3">
                            <label for="secondary_color_text">Background color</label>
-                           <input type="color" name="background_color" value=""
+                           <input type="color" name="background_color" value="" oninput="changeBackgroundColor()"
                                class="form-control form-control-solid">
                        </div>
                        <div class="col-lg-6 offset-lg-3 align-items-center mb-3">
                            <label for="secondary_color_text">Title color (With BG Include)</label>
-                           <input type="color" name="title_color" value=""
+                           <input type="color" name="title_color" value="" oninput="changeTitleColor()"
                                class="form-control form-control-solid">
                        </div>
                    </div>
@@ -79,18 +79,18 @@
                    <div class="row py-5">
                        <div class="col-lg-6 offset-lg-3 align-items-center mb-3">
                            <label for="buttonContact">Contact Button Background Color</label>
-                           <input type="color" name="button_bg_color" value=""
+                           <input type="color" name="button_bg_color" value="" oninput="contactBgColor()"
                                class="form-control form-control-solid">
                        </div>
                        <div class="col-lg-6 offset-lg-3 align-items-center mb-3">
                            <label for="buttonContact">Contact Button Title Color</label>
-                           <input type="color" name="button_title_color" value=""
+                           <input type="color" name="button_title_color" value="" oninput="contactTitleColor()"
                                class="form-control form-control-solid">
                        </div>
                    </div>
                </div>
 
-               <div class="tab-pane fade " id="kt_vtab_pane_71" role="tabpanel">
+               {{-- <div class="tab-pane fade " id="kt_vtab_pane_71" role="tabpanel">
                    <div class="row py-5">
                        <div class="col-lg-6 offset-lg-3 align-items-center">
                            <label for="formColor">Frame Color Color</label>
@@ -98,7 +98,7 @@
                                class="form-control form-control-solid">
                        </div>
                    </div>
-               </div>
+               </div> --}}
            </div>
        </div>
    </div>

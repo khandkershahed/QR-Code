@@ -351,12 +351,7 @@
                 transparentContent.style.display = 'none';
             });
 
-            // imageRadio.addEventListener('change', function() {
-            //     // Show image content and hide others
-            //     colorContent.style.display = 'none';
-            //     imageContent.style.display = 'block';
-            //     transparentContent.style.display = 'none';
-            // });
+           
 
             transparentRadio.addEventListener('change', function() {
                 // Show transparent content and hide others
