@@ -2,11 +2,11 @@
     <!-- Contact Person Name -->
     <div class="col-lg-4">
         <div class="fv-row my-3">
-            <x-metronic.label for="contact_person_name" class="form-label required">
+            <x-metronic.label for="shipping_name" class="form-label required">
                 {{ __('Contact Person Name') }}
             </x-metronic.label>
-            <input id="contact_person_name" type="text" class="form-control form-control-solid mb-3 mb-lg-0"
-                name="contact_person_name" value="{{ old('contact_person_name') }}"
+            <input id="shipping_name" type="text" class="form-control form-control-solid mb-3 mb-lg-0"
+                name="shipping_name" value="{{ old('shipping_name') }}"
                 placeholder="Enter contact person name" />
         </div>
     </div>
@@ -14,33 +14,33 @@
     <!-- Phone -->
     <div class="col-lg-4">
         <div class="fv-row my-3">
-            <x-metronic.label for="phone" class="form-label required">
+            <x-metronic.label for="shipping_phone" class="form-label required">
                 {{ __('Phone') }}
             </x-metronic.label>
-            <input id="phone" type="text" class="form-control form-control-solid mb-3 mb-lg-0" name="phone"
-                value="{{ old('phone') }}" placeholder="Enter phone number" />
+            <input id="shipping_phone" type="text" class="form-control form-control-solid mb-3 mb-lg-0" name="shipping_phone"
+                value="{{ old('shipping_phone') }}" placeholder="Enter phone number" />
         </div>
     </div>
 
     <!-- Address -->
     <div class="col-lg-4">
         <div class="fv-row my-3">
-            <x-metronic.label for="address" class="form-label required">
+            <x-metronic.label for="shipping_address" class="form-label required">
                 {{ __('Address') }}
             </x-metronic.label>
-            <input id="address" type="text" class="form-control form-control-solid mb-3 mb-lg-0" name="address"
-                value="{{ old('address') }}" placeholder="Enter address" />
+            <input id="shipping_address" type="text" class="form-control form-control-solid mb-3 mb-lg-0" name="shipping_address"
+                value="{{ old('shipping_address') }}" placeholder="Enter address" />
         </div>
     </div>
 
     <!-- City -->
     <div class="col-lg-3">
         <div class="fv-row my-3">
-            <x-metronic.label for="city" class="form-label required">
+            <x-metronic.label for="shipping_city" class="form-label required">
                 {{ __('City') }}
             </x-metronic.label>
-            <input id="city" type="text" class="form-control form-control-solid mb-3 mb-lg-0" name="city"
-                value="{{ old('city') }}" placeholder="Enter city" />
+            <input id="shipping_city" type="text" class="form-control form-control-solid mb-3 mb-lg-0" name="shipping_city"
+                value="{{ old('shipping_city') }}" placeholder="Enter city" />
         </div>
     </div>
 
