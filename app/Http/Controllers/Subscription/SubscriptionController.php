@@ -11,18 +11,50 @@ use Illuminate\Support\Facades\Auth;
 
 class SubscriptionController extends Controller
 {
+    // $data['subscriptions'] = Subscription::with('plan', 'user')->get();
     public function index()
     {
-        $data['subscriptions'] = Subscription::with('plan', 'user')->get();
-        return view('admin.pages.user-subscription.index' , $data);
+        // Fetch all subscriptions with their associated plan and user
+        $subscriptions = Subscription::with('plan', 'user')->get();
+
+        // Initialize an array to hold the subscriptions with invoices
+        $subscriptionsWithInvoices = [];
+
+        // Loop through each subscription to fetch its invoices through the user
+        foreach ($subscriptions as $subscription) {
+            // Ensure the subscription has an associated user
+            if ($subscription->user) {
+                // Fetch the invoices for the user associated with the current subscription
+                $invoices = $subscription->user->invoices();
+
+                // Add the subscription and its invoices to the array
+                $subscriptionsWithInvoices[] = [
+                    'subscription' => $subscription,
+                    'invoices' => $invoices,
+                ];
+            } else {
+                // Add the subscription with an empty invoices collection if no user is associated
+                $subscriptionsWithInvoices[] = [
+                    'subscription' => $subscription,
+                    'invoices' => collect(), // Empty collection
+                ];
+            }
+        }
+
+        // Pass the data to the view
+        $data['subscriptionsWithInvoices'] = $subscriptionsWithInvoices;
+
+        return view('admin.pages.user-subscription.index', $data);
     }
+
+
     public function showSubscriptionForm()
     {
         $data = [
-            'monthly_plans' => Plan::orderBy('price','asc')->where('billing_cycle', 'monthly')->get(),
-            'yearly_plans' => Plan::orderBy('price','asc')->where('billing_cycle', 'yearly')->get(),
+            'monthly_plans' => Plan::orderBy('price', 'asc')->where('billing_cycle', 'monthly')->get(),
+            'yearly_plans' => Plan::orderBy('price', 'asc')->where('billing_cycle', 'yearly')->get(),
         ];
-        return view('frontend.pages.subscription_plan' , $data);
+        return view('frontend.pages.subscription_plan', $data);
     }
 
     public function subscribe(Request $request, $id)
@@ -54,29 +86,33 @@ class SubscriptionController extends Controller
 
         return redirect()->route('home')->with('success', 'Subscription canceled!');
     }
-    public function __construct() {
+    public function __construct()
+    {
         $this->middleware('auth');
     }
-    public function retrievePlans() {
+    public function retrievePlans()
+    {
         $key = \config('services.stripe.secret');
         $stripe = new \Stripe\StripeClient($key);
         $plansraw = $stripe->plans->all();
         $plans = $plansraw->data;
 
-        foreach($plans as $plan) {
+        foreach ($plans as $plan) {
             $prod = $stripe->products->retrieve(
-                $plan->product,[]
+                $plan->product,
+                []
             );
             $plan->product = $prod;
         }
         return $plans;
     }
-    public function showSubscription() {
+    public function showSubscription()
+    {
         $plans = $this->retrievePlans();
         $user = Auth::user();
 
         return view('seller.pages.subscribe', [
-            'user'=>$user,
+            'user' => $user,
             'intent' => $user->createSetupIntent(),
             'plans' => $plans
         ]);
@@ -99,7 +135,4 @@ class SubscriptionController extends Controller
 
         return redirect('dashboard');
     }
-
-
-
 }

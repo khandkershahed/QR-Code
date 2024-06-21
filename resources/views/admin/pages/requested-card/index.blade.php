@@ -151,6 +151,7 @@
                                         <td class="text-center">
                                             <button
                                                 class="border-0 bg-transparent download-button badge bg-primary me-3"
+                                                id="convertButton"
                                                 data-modal-id="virtual_card_modal_{{ $nfc_card->id }}">
                                                 <span title="Download Image">PNG</span>
                                             </button>
@@ -247,13 +248,12 @@
                 </div>
             </div>
         </div>
-    @endforeach
-    @foreach ($nfc_cards as $nfc_card)
+
+
         <div class="modal fade" tabindex="-1" id="virtual_card_modal_{{ $nfc_card->id }}">
             <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width: 645px !important;">
                 <div class="modal-content position-absolute">
                     <div class="modal-body pb-0 downloadable-div" id="downloadable_div_{{ $nfc_card->id }}">
-
                         <style>
                             .downloadable-div {
                                 /* Add any desired styling for your downloadable divs here */
@@ -350,7 +350,7 @@
                             }
                         </style>
                         <div class="card">
-                            <div>
+                            <div id="card-container">
                                 @if (optional($nfc_card->virtualCard)->virtual_card_template == 'virtual-card-one')
                                     <div class="row mt-5">
                                         <div class="col-12">
@@ -847,8 +847,7 @@
                                                 </div>
                                             </div>
                                             <div class="punch-card-container-back"
-                                                style="background: -webkit-linear-gradient(to right, #4a00e0, #8e2de2);
-                        background: linear-gradient(to right, #4a00e0, #8e2de2);">
+                                                style="background: -webkit-linear-gradient(to right, #4a00e0, #8e2de2);background: linear-gradient(to right, #4a00e0, #8e2de2);">
                                                 <div class="row p-5 align-items-center">
                                                     <div class="col-8 d-flex justify-content-start align-items-center"
                                                         style="height: 28vh">
@@ -877,8 +876,8 @@
                                                                         class="card_address">{{ optional($nfc_card->virtualCard)->card_address }}</span>
                                                                 </p>
                                                                 {{-- <p class="fw-bold mb-0 text-white">
-                                    -Downtown Dubia-Dubai- United Arab Emirates
-                                </p> --}}
+                                                                        -Downtown Dubia-Dubai- United Arab Emirates
+                                                                    </p> --}}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -905,37 +904,6 @@
             </div>
         </div>
     @endforeach
-    @foreach ($nfc_cards as $nfc_card)
-        <div class="modal fade" tabindex="-1" id="virtual_card_modal_{{ $nfc_card->id }}">
-            <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width: 645px !important;">
-                <div class="modal-content position-absolute">
-                    <div class="modal-body pb-0 downloadable-div" id="downloadable_div_{{ $nfc_card->id }}">
-                        asdasdasdasdassdasd
-                    </div>
-                    <div class="modal-footer border-0 pt-0">
-                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endforeach
-
-    @foreach ($nfc_cards as $nfc_card)
-        <div class="modal fade" tabindex="-1" id="virtual_card_eps_modal_{{ $nfc_card->id }}">
-            <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width: 645px !important;">
-                <div class="modal-content position-absolute">
-                    <div class="modal-body pb-0 downloadable-div_eps" id="downloadable_div_eps_{{ $nfc_card->id }}">
-                        <div style="width: 100%; height: 300px; background-color: #ff0000;">
-                            Simplified content for testing
-                        </div>
-                    </div>
-                    <div class="modal-footer border-0 pt-0">
-                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endforeach
 
 
 
@@ -944,17 +912,72 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
             integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        {{-- FOr EPS --}}
-        {{-- <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                document.body.addEventListener('click', function(event) {
-                    alert('Working On Generateing EPS')
+        <script>
+            function showAndCaptureModal(modalId, callback) {
+                const modal = new bootstrap.Modal(document.getElementById(modalId));
+                modal.show();
 
+                setTimeout(() => {
+                    callback();
+                    modal.hide();
+                }, 1000); // Wait for the modal to render
+            }
+
+            function captureAndDownloadPNG(modalId) {
+                showAndCaptureModal(modalId, () => {
+                    html2canvas(document.querySelector('#' + modalId + ' #card-container')).then(canvas => {
+                        const pngUrl = canvas.toDataURL('image/png');
+                        const link = document.createElement('a');
+                        link.href = pngUrl;
+                        link.download = 'card.png';
+                        link.click();
+                    });
+                });
+            }
+
+            function captureAndDownloadEPS(modalId) {
+                showAndCaptureModal(modalId, () => {
+                    html2canvas(document.querySelector('#' + modalId + ' #card-container')).then(canvas => {
+                        const svg = `
+                                <svg xmlns="http://www.w3.org/2000/svg" width="${canvas.width}" height="${canvas.height}">
+                                    <foreignObject width="100%" height="100%">
+                                        <div xmlns="http://www.w3.org/1999/xhtml">
+                                            ${canvas.outerHTML}
+                                        </div>
+                                    </foreignObject>
+                                </svg>
+                            `;
+
+                        canvg.fromString(document.createElement('canvas'), svg).then(instance => {
+                            instance.render();
+                            const epsUrl = instance.toDataURL('image/eps');
+                            const link = document.createElement('a');
+                            link.href = epsUrl;
+                            link.download = 'card.eps';
+                            link.click();
+                        });
+                    });
+                });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelectorAll('.download-button').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const modalId = button.getAttribute('data-modal-id');
+                        captureAndDownloadPNG(modalId);
+                    });
+                });
+
+                document.querySelectorAll('.download-eps-button').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const modalId = button.getAttribute('data-modal-id');
+                        captureAndDownloadEPS(modalId);
+                    });
                 });
             });
-        </script> --}}
-        {{-- For PNG --}}
-        <script>
+        </script>
+
+        {{-- <script>
             function downloadDiv(div) {
                 // Disable the download button to prevent multiple clicks
                 alert('Download Button Clicked')
@@ -1008,14 +1031,16 @@
                     }
                 });
             });
-        </script>
+        </script> --}}
 
-        <script>
+
+
+        {{-- <script>
             const myModal = new bootstrap.Modal(
                 document.getElementById("modalId"),
                 options,
             );
-        </script>
+        </script> --}}
         <script>
             document.getElementById('flexSwitchChecked').addEventListener('change', function() {
                 const label = document.getElementById('switchLabel');

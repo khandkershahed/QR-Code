@@ -47,28 +47,69 @@
                     </tr>
                 </thead>
                 <tbody class="fw-bold text-gray-600">
-                    @if (count($subscriptions) > 0)
-                        @foreach ($subscriptions as $subscription)
+                    @if (count($subscriptionsWithInvoices) > 0)
+                        @foreach ($subscriptionsWithInvoices as $index => $item)
                             <tr>
-                                <td class="ps-4"></td>
-                                <td>{{ $subscription->plan->title }}</td>
+                                <td class="ps-4">{{ $index + 1 }}</td>
+                                <td>{{ $item['subscription']->plan->title }}</td>
                                 <td>
-                                    @if ($subscription->user)
-                                        {{ $subscription->user->name }}
+                                    @if ($item['subscription']->user)
+                                        {{ $item['subscription']->user->name }}
                                     @else
                                         N/A
                                     @endif
                                 </td>
-                                <td>{{ $subscription->plan->price }}</td>
-                                <td>{{ $subscription->created_at }}</td>
-                                <td>{{ $subscription->subscription_ends_at }}</td>
+                                <td>{{ $item['subscription']->plan->price }}</td>
+                                <td>{{ $item['subscription']->created_at}}</td>
+                                <td>
+                                    @if ($item['subscription']->subscription_ends_at)
+                                        {{ $item['subscription']->subscription_ends_at }}
+                                    @else
+                                        N/A
+                                    @endif
+                                </td>
                                 <td class="text-center">
                                     <div class="d-flex align-items-center justify-content-center">
-                                        <a href="" class="btn btn-sm bg-transparent text-primary"
-                                            data-bs-toggle="modal" title="Show Invoice" data-bs-target="#showInvoice">
-                                            <i class="fas fa-eye fs-5 pe-2 text-primary"></i> Invoice
-                                        </a>
+                                        <button class="btn btn-sm bg-transparent text-primary"
+                                                data-bs-toggle="collapse"
+                                                data-bs-target="#invoices-{{ $item['subscription']->id }}"
+                                                aria-expanded="false"
+                                                aria-controls="invoices-{{ $item['subscription']->id }}">
+                                            <i class="fas fa-eye fs-5 pe-2 text-primary"></i> Invoices
+                                        </button>
                                     </div>
+                                </td>
+                            </tr>
+                            <tr class="collapse" id="invoices-{{ $item['subscription']->id }}">
+                                <td colspan="7">
+                                    <table class="table table-striped align-middle fs-6 gy-5 mb-0">
+                                        <thead>
+                                            <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+                                                <th width="25%">Invoice ID</th>
+                                                <th width="25%">Amount</th>
+                                                <th width="25%">Date</th>
+                                                <th width="25%">Download</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @if(count($item['invoices']) > 0)
+                                                @foreach ($item['invoices'] as $invoice)
+                                                    <tr>
+                                                        <td>{{ $invoice->id }}</td>
+                                                        <td>{{ $invoice->amount }}</td>
+                                                        <td>{{ $invoice->date()->toFormattedDateString() }}</td>
+                                                        <td><a href="{{ $invoice->invoice_pdf }}" target="_blank"
+                                                            class="btn btn-sm btn-primary">Download</a>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            @else
+                                                <tr>
+                                                    <td colspan="3" class="text-center">No invoices found for this subscription.</td>
+                                                </tr>
+                                            @endif
+                                        </tbody>
+                                    </table>
                                 </td>
                             </tr>
                         @endforeach
@@ -79,6 +120,7 @@
                     @endif
                 </tbody>
             </table>
+
         </div>
     </div>
     {{-- Modal --}}
