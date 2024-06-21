@@ -1113,9 +1113,9 @@ class QrCodeController extends Controller
         // Return the URL of the generated QR code image
         if ($qr->wasRecentlyCreated) {
             if ($isUserRoute) {
-                return redirect()->route('user.qr-code.index')->with('success', 'You have successfully generated QR Code.');
+                return redirect()->route('user.qr-code.index')->with('success', 'You have successfully updated QR Code.');
             } else {
-                return redirect()->route('admin.qr-code.index')->with('success', 'You have successfully generated QR Code.');
+                return redirect()->route('admin.qr-code.index')->with('success', 'You have successfully updated QR Code.');
             }
         }
     }
