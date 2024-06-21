@@ -32,7 +32,7 @@
                                     <th width="10%" class="text-center">NFC Link</th>
                                     <th width="10%" class="text-center">V Card</th>
                                     <th width="10%" class="text-center">Delivery Address</th>
-                                    <th width="10%" class="text-center">Status</th>
+                                    {{-- <th width="10%" class="text-center">Status</th> --}}
                                     <th width="10%" class="text-center min-w-70px">Action</th>
                                 </tr>
                             </thead>
@@ -130,7 +130,7 @@
                                                 data-bs-target="#deliveryModal-{{ $nfc_card->id }}">Delivery
                                                 Location</button>
                                         </td>
-                                        <td class="text-center">
+                                        {{-- <td class="text-center">
                                             <div
                                                 class="form-check form-switch form-check-custom form-check-solid justify-content-center">
                                                 <input class="form-check-input" type="checkbox" value=""
@@ -138,7 +138,7 @@
                                                 <label class="form-check-label" for="flexSwitchChecked"
                                                     id="switchLabel">Approved</label>
                                             </div>
-                                        </td>
+                                        </td> --}}
                                         {{-- <td class="text-center">
                                             <button class="btn btn-primary download-button"
                                                 data-modal-id="virtual_card_modal_{{ $nfc_card->id }}">
@@ -157,7 +157,7 @@
                                             </button>
                                             <button
                                                 class="border-0 bg-transparent download-eps-button badge bg-primary"
-                                                data-modal-id="virtual_card_eps_modal_{{ $nfc_card->id }}">
+                                                data-modal-id="virtual_card_modal_{{ $nfc_card->id }}">
                                                 <span title="Download EPS">EPS</span>
                                             </button>
                                         </td>
@@ -251,9 +251,14 @@
 
 
         <div class="modal fade" tabindex="-1" id="virtual_card_modal_{{ $nfc_card->id }}">
-            <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width: 645px !important;">
+            <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width: 680px !important;">
                 <div class="modal-content position-absolute">
-                    <div class="modal-body pb-0 downloadable-div" id="downloadable_div_{{ $nfc_card->id }}">
+                    <div class="modal-header border-0">
+
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body p-4 downloadable-div" id="downloadable_div_{{ $nfc_card->id }}">
                         <style>
                             .downloadable-div {
                                 /* Add any desired styling for your downloadable divs here */
@@ -350,7 +355,7 @@
                             }
                         </style>
                         <div class="card">
-                            <div id="card-container">
+                            <div id="card-container" class="p-5">
                                 @if (optional($nfc_card->virtualCard)->virtual_card_template == 'virtual-card-one')
                                     <div class="row mt-5">
                                         <div class="col-12">
@@ -926,7 +931,22 @@
             function captureAndDownloadPNG(modalId) {
                 showAndCaptureModal(modalId, () => {
                     html2canvas(document.querySelector('#' + modalId + ' #card-container')).then(canvas => {
-                        const pngUrl = canvas.toDataURL('image/png');
+                        // Add padding to the canvas
+                        const padding = 20; // Adjust the padding size as needed
+                        const paddedCanvas = document.createElement('canvas');
+                        paddedCanvas.width = canvas.width + 2 * padding;
+                        paddedCanvas.height = canvas.height + 2 * padding;
+                        const context = paddedCanvas.getContext('2d');
+
+                        // Set the background color to transparent
+                        context.fillStyle = 'transparent';
+                        context.fillRect(0, 0, paddedCanvas.width, paddedCanvas.height);
+
+                        // Draw the original canvas onto the new canvas with padding
+                        context.drawImage(canvas, padding, padding);
+
+                        // Download the padded canvas as PNG
+                        const pngUrl = paddedCanvas.toDataURL('image/png');
                         const link = document.createElement('a');
                         link.href = pngUrl;
                         link.download = 'card.png';
@@ -935,29 +955,67 @@
                 });
             }
 
+
             function captureAndDownloadEPS(modalId) {
                 showAndCaptureModal(modalId, () => {
                     html2canvas(document.querySelector('#' + modalId + ' #card-container')).then(canvas => {
-                        const svg = `
-                                <svg xmlns="http://www.w3.org/2000/svg" width="${canvas.width}" height="${canvas.height}">
-                                    <foreignObject width="100%" height="100%">
-                                        <div xmlns="http://www.w3.org/1999/xhtml">
-                                            ${canvas.outerHTML}
-                                        </div>
-                                    </foreignObject>
-                                </svg>
-                            `;
+                        const imgData = canvas.toDataURL('image/png');
 
-                        canvg.fromString(document.createElement('canvas'), svg).then(instance => {
-                            instance.render();
-                            const epsUrl = instance.toDataURL('image/eps');
-                            const link = document.createElement('a');
-                            link.href = epsUrl;
-                            link.download = 'card.eps';
-                            link.click();
+                        // Convert the PNG to EPS format (simple base64 embedded EPS)
+                        const epsContent = `%!PS-Adobe-3.0 EPSF-3.0
+                                            %%BoundingBox: 0 0 ${canvas.width} ${canvas.height}
+                                            %%HiResBoundingBox: 0 0 ${canvas.width} ${canvas.height}
+                                            %%EndComments
+                                            gsave
+                                            0 0 translate
+                                            ${canvas.width} ${canvas.height} scale
+                                            /${imgData.split(',')[1]} def
+                                            /${imgData.split(',')[1]} currentfile /ASCII85Decode filter def
+                                            /${imgData.split(',')[1]} currentfile /DCTDecode filter def
+                                            image
+                                            grestore
+                                            showpage
+                                            %%EOF
+                                            `;
+
+                        const link = document.createElement('a');
+                        const blob = new Blob([epsContent], {
+                            type: 'application/postscript'
                         });
+                        const url = URL.createObjectURL(blob);
+                        link.href = url;
+                        link.download = 'card.eps';
+                        link.click();
                     });
                 });
+            }
+
+
+            function createEPSContent(imageData, width, height) {
+                const base64Data = imageData.replace(/^data:image\/(png|jpg);base64,/, '');
+                const psHeader = `%!PS-Adobe-3.0 EPSF-3.0\n%%BoundingBox: 0 0 ${width} ${height}\n`;
+                const psImage = `
+                        /DeviceRGB setcolorspace
+                        ${width} ${height} scale
+                        /picstr ${width} string def
+                        ${width} ${height} 8 [${width} 0 0 -${height} 0 ${height}]
+                        { currentfile picstr readhexstring pop }
+                        false 3 colorimage
+                    `;
+                const psFooter = 'showpage\n';
+                const hexData = base64ToHex(base64Data);
+                return `${psHeader}${psImage}${hexData}\n${psFooter}`;
+            }
+
+            function base64ToHex(base64) {
+                const binary = atob(base64);
+                let hex = '';
+                for (let i = 0; i < binary.length; i++) {
+                    const byte = binary.charCodeAt(i);
+                    hex += ('0' + byte.toString(16)).slice(-2);
+                    if (i % 32 === 31) hex += '\n'; // Add a newline every 32 bytes for readability
+                }
+                return hex;
             }
 
             document.addEventListener('DOMContentLoaded', function() {
@@ -976,6 +1034,9 @@
                 });
             });
         </script>
+
+
+
 
         {{-- <script>
             function downloadDiv(div) {
