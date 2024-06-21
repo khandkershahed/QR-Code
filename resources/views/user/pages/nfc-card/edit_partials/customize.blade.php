@@ -45,12 +45,12 @@
                    <div class="row py-5">
                        <div class="col-lg-6 offset-lg-3 align-items-center mb-3">
                            <label for="secondary_color_text">Background color</label>
-                           <input type="color" name="background_color" value="" oninput="changeBackgroundColor()"
+                           <input type="color" name="background_color" value="{{ $nfc_card->background_color }}" oninput="changeBackgroundColor()"
                                class="form-control form-control-solid">
                        </div>
                        <div class="col-lg-6 offset-lg-3 align-items-center mb-3">
                            <label for="secondary_color_text">Title color (With BG Include)</label>
-                           <input type="color" name="title_color" value="" oninput="changeTitleColor()"
+                           <input type="color" name="title_color" value="{{ $nfc_card->title_color }}" oninput="changeTitleColor()"
                                class="form-control form-control-solid">
                        </div>
                    </div>
@@ -63,13 +63,13 @@
                            <select class="form-select form-select-sm form-select-solid" data-control="select2"
                                name="font_family" data-placeholder="Select an option">
                                <option></option>
-                               <option value="bebas_neue">Bebas Neue</option>
-                               <option value="raleway">Raleway</option>
+                               <option value="bebas_neue" @selected($nfc_card->font_family == 'bebas_neue' )>Bebas Neue</option>
+                               <option value="raleway" @selected($nfc_card->font_family == 'raleway' )>Raleway</option>
                            </select>
                        </div>
                        <div class="col-lg-6 offset-lg-3 align-items-center mb-3">
                            <label for="Font">Title Font Size</label>
-                           <input type="number" name="font_size" id="" oninput="changeFontSize()"
+                           <input type="number" name="font_size" value="{{ $nfc_card->font_size }}" id="" oninput="changeFontSize()"
                                class="form-control form-control-sm form-control-solid">
                        </div>
                    </div>
@@ -79,12 +79,12 @@
                    <div class="row py-5">
                        <div class="col-lg-6 offset-lg-3 align-items-center mb-3">
                            <label for="buttonContact">Contact Button Background Color</label>
-                           <input type="color" name="button_bg_color" value="" oninput="contactBgColor()"
+                           <input type="color" name="button_bg_color" value="{{ $nfc_card->button_bg_color }}" oninput="contactBgColor()"
                                class="form-control form-control-solid">
                        </div>
                        <div class="col-lg-6 offset-lg-3 align-items-center mb-3">
                            <label for="buttonContact">Contact Button Title Color</label>
-                           <input type="color" name="button_title_color" value="" oninput="contactTitleColor()"
+                           <input type="color" name="button_title_color" value="{{ $nfc_card->button_title_color }}" oninput="contactTitleColor()"
                                class="form-control form-control-solid">
                        </div>
                    </div>
@@ -103,50 +103,4 @@
        </div>
    </div>
 
-   {{-- <script>
-       // Get the color input and text input elements
-       const colorPicker1 = document.getElementById('primary_color_picker');
-       const colorInput1 = document.getElementById('primary_color');
-
-       // Add event listener to color input
-       colorPicker1.addEventListener('input', function() {
-           // Update the value of the text input with the current color value
-           colorInput1.value = colorPicker1.value;
-       });
-       // Get the color input and text input elements
-       const colorPicker2 = document.getElementById('primary_color_text_picker');
-       const colorInput2 = document.getElementById('primary_color_text');
-
-       // Add event listener to color input
-       colorPicker2.addEventListener('input', function() {
-           // Update the value of the text input with the current color value
-           colorInput2.value = colorPicker2.value;
-       });
-       // Get the color input and text input elements
-       const colorPicker3 = document.getElementById('secondary_color_text_picker');
-       const colorInput3 = document.getElementById('secondary_color_text');
-
-       // Add event listener to color input
-       colorPicker3.addEventListener('input', function() {
-           // Update the value of the text input with the current color value
-           colorInput3.value = colorPicker3.value;
-       });
-       // Get the color input and text input elements
-       const colorPickerContact = document.getElementById('button_color_picker');
-       const colorInputContact = document.getElementById('buttonContact');
-
-       // Add event listener to color input
-       colorPickerContact.addEventListener('input', function() {
-           // Update the value of the text input with the current color value
-           colorInputContact.value = colorPickerContact.value;
-       });
-       // Get the color input and text input elements
-       const colorPickerForm = document.getElementById('form_color_picker');
-       const colorInputform = document.getElementById('formColor');
-
-       // Add event listener to color input
-       colorPickerForm.addEventListener('input', function() {
-           // Update the value of the text input with the current color value
-           colorInputform.value = colorPickerForm.value;
-       });
-   </script> --}}
+  

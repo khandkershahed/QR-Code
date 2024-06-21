@@ -11,25 +11,12 @@
                 <div class="card-body custom-card-body overflow-auto p-0">
                     <div class="stepper stepper-pills flex-grow-1 d-flex flex-column" id="kt_stepper_example_clickable">
                         <div class="stepper-nav flex-center flex-wrap steaper-header">
-                            <div class="stepper-item mx-3 my-4 p-0 current" data-kt-stepper-element="nav" data-kt-stepper-action="step">
-                                <div class="stepper-wrapper d-flex align-items-center">
-                                    <div class="stepper-icon w-40px h-40px me-2">
-                                        <i class="stepper-check fas fa-check"></i>
-                                        <span class="stepper-number">1</span>
-                                    </div>
-                                    <div class="stepper-label">
-                                        <h3 class="stepper-title mb-0 pe-3">Select Template</h3>
-                                    </div>
-                                </div>
-                                <div class="stepper-line h-40px"></div>
-                            </div>
-
-                            <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
+                            <div class="stepper-item mx-3 my-4 p-0 current" data-kt-stepper-element="nav"
                                 data-kt-stepper-action="step">
                                 <div class="stepper-wrapper d-flex align-items-center">
                                     <div class="stepper-icon w-40px h-40px me-2">
                                         <i class="stepper-check fas fa-check"></i>
-                                        <span class="stepper-number">2</span>
+                                        <span class="stepper-number">1</span>
                                     </div>
                                     <div class="stepper-label">
                                         <h3 class="stepper-title mb-0 pe-3">Input Data</h3>
@@ -43,7 +30,7 @@
                                 <div class="stepper-wrapper d-flex align-items-center">
                                     <div class="stepper-icon w-40px h-40px me-2">
                                         <i class="stepper-check fas fa-check"></i>
-                                        <span class="stepper-number">3</span>
+                                        <span class="stepper-number">2</span>
                                     </div>
                                     <div class="stepper-label">
                                         <h3 class="stepper-title mb-0 pe-3">Customize</h3>
@@ -52,72 +39,45 @@
                                 <div class="stepper-line h-40px"></div>
                             </div>
 
-                            <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
-                                data-kt-stepper-action="step">
-                                <div class="stepper-wrapper d-flex align-items-center">
-                                    <div class="stepper-icon w-40px h-40px me-2">
-                                        <i class="stepper-check fas fa-check"></i>
-                                        <span class="stepper-number">4</span>
-                                    </div>
-                                    <div class="stepper-label">
-                                        <h3 class="stepper-title mb-0 pe-3">Virtual Card</h3>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
+                            {{-- <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
                                 data-kt-stepper-action="step">
                                 <div class="stepper-wrapper d-flex align-items-center">
                                     <div class="stepper-icon w-40px h-40px me-2">
                                         <i class="stepper-check fas fa-check"></i>
-                                        <span class="stepper-number">5</span>
+                                        <span class="stepper-number">3</span>
                                     </div>
                                     <div class="stepper-label">
                                         <h3 class="stepper-title mb-0 pe-3">Card Customize</h3>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
-                            <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
+                            {{-- <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
                                 data-kt-stepper-action="step">
                                 <div class="stepper-wrapper d-flex align-items-center">
                                     <div class="stepper-icon w-40px h-40px me-2">
                                         <i class="stepper-check fas fa-check"></i>
-                                        <span class="stepper-number">6</span>
+                                        <span class="stepper-number">3</span>
                                     </div>
                                     <div class="stepper-label">
-                                        <h3 class="stepper-title mb-0 pe-3">Generate</h3>
+                                        <h3 class="stepper-title mb-0 pe-3">Shipping Details</h3>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                         <!-- Stepper content and form -->
                         <form class="form flex-grow-1 d-flex flex-column" novalidate="novalidate"
-                            id="kt_stepper_example_clickable_form" action="{{ route('user.nfc-card.store') }}"
+                            id="kt_stepper_example_clickable_form" action="{{ route('user.nfc-card.update',$nfc_card->id) }}"
                             method="POST" enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="row">
                                 <div class="flex-column current" data-kt-stepper-element="content">
-                                    <div class="col-lg-12">
-                                        <div class="card flex-grow-1 rounded-0">
-                                            <div class="my-5 mt-10">
-                                                <h2 class="text-center mb-0">Select a Dynamic NFC Card Template</h2>
-                                                <p class="text-center mb-0">Modify content as needed, even after going
-                                                    live.</p>
-                                            </div>
-                                            <div
-                                                class="centered-card-body card-body d-flex flex-column justify-content-between mb-10">
-                                                <!-- Include your NFC template partial here -->
-                                                @include('user.pages.nfc-card.partials.nfc_template')
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex-column" data-kt-stepper-element="content">
                                     <div class="card flex-grow-1 rounded-0">
                                         <div
                                             class="centered-card-body card-body d-flex flex-column justify-content-between mb-10">
-                                            @include('user.pages.nfc-card.partials.form')
+                                            @include('user.pages.nfc-card.edit_partials.form')
                                         </div>
                                     </div>
                                 </div>
@@ -129,37 +89,25 @@
                                         </div>
                                         <div
                                             class="centered-card-body card-body d-flex flex-column justify-content-between mb-10">
-                                            @include('user.pages.nfc-card.partials.customize')
+                                            @include('user.pages.nfc-card.edit_partials.customize')
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="flex-column " data-kt-stepper-element="content">
-                                    <div class="card flex-grow-1 rounded-0">
-                                        <div class="text-center justify-content-center pt-10">
-                                            <h2 class="text-center mb-0">Choose Virtual Card Template! <span
-                                                    class="text-danger">(Required)</span> </h2>
-                                        </div>
-                                        <div
-                                            class="centered-card-body card-body d-flex flex-column justify-content-between mb-10">
-                                            @include('user.pages.nfc-card.partials.virtualCard')
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="flex-column" data-kt-stepper-element="content">
+                                {{-- <div class="flex-column" data-kt-stepper-element="content">
                                     <div class="card flex-grow-1 rounded-0">
                                         <div class="text-center justify-content-center pt-10">
                                             <h2 class="text-center mb-0">Customize Your Virtual Card As Need!</h2>
                                         </div>
                                         <div
                                             class="centered-card-body card-body d-flex flex-column justify-content-between mb-10">
-                                            @include('user.pages.nfc-card.partials.virtualCardCustomization')
+                                            @include('user.pages.nfc-card.edit_partials.virtualCardCustomization')
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
 
-                                <div class="flex-column" data-kt-stepper-element="content">
+                                {{-- <div class="flex-column" data-kt-stepper-element="content">
                                     <div class="card flex-grow-1 rounded-0">
                                         <div class="card-header text-center border-0">
                                             <div class="pt-15 pb-15 ps-5 w-100">
@@ -170,10 +118,10 @@
                                         </div>
                                         <div
                                             class="centered-card-body card-body d-flex flex-column justify-content-between mb-10 pt-0">
-                                            @include('user.pages.nfc-card.partials.virtualCardBilling')
+                                            @include('user.pages.nfc-card.edit_partials.virtualCardBilling')
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                             {{-- Stepper Action Button --}}
                             <div class="fixed-bottom">
@@ -187,7 +135,7 @@
                                     <div>
                                         <button type="submit" class="btn btn-primary" id="submitButton"
                                             data-kt-stepper-action="submit">
-                                            <span class="indicator-label">Submit</span>
+                                            <span class="indicator-label">Update</span>
                                             <span class="indicator-progress">Please wait... <span
                                                     class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                                         </button>
@@ -203,7 +151,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4">
+        {{-- <div class="col-lg-4">
             <div class="card" id="second-card">
                 <div class="card-header px-0 sticky-top-preview border-0">
                     <div class="d-flex flex-column justify-content-center align-items-center"
@@ -220,7 +168,7 @@
                     @include('user.pages.nfc-card.partials.virtual_card_preview')
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 
     @push('scripts')
