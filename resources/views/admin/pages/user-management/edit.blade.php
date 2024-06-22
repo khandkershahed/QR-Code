@@ -38,7 +38,7 @@
                                 placeholder="Confirm the password"></x-metronic.input>
                         </div> --}}
                         <!--begin::Input group-->
-                        <div class="mb-7">
+                        {{-- <div class="mb-7">
                             <!--begin::Label-->
                             <label class="required fw-bold fs-6 mb-5">Role</label>
                             <!--end::Label-->
@@ -61,7 +61,7 @@
                                 <div class='separator separator-dashed my-5'></div>
                             @endforeach
                             <!--end::Roles-->
-                        </div>
+                        </div> --}}
                         <!--end::Input group-->
                     </div>
                 </div>

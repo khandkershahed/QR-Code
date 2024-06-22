@@ -12,7 +12,7 @@
     @props(['id'=>'', 'type', 'name', 'placeholder' => '', 'value'=>'', 'readonly' => false])
 
     <input id="{{ $id }}" type="{{ $type }}"
-        class="form-control @error($name) is-invalid @enderror" name="{{ $name }}"
+        class="form-control @error($name) is-invalid @enderror" name="{{ $name }}" decimal-separator="." step="0.01" 
         placeholder="{{ $placeholder }}" value="{{ old($name, $value) }}"
         @if($readonly) readonly @endif />
 

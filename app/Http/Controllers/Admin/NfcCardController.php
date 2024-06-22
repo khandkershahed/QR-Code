@@ -95,7 +95,9 @@ class NfcCardController extends Controller
 
     public function nfcTemplate()
     {
-        return view('user.pages.template.nfc_template');
+        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
+        $view = $isUserRoute ? 'user.pages.template.nfc_template' : 'admin.pages.template.nfc_template';
+        return view($view);
     }
 
     /**

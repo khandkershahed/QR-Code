@@ -2,8 +2,8 @@
     @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
     .nfc-mobile-frame {
-        width: 100%;
          
+        width: 100%;
         border-radius: 20px;
         overflow: hidden;
         position: relative;
