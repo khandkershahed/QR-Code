@@ -253,9 +253,10 @@
     }
 
     /* CSS for centering the mobile frame */
+
     .nfc-mobile-frame-one {
-        width: 400px;
-         
+        width: 420px;
+        /*   */
         /* border: 2px solid #000; */
         border-radius: 20px;
         overflow: hidden;

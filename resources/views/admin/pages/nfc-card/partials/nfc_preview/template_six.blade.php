@@ -1,7 +1,7 @@
 <style>
     .nfc-mobile-frame {
-         
         max-width: 400px;
+
         /* border: 2px solid #1026bf; */
         border-radius: 20px;
         overflow: hidden;
@@ -108,13 +108,12 @@
                     ">
                         <div class="w-100">
                             <div class="row align-items-center gx-0"
-                                style="margin-top: -50px;
+                                style="margin-top: 200px;;
                             position: relative;">
                                 <div class="col-lg-4">
                                     <div class="text-center text-lg-center mobile-images-profile"
                                         style="position: relative">
-                                        <img
-                                            style="width: 100px;border-radius: 100%;border: 6px solid white;position: relative;z-index: 15;"
+                                        <img style="width: 100px;border-radius: 100%;border: 6px solid white;position: relative;z-index: 15;"
                                             src="https://my.cybercard.ma/uploads/vcards/profiles/221/smiling-doctor-sitting-isolated-grey_651396-917.jpg"
                                             class="img-fluid banner-image profile_image" alt="banner" />
                                     </div>
@@ -184,7 +183,8 @@
                                 <!-- Contact Info -->
                                 <div class="my-3 pt-4">
                                     <div>
-                                        <p class="text-white w-25 text-center rounded-2 py-2 mb-0 fw-bold" style="margin-left: 10px;">
+                                        <p class="text-white w-25 text-center rounded-2 py-2 mb-0 fw-bold"
+                                            style="margin-left: 10px;">
                                             Contact
                                         </p>
                                         <div
@@ -262,7 +262,8 @@
                                 <!-- QR -->
                                 <div class="my-3 pt-4">
                                     <div>
-                                        <p class="text-white w-25 text-center rounded-2 py-2 mb-0 fw-bold" style="margin-left: 10px;">
+                                        <p class="text-white w-25 text-center rounded-2 py-2 mb-0 fw-bold"
+                                            style="margin-left: 10px;">
                                             QR Code
                                         </p>
                                         <div
@@ -290,8 +291,8 @@
                                 <!-- Company -->
                                 <div class="my-3 pt-4 text-start">
                                     <div>
-                                        <p
-                                            class="text-white w-25 text-center rounded-2 py-2 mb-0 fw-bold company_title" style="margin-left: 10px;">
+                                        <p class="text-white w-25 text-center rounded-2 py-2 mb-0 fw-bold company_title"
+                                            style="margin-left: 10px;">
                                             Company
                                         </p>
                                         <div
@@ -309,7 +310,8 @@
                                             <small class="company_address_line_two">Bangladesh</small>
                                         </div>
                                         <p class="text-white w-50">
-                                            <small class="fw-bold company_about_title" style="color: #f44336">About company</small>
+                                            <small class="fw-bold company_about_title" style="color: #f44336">About
+                                                company</small>
                                             <br />
                                             Lorem ipsum dolor sit amet consectetur adipisicing
                                             elit. Repellat consequatur aut error.
@@ -318,7 +320,8 @@
                                 </div>
                                 <!-- Service -->
                                 <div class="pt-4">
-                                    <p class="text-white w-25 text-center rounded-2 py-2 mb-0 fw-bold service_section_title" style="margin-left: 10px;">
+                                    <p class="text-white w-25 text-center rounded-2 py-2 mb-0 fw-bold service_section_title"
+                                        style="margin-left: 10px;">
                                         Service
                                     </p>
                                     <div
@@ -333,7 +336,8 @@
                                     </ul>
                                 </div>
                                 <div class="pt-4">
-                                    <p class="text-white w-25 text-center rounded-2 py-2 mb-0 fw-bold" style="margin-left: 10px;">
+                                    <p class="text-white w-25 text-center rounded-2 py-2 mb-0 fw-bold"
+                                        style="margin-left: 10px;">
                                         Gallery
                                     </p>
                                     <div
@@ -389,7 +393,8 @@
                                 <!-- Form -->
                                 <div>
                                     <div>
-                                        <p class="text-white w-25 text-center rounded-2 py-2 mb-0 fw-bold" style="margin-left: 10px;">
+                                        <p class="text-white w-25 text-center rounded-2 py-2 mb-0 fw-bold"
+                                            style="margin-left: 10px;">
                                             Inquery
                                         </p>
                                         <div

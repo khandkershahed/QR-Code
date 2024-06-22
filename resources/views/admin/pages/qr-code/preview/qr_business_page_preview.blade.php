@@ -138,6 +138,7 @@
         }
 
         .nfc-mobile-frame {
+             
             max-width: 390px;
             width: 100%;
         }

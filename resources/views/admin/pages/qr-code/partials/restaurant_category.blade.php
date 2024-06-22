@@ -35,7 +35,7 @@
                     </li>
                 @endforeach
             @else
-                <li class="nav-item mb-3 col-lg-2">
+                <li class="nav-item mb-3 col-lg-12 w-100">
                     <h4 class="text-center">No Category Available</h4>
                 </li>
             @endif

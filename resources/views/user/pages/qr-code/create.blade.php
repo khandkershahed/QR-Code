@@ -75,8 +75,9 @@
                             </div>
                         </div>
 
-                        <form class="form mx-auto" novalidate="novalidate" action="{{ route('user.qr-code.store') }}"
-                            id="kt_stepper_example_basic_form" method="POST" enctype="multipart/form-data">
+                        <form class="form mx-auto qrForm" novalidate="novalidate"
+                            action="{{ route('user.qr-code.store') }}" id="kt_stepper_example_basic_form" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
                             <div class="mb-5">
                                 <div class="flex-column current" data-kt-stepper-element="content">
@@ -133,7 +134,7 @@
                                                     </div>
                                                 </div>
                                                 {{-- <input type="hidden" name="qr_scan_status" value="dynamic"> --}}
-                                                <div class="col-lg-6">
+                                                {{-- <div class="col-lg-6">
                                                     <div class="pt-5 pb-5">
                                                         <x-metronic.label for="status"
                                                             class="form-label">{{ __('Enter a name for your QR code') }}
@@ -146,7 +147,7 @@
                                                             <option value="dynamic" selected>Dynamic</option>
                                                         </select>
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -162,14 +163,11 @@
                                 </div>
 
                                 <div>
-                                    <button type="button" class="btn btn-primary" data-kt-stepper-action="submit">
-                                        <span class="indicator-label">
-                                            Submit
-                                        </span>
-                                        <span class="indicator-progress">
-                                            Please wait... <span
-                                                class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                                        </span>
+                                    <button type="submit" class="btn btn-primary" id="submitButton"
+                                        data-kt-stepper-action="submit">
+                                        <span class="indicator-label">Submit</span>
+                                        <span class="indicator-progress">Please wait... <span
+                                                class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                                     </button>
 
                                     <button type="button" class="btn btn-primary" data-kt-stepper-action="next">
@@ -755,30 +753,31 @@
         <script>
             // $(document).ready(function() { 2
             // $('kt_stepper_example_basic_form input:not([name="qr_type"]), kt_stepper_example_basic_form input:not([name="qr_data_coupon_code"]),kt_stepper_example_basic_form input:not([name="qr_data_coupon_expire_date"]),kt_stepper_example_basic_form input:not([name="qr_data_coupon_header"]),kt_stepper_example_basic_form input:not([name="qr_data_coupon_message"]),kt_stepper_example_basic_form input:not([name="qr_data_coupon_description_header"]),kt_stepper_example_basic_form input:not([name="qr_data_coupon_description_body"]),kt_stepper_example_basic_form input:not([name="qr_data_coupon_website"]),kt_stepper_example_basic_form input:not([name="qr_data_coupon_company"]),kt_stepper_example_basic_form input:not([name="qr_data_coupon_policy"]),kt_stepper_example_basic_form input:not([name="qr_data_coupon_logo"]) ,kt_stepper_example_basic_form textarea, kt_stepper_example_basic_form select')
-            $('kt_stepper_example_basic_form input, kt_stepper_example_basic_form textarea, kt_stepper_example_basic_form select').not(
-                '[name="qr_type"], [name="qr_data_coupon_code"], [name="qr_data_coupon_expire_date"], [name="qr_data_coupon_header"], [name="qr_data_coupon_message"], [name="qr_data_coupon_description_header"], [name="qr_data_coupon_description_body"], [name="qr_data_coupon_website"], [name="qr_data_coupon_company"], [name="qr_data_coupon_policy"], [name="qr_data_coupon_logo"]'
-            ).on('keyup change', function(e) {
-                e.preventDefault(); // Prevent default form submission behavior
-                // Get the form data
-                var formData = new FormData($(this).closest('form')[0]);
+            $('#kt_stepper_example_basic_form input, #kt_stepper_example_basic_form textarea, #kt_stepper_example_basic_form select')
+                .not(
+                    '[name="qr_type"], [name="qr_data_coupon_code"], [name="qr_data_coupon_expire_date"], [name="qr_data_coupon_header"], [name="qr_data_coupon_message"], [name="qr_data_coupon_description_header"], [name="qr_data_coupon_description_body"], [name="qr_data_coupon_website"], [name="qr_data_coupon_company"], [name="qr_data_coupon_policy"], [name="qr_data_coupon_logo"]'
+                ).on('keyup change', function(e) {
+                    e.preventDefault(); // Prevent default form submission behavior
+                    // Get the form data
+                    var formData = new FormData($(this).closest('form')[0]);
 
-                $.ajax({
-                    url: '{{ route('user.qr.preview') }}', // Replace this with the URL of your Laravel route or endpoint
-                    type: 'POST',
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function(response) {
-                        // Display the QR code image
-                        $("#generatedQRCodeContainer").show();
-                        $("#qrCouponPreview").hide();
-                        $('.generatedQRCode').attr('src', response.qr_code);
-                    },
-                    error: function(xhr, status, error) {
-                        console.error(error);
-                    }
+                    $.ajax({
+                        url: '{{ route('user.qr.preview') }}', // Replace this with the URL of your Laravel route or endpoint
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function(response) {
+                            // Display the QR code image
+                            $("#generatedQRCodeContainer").show();
+                            $("#qrCouponPreview").hide();
+                            $('.generatedQRCode').attr('src', response.qr_code);
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(error);
+                        }
+                    });
                 });
-            });
         </script>
 
         <script>
@@ -850,6 +849,18 @@
                         alert("Please upload a valid PDF file.");
                     }
                 });
+        </script>
+        <script>
+            $(document).ready(function() {
+                $('#submitButton').on('submit', function() {
+                    var $btn = $(this);
+                    // Disable the button
+                    $btn.prop('disabled', true);
+                    // Show the progress indicator
+                    $btn.find('.indicator-label').hide();
+                    $btn.find('.indicator-progress').show();
+                });
+            });
         </script>
     @endpush
 </x-app-layout>

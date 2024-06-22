@@ -1,3 +1,90 @@
+<style>
+    .slick-next:before,
+    .slick-prev:before {
+        color: #1c344f;
+    }
+
+    .slick-next:before,
+    .slick-prev:before {
+        left: 22px;
+    }
+
+    .nfc-mobile-frame_one {
+        max-width: 420px;
+        height: 768px !important;
+        /* min-height: 100vh; */
+        /* border: 2px solid #1026bf; */
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    /* CSS for the card inside the mobile frame */
+    .nfc-mobile-frame_one .card {
+        background-color: var(--white);
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        overflow-y: auto;
+    }
+
+    .nfc-mobile-frame_one .card title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    .nfc-one-cover-img-box {
+        position: relative;
+        max-width: 100%;
+    }
+
+    .nfc-one-cover-img {
+        background-size: cover;
+        height: 300px;
+        background-position: center;
+    }
+
+    .slick-initialized .slick-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+    }
+
+    /* Media query for smaller screens */
+    @media only screen and (max-width: 767px) {
+        .nfc-mobile-frame_one {
+            max-width: 390px;
+            width: 100%;
+        }
+
+        .nfc-mobile-frame_one .card {
+            border-radius: 0px !important;
+        }
+
+        .contact-info_one {
+            margin-left: 0px !important;
+        }
+
+        .mobile-d-none {
+            display: none;
+        }
+    }
+
+    .slick-slide {
+        margin-right: 20px;
+        /* Adjust the value to set the desired gap */
+    }
+
+    /* Ensure last slide doesn't have margin */
+    .slick-slide:last-child {
+        margin-right: 0;
+        border-radius: 10px;
+    }
+</style>
+
 <div class="container">
     <div class="row">
         <div class="col-lg-12 d-flex justify-content-center align-items-center px-0">

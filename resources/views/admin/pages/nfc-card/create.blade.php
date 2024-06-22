@@ -1,178 +1,246 @@
 <x-admin-app-layout :title="'NFC Card Create'">
-    <h1 class="text-center mb-10 mt-5">Make Your NFC Profile !</h1>
+    <h1 class="text-center mb-10 mt-5">Make Your NFC Profile!</h1>
     @if (session('error'))
         <div class="alert alert-danger">
             {{ session('error') }}
         </div>
     @endif
-    <div class="row">
+    <div class="row g-2" id="columns-container">
         <div class="col-lg-8">
-            <div class="card" style="height: auto; overflow: auto;">
-                <div class="card-body p-0">
-                    <div class="stepper stepper-pills p-0" id="kt_create_account_stepper">
-                        <div class="stepper-nav flex-center flex-wrap border-bottom">
-                            <div class="stepper-item mx-2 my-4 bg-light-primary pe-3 rounded-2 current"
-                                data-kt-stepper-element="nav" data-kt-stepper-action="step">
-                                <div class="stepper-icon w-40px h-40px">
-                                    <i class="stepper-check fas fa-check"></i>
-                                    <span class="stepper-number">1</span>
+            <div class="card" id="first-card">
+                <div class="card-body custom-card-body overflow-auto p-0">
+                    <div class="stepper stepper-pills flex-grow-1 d-flex flex-column" id="kt_stepper_example_clickable">
+                        <div class="stepper-nav flex-center flex-wrap steaper-header">
+                            <div class="stepper-item mx-3 my-4 p-0 current" data-kt-stepper-element="nav" data-kt-stepper-action="step">
+                                <div class="stepper-wrapper d-flex align-items-center">
+                                    <div class="stepper-icon w-40px h-40px me-2">
+                                        <i class="stepper-check fas fa-check"></i>
+                                        <span class="stepper-number">1</span>
+                                    </div>
+                                    <div class="stepper-label">
+                                        <h3 class="stepper-title mb-0 pe-3">Select Template</h3>
+                                    </div>
                                 </div>
+                                <div class="stepper-line h-40px"></div>
+                            </div>
 
-                                <div class="stepper-label bg-light-primary p-2">
-                                    <h3 class="stepper-title">
-                                        <i class="fa-solid fa-synagogue pe-3"></i> Select Template
-                                    </h3>
+                            <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
+                                data-kt-stepper-action="step">
+                                <div class="stepper-wrapper d-flex align-items-center">
+                                    <div class="stepper-icon w-40px h-40px me-2">
+                                        <i class="stepper-check fas fa-check"></i>
+                                        <span class="stepper-number">2</span>
+                                    </div>
+                                    <div class="stepper-label">
+                                        <h3 class="stepper-title mb-0 pe-3">Input Data</h3>
+                                    </div>
+                                </div>
+                                <div class="stepper-line h-40px"></div>
+                            </div>
+
+                            <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
+                                data-kt-stepper-action="step">
+                                <div class="stepper-wrapper d-flex align-items-center">
+                                    <div class="stepper-icon w-40px h-40px me-2">
+                                        <i class="stepper-check fas fa-check"></i>
+                                        <span class="stepper-number">3</span>
+                                    </div>
+                                    <div class="stepper-label">
+                                        <h3 class="stepper-title mb-0 pe-3">Customize</h3>
+                                    </div>
+                                </div>
+                                <div class="stepper-line h-40px"></div>
+                            </div>
+
+                            <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
+                                data-kt-stepper-action="step">
+                                <div class="stepper-wrapper d-flex align-items-center">
+                                    <div class="stepper-icon w-40px h-40px me-2">
+                                        <i class="stepper-check fas fa-check"></i>
+                                        <span class="stepper-number">4</span>
+                                    </div>
+                                    <div class="stepper-label">
+                                        <h3 class="stepper-title mb-0 pe-3">Virtual Card</h3>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="stepper-item mx-2 my-4 bg-light-primary pe-3 rounded-2"
-                                data-kt-stepper-element="nav" data-kt-stepper-action="step">
-                                <div class="stepper-icon w-40px h-40px">
-                                    <i class="stepper-check fas fa-check"></i>
-                                    <span class="stepper-number">2</span>
-                                </div>
-
-                                <div class="stepper-label">
-                                    <h3 class="stepper-title">
-                                        <i class="fa-solid fa-file-import pe-3"></i> Input Data
-                                    </h3>
-                                </div>
-                            </div>
-
-                            <div class="stepper-item mx-2 my-4 bg-light-primary pe-3 rounded-2"
-                                data-kt-stepper-element="nav" data-kt-stepper-action="step">
-                                <div class="stepper-icon w-40px h-40px">
-                                    <i class="stepper-check fas fa-check"></i>
-                                    <span class="stepper-number">3</span>
-                                </div>
-
-                                <div class="stepper-label">
-                                    <h3 class="stepper-title">
-                                        <i class="fa-solid fa-sliders pe-3"></i> Customize
-                                    </h3>
+                            <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
+                                data-kt-stepper-action="step">
+                                <div class="stepper-wrapper d-flex align-items-center">
+                                    <div class="stepper-icon w-40px h-40px me-2">
+                                        <i class="stepper-check fas fa-check"></i>
+                                        <span class="stepper-number">5</span>
+                                    </div>
+                                    <div class="stepper-label">
+                                        <h3 class="stepper-title mb-0 pe-3">Card Customize</h3>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="stepper-item mx-2 my-4 bg-light-primary pe-3 rounded-2"
-                                data-kt-stepper-element="nav" data-kt-stepper-action="step">
-                                <div class="stepper-icon w-40px h-40px">
-                                    <i class="stepper-check fas fa-check"></i>
-                                    <span class="stepper-number">4</span>
-                                </div>
-
-                                <div class="stepper-label">
-                                    <h3 class="stepper-title">
-                                        <i class="fa-solid fa-thumbs-up pe-3"></i> Done
-                                    </h3>
+                            <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
+                                data-kt-stepper-action="step">
+                                <div class="stepper-wrapper d-flex align-items-center">
+                                    <div class="stepper-icon w-40px h-40px me-2">
+                                        <i class="stepper-check fas fa-check"></i>
+                                        <span class="stepper-number">6</span>
+                                    </div>
+                                    <div class="stepper-label">
+                                        <h3 class="stepper-title mb-0 pe-3">Generate</h3>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <form class="form w-100 mx-auto" novalidate="novalidate" id="kt_create_account_form"
-                            action="{{ route('admin.nfc-card.store') }}" method="POST" enctype="multipart/form-data">
+                        <!-- Stepper content and form -->
+                        <form class="form flex-grow-1 d-flex flex-column" novalidate="novalidate"
+                            id="kt_stepper_example_clickable_form" action="{{ route('user.nfc-card.store') }}"
+                            method="POST" enctype="multipart/form-data">
                             @csrf
-                            <div class="mb-5">
+                            <div class="row">
                                 <div class="flex-column current" data-kt-stepper-element="content">
-                                    <div class="card">
-                                        <div class="my-15">
-                                            <h2 class="text-center mb-0">Select a Dynamic NFC Card Template</h2>
-                                            <p class="text-center mb-0">Modify content as needed, even after going
-                                                live.</p>
-                                        </div>
-                                        <div class="card-body">
-                                            @include('user.pages.nfc-card.partials.nfc_template')
+                                    <div class="col-lg-12">
+                                        <div class="card flex-grow-1 rounded-0">
+                                            <div class="my-5 mt-10">
+                                                <h2 class="text-center mb-0">Select a Dynamic NFC Card Template</h2>
+                                                <p class="text-center mb-0">Modify content as needed, even after going
+                                                    live.</p>
+                                            </div>
+                                            <div
+                                                class="centered-card-body card-body d-flex flex-column justify-content-between mb-10">
+                                                <!-- Include your NFC template partial here -->
+                                                @include('user.pages.nfc-card.partials.nfc_template')
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="flex-column" data-kt-stepper-element="content">
-                                    <div class="card">
-                                        <div class="card-body">
+                                    <div class="card flex-grow-1 rounded-0">
+                                        <div
+                                            class="centered-card-body card-body d-flex flex-column justify-content-between mb-10">
                                             @include('user.pages.nfc-card.partials.form')
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="flex-column" data-kt-stepper-element="content">
-                                    <div class="card">
-                                        <div class="text-center justify-content-center my-15">
+                                    <div class="card flex-grow-1 rounded-0">
+                                        <div class="text-center justify-content-center pt-10">
                                             <h2 class="text-center mb-0">Choose NFC Card Design!</h2>
                                         </div>
-                                        <div class="card-body">
+                                        <div
+                                            class="centered-card-body card-body d-flex flex-column justify-content-between mb-10">
                                             @include('user.pages.nfc-card.partials.customize')
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="flex-column" data-kt-stepper-element="content">
-                                    <div class="card">
-                                        <div class="text-center justify-content-center my-15">
-                                            <h2 class="text-center mb-0">Choose Virtual Card Template!</h2>
+                                <div class="flex-column " data-kt-stepper-element="content">
+                                    <div class="card flex-grow-1 rounded-0">
+                                        <div class="text-center justify-content-center pt-10">
+                                            <h2 class="text-center mb-0">Choose Virtual Card Template! <span
+                                                    class="text-danger">(Required)</span> </h2>
                                         </div>
-                                        <div class="card-body">
-                                            @include('user.pages.nfc-card.partials.customize')
+                                        <div
+                                            class="centered-card-body card-body d-flex flex-column justify-content-between mb-10">
+                                            @include('user.pages.nfc-card.partials.virtualCard')
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="flex-column" data-kt-stepper-element="content">
-                                    <div class="card">
-                                        <div class="card-header text-center ">
+                                    <div class="card flex-grow-1 rounded-0">
+                                        <div class="text-center justify-content-center pt-10">
+                                            <h2 class="text-center mb-0">Customize Your Virtual Card As Need!</h2>
+                                        </div>
+                                        <div
+                                            class="centered-card-body card-body d-flex flex-column justify-content-between mb-10">
+                                            @include('user.pages.nfc-card.partials.virtualCardCustomization')
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex-column" data-kt-stepper-element="content">
+                                    <div class="card flex-grow-1 rounded-0">
+                                        <div class="card-header text-center border-0">
                                             <div class="pt-15 pb-15 ps-5 w-100">
                                                 <h2 class="text-success">Congratulations!</h2>
-                                                <p>Your NFC Profle is ready Wait For Host!</p>
+                                                <p>Your NFC Profile is ready. Add Billing Address For NFC Card Delivery!
+                                                </p>
                                             </div>
                                         </div>
-                                        <div class="card-body">
-                                            <div class="mx-auto d-flex justify-content-center">
-                                                <img width="img-fluid"
-                                                    src="https://i.ibb.co/5nFS23D/documents-filling-office-worker-corporate-employee-item-credit-card-folder-contract-employment-56688.jpg"
-                                                    alt="">
-                                            </div>
+                                        <div
+                                            class="centered-card-body card-body d-flex flex-column justify-content-between mb-10 pt-0">
+                                            @include('user.pages.nfc-card.partials.virtualCardBilling')
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="d-flex flex-stack p-3">
-                                <div class="me-2">
-                                    <button type="button" class="btn btn-light btn-active-light-primary"
-                                        data-kt-stepper-action="previous">
-                                        Back
-                                    </button>
-                                </div>
-                                <div>
-                                    <button type="submit" id="generateButton" data-kt-stepper-action="submit"
-                                        class="btn btn-primary">{{ __('Submit Now') }}</button>
-                                    <button type="button" class="btn btn-primary" data-kt-stepper-action="next">
-                                        Continue
-                                    </button>
+                            {{-- Stepper Action Button --}}
+                            <div class="fixed-bottom">
+                                <div class="d-flex justify-content-between py-3 px-3 align-items-center bg-white">
+                                    <div class="me-2">
+                                        <button type="button" class="btn btn-light btn-active-light-primary"
+                                            data-kt-stepper-action="previous">
+                                            Back
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <button type="submit" class="btn btn-primary" id="submitButton"
+                                            data-kt-stepper-action="submit">
+                                            <span class="indicator-label">Submit</span>
+                                            <span class="indicator-progress">Please wait... <span
+                                                    class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                        </button>
+                                        <button type="button" class="btn btn-primary" data-kt-stepper-action="next">
+                                            Continue
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </form>
+                        <!-- End of Stepper content and form -->
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-lg-4">
-            <div class="card" style="height: auto; overflow: auto;">
-                <div class="card-body">
-                    <div class="d-flex flex-column justify-content-center align-items-center">
-                        <h3>Preview</h3>
-                        @include('user.pages.nfc-card.partials.nfc_preview')
+            <div class="card" id="second-card">
+                <div class="card-header px-0 sticky-top-preview border-0">
+                    <div class="d-flex flex-column justify-content-center align-items-center"
+                        style="width: 100%; background: #0098da3d; border-top-left-radius: 5px; border-top-right-radius: 5px; padding: 15px;">
+                        <h3 class="">Preview</h3>
+                        <p class="mb-0 ">Your Choosen Template</p>
                     </div>
                 </div>
-                {{-- <div class="card-footer d-flex justify-content-around align-items-center">
-                    <a href="#" class="btn btn-light btn-light-primary w-100"><i
-                            class="fa-solid fa-file-export pe-3"></i>Download</a>
-                </div> --}}
+                <div class="card-body custom-card-body overflow-auto px-0 ">
+                    @include('user.pages.nfc-card.partials.nfc_preview')
+                </div>
+                <div
+                    class="card-body custom-card-body overflow-auto px-0 py-10 d-flex justify-content-center align-items-center">
+                    @include('user.pages.nfc-card.partials.virtual_card_preview')
+                </div>
             </div>
         </div>
     </div>
+
     @push('scripts')
         <script>
             $(document).ready(function() {
+                // Function to match card heights
+                function matchCardHeights() {
+                    var firstCardHeight = $('#first-card').outerHeight();
+                    $('#second-card').outerHeight(firstCardHeight);
+                }
+
+                // Call matchCardHeights initially and on window resize
+                matchCardHeights();
+                $(window).resize(matchCardHeights);
+            });
+        </script>
+        <script>
+            $(document).ready(function() {
                 // NFC Template
-                const nfcTemplateValue = $('input[name="nfc_template"]:checked').val();
+                var nfcTemplateValue = $('input[name="nfc_template"]:checked').val();
                 if (nfcTemplateValue != null) {
                     localStorage.setItem('nfc_template', nfcTemplateValue);
                     $("." + nfcTemplateValue).show();
@@ -183,7 +251,7 @@
 
                 $('input[name="nfc_template"]').change(function() {
                     $(".nfc-card").hide();
-                    const nfcTemplateValue = $('input[name="nfc_template"]:checked').val();
+                    var nfcTemplateValue = $('input[name="nfc_template"]:checked').val();
                     if (nfcTemplateValue != null) {
                         localStorage.setItem('nfc_template', nfcTemplateValue);
                         $("." + nfcTemplateValue).show();
@@ -192,40 +260,43 @@
                     }
                 });
 
-                const initiallySelectedValue = $('input[name="nfc_template"]:checked').val();
-                $("#" + initiallySelectedValue).show();
+                var initiallySelectedValue = $('input[name="nfc_template"]:checked').val();
+                $("." + initiallySelectedValue).show();
 
 
-                $('#kt_create_account_form input:not([type="radio"]), #kt_create_account_form textarea').on(
-                    'keyup change',
-                    function() {
+                $('#kt_stepper_example_clickable_form input:not([type="radio"]), #kt_stepper_example_clickable_form textarea, #kt_stepper_example_clickable_form input:not([type="color"])')
+                    .on('keyup change', function() {
                         // Extract input value and name
                         var inputValue = $(this).val();
                         var inputName = $(this).attr('name');
-
+                        // alert(inputValue);
+                        // alert(inputName);
                         // Update corresponding NFC card element
                         var nfcCardElement = $('.nfc-card .' + inputName);
-                        if (nfcCardElement.length > 0) {
+                        var virtualCardElement = $('.virtual_card .' + inputName);
+                        if (nfcCardElement.length > 0 | virtualCardElement.length > 0) {
                             if ($(this).is('input[type="file"]')) {
                                 if ($(this).prop('files') && $(this).prop('files')[0]) {
                                     var file = $(this).prop('files')[0];
                                     var reader = new FileReader();
                                     reader.onload = function(e) {
                                         nfcCardElement.attr('src', e.target.result);
+                                        virtualCardElement.attr('src', e.target.result);
                                     }
                                     reader.readAsDataURL(file);
                                 }
                             } else if ($(this).is('input[type="url"]')) {
                                 nfcCardElement.attr('href', inputValue);
+                                virtualCardElement.attr('href', inputValue);
                             } else {
                                 nfcCardElement.text(inputValue);
+                                virtualCardElement.text(inputValue);
                             }
                         }
 
                         // For debugging
                         console.log("Input Name:", inputName, "Input Value:", inputValue);
-                    }
-                );
+                    });
 
 
             });
@@ -280,12 +351,7 @@
                 transparentContent.style.display = 'none';
             });
 
-            // imageRadio.addEventListener('change', function() {
-            //     // Show image content and hide others
-            //     colorContent.style.display = 'none';
-            //     imageContent.style.display = 'block';
-            //     transparentContent.style.display = 'none';
-            // });
+
 
             transparentRadio.addEventListener('change', function() {
                 // Show transparent content and hide others
@@ -393,16 +459,91 @@
                 }
             }
         </script>
-
         <script>
             // Initialize Slick Slider
+        </script>
+        <script>
+            // Stepper lement
+            var element = document.querySelector("#kt_stepper_example_clickable");
+
+            // Initialize Stepper
+            var stepper = new KTStepper(element);
+
+            // Handle navigation click
+            stepper.on("kt.stepper.click", function(stepper) {
+                stepper.goTo(stepper.getClickedStepIndex()); // go to clicked step
+            });
+
+            // Handle next step
+            stepper.on("kt.stepper.next", function(stepper) {
+                stepper.goNext(); // go next step
+            });
+
+            // Handle previous step
+            stepper.on("kt.stepper.previous", function(stepper) {
+                stepper.goPrevious(); // go previous step
+            });
+        </script>
+        <script>
             $(document).ready(function() {
-                $(".slick-slider").slick({
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    autoplay: true,
-                    draggable: false,
-                    autoplaySpeed: 2000, // Adjust autoplay speed in milliseconds
+                function updateCardPreview() {
+                    const virtualCardValue = $('input[name="virtual_card_template"]:checked').val();
+                    if (virtualCardValue != null) {
+                        $(".virtual_card").hide();
+                        $(".nfc-card").hide();
+                        $("." + virtualCardValue).show();
+                    } else {
+                        $(".nfc-card").hide();
+                    }
+                }
+
+
+
+                // On change event for radio buttons
+                $('input[name="virtual_card_template"]').change(function() {
+                    updateCardPreview();
+                });
+
+
+            });
+
+            function changeCardFontColor() {
+                var selectedCardFontColor = $('input[name="card_font_color"]').val();
+                $('.card_name, .card_designation, .card_phone, .card_email, .card_address').css('color', selectedCardFontColor);
+            }
+
+            function changeBgFront(input) {
+                if (input.files && input.files[0]) {
+                    var file = input.files[0];
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('.punch-card-container').css('background-image', 'url(' + e.target.result + ')');
+                    }
+                    reader.readAsDataURL(file);
+                }
+            }
+
+            function changeBgBack(input) {
+                if (input.files && input.files[0]) {
+                    var file = input.files[0];
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('.punch-card-container-back').css('background-image', 'url(' + e.target.result + ')');
+                    }
+                    reader.readAsDataURL(file);
+                }
+            }
+        </script>
+
+        <script>
+            $(document).ready(function() {
+                $('#submitButton').on('submit', function() {
+                    var $btn = $(this);
+                    // Disable the button
+                    $btn.prop('disabled', true);
+                    // Show the progress indicator
+                    $btn.find('.indicator-label').hide();
+                    $btn.find('.indicator-progress').show();
                 });
             });
         </script>
