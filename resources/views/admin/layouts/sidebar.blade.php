@@ -144,7 +144,7 @@
                         </div>
                     </div>
                 </div>
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                <div data-kt-menu-trigger="click" class="menu-item {{ Route::is('admin.qr.template','admin.nfc.template') ? 'here show' : '' }} menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/general/gen022.svg-->
@@ -170,9 +170,9 @@
                         <span class="menu-title">Template</span>
                         <span class="menu-arrow"></span>
                     </span>
-                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                    <div class="menu-sub menu-sub-accordion {{ Route::is('admin.qr.template','admin.nfc.template') ? 'menu-active-bg' : '' }}">
                         <div class="menu-item">
-                            <a class="menu-link" href="../../demo1/dist/widgets/lists.html">
+                            <a class="menu-link {{ Route::is('admin.qr.template') ? 'active' : '' }}" href="{{ route('admin.qr.template') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -180,7 +180,7 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="../../demo1/dist/widgets/statistics.html">
+                            <a class="menu-link {{ Route::is('admin.nfc.template') ? 'active' : '' }}" href="{{ route('admin.nfc.template') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -233,15 +233,7 @@
                                 <span class="menu-title">Subscription Plans List</span>
                             </a>
                         </div>
-                        <div class="menu-item">
-                            <a class="menu-link {{ Route::is('admin.plans.index') ? 'active' : '' }}"
-                                href="{{ route('admin.plans.create') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Subscription Plan Create</span>
-                            </a>
-                        </div>
+
                     </div>
                 </div>
                 <div data-kt-menu-trigger="click"

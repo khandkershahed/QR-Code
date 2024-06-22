@@ -80,10 +80,10 @@
                                                         class="menu-link px-3">Show</a>
                                                     </div> --}}
 
-                                                    <div class="menu-item px-3">
+                                                    {{-- <div class="menu-item px-3">
                                                         <a href="{{ route('admin.contact.edit', $contact->id) }}"
                                                             class="menu-link px-3">Edit</a>
-                                                    </div>
+                                                    </div> --}}
 
 
                                                     <div class="menu-item px-3">

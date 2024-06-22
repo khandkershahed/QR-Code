@@ -97,6 +97,9 @@ Route::middleware('auth:admin', 'role:admin')->prefix('admin')->name('admin.')->
         ],
     );
 
+    Route::get('template/qrcode', [QrCodeController::class, 'qrTemplate'])->name('qr.template');
+    Route::get('template/nfc-card', [NfcCardController::class, 'nfcTemplate'])->name('nfc.template');
+
     Route::controller(DynamicCssController::class)->group(function () {
         Route::get('/dynamic-css', 'index')->name('css.index');
         Route::put('/dynamic-css/{id}/update', 'update')->name('css.update');

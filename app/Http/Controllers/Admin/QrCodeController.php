@@ -89,7 +89,10 @@ class QrCodeController extends Controller
 
     public function qrTemplate()
     {
-        return view('user.pages.template.qr_template');
+        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
+        $view = $isUserRoute ? 'user.pages.template.qr_template' : 'admin.pages.template.qr_template';
+        return view($view);
+        // return view('admin.pages.template.qr_template');
     }
 
 

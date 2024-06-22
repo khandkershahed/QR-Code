@@ -101,7 +101,7 @@
                         <x-metronic.label for="status" class="col-form-label required fw-bold fs-6">
                             {{ __('Select a Status ') }}</x-metronic.label>
                         <x-metronic.select-option id="status" name="status" data-hide-search="true"
-                            data-placeholder="Select an option">
+                            data-placeholder="Select an option" required>
                             <option></option>
                             <option value="active">Active</option>
                             <option value="inactive">Inactive</option>
