@@ -61,7 +61,7 @@
                 <div class="col-xl-7 col-lg-9">
                     <div class="section-title text-center mb-55" data-aos="fade-up" data-aos-duration="1500"
                         data-aos-offset="50">
-                        <h2>GoQR: Empowering Your Business with QR Code Solutions</h2>
+                        <h2 class="fw-bold">Empowering Your Business with QR Code Solutions</h2>
                     </div>
                 </div>
             </div>
