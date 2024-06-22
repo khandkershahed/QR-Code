@@ -73,7 +73,7 @@
                     <div class="iconic-box style-seven border">
                         <div class="icon-title">
                             <i class="fas fa-cloud-upload"></i>
-                            <h5><a href="service-details.html">Real-Time Updates</a></h5>
+                            <h5><a href="{{ route('services') }}">Real-Time Updates</a></h5>
                         </div>
                         <div class="content">
                             <p>
@@ -92,7 +92,7 @@
                         <div class="icon-title">
                             <i class="fa-solid fa-bullseye"></i>
                             <h5>
-                                <a href="service-details.html">Align Money Goals</a>
+                                <a href="{{ route('services') }}">Align Money Goals</a>
                             </h5>
                         </div>
                         <div class="content">
@@ -111,7 +111,7 @@
                     <div class="iconic-box style-seven border">
                         <div class="icon-title">
                             <i class="fas fa-layer-group"></i>
-                            <h5><a href="service-details.html">Quietly Powerful</a></h5>
+                            <h5><a href="{{ route('services') }}">Quietly Powerful</a></h5>
                         </div>
                         <div class="content">
                             <p>
@@ -138,7 +138,7 @@
                             <span class="subtitle d-block mb-10">Website Builder</span>
                             <h2>Ready Work Together to make QR & Business Card?</h2>
                         </div>
-                        <a href="contact.html" class="theme-btn">Contact Us <i class="fas fa-arrow-right"></i></a>
+                        <a href="{{ route('contact') }}" class="theme-btn">Contact Us <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -174,7 +174,7 @@
                                 <i class="fas fa-check"></i> Customized Solutions
                             </li>
                         </ul>
-                        <a href="#" class="theme-btn style-four mt-50">Learn More <i
+                        <a href="{{ route('contact') }}" class="theme-btn style-four mt-50">Learn More <i
                                 class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
