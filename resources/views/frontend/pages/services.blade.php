@@ -135,7 +135,7 @@
                                 <a href="service-details.html">Advanced Analytics and Insights</a>
                             </h5>
                             <p>
-                                Gain valuable insights into QR code performance, scan rates, and user engagement.
+                                Gain valuable insights into QR code performance, scan rates, and user.
                             </p>
                         </div>
                         <div class="bg">
@@ -173,8 +173,7 @@
                         <div class="content">
                             <h5><a href="service-details.html">Cross-Platform Compatibility</a></h5>
                             <p>
-                                Ensure seamless integration across various devices and platforms, reaching your audience
-                                wherever they are.
+                                Ensure seamless integration across various devices and platforms, reaching you.
                             </p>
                         </div>
                         <div class="bg">
@@ -222,7 +221,7 @@
                 <div class="col-xl-6 col-lg-9 col-md-11">
                     <div class="section-title text-center mb-45 aos-init aos-animate" data-aos="fade-up"
                         data-aos-duration="1500" data-aos-offset="50">
-                        <h2>Explore Our Pricing Package and choose your plan</h2>
+                        <h2 class="fw-bold">Explore Our Pricing Package and choose your plan</h2>
                     </div>
                 </div>
                 <div class="col-lg-7 text-center aos-init aos-animate" data-aos="fade-up" data-aos-delay="50"
@@ -303,20 +302,19 @@
                     </div>
                 </div>
             </div>
-            <div class="pricing-three-shapes">
+            {{-- <div class="pricing-three-shapes">
                 <div class="shape one">
                     <img src="https://webtendtheme.net/html/2024/akpager/assets/images/shapes/price1.png" alt="Shape">
                 </div>
                 <div class="shape two">
                     <img src="https://webtendtheme.net/html/2024/akpager/assets/images/shapes/price2.png" alt="Shape">
                 </div>
-            </div>
+            </div> --}}
         </div>
         <div class="bg-circle-shapes">
             <span></span><span></span> <span></span><span></span>
         </div>
     </section>
-    <!-- Pricing Area End -->
 
     <!-- Client Logos Area Start -->
     <section class="client-logo-area-two pt-130 rpt-100 pb-95 rpb-65">

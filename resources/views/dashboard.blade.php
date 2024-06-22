@@ -441,7 +441,7 @@
                     <div class="col-lg-12">
                         <div class="overflow-auto pb-5">
                             <div
-                                class="notice d-flex bg-light-primary rounded border-primary border border-dashed min-w-lg-600px flex-shrink-0 p-6">
+                                class="notice d-flex bg-light-primary rounded border-primary border border-dashed  flex-shrink-0 p-6">
                                 <i class="ki-duotone ki-devices-2 fs-2tx text-primary me-4"><span
                                         class="path1"></span><span class="path2"></span><span
                                         class="path3"></span></i>

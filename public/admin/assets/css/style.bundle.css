@@ -41444,13 +41444,8 @@ a:hover {
     color: #009ef7;
     border-color: #f1faff;
     background-color: #92caff !important;
-
 }
 
-.galary_logo {
-    height: 75px !important;
-    width: 80px;
-}
 .custom-dropdown-menu {
     display: none;
     position: absolute;
@@ -41460,18 +41455,17 @@ a:hover {
     z-index: 1;
 }
 
-
 .custom-visible {
     display: block;
 }
-.action-table-btn{
+.action-table-btn {
     background-color: transparent !important;
     border-radius: 100%;
     height: 40px;
     width: 40px;
     transition: all 0.5s;
 }
-.action-table-btn:hover{
+.action-table-btn:hover {
     background-color: #009ef7 !important;
     border-radius: 100%;
     height: 40px;
@@ -59171,4 +59165,37 @@ body {
 .card.card-docs {
     background-color: #fff;
     border: 0;
+}
+
+/* custom */
+@media (min-width: 992px) and (max-width: 1400px) {
+    .checkbbox-for-qr span {
+        padding: 5px !important;
+        background-color: transparent !important;
+    }
+    .check-maintext span {
+        font-size: 12px !important;
+    }
+    .checkbbox-for-qr {
+        height: 130px;
+        line-height: 1;
+    }
+    .stepper-item {
+        margin-right: 0px !important;
+    }
+    .nav-pills-custom .nav-item {
+        padding-right: 0px !important;
+    }
+    .galary_logo {
+        height: 50px !important;
+        width: 50px;
+        padding: 6px !important;
+    }
+}
+
+@media (min-width: 1440px) {
+    .galary_logo {
+        height: 75px !important;
+        width: 80px !important;
+    }
 }
