@@ -121,7 +121,7 @@
                                                 data-bs-target="#virtual_card_modal_{{ $nfc_card->id }}"
                                                 class="text-primary">
                                                 <button class="btn btn-sm btn-info"><i
-                                                        class="fa-regular fa-eye pe-2"></i>
+                                                        class="fas fa-eye pe-2"></i>
                                                     CARD</button>
                                             </a>
                                         </td>

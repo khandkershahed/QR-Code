@@ -35,9 +35,9 @@
                                         </div>
                                     </th> --}}
                                     <th width="5%" class="text-center">Sl</th>
-                                    <th width="15%" class="text-center">Name</th>
+                                    <th width="20%" class="text-center">Name</th>
                                     <th width="20%" class="text-center">Email</th>
-                                    <th width="5%" class="text-center">Message</th>
+                                    <th width="45%" class="text-center">Message</th>
                                     <th width="10%" class="text-center min-w-70px">Action</th>
                                 </tr>
                             </thead>
@@ -50,47 +50,23 @@
                                                 <input class="form-check-input" type="checkbox" value="1" />
                                             </div>
                                         </td> --}}
-                                        <td>
+                                        <td class="text-center">
                                             <span class="fw-bolder"> {{ $loop->iteration }}</span>
                                         </td>
-                                        <td>
+                                        <td class="text-center">
                                             <span class="fw-bolder"> {{ $contact->name }}</span>
                                         </td>
-                                        <td>
+                                        <td class="text-center">
                                             <span class="fw-bolder"> {{ $contact->email }}</span>
                                         </td>
-                                        <td>
+                                        <td class="text-center">
                                             <span class="fw-bolder"> {{ $contact->message }}</span>
                                         </td>
-                                        <td class="text-end">
-                                            <a href="#" class="btn btn-sm btn-light btn-active-light-primary"
-                                                data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
-                                                <span class="svg-icon svg-icon-5 m-0">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                        height="24" viewBox="0 0 24 24" fill="none">
-                                                        <path
-                                                            d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
-                                                            fill="currentColor" />
-                                                    </svg>
-                                                </span>
-                                                <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
-                                                    data-kt-menu="true">
-                                                    {{-- <div class="menu-item px-3">
-                                                    <a href="{{ route('admin.contact.show', $contact->id) }}"
-                                                        class="menu-link px-3">Show</a>
-                                                    </div> --}}
-
-                                                    {{-- <div class="menu-item px-3">
-                                                        <a href="{{ route('admin.contact.edit', $contact->id) }}"
-                                                            class="menu-link px-3">Edit</a>
-                                                    </div> --}}
-
-
-                                                    <div class="menu-item px-3">
-                                                        <a href="{{ route('admin.contact.destroy', $contact->id) }}"
-                                                            class="menu-link px-3 delete">Delete</a>
-                                                    </div>
-                                                </div>
+                                        <td class="text-center">
+                                            <a href="{{ route('admin.contact.destroy', $contact->id) }}"
+                                                class="btn btn-sm btn-light-primary btn-active-danger delete"
+                                                data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                               <i class="fas fa-trash"></i> Delete
                                         </td>
                                     </tr>
                                 @endforeach
