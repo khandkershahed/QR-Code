@@ -67,46 +67,10 @@
                 <div class="p-5 pb-2">
                     <h4 class="mb-0">View and manage your NFC Cards</h4>
                 </div>
-                {{-- <div class="card-header align-items-center py-5 gap-2 gap-md-5">
-                    <div class="card-title">
-                        @if (!empty(optional($subscription)->plan))
-                            <h2 class="mb-0">View and manage your NFC Cards | Total Created : {{ $nfc_cards->count() }}
-                                | My Plan
-                                Limitation: {{ optional($subscription)->plan->nfc }} | Remaining:
-                                {{ optional($subscription)->plan->nfc - $nfc_cards->count() }}</h2>
-                        @else
-                            <h2 class="mb-0">Manage your NFC Cards | Total Created : {{ $nfc_cards->count() }} | My
-                                Plan Limitation: 10 (Trial Period) | Remaining: {{ 10 - $nfc_cards->count() }}</h2>
-                        @endif
-
-                    </div>
-                    <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
-                        @if (!empty(optional($subscription)->plan))
-                            @if (optional($subscription)->plan->nfc - $nfc_cards->count() > 0)
-                                <a href="{{ route('user.nfc-card.create') }}"
-                                    class="btn btn-sm btn-primary rounded-2 me-3">
-                                    Create NFC Card
-                                </a>
-                            @endif
-                        @else
-                            @if (10 - $nfc_cards->count() > 0)
-                                <a href="{{ route('user.nfc-card.create') }}"
-                                    class="btn btn-sm btn-primary rounded-2 me-3">
-                                    Create NFC Card
-                                </a>
-                            @endif
-                        @endif
-                        @if (optional($subscription)->plan->nfc - $nfc_cards->count() > 0)
-                            <a href="{{ route('user.nfc-card.create') }}" class="btn btn-sm btn-primary rounded-2 me-3">
-                                Create NFC Card
-                            </a>
-                        @endif
-                    </div>
-                </div> --}}
                 <div class="card-body">
                     <table
                         class="table align-middle border rounded table-row-dashed table-striped table-hover  fs-6 g-5"
-                        id="qr_code">
+                        id="nfc_card_admin">
                         <thead>
                             <tr class="text-gray-500 fw-bold fs-7 text-uppercase">
                                 <th width="5%">SL</th>
@@ -498,7 +462,8 @@
                                                             <h4 class="fw-bold mb-0 card_name">
                                                                 {{ optional($nfc_card->virtualCard)->card_name }}</h4>
                                                             <p class="fw-bold mb-0 card_designation">
-                                                                {{ optional($nfc_card->virtualCard)->card_designation }}</p>
+                                                                {{ optional($nfc_card->virtualCard)->card_designation }}
+                                                            </p>
                                                             <div class="me-auto mt-2 title-devider-tem-one"></div>
                                                             <div>
                                                                 <p class="fw-bold pt-3 mb-0">
@@ -622,7 +587,8 @@
                                                                 {{ optional($nfc_card->virtualCard)->card_name }}
                                                             </h4>
                                                             <p class="fw-bold mb-0 card_designation card_font_color">
-                                                                {{ optional($nfc_card->virtualCard)->card_designation }}</p>
+                                                                {{ optional($nfc_card->virtualCard)->card_designation }}
+                                                            </p>
                                                             <hr class="title-divider mt-2" />
                                                             <div>
                                                                 <p class="fw-bold text-white pt-3 mb-0">
@@ -697,7 +663,8 @@
                                                                 {{ optional($nfc_card->virtualCard)->card_name }}
                                                             </h4>
                                                             <p class="fw-bold mb-0 card_designation">
-                                                                {{ optional($nfc_card->virtualCard)->card_designation }}</p>
+                                                                {{ optional($nfc_card->virtualCard)->card_designation }}
+                                                            </p>
                                                             <div class="me-auto mt-2 title-devider"
                                                                 style="height: 2px;width: 120px;background-color: #fff;margin: start;position: relative;left: 0px;">
                                                             </div>
@@ -828,7 +795,8 @@
                                                                 {{ optional($nfc_card->virtualCard)->card_name }}
                                                             </h4>
                                                             <p class="fw-bold mb-0 card_designation">
-                                                                {{ optional($nfc_card->virtualCard)->card_designation }}</p>
+                                                                {{ optional($nfc_card->virtualCard)->card_designation }}
+                                                            </p>
                                                             <div class="me-auto mt-2 title-devider"
                                                                 style="height: 2px;width: 120px;background-color: #fff;margin: start;position: relative;left: 0px;">
                                                             </div>
@@ -906,7 +874,8 @@
                                                                 {{ optional($nfc_card->virtualCard)->card_name }}
                                                             </h4>
                                                             <p class="fw-bold mb-0 card_designation">
-                                                                {{ optional($nfc_card->virtualCard)->card_designation }}</p>
+                                                                {{ optional($nfc_card->virtualCard)->card_designation }}
+                                                            </p>
                                                             <div>
                                                                 <p class="fw-bold text-white pt-3 mb-0">
                                                                     <i class="fa-solid fa-phone pe-2"></i> <span
@@ -975,7 +944,8 @@
                                                                 {{ optional($nfc_card->virtualCard)->card_name }}
                                                             </h4>
                                                             <p class="fw-bold mb-0 card_designation">
-                                                                {{ optional($nfc_card->virtualCard)->card_designation }}</p>
+                                                                {{ optional($nfc_card->virtualCard)->card_designation }}
+                                                            </p>
                                                             <div>
                                                                 <p class="fw-bold text-white pt-3 mb-0">
                                                                     <i class="fa-solid fa-phone pe-2"></i> <span
@@ -1047,49 +1017,57 @@
                                         <x-metronic.label for="name" class="form-label">
                                             {{ __('Contact Person Name') }}
                                         </x-metronic.label>
-                                        <h6 class="p-0 m-0">{{ optional($nfc_card->shippingDetails)->shipping_name }} </h6>
+                                        <h6 class="p-0 m-0">{{ optional($nfc_card->shippingDetails)->shipping_name }}
+                                        </h6>
                                     </div>
                                     <div class="col-lg-5 mb-5">
                                         <x-metronic.label for="phone" class="form-label">
                                             {{ __('Phone') }}
                                         </x-metronic.label>
-                                        <h6 class="p-0 m-0">{{ optional($nfc_card->shippingDetails)->shipping_phone }} </h6>
+                                        <h6 class="p-0 m-0">
+                                            {{ optional($nfc_card->shippingDetails)->shipping_phone }} </h6>
                                     </div>
                                     <div class="col-lg-8 mb-5">
                                         <x-metronic.label for="address" class="form-label">
                                             {{ __('Address') }}
                                         </x-metronic.label>
-                                        <h6 class="p-0 m-0">{{ optional($nfc_card->shippingDetails)->shipping_address }} </h6>
+                                        <h6 class="p-0 m-0">
+                                            {{ optional($nfc_card->shippingDetails)->shipping_address }} </h6>
                                     </div>
                                     <div class="col-lg-4 mb-5">
                                         <x-metronic.label for="city" class="form-label">
                                             {{ __('City') }}
                                         </x-metronic.label>
-                                        <h6 class="p-0 m-0">{{ optional($nfc_card->shippingDetails)->shipping_city }} </h6>
+                                        <h6 class="p-0 m-0">{{ optional($nfc_card->shippingDetails)->shipping_city }}
+                                        </h6>
                                     </div>
                                     <div class="col-lg-4 mb-5">
                                         <x-metronic.label for="state" class="form-label">
                                             {{ __('State') }}
                                         </x-metronic.label>
-                                        <h6 class="p-0 m-0">{{ optional($nfc_card->shippingDetails)->shipping_state }} </h6>
+                                        <h6 class="p-0 m-0">
+                                            {{ optional($nfc_card->shippingDetails)->shipping_state }} </h6>
                                     </div>
                                     <div class="col-lg-4 mb-5">
                                         <x-metronic.label for="zip_code" class="form-label">
                                             {{ __('Zip code') }}
                                         </x-metronic.label>
-                                        <h6 class="p-0 m-0">{{ optional($nfc_card->shippingDetails)->shipping_zip_code }} </h6>
+                                        <h6 class="p-0 m-0">
+                                            {{ optional($nfc_card->shippingDetails)->shipping_zip_code }} </h6>
                                     </div>
                                     <div class="col-lg-4 mb-5">
                                         <x-metronic.label for="country" class="form-label">
                                             {{ __('Country') }}
                                         </x-metronic.label>
-                                        <h6 class="p-0 m-0">{{ optional($nfc_card->shippingDetails)->shipping_country }} </h6>
+                                        <h6 class="p-0 m-0">
+                                            {{ optional($nfc_card->shippingDetails)->shipping_country }} </h6>
                                     </div>
                                     <div class="col-lg-12 mb-5">
                                         <x-metronic.label for="instruction" class="form-label">
                                             {{ __('Instruction') }}
                                         </x-metronic.label>
-                                        <h6 class="p-0 m-0">{{ optional($nfc_card->shippingDetails)->shipping_instruction }} </h6>
+                                        <h6 class="p-0 m-0">
+                                            {{ optional($nfc_card->shippingDetails)->shipping_instruction }} </h6>
                                     </div>
                                 </div>
                             </div>
@@ -1117,6 +1095,12 @@
 
                 // Private functions
                 var initDatatable = function() {
+                    // Check if the DataTable is already initialized
+                    if ($.fn.DataTable.isDataTable(table)) {
+                        // Destroy the existing instance
+                        $(table).DataTable().destroy();
+                    }
+
                     // Set date data order
                     const tableRows = table.querySelectorAll('tbody tr');
 
@@ -1135,47 +1119,6 @@
                     });
                 }
 
-                // Hook export buttons
-                var exportButtons = () => {
-                    const documentTitle = 'Customer Orders Report';
-                    var buttons = new $.fn.dataTable.Buttons(table, {
-                        buttons: [{
-                                extend: 'copyHtml5',
-                                title: documentTitle
-                            },
-                            {
-                                extend: 'excelHtml5',
-                                title: documentTitle
-                            },
-                            {
-                                extend: 'csvHtml5',
-                                title: documentTitle
-                            },
-                            {
-                                extend: 'pdfHtml5',
-                                title: documentTitle
-                            }
-                        ]
-                    }).container().appendTo($('#qr_code_buttons'));
-
-                    // Hook dropdown menu click event to datatable export buttons
-                    const exportButtons = document.querySelectorAll(
-                        '#qr_code_export_menu [data-kt-export]');
-                    exportButtons.forEach(exportButton => {
-                        exportButton.addEventListener('click', e => {
-                            e.preventDefault();
-
-                            // Get clicked export value
-                            const exportValue = e.target.getAttribute('data-kt-export');
-                            const target = document.querySelector('.dt-buttons .buttons-' +
-                                exportValue);
-
-                            // Trigger click event on hidden datatable export buttons
-                            target.click();
-                        });
-                    });
-                }
-
                 // Search Datatable --- official docs reference: https://datatables.net/reference/api/search()
                 var handleSearchDatatable = () => {
                     const filterSearch = document.querySelector('[data-kt-filter="search"]');
@@ -1187,7 +1130,7 @@
                 // Public methods
                 return {
                     init: function() {
-                        table = document.querySelector('#qr_code');
+                        table = document.querySelector('#nfc_card_admin');
 
                         if (!table) {
                             return;
