@@ -29,7 +29,7 @@
                     <div>
                         <table
                             class="table align-middle border rounded table-row-dashed table-striped table-hover  fs-6 g-5"
-                            id="qr_code">
+                            id="qr_code_admin">
                             <thead>
                                 <tr class="text-gray-500 fw-bold fs-7 text-uppercase text-center">
                                     <th width="5">SL</th>
@@ -241,11 +241,11 @@
                                 title: documentTitle
                             }
                         ]
-                    }).container().appendTo($('#qr_code_buttons'));
+                    }).container().appendTo($('#qr_code_admin_buttons'));
 
                     // Hook dropdown menu click event to datatable export buttons
                     const exportButtons = document.querySelectorAll(
-                        '#qr_code_export_menu [data-kt-export]');
+                        '#qr_code_admin_export_menu [data-kt-export]');
                     exportButtons.forEach(exportButton => {
                         exportButton.addEventListener('click', e => {
                             e.preventDefault();
@@ -272,7 +272,7 @@
                 // Public methods
                 return {
                     init: function() {
-                        table = document.querySelector('#qr_code');
+                        table = document.querySelector('#qr_code_admin');
 
                         if (!table) {
                             return;
