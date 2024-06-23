@@ -9,23 +9,11 @@
                 </i>
                 <!--begin::Description-->
                 <div class="d-flex justify-content-between align-items-center w-100">
-                    
+
                     <div>
-                        @if (!empty($subscription->plan))
-                            @if ($subscription->plan->qr - $qrs->count() > 0)
-                                <a href="{{ route('user.qr-code.create') }}"
-                                    class="btn btn-sm btn-primary rounded-2 me-3">
-                                    Create QR Codes
-                                </a>
-                            @endif
-                        @else
-                            @if (10 - $qrs->count() > 0)
-                                <a href="{{ route('user.qr-code.create') }}"
-                                    class="btn btn-sm btn-primary rounded-2 me-3">
-                                    Create QR Codes
-                                </a>
-                            @endif
-                        @endif
+                        <a href="{{ route('user.qr-code.create') }}" class="btn btn-sm btn-primary rounded-2 me-3">
+                            Create QR Codes
+                        </a>
                     </div>
                 </div>
             </div>
