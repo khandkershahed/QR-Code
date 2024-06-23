@@ -43,7 +43,6 @@ body::-webkit-scrollbar-thumb {
 }
 
 body {
-    color: var(--base-color);
     font-weight: 400;
     line-height: 30px;
     font-size: 16px;
@@ -1158,7 +1157,6 @@ h6,
 .contact-info-item.style-two .content .text,
 .contact-form .form-group label,
 .shop-shorter .sort-text {
-    color: var(--heading-color);
     font-family: var(--heading-font);
 }
 

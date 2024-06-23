@@ -127,14 +127,14 @@
                 </div>
             </div>
         </div>
-        <div class="pricing-three-shapes">
+        {{-- <div class="pricing-three-shapes">
             <div class="shape one">
                 <img src="https://webtendtheme.net/html/2024/akpager/assets/images/shapes/price1.png" alt="Shape">
             </div>
             <div class="shape two">
                 <img src="https://webtendtheme.net/html/2024/akpager/assets/images/shapes/price2.png" alt="Shape">
             </div>
-        </div>
+        </div> --}}
     </section>
     @push('scripts')
     @endpush

@@ -206,17 +206,6 @@
                     <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold py-4 w-250px fs-6"
                         data-kt-menu="true">
 
-
-                        <div class="menu-item px-5">
-                            <div class="menu-content text-muted pb-2 px-5 fs-7 text-uppercase">Account</div>
-                        </div>
-
-
-                        <div class="menu-item px-5">
-                            <a href="javascript:void(0)" class="menu-link px-5">Reports</a>
-                        </div>
-
-
                         <div class="menu-item px-5 my-1">
                             <a href="{{ route('admin.user.edit', $user->id) }}" class="menu-link px-5">Account
                                 Settings</a>

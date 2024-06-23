@@ -9,34 +9,11 @@
                 </i>
                 <!--begin::Description-->
                 <div class="d-flex justify-content-between align-items-center w-100">
-                    <div class="text-gray-700 fw-bold d-flex ">
-                        @if (!empty($subscription->plan))
-                            <strong class="mb-2"> Total Created QR: {{ $qrs->count() }}|| QR Limitation:
-                                {{ $subscription->plan->qr }}|| QR Remaining:
-                                {{ $subscription->plan->qr - $qrs->count() }}||Total Created QR: {{ $qrs->count() }}
-                            </strong>
-                        @else
-                            <strong class="mb-2">Total Created QR: {{ $qrs->count() }} ||
-                                QR Limitation: 10 (Trial Period)|| QR Remaining:
-                                {{ 10 - $qrs->count() }}</strong>
-                        @endif
-                    </div>
+
                     <div>
-                        @if (!empty($subscription->plan))
-                            @if ($subscription->plan->qr - $qrs->count() > 0)
-                                <a href="{{ route('user.qr-code.create') }}"
-                                    class="btn btn-sm btn-primary rounded-2 me-3">
-                                    Create QR Codes
-                                </a>
-                            @endif
-                        @else
-                            @if (10 - $qrs->count() > 0)
-                                <a href="{{ route('user.qr-code.create') }}"
-                                    class="btn btn-sm btn-primary rounded-2 me-3">
-                                    Create QR Codes
-                                </a>
-                            @endif
-                        @endif
+                        <a href="{{ route('user.qr-code.create') }}" class="btn btn-sm btn-primary rounded-2 me-3">
+                            Create QR Codes
+                        </a>
                     </div>
                 </div>
             </div>
@@ -52,7 +29,7 @@
                     <div>
                         <table
                             class="table align-middle border rounded table-row-dashed table-striped table-hover  fs-6 g-5"
-                            id="qr_code">
+                            id="qr_code_admin">
                             <thead>
                                 <tr class="text-gray-500 fw-bold fs-7 text-uppercase text-center">
                                     <th width="5">SL</th>
@@ -225,13 +202,19 @@
 
                 // Private functions
                 var initDatatable = function() {
+                    // Check if the DataTable is already initialized
+                    if ($.fn.DataTable.isDataTable(table)) {
+                        // Destroy the existing instance
+                        $(table).DataTable().destroy();
+                    }
+
                     // Set date data order
                     const tableRows = table.querySelectorAll('tbody tr');
 
                     tableRows.forEach(row => {
                         const dateRow = row.querySelectorAll('td');
                         const realDate = moment(dateRow[3].innerHTML, "DD MMM YYYY, LT")
-                            .format(); // select date from 4th column in table
+                    .format(); // select date from 4th column in table
                         dateRow[3].setAttribute('data-order', realDate);
                     });
 
@@ -240,47 +223,6 @@
                         "info": false,
                         'order': [],
                         'pageLength': 10,
-                    });
-                }
-
-                // Hook export buttons
-                var exportButtons = () => {
-                    const documentTitle = 'Customer Orders Report';
-                    var buttons = new $.fn.dataTable.Buttons(table, {
-                        buttons: [{
-                                extend: 'copyHtml5',
-                                title: documentTitle
-                            },
-                            {
-                                extend: 'excelHtml5',
-                                title: documentTitle
-                            },
-                            {
-                                extend: 'csvHtml5',
-                                title: documentTitle
-                            },
-                            {
-                                extend: 'pdfHtml5',
-                                title: documentTitle
-                            }
-                        ]
-                    }).container().appendTo($('#qr_code_buttons'));
-
-                    // Hook dropdown menu click event to datatable export buttons
-                    const exportButtons = document.querySelectorAll(
-                        '#qr_code_export_menu [data-kt-export]');
-                    exportButtons.forEach(exportButton => {
-                        exportButton.addEventListener('click', e => {
-                            e.preventDefault();
-
-                            // Get clicked export value
-                            const exportValue = e.target.getAttribute('data-kt-export');
-                            const target = document.querySelector('.dt-buttons .buttons-' +
-                                exportValue);
-
-                            // Trigger click event on hidden datatable export buttons
-                            target.click();
-                        });
                     });
                 }
 
@@ -295,7 +237,7 @@
                 // Public methods
                 return {
                     init: function() {
-                        table = document.querySelector('#qr_code');
+                        table = document.querySelector('#qr_code_admin');
 
                         if (!table) {
                             return;

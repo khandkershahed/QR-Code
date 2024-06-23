@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Image;
-// use App\Models\Admin\QrCode;
+// use Image;
 use Carbon\Carbon;
+// use App\Models\Admin\QrCode;
 use App\Models\Admin\Qr;
 use Illuminate\Support\Str;
 use Jenssegers\Agent\Agent;
 use App\Models\Admin\QrData;
 use App\Models\Admin\QrScan;
-use Illuminate\Http\Request;
 use App\Models\Subscription;
+use Illuminate\Http\Request;
 use App\Models\RestaurantCategory;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -21,6 +22,8 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Admin\QrCodeRequest;
 use Stevebauman\Location\Facades\Location;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Intervention\Image\ImageManagerStatic as Image;
+use Intervention\Image\Exception\NotReadableException;
 
 class QrCodeController extends Controller
 {
@@ -739,9 +742,21 @@ class QrCodeController extends Controller
                 $qrCodeString = $qrCode->margin(4)->errorCorrection('H')->encoding('UTF-8')->generate($qrDataLink);
 
                 if ($format === 'jpg') {
-                    // Convert PNG data to JPG and save
-                    $image = Image::make($qrCodeString);
-                    $image->encode('jpg', 100)->save($qrCodePath);
+                    try {
+                        // Convert binary data to base64
+                        $base64ImageString = base64_encode($qrCodeString);
+                        // Decode base64 string to get the image content
+                        $imageContent = base64_decode($base64ImageString);
+                        // Create image from the binary data
+                        $image = Image::make($imageContent);
+                        $image->encode('jpg', 100)->save($qrCodePath);
+                    } catch (NotReadableException $e) {
+                        Log::error('Image source not readable: ' . $e->getMessage());
+                        continue;
+                    } catch (\Exception $e) {
+                        Log::error('General error: ' . $e->getMessage());
+                        continue;
+                    }
                 } else {
                     $qrCode->generate($qrDataLink, $qrCodePath);
                 }

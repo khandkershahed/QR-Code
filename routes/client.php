@@ -27,7 +27,7 @@ Route::middleware('auth')->prefix('user')->name('user.')->group(function () {
     });
     Route::post('restaurant-category/edit', [RestaurantCategoryController::class, 'categoryEdit'])->name('editCategory');
     Route::post('/restaurant-category/destroy', [RestaurantCategoryController::class, 'destroyCategory'])->name('restaurant-category.destroy');
-    Route::post('qrcode/preview', [QrCodeController::class, 'qrPreview'])->name('qr.preview');
+
     Route::get('qrcode/summary/{id}', [QrCodeController::class, 'qrSummary'])->name('qr.summary');
     Route::get('template/qrcode', [QrCodeController::class, 'qrTemplate'])->name('qr.template');
     Route::get('template/nfc-card', [NfcCardController::class, 'nfcTemplate'])->name('nfc.template');
@@ -37,4 +37,5 @@ Route::middleware('auth')->prefix('user')->name('user.')->group(function () {
 
 
 });
+Route::post('user/qrcode/preview', [QrCodeController::class, 'qrPreview'])->name('user.qr.preview');
 Route::get('/{Qr}', [QrCodeController::class, 'showQr'])->name('showQr');

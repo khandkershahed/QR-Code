@@ -65,8 +65,8 @@
                 <div class="col-xl-6">
                     <div class="row">
                         <div class="col-sm-4 col-6">
-                            <div class="footer-widget widget-links aos-init" data-aos="fade-up" data-aos-delay="100"
-                                data-aos-duration="1500" data-aos-offset="50">
+                            <div class="footer-widget widget-links aos-init" data-aos="fade-up" data-aos-delay="400"
+                            data-aos-duration="1500" data-aos-offset="50">
                                 <h6 class="footer-title text-white">Resources</h6>
                                 <ul>
                                     <li><a href="{{ route('services') }}">Services</a></li>
@@ -76,8 +76,8 @@
                             </div>
                         </div>
                         <div class="col-sm-4 col-6">
-                            <div class="footer-widget widget-links aos-init" data-aos="fade-up" data-aos-delay="200"
-                                data-aos-duration="1500" data-aos-offset="50">
+                            <div class="footer-widget widget-links aos-init" data-aos="fade-up" data-aos-delay="400"
+                            data-aos-duration="1500" data-aos-offset="50">
                                 <h6 class="footer-title text-white">Quick Link</h6>
                                 <ul>
                                     <li><a href="{{ route('pricing') }}">Pricing</a></li>
@@ -87,8 +87,8 @@
                             </div>
                         </div>
                         <div class="col-sm-4 col-6">
-                            <div class="footer-widget widget-links aos-init" data-aos="fade-up" data-aos-delay="300"
-                                data-aos-duration="1500" data-aos-offset="50">
+                            <div class="footer-widget widget-links aos-init" data-aos="fade-up" data-aos-delay="400"
+                            data-aos-duration="1500" data-aos-offset="50">
                                 <h6 class="footer-title text-white">Condition</h6>
                                 <ul>
                                     <li><a href="{{ route('terms') }}">Terms & Conditions</a></li>
@@ -100,11 +100,11 @@
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom mt-30 py-15">
+            <div class="footer-bottom mt-100 py-15">
                 <div class="row align-items-center">
                     <div class="col-xl-12 col-lg-6">
-                        <div class="copyright-text pt-10 text-lg-start text-center aos-init" data-aos="fade-left"
-                            data-aos-duration="1000" data-aos-offset="50">
+                        <div class="copyright-text pt-10 text-lg-start text-center aos-init" data-aos="fade-up" data-aos-delay="400"
+                        data-aos-duration="1500" data-aos-offset="50">
                             <p>Copyright @2024, <a href="{{ route('homePage') }}">GoFlixza</a> All Rights Reserved</p>
                         </div>
                     </div>
