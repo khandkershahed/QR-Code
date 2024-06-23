@@ -9,18 +9,7 @@
                 </i>
                 <!--begin::Description-->
                 <div class="d-flex justify-content-between align-items-center w-100">
-                    <div class="text-gray-700 fw-bold d-flex ">
-                        @if (!empty($subscription->plan))
-                            <strong class="mb-2"> Total Created QR: {{ $qrs->count() }}|| QR Limitation:
-                                {{ $subscription->plan->qr }}|| QR Remaining:
-                                {{ $subscription->plan->qr - $qrs->count() }}||Total Created QR: {{ $qrs->count() }}
-                            </strong>
-                        @else
-                            <strong class="mb-2">Total Created QR: {{ $qrs->count() }} ||
-                                QR Limitation: 10 (Trial Period)|| QR Remaining:
-                                {{ 10 - $qrs->count() }}</strong>
-                        @endif
-                    </div>
+                    
                     <div>
                         @if (!empty($subscription->plan))
                             @if ($subscription->plan->qr - $qrs->count() > 0)

@@ -156,29 +156,6 @@
     </div>
 
     @push('scripts')
-        {{-- <script>
-            $(document).ready(function() {
-                $('input[name="qr_type"]').change(function() {
-                    $(".qr-card").hide();
-                    const qrTemplateValue = $('input[name="qr_type"]:checked').val();
-                    if (qrTemplateValue != null) {
-                        $("." + qrTemplateValue).show();
-                    } else {
-                        $(".qr-card").hide();
-                    }
-                    if (qrTemplateValue == 'coupon_code') {
-                        $("#generatedQRCodeContainer").hide();
-                        $("#qrCouponPreview").show();
-                    } else {
-                        $("#generatedQRCodeContainer").show();
-                        $("#qrCouponPreview").hide();
-                    }
-                });
-
-                const initiallySelectedValue = "{{$qr->qr_type}}";
-                $("." + initiallySelectedValue).show();
-            });
-        </script> --}}
 
 
         <script>
@@ -307,44 +284,8 @@
             });
         </script>
 
-        {{-- For Valitdation --}}
 
-        {{-- For Valitdation End --}}
-        {{-- <script>
-            $(document).ready(function() {
-                $('#generateQRCodeForm').on('submit', function(e) {
-                    e.preventDefault(); // Prevent default form submission behavior
-                    // $('#generateButton').hide();
-                    var formData = new FormData(this);
-
-                    $.ajax({
-                        url: '{{ route('user.qr-code.store') }}',
-                        type: 'POST',
-                        data: formData,
-                        processData: false,
-                        contentType: false,
-                        success: function(response) {
-                            if (response.qrCodePath) {
-                                $('#generatedQRCode').attr('src', '');
-                                $('#generatedQRCode').attr('src', response.qrCodePath);
-                                $('#downloadLink').attr('href', response.qrCodePath).show();
-                                $('#generatedQRCodeContainer').clear();
-                                $('#generatedQRCodeContainer').show();
-                                $('#generateButton').show();
-                            } else {
-                                console.error('QR code path not found in the response.');
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            console.error(xhr.responseText);
-                        }
-                    });
-                });
-            });
-        </script> --}}
         <script>
-            // $(document).ready(function() { 2
-            // $('#generateQRCodeForm input:not([name="qr_type"]), #generateQRCodeForm input:not([name="qr_data_coupon_code"]),#generateQRCodeForm input:not([name="qr_data_coupon_expire_date"]),#generateQRCodeForm input:not([name="qr_data_coupon_header"]),#generateQRCodeForm input:not([name="qr_data_coupon_message"]),#generateQRCodeForm input:not([name="qr_data_coupon_description_header"]),#generateQRCodeForm input:not([name="qr_data_coupon_description_body"]),#generateQRCodeForm input:not([name="qr_data_coupon_website"]),#generateQRCodeForm input:not([name="qr_data_coupon_company"]),#generateQRCodeForm input:not([name="qr_data_coupon_policy"]),#generateQRCodeForm input:not([name="qr_data_coupon_logo"]) ,#generateQRCodeForm textarea, #generateQRCodeForm select')
             $('#generateQRCodeForm input, #generateQRCodeForm textarea, #generateQRCodeForm select').not(
                 '[name="qr_type"], [name="qr_data_coupon_code"], [name="qr_data_coupon_expire_date"], [name="qr_data_coupon_header"], [name="qr_data_coupon_message"], [name="qr_data_coupon_description_header"], [name="qr_data_coupon_description_body"], [name="qr_data_coupon_website"], [name="qr_data_coupon_company"], [name="qr_data_coupon_policy"], [name="qr_data_coupon_logo"]'
             ).on('keyup change', function(e) {

@@ -75,7 +75,7 @@
                             </div>
                         </div>
 
-                        <form class="form mx-auto" novalidate="novalidate" action="{{ route('user.qr-code.store') }}"
+                        <form class="form mx-auto" novalidate="novalidate" action="{{ route('admin.qr-code.store') }}"
                             id="kt_stepper_example_basic_form" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-5">
@@ -162,7 +162,7 @@
                                 </div>
 
                                 <div>
-                                    <button type="button" class="btn btn-primary" data-kt-stepper-action="submit">
+                                    <button type="submit" class="btn btn-primary" id="submitButton" data-kt-stepper-action="submit">
                                         <span class="indicator-label">
                                             Submit
                                         </span>
@@ -717,45 +717,10 @@
             });
         </script>
 
-        {{-- For Valitdation --}}
-
-        {{-- For Valitdation End --}}
-        {{-- <script>
-            $(document).ready(function() {
-                $('kt_stepper_example_basic_form').on('submit', function(e) {
-                    e.preventDefault(); // Prevent default form submission behavior
-                    // $('#generateButton').hide();
-                    var formData = new FormData(this);
-
-                    $.ajax({
-                        url: '{{ route('user.qr-code.store') }}',
-                        type: 'POST',
-                        data: formData,
-                        processData: false,
-                        contentType: false,
-                        success: function(response) {
-                            if (response.qrCodePath) {
-                                $('#generatedQRCode').attr('src', '');
-                                $('#generatedQRCode').attr('src', response.qrCodePath);
-                                $('#downloadLink').attr('href', response.qrCodePath).show();
-                                $('#generatedQRCodeContainer').clear();
-                                $('#generatedQRCodeContainer').show();
-                                $('#generateButton').show();
-                            } else {
-                                console.error('QR code path not found in the response.');
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            console.error(xhr.responseText);
-                        }
-                    });
-                });
-            });
-        </script> --}}
         <script>
             // $(document).ready(function() { 2
             // $('kt_stepper_example_basic_form input:not([name="qr_type"]), kt_stepper_example_basic_form input:not([name="qr_data_coupon_code"]),kt_stepper_example_basic_form input:not([name="qr_data_coupon_expire_date"]),kt_stepper_example_basic_form input:not([name="qr_data_coupon_header"]),kt_stepper_example_basic_form input:not([name="qr_data_coupon_message"]),kt_stepper_example_basic_form input:not([name="qr_data_coupon_description_header"]),kt_stepper_example_basic_form input:not([name="qr_data_coupon_description_body"]),kt_stepper_example_basic_form input:not([name="qr_data_coupon_website"]),kt_stepper_example_basic_form input:not([name="qr_data_coupon_company"]),kt_stepper_example_basic_form input:not([name="qr_data_coupon_policy"]),kt_stepper_example_basic_form input:not([name="qr_data_coupon_logo"]) ,kt_stepper_example_basic_form textarea, kt_stepper_example_basic_form select')
-            $('kt_stepper_example_basic_form input, kt_stepper_example_basic_form textarea, kt_stepper_example_basic_form select').not(
+            $('#kt_stepper_example_basic_form input, #kt_stepper_example_basic_form textarea, #kt_stepper_example_basic_form select').not(
                 '[name="qr_type"], [name="qr_data_coupon_code"], [name="qr_data_coupon_expire_date"], [name="qr_data_coupon_header"], [name="qr_data_coupon_message"], [name="qr_data_coupon_description_header"], [name="qr_data_coupon_description_body"], [name="qr_data_coupon_website"], [name="qr_data_coupon_company"], [name="qr_data_coupon_policy"], [name="qr_data_coupon_logo"]'
             ).on('keyup change', function(e) {
                 e.preventDefault(); // Prevent default form submission behavior
@@ -850,6 +815,18 @@
                         alert("Please upload a valid PDF file.");
                     }
                 });
+        </script>
+        <script>
+            $(document).ready(function() {
+                $('#submitButton').on('submit', function() {
+                    var $btn = $(this);
+                    // Disable the button
+                    $btn.prop('disabled', true);
+                    // Show the progress indicator
+                    $btn.find('.indicator-label').hide();
+                    $btn.find('.indicator-progress').show();
+                });
+            });
         </script>
     @endpush
 </x-admin-app-layout>
