@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Image;
+// use Image;
+use Intervention\Image\ImageManagerStatic as Image;
 // use App\Models\Admin\QrCode;
 use Carbon\Carbon;
 use App\Models\Admin\Qr;
