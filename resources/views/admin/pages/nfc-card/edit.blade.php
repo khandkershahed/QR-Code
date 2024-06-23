@@ -68,7 +68,7 @@
                         </div>
                         <!-- Stepper content and form -->
                         <form class="form flex-grow-1 d-flex flex-column" novalidate="novalidate"
-                            id="kt_stepper_example_clickable_form" action="{{ route('user.nfc-card.update',$nfc_card->id) }}"
+                            id="kt_stepper_example_clickable_form" action="{{ route('admin.nfc-card.update',$nfc_card->id) }}"
                             method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
@@ -77,7 +77,7 @@
                                     <div class="card flex-grow-1 rounded-0">
                                         <div
                                             class="centered-card-body card-body d-flex flex-column justify-content-between mb-10">
-                                            @include('user.pages.nfc-card.edit_partials.form')
+                                            @include('admin.pages.nfc-card.edit_partials.form')
                                         </div>
                                     </div>
                                 </div>
@@ -89,7 +89,7 @@
                                         </div>
                                         <div
                                             class="centered-card-body card-body d-flex flex-column justify-content-between mb-10">
-                                            @include('user.pages.nfc-card.edit_partials.customize')
+                                            @include('admin.pages.nfc-card.edit_partials.customize')
                                         </div>
                                     </div>
                                 </div>
@@ -102,7 +102,7 @@
                                         </div>
                                         <div
                                             class="centered-card-body card-body d-flex flex-column justify-content-between mb-10">
-                                            @include('user.pages.nfc-card.edit_partials.virtualCardCustomization')
+                                            @include('admin.pages.nfc-card.edit_partials.virtualCardCustomization')
                                         </div>
                                     </div>
                                 </div> --}}
@@ -118,7 +118,7 @@
                                         </div>
                                         <div
                                             class="centered-card-body card-body d-flex flex-column justify-content-between mb-10 pt-0">
-                                            @include('user.pages.nfc-card.edit_partials.virtualCardBilling')
+                                            @include('admin.pages.nfc-card.edit_partials.virtualCardBilling')
                                         </div>
                                     </div>
                                 </div> --}}
@@ -161,11 +161,11 @@
                     </div>
                 </div>
                 <div class="card-body custom-card-body overflow-auto px-0 ">
-                    @include('user.pages.nfc-card.partials.nfc_preview')
+                    @include('admin.pages.nfc-card.partials.nfc_preview')
                 </div>
                 <div
                     class="card-body custom-card-body overflow-auto px-0 py-10 d-flex justify-content-center align-items-center">
-                    @include('user.pages.nfc-card.partials.virtual_card_preview')
+                    @include('admin.pages.nfc-card.partials.virtual_card_preview')
                 </div>
             </div>
         </div> --}}

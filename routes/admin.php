@@ -2,11 +2,15 @@
 
 use App\Models\Admin\NewsLetter;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\LogController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SiteController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\QrCodeController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\NfcCardController;
+use App\Http\Controllers\RequestedCardController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DynamicCssController;
 use App\Http\Controllers\Admin\NewsLetterController;
@@ -14,21 +18,18 @@ use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\ActivityLogController;
 use App\Http\Controllers\Subscription\PlanController;
 use App\Http\Controllers\Admin\EmailSettingController;
+use App\Http\Controllers\RestaurantCategoryController;
 use App\Http\Controllers\Admin\Auth\PasswordController;
+use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\Admin\Auth\NewPasswordController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
+use App\Http\Controllers\Admin\UserNotificationController;
+use App\Http\Controllers\Subscription\SubscriptionController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
-use App\Http\Controllers\Admin\FaqController;
-use App\Http\Controllers\Admin\NfcCardController;
-use App\Http\Controllers\Admin\QrCodeController;
-use App\Http\Controllers\Admin\UserManagementController;
-use App\Http\Controllers\Admin\UserNotificationController;
-use App\Http\Controllers\RequestedCardController;
-use App\Http\Controllers\Subscription\SubscriptionController;
 
 Route::middleware('guest:admin')->prefix('admin')->name('admin.')->group(function () {
 
@@ -94,6 +95,8 @@ Route::middleware('auth:admin', 'role:admin')->prefix('admin')->name('admin.')->
             'qr-code'               => QrCodeController::class,
             'nfc-card'              => NfcCardController::class,
             'requested-card'        => RequestedCardController::class,
+            'restaurant-category'  => RestaurantCategoryController::class,
+
         ],
     );
 
@@ -124,6 +127,14 @@ Route::middleware('auth:admin', 'role:admin')->prefix('admin')->name('admin.')->
         Route::put('/newsletter/{id}/update', 'update')->name('newsletter.update');
         Route::delete('/newsletter/{id}/destroy', 'destroy')->name('newsletter.destroy');
     });
+
+    Route::post('restaurant-category/edit', [RestaurantCategoryController::class, 'categoryEdit'])->name('editCategory');
+    Route::post('/restaurant-category/destroy', [RestaurantCategoryController::class, 'destroyCategory'])->name('restaurant-category.destroy');
+
+    Route::get('qrcode/summary/{id}', [QrCodeController::class, 'qrSummary'])->name('qr.summary');
+    Route::get('template/qrcode', [QrCodeController::class, 'qrTemplate'])->name('qr.template');
+    Route::get('template/nfc-card', [NfcCardController::class, 'nfcTemplate'])->name('nfc.template');
+    Route::post('/update-nfc-session', [NfcCardController::class, 'updateNFCTemplateSession'])->name('updateNfcSession');
 
     Route::get('qrcode/preview', [QrCodeController::class, 'qrPreview'])->name('qr.preview');
     Route::get('website/setting', [SiteController::class, 'index'])->name('setting.index');

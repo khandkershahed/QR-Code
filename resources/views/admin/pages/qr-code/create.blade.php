@@ -87,7 +87,7 @@
                                                 live.</p>
                                         </div>
                                         <div class="card-body">
-                                            @include('user.pages.qr-code.partials.qr_type')
+                                            @include('admin.pages.qr-code.partials.qr_type')
                                         </div>
                                     </div>
                                 </div>
@@ -95,7 +95,7 @@
                                 <div class="flex-column" data-kt-stepper-element="content">
                                     <div class="card">
                                         <div class="card-body">
-                                            @include('user.pages.qr-code.partials.form')
+                                            @include('admin.pages.qr-code.partials.form')
                                         </div>
                                     </div>
                                 </div>
@@ -106,7 +106,7 @@
                                             <h2 class="text-center mb-0">Choose QR Code Design!</h2>
                                         </div>
                                         <div class="card-body">
-                                            @include('user.pages.qr-code.partials.customize')
+                                            @include('admin.pages.qr-code.partials.customize')
                                         </div>
                                     </div>
                                 </div>
@@ -189,7 +189,7 @@
                     <div class="d-flex flex-column justify-content-center align-items-center">
                         {{-- id="generatedQRCodeContainer" --}}
                         <h3>Preview</h3>
-                        @include('user.pages.qr-code.partials.qr_preview')
+                        @include('admin.pages.qr-code.partials.qr_preview')
                         {{-- {!! QrCode::size(220)->eye('left-leaf', 0.1)->eyeColor(0, 255, 255, 255, 0, 0, 0)->eyeColor(1, 222, 18, 222, 222, 18, 222)->eyeColor(2, 222, 18, 222, 222, 18, 222)->style('dot', 0.8)->errorCorrection('H')->generate('Make me into a QrCode!') !!} --}}
                     </div>
                     <a id="downloadLink" href="javascripti:void()" download class="btn btn-light btn-primary w-100"
@@ -198,7 +198,7 @@
             </div>
         </div>
         <div class="categoryModal">
-            @include('user.pages.qr-code.partials.qrCodeModals')
+            @include('admin.pages.qr-code.partials.qrCodeModals')
         </div>
     </div>
     {{-- modals --}}
@@ -248,7 +248,7 @@
 
                     $.ajax({
                         type: 'POST',
-                        url: '{{ route('user.restaurant-category.destroy') }}', // Adjust the route as necessary
+                        url: '{{ route('admin.restaurant-category.destroy') }}', // Adjust the route as necessary
                         data: {
                             _token: '{{ csrf_token() }}',
                             category_id: categoryId
@@ -269,7 +269,7 @@
         <script>
             $(document).ready(function() {
 
-                // url: '{{ route('user.restaurant-category.store') }}',
+                // url: '{{ route('admin.restaurant-category.store') }}',
                 function submitCategoryForm(event) {
                     // Prevent the default form submission
                     event.preventDefault();
@@ -295,7 +295,7 @@
                     // Send the form data using AJAX
                     $.ajax({
                         type: 'POST',
-                        url: '{{ route('user.restaurant-category.store') }}',
+                        url: '{{ route('admin.restaurant-category.store') }}',
                         data: formData,
                         contentType: false,
                         processData: false,
@@ -324,7 +324,7 @@
         </script>
 
         <script>
-            // url: '{{ route('user.restaurant-category.store') }}',
+            // url: '{{ route('admin.restaurant-category.store') }}',
             function submitCategoryEditForm(event) {
                 // Prevent the default form submission
                 event.preventDefault();
@@ -348,7 +348,7 @@
                 // Send the form data using AJAX
                 $.ajax({
                     type: 'POST',
-                    url: '{{ route('user.editCategory') }}',
+                    url: '{{ route('admin.editCategory') }}',
                     data: formData,
                     contentType: false,
                     processData: false,

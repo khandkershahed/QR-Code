@@ -56,14 +56,14 @@
                             </div>
 
                             <form class="form w-100 mx-auto fv-row" novalidate="novalidate" id="generateQRCodeForm"
-                                action="{{ route('user.qr-code.update',$qr->code) }}" method="POST" enctype="multipart/form-data">
+                                action="{{ route('admin.qr-code.update',$qr->code) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="mb-5">
                                     <div class="flex-column current" data-kt-stepper-element="content">
                                         <div class="card">
                                             <div class="card-body">
-                                                @include('user.pages.qr-code.edit_partials.form')
+                                                @include('admin.pages.qr-code.edit_partials.form')
                                             </div>
                                         </div>
                                     </div>
@@ -74,7 +74,7 @@
                                                 <h2 class="text-center mb-0">Choose QR Code Design!</h2>
                                             </div>
                                             <div class="card-body">
-                                                @include('user.pages.qr-code.edit_partials.customize')
+                                                @include('admin.pages.qr-code.edit_partials.customize')
                                             </div>
                                         </div>
                                     </div>
@@ -144,7 +144,7 @@
                                 </div>
                             </div>
                             {{-- <img src="" alt="website" class="img-fluid" width="300px"> --}}
-                            {{-- @include('user.pages.qr-code.edit_partials.qr_preview') --}}
+                            {{-- @include('admin.pages.qr-code.edit_partials.qr_preview') --}}
                             {{-- {!! QrCode::size(220)->eye('left-leaf', 0.1)->eyeColor(0, 255, 255, 255, 0, 0, 0)->eyeColor(1, 222, 18, 222, 222, 18, 222)->eyeColor(2, 222, 18, 222, 222, 18, 222)->style('dot', 0.8)->errorCorrection('H')->generate('Make me into a QrCode!') !!} --}}
                         </div>
                         <a id="downloadLink" href="javascripti:void()" download
@@ -318,7 +318,7 @@
                     var formData = new FormData(this);
 
                     $.ajax({
-                        url: '{{ route('user.qr-code.store') }}',
+                        url: '{{ route('admin.qr-code.store') }}',
                         type: 'POST',
                         data: formData,
                         processData: false,
