@@ -59,7 +59,7 @@
                 </a>
             </div>
 
-            <div class="col-xl-6">
+            {{-- <div class="col-xl-6">
                 <div class="card card-flush overflow-hidden h-lg-100">
                     <div class="card-header pt-5">
                         <h3 class="card-title align-items-start flex-column">
@@ -515,7 +515,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
 
         <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
@@ -597,8 +597,8 @@
 
                                                 <div class="m-0">
                                                     <a href="{{ route('admin.plans.index') }}"
-                                                        class="text-white text-opacity-75 fs-8">Monthly Plan</a>
-                                                    <span class="fw-bold text-white fs-7 d-block">05</span>
+                                                        class="text-white text-opacity-75 fs-8">NFC Plans</a>
+                                                    <span class="fw-bold text-white fs-7 d-block">{{ $nfc_plans->count() }}</span>
                                                 </div>
                                             </div>
 
@@ -612,17 +612,16 @@
 
                                                 <div class="m-0">
                                                     <a href="{{ route('admin.plans.index') }}"
-                                                        class="text-white text-opacity-75 fs-8">Yearly Plan</a>
-                                                    <span class="fw-bold text-white fs-7 d-block">02</span>
+                                                        class="text-white text-opacity-75 fs-8">QR Plan</a>
+                                                    <span class="fw-bold text-white fs-7 d-block">{{ $qr_plans->count() }}</span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="m-0">
-                                        <a href="{{ route('admin.plans.index') }}"
-                                            class="btn btn-color-white bg-white bg-opacity-15 bg-hover-opacity-25 fw-semibold"
-                                            data-bs-toggle="modal" data-bs-target="#kt_modal_upgrade_plan">
+                                        <a href="{{ route('admin.plans.create') }}"
+                                            class="btn btn-color-white bg-white bg-opacity-15 bg-hover-opacity-25 fw-semibold">
                                             Create Plan !
                                         </a>
                                     </div>
@@ -644,7 +643,7 @@
 
 
 
-    <div class="row g-5 gx-xl-10 mb-5 mb-xl-10">
+    {{-- <div class="row g-5 gx-xl-10 mb-5 mb-xl-10">
         <div class="col-xl-8">
             <div class="card card-flush h-lg-100">
                 <div class="card-header pt-5">
@@ -788,5 +787,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </x-admin-app-layout>

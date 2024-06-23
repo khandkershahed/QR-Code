@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin\Auth;
 
+use App\Models\User;
 use App\Models\Admin\Qr;
 use Illuminate\View\View;
+use App\Models\Admin\Plan;
 use Illuminate\Http\Request;
 use App\Models\Admin\NfcCard;
 use App\Http\Controllers\Controller;
@@ -12,7 +14,6 @@ use Illuminate\Http\RedirectResponse;
 use App\Models\Admin\UserNotification;
 use App\Providers\RouteServiceProvider;
 use App\Http\Requests\Admin\LoginRequest;
-use App\Models\User;
 use Stevebauman\Location\Facades\Location;
 
 class AuthenticatedSessionController extends Controller
@@ -28,6 +29,8 @@ class AuthenticatedSessionController extends Controller
 
         $nfc_cards = NfcCard::with('nfcData', 'nfcMessages', 'nfcScan')->latest()->get();
         $users = User::latest('id')->get();
+        $qr_plans =  Plan::orderBy('price', 'asc')->where('type', 'qr')->get();
+        $nfc_plans = Plan::orderBy('price', 'asc')->where('type', 'nfc')->get();
 
         $qr_wallet = 10;
         $nfc_wallet = 10;
@@ -46,7 +49,7 @@ class AuthenticatedSessionController extends Controller
         foreach ($qr_unique_ips as $qr_unique_ip) {
             $qr_user = Location::get($qr_unique_ip->ip_address);
             // if ($qr_user !== false) {
-                $qr_users[] = $qr_user;
+            $qr_users[] = $qr_user;
             // } else {
             //     Log::error("Failed to retrieve location for IP address: {$qr_unique_ip->ip_address}");
             // }
@@ -64,12 +67,12 @@ class AuthenticatedSessionController extends Controller
         foreach ($nfc_unique_ips as $nfc_unique_ip) {
             $nfc_user = Location::get($nfc_unique_ip->ip_address);
             // if ($nfc_user !== false) {
-                $nfc_users[] = $nfc_user;
+            $nfc_users[] = $nfc_user;
             // } else {
             //     Log::error("Failed to retrieve location for IP address: {$nfc_unique_ip->ip_address}");
             // }
         }
-        return view('admin.dashboard', compact('notifications', 'qrs', 'users', 'nfc_cards', 'nfc_pending', 'qr_pending', 'nfc_completion_percentage', 'qr_completion_percentage', 'qr_users', 'nfc_users'));
+        return view('admin.dashboard', compact('qr_plans','nfc_plans','notifications', 'qrs', 'users', 'nfc_cards', 'nfc_pending', 'qr_pending', 'nfc_completion_percentage', 'qr_completion_percentage', 'qr_users', 'nfc_users'));
     }
 
     public function create(): View

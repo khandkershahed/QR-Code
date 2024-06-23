@@ -43,9 +43,9 @@ class AdminProfileController extends Controller
 
     public function destroy(Request $request)
     {
-            // $request->validateWithBag('userDeletion', [
-            //     'password' => ['required', 'current_password'],
-            // ]);
+        // $request->validateWithBag('userDeletion', [
+        //     'password' => ['required', 'current_password'],
+        // ]);
 
         // Get the authenticated admin user
         $user = $request->user();
