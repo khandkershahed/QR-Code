@@ -1327,10 +1327,6 @@ class QrCodeController extends Controller
             ]);
         }
 
-
-
-        // Return the URL of the generated QR code image
-
         if ($isUserRoute) {
             return redirect()->route('user.qr-code.index')->with('success', 'You have successfully updated QR Code.');
         } else {
