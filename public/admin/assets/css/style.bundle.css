@@ -45244,7 +45244,6 @@ a:hover {
 .btn.btn-outline.btn-outline-dashed {
     border-width: 1px;
     border-style: dashed;
-    height: 100px;
 }
 .steaper-header {
     background: #0098da3d;
@@ -59166,6 +59165,13 @@ body {
     background-color: #fff;
     border: 0;
 }
+.template-nfc {
+    padding: 5px !important;
+    display: flex;
+    justify-content: center;
+    height: 285px;
+    width: 100%;
+}
 
 /* custom */
 @media (min-width: 992px) and (max-width: 1400px) {
@@ -59191,11 +59197,25 @@ body {
         width: 50px;
         padding: 6px !important;
     }
+    .template-nfc {
+        padding: 5px !important;
+        display: flex;
+        justify-content: center;
+        height: 155px !important;
+        width: 100%;
+    }
 }
 
 @media (min-width: 1440px) {
     .galary_logo {
         height: 75px !important;
         width: 80px !important;
+    }
+    .template-nfc {
+        padding: 5px !important;
+        display: flex;
+        justify-content: center;
+        height: 250px !important;
+        width: 100%;
     }
 }

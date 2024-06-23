@@ -1,4 +1,4 @@
-<x-admin-app-layout :title="'User Details of ' . ($user ? $user->name : 'Unknown User')">
+<x-admin-app-layout :title="'User Details of ' . $user->name">
 
     <div class="d-flex flex-column flex-lg-row py-15">
 
@@ -188,7 +188,7 @@
                 </li> --}}
 
 
-                {{-- <li class="nav-item ms-auto">
+                <li class="nav-item ms-auto">
 
                     <a href="#" class="btn btn-primary ps-7" data-kt-menu-trigger="click"
                         data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">Actions
@@ -220,7 +220,7 @@
                     </div>
 
 
-                </li> --}}
+                </li>
 
             </ul>
 
