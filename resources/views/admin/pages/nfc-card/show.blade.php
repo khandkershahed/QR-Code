@@ -93,7 +93,7 @@
                                     {{-- <a href="#" class="btn btn-primary w-100 mb-2"><i
                                             class="bi bi-pen fs-4 me-2"></i> Edit</a> --}}
 
-                                    <a href="{{ route('user.nfc-card.destroy', $nfc_card->id) }}"
+                                    <a href="{{ route('admin.nfc-card.destroy', $nfc_card->id) }}"
                                         class="btn btn-danger w-100 mb-2 delete"><i class="bi bi-trash fs-4 me-2"></i>
                                         Delete</a>
                                 </div>
