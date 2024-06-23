@@ -1,6 +1,6 @@
-<x-admin-app-layout :title="'User Details of ' . $user->name">
+<x-admin-app-layout :title="'User Details of ' . ($user ? $user->name : 'Unknown User')">
 
-    <div class="d-flex flex-column flex-lg-row">
+    <div class="d-flex flex-column flex-lg-row py-15">
 
         <div class="flex-column flex-lg-row-auto w-lg-250px w-xl-350px mb-10">
 
