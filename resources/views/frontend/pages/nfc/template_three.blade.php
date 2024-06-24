@@ -776,115 +776,102 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 
-    <script src="{{ asset('admin/js/vcard.js') }}"></script>
-    <script type="text/javascript">
+    <script>
+        'use strict';
+
+        function downloadToFile(content, filename, contentType) {
+            const a = document.createElement('a');
+            const file = new Blob([content], {
+                type: contentType
+            });
+
+            a.href = URL.createObjectURL(file);
+            a.download = filename;
+            a.click();
+
+            URL.revokeObjectURL(a.href);
+        }
+
+        function previewFile(event) {
+            let reader = new FileReader();
+            let file = event.target.files[0];
+
+            reader.readAsDataURL(file);
+            reader.onloadend = () => (previewEl.src = reader.result);
+        }
+
+        const makeVCardVersion = () => `VERSION:3.0`;
+        const makeVCardInfo = (info) => `N:${info}`;
+        const makeVCardName = (name) => `FN:${name}`;
+        const makeVCardOrg = (org) => `ORG:${org}`;
+        const makeVCardTitle = (title) => `TITLE:${title}`;
+        const makeVCardPhoto = (img) => `PHOTO;TYPE=JPEG;ENCODING=b:[${img}]`;
+        const makeVCardTel = (phone) => `TEL;TYPE=WORK,VOICE:${phone}`;
+        const makeVCardAdr = (address) => `ADR;TYPE=WORK,PREF:;;${address}`;
+        const makeVCardEmail = (email) => `EMAIL:${email}`;
+        const makeVCardTimeStamp = () => `REV:${new Date().toISOString()}`;
+
+        function makeVCard() {
+            let vcard = `BEGIN:VCARD\n`;
+            vcard += `${makeVCardVersion()}\n`;
+
+            // Combine first name and last name
+            let fullName = '{{ optional($nfc_card->nfcData)->first_name }} {{ optional($nfc_card->nfcData)->last_name }}';
+            vcard += `${makeVCardInfo(fullName)}\n`;
+
+            // Add organization and title (designation)
+            let org = '{{ optional($nfc_card->nfcData)->designation }}';
+            vcard += `${makeVCardOrg(org)}\n`;
+
+            // Add photo
+            let profileImage = '{{ asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) }}';
+            vcard += `${makeVCardPhoto(profileImage)}\n`;
+
+            // Add phone number
+            let phone = '{{ $nfc_card->nfcData->phone_personal }}';
+            vcard += `${makeVCardTel(phone)}\n`;
+
+            // Add address
+            let addressLine1 = '{{ $nfc_card->nfcData->address_line_one }}';
+            let addressLine2 = '{{ $nfc_card->nfcData->address_line_two }}';
+            let address = `${addressLine1};${addressLine2}`;
+            vcard += `${makeVCardAdr(address)}\n`;
+
+            // Add email
+            let email = '{{ $nfc_card->nfcData->email_personal }}';
+            vcard += `${makeVCardEmail(email)}\n`;
+
+            // Add LinkedIn URL
+            let linkedin = '{{ $nfc_card->nfcData->linkedin_url }}';
+            if (linkedin.trim() !== '') {
+                vcard += `URL:${linkedin}\n`;
+                vcard += `X-SOCIALPROFILE;TYPE=linkedin:${linkedin}\n`;
+            }
+
+            vcard += `${makeVCardTimeStamp()}\n`;
+            vcard += `END:VCARD`;
+
+            downloadToFile(vcard, 'contact.vcf', 'text/vcard');
+        }
+
         document.querySelectorAll('.nfc_contact_btn').forEach(function(button) {
             button.addEventListener('click', function(event) {
                 event.preventDefault(); // Prevent default link behavior
 
-                // Retrieve contact information from PHP variables
-                var firstName = '{{ optional($nfc_card->nfcData)->first_name }}';
-                var lastName = '{{ optional($nfc_card->nfcData)->last_name }}';
-                var designation = '{{ optional($nfc_card->nfcData)->designation }}';
-                var mobileNumber = '{{ $nfc_card->nfcData->phone_personal }}';
-                var email = '{{ $nfc_card->nfcData->email_personal }}';
-                var addressLine1 = '{{ $nfc_card->nfcData->address_line_one }}';
-                var addressLine2 = '{{ $nfc_card->nfcData->address_line_two }}';
-                var linkedin = '{{ $nfc_card->nfcData->linkedin_url }}';
-                var profileImage =
-                    '{{ asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) }}';
-
-                // Function to convert image to base64 string
-                function getBase64Image(img) {
-                    var canvas = document.createElement("canvas");
-                    canvas.width = img.width;
-                    canvas.height = img.height;
-
-                    var ctx = canvas.getContext("2d");
-                    ctx.drawImage(img, 0, 0);
-
-                    var dataURL = canvas.toDataURL("image/png"); // Change to "image/jpeg" if needed
-                    return dataURL.replace(/^data:image\/(png|jpeg);base64,/, "");
+                // Function to check if the device is mobile or tablet
+                function isMobileOrTablet() {
+                    // Check for iOS, Android, and common mobile/tablet user agents
+                    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator
+                        .userAgent);
                 }
 
-                // Create an image object to load the profile image
-                var img = new Image();
-                img.crossOrigin =
-                'Anonymous'; // Ensure CORS compatibility if loading from different origins
-                img.onload = function() {
-                    // Image loaded, now create vCard
+                var isMobile = isMobileOrTablet();
 
-                    // Create a new vCard
-                    var vCard = vCard.create();
-
-                    // Set formatted name
-                    vCard.addFormattedName(firstName + ' ' + lastName);
-
-                    // Add organization (optional)
-                    vCard.addOrganization(designation);
-
-                    // Add phone number
-                    vCard.addPhoneNumber(mobileNumber, 'CELL');
-
-                    // Add email (optional)
-                    if (email.trim() !== '') {
-                        vCard.addEmail(email, 'HOME');
-                    }
-
-                    // Add address (optional)
-                    if (addressLine1.trim() !== '' || addressLine2.trim() !== '') {
-                        vCard.addAddress('', '', addressLine1, '', '', '', 'HOME');
-                    }
-
-                    // Add LinkedIn URL (optional)
-                    if (linkedin.trim() !== '') {
-                        vCard.addURL(linkedin);
-                    }
-
-                    // Convert image to base64 string
-                    var base64Img = getBase64Image(img);
-
-                    // Add photo (profile image) to vCard as base64 encoded string
-                    vCard.addPhoto(base64Img, 'PNG');
-
-                    // Export the vCard
-                    var vCardLink = vCard.getFormattedString();
-                    var encodedVCard = encodeURIComponent(vCardLink);
-                    var uri = 'data:text/vcard;charset=utf-8,' + encodedVCard;
-
-                    // Check if the device is mobile
-                    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
-                        .test(navigator.userAgent);
-
-                    if (isMobile) {
-                        // Open the data URI to prompt adding contact on mobile
-                        window.open(uri);
-                    } else {
-                        // For desktop, create and initiate the download of .vcf file
-                        var blob = new Blob([vCardLink], {
-                            type: 'text/vcard;charset=utf-8'
-                        });
-                        var url = URL.createObjectURL(blob);
-
-                        var a = document.createElement('a');
-                        a.style.display = 'none';
-                        a.href = url;
-                        a.download = 'contact.vcf';
-
-                        document.body.appendChild(a);
-                        a.click();
-
-                        // Clean up
-                        window.URL.revokeObjectURL(url);
-                        document.body.removeChild(a);
-                    }
-                };
-
-                // Set image source to trigger onload event
-                img.src = profileImage;
+                makeVCard(); // Generate and download vCard
             });
         });
     </script>
+
 
 
     <script>
