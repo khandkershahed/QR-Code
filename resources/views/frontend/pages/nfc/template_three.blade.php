@@ -775,6 +775,93 @@
     <!-- Slick JS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+    <script src="https://unpkg.com/vcards-js/dist/vCards-js.js"></script>
+    <script type="text/javascript">
+        document.querySelectorAll('.nfc_contact_btn').forEach(function(button) {
+            button.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent default link behavior
+
+                // Retrieve contact information from PHP variables
+                var firstName = '{{ optional($nfc_card->nfcData)->first_name }}';
+                var lastName = '{{ optional($nfc_card->nfcData)->last_name }}';
+                var designation = '{{ optional($nfc_card->nfcData)->designation }}';
+                var mobileNumber = '{{ $nfc_card->nfcData->phone_personal }}';
+                var email = '{{ $nfc_card->nfcData->email_personal }}';
+                var addressLine1 = '{{ $nfc_card->nfcData->address_line_one }}';
+                var addressLine2 = '{{ $nfc_card->nfcData->address_line_two }}';
+                var linkedin = '{{ $nfc_card->nfcData->linkedin_url }}';
+                var profileImage =
+                    '{{ asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) }}';
+
+                // Create a new vCard
+                var vCard = vCard.create();
+
+                // Set formatted name
+                vCard.addFormattedName(firstName + ' ' + lastName);
+
+                // Add organization (optional)
+                vCard.addOrganization(designation);
+
+                // Add phone number
+                vCard.addPhoneNumber(mobileNumber, 'CELL');
+
+                // Add email (optional)
+                if (email.trim() !== '') {
+                    vCard.addEmail(email, 'HOME');
+                }
+
+                // Add address (optional)
+                if (addressLine1.trim() !== '' || addressLine2.trim() !== '') {
+                    vCard.addAddress('', '', addressLine1, '', '', '', 'HOME');
+                }
+
+                // Add LinkedIn URL (optional)
+                if (linkedin.trim() !== '') {
+                    vCard.addURL(linkedin);
+                }
+
+                // Add profile image URL (optional)
+                if (profileImage.trim() !== '') {
+                    vCard.addPhoto(profileImage, 'JPEG');
+                }
+
+                // Export the vCard
+                var vCardLink = vCard.getFormattedString();
+                var encodedVCard = encodeURIComponent(vCardLink);
+                var uri = 'data:text/vcard;charset=utf-8,' + encodedVCard;
+
+                // Check if the device is mobile
+                var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+                    navigator.userAgent);
+
+                if (isMobile) {
+                    // Open the data URI to prompt adding contact on mobile
+                    window.open(uri);
+                } else {
+                    // For desktop, create and initiate the download of .vcf file
+                    var blob = new Blob([vCardLink], {
+                        type: 'text/vcard;charset=utf-8'
+                    });
+                    var url = URL.createObjectURL(blob);
+
+                    var a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = 'contact.vcf';
+
+                    document.body.appendChild(a);
+                    a.click();
+
+                    // Clean up
+                    window.URL.revokeObjectURL(url);
+                    document.body.removeChild(a);
+                }
+            });
+        });
+    </script>
+
+
     <script>
         // JavaScript to handle button click
         // document.querySelectorAll('.nfc_contact_btn').forEach(function(button) {
@@ -852,85 +939,85 @@
         //         }
         //     });
         // });
-        document.querySelectorAll('.nfc_contact_btn').forEach(function(button) {
-            button.addEventListener('click', function(event) {
-                event.preventDefault(); // Prevent default link behavior
+        // document.querySelectorAll('.nfc_contact_btn').forEach(function(button) {
+        //     button.addEventListener('click', function(event) {
+        //         event.preventDefault(); // Prevent default link behavior
 
-                // Function to check if the device is mobile or tablet
-                function isMobileOrTablet() {
-                    // Check for iOS, Android, and common mobile/tablet user agents
-                    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator
-                        .userAgent);
-                }
+        //         // Function to check if the device is mobile or tablet
+        //         function isMobileOrTablet() {
+        //             // Check for iOS, Android, and common mobile/tablet user agents
+        //             return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator
+        //                 .userAgent);
+        //         }
 
-                var isMobile = isMobileOrTablet();
+        //         var isMobile = isMobileOrTablet();
 
-                // Retrieve contact information from PHP variables
-                var firstName = '{{ optional($nfc_card->nfcData)->first_name }}';
-                var lastName = '{{ optional($nfc_card->nfcData)->last_name }}';
-                var designation = '{{ optional($nfc_card->nfcData)->designation }}';
-                var mobileNumber = '{{ $nfc_card->nfcData->phone_personal }}';
-                var email = '{{ $nfc_card->nfcData->email_personal }}';
-                var addressLine1 = '{{ $nfc_card->nfcData->address_line_one }}';
-                var addressLine2 = '{{ $nfc_card->nfcData->address_line_two }}';
-                var linkedin = '{{ $nfc_card->nfcData->linkedin_url }}';
-                var profileImage =
-                    '{{ asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) }}';
+        //         // Retrieve contact information from PHP variables
+        //         var firstName = '{{ optional($nfc_card->nfcData)->first_name }}';
+        //         var lastName = '{{ optional($nfc_card->nfcData)->last_name }}';
+        //         var designation = '{{ optional($nfc_card->nfcData)->designation }}';
+        //         var mobileNumber = '{{ $nfc_card->nfcData->phone_personal }}';
+        //         var email = '{{ $nfc_card->nfcData->email_personal }}';
+        //         var addressLine1 = '{{ $nfc_card->nfcData->address_line_one }}';
+        //         var addressLine2 = '{{ $nfc_card->nfcData->address_line_two }}';
+        //         var linkedin = '{{ $nfc_card->nfcData->linkedin_url }}';
+        //         var profileImage =
+        //             '{{ asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) }}';
 
-                // Construct the vCard (vcf) content
-                var vcfContent = "BEGIN:VCARD\n" +
-                    "VERSION:3.0\n" +
-                    "FN:" + firstName + " " + lastName + "\n" +
-                    "ORG:" + designation + "\n" + // Optional: Organization (designation)
-                    "TEL;TYPE=CELL:" + mobileNumber + "\n";
+        //         // Construct the vCard (vcf) content
+        //         var vcfContent = "BEGIN:VCARD\n" +
+        //             "VERSION:3.0\n" +
+        //             "FN:" + firstName + " " + lastName + "\n" +
+        //             "ORG:" + designation + "\n" + // Optional: Organization (designation)
+        //             "TEL;TYPE=CELL:" + mobileNumber + "\n";
 
-                // Add optional fields if they exist
-                if (email.trim() !== '') {
-                    vcfContent += "EMAIL:" + email + "\n";
-                }
+        //         // Add optional fields if they exist
+        //         if (email.trim() !== '') {
+        //             vcfContent += "EMAIL:" + email + "\n";
+        //         }
 
-                if (addressLine1.trim() !== '' || addressLine2.trim() !== '') {
-                    vcfContent += "ADR;TYPE=HOME:;;" + addressLine1 + ";" + addressLine2 + ";;;;\n";
-                }
+        //         if (addressLine1.trim() !== '' || addressLine2.trim() !== '') {
+        //             vcfContent += "ADR;TYPE=HOME:;;" + addressLine1 + ";" + addressLine2 + ";;;;\n";
+        //         }
 
-                if (linkedin.trim() !== '') {
-                    vcfContent += "URL:" + linkedin + "\n";
-                    vcfContent += "X-SOCIALPROFILE;TYPE=linkedin:" + linkedin + "\n";
-                }
+        //         if (linkedin.trim() !== '') {
+        //             vcfContent += "URL:" + linkedin + "\n";
+        //             vcfContent += "X-SOCIALPROFILE;TYPE=linkedin:" + linkedin + "\n";
+        //         }
 
-                // Profile image can be added as a URL to be displayed in some apps
-                if (profileImage.trim() !== '') {
-                    vcfContent += "PHOTO;VALUE=URL;TYPE=JPEG:" + profileImage + "\n";
-                }
+        //         // Profile image can be added as a URL to be displayed in some apps
+        //         if (profileImage.trim() !== '') {
+        //             vcfContent += "PHOTO;VALUE=URL;TYPE=JPEG:" + profileImage + "\n";
+        //         }
 
-                vcfContent += "END:VCARD";
+        //         vcfContent += "END:VCARD";
 
-                if (isMobile) {
-                    // For mobile devices, open the data URI directly to prompt adding contact
-                    var encodedVcfContent = encodeURIComponent(vcfContent);
-                    var uri = 'data:text/vcard;charset=utf-8,' + encodedVcfContent;
-                    window.open(uri);
-                } else {
-                    // For desktop, create and initiate the download of .vcf file
-                    var blob = new Blob([vcfContent], {
-                        type: 'text/vcard;charset=utf-8'
-                    });
-                    var url = URL.createObjectURL(blob);
+        //         if (isMobile) {
+        //             // For mobile devices, open the data URI directly to prompt adding contact
+        //             var encodedVcfContent = encodeURIComponent(vcfContent);
+        //             var uri = 'data:text/vcard;charset=utf-8,' + encodedVcfContent;
+        //             window.open(uri);
+        //         } else {
+        //             // For desktop, create and initiate the download of .vcf file
+        //             var blob = new Blob([vcfContent], {
+        //                 type: 'text/vcard;charset=utf-8'
+        //             });
+        //             var url = URL.createObjectURL(blob);
 
-                    var a = document.createElement('a');
-                    a.style.display = 'none';
-                    a.href = url;
-                    a.download = 'contact.vcf';
+        //             var a = document.createElement('a');
+        //             a.style.display = 'none';
+        //             a.href = url;
+        //             a.download = 'contact.vcf';
 
-                    document.body.appendChild(a);
-                    a.click();
+        //             document.body.appendChild(a);
+        //             a.click();
 
-                    // Clean up
-                    window.URL.revokeObjectURL(url);
-                    document.body.removeChild(a);
-                }
-            });
-        });
+        //             // Clean up
+        //             window.URL.revokeObjectURL(url);
+        //             document.body.removeChild(a);
+        //         }
+        //     });
+        // });
 
 
 
