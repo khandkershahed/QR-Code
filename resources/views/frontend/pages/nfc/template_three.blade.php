@@ -904,7 +904,7 @@
 
                 vcfContent += "END:VCARD";
 
-                if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+                if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0)){
                     // For mobile devices, open the data URI directly to prompt adding contact
                     var encodedVcfContent = encodeURIComponent(vcfContent);
                     var uri = 'data:text/vcard;charset=utf-8,' + encodedVcfContent;
