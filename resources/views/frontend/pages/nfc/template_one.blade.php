@@ -54,7 +54,7 @@
 
         .nfc-mobile-frame-one {
             width: 400px;
-             
+
             padding: 15px 0px;
             /* border: 2px solid #000; */
             border-radius: 20px;
@@ -273,7 +273,7 @@
                                 <div class="card-body p-0 tem-one-about-content">
                                     <div class="d-flex">
                                         <div class="tem-one-profile">
-                                            <div class="p-3"> 
+                                            <div class="p-3">
                                                 <div>
                                                     <h1 class="tem-one-name"><span
                                                             class="first_name">{{ optional($nfc_card->nfcData)->first_name }}</span>&nbsp;<span
@@ -441,7 +441,7 @@
                                                 </div>
                                             </form>
                                         </div>
-                                        @if (!empty($nfc_card->nfc_qr))
+                                        @if (!empty($nfc_card->nfc_qr) && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc_qr)))
                                             <div>
                                                 <h6 class="tem-two-bio-title text-white pt-5">
                                                     Scan Me

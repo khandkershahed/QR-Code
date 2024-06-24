@@ -6,9 +6,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link rel="shortcut icon"
-        href="https://images.rawpixel.com/image_800/cHJpdmF0ZS9s…03ZDBiLTQ2ODgtYjkzOS01MjM3ZDExNGYxNDVfMS5qcGc.jpg"
-        type="image/x-icon" />
+    <link rel="shortcut icon" href="https://i.ibb.co/BNBTVN4/logo.png" type="image/x-icon" />
 
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -63,7 +61,7 @@
 
         .nfc-mobile-frame {
             max-width: 576px;
-             
+
             min-height: 100vh;
             /* border: 2px solid #1026bf; */
             border-radius: 20px;
@@ -177,34 +175,17 @@
                                                 <div class="text-center text-lg-end mobile-images-profile"
                                                     style="margin-top: -70px; position: relative">
                                                     <img class=""
-                                                        style="
-                                width: 150px;
-                                border-radius: 100%;
-                                border: 6px solid white;
-                                margin-left: -9px;
-                                position: relative;
-                                left: 48px;
-                                z-index: 15;
-                              "
+                                                        style="width: 150px;border-radius: 100%;border: 6px solid white;margin-left: -9px;position: relative;left: 48px;z-index: 15;"
                                                         src="{{ !empty($nfc_card->nfcData->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
                                                         class="img-fluid banner-image" alt="banner" />
                                                 </div>
                                             </div>
                                             <div class="col-lg-8">
                                                 <div class="text-center text-lg-end shadow-sm mobile-profiles"
-                                                    style="
-                              position: relative;
-                              border-top-left-radius: 20px;
-                              border-bottom-left-radius: 20px;
-                              z-index: 10;
-                              background: white;
-                            ">
+                                                    style="position: relative;border-top-left-radius: 20px;border-bottom-left-radius: 20px;z-index: 10;background: white;">
                                                     <div class="p-3" style="margin-top: -60px">
                                                         <h2
-                                                            style="
-                                  font-size: 50px;
-                                  font-family: var(--tem-one-name-font-family);
-                                ">
+                                                            style="font-size: 50px;font-family: var(--tem-one-name-font-family);">
                                                             <span
                                                             class="first_name">{{ optional($nfc_card->nfcData)->first_name }}</span>
                                                         &nbsp;
@@ -371,7 +352,7 @@
                                                 </div>
                                             </div>
                                             <!-- QR -->
-                                            @if (!empty($nfc_card->nfc_qr))
+                                            @if (!empty($nfc_card->nfc_qr) && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc_qr)))
                                                 <div class="my-3 pt-4">
                                                     <div>
                                                         <p

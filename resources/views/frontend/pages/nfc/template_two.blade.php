@@ -48,8 +48,8 @@
 
         .nfc-mobile-frame-two {
             width: 400px;
-             
-             
+
+
             /* border: 2px solid #1026bf; */
             border-radius: 20px;
             overflow: hidden;
@@ -498,14 +498,13 @@
                                                 </div>
                                             </form>
                                         </div>
-                                        @if (!empty($nfc_card->nfc_qr))
+                                        @if (!empty($nfc_card->nfc_qr) && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc_qr)))
                                             <div>
                                                 <h6 class="tem-two-bio-title text-white pt-5">
                                                     Scan Me
                                                 </h6>
                                                 <div class="d-flex justify-content-center">
-                                                    <img class="" width="200px"
-                                                        src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
+                                                    <img class="" width="200px" src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
                                                         alt="" />
                                                 </div>
                                             </div>

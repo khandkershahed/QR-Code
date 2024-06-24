@@ -6,9 +6,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link rel="shortcut icon"
-        href="https://images.rawpixel.com/image_800/cHJpdmF0ZS9s…03ZDBiLTQ2ODgtYjkzOS01MjM3ZDExNGYxNDVfMS5qcGc.jpg"
-        type="image/x-icon" />
+    <link rel="shortcut icon" href="https://i.ibb.co/BNBTVN4/logo.png" type="image/x-icon" />
 
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -63,7 +61,7 @@
         }
 
         .nfc-mobile-frame {
-             
+
             max-width: 576px;
             min-height: 100vh;
             /* border: 2px solid #1026bf; */
@@ -343,7 +341,7 @@
                                                 </div>
                                             </div>
                                             <!-- QR -->
-                                            @if (!empty($nfc_card->nfc_qr))
+                                            @if (!empty($nfc_card->nfc_qr) && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc_qr)))
                                                 <div class="my-3">
                                                     <h3 class="fw-bold text-center pt-5"
                                                         style="color: #1c344f; margin-bottom: 2rem">
