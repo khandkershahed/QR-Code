@@ -435,6 +435,12 @@
                                     text-align: center !important;
                                 }
                             }
+                            @media only screen and (min-width: 1368px) {
+    .punch-card-container{
+        width: 99%;
+        height: auto;
+    }
+}
                         </style>
                         <div class="card">
                             <div>

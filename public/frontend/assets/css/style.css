@@ -10139,6 +10139,10 @@ a.theme-btn.style-four:hover {
     .feature-image-box.style-two h4 {
         font-size: 26px;
     }
+    .punch-card-container{
+        width: 99%;
+        height: auto;
+    }
 }
 
 @media only screen and (max-width: 479px) {
@@ -15666,4 +15670,11 @@ a.theme-btn.style-four:hover {
 .main-footer.footer-five .radio-part label {
     font-weight: 400;
     margin-bottom: 0;
+}
+
+@media only screen and (min-width: 1368px) {
+    .punch-card-container{
+        width: 99%;
+        height: auto;
+    }
 }

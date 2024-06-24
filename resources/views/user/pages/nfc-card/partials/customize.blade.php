@@ -43,49 +43,49 @@
            <div class="tab-content w-100 bg-white p-3" id="myTabContent">
                <div class="tab-pane fade active show" id="kt_vtab_pane_41" role="tabpanel">
                    <div class="row py-5">
-                       <div class="col-lg-6 offset-lg-3 align-items-center mb-3">
-                           <label for="secondary_color_text">Background color</label>
+                       <div class="col-lg-12 align-items-center mb-3 d-flex align-items-center">
+                           <label for="secondary_color_text" class="w-25">Background color</label>
                            <input type="color" name="background_color" value="" oninput="changeBackgroundColor()"
-                               class="form-control form-control-solid">
+                               class="form-control form-control-solid w-75">
                        </div>
-                       <div class="col-lg-6 offset-lg-3 align-items-center mb-3">
-                           <label for="secondary_color_text">Title color (With BG Include)</label>
+                       <div class="col-lg-12 align-items-center mb-3 d-flex align-items-center">
+                           <label for="secondary_color_text" class="w-25">Title color (With BG Include)</label>
                            <input type="color" name="title_color" value="" oninput="changeTitleColor()"
-                               class="form-control form-control-solid">
+                               class="form-control form-control-solid w-75">
                        </div>
                    </div>
                </div>
 
                <div class="tab-pane fade" id="kt_vtab_pane_51" role="tabpanel">
                    <div class="row py-5">
-                       <div class="col-lg-6 offset-lg-3 align-items-center mb-3">
-                           <label for="Font">Font</label>
-                           <select class="form-select form-select-sm form-select-solid" data-control="select2"
+                       <div class="col-lg-12  mb-3 d-flex align-items-center">
+                           <label for="Font" class="w-25">Font</label>
+                           <select class="form-select form-select-sm form-select-solid w-75" data-control="select2"
                                name="font_family" data-placeholder="Select an option">
                                <option></option>
                                <option value="bebas_neue">Bebas Neue</option>
                                <option value="raleway">Raleway</option>
                            </select>
                        </div>
-                       <div class="col-lg-6 offset-lg-3 align-items-center mb-3">
-                           <label for="Font">Title Font Size</label>
+                       <div class="col-lg-12 mb-3 d-flex align-items-center">
+                           <label for="Font" class="w-25">Title Font Size</label>
                            <input type="number" name="font_size" id="" oninput="changeFontSize()"
-                               class="form-control form-control-sm form-control-solid">
+                               class="form-control form-control-sm form-control-solid w-75">
                        </div>
                    </div>
                </div>
 
                <div class="tab-pane fade " id="kt_vtab_pane_61" role="tabpanel">
                    <div class="row py-5">
-                       <div class="col-lg-6 offset-lg-3 align-items-center mb-3">
-                           <label for="buttonContact">Contact Button Background Color</label>
+                       <div class="col-lg-12 d-flex align-items-center mb-3">
+                           <label for="buttonContact">Contact Button Background Color</label><br>
                            <input type="color" name="button_bg_color" value="" oninput="contactBgColor()"
-                               class="form-control form-control-solid">
+                               class="form-control form-control-solid w-100">
                        </div>
-                       <div class="col-lg-6 offset-lg-3 align-items-center mb-3">
-                           <label for="buttonContact">Contact Button Title Color</label>
+                       <div class="col-lg-12 d-flex align-items-center mb-3">
+                           <label for="buttonContact">Contact Button Title Color</label> <br>
                            <input type="color" name="button_title_color" value="" oninput="contactTitleColor()"
-                               class="form-control form-control-solid">
+                               class="form-control form-control-solid w-100">
                        </div>
                    </div>
                </div>
