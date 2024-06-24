@@ -78,10 +78,8 @@
                         </div>
                         <div class="col-lg-1 d-lg-block d-sm-none">
                             <div class="fv-row my-3">
-                                <x-metronic.label for="profile_image_preview"
-                                    class="form-label">{{ __('Preview') }}</x-metronic.label>
                                 <div>
-                                    <img width="50px" height="50px" class="rounded-circle border banner_image"
+                                    <img width="30px" height="30px" class="rounded-circle border banner_image mt-10"
                                         src="{{ !empty($nfc_card->nfcData->banner_image) &&
                                         file_exists(public_path('storage/nfc/' . $nfc_card->nfcData->banner_image))
                                             ? asset('storage/nfc/' . $nfc_card->nfcData->banner_image)
@@ -102,10 +100,8 @@
                         </div>
                         <div class="col-lg-1 d-lg-block d-sm-none">
                             <div class="fv-row my-3">
-                                <x-metronic.label for="profile_image_preview"
-                                    class="form-label">{{ __('Preview') }}</x-metronic.label>
                                 <div>
-                                    <img width="50px" height="50px" class="rounded-circle border profile_image"
+                                    <img width="30px" height="30px" class="rounded-circle border profile_image mt-10"
                                         src="{{ !empty($nfc_card->nfcData->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) : asset('https://i.ibb.co/BNBTVN4/logo.png') }}"
                                         alt="">
                                 </div>

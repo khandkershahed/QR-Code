@@ -40844,6 +40844,9 @@ a:hover {
         padding-top: 0.5rem;
         padding-bottom: 0.5rem;
     }
+    .breadcrumb{
+        display: none !important;
+    }
 }
 
 .breadcrumb {
@@ -53128,6 +53131,9 @@ code:not([class*="language-"]) {
     .svg-icon.svg-icon-sm-5tx svg {
         height: 5.75rem !important;
         width: 5.75rem !important;
+    }
+    .breadcrumb{
+        display: none;
     }
 }
 

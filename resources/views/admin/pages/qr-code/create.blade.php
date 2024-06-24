@@ -123,7 +123,7 @@
                                         </div>
                                         <div class="card-body">
                                             <div class="row">
-                                                <div class="col-lg-6">
+                                                <div class="col-lg-12">
                                                     <div class="pt-5 pb-5">
                                                         <x-metronic.label for="qr_name"
                                                             class="form-label">{{ __('Enter a name for your QR code') }}</x-metronic.label>
@@ -133,7 +133,7 @@
                                                     </div>
                                                 </div>
                                                 {{-- <input type="hidden" name="qr_scan_status" value="dynamic"> --}}
-                                                <div class="col-lg-6">
+                                                <div class="col-lg-12">
                                                     <div class="pt-5 pb-5">
                                                         <x-metronic.label for="status"
                                                             class="form-label">{{ __('Enter a name for your QR code') }}
