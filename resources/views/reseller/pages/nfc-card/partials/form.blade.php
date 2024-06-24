@@ -99,7 +99,7 @@
                     </div>
                     <div class="col-lg-3">
                         <div class="fv-row my-3">
-                            <x-metronic.label class="fw-semibold fs-6 mb-2 required">Phone Personal</x-metronic.label>
+                            <x-metronic.label class="fw-semibold fs-6 mb-2">Phone Personal</x-metronic.label>
                             <x-metronic.input type="text" name="phone_personal"
                                 class="form-control form-control-solid mb-3 mb-lg-0" placeholder="01*******"
                                 value="" />
