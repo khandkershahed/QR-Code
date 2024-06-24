@@ -59178,11 +59178,13 @@ body {
     height: 285px;
     width: 100%;
 }
-
+.checkbbox-for-qr span {
+    padding: 8px 0px;
+}
 /* custom */
 @media (min-width: 992px) and (max-width: 1400px) {
     .checkbbox-for-qr span {
-        padding: 5px !important;
+        padding-right: 10px;
         background-color: transparent !important;
     }
     .check-maintext span {

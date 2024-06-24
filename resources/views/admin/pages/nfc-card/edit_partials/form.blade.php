@@ -288,7 +288,7 @@
                                                         Description</x-metronic.label>
                                                     <textarea class="form-control form-control-solid" rows="3" name="service_one_description"
                                                         :value="$nfc_card - > nfcData - > service_one_description"
-                                                        placeholder="Professional, reliable service provider committed to exceeding expectations with quality, efficiency, and personalized care for every client's needs."></textarea>
+                                                        placeholder="Enter Comment"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -322,7 +322,7 @@
                                                         Description</x-metronic.label>
                                                     <textarea class="form-control form-control-solid" rows="3" name="service_two_description"
                                                         :value="$nfc_card - > nfcData - > service_two_description"
-                                                        placeholder="Professional, reliable service provider committed to exceeding expectations with quality, efficiency, and personalized care for every client's needs."></textarea>
+                                                        placeholder="Enter Comment"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -357,7 +357,7 @@
                                                         Description</x-metronic.label>
                                                     <textarea class="form-control form-control-solid" rows="3" name="service_three_description"
                                                         :value="$nfc_card - > nfcData - > service_three_description"
-                                                        placeholder="Professional, reliable service provider committed to exceeding expectations with quality, efficiency, and personalized care for every client's needs."></textarea>
+                                                        placeholder="Enter Comment"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -394,7 +394,7 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="fv-row my-3">
-                                <x-metronic.label class="fw-semibold fs-6 mb-2">Company
+                                <x-metronic.label class="fw-semibold mb-2">
                                     House/Road/City</x-metronic.label>
                                 <x-metronic.input type="text" name="company_address_line_one" :value="$nfc_card->nfcData->company_address_line_one"
                                     class="form-control form-control-solid mb-3 mb-lg-0"
@@ -403,24 +403,24 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="fv-row my-3">
-                                <x-metronic.label class="fw-semibold fs-6 mb-2">Company
+                                <x-metronic.label class="fw-semibold mb-2">
                                     State/Country</x-metronic.label>
                                 <x-metronic.input type="text" name="company_address_line_two" :value="$nfc_card->nfcData->company_address_line_two"
-                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="USA" />
+                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Company State/Country" />
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="fv-row my-3">
-                                <x-metronic.label class="fw-semibold fs-6 mb-2">Company Phone</x-metronic.label>
+                                <x-metronic.label class="fw-semibold fs-6 mb-2">Phone</x-metronic.label>
                                 <x-metronic.input type="text" name="company_phone" :value="$nfc_card->nfcData->company_phone"
-                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="USA" />
+                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Company Phone" />
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Company Email</x-metronic.label>
                                 <x-metronic.input type="email" name="company_email" :value="$nfc_card->nfcData->company_email"
-                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="USA" />
+                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="info@comapanymail.com" />
                             </div>
                         </div>
                         <div class="col-lg-12   ">
@@ -429,7 +429,7 @@
                                     Description</x-metronic.label>
                                 <textarea class="form-control form-control-outline" rows="3" name="company_about_description"
                                     :value="$nfc_card - > nfcData - > company_about_description"
-                                    placeholder="Professional, reliable service provider committed to exceeding expectations with quality, efficiency, and personalized care for every client's needs."></textarea>
+                                    placeholder="Enter Comment"></textarea>
                             </div>
                         </div>
                     </div>

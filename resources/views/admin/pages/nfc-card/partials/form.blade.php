@@ -216,7 +216,7 @@
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Service Section
                                     Description</x-metronic.label>
                                 <textarea class="form-control form-control-outline" rows="3" name="service_section_description" value="{{ old('service_section_description') }}"
-                                    placeholder="Professional, reliable service provider committed to exceeding expectations with quality, efficiency, and personalized care for every client's needs."></textarea>
+                                    placeholder="Enter Comment"></textarea>
                             </div>
                         </div>
                         <div class="col-lg-12">
@@ -285,7 +285,7 @@
                                                     <x-metronic.label class="fw-semibold fs-6 mb-2">Service One
                                                         Description</x-metronic.label>
                                                     <textarea class="form-control form-control-solid" rows="3" name="service_one_description" value="{{ old('service_one_description') }}"
-                                                        placeholder="Professional, reliable service provider committed to exceeding expectations with quality, efficiency, and personalized care for every client's needs."></textarea>
+                                                        placeholder="Enter Comment"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -316,7 +316,7 @@
                                                     <x-metronic.label class="fw-semibold fs-6 mb-2">Service Two
                                                         Description</x-metronic.label>
                                                     <textarea class="form-control form-control-solid" rows="3" name="service_two_description" value="{{ old('service_two_description') }}"
-                                                        placeholder="Professional, reliable service provider committed to exceeding expectations with quality, efficiency, and personalized care for every client's needs."></textarea>
+                                                        placeholder="Enter Comment"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -348,7 +348,7 @@
                                                     <x-metronic.label class="fw-semibold fs-6 mb-2">Service Three
                                                         Description</x-metronic.label>
                                                     <textarea class="form-control form-control-solid" rows="3" name="service_three_description" value="{{ old('service_three_description') }}"
-                                                        placeholder="Professional, reliable service provider committed to exceeding expectations with quality, efficiency, and personalized care for every client's needs."></textarea>
+                                                        placeholder="Enter Comment"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -387,7 +387,7 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="fv-row my-3">
-                                <x-metronic.label class="fw-semibold fs-6 mb-2">Company
+                                <x-metronic.label class="fw-semibold fs-6 mb-2">
                                     House/Road/City</x-metronic.label>
                                 <x-metronic.input type="text" name="company_address_line_one" value="{{ old('company_address_line_one') }}"
                                     class="form-control form-control-solid mb-3 mb-lg-0"
@@ -396,7 +396,7 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="fv-row my-3">
-                                <x-metronic.label class="fw-semibold fs-6 mb-2">Company
+                                <x-metronic.label class="fw-semibold fs-6 mb-2">
                                     State/Country</x-metronic.label>
                                 <x-metronic.input type="text" name="company_address_line_two" value="{{ old('company_address_line_two') }}"
                                     class="form-control form-control-solid mb-3 mb-lg-0" placeholder="USA"
@@ -407,7 +407,7 @@
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Company Phone</x-metronic.label>
                                 <x-metronic.input type="text" name="company_phone" value="{{ old('company_phone') }}"
-                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="USA"
+                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Company Phone Number"
                                      />
                             </div>
                         </div>
@@ -415,7 +415,7 @@
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Company Email</x-metronic.label>
                                 <x-metronic.input type="email" name="company_email" value="{{ old('company_email') }}"
-                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="USA"
+                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="info@companyemail.com"
                                      />
                             </div>
                         </div>
@@ -424,7 +424,7 @@
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Company About
                                     Description</x-metronic.label>
                                 <textarea class="form-control form-control-outline" rows="3" name="company_about_description" value="{{ old('company_about_description') }}"
-                                    placeholder="Professional, reliable service provider committed to exceeding expectations with quality, efficiency, and personalized care for every client's needs."></textarea>
+                                    placeholder="Enter Comment"></textarea>
                             </div>
                         </div>
                     </div>
