@@ -1,7 +1,5 @@
 <x-admin-app-layout :title="'Add Admin'">
-
-    <div class="card card-flash">
-
+    <div class="card card-flash my-15">
         <div class="card-body scroll-y mx-5 my-7">
             <form class="form" method="POST" action="{{ route('admin.user.store') }}">
                 @csrf

@@ -12,7 +12,7 @@
                         <strong class="">Total Created NFC: {{ $nfc_cards->count() }}</strong>
                     </div>
                     <div>
-                        <a href="{{ route('user.nfc-card.create') }}" class="btn btn-sm btn-primary rounded-2 me-3">
+                        <a href="{{ route('admin.nfc-card.create') }}" class="btn btn-sm btn-primary rounded-2 me-3">
                             Create NFC Card
                         </a>
                     </div>
@@ -169,13 +169,13 @@
                                                     data-bs-target="#message_modal_{{ $nfc_card->id }}">
                                                     All messages
                                                 </a> --}}
-                                                <a href="{{ route('user.nfc-card.show', $nfc_card->code) }}"
+                                                <a href="{{ route('admin.nfc-card.show', $nfc_card->code) }}"
                                                     class="menu-link px-3">
                                                     All messages
                                                 </a>
                                             </div>
                                             <div class="menu-item px-3">
-                                                <a href="{{ route('user.nfc-card.edit', $nfc_card->code) }}"
+                                                <a href="{{ route('admin.nfc-card.edit', $nfc_card->code) }}"
                                                     class="menu-link px-3">
                                                     Edit
                                                 </a>
@@ -184,7 +184,7 @@
 
                                             <!--begin::Menu item-->
                                             {{-- <div class="menu-item px-3">
-                                                <a href="{{ route('user.nfc-card.destroy', $nfc_card->id) }}"
+                                                <a href="{{ route('admin.nfc-card.destroy', $nfc_card->id) }}"
                                                     class="menu-link px-3 delete">
                                                     Delete
                                                 </a>

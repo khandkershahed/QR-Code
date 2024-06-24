@@ -78,10 +78,8 @@
                         </div>
                         <div class="col-lg-1 d-lg-block d-sm-none">
                             <div class="fv-row my-3">
-                                <x-metronic.label for="profile_image_preview"
-                                    class="form-label">{{ __('Preview') }}</x-metronic.label>
                                 <div>
-                                    <img width="50px" height="50px" class="rounded-circle border banner_image"
+                                    <img width="30px" height="30px" class="rounded-circle border banner_image mt-10"
                                         src="{{ !empty($nfc_card->nfcData->banner_image) &&
                                         file_exists(public_path('storage/nfc/' . $nfc_card->nfcData->banner_image))
                                             ? asset('storage/nfc/' . $nfc_card->nfcData->banner_image)
@@ -102,10 +100,8 @@
                         </div>
                         <div class="col-lg-1 d-lg-block d-sm-none">
                             <div class="fv-row my-3">
-                                <x-metronic.label for="profile_image_preview"
-                                    class="form-label">{{ __('Preview') }}</x-metronic.label>
                                 <div>
-                                    <img width="50px" height="50px" class="rounded-circle border profile_image"
+                                    <img width="30px" height="30px" class="rounded-circle border profile_image mt-10"
                                         src="{{ !empty($nfc_card->nfcData->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) : asset('https://i.ibb.co/BNBTVN4/logo.png') }}"
                                         alt="">
                                 </div>
@@ -220,7 +216,7 @@
                                     Description</x-metronic.label>
                                 <textarea class="form-control form-control-outline" rows="3" name="service_section_description"
                                     :value="$nfc_card - > nfcData - > service_section_description"
-                                    placeholder="Professional, reliable service provider committed to exceeding expectations with quality, efficiency, and personalized care for every client's needs."></textarea>
+                                    placeholder="Enter Service Description"></textarea>
                             </div>
                         </div>
                         <div class="col-lg-12">
@@ -268,7 +264,7 @@
                                         <div class="row p-3">
                                             <div class="col-lg-6">
                                                 <div class="fv-row my-3">
-                                                    <x-metronic.label class="fw-semibold fs-6 mb-2">Service One
+                                                    <x-metronic.label class="fw-semibold fs-6 mb-2">One
                                                         Title</x-metronic.label>
                                                     <x-metronic.input type="text" name="service_one_title"
                                                         :value="$nfc_card->nfcData->service_one_title"
@@ -278,7 +274,7 @@
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="fv-row my-3">
-                                                    <x-metronic.label class="fw-semibold fs-6 mb-2">Service One
+                                                    <x-metronic.label class="fw-semibold fs-6 mb-2">One
                                                         Image</x-metronic.label>
                                                     <x-metronic.input type="file" name="service_one_image"
                                                         :value="$nfc_card->nfcData->service_one_image"
@@ -288,7 +284,7 @@
                                             </div>
                                             <div class="col-lg-12">
                                                 <div class="fv-row my-3">
-                                                    <x-metronic.label class="fw-semibold fs-6 mb-2">Service One
+                                                    <x-metronic.label class="fw-semibold fs-6 mb-2">One
                                                         Description</x-metronic.label>
                                                     <textarea class="form-control form-control-solid" rows="3" name="service_one_description"
                                                         :value="$nfc_card - > nfcData - > service_one_description"
@@ -302,7 +298,7 @@
                                         <div class="row p-3">
                                             <div class="col-lg-6">
                                                 <div class="fv-row my-3">
-                                                    <x-metronic.label class="fw-semibold fs-6 mb-2">Service Two
+                                                    <x-metronic.label class="fw-semibold fs-6 mb-2"> Two
                                                         Title</x-metronic.label>
                                                     <x-metronic.input type="text" name="service_two_title"
                                                         :value="$nfc_card->nfcData->service_two_title"
@@ -312,7 +308,7 @@
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="fv-row my-3">
-                                                    <x-metronic.label class="fw-semibold fs-6 mb-2">Service Two
+                                                    <x-metronic.label class="fw-semibold fs-6 mb-2"> Two
                                                         Image</x-metronic.label>
                                                     <x-metronic.input type="file" name="service_two_image"
                                                         :value="$nfc_card->nfcData->service_two_image"
@@ -322,7 +318,7 @@
                                             </div>
                                             <div class="col-lg-12">
                                                 <div class="fv-row my-3">
-                                                    <x-metronic.label class="fw-semibold fs-6 mb-2">Service Two
+                                                    <x-metronic.label class="fw-semibold fs-6 mb-2"> Two
                                                         Description</x-metronic.label>
                                                     <textarea class="form-control form-control-solid" rows="3" name="service_two_description"
                                                         :value="$nfc_card - > nfcData - > service_two_description"
@@ -337,7 +333,7 @@
                                             style="border: 1px dashed #eee; background-color: #f5f8fa47 !important;">
                                             <div class="col-lg-6">
                                                 <div class="fv-row my-3">
-                                                    <x-metronic.label class="fw-semibold fs-6 mb-2">Service Three
+                                                    <x-metronic.label class="fw-semibold fs-6 mb-2"> Three
                                                         Title</x-metronic.label>
                                                     <x-metronic.input type="text" name="service_three_title"
                                                         :value="$nfc_card->nfcData->service_three_title"
@@ -347,7 +343,7 @@
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="fv-row my-3">
-                                                    <x-metronic.label class="fw-semibold fs-6 mb-2">Service Three
+                                                    <x-metronic.label class="fw-semibold fs-6 mb-2"> Three
                                                         Image</x-metronic.label>
                                                     <x-metronic.input type="file" name="service_three_image"
                                                         :value="$nfc_card->nfcData->service_three_image"
@@ -357,7 +353,7 @@
                                             </div>
                                             <div class="col-lg-12">
                                                 <div class="fv-row my-3">
-                                                    <x-metronic.label class="fw-semibold fs-6 mb-2">Service Three
+                                                    <x-metronic.label class="fw-semibold fs-6 mb-2"> Three
                                                         Description</x-metronic.label>
                                                     <textarea class="form-control form-control-solid" rows="3" name="service_three_description"
                                                         :value="$nfc_card - > nfcData - > service_three_description"

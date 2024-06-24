@@ -1303,8 +1303,19 @@ class QrCodeController extends Controller
                 $qrCodeString = $qrCode->margin(4)->errorCorrection('H')->encoding('UTF-8')->generate($qrDataLink);
 
                 if ($format === 'jpg') {
-                    $image = Image::make($qrCodeString);
-                    $image->save($qrCodePath, 100, 'jpg');
+                    try {
+                        // Convert binary data to base64
+                        $base64ImageString = base64_encode($qrCodeString);
+                        $imageContent = base64_decode($base64ImageString);
+                        $image = Image::make($imageContent);
+                        $image->encode('jpg', 100)->save($qrCodePath);
+                    } catch (NotReadableException $e) {
+                        Log::error('Image source not readable: ' . $e->getMessage());
+                        continue;
+                    } catch (\Exception $e) {
+                        Log::error('General error: ' . $e->getMessage());
+                        continue;
+                    }
                 } else {
                     $qrCode->generate($qrDataLink, $qrCodePath);
                 }
@@ -1316,15 +1327,10 @@ class QrCodeController extends Controller
             ]);
         }
 
-
-
-        // Return the URL of the generated QR code image
-        if ($qr->wasRecentlyCreated) {
-            if ($isUserRoute) {
-                return redirect()->route('user.qr-code.index')->with('success', 'You have successfully updated QR Code.');
-            } else {
-                return redirect()->route('admin.qr-code.index')->with('success', 'You have successfully updated QR Code.');
-            }
+        if ($isUserRoute) {
+            return redirect()->route('user.qr-code.index')->with('success', 'You have successfully updated QR Code.');
+        } else {
+            return redirect()->route('admin.qr-code.index')->with('success', 'You have successfully updated QR Code.');
         }
     }
 

@@ -11,7 +11,7 @@
                 <div class="d-flex justify-content-between align-items-center w-100">
 
                     <div>
-                        <a href="{{ route('user.qr-code.create') }}" class="btn btn-sm btn-primary rounded-2 me-3">
+                        <a href="{{ route('admin.qr-code.create') }}" class="btn btn-sm btn-primary rounded-2 me-3">
                             Create QR Codes
                         </a>
                     </div>
@@ -60,7 +60,7 @@
                                                     data-bs-target="#image-{{ $qr->id }}">Go to
                                                     Link</a></span><br>
                                             <span><span class="fw-bold text-black">Org :
-                                                </span>{{ Auth::user()->name }}</span><br>
+                                                </span>{{ $qr->qr_name }}</span><br>
                                             <span><span class="fw-bold text-black">Created at
                                                     :</span>:{{ $qr->created_at }}</span><br>
                                             <div class="modal fade" id="image-{{ $qr->id }}" tabindex="-1"
@@ -96,18 +96,18 @@
                                             <button class="btn btn-light-primary">{{ ucfirst($qr->qr_type) }}</button>
                                         </td>
                                         <td class="text-start">
-                                            <a href="{{ route('user.qr.summary', $qr->code) }}"
+                                            <a href="{{ route('admin.qr.summary', $qr->code) }}"
                                                 class="btn btn-light-primary">{{ $qr->qrScan->count() }}</a>
                                         </td>
                                         <td>
                                             <div class="badge badge-light-success">Active</div>
                                         </td>
                                         <td class="pe-0 text-end">
-                                            <a href="{{ route('user.qr-code.edit', $qr->code) }}"
+                                            <a href="{{ route('admin.qr-code.edit', $qr->code) }}"
                                                 class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                 <i class="fas fa-pen"></i>
                                             </a>
-                                            {{-- <a href="{{ route('user.qr-code.destroy', $qr->id) }}"
+                                            {{-- <a href="{{ route('admin.qr-code.destroy', $qr->id) }}"
                                                 class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1 delete">
                                                 <i class="fas fa-trash-alt text-danger"></i>
                                             </a> --}}

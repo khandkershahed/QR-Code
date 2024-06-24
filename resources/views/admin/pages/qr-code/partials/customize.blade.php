@@ -179,7 +179,7 @@
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <div class="ps-4">
+                            <div class="ps-4 pt-3">
                                 <x-metronic.label for="qr_logo_size"
                                     class="form-label">{{ __('Logo Size (in %)') }}</x-metronic.label>
                                 {{-- <x-metronic.input id="qr_logo_size" type="number" name="qr_logo_size" :value="old('qr_logo_size')" placeholder="Logo Size(Eg: 5, 10, 15....)" /> --}}
@@ -192,7 +192,7 @@
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <div class="ps-4">
+                            <div class="ps-4 pt-3">
                                 <x-metronic.label for="qr_logo_size"
                                     class="form-label">{{ __('Logo Space') }}</x-metronic.label>
                                 {{-- <x-metronic.input id="qr_logo_size" type="number" name="qr_logo_size" :value="old('qr_logo_size')" placeholder="Logo Size(Eg: 5, 10, 15....)" /> --}}

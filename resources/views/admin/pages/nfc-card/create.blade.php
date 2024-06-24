@@ -93,7 +93,7 @@
                         </div>
                         <!-- Stepper content and form -->
                         <form class="form flex-grow-1 d-flex flex-column" novalidate="novalidate"
-                            id="kt_stepper_example_clickable_form" action="{{ route('user.nfc-card.store') }}"
+                            id="kt_stepper_example_clickable_form" action="{{ route('admin.nfc-card.store') }}"
                             method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
@@ -108,7 +108,7 @@
                                             <div
                                                 class="centered-card-body card-body d-flex flex-column justify-content-between mb-10">
                                                 <!-- Include your NFC template partial here -->
-                                                @include('user.pages.nfc-card.partials.nfc_template')
+                                                @include('admin.pages.nfc-card.partials.nfc_template')
                                             </div>
                                         </div>
                                     </div>
@@ -117,7 +117,7 @@
                                     <div class="card flex-grow-1 rounded-0">
                                         <div
                                             class="centered-card-body card-body d-flex flex-column justify-content-between mb-10">
-                                            @include('user.pages.nfc-card.partials.form')
+                                            @include('admin.pages.nfc-card.partials.form')
                                         </div>
                                     </div>
                                 </div>
@@ -129,7 +129,7 @@
                                         </div>
                                         <div
                                             class="centered-card-body card-body d-flex flex-column justify-content-between mb-10">
-                                            @include('user.pages.nfc-card.partials.customize')
+                                            @include('admin.pages.nfc-card.partials.customize')
                                         </div>
                                     </div>
                                 </div>
@@ -142,7 +142,7 @@
                                         </div>
                                         <div
                                             class="centered-card-body card-body d-flex flex-column justify-content-between mb-10">
-                                            @include('user.pages.nfc-card.partials.virtualCard')
+                                            @include('admin.pages.nfc-card.partials.virtualCard')
                                         </div>
                                     </div>
                                 </div>
@@ -154,7 +154,7 @@
                                         </div>
                                         <div
                                             class="centered-card-body card-body d-flex flex-column justify-content-between mb-10">
-                                            @include('user.pages.nfc-card.partials.virtualCardCustomization')
+                                            @include('admin.pages.nfc-card.partials.virtualCardCustomization')
                                         </div>
                                     </div>
                                 </div>
@@ -170,7 +170,7 @@
                                         </div>
                                         <div
                                             class="centered-card-body card-body d-flex flex-column justify-content-between mb-10 pt-0">
-                                            @include('user.pages.nfc-card.partials.virtualCardBilling')
+                                            @include('admin.pages.nfc-card.partials.virtualCardBilling')
                                         </div>
                                     </div>
                                 </div>
@@ -205,7 +205,7 @@
         </div>
         <div class="col-lg-4">
             <div class="card" id="second-card">
-                <div class="card-header px-0 sticky-top-preview border-0">
+                <div class="card-header px-0 border-0">
                     <div class="d-flex flex-column justify-content-center align-items-center"
                         style="width: 100%; background: #0098da3d; border-top-left-radius: 5px; border-top-right-radius: 5px; padding: 15px;">
                         <h3 class="">Preview</h3>
@@ -213,11 +213,11 @@
                     </div>
                 </div>
                 <div class="card-body custom-card-body overflow-auto px-0 ">
-                    @include('user.pages.nfc-card.partials.nfc_preview')
+                    @include('admin.pages.nfc-card.partials.nfc_preview')
                 </div>
                 <div
                     class="card-body custom-card-body overflow-auto px-0 py-10 d-flex justify-content-center align-items-center">
-                    @include('user.pages.nfc-card.partials.virtual_card_preview')
+                    @include('admin.pages.nfc-card.partials.virtual_card_preview')
                 </div>
             </div>
         </div>

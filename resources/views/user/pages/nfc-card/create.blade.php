@@ -205,7 +205,7 @@
         </div>
         <div class="col-lg-4">
             <div class="card" id="second-card">
-                <div class="card-header px-0 sticky-top-preview border-0">
+                <div class="card-header px-0 border-0">
                     <div class="d-flex flex-column justify-content-center align-items-center"
                         style="width: 100%; background: #0098da3d; border-top-left-radius: 5px; border-top-right-radius: 5px; padding: 15px;">
                         <h3 class="">Preview</h3>
