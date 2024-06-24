@@ -776,7 +776,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 
-    <script src="https://unpkg.com/vcards-js/dist/vCards-js.js"></script>
+    <script src="{{ asset('admin/js/vcard.js') }}"></script>
     <script type="text/javascript">
         document.querySelectorAll('.nfc_contact_btn').forEach(function(button) {
             button.addEventListener('click', function(event) {
@@ -794,69 +794,94 @@
                 var profileImage =
                     '{{ asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) }}';
 
-                // Create a new vCard
-                var vCard = vCard.create();
+                // Function to convert image to base64 string
+                function getBase64Image(img) {
+                    var canvas = document.createElement("canvas");
+                    canvas.width = img.width;
+                    canvas.height = img.height;
 
-                // Set formatted name
-                vCard.addFormattedName(firstName + ' ' + lastName);
+                    var ctx = canvas.getContext("2d");
+                    ctx.drawImage(img, 0, 0);
 
-                // Add organization (optional)
-                vCard.addOrganization(designation);
-
-                // Add phone number
-                vCard.addPhoneNumber(mobileNumber, 'CELL');
-
-                // Add email (optional)
-                if (email.trim() !== '') {
-                    vCard.addEmail(email, 'HOME');
+                    var dataURL = canvas.toDataURL("image/png"); // Change to "image/jpeg" if needed
+                    return dataURL.replace(/^data:image\/(png|jpeg);base64,/, "");
                 }
 
-                // Add address (optional)
-                if (addressLine1.trim() !== '' || addressLine2.trim() !== '') {
-                    vCard.addAddress('', '', addressLine1, '', '', '', 'HOME');
-                }
+                // Create an image object to load the profile image
+                var img = new Image();
+                img.crossOrigin =
+                'Anonymous'; // Ensure CORS compatibility if loading from different origins
+                img.onload = function() {
+                    // Image loaded, now create vCard
 
-                // Add LinkedIn URL (optional)
-                if (linkedin.trim() !== '') {
-                    vCard.addURL(linkedin);
-                }
+                    // Create a new vCard
+                    var vCard = vCard.create();
 
-                // Add profile image URL (optional)
-                if (profileImage.trim() !== '') {
-                    vCard.addPhoto(profileImage, 'JPEG');
-                }
+                    // Set formatted name
+                    vCard.addFormattedName(firstName + ' ' + lastName);
 
-                // Export the vCard
-                var vCardLink = vCard.getFormattedString();
-                var encodedVCard = encodeURIComponent(vCardLink);
-                var uri = 'data:text/vcard;charset=utf-8,' + encodedVCard;
+                    // Add organization (optional)
+                    vCard.addOrganization(designation);
 
-                // Check if the device is mobile
-                var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-                    navigator.userAgent);
+                    // Add phone number
+                    vCard.addPhoneNumber(mobileNumber, 'CELL');
 
-                if (isMobile) {
-                    // Open the data URI to prompt adding contact on mobile
-                    window.open(uri);
-                } else {
-                    // For desktop, create and initiate the download of .vcf file
-                    var blob = new Blob([vCardLink], {
-                        type: 'text/vcard;charset=utf-8'
-                    });
-                    var url = URL.createObjectURL(blob);
+                    // Add email (optional)
+                    if (email.trim() !== '') {
+                        vCard.addEmail(email, 'HOME');
+                    }
 
-                    var a = document.createElement('a');
-                    a.style.display = 'none';
-                    a.href = url;
-                    a.download = 'contact.vcf';
+                    // Add address (optional)
+                    if (addressLine1.trim() !== '' || addressLine2.trim() !== '') {
+                        vCard.addAddress('', '', addressLine1, '', '', '', 'HOME');
+                    }
 
-                    document.body.appendChild(a);
-                    a.click();
+                    // Add LinkedIn URL (optional)
+                    if (linkedin.trim() !== '') {
+                        vCard.addURL(linkedin);
+                    }
 
-                    // Clean up
-                    window.URL.revokeObjectURL(url);
-                    document.body.removeChild(a);
-                }
+                    // Convert image to base64 string
+                    var base64Img = getBase64Image(img);
+
+                    // Add photo (profile image) to vCard as base64 encoded string
+                    vCard.addPhoto(base64Img, 'PNG');
+
+                    // Export the vCard
+                    var vCardLink = vCard.getFormattedString();
+                    var encodedVCard = encodeURIComponent(vCardLink);
+                    var uri = 'data:text/vcard;charset=utf-8,' + encodedVCard;
+
+                    // Check if the device is mobile
+                    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
+                        .test(navigator.userAgent);
+
+                    if (isMobile) {
+                        // Open the data URI to prompt adding contact on mobile
+                        window.open(uri);
+                    } else {
+                        // For desktop, create and initiate the download of .vcf file
+                        var blob = new Blob([vCardLink], {
+                            type: 'text/vcard;charset=utf-8'
+                        });
+                        var url = URL.createObjectURL(blob);
+
+                        var a = document.createElement('a');
+                        a.style.display = 'none';
+                        a.href = url;
+                        a.download = 'contact.vcf';
+
+                        document.body.appendChild(a);
+                        a.click();
+
+                        // Clean up
+                        window.URL.revokeObjectURL(url);
+                        document.body.removeChild(a);
+                    }
+                };
+
+                // Set image source to trigger onload event
+                img.src = profileImage;
             });
         });
     </script>
