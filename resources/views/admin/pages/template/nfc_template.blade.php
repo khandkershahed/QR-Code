@@ -1,4 +1,4 @@
-<x-app-layout :title="'NFC Templates'">
+<x-admin-app-layout :title="'NFC Templates'">
     <div class="row">
         <h3 class="text-center py-10">All NFC Templates</h3>
         <div class="col-lg-3">
@@ -58,4 +58,4 @@
     </div>
     @push('scripts')
     @endpush
-</x-app-layout>
+</x-admin-app-layout>
