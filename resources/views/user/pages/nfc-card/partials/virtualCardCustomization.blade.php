@@ -11,7 +11,7 @@
         <div class="col-lg-4">
             <div class="fv-row my-3">
                 <x-metronic.label for="card_bg_front" class="form-label ">
-                    {{ __('Card Front Background Image') }}</x-metronic.label>
+                    {{ __('Card Front BG Image') }}</x-metronic.label>
                 <input id="card_bg_front" type="file" class="form-control form-control-outline mb-3 mb-lg-0" name="card_bg_front"
                     onchange="changeBgFront(this)" accept="image/*" />
             </div>
@@ -19,7 +19,7 @@
         <div class="col-lg-4">
             <div class="fv-row my-3">
                 <x-metronic.label for="card_bg_back" class="form-label ">
-                    {{ __('Card Back Background Image') }}</x-metronic.label>
+                    {{ __('Card Back BG Image') }}</x-metronic.label>
                 <input id="card_bg_back" type="file" class="form-control form-control-outline mb-3 mb-lg-0" name="card_bg_back"
                     onchange="changeBgBack(this)" accept="image/*" />
             </div>

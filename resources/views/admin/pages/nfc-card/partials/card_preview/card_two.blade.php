@@ -18,6 +18,7 @@
     .card_logo_two {
         width: 160px;
     }
+
     .card_logo_two_back {
         width: 300px;
     }
@@ -42,12 +43,20 @@
     .contact-info i {
         margin-right: 5px;
     }
+
     .card_designation-two,
     .card_phone-two,
     .card_email-two,
     .card_address-two {
         color: #fff;
         font-weight: bold;
+    }
+
+    @media only screen and (min-width: 1368px) {
+        .punch-card-container {
+            width: 99%;
+            height: auto;
+        }
     }
 
     /* Additional styles as needed */

@@ -394,6 +394,13 @@
                                     text-align: center !important;
                                 }
                             }
+
+                            @media only screen and (min-width: 1368px) {
+                                .punch-card-container {
+                                    width: 99%;
+                                    height: auto;
+                                }
+                            }
                         </style>
                         <div class="card">
                             <div>
@@ -428,14 +435,12 @@
                                                                 <p class="fw-bold pt-3 mb-0">
                                                                     <span
                                                                         class="card_phone">{{ optional($nfc_card->virtualCard)->card_phone }}</span>
-                                                                    <i
-                                                                        class="fas fa-phone tem-one-main-color "></i>
+                                                                    <i class="fas fa-phone tem-one-main-color "></i>
                                                                 </p>
                                                                 <p class="fw-bold mb-0">
                                                                     <span
                                                                         class="card_email">{{ optional($nfc_card->virtualCard)->card_email }}</span>
-                                                                    <i
-                                                                        class="fas fa-envelope tem-one-main-color "></i>
+                                                                    <i class="fas fa-envelope tem-one-main-color "></i>
                                                                 </p>
                                                             </div>
                                                             <div>

@@ -120,8 +120,7 @@
                                             <a href="javascript:void(0)" data-bs-toggle="modal"
                                                 data-bs-target="#virtual_card_modal_{{ $nfc_card->id }}"
                                                 class="text-primary">
-                                                <button class="btn btn-sm btn-info"><i
-                                                        class="fas fa-eye pe-2"></i>
+                                                <button class="btn btn-sm btn-info"><i class="fas fa-eye pe-2"></i>
                                                     CARD</button>
                                             </a>
                                         </td>
@@ -351,6 +350,13 @@
                             @media (max-width: 992px) {
                                 .text-lg-start {
                                     text-align: center !important;
+                                }
+                            }
+
+                            @media only screen and (min-width: 1368px) {
+                                .punch-card-container {
+                                    width: 99%;
+                                    height: auto;
                                 }
                             }
                         </style>
