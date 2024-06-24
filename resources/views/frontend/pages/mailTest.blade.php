@@ -3,7 +3,7 @@
     <section id="about" class="hero-area-nine pt-165 rpt-150 pb-130 rpb-100 rel z-1">
         <div class="container">
             <div class="row gap-70 align-items-center">
-                {!! QrCode::size('400')->style('dot')->generate('Make me into a QrCode!'); !!}
+                {!! QrCode::size('400')->style('hexagonal')->generate('Make me into a QrCode!'); !!}
                 <div class="row mb-100 rmb-55" data-aos="fade-up" data-aos-duration="1500"
                     data-aos-offset="50">
                     <form class="mt-40" action="{{ route('mailTest.store') }}" method="POST">
