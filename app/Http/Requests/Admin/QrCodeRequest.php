@@ -206,7 +206,7 @@ class QrCodeRequest extends FormRequest
             'qr_data_image_link'                => 'Image Link',
             'qr_data_sms_number'                => 'SMS Number',
             'qr_data_sms_message'               => 'SMS Message',
-            'qr_data_email_id'                  => 'Email ID',
+            'qr_data_email_id'                  => 'QR Email ID',
             'qr_data_email_subject'             => 'Email Subject',
             'qr_data_email_body'                => 'Email Body',
             'qr_app_android'                    => 'Android App',
