@@ -22,14 +22,30 @@
                             <div class="col-lg-2">
                                 <div class="text-center">
                                     @if ($nfc_card->nfc_template == 'template-one')
-                                        <img class="img-fluid w-200px"
-                                            src="{{ asset('frontend/assets/images/nfc-templates/template_one.jpg') }}"
-                                            alt="">
-                                    @else
-                                        <img class="img-fluid w-200px"
-                                            src="{{ asset('frontend/assets/images/nfc-templates/template_two.jpg') }}"
-                                            alt="">
-                                    @endif
+                                            <img class="img-fluid w-50px"
+                                                src="{{ asset('frontend/assets/images/nfc-templates/template_one.jpg') }}"
+                                                alt="">
+                                        @elseif ($nfc_card->nfc_template == 'template-two')
+                                            <img class="img-fluid w-50px"
+                                                src="{{ asset('frontend/assets/images/nfc-templates/template_two.jpg') }}"
+                                                alt="">
+                                        @elseif ($nfc_card->nfc_template == 'template-three')
+                                            <img class="img-fluid w-50px"
+                                                src="{{ asset('frontend/assets/images/nfc-templates/template_three.jpg') }}"
+                                                alt="">
+                                        @elseif ($nfc_card->nfc_template == 'template-four')
+                                            <img class="img-fluid w-50px"
+                                                src="{{ asset('frontend/assets/images/nfc-templates/template_four.jpg') }}"
+                                                alt="">
+                                        @elseif ($nfc_card->nfc_template == 'template-five')
+                                            <img class="img-fluid w-50px"
+                                                src="{{ asset('frontend/assets/images/nfc-templates/template_five.jpg') }}"
+                                                alt="">
+                                        @elseif ($nfc_card->nfc_template == 'template-six')
+                                            <img class="img-fluid w-50px"
+                                                src="{{ asset('frontend/assets/images/nfc-templates/template_six.jpg') }}"
+                                                alt="">
+                                        @endif
                                 </div>
                             </div>
                             <div class="col-lg-6">

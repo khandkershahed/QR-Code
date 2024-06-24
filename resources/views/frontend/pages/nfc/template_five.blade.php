@@ -537,7 +537,7 @@
                                                                 <div>
                                                                     <small for="client_name">Name
                                                                         <span class="text-danger">*</span></small>
-                                                                    <input type="text" name="client_name" required
+                                                                    <input type="text" name="name" required
                                                                         class="form-control form-control-sm"
                                                                         id="" />
                                                                 </div>
@@ -546,7 +546,7 @@
                                                                 <div>
                                                                     <small for="client_email">Email
                                                                         <span class="text-danger">*</span></small>
-                                                                    <input type="text" name="client_email" required
+                                                                    <input type="text" name="email" required
                                                                         class="form-control form-control-sm"
                                                                         id="" />
                                                                 </div>
@@ -556,7 +556,7 @@
                                                             <div class="col mb-2">
                                                                 <div>
                                                                     <small for="client_name">Phone</small>
-                                                                    <input type="text" name="client_phone"
+                                                                    <input type="text" name="phone"
                                                                         class="form-control form-control-sm"
                                                                         id="" />
                                                                 </div>
