@@ -172,7 +172,7 @@ class QrCodeController extends Controller
                 $emailId = $qr->qrData->qr_data_email_id;
                 $subject = $qr->qrData->qr_data_email_subject ?? '';
                 $body = $qr->qrData->qr_data_email_body ?? '';
-                $mailtoUrl = 'mailto:' . $emailId . '?subject=' . urlencode($subject) . '&body=' . urlencode($body);
+                $mailtoUrl = 'mailto:' . rawurlencode($emailId) . '?subject=' . rawurlencode($subject) . '&body=' . rawurlencode($body);
                 return redirect()->to($mailtoUrl);
             } elseif (!empty($qr->qrData->qr_app_android)) {
                 $androidAppLink = $qr->qrData->qr_app_android;
