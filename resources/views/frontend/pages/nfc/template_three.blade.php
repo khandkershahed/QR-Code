@@ -856,28 +856,32 @@
             button.addEventListener('click', function(event) {
                 event.preventDefault(); // Prevent default link behavior
 
-                // Detect if the device is mobile or tablet
-                window.mobileAndTabletCheck = function() {
-                    return (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-                        navigator.userAgent));
-                };
+                // Function to check if the device is mobile or tablet
+                function isMobileOrTablet() {
+                    // Check for iOS, Android, and common mobile/tablet user agents
+                    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator
+                        .userAgent);
+                }
 
-                var isMobile = window.mobileAndTabletCheck();
+                var isMobile = isMobileOrTablet();
 
                 // Retrieve contact information from PHP variables
                 var firstName = '{{ optional($nfc_card->nfcData)->first_name }}';
                 var lastName = '{{ optional($nfc_card->nfcData)->last_name }}';
+                var designation = '{{ optional($nfc_card->nfcData)->designation }}';
                 var mobileNumber = '{{ $nfc_card->nfcData->phone_personal }}';
                 var email = '{{ $nfc_card->nfcData->email_personal }}';
-                var facebook = '{{ $nfc_card->nfcData->facebook_url }}';
-                var instagram = '{{ $nfc_card->nfcData->instagram_url }}';
-                var youtube = '{{ $nfc_card->nfcData->youtube_url }}';
-                var googlePlus = '{{ $nfc_card->nfcData->google_plus_url }}';
+                var addressLine1 = '{{ $nfc_card->nfcData->address_line_one }}';
+                var addressLine2 = '{{ $nfc_card->nfcData->address_line_two }}';
+                var linkedin = '{{ $nfc_card->nfcData->linkedin_url }}';
+                var profileImage =
+                    '{{ asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) }}';
 
                 // Construct the vCard (vcf) content
                 var vcfContent = "BEGIN:VCARD\n" +
                     "VERSION:3.0\n" +
                     "FN:" + firstName + " " + lastName + "\n" +
+                    "ORG:" + designation + "\n" + // Optional: Organization (designation)
                     "TEL;TYPE=CELL:" + mobileNumber + "\n";
 
                 // Add optional fields if they exist
@@ -885,26 +889,23 @@
                     vcfContent += "EMAIL:" + email + "\n";
                 }
 
-                if (facebook.trim() !== '') {
-                    vcfContent += "URL:" + facebook + "\n";
-                    vcfContent += "X-SOCIALPROFILE;TYPE=facebook:" + facebook + "\n";
+                if (addressLine1.trim() !== '' || addressLine2.trim() !== '') {
+                    vcfContent += "ADR;TYPE=HOME:;;" + addressLine1 + ";" + addressLine2 + ";;;;\n";
                 }
 
-                if (instagram.trim() !== '') {
-                    vcfContent += "X-SOCIALPROFILE;TYPE=instagram:" + instagram + "\n";
+                if (linkedin.trim() !== '') {
+                    vcfContent += "URL:" + linkedin + "\n";
+                    vcfContent += "X-SOCIALPROFILE;TYPE=linkedin:" + linkedin + "\n";
                 }
 
-                if (youtube.trim() !== '') {
-                    vcfContent += "X-SOCIALPROFILE;TYPE=youtube:" + youtube + "\n";
-                }
-
-                if (googlePlus.trim() !== '') {
-                    vcfContent += "X-SOCIALPROFILE;TYPE=googleplus:" + googlePlus + "\n";
+                // Profile image can be added as a URL to be displayed in some apps
+                if (profileImage.trim() !== '') {
+                    vcfContent += "PHOTO;VALUE=URL;TYPE=JPEG:" + profileImage + "\n";
                 }
 
                 vcfContent += "END:VCARD";
 
-                if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0)){
+                if (isMobile) {
                     // For mobile devices, open the data URI directly to prompt adding contact
                     var encodedVcfContent = encodeURIComponent(vcfContent);
                     var uri = 'data:text/vcard;charset=utf-8,' + encodedVcfContent;
@@ -930,6 +931,7 @@
                 }
             });
         });
+
 
 
 
