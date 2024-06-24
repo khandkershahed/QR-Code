@@ -429,9 +429,11 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="d-flex justify-content-center align-items-center w-100">
+                                                    <div
+                                                        class="d-flex justify-content-center align-items-center w-100">
                                                         <div class="p-2 pt-5 text-start">
-                                                            <img class="" width="200px" src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
+                                                            <img class="" width="200px"
+                                                                src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
                                                                 alt="" />
                                                         </div>
                                                     </div>
@@ -737,20 +739,22 @@
                                             </div>
                                             <div class="row fixed-bottom w-25 mx-auto mobile-d-none">
                                                 <div class="col mb-2 text-center">
-                                                    <a href="tel:+{{ optional($nfc_card->nfcData)->phone_personal }}" class="btn btn-sm mt-2 p-2 w-100 nfc_contact_btn"
+                                                    <a href="tel:+{{ optional($nfc_card->nfcData)->phone_personal }}"
+                                                        class="btn btn-sm mt-2 p-2 w-100 nfc_contact_btn"
                                                         style="background-color: #f44336; color: #fff">
                                                         <i class="fas fa-contact pe-1 fa-address-book"></i>
-                                                        Connect The Profile
+                                                        Save Contact
                                                     </a>
                                                 </div>
                                             </div>
                                             <div
                                                 class="row fixed-bottom w-sm-100 w-lg-25 d-sm-block d-lg-none mx-auto">
                                                 <div class="col mb-2 text-center">
-                                                    <a href="tel:+{{ optional($nfc_card->nfcData)->phone_personal }}" class="btn btn-sm mt- p-2 w-100 nfc_contact_btn"
+                                                    <a href="tel:+{{ optional($nfc_card->nfcData)->phone_personal }}"
+                                                        class="btn btn-sm mt- p-2 w-100 nfc_contact_btn"
                                                         style="background-color: #f44336; color: #fff">
                                                         <i class="fas fa-contact pe-1 fa-address-book"></i>
-                                                        Connect The Profile
+                                                        Save Contact
                                                     </a>
                                                 </div>
                                             </div>
@@ -772,6 +776,84 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script>
+        // JavaScript to handle button click
+        document.querySelectorAll('.nfc_contact_btn').forEach(function(button) {
+            button.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent default link behavior
+
+                var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+                if (isMobile) {
+                    // Mobile device, open contact saving options
+                    var name =
+                        '{{ optional($nfc_card->nfcData)->first_name }} {{ optional($nfc_card->nfcData)->last_name }}';
+                    var mobileNumber = '{{ $nfc_card->nfcData->phone_personal }}';
+                    var email = '{{ $nfc_card->nfcData->email_personal }}';
+                    var facebook = '{{ $nfc_card->nfcData->facebook_url }}';
+                    var instagram = '{{ $nfc_card->nfcData->instagram_url }}';
+                    var youtube = '{{ $nfc_card->nfcData->youtube_url }}';
+                    var googlePlus = '{{ $nfc_card->nfcData->google_plus_url }}';
+
+                    // Construct the contact details
+                    var contactDetails = "BEGIN:VCARD\n" +
+                        "VERSION:3.0\n" +
+                        "FN:" + name + "\n" +
+                        "TEL;TYPE=CELL:" + mobileNumber + "\n" +
+                        "EMAIL:" + email + "\n" +
+                        "URL:" + facebook + "\n" +
+                        "X-SOCIALPROFILE:facebook:" + facebook + "\n" +
+                        "X-SOCIALPROFILE:instagram:" + instagram + "\n" +
+                        "X-SOCIALPROFILE:youtube:" + youtube + "\n" +
+                        "X-SOCIALPROFILE:googleplus:" + googlePlus + "\n" +
+                        "END:VCARD";
+
+                    // Encode the contact details for URI
+                    var encodedContact = encodeURIComponent(contactDetails);
+
+                    // Open the appropriate URI for saving contacts
+                    var uri = 'data:text/vcard;charset=utf-8,' + encodedContact;
+                    window.open(uri);
+
+                } else {
+                    // Desktop, generate .vfc file and initiate download
+                    var name =
+                        '{{ optional($nfc_card->nfcData)->first_name }} {{ optional($nfc_card->nfcData)->last_name }}';
+                    var mobileNumber = '{{ $nfc_card->nfcData->phone_personal }}';
+
+                    // Construct the .vfc file content
+                    var vfcContent = "BEGIN:VCARD\n" +
+                        "VERSION:3.0\n" +
+                        "FN:" + name + "\n" +
+                        "TEL;TYPE=CELL:" + mobileNumber + "\n" +
+                        "END:VCARD";
+
+                    // Create a Blob object containing the .vfc file content
+                    var blob = new Blob([vfcContent], {
+                        type: 'text/vcard;charset=utf-8'
+                    });
+
+                    // Create a temporary anchor element
+                    var a = document.createElement('a');
+                    a.style.display = 'none';
+                    document.body.appendChild(a);
+
+                    // Set the href attribute of the anchor element to the Object URL of the Blob
+                    a.href = window.URL.createObjectURL(blob);
+
+                    // Set the download attribute to specify the filename
+                    a.download = 'contact.vfc';
+
+                    // Simulate a click event to trigger the download
+                    a.click();
+
+                    // Clean up
+                    window.URL.revokeObjectURL(a.href);
+                    document.body.removeChild(a);
+                }
+            });
+        });
+
+
         // Initialize Slick Slider
         $(document).ready(function() {
             $(".slick-slider").slick({
