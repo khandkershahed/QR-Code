@@ -777,11 +777,87 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script>
         // JavaScript to handle button click
+        // document.querySelectorAll('.nfc_contact_btn').forEach(function(button) {
+        //     button.addEventListener('click', function(event) {
+        //         event.preventDefault(); // Prevent default link behavior
+
+        //         var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+        //         if (isMobile) {
+        //             // Mobile device, open contact saving options
+        //             var name =
+        //                 '{{ optional($nfc_card->nfcData)->first_name }} {{ optional($nfc_card->nfcData)->last_name }}';
+        //             var mobileNumber = '{{ $nfc_card->nfcData->phone_personal }}';
+        //             var email = '{{ $nfc_card->nfcData->email_personal }}';
+        //             var facebook = '{{ $nfc_card->nfcData->facebook_url }}';
+        //             var instagram = '{{ $nfc_card->nfcData->instagram_url }}';
+        //             var youtube = '{{ $nfc_card->nfcData->youtube_url }}';
+        //             var googlePlus = '{{ $nfc_card->nfcData->google_plus_url }}';
+
+        //             // Construct the contact details
+        //             var contactDetails = "BEGIN:VCARD\n" +
+        //                 "VERSION:3.0\n" +
+        //                 "FN:" + name + "\n" +
+        //                 "TEL;TYPE=CELL:" + mobileNumber + "\n" +
+        //                 "EMAIL:" + email + "\n" +
+        //                 "URL:" + facebook + "\n" +
+        //                 "X-SOCIALPROFILE:facebook:" + facebook + "\n" +
+        //                 "X-SOCIALPROFILE:instagram:" + instagram + "\n" +
+        //                 "X-SOCIALPROFILE:youtube:" + youtube + "\n" +
+        //                 "X-SOCIALPROFILE:googleplus:" + googlePlus + "\n" +
+        //                 "END:VCARD";
+
+        //             // Encode the contact details for URI
+        //             var encodedContact = encodeURIComponent(contactDetails);
+
+        //             // Open the appropriate URI for saving contacts
+        //             var uri = 'data:text/vcard;charset=utf-8,' + encodedContact;
+        //             window.open(uri);
+
+        //         } else {
+        //             // Desktop, generate .vfc file and initiate download
+        //             var name =
+        //                 '{{ optional($nfc_card->nfcData)->first_name }} {{ optional($nfc_card->nfcData)->last_name }}';
+        //             var mobileNumber = '{{ $nfc_card->nfcData->phone_personal }}';
+
+        //             // Construct the .vfc file content
+        //             var vfcContent = "BEGIN:VCARD\n" +
+        //                 "VERSION:3.0\n" +
+        //                 "FN:" + name + "\n" +
+        //                 "TEL;TYPE=CELL:" + mobileNumber + "\n" +
+        //                 "END:VCARD";
+
+        //             // Create a Blob object containing the .vfc file content
+        //             var blob = new Blob([vfcContent], {
+        //                 type: 'text/vcard;charset=utf-8'
+        //             });
+
+        //             // Create a temporary anchor element
+        //             var a = document.createElement('a');
+        //             a.style.display = 'none';
+        //             document.body.appendChild(a);
+
+        //             // Set the href attribute of the anchor element to the Object URL of the Blob
+        //             a.href = window.URL.createObjectURL(blob);
+
+        //             // Set the download attribute to specify the filename
+        //             a.download = 'contact.vfc';
+
+        //             // Simulate a click event to trigger the download
+        //             a.click();
+
+        //             // Clean up
+        //             window.URL.revokeObjectURL(a.href);
+        //             document.body.removeChild(a);
+        //         }
+        //     });
+        // });
         document.querySelectorAll('.nfc_contact_btn').forEach(function(button) {
             button.addEventListener('click', function(event) {
                 event.preventDefault(); // Prevent default link behavior
 
-                var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+                var isMobile = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator
+                    .msMaxTouchPoints > 0);
 
                 if (isMobile) {
                     // Mobile device, open contact saving options
@@ -794,21 +870,38 @@
                     var youtube = '{{ $nfc_card->nfcData->youtube_url }}';
                     var googlePlus = '{{ $nfc_card->nfcData->google_plus_url }}';
 
-                    // Construct the contact details
-                    var contactDetails = "BEGIN:VCARD\n" +
+                    // Construct the contact details for vCard (VCARD)
+                    var vfcContent = "BEGIN:VCARD\n" +
                         "VERSION:3.0\n" +
                         "FN:" + name + "\n" +
-                        "TEL;TYPE=CELL:" + mobileNumber + "\n" +
-                        "EMAIL:" + email + "\n" +
-                        "URL:" + facebook + "\n" +
-                        "X-SOCIALPROFILE:facebook:" + facebook + "\n" +
-                        "X-SOCIALPROFILE:instagram:" + instagram + "\n" +
-                        "X-SOCIALPROFILE:youtube:" + youtube + "\n" +
-                        "X-SOCIALPROFILE:googleplus:" + googlePlus + "\n" +
-                        "END:VCARD";
+                        "TEL;TYPE=CELL:" + mobileNumber + "\n";
+
+                    // Add optional fields if they exist
+                    if (email.trim() !== '') {
+                        vfcContent += "EMAIL;TYPE=INTERNET:" + email + "\n";
+                    }
+
+                    if (facebook.trim() !== '') {
+                        vfcContent += "X-SOCIALPROFILE;TYPE=facebook:" + facebook + "\n";
+                    }
+
+                    if (instagram.trim() !== '') {
+                        vfcContent += "X-SOCIALPROFILE;TYPE=instagram:" + instagram + "\n";
+                    }
+
+                    if (youtube.trim() !== '') {
+                        vfcContent += "X-SOCIALPROFILE;TYPE=youtube:" + youtube + "\n";
+                    }
+
+                    if (googlePlus.trim() !== '') {
+                        vfcContent += "X-SOCIALPROFILE;TYPE=googleplus:" + googlePlus + "\n";
+                    }
+
+                    // Close the vCard
+                    vfcContent += "END:VCARD";
 
                     // Encode the contact details for URI
-                    var encodedContact = encodeURIComponent(contactDetails);
+                    var encodedContact = encodeURIComponent(vfcContent);
 
                     // Open the appropriate URI for saving contacts
                     var uri = 'data:text/vcard;charset=utf-8,' + encodedContact;
@@ -819,13 +912,41 @@
                     var name =
                         '{{ optional($nfc_card->nfcData)->first_name }} {{ optional($nfc_card->nfcData)->last_name }}';
                     var mobileNumber = '{{ $nfc_card->nfcData->phone_personal }}';
+                    var email = '{{ $nfc_card->nfcData->email_personal }}';
+                    var facebook = '{{ $nfc_card->nfcData->facebook_url }}';
+                    var instagram = '{{ $nfc_card->nfcData->instagram_url }}';
+                    var youtube = '{{ $nfc_card->nfcData->youtube_url }}';
+                    var googlePlus = '{{ $nfc_card->nfcData->google_plus_url }}';
 
                     // Construct the .vfc file content
                     var vfcContent = "BEGIN:VCARD\n" +
                         "VERSION:3.0\n" +
                         "FN:" + name + "\n" +
-                        "TEL;TYPE=CELL:" + mobileNumber + "\n" +
-                        "END:VCARD";
+                        "TEL;TYPE=CELL:" + mobileNumber + "\n";
+
+                    // Add optional fields if they exist
+                    if (email.trim() !== '') {
+                        vfcContent += "EMAIL;TYPE=INTERNET:" + email + "\n";
+                    }
+
+                    if (facebook.trim() !== '') {
+                        vfcContent += "X-SOCIALPROFILE;TYPE=facebook:" + facebook + "\n";
+                    }
+
+                    if (instagram.trim() !== '') {
+                        vfcContent += "X-SOCIALPROFILE;TYPE=instagram:" + instagram + "\n";
+                    }
+
+                    if (youtube.trim() !== '') {
+                        vfcContent += "X-SOCIALPROFILE;TYPE=youtube:" + youtube + "\n";
+                    }
+
+                    if (googlePlus.trim() !== '') {
+                        vfcContent += "X-SOCIALPROFILE;TYPE=googleplus:" + googlePlus + "\n";
+                    }
+
+                    // Close the vCard
+                    vfcContent += "END:VCARD";
 
                     // Create a Blob object containing the .vfc file content
                     var blob = new Blob([vfcContent], {
@@ -841,7 +962,7 @@
                     a.href = window.URL.createObjectURL(blob);
 
                     // Set the download attribute to specify the filename
-                    a.download = 'contact.vfc';
+                    a.download = 'contact.vcf';
 
                     // Simulate a click event to trigger the download
                     a.click();
