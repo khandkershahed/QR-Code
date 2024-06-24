@@ -225,7 +225,7 @@ class QrCodeController extends Controller
 
         $typePrefix = 'QR'; // Example prefix
         $today = date('dmY');
-        $userId = $isUserRoute ? Auth::user()->id : null;
+        $userId = $isUserRoute ? Auth::user()->id : Auth::guard('admin')->user()->id;
 
         // Find the last QR code generated for this user today
         $lastCode = Qr::where('code', 'like', $typePrefix . $today . $userId . '%')
@@ -1339,7 +1339,7 @@ class QrCodeController extends Controller
         $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
         $typePrefix = 'QR'; // Example prefix
         $today = date('dmY');
-        $userId = $userId = $isUserRoute ? Auth::user()->id : Auth::guard('admin')->user()->id;;
+        $userId = $isUserRoute ? Auth::user()->id : Auth::guard('admin')->user()->id;
 
         // Find the last QR code generated for this user today
         $lastCode = Qr::where('code', 'like', $typePrefix . $today . $userId . '%')
