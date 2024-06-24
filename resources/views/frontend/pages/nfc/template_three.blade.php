@@ -881,7 +881,7 @@
                     var instagram = '{{ $nfc_card->nfcData->instagram_url }}';
                     var youtube = '{{ $nfc_card->nfcData->youtube_url }}';
                     var googlePlus = '{{ $nfc_card->nfcData->google_plus_url }}';
-
+                    alert("mobile"):
                     // Construct the contact details for vCard (VCARD)
                     var vfcContent = "BEGIN:VCARD\n" +
                         "VERSION:3.0\n" +
@@ -917,7 +917,6 @@
 
                     // Open the data URI in a new tab (may prompt user to add contact)
                     window.open('data:text/vcard;charset=utf-8,' + encodedContact, '_blank');
-
                 } else {
                     // Desktop, generate .vfc file and initiate download
                     var name =
