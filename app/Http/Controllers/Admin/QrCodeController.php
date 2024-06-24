@@ -1248,7 +1248,7 @@ class QrCodeController extends Controller
                 } elseif ($qr_pattern == 'square_0.9') {
                     $qrCode->style('square', 0.7);
                 } else {
-                    $qrCode->style($qr_pattern);
+                    $qrCode->style($qr_pattern, 0.7);
                 }
             }
             if (!empty($qr_color_type)) {
@@ -1481,7 +1481,7 @@ class QrCodeController extends Controller
             } elseif ($qr_pattern == 'square_0.9') {
                 $qrCode->style('square', 0.8);
             } else {
-                $qrCode->style($qr_pattern, 0.5);
+                $qrCode->style($qr_pattern, 0.8);
             }
         }
         if (!empty($qr_color_type)) {
