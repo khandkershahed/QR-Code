@@ -121,14 +121,14 @@
                                     <td>
                                         <a href="{{ $nfc_card->nfc_url }}" target="_blank" class="text-primary">
                                             <button class="btn btn-sm btn-info">NFC <i
-                                                    class="fa-solid fa-link ps-2"></i></button>
+                                                    class="fas fa-link ps-2"></i></button>
                                         </a>
                                     </td>
                                     <td>
                                         <a href="javascript:void(0)" data-bs-toggle="modal"
                                             data-bs-target="#virtual_card_modal_{{ $nfc_card->id }}"
                                             class="text-primary">
-                                            <button class="btn btn-sm btn-info"><i class="fa-regular fa-eye pe-2"></i>
+                                            <button class="btn btn-sm btn-info"><i class="fas fa-eye pe-2"></i>
                                                 CARD</button>
                                         </a>
                                     </td>
@@ -136,7 +136,7 @@
                                         <a href="javascript:void(0)" data-bs-toggle="modal"
                                             data-bs-target="#shipping_address_modal_{{ $nfc_card->id }}"
                                             class="text-primary">
-                                            <button class="btn btn-sm btn-info"><i class="fa-regular fa-eye pe-2"></i>
+                                            <button class="btn btn-sm btn-info"><i class="fas fa-eye pe-2"></i>
                                                 Shipping</button>
                                         </a>
                                     </td>
@@ -429,13 +429,13 @@
                                                                     <span
                                                                         class="card_phone">{{ optional($nfc_card->virtualCard)->card_phone }}</span>
                                                                     <i
-                                                                        class="fa-solid fa-phone tem-one-main-color "></i>
+                                                                        class="fas fa-phone tem-one-main-color "></i>
                                                                 </p>
                                                                 <p class="fw-bold mb-0">
                                                                     <span
                                                                         class="card_email">{{ optional($nfc_card->virtualCard)->card_email }}</span>
                                                                     <i
-                                                                        class="fa-solid fa-envelope tem-one-main-color "></i>
+                                                                        class="fas fa-envelope tem-one-main-color "></i>
                                                                 </p>
                                                             </div>
                                                             <div>
@@ -443,7 +443,7 @@
                                                                     <span
                                                                         class="card_address">{{ optional($nfc_card->virtualCard)->card_address }}</span>
                                                                     <i
-                                                                        class="fa-solid fa-map-marker-alt tem-one-main-color"></i>
+                                                                        class="fas fa-map-marker-alt tem-one-main-color"></i>
                                                                 </p>
                                                             </div>
                                                         </div>
@@ -463,7 +463,7 @@
                                                         class="col-12 d-flex justify-content-center align-items-center">
                                                         <p class="fw-bold mb-0 card-mail-one text-white"
                                                             style="padding-top: 2.5rem;"><i
-                                                                class="fa-solid fa-envelope text-white"></i>
+                                                                class="fas fa-envelope text-white"></i>
                                                             goFlixza@gmail.com</p>
                                                     </div>
                                                 </div>
@@ -493,17 +493,17 @@
                                                             <div class="title-devider mt-2"></div>
                                                             <div class="contact-info">
                                                                 <p class="fw-bold text-white pt-3 mb-0">
-                                                                    <i class="fa-solid fa-phone"></i> <span
+                                                                    <i class="fas fa-phone"></i> <span
                                                                         class="card_phone">{{ optional($nfc_card->virtualCard)->card_phone }}</span>
                                                                 </p>
                                                                 <p class="fw-bold text-white mb-0">
-                                                                    <i class="fa-solid fa-envelope"></i> <span
+                                                                    <i class="fas fa-envelope"></i> <span
                                                                         class="card_email">{{ optional($nfc_card->virtualCard)->card_email }}</span>
                                                                 </p>
                                                             </div>
                                                             <div>
                                                                 <p class="fw-bold mb-0 text-white">
-                                                                    <i class="fa-solid fa-map-marker-alt"></i> <span
+                                                                    <i class="fas fa-map-marker-alt"></i> <span
                                                                         class="card_address">{{ optional($nfc_card->virtualCard)->card_address }}</span>
                                                                 </p>
                                                             </div>
@@ -551,17 +551,17 @@
                                                             <hr class="title-divider mt-2" />
                                                             <div>
                                                                 <p class="fw-bold text-white pt-3 mb-0">
-                                                                    <i class="fa-solid fa-phone"></i> <span
+                                                                    <i class="fas fa-phone"></i> <span
                                                                         class="card_phone card_font_color">{{ optional($nfc_card->virtualCard)->card_phone }}</span>
                                                                 </p>
                                                                 <p class="fw-bold text-white mb-0">
-                                                                    <i class="fa-solid fa-envelope"></i> <span
+                                                                    <i class="fas fa-envelope"></i> <span
                                                                         class="card_email card_font_color">{{ optional($nfc_card->virtualCard)->card_email }}</span>
                                                                 </p>
                                                             </div>
                                                             <div>
                                                                 <p class="fw-bold mb-0 text-white">
-                                                                    <i class="fa-solid fa-map-marker-alt"></i> <span
+                                                                    <i class="fas fa-map-marker-alt"></i> <span
                                                                         class="card_address card_font_color">{{ optional($nfc_card->virtualCard)->card_address }}</span>
                                                                 </p>
                                                             </div>
@@ -629,17 +629,17 @@
                                                             </div>
                                                             <div>
                                                                 <p class="fw-bold text-white pt-3 mb-0">
-                                                                    <i class="fa-solid fa-phone"></i> <span
+                                                                    <i class="fas fa-phone"></i> <span
                                                                         class="card_phone">{{ optional($nfc_card->virtualCard)->card_phone }}</span>
                                                                 </p>
                                                                 <p class="fw-bold text-white mb-0">
-                                                                    <i class="fa-solid fa-envelope"></i> <span
+                                                                    <i class="fas fa-envelope"></i> <span
                                                                         class="card_email">{{ optional($nfc_card->virtualCard)->card_email }}</span>
                                                                 </p>
                                                             </div>
                                                             <div>
                                                                 <p class="fw-bold mb-0 text-white">
-                                                                    <i class="fa-solid fa-map-marker-alt"></i> <span
+                                                                    <i class="fas fa-map-marker-alt"></i> <span
                                                                         class="card_address">{{ optional($nfc_card->virtualCard)->card_address }}</span>
                                                                 </p>
                                                             </div>
@@ -705,19 +705,19 @@
                                                                 <p class="fw-bold pt-3 mb-0" style="color: #D19A26">
                                                                     <span
                                                                         class="card_phone">{{ optional($nfc_card->virtualCard)->card_phone }}</span>
-                                                                    <i class="fa-solid fa-phone"></i>
+                                                                    <i class="fas fa-phone"></i>
                                                                 </p>
                                                                 <p class="fw-bold mb-4" style="color: #D19A26">
                                                                     <span
                                                                         class="card_email">{{ optional($nfc_card->virtualCard)->card_email }}</span>
-                                                                    <i class="fa-solid fa-envelope"></i>
+                                                                    <i class="fas fa-envelope"></i>
                                                                 </p>
                                                             </div>
                                                             <div>
                                                                 <p class="fw-bold mb-0" style="color: #D19A26">
                                                                     <span
                                                                         class="card_address">{{ optional($nfc_card->virtualCard)->card_address }}</span>
-                                                                    <i class="fa-solid fa-map-marker-alt"></i>
+                                                                    <i class="fas fa-map-marker-alt"></i>
                                                                 </p>
                                                                 {{-- <p class="fw-bold mb-0" style="color: #D19A26">
                                                                 -Downtown Dubia-Dubai- United Arab Emirates
@@ -761,17 +761,17 @@
                                                             </div>
                                                             <div>
                                                                 <p class="fw-bold text-white pt-3 mb-0">
-                                                                    <i class="fa-solid fa-phone pe-2"></i> <span
+                                                                    <i class="fas fa-phone pe-2"></i> <span
                                                                         class="card_phone">{{ optional($nfc_card->virtualCard)->card_phone }}</span>
                                                                 </p>
                                                                 <p class="fw-bold text-white mb-0">
-                                                                    <i class="fa-solid fa-envelope pe-2"></i> <span
+                                                                    <i class="fas fa-envelope pe-2"></i> <span
                                                                         class="card_email">{{ optional($nfc_card->virtualCard)->card_email }}</span>
                                                                 </p>
                                                             </div>
                                                             <div>
                                                                 <p class="fw-bold mb-0 text-white">
-                                                                    <i class="fa-solid fa-map-marker-alt pe-2"></i>
+                                                                    <i class="fas fa-map-marker-alt pe-2"></i>
                                                                     <span
                                                                         class="card_address">{{ optional($nfc_card->virtualCard)->card_address }}</span>
                                                                 </p>
@@ -837,18 +837,18 @@
                                                             </p>
                                                             <div>
                                                                 <p class="fw-bold text-white pt-3 mb-0">
-                                                                    <i class="fa-solid fa-phone pe-2"></i> <span
+                                                                    <i class="fas fa-phone pe-2"></i> <span
                                                                         class="card_phone">{{ optional($nfc_card->virtualCard)->card_phone }}</span>
                                                                 </p>
                                                                 <p class="fw-bold text-white mb-0">
-                                                                    <i class="fa-solid fa-envelope pe-2 mb-3"></i>
+                                                                    <i class="fas fa-envelope pe-2 mb-3"></i>
                                                                     <span
                                                                         class="card_email">{{ optional($nfc_card->virtualCard)->card_email }}</span>
                                                                 </p>
                                                             </div>
                                                             <div>
                                                                 <p class="fw-bold mb-0 text-white">
-                                                                    <i class="fa-solid fa-map-marker-alt pe-2"></i>
+                                                                    <i class="fas fa-map-marker-alt pe-2"></i>
                                                                     <span
                                                                         class="card_address">{{ optional($nfc_card->virtualCard)->card_address }}</span>
                                                                 </p>
@@ -907,18 +907,18 @@
                                                             </p>
                                                             <div>
                                                                 <p class="fw-bold text-white pt-3 mb-0">
-                                                                    <i class="fa-solid fa-phone pe-2"></i> <span
+                                                                    <i class="fas fa-phone pe-2"></i> <span
                                                                         class="card_phone">{{ optional($nfc_card->virtualCard)->card_phone }}</span>
                                                                 </p>
                                                                 <p class="fw-bold text-white mb-0">
-                                                                    <i class="fa-solid fa-envelope pe-2 mb-3"></i>
+                                                                    <i class="fas fa-envelope pe-2 mb-3"></i>
                                                                     <span
                                                                         class="card_email">{{ optional($nfc_card->virtualCard)->card_email }}</span>
                                                                 </p>
                                                             </div>
                                                             <div>
                                                                 <p class="fw-bold mb-0 text-white">
-                                                                    <i class="fa-solid fa-map-marker-alt pe-2"></i>
+                                                                    <i class="fas fa-map-marker-alt pe-2"></i>
                                                                     <span
                                                                         class="card_address">{{ optional($nfc_card->virtualCard)->card_address }}</span>
                                                                 </p>
