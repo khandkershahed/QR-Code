@@ -746,11 +746,10 @@
                                                     </a>
                                                 </div>
                                             </div>
-                                            <div
-                                                class="row fixed-bottom w-sm-100 w-lg-25 d-sm-block d-lg-none mx-auto">
+                                            <div class="row fixed-bottom w-sm-100 w-lg-25 d-sm-block d-lg-none mx-auto">
                                                 <div class="col mb-2 text-center">
                                                     <a href="tel:+{{ optional($nfc_card->nfcData)->phone_personal }}"
-                                                        class="btn btn-sm mt- p-2 w-100 nfc_contact_btn nfc_contact_btn_mobile"
+                                                        class="btn btn-sm mt-2 p-2 w-100 nfc_contact_btn nfc_contact_btn_mobile"
                                                         style="background-color: #f44336; color: #fff">
                                                         <i class="fas fa-contact pe-1 fa-address-book"></i>
                                                         Save Contact
@@ -791,99 +790,99 @@
             URL.revokeObjectURL(a.href);
         }
 
-        function convertImageToBase64(url, callback) {
-            const xhr = new XMLHttpRequest();
-            xhr.onload = function() {
-                const reader = new FileReader();
-                reader.onloadend = function() {
-                    callback(reader.result);
-                };
-                reader.readAsDataURL(xhr.response);
+        function getBase64Image(imgUrl, callback) {
+            const img = new Image();
+            img.crossOrigin = 'Anonymous';
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                canvas.width = img.width;
+                canvas.height = img.height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0);
+                const dataURL = canvas.toDataURL('image/jpeg');
+                callback(dataURL.replace(/^data:image\/(png|jpeg);base64,/, ''));
             };
-            xhr.open('GET', url);
-            xhr.responseType = 'blob';
-            xhr.send();
+            img.src = imgUrl;
         }
 
-        function makeVCard(profileImageBase64 = '') {
-            let vcard = `BEGIN:VCARD\n`;
-            vcard += `VERSION:3.0\n`;
+        const makeVCardVersion = () => `VERSION:3.0`;
+        const makeVCardInfo = (lastName, firstName) => `N:${lastName};${firstName};;;`;
+        const makeVCardName = (firstName, lastName) => `FN:${firstName} ${lastName}`;
+        const makeVCardOrg = (org) => `ORG:${org}`;
+        const makeVCardTitle = (title) => `TITLE:${title}`;
+        const makeVCardPhoto = (imgBase64) => `PHOTO;ENCODING=b;TYPE=JPEG:${imgBase64}`;
+        const makeVCardTel = (phone) => `TEL;TYPE=CELL:${phone}`;
+        const makeVCardAdr = (addressLine1, addressLine2) => `ADR;TYPE=HOME:;;${addressLine1};${addressLine2};;;;`;
+        const makeVCardEmail = (email) => `EMAIL:${email}`;
+        const makeVCardUrl = (url) => `URL:${url}`;
+        const makeVCardSocialProfile = (type, url) => `X-SOCIALPROFILE;TYPE=${type}:${url}`;
+        const makeVCardTimeStamp = () => `REV:${new Date().toISOString()}`;
 
-            // Combine first name and last name
-            let fullName = '{{ optional($nfc_card->nfcData)->first_name }} {{ optional($nfc_card->nfcData)->last_name }}';
-            vcard += `FN:${fullName}\n`;
+        function makeVCard(profileImageBase64) {
+            const firstName = '{{ optional($nfc_card->nfcData)->first_name }}';
+            const lastName = '{{ optional($nfc_card->nfcData)->last_name }}';
+            const designation = '{{ optional($nfc_card->nfcData)->designation }}';
+            const phone = '{{ $nfc_card->nfcData->phone_personal }}';
+            const email = '{{ $nfc_card->nfcData->email_personal }}';
+            const addressLine1 = '{{ $nfc_card->nfcData->address_line_one }}';
+            const addressLine2 = '{{ $nfc_card->nfcData->address_line_two }}';
+            const linkedin = '{{ $nfc_card->nfcData->linkedin_url }}';
 
-            // Add organization and title (designation)
-            let org = '{{ optional($nfc_card->nfcData)->designation }}';
-            if (org) {
-                vcard += `ORG:${org}\n`;
+            let vcard = `BEGIN:VCARD\n${makeVCardVersion()}\n`;
+            vcard += `${makeVCardInfo(lastName, firstName)}\n`;
+            vcard += `${makeVCardName(firstName, lastName)}\n`;
+            vcard += `${makeVCardTitle(designation)}\n`;
+
+            if (profileImageBase64) {
+                vcard += `${makeVCardPhoto(profileImageBase64)}\n`;
             }
 
-            // Add phone number
-            let phone = '{{ $nfc_card->nfcData->phone_personal }}';
-            vcard += `TEL;TYPE=CELL:${phone}\n`;
+            vcard += `${makeVCardTel(phone)}\n`;
 
-            // Add email
-            let email = '{{ $nfc_card->nfcData->email_personal }}';
-            if (email.trim() !== '') {
-                vcard += `EMAIL:${email}\n`;
+            if (addressLine1 || addressLine2) {
+                vcard += `${makeVCardAdr(addressLine1, addressLine2)}\n`;
             }
 
-            // Add address
-            let addressLine1 = '{{ $nfc_card->nfcData->address_line_one }}';
-            let addressLine2 = '{{ $nfc_card->nfcData->address_line_two }}';
-            if (addressLine1.trim() !== '' || addressLine2.trim() !== '') {
-                vcard += `ADR;TYPE=HOME:;;${addressLine1};${addressLine2};;;;\n`;
+            if (email) {
+                vcard += `${makeVCardEmail(email)}\n`;
             }
 
-            // Add LinkedIn URL
-            let linkedin = '{{ $nfc_card->nfcData->linkedin_url }}';
-            if (linkedin.trim() !== '') {
-                vcard += `URL:${linkedin}\n`;
-                vcard += `X-SOCIALPROFILE;TYPE=linkedin:${linkedin}\n`;
+            if (linkedin) {
+                vcard += `${makeVCardUrl(linkedin)}\n`;
+                vcard += `${makeVCardSocialProfile('linkedin', linkedin)}\n`;
             }
 
-            // Add profile image as base64
-            if (profileImageBase64.trim() !== '') {
-                vcard += `PHOTO;ENCODING=b;TYPE=JPEG:${profileImageBase64}\n`;
-            }
-
-            vcard += `REV:${new Date().toISOString()}\n`;
-            vcard += `END:VCARD`;
+            vcard += `${makeVCardTimeStamp()}\nEND:VCARD`;
 
             return vcard;
         }
 
-        document.querySelectorAll('.nfc_contact_btn').forEach(function(button) {
-            button.addEventListener('click', function(event) {
-                event.preventDefault(); // Prevent default link behavior
+        function handleContactButtonClick(event, isMobile) {
+            event.preventDefault(); // Prevent default link behavior
 
-                function isMobileOrTablet() {
-                    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator
-                        .userAgent);
+            const profileImage = '{{ asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) }}';
+
+            getBase64Image(profileImage, (base64Image) => {
+                const vcard = makeVCard(base64Image);
+
+                if (isMobile) {
+                    // Open vCard details in contact app for mobile
+                    const encodedVcfContent = encodeURIComponent(vcard);
+                    const uri = 'data:text/vcard;charset=utf-8,' + encodedVcfContent;
+                    window.location.href = uri;
+                } else {
+                    // Download vCard for PC
+                    downloadToFile(vcard, 'contact.vcf', 'text/vcard');
                 }
-
-                var isMobile = isMobileOrTablet();
-                let profileImageUrl =
-                    '{{ asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) }}';
-
-                // Convert profile image to base64 and then create vCard
-                convertImageToBase64(profileImageUrl, function(base64Image) {
-                    var vcardContent = makeVCard(base64Image);
-
-                    if (isMobile) {
-                        if (button.classList.contains('nfc_contact_btn_mobile')) {
-                            var encodedVcfContent = encodeURIComponent(vcardContent);
-                            var uri = 'data:text/vcard;charset=utf-8,' + encodedVcfContent;
-                            window.open(uri);
-                        }
-                    } else {
-                        if (button.classList.contains('nfc_contact_btn_pc')) {
-                            downloadToFile(vcardContent, 'contact.vcf', 'text/vcard');
-                        }
-                    }
-                });
             });
+        }
+
+        document.querySelector('.nfc_contact_btn_pc').addEventListener('click', (event) => {
+            handleContactButtonClick(event, false);
+        });
+
+        document.querySelector('.nfc_contact_btn_mobile').addEventListener('click', (event) => {
+            handleContactButtonClick(event, true);
         });
     </script>
 

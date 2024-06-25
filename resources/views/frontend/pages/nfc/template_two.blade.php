@@ -23,8 +23,8 @@
         :root {
             @if ($nfc_card->font_family == 'bebas_neue')
                 --body-font-family: "Bebas Neue", sans-serif !important;
-            @elseif ($nfc_card->font_family == 'raleway')
-                --body-font-family: "Raleway", sans-serif !important;
+            @elseif
+                ($nfc_card->font_family == 'raleway') --body-font-family: "Raleway", sans-serif !important;
             @endif
             --white: #fff;
             --tem-two-name-color: #fff;
@@ -328,7 +328,10 @@
                                         </p>
                                     </div>
                                     <!-- Service -->
-                                    @if (!empty($nfc_card->nfcData->service_one_image) || !empty($nfc_card->nfcData->service_two_image) || !empty($nfc_card->nfcData->service_three_image))
+                                    @if (
+                                        !empty($nfc_card->nfcData->service_one_image) ||
+                                            !empty($nfc_card->nfcData->service_two_image) ||
+                                            !empty($nfc_card->nfcData->service_three_image))
                                         <div class="tem-two-service-box px-3 py-4">
                                             <h6 class="tem-two-service-title">
                                                 {{ optional($nfc_card->nfcData)->service_section_title }}</h6>
@@ -500,14 +503,31 @@
                                                     Scan Me
                                                 </h6>
                                                 <div class="d-flex justify-content-center">
-                                                    <img class="" width="200px" src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
+                                                    <img class="" width="200px"
+                                                        src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
                                                         alt="" />
                                                 </div>
                                             </div>
                                         @endif
-                                        <div class="sticky-bottom mt-5">
-                                            <a href="tel:+{{ optional($nfc_card->nfcData)->phone_personal }}"
-                                                class="btn-primary btn w-100 nfc_contact_btn">Connect Now</a>
+                                        <div class="row fixed-bottom w-25 mx-auto mobile-d-none">
+                                            <div class="col mb-2 text-center">
+                                                <a href="tel:+{{ optional($nfc_card->nfcData)->phone_personal }}"
+                                                    class="btn btn-sm mt-2 p-2 w-100 nfc_contact_btn nfc_contact_btn_pc"
+                                                    style="background-color: #f44336; color: #fff">
+                                                    <i class="fas fa-contact pe-1 fa-address-book"></i>
+                                                    Save Contact
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="row fixed-bottom w-sm-100 w-lg-25 d-sm-block d-lg-none mx-auto">
+                                            <div class="col mb-2 text-center">
+                                                <a href="tel:+{{ optional($nfc_card->nfcData)->phone_personal }}"
+                                                    class="btn btn-sm mt-2 p-2 w-100 nfc_contact_btn nfc_contact_btn_mobile"
+                                                    style="background-color: #f44336; color: #fff">
+                                                    <i class="fas fa-contact pe-1 fa-address-book"></i>
+                                                    Save Contact
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -536,6 +556,117 @@
                 draggable: false,
                 autoplaySpeed: 2000, // Adjust autoplay speed in milliseconds
             });
+        });
+    </script>
+    <script>
+        'use strict';
+
+        function downloadToFile(content, filename, contentType) {
+            const a = document.createElement('a');
+            const file = new Blob([content], {
+                type: contentType
+            });
+
+            a.href = URL.createObjectURL(file);
+            a.download = filename;
+            a.click();
+
+            URL.revokeObjectURL(a.href);
+        }
+
+        function getBase64Image(imgUrl, callback) {
+            const img = new Image();
+            img.crossOrigin = 'Anonymous';
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                canvas.width = img.width;
+                canvas.height = img.height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0);
+                const dataURL = canvas.toDataURL('image/jpeg');
+                callback(dataURL.replace(/^data:image\/(png|jpeg);base64,/, ''));
+            };
+            img.src = imgUrl;
+        }
+
+        const makeVCardVersion = () => `VERSION:3.0`;
+        const makeVCardInfo = (lastName, firstName) => `N:${lastName};${firstName};;;`;
+        const makeVCardName = (firstName, lastName) => `FN:${firstName} ${lastName}`;
+        const makeVCardOrg = (org) => `ORG:${org}`;
+        const makeVCardTitle = (title) => `TITLE:${title}`;
+        const makeVCardPhoto = (imgBase64) => `PHOTO;ENCODING=b;TYPE=JPEG:${imgBase64}`;
+        const makeVCardTel = (phone) => `TEL;TYPE=CELL:${phone}`;
+        const makeVCardAdr = (addressLine1, addressLine2) => `ADR;TYPE=HOME:;;${addressLine1};${addressLine2};;;;`;
+        const makeVCardEmail = (email) => `EMAIL:${email}`;
+        const makeVCardUrl = (url) => `URL:${url}`;
+        const makeVCardSocialProfile = (type, url) => `X-SOCIALPROFILE;TYPE=${type}:${url}`;
+        const makeVCardTimeStamp = () => `REV:${new Date().toISOString()}`;
+
+        function makeVCard(profileImageBase64) {
+            const firstName = '{{ optional($nfc_card->nfcData)->first_name }}';
+            const lastName = '{{ optional($nfc_card->nfcData)->last_name }}';
+            const designation = '{{ optional($nfc_card->nfcData)->designation }}';
+            const phone = '{{ $nfc_card->nfcData->phone_personal }}';
+            const email = '{{ $nfc_card->nfcData->email_personal }}';
+            const addressLine1 = '{{ $nfc_card->nfcData->address_line_one }}';
+            const addressLine2 = '{{ $nfc_card->nfcData->address_line_two }}';
+            const linkedin = '{{ $nfc_card->nfcData->linkedin_url }}';
+
+            let vcard = `BEGIN:VCARD\n${makeVCardVersion()}\n`;
+            vcard += `${makeVCardInfo(lastName, firstName)}\n`;
+            vcard += `${makeVCardName(firstName, lastName)}\n`;
+            vcard += `${makeVCardTitle(designation)}\n`;
+
+            if (profileImageBase64) {
+                vcard += `${makeVCardPhoto(profileImageBase64)}\n`;
+            }
+
+            vcard += `${makeVCardTel(phone)}\n`;
+
+            if (addressLine1 || addressLine2) {
+                vcard += `${makeVCardAdr(addressLine1, addressLine2)}\n`;
+            }
+
+            if (email) {
+                vcard += `${makeVCardEmail(email)}\n`;
+            }
+
+            if (linkedin) {
+                vcard += `${makeVCardUrl(linkedin)}\n`;
+                vcard += `${makeVCardSocialProfile('linkedin', linkedin)}\n`;
+            }
+
+            vcard += `${makeVCardTimeStamp()}\nEND:VCARD`;
+
+            return vcard;
+        }
+
+        function handleContactButtonClick(event, isMobile) {
+            event.preventDefault(); // Prevent default link behavior
+
+            const profileImage = '{{ asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) }}';
+
+            getBase64Image(profileImage, (base64Image) => {
+                const vcard = makeVCard(base64Image);
+
+                if (isMobile) {
+                    // Open vCard details in contact app for mobile
+                    const encodedVcfContent = encodeURIComponent(vcard);
+                    const uri = 'data:text/vcard;charset=utf-8,' + encodedVcfContent;
+                    window.location.href = uri;
+                } else {
+                    // Download vCard for PC
+                    downloadToFile(vcard, 'contact.vcf', 'text/vcard');
+                }
+            });
+        }
+
+        document.querySelector('.nfc_contact_btn_pc').addEventListener('click', (event) => {
+            handleContactButtonClick(event, false);
+        });
+
+        document.querySelector('.nfc_contact_btn_mobile').addEventListener('click', (event) => {
+            handleContactButtonClick(event, true);
         });
     </script>
 </body>

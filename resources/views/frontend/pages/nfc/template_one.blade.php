@@ -623,15 +623,8 @@
             return vcard;
         }
 
-        function handleContactButtonClick(event) {
+        function handleContactButtonClick(event, isMobile) {
             event.preventDefault(); // Prevent default link behavior
-
-            function isMobileOrTablet() {
-                // Check for iOS, Android, and common mobile/tablet user agents
-                return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            }
-
-            const isMobile = isMobileOrTablet();
 
             const profileImage = '{{ asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) }}';
 
@@ -650,8 +643,12 @@
             });
         }
 
-        document.querySelectorAll('.nfc_contact_btn').forEach(button => {
-            button.addEventListener('click', handleContactButtonClick);
+        document.querySelector('.nfc_contact_btn_pc').addEventListener('click', (event) => {
+            handleContactButtonClick(event, false);
+        });
+
+        document.querySelector('.nfc_contact_btn_mobile').addEventListener('click', (event) => {
+            handleContactButtonClick(event, true);
         });
     </script>
 </body>

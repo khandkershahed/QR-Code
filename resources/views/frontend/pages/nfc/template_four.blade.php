@@ -32,8 +32,10 @@
             --white: #fff;
             --tem-one-name-color: #fff;
             --tem-one-name-font-size: 40px;
-            --tem-one-name-font-family: "Bebas Neue", sans-serif;
-            --tem-one-designation-font-family: "Raleway", sans-serif;
+            --tem-one-name-font-family: "Bebas Neue",
+            sans-serif;
+            --tem-one-designation-font-family: "Raleway",
+            sans-serif;
             --tem-one-designation-color: #fff;
             --tem-one-bio-title-color: #624aac;
             --tem-profile-image-bg: #624aac;
@@ -69,6 +71,7 @@
             overflow: hidden;
             position: relative;
         }
+
         /* CSS for the card inside the mobile frame */
         .nfc-mobile-frame .card {
             background-color: var(--white);
@@ -218,9 +221,13 @@
                                                 </div>
                                             @endif
                                             <!-- Contact Info -->
-                                            @if (!empty($nfc_card->nfcData->email_personal) || !empty($nfc_card->nfcData->email_work) ||
-                                            !empty($nfc_card->nfcData->phone_personal) || !empty($nfc_card->nfcData->phone_work)||
-                                            !empty($nfc_card->nfcData->address_line_one) || !empty($nfc_card->nfcData->address_line_two))
+                                            @if (
+                                                !empty($nfc_card->nfcData->email_personal) ||
+                                                    !empty($nfc_card->nfcData->email_work) ||
+                                                    !empty($nfc_card->nfcData->phone_personal) ||
+                                                    !empty($nfc_card->nfcData->phone_work) ||
+                                                    !empty($nfc_card->nfcData->address_line_one) ||
+                                                    !empty($nfc_card->nfcData->address_line_two))
                                                 <div class="my-3 pt-4">
                                                     <div class="row gx-3">
                                                         @if (!empty($nfc_card->nfcData->email_personal) || !empty($nfc_card->nfcData->email_work))
@@ -229,14 +236,16 @@
                                                                     style="background-color: #1c344f;border-radius: 15px;margin-left: -10px;padding: 20px;position: relative;">
                                                                     <div class="card-body p-0">
                                                                         <div class="row align-items-center">
-                                                                            <div class="col-lg-2 text-center text-lg-start">
+                                                                            <div
+                                                                                class="col-lg-2 text-center text-lg-start">
                                                                                 <img class=""
                                                                                     src="https://my.cybercard.ma/assets/img/vcard13/email.png" />
                                                                             </div>
                                                                             <div
                                                                                 class="col-lg-10 text-center text-lg-start">
                                                                                 <div class="ps-3 pt-3 pt-lg-0">
-                                                                                    <h6 class="text-white mb-0">E-mail</h6>
+                                                                                    <h6 class="text-white mb-0">E-mail
+                                                                                    </h6>
                                                                                     @if (!empty($nfc_card->nfcData->email_personal))
                                                                                         <small class="text-white">
                                                                                             <span
@@ -265,14 +274,16 @@
                                                                     style="background-color: #1c344f;border-radius: 15px;margin-left: -10px;padding: 20px;position: relative;">
                                                                     <div class="card-body p-0">
                                                                         <div class="row align-items-center">
-                                                                            <div class="col-lg-2 text-center text-lg-start">
+                                                                            <div
+                                                                                class="col-lg-2 text-center text-lg-start">
                                                                                 <img class=""
                                                                                     src="https://my.cybercard.ma/assets/img/vcard13/phone.png" />
                                                                             </div>
                                                                             <div
                                                                                 class="col-lg-10 text-center text-lg-start">
                                                                                 <div class="ps-3 pt-3 pt-lg-0">
-                                                                                    <h6 class="text-white mb-0">Phone</h6>
+                                                                                    <h6 class="text-white mb-0">Phone
+                                                                                    </h6>
                                                                                     @if (!empty($nfc_card->nfcData->phone_personal))
                                                                                         <small class="text-white">
                                                                                             <span
@@ -303,7 +314,8 @@
                                                                     <div class="card-body p-0"
                                                                         style="background-image: url(https://my.cybercard.ma/images/contact-card-bg.png?4da69f117ea28772ef2ce81e91826424);background-repeat: no-repeat;background-size: contain;">
                                                                         <div class="row">
-                                                                            <div class="col-lg-2 text-center text-lg-start">
+                                                                            <div
+                                                                                class="col-lg-2 text-center text-lg-start">
                                                                                 <img class=""
                                                                                     src="https://my.cybercard.ma/assets/img/vcard13/location.png" />
                                                                             </div>
@@ -367,7 +379,8 @@
                                             @endif
                                             <!-- Bio -->
                                             <!-- Company -->
-                                            @if (!empty($nfc_card->nfcData->company_title) ||
+                                            @if (
+                                                !empty($nfc_card->nfcData->company_title) ||
                                                     !empty($nfc_card->nfcData->company_name) ||
                                                     !empty($nfc_card->nfcData->company_phone) ||
                                                     !empty($nfc_card->nfcData->company_email) ||
@@ -423,9 +436,10 @@
                                                 </div>
                                             @endif
                                             <!-- Service -->
-                                            @if (!empty($nfc_card->nfcData->service_one_image) ||
-                                            !empty($nfc_card->nfcData->service_two_image) ||
-                                            !empty($nfc_card->nfcData->service_three_image))
+                                            @if (
+                                                !empty($nfc_card->nfcData->service_one_image) ||
+                                                    !empty($nfc_card->nfcData->service_two_image) ||
+                                                    !empty($nfc_card->nfcData->service_three_image))
                                                 <div class="my-5"
                                                     style="background-image: url(https://my.cybercard.ma/images/slider-bg.png?e98f043e310dd6f02946933959a990ff);">
                                                     <h3 class="fw-bold text-center pt-4"
@@ -442,7 +456,7 @@
                                                                 <div class="text-white"
                                                                     style="background-color: #1c344f;border-bottom-left-radius: 40px;">
                                                                     <p class="p-2 mb-0 text-center service_one_title">
-                                                                        {{$nfc_card->nfcData->service_one_title}}
+                                                                        {{ $nfc_card->nfcData->service_one_title }}
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -456,7 +470,7 @@
                                                                 <div class="text-white"
                                                                     style="background-color: #1c344f;border-bottom-left-radius: 40px;">
                                                                     <p class="p-2 mb-0 text-center service_one_title">
-                                                                        {{$nfc_card->nfcData->service_two_title}}
+                                                                        {{ $nfc_card->nfcData->service_two_title }}
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -470,7 +484,7 @@
                                                                 <div class="text-white"
                                                                     style="background-color: #1c344f;border-bottom-left-radius: 40px;">
                                                                     <p class="p-2 mb-0 text-center service_one_title">
-                                                                        {{$nfc_card->nfcData->service_three_title}}
+                                                                        {{ $nfc_card->nfcData->service_three_title }}
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -557,20 +571,21 @@
                                             </div>
                                             <div class="row fixed-bottom w-25 mx-auto mobile-d-none">
                                                 <div class="col mb-2 text-center">
-                                                    <a href="tel:+{{ optional($nfc_card->nfcData)->phone_personal }}" class="btn btn-sm mt-2 p-2 w-100 nfc_contact_btn"
-                                                        style="background-color: #1c344f; color: #fff">
-                                                        <i class="fas fa-contact pe-1 fa-address-book"></i> Connect The
-                                                        Profile
+                                                    <a href="tel:+{{ optional($nfc_card->nfcData)->phone_personal }}"
+                                                        class="btn btn-sm mt-2 p-2 w-100 nfc_contact_btn nfc_contact_btn_pc"
+                                                        style="background-color: #f44336; color: #fff">
+                                                        <i class="fas fa-contact pe-1 fa-address-book"></i>
+                                                        Save Contact
                                                     </a>
                                                 </div>
                                             </div>
-                                            <div
-                                                class="row fixed-bottom w-sm-100 w-lg-25 d-sm-block d-lg-none mx-auto">
+                                            <div class="row fixed-bottom w-sm-100 w-lg-25 d-sm-block d-lg-none mx-auto">
                                                 <div class="col mb-2 text-center">
-                                                    <a href="tel:+{{ optional($nfc_card->nfcData)->phone_personal }}" class="btn btn-sm mt- p-2 w-100 nfc_contact_btn"
-                                                        style="background-color: #1c344f; color: #fff">
-                                                        <i class="fas fa-contact pe-1 fa-address-book"></i> Connect The
-                                                        Profile
+                                                    <a href="tel:+{{ optional($nfc_card->nfcData)->phone_personal }}"
+                                                        class="btn btn-sm mt-2 p-2 w-100 nfc_contact_btn nfc_contact_btn_mobile"
+                                                        style="background-color: #f44336; color: #fff">
+                                                        <i class="fas fa-contact pe-1 fa-address-book"></i>
+                                                        Save Contact
                                                     </a>
                                                 </div>
                                             </div>
@@ -617,6 +632,117 @@
                     // Add more breakpoints and settings as needed
                 ],
             });
+        });
+    </script>
+    <script>
+        'use strict';
+
+        function downloadToFile(content, filename, contentType) {
+            const a = document.createElement('a');
+            const file = new Blob([content], {
+                type: contentType
+            });
+
+            a.href = URL.createObjectURL(file);
+            a.download = filename;
+            a.click();
+
+            URL.revokeObjectURL(a.href);
+        }
+
+        function getBase64Image(imgUrl, callback) {
+            const img = new Image();
+            img.crossOrigin = 'Anonymous';
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                canvas.width = img.width;
+                canvas.height = img.height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0);
+                const dataURL = canvas.toDataURL('image/jpeg');
+                callback(dataURL.replace(/^data:image\/(png|jpeg);base64,/, ''));
+            };
+            img.src = imgUrl;
+        }
+
+        const makeVCardVersion = () => `VERSION:3.0`;
+        const makeVCardInfo = (lastName, firstName) => `N:${lastName};${firstName};;;`;
+        const makeVCardName = (firstName, lastName) => `FN:${firstName} ${lastName}`;
+        const makeVCardOrg = (org) => `ORG:${org}`;
+        const makeVCardTitle = (title) => `TITLE:${title}`;
+        const makeVCardPhoto = (imgBase64) => `PHOTO;ENCODING=b;TYPE=JPEG:${imgBase64}`;
+        const makeVCardTel = (phone) => `TEL;TYPE=CELL:${phone}`;
+        const makeVCardAdr = (addressLine1, addressLine2) => `ADR;TYPE=HOME:;;${addressLine1};${addressLine2};;;;`;
+        const makeVCardEmail = (email) => `EMAIL:${email}`;
+        const makeVCardUrl = (url) => `URL:${url}`;
+        const makeVCardSocialProfile = (type, url) => `X-SOCIALPROFILE;TYPE=${type}:${url}`;
+        const makeVCardTimeStamp = () => `REV:${new Date().toISOString()}`;
+
+        function makeVCard(profileImageBase64) {
+            const firstName = '{{ optional($nfc_card->nfcData)->first_name }}';
+            const lastName = '{{ optional($nfc_card->nfcData)->last_name }}';
+            const designation = '{{ optional($nfc_card->nfcData)->designation }}';
+            const phone = '{{ $nfc_card->nfcData->phone_personal }}';
+            const email = '{{ $nfc_card->nfcData->email_personal }}';
+            const addressLine1 = '{{ $nfc_card->nfcData->address_line_one }}';
+            const addressLine2 = '{{ $nfc_card->nfcData->address_line_two }}';
+            const linkedin = '{{ $nfc_card->nfcData->linkedin_url }}';
+
+            let vcard = `BEGIN:VCARD\n${makeVCardVersion()}\n`;
+            vcard += `${makeVCardInfo(lastName, firstName)}\n`;
+            vcard += `${makeVCardName(firstName, lastName)}\n`;
+            vcard += `${makeVCardTitle(designation)}\n`;
+
+            if (profileImageBase64) {
+                vcard += `${makeVCardPhoto(profileImageBase64)}\n`;
+            }
+
+            vcard += `${makeVCardTel(phone)}\n`;
+
+            if (addressLine1 || addressLine2) {
+                vcard += `${makeVCardAdr(addressLine1, addressLine2)}\n`;
+            }
+
+            if (email) {
+                vcard += `${makeVCardEmail(email)}\n`;
+            }
+
+            if (linkedin) {
+                vcard += `${makeVCardUrl(linkedin)}\n`;
+                vcard += `${makeVCardSocialProfile('linkedin', linkedin)}\n`;
+            }
+
+            vcard += `${makeVCardTimeStamp()}\nEND:VCARD`;
+
+            return vcard;
+        }
+
+        function handleContactButtonClick(event, isMobile) {
+            event.preventDefault(); // Prevent default link behavior
+
+            const profileImage = '{{ asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) }}';
+
+            getBase64Image(profileImage, (base64Image) => {
+                const vcard = makeVCard(base64Image);
+
+                if (isMobile) {
+                    // Open vCard details in contact app for mobile
+                    const encodedVcfContent = encodeURIComponent(vcard);
+                    const uri = 'data:text/vcard;charset=utf-8,' + encodedVcfContent;
+                    window.location.href = uri;
+                } else {
+                    // Download vCard for PC
+                    downloadToFile(vcard, 'contact.vcf', 'text/vcard');
+                }
+            });
+        }
+
+        document.querySelector('.nfc_contact_btn_pc').addEventListener('click', (event) => {
+            handleContactButtonClick(event, false);
+        });
+
+        document.querySelector('.nfc_contact_btn_mobile').addEventListener('click', (event) => {
+            handleContactButtonClick(event, true);
         });
     </script>
 </body>
