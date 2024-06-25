@@ -71,7 +71,7 @@
 <div class="row mt-5">
     <div class="col-12">
         <!-- Visiting Card Box Container -->
-        <div class="punch-card-container">
+        <div class="punch-card-container mb-2">
             <div class="row p-5 align-items-center py-8">
                 <div class="col-lg-8 text-lg-start text-start">
                     <div>
