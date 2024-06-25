@@ -252,14 +252,7 @@
                                                         Contact
                                                     </p>
                                                     <div
-                                                        style="
-                                background-color: #f44336;
-                                height: 23px;
-                                width: 25px;
-                                border-top-right-radius: 5px;
-                                margin-top: -32px;
-                                border-bottom-right-radius: 5px;
-                              ">
+                                                        style="background-color: #f44336;height: 23px;width: 25px;border-top-right-radius: 5px;margin-top: -32px;border-bottom-right-radius: 5px;">
                                                     </div>
                                                 </div>
                                                 <div class="row gx-3 align-items-lg-end">
