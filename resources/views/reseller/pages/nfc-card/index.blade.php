@@ -32,7 +32,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="card-body table-responsive">
                     <table
                         class="table align-middle border rounded table-row-dashed table-striped table-hover  fs-6 g-5"
                         id="qr_code">
