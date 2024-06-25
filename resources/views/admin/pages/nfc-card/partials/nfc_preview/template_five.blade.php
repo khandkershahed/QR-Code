@@ -154,7 +154,7 @@
                                                 <span class="first_name">Robert</span>&nbsp;<span
                                                     class="last_name">Bruno</span>
                                             </h2>
-                                            <h6 class="fw-bolder designation">Médecin Généraliste</h6>
+                                            <h6 class="fw-bolder designation">Real Estate Broker</h6>
                                         </div>
                                     </div>
                                 </div>

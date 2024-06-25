@@ -129,7 +129,7 @@
                                             </h2>
                                             <h6 class="fw-bolder designation"
                                                 style="-webkit-text-fill-color: transparent;background: -webkit-linear-gradient(#f6a932,#ff5a0e);-webkit-background-clip: text;">
-                                                Médecin Généraliste
+                                                Real Estate Broker
                                             </h6>
                                         </div>
                                     </div>

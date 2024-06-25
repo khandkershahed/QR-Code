@@ -26,9 +26,9 @@
                 <div class="p-5 pb-2">
                     <h4 class="mb-0">View and manage your NFC Cards</h4>
                 </div>
-                <div class="card-body">
+                <div class="card-body table-responsive">
                     <table
-                        class="table align-middle border rounded table-row-dashed table-striped table-hover  fs-6 g-5"
+                        class="table table-responisve align-middle border rounded table-row-dashed table-striped table-hover  fs-6 g-5"
                         id="nfc_card_admin">
                         <thead>
                             <tr class="text-gray-500 fw-bold fs-7 text-uppercase">
