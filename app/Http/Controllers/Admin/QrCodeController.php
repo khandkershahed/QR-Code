@@ -1349,15 +1349,10 @@ class QrCodeController extends Controller
             ->orderBy('id', 'desc')
             ->first();
 
-        Log::debug('Last QR Code:', ['lastCode' => $lastCode]);
-
+dd($lastCode);
         $newNumber = $lastCode ? (int)substr($lastCode->code, -2) + 1 : 1;
 
-        Log::debug('New Number:', ['newNumber' => $newNumber]);
-
         $code = $typePrefix . $today . $userId . str_pad($newNumber, 2, '0', STR_PAD_LEFT);
-
-        Log::debug('Generated Code:', ['code' => $code]);
 
 
         $data = [
