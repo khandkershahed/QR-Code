@@ -79,7 +79,7 @@
                                     <div class="card-toolbar">
                                         <button class="btn btn-primary w-lg-100 mb-2" data-kt-menu-trigger="click"
                                             data-kt-menu-placement="bottom-end" data-kt-menu-overflow="true">
-                                            <i class="bi bi-file-download fs-4 me-2"></i> Download
+                                            <i class="fas fa-download fs-4 me-2"></i> Download
                                         </button>
                                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px"
                                             data-kt-menu="true" style="">
