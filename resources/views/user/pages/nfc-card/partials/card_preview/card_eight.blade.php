@@ -20,7 +20,7 @@ background: linear-gradient(to right, #4a00e0, #8e2de2);">
                     <div>
                         <img class="punch-card-logo-back card_logo"
                             src="https://i.ibb.co/vhZg1xp/png-clipart-light-white-line-light-angle-white-removebg-preview.png"
-                            alt="Logo Back" />
+                            alt="Logo Back" style="width: 200px;background-size: contain;height: 100px;text-align: start;margin-bottom: 0px !important;display: flex;justify-content: start;position: relative;left: 0px;object-fit: contain;"/>
                     </div>
                 </div>
             </div>

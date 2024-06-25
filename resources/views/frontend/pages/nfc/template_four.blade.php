@@ -149,7 +149,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 d-flex justify-content-center align-items-center px-0">
-                        <div class="nfc-mobile-frame">
+                        <div class="nfc-mobile-frame shadow-sm">
                             <div class="card p-0 border-0 shadow-none tem-one-scroll" style="overflow-x: hidden">
                                 <div class="card-header p-0 border-0 border-0">
                                     <div class="nfc-one-cover-img-box">
@@ -164,7 +164,7 @@
                                 <div class="card-body p-0 tem-one-about-content">
                                     <div class="w-100">
                                         <div class="text-end" style="margin-top: -70px; position: relative">
-                                            <img style="width: 150px;border-width: 6px;border-style: solid;border-image: url('https://img.freepik.com/free-vector/nice-blue-background-about-medical-science_1017-4479.jpg?t=st=1715673477~exp=1715677077~hmac=0797d97fc2cfc933acf53dba7ff33f6a6a77563fb0cae3a077c52092a4854a4d&w=740') 30 round;"
+                                            <img style="width: 150px;background: rgba(255, 255, 255, 0.493); border-width: 6px;border-style: solid;border-image: url('https://img.freepik.com/free-vector/nice-blue-background-about-medical-science_1017-4479.jpg?t=st=1715673477~exp=1715677077~hmac=0797d97fc2cfc933acf53dba7ff33f6a6a77563fb0cae3a077c52092a4854a4d&w=740') 30 round;"
                                                 src="{{ !empty($nfc_card->nfcData->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
                                                 class="img-fluid banner-image" alt="banner" />
                                         </div>
@@ -193,7 +193,7 @@
                                                     !empty($nfc_card->nfcData->instagram_url) ||
                                                     !empty($nfc_card->nfcData->youtube_url) ||
                                                     !empty($nfc_card->nfcData->google_plus_url))
-                                                <div class="rounded-5 mt-5 d-flex justify-content-center align-items-center py-2"
+                                                <div class="rounded-5 mt-5 d-flex justify-content-center align-items-center p-4"
                                                     style="background-color: #f6f6f7; border-radius: 0">
                                                     @if (!empty($nfc_card->nfcData->facebook_url))
                                                         <a href="{{ optional($nfc_card->nfcData)->facebook_url }}"

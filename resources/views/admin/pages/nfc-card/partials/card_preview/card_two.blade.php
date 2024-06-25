@@ -72,7 +72,7 @@
     <div class="col-12">
         <!-- Visiting Card Box Container -->
         <div class="punch-card-container mb-2">
-            <div class="row p-5 align-items-center py-8">
+            <div class="row p-5 align-items-center py-10 px-10">
                 <div class="col-lg-8 text-lg-start text-start">
                     <div>
                         <img class="punch-card-logo mb-4 card_logo"
@@ -103,7 +103,7 @@
             </div>
         </div>
         <div class="punch-card-container-back">
-            <div class="row p-5 align-items-center py-8">
+            <div class="row p-5 align-items-center py-10 px-10">
                 <div class="col-12 d-flex justify-content-center align-items-center" style="height: 30vh;">
                     <img class="punch-card-logo-back card_logo"
                         src="https://i.ibb.co/vhZg1xp/png-clipart-light-white-line-light-angle-white-removebg-preview.png"

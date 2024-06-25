@@ -55,7 +55,7 @@
                                 <div class="" style="margin-top: 5rem">
                                     <p>Subscribe to <strong class="text-info">{{ $plan->title }}</strong></p>
                                     <div class="d-flex align-items-center">
-                                        <h1 style="font-size: 50px; border-right: 2px solid #eee;"> <strong
+                                        <h1 style="font-size: 40px; border-right: 2px solid #eee;"> <strong
                                                 class="pe-3">$ {{ $plan->price }}</strong></h1>
                                         <p class="ps-3">
                                             @if ($plan->billing_cycle == 'yearly')

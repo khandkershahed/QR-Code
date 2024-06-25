@@ -75,7 +75,7 @@
             <div class="row p-5 align-items-center">
                 <div class="col-lg-6 text-center text-lg-start">
                     <div class="ps-lg-4">
-                        <img class="punch-card-logo card_logo" src="https://i.ibb.co/BNBTVN4/logo.png" alt="Logo" />
+                        <img class="punch-card-logo card_logo" src="https://i.ibb.co/BNBTVN4/logo.png" alt="Logo" style="width: 200px;background-size: contain;height: 100px;text-align: start;margin-bottom: 0px !important;display: flex;justify-content: start;position: relative;left: 0px;object-fit: contain;"/>
                     </div>
                     <div class="mt-4 mt-lg-0">
                         <img class="punch-card-qr" src="https://i.ibb.co/M7KMQC0/qr.png" alt="QR Code" />

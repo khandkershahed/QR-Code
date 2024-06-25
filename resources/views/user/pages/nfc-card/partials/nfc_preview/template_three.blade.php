@@ -194,7 +194,7 @@
                                             </h6>
                                         </div>
                                     </div>
-                                    <div class="rounded-5 mt-2 d-flex justify-content-center align-items-center"
+                                    <div class="rounded-5 mt-2 d-flex justify-content-center align-items-center p-4"
                                         style="background-color: #f6f6f7; border-radius: 0">
                                         <a href="" class="text-center location_url"
                                             style="text-decoration: none;width: 20%;color: #f60b0b;">

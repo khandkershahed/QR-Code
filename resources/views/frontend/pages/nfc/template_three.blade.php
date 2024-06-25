@@ -238,6 +238,7 @@
                                   1;
                                 position: relative;
                                 z-index: 15;
+                                    background: #ffffff80;
                               "
                                                         src="{{ !empty($nfc_card->nfcData->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
                                                         class="img-fluid banner-image" alt="banner" />
@@ -271,7 +272,7 @@
                                                         !empty($nfc_card->nfcData->instagram_url) ||
                                                         !empty($nfc_card->nfcData->youtube_url) ||
                                                         !empty($nfc_card->nfcData->google_plus_url))
-                                                    <div class="rounded-5 mt-2 d-flex justify-content-center align-items-center"
+                                                    <div class="rounded-5 mt-2 d-flex justify-content-center align-items-center p-4"
                                                         style="background-color: #f6f6f7; border-radius: 0">
                                                         @if (!empty($nfc_card->nfcData->facebook_url))
                                                             <a href="" class="text-center"

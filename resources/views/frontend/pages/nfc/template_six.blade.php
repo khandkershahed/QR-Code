@@ -157,7 +157,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 d-flex justify-content-center align-items-center px-0">
-                        <div class="nfc-mobile-frame">
+                        <div class="nfc-mobile-frame shadow-sm">
                             <div class="card p-0 border-0 shadow-none tem-one-scroll" style="overflow-x: hidden">
                                 <div class="card-header p-0 border-0 border-0">
                                     <div class="nfc-one-cover-img-box">
@@ -175,7 +175,7 @@
                                                 <div class="text-center text-lg-center mobile-images-profile"
                                                     style="margin-top: -70px; position: relative">
                                                     <img class=""
-                                                        style="width: 150px;border-radius: 100%;border: 6px solid white;position: relative;z-index: 15;"
+                                                        style="width: 150px;border-radius: 100%;border: 6px solid white;background: rgba(255, 255, 255, 0.485); position: relative;z-index: 15;"
                                                         src="{{ !empty($nfc_card->nfcData->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
                                                         class="img-fluid banner-image" alt="banner" />
                                                 </div>
@@ -184,7 +184,7 @@
                                                 <div class="text-center text-lg-start shadow-sm mobile-profiles">
                                                     <div class="p-3">
                                                         <h2 class="text-white"
-                                                            style="font-size: 50px;font-family: var(--tem-one-name-font-family);">
+                                                            style="font-size: 40px;font-family: var(--tem-one-name-font-family);">
                                                             <span
                                                                 class="first_name">{{ optional($nfc_card->nfcData)->first_name }}</span>
                                                             &nbsp;
@@ -292,7 +292,7 @@
                                                         <div class="row align-items-center shadow-sm mt-3 p-3">
                                                             <div class="col-lg-2 text-center text-lg-start">
                                                                 <img class=""
-                                                                    src="	https://my.cybercard.ma/assets/img/vcard14/location.png" />
+                                                                    src="https://my.cybercard.ma/assets/img/vcard14/location.png" />
                                                             </div>
                                                             <div class="col-lg-10 text-center text-lg-start">
                                                                 <div class="ps-3 pt-3 pt-lg-0">
