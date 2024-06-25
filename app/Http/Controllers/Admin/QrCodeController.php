@@ -225,7 +225,11 @@ class QrCodeController extends Controller
 
         $typePrefix = 'QR'; // Example prefix
         $today = date('dmY');
-        $userId = $isUserRoute ? Auth::user()->id : null;
+        if (Auth::user()->id == null) {
+            $userId = Auth::guard('admin')->user()->id;
+        } else {
+            $userId = Auth::user()->id;
+        }
 
         // Find the last QR code generated for this user today
         $lastCode = Qr::where('code', 'like', $typePrefix . $today . $userId . '%')
@@ -790,7 +794,7 @@ class QrCodeController extends Controller
         // Return the URL of the generated QR code image
         if ($qr->wasRecentlyCreated) {
             session()->forget('error');
-            if ($isUserRoute) {
+            if (Auth::guard('admin')->user()->id == null) {
                 return redirect()->route('user.qr-code.index')->with('success', 'You have successfully generated QR Code.');
             } else {
                 return redirect()->route('admin.qr-code.index')->with('success', 'You have successfully generated QR Code.');
@@ -1339,11 +1343,16 @@ class QrCodeController extends Controller
 
     public function qrPreview(Request $request)
     {
-        dd(Auth::guard('admin')->user()->id);
         $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
         $typePrefix = 'QR'; // Example prefix
         $today = date('dmY');
-        $userId = $isUserRoute ? Auth::user()->id : null;
+        if (Auth::user()->id == null) {
+            $userId = Auth::guard('admin')->user()->id;
+        } else {
+            $userId = Auth::user()->id;
+        }
+
+
 
         $lastCode = Qr::where('code', 'like', $typePrefix . $today . $userId . '%')
             ->orderBy('id', 'desc')
