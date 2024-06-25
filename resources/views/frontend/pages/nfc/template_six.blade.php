@@ -260,12 +260,12 @@
                                                         </div>
                                                     </div>
                                                     <div class="row gx-3 align-items-lg-end">
-                                                        <div class="col-lg-6">
+                                                        <div class="col-lg-12">
                                                             @if (!empty($nfc_card->nfcData->email_personal) || !empty($nfc_card->nfcData->email_work))
                                                                 <div class="row align-items-center shadow-sm p-3">
                                                                     <div class="col-lg-4 text-center text-lg-start">
                                                                         <img class=""
-                                                                            src="https://i.ibb.co/0fdd3KY/call.png" />
+                                                                            src="https://i.ibb.co/QjWnMtq/email.png" />
                                                                     </div>
                                                                     <div class="col-lg-8 text-center text-lg-start">
                                                                         <div class="ps-3 pt-3 pt-lg-0">
@@ -290,14 +290,14 @@
                                                                 </div>
                                                             @endif
                                                         </div>
-                                                        <div class="col-lg-6">
+                                                        <div class="col-lg-12">
                                                             @if (!empty($nfc_card->nfcData->phone_personal) || !empty($nfc_card->nfcData->phone_work))
                                                                 <div class="row align-items-center shadow-sm mt-3 p-3">
-                                                                    <div class="col-lg-2 text-center text-lg-start">
+                                                                    <div class="col-lg-4 text-center text-lg-start">
                                                                         <img class=""
-                                                                            src="https://i.ibb.co/QjWnMtq/email.png" />
+                                                                            src="https://i.ibb.co/0fdd3KY/call.png" />
                                                                     </div>
-                                                                    <div class="col-lg-10 text-center text-lg-start">
+                                                                    <div class="col-lg-8 text-center text-lg-start">
                                                                         <div class="ps-3 pt-3 pt-lg-0">
                                                                             <h6 class="text-white mb-0">Phone</h6>
                                                                             @if (!empty($nfc_card->nfcData->phone_personal))
