@@ -226,11 +226,11 @@
                                                     alt="" />
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-12">
                                             <div class="row align-items-center shadow-sm p-3">
                                                 <div class="col-lg-4 text-center text-lg-start">
-                                                    <img class=""
-                                                        src="https://i.ibb.co/0fdd3KY/call.png" />
+                                                    <img class="img-fluid"
+                                                        src="https://i.ibb.co/QjWnMtq/email.png" />
                                                 </div>
                                                 <div class="col-lg-8 text-center text-lg-start">
                                                     <div class="ps-3 pt-3 pt-lg-0">
@@ -246,8 +246,8 @@
                                             </div>
                                             <div class="row align-items-center shadow-sm mt-3 p-3">
                                                 <div class="col-lg-4 text-center text-lg-start">
-                                                    <img class=""
-                                                        src="https://i.ibb.co/QjWnMtq/email.png" />
+                                                    <img class="img-fluid"
+                                                        src="https://i.ibb.co/0fdd3KY/call.png" />
                                                 </div>
                                                 <div class="col-lg-8 text-center text-lg-start">
                                                     <div class="ps-3 pt-3 pt-lg-0">
@@ -263,7 +263,7 @@
                                             </div>
                                             <div class="row align-items-center shadow-sm mt-3 p-3">
                                                 <div class="col-lg-4 text-center text-lg-start">
-                                                    <img class=""
+                                                    <img class="img-fluid"
                                                         src="https://i.ibb.co/61xkjbV/map.png" />
                                                 </div>
                                                 <div class="col-lg-8 text-center text-lg-start">
