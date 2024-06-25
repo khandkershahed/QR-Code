@@ -118,14 +118,6 @@
         overflow: hidden;
         position: relative;
     }
-    .nfc-mobile-frame {
-        max-width: 576px;
-        min-height: 100vh;
-        /* border: 2px solid #1026bf; */
-        border-radius: 20px;
-        overflow: hidden;
-        position: relative;
-    }
 </style>
 
 <div class="container">
@@ -237,15 +229,15 @@
                                             <div class="row align-items-center shadow-sm p-3">
                                                 <div class="col-lg-2 text-center text-lg-start">
                                                     <img class=""
-                                                        src="https://my.cybercard.ma/assets/img/vcard16/phone.png" />
+                                                        src="https://i.ibb.co/XXW2Gb5/phone.jpg" />
                                                 </div>
                                                 <div class="col-lg-10 text-center text-lg-start">
                                                     <div class="ps-3 pt-3 pt-lg-0">
-                                                        <h6 class="text-black mb-0">E-mail</h6>
-                                                        <small class="text-black email_personal">
+                                                        <h6 class="text-white mb-0">E-mail</h6>
+                                                        <small class="text-white email_personal">
                                                             personal@email.com
                                                         </small> <br>
-                                                        <small class="text-black email_work">
+                                                        <small class="text-white email_work">
                                                             worked@email.com@cybercard.ma
                                                         </small>
                                                     </div>
@@ -254,15 +246,15 @@
                                             <div class="row align-items-center shadow-sm mt-3 p-3">
                                                 <div class="col-lg-2 text-center text-lg-start">
                                                     <img class=""
-                                                        src="https://my.cybercard.ma/assets/img/vcard16/email.png" />
+                                                        src="https://i.ibb.co/CwpNGRM/envelop.jpg" />
                                                 </div>
                                                 <div class="col-lg-10 text-center text-lg-start">
                                                     <div class="ps-3 pt-3 pt-lg-0">
-                                                        <h6 class="text-black mb-0">Phone</h6>
-                                                        <small class="text-black phone_personal">
+                                                        <h6 class="text-white mb-0">Phone</h6>
+                                                        <small class="text-white phone_personal">
                                                             (+880 1576614451)
                                                         </small>
-                                                        <small class="text-black phone_work">
+                                                        <small class="text-white phone_work">
                                                             (+880 1576614451)
                                                         </small>
                                                     </div>
@@ -271,15 +263,15 @@
                                             <div class="row align-items-center shadow-sm mt-3 p-3">
                                                 <div class="col-lg-2 text-center text-lg-start">
                                                     <img class=""
-                                                        src="https://my.cybercard.ma/assets/img/vcard16/email.png" />
+                                                        src="https://i.ibb.co/CwpNGRM/envelop.jpg" />
                                                 </div>
                                                 <div class="col-lg-10 text-center text-lg-start">
                                                     <div class="ps-3 pt-3 pt-lg-0">
-                                                        <h6 class="text-black mb-0">Address</h6>
-                                                        <small class="text-black address_line_one">
+                                                        <h6 class="text-white mb-0">Address</h6>
+                                                        <small class="text-white address_line_one">
                                                             Address One
                                                         </small> <br>
-                                                        <small class="text-black address_line_two">
+                                                        <small class="text-white address_line_two">
                                                             Address Two
                                                         </small>
                                                     </div>

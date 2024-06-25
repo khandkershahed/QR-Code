@@ -273,7 +273,7 @@
                                                             <div class="row align-items-center shadow-sm p-3">
                                                                 <div class="col-lg-2 text-center text-lg-start">
                                                                     <img class=""
-                                                                        src="https://my.cybercard.ma/assets/img/vcard16/phone.png" />
+                                                                        src="https://i.ibb.co/XXW2Gb5/phone.jpg" />
                                                                 </div>
                                                                 <div class="col-lg-10 text-center text-lg-start">
                                                                     <div class="ps-3 pt-3 pt-lg-0">
@@ -301,7 +301,7 @@
                                                             <div class="row align-items-center shadow-sm mt-3 p-3">
                                                                 <div class="col-lg-2 text-center text-lg-start">
                                                                     <img class=""
-                                                                        src="https://my.cybercard.ma/assets/img/vcard16/email.png" />
+                                                                        src="https://i.ibb.co/CwpNGRM/envelop.jpg" />
                                                                 </div>
                                                                 <div class="col-lg-10 text-center text-lg-start">
                                                                     <div class="ps-3 pt-3 pt-lg-0">

@@ -529,7 +529,7 @@
                                                         <div>
                                                             <img class="punch-card-logo mb-4 card_logo"
                                                                 src="{{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_logo) }}"
-                                                                alt="Logo" style="width: 200px;background-size: contain;height: 100px;text-align: start;display: flex;justify-content: start;position: relative;left: 0px;object-fit: contain; margin-bottom: 0px !important;">>
+                                                                alt="Logo" style="width: 200px;background-size: contain;height: 100px;text-align: start;display: flex;justify-content: start;position: relative;left: 0px;object-fit: contain; margin-bottom: 0px !important;">
                                                         </div>
                                                         <div class="text-start content-area font">
                                                             <h4 class="fw-bold mb-0 card_name text-white">
@@ -563,8 +563,8 @@
                                                 style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_back) }});">
                                                 <div class="row p-5 align-items-center py-10 px-10">
                                                     <div class="col-12 d-flex justify-content-center align-items-center"
-                                                        style="height: 30vh;">
-                                                        <img class="img-fluid card_font_color pt-8" width="300px;"
+                                                        style="height: 33vh;">
+                                                        <img class="img-fluid card_font_color pt-8" width="200px;"
                                                             src="{{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_logo) }}"
                                                             alt="Logo Back" />
                                                     </div>

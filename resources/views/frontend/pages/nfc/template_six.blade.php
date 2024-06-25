@@ -265,13 +265,13 @@
                                                                 <div class="row align-items-center shadow-sm p-3">
                                                                     <div class="col-lg-2 text-center text-lg-start">
                                                                         <img class=""
-                                                                            src="https://my.cybercard.ma/assets/img/vcard16/phone.png" />
+                                                                            src="https://i.ibb.co/XXW2Gb5/phone.jpg" />
                                                                     </div>
                                                                     <div class="col-lg-10 text-center text-lg-start">
                                                                         <div class="ps-3 pt-3 pt-lg-0">
-                                                                            <h6 class="text-black mb-0">E-mail</h6>
+                                                                            <h6 class="text-white mb-0">E-mail</h6>
                                                                             @if (!empty($nfc_card->nfcData->email_personal))
-                                                                                <small class="text-black">
+                                                                                <small class="text-white">
                                                                                     <span
                                                                                         class="email_personal">{{ optional($nfc_card->nfcData)->email_personal }}</span>
                                                                                     (personal)
@@ -279,7 +279,7 @@
                                                                             @endif
                                                                             @if (!empty($nfc_card->nfcData->email_work))
                                                                                 <br>
-                                                                                <small class="text-black">
+                                                                                <small class="text-white">
                                                                                     <span
                                                                                         class="email_work">{{ optional($nfc_card->nfcData)->email_work }}</span>
                                                                                     (work)
@@ -295,13 +295,13 @@
                                                                 <div class="row align-items-center shadow-sm mt-3 p-3">
                                                                     <div class="col-lg-2 text-center text-lg-start">
                                                                         <img class=""
-                                                                            src="https://my.cybercard.ma/assets/img/vcard16/email.png" />
+                                                                            src="https://i.ibb.co/CwpNGRM/envelop.jpg" />
                                                                     </div>
                                                                     <div class="col-lg-10 text-center text-lg-start">
                                                                         <div class="ps-3 pt-3 pt-lg-0">
-                                                                            <h6 class="text-black mb-0">Phone</h6>
+                                                                            <h6 class="text-white mb-0">Phone</h6>
                                                                             @if (!empty($nfc_card->nfcData->phone_personal))
-                                                                                <small class="text-black">
+                                                                                <small class="text-white">
                                                                                     <span
                                                                                         class="phone_personal">{{ optional($nfc_card->nfcData)->phone_personal }}</span>
                                                                                     (personal)
@@ -309,7 +309,7 @@
                                                                             @endif
                                                                             @if (!empty($nfc_card->nfcData->phone_work))
                                                                                 <br>
-                                                                                <small class="text-black">
+                                                                                <small class="text-white">
                                                                                     <span
                                                                                         class="phone_work">{{ optional($nfc_card->nfcData)->phone_work }}</span>
                                                                                     (work)
@@ -329,16 +329,16 @@
                                                                     </div>
                                                                     <div class="col-lg-10 text-center text-lg-start">
                                                                         <div class="ps-3 pt-3 pt-lg-0">
-                                                                            <h6 class="text-black mb-0">Address</h6>
+                                                                            <h6 class="text-white mb-0">Address</h6>
                                                                             @if (!empty($nfc_card->nfcData->address_line_one))
                                                                                 <small
-                                                                                    class="text-black address_line_one">
+                                                                                    class="text-white address_line_one">
                                                                                     {{ $nfc_card->nfcData->address_line_one }}
                                                                                 </small>
                                                                             @endif
                                                                             @if (!empty($nfc_card->nfcData->address_line_two))
                                                                                 <small
-                                                                                    class="text-black address_line_one">
+                                                                                    class="text-white address_line_one">
 
                                                                                     {{ $nfc_card->nfcData->address_line_two }}
 

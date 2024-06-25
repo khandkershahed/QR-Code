@@ -1,11 +1,12 @@
 <style>
     .nfc-mobile-frame_five {
         max-width: 400px;
-         
+
         border-radius: 20px;
         overflow: hidden;
         position: relative;
     }
+
     .nfc-mobile-frame {
         max-width: 576px;
         min-height: 100vh;
@@ -13,6 +14,7 @@
         overflow: hidden;
         position: relative;
     }
+
     /* CSS for the card inside the mobile frame */
     .nfc-mobile-frame_five .card {
         background-color: var(--white);
@@ -107,6 +109,7 @@
             display: none;
         }
     }
+
     .nfc-mobile-frame {
         max-width: 576px;
         min-height: 100vh;
@@ -217,7 +220,8 @@
                                     <div class="row gx-3 align-items-center p-3">
                                         <div class="col-lg-6 d-lg-block d-none">
                                             <div>
-                                                <img class="img-fluid" src="https://my.cybercard.ma/assets/img/vcard16/contact-lawyer-img.png"
+                                                <img class="img-fluid"
+                                                    src="https://my.cybercard.ma/assets/img/vcard16/contact-lawyer-img.png"
                                                     alt="" />
                                             </div>
                                         </div>
@@ -225,7 +229,7 @@
                                             <div class="row align-items-center shadow-sm p-3">
                                                 <div class="col-lg-2 text-center text-lg-start">
                                                     <img class=""
-                                                        src="https://my.cybercard.ma/assets/img/vcard16/phone.png" />
+                                                        src="https://i.ibb.co/XXW2Gb5/phone.jpg" />
                                                 </div>
                                                 <div class="col-lg-10 text-center text-lg-start">
                                                     <div class="ps-3 pt-3 pt-lg-0">
@@ -242,7 +246,7 @@
                                             <div class="row align-items-center shadow-sm mt-3 p-3">
                                                 <div class="col-lg-2 text-center text-lg-start">
                                                     <img class=""
-                                                        src="https://my.cybercard.ma/assets/img/vcard16/email.png" />
+                                                        src="https://i.ibb.co/CwpNGRM/envelop.jpg" />
                                                 </div>
                                                 <div class="col-lg-10 text-center text-lg-start">
                                                     <div class="ps-3 pt-3 pt-lg-0">
@@ -259,7 +263,7 @@
                                             <div class="row align-items-center shadow-sm mt-3 p-3">
                                                 <div class="col-lg-2 text-center text-lg-start">
                                                     <img class=""
-                                                        src="https://my.cybercard.ma/assets/img/vcard16/email.png" />
+                                                        src="https://i.ibb.co/CwpNGRM/envelop.jpg" />
                                                 </div>
                                                 <div class="col-lg-10 text-center text-lg-start">
                                                     <div class="ps-3 pt-3 pt-lg-0">
