@@ -2,8 +2,7 @@
     <div class="col-12">
         <!-- Visiting Card Box Container -->
         <div class="punch-card-container mb-2"
-            style="background: -webkit-linear-gradient(to right, #4a00e0, #8e2de2);
-background: linear-gradient(to right, #4a00e0, #8e2de2);">
+            style="background: -webkit-linear-gradient(to right, #4a00e0, #8e2de2);background: linear-gradient(to right, #4a00e0, #8e2de2);">
             <div class="row p-5 align-items-center">
                 <div class="col-lg-4 d-flex justify-content-start font align-items-center" style="height: 20vh">
                     <div class="">
