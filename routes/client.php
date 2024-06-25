@@ -1,5 +1,5 @@
 <?php
-
+ 
 use App\Http\Controllers\Admin\NfcCardController;
 use App\Http\Controllers\Admin\QrCodeController;
 use App\Http\Controllers\RestaurantCategoryController;

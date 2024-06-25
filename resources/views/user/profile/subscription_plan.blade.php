@@ -68,8 +68,7 @@
                                                 <h4 class="text-warning-900 fw-bold">You Have Not Subscribe To Any Plan
                                                 </h4>
 
-                                                <div class="fs-6 text-gray-700 pe-7">Withdraw money securily to your
-                                                    bank account. Commision is $25 per transaction under $50,000</div>
+                                                <div class="fs-6 text-gray-700 pe-7">Please check our plans and subscribe to enjoy our features.</div>
                                             </div>
                                             <!--end::Content-->
 
