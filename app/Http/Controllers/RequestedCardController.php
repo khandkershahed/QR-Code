@@ -13,7 +13,7 @@ class RequestedCardController extends Controller
     public function index()
     {
         $data =[
-            'nfc_cards' => NfcCard::with('nfcData', 'nfcMessages', 'virtualCard','shippingDetails')->get(),
+            'nfc_cards' => NfcCard::with('nfcData', 'nfcMessages', 'virtualCard', 'shippingDetails')->latest('id')->get(),
         ];
         return view('admin.pages.requested-card.index',$data);
     }
