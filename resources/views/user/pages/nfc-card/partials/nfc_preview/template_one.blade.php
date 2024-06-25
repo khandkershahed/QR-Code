@@ -108,7 +108,7 @@
                                 <div class="p-3">
                                     <div>
                                         <h1 class="tem-one-name"><span class="first_name  fs-1">Robert</span>&nbsp;<span
-                                                class="last_name">Sazu</span> </h1>
+                                                class="last_name fs-1">Bruno</span> </h1>
                                         <h4 class="tem-one-designation designation">
                                             Frontend Developer
                                         </h4>

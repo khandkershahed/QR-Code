@@ -75,7 +75,7 @@
                                     <!-- personal Detailis -->
                                     <div>
                                         <div class="" style="margin-top: -45px">
-                                            <h2>Naoufal MAAROUF</h2>
+                                            <h2>Robert Bruno</h2>
                                             <h6 class="fw-bolder">Médecin Généraliste</h6>
                                             <h5 class="fw-bolder pt-3">BIO</h5>
                                             <p>

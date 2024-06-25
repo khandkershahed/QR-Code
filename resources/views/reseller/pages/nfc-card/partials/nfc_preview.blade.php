@@ -26,7 +26,7 @@
                                         <div>
                                             <h1 class="tem-one-name"><span
                                                     class="first_name">Robert</span>&nbsp;<span
-                                                    class="last_name">Sazu</span> </h1>
+                                                    class="last_name">Bruno</span> </h1>
                                             <h4 class="tem-one-designation designation">
                                                 Frontend Developer
                                             </h4>
@@ -228,7 +228,7 @@
                                         </div>
                                         <div>
                                             <h1 class="tem-two-name"><span class="first_name">Robert</span>&nbsp;<span
-                                                    class="last_name">Sazu</span> </h1>
+                                                    class="last_name">Bruno</span> </h1>
                                             <h6 class="tem-two-designation fw-bold designation">
                                                 Frontend Developer
                                             </h6>

@@ -60,7 +60,7 @@
                     <div>
                         <img class="punch-card-logo mb-4 card_logo"
                             src="https://i.ibb.co/vhZg1xp/png-clipart-light-white-line-light-angle-white-removebg-preview.png"
-                            alt="Logo" />
+                            alt="Logo" style="width: 200px;background-size: contain;height: 100px;text-align: start;margin-bottom: 0px !important;display: flex;justify-content: start;position: relative;left: 0px;object-fit: contain;"/>
                     </div>
                     <div class="text-start content-area font">
                         <h4 class="fw-bold mb-0 card_name card_font_color" style="color: #fff">

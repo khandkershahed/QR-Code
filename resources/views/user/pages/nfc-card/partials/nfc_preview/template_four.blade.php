@@ -109,8 +109,8 @@
                                 <!-- personal Detailis -->
                                 <div>
                                     <div class="" style="margin-top: -45px">
-                                        <h2><span class="first_name">Naoufal</span>&nbsp;<span
-                                                class="last_name">MAAROUF</span></h2>
+                                        <h2><span class="first_name">Robert</span>&nbsp;<span
+                                                class="last_name">Bruno</span></h2>
                                         <h6 class="fw-bolder designation">Médecin Généraliste</h6>
                                         <h5 class="fw-bolder pt-3 bio_title">BIO</h5>
                                         <p class="bio_description">

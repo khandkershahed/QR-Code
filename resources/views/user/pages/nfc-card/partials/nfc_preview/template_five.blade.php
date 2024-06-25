@@ -151,8 +151,8 @@
                                   font-size: 20px;
                                   font-family: var(--tem-five-name-font-family);
                                 ">
-                                                <span class="first_name">Naoufal</span>&nbsp;<span
-                                                    class="last_name">MAAROUF</span>
+                                                <span class="first_name">Robert</span>&nbsp;<span
+                                                    class="last_name">Bruno</span>
                                             </h2>
                                             <h6 class="fw-bolder designation">Médecin Généraliste</h6>
                                         </div>
