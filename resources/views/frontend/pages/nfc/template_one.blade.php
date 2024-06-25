@@ -7,7 +7,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="shortcut icon" href="https://i.ibb.co/BNBTVN4/logo.png" type="image/x-icon" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" />
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
@@ -25,8 +26,8 @@
         :root {
             @if ($nfc_card->font_family == 'bebas_neue')
                 --body-font-family: "Bebas Neue", sans-serif !important;
-            @elseif ($nfc_card->font_family == 'raleway')
-                --body-font-family: "Raleway", sans-serif !important;
+            @elseif
+                ($nfc_card->font_family == 'raleway') --body-font-family: "Raleway", sans-serif !important;
             @endif
             --white: #fff;
             --tem-one-name-color: #fff;
@@ -246,6 +247,15 @@
                 /* Let height adjust based on content */
             }
         }
+
+        .nfc-mobile-frame {
+            max-width: 576px;
+            min-height: 100vh;
+            /* border: 2px solid #1026bf; */
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
     </style>
 
     <!-- Style Here End -->
@@ -281,39 +291,53 @@
                                                 </div>
                                                 <!-- contact -->
                                                 <div>
-                                                    <small class="tem-one-address address_line_one">{{ optional($nfc_card->nfcData)->address_line_one }}</small>
+                                                    <small
+                                                        class="tem-one-address address_line_one">{{ optional($nfc_card->nfcData)->address_line_one }}</small>
                                                     <br />
-                                                    <small class="tem-one-address address_line_two">{{ optional($nfc_card->nfcData)->address_line_two }}</small>
+                                                    <small
+                                                        class="tem-one-address address_line_two">{{ optional($nfc_card->nfcData)->address_line_two }}</small>
                                                     <br />
-                                                    <small class="tem-one-address phone_personal">{{ optional($nfc_card->nfcData)->phone_personal }}(Work)</small>
+                                                    <small
+                                                        class="tem-one-address phone_personal">{{ optional($nfc_card->nfcData)->phone_personal }}(Work)</small>
                                                     <br>
-                                                    <small class="tem-one-address phone_work">{{ optional($nfc_card->nfcData)->phone_work }}(Personal)</small>
+                                                    <small
+                                                        class="tem-one-address phone_work">{{ optional($nfc_card->nfcData)->phone_work }}(Personal)</small>
                                                     <div class="tem-one-social-icons mt-3">
-                                                        <a href="{{ optional($nfc_card->nfcData)->facebook_url }}" target="_blank" class="fa fa-facebook"></a>
-                                                        <a href="{{ optional($nfc_card->nfcData)->instagram_url }}" target="_blank" class="fa fa-instagram"></a>
-                                                        <a href="{{ optional($nfc_card->nfcData)->youtube_url }}" target="_blank" class="fa fa-youtube"></a>
-                                                        <a href="{{ optional($nfc_card->nfcData)->google_plus_url }}" target="_blank" class="fa fa-google"></a>
+                                                        <a href="{{ optional($nfc_card->nfcData)->facebook_url }}"
+                                                            target="_blank" class="fa fa-facebook"></a>
+                                                        <a href="{{ optional($nfc_card->nfcData)->instagram_url }}"
+                                                            target="_blank" class="fa fa-instagram"></a>
+                                                        <a href="{{ optional($nfc_card->nfcData)->youtube_url }}"
+                                                            target="_blank" class="fa fa-youtube"></a>
+                                                        <a href="{{ optional($nfc_card->nfcData)->google_plus_url }}"
+                                                            target="_blank" class="fa fa-google"></a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-center tem-one-profile-image">
                                             <div class="tem-one-profile-img text-center">
-                                                <img src="{{ !empty($nfc_card->nfcData->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}" alt="" />
+                                                <img src="{{ !empty($nfc_card->nfcData->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
+                                                    alt="" />
                                             </div>
                                         </div>
                                     </div>
                                     <!-- BIo -->
                                     <div class="tem-one-bio-box px-3 pt-4">
-                                        <h6 class="tem-one-bio-title">{{ optional($nfc_card->nfcData)->bio_title }}</h6>
+                                        <h6 class="tem-one-bio-title">{{ optional($nfc_card->nfcData)->bio_title }}
+                                        </h6>
                                         <p>
                                             {{ optional($nfc_card->nfcData)->bio_description }}
                                         </p>
                                     </div>
                                     <!-- Service -->
-                                    @if (!empty($nfc_card->nfcData->service_one_image) || !empty($nfc_card->nfcData->service_two_image) || !empty($nfc_card->nfcData->service_three_image))
+                                    @if (
+                                        !empty($nfc_card->nfcData->service_one_image) ||
+                                            !empty($nfc_card->nfcData->service_two_image) ||
+                                            !empty($nfc_card->nfcData->service_three_image))
                                         <div class="tem-one-service-box px-3 py-4">
-                                            <h6 class="tem-one-service-title">{{ optional($nfc_card->nfcData)->service_section_title }}</h6>
+                                            <h6 class="tem-one-service-title">
+                                                {{ optional($nfc_card->nfcData)->service_section_title }}</h6>
                                             <p>
                                                 {{ optional($nfc_card->nfcData)->service_section_description }}
                                             </p>
@@ -348,20 +372,27 @@
                                     @endif
                                     <!-- Service -->
                                     <div class="tem-one-bio-box px-3 pt-4">
-                                        <h6 class="tem-one-bio-title">{{ optional($nfc_card->nfcData)->company_title }}</h6>
+                                        <h6 class="tem-one-bio-title">{{ optional($nfc_card->nfcData)->company_title }}
+                                        </h6>
                                         <div class="d-flex">
                                             <div class="tem-one-about-first">
-                                                <p class="fw-bold mb-0 company_name">{{ optional($nfc_card->nfcData)->company_name }}</p>
+                                                <p class="fw-bold mb-0 company_name">
+                                                    {{ optional($nfc_card->nfcData)->company_name }}</p>
                                                 <p class="mb-0">
-                                                    <span class="company_address_line_one">{{ optional($nfc_card->nfcData)->company_address_line_one }}</span>
+                                                    <span
+                                                        class="company_address_line_one">{{ optional($nfc_card->nfcData)->company_address_line_one }}</span>
                                                     <br />
-                                                    <span class="company_address_line_two">{{ optional($nfc_card->nfcData)->company_address_line_two }}</span>
+                                                    <span
+                                                        class="company_address_line_two">{{ optional($nfc_card->nfcData)->company_address_line_two }}</span>
                                                 </p>
-                                                <p class="company_phone">{{ optional($nfc_card->nfcData)->company_phone }}</p>
-                                                <p class="company_email">{{ optional($nfc_card->nfcData)->company_email }}</p>
+                                                <p class="company_phone">
+                                                    {{ optional($nfc_card->nfcData)->company_phone }}</p>
+                                                <p class="company_email">
+                                                    {{ optional($nfc_card->nfcData)->company_email }}</p>
                                             </div>
                                             <div class="tem-one-about-secontd">
-                                                <p class="fw-bold mb-0 company_about_title">{{ optional($nfc_card->nfcData)->company_about_title }}</p>
+                                                <p class="fw-bold mb-0 company_about_title">
+                                                    {{ optional($nfc_card->nfcData)->company_about_title }}</p>
                                                 <p class="company_about_description">
                                                     {{ optional($nfc_card->nfcData)->company_about_description }}
                                                 </p>
@@ -382,9 +413,12 @@
                                         <div class="pt-2">
                                             <form action="{{ route('individual-message.store') }}" method="post">
                                                 @csrf
-                                                <input type="hidden" name="user_id" value="{{ optional($nfc_card)->user_id }}">
-                                                <input type="hidden" name="nfc_id" value="{{ optional($nfc_card)->id }}">
-                                                <input type="hidden" name="nfc_code" value="{{ optional($nfc_card)->code }}">
+                                                <input type="hidden" name="user_id"
+                                                    value="{{ optional($nfc_card)->user_id }}">
+                                                <input type="hidden" name="nfc_id"
+                                                    value="{{ optional($nfc_card)->id }}">
+                                                <input type="hidden" name="nfc_code"
+                                                    value="{{ optional($nfc_card)->code }}">
                                                 <div class="row">
                                                     <div class="col mb-2">
                                                         <div>
@@ -450,7 +484,8 @@
                                             </div>
                                         @endif
                                         <div class="sticky-bottom mt-5">
-                                            <a href="tel:+{{ optional($nfc_card->nfcData)->phone_personal }}" class="btn-primary btn w-100 nfc_contact_btn">Connect Now</a>
+                                            <a href="tel:+{{ optional($nfc_card->nfcData)->phone_personal }}"
+                                                class="btn-primary btn w-100 nfc_contact_btn">Connect Now</a>
                                         </div>
                                     </div>
                                 </div>

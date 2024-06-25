@@ -6,7 +6,13 @@
         overflow: hidden;
         position: relative;
     }
-
+    .nfc-mobile-frame {
+        max-width: 576px;
+        min-height: 100vh;
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
+    }
     /* CSS for the card inside the mobile frame */
     .nfc-mobile-frame_five .card {
         background-color: var(--white);
@@ -100,6 +106,14 @@
         .mobile-d-none {
             display: none;
         }
+    }
+    .nfc-mobile-frame {
+        max-width: 576px;
+        min-height: 100vh;
+        /* border: 2px solid #1026bf; */
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
     }
 </style>
 
