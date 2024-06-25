@@ -483,6 +483,7 @@ class NfcCardController extends Controller
 
     public function update(NfcCardRequest $request, $id)
     {
+        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
         // Retrieve the existing NFC card and its related data
         $nfc_card = NfcCard::findOrFail($id);
         $nfc_data = $nfc_card->nfcData;
@@ -583,68 +584,75 @@ class NfcCardController extends Controller
         ]);
 
         // Update VirtualCard
-        if ($virtual_card) {
-            $virtual_card->update([
-                'virtual_card_template' => $request->virtual_card_template,
-                'card_logo'             => $uploadedFiles['card_logo']['status']     == 1 ? $uploadedFiles['card_logo']['file_name']     : $virtual_card->card_logo,
-                'card_bg_front'         => $uploadedFiles['card_bg_front']['status'] == 1 ? $uploadedFiles['card_bg_front']['file_name'] : $virtual_card->card_bg_front,
-                'card_bg_back'          => $uploadedFiles['card_bg_back']['status']  == 1 ? $uploadedFiles['card_bg_back']['file_name']  : $virtual_card->card_bg_back,
-                'card_name'             => $request->card_name,
-                'card_designation'      => $request->card_designation,
-                'card_phone'            => $request->card_phone,
-                'card_email'            => $request->card_email,
-                'card_address'          => $request->card_address,
-                'card_font_color'       => $request->card_font_color,
-                'card_font_style'       => $request->card_font_style,
-            ]);
+        // if ($virtual_card) {
+        //     $virtual_card->update([
+        //         'virtual_card_template' => $request->virtual_card_template,
+        //         'card_logo'             => $uploadedFiles['card_logo']['status']     == 1 ? $uploadedFiles['card_logo']['file_name']     : $virtual_card->card_logo,
+        //         'card_bg_front'         => $uploadedFiles['card_bg_front']['status'] == 1 ? $uploadedFiles['card_bg_front']['file_name'] : $virtual_card->card_bg_front,
+        //         'card_bg_back'          => $uploadedFiles['card_bg_back']['status']  == 1 ? $uploadedFiles['card_bg_back']['file_name']  : $virtual_card->card_bg_back,
+        //         'card_name'             => $request->card_name,
+        //         'card_designation'      => $request->card_designation,
+        //         'card_phone'            => $request->card_phone,
+        //         'card_email'            => $request->card_email,
+        //         'card_address'          => $request->card_address,
+        //         'card_font_color'       => $request->card_font_color,
+        //         'card_font_style'       => $request->card_font_style,
+        //     ]);
+        // } else {
+        //     if (!empty($request->virtual_card_template)) {
+        //         VirtualCard::create([
+        //             'card_id'               => $nfc_card->id,
+        //             'virtual_card_template' => $request->virtual_card_template,
+        //             'card_logo'             => $uploadedFiles['card_logo']['status']     == 1 ? $uploadedFiles['card_logo']['file_name']     : null,
+        //             'card_bg_front'         => $uploadedFiles['card_bg_front']['status'] == 1 ? $uploadedFiles['card_bg_front']['file_name'] : null,
+        //             'card_bg_back'          => $uploadedFiles['card_bg_back']['status']  == 1 ? $uploadedFiles['card_bg_back']['file_name']  : null,
+        //             'card_name'             => $request->card_name,
+        //             'card_designation'      => $request->card_designation,
+        //             'card_phone'            => $request->card_phone,
+        //             'card_email'            => $request->card_email,
+        //             'card_address'          => $request->card_address,
+        //             'card_font_color'       => $request->card_font_color,
+        //             'card_font_style'       => $request->card_font_style,
+        //         ]);
+        //     }
+        // }
+
+        // // Update NfcShippingDetails
+        // if ($shipping_details) {
+        //     $shipping_details->update([
+        //         'shipping_name'        => $request->shipping_name,
+        //         'shipping_phone'       => $request->shipping_phone,
+        //         'shipping_address'     => $request->shipping_address,
+        //         'shipping_city'        => $request->shipping_city,
+        //         'shipping_state'       => $request->shipping_state,
+        //         'shipping_zip_code'    => $request->shipping_zip_code,
+        //         'shipping_country'     => $request->shipping_country,
+        //         'shipping_instruction' => $request->shipping_instruction,
+        //     ]);
+        // } else {
+        //     if (!empty($request->shipping_name)) {
+        //         NfcShippingDetails::create([
+        //             'card_id'              => $nfc_card->id,
+        //             'shipping_name'        => $request->shipping_name,
+        //             'shipping_phone'       => $request->shipping_phone,
+        //             'shipping_address'     => $request->shipping_address,
+        //             'shipping_city'        => $request->shipping_city,
+        //             'shipping_state'       => $request->shipping_state,
+        //             'shipping_zip_code'    => $request->shipping_zip_code,
+        //             'shipping_country'     => $request->shipping_country,
+        //             'shipping_instruction' => $request->shipping_instruction,
+        //         ]);
+        //     }
+        // }
+
+
+        if ($isUserRoute) {
+            return redirect()->route('user.nfc-card.index')->with('success', 'NFC updated successfully.');
         } else {
-            if (!empty($request->virtual_card_template)) {
-                VirtualCard::create([
-                    'card_id'               => $nfc_card->id,
-                    'virtual_card_template' => $request->virtual_card_template,
-                    'card_logo'             => $uploadedFiles['card_logo']['status']     == 1 ? $uploadedFiles['card_logo']['file_name']     : null,
-                    'card_bg_front'         => $uploadedFiles['card_bg_front']['status'] == 1 ? $uploadedFiles['card_bg_front']['file_name'] : null,
-                    'card_bg_back'          => $uploadedFiles['card_bg_back']['status']  == 1 ? $uploadedFiles['card_bg_back']['file_name']  : null,
-                    'card_name'             => $request->card_name,
-                    'card_designation'      => $request->card_designation,
-                    'card_phone'            => $request->card_phone,
-                    'card_email'            => $request->card_email,
-                    'card_address'          => $request->card_address,
-                    'card_font_color'       => $request->card_font_color,
-                    'card_font_style'       => $request->card_font_style,
-                ]);
-            }
+            return redirect()->route('admin.nfc-card.index')->with('success', 'NFC updated successfully.');
         }
 
-        // Update NfcShippingDetails
-        if ($shipping_details) {
-            $shipping_details->update([
-                'shipping_name'        => $request->shipping_name,
-                'shipping_phone'       => $request->shipping_phone,
-                'shipping_address'     => $request->shipping_address,
-                'shipping_city'        => $request->shipping_city,
-                'shipping_state'       => $request->shipping_state,
-                'shipping_zip_code'    => $request->shipping_zip_code,
-                'shipping_country'     => $request->shipping_country,
-                'shipping_instruction' => $request->shipping_instruction,
-            ]);
-        } else {
-            if (!empty($request->shipping_name)) {
-                NfcShippingDetails::create([
-                    'card_id'              => $nfc_card->id,
-                    'shipping_name'        => $request->shipping_name,
-                    'shipping_phone'       => $request->shipping_phone,
-                    'shipping_address'     => $request->shipping_address,
-                    'shipping_city'        => $request->shipping_city,
-                    'shipping_state'       => $request->shipping_state,
-                    'shipping_zip_code'    => $request->shipping_zip_code,
-                    'shipping_country'     => $request->shipping_country,
-                    'shipping_instruction' => $request->shipping_instruction,
-                ]);
-            }
-        }
 
-        return redirect()->back()->with('success', 'NFC updated successfully.');
     }
 
     /**
