@@ -238,10 +238,6 @@
             outline: 1px solid slategrey;
         }
 
-        .nfc_contact_btn {
-            background-color: var(--button_bg_color) !important;
-            color: var(--button_title_color) !important;
-        }
 
         /* Media query for smaller screens */
         @media only screen and (max-width: 600px) {
@@ -376,11 +372,11 @@
                                     <div class="tem-one-service-box px-3 py-4">
                                         <h6 class="tem-one-service-title">Contact</h6>
                                         <p class="mb-0">
-                                            @: {{ optional($nfc_card->nfcData)->email_work }}
+                                            {{ optional($nfc_card->nfcData)->email_work }}
                                             <small class="fw-bold">(Work)</small>
                                         </p>
                                         <p class="mb-0">
-                                            p: {{ optional($nfc_card->nfcData)->phone_personal }}
+                                            {{ optional($nfc_card->nfcData)->phone_personal }}
                                             <small class="fw-bold">(Personal)</small>
                                         </p>
                                         <div class="pt-2">

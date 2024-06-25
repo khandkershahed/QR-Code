@@ -69,10 +69,6 @@
             overflow: hidden;
             position: relative;
         }
-        .nfc_contact_btn {
-            background-color: var(--button_bg_color) !important;
-            color: var(--button_title_color) !important;
-        }
         /* CSS for the card inside the mobile frame */
         .nfc-mobile-frame .card {
             background-color: var(--white);

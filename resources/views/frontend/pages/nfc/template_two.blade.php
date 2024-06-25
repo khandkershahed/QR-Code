@@ -172,10 +172,6 @@
             /* Adjust the color of the icons as needed */
         }
 
-        .nfc_contact_btn {
-            background-color: var(--button_bg_color) !important;
-            color: var(--button_title_color) !important;
-        }
 
 
         /* Hover effect */
@@ -267,7 +263,7 @@
             <div class="mt-1 container">
                 <div class="row">
                     <div class="col-lg-12 d-flex justify-content-center align-items-center px-0">
-                        <div class="nfc-mobile-frame-two">
+                        <div class="nfc-mobile-frame-two shadow-sm">
                             <div class="card p-0 border-0 shadow-none tem-two-scroll">
                                 <div class="card-header p-0 border-0 border-0">
                                     <div class="nfc-two-cover-img-box">
@@ -427,13 +423,13 @@
                                         <h6 class="tem-two-service-title">Contact</h6>
                                         @if (!empty(optional($nfc_card->nfcData)->phone_work))
                                             <p class="mb-0">
-                                                @: {{ optional($nfc_card->nfcData)->phone_work }}
+                                                {{ optional($nfc_card->nfcData)->phone_work }}
                                                 <small class="fw-bold">(Work)</small>
                                             </p>
                                         @endif
                                         @if (!empty(optional($nfc_card->nfcData)->phone_personal))
                                             <p class="mb-0">
-                                                p: {{ optional($nfc_card->nfcData)->phone_personal }}
+                                                {{ optional($nfc_card->nfcData)->phone_personal }}
                                                 <small class="fw-bold">(Personal)</small>
                                             </p>
                                         @endif
