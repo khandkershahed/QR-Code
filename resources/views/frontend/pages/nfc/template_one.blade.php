@@ -26,8 +26,10 @@
         :root {
             @if ($nfc_card->font_family == 'bebas_neue')
                 --body-font-family: "Bebas Neue", sans-serif !important;
-            @elseif
-                ($nfc_card->font_family == 'raleway') --body-font-family: "Raleway", sans-serif !important;
+                --tem-one-name-font-family: "Bebas Neue", sans-serif !important;
+            @elseif($nfc_card->font_family == 'raleway')
+                --tem-one-name-font-family: "Raleway", sans-serif !important;
+                --body-font-family: "Raleway", sans-serif !important;
             @endif
             --white: #fff;
             --tem-one-name-color: #fff;
@@ -52,10 +54,16 @@
 
 
         /* CSS for centering the mobile frame */
+        .nfc-mobile-frame {
+            max-width: 576px;
+            min-height: 100vh;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
 
         .nfc-mobile-frame-one {
             width: 400px;
-
             padding: 15px 0px;
             /* border: 2px solid #000; */
             border-radius: 20px;
@@ -267,7 +275,7 @@
             <div class="mt-1 container">
                 <div class="row">
                     <div class="col-lg-12 d-flex justify-content-center align-items-center px-0">
-                        <div class="nfc-mobile-frame_five shadow-sm">
+                        <div class="nfc-mobile-frame shadow-sm">
                             <div class="card p-0 border-0 shadow-none tem-one-scroll">
                                 <div class="card-header p-0 border-0">
                                     <div class="nfc-one-cover-img-box">
