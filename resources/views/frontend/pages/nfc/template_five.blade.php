@@ -260,7 +260,7 @@
                                                 <div class="row gx-3 align-items-lg-end">
                                                     <div class="col-lg-6 d-lg-block d-none">
                                                         <div>
-                                                            <img src="{{ !empty($nfc_card->nfcData->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
+                                                            <img class="img-fluid" src="{{ !empty($nfc_card->nfcData->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
                                                                 alt="" />
                                                         </div>
                                                     </div>

@@ -203,7 +203,7 @@
                                     <div class="row gx-3 align-items-center p-3">
                                         <div class="col-lg-6 d-lg-block d-none">
                                             <div>
-                                                <img src="https://my.cybercard.ma/assets/img/vcard16/contact-lawyer-img.png"
+                                                <img class="img-fluid" src="https://my.cybercard.ma/assets/img/vcard16/contact-lawyer-img.png"
                                                     alt="" />
                                             </div>
                                         </div>

@@ -285,7 +285,7 @@
                                     <h3 class="fw-bold text-center py-5 pb-3 company_title" style="color: #1c344f">
                                         Company
                                     </h3>
-                                    <h5 class="fw-bold company_name">NGen It LTD.</h5>
+                                    <h5 class="fw-bold company_name">Company LTD.</h5>
                                     <h6 class="fw-bold company_phone">0176****90</h6>
                                     <h6 class="fw-bold company_email">example@example.com</h6>
                                     <small class="company_address_line_one">Mohammadpur</small> <br />

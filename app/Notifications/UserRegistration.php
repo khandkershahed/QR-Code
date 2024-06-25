@@ -63,7 +63,7 @@ class UserRegistration extends Notification
         return [
             // 'name' => $this->data,
             // 'link' => route('client-database.index'),
-            // 'message1' => 'New Client is Registered In Ngen It.',
+            // 'message1' => 'New Client is Registered In Company.',
             // 'message2' => ' Need To Approve.',
         ];
     }

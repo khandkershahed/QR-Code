@@ -107,7 +107,7 @@
                             <div class="tem-one-profile">
                                 <div class="p-3">
                                     <div>
-                                        <h1 class="tem-one-name"><span class="first_name">Sazeduzzaman</span>&nbsp;<span
+                                        <h1 class="tem-one-name"><span class="first_name  fs-1">Robert</span>&nbsp;<span
                                                 class="last_name">Sazu</span> </h1>
                                         <h4 class="tem-one-designation designation">
                                             Frontend Developer
@@ -183,7 +183,7 @@
                             <h6 class="tem-one-bio-title company_title">Company</h6>
                             <div class="d-flex">
                                 <div class="tem-one-about-first">
-                                    <p class="fw-bold mb-0 company_name">Ngen It LTD</p>
+                                    <p class="fw-bold mb-0 company_name">Company LTD</p>
                                     <p class="mb-0">
                                         <span class="company_address_line_one">257/A, San-fca</span>
                                         <br />
@@ -205,7 +205,7 @@
                         <div class="tem-one-service-box px-3 py-4">
                             <h6 class="tem-one-service-title">Contact</h6>
                             <p class="mb-0 email_work">
-                                @: szamansaju@gmail.com
+                                @: szamanBruno@gmail.com
                                 <small class="fw-bold">(Work)</small>
                             </p>
                             <p class="mb-0 phone_personal">

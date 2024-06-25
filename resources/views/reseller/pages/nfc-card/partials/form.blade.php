@@ -53,7 +53,7 @@
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2 required">First Name</x-metronic.label>
                             <x-metronic.input type="text" name="first_name"
-                                class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Sazeduzzaman"
+                                class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Robert"
                                 value="" />
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2">Last Name</x-metronic.label>
                             <x-metronic.input type="text" name="last_name"
-                                class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Saju"
+                                class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Bruno"
                                 value="" />
                         </div>
                     </div>
@@ -282,7 +282,7 @@
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2">Company Name</x-metronic.label>
                             <x-metronic.input type="text" name="company_name"
-                                class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Ngen It"
+                                class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Company"
                                 value="" />
                         </div>
                     </div>

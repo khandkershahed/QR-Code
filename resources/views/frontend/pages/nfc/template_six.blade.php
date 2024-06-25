@@ -383,7 +383,7 @@
                                                 <div class="d-flex pt-4">
                                                     <div class="px-3 px-lg-0 text-white w-50">
                                                         <h6 class="fw-bold" style="color: #f44336">
-                                                            NGen It LTD.
+                                                            Company LTD.
                                                         </h6>
                                                         <small>Frontend Developoer</small> <br />
                                                         <small>Mohammadpur, Dhaka</small>
