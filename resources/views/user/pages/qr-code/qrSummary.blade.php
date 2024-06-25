@@ -77,7 +77,7 @@
                                     {{-- <a href="#" class="btn btn-primary w-100 mb-2"><i
                                             class="bi bi-pen fs-4 me-2"></i> Edit</a> --}}
                                     <div class="card-toolbar">
-                                        <button class="btn btn-primary w-100 mb-2" data-kt-menu-trigger="click"
+                                        <button class="btn btn-primary w-lg-100 mb-2" data-kt-menu-trigger="click"
                                             data-kt-menu-placement="bottom-end" data-kt-menu-overflow="true">
                                             <i class="bi bi-file-download fs-4 me-2"></i> Download
                                         </button>
@@ -138,8 +138,8 @@
                                             <div class="separator mt-3 opacity-75"></div>
                                         </div>
                                     </div>
-                                    <a href="#" class="btn btn-danger w-100 mb-2"><i
-                                            class="bi bi-trash fs-4 me-2"></i> Delete</a>
+                                    {{-- <a href="#" class="btn btn-danger w-100 mb-2"><i
+                                            class="bi bi-trash fs-4 me-2"></i> Delete</a> --}}
                                 </div>
                             </div>
                         </div>

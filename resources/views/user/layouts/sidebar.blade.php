@@ -180,7 +180,7 @@
                     </div>
                 </div>
                 <div data-kt-menu-trigger="click"
-                    class="menu-item {{ Route::is('profile.edit','user.plan','user.invoice','user.upgrade.plan') ? 'here show' : '' }} menu-accordion">
+                    class="menu-item {{ Route::is('profile.edit','user.plan','user.invoice','user.upgrade.plan','user.subscribe.post') ? 'here show' : '' }} menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
@@ -204,7 +204,7 @@
                         <span class="menu-arrow"></span>
                     </span>
                     <div
-                        class="menu-sub menu-sub-accordion {{ Route::is('profile.edit', 'user.plan','user.invoice','user.upgrade.plan') ? 'menu-active-bg' : '' }}">
+                        class="menu-sub menu-sub-accordion {{ Route::is('profile.edit', 'user.plan','user.invoice','user.upgrade.plan','user.subscribe.post') ? 'menu-active-bg' : '' }}">
                         <div class="menu-item">
                             <a class="menu-link {{ Route::is('user.invoice') ? 'active' : '' }}"
                                 href="{{ route('user.invoice') }}">
@@ -224,7 +224,7 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link {{ Route::is('user.upgrade.plan') ? 'active' : '' }}"
+                            <a class="menu-link {{ Route::is('user.upgrade.plan','user.subscribe.post') ? 'active' : '' }}"
                                 href="{{ route('user.upgrade.plan') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
