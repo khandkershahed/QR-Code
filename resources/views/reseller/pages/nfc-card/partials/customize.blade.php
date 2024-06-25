@@ -71,7 +71,7 @@
                         </div>
                            <div class="col-lg-4">
                                <div class="row">
-                                   <label for="secondary_color_text">Title color (With BG Include)</label>
+                                   <label for="secondary_color_text">Title color </label>
                                    <div class="col-lg-10 pe-0">
                                        <div>
                                            <input type="text" name="title_color_picker" id="secondary_color_text"

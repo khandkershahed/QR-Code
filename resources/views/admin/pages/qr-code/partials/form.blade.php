@@ -247,7 +247,7 @@
         </div>
         <div class="col-lg-3 pb-4">
             <div class="row">
-                <label for="secondary_color_text">Title color (With BG Include)</label>
+                <label for="secondary_color_text">Title color </label>
                 <div class="d-flex colorCodeContainer">
                     <input type="color" class="colorPicker mt-2" name="qr_data_coupon_title_color">
                 </div>
@@ -256,7 +256,7 @@
 
         <div class="col-lg-3 pb-4">
             <div class="row">
-                <label for="buttonContact">Website Button Background Color</label>
+                <label for="buttonContact">Button BG Color</label>
                 <div class="d-flex colorCodeContainer">
                     <input type="color" class="colorPicker mt-2" name="qr_data_coupon_button_bg_color">
                 </div>
@@ -264,7 +264,7 @@
         </div>
         <div class="col-lg-3 pb-4">
             <div class="row">
-                <label for="buttonContact">Website Button Title Color</label>
+                <label for="buttonContact">Button Title Color</label>
                 <div class="d-flex colorCodeContainer">
 
                     <input type="color" class="colorPicker mt-2" name="qr_data_coupon_button_title_color">

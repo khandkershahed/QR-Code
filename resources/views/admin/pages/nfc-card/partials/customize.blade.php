@@ -49,7 +49,7 @@
                                class="form-control form-control-solid">
                        </div>
                        <div class="col-lg-6 offset-lg-3 align-items-center mb-3">
-                           <label for="secondary_color_text">Title color (With BG Include)</label>
+                           <label for="secondary_color_text">Title color </label>
                            <input type="color" name="title_color" value="" oninput="changeTitleColor()"
                                class="form-control form-control-solid">
                        </div>

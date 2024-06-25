@@ -290,7 +290,7 @@
             </div>
             <div class="col-lg-4 pb-4">
                 <div class="row">
-                    <label for="secondary_color_text">Title color (With BG Include)</label>
+                    <label for="secondary_color_text">Title color </label>
                     <div class="col-lg-10 pe-0">
                         <div>
                             <input type="text" name="title_color_picker" id="secondary_color_text"
@@ -311,7 +311,7 @@
 
             <div class="col-lg-4 pb-4">
                 <div class="row">
-                    <label for="buttonContact">Website Button Background Color</label>
+                    <label for="buttonContact">Button BG Color</label>
                     <div class="col-lg-10 pe-0">
                         <div>
                             <input type="text" name="buttonContact" id="buttonContact"
@@ -331,7 +331,7 @@
             </div>
             <div class="col-lg-4 pb-4">
                 <div class="row">
-                    <label for="buttonContact">Website Button Title Color</label>
+                    <label for="buttonContact">Button Title Color</label>
                     <div class="col-lg-10 pe-0">
                         <div>
                             <input type="text" name="buttonContact" id="buttonContact"
