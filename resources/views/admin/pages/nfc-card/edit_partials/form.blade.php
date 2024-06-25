@@ -7,9 +7,9 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card-body">
-            <ul class="nav nav-pills nav-pills-custom row position-relative mx-0 mb-0 mx-auto d-flex justify-content-center"
+            <ul class="nav nav-pills nav-pills-custom "
                 role="tablist">
-                <li class="nav-item col-2 mx-0 p-0" role="presentation">
+                <li class="nav-item mx-0 p-0" role="presentation">
                     <a class="nav-link d-flex justify-content-center w-100 border-0 h-100 active" data-bs-toggle="pill"
                         href="#kt_list_widget_10_tab_1" aria-selected="true" role="tab">
                         <span class="nav-text text-gray-800 fw-bold fs-6 mb-3">
@@ -19,7 +19,7 @@
                             class="bullet-custom position-absolute z-index-2 bottom-0 w-100 h-4px bg-primary rounded"></span>
                     </a>
                 </li>
-                <li class="nav-item col-2 mx-0 px-0" role="presentation">
+                <li class="nav-item mx-0 px-0" role="presentation">
 
                     <a class="nav-link d-flex justify-content-center w-100 border-0 h-100" data-bs-toggle="pill"
                         href="#kt_list_widget_10_tab_2" aria-selected="false" role="tab" tabindex="-1">
@@ -32,7 +32,7 @@
 
                     </a>
                 </li>
-                <li class="nav-item col-2 mx-0 px-0" role="presentation">
+                <li class="nav-item mx-0 px-0" role="presentation">
                     <a class="nav-link d-flex justify-content-center w-100 border-0 h-100" data-bs-toggle="pill"
                         href="#kt_list_widget_10_tab_3" aria-selected="false" role="tab" tabindex="-1">
                         <span class="nav-text text-gray-800 fw-bold fs-6 mb-3">
@@ -42,7 +42,7 @@
                             class="bullet-custom position-absolute z-index-2 bottom-0 w-100 h-4px bg-primary rounded"></span>
                     </a>
                 </li>
-                <li class="nav-item col-2 mx-0 px-0" role="presentation">
+                <li class="nav-item mx-0 px-0" role="presentation">
                     <a class="nav-link d-flex justify-content-center w-100 border-0 h-100" data-bs-toggle="pill"
                         href="#kt_list_widget_10_tab_4" aria-selected="false" role="tab" tabindex="-1">
                         <span class="nav-text text-gray-800 fw-bold fs-6 mb-3">
@@ -52,7 +52,7 @@
                             class="bullet-custom position-absolute z-index-2 bottom-0 w-100 h-4px bg-primary rounded"></span>
                     </a>
                 </li>
-                <li class="nav-item col-2 mx-0 px-0" role="presentation">
+                <li class="nav-item mx-0 px-0" role="presentation">
                     <a class="nav-link d-flex justify-content-center w-100 border-0 h-100" data-bs-toggle="pill"
                         href="#kt_list_widget_10_tab_5" aria-selected="false" role="tab" tabindex="-1">
                         <span class="nav-text text-gray-800 fw-bold fs-6 mb-3">
@@ -109,7 +109,7 @@
                         </div>
                         <div class="col-lg-4">
                             <div class="fv-row my-3">
-                                <x-metronic.label class="fw-semibold fs-6 mb-2 required">First Name</x-metronic.label>
+                                <x-metronic.label class="fw-semibold fs-6 mb-2">First Name</x-metronic.label>
                                 <x-metronic.input type="text" name="first_name" :value="$nfc_card->nfcData->first_name"
                                     class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Robert" />
                             </div>
@@ -138,8 +138,7 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="fv-row my-3">
-                                <x-metronic.label class="fw-semibold fs-6 mb-2 required">Phone
-                                    Personal</x-metronic.label>
+                                <x-metronic.label class="fw-semibold fs-6 mb-2">Phone  Personal</x-metronic.label>
                                 <x-metronic.input type="text" name="phone_personal" :value="$nfc_card->nfcData->phone_personal"
                                     class="form-control form-control-solid mb-3 mb-lg-0" placeholder="01*******" />
                             </div>
@@ -154,7 +153,7 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="fv-row my-3">
-                                <x-metronic.label class="fw-semibold fs-6 mb-2 required">Email
+                                <x-metronic.label class="fw-semibold fs-6 mb-2">Email
                                     Personal</x-metronic.label>
                                 <x-metronic.input type="email" name="email_personal" :value="$nfc_card->nfcData->email_personal"
                                     class="form-control form-control-solid mb-3 mb-lg-0"
@@ -194,7 +193,7 @@
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Bio Description</x-metronic.label>
                                 <textarea class="form-control form-control-solid" rows="5" name="bio_description"
                                     :value="$nfc_card - > nfcData - > bio_description"
-                                    placeholder="Book enthusiast, nature lover, avid learner, coffee addict, aspiring writer, music aficionado, travel enthusiast, optimistic dreamer."></textarea>
+                                    placeholder="Enter Comment"></textarea>
                             </div>
                         </div>
                     </div>
