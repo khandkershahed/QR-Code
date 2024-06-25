@@ -429,9 +429,11 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="d-flex justify-content-center align-items-center w-100">
+                                                    <div
+                                                        class="d-flex justify-content-center align-items-center w-100">
                                                         <div class="p-2 pt-5 text-start">
-                                                            <img class="" width="200px" src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
+                                                            <img class="" width="200px"
+                                                                src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
                                                                 alt="" />
                                                         </div>
                                                     </div>
@@ -677,7 +679,7 @@
                                                                 <div>
                                                                     <small for="client_name">Name
                                                                         <span class="text-danger">*</span></small>
-                                                                    <input type="text" name="client_name" required
+                                                                    <input type="text" name="name" required
                                                                         class="form-control form-control-sm"
                                                                         placeholder="Jhone Doe" id="" />
                                                                 </div>
@@ -686,7 +688,7 @@
                                                                 <div>
                                                                     <small for="client_email">Email
                                                                         <span class="text-danger">*</span></small>
-                                                                    <input type="text" name="client_email" required
+                                                                    <input type="text" name="email" required
                                                                         class="form-control form-control-sm"
                                                                         id=""
                                                                         placeholder="Jhone@gmail.com" />
@@ -697,7 +699,7 @@
                                                             <div class="col mb-2">
                                                                 <div>
                                                                     <small for="client_name">Phone</small>
-                                                                    <input type="text" name="client_phone"
+                                                                    <input type="text" name="phone"
                                                                         class="form-control form-control-sm"
                                                                         placeholder="015******" id="" />
                                                                 </div>
@@ -716,7 +718,7 @@
                                                                 <div>
                                                                     <small for="client_message">Message</small>
                                                                     <br />
-                                                                    <textarea name="client_message" id="" class="form-control" rows="3" placeholder="hello jhon"></textarea>
+                                                                    <textarea name="message" id="" class="form-control" rows="3" placeholder="hello jhon"></textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -737,20 +739,22 @@
                                             </div>
                                             <div class="row fixed-bottom w-25 mx-auto mobile-d-none">
                                                 <div class="col mb-2 text-center">
-                                                    <a href="tel:+{{ optional($nfc_card->nfcData)->phone_personal }}" class="btn btn-sm mt-2 p-2 w-100 nfc_contact_btn"
+                                                    <a href="tel:+{{ optional($nfc_card->nfcData)->phone_personal }}"
+                                                        class="btn btn-sm mt-2 p-2 w-100 nfc_contact_btn"
                                                         style="background-color: #f44336; color: #fff">
                                                         <i class="fas fa-contact pe-1 fa-address-book"></i>
-                                                        Connect The Profile
+                                                        Save Contact
                                                     </a>
                                                 </div>
                                             </div>
                                             <div
                                                 class="row fixed-bottom w-sm-100 w-lg-25 d-sm-block d-lg-none mx-auto">
                                                 <div class="col mb-2 text-center">
-                                                    <a href="tel:+{{ optional($nfc_card->nfcData)->phone_personal }}" class="btn btn-sm mt- p-2 w-100 nfc_contact_btn"
+                                                    <a href="tel:+{{ optional($nfc_card->nfcData)->phone_personal }}"
+                                                        class="btn btn-sm mt- p-2 w-100 nfc_contact_btn"
                                                         style="background-color: #f44336; color: #fff">
                                                         <i class="fas fa-contact pe-1 fa-address-book"></i>
-                                                        Connect The Profile
+                                                        Save Contact
                                                     </a>
                                                 </div>
                                             </div>
@@ -771,7 +775,265 @@
     <!-- Slick JS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
     <script>
+        'use strict';
+
+        function downloadToFile(content, filename, contentType) {
+            const a = document.createElement('a');
+            const file = new Blob([content], {
+                type: contentType
+            });
+
+            a.href = URL.createObjectURL(file);
+            a.download = filename;
+            a.click();
+
+            URL.revokeObjectURL(a.href);
+        }
+
+        function previewFile(event) {
+            let reader = new FileReader();
+            let file = event.target.files[0];
+
+            reader.readAsDataURL(file);
+            reader.onloadend = () => (previewEl.src = reader.result);
+        }
+
+        const makeVCardVersion = () => `VERSION:3.0`;
+        const makeVCardInfo = (info) => `N:${info}`;
+        const makeVCardName = (name) => `FN:${name}`;
+        const makeVCardOrg = (org) => `ORG:${org}`;
+        const makeVCardTitle = (title) => `TITLE:${title}`;
+        const makeVCardPhoto = (img) => `PHOTO;TYPE=JPEG;ENCODING=b:[${img}]`;
+        const makeVCardTel = (phone) => `TEL;TYPE=WORK,VOICE:${phone}`;
+        const makeVCardAdr = (address) => `ADR;TYPE=WORK,PREF:;;${address}`;
+        const makeVCardEmail = (email) => `EMAIL:${email}`;
+        const makeVCardTimeStamp = () => `REV:${new Date().toISOString()}`;
+
+        function makeVCard() {
+            let vcard = `BEGIN:VCARD\n`;
+            vcard += `${makeVCardVersion()}\n`;
+
+            // Combine first name and last name
+            let fullName = '{{ optional($nfc_card->nfcData)->first_name }} {{ optional($nfc_card->nfcData)->last_name }}';
+            vcard += `${makeVCardInfo(fullName)}\n`;
+
+            // Add organization and title (designation)
+            let org = '{{ optional($nfc_card->nfcData)->designation }}';
+            vcard += `${makeVCardOrg(org)}\n`;
+
+            // Add photo
+            let profileImage = '{{ asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) }}';
+            vcard += `${makeVCardPhoto(profileImage)}\n`;
+
+            // Add phone number
+            let phone = '{{ $nfc_card->nfcData->phone_personal }}';
+            vcard += `${makeVCardTel(phone)}\n`;
+
+            // Add address
+            let addressLine1 = '{{ $nfc_card->nfcData->address_line_one }}';
+            let addressLine2 = '{{ $nfc_card->nfcData->address_line_two }}';
+            let address = `${addressLine1};${addressLine2}`;
+            vcard += `${makeVCardAdr(address)}\n`;
+
+            // Add email
+            let email = '{{ $nfc_card->nfcData->email_personal }}';
+            vcard += `${makeVCardEmail(email)}\n`;
+
+            // Add LinkedIn URL
+            let linkedin = '{{ $nfc_card->nfcData->linkedin_url }}';
+            if (linkedin.trim() !== '') {
+                vcard += `URL:${linkedin}\n`;
+                vcard += `X-SOCIALPROFILE;TYPE=linkedin:${linkedin}\n`;
+            }
+
+            vcard += `${makeVCardTimeStamp()}\n`;
+            vcard += `END:VCARD`;
+
+            downloadToFile(vcard, 'contact.vcf', 'text/vcard');
+        }
+
+        document.querySelectorAll('.nfc_contact_btn').forEach(function(button) {
+            button.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent default link behavior
+
+                // Function to check if the device is mobile or tablet
+                function isMobileOrTablet() {
+                    // Check for iOS, Android, and common mobile/tablet user agents
+                    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator
+                        .userAgent);
+                }
+
+                var isMobile = isMobileOrTablet();
+
+                makeVCard(); // Generate and download vCard
+            });
+        });
+    </script>
+
+
+
+    <script>
+        // JavaScript to handle button click
+        // document.querySelectorAll('.nfc_contact_btn').forEach(function(button) {
+        //     button.addEventListener('click', function(event) {
+        //         event.preventDefault(); // Prevent default link behavior
+
+        //         var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+        //         if (isMobile) {
+        //             // Mobile device, open contact saving options
+        //             var name =
+        //                 '{{ optional($nfc_card->nfcData)->first_name }} {{ optional($nfc_card->nfcData)->last_name }}';
+        //             var mobileNumber = '{{ $nfc_card->nfcData->phone_personal }}';
+        //             var email = '{{ $nfc_card->nfcData->email_personal }}';
+        //             var facebook = '{{ $nfc_card->nfcData->facebook_url }}';
+        //             var instagram = '{{ $nfc_card->nfcData->instagram_url }}';
+        //             var youtube = '{{ $nfc_card->nfcData->youtube_url }}';
+        //             var googlePlus = '{{ $nfc_card->nfcData->google_plus_url }}';
+
+        //             // Construct the contact details
+        //             var contactDetails = "BEGIN:VCARD\n" +
+        //                 "VERSION:3.0\n" +
+        //                 "FN:" + name + "\n" +
+        //                 "TEL;TYPE=CELL:" + mobileNumber + "\n" +
+        //                 "EMAIL:" + email + "\n" +
+        //                 "URL:" + facebook + "\n" +
+        //                 "X-SOCIALPROFILE:facebook:" + facebook + "\n" +
+        //                 "X-SOCIALPROFILE:instagram:" + instagram + "\n" +
+        //                 "X-SOCIALPROFILE:youtube:" + youtube + "\n" +
+        //                 "X-SOCIALPROFILE:googleplus:" + googlePlus + "\n" +
+        //                 "END:VCARD";
+
+        //             // Encode the contact details for URI
+        //             var encodedContact = encodeURIComponent(contactDetails);
+
+        //             // Open the appropriate URI for saving contacts
+        //             var uri = 'data:text/vcard;charset=utf-8,' + encodedContact;
+        //             window.open(uri);
+
+        //         } else {
+        //             // Desktop, generate .vfc file and initiate download
+        //             var name =
+        //                 '{{ optional($nfc_card->nfcData)->first_name }} {{ optional($nfc_card->nfcData)->last_name }}';
+        //             var mobileNumber = '{{ $nfc_card->nfcData->phone_personal }}';
+
+        //             // Construct the .vfc file content
+        //             var vfcContent = "BEGIN:VCARD\n" +
+        //                 "VERSION:3.0\n" +
+        //                 "FN:" + name + "\n" +
+        //                 "TEL;TYPE=CELL:" + mobileNumber + "\n" +
+        //                 "END:VCARD";
+
+        //             // Create a Blob object containing the .vfc file content
+        //             var blob = new Blob([vfcContent], {
+        //                 type: 'text/vcard;charset=utf-8'
+        //             });
+
+        //             // Create a temporary anchor element
+        //             var a = document.createElement('a');
+        //             a.style.display = 'none';
+        //             document.body.appendChild(a);
+
+        //             // Set the href attribute of the anchor element to the Object URL of the Blob
+        //             a.href = window.URL.createObjectURL(blob);
+
+        //             // Set the download attribute to specify the filename
+        //             a.download = 'contact.vfc';
+
+        //             // Simulate a click event to trigger the download
+        //             a.click();
+
+        //             // Clean up
+        //             window.URL.revokeObjectURL(a.href);
+        //             document.body.removeChild(a);
+        //         }
+        //     });
+        // });
+        // document.querySelectorAll('.nfc_contact_btn').forEach(function(button) {
+        //     button.addEventListener('click', function(event) {
+        //         event.preventDefault(); // Prevent default link behavior
+
+        //         // Function to check if the device is mobile or tablet
+        //         function isMobileOrTablet() {
+        //             // Check for iOS, Android, and common mobile/tablet user agents
+        //             return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator
+        //                 .userAgent);
+        //         }
+
+        //         var isMobile = isMobileOrTablet();
+
+        //         // Retrieve contact information from PHP variables
+        //         var firstName = '{{ optional($nfc_card->nfcData)->first_name }}';
+        //         var lastName = '{{ optional($nfc_card->nfcData)->last_name }}';
+        //         var designation = '{{ optional($nfc_card->nfcData)->designation }}';
+        //         var mobileNumber = '{{ $nfc_card->nfcData->phone_personal }}';
+        //         var email = '{{ $nfc_card->nfcData->email_personal }}';
+        //         var addressLine1 = '{{ $nfc_card->nfcData->address_line_one }}';
+        //         var addressLine2 = '{{ $nfc_card->nfcData->address_line_two }}';
+        //         var linkedin = '{{ $nfc_card->nfcData->linkedin_url }}';
+        //         var profileImage =
+        //             '{{ asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) }}';
+
+        //         // Construct the vCard (vcf) content
+        //         var vcfContent = "BEGIN:VCARD\n" +
+        //             "VERSION:3.0\n" +
+        //             "FN:" + firstName + " " + lastName + "\n" +
+        //             "ORG:" + designation + "\n" + // Optional: Organization (designation)
+        //             "TEL;TYPE=CELL:" + mobileNumber + "\n";
+
+        //         // Add optional fields if they exist
+        //         if (email.trim() !== '') {
+        //             vcfContent += "EMAIL:" + email + "\n";
+        //         }
+
+        //         if (addressLine1.trim() !== '' || addressLine2.trim() !== '') {
+        //             vcfContent += "ADR;TYPE=HOME:;;" + addressLine1 + ";" + addressLine2 + ";;;;\n";
+        //         }
+
+        //         if (linkedin.trim() !== '') {
+        //             vcfContent += "URL:" + linkedin + "\n";
+        //             vcfContent += "X-SOCIALPROFILE;TYPE=linkedin:" + linkedin + "\n";
+        //         }
+
+        //         // Profile image can be added as a URL to be displayed in some apps
+        //         if (profileImage.trim() !== '') {
+        //             vcfContent += "PHOTO;VALUE=URL;TYPE=JPEG:" + profileImage + "\n";
+        //         }
+
+        //         vcfContent += "END:VCARD";
+
+        //         if (isMobile) {
+        //             // For mobile devices, open the data URI directly to prompt adding contact
+        //             var encodedVcfContent = encodeURIComponent(vcfContent);
+        //             var uri = 'data:text/vcard;charset=utf-8,' + encodedVcfContent;
+        //             window.open(uri);
+        //         } else {
+        //             // For desktop, create and initiate the download of .vcf file
+        //             var blob = new Blob([vcfContent], {
+        //                 type: 'text/vcard;charset=utf-8'
+        //             });
+        //             var url = URL.createObjectURL(blob);
+
+        //             var a = document.createElement('a');
+        //             a.style.display = 'none';
+        //             a.href = url;
+        //             a.download = 'contact.vcf';
+
+        //             document.body.appendChild(a);
+        //             a.click();
+
+        //             // Clean up
+        //             window.URL.revokeObjectURL(url);
+        //             document.body.removeChild(a);
+        //         }
+        //     });
+        // });
+
+
+
+
         // Initialize Slick Slider
         $(document).ready(function() {
             $(".slick-slider").slick({

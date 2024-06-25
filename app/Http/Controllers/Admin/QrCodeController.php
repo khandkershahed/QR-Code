@@ -172,7 +172,7 @@ class QrCodeController extends Controller
                 $emailId = $qr->qrData->qr_data_email_id;
                 $subject = $qr->qrData->qr_data_email_subject ?? '';
                 $body = $qr->qrData->qr_data_email_body ?? '';
-                $mailtoUrl = 'mailto:' . $emailId . '?subject=' . urlencode($subject) . '&body=' . urlencode($body);
+                $mailtoUrl = 'mailto:' . rawurlencode($emailId) . '?subject=' . rawurlencode($subject) . '&body=' . rawurlencode($body);
                 return redirect()->to($mailtoUrl);
             } elseif (!empty($qr->qrData->qr_app_android)) {
                 $androidAppLink = $qr->qrData->qr_app_android;
@@ -225,7 +225,7 @@ class QrCodeController extends Controller
 
         $typePrefix = 'QR'; // Example prefix
         $today = date('dmY');
-        $userId = $isUserRoute ? Auth::user()->id : Auth::guard('admin')->user()->id;
+        $userId = $isUserRoute ? Auth::user()->id : null;
 
         // Find the last QR code generated for this user today
         $lastCode = Qr::where('code', 'like', $typePrefix . $today . $userId . '%')
@@ -789,6 +789,7 @@ class QrCodeController extends Controller
 
         // Return the URL of the generated QR code image
         if ($qr->wasRecentlyCreated) {
+            session()->forget('error');
             if ($isUserRoute) {
                 return redirect()->route('user.qr-code.index')->with('success', 'You have successfully generated QR Code.');
             } else {
@@ -1328,8 +1329,10 @@ class QrCodeController extends Controller
         }
 
         if ($isUserRoute) {
+            session()->forget('error');
             return redirect()->route('user.qr-code.index')->with('success', 'You have successfully updated QR Code.');
         } else {
+            session()->forget('error');
             return redirect()->route('admin.qr-code.index')->with('success', 'You have successfully updated QR Code.');
         }
     }

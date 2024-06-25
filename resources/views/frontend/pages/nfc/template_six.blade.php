@@ -544,13 +544,15 @@
                                                     </div>
                                                 </div>
                                                 <div class="pt-4">
-                                                    <form action="" method="post" class="p-3">
+                                                    <form action="{{ route('individual-message.store') }}"
+                                                        method="post" class="p-3">
+                                                        @csrf
                                                         <div class="row">
                                                             <div class="col mb-2">
                                                                 <div>
                                                                     <small for="client_name">Name
                                                                         <span class="text-danger">*</span></small>
-                                                                    <input type="text" name="client_name" required
+                                                                    <input type="text" name="name" required
                                                                         class="form-control form-control-sm"
                                                                         placeholder="Jhone Doe" id="" />
                                                                 </div>
@@ -559,7 +561,7 @@
                                                                 <div>
                                                                     <small for="client_email">Email
                                                                         <span class="text-danger">*</span></small>
-                                                                    <input type="text" name="client_email" required
+                                                                    <input type="text" name="email" required
                                                                         class="form-control form-control-sm"
                                                                         id=""
                                                                         placeholder="Jhone@gmail.com" />
@@ -570,7 +572,7 @@
                                                             <div class="col mb-2">
                                                                 <div>
                                                                     <small for="client_name">Phone</small>
-                                                                    <input type="text" name="client_phone"
+                                                                    <input type="text" name="phone"
                                                                         class="form-control form-control-sm"
                                                                         placeholder="015******" id="" />
                                                                 </div>
@@ -589,7 +591,7 @@
                                                                 <div>
                                                                     <small for="client_message">Message</small>
                                                                     <br />
-                                                                    <textarea name="client_message" id="" class="form-control" rows="3" placeholder="hello jhon"></textarea>
+                                                                    <textarea name="message" id="" class="form-control" rows="3" placeholder="hello jhon"></textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
