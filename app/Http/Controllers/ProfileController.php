@@ -189,12 +189,13 @@ class ProfileController extends Controller
 
         return view('user.profile.subscription_plan', $data);
     }
-    public function UpgradePlan(): View
+    public function upgradePlan(): View
     {
         $user = Auth::user();
         $data = [
-            'monthly_plans' => Plan::orderBy('price', 'asc')->where('billing_cycle', 'monthly')->get(),
-            'yearly_plans' => Plan::orderBy('price', 'asc')->where('billing_cycle', 'yearly')->get(),
+            'qr_plans' => Plan::orderBy('price', 'asc')->where('type', 'qr')->get(),
+            'nfc_plans' => Plan::orderBy('price', 'asc')->where('type', 'nfc')->get(),
+            'subscriptions' => Subscription::where('user_id',$user->id)->active()->latest('id')->first(),
         ];
 
         return view('user.profile.user_plans', $data);

@@ -12,7 +12,7 @@
                     <div class="card card-flush py-4 flex-row-fluid">
                         <div class="card-header">
                             <div class="card-title">
-                                <h2>Order Details (#14534)</h2>
+                                <h2>Order Details </h2>
                             </div>
                         </div>
                         <div class="card-body pt-0">
@@ -54,6 +54,24 @@
                                                 </div>
                                             </td>
                                             <td class="fw-bold text-end text-danger">{{ $plan->title }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">
+                                                <div class="d-flex align-items-center">
+                                                    <i class="ki-duotone ki-discount fs-2 me-2"><span
+                                                            class="path1"></span><span class="path2"></span></i>
+                                                    Total Payable
+
+
+                                                    <span class="ms-1" data-bs-toggle="tooltip"
+                                                        title="Reward value earned by customer when purchasing this order">
+                                                        <i class="ki-duotone ki-information-5 text-gray-500 fs-6"><span
+                                                                class="path1"></span><span
+                                                                class="path2"></span><span
+                                                                class="path3"></span></i></span>
+                                                </div>
+                                            </td>
+                                            <td class="fw-bold text-end">${{ number_format($plan->price, 2) }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -120,7 +138,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card card-flush py-4  flex-row-fluid">
+                    {{-- <div class="card card-flush py-4  flex-row-fluid">
 
                         <div class="card-header">
                             <div class="card-title">
@@ -192,7 +210,7 @@
                                 </table>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="row">
                     <div class="col-lg-6 mx-auto">
@@ -213,7 +231,7 @@
                                     @csrf
                                     <input type="hidden" name="plan" id="plan" value="{{ $plan->id }}">
                                     <div class="row mb-4">
-                                        <div class="col-xl-4 col-lg-4">
+                                        <div class="col-xl-8 col-lg-8">
                                             <div class="form-group">
                                                 <label for="">Name On Card</label>
                                                 <input type="text" name="name" id="card-holder-name"
@@ -232,7 +250,7 @@
                                         </div>
                                         <div class="col-xl-12 col-lg-12 text-end">
                                             <button type="submit" class="btn btn-primary" id="card-button"
-                                                data-secret="{{ $intent->client_secret }}">Purchase</button>
+                                                data-secret="{{ $intent->client_secret }}">Pay</button>
                                         </div>
                                     </div>
 

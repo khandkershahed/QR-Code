@@ -25,12 +25,12 @@
             --white: #fff;
             --tem-one-name-color: #fff;
 
-            @if ($nfc_card->font_family == 'bebas_neue')
+            @if($nfc_card->font_family == 'bebas_neue')
                 --body-font-family: "Bebas Neue", sans-serif !important;
                 --tem-one-name-font-family: "Bebas Neue", sans-serif !important;
                 --tem-one-designation-font-family: "Bebas Neue", sans-serif !important;
-            @elseif
-                ($nfc_card->font_family == 'raleway') --tem-one-name-font-family: "Raleway", sans-serif !important;
+            @elseif($nfc_card->font_family == 'raleway')
+                --tem-one-name-font-family: "Raleway", sans-serif !important;
                 --tem-one-designation-font-family: "Raleway", sans-serif !important;
                 --body-font-family: "Raleway", sans-serif !important;
             @endif
