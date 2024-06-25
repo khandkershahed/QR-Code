@@ -498,7 +498,7 @@
                                                 </div>
                                             </div>
                                             <div class="punch-card-container-back"
-                                                style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_back) }}); background-repeat: no-repeat; background-size: cover;">
+                                                style="background-image: url({{ !empty(optional($nfc_card->virtualCard)->card_bg_back) ? asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_back) : asset('https://i.ibb.co/sVxG7gh/2.gif') }}); background-repeat: no-repeat; background-size: cover;">
                                                 <div class="row p-5 align-items-center" style="height: 40vh;">
                                                     <div
                                                         class="col-12 d-flex justify-content-center align-items-center">
@@ -560,7 +560,7 @@
                                                 </div>
                                             </div>
                                             <div class="punch-card-container-back"
-                                                style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_back) }});">
+                                                style="background-image: url({{ !empty(optional($nfc_card->virtualCard)->card_bg_back) ? asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_back) : asset('https://i.ibb.co/DCC9nQ0/card-10.png') }});">
                                                 <div class="row p-5 align-items-center py-10 px-10">
                                                     <div class="col-12 d-flex justify-content-center align-items-center"
                                                         style="height: 22vh;">
@@ -628,7 +628,7 @@
                                                 </div>
                                             </div>
                                             <div class="punch-card-container-back"
-                                                style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_back) }});">
+                                                style="background-image: url({{ !empty(optional($nfc_card->virtualCard)->card_bg_back) ? asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_back) : asset('https://i.ibb.co/M9VMCKf/card-5.png') }});">
                                                 <div class="row p-5 align-items-center">
                                                     <div class="col-12 d-flex justify-content-center align-items-center"
                                                         style="height: 30vh;">
@@ -695,7 +695,7 @@
                                                 </div>
                                             </div>
                                             <div class="punch-card-container-back"
-                                                style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_back) }});">
+                                                style="background-image: url({{ !empty(optional($nfc_card->virtualCard)->card_bg_back) ? asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_back) : asset('https://i.ibb.co/nfK0QZg/card-6.png') }});">
                                                 <div class="row p-5 align-items-center">
                                                     <div class="col-12 d-flex justify-content-center align-items-center"
                                                         style="height: 28vh">
@@ -736,7 +736,7 @@
                                                 </div>
                                             </div>
                                             <div class="punch-card-container-back"
-                                                style="background: black !important;background-image: url({{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_back) }});">
+                                                style="background: black !important;background-image: url({{ !empty(optional($nfc_card->virtualCard)->card_bg_back) ? asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_back) : asset('') }});">
                                                 <div class="row p-5 align-items-center">
                                                     <div class="col-12 d-flex justify-content-end align-items-center"
                                                         style="height: 28vh">
@@ -828,7 +828,7 @@
                                                 </div>
                                             </div>
                                             <div class="punch-card-container-back"
-                                                style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_back) }});">
+                                                style="background-image: url({{ !empty(optional($nfc_card->virtualCard)->card_bg_back) ? asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_back) : asset('https://i.ibb.co/51yxtsc/card-8.png') }});">
                                                 <div class="row p-5 align-items-center">
                                                     <div class="col-12 d-flex justify-content-center align-items-center"
                                                         style="height: 28vh">
@@ -871,7 +871,7 @@
                                                 </div>
                                             </div>
                                             <div class="punch-card-container-back"
-                                                style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_back) }});">
+                                                style="background-image: url({{ !empty(optional($nfc_card->virtualCard)->card_bg_back) ? asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_back) : asset('https://i.ibb.co/6PwnxMQ/card-1.png') }});">
                                                 <div class="row p-5 px-10 pb-10 align-items-center">
                                                     <div class="col-12 d-flex justify-content-start align-items-center"
                                                         style="height: 35vh">
@@ -941,7 +941,7 @@
                                             </div>
                                             <div class="punch-card-container-back"
                                                 style="background: -webkit-linear-gradient(to right, #4a00e0, #8e2de2);
-                                                background: linear-gradient(to right, #4a00e0, #8e2de2);background-image: url({{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_back) }});">
+                                                background: linear-gradient(to right, #4a00e0, #8e2de2);background-image: url({{ !empty(optional($nfc_card->virtualCard)->card_bg_back) ? asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_back) : asset('') }});">
                                                 <div class="row p-5 align-items-center">
                                                     <div class="col-8 d-flex justify-content-start align-items-center"
                                                         style="height: 28vh">

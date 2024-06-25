@@ -358,11 +358,11 @@
                                     <div class="row mt-5">
                                         <div class="col-12">
                                             <!-- Visiting Card Box Container -->
-                                            <div class="punch-card-container mb-2 p-5"
-                                                style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_front) }});">
+                                            <div class="punch-card-container mb-2"
+                                                style="background-image: url({{ !empty(optional($nfc_card->virtualCard)->card_bg_front) ? asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_front) : asset('https://i.ibb.co/cgBNBXk/5073118.gif') }});">
                                                 <div class="row p-5 align-items-center" style="height: 33vh;">
                                                     <div class="col-lg-6 text-center text-lg-start">
-                                                        <div class="">
+                                                        <div class="ps-lg-4">
                                                             <img class="punch-card-logo card_logo"
                                                                 src="{{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_logo) }}"
                                                                 alt="Logo"
@@ -406,9 +406,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="punch-card-container-back-one"
-                                                style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_back) }}); background-repeat: no-repeat; background-size: cover;">
-                                                <div class="row p-5 align-items-center">
+                                            <div class="punch-card-container-back"
+                                                style="background-image: url({{ !empty(optional($nfc_card->virtualCard)->card_bg_back) ? asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_back) : asset('https://i.ibb.co/sVxG7gh/2.gif') }}); background-repeat: no-repeat; background-size: cover;">
+                                                <div class="row p-5 align-items-center" style="height: 40vh;">
                                                     <div
                                                         class="col-12 d-flex justify-content-center align-items-center">
                                                         <img class="img-fluid card_font_color pt-8" width="200px;"
@@ -431,15 +431,15 @@
                                     <div class="row mt-5">
                                         <div class="col-12">
                                             <!-- Visiting Card Box Container -->
-                                            <div class="punch-card-container mb-2 p-5"
-                                                style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_front) }});">
+                                            <div class="punch-card-container mb-2"
+                                                style="background-image: url({{ !empty(optional($nfc_card->virtualCard)->card_bg_front) ? asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_front) : asset('https://i.ibb.co/DCC9nQ0/card-10.png') }});">
                                                 <div class="row p-5 align-items-center py-10 px-10">
                                                     <div class="col-lg-8 text-lg-start text-start">
                                                         <div>
                                                             <img class="punch-card-logo mb-4 card_logo"
                                                                 src="{{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_logo) }}"
                                                                 alt="Logo"
-                                                                style="width: 200px;background-size: contain;height: 100px;text-align: start;display: flex;justify-content: start;position: relative;left: 0px;object-fit: contain; margin-bottom: 0px !important;margin-bottom: 0px !important;">
+                                                                style="width: 200px;background-size: contain;height: 100px;text-align: start;display: flex;justify-content: start;position: relative;left: 0px;object-fit: contain; margin-bottom: 0px !important;">
                                                         </div>
                                                         <div class="text-start content-area font">
                                                             <h4 class="fw-bold mb-0 card_name text-white">
@@ -470,11 +470,11 @@
                                                 </div>
                                             </div>
                                             <div class="punch-card-container-back"
-                                                style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_back) }});">
+                                                style="background-image: url({{ !empty(optional($nfc_card->virtualCard)->card_bg_back) ? asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_back) : asset('https://i.ibb.co/DCC9nQ0/card-10.png') }});">
                                                 <div class="row p-5 align-items-center py-10 px-10">
                                                     <div class="col-12 d-flex justify-content-center align-items-center"
-                                                        style="height: 33vh;">
-                                                        <img class="img-fluid card_font_color pt-8" width="300px;"
+                                                        style="height: 22vh;">
+                                                        <img class="img-fluid card_font_color pt-8" width="200px;"
                                                             src="{{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_logo) }}"
                                                             alt="Logo Back" />
                                                     </div>
@@ -488,7 +488,7 @@
                                         <div
                                             class="col-lg-12 d-flex justify-content-center align-items-center flex-column">
                                             <div class="punch-card-container px-5 mb-2"
-                                                style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_front) }});">
+                                                style="background-image: url({{ !empty(optional($nfc_card->virtualCard)->card_bg_front) ? asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_front) : asset('https://i.ibb.co/M9VMCKf/card-5.png') }});">
                                                 <div class="row p-5 px-10 pb-10 align-items-center">
                                                     <!-- Left column for card details -->
                                                     <div class="col-lg-8 text-lg-start text-start">
@@ -496,7 +496,7 @@
                                                             <img class="punch-card-logo mb-4 card_logo"
                                                                 src="{{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_logo) }}"
                                                                 alt="Logo"
-                                                                style="width: 200px;background-size: contain;height: 100px;text-align: start;margin-bottom: 0px !important;display: flex;justify-content: start;position: relative;left: 0px;object-fit: contain;">/>
+                                                                style="width: 200px;background-size: contain;height: 100px;text-align: start;display: flex;justify-content: start;position: relative;left: 0px;object-fit: contain; margin-bottom: 0px !important;">/>
                                                         </div>
                                                         <div class="text-start content-area font">
                                                             <h4 class="fw-bold mb-0 card_name card_font_color"
@@ -539,7 +539,7 @@
                                                 </div>
                                             </div>
                                             <div class="punch-card-container-back"
-                                                style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_back) }});">
+                                                style="background-image: url({{ !empty(optional($nfc_card->virtualCard)->card_bg_back) ? asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_back) : asset('https://i.ibb.co/M9VMCKf/card-5.png') }});">
                                                 <div class="row p-5 align-items-center">
                                                     <div class="col-12 d-flex justify-content-center align-items-center"
                                                         style="height: 30vh;">
@@ -555,8 +555,8 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <!-- Visiting Card Box Container -->
-                                            <div class="punch-card-container mb-2 p-5"
-                                                style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_front) }});">
+                                            <div class="punch-card-container mb-2"
+                                                style="background-image: url({{ !empty(optional($nfc_card->virtualCard)->card_bg_front) ? asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_front) : asset('https://i.ibb.co/nfK0QZg/card-6.png') }});">
                                                 <div class="row p-5 align-items-center" style="height: 33vh">
                                                     <div class="col-lg-6 d-flex justify-content-start font">
                                                         <div class="">
@@ -573,8 +573,7 @@
                                                         <div>
                                                             <img class="punch-card-logo card_logo"
                                                                 src="{{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_logo) }}"
-                                                                alt="Logo"
-                                                                style="width: 200px;background-size: contain;height: 100px;text-align: start;display: flex;justify-content: start;position: relative;left: 0px;object-fit: contain; margin-bottom: 0px !important;" />
+                                                                alt="Logo" />
                                                         </div>
                                                         <div class="text-start content-area font">
                                                             <h4 class="fw-bold mb-0 card_name" style="color: #fff">
@@ -607,14 +606,13 @@
                                                 </div>
                                             </div>
                                             <div class="punch-card-container-back"
-                                                style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_back) }});">
+                                                style="background-image: url({{ !empty(optional($nfc_card->virtualCard)->card_bg_back) ? asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_back) : asset('https://i.ibb.co/nfK0QZg/card-6.png') }});">
                                                 <div class="row p-5 align-items-center">
                                                     <div class="col-12 d-flex justify-content-center align-items-center"
                                                         style="height: 28vh">
-                                                        <img class="punch-card-logo-back "
+                                                        <img class="punch-card-logo-back card_logo"
                                                             src="{{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_logo) }}"
-                                                            alt="Logo Back" punch-card-logo-back card_logo
-                                                            style="width: 200px;background-size: contain;height: 100px;text-align: start;display: flex;justify-content: start;position: relative;left: 0px;object-fit: contain; margin-bottom: 0px !important;" />
+                                                            alt="Logo Back" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -625,8 +623,8 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <!-- Visiting Card Box Container -->
-                                            <div class="punch-card-container mb-2 p-5"
-                                                style="background: black !important;">
+                                            <div class="punch-card-container mb-2"
+                                                style="background: black !important;background-image: url({{ !empty(optional($nfc_card->virtualCard)->card_bg_front) ? asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_front) : asset('') }});">
                                                 <div class="row p-5 align-items-center">
                                                     <div class="col-lg-6 d-flex justify-content-start font align-items-center"
                                                         style="height: 28vh">
@@ -645,13 +643,12 @@
                                                     <div class="col-lg-6 text-lg-start align-items-center text-end">
                                                         <img class="punch-card-logo-back card_logo"
                                                             src="https://i.ibb.co/Zz6zhxj/logo-search-grid-1x-removebg-preview-1.png"
-                                                            alt="Logo Back"
-                                                            style="width: 200px;background-size: contain;height: 100px;text-align: start;display: flex;justify-content: start;position: relative;left: 0px;object-fit: contain; margin-bottom: 0px !important;" />
+                                                            alt="Logo Back" />
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="punch-card-container-back"
-                                                style="background: black !important;">
+                                                style="background: black !important;background-image: url({{ !empty(optional($nfc_card->virtualCard)->card_bg_back) ? asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_back) : asset('') }});">
                                                 <div class="row p-5 align-items-center">
                                                     <div class="col-12 d-flex justify-content-end align-items-center"
                                                         style="height: 28vh">
@@ -696,8 +693,8 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <!-- Visiting Card Box Container -->
-                                            <div class="punch-card-container mb-2 p-5"
-                                                style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_front) }});">
+                                            <div class="punch-card-container mb-2"
+                                                style="background-image: url({{ !empty(optional($nfc_card->virtualCard)->card_bg_front) ? asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_front) : asset('https://i.ibb.co/51yxtsc/card-8.png') }});">
                                                 <div class="row p-5 align-items-center" style="height: 33vh">
                                                     <div class="col-lg-6 d-flex justify-content-start font">
                                                         <div class="">
@@ -743,7 +740,7 @@
                                                 </div>
                                             </div>
                                             <div class="punch-card-container-back"
-                                                style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_back) }});">
+                                                style="background-image: url({{ !empty(optional($nfc_card->virtualCard)->card_bg_back) ? asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_back) : asset('https://i.ibb.co/51yxtsc/card-8.png') }});">
                                                 <div class="row p-5 align-items-center">
                                                     <div class="col-12 d-flex justify-content-center align-items-center"
                                                         style="height: 28vh">
@@ -760,8 +757,8 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <!-- Visiting Card Box Container -->
-                                            <div class="punch-card-container mb-2 p-5"
-                                                style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_front) }});">
+                                            <div class="punch-card-container mb-2"
+                                                style="background-image: url({{ !empty(optional($nfc_card->virtualCard)->card_bg_front) ? asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_front) : asset('https://i.ibb.co/6PwnxMQ/card-1.png') }});">
                                                 <div class="row p-5 align-items-center">
                                                     <div class="col-lg-6 d-flex justify-content-center align-items-center font"
                                                         style="height: 28vh">
@@ -787,7 +784,7 @@
                                                 </div>
                                             </div>
                                             <div class="punch-card-container-back"
-                                                style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_back) }});">
+                                                style="background-image: url({{ !empty(optional($nfc_card->virtualCard)->card_bg_back) ? asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_back) : asset('https://i.ibb.co/6PwnxMQ/card-1.png') }});">
                                                 <div class="row p-5 px-10 pb-10 align-items-center">
                                                     <div class="col-12 d-flex justify-content-start align-items-center"
                                                         style="height: 35vh">
@@ -830,8 +827,8 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <!-- Visiting Card Box Container -->
-                                            <div class="punch-card-container mb-2 p-5"
-                                                style="background: -webkit-linear-gradient(to right, #4a00e0, #8e2de2); background: linear-gradient(to right, #4a00e0, #8e2de2);">
+                                            <div class="punch-card-container mb-2"
+                                                style="background: -webkit-linear-gradient(to right, #4a00e0, #8e2de2); background: linear-gradient(to right, #4a00e0, #8e2de2);background-image: url({{ !empty(optional($nfc_card->virtualCard)->card_bg_front) ? asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_front) : asset('') }})">
                                                 <div class="row p-5 align-items-center">
                                                     <div class="col-lg-6 d-flex justify-content-start font align-items-center"
                                                         style="height: 28vh">
@@ -858,7 +855,7 @@
                                             </div>
                                             <div class="punch-card-container-back"
                                                 style="background: -webkit-linear-gradient(to right, #4a00e0, #8e2de2);
-                                                background: linear-gradient(to right, #4a00e0, #8e2de2);">
+                                                background: linear-gradient(to right, #4a00e0, #8e2de2);background-image: url({{ !empty(optional($nfc_card->virtualCard)->card_bg_back) ? asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_back) : asset('') }});">
                                                 <div class="row p-5 align-items-center">
                                                     <div class="col-8 d-flex justify-content-start align-items-center"
                                                         style="height: 28vh">
