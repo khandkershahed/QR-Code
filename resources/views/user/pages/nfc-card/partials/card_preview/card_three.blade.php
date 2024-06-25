@@ -79,7 +79,8 @@
                         <div>
                             <p class="fw-bold mb-0 text-white">
                                 <i class="fas fa-map-marker-alt"></i> <span class="card_address card_font_color">New York, United
-                                    State</span>
+                                    State
+                                </span>
                             </p>
                         </div>
                     </div>
