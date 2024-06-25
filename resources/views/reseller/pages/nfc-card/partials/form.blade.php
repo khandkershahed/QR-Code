@@ -51,7 +51,7 @@
                     </div>
                     <div class="col-lg-3">
                         <div class="fv-row my-3">
-                            <x-metronic.label class="fw-semibold fs-6 mb-2 required">First Name</x-metronic.label>
+                            <x-metronic.label class="fw-semibold fs-6 mb-2">First Name</x-metronic.label>
                             <x-metronic.input type="text" name="first_name"
                                 class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Robert"
                                 value="" />
@@ -115,7 +115,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="fv-row my-3">
-                            <x-metronic.label class="fw-semibold fs-6 mb-2 required">Email Personal</x-metronic.label>
+                            <x-metronic.label class="fw-semibold fs-6 mb-2">Email Personal</x-metronic.label>
                             <x-metronic.input type="email" name="email_personal"
                                 class="form-control form-control-solid mb-3 mb-lg-0" placeholder="personal@mail.com"
                                 value="" />
@@ -149,7 +149,7 @@
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2">Bio Description</x-metronic.label>
                             <textarea class="form-control form-control-solid" rows="1" name="bio_description"
-                                placeholder="Book enthusiast, nature lover, avid learner, coffee addict, aspiring writer, music aficionado, travel enthusiast, optimistic dreamer."></textarea>
+                                placeholder="Enter Comment"></textarea>
                         </div>
                     </div>
                 </div>
@@ -187,7 +187,7 @@
                     </div>
                     <div class="col-lg-3">
                         <div class="fv-row my-3">
-                            <x-metronic.label class="fw-semibold fs-6 mb-2">Service One Title</x-metronic.label>
+                            <x-metronic.label class="fw-semibold fs-6 mb-2"> One Title</x-metronic.label>
                             <x-metronic.input type="text" name="service_one_title"
                                 class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Web Developement"
                                 value="" />
@@ -195,7 +195,7 @@
                     </div>
                     <div class="col-lg-3">
                         <div class="fv-row my-3">
-                            <x-metronic.label class="fw-semibold fs-6 mb-2">Service One Image</x-metronic.label>
+                            <x-metronic.label class="fw-semibold fs-6 mb-2"> One Image</x-metronic.label>
                             <x-metronic.input type="file" name="service_one_image"
                                 class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Web Developement"
                                 value="" />
@@ -203,14 +203,14 @@
                     </div>
                     <div class="col-lg-3">
                         <div class="fv-row my-3">
-                            <x-metronic.label class="fw-semibold fs-6 mb-2">Service One Description</x-metronic.label>
+                            <x-metronic.label class="fw-semibold fs-6 mb-2"> One Description</x-metronic.label>
                             <textarea class="form-control form-control-solid" rows="1" name="service_one_description"
                                 placeholder="Professional, reliable service provider committed to exceeding expectations with quality, efficiency, and personalized care for every client's needs."></textarea>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="fv-row my-3">
-                            <x-metronic.label class="fw-semibold fs-6 mb-2">Service Two Title</x-metronic.label>
+                            <x-metronic.label class="fw-semibold fs-6 mb-2"> Two Title</x-metronic.label>
                             <x-metronic.input type="text" name="service_two_title"
                                 class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Web Developement"
                                 value="" />
@@ -218,7 +218,7 @@
                     </div>
                     <div class="col-lg-3">
                         <div class="fv-row my-3">
-                            <x-metronic.label class="fw-semibold fs-6 mb-2">Service Two Image</x-metronic.label>
+                            <x-metronic.label class="fw-semibold fs-6 mb-2"> Two Image</x-metronic.label>
                             <x-metronic.input type="file" name="service_two_image"
                                 class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Web Developement"
                                 value="" />
@@ -226,14 +226,14 @@
                     </div>
                     <div class="col-lg-3">
                         <div class="fv-row my-3">
-                            <x-metronic.label class="fw-semibold fs-6 mb-2">Service Two Description</x-metronic.label>
+                            <x-metronic.label class="fw-semibold fs-6 mb-2"> Two Description</x-metronic.label>
                             <textarea class="form-control form-control-solid" rows="1" name="service_two_description"
                                 placeholder="Professional, reliable service provider committed to exceeding expectations with quality, efficiency, and personalized care for every client's needs."></textarea>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="fv-row my-3">
-                            <x-metronic.label class="fw-semibold fs-6 mb-2">Service Three Title</x-metronic.label>
+                            <x-metronic.label class="fw-semibold fs-6 mb-2"> Three Title</x-metronic.label>
                             <x-metronic.input type="text" name="service_three_title"
                                 class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Web Developement"
                                 value="" />
@@ -241,7 +241,7 @@
                     </div>
                     <div class="col-lg-3">
                         <div class="fv-row my-3">
-                            <x-metronic.label class="fw-semibold fs-6 mb-2">Service Three Image</x-metronic.label>
+                            <x-metronic.label class="fw-semibold fs-6 mb-2"> Three Image</x-metronic.label>
                             <x-metronic.input type="file" name="service_three_image"
                                 class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Web Developement"
                                 value="" />
@@ -249,7 +249,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="fv-row my-3">
-                            <x-metronic.label class="fw-semibold fs-6 mb-2">Service Three
+                            <x-metronic.label class="fw-semibold fs-6 mb-2"> Three
                                 Description</x-metronic.label>
                             <textarea class="form-control form-control-solid" rows="1" name="service_three_description"
                                 placeholder="Professional, reliable service provider committed to exceeding expectations with quality, efficiency, and personalized care for every client's needs."></textarea>
@@ -304,7 +304,7 @@
                     </div>
                     <div class="col-lg-3">
                         <div class="fv-row my-3">
-                            <x-metronic.label class="fw-semibold fs-6 mb-2">Company Phone</x-metronic.label>
+                            <x-metronic.label class="fw-semibold fs-6 mb-2">Phone</x-metronic.label>
                             <x-metronic.input type="text" name="company_phone"
                                 class="form-control form-control-solid mb-3 mb-lg-0" placeholder="USA"
                                 value="" />
