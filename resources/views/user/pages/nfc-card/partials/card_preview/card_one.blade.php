@@ -71,9 +71,9 @@
 <div class="row mt-5">
     <div class="col-12">
         <!-- Visiting Card Box Container -->
-        <div class="punch-card-container" style="background-image: url('https://i.ibb.co/cgBNBXk/5073118.gif');">
+        <div class="punch-card-container mb-2" style="background-image: url('https://i.ibb.co/cgBNBXk/5073118.gif');">
             <div class="row p-5 align-items-center">
-                <div class="col-lg-6 text-center text-lg-start">
+                <div class="col-lg-4 text-center text-lg-start">
                     <div class="ps-lg-4">
                         <img class="punch-card-logo card_logo" src="https://i.ibb.co/BNBTVN4/logo.png" alt="Logo" />
                     </div>
@@ -81,7 +81,7 @@
                         <img class="punch-card-qr" src="https://i.ibb.co/M7KMQC0/qr.png" alt="QR Code" />
                     </div>
                 </div>
-                <div class="col-lg-6 mt-4 mt-lg-0">
+                <div class="col-lg-8 mt-4 mt-lg-0">
                     <div class="text-center text-lg-end content-area">
                         <h4 class="fw-bold mb-0 card_name">Sazeduzzaman Saju</h4>
                         <p class="fw-bold mb-0 card_designation">Frontend Developer</p>
@@ -89,32 +89,28 @@
                         <div>
                             <p class="fw-bold pt-3 mb-0">
                                 <span class="card_phone">015 7661 4451</span> <i
-                                    class="fa-solid fa-phone tem-one-main-color "></i>
+                                    class="fas fa-phone tem-one-main-color "></i>
                             </p>
                             <p class="fw-bold mb-0">
                                 <span class="card_email">goflixza@mail.com</span> <i
-                                    class="fa-solid fa-envelope tem-one-main-color "></i>
+                                    class="fas fa-envelope tem-one-main-color "></i>
                             </p>
                         </div>
                         <div>
                             <p class="fw-bold mb-0">
                                 <span class="card_address">New York, United States</span> <i
-                                    class="fa-solid fa-map-marker-alt tem-one-main-color"></i>
+                                    class="fas fa-map-marker-alt tem-one-main-color"></i>
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="punch-card-container-back-one" style="background-image: url('https://i.ibb.co/sVxG7gh/2.gif');">
-            <div class="row p-5 align-items-center">
-                <div class="col-12 d-flex justify-content-center align-items-center">
+        <div class="punch-card-container-back" style="background-image: url('https://i.ibb.co/sVxG7gh/2.gif');">
+            <div class="row p-5 align-items-center" style="height: 27.5vh;">
+                <div class="col-12 d-flex justify-content-center align-items-center" >
                     <img class="punch-card-logo-back card_logo pt-8" src="https://i.ibb.co/BNBTVN4/logo.png"
                         alt="Logo Back" />
-                </div>
-                <div class="col-12 d-flex justify-content-center align-items-center">
-                    <p class="fw-bold mb-0 card-mail-one"><i class="fa-solid fa-envelope tem-one-main-color"></i>
-                        support@gmail.com</p>
                 </div>
             </div>
         </div>

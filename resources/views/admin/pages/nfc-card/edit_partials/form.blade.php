@@ -227,7 +227,7 @@
                                         <a class="nav-link w-100 btn btn-flex btn-active-primary rounded-0 active"
                                             data-bs-toggle="tab" href="#kt_vtab_pane_4" aria-selected="true"
                                             role="tab">
-                                            <i class="fa-solid fa-arrow-right-long  text-active-primary pe-3"></i>
+                                            <i class="fas fa-arrow-right-long  text-active-primary pe-3"></i>
                                             <span class="d-flex flex-column align-items-start">
                                                 <span class="fs-4 fw-bold">Service One</span>
                                                 <span class="fs-7">Add Your Services</span>
@@ -238,7 +238,7 @@
                                         <a class="nav-link w-100 btn btn-flex btn-active-primary rounded-0"
                                             data-bs-toggle="tab" href="#kt_vtab_pane_5" aria-selected="false"
                                             role="tab" tabindex="-1">
-                                            <i class="fa-solid fa-arrow-right-long  text-active-primary pe-3"></i>
+                                            <i class="fas fa-arrow-right-long  text-active-primary pe-3"></i>
                                             <span class="d-flex flex-column align-items-start">
                                                 <span class="fs-4 fw-bold">Service Two</span>
                                                 <span class="fs-7">Add Your Services</span>
@@ -249,7 +249,7 @@
                                         <a class="nav-link w-100 btn btn-flex btn-active-primary rounded-0"
                                             data-bs-toggle="tab" href="#kt_vtab_pane_6" aria-selected="false"
                                             role="tab" tabindex="-1">
-                                            <i class="fa-solid fa-arrow-right-long  text-active-primary pe-3"></i>
+                                            <i class="fas fa-arrow-right-long  text-active-primary pe-3"></i>
                                             <span class="d-flex flex-column align-items-start">
                                                 <span class="fs-4 fw-bold">Service Three</span>
                                                 <span class="fs-7">Add Your Services</span>

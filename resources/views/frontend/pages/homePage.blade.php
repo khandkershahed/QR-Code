@@ -26,10 +26,10 @@
                         </div>
                         <ul class="icon-list pt-15">
                             <li>
-                                <i class="fa-regular fa-circle-check"></i> Free 14-day trial
+                                <i class="fas fa-circle-check"></i> Free 14-day trial
                             </li>
                             <li>
-                                <i class="fa-regular fa-circle-check"></i> No credit card
+                                <i class="fas fa-circle-check"></i> No credit card
                                 required
                             </li>
                         </ul>
@@ -160,15 +160,15 @@
                                 </p>
                                 <ul class="icon-list mt-20 mb-40">
                                     <li>
-                                        <i class="fa-regular fa-square-check"></i> Get AI Power
+                                        <i class="fas fa-square-check"></i> Get AI Power
                                         Chat Files
                                     </li>
                                     <li>
-                                        <i class="fa-regular fa-square-check"></i> Connect
+                                        <i class="fas fa-square-check"></i> Connect
                                         Securely
                                     </li>
                                     <li>
-                                        <i class="fa-regular fa-square-check"></i> Message
+                                        <i class="fas fa-square-check"></i> Message
                                         Experience
                                     </li>
                                 </ul>
@@ -214,15 +214,15 @@
                                 </p>
                                 <ul class="icon-list mt-20 mb-40">
                                     <li>
-                                        <i class="fa-regular fa-square-check"></i> Get AI Power
+                                        <i class="fas fa-square-check"></i> Get AI Power
                                         Chat Files
                                     </li>
                                     <li>
-                                        <i class="fa-regular fa-square-check"></i> Connect
+                                        <i class="fas fa-square-check"></i> Connect
                                         Securely
                                     </li>
                                     <li>
-                                        <i class="fa-regular fa-square-check"></i> Message
+                                        <i class="fas fa-square-check"></i> Message
                                         Experience
                                     </li>
                                 </ul>
@@ -254,15 +254,15 @@
                                 </p>
                                 <ul class="icon-list mt-20 mb-40">
                                     <li>
-                                        <i class="fa-regular fa-square-check"></i> Get AI Power
+                                        <i class="fas fa-square-check"></i> Get AI Power
                                         Chat Files
                                     </li>
                                     <li>
-                                        <i class="fa-regular fa-square-check"></i> Connect
+                                        <i class="fas fa-square-check"></i> Connect
                                         Securely
                                     </li>
                                     <li>
-                                        <i class="fa-regular fa-square-check"></i> Message
+                                        <i class="fas fa-square-check"></i> Message
                                         Experience
                                     </li>
                                 </ul>
@@ -305,15 +305,15 @@
                                 </p>
                                 <ul class="icon-list mt-20 mb-40">
                                     <li>
-                                        <i class="fa-regular fa-square-check"></i> Get AI Power
+                                        <i class="fas fa-square-check"></i> Get AI Power
                                         Chat Files
                                     </li>
                                     <li>
-                                        <i class="fa-regular fa-square-check"></i> Connect
+                                        <i class="fas fa-square-check"></i> Connect
                                         Securely
                                     </li>
                                     <li>
-                                        <i class="fa-regular fa-square-check"></i> Message
+                                        <i class="fas fa-square-check"></i> Message
                                         Experience
                                     </li>
                                 </ul>

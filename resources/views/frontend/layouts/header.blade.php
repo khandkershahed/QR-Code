@@ -256,10 +256,10 @@
 
                 <!-- Nav Search -->
                 {{-- <div class="nav-search ms-xl-2 ms-4 me-lg-auto py-10">
-                    <button class="fa-solid fa-magnifying-glass"></button>
+                    <button class="fas fa-magnifying-glass"></button>
                     <form action="#" class="hide">
                         <input type="text" placeholder="Search" class="searchbox" required />
-                        <button type="submit" class="searchbutton fa-solid fa-magnifying-glass"></button>
+                        <button type="submit" class="searchbutton fas fa-magnifying-glass"></button>
                     </form>
                 </div> --}}
 
@@ -278,7 +278,7 @@
                         {{-- <a href="{{ route('register') }}" class="light-btn">Sign Up</a> --}}
                     @endauth
                     <a href="{{ route('pricing') }}" class="theme-btn style-two rounded-0">Get Started
-                        <i class="fa-solid fa-arrow-right"></i>
+                        <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>

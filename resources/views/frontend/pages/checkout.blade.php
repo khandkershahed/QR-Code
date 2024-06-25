@@ -39,10 +39,10 @@
                         <div class="row payment-container">
                             <div class="col-lg-6 ">
                                 <div class="d-flex align-items-center colum-padding">
-                                    <a href="" class="pe-3"><i class="fa-solid fa-arrow-left-long"></i></a>
+                                    <a href="" class="pe-3"><i class="fas fa-arrow-left-long"></i></a>
                                     <div class="d-flex align-items-center">
                                         <div>
-                                            <i class="fa-solid fa-shop pe-3"></i>
+                                            <i class="fas fa-shop pe-3"></i>
                                         </div>
                                         <div>
                                             <h2 class="mb-0">FLIXZA GLOBAL LLC </h2>

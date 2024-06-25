@@ -54,8 +54,15 @@
 
     @media only screen and (min-width: 1368px) {
         .punch-card-container {
-            width: 99%;
+            width: 100%;
             height: auto;
+            margin: auto;
+        }
+
+        .punch-card-container-back {
+            width: 100%;
+            height: auto;
+            margin: auto;
         }
     }
 
@@ -64,9 +71,9 @@
 <div class="row mt-5">
     <div class="col-12">
         <!-- Visiting Card Box Container -->
-        <div class="punch-card-container">
+        <div class="punch-card-container mb-2">
             <div class="row p-5 align-items-center py-8">
-                <div class="col-lg-6 text-lg-start text-start">
+                <div class="col-lg-8 text-lg-start text-start">
                     <div>
                         <img class="punch-card-logo mb-4 card_logo"
                             src="https://i.ibb.co/vhZg1xp/png-clipart-light-white-line-light-angle-white-removebg-preview.png"
@@ -78,26 +85,26 @@
                         <div class="title-devider mt-2"></div>
                         <div class="contact-info">
                             <p class="fw-bold text-white pt-3 mb-0">
-                                <i class="fa-solid fa-phone"></i> <span class="card_phone">015 7661 4451</span>
+                                <i class="fas fa-phone"></i> <span class="card_phone">015 7661 4451</span>
                             </p>
                             <p class="fw-bold text-white mb-0">
-                                <i class="fa-solid fa-envelope"></i> <span class="card_email">goflixza@mail.com</span>
+                                <i class="fas fa-envelope"></i> <span class="card_email">goflixza@mail.com</span>
                             </p>
                         </div>
                         <div>
                             <p class="fw-bold mb-0 text-white">
-                                <i class="fa-solid fa-map-marker-alt"></i> <span class="card_address">New York,
+                                <i class="fas fa-map-marker-alt"></i> <span class="card_address">New York,
                                     United States</span>
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6"></div>
+                <div class="col-lg-4"></div>
             </div>
         </div>
         <div class="punch-card-container-back">
             <div class="row p-5 align-items-center py-8">
-                <div class="col-12 d-flex justify-content-center align-items-center" style="height: 20vh;">
+                <div class="col-12 d-flex justify-content-center align-items-center" style="height: 30vh;">
                     <img class="punch-card-logo-back card_logo"
                         src="https://i.ibb.co/vhZg1xp/png-clipart-light-white-line-light-angle-white-removebg-preview.png"
                         alt="Logo Back">

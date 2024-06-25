@@ -10140,8 +10140,19 @@ a.theme-btn.style-four:hover {
         font-size: 26px;
     }
     .punch-card-container{
-        width: 99%;
+        width: 100%;
         height: auto;
+        margin: auto;
+    }
+    .punch-card-container-back{
+        width: 100%;
+        height: auto;
+        margin: auto;
+    }
+    .punch-card-container-back {
+        width: 100% !important;
+        height: auto;
+        margin: auto;
     }
 }
 
@@ -15674,7 +15685,8 @@ a.theme-btn.style-four:hover {
 
 @media only screen and (min-width: 1368px) {
     .punch-card-container{
-        width: 99%;
+        width: 100%;
         height: auto;
+        margin: auto;
     }
 }

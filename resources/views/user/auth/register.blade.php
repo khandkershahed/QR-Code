@@ -190,7 +190,7 @@
                             <div class="">
                                 <div>
                                     <button type="submit" class="btn btn-primary w-100">
-                                        Continue <i class="fa-solid fa-arrow-right-long ps-3"></i>
+                                        Continue <i class="fas fa-arrow-right-long ps-3"></i>
                                     </button>
                                 </div>
                             </div>
