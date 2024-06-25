@@ -728,7 +728,7 @@
                 var formData = new FormData($(this).closest('form')[0]);
 
                 $.ajax({
-                    url: '{{ route('user.qr.preview') }}', // Replace this with the URL of your Laravel route or endpoint
+                    url: '{{ route('admin.qr.preview') }}', // Replace this with the URL of your Laravel route or endpoint
                     type: 'POST',
                     data: formData,
                     processData: false,
