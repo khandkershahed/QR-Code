@@ -1337,7 +1337,7 @@ class QrCodeController extends Controller
         }
     }
 
-    public function qrPreview(QrCodeRequest $request)
+    public function qrPreview(Request $request)
     {
         $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
         $typePrefix = 'QR'; // Example prefix
