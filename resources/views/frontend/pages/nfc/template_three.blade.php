@@ -727,10 +727,7 @@
                                                             <div class="col mb-2 text-center">
                                                                 <button type="submit"
                                                                     class="btn btn-sm mt-2 px-4 rounded-pill"
-                                                                    style="
-                                      background-color: #f44336;
-                                      color: #fff;
-                                    ">
+                                                                    style="background-color: #f44336;color: #fff;">
                                                                     Send Messages
                                                                 </button>
                                                             </div>
