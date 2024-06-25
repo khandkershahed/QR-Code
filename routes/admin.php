@@ -75,6 +75,7 @@ Route::middleware('auth:admin', 'role:admin')->prefix('admin')->name('admin.')->
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 
+        Route::post('qrcode/preview', [QrCodeController::class, 'qrPreview'])->name('qr.preview');
 
     Route::resources(
         [

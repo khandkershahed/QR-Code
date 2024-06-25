@@ -1344,16 +1344,13 @@ class QrCodeController extends Controller
         $today = date('dmY');
         $userId = $isUserRoute ? Auth::user()->id : Auth::guard('admin')->user()->id;
 
-
-
         $lastCode = Qr::where('code', 'like', $typePrefix . $today . $userId . '%')
             ->orderBy('id', 'desc')
             ->first();
 
-        // Determine the new number for the QR code
+
         $newNumber = $lastCode ? (int)substr($lastCode->code, -2) + 1 : 1;
 
-        // Generate the new QR code
         $code = $typePrefix . $today . $userId . str_pad($newNumber, 2, '0', STR_PAD_LEFT);
 
 
