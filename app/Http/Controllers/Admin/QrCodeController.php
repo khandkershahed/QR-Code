@@ -1339,12 +1339,12 @@ class QrCodeController extends Controller
 
     public function qrPreview(Request $request)
     {
+        dd(Auth::guard('admin')->user()->id);
         $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
         $typePrefix = 'QR'; // Example prefix
         $today = date('dmY');
         $userId = $isUserRoute ? Auth::user()->id : null;
 
-        dd(Auth::guard('admin')->user()->id);
         $lastCode = Qr::where('code', 'like', $typePrefix . $today . $userId . '%')
             ->orderBy('id', 'desc')
             ->first();
