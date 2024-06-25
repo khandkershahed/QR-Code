@@ -83,6 +83,14 @@
         margin-right: 0;
         border-radius: 10px;
     }
+
+    .nfc-mobile-frame {
+        max-width: 576px;
+        min-height: 100vh;
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
+    }
 </style>
 
 <div class="container">
@@ -209,7 +217,7 @@
                                 <small class="fw-bold">(Work)</small>
                             </p>
                             <p class="mb-0 phone_personal">
-                                 +385 91 561 0409
+                                +385 91 561 0409
                                 <small class="fw-bold">(Personal)</small>
                             </p>
                             <div class="pt-2">
