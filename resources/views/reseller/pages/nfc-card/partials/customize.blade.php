@@ -6,7 +6,7 @@
                    <div class="accordion-header py-3 d-flex px-3" data-bs-toggle="collapse"
                        data-bs-target="#kt_accordion_2_item_1">
                        <span class="accordion-icon">
-                           <i class="fa-solid fa-angles-right"></i>
+                           <i class="fas fa-angles-right"></i>
                        </span>
                        <h3 class="fs-4 fw-semibold mb-0 ms-4">COLOR</h3>
                    </div>
@@ -96,7 +96,7 @@
                    <div class="accordion-header py-3 d-flex px-3 collapsed" data-bs-toggle="collapse"
                        data-bs-target="#kt_accordion_2_item_2">
                        <span class="accordion-icon">
-                           <i class="fa-solid fa-angles-right"></i>
+                           <i class="fas fa-angles-right"></i>
                        </span>
                        <h3 class="fs-4 fw-semibold mb-0 ms-4">FONT STYLE</h3>
                    </div>
@@ -125,7 +125,7 @@
                    <div class="accordion-header py-3 d-flex px-3 collapsed" data-bs-toggle="collapse"
                        data-bs-target="#kt_accordion_2_item_3">
                        <span class="accordion-icon">
-                           <i class="fa-solid fa-angles-right"></i>
+                           <i class="fas fa-angles-right"></i>
                        </span>
                        <h3 class="fs-4 fw-semibold mb-0 ms-4">Button Color</h3>
                    </div>
@@ -178,7 +178,7 @@
                    <div class="accordion-header py-3 d-flex px-3 collapsed" data-bs-toggle="collapse"
                        data-bs-target="#kt_accordion_2_item_4">
                        <span class="accordion-icon">
-                           <i class="fa-solid fa-angles-right"></i>
+                           <i class="fas fa-angles-right"></i>
                        </span>
                        <h3 class="fs-4 fw-semibold mb-0 ms-4">Frame Color</h3>
                    </div>

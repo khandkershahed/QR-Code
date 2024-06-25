@@ -29,13 +29,13 @@
                         </p>
                         <ul class="icon-list style-two mt-40 mb-45">
                             <li>
-                                <i class="fa-regular fa-circle-check"></i> Intuitive QR Code Generation
+                                <i class="fas fa-circle-check"></i> Intuitive QR Code Generation
                             </li>
                             <li>
-                                <i class="fa-regular fa-circle-check"></i> Centralized Management Hub
+                                <i class="fas fa-circle-check"></i> Centralized Management Hub
                             </li>
                             <li>
-                                <i class="fa-regular fa-circle-check"></i> Insightful Analytics
+                                <i class="fas fa-circle-check"></i> Insightful Analytics
                             </li>
                         </ul>
                         <a href="about.html" class="theme-btn">Learn More <i class="fas fa-arrow-right"></i></a>
@@ -69,7 +69,7 @@
                 <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                     <div class="iconic-box style-seven">
                         <div class="icon">
-                            <i class="fa-solid fa-atom"></i>
+                            <i class="fas fa-atom"></i>
                         </div>
                         <div class="content">
                             <h5>
@@ -89,7 +89,7 @@
                     data-aos-offset="50">
                     <div class="iconic-box style-seven">
                         <div class="icon">
-                            <i class="fa-solid fa-rocket"></i>
+                            <i class="fas fa-rocket"></i>
                         </div>
                         <div class="content">
                             <h5>
@@ -109,7 +109,7 @@
                     data-aos-offset="50">
                     <div class="iconic-box style-seven">
                         <div class="icon">
-                            <i class="fa-solid fa-bullseye"></i>
+                            <i class="fas fa-bullseye"></i>
                         </div>
                         <div class="content">
                             <h5>
@@ -128,7 +128,7 @@
                 <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                     <div class="iconic-box style-seven">
                         <div class="icon">
-                            <i class="fa-solid fa-anchor"></i>
+                            <i class="fas fa-anchor"></i>
                         </div>
                         <div class="content">
                             <h5>
@@ -168,7 +168,7 @@
                     data-aos-offset="50">
                     <div class="iconic-box style-seven">
                         <div class="icon">
-                            <i class="fa-solid fa-shield-halved"></i>
+                            <i class="fas fa-shield-halved"></i>
                         </div>
                         <div class="content">
                             <h5><a href="service-details.html">Cross-Platform Compatibility</a></h5>

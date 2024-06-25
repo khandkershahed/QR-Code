@@ -98,7 +98,7 @@
                     <h5 class="modal-title ps-5">Add Faq</h5>
                     <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
                         aria-label="Close">
-                        <i class="fa-solid fa-circle-xmark"></i>
+                        <i class="fas fa-circle-xmark"></i>
                     </div>
                 </div>
                 <form action="{{ route('admin.faq.store') }}" class="needs-validation" method="post" novalidate>
@@ -184,7 +184,7 @@
                         <h5 class="modal-title ps-5">Edit Faq</h5>
                         <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
                             aria-label="Close">
-                            <i class="fa-solid fa-circle-xmark"></i>
+                            <i class="fas fa-circle-xmark"></i>
                         </div>
                     </div>
                     <form action="{{ route('admin.faq.update', $faq->id) }}" class="needs-validation" method="post"
@@ -284,7 +284,7 @@
                         <h5 class="modal-title ps-5">View Faq</h5>
                         <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
                             aria-label="Close">
-                            <i class="fa-solid fa-circle-xmark"></i>
+                            <i class="fas fa-circle-xmark"></i>
                         </div>
                     </div>
                     <div class="modal-body">

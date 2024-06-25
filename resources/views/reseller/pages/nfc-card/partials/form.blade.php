@@ -11,7 +11,7 @@
             <div class="accordion-header py-3 d-flex px-3 border bg-light" data-bs-toggle="collapse"
                 data-bs-target="#kt_accordion_2_item_1">
                 <span class="accordion-icon">
-                    <i class="fa-solid fa-angles-right" aria-hidden="true"></i>
+                    <i class="fas fa-angles-right" aria-hidden="true"></i>
                 </span>
                 <h3 class="fs-4 fw-semibold mb-0 ms-4">Profile Area</h3>
             </div>
@@ -131,7 +131,7 @@
             <div class="accordion-header py-3 d-flex px-3 border bg-light collapsed" data-bs-toggle="collapse"
                 data-bs-target="#kt_accordion_2_item_2">
                 <span class="accordion-icon">
-                    <i class="fa-solid fa-angles-right" aria-hidden="true"></i>
+                    <i class="fas fa-angles-right" aria-hidden="true"></i>
                 </span>
                 <h3 class="fs-4 fw-semibold mb-0 ms-4">Bio Area</h3>
             </div>
@@ -162,7 +162,7 @@
             <div class="accordion-header py-3 d-flex px-3 border bg-light collapsed" data-bs-toggle="collapse"
                 data-bs-target="#kt_accordion_2_item_3">
                 <span class="accordion-icon">
-                    <i class="fa-solid fa-angles-right" aria-hidden="true"></i>
+                    <i class="fas fa-angles-right" aria-hidden="true"></i>
                 </span>
                 <h3 class="fs-4 fw-semibold mb-0 ms-4">Service Area</h3>
             </div>
@@ -264,7 +264,7 @@
             <div class="accordion-header py-3 d-flex px-3 border bg-light collapsed" data-bs-toggle="collapse"
                 data-bs-target="#kt_accordion_2_item_4">
                 <span class="accordion-icon">
-                    <i class="fa-solid fa-angles-right" aria-hidden="true"></i>
+                    <i class="fas fa-angles-right" aria-hidden="true"></i>
                 </span>
                 <h3 class="fs-4 fw-semibold mb-0 ms-4">Company Area</h3>
             </div>
@@ -343,7 +343,7 @@
             <div class="accordion-header py-3 d-flex px-3 border bg-light collapsed" data-bs-toggle="collapse"
                 data-bs-target="#kt_accordion_2_item_5">
                 <span class="accordion-icon">
-                    <i class="fa-solid fa-angles-right" aria-hidden="true"></i>
+                    <i class="fas fa-angles-right" aria-hidden="true"></i>
                 </span>
                 <h3 class="fs-4 fw-semibold mb-0 ms-4">Contact Area</h3>
             </div>

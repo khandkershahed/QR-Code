@@ -522,7 +522,7 @@
                         <div class="modal-header flex-stack border-0 px-10 pt-5 pb-0" id="kt_engage_prebuilts_header">
                             <div class="btn btn-sm btn-icon btn-active-color-primary me-n2 position-relative z-index-1 default-modal-close"
                                 data-bs-dismiss="modal">
-                                <i class="fa-solid fa-xmark fs-1"></i>
+                                <i class="fas fa-xmark fs-1"></i>
                             </div>
                         </div>
 

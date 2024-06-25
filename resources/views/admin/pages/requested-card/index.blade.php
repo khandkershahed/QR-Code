@@ -355,8 +355,9 @@
 
                             @media only screen and (min-width: 1368px) {
                                 .punch-card-container {
-                                    width: 99%;
+                                    width: 100%;
                                     height: auto;
+                                    margin: auto;
                                 }
                             }
                         </style>
@@ -366,7 +367,7 @@
                                     <div class="row mt-5">
                                         <div class="col-12">
                                             <!-- Visiting Card Box Container -->
-                                            <div class="punch-card-container"
+                                            <div class="punch-card-container mb-2
                                                 style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_front) }});">
                                                 <div class="row p-5 align-items-center" style="height: 33vh;">
                                                     <div class="col-lg-6 text-center text-lg-start">
@@ -394,13 +395,13 @@
                                                                     <span
                                                                         class="card_phone">{{ optional($nfc_card->virtualCard)->card_phone }}</span>
                                                                     <i
-                                                                        class="fa-solid fa-phone tem-one-main-color "></i>
+                                                                        class="fas fa-phone tem-one-main-color "></i>
                                                                 </p>
                                                                 <p class="fw-bold mb-0">
                                                                     <span
                                                                         class="card_email">{{ optional($nfc_card->virtualCard)->card_email }}</span>
                                                                     <i
-                                                                        class="fa-solid fa-envelope tem-one-main-color "></i>
+                                                                        class="fas fa-envelope tem-one-main-color "></i>
                                                                 </p>
                                                             </div>
                                                             <div>
@@ -408,7 +409,7 @@
                                                                     <span
                                                                         class="card_address">{{ optional($nfc_card->virtualCard)->card_address }}</span>
                                                                     <i
-                                                                        class="fa-solid fa-map-marker-alt tem-one-main-color"></i>
+                                                                        class="fas fa-map-marker-alt tem-one-main-color"></i>
                                                                 </p>
                                                             </div>
                                                         </div>
@@ -428,7 +429,7 @@
                                                         class="col-12 d-flex justify-content-center align-items-center">
                                                         <p class="fw-bold mb-0 card-mail-one text-white"
                                                             style="padding-top: 2.5rem;"><i
-                                                                class="fa-solid fa-envelope text-white"></i>
+                                                                class="fas fa-envelope text-white"></i>
                                                             goFlixza@gmail.com</p>
                                                     </div>
                                                 </div>
@@ -440,10 +441,10 @@
                                     <div class="row mt-5">
                                         <div class="col-12">
                                             <!-- Visiting Card Box Container -->
-                                            <div class="punch-card-container"
+                                            <div class="punch-card-container mb-2"
                                                 style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_front) }});">
                                                 <div class="row p-5 align-items-center py-8">
-                                                    <div class="col-lg-6 text-lg-start text-start">
+                                                    <div class="col-lg-8 text-lg-start text-start">
                                                         <div>
                                                             <img class="punch-card-logo mb-4 card_logo"
                                                                 src="{{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_logo) }}"
@@ -458,23 +459,23 @@
                                                             <div class="title-devider mt-2"></div>
                                                             <div class="contact-info">
                                                                 <p class="fw-bold text-white pt-3 mb-0">
-                                                                    <i class="fa-solid fa-phone"></i> <span
+                                                                    <i class="fas fa-phone"></i> <span
                                                                         class="card_phone">{{ optional($nfc_card->virtualCard)->card_phone }}</span>
                                                                 </p>
                                                                 <p class="fw-bold text-white mb-0">
-                                                                    <i class="fa-solid fa-envelope"></i> <span
+                                                                    <i class="fas fa-envelope"></i> <span
                                                                         class="card_email">{{ optional($nfc_card->virtualCard)->card_email }}</span>
                                                                 </p>
                                                             </div>
                                                             <div>
                                                                 <p class="fw-bold mb-0 text-white">
-                                                                    <i class="fa-solid fa-map-marker-alt"></i> <span
+                                                                    <i class="fas fa-map-marker-alt"></i> <span
                                                                         class="card_address">{{ optional($nfc_card->virtualCard)->card_address }}</span>
                                                                 </p>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-6"></div>
+                                                    <div class="col-lg-4"></div>
                                                 </div>
                                             </div>
                                             <div class="punch-card-container-back"
@@ -499,7 +500,7 @@
                                                 style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_front) }});">
                                                 <div class="row p-5 px-10 align-items-center">
                                                     <!-- Left column for card details -->
-                                                    <div class="col-lg-6 text-lg-start text-start">
+                                                    <div class="col-lg-8 text-lg-start text-start">
                                                         <div>
                                                             <img class="punch-card-logo mb-4 card_logo"
                                                                 src="{{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_logo) }}"
@@ -516,17 +517,17 @@
                                                             <hr class="title-divider mt-2" />
                                                             <div>
                                                                 <p class="fw-bold text-white pt-3 mb-0">
-                                                                    <i class="fa-solid fa-phone"></i> <span
+                                                                    <i class="fas fa-phone"></i> <span
                                                                         class="card_phone card_font_color">{{ optional($nfc_card->virtualCard)->card_phone }}</span>
                                                                 </p>
                                                                 <p class="fw-bold text-white mb-0">
-                                                                    <i class="fa-solid fa-envelope"></i> <span
+                                                                    <i class="fas fa-envelope"></i> <span
                                                                         class="card_email card_font_color">{{ optional($nfc_card->virtualCard)->card_email }}</span>
                                                                 </p>
                                                             </div>
                                                             <div>
                                                                 <p class="fw-bold mb-0 text-white">
-                                                                    <i class="fa-solid fa-map-marker-alt"></i> <span
+                                                                    <i class="fas fa-map-marker-alt"></i> <span
                                                                         class="card_address card_font_color">{{ optional($nfc_card->virtualCard)->card_address }}</span>
                                                                 </p>
                                                             </div>
@@ -534,7 +535,7 @@
                                                     </div>
                                                     <!-- Right column for additional content -->
                                                     <div
-                                                        class="col-lg-6 d-flex justify-content-center align-items-center">
+                                                        class="col-lg-4 d-flex justify-content-center align-items-center">
                                                         <div>
                                                             <img width="70px"
                                                                 src="https://i.ibb.co/F73Txnj/images-removebg-preview.png"
@@ -562,7 +563,7 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <!-- Visiting Card Box Container -->
-                                            <div class="punch-card-container"
+                                            <div class="punch-card-container mb-2"
                                                 style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_front) }});">
                                                 <div class="row p-5 align-items-center" style="height: 33vh">
                                                     <div class="col-lg-6 d-flex justify-content-start font">
@@ -594,17 +595,17 @@
                                                             </div>
                                                             <div>
                                                                 <p class="fw-bold text-white pt-3 mb-0">
-                                                                    <i class="fa-solid fa-phone"></i> <span
+                                                                    <i class="fas fa-phone"></i> <span
                                                                         class="card_phone">{{ optional($nfc_card->virtualCard)->card_phone }}</span>
                                                                 </p>
                                                                 <p class="fw-bold text-white mb-0">
-                                                                    <i class="fa-solid fa-envelope"></i> <span
+                                                                    <i class="fas fa-envelope"></i> <span
                                                                         class="card_email">{{ optional($nfc_card->virtualCard)->card_email }}</span>
                                                                 </p>
                                                             </div>
                                                             <div>
                                                                 <p class="fw-bold mb-0 text-white">
-                                                                    <i class="fa-solid fa-map-marker-alt"></i> <span
+                                                                    <i class="fas fa-map-marker-alt"></i> <span
                                                                         class="card_address">{{ optional($nfc_card->virtualCard)->card_address }}</span>
                                                                 </p>
                                                             </div>
@@ -630,7 +631,7 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <!-- Visiting Card Box Container -->
-                                            <div class="punch-card-container" style="background: black !important;">
+                                            <div class="punch-card-container mb-2" style="background: black !important;">
                                                 <div class="row p-5 align-items-center">
                                                     <div class="col-lg-6 d-flex justify-content-start font align-items-center"
                                                         style="height: 28vh">
@@ -670,19 +671,19 @@
                                                                 <p class="fw-bold pt-3 mb-0" style="color: #D19A26">
                                                                     <span
                                                                         class="card_phone">{{ optional($nfc_card->virtualCard)->card_phone }}</span>
-                                                                    <i class="fa-solid fa-phone"></i>
+                                                                    <i class="fas fa-phone"></i>
                                                                 </p>
                                                                 <p class="fw-bold mb-4" style="color: #D19A26">
                                                                     <span
                                                                         class="card_email">{{ optional($nfc_card->virtualCard)->card_email }}</span>
-                                                                    <i class="fa-solid fa-envelope"></i>
+                                                                    <i class="fas fa-envelope"></i>
                                                                 </p>
                                                             </div>
                                                             <div>
                                                                 <p class="fw-bold mb-0" style="color: #D19A26">
                                                                     <span
                                                                         class="card_address">{{ optional($nfc_card->virtualCard)->card_address }}</span>
-                                                                    <i class="fa-solid fa-map-marker-alt"></i>
+                                                                    <i class="fas fa-map-marker-alt"></i>
                                                                 </p>
                                                                 {{-- <p class="fw-bold mb-0" style="color: #D19A26">
                                         -Downtown Dubia-Dubai- United Arab Emirates
@@ -699,7 +700,7 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <!-- Visiting Card Box Container -->
-                                            <div class="punch-card-container"
+                                            <div class="punch-card-container mb-2"
                                                 style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_front) }});">
                                                 <div class="row p-5 align-items-center" style="height: 33vh">
                                                     <div class="col-lg-6 d-flex justify-content-start font">
@@ -726,17 +727,17 @@
                                                             </div>
                                                             <div>
                                                                 <p class="fw-bold text-white pt-3 mb-0">
-                                                                    <i class="fa-solid fa-phone pe-2"></i> <span
+                                                                    <i class="fas fa-phone pe-2"></i> <span
                                                                         class="card_phone">{{ optional($nfc_card->virtualCard)->card_phone }}</span>
                                                                 </p>
                                                                 <p class="fw-bold text-white mb-0">
-                                                                    <i class="fa-solid fa-envelope pe-2"></i> <span
+                                                                    <i class="fas fa-envelope pe-2"></i> <span
                                                                         class="card_email">{{ optional($nfc_card->virtualCard)->card_email }}</span>
                                                                 </p>
                                                             </div>
                                                             <div>
                                                                 <p class="fw-bold mb-0 text-white">
-                                                                    <i class="fa-solid fa-map-marker-alt pe-2"></i>
+                                                                    <i class="fas fa-map-marker-alt pe-2"></i>
                                                                     <span
                                                                         class="card_address">{{ optional($nfc_card->virtualCard)->card_address }}</span>
                                                                 </p>
@@ -763,7 +764,7 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <!-- Visiting Card Box Container -->
-                                            <div class="punch-card-container"
+                                            <div class="punch-card-container mb-2"
                                                 style="background-image: url({{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_front) }});">
                                                 <div class="row p-5 align-items-center">
                                                     <div class="col-lg-6 d-flex justify-content-center align-items-center font"
@@ -802,18 +803,18 @@
                                                             </p>
                                                             <div>
                                                                 <p class="fw-bold text-white pt-3 mb-0">
-                                                                    <i class="fa-solid fa-phone pe-2"></i> <span
+                                                                    <i class="fas fa-phone pe-2"></i> <span
                                                                         class="card_phone">{{ optional($nfc_card->virtualCard)->card_phone }}</span>
                                                                 </p>
                                                                 <p class="fw-bold text-white mb-0">
-                                                                    <i class="fa-solid fa-envelope pe-2 mb-3"></i>
+                                                                    <i class="fas fa-envelope pe-2 mb-3"></i>
                                                                     <span
                                                                         class="card_email">{{ optional($nfc_card->virtualCard)->card_email }}</span>
                                                                 </p>
                                                             </div>
                                                             <div>
                                                                 <p class="fw-bold mb-0 text-white">
-                                                                    <i class="fa-solid fa-map-marker-alt pe-2"></i>
+                                                                    <i class="fas fa-map-marker-alt pe-2"></i>
                                                                     <span
                                                                         class="card_address">{{ optional($nfc_card->virtualCard)->card_address }}</span>
                                                                 </p>
@@ -832,7 +833,7 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <!-- Visiting Card Box Container -->
-                                            <div class="punch-card-container"
+                                            <div class="punch-card-container mb-2"
                                                 style="background: -webkit-linear-gradient(to right, #4a00e0, #8e2de2); background: linear-gradient(to right, #4a00e0, #8e2de2);">
                                                 <div class="row p-5 align-items-center">
                                                     <div class="col-lg-6 d-flex justify-content-start font align-items-center"
@@ -871,18 +872,18 @@
                                                             </p>
                                                             <div>
                                                                 <p class="fw-bold text-white pt-3 mb-0">
-                                                                    <i class="fa-solid fa-phone pe-2"></i> <span
+                                                                    <i class="fas fa-phone pe-2"></i> <span
                                                                         class="card_phone">{{ optional($nfc_card->virtualCard)->card_phone }}</span>
                                                                 </p>
                                                                 <p class="fw-bold text-white mb-0">
-                                                                    <i class="fa-solid fa-envelope pe-2 mb-3"></i>
+                                                                    <i class="fas fa-envelope pe-2 mb-3"></i>
                                                                     <span
                                                                         class="card_email">{{ optional($nfc_card->virtualCard)->card_email }}</span>
                                                                 </p>
                                                             </div>
                                                             <div>
                                                                 <p class="fw-bold mb-0 text-white">
-                                                                    <i class="fa-solid fa-map-marker-alt pe-2"></i>
+                                                                    <i class="fas fa-map-marker-alt pe-2"></i>
                                                                     <span
                                                                         class="card_address">{{ optional($nfc_card->virtualCard)->card_address }}</span>
                                                                 </p>

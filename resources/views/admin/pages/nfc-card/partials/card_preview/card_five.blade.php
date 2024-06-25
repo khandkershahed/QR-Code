@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-12">
             <!-- Visiting Card Box Container -->
-            <div class="punch-card-container" style="background: black !important;">
+            <div class="punch-card-container mb-2" style="background: black !important;">
                 <div class="row p-5 align-items-center">
                     <div class="col-lg-6 d-flex justify-content-start font align-items-center" style="height: 23vh">
                         <div class="text-center">
@@ -34,15 +34,15 @@
                             </p>
                             <div>
                                 <p class="fw-bold pt-3 mb-0" style="color: #D19A26">
-                                    <span class="card_phone">015 7661 4451</span> <i class="fa-solid fa-phone"></i>
+                                    <span class="card_phone">015 7661 4451</span> <i class="fas fa-phone"></i>
                                 </p>
-                                <p class="fw-bold mb-4" style="color: #D19A26">
-                                    <span class="card_email">goflixza@mail.com</span>  <i class="fa-solid fa-envelope"></i>
+                                <p class="fw-bold mb-0" style="color: #D19A26">
+                                    <span class="card_email">goflixza@mail.com</span>  <i class="fas fa-envelope"></i>
                                 </p>
                             </div>
                             <div>
                                 <p class="fw-bold mb-0" style="color: #D19A26">
-                                    <span class="card_address">New York, United State</span> <i class="fa-solid fa-map-marker-alt"></i>
+                                    <span class="card_address">New York, United State</span> <i class="fas fa-map-marker-alt"></i>
                                 </p>
                                 {{-- <p class="fw-bold mb-0" style="color: #D19A26">
                                     -Downtown Dubia-Dubai- United Arab Emirates

@@ -5,7 +5,7 @@
                <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
                    <a class="nav-link w-100 btn btn-flex btn-active-primary rounded-0 active" data-bs-toggle="tab"
                        href="#kt_vtab_pane_41" aria-selected="false" role="tab" tabindex="-1">
-                       <i class="fa-solid fa-arrow-right-long  text-active-primary pe-3"></i>
+                       <i class="fas fa-arrow-right-long  text-active-primary pe-3"></i>
                        <span class="d-flex flex-column align-items-start">
                            <span class="fs-4 fw-bold">COLOR</span>
                        </span>
@@ -14,7 +14,7 @@
                <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
                    <a class="nav-link w-100 btn btn-flex btn-active-primary rounded-0" data-bs-toggle="tab"
                        href="#kt_vtab_pane_51" aria-selected="false" role="tab" tabindex="-1">
-                       <i class="fa-solid fa-arrow-right-long  text-active-primary pe-3"></i>
+                       <i class="fas fa-arrow-right-long  text-active-primary pe-3"></i>
                        <span class="d-flex flex-column align-items-start">
                            <span class="fs-4 fw-bold">FONT STYLE</span>
                        </span>
@@ -23,7 +23,7 @@
                <li class="nav-item w-100" role="presentation">
                    <a class="nav-link w-100 btn btn-flex btn-active-primary rounded-0" data-bs-toggle="tab"
                        href="#kt_vtab_pane_61" aria-selected="true" role="tab">
-                        <i class="fa-solid fa-arrow-right-long  text-active-primary pe-3"></i>
+                        <i class="fas fa-arrow-right-long  text-active-primary pe-3"></i>
                        <span class="d-flex flex-column align-items-start">
                            <span class="fs-4 fw-bold">Button Color</span>
                        </span>
@@ -32,7 +32,7 @@
                {{-- <li class="nav-item w-100" role="presentation">
                    <a class="nav-link w-100 btn btn-flex btn-active-primary rounded-0" data-bs-toggle="tab"
                        href="#kt_vtab_pane_71" aria-selected="true" role="tab">
-                        <i class="fa-solid fa-arrow-right-long  text-active-primary pe-3"></i>
+                        <i class="fas fa-arrow-right-long  text-active-primary pe-3"></i>
                        <span class="d-flex flex-column align-items-start">
                            <span class="fs-4 fw-bold">Frame Color</span>
                        </span>

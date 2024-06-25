@@ -90,7 +90,7 @@
                     data-aos-offset="50">
                     <div class="iconic-box style-seven border">
                         <div class="icon-title">
-                            <i class="fa-solid fa-bullseye"></i>
+                            <i class="fas fa-bullseye"></i>
                             <h5>
                                 <a href="{{ route('services') }}">Align Money Goals</a>
                             </h5>

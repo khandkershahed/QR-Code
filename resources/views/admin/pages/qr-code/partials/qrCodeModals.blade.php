@@ -75,7 +75,7 @@
                             </div>
                         </div>
                         <div class="col-lg-12 mt-10 text-primary ">
-                            {{-- <i class="fa-solid fa-plus-square fs-3 accordion-icon-off"></i> --}}
+                            {{-- <i class="fas fa-plus-square fs-3 accordion-icon-off"></i> --}}
                             <div class="accordion" id="kt_accordion_1">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="kt_accordion_1_header_3">
