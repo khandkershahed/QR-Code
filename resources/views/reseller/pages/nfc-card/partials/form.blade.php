@@ -182,7 +182,7 @@
                             <x-metronic.label class="fw-semibold fs-6 mb-2">Service Section
                                 Description</x-metronic.label>
                             <textarea class="form-control form-control-solid" rows="1" name="service_section_description"
-                                placeholder="Professional, reliable service provider committed to exceeding expectations with quality, efficiency, and personalized care for every client's needs."></textarea>
+                                placeholder="Enter Comment"></textarea>
                         </div>
                     </div>
                     <div class="col-lg-3">
@@ -205,7 +205,7 @@
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2"> One Description</x-metronic.label>
                             <textarea class="form-control form-control-solid" rows="1" name="service_one_description"
-                                placeholder="Professional, reliable service provider committed to exceeding expectations with quality, efficiency, and personalized care for every client's needs."></textarea>
+                                placeholder="Enter Comment"></textarea>
                         </div>
                     </div>
                     <div class="col-lg-3">
@@ -228,7 +228,7 @@
                         <div class="fv-row my-3">
                             <x-metronic.label class="fw-semibold fs-6 mb-2"> Two Description</x-metronic.label>
                             <textarea class="form-control form-control-solid" rows="1" name="service_two_description"
-                                placeholder="Professional, reliable service provider committed to exceeding expectations with quality, efficiency, and personalized care for every client's needs."></textarea>
+                                placeholder="Enter Comment"></textarea>
                         </div>
                     </div>
                     <div class="col-lg-3">
@@ -252,7 +252,7 @@
                             <x-metronic.label class="fw-semibold fs-6 mb-2"> Three
                                 Description</x-metronic.label>
                             <textarea class="form-control form-control-solid" rows="1" name="service_three_description"
-                                placeholder="Professional, reliable service provider committed to exceeding expectations with quality, efficiency, and personalized care for every client's needs."></textarea>
+                                placeholder="Enter Comment"></textarea>
                         </div>
                     </div>
                 </div>
@@ -331,7 +331,7 @@
                             <x-metronic.label class="fw-semibold fs-6 mb-2">Company About
                                 Description</x-metronic.label>
                             <textarea class="form-control form-control-solid" rows="1" name="company_about_description"
-                                placeholder="Professional, reliable service provider committed to exceeding expectations with quality, efficiency, and personalized care for every client's needs."></textarea>
+                                placeholder="Enter Comment"></textarea>
                         </div>
                     </div>
                 </div>

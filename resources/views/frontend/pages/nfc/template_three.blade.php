@@ -229,6 +229,7 @@
                                                     <img class=""
                                                         style="
                                 width: 150px;
+                                height: 150px;
                                 border: 6px solid;
                                 border-image: linear-gradient(
                                     270deg,

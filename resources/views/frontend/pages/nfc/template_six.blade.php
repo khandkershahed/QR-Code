@@ -175,7 +175,7 @@
                                                 <div class="text-center text-lg-center mobile-images-profile"
                                                     style="margin-top: -70px; position: relative">
                                                     <img class=""
-                                                        style="width: 150px;border-radius: 100%;border: 6px solid white;background: rgba(255, 255, 255, 0.485); position: relative;z-index: 15;"
+                                                        style="width: 150px;height: 150px;border-radius: 100%;border: 6px solid white;background: rgba(255, 255, 255, 0.485); position: relative;z-index: 15;"
                                                         src="{{ !empty($nfc_card->nfcData->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
                                                         class="img-fluid banner-image" alt="banner" />
                                                 </div>
@@ -263,11 +263,11 @@
                                                         <div class="col-lg-6">
                                                             @if (!empty($nfc_card->nfcData->email_personal) || !empty($nfc_card->nfcData->email_work))
                                                                 <div class="row align-items-center shadow-sm p-3">
-                                                                    <div class="col-lg-2 text-center text-lg-start">
+                                                                    <div class="col-lg-4 text-center text-lg-start">
                                                                         <img class=""
-                                                                            src="https://i.ibb.co/XXW2Gb5/phone.jpg" />
+                                                                            src="https://i.ibb.co/0fdd3KY/call.png" />
                                                                     </div>
-                                                                    <div class="col-lg-10 text-center text-lg-start">
+                                                                    <div class="col-lg-8 text-center text-lg-start">
                                                                         <div class="ps-3 pt-3 pt-lg-0">
                                                                             <h6 class="text-white mb-0">E-mail</h6>
                                                                             @if (!empty($nfc_card->nfcData->email_personal))
@@ -295,7 +295,7 @@
                                                                 <div class="row align-items-center shadow-sm mt-3 p-3">
                                                                     <div class="col-lg-2 text-center text-lg-start">
                                                                         <img class=""
-                                                                            src="https://i.ibb.co/CwpNGRM/envelop.jpg" />
+                                                                            src="https://i.ibb.co/QjWnMtq/email.png" />
                                                                     </div>
                                                                     <div class="col-lg-10 text-center text-lg-start">
                                                                         <div class="ps-3 pt-3 pt-lg-0">
