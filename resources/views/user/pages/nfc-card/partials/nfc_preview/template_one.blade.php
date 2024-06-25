@@ -205,11 +205,11 @@
                         <div class="tem-one-service-box px-3 py-4">
                             <h6 class="tem-one-service-title">Contact</h6>
                             <p class="mb-0 email_work">
-                                @: szamanBruno@gmail.com
+                                szamanBruno@gmail.com
                                 <small class="fw-bold">(Work)</small>
                             </p>
                             <p class="mb-0 phone_personal">
-                                p: +385 91 561 0409
+                                 +385 91 561 0409
                                 <small class="fw-bold">(Personal)</small>
                             </p>
                             <div class="pt-2">

@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12 d-flex justify-content-center align-items-center px-0">
-            <div class="nfc-mobile-frame-two">
+            <div class="nfc-mobile-frame-two shadow-sm">
                 <div class="card p-0 border-0 shadow-none tem-two-scroll">
                     <div class="p-0 border-0 border-0">
                         <div class="nfc-two-cover-img-box">
@@ -148,11 +148,11 @@
                         <div class="tem-two-service-box px-3 py-4">
                             <h6 class="tem-two-service-title">Contact</h6>
                             <p class="mb-0 email_personal">
-                                @: szamanBruno@gmail.com
+                                szamanBruno@gmail.com
                                 <small class="fw-bold">(Work)</small>
                             </p>
                             <p class="mb-0 phone_personal">
-                                p: +385 91 561 0409
+                                +385 91 561 0409
                                 <small class="fw-bold">(Personal)</small>
                             </p>
                             <div class="pt-4">
