@@ -1337,14 +1337,15 @@ class QrCodeController extends Controller
         }
     }
 
-    public function qrPreview(QrCodeRequest $request)
+    public function qrPreview(Request $request)
     {
         $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
         $typePrefix = 'QR'; // Example prefix
         $today = date('dmY');
         $userId = $isUserRoute ? Auth::user()->id : Auth::guard('admin')->user()->id;
 
-        // Find the last QR code generated for this user today
+
+
         $lastCode = Qr::where('code', 'like', $typePrefix . $today . $userId . '%')
             ->orderBy('id', 'desc')
             ->first();
