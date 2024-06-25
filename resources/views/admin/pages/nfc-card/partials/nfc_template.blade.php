@@ -271,7 +271,7 @@
                                         <h3 class="fw-bold text-center py-5 pb-3" style="color: #1c344f">
                                             Company
                                         </h3>
-                                        <h6 class="fw-bold">NGen It LTD.</h6>
+                                        <h6 class="fw-bold">Company LTD.</h6>
                                         <small>Frontend Developoer</small> <br />
                                         <small>Mohammadpur, Dhaka</small>
                                         <p class="pt-2">

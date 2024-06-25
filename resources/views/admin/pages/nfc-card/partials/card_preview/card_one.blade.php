@@ -83,7 +83,7 @@
                 </div>
                 <div class="col-lg-6 mt-4 mt-lg-0">
                     <div class="text-center text-lg-end content-area">
-                        <h4 class="fw-bold mb-0 card_name">Sazeduzzaman Saju</h4>
+                        <h4 class="fw-bold mb-0 card_name">Robert Bruno</h4>
                         <p class="fw-bold mb-0 card_designation">Frontend Developer</p>
                         <div class="me-auto mt-2 title-devider-tem-one"></div>
                         <div>
