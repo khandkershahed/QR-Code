@@ -250,11 +250,7 @@
                                                         Contact
                                                     </p>
                                                     <div
-                                                        style="
-                                background-color: black;
-                                height: 3px;
-                                margin-top: -20px;
-                              ">
+                                                        style="background-color: black;height: 3px;margin-top: -20px;">
                                                     </div>
                                                 </div>
                                                 <div class="row gx-3 align-items-lg-end">
@@ -324,8 +320,8 @@
                                                         @if (!empty($nfc_card->nfcData->address_line_one) || !empty($nfc_card->nfcData->address_line_two))
                                                             <div class="row align-items-center shadow-sm mt-3 p-3">
                                                                 <div class="col-lg-2 text-center text-lg-start">
-                                                                    <img class=""
-                                                                        src="https://my.cybercard.ma/assets/img/vcard13/location.png" />
+                                                                    <img class="" width="2.8rem"
+                                                                        src="{{ asset('frontend/images/location.png') }}" />
                                                                 </div>
                                                                 <div class="col-lg-10 text-center text-lg-start">
                                                                     <div class="ps-3 pt-3 pt-lg-0">

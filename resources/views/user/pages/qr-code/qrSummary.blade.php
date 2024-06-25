@@ -77,9 +77,9 @@
                                     {{-- <a href="#" class="btn btn-primary w-100 mb-2"><i
                                             class="bi bi-pen fs-4 me-2"></i> Edit</a> --}}
                                     <div class="card-toolbar">
-                                        <button class="btn btn-primary w-lg-100 mb-2" data-kt-menu-trigger="click"
+                                        <button class="btn btn-primary mb-2" data-kt-menu-trigger="click"
                                             data-kt-menu-placement="bottom-end" data-kt-menu-overflow="true">
-                                            <i class="bi bi-file-download fs-4 me-2"></i> Download
+                                            <i class="fas fa-download fs-4 me-2"></i> Download
                                         </button>
                                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px"
                                             data-kt-menu="true" style="">
@@ -148,57 +148,32 @@
             </div>
         </div>
         <div class="row g-5 g-xl-8 mt-5">
-            <div class="col-xl-3">
-                <a href="#" class="card bg-body hoverable card-xl-stretch mb-xl-8">
-                    <div class="card-body">
-                        <i class="ki-duotone ki-cheque text-gray-100 fs-2x ms-n1"><span class="path1"></span><span
-                                class="path2"></span><span class="path3"></span><span class="path4"></span><span
-                                class="path5"></span><span class="path6"></span><span class="path7"></span></i>
-                        <div class="text-gray-900 fw-bold fs-2 mb-2 mt-5">{{ $qr->qrScan->count() }}</div>
-                        <div class="text-gray-900 fw-bold fs-2 mb-2 mt-5">Scans</div>
-                        {{-- <div class="fw-semibold text-gray-400"><span class="text-success pe-1">↑</span>100 % than
-                            previous period</div> --}}
+            <div class="{{ $qr->qrScan->count() < '99' ? 'col-xl-2' : 'col-xl-3'}}">
+                <div class="card card-flush bgi-no-repeat bgi-size-cover bgi-position-x-end h-xl-100"
+                    style="background-color: #F1416C;background-image:url({{ asset('admin/assets/media/svg/shapes/wave-bg-red.svg') }})">
+                    <div class="card-body d-flex align-items-center justify-content-center">
+                        <div class="d-flex align-items-center">
+                            <span class="fs-3hx text-white fw-bold me-6">{{ $qr->qrScan->count() }}</span>
+                            <div class="fw-bold fs-6 text-white">
+                                <span class="d-block">Scans</span>
+                            </div>
+                        </div>
                     </div>
-                </a>
+                </div>
             </div>
-            <div class="col-xl-3">
-                <a href="#" class="card bg-dark hoverable card-xl-stretch mb-xl-8">
-                    <div class="card-body">
-                        <i class="ki-duotone ki-cheque text-gray-100 fs-2x ms-n1"><span class="path1"></span><span
-                                class="path2"></span><span class="path3"></span><span class="path4"></span><span
-                                class="path5"></span><span class="path6"></span><span class="path7"></span></i>
-                        <div class="text-white fw-bold fs-2 mb-2 mt-5">{{ count($users) }}</div>
-                        <div class="text-white fw-bold fs-2 mb-2 mt-5">Users</div>
-                        {{-- <div class="fw-semibold text-white"><span class="text-success pe-1">↑</span> 100 % than
-                            previous period</div> --}}
+            <div class="{{ count($users) < '99' ? 'col-xl-2' : 'col-xl-3'}}">
+                <div class="card card-flush bgi-no-repeat bgi-size-cover bgi-position-x-end h-xl-100"
+                    style="background-color: #7239EA;background-image:url({{ asset('admin/assets/media/svg/shapes/wave-bg-purple.svg') }})">
+                    <div class="card-body d-flex align-items-center justify-content-center">
+                        <div class="d-flex align-items-center">
+                            <span class="fs-3hx text-white fw-bold me-6">{{ count($users) }}</span>
+                            <div class="fw-bold fs-6 text-white">
+                                <span class="d-block">Users</span>
+                            </div>
+                        </div>
                     </div>
-                </a>
+                </div>
             </div>
-            {{-- <div class="col-xl-3">
-                <a href="#" class="card bg-warning hoverable card-xl-stretch mb-xl-8">
-                    <div class="card-body">
-                        <i class="ki-duotone ki-briefcase text-white fs-2x ms-n1"><span class="path1"></span><span
-                                class="path2"></span></i>
-
-                        <div class="text-white fw-bold fs-2 mb-2 mt-5">06</div>
-                        <div class="text-gray-100 fw-bold fs-2 mb-2 mt-5">Unique users</div>
-                        <div class="fw-semibold text-white"><span class="text-success pe-1">↑</span> Apr 30, 2024
-                            to May 06, 2024</div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-xl-3">
-                <a href="#" class="card bg-info hoverable card-xl-stretch mb-5 mb-xl-8">
-                    <div class="card-body">
-                        <i class="ki-duotone ki-chart-pie-simple text-white fs-2x ms-n1"><span
-                                class="path1"></span><span class="path2"></span></i>
-                        <div class="text-white fw-bold fs-2 mb-2 mt-5">03</div>
-                        <div class="text-gray-100 fw-bold fs-2 mb-2 mt-5">New Country</div>
-                        <div class="fw-semibold text-white"><span class="text-success pe-1">↑</span> History Of Qr
-                            Code Scan in Counry </div>
-                    </div>
-                </a>
-            </div> --}}
         </div>
         <div class="row">
             <div class="col-lg-12 mt-5">
