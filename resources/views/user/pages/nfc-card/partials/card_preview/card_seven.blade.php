@@ -18,7 +18,7 @@
                     <div>
                         <img class="punch-card-logo-back card_logo"
                             src="https://i.ibb.co/vhZg1xp/png-clipart-light-white-line-light-angle-white-removebg-preview.png"
-                            alt="Logo Back" />
+                            alt="Logo Back"/>
                     </div>
                 </div>
             </div>

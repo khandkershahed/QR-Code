@@ -1,15 +1,5 @@
 <div class="row p-5 bg-light">
     <!-- Contact Person Name -->
-    <div class="col-lg-12">
-        <div class="fv-row my-3">
-            <x-metronic.label for="card_name" class="form-label required">
-                {{ __('Generated Card Name') }}
-            </x-metronic.label>
-            <input id="card_name" type="text" class="form-control form-control-outline mb-3 mb-lg-0"
-                name="card_name" value="{{ old('card_name') }}"
-                placeholder="Enter Your Generated Card Name" />
-        </div>
-    </div>
     <div class="col-lg-4">
         <div class="fv-row my-3">
             <x-metronic.label for="shipping_name" class="form-label required">

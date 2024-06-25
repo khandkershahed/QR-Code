@@ -29,15 +29,6 @@
                        </span>
                    </a>
                </li>
-               {{-- <li class="nav-item w-100" role="presentation">
-                   <a class="nav-link w-100 btn btn-flex btn-active-primary rounded-0" data-bs-toggle="tab"
-                       href="#kt_vtab_pane_71" aria-selected="true" role="tab">
-                        <i class="fas fa-arrow-right-long  text-active-primary pe-3"></i>
-                       <span class="d-flex flex-column align-items-start">
-                           <span class="fs-4 fw-bold">Frame Color</span>
-                       </span>
-                   </a>
-               </li> --}}
            </ul>
 
            <div class="tab-content w-100 bg-white p-3" id="myTabContent">
@@ -89,64 +80,7 @@
                        </div>
                    </div>
                </div>
-
-               {{-- <div class="tab-pane fade " id="kt_vtab_pane_71" role="tabpanel">
-                   <div class="row py-5">
-                       <div class="col-lg-6 offset-lg-3 align-items-center">
-                           <label for="formColor">Frame Color Color</label>
-                           <input type="color" name="frame_color" value=""
-                               class="form-control form-control-solid">
-                       </div>
-                   </div>
-               </div> --}}
            </div>
        </div>
    </div>
 
-   {{-- <script>
-       // Get the color input and text input elements
-       const colorPicker1 = document.getElementById('primary_color_picker');
-       const colorInput1 = document.getElementById('primary_color');
-
-       // Add event listener to color input
-       colorPicker1.addEventListener('input', function() {
-           // Update the value of the text input with the current color value
-           colorInput1.value = colorPicker1.value;
-       });
-       // Get the color input and text input elements
-       const colorPicker2 = document.getElementById('primary_color_text_picker');
-       const colorInput2 = document.getElementById('primary_color_text');
-
-       // Add event listener to color input
-       colorPicker2.addEventListener('input', function() {
-           // Update the value of the text input with the current color value
-           colorInput2.value = colorPicker2.value;
-       });
-       // Get the color input and text input elements
-       const colorPicker3 = document.getElementById('secondary_color_text_picker');
-       const colorInput3 = document.getElementById('secondary_color_text');
-
-       // Add event listener to color input
-       colorPicker3.addEventListener('input', function() {
-           // Update the value of the text input with the current color value
-           colorInput3.value = colorPicker3.value;
-       });
-       // Get the color input and text input elements
-       const colorPickerContact = document.getElementById('button_color_picker');
-       const colorInputContact = document.getElementById('buttonContact');
-
-       // Add event listener to color input
-       colorPickerContact.addEventListener('input', function() {
-           // Update the value of the text input with the current color value
-           colorInputContact.value = colorPickerContact.value;
-       });
-       // Get the color input and text input elements
-       const colorPickerForm = document.getElementById('form_color_picker');
-       const colorInputform = document.getElementById('formColor');
-
-       // Add event listener to color input
-       colorPickerForm.addEventListener('input', function() {
-           // Update the value of the text input with the current color value
-           colorInputform.value = colorPickerForm.value;
-       });
-   </script> --}}
