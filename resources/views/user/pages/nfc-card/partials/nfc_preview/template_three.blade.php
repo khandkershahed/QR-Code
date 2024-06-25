@@ -164,7 +164,7 @@
                                 <div class="col-lg-21">
                                     <div class="text-center text-lg-center mobile-images-profile"
                                         style="margin-top: -70px; position: relative">
-                                        <img style="width: 150px;border: 6px solid;border-image: linear-gradient( 270deg,#f60b0b,#f60b0b57)1;position: relative;z-index: 15;"
+                                        <img style="width: 150px;height: 150px;border: 6px solid;border-image: linear-gradient( 270deg,#f60b0b,#f60b0b57)1;position: relative;z-index: 15;"
                                             src="https://my.cybercard.ma/uploads/vcards/profiles/221/smiling-doctor-sitting-isolated-grey_651396-917.jpg"
                                             class="img-fluid banner-image profile_image" alt="profile" />
                                     </div>

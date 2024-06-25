@@ -216,7 +216,7 @@
                                     Description</x-metronic.label>
                                 <textarea class="form-control form-control-outline" rows="3" name="service_section_description"
                                     :value="$nfc_card - > nfcData - > service_section_description"
-                                    placeholder="Professional, reliable service provider committed to exceeding expectations with quality, efficiency, and personalized care for every client's needs."></textarea>
+                                    placeholder="Enter Comment"></textarea>
                             </div>
                         </div>
                         <div class="col-lg-12">
@@ -287,8 +287,13 @@
                                                     <x-metronic.label class="fw-semibold fs-6 mb-2">One
                                                         Description</x-metronic.label>
                                                     <textarea class="form-control form-control-solid" rows="3" name="service_one_description"
+<<<<<<< HEAD
+                                                        :value="$nfc_card - > nfcData - > service_one_description"
+                                                        placeholder="Enter Comment"></textarea>
+=======
                                                         :value="$nfc_card->nfcData->service_one_description"
                                                         placeholder="Professional, reliable service provider committed to exceeding expectations with quality, efficiency, and personalized care for every client's needs."></textarea>
+>>>>>>> 4bf20c444607fdcc54a20d0c50494ffa10b7e11e
                                                 </div>
                                             </div>
                                         </div>
@@ -321,8 +326,13 @@
                                                     <x-metronic.label class="fw-semibold fs-6 mb-2"> Two
                                                         Description</x-metronic.label>
                                                     <textarea class="form-control form-control-solid" rows="3" name="service_two_description"
+<<<<<<< HEAD
+                                                        :value="$nfc_card - > nfcData - > service_two_description"
+                                                        placeholder="Enter Comment"></textarea>
+=======
                                                         :value="$nfc_card->nfcData->service_two_description"
                                                         placeholder="Professional, reliable service provider committed to exceeding expectations with quality, efficiency, and personalized care for every client's needs."></textarea>
+>>>>>>> 4bf20c444607fdcc54a20d0c50494ffa10b7e11e
                                                 </div>
                                             </div>
                                         </div>
@@ -356,8 +366,13 @@
                                                     <x-metronic.label class="fw-semibold fs-6 mb-2"> Three
                                                         Description</x-metronic.label>
                                                     <textarea class="form-control form-control-solid" rows="3" name="service_three_description"
+<<<<<<< HEAD
+                                                        :value="$nfc_card - > nfcData - > service_three_description"
+                                                        placeholder="Enter Comment"></textarea>
+=======
                                                         :value="$nfc_card->nfcData->service_three_description"
                                                         placeholder="Professional, reliable service provider committed to exceeding expectations with quality, efficiency, and personalized care for every client's needs."></textarea>
+>>>>>>> 4bf20c444607fdcc54a20d0c50494ffa10b7e11e
                                                 </div>
                                             </div>
                                         </div>
@@ -429,7 +444,7 @@
                                     Description</x-metronic.label>
                                 <textarea class="form-control form-control-outline" rows="3" name="company_about_description"
                                     :value="$nfc_card - > nfcData - > company_about_description"
-                                    placeholder="Professional, reliable service provider committed to exceeding expectations with quality, efficiency, and personalized care for every client's needs."></textarea>
+                                    placeholder="Enter Comment"></textarea>
                             </div>
                         </div>
                     </div>
