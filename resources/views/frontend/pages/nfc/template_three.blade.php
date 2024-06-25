@@ -741,7 +741,7 @@
                                             <div class="row fixed-bottom w-25 mx-auto mobile-d-none">
                                                 <div class="col mb-2 text-center">
                                                     <a href="tel:+{{ optional($nfc_card->nfcData)->phone_personal }}"
-                                                        class="btn btn-sm mt-2 p-2 w-100 nfc_contact_btn"
+                                                        class="btn btn-sm mt-2 p-2 w-100 nfc_contact_btn nfc_contact_btn_pc"
                                                         style="background-color: #f44336; color: #fff">
                                                         <i class="fas fa-contact pe-1 fa-address-book"></i>
                                                         Save Contact
@@ -752,7 +752,7 @@
                                                 class="row fixed-bottom w-sm-100 w-lg-25 d-sm-block d-lg-none mx-auto">
                                                 <div class="col mb-2 text-center">
                                                     <a href="tel:+{{ optional($nfc_card->nfcData)->phone_personal }}"
-                                                        class="btn btn-sm mt- p-2 w-100 nfc_contact_btn"
+                                                        class="btn btn-sm mt- p-2 w-100 nfc_contact_btn nfc_contact_btn_mobile"
                                                         style="background-color: #f44336; color: #fff">
                                                         <i class="fas fa-contact pe-1 fa-address-book"></i>
                                                         Save Contact

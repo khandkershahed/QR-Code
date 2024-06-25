@@ -24,7 +24,7 @@
             @if ($nfc_card->font_family == 'bebas_neue')
                 --body-font-family: "Bebas Neue", sans-serif !important;
                 --tem-one-name-font-family: "Bebas Neue", sans-serif !important;
-            @elseif ($nfc_card->font_family == 'raleway')
+            @elseif($nfc_card->font_family == 'raleway')
                 --tem-one-name-font-family: "Raleway", sans-serif !important;
                 --body-font-family: "Raleway", sans-serif !important;
             @endif
@@ -195,147 +195,147 @@
                                                         <a href="{{ optional($nfc_card->nfcData)->facebook_url }}"
                                                             class="fa fa-facebook facebook_url icon fa-2x"
                                                             style="text-decoration: none;width: 20%;color: #1c344f;">
-                                                            {{-- <i class="fab fa-facebook facebook-icon icon fa-2x" title="Facebook"></i> --}}
                                                         </a>
                                                     @endif
                                                     @if (!empty($nfc_card->nfcData->instagram_url))
-                                                        <a href="{{ optional($nfc_card->nfcData)->facebook_url }}"
-                                                            class="fa fa-facebook facebook_url icon fa-2x"
+                                                        <a href="{{ optional($nfc_card->nfcData)->instagram_url }}"
+                                                            class="fa fa-instagram instagram_url icon fa-2x"
                                                             style="text-decoration: none;width: 20%;color: #1c344f;">
-                                                            {{-- <i class="fab fa-facebook facebook-icon icon fa-2x" title="Facebook"></i> --}}
                                                         </a>
                                                     @endif
                                                     @if (!empty($nfc_card->nfcData->youtube_url))
-                                                        <a href="{{ optional($nfc_card->nfcData)->facebook_url }}"
-                                                            class="fa fa-facebook facebook_url icon fa-2x"
+                                                        <a href="{{ optional($nfc_card->nfcData)->youtube_url }}"
+                                                            class="fa fa-youtube youtube_url icon fa-2x"
                                                             style="text-decoration: none;width: 20%;color: #1c344f;">
-                                                            {{-- <i class="fab fa-facebook facebook-icon icon fa-2x" title="Facebook"></i> --}}
                                                         </a>
                                                     @endif
                                                     @if (!empty($nfc_card->nfcData->google_plus_url))
-                                                        <a href="{{ optional($nfc_card->nfcData)->facebook_url }}"
-                                                            class="fa fa-facebook facebook_url icon fa-2x"
+                                                        <a href="{{ optional($nfc_card->nfcData)->google_plus_url }}"
+                                                            class="fa fa-google google_plus_url icon fa-2x"
                                                             style="text-decoration: none;width: 20%;color: #1c344f;">
-                                                            {{-- <i class="fab fa-facebook facebook-icon icon fa-2x" title="Facebook"></i> --}}
                                                         </a>
                                                     @endif
                                                 </div>
                                             @endif
                                             <!-- Contact Info -->
-                                            <div class="my-3 pt-4">
-                                                <div class="row gx-3">
-                                                    @if (!empty($nfc_card->nfcData->email_personal) || !empty($nfc_card->nfcData->email_work))
-                                                        <div class="col-lg-12 mb-3">
-                                                            <div class="card border-0 contact-info_four"
-                                                                style="background-color: #1c344f;border-radius: 15px;margin-left: -10px;padding: 20px;position: relative;">
-                                                                <div class="card-body p-0">
-                                                                    <div class="row align-items-center">
-                                                                        <div class="col-lg-2 text-center text-lg-start">
-                                                                            <img class=""
-                                                                                src="https://my.cybercard.ma/assets/img/vcard13/email.png" />
-                                                                        </div>
-                                                                        <div
-                                                                            class="col-lg-10 text-center text-lg-start">
-                                                                            <div class="ps-3 pt-3 pt-lg-0">
-                                                                                <h6 class="text-white mb-0">E-mail</h6>
-                                                                                @if (!empty($nfc_card->nfcData->email_personal))
-                                                                                    <small class="text-white">
-                                                                                        <span
-                                                                                            class="email_personal">{{ optional($nfc_card->nfcData)->email_personal }}</span>
-                                                                                        (personal)
-                                                                                    </small>
-                                                                                @endif
-                                                                                @if (!empty($nfc_card->nfcData->email_work))
-                                                                                    <br>
-                                                                                    <small class="text-white">
-                                                                                        <span
-                                                                                            class="email_work">{{ optional($nfc_card->nfcData)->email_work }}</span>
-                                                                                        (work)
-                                                                                    </small>
-                                                                                @endif
+                                            @if (!empty($nfc_card->nfcData->email_personal) || !empty($nfc_card->nfcData->email_work) ||
+                                            !empty($nfc_card->nfcData->phone_personal) || !empty($nfc_card->nfcData->phone_work)||
+                                            !empty($nfc_card->nfcData->address_line_one) || !empty($nfc_card->nfcData->address_line_two))
+                                                <div class="my-3 pt-4">
+                                                    <div class="row gx-3">
+                                                        @if (!empty($nfc_card->nfcData->email_personal) || !empty($nfc_card->nfcData->email_work))
+                                                            <div class="col-lg-12 mb-3">
+                                                                <div class="card border-0 contact-info_four"
+                                                                    style="background-color: #1c344f;border-radius: 15px;margin-left: -10px;padding: 20px;position: relative;">
+                                                                    <div class="card-body p-0">
+                                                                        <div class="row align-items-center">
+                                                                            <div class="col-lg-2 text-center text-lg-start">
+                                                                                <img class=""
+                                                                                    src="https://my.cybercard.ma/assets/img/vcard13/email.png" />
+                                                                            </div>
+                                                                            <div
+                                                                                class="col-lg-10 text-center text-lg-start">
+                                                                                <div class="ps-3 pt-3 pt-lg-0">
+                                                                                    <h6 class="text-white mb-0">E-mail</h6>
+                                                                                    @if (!empty($nfc_card->nfcData->email_personal))
+                                                                                        <small class="text-white">
+                                                                                            <span
+                                                                                                class="email_personal">{{ optional($nfc_card->nfcData)->email_personal }}</span>
+                                                                                            (personal)
+                                                                                        </small>
+                                                                                    @endif
+                                                                                    @if (!empty($nfc_card->nfcData->email_work))
+                                                                                        <br>
+                                                                                        <small class="text-white">
+                                                                                            <span
+                                                                                                class="email_work">{{ optional($nfc_card->nfcData)->email_work }}</span>
+                                                                                            (work)
+                                                                                        </small>
+                                                                                    @endif
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    @endif
-                                                    @if (!empty($nfc_card->nfcData->phone_personal) || !empty($nfc_card->nfcData->phone_work))
-                                                        <div class="col-lg-12 mb-3">
-                                                            <div class="card border-0 contact-info_four"
-                                                                style="background-color: #1c344f;border-radius: 15px;margin-left: -10px;padding: 20px;position: relative;">
-                                                                <div class="card-body p-0">
-                                                                    <div class="row align-items-center">
-                                                                        <div class="col-lg-2 text-center text-lg-start">
-                                                                            <img class=""
-                                                                                src="https://my.cybercard.ma/assets/img/vcard13/phone.png" />
-                                                                        </div>
-                                                                        <div
-                                                                            class="col-lg-10 text-center text-lg-start">
-                                                                            <div class="ps-3 pt-3 pt-lg-0">
-                                                                                <h6 class="text-white mb-0">Phone</h6>
-                                                                                @if (!empty($nfc_card->nfcData->phone_personal))
-                                                                                    <small class="text-white">
-                                                                                        <span
-                                                                                            class="phone_personal">{{ optional($nfc_card->nfcData)->phone_personal }}</span>
-                                                                                        (personal)
-                                                                                    </small>
-                                                                                @endif
-                                                                                @if (!empty($nfc_card->nfcData->phone_work))
-                                                                                    <br>
-                                                                                    <small class="text-white">
-                                                                                        <span
-                                                                                            class="phone_work">{{ optional($nfc_card->nfcData)->phone_work }}</span>
-                                                                                        (work)
-                                                                                    </small>
-                                                                                @endif
+                                                        @endif
+                                                        @if (!empty($nfc_card->nfcData->phone_personal) || !empty($nfc_card->nfcData->phone_work))
+                                                            <div class="col-lg-12 mb-3">
+                                                                <div class="card border-0 contact-info_four"
+                                                                    style="background-color: #1c344f;border-radius: 15px;margin-left: -10px;padding: 20px;position: relative;">
+                                                                    <div class="card-body p-0">
+                                                                        <div class="row align-items-center">
+                                                                            <div class="col-lg-2 text-center text-lg-start">
+                                                                                <img class=""
+                                                                                    src="https://my.cybercard.ma/assets/img/vcard13/phone.png" />
+                                                                            </div>
+                                                                            <div
+                                                                                class="col-lg-10 text-center text-lg-start">
+                                                                                <div class="ps-3 pt-3 pt-lg-0">
+                                                                                    <h6 class="text-white mb-0">Phone</h6>
+                                                                                    @if (!empty($nfc_card->nfcData->phone_personal))
+                                                                                        <small class="text-white">
+                                                                                            <span
+                                                                                                class="phone_personal">{{ optional($nfc_card->nfcData)->phone_personal }}</span>
+                                                                                            (personal)
+                                                                                        </small>
+                                                                                    @endif
+                                                                                    @if (!empty($nfc_card->nfcData->phone_work))
+                                                                                        <br>
+                                                                                        <small class="text-white">
+                                                                                            <span
+                                                                                                class="phone_work">{{ optional($nfc_card->nfcData)->phone_work }}</span>
+                                                                                            (work)
+                                                                                        </small>
+                                                                                    @endif
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    @endif
+                                                        @endif
 
-                                                    @if (!empty($nfc_card->nfcData->address_line_one) || !empty($nfc_card->nfcData->address_line_two))
-                                                        <div class="col-lg-12 mb-3">
-                                                            <div class="card border-0 contact-info_four"
-                                                                style="background-color: #1c344f;border-radius: 15px;margin-left: -10px;padding: 20px;position: relative;">
-                                                                <div class="card-body p-0"
-                                                                    style="background-image: url(https://my.cybercard.ma/images/contact-card-bg.png?4da69f117ea28772ef2ce81e91826424);background-repeat: no-repeat;background-size: contain;">
-                                                                    <div class="row">
-                                                                        <div class="col-lg-2 text-center text-lg-start">
-                                                                            <img class=""
-                                                                                src="https://my.cybercard.ma/assets/img/vcard13/location.png" />
-                                                                        </div>
-                                                                        <div
-                                                                            class="col-lg-10 text-center text-lg-start">
-                                                                            <div class="ps-3 pt-3 pt-lg-0">
-                                                                                <h6 class="text-white mb-0">Address
-                                                                                </h6>
-                                                                                @if (!empty($nfc_card->nfcData->address_line_one))
-                                                                                    <small
-                                                                                        class="text-white address_line_one">
-                                                                                        {{ $nfc_card->nfcData->address_line_one }}
-                                                                                    </small>
-                                                                                @endif
-                                                                                @if (!empty($nfc_card->nfcData->address_line_two))
-                                                                                    <small
-                                                                                        class="text-white address_line_one">
+                                                        @if (!empty($nfc_card->nfcData->address_line_one) || !empty($nfc_card->nfcData->address_line_two))
+                                                            <div class="col-lg-12 mb-3">
+                                                                <div class="card border-0 contact-info_four"
+                                                                    style="background-color: #1c344f;border-radius: 15px;margin-left: -10px;padding: 20px;position: relative;">
+                                                                    <div class="card-body p-0"
+                                                                        style="background-image: url(https://my.cybercard.ma/images/contact-card-bg.png?4da69f117ea28772ef2ce81e91826424);background-repeat: no-repeat;background-size: contain;">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-2 text-center text-lg-start">
+                                                                                <img class=""
+                                                                                    src="https://my.cybercard.ma/assets/img/vcard13/location.png" />
+                                                                            </div>
+                                                                            <div
+                                                                                class="col-lg-10 text-center text-lg-start">
+                                                                                <div class="ps-3 pt-3 pt-lg-0">
+                                                                                    <h6 class="text-white mb-0">Address
+                                                                                    </h6>
+                                                                                    @if (!empty($nfc_card->nfcData->address_line_one))
+                                                                                        <small
+                                                                                            class="text-white address_line_one">
+                                                                                            {{ $nfc_card->nfcData->address_line_one }}
+                                                                                        </small>
+                                                                                    @endif
+                                                                                    @if (!empty($nfc_card->nfcData->address_line_two))
+                                                                                        <small
+                                                                                            class="text-white address_line_one">
 
-                                                                                        {{ $nfc_card->nfcData->address_line_two }}
+                                                                                            {{ $nfc_card->nfcData->address_line_two }}
 
-                                                                                    </small>
-                                                                                @endif
+                                                                                        </small>
+                                                                                    @endif
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    @endif
+                                                        @endif
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            @endif
                                             <!-- QR -->
                                             @if (!empty($nfc_card->nfc_qr) && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc_qr)))
                                                 <div class="my-3">
