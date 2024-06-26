@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\VirtualCard;
 use Illuminate\Http\Request;
+use App\Models\Admin\NfcCard;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class VirtualCardController extends Controller
 {
@@ -24,7 +26,11 @@ class VirtualCardController extends Controller
      */
     public function create()
     {
-        return view('user.pages.virtualCard.create');
+        $user = Auth::user();
+        $data = [
+           'nfc_cards' => NfcCard::with('nfcData')->where('user_id', $user->id)->latest('id')->get(),
+        ];
+        return view('user.pages.virtualCard.create',$data);
     }
 
     /**
