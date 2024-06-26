@@ -162,7 +162,8 @@
                                 </div>
 
                                 <div>
-                                    <button type="submit" class="btn btn-primary" id="submitButton" data-kt-stepper-action="submit">
+                                    <button type="submit" class="btn btn-primary" id="submitButton"
+                                        data-kt-stepper-action="submit">
                                         <span class="indicator-label">
                                             Submit
                                         </span>
@@ -172,7 +173,7 @@
                                         </span>
                                     </button>
 
-                                    <button type="button" class="btn btn-primary" data-kt-stepper-action="next">
+                                    <button type="button" class="btn btn-primary">
                                         Continue
                                     </button>
                                 </div>
@@ -720,30 +721,31 @@
         <script>
             // $(document).ready(function() { 2
             // $('kt_stepper_example_basic_form input:not([name="qr_type"]), kt_stepper_example_basic_form input:not([name="qr_data_coupon_code"]),kt_stepper_example_basic_form input:not([name="qr_data_coupon_expire_date"]),kt_stepper_example_basic_form input:not([name="qr_data_coupon_header"]),kt_stepper_example_basic_form input:not([name="qr_data_coupon_message"]),kt_stepper_example_basic_form input:not([name="qr_data_coupon_description_header"]),kt_stepper_example_basic_form input:not([name="qr_data_coupon_description_body"]),kt_stepper_example_basic_form input:not([name="qr_data_coupon_website"]),kt_stepper_example_basic_form input:not([name="qr_data_coupon_company"]),kt_stepper_example_basic_form input:not([name="qr_data_coupon_policy"]),kt_stepper_example_basic_form input:not([name="qr_data_coupon_logo"]) ,kt_stepper_example_basic_form textarea, kt_stepper_example_basic_form select')
-            $('#kt_stepper_example_basic_form input, #kt_stepper_example_basic_form textarea, #kt_stepper_example_basic_form select').not(
-                '[name="qr_type"], [name="qr_data_coupon_code"], [name="qr_data_coupon_expire_date"], [name="qr_data_coupon_header"], [name="qr_data_coupon_message"], [name="qr_data_coupon_description_header"], [name="qr_data_coupon_description_body"], [name="qr_data_coupon_website"], [name="qr_data_coupon_company"], [name="qr_data_coupon_policy"], [name="qr_data_coupon_logo"]'
-            ).on('keyup change', function(e) {
-                e.preventDefault(); // Prevent default form submission behavior
-                // Get the form data
-                var formData = new FormData($(this).closest('form')[0]);
+            $('#kt_stepper_example_basic_form input, #kt_stepper_example_basic_form textarea, #kt_stepper_example_basic_form select')
+                .not(
+                    '[name="qr_type"], [name="qr_data_coupon_code"], [name="qr_data_coupon_expire_date"], [name="qr_data_coupon_header"], [name="qr_data_coupon_message"], [name="qr_data_coupon_description_header"], [name="qr_data_coupon_description_body"], [name="qr_data_coupon_website"], [name="qr_data_coupon_company"], [name="qr_data_coupon_policy"], [name="qr_data_coupon_logo"]'
+                ).on('keyup change', function(e) {
+                    e.preventDefault(); // Prevent default form submission behavior
+                    // Get the form data
+                    var formData = new FormData($(this).closest('form')[0]);
 
-                $.ajax({
-                    url: '{{ route('admin.qr.preview') }}', // Replace this with the URL of your Laravel route or endpoint
-                    type: 'POST',
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function(response) {
-                        // Display the QR code image
-                        $("#generatedQRCodeContainer").show();
-                        $("#qrCouponPreview").hide();
-                        $('.generatedQRCode').attr('src', response.qr_code);
-                    },
-                    error: function(xhr, status, error) {
-                        console.error(error);
-                    }
+                    $.ajax({
+                        url: '{{ route('admin.qr.preview') }}', // Replace this with the URL of your Laravel route or endpoint
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function(response) {
+                            // Display the QR code image
+                            $("#generatedQRCodeContainer").show();
+                            $("#qrCouponPreview").hide();
+                            $('.generatedQRCode').attr('src', response.qr_code);
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(error);
+                        }
+                    });
                 });
-            });
         </script>
 
         <script>
