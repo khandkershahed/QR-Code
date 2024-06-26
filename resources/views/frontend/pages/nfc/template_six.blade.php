@@ -199,7 +199,7 @@
                                                 </div>
                                             </div>
                                             @if (!empty($nfc_card->nfcData->bio_description))
-                                                <p class="text-white text-center px-5 pt-5">
+                                                <p class="text-white text-center px-5">
                                                     {{ optional($nfc_card->nfcData)->bio_description }}
                                                 </p>
                                             @endif
