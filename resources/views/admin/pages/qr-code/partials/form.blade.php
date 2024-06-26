@@ -724,8 +724,7 @@
                                 </div>
                                 <div class="col-lg-1">
                                     <div class="fv-row mb-5 fv-plugins-icon-container">
-                                        <label class="d-flex align-items-center fs-5 fw-semibold mb-2">Preview</label>
-                                        <img class="img-fluid rouded-crirlce qr_data_restaurant_logo" width="50px"
+                                        <img class="img-fluid rouded-crirlce qr_data_restaurant_logo mt-10" width="50px"
                                             src="https://preview.keenthemes.com/metronic8/demo1/assets/media/illustrations/sketchy-1/9.png"
                                             alt="">
                                     </div>
@@ -741,8 +740,7 @@
                                 </div>
                                 <div class="col-lg-1">
                                     <div class="fv-row mb-5 fv-plugins-icon-container">
-                                        <label class="d-flex align-items-center fs-5 fw-semibold mb-2">Preview</label>
-                                        <img class="img-fluid rouded-crirlce qr_data_restaurant_bg" width="50px"
+                                        <img class="img-fluid rouded-crirlce qr_data_restaurant_bg mt-10" width="50px"
                                             src="https://preview.keenthemes.com/metronic8/demo1/assets/media/illustrations/sketchy-1/9.png"
                                             alt="">
                                     </div>

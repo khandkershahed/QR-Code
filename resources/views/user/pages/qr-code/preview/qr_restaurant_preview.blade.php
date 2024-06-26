@@ -143,7 +143,7 @@
                             <div class="w-100 d-flex flex-column justify-content-center align-items-center">
                                 <!-- First Menu -->
                                 @foreach ($categories as $category)
-                                    <div class="row align-items-center w-100"
+                                    <div class="row align-items-center w-100 pt-4"
                                         style="border-top: 1px dashed #e92c28;background: white;">
                                         <div class="col-lg-3 px-0">
                                             <div style="background-color: white">
