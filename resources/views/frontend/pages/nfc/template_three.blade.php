@@ -287,33 +287,33 @@
                                                     <div class="rounded-5 mt-2 d-flex justify-content-center align-items-center p-4"
                                                         style="background-color: #f6f6f7; border-radius: 0">
                                                         @if (!empty($nfc_card->nfcData->facebook_url))
-                                                            <a href="" class="text-center"
+                                                            <a href="{{ $nfc_card->nfcData->facebook_url }}" class="text-center"
                                                                 style="text-decoration: none;width: 20%;color: #1c344f;">
-                                                                <i class="fab fa-facebook facebook-icon icon fa-2x"
+                                                                <i class="fa fa-facebook facebook-icon icon fa-2x"
                                                                     title="Facebook" aria-hidden="true"></i><span
                                                                     class="sr-only">Facebook</span>
                                                             </a>
                                                         @endif
-                                                        @if (!empty($nfc_card->nfcData->whatsapp_url))
-                                                            <a href="" class="text-center"
+                                                        @if (!empty($nfc_card->nfcData->instagram_url))
+                                                            <a href="{{ $nfc_card->nfcData->instagram_url }}" class="text-center"
                                                                 style="text-decoration: none;width: 20%;color: #1c344f;">
-                                                                <i class="fas fa-whatsapp icon fa-2x p-3" title="Map"
+                                                                <i class="fa fa-instagram icon fa-2x p-3" title="Map"
                                                                     aria-hidden="true"></i><span class="sr-only">Whats
                                                                     App</span>
                                                             </a>
                                                         @endif
-                                                        @if (!empty($nfc_card->nfcData->linkedin_url))
-                                                            <a href="" class="text-center"
+                                                        @if (!empty($nfc_card->nfcData->youtube_url))
+                                                            <a href="{{ $nfc_card->nfcData->youtube_url }}" class="text-center"
                                                                 style="text-decoration: none;width: 20%;color: #1c344f;">
-                                                                <i class="fab fa-linkedin linkedin-icon icon fa-2x"
+                                                                <i class="fa fa-youtube linkedin-icon icon fa-2x"
                                                                     title="Instagram" aria-hidden="true"></i><span
                                                                     class="sr-only">Linkedin</span>
                                                             </a>
                                                         @endif
                                                         @if (!empty($nfc_card->nfcData->google_plus_url))
-                                                            <a href="" class="text-center"
+                                                            <a href="{{ $nfc_card->nfcData->google_plus_url }}" class="text-center"
                                                                 style="text-decoration: none;width: 20%;color: #1c344f;">
-                                                                <i class="fab fa-google-plus whatsapp-icon icon fa-2x"
+                                                                <i class="fa fa-google whatsapp-icon icon fa-2x"
                                                                     title="Instagram" aria-hidden="true"></i><span
                                                                     class="sr-only">Googel Plus</span>
                                                             </a>
