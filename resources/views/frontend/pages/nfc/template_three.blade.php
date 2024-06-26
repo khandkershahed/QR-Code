@@ -24,10 +24,20 @@
         :root {
             --white: #fff;
             --tem-one-name-color: #fff;
-            --body-font-family: "Raleway", sans-serif;
             --tem-one-name-font-size: 40px;
-            --tem-one-name-font-family: "Bebas Neue", sans-serif;
-            --tem-one-designation-font-family: "Raleway", sans-serif;
+            @if ($nfc_card->font_family == 'bebas_neue')
+                --body-font-family: "Bebas Neue", sans-serif !important;
+                --tem-one-name-font-family: "Bebas Neue", sans-serif !important;
+                --tem-one-designation-font-family: "Bebas Neue", sans-serif !important;
+            @elseif($nfc_card->font_family == 'raleway')
+                --tem-one-name-font-family: "Raleway", sans-serif !important;
+                --body-font-family: "Raleway", sans-serif !important;
+                --tem-one-designation-font-family: "Raleway", sans-serif;
+                @else
+                --tem-one-name-font-family: "Raleway", sans-serif !important;
+                --body-font-family: "Raleway", sans-serif !important;
+                --tem-one-designation-font-family: "Raleway", sans-serif;
+            @endif
             --tem-one-designation-color: #fff;
             --tem-one-bio-title-color: #624aac;
             --tem-profile-image-bg: #624aac;
@@ -49,6 +59,7 @@
             margin: 0;
             padding: 0;
             font-family: var(--body-font-family);
+            letter-spacing: 2px;
         }
 
         .nfc-mobile-frame {
@@ -276,33 +287,33 @@
                                                     <div class="rounded-5 mt-2 d-flex justify-content-center align-items-center p-4"
                                                         style="background-color: #f6f6f7; border-radius: 0">
                                                         @if (!empty($nfc_card->nfcData->facebook_url))
-                                                            <a href="" class="text-center"
+                                                            <a href="{{ $nfc_card->nfcData->facebook_url }}" class="text-center"
                                                                 style="text-decoration: none;width: 20%;color: #1c344f;">
-                                                                <i class="fab fa-facebook facebook-icon icon fa-2x"
+                                                                <i class="fa fa-facebook facebook-icon icon fa-2x"
                                                                     title="Facebook" aria-hidden="true"></i><span
                                                                     class="sr-only">Facebook</span>
                                                             </a>
                                                         @endif
-                                                        @if (!empty($nfc_card->nfcData->whatsapp_url))
-                                                            <a href="" class="text-center"
+                                                        @if (!empty($nfc_card->nfcData->instagram_url))
+                                                            <a href="{{ $nfc_card->nfcData->instagram_url }}" class="text-center"
                                                                 style="text-decoration: none;width: 20%;color: #1c344f;">
-                                                                <i class="fas fa-whatsapp icon fa-2x p-3" title="Map"
+                                                                <i class="fa fa-instagram icon fa-2x p-3" title="Map"
                                                                     aria-hidden="true"></i><span class="sr-only">Whats
                                                                     App</span>
                                                             </a>
                                                         @endif
-                                                        @if (!empty($nfc_card->nfcData->linkedin_url))
-                                                            <a href="" class="text-center"
+                                                        @if (!empty($nfc_card->nfcData->youtube_url))
+                                                            <a href="{{ $nfc_card->nfcData->youtube_url }}" class="text-center"
                                                                 style="text-decoration: none;width: 20%;color: #1c344f;">
-                                                                <i class="fab fa-linkedin linkedin-icon icon fa-2x"
+                                                                <i class="fa fa-youtube linkedin-icon icon fa-2x"
                                                                     title="Instagram" aria-hidden="true"></i><span
                                                                     class="sr-only">Linkedin</span>
                                                             </a>
                                                         @endif
                                                         @if (!empty($nfc_card->nfcData->google_plus_url))
-                                                            <a href="" class="text-center"
+                                                            <a href="{{ $nfc_card->nfcData->google_plus_url }}" class="text-center"
                                                                 style="text-decoration: none;width: 20%;color: #1c344f;">
-                                                                <i class="fab fa-google-plus whatsapp-icon icon fa-2x"
+                                                                <i class="fa fa-google whatsapp-icon icon fa-2x"
                                                                     title="Instagram" aria-hidden="true"></i><span
                                                                     class="sr-only">Googel Plus</span>
                                                             </a>
@@ -507,105 +518,102 @@
                                                 </div>
                                             @endif
                                             <!-- Service -->
+                                            @if (!empty($nfc_card->nfcData->service_section_title))
                                             <div>
-                                                @if (!empty($nfc_card->nfcData->service_section_title))
                                                     <h5
                                                         class="text-muted w-25 text-center rounded-2 py-2 ps-3 mb-0 fw-bold">
                                                         {{ optional($nfc_card->nfcData)->service_section_title }}
                                                     </h5>
-                                                @endif
-                                                <div
-                                                    style="
-                              background-color: #f44336;
-                              height: 23px;
-                              width: 25px;
-                              border-radius: 100%;
-                              margin-top: -32px;
-                            ">
-                                                </div>
-                                            </div>
-                                            <div class="py-5">
-                                                @if (!empty($nfc_card->nfcData->service_one_title) || !empty($nfc_card->nfcData->service_one_title))
-                                                    <div class="row align-items-center mb-4 shadow-sm">
-                                                        <div class="col-lg-2 px-0">
-                                                            <div>
-                                                                <img class="img-fluid"
-                                                                    style="background-color: #f3fbff"
-                                                                    src="https://my.cybercard.ma/uploads/vcards/services/118/Design.png"
-                                                                    alt="" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-10">
-                                                            <div>
-                                                                <h6 class="fw-bolder">
-                                                                    {{ optional($nfc_card->nfcData)->service_one_title }}
-                                                                </h6>
-                                                                <p>
-                                                                    {{ optional($nfc_card->nfcData)->service_one_description }}
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                @endif
-                                                @if (!empty($nfc_card->nfcData->service_two_title) || !empty($nfc_card->nfcData->service_two_title))
-                                                    <div class="row align-items-center mb-4 shadow-sm">
-                                                        <div class="col-lg-2 px-0">
-                                                            <div>
-                                                                <img class="img-fluid"
-                                                                    style="background-color: #f3fbff"
-                                                                    src="https://my.cybercard.ma/uploads/vcards/services/118/Design.png"
-                                                                    alt="" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-10">
-                                                            <div>
-                                                                <h6 class="fw-bolder">
-                                                                    {{ optional($nfc_card->nfcData)->service_two_title }}
-                                                                </h6>
-                                                                <p>
-                                                                    {{ optional($nfc_card->nfcData)->service_two_description }}
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                @endif
-                                                @if (!empty($nfc_card->nfcData->service_three_title) || !empty($nfc_card->nfcData->service_three_title))
-                                                    <div class="row align-items-center mb-4 shadow-sm">
-                                                        <div class="col-lg-2 px-0">
-                                                            <div>
-                                                                <img class="img-fluid"
-                                                                    style="background-color: #f3fbff"
-                                                                    src="https://my.cybercard.ma/uploads/vcards/services/118/Design.png"
-                                                                    alt="" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-10">
-                                                            <div>
-                                                                <h6 class="fw-bolder">
-                                                                    {{ optional($nfc_card->nfcData)->service_three_title }}
-                                                                </h6>
-                                                                <p>
-                                                                    {{ optional($nfc_card->nfcData)->service_three_description }}
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                @endif
-                                            </div>
-                                            <!-- Gallery -->
-                                            <div>
-                                                <h5
-                                                    class="text-muted w-25 text-center rounded-2 py-2 ps-3 mb-0 fw-bold">
-                                                    Gallery
-                                                </h5>
                                                 <div
                                                     style="background-color: #f44336;height: 23px;width: 25px;border-radius: 100%;margin-top: -32px;">
                                                 </div>
                                             </div>
+                                            @endif
+                                            @if (!empty($nfc_card->nfcData->service_one_title) || !empty($nfc_card->nfcData->service_two_title) || !empty($nfc_card->nfcData->service_three_title))
+                                                <div class="py-5">
+                                                    @if (!empty($nfc_card->nfcData->service_one_title) || !empty($nfc_card->nfcData->service_one_description))
+                                                        <div class="row align-items-center mb-4 shadow-sm">
+                                                            <div class="col-lg-2 px-0">
+                                                                <div>
+                                                                    <img class="img-fluid"
+                                                                        style="background-color: #f3fbff"
+                                                                        src="https://my.cybercard.ma/uploads/vcards/services/118/Design.png"
+                                                                        alt="" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-10">
+                                                                <div>
+                                                                    <h6 class="fw-bolder">
+                                                                        {{ optional($nfc_card->nfcData)->service_one_title }}
+                                                                    </h6>
+                                                                    <p>
+                                                                        {{ optional($nfc_card->nfcData)->service_one_description }}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                    @if (!empty($nfc_card->nfcData->service_two_title) || !empty($nfc_card->nfcData->service_two_description))
+                                                        <div class="row align-items-center mb-4 shadow-sm">
+                                                            <div class="col-lg-2 px-0">
+                                                                <div>
+                                                                    <img class="img-fluid"
+                                                                        style="background-color: #f3fbff"
+                                                                        src="https://my.cybercard.ma/uploads/vcards/services/118/Design.png"
+                                                                        alt="" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-10">
+                                                                <div>
+                                                                    <h6 class="fw-bolder">
+                                                                        {{ optional($nfc_card->nfcData)->service_two_title }}
+                                                                    </h6>
+                                                                    <p>
+                                                                        {{ optional($nfc_card->nfcData)->service_two_description }}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                    @if (!empty($nfc_card->nfcData->service_three_title) || !empty($nfc_card->nfcData->service_three_description))
+                                                        <div class="row align-items-center mb-4 shadow-sm">
+                                                            <div class="col-lg-2 px-0">
+                                                                <div>
+                                                                    <img class="img-fluid"
+                                                                        style="background-color: #f3fbff"
+                                                                        src="https://my.cybercard.ma/uploads/vcards/services/118/Design.png"
+                                                                        alt="" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-10">
+                                                                <div>
+                                                                    <h6 class="fw-bolder">
+                                                                        {{ optional($nfc_card->nfcData)->service_three_title }}
+                                                                    </h6>
+                                                                    <p>
+                                                                        {{ optional($nfc_card->nfcData)->service_three_description }}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                            @endif
+                                            <!-- Gallery -->
+
                                             @if (
                                                 !empty($nfc_card->nfcData->service_one_image) ||
                                                     !empty($nfc_card->nfcData->service_two_image) ||
                                                     !empty($nfc_card->nfcData->service_three_image))
+                                                    <div>
+                                                        <h5
+                                                            class="text-muted w-25 text-center rounded-2 py-2 ps-3 mb-0 fw-bold">
+                                                            Gallery
+                                                        </h5>
+                                                        <div
+                                                            style="background-color: #f44336;height: 23px;width: 25px;border-radius: 100%;margin-top: -32px;">
+                                                        </div>
+                                                    </div>
                                                 <div class="mb-5 mt-4">
                                                     <div class="slick-slider p-4">
                                                         @if (!empty($nfc_card->nfcData->service_one_image))
@@ -648,22 +656,14 @@
 
                                             <!-- Form -->
                                             <div
-                                                style="
-                            background-image: url(https://my.cybercard.ma/assets/img/vcard17/appointment-bg.png);
-                          ">
+                                                style="background-image: url(https://my.cybercard.ma/assets/img/vcard17/appointment-bg.png);">
                                                 <div>
                                                     <h5
                                                         class="text-muted w-25 text-center rounded-2 py-2 ps-3 mb-0 fw-bold">
-                                                        Inquery
+                                                        Inquiry
                                                     </h5>
                                                     <div
-                                                        style="
-                                background-color: #f44336;
-                                height: 23px;
-                                width: 25px;
-                                border-radius: 100%;
-                                margin-top: -32px;
-                              ">
+                                                        style="background-color: #f44336;height: 23px;width: 25px;border-radius: 100%;margin-top: -32px;">
                                                     </div>
                                                 </div>
                                                 <div class="pt-4">
@@ -676,63 +676,75 @@
                                                             value="{{ optional($nfc_card)->id }}">
                                                         <input type="hidden" name="nfc_code"
                                                             value="{{ optional($nfc_card)->code }}">
-                                                        <div class="row">
-                                                            <div class="col mb-2">
-                                                                <div>
-                                                                    <small for="client_name">Name
-                                                                        <span class="text-danger">*</span></small>
-                                                                    <input type="text" name="name" required
-                                                                        class="form-control form-control-sm"
-                                                                        placeholder="Jhone Doe" id="" />
+                                                            <div class="row">
+                                                                <div class="col mb-2">
+                                                                    <div class="fv-row my-3">
+                                                                        <x-metronic.label
+                                                                            class="fw-semibold fs-6 mb-2 required">Name
+                                                                            <span class="text-danger fs-1" style="position: relative;top: 0.6rem;">*</span>
+                                                                        </x-metronic.label>
+                                                                        <x-metronic.input type="text" name="name"
+                                                                            value="{{ old('name') }}"
+                                                                            class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                            placeholder="Robert Duff" required />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col mb-2">
+                                                                    <div class="fv-row my-3">
+                                                                        <x-metronic.label
+                                                                            class="fw-semibold fs-6 mb-2 required">Email
+                                                                            <span class="text-danger fs-1" style="position: relative;top: 0.6rem;">*</span>
+                                                                        </x-metronic.label>
+                                                                        <x-metronic.input type="email" name="email"
+                                                                            value="{{ old('email') }}"
+                                                                            class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                            placeholder="example@mail.com" required />
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col mb-2">
-                                                                <div>
-                                                                    <small for="client_email">Email
-                                                                        <span class="text-danger">*</span></small>
-                                                                    <input type="text" name="email" required
-                                                                        class="form-control form-control-sm"
-                                                                        id=""
-                                                                        placeholder="Jhone@gmail.com" />
+                                                            <div class="row">
+                                                                <div class="col mb-2">
+                                                                    <div class="fv-row my-3">
+                                                                        <x-metronic.label
+                                                                            class="fw-semibold fs-6 mb-2">Phone</x-metronic.label>
+                                                                        <x-metronic.input type="text" name="phone"
+                                                                            value="{{ old('phone') }}"
+                                                                            class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                            placeholder="01*******" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col mb-2">
+                                                                    <div class="fv-row my-3">
+                                                                        <x-metronic.label
+                                                                            class="fw-semibold fs-6 mb-2">Headline</x-metronic.label>
+                                                                        <x-metronic.input type="text" name="headline"
+                                                                            value="{{ old('headline') }}"
+                                                                            class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                            placeholder="Headline" />
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col mb-2">
-                                                                <div>
-                                                                    <small for="client_name">Phone</small>
-                                                                    <input type="text" name="phone"
-                                                                        class="form-control form-control-sm"
-                                                                        placeholder="015******" id="" />
+                                                            <div class="row">
+                                                                <div class="col mb-2">
+                                                                    <div class="fv-row my-3">
+                                                                        <x-metronic.label
+                                                                            class="fw-semibold fs-6 mb-2 required">Message
+                                                                            <span class="text-danger fs-1" style="position: relative;top: 0.6rem;">*</span>
+                                                                        </x-metronic.label>
+                                                                        <textarea class="form-control form-control-solid" rows="5" name="message" value="{{ old('message') }}"
+                                                                            placeholder="Enter Message" required></textarea>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col mb-2">
-                                                                <div>
-                                                                    <small for="headline">Headline</small>
-                                                                    <input type="text" name="headline"
-                                                                        class="form-control form-control-sm"
-                                                                        id="" placeholder="Headline" />
+                                                            <div class="row" style="margin-bottom: 2.5rem">
+                                                                <div class="col mb-2 text-center">
+                                                                    <button type="submit"
+                                                                        class="btn btn-sm mt-2 px-4 rounded-pill"
+                                                                        style="background-color: #f44336;color: #fff;">
+                                                                        Send Messages
+                                                                    </button>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col mb-2">
-                                                                <div>
-                                                                    <small for="client_message">Message</small>
-                                                                    <br />
-                                                                    <textarea name="message" id="" class="form-control" rows="3" placeholder="hello jhon"></textarea>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row" style="margin-bottom: 2.5rem">
-                                                            <div class="col mb-2 text-center">
-                                                                <button type="submit"
-                                                                    class="btn btn-sm mt-2 px-4 rounded-pill"
-                                                                    style="background-color: #f44336;color: #fff;">
-                                                                    Send Messages
-                                                                </button>
-                                                            </div>
-                                                        </div>
                                                     </form>
                                                 </div>
                                             </div>
@@ -750,7 +762,7 @@
                                                 class="row fixed-bottom w-sm-100 w-lg-25 d-sm-block d-lg-none mx-auto">
                                                 <div class="col mb-2 text-center">
                                                     <a href="tel:+{{ optional($nfc_card->nfcData)->phone_personal }}"
-                                                        class="btn btn-sm mt- p-2 w-100 nfc_contact_btn nfc_contact_btn_mobile"
+                                                        class="btn btn-sm mt-2 p-2 w-100 nfc_contact_btn nfc_contact_btn_mobile"
                                                         style="background-color: #f44336; color: #fff">
                                                         <i class="fas fa-contact pe-1 fa-address-book"></i>
                                                         Save Contact
@@ -791,99 +803,99 @@
             URL.revokeObjectURL(a.href);
         }
 
-        function convertImageToBase64(url, callback) {
-            const xhr = new XMLHttpRequest();
-            xhr.onload = function() {
-                const reader = new FileReader();
-                reader.onloadend = function() {
-                    callback(reader.result);
-                };
-                reader.readAsDataURL(xhr.response);
+        function getBase64Image(imgUrl, callback) {
+            const img = new Image();
+            img.crossOrigin = 'Anonymous';
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                canvas.width = img.width;
+                canvas.height = img.height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0);
+                const dataURL = canvas.toDataURL('image/jpeg');
+                callback(dataURL.replace(/^data:image\/(png|jpeg);base64,/, ''));
             };
-            xhr.open('GET', url);
-            xhr.responseType = 'blob';
-            xhr.send();
+            img.src = imgUrl;
         }
 
-        function makeVCard(profileImageBase64 = '') {
-            let vcard = `BEGIN:VCARD\n`;
-            vcard += `VERSION:3.0\n`;
+        const makeVCardVersion = () => `VERSION:3.0`;
+        const makeVCardInfo = (lastName, firstName) => `N:${lastName};${firstName};;;`;
+        const makeVCardName = (firstName, lastName) => `FN:${firstName} ${lastName}`;
+        const makeVCardOrg = (org) => `ORG:${org}`;
+        const makeVCardTitle = (title) => `TITLE:${title}`;
+        const makeVCardPhoto = (imgBase64) => `PHOTO;ENCODING=b;TYPE=JPEG:${imgBase64}`;
+        const makeVCardTel = (phone) => `TEL;TYPE=CELL:${phone}`;
+        const makeVCardAdr = (addressLine1, addressLine2) => `ADR;TYPE=HOME:;;${addressLine1};${addressLine2};;;;`;
+        const makeVCardEmail = (email) => `EMAIL:${email}`;
+        const makeVCardUrl = (url) => `URL:${url}`;
+        const makeVCardSocialProfile = (type, url) => `X-SOCIALPROFILE;TYPE=${type}:${url}`;
+        const makeVCardTimeStamp = () => `REV:${new Date().toISOString()}`;
 
-            // Combine first name and last name
-            let fullName = '{{ optional($nfc_card->nfcData)->first_name }} {{ optional($nfc_card->nfcData)->last_name }}';
-            vcard += `FN:${fullName}\n`;
+        function makeVCard(profileImageBase64) {
+            const firstName = '{{ optional($nfc_card->nfcData)->first_name }}';
+            const lastName = '{{ optional($nfc_card->nfcData)->last_name }}';
+            const designation = '{{ optional($nfc_card->nfcData)->designation }}';
+            const phone = '{{ $nfc_card->nfcData->phone_personal }}';
+            const email = '{{ $nfc_card->nfcData->email_personal }}';
+            const addressLine1 = '{{ $nfc_card->nfcData->address_line_one }}';
+            const addressLine2 = '{{ $nfc_card->nfcData->address_line_two }}';
+            const linkedin = '{{ $nfc_card->nfcData->linkedin_url }}';
 
-            // Add organization and title (designation)
-            let org = '{{ optional($nfc_card->nfcData)->designation }}';
-            if (org) {
-                vcard += `ORG:${org}\n`;
+            let vcard = `BEGIN:VCARD\n${makeVCardVersion()}\n`;
+            vcard += `${makeVCardInfo(lastName, firstName)}\n`;
+            vcard += `${makeVCardName(firstName, lastName)}\n`;
+            vcard += `${makeVCardTitle(designation)}\n`;
+
+            if (profileImageBase64) {
+                vcard += `${makeVCardPhoto(profileImageBase64)}\n`;
             }
 
-            // Add phone number
-            let phone = '{{ $nfc_card->nfcData->phone_personal }}';
-            vcard += `TEL;TYPE=CELL:${phone}\n`;
+            vcard += `${makeVCardTel(phone)}\n`;
 
-            // Add email
-            let email = '{{ $nfc_card->nfcData->email_personal }}';
-            if (email.trim() !== '') {
-                vcard += `EMAIL:${email}\n`;
+            if (addressLine1 || addressLine2) {
+                vcard += `${makeVCardAdr(addressLine1, addressLine2)}\n`;
             }
 
-            // Add address
-            let addressLine1 = '{{ $nfc_card->nfcData->address_line_one }}';
-            let addressLine2 = '{{ $nfc_card->nfcData->address_line_two }}';
-            if (addressLine1.trim() !== '' || addressLine2.trim() !== '') {
-                vcard += `ADR;TYPE=HOME:;;${addressLine1};${addressLine2};;;;\n`;
+            if (email) {
+                vcard += `${makeVCardEmail(email)}\n`;
             }
 
-            // Add LinkedIn URL
-            let linkedin = '{{ $nfc_card->nfcData->linkedin_url }}';
-            if (linkedin.trim() !== '') {
-                vcard += `URL:${linkedin}\n`;
-                vcard += `X-SOCIALPROFILE;TYPE=linkedin:${linkedin}\n`;
+            if (linkedin) {
+                vcard += `${makeVCardUrl(linkedin)}\n`;
+                vcard += `${makeVCardSocialProfile('linkedin', linkedin)}\n`;
             }
 
-            // Add profile image as base64
-            if (profileImageBase64.trim() !== '') {
-                vcard += `PHOTO;ENCODING=b;TYPE=JPEG:${profileImageBase64}\n`;
-            }
-
-            vcard += `REV:${new Date().toISOString()}\n`;
-            vcard += `END:VCARD`;
+            vcard += `${makeVCardTimeStamp()}\nEND:VCARD`;
 
             return vcard;
         }
 
-        document.querySelectorAll('.nfc_contact_btn').forEach(function(button) {
-            button.addEventListener('click', function(event) {
-                event.preventDefault(); // Prevent default link behavior
+        function handleContactButtonClick(event, isMobile) {
+            event.preventDefault(); // Prevent default link behavior
 
-                function isMobileOrTablet() {
-                    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator
-                        .userAgent);
+            const profileImage = '{{ asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) }}';
+
+            getBase64Image(profileImage, (base64Image) => {
+                const vcard = makeVCard(base64Image);
+
+                if (isMobile) {
+                    // Open vCard details in contact app for mobile
+                    const encodedVcfContent = encodeURIComponent(vcard);
+                    const uri = 'data:text/vcard;charset=utf-8,' + encodedVcfContent;
+                    window.location.href = uri;
+                } else {
+                    // Download vCard for PC
+                    downloadToFile(vcard, 'contact.vcf', 'text/vcard');
                 }
-
-                var isMobile = isMobileOrTablet();
-                let profileImageUrl =
-                    '{{ asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) }}';
-
-                // Convert profile image to base64 and then create vCard
-                convertImageToBase64(profileImageUrl, function(base64Image) {
-                    var vcardContent = makeVCard(base64Image);
-
-                    if (isMobile) {
-                        if (button.classList.contains('nfc_contact_btn_mobile')) {
-                            var encodedVcfContent = encodeURIComponent(vcardContent);
-                            var uri = 'data:text/vcard;charset=utf-8,' + encodedVcfContent;
-                            window.open(uri);
-                        }
-                    } else {
-                        if (button.classList.contains('nfc_contact_btn_pc')) {
-                            downloadToFile(vcardContent, 'contact.vcf', 'text/vcard');
-                        }
-                    }
-                });
             });
+        }
+
+        document.querySelector('.nfc_contact_btn_pc').addEventListener('click', (event) => {
+            handleContactButtonClick(event, false);
+        });
+
+        document.querySelector('.nfc_contact_btn_mobile').addEventListener('click', (event) => {
+            handleContactButtonClick(event, true);
         });
     </script>
 

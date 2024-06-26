@@ -75,6 +75,6 @@ class NfcIndividualMessageController extends Controller
      */
     public function destroy(string $id)
     {
-        NfcIndividualMessage::find($id)->destroy();
+        NfcIndividualMessage::find($id)->delete();
     }
 }

@@ -31,8 +31,12 @@
                 --tem-one-designation-font-family: "Bebas Neue", sans-serif !important;
             @elseif($nfc_card->font_family == 'raleway')
                 --tem-one-name-font-family: "Raleway", sans-serif !important;
-                --tem-one-designation-font-family: "Raleway", sans-serif !important;
                 --body-font-family: "Raleway", sans-serif !important;
+                --tem-one-designation-font-family: "Raleway", sans-serif;
+                @else
+                --tem-one-name-font-family: "Raleway", sans-serif !important;
+                --body-font-family: "Raleway", sans-serif !important;
+                --tem-one-designation-font-family: "Raleway", sans-serif;
             @endif
             --tem-one-name-font-size: 40px;
             --tem-one-designation-color: #fff;
@@ -48,6 +52,7 @@
             --tem-one-address-color: #fff;
             --button_bg_color: {{ $nfc_card->button_bg_color }};
             --button_title_color: {{ $nfc_card->button_title_color }};
+
         }
 
         body {
@@ -58,7 +63,13 @@
             margin: 0;
             padding: 0;
             font-family: var(--body-font-family);
+            letter-spacing: 2px;
         }
+
+        label {
+            color: white;
+        }
+
 
         .nfc-mobile-frame {
 
@@ -463,17 +474,22 @@
                                                 </div>
                                             @endif
                                             <!-- Service -->
-                                            <div class="pt-4">
-                                                @if (!empty($nfc_card->nfcData->service_section_title))
-                                                    <p class="text-white w-25 text-center rounded-2 py-2 mb-0 fw-bold">
-                                                        {{ $nfc_card->nfcData->service_section_title }}
-                                                    </p>
-                                                @endif
-                                                <div
-                                                    style="background-color: #f44336;height: 23px;width: 25px;border-top-right-radius: 5px;margin-top: -32px;border-bottom-right-radius: 5px;">
+                                            @if (!empty($nfc_card->nfcData->service_section_title))
+                                                <div class="pt-4">
+                                                    @if (!empty($nfc_card->nfcData->service_section_title))
+                                                        <p class="text-white w-25 text-center rounded-2 py-2 mb-0 fw-bold">
+                                                            {{ $nfc_card->nfcData->service_section_title }}
+                                                        </p>
+                                                    @endif
+                                                    <div
+                                                        style="background-color: #f44336;height: 23px;width: 25px;border-top-right-radius: 5px;margin-top: -32px;border-bottom-right-radius: 5px;">
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            @if (!empty($nfc_card->nfcData->service_one_title ) || !empty($nfc_card->nfcData->service_two_title) || !empty($nfc_card->nfcData->service_three_title))
+                                            @endif
+                                            @if (
+                                                !empty($nfc_card->nfcData->service_one_title) ||
+                                                    !empty($nfc_card->nfcData->service_two_title) ||
+                                                    !empty($nfc_card->nfcData->service_three_title))
                                                 <div class="py-3">
                                                     <ul style="list-style-type: none">
                                                         <li class="text-white pb-2">
@@ -485,7 +501,8 @@
                                                     </ul>
                                                 </div>
                                             @endif
-                                            @if ((!empty($nfc_card->nfcData->service_one_image) &&
+                                            @if (
+                                                (!empty($nfc_card->nfcData->service_one_image) &&
                                                     file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->service_one_image))) ||
                                                     (!empty($nfc_card->nfcData->service_two_image) &&
                                                         file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->service_two_image))) ||
@@ -552,7 +569,7 @@
                                             <div>
                                                 <div>
                                                     <p class="text-white w-25 text-center rounded-2 py-2 mb-0 fw-bold">
-                                                        Inquery
+                                                        Inquiry
                                                     </p>
                                                     <div
                                                         style="background-color: #f44336;height: 23px;width: 25px;border-top-right-radius: 5px;margin-top: -32px;border-bottom-right-radius: 5px;">
@@ -562,51 +579,69 @@
                                                     <form action="{{ route('individual-message.store') }}"
                                                         method="post" class="p-3">
                                                         @csrf
+                                                        <input type="hidden" name="user_id"
+                                                            value="{{ optional($nfc_card)->user_id }}">
+                                                        <input type="hidden" name="nfc_id"
+                                                            value="{{ optional($nfc_card)->id }}">
+                                                        <input type="hidden" name="nfc_code"
+                                                            value="{{ optional($nfc_card)->code }}">
                                                         <div class="row">
                                                             <div class="col mb-2">
-                                                                <div>
-                                                                    <small for="client_name">Name
-                                                                        <span class="text-danger">*</span></small>
-                                                                    <input type="text" name="name" required
-                                                                        class="form-control form-control-sm"
-                                                                        placeholder="Jhone Doe" id="" />
+                                                                <div class="fv-row my-3">
+                                                                    <x-metronic.label
+                                                                        class="fw-semibold fs-6 mb-2 required">Name
+                                                                        <span class="text-danger fs-1" style="position: relative;top: 0.6rem;">*</span>
+                                                                    </x-metronic.label>
+                                                                    <x-metronic.input type="text" name="name"
+                                                                        value="{{ old('name') }}"
+                                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                        placeholder="Robert Duff" required />
                                                                 </div>
                                                             </div>
                                                             <div class="col mb-2">
-                                                                <div>
-                                                                    <small for="client_email">Email
-                                                                        <span class="text-danger">*</span></small>
-                                                                    <input type="text" name="email" required
-                                                                        class="form-control form-control-sm"
-                                                                        id=""
-                                                                        placeholder="Jhone@gmail.com" />
+                                                                <div class="fv-row my-3">
+                                                                    <x-metronic.label
+                                                                        class="fw-semibold fs-6 mb-2 required">Email
+                                                                        <span class="text-danger fs-1" style="position: relative;top: 0.6rem;">*</span>
+                                                                    </x-metronic.label>
+                                                                    <x-metronic.input type="email" name="email"
+                                                                        value="{{ old('email') }}"
+                                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                        placeholder="example@mail.com" required />
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col mb-2">
-                                                                <div>
-                                                                    <small for="client_name">Phone</small>
-                                                                    <input type="text" name="phone"
-                                                                        class="form-control form-control-sm"
-                                                                        placeholder="015******" id="" />
+                                                                <div class="fv-row my-3">
+                                                                    <x-metronic.label
+                                                                        class="fw-semibold fs-6 mb-2">Phone</x-metronic.label>
+                                                                    <x-metronic.input type="text" name="phone"
+                                                                        value="{{ old('phone') }}"
+                                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                        placeholder="01*******" />
                                                                 </div>
                                                             </div>
                                                             <div class="col mb-2">
-                                                                <div>
-                                                                    <small for="headline">Headline</small>
-                                                                    <input type="text" name="headline"
-                                                                        class="form-control form-control-sm"
-                                                                        id="" placeholder="Headline" />
+                                                                <div class="fv-row my-3">
+                                                                    <x-metronic.label
+                                                                        class="fw-semibold fs-6 mb-2">Headline</x-metronic.label>
+                                                                    <x-metronic.input type="text" name="headline"
+                                                                        value="{{ old('headline') }}"
+                                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                        placeholder="Headline" />
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col mb-2">
-                                                                <div>
-                                                                    <small for="client_message">Message</small>
-                                                                    <br />
-                                                                    <textarea name="message" id="" class="form-control" rows="3" placeholder="hello jhon"></textarea>
+                                                                <div class="fv-row my-3">
+                                                                    <x-metronic.label
+                                                                        class="fw-semibold fs-6 mb-2 required">Message
+                                                                        <span class="text-danger fs-1" style="position: relative;top: 0.6rem;">*</span>
+                                                                    </x-metronic.label>
+                                                                    <textarea class="form-control form-control-solid" rows="5" name="message" value="{{ old('message') }}"
+                                                                        placeholder="Enter Message" required></textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -624,21 +659,23 @@
                                             </div>
                                             <div class="row fixed-bottom w-25 mx-auto mobile-d-none">
                                                 <div class="col mb-2 text-center">
-                                                    <button type="submit" class="btn btn-sm mt-2 p-2 w-100"
+                                                    <a href="tel:+{{ optional($nfc_card->nfcData)->phone_personal }}"
+                                                        class="btn btn-sm mt-2 p-2 w-100 nfc_contact_btn nfc_contact_btn_pc"
                                                         style="background-color: #f44336; color: #fff">
                                                         <i class="fas fa-contact pe-1 fa-address-book"></i>
-                                                        Connect The Profile
-                                                    </button>
+                                                        Save Contact
+                                                    </a>
                                                 </div>
                                             </div>
                                             <div
                                                 class="row fixed-bottom w-sm-100 w-lg-25 d-sm-block d-lg-none mx-auto">
                                                 <div class="col mb-2 text-center">
-                                                    <button type="submit" class="btn btn-sm mt- p-2 w-100"
+                                                    <a href="tel:+{{ optional($nfc_card->nfcData)->phone_personal }}"
+                                                        class="btn btn-sm mt-2 p-2 w-100 nfc_contact_btn nfc_contact_btn_mobile"
                                                         style="background-color: #f44336; color: #fff">
                                                         <i class="fas fa-contact pe-1 fa-address-book"></i>
-                                                        Connect The Profile
-                                                    </button>
+                                                        Save Contact
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -684,6 +721,117 @@
                     // Add more breakpoints and settings as needed
                 ],
             });
+        });
+    </script>
+    <script>
+        'use strict';
+
+        function downloadToFile(content, filename, contentType) {
+            const a = document.createElement('a');
+            const file = new Blob([content], {
+                type: contentType
+            });
+
+            a.href = URL.createObjectURL(file);
+            a.download = filename;
+            a.click();
+
+            URL.revokeObjectURL(a.href);
+        }
+
+        function getBase64Image(imgUrl, callback) {
+            const img = new Image();
+            img.crossOrigin = 'Anonymous';
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                canvas.width = img.width;
+                canvas.height = img.height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0);
+                const dataURL = canvas.toDataURL('image/jpeg');
+                callback(dataURL.replace(/^data:image\/(png|jpeg);base64,/, ''));
+            };
+            img.src = imgUrl;
+        }
+
+        const makeVCardVersion = () => `VERSION:3.0`;
+        const makeVCardInfo = (lastName, firstName) => `N:${lastName};${firstName};;;`;
+        const makeVCardName = (firstName, lastName) => `FN:${firstName} ${lastName}`;
+        const makeVCardOrg = (org) => `ORG:${org}`;
+        const makeVCardTitle = (title) => `TITLE:${title}`;
+        const makeVCardPhoto = (imgBase64) => `PHOTO;ENCODING=b;TYPE=JPEG:${imgBase64}`;
+        const makeVCardTel = (phone) => `TEL;TYPE=CELL:${phone}`;
+        const makeVCardAdr = (addressLine1, addressLine2) => `ADR;TYPE=HOME:;;${addressLine1};${addressLine2};;;;`;
+        const makeVCardEmail = (email) => `EMAIL:${email}`;
+        const makeVCardUrl = (url) => `URL:${url}`;
+        const makeVCardSocialProfile = (type, url) => `X-SOCIALPROFILE;TYPE=${type}:${url}`;
+        const makeVCardTimeStamp = () => `REV:${new Date().toISOString()}`;
+
+        function makeVCard(profileImageBase64) {
+            const firstName = '{{ optional($nfc_card->nfcData)->first_name }}';
+            const lastName = '{{ optional($nfc_card->nfcData)->last_name }}';
+            const designation = '{{ optional($nfc_card->nfcData)->designation }}';
+            const phone = '{{ $nfc_card->nfcData->phone_personal }}';
+            const email = '{{ $nfc_card->nfcData->email_personal }}';
+            const addressLine1 = '{{ $nfc_card->nfcData->address_line_one }}';
+            const addressLine2 = '{{ $nfc_card->nfcData->address_line_two }}';
+            const linkedin = '{{ $nfc_card->nfcData->linkedin_url }}';
+
+            let vcard = `BEGIN:VCARD\n${makeVCardVersion()}\n`;
+            vcard += `${makeVCardInfo(lastName, firstName)}\n`;
+            vcard += `${makeVCardName(firstName, lastName)}\n`;
+            vcard += `${makeVCardTitle(designation)}\n`;
+
+            if (profileImageBase64) {
+                vcard += `${makeVCardPhoto(profileImageBase64)}\n`;
+            }
+
+            vcard += `${makeVCardTel(phone)}\n`;
+
+            if (addressLine1 || addressLine2) {
+                vcard += `${makeVCardAdr(addressLine1, addressLine2)}\n`;
+            }
+
+            if (email) {
+                vcard += `${makeVCardEmail(email)}\n`;
+            }
+
+            if (linkedin) {
+                vcard += `${makeVCardUrl(linkedin)}\n`;
+                vcard += `${makeVCardSocialProfile('linkedin', linkedin)}\n`;
+            }
+
+            vcard += `${makeVCardTimeStamp()}\nEND:VCARD`;
+
+            return vcard;
+        }
+
+        function handleContactButtonClick(event, isMobile) {
+            event.preventDefault(); // Prevent default link behavior
+
+            const profileImage = '{{ asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) }}';
+
+            getBase64Image(profileImage, (base64Image) => {
+                const vcard = makeVCard(base64Image);
+
+                if (isMobile) {
+                    // Open vCard details in contact app for mobile
+                    const encodedVcfContent = encodeURIComponent(vcard);
+                    const uri = 'data:text/vcard;charset=utf-8,' + encodedVcfContent;
+                    window.location.href = uri;
+                } else {
+                    // Download vCard for PC
+                    downloadToFile(vcard, 'contact.vcf', 'text/vcard');
+                }
+            });
+        }
+
+        document.querySelector('.nfc_contact_btn_pc').addEventListener('click', (event) => {
+            handleContactButtonClick(event, false);
+        });
+
+        document.querySelector('.nfc_contact_btn_mobile').addEventListener('click', (event) => {
+            handleContactButtonClick(event, true);
         });
     </script>
 </body>
