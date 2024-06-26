@@ -222,7 +222,7 @@
             </div>
         </div>
     </div>
-
+ 
     @push('scripts')
         <script>
             $(document).ready(function() {
@@ -351,7 +351,7 @@
                 transparentContent.style.display = 'none';
             });
 
-           
+
 
             transparentRadio.addEventListener('change', function() {
                 // Show transparent content and hide others

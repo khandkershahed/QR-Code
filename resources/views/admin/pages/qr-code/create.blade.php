@@ -1,7 +1,7 @@
 <x-admin-app-layout :title="'QR Code Generate'">
-    <div class="row align-items-center">
+    <div class="row align-items-center" id="qr-columns-container">
         <div class="col-lg-8 col-md-7">
-            <div class="card mt-10 p-0">
+            <div class="card mt-10 p-0" id="qr-first-card">
                 <div class="card-body p-0">
                     <div class="stepper stepper-pills" id="kt_stepper_example_clickable">
                         <div class="stepper-nav flex-center flex-wrap steaper-header">
@@ -183,23 +183,22 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-5">
-            <div class="card mt-10 bg-transparent">
-                {{-- position-fixed --}}
-                <div class="card-body bg-transparent">
-                    <div class="d-flex flex-column justify-content-center align-items-center">
-                        {{-- id="generatedQRCodeContainer" --}}
-                        <h3>Preview</h3>
-                        @include('admin.pages.qr-code.partials.qr_preview')
-                        {{-- {!! QrCode::size(220)->eye('left-leaf', 0.1)->eyeColor(0, 255, 255, 255, 0, 0, 0)->eyeColor(1, 222, 18, 222, 222, 18, 222)->eyeColor(2, 222, 18, 222, 222, 18, 222)->style('dot', 0.8)->errorCorrection('H')->generate('Make me into a QrCode!') !!} --}}
+
+        <div class="col-lg-4">
+            <div class="card" id="qr-second-card">
+                <div class="card-header px-0 border-0">
+                    <div class="d-flex flex-column justify-content-center align-items-center"
+                        style="width: 100%; background: #0098da3d; border-top-left-radius: 5px; border-top-right-radius: 5px; padding: 15px;">
+                        <h3 class="">Preview</h3>
                     </div>
-                    <a id="downloadLink" href="javascripti:void()" download class="btn btn-light btn-primary w-100"
-                        style="display: none;">Download</a>
+                </div>
+                <div class="card-body custom-card-body overflow-auto px-0 mx-auto">
+                    @include('admin.pages.qr-code.partials.qr_preview')
                 </div>
             </div>
         </div>
         <div class="categoryModal">
-            @include('admin.pages.qr-code.partials.qrCodeModals')
+            @include('user.pages.qr-code.partials.qrCodeModals')
         </div>
     </div>
     {{-- modals --}}
@@ -209,6 +208,21 @@
 
 
     @push('scripts')
+        <script>
+            $(document).ready(function() {
+                // Function to match card heights
+                function matchCardHeights() {
+                    var firstCardHeight = $('#qr-first-card').outerHeight();
+                    $('#qr-second-card').outerHeight(firstCardHeight);
+                    // var secondCardHeight = $('#qr-second-card').outerHeight();
+                    // $('#qr-first-card').outerHeight(secondCardHeight);
+                }
+
+                // Call matchCardHeights initially and on window resize
+                matchCardHeights();
+                $(window).resize(matchCardHeights);
+            });
+        </script>
         <script>
             // Stepper lement
             var element = document.querySelector("#kt_stepper_example_clickable");
