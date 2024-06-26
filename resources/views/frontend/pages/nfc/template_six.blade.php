@@ -31,8 +31,12 @@
                 --tem-one-designation-font-family: "Bebas Neue", sans-serif !important;
             @elseif($nfc_card->font_family == 'raleway')
                 --tem-one-name-font-family: "Raleway", sans-serif !important;
-                --tem-one-designation-font-family: "Raleway", sans-serif !important;
                 --body-font-family: "Raleway", sans-serif !important;
+                --tem-one-designation-font-family: "Raleway", sans-serif;
+                @else
+                --tem-one-name-font-family: "Raleway", sans-serif !important;
+                --body-font-family: "Raleway", sans-serif !important;
+                --tem-one-designation-font-family: "Raleway", sans-serif;
             @endif
             --tem-one-name-font-size: 40px;
             --tem-one-designation-color: #fff;
@@ -48,6 +52,7 @@
             --tem-one-address-color: #fff;
             --button_bg_color: {{ $nfc_card->button_bg_color }};
             --button_title_color: {{ $nfc_card->button_title_color }};
+
         }
 
         body {
@@ -58,7 +63,13 @@
             margin: 0;
             padding: 0;
             font-family: var(--body-font-family);
+            letter-spacing: 2px;
         }
+
+        label {
+            color: white;
+        }
+
 
         .nfc-mobile-frame {
 
@@ -199,7 +210,7 @@
                                                 </div>
                                             </div>
                                             @if (!empty($nfc_card->nfcData->bio_description))
-                                                <p class="text-white text-center px-5 pt-5">
+                                                <p class="text-white text-center px-5">
                                                     {{ optional($nfc_card->nfcData)->bio_description }}
                                                 </p>
                                             @endif
@@ -463,16 +474,18 @@
                                                 </div>
                                             @endif
                                             <!-- Service -->
-                                            <div class="pt-4">
-                                                @if (!empty($nfc_card->nfcData->service_section_title))
-                                                    <p class="text-white w-25 text-center rounded-2 py-2 mb-0 fw-bold">
-                                                        {{ $nfc_card->nfcData->service_section_title }}
-                                                    </p>
-                                                @endif
-                                                <div
-                                                    style="background-color: #f44336;height: 23px;width: 25px;border-top-right-radius: 5px;margin-top: -32px;border-bottom-right-radius: 5px;">
+                                            @if (!empty($nfc_card->nfcData->service_section_title))
+                                                <div class="pt-4">
+                                                    @if (!empty($nfc_card->nfcData->service_section_title))
+                                                        <p class="text-white w-25 text-center rounded-2 py-2 mb-0 fw-bold">
+                                                            {{ $nfc_card->nfcData->service_section_title }}
+                                                        </p>
+                                                    @endif
+                                                    <div
+                                                        style="background-color: #f44336;height: 23px;width: 25px;border-top-right-radius: 5px;margin-top: -32px;border-bottom-right-radius: 5px;">
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            @endif
                                             @if (
                                                 !empty($nfc_card->nfcData->service_one_title) ||
                                                     !empty($nfc_card->nfcData->service_two_title) ||
@@ -556,7 +569,7 @@
                                             <div>
                                                 <div>
                                                     <p class="text-white w-25 text-center rounded-2 py-2 mb-0 fw-bold">
-                                                        Inquery
+                                                        Inquiry
                                                     </p>
                                                     <div
                                                         style="background-color: #f44336;height: 23px;width: 25px;border-top-right-radius: 5px;margin-top: -32px;border-bottom-right-radius: 5px;">
@@ -566,51 +579,69 @@
                                                     <form action="{{ route('individual-message.store') }}"
                                                         method="post" class="p-3">
                                                         @csrf
+                                                        <input type="hidden" name="user_id"
+                                                            value="{{ optional($nfc_card)->user_id }}">
+                                                        <input type="hidden" name="nfc_id"
+                                                            value="{{ optional($nfc_card)->id }}">
+                                                        <input type="hidden" name="nfc_code"
+                                                            value="{{ optional($nfc_card)->code }}">
                                                         <div class="row">
                                                             <div class="col mb-2">
-                                                                <div>
-                                                                    <small for="client_name">Name
-                                                                        <span class="text-danger">*</span></small>
-                                                                    <input type="text" name="name" required
-                                                                        class="form-control form-control-sm"
-                                                                        placeholder="Jhone Doe" id="" />
+                                                                <div class="fv-row my-3">
+                                                                    <x-metronic.label
+                                                                        class="fw-semibold fs-6 mb-2 required">Name
+                                                                        <span class="text-danger fs-1" style="position: relative;top: 0.6rem;">*</span>
+                                                                    </x-metronic.label>
+                                                                    <x-metronic.input type="text" name="name"
+                                                                        value="{{ old('name') }}"
+                                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                        placeholder="Robert Duff" required />
                                                                 </div>
                                                             </div>
                                                             <div class="col mb-2">
-                                                                <div>
-                                                                    <small for="client_email">Email
-                                                                        <span class="text-danger">*</span></small>
-                                                                    <input type="text" name="email" required
-                                                                        class="form-control form-control-sm"
-                                                                        id=""
-                                                                        placeholder="Jhone@gmail.com" />
+                                                                <div class="fv-row my-3">
+                                                                    <x-metronic.label
+                                                                        class="fw-semibold fs-6 mb-2 required">Email
+                                                                        <span class="text-danger fs-1" style="position: relative;top: 0.6rem;">*</span>
+                                                                    </x-metronic.label>
+                                                                    <x-metronic.input type="email" name="email"
+                                                                        value="{{ old('email') }}"
+                                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                        placeholder="example@mail.com" required />
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col mb-2">
-                                                                <div>
-                                                                    <small for="client_name">Phone</small>
-                                                                    <input type="text" name="phone"
-                                                                        class="form-control form-control-sm"
-                                                                        placeholder="015******" id="" />
+                                                                <div class="fv-row my-3">
+                                                                    <x-metronic.label
+                                                                        class="fw-semibold fs-6 mb-2">Phone</x-metronic.label>
+                                                                    <x-metronic.input type="text" name="phone"
+                                                                        value="{{ old('phone') }}"
+                                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                        placeholder="01*******" />
                                                                 </div>
                                                             </div>
                                                             <div class="col mb-2">
-                                                                <div>
-                                                                    <small for="headline">Headline</small>
-                                                                    <input type="text" name="headline"
-                                                                        class="form-control form-control-sm"
-                                                                        id="" placeholder="Headline" />
+                                                                <div class="fv-row my-3">
+                                                                    <x-metronic.label
+                                                                        class="fw-semibold fs-6 mb-2">Headline</x-metronic.label>
+                                                                    <x-metronic.input type="text" name="headline"
+                                                                        value="{{ old('headline') }}"
+                                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                        placeholder="Headline" />
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col mb-2">
-                                                                <div>
-                                                                    <small for="client_message">Message</small>
-                                                                    <br />
-                                                                    <textarea name="message" id="" class="form-control" rows="3" placeholder="hello jhon"></textarea>
+                                                                <div class="fv-row my-3">
+                                                                    <x-metronic.label
+                                                                        class="fw-semibold fs-6 mb-2 required">Message
+                                                                        <span class="text-danger fs-1" style="position: relative;top: 0.6rem;">*</span>
+                                                                    </x-metronic.label>
+                                                                    <textarea class="form-control form-control-solid" rows="5" name="message" value="{{ old('message') }}"
+                                                                        placeholder="Enter Message" required></textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -636,7 +667,8 @@
                                                     </a>
                                                 </div>
                                             </div>
-                                            <div class="row fixed-bottom w-sm-100 w-lg-25 d-sm-block d-lg-none mx-auto">
+                                            <div
+                                                class="row fixed-bottom w-sm-100 w-lg-25 d-sm-block d-lg-none mx-auto">
                                                 <div class="col mb-2 text-center">
                                                     <a href="tel:+{{ optional($nfc_card->nfcData)->phone_personal }}"
                                                         class="btn btn-sm mt-2 p-2 w-100 nfc_contact_btn nfc_contact_btn_mobile"

@@ -184,7 +184,6 @@ label.btn.toggle-checkbox.active > i.fa:before {
 .qr-design-chose {
     width: 100%;
     height: 50px;
-    background: #eee;
     display: flex;
     justify-content: center;
 }

@@ -230,7 +230,7 @@
                                 <div class="my-3 pt-4">
                                     <div>
                                         <h5 class="text-muted w-25 text-center rounded-2 py-2 mb-0 fw-bold"
-                                            style="margin-left: 20px;">
+                                            style="margin-left: 20px;width: 40% !important";>
                                             Contact
                                         </h5>
                                         <div
@@ -238,9 +238,7 @@
                               ">
                                         </div>
                                     </div>
-                                    <div class="row gx-3 align-items-lg-end mt-2"
-                                        style="padding-left: 70px;
-                                    padding-right: 70px;">
+                                    <div class="row gx-3 align-items-lg-end mt-2">
                                         <div class="col-lg-12">
                                             <div>
                                                 <img class="img-fluid"
@@ -300,8 +298,7 @@
                                 <!-- QR -->
                                 <div class="my-3 pt-4">
                                     <div>
-                                        <h5 class="text-muted text-center rounded-2 py-2 mb-0 fw-bold"
-                                            style="margin-left: 20px;">
+                                        <h5 class="text-muted text-center rounded-2 py-2 mb-0 fw-bold">
                                             QR
                                         </h5>
                                         <div
@@ -335,8 +332,8 @@
                                 <!-- Company -->
                                 <div class="my-3 pt-4 text-start">
                                     <div>
-                                        <h5 class="text-muted w-25 text-center rounded-2 py-2 ps-3 mb-0 fw-bold company_title"
-                                            style="margin-left: 20px;">
+                                        <h5 class="text-muted text-center rounded-2 py-2 ps-3 mb-0 fw-bold company_title"
+                                            style="margin-left: 20px; width: 40%">
                                             Company
                                         </h5>
                                         <div
@@ -372,7 +369,7 @@
                                 <!-- Service -->
                                 <div>
                                     <h5 class="text-muted w-25 text-center rounded-2 py-2 ps-3 mb-0 fw-bold service_section_title"
-                                        style="margin-left: 20px;">
+                                        style="margin-left: 20px;width: 40% !important";>
                                         Services
                                     </h5>
                                     <div
@@ -444,7 +441,7 @@
                                 <!-- Gallery -->
                                 <div>
                                     <h5 class="text-muted w-25 text-center rounded-2 py-2 ps-3 mb-0 fw-bold"
-                                        style="margin-left: 20px;">
+                                        style="margin-left: 20px;width: 40% !important";>
                                         Gallery
                                     </h5>
                                     <div
@@ -513,7 +510,7 @@
                           ">
                                     <div>
                                         <h5 class="text-muted w-25 text-center rounded-2 py-2 ps-3 mb-0 fw-bold"
-                                            style="margin-left: 20px;">
+                                            style="margin-left: 20px;width: 40% !important";>
                                             Inquery
                                         </h5>
                                         <div

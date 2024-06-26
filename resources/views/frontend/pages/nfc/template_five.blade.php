@@ -28,9 +28,15 @@
             @if ($nfc_card->font_family == 'bebas_neue')
                 --body-font-family: "Bebas Neue", sans-serif !important;
                 --tem-one-name-font-family: "Bebas Neue", sans-serif !important;
-            @elseif($nfc_card->font_family == 'bebas_neue')
-                --body-font-family: "Bebas Neue", sans-serif !important;
-                --tem-one-name-font-family: "Bebas Neue", sans-serif !important;
+                --tem-one-designation-font-family: "Bebas Neue", sans-serif !important;
+            @elseif($nfc_card->font_family == 'raleway')
+                --tem-one-name-font-family: "Raleway", sans-serif !important;
+                --body-font-family: "Raleway", sans-serif !important;
+                --tem-one-designation-font-family: "Raleway", sans-serif;
+                @else
+                --tem-one-name-font-family: "Raleway", sans-serif !important;
+                --body-font-family: "Raleway", sans-serif !important;
+                --tem-one-designation-font-family: "Raleway", sans-serif;
             @endif
 
             --tem-one-name-font-size: 40px;
@@ -59,6 +65,7 @@
             margin: 0;
             padding: 0;
             font-family: var(--body-font-family);
+            letter-spacing: 2px;
         }
 
         .nfc-mobile-frame {
@@ -215,22 +222,22 @@
                                                             </a>
                                                         @endif
                                                         @if (!empty($nfc_card->nfcData->instagram_url))
-                                                            <a href="{{ optional($nfc_card->nfcData)->facebook_url }}"
-                                                                class="fa fa-facebook facebook_url icon fa-2x"
+                                                            <a href="{{ optional($nfc_card->nfcData)->instagram_url }}"
+                                                                class="fa fa-instagram instagram_url icon fa-2x"
                                                                 style="text-decoration: none;width: 20%;color: #1c344f;">
                                                                 {{-- <i class="fab fa-facebook facebook-icon icon fa-2x" title="Facebook"></i> --}}
                                                             </a>
                                                         @endif
                                                         @if (!empty($nfc_card->nfcData->youtube_url))
-                                                            <a href="{{ optional($nfc_card->nfcData)->facebook_url }}"
-                                                                class="fa fa-facebook facebook_url icon fa-2x"
+                                                            <a href="{{ optional($nfc_card->nfcData)->youtube_url }}"
+                                                                class="fa fa-youtube youtube_url icon fa-2x"
                                                                 style="text-decoration: none;width: 20%;color: #1c344f;">
                                                                 {{-- <i class="fab fa-facebook facebook-icon icon fa-2x" title="Facebook"></i> --}}
                                                             </a>
                                                         @endif
                                                         @if (!empty($nfc_card->nfcData->google_plus_url))
-                                                            <a href="{{ optional($nfc_card->nfcData)->facebook_url }}"
-                                                                class="fa fa-facebook facebook_url icon fa-2x"
+                                                            <a href="{{ optional($nfc_card->nfcData)->google_plus_url }}"
+                                                                class="fa fa-google google_plus_url icon fa-2x"
                                                                 style="text-decoration: none;width: 20%;color: #1c344f;">
                                                                 {{-- <i class="fab fa-facebook facebook-icon icon fa-2x" title="Facebook"></i> --}}
                                                             </a>
@@ -516,14 +523,10 @@
                                                 <div>
                                                     <p
                                                         class="bg-black text-white w-25 text-center rounded-2 py-2 mb-0">
-                                                        Inquery
+                                                        Inquiry
                                                     </p>
                                                     <div
-                                                        style="
-                                background-color: black;
-                                height: 3px;
-                                margin-top: -20px;
-                              ">
+                                                        style="background-color: black;height: 3px;margin-top: -20px;">
                                                     </div>
                                                 </div>
                                                 <div class="pt-4">
@@ -536,53 +539,66 @@
                                                             value="{{ optional($nfc_card)->id }}">
                                                         <input type="hidden" name="nfc_code"
                                                             value="{{ optional($nfc_card)->code }}">
-                                                        <div class="row">
-                                                            <div class="col mb-2">
-                                                                <div>
-                                                                    <small for="client_name">Name
-                                                                        <span class="text-danger">*</span></small>
-                                                                    <input type="text" name="name" required
-                                                                        class="form-control form-control-sm"
-                                                                        id="" />
+                                                            <div class="row">
+                                                                <div class="col mb-2">
+                                                                    <div class="fv-row my-3">
+                                                                        <x-metronic.label
+                                                                            class="fw-semibold fs-6 mb-2 required">Name
+                                                                            <span class="text-danger fs-1" style="position: relative;top: 0.6rem;">*</span>
+                                                                        </x-metronic.label>
+                                                                        <x-metronic.input type="text" name="name"
+                                                                            value="{{ old('name') }}"
+                                                                            class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                            placeholder="Robert Duff" required />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col mb-2">
+                                                                    <div class="fv-row my-3">
+                                                                        <x-metronic.label
+                                                                            class="fw-semibold fs-6 mb-2 required">Email
+                                                                            <span class="text-danger fs-1" style="position: relative;top: 0.6rem;">*</span>
+                                                                        </x-metronic.label>
+                                                                        <x-metronic.input type="email" name="email"
+                                                                            value="{{ old('email') }}"
+                                                                            class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                            placeholder="example@mail.com" required />
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col mb-2">
-                                                                <div>
-                                                                    <small for="client_email">Email
-                                                                        <span class="text-danger">*</span></small>
-                                                                    <input type="text" name="email" required
-                                                                        class="form-control form-control-sm"
-                                                                        id="" />
+                                                            <div class="row">
+                                                                <div class="col mb-2">
+                                                                    <div class="fv-row my-3">
+                                                                        <x-metronic.label
+                                                                            class="fw-semibold fs-6 mb-2">Phone</x-metronic.label>
+                                                                        <x-metronic.input type="text" name="phone"
+                                                                            value="{{ old('phone') }}"
+                                                                            class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                            placeholder="01*******" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col mb-2">
+                                                                    <div class="fv-row my-3">
+                                                                        <x-metronic.label
+                                                                            class="fw-semibold fs-6 mb-2">Headline</x-metronic.label>
+                                                                        <x-metronic.input type="text" name="headline"
+                                                                            value="{{ old('headline') }}"
+                                                                            class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                            placeholder="Headline" />
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col mb-2">
-                                                                <div>
-                                                                    <small for="client_name">Phone</small>
-                                                                    <input type="text" name="phone"
-                                                                        class="form-control form-control-sm"
-                                                                        id="" />
+                                                            <div class="row">
+                                                                <div class="col mb-2">
+                                                                    <div class="fv-row my-3">
+                                                                        <x-metronic.label
+                                                                            class="fw-semibold fs-6 mb-2 required">Message
+                                                                            <span class="text-danger fs-1" style="position: relative;top: 0.6rem;">*</span>
+                                                                        </x-metronic.label>
+                                                                        <textarea class="form-control form-control-solid" rows="5" name="message" value="{{ old('message') }}"
+                                                                            placeholder="Enter Message" required></textarea>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col mb-2">
-                                                                <div>
-                                                                    <small for="headline">Headline</small>
-                                                                    <input type="text" name="headline"
-                                                                        class="form-control form-control-sm"
-                                                                        id="" />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col mb-2">
-                                                                <div>
-                                                                    <small for="client_message">Message</small>
-                                                                    <br />
-                                                                    <textarea name="message" id="" class="form-control" rows="3"></textarea>
-                                                                </div>
-                                                            </div>
-                                                        </div>
                                                         <div class="row" style="margin-bottom: 2.5rem">
                                                             <div class="col mb-2 text-center">
                                                                 <button type="submit"
@@ -605,7 +621,8 @@
                                                     </a>
                                                 </div>
                                             </div>
-                                            <div class="row fixed-bottom w-sm-100 w-lg-25 d-sm-block d-lg-none mx-auto">
+                                            <div
+                                                class="row fixed-bottom w-sm-100 w-lg-25 d-sm-block d-lg-none mx-auto">
                                                 <div class="col mb-2 text-center">
                                                     <a href="tel:+{{ optional($nfc_card->nfcData)->phone_personal }}"
                                                         class="btn btn-sm mt-2 p-2 w-100 nfc_contact_btn nfc_contact_btn_mobile"

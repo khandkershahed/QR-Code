@@ -27,9 +27,15 @@
             @if ($nfc_card->font_family == 'bebas_neue')
                 --body-font-family: "Bebas Neue", sans-serif !important;
                 --tem-one-name-font-family: "Bebas Neue", sans-serif !important;
+                --tem-one-designation-font-family: "Bebas Neue", sans-serif !important;
             @elseif($nfc_card->font_family == 'raleway')
                 --tem-one-name-font-family: "Raleway", sans-serif !important;
                 --body-font-family: "Raleway", sans-serif !important;
+                --tem-one-designation-font-family: "Raleway", sans-serif;
+                @else
+                --tem-one-name-font-family: "Raleway", sans-serif !important;
+                --body-font-family: "Raleway", sans-serif !important;
+                --tem-one-designation-font-family: "Raleway", sans-serif;
             @endif
             --white: #fff;
             --tem-one-name-color: #fff;
@@ -50,7 +56,17 @@
 
         /* For Template Two */
 
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: auto;
+            margin: 0;
+            padding: 0;
+            font-family: var(--body-font-family);
+            letter-spacing: 2px;
 
+        }
 
 
         /* CSS for centering the mobile frame */
@@ -202,9 +218,7 @@
         /* Customize slick slider container */
         .slick-slider {
             width: 100%;
-            /* Adjust slider width as needed */
             margin: 0 auto;
-            /* Center the slider */
         }
 
         .slick-next {
@@ -427,49 +441,66 @@
                                                     value="{{ optional($nfc_card)->id }}">
                                                 <input type="hidden" name="nfc_code"
                                                     value="{{ optional($nfc_card)->code }}">
-                                                <div class="row">
-                                                    <div class="col mb-2">
-                                                        <div>
-                                                            <label for="client_name">Name
-                                                                <span class="text-danger">*</span></label>
-                                                            <input type="text" name="name" required
-                                                                class="form-control form-control-sm" id="" />
+                                                    <div class="row">
+                                                        <div class="col mb-2">
+                                                            <div class="fv-row my-3">
+                                                                <x-metronic.label
+                                                                    class="fw-semibold fs-6 mb-2 required">Name
+                                                                    <span class="text-danger fs-1" style="position: relative;top: 0.6rem;">*</span>
+                                                                </x-metronic.label>
+                                                                <x-metronic.input type="text" name="name"
+                                                                    value="{{ old('name') }}"
+                                                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                    placeholder="Robert Duff" required />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col mb-2">
+                                                            <div class="fv-row my-3">
+                                                                <x-metronic.label
+                                                                    class="fw-semibold fs-6 mb-2 required">Email
+                                                                    <span class="text-danger fs-1" style="position: relative;top: 0.6rem;">*</span>
+                                                                </x-metronic.label>
+                                                                <x-metronic.input type="email" name="email"
+                                                                    value="{{ old('email') }}"
+                                                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                    placeholder="example@mail.com" required />
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col mb-2">
-                                                        <div>
-                                                            <label for="client_email">Email
-                                                                <span class="text-danger">*</span></label>
-                                                            <input type="text" name="email" required
-                                                                class="form-control form-control-sm" id="" />
+                                                    <div class="row">
+                                                        <div class="col mb-2">
+                                                            <div class="fv-row my-3">
+                                                                <x-metronic.label
+                                                                    class="fw-semibold fs-6 mb-2">Phone</x-metronic.label>
+                                                                <x-metronic.input type="text" name="phone"
+                                                                    value="{{ old('phone') }}"
+                                                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                    placeholder="01*******" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col mb-2">
+                                                            <div class="fv-row my-3">
+                                                                <x-metronic.label
+                                                                    class="fw-semibold fs-6 mb-2">Headline</x-metronic.label>
+                                                                <x-metronic.input type="text" name="headline"
+                                                                    value="{{ old('headline') }}"
+                                                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                    placeholder="Headline" />
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col mb-2">
-                                                        <div>
-                                                            <label for="client_name">Phone</label>
-                                                            <input type="text" name="phone"
-                                                                class="form-control form-control-sm" id="" />
+                                                    <div class="row">
+                                                        <div class="col mb-2">
+                                                            <div class="fv-row my-3">
+                                                                <x-metronic.label
+                                                                    class="fw-semibold fs-6 mb-2 required">Message
+                                                                    <span class="text-danger fs-1" style="position: relative;top: 0.6rem;">*</span>
+                                                                </x-metronic.label>
+                                                                <textarea class="form-control form-control-solid" rows="5" name="message" value="{{ old('message') }}"
+                                                                    placeholder="Enter Message" required></textarea>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col mb-2">
-                                                        <div>
-                                                            <label for="headline">Headline</label>
-                                                            <input type="text" name="headline"
-                                                                class="form-control form-control-sm" id="" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col mb-2">
-                                                        <div>
-                                                            <label for="client_message">Message</label>
-                                                            <br />
-                                                            <textarea name="message" id="" class="form-control" rows="3"></textarea>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                                 <div class="row">
                                                     <div class="col mb-2 text-end">
                                                         <button type="submit" class="btn btn-danger btn-sm mt-2">

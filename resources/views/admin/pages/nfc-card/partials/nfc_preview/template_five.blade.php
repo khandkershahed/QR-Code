@@ -141,8 +141,8 @@
                                     <div class="text-center text-lg-end mobile-images-profile"
                                         style="margin-top: -70px; position: relative">
                                         <img style="
-                                width: 150px;
-                                height: 150px;
+                                width: 100px;
+                                height: 100px;
                                 border-radius: 100%;
                                 border: 6px solid white;
                                 margin-left: -9px;
@@ -219,8 +219,8 @@
                                         </div>
                                     </div>
                                     <div class="row gx-3 align-items-center p-3">
-                                        <div class="col-lg-6 d-lg-block d-none">
-                                            <div>
+                                        <div class="col-lg-12 d-lg-block d-none">
+                                            <div class="d-flex justify-content-center align-items-center">
                                                 <img class="img-fluid"
                                                     src="https://my.cybercard.ma/assets/img/vcard16/contact-lawyer-img.png"
                                                     alt="" />
@@ -309,7 +309,7 @@
                                             alt="banner" />
                                     </div>
                                     <div>
-                                        <div class="" style="width: 50%; margin: auto">
+                                        <div class="" style="width: 100%; margin: auto">
                                             <div class="card border-0"
                                                 style="
                                   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);

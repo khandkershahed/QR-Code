@@ -769,21 +769,6 @@ class QrCodeController extends Controller
             ]);
         }
 
-        //     $formatDirectory = 'qr_codes/qrs/' . $format;
-        //     $qrFileName = $qr->code . '.' . $format;
-        //     $qrCodePath = '../public/storage/' . $formatDirectory . '/' . $qrFileName;
-
-        //     if (!Storage::exists($formatDirectory)) {
-        //         Storage::makeDirectory($formatDirectory, 0775, true);
-        //     }
-
-        //     $qrCodeString = $qrCode->margin(4)->errorCorrection('H')->encoding('UTF-8')->generate($qrDataLink, $qrCodePath);
-
-        //     $qr->update([
-        //         $field => $qrFileName,
-        //         $field . '_url' => asset('storage/' . $formatDirectory . '/' . $qrFileName)
-        //     ]);
-        // }
 
 
 
