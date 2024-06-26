@@ -82,7 +82,7 @@
                                         </div>
                                         <div
                                             class="centered-card-body card-body d-flex flex-column justify-content-between mb-10">
-                                            @include('user.pages.nfc-card.partials.virtualCardCustomization')
+                                            @include('user.pages.virtualCard.partials.virtualCardCustomization')
                                         </div>
                                     </div>
                                 </div>
