@@ -296,7 +296,7 @@
         <div class="col-lg-1 d-lg-block d-sm-none">
             <div class="fv-row my-3 pt-5">
                 <div>
-                    <img width="30px" height="30px" class="rounded-circle border banner_image mt-10"
+                    <img width="30px" height="30px" class="rounded-circle border banner_image mt-3"
                         id="profile_image_preview" src="https://i.ibb.co/BNBTVN4/logo.png" alt="">
                 </div>
             </div>
