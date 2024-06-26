@@ -58,7 +58,7 @@
                         </div>
                         <!-- Stepper content and form -->
                         <form class="form flex-grow-1 d-flex flex-column" novalidate="novalidate"
-                            id="kt_stepper_example_clickable_form" action="{{ route('user.nfc-card.store') }}"
+                            id="kt_stepper_example_clickable_form" action="{{ route('user.virtual-card.store') }}"
                             method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
@@ -70,7 +70,7 @@
                                         </div>
                                         <div
                                             class="centered-card-body card-body d-flex flex-column justify-content-between mb-10">
-                                            @include('user.pages.nfc-card.partials.virtualCard')
+                                            @include('user.pages.virtualCard.partials.virtualCard')
                                         </div>
                                     </div>
                                 </div>

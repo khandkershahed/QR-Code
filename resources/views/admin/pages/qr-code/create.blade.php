@@ -198,7 +198,7 @@
             </div>
         </div>
         <div class="categoryModal">
-            @include('user.pages.qr-code.partials.qrCodeModals')
+            @include('admin.pages.qr-code.partials.qrCodeModals')
         </div>
     </div>
     {{-- modals --}}
