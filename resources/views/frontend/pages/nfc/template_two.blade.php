@@ -54,7 +54,16 @@
         }
 
         /* CSS for centering the mobile frame */
-
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: auto;
+            margin: 0;
+            padding: 0;
+            font-family: var(--body-font-family);
+            letter-spacing: 2px;
+        }
         .nfc-mobile-frame-two {
             width: 400px;
 

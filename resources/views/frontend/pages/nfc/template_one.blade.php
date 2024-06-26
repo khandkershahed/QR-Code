@@ -56,7 +56,17 @@
 
         /* For Template Two */
 
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: auto;
+            margin: 0;
+            padding: 0;
+            font-family: var(--body-font-family);
+            letter-spacing: 2px;
 
+        }
 
 
         /* CSS for centering the mobile frame */
@@ -208,9 +218,7 @@
         /* Customize slick slider container */
         .slick-slider {
             width: 100%;
-            /* Adjust slider width as needed */
             margin: 0 auto;
-            /* Center the slider */
         }
 
         .slick-next {

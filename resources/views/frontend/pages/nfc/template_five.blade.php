@@ -65,6 +65,7 @@
             margin: 0;
             padding: 0;
             font-family: var(--body-font-family);
+            letter-spacing: 2px;
         }
 
         .nfc-mobile-frame {
@@ -525,11 +526,7 @@
                                                         Inquiry
                                                     </p>
                                                     <div
-                                                        style="
-                                background-color: black;
-                                height: 3px;
-                                margin-top: -20px;
-                              ">
+                                                        style="background-color: black;height: 3px;margin-top: -20px;">
                                                     </div>
                                                 </div>
                                                 <div class="pt-4">

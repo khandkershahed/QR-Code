@@ -298,10 +298,11 @@ class NfcCardController extends Controller
 
         // Storage::put($qrCodePath, $qrCodeString);
         // $field . '_url' => asset('storage/qr_codes/' . $format . '/' . $qrFileName)
-
+        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
+        $userId = $isUserRoute ? Auth::user()->id : null;
         // Create NFC card
         $nfc_card = NfcCard::create([
-            'user_id'            => Auth::user()->id,
+            'user_id'            => $userId,
             'code'               => $code,
             'nfc_type'           => $request->nfc_type,
             'nfc_template'       => $request->nfc_template,
@@ -399,6 +400,7 @@ class NfcCardController extends Controller
 
     private function generateNfcCode()
     {
+
         $typePrefix = 'NFC'; // Example prefix
         $today = now()->format('dmY');
         $userId = Auth::user()->id;
