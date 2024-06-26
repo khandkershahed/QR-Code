@@ -1,10 +1,11 @@
 <?php
- 
-use App\Http\Controllers\Admin\NfcCardController;
+
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\QrCodeController;
+use App\Http\Controllers\Admin\NfcCardController;
+use App\Http\Controllers\Admin\VirtualCardController;
 use App\Http\Controllers\RestaurantCategoryController;
 use App\Http\Controllers\Subscription\SubscriptionController;
-use Illuminate\Support\Facades\Route;
 
 
 
@@ -12,14 +13,15 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth')->prefix('user')->name('user.')->group(function () {
     Route::resources(
         [
-            'qr-code'              => QrCodeController::class,
-            'nfc-card'             => NfcCardController::class,
-            'restaurant-category'  => RestaurantCategoryController::class,
+            'qr-code'             => QrCodeController::class,
+            'nfc-card'            => NfcCardController::class,
+            'virtual-card'        => VirtualCardController::class,
+            'restaurant-category' => RestaurantCategoryController::class,
         ],
     );
     Route::controller(SubscriptionController::class)->group(function () {
         Route::get('/subscribe/plans', 'showSubscriptionForm')->name('subscribe');
-        Route::get('/subscribe/{id}','subscribe')->name('subscribe.post');
+        Route::get('/subscribe/{id}', 'subscribe')->name('subscribe.post');
         Route::post('subscription', 'subscription')->name("subscription.create");
         Route::post('/cancel-subscription', 'cancelSubscription')->name('cancel-subscription');
         Route::get('stripe/checkout', 'stripeCheckout')->name('stripe.checkout');
@@ -32,10 +34,6 @@ Route::middleware('auth')->prefix('user')->name('user.')->group(function () {
     Route::get('template/qrcode', [QrCodeController::class, 'qrTemplate'])->name('qr.template');
     Route::get('template/nfc-card', [NfcCardController::class, 'nfcTemplate'])->name('nfc.template');
     Route::post('/update-nfc-session', [NfcCardController::class, 'updateNFCTemplateSession'])->name('updateNfcSession');
-
-
-
-
 });
 Route::post('user/qrcode/preview', [QrCodeController::class, 'qrPreview'])->name('user.qr.preview');
 Route::get('/{Qr}', [QrCodeController::class, 'showQr'])->name('showQr');

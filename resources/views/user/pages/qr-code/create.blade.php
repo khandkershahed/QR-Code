@@ -180,16 +180,20 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-5">
-            <div class="card mt-10 bg-transparent">
-                {{-- position-fixed --}}
-                <div class="card-body bg-transparent">
-                    <div class="d-flex flex-column justify-content-center align-items-center">
-                        {{-- id="generatedQRCodeContainer" --}}
-                        <h3>Preview</h3>
-                        @include('user.pages.qr-code.partials.qr_preview')
-                        {{-- {!! QrCode::size(220)->eye('left-leaf', 0.1)->eyeColor(0, 255, 255, 255, 0, 0, 0)->eyeColor(1, 222, 18, 222, 222, 18, 222)->eyeColor(2, 222, 18, 222, 222, 18, 222)->style('dot', 0.8)->errorCorrection('H')->generate('Make me into a QrCode!') !!} --}}
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header px-0 border-0">
+                    <div class="d-flex flex-column justify-content-center align-items-center"
+                        style="width: 100%; background: #0098da3d; border-top-left-radius: 5px; border-top-right-radius: 5px; padding: 15px;">
+                        <h3 class="">Preview</h3>
+                        {{-- <p class="mb-0 ">Your Choosen Template</p> --}}
                     </div>
+                </div>
+                <div class="card-body custom-card-body overflow-auto px-0 mx-auto">
+                    @include('user.pages.qr-code.partials.qr_preview')
+                </div>
+                <div
+                    class="card-body custom-card-body overflow-auto px-0 py-10 d-flex justify-content-center align-items-center">
                     <a id="downloadLink" href="javascripti:void()" download class="btn btn-light btn-primary w-100"
                         style="display: none;">Download</a>
                 </div>

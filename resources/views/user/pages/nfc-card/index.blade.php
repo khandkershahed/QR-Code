@@ -1,24 +1,5 @@
 <x-app-layout :title="'NFC Card List'">
-    <style>
-        /* Add your custom CSS styles here */
-        #epaper-container {
-            position: relative;
-        }
 
-        #epaper-image {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .area-tooltip {
-            position: absolute;
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            display: none;
-        }
-    </style>
     <div class="row">
         <div class="col-lg-12">
             <div class="d-flex align-items-center rounded py-5 px-5 bg-light-primary" style="border: 1px dashed blue;">
@@ -45,14 +26,14 @@
                             @if ($subscription->plan->nfc - $nfc_cards->count() > 0)
                                 <a href="{{ route('user.nfc-card.create') }}"
                                     class="btn btn-sm btn-primary rounded-2 me-3">
-                                    Create QR Codes
+                                    Create NFC Card
                                 </a>
                             @endif
                         @else
                             @if (10 - $nfc_cards->count() > 0)
                                 <a href="{{ route('user.nfc-card.create') }}"
                                     class="btn btn-sm btn-primary rounded-2 me-3">
-                                    Create QR Codes
+                                    Create NFC Card
                                 </a>
                             @endif
                         @endif

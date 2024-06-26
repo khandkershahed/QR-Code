@@ -95,7 +95,7 @@
                     </div>
                 </div>
                 <div data-kt-menu-trigger="click"
-                    class="menu-item menu-accordion {{ Route::is('user.nfc-card.index', 'user.nfc-card.create') ? 'here show' : '' }}">
+                    class="menu-item menu-accordion {{ Route::is('user.nfc-card.index', 'user.nfc-card.create','user.virtual-card.create','user.virtual-card.index') ? 'here show' : '' }}">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
@@ -113,7 +113,7 @@
                         <span class="menu-arrow"></span>
                     </span>
                     <div
-                        class="menu-sub menu-sub-accordion {{ Route::is('user.nfc-card.index', 'user.nfc-card.create') ? 'menu-active-bg' : '' }}">
+                        class="menu-sub menu-sub-accordion {{ Route::is('user.nfc-card.index', 'user.nfc-card.create','user.virtual-card.create','user.virtual-card.index') ? 'menu-active-bg' : '' }}">
                         <div class="menu-item">
                             <a class="menu-link {{ Route::is('user.nfc-card.create') ? 'active' : '' }}"
                                 href="{{ route('user.nfc-card.create') }}">
@@ -132,6 +132,25 @@
                                 <span class="menu-title">NFC Card List</span>
                             </a>
                         </div>
+                        <div class="menu-item">
+                            <a class="menu-link {{ Route::is('user.virtual-card.create') ? 'active' : '' }}"
+                                href="{{ route('user.virtual-card.create') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Virtual Card Create</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link {{ Route::is('user.virtual-card.index') ? 'active' : '' }}"
+                                href="{{ route('user.virtual-card.index') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Virtual Card List</span>
+                            </a>
+                        </div>
+
                     </div>
                 </div>
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">

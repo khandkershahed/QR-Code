@@ -30,6 +30,7 @@ use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\Admin\VirtualCardController;
 
 Route::middleware('guest:admin')->prefix('admin')->name('admin.')->group(function () {
 
@@ -75,7 +76,7 @@ Route::middleware('auth:admin', 'role:admin')->prefix('admin')->name('admin.')->
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 
-        Route::post('qrcode/preview', [QrCodeController::class, 'qrPreview'])->name('qr.preview');
+    Route::post('qrcode/preview', [QrCodeController::class, 'qrPreview'])->name('qr.preview');
 
     Route::resources(
         [
@@ -89,14 +90,15 @@ Route::middleware('auth:admin', 'role:admin')->prefix('admin')->name('admin.')->
     );
     Route::resources(
         [
-            'user'                  => UserController::class,
-            'user-management'       => UserManagementController::class,
-            'user-notification'     => UserNotificationController::class,
-            'categories'            => CategoryController::class,
-            'qr-code'               => QrCodeController::class,
-            'nfc-card'              => NfcCardController::class,
-            'requested-card'        => RequestedCardController::class,
-            'restaurant-category'  => RestaurantCategoryController::class,
+            'user'                => UserController::class,
+            'user-management'     => UserManagementController::class,
+            'user-notification'   => UserNotificationController::class,
+            'categories'          => CategoryController::class,
+            'qr-code'             => QrCodeController::class,
+            'nfc-card'            => NfcCardController::class,
+            'virtual-card'        => VirtualCardController::class,
+            'requested-card'      => RequestedCardController::class,
+            'restaurant-category' => RestaurantCategoryController::class,
 
         ],
     );
