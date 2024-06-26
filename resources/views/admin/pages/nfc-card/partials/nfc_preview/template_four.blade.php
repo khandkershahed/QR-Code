@@ -100,7 +100,7 @@
 
                     <div class="card-body p-0 tem-one-about-content">
                         <div class="w-100">
-                            <div class="text-end" style="margin-top: -70px; position: relative">
+                            <div class="text-end" style="margin-top: -120px; position: relative">
                                 <img style="width: 150px; height: 150px;border-width: 6px;border-style: solid;"
                                     src="https://my.cybercard.ma/uploads/vcards/profiles/221/smiling-doctor-sitting-isolated-grey_651396-917.jpg"
                                     class="img-fluid banner-image profile_image" alt="profile" />

@@ -1,6 +1,6 @@
     <ul class="nav nav-pills nav-pills-custom mb-5" role="tablist">
         {{-- <li class="nav-item mb-3 pe-3 pe-lg-10" role="presentation">
-            <a class="nav-link btn btn-outline btn-flex btn-color-muted btn-active-color-primary flex-column overflow-hidden w-100px h-85px p-0
+            <a class="nav-link btn btn-outline btn-flex btn-color-muted btn-active-color-primary flex-column overflow-hidden w-100px h-85px p-5
                 active"
                 id="kt_stats_widget_16_tab_link_1" data-bs-toggle="pill" href="#kt_stats_widget_16_tab_1"
                 aria-selected="true" role="tab">
@@ -12,7 +12,7 @@
             </a>
         </li> --}}
         <li class="nav-item mb-3 pe-3 pe-lg-10" role="presentation">
-            <a class="nav-link btn btn-outline btn-flex btn-color-muted btn-active-color-primary flex-column overflow-hidden w-100px h-85px p-0
+            <a class="nav-link btn btn-outline btn-flex btn-color-muted btn-active-color-primary flex-column overflow-hidden w-100px h-85px p-5
                 active"
                 id="kt_stats_widget_16_tab_link_2" data-bs-toggle="pill" href="#kt_stats_widget_16_tab_2"
                 aria-selected="false" tabindex="-1" role="tab">
@@ -26,7 +26,7 @@
             </a>
         </li>
         <li class="nav-item mb-3 pe-3 pe-lg-10" role="presentation">
-            <a class="nav-link btn btn-outline btn-flex btn-color-muted btn-active-color-primary flex-column overflow-hidden w-100px h-85px p-0
+            <a class="nav-link btn btn-outline btn-flex btn-color-muted btn-active-color-primary flex-column overflow-hidden w-100px h-85px p-5
                 "
                 id="kt_stats_widget_16_tab_link_3" data-bs-toggle="pill" href="#kt_stats_widget_16_tab_3"
                 aria-selected="false" tabindex="-1" role="tab">
@@ -40,7 +40,7 @@
             </a>
         </li>
         <li class="nav-item mb-3 pe-3 pe-lg-10" role="presentation">
-            <a class="nav-link btn btn-outline btn-flex btn-color-muted btn-active-color-primary flex-column overflow-hidden w-100px h-85px p-0
+            <a class="nav-link btn btn-outline btn-flex btn-color-muted btn-active-color-primary flex-column overflow-hidden w-100px h-85px p-5
                 "
                 id="kt_stats_widget_16_tab_link_4" data-bs-toggle="pill" href="#kt_stats_widget_16_tab_4"
                 aria-selected="false" tabindex="-1" role="tab">
@@ -54,7 +54,7 @@
             </a>
         </li>
         <li class="nav-item mb-3 pe-3 pe-lg-10" role="presentation">
-            <a class="nav-link btn btn-outline btn-flex btn-color-muted btn-active-color-primary flex-column overflow-hidden w-100px h-85px p-0
+            <a class="nav-link btn btn-outline btn-flex btn-color-muted btn-active-color-primary flex-column overflow-hidden w-100px h-85px p-5
                 "
                 id="kt_stats_widget_16_tab_link_5" data-bs-toggle="pill" href="#kt_stats_widget_16_tab_5"
                 aria-selected="false" tabindex="-1" role="tab">

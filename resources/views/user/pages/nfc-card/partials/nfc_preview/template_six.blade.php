@@ -184,7 +184,7 @@
                                 <div class="my-3 pt-4">
                                     <div>
                                         <p class="text-white w-25 text-center rounded-2 py-2 mb-0 fw-bold"
-                                            style="margin-left: 10px;">
+                                            style="margin-left: 20px;width: 40% !important";>
                                             Contact
                                         </p>
                                         <div
@@ -241,8 +241,8 @@
                                         <div class="col-lg-12">
                                             <div class="row align-items-center shadow-sm mt-3 p-3">
                                                 <div class="col-lg-2 text-center text-lg-start">
-                                                    <img class=""
-                                                        src="	https://my.cybercard.ma/assets/img/vcard14/location.png" />
+                                                    <img class="" style="width: 40px;"
+                                                        src="https://i.ibb.co/ncCd2B1/pngtree-vector-location-icon-png-image-1028445-removebg-preview.png" />
                                                 </div>
                                                 <div class="col-lg-10 text-center text-lg-start">
                                                     <div class="ps-3 pt-3 pt-lg-0">
@@ -263,7 +263,7 @@
                                 <div class="my-3 pt-4">
                                     <div>
                                         <p class="text-white w-25 text-center rounded-2 py-2 mb-0 fw-bold"
-                                            style="margin-left: 10px;">
+                                            style="margin-left: 20px;width: 40% !important";>
                                             QR Code
                                         </p>
                                         <div
@@ -292,7 +292,7 @@
                                 <div class="my-3 pt-4 text-start">
                                     <div>
                                         <p class="text-white w-25 text-center rounded-2 py-2 mb-0 fw-bold company_title"
-                                            style="margin-left: 10px;">
+                                            style="margin-left: 20px;width: 40% !important";>
                                             Company
                                         </p>
                                         <div
@@ -321,7 +321,7 @@
                                 <!-- Service -->
                                 <div class="pt-4">
                                     <p class="text-white w-25 text-center rounded-2 py-2 mb-0 fw-bold service_section_title"
-                                        style="margin-left: 10px;">
+                                        style="margin-left: 20px;width: 40% !important";>
                                         Service
                                     </p>
                                     <div
@@ -337,7 +337,7 @@
                                 </div>
                                 <div class="pt-4">
                                     <p class="text-white w-25 text-center rounded-2 py-2 mb-0 fw-bold"
-                                        style="margin-left: 10px;">
+                                        style="margin-left: 20px;width: 40% !important";>
                                         Gallery
                                     </p>
                                     <div
@@ -394,7 +394,7 @@
                                 <div>
                                     <div>
                                         <p class="text-white w-25 text-center rounded-2 py-2 mb-0 fw-bold"
-                                            style="margin-left: 10px;">
+                                            style="margin-left: 20px;width: 40% !important";>
                                             Inquery
                                         </p>
                                         <div
