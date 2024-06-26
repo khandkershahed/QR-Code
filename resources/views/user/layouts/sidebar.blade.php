@@ -234,15 +234,6 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link {{ Route::is('user.plan') ? 'active' : '' }}"
-                                href="{{ route('user.plan') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Plans List</span>
-                            </a>
-                        </div>
-                        <div class="menu-item">
                             <a class="menu-link {{ Route::is('user.upgrade.plan','user.subscribe.post') ? 'active' : '' }}"
                                 href="{{ route('user.upgrade.plan') }}">
                                 <span class="menu-bullet">

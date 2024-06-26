@@ -6,7 +6,7 @@
                     {{ __('Select NFC') }}</x-metronic.label>
                 <select class="form-select form-select-outline" data-control="select2" name="card_font_style"
                     data-placeholder="Select NFC from your generated list" required>
-                    <option value=""></option>
+                    <option></option>
                     @foreach ($nfc_cards as $nfc_card)
                         <option value="{{ $nfc_card->id }}">{{ $nfc_card->nfcData->first_name}} {{ $nfc_card->nfcData->last_name }}</option>
                     @endforeach
