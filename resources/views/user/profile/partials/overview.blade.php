@@ -5,7 +5,7 @@
         </div>
     </div>
     <div class="card-body pb-0">
-        <div class="d-flex flex-column align-items-start mb-3">
+        {{-- <div class="d-flex flex-column align-items-start mb-3">
             <div class="d-flex align-items-center mb-2">
                 <div class="symbol  symbol-35px symbol-circle "><img alt="Pic"
                         src="https://preview.keenthemes.com/metronic8/demo1/assets/media/avatars/300-25.jpg"></div>
@@ -18,7 +18,7 @@
                 data-kt-element="message-text">
                 How likely are you to recommend our company to your friends and family ?
             </div>
-        </div>
+        </div> --}}
         <div class="mb-7">
             @if (count($notifications))
                 @foreach ($notifications as $notification)
