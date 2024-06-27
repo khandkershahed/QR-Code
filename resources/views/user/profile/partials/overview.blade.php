@@ -22,13 +22,10 @@
                                     class="text-muted fs-7 mb-1">{{ $notification->created_at->diffForHumans() }}</span>
                             </div>
                         </div>
-                        <div class="p-5 rounded bg-light-info text-gray-900 fw-semibold text-start w-100"
-                            data-kt-element="message-text">
-                            {!! $notification->notificationMessage->title !!}
-                        </div>
                         <div class="p-5 rounded bg-light-info text-gray-900 fw-normal text-start w-100"
                             data-kt-element="message-text">
-                            {!! $notification->notificationMessage->message !!}
+                            <h5>{!! $notification->notificationMessage->title !!}</h5>
+                            <p class="m-0">{!! $notification->notificationMessage->message !!}</p>
                         </div>
                     </div>
                 @endforeach
