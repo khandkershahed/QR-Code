@@ -424,15 +424,16 @@
                         <div class="card">
                             <div class="row">
                                 <div class="col-lg-12 text-center">
-                                    <img class="img-fluid"
-                                    src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
-                                    alt="" />
+                                    <img class="img-fluid" src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
+                                        alt="" />
                                 </div>
                                 <div class="col-lg-12">
-                                    <a href="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}" class="menu-link px-3"
-                                        download>
-                                        Download
-                                    </a>
+                                    <h5 class="text-center fw-bold"><a
+                                            href="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
+                                            class="menu-link px-3" download>
+                                            Download
+                                        </a>
+                                    </h5>
                                 </div>
                                 {{-- @if (optional($nfc_card->virtualCard)->virtual_card_template == 'virtual-card-one')
                                     <div class="row mt-5">
