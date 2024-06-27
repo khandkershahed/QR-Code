@@ -29,7 +29,7 @@
                                             </td>
                                             <td class="fw-bold text-end">{{ date('d-m-y') }}</td>
                                         </tr>
-                                        <tr>
+                                        {{-- <tr>
                                             <td class="text-muted">
                                                 <div class="d-flex align-items-center">
                                                     <i class="ki-duotone ki-wallet fs-2 me-2"><span
@@ -43,7 +43,7 @@
                                                 <img src="	https://preview.keenthemes.com/metronic8/demo1/assets/media/svg/card-logos/visa.svg"
                                                     class="w-50px ms-2">
                                             </td>
-                                        </tr>
+                                        </tr> --}}
                                         <tr>
                                             <td class="text-muted">
                                                 <div class="d-flex align-items-center">
@@ -359,7 +359,7 @@
                 cardBtn.disabled = true
                 const {
                     setupIntent,
-                    error 
+                    error
                 } = await stripe.confirmCardSetup(
                     cardBtn.dataset.secret, {
                         payment_method: {
