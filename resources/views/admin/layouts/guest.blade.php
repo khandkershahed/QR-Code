@@ -6,7 +6,7 @@
 <head>
     <base href="../../../">
     @props(['title'])
-    <title>{{ $title ?? config('app.name', '| Go QR') }}</title>
+    <title>GoFlixza || Admin Dashboard</title>
     <meta charset="utf-8" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
