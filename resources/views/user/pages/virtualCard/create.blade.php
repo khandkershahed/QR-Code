@@ -104,9 +104,8 @@
                                     <div class="card flex-grow-1 rounded-0">
                                         <div class="card-header text-center border-0">
                                             <div class="pt-15 pb-15 ps-5 w-100">
-                                                <h2 class="text-success">Congratulations!</h2>
-                                                <p>Your NFC Profile is ready. Make Payment to complete the process!
-                                                </p>
+                                                <h2 class="fs-4">NFC Card Charge : <strong class="text-success fs-1">49.99$</strong></h2>
+                                                <p>Your NFC Card is almost ready. Make Payment to complete the process!</p>
                                             </div>
                                         </div>
                                         <div
