@@ -42,7 +42,7 @@
 
 
     @props(['title'])
-    <title>{{ $title ?? config('app.name', 'GO-Flixza') }} || 'Your Hub for QR, Bar Codes, NFC V.Cards'</title>
+    <title>{{ $title ?? config('app.name', 'GoFlixza') }} || 'Your Hub for QR, Bar Codes, NFC V.Cards'</title>
 </head>
 
 <body id="kt_body"
