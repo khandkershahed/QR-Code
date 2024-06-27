@@ -25,7 +25,7 @@
     <link href="{{ asset('admin/assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"
         type="text/css" />
     @props(['title'])
-    <title>{{ $title || 'Your Hub for QR, Bar Codes, NFC V.Cards' ?? config('app.name', 'GoFlixza || Your Hub for QR, Bar Codes, NFC V.Cards') }}</title>
+    <title>{{ $title ?? config('app.name', 'GoFlixza') }} || 'Your Hub for QR, Bar Codes, NFC V.Cards'</title>
 </head>
 
 <body id="kt_body"
