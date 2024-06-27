@@ -21,10 +21,18 @@ class VirtualCardController extends Controller
      */
     public function index()
     {
-        $data = [
-            'virtual_cards' => VirtualCard::latest('id')->get(),
-        ];
-        return view('user.pages.virtualCard.index', $data);
+        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
+        $user = Auth::user();
+        $nfc_cards = $isUserRoute
+            ? NfcCard::with('nfcData', 'nfcMessages', 'virtualCard', 'shippingDetails')->where('user_id', $user->id)->latest('id')->get()
+            : NfcCard::with('nfcData', 'nfcMessages', 'virtualCard', 'shippingDetails')->latest('id')->get();
+
+        $view = $isUserRoute ? 'user.pages.virtualCard.index' : 'admin.pages.virtualCard.index';
+
+        return view($view, [
+            'nfc_cards' => $nfc_cards,
+        ]);
+        // return view('user.pages.virtualCard.index', $data);
     }
 
     /**
