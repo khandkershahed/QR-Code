@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Admin\NfcCard;
+use App\Models\Admin\Qr;
 
 class ProfileController extends Controller
 {
@@ -59,6 +61,8 @@ class ProfileController extends Controller
             'notifications' => UserNotification::where('user_id', Auth::user()->id)->with('notificationMessage')->orderBy('created_at', 'desc')->get(),
             'login_sessions'=> UserLoginDetails::where('user_id', Auth::user()->id)->latest('id')->get(),
             'last_login'    => UserLoginDetails::where('user_id', Auth::user()->id)->latest('id')->first(),
+            'qrs'           => Qr::where('user_id', Auth::user()->id)->latest('id')->get(['id']),
+            'nfc_cards'     => NfcCard::where('user_id', Auth::user()->id)->latest('id')->get(['id']),
         ]);
     }
 
