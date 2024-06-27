@@ -4,7 +4,7 @@
             <div class="fv-row my-3">
                 <x-metronic.label for="card_font_style" class="form-label required">
                     {{ __('Select NFC') }}</x-metronic.label>
-                <select class="form-select form-select-outline" data-control="select2" name="card_font_style"
+                <select class="form-select form-select-outline" data-control="select2" name="card_id"
                     data-placeholder="Select NFC from your generated list" required>
                     <option></option>
                     @foreach ($nfc_cards as $nfc_card)

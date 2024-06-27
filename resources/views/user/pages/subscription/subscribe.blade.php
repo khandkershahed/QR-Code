@@ -359,7 +359,7 @@
                 cardBtn.disabled = true
                 const {
                     setupIntent,
-                    error
+                    error 
                 } = await stripe.confirmCardSetup(
                     cardBtn.dataset.secret, {
                         payment_method: {

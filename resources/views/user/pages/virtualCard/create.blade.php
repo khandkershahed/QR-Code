@@ -105,7 +105,7 @@
                                         <div class="card-header text-center border-0">
                                             <div class="pt-15 pb-15 ps-5 w-100">
                                                 <h2 class="text-success">Congratulations!</h2>
-                                                <p>Your NFC Profile is ready. Add Billing Address For NFC Card Delivery!
+                                                <p>Your NFC Profile is ready. Make Payment to complete the process!
                                                 </p>
                                             </div>
                                         </div>
