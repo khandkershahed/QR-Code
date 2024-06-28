@@ -1,7 +1,7 @@
 <!-- Modal trigger button -->
-<button type="button" class="btn btn-info btn-lg rounded-0" data-bs-toggle="modal" data-bs-target="#modalId">
+{{-- <button type="button" class="btn btn-info btn-lg rounded-0" data-bs-toggle="modal" data-bs-target="#modalId">
     Launch
-</button>
+</button> --}}
 
 {{-- Modal --}}
 <div class="modal fade" id="toastr_modal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"

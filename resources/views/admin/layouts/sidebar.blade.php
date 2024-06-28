@@ -121,7 +121,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">NFC Card Create</span>
+                                <span class="menu-title">V Card Create</span>
                             </a>
                         </div>
                         <div class="menu-item">
@@ -130,7 +130,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">NFC Card List</span>
+                                <span class="menu-title">V Card List</span>
                             </a>
                         </div>
                         <div class="menu-item">

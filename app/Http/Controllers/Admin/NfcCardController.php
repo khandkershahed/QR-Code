@@ -68,7 +68,8 @@ class NfcCardController extends Controller
                     $view = $isUserRoute ? 'user.pages.nfc-card.create' : 'admin.pages.nfc-card.create';
                     return view($view);
                 } else {
-                    return redirect()->back()->with(['showLimitExceededModal' => true]);
+                    session()->flash('showLimitExceededModal', true);
+                    return redirect()->back()->with('error', 'Your NFC Card limitation is exceeded');
                     // return redirect()->back()->with('error', 'Your NFC Card limitation is exceeded');
                 }
             } else {
@@ -77,7 +78,8 @@ class NfcCardController extends Controller
                     $view = $isUserRoute ? 'user.pages.nfc-card.create' : 'admin.pages.nfc-card.create';
                     return view($view);
                 } else {
-                    return redirect()->back()->with(['showLimitExceededModal' => true]);
+                    session()->flash('showLimitExceededModal', true);
+                    return redirect()->back()->with('error', 'Your NFC Card limitation is exceeded');
                     // return redirect()->back()->with('error', 'Your NFC Card limitation is exceeded');
                 }
             }
@@ -213,7 +215,6 @@ class NfcCardController extends Controller
         } else {
             return redirect()->route('admin.nfc-card.index')->with('success', 'NFC Created successfully.');
         }
-
     }
 
     private function generateNfcCode()
