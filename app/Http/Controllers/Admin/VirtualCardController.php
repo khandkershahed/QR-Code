@@ -59,7 +59,7 @@ class VirtualCardController extends Controller
 
             // Create charge
             $charge = Charge::create([
-                "amount" => 10000, // Amount in cents
+                "amount" => 4999, // Amount in cents
                 "currency" => "usd",
                 "source" => $request->stripeToken,
                 "description" => "NFC Card Payment"
