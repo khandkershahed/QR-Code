@@ -1,7 +1,7 @@
 <x-app-layout :title="'NFC Card Create'">
     <div id="buttonDiv" class="d-flex flex-column justify-content-center align-items-center pt-15 fade fade-in">
         <h1>Welcome To Virtual Card World !</h1>
-       
+
         <!-- Modal Body -->
         <p>Generate Your Virtual Card And Share With Others Securely!</p>
         <div>
@@ -22,12 +22,12 @@
         <div class="row g-2" id="columns-container">
             <div class="col-lg-8">
                 <div class="card" id="first-card">
-                    <div class="card-body custom-card-body overflow-auto p-0">
+                    <div class="card-body custom-card-body overflow-auto p-0" id="kt_modal_create_app">
                         <div class="stepper stepper-pills flex-grow-1 d-flex flex-column"
-                            id="kt_stepper_example_clickable">
+                            id="kt_modal_create_app_stepper">
                             <div class="stepper-nav flex-center flex-wrap steaper-header">
                                 <div class="stepper-item mx-3 my-4 p-0 current" data-kt-stepper-element="nav"
-                                    data-kt-stepper-action="step">
+                                    >
                                     <div class="stepper-wrapper d-flex align-items-center">
                                         <div class="stepper-icon w-40px h-40px me-2">
                                             <i class="stepper-check fas fa-check"></i>
@@ -41,7 +41,7 @@
                                 </div>
 
                                 <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
-                                    data-kt-stepper-action="step">
+                                    >
                                     <div class="stepper-wrapper d-flex align-items-center">
                                         <div class="stepper-icon w-40px h-40px me-2">
                                             <i class="stepper-check fas fa-check"></i>
@@ -55,7 +55,7 @@
                                 </div>
 
                                 <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
-                                    data-kt-stepper-action="step">
+                                    >
                                     <div class="stepper-wrapper d-flex align-items-center">
                                         <div class="stepper-icon w-40px h-40px me-2">
                                             <i class="stepper-check fas fa-check"></i>
@@ -69,7 +69,7 @@
                                 </div>
 
                                 {{-- <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
-                                data-kt-stepper-action="step">
+                                >
                                 <div class="stepper-wrapper d-flex align-items-center">
                                     <div class="stepper-icon w-40px h-40px me-2">
                                         <i class="stepper-check fas fa-check"></i>
@@ -80,9 +80,9 @@
                                     </div>
                                 </div>
                             </div>
-
+    
                             <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
-                                data-kt-stepper-action="step">
+                                >
                                 <div class="stepper-wrapper d-flex align-items-center">
                                     <div class="stepper-icon w-40px h-40px me-2">
                                         <i class="stepper-check fas fa-check"></i>
@@ -95,7 +95,7 @@
                             </div> --}}
 
                                 <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
-                                    data-kt-stepper-action="step">
+                                    >
                                     <div class="stepper-wrapper d-flex align-items-center">
                                         <div class="stepper-icon w-40px h-40px me-2">
                                             <i class="stepper-check fas fa-check"></i>
@@ -109,9 +109,10 @@
                             </div>
                             <!-- Stepper content and form -->
                             <form class="form flex-grow-1 d-flex flex-column" novalidate="novalidate"
-                                id="kt_stepper_example_clickable_form" action="{{ route('user.nfc-card.store') }}"
-                                method="POST" enctype="multipart/form-data">
+                                id="kt_modal_create_app_form" action="{{ route('user.nfc-card.store') }}" method="POST"
+                                enctype="multipart/form-data">
                                 @csrf
+                                <input type="text" class="form-control form-control-lg form-control-solid" name="name" placeholder="" value="" />
                                 <div class="row">
                                     <div class="flex-column current" data-kt-stepper-element="content">
                                         <div class="col-lg-12">
@@ -120,8 +121,7 @@
                                                     <h2 class="text-center mb-0">Select a Dynamic NFC Card Template
                                                     </h2>
                                                     <p class="text-center mb-0">Modify content as needed, even after
-                                                        going
-                                                        live.</p>
+                                                        going live.</p>
                                                 </div>
                                                 <div
                                                     class="centered-card-body card-body d-flex flex-column justify-content-between mb-10">
@@ -305,7 +305,7 @@
                 $("." + initiallySelectedValue).show();
 
 
-                $('#kt_stepper_example_clickable_form input:not([type="radio"]), #kt_stepper_example_clickable_form textarea, #kt_stepper_example_clickable_form input:not([type="color"])')
+                $('#kt_modal_create_app_stepper_form input:not([type="radio"]), #kt_modal_create_app_stepper_form textarea, #kt_modal_create_app_stepper_form input:not([type="color"])')
                     .on('keyup change', function() {
                         // Extract input value and name
                         var inputValue = $(this).val();
@@ -402,7 +402,7 @@
             });
 
             // Stepper lement
-            var element = document.querySelector("#kt_stepper_example_clickable");
+            var element = document.querySelector("#kt_modal_create_app_stepper");
 
             // Initialize Stepper
             var stepper = new KTStepper(element);
@@ -505,7 +505,7 @@
         </script>
         <script>
             // Stepper lement
-            var element = document.querySelector("#kt_stepper_example_clickable");
+            var element = document.querySelector("#kt_modal_create_app_stepper");
 
             // Initialize Stepper
             var stepper = new KTStepper(element);
