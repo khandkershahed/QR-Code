@@ -13,11 +13,11 @@
                                 </h1>
 
                                 <div class="text-gray-500 fw-semibold fs-6">
-                                    Your Social Campaigns
+                                    Scan, Share, Connect!
                                 </div>
                             </div>
                             <div class="row g-3 mb-9">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <a href="{{ route('reseller.auth.google') }}"
                                         class="btn btn-flex border btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
                                         <img alt="Logo"
@@ -27,7 +27,7 @@
                                     </a>
                                 </div>
 
-                                <div class="col-md-6">
+                                {{-- <div class="col-md-6">
                                     <a href="{{ route('reseller.auth.facebook') }}"
                                         class="btn btn-flex border btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
                                         <img alt="Logo"
@@ -35,7 +35,7 @@
                                             class="theme-light-show h-25px me-3">
                                         Sign in with Facebook
                                     </a>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="separator separator-content my-14"><span
                                     class="w-125px text-gray-500 fw-semibold fs-7">Or with email</span></div>

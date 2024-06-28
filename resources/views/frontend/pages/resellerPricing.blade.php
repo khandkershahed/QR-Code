@@ -1,4 +1,4 @@
-<x-frontend-app-layout :title="'Pricing'">
+<x-frontend-app-layout :title="'Pricing || GoFlixza - Your Hub for QR, Bar Codes, NFC V.Cards'">
     <section class="page-banner-area overlay py-120 rpy-120 rel z-1 bgs-cover text-center"
         style="
       background-image: url(https://img.freepik.com/free-photo/high-angle-cash-calculator_23-2149103926.jpg?t=st=1711992497~exp=1711996097~hmac=cba674665bb01df3d0bf2d4b9dcb482d199fafdfc976f1390185593de8dbb984&w=1380);
@@ -18,9 +18,9 @@
                 <div class="col-xl-6 col-lg-9 col-md-11">
                     <div class="section-title text-center mb-45 aos-init aos-animate" data-aos="fade-up"
                         data-aos-duration="1500" data-aos-offset="50">
-                        <h2>QR Code & NFC Generator
+                        <h2>QR Code & NFC
                             Pricing & Plans</h2>
-                        <p>Choose a QR Code pricing plan that best suits your nfc.</p>
+                        <p>Choose a pricing plan that best suits your requirements.</p>
                     </div>
                 </div>
             </div>
@@ -33,12 +33,12 @@
                             <li class="">
                                 <button class="nav-link active text-decoration-none pt-3 text-black"
                                     data-bs-toggle="tab" data-bs-target="#tabFour1">
-                                    <i class="fa fa-user" aria-hidden="true"></i> For QRs</button>
+                                    <i class="fa fa-user" aria-hidden="true"></i> QR CODE</button>
                             </li>
                             <li class="">
                                 <button class="nav-link text-decoration-none pt-3 text-black" data-bs-toggle="tab"
                                     data-bs-target="#tabFour2">
-                                    <i class="fa fa-user" aria-hidden="true"></i> For NFC Cards</button>
+                                    <i class="fa fa-user" aria-hidden="true"></i> Digital V.Card</button>
                             </li>
                         </ul>
                         <div class="tab-content">

@@ -1,4 +1,4 @@
-<x-admin-guest-layout :title="'Go Flixza Checkout'">
+<x-admin-guest-layout :title="'Checkout || GoFlixza - Your Hub for QR, Bar Codes & NFC V.Cards'">
     <style>
         .payment-container {
             position: absolute;

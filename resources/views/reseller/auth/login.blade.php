@@ -13,7 +13,7 @@
                                 </h1>
 
                                 <div class="text-gray-500 fw-semibold fs-6">
-                                    Your Social Campaigns
+                                    Scan, Share, Connect!
                                 </div>
                             </div>
 

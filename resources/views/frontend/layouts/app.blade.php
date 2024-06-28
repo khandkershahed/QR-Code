@@ -15,12 +15,20 @@
     <meta name="revisit-after" content="2 days">
     <meta name="author" content="https://www.goflixza.com/">
     <!-- Title -->
-    <title>{{ $title ?? config('app.name', '| Go QR') }}</title>
+    <title>{{ $title ?? config('app.name', '| GoFlixza') }}</title>
+    <meta property="og:title" content="GoFlixza - Your Hub for QR, Bar Codes & NFC V.Cards">
+    <meta property="og:description" content="Simplify your digital interactions with GoFlixza. Generate QR codes, barcodes, and NFC V.cards effortlessly.">
     <meta property="og:type" content="website">
-    <meta property="og:description"
-        content="Generate custom QR Codes for URLs, vCards, and more with our QR Code Generator. Personalize with logos, colors, and frames, and download in high print quality. Create your free QR Codes today!">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:url" content="https://www.goflixza.com/">
+    <meta property="og:url" content="https://www.goflixza.com">
+    <meta property="og:image" content="frontend/assets/images/logos/logo.png">
+    <meta property="og:image:alt" content="GoFlixza Logo">
+    <meta property="og:site_name" content="GoFlixza">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GoFlixza || Create QR Codes, Bar Codes & NFC V.Cards">
+    <meta name="twitter:description" content="Simplify your digital interactions with GoFlixza. Generate QR codes, barcodes, and NFC V.cards effortlessly.">
+    <meta name="twitter:image" content="frontend/assets/images/logos/logo.png">
     <!-- Favicon Icon -->
     <link rel="shortcut icon" href="https://i.ibb.co/BNBTVN4/logo.png" type="image/x-icon" />
     <!-- Google Fonts -->

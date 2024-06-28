@@ -1,4 +1,4 @@
-<x-frontend-app-layout :title="'Subscription Plans'">
+<x-frontend-app-layout :title="'Subscription Plans || GoFlixza - Your Hub for QR, Bar Codes & NFC V.Cards'">
     <style>
         .nav-item .nav-link {
             color: var(--link-color);

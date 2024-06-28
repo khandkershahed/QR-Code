@@ -13,7 +13,7 @@
                     @csrf
 
                     <div class="text-center mb-10">
-                        <h1 class="text-dark mb-3">GO QR</h1>
+                        <h1 class="text-dark mb-3">GOFlixza</h1>
                         <p>Welcome To Admin</p>
                     </div>
                     <div class="fv-row mb-10">
@@ -41,7 +41,7 @@
                             </span>
                         </div>
                     </div>
-                    <div class="fv-row mb-10">
+                    {{-- <div class="fv-row mb-10">
                         <div class="d-flex flex-stack mb-2">
                             <div class="mb-3 w-100 d-flex justify-content-between align-items-center ">
                                 <div class="form-check">
@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="text-center">
                         <button type="submit" class="btn btn-lg btn-primary w-100 mb-5 rounded-3">
