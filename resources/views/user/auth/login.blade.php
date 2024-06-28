@@ -18,7 +18,7 @@
                             </div>
 
                             <div class="row g-3 mb-9">
-                                <div class="col-md-12">
+                                <div class="col-md-6 mx-auto">
                                     <a href="{{ route('auth.google') }}"
                                         class="btn btn-flex border btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
                                         <img alt="Logo"

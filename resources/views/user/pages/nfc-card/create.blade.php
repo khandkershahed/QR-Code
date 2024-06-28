@@ -1,58 +1,74 @@
 <x-app-layout :title="'NFC Card Create'">
-    <h1 class="text-center mb-10 mt-5">Make Your NFC Profile!</h1>
-    @if (session('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
+    <div id="buttonDiv" class="d-flex flex-column justify-content-center align-items-center pt-15 fade fade-in">
+        <h1>Welcome To Virtual Card World !</h1>
+       
+        <!-- Modal Body -->
+        <p>Generate Your Virtual Card And Share With Others Securely!</p>
+        <div>
+            <img src="{{ asset('admin') }}/assets/media/custom/nfc-instruction.png" alt="">
         </div>
-    @endif
-    <div class="row g-2" id="columns-container">
-        <div class="col-lg-8">
-            <div class="card" id="first-card">
-                <div class="card-body custom-card-body overflow-auto p-0">
-                    <div class="stepper stepper-pills flex-grow-1 d-flex flex-column" id="kt_stepper_example_clickable">
-                        <div class="stepper-nav flex-center flex-wrap steaper-header">
-                            <div class="stepper-item mx-3 my-4 p-0 current" data-kt-stepper-element="nav" data-kt-stepper-action="step">
-                                <div class="stepper-wrapper d-flex align-items-center">
-                                    <div class="stepper-icon w-40px h-40px me-2">
-                                        <i class="stepper-check fas fa-check"></i>
-                                        <span class="stepper-number">1</span>
-                                    </div>
-                                    <div class="stepper-label">
-                                        <h3 class="stepper-title mb-0 pe-3">Select Template</h3>
-                                    </div>
-                                </div>
-                                <div class="stepper-line h-40px"></div>
-                            </div>
+        <button id="hideOneClick" class="btn btn-info fa-bounce w-25">Continue To Create VCard <i
+                class="fa-solid fa-arrow-right-long ps-4"></i>
+        </button>
+    </div>
 
-                            <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
-                                data-kt-stepper-action="step">
-                                <div class="stepper-wrapper d-flex align-items-center">
-                                    <div class="stepper-icon w-40px h-40px me-2">
-                                        <i class="stepper-check fas fa-check"></i>
-                                        <span class="stepper-number">2</span>
+    <div id="contentDiv" class="d-none fade">
+        <h1 class="text-center mb-10 mt-5">Make Your NFC Profile!</h1>
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+        <div class="row g-2" id="columns-container">
+            <div class="col-lg-8">
+                <div class="card" id="first-card">
+                    <div class="card-body custom-card-body overflow-auto p-0">
+                        <div class="stepper stepper-pills flex-grow-1 d-flex flex-column"
+                            id="kt_stepper_example_clickable">
+                            <div class="stepper-nav flex-center flex-wrap steaper-header">
+                                <div class="stepper-item mx-3 my-4 p-0 current" data-kt-stepper-element="nav"
+                                    data-kt-stepper-action="step">
+                                    <div class="stepper-wrapper d-flex align-items-center">
+                                        <div class="stepper-icon w-40px h-40px me-2">
+                                            <i class="stepper-check fas fa-check"></i>
+                                            <span class="stepper-number">1</span>
+                                        </div>
+                                        <div class="stepper-label">
+                                            <h3 class="stepper-title mb-0 pe-3">Select Template</h3>
+                                        </div>
                                     </div>
-                                    <div class="stepper-label">
-                                        <h3 class="stepper-title mb-0 pe-3">Input Data</h3>
-                                    </div>
+                                    <div class="stepper-line h-40px"></div>
                                 </div>
-                                <div class="stepper-line h-40px"></div>
-                            </div>
 
-                            <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
-                                data-kt-stepper-action="step">
-                                <div class="stepper-wrapper d-flex align-items-center">
-                                    <div class="stepper-icon w-40px h-40px me-2">
-                                        <i class="stepper-check fas fa-check"></i>
-                                        <span class="stepper-number">3</span>
+                                <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
+                                    data-kt-stepper-action="step">
+                                    <div class="stepper-wrapper d-flex align-items-center">
+                                        <div class="stepper-icon w-40px h-40px me-2">
+                                            <i class="stepper-check fas fa-check"></i>
+                                            <span class="stepper-number">2</span>
+                                        </div>
+                                        <div class="stepper-label">
+                                            <h3 class="stepper-title mb-0 pe-3">Input Data</h3>
+                                        </div>
                                     </div>
-                                    <div class="stepper-label">
-                                        <h3 class="stepper-title mb-0 pe-3">Customize</h3>
-                                    </div>
+                                    <div class="stepper-line h-40px"></div>
                                 </div>
-                                <div class="stepper-line h-40px"></div>
-                            </div>
 
-                            {{-- <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
+                                <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
+                                    data-kt-stepper-action="step">
+                                    <div class="stepper-wrapper d-flex align-items-center">
+                                        <div class="stepper-icon w-40px h-40px me-2">
+                                            <i class="stepper-check fas fa-check"></i>
+                                            <span class="stepper-number">3</span>
+                                        </div>
+                                        <div class="stepper-label">
+                                            <h3 class="stepper-title mb-0 pe-3">Customize</h3>
+                                        </div>
+                                    </div>
+                                    <div class="stepper-line h-40px"></div>
+                                </div>
+
+                                {{-- <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
                                 data-kt-stepper-action="step">
                                 <div class="stepper-wrapper d-flex align-items-center">
                                     <div class="stepper-icon w-40px h-40px me-2">
@@ -78,63 +94,65 @@
                                 </div>
                             </div> --}}
 
-                            <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
-                                data-kt-stepper-action="step">
-                                <div class="stepper-wrapper d-flex align-items-center">
-                                    <div class="stepper-icon w-40px h-40px me-2">
-                                        <i class="stepper-check fas fa-check"></i>
-                                        <span class="stepper-number">4</span>
-                                    </div>
-                                    <div class="stepper-label">
-                                        <h3 class="stepper-title mb-0 pe-3">Generate</h3>
+                                <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
+                                    data-kt-stepper-action="step">
+                                    <div class="stepper-wrapper d-flex align-items-center">
+                                        <div class="stepper-icon w-40px h-40px me-2">
+                                            <i class="stepper-check fas fa-check"></i>
+                                            <span class="stepper-number">4</span>
+                                        </div>
+                                        <div class="stepper-label">
+                                            <h3 class="stepper-title mb-0 pe-3">Generate</h3>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- Stepper content and form -->
-                        <form class="form flex-grow-1 d-flex flex-column" novalidate="novalidate"
-                            id="kt_stepper_example_clickable_form" action="{{ route('user.nfc-card.store') }}"
-                            method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <div class="row">
-                                <div class="flex-column current" data-kt-stepper-element="content">
-                                    <div class="col-lg-12">
+                            <!-- Stepper content and form -->
+                            <form class="form flex-grow-1 d-flex flex-column" novalidate="novalidate"
+                                id="kt_stepper_example_clickable_form" action="{{ route('user.nfc-card.store') }}"
+                                method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="row">
+                                    <div class="flex-column current" data-kt-stepper-element="content">
+                                        <div class="col-lg-12">
+                                            <div class="card flex-grow-1 rounded-0">
+                                                <div class="my-5 mt-10">
+                                                    <h2 class="text-center mb-0">Select a Dynamic NFC Card Template
+                                                    </h2>
+                                                    <p class="text-center mb-0">Modify content as needed, even after
+                                                        going
+                                                        live.</p>
+                                                </div>
+                                                <div
+                                                    class="centered-card-body card-body d-flex flex-column justify-content-between mb-10">
+                                                    <!-- Include your NFC template partial here -->
+                                                    @include('user.pages.nfc-card.partials.nfc_template')
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex-column" data-kt-stepper-element="content">
                                         <div class="card flex-grow-1 rounded-0">
-                                            <div class="my-5 mt-10">
-                                                <h2 class="text-center mb-0">Select a Dynamic NFC Card Template</h2>
-                                                <p class="text-center mb-0">Modify content as needed, even after going
-                                                    live.</p>
+                                            <div
+                                                class="centered-card-body card-body d-flex flex-column justify-content-between mb-10">
+                                                @include('user.pages.nfc-card.partials.form')
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex-column" data-kt-stepper-element="content">
+                                        <div class="card flex-grow-1 rounded-0">
+                                            <div class="text-center justify-content-center pt-10">
+                                                <h2 class="text-center mb-0">Choose NFC Card Design!</h2>
                                             </div>
                                             <div
                                                 class="centered-card-body card-body d-flex flex-column justify-content-between mb-10">
-                                                <!-- Include your NFC template partial here -->
-                                                @include('user.pages.nfc-card.partials.nfc_template')
+                                                @include('user.pages.nfc-card.partials.customize')
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="flex-column" data-kt-stepper-element="content">
-                                    <div class="card flex-grow-1 rounded-0">
-                                        <div
-                                            class="centered-card-body card-body d-flex flex-column justify-content-between mb-10">
-                                            @include('user.pages.nfc-card.partials.form')
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="flex-column" data-kt-stepper-element="content">
-                                    <div class="card flex-grow-1 rounded-0">
-                                        <div class="text-center justify-content-center pt-10">
-                                            <h2 class="text-center mb-0">Choose NFC Card Design!</h2>
-                                        </div>
-                                        <div
-                                            class="centered-card-body card-body d-flex flex-column justify-content-between mb-10">
-                                            @include('user.pages.nfc-card.partials.customize')
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {{-- <div class="flex-column " data-kt-stepper-element="content">
+                                    {{-- <div class="flex-column " data-kt-stepper-element="content">
                                     <div class="card flex-grow-1 rounded-0">
                                         <div class="text-center justify-content-center pt-10">
                                             <h2 class="text-center mb-0">Choose Virtual Card Template! <span
@@ -147,7 +165,7 @@
                                     </div>
                                 </div> --}}
 
-                                {{-- <div class="flex-column" data-kt-stepper-element="content">
+                                    {{-- <div class="flex-column" data-kt-stepper-element="content">
                                     <div class="card flex-grow-1 rounded-0">
                                         <div class="text-center justify-content-center pt-10">
                                             <h2 class="text-center mb-0">Customize Your Virtual Card As Need!</h2>
@@ -159,71 +177,94 @@
                                     </div>
                                 </div> --}}
 
-                                <div class="flex-column" data-kt-stepper-element="content">
-                                    <div class="card flex-grow-1 rounded-0">
-                                        <div class="card-header text-center border-0">
-                                            <div class="pt-15 pb-15 ps-5 w-100">
-                                                <h2 class="text-success">Congratulations!</h2>
-                                                <p>Your NFC Profile is ready. Add Billing Address For NFC Card Delivery!
-                                                </p>
+                                    <div class="flex-column" data-kt-stepper-element="content">
+                                        <div class="card flex-grow-1 rounded-0">
+                                            <div class="card-header text-center border-0">
+                                                <div class="pt-15 pb-15 ps-5 w-100">
+                                                    <h2 class="text-success">Congratulations!</h2>
+                                                    <p>Your NFC Profile is ready. Add Billing Address For NFC Card
+                                                        Delivery!
+                                                    </p>
+                                                </div>
                                             </div>
-                                        </div>
-                                        {{-- <div
+                                            {{-- <div
                                             class="centered-card-body card-body d-flex flex-column justify-content-between mb-10 pt-0">
                                             @include('user.pages.nfc-card.partials.virtualCardBilling')
                                         </div> --}}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            {{-- Stepper Action Button --}}
-                            <div class="fixed-bottom">
-                                <div class="d-flex justify-content-between py-3 px-3 align-items-center bg-white">
-                                    <div class="me-2">
-                                        <button type="button" class="btn btn-light btn-active-light-primary"
-                                            data-kt-stepper-action="previous">
-                                            Back
-                                        </button>
-                                    </div>
-                                    <div>
-                                        <button type="submit" class="btn btn-primary" id="submitButton"
-                                            data-kt-stepper-action="submit">
-                                            <span class="indicator-label">Submit</span>
-                                            <span class="indicator-progress">Please wait... <span
-                                                    class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-                                        </button>
-                                        <button type="button" class="btn btn-primary" data-kt-stepper-action="next">
-                                            Continue
-                                        </button>
+                                {{-- Stepper Action Button --}}
+                                <div class="fixed-bottom">
+                                    <div class="d-flex justify-content-between py-3 px-3 align-items-center bg-white">
+                                        <div class="me-2">
+                                            <button type="button" class="btn btn-light btn-active-light-primary"
+                                                data-kt-stepper-action="previous">
+                                                Back
+                                            </button>
+                                        </div>
+                                        <div>
+                                            <button type="submit" class="btn btn-primary" id="submitButton"
+                                                data-kt-stepper-action="submit">
+                                                <span class="indicator-label">Submit</span>
+                                                <span class="indicator-progress">Please wait... <span
+                                                        class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                            </button>
+                                            <button type="button" class="btn btn-primary"
+                                                data-kt-stepper-action="next">
+                                                Continue
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
-                        <!-- End of Stepper content and form -->
+                            </form>
+                            <!-- End of Stepper content and form -->
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-4">
-            <div class="card" id="second-card">
-                <div class="card-header px-0 border-0">
-                    <div class="d-flex flex-column justify-content-center align-items-center"
-                        style="width: 100%; background: #0098da3d; border-top-left-radius: 5px; border-top-right-radius: 5px; padding: 15px;">
-                        <h3 class="">Preview</h3>
-                        <p class="mb-0 ">Your Choosen Template</p>
+            <div class="col-lg-4">
+                <div class="card" id="second-card">
+                    <div class="card-header px-0 border-0">
+                        <div class="d-flex flex-column justify-content-center align-items-center"
+                            style="width: 100%; background: #0098da3d; border-top-left-radius: 5px; border-top-right-radius: 5px; padding: 15px;">
+                            <h3 class="">Preview</h3>
+                            <p class="mb-0 ">Your Choosen Template</p>
+                        </div>
                     </div>
-                </div>
-                <div class="card-body custom-card-body overflow-auto px-0 ">
-                    @include('user.pages.nfc-card.partials.nfc_preview')
-                </div>
-                <div
-                    class="card-body custom-card-body overflow-auto px-0 py-10 d-flex justify-content-center align-items-center">
-                    @include('user.pages.nfc-card.partials.virtual_card_preview')
+                    <div class="card-body custom-card-body overflow-auto px-0 ">
+                        @include('user.pages.nfc-card.partials.nfc_preview')
+                    </div>
+                    <div
+                        class="card-body custom-card-body overflow-auto px-0 py-10 d-flex justify-content-center align-items-center">
+                        @include('user.pages.nfc-card.partials.virtual_card_preview')
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
+
     @push('scripts')
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const button = document.getElementById("hideOneClick");
+                const buttonDiv = document.getElementById("buttonDiv");
+                const contentDiv = document.getElementById("contentDiv");
+
+                button.addEventListener("click", function() {
+                    buttonDiv.classList.remove('fade-in');
+                    buttonDiv.classList.add('fade-out');
+
+                    setTimeout(() => {
+                        buttonDiv.classList.add('d-none');
+                        contentDiv.classList.remove('d-none');
+                        contentDiv.classList.remove('fade-out');
+                        contentDiv.classList.add('fade-in');
+                    }, 500); // Match this time with the transition duration in CSS
+                });
+            });
+        </script>
         <script>
             $(document).ready(function() {
                 // Function to match card heights

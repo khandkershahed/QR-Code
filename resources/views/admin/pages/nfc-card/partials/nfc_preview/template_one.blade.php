@@ -307,7 +307,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col mb-2 text-end">
-                                            <button type="submit" class="btn btn-danger btn-sm mt-2">
+                                            <button type="submit" class="btn btn-white btn-sm mt-2 rounded-0">
                                                 Submit
                                             </button>
                                         </div>
@@ -322,7 +322,7 @@
                                 </div>
                             </div>
                             <div class="sticky-bottom mt-5">
-                                <a href="#" class="btn-primary btn w-100 nfc_contact_btn">Connect Now</a>
+                                <a href="#" class="btn-white btn w-100 nfc_contact_btn rounded-0 text-black">Connect Now</a>
                             </div>
                         </div>
                     </div>
