@@ -1,4 +1,4 @@
-<x-app-layout :title="'Subscription Sueccesful'">
+<x-app-layout :title="'Subscription Sueccesful || GoFlixza - Your Hub for QR, Bar Codes & NFC V.Cards'">
     <section class="py-250 rpy-120">
         <div class="container pt-70 rpt-60">
             <div class="row justify-content-center">

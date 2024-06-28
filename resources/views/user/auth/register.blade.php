@@ -1,4 +1,4 @@
-<x-admin-guest-layout :title="'Registration'">
+<x-admin-guest-layout :title="'Registration || GoFlixza - Your Hub for QR, Bar Codes & NFC V.Cards'">
     <style>
         .form-container-registration {
             display: none;
@@ -40,7 +40,7 @@
                             @endif
 
                             @if ($plan->billing_cycle == 'trial_period')
-                                <p class="mb-0 text-muted"><a href="{{ route('pricing') }}">Check Othe Plans</a></p>
+                                <p class="mb-0 text-muted"><a href="{{ route('pricing') }}">Check Other Plans</a></p>
                             @else
                                 <p class="mb-0 text-muted">Invest in the {{ $plan->title }} today and take your
                                     capabilities to the next level!</p>
@@ -211,11 +211,7 @@
                         Fast, Efficient and Productive
                     </h1>
                     <div class="d-none d-lg-block text-white fs-base text-center">
-                        In this kind of post,
-                        <a href="#" class="opacity-75-hover text-warning fw-bold me-1">the blogger</a>
-                        introduces a person they’ve interviewed <br> and provides some background information about
-                        <a href="#" class="opacity-75-hover text-warning fw-bold me-1">the interviewee</a>
-                        and their <br> work following this is a transcript of the interview.
+                        GoFlixza lets you craft QR codes, barcodes, and NFC V.cards with ease. <br>Revolutionize your digital toolkit today!
                     </div>
                 </div>
             </div>

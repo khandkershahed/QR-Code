@@ -1,6 +1,6 @@
-<x-frontend-app-layout :title="'GoFlixza || QR Codes for Every Need - Create Yours Today'">
+<x-frontend-app-layout :title="'GoFlixza || Your Hub for QR, Bar Codes, NFC V.Cards'">
     <section id="about" class="hero-area-nine pt-165 rpt-150 pb-130 rpb-100 rel z-1">
-        <div class="container"> 
+        <div class="container">
             <div class="row gap-70 align-items-center">
                 <div class="col-lg-6">
                     <div class="hero-content style-nine mb-50 rmb-55" data-aos="fade-up" data-aos-duration="1500"
@@ -37,11 +37,18 @@
                 </div>
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500"
                     data-aos-offset="50">
-                    <a href="{{ route('pricing') }}">
-                    <div class="hero-seven-image">
-                            <img src="{{ asset('frontend') }}/assets/images/shapes/hero-seven.png" alt="Hero" />
-                        </div>
-                    </a>
+                    <div class="d-flex">
+                        <a href="{{ route('pricing') }}">
+                            <div class="hero-seven-image">
+                                <img src="{{ asset('frontend') }}/assets/images/shapes/hero-seven.png" alt="Hero" />
+                            </div>
+                        </a>
+                        <a href="{{ route('pricing') }}">
+                            <div class="hero-seven-image">
+                                <img src="{{ asset('frontend') }}/assets/images/shapes/hero-seven.png" alt="Hero" />
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -88,21 +95,24 @@
                 <div class="col">
                     <div class="client-logo-item style-four py-45 rpy-25" data-aos="fade-up" data-aos-delay="100"
                         data-aos-duration="1500" data-aos-offset="50">
-                        <a href="#"><img src="{{ asset('frontend') }}/assets/images/client-logos/client-logo3.png"
+                        <a href="#"><img
+                                src="{{ asset('frontend') }}/assets/images/client-logos/client-logo3.png"
                                 alt="Client Logo" /></a>
                     </div>
                 </div>
                 <div class="col">
                     <div class="client-logo-item style-four py-65 rpy-25" data-aos="fade-up" data-aos-delay="150"
                         data-aos-duration="1500" data-aos-offset="50">
-                        <a href="#"><img src="{{ asset('frontend') }}/assets/images/client-logos/client-logo4.png"
+                        <a href="#"><img
+                                src="{{ asset('frontend') }}/assets/images/client-logos/client-logo4.png"
                                 alt="Client Logo" /></a>
                     </div>
                 </div>
                 <div class="col">
                     <div class="client-logo-item style-four py-45 rpy-25" data-aos="fade-up" data-aos-delay="200"
                         data-aos-duration="1500" data-aos-offset="50">
-                        <a href="#"><img src="{{ asset('frontend') }}/assets/images/client-logos/client-logo5.png"
+                        <a href="#"><img
+                                src="{{ asset('frontend') }}/assets/images/client-logos/client-logo5.png"
                                 alt="Client Logo" /></a>
                     </div>
                 </div>

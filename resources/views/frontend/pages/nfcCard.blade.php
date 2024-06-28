@@ -1,4 +1,4 @@
-<x-frontend-app-layout :title="'QR-Code'">
+<x-frontend-app-layout :title="'QR-Code || GoFlixza - Your Hub for QR, Bar Codes & NFC V.Cards'">
     <section class="coming-soon-area py-100 bgs-cover"
         style="background-image: url({{ asset('frontend/assets/images/backgrounds/coming-soon.jpg') }})">
         <div class="container">

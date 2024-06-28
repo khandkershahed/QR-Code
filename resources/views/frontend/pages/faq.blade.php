@@ -1,4 +1,4 @@
-<x-frontend-app-layout :title="'FAQ'">
+<x-frontend-app-layout :title="'FAQ || GoFlixza - Your Hub for QR, Bar Codes & NFC V.Cards'">
     <section class="page-banner-area overlay py-120 rpy-120 rel z-1 bgs-cover text-center"
         style="
       background-image: url(https://webtendtheme.net/html/2024/akpager/assets/images/backgrounds/banner.jpg);">

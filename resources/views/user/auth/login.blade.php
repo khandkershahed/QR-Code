@@ -1,4 +1,4 @@
-<x-admin-guest-layout :title="'Login Page'">
+<x-admin-guest-layout :title="'Login || GoFlixza - Your Hub for QR, Bar Codes & NFC V.Cards'">
     <div class="d-flex flex-column flex-root" id="kt_app_root">
         <div class="d-flex flex-column flex-lg-row flex-column-fluid">
             <div class="d-flex flex-column flex-lg-row-fluid w-lg-50 p-10 order-2 order-lg-1">
@@ -13,12 +13,12 @@
                                 </h1>
 
                                 <div class="text-gray-500 fw-semibold fs-6">
-                                    Your Social Campaigns
+                                    Scan, Share, Connect!
                                 </div>
                             </div>
 
                             <div class="row g-3 mb-9">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <a href="{{ route('auth.google') }}"
                                         class="btn btn-flex border btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
                                         <img alt="Logo"
@@ -28,7 +28,7 @@
                                     </a>
                                 </div>
 
-                                <div class="col-md-6">
+                                {{-- <div class="col-md-6">
                                     <a href="{{ route('auth.facebook') }}"
                                         class="btn btn-flex border btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
                                         <img alt="Logo"
@@ -36,7 +36,7 @@
                                             class="theme-light-show h-25px me-3">
                                         Sign in with Facebook
                                     </a>
-                                </div>
+                                </div> --}}
                             </div>
 
                             <div class="separator separator-content my-14">
