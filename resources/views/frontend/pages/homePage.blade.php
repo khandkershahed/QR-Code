@@ -40,12 +40,12 @@
                     <div class="d-flex">
                         <a href="{{ route('pricing') }}">
                             <div class="hero-seven-image">
-                                <img src="{{ asset('frontend') }}/assets/images/shapes/hero-seven.png" alt="Hero" />
+                                <img src="{{ asset('frontend') }}/assets/images/shapes/nfc.png" alt="Hero" />
                             </div>
                         </a>
                         <a href="{{ route('pricing') }}">
                             <div class="hero-seven-image">
-                                <img src="{{ asset('frontend') }}/assets/images/shapes/hero-seven.png" alt="Hero" />
+                                <img src="{{ asset('frontend') }}/assets/images/shapes/qr.png" alt="Hero" />
                             </div>
                         </a>
                     </div>
@@ -188,7 +188,7 @@
                         </div>
                         <div class="col-xl-5 col-lg-6">
                             <div class="image">
-                                <img src="https://i.ibb.co/tsyLp2w/a-human-hand-is-holding-a-smartphone-scan-the-qr-code-phone-screen-and-fingers-link-to-the-website-v.jpg"
+                                <img src="{{ asset('frontend') }}/assets/images/custom/website.png"
                                     alt="Tab" />
                             </div>
                         </div>
@@ -198,7 +198,7 @@
                     <div class="row align-items-center justify-content-between">
                         <div class="col-xl-5 col-lg-6">
                             <div class="image" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
-                                <img src="https://i.ibb.co/fSxh5S1/qr-code-scanning-concept-with-characters-23-2148627986.jpg"
+                                <img src="{{ asset('frontend') }}/assets/images/custom/form-scan.png"
                                     alt="Tab" />
                             </div>
                         </div>
@@ -282,7 +282,7 @@
                         </div>
                         <div class="col-xl-5 col-lg-6">
                             <div class="image">
-                                <img src="https://i.ibb.co/QNWcSXM/qr-code-scanning-concept-with-characters-23-2148629215.jpg"
+                                <img src="{{ asset('frontend') }}/assets/images/custom/social.png"
                                     alt="Tab" />
                             </div>
                         </div>
@@ -292,7 +292,7 @@
                     <div class="row align-items-center justify-content-between">
                         <div class="col-xl-5 col-lg-6">
                             <div class="image">
-                                <img src="https://i.ibb.co/9YsVDsj/89191cover2.jpg" alt="Tab" />
+                                <img src="{{ asset('frontend') }}/assets/images/custom/mobile-app.png" alt="Tab" />
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -363,7 +363,7 @@
                             <h5><a href="service-details.html">AppLink</a></h5>
                             <p>
                                 Drive app downloads effortlessly by generating QR codes that
-                                instantly direct users to your mobile app on app stores.
+                                instantly direct users to your mobile app on app.
                             </p>
                         </div>
                         <div class="bg">
@@ -403,7 +403,7 @@
                             <h5><a href="service-details.html">CallCode</a></h5>
                             <p>
                                 Enhance accessibility and convenience by generating QR codes
-                                that initiate phone calls when scanned, enabling users to.
+                                that initiate phone calls when scanned.
                             </p>
                         </div>
                         <div class="bg">

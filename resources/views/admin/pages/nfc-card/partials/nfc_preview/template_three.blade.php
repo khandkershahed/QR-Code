@@ -587,7 +587,7 @@
                                         </form>
                                     </div>
                                 </div>
-                                <div class="row w-75 mx-auto mobile-d-none">
+                                <div class="row mx-auto mobile-d-none">
                                     <div class="col mb-2 text-center">
                                         <button type="submit" class="btn btn-sm mt-2 p-2 w-100 nfc_contact_btn"
                                             style="background-color: #f44336; color: #fff">

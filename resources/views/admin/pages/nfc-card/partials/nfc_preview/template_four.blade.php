@@ -100,7 +100,7 @@
 
                     <div class="card-body p-0 tem-one-about-content">
                         <div class="w-100">
-                            <div class="text-end" style="margin-top: -120px; position: relative">
+                            <div class="text-end" style="margin-top: -80px; position: relative">
                                 <img style="width: 150px; height: 150px;border-width: 6px;border-style: solid;"
                                     src="https://my.cybercard.ma/uploads/vcards/profiles/221/smiling-doctor-sitting-isolated-grey_651396-917.jpg"
                                     class="img-fluid banner-image profile_image" alt="profile" />
@@ -395,7 +395,7 @@
                                         </form>
                                     </div>
                                 </div>
-                                <div class="row w-75 mx-auto mobile-d-none">
+                                <div class="row mx-auto mobile-d-none">
                                     <div class="col mb-2 text-center">
                                         <button type="submit" class="btn btn-sm mt-2 p-2 w-100 nfc_contact_btn"
                                             style="background-color: #1c344f; color: #fff">

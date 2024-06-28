@@ -527,7 +527,7 @@
                                                     </div>
                                                 <div class="row">
                                                     <div class="col mb-2 text-center">
-                                                        <button type="submit" class="btn btn-danger btn-sm mt-2">
+                                                        <button type="submit" class="btn btn-white btn-sm mt-2 rounded-0">
                                                             Submit
                                                         </button>
                                                     </div>
