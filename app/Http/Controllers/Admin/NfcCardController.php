@@ -30,7 +30,12 @@ class NfcCardController extends Controller
     {
         $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
         $user = Auth::user();
-        $subscription = $isUserRoute ? Subscription::with('plan')->where('user_id', $user->id)->active()->first() : null;
+        $subscription = $isUserRoute
+            ? Subscription::with('plan')->where('user_id', $user->id)
+            ->whereHas('plan', function ($query) {
+                $query->where('type', 'nfc');
+            })->active()->first()
+            : null;
         $nfc_cards = $isUserRoute
             ? NfcCard::with('nfcData', 'nfcMessages', 'virtualCard', 'shippingDetails')->where('user_id', $user->id)->latest('id')->get()
             : NfcCard::with('nfcData', 'nfcMessages', 'virtualCard', 'shippingDetails')->latest('id')->get();
@@ -54,7 +59,12 @@ class NfcCardController extends Controller
         $createdAtPlus14Days = Carbon::parse($user->created_at)->addDays(14);
         $today = Carbon::now();
 
-        $subscription = $isUserRoute ? Subscription::with('plan')->where('user_id', $user->id)->active()->latest('id')->first() : null;
+        $subscription = $isUserRoute
+            ? Subscription::with('plan')->where('user_id', $user->id)
+            ->whereHas('plan', function ($query) {
+                $query->where('type', 'nfc');
+            })->active()->first()
+            : null;
 
         // Retrieve NFC cards
         $nfc_cards = $isUserRoute
@@ -68,20 +78,20 @@ class NfcCardController extends Controller
                     $view = $isUserRoute ? 'user.pages.nfc-card.create' : 'admin.pages.nfc-card.create';
                     return view($view);
                 } else {
-                    session()->flash('showLimitExceededModal', true);
-                    return redirect()->back()->with('error', 'Your NFC Card limitation is exceeded');
+                    session()->flash('nfcExceededModal', true);
+                    return redirect()->back();
                     // return redirect()->back()->with('error', 'Your NFC Card limitation is exceeded');
                 }
             } else {
                 // Check if the user has not exceeded the NFC card limit or if 14 days have passed since account creation
-                if (10 - $nfc_cards->count() > 0 || $createdAtPlus14Days->lessThan($today)) {
-                    $view = $isUserRoute ? 'user.pages.nfc-card.create' : 'admin.pages.nfc-card.create';
-                    return view($view);
-                } else {
-                    session()->flash('showLimitExceededModal', true);
-                    return redirect()->back()->with('error', 'Your NFC Card limitation is exceeded');
+                // if (10 - $nfc_cards->count() > 0 || $createdAtPlus14Days->lessThan($today)) {
+                //     $view = $isUserRoute ? 'user.pages.nfc-card.create' : 'admin.pages.nfc-card.create';
+                //     return view($view);
+                // } else {
+                    session()->flash('nfcExceededModal', true);
+                    return redirect()->back();
                     // return redirect()->back()->with('error', 'Your NFC Card limitation is exceeded');
-                }
+                // }
             }
         } else {
             return view('admin.pages.nfc-card.create');

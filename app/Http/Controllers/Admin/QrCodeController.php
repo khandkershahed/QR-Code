@@ -31,7 +31,12 @@ class QrCodeController extends Controller
     {
         $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
         $user = Auth::user();
-        $subscription = $isUserRoute ? Subscription::with('plan')->where('user_id', $user->id)->active()->first() : null;
+        $subscription = $isUserRoute
+            ? Subscription::with('plan')->where('user_id', $user->id)
+            ->whereHas('plan', function ($query) {
+                $query->where('type', 'qr');
+            })->active()->first()
+            : null;
         $qrs = $isUserRoute ?
             Qr::with('qrData', 'qrScan')->where('user_id', $user->id)->latest('id')->get() :
             Qr::with('qrData', 'qrScan')->latest('id')->get();
@@ -54,7 +59,12 @@ class QrCodeController extends Controller
         $createdAtPlus14Days = Carbon::parse($user->created_at)->addDays(14);
         $today = Carbon::now();
 
-        $subscription = $isUserRoute ? Subscription::with('plan')->where('user_id', $user->id)->active()->first() : null;
+        $subscription = $isUserRoute
+            ? Subscription::with('plan')->where('user_id', $user->id)
+            ->whereHas('plan', function ($query) {
+                $query->where('type', 'qr');
+            })->active()->first()
+            : null;
 
         // Retrieve QR codes
         $qrs = $isUserRoute
@@ -71,19 +81,23 @@ class QrCodeController extends Controller
                     $view = $isUserRoute ? 'user.pages.qr-code.create' : 'admin.pages.qr-code.create';
                     return view($view, ['categories' => $categories]);
                 } else {
-                    return redirect()->back()->with('error', 'Your QR limitation is exceeded');
+                    // return redirect()->back()->with('error', 'Your QR limitation is exceeded');
+                    session()->flash('qrExceededModal', true);
+                    return redirect()->back();
                 }
             } else {
                 // Check if the user has not exceeded the QR code limit or if 14 days have passed since account creation
-                if (10 - $qrs->count() > 0 || $createdAtPlus14Days->lessThan($today)) {
-                    $categories = $isUserRoute
-                        ? RestaurantCategory::where('user_id', Auth::user()->id)->latest('id')->get()
-                        : RestaurantCategory::latest('id')->get();
-                    $view = $isUserRoute ? 'user.pages.qr-code.create' : 'admin.pages.qr-code.create';
-                    return view($view, ['categories' => $categories]);
-                } else {
-                    return redirect()->back()->with('error', 'Your QR limitation is exceeded');
-                }
+                // if (10 - $qrs->count() > 0 || $createdAtPlus14Days->lessThan($today)) {
+                //     $categories = $isUserRoute
+                //         ? RestaurantCategory::where('user_id', Auth::user()->id)->latest('id')->get()
+                //         : RestaurantCategory::latest('id')->get();
+                //     $view = $isUserRoute ? 'user.pages.qr-code.create' : 'admin.pages.qr-code.create';
+                //     return view($view, ['categories' => $categories]);
+                // } else {
+                    // return redirect()->back()->with('error', 'Your QR limitation is exceeded');
+                    session()->flash('qrExceededModal', true);
+                    return redirect()->back();
+                // }
             }
         } else {
             return view('admin.pages.qr-code.create', ['categories' => $categories]);

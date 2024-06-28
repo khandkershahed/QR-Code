@@ -178,10 +178,21 @@
             });
         });
     </script>
-    @if (isset($showLimitExceededModal) && $showLimitExceededModal)
+    @if (session('nfcExceededModal'))
         <script>
             document.addEventListener('DOMContentLoaded', function() {
-                var myModal = new bootstrap.Modal(document.getElementById('toastr_modal'), {
+                var myModal = new bootstrap.Modal(document.getElementById('toastr_nfc_modal'), {
+                    backdrop: 'static',
+                    keyboard: false
+                });
+                myModal.show();
+            });
+        </script>
+    @endif
+    @if (session('qrExceededModal'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var myModal = new bootstrap.Modal(document.getElementById('toastr_qr_modal'), {
                     backdrop: 'static',
                     keyboard: false
                 });
