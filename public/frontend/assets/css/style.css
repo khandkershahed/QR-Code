@@ -13,14 +13,10 @@
 /******************* ## Default Style ******************/
 /*******************************************************/
 
-@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap");
 
-@font-face {
-    font-family: "Helvetica";
-    font-style: normal;
-    src: url("../fonts/Helvetica/helvetica-light-587ebe5a59211.ttf");
-    /* Other src definitions for different font formats */
-}
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+
+
 body::-webkit-scrollbar {
     width: 0.5em;
 }
@@ -41,16 +37,27 @@ body::-webkit-scrollbar-thumb {
     -webkit-box-shadow: none;
     box-shadow: none;
 }
+  
+  h1, h2, h3, h4, h5, h6 {
+    position: relative;
+    color: #222;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-family: "Jost", sans-serif;
+  }
+  
 
 body {
+    font-size: 16px;
+    font-family: "Jost", sans-serif;
     font-weight: 400;
     line-height: 30px;
     font-size: 16px;
-    font-family: var(--base-font);
     /* Root */
-    --base-font: "Helvetica";
+    --base-font: "Jost", sans-serif;
     /* --heading-font: "Bebas Neue", sans-serif; */
-    --heading-font: "Inter Tight", sans-serif;
+    --heading-font: "Jost";
     --primary-color: #008fd3;
     --secondary-color: #fec458;
     --heading-color: #001726;
@@ -100,6 +107,12 @@ h6 a {
     color: var(--heading-color);
 }
 
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
 .text-white h1,
 .text-white h1 a,
 .text-white h2,
@@ -7916,6 +7929,7 @@ a.theme-btn.style-four:hover {
     background: white;
     padding: 16px 48px;
     border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
 }
 
 .advanced-tab.style-two {
@@ -11350,7 +11364,7 @@ a.theme-btn.style-four:hover {
 
 .main-menu .navbar-collapse li a {
     opacity: 1;
-    font-weight: 500;
+    font-weight: 600;
     display: block;
     font-size: 18px;
     position: relative;
