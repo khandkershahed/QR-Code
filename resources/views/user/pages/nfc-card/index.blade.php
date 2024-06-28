@@ -58,9 +58,10 @@
                                 <th width="20%">Image</th>
                                 {{-- <th width="10%">Virtual Card</th> --}}
                                 <th width="25%">Name </th>
-                                <th width="15%">Link</th>
-                                <th width="15%">QR</th>
-                                <th width="15%" class="text-center">Action</th>
+                                <th width="13%">Link</th>
+                                <th width="12%">QR</th>
+                                <th width="15%">Create Date</th>
+                                <th width="10%" class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody class="fw-semibold text-gray-600">
@@ -149,6 +150,9 @@
                                             <button class="btn btn-sm btn-info"><i class="fas fa-eye pe-2"></i>
                                                 QR</button>
                                         </a>
+                                    </td>
+                                    <td>
+                                        {{ $nfc_card->created_at->format('d-M-y') }}
                                     </td>
                                     {{-- <td>
                                         <a href="javascript:void(0)" data-bs-toggle="modal"
