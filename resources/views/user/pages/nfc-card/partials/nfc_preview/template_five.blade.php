@@ -413,7 +413,7 @@
                                             <div class="text-white" style="background-color: #000"></div>
                                         </div>
                                         <div>
-                                            <img class="img-fluid service_two_image"
+                                            <img class="img-fluid service_three_image"
                                                 style="background-size: cover;width: 100%;height: 300px;object-fit: cover;border-radius: 10px;"
                                                 src="https://metro.co.uk/wp-content/uploads/2022/12/GettyImages-1450072343.jpg?quality=90&strip=all&w=1024&h=630&crop=1"
                                                 alt="Slide 3" />

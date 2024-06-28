@@ -11,7 +11,7 @@
     <meta property="og:type" content="article" />
     <meta property="og:title" content="" />
     <meta property="og:url" content="" />
-    <meta property="og:site_name" content="Go-QR | Admin Panel" />
+    <meta property="og:site_name" content="GoFlixza || Admin Dashboard" />
     <link rel="shortcut icon" href="https://i.ibb.co/BNBTVN4/logo.png" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
     <link href="{{ asset('admin/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet"
@@ -25,7 +25,7 @@
     <link href="{{ asset('admin/assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"
         type="text/css" />
     @props(['title'])
-    <title>{{ $title ?? config('app.name', 'Go QR') }}</title>
+    <title>{{ $title ?? config('app.name', 'GoFlixza') }} || 'Your Hub for QR, Bar Codes, NFC V.Cards'</title>
 </head>
 
 <body id="kt_body"

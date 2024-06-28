@@ -52,7 +52,7 @@
                                 <div class="stepper-line h-40px"></div>
                             </div>
 
-                            <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
+                            {{-- <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
                                 data-kt-stepper-action="step">
                                 <div class="stepper-wrapper d-flex align-items-center">
                                     <div class="stepper-icon w-40px h-40px me-2">
@@ -76,14 +76,14 @@
                                         <h3 class="stepper-title mb-0 pe-3">Card Customize</h3>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
                                 data-kt-stepper-action="step">
                                 <div class="stepper-wrapper d-flex align-items-center">
                                     <div class="stepper-icon w-40px h-40px me-2">
                                         <i class="stepper-check fas fa-check"></i>
-                                        <span class="stepper-number">6</span>
+                                        <span class="stepper-number">4</span>
                                     </div>
                                     <div class="stepper-label">
                                         <h3 class="stepper-title mb-0 pe-3">Generate</h3>
@@ -134,7 +134,7 @@
                                     </div>
                                 </div>
 
-                                <div class="flex-column " data-kt-stepper-element="content">
+                                {{-- <div class="flex-column " data-kt-stepper-element="content">
                                     <div class="card flex-grow-1 rounded-0">
                                         <div class="text-center justify-content-center pt-10">
                                             <h2 class="text-center mb-0">Choose Virtual Card Template! <span
@@ -145,9 +145,9 @@
                                             @include('user.pages.nfc-card.partials.virtualCard')
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
 
-                                <div class="flex-column" data-kt-stepper-element="content">
+                                {{-- <div class="flex-column" data-kt-stepper-element="content">
                                     <div class="card flex-grow-1 rounded-0">
                                         <div class="text-center justify-content-center pt-10">
                                             <h2 class="text-center mb-0">Customize Your Virtual Card As Need!</h2>
@@ -157,7 +157,7 @@
                                             @include('user.pages.nfc-card.partials.virtualCardCustomization')
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <div class="flex-column" data-kt-stepper-element="content">
                                     <div class="card flex-grow-1 rounded-0">
@@ -168,10 +168,10 @@
                                                 </p>
                                             </div>
                                         </div>
-                                        <div
+                                        {{-- <div
                                             class="centered-card-body card-body d-flex flex-column justify-content-between mb-10 pt-0">
                                             @include('user.pages.nfc-card.partials.virtualCardBilling')
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
@@ -222,7 +222,7 @@
             </div>
         </div>
     </div>
- 
+
     @push('scripts')
         <script>
             $(document).ready(function() {

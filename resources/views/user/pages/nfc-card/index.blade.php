@@ -55,12 +55,11 @@
                         <thead>
                             <tr class="text-gray-500 fw-bold fs-7 text-uppercase">
                                 <th width="5%">SL</th>
-                                <th width="10%">Image</th>
-                                <th width="10%">Virtual Card</th>
+                                <th width="20%">Image</th>
+                                {{-- <th width="10%">Virtual Card</th> --}}
                                 <th width="25%">Name </th>
-                                <th width="10%">Link</th>
-                                <th width="10%">VCARD</th>
-                                <th width="15%">Address</th>
+                                <th width="15%">Link</th>
+                                <th width="15%">QR</th>
                                 <th width="15%" class="text-center">Action</th>
                             </tr>
                         </thead>
@@ -72,74 +71,71 @@
                                     </td>
                                     <td>
                                         @if ($nfc_card->nfc_template == 'template-one')
-                                            <img class="img-fluid w-50px"
+                                            <img class="img-fluid w-100px"
                                                 src="{{ asset('frontend/assets/images/nfc-templates/template_one.jpg') }}"
                                                 alt="">
                                         @elseif ($nfc_card->nfc_template == 'template-two')
-                                            <img class="img-fluid w-50px"
+                                            <img class="img-fluid w-100px"
                                                 src="{{ asset('frontend/assets/images/nfc-templates/template_two.jpg') }}"
                                                 alt="">
                                         @elseif ($nfc_card->nfc_template == 'template-three')
-                                            <img class="img-fluid w-50px"
+                                            <img class="img-fluid w-100px"
                                                 src="{{ asset('frontend/assets/images/nfc-templates/template_three.jpg') }}"
                                                 alt="">
                                         @elseif ($nfc_card->nfc_template == 'template-four')
-                                            <img class="img-fluid w-50px"
+                                            <img class="img-fluid w-100px"
                                                 src="{{ asset('frontend/assets/images/nfc-templates/template_four.jpg') }}"
                                                 alt="">
                                         @elseif ($nfc_card->nfc_template == 'template-five')
-                                            <img class="img-fluid w-50px"
+                                            <img class="img-fluid w-100px"
                                                 src="{{ asset('frontend/assets/images/nfc-templates/template_five.jpg') }}"
                                                 alt="">
                                         @elseif ($nfc_card->nfc_template == 'template-six')
-                                            <img class="img-fluid w-50px"
+                                            <img class="img-fluid w-100px"
                                                 src="{{ asset('frontend/assets/images/nfc-templates/template_six.jpg') }}"
                                                 alt="">
                                         @endif
                                     </td>
-                                    <td>
+                                    {{-- <td>
                                         @if (optional($nfc_card->virtualCard)->virtual_card_template == 'virtual-card-one')
-                                            <img class="img-fluid w-50px"
+                                            <img class="img-fluid w-100px"
                                                 src="{{ asset('frontend/images/virtual_card/virtual_card_1.png') }}"
                                                 alt="">
                                         @elseif (optional($nfc_card->virtualCard)->virtual_card_template == 'virtual-card-two')
-                                            <img class="img-fluid w-50px"
+                                            <img class="img-fluid w-100px"
                                                 src="{{ asset('frontend/images/virtual_card/virtual_card_2.png') }}"
                                                 alt="">
                                         @elseif (optional($nfc_card->virtualCard)->virtual_card_template == 'virtual-card-three')
-                                            <img class="img-fluid w-50px"
+                                            <img class="img-fluid w-100px"
                                                 src="{{ asset('frontend/images/virtual_card/virtual_card_3.png') }}"
                                                 alt="">
                                         @elseif (optional($nfc_card->virtualCard)->virtual_card_template == 'virtual-card-four')
-                                            <img class="img-fluid w-50px"
+                                            <img class="img-fluid w-100px"
                                                 src="{{ asset('frontend/images/virtual_card/virtual_card_4.png') }}"
                                                 alt="">
                                         @elseif (optional($nfc_card->virtualCard)->virtual_card_template == 'virtual-card-five')
-                                            <img class="img-fluid w-50px"
+                                            <img class="img-fluid w-100px"
                                                 src="{{ asset('frontend/images/virtual_card/virtual_card_5.png') }}"
                                                 alt="">
                                         @elseif (optional($nfc_card->virtualCard)->virtual_card_template == 'virtual-card-six')
-                                            <img class="img-fluid w-50px"
+                                            <img class="img-fluid w-100px"
                                                 src="{{ asset('frontend/images/virtual_card/virtual_card_6.png') }}"
                                                 alt="">
                                         @elseif (optional($nfc_card->virtualCard)->virtual_card_template == 'virtual-card-seven')
-                                            <img class="img-fluid w-50px"
+                                            <img class="img-fluid w-100px"
                                                 src="{{ asset('frontend/images/virtual_card/virtual_card_7.png') }}"
                                                 alt="">
                                         @elseif (optional($nfc_card->virtualCard)->virtual_card_template == 'virtual-card-eight')
-                                            <img class="img-fluid w-50px"
+                                            <img class="img-fluid w-100px"
                                                 src="{{ asset('frontend/images/virtual_card/virtual_card_8.png') }}"
                                                 alt="">
                                         @endif
-                                    </td>
+                                    </td> --}}
                                     <td>
                                         <div class="text-success">{{ optional($nfc_card->nfcData)->first_name }}
                                             {{ optional($nfc_card->nfcData)->last_name }}
                                         </div>
                                     </td>
-                                    {{-- <td>
-                                        <button class="btn btn-light-primary">94</button>
-                                    </td> --}}
                                     <td>
                                         <a href="{{ $nfc_card->nfc_url }}" target="_blank" class="text-primary">
                                             <button class="btn btn-sm btn-info">NFC <i
@@ -151,17 +147,17 @@
                                             data-bs-target="#virtual_card_modal_{{ $nfc_card->id }}"
                                             class="text-primary">
                                             <button class="btn btn-sm btn-info"><i class="fas fa-eye pe-2"></i>
-                                                CARD</button>
+                                                QR</button>
                                         </a>
                                     </td>
-                                    <td>
+                                    {{-- <td>
                                         <a href="javascript:void(0)" data-bs-toggle="modal"
                                             data-bs-target="#shipping_address_modal_{{ $nfc_card->id }}"
                                             class="text-primary">
                                             <button class="btn btn-sm btn-info"><i class="fas fa-eye pe-2"></i>
                                                 Shipping</button>
                                         </a>
-                                    </td>
+                                    </td> --}}
                                     <td class="pe-0 text-center">
                                         <a href="#" class="btn btn-light-primary btn-active-light-primary btn-sm"
                                             data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end"
@@ -426,8 +422,20 @@
                             }
                         </style>
                         <div class="card">
-                            <div>
-                                @if (optional($nfc_card->virtualCard)->virtual_card_template == 'virtual-card-one')
+                            <div class="row">
+                                <div class="col-lg-12 text-center">
+                                    <img class="img-fluid" src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
+                                        alt="" />
+                                </div>
+                                <div class="col-lg-12">
+                                    <h5 class="text-center fw-bold"><a
+                                            href="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
+                                            class="menu-link px-3" download>
+                                            Download
+                                        </a>
+                                    </h5>
+                                </div>
+                                {{-- @if (optional($nfc_card->virtualCard)->virtual_card_template == 'virtual-card-one')
                                     <div class="row mt-5">
                                         <div class="col-12">
                                             <!-- Visiting Card Box Container -->
@@ -747,9 +755,7 @@
                                                                         class="card_address">{{ optional($nfc_card->virtualCard)->card_address }}</span>
                                                                     <i class="fas fa-map-marker-alt"></i>
                                                                 </p>
-                                                                {{-- <p class="fw-bold mb-0" style="color: #D19A26">
-                                                                -Downtown Dubia-Dubai- United Arab Emirates
-                                                            </p> --}}
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -880,9 +886,7 @@
                                                                     <span
                                                                         class="card_address">{{ optional($nfc_card->virtualCard)->card_address }}</span>
                                                                 </p>
-                                                                {{-- <p class="fw-bold mb-0 text-white">
-                                                                -Downtown Dubia-Dubai- United Arab Emirates
-                                                            </p> --}}
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -950,9 +954,7 @@
                                                                     <span
                                                                         class="card_address">{{ optional($nfc_card->virtualCard)->card_address }}</span>
                                                                 </p>
-                                                                {{-- <p class="fw-bold mb-0 text-white">
-                                                            -Downtown Dubia-Dubai- United Arab Emirates
-                                                        </p> --}}
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -968,7 +970,7 @@
                                             <!-- Visiting Card Box Container End-->
                                         </div>
                                     </div>
-                                @endif
+                                @endif --}}
                             </div>
                         </div>
                     </div>
