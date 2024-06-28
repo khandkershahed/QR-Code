@@ -76,6 +76,8 @@
             </svg>
         </span>
     </div>
+
+    @include('user.layouts.modal')
     @php
         $hostUrl = 'admin/assets/';
     @endphp
@@ -101,7 +103,7 @@
     {{-- <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/qr-stepper.js') }}"></script> --}}
 
 
-{{--
+    {{--
     <script src="{{ asset($hostUrl . 'js/custom/apps/chat/chat.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/upgrade-plan.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/create-app.js') }}"></script>
@@ -166,7 +168,7 @@
         });
     </script>
     <script>
-         $(document).ready(function() {
+        $(document).ready(function() {
             $(".slick-slider").slick({
                 slidesToShow: 1,
                 slidesToScroll: 1,
@@ -176,6 +178,17 @@
             });
         });
     </script>
+    @if (isset($showLimitExceededModal) && $showLimitExceededModal)
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var myModal = new bootstrap.Modal(document.getElementById('toastr_modal'), {
+                    backdrop: 'static',
+                    keyboard: false
+                });
+                myModal.show();
+            });
+        </script>
+    @endif
 
 </body>
 

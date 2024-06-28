@@ -4,7 +4,7 @@
 </button>
 
 {{-- Modal --}}
-<div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
+<div class="modal fade" id="toastr_modal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
     aria-labelledby="modalTitleId" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-md" role="document">
         <div class="modal-content">
