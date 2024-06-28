@@ -15,9 +15,7 @@ use App\Models\Admin\Plan;
             </div>
             <div class="modal-body">
                 <div>
-                    <h4 class="text-center pb-3">Please Upgrade To Ultima Plan Or Adove to Avail Witelabeled
-                        Merchandise
-                        Feature</h4>
+                    <h4 class="text-center pb-3">V.Card & NFC Card require a subscription plan. Subscribe now to get started!</h4>
                 </div>
                 <div>
                     <div data-kt-buttons="true">
@@ -27,7 +25,7 @@ use App\Models\Admin\Plan;
                                     class=" btn btn-outline btn-outline-dashed btn-active-light-info d-flex flex-stack text-start p-6 mb-5">
                                     <div class="d-flex align-items-center me-2">
                                         <div class="form-check form-check-custom form-check-solid form-check-info me-6">
-                                            
+
                                         </div>
 
                                         <div class="flex-grow-1">
@@ -70,9 +68,7 @@ use App\Models\Admin\Plan;
             </div>
             <div class="modal-body">
                 <div>
-                    <h4 class="text-center pb-3">Please Upgrade To Ultima Plan Or Adove to Avail Witelabeled
-                        Merchandise
-                        Feature</h4>
+                    <h4 class="text-center pb-3">QR Code require a subscription plan. Subscribe now to get started!</h4>
                 </div>
                 <div>
                     <div data-kt-buttons="true">
