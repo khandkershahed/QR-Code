@@ -55,9 +55,10 @@
                         <thead>
                             <tr class="text-gray-500 fw-bold fs-7 text-uppercase">
                                 <th width="5%">SL</th>
-                                <th width="20%">Image</th>
+                                <th width="15%">Image</th>
                                 {{-- <th width="10%">Virtual Card</th> --}}
-                                <th width="25%">Name </th>
+                                <th width="15%">Name </th>
+                                <th width="15%">Card </th>
                                 <th width="13%">Link</th>
                                 <th width="12%">QR</th>
                                 <th width="15%">Create Date</th>
@@ -135,6 +136,11 @@
                                     <td>
                                         <div class="text-success">{{ optional($nfc_card->nfcData)->first_name }}
                                             {{ optional($nfc_card->nfcData)->last_name }}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-info">
+                                            Card-{{ $nfc_card->id}}
                                         </div>
                                     </td>
                                     <td>
