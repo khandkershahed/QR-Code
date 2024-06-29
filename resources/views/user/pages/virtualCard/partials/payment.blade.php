@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row p-5 bg-light">
-        <div class="col-lg-6">
+        {{-- <div class="col-lg-6">
             <div class="fv-row my-3">
                 <x-metronic.label for="customer_name" class="form-label ">
                     {{ __('Card Holder Name') }}</x-metronic.label>
@@ -23,7 +23,7 @@
                 <div id="card-element" class="border p-4 rounded-2 bg-white"></div>
                 <div id="card-errors" role="alert"></div>
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>
 
