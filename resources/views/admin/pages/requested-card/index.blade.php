@@ -835,7 +835,7 @@
                                                         <div class="">
                                                             <div class="d-flex justify-content-center">
                                                                 <img width="70px"
-                                                                    src="https://i.ibb.co/F73Txnj/images-removebg-preview.png"
+                                                                    src="{{ asset('frontend/images/nfc_icon.png') }}"
                                                                     alt="" />
                                                             </div>
                                                             <h1 class="fw-bold text-white" style="font-size: 4rem">
