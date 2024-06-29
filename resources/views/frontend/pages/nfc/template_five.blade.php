@@ -179,7 +179,7 @@
 
                                 <div class="card-body p-0 tem-one-about-content">
                                     <div class="w-100">
-                                        <div class="row align-items-center gx-0" style="background-color: #1f1f1f">
+                                        <div class="row align-items-center gx-0" style="background-color: {{ $nfc_card->background_color  }};color: {{ $nfc_card->title_color  }};">
                                             <div class="col-lg-4">
                                                 <div class="text-center text-lg-end mobile-images-profile"
                                                     style="margin-top: -70px; position: relative">
@@ -423,7 +423,7 @@
                                                     @if (!empty($nfc_card->nfcData->company_title))
                                                         <div>
                                                             <p
-                                                                class="bg-black text-white w-25 text-center rounded-2 py-2 mb-0">
+                                                                class="bg-black text-white w-50 w-lg-25 text-center rounded-2 py-2 mb-0">
                                                                 {{ optional($nfc_card->nfcData)->company_title }}
                                                             </p>
                                                             <div
