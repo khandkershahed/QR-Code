@@ -883,16 +883,13 @@
                                                                     <span
                                                                         class="card_address">{{ optional($nfc_card->virtualCard)->card_address }}</span>
                                                                 </p>
-                                                                {{-- <p class="fw-bold mb-0 text-white">
-                                                            -Downtown Dubia-Dubai- United Arab Emirates
-                                                        </p> --}}
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4">
                                                         <div>
                                                             <img class="imf-fluid" width="150px"
-                                                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUekbZzzImwhQynw7gd6r8qv6CzwOspNnzPg&amp;s"
+                                                                src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
                                                                 alt="" />
                                                         </div>
                                                     </div>

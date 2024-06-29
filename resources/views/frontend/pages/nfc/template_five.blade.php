@@ -529,7 +529,7 @@
                                                         style="background-color: black;height: 3px;margin-top: -20px;">
                                                     </div>
                                                 </div>
-                                                <div class="pt-4">
+                                                <div class="p-2 pt-4">
                                                     <form action="{{ route('individual-message.store') }}"
                                                         method="post">
                                                         @csrf
