@@ -375,7 +375,7 @@
                                                             alt="banner" />
                                                     </div>
                                                     <div>
-                                                        <div class="" style="width: 50%; margin: auto">
+                                                        <div class="" style="width: 90%; margin: auto">
                                                             <div class="card border-0"
                                                                 style="box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);">
                                                                 <div class="card-body">
