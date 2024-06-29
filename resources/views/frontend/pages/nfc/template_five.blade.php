@@ -217,28 +217,28 @@
                                                         @if (!empty($nfc_card->nfcData->facebook_url))
                                                             <a href="{{ optional($nfc_card->nfcData)->facebook_url }}"
                                                                 class="fa fa-facebook facebook_url icon fa-2x"
-                                                                style="text-decoration: none;width: 20%;color: #1c344f;">
+                                                                style="text-decoration: none;width: 20%;color: {{ $nfc_card->title_color  }};">
                                                                 {{-- <i class="fab fa-facebook facebook-icon icon fa-2x" title="Facebook"></i> --}}
                                                             </a>
                                                         @endif
                                                         @if (!empty($nfc_card->nfcData->instagram_url))
                                                             <a href="{{ optional($nfc_card->nfcData)->instagram_url }}"
                                                                 class="fa fa-instagram instagram_url icon fa-2x"
-                                                                style="text-decoration: none;width: 20%;color: #1c344f;">
+                                                                style="text-decoration: none;width: 20%;color: {{ $nfc_card->title_color  }};">
                                                                 {{-- <i class="fab fa-facebook facebook-icon icon fa-2x" title="Facebook"></i> --}}
                                                             </a>
                                                         @endif
                                                         @if (!empty($nfc_card->nfcData->youtube_url))
                                                             <a href="{{ optional($nfc_card->nfcData)->youtube_url }}"
                                                                 class="fa fa-youtube youtube_url icon fa-2x"
-                                                                style="text-decoration: none;width: 20%;color: #1c344f;">
+                                                                style="text-decoration: none;width: 20%;color: {{ $nfc_card->title_color  }};">
                                                                 {{-- <i class="fab fa-facebook facebook-icon icon fa-2x" title="Facebook"></i> --}}
                                                             </a>
                                                         @endif
                                                         @if (!empty($nfc_card->nfcData->google_plus_url))
                                                             <a href="{{ optional($nfc_card->nfcData)->google_plus_url }}"
                                                                 class="fa fa-google google_plus_url icon fa-2x"
-                                                                style="text-decoration: none;width: 20%;color: #1c344f;">
+                                                                style="text-decoration: none;width: 20%;color: {{ $nfc_card->title_color  }};">
                                                                 {{-- <i class="fab fa-facebook facebook-icon icon fa-2x" title="Facebook"></i> --}}
                                                             </a>
                                                         @endif
@@ -478,7 +478,7 @@
                                                 @if (!empty($nfc_card->nfcData->service_section_title))
                                                     <div class="pt-4">
                                                         <p
-                                                            class="bg-black text-white w-25 text-center rounded-2 py-2 mb-0 service_section_title">
+                                                            class="bg-black text-white w-50 w-lg-25 text-center rounded-2 py-2 mb-0 service_section_title">
                                                             {{ $nfc_card->nfcData->service_section_title }}
                                                         </p>
                                                         <div class=""
