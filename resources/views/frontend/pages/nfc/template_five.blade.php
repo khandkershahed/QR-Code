@@ -179,7 +179,7 @@
 
                                 <div class="card-body p-0 tem-one-about-content">
                                     <div class="w-100">
-                                        <div class="row align-items-center gx-0" style="background-color: {{ $nfc_card->background_color  }};color: {{ $nfc_card->title_color  }};">
+                                        <div class="row align-items-center gx-0" style="background-color: {{ $nfc_card->background_color  }};">
                                             <div class="col-lg-4">
                                                 <div class="text-center text-lg-end mobile-images-profile"
                                                     style="margin-top: -70px; position: relative">
