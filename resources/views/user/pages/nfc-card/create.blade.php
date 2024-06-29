@@ -305,7 +305,7 @@
                 $("." + initiallySelectedValue).show();
 
 
-                $('#kt_modal_create_app_stepper_form input:not([type="radio"]), #kt_modal_create_app_stepper_form textarea, #kt_modal_create_app_stepper_form input:not([type="color"])')
+                $('#kt_modal_create_app_form input:not([type="radio"]), #kt_modal_create_app_form textarea, #kt_modal_create_app_form input:not([type="color"])')
                     .on('keyup change', function() {
                         // Extract input value and name
                         var inputValue = $(this).val();
