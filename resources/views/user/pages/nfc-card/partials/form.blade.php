@@ -7,8 +7,7 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card-body row">
-            <ul class="nav nav-pills nav-pills-custom  col-lg-12 ps-4"
-                role="tablist">
+            <ul class="nav nav-pills nav-pills-custom  col-lg-12 ps-4" role="tablist">
                 <li class="nav-item mx-0 p-0" role="presentation">
                     <a class="nav-link d-flex justify-content-center w-100 border-0 h-100 active" data-bs-toggle="pill"
                         href="#kt_list_widget_10_tab_1" aria-selected="true" role="tab">
@@ -105,17 +104,15 @@
                         <div class="col-lg-4">
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2 required">First Name</x-metronic.label>
-                                <x-metronic.input type="text" name="first_name" value="{{ old('first_name') }}"
-                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Robert"
-                                     />
+                                <x-metronic.input type="text"  name="name" value="{{ old('first_name') }}"
+                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Robert" />
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Last Name</x-metronic.label>
                                 <x-metronic.input type="text" name="last_name" value="{{ old('last_name') }}"
-                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Bruno"
-                                     />
+                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Bruno" />
                             </div>
                         </div>
                         <div class="col-lg-4">
@@ -123,58 +120,59 @@
                                 <x-metronic.label class="fw-semibold fs-6 mb-2 required">Designation</x-metronic.label>
                                 <x-metronic.input type="text" name="designation" value="{{ old('designation') }}"
                                     class="form-control form-control-solid mb-3 mb-lg-0"
-                                    placeholder="Business Owner"  />
+                                    placeholder="Business Owner" />
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Phone Work</x-metronic.label>
                                 <x-metronic.input type="text" name="phone_work" value="{{ old('phone_work') }}"
-                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="01*******"
-                                     />
+                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="01*******" />
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Phone
                                     Personal</x-metronic.label>
-                                <x-metronic.input type="text" name="phone_personal" value="{{ old('phone_personal') }}"
-                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="01*******"
-                                     />
+                                <x-metronic.input type="text" name="phone_personal"
+                                    value="{{ old('phone_personal') }}"
+                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="01*******" />
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Email Work</x-metronic.label>
                                 <x-metronic.input type="email" name="email_work" value="{{ old('email_work') }}"
-                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="work@mail.com"
-                                     />
+                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                    placeholder="work@mail.com" />
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Email
                                     Personal</x-metronic.label>
-                                <x-metronic.input type="email" name="email_personal" value="{{ old('email_personal') }}"
+                                <x-metronic.input type="email" name="email_personal"
+                                    value="{{ old('email_personal') }}"
                                     class="form-control form-control-solid mb-3 mb-lg-0"
-                                    placeholder="personal@mail.com"  />
+                                    placeholder="personal@mail.com" />
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="fv-row my-3">
                                 <x-metronic.label
                                     class="fw-semibold fs-6 mb-2 required">House/Road/City</x-metronic.label>
-                                <x-metronic.input type="text" name="address_line_one" value="{{ old('address_line_one') }}"
-                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="New York City"
-                                     />
+                                <x-metronic.input type="text" name="address_line_one"
+                                    value="{{ old('address_line_one') }}"
+                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                    placeholder="New York City" />
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">State/Country</x-metronic.label>
-                                <x-metronic.input type="text" name="address_line_two" value="{{ old('address_line_two') }}"
-                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="USA"
-                                     />
+                                <x-metronic.input type="text" name="address_line_two"
+                                    value="{{ old('address_line_two') }}"
+                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="USA" />
                             </div>
                         </div>
                     </div>
@@ -186,15 +184,14 @@
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Bio Title</x-metronic.label>
                                 <x-metronic.input type="text" name="bio_title" value="{{ old('bio_title') }}"
-                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="BIO"
-                                     />
+                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="BIO" />
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Bio Description</x-metronic.label>
-                                <textarea class="form-control form-control-solid" rows="5" name="bio_description" value="{{ old('bio_description') }}"
-                                    placeholder="Enter Description"></textarea>
+                                <textarea class="form-control form-control-solid" rows="5" name="bio_description"
+                                    value="{{ old('bio_description') }}" placeholder="Enter Description"></textarea>
                             </div>
                         </div>
                     </div>
@@ -205,9 +202,9 @@
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Service Section
                                     Title</x-metronic.label>
-                                <x-metronic.input type="text" name="service_section_title" value="{{ old('service_section_title') }}"
-                                    class="form-control form-control-outline mb-3 mb-lg-0" placeholder="Service"
-                                     />
+                                <x-metronic.input type="text" name="service_section_title"
+                                    value="{{ old('service_section_title') }}"
+                                    class="form-control form-control-outline mb-3 mb-lg-0" placeholder="Service" />
                             </div>
                         </div>
 
@@ -215,8 +212,8 @@
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Service Section
                                     Description</x-metronic.label>
-                                <textarea class="form-control form-control-outline" rows="3" name="service_section_description" value="{{ old('service_section_description') }}"
-                                    placeholder="Enter Comment"></textarea>
+                                <textarea class="form-control form-control-outline" rows="3" name="service_section_description"
+                                    value="{{ old('service_section_description') }}" placeholder="Enter Comment"></textarea>
                             </div>
                         </div>
                         <div class="col-lg-12">
@@ -266,26 +263,28 @@
                                                 <div class="fv-row my-3">
                                                     <x-metronic.label class="fw-semibold fs-6 mb-2"> One
                                                         Title</x-metronic.label>
-                                                    <x-metronic.input type="text" name="service_one_title" value="{{ old('service_one_title') }}"
+                                                    <x-metronic.input type="text" name="service_one_title"
+                                                        value="{{ old('service_one_title') }}"
                                                         class="form-control form-control-solid mb-3 mb-lg-0"
-                                                        placeholder="Web Developement"  />
+                                                        placeholder="Web Developement" />
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="fv-row my-3">
                                                     <x-metronic.label class="fw-semibold fs-6 mb-2"> One
                                                         Image</x-metronic.label>
-                                                    <x-metronic.input type="file" name="service_one_image" value="{{ old('service_one_image') }}"
+                                                    <x-metronic.input type="file" name="service_one_image"
+                                                        value="{{ old('service_one_image') }}"
                                                         class="form-control form-control-solid mb-3 mb-lg-0"
-                                                        placeholder="Web Developement"  />
+                                                        placeholder="Web Developement" />
                                                 </div>
                                             </div>
                                             <div class="col-lg-12">
                                                 <div class="fv-row my-3">
                                                     <x-metronic.label class="fw-semibold fs-6 mb-2"> One
                                                         Description</x-metronic.label>
-                                                    <textarea class="form-control form-control-solid" rows="3" name="service_one_description" value="{{ old('service_one_description') }}"
-                                                        placeholder="Enter Comment"></textarea>
+                                                    <textarea class="form-control form-control-solid" rows="3" name="service_one_description"
+                                                        value="{{ old('service_one_description') }}" placeholder="Enter Comment"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -297,26 +296,28 @@
                                                 <div class="fv-row my-3">
                                                     <x-metronic.label class="fw-semibold fs-6 mb-2"> Two
                                                         Title</x-metronic.label>
-                                                    <x-metronic.input type="text" name="service_two_title" value="{{ old('service_two_title') }}"
+                                                    <x-metronic.input type="text" name="service_two_title"
+                                                        value="{{ old('service_two_title') }}"
                                                         class="form-control form-control-solid mb-3 mb-lg-0"
-                                                        placeholder="Web Developement"  />
+                                                        placeholder="Web Developement" />
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="fv-row my-3">
                                                     <x-metronic.label class="fw-semibold fs-6 mb-2"> Two
                                                         Image</x-metronic.label>
-                                                    <x-metronic.input type="file" name="service_two_image" value="{{ old('service_two_image') }}"
+                                                    <x-metronic.input type="file" name="service_two_image"
+                                                        value="{{ old('service_two_image') }}"
                                                         class="form-control form-control-solid mb-3 mb-lg-0"
-                                                        placeholder="Web Developement"  />
+                                                        placeholder="Web Developement" />
                                                 </div>
                                             </div>
                                             <div class="col-lg-12">
                                                 <div class="fv-row my-3">
                                                     <x-metronic.label class="fw-semibold fs-6 mb-2"> Two
                                                         Description</x-metronic.label>
-                                                    <textarea class="form-control form-control-solid" rows="3" name="service_two_description" value="{{ old('service_two_description') }}"
-                                                        placeholder="Enter Comment"></textarea>
+                                                    <textarea class="form-control form-control-solid" rows="3" name="service_two_description"
+                                                        value="{{ old('service_two_description') }}" placeholder="Enter Comment"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -329,26 +330,28 @@
                                                 <div class="fv-row my-3">
                                                     <x-metronic.label class="fw-semibold fs-6 mb-2"> Three
                                                         Title</x-metronic.label>
-                                                    <x-metronic.input type="text" name="service_three_title" value="{{ old('service_three_title') }}"
+                                                    <x-metronic.input type="text" name="service_three_title"
+                                                        value="{{ old('service_three_title') }}"
                                                         class="form-control form-control-solid mb-3 mb-lg-0"
-                                                        placeholder="Web Developement"  />
+                                                        placeholder="Web Developement" />
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="fv-row my-3">
                                                     <x-metronic.label class="fw-semibold fs-6 mb-2"> Three
                                                         Image</x-metronic.label>
-                                                    <x-metronic.input type="file" name="service_three_image" value="{{ old('service_three_image') }}"
+                                                    <x-metronic.input type="file" name="service_three_image"
+                                                        value="{{ old('service_three_image') }}"
                                                         class="form-control form-control-solid mb-3 mb-lg-0"
-                                                        placeholder="Web Developement"  />
+                                                        placeholder="Web Developement" />
                                                 </div>
                                             </div>
                                             <div class="col-lg-12">
                                                 <div class="fv-row my-3">
                                                     <x-metronic.label class="fw-semibold fs-6 mb-2"> Three
                                                         Description</x-metronic.label>
-                                                    <textarea class="form-control form-control-solid" rows="3" name="service_three_description" value="{{ old('service_three_description') }}"
-                                                        placeholder="Enter Comment"></textarea>
+                                                    <textarea class="form-control form-control-solid" rows="3" name="service_three_description"
+                                                        value="{{ old('service_three_description') }}" placeholder="Enter Comment"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -363,68 +366,72 @@
                         <div class="col-lg-4">
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Company Title</x-metronic.label>
-                                <x-metronic.input type="text" name="company_title" value="{{ old('company_title') }}"
-                                    class="form-control form-control-solid   mb-3 mb-lg-0" placeholder="Company"
-                                     />
+                                <x-metronic.input type="text" name="company_title"
+                                    value="{{ old('company_title') }}"
+                                    class="form-control form-control-solid   mb-3 mb-lg-0" placeholder="Company" />
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Company Name</x-metronic.label>
-                                <x-metronic.input type="text" name="company_name" value="{{ old('company_name') }}"
-                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Your Company Name"
-                                     />
+                                <x-metronic.input type="text" name="company_name"
+                                    value="{{ old('company_name') }}"
+                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                    placeholder="Your Company Name" />
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Company About
                                     Title</x-metronic.label>
-                                <x-metronic.input type="text" name="company_about_title" value="{{ old('company_about_title') }}"
-                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="About"
-                                     />
+                                <x-metronic.input type="text" name="company_about_title"
+                                    value="{{ old('company_about_title') }}"
+                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="About" />
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">
                                     House/Road/City</x-metronic.label>
-                                <x-metronic.input type="text" name="company_address_line_one" value="{{ old('company_address_line_one') }}"
+                                <x-metronic.input type="text" name="company_address_line_one"
+                                    value="{{ old('company_address_line_one') }}"
                                     class="form-control form-control-solid mb-3 mb-lg-0"
-                                    placeholder="257/A, San-fca Calefornia,"  />
+                                    placeholder="257/A, San-fca Calefornia," />
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">
                                     State/Country</x-metronic.label>
-                                <x-metronic.input type="text" name="company_address_line_two" value="{{ old('company_address_line_two') }}"
-                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="USA"
-                                     />
+                                <x-metronic.input type="text" name="company_address_line_two"
+                                    value="{{ old('company_address_line_two') }}"
+                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="USA" />
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2"> Phone</x-metronic.label>
-                                <x-metronic.input type="text" name="company_phone" value="{{ old('company_phone') }}"
-                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Company Phone Number"
-                                     />
+                                <x-metronic.input type="text" name="company_phone"
+                                    value="{{ old('company_phone') }}"
+                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                    placeholder="Company Phone Number" />
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Company Email</x-metronic.label>
-                                <x-metronic.input type="email" name="company_email" value="{{ old('company_email') }}"
-                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="info@companyemail.com"
-                                     />
+                                <x-metronic.input type="email" name="company_email"
+                                    value="{{ old('company_email') }}"
+                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                    placeholder="info@companyemail.com" />
                             </div>
                         </div>
                         <div class="col-lg-12   ">
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Company About
                                     Description</x-metronic.label>
-                                <textarea class="form-control form-control-outline" rows="3" name="company_about_description" value="{{ old('company_about_description') }}"
-                                    placeholder="Enter Comment"></textarea>
+                                <textarea class="form-control form-control-outline" rows="3" name="company_about_description"
+                                    value="{{ old('company_about_description') }}" placeholder="Enter Comment"></textarea>
                             </div>
                         </div>
                     </div>
@@ -434,15 +441,16 @@
                         <div class="col-lg-4">
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Facebook URL</x-metronic.label>
-                                <x-metronic.input type="url" name="facebook_url" value="{{ old('facebook_url') }}"
-                                    class="form-control form-control-solid mb-3 mb-lg-0"
-                                    placeholder="Facebook URL" />
+                                <x-metronic.input type="url" name="facebook_url"
+                                    value="{{ old('facebook_url') }}"
+                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Facebook URL" />
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Instagram URL</x-metronic.label>
-                                <x-metronic.input type="url" name="instagram_url" value="{{ old('instagram_url') }}"
+                                <x-metronic.input type="url" name="instagram_url"
+                                    value="{{ old('instagram_url') }}"
                                     class="form-control form-control-solid mb-3 mb-lg-0"
                                     placeholder="Instagram URL" />
                             </div>
@@ -451,16 +459,14 @@
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Twitter URL</x-metronic.label>
                                 <x-metronic.input type="url" name="twitter_url" value="{{ old('twitter_url') }}"
-                                    class="form-control form-control-solid mb-3 mb-lg-0"
-                                    placeholder="Twitter URL" />
+                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Twitter URL" />
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Youtube URL</x-metronic.label>
                                 <x-metronic.input type="url" name="youtube_url" value="{{ old('youtube_url') }}"
-                                    class="form-control form-control-solid mb-3 mb-lg-0"
-                                    placeholder="Youtube URL" />
+                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Youtube URL" />
                             </div>
                         </div>
                         {{-- <div class="col-lg-4">
@@ -474,7 +480,8 @@
                         <div class="col-lg-4">
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Pinterest URL</x-metronic.label>
-                                <x-metronic.input type="url" name="pinterest_url" value="{{ old('pinterest_url') }}"
+                                <x-metronic.input type="url" name="pinterest_url"
+                                    value="{{ old('pinterest_url') }}"
                                     class="form-control form-control-solid mb-3 mb-lg-0"
                                     placeholder="Pinterest URL" />
                             </div>
@@ -482,15 +489,16 @@
                         <div class="col-lg-4">
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Linkedin URL</x-metronic.label>
-                                <x-metronic.input type="url" name="linkedin_url" value="{{ old('linkedin_url') }}"
-                                    class="form-control form-control-solid mb-3 mb-lg-0"
-                                    placeholder="Linkedin URL" />
+                                <x-metronic.input type="url" name="linkedin_url"
+                                    value="{{ old('linkedin_url') }}"
+                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Linkedin URL" />
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Google Plus URL</x-metronic.label>
-                                <x-metronic.input type="url" name="google_plus_url" value="{{ old('google_plus_url') }}"
+                                <x-metronic.input type="url" name="google_plus_url"
+                                    value="{{ old('google_plus_url') }}"
                                     class="form-control form-control-solid mb-3 mb-lg-0"
                                     placeholder="Google Plus URL" />
                             </div>
@@ -507,8 +515,7 @@
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Apple URL</x-metronic.label>
                                 <x-metronic.input type="url" name="apple_url" value="{{ old('apple_url') }}"
-                                    class="form-control form-control-solid mb-3 mb-lg-0"
-                                    placeholder="Apple URL" />
+                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Apple URL" />
                             </div>
                         </div>
                     </div>

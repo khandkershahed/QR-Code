@@ -1,7 +1,6 @@
 <x-app-layout :title="'NFC Card Create'">
     <div id="buttonDiv" class="d-flex flex-column justify-content-center align-items-center pt-15 fade fade-in">
         <h1>Welcome To Virtual Card World !</h1>
-
         <!-- Modal Body -->
         <p>Generate Your Virtual Card And Share With Others Securely!</p>
         <div>
@@ -11,7 +10,6 @@
                 class="fa-solid fa-arrow-right-long ps-4"></i>
         </button>
     </div>
-
     <div id="contentDiv" class="d-none fade">
         <h1 class="text-center mb-10 mt-5">Make Your NFC Profile!</h1>
         @if (session('error'))
@@ -22,12 +20,12 @@
         <div class="row g-2" id="columns-container">
             <div class="col-lg-8">
                 <div class="card" id="first-card">
-                    <div class="card-body custom-card-body overflow-auto p-0" id="kt_modal_create_app">
+                    <div class="card-body custom-card-body overflow-auto p-0">
                         <div class="stepper stepper-pills flex-grow-1 d-flex flex-column"
                             id="kt_modal_create_app_stepper">
-                            <div class="stepper-nav flex-center flex-wrap steaper-header">
+                            <div class="stepper-nav flex-center flex-wrap steaper-header py-2">
                                 <div class="stepper-item mx-3 my-4 p-0 current" data-kt-stepper-element="nav"
-                                    >
+                                    data-kt-stepper-action="step">
                                     <div class="stepper-wrapper d-flex align-items-center">
                                         <div class="stepper-icon w-40px h-40px me-2">
                                             <i class="stepper-check fas fa-check"></i>
@@ -41,7 +39,7 @@
                                 </div>
 
                                 <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
-                                    >
+                                    data-kt-stepper-action="step">
                                     <div class="stepper-wrapper d-flex align-items-center">
                                         <div class="stepper-icon w-40px h-40px me-2">
                                             <i class="stepper-check fas fa-check"></i>
@@ -55,7 +53,7 @@
                                 </div>
 
                                 <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
-                                    >
+                                    data-kt-stepper-action="step">
                                     <div class="stepper-wrapper d-flex align-items-center">
                                         <div class="stepper-icon w-40px h-40px me-2">
                                             <i class="stepper-check fas fa-check"></i>
@@ -69,7 +67,7 @@
                                 </div>
 
                                 {{-- <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
-                                >
+                                data-kt-stepper-action="step">
                                 <div class="stepper-wrapper d-flex align-items-center">
                                     <div class="stepper-icon w-40px h-40px me-2">
                                         <i class="stepper-check fas fa-check"></i>
@@ -80,9 +78,9 @@
                                     </div>
                                 </div>
                             </div>
-    
+
                             <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
-                                >
+                                data-kt-stepper-action="step">
                                 <div class="stepper-wrapper d-flex align-items-center">
                                     <div class="stepper-icon w-40px h-40px me-2">
                                         <i class="stepper-check fas fa-check"></i>
@@ -95,7 +93,7 @@
                             </div> --}}
 
                                 <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
-                                    >
+                                    data-kt-stepper-action="step">
                                     <div class="stepper-wrapper d-flex align-items-center">
                                         <div class="stepper-icon w-40px h-40px me-2">
                                             <i class="stepper-check fas fa-check"></i>
@@ -112,7 +110,6 @@
                                 id="kt_modal_create_app_form" action="{{ route('user.nfc-card.store') }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
-                                <input type="text" class="form-control form-control-lg form-control-solid" name="name" placeholder="" value="" />
                                 <div class="row">
                                     <div class="flex-column current" data-kt-stepper-element="content">
                                         <div class="col-lg-12">
@@ -121,7 +118,8 @@
                                                     <h2 class="text-center mb-0">Select a Dynamic NFC Card Template
                                                     </h2>
                                                     <p class="text-center mb-0">Modify content as needed, even after
-                                                        going live.</p>
+                                                        going
+                                                        live.</p>
                                                 </div>
                                                 <div
                                                     class="centered-card-body card-body d-flex flex-column justify-content-between mb-10">
@@ -220,6 +218,7 @@
                             </form>
                             <!-- End of Stepper content and form -->
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -243,8 +242,6 @@
             </div>
         </div>
     </div>
-
-
     @push('scripts')
         <script>
             document.addEventListener("DOMContentLoaded", function() {
@@ -288,8 +285,6 @@
                 } else {
                     $(".nfc-card").hide();
                 }
-
-
                 $('input[name="nfc_template"]').change(function() {
                     $(".nfc-card").hide();
                     var nfcTemplateValue = $('input[name="nfc_template"]:checked').val();
@@ -300,11 +295,8 @@
                         $(".nfc-card").hide();
                     }
                 });
-
                 var initiallySelectedValue = $('input[name="nfc_template"]:checked').val();
                 $("." + initiallySelectedValue).show();
-
-
                 $('#kt_modal_create_app_stepper_form input:not([type="radio"]), #kt_modal_create_app_stepper_form textarea, #kt_modal_create_app_stepper_form input:not([type="color"])')
                     .on('keyup change', function() {
                         // Extract input value and name
@@ -338,8 +330,6 @@
                         // For debugging
                         console.log("Input Name:", inputName, "Input Value:", inputValue);
                     });
-
-
             });
         </script>
 
