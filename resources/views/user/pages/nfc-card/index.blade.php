@@ -1,4 +1,4 @@
-<x-app-layout :title="'NFC Card List'">
+<x-app-layout :title="'V-Card List'">
 
     <div class="row">
         <div class="col-lg-12">
@@ -10,14 +10,14 @@
                 <div class="d-flex justify-content-between align-items-center w-100">
                     <div class="text-gray-700 fw-bold d-flex ">
                         @if (!empty($subscription->plan))
-                            <strong class=""> Total Created NFC: {{ $nfc_cards->count() }}|| NFC Limitation:
-                                {{ $subscription->plan->nfc }}|| NFC Remaining:
-                                {{ $subscription->plan->nfc - $nfc_cards->count() }}||Total Created NFC:
+                            <strong class=""> Total Created V-Card: {{ $nfc_cards->count() }}|| V-Card Limitation:
+                                {{ $subscription->plan->nfc }}|| V-Card Remaining:
+                                {{ $subscription->plan->nfc - $nfc_cards->count() }}||Total Created V-Card:
                                 {{ $nfc_cards->count() }}
                             </strong>
                         @else
-                            <strong class="">Total Created NFC: {{ $nfc_cards->count() }} ||
-                                QR Limitation: 10 (Trial Period)|| NFC Remaining:
+                            <strong class="">Total Created V-Card: {{ $nfc_cards->count() }} ||
+                                QR Limitation: 10 (Trial Period)|| V-Card Remaining:
                                 {{ 10 - $nfc_cards->count() }}</strong>
                         @endif
                     </div>
@@ -26,14 +26,14 @@
                             @if ($subscription->plan->nfc - $nfc_cards->count() > 0)
                                 <a href="{{ route('user.nfc-card.create') }}"
                                     class="btn btn-sm btn-primary rounded-2 me-3">
-                                    Create NFC Card
+                                    Create V-Card
                                 </a>
                             @endif
                         @else
                             @if (10 - $nfc_cards->count() > 0)
                                 <a href="{{ route('user.nfc-card.create') }}"
                                     class="btn btn-sm btn-primary rounded-2 me-3">
-                                    Create NFC Card
+                                    Create V-Card
                                 </a>
                             @endif
                         @endif
@@ -46,7 +46,7 @@
         <div class="col-lg-12 mt-10">
             <div class="card card-p-0 card-flush p-3 pt-0">
                 <div class="p-5 pb-2">
-                    <h4 class="mb-0">View and manage your NFC Cards</h4>
+                    <h4 class="mb-0">View and manage your V-Cards</h4>
                 </div>
                 <div class="card-body table-responsive">
                     <table
@@ -55,12 +55,14 @@
                         <thead>
                             <tr class="text-gray-500 fw-bold fs-7 text-uppercase">
                                 <th width="5%">SL</th>
-                                <th width="20%">Image</th>
+                                <th width="15%">Image</th>
                                 {{-- <th width="10%">Virtual Card</th> --}}
-                                <th width="25%">Name </th>
-                                <th width="15%">Link</th>
-                                <th width="15%">QR</th>
-                                <th width="15%" class="text-center">Action</th>
+                                <th width="15%">Name </th>
+                                <th width="15%">Card </th>
+                                <th width="13%">Link</th>
+                                <th width="12%">QR</th>
+                                <th width="15%">Create Date</th>
+                                <th width="10%" class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody class="fw-semibold text-gray-600">
@@ -137,8 +139,13 @@
                                         </div>
                                     </td>
                                     <td>
+                                        <div class="text-info">
+                                            Card-{{ $nfc_card->id}}
+                                        </div>
+                                    </td>
+                                    <td>
                                         <a href="{{ $nfc_card->nfc_url }}" target="_blank" class="text-primary">
-                                            <button class="btn btn-sm btn-info">NFC <i
+                                            <button class="btn btn-sm btn-info">V-Card <i
                                                     class="fas fa-link ps-2"></i></button>
                                         </a>
                                     </td>
@@ -149,6 +156,9 @@
                                             <button class="btn btn-sm btn-info"><i class="fas fa-eye pe-2"></i>
                                                 QR</button>
                                         </a>
+                                    </td>
+                                    <td>
+                                        {{ $nfc_card->created_at->format('d-M-y') }}
                                     </td>
                                     {{-- <td>
                                         <a href="javascript:void(0)" data-bs-toggle="modal"

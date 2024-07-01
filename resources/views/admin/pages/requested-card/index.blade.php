@@ -835,7 +835,7 @@
                                                         <div class="">
                                                             <div class="d-flex justify-content-center">
                                                                 <img width="70px"
-                                                                    src="https://i.ibb.co/F73Txnj/images-removebg-preview.png"
+                                                                    src="{{ asset('frontend/images/nfc_icon.png') }}"
                                                                     alt="" />
                                                             </div>
                                                             <h1 class="fw-bold text-white" style="font-size: 4rem">
@@ -883,16 +883,13 @@
                                                                     <span
                                                                         class="card_address">{{ optional($nfc_card->virtualCard)->card_address }}</span>
                                                                 </p>
-                                                                {{-- <p class="fw-bold mb-0 text-white">
-                                                            -Downtown Dubia-Dubai- United Arab Emirates
-                                                        </p> --}}
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4">
                                                         <div>
                                                             <img class="imf-fluid" width="150px"
-                                                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUekbZzzImwhQynw7gd6r8qv6CzwOspNnzPg&amp;s"
+                                                                src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
                                                                 alt="" />
                                                         </div>
                                                     </div>

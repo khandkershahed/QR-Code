@@ -76,6 +76,8 @@
             </svg>
         </span>
     </div>
+
+    @include('user.layouts.modal')
     @php
         $hostUrl = 'admin/assets/';
     @endphp
@@ -100,8 +102,7 @@
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/create-account.js') }}"></script>
 
 
-    <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/create-app.js') }}"></script>
-{{--
+    {{--
     <script src="{{ asset($hostUrl . 'js/custom/apps/chat/chat.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/upgrade-plan.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/offer-a-deal/type.js') }}"></script>
@@ -165,7 +166,7 @@
         });
     </script>
     <script>
-         $(document).ready(function() {
+        $(document).ready(function() {
             $(".slick-slider").slick({
                 slidesToShow: 1,
                 slidesToScroll: 1,
@@ -175,6 +176,28 @@
             });
         });
     </script>
+    @if (session('nfcExceededModal'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var myModal = new bootstrap.Modal(document.getElementById('toastr_nfc_modal'), {
+                    backdrop: 'static',
+                    keyboard: false
+                });
+                myModal.show();
+            });
+        </script>
+    @endif
+    @if (session('qrExceededModal'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var myModal = new bootstrap.Modal(document.getElementById('toastr_qr_modal'), {
+                    backdrop: 'static',
+                    keyboard: false
+                });
+                myModal.show();
+            });
+        </script>
+    @endif
 
 </body>
 

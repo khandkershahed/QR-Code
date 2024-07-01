@@ -1,4 +1,4 @@
-<x-app-layout :title="'NFC Card Create'">
+<x-app-layout :title="'V-Card Create'">
     <div id="buttonDiv" class="d-flex flex-column justify-content-center align-items-center pt-15 fade fade-in">
         <h1>Welcome To Virtual Card World !</h1>
         <!-- Modal Body -->
@@ -11,7 +11,7 @@
         </button>
     </div>
     <div id="contentDiv" class="d-none fade">
-        <h1 class="text-center mb-10 mt-5">Make Your NFC Profile!</h1>
+        <h1 class="text-center mb-10 mt-5">Make Your V-Card Profile!</h1>
         @if (session('error'))
             <div class="alert alert-danger">
                 {{ session('error') }}
@@ -115,7 +115,7 @@
                                         <div class="col-lg-12">
                                             <div class="card flex-grow-1 rounded-0">
                                                 <div class="my-5 mt-10">
-                                                    <h2 class="text-center mb-0">Select a Dynamic NFC Card Template
+                                                    <h2 class="text-center mb-0">Select a Dynamic V Card Template
                                                     </h2>
                                                     <p class="text-center mb-0">Modify content as needed, even after
                                                         going
@@ -141,7 +141,7 @@
                                     <div class="flex-column" data-kt-stepper-element="content">
                                         <div class="card flex-grow-1 rounded-0">
                                             <div class="text-center justify-content-center pt-10">
-                                                <h2 class="text-center mb-0">Choose NFC Card Design!</h2>
+                                                <h2 class="text-center mb-0">Choose V Card Design!</h2>
                                             </div>
                                             <div
                                                 class="centered-card-body card-body d-flex flex-column justify-content-between mb-10">
@@ -180,7 +180,7 @@
                                             <div class="card-header text-center border-0">
                                                 <div class="pt-15 pb-15 ps-5 w-100">
                                                     <h2 class="text-success">Congratulations!</h2>
-                                                    <p>Your NFC Profile is ready. Add Billing Address For NFC Card
+                                                    <p>Your V-Card Profile is ready. Add Billing Address For V-Card
                                                         Delivery!
                                                     </p>
                                                 </div>
@@ -297,7 +297,9 @@
                 });
                 var initiallySelectedValue = $('input[name="nfc_template"]:checked').val();
                 $("." + initiallySelectedValue).show();
-                $('#kt_modal_create_app_stepper_form input:not([type="radio"]), #kt_modal_create_app_stepper_form textarea, #kt_modal_create_app_stepper_form input:not([type="color"])')
+
+
+                $('#kt_modal_create_app_form input:not([type="radio"]), #kt_modal_create_app_form textarea, #kt_modal_create_app_form input:not([type="color"])')
                     .on('keyup change', function() {
                         // Extract input value and name
                         var inputValue = $(this).val();

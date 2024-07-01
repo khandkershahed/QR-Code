@@ -190,8 +190,8 @@
                         <div class="col-lg-12">
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Bio Description</x-metronic.label>
-                                <textarea class="form-control form-control-solid" rows="5" name="bio_description"
-                                    value="{{ old('bio_description') }}" placeholder="Enter Description"></textarea>
+                                <textarea class="form-control form-control-solid" rows="5" name="bio_description" value="{{ old('bio_description') }}"
+                                    placeholder="Enter Description">{{ old('bio_description') }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -212,8 +212,8 @@
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Service Section
                                     Description</x-metronic.label>
-                                <textarea class="form-control form-control-outline" rows="3" name="service_section_description"
-                                    value="{{ old('service_section_description') }}" placeholder="Enter Comment"></textarea>
+                                <textarea class="form-control form-control-outline" rows="3" name="service_section_description" value="{{ old('service_section_description') }}"
+                                    placeholder="Enter Comment">{{ old('service_section_description') }}</textarea>
                             </div>
                         </div>
                         <div class="col-lg-12">
@@ -283,8 +283,8 @@
                                                 <div class="fv-row my-3">
                                                     <x-metronic.label class="fw-semibold fs-6 mb-2"> One
                                                         Description</x-metronic.label>
-                                                    <textarea class="form-control form-control-solid" rows="3" name="service_one_description"
-                                                        value="{{ old('service_one_description') }}" placeholder="Enter Comment"></textarea>
+                                                    <textarea class="form-control form-control-solid" rows="3" name="service_one_description" value="{{ old('service_one_description') }}"
+                                                        placeholder="Enter Comment">{{ old('service_one_description') }}</textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -316,8 +316,8 @@
                                                 <div class="fv-row my-3">
                                                     <x-metronic.label class="fw-semibold fs-6 mb-2"> Two
                                                         Description</x-metronic.label>
-                                                    <textarea class="form-control form-control-solid" rows="3" name="service_two_description"
-                                                        value="{{ old('service_two_description') }}" placeholder="Enter Comment"></textarea>
+                                                    <textarea class="form-control form-control-solid" rows="3" name="service_two_description" value="{{ old('service_two_description') }}"
+                                                        placeholder="Enter Comment">{{ old('service_two_description') }}</textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -350,8 +350,8 @@
                                                 <div class="fv-row my-3">
                                                     <x-metronic.label class="fw-semibold fs-6 mb-2"> Three
                                                         Description</x-metronic.label>
-                                                    <textarea class="form-control form-control-solid" rows="3" name="service_three_description"
-                                                        value="{{ old('service_three_description') }}" placeholder="Enter Comment"></textarea>
+                                                    <textarea class="form-control form-control-solid" rows="3" name="service_three_description" value="{{ old('service_three_description') }}"
+                                                        placeholder="Enter Comment">{{ old('service_three_description') }}</textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -430,8 +430,8 @@
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Company About
                                     Description</x-metronic.label>
-                                <textarea class="form-control form-control-outline" rows="3" name="company_about_description"
-                                    value="{{ old('company_about_description') }}" placeholder="Enter Comment"></textarea>
+                                <textarea class="form-control form-control-outline" rows="3" name="company_about_description" value="{{ old('company_about_description') }}"
+                                    placeholder="Enter Comment">{{ old('company_about_description') }}</textarea>
                             </div>
                         </div>
                     </div>

@@ -100,7 +100,7 @@
 
                                                                             <span class="fs-7 fw-semibold opacity-50">/
                                                                                 <span
-                                                                                    data-kt-element="period">Mon</span>
+                                                                                    data-kt-element="period">Year</span>
                                                                             </span>
                                                                         </div>
                                                                     </div>

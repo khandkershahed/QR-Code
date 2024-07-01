@@ -1,70 +1,73 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
+<!--begin::Head-->
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="../../../">
+    @props(['title'])
+    <title>GoFlixza || Admin Dashboard</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="" />
+    <meta property="og:site_name" content="GoFlixza || Admin Dashboard" />
+    <link rel="shortcut icon" href="https://i.ibb.co/BNBTVN4/logo.png" />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+
+    <link href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('admin/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'GoFlixza || User Dashboard') }}</title>
-
-    <!-- Fonts -->
-    <link rel="shortcut icon" href="https://i.ibb.co/BNBTVN4/logo.png" />
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-    <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
-    <style>
-        .cascading-right {
-            margin-right: -50px;
-        }
-
-        @media (max-width: 991.98px) {
-            .cascading-right {
-                margin-right: 0;
-            }
-        }
-    </style>
-    <!-- Scripts -->
-    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 </head>
 
-<body class="font-sans text-gray-900 antialiased">
-    {{-- <div class="container">
-            <div class="d-flex justify-content-center align-items-center pt-6 pt-sm-0">
-                <div class="card">
-                    <div class="card-header">
-                        <a href="/">
-                            <x-application-logo class="w-25 h-25 fill-current text-gray-500" />
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        {{ $slot }}
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="min-h-screen d-flex flex-column justify-content-center align-items-center pt-6 pt-sm-0 bg-gray-100">
-            <div>
-                <a href="/">
-                    <x-application-logo class="w-25 h-25 fill-current text-gray-500" />
-                </a>
-            </div>
 
-            <div class="w-100 mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-                {{ $slot }}
-            </div>
-        </div> --}}
+<body id="kt_body" class="bg-body">
 
-    <!-- Section: Design Block -->
-    <section class="text-center text-lg-start">
-        <!-- Jumbotron -->
-        <div class="container py-4">
-            {{ $slot }}
-        </div>
-        <!-- Jumbotron -->
-    </section>
-    <!-- Section: Design Block -->
-    <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <div class="d-flex flex-column flex-root">
+        {{ $slot }}
+    </div>
+
+    <script>
+        var hostUrl = "assets/";
+    </script>
+    <script src="{{ asset('admin/assets/plugins/global/plugins.bundle.js') }}"></script>
+    <script src="{{ asset('admin/assets/js/scripts.bundle.js') }}"></script>
+    <script src="{{ asset('admin/assets/js/custom/authentication/sign-in/general.js') }}"></script>
+
+    <script src="https://kit.fontawesome.com/4cba8ce13c.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script>
+        document.querySelectorAll('.toggle-password').forEach(function(toggle) {
+            toggle.addEventListener('click', function() {
+                const passwordInput = this.closest('.position-relative').querySelector('input');
+                const isVisible = passwordInput.getAttribute('type') === 'text';
+                passwordInput.setAttribute('type', isVisible ? 'password' : 'text');
+                this.querySelector('.bi-eye').classList.toggle('d-none');
+                this.querySelector('.bi-eye-slash').classList.toggle('d-none');
+            });
+        });
+
+        $(document).ready(function() {
+            $(".slick-slider").slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                draggable: false,
+                autoplaySpeed: 2000, // Adjust autoplay speed in milliseconds
+            });
+        });
+    </script>
+    @stack('scripts')
 </body>
 
 </html>
