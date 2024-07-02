@@ -90,22 +90,22 @@ var KTCreateApp = (function () {
                 ),
                 n.push(
                     FormValidation.formValidation(o, {
-                        fields: {
-                            name: {
-                                validators: {
-                                    notEmpty: {
-                                        message: "App name is required",
-                                    },
-                                },
-                            },
-                            category: {
-                                validators: {
-                                    notEmpty: {
-                                        message: "Category is required",
-                                    },
-                                },
-                            },
-                        },
+                        // fields: {
+                        //     name: {
+                        //         validators: {
+                        //             notEmpty: {
+                        //                 message: "App name is required",
+                        //             },
+                        //         },
+                        //     },
+                        //     category: {
+                        //         validators: {
+                        //             notEmpty: {
+                        //                 message: "Category is required",
+                        //             },
+                        //         },
+                        //     },
+                        // },
                         plugins: {
                             trigger: new FormValidation.plugins.Trigger(),
                             bootstrap: new FormValidation.plugins.Bootstrap5({
