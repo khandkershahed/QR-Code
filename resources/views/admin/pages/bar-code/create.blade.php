@@ -1,5 +1,23 @@
 <x-admin-app-layout :title="'Bar Code Generate'">
     <style>
+        .equal-height1 {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            /* Adjust this value for desired gap */
+        }
+
+        .equal-height1>.col-lg-6 {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .equal-height1 .bg-white {
+            flex-grow: 1;
+        }
+
+
         .equal-height {
             display: flex;
             flex-wrap: wrap;
@@ -17,7 +35,8 @@
             flex-grow: 1;
         }
     </style>
-    <div id="buttonDiv" class="d-flex flex-column justify-content-center align-items-center fade fade-in" style="padding-top: 10rem">
+    <div id="buttonDiv" class="d-flex flex-column justify-content-center align-items-center fade fade-in"
+        style="padding-top: 10rem">
         <h1>Welcome To Barcode World !</h1>
         <!-- Modal Body -->
         <p>Generate Your Barcode Card And Use Them Securely!</p>
@@ -85,15 +104,14 @@
                     </div>
                 </div>
             </div>
-
             {{-- Toggler form --}}
             {{-- Single Barcode Info Upload --}}
             <div class="create-barcode-show" id="create-barcode-form" style="display: none;">
                 <div class="w-lg-75 w-100 mx-auto row">
                     <div class="col-lg-12">
-                        <div class="row equal-height" id="equal-height-row">
+                        <div class="row equal-height1" id="equal-height-row1">
                             <h2 class="text-center mt-10">Create New Barcode</h2>
-                            <div class="col-7 bg-white" id="first-column">
+                            <div class="col-6 bg-white" id="first-column1">
                                 <div class="">
                                     <div class="card">
                                         <div class="card-body">
@@ -288,7 +306,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col bg-white " id="second-column">
+                            <div class="col bg-white " id="second-column1">
                                 <div>
                                     <div class="card">
                                         <div class="card-body p-2 py-8">
@@ -529,8 +547,8 @@
             </div>
             {{--  --}}
             <div class="barcode-reader-form-show" id="barcode-reader-form" style="display: none;">
-                <div class="row">
-                    <div class="col-lg-8 offset-lg-2">
+                <div class="w-lg-75 w-100 mx-auto row">
+                    <div class="col-lg-12">
                         <div class="row equal-height" id="equal-height-row">
                             <h2 class="text-center mt-10">Barcode Reader</h2>
                             <div class="col-7 bg-white" id="first-column">
@@ -645,28 +663,6 @@
 
     @push('scripts')
         <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
-
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                const button = document.getElementById("hideOneClick");
-                const buttonDiv = document.getElementById("buttonDiv");
-                const contentDiv = document.getElementById("contentDiv");
-
-                button.addEventListener("click", function() {
-                    buttonDiv.classList.remove('fade-in');
-                    buttonDiv.classList.add('fade-out');
-
-                    setTimeout(() => {
-                        buttonDiv.classList.add('d-none');
-                        contentDiv.classList.remove('d-none');
-                        contentDiv.classList.remove('fade-out');
-                        contentDiv.classList.add('fade-in');
-                    }, 500); // Match this time with the transition duration in CSS
-                });
-            });
-        </script>
-
-
         {{-- Bar Code Patter Select --}}
         <script>
             document.getElementById('fileInput').addEventListener('change', function(event) {
@@ -772,9 +768,9 @@
         {{-- Fixed Column Height --}}
         <script>
             function setEqualHeight() {
-                const firstColumn = document.getElementById('first-column');
-                const secondColumn = document.getElementById('second-column');
-                const maxHeight = Math.max(firstColumn.clientHeight, secondColumn.clientHeight);
+                const firstColumn = document.getElementById('first-column1');
+                const secondColumn = document.getElementById('second-column1');
+                const maxHeight = Math.max(firstColumn.clientHeight, secondColumn.);
                 firstColumn.style.height = maxHeight + 'px';
                 secondColumn.style.height = maxHeight + 'px';
             }
@@ -904,6 +900,26 @@
 
                 // Initialize the form display based on the default selected radio button
                 handleFormVisibility();
+            });
+        </script>
+        {{-- Page Load --}}
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const button = document.getElementById("hideOneClick");
+                const buttonDiv = document.getElementById("buttonDiv");
+                const contentDiv = document.getElementById("contentDiv");
+
+                button.addEventListener("click", function() {
+                    buttonDiv.classList.remove('fade-in');
+                    buttonDiv.classList.add('fade-out');
+
+                    setTimeout(() => {
+                        buttonDiv.classList.add('d-none');
+                        contentDiv.classList.remove('d-none');
+                        contentDiv.classList.remove('fade-out');
+                        contentDiv.classList.add('fade-in');
+                    }, 500); // Match this time with the transition duration in CSS
+                });
             });
         </script>
     @endpush
