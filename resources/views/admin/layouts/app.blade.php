@@ -78,6 +78,7 @@
     <script src="{{ asset($hostUrl . 'js/custom/widgets.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/apps/chat/chat.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/create-account.js') }}"></script>
+    <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/create-app.js') }}"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <script src="{{ asset('admin/js/custom.js') }}"></script>

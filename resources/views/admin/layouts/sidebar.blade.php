@@ -498,7 +498,7 @@
     </div>
     <div class="aside-footer flex-column-auto pt-5 pb-7 px-5" id="kt_aside_footer">
         <form method="POST" action="{{ route('admin.logout') }}">
-            <a href="{{ route('admin.logout') }}" class="btn btn-custom btn-primary w-100"
+            <a href="{{ route('admin.logout') }}" class="btn text-white w-100" style="background-color: #1b1b28; "
                 onclick="event.preventDefault();
         this.closest('form').submit();">
                 <span class="btn-label">
