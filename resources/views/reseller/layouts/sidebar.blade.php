@@ -242,7 +242,7 @@
     <div class="aside-footer flex-column-auto pt-5 pb-7 px-5" id="kt_aside_footer">
         <form method="POST" action="{{ route('logout') }}">
             @csrf
-            <a href="{{ route('logout') }}" class="btn w-100 text-white" style="background-color: #1b1b28; "
+            <a href="{{ route('logout') }}" class="btn w-100 text-white" style="background-color: #7239e9; "
                 onclick="event.preventDefault();this.closest('form').submit();">
                 <span class="btn-label">
                     {{ __('Log Out') }}

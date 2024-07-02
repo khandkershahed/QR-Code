@@ -40918,6 +40918,7 @@ input[type="color" i] {
         .border-active
     ):not(.btn-flush):not(.btn-icon) {
     border: 0;
+    border-radius: 0px;
     padding: calc(0.75rem + 1px) calc(1.5rem + 1px);
 }
 
@@ -57395,7 +57396,7 @@ body {
     .menu-item:not(.here)
     .menu-link:hover:not(.disabled):not(.active):not(.here) {
     transition: color 0.2s ease, background-color 0.2s ease;
-    background-color: #1b1b28;
+    background-color: #7239e9;
     color: #fff;
 }
 
@@ -57486,7 +57487,7 @@ body {
 
 .aside-dark .menu .menu-item.here > .menu-link {
     transition: color 0.2s ease, background-color 0.2s ease;
-    background-color: #1b1b28;
+    background-color: #7239e9;
     color: #fff;
 }
 
@@ -57517,7 +57518,7 @@ body {
 
 .aside-dark .menu .menu-item.show > .menu-link {
     transition: color 0.2s ease, background-color 0.2s ease;
-    background-color: #1b1b28;
+    background-color: #7239e9;
     color: #fff;
 }
 
@@ -57548,7 +57549,7 @@ body {
 
 .aside-dark .menu .menu-item .menu-link.active {
     transition: color 0.2s ease, background-color 0.2s ease;
-    background-color: #1b1b28;
+    background-color: #7239e9;
     color: #fff;
 }
 
