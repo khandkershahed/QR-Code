@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('bar_codes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('set null');
+            $table->foreignId('admin_id')->nullable()->constrained('admins')->onDelete('set null');
+            $table->string('barcode_type')->nullable();
             $table->string('barcode_pattern')->nullable();
             $table->string('barcode_color')->nullable();
             $table->text('product_name')->nullable();
@@ -21,6 +24,7 @@ return new class extends Migration
             $table->string('per_page')->nullable();
             $table->string('barcode_width')->nullable();
             $table->string('barcode_height')->nullable();
+            $table->string('bulk_file')->nullable();
             $table->timestamps();
         });
     }
