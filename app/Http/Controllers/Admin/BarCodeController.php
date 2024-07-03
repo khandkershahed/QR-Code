@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\BarCode;
 use Illuminate\Http\Request;
 
 class BarCodeController extends Controller
@@ -12,7 +13,10 @@ class BarCodeController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'nfc_cards' => BarCode::latest('id')->get(),
+        ];
+        return view('admin.pages.bar-code.index',$data);
     }
 
     /**

@@ -144,6 +144,51 @@
                         </div>
                     </div>
                 </div>
+                <div data-kt-menu-trigger="click"
+                    class="menu-item {{ Route::is('admin.barcode.index', 'admin.barcode.create') ? 'here show' : '' }} menu-accordion">
+                    <span class="menu-link">
+                        <span class="menu-icon">
+                            <span class="svg-icon svg-icon-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    class="svg-icon svg-icon-2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <rect x="7" y="7" width="4" height="4" rx="1"
+                                        fill="currentColor" />
+                                    <rect x="13" y="7" width="4" height="4" rx="1"
+                                        fill="currentColor" />
+                                    <rect x="7" y="13" width="4" height="4" rx="1"
+                                        fill="currentColor" />
+                                    <rect x="13" y="13" width="4" height="4" rx="1"
+                                        fill="currentColor" />
+                                </svg>
+                            </span>
+                        </span>
+                        <span class="menu-title">Bar Code</span>
+                        <span class="menu-arrow"></span>
+                    </span>
+                    <div
+                        class="menu-sub menu-sub-accordion {{ Route::is('admin.barcode.index', 'admin.barcode.create') ? 'menu-active-bg' : '' }}">
+                        <div class="menu-item">
+                            <a class="menu-link {{ Route::is('admin.barcode.create') ? 'active' : '' }}"
+                                href="{{ route('admin.barcode.create') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Bar Code Create</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link {{ Route::is('admin.barcode.index') ? 'active' : '' }}"
+                                href="{{ route('admin.barcode.index') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Bar Code List</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 <div data-kt-menu-trigger="click" class="menu-item {{ Route::is('admin.qr.template','admin.nfc.template') ? 'here show' : '' }} menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
