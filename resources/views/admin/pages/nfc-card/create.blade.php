@@ -148,7 +148,7 @@
         </div>
     </div>
 
-    <div class="">
+    <div class="" style="height: 100vh;">
         <div class="row py-10">
             <div class="col-lg-2 ">
                 <div class="custom-fixed-top">
@@ -176,12 +176,6 @@
                             </li>
                             <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
                                 <a class="nav-link w-100 btn btn-flex btn-active-info fs-6 fw-normal"
-                                    data-bs-toggle="tab" href="#kt_vtab_pane_4" aria-selected="false" role="tab"
-                                    tabindex="-1"><i class="fa-solid fa-qrcode"></i> Customize QR
-                                    Code</a>
-                            </li>
-                            <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
-                                <a class="nav-link w-100 btn btn-flex btn-active-info fs-6 fw-normal"
                                     data-bs-toggle="tab" href="#kt_vtab_pane_5" aria-selected="false" role="tab"
                                     tabindex="-1"><i class="fa-solid fa-hammer"></i> Services</a>
                             </li>
@@ -198,20 +192,9 @@
                             </li>
                             <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
                                 <a class="nav-link w-100 btn btn-flex btn-active-info fs-6 fw-normal"
-                                    data-bs-toggle="tab" href="#kt_vtab_pane_8" aria-selected="false" role="tab"
-                                    tabindex="-1"><i class="fa-brands fa-blogger"></i> Blogs</a>
-                            </li>
-                            <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
-                                <a class="nav-link w-100 btn btn-flex btn-active-info fs-6 fw-normal"
                                     data-bs-toggle="tab" href="#kt_vtab_pane_9" aria-selected="false" role="tab"
                                     tabindex="-1"><i class="fa-solid fa-comments"></i>
                                     Testimonials</a>
-                            </li>
-                            <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
-                                <a class="nav-link w-100 btn btn-flex btn-active-info fs-6 fw-normal"
-                                    data-bs-toggle="tab" href="#kt_vtab_pane_10" aria-selected="false"
-                                    role="tab" tabindex="-1"><i class="fa-solid fa-calendar-day"></i>
-                                    Appointments</a>
                             </li>
                             <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
                                 <a class="nav-link w-100 btn btn-flex btn-active-info fs-6 fw-normal"
@@ -220,34 +203,10 @@
                                     Social
                                     links - Website</a>
                             </li>
-                            <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
-                                <a class="nav-link w-100 btn btn-flex btn-active-info fs-6 fw-normal"
-                                    data-bs-toggle="tab" href="#kt_vtab_pane_12" aria-selected="false"
-                                    role="tab" tabindex="-1"><i class="fa-solid fa-panorama"></i>
-                                    Banner</a>
-                            </li>
-                            <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
-                                <a class="nav-link w-100 btn btn-flex btn-active-info fs-6 fw-normal"
-                                    data-bs-toggle="tab" href="#kt_vtab_pane_13" aria-selected="false"
-                                    role="tab" tabindex="-1"><i class="fa-solid fa-circle-exclamation"></i>
-                                    Advanced</a>
-                            </li>
-                            <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
-                                <a class="nav-link w-100 btn btn-flex btn-active-info fs-6 fw-normal"
-                                    data-bs-toggle="tab" href="#kt_vtab_pane_14" aria-selected="false"
-                                    role="tab" tabindex="-1"><i class="fa-solid fa-font"></i>
-                                    Fonts</a>
-                            </li>
-                            <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
-                                <a class="nav-link w-100 btn btn-flex btn-active-info fs-6 fw-normal"
-                                    data-bs-toggle="tab" href="#kt_vtab_pane_15" aria-selected="false"
-                                    role="tab" tabindex="-1"><i class="fa-solid fa-user-lock"></i> Privacy
-                                    Policy</a>
-                            </li>
                             <li class="nav-item w-100 me-0" role="presentation">
                                 <a class="nav-link w-100 btn btn-flex btn-active-info fs-6 fw-normal"
                                     data-bs-toggle="tab" href="#kt_vtab_pane_16" aria-selected="false"
-                                    role="tab" tabindex="-1"><i class="fa-solid fa-sliders"></i> Manage
+                                    role="tab" tabindex="-1"><i class="fa-solid fa-sliders"></i> Setting
                                     Section</a>
                             </li>
                         </ul>
@@ -583,15 +542,15 @@
 
                     <div class="tab-pane fade" id="kt_vtab_pane_3" role="tabpanel">
                         <div>
-                            <h1 class="text-center">Business
-                                Hours</h1>
+                            <h1 class="text-center">Business Hours</h1>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <form class="kt_docs_formvalidation_text form" action="#" autocomplete="off">
                                     <div class="row py-10">
-                                        <div class="col-lg-6 mb-2">
-                                            <div class="row border-info border-dashed border-1 gx-2 py-2 align-items-center px-3 rounded-2">
+                                        <div class="col-lg-6 mb-4 bg-light">
+                                            <div
+                                                class="row border-info border-dashed border-1 gx-2 py-2 align-items-center px-3 rounded-2">
                                                 <div class="col-lg-4">
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="checkbox"
@@ -625,8 +584,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 mb-2">
-                                            <div class="row border-info border-dashed border-1 gx-2 py-2 align-items-center px-3 rounded-2">
+                                        <div class="col-lg-6 mb-4 bg-light">
+                                            <div
+                                                class="row border-info border-dashed border-1 gx-2 py-2 align-items-center px-3 rounded-2">
                                                 <div class="col-lg-4">
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="checkbox"
@@ -660,8 +620,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 mb-2">
-                                            <div class="row border-info border-dashed border-1 gx-2 py-2 align-items-center px-3 rounded-2">
+                                        <div class="col-lg-6 mb-4 bg-light">
+                                            <div
+                                                class="row border-info border-dashed border-1 gx-2 py-2 align-items-center px-3 rounded-2">
                                                 <div class="col-lg-4">
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="checkbox"
@@ -695,8 +656,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 mb-2">
-                                            <div class="row border-info border-dashed border-1 gx-2 py-2 align-items-center px-3 rounded-2">
+                                        <div class="col-lg-6 mb-4 bg-light">
+                                            <div
+                                                class="row border-info border-dashed border-1 gx-2 py-2 align-items-center px-3 rounded-2">
                                                 <div class="col-lg-4">
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="checkbox"
@@ -730,8 +692,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 mb-2">
-                                            <div class="row border-info border-dashed border-1 gx-2 py-2 align-items-center px-3 rounded-2">
+                                        <div class="col-lg-6 mb-4 bg-light">
+                                            <div
+                                                class="row border-info border-dashed border-1 gx-2 py-2 align-items-center px-3 rounded-2">
                                                 <div class="col-lg-4">
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="checkbox"
@@ -765,8 +728,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 mb-2">
-                                            <div class="row border-info border-dashed border-1 gx-2 py-2 align-items-center px-3 rounded-2">
+                                        <div class="col-lg-6 mb-4 bg-light">
+                                            <div
+                                                class="row border-info border-dashed border-1 gx-2 py-2 align-items-center px-3 rounded-2">
                                                 <div class="col-lg-4">
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="checkbox"
@@ -800,8 +764,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 mb-2">
-                                            <div class="row border-info border-dashed border-1 gx-2 py-2 align-items-center px-3 rounded-2">
+                                        <div class="col-lg-6 mb-4 bg-light">
+                                            <div
+                                                class="row border-info border-dashed border-1 gx-2 py-2 align-items-center px-3 rounded-2">
                                                 <div class="col-lg-4">
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="checkbox"
@@ -837,45 +802,18 @@
                                         </div>
                                     </div>
 
-                                    <button type="submit" class="kt_docs_formvalidation_text_submit btn btn-primary">
-                                        <span class="indicator-label">
-                                            Validation Form
-                                        </span>
-                                        <span class="indicator-progress">
-                                            Please wait... <span
-                                                class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                                        </span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tab-pane fade" id="kt_vtab_pane_4" role="tabpanel">
-                        <div>
-                            <h1 class="text-center">Customize QR
-                                Code</h1>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <form class="kt_docs_formvalidation_text form" action="#" autocomplete="off">
-                                    <div class="fv-row">
-                                        <label class="required fw-semibold fs-6 mb-2">Text Input</label>
-
-                                        <input type="text" name="test2"
-                                            class="form-control form-control-solid mb-3 mb-lg-0" placeholder=""
-                                            value="" />
+                                    <div class="d-flex justify-content-end">
+                                        <button type="submit"
+                                            class="kt_docs_formvalidation_text_submit btn btn-primary">
+                                            <span class="indicator-label">
+                                                Save Business Hour
+                                            </span>
+                                            <span class="indicator-progress">
+                                                Please wait... <span
+                                                    class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                            </span>
+                                        </button>
                                     </div>
-
-                                    <button type="submit" class="kt_docs_formvalidation_text_submit btn btn-primary">
-                                        <span class="indicator-label">
-                                            Validation Form
-                                        </span>
-                                        <span class="indicator-progress">
-                                            Please wait... <span
-                                                class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                                        </span>
-                                    </button>
                                 </form>
                             </div>
                         </div>
@@ -887,25 +825,152 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
-                                <form class="kt_docs_formvalidation_text form" action="#" autocomplete="off">
-                                    <div class="fv-row">
-                                        <label class="required fw-semibold fs-6 mb-2">Text Input</label>
-
-                                        <input type="text" name="test2"
-                                            class="form-control form-control-solid mb-3 mb-lg-0" placeholder=""
-                                            value="" />
+                                <div class="d-flex flex-stack mb-5">
+                                    <div class="d-flex align-items-center position-relative my-1">
+                                        <i class="ki-duotone ki-magnifier fs-1 position-absolute ms-6"><span
+                                                class="path1"></span><span class="path2"></span></i>
+                                        <input type="text" data-kt-docs-table-filter="search"
+                                            class="form-control form-control-solid w-250px ps-15"
+                                            placeholder="Search Customers" />
                                     </div>
 
-                                    <button type="submit" class="kt_docs_formvalidation_text_submit btn btn-primary">
-                                        <span class="indicator-label">
-                                            Validation Form
-                                        </span>
-                                        <span class="indicator-progress">
-                                            Please wait... <span
-                                                class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                                        </span>
-                                    </button>
-                                </form>
+                                    <div class="d-flex justify-content-end" data-kt-docs-table-toolbar="base">
+                                        {{-- <button type="button" class="btn btn-primary" data-bs-toggle="tooltip"
+                                            title="Coming Soon">
+                                            <i class="ki-duotone ki-plus fs-2"></i>
+                                            Add Service
+                                        </button> --}}
+                                        <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal"
+                                            data-bs-target="#modalId">
+                                            Add Service
+                                        </button>
+                                    </div>
+                                    {{-- Add Service modal --}}
+                                    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+                                    <div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static"
+                                        data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-md"
+                                            role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="modalTitleId">
+                                                        Add Service Form
+                                                    </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form class="kt_docs_formvalidation_text form" action="#"
+                                                        autocomplete="off">
+                                                        <div class="fv-row">
+                                                            <label class="required fw-semibold fs-6 mb-2">Service
+                                                                Name</label>
+
+                                                            <input type="text" name="service_name"
+                                                                class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                placeholder="" value="" />
+                                                        </div>
+                                                        <div class="fv-row">
+                                                            <label class="required fw-semibold fs-6 mb-2">Service
+                                                                URL</label>
+
+                                                            <input type="url" name="service_url"
+                                                                class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                placeholder="" value="" />
+                                                        </div>
+                                                        <div class="fv-row">
+                                                            <label class="fw-semibold fs-6 mb-2">Description</label>
+                                                            <textarea name="description" class="form-control form-control-solid mb-3 mb-lg-0" id="" cols="30"
+                                                                rows="3"></textarea>
+                                                        </div>
+                                                        <div class="fv-row">
+                                                            <x-metronic.label for="logo"
+                                                                class="col-form-label fw-bold fs-6 ">{{ __('Service Icon/Image') }}
+                                                            </x-metronic.label>
+
+                                                            <x-metronic.file-input id="logo" name="logo"
+                                                                :value="old('logo')"></x-metronic.file-input>
+                                                        </div>
+
+                                                        <div class="d-flex justify-content-end mt-10">
+                                                            <button type="submit"
+                                                                class="kt_docs_formvalidation_text_submit btn btn-primary">
+                                                                <span class="indicator-label">
+                                                                    Create Service
+                                                                </span>
+                                                                <span class="indicator-progress">
+                                                                    Please wait... <span
+                                                                        class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- Modal End --}}
+
+                                </div>
+
+                                <div class="table-responsive">
+                                    <table id="kt_datatable_example_1"
+                                        class="table align-middle table-row-dashed table-border fs-6 gy-5">
+                                        <thead>
+                                            <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
+                                                <th class="w-10px pe-2">
+                                                    <div
+                                                        class="form-check form-check-sm form-check-custom form-check-solid me-3">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            data-kt-check="true"
+                                                            data-kt-check-target="#kt_datatable_example_1 .form-check-input"
+                                                            value="1" />
+                                                    </div>
+                                                </th>
+                                                <th>Sl</th>
+                                                <th>ICON/IMAGE</th>
+                                                <th>NAME</th>
+                                                <th>SERVICE URL</th>
+                                                <th>ACTION</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-gray-600 fw-semibold">
+                                            <tr>
+                                                <td>
+                                                    <div
+                                                        class="form-check form-check-sm form-check-custom form-check-solid me-3">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            data-kt-check="true"
+                                                            data-kt-check-target="#kt_datatable_example_1 .form-check-input"
+                                                            value="1" />
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    1
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <img class="img-fluid" width="50px" height="50px"
+                                                            src="https://cdn.pixabay.com/photo/2015/06/10/16/36/mark-804938_640.jpg"
+                                                            alt="">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <p class="mb-0">Jone Robert Bruno</p>
+                                                </td>
+                                                <td>
+                                                    <a href="" class="text-primary">Service Url <i
+                                                            class="fa-solid fa-link text-primary"></i></a>
+                                                </td>
+                                                <td>
+                                                    <a href="" class="text-danger">Delete <i
+                                                            class="fa-solid fa-trash text-danger"></i></a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -916,25 +981,167 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
-                                <form class="kt_docs_formvalidation_text form" action="#" autocomplete="off">
-                                    <div class="fv-row">
-                                        <label class="required fw-semibold fs-6 mb-2">Text Input</label>
-
-                                        <input type="text" name="test2"
-                                            class="form-control form-control-solid mb-3 mb-lg-0" placeholder=""
-                                            value="" />
+                                <div class="d-flex flex-stack mb-5">
+                                    <div class="d-flex align-items-center position-relative my-1">
+                                        <i class="ki-duotone ki-magnifier fs-1 position-absolute ms-6"><span
+                                                class="path1"></span><span class="path2"></span></i>
+                                        <input type="text" data-kt-docs-table-filter="search"
+                                            class="form-control form-control-solid w-250px ps-15"
+                                            placeholder="Search Customers" />
                                     </div>
 
-                                    <button type="submit" class="kt_docs_formvalidation_text_submit btn btn-primary">
-                                        <span class="indicator-label">
-                                            Validation Form
-                                        </span>
-                                        <span class="indicator-progress">
-                                            Please wait... <span
-                                                class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                                        </span>
-                                    </button>
-                                </form>
+                                    <div class="d-flex justify-content-end" data-kt-docs-table-toolbar="base">
+                                        <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal"
+                                            data-bs-target="#modalIdproduct">
+                                            Add Product
+                                        </button>
+                                    </div>
+                                    {{-- Add Product modal --}}
+                                    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+                                    <div class="modal fade" id="modalIdproduct" tabindex="-1"
+                                        data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
+                                        aria-labelledby="modalTitleIdproduct" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg"
+                                            role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="modalTitleIdproduct">
+                                                        Add Product Form
+                                                    </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form class="kt_docs_formvalidation_text form row" action="#"
+                                                        autocomplete="off">
+                                                        <div class="fv-row">
+                                                            <label class="required fw-semibold fs-6 mb-2">Product
+                                                                Name</label>
+
+                                                            <input type="text" name="product_name"
+                                                                class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                placeholder="" value="" />
+                                                        </div>
+                                                        <div class="fv-row col-6">
+                                                            <label
+                                                                class="required fw-semibold fs-6 mb-2">Currency</label>
+                                                            <select class="form-select" data-control="select2"
+                                                                data-placeholder="Select an Currency">
+                                                                <option></option>
+                                                                <option value="1">Option 1</option>
+                                                                <option value="2">Option 2</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="fv-row col-6">
+                                                            <label class="fw-semibold fs-6 mb-2">Price</label>
+                                                            <input type="text" name="product_name"
+                                                                class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                placeholder="" value="" />
+                                                        </div>
+                                                        <div class="fv-row">
+                                                            <x-metronic.label for="logo"
+                                                                class="col-form-label fw-bold fs-6 ">{{ __('Service Icon/Image') }}
+                                                            </x-metronic.label>
+
+                                                            <x-metronic.file-input id="logo" name="logo"
+                                                                :value="old('logo')"></x-metronic.file-input>
+                                                        </div>
+                                                        <div class="fv-row">
+                                                            <label class="required fw-semibold fs-6 mb-2">Product
+                                                                Url</label>
+
+                                                            <input type="text" name="product_name"
+                                                                class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                placeholder="" value="" />
+                                                        </div>
+                                                        <div class="fv-row">
+                                                            <label class="fw-semibold fs-6 mb-2">Description</label>
+                                                            <textarea name="description" class="form-control form-control-solid mb-3 mb-lg-0" id="" cols="30"
+                                                                rows="3"></textarea>
+                                                        </div>
+
+                                                        <div class="d-flex justify-content-end mt-10">
+                                                            <button type="submit"
+                                                                class="kt_docs_formvalidation_text_submit btn btn-primary">
+                                                                <span class="indicator-label">
+                                                                    Create Service
+                                                                </span>
+                                                                <span class="indicator-progress">
+                                                                    Please wait... <span
+                                                                        class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- Modal End --}}
+
+                                </div>
+
+                                <div class="table-responsive">
+                                    <table id="kt_datatable_example_1"
+                                        class="table align-middle table-row-dashed table-border fs-6 gy-5">
+                                        <thead>
+                                            <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
+                                                <th class="w-10px pe-2">
+                                                    <div
+                                                        class="form-check form-check-sm form-check-custom form-check-solid me-3">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            data-kt-check="true"
+                                                            data-kt-check-target="#kt_datatable_example_1 .form-check-input"
+                                                            value="1" />
+                                                    </div>
+                                                </th>
+                                                <th>Sl</th>
+                                                <th>PRODUCT IMAGE</th>
+                                                <th>PRODUCT NAME</th>
+                                                <th>PRODUCT Price</th>
+                                                <th>PRODUCT URL</th>
+                                                <th>ACTION</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-gray-600 fw-semibold">
+                                            <tr>
+                                                <td>
+                                                    <div
+                                                        class="form-check form-check-sm form-check-custom form-check-solid me-3">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            data-kt-check="true"
+                                                            data-kt-check-target="#kt_datatable_example_1 .form-check-input"
+                                                            value="1" />
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    1
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <img class="img-fluid" width="50px" height="50px"
+                                                            src="https://cdn.pixabay.com/photo/2015/06/10/16/36/mark-804938_640.jpg"
+                                                            alt="">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <p class="mb-0">Jone Robert Bruno</p>
+                                                </td>
+                                                <td>
+                                                    <p class="mb-0">$25</p>
+                                                </td>
+                                                <td>
+                                                    <a href="" class="text-primary">Service Url <i
+                                                            class="fa-solid fa-link text-primary"></i></a>
+                                                </td>
+                                                <td>
+                                                    <a href="" class="text-danger">Delete <i
+                                                            class="fa-solid fa-trash text-danger"></i></a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -945,67 +1152,280 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
-                                <form class="kt_docs_formvalidation_text form" action="#" autocomplete="off">
-                                    <div class="fv-row">
-                                        <label class="required fw-semibold fs-6 mb-2">Text Input</label>
-
-                                        <input type="text" name="test2"
-                                            class="form-control form-control-solid mb-3 mb-lg-0" placeholder=""
-                                            value="" />
+                                <div class="d-flex flex-stack mb-5">
+                                    <div class="d-flex align-items-center position-relative my-1">
+                                        <i class="ki-duotone ki-magnifier fs-1 position-absolute ms-6"><span
+                                                class="path1"></span><span class="path2"></span></i>
+                                        <input type="text" data-kt-docs-table-filter="search"
+                                            class="form-control form-control-solid w-250px ps-15"
+                                            placeholder="Search Customers" />
                                     </div>
 
-                                    <button type="submit" class="kt_docs_formvalidation_text_submit btn btn-primary">
-                                        <span class="indicator-label">
-                                            Validation Form
-                                        </span>
-                                        <span class="indicator-progress">
-                                            Please wait... <span
-                                                class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                                        </span>
-                                    </button>
-                                </form>
+                                    <div class="d-flex justify-content-end" data-kt-docs-table-toolbar="base">
+                                        <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal"
+                                            data-bs-target="#modalIdgallery">
+                                            Add Gallery
+                                        </button>
+                                    </div>
+                                    {{-- Add gallery modal --}}
+                                    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+                                    <div class="modal fade" id="modalIdgallery" tabindex="-1"
+                                        data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
+                                        aria-labelledby="modalTitleIdgallery" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg"
+                                            role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="modalTitleIdgallery">
+                                                        Add Gallery Form
+                                                    </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form class="kt_docs_formvalidation_text form row" action="#"
+                                                        autocomplete="off">
+                                                        <div class="fv-row">
+                                                            <label class="required fw-semibold fs-6 mb-2">Gallery
+                                                                Name</label>
+
+                                                            <input type="text" name="gallery_name"
+                                                                class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                placeholder="" value="" />
+                                                        </div>
+                                                        <div class="fv-row">
+                                                            <x-metronic.label for="logo"
+                                                                class="col-form-label fw-bold fs-6 ">{{ __('Gallary Image') }}
+                                                            </x-metronic.label>
+
+                                                            <x-metronic.file-input id="logo" name="logo"
+                                                                :value="old('logo')"></x-metronic.file-input>
+                                                        </div>
+                                                        <div class="fv-row">
+                                                            <label class="required fw-semibold fs-6 mb-2">Gallery
+                                                                Video</label>
+
+                                                            <input type="url" name="gallery_video_url"
+                                                                class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                placeholder="" value="" />
+                                                        </div>
+
+                                                        <div class="d-flex justify-content-end mt-10">
+                                                            <button type="submit"
+                                                                class="kt_docs_formvalidation_text_submit btn btn-primary">
+                                                                <span class="indicator-label">
+                                                                    Upload Gallery
+                                                                </span>
+                                                                <span class="indicator-progress">
+                                                                    Please wait... <span
+                                                                        class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- Modal End --}}
+
+                                </div>
+
+                                <div class="table-responsive">
+                                    <table id="kt_datatable_example_1"
+                                        class="table align-middle table-row-dashed table-border fs-6 gy-5">
+                                        <thead>
+                                            <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
+                                                <th class="w-10px pe-2">
+                                                    <div
+                                                        class="form-check form-check-sm form-check-custom form-check-solid me-3">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            data-kt-check="true"
+                                                            data-kt-check-target="#kt_datatable_example_1 .form-check-input"
+                                                            value="1" />
+                                                    </div>
+                                                </th>
+                                                <th>Sl</th>
+                                                <th>GALLERIES Name</th>
+                                                <th>GALLERIES IMAGE</th>
+                                                <th>ACTION</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-gray-600 fw-semibold">
+                                            <tr>
+                                                <td>
+                                                    <div
+                                                        class="form-check form-check-sm form-check-custom form-check-solid me-3">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            data-kt-check="true"
+                                                            data-kt-check-target="#kt_datatable_example_1 .form-check-input"
+                                                            value="1" />
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    1
+                                                </td>
+                                                <td>
+                                                    <p class="mb-0">Jone Robert Bruno</p>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <img class="img-fluid" width="50px" height="50px"
+                                                            src="https://cdn.pixabay.com/photo/2015/06/10/16/36/mark-804938_640.jpg"
+                                                            alt="">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a href="" class="text-danger">Delete <i
+                                                            class="fa-solid fa-trash text-danger"></i></a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="tab-pane fade" id="kt_vtab_pane_8" role="tabpanel">
-                        <div>
-                            <h1 class="text-center">Blogs</h1>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <form class="kt_docs_formvalidation_text form" action="#" autocomplete="off">
-                                    <div class="fv-row">
-                                        <label class="required fw-semibold fs-6 mb-2">Text Input</label>
-
-                                        <input type="text" name="test2"
-                                            class="form-control form-control-solid mb-3 mb-lg-0" placeholder=""
-                                            value="" />
-                                    </div>
-
-                                    <button type="submit" class="kt_docs_formvalidation_text_submit btn btn-primary">
-                                        <span class="indicator-label">
-                                            Validation Form
-                                        </span>
-                                        <span class="indicator-progress">
-                                            Please wait... <span
-                                                class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                                        </span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="tab-pane fade" id="kt_vtab_pane_9" role="tabpanel">
                         <div>
                             <h1 class="text-center">Testimonials</h1>
                         </div>
-                    </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="d-flex flex-stack mb-5">
+                                    <div class="d-flex align-items-center position-relative my-1">
+                                        <i class="ki-duotone ki-magnifier fs-1 position-absolute ms-6"><span
+                                                class="path1"></span><span class="path2"></span></i>
+                                        <input type="text" data-kt-docs-table-filter="search"
+                                            class="form-control form-control-solid w-250px ps-15"
+                                            placeholder="Search Customers" />
+                                    </div>
 
-                    <div class="tab-pane fade" id="kt_vtab_pane_10" role="tabpanel">
-                        <div>
-                            <h1 class="text-center">Appointments</h1>
+                                    <div class="d-flex justify-content-end" data-kt-docs-table-toolbar="base">
+                                        <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal"
+                                            data-bs-target="#modalIdtestimonials">
+                                            Add testimonials
+                                        </button>
+                                    </div>
+                                    {{-- Add testimonials modal --}}
+                                    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+                                    <div class="modal fade" id="modalIdtestimonials" tabindex="-1"
+                                        data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
+                                        aria-labelledby="modalTitleIdtestimonials" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg"
+                                            role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="modalTitleIdtestimonials">
+                                                        Add Testimonials Form
+                                                    </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form class="kt_docs_formvalidation_text form row" action="#"
+                                                        autocomplete="off">
+                                                        <div class="fv-row">
+                                                            <label class="required fw-semibold fs-6 mb-2">Person
+                                                                Name</label>
+
+                                                            <input type="text" name="testimonials_name"
+                                                                class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                placeholder="" value="" />
+                                                        </div>
+                                                        <div class="fv-row">
+                                                            <label class="required fw-semibold fs-6 mb-2">Person
+                                                                Designation</label>
+
+                                                            <input type="text" name="testimonials_name"
+                                                                class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                placeholder="" value="" />
+                                                        </div>
+                                                        <div class="fv-row">
+                                                            <label
+                                                                class="required fw-semibold fs-6 mb-2">Description</label>
+                                                            <textarea name="" id="" class="form-control form-control-solid mb-3 mb-lg-0" cols="30"
+                                                                rows="10"></textarea>
+                                                        </div>
+
+                                                        <div class="d-flex justify-content-end mt-10">
+                                                            <button type="submit"
+                                                                class="kt_docs_formvalidation_text_submit btn btn-primary">
+                                                                <span class="indicator-label">
+                                                                    Upload Testimonials
+                                                                </span>
+                                                                <span class="indicator-progress">
+                                                                    Please wait... <span
+                                                                        class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- Modal End --}}
+
+                                </div>
+
+                                <div class="table-responsive">
+                                    <table id="kt_datatable_example_1"
+                                        class="table align-middle table-row-dashed table-border fs-6 gy-5">
+                                        <thead>
+                                            <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
+                                                <th class="w-10px pe-2">
+                                                    <div
+                                                        class="form-check form-check-sm form-check-custom form-check-solid me-3">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            data-kt-check="true"
+                                                            data-kt-check-target="#kt_datatable_example_1 .form-check-input"
+                                                            value="1" />
+                                                    </div>
+                                                </th>
+                                                <th>Sl</th>
+                                                <th>NAME</th>
+                                                <th>Designation</th>
+                                                <th width="30%">Description</th>
+                                                <th>ACTION</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-gray-600 fw-semibold">
+                                            <tr>
+                                                <td>
+                                                    <div
+                                                        class="form-check form-check-sm form-check-custom form-check-solid me-3">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            data-kt-check="true"
+                                                            data-kt-check-target="#kt_datatable_example_1 .form-check-input"
+                                                            value="1" />
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    1
+                                                </td>
+                                                <td>
+                                                    <p class="mb-0">Jone Robert Bruno</p>
+                                                </td>
+                                                <td>
+                                                    <p class="mb-0">Broker</p>
+                                                </td>
+                                                <td>
+                                                    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur
+                                                        adipisicing elit. Eos necessitatibus nemo veniam commodi. Vitae,
+                                                        quod dolores provident minus molestias suscipit.</p>
+                                                </td>
+                                                <td>
+                                                    <a href="" class="text-danger">Delete <i
+                                                            class="fa-solid fa-trash text-danger"></i></a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -1014,37 +1434,225 @@
                             <h1 class="text-center">Social
                                 links - Website</h1>
                         </div>
-                    </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <form class="kt_docs_formvalidation_text form row" action="#"
+                                    autocomplete="off">
+                                    <div class="fv-row col-4 mb-3">
+                                        <label class="fw-semibold fs-6 mb-2"> <i
+                                                class="fs-3 fa-solid fa-globe pe-2"> WebSite URL</i></label>
+                                        <input type="url" name="website_url"
+                                            class="form-control form-control-solid mb-3 mb-lg-0"
+                                            placeholder="WebSite URL" value="" />
+                                    </div>
+                                    <div class="fv-row col-4 mb-3">
+                                        <label class="required fw-semibold fs-6 mb-2"> <i
+                                                class="fs-3 fa-brands fa-facebook pe-2"></i> Facebook
+                                            URL</label>
+                                        <input type="url" name="facebook_url"
+                                            class="form-control form-control-solid mb-3 mb-lg-0" placeholder=""
+                                            value="" />
+                                    </div>
+                                    <div class="fv-row col-4 mb-3">
+                                        <label class="fw-semibold fs-6 mb-2"> <i
+                                                class="fs-3 fa-brands fa-twitter pe-2"></i> Twitter URL</label>
+                                        <input type="url" name="twitter_url"
+                                            class="form-control form-control-solid mb-3 mb-lg-0"
+                                            placeholder="Twitter URL" value="" />
+                                    </div>
+                                    <div class="fv-row col-4 mb-3">
+                                        <label class="fw-semibold fs-6 mb-2"> <i
+                                                class="fs-3 fa-brands fa-instagram pe-2"></i> Instagram
+                                            URL</label>
+                                        <input type="url" name="instagram_url"
+                                            class="form-control form-control-solid mb-3 mb-lg-0"
+                                            placeholder="Instagram URL" value="" />
+                                    </div>
+                                    <div class="fv-row col-4 mb-3">
+                                        <label class="fw-semibold fs-6 mb-2"> <i
+                                                class="fs-3 fa-brands fa-youtube pe-2"></i> Youtube URL</label>
+                                        <input type="url" name="youtube_url"
+                                            class="form-control form-control-solid mb-3 mb-lg-0"
+                                            placeholder="Youtube URL" value="" />
+                                    </div>
+                                    <div class="fv-row col-4 mb-3">
+                                        <label class="fw-semibold fs-6 mb-2"> <i
+                                                class="fs-3 fa-brands fa-linkedin pe-2"></i> Linkedin URL</label>
+                                        <input type="url" name="linkedin_url"
+                                            class="form-control form-control-solid mb-3 mb-lg-0"
+                                            placeholder="Linkedin URL" value="" />
+                                    </div>
+                                    <div class="fv-row col-4 mb-3">
+                                        <label class="required fw-semibold fs-6 mb-2"> <i
+                                                class="fs-3 fa-brands fa-whatsapp pe-2"></i> What's App
+                                            URL</label>
+                                        <input type="url" name="whats_app_url"
+                                            class="form-control form-control-solid mb-3 mb-lg-0"
+                                            placeholder="What's App URL" value="" />
+                                    </div>
+                                    <div class="fv-row col-4 mb-3">
+                                        <label class="fw-semibold fs-6 mb-2"><i
+                                                class="fs-3 fa-brands fa-pinterest pe-2"></i>Printerest URL
+                                        </label>
+                                        <input type="url" name="preenterest_url"
+                                            class="form-control form-control-solid mb-3 mb-lg-0"
+                                            placeholder="Printerest URL" value="" />
+                                    </div>
+                                    <div class="fv-row col-4 mb-3">
+                                        <label class="fw-semibold fs-6 mb-2"><i
+                                                class="fs-3 fa-brands fa-tiktok pe-2"></i>Tiktok URL </label>
+                                        <input type="url" name="tiktok_url"
+                                            class="form-control form-control-solid mb-3 mb-lg-0"
+                                            placeholder="Printerest URL" value="" />
+                                    </div>
+                                    <div class="fv-row col-4 mb-3">
+                                        <label class="fw-semibold fs-6 mb-2"><i
+                                                class="fs-3 fa-solid fa-envelope pe-2"></i>Gmail URL</label>
+                                        <input type="url" name="gmail_url"
+                                            class="form-control form-control-solid mb-3 mb-lg-0"
+                                            placeholder="Gmail URL" value="" />
+                                    </div>
 
-                    <div class="tab-pane fade" id="kt_vtab_pane_12" role="tabpanel">
-                        <div>
-                            <h1 class="text-center">Banner</h1>
+                                    <div class="d-flex justify-content-end mt-10">
+                                        <button type="submit"
+                                            class="kt_docs_formvalidation_text_submit btn btn-primary">
+                                            <span class="indicator-label">
+                                                Save Socials
+                                            </span>
+                                            <span class="indicator-progress">
+                                                Please wait... <span
+                                                    class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="tab-pane fade" id="kt_vtab_pane_13" role="tabpanel">
-                        <div>
-                            <h1 class="text-center">Advanced</h1>
-                        </div>
-                    </div>
-
-                    <div class="tab-pane fade" id="kt_vtab_pane_14" role="tabpanel">
-                        <div>
-                            <h1 class="text-center">Fonts</h1>
-                        </div>
-                    </div>
-
-                    <div class="tab-pane fade" id="kt_vtab_pane_15" role="tabpanel">
-                        <div>
-                            <h1 class="text-center">Privacy
-                                Policy</h1>
-                        </div>
-                    </div>
-
                     <div class="tab-pane fade" id="kt_vtab_pane_16" role="tabpanel">
                         <div>
-                            <h1 class="text-center">Manage
-                                Section</h1>
+                            <h1 class="text-center">Settings</h1>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <form class="kt_docs_formvalidation_text form" action="#" autocomplete="off">
+                                    <!--begin::Row-->
+                                    <div class="mb-5" data-kt-buttons="true"
+                                        data-kt-buttons-target=".form-check-image, .form-check-input">
+                                        <div class="row">
+                                            <div class="col-4 mb-3">
+                                                <label class="form-check-image border p-3 active">
+                                                    <div class="form-check-wrapper">
+                                                        <img class="img-fluid" style="height: 200px; object-fit: cover;"
+                                                            src="https://img.freepik.com/free-vector/business-opening-hours-with-photo_23-2148821770.jpg?size=338&ext=jpg&ga=GA1.1.1546980028.1719619200&semt=ais_user" />
+                                                    </div>
+    
+                                                    <div class="form-check form-check-custom form-check-solid my-5">
+                                                        <input class="form-check-input" type="checkbox" checked
+                                                            value="1" name="option2" />
+                                                        <div class="form-check-label">
+                                                            Business Hour
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                            <div class="col-4 mb-3">
+                                                <label class="form-check-image border p-3">
+                                                    <div class="form-check-wrapper">
+                                                        <img class="img-fluid" style="width: 100%; height: 200px; object-fit: cover;"
+                                                            src="https://images.ctfassets.net/ukazlt65o6hl/57KsUVgR3aMOiJdWafCJNv/a91282a079be9253d1cab82c937bcb2a/AdobeStock_251500673_1.png?w=1910&h=1276&q=70&fm=png" />
+                                                    </div>
+    
+                                                    <div class="form-check form-check-custom form-check-solid my-5 me-10">
+                                                        <input class="form-check-input" type="checkbox" value="1"
+                                                            name="option2" id="text_wow" />
+                                                        <div class="form-check-label">
+                                                            Service
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                            <div class="col-4 mb-3">
+                                                <label class="form-check-image border p-3">
+                                                    <div class="form-check-wrapper">
+                                                        <img class="img-fluid" style="height: 200px; object-fit: cover;"
+                                                            src="https://www.mountaingoatsoftware.com/uploads/blog/2016-09-06-what-is-a-product.png" />
+                                                    </div>
+    
+                                                    <div class="form-check form-check-custom form-check-solid my-5 me-10">
+                                                        <input class="form-check-input" type="checkbox" value="1"
+                                                            name="option2" />
+                                                        <div class="form-check-label">
+                                                            Product
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                            <div class="col-4 mb-3">
+                                                <label class="form-check-image border p-3">
+                                                    <div class="form-check-wrapper">
+                                                        <img class="img-fluid" style="height: 200px; object-fit: cover;"
+                                                            src="https://artgallery.yale.edu/sites/default/files/styles/hero_small/public/2023-01/ag-doc-2281-0036-pub.jpg?h=147a4df9&itok=uclO7OrF" />
+                                                    </div>
+    
+                                                    <div class="form-check form-check-custom form-check-solid my-5 me-10">
+                                                        <input class="form-check-input" type="checkbox" value="1"
+                                                            name="option2" />
+                                                        <div class="form-check-label">
+                                                            Galleries
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                            <div class="col-4 mb-3">
+                                                <label class="form-check-image border p-3">
+                                                    <div class="form-check-wrapper">
+                                                        <img class="img-fluid" style=" height: 200px; object-fit: cover;"
+                                                            src="https://www.aihr.com/wp-content/uploads/employee-testimonial-examples-cover.png" />
+                                                    </div>
+    
+                                                    <div class="form-check form-check-custom form-check-solid my-5 me-10">
+                                                        <input class="form-check-input" type="checkbox" value="1"
+                                                            name="option2" />
+                                                        <div class="form-check-label">
+                                                            Testimonial
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                            <div class="col-4 mb-3">
+                                                <label class="form-check-image border p-3">
+                                                    <div class="form-check-wrapper">
+                                                        <img class="img-fluid" style=" height: 200px; object-fit: cover;"
+                                                            src="https://lh3.googleusercontent.com/DK-JL2knP2hNlllW-1SqqNX8WvgqP9dlVHBXCFKfyfbhVcogKOoty4JCxVbGPEpjxPGQXQyCFh0CRN_4YflnnrCh=w640-h400-e365-rj-sc0x00ffffff" />
+                                                    </div>
+    
+                                                    <div class="form-check form-check-custom form-check-solid my-5 me-10">
+                                                        <input class="form-check-input" type="checkbox" value="1"
+                                                            name="option2" />
+                                                        <div class="form-check-label">
+                                                            Social Link
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end::Row-->
+                                    <div class="d-flex justify-content-end mt-10">
+                                        <button type="submit"
+                                            class="kt_docs_formvalidation_text_submit btn btn-primary">
+                                            <span class="indicator-label">
+                                                Save Socials
+                                            </span>
+                                            <span class="indicator-progress">
+                                                Please wait... <span
+                                                    class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1065,6 +1673,13 @@
                 var validator = FormValidation.formValidation(
                     form, {
                         fields: {
+                            'test2': {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'test2'
+                                    }
+                                }
+                            },
                             'url_alias': {
                                 validators: {
                                     notEmpty: {
@@ -1104,6 +1719,20 @@
                                 validators: {
                                     notEmpty: {
                                         message: 'Phone Is Required'
+                                    }
+                                }
+                            },
+                            'service_url': {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Service Url Is Required'
+                                    }
+                                }
+                            },
+                            'service_name': {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Service Name Is Required'
                                     }
                                 }
                             },
