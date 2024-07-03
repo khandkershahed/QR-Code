@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class BarCodeController extends Controller
 {
@@ -54,8 +55,7 @@ class BarCodeController extends Controller
         $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
         $request->validate([
             'product_id' => 'required|string',
-            'barcode_pattern' => 'required|string',
-            'barcode_color' => 'required|string',
+            // 'barcode_pattern' => 'required|string',
         ]);
 
         $typePrefix = 'BAR';
@@ -76,45 +76,47 @@ class BarCodeController extends Controller
         $d = new DNS1D();
 
         try {
-            $formats = ['png', 'jpg', 'svg', 'pdf'];
+            $formats = ['png', 'jpg', 'pdf'];
+            $urls = [];
+
             foreach ($formats as $format) {
-                $directory = public_path('storage/barcodes/' . $format . '/' . $code);
+                $directory = public_path("storage/barcodes/$format/");
                 if (!file_exists($directory)) {
                     mkdir($directory, 0777, true);
                 }
 
+                $filePath = "$directory$code.$format";
+
                 switch ($format) {
                     case 'png':
-                        $d->setStorPath($directory);
-                        $barCodeStringPng = $d->getBarcodePNGPath($productId, $barcodePattern, $barcodeWidth, $barcodeHeight, [$barcodeColor['r'], $barcodeColor['g'], $barcodeColor['b']], true);
-                        $barCodeDataPngUrl = 'storage/barcodes/png/' . $code . '.png';
+                        $barCodeStringPng = $d->getBarcodePNG($productId, $barcodePattern, $barcodeWidth, $barcodeHeight, [$barcodeColor['r'], $barcodeColor['g'], $barcodeColor['b']], true);
+                        file_put_contents($filePath, base64_decode($barCodeStringPng));
+                        $urls['png'] = "storage/barcodes/png/$code.png";
                         break;
                     case 'jpg':
-                        $d->setStorPath($directory);
-                        $barCodeStringJpg = $d->getBarcodeJPGPath($productId, $barcodePattern, $barcodeWidth, $barcodeHeight, [$barcodeColor['r'], $barcodeColor['g'], $barcodeColor['b']], true);
-                        $barCodeDataJpgUrl = 'storage/barcodes/jpg/' . $code . '.jpeg';
+                        $barCodeStringPng = $d->getBarcodePNG($productId, $barcodePattern, $barcodeWidth, $barcodeHeight, [$barcodeColor['r'], $barcodeColor['g'], $barcodeColor['b']], true);
+                        // $barCodeStringJpg = $d->getBarcodeJPG($productId, $barcodePattern, $barcodeWidth, $barcodeHeight, [$barcodeColor['r'], $barcodeColor['g'], $barcodeColor['b']], true);
+                        // file_put_contents($filePath, "data:image/jpeg;base64,' . $barCodeStringJpg . '");
+                        $qrCodePath = '../public/storage/jpg/' . $code . '.jpg';
+                        $base64ImageString = base64_encode($barCodeStringPng);
+                        $imageContent = base64_decode($base64ImageString);
+                        $image = Image::make($imageContent);
+                        $image->encode('jpg', 100)->save($filePath);
+                        $urls['jpg'] = "storage/barcodes/jpg/$code.jpg";
                         break;
-                    // case 'svg':
-                    //     $barCodeStringSvg = $d->getBarcodeSVG($productId, $barcodePattern, $barcodeWidth, $barcodeHeight, [$barcodeColor['r'], $barcodeColor['g'], $barcodeColor['b']], true);
-                    //     if ($barCodeStringSvg === false) {
-                    //         throw new \Exception('Barcode generation failed.');
-                    //     }
-                    //     $barCodeDataSvgUrl = 'storage/barcodes/svg/' . $code;
-                    //     break;
                     case 'pdf':
-                        $barCodePdfPath = $directory;
                         $barCodeStringPdf = $d->getBarcodePNG($productId, $barcodePattern, $barcodeWidth, $barcodeHeight, [$barcodeColor['r'], $barcodeColor['g'], $barcodeColor['b']], true);
                         if (!$barCodeStringPdf) {
                             continue 2; // Correct usage of continue to skip to the next format
                         }
 
-                        $htmlContent = '<div class="text-center"><img width="650px" src="data:image/png;base64,' . base64_encode($barCodeStringPdf) . '" /></div>';
+                        $htmlContent = '<div class="text-center"><img width="650px" src="data:image/png;base64,' . $barCodeStringPdf . '" /></div>';
 
                         // Create DomPDF instance
                         $pdf = \App::make('dompdf.wrapper');
                         $pdf->loadHTML($htmlContent, 'UTF-8');
-                        $pdf->save($barCodePdfPath . '/' . $code . '.pdf');
-                        $barCodeDataPdfUrl = 'storage/barcodes/pdf/' . $code . '/' . $code . '.pdf';
+                        $pdf->save("$filePath");
+                        $urls['pdf'] = "storage/barcodes/pdf/$code.pdf";
                         break;
                 }
             }
@@ -133,16 +135,16 @@ class BarCodeController extends Controller
                 'barcode_width'   => $barcodeWidth,
                 'barcode_height'  => $barcodeHeight,
                 'bulk_file'       => $request->bulk_file,
-                'bar_code_jpg'    => $barCodeDataJpgUrl ?? null,
-                'bar_code_pdf'    => $barCodeDataPdfUrl ?? null,
-                'bar_code_svg'    => $barCodeDataSvgUrl ?? null,
-                'bar_code_png'    => $barCodeDataPngUrl ?? null,
+                'bar_code_jpg'    => $urls['jpg'] ?? null,
+                'bar_code_pdf'    => $urls['pdf'] ?? null,
+                'bar_code_svg'    => $urls['svg'] ?? null,
+                'bar_code_png'    => $urls['png'] ?? null,
             ]);
 
             $routeName = $isUserRoute ? 'user.barcode.index' : 'admin.barcode.index';
             return redirect()->route($routeName)->with('success', 'You have successfully generated Bar Code.');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', ['error' => $e->getMessage()]);
+            return redirect()->back()->withInput()->with('error', ['error' => $e->getMessage()]);
         }
     }
 
