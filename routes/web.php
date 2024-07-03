@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\NfcIndividualMessageController;
 use App\Http\Controllers\Subscription\StripeWebhookController;
 use App\Http\Controllers\Reseller\ResellerSocialLoginController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Admin\BarCodeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,6 +68,7 @@ Route::get('stripe/cancel', function () {
 })->name('stripe.cancel');
 
 
+Route::post('barcode/preview', [BarCodeController::class, 'barcodePreview'])->name('barcode.preview');
 
 
 
