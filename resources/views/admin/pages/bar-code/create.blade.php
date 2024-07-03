@@ -56,8 +56,8 @@
                         </h1>
                     </div>
                 </div>
-                <div class="w-lg-75 w-100 mx-auto row">
-                    <div class="col-lg-4">
+                <div class="w-lg-50 w-100 mx-auto row">
+                    <div class="col-lg-6">
                         <input type="radio" class="btn-check" name="barcode_option" value="create-barcode" checked
                             id="kt_radio_buttons_option_1" />
                         <label
@@ -72,7 +72,7 @@
                             </span>
                         </label>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                         <input type="radio" class="btn-check" name="barcode_option" value="create-bulk-barcode"
                             id="kt_radio_buttons_option_2" />
                         <label
@@ -83,21 +83,6 @@
                                 <span class="text-gray-900 fw-bold d-block fs-3">Create Bulk Barcode</span>
                                 <span class="text-muted fw-semibold fs-6">
                                     Upload Your CSV File And Create Bulk Barcode Automatically.
-                                </span>
-                            </span>
-                        </label>
-                    </div>
-                    <div class="col-lg-4">
-                        <input type="radio" class="btn-check" name="barcode_option" value="barcode-reader-form"
-                            id="kt_radio_buttons_option_3" />
-                        <label
-                            class="btn btn-outline btn-outline-dashed btn-active-light-info p-7 d-flex align-items-center"
-                            for="kt_radio_buttons_option_3">
-                            <i class="fas fa-clipboard-check fs-4x me-4"></i>
-                            <span class="d-block fw-semibold text-start">
-                                <span class="text-gray-900 fw-bold d-block fs-3">Barcode Reader</span>
-                                <span class="text-muted fw-semibold fs-6">
-                                    Upload Your Barcode File And See The Readed Data.
                                 </span>
                             </span>
                         </label>
@@ -142,10 +127,16 @@
                                                         <div class="fv-row col-lg-3">
                                                             <label class="fw-semibold fs-6 mb-2">Product ID <small
                                                                     class="text-info">(Dynamic)</small></label>
-
-                                                            <input type="text" name="product_id"
-                                                                class="form-control form-control-solid mb-3 mb-lg-0"
-                                                                placeholder="56849845" value="" />
+                                                            <div class="input-group mb-3">
+                                                                <input type="text"
+                                                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                    name="product_id" placeholder="56849845769"
+                                                                    value="" aria-describedby="button-addon2"
+                                                                    id="product-id-input">
+                                                                <button class="btn btn-info rounded-0 px-3"
+                                                                    type="button" id="button-addon2"><i
+                                                                        class="fas fa-infinity"></i></button>
+                                                            </div>
                                                         </div>
                                                         <div class="fv-row col-lg-3">
                                                             <label class="required fw-semibold fs-6 mb-2">
@@ -235,7 +226,7 @@
                                                     <div class="row">
                                                         <div class="fv-row col-lg-8">
                                                             <label
-                                                                class="required fw-semibold fs-6 mb-2 d-flex align-items-center">
+                                                                class="fw-semibold fs-6 mb-2 d-flex align-items-center">
                                                                 <div>
                                                                     <svg class="svg-inline--fa fa-left-right fa-fw fa-sm text-muted mr-1"
                                                                         aria-hidden="true" focusable="false"
@@ -257,7 +248,7 @@
                                                         </div>
                                                         <div class="fv-row col-lg-4">
                                                             <label
-                                                                class="required fw-semibold fs-6 mb-2 d-flex align-items-center">
+                                                                class="fw-semibold fs-6 mb-2 d-flex align-items-center">
                                                                 <div>
                                                                     <svg class="svg-inline--fa fa-up-down fa-fw fa-sm text-muted mr-1"
                                                                         aria-hidden="true" focusable="false"
@@ -275,8 +266,7 @@
                                                             <div class="input-group mb-3">
                                                                 <input type="text"
                                                                     class="form-control form-control-solid mb-3 mb-lg-0"
-                                                                    placeholder="Recipient's username"
-                                                                    aria-label="Recipient's username"
+                                                                    placeholder="Bars Height"
                                                                     aria-describedby="basic-addon2">
                                                                 <span class="input-group-text"
                                                                     id="basic-addon2">PX</span>
@@ -546,117 +536,6 @@
                 </div>
             </div>
             {{--  --}}
-            <div class="barcode-reader-form-show" id="barcode-reader-form" style="display: none;">
-                <div class="w-lg-75 w-100 mx-auto row">
-                    <div class="col-lg-12">
-                        <div class="row equal-height" id="equal-height-row">
-                            <h2 class="text-center mt-10">Barcode Reader</h2>
-                            <div class="col-7 bg-white" id="first-column">
-                                <div class="">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <form id="kt_docs_formvalidation_email" class="form" action="#"
-                                                autocomplete="off" method="post">
-                                                @csrf
-                                                {{-- Forms Input --}}
-                                                <div class="border-dashed border-1 p-3 rounded-2 mb-2">
-                                                    <div class="row">
-                                                        <div class="fv-row col-lg-12">
-                                                            <label class="required fw-semibold fs-6 mb-2">
-                                                                <svg class="svg-inline--fa fa-signature fa-fw fa-sm text-muted mr-1"
-                                                                    aria-hidden="true" focusable="false"
-                                                                    data-prefix="fas" data-icon="signature"
-                                                                    role="img" xmlns="http://www.w3.org/2000/svg"
-                                                                    viewBox="0 0 640 512" data-fa-i2svg="">
-                                                                    <path fill="currentColor"
-                                                                        d="M192 128c0-17.7 14.3-32 32-32s32 14.3 32 32v7.8c0 27.7-2.4 55.3-7.1 82.5l-84.4 25.3c-40.6 12.2-68.4 49.6-68.4 92v71.9c0 40 32.5 72.5 72.5 72.5c26 0 50-13.9 62.9-36.5l13.9-24.3c26.8-47 46.5-97.7 58.4-150.5l94.4-28.3-12.5 37.5c-3.3 9.8-1.6 20.5 4.4 28.8s15.7 13.3 26 13.3H544c17.7 0 32-14.3 32-32s-14.3-32-32-32H460.4l18-53.9c3.8-11.3 .9-23.8-7.4-32.4s-20.7-11.8-32.2-8.4L316.4 198.1c2.4-20.7 3.6-41.4 3.6-62.3V128c0-53-43-96-96-96s-96 43-96 96v32c0 17.7 14.3 32 32 32s32-14.3 32-32V128zm-9.2 177l49-14.7c-10.4 33.8-24.5 66.4-42.1 97.2l-13.9 24.3c-1.5 2.6-4.3 4.3-7.4 4.3c-4.7 0-8.5-3.8-8.5-8.5V335.6c0-14.1 9.3-26.6 22.8-30.7zM24 368c-13.3 0-24 10.7-24 24s10.7 24 24 24H64.3c-.2-2.8-.3-5.6-.3-8.5V368H24zm592 48c13.3 0 24-10.7 24-24s-10.7-24-24-24H305.9c-6.7 16.3-14.2 32.3-22.3 48H616z">
-                                                                    </path>
-                                                                </svg>
-                                                                Upload Barcode
-                                                            </label>
-
-                                                            <input type="file" name="bulk_file" id="fileInputpng"
-                                                                accept=".png, .jpg, .jpeg"
-                                                                class="form-control form-control-solid mb-3 mb-lg-0"
-                                                                placeholder="3L Fresh Water" value="" />
-                                                            <small>Only png.jpg,jpeg files allowed. Maximum size: 5
-                                                                MB.</small>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                {{-- Form Action --}}
-                                                <div class="row">
-                                                    <div class="col-lg-12">
-                                                        <div class="d-flex justify-content-end">
-                                                            <button id="submitBtn" type="submit" disabled
-                                                                class="btn btn-primary mt-7">
-                                                                <span class="indicator-label">
-                                                                    Generate Barcode
-                                                                </span>
-                                                                <span class="indicator-progress">
-                                                                    Please wait... <span
-                                                                        class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                                                                </span>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col bg-white " id="second-column">
-                                <div>
-                                    <div class="card">
-                                        <div class="card-body p-2 py-8">
-                                            <div class="d-flex justify-content-center align-items-center">
-                                                <!-- code-128 -->
-                                                <img id="code-128-img" class="img-fluid barcode-img"
-                                                    style="max-width: 100%; max-height: 15rem;"
-                                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVoVNLEE2WzK5i1EXCJXjxmi1-gk1b9MeHpxipJaJp1bajAfwpUMG-CDnutx203HYjxXw&usqp=CAU"
-                                                    alt="Code 128">
-                                            </div>
-                                            <div class="d-flex justify-content-between mt-5">
-                                                <a href="http://127.0.0.1:8000/admin/logout"
-                                                    class="btn text-white w-100 me-2"
-                                                    style="background-color: #7239e9; ">
-                                                    <span class="btn-label"> Print
-                                                    </span>
-                                                </a>
-                                                <a href="http://127.0.0.1:8000/admin/logout"
-                                                    class="btn text-white w-100 ms-2"
-                                                    style="background-color: #7239e9; ">
-                                                    <span class="btn-label"> Download
-                                                    </span>
-                                                </a>
-                                            </div>
-                                            <div
-                                                class="d-flex align-items-center rounded py-5 px-5 bg-light-danger mt-5 border-dashed border-info border-1">
-                                                <i class="fas fa-info fs-2x text-danger me-5"></i>
-                                                <div class="text-gray-700 fw-bold">
-                                                    <small> Make sure to test out your configured barcode before using
-                                                        it in
-                                                        production.</small>
-                                                </div>
-                                            </div>
-                                            <div class="fv-row mt-10">
-                                                <label class=" fw-semibold fs-6 mb-2">
-                                                    <span class="ps-2"> Embedded data</span>
-                                                </label>
-
-                                                <input type="text" name="product_price"
-                                                    class="form-control form-control-solid mb-3 mb-lg-0"
-                                                    placeholder="1" value="" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             {{-- Toggler form End --}}
         </div>
     </div>
@@ -920,6 +799,24 @@
                         contentDiv.classList.add('fade-in');
                     }, 500); // Match this time with the transition duration in CSS
                 });
+            });
+        </script>
+        {{-- Random Id Generate --}}
+        <script>
+            function generateRandomSerial() {
+                // Generate a random 9-digit number
+                const randomSerial = Math.floor(Math.random() * 900000000) + 100000000;
+                // Set the generated number as the value of the input field
+                document.getElementById('product-id-input').value = randomSerial;
+            }
+
+            document.getElementById('button-addon2').addEventListener('click', function() {
+                generateRandomSerial();
+            });
+
+            // Generate a random serial number on page load
+            window.addEventListener('load', function() {
+                generateRandomSerial();
             });
         </script>
     @endpush
