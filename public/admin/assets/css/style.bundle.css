@@ -57529,11 +57529,11 @@ body {
 .aside-dark .menu .menu-item.show > .menu-link .menu-icon,
 .aside-dark .menu .menu-item.show > .menu-link .menu-icon .svg-icon,
 .aside-dark .menu .menu-item.show > .menu-link .menu-icon i {
-    color: #009ef7;
+    color:black !important;
 }
 
 .aside-dark .menu .menu-item.show > .menu-link .menu-bullet .bullet {
-    background-color: #009ef7;
+    background-color: #0000;
 }
 
 .aside-dark .menu .menu-item.show > .menu-link .menu-arrow:after {
@@ -57564,7 +57564,18 @@ body {
 }
 
 .aside-dark .menu .menu-item .menu-link.active .menu-bullet .bullet {
-    background-color: #009ef7;
+    background-color: transparent; /* Hide the original bullet */
+}
+
+.aside-dark .menu .menu-item .menu-link.active .menu-bullet .bullet::before {
+    content: '→';
+    color: white;
+    display: inline-block;
+    margin-right: 5px;
+    font-size: 1.5em;
+    position: relative;
+    top: -14.5px;
+    right: 10px;
 }
 
 .aside-dark .menu .menu-item .menu-link.active .menu-arrow:after {

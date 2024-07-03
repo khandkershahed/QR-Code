@@ -6,7 +6,7 @@
         <a href="{{ route('dashboard') }}">
             <img alt="Logo" src="https://i.ibb.co/BNBTVN4/logo.png" class="h-60px logo">
         </a>
-        <div id="kt_aside_toggle" class="btn btn-icon w-auto px-0 btn-active-color-primary aside-toggle active"
+        <div id="kt_aside_toggle" class="btn btn-icon w-auto px-0 btn-active-color-info aside-toggle active"
             data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body"
             data-kt-toggle-name="aside-minimize">
             <span class="svg-icon svg-icon-1 rotate-180">
