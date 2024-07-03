@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('barcode_type')->nullable();
             $table->string('barcode_pattern')->nullable();
             $table->string('barcode_color')->nullable();
+            $table->string('code')->nullable();
             $table->text('product_name')->nullable();
             $table->string('product_id')->nullable();
             $table->double('product_price')->nullable();
@@ -25,6 +26,11 @@ return new class extends Migration
             $table->string('barcode_width')->nullable();
             $table->string('barcode_height')->nullable();
             $table->string('bulk_file')->nullable();
+            $table->string('bar_code_quantity')->nullable();
+            $table->string('bar_code_jpg')->nullable();
+            $table->string('bar_code_pdf')->nullable();
+            $table->string('bar_code_svg')->nullable();
+            $table->string('bar_code_png')->nullable();
             $table->timestamps();
         });
     }

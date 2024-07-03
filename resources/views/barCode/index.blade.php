@@ -13,12 +13,10 @@
                     <thead>
                         <tr class="text-gray-500 fw-bold fs-7 text-uppercase">
                             <th width="5%">SL</th>
-                            <th width="10%">Image</th>
-                            <th width="10%">Virtual Card</th>
-                            <th width="25%">Name </th>
-                            <th width="10%">Link</th>
-                            <th width="10%">VCARD</th>
-                            <th width="15%">Address</th>
+                            <th width="30%">Image</th>
+                            <th width="25%">Product Name </th>
+                            <th width="12%">Pattern</th>
+                            <th width="13%">BarCode</th>
                             <th width="15%" class="text-center">Action</th>
                         </tr>
                     </thead>
@@ -29,96 +27,23 @@
                                     {{ $loop->iteration }}
                                 </td>
                                 <td>
-                                    @if ($bar_code->nfc_template == 'template-one')
-                                        <img class="img-fluid w-50px"
-                                            src="{{ asset('frontend/assets/images/nfc-templates/template_one.jpg') }}"
-                                            alt="">
-                                    @elseif ($bar_code->nfc_template == 'template-two')
-                                        <img class="img-fluid w-50px"
-                                            src="{{ asset('frontend/assets/images/nfc-templates/template_two.jpg') }}"
-                                            alt="">
-                                    @elseif ($bar_code->nfc_template == 'template-three')
-                                        <img class="img-fluid w-50px"
-                                            src="{{ asset('frontend/assets/images/nfc-templates/template_three.jpg') }}"
-                                            alt="">
-                                    @elseif ($bar_code->nfc_template == 'template-four')
-                                        <img class="img-fluid w-50px"
-                                            src="{{ asset('frontend/assets/images/nfc-templates/template_four.jpg') }}"
-                                            alt="">
-                                    @elseif ($bar_code->nfc_template == 'template-five')
-                                        <img class="img-fluid w-50px"
-                                            src="{{ asset('frontend/assets/images/nfc-templates/template_five.jpg') }}"
-                                            alt="">
-                                    @elseif ($bar_code->nfc_template == 'template-six')
-                                        <img class="img-fluid w-50px"
-                                            src="{{ asset('frontend/assets/images/nfc-templates/template_six.jpg') }}"
-                                            alt="">
-                                    @endif
+                                    {{ asset($bar_code->bar_code_png) }}
                                 </td>
                                 <td>
-                                    @if (optional($bar_code->virtualCard)->virtual_card_template == 'virtual-card-one')
-                                        <img class="img-fluid w-50px"
-                                            src="{{ asset('frontend/images/virtual_card/virtual_card_1.png') }}"
-                                            alt="">
-                                    @elseif (optional($bar_code->virtualCard)->virtual_card_template == 'virtual-card-two')
-                                        <img class="img-fluid w-50px"
-                                            src="{{ asset('frontend/images/virtual_card/virtual_card_2.png') }}"
-                                            alt="">
-                                    @elseif (optional($bar_code->virtualCard)->virtual_card_template == 'virtual-card-three')
-                                        <img class="img-fluid w-50px"
-                                            src="{{ asset('frontend/images/virtual_card/virtual_card_3.png') }}"
-                                            alt="">
-                                    @elseif (optional($bar_code->virtualCard)->virtual_card_template == 'virtual-card-four')
-                                        <img class="img-fluid w-50px"
-                                            src="{{ asset('frontend/images/virtual_card/virtual_card_4.png') }}"
-                                            alt="">
-                                    @elseif (optional($bar_code->virtualCard)->virtual_card_template == 'virtual-card-five')
-                                        <img class="img-fluid w-50px"
-                                            src="{{ asset('frontend/images/virtual_card/virtual_card_5.png') }}"
-                                            alt="">
-                                    @elseif (optional($bar_code->virtualCard)->virtual_card_template == 'virtual-card-six')
-                                        <img class="img-fluid w-50px"
-                                            src="{{ asset('frontend/images/virtual_card/virtual_card_6.png') }}"
-                                            alt="">
-                                    @elseif (optional($bar_code->virtualCard)->virtual_card_template == 'virtual-card-seven')
-                                        <img class="img-fluid w-50px"
-                                            src="{{ asset('frontend/images/virtual_card/virtual_card_7.png') }}"
-                                            alt="">
-                                    @elseif (optional($bar_code->virtualCard)->virtual_card_template == 'virtual-card-eight')
-                                        <img class="img-fluid w-50px"
-                                            src="{{ asset('frontend/images/virtual_card/virtual_card_8.png') }}"
-                                            alt="">
-                                    @endif
+                                    {{ $bar_code->product_name }}
                                 </td>
                                 <td>
-                                    <div class="text-success">{{ optional($bar_code->nfcData)->first_name }}
-                                        {{ optional($bar_code->nfcData)->last_name }}
-                                    </div>
+                                    {{ $bar_code->barcode_pattern }}
                                 </td>
-                                {{-- <td>
-                                    <button class="btn btn-light-primary">94</button>
-                                </td> --}}
-                                <td>
-                                    <a href="{{ $bar_code->nfc_url }}" target="_blank" class="text-primary">
-                                        <button class="btn btn-sm btn-info">NFC <i
-                                                class="fas fa-link ps-2"></i></button>
-                                    </a>
-                                </td>
+
                                 <td>
                                     <a href="javascript:void(0)" data-bs-toggle="modal"
-                                        data-bs-target="#virtual_card_modal_{{ $bar_code->id }}" class="text-primary">
+                                        data-bs-target="#bar_code_modal{{ $bar_code->id }}" class="text-info">
                                         <button class="btn btn-sm btn-info"><i class="fas fa-eye pe-2"></i>
-                                            CARD</button>
+                                            Bar Code</button>
                                     </a>
                                 </td>
-                                <td>
-                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                        data-bs-target="#shipping_address_modal_{{ $bar_code->id }}"
-                                        class="text-primary">
-                                        <button class="btn btn-sm btn-info"><i class="fas fa-eye pe-2"></i>
-                                            Shipping</button>
-                                    </a>
-                                </td>
+
                                 <td class="pe-0 text-center">
                                     <a href="#" class="btn btn-light-primary btn-active-light-primary btn-sm"
                                         data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end"
@@ -144,17 +69,7 @@
                                         data-kt-menu="true" style="">
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
-                                            {{-- <a href="#" class="menu-link px-3" data-bs-toggle="modal"
-                                                data-bs-target="#message_modal_{{ $bar_code->id }}">
-                                                All messages
-                                            </a> --}}
-                                            <a href="{{ route('admin.nfc-card.show', $bar_code->code) }}"
-                                                class="menu-link px-3">
-                                                All messages
-                                            </a>
-                                        </div>
-                                        <div class="menu-item px-3">
-                                            <a href="{{ route('admin.nfc-card.edit', $bar_code->code) }}"
+                                            <a href="{{ route('admin.barcode.edit', $bar_code->code) }}"
                                                 class="menu-link px-3">
                                                 Edit
                                             </a>
@@ -163,7 +78,7 @@
 
                                         <!--begin::Menu item-->
                                         {{-- <div class="menu-item px-3">
-                                            <a href="{{ route('admin.nfc-card.destroy', $bar_code->id) }}"
+                                            <a href="{{ route('admin.barcode.destroy', $bar_code->id) }}"
                                                 class="menu-link px-3 delete">
                                                 Delete
                                             </a>
