@@ -96,7 +96,7 @@ Route::middleware('auth:admin', 'role:admin')->prefix('admin')->name('admin.')->
             'user-notification'   => UserNotificationController::class,
             'categories'          => CategoryController::class,
             'qr-code'             => QrCodeController::class,
-            'bar-code'            => BarCodeController::class,
+            'barcode'             => BarCodeController::class,
             'nfc-card'            => NfcCardController::class,
             'virtual-card'        => VirtualCardController::class,
             'requested-card'      => RequestedCardController::class,
