@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class BarCodeController extends Controller
 {
@@ -89,12 +90,18 @@ class BarCodeController extends Controller
                 switch ($format) {
                     case 'png':
                         $barCodeStringPng = $d->getBarcodePNG($productId, $barcodePattern, $barcodeWidth, $barcodeHeight, [$barcodeColor['r'], $barcodeColor['g'], $barcodeColor['b']], true);
-                        file_put_contents($filePath, "data:image/jpeg;base64,' . $barCodeStringPng . '");
+                        file_put_contents($filePath, base64_decode($barCodeStringPng));
                         $urls['png'] = "storage/barcodes/png/$code.png";
                         break;
                     case 'jpg':
-                        $barCodeStringJpg = $d->getBarcodeJPG($productId, $barcodePattern, $barcodeWidth, $barcodeHeight, [$barcodeColor['r'], $barcodeColor['g'], $barcodeColor['b']], true);
-                        file_put_contents($filePath, base64_encode($barCodeStringJpg));
+                        $barCodeStringPng = $d->getBarcodePNG($productId, $barcodePattern, $barcodeWidth, $barcodeHeight, [$barcodeColor['r'], $barcodeColor['g'], $barcodeColor['b']], true);
+                        // $barCodeStringJpg = $d->getBarcodeJPG($productId, $barcodePattern, $barcodeWidth, $barcodeHeight, [$barcodeColor['r'], $barcodeColor['g'], $barcodeColor['b']], true);
+                        // file_put_contents($filePath, "data:image/jpeg;base64,' . $barCodeStringJpg . '");
+                        $qrCodePath = '../public/storage/jpg/' . $code . '.jpg';
+                        $base64ImageString = base64_encode($barCodeStringPng);
+                        $imageContent = base64_decode($base64ImageString);
+                        $image = Image::make($imageContent);
+                        $image->encode('jpg', 100)->save($filePath);
                         $urls['jpg'] = "storage/barcodes/jpg/$code.jpg";
                         break;
                     case 'pdf':
