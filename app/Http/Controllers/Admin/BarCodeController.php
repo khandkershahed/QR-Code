@@ -87,12 +87,12 @@ class BarCodeController extends Controller
                     case 'png':
                         $d->setStorPath($directory);
                         $barCodeStringPng = $d->getBarcodePNGPath($productId, $barcodePattern, $barcodeWidth, $barcodeHeight, [$barcodeColor['r'], $barcodeColor['g'], $barcodeColor['b']], true);
-                        $barCodeDataPngUrl = 'storage/barcodes/png/' . $code;
+                        $barCodeDataPngUrl = 'storage/barcodes/png/' . $code . '.png';
                         break;
                     case 'jpg':
                         $d->setStorPath($directory);
                         $barCodeStringJpg = $d->getBarcodeJPGPath($productId, $barcodePattern, $barcodeWidth, $barcodeHeight, [$barcodeColor['r'], $barcodeColor['g'], $barcodeColor['b']], true);
-                        $barCodeDataJpgUrl = 'storage/barcodes/jpg/' . $code;
+                        $barCodeDataJpgUrl = 'storage/barcodes/jpg/' . $code . '.jpeg';
                         break;
                     // case 'svg':
                     //     $barCodeStringSvg = $d->getBarcodeSVG($productId, $barcodePattern, $barcodeWidth, $barcodeHeight, [$barcodeColor['r'], $barcodeColor['g'], $barcodeColor['b']], true);
