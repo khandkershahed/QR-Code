@@ -68,6 +68,7 @@
     <script src="{{ asset($hostUrl . 'js/custom/documentation/general/datatables/buttons.js') }}"></script>
     <script src="{{ asset($hostUrl . 'plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
     {{-- <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script> --}}
+    <script src="https://kit.fontawesome.com/69b7156a94.js" crossorigin="anonymous"></script>
     <script src="{{ asset($hostUrl . 'plugins/custom/formrepeater/formrepeater.bundle.js') }}"></script>
     <script src="{{ asset($hostUrl . 'plugins/custom/tinymce/tinymce.bundle.js') }}"></script>
     {{-- <script src="{{ asset($hostUrl . 'js/custom/account/settings/signin-methods.js') }}"></script> --}}
