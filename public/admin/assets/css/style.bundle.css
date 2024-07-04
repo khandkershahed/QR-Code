@@ -38905,9 +38905,15 @@ input[type="color" i] {
     background-color: rgba(245, 248, 250, 0.8);
 }
 
+.aside-light .menu .menu-item .menu-link.active {
+    transition: color .2s ease, background-color .2s ease;
+    background-color: rgb(193 239 244 / 69%);
+    /* color: #fff; */
+}
 .menu-active-bg .menu-item .menu-link.active {
     transition: color 0.2s ease, background-color 0.2s ease;
-    background-color: rgba(245, 248, 250, 0.8);
+    /* background-color: rgba(245, 248, 250, 0.8); */
+    background-color: rgb(193 239 244 / 69%);
 }
 
 .menu-state-bg
