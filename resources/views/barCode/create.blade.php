@@ -46,7 +46,7 @@
             class="fa-solid fa-arrow-right-long ps-4"></i>
     </button>
 </div>
-<div id="contentDiv" class="d-none fade">
+<div id="contentDiv" class="d-none fade pb-15">
     <div>
         <div class="row">
             <div class="col-lg-12">
