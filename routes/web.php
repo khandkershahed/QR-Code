@@ -126,13 +126,10 @@ Route::post('newsletter/store', [NewsLetterController::class, 'store'])
 // })->middleware(['auth:admin', 'verified'])->name('admin.dashboard');
 
 
-// QRCode, BarCode, NFCCard
 Route::middleware('redirect.guard')->group(function () {
     Route::resources(
         [
-            'qr-code'             => QrCodeController::class,
             'barcode'             => BarCodeController::class,
-            'nfc-card'            => NfcCardController::class,
             'virtual-card'        => VirtualCardController::class,
         ],
     );
