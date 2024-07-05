@@ -103,22 +103,13 @@ class VirtualCardController extends Controller
     }
 
 
-
     public function store(NfcCardRequest $request)
     {
-
         $code = $this->generateNfcCode();
 
-
         $files = [
-            'banner_image'        => $request->file('banner_image'),
-            'profile_image'       => $request->file('profile_image'),
-            'service_one_image'   => $request->file('service_one_image'),
-            'service_two_image'   => $request->file('service_two_image'),
-            'service_three_image' => $request->file('service_three_image'),
-            'card_logo'           => $request->file('card_logo'),
-            'card_bg_front'       => $request->file('card_bg_front'),
-            'card_bg_back'        => $request->file('card_bg_back'),
+            'banner_image' => $request->file('banner_image'),
+            'profile_image' => $request->file('profile_image'),
         ];
 
         $filePath = 'public/nfc/';
@@ -135,22 +126,28 @@ class VirtualCardController extends Controller
             }
         }
 
-        $nfc_url = route('nfc.page', ['name' => $request->first_name . '-' . $request->last_name, 'code' => $code]);
-
-        $qrCodeString = '';
+        $nfc_url = route('nfc.page', ['name' => $request->url_alias]);
 
         $qrFileName = $code . '_nfc_qr.png';
         $qrCodePath = '../public/storage/nfc/qrs/' . $qrFileName;
 
-        $qrCodeString = QrCode::size(300)->format('png')->margin(2)->errorCorrection('H')->encoding('UTF-8')->generate($nfc_url, $qrCodePath);
+        // QrCode::size(300)->format('png')->margin(2)->errorCorrection('H')->encoding('UTF-8')->generate($nfc_url, $qrCodePath);
 
         $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
         $userId = $isUserRoute ? Auth::user()->id : null;
 
         $nfc_card = NfcCard::create([
             'user_id'            => $userId,
+            'reseller_id'        => $request->reseller_id,
             'code'               => $code,
             'nfc_type'           => $request->nfc_type,
+            'url_alias'          => $request->url_alias,
+            'vcard_name'         => $request->vcard_name,
+            'slug'               => $request->slug,
+            'banner_image'       => $uploadedFiles['banner_image']['status']  == 1 ? $uploadedFiles['banner_image']['file_name']  : null,
+            'profile_image'      => $uploadedFiles['profile_image']['status'] == 1 ? $uploadedFiles['profile_image']['file_name'] : null,
+            'designation'        => $request->designation,
+            'bio_description'    => $request->bio_description,
             'nfc_template'       => $request->nfc_template,
             'primary_color'      => $request->primary_color,
             'text_color'         => $request->text_color,
@@ -164,75 +161,169 @@ class VirtualCardController extends Controller
             'nfc_qr'             => $qrFileName,
             'nfc_url'            => $nfc_url,
             'scan_count'         => $request->scan_count,
+            'header'             => !empty($request->header) ?  $request->header : 0,
+            'company'            => !empty($request->company) ?  $request->company : 0,
+            'contact_list'       => !empty($request->contact_list) ?  $request->contact_list : 0,
+            'services'           => !empty($request->services) ?  $request->services : 0,
+            'galleries'          => !empty($request->galleries) ?  $request->galleries : 0,
+            'products'           => !empty($request->products) ?  $request->products : 0,
+            'testimonials'       => !empty($request->testimonials) ?  $request->testimonials : 0,
+            'blogs'              => !empty($request->blogs) ?  $request->blogs : 0,
+            'business_hours'     => !empty($request->business_hours) ? $request->business_hours : 0,
+            'appointments'       => !empty($request->appointments) ? $request->appointments : 0,
+            'map'                => !empty($request->map) ?  $request->map : 0,
+            'banner'             => !empty($request->banner) ?  $request->banner : 0,
+            'news_latter_popup'  => !empty($request->news_latter_popup) ?  $request->news_latter_popup : 0,
+            'social_link'        => !empty($request->social_link) ?  $request->social_link : 0,
             'created_at'         => Carbon::now(),
         ]);
 
-
-        $nfc_data = NfcData::create([
-            'card_id'                     => $nfc_card->id,
-            'banner_image'                => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_name'] : null,
-            'profile_image'               => $uploadedFiles['profile_image']['status'] == 1 ? $uploadedFiles['profile_image']['file_name'] : null,
-            'service_one_image'           => $uploadedFiles['service_one_image']['status'] == 1 ? $uploadedFiles['service_one_image']['file_name'] : null,
-            'service_two_image'           => $uploadedFiles['service_two_image']['status'] == 1 ? $uploadedFiles['service_two_image']['file_name'] : null,
-            'service_three_image'         => $uploadedFiles['service_three_image']['status'] == 1 ? $uploadedFiles['service_three_image']['file_name'] : null,
-            'first_name'                  => $request->first_name,
-            'last_name'                   => $request->last_name,
-            'designation'                 => $request->designation,
-            'address_line_one'            => $request->address_line_one,
-            'address_line_two'            => $request->address_line_two,
-            'phone_work'                  => $request->phone_work,
-            'phone_personal'              => $request->phone_personal,
-            'email_work'                  => $request->email_work,
-            'email_personal'              => $request->email_personal,
-            'facebook_url'                => $request->facebook_url,
-            'instagram_url'               => $request->instagram_url,
-            'twitter_url'                 => $request->twitter_url,
-            'youtube_url'                 => $request->youtube_url,
-            'google_url'                  => $request->google_url,
-            'pinterest_url'               => $request->pinterest_url,
-            'linkedin_url'                => $request->linkedin_url,
-            'google_plus_url'             => $request->google_plus_url,
-            'gmail_url'                   => $request->gmail_url,
-            'apple_url'                   => $request->apple_url,
-            'bio_title'                   => $request->bio_title,
-            'bio_description'             => $request->bio_description,
-            'service_section_title'       => $request->service_section_title,
-            'service_section_description' => $request->service_section_description,
-            'service_one_title'           => $request->service_one_title,
-            'service_one_description'     => $request->service_one_description,
-            'service_two_title'           => $request->service_two_title,
-            'service_two_description'     => $request->service_two_description,
-            'service_three_title'         => $request->service_three_title,
-            'service_three_description'   => $request->service_three_description,
-            'company_title'               => $request->company_title,
-            'company_name'                => $request->company_name,
-            'company_address_line_one'    => $request->company_address_line_one,
-            'company_address_line_two'    => $request->company_address_line_two,
-            'company_email'               => $request->company_email,
-            'company_about_title'         => $request->company_about_title,
-            'company_about_description'   => $request->company_about_description,
-            'qr_code'                     => $request->qr_code,
-            'created_at'                  => Carbon::now(),
-        ]);
-
-
         session()->forget('error');
         if ($isUserRoute) {
-            return redirect()->route('user.nfc-card.index')->with('success', 'NFC Created successfully.');
+            return redirect()->route('user.virtual-card.edit', $nfc_card->code);
+            // return response()->json(['redirect' => route('user.virtual-card.edit',$nfc_card->code)]);
         } else {
-            return redirect()->route('admin.nfc-card.index')->with('success', 'NFC Created successfully.');
+            // return response()->json(['redirect' => route('admin.virtual-card.edit',$nfc_card->code)]);
+            return redirect()->route('admin.virtual-card.edit', $nfc_card->code);
         }
     }
+
+
+    // public function store(NfcCardRequest $request)
+    // {
+
+    //     $code = $this->generateNfcCode();
+
+
+    //     $files = [
+    //         'banner_image'        => $request->file('banner_image'),
+    //         'profile_image'       => $request->file('profile_image'),
+    //         'service_one_image'   => $request->file('service_one_image'),
+    //         'service_two_image'   => $request->file('service_two_image'),
+    //         'service_three_image' => $request->file('service_three_image'),
+    //         'card_logo'           => $request->file('card_logo'),
+    //         'card_bg_front'       => $request->file('card_bg_front'),
+    //         'card_bg_back'        => $request->file('card_bg_back'),
+    //     ];
+
+    //     $filePath = 'public/nfc/';
+
+    //     $uploadedFiles = [];
+    //     foreach ($files as $key => $file) {
+    //         if (!empty($file)) {
+    //             $uploadedFiles[$key] = customUpload($file, $filePath, $name = $code . '_' . $key);
+    //             if ($uploadedFiles[$key]['status'] === 0) {
+    //                 return redirect()->back()->with('error', $uploadedFiles[$key]['error_message']);
+    //             }
+    //         } else {
+    //             $uploadedFiles[$key] = ['status' => 0];
+    //         }
+    //     }
+
+    //     $nfc_url = route('nfc.page', ['name' => $request->first_name . '-' . $request->last_name, 'code' => $code]);
+
+    //     $qrCodeString = '';
+
+    //     $qrFileName = $code . '_nfc_qr.png';
+    //     $qrCodePath = '../public/storage/nfc/qrs/' . $qrFileName;
+
+    //     $qrCodeString = QrCode::size(300)->format('png')->margin(2)->errorCorrection('H')->encoding('UTF-8')->generate($nfc_url, $qrCodePath);
+
+    //     $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
+    //     $userId = $isUserRoute ? Auth::user()->id : null;
+
+    //     $nfc_card = NfcCard::create([
+    //         'user_id'            => $userId,
+    //         'code'               => $code,
+    //         'nfc_type'           => $request->nfc_type,
+    //         'nfc_template'       => $request->nfc_template,
+    //         'primary_color'      => $request->primary_color,
+    //         'text_color'         => $request->text_color,
+    //         'title_color'        => $request->title_color,
+    //         'background_color'   => $request->background_color,
+    //         'button_bg_color'    => $request->button_bg_color,
+    //         'button_title_color' => $request->button_title_color,
+    //         'frame_color'        => $request->frame_color,
+    //         'font_family'        => $request->font_family,
+    //         'font_size'          => $request->font_size,
+    //         'nfc_qr'             => $qrFileName,
+    //         'nfc_url'            => $nfc_url,
+    //         'scan_count'         => $request->scan_count,
+    //         'created_at'         => Carbon::now(),
+    //     ]);
+
+
+    //     $nfc_data = NfcData::create([
+    //         'card_id'                     => $nfc_card->id,
+    //         'banner_image'                => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_name'] : null,
+    //         'profile_image'               => $uploadedFiles['profile_image']['status'] == 1 ? $uploadedFiles['profile_image']['file_name'] : null,
+    //         'service_one_image'           => $uploadedFiles['service_one_image']['status'] == 1 ? $uploadedFiles['service_one_image']['file_name'] : null,
+    //         'service_two_image'           => $uploadedFiles['service_two_image']['status'] == 1 ? $uploadedFiles['service_two_image']['file_name'] : null,
+    //         'service_three_image'         => $uploadedFiles['service_three_image']['status'] == 1 ? $uploadedFiles['service_three_image']['file_name'] : null,
+    //         'first_name'                  => $request->first_name,
+    //         'last_name'                   => $request->last_name,
+    //         'designation'                 => $request->designation,
+    //         'address_line_one'            => $request->address_line_one,
+    //         'address_line_two'            => $request->address_line_two,
+    //         'phone_work'                  => $request->phone_work,
+    //         'phone_personal'              => $request->phone_personal,
+    //         'email_work'                  => $request->email_work,
+    //         'email_personal'              => $request->email_personal,
+    //         'facebook_url'                => $request->facebook_url,
+    //         'instagram_url'               => $request->instagram_url,
+    //         'twitter_url'                 => $request->twitter_url,
+    //         'youtube_url'                 => $request->youtube_url,
+    //         'google_url'                  => $request->google_url,
+    //         'pinterest_url'               => $request->pinterest_url,
+    //         'linkedin_url'                => $request->linkedin_url,
+    //         'google_plus_url'             => $request->google_plus_url,
+    //         'gmail_url'                   => $request->gmail_url,
+    //         'apple_url'                   => $request->apple_url,
+    //         'bio_title'                   => $request->bio_title,
+    //         'bio_description'             => $request->bio_description,
+    //         'service_section_title'       => $request->service_section_title,
+    //         'service_section_description' => $request->service_section_description,
+    //         'service_one_title'           => $request->service_one_title,
+    //         'service_one_description'     => $request->service_one_description,
+    //         'service_two_title'           => $request->service_two_title,
+    //         'service_two_description'     => $request->service_two_description,
+    //         'service_three_title'         => $request->service_three_title,
+    //         'service_three_description'   => $request->service_three_description,
+    //         'company_title'               => $request->company_title,
+    //         'company_name'                => $request->company_name,
+    //         'company_address_line_one'    => $request->company_address_line_one,
+    //         'company_address_line_two'    => $request->company_address_line_two,
+    //         'company_email'               => $request->company_email,
+    //         'company_about_title'         => $request->company_about_title,
+    //         'company_about_description'   => $request->company_about_description,
+    //         'qr_code'                     => $request->qr_code,
+    //         'created_at'                  => Carbon::now(),
+    //     ]);
+
+
+    //     session()->forget('error');
+    //     if ($isUserRoute) {
+    //         return redirect()->route('user.nfc-card.index')->with('success', 'NFC Created successfully.');
+    //     } else {
+    //         return redirect()->route('admin.nfc-card.index')->with('success', 'NFC Created successfully.');
+    //     }
+    // }
 
     private function generateNfcCode()
     {
 
+        // $typePrefix = 'NFC'; // Example prefix
+        // $today = now()->format('dmY');
+        // $userId = Auth::user()->id;
+        // $lastCode = NfcCard::where('code', 'like', $typePrefix . $today . $userId . '%')->orderByDesc('id')->first();
+        // $newNumber = $lastCode ? (int)substr($lastCode->code, -2) + 1 : 1;
+        // return $typePrefix . $today . $userId . str_pad($newNumber, 2, '0', STR_PAD_LEFT);
+
         $typePrefix = 'NFC'; // Example prefix
-        $today = now()->format('dmY');
         $userId = Auth::user()->id;
-        $lastCode = NfcCard::where('code', 'like', $typePrefix . $today . $userId . '%')->orderByDesc('id')->first();
+        $lastCode = NfcCard::where('code', 'like', $typePrefix . $userId . '%')->orderByDesc('id')->first();
         $newNumber = $lastCode ? (int)substr($lastCode->code, -2) + 1 : 1;
-        return $typePrefix . $today . $userId . str_pad($newNumber, 2, '0', STR_PAD_LEFT);
+        return $typePrefix . $userId . str_pad($newNumber, 2, '0', STR_PAD_LEFT);
     }
 
 
@@ -290,13 +381,45 @@ class VirtualCardController extends Controller
      */
     public function edit(string $id)
     {
-        $data = [
-            'nfc_card' => NfcCard::with('nfcData', 'nfcMessages', 'virtualCard', 'shippingDetails')->where('user_id', Auth::user()->id)->where('code', $id)->first(),
-        ];
-        if (!empty($data['nfc_card'])) {
-            return view('user.pages.nfc-card.edit', $data);
+        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
+        if ($isUserRoute) {
+            $data = [
+                'nfc_card' => NfcCard::with(
+                    'nfcData',
+                    'nfcMessages',
+                    'virtualCard',
+                    'shippingDetails',
+                    'nfcCompany',
+                    'nfcGallery',
+                    'nfcProduct',
+                    'nfcService',
+                    'nfcTestimonial'
+                )->where('user_id', Auth::user()->id)->where('code', $id)->first(),
+            ];
+            if (!empty($data['nfc_card'])) {
+                return view('user.pages.nfc-card.edit', $data);
+            } else {
+                return redirect()->back()->with('error', 'No Such NFC Card found');
+            }
         } else {
-            return redirect()->back()->with('error', 'No Such NFC Card found');
+            $data = [
+                'nfc_card' => NfcCard::with(
+                    'nfcData',
+                    'nfcMessages',
+                    'virtualCard',
+                    'shippingDetails',
+                    'nfcCompany',
+                    'nfcGallery',
+                    'nfcProduct',
+                    'nfcService',
+                    'nfcTestimonial'
+                )->where('code', $id)->first(),
+            ];
+            if (!empty($data['nfc_card'])) {
+                return view('admin.pages.nfc-card.edit', $data);
+            } else {
+                return redirect()->back()->with('error', 'No Such NFC Card found');
+            }
         }
     }
 
@@ -306,112 +429,7 @@ class VirtualCardController extends Controller
 
     public function update(NfcCardRequest $request, $id)
     {
-        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
-        // Retrieve the existing NFC card and its related data
-        $nfc_card = NfcCard::findOrFail($id);
-        $nfc_data = $nfc_card->nfcData;
-        $virtual_card = $nfc_card->virtualCard;
-        $shipping_details = $nfc_card->shippingDetails;
-
-        // Image Upload
-        $files = [
-            'banner_image'        => $request->file('banner_image'),
-            'profile_image'       => $request->file('profile_image'),
-            'service_one_image'   => $request->file('service_one_image'),
-            'service_two_image'   => $request->file('service_two_image'),
-            'service_three_image' => $request->file('service_three_image'),
-            'card_logo'           => $request->file('card_logo'),
-            'card_bg_front'       => $request->file('card_bg_front'),
-            'card_bg_back'        => $request->file('card_bg_back'),
-        ];
-
-        $filePath = 'public/nfc/';
-        $uploadedFiles = [];
-
-        // Delete old files and upload new ones
-        foreach ($files as $key => $file) {
-            if (!empty($file)) {
-                $oldFile = $nfc_data->$key ?? null;
-                if ($oldFile) {
-                    Storage::delete($filePath . $oldFile);
-                }
-                $uploadedFiles[$key] = customUpload($file, $filePath, $name = $nfc_card->code . '_' . $key);
-                if ($uploadedFiles[$key]['status'] === 0) {
-                    return redirect()->back()->with('error', $uploadedFiles[$key]['error_message']);
-                }
-            } else {
-                $uploadedFiles[$key] = ['status' => 0];
-            }
-        }
-
-        // Update NFC card data
-        $nfc_card->update([
-            // 'nfc_type'           => $request->nfc_type,
-            // 'nfc_template'       => $request->nfc_template,
-            'primary_color'      => $request->primary_color,
-            'text_color'         => $request->text_color,
-            'title_color'        => $request->title_color,
-            'background_color'   => $request->background_color,
-            'button_bg_color'    => $request->button_bg_color,
-            'button_title_color' => $request->button_title_color,
-            'frame_color'        => $request->frame_color,
-            'font_family'        => $request->font_family,
-            'font_size'          => $request->font_size,
-            'scan_count'         => $request->scan_count,
-        ]);
-
-        // Update NfcData
-        $nfc_data->update([
-            'banner_image'                => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_name'] : $nfc_data->banner_image,
-            'profile_image'               => $uploadedFiles['profile_image']['status'] == 1 ? $uploadedFiles['profile_image']['file_name'] : $nfc_data->profile_image,
-            'service_one_image'           => $uploadedFiles['service_one_image']['status'] == 1 ? $uploadedFiles['service_one_image']['file_name'] : $nfc_data->service_one_image,
-            'service_two_image'           => $uploadedFiles['service_two_image']['status'] == 1 ? $uploadedFiles['service_two_image']['file_name'] : $nfc_data->service_two_image,
-            'service_three_image'         => $uploadedFiles['service_three_image']['status'] == 1 ? $uploadedFiles['service_three_image']['file_name'] : $nfc_data->service_three_image,
-            'first_name'                  => $request->first_name,
-            'last_name'                   => $request->last_name,
-            'designation'                 => $request->designation,
-            'address_line_one'            => $request->address_line_one,
-            'address_line_two'            => $request->address_line_two,
-            'phone_work'                  => $request->phone_work,
-            'phone_personal'              => $request->phone_personal,
-            'email_work'                  => $request->email_work,
-            'email_personal'              => $request->email_personal,
-            'facebook_url'                => $request->facebook_url,
-            'instagram_url'               => $request->instagram_url,
-            'twitter_url'                 => $request->twitter_url,
-            'youtube_url'                 => $request->youtube_url,
-            'google_url'                  => $request->google_url,
-            'pinterest_url'               => $request->pinterest_url,
-            'linkedin_url'                => $request->linkedin_url,
-            'google_plus_url'             => $request->google_plus_url,
-            'gmail_url'                   => $request->gmail_url,
-            'apple_url'                   => $request->apple_url,
-            'bio_title'                   => $request->bio_title,
-            'bio_description'             => $request->bio_description,
-            'service_section_title'       => $request->service_section_title,
-            'service_section_description' => $request->service_section_description,
-            'service_one_title'           => $request->service_one_title,
-            'service_one_description'     => $request->service_one_description,
-            'service_two_title'           => $request->service_two_title,
-            'service_two_description'     => $request->service_two_description,
-            'service_three_title'         => $request->service_three_title,
-            'service_three_description'   => $request->service_three_description,
-            'company_title'               => $request->company_title,
-            'company_name'                => $request->company_name,
-            'company_address_line_one'    => $request->company_address_line_one,
-            'company_address_line_two'    => $request->company_address_line_two,
-            'company_email'               => $request->company_email,
-            'company_about_title'         => $request->company_about_title,
-            'company_about_description'   => $request->company_about_description,
-
-        ]);
-
-
-        if ($isUserRoute) {
-            return redirect()->route('user.nfc-card.index')->with('success', 'NFC updated successfully.');
-        } else {
-            return redirect()->route('admin.nfc-card.index')->with('success', 'NFC updated successfully.');
-        }
+        //
     }
 
     /**
@@ -439,5 +457,13 @@ class VirtualCardController extends Controller
         Session::put('nfc_template', $nfcTemplateValue);
 
         return response()->json(['success' => true]);
+    }
+
+    public function checkUrlAlias(Request $request)
+    {
+        $urlAlias = $request->query('url_alias');
+        $isUnique = !NfcCard::where('url_alias', $urlAlias)->exists();
+
+        return response()->json(['is_unique' => $isUnique]);
     }
 }

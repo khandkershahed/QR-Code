@@ -41,6 +41,7 @@ return new class extends Migration
             $table->integer('scan_count')->nullable();
 
             $table->boolean('header')->default(1)->nullable();
+            $table->boolean('company')->default(1)->nullable();
             $table->boolean('contact_list')->default(1)->nullable();
             $table->boolean('services')->default(1)->nullable();
             $table->boolean('galleries')->default(1)->nullable();
@@ -53,6 +54,7 @@ return new class extends Migration
             $table->boolean('banner')->default(1)->nullable();
             $table->boolean('news_latter_popup')->default(1)->nullable();
             $table->boolean('social_link')->default(1)->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

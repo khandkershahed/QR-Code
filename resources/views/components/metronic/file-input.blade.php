@@ -18,18 +18,43 @@
 </div>
 
 <script>
+    // function previewFile(input) {
+    //     var file = input.files[0];
+    //     var reader = new FileReader();
+
+    //     reader.onload = function(e) {
+    //         var preview = document.getElementById(input.id + '-preview');
+    //         preview.src = e.target.result;
+    //         preview.style.display = 'block';
+    //     }
+
+    //     if (file) {
+    //         reader.readAsDataURL(file);
+    //     }
+    // }
     function previewFile(input) {
         var file = input.files[0];
+        var preview = document.getElementById(input.id + '-preview');
         var reader = new FileReader();
 
-        reader.onload = function(e) {
-            var preview = document.getElementById(input.id + '-preview');
-            preview.src = e.target.result;
-            preview.style.display = 'block';
+        if (file && file.size > 2 * 1024 * 1024) { // 2MB
+            alert("File size must be less than 2MB");
+            input.value = ''; // Clear the input
+            preview.src = '';
+            preview.style.display = 'none';
+            return;
         }
 
         if (file) {
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            }
+
             reader.readAsDataURL(file);
+        } else {
+            preview.src = '';
+            preview.style.display = 'none';
         }
     }
 </script>

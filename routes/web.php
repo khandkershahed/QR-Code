@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\NfcIndividualMessageController;
 use App\Http\Controllers\Subscription\StripeWebhookController;
 use App\Http\Controllers\Reseller\ResellerSocialLoginController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Admin\VirtualCardFormController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,7 +56,8 @@ Route::get('/policy', [HomeController::class, 'policy'])->name('policy');
 Route::get('/terms', [HomeController::class, 'terms'])->name('terms');
 Route::get('/mail-test', [HomeController::class, 'mailTest'])->name('mailTest');
 Route::post('/mail-test', [HomeController::class, 'mailTestStore'])->name('mailTest.store');
-Route::get('/nfc/{name}/{code}', [HomeController::class, 'nfcPage'])->name('nfc.page');
+// Route::get('/nfc/{name}/{code}', [HomeController::class, 'nfcPage'])->name('nfc.page');
+Route::get('/nfc/{name}', [HomeController::class, 'nfcPage'])->name('nfc.page');
 Route::get('/user-subscription/register/{id}', [HomeController::class, 'subscribeRegister'])->name('user_subscribe.register');
 
 
@@ -137,8 +139,9 @@ Route::middleware('redirect.guard')->group(function () {
 });
 
 
-
-
+Route::get('/check-url-alias', [VirtualCardController::class, 'checkUrlAlias']);
+Route::post('general-info/store', [VirtualCardFormController::class, 'generalInfoStore'])->name('nfc.general_info.add');
+// Route::post('general-info/store', [ContactController::class, 'generalInfoStore'])->name('nfc.general_info.add');
 
 
 Route::middleware('auth')->group(function () {

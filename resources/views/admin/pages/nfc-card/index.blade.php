@@ -12,7 +12,7 @@
                         <strong class="">Total Created VCard: {{ $nfc_cards->count() }}</strong>
                     </div>
                     <div>
-                        <a href="{{ route('admin.nfc-card.create') }}" class="btn btn-sm btn-primary rounded-2 me-3">
+                        <a href="{{ route('admin.virtual-card.create') }}" class="btn btn-sm btn-primary rounded-2 me-3">
                             New Virtual Card
                         </a>
                     </div>

@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('nfc_data', function (Blueprint $table) {
             $table->id();
             $table->foreignId('card_id')->nullable()->constrained('nfc_cards')->onDelete('cascade');
-
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('email_personal')->nullable();
@@ -24,17 +23,11 @@ return new class extends Migration
             $table->string('location')->nullable();
             $table->text('location_url')->nullable();
             $table->date('date_of_birth')->nullable();
-            $table->string('company')->nullable();
+            $table->string('company_name')->nullable();
             $table->string('job_title')->nullable();
             $table->string('default_language')->nullable();
-
             $table->string('address_line_one')->nullable();
             $table->string('address_line_two')->nullable();
-
-
-
-
-
             $table->string('website_url')->nullable();
             $table->string('twitter_url')->nullable();
             $table->string('facebook_url')->nullable();
@@ -46,7 +39,6 @@ return new class extends Migration
             $table->string('whatsapp_url')->nullable();
             $table->string('pinterest_url')->nullable();
             $table->string('tiktok_url')->nullable();
-
             $table->string('start_time_monday')->nullable();
             $table->string('monday')->nullable();
             $table->string('end_time_monday')->nullable();
