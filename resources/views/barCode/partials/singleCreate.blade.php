@@ -18,8 +18,9 @@
                                 </svg>
                                 Product Name
                             </label>
-                            <x-metronic.input type="text" name="product_name" value="{{ old('product_name') }}"
-                                class="form-control form-control-solid mb-3 mb-lg-0" placeholder="3L Fresh Water" />
+                            <x-metronic.input type="text" name="product_name" id="product_name_input"
+                                value="{{ old('product_name') }}" class="form-control form-control-solid mb-3 mb-lg-0"
+                                placeholder="3L Fresh Water" />
 
                         </div>
                         <div class="fv-row col-lg-3">
@@ -54,7 +55,7 @@
                 <div class="border-dashed border-1 p-3 rounded-2">
                     <div class="row">
                         <div class="fv-row col-lg-4">
-                            <label class="required fw-semibold fs-6 mb-2 d-flex align-items-center">
+                            <label class="fw-semibold fs-6 mb-2 d-flex align-items-center">
                                 <div><svg class="svg-inline--fa fa-barcode fa-fw fa-sm text-muted mr-1"
                                         aria-hidden="true" focusable="false" data-prefix="fas" data-icon="barcode"
                                         role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
@@ -67,7 +68,7 @@
                             </label>
 
                             <select name="barcode_pattern" class="form-select mb-3" data-control="select2"
-                                data-placeholder="Select an option" required>
+                                data-placeholder="Select an option">
                                 <option></option>
                                 <option value="C39" @selected(old('barcode_pattern' == 'C39'))>C39</option>
                                 <option value="C39+" @selected(old('barcode_pattern' == 'C39+'))>C39+</option>
@@ -103,6 +104,32 @@
                             </select>
                         </div>
                         <div class="fv-row col-lg-4">
+                            <label class=" required fw-semibold fs-6 mb-2">Quantity
+                            </label>
+                            <x-metronic.input type="number" name="bar_code_quantity"
+                                value="{{ old('bar_code_quantity') }}" min="1"
+                                class="form-control form-control-solid mb-3 mb-lg-0" placeholder="1" />
+                            <p class="error-message text-danger" style="display: none;">Quantity is required.</p>
+                        </div>
+                        <div class="fv-row col-lg-4">
+                            <label class="fw-semibold fs-6 mb-2">Per Page
+                                <span data-bs-toggle="popover" data-bs-dismiss="true"
+                                    title="Total Row = 9 ,Total Column = 4"
+                                    data-bs-content="Per Page = 36 Barcode In A4 Page After Print">
+                                    <a href="javascriptvoid:(0)" class="ps-2 border px-2 bg-light-danger"><i
+                                            class="fas fa-info text-danger"></i></a>
+                                </span>
+                            </label>
+                            <input type="text" name="per_page"
+                                class="form-control form-control-solid mb-3 mb-lg-0" placeholder="36" min="1"
+                                value="{{ old('per_page') }}" />
+                        </div>
+                    </div>
+                </div>
+                {{-- Size Box --}}
+                <div class="border-dashed border-1 p-3 rounded-2 mt-2">
+                    <div class="row">
+                        <div class="fv-row col-lg-2">
                             <label class="fw-semibold fs-6 mb-2">
                                 <svg class="svg-inline--fa fa-paintbrush fa-fw fa-sm text-muted mr-1"
                                     aria-hidden="true" focusable="false" data-prefix="fas" data-icon="paintbrush"
@@ -118,32 +145,6 @@
                                 class="form-control form-control-solid mb-3 mb-lg-0 p-2 mt-1" placeholder="56849845"
                                 value="{{ old('barcode_color') }}" />
                         </div>
-                        <div class="fv-row col-lg-4">
-                            <label class="fw-semibold fs-6 mb-2">Quantity
-                            </label>
-                            <x-metronic.input type="number" name="bar_code_quantity"
-                                value="{{ old('bar_code_quantity') }}" min="1"
-                                class="form-control form-control-solid mb-3 mb-lg-0" placeholder="1" />
-                        </div>
-                        <div class="fv-row col-lg-4">
-                            <label class="fw-semibold fs-6 mb-2">Per Page
-                                <span data-bs-toggle="popover" data-bs-dismiss="true"
-                                    title="Total Row = 9 ,Total Column = 4"
-                                    data-bs-content="Per Page = 36 Barcode In A4 Page After Print">
-                                    <a href="javascriptvoid:(0)" class="ps-2 border px-2 bg-light-danger"><i
-                                            class="fas fa-info text-danger"></i></a>
-                                </span>
-                            </label>
-
-                            <input type="text" name="per_page"
-                                class="form-control form-control-solid mb-3 mb-lg-0" placeholder="36" min="1"
-                                value="{{ old('per_page') }}" />
-                        </div>
-                    </div>
-                </div>
-                {{-- Size Box --}}
-                <div class="border-dashed border-1 p-3 rounded-2 mt-2">
-                    <div class="row">
                         <div class="fv-row col-lg-8">
                             <label class="fw-semibold fs-6 mb-2 d-flex align-items-center">
                                 <div>
@@ -164,7 +165,7 @@
                                     value="2">
                             </div>
                         </div>
-                        <div class="fv-row col-lg-4">
+                        <div class="fv-row col-lg-2">
                             <label class="fw-semibold fs-6 mb-2 d-flex align-items-center">
                                 <div>
                                     <svg class="svg-inline--fa fa-up-down fa-fw fa-sm text-muted mr-1"
@@ -195,18 +196,7 @@
                                 <span class="indicator-label">
                                     Generate Barcode
                                 </span>
-
                             </button>
-                            {{-- <button id="kt_docs_formvalidation_text_submit" type="submit"
-                                class="btn btn-primary mt-7">
-                                <span class="indicator-label">
-                                    Generate Barcode
-                                </span>
-                                <span class="indicator-progress">
-                                    Please wait... <span
-                                        class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                                </span>
-                            </button> --}}
                         </div>
                     </div>
                 </div>
@@ -227,7 +217,8 @@
                     <span class="btn-label"> Print
                     </span>
                 </a>
-                <a href="" class="btn text-white w-100 ms-2 downloadBar" style="background-color: #7239e9;" download>
+                <a href="" class="btn text-white w-100 ms-2 downloadBar" style="background-color: #7239e9;"
+                    download>
                     <span class="btn-label"> Download
                     </span>
                 </a>
@@ -252,33 +243,124 @@
         </div>
     </div>
 </div>
-
 @push('scripts')
     <script>
         $(document).ready(function() {
+            // Function to handle preview update on input change
             $('.bar_code_create_form input, .bar_code_create_form textarea, .bar_code_create_form select')
                 .on('keyup change', function(e) {
                     e.preventDefault();
-                    var formData = new FormData($(this).closest('form')[0]);
+                    updatePreview();
+                });
 
+            // Function to update preview and perform form validation
+            function updatePreview() {
+                var formData = new FormData($('.bar_code_create_form')[0]);
+
+                $.ajax({
+                    url: '{{ route('barcode.preview') }}', // Replace with your Laravel route
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        // Update preview elements with barcode image URL
+                        if (response && response.bar_code) {
+                            $('.generatedBarCode').attr('src', response.bar_code);
+                            $('.printBar').attr('href', response.bar_code);
+                            $('.downloadBar').attr('href', response.bar_code);
+                        } else {
+                            console.error('Invalid response from server:', response);
+                            // Handle invalid response if needed
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Failed to update preview:', error);
+                        // Handle error if needed
+                    }
+                });
+            }
+
+            // Function to handle form submission
+            $('.bar_code_create_form').submit(function(e) {
+                e.preventDefault(); // Prevent default form submission
+
+                var form = $(this);
+                var formData = new FormData(form[0]);
+                var isValid = true;
+
+                // Remove any existing error messages and red borders
+                form.find('.error-message').remove();
+                form.find('.form-control').removeClass('is-invalid');
+
+                // Validate each required field
+                form.find('[name="product_name"], [name="bar_code_quantity"]').each(function() {
+                    var fieldValue = $(this).val().trim();
+                    if (!fieldValue) {
+                        // Show error message for the current field
+                        $(this).addClass('is-invalid');
+                        $(this).after(
+                            '<p class="error-message text-danger">This field is required.</p>');
+                        isValid = false;
+                    }
+                });
+
+                if (isValid) {
+                    // Perform AJAX form submission
                     $.ajax({
-                        url: '{{ route('barcode.preview') }}', // Replace this with the URL of your Laravel route or endpoint
+                        url: form.attr('action'), // Form action URL
                         type: 'POST',
                         data: formData,
                         processData: false,
                         contentType: false,
                         success: function(response) {
-                            // Display the QR code image
-                            // $("#generatedBarCodeContainer").show();
-                            $('.generatedBarCode').attr('src', response.bar_code);
-                            $('.printBar').attr('href', response.bar_code);
-                            $('.downloadBar').attr('href', response.bar_code);
+                            // Optionally handle success response
+                            // For example, show success message with SweetAlert
+                            Swal.fire({
+                                text: 'Form submitted successfully!',
+                                icon: 'success',
+                                buttonsStyling: false,
+                                confirmButtonText: 'Ok, got it!',
+                                customClass: {
+                                    confirmButton: 'btn btn-primary'
+                                }
+                            });
                         },
                         error: function(xhr, status, error) {
-                            console.error(error);
+                            console.error('Failed to submit form.', error);
+
+                            // Show SweetAlert error message for AJAX error
+                            Swal.fire({
+                                text: 'Failed to submit form. Please try again later.',
+                                icon: 'error',
+                                buttonsStyling: false,
+                                confirmButtonText: 'Ok, got it!',
+                                customClass: {
+                                    confirmButton: 'btn btn-primary'
+                                }
+                            });
                         }
                     });
-                });
+                } else {
+                    // Show SweetAlert error message for validation errors
+                    Swal.fire({
+                        text: 'Some input fields are not filled up!',
+                        icon: 'error',
+                        buttonsStyling: false,
+                        confirmButtonText: 'Ok, got it!',
+                        customClass: {
+                            confirmButton: 'btn btn-primary'
+                        }
+                    });
+                }
+            });
+
+            // Optional: Hide error message and remove red border on input change
+            $('.bar_code_create_form input, .bar_code_create_form select').on('input change', function() {
+                $(this).removeClass('is-invalid');
+                $(this).next('.error-message').remove();
+                updatePreview(); // Update preview on input change
+            });
         });
     </script>
 @endpush

@@ -102,9 +102,9 @@
         </div>
         {{-- Bulk Barcode Info Upload --}}
         <div class="create-bulk-barcode-show" id="create-bulk-barcode-form" style="display: none;">
-            <div class="w-lg-75 w-100 mx-auto row">
+            <div class="w-100 mx-auto row">
                 <div class="col-lg-12">
-                    <div class="row equal-height" id="equal-height-row">
+                    <div class="row gx-3">
                         <h2 class="text-center mt-10">Create Bulk Barcode</h2>
                         @include('barCode.partials.bulkCreate')
                     </div>
@@ -234,92 +234,6 @@
         window.addEventListener('resize', setEqualHeight);
     </script>
     {{-- First Form Validation --}}
-    <script>
-        // Define form element
-        const form = document.getElementById('kt_docs_formvalidation_text');
-
-        // Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
-        var validator = FormValidation.formValidation(
-            form, {
-                fields: {
-                    'product_name': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Product Name Is Mendatory'
-                            }
-                        }
-                    },
-                    'product_price': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Product Price Is Mendatory'
-                            }
-                        }
-                    },
-                    'product_price': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Product Price Is Mendatory'
-                            }
-                        }
-                    },
-                },
-
-                plugins: {
-                    trigger: new FormValidation.plugins.Trigger(),
-                    bootstrap: new FormValidation.plugins.Bootstrap5({
-                        rowSelector: '.fv-row',
-                        eleInvalidClass: '',
-                        eleValidClass: ''
-                    })
-                }
-            }
-        );
-
-        // Submit button handler
-        const submitButton = document.getElementById('kt_docs_formvalidation_text_submit');
-        submitButton.addEventListener('click', function(e) {
-            // Prevent default button action
-            e.preventDefault();
-
-            // Validate form before submit
-            if (validator) {
-                validator.validate().then(function(status) {
-                    console.log('validated!');
-
-                    if (status == 'Valid') {
-                        // Show loading indication
-                        submitButton.setAttribute('data-kt-indicator', 'on');
-
-                        // Disable button to avoid multiple click
-                        submitButton.disabled = true;
-
-                        // Simulate form submission. For more info check the plugin's official documentation: https://sweetalert2.github.io/
-                        setTimeout(function() {
-                            // Remove loading indication
-                            submitButton.removeAttribute('data-kt-indicator');
-
-                            // Enable button
-                            submitButton.disabled = false;
-
-                            // Show popup confirmation
-                            Swal.fire({
-                                text: "Form has been successfully submitted!",
-                                icon: "success",
-                                buttonsStyling: false,
-                                confirmButtonText: "Ok, got it!",
-                                customClass: {
-                                    confirmButton: "btn btn-primary"
-                                }
-                            });
-
-                            //form.submit(); // Submit form
-                        }, 2000);
-                    }
-                });
-            }
-        });
-    </script>
     {{-- Radio Button Select Toggler Form --}}
     <script>
         document.addEventListener('DOMContentLoaded', function() {

@@ -12,7 +12,7 @@
                         <strong class="">Total Created NFC: {{ $bar_codes->count() }}</strong>
                     </div>
                     <div>
-                        <a href="{{ route('admin.nfc-card.create') }}" class="btn btn-sm btn-primary rounded-2 me-3">
+                        <a href="{{ route('admin.barcode.create') }}" class="btn btn-sm btn-primary rounded-2 me-3">
                             Create Bar Code
                         </a>
                     </div>
