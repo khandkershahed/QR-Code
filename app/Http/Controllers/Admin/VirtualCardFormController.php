@@ -211,13 +211,16 @@ class VirtualCardFormController extends Controller
                 $uploadedFiles[$key] = ['status' => 0];
             }
         }
-
+        $urlAlias = $nfc_card->url_alias;
+        if ($request->url_alias !== $nfc_card->url_alias) {
+            $urlAlias = $request->url_alias;
+        }
         // Update NfcCard
         $nfc_card->update([
             'banner_image'              => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_name'] : $nfc_data->banner_image,
             'profile_image'             => $uploadedFiles['profile_image']['status'] == 1 ? $uploadedFiles['profile_image']['file_name'] : $nfc_data->profile_image,
             'nfc_type'                  => $request->nfc_type,
-            'url_alias'                 => $request->url_alias,
+            'url_alias'                 => $urlAlias,
             'vcard_name'                => $request->vcard_name,
             'designation'               => $request->designation,
             'bio_description'           => $request->bio_description,
@@ -318,6 +321,6 @@ class VirtualCardFormController extends Controller
 
         $view = view('nfc.form_partials.general_info', compact('nfc_card'))->render();
 
-        return response()->json(['general_info_container' => $view]);
+        return response()->json(['general_info_view' => $view]);
     }
 }
