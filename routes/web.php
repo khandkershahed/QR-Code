@@ -138,6 +138,10 @@ Route::middleware('redirect.guard')->group(function () {
 
 Route::get('/check-url-alias', [VirtualCardController::class, 'checkUrlAlias']);
 Route::post('general-info/store', [VirtualCardFormController::class, 'generalInfoStore'])->name('nfc.general_info.add');
+Route::post('business-hours/store', [VirtualCardFormController::class, 'businessHoursStore'])->name('nfc.business_hours.add');
+Route::post('social-links/store', [VirtualCardFormController::class, 'socialLinksStore'])->name('nfc.social_links.add');
+Route::post('service/store', [VirtualCardFormController::class, 'serviceStore'])->name('nfc.service.add');
+Route::delete('/service/delete/{id}', [VirtualCardFormController::class, 'serviceDestroy'])->name('service.destroy');
 // Route::post('general-info/store', [ContactController::class, 'generalInfoStore'])->name('nfc.general_info.add');
 
 

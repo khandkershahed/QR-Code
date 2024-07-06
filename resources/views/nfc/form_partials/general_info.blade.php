@@ -1,4 +1,4 @@
-<form class="general_info_form form" method="POST" action="{{ route('nfc.general_info.add') }}" autocomplete="off">
+<form class="general_info_form form" method="POST" action="{{ route('nfc.general_info.add') }}" autocomplete="off" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="card_id" value="{{ $nfc_card->id }}">
     <div class="row">
@@ -35,15 +35,19 @@
                     <x-metronic.label for="profile_image"
                         class="fw-semibold fs-6 mb-2">{{ __('Profile Image') }}</x-metronic.label>
                     <x-metronic.file-input id="profile_image" name="profile_image"
-                        class="form-control form-control-solid form-control-sm"
-                        :value="optional($nfc_card)->profile_image"></x-metronic.file-input>
+                        class="form-control form-control-solid form-control-sm" :source="optional($nfc_card)->profile_image
+                            ? asset('storage/nfc/' . optional($nfc_card)->profile_image)
+                            : ''" :value="optional($nfc_card)->profile_image">
+                    </x-metronic.file-input>
+
                 </div>
                 <div class="col-lg-12 mb-5">
                     <x-metronic.label for="banner_image"
                         class="fw-semibold fs-6 mb-2">{{ __('Cover Image ') }}</x-metronic.label>
                     <x-metronic.file-input id="banner_image" name="banner_image"
-                        class="form-control form-control-solid form-control-sm"
-                        :value="optional($nfc_card)->banner_image"></x-metronic.file-input>
+                        class="form-control form-control-solid form-control-sm" :source="optional($nfc_card)->banner_image
+                            ? asset('storage/nfc/' . optional($nfc_card)->banner_image)
+                            : ''" :value="optional($nfc_card)->banner_image"></x-metronic.file-input>
                 </div>
             </div>
         </div>

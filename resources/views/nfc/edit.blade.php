@@ -41,7 +41,7 @@
                         <h1 class="text-center">Business Hours</h1>
                     </div>
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-12 business_hours_container">
                             @include('nfc.form_partials.business_hours')
                         </div>
                     </div>
@@ -98,7 +98,7 @@
                             links - Website</h1>
                     </div>
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-12 social_links_container">
                             @include('nfc.form_partials.social_links')
                         </div>
                     </div>
@@ -120,5 +120,5 @@
 </div>
 
 @push('scripts')
-   
+
 @endpush

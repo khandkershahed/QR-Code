@@ -50,11 +50,19 @@
                                         @endif
                                     </div>
                                     <div class="d-flex flex-column">
-                                        <a href="{{ route('virtual-card.edit', $nfc_card->id) }}"
-                                            class="mb-1 text-decoration-none fs-6">
-                                            Khandker Shahed
-                                        </a>
-                                        <span class="fs-6">Full Stack Developer</span>
+                                        @if (strpos(Route::current()->getName(), 'user.') === 0)
+                                            <a href="{{ route('user.virtual-card.edit', $nfc_card->code) }}"
+                                                class="mb-1 text-decoration-none fs-6">
+                                                {{ $nfc_card->vcard_name }}
+                                            </a>
+                                        @else
+                                            <a href="{{ route('admin.virtual-card.edit', $nfc_card->code) }}"
+                                                class="mb-1 text-decoration-none fs-6">
+                                                {{ $nfc_card->vcard_name }}
+                                            </a>
+                                        @endif
+
+                                        <span class="fs-6">{{ $nfc_card->designation }}</span>
                                     </div>
                                 </div>
 

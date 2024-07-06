@@ -80,7 +80,7 @@
                     </a>
                 </div>
                 <div class="menu-item">
-                    <a class="menu-link {{ Route::is('barcode.index', 'barcode.create', 'barcode.edit') ? 'active' : '' }}"
+                    <a class="menu-link {{ Route::is('admin.barcode.index', 'admin.barcode.create', 'admin.barcode.edit') ? 'active' : '' }}"
                         href="{{ route('barcode.index') }}">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
@@ -101,8 +101,8 @@
                     </a>
                 </div>
                 <div class="menu-item">
-                    <a class="menu-link {{ Route::is('virtual-card.index', 'virtual-card.create', 'virtual-card.edit') ? 'active' : '' }}"
-                        href="{{ route('virtual-card.index') }}">
+                    <a class="menu-link {{ Route::is('admin.virtual-card.index', 'admin.virtual-card.create', 'admin.virtual-card.edit') ? 'active' : '' }}"
+                        href="{{ route('admin.virtual-card.index') }}">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1"

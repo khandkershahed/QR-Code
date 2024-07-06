@@ -439,20 +439,21 @@
                                     placeholder="Facebook URL" />
                             </div>
                         </div>
-                        <div class="col-lg-4">
-                            <div class="fv-row my-3">
-                                <x-metronic.label class="fw-semibold fs-6 mb-2">Instagram URL</x-metronic.label>
-                                <x-metronic.input type="url" name="instagram_url" value="{{ old('instagram_url') }}"
-                                    class="form-control form-control-solid mb-3 mb-lg-0"
-                                    placeholder="Instagram URL" />
-                            </div>
-                        </div>
+
                         <div class="col-lg-4">
                             <div class="fv-row my-3">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Twitter URL</x-metronic.label>
                                 <x-metronic.input type="url" name="twitter_url" value="{{ old('twitter_url') }}"
                                     class="form-control form-control-solid mb-3 mb-lg-0"
                                     placeholder="Twitter URL" />
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="fv-row my-3">
+                                <x-metronic.label class="fw-semibold fs-6 mb-2">Instagram URL</x-metronic.label>
+                                <x-metronic.input type="url" name="instagram_url" value="{{ old('instagram_url') }}"
+                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                    placeholder="Instagram URL" />
                             </div>
                         </div>
                         <div class="col-lg-4">
