@@ -1,56 +1,65 @@
-{{-- <div class="row">
-    @foreach ($templates as $template)
-        <div class="col-lg-2">
-            <input type="radio" class="btn-check nfc_template_radio" name="nfc_template" value="{{ $template['value'] }}"
-                {{ $loop->first ? 'checked' : '' }} id="{{ $template['value'] }}">
-            <label
-                class="btn btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center mb-5 template-nfc"
-                for="{{ $template['value'] }}">
-                <img class="nfc-type-mobile" height="300px" width="100%"
-                    style="width: 100% !important; object-fit: scale-down !important;"
-                    src="{{ asset($template['image']) }}" alt="{{ $template['value'] }}">
-            </label>
-            <!--end::Option-->
-        </div>
-    @endforeach
-</div> --}}
 <style>
-    .screen {
-        display: block;
-        width: 300px;
-        height: 350px;
-        overflow: hidden;
-        position: relative;
-        border: 2px solid #b3b3b3;
-        border-radius: 1px;
-        margin: 0 auto;
-    }
+.window {
+  width: 400px;
+  margin: auto;
+  border: 7px solid #1d505d;
+  border-radius: 5px;
+  box-shadow: 0px 20px 46px 2px #bcc6ff;
+  cursor: n-resize;
+}
 
-    .screen img {
-        bottom: -3210px;
-        width: 100%;
-        height: auto;
-        position: absolute;
-        left: 0%;
-        z-index: 0;
-        margin: 0;
-        padding: 0;
-        -webkit-transition: top 11s;
-        -moz-transition: top 11s;
-        -ms-transition: top 11s;
-        -o-transition: top 11s;
-        transition: bottom 11s;
-    }
+.window img {
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+  height: 270px;
+  transition: 8s all ease;
+}
 
-    .screen:hover img {
-        bottom: 0;
-        -webkit-transition: all 11s;
-        -moz-transition: all 11s;
-        -ms-transition: all 11s;
-        -o-transition: all 11s;
-        transition: all 11s;
-    }
+.window img:hover {
+  object-position: bottom;
+}
+
+.credit {
+  font-weight: 300;
+  text-align: center;
+  margin-top: 6rem;
+  color: #b6bee8;
+  font-size: 14px;
+}
+
+.credit:hover span {
+  color: #e91e63;
+}
+
+.credit:hover a {
+  color: #e91e63;
+  border-color: #e91e63;
+}
+
+.credit span {
+  color: #b6bee8;
+  transition: ease all 200ms;
+}
+
+.credit a {
+  color: #b6bee8;
+  transition: ease-in all 700ms;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border-bottom: 2px solid #b6bee8;
+}
+
+.credit a:hover {
+  color: #fff;
+  box-shadow: inset 0 -5.5rem 0 #e91e63;
+  border-bottom: 2px solid #e91e63;
+}
+
 </style>
+
+
+
 <div class="row mt-10">
     @foreach ($templates as $template)
         <div class="col-lg-3 position-relative">
@@ -60,9 +69,9 @@
                 <label
                     class="btn template-btn btn-outline btn-outline-dashed btn-active-light-primary custom-active p-2 d-flex align-items-center mb-5 custom-radio"
                     for="{{ $template['value'] }}" style="">
-                    <div class="screen mt-4 rounded-2">
-                        <img class="img-fluid" src="{{ asset($template['image']) }}" alt="{{ $template['value'] }}">
-                    </div>
+                    <div class="window">
+                        <img src="{{ asset($template['image']) }}" alt="{{ $template['value'] }}">
+                      </div>
                 </label>
             </div>
         </div>
