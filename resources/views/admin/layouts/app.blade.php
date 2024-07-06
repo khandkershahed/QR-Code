@@ -67,6 +67,7 @@
     @endphp
     <script src="{{ asset($hostUrl . 'plugins/global/plugins.bundle.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/scripts.bundle.js') }}"></script>
+
     <script src="{{ asset($hostUrl . 'plugins/custom/datatables/datatables.bundle.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/documentation/general/datatables/buttons.js') }}"></script>
     <script src="{{ asset($hostUrl . 'plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
