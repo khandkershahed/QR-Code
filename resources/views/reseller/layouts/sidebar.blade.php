@@ -6,7 +6,7 @@
         <a href="{{ route('reseller.dashboard') }}">
             <img alt="Logo" src="https://i.ibb.co/BNBTVN4/logo.png" class="h-60px logo">
         </a>
-        <div id="kt_aside_toggle" class="btn btn-icon w-auto px-0 btn-active-color-primary aside-toggle active"
+        <div id="kt_aside_toggle" class="btn btn-icon w-auto px-0 btn-active-color-info aside-toggle active"
             data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body"
             data-kt-toggle-name="aside-minimize">
             <span class="svg-icon svg-icon-1 rotate-180">
@@ -242,7 +242,7 @@
     <div class="aside-footer flex-column-auto pt-5 pb-7 px-5" id="kt_aside_footer">
         <form method="POST" action="{{ route('logout') }}">
             @csrf
-            <a href="{{ route('logout') }}" class="btn btn-custom btn-primary w-100"
+            <a href="{{ route('logout') }}" class="btn w-100 text-white" style="background-color: #7239e9; "
                 onclick="event.preventDefault();this.closest('form').submit();">
                 <span class="btn-label">
                     {{ __('Log Out') }}

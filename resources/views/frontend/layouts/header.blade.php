@@ -269,12 +269,11 @@
 
                         <a href="{{ route('dashboard') }}" class="light-btn"><i class="fas fa-user me-1"></i> My
                             Dashboard</a>
-
                     @else
-                    {{-- <div class="navbar-collapse collapse clearfix"> --}}
+                        {{-- <div class="navbar-collapse collapse clearfix"> --}}
 
                         <a href="{{ route('login') }}" class="light-btn"><i class="fas fa-user me-1"></i> LOGIN</a>
-                    {{-- </div> --}}
+                        {{-- </div> --}}
                         {{-- <a href="{{ route('register') }}" class="light-btn">Sign Up</a> --}}
                     @endauth
                     <a href="{{ route('pricing') }}" class="theme-btn style-two rounded-0">Get Started

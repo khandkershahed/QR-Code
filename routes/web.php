@@ -1,22 +1,27 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Providers\RouteServiceProvider;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Test\QrTestController;
 use App\Http\Controllers\Admin\QrCodeController;
 use App\Http\Controllers\AdminProfileController;
+use App\Http\Controllers\Admin\BarCodeController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\NfcCardController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\VendorProfileController;
 use App\Http\Controllers\ResellerProfileController;
 use App\Http\Controllers\Admin\NewsLetterController;
+use App\Http\Controllers\Admin\VirtualCardController;
 use App\Http\Controllers\User\UserSocialLoginController;
 use App\Http\Controllers\Subscription\SubscriptionController;
 use App\Http\Controllers\Admin\NfcIndividualMessageController;
 use App\Http\Controllers\Subscription\StripeWebhookController;
 use App\Http\Controllers\Reseller\ResellerSocialLoginController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Admin\VirtualCardFormController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +56,8 @@ Route::get('/policy', [HomeController::class, 'policy'])->name('policy');
 Route::get('/terms', [HomeController::class, 'terms'])->name('terms');
 Route::get('/mail-test', [HomeController::class, 'mailTest'])->name('mailTest');
 Route::post('/mail-test', [HomeController::class, 'mailTestStore'])->name('mailTest.store');
-Route::get('/nfc/{name}/{code}', [HomeController::class, 'nfcPage'])->name('nfc.page');
+// Route::get('/nfc/{name}/{code}', [HomeController::class, 'nfcPage'])->name('nfc.page');
+Route::get('/nfc/{name}', [HomeController::class, 'nfcPage'])->name('nfc.page');
 Route::get('/user-subscription/register/{id}', [HomeController::class, 'subscribeRegister'])->name('user_subscribe.register');
 
 
@@ -67,6 +73,7 @@ Route::get('stripe/cancel', function () {
 })->name('stripe.cancel');
 
 
+Route::post('barcode/preview', [BarCodeController::class, 'barcodePreview'])->name('barcode.preview');
 
 
 
@@ -77,7 +84,7 @@ Route::resources(
     ],
 );
 Route::post('/generate/qr', [QrTestController::class, 'generateQRCode'])->name('generate.qr');
-Route::controller(UserSocialLoginController::class)->group(function(){
+Route::controller(UserSocialLoginController::class)->group(function () {
     Route::get('auth/google', 'redirectToGoogle')->name('auth.google');
     Route::get('auth/google/callback', 'handleGoogleCallback')->name('callback.google');
     Route::get('/auth/facebook', 'redirectFacebook')->name('auth.facebook');
@@ -87,7 +94,7 @@ Route::controller(UserSocialLoginController::class)->group(function(){
     Route::get('auth/github/callback', 'handleGithubCallback')->name('callback.github');
 });
 
-Route::controller(ResellerSocialLoginController::class)->group(function(){
+Route::controller(ResellerSocialLoginController::class)->group(function () {
     Route::get('reseller/auth/google', 'redirectToGoogle')->name('reseller.auth.google');
     Route::get('reseller/auth/google/callback', 'handleGoogleCallback')->name('reseller.callback.google');
     Route::get('reseller/auth/facebook', 'redirectFacebook')->name('reseller.auth.facebook');
@@ -99,15 +106,15 @@ Route::controller(ResellerSocialLoginController::class)->group(function(){
 
 
 
-Route::get('/flush-session', function() {
+Route::get('/flush-session', function () {
     session()->flush();
     return response()->json(['message' => 'Session flushed successfully']);
 });
 
 Route::post('contact/store', [ContactController::class, 'store'])
-        ->name('contact.add');
+    ->name('contact.add');
 Route::post('newsletter/store', [NewsLetterController::class, 'store'])
-        ->name('newsletter.store');
+    ->name('newsletter.store');
 
 
 // Route::get('/dashboard', function () {
@@ -117,6 +124,21 @@ Route::post('newsletter/store', [NewsLetterController::class, 'store'])
 // Route::get('/admin/dashboard', function () {
 //     return view('admin/dashboard');
 // })->middleware(['auth:admin', 'verified'])->name('admin.dashboard');
+
+
+Route::middleware('redirect.guard')->group(function () {
+    Route::resources(
+        [
+            'barcode'             => BarCodeController::class,
+            'virtual-card'        => VirtualCardController::class,
+        ],
+    );
+});
+
+
+Route::get('/check-url-alias', [VirtualCardController::class, 'checkUrlAlias']);
+Route::post('general-info/store', [VirtualCardFormController::class, 'generalInfoStore'])->name('nfc.general_info.add');
+// Route::post('general-info/store', [ContactController::class, 'generalInfoStore'])->name('nfc.general_info.add');
 
 
 Route::middleware('auth')->group(function () {

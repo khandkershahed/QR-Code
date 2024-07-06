@@ -19,6 +19,7 @@
         "laravel/socialite": "^5.12",
         "laravel/tinker": "^2.8",
         "mailersend/laravel-driver": "^2.5",
+        "milon/barcode": "^11.0",
         "nguyenary/qr-code-monkey": "^1.0",
         "php-flasher/flasher-laravel": "^1.15",
         "simplesoftwareio/simple-qrcode": "^4.2",

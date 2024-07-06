@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SiteController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\QrCodeController;
+use App\Http\Controllers\Admin\BarCodeController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\NfcCardController;
 use App\Http\Controllers\RequestedCardController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\Admin\DynamicCssController;
 use App\Http\Controllers\Admin\NewsLetterController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\ActivityLogController;
+use App\Http\Controllers\Admin\VirtualCardController;
 use App\Http\Controllers\Subscription\PlanController;
 use App\Http\Controllers\Admin\EmailSettingController;
 use App\Http\Controllers\RestaurantCategoryController;
@@ -30,7 +32,6 @@ use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
-use App\Http\Controllers\Admin\VirtualCardController;
 
 Route::middleware('guest:admin')->prefix('admin')->name('admin.')->group(function () {
 
@@ -95,6 +96,7 @@ Route::middleware('auth:admin', 'role:admin')->prefix('admin')->name('admin.')->
             'user-notification'   => UserNotificationController::class,
             'categories'          => CategoryController::class,
             'qr-code'             => QrCodeController::class,
+            'barcode'             => BarCodeController::class,
             'nfc-card'            => NfcCardController::class,
             'virtual-card'        => VirtualCardController::class,
             'requested-card'      => RequestedCardController::class,

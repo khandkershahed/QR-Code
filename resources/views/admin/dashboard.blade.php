@@ -621,7 +621,7 @@
 
                                     <div class="m-0">
                                         <a href="{{ route('admin.plans.create') }}"
-                                            class="btn btn-color-white bg-white bg-opacity-15 bg-hover-opacity-25 fw-semibold">
+                                            class="btn btn-color-danger bg-white bg-opacity-15 bg-hover-opacity-25 fw-semibold">
                                             Create Plan !
                                         </a>
                                     </div>

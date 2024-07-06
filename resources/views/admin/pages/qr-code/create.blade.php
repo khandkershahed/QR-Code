@@ -1,7 +1,7 @@
 <x-admin-app-layout :title="'QR Code Generate'">
     <div class="row align-items-center" id="qr-columns-container">
         <div class="col-lg-8 col-md-7">
-            <div class="card mt-10 p-0" id="qr-first-card">
+            <div class="card my-10 p-0" id="qr-first-card">
                 <div class="card-body p-0">
                     <div class="stepper stepper-pills" id="kt_stepper_example_clickable">
                         <div class="stepper-nav flex-center flex-wrap steaper-header">
@@ -185,7 +185,7 @@
         </div>
 
         <div class="col-lg-4">
-            <div class="card" id="qr-second-card">
+            <div class="card">
                 <div class="card-header px-0 border-0">
                     <div class="d-flex flex-column justify-content-center align-items-center"
                         style="width: 100%; background: #0098da3d; border-top-left-radius: 5px; border-top-right-radius: 5px; padding: 15px;">
