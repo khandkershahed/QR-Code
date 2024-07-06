@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Stevebauman\Location\Facades\Location;
 use App\Http\Requests\Admin\NfcCardRequest;
+use App\Models\NfcProduct;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class VirtualCardFormController extends Controller
@@ -340,12 +341,65 @@ class VirtualCardFormController extends Controller
     public function serviceDestroy(string $id)
     {
         $nfc_service = NfcService::findOrFail($id);
-        $nfc_card = NfcCard::with(
-            'nfcService',
-        )->where('id', $nfc_service->card_id)->first();
-
+        $card_id = $nfc_service->card_id;
         $nfc_service->delete();
+        $nfc_card = NfcCard::with('nfcService')->where('id', $card_id)->first();
         $view = view('nfc.form_partials.services', compact('nfc_card'))->render();
-        return response()->json(['service_view' => $view]);
+        return response()->json(['service_delete_view' => $view]);
+    }
+
+
+    public function productStore(Request $request)
+    {
+
+        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
+        $card_id = $request->card_id;
+        $nfc_card = NfcCard::findOrFail($card_id);
+
+        $files = [
+            'product_icon' => $request->file('product_icon'),
+        ];
+
+        $filePath = 'public/nfc/product/';
+        $uploadedFiles = [];
+
+        foreach ($files as $key => $file) {
+            if (!empty($file)) {
+                $uploadedFiles[$key] = customUpload($file, $filePath, $name = $nfc_card->code . '_' . $key);
+                if ($uploadedFiles[$key]['status'] === 0) {
+                    return redirect()->back()->with('error', $uploadedFiles[$key]['error_message']);
+                }
+            } else {
+                $uploadedFiles[$key] = ['status' => 0];
+            }
+        }
+
+        // Update NfcData
+        $nfc_product = NfcProduct::create([
+            'card_id'             => $request->card_id,
+            'product_name'        => $request->product_name,
+            'product_currency'    => $request->product_currency,
+            'product_price'       => $request->product_price,
+            'product_url'         => $request->product_url,
+            'product_description' => $request->product_description,
+            'product_icon'        => $uploadedFiles['product_icon']['status'] == 1 ? $uploadedFiles['product_icon']['file_name'] : null,
+
+        ]);
+
+        $nfc_card = NfcCard::with('nfcProduct')->where('id', $card_id)->first();
+
+        $view = view('nfc.form_partials.products', compact('nfc_card'))->render();
+
+        return response()->json(['product_view' => $view]);
+    }
+
+    public function productDestroy(string $id)
+    {
+        $nfc_product = NfcProduct::findOrFail($id);
+        $card_id = $nfc_product->card_id;
+        $nfc_product->delete();
+        $nfc_card = NfcCard::with('nfcProduct')->where('id', $card_id)->first();
+        $view = view('nfc.form_partials.products', compact('nfc_card'))->render();
+        return response()->json(['product_delete_view' => $view]);
     }
 }

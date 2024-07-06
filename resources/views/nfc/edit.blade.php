@@ -52,7 +52,7 @@
                         <h1 class="text-center">Services</h1>
                     </div>
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-12 service_container">
                             @include('nfc.form_partials.services')
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                         <h1 class="text-center">Products</h1>
                     </div>
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-12 product_container">
                             @include('nfc.form_partials.products')
                         </div>
                     </div>

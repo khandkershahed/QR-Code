@@ -108,8 +108,9 @@
                                     class="fa-solid fa-link text-primary"></i></a>
                         </td>
                         <td>
-                            <a href="{{ route('service.destroy', $service->id) }}" class="text-danger"
-                                onclick="deleteService()" >Delete <i class="fa-solid fa-trash text-danger"></i></a>
+                            <a href="{{ route('nfc.service.destroy', $service->id) }}" class="text-danger"
+                                onclick="deleteService(event, '{{ route('nfc.service.destroy', $service->id) }}')">Delete <i
+                                    class="fa-solid fa-trash text-danger"></i></a>
                         </td>
                     </tr>
                 @endforeach
@@ -131,7 +132,8 @@
             var formData = new FormData(form[0]);
             var service_container = $('.service_container');
 
-            var modal = $('#serviceCreateModal');
+            var modalElement = document.getElementById('serviceCreateModal');
+            var modalInstance = bootstrap.Modal.getInstance(modalElement);
 
             // Optionally disable the submit button to prevent multiple submissions
             var submitButton = form.find('.kt_docs_formvalidation_text_submit');
@@ -152,24 +154,20 @@
                 success: function(response) {
                     console.log('Form submitted successfully:', response);
                     if (response.service_view) {
-
                         console.log('Updating container with new HTML');
-                        modal.close();
-                        service_container.empty();
-                        service_container.html(response.service_view);
+                        modalInstance.hide(); // Use Bootstrap's modal hide method
+                        service_container.html(response.service_view); // Replace HTML directly
                         toastr.success('Data saved successfully!', 'Success');
                     } else {
                         console.error('Unexpected response format:', response);
                         toastr.error('Unexpected response format.', 'Error');
                     }
-
                     // Optionally reset the form or perform other actions
                     // form.trigger('reset');
                 },
                 error: function(xhr, status, error) {
                     // Handle error response
                     console.error('Error:', error);
-
                     toastr.error('An error occurred while saving data.', 'Error');
                 },
                 complete: function() {
@@ -180,12 +178,9 @@
             });
         }
 
-        function deleteService() {
-
-            var deleteUrl = $(this).attr("href");
+        function deleteService(event, deleteUrl) {
+            event.preventDefault(); // Prevent the default link action
             var service_container = $('.service_container');
-            service_container.html(response.service_view);
-            toastr.success('Data saved successfully!', 'Success');
             Swal.fire({
                 title: "Are you sure?",
                 text: "You won't be able to revert this!",
@@ -204,32 +199,27 @@
                         url: deleteUrl,
                         type: "DELETE",
                         headers: {
-                            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
-                                "content"
-                            ),
+                            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
                         },
-                        success: function(data) {
-                            Swal.fire(
-                                "Deleted!",
-                                "Your file has been deleted.",
-                                "success"
-                            ).then(function() {
-                                // location.reload();
-                                var service_container = $('.service_container');
-                                service_container.html(response.service_view);
-                                toastr.success('Data saved successfully!', 'Success');
-                            });
+                        success: function(response) {
+                            $('.service_container').html('');
+                            $('.service_container').html(response.service_delete_view); // Replace HTML directly
+                            Swal.fire("Deleted!", "Your service has been deleted.", "success").then(
+                                function() {
+                                    console.log('Updating container with new HTML');
+                                });
+                            console.log('Updating container with new HTML');
+                            toastr.success('Service deleted successfully!', 'Success');
                         },
                         error: function(xhr, status, error) {
-                            Swal.fire("Error Occurred!", error, "error");
+                            Swal.fire("Error Occurred!",
+                                "An error occurred while deleting the service.", "error");
                         },
                     });
-                } else if (result.dismiss === swal.DismissReason.cancel) {
-                    Swal.fire("Cancelled", "Your imaginary file is safe :)", "error");
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    Swal.fire("Cancelled", "Your service is safe :)", "error");
                 }
             });
         }
-
-       
     </script>
 @endpush
