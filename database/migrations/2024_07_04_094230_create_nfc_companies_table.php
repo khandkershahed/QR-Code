@@ -28,7 +28,7 @@ return new class extends Migration
             $table->text('company_linkedin')->nullable();
             $table->text('company_youtube')->nullable();
             $table->text('company_instagram')->nullable();
-            
+
             $table->timestamps();
         });
     }

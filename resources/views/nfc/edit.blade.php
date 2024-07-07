@@ -113,13 +113,33 @@
                         </div>
                     </div>
                 </div>
+                <div class="tab-pane fade" id="kt_vtab_pane_12" role="tabpanel">
+                    <div>
+                        <h1 class="text-center">Privacy Policy</h1>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 privacy_container">
+                            @include('nfc.form_partials.privacy')
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="kt_vtab_pane_13" role="tabpanel">
+                    <div>
+                        <h1 class="text-center">Terms & Condition</h1>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 terms_container">
+                            @include('nfc.form_partials.terms')
+                        </div>
+                    </div>
+                </div>
                 <div class="tab-pane fade" id="kt_vtab_pane_16" role="tabpanel">
                     <div>
                         <h1 class="text-center">Settings</h1>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
-                            {{-- @include('nfc.form_partials.setting') --}}
+                            @include('nfc.form_partials.setting')
                         </div>
                     </div>
                 </div>

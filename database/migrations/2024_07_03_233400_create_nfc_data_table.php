@@ -62,6 +62,7 @@ return new class extends Migration
             $table->string('end_time_sunday')->nullable();
 
             $table->longText('privacy_policy')->nullable();
+            $table->longText('terms_condition')->nullable();
             $table->string('qr_code')->nullable();
             $table->timestamps();
         });
