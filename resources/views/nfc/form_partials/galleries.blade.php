@@ -31,6 +31,11 @@
 
                             <input type="text" name="gallery_name"
                                 class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" />
+                                <x-metronic.label class="required fw-semibold fs-6 mb-2">Gallery
+                                    Name</x-metronic.label>
+                                <x-metronic.input type="text" class="form-control form-control-solid form-control-sm"
+                                    name="service_name" id="service_name" required placeholder="Gallery Name"
+                                    :value="old('service_name')" />
                         </div>
                         <div class="fv-row">
                             <x-metronic.label for="logo"
@@ -69,7 +74,7 @@
 </div>
 
 <div class="table-responsive">
-    <table id="kt_datatable_example_1" class="table align-middle table-row-dashed table-border fs-6 gy-5">
+    <table class="datatable table align-middle table-row-dashed table-border fs-6 gy-5">
         <thead>
             <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
                 <th class="w-10px pe-2">

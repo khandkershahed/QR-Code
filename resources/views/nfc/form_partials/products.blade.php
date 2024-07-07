@@ -89,7 +89,7 @@
 </div>
 
 <div class="table-responsive">
-    <table id="kt_datatable_example_1" class="table align-middle table-row-dashed table-border fs-6 gy-5">
+    <table class="table align-middle table-row-dashed table-border fs-6 gy-5">
         <thead>
             <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
                 <th>Sl</th>
@@ -100,8 +100,8 @@
                 <th>ACTION</th>
             </tr>
         </thead>
-        <tbody class="text-gray-600 fw-semibold">
-            @if ($nfc_card->nfcProduct)
+        <tbody class="datatable text-gray-600 fw-semibold">
+            @if ($nfc_card->nfcProduct->count() > 0)
                 @foreach ($nfc_card->nfcProduct as $product)
                     <tr>
                         <td>
@@ -132,7 +132,7 @@
                 @endforeach
             @else
                 <tr>
-                    <h5 class="text-center">No Product available</h5>
+                    <td class="text-center" colspan="6">No Product available</td>
                 </tr>
             @endif
         </tbody>

@@ -46,6 +46,16 @@
                         </div>
                     </div>
                 </div>
+                <div class="tab-pane fade" id="kt_vtab_pane_4" role="tabpanel">
+                    <div>
+                        <h1 class="text-center">Companies</h1>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 company_container">
+                            @include('nfc.form_partials.companies')
+                        </div>
+                    </div>
+                </div>
 
                 <div class="tab-pane fade" id="kt_vtab_pane_5" role="tabpanel">
                     <div>

@@ -173,8 +173,7 @@
             // Public methods
             return {
                 init: function() {
-                    table = document.querySelector('#kt_datatable_example, .datatable');
-
+                    table = document.querySelector('.datatable');
                     if (!table) {
                         return;
                     }

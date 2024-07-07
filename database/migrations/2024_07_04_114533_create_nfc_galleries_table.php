@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('nfc_galleries', function (Blueprint $table) {
             $table->id();
             $table->foreignId('card_id')->nullable()->constrained('nfc_cards')->onDelete('cascade');
-            $table->string('title')->nullable();
+            $table->string('gallery_title')->nullable();
             $table->string('gallery_type')->nullable();
-            $table->string('attachment')->nullable();
-            $table->string('link')->nullable();
+            $table->string('gallery_attachment')->nullable();
+            $table->string('gallery_link')->nullable();
             $table->timestamps();
         });
     }

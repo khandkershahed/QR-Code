@@ -13,7 +13,7 @@
   object-fit: cover;
   object-position: top;
   height: 270px;
-  transition: 8s all ease;
+  transition: 11s all ease;
 }
 
 .window img:hover {
@@ -39,7 +39,7 @@
 
 .credit span {
   color: #b6bee8;
-  transition: ease all 200ms;
+  transition: ease all 8s;
 }
 
 .credit a {
@@ -54,6 +54,9 @@
   color: #fff;
   box-shadow: inset 0 -5.5rem 0 #e91e63;
   border-bottom: 2px solid #e91e63;
+}
+.btn-check:active + .btn.custom-active, .btn-check:checked + .btn.custom-active, .btn.custom-active.active, .btn.custom-active.show, .btn.custom-active:active:not(.btn-active), .btn.custom-active:focus:not(.btn-active), .btn.custom-active:hover:not(.btn-active), .show > .btn.custom-active {
+    opacity: 0.8;
 }
 
 </style>

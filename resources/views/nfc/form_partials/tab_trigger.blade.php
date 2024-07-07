@@ -11,13 +11,18 @@
                             <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
                                 <a class="nav-link w-100 btn btn-flex btn-active-info fs-6 fw-normal"
                                     data-bs-toggle="tab" href="#kt_vtab_pane_2" aria-selected="true" role="tab"><i
-                                        class="fa-solid fa-id-badge"></i> vCard Templates</a>
+                                        class="fa-solid fa-id-badge"></i> VCard Templates</a>
                             </li>
                             <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
                                 <a class="nav-link w-100 btn btn-flex btn-active-info fs-6 fw-normal"
                                     data-bs-toggle="tab" href="#kt_vtab_pane_3" aria-selected="false" role="tab"
                                     tabindex="-1"><i class="fa-solid fa-business-time"></i> Business
                                     Hours</a>
+                            </li>
+                            <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
+                                <a class="nav-link w-100 btn btn-flex btn-active-info fs-6 fw-normal"
+                                    data-bs-toggle="tab" href="#kt_vtab_pane_4" aria-selected="false" role="tab"
+                                    tabindex="-1"><i class="fa-solid fa-building"></i> Companies</a>
                             </li>
                             <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
                                 <a class="nav-link w-100 btn btn-flex btn-active-info fs-6 fw-normal"
