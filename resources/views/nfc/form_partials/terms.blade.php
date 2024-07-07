@@ -1,20 +1,19 @@
-<form class="terms_form form" method="POST" action="{{ route('nfc.terms.add') }}" autocomplete="off" enctype="multipart/form-data">
+<form class="terms_form form" method="POST" action="{{ route('nfc.terms.add') }}" autocomplete="off"
+    enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="card_id" value="{{ $nfc_card->id }}">
     <div class="row mt-10">
-        <div class="fv-row col-lg-4 mb-7">
+        <div class="fv-row col-lg-12 mb-7">
             <x-metronic.label class="required fw-semibold fs-6 mb-2">Terms & Condition</x-metronic.label>
-                <textarea name="terms_condition" id="" cols="30" rows="10">{{ optional($nfc_card->nfcData)->terms_condition }}</textarea>
-
+                <textarea name="terms_condition" class="form-control w-100 form-control-solid" id="" rows="17">{{ optional($nfc_card->nfcData)->terms_condition }}</textarea>
         </div>
 
     </div>
 
     <div class="d-flex justify-content-end mt-10">
-        <button type="submit" onclick="submitTermsForm()"
-            class="kt_docs_formvalidation_text_submit btn btn-primary">
+        <button type="submit" onclick="submitTermsForm()" class="kt_docs_formvalidation_text_submit btn btn-primary">
             <span class="indicator-label">
-                Save
+                Save Terms
             </span>
             <span class="indicator-progress">
                 Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
@@ -24,6 +23,20 @@
 </form>
 
 @push('scripts')
+<script src="https://cdn.tiny.cloud/1/tv8ze2aprjlx1qoo8xnmh6r0e0w8hhgeukhe4esuhmhglca0/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        var options = {
+            selector: "#kt_docs_tinymce_basic",
+            height: "480"
+        };
+
+        if (KTThemeMode.getMode() === "dark") {
+            options["skin"] = "oxide-dark";
+            options["content_css"] = "dark";
+        }
+
+        tinymce.init(options);
+    </script>
     <script>
         function submitTermsForm() {
             var form = $('.terms_form');

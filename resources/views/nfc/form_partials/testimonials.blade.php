@@ -76,11 +76,11 @@
                             data-kt-check-target="#kt_datatable_example_1 .form-check-input" value="1" />
                     </div>
                 </th> --}}
-                <th>Sl</th>
-                <th>NAME</th>
-                <th>Designation</th>
-                <th width="30%">Description</th>
-                <th>ACTION</th>
+                <th width="5%">Sl</th>
+                <th width="30%">NAME</th>
+                <th width="10%">Designation</th>
+                <th width="50%">Description</th>
+                <th width="5%">ACTION</th>
             </tr>
         </thead>
         <tbody class="text-gray-600 fw-semibold">

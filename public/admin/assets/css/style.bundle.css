@@ -59295,3 +59295,7 @@ body {
     background-color: white; /* Example background color */
     padding: 10px; /* Example padding */
 }
+.form-check-image{
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+    border-radius: 10px;
+}

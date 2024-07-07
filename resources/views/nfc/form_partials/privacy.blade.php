@@ -1,20 +1,18 @@
-<form class="privacy_form form" method="POST" action="{{ route('nfc.privacy.add') }}" autocomplete="off" enctype="multipart/form-data">
+<form class="privacy_form form" method="POST" action="{{ route('nfc.privacy.add') }}" autocomplete="off"
+    enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="card_id" value="{{ $nfc_card->id }}">
     <div class="row mt-10">
-        <div class="fv-row col-lg-4 mb-7">
+        <div class="fv-row col-lg-12 mb-7">
             <x-metronic.label class="required fw-semibold fs-6 mb-2">Privacy Policy</x-metronic.label>
-                <textarea name="privacy_policy" id="" cols="30" rows="10">{{ optional($nfc_card->nfcData)->privacy_policy }}</textarea>
-
+            <textarea name="privacy_policy" class="form-control w-100 form-control-solid" id="" rows="17">{{ optional($nfc_card->nfcData)->privacy_policy }}</textarea>
         </div>
-
     </div>
 
     <div class="d-flex justify-content-end mt-10">
-        <button type="submit" onclick="submitPrivacyForm()"
-            class="kt_docs_formvalidation_text_submit btn btn-primary">
+        <button type="submit" onclick="submitPrivacyForm()" class="kt_docs_formvalidation_text_submit btn btn-primary">
             <span class="indicator-label">
-                Save
+                Save Policy
             </span>
             <span class="indicator-progress">
                 Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>

@@ -2,16 +2,16 @@
     @csrf
     <input type="hidden" name="card_id" value="{{ $nfc_card->id }}">
     <div class="row py-10">
-        <div class="col-lg-6 mb-4 bg-light">
+        <div class="col-lg-6 mb-4 bg-light mx-auto">
             <div class="row border-info border-dashed border-1 gx-2 py-2 align-items-center px-3 rounded-2">
                 <div class="col-lg-12">
                     <div class="row align-items-center pb-3">
                         <div class="col-lg-4">
-                            <div class="form-check ps-0 border bg-primary p-3 rounded-2 text-center text-white">
+                            <div class="form-check ps-0 border bg-dark p-3 rounded-2 text-center text-white" style="text-align: start !important;">
                                 <label class="form-check-label" for="monday">
-                                    <input class="form-check-input" type="checkbox" name="monday" @checked(optional($nfc_card->nfcData)->monday == '1') value="1"
+                                    <input class="form-check-input ms-3" type="checkbox" name="monday" @checked(optional($nfc_card->nfcData)->monday == '1') value="1"
                                         id="monday_checkbox" />
-                                    Monday
+                                    <span class="ps-3">Monday</span>
                                 </label>
                             </div>
                         </div>
@@ -28,11 +28,13 @@
                     </div>
                     <div class="row align-items-center pb-3">
                         <div class="col-lg-4">
-                            <div class="form-check ps-0 border bg-primary p-3 rounded-2 text-center text-white">
+                            <div class="form-check ps-0 border bg-dark p-3 rounded-2 text-center text-white" style="text-align: start !important;">
                                 <label class="form-check-label" for="tuesday">
-                                    <input class="form-check-input" type="checkbox" name="tuesday" @checked(optional($nfc_card->nfcData)->tuesday == '1') value="1"
+                                    <input class="form-check-input ms-3" type="checkbox" name="tuesday" @checked(optional($nfc_card->nfcData)->tuesday == '1') value="1"
                                         id="tuesday_checkbox" />
+                                        <span class="ps-3">
                                     Tuesday
+                                   </span>
                                 </label>
                             </div>
                         </div>
@@ -49,11 +51,13 @@
                     </div>
                     <div class="row align-items-center pb-3">
                         <div class="col-lg-4">
-                            <div class="form-check ps-0 border bg-primary p-3 rounded-2 text-center text-white">
+                            <div class="form-check ps-0 border bg-dark p-3 rounded-2 text-center text-white" style="text-align: start !important;">
                                 <label class="form-check-label" for="wednesday">
-                                    <input class="form-check-input" type="checkbox" name="wednesday" @checked(optional($nfc_card->nfcData)->wednesday == '1') value="1"
+                                    <input class="form-check-input ms-3" type="checkbox" name="wednesday" @checked(optional($nfc_card->nfcData)->wednesday == '1') value="1"
                                         id="wednesday_checkbox" />
-                                    Wednesday
+                                    <span class="ps-3">
+                                        Wednesday
+                                    </span>
                                 </label>
                             </div>
                         </div>
@@ -70,11 +74,11 @@
                     </div>
                     <div class="row align-items-center pb-3">
                         <div class="col-lg-4">
-                            <div class="form-check ps-0 border bg-primary p-3 rounded-2 text-center text-white">
+                            <div class="form-check ps-0 border bg-dark p-3 rounded-2 text-center text-white" style="text-align: start !important;">
                                 <label class="form-check-label" for="thursday">
-                                    <input class="form-check-input" type="checkbox" name="thursday" @checked(optional($nfc_card->nfcData)->thursday == '1') value="1"
+                                    <input class="form-check-input ms-3" type="checkbox" name="thursday" @checked(optional($nfc_card->nfcData)->thursday == '1') value="1"
                                         id="thursday_checkbox" />
-                                    Thursday
+                                    <span class="ps-3">Thursday</span>
                                 </label>
                             </div>
                         </div>
@@ -91,11 +95,11 @@
                     </div>
                     <div class="row align-items-center pb-3">
                         <div class="col-lg-4">
-                            <div class="form-check ps-0 border bg-primary p-3 rounded-2 text-center text-white">
+                            <div class="form-check ps-0 border bg-dark p-3 rounded-2 text-center text-white" style="text-align: start !important;">
                                 <label class="form-check-label" for="friday">
-                                    <input class="form-check-input" type="checkbox" name="friday" @checked(optional($nfc_card->nfcData)->friday == '1') value="1"
+                                    <input class="form-check-input ms-3" type="checkbox" name="friday" @checked(optional($nfc_card->nfcData)->friday == '1') value="1"
                                         id="friday_checkbox" />
-                                    Friday
+                                        <span class="ps-3">Friday</span>
                                 </label>
                             </div>
                         </div>
@@ -112,11 +116,11 @@
                     </div>
                     <div class="row align-items-center pb-3">
                         <div class="col-lg-4">
-                            <div class="form-check ps-0 border bg-primary p-3 rounded-2 text-center text-white">
+                            <div class="form-check ps-0 border bg-dark p-3 rounded-2 text-center text-white" style="text-align: start !important;">
                                 <label class="form-check-label" for="saturday">
-                                    <input class="form-check-input" type="checkbox" name="saturday" @checked(optional($nfc_card->nfcData)->saturday == '1') value="1"
+                                    <input class="form-check-input ms-3" type="checkbox" name="saturday" @checked(optional($nfc_card->nfcData)->saturday == '1') value="1"
                                         id="saturday_checkbox" />
-                                    Saturday
+                                        <span class="ps-3">Saturday</span>
                                 </label>
                             </div>
                         </div>
@@ -133,11 +137,11 @@
                     </div>
                     <div class="row align-items-center pb-3">
                         <div class="col-lg-4">
-                            <div class="form-check ps-0 border bg-primary p-3 rounded-2 text-center text-white">
+                            <div class="form-check ps-0 border bg-dark p-3 rounded-2 text-center text-white" style="text-align: start !important;">
                                 <label class="form-check-label" for="sunday">
-                                    <input class="form-check-input" type="checkbox" name="sunday" @checked(optional($nfc_card->nfcData)->sunday == '1') value="1"
+                                    <input class="form-check-input ms-3" type="checkbox" name="sunday" @checked(optional($nfc_card->nfcData)->sunday == '1') value="1"
                                         id="sunday_checkbox" />
-                                    Sunday
+                                        <span class="ps-3">Sunday</span>
                                 </label>
                             </div>
                         </div>
