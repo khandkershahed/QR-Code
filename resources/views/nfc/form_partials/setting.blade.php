@@ -2,92 +2,152 @@
     <!--begin::Row-->
     <div class="mb-5" data-kt-buttons="true" data-kt-buttons-target=".form-check-image, .form-check-input">
         <div class="row">
-            <div class="col-4 mb-3">
+            <div class="col-lg-3 mb-5">
                 <label class="form-check-image border p-3 active">
                     <div class="form-check-wrapper">
-                        <img class="img-fluid" style="height: 200px; object-fit: cover;"
-                            src="https://img.freepik.com/free-vector/business-opening-hours-with-photo_23-2148821770.jpg?size=338&ext=jpg&ga=GA1.1.1546980028.1719619200&semt=ais_user" />
+                        <img class="img-fluid rounded-3" style="height: 200px; object-fit: cover;"
+                            src="{{ asset('admin') }}/assets/media/ManageSection/general-info.png" />
                     </div>
 
                     <div class="form-check form-check-custom form-check-solid my-5">
                         <input class="form-check-input" type="checkbox" checked value="1" name="option2" />
                         <div class="form-check-label">
-                            Business Hour
+                           Hide <strong class="fw-bold">"General Information"</strong> Section From My VCard.
                         </div>
                     </div>
                 </label>
             </div>
-            <div class="col-4 mb-3">
+            <div class="col-lg-3 mb-3">
                 <label class="form-check-image border p-3">
                     <div class="form-check-wrapper">
-                        <img class="img-fluid" style="width: 100%; height: 200px; object-fit: cover;"
-                            src="https://images.ctfassets.net/ukazlt65o6hl/57KsUVgR3aMOiJdWafCJNv/a91282a079be9253d1cab82c937bcb2a/AdobeStock_251500673_1.png?w=1910&h=1276&q=70&fm=png" />
+                        <img class="img-fluid rounded-3" style="width: 100%; height: 200px; object-fit: cover;"
+                        src="{{ asset('admin') }}/assets/media/ManageSection/business-hour.png" />
                     </div>
 
                     <div class="form-check form-check-custom form-check-solid my-5 me-10">
                         <input class="form-check-input" type="checkbox" value="1" name="option2" id="text_wow" />
                         <div class="form-check-label">
-                            Service
+                            Hide <strong class="fw-bold">"Business Hour"</strong> Section From My VCard.
                         </div>
                     </div>
                 </label>
             </div>
-            <div class="col-4 mb-3">
+            <div class="col-lg-3 mb-3">
                 <label class="form-check-image border p-3">
                     <div class="form-check-wrapper">
-                        <img class="img-fluid" style="height: 200px; object-fit: cover;"
-                            src="https://www.mountaingoatsoftware.com/uploads/blog/2016-09-06-what-is-a-product.png" />
+                        <img class="img-fluid rounded-3" style="height: 200px; object-fit: cover;"
+                        src="{{ asset('admin') }}/assets/media/ManageSection/companies.png" />
                     </div>
 
                     <div class="form-check form-check-custom form-check-solid my-5 me-10">
                         <input class="form-check-input" type="checkbox" value="1" name="option2" />
                         <div class="form-check-label">
-                            Product
+                            Hide <strong class="fw-bold">"Companies"</strong> Section From My VCard.
                         </div>
                     </div>
                 </label>
             </div>
-            <div class="col-4 mb-3">
+            <div class="col-lg-3 mb-3">
                 <label class="form-check-image border p-3">
                     <div class="form-check-wrapper">
-                        <img class="img-fluid" style="height: 200px; object-fit: cover;"
-                            src="https://artgallery.yale.edu/sites/default/files/styles/hero_small/public/2023-01/ag-doc-2281-0036-pub.jpg?h=147a4df9&itok=uclO7OrF" />
+                        <img class="img-fluid rounded-3" style="height: 200px; object-fit: cover;"
+                        src="{{ asset('admin') }}/assets/media/ManageSection/services.png" />
                     </div>
 
                     <div class="form-check form-check-custom form-check-solid my-5 me-10">
                         <input class="form-check-input" type="checkbox" value="1" name="option2" />
                         <div class="form-check-label">
-                            Galleries
+                            Hide <strong class="fw-bold">"Services"</strong> Section From My VCard.
                         </div>
                     </div>
                 </label>
             </div>
-            <div class="col-4 mb-3">
+            <div class="col-lg-3 mb-3">
                 <label class="form-check-image border p-3">
                     <div class="form-check-wrapper">
-                        <img class="img-fluid" style=" height: 200px; object-fit: cover;"
-                            src="https://www.aihr.com/wp-content/uploads/employee-testimonial-examples-cover.png" />
+                        <img class="img-fluid rounded-3" style=" height: 200px; object-fit: cover;"
+                        src="{{ asset('admin') }}/assets/media/ManageSection/product.png" />
                     </div>
 
                     <div class="form-check form-check-custom form-check-solid my-5 me-10">
                         <input class="form-check-input" type="checkbox" value="1" name="option2" />
                         <div class="form-check-label">
-                            Testimonial
+                            Hide <strong class="fw-bold">"Product"</strong> Section From My VCard.
                         </div>
                     </div>
                 </label>
             </div>
-            <div class="col-4 mb-3">
+            <div class="col-lg-3 mb-3">
                 <label class="form-check-image border p-3">
                     <div class="form-check-wrapper">
-                        <img class="img-fluid" style=" height: 200px; object-fit: cover;"
-                            src="https://lh3.googleusercontent.com/DK-JL2knP2hNlllW-1SqqNX8WvgqP9dlVHBXCFKfyfbhVcogKOoty4JCxVbGPEpjxPGQXQyCFh0CRN_4YflnnrCh=w640-h400-e365-rj-sc0x00ffffff" />
+                        <img class="img-fluid rounded-3" style=" height: 200px; object-fit: cover;"
+                        src="{{ asset('admin') }}/assets/media/ManageSection/gallery.png" />
                     </div>
 
                     <div class="form-check form-check-custom form-check-solid my-5 me-10">
                         <input class="form-check-input" type="checkbox" value="1" name="option2" />
                         <div class="form-check-label">
-                            Social Link
+                            Hide <strong class="fw-bold">"Gallery"</strong> Section From My VCard.
+                        </div>
+                    </div>
+                </label>
+            </div>
+            <div class="col-lg-3 mb-3">
+                <label class="form-check-image border p-3">
+                    <div class="form-check-wrapper">
+                        <img class="img-fluid rounded-3" style=" height: 200px; object-fit: cover;"
+                        src="{{ asset('admin') }}/assets/media/ManageSection/testimonial.png" />
+                    </div>
+
+                    <div class="form-check form-check-custom form-check-solid my-5 me-10">
+                        <input class="form-check-input" type="checkbox" value="1" name="option2" />
+                        <div class="form-check-label">
+                            Hide <strong class="fw-bold">"Testimonial"</strong> Section From My VCard.
+                        </div>
+                    </div>
+                </label>
+            </div>
+            <div class="col-lg-3 mb-3">
+                <label class="form-check-image border p-3">
+                    <div class="form-check-wrapper">
+                        <img class="img-fluid rounded-3" style=" height: 200px; object-fit: cover;"
+                        src="{{ asset('admin') }}/assets/media/ManageSection/social.png" />
+                    </div>
+
+                    <div class="form-check form-check-custom form-check-solid my-5 me-10">
+                        <input class="form-check-input" type="checkbox" value="1" name="option2" />
+                        <div class="form-check-label">
+                            Hide <strong class="fw-bold">"Social Link"</strong> Section From My VCard.
+                        </div>
+                    </div>
+                </label>
+            </div>
+            <div class="col-lg-3 mb-3">
+                <label class="form-check-image border p-3">
+                    <div class="form-check-wrapper">
+                        <img class="img-fluid rounded-3" style=" height: 200px; object-fit: cover;"
+                        src="{{ asset('admin') }}/assets/media/ManageSection/privacy.png" />
+                    </div>
+
+                    <div class="form-check form-check-custom form-check-solid my-5 me-10">
+                        <input class="form-check-input" type="checkbox" value="1" name="option2" />
+                        <div class="form-check-label">
+                            Hide <strong class="fw-bold">"Privacy Policy"</strong> Section From My VCard.
+                        </div>
+                    </div>
+                </label>
+            </div>
+            <div class="col-lg-3 mb-3">
+                <label class="form-check-image border p-3">
+                    <div class="form-check-wrapper">
+                        <img class="img-fluid rounded-3" style=" height: 200px; object-fit: cover;"
+                        src="{{ asset('admin') }}/assets/media/ManageSection/terms.png" />
+                    </div>
+
+                    <div class="form-check form-check-custom form-check-solid my-5 me-10">
+                        <input class="form-check-input" type="checkbox" value="1" name="option2" />
+                        <div class="form-check-label">
+                            Hide <strong class="fw-bold">"Terms & Condition"</strong> Section From My VCard.
                         </div>
                     </div>
                 </label>
