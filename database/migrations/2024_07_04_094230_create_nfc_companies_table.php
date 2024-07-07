@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('nfc_companies', function (Blueprint $table) {
             $table->id();
             $table->foreignId('card_id')->nullable()->constrained('nfc_cards')->onDelete('cascade');
+
             $table->string('company_name')->nullable();
             $table->string('company_email')->nullable();
             $table->string('company_phone')->nullable();
@@ -27,6 +28,7 @@ return new class extends Migration
             $table->text('company_linkedin')->nullable();
             $table->text('company_youtube')->nullable();
             $table->text('company_instagram')->nullable();
+            
             $table->timestamps();
         });
     }
