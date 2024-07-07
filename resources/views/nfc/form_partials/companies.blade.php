@@ -7,8 +7,7 @@
     </div>
 
     <div class="d-flex justify-content-end" data-kt-docs-table-toolbar="base">
-        <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal"
-            data-bs-target="#companyCreateModal">
+        <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#companyCreateModal">
             Add Company
         </button>
     </div>
@@ -84,12 +83,12 @@
     <table class="table align-middle table-row-dashed table-border fs-6 gy-5">
         <thead>
             <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
-                <th>Sl</th>
-                <th>Company IMAGE</th>
-                <th>Company NAME</th>
-                <th>Company Price</th>
-                <th>Company URL</th>
-                <th>ACTION</th>
+                <th width="5%">Sl</th>
+                <th width="35%">Company Name</th>
+                <th width="18%">Company Phone</th>
+                <th width="15%">Company Address</th>
+                <th width="15%">Website</th>
+                <th width="12%">Action</th>
             </tr>
         </thead>
         <tbody class="datatable text-gray-600 fw-semibold">
@@ -100,19 +99,20 @@
                             {{ $loop->iteration }}
                         </td>
                         <td>
-                            <div>
-                                <img class="img-fluid" width="50px" height="50px"
+                            <div class="image image-circle image-mini me-3">
+                                <img class="img-fluid w-45px"
                                     src="{{ asset('storage/nfc/company/' . $company->company_icon) }}" alt="">
+                            </div>
+                            <div class="d-flex flex-column">
+                                <p class="mb-0">{{ $company->company_name }}</p>
+                                <span class="fs-6">{{ $company->company_email }}</span>
                             </div>
                         </td>
                         <td>
-                            <p class="mb-0">{{ $company->company_name }}</p>
+                            {{ $company->company_phone }}
                         </td>
                         <td>
-                            <p class="mb-0">{{ $company->company_price }}</p>
-                        </td>
-                        <td>
-                            <a href="{{ $company->company_url }}" target="_blank" class="text-primary">Company Url <i
+                            <a href="{{ $company->company_website }}" target="_blank" class="text-primary">Company Url <i
                                     class="fa-solid fa-link text-primary"></i></a>
                         </td>
                         <td>
@@ -212,7 +212,7 @@
                         success: function(response) {
                             $('.company_container').html('');
                             $('.company_container').html(response
-                            .company_delete_view); // Replace HTML directly
+                                .company_delete_view); // Replace HTML directly
                             Swal.fire("Deleted!", "Your company has been deleted.", "success").then(
                                 function() {
                                     console.log('Updating container with new HTML');
