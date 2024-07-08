@@ -40,15 +40,15 @@ return new class extends Migration
             $table->string('nfc_url')->nullable();
             $table->integer('scan_count')->nullable();
 
-            $table->boolean('header')->default(1)->nullable();
-            $table->boolean('company')->default(1)->nullable();
-            $table->boolean('contact_list')->default(1)->nullable();
-            $table->boolean('services')->default(1)->nullable();
-            $table->boolean('galleries')->default(1)->nullable();
-            $table->boolean('products')->default(1)->nullable();
-            $table->boolean('testimonials')->default(1)->nullable();
-            $table->boolean('blogs')->default(1)->nullable();
+            $table->boolean('general_info')->default(1)->nullable();
             $table->boolean('business_hours')->default(1)->nullable();
+            $table->boolean('companies')->default(1)->nullable();
+            $table->boolean('services')->default(1)->nullable();
+            $table->boolean('products')->default(1)->nullable();
+            $table->boolean('galleries')->default(1)->nullable();
+            $table->boolean('testimonials')->default(1)->nullable();
+            $table->boolean('social_links')->default(1)->nullable();
+            $table->boolean('inquiry_form')->default(1)->nullable();
             $table->boolean('appointments')->default(1)->nullable();
             $table->boolean('map')->default(1)->nullable();
             $table->boolean('banner')->default(1)->nullable();

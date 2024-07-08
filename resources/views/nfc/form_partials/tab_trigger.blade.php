@@ -48,6 +48,12 @@
                             </li>
                             <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
                                 <a class="nav-link w-100 btn btn-flex btn-active-info fs-6 fw-normal"
+                                    data-bs-toggle="tab" href="#kt_vtab_pane_10" aria-selected="false" role="tab"
+                                    tabindex="-1"><i class="fa-solid fa-comments"></i>
+                                    Seo</a>
+                            </li>
+                            <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
+                                <a class="nav-link w-100 btn btn-flex btn-active-info fs-6 fw-normal"
                                     data-bs-toggle="tab" href="#kt_vtab_pane_11" aria-selected="false"
                                     role="tab" tabindex="-1"><i class="fa-solid fa-share-from-square"></i>
                                     Social

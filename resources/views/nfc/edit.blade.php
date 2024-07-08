@@ -77,6 +77,13 @@
                         </div>
                     </div>
                 </div>
+                <div class="tab-pane fade" id="kt_vtab_pane_10" role="tabpanel">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            @include('nfc.form_partials.seo')
+                        </div>
+                    </div>
+                </div>
 
                 <div class="tab-pane fade" id="kt_vtab_pane_11" role="tabpanel">
                     <div class="row">
