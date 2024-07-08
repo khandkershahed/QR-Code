@@ -100,7 +100,7 @@
                 <th>ACTION</th>
             </tr>
         </thead>
-        <tbody class="datatable text-gray-600 fw-semibold">
+        <tbody class="text-gray-600 fw-semibold">
             @if ($nfc_card->nfcProduct->count() > 0)
                 @foreach ($nfc_card->nfcProduct as $product)
                     <tr>

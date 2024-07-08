@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('nfc_testimonials', function (Blueprint $table) {
             $table->id();
             $table->foreignId('card_id')->nullable()->constrained('nfc_cards')->onDelete('cascade');
-            $table->text('service_name')->nullable();
-            $table->mediumText('service_description')->nullable();
-            $table->string('service_icon')->nullable();
+            $table->text('testimonial_name')->nullable();
+            $table->mediumText('testimonial_description')->nullable();
+            $table->string('testimonial_image')->nullable();
             $table->timestamps();
         });
     }

@@ -69,17 +69,25 @@
                     </div>
                 </div>
 
+                <div class="tab-pane fade" id="kt_vtab_pane_8" role="tabpanel">
+                    <div class="row">
+                        <div class="col-lg-12 banner_container">
+                            @include('nfc.form_partials.banner')
+                        </div>
+                    </div>
+                </div>
+
 
                 <div class="tab-pane fade" id="kt_vtab_pane_9" role="tabpanel">
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-12 testimonial_container">
                             @include('nfc.form_partials.testimonials')
                         </div>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="kt_vtab_pane_10" role="tabpanel">
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-12 seo_container">
                             @include('nfc.form_partials.seo')
                         </div>
                     </div>
@@ -100,6 +108,20 @@
                     </div>
                 </div>
                 <div class="tab-pane fade" id="kt_vtab_pane_13" role="tabpanel">
+                    <div class="row">
+                        <div class="col-lg-12 terms_container">
+                            @include('nfc.form_partials.terms')
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="kt_vtab_pane_14" role="tabpanel">
+                    <div class="row">
+                        <div class="col-lg-12 fonts_container">
+                            @include('nfc.form_partials.fonts')
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="kt_vtab_pane_15" role="tabpanel">
                     <div class="row">
                         <div class="col-lg-12 terms_container">
                             @include('nfc.form_partials.terms')

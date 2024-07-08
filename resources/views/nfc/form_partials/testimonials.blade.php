@@ -8,13 +8,13 @@
 
     <div class="d-flex justify-content-end" data-kt-docs-table-toolbar="base">
         <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal"
-            data-bs-target="#modalIdtestimonials">
+            data-bs-target="#testimonialCreateModal">
             Add testimonials
         </button>
     </div>
     {{-- Add testimonials modal --}}
     <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-    <div class="modal fade" id="modalIdtestimonials" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+    <div class="modal fade" id="testimonialCreateModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
         role="dialog" aria-labelledby="modalTitleIdtestimonials" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
@@ -25,31 +25,33 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form class="kt_docs_formvalidation_text form row" action="#" autocomplete="off">
-                        <div class="fv-row">
-                            <label class="required fw-semibold fs-6 mb-2">Person
-                                Name</label>
-
-                            <input type="text" name="testimonials_name"
-                                class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" />
+                    <form class="testimonial_form form" method="POST" action="{{ route('nfc.testimonial.add') }}"
+                        autocomplete="off" enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" name="card_id" value="{{ $nfc_card->id }}">
+                        <div class="fv-row mb-5">
+                            <x-metronic.label class="required fw-semibold fs-6 mb-2">Name</x-metronic.label>
+                            <x-metronic.input type="text" class="form-control form-control-solid form-control-sm"
+                                name="testimonial_name" id="testimonial_name" required placeholder="Name"
+                                :value="old('testimonial_name')" />
                         </div>
-                        <div class="fv-row">
-                            <label class="required fw-semibold fs-6 mb-2">Person
-                                Designation</label>
-
-                            <input type="text" name="testimonials_name"
-                                class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" />
+                        <div class="fv-row mb-5">
+                            <label class="fw-semibold fs-6 mb-2">Description</label>
+                            <textarea name="testimonial_description" class="form-control form-control-solid mb-3 mb-lg-0"
+                                id="testimonial_description" rows="3">{{ old('testimonial_description') }}</textarea>
                         </div>
-                        <div class="fv-row">
-                            <label class="required fw-semibold fs-6 mb-2">Description</label>
-                            <textarea name="" id="" class="form-control form-control-solid mb-3 mb-lg-0" cols="30"
-                                rows="10"></textarea>
+                        <div class="fv-row mb-5">
+                            <x-metronic.label for="testimonial_image" class="fw-semibold fs-6 mb-2">{{ __('Image') }}
+                            </x-metronic.label>
+                            <x-metronic.file-input id="testimonial_image" name="testimonial_image"
+                                :value="old('testimonial_image')"></x-metronic.file-input>
                         </div>
 
                         <div class="d-flex justify-content-end mt-10">
-                            <button type="submit" class="kt_docs_formvalidation_text_submit btn btn-primary">
+                            <button type="submit" onclick="submitTestimonialForm()"
+                                class="kt_docs_formvalidation_text_submit btn btn-primary">
                                 <span class="indicator-label">
-                                    Upload Testimonials
+                                    Create
                                 </span>
                                 <span class="indicator-progress">
                                     Please wait... <span
@@ -77,38 +79,152 @@
                     </div>
                 </th> --}}
                 <th width="5%">Sl</th>
-                <th width="30%">NAME</th>
-                <th width="10%">Designation</th>
+                <th width="30%">Name</th>
                 <th width="50%">Description</th>
-                <th width="5%">ACTION</th>
+                <th width="10%">Action</th>
             </tr>
         </thead>
         <tbody class="text-gray-600 fw-semibold">
-            <tr>
-                {{-- <td>
-                    <div class="form-check form-check-sm form-check-custom form-check-solid me-3">
-                        <input class="form-check-input" type="checkbox" data-kt-check="true"
-                            data-kt-check-target="#kt_datatable_example_1 .form-check-input" value="1" />
-                    </div>
-                </td> --}}
-                <td>
-                    1
-                </td>
-                <td>
-                    <p class="mb-0">Jone Robert Bruno</p>
-                </td>
-                <td>
-                    <p class="mb-0">Broker</p>
-                </td>
-                <td>
-                    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur
-                        adipisicing elit. Eos necessitatibus nemo veniam commodi. Vitae,
-                        quod dolores provident minus molestias suscipit.</p>
-                </td>
-                <td>
-                    <a href="" class="text-danger">Delete <i class="fa-solid fa-trash text-danger"></i></a>
-                </td>
-            </tr>
+            {{-- <td>
+                <div class="form-check form-check-sm form-check-custom form-check-solid me-3">
+                    <input class="form-check-input" type="checkbox" data-kt-check="true"
+                        data-kt-check-target="#kt_datatable_example_1 .form-check-input" value="1" />
+                </div>
+            </td> --}}
+            @if ($nfc_card->nfcTestimonial->count() > 0)
+                @foreach ($nfc_card->nfcTestimonial as $testimonial)
+                    <tr>
+                        <td>
+                            {{ $loop->iteration }}
+                        </td>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <div class="image image-circle image-mini me-3">
+                                    <img class="img-fluid w-45px"
+                                        src="{{ asset('storage/nfc/testimonial/' . $testimonial->testimonial_image) }}"
+                                        alt="">
+                                </div>
+                                <div class="d-flex flex-column">
+                                    <p class="mb-0">{{ $testimonial->testimonial_name }}</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <p class="mb-0">{!! $testimonial->testimonial_description !!}</p>
+                        </td>
+                        <td>
+                            <a href="{{ route('nfc.testimonial.destroy', $testimonial->id) }}" class="text-danger"
+                                onclick="deleteTestimonial(event, '{{ route('nfc.testimonial.destroy', $testimonial->id) }}')">Delete
+                                <i class="fa-solid fa-trash text-danger"></i></a>
+                        </td>
+                    </tr>
+                @endforeach
+            @else
+                <tr>
+                    <td class="text-center" colspan="6">No Testimonial available</td>
+                </tr>
+            @endif
         </tbody>
     </table>
 </div>
+
+@push('scripts')
+    <script>
+        function submitTestimonialForm() {
+            var form = $('.testimonial_form');
+            var url = form.attr('action');
+            var formData = new FormData(form[0]);
+            var testimonial_container = $('.testimonial_container');
+
+            var modalElement = document.getElementById('serviceCreateModal');
+            var modalInstance = bootstrap.Modal.getInstance(modalElement);
+
+            // Optionally disable the submit button to prevent multiple submissions
+            var submitButton = form.find('.kt_docs_formvalidation_text_submit');
+            submitButton.prop('disabled', true).addClass('disabled');
+
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                beforeSend: function() {
+                    // Show loading spinner or indicator
+                    submitButton.find('.indicator-label').hide();
+                    submitButton.find('.indicator-progress').show();
+                },
+                success: function(response) {
+                    console.log('Form submitted successfully:', response);
+                    if (response.testimonial_view) {
+                        console.log('Updating container with new HTML');
+                        modalInstance.hide(); // Use Bootstrap's modal hide method
+                        testimonial_container.html(response.testimonial_view); // Replace HTML directly
+                        toastr.success('Data saved successfully!', 'Success');
+                    } else {
+                        console.error('Unexpected response format:', response);
+                        toastr.error('Unexpected response format.', 'Error');
+                    }
+                    // Optionally reset the form or perform other actions
+                    // form.trigger('reset');
+                },
+                error: function(xhr, status, error) {
+                    // Handle error response
+                    console.error('Error:', error);
+                    toastr.error('An error occurred while saving data.', 'Error');
+                },
+                complete: function() {
+                    submitButton.prop('disabled', false).removeClass('disabled');
+                    submitButton.find('.indicator-label').show();
+                    submitButton.find('.indicator-progress').hide();
+                }
+            });
+        }
+
+        function deleteTestimonial(event, deleteUrl) {
+            event.preventDefault(); // Prevent the default link action
+            var testimonial_container = $('.testimonial_container');
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Yes, delete it!",
+                cancelButtonText: "No, cancel!",
+                buttonsStyling: false,
+                customClass: {
+                    confirmButton: "btn btn-danger",
+                    cancelButton: "btn btn-success",
+                },
+            }).then(function(result) {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: deleteUrl,
+                        type: "DELETE",
+                        headers: {
+                            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                        },
+                        success: function(response) {
+                            $('.testimonial_container').html('');
+                            $('.testimonial_container').html(response.testimonial_delete_view); // Replace HTML directly
+                            Swal.fire("Deleted!", "Your service has been deleted.", "success").then(
+                                function() {
+                                    console.log('Updating container with new HTML');
+                                });
+                            console.log('Updating container with new HTML');
+                            toastr.success('Service deleted successfully!', 'Success');
+                        },
+                        error: function(xhr, status, error) {
+                            Swal.fire("Error Occurred!",
+                                "An error occurred while deleting the service.", "error");
+                        },
+                    });
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    Swal.fire("Cancelled", "Your service is safe :)", "error");
+                }
+            });
+        }
+    </script>
+@endpush
+

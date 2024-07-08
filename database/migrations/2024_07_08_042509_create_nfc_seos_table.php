@@ -16,9 +16,9 @@ return new class extends Migration
             $table->foreignId('card_id')->nullable()->constrained('nfc_cards')->onDelete('cascade');
             $table->string('site_title')->nullable();
             $table->string('home_title')->nullable();
-            $table->string('meta_keyword')->nullable();
+            $table->text('meta_keyword')->nullable();
             $table->string('meta_description')->nullable();
-            $table->string('google_analytics')->nullable();
+            $table->text('google_analytics')->nullable();
             $table->timestamps();
         });
     }

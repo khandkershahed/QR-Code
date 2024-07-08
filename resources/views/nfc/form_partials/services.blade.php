@@ -76,14 +76,14 @@
 </div>
 
 <div class="table-responsive">
-    <table class="datatable table align-middle table-row-dashed table-border fs-6 gy-5">
+    <table class="table align-middle table-row-dashed table-border fs-6 gy-5">
         <thead>
             <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
                 <th>Sl</th>
-                <th>ICON/IMAGE</th>
-                <th>NAME</th>
-                <th>SERVICE URL</th>
-                <th>ACTION</th>
+                <th>Icon/Image</th>
+                <th>Name</th>
+                <th>Service Url</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody class="text-gray-600 fw-semibold">

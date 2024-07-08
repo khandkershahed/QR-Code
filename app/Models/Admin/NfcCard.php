@@ -6,6 +6,7 @@ use App\Models\NfcScan;
 use App\Models\NfcCompany;
 use App\Models\NfcGallery;
 use App\Models\NfcProduct;
+use App\Models\NfcSeo;
 use App\Models\NfcService;
 use App\Models\VirtualCard;
 use App\Models\NfcTestimonial;
@@ -51,6 +52,10 @@ class NfcCard extends Model
     public function virtualCard()
     {
         return $this->hasOne(VirtualCard::class, 'card_id');
+    }
+    public function nfcSeo()
+    {
+        return $this->hasOne(NfcSeo::class, 'card_id');
     }
     public function shippingDetails()
     {

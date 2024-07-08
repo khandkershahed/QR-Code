@@ -181,9 +181,9 @@
                 <th width="12%">Action</th>
             </tr>
         </thead>
-        <tbody class="datatable text-gray-600 fw-semibold">
-            @if ($nfc_card->nfccompany->count() > 0)
-                @foreach ($nfc_card->nfccompany as $company)
+        <tbody class="text-gray-600 fw-semibold">
+            @if ($nfc_card->nfcCompany->count() > 0)
+                @foreach ($nfc_card->nfcCompany as $company)
                     <tr>
                         <td>
                             {{ $loop->iteration }}
