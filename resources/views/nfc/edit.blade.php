@@ -4,8 +4,8 @@
     </div>
 @endif
 <div class="row g-2" id="columns-container">
-    <div class="row py-10">
-        <div class="col-lg-2 ">
+    <div class="row py-10 pt-0 gx-2">
+        <div class="col-lg-2">
             <div class="custom-fixed-top">
                 <div class="d-flex flex-column flex-md-row rounded border bg-white">
                     @include('nfc.form_partials.tab_trigger')
