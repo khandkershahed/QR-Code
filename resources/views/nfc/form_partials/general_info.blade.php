@@ -55,7 +55,7 @@
             <div class="col-lg-12 mb-7">
                 <x-metronic.label for="logo"
                     class="fw-semibold fs-6 mb-2">{{ __('Description') }}</x-metronic.label>
-                <textarea name="bio_description" class="form-control form-control-solid form-control-sm" rows="7">{{ old('bio_description') }}</textarea>
+                <textarea name="bio_description" class="form-control form-control-solid form-control-sm" rows="11">{{ old('bio_description') }}</textarea>
             </div>
         </div>
     </div>
@@ -104,7 +104,7 @@
             <x-metronic.label class="fw-semibold fs-6 mb-2">Location</x-metronic.label>
             {{-- <x-metronic.input type="text" class="form-control form-control-solid form-control-sm" name="location" :value="old('location')"
                 placeholder="Enter Location" /> --}}
-            <textarea name="location" class="form-control form-control-solid form-control-sm" rows="3">{{ optional($nfc_card->nfcData)->location }}</textarea>
+            <textarea name="location" class="form-control form-control-solid" rows="1">{{ optional($nfc_card->nfcData)->location }}</textarea>
         </div>
         <div class="fv-row col-lg-4 col-6 mb-4">
             <x-metronic.label class="fw-semibold fs-6 mb-2">Location URL</x-metronic.label>
