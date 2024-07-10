@@ -24,7 +24,7 @@
 
     <link href="{{ asset('admin/assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"
         type="text/css" />
-        <link href="https://cdn.jsdelivr.net/npm/formvalidation@1.9.0/dist/css/formValidation.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/formvalidation@1.9.0/dist/css/formValidation.min.css" rel="stylesheet">
 
 
     @props(['title'])
@@ -71,7 +71,7 @@
     <script src="{{ asset($hostUrl . 'plugins/custom/datatables/datatables.bundle.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/documentation/general/datatables/buttons.js') }}"></script>
     <script src="{{ asset($hostUrl . 'plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
-    {{-- <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script> --}}
+    <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
     <script src="https://kit.fontawesome.com/69b7156a94.js" crossorigin="anonymous"></script>
     <script src="{{ asset($hostUrl . 'plugins/custom/formrepeater/formrepeater.bundle.js') }}"></script>
     <script src="{{ asset($hostUrl . 'plugins/custom/tinymce/tinymce.bundle.js') }}"></script>
@@ -265,6 +265,31 @@
                 appendTo: "body",
                 constrainDimensions: true
             }
+        });
+    </script>
+    <script>
+        class CKEditorInitializer {
+            constructor(selector) {
+                this.selector = selector;
+                this.initializeEditors();
+            }
+
+            initializeEditors() {
+                document.querySelectorAll(this.selector).forEach((element) => {
+                    ClassicEditor
+                        .create(element)
+                        .then(editor => {
+                            console.log('Editor initialized:', editor);
+                        })
+                        .catch(error => {
+                            console.error('Error initializing editor:', error);
+                        });
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            new CKEditorInitializer('.kt_docs_ckeditor_classic');
         });
     </script>
 

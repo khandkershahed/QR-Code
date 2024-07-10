@@ -1,37 +1,51 @@
-<form class="seo_form form" method="POST" action="{{ route('nfc.seo.add') }}" autocomplete="off"
+<form class="advance_form form" method="POST" action="" autocomplete="off"
     enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="card_id" value="{{ $nfc_card->id }}">
+    <h4 class="my-10">Manage Section</h4>
     <div class="row">
-        <div class="fv-row col-lg-6 col-6 mb-4">
-            <x-metronic.label class="fw-semibold fs-6 mb-2">Font Family</x-metronic.label>
-            <select class="form-select" data-control="select2" data-placeholder="Select Fonts" name="font_family"
-                :value="optional($nfc_card - > nfcData) - > font_family">
-                <option></option>
-                <option value="1">Almendra SC</option>
-                <option value="2">Anton</option>
-                <option value="2">Bebas Neue</option>
-                <option value="2">Ubuntu</option>
-                <option value="2">Anton SC</option>
-                <option value="2">Margarine</option>
-                <option value="2">Roboto Slab</option>
-                <option value="2">Jost</option>
-                <option value="2">Roboto</option>
-                <option value="2">Poppins</option>
-                <option value="2">Raleway</option>
-            </select>
+        <div class="col-lg-4 py-5">
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked="">
+                <label class="form-check-label" for="flexSwitchCheckChecked">Enable Show QR Code</label>
+            </div>
         </div>
-        <div class="fv-row col-lg-6 col-6 mb-4">
-            <x-metronic.label class="fw-semibold fs-6 mb-2">Font Size (px)</x-metronic.label>
-            <x-metronic.input type="number" name="font_size" value="{{ optional($nfc_card)->font_size }}" min="14" max="40"
-                class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Font Size(Eg:15px)" />
+        <div class="col-lg-4 py-5">
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked="" title="Enable Branding Area">
+                <label class="form-check-label" for="flexSwitchCheckChecked">Enable Branding Area</label>
+            </div>
+        </div>
+        <div class="col-lg-4 py-5">
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked="" title="What's App Share">
+                <label class="form-check-label" for="flexSwitchCheckChecked">Enable WP share</label>
+            </div>
+        </div>
+        <div class="col-lg-4 py-5">
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked="">
+                <label class="form-check-label" for="flexSwitchCheckChecked">Enable Contact BTN</label>
+            </div>
+        </div>
+        <div class="col-lg-4 py-5">
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked="">
+                <label class="form-check-label" for="flexSwitchCheckChecked">Enable Download Qr</label>
+            </div>
+        </div>
+        <div class="col-lg-4 py-5">
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked="">
+                <label class="form-check-label" for="flexSwitchCheckChecked">Enable inquery Form</label>
+            </div>
         </div>
     </div>
 
     <div class="d-flex justify-content-end mt-10">
         <button type="submit" onclick="submitSeoForm()" class="kt_docs_formvalidation_text_submit btn btn-primary">
             <span class="indicator-label">
-                Save Fonts
+                Save Advance Setting
             </span>
             <span class="indicator-progress">
                 Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
@@ -43,7 +57,7 @@
 @push('scripts')
     <script>
         function submitSeoForm() {
-            var form = $('.seo_form');
+            var form = $('.advance_form');
             var url = form.attr('action');
             var formData = new FormData(form[0]);
             var seo_container = $('.seo_container');

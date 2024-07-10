@@ -1,45 +1,6 @@
 <form class="kt_docs_formvalidation_text form" action="#" autocomplete="off">
     <!--begin::Row-->
     <div class="mb-5" data-kt-buttons="true" data-kt-buttons-target=".form-check-image, .form-check-input">
-        <h4>Manage Advance Settings</h4>
-        <div class="row">
-            <div class="col-lg-2 py-5">
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked="">
-                    <label class="form-check-label" for="flexSwitchCheckChecked">Enable Show QR Code</label>
-                </div>
-            </div>
-            <div class="col-lg-2 py-5">
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked="" title="Enable Branding Area">
-                    <label class="form-check-label" for="flexSwitchCheckChecked">Enable Branding Area</label>
-                </div>
-            </div>
-            <div class="col-lg-2 py-5">
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked="" title="What's App Share">
-                    <label class="form-check-label" for="flexSwitchCheckChecked">Enable WP share</label>
-                </div>
-            </div>
-            <div class="col-lg-2 py-5">
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked="">
-                    <label class="form-check-label" for="flexSwitchCheckChecked">Enable Contact BTN</label>
-                </div>
-            </div>
-            <div class="col-lg-2 py-5">
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked="">
-                    <label class="form-check-label" for="flexSwitchCheckChecked">Enable Download Qr</label>
-                </div>
-            </div>
-            <div class="col-lg-2 py-5">
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked="">
-                    <label class="form-check-label" for="flexSwitchCheckChecked">Enable inquery Form</label>
-                </div>
-            </div>
-        </div>
         <h4 class="mt-10">Manage Section</h4>
         <div class="row">
             <div class="col-lg-2 mb-10">

@@ -5,7 +5,9 @@
     <div class="row mt-10">
         <div class="fv-row col-lg-12 mb-7">
             <x-metronic.label class="required fw-semibold fs-6 mb-2">Privacy Policy</x-metronic.label>
-            <textarea name="privacy_policy" class="form-control w-100 form-control-solid" id="" rows="17">{{ optional($nfc_card->nfcData)->privacy_policy }}</textarea>
+            <textarea name="terms_condition" class="kt_docs_ckeditor_classic">
+                {{ optional($nfc_card->nfcData)->privacy_policy }}
+            </textarea>
         </div>
     </div>
 

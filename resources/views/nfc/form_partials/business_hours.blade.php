@@ -162,7 +162,7 @@
 
     </div>
 
-    <div class="d-flex justify-content-end">
+    <div class="d-flex justify-content-center">
         <button type="submit" onclick="submitBusinessHoursForm()"
             class="kt_docs_formvalidation_text_submit btn btn-primary mt-5">
             <span class="indicator-label">

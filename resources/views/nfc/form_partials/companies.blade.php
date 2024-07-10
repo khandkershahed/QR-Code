@@ -1,235 +1,223 @@
-<div class="d-flex flex-stack mb-5">
-    <div class="d-flex align-items-center position-relative my-1">
-        {{-- <i class="ki-duotone ki-magnifier fs-1 position-absolute ms-6"><span class="path1"></span><span
-                class="path2"></span></i>
-        <input type="text" data-kt-docs-table-filter="search" class="form-control form-control-solid w-250px ps-15"
-            placeholder="Search Customers" /> --}}
-    </div>
-
-    <div class="d-flex justify-content-end" data-kt-docs-table-toolbar="base">
+<div class="row">
+    <div class="col-lg-12">
         <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#companyCreateModal">
             Add Company
         </button>
     </div>
-    {{-- Add company modal --}}
-    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-    <div class="modal fade" id="companyCreateModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
-        role="dialog" aria-labelledby="modalTitleIdcompany" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalTitleIdcompany">
-                        Add Company Form
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form class="company_form form" method="POST" action="{{ route('nfc.company.add') }}"
-                        autocomplete="off" enctype="multipart/form-data">
-                        @csrf
-                        <input type="hidden" name="card_id" value="{{ $nfc_card->id }}">
-                        <div class="row">
-                            <div class="col-lg-6 mb-4">
-                                <div class="fv-row mb-4">
-                                    <x-metronic.label
-                                        class="required fw-semibold fs-6 mb-2">{{ __('Company Name') }}</x-metronic.label>
-                                    <x-metronic.input type="text"
-                                        class="form-control form-control-solid form-control-sm" name="company_name"
-                                        :value="old('company_name')" placeholder="Company Name" required />
-                                </div>
-                            </div>
-                            <div class="col-lg-6 mb-4">
-                                <div class="fv-row mb-4">
-                                    <x-metronic.label
-                                        class="required fw-semibold fs-6 mb-2">{{ __('Company Email') }}</x-metronic.label>
-                                    <x-metronic.input type="text"
-                                        class="form-control form-control-solid form-control-sm" name="company_email"
-                                        :value="old('company_email')" placeholder="Company Email" required />
-                                </div>
-                            </div>
-                            <div class="col-lg-6 mb-4">
-                                <div class="fv-row mb-4">
-                                    <x-metronic.label
-                                        class="required fw-semibold fs-6 mb-2">{{ __('Company Phone') }}</x-metronic.label>
-                                    <x-metronic.input type="text"
-                                        class="form-control form-control-solid form-control-sm" name="company_phone"
-                                        :value="old('company_phone')" placeholder="Company Phone" required />
-                                </div>
-                            </div>
-                            <div class="col-lg-6 mb-4">
-                                <div class="fv-row mb-4">
-                                    <x-metronic.label for="company_logo"
-                                        class="col-form-label fw-bold fs-6 ">{{ __('Company Logo') }}</x-metronic.label>
-                                    <x-metronic.file-input id="company_logo" name="company_logo"
-                                        :value="old('company_logo')"></x-metronic.file-input>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 mb-4">
-                                <div class="fv-row mb-4">
-                                    <x-metronic.label
-                                        class="fw-semibold fs-6 mb-2">{{ __('Road/Block/House') }}</x-metronic.label>
-                                    <x-metronic.input type="text"
-                                        class="form-control form-control-solid form-control-sm"
-                                        name="company_address_line_one" id="company_address_line_one"
-                                        placeholder="Company Road/Block/House" :value="old('company_address_line_one')" />
-                                </div>
-                            </div>
-                            <div class="col-lg-6 mb-4">
-                                <div class="fv-row mb-4">
-                                    <x-metronic.label
-                                        class="fw-semibold fs-6 mb-2">{{ __('City/Zip/Country') }}</x-metronic.label>
-                                    <x-metronic.input type="text"
-                                        class="form-control form-control-solid form-control-sm"
-                                        name="company_address_line_two" id="company_address_line_two"
-                                        placeholder="Company City/Zip/Country" :value="old('company_address_line_two')" />
-                                </div>
-                            </div>
-                            <div class="col-lg-6 mb-4">
-                                <div class="fv-row mb-4">
-                                    <x-metronic.label
-                                        class="fw-semibold fs-6 mb-2">{{ __('Company Website') }}</x-metronic.label>
-                                    <x-metronic.input type="url"
-                                        class="form-control form-control-solid form-control-sm" name="company_website"
-                                        id="company_website" placeholder="Company Website" :value="old('company_website')" />
-                                </div>
-                            </div>
-                            <div class="col-lg-6 mb-4">
-                                <div class="fv-row mb-4">
-                                    <x-metronic.label
-                                        class="fw-semibold fs-6 mb-2">{{ __('Company Facebook URL') }}</x-metronic.label>
-                                    <x-metronic.input type="url"
-                                        class="form-control form-control-solid form-control-sm" name="company_facebook"
-                                        id="company_facebook" placeholder="Company Facebook" :value="old('company_facebook')" />
-                                </div>
-                            </div>
-                            <div class="col-lg-6 mb-4">
-                                <div class="fv-row mb-4">
-                                    <x-metronic.label
-                                        class="fw-semibold fs-6 mb-2">{{ __('Company Twitter URL') }}</x-metronic.label>
-                                    <x-metronic.input type="url"
-                                        class="form-control form-control-solid form-control-sm" name="company_twitter"
-                                        id="company_twitter" placeholder="Company Twitter" :value="old('company_twitter')" />
-                                </div>
-                            </div>
-                            <div class="col-lg-6 mb-4">
-                                <div class="fv-row mb-4">
-                                    <x-metronic.label
-                                        class="fw-semibold fs-6 mb-2">{{ __('Company Linkedin URL') }}</x-metronic.label>
-                                    <x-metronic.input type="url"
-                                        class="form-control form-control-solid form-control-sm"
-                                        name="company_linkedin" id="company_linkedin" placeholder="Company Linkedin"
-                                        :value="old('company_linkedin')" />
-                                </div>
-                            </div>
-                            <div class="col-lg-6 mb-4">
-                                <div class="fv-row mb-4">
-                                    <x-metronic.label
-                                        class="fw-semibold fs-6 mb-2">{{ __('Company Youtube URL') }}</x-metronic.label>
-                                    <x-metronic.input type="url"
-                                        class="form-control form-control-solid form-control-sm" name="company_youtube"
-                                        id="company_youtube" placeholder="Company Youtube" :value="old('company_youtube')" />
-                                </div>
-                            </div>
-                            <div class="col-lg-6 mb-4">
-                                <div class="fv-row mb-4">
-                                    <x-metronic.label
-                                        class="fw-semibold fs-6 mb-2">{{ __('Company Instagram URL') }}</x-metronic.label>
-                                    <x-metronic.input type="url"
-                                        class="form-control form-control-solid form-control-sm"
-                                        name="company_instagram" id="company_instagram"
-                                        placeholder="Company Instagram" :value="old('company_instagram')" />
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="fv-row mb-4">
-                                    <label class="fw-semibold fs-6 mb-2">{{ __('Company Description') }}</label>
-                                    <textarea name="company_description" class="form-control form-control-solid mb-3 mb-lg-0" id="company_description"
-                                        rows="3" placeholder="Enter Description About Company">{{ old('company_description') }}</textarea>
-                                </div>
+</div>
+<div class="row">
+    <h3>All Companies List</h3>
+    <div class="col-lg-12">
+        <div class="table-responsive">
+            <table class="table align-middle table-row-dashed table-border fs-6 gy-5">
+                <thead>
+                    <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
+                        <th width="5%">Sl</th>
+                        <th width="28%">Company Name</th>
+                        <th width="18%">Company Phone</th>
+                        <th width="22%">Company Address</th>
+                        <th width="15%">Website</th>
+                        <th width="12%">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-600 fw-semibold">
+                    @if ($nfc_card->nfcCompany->count() > 0)
+                        @foreach ($nfc_card->nfcCompany as $company)
+                            <tr>
+                                <td>
+                                    {{ $loop->iteration }}
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="image image-circle image-mini me-3">
+                                            <img class="img-fluid w-45px"
+                                                src="{{ asset('storage/nfc/company/' . $company->company_logo) }}"
+                                                alt="">
+                                        </div>
+                                        <div class="d-flex flex-column">
+                                            <p class="mb-0">{{ $company->company_name }}</p>
+                                            <span class="fs-6">{{ $company->company_email }}</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    {{ $company->company_phone }}
+                                </td>
+                                <td>
+                                    <div class="d-flex flex-column">
+                                        <p class="mb-0">{{ $company->company_address_line_one }}</p>
+                                        <span class="fs-6">{{ $company->company_address_line_two }}</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a href="{{ $company->company_website }}" target="_blank"
+                                        class="text-primary">Company
+                                        Url <i class="fa-solid fa-link text-primary"></i></a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('nfc.company.destroy', $company->id) }}" class="text-danger"
+                                        onclick="deleteCompany(event, '{{ route('nfc.company.destroy', $company->id) }}')">Delete
+                                        <i class="fa-solid fa-trash text-danger"></i></a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <tr>
+                            <td class="text-center" colspan="6">No company available</td>
+                        </tr>
+                    @endif
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{{-- Add company modal --}}
+<div class="modal fade" id="companyCreateModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+    role="dialog" aria-labelledby="modalTitleIdcompany" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitleIdcompany">
+                    Add Company Form
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="company_form form" method="POST" action="{{ route('nfc.company.add') }}"
+                    autocomplete="off" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="card_id" value="{{ $nfc_card->id }}">
+                    <div class="row">
+                        <div class="col-lg-6 mb-4">
+                            <div class="fv-row mb-4">
+                                <x-metronic.label
+                                    class="required fw-semibold fs-6 mb-2">{{ __('Company Name') }}</x-metronic.label>
+                                <x-metronic.input type="text" class="form-control form-control-solid form-control-sm"
+                                    name="company_name" :value="old('company_name')" placeholder="Company Name" required />
                             </div>
                         </div>
-                        <div class="d-flex justify-content-end mt-10">
-                            <button type="submit" onclick="submitCompanyForm()"
-                                class="kt_docs_formvalidation_text_submit btn btn-primary">
-                                <span class="indicator-label">
-                                    Create Company
-                                </span>
-                                <span class="indicator-progress">
-                                    Please wait... <span
-                                        class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                                </span>
-                            </button>
+                        <div class="col-lg-6 mb-4">
+                            <div class="fv-row mb-4">
+                                <x-metronic.label
+                                    class="required fw-semibold fs-6 mb-2">{{ __('Company Email') }}</x-metronic.label>
+                                <x-metronic.input type="text" class="form-control form-control-solid form-control-sm"
+                                    name="company_email" :value="old('company_email')" placeholder="Company Email" required />
+                            </div>
                         </div>
-                    </form>
-                </div>
+                        <div class="col-lg-6 mb-4">
+                            <div class="fv-row mb-4">
+                                <x-metronic.label
+                                    class="required fw-semibold fs-6 mb-2">{{ __('Company Phone') }}</x-metronic.label>
+                                <x-metronic.input type="text" class="form-control form-control-solid form-control-sm"
+                                    name="company_phone" :value="old('company_phone')" placeholder="Company Phone" required />
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mb-4">
+                            <div class="fv-row mb-4">
+                                <x-metronic.label for="company_logo"
+                                    class="col-form-label fw-bold fs-6 ">{{ __('Company Logo') }}</x-metronic.label>
+                                <x-metronic.file-input id="company_logo" name="company_logo"
+                                    :value="old('company_logo')"></x-metronic.file-input>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mb-4">
+                            <div class="fv-row mb-4">
+                                <x-metronic.label
+                                    class="fw-semibold fs-6 mb-2">{{ __('Road/Block/House') }}</x-metronic.label>
+                                <x-metronic.input type="text" class="form-control form-control-solid form-control-sm"
+                                    name="company_address_line_one" id="company_address_line_one"
+                                    placeholder="Company Road/Block/House" :value="old('company_address_line_one')" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mb-4">
+                            <div class="fv-row mb-4">
+                                <x-metronic.label
+                                    class="fw-semibold fs-6 mb-2">{{ __('City/Zip/Country') }}</x-metronic.label>
+                                <x-metronic.input type="text"
+                                    class="form-control form-control-solid form-control-sm"
+                                    name="company_address_line_two" id="company_address_line_two"
+                                    placeholder="Company City/Zip/Country" :value="old('company_address_line_two')" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mb-4">
+                            <div class="fv-row mb-4">
+                                <x-metronic.label
+                                    class="fw-semibold fs-6 mb-2">{{ __('Company Website') }}</x-metronic.label>
+                                <x-metronic.input type="url"
+                                    class="form-control form-control-solid form-control-sm" name="company_website"
+                                    id="company_website" placeholder="Company Website" :value="old('company_website')" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mb-4">
+                            <div class="fv-row mb-4">
+                                <x-metronic.label
+                                    class="fw-semibold fs-6 mb-2">{{ __('Company Facebook URL') }}</x-metronic.label>
+                                <x-metronic.input type="url"
+                                    class="form-control form-control-solid form-control-sm" name="company_facebook"
+                                    id="company_facebook" placeholder="Company Facebook" :value="old('company_facebook')" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mb-4">
+                            <div class="fv-row mb-4">
+                                <x-metronic.label
+                                    class="fw-semibold fs-6 mb-2">{{ __('Company Twitter URL') }}</x-metronic.label>
+                                <x-metronic.input type="url"
+                                    class="form-control form-control-solid form-control-sm" name="company_twitter"
+                                    id="company_twitter" placeholder="Company Twitter" :value="old('company_twitter')" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mb-4">
+                            <div class="fv-row mb-4">
+                                <x-metronic.label
+                                    class="fw-semibold fs-6 mb-2">{{ __('Company Linkedin URL') }}</x-metronic.label>
+                                <x-metronic.input type="url"
+                                    class="form-control form-control-solid form-control-sm" name="company_linkedin"
+                                    id="company_linkedin" placeholder="Company Linkedin" :value="old('company_linkedin')" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mb-4">
+                            <div class="fv-row mb-4">
+                                <x-metronic.label
+                                    class="fw-semibold fs-6 mb-2">{{ __('Company Youtube URL') }}</x-metronic.label>
+                                <x-metronic.input type="url"
+                                    class="form-control form-control-solid form-control-sm" name="company_youtube"
+                                    id="company_youtube" placeholder="Company Youtube" :value="old('company_youtube')" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mb-4">
+                            <div class="fv-row mb-4">
+                                <x-metronic.label
+                                    class="fw-semibold fs-6 mb-2">{{ __('Company Instagram URL') }}</x-metronic.label>
+                                <x-metronic.input type="url"
+                                    class="form-control form-control-solid form-control-sm" name="company_instagram"
+                                    id="company_instagram" placeholder="Company Instagram" :value="old('company_instagram')" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="fv-row mb-4">
+                                <label class="fw-semibold fs-6 mb-2">{{ __('Company Description') }}</label>
+                                <textarea name="company_description" class="form-control form-control-solid mb-3 mb-lg-0" id="company_description"
+                                    rows="3" placeholder="Enter Description About Company">{{ old('company_description') }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end mt-10">
+                        <button type="submit" onclick="submitCompanyForm()"
+                            class="kt_docs_formvalidation_text_submit btn btn-primary">
+                            <span class="indicator-label">
+                                Create Company
+                            </span>
+                            <span class="indicator-progress">
+                                Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                            </span>
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-    {{-- Modal End --}}
-
 </div>
-
-<div class="table-responsive">
-    <table class="table align-middle table-row-dashed table-border fs-6 gy-5">
-        <thead>
-            <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
-                <th width="5%">Sl</th>
-                <th width="28%">Company Name</th>
-                <th width="18%">Company Phone</th>
-                <th width="22%">Company Address</th>
-                <th width="15%">Website</th>
-                <th width="12%">Action</th>
-            </tr>
-        </thead>
-        <tbody class="text-gray-600 fw-semibold">
-            @if ($nfc_card->nfcCompany->count() > 0)
-                @foreach ($nfc_card->nfcCompany as $company)
-                    <tr>
-                        <td>
-                            {{ $loop->iteration }}
-                        </td>
-                        <td>
-                            <div class="d-flex align-items-center">
-                                <div class="image image-circle image-mini me-3">
-                                    <img class="img-fluid w-45px"
-                                        src="{{ asset('storage/nfc/company/' . $company->company_logo) }}"
-                                        alt="">
-                                </div>
-                                <div class="d-flex flex-column">
-                                    <p class="mb-0">{{ $company->company_name }}</p>
-                                    <span class="fs-6">{{ $company->company_email }}</span>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            {{ $company->company_phone }}
-                        </td>
-                        <td>
-                            <div class="d-flex flex-column">
-                                <p class="mb-0">{{ $company->company_address_line_one }}</p>
-                                <span class="fs-6">{{ $company->company_address_line_two }}</span>
-                            </div>
-                        </td>
-                        <td>
-                            <a href="{{ $company->company_website }}" target="_blank" class="text-primary">Company
-                                Url <i class="fa-solid fa-link text-primary"></i></a>
-                        </td>
-                        <td>
-                            <a href="{{ route('nfc.company.destroy', $company->id) }}" class="text-danger"
-                                onclick="deleteCompany(event, '{{ route('nfc.company.destroy', $company->id) }}')">Delete
-                                <i class="fa-solid fa-trash text-danger"></i></a>
-                        </td>
-                    </tr>
-                @endforeach
-            @else
-                <tr>
-                    <td class="text-center" colspan="6">No company available</td>
-                </tr>
-            @endif
-        </tbody>
-    </table>
-</div>
-
+{{-- Modal End --}}
 
 @push('scripts')
     <script>
