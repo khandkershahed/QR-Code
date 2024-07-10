@@ -130,14 +130,14 @@
                 </div> --}}
                 <div class="tab-pane fade" id="advance" role="tabpanel">
                     <div class="row">
-                        <div class="col-lg-12 terms_container">
+                        <div class="col-lg-12 advance_container">
                             @include('nfc.form_partials.advance')
                         </div>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="setting" role="tabpanel">
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-12 setting_container">
                             @include('nfc.form_partials.setting')
                         </div>
                     </div>

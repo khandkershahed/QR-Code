@@ -1,5 +1,4 @@
-<form class="seo_form form" method="POST" action="{{ route('nfc.seo.add') }}" autocomplete="off"
-    enctype="multipart/form-data">
+<form class="seo_form form" method="POST" action="{{ route('nfc.seo.add') }}" autocomplete="off">
     @csrf
     <input type="hidden" name="card_id" value="{{ $nfc_card->id }}">
     <div class="row mt-10">
@@ -30,7 +29,7 @@
         <div class="fv-row col-lg-12 mb-7">
 
             <x-metronic.label class="fw-semibold fs-6 mb-2">Google Analytics</x-metronic.label>
-            <textarea class="form-control form-control-solid mb-3 mb-lg-0" name="google_analytics" id="" rows="7">{{ optional($nfc_card->nfcSeo)->google_analytics }}</textarea>
+            <textarea class="form-control form-control-solid mb-3 mb-lg-0" name="google_analytics" id="" rows="7">{!! optional($nfc_card->nfcSeo)->google_analytics !!}</textarea>
         </div>
     </div>
 
@@ -54,7 +53,6 @@
             var formData = new FormData(form[0]);
             var seo_container = $('.seo_container');
 
-            // Optionally disable the submit button to prevent multiple submissions
             var submitButton = form.find('.kt_docs_formvalidation_text_submit');
             submitButton.prop('disabled', true).addClass('disabled');
 
@@ -66,15 +64,12 @@
                 contentType: false,
                 processData: false,
                 beforeSend: function() {
-                    // Show loading spinner or indicator
                     submitButton.find('.indicator-label').hide();
                     submitButton.find('.indicator-progress').show();
                 },
                 success: function(response) {
                     console.log('Form submitted successfully:', response);
                     if (response.seo_view) {
-                        console.log('Updating container with new HTML');
-
                         seo_container.empty();
                         seo_container.html(response.seo_view);
                         toastr.success('Data saved successfully!', 'Success');
@@ -82,14 +77,9 @@
                         console.error('Unexpected response format:', response);
                         toastr.error('Unexpected response format.', 'Error');
                     }
-
-                    // Optionally reset the form or perform other actions
-                    // form.trigger('reset');
                 },
                 error: function(xhr, status, error) {
-                    // Handle error response
-                    console.error('Error:', error);
-
+                    console.error('Error:', xhr.responseText);
                     toastr.error('An error occurred while saving data.', 'Error');
                 },
                 complete: function() {
