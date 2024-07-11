@@ -136,7 +136,7 @@
             var formData = new FormData(form[0]);
             var testimonial_container = $('.testimonial_container');
 
-            var modalElement = document.getElementById('serviceCreateModal');
+            var modalElement = document.getElementById('testimonialCreateModal');
             var modalInstance = bootstrap.Modal.getInstance(modalElement);
 
             // Optionally disable the submit button to prevent multiple submissions

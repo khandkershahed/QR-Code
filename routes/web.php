@@ -160,6 +160,8 @@ Route::delete('/seo/delete/{id}', [VirtualCardFormController::class, 'seoDestroy
 
 Route::post('testimonial/store', [VirtualCardFormController::class, 'testimonialStore'])->name('nfc.testimonial.add');
 Route::delete('/testimonial/delete/{id}', [VirtualCardFormController::class, 'testimonialDestroy'])->name('nfc.testimonial.destroy');
+
+Route::post('fonts/store', [VirtualCardFormController::class, 'fontsStore'])->name('nfc.fonts.add');
 // Route::post('general-info/store', [ContactController::class, 'generalInfoStore'])->name('nfc.general_info.add');
 
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Carbon\Carbon;
+use App\Models\NfcSeo;
 use App\Models\NfcScan;
 use App\Models\NfcCompany;
 use App\Models\NfcProduct;
@@ -11,6 +12,8 @@ use App\Models\Subscription;
 use Illuminate\Http\Request;
 use App\Models\Admin\NfcCard;
 use App\Models\Admin\NfcData;
+use App\Models\NfcTestimonial;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -19,8 +22,6 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Stevebauman\Location\Facades\Location;
 use App\Http\Requests\Admin\NfcCardRequest;
-use App\Models\NfcSeo;
-use App\Models\NfcTestimonial;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class VirtualCardFormController extends Controller
@@ -504,10 +505,31 @@ class VirtualCardFormController extends Controller
         return response()->json(['terms_view' => $view]);
     }
 
+    public function fontsStore(Request $request)
+    {
+
+        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
+        $card_id = $request->card_id;
+        $nfc_card = NfcCard::findOrFail($card_id);
+
+        $nfc_card->update([
+            'font_family' => $request->font_family,
+            'font_size'   => $request->font_size,
+        ]);
+
+        $nfc_card = NfcCard::where('id', $card_id)->first();
+
+        $view = view('nfc.form_partials.fonts', compact('nfc_card'))->render();
+
+        return response()->json(['fonts_view' => $view]);
+    }
+
 
     public function seoStore(Request $request)
     {
+        Log::info('Received SEO form data:', $request->all());
 
+        // Existing code...
         $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
         $card_id = $request->card_id;
         $nfc_card = NfcCard::findOrFail($card_id);
@@ -529,8 +551,11 @@ class VirtualCardFormController extends Controller
 
         $nfc_seo->save();
         $nfc_card = NfcCard::with('nfcSeo')->where('id', $card_id)->first();
-        $view = view('nfc.form_partials.seo', compact('nfc_card'))->render();
-        return response()->json(['seo_view' => $view]);
+        $seo_view = view('nfc.form_partials.seo', compact('nfc_card'))->render();
+
+        Log::info('Sending response with SEO view.');
+
+        return response()->json(['seo_view' => $seo_view]);
     }
 
     public function testimonialStore(Request $request)
@@ -559,7 +584,7 @@ class VirtualCardFormController extends Controller
         }
 
         // Update NfcData
-        $nfc_service = NfcService::create([
+        $nfc_service = NfcTestimonial::create([
             'card_id'                  => $request->card_id,
             'testimonial_name'         => $request->testimonial_name,
             'testimonial_description'  => $request->testimonial_description,
