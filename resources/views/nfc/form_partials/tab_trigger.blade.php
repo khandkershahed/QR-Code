@@ -44,7 +44,7 @@
                                 <a class="nav-link w-100 btn btn-flex btn-active-info fs-6 fw-normal"
                                     data-bs-toggle="tab" href="#banner" aria-selected="false" role="tab"
                                     tabindex="-1"><i class="fa-solid fa-panorama pe-2"></i>
-                                    Banner</a>
+                                    Welcome Notice</a>
                             </li>
                             <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
                                 <a class="nav-link w-100 btn btn-flex btn-active-info fs-6 fw-normal"
