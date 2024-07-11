@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Stevebauman\Location\Facades\Location;
 use App\Http\Requests\Admin\NfcCardRequest;
+use App\Models\NfcBanner;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class VirtualCardFormController extends Controller
@@ -89,20 +90,6 @@ class VirtualCardFormController extends Controller
             'font_family'               => $request->font_family,
             'font_size'                 => $request->font_size,
             'scan_count'                => $request->scan_count,
-            'header'                    => !empty($request->header) ?  $request->header : 0,
-            'company'                   => !empty($request->company) ?  $request->company : 0,
-            'contact_list'              => !empty($request->contact_list) ?  $request->contact_list : 0,
-            'services'                  => !empty($request->services) ?  $request->services : 0,
-            'galleries'                 => !empty($request->galleries) ?  $request->galleries : 0,
-            'products'                  => !empty($request->products) ?  $request->products : 0,
-            'testimonials'              => !empty($request->testimonials) ?  $request->testimonials : 0,
-            'blogs'                     => !empty($request->blogs) ?  $request->blogs : 0,
-            'business_hours'            => !empty($request->business_hours) ? $request->business_hours : 0,
-            'appointments'              => !empty($request->appointments) ? $request->appointments : 0,
-            'map'                       => !empty($request->map) ?  $request->map : 0,
-            'banner'                    => !empty($request->banner) ?  $request->banner : 0,
-            'news_latter_popup'         => !empty($request->news_latter_popup) ?  $request->news_latter_popup : 0,
-            'social_link'               => !empty($request->social_link) ?  $request->social_link : 0,
             'updated_at'                => Carbon::now(),
         ]);
 
@@ -500,9 +487,9 @@ class VirtualCardFormController extends Controller
 
         $nfc_card = NfcCard::with('nfcData')->where('id', $card_id)->first();
 
-        $view = view('nfc.form_partials.terms', compact('nfc_card'))->render();
+        $terms_view = view('nfc.form_partials.terms', compact('nfc_card'))->render();
 
-        return response()->json(['terms_view' => $view]);
+        return response()->json(['terms_view' => $terms_view]);
     }
 
     public function fontsStore(Request $request)
@@ -519,43 +506,83 @@ class VirtualCardFormController extends Controller
 
         $nfc_card = NfcCard::where('id', $card_id)->first();
 
-        $view = view('nfc.form_partials.fonts', compact('nfc_card'))->render();
+        $fonts_view = view('nfc.form_partials.fonts', compact('nfc_card'))->render();
 
-        return response()->json(['fonts_view' => $view]);
+        return response()->json(['fonts_view' => $fonts_view]);
     }
+    public function advancedStore(Request $request)
+    {
+        $card_id = $request->card_id;
+        $nfc_card = NfcCard::findOrFail($card_id);
+
+        $nfc_card->update([
+            'show_qr_code'            => !empty($request->show_qr_code) ?  $request->show_qr_code : 0,
+            'branding'                => !empty($request->branding) ?  $request->branding : 0,
+            'whatsapp_share'          => !empty($request->whatsapp_share) ?  $request->whatsapp_share : 0,
+            'enable_contact_button'   => !empty($request->enable_contact_button) ?  $request->enable_contact_button : 0,
+            'enable_download_qr_code' => !empty($request->enable_download_qr_code) ?  $request->enable_download_qr_code : 0,
+            'enable_enquiry_form'     => !empty($request->enable_enquiry_form) ?  $request->enable_enquiry_form : 0,
+        ]);
+
+        $nfc_card = NfcCard::where('id', $card_id)->first();
+        $advance_view = view('nfc.form_partials.advance', compact('nfc_card'))->render();
+
+        return response()->json(['advance_view' => $advance_view]);
+    }
+
+    public function settingStore(Request $request)
+    {
+        $card_id = $request->card_id;
+        $nfc_card = NfcCard::findOrFail($card_id);
+
+        $nfc_card->update([
+            'general_info_show'    => !empty($request->general_info_show) ?  $request->general_info_show : 0,
+            'business_hours_show'  => !empty($request->business_hours_show) ?  $request->business_hours_show : 0,
+            'companies_show'       => !empty($request->companies_show) ?  $request->companies_show : 0,
+            'services_show'        => !empty($request->services_show) ?  $request->services_show : 0,
+            'products_show'        => !empty($request->products_show) ?  $request->products_show : 0,
+            'galleries_show'       => !empty($request->galleries_show) ?  $request->galleries_show : 0,
+            'testimonials_show'    => !empty($request->testimonials_show) ?  $request->testimonials_show : 0,
+            'social_links_show'    => !empty($request->social_links_show) ?  $request->social_links_show : 0,
+            'privacy_policy_show'  => !empty($request->privacy_policy_show) ?  $request->privacy_policy_show : 0,
+            'terms_condition_show' => !empty($request->terms_condition_show) ?  $request->terms_condition_show : 0,
+        ]);
+
+        $nfc_card = NfcCard::where('id', $card_id)->first();
+        $setting_view = view('nfc.form_partials.setting', compact('nfc_card'))->render();
+
+        return response()->json(['setting_view' => $setting_view]);
+    }
+
 
 
     public function seoStore(Request $request)
     {
-        Log::info('Received SEO form data:', $request->all());
-
-        // Existing code...
-        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
         $card_id = $request->card_id;
         $nfc_card = NfcCard::findOrFail($card_id);
-        $nfc_seo = $nfc_card->nfcSeo;
+        $nfc_seo = $nfc_card->nfcSeo ?? new NfcSeo(['card_id' => $card_id]);
 
-        if (!$nfc_seo) {
-            $nfc_seo = new NfcSeo();
-            $nfc_seo->card_id = $card_id;
-        }
-
-        // Update NfcData
-        $nfc_seo->fill([
-            'site_title'       => $request->site_title,
-            'home_title'       => $request->home_title,
-            'meta_keyword'     => $request->meta_keyword,
-            'meta_description' => $request->meta_description,
-            'google_analytics' => $request->google_analytics,
-        ]);
-
+        $nfc_seo->fill($request->only(['site_title', 'home_title', 'meta_keyword', 'meta_description', 'google_analytics']));
         $nfc_seo->save();
-        $nfc_card = NfcCard::with('nfcSeo')->where('id', $card_id)->first();
+
+        $nfc_card->load('nfcSeo');
         $seo_view = view('nfc.form_partials.seo', compact('nfc_card'))->render();
 
-        Log::info('Sending response with SEO view.');
-
         return response()->json(['seo_view' => $seo_view]);
+    }
+    public function bannerStore(Request $request)
+    {
+        $card_id = $request->card_id;
+        $nfc_card = NfcCard::findOrFail($card_id);
+        $nfc_banner = $nfc_card->nfcBanner ?? new NfcBanner(['card_id' => $card_id]);
+
+        $nfc_banner->fill($request->only(['banner_title', 'banner_button', 'banner_url', 'banner_description']));
+        $nfc_banner->save();
+
+        $nfc_card->load('nfcBanner');
+        $banner_view = view('nfc.form_partials.banner', compact('nfc_card'))->render();
+
+        return response()->json(['banner_view' => $banner_view]);
     }
 
     public function testimonialStore(Request $request)

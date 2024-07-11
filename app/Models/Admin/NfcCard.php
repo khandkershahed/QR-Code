@@ -2,6 +2,7 @@
 
 namespace App\Models\Admin;
 
+use App\Models\NfcBanner;
 use App\Models\NfcScan;
 use App\Models\NfcCompany;
 use App\Models\NfcGallery;
@@ -52,6 +53,10 @@ class NfcCard extends Model
     public function virtualCard()
     {
         return $this->hasOne(VirtualCard::class, 'card_id');
+    }
+    public function nfcBanner()
+    {
+        return $this->hasOne(NfcBanner::class, 'card_id');
     }
     public function nfcSeo()
     {

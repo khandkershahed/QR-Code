@@ -47,7 +47,9 @@
 
 @push('scripts')
     <script>
-        function submitSeoForm() {
+        function submitSeoForm(event) {
+            // event.preventDefault(); // Prevent default form submission
+
             var form = $('.seo_form');
             var url = form.attr('action');
             var formData = new FormData(form[0]);
@@ -70,6 +72,7 @@
                 success: function(response) {
                     console.log('Form submitted successfully:', response);
                     if (response.seo_view) {
+                        console.log('SEO view HTML:', response.seo_view);
                         seo_container.empty();
                         seo_container.html(response.seo_view);
                         toastr.success('Data saved successfully!', 'Success');

@@ -8,19 +8,7 @@
     @include('nfc.edit')
 
     @push('scripts')
-        <script>
-            $(document).ready(function() {
-                // Function to match card heights
-                function matchCardHeights() {
-                    var firstCardHeight = $('#first-card').outerHeight();
-                    $('#second-card').outerHeight(firstCardHeight);
-                }
 
-                // Call matchCardHeights initially and on window resize
-                matchCardHeights();
-                $(window).resize(matchCardHeights);
-            });
-        </script>
         <script>
             $(document).ready(function() {
                 // NFC Template
@@ -246,28 +234,7 @@
         <script>
             // Initialize Slick Slider
         </script>
-        <script>
-            // Stepper lement
-            var element = document.querySelector("#kt_stepper_example_clickable");
-
-            // Initialize Stepper
-            var stepper = new KTStepper(element);
-
-            // Handle navigation click
-            stepper.on("kt.stepper.click", function(stepper) {
-                stepper.goTo(stepper.getClickedStepIndex()); // go to clicked step
-            });
-
-            // Handle next step
-            stepper.on("kt.stepper.next", function(stepper) {
-                stepper.goNext(); // go next step
-            });
-
-            // Handle previous step
-            stepper.on("kt.stepper.previous", function(stepper) {
-                stepper.goPrevious(); // go previous step
-            });
-        </script>
+        
         <script>
             $(document).ready(function() {
                 function updateCardPreview() {
