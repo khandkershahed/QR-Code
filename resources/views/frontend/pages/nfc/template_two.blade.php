@@ -2,14 +2,17 @@
 <html lang="en">
 
 <head>
-    <title>{{ !empty(optional($nfc_card->nfcSeo)->site_title) ? optional($nfc_card->nfcSeo)->site_title : $nfc_card->vcard_name }}</title>
+    <title>
+        {{ !empty(optional($nfc_card->nfcSeo)->site_title) ? optional($nfc_card->nfcSeo)->site_title : $nfc_card->vcard_name }}
+    </title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
-    <meta name="description" content="{{ optional($nfc_card->nfcSeo)->meta_description}}" />
-    <meta name="keywords" content="{{ optional($nfc_card->nfcSeo)->meta_keyword}}" />
-    <meta property="og:title" content="{{ optional($nfc_card->nfcSeo)->home_title}}" />
-    <meta property="og:url" content="{{ optional($nfc_card->nfcSeo)->site_title}}" />
-    <meta property="og:site_name" content="{{ !empty(optional($nfc_card->nfcSeo)->site_title) ? optional($nfc_card->nfcSeo)->site_title : $nfc_card->vcard_name }}" />
+    <meta name="description" content="{{ optional($nfc_card->nfcSeo)->meta_description }}" />
+    <meta name="keywords" content="{{ optional($nfc_card->nfcSeo)->meta_keyword }}" />
+    <meta property="og:title" content="{{ optional($nfc_card->nfcSeo)->home_title }}" />
+    <meta property="og:url" content="{{ optional($nfc_card->nfcSeo)->site_title }}" />
+    <meta property="og:site_name"
+        content="{{ !empty(optional($nfc_card->nfcSeo)->site_title) ? optional($nfc_card->nfcSeo)->site_title : $nfc_card->vcard_name }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <link rel="shortcut icon" href="https://i.ibb.co/BNBTVN4/logo.png" type="image/x-icon" />
@@ -282,13 +285,16 @@
                         <div class="row">
                             <div class="col-sm-12 px-0">
                                 <img class="img-fluid image-container-tem2"
-                                    src="https://cdn.pixabay.com/photo/2023/12/29/16/15/ai-generated-8476506_960_720.png"
+                                    src="{{ !empty($nfc_card->banner_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card)->banner_image)) ? asset('storage/nfc/' . optional($nfc_card)->banner_image) : asset('frontend/images/no_image.png') }}"
                                     alt="" />
+                                {{-- <img class="img-fluid image-container-tem2"
+                                    src="https://cdn.pixabay.com/photo/2023/12/29/16/15/ai-generated-8476506_960_720.png"
+                                    alt="" /> --}}
                                 <div>
                                     <img class="shape-container-tem2" src="https://i.ibb.co/bg43J6s/Asset-63-8.png"
                                         alt="" />
                                 </div>
-                                <div class="dropdown language-2">
+                                {{-- <div class="dropdown language-2">
                                     <button class="btn btn-dark dropdown-toggle rounded-0" type="button"
                                         data-bs-toggle="dropdown" aria-expanded="false">
                                         Language
@@ -305,7 +311,7 @@
                                             <a class="dropdown-item" href="#">English</a>
                                         </li>
                                     </ul>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -317,18 +323,20 @@
                             <div class="col-lg-12 section-top-tem2">
                                 <div class="profile-img-tem2">
                                     <img class="img-fluid"
-                                        src="https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg"
+                                        src="{{ !empty($nfc_card->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card)->profile_image) : asset('frontend/images/no_image.png') }}"
                                         alt="" />
                                 </div>
                                 <div class="d-flex justify-content-center align-items-center social-rotate-tem2">
-                                    <a href="" class="social-link-tem2"><i
-                                            class="fa-brands fa-facebook-f"></i></a>
-                                    <a href="" class="social-link-tem2"><i
-                                            class="fa-brands fa-instagram"></i></a>
-                                    <a href="" class="social-link-tem2"><i
-                                            class="fa-brands fa-linkedin-in"></i></a>
-                                    <a href="" class="social-link-tem2"><i class="fa-brands fa-whatsapp"></i></a>
-                                    <a href="" class="social-link-tem2"><i class="fa-brands fa-twitter"></i></a>
+                                    <a href="{{ optional($nfc_card->nfcData)->facebook_url }}"
+                                        class="social-link-tem2"><i class="fa-brands fa-facebook-f"></i></a>
+                                    <a href="{{ optional($nfc_card->nfcData)->instagram_url }}"
+                                        class="social-link-tem2"><i class="fa-brands fa-instagram"></i></a>
+                                    <a href="{{ optional($nfc_card->nfcData)->linkedin_url }}"
+                                        class="social-link-tem2"><i class="fa-brands fa-linkedin-in"></i></a>
+                                    <a href="{{ optional($nfc_card->nfcData)->whatsapp_url }}"
+                                        class="social-link-tem2"><i class="fa-brands fa-whatsapp"></i></a>
+                                    <a href="{{ optional($nfc_card->nfcData)->twitter_url }}"
+                                        class="social-link-tem2"><i class="fa-brands fa-twitter"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -340,387 +348,343 @@
                         <div class="row align-items-center">
                             <div class="col-sm-12">
                                 <div class="user-name-rotate-tem2">
-                                    <h1 class="name-title-tem2 mb-0">Shahed</h1>
-                                    <p class="text-white mb-0">Real State Broker</p>
+                                    <h1 class="name-title-tem2 mb-0">{{ optional($nfc_card->nfcData)->first_name }}
+                                    </h1>
+                                    <p class="text-white mb-0">{{ optional($nfc_card)->designation }} </p>
                                     <p class="text-white">
                                         <i class="fa-solid fa-location-dot pe-2"></i>From Canada
                                     </p>
                                 </div>
-                                <p class="text-white mb-0 text-justify pt-4">
-                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                                    Molestias accusamus officiis alias eaque voluptatibus
-                                    necessitatibus, facere ex dicta! Aliquid, perspiciatis quos.
-                                    Quos eveniet maiores illo debitis pariatur similique dicta
-                                    cupiditate?
-                                </p>
+                                @if (!empty($nfc_card->bio_description))
+                                    <p class="text-white mb-0 text-justify pt-4">
+                                        {{ $nfc_card->bio_description }}
+                                    </p>
+                                @endif
                             </div>
                         </div>
                     </div>
                 </section>
                 <!-- Date Area -->
-                <section>
-                    <div class="container py-5">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="text-white text-center ps-3">
-                                    <div class="">
-                                        <i class="fa fa-envelope social_icons fs-3 bg-white contact-icons-tem2"></i>
+                @if (
+                    !empty($nfc_card->nfcData->email_personal) ||
+                        !empty($nfc_card->nfcData->email_work) ||
+                        !empty($nfc_card->nfcData->phone_personal) ||
+                        !empty($nfc_card->nfcData->phone_work) ||
+                        !empty($nfc_card->nfcData->location) ||
+                        !empty($nfc_card->nfcData->date_of_birth) ||
+                        !empty($nfc_card->nfcData->address_line_two))
+                    <section>
+                        <div class="container py-5">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="text-white text-center ps-3">
+                                        <div class="">
+                                            <i class="fa fa-envelope social_icons fs-3 bg-white contact-icons-tem2"></i>
+                                        </div>
+                                        <small class="mb-0">E-Mail Address</small>
+                                        <p class="mb-0 special-font">{{ $nfc_card->nfcData->email_personal }}</p>
+                                        <p class="mb-0 special-font">{{ $nfc_card->nfcData->email_work }}</p>
                                     </div>
-                                    <small class="mb-0">E-Mail Address</small>
-                                    <p class="mb-0 special-font fs-5">goflixza@gmail.com</p>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="text-white text-center ps-3">
-                                    <div class="">
-                                        <i class="fa fa-envelope social_icons fs-3 bg-white contact-icons-tem2"></i>
+                                <div class="col-md-6">
+                                    <div class="text-white text-center ps-3">
+                                        <div class="">
+                                            <i class="fa fa-envelope social_icons fs-3 bg-white contact-icons-tem2"></i>
+                                        </div>
+                                        <small class="mb-0">Phone</small>
+                                        <p class="mb-0 special-font fs-5">{{ $nfc_card->nfcData->phone_personal }}</p>
+                                        <p class="mb-0 special-font fs-5">{{ $nfc_card->nfcData->phone_work }}</p>
                                     </div>
-                                    <small class="mb-0">E-Mail Address</small>
-                                    <p class="mb-0 special-font fs-5">goflixza@gmail.com</p>
                                 </div>
-                            </div>
-                            <div class="col-md-6 mt-4">
-                                <div class="text-white text-center ps-3">
-                                    <div class="">
-                                        <i class="fa fa-envelope social_icons fs-3 bg-white contact-icons-tem2"></i>
+                                <div class="col-md-6 mt-4">
+                                    <div class="text-white text-center ps-3">
+                                        <div class="">
+                                            <i class="fa fa-envelope social_icons fs-3 bg-white contact-icons-tem2"></i>
+                                        </div>
+                                        <small class="mb-0">Date Of Birth</small>
+                                        <p class="mb-0 special-font fs-5">{{ $nfc_card->nfcData->date_of_birth }}</p>
                                     </div>
-                                    <small class="mb-0">E-Mail Address</small>
-                                    <p class="mb-0 special-font fs-5">goflixza@gmail.com</p>
                                 </div>
-                            </div>
-                            <div class="col-md-6 mt-4">
-                                <div class="text-white text-center ps-3">
-                                    <div class="">
-                                        <i class="fa fa-envelope social_icons fs-3 bg-white contact-icons-tem2"></i>
+                                <div class="col-md-6 mt-4">
+                                    <div class="text-white text-center ps-3">
+                                        <div class="">
+                                            <i class="fa fa-envelope social_icons fs-3 bg-white contact-icons-tem2"></i>
+                                        </div>
+                                        <small class="mb-0">Location</small>
+                                        <p class="mb-0 special-font fs-5">{{ $nfc_card->nfcData->location }}</p>
                                     </div>
-                                    <small class="mb-0">E-Mail Address</small>
-                                    <p class="mb-0 special-font fs-5">goflixza@gmail.com</p>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
+                @endif
+                @endif
                 <!-- Company Info -->
-                <section>
-                    <div class="container py-5">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="text-center">
-                                    <h1 class="special-font text-white">My Company</h1>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="company-slide text-white px-0">
-                                <div class="">
-                                    <div class="row pt-3 align-items-center">
-                                        <div class="col-md-12">
-                                            <div class="text-center text-white">
-                                                <div class="d-flex justify-content-center align-items-center">
-                                                    <img class="img-fluid" width="70px"
-                                                        style="
-                                background: var(--template-two-color-white);
-                                padding: 12px;
-                                border-radius: 100%;
-                              "
-                                                        src="https://i.ibb.co/RvYHMvy/logo.png" alt="" />
-                                                </div>
-                                                <h5>Neez International Ltd.</h5>
-                                                <p class="p-3 mb-0" style="text-align: justify">
-                                                    Lorem ipsum dolor sit amet consectetur adipisicing
-                                                    elit. Velit numquam, rerum ea quibusdam nobis
-                                                    reprehenderit dolorum autem fuga labore. Lorem ipsum
-                                                    dolor sit amet consectetur adipisicing elit. Velit
-                                                    numquam, rerum ea quibusdam nobis reprehenderit
-                                                    dolorum autem fuga labore.
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="ps-4 pb-3">
-                                                <p class="mb-0">
-                                                    <span><i
-                                                            class="fa-solid fa-globe pe-3"></i>www.neezonline.com</span>
-                                                </p>
-                                                <p class="mb-0">
-                                                    <span><i class="fa-solid fa-phone pe-3"></i>+1
-                                                        98656584584</span>
-                                                </p>
-                                                <p class="mb-0">
-                                                    <span><i
-                                                            class="fa-regular fa-envelope pe-3"></i>info@flixzaglobal.com</span>
-                                                </p>
-                                                <p class="mb-0">
-                                                    <span><i class="fa-solid fa-location pe-3"></i>Robert
-                                                        Robertson, 1234 NW Bobcat Lane, St. Robert, MO
-                                                        65584-5678</span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 align-items-center justify-content-center d-flex">
-                                            <div class="px-3">
-                                                <a href=""
-                                                    class="btn company-btn-tem2 rounded-0 mb-2 w-100">Facebook</a>
-                                                <a href=""
-                                                    class="btn company-btn-tem2 rounded-0 mb-2 w-100">Instagram</a>
-                                                <a href=""
-                                                    class="btn company-btn-tem2 rounded-0 mb-2 w-100">Linkedin</a>
-                                            </div>
-                                        </div>
+                @if ($nfc_card->companies_show == '1')
+                    <section>
+                        <div class="container py-5">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="text-center">
+                                        <h1 class="special-font text-white">My Company</h1>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- Servies Box -->
-                <section>
-                    <div class="container pb-5">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="text-center">
-                                    <h1 class="special-font text-white">My Services</h1>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="service-slide pt-3">
-                            <div class="d-flex">
-                                <div class="card w-50 me-2 rounded-0 border-0">
-                                    <div class="card-body border-0">
-                                        <div>
-                                            <img class="card-img-top" src="img/demo-img/service1.jpg"
-                                                alt="" />
-                                        </div>
-                                        <div class="mt-3 text-center">
-                                            <h4 class="mb-0 special-font"
-                                                style="color: var(--template-two-color-primary)">
-                                                UI/UX Design
-                                            </h4>
-                                            <p class="">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing
-                                                elit. Perferendis alias nemo nihil sed odio optio
-                                                dolorum ut voluptates rerum quas?
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card w-50 me-2 rounded-0 border-0">
-                                    <div class="card-body border-0">
-                                        <div>
-                                            <img class="card-img-top" src="img/demo-img/service1.jpg"
-                                                alt="" />
-                                        </div>
-                                        <div class="mt-3 text-center">
-                                            <h4 class="mb-0 special-font"
-                                                style="color: var(--template-two-color-primary)">
-                                                UI/UX Design
-                                            </h4>
-                                            <p class="">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing
-                                                elit. Perferendis alias nemo nihil sed odio optio
-                                                dolorum ut voluptates rerum quas?
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- Product -->
-                <section>
-                    <div class="container pb-5">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="text-center">
-                                    <h1 class="special-font text-white">My Product</h1>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row pt-3 product-slide">
-                            <div class="col-md-4 me-2">
-                                <div class="card border-0 ms-2">
-                                    <div class="card-body p-0">
-                                        <div>
-                                            <img class="img-fluid rounded-2 product-img"
-                                                src="https://i5.walmartimages.com/seo/Women-s-Double-Layer-Micro-Inlaid-Zircon-Artificial-Diamond-Ring-Set_982efef2-d3aa-464a-99af-2fcf9bf356be.175f5939a7793421774a6cb59ae07d51.jpeg"
-                                                alt="" />
-                                        </div>
-                                        <div
-                                            class="d-flex justify-content-between px-4 pt-3 align-items-center product-content-tem2">
-                                            <h3 class="special-font mb-0">
-                                                Ring Set Ring Set Ring Set Ring Set
-                                            </h3>
-                                            <div>
-                                                <del class="special-font mb-0 text-danger fs-4">$50</del>
-                                                <h1 class="special-font mb-0">$50</h1>
-                                            </div>
-                                        </div>
-                                        <p class="px-4 pb-3">For Order Please Fill Up The Form</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- <div class="col-md-4 me-2">
-                  <div class="card border-0">
-                    <div class="card-body p-0">
-                      <div>
-                        <img
-                          class="img-fluid rounded-2 product-img"
-                          src="https://images.othoba.com/images/thumbs/0551780_dairy_440.jpeg"
-                          alt=""
-                        />
-                      </div>
-                      <div
-                        class="d-flex justify-content-between px-4 py-3 align-items-center product-content-tem2 bg-white"
-                      >
-                        <h6 class="special-font mb-0">
-                          Milk Powder
-                        </h6>
-                        <h6 class="special-font mb-0">$50</h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 me-2">
-                  <div class="card border-0">
-                    <div class="card-body p-0">
-                      <div>
-                        <img
-                          class="img-fluid rounded-2 product-img"
-                          src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Grocery/GroceryNewLook/grocery_sbc_coffee_440x460.jpg"
-                          alt=""
-                        />
-                      </div>
-                      <div
-                        class="d-flex justify-content-between px-4 py-3 align-items-center product-content-tem2 bg-white"
-                      >
-                        <h6 class="special-font mb-0">Coffe Jar</h6>
-                        <h6 class="special-font mb-0">$50</h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 me-2">
-                  <div class="card border-0">
-                    <div class="card-body p-0">
-                      <div>
-                        <img
-                          class="img-fluid rounded-2 product-img"
-                          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrNnzUuAiT-4HHyEOQXIhAp2OeajcZ-54bDcSIBO2kz_WI9kUWWiJQ_V6zl9STtnu-Qg0&usqp=CAU"
-                          alt=""
-                        />
-                      </div>
-                      <div
-                        class="d-flex justify-content-between px-4 py-3 align-items-center product-content-tem2 bg-white"
-                      >
-                        <h6 class="special-font mb-0">Oil Bottle</h6>
-                        <h6 class="special-font mb-0">$50</h6>
-                      </div>
-                    </div>
-                  </div>
-                </div> -->
-                        </div>
-                    </div>
-                </section>
-                <!-- Galery -->
-                <section>
-                    <div class="container pb-5">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="text-center">
-                                    <h1 class="special-font text-white">My Gallery</h1>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row pt-3">
-                            <div class="col-lg-12">
-                                <div class="galery-slide">
-                                    <div>
-                                        <img class="w-100 img-fluid rounded-3"
-                                            src="https://www.shutterbug.com/images/0616gallery07.jpg"
-                                            alt="" />
-                                    </div>
-                                    <div>
-                                        <img class="w-100 img-fluid rounded-3"
-                                            src="https://www.shutterbug.com/images/0616gallery07.jpg"
-                                            alt="" />
-                                    </div>
-                                    <div>
-                                        <img class="w-100 img-fluid rounded-3"
-                                            src="https://www.shutterbug.com/images/0616gallery07.jpg"
-                                            alt="" />
-                                    </div>
-                                    <div>
-                                        <img class="w-100 img-fluid rounded-3"
-                                            src="https://www.shutterbug.com/images/0616gallery07.jpg"
-                                            alt="" />
-                                    </div>
-                                    <div>
-                                        <img class="w-100 img-fluid rounded-3"
-                                            src="https://www.shutterbug.com/images/0616gallery07.jpg"
-                                            alt="" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- Testimonial -->
-                <section>
-                    <div class="container pb-5">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="text-center">
-                                    <h1 class="special-font text-white">My Testimonial</h1>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-10 col-offset-md-1 mx-auto">
-                                <div class="testimonial-slide">
-                                    <div class="card p-0 bg-white border-0 p-0 mt-5">
-                                        <div class="card-body rounded-0 border-0 d-flex">
-                                            <div class="row align-items-center">
-                                                <div class="col-sm-4">
-                                                    <div class="d-flex justify-content-center">
-                                                        <img class="img-fluid rounded-3" width="100px"
-                                                            height="100px" style="object-fit: fill"
-                                                            src="https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg"
-                                                            alt="" />
-                                                    </div>
-                                                    <h4 class="special-font text-center pt-3">
-                                                        Russel
-                                                    </h4>
-                                                    <div class="d-flex justify-content-center">
-                                                        <a href="" style="text-decoration: none">
-                                                            <i class="fa-solid fa-star text-warning"></i>
-                                                        </a>
-                                                        <a href="" style="text-decoration: none">
-                                                            <i class="fa-solid fa-star text-warning"></i>
-                                                        </a>
-                                                        <a href="" style="text-decoration: none">
-                                                            <i class="fa-solid fa-star text-warning"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <div>
-                                                        <p class="mb-0 text-justify">
-                                                            Lorem ipsum dolor, sit amet consectetur
-                                                            adipisicing elit. Voluptatibus expedita ratione
-                                                            perferendis laboriosam fuga rerum adipisci,
-                                                            harum molestias culpa dicta.
+                            <div class="row">
+                                <div class="company-slide text-white px-0">
+                                    @foreach ($nfc_card->nfcCompany as $company)
+                                        <div class="">
+                                            <div class="row pt-3 align-items-center">
+                                                <div class="col-md-12">
+                                                    <div class="text-center text-white">
+                                                        <div class="d-flex justify-content-center align-items-center">
+                                                            <img class="img-fluid" width="70px"
+                                                                style="background: var(--template-two-color-white);padding: 12px;border-radius: 100%;"
+                                                                src="{{ !empty($company->company_logo) && file_exists(public_path('storage/nfc/company/' . optional($company)->company_logo)) ? asset('storage/nfc/company/' . optional($company)->company_logo) : asset('frontend/images/no_image.png') }}"
+                                                                alt="" />
+                                                        </div>
+                                                        <h5>{{ $company->company_name }}</h5>
+                                                        <p class="p-3 mb-0" style="text-align: justify">
+                                                            {{ $company->company_description }}
                                                         </p>
                                                     </div>
                                                 </div>
+                                                <div class="col-md-6">
+                                                    <div class="ps-4 pb-3">
+                                                        <p class="mb-0">
+                                                            <span><i
+                                                                    class="fa-solid fa-globe pe-3"></i>{{ $company->company_website }}</span>
+                                                        </p>
+                                                        <p class="mb-0">
+                                                            <span><i
+                                                                    class="fa-solid fa-phone pe-3"></i>{{ $company->company_phone }}</span>
+                                                        </p>
+                                                        <p class="mb-0">
+                                                            <span><i
+                                                                    class="fa-regular fa-envelope pe-3"></i>{{ $company->company_email }}</span>
+                                                        </p>
+                                                        <p class="mb-0">
+                                                            <span><i
+                                                                    class="fa-solid fa-location pe-3"></i>{{ $company->company_address_line_one }}
+                                                                {{ $company->company_address_line_two }}</span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 align-items-center justify-content-center d-flex">
+                                                    <div class="px-3">
+                                                        <a href="{{ $company->company_facebook }}"
+                                                            class="btn company-btn-tem2 rounded-0 mb-2 w-100">Facebook</a>
+                                                        <a href="{{ $company->company_instagram }}"
+                                                            class="btn company-btn-tem2 rounded-0 mb-2 w-100">Instagram</a>
+                                                        <a href="{{ $company->company_likedin }}"
+                                                            class="btn company-btn-tem2 rounded-0 mb-2 w-100">Linkedin</a>
+                                                    </div>
+                                                </div>
                                             </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                @endif
+                <!-- Servies Box -->
+                @if ($nfc_card->services_show == '1')
+                    <section>
+                        <div class="container pb-5">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="text-center">
+                                        <h1 class="special-font text-white">My Services</h1>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="service-slide pt-3">
+                                @foreach ($nfc_card->nfcService->chunk(2) as $serviceChunk)
+                                    <div class="row">
+                                        @foreach ($serviceChunk as $service)
+                                            <div class="col-lg-6 col-md-6 mb-4">
+                                                <div class="card rounded-0 border-0 h-100">
+                                                    <div class="card-body border-0 d-flex flex-column">
+                                                        <div>
+                                                            <img class="card-img-top"
+                                                                src="{{ !empty($service->service_icon) && file_exists(public_path('storage/nfc/service/' . optional($service)->service_icon)) ? asset('storage/nfc/service/' . optional($service)->service_icon) : asset('frontend/images/no_image.png') }}"
+                                                                alt="" />
+                                                        </div>
+                                                        <div class="mt-3 text-center flex-grow-1">
+                                                            <h4 class="mb-0 special-font"
+                                                                style="color: var(--template-two-color-primary)">
+                                                                <a
+                                                                    href="{{ $service->service_url }}">{{ $service->service_name }}</a>
+                                                            </h4>
+                                                            <p class="">
+                                                                {{ $service->service_description }}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </section>
+                @endif
+
+                <!-- Product -->
+                @if ($nfc_card->products_show == '1')
+                    <section>
+                        <div class="container pb-5">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="text-center">
+                                        <h1 class="special-font text-white">My Product</h1>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row pt-3 product-slide">
+                                @foreach ($nfc_card->nfcProduct as $product)
+                                    <div class="col-md-4 me-2">
+                                        <div class="card border-0 ms-2">
+                                            <div class="card-body p-0">
+                                                <div>
+                                                    <img class="img-fluid rounded-2 product-img"
+                                                        src="{{ !empty($product->product_icon) && file_exists(public_path('storage/nfc/product/' . optional($product)->product_icon)) ? asset('storage/nfc/product/' . optional($product)->product_icon) : asset('frontend/images/no_image.png') }}"
+                                                        alt="" />
+                                                </div>
+                                                <div
+                                                    class="d-flex justify-content-between px-4 pt-3 align-items-center product-content-tem2">
+                                                    <h3 class="special-font mb-0">
+                                                        {{ $product->product_name }}
+                                                    </h3>
+                                                    <div>
+                                                        <span class="special-font mb-0 text-danger fs-4">
+                                                            @if ($product->product_currency == 'taka')
+                                                                Tk
+                                                            @elseif ($product->product_currency == 'euro')
+                                                                €
+                                                            @elseif ($product->product_currency == 'dollar')
+                                                                $
+                                                            @elseif ($product->product_currency == 'pound')
+                                                                £
+                                                            @endif
+                                                        </span>
+                                                        <h1 class="special-font mb-0">{{ $product->product_price }}
+                                                        </h1>
+                                                    </div>
+                                                </div>
+                                                <p class="px-4 pb-3">For Order Please Fill Up The Form</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </section>
+                @endif
+                <!-- Galery -->
+                @if ($nfc_card->galleries_show == '1')
+                    <section>
+                        <div class="container pb-5">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="text-center">
+                                        <h1 class="special-font text-white">My Gallery</h1>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row pt-3">
+                                <div class="col-lg-12">
+                                    <div class="galery-slide">
+                                        <div>
+                                            <img class="w-100 img-fluid rounded-3"
+                                                src="https://www.shutterbug.com/images/0616gallery07.jpg"
+                                                alt="" />
+                                        </div>
+                                        <div>
+                                            <img class="w-100 img-fluid rounded-3"
+                                                src="https://www.shutterbug.com/images/0616gallery07.jpg"
+                                                alt="" />
+                                        </div>
+                                        <div>
+                                            <img class="w-100 img-fluid rounded-3"
+                                                src="https://www.shutterbug.com/images/0616gallery07.jpg"
+                                                alt="" />
+                                        </div>
+                                        <div>
+                                            <img class="w-100 img-fluid rounded-3"
+                                                src="https://www.shutterbug.com/images/0616gallery07.jpg"
+                                                alt="" />
+                                        </div>
+                                        <div>
+                                            <img class="w-100 img-fluid rounded-3"
+                                                src="https://www.shutterbug.com/images/0616gallery07.jpg"
+                                                alt="" />
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
+                @endif
+                <!-- Testimonial -->
+                @if ($nfc_card->testimonials_show == '1')
+                    <section>
+                        <div class="container pb-5">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="text-center">
+                                        <h1 class="special-font text-white">My Testimonial</h1>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-10 col-offset-md-1 mx-auto">
+                                    <div class="testimonial-slide">
+                                        @foreach ($nfc_card->nfcTestimonial as $testimonial)
+                                            <div class="card p-0 bg-white border-0 p-0 mt-5">
+                                                <div class="card-body rounded-0 border-0 d-flex">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-sm-4">
+                                                            <div class="d-flex justify-content-center">
+                                                                <img class="img-fluid rounded-3" width="100px"
+                                                                    height="100px" style="object-fit: fill"
+                                                                    src="{{ !empty($testimonial->testimonial_image) && file_exists(public_path('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image)) ? asset('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image) : asset('frontend/images/no_image.png') }}"
+                                                                    alt="" />
+                                                            </div>
+                                                            <h4 class="special-font text-center pt-3">
+                                                                {{ $testimonial->testimonial_name }}
+                                                            </h4>
+                                                            <div class="d-flex justify-content-center">
+                                                                <a href="" style="text-decoration: none">
+                                                                    <i class="fa-solid fa-star text-warning"></i>
+                                                                </a>
+                                                                <a href="" style="text-decoration: none">
+                                                                    <i class="fa-solid fa-star text-warning"></i>
+                                                                </a>
+                                                                <a href="" style="text-decoration: none">
+                                                                    <i class="fa-solid fa-star text-warning"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-8">
+                                                            <div>
+                                                                <p class="mb-0 text-justify">
+                                                                    {{ $testimonial->testimonial_description }}
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                @endif
                 <!-- Testimonial -->
                 <section>
                     <div class="container pb-5">
@@ -743,7 +707,8 @@
                                         alt="" />
                                     <div>
                                         <a href=""
-                                            class="btn btn-dark rounded-0 w-100 border-2 border-dark">Download QR</a>
+                                            class="btn btn-dark rounded-0 w-100 border-2 border-dark">Download
+                                            QR</a>
                                     </div>
                                 </div>
                             </div>
@@ -751,85 +716,113 @@
                     </div>
                 </section>
                 <!-- Business Hours -->
-                <section>
-                    <div class="container pb-5">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="text-center">
-                                    <h1 class="special-font text-white">Business Hours</h1>
+                @if ($nfc_card->business_hours_show == '1')
+                    <section>
+                        <div class="container pb-5">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="text-center">
+                                        <h1 class="special-font text-white">Business Hours</h1>
+                                    </div>
                                 </div>
+                            </div>
+                            <div class="row pt-5">
+                                @if (optional($nfc_card->nfcData)->monday == '1')
+                                    <div class="col-md-6 mb-2">
+                                        <div>
+                                            <div class="text-center text-white">
+                                                <i class="fa fa-calendar houricon"></i>
+                                            </div>
+                                            <div class="text-center">
+                                                <p class="mb-0 text-white special-font">Monday</p>
+                                                <p class="mb-0 text-white">10.00 AM - 10.00 PM</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                                @if (optional($nfc_card->nfcData)->tuesday == '1')
+
+                                    <div class="col-md-6 mb-2">
+                                        <div>
+                                            <div class="text-center text-white">
+                                                <i class="fa fa-calendar houricon"></i>
+                                            </div>
+                                            <div class="text-center">
+                                                <p class="mb-0 text-white special-font">Tuesday</p>
+                                                <p class="mb-0 text-white">10.00 AM - 10.00 PM</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                                @if (optional($nfc_card->nfcData)->wednesday == '1')
+                                    <div class="col-md-6 mb-2">
+                                        <div>
+                                            <div class="text-center text-white">
+                                                <i class="fa fa-calendar houricon"></i>
+                                            </div>
+                                            <div class="text-center">
+                                                <p class="mb-0 text-white special-font">Wednesday</p>
+                                                <p class="mb-0 text-white">10.00 AM - 10.00 PM</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                                @if (optional($nfc_card->nfcData)->thursday == '1')
+                                    <div class="col-md-6 mb-2">
+                                        <div>
+                                            <div class="text-center text-white">
+                                                <i class="fa fa-calendar houricon"></i>
+                                            </div>
+                                            <div class="text-center">
+                                                <p class="mb-0 text-white special-font">Thursday</p>
+                                                <p class="mb-0 text-white">10.00 AM - 10.00 PM</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                                @if (optional($nfc_card->nfcData)->friday == '1')
+                                    <div class="col-md-6 mb-2">
+                                        <div>
+                                            <div class="text-center text-white">
+                                                <i class="fa fa-calendar houricon"></i>
+                                            </div>
+                                            <div class="text-center">
+                                                <p class="mb-0 text-white special-font">Friday</p>
+                                                <p class="mb-0 text-white">10.00 AM - 10.00 PM</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                                @if (optional($nfc_card->nfcData)->saturday == '1')
+                                    <div class="col-md-6 mb-2">
+                                        <div>
+                                            <div class="text-center text-white">
+                                                <i class="fa fa-calendar houricon"></i>
+                                            </div>
+                                            <div class="text-center">
+                                                <p class="mb-0 text-white special-font">Satarday</p>
+                                                <p class="mb-0 text-white">10.00 AM - 10.00 PM</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                                @if (optional($nfc_card->nfcData)->sunday == '1')
+                                    <div class="col-md-6 mb-2">
+                                        <div>
+                                            <div class="text-center text-white">
+                                                <i class="fa fa-calendar houricon"></i>
+                                            </div>
+                                            <div class="text-center">
+                                                <p class="mb-0 text-white special-font">Satarday</p>
+                                                <p class="mb-0 text-white">10.00 AM - 10.00 PM</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
                             </div>
                         </div>
-                        <div class="row pt-5">
-                            <div class="col-md-6 mb-2">
-                                <div>
-                                    <div class="text-center text-white">
-                                        <i class="fa fa-calendar houricon"></i>
-                                    </div>
-                                    <div class="text-center">
-                                        <p class="mb-0 text-white special-font">Monday</p>
-                                        <p class="mb-0 text-white">10.00 AM - 10.00 PM</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-2">
-                                <div>
-                                    <div class="text-center text-white">
-                                        <i class="fa fa-calendar houricon"></i>
-                                    </div>
-                                    <div class="text-center">
-                                        <p class="mb-0 text-white special-font">Tuesday</p>
-                                        <p class="mb-0 text-white">10.00 AM - 10.00 PM</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-2">
-                                <div>
-                                    <div class="text-center text-white">
-                                        <i class="fa fa-calendar houricon"></i>
-                                    </div>
-                                    <div class="text-center">
-                                        <p class="mb-0 text-white special-font">Wednesday</p>
-                                        <p class="mb-0 text-white">10.00 AM - 10.00 PM</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-2">
-                                <div>
-                                    <div class="text-center text-white">
-                                        <i class="fa fa-calendar houricon"></i>
-                                    </div>
-                                    <div class="text-center">
-                                        <p class="mb-0 text-white special-font">Thursday</p>
-                                        <p class="mb-0 text-white">10.00 AM - 10.00 PM</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-2">
-                                <div>
-                                    <div class="text-center text-white">
-                                        <i class="fa fa-calendar houricon"></i>
-                                    </div>
-                                    <div class="text-center">
-                                        <p class="mb-0 text-white special-font">Friday</p>
-                                        <p class="mb-0 text-white">10.00 AM - 10.00 PM</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-2">
-                                <div>
-                                    <div class="text-center text-white">
-                                        <i class="fa fa-calendar houricon"></i>
-                                    </div>
-                                    <div class="text-center">
-                                        <p class="mb-0 text-white special-font">Satarday</p>
-                                        <p class="mb-0 text-white">10.00 AM - 10.00 PM</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                    </section>
+                @endif
                 <!-- Contact Area -->
                 <section>
                     <div class="container pb-5">

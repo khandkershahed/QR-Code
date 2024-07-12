@@ -310,10 +310,10 @@
                                     </div>
                                     @if ($nfc_card->social_links_show == '1')
                                         <div class="d-flex justify-content-center align-items-center">
-                                            <a href="{{ optional($nfc_card->nfcData)->website_url }}"
+                                            {{-- <a href="{{ optional($nfc_card->nfcData)->website_url }}"
                                                 class="social-link-tem1">
                                                 <i class="fa-solid fa-globe"></i>
-                                            </a>
+                                            </a> --}}
                                             <a href="{{ optional($nfc_card->nfcData)->facebook_url }}"
                                                 class="social-link-tem1">
                                                 <i class="fa-brands fa-facebook-f"></i>
@@ -330,7 +330,7 @@
                                                 class="social-link-tem1">
                                                 <i class="fa-brands fa-whatsapp"></i>
                                             </a>
-                                            <a href="{{ optional($nfc_card->nfcData)->twitter_url }}"
+                                            {{-- <a href="{{ optional($nfc_card->nfcData)->twitter_url }}"
                                                 class="social-link-tem1">
                                                 <i class="fa-brands fa-twitter"></i>
                                             </a>
@@ -353,7 +353,7 @@
                                             <a href="{{ optional($nfc_card->nfcData)->tiktok_url }}"
                                                 class="social-link-tem1">
                                                 <i class="fa-brands fa-tiktok"></i>
-                                            </a>
+                                            </a> --}}
                                         </div>
                                     @endif
                                 </div>
@@ -562,14 +562,19 @@
                                             <div>
                                                 <img class="card-img-top"
                                                     src="{{ !empty($service->service_icon) && file_exists(public_path('storage/nfc/service/' . optional($service)->service_icon)) ? asset('storage/nfc/service/' . optional($service)->service_icon) : asset('frontend/images/no_image.png') }}"
+                                                <img class="card-img-top"
+                                                    src="{{ !empty($service->service_icon) && file_exists(public_path('storage/nfc/service/' . optional($service)->service_icon)) ? asset('storage/nfc/service/' . optional($service)->service_icon) : asset('frontend/images/no_image.png') }}"
                                                     alt="" />
                                             </div>
                                             <div class="mt-3 text-center">
                                                 <h4 class="mb-0 special-font text-white">
                                                     <a href="{{ $service->service_url }}" target="_blank"
                                                         rel="noopener noreferrer">{{ $service->service_name }}</a>
+                                                    <a href="{{ $service->service_url }}" target="_blank"
+                                                        rel="noopener noreferrer">{{ $service->service_name }}</a>
                                                 </h4>
                                                 <p class="text-white">
+                                                    {{ $service->service_description }}
                                                     {{ $service->service_description }}
                                                 </p>
                                             </div>
@@ -721,7 +726,7 @@
                                                     <p class="mb-0 text-white text-center">
                                                         {{ $testimonial->testimonial_description }}
                                                     </p>
-                                                    {{-- <div class="d-flex justify-content-center pt-3">
+                                                    <div class="d-flex justify-content-center pt-3">
                                                         <a href="" style="text-decoration: none">
                                                             <i class="fa-solid fa-star text-warning"></i>
                                                         </a>
@@ -731,7 +736,7 @@
                                                         <a href="" style="text-decoration: none">
                                                             <i class="fa-solid fa-star text-warning"></i>
                                                         </a>
-                                                    </div> --}}
+                                                    </div>
                                                 </div>
                                             </div>
                                         @endforeach
