@@ -14955,6 +14955,11 @@ a.theme-btn.style-four:hover {
 .widget-contact ul li a {
     color: rgba(255, 255, 255, 0.45);
 }
+.widget-contact ul li span {
+    color: rgba(255, 255, 255, 0.45);
+    font-weight: 500;
+    line-height: 30px;
+}
 
 .widget-contact ul li a:hover {
     color: var(--white);
@@ -15047,7 +15052,7 @@ a.theme-btn.style-four:hover {
 }
 
 .footer-bottom .copyright-text a {
-    color: var(--white);
+    color: #fff;
 }
 
 .footer-bottom .footer-bottom-menu ul {

@@ -54,9 +54,9 @@
                         <h6 class="footer-title text-white">Contact</h6>
                         <ul>
                             <li>
-                                <i class="fa fa-map-marker-alt"></i> {{ !empty($site->address_line_one) ? $site->address_line_one : '' }} {{ !empty($site->address_line_two) ? ', ' . $site->address_line_two : '' }}
+                                <i class="fa fa-map-marker-alt"></i> <span>{{ !empty($site->address_line_one) ? $site->address_line_one : '' }} {{ !empty($site->address_line_two) ? ', ' . $site->address_line_two : '' }}</span>
                             </li>
-                            <li><i class="fa fa-envelope"></i> <a href="mailto:support@gmail.com">support@goqr.mail.com</a>
+                            <li><i class="fa fa-envelope"></i> <a href="mailto:{{ !empty($site->contact_email) ? $site->contact_email : '' }}">{{ !empty($site->contact_email) ? $site->contact_email : '' }}</a>
                             </li>
                             <li><i class="fa fa-phone"></i> <a href="callto:{{ !empty($site->phone_one) ? $site->phone_one : '' }}">{{ !empty($site->phone_one) ? $site->phone_one : '' }}</a></li>
                         </ul>
@@ -105,7 +105,7 @@
                     <div class="col-xl-12 col-lg-6">
                         <div class="copyright-text pt-10 text-lg-start text-center aos-init" data-aos="fade-up" data-aos-delay="400"
                         data-aos-duration="1500" data-aos-offset="50">
-                            <p>Copyright @2024, <a href="{{ route('homePage') }}">GoFlixza</a> All Rights Reserved</p>
+                            <p class="text-muted">Copyright @2024, <a href="{{ route('homePage') }}">GoFlixza</a> All Rights Reserved</p>
                         </div>
                     </div>
                 </div>
