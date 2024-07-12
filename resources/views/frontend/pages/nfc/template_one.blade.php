@@ -560,15 +560,17 @@
                                     <div class="card w-100 me-2 rounded-0 border-0">
                                         <div class="card-body border-0 bg-dark">
                                             <div>
-                                                <img class="card-img-top" src="{{ !empty($service->service_icon) && file_exists(public_path('storage/nfc/service/' . optional($service)->service_icon)) ? asset('storage/nfc/service/' . optional($service)->service_icon) : asset('frontend/images/no_image.png') }}"
+                                                <img class="card-img-top"
+                                                    src="{{ !empty($service->service_icon) && file_exists(public_path('storage/nfc/service/' . optional($service)->service_icon)) ? asset('storage/nfc/service/' . optional($service)->service_icon) : asset('frontend/images/no_image.png') }}"
                                                     alt="" />
                                             </div>
                                             <div class="mt-3 text-center">
                                                 <h4 class="mb-0 special-font text-white">
-                                                    <a href="{{$service->service_url}}" target="_blank" rel="noopener noreferrer">{{$service->service_name}}</a>
+                                                    <a href="{{ $service->service_url }}" target="_blank"
+                                                        rel="noopener noreferrer">{{ $service->service_name }}</a>
                                                 </h4>
                                                 <p class="text-white">
-                                                    {{$service->service_description}}
+                                                    {{ $service->service_description }}
                                                 </p>
                                             </div>
                                         </div>
@@ -607,18 +609,19 @@
                                                 </div>
                                                 <div
                                                     class="d-flex justify-content-between px-4 py-3 align-items-center bg-dark">
-                                                    <h6 class="special-font mb-0 text-white">{{$product->product_name}}</h6>
                                                     <h6 class="special-font mb-0 text-white">
-                                                        @if ($product->product_currency == "taka")
-                                                        Tk
-                                                        @elseif ($product->product_currency == "euro")
-                                                        €
-                                                        @elseif ($product->product_currency == "dollar")
-                                                        $
-                                                        @elseif ($product->product_currency == "pound")
-                                                        £
+                                                        {{ $product->product_name }}</h6>
+                                                    <h6 class="special-font mb-0 text-white">
+                                                        @if ($product->product_currency == 'taka')
+                                                            Tk
+                                                        @elseif ($product->product_currency == 'euro')
+                                                            €
+                                                        @elseif ($product->product_currency == 'dollar')
+                                                            $
+                                                        @elseif ($product->product_currency == 'pound')
+                                                            £
                                                         @endif
-                                                        &nbsp;{{$product->product_price}}
+                                                        &nbsp;{{ $product->product_price }}
                                                     </h6>
                                                 </div>
                                             </div>
@@ -703,7 +706,8 @@
                                         @foreach ($nfc_card->nfcTestimonial as $testimonial)
                                             <div class="card p-0 bg-dark border-0 p-0 mt-5">
                                                 <div class="card-body rounded-0 border-0">
-                                                    <div class="d-flex justify-content-center" style="margin-top: -40px">
+                                                    <div class="d-flex justify-content-center"
+                                                        style="margin-top: -40px">
                                                         <img class="img-fluid" width="80px" height="80px"
                                                             src="{{ !empty($testimonial->testimonial_image) && file_exists(public_path('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image)) ? asset('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image) : asset('frontend/images/no_image.png') }}"
                                                             alt="" />
@@ -764,8 +768,9 @@
                                         @endif
                                         @if ($nfc_card->enable_download_qr_code == '1')
                                             <div>
-                                                <a href="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
-                                                    class="btn btn-dark rounded-0 w-100 border-2 border-dark">Download QR</a>
+                                                <a href="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}" download=""
+                                                    class="btn btn-dark rounded-0 w-100 border-2 border-dark">Download
+                                                    QR</a>
                                             </div>
                                         @endif
                                     </div>
@@ -792,7 +797,7 @@
                                 </div>
                             </div>
                             <div class="row pt-5">
-                                @if (optional($nfc_card->nfcData)->monday == "1")
+                                @if (optional($nfc_card->nfcData)->monday == '1')
                                     <div class="col-md-6 mb-2">
                                         <div>
                                             <div class="text-center text-white">
@@ -800,12 +805,14 @@
                                             </div>
                                             <div class="text-center">
                                                 <p class="mb-0 text-white special-font">Monday</p>
-                                                <p class="mb-0 text-white">10.00 AM - 10.00 PM</p>
+                                                <p class="mb-0 text-white">
+                                                    {{ optional($nfc_card->nfcData)->start_time_monday }} -
+                                                    {{ optional($nfc_card->nfcData)->end_time_monday }}</p>
                                             </div>
                                         </div>
                                     </div>
                                 @endif
-                                @if (optional($nfc_card->nfcData)->tuesday == "1")
+                                @if (optional($nfc_card->nfcData)->tuesday == '1')
                                     <div class="col-md-6 mb-2">
                                         <div>
                                             <div class="text-center text-white">
@@ -813,12 +820,14 @@
                                             </div>
                                             <div class="text-center">
                                                 <p class="mb-0 text-white special-font">Tuesday</p>
-                                                <p class="mb-0 text-white">10.00 AM - 10.00 PM</p>
+                                                <p class="mb-0 text-white">
+                                                    {{ optional($nfc_card->nfcData)->start_time_tuesday }} -
+                                                    {{ optional($nfc_card->nfcData)->end_time_monday }}</p>
                                             </div>
                                         </div>
                                     </div>
                                 @endif
-                                @if (optional($nfc_card->nfcData)->wednesday == "1")
+                                @if (optional($nfc_card->nfcData)->wednesday == '1')
                                     <div class="col-md-6 mb-2">
                                         <div>
                                             <div class="text-center text-white">
@@ -826,12 +835,14 @@
                                             </div>
                                             <div class="text-center">
                                                 <p class="mb-0 text-white special-font">Wednesday</p>
-                                                <p class="mb-0 text-white">10.00 AM - 10.00 PM</p>
+                                                <p class="mb-0 text-white">
+                                                    {{ optional($nfc_card->nfcData)->start_time_wednesday }} -
+                                                    {{ optional($nfc_card->nfcData)->end_time_monday }}</p>
                                             </div>
                                         </div>
                                     </div>
                                 @endif
-                                @if (optional($nfc_card->nfcData)->thursday == "1")
+                                @if (optional($nfc_card->nfcData)->thursday == '1')
                                     <div class="col-md-6 mb-2">
                                         <div>
                                             <div class="text-center text-white">
@@ -839,12 +850,14 @@
                                             </div>
                                             <div class="text-center">
                                                 <p class="mb-0 text-white special-font">Thursday</p>
-                                                <p class="mb-0 text-white">10.00 AM - 10.00 PM</p>
+                                                <p class="mb-0 text-white">
+                                                    {{ optional($nfc_card->nfcData)->start_time_thursday }} -
+                                                    {{ optional($nfc_card->nfcData)->end_time_monday }}</p>
                                             </div>
                                         </div>
                                     </div>
                                 @endif
-                                @if (optional($nfc_card->nfcData)->friday == "1")
+                                @if (optional($nfc_card->nfcData)->friday == '1')
                                     <div class="col-md-6 mb-2">
                                         <div>
                                             <div class="text-center text-white">
@@ -852,12 +865,14 @@
                                             </div>
                                             <div class="text-center">
                                                 <p class="mb-0 text-white special-font">Friday</p>
-                                                <p class="mb-0 text-white">10.00 AM - 10.00 PM</p>
+                                                <p class="mb-0 text-white">
+                                                    {{ optional($nfc_card->nfcData)->start_time_friday }} -
+                                                    {{ optional($nfc_card->nfcData)->end_time_monday }}</p>
                                             </div>
                                         </div>
                                     </div>
                                 @endif
-                                @if (optional($nfc_card->nfcData)->saturday == "1")
+                                @if (optional($nfc_card->nfcData)->saturday == '1')
                                     <div class="col-md-6 mb-2">
                                         <div>
                                             <div class="text-center text-white">
@@ -865,12 +880,14 @@
                                             </div>
                                             <div class="text-center">
                                                 <p class="mb-0 text-white special-font">Saturday</p>
-                                                <p class="mb-0 text-white">10.00 AM - 10.00 PM</p>
+                                                <p class="mb-0 text-white">
+                                                    {{ optional($nfc_card->nfcData)->start_time_saturday }} -
+                                                    {{ optional($nfc_card->nfcData)->end_time_monday }}</p>
                                             </div>
                                         </div>
                                     </div>
                                 @endif
-                                @if (optional($nfc_card->nfcData)->sunday == "1")
+                                @if (optional($nfc_card->nfcData)->sunday == '1')
                                     <div class="col-md-6 mb-2">
                                         <div>
                                             <div class="text-center text-white">
@@ -878,7 +895,9 @@
                                             </div>
                                             <div class="text-center">
                                                 <p class="mb-0 text-white special-font">Sunday</p>
-                                                <p class="mb-0 text-white">10.00 AM - 10.00 PM</p>
+                                                <p class="mb-0 text-white">
+                                                    {{ optional($nfc_card->nfcData)->start_time_sunday }} -
+                                                    {{ optional($nfc_card->nfcData)->end_time_monday }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -905,25 +924,29 @@
                         </div>
                         <div class="row pt-4">
                             <div class="co-md-12">
-                                <form action="" method="post">
+                                <form action="{{ route('individual-message.store') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="user_id" value="{{ optional($nfc_card)->user_id }}">
+                                    <input type="hidden" name="nfc_id" value="{{ optional($nfc_card)->id }}">
+                                    <input type="hidden" name="nfc_code" value="{{ optional($nfc_card)->code }}">
                                     <div class="row">
                                         <div class="col-lg-12 mb-3">
-                                            <input type="text" name=""
+                                            <input type="text" name="name"
                                                 class="form-control form-control-sm rounded-0 w-75 mx-auto rounded-1 p-2"
                                                 placeholder="Enter Your Names" />
                                         </div>
                                         <div class="col-lg-12 mb-3">
-                                            <input type="email" name=""
+                                            <input type="email" name="email"
                                                 class="form-control form-control-sm rounded-0 w-75 mx-auto rounded-1 p-2"
                                                 placeholder="Enter Your Email" />
                                         </div>
                                         <div class="col-lg-12 mb-3">
-                                            <input type="text" name=""
+                                            <input type="text" name="phone"
                                                 class="form-control form-control-sm rounded-0 w-75 mx-auto rounded-1 p-2"
                                                 placeholder="Enter Your Phone" />
                                         </div>
                                         <div class="col-lg-12 mb-3">
-                                            <textarea name="" class="form-control form-control-sm rounded-0 w-75 mx-auto rounded-1 p-2" id=""
+                                            <textarea name="message" class="form-control form-control-sm rounded-0 w-75 mx-auto rounded-1 p-2" id=""
                                                 rows="5"></textarea>
                                         </div>
                                         <div class="col-lg-12 w-75 mx-auto px-2">
@@ -935,6 +958,13 @@
                                 </form>
                             </div>
                         </div>
+                        @php
+                            $currentUrl = request()->url();
+                            $whatsappLink ='https://wa.me/?text=' . urlencode('Check out My NFC Profile: ' . $currentUrl);
+                        @endphp
+
+                        <!-- Create a button or link to share via WhatsApp -->
+
                         <div class="row py-5">
                             <div class="col-lg-12">
                                 <div class="text-center">
@@ -949,10 +979,11 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-4 col-offset-lg-4 mx-auto">
-                                <button type="submit" class="btn btn-dark w-100 p-3">
+                            <div class="col-lg-7 col-offset-lg-6 mx-auto">
+                                <a href="{{ $whatsappLink }}" target="_blank" rel="noopener noreferrer" class="btn btn-dark w-100 p-3">
                                     <i class="fa-solid fa-paper-plane"></i> Share This Vcard
-                                </button>
+                                </a>
+
                             </div>
                         </div>
                     </div>
@@ -964,19 +995,19 @@
                     <div class="footer-nav-tem1 position-relative">
                         <ul class="h-100 d-flex align-items-center justify-content-between ps-0">
                             <li class="active">
-                                <a href="#">
+                                <a href="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}" download="">
                                     <i class="fa-solid fa-qrcode"></i>
                                     <span>QR</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="copy-link" data-link="https://another-example.com">
+                                <a href="#" class="copy-link" data-link="$currentUrl">
                                     <i class="fa-solid fa-copy"></i>
                                     <span>Copy Link</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="#" class="nfc_contact_btn_pc">
                                     <i class="fa-solid fa-file-arrow-down"></i>
                                     <span>Save VFC</span>
                                 </a>
@@ -988,22 +1019,24 @@
         </div>
         <!-- On Page Load Show Modal -->
         <!-- Modal -->
-        <!-- Modal -->
-        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog load-modal modal-dialog-centered">
-                <div class="modal-content rounded-0">
-                    <div class="modal-header bg-dark rounded-0 text-white">
-                        <h5 class="modal-title" id="exampleModalLabel">Welcome</h5>
-                        <button type="button" class="btn-close text-white close-btns" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        This is a modal that appears on page load.
+        @if ($nfc_card->banner == '1')
+            <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog load-modal modal-dialog-centered">
+                    <div class="modal-content rounded-0">
+                        <div class="modal-header bg-dark rounded-0 text-white">
+                            <h5 class="modal-title" id="exampleModalLabel">
+                                {{ optional($nfc_card->nfcBanner)->banner_title }}</h5>
+                            <button type="button" class="btn-close text-white close-btns" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            {{ optional($nfc_card->nfcBanner)->banner_description }}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        @endif
 
         <!-- On Page Load Show Modal End -->
     </main>
@@ -1098,6 +1131,117 @@
                 autoplaySpeed: 2000,
                 arrows: false,
             });
+        });
+    </script>
+    <script>
+        'use strict';
+
+        function downloadToFile(content, filename, contentType) {
+            const a = document.createElement('a');
+            const file = new Blob([content], {
+                type: contentType
+            });
+
+            a.href = URL.createObjectURL(file);
+            a.download = filename;
+            a.click();
+
+            URL.revokeObjectURL(a.href);
+        }
+
+        function getBase64Image(imgUrl, callback) {
+            const img = new Image();
+            img.crossOrigin = 'Anonymous';
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                canvas.width = img.width;
+                canvas.height = img.height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0);
+                const dataURL = canvas.toDataURL('image/jpeg');
+                callback(dataURL.replace(/^data:image\/(png|jpeg);base64,/, ''));
+            };
+            img.src = imgUrl;
+        }
+
+        const makeVCardVersion = () => `VERSION:3.0`;
+        const makeVCardInfo = (lastName, firstName) => `N:${lastName};${firstName};;;`;
+        const makeVCardName = (firstName, lastName) => `FN:${firstName} ${lastName}`;
+        const makeVCardOrg = (org) => `ORG:${org}`;
+        const makeVCardTitle = (title) => `TITLE:${title}`;
+        const makeVCardPhoto = (imgBase64) => `PHOTO;ENCODING=b;TYPE=JPEG:${imgBase64}`;
+        const makeVCardTel = (phone) => `TEL;TYPE=CELL:${phone}`;
+        const makeVCardAdr = (addressLine1, addressLine2) => `ADR;TYPE=HOME:;;${addressLine1};${addressLine2};;;;`;
+        const makeVCardEmail = (email) => `EMAIL:${email}`;
+        const makeVCardUrl = (url) => `URL:${url}`;
+        const makeVCardSocialProfile = (type, url) => `X-SOCIALPROFILE;TYPE=${type}:${url}`;
+        const makeVCardTimeStamp = () => `REV:${new Date().toISOString()}`;
+
+        function makeVCard(profileImageBase64) {
+            const firstName = '{{ optional($nfc_card->nfcData)->first_name }}';
+            const lastName = '{{ optional($nfc_card->nfcData)->last_name }}';
+            const designation = '{{ optional($nfc_card->nfcData)->designation }}';
+            const phone = '{{ $nfc_card->nfcData->phone_personal }}';
+            const email = '{{ $nfc_card->nfcData->email_personal }}';
+            const addressLine1 = '{{ $nfc_card->nfcData->address_line_one }}';
+            const addressLine2 = '{{ $nfc_card->nfcData->address_line_two }}';
+            const linkedin = '{{ $nfc_card->nfcData->linkedin_url }}';
+
+            let vcard = `BEGIN:VCARD\n${makeVCardVersion()}\n`;
+            vcard += `${makeVCardInfo(lastName, firstName)}\n`;
+            vcard += `${makeVCardName(firstName, lastName)}\n`;
+            vcard += `${makeVCardTitle(designation)}\n`;
+
+            if (profileImageBase64) {
+                vcard += `${makeVCardPhoto(profileImageBase64)}\n`;
+            }
+
+            vcard += `${makeVCardTel(phone)}\n`;
+
+            if (addressLine1 || addressLine2) {
+                vcard += `${makeVCardAdr(addressLine1, addressLine2)}\n`;
+            }
+
+            if (email) {
+                vcard += `${makeVCardEmail(email)}\n`;
+            }
+
+            if (linkedin) {
+                vcard += `${makeVCardUrl(linkedin)}\n`;
+                vcard += `${makeVCardSocialProfile('linkedin', linkedin)}\n`;
+            }
+
+            vcard += `${makeVCardTimeStamp()}\nEND:VCARD`;
+
+            return vcard;
+        }
+
+        function handleContactButtonClick(event, isMobile) {
+            event.preventDefault(); // Prevent default link behavior
+
+            const profileImage = '{{ asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) }}';
+
+            getBase64Image(profileImage, (base64Image) => {
+                const vcard = makeVCard(base64Image);
+
+                if (isMobile) {
+                    // Open vCard details in contact app for mobile
+                    const encodedVcfContent = encodeURIComponent(vcard);
+                    const uri = 'data:text/vcard;charset=utf-8,' + encodedVcfContent;
+                    window.location.href = uri;
+                } else {
+                    // Download vCard for PC
+                    downloadToFile(vcard, 'contact.vcf', 'text/vcard');
+                }
+            });
+        }
+
+        document.querySelector('.nfc_contact_btn_pc').addEventListener('click', (event) => {
+            handleContactButtonClick(event, false);
+        });
+
+        document.querySelector('.nfc_contact_btn_mobile').addEventListener('click', (event) => {
+            handleContactButtonClick(event, true);
         });
     </script>
 </body>
