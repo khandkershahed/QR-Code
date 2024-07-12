@@ -104,7 +104,7 @@
 
                 <div class="menu-item">
                     <a class="menu-link {{ Route::is('user.barcode.index', 'user.barcode.create', 'user.barcode.edit') ? 'active' : '' }}"
-                        href="{{ route('barcode.index') }}">
+                        href="{{ route('user.barcode.index') }}">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1"

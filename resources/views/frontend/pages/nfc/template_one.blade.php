@@ -657,11 +657,15 @@
                             <div class="row pt-3">
                                 <div class="col-lg-12">
                                     <div class="galery-slide">
-                                        @foreach ($nfc_card->nfcProduct as $galleries)
+                                        @foreach ($nfc_card->nfcGallery as $gallery)
                                             <div>
-                                                <img class="w-100 img-fluid"
-                                                    src="{{ !empty($product->gallery_attachment) && file_exists(public_path('storage/nfc/product/' . optional($product)->gallery_attachment)) ? asset('storage/nfc/product/' . optional($product)->gallery_attachment) : asset('frontend/images/no_image.png') }}"
-                                                    alt="" />
+                                                @if ($gallery->gallery_type =="image")
+                                                    <img class="w-100 img-fluid"
+                                                        src="{{ !empty($gallery->gallery_attachment) && file_exists(public_path('storage/nfc/gallery/' . optional($gallery)->gallery_attachment)) ? asset('storage/nfc/gallery/' . optional($gallery)->gallery_attachment) : asset('frontend/images/no_image.png') }}"
+                                                        alt="" />
+                                                @else
+                                                    <iframe src="{{ optional($gallery)->gallery_attachment}}" frameborder="0"></iframe>
+                                                @endif
                                             </div>
                                         @endforeach
                                     </div>
