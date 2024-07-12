@@ -1186,11 +1186,11 @@
             const firstName = '{{ optional($nfc_card->nfcData)->first_name }}';
             const lastName = '{{ optional($nfc_card->nfcData)->last_name }}';
             const designation = '{{ optional($nfc_card->nfcData)->designation }}';
-            const phone = '{{ $nfc_card->nfcData->phone_personal }}';
-            const email = '{{ $nfc_card->nfcData->email_personal }}';
-            const addressLine1 = '{{ $nfc_card->nfcData->address_line_one }}';
-            const addressLine2 = '{{ $nfc_card->nfcData->address_line_two }}';
-            const linkedin = '{{ $nfc_card->nfcData->linkedin_url }}';
+            const phone = '{{ optional($nfc_card->nfcData)->phone_personal }}';
+            const email = '{{ optional($nfc_card->nfcData)->email_personal }}';
+            const addressLine1 = '{{ optional($nfc_card->nfcData)->address_line_one }}';
+            const addressLine2 = '{{ optional($nfc_card->nfcData)->address_line_two }}';
+            const linkedin = '{{ optional($nfc_card->nfcData)->linkedin_url }}';
 
             let vcard = `BEGIN:VCARD\n${makeVCardVersion()}\n`;
             vcard += `${makeVCardInfo(lastName, firstName)}\n`;
