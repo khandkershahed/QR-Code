@@ -63,7 +63,7 @@
 
                 <div class="tab-pane fade" id="galleries" role="tabpanel">
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-12 gallery_container">
                             @include('nfc.form_partials.galleries')
                         </div>
                     </div>
