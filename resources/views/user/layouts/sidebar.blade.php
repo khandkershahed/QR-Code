@@ -1,4 +1,4 @@
-<div id="kt_aside" class="aside aside-dark aside-hoverable" data-kt-drawer="true" data-kt-drawer-name="aside"
+<div id="kt_aside" class="aside aside-light aside-hoverable" data-kt-drawer="true" data-kt-drawer-name="aside"
     data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true"
     data-kt-drawer-width="{default:'200px', '300px': '250px'}" data-kt-drawer-direction="start"
     data-kt-drawer-toggle="#kt_aside_mobile_toggle">
@@ -33,16 +33,39 @@
                     <a class="menu-link {{ Route::is('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none">
-                                    <rect x="2" y="2" width="9" height="9" rx="2" fill="currentColor">
-                                    </rect>
-                                    <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2"
-                                        fill="currentColor"></rect>
-                                    <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2"
-                                        fill="currentColor"></rect>
-                                    <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2"
-                                        fill="currentColor"></rect>
+                                <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" x="0" y="0"
+                                    viewBox="0 0 60 60" style="enable-background:new 0 0 512 512" xml:space="preserve"
+                                    class="">
+                                    <g>
+                                        <path fill="#b5b8bc" d="M41 55v1H19v-1s5-1 5-5v-1h12v1c0 4 5 5 5 5z"
+                                            opacity="1" data-original="#b5b8bc"></path>
+                                        <path fill="#d5d8db"
+                                            d="M59 45v3a2.006 2.006 0 0 1-2 2H3a2.006 2.006 0 0 1-2-2v-3l1-1h56z"
+                                            opacity="1" data-original="#d5d8db"></path>
+                                        <path fill="#363699"
+                                            d="M59 3v42H1V3a2.006 2.006 0 0 1 2-2h54a2.006 2.006 0 0 1 2 2z"
+                                            opacity="1" data-original="#363699" class=""></path>
+                                        <path fill="#d5d8db"
+                                            d="M19 55h22a3 3 0 0 1 3 3 1 1 0 0 1-1 1H17a1 1 0 0 1-1-1 3 3 0 0 1 3-3z"
+                                            opacity="1" data-original="#d5d8db"></path>
+                                        <path fill="#50ad80" d="M37 40v-7a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v7z"
+                                            opacity="1" data-original="#50ad80"></path>
+                                        <path fill="#eac03b" d="M45 40V28a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v12z"
+                                            opacity="1" data-original="#eac03b"></path>
+                                        <path fill="#d84459"
+                                            d="M53 40v-7a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v7zM16 15v8a8 8 0 0 1-5.66-13.66z"
+                                            opacity="1" data-original="#d84459" class=""></path>
+                                        <path fill="#262472" d="M24 15h-8l-5.66-5.66A8 8 0 0 1 24 15z" opacity="1"
+                                            data-original="#262472"></path>
+                                        <path fill="#eac03b" d="M24 15a8 8 0 0 1-8 8v-8z" opacity="1"
+                                            data-original="#eac03b"></path>
+                                        <g fill="#262472">
+                                            <path
+                                                d="M54 41H32a1 1 0 0 1 0-2h22a1 1 0 0 1 0 2zM54 22H38a1 1 0 0 1 0-2h16a1 1 0 0 1 0 2zM34 22h-2a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2zM54 16H38a1 1 0 0 1 0-2h16a1 1 0 0 1 0 2zM34 16h-2a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2zM54 10H38a1 1 0 0 1 0-2h16a1 1 0 0 1 0 2zM34 10h-2a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2zM28 41H12a1 1 0 0 1 0-2h16a1 1 0 0 1 0 2zM8 41H6a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2zM28 35H12a1 1 0 0 1 0-2h16a1 1 0 0 1 0 2zM8 35H6a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2zM28 29H12a1 1 0 0 1 0-2h16a1 1 0 0 1 0 2zM8 29H6a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2z"
+                                                fill="#262472" opacity="1" data-original="#262472"></path>
+                                        </g>
+                                    </g>
                                 </svg>
                             </span>
                         </span>
@@ -56,8 +79,9 @@
                             <span class="svg-icon svg-icon-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                     class="svg-icon svg-icon-2">
-                                    <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <rect x="3" y="3" width="18" height="18" rx="2"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
                                     <rect x="7" y="7" width="4" height="4" rx="1"
                                         fill="currentColor" />
                                     <rect x="13" y="7" width="4" height="4" rx="1"
@@ -95,7 +119,7 @@
                     </div>
                 </div>
                 <div data-kt-menu-trigger="click"
-                    class="menu-item menu-accordion {{ Route::is('user.nfc-card.index', 'user.nfc-card.create','user.virtual-card.create','user.virtual-card.index') ? 'here show' : '' }}">
+                    class="menu-item menu-accordion {{ Route::is('user.nfc-card.index', 'user.nfc-card.create', 'user.virtual-card.create', 'user.virtual-card.index') ? 'here show' : '' }}">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
@@ -113,7 +137,7 @@
                         <span class="menu-arrow"></span>
                     </span>
                     <div
-                        class="menu-sub menu-sub-accordion {{ Route::is('user.nfc-card.index', 'user.nfc-card.create','user.virtual-card.create','user.virtual-card.index') ? 'menu-active-bg' : '' }}">
+                        class="menu-sub menu-sub-accordion {{ Route::is('user.nfc-card.index', 'user.nfc-card.create', 'user.virtual-card.create', 'user.virtual-card.index') ? 'menu-active-bg' : '' }}">
                         <div class="menu-item">
                             <a class="menu-link {{ Route::is('user.nfc-card.create') ? 'active' : '' }}"
                                 href="{{ route('user.nfc-card.create') }}">
@@ -199,7 +223,7 @@
                     </div>
                 </div>
                 <div data-kt-menu-trigger="click"
-                    class="menu-item {{ Route::is('profile.edit','user.plan','user.invoice','user.upgrade.plan','user.subscribe.post') ? 'here show' : '' }} menu-accordion">
+                    class="menu-item {{ Route::is('profile.edit', 'user.plan', 'user.invoice', 'user.upgrade.plan', 'user.subscribe.post') ? 'here show' : '' }} menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
@@ -223,7 +247,7 @@
                         <span class="menu-arrow"></span>
                     </span>
                     <div
-                        class="menu-sub menu-sub-accordion {{ Route::is('profile.edit', 'user.plan','user.invoice','user.upgrade.plan','user.subscribe.post') ? 'menu-active-bg' : '' }}">
+                        class="menu-sub menu-sub-accordion {{ Route::is('profile.edit', 'user.plan', 'user.invoice', 'user.upgrade.plan', 'user.subscribe.post') ? 'menu-active-bg' : '' }}">
                         <div class="menu-item">
                             <a class="menu-link {{ Route::is('user.invoice') ? 'active' : '' }}"
                                 href="{{ route('user.invoice') }}">
@@ -234,7 +258,7 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link {{ Route::is('user.upgrade.plan','user.subscribe.post') ? 'active' : '' }}"
+                            <a class="menu-link {{ Route::is('user.upgrade.plan', 'user.subscribe.post') ? 'active' : '' }}"
                                 href="{{ route('user.upgrade.plan') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
@@ -284,5 +308,3 @@
         </form>
     </div>
 </div>
-
-

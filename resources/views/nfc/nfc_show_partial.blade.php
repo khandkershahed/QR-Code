@@ -1,19 +1,7 @@
-<x-app-layout :title="'Summary of ' . $nfc_card->code">
+
 
     <div class="container-fluid">
-        {{-- <div id="kt_app_toolbar_container" class="app-container  container-fluid d-flex flex-stack mb-10">
-            <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3 ">
-                <h1 class="page-heading d-flex text-gray-900 fw-bold fs-1 flex-column justify-content-center my-0">
-                    QR Code Analytic
-                </h1>
-            </div>
-            <div class="d-flex align-items-center gap-2 gap-lg-3">
-                <a href="#" class="btn  fw-bold btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#kt_modal_create_app">
-                    <i class="bi bi-plus fs-1 me-2"></i> Create QR</a>
 
-            </div>
-        </div> --}}
         <div class="row gx-0">
             <div class="col-lg-12">
                 <div class="card p-0">
@@ -276,8 +264,3 @@
         </div>
     </div>
 
-    @push('scripts')
-    @endpush
-
-
-</x-app-layout>

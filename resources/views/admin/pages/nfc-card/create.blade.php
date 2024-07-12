@@ -6,7 +6,7 @@
         </div>
     @endif
 
-    @include('nfc.create')
+    @include('nfc.nfc_create_partial')
 
     @push('scripts')
         <script src="https://cdn.tiny.cloud/1/tv8ze2aprjlx1qoo8xnmh6r0e0w8hhgeukhe4esuhmhglca0/tinymce/7/tinymce.min.js"

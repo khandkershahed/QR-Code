@@ -152,21 +152,23 @@ class HomeController extends Controller
             $user_device = $agent->device();
         }
 
+        $name = trim($name);
+
         $data = [
             'nfc_card' => NfcCard::with(
-                    'nfcData',
-                    'nfcCompany',
-                    'nfcGallery',
-                    'nfcProduct',
-                    'nfcService',
-                    'nfcTestimonial',
-                    'nfcMessages',
-                    'nfcScan',
-                    'virtualCard',
-                    'nfcBanner',
-                    'nfcSeo',
-                    'shippingDetails'
-                )->where('url_alias', $name)->first(),
+                'nfcData',
+                'nfcCompany',
+                'nfcGallery',
+                'nfcProduct',
+                'nfcService',
+                'nfcTestimonial',
+                'nfcMessages',
+                'nfcScan',
+                'virtualCard',
+                'nfcBanner',
+                'nfcSeo',
+                'shippingDetails'
+            )->where('url_alias', 'LIKE', '%' . $name . '%')->first(),
         ];
 
         if (!empty($data['nfc_card'])) {
@@ -191,8 +193,8 @@ class HomeController extends Controller
             } elseif ($data['nfc_card']->nfc_template == 'template-six') {
                 return view('frontend.pages.nfc.template_six', $data);
             }
-        }else {
-            return redirect()->route('homePage')->with('error' , 'Page not found');
+        } else {
+            return redirect()->route('homePage')->with('error', 'Page not found');
         }
     }
 }
