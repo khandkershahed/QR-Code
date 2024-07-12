@@ -41490,8 +41490,8 @@ input[type="color" i] {
 .btn.custom-active:hover:not(.btn-active),
 .show > .btn.custom-active {
     color: #009ef7;
-    border-color: #f1faff;
-    background-color: #92caff !important;
+    /* border-color: #f1faff; */
+    background-color: #8000ff !important;
     opacity: 0.5;
 }
 
@@ -41563,9 +41563,9 @@ input[type="color" i] {
     color: #009ef7;
 }
 
-.btn.btn-active-light-primary.btn-outline:not(.btn-outline-default) {
+/* .btn.btn-active-light-primary.btn-outline:not(.btn-outline-default) {
     border-color: #009ef7 !important;
-}
+} */
 
 .btn.btn-secondary {
     color: #3f4254;

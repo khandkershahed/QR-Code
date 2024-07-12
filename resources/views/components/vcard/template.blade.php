@@ -81,7 +81,7 @@
                 <input type="radio" class="btn-check template-btn-check" name="nfc_template"
                     value="{{ $template['value'] }}" id="{{ $template['value'] }}" @checked($template['value'] == $selectedTemplate)/>
                 <label
-                    class="btn template-btn btn-outline btn-outline-dashed btn-active-light-primary custom-active p-2 d-flex align-items-center mb-5 custom-radio"
+                    class="btn template-btn btn-outline btn-outline-dashed btn-active-light-primary custom-active p-4 d-flex align-items-center mb-5 custom-radio"
                     for="{{ $template['value'] }}" style="">
                     <div class="window">
                         <img src="{{ asset($template['image']) }}" alt="{{ $template['value'] }}">
