@@ -192,7 +192,7 @@ class HomeController extends Controller
                 return view('frontend.pages.nfc.template_six', $data);
             }
         }else {
-            return redirect()->route('homePage')->with('error' , 'NFC Card Details not found');
+            return redirect()->route('homePage')->with('error' , 'Page not found');
         }
     }
 }

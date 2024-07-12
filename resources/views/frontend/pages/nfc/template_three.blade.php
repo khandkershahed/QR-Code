@@ -843,84 +843,348 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Company Area -->
-                            @if ($nfc_card->companies_show == '1')
-                                <div class="row pt-5">
-                                    <div class="col-sm-12 pb-5">
-                                        <div class="text-center">
-                                            <h3 class="special-font">My Company</h3>
-                                            <p
-                                                style="height: 2px;background-color: var(--template-three-color-primary);width: 50px;margin: auto; ">
-                                            </p>
-                                        </div>
+                        @endif
+                        <!-- Company Area -->
+                        @if ($nfc_card->companies_show == '1')
+                            <div class="row pt-5">
+                                <div class="col-sm-12 pb-5">
+                                    <div class="text-center">
+                                        <h3 class="special-font">My Company</h3>
+                                        <p
+                                            style="height: 2px;background-color: var(--template-three-color-primary);width: 50px;margin: auto; ">
+                                        </p>
                                     </div>
-                                    <div class="col-sm-12">
-                                        <div class="company-slide">
-                                            @foreach ($nfc_card->nfcCompany as $company)
-                                                <div class="items">
-                                                    <div class="row">
-                                                        <div class="col-sm-4">
-                                                            <div class="special-font">
-                                                                <h5>{{ $company->company_name }}</h5>
-                                                                <p class="text-white">
-                                                                    <i class="fa-solid fa-location-dot pe-2"></i>
-                                                                    {{ $company->company_address_line_one }}
-                                                                    {{ $company->company_address_line_two }}
-                                                                </p>
-                                                                <p class="text-white">
-                                                                    <i class="fa-solid fa-globe pe-2"></i>
-                                                                    {{ $company->company_website }}
-                                                                </p>
-                                                                <p class="text-white">
-                                                                    <i class="fa-solid fa-phone pe-2"></i>
-                                                                    {{ $company->company_phone }}
-                                                                </p>
-                                                            </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="company-slide">
+                                        @foreach ($nfc_card->nfcCompany as $company)
+                                            <div class="items">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <div class="special-font">
+                                                            <h5>{{ $company->company_name }}</h5>
+                                                            <p class="text-white">
+                                                                <i class="fa-solid fa-location-dot pe-2"></i>
+                                                                {{ $company->company_address_line_one }}
+                                                                {{ $company->company_address_line_two }}
+                                                            </p>
+                                                            <p class="text-white">
+                                                                <i class="fa-solid fa-globe pe-2"></i>
+                                                                {{ $company->company_website }}
+                                                            </p>
+                                                            <p class="text-white">
+                                                                <i class="fa-solid fa-phone pe-2"></i>
+                                                                {{ $company->company_phone }}
+                                                            </p>
                                                         </div>
-                                                        <div class="col-sm-8">
-                                                            <!-- 32 Word -->
-                                                            <p>
-                                                                {{ $company->company_description }}
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <!-- 32 Word -->
+                                                        <p>
+                                                            {{ $company->company_description }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                        <!-- Servies Box -->
+                        @if ($nfc_card->services_show == '1')
+                            <div class="row pt-5">
+                                <div class="col-sm-12">
+                                    <div class="text-center">
+                                        <h3 class="special-font">My Services</h3>
+                                        <p
+                                            style="height: 2px;background-color: var(--template-three-color-primary);width: 50px;margin: auto; ">
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="row pt-5">
+                                        @foreach ($nfc_card->nfcService as $service)
+                                            <div class="col-sm-6">
+                                                <div class="card border-0 mb-5">
+                                                    <div class="card-header p-0 rounded-2 service-header-tem3">
+                                                        <div class="service-img-tem3">
+                                                            <img class="img-fluid rounded-2"
+                                                                src="{{ !empty($service->service_icon) && file_exists(public_path('storage/nfc/service/' . optional($service)->service_icon)) ? asset('storage/nfc/service/' . optional($service)->service_icon) : asset('frontend/images/no_image.png') }}"
+                                                                alt="" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body py-2">
+                                                        <div class="card-body">
+                                                            <h6 class="special-font fw-bold">
+                                                                {{ $service->service_name }}
+                                                            </h6>
+                                                            <p class="text-justify"
+                                                                style="font-size: 14px !important">
+                                                                {{ $service->service_description }}
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            @endforeach
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                    <!-- Business Hour -->
+                                    <div class="parallax-background px-0">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="text-center">
+                                                        <h3 class="special-font">My Appointment</h3>
+                                                        <p
+                                                            style="height: 2px;background-color: var( --template-three-color-primary);width: 50px;margin: auto; ">
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <div class="table-responsive">
+                                                        <table class="table bg-transparent">
+                                                            <thead class="text-center">
+                                                                <tr>
+                                                                    <th scope="col">
+                                                                        Day
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            version="1.1"
+                                                                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                            width="30" height="30" x="0" y="0"
+                                                                            viewBox="0 0 497 497"
+                                                                            style="enable-background: new 0 0 512 512"
+                                                                            xml:space="preserve" class="">
+                                                                            <g>
+                                                                                <path fill="#b5dbff"
+                                                                                    d="M16.567 397.6v66.267C16.567 482.166 31.401 497 49.7 497h397.6c18.299 0 33.133-14.834 33.133-33.133V397.6z"
+                                                                                    opacity="1"
+                                                                                    data-original="#b5dbff"></path>
+                                                                                <path fill="#97d0ff"
+                                                                                    d="M457.433 397.6v66.268c0 18.298-14.834 33.132-33.132 33.132h23c18.299 0 33.133-14.834 33.133-33.132V397.6z"
+                                                                                    opacity="1"
+                                                                                    data-original="#97d0ff"></path>
+                                                                                <path fill="#edf5ff"
+                                                                                    d="M16.567 132.533v298.2c0 18.298 14.834 33.132 33.132 33.132H447.3c18.299 0 33.133-14.834 33.133-33.132v-298.2z"
+                                                                                    opacity="1"
+                                                                                    data-original="#edf5ff"></path>
+                                                                                <path fill="#d5e8fe"
+                                                                                    d="M457.433 132.533v298.2c0 18.298-14.834 33.132-33.133 33.132h23c18.299 0 33.133-14.834 33.133-33.132v-298.2z"
+                                                                                    opacity="1"
+                                                                                    data-original="#d5e8fe"></path>
+                                                                                <path fill="#ff435b"
+                                                                                    d="M480.433 149.1V66.266c0-18.299-14.834-33.132-33.133-33.132H49.7c-18.299 0-33.132 14.834-33.132 33.132V149.1z"
+                                                                                    opacity="1"
+                                                                                    data-original="#ff435b"></path>
+                                                                                <path fill="#e3374e"
+                                                                                    d="M115.967 73.767H99.4a7.5 7.5 0 0 1 0-15h16.567a7.5 7.5 0 0 1 0 15zM165.666 73.767H149.1a7.5 7.5 0 0 1 0-15h16.566a7.5 7.5 0 0 1 0 15zM347.9 73.767h-16.566a7.5 7.5 0 0 1 0-15H347.9a7.5 7.5 0 0 1 0 15zM397.6 73.767h-16.567a7.5 7.5 0 0 1 0-15H397.6a7.5 7.5 0 0 1 0 15z"
+                                                                                    opacity="1"
+                                                                                    data-original="#e3374e"></path>
+                                                                                <path fill="#596c76"
+                                                                                    d="M115.967 66.267c0 9.149 7.417 16.567 16.567 16.567s16.567-7.417 16.567-16.567v-49.7C149.1 7.417 141.683 0 132.533 0s-16.567 7.417-16.567 16.567v49.7zM347.9 66.267c0 9.149 7.417 16.567 16.567 16.567s16.567-7.417 16.567-16.567v-49.7c0-9.15-7.417-16.567-16.567-16.567S347.9 7.417 347.9 16.567z"
+                                                                                    opacity="1"
+                                                                                    data-original="#596c76"></path>
+                                                                                <g fill="#e3374e">
+                                                                                    <path
+                                                                                        d="M447.3 33.133h-23c18.299 0 33.133 14.834 33.133 33.132V149.1h23V66.266c0-18.299-14.834-33.133-33.133-33.133z"
+                                                                                        fill="#e3374e" opacity="1"
+                                                                                        data-original="#e3374e">
+                                                                                    </path>
+                                                                                    <path
+                                                                                        d="M16.567 108.467h463.866v15H16.567z"
+                                                                                        fill="#e3374e" opacity="1"
+                                                                                        data-original="#e3374e">
+                                                                                    </path>
+                                                                                </g>
+                                                                                <g fill="#596c76">
+                                                                                    <path
+                                                                                        d="M211.986 306.483c12.256-11.355 19.947-27.572 19.947-45.558 0-34.256-27.869-62.125-62.125-62.125s-62.125 27.869-62.125 62.125c0 9.15 7.417 16.567 16.567 16.567 9.149 0 16.567-7.417 16.567-16.567 0-15.986 13.005-28.992 28.992-28.992 15.986 0 28.992 13.005 28.992 28.992s-13.005 28.992-28.992 28.992c-9.149 0-16.567 7.417-16.567 16.567s7.417 16.567 16.567 16.567c15.986 0 28.992 13.005 28.992 28.992 0 15.986-13.005 28.992-28.992 28.992-15.986 0-28.992-13.005-28.992-28.992 0-9.15-7.417-16.567-16.567-16.567-9.149 0-16.567 7.417-16.567 16.567 0 34.256 27.869 62.125 62.125 62.125s62.125-27.869 62.125-62.125c0-17.987-7.69-34.204-19.947-45.56zM327.192 414.167c-34.256 0-62.125-27.869-62.125-62.125v-91.117c0-34.256 27.869-62.125 62.125-62.125s62.125 27.869 62.125 62.125v91.117c0 34.255-27.87 62.125-62.125 62.125zm0-182.234c-15.986 0-28.992 13.005-28.992 28.992v91.117c0 15.986 13.005 28.992 28.992 28.992 15.986 0 28.992-13.005 28.992-28.992v-91.117c-.001-15.986-13.006-28.992-28.992-28.992z"
+                                                                                        fill="#596c76" opacity="1"
+                                                                                        data-original="#596c76">
+                                                                                    </path>
+                                                                                </g>
+                                                                            </g>
+                                                                        </svg>
+                                                                    </th>
+                                                                    <th scope="col">
+                                                                        Time
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            version="1.1"
+                                                                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                            width="30" height="30" x="0" y="0"
+                                                                            viewBox="0 0 497 497"
+                                                                            style="enable-background: new 0 0 512 512"
+                                                                            xml:space="preserve" class="">
+                                                                            <g>
+                                                                                <path fill="#b98080"
+                                                                                    d="M400.59 61.826h-13.837l-138.254 20-138.254-20H94.41c-17.073 0-30.913-13.84-30.913-30.913C63.496 13.84 77.337 0 94.41 0h306.18c17.073 0 30.913 13.84 30.913 30.913.001 17.073-13.84 30.913-30.913 30.913z"
+                                                                                    opacity="1"
+                                                                                    data-original="#b98080"></path>
+                                                                                <path fill="#ae6c6c"
+                                                                                    d="M402.59 0h-30c17.073 0 30.913 13.84 30.913 30.913s-13.84 30.913-30.913 30.913h30c17.073 0 30.913-13.84 30.913-30.913C433.504 13.84 419.663 0 402.59 0z"
+                                                                                    opacity="1"
+                                                                                    data-original="#ae6c6c"></path>
+                                                                                <path fill="#efedef"
+                                                                                    d="M384.754 100.633V61.826H110.246v38.807c0 60.2 38.478 111.406 92.181 130.382a18.544 18.544 0 0 1 0 34.968c-53.702 18.976-92.181 70.182-92.181 130.382v38.807h274.507v-38.807c0-60.2-38.478-111.406-92.181-130.382a18.544 18.544 0 0 1-12.368-17.484h2c0-7.861 2.956-14.865 10.368-17.484 53.703-18.975 92.182-70.182 92.182-130.382z"
+                                                                                    opacity="1"
+                                                                                    data-original="#efedef"></path>
+                                                                                <path fill="#d7d0d6"
+                                                                                    d="M110.246 61.826v19.599h227.3c10.608 0 19.208 8.6 19.208 19.208 0 60.013-38.24 111.088-91.681 130.204-6.612 2.365-11.67 8.01-12.673 14.96a18.55 18.55 0 0 0 12.173 20.186c53.702 18.976 92.181 70.183 92.181 130.382v38.807h30v-38.807c0-60.013-38.24-111.088-91.681-130.204-6.612-2.365-11.67-8.01-12.673-14.96a18.55 18.55 0 0 1 12.173-20.186c53.702-18.976 92.181-70.183 92.181-130.382V61.826z"
+                                                                                    opacity="1"
+                                                                                    data-original="#d7d0d6"></path>
+                                                                                <path fill="#b98080"
+                                                                                    d="M400.59 497H94.41c-17.073 0-30.913-13.84-30.913-30.913s13.84-30.913 30.913-30.913h15.837l138.254-20 138.254 20h13.837c17.073 0 30.913 13.84 30.913 30.913C431.504 483.16 417.663 497 400.59 497z"
+                                                                                    opacity="1"
+                                                                                    data-original="#b98080"></path>
+                                                                                <path fill="#ae6c6c"
+                                                                                    d="M402.59 435.174h-30c17.073 0 30.913 13.84 30.913 30.913S389.663 497 372.59 497h30c17.073 0 30.913-13.84 30.913-30.913.001-17.073-13.84-30.913-30.913-30.913z"
+                                                                                    opacity="1"
+                                                                                    data-original="#ae6c6c"></path>
+                                                                                <path fill="#fed402"
+                                                                                    d="M315.075 326.717h-14.561c-14.643 0-29.136-10.593-31.531-25.038l-5.941-35.833c-3.024-18.238 11.044-34.83 29.531-34.83 35.875-12.676 64.934-39.748 80.289-74.263H122.138c15.354 34.516 44.414 61.587 80.289 74.263 18.487 0 32.555 16.592 29.531 34.83l-5.941 35.833c-2.395 14.445-14.889 25.038-29.531 25.038h-16.561c-38.174 0-69.47 30.715-69.676 68.888l-.002.762v38.807h274.507v-38.807l-.002-.762c-.207-38.173-31.503-68.888-69.677-68.888z"
+                                                                                    opacity="1"
+                                                                                    data-original="#fed402"></path>
+                                                                                <path fill="#fac600"
+                                                                                    d="M386.752 395.605c-.207-38.173-31.502-68.888-69.676-68.888h-16.562c-14.643 0-27.136-10.593-29.531-25.038l-5.941-35.833c-3.024-18.238 11.044-34.83 29.531-34.83 35.875-12.676 64.934-39.748 80.289-74.263h-30c-15.354 34.516-44.414 61.587-80.289 74.263-18.487 0-32.555 16.592-29.531 34.83l5.941 35.833c2.395 14.445 14.889 25.038 29.531 25.038h16.562c38.174 0 69.47 30.715 69.676 68.888l.002.762v38.807h30v-38.807l-.002-.762z"
+                                                                                    opacity="1"
+                                                                                    data-original="#fac600"></path>
+                                                                            </g>
+                                                                        </svg>
+                                                                    </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody class="text-center">
+                                                                <tr>
+                                                                    <td scope="row">Monday</td>
+                                                                    <td>10.00 AM - 10.00 PM</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td scope="row">Tuesday</td>
+                                                                    <td>10.00 AM - 10.00 PM</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td scope="row">Wednesday</td>
+                                                                    <td>10.00 AM - 10.00 PM</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td scope="row">Tuesday</td>
+                                                                    <td>10.00 AM - 10.00 PM</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td scope="row">Thursday</td>
+                                                                    <td>10.00 AM - 10.00 PM</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td scope="row">Friday</td>
+                                                                    <td>10.00 AM - 10.00 PM</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td scope="row">Satarday</td>
+                                                                    <td>10.00 AM - 10.00 PM</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endif
-                            <!-- Servies Box -->
-                            @if ($nfc_card->services_show == '1')
-                                <div class="row pt-5">
-                                    <div class="col-sm-12">
-                                        <div class="text-center">
-                                            <h3 class="special-font">My Services</h3>
-                                            <p
-                                                style="height: 2px;background-color: var(--template-three-color-primary);width: 50px;margin: auto; ">
-                                            </p>
+                                    <!-- Video Gallery -->
+                                    <div class="row pt-5">
+                                        <div class="col-sm-12">
+                                            <div class="text-center">
+                                                <h3 class="special-font">Video Gallery</h3>
+                                                <p
+                                                    style="height: 2px;background-color: var( --template-three-color-primary);width: 50px;margin: auto; ">
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div lass="row justify-content-center align-items-center g-2">
+                                            <div class="video-gallery-slide">
+                                                <div class="items">
+                                                    <div class="video-container">
+                                                        <iframe
+                                                            src="https://www.youtube.com/embed/v5snnfUFZw0?si=QUIxHfOIfxSFMQM8&autoplay=1&mute=1"
+                                                            title="YouTube video player" frameborder="0"
+                                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                            referrerpolicy="strict-origin-when-cross-origin"
+                                                            allowfullscreen></iframe>
+                                                    </div>
+                                                </div>
+                                                <div class="items">
+                                                    <div class="video-container">
+                                                        <iframe
+                                                            src="https://www.youtube.com/embed/v5snnfUFZw0?si=QUIxHfOIfxSFMQM8&autoplay=1&mute=1"
+                                                            title="YouTube video player" frameborder="0"
+                                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                            referrerpolicy="strict-origin-when-cross-origin"
+                                                            allowfullscreen></iframe>
+                                                    </div>
+                                                </div>
+                                                <div class="items">
+                                                    <div class="video-container">
+                                                        <iframe
+                                                            src="https://www.youtube.com/embed/v5snnfUFZw0?si=QUIxHfOIfxSFMQM8&autoplay=1&mute=1"
+                                                            title="YouTube video player" frameborder="0"
+                                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                            referrerpolicy="strict-origin-when-cross-origin"
+                                                            allowfullscreen></iframe>
+                                                    </div>
+                                                </div>
+                                                <div class="items">
+                                                    <div class="video-container">
+                                                        <iframe
+                                                            src="https://www.youtube.com/embed/v5snnfUFZw0?si=QUIxHfOIfxSFMQM8&autoplay=1&mute=1"
+                                                            title="YouTube video player" frameborder="0"
+                                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                            referrerpolicy="strict-origin-when-cross-origin"
+                                                            allowfullscreen></iframe>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-12">
+                                    <!-- Product Box -->
+                                    @if ($nfc_card->products_show == '1')
                                         <div class="row pt-5">
-                                            @foreach ($nfc_card->nfcService as $service)
-                                                <div class="col-sm-6">
-                                                    <div class="card border-0 mb-5">
+                                            <div class="col-sm-12">
+                                                <div class="text-center">
+                                                    <h3 class="special-font">My Product</h3>
+                                                    <p
+                                                        style="height: 2px;background-color: var( --template-three-color-primary);width: 50px;margin: auto;">
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row pt-4">
+                                            @foreach ($nfc_card->nfcProduct as $product)
+                                                <div class="col-sm-6 mb-4">
+                                                    <div class="card border-0"
+                                                        style=" background-color: var(--template-three-color-primary); ">
                                                         <div class="card-header p-0 rounded-2 service-header-tem3">
-                                                            <div class="service-img-tem3">
+                                                            <div class="product-img-tem3">
                                                                 <img class="img-fluid rounded-2"
-                                                                    src="{{ !empty($service->service_icon) && file_exists(public_path('storage/nfc/service/' . optional($service)->service_icon)) ? asset('storage/nfc/service/' . optional($service)->service_icon) : asset('frontend/images/no_image.png') }}"
+                                                                    src="{{ !empty($product->product_icon) && file_exists(public_path('storage/nfc/product/' . optional($product)->product_icon)) ? asset('storage/nfc/product/' . optional($product)->product_icon) : asset('frontend/images/no_image.png') }}"
                                                                     alt="" />
                                                             </div>
                                                         </div>
                                                         <div class="card-body py-2">
                                                             <div class="card-body">
-                                                                <h6 class="special-font fw-bold">
-                                                                    {{ $service->service_name }}
+                                                                <h6 class="special-font fw-bold text-white">
+                                                                    {{ $product->product_name }}
                                                                 </h6>
-                                                                <p class="text-justify"
+                                                                <p class="text-justify text-white"
                                                                     style="font-size: 14px !important">
-                                                                    {{ $service->service_description }}
+                                                                    @if ($product->product_currency == 'taka')
+                                                                        Tk
+                                                                    @elseif ($product->product_currency == 'euro')
+                                                                        €
+                                                                    @elseif ($product->product_currency == 'dollar')
+                                                                        $
+                                                                    @elseif ($product->product_currency == 'pound')
+                                                                        £
+                                                                    @endif
+                                                                    &nbsp;{{ $product->product_price }}
                                                                 </p>
                                                             </div>
                                                         </div>
@@ -928,389 +1192,123 @@
                                                 </div>
                                             @endforeach
                                         </div>
-                                        <!-- Business Hour -->
-                                        <div class="parallax-background px-0">
-                                            <div class="container">
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <div class="text-center">
-                                                            <h3 class="special-font">My Appointment</h3>
-                                                            <p
-                                                                style="height: 2px;background-color: var( --template-three-color-primary);width: 50px;margin: auto; ">
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-12">
-                                                        <div class="table-responsive">
-                                                            <table class="table bg-transparent">
-                                                                <thead class="text-center">
-                                                                    <tr>
-                                                                        <th scope="col">
-                                                                            Day
-                                                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                version="1.1"
-                                                                                xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                                width="30" height="30" x="0"
-                                                                                y="0" viewBox="0 0 497 497"
-                                                                                style="enable-background: new 0 0 512 512"
-                                                                                xml:space="preserve" class="">
-                                                                                <g>
-                                                                                    <path fill="#b5dbff"
-                                                                                        d="M16.567 397.6v66.267C16.567 482.166 31.401 497 49.7 497h397.6c18.299 0 33.133-14.834 33.133-33.133V397.6z"
-                                                                                        opacity="1"
-                                                                                        data-original="#b5dbff"></path>
-                                                                                    <path fill="#97d0ff"
-                                                                                        d="M457.433 397.6v66.268c0 18.298-14.834 33.132-33.132 33.132h23c18.299 0 33.133-14.834 33.133-33.132V397.6z"
-                                                                                        opacity="1"
-                                                                                        data-original="#97d0ff"></path>
-                                                                                    <path fill="#edf5ff"
-                                                                                        d="M16.567 132.533v298.2c0 18.298 14.834 33.132 33.132 33.132H447.3c18.299 0 33.133-14.834 33.133-33.132v-298.2z"
-                                                                                        opacity="1"
-                                                                                        data-original="#edf5ff"></path>
-                                                                                    <path fill="#d5e8fe"
-                                                                                        d="M457.433 132.533v298.2c0 18.298-14.834 33.132-33.133 33.132h23c18.299 0 33.133-14.834 33.133-33.132v-298.2z"
-                                                                                        opacity="1"
-                                                                                        data-original="#d5e8fe"></path>
-                                                                                    <path fill="#ff435b"
-                                                                                        d="M480.433 149.1V66.266c0-18.299-14.834-33.132-33.133-33.132H49.7c-18.299 0-33.132 14.834-33.132 33.132V149.1z"
-                                                                                        opacity="1"
-                                                                                        data-original="#ff435b"></path>
-                                                                                    <path fill="#e3374e"
-                                                                                        d="M115.967 73.767H99.4a7.5 7.5 0 0 1 0-15h16.567a7.5 7.5 0 0 1 0 15zM165.666 73.767H149.1a7.5 7.5 0 0 1 0-15h16.566a7.5 7.5 0 0 1 0 15zM347.9 73.767h-16.566a7.5 7.5 0 0 1 0-15H347.9a7.5 7.5 0 0 1 0 15zM397.6 73.767h-16.567a7.5 7.5 0 0 1 0-15H397.6a7.5 7.5 0 0 1 0 15z"
-                                                                                        opacity="1"
-                                                                                        data-original="#e3374e"></path>
-                                                                                    <path fill="#596c76"
-                                                                                        d="M115.967 66.267c0 9.149 7.417 16.567 16.567 16.567s16.567-7.417 16.567-16.567v-49.7C149.1 7.417 141.683 0 132.533 0s-16.567 7.417-16.567 16.567v49.7zM347.9 66.267c0 9.149 7.417 16.567 16.567 16.567s16.567-7.417 16.567-16.567v-49.7c0-9.15-7.417-16.567-16.567-16.567S347.9 7.417 347.9 16.567z"
-                                                                                        opacity="1"
-                                                                                        data-original="#596c76"></path>
-                                                                                    <g fill="#e3374e">
-                                                                                        <path
-                                                                                            d="M447.3 33.133h-23c18.299 0 33.133 14.834 33.133 33.132V149.1h23V66.266c0-18.299-14.834-33.133-33.133-33.133z"
-                                                                                            fill="#e3374e"
-                                                                                            opacity="1"
-                                                                                            data-original="#e3374e">
-                                                                                        </path>
-                                                                                        <path
-                                                                                            d="M16.567 108.467h463.866v15H16.567z"
-                                                                                            fill="#e3374e"
-                                                                                            opacity="1"
-                                                                                            data-original="#e3374e">
-                                                                                        </path>
-                                                                                    </g>
-                                                                                    <g fill="#596c76">
-                                                                                        <path
-                                                                                            d="M211.986 306.483c12.256-11.355 19.947-27.572 19.947-45.558 0-34.256-27.869-62.125-62.125-62.125s-62.125 27.869-62.125 62.125c0 9.15 7.417 16.567 16.567 16.567 9.149 0 16.567-7.417 16.567-16.567 0-15.986 13.005-28.992 28.992-28.992 15.986 0 28.992 13.005 28.992 28.992s-13.005 28.992-28.992 28.992c-9.149 0-16.567 7.417-16.567 16.567s7.417 16.567 16.567 16.567c15.986 0 28.992 13.005 28.992 28.992 0 15.986-13.005 28.992-28.992 28.992-15.986 0-28.992-13.005-28.992-28.992 0-9.15-7.417-16.567-16.567-16.567-9.149 0-16.567 7.417-16.567 16.567 0 34.256 27.869 62.125 62.125 62.125s62.125-27.869 62.125-62.125c0-17.987-7.69-34.204-19.947-45.56zM327.192 414.167c-34.256 0-62.125-27.869-62.125-62.125v-91.117c0-34.256 27.869-62.125 62.125-62.125s62.125 27.869 62.125 62.125v91.117c0 34.255-27.87 62.125-62.125 62.125zm0-182.234c-15.986 0-28.992 13.005-28.992 28.992v91.117c0 15.986 13.005 28.992 28.992 28.992 15.986 0 28.992-13.005 28.992-28.992v-91.117c-.001-15.986-13.006-28.992-28.992-28.992z"
-                                                                                            fill="#596c76"
-                                                                                            opacity="1"
-                                                                                            data-original="#596c76">
-                                                                                        </path>
-                                                                                    </g>
-                                                                                </g>
-                                                                            </svg>
-                                                                        </th>
-                                                                        <th scope="col">
-                                                                            Time
-                                                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                version="1.1"
-                                                                                xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                                width="30" height="30" x="0"
-                                                                                y="0" viewBox="0 0 497 497"
-                                                                                style="enable-background: new 0 0 512 512"
-                                                                                xml:space="preserve" class="">
-                                                                                <g>
-                                                                                    <path fill="#b98080"
-                                                                                        d="M400.59 61.826h-13.837l-138.254 20-138.254-20H94.41c-17.073 0-30.913-13.84-30.913-30.913C63.496 13.84 77.337 0 94.41 0h306.18c17.073 0 30.913 13.84 30.913 30.913.001 17.073-13.84 30.913-30.913 30.913z"
-                                                                                        opacity="1"
-                                                                                        data-original="#b98080"></path>
-                                                                                    <path fill="#ae6c6c"
-                                                                                        d="M402.59 0h-30c17.073 0 30.913 13.84 30.913 30.913s-13.84 30.913-30.913 30.913h30c17.073 0 30.913-13.84 30.913-30.913C433.504 13.84 419.663 0 402.59 0z"
-                                                                                        opacity="1"
-                                                                                        data-original="#ae6c6c"></path>
-                                                                                    <path fill="#efedef"
-                                                                                        d="M384.754 100.633V61.826H110.246v38.807c0 60.2 38.478 111.406 92.181 130.382a18.544 18.544 0 0 1 0 34.968c-53.702 18.976-92.181 70.182-92.181 130.382v38.807h274.507v-38.807c0-60.2-38.478-111.406-92.181-130.382a18.544 18.544 0 0 1-12.368-17.484h2c0-7.861 2.956-14.865 10.368-17.484 53.703-18.975 92.182-70.182 92.182-130.382z"
-                                                                                        opacity="1"
-                                                                                        data-original="#efedef"></path>
-                                                                                    <path fill="#d7d0d6"
-                                                                                        d="M110.246 61.826v19.599h227.3c10.608 0 19.208 8.6 19.208 19.208 0 60.013-38.24 111.088-91.681 130.204-6.612 2.365-11.67 8.01-12.673 14.96a18.55 18.55 0 0 0 12.173 20.186c53.702 18.976 92.181 70.183 92.181 130.382v38.807h30v-38.807c0-60.013-38.24-111.088-91.681-130.204-6.612-2.365-11.67-8.01-12.673-14.96a18.55 18.55 0 0 1 12.173-20.186c53.702-18.976 92.181-70.183 92.181-130.382V61.826z"
-                                                                                        opacity="1"
-                                                                                        data-original="#d7d0d6"></path>
-                                                                                    <path fill="#b98080"
-                                                                                        d="M400.59 497H94.41c-17.073 0-30.913-13.84-30.913-30.913s13.84-30.913 30.913-30.913h15.837l138.254-20 138.254 20h13.837c17.073 0 30.913 13.84 30.913 30.913C431.504 483.16 417.663 497 400.59 497z"
-                                                                                        opacity="1"
-                                                                                        data-original="#b98080"></path>
-                                                                                    <path fill="#ae6c6c"
-                                                                                        d="M402.59 435.174h-30c17.073 0 30.913 13.84 30.913 30.913S389.663 497 372.59 497h30c17.073 0 30.913-13.84 30.913-30.913.001-17.073-13.84-30.913-30.913-30.913z"
-                                                                                        opacity="1"
-                                                                                        data-original="#ae6c6c"></path>
-                                                                                    <path fill="#fed402"
-                                                                                        d="M315.075 326.717h-14.561c-14.643 0-29.136-10.593-31.531-25.038l-5.941-35.833c-3.024-18.238 11.044-34.83 29.531-34.83 35.875-12.676 64.934-39.748 80.289-74.263H122.138c15.354 34.516 44.414 61.587 80.289 74.263 18.487 0 32.555 16.592 29.531 34.83l-5.941 35.833c-2.395 14.445-14.889 25.038-29.531 25.038h-16.561c-38.174 0-69.47 30.715-69.676 68.888l-.002.762v38.807h274.507v-38.807l-.002-.762c-.207-38.173-31.503-68.888-69.677-68.888z"
-                                                                                        opacity="1"
-                                                                                        data-original="#fed402"></path>
-                                                                                    <path fill="#fac600"
-                                                                                        d="M386.752 395.605c-.207-38.173-31.502-68.888-69.676-68.888h-16.562c-14.643 0-27.136-10.593-29.531-25.038l-5.941-35.833c-3.024-18.238 11.044-34.83 29.531-34.83 35.875-12.676 64.934-39.748 80.289-74.263h-30c-15.354 34.516-44.414 61.587-80.289 74.263-18.487 0-32.555 16.592-29.531 34.83l5.941 35.833c2.395 14.445 14.889 25.038 29.531 25.038h16.562c38.174 0 69.47 30.715 69.676 68.888l.002.762v38.807h30v-38.807l-.002-.762z"
-                                                                                        opacity="1"
-                                                                                        data-original="#fac600"></path>
-                                                                                </g>
-                                                                            </svg>
-                                                                        </th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody class="text-center">
-                                                                    <tr>
-                                                                        <td scope="row">Monday</td>
-                                                                        <td>10.00 AM - 10.00 PM</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td scope="row">Tuesday</td>
-                                                                        <td>10.00 AM - 10.00 PM</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td scope="row">Wednesday</td>
-                                                                        <td>10.00 AM - 10.00 PM</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td scope="row">Tuesday</td>
-                                                                        <td>10.00 AM - 10.00 PM</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td scope="row">Thursday</td>
-                                                                        <td>10.00 AM - 10.00 PM</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td scope="row">Friday</td>
-                                                                        <td>10.00 AM - 10.00 PM</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td scope="row">Satarday</td>
-                                                                        <td>10.00 AM - 10.00 PM</td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                    @endif
+                                    <!--  -->
+                                </div>
+                            </div>
+                        @endif
+                        <!-- Gallery Box -->
+                        @if ($nfc_card->galleries_show == '1')
+                            <div class="row pt-5">
+                                <div class="col-sm-12">
+                                    <div class="text-center">
+                                        <h3 class="special-font">My Gallery</h3>
+                                        <p
+                                            style="height: 2px;background-color: var(--template-three-color-primary);width: 50px;margin: auto;">
+                                        </p>
+                                    </div>
+                                </div>
+                                <div lass="row justify-content-center align-items-center g-2">
+                                    <div class="gallery-slide">
+                                        <div class="gallery-items-tem3">
+                                            <div>
+                                                <img class="img-fluid"
+                                                    src="https://luxurylifestyleawards.com/wp-content/uploads/2020/02/MAIN-IMAGE.jpg"
+                                                    alt="" />
                                             </div>
                                         </div>
-                                        <!-- Video Gallery -->
-                                        <div class="row pt-5">
-                                            <div class="col-sm-12">
-                                                <div class="text-center">
-                                                    <h3 class="special-font">Video Gallery</h3>
-                                                    <p
-                                                        style="height: 2px;background-color: var( --template-three-color-primary);width: 50px;margin: auto; ">
+                                        <div class="gallery-items-tem3">
+                                            <div>
+                                                <img class="img-fluid" src="https://maansai.co.ke/images/About.jpg"
+                                                    alt="" />
+                                            </div>
+                                        </div>
+                                        <div class="gallery-items-tem3">
+                                            <div>
+                                                <img class="img-fluid"
+                                                    src="https://media.licdn.com/dms/image/C5612AQEN0e0IvwLVJw/article-cover_image-shrink_720_1280/0/1524771172008?e=2147483647&v=beta&t=D4vtYqcxs10MrUt68OwvRZlHw85LnJzWFnzTZej6lXk"
+                                                    alt="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                        <!-- Testimonial -->
+                        @if ($nfc_card->testimonials_show == '1')
+                            <div class="row pt-5">
+                                <div class="col-sm-12">
+                                    <div class="text-center">
+                                        <h3 class="special-font">My Appoints</h3>
+                                        <p
+                                            style="height: 2px;background-color: var(--template-three-color-primary);width: 50px;margin: auto; ">
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 mt-4">
+                                    <div class="testimonial-slide">
+                                        <div class="testimonial-items">
+                                            <div class="row p-3 align-items-center">
+                                                <div class="col-sm-3">
+                                                    <div>
+                                                        <img class="img-fluid rounded-2"
+                                                            src="./Back-assets/profile.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <div class="d-flex justify-content-between">
+                                                        <h6 class="special-font">Rodela Bruce</h6>
+                                                        <div class="pe-3">
+                                                            <i class="fa-solid fa-star" style="color: yellow"></i>
+                                                            <i class="fa-solid fa-star" style="color: yellow"></i>
+                                                            <i class="fa-solid fa-star-half"
+                                                                style="color: yellow"></i>
+                                                        </div>
+                                                    </div>
+                                                    <p>
+                                                        Lorem ipsum dolor sit amet consectetur adipisicing
+                                                        elit. Voluptates error quasi quae aliquid deleniti
+                                                        at accusantium reiciendis doloribus quos illum.
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div lass="row justify-content-center align-items-center g-2">
-                                                <div class="video-gallery-slide">
-                                                    <div class="items">
-                                                        <div class="video-container">
-                                                            <iframe
-                                                                src="https://www.youtube.com/embed/v5snnfUFZw0?si=QUIxHfOIfxSFMQM8&autoplay=1&mute=1"
-                                                                title="YouTube video player" frameborder="0"
-                                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                                referrerpolicy="strict-origin-when-cross-origin"
-                                                                allowfullscreen></iframe>
-                                                        </div>
-                                                    </div>
-                                                    <div class="items">
-                                                        <div class="video-container">
-                                                            <iframe
-                                                                src="https://www.youtube.com/embed/v5snnfUFZw0?si=QUIxHfOIfxSFMQM8&autoplay=1&mute=1"
-                                                                title="YouTube video player" frameborder="0"
-                                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                                referrerpolicy="strict-origin-when-cross-origin"
-                                                                allowfullscreen></iframe>
-                                                        </div>
-                                                    </div>
-                                                    <div class="items">
-                                                        <div class="video-container">
-                                                            <iframe
-                                                                src="https://www.youtube.com/embed/v5snnfUFZw0?si=QUIxHfOIfxSFMQM8&autoplay=1&mute=1"
-                                                                title="YouTube video player" frameborder="0"
-                                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                                referrerpolicy="strict-origin-when-cross-origin"
-                                                                allowfullscreen></iframe>
-                                                        </div>
-                                                    </div>
-                                                    <div class="items">
-                                                        <div class="video-container">
-                                                            <iframe
-                                                                src="https://www.youtube.com/embed/v5snnfUFZw0?si=QUIxHfOIfxSFMQM8&autoplay=1&mute=1"
-                                                                title="YouTube video player" frameborder="0"
-                                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                                referrerpolicy="strict-origin-when-cross-origin"
-                                                                allowfullscreen></iframe>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
-                                        <!-- Product Box -->
-                                        @if ($nfc_card->products_show == '1')
-                                            <div class="row pt-5">
-                                                <div class="col-sm-12">
-                                                    <div class="text-center">
-                                                        <h3 class="special-font">My Product</h3>
-                                                        <p
-                                                            style="height: 2px;background-color: var( --template-three-color-primary);width: 50px;margin: auto;">
-                                                        </p>
+                                        <div class="testimonial-items">
+                                            <div class="row p-3 align-items-center">
+                                                <div class="col-sm-3">
+                                                    <div>
+                                                        <img class="img-fluid rounded-2"
+                                                            src="./Back-assets/profile.png" alt="" />
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="row pt-4">
-                                                @foreach ($nfc_card->nfcProduct as $product)
-                                                    <div class="col-sm-6 mb-4">
-                                                        <div class="card border-0"
-                                                            style=" background-color: var(--template-three-color-primary); ">
-                                                            <div class="card-header p-0 rounded-2 service-header-tem3">
-                                                                <div class="product-img-tem3">
-                                                                    <img class="img-fluid rounded-2"
-                                                                        src="{{ !empty($product->product_icon) && file_exists(public_path('storage/nfc/product/' . optional($product)->product_icon)) ? asset('storage/nfc/product/' . optional($product)->product_icon) : asset('frontend/images/no_image.png') }}"
-                                                                        alt="" />
-                                                                </div>
-                                                            </div>
-                                                            <div class="card-body py-2">
-                                                                <div class="card-body">
-                                                                    <h6 class="special-font fw-bold text-white">
-                                                                        {{ $product->product_name }}
-                                                                    </h6>
-                                                                    <p class="text-justify text-white"
-                                                                        style="font-size: 14px !important">
-                                                                        @if ($product->product_currency == 'taka')
-                                                                            Tk
-                                                                        @elseif ($product->product_currency == 'euro')
-                                                                            €
-                                                                        @elseif ($product->product_currency == 'dollar')
-                                                                            $
-                                                                        @elseif ($product->product_currency == 'pound')
-                                                                            £
-                                                                        @endif
-                                                                        &nbsp;{{ $product->product_price }}
-                                                                    </p>
-                                                                </div>
-                                                            </div>
+                                                <div class="col-sm-9">
+                                                    <div class="d-flex justify-content-between">
+                                                        <h6 class="special-font">Rodela Bruce</h6>
+                                                        <div class="pe-3">
+                                                            <i class="fa-solid fa-star" style="color: yellow"></i>
+                                                            <i class="fa-solid fa-star" style="color: yellow"></i>
+                                                            <i class="fa-solid fa-star-half"
+                                                                style="color: yellow"></i>
                                                         </div>
                                                     </div>
-                                                @endforeach
-                                            </div>
-                                        @endif
-                                        <!--  -->
-                                    </div>
-                                </div>
-                            @endif
-                            <!-- Gallery Box -->
-                            @if ($nfc_card->galleries_show == '1')
-                                <div class="row pt-5">
-                                    <div class="col-sm-12">
-                                        <div class="text-center">
-                                            <h3 class="special-font">My Gallery</h3>
-                                            <p
-                                                style="height: 2px;background-color: var(--template-three-color-primary);width: 50px;margin: auto;">
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div lass="row justify-content-center align-items-center g-2">
-                                        <div class="gallery-slide">
-                                            <div class="gallery-items-tem3">
-                                                <div>
-                                                    <img class="img-fluid"
-                                                        src="https://luxurylifestyleawards.com/wp-content/uploads/2020/02/MAIN-IMAGE.jpg"
-                                                        alt="" />
-                                                </div>
-                                            </div>
-                                            <div class="gallery-items-tem3">
-                                                <div>
-                                                    <img class="img-fluid"
-                                                        src="https://maansai.co.ke/images/About.jpg" alt="" />
-                                                </div>
-                                            </div>
-                                            <div class="gallery-items-tem3">
-                                                <div>
-                                                    <img class="img-fluid"
-                                                        src="https://media.licdn.com/dms/image/C5612AQEN0e0IvwLVJw/article-cover_image-shrink_720_1280/0/1524771172008?e=2147483647&v=beta&t=D4vtYqcxs10MrUt68OwvRZlHw85LnJzWFnzTZej6lXk"
-                                                        alt="" />
+                                                    <p>
+                                                        Lorem ipsum dolor sit amet consectetur adipisicing
+                                                        elit. Voluptates error quasi quae aliquid deleniti
+                                                        at accusantium reiciendis doloribus quos illum.
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            @endif
-                            <!-- Testimonial -->
-                            @if ($nfc_card->testimonials_show == '1')
-                                <div class="row pt-5">
-                                    <div class="col-sm-12">
-                                        <div class="text-center">
-                                            <h3 class="special-font">My Appoints</h3>
-                                            <p
-                                                style="height: 2px;background-color: var(--template-three-color-primary);width: 50px;margin: auto; ">
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12 mt-4">
-                                        <div class="testimonial-slide">
-                                            <div class="testimonial-items">
-                                                <div class="row p-3 align-items-center">
-                                                    <div class="col-sm-3">
-                                                        <div>
-                                                            <img class="img-fluid rounded-2"
-                                                                src="./Back-assets/profile.png" alt="" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-9">
-                                                        <div class="d-flex justify-content-between">
-                                                            <h6 class="special-font">Rodela Bruce</h6>
-                                                            <div class="pe-3">
-                                                                <i class="fa-solid fa-star" style="color: yellow"></i>
-                                                                <i class="fa-solid fa-star" style="color: yellow"></i>
-                                                                <i class="fa-solid fa-star-half"
-                                                                    style="color: yellow"></i>
-                                                            </div>
-                                                        </div>
-                                                        <p>
-                                                            Lorem ipsum dolor sit amet consectetur adipisicing
-                                                            elit. Voluptates error quasi quae aliquid deleniti
-                                                            at accusantium reiciendis doloribus quos illum.
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="testimonial-items">
-                                                <div class="row p-3 align-items-center">
-                                                    <div class="col-sm-3">
-                                                        <div>
-                                                            <img class="img-fluid rounded-2"
-                                                                src="./Back-assets/profile.png" alt="" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-9">
-                                                        <div class="d-flex justify-content-between">
-                                                            <h6 class="special-font">Rodela Bruce</h6>
-                                                            <div class="pe-3">
-                                                                <i class="fa-solid fa-star" style="color: yellow"></i>
-                                                                <i class="fa-solid fa-star" style="color: yellow"></i>
-                                                                <i class="fa-solid fa-star-half"
-                                                                    style="color: yellow"></i>
-                                                            </div>
-                                                        </div>
-                                                        <p>
-                                                            Lorem ipsum dolor sit amet consectetur adipisicing
-                                                            elit. Voluptates error quasi quae aliquid deleniti
-                                                            at accusantium reiciendis doloribus quos illum.
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- SHape -->
-                                <div class="tem3-footer-shape">
-                                    <p class="text-center text-white special-font"
-                                        style="position: relative; top: 5px">
-                                        Scan Me
-                                    </p>
-                                </div>
+                            </div>
+                            <!-- SHape -->
+                            <div class="tem3-footer-shape">
+                                <p class="text-center text-white special-font" style="position: relative; top: 5px">
+                                    Scan Me
+                                </p>
+                            </div>
+                        @endif
                     </div>
                 </section>
                 <!-- Footer -->

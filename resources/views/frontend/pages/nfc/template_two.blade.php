@@ -418,7 +418,6 @@
                         </div>
                     </section>
                 @endif
-                @endif
                 <!-- Company Info -->
                 @if ($nfc_card->companies_show == '1')
                     <section>
