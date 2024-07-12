@@ -1191,6 +1191,7 @@
             const addressLine1 = '{{ optional($nfc_card->nfcData)->address_line_one }}';
             const addressLine2 = '{{ optional($nfc_card->nfcData)->address_line_two }}';
             const linkedin = '{{ optional($nfc_card->nfcData)->linkedin_url }}';
+            
 
             let vcard = `BEGIN:VCARD\n${makeVCardVersion()}\n`;
             vcard += `${makeVCardInfo(lastName, firstName)}\n`;
