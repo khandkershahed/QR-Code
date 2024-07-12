@@ -143,7 +143,7 @@ class HomeController extends Controller
         return redirect()->back()->with('success', "Mail Sent Successfully");
     }
 
-    public function nfcPage(Request $request, string $name, string $code)
+    public function nfcPage(Request $request, string $name)
     {
         $agent = new Agent();
         if ($agent->isDesktop()) {
@@ -153,7 +153,20 @@ class HomeController extends Controller
         }
 
         $data = [
-            'nfc_card' => NfcCard::with('nfcData', 'nfcScan')->where('code', $code)->first(),
+            'nfc_card' => NfcCard::with(
+                    'nfcData',
+                    'nfcCompany',
+                    'nfcGallery',
+                    'nfcProduct',
+                    'nfcService',
+                    'nfcTestimonial',
+                    'nfcMessages',
+                    'nfcScan',
+                    'virtualCard',
+                    'nfcBanner',
+                    'nfcSeo',
+                    'shippingDetails'
+                )->where('url_alias', $name)->first(),
         ];
 
         if (!empty($data['nfc_card'])) {

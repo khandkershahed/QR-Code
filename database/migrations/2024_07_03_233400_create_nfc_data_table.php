@@ -28,17 +28,19 @@ return new class extends Migration
             $table->string('default_language')->nullable();
             $table->string('address_line_one')->nullable();
             $table->string('address_line_two')->nullable();
+
             $table->string('website_url')->nullable();
-            $table->string('twitter_url')->nullable();
             $table->string('facebook_url')->nullable();
             $table->string('instagram_url')->nullable();
-            $table->string('reddit_url')->nullable();
-            $table->string('tumblr_url')->nullable();
-            $table->string('youtube_url')->nullable();
             $table->string('linkedin_url')->nullable();
             $table->string('whatsapp_url')->nullable();
+            $table->string('twitter_url')->nullable();
+            $table->string('youtube_url')->nullable();
             $table->string('pinterest_url')->nullable();
+            $table->string('reddit_url')->nullable();
+            $table->string('tumblr_url')->nullable();
             $table->string('tiktok_url')->nullable();
+
             $table->string('start_time_monday')->nullable();
             $table->string('monday')->nullable();
             $table->string('end_time_monday')->nullable();
