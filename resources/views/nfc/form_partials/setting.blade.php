@@ -129,6 +129,21 @@
                 <label class="form-check-image border p-3">
                     <div class="form-check-wrapper">
                         <img class="img-fluid rounded-3" style="height: 150px; object-fit: cover;"
+                            src="{{ asset('admin') }}/assets/media/ManageSection/social.png" />
+                    </div>
+
+                    <div class="form-check form-check-custom form-check-solid my-5 me-10">
+                        <input class="form-check-input" type="checkbox" value="1" name="banner" @if($nfc_card->banner == "1") checked @endif />
+                        <div class="form-check-label">
+                            Show <strong class="fw-bold">"Pop Up Welcome Notice"</strong>.
+                        </div>
+                    </div>
+                </label>
+            </div>
+            <div class="col-lg-2 mb-3">
+                <label class="form-check-image border p-3">
+                    <div class="form-check-wrapper">
+                        <img class="img-fluid rounded-3" style="height: 150px; object-fit: cover;"
                             src="{{ asset('admin') }}/assets/media/ManageSection/privacy.png" />
                     </div>
 

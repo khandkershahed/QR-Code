@@ -475,7 +475,7 @@ class VirtualCardFormController extends Controller
 
         return response()->json(['privacy_view' => $view]);
     }
-    
+
     public function termsStore(Request $request)
     {
 
@@ -539,6 +539,7 @@ class VirtualCardFormController extends Controller
         $nfc_card = NfcCard::findOrFail($card_id);
 
         $nfc_card->update([
+            'banner'               => !empty($request->banner) ?  $request->banner : 0,
             'general_info_show'    => !empty($request->general_info_show) ?  $request->general_info_show : 0,
             'business_hours_show'  => !empty($request->business_hours_show) ?  $request->business_hours_show : 0,
             'companies_show'       => !empty($request->companies_show) ?  $request->companies_show : 0,
