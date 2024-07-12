@@ -47,6 +47,10 @@
             --template-three-font-fmly-Raleway: "Raleway", sans-serif;
         }
 
+        p {
+            font-size: 14px;
+        }
+
         .mobile-frame {
             width: 535px;
             margin: auto;
@@ -159,6 +163,8 @@
             width: 100%;
             display: block;
             transition: transform 0.5s ease-in-out;
+            height: 180px;
+            object-fit: cover;
         }
 
         .product-img-tem3::before {
@@ -421,8 +427,11 @@
                         );
                       ">
                                         <div>
-                                            <img src="{{ !empty($company->company_logo) && file_exists(public_path('storage/nfc/company/' . optional($company)->company_logo)) ? asset('storage/nfc/company/' . optional($company)->company_logo) : asset('frontend/images/no_image.png') }}"
-                                                alt="" />
+                                            {{-- <img src="{{ !empty($company->company_logo) && file_exists(public_path('storage/nfc/company/' . optional($company)->company_logo)) ? asset('storage/nfc/company/' . optional($company)->company_logo) : asset('frontend/images/no_image.png') }}"
+                                                alt="" /> --}}
+                                            <h1 class="special-font text-center text-white">
+                                                {{ optional($nfc_card->nfcData)->first_name }}
+                                            </h1>
                                         </div>
                                     </div>
                                 </div>
@@ -447,7 +456,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div>
-                                    <h1 class="special-font text-center">{{ optional($nfc_card->nfcData)->first_name }}
+                                    <h1 class="special-font text-center">{{ optional($nfc_card->nfcData)->last_name }}
                                     </h1>
                                     <h6 class="special-font text-center">{{ optional($nfc_card)->designation }}</h6>
 
@@ -861,7 +870,7 @@
                                         @foreach ($nfc_card->nfcCompany as $company)
                                             <div class="items">
                                                 <div class="row">
-                                                    <div class="col-sm-4">
+                                                    <div class="col-sm-5">
                                                         <div class="special-font">
                                                             <h5>{{ $company->company_name }}</h5>
                                                             <p class="text-white">
@@ -879,7 +888,7 @@
                                                             </p>
                                                         </div>
                                                     </div>
-                                                    <div class="col-sm-8">
+                                                    <div class="col-sm-7">
                                                         <!-- 32 Word -->
                                                         <p>
                                                             {{ $company->company_description }}
@@ -1057,31 +1066,54 @@
                                                             <tbody class="text-center">
                                                                 <tr>
                                                                     <td scope="row">Monday</td>
-                                                                    <td>10.00 AM - 10.00 PM</td>
+                                                                    <td>{{ optional($nfc_card->nfcData)->start_time_monday }}
+                                                                        -
+                                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}
+                                                                    </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td scope="row">Tuesday</td>
-                                                                    <td>10.00 AM - 10.00 PM</td>
+                                                                    <td>{{ optional($nfc_card->nfcData)->start_time_tuesday }}
+                                                                        -
+                                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}
+                                                                    </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td scope="row">Wednesday</td>
-                                                                    <td>10.00 AM - 10.00 PM</td>
+                                                                    <td>{{ optional($nfc_card->nfcData)->start_time_wednesday }}
+                                                                        -
+                                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}
+                                                                    </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td scope="row">Tuesday</td>
-                                                                    <td>10.00 AM - 10.00 PM</td>
+                                                                    <td>{{ optional($nfc_card->nfcData)->start_time_tuesday }}
+                                                                        -
+                                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}
+                                                                    </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td scope="row">Thursday</td>
-                                                                    <td>10.00 AM - 10.00 PM</td>
+                                                                    <td>{{ optional($nfc_card->nfcData)->start_time_thursday }}
+                                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}
+                                                                        -
+                                                                        {{ optional($nfc_card->nfcData)->start_time_monday }}
+                                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}
+                                                                    </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td scope="row">Friday</td>
-                                                                    <td>10.00 AM - 10.00 PM</td>
+                                                                    <td>{{ optional($nfc_card->nfcData)->start_time_friday }}
+                                                                        -
+                                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}
+                                                                    </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td scope="row">Satarday</td>
-                                                                    <td>10.00 AM - 10.00 PM</td>
+                                                                    <td>{{ optional($nfc_card->nfcData)->start_time_saturday }}
+                                                                        -
+                                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}
+                                                                    </td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -1211,26 +1243,15 @@
                                 </div>
                                 <div lass="row justify-content-center align-items-center g-2">
                                     <div class="gallery-slide">
-                                        <div class="gallery-items-tem3">
-                                            <div>
-                                                <img class="img-fluid"
-                                                    src="https://luxurylifestyleawards.com/wp-content/uploads/2020/02/MAIN-IMAGE.jpg"
-                                                    alt="" />
+                                        @foreach ($nfc_card->nfcProduct as $galleries)
+                                            <div class="gallery-items-tem3">
+                                                <div>
+                                                    <img class="img-fluid"
+                                                        src="{{ !empty($product->gallery_attachment) && file_exists(public_path('storage/nfc/product/' . optional($product)->gallery_attachment)) ? asset('storage/nfc/product/' . optional($product)->gallery_attachment) : asset('frontend/images/no_image.png') }}"
+                                                        alt="" />
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="gallery-items-tem3">
-                                            <div>
-                                                <img class="img-fluid" src="https://maansai.co.ke/images/About.jpg"
-                                                    alt="" />
-                                            </div>
-                                        </div>
-                                        <div class="gallery-items-tem3">
-                                            <div>
-                                                <img class="img-fluid"
-                                                    src="https://media.licdn.com/dms/image/C5612AQEN0e0IvwLVJw/article-cover_image-shrink_720_1280/0/1524771172008?e=2147483647&v=beta&t=D4vtYqcxs10MrUt68OwvRZlHw85LnJzWFnzTZej6lXk"
-                                                    alt="" />
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -1240,7 +1261,7 @@
                             <div class="row pt-5">
                                 <div class="col-sm-12">
                                     <div class="text-center">
-                                        <h3 class="special-font">My Appoints</h3>
+                                        <h3 class="special-font">My Testimonial</h3>
                                         <p
                                             style="height: 2px;background-color: var(--template-three-color-primary);width: 50px;margin: auto; ">
                                         </p>
@@ -1248,58 +1269,34 @@
                                 </div>
                                 <div class="col-sm-12 mt-4">
                                     <div class="testimonial-slide">
-                                        <div class="testimonial-items">
-                                            <div class="row p-3 align-items-center">
-                                                <div class="col-sm-3">
-                                                    <div>
-                                                        <img class="img-fluid rounded-2"
-                                                            src="./Back-assets/profile.png" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-9">
-                                                    <div class="d-flex justify-content-between">
-                                                        <h6 class="special-font">Rodela Bruce</h6>
-                                                        <div class="pe-3">
-                                                            <i class="fa-solid fa-star" style="color: yellow"></i>
-                                                            <i class="fa-solid fa-star" style="color: yellow"></i>
-                                                            <i class="fa-solid fa-star-half"
-                                                                style="color: yellow"></i>
+                                        @foreach ($nfc_card->nfcTestimonial as $testimonial)
+                                            <div class="testimonial-items">
+                                                <div class="row p-3 align-items-center">
+                                                    <div class="col-sm-3">
+                                                        <div>
+                                                            <img class="img-fluid rounded-2"
+                                                                src="{{ !empty($testimonial->testimonial_image) && file_exists(public_path('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image)) ? asset('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image) : asset('frontend/images/no_image.png') }}"
+                                                                alt="" />
                                                         </div>
                                                     </div>
-                                                    <p>
-                                                        Lorem ipsum dolor sit amet consectetur adipisicing
-                                                        elit. Voluptates error quasi quae aliquid deleniti
-                                                        at accusantium reiciendis doloribus quos illum.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="testimonial-items">
-                                            <div class="row p-3 align-items-center">
-                                                <div class="col-sm-3">
-                                                    <div>
-                                                        <img class="img-fluid rounded-2"
-                                                            src="./Back-assets/profile.png" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-9">
-                                                    <div class="d-flex justify-content-between">
-                                                        <h6 class="special-font">Rodela Bruce</h6>
-                                                        <div class="pe-3">
-                                                            <i class="fa-solid fa-star" style="color: yellow"></i>
-                                                            <i class="fa-solid fa-star" style="color: yellow"></i>
-                                                            <i class="fa-solid fa-star-half"
-                                                                style="color: yellow"></i>
+                                                    <div class="col-sm-9">
+                                                        <div class="d-flex justify-content-between">
+                                                            <h6 class="special-font">
+                                                                {{ $testimonial->testimonial_name }}Rodela Bruce</h6>
+                                                            <div class="pe-3">
+                                                                <i class="fa-solid fa-star" style="color: yellow"></i>
+                                                                <i class="fa-solid fa-star" style="color: yellow"></i>
+                                                                <i class="fa-solid fa-star-half"
+                                                                    style="color: yellow"></i>
+                                                            </div>
                                                         </div>
+                                                        <p>
+                                                            {{ $testimonial->testimonial_description }}
+                                                        </p>
                                                     </div>
-                                                    <p>
-                                                        Lorem ipsum dolor sit amet consectetur adipisicing
-                                                        elit. Voluptates error quasi quae aliquid deleniti
-                                                        at accusantium reiciendis doloribus quos illum.
-                                                    </p>
                                                 </div>
                                             </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
