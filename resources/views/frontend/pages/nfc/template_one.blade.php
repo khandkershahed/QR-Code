@@ -310,10 +310,10 @@
                                     </div>
                                     @if ($nfc_card->social_links_show == '1')
                                         <div class="d-flex justify-content-center align-items-center">
-                                            <a href="{{ optional($nfc_card->nfcData)->website_url }}"
+                                            {{-- <a href="{{ optional($nfc_card->nfcData)->website_url }}"
                                                 class="social-link-tem1">
                                                 <i class="fa-solid fa-globe"></i>
-                                            </a>
+                                            </a> --}}
                                             <a href="{{ optional($nfc_card->nfcData)->facebook_url }}"
                                                 class="social-link-tem1">
                                                 <i class="fa-brands fa-facebook-f"></i>
@@ -330,7 +330,7 @@
                                                 class="social-link-tem1">
                                                 <i class="fa-brands fa-whatsapp"></i>
                                             </a>
-                                            <a href="{{ optional($nfc_card->nfcData)->twitter_url }}"
+                                            {{-- <a href="{{ optional($nfc_card->nfcData)->twitter_url }}"
                                                 class="social-link-tem1">
                                                 <i class="fa-brands fa-twitter"></i>
                                             </a>
@@ -353,7 +353,7 @@
                                             <a href="{{ optional($nfc_card->nfcData)->tiktok_url }}"
                                                 class="social-link-tem1">
                                                 <i class="fa-brands fa-tiktok"></i>
-                                            </a>
+                                            </a> --}}
                                         </div>
                                     @endif
                                 </div>
@@ -560,15 +560,17 @@
                                     <div class="card w-100 me-2 rounded-0 border-0">
                                         <div class="card-body border-0 bg-dark">
                                             <div>
-                                                <img class="card-img-top" src="{{ !empty($service->service_icon) && file_exists(public_path('storage/nfc/service/' . optional($service)->service_icon)) ? asset('storage/nfc/service/' . optional($service)->service_icon) : asset('frontend/images/no_image.png') }}"
+                                                <img class="card-img-top"
+                                                    src="{{ !empty($service->service_icon) && file_exists(public_path('storage/nfc/service/' . optional($service)->service_icon)) ? asset('storage/nfc/service/' . optional($service)->service_icon) : asset('frontend/images/no_image.png') }}"
                                                     alt="" />
                                             </div>
                                             <div class="mt-3 text-center">
                                                 <h4 class="mb-0 special-font text-white">
-                                                    <a href="{{$service->service_url}}" target="_blank" rel="noopener noreferrer">{{$service->service_name}}</a>
+                                                    <a href="{{ $service->service_url }}" target="_blank"
+                                                        rel="noopener noreferrer">{{ $service->service_name }}</a>
                                                 </h4>
                                                 <p class="text-white">
-                                                    {{$service->service_description}}
+                                                    {{ $service->service_description }}
                                                 </p>
                                             </div>
                                         </div>
@@ -607,18 +609,19 @@
                                                 </div>
                                                 <div
                                                     class="d-flex justify-content-between px-4 py-3 align-items-center bg-dark">
-                                                    <h6 class="special-font mb-0 text-white">{{$product->product_name}}</h6>
                                                     <h6 class="special-font mb-0 text-white">
-                                                        @if ($product->product_currency == "taka")
-                                                        Tk
-                                                        @elseif ($product->product_currency == "euro")
-                                                        €
-                                                        @elseif ($product->product_currency == "dollar")
-                                                        $
-                                                        @elseif ($product->product_currency == "pound")
-                                                        £
+                                                        {{ $product->product_name }}</h6>
+                                                    <h6 class="special-font mb-0 text-white">
+                                                        @if ($product->product_currency == 'taka')
+                                                            Tk
+                                                        @elseif ($product->product_currency == 'euro')
+                                                            €
+                                                        @elseif ($product->product_currency == 'dollar')
+                                                            $
+                                                        @elseif ($product->product_currency == 'pound')
+                                                            £
                                                         @endif
-                                                        &nbsp;{{$product->product_price}}
+                                                        &nbsp;{{ $product->product_price }}
                                                     </h6>
                                                 </div>
                                             </div>
@@ -703,7 +706,8 @@
                                         @foreach ($nfc_card->nfcTestimonial as $testimonial)
                                             <div class="card p-0 bg-dark border-0 p-0 mt-5">
                                                 <div class="card-body rounded-0 border-0">
-                                                    <div class="d-flex justify-content-center" style="margin-top: -40px">
+                                                    <div class="d-flex justify-content-center"
+                                                        style="margin-top: -40px">
                                                         <img class="img-fluid" width="80px" height="80px"
                                                             src="{{ !empty($testimonial->testimonial_image) && file_exists(public_path('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image)) ? asset('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image) : asset('frontend/images/no_image.png') }}"
                                                             alt="" />
@@ -717,7 +721,7 @@
                                                     <p class="mb-0 text-white text-center">
                                                         {{ $testimonial->testimonial_description }}
                                                     </p>
-                                                    {{-- <div class="d-flex justify-content-center pt-3">
+                                                    <div class="d-flex justify-content-center pt-3">
                                                         <a href="" style="text-decoration: none">
                                                             <i class="fa-solid fa-star text-warning"></i>
                                                         </a>
@@ -727,7 +731,7 @@
                                                         <a href="" style="text-decoration: none">
                                                             <i class="fa-solid fa-star text-warning"></i>
                                                         </a>
-                                                    </div> --}}
+                                                    </div>
                                                 </div>
                                             </div>
                                         @endforeach
@@ -765,7 +769,8 @@
                                         @if ($nfc_card->enable_download_qr_code == '1')
                                             <div>
                                                 <a href="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
-                                                    class="btn btn-dark rounded-0 w-100 border-2 border-dark">Download QR</a>
+                                                    class="btn btn-dark rounded-0 w-100 border-2 border-dark">Download
+                                                    QR</a>
                                             </div>
                                         @endif
                                     </div>
@@ -792,7 +797,7 @@
                                 </div>
                             </div>
                             <div class="row pt-5">
-                                @if (optional($nfc_card->nfcData)->monday == "1")
+                                @if (optional($nfc_card->nfcData)->monday == '1')
                                     <div class="col-md-6 mb-2">
                                         <div>
                                             <div class="text-center text-white">
@@ -805,7 +810,7 @@
                                         </div>
                                     </div>
                                 @endif
-                                @if (optional($nfc_card->nfcData)->tuesday == "1")
+                                @if (optional($nfc_card->nfcData)->tuesday == '1')
                                     <div class="col-md-6 mb-2">
                                         <div>
                                             <div class="text-center text-white">
@@ -818,7 +823,7 @@
                                         </div>
                                     </div>
                                 @endif
-                                @if (optional($nfc_card->nfcData)->wednesday == "1")
+                                @if (optional($nfc_card->nfcData)->wednesday == '1')
                                     <div class="col-md-6 mb-2">
                                         <div>
                                             <div class="text-center text-white">
@@ -831,7 +836,7 @@
                                         </div>
                                     </div>
                                 @endif
-                                @if (optional($nfc_card->nfcData)->thursday == "1")
+                                @if (optional($nfc_card->nfcData)->thursday == '1')
                                     <div class="col-md-6 mb-2">
                                         <div>
                                             <div class="text-center text-white">
@@ -844,7 +849,7 @@
                                         </div>
                                     </div>
                                 @endif
-                                @if (optional($nfc_card->nfcData)->friday == "1")
+                                @if (optional($nfc_card->nfcData)->friday == '1')
                                     <div class="col-md-6 mb-2">
                                         <div>
                                             <div class="text-center text-white">
@@ -857,7 +862,7 @@
                                         </div>
                                     </div>
                                 @endif
-                                @if (optional($nfc_card->nfcData)->saturday == "1")
+                                @if (optional($nfc_card->nfcData)->saturday == '1')
                                     <div class="col-md-6 mb-2">
                                         <div>
                                             <div class="text-center text-white">
@@ -870,7 +875,7 @@
                                         </div>
                                     </div>
                                 @endif
-                                @if (optional($nfc_card->nfcData)->sunday == "1")
+                                @if (optional($nfc_card->nfcData)->sunday == '1')
                                     <div class="col-md-6 mb-2">
                                         <div>
                                             <div class="text-center text-white">
