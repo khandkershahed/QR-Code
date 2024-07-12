@@ -47,6 +47,10 @@
             --template-three-font-fmly-Raleway: "Raleway", sans-serif;
         }
 
+        p {
+            font-size: 14px;
+        }
+
         .mobile-frame {
             width: 535px;
             margin: auto;
@@ -421,8 +425,11 @@
                         );
                       ">
                                         <div>
-                                            <img src="{{ !empty($company->company_logo) && file_exists(public_path('storage/nfc/company/' . optional($company)->company_logo)) ? asset('storage/nfc/company/' . optional($company)->company_logo) : asset('frontend/images/no_image.png') }}"
-                                                alt="" />
+                                            {{-- <img src="{{ !empty($company->company_logo) && file_exists(public_path('storage/nfc/company/' . optional($company)->company_logo)) ? asset('storage/nfc/company/' . optional($company)->company_logo) : asset('frontend/images/no_image.png') }}"
+                                                alt="" /> --}}
+                                            <h1 class="special-font text-center text-white">
+                                                {{ optional($nfc_card->nfcData)->first_name }}
+                                            </h1>
                                         </div>
                                     </div>
                                 </div>
@@ -447,7 +454,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div>
-                                    <h1 class="special-font text-center">{{ optional($nfc_card->nfcData)->first_name }}
+                                    <h1 class="special-font text-center">{{ optional($nfc_card->nfcData)->last_name }}
                                     </h1>
                                     <h6 class="special-font text-center">{{ optional($nfc_card)->designation }}</h6>
 
@@ -861,7 +868,7 @@
                                         @foreach ($nfc_card->nfcCompany as $company)
                                             <div class="items">
                                                 <div class="row">
-                                                    <div class="col-sm-4">
+                                                    <div class="col-sm-5">
                                                         <div class="special-font">
                                                             <h5>{{ $company->company_name }}</h5>
                                                             <p class="text-white">
@@ -879,7 +886,7 @@
                                                             </p>
                                                         </div>
                                                     </div>
-                                                    <div class="col-sm-8">
+                                                    <div class="col-sm-7">
                                                         <!-- 32 Word -->
                                                         <p>
                                                             {{ $company->company_description }}
@@ -1057,31 +1064,54 @@
                                                             <tbody class="text-center">
                                                                 <tr>
                                                                     <td scope="row">Monday</td>
-                                                                    <td>10.00 AM - 10.00 PM</td>
+                                                                    <td>{{ optional($nfc_card->nfcData)->start_time_monday }}
+                                                                        -
+                                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}
+                                                                    </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td scope="row">Tuesday</td>
-                                                                    <td>10.00 AM - 10.00 PM</td>
+                                                                    <td>{{ optional($nfc_card->nfcData)->start_time_tuesday }}
+                                                                        -
+                                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}
+                                                                    </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td scope="row">Wednesday</td>
-                                                                    <td>10.00 AM - 10.00 PM</td>
+                                                                    <td>{{ optional($nfc_card->nfcData)->start_time_wednesday }}
+                                                                        -
+                                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}
+                                                                    </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td scope="row">Tuesday</td>
-                                                                    <td>10.00 AM - 10.00 PM</td>
+                                                                    <td>{{ optional($nfc_card->nfcData)->start_time_tuesday }}
+                                                                        -
+                                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}
+                                                                    </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td scope="row">Thursday</td>
-                                                                    <td>10.00 AM - 10.00 PM</td>
+                                                                    <td>{{ optional($nfc_card->nfcData)->start_time_thursday }}
+                                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}
+                                                                        -
+                                                                        {{ optional($nfc_card->nfcData)->start_time_monday }}
+                                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}
+                                                                    </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td scope="row">Friday</td>
-                                                                    <td>10.00 AM - 10.00 PM</td>
+                                                                    <td>{{ optional($nfc_card->nfcData)->start_time_friday }}
+                                                                        -
+                                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}
+                                                                    </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td scope="row">Satarday</td>
-                                                                    <td>10.00 AM - 10.00 PM</td>
+                                                                    <td>{{ optional($nfc_card->nfcData)->start_time_saturday }}
+                                                                        -
+                                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}
+                                                                    </td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -1211,26 +1241,15 @@
                                 </div>
                                 <div lass="row justify-content-center align-items-center g-2">
                                     <div class="gallery-slide">
-                                        <div class="gallery-items-tem3">
-                                            <div>
-                                                <img class="img-fluid"
-                                                    src="https://luxurylifestyleawards.com/wp-content/uploads/2020/02/MAIN-IMAGE.jpg"
-                                                    alt="" />
+                                        @foreach ($nfc_card->nfcProduct as $galleries)
+                                            <div class="gallery-items-tem3">
+                                                <div>
+                                                    <img class="img-fluid"
+                                                        src="{{ !empty($product->gallery_attachment) && file_exists(public_path('storage/nfc/product/' . optional($product)->gallery_attachment)) ? asset('storage/nfc/product/' . optional($product)->gallery_attachment) : asset('frontend/images/no_image.png') }}"
+                                                        alt="" />
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="gallery-items-tem3">
-                                            <div>
-                                                <img class="img-fluid" src="https://maansai.co.ke/images/About.jpg"
-                                                    alt="" />
-                                            </div>
-                                        </div>
-                                        <div class="gallery-items-tem3">
-                                            <div>
-                                                <img class="img-fluid"
-                                                    src="https://media.licdn.com/dms/image/C5612AQEN0e0IvwLVJw/article-cover_image-shrink_720_1280/0/1524771172008?e=2147483647&v=beta&t=D4vtYqcxs10MrUt68OwvRZlHw85LnJzWFnzTZej6lXk"
-                                                    alt="" />
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>

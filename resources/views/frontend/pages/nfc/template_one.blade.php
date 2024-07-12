@@ -562,7 +562,7 @@
                                             <div>
                                                 <img class="card-img-top"
                                                     src="{{ !empty($service->service_icon) && file_exists(public_path('storage/nfc/service/' . optional($service)->service_icon)) ? asset('storage/nfc/service/' . optional($service)->service_icon) : asset('frontend/images/no_image.png') }}"
-                                                <img class="card-img-top"
+                                                    <img class="card-img-top"
                                                     src="{{ !empty($service->service_icon) && file_exists(public_path('storage/nfc/service/' . optional($service)->service_icon)) ? asset('storage/nfc/service/' . optional($service)->service_icon) : asset('frontend/images/no_image.png') }}"
                                                     alt="" />
                                             </div>
@@ -657,31 +657,13 @@
                             <div class="row pt-3">
                                 <div class="col-lg-12">
                                     <div class="galery-slide">
-                                        <div>
-                                            <img class="w-100 img-fluid"
-                                                src="https://www.shutterbug.com/images/0616gallery07.jpg"
-                                                alt="" />
-                                        </div>
-                                        <div>
-                                            <img class="w-100 img-fluid"
-                                                src="https://www.shutterbug.com/images/0616gallery07.jpg"
-                                                alt="" />
-                                        </div>
-                                        <div>
-                                            <img class="w-100 img-fluid"
-                                                src="https://www.shutterbug.com/images/0616gallery07.jpg"
-                                                alt="" />
-                                        </div>
-                                        <div>
-                                            <img class="w-100 img-fluid"
-                                                src="https://www.shutterbug.com/images/0616gallery07.jpg"
-                                                alt="" />
-                                        </div>
-                                        <div>
-                                            <img class="w-100 img-fluid"
-                                                src="https://www.shutterbug.com/images/0616gallery07.jpg"
-                                                alt="" />
-                                        </div>
+                                        @foreach ($nfc_card->nfcProduct as $galleries)
+                                            <div>
+                                                <img class="w-100 img-fluid"
+                                                    src="{{ !empty($product->gallery_attachment) && file_exists(public_path('storage/nfc/product/' . optional($product)->gallery_attachment)) ? asset('storage/nfc/product/' . optional($product)->gallery_attachment) : asset('frontend/images/no_image.png') }}"
+                                                    alt="" />
+                                            </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -773,7 +755,8 @@
                                         @endif
                                         @if ($nfc_card->enable_download_qr_code == '1')
                                             <div>
-                                                <a href="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}" download=""
+                                                <a href="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
+                                                    download=""
                                                     class="btn btn-dark rounded-0 w-100 border-2 border-dark">Download
                                                     QR</a>
                                             </div>
@@ -965,7 +948,8 @@
                         </div>
                         @php
                             $currentUrl = request()->url();
-                            $whatsappLink ='https://wa.me/?text=' . urlencode('Check out My NFC Profile: ' . $currentUrl);
+                            $whatsappLink =
+                                'https://wa.me/?text=' . urlencode('Check out My NFC Profile: ' . $currentUrl);
                         @endphp
 
                         <!-- Create a button or link to share via WhatsApp -->
@@ -985,7 +969,8 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-7 col-offset-lg-6 mx-auto">
-                                <a href="{{ $whatsappLink }}" target="_blank" rel="noopener noreferrer" class="btn btn-dark w-100 p-3">
+                                <a href="{{ $whatsappLink }}" target="_blank" rel="noopener noreferrer"
+                                    class="btn btn-dark w-100 p-3">
                                     <i class="fa-solid fa-paper-plane"></i> Share This Vcard
                                 </a>
 
@@ -1191,7 +1176,7 @@
             const addressLine1 = '{{ optional($nfc_card->nfcData)->address_line_one }}';
             const addressLine2 = '{{ optional($nfc_card->nfcData)->address_line_two }}';
             const linkedin = '{{ optional($nfc_card->nfcData)->linkedin_url }}';
-            
+
 
             let vcard = `BEGIN:VCARD\n${makeVCardVersion()}\n`;
             vcard += `${makeVCardInfo(lastName, firstName)}\n`;
