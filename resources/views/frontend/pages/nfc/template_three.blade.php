@@ -163,6 +163,8 @@
             width: 100%;
             display: block;
             transition: transform 0.5s ease-in-out;
+            height: 180px;
+            object-fit: cover;
         }
 
         .product-img-tem3::before {
@@ -1259,7 +1261,7 @@
                             <div class="row pt-5">
                                 <div class="col-sm-12">
                                     <div class="text-center">
-                                        <h3 class="special-font">My Appoints</h3>
+                                        <h3 class="special-font">My Testimonial</h3>
                                         <p
                                             style="height: 2px;background-color: var(--template-three-color-primary);width: 50px;margin: auto; ">
                                         </p>
@@ -1267,58 +1269,34 @@
                                 </div>
                                 <div class="col-sm-12 mt-4">
                                     <div class="testimonial-slide">
-                                        <div class="testimonial-items">
-                                            <div class="row p-3 align-items-center">
-                                                <div class="col-sm-3">
-                                                    <div>
-                                                        <img class="img-fluid rounded-2"
-                                                            src="./Back-assets/profile.png" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-9">
-                                                    <div class="d-flex justify-content-between">
-                                                        <h6 class="special-font">Rodela Bruce</h6>
-                                                        <div class="pe-3">
-                                                            <i class="fa-solid fa-star" style="color: yellow"></i>
-                                                            <i class="fa-solid fa-star" style="color: yellow"></i>
-                                                            <i class="fa-solid fa-star-half"
-                                                                style="color: yellow"></i>
+                                        @foreach ($nfc_card->nfcTestimonial as $testimonial)
+                                            <div class="testimonial-items">
+                                                <div class="row p-3 align-items-center">
+                                                    <div class="col-sm-3">
+                                                        <div>
+                                                            <img class="img-fluid rounded-2"
+                                                                src="{{ !empty($testimonial->testimonial_image) && file_exists(public_path('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image)) ? asset('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image) : asset('frontend/images/no_image.png') }}"
+                                                                alt="" />
                                                         </div>
                                                     </div>
-                                                    <p>
-                                                        Lorem ipsum dolor sit amet consectetur adipisicing
-                                                        elit. Voluptates error quasi quae aliquid deleniti
-                                                        at accusantium reiciendis doloribus quos illum.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="testimonial-items">
-                                            <div class="row p-3 align-items-center">
-                                                <div class="col-sm-3">
-                                                    <div>
-                                                        <img class="img-fluid rounded-2"
-                                                            src="./Back-assets/profile.png" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-9">
-                                                    <div class="d-flex justify-content-between">
-                                                        <h6 class="special-font">Rodela Bruce</h6>
-                                                        <div class="pe-3">
-                                                            <i class="fa-solid fa-star" style="color: yellow"></i>
-                                                            <i class="fa-solid fa-star" style="color: yellow"></i>
-                                                            <i class="fa-solid fa-star-half"
-                                                                style="color: yellow"></i>
+                                                    <div class="col-sm-9">
+                                                        <div class="d-flex justify-content-between">
+                                                            <h6 class="special-font">
+                                                                {{ $testimonial->testimonial_name }}Rodela Bruce</h6>
+                                                            <div class="pe-3">
+                                                                <i class="fa-solid fa-star" style="color: yellow"></i>
+                                                                <i class="fa-solid fa-star" style="color: yellow"></i>
+                                                                <i class="fa-solid fa-star-half"
+                                                                    style="color: yellow"></i>
+                                                            </div>
                                                         </div>
+                                                        <p>
+                                                            {{ $testimonial->testimonial_description }}
+                                                        </p>
                                                     </div>
-                                                    <p>
-                                                        Lorem ipsum dolor sit amet consectetur adipisicing
-                                                        elit. Voluptates error quasi quae aliquid deleniti
-                                                        at accusantium reiciendis doloribus quos illum.
-                                                    </p>
                                                 </div>
                                             </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
