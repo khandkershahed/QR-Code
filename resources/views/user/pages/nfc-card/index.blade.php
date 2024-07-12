@@ -24,14 +24,14 @@
                     <div>
                         @if (!empty($subscription->plan))
                             @if ($subscription->plan->nfc - $nfc_cards->count() > 0)
-                                <a href="{{ route('user.nfc-card.create') }}"
+                                <a href="{{ route('user.virtual-card.create') }}"
                                     class="btn btn-sm btn-primary rounded-2 me-3">
                                     Create V-Card
                                 </a>
                             @endif
                         @else
                             @if (10 - $nfc_cards->count() > 0)
-                                <a href="{{ route('user.nfc-card.create') }}"
+                                <a href="{{ route('user.virtual-card.create') }}"
                                     class="btn btn-sm btn-primary rounded-2 me-3">
                                     Create V-Card
                                 </a>
