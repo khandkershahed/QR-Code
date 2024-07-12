@@ -456,6 +456,7 @@ class VirtualCardFormController extends Controller
         $view = view('nfc.form_partials.companies', compact('nfc_card'))->render();
         return response()->json(['company_delete_view' => $view]);
     }
+
     public function privacyStore(Request $request)
     {
 
@@ -474,6 +475,7 @@ class VirtualCardFormController extends Controller
 
         return response()->json(['privacy_view' => $view]);
     }
+    
     public function termsStore(Request $request)
     {
 

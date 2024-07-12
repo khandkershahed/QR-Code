@@ -10,7 +10,7 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
+    { 
         Schema::create('nfc_cards', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade');
@@ -50,7 +50,7 @@ return new class extends Migration
             $table->boolean('social_links_show')->default(1)->nullable();
             $table->boolean('privacy_policy_show')->default(1)->nullable();
             $table->boolean('terms_condition_show')->default(1)->nullable();
-            
+
             $table->boolean('inquiry_form')->default(1)->nullable();
             $table->boolean('appointments')->default(1)->nullable();
             $table->boolean('map')->default(1)->nullable();

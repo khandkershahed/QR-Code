@@ -34,7 +34,8 @@
                                 <td>
                                     <div>
                                         <img class="img-fluid" width="50px" height="50px"
-                                            src="{{ asset('storage/nfc/product/' . $product->product_icon) }}" alt="">
+                                            src="{{ asset('storage/nfc/product/' . $product->product_icon) }}"
+                                            alt="">
                                     </div>
                                 </td>
                                 <td>
@@ -44,8 +45,8 @@
                                     <p class="mb-0">{{ $product->product_price }}</p>
                                 </td>
                                 <td>
-                                    <a href="{{ $product->product_url }}" target="_blank" class="text-primary">Product Url <i
-                                            class="fa-solid fa-link text-primary"></i></a>
+                                    <a href="{{ $product->product_url }}" target="_blank" class="text-primary">Product
+                                        Url <i class="fa-solid fa-link text-primary"></i></a>
                                 </td>
                                 <td>
                                     <a href="{{ route('nfc.product.destroy', $product->id) }}" class="text-danger"
@@ -67,74 +68,78 @@
 
 {{-- Add Product modal --}}
 <div class="modal fade" id="productCreateModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
-role="dialog" aria-labelledby="modalTitleIdproduct" aria-hidden="true">
-<div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="modalTitleIdproduct">
-                Add Product Form
-            </h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <form class="product_form form" method="POST" action="{{ route('nfc.product.add') }}"
-                autocomplete="off" enctype="multipart/form-data">
-                @csrf
-                <input type="hidden" name="card_id" value="{{ $nfc_card->id }}">
-                <div class="fv-row mb-7">
-                    <x-metronic.label
-                        class="required fw-semibold fs-6 mb-2">{{ __('Product Name') }}</x-metronic.label>
-                    <x-metronic.input type="text" class="form-control form-control-solid form-control-sm"
-                        name="product_name" :value="old('product_name')" placeholder="Product Name" required />
-                </div>
-                {{-- <div class="fv-row mb-7 col-6">
-                    <label class="required fw-semibold fs-6 mb-2">Currency</label>
-                    <select class="form-select" data-control="select2" name="product_currency" data-placeholder="Select an Currency">
-                        <option></option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                    </select>
-                </div> --}}
-                <div class="fv-row mb-7">
-                    <x-metronic.label
-                        class="required fw-semibold fs-6 mb-2">{{ __('Product Price') }}</x-metronic.label>
-                    <x-metronic.input type="number" step="0.01"
-                        class="form-control form-control-solid form-control-sm" name="product_price"
-                        :value="old('product_price')" placeholder="product price" required />
-                </div>
-                <div class="fv-row mb-7">
-                    <x-metronic.label for="product_icon"
-                        class="col-form-label fw-bold fs-6 ">{{ __('Product Icon/Image') }}</x-metronic.label>
-                    <x-metronic.file-input id="product_icon" name="product_icon"
-                        :value="old('product_icon')"></x-metronic.file-input>
-                </div>
+    role="dialog" aria-labelledby="modalTitleIdproduct" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitleIdproduct">
+                    Add Product Form
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="product_form form" method="POST" action="{{ route('nfc.product.add') }}"
+                    autocomplete="off" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="card_id" value="{{ $nfc_card->id }}">
+                    <div class="row">
+                        <div class="fv-row mb-7">
+                            <x-metronic.label
+                                class="required fw-semibold fs-6 mb-2">{{ __('Product Name') }}</x-metronic.label>
+                            <x-metronic.input type="text" class="form-control form-control-solid form-control-sm"
+                                name="product_name" :value="old('product_name')" placeholder="Product Name" required />
+                        </div>
+                        <div class="fv-row mb-7 col-lg-6">
+                            <label class="required fw-semibold fs-6 mb-2">Currency</label>
+                            <select class="form-control select" name="product_currency"
+                                data-placeholder="Select a Currency">
+                                <option></option>
+                                <option value="taka">Taka(Tk)</option>
+                                <option value="euro">Euro(€)</option>
+                                <option value="dollar">Dollar($)</option>
+                                <option value="pound">Pound(£)</option>
+                            </select>
+                        </div>
+                        <div class="fv-row mb-7 col-lg-6">
+                            <x-metronic.label
+                                class="required fw-semibold fs-6 mb-2">{{ __('Product Price') }}</x-metronic.label>
+                            <x-metronic.input type="number" step="0.01"
+                                class="form-control form-control-solid form-control-sm" name="product_price"
+                                :value="old('product_price')" placeholder="product price" required />
+                        </div>
+                        <div class="fv-row mb-7">
+                            <x-metronic.label for="product_icon"
+                                class="col-form-label fw-bold fs-6 ">{{ __('Product Icon/Image') }}</x-metronic.label>
+                            <x-metronic.file-input id="product_icon" name="product_icon"
+                                :value="old('product_icon')"></x-metronic.file-input>
+                        </div>
 
-                <div class="fv-row mb-7">
-                    <x-metronic.label class="fw-semibold fs-6 mb-2">{{ __('Product URL') }}</x-metronic.label>
-                    <x-metronic.input type="url" class="form-control form-control-solid form-control-sm"
-                        name="product_url" id="product_url" placeholder="Product URL" :value="old('product_url')" />
-                </div>
-                <div class="fv-row mb-7">
-                    <label class="fw-semibold fs-6 mb-2">{{ __('Description') }}</label>
-                    <textarea name="product_description" class="form-control form-control-solid mb-3 mb-lg-0" id="product_description"
-                        rows="3">{{ old('product_description') }}</textarea>
-                </div>
-                <div class="d-flex justify-content-end mt-10">
-                    <button type="submit" onclick="submitProductForm()"
-                        class="kt_docs_formvalidation_text_submit btn btn-primary">
-                        <span class="indicator-label">
-                            Create Product
-                        </span>
-                        <span class="indicator-progress">
-                            Please wait... <span
-                                class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                        </span>
-                    </button>
-                </div>
-            </form>
+                        <div class="fv-row mb-7">
+                            <x-metronic.label class="fw-semibold fs-6 mb-2">{{ __('Product URL') }}</x-metronic.label>
+                            <x-metronic.input type="url" class="form-control form-control-solid form-control-sm"
+                                name="product_url" id="product_url" placeholder="Product URL" :value="old('product_url')" />
+                        </div>
+                        <div class="fv-row mb-7">
+                            <label class="fw-semibold fs-6 mb-2">{{ __('Description') }}</label>
+                            <textarea name="product_description" class="form-control form-control-solid mb-3 mb-lg-0" id="product_description"
+                                rows="3">{{ old('product_description') }}</textarea>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end mt-10">
+                        <button type="submit" onclick="submitProductForm()"
+                            class="kt_docs_formvalidation_text_submit btn btn-primary">
+                            <span class="indicator-label">
+                                Create Product
+                            </span>
+                            <span class="indicator-progress">
+                                Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                            </span>
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 </div>
 {{-- Modal End --}}
 
@@ -218,7 +223,7 @@ role="dialog" aria-labelledby="modalTitleIdproduct" aria-hidden="true">
                         success: function(response) {
                             $('.product_container').html('');
                             $('.product_container').html(response
-                            .product_delete_view); // Replace HTML directly
+                                .product_delete_view); // Replace HTML directly
                             Swal.fire("Deleted!", "Your product has been deleted.", "success").then(
                                 function() {
                                     console.log('Updating container with new HTML');
