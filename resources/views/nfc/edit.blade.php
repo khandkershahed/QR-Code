@@ -24,7 +24,7 @@
 
                 <div class="tab-pane fade" id="vcardTemplate" role="tabpanel">
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-12 template_container">
                             @include('nfc.form_partials.vcard_template')
                         </div>
                     </div>

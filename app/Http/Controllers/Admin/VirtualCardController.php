@@ -391,14 +391,17 @@ class VirtualCardController extends Controller
             $data = [
                 'nfc_card' => NfcCard::with(
                     'nfcData',
-                    'nfcMessages',
-                    'virtualCard',
-                    'shippingDetails',
                     'nfcCompany',
                     'nfcGallery',
                     'nfcProduct',
                     'nfcService',
-                    'nfcTestimonial'
+                    'nfcTestimonial',
+                    'nfcMessages',
+                    'nfcScan',
+                    'virtualCard',
+                    'nfcBanner',
+                    'nfcSeo',
+                    'shippingDetails'
                 )->where('code', $id)->first(),
             ];
             if (!empty($data['nfc_card'])) {

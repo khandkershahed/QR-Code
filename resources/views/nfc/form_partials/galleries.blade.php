@@ -1,7 +1,8 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="d-flex justify-content-end" data-kt-docs-table-toolbar="base">
-            <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modalIdgallery">
+            <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal"
+                data-bs-target="#galleryCreateModal">
                 Add Gallery
             </button>
         </div>
@@ -15,35 +16,47 @@
             <table class="table align-middle table-row-dashed table-border fs-6 gy-5">
                 <thead>
                     <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
-                        <th>SL</th>
-                        <th>NAME</th>
-                        <th>IMAGE</th>
-                        <th>VIDEO</th>
-                        <th>ACTION</th>
+                        <th width="5%">SL</th>
+                        <th width="12%">Type</th>
+                        <th width="30%">Title</th>
+                        <th width="40%">Link</th>
+                        <th width="13%">Action</th>
                     </tr>
                 </thead>
                 <tbody class="text-gray-600 fw-semibold">
-                    <tr>
-                        <td>1</td>
-                        <td>Jone Robert Bruno</td>
-                        <td>
-                            <div>
-                                <img class="img-fluid" style="width: 50px; height: 50px; object-fit: fill;"
-                                    src="https://cdn.pixabay.com/photo/2015/06/10/16/36/mark-804938_640.jpg"
-                                    alt="">
-                            </div>
-                        </td>
-                        <td>
-                            <a href="https://goflixza.com/">https://goflixza.com/</a>
-                        </td>
-                        <td>
-                            <a href="" class="text-danger">Delete <i class="fa-solid fa-trash text-danger"
-                                    aria-hidden="true"></i></a>
-                        </td>
-                    </tr>
-                    {{-- <tr>
-                        <td class="text-center" colspan="6">No Product available</td>
-                    </tr> --}}
+                    @if ($nfc_card->nfcGallery)
+                        @foreach ($nfc_card->nfcGallery as $gallery)
+                            <tr>
+                                <td>
+                                    {{ $loop->iteration }}
+                                </td>
+                                <td>
+                                    <span class="badge badge-info">{{ $gallery->gallery_type }}</span>
+                                </td>
+                                <td>
+                                    <p class="mb-0">{{ $gallery->gallery_title }}</p>
+                                </td>
+                                <td>
+                                    @if ($gallery->gallery_type == 'image')
+                                        <a href="{{ asset('storage/nfc/gallery/' . $gallery->gallery_attachment) }}"
+                                            target="_blank" class="text-primary">{{ asset('storage/nfc/gallery/' . $gallery->gallery_attachment) }}</a>
+                                    @else
+                                        <a href="{{ $gallery->gallery_link }}"
+                                            target="_blank" class="text-primary">{{ $gallery->gallery_link }}</a>
+                                    @endif
+                                </td>
+                                <td>
+                                    <a href="{{ route('nfc.gallery.destroy', $gallery->id) }}" class="text-danger"
+                                        onclick="deleteGallery(event, '{{ route('nfc.gallery.destroy', $gallery->id) }}')">Delete
+                                        <i class="fa-solid fa-trash text-danger"></i></a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <tr>
+                            <td class="text-center" colspan="6">No Gallery available</td>
+                        </tr>
+                    @endif
                 </tbody>
             </table>
         </div>
@@ -51,7 +64,7 @@
 </div>
 
 {{-- Add gallery modal --}}
-<div class="modal fade" id="modalIdgallery" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+<div class="modal fade" id="galleryCreateModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
     role="dialog" aria-labelledby="modalTitleIdgallery" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
@@ -60,48 +73,48 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="kt_docs_formvalidation_text form row" action="#" autocomplete="off">
-                    {{-- select what you upload --}}
-                    <div class="fv-row col-lg-12 col-45 mb-4">
-                        <x-metronic.label class="fw-semibold fs-6 mb-2">Choose Gallery Type</x-metronic.label>
-                        <select class="form-select" id="galleryTypeSelect" data-control="select2"
-                            data-placeholder="Choose Gallery Type" name="default_language">
-                            <option value="" selected disabled>Choose Gallery Type</option>
-                            <option value="image">Image</option>
-                            <option value="video">Video</option>
-                        </select>
-                    </div>
-                    {{-- If Choosen Image Upload --}}
-                    <div id="chooseImage" style="display: none;">
-                        <div class="fv-row">
-                            <x-metronic.label class="required fw-semibold fs-6 mb-2">Gallery Name</x-metronic.label>
+                <form class="gallery_form form" method="POST" action="{{ route('nfc.gallery.add') }}"
+                    autocomplete="off" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="card_id" value="{{ $nfc_card->id }}">
+                    <div class="row">
+                        <div class="fv-row col-lg-6 col-12 mb-5">
+                            <x-metronic.label class="required fw-semibold fs-6 mb-3">Gallery Name</x-metronic.label>
                             <x-metronic.input type="text" class="form-control form-control-solid form-control-sm"
-                                name="service_name_image" id="service_name_image" required placeholder="Gallery Name"
-                                :value="old('service_name_image')" />
+                                name="gallery_title" id="gallery_title" required placeholder="Gallery Name"
+                                :value="old('gallery_title')" />
                         </div>
-                        <div class="fv-row">
-                            <x-metronic.label for="logo"
-                                class="col-form-label fw-bold fs-6">{{ __('Gallery Image') }}</x-metronic.label>
-                            <x-metronic.file-input id="logo" name="logo" :value="old('logo')"></x-metronic.file-input>
+                        <div class="fv-row col-lg-6 col-12 mb-5">
+                            <x-metronic.label class="fw-semibold fs-6 mb-3">Choose Gallery Type</x-metronic.label>
+                            <select class="form-select" id="galleryTypeSelect" data-control="select2"
+                                data-placeholder="Choose Gallery Type" name="gallery_type"
+                                onchange="toggleGalleryType()">
+                                <option value="" selected disabled>Choose Gallery Type</option>
+                                <option value="image" @selected(old('gallery_type') == 'image')>Image</option>
+                                <option value="video" @selected(old('gallery_type') == 'video')>Video</option>
+                            </select>
+                        </div>
+                        <div id="chooseImage" style="display: none;">
+                            <div class="fv-row mb-5">
+                                <x-metronic.label for="gallery_attachment"
+                                    class="col-form-label fw-bold fs-6 mb-3">{{ __('Gallery Image') }}</x-metronic.label>
+                                <x-metronic.file-input id="gallery_attachment" name="gallery_attachment"
+                                    :value="old('gallery_attachment')"></x-metronic.file-input>
+                            </div>
+                        </div>
+                        <div id="chooseVideo" style="display: none;">
+                            <div class="fv-row mb-5">
+                                <x-metronic.label for="gallery_link"
+                                    class="col-form-label fw-bold fs-6 mb-3">{{ __('Gallery Video URL') }}</x-metronic.label>
+                                <x-metronic.input type="url" class="form-control form-control-solid form-control-sm"
+                                    name="gallery_link" id="gallery_link" required placeholder="Gallery Video URL"
+                                    :value="old('gallery_link')" />
+                            </div>
                         </div>
                     </div>
-                    {{-- If Choosen Video Upload --}}
-                    <div id="chooseVideo" style="display: none;">
-                        <div class="fv-row">
-                            <x-metronic.label class="required fw-semibold fs-6 mb-2">Gallery Name</x-metronic.label>
-                            <x-metronic.input type="text" class="form-control form-control-solid form-control-sm"
-                                name="service_name_video" id="service_name_video" required placeholder="Gallery Name"
-                                :value="old('service_name_video')" />
-                        </div>
-                        <div class="fv-row">
-                            <label class="required fw-semibold fs-6 mb-2">Gallery Video</label>
-                            <input type="url" name="gallery_video_url"
-                                class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="" />
-                        </div>
-                    </div>
-                    {{-- Submit Action --}}
                     <div class="d-flex justify-content-end mt-10">
-                        <button type="submit" class="kt_docs_formvalidation_text_submit btn btn-primary">
+                        <button type="submit" onclick="submitGalleryForm()"
+                            class="kt_docs_formvalidation_text_submit btn btn-primary">
                             <span class="indicator-label">Upload Gallery</span>
                             <span class="indicator-progress">Please wait... <span
                                     class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
@@ -112,31 +125,194 @@
         </div>
     </div>
 </div>
+
+{{-- <div class="modal fade" id="galleryUpdateModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleIdgallery" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitleIdgallery">Add Gallery Form</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="kt_docs_formvalidation_text form row" action="#" autocomplete="off">
+                    <div class="fv-row col-lg-6 col-12 mb-5">
+                        <x-metronic.label class="required fw-semibold fs-6 mb-3">Gallery Name</x-metronic.label>
+                        <x-metronic.input type="text" class="form-control form-control-solid form-control-sm" name="gallery_title" id="gallery_title" required placeholder="Gallery Name" :value="optional($nfc_card->nfcGallery)->gallery_title" />
+                    </div>
+                    <div class="fv-row col-lg-6 col-12 mb-5">
+                        <x-metronic.label class="fw-semibold fs-6 mb-3">Choose Gallery Type</x-metronic.label>
+                        <select class="form-select" id="galleryTypeSelect" data-control="select2" data-placeholder="Choose Gallery Type" name="gallery_type" onchange="toggleGalleryType()">
+                            <option value="" selected disabled>Choose Gallery Type</option>
+                            <option value="image" @selected(optional($nfc_card->nfcGallery)->gallery_type == "image")>Image</option>
+                            <option value="video" @selected(optional($nfc_card->nfcGallery)->gallery_type == "video")>Video</option>
+                        </select>
+                    </div>
+                    <div id="chooseImage" style="display: none;">
+                        <div class="fv-row mb-5">
+                            <x-metronic.label for="gallery_attachment" class="col-form-label fw-bold fs-6 mb-3">{{ __('Gallery Image') }}</x-metronic.label>
+                            <x-metronic.file-input id="gallery_attachment" name="gallery_attachment" :value="optional($nfc_card->nfcGallery)->gallery_attachment"></x-metronic.file-input>
+                        </div>
+                    </div>
+                    <div id="chooseVideo" style="display: none;">
+                        <div class="fv-row mb-5">
+                            <x-metronic.label for="gallery_link" class="col-form-label fw-bold fs-6 mb-3">{{ __('Gallery Video URL') }}</x-metronic.label>
+                            <x-metronic.input type="url" class="form-control form-control-solid form-control-sm" name="gallery_link" id="gallery_link" required placeholder="Gallery Video URL" :value="optional($nfc_card->nfcGallery)->gallery_link" />
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end mt-10">
+                        <button type="submit" class="kt_docs_formvalidation_text_submit btn btn-primary">
+                            <span class="indicator-label">Upload Gallery</span>
+                            <span class="indicator-progress">Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> --}}
+
+<script>
+    function toggleGalleryType() {
+        var galleryType = document.getElementById('galleryTypeSelect').value;
+        var chooseImage = document.getElementById('chooseImage');
+        var chooseVideo = document.getElementById('chooseVideo');
+
+        if (galleryType === 'image') {
+            chooseImage.style.display = 'block';
+            chooseVideo.style.display = 'none';
+        } else if (galleryType === 'video') {
+            chooseImage.style.display = 'none';
+            chooseVideo.style.display = 'block';
+        } else {
+            chooseImage.style.display = 'none';
+            chooseVideo.style.display = 'none';
+        }
+    }
+
+    // Initial call to set the correct section visibility on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        toggleGalleryType();
+    });
+
+    function submitGalleryForm() {
+        var form = $('.gallery_form');
+        var url = form.attr('action');
+        var formData = new FormData(form[0]);
+        var gallery_container = $('.gallery_container');
+
+        var modalElement = document.getElementById('galleryCreateModal');
+        var modalInstance = bootstrap.Modal.getInstance(modalElement);
+
+        // Optionally disable the submit button to prevent multiple submissions
+        var submitButton = form.find('.kt_docs_formvalidation_text_submit');
+        submitButton.prop('disabled', true).addClass('disabled');
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            beforeSend: function() {
+                // Show loading spinner or indicator
+                submitButton.find('.indicator-label').hide();
+                submitButton.find('.indicator-progress').show();
+            },
+            success: function(response) {
+                console.log('Form submitted successfully:', response);
+                if (response.gallery_view) {
+                    console.log('Updating container with new HTML');
+                    modalInstance.hide(); // Use Bootstrap's modal hide method
+                    gallery_container.html(response.gallery_view); // Replace HTML directly
+                    toastr.success('Data saved successfully!', 'Success');
+                } else {
+                    console.error('Unexpected response format:', response);
+                    toastr.error('Unexpected response format.', 'Error');
+                }
+                // Optionally reset the form or perform other actions
+                // form.trigger('reset');
+            },
+            error: function(xhr, status, error) {
+                // Handle error response
+                console.error('Error:', error);
+                toastr.error('An error occurred while saving data.', 'Error');
+            },
+            complete: function() {
+                submitButton.prop('disabled', false).removeClass('disabled');
+                submitButton.find('.indicator-label').show();
+                submitButton.find('.indicator-progress').hide();
+            }
+        });
+    }
+
+    function deleteGallery(event, deleteUrl) {
+        event.preventDefault(); // Prevent the default link action
+        var gallery_container = $('.gallery_container');
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel!",
+            buttonsStyling: false,
+            customClass: {
+                confirmButton: "btn btn-danger",
+                cancelButton: "btn btn-success",
+            },
+        }).then(function(result) {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: deleteUrl,
+                    type: "DELETE",
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                    },
+                    success: function(response) {
+                        $('.gallery_container').html('');
+                        $('.gallery_container').html(response
+                            .gallery_delete_view); // Replace HTML directly
+                        Swal.fire("Deleted!", "Your gallery has been deleted.", "success").then(
+                            function() {
+                                console.log('Updating container with new HTML');
+                            });
+                        console.log('Updating container with new HTML');
+                        toastr.success('Service deleted successfully!', 'Success');
+                    },
+                    error: function(xhr, status, error) {
+                        Swal.fire("Error Occurred!",
+                            "An error occurred while deleting the gallery.", "error");
+                    },
+                });
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire("Cancelled", "Your gallery is safe :)", "error");
+            }
+        });
+    }
+</script>
+
+
+
 {{-- Modal End --}}
 
 @push('scripts')
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const galleryTypeSelect = document.getElementById('galleryTypeSelect');
-            const chooseImage = document.getElementById('chooseImage');
-            const chooseVideo = document.getElementById('chooseVideo');
+        function toggleGalleryType() {
+            var galleryType = document.getElementById('galleryTypeSelect').value;
+            var chooseImage = document.getElementById('chooseImage');
+            var chooseVideo = document.getElementById('chooseVideo');
 
-            galleryTypeSelect.addEventListener('change', function() {
-                if (this.value === 'image') {
-                    chooseImage.style.display = 'block';
-                    chooseVideo.style.display = 'none';
-                } else if (this.value === 'video') {
-                    chooseImage.style.display = 'none';
-                    chooseVideo.style.display = 'block';
-                } else {
-                    chooseImage.style.display = 'none';
-                    chooseVideo.style.display = 'none';
-                }
-            });
-
-            // Initialize with only the select box visible
-            chooseImage.style.display = 'none';
-            chooseVideo.style.display = 'none';
-        });
+            if (galleryType === 'image') {
+                chooseImage.style.display = 'block';
+                chooseVideo.style.display = 'none';
+            } else if (galleryType === 'video') {
+                chooseImage.style.display = 'none';
+                chooseVideo.style.display = 'block';
+            } else {
+                chooseImage.style.display = 'none';
+                chooseVideo.style.display = 'none';
+            }
+        }
     </script>
 @endpush

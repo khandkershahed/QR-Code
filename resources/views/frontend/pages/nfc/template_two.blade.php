@@ -1,711 +1,1186 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <title>{{ optional($nfc_card->nfcData)->first_name }} {{ optional($nfc_card->nfcData)->last_name }}</title>
+  <head>
+    <title>Title</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" />
-    <link rel="shortcut icon" href="https://i.ibb.co/BNBTVN4/logo.png" type="image/x-icon" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
     <!-- Bootstrap CSS v5.2.1 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
-    <!-- Slick CSS -->
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
-    <!-- Style Here -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
+    />
+
     <style>
-        :root {
-            @if ($nfc_card->font_family == 'bebas_neue')
-                --body-font-family: "Bebas Neue", sans-serif !important;
-                --tem-one-name-font-family: "Bebas Neue", sans-serif !important;
-                --tem-one-designation-font-family: "Bebas Neue", sans-serif !important;
-                --letter-spacing
-            @elseif($nfc_card->font_family == 'raleway')
-                --tem-one-name-font-family: "Raleway", sans-serif !important;
-                --body-font-family: "Raleway", sans-serif !important;
-                --tem-one-designation-font-family: "Raleway", sans-serif;
-                @else
-                --tem-one-name-font-family: "Raleway", sans-serif !important;
-                --body-font-family: "Raleway", sans-serif !important;
-                --tem-one-designation-font-family: "Raleway", sans-serif;
-            @endif
-            --white: #fff;
-            --tem-two-name-color: #fff;
-            --tem-two-name-font-size: 40px;
-            --tem-two-designation-color: #fff;
-            --tem-two-bio-title-color: {{ $nfc_card->background_color }};
-            --tem-two-profile-image-bg: {{ $nfc_card->background_color }};
-            --tem-two-social-icons-color: #fff;
-            --tem-two-social-icons-bg: #fff;
-            --tem-two-social-icons-font-size: 18px;
-            --tem-two-bio-title-font-size: {{ $nfc_card->font_size }};
-            --tem-two-service-title-color: {{ $nfc_card->title_color }};
-            --tem-two-service-title-font-size: 20px;
-            --tem-two-service-box-bg: {{ $nfc_card->background_color }};
-            --button_bg_color: {{ $nfc_card->button_bg_color }};
-            --button_title_color: {{ $nfc_card->button_title_color }};
-            --tem-two-address-color: #fff;
-        }
+      @import url("https://fonts.googleapis.com/css2?family=Almendra+SC&family=Anton&family=Anton+SC&family=Bebas+Neue&family=Jost:ital,wght@0,100..900;1,100..900&family=Margarine&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
 
-        /* CSS for centering the mobile frame */
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: auto;
-            margin: 0;
-            padding: 0;
-            font-family: var(--body-font-family);
-            letter-spacing: 2px;
-        }
-        .nfc-mobile-frame-two {
-            width: 400px;
+      :root {
+        --template-two-color-white: #fff;
+        --template-two-color-black: #000;
+        --template-two-color-primary: #ed1c24e0;
+        --template-two-title-font-size: 48px;
+        --template-two-others-font-size: 20px;
+        --template-two-font-fmly-Almendra: "Almendra SC", serif;
+        --template-two-font-fmly-Almendra: "Almendra SC", serif;
+        --template-two-font-fmly-Bebas: "Bebas Neue", sans-serif;
+        --template-two-font-fmly-Ubuntu: "Ubuntu", sans-serif;
+        --template-two-font-fmly-Anton: "Anton SC", sans-serif;
+        --template-two-font-fmly-Margarine: "Margarine", sans-serif;
+        --template-two-font-fmly-Roboto: "Roboto Slab", serif;
+        --template-two-font-fmly-Jost: "Jost", sans-serif;
+        --template-two-font-fmly-Roboto: "Roboto", sans-serif;
+        --template-two-font-fmly-Poppins: "Poppins", sans-serif;
+        --template-two-font-fmly-Raleway: "Raleway",  sans-serif;
+      }
+      .mobile-frame {
+        width: 535px;
+        margin: auto;
+        max-width: 100%;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        font-family: var(--template-two-font-fmly-Roboto);
+      }
+      .page-content-wrapper {
+        width: 100%;
+        margin: auto;
+        margin-bottom: 62px;
+        background-color: var(--template-two-color-primary);
+      }
 
+      .section-top-tem2 {
+        margin-top: -260px;
+      }
+      .social-rotate-tem2 {
+        transform: rotate(23deg);
+        margin-top: -32px;
+        margin-left: 95px;
+      }
+      .profile-img-tem2 img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border: 2px dashed var(--template-two-color-primary);
+        padding: 5px;
+      }
+      .name-title-tem2 {
+        font-family: var(--template-two-font-fmly-Bebas);
+        color: var(--template-two-color-white);
+        font-size: var(--template-two-title-font-size);
+      }
+      .user-name-rotate-tem2 {
+        margin-top: -160px;
+      }
+      .product-content-tem2 {
+        height: 75px;
+      }
+      .company-btn-tem2 {
+        background-color: var(--template-two-color-white);
+        border-radius: 3px !important;
+      }
+      .company-btn-tem2:hover {
+        background-color: transparent;
+        transition: all 0.5s ease-in-out;
+      }
+      .contact-icons-tem2 {
+        border: 2px dashed var(--template-two-color-primary);
+        background: var(--template-two-color-primary);
+        padding: 10px 10px;
+        width: 50px;
+        height: 50px;
+        color: var(--template-two-color-primary);
+        box-shadow: rgba(255, 255, 255, 0.24) 0px 3px 8px;
+        border-radius: 50%;
+        font: var(--template-two-others-font-size);
+      }
+      .social-link-tem2 {
+        background: var(--template-two-color-white);
+        padding: 8px 14px;
+        width: 45px;
+        height: 45px;
+        color: var(--template-two-color-primary);
+        box-shadow: rgba(255, 255, 255, 0.24) 0px 3px 8px;
+        margin-left: 10px;
+        border-radius: 50%;
+        font: var(--template-two-others-font-size);
+      }
+      .text-justify {
+        text-align: justify;
+      }
+      .special-font {
+        color: var(--template-two-color-primary);
+        font-family: var(--template-two-font-fmly-Bebas);
+      }
+      .slick-prev,
+      .slick-next {
+        font-size: 0;
+        line-height: 0;
+        position: absolute;
+        top: 50%;
+        margin: 50px;
+        display: block;
+        width: 45px;
+        height: 45px;
+        padding: 0;
+        -webkit-transform: translate(0, -50%);
+        -ms-transform: translate(0, -50%);
+        transform: translate(0, -50%);
+        cursor: pointer;
+        color: transparent;
+        border: none;
+        outline: none;
+        background: var(--template-two-color-black);
+        z-index: 5;
+      }
+      .slick-prev:hover,
+      .slick-prev:focus,
+      .slick-next:hover,
+      .slick-next:focus {
+        background: var(--template-two-color-primary);
+      }
+      .slick-prev:before,
+      .slick-next:before {
+        color: var(--template-two-color-white);
+      }
+      .product-img {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+      }
+      .slick-dots li button:before {
+        font-family: "slick";
+        font-size: 6px;
+        line-height: 20px;
+        position: absolute;
+        top: 0px;
+        left: 0;
+        width: 20px;
+        height: 20px;
+        content: "•";
+        text-align: center;
+        opacity: 0.25;
+        color: var(--template-two-color-black);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background: var(--template-two-color-white);
+        border-radius: 100%;
+      }
+      .footer-nav-area {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+      }
 
-            /* border: 2px solid #1026bf; */
-            border-radius: 20px;
-            overflow: hidden;
-            position: relative;
-        }
+      .footer-nav-tem2 {
+        /* background-color: var(--white); */
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        background-color: var(--info-500);
+        width: 535px;
+        height: 62px;
+        margin: auto;
+      }
 
-        /* CSS for the card inside the mobile frame */
-        .nfc-mobile-frame-two .card {
-            background-color: var(--white);
-            width: 100%;
-            height: 100%;
-            border-radius: 20px;
-            overflow-y: auto;
-        }
+      .footer-nav-tem2 ul {
+        position: relative;
+        z-index: 10;
+        width: 100%;
+        list-style-type: none;
+        box-shadow: rgb(255 255 255 / 20%) 0px 2px 8px 0px;
+        background: var(--template-two-color-primary);
+      }
 
-        .nfc-mobile-frame-two .card title {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-        }
+      .footer-nav-tem2 ul li {
+        position: relative;
+        z-index: 1;
+        -webkit-box-flex: 1;
+        -ms-flex: 1 1 0px;
+        flex: 1 1 0;
+      }
 
-        .nfc-two-cover-img-box {
-            position: relative;
-            max-width: 100%;
-        }
+      .footer-nav-tem2 ul li a {
+        position: relative;
+        display: block;
+        font-size: 16px;
+        text-align: center;
+        font-weight: 600;
+        text-transform: capitalize;
+        line-height: 1;
+        color: var(--template-two-color-white);
+        text-decoration: none;
+        z-index: 1;
+      }
 
-        .nfc-two-cover-img {
-            background-size: cover;
-            height: 300px;
-            background-position: center;
-        }
-
-        .tem-two-name {
-            color: var(--tem-two-name-color);
-            font-family: var(--tem-two-name-font-family);
-            font-weight: 400;
-            font-style: normal;
-            font-size: var(--tem-two-name-font-size);
-        }
-
-        .tem-two-designation {
-            color: var(--tem-two-designation-color);
-            font-family: var(--tem-two-designation-font-family);
-            font-weight: 400;
-            font-style: normal;
-        }
-
-        .tem-two-bio-title {
-            text-align: center;
-            color: var(--tem-two-bio-title-color);
-            font-family: "Bebas Neue", sans-serif;
-            font-size: var(--tem-two-bio-title-font-size);
-        }
-
-        .tem-two-bio-box p {
-            text-align: center;
-        }
-
-        .tem-two-service-title {
-            color: var(--tem-two-service-title-color);
-            font-family: "Bebas Neue", sans-serif;
-            font-size: var(--tem-two-bio-title-font-size);
-        }
-
-        .tem-two-service-box {
-            text-align: center;
-            background-color: var(--tem-two-service-box-bg);
-            color: var(--white);
-        }
-
-        .tem-two-service-box p {
-            text-align: center;
-        }
-
-        .tem-two-profile-img {
-            width: 100%;
-            overflow: hidden;
-        }
-
-        .tem-two-profile-img img {
-            width: 45%;
-            height: 45%;
-            object-fit: cover;
-        }
-
-        .tem-two-profile-image {
-            background-color: var(--tem-profile-image-bg);
-            width: 20%;
-            border-bottom-right-radius: 20px;
-        }
-
-        .tem-two-profile {
-            background-color: var(--tem-two-profile-image-bg);
-            width: 85%;
-            border-bottom-left-radius: 20px;
-            border-bottom-right-radius: 20px;
-            border-top-left-radius: 20px;
-            border-top-right-radius: 20px;
-            margin-top: -100px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .tem-two-social-icons {
-            display: flex;
-            justify-content: start;
-        }
-
-        .tem-two-social-icons a {
-            /* background-color:var(--tem-two-social-icons-bg); */
-            text-decoration: none;
-            padding: 0px;
-            display: inline-block;
-            font-size: var(--tem-two-social-icons-font-size);
-            /* Adjust the size of the icons as needed */
-            margin: 0 10px;
-            /* Adjust the spacing between icons as needed */
-            color: var(--tem-two-social-icons-color);
-            /* Adjust the color of the icons as needed */
-        }
-
-
-
-        /* Hover effect */
-        .tem-two-social-icons a:hover {
-            color: #007bff;
-            /* Change color on hover */
-        }
-
-        .tem-two-address {
-            color: var(--tem-two-address-color);
-        }
-
-        /* Customize slick slider container */
-        .slick-slider {
-            width: 100%;
-            /* Adjust slider width as needed */
-            margin: 0 auto;
-            /* Center the slider */
-        }
-
-        .slick-next {
-            right: -5px;
-        }
-
-        .slick-prev {
-            left: -5px;
-            position: absolute;
-            z-index: 1;
-        }
-
-        .tem-two-about-first {
-            width: 35%;
-        }
-
-        .tem-two-about-secontd {
-            width: 65%;
-        }
-
-        .tem-two-tem-two-social-icons a {
-            display: flex;
-            background-color: var(--tem-two-social-icons-bg);
-            margin-left: 10px;
-            padding: 10px;
-            text-decoration: none;
-            color: var(--tem-two-social-icons-color);
-        }
-
-        .tem-two-scroll::-webkit-scrollbar {
-            width: 0em;
-        }
-
-        .tem-two-scroll::-webkit-scrollbar-track {
-            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-        }
-
-        .tem-two-scroll::-webkit-scrollbar-thumb {
-            background-color: darkgrey;
-            outline: 1px solid slategrey;
-        }
-
-        .tem-two-service-title {
-            font-family: var(--tem-two-name-font-family);
-            background-color: var(--tem-two-service-box-bg);
-            border: 0;
-        }
-
-        .tem-one-services-title {
-            font-family: var(--tem-two-name-font-family);
-            background-color: var(--tem-two-service-box-bg);
-            color: var(--tem-two-service-title-color);
-            border: 0;
-            font-size: var(--tem-two-service-title-font-size);
-        }
-
-        /* Media query for smaller screens */
-        @media only screen and (max-width: 600px) {
-            .nfc-mobile-frame-two {
-                height: 100vh;
-                /* Let height adjust based on content */
-            }
-        }
+      .footer-nav-tem2 ul li.active a {
+        background-color: var(--template-two-color-white);
+        padding: 24px;
+        color: var(--template-two-color-black);
+      }
+      .modal.fade .load-modal {
+        transition: transform 0.3s ease-out;
+        transform: translate(-8px, 0) !important;
+      }
+      .close-btns {
+        background-color: var(--template-two-color-white);
+      }
+      .image-container-tem2 {
+        height: 385px;
+        object-fit: cover;
+      }
+      .shape-container-tem2 {
+        margin-top: -250px;
+        width: 100%;
+        height: 229px;
+      }
+      .language-2 {
+        position: absolute;
+        top: 0rem;
+      }
     </style>
-    <!-- Style Here End -->
-</head>
+  </head>
 
-<body>
+  <body>
     <main>
-        <section>
-            <div class="mt-1 container">
-                <div class="row">
-                    <div class="col-lg-12 d-flex justify-content-center align-items-center px-0">
-                        <div class="nfc-mobile-frame-two shadow-sm">
-                            <div class="card p-0 border-0 shadow-none tem-two-scroll">
-                                <div class="card-header p-0 border-0 border-0">
-                                    <div class="nfc-two-cover-img-box">
-                                        <div class="nfc-two-cover-img"
-                                            style="background-image: url({{ !empty($nfc_card->nfcData->banner_image) && file_exists(public_path('storage/nfc/' . $nfc_card->nfcData->banner_image)) ? asset('storage/nfc/' . $nfc_card->nfcData->banner_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }});">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body p-0 tem-one-about-content">
-                                    <div class="d-flex justify-content-center">
-                                        <div class="tem-two-profile d-flex justify-content-around">
-                                            <div class="p-3 text-center">
-                                                <div>
-                                                    <img width="80px" height="80px"
-                                                        style="object-fit: cover; border-radius: 50px"
-                                                        src="{{ !empty($nfc_card->nfcData->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
-                                                        alt="" />
-                                                </div>
-                                                <div>
-                                                    <h1 class="tem-two-name"><span
-                                                            class="first_name">{{ optional($nfc_card->nfcData)->first_name }}</span>&nbsp;<span
-                                                            class="last_name">{{ optional($nfc_card->nfcData)->last_name }}</span>
-                                                    </h1>
-                                                    <h6 class="tem-two-designation fw-bold">
-                                                        {{ optional($nfc_card->nfcData)->designation }}
-                                                    </h6>
-                                                </div>
-                                                <!-- contact -->
-                                                <div class="text-center">
-                                                    <small
-                                                        class="tem-two-address">{{ optional($nfc_card->nfcData)->address_line_one }}</small>
-                                                    <br>
-                                                    <small
-                                                        class="tem-two-address">{{ optional($nfc_card->nfcData)->address_line_two }}</small>
-                                                    <br />
-                                                    <small
-                                                        class="tem-two-address">{{ optional($nfc_card->nfcData)->phone_personal }}(Work)</small>
-                                                    <br>
-                                                    <small
-                                                        class="tem-two-address">{{ optional($nfc_card->nfcData)->phone_work }}(Personal)</small>
-                                                    <div
-                                                        class="tem-two-social-icons mt-3 d-flex justify-content-center">
-                                                        <a href="{{ optional($nfc_card->nfcData)->facebook_url }}"
-                                                            class="fa fa-facebook"></a>
-                                                        <a href="{{ optional($nfc_card->nfcData)->instagram_url }}"
-                                                            class="fa fa-instagram"></a>
-                                                        <a href="{{ optional($nfc_card->nfcData)->youtube_url }}"
-                                                            class="fa fa-youtube"></a>
-                                                        <a href="{{ optional($nfc_card->nfcData)->google_plus_url }}"
-                                                            class="fa fa-google"></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- BIo -->
-                                    <div class="tem-two-bio-box px-3 pt-4">
-                                        <h6 class="tem-two-bio-title">{{ optional($nfc_card->nfcData)->bio_title }}
-                                        </h6>
-                                        <p>
-                                            {{ optional($nfc_card->nfcData)->bio_description }}
-                                        </p>
-                                    </div>
-                                    <!-- Service -->
-                                    @if (
-                                        !empty($nfc_card->nfcData->service_one_image) ||
-                                            !empty($nfc_card->nfcData->service_two_image) ||
-                                            !empty($nfc_card->nfcData->service_three_image))
-                                        <div class="tem-two-service-box px-3 py-4">
-                                            <h6 class="tem-two-service-title">
-                                                {{ optional($nfc_card->nfcData)->service_section_title }}</h6>
-                                            <p>
-                                                {{ optional($nfc_card->nfcData)->service_section_description }}
-                                            </p>
-                                            <div class="row g-x-1">
-                                                @if (!empty($nfc_card->nfcData->service_one_image))
-                                                    <div class="card col-6 p-0 border-0 rounded-0">
-                                                        <div class="card-header p-0 border-0">
-                                                            <h6 class="text-center mb-0 p-2 tem-one-services-title">
-                                                                {{ optional($nfc_card->nfcData)->service_one_title }}
-                                                            </h6>
-                                                        </div>
-                                                        <div class="card-body p-0">
-                                                            <div>
-                                                                <a href="">
-                                                                    <img style="  width: 100%;  height: 100%;  background-size: cover;  object-fit: cover;"
-                                                                        src="{{ !empty($nfc_card->nfcData->service_one_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->service_one_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->service_one_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
-                                                                        alt="Slide 1" />
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                @endif
-                                                @if (!empty($nfc_card->nfcData->service_two_image))
-                                                    <div class="card col-6 p-0 border-0 rounded-0">
-                                                        <div class="card-header p-0 border-0">
-                                                            <h6 class="text-center mb-0 p-2 tem-one-services-title">
-                                                                {{ optional($nfc_card->nfcData)->service_two_title }}
-                                                            </h6>
-                                                        </div>
-                                                        <div class="card-body p-0">
-                                                            <div>
-                                                                <a href="">
-                                                                    <img style="  width: 100%;  height: 100%;  background-size: cover;  object-fit: cover;"
-                                                                        src="{{ !empty($nfc_card->nfcData->service_two_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->service_two_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->service_two_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
-                                                                        alt="Slide 1" />
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                @endif
-                                                @if (!empty($nfc_card->nfcData->service_three_image))
-                                                    <div class="card col-6 p-0 border-0 rounded-0">
-                                                        <div class="card-header p-0 border-0">
-                                                            <h6 class="text-center mb-0 p-2 tem-one-services-title">
-                                                                {{ optional($nfc_card->nfcData)->service_three_title }}
-                                                            </h6>
-                                                        </div>
-                                                        <div class="card-body p-0">
-                                                            <div>
-                                                                <a href="">
-                                                                    <img style="  width: 100%;  height: 100%;  background-size: cover;  object-fit: cover;"
-                                                                        src="{{ !empty($nfc_card->nfcData->service_three_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->service_three_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->service_three_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
-                                                                        alt="Slide 1" />
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                @endif
-                                                <!-- Add more divs with images for additional slides -->
-                                            </div>
-                                        </div>
-                                    @endif
-                                    <!-- Company -->
-                                    @if (!empty($nfc_card->nfcData->company_title) || !empty($nfc_card->nfcData->company_about_title) )
-                                    <div class="tem-two-bio-box px-3 pt-4">
-                                        <h6 class="tem-two-bio-title">{{ optional($nfc_card->nfcData)->company_title }}
-                                        </h6>
-                                        <div class="d-flex">
-                                            <div class="tem-two-about-first">
-                                                <p class="fw-bold mb-0">
-                                                    {{ optional($nfc_card->nfcData)->company_name }}</p>
-                                                <p class="mb-0">
-                                                    <span>{{ optional($nfc_card->nfcData)->company_address_line_one }}</span>
-                                                    <br />
-                                                    <span>{{ optional($nfc_card->nfcData)->company_address_line_two }}</span>
-                                                </p>
-                                                <p class="mb-0">{{ optional($nfc_card->nfcData)->company_email }}</p>
-                                            </div>
-                                            <div class="tem-two-about-secontd">
-                                                <p class="fw-bold mb-0">
-                                                    {{ optional($nfc_card->nfcData)->company_about_title }}</p>
-                                                <p>
-                                                    {{ optional($nfc_card->nfcData)->company_about_description }}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @endif
-                                    <!-- Company -->
-                                    <div class="tem-two-service-box px-3 py-4">
-                                        <h6 class="tem-two-service-title">Contact</h6>
-                                        @if (!empty(optional($nfc_card->nfcData)->phone_work))
-                                            <p class="mb-0">
-                                                {{ optional($nfc_card->nfcData)->phone_work }}
-                                                <small class="fw-bold">(Work)</small>
-                                            </p>
-                                        @endif
-                                        @if (!empty(optional($nfc_card->nfcData)->phone_personal))
-                                            <p class="mb-0">
-                                                {{ optional($nfc_card->nfcData)->phone_personal }}
-                                                <small class="fw-bold">(Personal)</small>
-                                            </p>
-                                        @endif
-                                        <div class="pt-4">
-                                            <form action="{{ route('individual-message.store') }}" method="post">
-                                                @csrf
-                                                <input type="hidden" name="user_id"
-                                                    value="{{ optional($nfc_card)->user_id }}">
-                                                <input type="hidden" name="nfc_id"
-                                                    value="{{ optional($nfc_card)->id }}">
-                                                <input type="hidden" name="nfc_code"
-                                                    value="{{ optional($nfc_card)->code }}">
-                                                    <div class="row">
-                                                        <div class="col mb-2">
-                                                            <div class="fv-row my-3">
-                                                                <x-metronic.label
-                                                                    class="fw-semibold fs-6 mb-2 required">Name
-                                                                    <span class="text-danger fs-1" style="position: relative;top: 0.6rem;">*</span>
-                                                                </x-metronic.label>
-                                                                <x-metronic.input type="text" name="name"
-                                                                    value="{{ old('name') }}"
-                                                                    class="form-control form-control-solid mb-3 mb-lg-0"
-                                                                    placeholder="Robert Duff" required />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col mb-2">
-                                                            <div class="fv-row my-3">
-                                                                <x-metronic.label
-                                                                    class="fw-semibold fs-6 mb-2 required">Email
-                                                                    <span class="text-danger fs-1" style="position: relative;top: 0.6rem;">*</span>
-                                                                </x-metronic.label>
-                                                                <x-metronic.input type="email" name="email"
-                                                                    value="{{ old('email') }}"
-                                                                    class="form-control form-control-solid mb-3 mb-lg-0"
-                                                                    placeholder="example@mail.com" required />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col mb-2">
-                                                            <div class="fv-row my-3">
-                                                                <x-metronic.label
-                                                                    class="fw-semibold fs-6 mb-2">Phone</x-metronic.label>
-                                                                <x-metronic.input type="text" name="phone"
-                                                                    value="{{ old('phone') }}"
-                                                                    class="form-control form-control-solid mb-3 mb-lg-0"
-                                                                    placeholder="01*******" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col mb-2">
-                                                            <div class="fv-row my-3">
-                                                                <x-metronic.label
-                                                                    class="fw-semibold fs-6 mb-2">Headline</x-metronic.label>
-                                                                <x-metronic.input type="text" name="headline"
-                                                                    value="{{ old('headline') }}"
-                                                                    class="form-control form-control-solid mb-3 mb-lg-0"
-                                                                    placeholder="Headline" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col mb-2">
-                                                            <div class="fv-row my-3">
-                                                                <x-metronic.label
-                                                                    class="fw-semibold fs-6 mb-2 required">Message
-                                                                    <span class="text-danger fs-1" style="position: relative;top: 0.6rem;">*</span>
-                                                                </x-metronic.label>
-                                                                <textarea class="form-control form-control-solid" rows="5" name="message" value="{{ old('message') }}"
-                                                                    placeholder="Enter Message" required></textarea>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                <div class="row">
-                                                    <div class="col mb-2 text-center">
-                                                        <button type="submit" class="btn btn-white btn-sm mt-2 rounded-0">
-                                                            Submit
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        @if (!empty($nfc_card->nfc_qr) && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc_qr)))
-                                            <div>
-                                                <h6 class="tem-two-bio-title text-white pt-5">
-                                                    Scan Me
-                                                </h6>
-                                                <div class="d-flex justify-content-center">
-                                                    <img class="" width="200px"
-                                                        src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
-                                                        alt="" />
-                                                </div>
-                                            </div>
-                                        @endif
-                                        <div class="row fixed-bottom w-25 mx-auto mobile-d-none">
-                                            <div class="col mb-2 text-center">
-                                                <a href="tel:+{{ optional($nfc_card->nfcData)->phone_personal }}"
-                                                    class="btn btn-sm mt-2 p-2 w-100 nfc_contact_btn nfc_contact_btn_pc"
-                                                    style="background-color: #f44336; color: #fff">
-                                                    <i class="fas fa-contact pe-1 fa-address-book"></i>
-                                                    Save Contact
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="row fixed-bottom w-sm-100 w-lg-25 d-sm-block d-lg-none mx-auto">
-                                            <div class="col mb-2 text-center">
-                                                <a href="tel:+{{ optional($nfc_card->nfcData)->phone_personal }}"
-                                                    class="btn btn-sm mt-2 p-2 w-100 nfc_contact_btn nfc_contact_btn_mobile"
-                                                    style="background-color: #f44336; color: #fff">
-                                                    <i class="fas fa-contact pe-1 fa-address-book"></i>
-                                                    Save Contact
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+      <div class="mobile-frame">
+        <div class="page-content-wrapper">
+          <!-- Banner -->
+          <section>
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-12 px-0">
+                  <img
+                    class="img-fluid image-container-tem2"
+                    src="https://cdn.pixabay.com/photo/2023/12/29/16/15/ai-generated-8476506_960_720.png"
+                    alt=""
+                  />
+                  <div>
+                    <img
+                      class="shape-container-tem2"
+                      src="https://i.ibb.co/bg43J6s/Asset-63-8.png"
+                      alt=""
+                    />
+                  </div>
+                  <div class="dropdown language-2">
+                    <button
+                      class="btn btn-dark dropdown-toggle rounded-0"
+                      type="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      Language
+                    </button>
+                    <ul class="dropdown-menu rounded-0 w-100">
+                      <li><a class="dropdown-item" href="#">Arabic</a></li>
+                      <li>
+                        <a class="dropdown-item" href="#">Chinese</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">English</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">English</a>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
+              </div>
             </div>
-        </section>
+          </section>
+          <!-- Profile Info -->
+          <section>
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-12 section-top-tem2">
+                  <div class="profile-img-tem2">
+                    <img
+                      class="img-fluid"
+                      src="https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="d-flex justify-content-center align-items-center social-rotate-tem2"
+                  >
+                    <a href="" class="social-link-tem2"
+                      ><i class="fa-brands fa-facebook-f"></i
+                    ></a>
+                    <a href="" class="social-link-tem2"
+                      ><i class="fa-brands fa-instagram"></i
+                    ></a>
+                    <a href="" class="social-link-tem2"
+                      ><i class="fa-brands fa-linkedin-in"></i
+                    ></a>
+                    <a href="" class="social-link-tem2"
+                      ><i class="fa-brands fa-whatsapp"></i
+                    ></a>
+                    <a href="" class="social-link-tem2"
+                      ><i class="fa-brands fa-twitter"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Bio Area -->
+          <section>
+            <div class="container py-4 pt-3">
+              <div class="row align-items-center">
+                <div class="col-sm-12">
+                  <div class="user-name-rotate-tem2">
+                    <h1 class="name-title-tem2 mb-0">Shahed</h1>
+                    <p class="text-white mb-0">Real State Broker</p>
+                    <p class="text-white">
+                      <i class="fa-solid fa-location-dot pe-2"></i>From Canada
+                    </p>
+                  </div>
+                  <p class="text-white mb-0 text-justify pt-4">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Molestias accusamus officiis alias eaque voluptatibus
+                    necessitatibus, facere ex dicta! Aliquid, perspiciatis quos.
+                    Quos eveniet maiores illo debitis pariatur similique dicta
+                    cupiditate?
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Date Area -->
+          <section>
+            <div class="container py-5">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="text-white text-center ps-3">
+                    <div class="">
+                      <i
+                        class="fa fa-envelope social_icons fs-3 bg-white contact-icons-tem2"
+                      ></i>
+                    </div>
+                    <small class="mb-0">E-Mail Address</small>
+                    <p class="mb-0 special-font fs-5">goflixza@gmail.com</p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="text-white text-center ps-3">
+                    <div class="">
+                      <i
+                        class="fa fa-envelope social_icons fs-3 bg-white contact-icons-tem2"
+                      ></i>
+                    </div>
+                    <small class="mb-0">E-Mail Address</small>
+                    <p class="mb-0 special-font fs-5">goflixza@gmail.com</p>
+                  </div>
+                </div>
+                <div class="col-md-6 mt-4">
+                  <div class="text-white text-center ps-3">
+                    <div class="">
+                      <i
+                        class="fa fa-envelope social_icons fs-3 bg-white contact-icons-tem2"
+                      ></i>
+                    </div>
+                    <small class="mb-0">E-Mail Address</small>
+                    <p class="mb-0 special-font fs-5">goflixza@gmail.com</p>
+                  </div>
+                </div>
+                <div class="col-md-6 mt-4">
+                  <div class="text-white text-center ps-3">
+                    <div class="">
+                      <i
+                        class="fa fa-envelope social_icons fs-3 bg-white contact-icons-tem2"
+                      ></i>
+                    </div>
+                    <small class="mb-0">E-Mail Address</small>
+                    <p class="mb-0 special-font fs-5">goflixza@gmail.com</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Company Info -->
+          <section>
+            <div class="container py-5">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="text-center">
+                    <h1 class="special-font text-white">My Company</h1>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="company-slide text-white px-0">
+                  <div class="">
+                    <div class="row pt-3 align-items-center">
+                      <div class="col-md-12">
+                        <div class="text-center text-white">
+                          <div
+                            class="d-flex justify-content-center align-items-center"
+                          >
+                            <img
+                              class="img-fluid"
+                              width="70px"
+                              style="
+                                background: var(--template-two-color-white);
+                                padding: 12px;
+                                border-radius: 100%;
+                              "
+                              src="https://i.ibb.co/RvYHMvy/logo.png"
+                              alt=""
+                            />
+                          </div>
+                          <h5>Neez International Ltd.</h5>
+                          <p class="p-3 mb-0" style="text-align: justify">
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Velit numquam, rerum ea quibusdam nobis
+                            reprehenderit dolorum autem fuga labore. Lorem ipsum
+                            dolor sit amet consectetur adipisicing elit. Velit
+                            numquam, rerum ea quibusdam nobis reprehenderit
+                            dolorum autem fuga labore.
+                          </p>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="ps-4 pb-3">
+                          <p class="mb-0">
+                            <span
+                              ><i class="fa-solid fa-globe pe-3"></i
+                              >www.neezonline.com</span
+                            >
+                          </p>
+                          <p class="mb-0">
+                            <span
+                              ><i class="fa-solid fa-phone pe-3"></i>+1
+                              98656584584</span
+                            >
+                          </p>
+                          <p class="mb-0">
+                            <span
+                              ><i class="fa-regular fa-envelope pe-3"></i
+                              >info@flixzaglobal.com</span
+                            >
+                          </p>
+                          <p class="mb-0">
+                            <span
+                              ><i class="fa-solid fa-location pe-3"></i>Robert
+                              Robertson, 1234 NW Bobcat Lane, St. Robert, MO
+                              65584-5678</span
+                            >
+                          </p>
+                        </div>
+                      </div>
+                      <div
+                        class="col-md-6 align-items-center justify-content-center d-flex"
+                      >
+                        <div class="px-3">
+                          <a
+                            href=""
+                            class="btn company-btn-tem2 rounded-0 mb-2 w-100"
+                            >Facebook</a
+                          >
+                          <a
+                            href=""
+                            class="btn company-btn-tem2 rounded-0 mb-2 w-100"
+                            >Instagram</a
+                          >
+                          <a
+                            href=""
+                            class="btn company-btn-tem2 rounded-0 mb-2 w-100"
+                            >Linkedin</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Servies Box -->
+          <section>
+            <div class="container pb-5">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="text-center">
+                    <h1 class="special-font text-white">My Services</h1>
+                  </div>
+                </div>
+              </div>
+              <div class="service-slide pt-3">
+                <div class="d-flex">
+                  <div class="card w-50 me-2 rounded-0 border-0">
+                    <div class="card-body border-0">
+                      <div>
+                        <img
+                          class="card-img-top"
+                          src="img/demo-img/service1.jpg"
+                          alt=""
+                        />
+                      </div>
+                      <div class="mt-3 text-center">
+                        <h4
+                          class="mb-0 special-font"
+                          style="color: var(--template-two-color-primary)"
+                        >
+                          UI/UX Design
+                        </h4>
+                        <p class="">
+                          Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit. Perferendis alias nemo nihil sed odio optio
+                          dolorum ut voluptates rerum quas?
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card w-50 me-2 rounded-0 border-0">
+                    <div class="card-body border-0">
+                      <div>
+                        <img
+                          class="card-img-top"
+                          src="img/demo-img/service1.jpg"
+                          alt=""
+                        />
+                      </div>
+                      <div class="mt-3 text-center">
+                        <h4
+                          class="mb-0 special-font"
+                          style="color: var(--template-two-color-primary)"
+                        >
+                          UI/UX Design
+                        </h4>
+                        <p class="">
+                          Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit. Perferendis alias nemo nihil sed odio optio
+                          dolorum ut voluptates rerum quas?
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Product -->
+          <section>
+            <div class="container pb-5">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="text-center">
+                    <h1 class="special-font text-white">My Product</h1>
+                  </div>
+                </div>
+              </div>
+              <div class="row pt-3 product-slide">
+                <div class="col-md-4 me-2">
+                  <div class="card border-0 ms-2">
+                    <div class="card-body p-0">
+                      <div>
+                        <img
+                          class="img-fluid rounded-2 product-img"
+                          src="https://i5.walmartimages.com/seo/Women-s-Double-Layer-Micro-Inlaid-Zircon-Artificial-Diamond-Ring-Set_982efef2-d3aa-464a-99af-2fcf9bf356be.175f5939a7793421774a6cb59ae07d51.jpeg"
+                          alt=""
+                        />
+                      </div>
+                      <div
+                        class="d-flex justify-content-between px-4 pt-3 align-items-center product-content-tem2"
+                      >
+                        <h3 class="special-font mb-0">
+                          Ring Set Ring Set Ring Set Ring Set
+                        </h3>
+                        <div>
+                          <del class="special-font mb-0 text-danger fs-4"
+                            >$50</del
+                          >
+                          <h1 class="special-font mb-0">$50</h1>
+                        </div>
+                      </div>
+                      <p class="px-4 pb-3">For Order Please Fill Up The Form</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- <div class="col-md-4 me-2">
+                  <div class="card border-0">
+                    <div class="card-body p-0">
+                      <div>
+                        <img
+                          class="img-fluid rounded-2 product-img"
+                          src="https://images.othoba.com/images/thumbs/0551780_dairy_440.jpeg"
+                          alt=""
+                        />
+                      </div>
+                      <div
+                        class="d-flex justify-content-between px-4 py-3 align-items-center product-content-tem2 bg-white"
+                      >
+                        <h6 class="special-font mb-0">
+                          Milk Powder
+                        </h6>
+                        <h6 class="special-font mb-0">$50</h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 me-2">
+                  <div class="card border-0">
+                    <div class="card-body p-0">
+                      <div>
+                        <img
+                          class="img-fluid rounded-2 product-img"
+                          src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Grocery/GroceryNewLook/grocery_sbc_coffee_440x460.jpg"
+                          alt=""
+                        />
+                      </div>
+                      <div
+                        class="d-flex justify-content-between px-4 py-3 align-items-center product-content-tem2 bg-white"
+                      >
+                        <h6 class="special-font mb-0">Coffe Jar</h6>
+                        <h6 class="special-font mb-0">$50</h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 me-2">
+                  <div class="card border-0">
+                    <div class="card-body p-0">
+                      <div>
+                        <img
+                          class="img-fluid rounded-2 product-img"
+                          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrNnzUuAiT-4HHyEOQXIhAp2OeajcZ-54bDcSIBO2kz_WI9kUWWiJQ_V6zl9STtnu-Qg0&usqp=CAU"
+                          alt=""
+                        />
+                      </div>
+                      <div
+                        class="d-flex justify-content-between px-4 py-3 align-items-center product-content-tem2 bg-white"
+                      >
+                        <h6 class="special-font mb-0">Oil Bottle</h6>
+                        <h6 class="special-font mb-0">$50</h6>
+                      </div>
+                    </div>
+                  </div>
+                </div> -->
+              </div>
+            </div>
+          </section>
+          <!-- Galery -->
+          <section>
+            <div class="container pb-5">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="text-center">
+                    <h1 class="special-font text-white">My Gallery</h1>
+                  </div>
+                </div>
+              </div>
+              <div class="row pt-3">
+                <div class="col-lg-12">
+                  <div class="galery-slide">
+                    <div>
+                      <img
+                        class="w-100 img-fluid rounded-3"
+                        src="https://www.shutterbug.com/images/0616gallery07.jpg"
+                        alt=""
+                      />
+                    </div>
+                    <div>
+                      <img
+                        class="w-100 img-fluid rounded-3"
+                        src="https://www.shutterbug.com/images/0616gallery07.jpg"
+                        alt=""
+                      />
+                    </div>
+                    <div>
+                      <img
+                        class="w-100 img-fluid rounded-3"
+                        src="https://www.shutterbug.com/images/0616gallery07.jpg"
+                        alt=""
+                      />
+                    </div>
+                    <div>
+                      <img
+                        class="w-100 img-fluid rounded-3"
+                        src="https://www.shutterbug.com/images/0616gallery07.jpg"
+                        alt=""
+                      />
+                    </div>
+                    <div>
+                      <img
+                        class="w-100 img-fluid rounded-3"
+                        src="https://www.shutterbug.com/images/0616gallery07.jpg"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Testimonial -->
+          <section>
+            <div class="container pb-5">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="text-center">
+                    <h1 class="special-font text-white">My Testimonial</h1>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-10 col-offset-md-1 mx-auto">
+                  <div class="testimonial-slide">
+                    <div class="card p-0 bg-white border-0 p-0 mt-5">
+                      <div class="card-body rounded-0 border-0 d-flex">
+                        <div class="row align-items-center">
+                          <div class="col-sm-4">
+                            <div class="d-flex justify-content-center">
+                              <img
+                                class="img-fluid rounded-3"
+                                width="100px"
+                                height="100px"
+                                style="object-fit: fill"
+                                src="https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg"
+                                alt=""
+                              />
+                            </div>
+                            <h4 class="special-font text-center pt-3">
+                              Russel
+                            </h4>
+                            <div class="d-flex justify-content-center">
+                              <a href="" style="text-decoration: none">
+                                <i class="fa-solid fa-star text-warning"></i>
+                              </a>
+                              <a href="" style="text-decoration: none">
+                                <i class="fa-solid fa-star text-warning"></i>
+                              </a>
+                              <a href="" style="text-decoration: none">
+                                <i class="fa-solid fa-star text-warning"></i>
+                              </a>
+                            </div>
+                          </div>
+                          <div class="col-sm-8">
+                            <div>
+                              <p class="mb-0 text-justify">
+                                Lorem ipsum dolor, sit amet consectetur
+                                adipisicing elit. Voluptatibus expedita ratione
+                                perferendis laboriosam fuga rerum adipisci,
+                                harum molestias culpa dicta.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Testimonial -->
+          <section>
+            <div class="container pb-5">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="text-center">
+                    <h1 class="special-font text-white">QR Code</h1>
+                  </div>
+                </div>
+              </div>
+              <div class="row pt-3">
+                <div class="col-md-12">
+                  <div class="w-50 mx-auto">
+                    <img
+                      class="img-fluid"
+                      style="
+                        border-top-left-radius: 8px;
+                        border-top-right-radius: 8px;
+                      "
+                      src="https://www.gipper.com/hs-fs/hubfs/Imported_Blog_Media/6375e3_33ef90f5a9b74483b67eb2cb2f5e56b1~mv2.png"
+                      alt=""
+                    />
+                    <div>
+                      <a
+                        href=""
+                        class="btn btn-dark rounded-0 w-100 border-2 border-dark"
+                        >Download QR</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Business Hours -->
+          <section>
+            <div class="container pb-5">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="text-center">
+                    <h1 class="special-font text-white">Business Hours</h1>
+                  </div>
+                </div>
+              </div>
+              <div class="row pt-5">
+                <div class="col-md-6 mb-2">
+                  <div>
+                    <div class="text-center text-white">
+                      <i class="fa fa-calendar houricon"></i>
+                    </div>
+                    <div class="text-center">
+                      <p class="mb-0 text-white special-font">Monday</p>
+                      <p class="mb-0 text-white">10.00 AM - 10.00 PM</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-2">
+                  <div>
+                    <div class="text-center text-white">
+                      <i class="fa fa-calendar houricon"></i>
+                    </div>
+                    <div class="text-center">
+                      <p class="mb-0 text-white special-font">Tuesday</p>
+                      <p class="mb-0 text-white">10.00 AM - 10.00 PM</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-2">
+                  <div>
+                    <div class="text-center text-white">
+                      <i class="fa fa-calendar houricon"></i>
+                    </div>
+                    <div class="text-center">
+                      <p class="mb-0 text-white special-font">Wednesday</p>
+                      <p class="mb-0 text-white">10.00 AM - 10.00 PM</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-2">
+                  <div>
+                    <div class="text-center text-white">
+                      <i class="fa fa-calendar houricon"></i>
+                    </div>
+                    <div class="text-center">
+                      <p class="mb-0 text-white special-font">Thursday</p>
+                      <p class="mb-0 text-white">10.00 AM - 10.00 PM</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-2">
+                  <div>
+                    <div class="text-center text-white">
+                      <i class="fa fa-calendar houricon"></i>
+                    </div>
+                    <div class="text-center">
+                      <p class="mb-0 text-white special-font">Friday</p>
+                      <p class="mb-0 text-white">10.00 AM - 10.00 PM</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-2">
+                  <div>
+                    <div class="text-center text-white">
+                      <i class="fa fa-calendar houricon"></i>
+                    </div>
+                    <div class="text-center">
+                      <p class="mb-0 text-white special-font">Satarday</p>
+                      <p class="mb-0 text-white">10.00 AM - 10.00 PM</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Contact Area -->
+          <section>
+            <div class="container pb-5">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="text-center">
+                    <h1 class="special-font text-white">Contact</h1>
+                  </div>
+                </div>
+              </div>
+              <div class="row pt-4">
+                <div class="co-md-12">
+                  <form action="" method="post">
+                    <div class="row px-5">
+                      <div class="col-sm-6 mb-3">
+                        <input
+                          type="text"
+                          name=""
+                          class="form-control form-control-sm rounded-0 rounded-1 p-2"
+                          placeholder="Enter Your Names"
+                        />
+                      </div>
+                      <div class="col-sm-6 mb-3">
+                        <input
+                          type="email"
+                          name=""
+                          class="form-control form-control-sm rounded-0 rounded-1 p-2"
+                          placeholder="Enter Your Email"
+                        />
+                      </div>
+                      <div class="col-sm-12 mb-3">
+                        <input
+                          type="text"
+                          name=""
+                          class="form-control form-control-sm rounded-0 rounded-1 p-2"
+                          placeholder="Enter Your Subject"
+                        />
+                      </div>
+                      <div class="col-sm-12 mb-3">
+                        <input
+                          type="text"
+                          name=""
+                          class="form-control form-control-sm rounded-0 rounded-1 p-2"
+                          placeholder="Enter Your Phone"
+                        />
+                      </div>
+                      <div class="col-sm-12 mb-3">
+                        <textarea
+                          name=""
+                          class="form-control form-control-sm rounded-0 rounded-1 p-2"
+                          id=""
+                          rows="5"
+                        ></textarea>
+                      </div>
+                      <div class="col-lg-12 w-75 mx-auto px-2">
+                        <div class="d-flex justify-content-center">
+                          <button
+                            type="submit"
+                            class="btn company-btn-tem2 rounded-0 mb-2"
+                          >
+                            Send Message
+                            <i
+                              class="fa-solid fa-paper-plane"
+                              style="color: var(--template-two-color-primary)"
+                            ></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="row py-5 pb-0">
+                <div class="col-lg-12">
+                  <div class="text-center">
+                    <h1 class="special-font text-white">Share VCard</h1>
+                  </div>
+                </div>
+              </div>
+              <div class="row align-items-center">
+                <div class="col-sm-6 offse-sm-3 mx-auto">
+                  <div>
+                    <img
+                      class="img-fluid"
+                      src="https://i.ibb.co/44x9nc9/handrising.png"
+                      alt=""
+                    />
+                  </div>
+                  <div class="d-flex align-items-center justify-content-center">
+                    <button
+                      type="submit"
+                      class="btn company-btn-tem2 rounded-0 mb-2 p-3"
+                    >
+                      <i
+                        class="fa-solid fa-share-nodes"
+                        style="color: var(--template-two-color-primary)"
+                      ></i>
+                      Share This Vcard
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="footer-nav-area-tem2" id="footerNav">
+          <div class="container px-0">
+            <!-- Footer Content -->
+            <div class="footer-nav-tem2 position-relative">
+              <ul
+                class="h-100 d-flex align-items-center justify-content-between ps-0"
+              >
+                <li class="active">
+                  <a href="#">
+                    <i class="fa-solid fa-qrcode"></i>
+                    <span>QR</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="copy-link"
+                    data-link="https://another-example.com"
+                  >
+                    <i class="fa-solid fa-copy"></i>
+                    <span>Copy Link</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="fa-solid fa-file-arrow-down"></i>
+                    <span>Save Contact</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- On Page Load Show Modal -->
+      <!-- Modal -->
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="myModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog load-modal modal-dialog-centered">
+          <div class="modal-content rounded-0">
+            <div class="modal-header bg-dark rounded-0 text-white">
+              <h5 class="modal-title" id="exampleModalLabel">Welcome</h5>
+              <button
+                type="button"
+                class="btn-close text-white close-btns"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              This is a modal that appears on page load.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- On Page Load Show Modal End -->
     </main>
-    <!-- Bootstrap JavaScript Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
-    <script src="https://kit.fontawesome.com/4cba8ce13c.js"></script>
-    <!-- Slick JS -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+    <script
+      src="https://kit.fontawesome.com/69b7156a94.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
+
+    <!-- On Page Load Show Modal -->
     <script>
-        // Initialize Slick Slider
-        $(document).ready(function() {
-            $(".slick-slider").slick({
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                autoplay: true,
-                draggable: false,
-                autoplaySpeed: 2000, // Adjust autoplay speed in milliseconds
-            });
-        });
+      var myModal = new bootstrap.Modal(document.getElementById("myModal"), {
+        keyboard: false, // Optional: Disable closing modal with keyboard Esc key
+      });
+      $(document).ready(function () {
+        myModal.show(); // Show the modal on document ready
+      });
     </script>
+    <!-- Copy On Click -->
     <script>
-        'use strict';
-
-        function downloadToFile(content, filename, contentType) {
-            const a = document.createElement('a');
-            const file = new Blob([content], {
-                type: contentType
-            });
-
-            a.href = URL.createObjectURL(file);
-            a.download = filename;
-            a.click();
-
-            URL.revokeObjectURL(a.href);
-        }
-
-        function getBase64Image(imgUrl, callback) {
-            const img = new Image();
-            img.crossOrigin = 'Anonymous';
-            img.onload = () => {
-                const canvas = document.createElement('canvas');
-                canvas.width = img.width;
-                canvas.height = img.height;
-                const ctx = canvas.getContext('2d');
-                ctx.drawImage(img, 0, 0);
-                const dataURL = canvas.toDataURL('image/jpeg');
-                callback(dataURL.replace(/^data:image\/(png|jpeg);base64,/, ''));
-            };
-            img.src = imgUrl;
-        }
-
-        const makeVCardVersion = () => `VERSION:3.0`;
-        const makeVCardInfo = (lastName, firstName) => `N:${lastName};${firstName};;;`;
-        const makeVCardName = (firstName, lastName) => `FN:${firstName} ${lastName}`;
-        const makeVCardOrg = (org) => `ORG:${org}`;
-        const makeVCardTitle = (title) => `TITLE:${title}`;
-        const makeVCardPhoto = (imgBase64) => `PHOTO;ENCODING=b;TYPE=JPEG:${imgBase64}`;
-        const makeVCardTel = (phone) => `TEL;TYPE=CELL:${phone}`;
-        const makeVCardAdr = (addressLine1, addressLine2) => `ADR;TYPE=HOME:;;${addressLine1};${addressLine2};;;;`;
-        const makeVCardEmail = (email) => `EMAIL:${email}`;
-        const makeVCardUrl = (url) => `URL:${url}`;
-        const makeVCardSocialProfile = (type, url) => `X-SOCIALPROFILE;TYPE=${type}:${url}`;
-        const makeVCardTimeStamp = () => `REV:${new Date().toISOString()}`;
-
-        function makeVCard(profileImageBase64) {
-            const firstName = '{{ optional($nfc_card->nfcData)->first_name }}';
-            const lastName = '{{ optional($nfc_card->nfcData)->last_name }}';
-            const designation = '{{ optional($nfc_card->nfcData)->designation }}';
-            const phone = '{{ $nfc_card->nfcData->phone_personal }}';
-            const email = '{{ $nfc_card->nfcData->email_personal }}';
-            const addressLine1 = '{{ $nfc_card->nfcData->address_line_one }}';
-            const addressLine2 = '{{ $nfc_card->nfcData->address_line_two }}';
-            const linkedin = '{{ $nfc_card->nfcData->linkedin_url }}';
-
-            let vcard = `BEGIN:VCARD\n${makeVCardVersion()}\n`;
-            vcard += `${makeVCardInfo(lastName, firstName)}\n`;
-            vcard += `${makeVCardName(firstName, lastName)}\n`;
-            vcard += `${makeVCardTitle(designation)}\n`;
-
-            if (profileImageBase64) {
-                vcard += `${makeVCardPhoto(profileImageBase64)}\n`;
-            }
-
-            vcard += `${makeVCardTel(phone)}\n`;
-
-            if (addressLine1 || addressLine2) {
-                vcard += `${makeVCardAdr(addressLine1, addressLine2)}\n`;
-            }
-
-            if (email) {
-                vcard += `${makeVCardEmail(email)}\n`;
-            }
-
-            if (linkedin) {
-                vcard += `${makeVCardUrl(linkedin)}\n`;
-                vcard += `${makeVCardSocialProfile('linkedin', linkedin)}\n`;
-            }
-
-            vcard += `${makeVCardTimeStamp()}\nEND:VCARD`;
-
-            return vcard;
-        }
-
-        function handleContactButtonClick(event, isMobile) {
-            event.preventDefault(); // Prevent default link behavior
-
-            const profileImage = '{{ asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) }}';
-
-            getBase64Image(profileImage, (base64Image) => {
-                const vcard = makeVCard(base64Image);
-
-                if (isMobile) {
-                    // Open vCard details in contact app for mobile
-                    const encodedVcfContent = encodeURIComponent(vcard);
-                    const uri = 'data:text/vcard;charset=utf-8,' + encodedVcfContent;
-                    window.location.href = uri;
-                } else {
-                    // Download vCard for PC
-                    downloadToFile(vcard, 'contact.vcf', 'text/vcard');
-                }
-            });
-        }
-
-        document.querySelector('.nfc_contact_btn_pc').addEventListener('click', (event) => {
-            handleContactButtonClick(event, false);
+      document.addEventListener("DOMContentLoaded", (event) => {
+        document.querySelectorAll(".copy-link").forEach((element) => {
+          element.addEventListener("click", (event) => {
+            event.preventDefault();
+            const link = event.currentTarget.getAttribute("data-link");
+            navigator.clipboard
+              .writeText(link)
+              .then(() => {
+                alert("Link copied to clipboard!");
+              })
+              .catch((err) => {
+                console.error("Failed to copy: ", err);
+              });
+          });
         });
-
-        document.querySelector('.nfc_contact_btn_mobile').addEventListener('click', (event) => {
-            handleContactButtonClick(event, true);
-        });
+      });
     </script>
-</body>
-
+    <!-- All Slider -->
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $(".company-slide").slick({
+          infinite: true, // Infinite looping
+          speed: 500, // Animation speed in milliseconds
+          slidesToShow: 1, // Number of slides to show at once
+          slidesToScroll: 1, // Number of slides to scroll at once
+          autoplay: true, // Enable autoplay
+          autoplaySpeed: 2000, // Autoplay speed in milliseconds
+          gap: 10,
+          dots: true,
+          arrows: false,
+          prevArrow:
+            '<button type="button" class="slick-prev"><i class="fas fa-chevron-left"></i></button>',
+          nextArrow:
+            '<button type="button" class="slick-next"><i class="fas fa-chevron-right"></i></button>',
+        });
+        $(".service-slide").slick({
+          infinite: true, // Infinite looping
+          speed: 500, // Animation speed in milliseconds
+          slidesToShow: 1, // Number of slides to show at once
+          slidesToScroll: 1, // Number of slides to scroll at once
+          autoplay: true, // Enable autoplay
+          autoplaySpeed: 2000, // Autoplay speed in milliseconds
+          arrows: false, // Show next/prev arrows
+          gap: 10,
+          dots: false,
+          prevArrow:
+            '<button type="button" class="slick-prev"><i class="fa fa-chevron-left"></i></button>',
+          nextArrow:
+            '<button type="button" class="slick-next"><i class="fa fa-chevron-right"></i></button>',
+        });
+        $(".product-slide").slick({
+          infinite: true,
+          speed: 500,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          autoplay: true,
+          autoplaySpeed: 2000,
+          arrows: false,
+          dots: false,
+        });
+        $(".galery-slide").slick({
+          infinite: true,
+          speed: 500,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          autoplay: true,
+          autoplaySpeed: 2000,
+          arrows: false,
+          dots: false,
+        });
+        $(".testimonial-slide").slick({
+          infinite: true,
+          speed: 500,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          autoplay: true,
+          autoplaySpeed: 2000,
+          arrows: false,
+          dots: false,
+        });
+      });
+    </script>
+  </body>
 </html>

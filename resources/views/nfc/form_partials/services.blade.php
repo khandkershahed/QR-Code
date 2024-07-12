@@ -105,7 +105,7 @@
                         <button type="submit" onclick="submitServiceForm()"
                             class="kt_docs_formvalidation_text_submit btn btn-primary">
                             <span class="indicator-label">
-                                Create Service
+                                Create
                             </span>
                             <span class="indicator-progress">
                                 Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>

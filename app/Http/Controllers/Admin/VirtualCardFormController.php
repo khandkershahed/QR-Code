@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Storage;
 use Stevebauman\Location\Facades\Location;
 use App\Http\Requests\Admin\NfcCardRequest;
 use App\Models\NfcBanner;
+use App\Models\NfcGallery;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class VirtualCardFormController extends Controller
@@ -636,5 +637,77 @@ class VirtualCardFormController extends Controller
         $nfc_card = NfcCard::with('nfcTestimonial')->where('id', $card_id)->first();
         $view = view('nfc.form_partials.testimonials', compact('nfc_card'))->render();
         return response()->json(['testimonial_delete_view' => $view]);
+    }
+
+    public function galleryStore(Request $request)
+    {
+
+        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
+        $card_id = $request->card_id;
+        $nfc_card = NfcCard::findOrFail($card_id);
+
+        $files = [
+            'gallery_attachment' => $request->file('gallery_attachment'),
+        ];
+
+        $filePath = 'public/nfc/gallery/';
+        $uploadedFiles = [];
+
+        foreach ($files as $key => $file) {
+            if (!empty($file)) {
+                $uploadedFiles[$key] = customUpload($file, $filePath, $name = $nfc_card->code . '_' . $key);
+                if ($uploadedFiles[$key]['status'] === 0) {
+                    return redirect()->back()->with('error', $uploadedFiles[$key]['error_message']);
+                }
+            } else {
+                $uploadedFiles[$key] = ['status' => 0];
+            }
+        }
+
+        // Update NfcData
+        $nfc_gallery = NfcGallery::create([
+            'card_id'               => $request->card_id,
+            'gallery_title'         => $request->gallery_title,
+            'gallery_type'          => $request->gallery_type,
+            'gallery_link'          => $request->gallery_link,
+            'gallery_attachment'    => $uploadedFiles['gallery_attachment']['status'] == 1 ? $uploadedFiles['gallery_attachment']['file_name'] : null,
+
+        ]);
+
+        $nfc_card = NfcCard::with(
+            'nfcGallery',
+        )->where('id', $card_id)->first();
+
+        $view = view('nfc.form_partials.galleries', compact('nfc_card'))->render();
+
+        return response()->json(['gallery_view' => $view]);
+    }
+
+    public function galleryDestroy(string $id)
+    {
+        $nfc_gallery = NfcGallery::findOrFail($id);
+        $card_id = $nfc_gallery->card_id;
+        $nfc_gallery->delete();
+        $nfc_card = NfcCard::with('nfcGallery')->where('id', $card_id)->first();
+        $view = view('nfc.form_partials.galleries', compact('nfc_card'))->render();
+        return response()->json(['gallery_delete_view' => $view]);
+    }
+
+    public function templateStore(Request $request)
+    {
+
+        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
+        $card_id = $request->card_id;
+        $nfc_card = NfcCard::findOrFail($card_id);
+
+        $nfc_card->update([
+            'nfc_template'   => $request->nfc_template,
+        ]);
+
+        $nfc_card = NfcCard::where('id', $card_id)->first();
+
+        $template_view = view('nfc.form_partials.vcard_template', compact('nfc_card'))->render();
+
+        return response()->json(['template_view' => $template_view]);
     }
 }
