@@ -371,7 +371,7 @@
 
 <body>
     <main>
-        <div class="mobile-frame" style="background-image: url(./Back-assets/bg.png)">
+        <div class="mobile-frame" style="background-image: url(https://i.ibb.co/vZh8yjs/bg.png)">
             <div class="page-content-wrapper">
                 <!-- Banner -->
                 <section>
@@ -394,6 +394,7 @@
                           0 0
                         );
                       "
+                                        {{-- src="{{ !empty($nfc_card->banner_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card)->banner_image)) ? asset('storage/nfc/' . optional($nfc_card)->banner_image) : asset('frontend/images/no_image.png') }}" --}}
                                         src="{{ !empty($nfc_card->banner_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card)->banner_image)) ? asset('storage/nfc/' . optional($nfc_card)->banner_image) : asset('frontend/images/no_image.png') }}"
                                         alt="" />
                                     <div class="overlay"
