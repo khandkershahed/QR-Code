@@ -146,16 +146,29 @@ class HomeController extends Controller
     public function nfcPage(Request $request, string $name)
     {
         $agent = new Agent();
-        if ($agent->isDesktop()) {
-            $user_device = $agent->browser();
-        } else {
-            $user_device = $agent->device();
-        }
+        $user_device = $agent->isDesktop() ? $agent->browser() : $agent->device();
 
         $name = trim($name);
 
-        $data = [
-            'nfc_card' => NfcCard::with(
+        // Try an exact match first
+        $nfc_card = NfcCard::with(
+            'nfcData',
+            'nfcCompany',
+            'nfcGallery',
+            'nfcProduct',
+            'nfcService',
+            'nfcTestimonial',
+            'nfcMessages',
+            'nfcScan',
+            'virtualCard',
+            'nfcBanner',
+            'nfcSeo',
+            'shippingDetails'
+        )->where('url_alias', $name)->first();
+
+        // If not found, try partial match
+        if (!$nfc_card) {
+            $nfc_card = NfcCard::with(
                 'nfcData',
                 'nfcCompany',
                 'nfcGallery',
@@ -168,30 +181,34 @@ class HomeController extends Controller
                 'nfcBanner',
                 'nfcSeo',
                 'shippingDetails'
-            )->where('url_alias', 'LIKE', '%' . $name . '%')->first(),
-        ];
+            )->where('url_alias', 'LIKE', '%' . $name . '%')->first();
+        }
 
-        if (!empty($data['nfc_card'])) {
+        if ($nfc_card) {
             NfcScan::create([
-                'nfc_id'      => $data['nfc_card']->id,
-                'nfc_code'    => $data['nfc_card']->code,
+                'nfc_id'      => $nfc_card->id,
+                'nfc_code'    => $nfc_card->code,
                 'ip_address'  => $request->ip(),
                 'user_device' => $user_device,
             ]);
 
+            $data = ['nfc_card' => $nfc_card];
 
-            if ($data['nfc_card']->nfc_template == 'template-one') {
-                return view('frontend.pages.nfc.template_one', $data);
-            } elseif ($data['nfc_card']->nfc_template == 'template-two') {
-                return view('frontend.pages.nfc.template_two', $data);
-            } elseif ($data['nfc_card']->nfc_template == 'template-three') {
-                return view('frontend.pages.nfc.template_three', $data);
-            } elseif ($data['nfc_card']->nfc_template == 'template-four') {
-                return view('frontend.pages.nfc.template_four', $data);
-            } elseif ($data['nfc_card']->nfc_template == 'template-five') {
-                return view('frontend.pages.nfc.template_five', $data);
-            } elseif ($data['nfc_card']->nfc_template == 'template-six') {
-                return view('frontend.pages.nfc.template_six', $data);
+            switch ($nfc_card->nfc_template) {
+                case 'template-one':
+                    return view('frontend.pages.nfc.template_one', $data);
+                case 'template-two':
+                    return view('frontend.pages.nfc.template_two', $data);
+                case 'template-three':
+                    return view('frontend.pages.nfc.template_three', $data);
+                case 'template-four':
+                    return view('frontend.pages.nfc.template_four', $data);
+                case 'template-five':
+                    return view('frontend.pages.nfc.template_five', $data);
+                case 'template-six':
+                    return view('frontend.pages.nfc.template_six', $data);
+                default:
+                    return redirect()->route('homePage')->with('error', 'Template not found');
             }
         } else {
             return redirect()->route('homePage')->with('error', 'Page not found');
