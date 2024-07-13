@@ -108,20 +108,36 @@
                                 </a>
                                 <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
                                     data-kt-menu="true" style="">
+                                    @if (strpos(Route::current()->getName(), 'user.') === 0)
+                                        <div class="menu-item px-3">
 
-                                    <div class="menu-item px-3">
+                                            <a href="{{ route('user.nfc-card.show', $nfc_card->code) }}"
+                                                class="menu-link px-3">
+                                                All messages
+                                            </a>
+                                        </div>
+                                        <div class="menu-item px-3">
+                                            <a href="{{ route('user.nfc-card.edit', $nfc_card->code) }}"
+                                                class="menu-link px-3">
+                                                Edit
+                                            </a>
+                                        </div>
+                                    @else
+                                        <div class="menu-item px-3">
 
-                                        <a href="{{ route('user.nfc-card.show', $nfc_card->code) }}"
-                                            class="menu-link px-3">
-                                            All messages
-                                        </a>
-                                    </div>
-                                    <div class="menu-item px-3">
-                                        <a href="{{ route('user.nfc-card.edit', $nfc_card->code) }}"
-                                            class="menu-link px-3">
-                                            Edit
-                                        </a>
-                                    </div>
+                                            <a href="{{ route('admin.nfc-card.show', $nfc_card->code) }}"
+                                                class="menu-link px-3">
+                                                All messages
+                                            </a>
+                                        </div>
+                                        <div class="menu-item px-3">
+                                            <a href="{{ route('admin.nfc-card.edit', $nfc_card->code) }}"
+                                                class="menu-link px-3">
+                                                Edit
+                                            </a>
+                                        </div>
+                                    @endif
+
                                 </div>
                             </td>
                         </tr>

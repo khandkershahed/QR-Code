@@ -5,9 +5,10 @@
         <div class="fv-row col-lg-12 mb-7">
             <x-metronic.label class="required fw-semibold fs-6 mb-2">Terms & Condition</x-metronic.label>
             <div class="py-5" data-bs-theme="light">
-                <textarea name="terms_condition" class="kt_docs_ckeditor_classic">
+                <textarea name="terms_condition" class="form-control" rows="10">{{ optional($nfc_card->nfcData)->terms_condition }}</textarea>
+                {{-- <textarea name="terms_condition" class="terms_editor">
                     {{ optional($nfc_card->nfcData)->terms_condition }}
-                </textarea>
+                </textarea> --}}
             </div>
         </div>
     </div>
@@ -52,6 +53,7 @@
                         terms_container.empty();
                         terms_container.html(response.terms_view);
                         toastr.success('Data saved successfully!', 'Success');
+
                     } else {
                         toastr.error('Unexpected response format.', 'Error');
                     }
@@ -66,5 +68,10 @@
                 }
             });
         }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new CKEditorInitializer('.terms_editor');
+        });
     </script>
 @endpush

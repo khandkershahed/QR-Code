@@ -106,7 +106,7 @@ Route::middleware('auth:admin', 'role:admin')->prefix('admin')->name('admin.')->
     );
 
     Route::get('template/qrcode', [QrCodeController::class, 'qrTemplate'])->name('qr.template');
-    Route::get('template/nfc-card', [NfcCardController::class, 'nfcTemplate'])->name('nfc.template');
+    Route::get('template/nfc-card', [VirtualCardController::class, 'nfcTemplate'])->name('nfc.template');
 
     Route::controller(DynamicCssController::class)->group(function () {
         Route::get('/dynamic-css', 'index')->name('css.index');
@@ -137,8 +137,6 @@ Route::middleware('auth:admin', 'role:admin')->prefix('admin')->name('admin.')->
     Route::post('/restaurant-category/destroy', [RestaurantCategoryController::class, 'destroyCategory'])->name('restaurant-category.destroy');
 
     Route::get('qrcode/summary/{id}', [QrCodeController::class, 'qrSummary'])->name('qr.summary');
-    Route::get('template/qrcode', [QrCodeController::class, 'qrTemplate'])->name('qr.template');
-    Route::get('template/nfc-card', [NfcCardController::class, 'nfcTemplate'])->name('nfc.template');
     Route::post('/update-nfc-session', [NfcCardController::class, 'updateNFCTemplateSession'])->name('updateNfcSession');
 
     Route::get('qrcode/preview', [QrCodeController::class, 'qrPreview'])->name('qr.preview');

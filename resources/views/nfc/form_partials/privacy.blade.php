@@ -5,9 +5,8 @@
     <div class="row mt-10">
         <div class="fv-row col-lg-12 mb-7">
             <x-metronic.label class="required fw-semibold fs-6 mb-2">Privacy Policy</x-metronic.label>
-            <textarea name="terms_condition" class="kt_docs_ckeditor_classic">
-                {{ optional($nfc_card->nfcData)->privacy_policy }}
-            </textarea>
+            <textarea name="privacy_policy" class="form-control" rows="10">{{ optional($nfc_card->nfcData)->privacy_policy }}</textarea>
+            {{-- <textarea name="privacy_policy" class="privacy_editor">{!! optional($nfc_card->nfcData)->privacy_policy !!}</textarea> --}}
         </div>
     </div>
 
@@ -31,7 +30,6 @@
             var formData = new FormData(form[0]);
             var privacy_container = $('.privacy_container');
 
-            // Optionally disable the submit button to prevent multiple submissions
             var submitButton = form.find('.kt_docs_formvalidation_text_submit');
             submitButton.prop('disabled', true).addClass('disabled');
 
@@ -43,7 +41,6 @@
                 contentType: false,
                 processData: false,
                 beforeSend: function() {
-                    // Show loading spinner or indicator
                     submitButton.find('.indicator-label').hide();
                     submitButton.find('.indicator-progress').show();
                 },
@@ -54,19 +51,15 @@
 
                         privacy_container.empty();
                         privacy_container.html(response.privacy_view);
+                        initializeCKEditor();
                         toastr.success('Data saved successfully!', 'Success');
                     } else {
                         console.error('Unexpected response format:', response);
                         toastr.error('Unexpected response format.', 'Error');
                     }
-
-                    // Optionally reset the form or perform other actions
-                    // form.trigger('reset');
                 },
                 error: function(xhr, status, error) {
-                    // Handle error response
                     console.error('Error:', error);
-
                     toastr.error('An error occurred while saving data.', 'Error');
                 },
                 complete: function() {
@@ -76,5 +69,19 @@
                 }
             });
         }
+
+        function initializeCKEditor() {
+            if (typeof CKEDITOR !== 'undefined') {
+                new CKEditorInitializer('.privacy_editor');
+            } else {
+                document.addEventListener('DOMContentLoaded', () => {
+                    new CKEditorInitializer('.privacy_editor');
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            new CKEditorInitializer('.privacy_editor');
+        });
     </script>
 @endpush

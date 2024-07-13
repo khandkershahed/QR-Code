@@ -55,7 +55,7 @@
             <div class="col-lg-12 mb-7">
                 <x-metronic.label for="logo"
                     class="fw-semibold fs-6 mb-2">{{ __('Description') }}</x-metronic.label>
-                <textarea name="bio_description" class="form-control form-control-solid form-control-sm" rows="11">{{ old('bio_description') }}</textarea>
+                <textarea name="bio_description" class="form-control form-control-solid form-control-sm" rows="11">{{ optional($nfc_card)->bio_description}}</textarea>
             </div>
         </div>
     </div>
@@ -132,10 +132,12 @@
             <x-metronic.label class="fw-semibold fs-6 mb-2">Default
                 Language</x-metronic.label>
             <select class="form-select" data-control="select2" data-placeholder="English" name="default_language"
-                :value="optional($nfc_card - > nfcData) - > default_language">
+                :value="optional($nfc_card->nfcData)->default_language">
                 <option></option>
-                <option value="1">China</option>
-                <option value="2">Arabic</option>
+                <option value="english" selected>English</option>
+                <option value="china">China</option>
+                <option value="arabic">Arabic</option>
+                <option value="bangla">Bangla</option>
             </select>
         </div>
     </div>
