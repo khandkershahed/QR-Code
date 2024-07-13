@@ -20,7 +20,14 @@
                                 <div class="row">
                                     <div class="fv-row mb-4 col-lg-5">
                                         <x-metronic.label class="required fw-semibold fs-6 mb-2">URL
-                                            Alias</x-metronic.label>
+                                            Alias 
+                                            <span class="m2-1" data-bs-toggle="tooltip"
+                            aria-label="Your billing numbers will be calculated based on your API method"
+                            data-bs-original-title="Your billing numbers will be calculated based on your API method"
+                            data-kt-initialized="1">
+                            <i class="fa-solid fa-circle-info fs-7"></i><span class="path1"></span><span
+                                    class="path2"></span><span class="path3"></span></i> </span>
+                                        </x-metronic.label>
                                         <div class="input-group">
                                             <x-metronic.input type="text"
                                                 class="form-control form-control-solid form-control-sm" name="url_alias"

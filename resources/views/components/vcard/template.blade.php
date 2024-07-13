@@ -75,11 +75,16 @@
 
 
 <div class="row mt-10">
+    @php
+        $counter = 0;
+    @endphp
+
     @foreach ($templates as $template)
         <div class="col-lg-3 position-relative">
             <div>
                 <input type="radio" class="btn-check template-btn-check" name="nfc_template"
-                    value="{{ $template['value'] }}" id="{{ $template['value'] }}" @checked($template['value'] == $selectedTemplate)/>
+                    value="{{ $template['value'] }}" id="{{ $template['value'] }}"
+                    @if ($counter === 0) checked @endif @checked($template['value'] == $selectedTemplate) />
                 <label
                     class="btn template-btn btn-outline btn-outline-dashed btn-active-light-primary custom-active p-4 d-flex align-items-center mb-5 custom-radio"
                     for="{{ $template['value'] }}" style="">
@@ -89,5 +94,8 @@
                 </label>
             </div>
         </div>
+        @php
+            $counter++;
+        @endphp
     @endforeach
 </div>

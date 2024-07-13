@@ -1,12 +1,18 @@
-<form class="general_info_form form" method="POST" action="{{ route('nfc.general_info.add') }}" autocomplete="off" enctype="multipart/form-data">
+<form class="general_info_form form" method="POST" action="{{ route('nfc.general_info.add') }}" autocomplete="off"
+    enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="card_id" value="{{ $nfc_card->id }}">
     <div class="row">
         <div class="col-lg-12 mb-5">
             <div class="row">
                 <div class="fv-row mb-4 col-lg-5">
-                    <x-metronic.label class="required fw-semibold fs-6 mb-2">URL
-                        Alias</x-metronic.label>
+                    <x-metronic.label class="required fw-semibold fs-6 mb-2">Page Name/URL
+                        Alias <span class="m2-1" data-bs-toggle="tooltip"
+                            aria-label="Enter a unique alias for your URL. This alias will be used as the custom URL for your vCard page. Make sure it is simple and easy to remember."
+                            data-bs-original-title="Enter a unique alias for your URL. This alias will be used as the custom URL for your vCard page. Make sure it is simple and easy to remember."
+                            data-kt-initialized="1">
+                            <i class="fa-solid fa-circle-info fs-7"></i><span class="path1"></span><span
+                                class="path2"></span><span class="path3"></span></i> </span></x-metronic.label>
                     <div class="input-group">
                         <x-metronic.input type="text" class="form-control form-control-solid form-control-sm"
                             name="url_alias" id="basic-url" required aria-describedby="basic-addon3"
@@ -33,7 +39,7 @@
                 </div>
                 <div class="col-lg-12 mb-5">
                     <x-metronic.label for="profile_image"
-                        class="fw-semibold fs-6 mb-2">{{ __('Profile Image') }}</x-metronic.label>
+                        class="fw-semibold fs-6 mb-2 required">{{ __('Profile Image') }}</x-metronic.label>
                     <x-metronic.file-input id="profile_image" name="profile_image"
                         class="form-control form-control-solid form-control-sm" :source="optional($nfc_card)->profile_image
                             ? asset('storage/nfc/' . optional($nfc_card)->profile_image)
@@ -43,11 +49,12 @@
                 </div>
                 <div class="col-lg-12 mb-5">
                     <x-metronic.label for="banner_image"
-                        class="fw-semibold fs-6 mb-2">{{ __('Cover Image ') }}</x-metronic.label>
+                        class="fw-semibold fs-6 mb-2 required">{{ __('Cover Image ') }}</x-metronic.label>
                     <x-metronic.file-input id="banner_image" name="banner_image"
                         class="form-control form-control-solid form-control-sm" :source="optional($nfc_card)->banner_image
                             ? asset('storage/nfc/' . optional($nfc_card)->banner_image)
-                            : ''" :value="optional($nfc_card)->banner_image"></x-metronic.file-input>
+                            : ''"
+                        :value="optional($nfc_card)->banner_image"></x-metronic.file-input>
                 </div>
             </div>
         </div>
@@ -97,8 +104,8 @@
         <div class="fv-row col-lg-4 col-6 mb-4">
             <x-metronic.label class="fw-semibold fs-6 mb-2">Alternative
                 Phone</x-metronic.label>
-            <x-metronic.input type="text" class="form-control form-control-solid form-control-sm" name="phone_work"
-                :value="optional($nfc_card->nfcData)->phone_work" placeholder="(+1 05)" />
+            <x-metronic.input type="text" class="form-control form-control-solid form-control-sm"
+                name="phone_work" :value="optional($nfc_card->nfcData)->phone_work" placeholder="(+1 05)" />
         </div>
         <div class="fv-row col-lg-4 col-6 mb-4">
             <x-metronic.label class="fw-semibold fs-6 mb-2">Location</x-metronic.label>
@@ -142,11 +149,11 @@
 
     <div class="d-flex justify-content-end">
         <button type="submit" onclick="submitGeneralInfoForm()"
-            class="kt_docs_formvalidation_text_submit btn btn-primary mt-5">
+            class="kt_docs_formvalidation_text_submit btn btn-primary mt-5" id="submitBtn">
             <span class="indicator-label">
                 Save Data
             </span>
-            <span class="indicator-progress">
+            <span class="indicator-progress" style="display: none;">
                 Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
             </span>
         </button>
@@ -155,60 +162,135 @@
 
 @push('scripts')
     <script>
-        function submitGeneralInfoForm() {
-            var form = $('.general_info_form');
-            var url = form.attr('action');
-            var formData = new FormData(form[0]);
-            var general_info_container = $('.general_info_container');
+        $(document).ready(function() {
+            function submitGeneralInfoForm(e) {
+                e.preventDefault(); // Prevent default form submission
 
-            // Optionally disable the submit button to prevent multiple submissions
-            var submitButton = form.find('.kt_docs_formvalidation_text_submit');
-            submitButton.prop('disabled', true).addClass('disabled');
+                var form = $('.general_info_form');
+                var url = form.attr('action');
+                var formData = new FormData(form[0]);
+                var general_info_container = $('.general_info_container');
+                var submitButton = form.find('.kt_docs_formvalidation_text_submit');
+                var isValid = true;
 
-            $.ajax({
-                type: 'POST',
-                url: url,
-                data: formData,
-                cache: false,
-                contentType: false,
-                processData: false,
-                beforeSend: function() {
-                    // Show loading spinner or indicator
-                    submitButton.find('.indicator-label').hide();
-                    submitButton.find('.indicator-progress').show();
-                },
-                success: function(response) {
-                    // Log the entire response to inspect it
-                    console.log('Form submitted successfully:', response);
+                // Remove any existing error messages and red borders
+                form.find('.error-message').remove();
+                form.find('.form-control').removeClass('is-invalid');
 
-                    if (response.general_info_view) {
-                        console.log('Updating container with new HTML');
-
-                        general_info_container.empty();
-                        general_info_container.html(response.general_info_view);
-                        toastr.success('Data saved successfully!', 'Success');
-                    } else {
-                        console.error('Unexpected response format:', response);
-                        toastr.error('Unexpected response format.', 'Error');
+                // Validate each required field
+                form.find(
+                    '[name="url_alias"], [name="vcard_name"], [name="first_name"], [name="last_name"], [name="profile_image"], [name="banner_image"], [name="email_personal"], [name="phone_personal"]'
+                ).each(function() {
+                    var fieldValue = $(this).val().trim();
+                    if (!fieldValue) {
+                        // Show error message for the current field
+                        $(this).addClass('is-invalid');
+                        $(this).after('<p class="error-message text-danger">This field is required.</p>');
+                        isValid = false;
                     }
+                });
 
-                    // Optionally reset the form or perform other actions
-                    // form.trigger('reset');
-                },
-                error: function(xhr, status, error) {
-                    // Handle error response
-                    console.error('Error:', error);
+                if (isValid) {
+                    // Optionally disable the submit button to prevent multiple submissions
+                    submitButton.prop('disabled', true).addClass('disabled');
 
-                    // Show error message using a toaster or alert
-                    toastr.error('An error occurred while saving data.', 'Error');
-                },
-                complete: function() {
-                    // Re-enable the submit button and hide the loading indicator
-                    submitButton.prop('disabled', false).removeClass('disabled');
-                    submitButton.find('.indicator-label').show();
-                    submitButton.find('.indicator-progress').hide();
+                    $.ajax({
+                        type: 'POST',
+                        url: url,
+                        data: formData,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        beforeSend: function() {
+                            // Show loading spinner or indicator
+                            submitButton.find('.indicator-label').hide();
+                            submitButton.find('.indicator-progress').show();
+                        },
+                        success: function(response) {
+                            // Log the entire response to inspect it
+                            console.log('Form submitted successfully:', response);
+
+                            if (response.general_info_view) {
+                                console.log('Updating container with new HTML');
+                                general_info_container.empty();
+                                general_info_container.html(response.general_info_view);
+                                toastr.success('Data saved successfully!', 'Success');
+                            } else {
+                                console.error('Unexpected response format:', response);
+                                toastr.error('Unexpected response format.', 'Error');
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            // Handle error response
+                            console.error('Error:', error);
+                            toastr.error('An error occurred while saving data.', 'Error');
+                        },
+                        complete: function() {
+                            // Re-enable the submit button and hide the loading indicator
+                            submitButton.prop('disabled', false).removeClass('disabled');
+                            submitButton.find('.indicator-label').show();
+                            submitButton.find('.indicator-progress').hide();
+                        }
+                    });
+                } else {
+                    // Show SweetAlert error message for validation errors
+                    Swal.fire({
+                        text: 'Some input fields are not filled up!',
+                        icon: 'error',
+                        buttonsStyling: false,
+                        confirmButtonText: 'Ok, got it!',
+                        customClass: {
+                            confirmButton: 'btn btn-primary'
+                        }
+                    });
+                }
+            }
+
+            // Attach the submit handler to the form
+            $('.general_info_form').on('submit', submitGeneralInfoForm);
+
+            // Optional: Hide error message and remove red border on input change
+            $('.general_info_form input, .general_info_form select').on('input change', function() {
+                $(this).removeClass('is-invalid');
+                $(this).next('.error-message').remove();
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#basic-url').on('input', function() {
+                var inputValue = $(this).val().trim();
+                var isValid = /^[a-zA-Z0-9]+$/.test(inputValue); // Regex to allow only letters and numbers
+
+                console.log('Input value:', inputValue);
+                console.log('Is valid:', isValid);
+
+                if (!isValid) {
+                    $('#url_alias_feedback').text('Only letters and numbers are allowed.').show();
+                    $(this).addClass('is-invalid');
+                    $('.kt_docs_formvalidation_text_submit').prop('disabled', true);
+                } else {
+                    $('#url_alias_feedback').text('').hide();
+                    $(this).removeClass('is-invalid');
+                    $('.kt_docs_formvalidation_text_submit').prop('disabled', false);
                 }
             });
-        }
+
+            // Optional: Validate on form submit to prevent invalid submissions
+            $('.product_form').on('submit', function(event) {
+                var inputValue = $('#basic-url').val().trim();
+                var isValid = /^[a-zA-Z0-9]+$/.test(inputValue);
+
+                console.log('On submit - Input value:', inputValue);
+                console.log('On submit - Is valid:', isValid);
+
+                if (!isValid) {
+                    event.preventDefault(); // Prevent form submission
+                    $('#url_alias_feedback').text(
+                        'Please enter a valid alias. Only letters and numbers are allowed.').show();
+                    $('#basic-url').addClass('is-invalid');
+                }
+            });
+        });
     </script>
 @endpush
