@@ -24,27 +24,27 @@
                                 <div class="d-flex align-items-center">
                                     <div class="image image-circle image-mini me-3">
                                         @if ($nfc_card->nfc_template == 'template-one')
-                                            <img class="img-fluid w-45px"
+                                            <img class="img-fluid w-45px h-60px"
                                                 src="{{ asset('frontend/images/nfc_template/template_one.jpg') }}"
                                                 alt="">
                                         @elseif ($nfc_card->nfc_template == 'template-two')
-                                            <img class="img-fluid w-45px"
+                                            <img class="img-fluid w-45px h-60px"
                                                 src="{{ asset('frontend/images/nfc_template/template_two.jpg') }}"
                                                 alt="">
                                         @elseif ($nfc_card->nfc_template == 'template-three')
-                                            <img class="img-fluid w-45px"
+                                            <img class="img-fluid w-45px h-60px"
                                                 src="{{ asset('frontend/images/nfc_template/template_three.jpg') }}"
                                                 alt="">
                                         @elseif ($nfc_card->nfc_template == 'template-four')
-                                            <img class="img-fluid w-45px"
+                                            <img class="img-fluid w-45px h-60px"
                                                 src="{{ asset('frontend/images/nfc_template/template_four.jpg') }}"
                                                 alt="">
                                         @elseif ($nfc_card->nfc_template == 'template-five')
-                                            <img class="img-fluid w-45px"
+                                            <img class="img-fluid w-45px h-60px"
                                                 src="{{ asset('frontend/images/nfc_template/template_five.jpg') }}"
                                                 alt="">
                                         @elseif ($nfc_card->nfc_template == 'template-six')
-                                            <img class="img-fluid w-45px"
+                                            <img class="img-fluid w-45px h-60px"
                                                 src="{{ asset('frontend/images/nfc_template/template_six.jpg') }}"
                                                 alt="">
                                         @endif
