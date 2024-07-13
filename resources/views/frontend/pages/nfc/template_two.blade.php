@@ -132,7 +132,6 @@
         }
 
         .special-font {
-            color: var(--template-two-color-primary);
             font-family: var(--template-two-font-fmly-Bebas);
         }
 
@@ -259,6 +258,7 @@
 
         .image-container-tem2 {
             height: 385px;
+            widows: 100%
             object-fit: cover;
         }
 
@@ -284,10 +284,10 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12 px-0">
-                                <img class="img-fluid image-container-tem2"
+                                <img class="img-fluid image-container-tem2 w-100"
                                     src="{{ !empty($nfc_card->banner_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card)->banner_image)) ? asset('storage/nfc/' . optional($nfc_card)->banner_image) : asset('frontend/images/no_image.png') }}"
                                     alt="" />
-                                {{-- <img class="img-fluid image-container-tem2"
+                                {{-- <img class="img-fluid image-container-tem2 w-100"
                                     src="https://cdn.pixabay.com/photo/2023/12/29/16/15/ai-generated-8476506_960_720.png"
                                     alt="" /> --}}
                                 <div>
@@ -347,8 +347,8 @@
                     <div class="container py-4 pt-3">
                         <div class="row align-items-center">
                             <div class="col-sm-12">
-                                <div class="user-name-rotate-tem2">
-                                    <h1 class="name-title-tem2 mb-0">{{ optional($nfc_card->nfcData)->first_name }}
+                                <div class="user-name-rotate-tem2 ps-2">
+                                    <h1 class="name-title-tem2 mb-0">{{ optional($nfc_card->nfcData)->last_name }}
                                     </h1>
                                     <p class="text-white mb-0">{{ optional($nfc_card)->designation }} </p>
                                     <p class="text-white">
@@ -740,7 +740,6 @@
                                     </div>
                                 @endif
                                 @if (optional($nfc_card->nfcData)->tuesday == '1')
-
                                     <div class="col-md-6 mb-2">
                                         <div>
                                             <div class="text-center text-white">

@@ -232,6 +232,11 @@
             padding-bottom: 50px;
             /* Adjust padding as needed */
         }
+        .profile-main-image-tem3{
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
 
         /* <!-- Contact Area --> */
 
@@ -446,7 +451,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="d-flex justify-content-center align-items-center profile-image-tem3">
-                                    <img width="150px" class="rounded-circle"
+                                    <img  class="rounded-circle profile-main-image-tem3"
                                         src="{{ !empty($nfc_card->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card)->profile_image) : asset('frontend/images/no_image.png') }}"
                                         alt="" />
                                 </div>
@@ -903,7 +908,7 @@
                         @endif
                         <!-- Servies Box -->
                         @if ($nfc_card->services_show == '1')
-                            <div class="row pt-5">
+                            <div class="row pt-2">
                                 <div class="col-sm-12">
                                     <div class="text-center">
                                         <h3 class="special-font">My Services</h3>
