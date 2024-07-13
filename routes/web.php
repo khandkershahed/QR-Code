@@ -126,14 +126,14 @@ Route::post('newsletter/store', [NewsLetterController::class, 'store'])
 // })->middleware(['auth:admin', 'verified'])->name('admin.dashboard');
 
 
-Route::middleware('redirect.guard')->group(function () {
-    Route::resources(
-        [
-            'barcode'             => BarCodeController::class,
-            'virtual-card'        => VirtualCardController::class,
-        ],
-    );
-});
+// Route::middleware('redirect.guard')->group(function () {
+//     Route::resources(
+//         [
+//             'barcode'             => BarCodeController::class,
+//             'virtual-card'        => VirtualCardController::class,
+//         ],
+//     );
+// });
 
 
 Route::get('/check-url-alias', [VirtualCardController::class, 'checkUrlAlias']);

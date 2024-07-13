@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\QrCodeController;
+use App\Http\Controllers\Admin\BarCodeController;
 use App\Http\Controllers\Admin\NfcCardController;
 use App\Http\Controllers\Admin\VirtualCardController;
 use App\Http\Controllers\RestaurantCategoryController;
@@ -16,6 +17,7 @@ Route::middleware('auth')->prefix('user')->name('user.')->group(function () {
             'qr-code'             => QrCodeController::class,
             'nfc-card'            => NfcCardController::class,
             'virtual-card'        => VirtualCardController::class,
+            'barcode'             => BarCodeController::class,
             'restaurant-category' => RestaurantCategoryController::class,
         ],
     );

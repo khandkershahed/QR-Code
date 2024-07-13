@@ -71,7 +71,7 @@
                 </div>
                 <div class="menu-item">
                     <a class="menu-link {{ Route::is('admin.barcode.index', 'admin.barcode.create', 'admin.barcode.edit') ? 'active' : '' }}"
-                        href="{{ route('barcode.index') }}">
+                        href="{{ route('admin.barcode.index') }}">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
