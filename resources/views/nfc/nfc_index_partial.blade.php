@@ -111,13 +111,13 @@
                                     @if (strpos(Route::current()->getName(), 'user.') === 0)
                                         <div class="menu-item px-3">
 
-                                            <a href="{{ route('user.nfc-card.show', $nfc_card->code) }}"
+                                            <a href="{{ route('user.virtual-card.show', $nfc_card->code) }}"
                                                 class="menu-link px-3">
                                                 All messages
                                             </a>
                                         </div>
                                         <div class="menu-item px-3">
-                                            <a href="{{ route('user.nfc-card.edit', $nfc_card->code) }}"
+                                            <a href="{{ route('user.virtual-card.edit', $nfc_card->code) }}"
                                                 class="menu-link px-3">
                                                 Edit
                                             </a>
@@ -125,13 +125,13 @@
                                     @else
                                         <div class="menu-item px-3">
 
-                                            <a href="{{ route('admin.nfc-card.show', $nfc_card->code) }}"
+                                            <a href="{{ route('admin.virtual-card.show', $nfc_card->code) }}"
                                                 class="menu-link px-3">
                                                 All messages
                                             </a>
                                         </div>
                                         <div class="menu-item px-3">
-                                            <a href="{{ route('admin.nfc-card.edit', $nfc_card->code) }}"
+                                            <a href="{{ route('admin.virtual-card.edit', $nfc_card->code) }}"
                                                 class="menu-link px-3">
                                                 Edit
                                             </a>
