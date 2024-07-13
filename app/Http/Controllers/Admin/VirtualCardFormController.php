@@ -67,10 +67,18 @@ class VirtualCardFormController extends Controller
                 $uploadedFiles[$key] = ['status' => 0];
             }
         }
-        $urlAlias = $nfc_card->url_alias;
+        $urlAlias   = $nfc_card->url_alias;
+        $qrFileName = $nfc_card->nfc_qr;
+        $nfc_url    = $nfc_card->nfc_url;
         if ($request->url_alias !== $nfc_card->url_alias) {
             $urlAlias = $request->url_alias;
+            $nfc_url = route('nfc.page', ['name' => $request->url_alias]);
+
+            $qrFileName = $nfc_card->code . '_nfc_qr.png';
+            $qrCodePath = '../public/storage/nfc/qrs/' . $qrFileName;
+            QrCode::size(300)->format('png')->margin(2)->errorCorrection('H')->encoding('UTF-8')->generate($nfc_url, $qrCodePath);
         }
+
         // Update NfcCard
         $nfc_card->update([
             'banner_image'              => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_name'] : $nfc_card->banner_image,
@@ -83,6 +91,8 @@ class VirtualCardFormController extends Controller
             'nfc_template'              => $request->nfc_template,
             'primary_color'             => $request->primary_color,
             'text_color'                => $request->text_color,
+            'nfc_qr'                    => $qrFileName,
+            'nfc_url'                   => $nfc_url,
             'title_color'               => $request->title_color,
             'background_color'          => $request->background_color,
             'button_bg_color'           => $request->button_bg_color,

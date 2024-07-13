@@ -1,4 +1,4 @@
-<x-app-layout :title="'Virtual Card List'">
+<x-admin-app-layout :title="'Virtual Card List'">
     <div class="row">
         <div class="col-lg-12">
             <div class="d-flex align-items-center rounded py-5 px-5 bg-light-primary" style="border: 1px dashed blue;">
@@ -12,7 +12,7 @@
                         </strong>
                     </div>
                     <div>
-                        <a href="{{ route('user.virtual-card.create') }}" class="btn btn-sm btn-primary rounded-2 me-3">
+                        <a href="{{ route('admin.nfc-card.create') }}" class="btn btn-sm btn-primary rounded-2 me-3">
                             Create Virtual Card
                         </a>
                     </div>
@@ -24,5 +24,4 @@
         @include('virtualCard.virtualCard_index_partial')
     </div>
 
-  
-</x-app-layout>
+</x-admin-app-layout>

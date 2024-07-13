@@ -122,37 +122,37 @@
 </style>
 
 <div class="card virtual_card nfc-one-card-frame nfc-one virtual-card-one w-100" style="display: none;">
-    @include('virtualCard.partials.card_preview.card_one')
+    @include('user.pages.nfc-card.partials.card_preview.card_one')
 </div>
 
 {{-- Card Two --}}
 <div class="card virtual_card nfc-two-card-frame nfc-two virtual-card-two w-100" style="display: none;">
-    @include('virtualCard.partials.card_preview.card_two')
+    @include('user.pages.nfc-card.partials.card_preview.card_two')
 </div>
 
 {{-- Card Three --}}
 <div class="card virtual_card nfc-three-card-frame nfc-three virtual-card-three w-100" style="display: none;">
-    @include('virtualCard.partials.card_preview.card_three')
+    @include('user.pages.nfc-card.partials.card_preview.card_three')
 </div>
 
 {{-- Card Three --}}
 <div class="card virtual_card nfc-four-card-frame nfc-four virtual-card-four w-100" style="display: none;">
-    @include('virtualCard.partials.card_preview.card_four')
+    @include('user.pages.nfc-card.partials.card_preview.card_four')
 
 </div>
 <div class="card virtual_card nfc-five-card-frame nfc-five virtual-card-five w-100" style="display: none;">
-    @include('virtualCard.partials.card_preview.card_five')
+    @include('user.pages.nfc-card.partials.card_preview.card_five')
 
 </div>
 <div class="card virtual_card nfc-six-card-frame nfc-six virtual-card-six w-100" style="display: none;">
-    @include('virtualCard.partials.card_preview.card_six')
+    @include('user.pages.nfc-card.partials.card_preview.card_six')
 
 </div>
 <div class="card virtual_card nfc-seven-card-frame nfc-seven virtual-card-seven w-100" style="display: none;">
-    @include('virtualCard.partials.card_preview.card_seven')
+    @include('user.pages.nfc-card.partials.card_preview.card_seven')
 
 </div>
 <div class="card virtual_card nfc-eight-card-frame nfc-eight virtual-card-eight w-100" style="display: none;">
-    @include('virtualCard.partials.card_preview.card_eight')
+    @include('user.pages.nfc-card.partials.card_preview.card_eight')
 
 </div>

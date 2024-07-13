@@ -43,7 +43,10 @@ class NfcCardController extends Controller
         $data = [
             'nfc_cards' => NfcCard::with('nfcData')->where('user_id', $user->id)->latest('id')->get(),
         ];
-        return view('user.pages.virtualCard.create', $data);
+        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
+        $view = $isUserRoute ? 'user.pages.virtualCard.create' : 'admin.pages.virtualCard.create';
+        return view($view, $data);
+        // return view('user.pages.virtualCard.create', $data);
     }
 
     /**

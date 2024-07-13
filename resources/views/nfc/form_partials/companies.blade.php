@@ -213,7 +213,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <a href="{{ $company->company_website }}" target="_blank"
+                                    <a href="http://{{ $company->company_website }}" target="_blank"
                                         class="text-primary">Company
                                         Url <i class="fa-solid fa-link text-primary"></i></a>
                                 </td>

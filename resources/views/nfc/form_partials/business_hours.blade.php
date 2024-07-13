@@ -3,7 +3,7 @@
     @csrf
     <input type="hidden" name="card_id" value="{{ $nfc_card->id }}">
     <div class="row py-10">
-        <div class="col-lg-6 mb-4 bg-light mx-auto">
+        <div class="col-lg-8 mb-4 bg-light mx-auto">
             <div class="row border-info border-dashed border-1 gx-2 py-2 align-items-center px-3 rounded-2">
                 <div class="col-lg-12">
                     <div class="row align-items-center pb-3">
