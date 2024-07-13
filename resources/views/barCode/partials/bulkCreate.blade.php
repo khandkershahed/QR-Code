@@ -6,7 +6,7 @@
                 {{-- Forms Input --}}
                 <div class="border-dashed border-1 p-3 rounded-2 mb-2">
                     <div class="row">
-                        <div class="fv-row col-lg-8">
+                        <div class="fv-row col-lg-8 mb-7">
                             <label class="required fw-semibold fs-6 mb-2">
                                 <svg class="svg-inline--fa fa-signature fa-fw fa-sm text-muted mr-1" aria-hidden="true"
                                     focusable="false" data-prefix="fas" data-icon="signature" role="img"
@@ -25,7 +25,7 @@
                                 MB.</small>
                         </div>
 
-                        <div class="fv-row col-lg-4">
+                        <div class="fv-row col-lg-4 mb-7">
                             <label class="required fw-semibold fs-6 mb-2">
                                 <svg class="svg-inline--fa fa-signature fa-fw fa-sm text-muted mr-1" aria-hidden="true"
                                     focusable="false" data-prefix="fas" data-icon="signature" role="img"
@@ -41,16 +41,8 @@
                                 Now</button>
                         </div>
 
-                        <div class="fv-row col-lg-12">
+                        <div class="fv-row col-lg-12 mb-7">
                             <label class="required fw-semibold fs-6 mb-2 d-flex align-items-center">
-                                <div><svg class="svg-inline--fa fa-barcode fa-fw fa-sm text-muted mr-1"
-                                        aria-hidden="true" focusable="false" data-prefix="fas" data-icon="barcode"
-                                        role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
-                                        data-fa-i2svg="">
-                                        <path fill="currentColor"
-                                            d="M24 32C10.7 32 0 42.7 0 56V456c0 13.3 10.7 24 24 24H40c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24H24zm88 0c-8.8 0-16 7.2-16 16V464c0 8.8 7.2 16 16 16s16-7.2 16-16V48c0-8.8-7.2-16-16-16zm72 0c-13.3 0-24 10.7-24 24V456c0 13.3 10.7 24 24 24h16c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24H184zm96 0c-13.3 0-24 10.7-24 24V456c0 13.3 10.7 24 24 24h16c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24H280zM448 56V456c0 13.3 10.7 24 24 24h16c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24H472c-13.3 0-24 10.7-24 24zm-64-8V464c0 8.8 7.2 16 16 16s16-7.2 16-16V48c0-8.8-7.2-16-16-16s-16 7.2-16 16z">
-                                        </path>
-                                    </svg></div>
                                 <div class="pt-1 ps-2">Barcode Pattern</div>
                             </label>
 
@@ -67,12 +59,10 @@
                             <div class="card xlsx-preview">
                                 <div class="card-body ps-0">
                                     <h5>File Preview</h5>
-                                    {{-- By Default Text --}}
                                     <p id="noFileText">No Chosen File Found, Please
                                         Select
                                         CSV
                                         or XLSX File To See The Preview</p>
-                                    {{-- If File Selected Then Show This --}}
                                     <div id="filePreviewDiv" class="border p-3" style="display: none;">
                                         <table class="table table-bordered" id="filePreviewTable">
                                             <thead>
