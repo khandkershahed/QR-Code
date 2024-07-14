@@ -278,6 +278,12 @@
         .close-btns {
             background-color: var(--template-one-color-white);
         }
+
+        @media only screen and (max-width: 600px) {
+            .footer-nav-tem1 {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 
@@ -1018,7 +1024,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="copy-link" data-link="$currentUrl">
+                                <a href="#" class="copy-link" data-link="{{ $currentUrl }}">
                                     <i class="fa-solid fa-copy"></i>
                                     <span>Copy Link</span>
                                 </a>
