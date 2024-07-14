@@ -83,6 +83,7 @@
                             type: 'POST',
                             url: url,
                             data: formData,
+                            dataType: 'json', // Ensure JSON parsing
                             cache: false,
                             contentType: false,
                             processData: false,
@@ -93,13 +94,9 @@
                             success: function(response) {
                                 console.log('Form submitted successfully:', response);
                                 if (response.template_view) {
-                                    console.log('SEO view HTML:', response.template_view);
-                                    template_container.empty();
-                                    template_container.html(response.template_view);
+                                    // Update only the template section in template_container
+                                    $('.template_container').html(response.template_view);
                                     toastr.success('Data saved successfully!', 'Success');
-
-                                    // Disable the submit button after successful submission
-                                    submitButton.prop('disabled', true).addClass('disabled');
                                 } else {
                                     console.error('Unexpected response format:', response);
                                     toastr.error('Unexpected response format.', 'Error');
@@ -128,14 +125,14 @@
                     }
                 }
 
-                // Attach the submit handler to the form
-                $('.general_info_form').on('submit', submitGeneralInfoForm);
+                // // Attach the submit handler to the form
+                // $('.general_info_form').on('submit', submitGeneralInfoForm);
 
-                // Optional: Hide error message and remove red border on input change
-                $('.general_info_form input, .general_info_form select').on('input change', function() {
-                    $(this).removeClass('is-invalid');
-                    $(this).next('.error-message').remove();
-                });
+                // // Optional: Hide error message and remove red border on input change
+                // $('.general_info_form input, .general_info_form select').on('input change', function() {
+                //     $(this).removeClass('is-invalid');
+                //     $(this).next('.error-message').remove();
+                // });
             });
         </script>
     @endpush

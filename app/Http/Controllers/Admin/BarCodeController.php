@@ -187,25 +187,49 @@ class BarCodeController extends Controller
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
+    // $request->validate([
+    //     'bulk_file' => 'required|file|mimes:csv,xlsx|max:10240',
+    // ]);
 
     public function bulkStore(Request $request)
     {
+        // dd($request->all());
+        if (!$request->hasFile('bulk_file')) {
+            return redirect()->back()->with('error', 'No file uploaded.');
+        }
+
+        $file = $request->file('bulk_file');
+        // Debugging step: Check if the file object is valid
+        if (!$file) {
+            return redirect()->back()->with('error', 'Failed to receive the file.');
+        }
+        // Validate that a file is provided
         $request->validate([
-            'bulk_file' => 'required|file|mimes:csv,xlsx|max:10240',
+            'bulk_file' => 'required',
         ]);
 
-        $filePath = $request->file('bulk_file')->store('uploads');
+        // Store the uploaded file
+        $filePath = $request->file('bulk_file')->store('barcode/excel/');
+        if (!$filePath) {
+            return redirect()->back()->with('error', 'File upload failed.');
+        }
+
         $file = Storage::path($filePath);
 
-        $barcodes = Excel::toArray(new BarcodesImport, $file);
+        try {
+            // Load barcodes from the Excel file
+            $barcodes = Excel::toArray(new BarcodesImport, $file)[0];
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to read the Excel file.');
+        }
 
         $d = new DNS1D();
-        $barcodePattern = 'code-128';
+        $barcodePattern = !empty($request->input('barcode_pattern')) ? $request->input('barcode_pattern') : 'PHARMA';
         $barcodeColor = ['r' => 0, 'g' => 0, 'b' => 0];
         $barcodeWidth = 2;
         $barcodeHeight = 60;
-
-        foreach ($barcodes[0] as $row) {
+        dd($barcodes);
+        foreach ($barcodes as $row) {
             $productId = $row['product_id'];
             $productName = $row['product_name'];
             $productPrice = $row['product_price'];
@@ -214,7 +238,7 @@ class BarCodeController extends Controller
             $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
             $typePrefix = 'BAR';
             $today = date('dm');
-            $userId = $isUserRoute ? Auth::user()->id : null;
+            $userId = $isUserRoute ? Auth::id() : null;
 
             $lastCode = BarCode::where('code', 'like', $typePrefix . $today . $userId . '%')
                 ->orderBy('id', 'desc')->first();
@@ -222,48 +246,12 @@ class BarCodeController extends Controller
             $code = $typePrefix . $today . $userId . str_pad($newNumber, 2, '0', STR_PAD_LEFT);
 
             try {
-                $formats = ['png', 'jpg', 'pdf'];
-                $urls = [];
-
-                foreach ($formats as $format) {
-                    $directory = public_path("storage/barcodes/$format/");
-                    if (!file_exists($directory)) {
-                        mkdir($directory, 0777, true);
-                    }
-
-                    $filePath = "$directory$code.$format";
-
-                    switch ($format) {
-                        case 'png':
-                            $barCodeStringPng = $d->getBarcodePNG($productId, $barcodePattern, $barcodeWidth, $barcodeHeight, [$barcodeColor['r'], $barcodeColor['g'], $barcodeColor['b']], true);
-                            file_put_contents($filePath, base64_decode($barCodeStringPng));
-                            $urls['png'] = "storage/barcodes/png/$code.png";
-                            break;
-                        case 'jpg':
-                            $barCodeStringPng = $d->getBarcodePNG($productId, $barcodePattern, $barcodeWidth, $barcodeHeight, [$barcodeColor['r'], $barcodeColor['g'], $barcodeColor['b']], true);
-                            $imageContent = base64_decode(base64_encode($barCodeStringPng));
-                            $image = Image::make($imageContent);
-                            $image->encode('jpg', 100)->save($filePath);
-                            $urls['jpg'] = "storage/barcodes/jpg/$code.jpg";
-                            break;
-                        case 'pdf':
-                            $barCodeStringPdf = $d->getBarcodePNG($productId, $barcodePattern, $barcodeWidth, $barcodeHeight, [$barcodeColor['r'], $barcodeColor['g'], $barcodeColor['b']], true);
-                            if (!$barCodeStringPdf) {
-                                continue 2;
-                            }
-                            $htmlContent = '<div class="text-center"><img width="650px" src="data:image/png;base64,' . $barCodeStringPdf . '" /></div>';
-                            $pdf = \App::make('dompdf.wrapper');
-                            $pdf->loadHTML($htmlContent, 'UTF-8');
-                            $pdf->save($filePath);
-                            $urls['pdf'] = "storage/barcodes/pdf/$code.pdf";
-                            break;
-                    }
-                }
+                $urls = $this->generateBarcodes($d, $productId, $code, $barcodePattern, $barcodeWidth, $barcodeHeight, $barcodeColor);
 
                 BarCode::create([
-                    'user_id'         => $isUserRoute ? Auth::user()->id : null,
-                    'admin_id'        => $isUserRoute ? null : Auth::guard('admin')->user()->id,
-                    'barcode_type'    => 'EAN-13',
+                    'user_id'         => $isUserRoute ? Auth::id() : null,
+                    'admin_id'        => $isUserRoute ? null : Auth::guard('admin')->id(),
+                    'barcode_type'    => $barcodePattern,
                     'code'            => $code,
                     'product_id'      => $productId,
                     'product_name'    => $productName,
@@ -274,13 +262,55 @@ class BarCodeController extends Controller
                     'barcode_url_pdf' => $urls['pdf'] ?? null,
                     'status'          => '1',
                 ]);
-
             } catch (\Exception $e) {
                 Log::error('Failed to generate barcode for product ID ' . $productId . ': ' . $e->getMessage());
             }
         }
 
         return redirect()->back()->with('success', 'Barcodes generated successfully.');
+    }
+
+    private function generateBarcodes($dns1d, $productId, $code, $pattern, $width, $height, $color)
+    {
+        $formats = ['png', 'jpg', 'pdf'];
+        $urls = [];
+
+        foreach ($formats as $format) {
+            $directory = public_path("storage/barcodes/$format/");
+            if (!file_exists($directory)) {
+                mkdir($directory, 0777, true);
+            }
+
+            $filePath = "$directory$code.$format";
+
+            switch ($format) {
+                case 'png':
+                    $barCodeStringPng = $dns1d->getBarcodePNG($productId, $pattern, $width, $height, [$color['r'], $color['g'], $color['b']], true);
+                    file_put_contents($filePath, base64_decode($barCodeStringPng));
+                    $urls['png'] = "storage/barcodes/png/$code.png";
+                    break;
+                case 'jpg':
+                    $barCodeStringPng = $dns1d->getBarcodePNG($productId, $pattern, $width, $height, [$color['r'], $color['g'], $color['b']], true);
+                    $imageContent = base64_decode(base64_encode($barCodeStringPng));
+                    $image = Image::make($imageContent);
+                    $image->encode('jpg', 100)->save($filePath);
+                    $urls['jpg'] = "storage/barcodes/jpg/$code.jpg";
+                    break;
+                case 'pdf':
+                    $barCodeStringPdf = $dns1d->getBarcodePNG($productId, $pattern, $width, $height, [$color['r'], $color['g'], $color['b']], true);
+                    if (!$barCodeStringPdf) {
+                        continue 2;
+                    }
+                    $htmlContent = '<div class="text-center"><img width="650px" src="data:image/png;base64,' . $barCodeStringPdf . '" /></div>';
+                    $pdf = \App::make('dompdf.wrapper');
+                    $pdf->loadHTML($htmlContent, 'UTF-8');
+                    $pdf->save($filePath);
+                    $urls['pdf'] = "storage/barcodes/pdf/$code.pdf";
+                    break;
+            }
+        }
+
+        return $urls;
     }
 
     private function hexToRgb($hex)

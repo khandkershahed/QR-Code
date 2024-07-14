@@ -76,6 +76,8 @@ Route::get('stripe/cancel', function () {
 
 
 Route::post('barcode/preview', [BarCodeController::class, 'barcodePreview'])->name('barcode.preview');
+Route::post('single-barcode/store', [BarCodeController::class, 'store'])->name('single-barcode.store');
+Route::post('bulk-barcode/store', [BarCodeController::class, 'bulkStore'])->name('bulk-barcode.store');
 
 
 

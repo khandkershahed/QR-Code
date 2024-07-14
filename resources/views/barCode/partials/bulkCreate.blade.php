@@ -1,20 +1,14 @@
 <div class="col-lg-7 bg-white">
     <div class="card">
         <div class="card-body">
-            <form id="kt_docs_formvalidation_email" class="form" action="#" autocomplete="off" method="post">
+            <form id="" class="form "
+                action="{{ route('bulk-barcode.store') }}" autocomplete="off" method="post" enctype="multipart/form-data">
                 @csrf
                 {{-- Forms Input --}}
                 <div class="border-dashed border-1 p-3 rounded-2 mb-2">
                     <div class="row">
                         <div class="fv-row col-lg-8 mb-7">
                             <label class="required fw-semibold fs-6 mb-2">
-                                <svg class="svg-inline--fa fa-signature fa-fw fa-sm text-muted mr-1" aria-hidden="true"
-                                    focusable="false" data-prefix="fas" data-icon="signature" role="img"
-                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" data-fa-i2svg="">
-                                    <path fill="currentColor"
-                                        d="M192 128c0-17.7 14.3-32 32-32s32 14.3 32 32v7.8c0 27.7-2.4 55.3-7.1 82.5l-84.4 25.3c-40.6 12.2-68.4 49.6-68.4 92v71.9c0 40 32.5 72.5 72.5 72.5c26 0 50-13.9 62.9-36.5l13.9-24.3c26.8-47 46.5-97.7 58.4-150.5l94.4-28.3-12.5 37.5c-3.3 9.8-1.6 20.5 4.4 28.8s15.7 13.3 26 13.3H544c17.7 0 32-14.3 32-32s-14.3-32-32-32H460.4l18-53.9c3.8-11.3 .9-23.8-7.4-32.4s-20.7-11.8-32.2-8.4L316.4 198.1c2.4-20.7 3.6-41.4 3.6-62.3V128c0-53-43-96-96-96s-96 43-96 96v32c0 17.7 14.3 32 32 32s32-14.3 32-32V128zm-9.2 177l49-14.7c-10.4 33.8-24.5 66.4-42.1 97.2l-13.9 24.3c-1.5 2.6-4.3 4.3-7.4 4.3c-4.7 0-8.5-3.8-8.5-8.5V335.6c0-14.1 9.3-26.6 22.8-30.7zM24 368c-13.3 0-24 10.7-24 24s10.7 24 24 24H64.3c-.2-2.8-.3-5.6-.3-8.5V368H24zm592 48c13.3 0 24-10.7 24-24s-10.7-24-24-24H305.9c-6.7 16.3-14.2 32.3-22.3 48H616z">
-                                    </path>
-                                </svg>
                                 Upload CSV/XLSX File
                             </label>
 
@@ -27,18 +21,12 @@
 
                         <div class="fv-row col-lg-4 mb-7">
                             <label class="required fw-semibold fs-6 mb-2">
-                                <svg class="svg-inline--fa fa-signature fa-fw fa-sm text-muted mr-1" aria-hidden="true"
-                                    focusable="false" data-prefix="fas" data-icon="signature" role="img"
-                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" data-fa-i2svg="">
-                                    <path fill="currentColor"
-                                        d="M192 128c0-17.7 14.3-32 32-32s32 14.3 32 32v7.8c0 27.7-2.4 55.3-7.1 82.5l-84.4 25.3c-40.6 12.2-68.4 49.6-68.4 92v71.9c0 40 32.5 72.5 72.5 72.5c26 0 50-13.9 62.9-36.5l13.9-24.3c26.8-47 46.5-97.7 58.4-150.5l94.4-28.3-12.5 37.5c-3.3 9.8-1.6 20.5 4.4 28.8s15.7 13.3 26 13.3H544c17.7 0 32-14.3 32-32s-14.3-32-32-32H460.4l18-53.9c3.8-11.3 .9-23.8-7.4-32.4s-20.7-11.8-32.2-8.4L316.4 198.1c2.4-20.7 3.6-41.4 3.6-62.3V128c0-53-43-96-96-96s-96 43-96 96v32c0 17.7 14.3 32 32 32s32-14.3 32-32V128zm-9.2 177l49-14.7c-10.4 33.8-24.5 66.4-42.1 97.2l-13.9 24.3c-1.5 2.6-4.3 4.3-7.4 4.3c-4.7 0-8.5-3.8-8.5-8.5V335.6c0-14.1 9.3-26.6 22.8-30.7zM24 368c-13.3 0-24 10.7-24 24s10.7 24 24 24H64.3c-.2-2.8-.3-5.6-.3-8.5V368H24zm592 48c13.3 0 24-10.7 24-24s-10.7-24-24-24H305.9c-6.7 16.3-14.2 32.3-22.3 48H616z">
-                                    </path>
-                                </svg>
                                 Download XLSX For Demo
                             </label>
                             <br>
-                            <button id="downloadXlsxBtn" class="btn btn-primary w-100 rounded-0">Download
-                                Now</button>
+                            <a href="{{ asset('frontend/images/bulk_bacode_demo.xlsx') }}" download
+                                class="btn btn-primary w-100 rounded-0">Download
+                                Now</a>
                         </div>
 
                         <div class="fv-row col-lg-12 mb-7">
@@ -46,12 +34,40 @@
                                 <div class="pt-1 ps-2">Barcode Pattern</div>
                             </label>
 
-
-                            <select class="form-select" data-control="select2" data-placeholder="Select an option"
-                                id="barcodeSelect">
+                            <select name="barcode_pattern" class="form-select mb-3" data-control="select2"
+                                data-placeholder="Select an option">
                                 <option></option>
-                                <option value="code-128">Code 128</option>
-                                <option value="code-11">Code 11</option>
+                                <option value="C39" @selected(old('barcode_pattern' == 'C39'))>C39</option>
+                                <option value="C39+" @selected(old('barcode_pattern' == 'C39+'))>C39+</option>
+                                <option value="C39E" @selected(old('barcode_pattern' == 'C39E'))>C39E</option>
+                                <option value="C39E+" @selected(old('barcode_pattern' == 'C39E+'))>C39E+</option>
+                                <option value="C93" @selected(old('barcode_pattern' == 'C93'))>C93</option>
+                                <option value="S25" @selected(old('barcode_pattern' == 'S25'))>S25</option>
+                                <option value="S25+" @selected(old('barcode_pattern' == 'S25+'))>S25+</option>
+                                <option value="I25" @selected(old('barcode_pattern' == 'I25'))>I25</option>
+                                <option value="I25+" @selected(old('barcode_pattern' == 'I25+'))>I25+</option>
+                                <option value="C128" @selected(old('barcode_pattern' == 'C128'))>C128</option>
+                                <option value="C128A" @selected(old('barcode_pattern' == 'C128A'))>C128A</option>
+                                <option value="C128B" @selected(old('barcode_pattern' == 'C128B'))>C128B</option>
+                                <option value="C128C" @selected(old('barcode_pattern' == 'C128C'))>C128C</option>
+                                <option value="GS1-128" @selected(old('barcode_pattern' == 'GS1-128'))>GS1-128</option>
+                                <option value="EAN2" @selected(old('barcode_pattern' == 'EAN2'))>EAN2</option>
+                                <option value="EAN5" @selected(old('barcode_pattern' == 'EAN5'))>EAN5</option>
+                                <option value="EAN8" @selected(old('barcode_pattern' == 'EAN8'))>EAN8</option>
+                                <option value="EAN13" @selected(old('barcode_pattern' == 'EAN13'))>EAN13</option>
+                                <option value="UPCA" @selected(old('barcode_pattern' == 'UPCA'))>UPCA</option>
+                                <option value="UPCE" @selected(old('barcode_pattern' == 'UPCE'))>UPCE</option>
+                                <option value="MSI" @selected(old('barcode_pattern' == 'MSI'))>MSI</option>
+                                <option value="MSI+" @selected(old('barcode_pattern' == 'MSI+'))>MSI+</option>
+                                <option value="POSTNET" @selected(old('barcode_pattern' == 'POSTNET'))>POSTNET</option>
+                                <option value="PLANET" @selected(old('barcode_pattern' == 'PLANET'))>PLANET</option>
+                                <option value="RMS4CC" @selected(old('barcode_pattern' == 'RMS4CC'))>RMS4CC</option>
+                                <option value="KIX" @selected(old('barcode_pattern' == 'KIX'))>KIX</option>
+                                <option value="IMB" @selected(old('barcode_pattern' == 'IMB'))>IMB</option>
+                                <option value="CODABAR" @selected(old('barcode_pattern' == 'CODABAR'))>CODABAR</option>
+                                <option value="CODE11" @selected(old('barcode_pattern' == 'CODE11'))>CODE11</option>
+                                <option value="PHARMA" @selected(old('barcode_pattern' == 'PHARMA'))>PHARMA</option>
+                                <option value="PHARMA2T" @selected(old('barcode_pattern' == 'PHARMA2T'))>PHARMA2T</option>
                             </select>
                         </div>
 
@@ -80,7 +96,8 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="d-flex justify-content-end">
-                            <button id="submitBtn" type="submit" disabled class="btn btn-primary mt-15">
+                            <button type="submit" class="btn btn-primary mt-15">Generate Barcode</button>
+                            {{-- <button id="submitBtn" type="submit" disabled class="btn btn-primary mt-15">
                                 <span class="indicator-label">
                                     Generate Barcode
                                 </span>
@@ -88,7 +105,7 @@
                                     Please wait... <span
                                         class="spinner-border spinner-border-sm align-middle ms-2"></span>
                                 </span>
-                            </button>
+                            </button> --}}
                         </div>
                     </div>
                 </div>
@@ -106,12 +123,12 @@
                     alt="Code 128">
             </div>
             <div class="d-flex justify-content-between mt-5">
-                <a href="http://127.0.0.1:8000/admin/logout" class="btn text-white w-100 me-2"
+                <a href="javascript:void(0)" class="btn text-white w-100 me-2"
                     style="background-color: #7239e9; ">
                     <span class="btn-label"> Print
                     </span>
                 </a>
-                <a href="http://127.0.0.1:8000/admin/logout" class="btn text-white w-100 ms-2"
+                <a href="javascript:void(0)" class="btn text-white w-100 ms-2"
                     style="background-color: #7239e9; ">
                     <span class="btn-label"> Download
                     </span>

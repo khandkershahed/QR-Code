@@ -2,7 +2,7 @@
     <div class="card">
         <div class="card-body">
             <form id="kt_docs_formvalidation_text" class="form bar_code_create_form"
-                action="{{ route('admin.barcode.store') }}" autocomplete="off" method="post">
+                action="{{ route('single-barcode.store') }}" autocomplete="off" method="post">
                 @csrf
                 {{-- Forms Input --}}
                 <div class="border-dashed border-1 p-3 rounded-2 mb-2">

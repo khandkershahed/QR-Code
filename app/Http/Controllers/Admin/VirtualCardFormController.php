@@ -717,10 +717,29 @@ class VirtualCardFormController extends Controller
             'nfc_template'   => $request->nfc_template,
         ]);
 
-        $nfc_card = NfcCard::where('id', $card_id)->first();
+        $data = [
+            'nfc_card' => NfcCard::with(
+                'nfcData',
+                'nfcCompany',
+                'nfcGallery',
+                'nfcProduct',
+                'nfcService',
+                'nfcTestimonial',
+                'nfcMessages',
+                'nfcScan',
+                'virtualCard',
+                'nfcBanner',
+                'nfcSeo',
+                'shippingDetails'
+            )->where('id', $card_id)->first(),
+        ];
 
-        $template_view = view('nfc.form_partials.vcard_template', compact('nfc_card'))->render();
+        $template_view = view('nfc.form_partials.vcard_template', $data)->render();
 
-        return response()->json(['template_view' => $template_view]);
+        // return response()->json(['template_view' => $template_view]);
+        return response()->json([
+            'status' => true,
+            'template_view' => $template_view,
+        ]);
     }
 }

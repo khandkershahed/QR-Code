@@ -204,20 +204,20 @@
     </script>
     {{-- Download XLSX Demo File --}}
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const downloadXlsxBtn = document.getElementById('downloadXlsxBtn');
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     const downloadXlsxBtn = document.getElementById('downloadXlsxBtn');
 
-            downloadXlsxBtn.addEventListener('click', function() {
-                // Assuming the XLSX file URL is stored in a variable or hardcoded
-                const xlsxUrl = 'path_to_your_xlsx_file.xlsx';
+        //     downloadXlsxBtn.addEventListener('click', function() {
+        //         // Assuming the XLSX file URL is stored in a variable or hardcoded
+        //         const xlsxUrl = 'path_to_your_xlsx_file.xlsx';
 
-                // Create a temporary anchor element to initiate the download
-                const downloadAnchor = document.createElement('a');
-                downloadAnchor.href = xlsxUrl;
-                downloadAnchor.download = 'demo.xlsx'; // Specify the filename you want users to download
-                downloadAnchor.click();
-            });
-        });
+        //         // Create a temporary anchor element to initiate the download
+        //         const downloadAnchor = document.createElement('a');
+        //         downloadAnchor.href = xlsxUrl;
+        //         downloadAnchor.download = 'demo.xlsx'; // Specify the filename you want users to download
+        //         downloadAnchor.click();
+        //     });
+        // });
     </script>
     {{-- Show No XLSX File Selected --}}
     {{-- Fixed Column Height --}}
