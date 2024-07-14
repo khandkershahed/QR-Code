@@ -39,7 +39,7 @@
                 </div>
                 <div class="col-lg-12 mb-5">
                     <x-metronic.label for="profile_image"
-                        class="fw-semibold fs-6 mb-2 required">{{ __('Profile Image') }}</x-metronic.label>
+                        class="fw-semibold fs-6 mb-2">{{ __('Profile Image') }}</x-metronic.label>
                     <x-metronic.file-input id="profile_image" name="profile_image"
                         class="form-control form-control-solid form-control-sm" :source="optional($nfc_card)->profile_image
                             ? asset('storage/nfc/' . optional($nfc_card)->profile_image)
@@ -49,7 +49,7 @@
                 </div>
                 <div class="col-lg-12 mb-5">
                     <x-metronic.label for="banner_image"
-                        class="fw-semibold fs-6 mb-2 required">{{ __('Cover Image ') }}</x-metronic.label>
+                        class="fw-semibold fs-6 mb-2">{{ __('Cover Image ') }}</x-metronic.label>
                     <x-metronic.file-input id="banner_image" name="banner_image"
                         class="form-control form-control-solid form-control-sm" :source="optional($nfc_card)->banner_image
                             ? asset('storage/nfc/' . optional($nfc_card)->banner_image)
@@ -62,7 +62,7 @@
             <div class="col-lg-12 mb-7">
                 <x-metronic.label for="logo"
                     class="fw-semibold fs-6 mb-2">{{ __('Description') }}</x-metronic.label>
-                <textarea name="bio_description" class="form-control form-control-solid form-control-sm" rows="11">{{ optional($nfc_card)->bio_description}}</textarea>
+                <textarea name="bio_description" class="form-control form-control-solid form-control-sm" rows="11">{{ optional($nfc_card)->bio_description }}</textarea>
             </div>
         </div>
     </div>
@@ -139,7 +139,7 @@
             <x-metronic.label class="fw-semibold fs-6 mb-2">Default
                 Language</x-metronic.label>
             <select class="form-select" data-control="select2" data-placeholder="English" name="default_language"
-                :value="optional($nfc_card->nfcData)->default_language">
+                :value="optional($nfc_card - > nfcData) - > default_language">
                 <option></option>
                 <option value="english" selected>English</option>
                 <option value="china">China</option>
@@ -181,7 +181,7 @@
 
                 // Validate each required field
                 form.find(
-                    '[name="url_alias"], [name="vcard_name"], [name="first_name"], [name="last_name"], [name="profile_image"], [name="banner_image"], [name="email_personal"], [name="phone_personal"]'
+                    '[name="url_alias"], [name="vcard_name"], [name="first_name"], [name="last_name"], [name="email_personal"], [name="phone_personal"]'
                 ).each(function() {
                     var fieldValue = $(this).val().trim();
                     if (!fieldValue) {
@@ -260,15 +260,33 @@
     </script>
     <script>
         $(document).ready(function() {
+            $('#basic-url').on('keypress', function(event) {
+                var charCode = event.which || event.keyCode;
+                var charStr = String.fromCharCode(charCode);
+                var inputValue = $(this).val();
+
+                // Allow only letters, numbers, and hyphens, but no consecutive hyphens
+                if (!/^[a-zA-Z0-9]$/.test(charStr) && (charStr !== '-' || inputValue.endsWith('-'))) {
+                    event.preventDefault();
+                    $('#url_alias_feedback').text(
+                        'Only plain letters, numbers, and non-consecutive hyphens are allowed.').show();
+                    $(this).addClass('is-invalid');
+                    $('.kt_docs_formvalidation_text_submit').prop('disabled', true);
+                } else {
+                    $('#url_alias_feedback').text('').hide();
+                    $(this).removeClass('is-invalid');
+                    $('.kt_docs_formvalidation_text_submit').prop('disabled', false);
+                }
+            });
+
+            // Optional: Validate on input change (in case of pasting)
             $('#basic-url').on('input', function() {
                 var inputValue = $(this).val().trim();
-                var isValid = /^[a-zA-Z0-9]+$/.test(inputValue); // Regex to allow only letters and numbers
-
-                console.log('Input value:', inputValue);
-                console.log('Is valid:', isValid);
+                var isValid = /^[a-zA-Z0-9-]+$/.test(inputValue) && !/--/.test(inputValue);
 
                 if (!isValid) {
-                    $('#url_alias_feedback').text('Only letters and numbers are allowed.').show();
+                    $('#url_alias_feedback').text(
+                        'Only plain letters, numbers, and non-consecutive hyphens are allowed.').show();
                     $(this).addClass('is-invalid');
                     $('.kt_docs_formvalidation_text_submit').prop('disabled', true);
                 } else {
@@ -281,15 +299,13 @@
             // Optional: Validate on form submit to prevent invalid submissions
             $('.product_form').on('submit', function(event) {
                 var inputValue = $('#basic-url').val().trim();
-                var isValid = /^[a-zA-Z0-9]+$/.test(inputValue);
-
-                console.log('On submit - Input value:', inputValue);
-                console.log('On submit - Is valid:', isValid);
+                var isValid = /^[a-zA-Z0-9-]+$/.test(inputValue) && !/--/.test(inputValue);
 
                 if (!isValid) {
                     event.preventDefault(); // Prevent form submission
                     $('#url_alias_feedback').text(
-                        'Please enter a valid alias. Only letters and numbers are allowed.').show();
+                        'Please enter a valid alias. Only letters, numbers, and non-consecutive hyphens are allowed.'
+                        ).show();
                     $('#basic-url').addClass('is-invalid');
                 }
             });

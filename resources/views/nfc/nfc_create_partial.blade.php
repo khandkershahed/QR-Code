@@ -1,7 +1,9 @@
 <div class="row py-15">
-    <h3>New VCard</h3>
     <div class="col-lg-12">
         <div class="card rounded-0">
+            <div class="card-header d-flex align-items-center" style="background: #7239e9;">
+                <h2 class="text-center mb-0 text-white">Create New VCard</h2>
+            </div>
             <div class="card-body ">
                 <div class="row">
                     <div class="col-lg-12">
@@ -20,13 +22,14 @@
                                 <div class="row">
                                     <div class="fv-row mb-4 col-lg-5">
                                         <x-metronic.label class="required fw-semibold fs-6 mb-2">URL
-                                            Alias 
+                                            Alias
                                             <span class="m2-1" data-bs-toggle="tooltip"
-                            aria-label="Your billing numbers will be calculated based on your API method"
-                            data-bs-original-title="Your billing numbers will be calculated based on your API method"
-                            data-kt-initialized="1">
-                            <i class="fa-solid fa-circle-info fs-7"></i><span class="path1"></span><span
-                                    class="path2"></span><span class="path3"></span></i> </span>
+                                                aria-label="Your billing numbers will be calculated based on your API method"
+                                                data-bs-original-title="Your billing numbers will be calculated based on your API method"
+                                                data-kt-initialized="1">
+                                                <i class="fa-solid fa-circle-info fs-7"></i><span
+                                                    class="path1"></span><span class="path2"></span><span
+                                                    class="path3"></span></i> </span>
                                         </x-metronic.label>
                                         <div class="input-group">
                                             <x-metronic.input type="text"
@@ -80,7 +83,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="virtual_card_create_form_submit btn btn-primary">
+                        <button type="submit" class="virtual_card_create_form_submit btn btn-primary" disabled>
                             <span class="indicator-label">
                                 <i class="fa-solid fa-door-open"></i> Save
                             </span>
@@ -97,7 +100,6 @@
     </div>
 </div>
 @push('scripts')
-    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const forms = document.querySelectorAll('.virtual_card_create_form');
@@ -107,13 +109,6 @@
                 var validator = FormValidation.formValidation(
                     form, {
                         fields: {
-                            'url_alias': {
-                                validators: {
-                                    notEmpty: {
-                                        message: 'NFC Live Url Need'
-                                    }
-                                }
-                            },
                             'vcard_name': {
                                 validators: {
                                     notEmpty: {
@@ -173,10 +168,7 @@
                                     }).then(function() {
                                         console.log("Swal closed!");
                                         form.submit();
-                                        // Additional actions after Swal closes, if needed
                                     });
-
-                                    //form.submit(); // Submit form
                                 }, 2000);
                             } else {
                                 Swal.fire({
@@ -204,40 +196,100 @@
                     }
                 });
             });
-        });
 
-        // URL Alias uniqueness check
-        $('input[name="url_alias"]').on('keyup', function() {
-            let urlAlias = $(this).val();
-            let feedbackElement = $('#url_alias_feedback');
+            // URL Alias uniqueness check
+            $('input[name="url_alias"]').on('keyup', function() {
+                let urlAlias = $(this).val();
+                let feedbackElement = $('#url_alias_feedback');
 
-            if (urlAlias.length > 0) {
-                $.ajax({
-                    url: '/check-url-alias', // The route to check the uniqueness
-                    type: 'GET',
-                    data: {
-                        url_alias: urlAlias
-                    },
-                    success: function(response) {
-                        if (response.is_unique) {
-                            feedbackElement.hide();
-                        } else {
+                if (urlAlias.length > 0) {
+                    $.ajax({
+                        url: '/check-url-alias', // The route to check the uniqueness
+                        type: 'GET',
+                        data: {
+                            url_alias: urlAlias
+                        },
+                        success: function(response) {
+                            if (response.is_unique) {
+                                feedbackElement.hide();
+                                $('.virtual_card_create_form_submit').prop('disabled', false);
+                            } else {
+                                feedbackElement.text(
+                                    'This URL alias is already taken. Please choose another one.'
+                                );
+                                feedbackElement.show();
+                                feedbackElement.addClass('is-invalid');
+                                $('.virtual_card_create_form_submit').prop('disabled', true);
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(error);
                             feedbackElement.text(
-                                'This URL alias is already taken. Please choose another one.'
-                            );
+                                'An error occurred while checking the URL alias.');
                             feedbackElement.show();
                         }
-                    },
-                    error: function(xhr, status, error) {
-                        console.error(error);
-                        feedbackElement.text(
-                            'An error occurred while checking the URL alias.');
-                        feedbackElement.show();
+                    });
+                } else {
+                    feedbackElement.hide();
+                }
+            });
+        });
+
+        $(document).ready(function() {
+            function validateUrlAlias() {
+                var inputValue = $('#basic-url').val().trim();
+                var isValid = /^[a-zA-Z0-9-]+$/.test(inputValue) && !/--/.test(inputValue);
+
+                if (!isValid) {
+                    $('#url_alias_feedback').text(
+                        'Only plain letters, numbers, and non-consecutive hyphens are allowed.').show();
+                    $('#basic-url').addClass('is-invalid');
+                    $('.virtual_card_create_form_submit').prop('disabled', true);
+                } else {
+                    $('#url_alias_feedback').text('').hide();
+                    $('#basic-url').removeClass('is-invalid');
+                    if (inputValue !== '') {
+                        $('.virtual_card_create_form_submit').prop('disabled', false);
+                    } else {
+                        $('.virtual_card_create_form_submit').prop('disabled', true);
                     }
-                });
-            } else {
-                feedbackElement.hide();
+                }
             }
+
+            $('#basic-url').on('keypress', function(event) {
+                var charCode = event.which || event.keyCode;
+                var charStr = String.fromCharCode(charCode);
+                var inputValue = $(this).val();
+
+                // Allow only letters, numbers, and hyphens, but no consecutive hyphens
+                if (!/^[a-zA-Z0-9]$/.test(charStr) && (charStr !== '-' || inputValue.endsWith('-'))) {
+                    event.preventDefault();
+                    $('#url_alias_feedback').text(
+                        'Only plain letters, numbers, and non-consecutive hyphens are allowed.').show();
+                    $(this).addClass('is-invalid');
+                    $('.virtual_card_create_form_submit').prop('disabled', true);
+                } else {
+                    $('#url_alias_feedback').text('').hide();
+                    $(this).removeClass('is-invalid');
+                    validateUrlAlias();
+                }
+            });
+
+            $('#basic-url').on('input', validateUrlAlias);
+
+            // Optional: Validate on form submit to prevent invalid submissions
+            $('.product_form').on('submit', function(event) {
+                var inputValue = $('#basic-url').val().trim();
+                var isValid = /^[a-zA-Z0-9-]+$/.test(inputValue) && !/--/.test(inputValue);
+
+                if (!isValid) {
+                    event.preventDefault(); // Prevent form submission
+                    $('#url_alias_feedback').text(
+                        'Please enter a valid alias. Only letters, numbers, and non-consecutive hyphens are allowed.'
+                    ).show();
+                    $('#basic-url').addClass('is-invalid');
+                }
+            });
         });
     </script>
 @endpush
