@@ -326,8 +326,7 @@
                                             alt="" />
                                     </div>
                                     <div class="text-center py-4">
-                                        <h1 class="name-title-tem1 mb-0">{{ optional($nfc_card->nfcData)->first_name }}
-                                            {{ optional($nfc_card->nfcData)->last_name }}</h1>
+                                        <h1 class="name-title-tem1 mb-0">{{ optional($nfc_card->nfcData)->first_name }}&nbsp;{{ optional($nfc_card->nfcData)->last_name }}</h1>
                                         <p class="text-white">{{ optional($nfc_card)->designation }} </p>
                                     </div>
                                     @if ($nfc_card->social_links_show == '1')
