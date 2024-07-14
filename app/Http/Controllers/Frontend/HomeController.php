@@ -209,7 +209,7 @@ class HomeController extends Controller
                 case 'template-six':
                     return view('frontend.pages.nfc.template_six', $data);
                 default:
-                    return redirect()->route('homePage')->with('error', 'Template not found');
+                return view('frontend.pages.nfc.template_one', $data);
             }
         } else {
             return redirect()->route('homePage')->with('error', 'Page not found');
