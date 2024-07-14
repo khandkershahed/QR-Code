@@ -148,7 +148,8 @@ class HomeController extends Controller
         $agent = new Agent();
         $user_device = $agent->isDesktop() ? $agent->browser() : $agent->device();
 
-        $name = trim($name);
+        // $name = trim($name);
+        $name = urldecode(trim($name));
 
         // Try an exact match first
         $nfc_card = NfcCard::with(
