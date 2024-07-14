@@ -1090,7 +1090,7 @@
             $(".service-slide").slick({
                 infinite: true, // Infinite looping
                 speed: 500, // Animation speed in milliseconds
-                slidesToShow: 2, // Number of slides to show at once
+                slidesToShow: 1, // Number of slides to show at once
                 slidesToScroll: 1, // Number of slides to scroll at once
                 autoplay: true, // Enable autoplay
                 autoplaySpeed: 2000, // Autoplay speed in milliseconds
