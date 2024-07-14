@@ -1157,32 +1157,36 @@
                 const dataURL = canvas.toDataURL('image/jpeg');
                 callback(dataURL.replace(/^data:image\/(png|jpeg);base64,/, ''));
             };
+            img.onerror = () => {
+                console.error('Failed to load image:', imgUrl);
+                callback(null);
+            };
             img.src = imgUrl;
         }
 
         const makeVCardVersion = () => `VERSION:3.0`;
-        const makeVCardInfo = (lastName, firstName) => `N:${lastName};${firstName};;;`;
-        const makeVCardName = (firstName, lastName) => `FN:${firstName} ${lastName}`;
-        const makeVCardOrg = (org) => `ORG:${org}`;
-        const makeVCardTitle = (title) => `TITLE:${title}`;
+        const makeVCardInfo = (lastName, firstName) => `N:${lastName || ''};${firstName || ''};;;`;
+        const makeVCardName = (firstName, lastName) => `FN:${firstName || ''} ${lastName || ''}`;
+        const makeVCardOrg = (org) => `ORG:${org || ''}`;
+        const makeVCardTitle = (title) => `TITLE:${title || ''}`;
         const makeVCardPhoto = (imgBase64) => `PHOTO;ENCODING=b;TYPE=JPEG:${imgBase64}`;
-        const makeVCardTel = (phone) => `TEL;TYPE=CELL:${phone}`;
-        const makeVCardAdr = (addressLine1, addressLine2) => `ADR;TYPE=HOME:;;${addressLine1};${addressLine2};;;;`;
-        const makeVCardEmail = (email) => `EMAIL:${email}`;
-        const makeVCardUrl = (url) => `URL:${url}`;
-        const makeVCardSocialProfile = (type, url) => `X-SOCIALPROFILE;TYPE=${type}:${url}`;
+        const makeVCardTel = (phone) => `TEL;TYPE=CELL:${phone || ''}`;
+        const makeVCardAdr = (addressLine1, addressLine2) =>
+            `ADR;TYPE=HOME:;;${addressLine1 || ''};${addressLine2 || ''};;;;`;
+        const makeVCardEmail = (email) => `EMAIL:${email || ''}`;
+        const makeVCardUrl = (url) => `URL:${url || ''}`;
+        const makeVCardSocialProfile = (type, url) => `X-SOCIALPROFILE;TYPE=${type}:${url || ''}`;
         const makeVCardTimeStamp = () => `REV:${new Date().toISOString()}`;
 
         function makeVCard(profileImageBase64) {
             const firstName = '{{ optional($nfc_card->nfcData)->first_name }}';
             const lastName = '{{ optional($nfc_card->nfcData)->last_name }}';
-            const designation = '{{ optional($nfc_card->nfcData)->designation }}';
+            const designation = '{{ optional($nfc_card)->designation }}';
             const phone = '{{ optional($nfc_card->nfcData)->phone_personal }}';
             const email = '{{ optional($nfc_card->nfcData)->email_personal }}';
             const addressLine1 = '{{ optional($nfc_card->nfcData)->address_line_one }}';
             const addressLine2 = '{{ optional($nfc_card->nfcData)->address_line_two }}';
             const linkedin = '{{ optional($nfc_card->nfcData)->linkedin_url }}';
-
 
             let vcard = `BEGIN:VCARD\n${makeVCardVersion()}\n`;
             vcard += `${makeVCardInfo(lastName, firstName)}\n`;
@@ -1216,7 +1220,7 @@
         function handleContactButtonClick(event, isMobile) {
             event.preventDefault(); // Prevent default link behavior
 
-            const profileImage = '{{ asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) }}';
+            const profileImage = '{{ asset('storage/nfc/' . optional($nfc_card)->profile_image) }}';
 
             getBase64Image(profileImage, (base64Image) => {
                 const vcard = makeVCard(base64Image);
@@ -1228,7 +1232,8 @@
                     window.location.href = uri;
                 } else {
                     // Download vCard for PC
-                    downloadToFile(vcard, 'contact.vcf', 'text/vcard');
+                    const fileName = `${firstName}_${lastName}_contact.vcf`;
+                    downloadToFile(vcard, fileName, 'text/vcard');
                 }
             });
         }
@@ -1241,6 +1246,7 @@
             handleContactButtonClick(event, true);
         });
     </script>
+
 </body>
 
 {{-- </html> --}}
