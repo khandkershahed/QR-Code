@@ -248,7 +248,7 @@
             $('#' + selectedValue + '-form').show();
         });
     </script>
-    @stack('scripts')
+
 
     <script>
         var containers = document.querySelectorAll(".draggable-zone");
@@ -292,7 +292,7 @@
             new CKEditorInitializer('.kt_docs_ckeditor_classic');
         });
     </script>
-
+@stack('scripts')
 </body>
 
 </html>

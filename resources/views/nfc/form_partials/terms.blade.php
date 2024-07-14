@@ -1,13 +1,15 @@
-<form class="terms_form form" method="POST" action="{{ route('nfc.terms.add') }}" autocomplete="off" enctype="multipart/form-data">
+<form class="terms_form form" method="POST" action="{{ route('nfc.terms.add') }}" autocomplete="off"
+    enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="card_id" value="{{ $nfc_card->id }}">
     <div class="row mt-10">
         <div class="fv-row col-lg-12 mb-7">
             <x-metronic.label class="required fw-semibold fs-6 mb-2">Terms & Condition</x-metronic.label>
             <div class="py-5" data-bs-theme="light">
-                <textarea name="terms_condition" class="kt_docs_ckeditor_classic">
+                <textarea name="terms_condition" class="form-control" rows="10">{{ optional($nfc_card->nfcData)->terms_condition }}</textarea>
+                {{-- <textarea name="terms_condition" class="terms_editor">
                     {{ optional($nfc_card->nfcData)->terms_condition }}
-                </textarea>
+                </textarea> --}}
             </div>
         </div>
     </div>
@@ -26,14 +28,35 @@
 @push('scripts')
     <!-- Include CKEditor Script from an alternative CDN -->
     <script>
-        function submitTermsForm() {
-            var form = $('.terms_form');
-            var url = form.attr('action');
-            var formData = new FormData(form[0]);
-            var terms_container = $('.terms_container');
+        $(document).ready(function() {
+            function submitTermsForm(event) {
+                event.preventDefault(); // Prevent default form submission
 
-            var submitButton = form.find('.kt_docs_formvalidation_text_submit');
-            submitButton.prop('disabled', true).addClass('disabled');
+                var form = $('.terms_form');
+                var url = form.attr('action');
+                var formData = new FormData(form[0]);
+                var terms_container = $('.terms_container');
+                var submitButton = form.find('.kt_docs_formvalidation_text_submit');
+                var isValid = true;
+
+                // Remove any existing error messages and red borders
+                form.find('.error-message').remove();
+                form.find('.form-control').removeClass('is-invalid');
+
+                // Validate each required field (adjust field names as needed)
+                form.find('[name="terms_condition"]').each(function() {
+                    var fieldValue = $(this).val().trim();
+                    if (!fieldValue) {
+                        // Show error message for the current field
+                        $(this).addClass('is-invalid');
+                        $(this).after('<p class="error-message text-danger">This field is required.</p>');
+                        isValid = false;
+                    }
+                });
+
+                if (isValid) {
+                    // Optionally disable the submit button to prevent multiple submissions
+                    submitButton.prop('disabled', true).addClass('disabled');
 
             $.ajax({
                 type: 'POST',
@@ -52,6 +75,7 @@
                         terms_container.empty();
                         terms_container.html(response.terms_view);
                         toastr.success('Data saved successfully!', 'Success');
+
                     } else {
                         toastr.error('Unexpected response format.', 'Error');
                     }
@@ -66,5 +90,10 @@
                 }
             });
         }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new CKEditorInitializer('.terms_editor');
+        });
     </script>
 @endpush

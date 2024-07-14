@@ -32,15 +32,16 @@
                                 <td>
                                     <div>
                                         <img class="img-fluid" width="50px" height="50px"
-                                            src="{{ asset('storage/nfc/service/' . $service->service_icon) }}" alt="">
+                                            src="{{ asset('storage/nfc/service/' . $service->service_icon) }}"
+                                            alt="">
                                     </div>
                                 </td>
                                 <td>
                                     <p class="mb-0">{{ $service->service_name }}</p>
                                 </td>
                                 <td>
-                                    <a href="{{ $service->service_url }}" target="_blank" class="text-primary">Service Url <i
-                                            class="fa-solid fa-link text-primary"></i></a>
+                                    <a href="{{ $service->service_url }}" target="_blank" class="text-primary">Service
+                                        Url <i class="fa-solid fa-link text-primary"></i></a>
                                 </td>
                                 <td>
                                     <a href="{{ route('nfc.service.destroy', $service->id) }}" class="text-danger"
@@ -95,7 +96,7 @@
                     </div>
                     <div class="fv-row mb-5">
                         <x-metronic.label for="service_icon"
-                            class="fw-semibold fs-6 mb-2">{{ __('Service Icon/Image') }}
+                            class="fw-semibold fs-6 mb-2 required">{{ __('Service Icon/Image') }}
                         </x-metronic.label>
                         <x-metronic.file-input id="service_icon" name="service_icon"
                             :value="old('service_icon')"></x-metronic.file-input>
@@ -122,101 +123,144 @@
 
 @push('scripts')
     <script>
-        function submitServiceForm() {
-            var form = $('.service_form');
-            var url = form.attr('action');
-            var formData = new FormData(form[0]);
-            var service_container = $('.service_container');
+        $(document).ready(function() {
+            // Function to submit the service form
+            function submitServiceForm(event) {
+                event.preventDefault(); // Prevent default form submission
 
-            var modalElement = document.getElementById('serviceCreateModal');
-            var modalInstance = bootstrap.Modal.getInstance(modalElement);
+                var form = $('.service_form');
+                var url = form.attr('action');
+                var formData = new FormData(form[0]);
+                var service_container = $('.service_container');
+                var modalElement = document.getElementById('serviceCreateModal');
+                var modalInstance = bootstrap.Modal.getInstance(modalElement);
+                var submitButton = form.find('.kt_docs_formvalidation_text_submit');
+                var isValid = true;
 
-            // Optionally disable the submit button to prevent multiple submissions
-            var submitButton = form.find('.kt_docs_formvalidation_text_submit');
-            submitButton.prop('disabled', true).addClass('disabled');
+                // Remove any existing error messages and red borders
+                form.find('.error-message').remove();
+                form.find('.form-control').removeClass('is-invalid');
 
-            $.ajax({
-                type: 'POST',
-                url: url,
-                data: formData,
-                cache: false,
-                contentType: false,
-                processData: false,
-                beforeSend: function() {
-                    // Show loading spinner or indicator
-                    submitButton.find('.indicator-label').hide();
-                    submitButton.find('.indicator-progress').show();
-                },
-                success: function(response) {
-                    console.log('Form submitted successfully:', response);
-                    if (response.service_view) {
-                        console.log('Updating container with new HTML');
-                        modalInstance.hide(); // Use Bootstrap's modal hide method
-                        service_container.html(response.service_view); // Replace HTML directly
-                        toastr.success('Data saved successfully!', 'Success');
-                    } else {
-                        console.error('Unexpected response format:', response);
-                        toastr.error('Unexpected response format.', 'Error');
-                    }
-                    // Optionally reset the form or perform other actions
-                    // form.trigger('reset');
-                },
-                error: function(xhr, status, error) {
-                    // Handle error response
-                    console.error('Error:', error);
-                    toastr.error('An error occurred while saving data.', 'Error');
-                },
-                complete: function() {
-                    submitButton.prop('disabled', false).removeClass('disabled');
-                    submitButton.find('.indicator-label').show();
-                    submitButton.find('.indicator-progress').hide();
-                }
-            });
-        }
+                // Validate each required field (adjust field names as needed)
+                form.find('[name="service_name"], [name="service_icon"]')
+                    .each(function() {
+                        var fieldValue = $(this).val().trim();
+                        if (!fieldValue) {
+                            // Show error message for the current field
+                            $(this).addClass('is-invalid');
+                            $(this).after('<p class="error-message text-danger">This field is required.</p>');
+                            isValid = false;
+                        }
+                    });
 
-        function deleteService(event, deleteUrl) {
-            event.preventDefault(); // Prevent the default link action
-            var service_container = $('.service_container');
-            Swal.fire({
-                title: "Are you sure?",
-                text: "You won't be able to revert this!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonText: "Yes, delete it!",
-                cancelButtonText: "No, cancel!",
-                buttonsStyling: false,
-                customClass: {
-                    confirmButton: "btn btn-danger",
-                    cancelButton: "btn btn-success",
-                },
-            }).then(function(result) {
-                if (result.isConfirmed) {
+                if (isValid) {
+                    // Disable the submit button to prevent multiple submissions
+                    submitButton.prop('disabled', true).addClass('disabled');
+
                     $.ajax({
-                        url: deleteUrl,
-                        type: "DELETE",
-                        headers: {
-                            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                        type: 'POST',
+                        url: url,
+                        data: formData,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        beforeSend: function() {
+                            // Show loading spinner or indicator
+                            submitButton.find('.indicator-label').hide();
+                            submitButton.find('.indicator-progress').show();
                         },
                         success: function(response) {
-                            $('.service_container').html('');
-                            $('.service_container').html(response
-                            .service_delete_view); // Replace HTML directly
-                            Swal.fire("Deleted!", "Your service has been deleted.", "success").then(
-                                function() {
-                                    console.log('Updating container with new HTML');
-                                });
-                            console.log('Updating container with new HTML');
-                            toastr.success('Service deleted successfully!', 'Success');
+                            console.log('Form submitted successfully:', response);
+                            if (response.service_view) {
+                                console.log('Updating container with new HTML');
+                                modalInstance.hide(); // Use Bootstrap's modal hide method
+                                service_container.html(response.service_view); // Replace HTML directly
+                                toastr.success('Data saved successfully!', 'Success');
+                            } else {
+                                console.error('Unexpected response format:', response);
+                                toastr.error('Unexpected response format.', 'Error');
+                            }
                         },
                         error: function(xhr, status, error) {
-                            Swal.fire("Error Occurred!",
-                                "An error occurred while deleting the service.", "error");
+                            console.error('Error:', error);
+                            toastr.error('An error occurred while saving data.', 'Error');
                         },
+                        complete: function() {
+                            submitButton.prop('disabled', false).removeClass('disabled');
+                            submitButton.find('.indicator-label').show();
+                            submitButton.find('.indicator-progress').hide();
+                        }
                     });
-                } else if (result.dismiss === Swal.DismissReason.cancel) {
-                    Swal.fire("Cancelled", "Your service is safe :)", "error");
+                } else {
+                    // Show SweetAlert error message for validation errors
+                    Swal.fire({
+                        text: 'Some input fields are not filled up!',
+                        icon: 'error',
+                        buttonsStyling: false,
+                        confirmButtonText: 'Ok, got it!',
+                        customClass: {
+                            confirmButton: 'btn btn-primary'
+                        }
+                    });
                 }
+            }
+
+            // Function to handle service deletion
+            function deleteService(event, deleteUrl) {
+                event.preventDefault(); // Prevent the default link action
+                var service_container = $('.service_container');
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonText: "Yes, delete it!",
+                    cancelButtonText: "No, cancel!",
+                    buttonsStyling: false,
+                    customClass: {
+                        confirmButton: "btn btn-danger",
+                        cancelButton: "btn btn-success",
+                    },
+                }).then(function(result) {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: deleteUrl,
+                            type: "DELETE",
+                            headers: {
+                                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                            },
+                            success: function(response) {
+                                service_container.html(response
+                                .service_delete_view); // Replace HTML directly
+                                Swal.fire("Deleted!", "Your service has been deleted.",
+                                    "success").then(
+                                    function() {
+                                        console.log('Updating container with new HTML');
+                                    });
+                                toastr.success('Service deleted successfully!', 'Success');
+                            },
+                            error: function(xhr, status, error) {
+                                Swal.fire("Error Occurred!",
+                                    "An error occurred while deleting the service.", "error"
+                                    );
+                            },
+                        });
+                    } else if (result.dismiss === Swal.DismissReason.cancel) {
+                        Swal.fire("Cancelled", "Your service is safe :)", "error");
+                    }
+                });
+            }
+
+            // Attach the submit handler to the service form
+            $('.service_form').on('submit', submitServiceForm);
+
+            // Re-enable the submit button when any input field is changed
+            $('.service_form input, .service_form select').on('input change', function() {
+                var submitButton = $('.service_form').find('.kt_docs_formvalidation_text_submit');
+                submitButton.prop('disabled', false).removeClass('disabled');
+                $(this).removeClass('is-invalid');
+                $(this).next('.error-message').remove();
             });
-        }
+        });
     </script>
 @endpush

@@ -1,24 +1,4 @@
-<x-app-layout :title="'Virtual Card List'">
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="d-flex align-items-center rounded py-5 px-5 bg-light-primary" style="border: 1px dashed blue;">
-                <i class="ki-duotone ki-information-5 fs-3x text-warning me-5">
-                    <span class="path1"></span><span class="path2"></span><span class="path3"></span>
-                </i>
-                <!--begin::Description-->
-                <div class="d-flex justify-content-between align-items-center w-100">
-                    <div class="text-gray-700 fw-bold d-flex ">
-                        <strong class=""> Virtual Card Lists
-                        </strong>
-                    </div>
-                    <div>
-                        <a href="{{ route('user.virtual-card.create') }}" class="btn btn-sm btn-primary rounded-2 me-3">
-                            Create Virtual Card
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+
 
 
         <div class="col-lg-12 mt-10">
@@ -141,7 +121,7 @@
                                         </a>
                                     </td>
                                     <td class="pe-0 text-center">
-                                        <a href="#" class="btn btn-light-primary btn-active-light-primary btn-sm"
+                                        {{-- <a href="#" class="btn btn-light-primary btn-active-light-primary btn-sm"
                                             data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end"
                                             data-kt-menu-flip="top-end">
                                             Actions
@@ -160,15 +140,15 @@
                                                     </g>
                                                 </svg>
                                             </span>
-                                        </a>
+                                        </a> --}}
                                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
                                             data-kt-menu="true" style="">
                                             <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                {{-- <a href="#" class="menu-link px-3" data-bs-toggle="modal"
+                                            {{-- <div class="menu-item px-3">
+                                                <a href="#" class="menu-link px-3" data-bs-toggle="modal"
                                                     data-bs-target="#message_modal_{{ $nfc_card->id }}">
                                                     All messages
-                                                </a> --}}
+                                                </a>
                                                 <a href="{{ route('user.nfc-card.show', $nfc_card->code) }}"
                                                     class="menu-link px-3">
                                                     All messages
@@ -179,7 +159,7 @@
                                                     class="menu-link px-3">
                                                     Edit
                                                 </a>
-                                            </div>
+                                            </div> --}}
                                             <!--end::Menu item-->
 
                                             <!--begin::Menu item-->
@@ -199,7 +179,7 @@
                 </div>
             </div>
         </div>
-    </div>
+
 
     @foreach ($nfc_cards as $nfc_card)
         <div class="modal fade" tabindex="-1" id="message_modal_{{ $nfc_card->id }}">
@@ -1045,4 +1025,3 @@
             </div>
         </div>
     @endforeach
-</x-app-layout>

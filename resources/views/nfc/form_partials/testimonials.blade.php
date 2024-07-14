@@ -37,7 +37,7 @@
                         </div>
                         <div class="fv-row mb-5">
                             <label class="fw-semibold fs-6 mb-2">Description</label>
-                            <textarea name="testimonial_description" class="form-control form-control-solid mb-3 mb-lg-0"
+                            <textarea name="testimonial_description" class="form-control form-control-solid mb-3 mb-lg-0 required"
                                 id="testimonial_description" rows="3">{{ old('testimonial_description') }}</textarea>
                         </div>
                         <div class="fv-row mb-5">
@@ -130,58 +130,103 @@
 
 @push('scripts')
     <script>
-        function submitTestimonialForm() {
-            var form = $('.testimonial_form');
-            var url = form.attr('action');
-            var formData = new FormData(form[0]);
-            var testimonial_container = $('.testimonial_container');
+        $(document).ready(function() {
+            function submitTestimonialForm(event) {
+                event.preventDefault(); // Prevent default form submission
 
-            var modalElement = document.getElementById('testimonialCreateModal');
-            var modalInstance = bootstrap.Modal.getInstance(modalElement);
+                var form = $('.testimonial_form');
+                var url = form.attr('action');
+                var formData = new FormData(form[0]);
+                var testimonial_container = $('.testimonial_container');
+                var submitButton = form.find('.kt_docs_formvalidation_text_submit');
+                var isValid = true;
 
-            // Optionally disable the submit button to prevent multiple submissions
-            var submitButton = form.find('.kt_docs_formvalidation_text_submit');
-            submitButton.prop('disabled', true).addClass('disabled');
+                // Remove any existing error messages and red borders
+                form.find('.error-message').remove();
+                form.find('.form-control').removeClass('is-invalid');
 
-            $.ajax({
-                type: 'POST',
-                url: url,
-                data: formData,
-                cache: false,
-                contentType: false,
-                processData: false,
-                beforeSend: function() {
-                    // Show loading spinner or indicator
-                    submitButton.find('.indicator-label').hide();
-                    submitButton.find('.indicator-progress').show();
-                },
-                success: function(response) {
-                    console.log('Form submitted successfully:', response);
-                    if (response.testimonial_view) {
-                        console.log('Updating container with new HTML');
-                        modalInstance.hide(); // Use Bootstrap's modal hide method
-                        testimonial_container.html(response.testimonial_view); // Replace HTML directly
-                        toastr.success('Data saved successfully!', 'Success');
-                    } else {
-                        console.error('Unexpected response format:', response);
-                        toastr.error('Unexpected response format.', 'Error');
-                    }
-                    // Optionally reset the form or perform other actions
-                    // form.trigger('reset');
-                },
-                error: function(xhr, status, error) {
-                    // Handle error response
-                    console.error('Error:', error);
-                    toastr.error('An error occurred while saving data.', 'Error');
-                },
-                complete: function() {
-                    submitButton.prop('disabled', false).removeClass('disabled');
-                    submitButton.find('.indicator-label').show();
-                    submitButton.find('.indicator-progress').hide();
+                // Validate each required field (adjust field names as needed)
+                form.find('[name="testimonial_name"], [name="testimonial_description"]')
+                    .each(function() {
+                        var fieldValue = $(this).val().trim();
+                        if (!fieldValue) {
+                            // Show error message for the current field
+                            $(this).addClass('is-invalid');
+                            $(this).after('<p class="error-message text-danger">This field is required.</p>');
+                            isValid = false;
+                        }
+                    });
+
+                if (isValid) {
+                    // Optionally disable the submit button to prevent multiple submissions
+                    submitButton.prop('disabled', true).addClass('disabled');
+
+                    $.ajax({
+                        type: 'POST',
+                        url: url,
+                        data: formData,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        beforeSend: function() {
+                            // Show loading spinner or indicator
+                            submitButton.find('.indicator-label').hide();
+                            submitButton.find('.indicator-progress').show();
+                        },
+                        success: function(response) {
+                            console.log('Form submitted successfully:', response);
+                            if (response.testimonial_view) {
+                                console.log('Updating container with new HTML');
+                                testimonial_container.empty();
+                                testimonial_container.html(response.testimonial_view);
+                                toastr.success('Data saved successfully!', 'Success');
+                            } else {
+                                console.error('Unexpected response format:', response);
+                                toastr.error('Unexpected response format.', 'Error');
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            // Handle error response
+                            console.error('Error:', error);
+                            toastr.error('An error occurred while saving data.', 'Error');
+                        },
+                        complete: function() {
+                            // Re-enable the submit button and hide the loading indicator
+                            submitButton.prop('disabled', false).removeClass('disabled');
+                            submitButton.find('.indicator-label').show();
+                            submitButton.find('.indicator-progress').hide();
+                        }
+                    });
+                } else {
+                    // Show SweetAlert error message for validation errors
+                    Swal.fire({
+                        text: 'Some input fields are not filled up!',
+                        icon: 'error',
+                        buttonsStyling: false,
+                        confirmButtonText: 'Ok, got it!',
+                        customClass: {
+                            confirmButton: 'btn btn-primary'
+                        }
+                    });
                 }
-            });
-        }
+            }
 
+            // Attach the submit handler to the testimonial form
+            $('.testimonial_form').on('submit', function(event) {
+                submitTestimonialForm(event);
+            });
+
+            // Re-enable the submit button when any input field is changed
+            $('.testimonial_form input, .testimonial_form select').on('input change', function() {
+                var submitButton = $('.testimonial_form').find('.kt_docs_formvalidation_text_submit');
+                submitButton.prop('disabled', false).removeClass('disabled');
+                $(this).removeClass('is-invalid');
+                $(this).next('.error-message').remove();
+            });
+        });
+    </script>
+
+    <script>
         function deleteTestimonial(event, deleteUrl) {
             event.preventDefault(); // Prevent the default link action
             var testimonial_container = $('.testimonial_container');
@@ -207,7 +252,8 @@
                         },
                         success: function(response) {
                             $('.testimonial_container').html('');
-                            $('.testimonial_container').html(response.testimonial_delete_view); // Replace HTML directly
+                            $('.testimonial_container').html(response
+                                .testimonial_delete_view); // Replace HTML directly
                             Swal.fire("Deleted!", "Your service has been deleted.", "success").then(
                                 function() {
                                     console.log('Updating container with new HTML');
@@ -227,4 +273,3 @@
         }
     </script>
 @endpush
-

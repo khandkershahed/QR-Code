@@ -34,7 +34,7 @@ Route::middleware('auth')->prefix('user')->name('user.')->group(function () {
 
     Route::get('qrcode/summary/{id}', [QrCodeController::class, 'qrSummary'])->name('qr.summary');
     Route::get('template/qrcode', [QrCodeController::class, 'qrTemplate'])->name('qr.template');
-    Route::get('template/nfc-card', [NfcCardController::class, 'nfcTemplate'])->name('nfc.template');
+    Route::get('template/nfc-card', [VirtualCardController::class, 'nfcTemplate'])->name('nfc.template');
     Route::post('/update-nfc-session', [NfcCardController::class, 'updateNFCTemplateSession'])->name('updateNfcSession');
 });
 Route::post('user/qrcode/preview', [QrCodeController::class, 'qrPreview'])->name('user.qr.preview');

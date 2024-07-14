@@ -31,7 +31,7 @@
             //     'value' => 'template-six',
             //     'image' => 'frontend/assets/images/nfc-templates/template_six.jpg',
             // ],
-        ]"  :selectedTemplate="$nfc_card->nfc_template" />
+        ]" :selectedTemplate="$nfc_card->nfc_template" />
 
         <div class="d-flex justify-content-end">
             <button type="submit" onclick="submitTemplateForm()"
@@ -48,50 +48,94 @@
 
     @push('scripts')
         <script>
-            function submitTemplateForm(event) {
-                // event.preventDefault(); // Prevent default form submission
+            $(document).ready(function() {
+                function submitTemplateForm(event) {
+                    event.preventDefault(); // Prevent default form submission
 
-                var form = $('.template_form');
-                var url = form.attr('action');
-                var formData = new FormData(form[0]);
-                var template_container = $('.template_container');
+                    var form = $('.template_form');
+                    var url = form.attr('action');
+                    var formData = new FormData(form[0]);
+                    var template_container = $('.template_container');
+                    var submitButton = form.find('.kt_docs_formvalidation_text_submit');
+                    var isValid = true;
 
-                var submitButton = form.find('.kt_docs_formvalidation_text_submit');
-                submitButton.prop('disabled', true).addClass('disabled');
+                    // Remove any existing error messages and red borders
+                    form.find('.error-message').remove();
+                    form.find('.form-control').removeClass('is-invalid');
 
-                $.ajax({
-                    type: 'POST',
-                    url: url,
-                    data: formData,
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    beforeSend: function() {
-                        submitButton.find('.indicator-label').hide();
-                        submitButton.find('.indicator-progress').show();
-                    },
-                    success: function(response) {
-                        console.log('Form submitted successfully:', response);
-                        if (response.template_view) {
-                            console.log('SEO view HTML:', response.template_view);
-                            template_container.empty();
-                            template_container.html(response.template_view);
-                            toastr.success('Data saved successfully!', 'Success');
-                        } else {
-                            console.error('Unexpected response format:', response);
-                            toastr.error('Unexpected response format.', 'Error');
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        console.error('Error:', xhr.responseText);
-                        toastr.error('An error occurred while saving data.', 'Error');
-                    },
-                    complete: function() {
-                        submitButton.prop('disabled', false).removeClass('disabled');
-                        submitButton.find('.indicator-label').show();
-                        submitButton.find('.indicator-progress').hide();
+                    // Validate each required field (adjust field names as needed)
+                    form.find('[name="nfc_template"]') // Replace with your actual field names
+                        .each(function() {
+                            var fieldValue = $(this).val().trim();
+                            if (!fieldValue) {
+                                // Show error message for the current field
+                                $(this).addClass('is-invalid');
+                                $(this).after('<p class="error-message text-danger">This field is required.</p>');
+                                isValid = false;
+                            }
+                        });
+
+                    if (isValid) {
+                        // Disable the submit button to prevent multiple submissions
+                        submitButton.prop('disabled', true).addClass('disabled');
+
+                        $.ajax({
+                            type: 'POST',
+                            url: url,
+                            data: formData,
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            beforeSend: function() {
+                                submitButton.find('.indicator-label').hide();
+                                submitButton.find('.indicator-progress').show();
+                            },
+                            success: function(response) {
+                                console.log('Form submitted successfully:', response);
+                                if (response.template_view) {
+                                    console.log('SEO view HTML:', response.template_view);
+                                    template_container.empty();
+                                    template_container.html(response.template_view);
+                                    toastr.success('Data saved successfully!', 'Success');
+
+                                    // Disable the submit button after successful submission
+                                    submitButton.prop('disabled', true).addClass('disabled');
+                                } else {
+                                    console.error('Unexpected response format:', response);
+                                    toastr.error('Unexpected response format.', 'Error');
+                                }
+                            },
+                            error: function(xhr, status, error) {
+                                console.error('Error:', xhr.responseText);
+                                toastr.error('An error occurred while saving data.', 'Error');
+                            },
+                            complete: function() {
+                                submitButton.find('.indicator-label').show();
+                                submitButton.find('.indicator-progress').hide();
+                            }
+                        });
+                    } else {
+                        // Show SweetAlert error message for validation errors
+                        Swal.fire({
+                            text: 'Some input fields are not filled up!',
+                            icon: 'error',
+                            buttonsStyling: false,
+                            confirmButtonText: 'Ok, got it!',
+                            customClass: {
+                                confirmButton: 'btn btn-primary'
+                            }
+                        });
                     }
+                }
+
+                // Attach the submit handler to the form
+                $('.general_info_form').on('submit', submitGeneralInfoForm);
+
+                // Optional: Hide error message and remove red border on input change
+                $('.general_info_form input, .general_info_form select').on('input change', function() {
+                    $(this).removeClass('is-invalid');
+                    $(this).next('.error-message').remove();
                 });
-            }
+            });
         </script>
     @endpush
