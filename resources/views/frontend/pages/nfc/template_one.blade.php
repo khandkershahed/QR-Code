@@ -554,33 +554,38 @@
                                 </div>
                             </div>
                             <div class="service-slide pt-3">
-                                @foreach ($nfc_card->nfcService as $service)
-                                    <div class="card w-100 me-2 rounded-0 border-0">
-                                        <div class="card-body border-0 bg-dark">
-                                            <div>
-                                                <img class="card-img-top"
-                                                    src="{{ !empty($service->service_icon) && file_exists(public_path('storage/nfc/service/' . optional($service)->service_icon)) ? asset('storage/nfc/service/' . optional($service)->service_icon) : asset('frontend/images/no_image.png') }}"
-                                                    alt=""/>
+                                @foreach ($nfc_card->nfcService->chunk(2) as $serviceChunk)
+                                    <div class="d-flex">
+                                        @foreach ($serviceChunk as $service)
+                                            <div class="card w-50 me-2 rounded-0 border-0">
+                                                <div class="card-body border-0 bg-dark">
+                                                    <div>
+                                                        <img class="card-img-top"
+                                                            src="{{ !empty($service->service_icon) && file_exists(public_path('storage/nfc/service/' . optional($service)->service_icon)) ? asset('storage/nfc/service/' . optional($service)->service_icon) : asset('frontend/images/no_image.png') }}"
+                                                            alt="" />
+                                                    </div>
+                                                    <div class="mt-3 text-center">
+                                                        <a href="{{ $service->service_url }}" target="_blank"
+                                                            rel="noopener noreferrer">
+                                                            <h4 class="mb-0 special-font text-white">
+                                                                {{ $service->service_name }}
+                                                            </h4>
+                                                        </a>
+
+                                                        <p class="text-white">
+                                                            {!! $service->service_description !!}
+                                                        </p>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="mt-3 text-center">
-                                                <h4 class="mb-0 special-font text-white">
-                                                    <a href="{{ $service->service_url }}" target="_blank"
-                                                        rel="noopener noreferrer">{{ $service->service_name }}</a>
-                                                    <a href="{{ $service->service_url }}" target="_blank"
-                                                        rel="noopener noreferrer">{{ $service->service_name }}</a>
-                                                </h4>
-                                                <p class="text-white">
-                                                    {{ $service->service_description }}
-                                                    {{ $service->service_description }}
-                                                </p>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 @endforeach
                             </div>
                         </div>
                     </section>
                 @endif
+
                 <!-- Product -->
                 @if ($nfc_card->products_show == '1')
                     <section>
@@ -655,12 +660,13 @@
                                     <div class="galery-slide">
                                         @foreach ($nfc_card->nfcGallery as $gallery)
                                             <div>
-                                                @if ($gallery->gallery_type =="image")
+                                                @if ($gallery->gallery_type == 'image')
                                                     <img class="w-100 img-fluid"
                                                         src="{{ !empty($gallery->gallery_attachment) && file_exists(public_path('storage/nfc/gallery/' . optional($gallery)->gallery_attachment)) ? asset('storage/nfc/gallery/' . optional($gallery)->gallery_attachment) : asset('frontend/images/no_image.png') }}"
                                                         alt="" />
                                                 @else
-                                                    <iframe src="{{ optional($gallery)->gallery_attachment}}" frameborder="0"></iframe>
+                                                    <iframe src="{{ optional($gallery)->gallery_attachment }}"
+                                                        frameborder="0"></iframe>
                                                 @endif
                                             </div>
                                         @endforeach
