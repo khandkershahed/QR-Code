@@ -1,4 +1,4 @@
-<form class="general_info_form form" method="POST" action="{{ route('nfc.general_info.add') }}" autocomplete="off"
+<form class="general_info_form form" id="generalInfoForm" method="POST" action="{{ route('nfc.general_info.add') }}" autocomplete="off"
     enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="card_id" value="{{ $nfc_card->id }}">
@@ -139,7 +139,7 @@
             <x-metronic.label class="fw-semibold fs-6 mb-2">Default
                 Language</x-metronic.label>
             <select class="form-select" data-control="select2" data-placeholder="English" name="default_language"
-                :value="optional($nfc_card - > nfcData) - > default_language">
+                :value="optional($nfc_card->nfcData)->default_language">
                 <option></option>
                 <option value="english" selected>English</option>
                 <option value="china">China</option>
@@ -150,8 +150,16 @@
     </div>
 
     <div class="d-flex justify-content-end">
-        <button type="submit" onclick="submitGeneralInfoForm()"
+        {{-- <button type="submit" onclick="submitGeneralInfoForm()"
             class="kt_docs_formvalidation_text_submit btn btn-primary mt-5" id="submitBtn">
+            <span class="indicator-label">
+                Save Data
+            </span>
+            <span class="indicator-progress" style="display: none;">
+                Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+            </span>
+        </button> --}}
+        <button type="submit" class="kt_docs_formvalidation_text_submit btn btn-primary mt-5" id="submitBtn">
             <span class="indicator-label">
                 Save Data
             </span>
@@ -164,99 +172,99 @@
 
 @push('scripts')
     <script>
-        $(document).ready(function() {
-            function submitGeneralInfoForm(e) {
-                e.preventDefault(); // Prevent default form submission
+        // $(document).ready(function() {
+        //     function submitGeneralInfoForm(e) {
+        //         e.preventDefault(); // Prevent default form submission
 
-                var form = $('.general_info_form');
-                var url = form.attr('action');
-                var formData = new FormData(form[0]);
-                var general_info_container = $('.general_info_container');
-                var submitButton = form.find('.kt_docs_formvalidation_text_submit');
-                var isValid = true;
+        //         var form = $('.general_info_form');
+        //         var url = form.attr('action');
+        //         var formData = new FormData(form[0]);
+        //         var general_info_container = $('.general_info_container');
+        //         var submitButton = form.find('.kt_docs_formvalidation_text_submit');
+        //         var isValid = true;
 
-                // Remove any existing error messages and red borders
-                form.find('.error-message').remove();
-                form.find('.form-control').removeClass('is-invalid');
+        //         // Remove any existing error messages and red borders
+        //         form.find('.error-message').remove();
+        //         form.find('.form-control').removeClass('is-invalid');
 
-                // Validate each required field
-                form.find(
-                    '[name="url_alias"], [name="vcard_name"], [name="first_name"], [name="last_name"], [name="email_personal"], [name="phone_personal"]'
-                ).each(function() {
-                    var fieldValue = $(this).val().trim();
-                    if (!fieldValue) {
-                        // Show error message for the current field
-                        $(this).addClass('is-invalid');
-                        $(this).after('<p class="error-message text-danger">This field is required.</p>');
-                        isValid = false;
-                    }
-                });
+        //         // Validate each required field
+        //         form.find(
+        //             '[name="url_alias"], [name="vcard_name"], [name="first_name"], [name="last_name"], [name="email_personal"], [name="phone_personal"]'
+        //         ).each(function() {
+        //             var fieldValue = $(this).val().trim();
+        //             if (!fieldValue) {
+        //                 // Show error message for the current field
+        //                 $(this).addClass('is-invalid');
+        //                 $(this).after('<p class="error-message text-danger">This field is required.</p>');
+        //                 isValid = false;
+        //             }
+        //         });
 
-                if (isValid) {
-                    // Optionally disable the submit button to prevent multiple submissions
-                    submitButton.prop('disabled', true).addClass('disabled');
+        //         if (isValid) {
+        //             // Optionally disable the submit button to prevent multiple submissions
+        //             submitButton.prop('disabled', true).addClass('disabled');
 
-                    $.ajax({
-                        type: 'POST',
-                        url: url,
-                        data: formData,
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        beforeSend: function() {
-                            // Show loading spinner or indicator
-                            submitButton.find('.indicator-label').hide();
-                            submitButton.find('.indicator-progress').show();
-                        },
-                        success: function(response) {
-                            // Log the entire response to inspect it
-                            console.log('Form submitted successfully:', response);
+        //             $.ajax({
+        //                 type: 'POST',
+        //                 url: url,
+        //                 data: formData,
+        //                 cache: false,
+        //                 contentType: false,
+        //                 processData: false,
+        //                 beforeSend: function() {
+        //                     // Show loading spinner or indicator
+        //                     submitButton.find('.indicator-label').hide();
+        //                     submitButton.find('.indicator-progress').show();
+        //                 },
+        //                 success: function(response) {
+        //                     // Log the entire response to inspect it
+        //                     console.log('Form submitted successfully:', response);
 
-                            if (response.general_info_view) {
-                                console.log('Updating container with new HTML');
-                                general_info_container.empty();
-                                general_info_container.html(response.general_info_view);
-                                toastr.success('Data saved successfully!', 'Success');
-                            } else {
-                                console.error('Unexpected response format:', response);
-                                toastr.error('Unexpected response format.', 'Error');
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            // Handle error response
-                            console.error('Error:', error);
-                            toastr.error('An error occurred while saving data.', 'Error');
-                        },
-                        complete: function() {
-                            // Re-enable the submit button and hide the loading indicator
-                            submitButton.prop('disabled', false).removeClass('disabled');
-                            submitButton.find('.indicator-label').show();
-                            submitButton.find('.indicator-progress').hide();
-                        }
-                    });
-                } else {
-                    // Show SweetAlert error message for validation errors
-                    Swal.fire({
-                        text: 'Some input fields are not filled up!',
-                        icon: 'error',
-                        buttonsStyling: false,
-                        confirmButtonText: 'Ok, got it!',
-                        customClass: {
-                            confirmButton: 'btn btn-primary'
-                        }
-                    });
-                }
-            }
+        //                     if (response.general_info_view) {
+        //                         console.log('Updating container with new HTML');
+        //                         general_info_container.empty();
+        //                         general_info_container.html(response.general_info_view);
+        //                         toastr.success('Data saved successfully!', 'Success');
+        //                     } else {
+        //                         console.error('Unexpected response format:', response);
+        //                         toastr.error('Unexpected response format.', 'Error');
+        //                     }
+        //                 },
+        //                 error: function(xhr, status, error) {
+        //                     // Handle error response
+        //                     console.error('Error:', error);
+        //                     toastr.error('An error occurred while saving data.', 'Error');
+        //                 },
+        //                 complete: function() {
+        //                     // Re-enable the submit button and hide the loading indicator
+        //                     submitButton.prop('disabled', false).removeClass('disabled');
+        //                     submitButton.find('.indicator-label').show();
+        //                     submitButton.find('.indicator-progress').hide();
+        //                 }
+        //             });
+        //         } else {
+        //             // Show SweetAlert error message for validation errors
+        //             Swal.fire({
+        //                 text: 'Some input fields are not filled up!',
+        //                 icon: 'error',
+        //                 buttonsStyling: false,
+        //                 confirmButtonText: 'Ok, got it!',
+        //                 customClass: {
+        //                     confirmButton: 'btn btn-primary'
+        //                 }
+        //             });
+        //         }
+        //     }
 
-            // Attach the submit handler to the form
-            $('.general_info_form').on('submit', submitGeneralInfoForm);
+        //     // Attach the submit handler to the form
+        //     $('.general_info_form').on('submit', submitGeneralInfoForm);
 
-            // Optional: Hide error message and remove red border on input change
-            $('.general_info_form input, .general_info_form select').on('input change', function() {
-                $(this).removeClass('is-invalid');
-                $(this).next('.error-message').remove();
-            });
-        });
+        //     // Optional: Hide error message and remove red border on input change
+        //     $('.general_info_form input, .general_info_form select').on('input change', function() {
+        //         $(this).removeClass('is-invalid');
+        //         $(this).next('.error-message').remove();
+        //     });
+        // });
     </script>
     <script>
         $(document).ready(function() {
@@ -305,8 +313,62 @@
                     event.preventDefault(); // Prevent form submission
                     $('#url_alias_feedback').text(
                         'Please enter a valid alias. Only letters, numbers, and non-consecutive hyphens are allowed.'
-                        ).show();
+                    ).show();
                     $('#basic-url').addClass('is-invalid');
+                }
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#generalInfoForm').on('submit', function(e) {
+                e.preventDefault();
+
+                // Clear previous errors
+                $('.text-danger').hide().text('');
+
+                // Perform client-side validation
+                let isValid = true;
+                let requiredFields = ['url_alias', 'vcard_name', 'first_name', 'last_name',
+                    'email_personal']; // Add more required fields if needed
+
+                requiredFields.forEach(function(field) {
+                    if (!$(`[name="${field}"]`).val()) {
+                        $(`#${field}_feedback`).text('This field is required').show();
+                        isValid = false;
+                    }
+                });
+
+                // If validation passes, submit the form via AJAX
+                if (isValid) {
+                    let formData = new FormData(this);
+
+                    $.ajax({
+                        type: 'POST',
+                        url: $(this).attr('action'),
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        beforeSend: function() {
+                            $('#submitBtn').attr('disabled', true);
+                            $('.indicator-progress').show();
+                        },
+                        success: function(response) {
+                            // Update form with new values
+                            $('.general_info_container').html(response.general_info_view);
+                            $('#submitBtn').attr('disabled', false);
+                            $('.indicator-progress').hide();
+                        },
+                        error: function(xhr) {
+                            $('#submitBtn').attr('disabled', false);
+                            $('.indicator-progress').hide();
+                            let errors = xhr.responseJSON.errors;
+                            for (let key in errors) {
+                                $(`#${key}_feedback`).text(errors[key][0]).show();
+                            }
+                        }
+                    });
                 }
             });
         });
