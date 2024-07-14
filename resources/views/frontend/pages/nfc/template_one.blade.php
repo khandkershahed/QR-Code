@@ -394,9 +394,9 @@
                                                 </div>
                                                 <div class="text-white ps-3">
                                                     <small class="mb-0">E-Mail Address</small>
-                                                    <p class="mb-0 special-font fs-4">
+                                                    <p class="mb-0 special-font fs-6">
                                                         {{ $nfc_card->nfcData->email_personal }}</p>
-                                                    <p class="mb-0 special-font fs-4">
+                                                    <p class="mb-0 special-font fs-6">
                                                         {{ $nfc_card->nfcData->email_work }}</p>
                                                 </div>
                                             </div>
@@ -410,9 +410,9 @@
                                                 </div>
                                                 <div class="text-white ps-3">
                                                     <small class="mb-0">Mobile Number</small>
-                                                    <p class="mb-0 fs-4 special-font">
+                                                    <p class="mb-0 fs-6 special-font">
                                                         {{ $nfc_card->nfcData->phone_personal }}</p>
-                                                    <p class="mb-0 fs-4 special-font">
+                                                    <p class="mb-0 fs-6 special-font">
                                                         {{ $nfc_card->nfcData->phone_work }}</p>
                                                 </div>
                                             </div>
@@ -426,7 +426,7 @@
                                                 </div>
                                                 <div class="text-white ps-3">
                                                     <small class="mb-0">Date Of Birth</small>
-                                                    <p class="mb-0 fs-5 special-font">
+                                                    <p class="mb-0 fs-6 special-font">
                                                         {{ $nfc_card->nfcData->date_of_birth }}</p>
                                                 </div>
                                             </div>
@@ -440,7 +440,7 @@
                                                 </div>
                                                 <div class="text-white ps-3">
                                                     <small class="mb-0">Country</small>
-                                                    <p class="mb-0 fs-5 special-font">
+                                                    <p class="mb-0 fs-6 special-font">
                                                         {{ $nfc_card->nfcData->location }}</p>
                                                 </div>
                                             </div>
@@ -493,8 +493,6 @@
                                                                 <span><i class="fa-solid fa-diamond pe-3"></i>+1
                                                                     {{ $company->company_phone }}</span>
                                                             </p>
-                                                        </div>
-                                                        <div>
                                                             <p class="mb-0">
                                                                 <span><i
                                                                         class="fa-solid fa-diamond pe-3"></i>{{ $company->company_email }}</span>
@@ -502,7 +500,7 @@
                                                             <p class="mb-0">
                                                                 <span><i
                                                                         class="fa-solid fa-diamond pe-3"></i>{{ $company->company_address_line_one }}
-                                                                    <br>{{ $company->company_address_line_two }}
+                                                                    {{ $company->company_address_line_two }}
                                                                 </span>
                                                             </p>
                                                         </div>
