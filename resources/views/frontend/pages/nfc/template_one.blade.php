@@ -159,6 +159,24 @@
             z-index: 5;
         }
 
+        .slick-dots li button:before {
+            font-family: "slick";
+            font-size: 20px;
+            line-height: 20px;
+            position: absolute;
+            top: -45px;
+            left: 0;
+            width: auto;
+            height: auto;
+            content: "•";
+            text-align: center;
+            opacity: 0.25;
+            color: var(--template-one-color-primary);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background: transparent;
+        }
+
         .slick-prev:hover,
         .slick-prev:focus,
         .slick-next:hover,
@@ -227,6 +245,10 @@
             -webkit-box-flex: 1;
             -ms-flex: 1 1 0px;
             flex: 1 1 0;
+        }
+
+        .slick-slide {
+            height: auto;
         }
 
         .footer-nav-tem1 ul li a {
@@ -554,31 +576,29 @@
                                 </div>
                             </div>
                             <div class="service-slide pt-3">
-                                @foreach ($nfc_card->nfcService->chunk(2) as $serviceChunk)
-                                    <div class="d-flex">
-                                        @foreach ($serviceChunk as $service)
-                                            <div class="card w-50 me-2 rounded-0 border-0">
-                                                <div class="card-body border-0 bg-dark">
-                                                    <div>
-                                                        <img class="card-img-top"
-                                                            src="{{ !empty($service->service_icon) && file_exists(public_path('storage/nfc/service/' . optional($service)->service_icon)) ? asset('storage/nfc/service/' . optional($service)->service_icon) : asset('frontend/images/no_image.png') }}"
-                                                            alt="" />
-                                                    </div>
-                                                    <div class="mt-3 text-center">
-                                                        <a href="{{ $service->service_url }}" target="_blank"
-                                                            rel="noopener noreferrer">
-                                                            <h4 class="mb-0 special-font text-white">
-                                                                {{ $service->service_name }}
-                                                            </h4>
-                                                        </a>
-
-                                                        <p class="text-white">
-                                                            {!! $service->service_description !!}
-                                                        </p>
-                                                    </div>
+                                @foreach ($nfc_card->nfcService as $service)
+                                    <div class="card me-2 rounded-0 border-0 service-details-box">
+                                        <div class="card-body border-0 bg-dark">
+                                            <div>
+                                                <img class="card-img-top"
+                                                    src="{{ !empty($service->service_icon) && file_exists(public_path('storage/nfc/service/' . optional($service)->service_icon)) ? asset('storage/nfc/service/' . optional($service)->service_icon) : asset('frontend/images/no_image.png') }}"
+                                                    alt="" />
+                                            </div>
+                                            <div class="mt-3 text-center" style="">
+                                                <h4 class="mb-0 special-font text-white">
+                                                    {{ $service->service_name }}
+                                                </h4>
+                                                <p class="text-white">
+                                                    {!! $service->service_description !!}
+                                                </p>
+                                                <div class="w-50 mx-auto">
+                                                    <a href="{{ $service->service_url }}"
+                                                        class="btn btn-light rounded-0 w-100 border-2 border-dark py-2">
+                                                        View Service <i class="fa-solid fa-arrow-right-long"></i>
+                                                    </a>
                                                 </div>
                                             </div>
-                                        @endforeach
+                                        </div>
                                     </div>
                                 @endforeach
                             </div>
