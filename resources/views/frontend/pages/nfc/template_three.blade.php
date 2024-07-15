@@ -1467,26 +1467,29 @@
             </div>
         </div>
         <!-- Modal -->
-        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog load-modal modal-dialog-centered">
-                <div class="modal-content rounded-0">
-                    <div class="modal-header rounded-0 text-white"
-                        style="background-color: var(--template-three-color-primary);">
-                        <h5 class="modal-title" id="exampleModalLabel">Welcome</h5>
-                        <button type="button" class="btn-close text-white close-btns" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        This is a modal that appears on page load.
-                        <div class="pt-3">
-                            <a href="" class="btn border-0 rounded-2 btn-sm text-white"
-                                style="background-color: var(--template-three-color-primary);">View</a>
+        @if ($nfc_card->banner == '1')
+            <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog load-modal modal-dialog-centered">
+                    <div class="modal-content rounded-0">
+                        <div class="modal-header rounded-0 text-white"
+                            style="background-color: var(--template-three-color-primary);">
+                            <h5 class="modal-title" id="exampleModalLabel">
+                                {{ optional($nfc_card->nfcBanner)->banner_title }}</h5>
+                            <button type="button" class="btn-close text-white close-btns" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            {{ optional($nfc_card->nfcBanner)->banner_description }}
+                            <div class="pt-3">
+                                <a href="{{ optional($nfc_card->nfcBanner)->banner_url }}" class="btn border-0 rounded-2 btn-sm text-white"
+                                    style="background-color: var(--template-three-color-primary);">View</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        @endif
     </main>
 
     <script src="https://kit.fontawesome.com/69b7156a94.js" crossorigin="anonymous"></script>
