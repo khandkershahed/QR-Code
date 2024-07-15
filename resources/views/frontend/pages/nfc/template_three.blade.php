@@ -133,23 +133,33 @@
             justify-content: center;
         }
 
+        .social-icon-tem3 a i {
+            font-size: 22px;
+            position: relative;
+            left: 1px;
+            top: 3px;
+        }
+
         /* <!-- Date Area --> */
         .date-card-tem3 {
-            background-color: var(--template-three-color-primary);
+            background-color: #ff00008c;
         }
 
         /* <!-- Company Info --> */
 
         /* <!-- Servies Box --> */
         .service-img-tem3 img {
-            height: 170px;
-            object-fit: cover;
-            margin-top: -30px;
             width: 100%;
+            height: auto;
+            object-fit: cover;
+            margin-top: 0;
+            max-width: 100%;
+            padding: 30px;
         }
 
         .service-header-tem3 {
-            border: 5px solid var(--template-three-color-primary);
+            border-bottom: 5px solid var(--template-three-color-primary);
+            border-radius: 0px !important;
         }
 
         /* <!-- Product --> */
@@ -217,6 +227,25 @@
             /* Maintain the aspect ratio */
         }
 
+        .qr-code-img {
+            background-color: white;
+            width: 200px;
+            height: 240px;
+            object-fit: cover;
+            display: flex;
+            margin: auto;
+            margin-bottom: -50px;
+            border-radius: 7px;
+        }
+
+        .qr-code-img img {
+            margin-bottom: 0px;
+            height: 185px;
+            width: 100%;
+            object-fit: cover;
+            margin-top: 6px;
+        }
+
         /* <!-- Testimonial --> */
 
         /* <!-- Testimonial --> */
@@ -232,7 +261,8 @@
             padding-bottom: 50px;
             /* Adjust padding as needed */
         }
-        .profile-main-image-tem3{
+
+        .profile-main-image-tem3 {
             width: 150px;
             height: 150px;
             object-fit: cover;
@@ -303,7 +333,7 @@
         }
 
         .image-container-tem3 {
-            height: 555px;
+            height: 415px;
             object-fit: cover;
         }
 
@@ -324,6 +354,32 @@
             clip-path: polygon(50% -15%, -3% 100%, 103% 100%);
             position: relative;
             top: -6px;
+        }
+
+        .company-slide {
+            background-color: #ff00008c;
+            border-radius: 10px;
+        }
+
+        .slick-dots {
+            bottom: 20px;
+        }
+
+        .slick-dots li button:before {
+            font-family: 'slick';
+            font-size: 18px;
+            line-height: 20px;
+            position: absolute;
+            top: 0;
+            left: 0px;
+            width: 20px;
+            height: 20px;
+            content: '•';
+            text-align: center;
+            opacity: .25;
+            color: white;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         /* Media query for tablets and smaller devices */
@@ -393,7 +449,7 @@
                                     <img class="img-fluid w-100"
                                         style="
                         opacity: 0.8;
-                        height: 550px;
+                        height: 478px;
                         clip-path: polygon(
                           60% 0%,
                           70% 0%,
@@ -415,7 +471,7 @@
                         left: 0;
                         width: 100%;
                         height: 100%;
-                        background: #ff0000d9; /* Semi-transparent overlay */
+                        background: #ff000096; /* Semi-transparent overlay */
                         color: white; /* Text color */
                         display: flex;
                         align-items: center;
@@ -434,9 +490,9 @@
                                         <div>
                                             {{-- <img src="{{ !empty($company->company_logo) && file_exists(public_path('storage/nfc/company/' . optional($company)->company_logo)) ? asset('storage/nfc/company/' . optional($company)->company_logo) : asset('frontend/images/no_image.png') }}"
                                                 alt="" /> --}}
-                                            <h1 class="special-font text-center text-white">
+                                            {{-- <h1 class="special-font text-center text-white" style="">
                                                 {{ optional($nfc_card->nfcData)->first_name }}
-                                            </h1>
+                                            </h1> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -451,7 +507,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="d-flex justify-content-center align-items-center profile-image-tem3">
-                                    <img  class="rounded-circle profile-main-image-tem3"
+                                    <img class="rounded-circle profile-main-image-tem3"
                                         src="{{ !empty($nfc_card->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card)->profile_image) : asset('frontend/images/no_image.png') }}"
                                         alt="" />
                                 </div>
@@ -460,8 +516,9 @@
                         <!-- User Info -->
                         <div class="row">
                             <div class="col-sm-12">
-                                <div>
-                                    <h1 class="special-font text-center">{{ optional($nfc_card->nfcData)->last_name }}
+                                <div style="margin-top: -60px !important;">
+                                    <h1 class="special-font text-center">{{ optional($nfc_card->nfcData)->first_name }}
+                                        {{ optional($nfc_card->nfcData)->last_name }}
                                     </h1>
                                     <h6 class="special-font text-center">{{ optional($nfc_card)->designation }}</h6>
 
@@ -477,23 +534,26 @@
                         <div class="row pt-3">
                             <div class="col-sm-12">
                                 <div class="d-flex justify-content-center align-items-center">
-                                    <div class="social-icon-tem3">
-                                        <a href="#" class="{{ optional($nfc_card->nfcData)->facebook_url }}">
-                                            <i class="fa-brands fa-facebook"></i>
-                                        </a>
-                                        <a href="#" class="{{ optional($nfc_card->nfcData)->instagram_url }}">
-                                            <i class="fa-brands fa-instagram"></i>
-                                        </a>
-                                        <a href="#" class="{{ optional($nfc_card->nfcData)->linkedin_url }}">
-                                            <i class="fa-brands fa-linkedin-in"></i>
-                                        </a>
-                                        <a href="#" class="{{ optional($nfc_card->nfcData)->twitter_url }}">
-                                            <i class="fa-brands fa-twitter"></i>
-                                        </a>
-                                        <a href="#" class="{{ optional($nfc_card->nfcData)->youtube_url }}">
-                                            <i class="fa-brands fa-youtube"></i>
-                                        </a>
-                                    </div>
+                                    @if ($nfc_card->social_links_show == '1')
+                                        <div class="social-icon-tem3">
+                                            <a href="#" class="{{ optional($nfc_card->nfcData)->facebook_url }}">
+                                                <i class="fa-brands fa-facebook"></i>
+                                            </a>
+                                            <a href="#"
+                                                class="{{ optional($nfc_card->nfcData)->instagram_url }}">
+                                                <i class="fa-brands fa-instagram"></i>
+                                            </a>
+                                            <a href="#" class="{{ optional($nfc_card->nfcData)->linkedin_url }}">
+                                                <i class="fa-brands fa-linkedin-in"></i>
+                                            </a>
+                                            <a href="#" class="{{ optional($nfc_card->nfcData)->twitter_url }}">
+                                                <i class="fa-brands fa-twitter"></i>
+                                            </a>
+                                            <a href="#" class="{{ optional($nfc_card->nfcData)->youtube_url }}">
+                                                <i class="fa-brands fa-youtube"></i>
+                                            </a>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -786,6 +846,8 @@
                                             <div class="ps-3 pt-1">
                                                 <h6 class="special-font text-white mb-0">Location</h6>
                                                 <p class="text-white mb-0">{{ $nfc_card->nfcData->location }}</p>
+                                                <p class="text-white mb-0">{{ $nfc_card->nfcData->address_line_two }}
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -865,27 +927,39 @@
                                 <div class="col-sm-12 pb-5">
                                     <div class="text-center">
                                         <h3 class="special-font">My Company</h3>
-                                        <p
-                                            style="height: 2px;background-color: var(--template-three-color-primary);width: 50px;margin: auto; ">
+                                        <p style="height: 2px;;width: 50px;margin: auto; ">
                                         </p>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="company-slide">
                                         @foreach ($nfc_card->nfcCompany as $company)
-                                            <div class="items">
+                                            <div class="items px-4">
                                                 <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="d-flex justify-content-center">
+                                                            <div>
+                                                                <div>
+                                                                    <img class="img-fluid" width="100px"
+                                                                        style="background: var(--template-two-color-white);padding: 12px;border-radius: 100%;"
+                                                                        src="{{ !empty($company->company_logo) && file_exists(public_path('storage/nfc/company/' . optional($company)->company_logo)) ? asset('storage/nfc/company/' . optional($company)->company_logo) : asset('frontend/images/no_image.png') }}"
+                                                                        alt="" />
+                                                                </div>
+                                                                <h5 class="text-center special-font">
+                                                                    {{ $company->company_name }}</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <div class="col-sm-5">
                                                         <div class="special-font">
-                                                            <h5>{{ $company->company_name }}</h5>
                                                             <p class="text-white">
                                                                 <i class="fa-solid fa-location-dot pe-2"></i>
-                                                                {{ $company->company_address_line_one }}
+                                                                {{ $company->company_address_line_one }} <br>
                                                                 {{ $company->company_address_line_two }}
                                                             </p>
                                                             <p class="text-white">
                                                                 <i class="fa-solid fa-globe pe-2"></i>
-                                                                {{ $company->company_website }}
+                                                                {{ $company->company_website ? preg_replace('/^(https?:\/\/)?(www\.)?/', '', $company->company_website) : '' }}
                                                             </p>
                                                             <p class="text-white">
                                                                 <i class="fa-solid fa-phone pe-2"></i>
@@ -894,8 +968,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-7">
-                                                        <!-- 32 Word -->
-                                                        <p>
+                                                        <p class="text-white">
                                                             {{ $company->company_description }}
                                                         </p>
                                                     </div>
@@ -921,7 +994,7 @@
                                     <div class="row pt-5">
                                         @foreach ($nfc_card->nfcService as $service)
                                             <div class="col-sm-6">
-                                                <div class="card border-0 mb-5">
+                                                <div class="card border-0 mb-4">
                                                     <div class="card-header p-0 rounded-2 service-header-tem3">
                                                         <div class="service-img-tem3">
                                                             <img class="img-fluid rounded-2"
@@ -934,7 +1007,7 @@
                                                             <h6 class="special-font fw-bold">
                                                                 {{ $service->service_name }}
                                                             </h6>
-                                                            <p class="text-justify"
+                                                            <p class="text-justify mb-0"
                                                                 style="font-size: 14px !important">
                                                                 {{ $service->service_description }}
                                                             </p>
@@ -945,188 +1018,207 @@
                                         @endforeach
                                     </div>
                                     <!-- Business Hour -->
-                                    <div class="parallax-background px-0">
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <div class="text-center">
-                                                        <h3 class="special-font">My Appointment</h3>
-                                                        <p
-                                                            style="height: 2px;background-color: var( --template-three-color-primary);width: 50px;margin: auto; ">
-                                                        </p>
+                                    @if ($nfc_card->business_hours_show == '1')
+                                        <div class="parallax-background px-0">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="text-center">
+                                                            <h3 class="special-font">Business Hour</h3>
+                                                            <p
+                                                                style="height: 2px;background-color: var( --template-three-color-primary);width: 50px;margin: auto; ">
+                                                            </p>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-sm-12">
-                                                    <div class="table-responsive">
-                                                        <table class="table bg-transparent">
-                                                            <thead class="text-center">
-                                                                <tr>
-                                                                    <th scope="col">
-                                                                        Day
-                                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                                            version="1.1"
-                                                                            xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                            width="30" height="30" x="0" y="0"
-                                                                            viewBox="0 0 497 497"
-                                                                            style="enable-background: new 0 0 512 512"
-                                                                            xml:space="preserve" class="">
-                                                                            <g>
-                                                                                <path fill="#b5dbff"
-                                                                                    d="M16.567 397.6v66.267C16.567 482.166 31.401 497 49.7 497h397.6c18.299 0 33.133-14.834 33.133-33.133V397.6z"
-                                                                                    opacity="1"
-                                                                                    data-original="#b5dbff"></path>
-                                                                                <path fill="#97d0ff"
-                                                                                    d="M457.433 397.6v66.268c0 18.298-14.834 33.132-33.132 33.132h23c18.299 0 33.133-14.834 33.133-33.132V397.6z"
-                                                                                    opacity="1"
-                                                                                    data-original="#97d0ff"></path>
-                                                                                <path fill="#edf5ff"
-                                                                                    d="M16.567 132.533v298.2c0 18.298 14.834 33.132 33.132 33.132H447.3c18.299 0 33.133-14.834 33.133-33.132v-298.2z"
-                                                                                    opacity="1"
-                                                                                    data-original="#edf5ff"></path>
-                                                                                <path fill="#d5e8fe"
-                                                                                    d="M457.433 132.533v298.2c0 18.298-14.834 33.132-33.133 33.132h23c18.299 0 33.133-14.834 33.133-33.132v-298.2z"
-                                                                                    opacity="1"
-                                                                                    data-original="#d5e8fe"></path>
-                                                                                <path fill="#ff435b"
-                                                                                    d="M480.433 149.1V66.266c0-18.299-14.834-33.132-33.133-33.132H49.7c-18.299 0-33.132 14.834-33.132 33.132V149.1z"
-                                                                                    opacity="1"
-                                                                                    data-original="#ff435b"></path>
-                                                                                <path fill="#e3374e"
-                                                                                    d="M115.967 73.767H99.4a7.5 7.5 0 0 1 0-15h16.567a7.5 7.5 0 0 1 0 15zM165.666 73.767H149.1a7.5 7.5 0 0 1 0-15h16.566a7.5 7.5 0 0 1 0 15zM347.9 73.767h-16.566a7.5 7.5 0 0 1 0-15H347.9a7.5 7.5 0 0 1 0 15zM397.6 73.767h-16.567a7.5 7.5 0 0 1 0-15H397.6a7.5 7.5 0 0 1 0 15z"
-                                                                                    opacity="1"
-                                                                                    data-original="#e3374e"></path>
-                                                                                <path fill="#596c76"
-                                                                                    d="M115.967 66.267c0 9.149 7.417 16.567 16.567 16.567s16.567-7.417 16.567-16.567v-49.7C149.1 7.417 141.683 0 132.533 0s-16.567 7.417-16.567 16.567v49.7zM347.9 66.267c0 9.149 7.417 16.567 16.567 16.567s16.567-7.417 16.567-16.567v-49.7c0-9.15-7.417-16.567-16.567-16.567S347.9 7.417 347.9 16.567z"
-                                                                                    opacity="1"
-                                                                                    data-original="#596c76"></path>
-                                                                                <g fill="#e3374e">
-                                                                                    <path
-                                                                                        d="M447.3 33.133h-23c18.299 0 33.133 14.834 33.133 33.132V149.1h23V66.266c0-18.299-14.834-33.133-33.133-33.133z"
-                                                                                        fill="#e3374e" opacity="1"
-                                                                                        data-original="#e3374e">
-                                                                                    </path>
-                                                                                    <path
-                                                                                        d="M16.567 108.467h463.866v15H16.567z"
-                                                                                        fill="#e3374e" opacity="1"
-                                                                                        data-original="#e3374e">
-                                                                                    </path>
+                                                    <div class="col-sm-12">
+                                                        <div class="table-responsive">
+                                                            <table class="table bg-transparent">
+                                                                <thead class="text-center">
+                                                                    <tr>
+                                                                        <th scope="col">
+                                                                            Day
+                                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                version="1.1"
+                                                                                xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                                width="30" height="30" x="0"
+                                                                                y="0" viewBox="0 0 497 497"
+                                                                                style="enable-background: new 0 0 512 512"
+                                                                                xml:space="preserve" class="">
+                                                                                <g>
+                                                                                    <path fill="#b5dbff"
+                                                                                        d="M16.567 397.6v66.267C16.567 482.166 31.401 497 49.7 497h397.6c18.299 0 33.133-14.834 33.133-33.133V397.6z"
+                                                                                        opacity="1"
+                                                                                        data-original="#b5dbff"></path>
+                                                                                    <path fill="#97d0ff"
+                                                                                        d="M457.433 397.6v66.268c0 18.298-14.834 33.132-33.132 33.132h23c18.299 0 33.133-14.834 33.133-33.132V397.6z"
+                                                                                        opacity="1"
+                                                                                        data-original="#97d0ff"></path>
+                                                                                    <path fill="#edf5ff"
+                                                                                        d="M16.567 132.533v298.2c0 18.298 14.834 33.132 33.132 33.132H447.3c18.299 0 33.133-14.834 33.133-33.132v-298.2z"
+                                                                                        opacity="1"
+                                                                                        data-original="#edf5ff"></path>
+                                                                                    <path fill="#d5e8fe"
+                                                                                        d="M457.433 132.533v298.2c0 18.298-14.834 33.132-33.133 33.132h23c18.299 0 33.133-14.834 33.133-33.132v-298.2z"
+                                                                                        opacity="1"
+                                                                                        data-original="#d5e8fe"></path>
+                                                                                    <path fill="#ff435b"
+                                                                                        d="M480.433 149.1V66.266c0-18.299-14.834-33.132-33.133-33.132H49.7c-18.299 0-33.132 14.834-33.132 33.132V149.1z"
+                                                                                        opacity="1"
+                                                                                        data-original="#ff435b"></path>
+                                                                                    <path fill="#e3374e"
+                                                                                        d="M115.967 73.767H99.4a7.5 7.5 0 0 1 0-15h16.567a7.5 7.5 0 0 1 0 15zM165.666 73.767H149.1a7.5 7.5 0 0 1 0-15h16.566a7.5 7.5 0 0 1 0 15zM347.9 73.767h-16.566a7.5 7.5 0 0 1 0-15H347.9a7.5 7.5 0 0 1 0 15zM397.6 73.767h-16.567a7.5 7.5 0 0 1 0-15H397.6a7.5 7.5 0 0 1 0 15z"
+                                                                                        opacity="1"
+                                                                                        data-original="#e3374e"></path>
+                                                                                    <path fill="#596c76"
+                                                                                        d="M115.967 66.267c0 9.149 7.417 16.567 16.567 16.567s16.567-7.417 16.567-16.567v-49.7C149.1 7.417 141.683 0 132.533 0s-16.567 7.417-16.567 16.567v49.7zM347.9 66.267c0 9.149 7.417 16.567 16.567 16.567s16.567-7.417 16.567-16.567v-49.7c0-9.15-7.417-16.567-16.567-16.567S347.9 7.417 347.9 16.567z"
+                                                                                        opacity="1"
+                                                                                        data-original="#596c76"></path>
+                                                                                    <g fill="#e3374e">
+                                                                                        <path
+                                                                                            d="M447.3 33.133h-23c18.299 0 33.133 14.834 33.133 33.132V149.1h23V66.266c0-18.299-14.834-33.133-33.133-33.133z"
+                                                                                            fill="#e3374e"
+                                                                                            opacity="1"
+                                                                                            data-original="#e3374e">
+                                                                                        </path>
+                                                                                        <path
+                                                                                            d="M16.567 108.467h463.866v15H16.567z"
+                                                                                            fill="#e3374e"
+                                                                                            opacity="1"
+                                                                                            data-original="#e3374e">
+                                                                                        </path>
+                                                                                    </g>
+                                                                                    <g fill="#596c76">
+                                                                                        <path
+                                                                                            d="M211.986 306.483c12.256-11.355 19.947-27.572 19.947-45.558 0-34.256-27.869-62.125-62.125-62.125s-62.125 27.869-62.125 62.125c0 9.15 7.417 16.567 16.567 16.567 9.149 0 16.567-7.417 16.567-16.567 0-15.986 13.005-28.992 28.992-28.992 15.986 0 28.992 13.005 28.992 28.992s-13.005 28.992-28.992 28.992c-9.149 0-16.567 7.417-16.567 16.567s7.417 16.567 16.567 16.567c15.986 0 28.992 13.005 28.992 28.992 0 15.986-13.005 28.992-28.992 28.992-15.986 0-28.992-13.005-28.992-28.992 0-9.15-7.417-16.567-16.567-16.567-9.149 0-16.567 7.417-16.567 16.567 0 34.256 27.869 62.125 62.125 62.125s62.125-27.869 62.125-62.125c0-17.987-7.69-34.204-19.947-45.56zM327.192 414.167c-34.256 0-62.125-27.869-62.125-62.125v-91.117c0-34.256 27.869-62.125 62.125-62.125s62.125 27.869 62.125 62.125v91.117c0 34.255-27.87 62.125-62.125 62.125zm0-182.234c-15.986 0-28.992 13.005-28.992 28.992v91.117c0 15.986 13.005 28.992 28.992 28.992 15.986 0 28.992-13.005 28.992-28.992v-91.117c-.001-15.986-13.006-28.992-28.992-28.992z"
+                                                                                            fill="#596c76"
+                                                                                            opacity="1"
+                                                                                            data-original="#596c76">
+                                                                                        </path>
+                                                                                    </g>
                                                                                 </g>
-                                                                                <g fill="#596c76">
-                                                                                    <path
-                                                                                        d="M211.986 306.483c12.256-11.355 19.947-27.572 19.947-45.558 0-34.256-27.869-62.125-62.125-62.125s-62.125 27.869-62.125 62.125c0 9.15 7.417 16.567 16.567 16.567 9.149 0 16.567-7.417 16.567-16.567 0-15.986 13.005-28.992 28.992-28.992 15.986 0 28.992 13.005 28.992 28.992s-13.005 28.992-28.992 28.992c-9.149 0-16.567 7.417-16.567 16.567s7.417 16.567 16.567 16.567c15.986 0 28.992 13.005 28.992 28.992 0 15.986-13.005 28.992-28.992 28.992-15.986 0-28.992-13.005-28.992-28.992 0-9.15-7.417-16.567-16.567-16.567-9.149 0-16.567 7.417-16.567 16.567 0 34.256 27.869 62.125 62.125 62.125s62.125-27.869 62.125-62.125c0-17.987-7.69-34.204-19.947-45.56zM327.192 414.167c-34.256 0-62.125-27.869-62.125-62.125v-91.117c0-34.256 27.869-62.125 62.125-62.125s62.125 27.869 62.125 62.125v91.117c0 34.255-27.87 62.125-62.125 62.125zm0-182.234c-15.986 0-28.992 13.005-28.992 28.992v91.117c0 15.986 13.005 28.992 28.992 28.992 15.986 0 28.992-13.005 28.992-28.992v-91.117c-.001-15.986-13.006-28.992-28.992-28.992z"
-                                                                                        fill="#596c76" opacity="1"
-                                                                                        data-original="#596c76">
-                                                                                    </path>
+                                                                            </svg>
+                                                                        </th>
+                                                                        <th scope="col">
+                                                                            Time
+                                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                version="1.1"
+                                                                                xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                                width="30" height="30" x="0"
+                                                                                y="0" viewBox="0 0 497 497"
+                                                                                style="enable-background: new 0 0 512 512"
+                                                                                xml:space="preserve" class="">
+                                                                                <g>
+                                                                                    <path fill="#b98080"
+                                                                                        d="M400.59 61.826h-13.837l-138.254 20-138.254-20H94.41c-17.073 0-30.913-13.84-30.913-30.913C63.496 13.84 77.337 0 94.41 0h306.18c17.073 0 30.913 13.84 30.913 30.913.001 17.073-13.84 30.913-30.913 30.913z"
+                                                                                        opacity="1"
+                                                                                        data-original="#b98080"></path>
+                                                                                    <path fill="#ae6c6c"
+                                                                                        d="M402.59 0h-30c17.073 0 30.913 13.84 30.913 30.913s-13.84 30.913-30.913 30.913h30c17.073 0 30.913-13.84 30.913-30.913C433.504 13.84 419.663 0 402.59 0z"
+                                                                                        opacity="1"
+                                                                                        data-original="#ae6c6c"></path>
+                                                                                    <path fill="#efedef"
+                                                                                        d="M384.754 100.633V61.826H110.246v38.807c0 60.2 38.478 111.406 92.181 130.382a18.544 18.544 0 0 1 0 34.968c-53.702 18.976-92.181 70.182-92.181 130.382v38.807h274.507v-38.807c0-60.2-38.478-111.406-92.181-130.382a18.544 18.544 0 0 1-12.368-17.484h2c0-7.861 2.956-14.865 10.368-17.484 53.703-18.975 92.182-70.182 92.182-130.382z"
+                                                                                        opacity="1"
+                                                                                        data-original="#efedef"></path>
+                                                                                    <path fill="#d7d0d6"
+                                                                                        d="M110.246 61.826v19.599h227.3c10.608 0 19.208 8.6 19.208 19.208 0 60.013-38.24 111.088-91.681 130.204-6.612 2.365-11.67 8.01-12.673 14.96a18.55 18.55 0 0 0 12.173 20.186c53.702 18.976 92.181 70.183 92.181 130.382v38.807h30v-38.807c0-60.013-38.24-111.088-91.681-130.204-6.612-2.365-11.67-8.01-12.673-14.96a18.55 18.55 0 0 1 12.173-20.186c53.702-18.976 92.181-70.183 92.181-130.382V61.826z"
+                                                                                        opacity="1"
+                                                                                        data-original="#d7d0d6"></path>
+                                                                                    <path fill="#b98080"
+                                                                                        d="M400.59 497H94.41c-17.073 0-30.913-13.84-30.913-30.913s13.84-30.913 30.913-30.913h15.837l138.254-20 138.254 20h13.837c17.073 0 30.913 13.84 30.913 30.913C431.504 483.16 417.663 497 400.59 497z"
+                                                                                        opacity="1"
+                                                                                        data-original="#b98080"></path>
+                                                                                    <path fill="#ae6c6c"
+                                                                                        d="M402.59 435.174h-30c17.073 0 30.913 13.84 30.913 30.913S389.663 497 372.59 497h30c17.073 0 30.913-13.84 30.913-30.913.001-17.073-13.84-30.913-30.913-30.913z"
+                                                                                        opacity="1"
+                                                                                        data-original="#ae6c6c"></path>
+                                                                                    <path fill="#fed402"
+                                                                                        d="M315.075 326.717h-14.561c-14.643 0-29.136-10.593-31.531-25.038l-5.941-35.833c-3.024-18.238 11.044-34.83 29.531-34.83 35.875-12.676 64.934-39.748 80.289-74.263H122.138c15.354 34.516 44.414 61.587 80.289 74.263 18.487 0 32.555 16.592 29.531 34.83l-5.941 35.833c-2.395 14.445-14.889 25.038-29.531 25.038h-16.561c-38.174 0-69.47 30.715-69.676 68.888l-.002.762v38.807h274.507v-38.807l-.002-.762c-.207-38.173-31.503-68.888-69.677-68.888z"
+                                                                                        opacity="1"
+                                                                                        data-original="#fed402"></path>
+                                                                                    <path fill="#fac600"
+                                                                                        d="M386.752 395.605c-.207-38.173-31.502-68.888-69.676-68.888h-16.562c-14.643 0-27.136-10.593-29.531-25.038l-5.941-35.833c-3.024-18.238 11.044-34.83 29.531-34.83 35.875-12.676 64.934-39.748 80.289-74.263h-30c-15.354 34.516-44.414 61.587-80.289 74.263-18.487 0-32.555 16.592-29.531 34.83l5.941 35.833c2.395 14.445 14.889 25.038 29.531 25.038h16.562c38.174 0 69.47 30.715 69.676 68.888l.002.762v38.807h30v-38.807l-.002-.762z"
+                                                                                        opacity="1"
+                                                                                        data-original="#fac600"></path>
                                                                                 </g>
-                                                                            </g>
-                                                                        </svg>
-                                                                    </th>
-                                                                    <th scope="col">
-                                                                        Time
-                                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                                            version="1.1"
-                                                                            xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                            width="30" height="30" x="0" y="0"
-                                                                            viewBox="0 0 497 497"
-                                                                            style="enable-background: new 0 0 512 512"
-                                                                            xml:space="preserve" class="">
-                                                                            <g>
-                                                                                <path fill="#b98080"
-                                                                                    d="M400.59 61.826h-13.837l-138.254 20-138.254-20H94.41c-17.073 0-30.913-13.84-30.913-30.913C63.496 13.84 77.337 0 94.41 0h306.18c17.073 0 30.913 13.84 30.913 30.913.001 17.073-13.84 30.913-30.913 30.913z"
-                                                                                    opacity="1"
-                                                                                    data-original="#b98080"></path>
-                                                                                <path fill="#ae6c6c"
-                                                                                    d="M402.59 0h-30c17.073 0 30.913 13.84 30.913 30.913s-13.84 30.913-30.913 30.913h30c17.073 0 30.913-13.84 30.913-30.913C433.504 13.84 419.663 0 402.59 0z"
-                                                                                    opacity="1"
-                                                                                    data-original="#ae6c6c"></path>
-                                                                                <path fill="#efedef"
-                                                                                    d="M384.754 100.633V61.826H110.246v38.807c0 60.2 38.478 111.406 92.181 130.382a18.544 18.544 0 0 1 0 34.968c-53.702 18.976-92.181 70.182-92.181 130.382v38.807h274.507v-38.807c0-60.2-38.478-111.406-92.181-130.382a18.544 18.544 0 0 1-12.368-17.484h2c0-7.861 2.956-14.865 10.368-17.484 53.703-18.975 92.182-70.182 92.182-130.382z"
-                                                                                    opacity="1"
-                                                                                    data-original="#efedef"></path>
-                                                                                <path fill="#d7d0d6"
-                                                                                    d="M110.246 61.826v19.599h227.3c10.608 0 19.208 8.6 19.208 19.208 0 60.013-38.24 111.088-91.681 130.204-6.612 2.365-11.67 8.01-12.673 14.96a18.55 18.55 0 0 0 12.173 20.186c53.702 18.976 92.181 70.183 92.181 130.382v38.807h30v-38.807c0-60.013-38.24-111.088-91.681-130.204-6.612-2.365-11.67-8.01-12.673-14.96a18.55 18.55 0 0 1 12.173-20.186c53.702-18.976 92.181-70.183 92.181-130.382V61.826z"
-                                                                                    opacity="1"
-                                                                                    data-original="#d7d0d6"></path>
-                                                                                <path fill="#b98080"
-                                                                                    d="M400.59 497H94.41c-17.073 0-30.913-13.84-30.913-30.913s13.84-30.913 30.913-30.913h15.837l138.254-20 138.254 20h13.837c17.073 0 30.913 13.84 30.913 30.913C431.504 483.16 417.663 497 400.59 497z"
-                                                                                    opacity="1"
-                                                                                    data-original="#b98080"></path>
-                                                                                <path fill="#ae6c6c"
-                                                                                    d="M402.59 435.174h-30c17.073 0 30.913 13.84 30.913 30.913S389.663 497 372.59 497h30c17.073 0 30.913-13.84 30.913-30.913.001-17.073-13.84-30.913-30.913-30.913z"
-                                                                                    opacity="1"
-                                                                                    data-original="#ae6c6c"></path>
-                                                                                <path fill="#fed402"
-                                                                                    d="M315.075 326.717h-14.561c-14.643 0-29.136-10.593-31.531-25.038l-5.941-35.833c-3.024-18.238 11.044-34.83 29.531-34.83 35.875-12.676 64.934-39.748 80.289-74.263H122.138c15.354 34.516 44.414 61.587 80.289 74.263 18.487 0 32.555 16.592 29.531 34.83l-5.941 35.833c-2.395 14.445-14.889 25.038-29.531 25.038h-16.561c-38.174 0-69.47 30.715-69.676 68.888l-.002.762v38.807h274.507v-38.807l-.002-.762c-.207-38.173-31.503-68.888-69.677-68.888z"
-                                                                                    opacity="1"
-                                                                                    data-original="#fed402"></path>
-                                                                                <path fill="#fac600"
-                                                                                    d="M386.752 395.605c-.207-38.173-31.502-68.888-69.676-68.888h-16.562c-14.643 0-27.136-10.593-29.531-25.038l-5.941-35.833c-3.024-18.238 11.044-34.83 29.531-34.83 35.875-12.676 64.934-39.748 80.289-74.263h-30c-15.354 34.516-44.414 61.587-80.289 74.263-18.487 0-32.555 16.592-29.531 34.83l5.941 35.833c2.395 14.445 14.889 25.038 29.531 25.038h16.562c38.174 0 69.47 30.715 69.676 68.888l.002.762v38.807h30v-38.807l-.002-.762z"
-                                                                                    opacity="1"
-                                                                                    data-original="#fac600"></path>
-                                                                            </g>
-                                                                        </svg>
-                                                                    </th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody class="text-center">
-                                                                <tr>
-                                                                    <td scope="row">Monday</td>
-                                                                    <td>{{ optional($nfc_card->nfcData)->start_time_monday }}
-                                                                        -
-                                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td scope="row">Tuesday</td>
-                                                                    <td>{{ optional($nfc_card->nfcData)->start_time_tuesday }}
-                                                                        -
-                                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td scope="row">Wednesday</td>
-                                                                    <td>{{ optional($nfc_card->nfcData)->start_time_wednesday }}
-                                                                        -
-                                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td scope="row">Tuesday</td>
-                                                                    <td>{{ optional($nfc_card->nfcData)->start_time_tuesday }}
-                                                                        -
-                                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td scope="row">Thursday</td>
-                                                                    <td>{{ optional($nfc_card->nfcData)->start_time_thursday }}
-                                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}
-                                                                        -
-                                                                        {{ optional($nfc_card->nfcData)->start_time_monday }}
-                                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td scope="row">Friday</td>
-                                                                    <td>{{ optional($nfc_card->nfcData)->start_time_friday }}
-                                                                        -
-                                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td scope="row">Satarday</td>
-                                                                    <td>{{ optional($nfc_card->nfcData)->start_time_saturday }}
-                                                                        -
-                                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
+                                                                            </svg>
+                                                                        </th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody class="text-center">
+                                                                    @if (optional($nfc_card->nfcData)->sunday == '1')
+                                                                        <tr>
+                                                                            <td scope="row">sunday</td>
+                                                                            <td>{{ optional($nfc_card->nfcData)->start_time_tuesday }}
+                                                                                -
+                                                                                {{ optional($nfc_card->nfcData)->end_time_monday }}
+                                                                            </td>
+                                                                        </tr>
+                                                                    @endif
+                                                                    @if (optional($nfc_card->nfcData)->monday == '1')
+                                                                        <tr>
+                                                                            <td scope="row">Monday</td>
+                                                                            <td>{{ optional($nfc_card->nfcData)->start_time_monday }}
+                                                                                -
+                                                                                {{ optional($nfc_card->nfcData)->end_time_monday }}
+                                                                            </td>
+                                                                        </tr>
+                                                                    @endif
+                                                                    @if (optional($nfc_card->nfcData)->tuesday == '1')
+                                                                        <tr>
+                                                                            <td scope="row">Tuesday</td>
+                                                                            <td>{{ optional($nfc_card->nfcData)->start_time_tuesday }}
+                                                                                -
+                                                                                {{ optional($nfc_card->nfcData)->end_time_monday }}
+                                                                            </td>
+                                                                        </tr>
+                                                                    @endif
+                                                                    @if (optional($nfc_card->nfcData)->wednesday == '1')
+                                                                        <tr>
+                                                                            <td scope="row">Wednesday</td>
+                                                                            <td>{{ optional($nfc_card->nfcData)->start_time_wednesday }}
+                                                                                -
+                                                                                {{ optional($nfc_card->nfcData)->end_time_monday }}
+                                                                            </td>
+                                                                        </tr>
+                                                                    @endif
+                                                                    @if (optional($nfc_card->nfcData)->thursday == '1')
+                                                                        <tr>
+                                                                            <td scope="row">Thursday</td>
+                                                                            <td>{{ optional($nfc_card->nfcData)->start_time_thursday }}
+                                                                                {{ optional($nfc_card->nfcData)->end_time_monday }}
+                                                                                -
+                                                                                {{ optional($nfc_card->nfcData)->start_time_monday }}
+                                                                                {{ optional($nfc_card->nfcData)->end_time_monday }}
+                                                                            </td>
+                                                                        </tr>
+                                                                    @endif
+                                                                    @if (optional($nfc_card->nfcData)->friday == '1')
+                                                                        <tr>
+                                                                            <td scope="row">Friday</td>
+                                                                            <td>{{ optional($nfc_card->nfcData)->start_time_friday }}
+                                                                                -
+                                                                                {{ optional($nfc_card->nfcData)->end_time_monday }}
+                                                                            </td>
+                                                                        </tr>
+                                                                    @endif
+                                                                    @if (optional($nfc_card->nfcData)->saturday == '1')
+                                                                        <tr>
+                                                                            <td scope="row">Satarday</td>
+                                                                            <td>{{ optional($nfc_card->nfcData)->start_time_saturday }}
+                                                                                -
+                                                                                {{ optional($nfc_card->nfcData)->end_time_monday }}
+                                                                            </td>
+                                                                        </tr>
+                                                                    @endif
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    @endif
                                     <!-- Video Gallery -->
                                     <div class="row pt-5">
                                         <div class="col-sm-12">
@@ -1207,24 +1299,22 @@
                                                             </div>
                                                         </div>
                                                         <div class="card-body py-2">
-                                                            <div class="card-body">
-                                                                <h6 class="special-font fw-bold text-white">
-                                                                    {{ $product->product_name }}
-                                                                </h6>
-                                                                <p class="text-justify text-white"
-                                                                    style="font-size: 14px !important">
-                                                                    @if ($product->product_currency == 'taka')
-                                                                        Tk
-                                                                    @elseif ($product->product_currency == 'euro')
-                                                                        €
-                                                                    @elseif ($product->product_currency == 'dollar')
-                                                                        $
-                                                                    @elseif ($product->product_currency == 'pound')
-                                                                        £
-                                                                    @endif
-                                                                    &nbsp;{{ $product->product_price }}
-                                                                </p>
-                                                            </div>
+                                                            <h6 class="special-font fw-bold text-white">
+                                                                {{ $product->product_name }}
+                                                            </h6>
+                                                            <p class="text-justify text-white mb-0"
+                                                                style="font-size: 14px !important">
+                                                                @if ($product->product_currency == 'taka')
+                                                                    Tk
+                                                                @elseif ($product->product_currency == 'euro')
+                                                                    €
+                                                                @elseif ($product->product_currency == 'dollar')
+                                                                    $
+                                                                @elseif ($product->product_currency == 'pound')
+                                                                    £
+                                                                @endif
+                                                                &nbsp;{{ $product->product_price }}
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1235,6 +1325,32 @@
                                 </div>
                             </div>
                         @endif
+                        @php
+                            $currentUrl = request()->url();
+                            $whatsappLink =
+                                'https://wa.me/?text=' . urlencode('Check out My NFC Profile: ' . $currentUrl);
+                        @endphp
+
+                        <!-- Create a button or link to share via WhatsApp -->
+                        <div class="row py-5">
+                            <div class="col-sm-12">
+                                <div class="text-center">
+                                    <h3 class="special-font">Share</h3>
+                                    <p
+                                        style="height: 2px;background-color: var(--template-three-color-primary);width: 50px;margin: auto;">
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-7 col-offset-lg-6 mx-auto">
+                                <a href="{{ $whatsappLink }}" target="_blank" rel="noopener noreferrer"
+                                    class="btn btn-dark w-100 p-3">
+                                    <i class="fa-solid fa-paper-plane"></i> Share This Vcard
+                                </a>
+
+                            </div>
+                        </div>
                         <!-- Gallery Box -->
                         @if ($nfc_card->galleries_show == '1')
                             <div class="row pt-5">
@@ -1248,11 +1364,11 @@
                                 </div>
                                 <div lass="row justify-content-center align-items-center g-2">
                                     <div class="gallery-slide">
-                                        @foreach ($nfc_card->nfcProduct as $galleries)
+                                        @foreach ($nfc_card->nfcGallery as $gallery)
                                             <div class="gallery-items-tem3">
                                                 <div>
                                                     <img class="img-fluid"
-                                                        src="{{ !empty($product->gallery_attachment) && file_exists(public_path('storage/nfc/product/' . optional($product)->gallery_attachment)) ? asset('storage/nfc/product/' . optional($product)->gallery_attachment) : asset('frontend/images/no_image.png') }}"
+                                                        src="{{ !empty($gallery->gallery_attachment) && file_exists(public_path('storage/nfc/gallery/' . optional($gallery)->gallery_attachment)) ? asset('storage/nfc/gallery/' . optional($gallery)->gallery_attachment) : asset('frontend/images/no_image.png') }}"
                                                         alt="" />
                                                 </div>
                                             </div>
@@ -1306,6 +1422,12 @@
                                 </div>
                             </div>
                             <!-- SHape -->
+                            <div class="qr-code-img">
+                                {{-- Demo QR Here Place Your Actual QR --}}
+                                <img class="img-fluid"
+                                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/800px-QR_code_for_mobile_English_Wikipedia.svg.png"
+                                    alt="">
+                            </div>
                             <div class="tem3-footer-shape">
                                 <p class="text-center text-white special-font" style="position: relative; top: 5px">
                                     Scan Me
