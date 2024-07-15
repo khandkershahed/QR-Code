@@ -42,22 +42,20 @@
 
 @push('scripts')
     <script>
-        $(document).ready(function() {
-            function submitFontsForm(event) {
+        function submitFontsForm() {
+            // Detach any existing event handler to prevent multiple bindings
+            $('.fonts_form').off('submit').on('submit', function(event) {
                 event.preventDefault(); // Prevent default form submission
 
-                var form = $('.fonts_form');
+                var form = $(this);
                 var url = form.attr('action');
                 var formData = new FormData(form[0]);
-                var fonts_container = $('.fonts_container');
                 var submitButton = form.find('.kt_docs_formvalidation_text_submit');
                 var isValid = true;
 
                 // Remove any existing error messages and red borders
-                form.find('.error-message').remove();
+                form.find('.text-danger').hide().text('');
                 form.find('.form-control').removeClass('is-invalid');
-
-                // Validate each required field (adjust field names as needed)
                 form.find('[name="font_family"]').each(function() {
                     var fieldValue = $(this).val().trim();
                     if (!fieldValue) {
@@ -67,73 +65,55 @@
                         isValid = false;
                     }
                 });
+                // Disable the submit button to prevent multiple submissions
+                submitButton.prop('disabled', true).addClass('disabled');
 
-                if (isValid) {
-                    // Optionally disable the submit button to prevent multiple submissions
-                    submitButton.prop('disabled', true).addClass('disabled');
-
-                    $.ajax({
-                        type: 'POST',
-                        url: url,
-                        data: formData,
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        beforeSend: function() {
-                            // Show loading spinner or indicator
-                            submitButton.find('.indicator-label').hide();
-                            submitButton.find('.indicator-progress').show();
-                        },
-                        success: function(response) {
-                            console.log('Form submitted successfully:', response);
-                            if (response.fonts_view) {
-                                console.log('Updating container with new HTML');
-                                fonts_container.empty();
-                                fonts_container.html(response.fonts_view);
-                                toastr.success('Data saved successfully!', 'Success');
-                            } else {
-                                console.error('Unexpected response format:', response);
-                                toastr.error('Unexpected response format.', 'Error');
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            // Handle error response
-                            console.error('Error:', error);
-                            toastr.error('An error occurred while saving data.', 'Error');
-                        },
-                        complete: function() {
-                            // Re-enable the submit button and hide the loading indicator
-                            submitButton.prop('disabled', false).removeClass('disabled');
-                            submitButton.find('.indicator-label').show();
-                            submitButton.find('.indicator-progress').hide();
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    beforeSend: function() {
+                        submitButton.find('.indicator-label').hide();
+                        submitButton.find('.indicator-progress').show();
+                    },
+                    success: function(response) {
+                        if (response.fonts_view) {
+                            // Update form with new values
+                            $('.fonts_container').html(response.fonts_view);
+                            toastr.success('Data saved successfully!', 'Success');
+                            // Reattach the event handler to the new form
+                            submitFontsForm();
+                        } else {
+                            toastr.error('Unexpected response format.', 'Error');
                         }
-                    });
-                } else {
-                    // Show SweetAlert error message for validation errors
-                    Swal.fire({
-                        text: 'Some input fields are not filled up!',
-                        icon: 'error',
-                        buttonsStyling: false,
-                        confirmButtonText: 'Ok, got it!',
-                        customClass: {
-                            confirmButton: 'btn btn-primary'
+                    },
+                    error: function(xhr) {
+                        let errors = xhr.responseJSON.errors;
+                        for (let key in errors) {
+                            $(`#${key}_feedback`).text(errors[key][0]).show();
                         }
-                    });
-                }
-            }
+                        toastr.error('An error occurred while saving data.', 'Error');
+                    },
+                    complete: function() {
+                        submitButton.prop('disabled', false).removeClass('disabled');
+                        submitButton.find('.indicator-label').show();
+                        submitButton.find('.indicator-progress').hide();
+                    }
+                });
 
-            // Attach the submit handler to the fonts form
-            $('.fonts_form').on('submit', function(event) {
-                submitFontsForm(event);
             });
 
-            // Re-enable the submit button when any input field is changed
-            $('.fonts_form input').on('input', function() {
-                var submitButton = $('.fonts_form').find('.kt_docs_formvalidation_text_submit');
-                submitButton.prop('disabled', false).removeClass('disabled');
+            // Optional: Hide error message and remove red border on input change
+            $('.fonts_form input, .fonts_form select').off('input change').on('input change', function() {
                 $(this).removeClass('is-invalid');
-                $(this).next('.error-message').remove();
+                $(this).next('.text-danger').hide().text('');
             });
+        }
+
+        $(document).ready(function() {
+            submitFontsForm();
         });
     </script>
 @endpush

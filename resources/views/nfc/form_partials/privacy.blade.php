@@ -83,5 +83,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             new CKEditorInitializer('.privacy_editor');
         });
+
+        
     </script>
 @endpush

@@ -52,7 +52,7 @@
                         <div class="col-lg-4">
                             <div class="form-check ps-0 border bg-dark p-3 rounded-2 text-center text-white"
                                 style="text-align: start !important;">
-                                <label class="form-check-label required" for="wednesday">
+                                <label class="form-check-label" for="wednesday">
                                     <input class="form-check-input ms-3" type="checkbox" name="wednesday"
                                         @checked(optional($nfc_card->nfcData)->wednesday == '1') value="1" id="wednesday_checkbox" />
                                     <span class="ps-3">
@@ -157,12 +157,11 @@
     </div>
 
     <div class="d-flex justify-content-center">
-        <button type="submit" onclick="submitBusinessHoursForm()"
-            class="kt_docs_formvalidation_text_submit btn btn-primary mt-5">
+        <button type="submit" class="kt_docs_formvalidation_text_submit btn btn-primary mt-5">
             <span class="indicator-label">
                 Save Business Hours
             </span>
-            <span class="indicator-progress">
+            <span class="indicator-progress" style="display: none;">
                 Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
             </span>
         </button>
@@ -170,8 +169,10 @@
 </form>
 
 @push('scripts')
+    
     <script>
         $(document).ready(function() {
+            // Function to handle form submission
             function submitBusinessHoursForm(event) {
                 event.preventDefault(); // Prevent default form submission
 
@@ -186,21 +187,15 @@
                 form.find('.error-message').remove();
                 form.find('.form-control').removeClass('is-invalid');
 
-                // Validate each required field (adjust field names as needed)
-                form.find(
-                        '[name="wednesday"], [name="start_time_wednesday"], [name="end_time_wednesday"]'
-                        ) // Replace with your actual field names
-                    .each(function() {
-                        var fieldValue = $(this).val().trim();
-                        if (!fieldValue) {
-                            // Show error message for the current field
-                            $(this).addClass('is-invalid');
-                            $(this).after('<p class="error-message text-danger">This field is required.</p>');
-                            isValid = false;
-                        }
-                    });
+                // Validate each required field
 
-                if (isValid) {
+                var anyInputFilled = form.find('input[type="checkbox"]:checked').length > 0 ||
+                                      form.find('input[type="time"]').filter(function() {
+                                          return $(this).val().trim() !== '';
+                                      }).length > 0;
+
+                if (anyInputFilled) {
+                // if (isValid) {
                     // Disable the submit button to prevent multiple submissions
                     submitButton.prop('disabled', true).addClass('disabled');
 
@@ -224,8 +219,8 @@
                                 business_hours_container.html(response.business_hours_view);
                                 toastr.success('Data saved successfully!', 'Success');
 
-                                // Disable the submit button after successful submission
-                                submitButton.prop('disabled', true).addClass('disabled');
+                                // Reattach event handlers to newly loaded elements
+                                attachEventHandlers();
                             } else {
                                 console.error('Unexpected response format:', response);
                                 toastr.error('Unexpected response format.', 'Error');
@@ -241,9 +236,9 @@
                         }
                     });
                 } else {
-                    // Show SweetAlert error message for validation errors
+                    // Show error message for validation errors
                     Swal.fire({
-                        text: 'Some input fields are not filled up!',
+                        text: 'Atleast One field should be filled to submit the data!',
                         icon: 'error',
                         buttonsStyling: false,
                         confirmButtonText: 'Ok, got it!',
@@ -254,14 +249,20 @@
                 }
             }
 
-            // Attach the submit handler to the form
-            $('.general_info_form').on('submit', submitGeneralInfoForm);
+            // Function to attach event handlers to dynamically loaded elements
+            function attachEventHandlers() {
+                $('.business_hours_form').off('submit').on('submit', submitBusinessHoursForm);
 
-            // Optional: Hide error message and remove red border on input change
-            $('.general_info_form input, .general_info_form select').on('input change', function() {
-                $(this).removeClass('is-invalid');
-                $(this).next('.error-message').remove();
-            });
+                // Optional: Hide error message and remove red border on input change
+                $('.business_hours_form input, .business_hours_form select').off('input change').on('input change',
+                    function() {
+                        $(this).removeClass('is-invalid');
+                        $(this).next('.error-message').remove();
+                    });
+            }
+
+            // Initial attachment of event handlers
+            attachEventHandlers();
         });
     </script>
 @endpush

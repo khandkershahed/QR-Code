@@ -61,7 +61,7 @@
 </form>
 
 @push('scripts')
-    <script>
+    {{-- <script>
         function submitAdvanceForm() {
             var form = $('.advance_form');
             var url = form.attr('action');
@@ -103,5 +103,72 @@
                 }
             });
         }
+    </script> --}}
+    <script>
+        function submitAdvanceForm() {
+            // Detach any existing event handler to prevent multiple bindings
+            $('.advance_form').off('submit').on('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                var form = $(this);
+                var url = form.attr('action');
+                var formData = new FormData(form[0]);
+                var submitButton = form.find('.kt_docs_formvalidation_text_submit');
+                var isValid = true;
+
+                // Remove any existing error messages and red borders
+                form.find('.text-danger').hide().text('');
+                form.find('.form-control').removeClass('is-invalid');
+
+                // Disable the submit button to prevent multiple submissions
+                submitButton.prop('disabled', true).addClass('disabled');
+
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    beforeSend: function() {
+                        submitButton.find('.indicator-label').hide();
+                        submitButton.find('.indicator-progress').show();
+                    },
+                    success: function(response) {
+                        if (response.advance_view) {
+                            // Update form with new values
+                            $('.advance_container').html(response.advance_view);
+                            toastr.success('Data saved successfully!', 'Success');
+                            // Reattach the event handler to the new form
+                            submitAdvanceForm();
+                        } else {
+                            toastr.error('Unexpected response format.', 'Error');
+                        }
+                    },
+                    error: function(xhr) {
+                        let errors = xhr.responseJSON.errors;
+                        for (let key in errors) {
+                            $(`#${key}_feedback`).text(errors[key][0]).show();
+                        }
+                        toastr.error('An error occurred while saving data.', 'Error');
+                    },
+                    complete: function() {
+                        submitButton.prop('disabled', false).removeClass('disabled');
+                        submitButton.find('.indicator-label').show();
+                        submitButton.find('.indicator-progress').hide();
+                    }
+                });
+
+            });
+
+            // Optional: Hide error message and remove red border on input change
+            $('.advance_form input, .advance_form select').off('input change').on('input change', function() {
+                $(this).removeClass('is-invalid');
+                $(this).next('.text-danger').hide().text('');
+            });
+        }
+
+        $(document).ready(function() {
+            submitAdvanceForm();
+        });
     </script>
 @endpush
