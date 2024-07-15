@@ -74,7 +74,7 @@
         .profile-img-tem2 img {
             width: 150px;
             height: 150px;
-            object-fit: cover;
+            object-fit: contain;
             border: 2px dashed var(--template-two-color-primary);
             padding: 5px;
         }
@@ -258,8 +258,7 @@
 
         .image-container-tem2 {
             height: 385px;
-            widows: 100%
-            object-fit: cover;
+            widows: 100% object-fit: cover;
         }
 
         .shape-container-tem2 {

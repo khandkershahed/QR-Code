@@ -1,11 +1,4 @@
 <div class="d-flex flex-stack mb-5">
-    <div class="d-flex align-items-center position-relative my-1">
-        {{-- <i class="ki-duotone ki-magnifier fs-1 position-absolute ms-6"><span class="path1"></span><span
-                class="path2"></span></i> 
-        <input type="text" data-kt-docs-table-filter="search" class="form-control form-control-solid w-250px ps-15"
-            placeholder="Search Customers" /> --}}
-    </div>
-
     <div class="d-flex justify-content-end" data-kt-docs-table-toolbar="base">
         <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal"
             data-bs-target="#testimonialCreateModal">
@@ -13,7 +6,6 @@
         </button>
     </div>
     {{-- Add testimonials modal --}}
-    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
     <div class="modal fade" id="testimonialCreateModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
         role="dialog" aria-labelledby="modalTitleIdtestimonials" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
@@ -48,8 +40,7 @@
                         </div>
 
                         <div class="d-flex justify-content-end mt-10">
-                            <button type="submit" onclick="submitTestimonialForm()"
-                                class="kt_docs_formvalidation_text_submit btn btn-primary">
+                            <button type="submit" class="kt_docs_formvalidation_text_submit btn btn-primary">
                                 <span class="indicator-label">
                                     Create
                                 </span>
@@ -65,19 +56,12 @@
         </div>
     </div>
     {{-- Modal End --}}
-
 </div>
 
 <div class="table-responsive">
     <table id="kt_datatable_example_1" class="table align-middle table-row-dashed table-border fs-6 gy-5">
         <thead>
             <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
-                {{-- <th class="w-10px pe-2">
-                    <div class="form-check form-check-sm form-check-custom form-check-solid me-3">
-                        <input class="form-check-input" type="checkbox" data-kt-check="true"
-                            data-kt-check-target="#kt_datatable_example_1 .form-check-input" value="1" />
-                    </div>
-                </th> --}}
                 <th width="5%">Sl</th>
                 <th width="30%">Name</th>
                 <th width="50%">Description</th>
@@ -85,12 +69,6 @@
             </tr>
         </thead>
         <tbody class="text-gray-600 fw-semibold">
-            {{-- <td>
-                <div class="form-check form-check-sm form-check-custom form-check-solid me-3">
-                    <input class="form-check-input" type="checkbox" data-kt-check="true"
-                        data-kt-check-target="#kt_datatable_example_1 .form-check-input" value="1" />
-                </div>
-            </td> --}}
             @if ($nfc_card->nfcTestimonial->count() > 0)
                 @foreach ($nfc_card->nfcTestimonial as $testimonial)
                     <tr>
@@ -131,6 +109,7 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
+            // Function to handle form submission
             function submitTestimonialForm(event) {
                 event.preventDefault(); // Prevent default form submission
 
@@ -146,16 +125,15 @@
                 form.find('.form-control').removeClass('is-invalid');
 
                 // Validate each required field (adjust field names as needed)
-                form.find('[name="testimonial_name"], [name="testimonial_description"]')
-                    .each(function() {
-                        var fieldValue = $(this).val().trim();
-                        if (!fieldValue) {
-                            // Show error message for the current field
-                            $(this).addClass('is-invalid');
-                            $(this).after('<p class="error-message text-danger">This field is required.</p>');
-                            isValid = false;
-                        }
-                    });
+                form.find('[name="testimonial_name"], [name="testimonial_description"]').each(function() {
+                    var fieldValue = $(this).val().trim();
+                    if (!fieldValue) {
+                        // Show error message for the current field
+                        $(this).addClass('is-invalid');
+                        $(this).after('<p class="error-message text-danger">This field is required.</p>');
+                        isValid = false;
+                    }
+                });
 
                 if (isValid) {
                     // Optionally disable the submit button to prevent multiple submissions
@@ -212,9 +190,7 @@
             }
 
             // Attach the submit handler to the testimonial form
-            $('.testimonial_form').on('submit', function(event) {
-                submitTestimonialForm(event);
-            });
+            $('.testimonial_form').on('submit', submitTestimonialForm);
 
             // Re-enable the submit button when any input field is changed
             $('.testimonial_form input, .testimonial_form select').on('input change', function() {
