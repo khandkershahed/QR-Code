@@ -30,7 +30,7 @@
         :root {
             --template-two-color-white: #fff;
             --template-two-color-black: #000;
-            --template-two-color-primary: #0b6476;
+            --template-two-color-primary: #88a7ec;
             --template-two-title-font-size: 48px;
             --template-two-others-font-size: 20px;
             --template-two-font-fmly-Almendra: "Almendra SC", serif;
@@ -57,16 +57,12 @@
         .page-content-wrapper {
             width: 100%;
             margin: auto;
-            margin-bottom: 62px;
             background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
         }
 
         .section-top-tem2 {
-            
-        }
-
-        .social-rotate-tem2 {
-            margin-left: 95px;
+            margin-top: -168px;
+            position: relative;
         }
 
         .profile-img-tem2 img {
@@ -84,9 +80,7 @@
             font-size: var(--template-two-title-font-size);
         }
 
-        .user-name-rotate-tem2 {
-        
-        }
+        .user-name-rotate-tem2 {}
 
         .product-content-tem2 {
             height: 75px;
@@ -103,9 +97,7 @@
         }
 
         .contact-icons-tem2 {
-            border: 2px dashed var(--template-two-color-primary);
-            background: var(--template-two-color-primary);
-            padding: 10px 10px;
+            padding: 11px 11px 10px;
             width: 50px;
             height: 50px;
             color: var(--template-two-color-primary);
@@ -314,29 +306,17 @@
                         </div>
                     </div>
                 </section>
-                <div>
+                <div class="section-top-tem2">
                     <!-- Profile Info -->
                     <section>
                         <div class="container">
                             <div class="row">
-                                <div class="col-lg-12 section-top-tem2">
+                                <div class="col-lg-12">
                                     <div class="d-flex justify-content-between">
                                         <div class="profile-img-tem2">
                                             <img class="img-fluid"
                                                 src="{{ !empty($nfc_card->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card)->profile_image) : asset('frontend/images/no_image.png') }}"
                                                 alt="" />
-                                        </div>
-                                        <div class="d-flex justify-content-end align-items-center social-rotate-tem2">
-                                            <a href="{{ optional($nfc_card->nfcData)->facebook_url }}"
-                                                class="social-link-tem2"><i class="fa-brands fa-facebook-f"></i></a>
-                                            <a href="{{ optional($nfc_card->nfcData)->instagram_url }}"
-                                                class="social-link-tem2"><i class="fa-brands fa-instagram"></i></a>
-                                            <a href="{{ optional($nfc_card->nfcData)->linkedin_url }}"
-                                                class="social-link-tem2"><i class="fa-brands fa-linkedin-in"></i></a>
-                                            <a href="{{ optional($nfc_card->nfcData)->whatsapp_url }}"
-                                                class="social-link-tem2"><i class="fa-brands fa-whatsapp"></i></a>
-                                            <a href="{{ optional($nfc_card->nfcData)->twitter_url }}"
-                                                class="social-link-tem2"><i class="fa-brands fa-twitter"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -349,12 +329,25 @@
                             <div class="row align-items-center">
                                 <div class="col-sm-12">
                                     <div class="user-name-rotate-tem2 ps-2">
-                                        <h1 class="name-title-tem2 mb-0">{{ optional($nfc_card->nfcData)->last_name }}
+                                        <h1 class="name-title-tem2 mb-0">
+                                            {{ optional($nfc_card->nfcData)->first_name }}
                                         </h1>
                                         <p class="text-white mb-0">{{ optional($nfc_card)->designation }} </p>
-                                        <p class="text-white">
+                                        {{-- <p class="text-white">
                                             <i class="fa-solid fa-location-dot pe-2"></i>From Canada
-                                        </p>
+                                        </p> --}}
+                                    </div>
+                                    <div class="d-flex justify-content-start align-items-center social-rotate-tem2">
+                                        <a href="{{ optional($nfc_card->nfcData)->facebook_url }}"
+                                            class="social-link-tem2"><i class="fa-brands fa-facebook-f"></i></a>
+                                        <a href="{{ optional($nfc_card->nfcData)->instagram_url }}"
+                                            class="social-link-tem2"><i class="fa-brands fa-instagram"></i></a>
+                                        <a href="{{ optional($nfc_card->nfcData)->linkedin_url }}"
+                                            class="social-link-tem2"><i class="fa-brands fa-linkedin-in"></i></a>
+                                        <a href="{{ optional($nfc_card->nfcData)->whatsapp_url }}"
+                                            class="social-link-tem2"><i class="fa-brands fa-whatsapp"></i></a>
+                                        <a href="{{ optional($nfc_card->nfcData)->twitter_url }}"
+                                            class="social-link-tem2"><i class="fa-brands fa-twitter"></i></a>
                                     </div>
                                     @if (!empty($nfc_card->bio_description))
                                         <p class="text-white mb-0 text-justify pt-4">
@@ -384,41 +377,41 @@
                                                     class="fa fa-envelope social_icons fs-3 bg-white contact-icons-tem2"></i>
                                             </div>
                                             <small class="mb-0">E-Mail Address</small>
-                                            <p class="mb-0 special-font">{{ $nfc_card->nfcData->email_personal }}</p>
-                                            <p class="mb-0 special-font">{{ $nfc_card->nfcData->email_work }}</p>
+                                            <h5 class="mb-0">{{ $nfc_card->nfcData->email_personal }}</h5>
+                                            <h5 class="mb-0">{{ $nfc_card->nfcData->email_work }}</h5>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="text-white text-center ps-3">
                                             <div class="">
                                                 <i
-                                                    class="fa fa-envelope social_icons fs-3 bg-white contact-icons-tem2"></i>
+                                                    class="fa fa-phone social_icons fs-3 bg-white contact-icons-tem2"></i>
                                             </div>
                                             <small class="mb-0">Phone</small>
-                                            <p class="mb-0 special-font fs-5">{{ $nfc_card->nfcData->phone_personal }}
-                                            </p>
-                                            <p class="mb-0 special-font fs-5">{{ $nfc_card->nfcData->phone_work }}</p>
+                                            <h5 class="mb-0 fs-5">{{ $nfc_card->nfcData->phone_personal }}
+                                            </h5>
+                                            <h5 class="mb-0 fs-5">{{ $nfc_card->nfcData->phone_work }}</h5>
                                         </div>
                                     </div>
                                     <div class="col-md-6 mt-4">
                                         <div class="text-white text-center ps-3">
                                             <div class="">
                                                 <i
-                                                    class="fa fa-envelope social_icons fs-3 bg-white contact-icons-tem2"></i>
+                                                    class="fa-solid fa-cake-candles social_icons fs-3 bg-white contact-icons-tem2"></i>
                                             </div>
                                             <small class="mb-0">Date Of Birth</small>
-                                            <p class="mb-0 special-font fs-5">{{ $nfc_card->nfcData->date_of_birth }}
-                                            </p>
+                                            <h5 class="mb-0 fs-5">{{ $nfc_card->nfcData->date_of_birth }}
+                                            </h5>
                                         </div>
                                     </div>
                                     <div class="col-md-6 mt-4">
                                         <div class="text-white text-center ps-3">
                                             <div class="">
                                                 <i
-                                                    class="fa fa-envelope social_icons fs-3 bg-white contact-icons-tem2"></i>
+                                                    class="fa fa-location-dot social_icons fs-3 bg-white contact-icons-tem2"></i>
                                             </div>
                                             <small class="mb-0">Location</small>
-                                            <p class="mb-0 special-font fs-5">{{ $nfc_card->nfcData->location }}</p>
+                                            <h5 class="mb-0 fs-5">{{ $nfc_card->nfcData->location }}</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -507,39 +500,42 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="service-slide pt-3">
-                                    @foreach ($nfc_card->nfcService->chunk(2) as $serviceChunk)
-                                        <div class="row">
-                                            @foreach ($serviceChunk as $service)
-                                                <div class="col-lg-6 col-md-6 mb-4">
-                                                    <div class="card rounded-0 border-0 h-100">
-                                                        <div class="card-body border-0 d-flex flex-column">
-                                                            <div>
-                                                                <img class="card-img-top"
-                                                                    src="{{ !empty($service->service_icon) && file_exists(public_path('storage/nfc/service/' . optional($service)->service_icon)) ? asset('storage/nfc/service/' . optional($service)->service_icon) : asset('frontend/images/no_image.png') }}"
-                                                                    alt="" />
-                                                            </div>
-                                                            <div class="mt-3 text-center flex-grow-1">
-                                                                <h4 class="mb-0 special-font"
-                                                                    style="color: var(--template-two-color-primary)">
-                                                                    <a
-                                                                        href="{{ $service->service_url }}">{{ $service->service_name }}</a>
-                                                                </h4>
-                                                                <p class="">
-                                                                    {{ $service->service_description }}
-                                                                </p>
+                                <div id="serviceCarousel" class="carousel slide" data-ride="carousel">
+                                    <div class="carousel-inner">
+                                        @foreach ($nfc_card->nfcService->chunk(2) as $serviceChunk)
+                                            <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+                                                <div class="row">
+                                                    @foreach ($serviceChunk as $service)
+                                                        <div class="col-lg-6 col-md-6 mb-4">
+                                                            <div class="card rounded-0 border-0 h-100">
+                                                                <div class="card-body border-0 d-flex flex-column">
+                                                                    <div>
+                                                                        <img class="card-img-top"
+                                                                            src="{{ !empty($service->service_icon) && file_exists(public_path('storage/nfc/service/' . optional($service)->service_icon)) ? asset('storage/nfc/service/' . optional($service)->service_icon) : asset('frontend/images/no_image.png') }}"
+                                                                            alt="" />
+                                                                    </div>
+                                                                    <div class="mt-3 text-center flex-grow-1">
+                                                                        <h4 class="mb-0 special-font"
+                                                                            style="color: var(--template-two-color-primary)">
+                                                                            <a
+                                                                                href="{{ $service->service_url }}">{{ $service->service_name }}</a>
+                                                                        </h4>
+                                                                        <p class="">
+                                                                            {{ $service->service_description }}
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    @endforeach
                                                 </div>
-                                            @endforeach
-                                        </div>
-                                    @endforeach
+                                            </div>
+                                        @endforeach
+                                    </div>
                                 </div>
                             </div>
                         </section>
                     @endif
-
                     <!-- Product -->
                     @if ($nfc_card->products_show == '1')
                         <section>
@@ -908,7 +904,7 @@
                     </section>
                 </div>
             </div>
-            <div class="footer-nav-area-tem2" id="footerNav">
+            <div class="footer-nav-area-tem2 footer-nav-area" id="footerNav">
                 <div class="container px-0">
                     <!-- Footer Content -->
                     <div class="footer-nav-tem2 position-relative">
@@ -1010,7 +1006,7 @@
                 prevArrow: '<button type="button" class="slick-prev"><i class="fas fa-chevron-left"></i></button>',
                 nextArrow: '<button type="button" class="slick-next"><i class="fas fa-chevron-right"></i></button>',
             });
-            $(".service-slide").slick({
+            $("#serviceCarousel").slick({
                 infinite: true, // Infinite looping
                 speed: 500, // Animation speed in milliseconds
                 slidesToShow: 1, // Number of slides to show at once
@@ -1018,7 +1014,6 @@
                 autoplay: true, // Enable autoplay
                 autoplaySpeed: 2000, // Autoplay speed in milliseconds
                 arrows: false, // Show next/prev arrows
-                gap: 10,
                 dots: false,
                 prevArrow: '<button type="button" class="slick-prev"><i class="fa fa-chevron-left"></i></button>',
                 nextArrow: '<button type="button" class="slick-next"><i class="fa fa-chevron-right"></i></button>',
