@@ -448,10 +448,25 @@ class VirtualCardController extends Controller
         return response()->json(['success' => true]);
     }
 
+    // public function checkUrlAlias(Request $request)
+    // {
+    //     $urlAlias = $request->query('url_alias');
+    //     $isUnique = !NfcCard::where('url_alias', $urlAlias)->exists();
+
+    //     return response()->json(['is_unique' => $isUnique]);
+    // }
     public function checkUrlAlias(Request $request)
     {
         $urlAlias = $request->query('url_alias');
-        $isUnique = !NfcCard::where('url_alias', $urlAlias)->exists();
+        $id = $request->query('card_id');
+
+        // Check if url_alias is unique, excluding the current record if updating
+        $query = NfcCard::where('url_alias', $urlAlias);
+        if ($id) {
+            $query->where('id', '!=', $id);
+        }
+
+        $isUnique = !$query->exists();
 
         return response()->json(['is_unique' => $isUnique]);
     }

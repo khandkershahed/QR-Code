@@ -49,7 +49,7 @@
                                         Url <i class="fa-solid fa-link text-primary"></i></a>
                                 </td>
                                 <td>
-                                    <a href="{{ route('nfc.product.destroy', $product->id) }}" class="text-danger"
+                                    <a href="javascript:void(0)" class="text-danger"
                                         onclick="deleteProduct(event, '{{ route('nfc.product.destroy', $product->id) }}')">Delete
                                         <i class="fa-solid fa-trash text-danger"></i></a>
                                 </td>
@@ -145,102 +145,6 @@
 
 @push('scripts')
     <script>
-        $(document).ready(function() {
-            function submitProductForm(event) {
-                event.preventDefault(); // Prevent default form submission
-
-                var form = $('.product_form');
-                var url = form.attr('action');
-                var formData = new FormData(form[0]);
-                var product_container = $('.product_container');
-                var submitButton = form.find('.kt_docs_formvalidation_text_submit');
-                var isValid = true;
-
-                // Remove any existing error messages and red borders
-                form.find('.error-message').remove();
-                form.find('.form-control').removeClass('is-invalid');
-
-                // Validate each required field (adjust field names as needed)
-                form.find('[name="product_name"],[name="product_currency"],[name="product_price"]').each(function() {
-                    var fieldValue = $(this).val().trim();
-                    if (!fieldValue) {
-                        // Show error message for the current field
-                        $(this).addClass('is-invalid');
-                        $(this).after('<p class="error-message text-danger">This field is required.</p>');
-                        isValid = false;
-                    }
-                });
-
-                if (isValid) {
-                    // Optionally disable the submit button to prevent multiple submissions
-                    submitButton.prop('disabled', true).addClass('disabled');
-
-                    $.ajax({
-                        type: 'POST',
-                        url: url,
-                        data: formData,
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        beforeSend: function() {
-                            // Show loading spinner or indicator
-                            submitButton.find('.indicator-label').hide();
-                            submitButton.find('.indicator-progress').show();
-                        },
-                        success: function(response) {
-                            console.log('Form submitted successfully:', response);
-                            if (response.product_view) {
-                                console.log('Updating container with new HTML');
-                                modalInstance.hide(); // Use Bootstrap's modal hide method
-                                product_container.html(response.product_view); // Replace HTML directly
-                                toastr.success('Data saved successfully!', 'Success');
-                            } else {
-                                console.error('Unexpected response format:', response);
-                                toastr.error('Unexpected response format.', 'Error');
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            // Handle error response
-                            console.error('Error:', error);
-                            toastr.error('An error occurred while saving data.', 'Error');
-                        },
-                        complete: function() {
-                            // Re-enable the submit button and hide the loading indicator
-                            submitButton.prop('disabled', false).removeClass('disabled');
-                            submitButton.find('.indicator-label').show();
-                            submitButton.find('.indicator-progress').hide();
-                        }
-                    });
-                } else {
-                    // Show SweetAlert error message for validation errors
-                    Swal.fire({
-                        text: 'Some input fields are not filled up!',
-                        icon: 'error',
-                        buttonsStyling: false,
-                        confirmButtonText: 'Ok, got it!',
-                        customClass: {
-                            confirmButton: 'btn btn-primary'
-                        }
-                    });
-                }
-            }
-
-            // Attach the submit handler to the product form
-            $('.product_form').on('submit', function(event) {
-                submitProductForm(event);
-            });
-
-            // Re-enable the submit button when any input field is changed
-            $('.product_form input').on('input', function() {
-                var submitButton = $('.product_form').find('.kt_docs_formvalidation_text_submit');
-                submitButton.prop('disabled', false).removeClass('disabled');
-                $(this).removeClass('is-invalid');
-                $(this).next('.error-message').remove();
-            });
-        });
-    </script>
-
-    <script>
         function deleteProduct(event, deleteUrl) {
             event.preventDefault(); // Prevent the default link action
             var product_container = $('.product_container');
@@ -273,7 +177,7 @@
                                     console.log('Updating container with new HTML');
                                 });
                             console.log('Updating container with new HTML');
-                            toastr.success('Service deleted successfully!', 'Success');
+                            toastr.success('product deleted successfully!', 'Success');
                         },
                         error: function(xhr, status, error) {
                             Swal.fire("Error Occurred!",
@@ -285,5 +189,98 @@
                 }
             });
         }
+    </script>
+    <script>
+        function submitProductForm() {
+            // Detach any existing event handler to prevent multiple bindings
+            $('.product_form').off('submit').on('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                var form = $(this);
+                var url = form.attr('action');
+                var formData = new FormData(form[0]);
+                var submitButton = form.find('.kt_docs_formvalidation_text_submit');
+                var modalElement = document.getElementById('productCreateModal');
+                var modalInstance = bootstrap.Modal.getInstance(modalElement);
+                var isValid = true;
+
+                // Remove any existing error messages and red borders
+                form.find('.text-danger').hide().text('');
+                form.find('.form-control').removeClass('is-invalid');
+
+                // Validate required fields
+                form.find('[name="product_name"], [name="product_currency"], [name="product_price"]').each(function() {
+                    var fieldValue = $(this).val().trim();
+                    if (!fieldValue) {
+                        // Show error message for the current field
+                        $(this).addClass('is-invalid');
+                        $(this).after('<p class="error-message text-danger">This field is required.</p>');
+                        isValid = false;
+                    }
+                });
+
+                if (isValid) {
+                    // Disable the submit button to prevent multiple submissions
+                    submitButton.prop('disabled', true).addClass('disabled');
+
+                    $.ajax({
+                        type: 'POST',
+                        url: url,
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        beforeSend: function() {
+                            submitButton.find('.indicator-label').hide();
+                            submitButton.find('.indicator-progress').show();
+                        },
+                        success: function(response) {
+                            if (response.product_view) {
+                                // Update form with new values
+                                $('.product_container').html(response.product_view);
+
+                                toastr.success('Data saved successfully!', 'Success');
+                                // Reattach the event handler to the new form
+                                submitProductForm();
+                                modalInstance.hide();
+                            } else {
+                                toastr.error('Unexpected response format.', 'Error');
+                            }
+                        },
+                        error: function(xhr) {
+                            let errors = xhr.responseJSON.errors;
+                            for (let key in errors) {
+                                $(`#${key}_feedback`).text(errors[key][0]).show();
+                            }
+                            toastr.error('An error occurred while saving data.', 'Error');
+                        },
+                        complete: function() {
+                            submitButton.prop('disabled', false).removeClass('disabled');
+                            submitButton.find('.indicator-label').show();
+                            submitButton.find('.indicator-progress').hide();
+                        }
+                    });
+                } else {
+                    Swal.fire({
+                        text: 'Some input fields are not filled up!',
+                        icon: 'error',
+                        buttonsStyling: false,
+                        confirmButtonText: 'Ok, got it!',
+                        customClass: {
+                            confirmButton: 'btn btn-primary'
+                        }
+                    });
+                }
+            });
+
+            // Optional: Hide error message and remove red border on input change
+            $('.product_form input, .product_form select').off('input change').on('input change', function() {
+                $(this).removeClass('is-invalid');
+                $(this).next('.text-danger').hide().text('');
+            });
+        }
+
+        $(document).ready(function() {
+            submitProductForm(); // Bind form submission event handler on document ready
+        });
     </script>
 @endpush

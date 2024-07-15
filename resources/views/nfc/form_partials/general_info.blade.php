@@ -1,5 +1,5 @@
-<form class="general_info_form form" method="POST" action="{{ route('nfc.general_info.add') }}" autocomplete="off"
-    enctype="multipart/form-data">
+<form class="general_info_form form" id="generalInfoForm" method="POST" action="{{ route('nfc.general_info.add') }}"
+    autocomplete="off" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="card_id" value="{{ $nfc_card->id }}">
     <div class="row">
@@ -150,8 +150,7 @@
     </div>
 
     <div class="d-flex justify-content-end">
-        <button type="submit" onclick="submitGeneralInfoForm()"
-            class="kt_docs_formvalidation_text_submit btn btn-primary mt-5" id="submitBtn">
+        <button type="submit" class="kt_docs_formvalidation_text_submit btn btn-primary mt-5" id="submitBtn">
             <span class="indicator-label">
                 Save Data
             </span>
@@ -164,78 +163,158 @@
 
 @push('scripts')
     <script>
+        
         $(document).ready(function() {
-            function submitGeneralInfoForm(e) {
-                e.preventDefault(); // Prevent default form submission
+            let urlInput = $('input[name="url_alias"]');
+            let feedbackElement = $('#url_alias_feedback');
+            let submitButton = $('.kt_docs_formvalidation_text_submit');
+             // Assume the input has a data-id attribute for the current record's ID
 
-                var form = $('.general_info_form');
+            function validateUrlAlias(inputValue) {
+                return /^[a-zA-Z0-9-]+$/.test(inputValue) && !/--/.test(inputValue) && !inputValue.endsWith('-');
+            }
+
+            function showError(message) {
+                feedbackElement.text(message).show();
+                urlInput.addClass('is-invalid');
+                submitButton.prop('disabled', true);
+            }
+
+            function hideError() {
+                feedbackElement.text('').hide();
+                urlInput.removeClass('is-invalid');
+                submitButton.prop('disabled', false);
+            }
+
+            urlInput.on('keyup input', function() {
+                let urlAlias = $(this).val().trim();
+                let card_id = $('input[name="card_id"]').val().trim();
+
+                if (urlAlias.length > 0) {
+                    if (!validateUrlAlias(urlAlias)) {
+                        showError('Only plain letters, numbers, and non-consecutive hyphens are allowed.');
+                        return;
+                    }
+
+                    $.ajax({
+                        url: '/check-url-alias',
+                        type: 'GET',
+                        data: {
+                            url_alias: urlAlias,
+                            card_id: card_id // Pass the current record ID to the server
+                        },
+                        success: function(response) {
+                            if (response.is_unique) {
+                                hideError();
+                            } else {
+                                showError(
+                                    'This URL alias is already taken. Please choose another one.'
+                                );
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(error);
+                            showError('An error occurred while checking the URL alias.');
+                        }
+                    });
+                } else {
+                    hideError();
+                }
+            });
+
+            $('#basic-url').on('keypress', function(event) {
+                let charCode = event.which || event.keyCode;
+                let charStr = String.fromCharCode(charCode);
+                let inputValue = $(this).val();
+
+                if (!/^[a-zA-Z0-9]$/.test(charStr) && (charStr !== '-' || inputValue.endsWith('-') ||
+                        inputValue.includes('--'))) {
+                    event.preventDefault();
+                    showError('Only plain letters, numbers, and non-consecutive hyphens are allowed.');
+                } else {
+                    hideError();
+                }
+            });
+
+            $('#generalInfoForm').on('submit', function(event) {
+                let inputValue = $('#basic-url').val().trim();
+                if (!validateUrlAlias(inputValue)) {
+                    event.preventDefault();
+                    showError(
+                        'Please enter a valid alias. Only letters, numbers, and non-consecutive hyphens are allowed.'
+                    );
+                }
+            });
+        });
+    </script>
+
+    <script>
+        function attachGeneralInfoFormSubmitHandler() {
+            // Detach any existing event handler to prevent multiple bindings
+            $('#generalInfoForm').off('submit').on('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                var form = $(this);
                 var url = form.attr('action');
                 var formData = new FormData(form[0]);
-                var general_info_container = $('.general_info_container');
                 var submitButton = form.find('.kt_docs_formvalidation_text_submit');
                 var isValid = true;
 
                 // Remove any existing error messages and red borders
-                form.find('.error-message').remove();
+                form.find('.text-danger').hide().text('');
                 form.find('.form-control').removeClass('is-invalid');
 
-                // Validate each required field
-                form.find(
-                    '[name="url_alias"], [name="vcard_name"], [name="first_name"], [name="last_name"], [name="email_personal"], [name="phone_personal"]'
-                ).each(function() {
-                    var fieldValue = $(this).val().trim();
-                    if (!fieldValue) {
-                        // Show error message for the current field
-                        $(this).addClass('is-invalid');
-                        $(this).after('<p class="error-message text-danger">This field is required.</p>');
-                        isValid = false;
-                    }
-                });
+                // Validate required fields
+                form.find('[name="url_alias"], [name="vcard_name"], [name="first_name"], [name="last_name"], [name="email_personal"]')
+                    .each(function() {
+                        var fieldValue = $(this).val().trim();
+                        if (!fieldValue) {
+                            // Show error message for the current field
+                            $(this).addClass('is-invalid');
+                            $(this).after('<p class="error-message text-danger">This field is required.</p>');
+                            isValid = false;
+                        }
+                    });
 
                 if (isValid) {
-                    // Optionally disable the submit button to prevent multiple submissions
+                    // Disable the submit button to prevent multiple submissions
                     submitButton.prop('disabled', true).addClass('disabled');
 
                     $.ajax({
                         type: 'POST',
                         url: url,
                         data: formData,
-                        cache: false,
-                        contentType: false,
                         processData: false,
+                        contentType: false,
                         beforeSend: function() {
-                            // Show loading spinner or indicator
                             submitButton.find('.indicator-label').hide();
                             submitButton.find('.indicator-progress').show();
                         },
                         success: function(response) {
-                            // Log the entire response to inspect it
-                            console.log('Form submitted successfully:', response);
-
                             if (response.general_info_view) {
-                                console.log('Updating container with new HTML');
-                                general_info_container.empty();
-                                general_info_container.html(response.general_info_view);
+                                // Update form with new values
+                                $('.general_info_container').html(response.general_info_view);
                                 toastr.success('Data saved successfully!', 'Success');
+                                // Reattach the event handler to the new form
+                                attachGeneralInfoFormSubmitHandler();
                             } else {
-                                console.error('Unexpected response format:', response);
                                 toastr.error('Unexpected response format.', 'Error');
                             }
                         },
-                        error: function(xhr, status, error) {
-                            // Handle error response
-                            console.error('Error:', error);
+                        error: function(xhr) {
+                            let errors = xhr.responseJSON.errors;
+                            for (let key in errors) {
+                                $(`#${key}_feedback`).text(errors[key][0]).show();
+                            }
                             toastr.error('An error occurred while saving data.', 'Error');
                         },
                         complete: function() {
-                            // Re-enable the submit button and hide the loading indicator
                             submitButton.prop('disabled', false).removeClass('disabled');
                             submitButton.find('.indicator-label').show();
                             submitButton.find('.indicator-progress').hide();
                         }
                     });
                 } else {
-                    // Show SweetAlert error message for validation errors
                     Swal.fire({
                         text: 'Some input fields are not filled up!',
                         icon: 'error',
@@ -246,69 +325,17 @@
                         }
                     });
                 }
-            }
-
-            // Attach the submit handler to the form
-            $('.general_info_form').on('submit', submitGeneralInfoForm);
+            });
 
             // Optional: Hide error message and remove red border on input change
-            $('.general_info_form input, .general_info_form select').on('input change', function() {
+            $('.general_info_form input, .general_info_form select').off('input change').on('input change', function() {
                 $(this).removeClass('is-invalid');
-                $(this).next('.error-message').remove();
+                $(this).next('.text-danger').hide().text('');
             });
-        });
-    </script>
-    <script>
+        }
+
         $(document).ready(function() {
-            $('#basic-url').on('keypress', function(event) {
-                var charCode = event.which || event.keyCode;
-                var charStr = String.fromCharCode(charCode);
-                var inputValue = $(this).val();
-
-                // Allow only letters, numbers, and hyphens, but no consecutive hyphens
-                if (!/^[a-zA-Z0-9]$/.test(charStr) && (charStr !== '-' || inputValue.endsWith('-'))) {
-                    event.preventDefault();
-                    $('#url_alias_feedback').text(
-                        'Only plain letters, numbers, and non-consecutive hyphens are allowed.').show();
-                    $(this).addClass('is-invalid');
-                    $('.kt_docs_formvalidation_text_submit').prop('disabled', true);
-                } else {
-                    $('#url_alias_feedback').text('').hide();
-                    $(this).removeClass('is-invalid');
-                    $('.kt_docs_formvalidation_text_submit').prop('disabled', false);
-                }
-            });
-
-            // Optional: Validate on input change (in case of pasting)
-            $('#basic-url').on('input', function() {
-                var inputValue = $(this).val().trim();
-                var isValid = /^[a-zA-Z0-9-]+$/.test(inputValue) && !/--/.test(inputValue);
-
-                if (!isValid) {
-                    $('#url_alias_feedback').text(
-                        'Only plain letters, numbers, and non-consecutive hyphens are allowed.').show();
-                    $(this).addClass('is-invalid');
-                    $('.kt_docs_formvalidation_text_submit').prop('disabled', true);
-                } else {
-                    $('#url_alias_feedback').text('').hide();
-                    $(this).removeClass('is-invalid');
-                    $('.kt_docs_formvalidation_text_submit').prop('disabled', false);
-                }
-            });
-
-            // Optional: Validate on form submit to prevent invalid submissions
-            $('.product_form').on('submit', function(event) {
-                var inputValue = $('#basic-url').val().trim();
-                var isValid = /^[a-zA-Z0-9-]+$/.test(inputValue) && !/--/.test(inputValue);
-
-                if (!isValid) {
-                    event.preventDefault(); // Prevent form submission
-                    $('#url_alias_feedback').text(
-                        'Please enter a valid alias. Only letters, numbers, and non-consecutive hyphens are allowed.'
-                        ).show();
-                    $('#basic-url').addClass('is-invalid');
-                }
-            });
+            attachGeneralInfoFormSubmitHandler();
         });
     </script>
 @endpush

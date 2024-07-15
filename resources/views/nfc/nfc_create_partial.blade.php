@@ -198,96 +198,182 @@
             });
 
             // URL Alias uniqueness check
-            $('input[name="url_alias"]').on('keyup', function() {
-                let urlAlias = $(this).val();
-                let feedbackElement = $('#url_alias_feedback');
+            // $('input[name="url_alias"]').on('keyup', function() {
+            //     let urlAlias = $(this).val();
+            //     let feedbackElement = $('#url_alias_feedback');
+
+            //     if (urlAlias.length > 0) {
+            //         $.ajax({
+            //             url: '/check-url-alias', // The route to check the uniqueness
+            //             type: 'GET',
+            //             data: {
+            //                 url_alias: urlAlias
+            //             },
+            //             success: function(response) {
+            //                 if (response.is_unique) {
+            //                     feedbackElement.hide();
+            //                     $('.virtual_card_create_form_submit').prop('disabled', false);
+            //                 } else {
+            //                     feedbackElement.text(
+            //                         'This URL alias is already taken. Please choose another one.'
+            //                     );
+            //                     feedbackElement.show();
+            //                     feedbackElement.addClass('is-invalid');
+            //                     $('.virtual_card_create_form_submit').prop('disabled', true);
+            //                 }
+            //             },
+            //             error: function(xhr, status, error) {
+            //                 console.error(error);
+            //                 feedbackElement.text(
+            //                     'An error occurred while checking the URL alias.');
+            //                 feedbackElement.show();
+            //             }
+            //         });
+            //     } else {
+            //         feedbackElement.hide();
+            //     }
+            // });
+        });
+
+        // $(document).ready(function() {
+        //     function validateUrlAlias() {
+        //         var inputValue = $('#basic-url').val().trim();
+        //         var isValid = /^[a-zA-Z0-9-]+$/.test(inputValue) && !/--/.test(inputValue);
+
+        //         if (!isValid) {
+        //             $('#url_alias_feedback').text(
+        //                 'Only plain letters, numbers, and non-consecutive hyphens are allowed.').show();
+        //             $('#basic-url').addClass('is-invalid');
+        //             $('.virtual_card_create_form_submit').prop('disabled', true);
+        //         } else {
+        //             $('#url_alias_feedback').text('').hide();
+        //             $('#basic-url').removeClass('is-invalid');
+        //             if (inputValue !== '') {
+        //                 $('.virtual_card_create_form_submit').prop('disabled', false);
+        //             } else {
+        //                 $('.virtual_card_create_form_submit').prop('disabled', true);
+        //             }
+        //         }
+        //     }
+
+        //     $('#basic-url').on('keypress', function(event) {
+        //         var charCode = event.which || event.keyCode;
+        //         var charStr = String.fromCharCode(charCode);
+        //         var inputValue = $(this).val();
+
+        //         // Allow only letters, numbers, and hyphens, but no consecutive hyphens
+        //         if (!/^[a-zA-Z0-9]$/.test(charStr) && (charStr !== '-' || inputValue.endsWith('-'))) {
+        //             event.preventDefault();
+        //             $('#url_alias_feedback').text(
+        //                 'Only plain letters, numbers, and non-consecutive hyphens are allowed.').show();
+        //             $(this).addClass('is-invalid');
+        //             $('.virtual_card_create_form_submit').prop('disabled', true);
+        //         } else {
+        //             $('#url_alias_feedback').text('').hide();
+        //             $(this).removeClass('is-invalid');
+        //             validateUrlAlias();
+        //         }
+        //     });
+
+        //     $('#basic-url').on('input', validateUrlAlias);
+
+        //     // Optional: Validate on form submit to prevent invalid submissions
+        //     $('.product_form').on('submit', function(event) {
+        //         var inputValue = $('#basic-url').val().trim();
+        //         var isValid = /^[a-zA-Z0-9-]+$/.test(inputValue) && !/--/.test(inputValue);
+
+        //         if (!isValid) {
+        //             event.preventDefault(); // Prevent form submission
+        //             $('#url_alias_feedback').text(
+        //                 'Please enter a valid alias. Only letters, numbers, and non-consecutive hyphens are allowed.'
+        //             ).show();
+        //             $('#basic-url').addClass('is-invalid');
+        //         }
+        //     });
+        // });
+
+        $(document).ready(function() {
+            let urlInput = $('input[name="url_alias"]');
+            let feedbackElement = $('#url_alias_feedback');
+            let submitButton = $('.virtual_card_create_form_submit');
+
+            function validateUrlAlias(inputValue) {
+                return /^[a-zA-Z0-9-]+$/.test(inputValue) && !/--/.test(inputValue) && !inputValue.endsWith('-');
+            }
+
+            function showError(message) {
+                feedbackElement.text(message).show();
+                urlInput.addClass('is-invalid');
+                submitButton.prop('disabled', true);
+            }
+
+            function hideError() {
+                feedbackElement.text('').hide();
+                urlInput.removeClass('is-invalid');
+                submitButton.prop('disabled', false);
+            }
+
+            urlInput.on('keyup input', function() {
+                let urlAlias = $(this).val().trim();
+                let currentRecordId = $(this).data('id'); // Optional for update, can be empty for create
 
                 if (urlAlias.length > 0) {
+                    if (!validateUrlAlias(urlAlias)) {
+                        showError('Only plain letters, numbers, and non-consecutive hyphens are allowed.');
+                        return;
+                    }
+
+                    let requestData = {
+                        url_alias: urlAlias
+                    };
+                    if (currentRecordId) {
+                        requestData.id = currentRecordId; // Include id only if it's an update
+                    }
+
                     $.ajax({
-                        url: '/check-url-alias', // The route to check the uniqueness
+                        url: '/check-url-alias',
                         type: 'GET',
-                        data: {
-                            url_alias: urlAlias
-                        },
+                        data: requestData,
                         success: function(response) {
                             if (response.is_unique) {
-                                feedbackElement.hide();
-                                $('.virtual_card_create_form_submit').prop('disabled', false);
+                                hideError();
                             } else {
-                                feedbackElement.text(
+                                showError(
                                     'This URL alias is already taken. Please choose another one.'
-                                );
-                                feedbackElement.show();
-                                feedbackElement.addClass('is-invalid');
-                                $('.virtual_card_create_form_submit').prop('disabled', true);
+                                    );
                             }
                         },
                         error: function(xhr, status, error) {
                             console.error(error);
-                            feedbackElement.text(
-                                'An error occurred while checking the URL alias.');
-                            feedbackElement.show();
+                            showError('An error occurred while checking the URL alias.');
                         }
                     });
                 } else {
-                    feedbackElement.hide();
+                    hideError();
                 }
             });
-        });
-
-        $(document).ready(function() {
-            function validateUrlAlias() {
-                var inputValue = $('#basic-url').val().trim();
-                var isValid = /^[a-zA-Z0-9-]+$/.test(inputValue) && !/--/.test(inputValue);
-
-                if (!isValid) {
-                    $('#url_alias_feedback').text(
-                        'Only plain letters, numbers, and non-consecutive hyphens are allowed.').show();
-                    $('#basic-url').addClass('is-invalid');
-                    $('.virtual_card_create_form_submit').prop('disabled', true);
-                } else {
-                    $('#url_alias_feedback').text('').hide();
-                    $('#basic-url').removeClass('is-invalid');
-                    if (inputValue !== '') {
-                        $('.virtual_card_create_form_submit').prop('disabled', false);
-                    } else {
-                        $('.virtual_card_create_form_submit').prop('disabled', true);
-                    }
-                }
-            }
 
             $('#basic-url').on('keypress', function(event) {
-                var charCode = event.which || event.keyCode;
-                var charStr = String.fromCharCode(charCode);
-                var inputValue = $(this).val();
+                let charCode = event.which || event.keyCode;
+                let charStr = String.fromCharCode(charCode);
+                let inputValue = $(this).val();
 
-                // Allow only letters, numbers, and hyphens, but no consecutive hyphens
-                if (!/^[a-zA-Z0-9]$/.test(charStr) && (charStr !== '-' || inputValue.endsWith('-'))) {
+                if (!/^[a-zA-Z0-9]$/.test(charStr) && (charStr !== '-' || inputValue.endsWith('-') ||
+                        inputValue.includes('--'))) {
                     event.preventDefault();
-                    $('#url_alias_feedback').text(
-                        'Only plain letters, numbers, and non-consecutive hyphens are allowed.').show();
-                    $(this).addClass('is-invalid');
-                    $('.virtual_card_create_form_submit').prop('disabled', true);
+                    showError('Only plain letters, numbers, and non-consecutive hyphens are allowed.');
                 } else {
-                    $('#url_alias_feedback').text('').hide();
-                    $(this).removeClass('is-invalid');
-                    validateUrlAlias();
+                    hideError();
                 }
             });
 
-            $('#basic-url').on('input', validateUrlAlias);
-
-            // Optional: Validate on form submit to prevent invalid submissions
-            $('.product_form').on('submit', function(event) {
-                var inputValue = $('#basic-url').val().trim();
-                var isValid = /^[a-zA-Z0-9-]+$/.test(inputValue) && !/--/.test(inputValue);
-
-                if (!isValid) {
-                    event.preventDefault(); // Prevent form submission
-                    $('#url_alias_feedback').text(
+            $('#generalInfoForm').on('submit', function(event) {
+                let inputValue = $('#basic-url').val().trim();
+                if (!validateUrlAlias(inputValue)) {
+                    event.preventDefault();
+                    showError(
                         'Please enter a valid alias. Only letters, numbers, and non-consecutive hyphens are allowed.'
-                    ).show();
-                    $('#basic-url').addClass('is-invalid');
+                        );
                 }
             });
         });

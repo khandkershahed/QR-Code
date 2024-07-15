@@ -148,10 +148,9 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-end mt-10">
-                            <button type="submit" onclick="submitCompanyForm()"
-                                class="kt_docs_formvalidation_text_submit btn btn-primary">
+                            <button type="submit" onclick="submitCompanyForm()" class="kt_docs_formvalidation_text_submit btn btn-primary">
                                 <span class="indicator-label">
-                                    Create Company
+                                    Save
                                 </span>
                                 <span class="indicator-progress">
                                     Please wait... <span
@@ -218,7 +217,7 @@
                                         Url <i class="fa-solid fa-link text-primary"></i></a>
                                 </td>
                                 <td>
-                                    <a href="{{ route('nfc.company.destroy', $company->id) }}" class="text-danger"
+                                    <a href="javascript:void(0)" class="text-danger"
                                         onclick="deleteCompany(event, '{{ route('nfc.company.destroy', $company->id) }}')">Delete
                                         <i class="fa-solid fa-trash text-danger"></i></a>
                                 </td>
@@ -240,104 +239,7 @@
 
 @push('scripts')
     <script>
-        $(document).ready(function() {
-            function submitCompanyForm(event) {
-                event.preventDefault(); // Prevent default form submission
-
-                var form = $('.company_form');
-                var url = form.attr('action');
-                var formData = new FormData(form[0]);
-                var company_container = $('.company_container');
-                var modalElement = document.getElementById('companyCreateModal');
-                var modalInstance = bootstrap.Modal.getInstance(modalElement);
-                var submitButton = form.find('.kt_docs_formvalidation_text_submit');
-                var isValid = true;
-
-                // Remove any existing error messages and red borders
-                form.find('.error-message').remove();
-                form.find('.form-control').removeClass('is-invalid');
-
-                // Validate each required field (adjust field names as needed)
-                form.find(
-                        '[name="company_name"], [name="company_email"], [name="company_phone"]'
-                    ) // Replace with your actual field names
-                    .each(function() {
-                        var fieldValue = $(this).val().trim();
-                        if (!fieldValue) {
-                            // Show error message for the current field
-                            $(this).addClass('is-invalid');
-                            $(this).after('<p class="error-message text-danger">This field is required.</p>');
-                            isValid = false;
-                        }
-                    });
-
-                if (isValid) {
-                    // Disable the submit button to prevent multiple submissions
-                    submitButton.prop('disabled', true).addClass('disabled');
-
-                    $.ajax({
-                        type: 'POST',
-                        url: url,
-                        data: formData,
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        beforeSend: function() {
-                            // Show loading spinner or indicator
-                            submitButton.find('.indicator-label').hide();
-                            submitButton.find('.indicator-progress').show();
-                        },
-                        success: function(response) {
-                            console.log('Form submitted successfully:', response);
-                            if (response.company_view) {
-                                console.log('Updating container with new HTML');
-                                modalInstance.hide(); // Use Bootstrap's modal hide method
-                                company_container.html(response.company_view); // Replace HTML directly
-                                toastr.success('Data saved successfully!', 'Success');
-
-                                // Disable the submit button after successful submission
-                                submitButton.prop('disabled', true).addClass('disabled');
-                            } else {
-                                console.error('Unexpected response format:', response);
-                                toastr.error('Unexpected response format.', 'Error');
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            console.error('Error:', error);
-                            toastr.error('An error occurred while saving data.', 'Error');
-                        },
-                        complete: function() {
-                            submitButton.find('.indicator-label').show();
-                            submitButton.find('.indicator-progress').hide();
-                        }
-                    });
-                } else {
-                    // Show SweetAlert error message for validation errors
-                    Swal.fire({
-                        text: 'Some input fields are not filled up!',
-                        icon: 'error',
-                        buttonsStyling: false,
-                        confirmButtonText: 'Ok, got it!',
-                        customClass: {
-                            confirmButton: 'btn btn-primary'
-                        }
-                    });
-                }
-            }
-            // Attach the submit handler to the form
-            $('.company_form').on('submit', submitCompanyForm);
-
-            // Re-enable the submit button when any input field is changed
-            $('.company_form input, .company_form select').on('input change', function() {
-                var submitButton = $('.company_form').find('.kt_docs_formvalidation_text_submit');
-                submitButton.prop('disabled', false).removeClass('disabled');
-                $(this).removeClass('is-invalid');
-                $(this).next('.error-message').remove();
-            });
-        });
-    </script>
-    <script>
-        function deleteProduct(event, deleteUrl) {
+        function deleteCompany(event, deleteUrl) {
             event.preventDefault(); // Prevent the default link action
             var company_container = $('.company_container');
             Swal.fire({
@@ -363,8 +265,8 @@
                         success: function(response) {
                             $('.company_container').html('');
                             $('.company_container').html(response
-                                .product_delete_view); // Replace HTML directly
-                            Swal.fire("Deleted!", "Your product has been deleted.", "success").then(
+                                .company_delete_view); // Replace HTML directly
+                            Swal.fire("Deleted!", "Your company has been deleted.", "success").then(
                                 function() {
                                     console.log('Updating container with new HTML');
                                 });
@@ -373,13 +275,106 @@
                         },
                         error: function(xhr, status, error) {
                             Swal.fire("Error Occurred!",
-                                "An error occurred while deleting the product.", "error");
+                                "An error occurred while deleting the company.", "error");
                         },
                     });
                 } else if (result.dismiss === Swal.DismissReason.cancel) {
-                    Swal.fire("Cancelled", "Your product is safe :)", "error");
+                    Swal.fire("Cancelled", "Your company is safe :)", "error");
                 }
             });
         }
+    </script>
+    <script>
+        function submitCompanyForm() {
+            // Detach any existing event handler to prevent multiple bindings
+            $('.company_form').off('submit').on('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                var form = $(this);
+                var url = form.attr('action');
+                var formData = new FormData(form[0]);
+                var submitButton = form.find('.kt_docs_formvalidation_text_submit');
+                var modalElement = document.getElementById('companyCreateModal');
+                var modalInstance = bootstrap.Modal.getInstance(modalElement);
+                var isValid = true;
+
+                // Remove any existing error messages and red borders
+                form.find('.text-danger').hide().text('');
+                form.find('.form-control').removeClass('is-invalid');
+
+                // Validate required fields
+                form.find('[name="company_name"], [name="company_email"], [name="company_phone"]').each(function() {
+                    var fieldValue = $(this).val().trim();
+                    if (!fieldValue) {
+                        // Show error message for the current field
+                        $(this).addClass('is-invalid');
+                        $(this).after('<p class="error-message text-danger">This field is required.</p>');
+                        isValid = false;
+                    }
+                });
+
+                if (isValid) {
+                    // Disable the submit button to prevent multiple submissions
+                    submitButton.prop('disabled', true).addClass('disabled');
+
+                    $.ajax({
+                        type: 'POST',
+                        url: url,
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        beforeSend: function() {
+                            submitButton.find('.indicator-label').hide();
+                            submitButton.find('.indicator-progress').show();
+                        },
+                        success: function(response) {
+                            if (response.company_view) {
+                                // Update form with new values
+                                $('.company_container').html(response.company_view);
+
+                                toastr.success('Data saved successfully!', 'Success');
+                                // Reattach the event handler to the new form
+                                submitCompanyForm();
+                                modalInstance.hide();
+                            } else {
+                                toastr.error('Unexpected response format.', 'Error');
+                            }
+                        },
+                        error: function(xhr) {
+                            let errors = xhr.responseJSON.errors;
+                            for (let key in errors) {
+                                $(`#${key}_feedback`).text(errors[key][0]).show();
+                            }
+                            toastr.error('An error occurred while saving data.', 'Error');
+                        },
+                        complete: function() {
+                            submitButton.prop('disabled', false).removeClass('disabled');
+                            submitButton.find('.indicator-label').show();
+                            submitButton.find('.indicator-progress').hide();
+                        }
+                    });
+                } else {
+                    Swal.fire({
+                        text: 'Some input fields are not filled up!',
+                        icon: 'error',
+                        buttonsStyling: false,
+                        confirmButtonText: 'Ok, got it!',
+                        customClass: {
+                            confirmButton: 'btn btn-primary'
+                        }
+                    });
+                }
+            });
+
+            // Optional: Hide error message and remove red border on input change
+            $('.company_form input, .company_form select').off('input change').on('input change', function() {
+                $(this).removeClass('is-invalid');
+                $(this).next('.text-danger').hide().text('');
+            });
+        }
+
+        $(document).ready(function() {
+            submitCompanyForm(); // Bind form submission event handler on document ready
+        });
     </script>
 @endpush
