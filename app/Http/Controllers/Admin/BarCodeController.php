@@ -12,6 +12,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManagerStatic as Image;
 
@@ -193,23 +194,20 @@ class BarCodeController extends Controller
 
     public function bulkStore(Request $request)
     {
-        // dd($request->all());
         if (!$request->hasFile('bulk_file')) {
             return redirect()->back()->with('error', 'No file uploaded.');
         }
 
         $file = $request->file('bulk_file');
-        // Debugging step: Check if the file object is valid
         if (!$file) {
             return redirect()->back()->with('error', 'Failed to receive the file.');
         }
-        // Validate that a file is provided
+
         $request->validate([
-            'bulk_file' => 'required',
+            'bulk_file' => 'required|file|mimes:xlsx,xls,csv',
         ]);
 
-        // Store the uploaded file
-        $filePath = $request->file('bulk_file')->store('barcode/excel/');
+        $filePath = $file->store('barcode/excel/');
         if (!$filePath) {
             return redirect()->back()->with('error', 'File upload failed.');
         }
@@ -217,23 +215,37 @@ class BarCodeController extends Controller
         $file = Storage::path($filePath);
 
         try {
-            // Load barcodes from the Excel file
             $barcodes = Excel::toArray(new BarcodesImport, $file)[0];
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Failed to read the Excel file.');
         }
 
+        Log::info('Barcodes Data: ', $barcodes);
+
+        $headers = array_shift($barcodes); // Extract the headers
+
         $d = new DNS1D();
-        $barcodePattern = !empty($request->input('barcode_pattern')) ? $request->input('barcode_pattern') : 'PHARMA';
+        $barcodePattern = $request->input('barcode_pattern');
         $barcodeColor = ['r' => 0, 'g' => 0, 'b' => 0];
         $barcodeWidth = 2;
         $barcodeHeight = 60;
-        dd($barcodes);
+
         foreach ($barcodes as $row) {
-            $productId = $row['product_id'];
-            $productName = $row['product_name'];
-            $productPrice = $row['product_price'];
-            $perPage = $row['per_page'];
+            Log::info('Processing Row: ', $row);
+
+            // Map headers to row values
+            $row = array_combine($headers, $row);
+
+            if (!isset($row['Product ID']) || !isset($row['Product Name']) || !isset($row['Product Price']) || !isset($row['Per Page'])) {
+                Session::flash('error', 'Missing data in row: ' . $row);
+                Log::warning('Missing data in row: ', $row);
+                continue;
+            }
+            // dd($row['Product ID']);
+            $productId = $row['Product ID'];
+            $productName = $row['Product Name'];
+            $productPrice = $row['Product Price'];
+            $perPage = $row['Per Page'];
 
             $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
             $typePrefix = 'BAR';
@@ -249,24 +261,32 @@ class BarCodeController extends Controller
                 $urls = $this->generateBarcodes($d, $productId, $code, $barcodePattern, $barcodeWidth, $barcodeHeight, $barcodeColor);
 
                 BarCode::create([
-                    'user_id'         => $isUserRoute ? Auth::id() : null,
-                    'admin_id'        => $isUserRoute ? null : Auth::guard('admin')->id(),
-                    'barcode_type'    => $barcodePattern,
-                    'code'            => $code,
-                    'product_id'      => $productId,
-                    'product_name'    => $productName,
-                    'product_price'   => $productPrice,
-                    'per_page'        => $perPage,
-                    'barcode_url_png' => $urls['png'] ?? null,
-                    'barcode_url_jpg' => $urls['jpg'] ?? null,
-                    'barcode_url_pdf' => $urls['pdf'] ?? null,
-                    'status'          => '1',
+                    'user_id'            => $isUserRoute ? Auth::id() : null,
+                    'admin_id'           => $isUserRoute ? null : Auth::guard('admin')->id(),
+                    'barcode_type'       => 'bulk_upload',
+                    'barcode_color'      => json_encode($barcodeColor),
+                    'barcode_pattern'    => $barcodePattern,
+                    'code'               => $code,
+                    'product_id'         => $productId,
+                    'product_name'       => $productName,
+                    'product_price'      => $productPrice,
+                    'per_page'           => $perPage,
+                    'barcode_width'      => $barcodeWidth,
+                    'barcode_height'     => $barcodeHeight,
+                    'bulk_file'          => $file,
+                    'bar_code_jpg'       => $urls['jpg'] ?? null,
+                    'bar_code_pdf'       => $urls['pdf'] ?? null,
+                    'bar_code_svg'       => $urls['svg'] ?? null,
+                    'bar_code_png'       => $urls['png'] ?? null,
                 ]);
+
+
+
             } catch (\Exception $e) {
+                return redirect()->back()->with('error', $productId . ': ' . $e->getMessage());
                 Log::error('Failed to generate barcode for product ID ' . $productId . ': ' . $e->getMessage());
             }
         }
-
         return redirect()->back()->with('success', 'Barcodes generated successfully.');
     }
 
