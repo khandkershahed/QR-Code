@@ -11,7 +11,7 @@
                     <tr class="text-gray-500 fw-bold fs-7 text-uppercase">
                         <th width="5%">SL</th>
                         <th width="30%">Image</th>
-                        <th width="25%">Product Name </th>
+                        <th width="25%">Product </th>
                         <th width="12%">Pattern</th>
                         <th width="13%">BarCode</th>
                         <th width="15%" class="text-center">Action</th>
@@ -28,7 +28,21 @@
                                     alt="{{ $bar_code->product_name }}">
                             </td>
                             <td>
-                                {{ $bar_code->product_name }}
+                                <div class="d-flex flex-column">
+                                    @if (strpos(Route::current()->getName(), 'user.') === 0)
+                                        <a href="javascript:void(0)"
+                                            class="mb-1 text-decoration-none fs-6">
+                                            Name : {{ $bar_code->product_name }}
+                                        </a>
+                                    @else
+                                        <a href="javascript:void(0)"
+                                            class="mb-1 text-decoration-none fs-6">
+                                            Name : {{ $bar_code->product_name }}
+                                        </a>
+                                    @endif
+
+                                    <span class="fs-6">Code : {{ $bar_code->product_id }}</span>
+                                </div>
                             </td>
                             <td>
                                 {{ $bar_code->barcode_pattern }}
@@ -36,18 +50,41 @@
 
                             <td>
                                 <a href="javascript:void(0)" data-bs-toggle="modal"
-                                    data-bs-target="#bar_code_modal{{ $bar_code->id }}" class="text-info">
-                                    <button class="btn btn-sm btn-info"><i class="fas fa-eye pe-2"></i>
-                                        Bar Code</button>
+                                    data-bs-target="#bar_code_modal{{ $bar_code->id }}" class="btn btn-sm btn-info"><i class="fas fa-eye pe-2"></i>
+                                        Bar Code
                                 </a>
+                                <div class="modal fade" id="bar_code_modal{{ $bar_code->id }}" tabindex="-1"
+                                    data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
+                                    aria-labelledby="modalTitleId" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-md"
+                                        role="document">
+
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-primary py-3">
+                                                <h5 class="modal-title text-white" id="modalTitleId">
+                                                    Generated BarCode
+                                                </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-lg-8 offset-lg-2 mx-auto">
+                                                        <div>
+                                                            <img class="img-fluid" src="{{ asset($bar_code->bar_code_png) }}"
+                                                                alt="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
 
                             <td class="pe-0 text-center">
-                                <a href="{{ route('admin.barcode.edit', $bar_code->code) }}"
-                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-2">
-                                    <i class="fas fa-pen"></i>
-                                </a>
-                                {{-- <a href="{{ route('admin.qr-code.edit', $qr->code) }}"
+                                {{-- <a href="{{ route('admin.barcode.edit', $bar_code->code) }}"
                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-2">
                                     <i class="fas fa-pen"></i>
                                 </a> --}}

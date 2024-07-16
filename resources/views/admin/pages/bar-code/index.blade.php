@@ -9,7 +9,7 @@
                 <div class="d-flex justify-content-between align-items-center w-100">
                     <div class="text-gray-700 fw-bold d-flex ">
 
-                        <strong class="">Total Created NFC: {{ $bar_codes->count() }}</strong>
+                        <strong class="">Total Created Bar Code: {{ $bar_codes->count() }}</strong>
                     </div>
                     <div>
                         <a href="{{ route('admin.barcode.create') }}" class="btn btn-sm btn-primary rounded-2 me-3">

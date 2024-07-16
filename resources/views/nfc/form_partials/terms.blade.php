@@ -27,7 +27,7 @@
 
 @push('scripts')
     <!-- Include CKEditor Script from an alternative CDN -->
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             function submitTermsForm(event) {
                 event.preventDefault(); // Prevent default form submission
@@ -89,9 +89,71 @@
                     submitButton.find('.indicator-progress').hide();
                 }
             });
-        }
+        });
+    }
     </script>
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new CKEditorInitializer('.terms_editor');
+        });
+    </script> --}}
+    <script>
+        function submitTermsForm() {
+            var form = $('.terms_form');
+            var url = form.attr('action');
+            var formData = new FormData(form[0]);
+            var terms_container = $('.terms_container');
+
+            var submitButton = form.find('.kt_docs_formvalidation_text_submit');
+            submitButton.prop('disabled', true).addClass('disabled');
+
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                beforeSend: function() {
+                    submitButton.find('.indicator-label').hide();
+                    submitButton.find('.indicator-progress').show();
+                },
+                success: function(response) {
+                    console.log('Form submitted successfully:', response);
+                    if (response.terms_view) {
+                        console.log('Updating container with new HTML');
+
+                        terms_container.empty();
+                        terms_container.html(response.terms_view);
+                        initializeCKEditor();
+                        toastr.success('Data saved successfully!', 'Success');
+                    } else {
+                        console.error('Unexpected response format:', response);
+                        toastr.error('Unexpected response format.', 'Error');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error:', error);
+                    toastr.error('An error occurred while saving data.', 'Error');
+                },
+                complete: function() {
+                    submitButton.prop('disabled', false).removeClass('disabled');
+                    submitButton.find('.indicator-label').show();
+                    submitButton.find('.indicator-progress').hide();
+                }
+            });
+        }
+
+        function initializeCKEditor() {
+            if (typeof CKEDITOR !== 'undefined') {
+                new CKEditorInitializer('.terms_editor');
+            } else {
+                document.addEventListener('DOMContentLoaded', () => {
+                    new CKEditorInitializer('.terms_editor');
+                });
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             new CKEditorInitializer('.terms_editor');
         });

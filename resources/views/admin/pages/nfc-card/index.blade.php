@@ -8,7 +8,7 @@
                             <span class="me-2">
                                 You have Created Total
                                 <span class="position-relative d-inline-block text-danger">
-                                    <a href="/metronic8/demo1/pages/user-profile/overview.html"
+                                    <a href="javascript:void(0)"
                                         class="text-danger opacity-75-hover">{{ $nfc_cards->count() }} VCard.</a>
 
                                     <span
@@ -18,8 +18,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <a href="#" class="btn btn-info fw-semibold me-2" data-bs-toggle="modal"
-                                data-bs-target="#kt_modal_upgrade_plan">
+                            <a href="{{ route('admin.nfc-card.create') }}" class="btn btn-info fw-semibold me-2">
                                 Order NFC <span class="svg-icon svg-icon-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
                                         xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" x="0"
@@ -39,7 +38,7 @@
                                 </span>
                             </a>
 
-                            <a href="/metronic8/demo1/apps/support-center/overview.html"
+                            <a href="{{ route('admin.barcode.create') }}"
                                 class="btn btn-color-white bg-white bg-opacity-15 bg-hover-opacity-25 fw-semibold">
                                 Create Barcode <span class="svg-icon svg-icon-2 pt-5">
                                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1"

@@ -6,7 +6,7 @@
                 Add Service
             </button>
         </div>
-    </div>
+    </div> 
 </div>
 <div class="row">
     <h3>All Services List</h3>
