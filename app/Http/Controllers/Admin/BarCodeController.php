@@ -368,6 +368,6 @@ class BarCodeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        BarCode::find($id)->delete();
     }
 }

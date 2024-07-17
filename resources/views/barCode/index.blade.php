@@ -30,13 +30,11 @@
                             <td>
                                 <div class="d-flex flex-column">
                                     @if (strpos(Route::current()->getName(), 'user.') === 0)
-                                        <a href="javascript:void(0)"
-                                            class="mb-1 text-decoration-none fs-6">
+                                        <a href="javascript:void(0)" class="mb-1 text-decoration-none fs-6">
                                             Name : {{ $bar_code->product_name }}
                                         </a>
                                     @else
-                                        <a href="javascript:void(0)"
-                                            class="mb-1 text-decoration-none fs-6">
+                                        <a href="javascript:void(0)" class="mb-1 text-decoration-none fs-6">
                                             Name : {{ $bar_code->product_name }}
                                         </a>
                                     @endif
@@ -50,8 +48,9 @@
 
                             <td>
                                 <a href="javascript:void(0)" data-bs-toggle="modal"
-                                    data-bs-target="#bar_code_modal{{ $bar_code->id }}" class="btn btn-sm btn-info"><i class="fas fa-eye pe-2"></i>
-                                        Bar Code
+                                    data-bs-target="#bar_code_modal{{ $bar_code->id }}" class="btn btn-sm btn-info"><i
+                                        class="fas fa-eye pe-2"></i>
+                                    Bar Code
                                 </a>
                                 <div class="modal fade" id="bar_code_modal{{ $bar_code->id }}" tabindex="-1"
                                     data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
@@ -71,7 +70,8 @@
                                                 <div class="row">
                                                     <div class="col-lg-8 offset-lg-2 mx-auto">
                                                         <div>
-                                                            <img class="img-fluid" src="{{ asset($bar_code->bar_code_png) }}"
+                                                            <img class="img-fluid"
+                                                                src="{{ asset($bar_code->bar_code_png) }}"
                                                                 alt="">
                                                         </div>
                                                     </div>
@@ -84,6 +84,17 @@
                             </td>
 
                             <td class="pe-0 text-center">
+                                @if (strpos(Route::current()->getName(), 'user.') === 0)
+                                    <a href="{{ route('user.barcode.destroy', $bar_code->id) }}"
+                                        class="btn btn-icon btn-danger btn-bg-light btn-active-color-light btn-sm me-2 delete">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                @else
+                                <a href="{{ route('admin.barcode.destroy', $bar_code->id) }}"
+                                    class="btn btn-icon btn-danger btn-bg-light btn-active-color-light btn-sm me-2 delete">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                                @endif
                                 {{-- <a href="{{ route('admin.barcode.edit', $bar_code->code) }}"
                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-2">
                                     <i class="fas fa-pen"></i>

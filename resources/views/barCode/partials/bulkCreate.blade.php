@@ -55,16 +55,16 @@
                                 <option value="EAN5" @selected(old('barcode_pattern' == 'EAN5'))>EAN5</option>
                                 <option value="EAN8" @selected(old('barcode_pattern' == 'EAN8'))>EAN8</option>
                                 <option value="EAN13" @selected(old('barcode_pattern' == 'EAN13'))>EAN13</option>
-                                <option value="UPCA" @selected(old('barcode_pattern' == 'UPCA'))>UPCA</option>
+                                {{-- <option value="UPCA" @selected(old('barcode_pattern' == 'UPCA'))>UPCA</option> --}}
                                 <option value="UPCE" @selected(old('barcode_pattern' == 'UPCE'))>UPCE</option>
-                                <option value="MSI" @selected(old('barcode_pattern' == 'MSI'))>MSI</option>
+                                {{-- <option value="MSI" @selected(old('barcode_pattern' == 'MSI'))>MSI</option> --}}
                                 <option value="MSI+" @selected(old('barcode_pattern' == 'MSI+'))>MSI+</option>
-                                <option value="POSTNET" @selected(old('barcode_pattern' == 'POSTNET'))>POSTNET</option>
-                                <option value="PLANET" @selected(old('barcode_pattern' == 'PLANET'))>PLANET</option>
-                                <option value="RMS4CC" @selected(old('barcode_pattern' == 'RMS4CC'))>RMS4CC</option>
-                                <option value="KIX" @selected(old('barcode_pattern' == 'KIX'))>KIX</option>
-                                <option value="IMB" @selected(old('barcode_pattern' == 'IMB'))>IMB</option>
-                                <option value="CODABAR" @selected(old('barcode_pattern' == 'CODABAR'))>CODABAR</option>
+                                {{-- <option value="POSTNET" @selected(old('barcode_pattern' == 'POSTNET'))>POSTNET</option> --}}
+                                {{-- <option value="PLANET" @selected(old('barcode_pattern' == 'PLANET'))>PLANET</option> --}}
+                                {{-- <option value="RMS4CC" @selected(old('barcode_pattern' == 'RMS4CC'))>RMS4CC</option> --}}
+                                {{-- <option value="KIX" @selected(old('barcode_pattern' == 'KIX'))>KIX</option> --}}
+                                {{-- <option value="IMB" @selected(old('barcode_pattern' == 'IMB'))>IMB</option> --}}
+                                {{-- <option value="CODABAR" @selected(old('barcode_pattern' == 'CODABAR'))>CODABAR</option> --}}
                                 <option value="CODE11" @selected(old('barcode_pattern' == 'CODE11'))>CODE11</option>
                                 <option value="PHARMA" @selected(old('barcode_pattern' == 'PHARMA'))>PHARMA</option>
                                 <option value="PHARMA2T" @selected(old('barcode_pattern' == 'PHARMA2T'))>PHARMA2T</option>
