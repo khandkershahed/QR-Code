@@ -42015,8 +42015,13 @@ input[type="color" i] {
 .show > .btn.btn-active-info {
     color: #fff;
     border-color: #7239ea;
-    background-color: #7239ea !important;
+    background-color: #7239ea9e !important
 }
+.custom-fixed-top {
+    border-top: 0px;
+    margin-top: -2px;
+}
+
 
 .btn-check:active + .btn.btn-active-info .svg-icon,
 .btn-check:active + .btn.btn-active-info i,
