@@ -8,7 +8,7 @@
                 <!--begin::Description-->
                 <div class="d-flex justify-content-between align-items-center w-100">
                     <div class="text-gray-700 fw-bold d-flex ">
-                        <strong class=""> Virtual Card Lists
+                        <strong class=""> Virtual Card Lists 
                         </strong>
                     </div>
                     <div>
