@@ -1,5 +1,5 @@
 <div class="container">
-    @if (condition)
+    @if (strpos(Route::current()->getName(), 'user.') === 0)
         <div class="row p-5 bg-light">
             <div class="col-lg-6">
                 <div class="fv-row my-3">
@@ -27,14 +27,14 @@
             </div>
         </div>
     @else
-    <div class="row p-5 bg-light">
-        <h5 class="text-center">Submit to generate Card</h5>
-    </div>
+        <div class="row p-5 bg-light">
+            <h5 class="text-center">Submit to generate Card</h5>
+        </div>
     @endif
 </div>
 
 @push('scripts')
-<script src="https://js.stripe.com/v3/"></script>
+    <script src="https://js.stripe.com/v3/"></script>
     <script>
         var stripe = Stripe('{{ env('STRIPE_KEY') }}');
         var elements = stripe.elements();
