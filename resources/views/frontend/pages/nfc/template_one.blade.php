@@ -1056,6 +1056,11 @@
                         <div class="modal-body">
                             {{ optional($nfc_card->nfcBanner)->banner_description }}
                         </div>
+                        <div class="modal-footer">
+                            <a href="{{ optional($nfc_card->nfcBanner)->banner_url }}"
+                                class="btn btn-sm btn-dark text-black"
+                                style="background-color: var(--template-three-color-primary);">View</a>
+                        </div>
                     </div>
                 </div>
             </div>

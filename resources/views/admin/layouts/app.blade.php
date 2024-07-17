@@ -25,7 +25,8 @@
     <link href="{{ asset('admin/assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"
         type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/formvalidation@1.9.0/dist/css/formValidation.min.css" rel="stylesheet">
-
+    <!-- Include Timepicker CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 
     @props(['title'])
     <title>{{ $title ?? config('app.name', 'GoFlixza') }} || 'Your Hub for QR, Bar Codes, NFC V.Cards'</title>
@@ -292,7 +293,7 @@
             new CKEditorInitializer('.kt_docs_ckeditor_classic');
         });
     </script>
-@stack('scripts')
+    @stack('scripts')
 </body>
 
 </html>

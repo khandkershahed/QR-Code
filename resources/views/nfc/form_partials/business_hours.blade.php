@@ -42,6 +42,7 @@
                         <div class="col-lg-4">
                             <x-metronic.input id="start_time_tuesday" type="time" name="start_time_tuesday"
                                 :value="optional($nfc_card->nfcData)->start_time_tuesday" placeholder="Enter time" />
+
                         </div>
                         <div class="col-lg-4">
                             <x-metronic.input id="end_time_tuesday" type="time" name="end_time_tuesday"
@@ -169,7 +170,6 @@
 </form>
 
 @push('scripts')
-    
     <script>
         $(document).ready(function() {
             // Function to handle form submission
@@ -190,12 +190,12 @@
                 // Validate each required field
 
                 var anyInputFilled = form.find('input[type="checkbox"]:checked').length > 0 ||
-                                      form.find('input[type="time"]').filter(function() {
-                                          return $(this).val().trim() !== '';
-                                      }).length > 0;
+                    form.find('input[type="time"]').filter(function() {
+                        return $(this).val().trim() !== '';
+                    }).length > 0;
 
                 if (anyInputFilled) {
-                // if (isValid) {
+                    // if (isValid) {
                     // Disable the submit button to prevent multiple submissions
                     submitButton.prop('disabled', true).addClass('disabled');
 
