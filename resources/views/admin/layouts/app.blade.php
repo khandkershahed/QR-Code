@@ -91,7 +91,7 @@
     <script src="https://cdn.jsdelivr.net/npm/formvalidation@1.9.0/dist/js/plugins/Bootstrap5.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/formvalidation@1.9.0/dist/js/plugins/Trigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/formvalidation@1.9.0/dist/js/plugins/SubmitButton.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
     <script src="{{ asset('admin/js/custom.js') }}"></script>
     <script>
         "use strict";
