@@ -58,14 +58,116 @@ class BarCodeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    // public function store(Request $request)
+    // {
+    //     $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
+    //     $request->validate([
+    //         'product_id' => 'required|string',
+    //         // 'barcode_pattern' => 'required|string',
+    //     ]);
+
+    //     $typePrefix = 'BAR';
+    //     $today = date('dm');
+    //     $userId = $isUserRoute ? Auth::user()->id : null;
+
+    //     $lastCode = BarCode::where('code', 'like', $typePrefix . $today . $userId . '%')
+    //         ->orderBy('id', 'desc')->first();
+    //     $newNumber = $lastCode ? (int)substr($lastCode->code, -2) + 1 : 1;
+    //     $code = $typePrefix . $today . $userId . str_pad($newNumber, 2, '0', STR_PAD_LEFT);
+
+    //     $productId = $request->input('product_id');
+    //     $barcodePattern = !empty($request->input('barcode_pattern')) ? $request->input('barcode_pattern') : 'C';
+    //     $barcodeColor = $this->hexToRgb($request->input('barcode_color', '#000000'));
+    //     $barcodeWidth = $request->input('barcode_width', 2);
+    //     $barcodeHeight = !empty($request->input('barcode_height')) ? $request->input('barcode_height') : 60;
+
+    //     $d = new DNS1D();
+
+    //     try {
+    //         $formats = ['png', 'jpg', 'pdf'];
+    //         $urls = [];
+
+    //         foreach ($formats as $format) {
+    //             $directory = public_path("storage/barcodes/$format/");
+    //             if (!file_exists($directory)) {
+    //                 mkdir($directory, 0777, true);
+    //             }
+
+    //             $filePath = "$directory$code.$format";
+
+    //             switch ($format) {
+    //                 case 'png':
+    //                     $barCodeStringPng = $d->getBarcodePNG($productId, $barcodePattern, $barcodeWidth, $barcodeHeight, [$barcodeColor['r'], $barcodeColor['g'], $barcodeColor['b']], true);
+    //                     file_put_contents($filePath, base64_decode($barCodeStringPng));
+    //                     $urls['png'] = "storage/barcodes/png/$code.png";
+    //                     break;
+    //                 case 'jpg':
+    //                     $barCodeStringPng = $d->getBarcodePNG($productId, $barcodePattern, $barcodeWidth, $barcodeHeight, [$barcodeColor['r'], $barcodeColor['g'], $barcodeColor['b']], true);
+    //                     // $barCodeStringJpg = $d->getBarcodeJPG($productId, $barcodePattern, $barcodeWidth, $barcodeHeight, [$barcodeColor['r'], $barcodeColor['g'], $barcodeColor['b']], true);
+    //                     // file_put_contents($filePath, "data:image/jpeg;base64,' . $barCodeStringJpg . '");
+    //                     $qrCodePath = '../public/storage/jpg/' . $code . '.jpg';
+    //                     $base64ImageString = base64_encode($barCodeStringPng);
+    //                     $imageContent = base64_decode($base64ImageString);
+    //                     $image = Image::make($imageContent);
+    //                     $image->encode('jpg', 100)->save($filePath);
+    //                     $urls['jpg'] = "storage/barcodes/jpg/$code.jpg";
+    //                     break;
+    //                 case 'pdf':
+    //                     $barCodeStringPdf = $d->getBarcodePNG($productId, $barcodePattern, $barcodeWidth, $barcodeHeight, [$barcodeColor['r'], $barcodeColor['g'], $barcodeColor['b']], true);
+    //                     if (!$barCodeStringPdf) {
+    //                         continue 2; // Correct usage of continue to skip to the next format
+    //                     }
+
+    //                     $htmlContent = '<div class="text-center"><img width="650px" src="data:image/png;base64,' . $barCodeStringPdf . '" /></div>';
+
+    //                     // Create DomPDF instance
+    //                     $pdf = \App::make('dompdf.wrapper');
+    //                     $pdf->loadHTML($htmlContent, 'UTF-8');
+    //                     $pdf->save("$filePath");
+    //                     $urls['pdf'] = "storage/barcodes/pdf/$code.pdf";
+    //                     break;
+    //             }
+    //         }
+
+    //         $bar_code = BarCode::create([
+    //             'user_id'         => $isUserRoute ? Auth::user()->id : null,
+    //             'admin_id'        => $isUserRoute ? null : Auth::guard('admin')->user()->id,
+    //             'barcode_type'    => 'single_upload',
+    //             'barcode_pattern' => $barcodePattern,
+    //             'barcode_color'   => json_encode($barcodeColor), // Store as JSON string
+    //             'code'            => $code,
+    //             'product_name'    => $request->product_name,
+    //             'product_id'      => $productId,
+    //             'product_price'   => $request->product_price,
+    //             'per_page'        => $request->per_page,
+    //             'barcode_width'   => $barcodeWidth,
+    //             'barcode_height'  => $barcodeHeight,
+    //             'bulk_file'       => $request->bulk_file,
+    //             'bar_code_jpg'    => $urls['jpg'] ?? null,
+    //             'bar_code_pdf'    => $urls['pdf'] ?? null,
+    //             'bar_code_svg'    => $urls['svg'] ?? null,
+    //             'bar_code_png'    => $urls['png'] ?? null,
+    //         ]);
+
+    //         $routeName = $isUserRoute ? 'user.barcode.index' : 'admin.barcode.index';
+    //         return redirect()->route($routeName)->with('success', 'You have successfully generated Bar Code.');
+    //     } catch (\Exception $e) {
+    //         return redirect()->back()->withInput()->with('error', ['error' => $e->getMessage()]);
+    //     }
+    // }
+
     public function store(Request $request)
     {
         $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
+
+        // Validate request inputs
         $request->validate([
             'product_id' => 'required|string',
-            // 'barcode_pattern' => 'required|string',
+            'bar_code_quantity' => 'required|integer|min:1',
+            'per_page' => 'required|integer|min:1',
         ]);
 
+        // Get user ID based on route
         $typePrefix = 'BAR';
         $today = date('dm');
         $userId = $isUserRoute ? Auth::user()->id : null;
@@ -75,86 +177,94 @@ class BarCodeController extends Controller
         $newNumber = $lastCode ? (int)substr($lastCode->code, -2) + 1 : 1;
         $code = $typePrefix . $today . $userId . str_pad($newNumber, 2, '0', STR_PAD_LEFT);
 
+        // Initialize barcode parameters
         $productId = $request->input('product_id');
-        $barcodePattern = !empty($request->input('barcode_pattern')) ? $request->input('barcode_pattern') : 'PHARMA';
+        $barcodePattern = $request->input('barcode_pattern', 'PHARMA');
         $barcodeColor = $this->hexToRgb($request->input('barcode_color', '#000000'));
-        $barcodeWidth = $request->input('barcode_width', 2);
-        $barcodeHeight = !empty($request->input('barcode_height')) ? $request->input('barcode_height') : 60;
+        $barcodeWidth = $request->input('barcode_width', 200); // Adjusted to fixed width for simplicity
+        $barcodeHeight = $request->input('barcode_height', 60);
+        $quantity = $request->input('bar_code_quantity', 1);
+        $perPage = $request->input('per_page', 36); // Default to 36 barcodes per page
 
         $d = new DNS1D();
+        $urls = [];
+        $barcodes = [];
 
+        // Generate barcodes
         try {
-            $formats = ['png', 'jpg', 'pdf'];
-            $urls = [];
-
-            foreach ($formats as $format) {
-                $directory = public_path("storage/barcodes/$format/");
-                if (!file_exists($directory)) {
-                    mkdir($directory, 0777, true);
-                }
-
-                $filePath = "$directory$code.$format";
-
-                switch ($format) {
-                    case 'png':
-                        $barCodeStringPng = $d->getBarcodePNG($productId, $barcodePattern, $barcodeWidth, $barcodeHeight, [$barcodeColor['r'], $barcodeColor['g'], $barcodeColor['b']], true);
-                        file_put_contents($filePath, base64_decode($barCodeStringPng));
-                        $urls['png'] = "storage/barcodes/png/$code.png";
-                        break;
-                    case 'jpg':
-                        $barCodeStringPng = $d->getBarcodePNG($productId, $barcodePattern, $barcodeWidth, $barcodeHeight, [$barcodeColor['r'], $barcodeColor['g'], $barcodeColor['b']], true);
-                        // $barCodeStringJpg = $d->getBarcodeJPG($productId, $barcodePattern, $barcodeWidth, $barcodeHeight, [$barcodeColor['r'], $barcodeColor['g'], $barcodeColor['b']], true);
-                        // file_put_contents($filePath, "data:image/jpeg;base64,' . $barCodeStringJpg . '");
-                        $qrCodePath = '../public/storage/jpg/' . $code . '.jpg';
-                        $base64ImageString = base64_encode($barCodeStringPng);
-                        $imageContent = base64_decode($base64ImageString);
-                        $image = Image::make($imageContent);
-                        $image->encode('jpg', 100)->save($filePath);
-                        $urls['jpg'] = "storage/barcodes/jpg/$code.jpg";
-                        break;
-                    case 'pdf':
-                        $barCodeStringPdf = $d->getBarcodePNG($productId, $barcodePattern, $barcodeWidth, $barcodeHeight, [$barcodeColor['r'], $barcodeColor['g'], $barcodeColor['b']], true);
-                        if (!$barCodeStringPdf) {
-                            continue 2; // Correct usage of continue to skip to the next format
-                        }
-
-                        $htmlContent = '<div class="text-center"><img width="650px" src="data:image/png;base64,' . $barCodeStringPdf . '" /></div>';
-
-                        // Create DomPDF instance
-                        $pdf = \App::make('dompdf.wrapper');
-                        $pdf->loadHTML($htmlContent, 'UTF-8');
-                        $pdf->save("$filePath");
-                        $urls['pdf'] = "storage/barcodes/pdf/$code.pdf";
-                        break;
-                }
+            for ($i = 0; $i < $quantity; $i++) {
+                // Generate barcode as PNG image (adjust parameters as needed)
+                $barcode = $d->getBarcodePNG($productId, $barcodePattern, $barcodeWidth, $barcodeHeight, [$barcodeColor['r'], $barcodeColor['g'], $barcodeColor['b']], true);
+                $barcodes[] = $barcode;
             }
 
-            $bar_code = BarCode::create([
-                'user_id'         => $isUserRoute ? Auth::user()->id : null,
-                'admin_id'        => $isUserRoute ? null : Auth::guard('admin')->user()->id,
-                'barcode_type'    => 'single_upload',
-                'barcode_pattern' => $barcodePattern,
-                'barcode_color'   => json_encode($barcodeColor), // Store as JSON string
-                'code'            => $code,
-                'product_name'    => $request->product_name,
-                'product_id'      => $productId,
-                'product_price'   => $request->product_price,
-                'per_page'        => $request->per_page,
-                'barcode_width'   => $barcodeWidth,
-                'barcode_height'  => $barcodeHeight,
-                'bulk_file'       => $request->bulk_file,
-                'bar_code_jpg'    => $urls['jpg'] ?? null,
-                'bar_code_pdf'    => $urls['pdf'] ?? null,
-                'bar_code_svg'    => $urls['svg'] ?? null,
-                'bar_code_png'    => $urls['png'] ?? null,
-            ]);
+            // Initialize variables for pagination
+            $currentPage = 1;
+            $totalPages = ceil(count($barcodes) / $perPage);
+            $padding = 30; // Padding around each barcode and the main canvas
+            $barcodesPerRow = 4; // Number of barcodes per row
+            $barcodesPerPage = $perPage; // Barcodes per page
+            $maximumwidth = 350;
+            $maximumheight =300;
 
-            $routeName = $isUserRoute ? 'user.barcode.index' : 'admin.barcode.index';
-            return redirect()->route($routeName)->with('success', 'You have successfully generated Bar Code.');
+
+            // Loop through barcodes and create canvases/pages
+            while ($barcodes) {
+                // Calculate canvas size based on the number of barcodes per page
+                $rows = ceil($barcodesPerPage / $barcodesPerRow);
+                $canvasWidth = $barcodesPerRow * ($maximumwidth + $padding * 2);
+                $canvasHeight = $rows * ($maximumheight + $padding * 2);
+
+                // Initialize canvas for combined image
+                $canvas = Image::canvas($canvasWidth + $padding * 2, $canvasHeight + $padding * 2, '#ffffff');
+
+                // Calculate positions for each barcode on the canvas
+                $x = $padding;
+                $y = $padding;
+                $count = 0;
+
+                foreach ($barcodes as $key => $barcode) {
+                    if ($count >= $barcodesPerPage) {
+                        break; // Stop if reached perPage limit
+                    }
+
+                    // Open each barcode image
+                    $barcodeImage = Image::make($barcode);
+                    $barcodeImage->resize($maximumwidth, $maximumheight, function ($constraint) {
+                        $constraint->aspectRatio();
+                    });
+                    // Insert barcode into the canvas with padding
+                    $canvas->insert($barcodeImage, 'top-left', (int)$x, (int)$y);
+
+                    // Update positions for the next barcode (adjust as needed)
+                    $x += $maximumwidth + $padding * 2; // Add spacing between barcodes
+                    if ($x + $maximumwidth + $padding > $canvasWidth) { // Adjust canvas width if necessary
+                        $x = $padding;
+                        $y += $maximumheight + $padding * 2; // Add spacing between rows
+                    }
+
+                    $count++;
+                }
+
+                // Remove processed barcodes
+                array_splice($barcodes, 0, $count);
+
+                // Encode the canvas as PNG
+                $mergedImage = $canvas->encode('png');
+
+                // Display or save the image
+                echo '<img src="data:image/png;base64,' . base64_encode($mergedImage) . '" alt="barcode"/>';
+
+                // Add pagination logic here if needed
+                echo "<p>Page: $currentPage / $totalPages</p>";
+                $currentPage++;
+            }
         } catch (\Exception $e) {
             return redirect()->back()->withInput()->with('error', ['error' => $e->getMessage()]);
         }
     }
+
+
 
 
 
@@ -279,9 +389,6 @@ class BarCodeController extends Controller
                     'bar_code_svg'       => $urls['svg'] ?? null,
                     'bar_code_png'       => $urls['png'] ?? null,
                 ]);
-
-
-
             } catch (\Exception $e) {
                 return redirect()->back()->with('error', $productId . ': ' . $e->getMessage());
                 Log::error('Failed to generate barcode for product ID ' . $productId . ': ' . $e->getMessage());

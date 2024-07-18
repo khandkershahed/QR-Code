@@ -58,7 +58,7 @@
                                 {{-- <option value="UPCA" @selected(old('barcode_pattern' == 'UPCA'))>UPCA</option> --}}
                                 <option value="UPCE" @selected(old('barcode_pattern' == 'UPCE'))>UPCE</option>
                                 {{-- <option value="MSI" @selected(old('barcode_pattern' == 'MSI'))>MSI</option> --}}
-                                <option value="MSI+" @selected(old('barcode_pattern' == 'MSI+'))>MSI+</option>
+                                {{-- <option value="MSI+" @selected(old('barcode_pattern' == 'MSI+'))>MSI+</option> --}}
                                 {{-- <option value="POSTNET" @selected(old('barcode_pattern' == 'POSTNET'))>POSTNET</option> --}}
                                 {{-- <option value="PLANET" @selected(old('barcode_pattern' == 'PLANET'))>PLANET</option> --}}
                                 {{-- <option value="RMS4CC" @selected(old('barcode_pattern' == 'RMS4CC'))>RMS4CC</option> --}}
