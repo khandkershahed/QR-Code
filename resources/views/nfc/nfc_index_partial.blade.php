@@ -95,8 +95,7 @@
                             </td>
                             <td>
                                 @if (strpos(Route::current()->getName(), 'user.') === 0)
-                                    <a href="{{ route('user.virtual-card.show', $nfc_card->code) }}"
-                                        class="">
+                                    <a href="{{ route('user.virtual-card.show', $nfc_card->code) }}" class="">
                                         <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
                                             xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30"
                                             x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512"
@@ -114,8 +113,7 @@
                                         </svg>
                                     </a>
                                 @else
-                                    <a href="{{ route('admin.virtual-card.show', $nfc_card->code) }}"
-                                        class="">
+                                    <a href="{{ route('admin.virtual-card.show', $nfc_card->code) }}" class="">
                                         <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
                                             xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30"
                                             x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512"
@@ -174,7 +172,8 @@
                                     @else
                                         <div class="menu-item px-3">
 
-                                            <a href="{{ route('admin.virtual-card.show', $nfc_card->code) }}"
+                                            <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                data-bs-target="#message_modal_{{ $nfc_card->id }}"
                                                 class="menu-link px-3">
                                                 All messages
                                             </a>
