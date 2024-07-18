@@ -85,7 +85,8 @@
         .img-container-tem1 img {
             display: block;
             width: 100%;
-            height: auto;
+            height: 430px;
+            object-fit: cover;
         }
 
         .language-tem1 {
@@ -191,8 +192,9 @@
 
         .product-img-tem1 {
             width: 100%;
-            height: 150px;
+            height: 100%;
             object-fit: cover;
+            background-size: contain;
         }
 
         .slick-dots li button:before {
@@ -247,6 +249,12 @@
             flex: 1 1 0;
         }
 
+        .product-img-box {
+            widows: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
         .slick-slide {
             height: auto;
         }
@@ -277,6 +285,14 @@
 
         .close-btns {
             background-color: var(--template-one-color-white);
+        }
+
+        .card-img-top {
+            width: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
         }
 
         @media only screen and (max-width: 600px) {
@@ -511,9 +527,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
-                                                    <div
-                                                        class="text-white d-flex justify-content-between py-4 pt-0 px-3">
-                                                        <div>
+                                                    <div class="text-white row py-4 pt-0 px-3 align-items-center">
+                                                        <div class="col-lg-8 col-8">
                                                             <p class="mb-0">
                                                                 <span><i
                                                                         class="fa-solid fa-diamond pe-3"></i>{{ $company->company_website }}</span>
@@ -533,28 +548,297 @@
                                                                 </span>
                                                             </p>
                                                         </div>
+                                                        <div class="col-lg-4 col-4">
+                                                            <div class="d-flex justify-content-center">
+                                                                <img class="img-fluid" width="150px"
+                                                                    src="{{ !empty($company->company_logo) && file_exists(public_path('storage/nfc/company/' . optional($company)->company_logo)) ? asset('storage/nfc/company/' . optional($company)->company_logo) : asset('frontend/images/no_image.png') }}"
+                                                                    alt="" />
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6 pe-0">
-                                                    <div>
-                                                        <a href="{{ $company->company_facebook }}"
-                                                            class="btn btn-dark w-100 rounded-0 mb-2">Facebook</a>
-                                                        <a href="{{ $company->company_youtube }}"
-                                                            class="btn btn-dark w-100 rounded-0 mb-2">YouTube</a>
-                                                        <a href="{{ $company->company_linkedin }}"
-                                                            class="btn btn-dark w-100 rounded-0 mb-2">Linkedin</a>
-                                                        <a href="{{ $company->company_instagram }}"
-                                                            class="btn btn-dark w-100 rounded-0 mb-2">Instagram</a>
-                                                        <a href="{{ $company->company_twitter }}"
-                                                            class="btn btn-dark w-100 rounded-0 mb-2">Twitter</a>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 bg-white d-flex justify-content-center mt-0"
+                                                {{-- <div class="col-md-4 bg-white d-flex justify-content-center mt-0"
                                                     style="height: 218px; margin: auto">
                                                     <div class="d-flex justify-content-center align-items-center">
                                                         <img class="img-fluid" width="150px"
                                                             src="{{ !empty($company->company_logo) && file_exists(public_path('storage/nfc/company/' . optional($company)->company_logo)) ? asset('storage/nfc/company/' . optional($company)->company_logo) : asset('frontend/images/no_image.png') }}"
                                                             alt="" />
+                                                    </div>
+                                                </div> --}}
+                                                <div class="col-md-12 pe-0">
+                                                    <div>
+                                                        @if (!empty($company->company_facebook))
+                                                            <a href="{{ $company->company_facebook }}"
+                                                                class="btn btn-dark rounded-0 mb-2">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                                                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                    width="30" height="30" x="0" y="0"
+                                                                    viewBox="0 0 512 512"
+                                                                    style="enable-background:new 0 0 512 512"
+                                                                    xml:space="preserve" class="">
+                                                                    <g>
+                                                                        <linearGradient id="b" x1="169.994"
+                                                                            x2="299.493" y1="71.986"
+                                                                            y2="349.055"
+                                                                            gradientUnits="userSpaceOnUse">
+                                                                            <stop offset="0" stop-color="#3457a0">
+                                                                            </stop>
+                                                                            <stop offset="1" stop-color="#3b5998">
+                                                                            </stop>
+                                                                        </linearGradient>
+                                                                        <linearGradient id="a">
+                                                                            <stop offset="0" stop-color="#3457a0"
+                                                                                stop-opacity="0"></stop>
+                                                                            <stop offset="1" stop-color="#1f3f77">
+                                                                            </stop>
+                                                                        </linearGradient>
+                                                                        <linearGradient xlink:href="#a" id="c"
+                                                                            x1="353.124" x2="-94.448"
+                                                                            y1="322.733" y2="15.208"
+                                                                            gradientUnits="userSpaceOnUse">
+                                                                        </linearGradient>
+                                                                        <linearGradient xlink:href="#a" id="d"
+                                                                            x1="256" x2="256"
+                                                                            y1="427.873" y2="497.157"
+                                                                            gradientUnits="userSpaceOnUse">
+                                                                        </linearGradient>
+                                                                        <linearGradient id="e" x1="587.778"
+                                                                            x2="232.407" y1="422.829"
+                                                                            y2="243.638"
+                                                                            gradientUnits="userSpaceOnUse">
+                                                                            <stop offset="0" stop-color="#3457a0"
+                                                                                stop-opacity="0"></stop>
+                                                                            <stop offset=".325" stop-color="#2a4c8d"
+                                                                                stop-opacity=".325"></stop>
+                                                                            <stop offset=".705" stop-color="#22427d"
+                                                                                stop-opacity=".706"></stop>
+                                                                            <stop offset="1" stop-color="#1f3f77">
+                                                                            </stop>
+                                                                        </linearGradient>
+                                                                        <path fill="url(#b)"
+                                                                            d="M420.422 503.234c-109.504 11.688-219.34 11.688-328.844 0-43.664-4.66-78.152-39.148-82.812-82.816-11.688-109.504-11.688-219.336 0-328.84 4.66-43.664 39.148-78.152 82.812-82.812 109.504-11.688 219.336-11.688 328.84 0 43.668 4.66 78.156 39.148 82.816 82.812 11.688 109.504 11.688 219.336 0 328.84-4.66 43.668-39.144 78.156-82.812 82.816zm0 0"
+                                                                            opacity="1" data-original="url(#b)">
+                                                                        </path>
+                                                                        <path fill="url(#a)"
+                                                                            d="M475.387 110.098c-4.133-38.746-34.735-69.352-73.485-73.489-97.172-10.367-194.632-10.367-291.804 0-38.746 4.137-69.352 34.743-73.489 73.489-10.367 97.172-10.367 194.632 0 291.8 4.137 38.75 34.743 69.356 73.489 73.489 97.172 10.37 194.632 10.37 291.8 0 38.75-4.133 69.356-34.739 73.489-73.489 10.37-97.168 10.37-194.628 0-291.8zm0 0"
+                                                                            opacity="1" data-original="url(#a)">
+                                                                        </path>
+                                                                        <path fill="url(#a)"
+                                                                            d="M7.672 409.805c.351 3.539.715 7.078 1.094 10.617 4.66 43.664 39.148 78.152 82.816 82.812 109.504 11.688 219.336 11.688 328.84 0 43.668-4.66 78.152-39.148 82.812-82.812.38-3.54.743-7.078 1.098-10.617zm0 0"
+                                                                            opacity="1" data-original="url(#a)">
+                                                                        </path>
+                                                                        <path fill="url(#e)"
+                                                                            d="M344.215 85.27c-44.61 0-80.77 36.164-80.77 80.773v60.332h-43.468v74.7l43.468 38.933v171.969c52.352-.254 104.7-3.165 156.977-8.743 43.668-4.66 78.152-39.148 82.812-82.816 8.696-81.477 10.918-163.133 6.672-244.703L419.461 85.27zm0 0"
+                                                                            opacity="1" data-original="url(#e)">
+                                                                        </path>
+                                                                        <path fill="#ffffff"
+                                                                            d="M263.445 511.977c29.832-.145 59.66-1.157 89.477-3.032v-207.87h59.367l7.172-74.7h-66.54v-47.434c0-10.476 8.493-18.968 18.97-18.968h47.57V85.27h-75.246c-44.61 0-80.77 36.164-80.77 80.773v60.332h-43.468v74.7h43.468zm0 0"
+                                                                            opacity="1" data-original="#ffffff">
+                                                                        </path>
+                                                                    </g>
+                                                                </svg>
+                                                            </a>
+                                                        @endif
+                                                        @if (!empty($company->company_youtube))
+                                                            <a href="{{ $company->company_youtube }}"
+                                                                class="btn btn-dark rounded-0 mb-2">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                                                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                    width="30" height="30" x="0" y="0"
+                                                                    viewBox="0 0 510 510"
+                                                                    style="enable-background:new 0 0 512 512"
+                                                                    xml:space="preserve" class="">
+                                                                    <g>
+                                                                        <linearGradient id="b" x1="125.695"
+                                                                            x2="392.303" y1="125.695"
+                                                                            y2="392.303"
+                                                                            gradientUnits="userSpaceOnUse">
+                                                                            <stop offset="0" stop-color="#ff637b">
+                                                                            </stop>
+                                                                            <stop offset="1" stop-color="#f90217">
+                                                                            </stop>
+                                                                        </linearGradient>
+                                                                        <linearGradient id="a">
+                                                                            <stop offset="0" stop-color="#f90217"
+                                                                                stop-opacity="0"></stop>
+                                                                            <stop offset=".267" stop-color="#e7010f"
+                                                                                stop-opacity=".267"></stop>
+                                                                            <stop offset=".723" stop-color="#ce0004"
+                                                                                stop-opacity=".723"></stop>
+                                                                            <stop offset="1" stop-color="#c50000">
+                                                                            </stop>
+                                                                        </linearGradient>
+                                                                        <linearGradient xlink:href="#a" id="c"
+                                                                            x1="255" x2="255"
+                                                                            y1="362" y2="465.078"
+                                                                            gradientUnits="userSpaceOnUse">
+                                                                        </linearGradient>
+                                                                        <linearGradient xlink:href="#a" id="d"
+                                                                            x1="389.216" x2="291.556"
+                                                                            y1="425.826" y2="289.302"
+                                                                            gradientUnits="userSpaceOnUse">
+                                                                        </linearGradient>
+                                                                        <linearGradient id="e" x1="225.813"
+                                                                            x2="284.822" y1="244.322"
+                                                                            y2="303.331"
+                                                                            gradientUnits="userSpaceOnUse">
+                                                                            <stop offset="0" stop-color="#ebeff0">
+                                                                            </stop>
+                                                                            <stop offset="1" stop-color="#e3e5e4">
+                                                                            </stop>
+                                                                        </linearGradient>
+                                                                        <path fill="url(#b)"
+                                                                            d="M486.851 106.657c-6.973-22.264-25.135-39.239-47.871-44.472-122.185-28.124-245.779-28.124-367.962 0-22.736 5.233-40.897 22.208-47.87 44.472-30.868 98.556-30.863 198.142.001 296.687 6.973 22.264 25.135 39.239 47.87 44.472 122.183 28.124 245.776 28.124 367.961 0 22.735-5.233 40.897-22.208 47.87-44.472 30.865-98.546 30.868-198.13.001-296.687z"
+                                                                            opacity="1" data-original="url(#b)"
+                                                                            class=""></path>
+                                                                        <path fill="url(#c)"
+                                                                            d="M2.508 303.736c3.402 33.267 10.271 66.496 20.641 99.607 6.973 22.263 25.135 39.239 47.87 44.472 122.183 28.124 245.776 28.124 367.961 0 22.735-5.233 40.897-22.208 47.87-44.472 10.37-33.111 17.239-66.34 20.641-99.607z"
+                                                                            opacity="1" data-original="url(#c)">
+                                                                        </path>
+                                                                        <path fill="url(#d)"
+                                                                            d="M438.981 447.815c22.735-5.233 40.897-22.208 47.87-44.472a523.818 523.818 0 0 0 9.861-35.91L369.254 239.975a26.641 26.641 0 0 0-7.927-7.614l-135.986-83.288c-17.797-11.162-38.921-.371-38.921 20.637v170.579c0 9.496 2.731 17.303 9.554 21.988l105.3 105.3c46.001-2.643 91.953-9.23 137.707-19.762z"
+                                                                            opacity="1" data-original="url(#d)">
+                                                                        </path>
+                                                                        <path fill="url(#e)"
+                                                                            d="m361.327 232.361-135.986-85.289c-17.797-11.162-40.922 1.631-40.922 22.639V340.29c0 21.008 23.125 33.801 40.922 22.639l135.986-85.289c16.699-10.475 16.699-34.805 0-45.279z"
+                                                                            opacity="1" data-original="url(#e)">
+                                                                        </path>
+                                                                    </g>
+                                                                </svg>
+                                                            </a>
+                                                        @endif
+                                                        @if (!empty($company->company_linkedin))
+                                                            <a href="{{ $company->company_linkedin }}"
+                                                                class="btn btn-dark rounded-0 mb-2">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                                                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                    width="30" height="30" x="0" y="0"
+                                                                    viewBox="0 0 64 64"
+                                                                    style="enable-background:new 0 0 512 512"
+                                                                    xml:space="preserve" class="">
+                                                                    <g>
+                                                                        <g fill-rule="evenodd">
+                                                                            <path fill="#2864b4"
+                                                                                d="M48 64H16A16 16 0 0 1 0 48V16A16 16 0 0 1 16 0h32a16 16 0 0 1 16 16v32a16 16 0 0 1-16 16"
+                                                                                opacity="1"
+                                                                                data-original="#2864b4"></path>
+                                                                            <path fill="#417dcd"
+                                                                                d="M30 18h18A9 9 0 0 0 48.92.046C48.614.029 48.311 0 48 0H16A16 16 0 0 0 0 16v32a30 30 0 0 1 30-30"
+                                                                                opacity="1" data-original="#417dcd"
+                                                                                class=""></path>
+                                                                            <path fill="#0f4b9b"
+                                                                                d="M48 32a16 16 0 1 0 16 16V16a16 16 0 0 1-16 16"
+                                                                                opacity="1"
+                                                                                data-original="#0f4b9b"></path>
+                                                                        </g>
+                                                                        <rect width="8" height="27" x="12"
+                                                                            y="25" fill="#ffffff" rx="2"
+                                                                            opacity="1" data-original="#ffffff">
+                                                                        </rect>
+                                                                        <circle cx="16" cy="16" r="5"
+                                                                            fill="#ffffff" opacity="1"
+                                                                            data-original="#ffffff"></circle>
+                                                                        <path fill="#ffffff" fill-rule="evenodd"
+                                                                            d="M34 28.64A9.216 9.216 0 0 1 42 24c5.087 0 10 3 10 11v15a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V36a5 5 0 0 0-10 0v14a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V27a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2z"
+                                                                            opacity="1" data-original="#ffffff">
+                                                                        </path>
+                                                                    </g>
+                                                                </svg>
+                                                            </a>
+                                                        @endif
+                                                        @if (!empty($company->company_instagram))
+                                                            <a href="{{ $company->company_instagram }}"
+                                                                class="btn btn-dark rounded-0 mb-2">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                                                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                    width="30" height="30" x="0" y="0"
+                                                                    viewBox="0 0 512 512"
+                                                                    style="enable-background:new 0 0 512 512"
+                                                                    xml:space="preserve" class="">
+                                                                    <g>
+                                                                        <defs>
+                                                                            <linearGradient id="a"
+                                                                                x1="328.27" x2="183.73"
+                                                                                y1="508.05" y2="3.95"
+                                                                                gradientUnits="userSpaceOnUse">
+                                                                                <stop offset="0"
+                                                                                    stop-color="#ffdb73"></stop>
+                                                                                <stop offset=".08"
+                                                                                    stop-color="#fdad4e"></stop>
+                                                                                <stop offset=".15"
+                                                                                    stop-color="#fb832e"></stop>
+                                                                                <stop offset=".19"
+                                                                                    stop-color="#fa7321"></stop>
+                                                                                <stop offset=".23"
+                                                                                    stop-color="#f6692f"></stop>
+                                                                                <stop offset=".37"
+                                                                                    stop-color="#e84a5a"></stop>
+                                                                                <stop offset=".48"
+                                                                                    stop-color="#e03675"></stop>
+                                                                                <stop offset=".55"
+                                                                                    stop-color="#dd2f7f"></stop>
+                                                                                <stop offset=".68"
+                                                                                    stop-color="#b43d97"></stop>
+                                                                                <stop offset=".97"
+                                                                                    stop-color="#4d60d4"></stop>
+                                                                                <stop offset="1"
+                                                                                    stop-color="#4264db"></stop>
+                                                                            </linearGradient>
+                                                                        </defs>
+                                                                        <rect width="465.06" height="465.06" x="23.47"
+                                                                            y="23.47" class="cls-1" rx="107.23"
+                                                                            ry="107.23" style="fill:url(#a)"
+                                                                            fill=""></rect>
+                                                                        <path
+                                                                            d="M331 115.22a66.92 66.92 0 0 1 66.65 66.65v148.26A66.92 66.92 0 0 1 331 396.78H181a66.92 66.92 0 0 1-66.65-66.65V181.87A66.92 66.92 0 0 1 181 115.22h150m0-31H181c-53.71 0-97.66 44-97.66 97.66v148.25c0 53.71 44 97.66 97.66 97.66h150c53.71 0 97.66-44 97.66-97.66V181.87c0-53.71-43.95-97.66-97.66-97.66Z"
+                                                                            class="" fill="#ffffff"
+                                                                            opacity="1" data-original="#000000">
+                                                                        </path>
+                                                                        <path
+                                                                            d="M256 198.13A57.87 57.87 0 1 1 198.13 256 57.94 57.94 0 0 1 256 198.13m0-31A88.87 88.87 0 1 0 344.87 256 88.87 88.87 0 0 0 256 167.13Z"
+                                                                            class="" fill="#ffffff"
+                                                                            opacity="1" data-original="#000000">
+                                                                        </path>
+                                                                        <circle cx="346.81" cy="163.23"
+                                                                            r="21.07" class="" fill="#ffffff"
+                                                                            opacity="1" data-original="#000000">
+                                                                        </circle>
+                                                                    </g>
+                                                                </svg>
+                                                            </a>
+                                                        @endif
+                                                        @if (!empty($company->company_twitter))
+                                                            <a href="{{ $company->company_twitter }}"
+                                                                class="btn btn-dark rounded-0 mb-2">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                                                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                    width="30" height="30" x="0" y="0"
+                                                                    viewBox="0 0 64 64"
+                                                                    style="enable-background:new 0 0 512 512"
+                                                                    xml:space="preserve" class="">
+                                                                    <g>
+                                                                        <g fill-rule="evenodd">
+                                                                            <path fill="#0f9dff"
+                                                                                d="M48 64H16A16 16 0 0 1 0 48V16A16 16 0 0 1 16 0h32a16 16 0 0 1 16 16v32a16 16 0 0 1-16 16"
+                                                                                opacity="1" data-original="#0f9dff"
+                                                                                class=""></path>
+                                                                            <path fill="#00b7ff"
+                                                                                d="M30 18h18A9 9 0 0 0 48.92.046C48.614.029 48.311 0 48 0H16A16 16 0 0 0 0 16v32a30 30 0 0 1 30-30"
+                                                                                opacity="1"
+                                                                                data-original="#00b7ff"></path>
+                                                                            <path fill="#1d83ff"
+                                                                                d="M48 32a16 16 0 1 0 16 16V16a16 16 0 0 1-16 16"
+                                                                                opacity="1"
+                                                                                data-original="#1d83ff"></path>
+                                                                        </g>
+                                                                        <path fill="#ffffff"
+                                                                            d="M24.576 48.256c15.338 0 23.845-13.024 23.328-24.4a16.524 16.524 0 0 0 3.057-2.864.498.498 0 0 0-.543-.786 16.886 16.886 0 0 1-2.058.521.25.25 0 0 1-.194-.444 8.23 8.23 0 0 0 2.169-2.607.491.491 0 0 0-.657-.661 16.816 16.816 0 0 1-3.998 1.321 8.207 8.207 0 0 0-14.192 5.616 8.736 8.736 0 0 0 .147 1.559.25.25 0 0 1-.261.296 23.274 23.274 0 0 1-15.556-7.375.994.994 0 0 0-1.685.364 7.97 7.97 0 0 0 2.493 8.896.244.244 0 0 1-.186.433 7.916 7.916 0 0 1-1.381-.316.988.988 0 0 0-.967.196.949.949 0 0 0-.315.935c1.738 6.692 6.445 5.839 6.445 6.346 0 .343-.931.343-2.179.346a.986.986 0 0 0-.87 1.44 8.279 8.279 0 0 0 6.317 4.074.247.247 0 0 1 .126.447 16.372 16.372 0 0 1-7.707 2.997.969.969 0 0 0-.309 1.854 22.946 22.946 0 0 0 8.976 1.812z"
+                                                                            opacity="1" data-original="#ffffff">
+                                                                        </path>
+                                                                    </g>
+                                                                </svg>
+                                                            </a>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
@@ -587,7 +871,7 @@
                                     <div class="card me-2 rounded-0 border-0 service-details-box">
                                         <div class="card-body border-0 bg-dark">
                                             <div>
-                                                <img class="card-img-top"
+                                                <img class="card-img-top img-fluid"
                                                     src="{{ !empty($service->service_icon) && file_exists(public_path('storage/nfc/service/' . optional($service)->service_icon)) ? asset('storage/nfc/service/' . optional($service)->service_icon) : asset('frontend/images/no_image.png') }}"
                                                     alt="" />
                                             </div>
@@ -635,16 +919,16 @@
                                     <div class="col-md-4 me-2">
                                         <div class="card border-0">
                                             <div class="card-body p-0">
-                                                <div>
+                                                <div class="product-img-box">
                                                     <img class="img-fluid rounded-2 product-img-tem1"
                                                         src="{{ !empty($product->product_icon) && file_exists(public_path('storage/nfc/product/' . optional($product)->product_icon)) ? asset('storage/nfc/product/' . optional($product)->product_icon) : asset('frontend/images/no_image.png') }}"
                                                         alt="" />
                                                 </div>
                                                 <div
                                                     class="d-flex justify-content-between px-4 py-3 align-items-center bg-dark">
-                                                    <h6 class="special-font mb-0 text-white">
-                                                        {{ $product->product_name }}</h6>
-                                                    <h6 class="special-font mb-0 text-white">
+                                                    <h4 class="special-font mb-0 text-white">
+                                                        {{ $product->product_name }}</h4>
+                                                    <h4 class="special-font mb-0 text-white">
                                                         @if ($product->product_currency == 'taka')
                                                             Tk
                                                         @elseif ($product->product_currency == 'euro')
@@ -655,7 +939,7 @@
                                                             £
                                                         @endif
                                                         &nbsp;{{ $product->product_price }}
-                                                    </h6>
+                                                    </h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -1032,7 +1316,7 @@
                             <li>
                                 <a href="#" class="nfc_contact_btn_pc">
                                     <i class="fa-solid fa-file-arrow-down"></i>
-                                    <span>Save VFC</span>
+                                    <span>Add Contact</span>
                                 </a>
                             </li>
                         </ul>
@@ -1134,7 +1418,7 @@
             $(".product-slide").slick({
                 infinite: true,
                 speed: 500,
-                slidesToShow: 3,
+                slidesToShow: 2,
                 slidesToScroll: 1,
                 autoplay: true,
                 autoplaySpeed: 2000,

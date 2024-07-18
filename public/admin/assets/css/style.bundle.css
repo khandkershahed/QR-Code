@@ -45300,7 +45300,7 @@ input[type="color" i] {
     border-style: dashed;
 }
 .steaper-header {
-    background: #0098da3d;
+    background: #7239e9;
     border-bottom: 1px solid #eee;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -54691,7 +54691,7 @@ label.rating-label:hover ~ .rating-label > i {
 }
 
 .stepper.stepper-pills .stepper-item .stepper-label .stepper-title {
-    color: #181c32;
+    color: #ffffff;
     font-weight: 600;
     font-size: 1rem;
     margin-bottom: 0.3rem;
@@ -54709,8 +54709,11 @@ label.rating-label:hover ~ .rating-label > i {
 }
 
 .stepper.stepper-pills .stepper-item.current .stepper-icon {
-    transition: color 0.2s ease, background-color 0.2s ease;
-    background-color: #009ef7;
+    transition: color 0.2s ease, 
+    background-color 0.2s ease;
+    background-color: #ffff;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 0;
 }
 
 .stepper.stepper-pills .stepper-item.current .stepper-icon .stepper-check {
@@ -54724,7 +54727,7 @@ label.rating-label:hover ~ .rating-label > i {
 }
 
 .stepper.stepper-pills .stepper-item.current .stepper-label .stepper-title {
-    color: #7e8299;
+    color: #7239e9;
 }
 
 .stepper.stepper-pills .stepper-item.current .stepper-label .stepper-desc {
