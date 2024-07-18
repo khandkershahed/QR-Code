@@ -1316,7 +1316,7 @@
                             <li>
                                 <a href="#" class="nfc_contact_btn_pc">
                                     <i class="fa-solid fa-file-arrow-down"></i>
-                                    <span>Save VFC</span>
+                                    <span>Add Contact</span>
                                 </a>
                             </li>
                         </ul>
