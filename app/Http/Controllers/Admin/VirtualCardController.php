@@ -359,7 +359,10 @@ class VirtualCardController extends Controller
             'totalScans' => $totalScans,
             'users'      => $users,
         ];
-        return view('user.pages.nfc-card.show', $data);
+        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
+        $view = $isUserRoute ? 'user.pages.nfc-card.show' : 'admin.pages.nfc-card.show';
+        return view($view,$data);
+        // return view('user.pages.nfc-card.show', $data);
     }
 
     /**
