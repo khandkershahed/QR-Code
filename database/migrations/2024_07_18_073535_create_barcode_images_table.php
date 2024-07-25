@@ -1,8 +1,5 @@
 <?php
 
-use App\Models\Admin;
-use Illuminate\Support\Str;
-use Carbon\Carbon;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('admins', function (Blueprint $table) {
+        Schema::create('barcode_images', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            
-            $table->rememberToken();
+            $table->foreignId('barcode_id')->nullable()->constrained('bar_codes')->onDelete('cascade');
+            $table->string('page_number')->nullable();
+            $table->string('image')->nullable();
+            $table->string('pdf')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('admins');
+        Schema::dropIfExists('barcode_images');
     }
 };

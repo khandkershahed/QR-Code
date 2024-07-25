@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\BarCode;
 use Milon\Barcode\DNS1D;
+use App\Models\BarcodeImage;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 use App\Imports\BarcodesImport;
@@ -205,7 +206,7 @@ class BarCodeController extends Controller
             $barcodesPerRow = 4; // Number of barcodes per row
             $barcodesPerPage = $perPage; // Barcodes per page
             $maximumwidth = 350;
-            $maximumheight =300;
+            $maximumheight = 300;
 
 
             // Loop through barcodes and create canvases/pages
@@ -251,6 +252,37 @@ class BarCodeController extends Controller
 
                 // Encode the canvas as PNG
                 $mergedImage = $canvas->encode('png');
+
+                $filename = 'barcode_page_' . $currentPage . '.png';
+                Storage::put('public/barcodes/' . $filename, $mergedImage);
+
+                // Save the record in the database
+                $bar_code = BarCode::create([
+                    'user_id'         => $isUserRoute ? Auth::user()->id : null,
+                    'admin_id'        => $isUserRoute ? null : Auth::guard('admin')->user()->id,
+                    'barcode_type'    => 'single_upload',
+                    'barcode_pattern' => $barcodePattern,
+                    'barcode_color'   => json_encode($barcodeColor), // Store as JSON string
+                    'code'            => $code,
+                    'product_name'    => $request->product_name,
+                    'product_id'      => $productId,
+                    'product_price'   => $request->product_price,
+                    'per_page'        => $request->per_page,
+                    'barcode_width'   => $barcodeWidth,
+                    'barcode_height'  => $barcodeHeight,
+                    'bulk_file'       => $request->bulk_file,
+                    // 'bar_code_jpg'    => $urls['jpg'] ?? null,
+                    // 'bar_code_pdf'    => $urls['pdf'] ?? null,
+                    // 'bar_code_svg'    => $urls['svg'] ?? null,
+                    // 'bar_code_png'    => $urls['png'] ?? null,
+                ]);
+
+                BarcodeImage::create([
+                    'barcode_id' => $bar_code ? $bar_code->id : null,
+                    'page_number' => $currentPage,
+                    'image' => 'barcodes/images/' . $filename,
+                    
+                ]);
 
                 // Display or save the image
                 echo '<img src="data:image/png;base64,' . base64_encode($mergedImage) . '" alt="barcode"/>';
