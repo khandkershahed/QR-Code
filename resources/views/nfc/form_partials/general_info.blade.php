@@ -159,16 +159,25 @@
             </span>
         </button>
     </div>
+    <div>
+        <div class="nav nav-tabs nav-pills" role="tablist">
+            <div class="nav-item w-100 me-0 mb-md-2" role="presentation">
+                <button class="nav-link" data-bs-toggle="tab"
+                    href="#vcardTemplate" aria-selected="true" role="tab">
+                    <span class="ps-2">VCard Templates</span>
+                </button>
+            </div>
+        </div>
+    </div>
 </form>
 
 @push('scripts')
     <script>
-        
         $(document).ready(function() {
             let urlInput = $('input[name="url_alias"]');
             let feedbackElement = $('#url_alias_feedback');
             let submitButton = $('.kt_docs_formvalidation_text_submit');
-             // Assume the input has a data-id attribute for the current record's ID
+            // Assume the input has a data-id attribute for the current record's ID
 
             function validateUrlAlias(inputValue) {
                 return /^[a-zA-Z0-9-]+$/.test(inputValue) && !/--/.test(inputValue) && !inputValue.endsWith('-');
@@ -265,7 +274,9 @@
                 form.find('.form-control').removeClass('is-invalid');
 
                 // Validate required fields
-                form.find('[name="url_alias"], [name="vcard_name"], [name="first_name"], [name="last_name"], [name="email_personal"]')
+                form.find(
+                        '[name="url_alias"], [name="vcard_name"], [name="first_name"], [name="last_name"], [name="email_personal"]'
+                    )
                     .each(function() {
                         var fieldValue = $(this).val().trim();
                         if (!fieldValue) {
