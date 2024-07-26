@@ -58,6 +58,7 @@
             height: auto;
             margin: auto;
         }
+
         .punch-card-container-back {
             width: 100%;
             height: auto;
@@ -71,6 +72,7 @@
             height: auto;
             margin: auto;
         }
+
         .punch-card-container-back {
             width: 100%;
             height: auto;
@@ -78,9 +80,22 @@
         }
     }
 
-    /* Additional styles as needed */
+    @media (min-width: 992px) {
+
+        .punch-card-container,
+        .punch-card-container-back {
+            max-width: 100%;
+        }
+
+        .nfc-preview-box {
+            width: 335px;
+            margin: auto;
+            height: auto;
+        }
+    }
 </style>
-<div class="row mt-5">
+
+<div class="row mt-5 nfc-preview-box">
     <div class="col-12">
         <!-- Visiting Card Box Container -->
         <div class="punch-card-container mb-2">
@@ -116,7 +131,7 @@
         </div>
         <div class="punch-card-container-back">
             <div class="row p-5 align-items-center py-10 px-10" style="height: 25vh;">
-                <div class="col-12 d-flex justify-content-center align-items-center" >
+                <div class="col-12 d-flex justify-content-center align-items-center">
                     <img class="punch-card-logo-back card_logo"
                         src="https://i.ibb.co/vhZg1xp/png-clipart-light-white-line-light-angle-white-removebg-preview.png"
                         alt="Logo Back">

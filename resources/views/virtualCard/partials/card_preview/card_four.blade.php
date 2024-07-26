@@ -1,8 +1,24 @@
-<div class="row">
+<style>
+    @media (min-width: 992px) {
+
+        .punch-card-container,
+        .punch-card-container-back {
+            max-width: 100%;
+        }
+
+        .nfc-preview-box {
+            width: 335px;
+            margin: auto;
+            height: auto;
+        }
+    }
+</style>
+
+<div class="row mt-5 nfc-preview-box">
     <div class="col-12">
         <!-- Visiting Card Box Container -->
         <div class="punch-card-container mb-2" style="background-image: url('https://i.ibb.co/nfK0QZg/card-6.png');">
-            <div class="row p-5 align-items-center" >
+            <div class="row p-5 align-items-center">
                 <div class="col-lg-4 d-flex justify-content-start font">
                     <div class="">
                         <div class="d-flex justify-content-center">
@@ -13,11 +29,11 @@
                     </div>
                 </div>
                 <div class="col-lg-8 text-lg-start text-end" style="height: 22vh">
-                    <div class="">
+                    {{-- <div class="">
                         <img class="punch-card-logo mb-4 card_logo"
                             src="https://i.ibb.co/vhZg1xp/png-clipart-light-white-line-light-angle-white-removebg-preview.png"
                             alt="Logo" />
-                    </div>
+                    </div> --}}
                     <div class="text-start content-area font">
                         <h4 class="fw-bold mb-0 card_name" style="color: #fff">
                             Nicholas Shelton
@@ -36,7 +52,8 @@
                         </div>
                         <div>
                             <p class="fw-bold mb-0 text-white">
-                                <i class="fas fa-map-marker-alt"></i> <span class="card_address">New York, United State</span>
+                                <i class="fas fa-map-marker-alt"></i> <span class="card_address">New York, United
+                                    State</span>
                             </p>
                         </div>
                     </div>

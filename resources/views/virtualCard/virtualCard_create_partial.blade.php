@@ -499,7 +499,7 @@
             <div class="card-header px-0 border-0">
                 <div class="d-flex flex-column justify-content-center align-items-center"
                     style="width: 100%; background: #0098da3d; border-top-left-radius: 5px; border-top-right-radius: 5px; padding: 15px;">
-                    <h3 class="">Preview</h3>
+                    <h3 class="">NFC Preview</h3>
                     <p class="mb-0 ">Your Choosen Template</p>
                 </div>
             </div>

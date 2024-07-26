@@ -66,9 +66,23 @@
             top: 20px;
         }
     }
+
+    @media (min-width: 992px) {
+
+        .punch-card-container,
+        .punch-card-container-back {
+            max-width: 100%;
+        }
+
+        .nfc-preview-box {
+            width: 335px;
+            margin: auto;
+            height: auto;
+        }
+    }
 </style>
 
-<div class="row mt-5">
+<div class="row mt-5 nfc-preview-box">
     <div class="col-12">
         <!-- Visiting Card Box Container -->
         <div class="punch-card-container mb-2" style="background-image: url('https://i.ibb.co/cgBNBXk/5073118.gif');">
@@ -79,12 +93,12 @@
                     </div>
                     <div class="mt-4 mt-lg-0">
                         <img class="punch-card-qr" src="https://i.ibb.co/M7KMQC0/qr.png" alt="QR Code"
-                            style="width: 200px;background-size: contain;height: 100px;text-align: start;margin-bottom: 0px !important;display: flex;justify-content: start;position: relative;left: 0px;object-fit: contain;" />
+                            style="width: 200px;background-size: contain;height: 80px;text-align: start;margin-bottom: 0px !important;display: flex;justify-content: start;position: relative;left: 0px;object-fit: contain;" />
                     </div>
                 </div>
                 <div class="col-lg-8 mt-4 mt-lg-0">
                     <div class="text-center text-lg-end content-area">
-                        <h4 class="fw-bold mb-0 card_name">Robert Bruno</h4>
+                        <h4 class="fw-bold mb-0 card_name" style="color: #0e3648;">Robert Bruno</h4>
                         <p class="fw-bold mb-0 card_designation">Frontend Developer</p>
                         <div class="me-auto mt-2 title-devider-tem-one"></div>
                         <div>
@@ -110,7 +124,7 @@
         <div class="punch-card-container-back" style="background-image: url('https://i.ibb.co/sVxG7gh/2.gif');">
             <div class="row p-5 align-items-center" style="height: 27.5vh;">
                 <div class="col-12 d-flex justify-content-center align-items-center">
-                    <img class="punch-card-logo-back card_logo pt-8" src="https://i.ibb.co/BNBTVN4/logo.png"
+                    <img class="punch-card-logo-back card_logo" src="https://i.ibb.co/BNBTVN4/logo.png"
                         alt="Logo Back" />
                 </div>
             </div>

@@ -1,4 +1,20 @@
-<div class="row">
+<style>
+    @media (min-width: 992px) {
+
+        .punch-card-container,
+        .punch-card-container-back {
+            max-width: 100%;
+        }
+
+        .nfc-preview-box {
+            width: 335px;
+            margin: auto;
+            height: auto;
+        }
+    }
+</style>
+
+<div class="row mt-5 nfc-preview-box">
     <div class="col-12">
         <!-- Visiting Card Box Container -->
         <div class="punch-card-container mb-2" style="background-image: url('https://i.ibb.co/51yxtsc/card-8.png');">
@@ -36,7 +52,8 @@
                         </div>
                         <div>
                             <p class="fw-bold mb-0 text-white">
-                                <i class="fas fa-map-marker-alt pe-2"></i> <span class="card_address">New York, United State</span>
+                                <i class="fas fa-map-marker-alt pe-2"></i> <span class="card_address">New York, United
+                                    State</span>
                             </p>
                         </div>
                     </div>
