@@ -45350,6 +45350,7 @@ input[type="color" i] {
         height: auto; /* Allow the first card to expand based on content */
     }
 }
+
 .btn-check:active + .btn.btn-outline.btn-outline-dashed,
 .btn-check:checked + .btn.btn-outline.btn-outline-dashed,
 .btn.btn-outline.btn-outline-dashed.active,

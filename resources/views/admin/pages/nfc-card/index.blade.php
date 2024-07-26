@@ -158,7 +158,6 @@
             </div>
         </div>
         @include('nfc.nfc_index_partial')
-
     </div>
 
 

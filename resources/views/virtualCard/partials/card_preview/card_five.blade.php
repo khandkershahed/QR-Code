@@ -1,4 +1,20 @@
-<div class="row">
+<style>
+    @media (min-width: 992px) {
+
+        .punch-card-container,
+        .punch-card-container-back {
+            max-width: 100%;
+        }
+
+        .nfc-preview-box {
+            width: 335px;
+            margin: auto;
+            height: auto;
+        }
+    }
+</style>
+
+<div class="row mt-5 nfc-preview-box">
     <div class="col-12">
         <!-- Visiting Card Box Container -->
         <div class="punch-card-container mb-2" style="background: black !important;">
@@ -17,7 +33,8 @@
                 </div>
                 <div class="col-lg-6 text-lg-start align-items-center text-end">
                     <img class="punch-card-logo-back card_logo"
-                        src="https://i.ibb.co/Zz6zhxj/logo-search-grid-1x-removebg-preview-1.png" alt="Logo Back" style="width: 200px;background-size: contain;height: 100px;text-align: start;margin-bottom: 0px !important;display: flex;justify-content: start;position: relative;left: 0px;object-fit: contain;"/>
+                        src="https://i.ibb.co/Zz6zhxj/logo-search-grid-1x-removebg-preview-1.png" alt="Logo Back"
+                        style="width: 200px;background-size: contain;height: 100px;text-align: start;margin-bottom: 0px !important;display: flex;justify-content: start;position: relative;left: 0px;object-fit: contain;" />
                 </div>
             </div>
         </div>
