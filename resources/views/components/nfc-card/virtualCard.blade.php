@@ -7,7 +7,7 @@
         width: 100%;
     }
 
-    @media (max-width: 992px) {
+    @media (max-width: 1350px) {
         .custom-nfc-template {
             height: 152px;
         }   
