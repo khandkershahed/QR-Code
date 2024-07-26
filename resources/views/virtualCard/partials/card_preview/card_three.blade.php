@@ -1,127 +1,244 @@
+@include('virtualCard.partials.worldMapIcon')
 <style>
-    .text-start {
-        text-align: start;
+    @import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
+
+    .card-container-three {
+      font-family: "Titillium Web", sans-serif;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
-
-    .text-lg-start {
-        text-align: start !important;
-        /* Specific override for large screens */
+    *,
+    :after,
+    :before {
+      box-sizing: border-box;
     }
-
-    .card_logo {
-        max-width: 100%;
-        height: auto;
+    .pull-left {
+      float: left;
     }
-
-    .punch-card-logo-back-three {
-        width: 200px;
+    .pull-right {
+      float: right;
     }
-
-    .card_name {
-        color: #fff;
-        font-size: 1.5rem;
+    .card-three-clearfix:after,
+    .card-three-clearfix:before {
+      content: "";
+      display: table;
     }
-
-    .card_designation {
-        color: #fff;
-        font-size: 1.2rem;
+    .card-three-clearfix:after {
+      clear: both;
+      display: block;
     }
+    /* .card {
+      width: 100%;
+      max-width: 300px;
+      height: 520px;
+      aspect-ratio: 300 / 285; Maintain the aspect ratio
+      margin: 10px;
+    } */
 
-    .card_phone,
-    .card_email,
-    .card_address {
-        color: #fff;
+    .credit-card-wrap .mk-icon-world-map:before,
+    .credit-card-wrap .credit-card-number:before {
+      content: "";
+      position: absolute;
     }
-
-    .title-divider {
-        height: 2px;
-        width: 120px;
-        background-color: #fff;
-        margin: 0;
+    .credit-card-wrap {
+      width: 450px;
+      height: 285px;
+      position: relative;
+      border-radius: 20px;
+      background: #5d4157;
+      background: -webkit-linear-gradient(to left, #5d4157, #a8caba);
+      background: linear-gradient(to left, #5d4157, #a8caba);
+      box-shadow: 2px 2px rgba(0, 0, 0, 0.4);
     }
-
-    .nfc-text-title {
-        font-size: 4rem;
-        color: #fff;
+    .credit-card-wrap .mk-icon-world-map {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      position: absolute;
+      border-radius: inherit;
     }
-
-    /* Responsive adjustments */
-    @media (max-width: 992px) {
-        .text-lg-start {
-            text-align: center !important;
-        }
+    .credit-card-wrap .mk-icon-world-map:before {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+      background: rgba(0, 0, 0, 0.4);
+      background: radial-gradient(
+            circle at 0% 50%,
+            rgba(96, 16, 48, 0) 9px,
+            rgba(0, 0, 0, 0.2) 10px,
+            rgba(96, 16, 48, 0) 11px
+          )
+          0px 10px,
+        radial-gradient(
+          at 100% 100%,
+          rgba(96, 16, 48, 0) 9px,
+          rgba(255, 255, 255, 0.2) 10px,
+          rgba(96, 16, 48, 0) 11px
+        ),
+        rgba(0, 0, 0, 0.6);
+      background-size: 20px 20px;
     }
-
-    @media (min-width: 992px) {
-
-        .punch-card-container,
-        .punch-card-container-back {
-            max-width: 100%;
-        }
-
-        .nfc-preview-box {
-            width: 335px;
-            margin: auto;
-            height: auto;
-        }
+    .credit-card-wrap .credit-card-inner {
+      z-index: 100;
+      padding: 30px;
+      width: inherit;
+      height: inherit;
+      position: relative;
     }
-</style>
-
-<div class="row mt-5 nfc-preview-box">
-    <div class="col-12">
-        <div class="punch-card-container mb-2" style="background-image: url('https://i.ibb.co/M9VMCKf/card-5.png');">
-            <div class="row p-5 align-items-center">
-                <!-- Left column for card details -->
-                <div class="col-lg-8 text-lg-start text-start">
-                    {{-- <div>
-                        <img class="punch-card-logo mb-4 card_logo"
-                            src="https://i.ibb.co/vhZg1xp/png-clipart-light-white-line-light-angle-white-removebg-preview.png"
-                            alt="Logo" />
-                    </div> --}}
-                    <div class="text-start content-area font">
-                        <h4 class="fw-bold mb-0 card_name card_font_color" style="color: #fff">
-                            Nicholas Shelton 3
-                        </h4>
-                        <p class="fw-bold mb-0 card_designation card_font_color">Frontend Developer</p>
-                        <hr class="title-divider mt-2" />
-                        <div>
-                            <p class="fw-bold text-white pt-3 mb-0">
-                                <i class="fas fa-phone"></i> <span class="card_phone card_font_color">015 7661
-                                    4451</span>
-                            </p>
-                            <p class="fw-bold text-white mb-0">
-                                <i class="fas fa-envelope"></i> <span
-                                    class="card_email card_font_color">goflixza@mail.com</span>
-                            </p>
-                        </div>
-                        <div>
-                            <p class="fw-bold mb-0 text-white">
-                                <i class="fas fa-map-marker-alt"></i> <span class="card_address card_font_color">New
-                                    York, United
-                                    State
-                                </span>
-                            </p>
-                        </div>
+    .credit-card-wrap .credit-logo .text {
+      font-size: 32px;
+      font-weight: 500;
+      margin-left: 10px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    .credit-card-wrap .credit-logo .shape {
+      width: 40px;
+      height: 40px;
+      display: inline-block;
+      background-color: #dc143c;
+      box-shadow: -2px 2px 0 rgba(255, 255, 255, 0.8);
+      border-radius: 40px 0 40px 40px;
+      transform: rotate(-45deg);
+    }
+    .credit-card-wrap .credit-logo .shape > .txt {
+      color: #ccc;
+      display: block;
+      width: inherit;
+      font-size: 14px;
+      height: inherit;
+      font-weight: 500;
+      line-height: 40px;
+      text-align: center;
+      transform: rotate(45deg);
+    }
+    .credit-card-wrap .credit-font {
+      color: #fff;
+      font-size: 18px;
+      font-family: "Titillium Web", sans-serif;
+      text-shadow: -1px -1px 0px rgba(255, 255, 255, 0.3),
+        1px 1px 0px rgba(0, 0, 0, 0.8);
+    }
+    .credit-card-wrap .credit-card-number {
+      font-size: 26px;
+      text-align: center;
+      position: relative;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      white-space: nowrap;
+    }
+    .credit-card-wrap .credit-card-number:before {
+      top: 100%;
+      font-size: 12px;
+      font-family: Roboto;
+      content: attr(data-text);
+    }
+    .credit-card-wrap .credit-card-date {
+      color: #fff;
+      text-align: center;
+    }
+    .credit-card-wrap .credit-card-date .title {
+      width: 50px;
+      color: #deb887;
+      font-size: 12px;
+      line-height: 14px;
+      text-align: right;
+      display: inline-block;
+      text-transform: uppercase;
+    }
+    .credit-card-wrap .credit-author {
+      padding-top: 10px;
+    }
+    .credit-card-wrap .mk-icon-sim {
+      width: 55px;
+      height: 40px;
+      margin: 20px 0;
+      border-radius: 8px;
+      background-color: #fdd76f;
+    }
+    .credit-card-wrap .mk-icon-visa {
+      width: 90px;
+      height: 45px;
+      bottom: -10px;
+      position: relative;
+    }
+    .credit-card-wrap .card-three-footer {
+      left: 30px;
+      right: 30px;
+      bottom: 30px;
+      position: absolute;
+    }
+    @media (max-width: 576px) {
+      .card-container-three {
+        flex-direction: column;
+        width: 335px;
+        margin: auto;
+      }
+      .credit-card-wrap {
+        width: 350px;
+        height: 280px;
+      }
+    }
+  </style>
+<div class="container">
+    <div class="row mt-5">
+        <div class="card-container-three">
+            <div class="credit-card-wrap">
+              <div class="mk-icon-world-map"></div>
+              <div class="credit-card-inner">
+                <header class="header">
+                  <div class="credit-logo">
+                    <span class="text">Rasheduzzaman</span>
+                    <p class="pt-3 ps-2 mb-0">SEO Specialist</p>
+                    <p class="ps-2">01620222616</p>
+                  </div>
+                </header>
+                <footer class="card-three-footer">
+                  <div class="card-three-clearfix">
+                    <div class="pull-left">
+                      <div class="credit-font credit-author">GoFlixza</div>
+                      <div class="credit-card-date text-start">
+                        <span class="credit-font ps-0">info@gmail.com</span>
+                        <br />
+                        <span class="credit-font ps-0">
+                          Khilkhet, Dhaka, Bangladesh
+                        </span>
+                      </div>
                     </div>
-                </div>
-                <!-- Right column for additional content -->
-                <div class="col-lg-4 d-flex flex-column justify-content-center align-items-center">
-
-                    <img width="50px" class="text-center" src="https://i.ibb.co/F73Txnj/images-removebg-preview.png"
-                        alt="" />
-                    <h1 class="fw-bold text-white nfc-text-title" style="font-size: 3rem;">NFC</h1>
-
-                </div>
+                    <div class="pull-right">
+                      <img
+                        src="https://i.ibb.co/BNBTVN4/logo.png"
+                        width="60px"
+                      />
+                    </div>
+                  </div>
+                </footer>
+              </div>
             </div>
-        </div>
-        <div class="punch-card-container-back" style="background-image: url('https://i.ibb.co/M9VMCKf/card-5.png');">
-            <div class="row p-5 align-items-center" style="height: 25vh">
-                <div class="col-12 d-flex justify-content-center align-items-center" style="height: 20vh">
-                    <img class="punch-card-logo-back-three card_logo card_font_color"
-                        src="https://i.ibb.co/vhZg1xp/png-clipart-light-white-line-light-angle-white-removebg-preview.png"
-                        alt="Logo Back" />
+            <div class="credit-card-wrap mt-4">
+              <div class="mk-icon-world-map"></div>
+              <div
+                class="credit-card-inner d-flex justify-content-center align-items-center"
+                style="background-color: #cccccc6e; border-radius: 20px"
+              >
+                <div>
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/800px-QR_code_for_mobile_English_Wikipedia.svg.png"
+                    width="100px"
+                  />
                 </div>
+              </div>
             </div>
-        </div>
+          </div>
     </div>
 </div>

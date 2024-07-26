@@ -503,9 +503,9 @@
                     <p class="mb-0 ">Your Choosen Template</p>
                 </div>
             </div>
-            <div class="card-body custom-card-body overflow-auto px-0 ">
+            {{-- <div class="card-body custom-card-body overflow-auto px-0 ">
                 @include('virtualCard.partials.nfc_preview')
-            </div>
+            </div> --}}
             <div
                 class="card-body custom-card-body overflow-auto px-0 py-10 d-flex justify-content-center align-items-center">
                 @include('virtualCard.partials.virtual_card_preview')
@@ -530,30 +530,6 @@
     </script>
     <script>
         $(document).ready(function() {
-            // NFC Template
-            var nfcTemplateValue = $('input[name="nfc_template"]:checked').val();
-            if (nfcTemplateValue != null) {
-                localStorage.setItem('nfc_template', nfcTemplateValue);
-                $("." + nfcTemplateValue).show();
-            } else {
-                $(".nfc-card").hide();
-            }
-
-
-            $('input[name="nfc_template"]').change(function() {
-                $(".nfc-card").hide();
-                var nfcTemplateValue = $('input[name="nfc_template"]:checked').val();
-                if (nfcTemplateValue != null) {
-                    localStorage.setItem('nfc_template', nfcTemplateValue);
-                    $("." + nfcTemplateValue).show();
-                } else {
-                    $(".nfc-card").hide();
-                }
-            });
-
-            var initiallySelectedValue = $('input[name="nfc_template"]:checked').val();
-            $("." + initiallySelectedValue).show();
-
 
             $('#kt_stepper_example_clickable_form input:not([type="radio"]), #kt_stepper_example_clickable_form textarea, #kt_stepper_example_clickable_form input:not([type="color"])')
                 .on('keyup change', function() {
@@ -599,27 +575,21 @@
     <script>
         // Stepper lement
         var element = document.querySelector("#kt_stepper_example_clickable");
-
-        // Initialize Stepper
         var stepper = new KTStepper(element);
-
-        // Handle navigation click
         stepper.on("kt.stepper.click", function(stepper) {
             stepper.goTo(stepper.getClickedStepIndex()); // go to clicked step
         });
-
-        // Handle next step
         stepper.on("kt.stepper.next", function(stepper) {
             stepper.goNext(); // go next step
         });
-
-        // Handle previous step
         stepper.on("kt.stepper.previous", function(stepper) {
             stepper.goPrevious(); // go previous step
         });
     </script>
     <script>
         $(document).ready(function() {
+            var initiallySelectedValue = $('input[name="virtual_card_template"]:checked').val();
+            $("." + initiallySelectedValue).show();
             function updateCardPreview() {
                 const virtualCardValue = $('input[name="virtual_card_template"]:checked').val();
                 if (virtualCardValue != null) {
