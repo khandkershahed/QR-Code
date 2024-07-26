@@ -3,16 +3,17 @@
 namespace App\Http\Controllers\Admin;
 
 
+use App\Models\VirtualCard;
 use Illuminate\Http\Request;
-use App\Models\Admin\NfcCard;
 
+use App\Models\Admin\NfcCard;
 use App\Http\Controllers\Controller;
+
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
-
 use App\Models\Admin\NfcShippingDetails;
-use App\Models\VirtualCard;
 
 
 class NfcCardController extends Controller
@@ -175,6 +176,35 @@ class NfcCardController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $nfc = VirtualCard::with('shippingDetails')->findOrFail($id);
+
+        $files = [
+                'card_logo'           => $nfc->card_logo,
+                'card_bg_front'       => $nfc->card_bg_front,
+                'card_bg_back'        => $nfc->card_bg_back,
+            ];
+
+            $filePath = 'public/nfc/';
+            $uploadedFiles = [];
+
+            foreach ($files as $key => $file) {
+                if (!empty($file)) {
+                    $uploadedFiles[$key] = customUpload($file, $filePath, $code . '_' . $key);
+                    if ($uploadedFiles[$key]['status'] === 0) {
+                        throw new \Exception("Error uploading file: " . $uploadedFiles[$key]['error_message']);
+                    }
+                } else {
+                    $uploadedFiles[$key] = ['status' => 0];
+                }
+            }
+
+        if (File::exists($folderPath)) {
+            File::deleteDirectory($folderPath);
+        }
+        $nfc->delete();
+        $nfc_data = NfcData::where('card_id', $id)->first();
+        if (!empty($nfc_data)) {
+            $nfc_data->delete();
+        }
     }
 }

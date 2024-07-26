@@ -155,7 +155,7 @@
     </div>
 </div>
 
-
+@foreach ($nfc_cards as $nfc_card)
 <div class="modal fade" tabindex="-1" id="virtual_card_modal_{{ $nfc_card->id }}">
     <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width: 645px !important;">
         <div class="modal-content position-absolute">
@@ -898,3 +898,4 @@
         </div>
     </div>
 </div>
+@endforeach

@@ -439,7 +439,7 @@ class VirtualCardController extends Controller
         $nfc_data = NfcData::where('card_id', $id)->first();
         if (!empty($nfc_data)) {
             $nfc_data->delete();
-        }
+        } 
     }
 
     public function updateNFCTemplateSession(Request $request)
