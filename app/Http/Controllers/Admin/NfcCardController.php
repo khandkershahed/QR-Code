@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Admin\NfcShippingDetails;
 
 
@@ -176,35 +177,31 @@ class NfcCardController extends Controller
      */
     public function destroy(string $id)
     {
-        $nfc = VirtualCard::with('shippingDetails')->findOrFail($id);
+       
+            $nfc = VirtualCard::with('shippingDetails')->findOrFail($id);
 
-        $files = [
-                'card_logo'           => $nfc->card_logo,
-                'card_bg_front'       => $nfc->card_bg_front,
-                'card_bg_back'        => $nfc->card_bg_back,
+            // Define the files and file path
+            $files = [
+                'card_logo'     => $nfc->card_logo,
+                'card_bg_front' => $nfc->card_bg_front,
+                'card_bg_back'  => $nfc->card_bg_back,
             ];
 
             $filePath = 'public/nfc/';
-            $uploadedFiles = [];
 
-            foreach ($files as $key => $file) {
-                if (!empty($file)) {
-                    $uploadedFiles[$key] = customUpload($file, $filePath, $code . '_' . $key);
-                    if ($uploadedFiles[$key]['status'] === 0) {
-                        throw new \Exception("Error uploading file: " . $uploadedFiles[$key]['error_message']);
-                    }
-                } else {
-                    $uploadedFiles[$key] = ['status' => 0];
+            // Delete the files if they exist
+            foreach ($files as $file) {
+                if (!empty($file) && Storage::exists($filePath . $file)) {
+                    Storage::delete($filePath . $file);
                 }
             }
 
-        if (File::exists($folderPath)) {
-            File::deleteDirectory($folderPath);
-        }
-        $nfc->delete();
-        $nfc_data = NfcData::where('card_id', $id)->first();
-        if (!empty($nfc_data)) {
-            $nfc_data->delete();
-        }
+            // Delete the shipping details
+            if ($nfc->shippingDetails) {
+                $nfc->shippingDetails->delete();
+            }
+
+            // Delete the virtual card
+            $nfc->delete();
     }
 }
