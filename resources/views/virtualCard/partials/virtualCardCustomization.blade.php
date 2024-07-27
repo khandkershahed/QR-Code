@@ -8,8 +8,8 @@
                     data-placeholder="Select NFC from your generated list" required>
                     <option></option>
                     @foreach ($nfc_cards as $nfc_card)
-                        <option value="{{ $nfc_card->id }}">{{ $nfc_card->nfcData->first_name }}
-                            {{ $nfc_card->nfcData->last_name }}</option>
+                        <option value="{{ $nfc_card->id }}">{{ optional($nfc_card->nfcData)->first_name }}
+                            {{ optional($nfc_card->nfcData)->last_name }}</option>
                     @endforeach
                 </select>
             </div>
