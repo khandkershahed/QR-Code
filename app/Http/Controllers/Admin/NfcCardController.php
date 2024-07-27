@@ -25,8 +25,8 @@ class NfcCardController extends Controller
         $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
         $user = Auth::user();
         $nfc_cards = $isUserRoute
-            ? NfcCard::with('nfcData', 'nfcMessages', 'virtualCard', 'shippingDetails')->where('user_id', $user->id)->latest('id')->get()
-            : NfcCard::with('nfcData', 'nfcMessages', 'virtualCard', 'shippingDetails')->latest('id')->get();
+            ? VirtualCard::with('nfc', 'shippingDetails')->where('user_id', $user->id)->latest('id')->get()
+            : VirtualCard::with('nfc', 'shippingDetails')->latest('id')->get();
 
         $view = $isUserRoute ? 'user.pages.virtualCard.index' : 'admin.pages.virtualCard.index';
 
@@ -107,7 +107,7 @@ class NfcCardController extends Controller
             }
 
             // Create VirtualCard
-            VirtualCard::create([
+            $card = VirtualCard::create([
                 'card_id'               => $request->card_id,
                 'virtual_card_template' => $request->virtual_card_template,
                 'card_logo'             => $uploadedFiles['card_logo']['status'] == 1 ? $uploadedFiles['card_logo']['file_name'] : null,
@@ -124,7 +124,7 @@ class NfcCardController extends Controller
 
             // Create NfcShippingDetails
             NfcShippingDetails::create([
-                'card_id'              => $request->card_id,
+                'card_id'              => $card->id,
                 'shipping_name'        => $request->shipping_name,
                 'shipping_phone'       => $request->shipping_phone,
                 'shipping_address'     => $request->shipping_address,

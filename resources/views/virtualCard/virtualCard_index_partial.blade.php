@@ -21,78 +21,77 @@
                 <tbody class="fw-semibold text-gray-600">
                     @foreach ($nfc_cards as $nfc_card)
                         <tr>
+                            {{-- @dd($nfc_card) --}}
                             <td>
                                 {{ $loop->iteration }}
                             </td>
                             <td>
-                                @if ($nfc_card->nfc_template == 'template-one')
+                                @if (optional($nfc_card->nfc)->nfc_template == 'template-one')
                                     <img class="img-fluid w-50px"
                                         src="{{ asset('frontend/assets/images/nfc-templates/template_one.jpg') }}"
                                         alt="">
-                                @elseif ($nfc_card->nfc_template == 'template-two')
+                                @elseif (optional($nfc_card->nfc)->nfc_template == 'template-two')
                                     <img class="img-fluid w-50px"
                                         src="{{ asset('frontend/assets/images/nfc-templates/template_two.jpg') }}"
                                         alt="">
-                                @elseif ($nfc_card->nfc_template == 'template-three')
+                                @elseif (optional($nfc_card->nfc)->nfc_template == 'template-three')
                                     <img class="img-fluid w-50px"
                                         src="{{ asset('frontend/assets/images/nfc-templates/template_three.jpg') }}"
                                         alt="">
-                                @elseif ($nfc_card->nfc_template == 'template-four')
+                                @elseif (optional($nfc_card->nfc)->nfc_template == 'template-four')
                                     <img class="img-fluid w-50px"
                                         src="{{ asset('frontend/assets/images/nfc-templates/template_four.jpg') }}"
                                         alt="">
-                                @elseif ($nfc_card->nfc_template == 'template-five')
+                                @elseif (optional($nfc_card->nfc)->nfc_template == 'template-five')
                                     <img class="img-fluid w-50px"
                                         src="{{ asset('frontend/assets/images/nfc-templates/template_five.jpg') }}"
                                         alt="">
-                                @elseif ($nfc_card->nfc_template == 'template-six')
+                                @elseif (optional($nfc_card->nfc)->nfc_template == 'template-six')
                                     <img class="img-fluid w-50px"
                                         src="{{ asset('frontend/assets/images/nfc-templates/template_six.jpg') }}"
                                         alt="">
                                 @endif
                             </td>
                             <td>
-                                @if (optional($nfc_card->virtualCard)->virtual_card_template == 'virtual-card-one')
-                                    <img class="img-fluid w-50px"
-                                        src="{{ asset('frontend/images/virtual_card/virtual_card_1.png') }}"
+                                @if (optional($nfc_card)->virtual_card_template == 'virtual-card-one')
+                                    <img class="img-fluid w-65px"
+                                        src="{{ asset('frontend/images/virtual_card/card_1.png') }}"
                                         alt="">
-                                @elseif (optional($nfc_card->virtualCard)->virtual_card_template == 'virtual-card-two')
-                                    <img class="img-fluid w-50px"
-                                        src="{{ asset('frontend/images/virtual_card/virtual_card_2.png') }}"
+                                @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-two')
+                                    <img class="img-fluid w-65px"
+                                        src="{{ asset('frontend/images/virtual_card/card_2.png') }}"
                                         alt="">
-                                @elseif (optional($nfc_card->virtualCard)->virtual_card_template == 'virtual-card-three')
-                                    <img class="img-fluid w-50px"
-                                        src="{{ asset('frontend/images/virtual_card/virtual_card_3.png') }}"
+                                @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-three')
+                                    <img class="img-fluid w-65px"
+                                        src="{{ asset('frontend/images/virtual_card/card_3.png') }}"
                                         alt="">
-                                @elseif (optional($nfc_card->virtualCard)->virtual_card_template == 'virtual-card-four')
-                                    <img class="img-fluid w-50px"
-                                        src="{{ asset('frontend/images/virtual_card/virtual_card_4.png') }}"
+                                @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-four')
+                                    <img class="img-fluid w-65px"
+                                        src="{{ asset('frontend/images/virtual_card/card_4.png') }}"
                                         alt="">
-                                @elseif (optional($nfc_card->virtualCard)->virtual_card_template == 'virtual-card-five')
-                                    <img class="img-fluid w-50px"
-                                        src="{{ asset('frontend/images/virtual_card/virtual_card_5.png') }}"
+                                @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-five')
+                                    <img class="img-fluid w-65px"
+                                        src="{{ asset('frontend/images/virtual_card/card_5.png') }}"
                                         alt="">
-                                @elseif (optional($nfc_card->virtualCard)->virtual_card_template == 'virtual-card-six')
-                                    <img class="img-fluid w-50px"
-                                        src="{{ asset('frontend/images/virtual_card/virtual_card_6.png') }}"
+                                @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-six')
+                                    <img class="img-fluid w-65px"
+                                        src="{{ asset('frontend/images/virtual_card/card_6.png') }}"
                                         alt="">
-                                @elseif (optional($nfc_card->virtualCard)->virtual_card_template == 'virtual-card-seven')
-                                    <img class="img-fluid w-50px"
-                                        src="{{ asset('frontend/images/virtual_card/virtual_card_7.png') }}"
+                                @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-seven')
+                                    <img class="img-fluid w-65px"
+                                        src="{{ asset('frontend/images/virtual_card/card_7.png') }}"
                                         alt="">
-                                @elseif (optional($nfc_card->virtualCard)->virtual_card_template == 'virtual-card-eight')
-                                    <img class="img-fluid w-50px"
-                                        src="{{ asset('frontend/images/virtual_card/virtual_card_8.png') }}"
+                                @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-eight')
+                                    <img class="img-fluid w-65px"
+                                        src="{{ asset('frontend/images/virtual_card/card_8.png') }}"
                                         alt="">
                                 @endif
                             </td>
                             <td>
-                                <div class="text-success">{{ optional($nfc_card->nfcData)->first_name }}
-                                    {{ optional($nfc_card->nfcData)->last_name }}
-                                </div>
+                                <div class="text-success">{{ optional($nfc_card)->card_name }}</div>
                             </td>
                             <td>
-                                <a href="{{ $nfc_card->nfc_url }}" target="_blank" class="text-primary">
+                                <a href="{{ optional($nfc_card->nfc)->nfc_url }}" target="_blank" class="text-primary">
                                     <button class="btn btn-sm btn-info">NFC <i class="fas fa-link ps-2"></i></button>
                                 </a>
                             </td>
@@ -173,179 +172,20 @@
 
 @foreach ($nfc_cards as $nfc_card)
     <div class="modal fade" tabindex="-1" id="virtual_card_modal_{{ $nfc_card->id }}">
-        <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width: 645px !important;">
+        <div class="modal-dialog modal-dialog-centered modal-xl" style="max-width: 845px !important;">
             <div class="modal-content position-absolute">
                 <div class="modal-body pb-0">
-                    <style>
-                        .punch-card-container {
-                            width: 600px;
-                            height: 300px;
-                            border-radius: 8px;
-                            background-repeat: no-repeat;
-                            background-size: cover;
-                            background-position: center;
-                            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-                            text-align: center;
-                            margin-bottom: 20px;
-                        }
-
-                        .punch-card-container-back {
-                            width: 600px;
-                            height: 300px;
-                            border-radius: 8px;
-                            background-repeat: no-repeat;
-                            background-size: cover;
-                            background-position: center;
-                            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-                            text-align: center;
-                            margin-bottom: 20px;
-                        }
-
-                        .text-start {
-                            text-align: start;
-                        }
-
-                        .text-lg-start {
-                            text-align: start !important;
-                            /* Specific override for large screens */
-                        }
-
-                        .card_logo {
-                            max-width: 100%;
-                            height: 100px;
-                            width: 100px;
-                        }
-
-                        .punch-card-logo-back-three {
-                            width: 200px;
-                        }
-
-                        .card_name {
-                            color: #fff;
-                            font-size: 2rem;
-                        }
-
-                        .card_designation {
-                            color: #fff;
-                            font-size: 1.2rem;
-                        }
-
-                        .card_phone,
-                        .card_email,
-                        .card_address {
-                            color: #fff;
-                        }
-
-                        .title-divider {
-                            height: 2px;
-                            width: 120px;
-                            background-color: #fff;
-                            margin: 0;
-                        }
-
-                        .nfc-text-title {
-                            font-size: 4rem;
-                            color: #fff;
-                        }
-
-                        .punch-card-container-back-one {
-                            height: 33vh;
-                            object-fit: fill;
-                            background-repeat: no-repeat;
-                            background-size: cover;
-                            background-position: center;
-                            border-radius: 5px;
-                        }
-
-                        /* Responsive adjustments */
-                        @media (max-width: 992px) {
-                            .text-lg-start {
-                                text-align: center !important;
-                            }
-                        }
-
-                        @media only screen and (min-width: 1368px) {
-                            .punch-card-container {
-                                width: 100%;
-                                height: auto;
-                                margin: auto;
-                            }
-                        }
-                    </style>
                     <div class="card">
                         <div>
-                            @if (optional($nfc_card->virtualCard)->virtual_card_template == 'virtual-card-one')
+                            @if (optional($nfc_card)->virtual_card_template == 'virtual-card-one')
                                 <div class="row mt-5">
                                     <div class="col-12">
                                         <!-- Visiting Card Box Container -->
-                                        <div class="punch-card-container mb-2"
-                                            style="background-image: url({{ !empty(optional($nfc_card->virtualCard)->card_bg_front) ? asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_front) : asset('https://i.ibb.co/cgBNBXk/5073118.gif') }});">
-                                            <div class="row p-5 align-items-center" style="height: 33vh;">
-                                                <div class="col-lg-6 text-center text-lg-start">
-                                                    <div class="ps-lg-4">
-                                                        <img class="punch-card-logo card_logo"
-                                                            src="{{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_logo) }}"
-                                                            alt="Logo"
-                                                            style="width: 200px;background-size: contain;height: 100px;text-align: start;margin-bottom: 0px !important;display: flex;justify-content: start;position: relative;left: 0px;object-fit: contain;" />
-                                                    </div>
-                                                    <div class="mt-4 mt-lg-0">
-                                                        <img class="punch-card-qr"
-                                                            src="https://i.ibb.co/M7KMQC0/qr.png" alt="QR Code"
-                                                            style="width: 125px;height: 125px;object-fit: fill;" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 mt-4 mt-lg-0">
-                                                    <div class="text-center text-lg-end content-area">
-                                                        <h4 class="fw-bold mb-0 card_name">
-                                                            {{ optional($nfc_card->virtualCard)->card_name }}</h4>
-                                                        <p class="fw-bold mb-0 card_designation">
-                                                            {{ optional($nfc_card->virtualCard)->card_designation }}
-                                                        </p>
-                                                        <div class="me-auto mt-2 title-devider-tem-one"></div>
-                                                        <div>
-                                                            <p class="fw-bold pt-3 mb-0">
-                                                                <span
-                                                                    class="card_phone">{{ optional($nfc_card->virtualCard)->card_phone }}</span>
-                                                                <i class="fas fa-phone tem-one-main-color "></i>
-                                                            </p>
-                                                            <p class="fw-bold mb-0">
-                                                                <span
-                                                                    class="card_email">{{ optional($nfc_card->virtualCard)->card_email }}</span>
-                                                                <i class="fas fa-envelope tem-one-main-color "></i>
-                                                            </p>
-                                                        </div>
-                                                        <div>
-                                                            <p class="fw-bold mb-0">
-                                                                <span
-                                                                    class="card_address">{{ optional($nfc_card->virtualCard)->card_address }}</span>
-                                                                <i
-                                                                    class="fas fa-map-marker-alt tem-one-main-color"></i>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="punch-card-container-back"
-                                            style="background-image: url({{ !empty(optional($nfc_card->virtualCard)->card_bg_back) ? asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_bg_back) : asset('https://i.ibb.co/sVxG7gh/2.gif') }}); background-repeat: no-repeat; background-size: cover;">
-                                            <div class="row p-5 align-items-center" style="height: 40vh;">
-                                                <div class="col-12 d-flex justify-content-center align-items-center">
-                                                    <img class="img-fluid card_font_color pt-8" width="200px;"
-                                                        src="{{ asset('storage/nfc/' . optional($nfc_card->virtualCard)->card_logo) }}"
-                                                        alt="Logo Back" />
-                                                </div>
-                                                <div class="col-12 d-flex justify-content-center align-items-center">
-                                                    <p class="fw-bold mb-0 card-mail-one text-white"
-                                                        style="padding-top: 2.5rem;"><i
-                                                            class="fas fa-envelope text-white"></i>
-                                                        goFlixza@gmail.com</p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @include('virtualCard.partials.card_modals.card_one')
                                         <!-- Visiting Card Box Container End-->
                                     </div>
                                 </div>
-                            @elseif (optional($nfc_card->virtualCard)->virtual_card_template == 'virtual-card-two')
+                            @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-two')
                                 <div class="row mt-5">
                                     <div class="col-12">
                                         <!-- Visiting Card Box Container -->
