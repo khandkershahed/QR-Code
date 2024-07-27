@@ -17,7 +17,7 @@
     }
 
     .card-two-front {
-        background-image: url(https://i.ibb.co/wRN75GW/bg-2.png);
+        background-image: url({{ asset('frontend/images/card_images/card_two_front.png') }});
         background-repeat: no-repeat;
         background-size: cover;
         object-fit: cover;
@@ -28,7 +28,7 @@
     }
 
     .card-two-back {
-        background-image: url(https://i.ibb.co/BLV6kHn/bg2.png);
+        background-image: url({{ asset('frontend/images/card_images/card_two_back.png') }});
         background-repeat: no-repeat;
         background-size: cover;
         object-fit: cover;
@@ -94,6 +94,13 @@
         }
     }
 
+    .tow-company-name {
+        margin-top: 45px;
+        margin-bottom: 20px !important;
+        margin-left: 85px;
+        font-size: 20px;
+    }
+
     @media only screen and (max-width: 1350px) {
         .punch-card-container {
             width: 100%;
@@ -113,18 +120,15 @@
         }
 
         .half {
-            width: 85%;
+            width: 100%;
             margin: auto;
             display: flex;
             align-items: center;
         }
 
         .template-two-title {
-            margin-left: 30px;
+            margin-left: 20px;
         }
-    }
-
-    @media (max-width: 1350px) {
 
         .punch-card-container,
         .punch-card-container-back {
@@ -136,6 +140,13 @@
             margin: auto;
             height: auto;
         }
+
+        .tow-company-name {
+            margin-top: 45px;
+            margin-bottom: 20px !important;
+            margin-left: 30px;
+            font-size: 20px;
+        }
     }
 </style>
 
@@ -146,31 +157,33 @@
                 <div>
                     <!-- Company Logo -->
                     <div class="d-flex justify-content-center template-two-logo-ebox">
-                        <img class="img-fluid" width="100px" src="https://i.ibb.co/CWsWHTM/lgoo.png" alt="" />
+                        @if (!empty($nfc_card->card_logo) && file_exists(public_path('storage/nfc/' . $nfc_card->card_logo)))
+                            <img class="img-fluid card_logo" width="100px"
+                                src="{{ asset('storage/nfc/' . $nfc_card->card_logo) }}" alt="" />
+                        @endif
                     </div>
 
                     <!-- Front Info -->
                     <div class=" template-two-title main-content-tem2">
-                        <h1 class="text-white text-center">Rasheduzzaman</h1>
-                        <p class="text-center">Frontend Designer</p>
-                        <p class="pb-4 text-white text-start"
-                            style="margin-top: 45px;margin-bottom: 20px !important;margin-left: 80px;font-size: 20px;">
-                            GoFlixza</p>
+                        <h1 class="text-white text-center card_name">{{ $nfc_card->card_name }}</h1>
+                        <p class="text-center card_designation">{{ $nfc_card->card_designation }}</p>
+                        {{-- <p class="pb-4 text-white text-start tow-company-name">
+                            GoFlixza</p> --}}
                         <div class="half">
                             <div class="icons-box-two text-center">
                                 <i class="fas fa-phone"></i>
                             </div>
-                            <div class="ps-3">
-                                <p class="mb-0 text-start ps-2">01620222616</p>
+                            <div class="ps-5 ps-lg-4">
+                                <p class="mb-0 text-start ps-2 card_phone">{{ $nfc_card->card_phone }}</p>
                             </div>
                         </div>
                         <div class="half mt-2">
                             <div class="icons-box-two text-center">
                                 <i class="fa-solid fa-house-flag"></i>
                             </div>
-                            <div class="ps-3">
-                                <p class="mb-0 text-start ps-2 w-50">
-                                    Khilkhet, Dhaka, Bangladesh
+                            <div class="ps-5 ps-lg-4">
+                                <p class="mb-0 text-start ps-2 w-50 card_address">
+                                    {{ $nfc_card->card_address }}
                                 </p>
                             </div>
                         </div>
@@ -178,8 +191,8 @@
                             <div class="icons-box-two text-center">
                                 <i class="fas fa-envelope"></i>
                             </div>
-                            <div class="ps-3">
-                                <p class="mb-0 text-start ps-2">info@gmail.com</p>
+                            <div class="ps-5 ps-lg-4">
+                                <p class="mb-0 text-start ps-2 card_email">{{ $nfc_card->card_email }}</p>
                             </div>
                         </div>
                     </div>
@@ -189,9 +202,10 @@
                 <div>
                     <!-- Company Logo -->
                     <div class="d-flex justify-content-center template-two-logo-back">
-                        <img class="img-fluid bg-white" width="170px"
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/800px-QR_code_for_mobile_English_Wikipedia.svg.png"
-                            alt="" />
+                        @if (!empty($nfc_card->nfc_qr) && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc_qr)))
+                            <img class="img-fluid bg-white" width="170px"
+                                src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}" alt="" />
+                        @endif
                     </div>
 
                     <!-- Front Info -->
@@ -202,7 +216,7 @@
                                 <i class="fa-solid fa-envelope"></i>
                             </div>
                             <div class="ps-3">
-                                <p class="mb-0">info@gmail.com</p>
+                                <p class="mb-0 card_email">{{ $nfc_card->card_email }}</p>
                             </div>
                         </div>
                     </div>

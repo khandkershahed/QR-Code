@@ -29,7 +29,4 @@
 
 </div>
 
-<div class="card virtual_card nfc-eight-card-frame nfc-eight virtual-card-eight w-100" style="display: none;">
-    @include('virtualCard.partials.card_preview.card_eight')
 
-</div>

@@ -141,28 +141,28 @@
                     <!-- Front Info -->
                     <div class="text-start template-four-title main-content-template-four">
                         <div class="card-four-user-info">
-                            <h4>Rasheduzzaman</h4>
-                            <small>Frontend Designer</small>
+                            <h4 class="card_name">Rasheduzzaman</h4>
+                            <small class="card_designation">Frontend Designer</small>
                         </div>
                         <div class="three-content">
                             <div class="d-flex justify-content-center align-items-center">
                                 <div class="ps-3 w-75 pt-4">
-                                    <p class="mb-0 text-start ps-2">info@gmail.com</p>
+                                    <p class="mb-0 text-start ps-2 card_email">info@gmail.com</p>
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-center align-items-center pt-1">
+                            {{-- <div class="d-flex justify-content-center align-items-center pt-1">
                                 <div class="ps-3 w-75 pt-4">
                                     <p class="mb-0 text-start ps-2">www.portfolio.com</p>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="d-flex justify-content-center align-items-center pt-2">
                                 <div class="ps-3 w-75 pt-4">
-                                    <p class="mb-0 text-start ps-2 text-black">01620222616</p>
+                                    <p class="mb-0 text-start ps-2 text-black card_phone">01620222616</p>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-center align-items-center pt-2">
                                 <div class="ps-3 w-75 pt-4">
-                                    <p class="mb-0 text-start ps-2">
+                                    <p class="mb-0 text-start ps-2 card_address">
                                         Khilkhet, Dhaka, Bangladesh
                                     </p>
                                 </div>
@@ -176,15 +176,15 @@
                     <!-- Company Logo -->
                     <div class="tem-4-logo">
                         <div class="d-flex align-items-center">
-                            <img class="img-fluid" width="100px" src="https://i.ibb.co/CWsWHTM/lgoo.png"
+                            <img class="img-fluid card_logo" width="100px" src="https://i.ibb.co/CWsWHTM/lgoo.png"
                                 alt="" />
-                            <div>
+                            {{-- <div>
                                 <h4>GoFlixza</h4>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <div class="tem-4-qr">
-                        <img class="img-fluid bg-white" width="100px"
+                        <img class="img-fluid bg-white nfc_qr" style="width: 100px;"
                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/800px-QR_code_for_mobile_English_Wikipedia.svg.png"
                             alt="" />
                     </div>

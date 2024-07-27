@@ -18,7 +18,7 @@
     }
 
     .card-front {
-        background-image: url(https://i.ibb.co/kQDKvJG/bg.png);
+        background-image: url({{ asset('frontend/images/card_images/card_one_front.png') }});
         background-repeat: no-repeat;
         background-size: cover;
         object-fit: cover;
@@ -27,7 +27,7 @@
     }
 
     .card-back {
-        background-image: url(https://i.ibb.co/9ZQZ3FB/gradient.png);
+        background-image: url({{ asset('frontend/images/card_images/card_one_back.png') }});
         background-repeat: no-repeat;
         background-size: cover;
         object-fit: cover;
@@ -102,8 +102,10 @@
                 <div>
                     <!-- Company Logo -->
                     <div class="d-flex justify-content-center template-logo-ebox">
-                        <img class="img-fluid card_logo" width="100px" src="https://i.ibb.co/CWsWHTM/lgoo.png"
-                            alt="" />
+                        @if (!empty($nfc_card->card_logo) && file_exists(public_path('storage/nfc/' . $nfc_card->card_logo)))
+                            <img class="img-fluid card_logo" width="100px"
+                                src="{{ asset('storage/nfc/' . $nfc_card->card_logo) }}" alt="" />
+                        @endif
                     </div>
 
                     <!-- Front Info -->
@@ -118,9 +120,10 @@
                 <div>
                     <!-- Company Logo -->
                     <div class="d-flex justify-content-center template-logo-back">
-                        <img class="img-fluid bg-white nfc_qr" width="150px"
-                            src="{{ $nfc_card->nfc->nfc_qr  }}"
-                            alt="" />
+                        @if (!empty($nfc_card->nfc_qr) && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc_qr)))
+                            <img class="img-fluid bg-white" width="150px"
+                                src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}" alt="" />
+                        @endif
                     </div>
 
                     <!-- Front Info -->
