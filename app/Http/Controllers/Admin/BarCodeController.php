@@ -271,17 +271,13 @@ class BarCodeController extends Controller
                     'barcode_width'   => $barcodeWidth,
                     'barcode_height'  => $barcodeHeight,
                     'bulk_file'       => $request->bulk_file,
-                    // 'bar_code_jpg'    => $urls['jpg'] ?? null,
-                    // 'bar_code_pdf'    => $urls['pdf'] ?? null,
-                    // 'bar_code_svg'    => $urls['svg'] ?? null,
-                    // 'bar_code_png'    => $urls['png'] ?? null,
                 ]);
 
                 BarcodeImage::create([
                     'barcode_id' => $bar_code ? $bar_code->id : null,
                     'page_number' => $currentPage,
                     'image' => 'barcodes/images/' . $filename,
-                    
+
                 ]);
 
                 // Display or save the image

@@ -12,7 +12,7 @@
             height: auto;
         }
     }
-</style>
+</style> 
 
 <div class="row mt-5 nfc-preview-box">
     <div class="col-12">

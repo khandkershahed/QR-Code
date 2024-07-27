@@ -3,21 +3,21 @@
         padding: 0px !important;
         display: flex;
         justify-content: center;
-        height: 245px;
+        height: 310px;
         width: 100%;
     }
 
     @media (max-width: 1350px) {
         .custom-nfc-template {
             height: 152px;
-        }   
+        }
     }
 </style>
 <div class="row">
     @foreach ($cardtemplates as $cardtemplate)
-        <div class="col-lg-3">
+        <div class="col-lg-4">
             <input type="radio" class="btn-check" name="virtual_card_template" value="{{ $cardtemplate['value'] }}"
-                required id="{{ $cardtemplate['value'] }}">
+                required {{ $loop->first ? 'checked' : '' }} id="{{ $cardtemplate['value'] }}">
             <label
                 class="btn btn-outline btn-outline-dashed btn-outline-default custom-nfc-template p-7 d-flex align-items-center mb-5"
                 style="" for="{{ $cardtemplate['value'] }}">

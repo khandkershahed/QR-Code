@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use App\Models\Admin\NfcCard;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Admin\NfcShippingDetails;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class VirtualCard extends Model
 {
@@ -13,5 +14,9 @@ class VirtualCard extends Model
     public function nfc()
     {
         return $this->belongsTo(NfcCard::class, 'card_id');
+    }
+    public function shippingDetails()
+    {
+        return $this->hasOne(NfcShippingDetails::class, 'card_id');
     }
 }

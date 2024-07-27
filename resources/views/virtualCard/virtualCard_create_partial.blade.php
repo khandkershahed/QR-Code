@@ -1,5 +1,5 @@
 <div class="row g-2 py-10">
-    <div class="col-lg-8">
+    <div class="col-lg-6">
         <div class="card">
             <div class="card-body custom-card-body overflow-auto p-0">
                 <div class="stepper stepper-pills flex-grow-1 d-flex flex-column" id="kt_stepper_example_clickable">
@@ -494,7 +494,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-6">
         <div class="card" id="second-card">
             <div class="card-header px-0 border-0">
                 <div class="d-flex flex-column justify-content-center align-items-center"
@@ -503,11 +503,11 @@
                     <p class="mb-0 text-white">Your Choosen Template</p>
                 </div>
             </div>
-            <div class="card-body custom-card-body overflow-auto px-0 ">
+            {{-- <div class="card-body custom-card-body overflow-auto px-0 ">
                 @include('virtualCard.partials.nfc_preview')
-            </div>
+            </div> --}}
             <div
-                class="card-body custom-card-body overflow-auto px-0 py-10 d-flex justify-content-center align-items-center">
+                class="card-body custom-card-body overflow-auto px-0 pt-3 d-flex justify-content-center align-items-center">
                 @include('virtualCard.partials.virtual_card_preview')
             </div>
         </div>
@@ -530,39 +530,11 @@
     </script>
     <script>
         $(document).ready(function() {
-            // NFC Template
-            var nfcTemplateValue = $('input[name="nfc_template"]:checked').val();
-            if (nfcTemplateValue != null) {
-                localStorage.setItem('nfc_template', nfcTemplateValue);
-                $("." + nfcTemplateValue).show();
-            } else {
-                $(".nfc-card").hide();
-            }
-
-
-            $('input[name="nfc_template"]').change(function() {
-                $(".nfc-card").hide();
-                var nfcTemplateValue = $('input[name="nfc_template"]:checked').val();
-                if (nfcTemplateValue != null) {
-                    localStorage.setItem('nfc_template', nfcTemplateValue);
-                    $("." + nfcTemplateValue).show();
-                } else {
-                    $(".nfc-card").hide();
-                }
-            });
-
-            var initiallySelectedValue = $('input[name="nfc_template"]:checked').val();
-            $("." + initiallySelectedValue).show();
-
-
             $('#kt_stepper_example_clickable_form input:not([type="radio"]), #kt_stepper_example_clickable_form textarea, #kt_stepper_example_clickable_form input:not([type="color"])')
                 .on('keyup change', function() {
                     // Extract input value and name
                     var inputValue = $(this).val();
                     var inputName = $(this).attr('name');
-                    // alert(inputValue);
-                    // alert(inputName);
-                    // Update corresponding NFC card element
                     var nfcCardElement = $('.nfc-card .' + inputName);
                     var virtualCardElement = $('.virtual_card .' + inputName);
                     if (nfcCardElement.length > 0 | virtualCardElement.length > 0) {
@@ -588,9 +560,41 @@
                     // For debugging
                     console.log("Input Name:", inputName, "Input Value:", inputValue);
                 });
-
-
         });
+
+        // function cardValueUpdate() {
+        //     var card_name = $('#card_name').val('');
+        //     var card_designation = $('#card_designation').val('');
+        //     var card_phone = $('#card_phone').val('');
+        //     var card_email = $('#card_email').val('');
+        //     var card_address = $('#card_address').val('');
+        //     var inputValue = $(this).val();
+        //     var inputName = $(this).attr('name');
+        //     var nfcCardElement = $('.nfc-card .' + inputName);
+        //     var virtualCardElement = $('.virtual_card .' + inputName);
+        //     if (nfcCardElement.length > 0 | virtualCardElement.length > 0) {
+        //         if ($(this).is('input[type="file"]')) {
+        //             if ($(this).prop('files') && $(this).prop('files')[0]) {
+        //                 var file = $(this).prop('files')[0];
+        //                 var reader = new FileReader();
+        //                 reader.onload = function(e) {
+        //                     nfcCardElement.attr('src', e.target.result);
+        //                     virtualCardElement.attr('src', e.target.result);
+        //                 }
+        //                 reader.readAsDataURL(file);
+        //             }
+        //         } else if ($(this).is('input[type="url"]')) {
+        //             nfcCardElement.attr('href', inputValue);
+        //             virtualCardElement.attr('href', inputValue);
+        //         } else {
+        //             nfcCardElement.text(inputValue);
+        //             virtualCardElement.text(inputValue);
+        //         }
+        //     }
+
+        //     // For debugging
+        //     console.log("Input Name:", inputName, "Input Value:", inputValue);
+        // }
     </script>
 
 
@@ -599,27 +603,22 @@
     <script>
         // Stepper lement
         var element = document.querySelector("#kt_stepper_example_clickable");
-
-        // Initialize Stepper
         var stepper = new KTStepper(element);
-
-        // Handle navigation click
         stepper.on("kt.stepper.click", function(stepper) {
             stepper.goTo(stepper.getClickedStepIndex()); // go to clicked step
         });
-
-        // Handle next step
         stepper.on("kt.stepper.next", function(stepper) {
             stepper.goNext(); // go next step
         });
-
-        // Handle previous step
         stepper.on("kt.stepper.previous", function(stepper) {
             stepper.goPrevious(); // go previous step
         });
     </script>
     <script>
         $(document).ready(function() {
+            var initiallySelectedValue = $('input[name="virtual_card_template"]:checked').val();
+            $("." + initiallySelectedValue).show();
+
             function updateCardPreview() {
                 const virtualCardValue = $('input[name="virtual_card_template"]:checked').val();
                 if (virtualCardValue != null) {
