@@ -223,25 +223,25 @@
                 <div class="credit-card-inner">
                     <header class="header-three">
                         <div class="credit-logo">
-                            <span class="text">Rasheduzzaman</span>
-                            <p class="pt-3 ps-2 mb-0">SEO Specialist</p>
-                            <p class="ps-2">01620222616</p>
+                            <span class="text card_name">Rasheduzzaman</span>
+                            <p class="pt-3 ps-2 mb-0 card_designation">SEO Specialist</p>
+                            <p class="ps-2 card_phone">01620222616</p>
                         </div>
                     </header>
                     <footer class="card-three-footer">
                         <div class="card-three-clearfix">
                             <div class="pull-left">
-                                <div class="credit-font credit-author">GoFlixza</div>
+                                {{-- <div class="credit-font credit-author">GoFlixza</div> --}}
                                 <div class="credit-card-date text-start">
-                                    <span class="credit-font ps-0">info@gmail.com</span>
+                                    <span class="credit-font ps-0 card_email">info@gmail.com</span>
                                     <br />
-                                    <span class="credit-font ps-0">
+                                    <span class="credit-font ps-0 card_address">
                                         Khilkhet, Dhaka, Bangladesh
                                     </span>
                                 </div>
                             </div>
                             <div class="pull-right">
-                                <img src="https://i.ibb.co/BNBTVN4/logo.png" width="60px" />
+                                <img class="card_logo" src="https://i.ibb.co/BNBTVN4/logo.png" width="60px" />
                             </div>
                         </div>
                     </footer>
@@ -252,7 +252,7 @@
                 <div class="credit-card-inner d-flex justify-content-center align-items-center"
                     style="background-color: #cccccc6e; border-radius: 20px">
                     <div>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/800px-QR_code_for_mobile_English_Wikipedia.svg.png"
+                        <img class="nfc_qr" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/800px-QR_code_for_mobile_English_Wikipedia.svg.png"
                             width="100px" />
                     </div>
                 </div>

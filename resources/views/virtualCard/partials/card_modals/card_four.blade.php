@@ -7,7 +7,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
+        height: auto;
     }
 
     .card-four {
@@ -20,7 +20,7 @@
     }
 
     .card-four-front {
-        background-image: url(https://i.ibb.co/R78XyqB/asdasd.png);
+        background-image: url({{ asset('frontend/images/card_images/card_four_front.png') }});
         background-repeat: no-repeat;
         background-size: cover;
         object-fit: cover;
@@ -31,7 +31,7 @@
     }
 
     .card-four-back {
-        background-image: url(https://i.ibb.co/Fn68zTt/bg-33.png);
+        background-image: url({{ asset('frontend/images/card_images/card_four_back.png') }});
         background-repeat: no-repeat;
         background-size: cover;
         object-fit: cover;
@@ -44,7 +44,7 @@
 
 
     .main-content-template-four {
-        margin-top: 220px;
+        margin-top: 230px;
     }
 
     .template-four-title {
@@ -54,8 +54,8 @@
 
     .tem-4-logo {
         position: relative;
-        top: 75%;
         left: 25px;
+        top: 150px;
     }
 
     .tem-4-qr {
@@ -64,7 +64,11 @@
         left: 150px;
     }
 
-
+    .three-content {
+        position: relative;
+        left: 50px;
+        top: 35px;
+    }
 
     .card-four-back p {
         font-size: 17px;
@@ -95,6 +99,38 @@
             height: 150vh;
         }
     }
+
+    @media (max-width: 1350px) {
+        .tem-4-qr {
+            position: relative;
+            top: 300px;
+            left: 100px;
+        }
+
+        .tem-4-logo {
+            position: relative;
+            left: 0px;
+            top: 150px;
+        }
+
+        .card-four {
+            width: auto;
+            max-width: 235px;
+            height: 520px;
+            aspect-ratio: 300 / 230;
+            margin: 10px;
+        }
+
+        .three-content {
+            position: relative;
+            left: 30px;
+            top: 35px;
+        }
+
+        .card-four-user-info {
+            margin-left: 25px;
+        }
+    }
 </style>
 
 <div class="container">
@@ -105,29 +141,29 @@
                     <!-- Front Info -->
                     <div class="text-start template-four-title main-content-template-four">
                         <div class="card-four-user-info">
-                            <h4>Rasheduzzaman</h4>
-                            <small>Frontend Designer</small>
+                            <h4 class="card_name">{{ $nfc_card->card_name }}</h4>
+                            <small class="card_designation">{{ $nfc_card->card_designation }}</small>
                         </div>
-                        <div class="pt-4 ps-5">
-                            <div class="d-flex justify-content-center align-items-center pt-3">
-                                <div class="ps-3 w-75">
-                                    <p class="mb-0 text-start ps-2">info@gmail.com</p>
+                        <div class="three-content">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <div class="ps-3 w-75 pt-4">
+                                    <p class="mb-0 text-start ps-2 card_email">i{{ $nfc_card->card_email }}</p>
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-center align-items-center pt-3">
-                                <div class="ps-3 w-75">
-                                    <p class="mb-0 text-start ps-2">info@gmail.com</p>
+                            {{-- <div class="d-flex justify-content-center align-items-center pt-1">
+                                <div class="ps-3 w-75 pt-4">
+                                    <p class="mb-0 text-start ps-2">www.portfolio.com</p>
+                                </div>
+                            </div> --}}
+                            <div class="d-flex justify-content-center align-items-center pt-2">
+                                <div class="ps-3 w-75 pt-4">
+                                    <p class="mb-0 text-start ps-2 text-black card_phone">{{ $nfc_card->card_phone }}</p>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-center align-items-center pt-2">
-                                <div class="ps-3 w-75">
-                                    <p class="mb-0 text-start ps-2 text-black">01620222616</p>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-center align-items-center pt-2">
-                                <div class="ps-3 w-75">
-                                    <p class="mb-0 text-start ps-2">
-                                        Khilkhet, Dhaka, Bangladesh
+                                <div class="ps-3 w-75 pt-4">
+                                    <p class="mb-0 text-start ps-2 card_address">
+                                        {{ $nfc_card->card_address }}
                                     </p>
                                 </div>
                             </div>
@@ -140,16 +176,20 @@
                     <!-- Company Logo -->
                     <div class="tem-4-logo">
                         <div class="d-flex align-items-center">
-                            <img class="img-fluid" width="100px" src="https://i.ibb.co/CWsWHTM/lgoo.png" alt="" />
-                            <div>
+                            @if (!empty($nfc_card->card_logo) && file_exists(public_path('storage/nfc/' . $nfc_card->card_logo)))
+                            <img class="img-fluid card_logo" width="100px"
+                                src="{{ asset('storage/nfc/' . $nfc_card->card_logo) }}" alt="" />
+                        @endif
+                            {{-- <div>
                                 <h4>GoFlixza</h4>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <div class="tem-4-qr">
-                        <img class="img-fluid bg-white" width="100px"
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/800px-QR_code_for_mobile_English_Wikipedia.svg.png"
-                            alt="" />
+                        @if (!empty($nfc_card->nfc_qr) && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc_qr)))
+                            <img class="img-fluid bg-white nfc_qr" width="100px"
+                                src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}" alt="" />
+                        @endif
                     </div>
                 </div>
             </div>

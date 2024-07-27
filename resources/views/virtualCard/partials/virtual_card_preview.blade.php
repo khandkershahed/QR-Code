@@ -28,3 +28,5 @@
     @include('virtualCard.partials.card_preview.card_seven')
 
 </div>
+
+

@@ -157,21 +157,21 @@
                 <div>
                     <!-- Company Logo -->
                     <div class="d-flex justify-content-center template-two-logo-ebox">
-                        <img class="img-fluid" width="100px" src="https://i.ibb.co/CWsWHTM/lgoo.png" alt="" />
+                        <img class="img-fluid card_logo" width="100px" src="https://i.ibb.co/CWsWHTM/lgoo.png" alt="" />
                     </div>
 
                     <!-- Front Info -->
                     <div class=" template-two-title main-content-tem2">
-                        <h1 class="text-white text-center">Rasheduzzaman</h1>
-                        <p class="text-center">Frontend Designer</p>
-                        <p class="pb-4 text-white text-start tow-company-name">
-                            GoFlixza</p>
+                        <h1 class="text-white text-center card_name">Rasheduzzaman</h1>
+                        <p class="text-center card_designation">Frontend Designer</p>
+                        {{-- <p class="pb-4 text-white text-start tow-company-name">
+                            GoFlixza</p> --}}
                         <div class="half">
                             <div class="icons-box-two text-center">
                                 <i class="fas fa-phone"></i>
                             </div>
                             <div class="ps-5 ps-lg-4">
-                                <p class="mb-0 text-start ps-2">01620222616</p>
+                                <p class="mb-0 text-start ps-2 card_phone">01620222616</p>
                             </div>
                         </div>
                         <div class="half mt-2">
@@ -179,7 +179,7 @@
                                 <i class="fa-solid fa-house-flag"></i>
                             </div>
                             <div class="ps-5 ps-lg-4">
-                                <p class="mb-0 text-start ps-2 w-50">
+                                <p class="mb-0 text-start ps-2 w-50 card_address">
                                     Khilkhet, Dhaka, Bangladesh
                                 </p>
                             </div>
@@ -189,7 +189,7 @@
                                 <i class="fas fa-envelope"></i>
                             </div>
                             <div class="ps-5 ps-lg-4">
-                                <p class="mb-0 text-start ps-2">info@gmail.com</p>
+                                <p class="mb-0 text-start ps-2 card_email">info@gmail.com</p>
                             </div>
                         </div>
                     </div>
@@ -199,7 +199,7 @@
                 <div>
                     <!-- Company Logo -->
                     <div class="d-flex justify-content-center template-two-logo-back">
-                        <img class="img-fluid bg-white" width="170px"
+                        <img class="img-fluid bg-white nfc_qr" width="170px"
                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/800px-QR_code_for_mobile_English_Wikipedia.svg.png"
                             alt="" />
                     </div>
@@ -212,7 +212,7 @@
                                 <i class="fa-solid fa-envelope"></i>
                             </div>
                             <div class="ps-3">
-                                <p class="mb-0">info@gmail.com</p>
+                                <p class="mb-0 card_email">info@gmail.com</p>
                             </div>
                         </div>
                     </div>

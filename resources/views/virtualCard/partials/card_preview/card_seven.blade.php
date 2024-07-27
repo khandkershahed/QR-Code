@@ -100,7 +100,7 @@
                 <div class="col-4 d-flex justify-content-start align-items-center font">
                     <div class="">
                         <div class="d-flex justify-content-center">
-                            <img class="img-fluid bg-white" width="100px"
+                            <img class="img-fluid bg-white nfc_qr" style="width: 100px;"
                                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/800px-QR_code_for_mobile_English_Wikipedia.svg.png"
                                 alt="">
                         </div>
