@@ -18,18 +18,22 @@
     @include('virtualCard.partials.card_preview.card_four')
 
 </div>
+
 <div class="card virtual_card nfc-five-card-frame nfc-five virtual-card-five w-100" style="display: none;">
     @include('virtualCard.partials.card_preview.card_five')
 
 </div>
+
 <div class="card virtual_card nfc-six-card-frame nfc-six virtual-card-six w-100" style="display: none;">
     @include('virtualCard.partials.card_preview.card_six')
 
 </div>
+
 <div class="card virtual_card nfc-seven-card-frame nfc-seven virtual-card-seven w-100" style="display: none;">
     @include('virtualCard.partials.card_preview.card_seven')
 
 </div>
+
 <div class="card virtual_card nfc-eight-card-frame nfc-eight virtual-card-eight w-100" style="display: none;">
     @include('virtualCard.partials.card_preview.card_eight')
 

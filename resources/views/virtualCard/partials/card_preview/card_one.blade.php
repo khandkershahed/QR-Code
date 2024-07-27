@@ -61,7 +61,6 @@
         font-size: 15px;
     }
 
-<<<<<<< HEAD
     @media (max-width: 767px) {
         .title-devider-tem-one {
             left: 30px;
@@ -83,11 +82,15 @@
             width: 335px;
             margin: auto;
             height: auto;
-=======
-    @media (max-width: 576px) {
-        .card-container {
-            flex-direction: column;
->>>>>>> c0073b6b4be035eec061d5a5617b3202ee9705df
+        }
+
+        .nfc_card_one {
+            width: 100%;
+            height: 430px;
+        }
+
+        .template-logo-back {
+            margin-top: 30px;
         }
     }
 </style>
@@ -99,7 +102,8 @@
                 <div>
                     <!-- Company Logo -->
                     <div class="d-flex justify-content-center template-logo-ebox">
-                        <img class="img-fluid card_logo" width="100px" src="https://i.ibb.co/CWsWHTM/lgoo.png" alt="" />
+                        <img class="img-fluid card_logo" width="100px" src="https://i.ibb.co/CWsWHTM/lgoo.png"
+                            alt="" />
                     </div>
 
                     <!-- Front Info -->

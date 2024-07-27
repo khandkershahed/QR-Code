@@ -1,3 +1,21 @@
+<style>
+    .custom-nfc-template {
+        padding: 0px !important;
+        display: flex;
+        justify-content: center;
+        height: 200px;
+        width: 100%;
+    }
+
+    @media (max-width: 1350px) {
+        .custom-nfc-template {
+            height: 152px;
+        }
+        .nfc-type-mobile{
+
+        }
+    }
+</style>    
 <div class="row">
     @foreach ($templates as $template)
         <div class="col-lg-2">

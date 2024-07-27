@@ -5,7 +5,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
     }
 
     .card_two {
@@ -55,24 +54,30 @@
     }
 
     .icons-box-two {
-        background-color: #fff;
         color: #000;
-        width: 100px;
-        height: 40px;
-        padding: 10px;
     }
 
     .card-two-back p {
         font-size: 17px;
     }
 
-<<<<<<< HEAD
     .card_designation-two,
     .card_phone-two,
     .card_email-two,
     .card_address-two {
         color: #fff;
         font-weight: bold;
+    }
+
+    .main-content-tem2 {
+        margin-top: 45px;
+    }
+
+    .half {
+        width: 65%;
+        margin: auto;
+        display: flex;
+        align-items: center;
     }
 
     @media only screen and (min-width: 1368px) {
@@ -101,6 +106,22 @@
             height: auto;
             margin: auto;
         }
+
+        .card_two {
+            width: auto;
+            max-width: 230px;
+        }
+
+        .half {
+            width: 85%;
+            margin: auto;
+            display: flex;
+            align-items: center;
+        }
+
+        .template-two-title {
+            margin-left: 30px;
+        }
     }
 
     @media (max-width: 1350px) {
@@ -114,11 +135,6 @@
             width: 335px;
             margin: auto;
             height: auto;
-=======
-    @media (max-width: 576px) {
-        .card-container-two {
-            flex-direction: column;
->>>>>>> c0073b6b4be035eec061d5a5617b3202ee9705df
         }
     }
 </style>
@@ -132,35 +148,37 @@
                     <div class="d-flex justify-content-center template-two-logo-ebox">
                         <img class="img-fluid" width="100px" src="https://i.ibb.co/CWsWHTM/lgoo.png" alt="" />
                     </div>
-    
+
                     <!-- Front Info -->
-                    <div class="text-center template-two-title main-content-tem2">
-                        <h4>Rasheduzzaman</h4>
-                        <small>Frontend Designer</small>
-                        <h3 class="pt-5 mb-0 pb-4">GoFlixza</h3>
-                        <div class="d-flex justify-content-center align-items-center">
-                            <div class="icons-box-two text-center" style="width: 17%">
+                    <div class=" template-two-title main-content-tem2">
+                        <h1 class="text-white text-center">Rasheduzzaman</h1>
+                        <p class="text-center">Frontend Designer</p>
+                        <p class="pb-4 text-white text-start"
+                            style="margin-top: 45px;margin-bottom: 20px !important;margin-left: 80px;font-size: 20px;">
+                            GoFlixza</p>
+                        <div class="half">
+                            <div class="icons-box-two text-center">
                                 <i class="fas fa-phone"></i>
                             </div>
-                            <div class="ps-3 w-75">
+                            <div class="ps-3">
                                 <p class="mb-0 text-start ps-2">01620222616</p>
                             </div>
                         </div>
-                        <div class="d-flex justify-content-center align-items-center mt-2">
-                            <div class="icons-box-two text-center" style="width: 17%">
+                        <div class="half mt-2">
+                            <div class="icons-box-two text-center">
                                 <i class="fa-solid fa-house-flag"></i>
                             </div>
-                            <div class="ps-3 w-75">
-                                <p class="mb-0 text-start ps-2">
+                            <div class="ps-3">
+                                <p class="mb-0 text-start ps-2 w-50">
                                     Khilkhet, Dhaka, Bangladesh
                                 </p>
                             </div>
                         </div>
-                        <div class="d-flex justify-content-center align-items-center mt-2">
-                            <div class="icons-box-two text-center" style="width: 17%">
+                        <div class="half mt-2">
+                            <div class="icons-box-two text-center">
                                 <i class="fas fa-envelope"></i>
                             </div>
-                            <div class="ps-3 w-75">
+                            <div class="ps-3">
                                 <p class="mb-0 text-start ps-2">info@gmail.com</p>
                             </div>
                         </div>
@@ -175,10 +193,11 @@
                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/800px-QR_code_for_mobile_English_Wikipedia.svg.png"
                             alt="" />
                     </div>
-    
+
                     <!-- Front Info -->
-                    <div class="template-two-title pt-5" style="width: 60%; margin: auto; margin-top: 50px">
-                        <div class="d-flex justify-content-center align-items-center mt-4">
+                    <div class="template-two-title pt-5"
+                        style="width: 60%;margin: auto;margin-top: 90px;margin-left: 45px;">
+                        <div class="half mt-4">
                             <div class="">
                                 <i class="fa-solid fa-envelope"></i>
                             </div>

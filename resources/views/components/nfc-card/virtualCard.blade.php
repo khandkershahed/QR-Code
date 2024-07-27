@@ -3,7 +3,7 @@
         padding: 0px !important;
         display: flex;
         justify-content: center;
-        height: 310px;
+        height: 300px;
         width: 100%;
     }
 
@@ -15,7 +15,7 @@
 </style>
 <div class="row">
     @foreach ($cardtemplates as $cardtemplate)
-        <div class="col-lg-4">
+        <div class="col-lg-4 mb-3">
             <input type="radio" class="btn-check" name="virtual_card_template" value="{{ $cardtemplate['value'] }}"
                 required {{ $loop->first ? 'checked' : '' }} id="{{ $cardtemplate['value'] }}">
             <label
