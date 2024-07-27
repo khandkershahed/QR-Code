@@ -15,7 +15,7 @@
 </style>
 <div class="row">
     @foreach ($cardtemplates as $cardtemplate)
-        <div class="col-lg-3">
+        <div class="col-lg-4">
             <input type="radio" class="btn-check" name="virtual_card_template" value="{{ $cardtemplate['value'] }}"
                 required {{ $loop->first ? 'checked' : '' }} id="{{ $cardtemplate['value'] }}">
             <label

@@ -5,12 +5,12 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
+        /* height: 100vh; */
     }
 
     .nfc_card_one {
         width: 100%;
-        max-width: 300px;
+        /* max-width: 300px; */
         height: 520px;
         aspect-ratio: 300 / 285;
         /* Maintain the aspect ratio */
@@ -75,15 +75,14 @@
                 <div>
                     <!-- Company Logo -->
                     <div class="d-flex justify-content-center template-logo-ebox">
-                        <img class="img-fluid" width="100px" src="https://i.ibb.co/CWsWHTM/lgoo.png" alt="" />
+                        <img class="img-fluid card_logo" width="100px" src="https://i.ibb.co/CWsWHTM/lgoo.png" alt="" />
                     </div>
-    
+
                     <!-- Front Info -->
                     <div class="text-center template-title">
-                        <h1>GoFlixza</h1>
-                        <p>Frontend Designer</p>
-    
-                        <h3 class="pt-4 mb-0">Rasheduzzaman</h3>
+                        <h2 class="card_name text-white">GoFlixza</h2>
+                        <p class="card_designation text-white">Frontend Designer</p>
+                        {{-- <h3 class="pt-4 mb-0">Rasheduzzaman</h3> --}}
                     </div>
                 </div>
             </div>
@@ -91,11 +90,11 @@
                 <div>
                     <!-- Company Logo -->
                     <div class="d-flex justify-content-center template-logo-back">
-                        <img class="img-fluid bg-white" width="150px"
+                        <img class="img-fluid bg-white nfc_qr" width="150px"
                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/800px-QR_code_for_mobile_English_Wikipedia.svg.png"
                             alt="" />
                     </div>
-    
+
                     <!-- Front Info -->
                     <div class="template-title pt-5" style="width: 60%; margin: auto">
                         <div class="d-flex justify-content-center align-items-center">
@@ -103,7 +102,7 @@
                                 <i class="fas fa-phone"></i>
                             </div>
                             <div class="ps-3 w-75">
-                                <p class="mb-0">01620222616</p>
+                                <p class="mb-0 card_phone">01620222616</p>
                             </div>
                         </div>
                         <div class="d-flex justify-content-center align-items-center mt-4">
@@ -111,7 +110,7 @@
                                 <i class="fa-solid fa-house-flag"></i>
                             </div>
                             <div class="ps-3 w-75">
-                                <p class="mb-0">Khilkhet, Dhaka, Bangladesh</p>
+                                <p class="mb-0 card_address">Khilkhet, Dhaka, Bangladesh</p>
                             </div>
                         </div>
                         <div class="d-flex justify-content-center align-items-center mt-4">
@@ -119,7 +118,7 @@
                                 <i class="fas fa-envelope"></i>
                             </div>
                             <div class="ps-3 w-75">
-                                <p class="mb-0">info@gmail.com</p>
+                                <p class="mb-0 card_email">info@gmail.com</p>
                             </div>
                         </div>
                     </div>

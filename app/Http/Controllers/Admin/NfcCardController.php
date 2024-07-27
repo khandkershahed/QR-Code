@@ -177,31 +177,38 @@ class NfcCardController extends Controller
      */
     public function destroy(string $id)
     {
-       
-            $nfc = VirtualCard::with('shippingDetails')->findOrFail($id);
 
-            // Define the files and file path
-            $files = [
-                'card_logo'     => $nfc->card_logo,
-                'card_bg_front' => $nfc->card_bg_front,
-                'card_bg_back'  => $nfc->card_bg_back,
-            ];
+        $nfc = VirtualCard::with('shippingDetails')->findOrFail($id);
 
-            $filePath = 'public/nfc/';
+        // Define the files and file path
+        $files = [
+            'card_logo'     => $nfc->card_logo,
+            'card_bg_front' => $nfc->card_bg_front,
+            'card_bg_back'  => $nfc->card_bg_back,
+        ];
 
-            // Delete the files if they exist
-            foreach ($files as $file) {
-                if (!empty($file) && Storage::exists($filePath . $file)) {
-                    Storage::delete($filePath . $file);
-                }
+        $filePath = 'public/nfc/';
+
+        // Delete the files if they exist
+        foreach ($files as $file) {
+            if (!empty($file) && Storage::exists($filePath . $file)) {
+                Storage::delete($filePath . $file);
             }
+        }
 
-            // Delete the shipping details
-            if ($nfc->shippingDetails) {
-                $nfc->shippingDetails->delete();
-            }
+        // Delete the shipping details
+        if ($nfc->shippingDetails) {
+            $nfc->shippingDetails->delete();
+        }
 
-            // Delete the virtual card
-            $nfc->delete();
+        // Delete the virtual card
+        $nfc->delete();
+    }
+
+    public function getNfcData(Request $request)
+    {
+        $nfc = NfcCard::with('nfcData')->where('id', $request->card_id)->first();
+        $nfcData = $nfc->nfcData;
+        return response()->json(['nfc' => $nfc,'nfcData' => $nfcData]);
     }
 }
