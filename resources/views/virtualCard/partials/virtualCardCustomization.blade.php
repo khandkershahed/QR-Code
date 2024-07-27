@@ -138,8 +138,7 @@
                                 $('#card_designation').val(nfc.designation);
                                 $('#card_email').val(nfcData.email_personal);
                                 $('#card_phone').val(nfcData.phone_personal);
-                                $('#card_address').val(nfcData.address_line_one + ' ' + nfcData
-                                    .address_line_two);
+                                $('#card_address').val(nfcData.location);
                                 $('.nfc_qr').attr('src', qrCodeUrl);
                                 cardValueUpdate();
                             } else {
