@@ -1,5 +1,5 @@
 <style>
-    @media (min-width: 992px) {
+    @media (max-width: 1350px) {
 
         .punch-card-container,
         .punch-card-container-back {
@@ -44,15 +44,15 @@
                         </div>
                         <div>
                             <p class="fw-bold text-white pt-3 mb-0">
-                                <i class="fas fa-phone pe-2"></i> <span class="card_phone">015 7661 4451</span>
+                                <i class="fas fa-phone pe-2 text-white"></i> <span class="card_phone">015 7661 4451</span>
                             </p>
                             <p class="fw-bold text-white mb-0">
-                                <i class="fas fa-envelope pe-2"></i> <span class="card_email">goflixza@mail.com</span>
+                                <i class="fas fa-envelope pe-2 text-white"></i> <span class="card_email">goflixza@mail.com</span>
                             </p>
                         </div>
                         <div>
                             <p class="fw-bold mb-0 text-white">
-                                <i class="fas fa-map-marker-alt pe-2"></i> <span class="card_address">New York, United
+                                <i class="fas fa-map-marker-alt pe-2 text-white"></i> <span class="card_address">New York, United
                                     State</span>
                             </p>
                         </div>

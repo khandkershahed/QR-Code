@@ -184,8 +184,8 @@
             <div class="card" id="qr-second-card">
                 <div class="card-header px-0 border-0">
                     <div class="d-flex flex-column justify-content-center align-items-center"
-                        style="width: 100%; background: #0098da3d; border-top-left-radius: 5px; border-top-right-radius: 5px; padding: 15px;">
-                        <h3 class="">Preview</h3>
+                        style="width: 100%; background: #7239e9; border-top-left-radius: 5px; border-top-right-radius: 5px; padding: 15px;">
+                        <h3 class="text-white">Preview</h3>
                     </div>
                 </div>
                 <div class="card-body custom-card-body overflow-auto px-0 mx-auto">

@@ -66,7 +66,7 @@
         }
     }
 
-    @media only screen and (min-width: 1368px) {
+    @media only screen and (max-width: 1350px) {
         .punch-card-container {
             width: 100%;
             height: auto;
@@ -80,7 +80,7 @@
         }
     }
 
-    @media (min-width: 992px) {
+    @media (max-width: 1350px) {
 
         .punch-card-container,
         .punch-card-container-back {

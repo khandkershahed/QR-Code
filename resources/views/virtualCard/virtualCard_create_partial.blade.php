@@ -498,9 +498,9 @@
         <div class="card" id="second-card">
             <div class="card-header px-0 border-0">
                 <div class="d-flex flex-column justify-content-center align-items-center"
-                    style="width: 100%; background: #0098da3d; border-top-left-radius: 5px; border-top-right-radius: 5px; padding: 15px;">
-                    <h3 class="">NFC Preview</h3>
-                    <p class="mb-0 ">Your Choosen Template</p>
+                    style="width: 100%; background: #7239e9; border-top-left-radius: 5px; border-top-right-radius: 5px; padding: 15px;">
+                    <h3 class="text-white">NFC Preview</h3>
+                    <p class="mb-0 text-white">Your Choosen Template</p>
                 </div>
             </div>
             <div class="card-body custom-card-body overflow-auto px-0 ">

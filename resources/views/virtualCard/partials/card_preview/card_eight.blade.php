@@ -1,5 +1,5 @@
 <style>
-    @media (min-width: 992px) {
+    @media (max-width: 1350px) {
 
         .punch-card-container,
         .punch-card-container-back {
@@ -12,7 +12,7 @@
             height: auto;
         }
     }
-</style>
+</style>    
 
 <div class="row mt-5 nfc-preview-box">
     <div class="col-12">

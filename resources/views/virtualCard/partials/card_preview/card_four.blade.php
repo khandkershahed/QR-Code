@@ -1,5 +1,5 @@
 <style>
-    @media (min-width: 992px) {
+    @media (max-width: 1350px) {
 
         .punch-card-container,
         .punch-card-container-back {
@@ -28,13 +28,13 @@
                         <h1 class="fw-bold text-white" style="font-size: 3rem;">NFC</h1>
                     </div>
                 </div>
-                <div class="col-lg-8 text-lg-start text-end" style="height: 22vh">
+                <div class="col-lg-8 text-lg-start text-end" style="height: 18vh">
                     {{-- <div class="">
                         <img class="punch-card-logo mb-4 card_logo"
                             src="https://i.ibb.co/vhZg1xp/png-clipart-light-white-line-light-angle-white-removebg-preview.png"
                             alt="Logo" />
                     </div> --}}
-                    <div class="text-start content-area font">
+                    <div class="text-start content-area font pt-4">
                         <h4 class="fw-bold mb-0 card_name" style="color: #fff">
                             Nicholas Shelton
                         </h4>

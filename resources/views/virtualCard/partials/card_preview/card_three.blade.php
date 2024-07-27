@@ -46,13 +46,13 @@
     }
 
     /* Responsive adjustments */
-    @media (max-width: 992px) {
+    @media (max-width: 1350px) {
         .text-lg-start {
             text-align: center !important;
         }
     }
 
-    @media (min-width: 992px) {
+    @media (max-width: 1350px) {
 
         .punch-card-container,
         .punch-card-container-back {
@@ -78,7 +78,7 @@
                             src="https://i.ibb.co/vhZg1xp/png-clipart-light-white-line-light-angle-white-removebg-preview.png"
                             alt="Logo" />
                     </div> --}}
-                    <div class="text-start content-area font">
+                    <div class="text-start content-area font pt-5" style="height: 18vh; margin:0 auto;">
                         <h4 class="fw-bold mb-0 card_name card_font_color" style="color: #fff">
                             Nicholas Shelton 3
                         </h4>
