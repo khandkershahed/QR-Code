@@ -17,22 +17,22 @@
         margin: 10px;
     }
 
-    .card-front {
+    .card-front-one {
         background-image: url(https://i.ibb.co/kQDKvJG/bg.png);
         background-repeat: no-repeat;
         background-size: cover;
         object-fit: cover;
         background-position: center;
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        /* box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
     }
 
-    .card-back {
+    .card-back-one {
         background-image: url(https://i.ibb.co/9ZQZ3FB/gradient.png);
         background-repeat: no-repeat;
         background-size: cover;
         object-fit: cover;
         background-position: center;
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        /* box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
     }
 
     .template-logo-ebox {
@@ -57,8 +57,12 @@
         padding: 10px;
     }
 
-    .card-back p {
+    .card-back-one p {
         font-size: 15px;
+    }
+
+    .nfc_qr {
+        width: 210px;
     }
 
     @media (max-width: 767px) {
@@ -92,13 +96,21 @@
         .template-logo-back {
             margin-top: 30px;
         }
+
+        .nfc_qr {
+            width: 125px;
+        }
+
+        .main-content-tem2 h1 {
+            margin-left: -25px;
+        }
     }
 </style>
 
 <div class="container">
     <div class="row mt-5">
         <div class="card-container">
-            <div class="nfc_card_one border-0 card-front rounded-0">
+            <div class="nfc_card_one border-0 card-front-one rounded-0">
                 <div>
                     <!-- Company Logo -->
                     <div class="d-flex justify-content-center template-logo-ebox">
@@ -114,7 +126,7 @@
                     </div>
                 </div>
             </div>
-            <div class="nfc_card_one border-0 card-back rounded-0">
+            <div class="nfc_card_one border-0 card-back-one rounded-0">
                 <div>
                     <!-- Company Logo -->
                     <div class="d-flex justify-content-center template-logo-back">

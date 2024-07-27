@@ -1,6 +1,27 @@
+<style>
+    .custom-row {
+        display: flex;
+        gap: 0.5rem;
+        /* Adjust the gap as needed */
+        padding-top: 2.5rem;
+        /* Adjust the padding as needed */
+        padding-bottom: 2.5rem;
+        /* Adjust the padding as needed */
+    }
+
+    .custom-col {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .content-column {
+        flex: 1;
+    }
+</style>
 <div class="row g-2 py-10">
-    <div class="col-lg-6">
-        <div class="card">
+    <div class="col-lg-6 custom-col">
+        <div class="card content-column">
             <div class="card-body custom-card-body overflow-auto p-0">
                 <div class="stepper stepper-pills flex-grow-1 d-flex flex-column" id="kt_stepper_example_clickable">
                     <div class="stepper-nav flex-center flex-wrap steaper-header">
@@ -416,7 +437,7 @@
                         <div class="flex-column current" data-kt-stepper-element="content">
                             <div class="card flex-grow-1 rounded-0">
                                 <div class="text-center justify-content-center pt-10">
-                                    <h2 class="text-center mb-0">Choose NFC Card Template! <span
+                                    <h2 class="text-center mb-10">Choose NFC Card Template! <span
                                             class="text-danger">(Required)</span> </h2>
                                 </div>
                                 <div class="centered-card-body card-body d-flex flex-column justify-content-between">
@@ -494,8 +515,8 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-6">
-        <div class="card">
+    <div class="col-lg-6 custom-col">
+        <div class="card content-column">
             <div class="card-header px-0 border-0">
                 <div class="d-flex flex-column justify-content-center align-items-center"
                     style="width: 100%; background: #7239e9; border-top-left-radius: 5px; border-top-right-radius: 5px; padding: 15px;">
@@ -506,7 +527,8 @@
             {{-- <div class="card-body custom-card-body overflow-auto px-0 ">
                 @include('virtualCard.partials.nfc_preview')
             </div> --}}
-            <div class="card-body custom-card-body overflow-auto px-0 pt-3 d-flex justify-content-center align-items-center">
+            <div
+                class="card-body custom-card-body overflow-auto px-0 pt-3 d-flex justify-content-center align-items-center">
                 @include('virtualCard.partials.virtual_card_preview')
             </div>
         </div>

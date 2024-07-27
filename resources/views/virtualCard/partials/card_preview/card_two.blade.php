@@ -94,6 +94,13 @@
         }
     }
 
+    .tow-company-name {
+        margin-top: 45px;
+        margin-bottom: 20px !important;
+        margin-left: 85px;
+        font-size: 20px;
+    }
+
     @media only screen and (max-width: 1350px) {
         .punch-card-container {
             width: 100%;
@@ -113,18 +120,15 @@
         }
 
         .half {
-            width: 85%;
+            width: 100%;
             margin: auto;
             display: flex;
             align-items: center;
         }
 
         .template-two-title {
-            margin-left: 30px;
+            margin-left: 20px;
         }
-    }
-
-    @media (max-width: 1350px) {
 
         .punch-card-container,
         .punch-card-container-back {
@@ -135,6 +139,13 @@
             width: 335px;
             margin: auto;
             height: auto;
+        }
+
+        .tow-company-name {
+            margin-top: 45px;
+            margin-bottom: 20px !important;
+            margin-left: 30px;
+            font-size: 20px;
         }
     }
 </style>
@@ -153,14 +164,13 @@
                     <div class=" template-two-title main-content-tem2">
                         <h1 class="text-white text-center">Rasheduzzaman</h1>
                         <p class="text-center">Frontend Designer</p>
-                        <p class="pb-4 text-white text-start"
-                            style="margin-top: 45px;margin-bottom: 20px !important;margin-left: 80px;font-size: 20px;">
+                        <p class="pb-4 text-white text-start tow-company-name">
                             GoFlixza</p>
                         <div class="half">
                             <div class="icons-box-two text-center">
                                 <i class="fas fa-phone"></i>
                             </div>
-                            <div class="ps-3">
+                            <div class="ps-5 ps-lg-4">
                                 <p class="mb-0 text-start ps-2">01620222616</p>
                             </div>
                         </div>
@@ -168,7 +178,7 @@
                             <div class="icons-box-two text-center">
                                 <i class="fa-solid fa-house-flag"></i>
                             </div>
-                            <div class="ps-3">
+                            <div class="ps-5 ps-lg-4">
                                 <p class="mb-0 text-start ps-2 w-50">
                                     Khilkhet, Dhaka, Bangladesh
                                 </p>
@@ -178,7 +188,7 @@
                             <div class="icons-box-two text-center">
                                 <i class="fas fa-envelope"></i>
                             </div>
-                            <div class="ps-3">
+                            <div class="ps-5 ps-lg-4">
                                 <p class="mb-0 text-start ps-2">info@gmail.com</p>
                             </div>
                         </div>

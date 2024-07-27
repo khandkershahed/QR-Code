@@ -15,20 +15,12 @@
         'value' => 'virtual-card-four',
         'image' => 'frontend/images/virtual_card/card_4.png',
     ],
-    // [
-    //     'value' => 'virtual-card-five',
-    //     'image' => 'frontend/images/virtual_card/virtual_card_5.png',
-    // ],
-    // [
-    //     'value' => 'virtual-card-six',
-    //     'image' => 'frontend/images/virtual_card/virtual_card_6.png',
-    // ],
-    // [
-    //     'value' => 'virtual-card-seven',
-    //     'image' => 'frontend/images/virtual_card/virtual_card_7.png',
-    // ],
-    // [
-    //     'value' => 'virtual-card-eight',
-    //     'image' => 'frontend/images/virtual_card/virtual_card_8.png',
-    // ],
+    [
+        'value' => 'virtual-card-six',
+        'image' => 'frontend/images/virtual_card/virtual_card_6.png',
+    ],
+    [
+        'value' => 'virtual-card-seven',
+        'image' => 'frontend/images/virtual_card/virtual_card_7.png',
+    ],
 ]" />

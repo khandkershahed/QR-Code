@@ -7,7 +7,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
+        height: auto;
     }
 
     .card-four {
@@ -44,7 +44,7 @@
 
 
     .main-content-template-four {
-        margin-top: 220px;
+        margin-top: 230px;
     }
 
     .template-four-title {
@@ -54,8 +54,8 @@
 
     .tem-4-logo {
         position: relative;
-        top: 75%;
         left: 25px;
+        top: 150px;
     }
 
     .tem-4-qr {
@@ -64,7 +64,11 @@
         left: 150px;
     }
 
-
+    .three-content {
+        position: relative;
+        left: 50px;
+        top: 35px;
+    }
 
     .card-four-back p {
         font-size: 17px;
@@ -95,6 +99,38 @@
             height: 150vh;
         }
     }
+
+    @media (max-width: 1350px) {
+        .tem-4-qr {
+            position: relative;
+            top: 300px;
+            left: 100px;
+        }
+
+        .tem-4-logo {
+            position: relative;
+            left: 0px;
+            top: 150px;
+        }
+
+        .card-four {
+            width: auto;
+            max-width: 235px;
+            height: 520px;
+            aspect-ratio: 300 / 230;
+            margin: 10px;
+        }
+
+        .three-content {
+            position: relative;
+            left: 30px;
+            top: 35px;
+        }
+
+        .card-four-user-info {
+            margin-left: 25px;
+        }
+    }
 </style>
 
 <div class="container">
@@ -108,24 +144,24 @@
                             <h4>Rasheduzzaman</h4>
                             <small>Frontend Designer</small>
                         </div>
-                        <div class="pt-4 ps-5">
-                            <div class="d-flex justify-content-center align-items-center pt-3">
-                                <div class="ps-3 w-75">
+                        <div class="three-content">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <div class="ps-3 w-75 pt-4">
                                     <p class="mb-0 text-start ps-2">info@gmail.com</p>
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-center align-items-center pt-3">
-                                <div class="ps-3 w-75">
-                                    <p class="mb-0 text-start ps-2">info@gmail.com</p>
+                            <div class="d-flex justify-content-center align-items-center pt-1">
+                                <div class="ps-3 w-75 pt-4">
+                                    <p class="mb-0 text-start ps-2">www.portfolio.com</p>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-center align-items-center pt-2">
-                                <div class="ps-3 w-75">
+                                <div class="ps-3 w-75 pt-4">
                                     <p class="mb-0 text-start ps-2 text-black">01620222616</p>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-center align-items-center pt-2">
-                                <div class="ps-3 w-75">
+                                <div class="ps-3 w-75 pt-4">
                                     <p class="mb-0 text-start ps-2">
                                         Khilkhet, Dhaka, Bangladesh
                                     </p>
@@ -140,7 +176,8 @@
                     <!-- Company Logo -->
                     <div class="tem-4-logo">
                         <div class="d-flex align-items-center">
-                            <img class="img-fluid" width="100px" src="https://i.ibb.co/CWsWHTM/lgoo.png" alt="" />
+                            <img class="img-fluid" width="100px" src="https://i.ibb.co/CWsWHTM/lgoo.png"
+                                alt="" />
                             <div>
                                 <h4>GoFlixza</h4>
                             </div>
