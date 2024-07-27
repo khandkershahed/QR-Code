@@ -45356,6 +45356,12 @@ input[type="color" i] {
         flex-wrap: nowrap !important;
         padding: 5px;
     }
+    .create-img{
+        height: 150px !important;
+    }
+}
+.create-img{
+    height: 220px;
 }
 .stepper.stepper-pills .stepper-nav {
     padding: 5px;

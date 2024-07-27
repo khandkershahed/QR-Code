@@ -3,7 +3,7 @@
         <div class="col-lg-12">
             <div class="card border-transparent mt-10" data-bs-theme="light" style="background-color: #1C325E;">
                 <div class="card-body row ps-xl-15">
-                    <div class="m-0 col-lg-8">
+                    <div class="m-0 col-lg-7">
                         <div class="position-relative fs-2x z-index-2 fw-bold text-white mb-7">
                             <span class="me-2">
                                 You have Created Total
@@ -57,7 +57,7 @@
                         </div>
                     </div>
 
-                    <div class=" col-lg-4">
+                    <div class=" col-lg-5">
                         <div class="">
                             <div class="d-flex align-items-center pt-20 justify-content-center ">
                                 <a href="{{ route('admin.virtual-card.create') }}"

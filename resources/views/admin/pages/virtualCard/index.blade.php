@@ -61,7 +61,7 @@
                         <div class="">
                             <div class="d-flex align-items-center pt-20 justify-content-center ">
                                 <a href="{{ route('admin.nfc-card.create') }}"
-                                    class="btn btn-info shadow-sm w-50 pulse fs-3 d-flex justify-content-center align-items-center pulse pulse-warning">
+                                    class="btn btn-info shadow-sm w-50 pulse fs-3 d-flex justify-content-center align-items-center pulse pulse-warning me-5">
                                     <span class="pulse-ring"></span>
                                     <span class="pe-2 text-white">Create NFC</span>
                                     <span>
@@ -109,7 +109,7 @@
                             </div>
                             <div>
                                 <img src="https://preview.keenthemes.com/metronic8/demo1/assets/media/illustrations/sigma-1/17-dark.png"
-                                    class="position-absolute me-3 bottom-0 end-0 h-200px" alt="">
+                                    class="position-absolute me-3 bottom-0 end-0 create-img ps-2" alt="">
                             </div>
                         </div>
                     </div>

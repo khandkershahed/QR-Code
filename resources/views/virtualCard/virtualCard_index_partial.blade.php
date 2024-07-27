@@ -55,36 +55,28 @@
                             <td>
                                 @if (optional($nfc_card)->virtual_card_template == 'virtual-card-one')
                                     <img class="img-fluid w-65px"
-                                        src="{{ asset('frontend/images/virtual_card/card_1.png') }}"
-                                        alt="">
+                                        src="{{ asset('frontend/images/virtual_card/card_1.png') }}" alt="">
                                 @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-two')
                                     <img class="img-fluid w-65px"
-                                        src="{{ asset('frontend/images/virtual_card/card_2.png') }}"
-                                        alt="">
+                                        src="{{ asset('frontend/images/virtual_card/card_2.png') }}" alt="">
                                 @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-three')
                                     <img class="img-fluid w-65px"
-                                        src="{{ asset('frontend/images/virtual_card/card_3.png') }}"
-                                        alt="">
+                                        src="{{ asset('frontend/images/virtual_card/card_3.png') }}" alt="">
                                 @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-four')
                                     <img class="img-fluid w-65px"
-                                        src="{{ asset('frontend/images/virtual_card/card_4.png') }}"
-                                        alt="">
+                                        src="{{ asset('frontend/images/virtual_card/card_4.png') }}" alt="">
                                 @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-five')
                                     <img class="img-fluid w-65px"
-                                        src="{{ asset('frontend/images/virtual_card/card_5.png') }}"
-                                        alt="">
+                                        src="{{ asset('frontend/images/virtual_card/card_5.png') }}" alt="">
                                 @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-six')
                                     <img class="img-fluid w-65px"
-                                        src="{{ asset('frontend/images/virtual_card/card_6.png') }}"
-                                        alt="">
+                                        src="{{ asset('frontend/images/virtual_card/card_6.png') }}" alt="">
                                 @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-seven')
                                     <img class="img-fluid w-65px"
-                                        src="{{ asset('frontend/images/virtual_card/card_7.png') }}"
-                                        alt="">
+                                        src="{{ asset('frontend/images/virtual_card/card_7.png') }}" alt="">
                                 @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-eight')
                                     <img class="img-fluid w-65px"
-                                        src="{{ asset('frontend/images/virtual_card/card_8.png') }}"
-                                        alt="">
+                                        src="{{ asset('frontend/images/virtual_card/card_8.png') }}" alt="">
                                 @endif
                             </td>
                             <td>
@@ -131,7 +123,7 @@
                                 </a>
                                 <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
                                     data-kt-menu="true" style="">
-                                    <!--begin::Menu item-->
+
                                     @if (strpos(Route::current()->getName(), 'user.') === 0)
                                         <div class="menu-item px-3">
                                             <a href="{{ route('user.nfc-card.edit', $nfc_card->id) }}"
@@ -673,86 +665,165 @@
     <div class="modal fade" tabindex="-1" id="shipping_address_modal_{{ $nfc_card->id }}">
         <div class="modal-dialog modal-xl">
             <div class="modal-content position-absolute">
-                <div class="modal-header">
+                <div class="modal-header bg-light-info">
                     <h5 class="modal-title">Card Shipping Address</h5>
 
-                    <!--begin::Close-->
+
                     <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
                         aria-label="Close">
-                        <i class="ki-duotone ki-cross fs-2x"><span class="path1">X</span><span
-                                class="path2"></span></i>
+                        <i class="fa-solid fa-xmark fs-2x"></i>
                     </div>
-                    <!--end::Close-->
+
                 </div>
 
-                <div class="modal-body">
+                <div class="modal-body p-0">
                     <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-lg-7 mb-5">
-                                    <x-metronic.label for="name" class="form-label">
-                                        {{ __('Contact Person Name') }}
-                                    </x-metronic.label>
-                                    <h6 class="p-0 m-0">{{ optional($nfc_card->shippingDetails)->shipping_name }}
-                                    </h6>
-                                </div>
-                                <div class="col-lg-5 mb-5">
-                                    <x-metronic.label for="phone" class="form-label">
-                                        {{ __('Phone') }}
-                                    </x-metronic.label>
-                                    <h6 class="p-0 m-0">
-                                        {{ optional($nfc_card->shippingDetails)->shipping_phone }} </h6>
-                                </div>
-                                <div class="col-lg-8 mb-5">
-                                    <x-metronic.label for="address" class="form-label">
-                                        {{ __('Address') }}
-                                    </x-metronic.label>
-                                    <h6 class="p-0 m-0">
-                                        {{ optional($nfc_card->shippingDetails)->shipping_address }} </h6>
-                                </div>
-                                <div class="col-lg-4 mb-5">
-                                    <x-metronic.label for="city" class="form-label">
-                                        {{ __('City') }}
-                                    </x-metronic.label>
-                                    <h6 class="p-0 m-0">{{ optional($nfc_card->shippingDetails)->shipping_city }}
-                                    </h6>
-                                </div>
-                                <div class="col-lg-4 mb-5">
-                                    <x-metronic.label for="state" class="form-label">
-                                        {{ __('State') }}
-                                    </x-metronic.label>
-                                    <h6 class="p-0 m-0">
-                                        {{ optional($nfc_card->shippingDetails)->shipping_state }} </h6>
-                                </div>
-                                <div class="col-lg-4 mb-5">
-                                    <x-metronic.label for="zip_code" class="form-label">
-                                        {{ __('Zip code') }}
-                                    </x-metronic.label>
-                                    <h6 class="p-0 m-0">
-                                        {{ optional($nfc_card->shippingDetails)->shipping_zip_code }} </h6>
-                                </div>
-                                <div class="col-lg-4 mb-5">
-                                    <x-metronic.label for="country" class="form-label">
-                                        {{ __('Country') }}
-                                    </x-metronic.label>
-                                    <h6 class="p-0 m-0">
-                                        {{ optional($nfc_card->shippingDetails)->shipping_country }} </h6>
-                                </div>
-                                <div class="col-lg-12 mb-5">
-                                    <x-metronic.label for="instruction" class="form-label">
-                                        {{ __('Instruction') }}
-                                    </x-metronic.label>
-                                    <h6 class="p-0 m-0">
-                                        {{ optional($nfc_card->shippingDetails)->shipping_instruction }} </h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        <div id="kt_account_settings_profile_details" class="collapse show">
+                            <form id="kt_account_profile_details_form"
+                                class="form fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate">
+                                <div class="card-body border-top p-9">
+                                    <div class="row mb-6">
+                                        <label class="col-lg-4 col-form-label fw-semibold fs-6">Avatar</label>
+                                        <div class="col-lg-8">
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
+                                            <div class="image-input image-input-outline" data-kt-image-input="true"
+                                                style="background-image: url('/metronic8/demo1/assets/media/svg/avatars/blank.svg')">
+
+                                                <div class="image-input-wrapper w-125px h-125px"
+                                                    style="background-image: url(/metronic8/demo1/assets/media/avatars/300-1.jpg)">
+                                                </div>
+                                                <label
+                                                    class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                                    data-kt-image-input-action="change" data-bs-toggle="tooltip"
+                                                    aria-label="Change avatar" data-bs-original-title="Change avatar"
+                                                    data-kt-initialized="1">
+                                                    <i class="fa-solid fa-pencil fs-7"></i>
+
+                                                    <input type="file" name="avatar" accept=".png, .jpg, .jpeg">
+                                                    <input type="hidden" name="avatar_remove">
+
+                                                </label>
+                                                <span
+                                                    class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                                    data-kt-image-input-action="cancel" data-bs-toggle="tooltip"
+                                                    aria-label="Cancel avatar" data-bs-original-title="Cancel avatar"
+                                                    data-kt-initialized="1">
+                                                    <i class="fa-regular fa-trash-can fs-7"><span
+                                                            class="path1"></span><span class="path2"></span></i>
+                                                </span>
+                                                <span
+                                                    class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                                    data-kt-image-input-action="remove" data-bs-toggle="tooltip"
+                                                    aria-label="Remove avatar" data-bs-original-title="Remove avatar"
+                                                    data-kt-initialized="1">
+                                                    <i class="fa-regular fa-trash-can fs-7"><span
+                                                            class="path1"></span><span class="path2"></span></i>
+                                                </span>
+                                            </div>
+                                            <div class="form-text">Allowed file types: png, jpg, jpeg.</div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-6">
+                                        <label class="col-lg-4 col-form-label required fw-semibold fs-6">Contact
+                                            Person</label>
+                                        <div class="col-lg-8">
+                                            <div class="row">
+                                                <div class="col-lg-6 fv-row fv-plugins-icon-container">
+                                                    <input type="text" name="fname"
+                                                        class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
+                                                        placeholder="First name"
+                                                        value="{{ optional($nfc_card->shippingDetails)->shipping_name }} ">
+                                                    <div
+                                                        class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 fv-row fv-plugins-icon-container">
+                                                    <input type="text" name="lname"
+                                                        class="form-control form-control-lg form-control-solid"
+                                                        placeholder="Last name" value="">
+                                                    <div
+                                                        class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-6">
+                                        <label class="col-lg-4 col-form-label fw-semibold fs-6">
+                                            <span class="required">Contact Phone</span>
+                                            <span class="ms-1" data-bs-toggle="tooltip"
+                                                aria-label="Phone number must be active"
+                                                data-bs-original-title="Phone number must be active"
+                                                data-kt-initialized="1">
+                                                <i class="ki-duotone ki-information-5 text-gray-500 fs-6"><span
+                                                        class="path1"></span><span class="path2"></span><span
+                                                        class="path3"></span></i></span>
+                                        </label>
+
+                                        <div class="col-lg-8 fv-row fv-plugins-icon-container">
+                                            <input type="tel" name="phone"
+                                                class="form-control form-control-lg form-control-solid"
+                                                placeholder="Phone number"
+                                                value="{{ optional($nfc_card->shippingDetails)->shipping_phone }}">
+                                            <div
+                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-6">
+                                        <label class="col-lg-4 col-form-label fw-semibold fs-6">Address</label>
+                                        <div class="col-lg-2 fv-row">
+                                            <input type="text" name="house"
+                                                class="form-control form-control-lg form-control-solid"
+                                                placeholder="33-Block, State House"
+                                                value="{{ optional($nfc_card->shippingDetails)->shipping_address }}">
+                                        </div>
+
+                                        <div class="col-lg-2 fv-row">
+                                            <input type="text" name="city"
+                                                class="form-control form-control-lg form-control-solid"
+                                                placeholder="Menchesta City"
+                                                value="{{ optional($nfc_card->shippingDetails)->shipping_city }}">
+                                        </div>
+
+                                        <div class="col-lg-2 fv-row">
+                                            <input type="text" name="zip-code"
+                                                class="form-control form-control-lg form-control-solid"
+                                                placeholder="42386"
+                                                value="{{ optional($nfc_card->shippingDetails)->shipping_zip_code }}">
+                                        </div>
+
+                                        <div class="col-lg-2 fv-row">
+                                            <input type="text" name="country"
+                                                class="form-control form-control-lg form-control-solid"
+                                                placeholder="United State"
+                                                value="{{ optional($nfc_card->shippingDetails)->shipping_country }}">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-0">
+                                        <label class="col-lg-4 col-form-label fw-semibold fs-6">Instruction</label>
+                                        <div class="col-lg-8 d-flex align-items-center">
+                                            <div class="form-floating">
+                                                <textarea class="form-control form-control-solid w-100" placeholder="Leave a comment here" id="floatingTextarea2"
+                                                    style="height: 100px;width: 715px !important;"></textarea>
+                                                <label
+                                                    for="floatingTextarea2">{{ optional($nfc_card->shippingDetails)->shipping_instruction }}</label>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="card-footer d-flex justify-content-end py-6 px-9">
+                                    <button type="submit" class="btn btn-primary"
+                                        id="kt_account_profile_details_submit">Save Changes</button>
+                                </div>
+                                <input type="hidden">
+                            </form>
+
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
