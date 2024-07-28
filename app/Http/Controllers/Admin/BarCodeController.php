@@ -182,8 +182,8 @@ class BarCodeController extends Controller
         $productId = $request->input('product_id');
         $barcodePattern = $request->input('barcode_pattern', 'PHARMA');
         $barcodeColor = $this->hexToRgb($request->input('barcode_color', '#000000'));
-        $barcodeWidth = $request->input('barcode_width', 200); // Adjusted to fixed width for simplicity
-        $barcodeHeight = $request->input('barcode_height', 60);
+        $barcodeWidth = $request->input('barcode_width', 2); // Adjusted to fixed width for simplicity
+        $barcodeHeight = !empty($request->input('barcode_height')) ? $request->input('barcode_height') : '50';
         $quantity = $request->input('bar_code_quantity', 1);
         $perPage = $request->input('per_page', 36); // Default to 36 barcodes per page
 
