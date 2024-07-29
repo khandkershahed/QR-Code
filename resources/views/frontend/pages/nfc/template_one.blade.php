@@ -431,66 +431,74 @@
                         <section>
                             <div class="container py-5 pt-0">
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <div>
-                                            <div class="d-flex align-items-center">
-                                                <div class="bg-white p-3">
-                                                    <i class="fa fa-envelope social_icons text-black fs-3"></i>
-                                                </div>
-                                                <div class="text-white ps-3">
-                                                    <small class="mb-0">E-Mail Address</small>
-                                                    <p class="mb-0 special-font fs-6">
-                                                        {{ $nfc_card->nfcData->email_personal }}</p>
-                                                    <p class="mb-0 special-font fs-6">
-                                                        {{ $nfc_card->nfcData->email_work }}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div>
-                                            <div class="d-flex align-items-center">
-                                                <div class="bg-white p-3">
-                                                    <i class="fa fa-phone social_icons text-black fs-3"></i>
-                                                </div>
-                                                <div class="text-white ps-3">
-                                                    <small class="mb-0">Mobile Number</small>
-                                                    <p class="mb-0 fs-6 special-font">
-                                                        {{ $nfc_card->nfcData->phone_personal }}</p>
-                                                    <p class="mb-0 fs-6 special-font">
-                                                        {{ $nfc_card->nfcData->phone_work }}</p>
+                                    @if (!empty($nfc_card->nfcData->email_personal) || !empty($nfc_card->nfcData->email_work))
+                                        <div class="col-md-6">
+                                            <div>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="bg-white p-3">
+                                                        <i class="fa fa-envelope social_icons text-black fs-3"></i>
+                                                    </div>
+                                                    <div class="text-white ps-3">
+                                                        <small class="mb-0">E-Mail Address</small>
+                                                        <p class="mb-0 special-font fs-6">
+                                                            {{ $nfc_card->nfcData->email_personal }}</p>
+                                                        <p class="mb-0 special-font fs-6">
+                                                            {{ $nfc_card->nfcData->email_work }}</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6 mt-4">
-                                        <div>
-                                            <div class="d-flex align-items-center">
-                                                <div class="bg-white p-3">
-                                                    <i class="fa fa-cake-candles social_icons text-black fs-3"></i>
-                                                </div>
-                                                <div class="text-white ps-3">
-                                                    <small class="mb-0">Date Of Birth</small>
-                                                    <p class="mb-0 fs-6 special-font">
-                                                        {{ $nfc_card->nfcData->date_of_birth }}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 mt-4">
-                                        <div>
-                                            <div class="d-flex align-items-center">
-                                                <div class="bg-white p-3">
-                                                    <i class="fa-solid fa-flag-usa social_icons text-black fs-3"></i>
-                                                </div>
-                                                <div class="text-white ps-3">
-                                                    <small class="mb-0">Country</small>
-                                                    <p class="mb-0 fs-6 special-font">
-                                                        {{ $nfc_card->nfcData->location }}</p>
+                                    @endif
+                                    @if (!empty($nfc_card->nfcData->phone_personal) || !empty($nfc_card->nfcData->phone_work))
+                                        <div class="col-md-6">
+                                            <div>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="bg-white p-3">
+                                                        <i class="fa fa-phone social_icons text-black fs-3"></i>
+                                                    </div>
+                                                    <div class="text-white ps-3">
+                                                        <small class="mb-0">Mobile Number</small>
+                                                        <p class="mb-0 fs-6 special-font">
+                                                            {{ $nfc_card->nfcData->phone_personal }}</p>
+                                                        <p class="mb-0 fs-6 special-font">
+                                                            {{ $nfc_card->nfcData->phone_work }}</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    @endif
+                                    @if (!empty($nfc_card->nfcData->date_of_birth))
+                                        <div class="col-md-6 mt-4">
+                                            <div>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="bg-white p-3">
+                                                        <i class="fa fa-cake-candles social_icons text-black fs-3"></i>
+                                                    </div>
+                                                    <div class="text-white ps-3">
+                                                        <small class="mb-0">Date Of Birth</small>
+                                                        <p class="mb-0 fs-6 special-font">
+                                                            {{ $nfc_card->nfcData->date_of_birth }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    @if (!empty($nfc_card->nfcData->location))
+                                        <div class="col-md-6 mt-4">
+                                            <div>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="bg-white p-3">
+                                                        <i class="fa-solid fa-flag-usa social_icons text-black fs-3"></i>
+                                                    </div>
+                                                    <div class="text-white ps-3">
+                                                        <small class="mb-0">Country</small>
+                                                        <p class="mb-0 fs-6 special-font">
+                                                            {{ $nfc_card->nfcData->location }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </section>

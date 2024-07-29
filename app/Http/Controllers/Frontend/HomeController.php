@@ -48,6 +48,7 @@ class HomeController extends Controller
         $data = [
             'qr_plans' => Plan::orderBy('price', 'asc')->where('type', 'qr')->get(),
             'nfc_plans' => Plan::orderBy('price', 'asc')->where('type', 'nfc')->get(),
+            'barcode_plans' => Plan::orderBy('price', 'asc')->where('type', 'barcode')->get(),
         ];
         return view('frontend.pages.resellerPricing', $data);
     }

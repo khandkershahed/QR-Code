@@ -172,10 +172,12 @@
                                                 class="spinner-border spinner-border-sm align-middle ms-2"></span>
                                         </span>
                                     </button>
-
-                                    <button type="button" class="btn btn-primary">
+                                    <button type="button" class="btn btn-primary" data-kt-stepper-action="next">
                                         Continue
                                     </button>
+                                    {{-- <button type="button" class="btn btn-primary">
+                                        Continue
+                                    </button> --}}
                                 </div>
                             </div>
                         </form>

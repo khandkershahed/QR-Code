@@ -339,15 +339,19 @@ class VirtualCardController extends Controller
         $totalScans = count($maps);
 
         foreach ($locations as $map) {
-            $city = $map->cityName;
-            if (!isset($cities[$city])) {
-                $cities[$city] = [
-                    'state_province' => $map->regionName,
-                    'country' => $map->countryName,
-                    'scans' => 1,
-                ];
-            } else {
-                $cities[$city]['scans']++;
+
+            if ($map) {
+                $city = $map->cityName ?? 'Not Available';
+
+                if (!isset($cities[$city])) {
+                    $cities[$city] = [
+                        'state_province' => $map->regionName,
+                        'country' => $map->countryName,
+                        'scans' => 1,
+                    ];
+                } else {
+                    $cities[$city]['scans']++;
+                }
             }
         }
 
@@ -361,7 +365,7 @@ class VirtualCardController extends Controller
         ];
         $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
         $view = $isUserRoute ? 'user.pages.nfc-card.show' : 'admin.pages.nfc-card.show';
-        return view($view,$data);
+        return view($view, $data);
         // return view('user.pages.nfc-card.show', $data);
     }
 
@@ -439,7 +443,7 @@ class VirtualCardController extends Controller
         $nfc_data = NfcData::where('card_id', $id)->first();
         if (!empty($nfc_data)) {
             $nfc_data->delete();
-        } 
+        }
     }
 
     public function updateNFCTemplateSession(Request $request)

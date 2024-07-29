@@ -78,6 +78,7 @@
                             <option value=""></option>
                             <option value="nfc">NFC</option>
                             <option value="qr">QR</option>
+                            <option value="barcode">BarCode</option>
                         </x-metronic.select-option>
                     </div>
 

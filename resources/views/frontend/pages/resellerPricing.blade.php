@@ -192,7 +192,37 @@
                             </div>
                             <div class="tab-pane fade" id="tabFour3">
                                 <div class="row justify-content-center">
-                                    Barcode Plans
+                                    @foreach ($barcode_plans as $barcode_plan)
+                                        <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate"
+                                            data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                                            <div class="pricing-item style-five">
+                                                <div class="title-price">
+                                                    <h5 class="title">{{ $barcode_plan->title }}</h5>
+                                                    <div class="price"><span
+                                                            class="prev">$</span>{{ $barcode_plan->price }}<span
+                                                            class="next">/{{ $barcode_plan->billing_cycle }}</span></div>
+                                                </div>
+                                                <hr>
+                                                {{-- <div class="text">For small nfces looking to reach more consumers
+                                                </div> --}}
+                                                @php
+                                                    $descriptions = is_array($barcode_plan->descriptions)
+                                                        ? $barcode_plan->descriptions
+                                                        : json_decode($barcode_plan->descriptions);
+                                                @endphp
+                                                @if (!empty($descriptions))
+                                                    <ul class="icon-list">
+                                                        @foreach ($descriptions as $description)
+                                                            <li><i class="ion-checkmark"></i> {{ $description }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+                                                <a href="{{ route('user_subscribe.register', $barcode_plan->slug) }}"
+                                                    class="theme-btn style-two">Buy Now <i
+                                                        class="fas fa-arrow-right"></i></a>
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
