@@ -9,14 +9,14 @@
                 <thead>
                     <tr class="text-gray-500 fw-bold fs-7 text-uppercase text-center">
                         <th width="5%">SL</th>
-                        <th width="10%">Image</th>
-                        <th width="10%">Virtual Card</th>
-                        <th width="15%">Name </th>
-                        <th width="10%">Link</th>
-                        <th width="10%">VCARD</th>
-                        <th width="15%">Address</th>
-                        <th width="10%">Download</th>
-                        <th width="15%" class="text-center">Action</th>
+                        <th width="15%">Selected VCard</th>
+                        <th width="15%">Selected NFC</th>
+                        <th width="10%">Name </th>
+                        <th width="13%">Link</th>
+                        <th width="15%">Show NFC</th>
+                        <th width="15%">Delivery</th>
+                        {{-- <th width="16%">Download</th> --}}
+                        <th width="12%" class="text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody class="fw-semibold text-gray-600">
@@ -102,19 +102,16 @@
                                         Shipping</button>
                                 </a>
                             </td>
-                            <td class="text-center">
-                                <button
-                                    class="download-button border-0 btn btn-primary p-2 px-3 me-3"
-                                    id="convertButton"
-                                    data-modal-id="virtual_card_modal_{{ $nfc_card->id }}">
+                            {{-- <td class="text-center">
+                                <button class="download-button border-0 btn btn-info btn-sm p-2 px-3 me-3"
+                                    id="convertButton" data-modal-id="virtual_card_modal_{{ $nfc_card->id }}">
                                     <span title="Download Image">PNG</span>
                                 </button>
-                                <button
-                                    class="download-eps-button border-0 btn btn-primary p-2 px-3"
+                                <button class="download-eps-button border-0 btn btn-info btn-sm p-2 px-3"
                                     data-modal-id="virtual_card_modal_{{ $nfc_card->id }}">
                                     <span title="Download EPS">EPS</span>
                                 </button>
-                            </td>
+                            </td> --}}
                             <td class="pe-0 text-center">
                                 <a href="#" class="btn btn-light-primary btn-active-light-primary btn-sm"
                                     data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end"
@@ -140,6 +137,19 @@
 
                                     @if (strpos(Route::current()->getName(), 'user.') === 0)
                                         <div class="menu-item px-3">
+                                            <a href="javascript:void(0)" class="download-button menu-link px-3"
+                                                id="convertButton"
+                                                data-modal-id="virtual_card_modal_{{ $nfc_card->id }}">
+                                                <span title="Download Image">PNG</span>
+                                            </a>
+                                        </div>
+                                        <div class="menu-item px-3">
+                                            <a href="javascript:void(0)" class="download-eps-button menu-link px-3"
+                                                data-modal-id="virtual_card_modal_{{ $nfc_card->id }}">
+                                                <span title="Download EPS">EPS</span>
+                                            </a>
+                                        </div>
+                                        <div class="menu-item px-3">
                                             <a href="{{ route('user.nfc-card.edit', $nfc_card->id) }}"
                                                 class="menu-link px-3">
                                                 Edit
@@ -152,6 +162,19 @@
                                             </a>
                                         </div>
                                     @else
+                                        <div class="menu-item px-3">
+                                            <a href="javascript:void(0)" class="download-button menu-link px-3"
+                                                id="convertButton"
+                                                data-modal-id="virtual_card_modal_{{ $nfc_card->id }}">
+                                                <span title="Download Image">PNG</span>
+                                            </a>
+                                        </div>
+                                        <div class="menu-item px-3">
+                                            <a href="javascript:void(0)" class="download-eps-button menu-link px-3"
+                                                data-modal-id="virtual_card_modal_{{ $nfc_card->id }}">
+                                                <span title="Download EPS">EPS</span>
+                                            </a>
+                                        </div>
                                         <div class="menu-item px-3">
                                             <a href="{{ route('admin.nfc-card.edit', $nfc_card->id) }}"
                                                 class="menu-link px-3">

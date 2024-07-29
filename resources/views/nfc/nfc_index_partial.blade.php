@@ -1,19 +1,18 @@
 <div class="col-lg-12 mt-10">
-    <div class="card card-p-0 card-flush pt-0">
+    <div class="card card-p-0 card-flush pt-0 mb-5">
         <div class="card-header bg-info align-items-center">
             <h1 class="mb-0 text-center w-100 text-white">All List Of VCard</h1>
         </div>
         <div class="card-body table-responsive">
-            <table class="table align-middle border rounded table-row-dashed table-striped table-hover  fs-6 g-5"
-                id="nfc_card_admin">
+            <table class="table align-middle border rounded table-row-dashed table-striped table-hover  fs-6 g-5 mb-0">
                 <thead>
                     <tr class="text-gray-500 fw-bold fs-7 text-uppercase">
                         <th width="5%">SL</th>
                         <th width="20%">VCard Name</th>
                         <th width="15%">Preview Card</th>
                         <th width="15%">QR</th>
-                        <th width="15%">Visit Count</th>
-                        <th width="15%">Stat</th>
+                        <th width="15%">Viewer</th>
+                        <th width="15%">Performance</th>
                         <th width="15%" class="text-center">Action</th>
                     </tr>
                 </thead>
@@ -113,22 +112,25 @@
                                         </svg>
                                     </a>
                                 @else
-                                    <a href="{{ route('admin.virtual-card.show', $nfc_card->code) }}" class="">
-                                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30"
-                                            x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512"
-                                            xml:space="preserve" class="">
-                                            <g>
-                                                <linearGradient id="a" x1="540.666" x2="83.165"
-                                                    y1="98.786" y2="556.286" gradientUnits="userSpaceOnUse">
-                                                    <stop offset="0" stop-color="#e93528"></stop>
-                                                    <stop offset="1" stop-color="#f8bc16"></stop>
-                                                </linearGradient>
-                                                <path fill="url(#a)"
-                                                    d="M466.493 143.212h-84.197c-8.837 0-16 7.164-16 16v33.286h-68.197c-8.837 0-16 7.164-16 16v33.287h-68.197c-8.837 0-16 7.164-16 16v45.607h-68.197c-8.837 0-16 7.164-16 16v30.847H45.507c-8.837 0-16 7.164-16 16V496c0 8.836 7.163 16 16 16h420.986c8.837 0 16-7.164 16-16V159.212c0-8.837-7.163-16-16-16zM61.507 382.238h52.197V480H61.507zm84.197-46.847h52.197V480h-52.197zm84.197-61.607h52.197V480h-52.197zm84.198-49.286h52.197V480h-52.197zM450.493 480h-52.197V175.212h52.197zM54.656 251.375c-2.685-8.419 1.965-17.42 10.384-20.104 98.057-31.267 246.258-120.707 331.414-198.465l-32.666.675a18.93 18.93 0 0 1-.337.003c-8.683 0-15.81-6.947-15.99-15.669-.182-8.835 6.832-16.145 15.667-16.327L434.923.005a15.912 15.912 0 0 1 12.003 5.054 16 16 0 0 1 4.269 12.305l-6.115 71.549c-.752 8.804-8.488 15.334-17.304 14.579-8.805-.752-15.332-8.5-14.579-17.304l2.353-27.525c-38.472 34.691-90.204 72.933-146.151 107.807-70.375 43.867-139.498 77.708-194.637 95.289a15.97 15.97 0 0 1-4.864.761c-6.78-.002-13.072-4.343-15.242-11.145z"
-                                                    opacity="1" data-original="url(#a)" class=""></path>
-                                            </g>
-                                        </svg>
+                                    <a href="{{ route('admin.virtual-card.show', $nfc_card->code) }}" target="_blank"
+                                        class="text-primary">
+                                        <button class="btn btn-sm btn-info">Summary <svg xmlns="http://www.w3.org/2000/svg"
+                                                version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="20"
+                                                height="20" x="0" y="0" viewBox="0 0 512 512"
+                                                style="enable-background:new 0 0 512 512" xml:space="preserve"
+                                                class="">
+                                                <g>
+                                                    <linearGradient id="a" x1="540.666" x2="83.165"
+                                                        y1="98.786" y2="556.286" gradientUnits="userSpaceOnUse">
+                                                        <stop offset="0" stop-color="#e93528"></stop>
+                                                        <stop offset="1" stop-color="#f8bc16"></stop>
+                                                    </linearGradient>
+                                                    <path fill="url(#a)"
+                                                        d="M466.493 143.212h-84.197c-8.837 0-16 7.164-16 16v33.286h-68.197c-8.837 0-16 7.164-16 16v33.287h-68.197c-8.837 0-16 7.164-16 16v45.607h-68.197c-8.837 0-16 7.164-16 16v30.847H45.507c-8.837 0-16 7.164-16 16V496c0 8.836 7.163 16 16 16h420.986c8.837 0 16-7.164 16-16V159.212c0-8.837-7.163-16-16-16zM61.507 382.238h52.197V480H61.507zm84.197-46.847h52.197V480h-52.197zm84.197-61.607h52.197V480h-52.197zm84.198-49.286h52.197V480h-52.197zM450.493 480h-52.197V175.212h52.197zM54.656 251.375c-2.685-8.419 1.965-17.42 10.384-20.104 98.057-31.267 246.258-120.707 331.414-198.465l-32.666.675a18.93 18.93 0 0 1-.337.003c-8.683 0-15.81-6.947-15.99-15.669-.182-8.835 6.832-16.145 15.667-16.327L434.923.005a15.912 15.912 0 0 1 12.003 5.054 16 16 0 0 1 4.269 12.305l-6.115 71.549c-.752 8.804-8.488 15.334-17.304 14.579-8.805-.752-15.332-8.5-14.579-17.304l2.353-27.525c-38.472 34.691-90.204 72.933-146.151 107.807-70.375 43.867-139.498 77.708-194.637 95.289a15.97 15.97 0 0 1-4.864.761c-6.78-.002-13.072-4.343-15.242-11.145z"
+                                                        opacity="1" data-original="url(#a)" class=""></path>
+                                                </g>
+                                            </svg>
+                                        </button>
                                     </a>
                                 @endif
                             </td>

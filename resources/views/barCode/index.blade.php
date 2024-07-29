@@ -1,3 +1,4 @@
+
 <div class="col-lg-12 mt-10">
     <div class="card card-p-0 card-flush p-3 pt-0">
         <div class="p-5 pb-2">
@@ -13,7 +14,7 @@
                         <th width="30%">Image</th>
                         <th width="25%">Product </th>
                         <th width="12%">Pattern</th>
-                        <th width="13%">BarCode</th>
+                        <th width="13%" class="text-center">BarCode</th>
                         <th width="15%" class="text-center">Action</th>
                     </tr>
                 </thead>
@@ -46,7 +47,7 @@
                                 {{ $bar_code->barcode_pattern }}
                             </td>
 
-                            <td>
+                            <td class="text-center">
                                 <a href="javascript:void(0)" data-bs-toggle="modal"
                                     data-bs-target="#bar_code_modal{{ $bar_code->id }}" class="btn btn-sm btn-info"><i
                                         class="fas fa-eye pe-2"></i>
@@ -59,9 +60,9 @@
                                         role="document">
 
                                         <div class="modal-content">
-                                            <div class="modal-header bg-primary py-3">
+                                            <div class="modal-header py-3" style="background-color: #5028a3;">
                                                 <h5 class="modal-title text-white" id="modalTitleId">
-                                                    Generated BarCode
+                                                    {{ $bar_code->product_id }}
                                                 </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>

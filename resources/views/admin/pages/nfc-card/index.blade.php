@@ -150,7 +150,7 @@
                             </div>
                             <div>
                                 <img src="https://preview.keenthemes.com/metronic8/demo1/assets/media/illustrations/sigma-1/17-dark.png"
-                                    class="position-absolute me-3 bottom-0 end-0 h-200px" alt="">
+                                    class="position-absolute me-3 bottom-0 end-0 create-img ps-2" alt="">
                             </div>
                         </div>
                     </div>
