@@ -186,9 +186,9 @@
                         </div>
                     </div>
                     <div class="tem-4-qr">
-                        @if (!empty($nfc_card->nfc_qr) && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc_qr)))
+                        @if (!empty($nfc_card->nfc->nfc_qr) && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc->nfc_qr)))
                             <img class="img-fluid bg-white nfc_qr" width="100px"
-                                src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}" alt="" />
+                                src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc->nfc_qr) }}" alt="" />
                         @endif
                     </div>
                 </div>

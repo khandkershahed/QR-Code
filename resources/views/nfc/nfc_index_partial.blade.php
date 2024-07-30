@@ -27,15 +27,15 @@
                                     <div class="image image-circle image-mini me-3">
                                         @if ($nfc_card->nfc_template == 'template-one')
                                             <img class="img-fluid w-45px h-60px"
-                                                src="{{ asset('frontend/assets/images/nfc-templates/template_one.jpeg') }}"
+                                                src="{{ asset('frontend/assets/images/nfc-templates/template_one.png') }}"
                                                 alt="">
                                         @elseif ($nfc_card->nfc_template == 'template-two')
                                             <img class="img-fluid w-45px h-60px"
-                                                src="{{ asset('frontend/assets/images/nfc-templates/template_two.jpg') }}"
+                                                src="{{ asset('frontend/assets/images/nfc-templates/template_two.png') }}"
                                                 alt="">
                                         @elseif ($nfc_card->nfc_template == 'template-three')
                                             <img class="img-fluid w-45px h-60px"
-                                                src="{{ asset('frontend/assets/images/nfc-templates/template_three.jpeg') }}"
+                                                src="{{ asset('frontend/assets/images/nfc-templates/template_three.png') }}"
                                                 alt="">
                                         @elseif ($nfc_card->nfc_template == 'template-four')
                                             <img class="img-fluid w-45px h-60px"
