@@ -337,18 +337,31 @@
                                             <i class="fa-solid fa-location-dot pe-2"></i>From Canada
                                         </p> --}}
                                     </div>
-                                    <div class="d-flex justify-content-start align-items-center social-rotate-tem2">
-                                        <a href="{{ optional($nfc_card->nfcData)->facebook_url }}"
-                                            class="social-link-tem2"><i class="fa-brands fa-facebook-f"></i></a>
-                                        <a href="{{ optional($nfc_card->nfcData)->instagram_url }}"
-                                            class="social-link-tem2"><i class="fa-brands fa-instagram"></i></a>
-                                        <a href="{{ optional($nfc_card->nfcData)->linkedin_url }}"
-                                            class="social-link-tem2"><i class="fa-brands fa-linkedin-in"></i></a>
-                                        <a href="{{ optional($nfc_card->nfcData)->whatsapp_url }}"
-                                            class="social-link-tem2"><i class="fa-brands fa-whatsapp"></i></a>
-                                        <a href="{{ optional($nfc_card->nfcData)->twitter_url }}"
-                                            class="social-link-tem2"><i class="fa-brands fa-twitter"></i></a>
-                                    </div>
+                                    @if ($nfc_card->social_links_show == '1')
+                                        <div class="d-flex justify-content-start align-items-center social-rotate-tem2">
+                                            @if (!empty(optional($nfc_card->nfcData)->facebook_url))
+                                                <a href="{{ optional($nfc_card->nfcData)->facebook_url }}"
+                                                    class="social-link-tem2"><i class="fa-brands fa-facebook-f"></i></a>
+                                            @endif
+                                            @if (!empty(optional($nfc_card->nfcData)->instagram_url))
+                                                <a href="{{ optional($nfc_card->nfcData)->instagram_url }}"
+                                                    class="social-link-tem2"><i class="fa-brands fa-instagram"></i></a>
+                                            @endif
+                                            @if (!empty(optional($nfc_card->nfcData)->linkedin_url))
+                                                <a href="{{ optional($nfc_card->nfcData)->linkedin_url }}"
+                                                    class="social-link-tem2"><i
+                                                        class="fa-brands fa-linkedin-in"></i></a>
+                                            @endif
+                                            @if (!empty(optional($nfc_card->nfcData)->whatsapp_url))
+                                                <a href="{{ optional($nfc_card->nfcData)->whatsapp_url }}"
+                                                    class="social-link-tem2"><i class="fa-brands fa-whatsapp"></i></a>
+                                            @endif
+                                            @if (!empty(optional($nfc_card->nfcData)->twitter_url))
+                                                <a href="{{ optional($nfc_card->nfcData)->twitter_url }}"
+                                                    class="social-link-tem2"><i class="fa-brands fa-twitter"></i></a>
+                                            @endif
+                                        </div>
+                                    @endif
                                     @if (!empty($nfc_card->bio_description))
                                         <p class="text-white mb-0 text-justify pt-4">
                                             {{ $nfc_card->bio_description }}

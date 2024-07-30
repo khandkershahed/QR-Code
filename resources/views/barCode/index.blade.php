@@ -1,5 +1,5 @@
 
-<div class="col-lg-12 mt-10">
+<div class="col-lg-12 mt-10 mb-10">
     <div class="card card-p-0 card-flush p-3 pt-0">
         <div class="p-5 pb-2">
             <h4 class="mb-0">View and manage your BarCodes</h4>

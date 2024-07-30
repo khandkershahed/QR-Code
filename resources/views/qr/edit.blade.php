@@ -5,7 +5,7 @@
                 <div class="card mt-10">
                     <div class="card-body">
                         <div class="stepper stepper-pills p-0" id="generateQRCode">
-                            <div class="stepper-nav flex-center flex-wrap mb-10 fv-row">
+                            <div class="stepper-nav flex-center flex-wrap mb-10 fv-row bg-info">
                                 <div class="stepper-item mx-2 my-4 current" data-kt-stepper-element="nav"
                                     data-kt-stepper-action="step">
                                     <div class="stepper-line w-40px"></div>

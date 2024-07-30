@@ -13,7 +13,7 @@
         'text' => 'Link a PDF document and distribute it efficiently',
         'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/pdf.svg',
     ],
-    [ 
+    [
         'id' => 3,
         'value' => 'image',
         'title' => 'Image',
@@ -63,17 +63,17 @@
         'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/coupon.svg',
     ],
     [
-        'id' => 10,
-        'value' => 'social',
-        'title' => 'Social',
-        'text' => 'Link to an existing web URL and bring traffic online',
-        'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/social-media.svg',
-    ],
-    [
         'id' => 11,
         'value' => 'audio',
         'title' => 'Audio',
         'text' => 'Link to your phone number for quick calls',
+        'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/mp3.svg',
+    ],
+    [
+        'id' => 12,
+        'value' => 'business_page',
+        'title' => 'Business Page',
+        'text' => 'Share your Business',
         'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/business-page.svg',
     ],
     [
