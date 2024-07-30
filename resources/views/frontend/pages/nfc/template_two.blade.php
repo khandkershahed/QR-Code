@@ -493,14 +493,23 @@
                                                     </div>
                                                     <div
                                                         class="col-md-6 align-items-center justify-content-center d-flex">
-                                                        <div class="px-3">
-                                                            <a href="{{ $company->company_facebook }}"
-                                                                class="btn company-btn-tem2 rounded-0 mb-2 w-100">Facebook</a>
-                                                            <a href="{{ $company->company_instagram }}"
-                                                                class="btn company-btn-tem2 rounded-0 mb-2 w-100">Instagram</a>
-                                                            <a href="{{ $company->company_likedin }}"
-                                                                class="btn company-btn-tem2 rounded-0 mb-2 w-100">Linkedin</a>
-                                                        </div>
+                                                        @if ($nfc_card->social_links_show == '1')
+                                                            <div class="px-3">
+                                                                @if (!empty($company->company_facebook))
+                                                                    <a href="{{ $company->company_facebook }}"
+                                                                        class="btn company-btn-tem2 rounded-0 mb-2 w-100">Facebook</a>
+                                                                @endif
+                                                                @if (!empty($company->company_instagram))
+                                                                    <a href="{{ $company->company_instagram }}"
+                                                                        class="btn company-btn-tem2 rounded-0 mb-2 w-100">Instagram</a>
+                                                                @endif
+                                                                @if (!empty($company->company_likedin))
+                                                                    <a href="{{ $company->company_likedin }}"
+                                                                        class="btn company-btn-tem2 rounded-0 mb-2 w-100">Linkedin</a>
+                                                                @endif
+
+                                                            </div>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
@@ -623,31 +632,18 @@
                                 <div class="row pt-3">
                                     <div class="col-lg-12">
                                         <div class="galery-slide">
-                                            <div>
-                                                <img class="w-100 img-fluid rounded-3"
-                                                    src="https://www.shutterbug.com/images/0616gallery07.jpg"
-                                                    alt="" />
-                                            </div>
-                                            <div>
-                                                <img class="w-100 img-fluid rounded-3"
-                                                    src="https://www.shutterbug.com/images/0616gallery07.jpg"
-                                                    alt="" />
-                                            </div>
-                                            <div>
-                                                <img class="w-100 img-fluid rounded-3"
-                                                    src="https://www.shutterbug.com/images/0616gallery07.jpg"
-                                                    alt="" />
-                                            </div>
-                                            <div>
-                                                <img class="w-100 img-fluid rounded-3"
-                                                    src="https://www.shutterbug.com/images/0616gallery07.jpg"
-                                                    alt="" />
-                                            </div>
-                                            <div>
-                                                <img class="w-100 img-fluid rounded-3"
-                                                    src="https://www.shutterbug.com/images/0616gallery07.jpg"
-                                                    alt="" />
-                                            </div>
+                                            @foreach ($nfc_card->nfcGallery as $gallery)
+                                                <div>
+                                                    @if ($gallery->gallery_type == 'image')
+                                                        <img class="w-100 img-fluid rounded-3"
+                                                            src="{{ !empty($gallery->gallery_attachment) && file_exists(public_path('storage/nfc/gallery/' . optional($gallery)->gallery_attachment)) ? asset('storage/nfc/gallery/' . optional($gallery)->gallery_attachment) : asset('frontend/images/no_image.png') }}"
+                                                            alt="" />
+                                                    @else
+                                                        <iframe src="{{ optional($gallery)->gallery_attachment }}"
+                                                            frameborder="0"></iframe>
+                                                    @endif
+                                                </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -724,18 +720,19 @@
                             <div class="row pt-3">
                                 <div class="col-md-12">
                                     <div class="w-50 mx-auto">
-                                        <img class="img-fluid"
-                                            style="
-                        border-top-left-radius: 8px;
-                        border-top-right-radius: 8px;
-                      "
-                                            src="https://www.gipper.com/hs-fs/hubfs/Imported_Blog_Media/6375e3_33ef90f5a9b74483b67eb2cb2f5e56b1~mv2.png"
-                                            alt="" />
-                                        <div>
-                                            <a href=""
-                                                class="btn btn-dark rounded-0 w-100 border-2 border-dark">Download
-                                                QR</a>
-                                        </div>
+                                        @if (!empty($nfc_card->nfc_qr) && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc_qr)))
+                                            <img class="img-fluid"
+                                                style="border-top-left-radius: 8px;border-top-right-radius: 8px;"
+                                                src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
+                                                alt="" />
+                                        @endif
+                                        @if ($nfc_card->enable_download_qr_code == '1')
+                                            <div>
+                                                <a href="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
+                                                    class="btn btn-dark rounded-0 w-100 border-2 border-dark">Download
+                                                    QR</a>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -761,7 +758,10 @@
                                                 </div>
                                                 <div class="text-center">
                                                     <p class="mb-0 text-white special-font">Monday</p>
-                                                    <p class="mb-0 text-white">10.00 AM - 10.00 PM</p>
+                                                    <p class="mb-0 text-white">
+                                                        {{ optional($nfc_card->nfcData)->start_time_monday }} -
+                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -774,7 +774,10 @@
                                                 </div>
                                                 <div class="text-center">
                                                     <p class="mb-0 text-white special-font">Tuesday</p>
-                                                    <p class="mb-0 text-white">10.00 AM - 10.00 PM</p>
+                                                    <p class="mb-0 text-white">
+                                                        {{ optional($nfc_card->nfcData)->start_time_tuesday }} -
+                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -787,7 +790,9 @@
                                                 </div>
                                                 <div class="text-center">
                                                     <p class="mb-0 text-white special-font">Wednesday</p>
-                                                    <p class="mb-0 text-white">10.00 AM - 10.00 PM</p>
+                                                    <p class="mb-0 text-white">
+                                                        {{ optional($nfc_card->nfcData)->start_time_wednesday }} -
+                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -800,7 +805,9 @@
                                                 </div>
                                                 <div class="text-center">
                                                     <p class="mb-0 text-white special-font">Thursday</p>
-                                                    <p class="mb-0 text-white">10.00 AM - 10.00 PM</p>
+                                                    <p class="mb-0 text-white">
+                                                        {{ optional($nfc_card->nfcData)->start_time_thursday }} -
+                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -813,7 +820,9 @@
                                                 </div>
                                                 <div class="text-center">
                                                     <p class="mb-0 text-white special-font">Friday</p>
-                                                    <p class="mb-0 text-white">10.00 AM - 10.00 PM</p>
+                                                    <p class="mb-0 text-white">
+                                                        {{ optional($nfc_card->nfcData)->start_time_friday }} -
+                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -826,7 +835,9 @@
                                                 </div>
                                                 <div class="text-center">
                                                     <p class="mb-0 text-white special-font">Satarday</p>
-                                                    <p class="mb-0 text-white">10.00 AM - 10.00 PM</p>
+                                                    <p class="mb-0 text-white">
+                                                        {{ optional($nfc_card->nfcData)->start_time_saturday }} -
+                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -839,7 +850,9 @@
                                                 </div>
                                                 <div class="text-center">
                                                     <p class="mb-0 text-white special-font">Satarday</p>
-                                                    <p class="mb-0 text-white">10.00 AM - 10.00 PM</p>
+                                                    <p class="mb-0 text-white">
+                                                        {{ optional($nfc_card->nfcData)->start_time_sunday }} -
+                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -860,30 +873,31 @@
                             </div>
                             <div class="row pt-4">
                                 <div class="co-md-12">
-                                    <form action="" method="post">
+                                    <form action="{{ route('individual-message.store') }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="user_id"
+                                            value="{{ optional($nfc_card)->user_id }}">
+                                        <input type="hidden" name="nfc_id" value="{{ optional($nfc_card)->id }}">
+                                        <input type="hidden" name="nfc_code"
+                                            value="{{ optional($nfc_card)->code }}">
                                         <div class="row px-5">
                                             <div class="col-sm-6 mb-3">
-                                                <input type="text" name=""
+                                                <input type="text" name="name"
                                                     class="form-control form-control-sm rounded-0 rounded-1 p-2"
                                                     placeholder="Enter Your Names" />
                                             </div>
                                             <div class="col-sm-6 mb-3">
-                                                <input type="email" name=""
+                                                <input type="email" name="email"
                                                     class="form-control form-control-sm rounded-0 rounded-1 p-2"
                                                     placeholder="Enter Your Email" />
                                             </div>
                                             <div class="col-sm-12 mb-3">
-                                                <input type="text" name=""
-                                                    class="form-control form-control-sm rounded-0 rounded-1 p-2"
-                                                    placeholder="Enter Your Subject" />
-                                            </div>
-                                            <div class="col-sm-12 mb-3">
-                                                <input type="text" name=""
+                                                <input type="text" name="phone"
                                                     class="form-control form-control-sm rounded-0 rounded-1 p-2"
                                                     placeholder="Enter Your Phone" />
                                             </div>
                                             <div class="col-sm-12 mb-3">
-                                                <textarea name="" class="form-control form-control-sm rounded-0 rounded-1 p-2" id="" rows="5"></textarea>
+                                                <textarea name="message" class="form-control form-control-sm rounded-0 rounded-1 p-2" id="" rows="5"></textarea>
                                             </div>
                                             <div class="col-lg-12 w-75 mx-auto px-2">
                                                 <div class="d-flex justify-content-center">
@@ -899,6 +913,11 @@
                                     </form>
                                 </div>
                             </div>
+                            @php
+                                $currentUrl = request()->url();
+                                $whatsappLink =
+                                    'https://wa.me/?text=' . urlencode('Check out My NFC Profile: ' . $currentUrl);
+                            @endphp
                             <div class="row py-5 pb-0">
                                 <div class="col-lg-12">
                                     <div class="text-center">
@@ -906,18 +925,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row align-items-center">
+                            <div class="row align-items-center mb-3">
                                 <div class="col-sm-6 offse-sm-3 mx-auto">
                                     <div>
                                         <img class="img-fluid" src="https://i.ibb.co/44x9nc9/handrising.png"
                                             alt="" />
                                     </div>
                                     <div class="d-flex align-items-center justify-content-center">
-                                        <button type="submit" class="btn company-btn-tem2 rounded-0 mb-2 p-3">
+                                        <a href="{{ $whatsappLink }}" target="_blank" rel="noopener noreferrer"
+                                            class="btn company-btn-tem2 rounded-0 mb-2 p-3">
                                             <i class="fa-solid fa-share-nodes"
                                                 style="color: var(--template-two-color-primary)"></i>
                                             Share This Vcard
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
