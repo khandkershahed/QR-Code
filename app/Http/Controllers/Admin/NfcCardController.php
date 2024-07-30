@@ -161,7 +161,16 @@ class NfcCardController extends Controller
      */
     public function edit(string $id)
     {
-        //
+
+        // $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
+        // $user = Auth::user();
+        // $data = [
+        //     'nfc' => $isUserRoute
+        //         ? VirtualCard::with('shippingDetails','nfc')->findOrFail($id)
+        //         : VirtualCard::with('shippingDetails','nfc')->findOrFail($id),
+        // ];
+        // $view = $isUserRoute ? 'user.pages.virtualCard.edit' : 'admin.pages.virtualCard.edit';
+        // return view($view, $data);
     }
 
     /**
@@ -169,7 +178,28 @@ class NfcCardController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // $vcard = NfcCard::find($nfc->card_id);
+        //     $code = $nfc->code;
+        //     // Handle file uploads
+        //     $files = [
+        //         'card_logo'           => $request->file('card_logo'),
+        //         'card_bg_front'       => $request->file('card_bg_front'),
+        //         'card_bg_back'        => $request->file('card_bg_back'),
+        //     ];
+
+        //     $filePath = 'public/nfc/';
+        //     $uploadedFiles = [];
+
+        //     foreach ($files as $key => $file) {
+        //         if (!empty($file)) {
+        //             $uploadedFiles[$key] = customUpload($file, $filePath, $code . '_' . $key);
+        //             if ($uploadedFiles[$key]['status'] === 0) {
+        //                 throw new \Exception("Error uploading file: " . $uploadedFiles[$key]['error_message']);
+        //             }
+        //         } else {
+        //             $uploadedFiles[$key] = ['status' => 0];
+        //         }
+        //     }
     }
 
     /**

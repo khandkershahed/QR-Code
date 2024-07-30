@@ -524,9 +524,7 @@
                     <p class="mb-0 text-white">Your Choosen Template</p>
                 </div>
             </div>
-            {{-- <div class="card-body custom-card-body overflow-auto px-0 ">
-                @include('virtualCard.partials.nfc_preview')
-            </div> --}}
+            
             <div
                 class="card-body custom-card-body overflow-auto px-0 pt-3 d-flex justify-content-center align-items-center">
                 @include('virtualCard.partials.virtual_card_preview')

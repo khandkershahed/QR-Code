@@ -175,12 +175,12 @@
                                                 <span title="Download EPS">EPS</span>
                                             </a>
                                         </div>
-                                        <div class="menu-item px-3">
+                                        {{-- <div class="menu-item px-3">
                                             <a href="{{ route('admin.nfc-card.edit', $nfc_card->id) }}"
                                                 class="menu-link px-3">
                                                 Edit
                                             </a>
-                                        </div>
+                                        </div> --}}
                                         <div class="menu-item px-3">
                                             <a href="{{ route('admin.nfc-card.destroy', $nfc_card->id) }}"
                                                 class="menu-link px-3 delete">
@@ -210,16 +210,16 @@
                                 @include('virtualCard.partials.card_modals.card_one')
                             @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-two')
                                 @include('virtualCard.partials.card_modals.card_two')
-                            @elseif (optional($nfc_card->virtualCard)->virtual_card_template == 'virtual-card-three')
+                            @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-three')
                                 @include('virtualCard.partials.card_modals.card_three')
-                            @elseif (optional($nfc_card->virtualCard)->virtual_card_template == 'virtual-card-four')
+                            @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-four')
                                 @include('virtualCard.partials.card_modals.card_four')
-                                {{-- @elseif (optional($nfc_card->virtualCard)->virtual_card_template == 'virtual-card-five') --}}
-                            @elseif (optional($nfc_card->virtualCard)->virtual_card_template == 'virtual-card-six')
+                                {{-- @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-five') --}}
+                            @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-six')
                                 @include('virtualCard.partials.card_modals.card_six')
-                            @elseif (optional($nfc_card->virtualCard)->virtual_card_template == 'virtual-card-seven')
+                            @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-seven')
                                 @include('virtualCard.partials.card_modals.card_seven')
-                                {{-- @elseif (optional($nfc_card->virtualCard)->virtual_card_template == 'virtual-card-eight') --}}
+                                {{-- @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-eight') --}}
                             @endif
                         </div>
                     </div>

@@ -9,4 +9,8 @@ class BarCode extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    public function barCodeImages()
+    {
+        return $this->hasMany(BarcodeImage::class, 'barcode_id');
+    }
 }

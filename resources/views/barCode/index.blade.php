@@ -11,7 +11,7 @@
                 <thead>
                     <tr class="text-gray-500 fw-bold fs-7 text-uppercase">
                         <th width="5%">SL</th>
-                        <th width="30%">Image</th>
+                        {{-- <th width="30%">Image</th> --}}
                         <th width="25%">Product </th>
                         <th width="12%">Pattern</th>
                         <th width="13%" class="text-center">BarCode</th>
@@ -24,10 +24,10 @@
                             <td>
                                 {{ $loop->iteration }}
                             </td>
-                            <td>
+                            {{-- <td>
                                 <img src="{{ asset($bar_code->bar_code_png) }}" width="120px"
                                     alt="{{ $bar_code->product_name }}">
-                            </td>
+                            </td> --}}
                             <td>
                                 <div class="d-flex flex-column">
                                     @if (strpos(Route::current()->getName(), 'user.') === 0)
@@ -69,13 +69,21 @@
                                             </div>
                                             <div class="modal-body">
                                                 <div class="row">
-                                                    <div class="col-lg-8 offset-lg-2 mx-auto">
-                                                        <div>
-                                                            <img class="img-fluid"
-                                                                src="{{ asset($bar_code->bar_code_png) }}"
-                                                                alt="">
+                                                    @foreach ($bar_code->barCodeImages as $barCodeImage)
+                                                        <div class="col-lg-4 d-flex justify-content-center align-items-center">
+                                                            <div>
+                                                                <img class="img-fluid"
+                                                                    src="{{ asset($barCodeImage->image) }}"
+                                                                    alt="">
+                                                            </div>
+                                                            <div>
+                                                                <a href="{{ asset($barCodeImage->image) }}" class="menu-link px-3"
+                                                                    download data-kt-docs-table-filter="edit_row">
+                                                                    PNG
+                                                                </a>
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                    @endforeach
                                                 </div>
                                             </div>
 
@@ -100,7 +108,7 @@
                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-2">
                                     <i class="fas fa-pen"></i>
                                 </a> --}}
-                                <a href="#" class="btn btn-light btn-active-light-primary btn-sm"
+                                {{-- <a href="#" class="btn btn-light btn-active-light-primary btn-sm"
                                     data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end"
                                     data-kt-menu-flip="top-end">
                                     Download
@@ -147,7 +155,7 @@
                                         </div>
                                     @endif
                                     <!--end::Menu item-->
-                                </div>
+                                </div> --}}
 
                             </td>
                         </tr>
