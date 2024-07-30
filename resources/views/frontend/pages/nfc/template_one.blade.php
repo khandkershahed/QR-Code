@@ -574,7 +574,7 @@
                                                     </div>
                                                 </div> --}}
                                                 <div class="col-md-12 pe-0">
-                                                    <div>
+                                                    <div style="display: flex;justify-content: center;align-items: center;">
                                                         @if (!empty($company->company_facebook))
                                                             <a href="{{ $company->company_facebook }}"
                                                                 class="btn btn-dark rounded-0 mb-2">
@@ -1408,6 +1408,7 @@
                 autoplay: true, // Enable autoplay
                 autoplaySpeed: 2000, // Autoplay speed in milliseconds
                 gap: 10,
+                arrows: false,
                 prevArrow: '<button type="button" class="slick-prev"><i class="fas fa-chevron-left"></i></button>',
                 nextArrow: '<button type="button" class="slick-next"><i class="fas fa-chevron-right"></i></button>',
             });
