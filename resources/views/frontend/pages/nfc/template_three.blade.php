@@ -555,26 +555,26 @@
 
 
                                             @if (!empty(optional($nfc_card->nfcData)->facebook_url))
-                                            <a href="{{ optional($nfc_card->nfcData)->facebook_url }}"
-                                                class="social-link-tem2"><i class="fa-brands fa-facebook-f"></i></a>
-                                        @endif
-                                        @if (!empty(optional($nfc_card->nfcData)->instagram_url))
-                                            <a href="{{ optional($nfc_card->nfcData)->instagram_url }}"
-                                                class="social-link-tem2"><i class="fa-brands fa-instagram"></i></a>
-                                        @endif
-                                        @if (!empty(optional($nfc_card->nfcData)->linkedin_url))
-                                            <a href="{{ optional($nfc_card->nfcData)->linkedin_url }}"
-                                                class="social-link-tem2"><i
-                                                    class="fa-brands fa-linkedin-in"></i></a>
-                                        @endif
-                                        @if (!empty(optional($nfc_card->nfcData)->whatsapp_url))
-                                            <a href="{{ optional($nfc_card->nfcData)->whatsapp_url }}"
-                                                class="social-link-tem2"><i class="fa-brands fa-whatsapp"></i></a>
-                                        @endif
-                                        @if (!empty(optional($nfc_card->nfcData)->twitter_url))
-                                            <a href="{{ optional($nfc_card->nfcData)->twitter_url }}"
-                                                class="social-link-tem2"><i class="fa-brands fa-twitter"></i></a>
-                                        @endif
+                                                <a href="{{ optional($nfc_card->nfcData)->facebook_url }}"
+                                                    class="social-link-tem2"><i class="fa-brands fa-facebook-f"></i></a>
+                                            @endif
+                                            @if (!empty(optional($nfc_card->nfcData)->instagram_url))
+                                                <a href="{{ optional($nfc_card->nfcData)->instagram_url }}"
+                                                    class="social-link-tem2"><i class="fa-brands fa-instagram"></i></a>
+                                            @endif
+                                            @if (!empty(optional($nfc_card->nfcData)->linkedin_url))
+                                                <a href="{{ optional($nfc_card->nfcData)->linkedin_url }}"
+                                                    class="social-link-tem2"><i
+                                                        class="fa-brands fa-linkedin-in"></i></a>
+                                            @endif
+                                            @if (!empty(optional($nfc_card->nfcData)->whatsapp_url))
+                                                <a href="{{ optional($nfc_card->nfcData)->whatsapp_url }}"
+                                                    class="social-link-tem2"><i class="fa-brands fa-whatsapp"></i></a>
+                                            @endif
+                                            @if (!empty(optional($nfc_card->nfcData)->twitter_url))
+                                                <a href="{{ optional($nfc_card->nfcData)->twitter_url }}"
+                                                    class="social-link-tem2"><i class="fa-brands fa-twitter"></i></a>
+                                            @endif
                                         </div>
 
                                     @endif
@@ -1271,7 +1271,7 @@
                                         </div>
                                     @endif
                                     <!-- Video Gallery -->
-                                    <div class="row pt-5">
+                                    {{-- <div class="row pt-5">
                                         <div class="col-sm-12">
                                             <div class="text-center">
                                                 <h3 class="special-font">Video Gallery</h3>
@@ -1324,7 +1324,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <!-- Product Box -->
                                     @if ($nfc_card->products_show == '1')
                                         <div class="row pt-5">
@@ -1418,9 +1418,14 @@
                                         @foreach ($nfc_card->nfcGallery as $gallery)
                                             <div class="gallery-items-tem3">
                                                 <div>
-                                                    <img class="img-fluid"
-                                                        src="{{ !empty($gallery->gallery_attachment) && file_exists(public_path('storage/nfc/gallery/' . optional($gallery)->gallery_attachment)) ? asset('storage/nfc/gallery/' . optional($gallery)->gallery_attachment) : asset('frontend/images/no_image.png') }}"
-                                                        alt="" />
+                                                    @if ($gallery->gallery_type == 'image')
+                                                        <img class="img-fluid"
+                                                            src="{{ !empty($gallery->gallery_attachment) && file_exists(public_path('storage/nfc/gallery/' . optional($gallery)->gallery_attachment)) ? asset('storage/nfc/gallery/' . optional($gallery)->gallery_attachment) : asset('frontend/images/no_image.png') }}"
+                                                            alt="" />
+                                                    @else
+                                                    <iframe src="{{ optional($gallery)->gallery_attachment }}"
+                                                        frameborder="0"></iframe>
+                                                    @endif
                                                 </div>
                                             </div>
                                         @endforeach
@@ -1494,21 +1499,21 @@
                         <div class="footer-nav-tem3 position-relative">
                             <ul class="h-100 d-flex align-items-center justify-content-between ps-0">
                                 <li class="active">
-                                    <a href="#">
+                                    <a href="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}" download="">
                                         <i class="fa-solid fa-qrcode"></i>
                                         <span>QR</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="copy-link" data-link="https://another-example.com">
+                                    <a href="#" class="copy-link" data-link="{{ $currentUrl }}">
                                         <i class="fa-solid fa-copy"></i>
                                         <span>Copy Link</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="#" class="nfc_contact_btn_pc">
                                         <i class="fa-solid fa-file-arrow-down"></i>
-                                        <span>Save Contact</span>
+                                        <span>Add Contact</span>
                                     </a>
                                 </li>
                             </ul>
@@ -1649,6 +1654,125 @@
                 arrows: false,
                 dots: false,
             });
+        });
+    </script>
+    <script>
+        'use strict';
+
+        function downloadToFile(content, filename, contentType) {
+            const a = document.createElement('a');
+            const file = new Blob([content], {
+                type: contentType
+            });
+
+            a.href = URL.createObjectURL(file);
+            a.download = filename;
+            a.click();
+
+            URL.revokeObjectURL(a.href);
+        }
+
+        function getBase64Image(imgUrl, callback) {
+            const img = new Image();
+            img.crossOrigin = 'Anonymous';
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                canvas.width = img.width;
+                canvas.height = img.height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0);
+                const dataURL = canvas.toDataURL('image/jpeg');
+                callback(dataURL.replace(/^data:image\/(png|jpeg);base64,/, ''));
+            };
+            img.onerror = () => {
+                console.error('Failed to load image:', imgUrl);
+                callback(null);
+            };
+            img.src = imgUrl;
+        }
+
+        const makeVCardVersion = () => `VERSION:3.0`;
+        const makeVCardInfo = (lastName, firstName) => `N:${lastName || ''};${firstName || ''};;;`;
+        const makeVCardName = (firstName, lastName) => `FN:${firstName || ''} ${lastName || ''}`;
+        const makeVCardOrg = (org) => `ORG:${org || ''}`;
+        const makeVCardTitle = (title) => `TITLE:${title || ''}`;
+        const makeVCardPhoto = (imgBase64) => `PHOTO;ENCODING=b;TYPE=JPEG:${imgBase64}`;
+        const makeVCardTel = (phone) => `TEL;TYPE=CELL:${phone || ''}`;
+        const makeVCardAdr = (addressLine1, addressLine2) =>
+            `ADR;TYPE=HOME:;;${addressLine1 || ''};${addressLine2 || ''};;;;`;
+        const makeVCardEmail = (email) => `EMAIL:${email || ''}`;
+        const makeVCardUrl = (url) => `URL:${url || ''}`;
+        const makeVCardSocialProfile = (type, url) => `X-SOCIALPROFILE;TYPE=${type}:${url || ''}`;
+        const makeVCardTimeStamp = () => `REV:${new Date().toISOString()}`;
+
+        function makeVCard(profileImageBase64) {
+            const firstName = '{{ optional($nfc_card->nfcData)->first_name }}';
+            const lastName = '{{ optional($nfc_card->nfcData)->last_name }}';
+            const designation = '{{ optional($nfc_card)->designation }}';
+            const phone = '{{ optional($nfc_card->nfcData)->phone_personal }}';
+            const email = '{{ optional($nfc_card->nfcData)->email_personal }}';
+            const addressLine1 = '{{ optional($nfc_card->nfcData)->address_line_one }}';
+            const addressLine2 = '{{ optional($nfc_card->nfcData)->address_line_two }}';
+            const linkedin = '{{ optional($nfc_card->nfcData)->linkedin_url }}';
+
+            let vcard = `BEGIN:VCARD\n${makeVCardVersion()}\n`;
+            vcard += `${makeVCardInfo(lastName, firstName)}\n`;
+            vcard += `${makeVCardName(firstName, lastName)}\n`;
+            vcard += `${makeVCardTitle(designation)}\n`;
+
+            if (profileImageBase64) {
+                vcard += `${makeVCardPhoto(profileImageBase64)}\n`;
+            }
+
+            vcard += `${makeVCardTel(phone)}\n`;
+
+            if (addressLine1 || addressLine2) {
+                vcard += `${makeVCardAdr(addressLine1, addressLine2)}\n`;
+            }
+
+            if (email) {
+                vcard += `${makeVCardEmail(email)}\n`;
+            }
+
+            if (linkedin) {
+                vcard += `${makeVCardUrl(linkedin)}\n`;
+                vcard += `${makeVCardSocialProfile('linkedin', linkedin)}\n`;
+            }
+
+            vcard += `${makeVCardTimeStamp()}\nEND:VCARD`;
+
+            return vcard;
+        }
+
+        function handleContactButtonClick(event, isMobile) {
+            event.preventDefault(); // Prevent default link behavior
+
+            const profileImage = '{{ asset('storage/nfc/' . optional($nfc_card)->profile_image) }}';
+
+            getBase64Image(profileImage, (base64Image) => {
+                const vcard = makeVCard(base64Image);
+
+                if (isMobile) {
+                    // Open vCard details in contact app for mobile
+                    const encodedVcfContent = encodeURIComponent(vcard);
+                    const uri = 'data:text/vcard;charset=utf-8,' + encodedVcfContent;
+                    window.location.href = uri;
+                } else {
+                    // Download vCard for PC
+                    const firstName = '{{ optional($nfc_card->nfcData)->first_name }}';
+                    const lastName = '{{ optional($nfc_card->nfcData)->last_name }}';
+                    const fileName = `${firstName}_${lastName}_contact.vcf`;
+                    downloadToFile(vcard, fileName, 'text/vcard');
+                }
+            });
+        }
+
+        document.querySelector('.nfc_contact_btn_pc').addEventListener('click', (event) => {
+            handleContactButtonClick(event, false);
+        });
+
+        document.querySelector('.nfc_contact_btn_mobile').addEventListener('click', (event) => {
+            handleContactButtonClick(event, true);
         });
     </script>
 </body>
