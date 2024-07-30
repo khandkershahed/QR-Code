@@ -11,11 +11,16 @@
         .custom-nfc-template {
             height: 152px;
         }
-        .nfc-type-mobile{
 
+        .nfc-type-mobile {}
+    }
+
+    @media (max-width: 768px) {
+        .custom-nfc-template {
+            height: auto;
         }
     }
-</style>    
+</style>
 <div class="row">
     @foreach ($templates as $template)
         <div class="col-lg-2">

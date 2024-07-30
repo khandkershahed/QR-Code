@@ -150,18 +150,18 @@
                                     <p class="mb-0 text-start ps-2 card_email">i{{ $nfc_card->card_email }}</p>
                                 </div>
                             </div>
-                            {{-- <div class="d-flex justify-content-center align-items-center pt-1">
+                            <div class="d-flex justify-content-center align-items-center pt-1">
                                 <div class="ps-3 w-75 pt-4">
-                                    <p class="mb-0 text-start ps-2">www.portfolio.com</p>
+                                    <p class="mb-0 text-start ps-2">{{ $nfc_card->card_designation }}</p>
                                 </div>
-                            </div> --}}
+                            </div>
                             <div class="d-flex justify-content-center align-items-center pt-2">
                                 <div class="ps-3 w-75 pt-4">
                                     <p class="mb-0 text-start ps-2 text-black card_phone">{{ $nfc_card->card_phone }}</p>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-center align-items-center pt-2">
-                                <div class="ps-3 w-75 pt-4">
+                                <div class="ps-3 w-75 pt-3">
                                     <p class="mb-0 text-start ps-2 card_address">
                                         {{ $nfc_card->card_address }}
                                     </p>

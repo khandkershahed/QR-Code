@@ -54737,7 +54737,7 @@ label.rating-label:hover ~ .rating-label > i {
 }
 
 .stepper.stepper-pills .stepper-item.current .stepper-icon .stepper-number {
-    color: #c0c0c0 !important;
+    color: #342f2f !important;
     font-size: 1.35rem;
 }
 

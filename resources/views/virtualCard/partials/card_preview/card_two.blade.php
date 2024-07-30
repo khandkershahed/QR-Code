@@ -58,7 +58,7 @@
     }
 
     .card-two-back p {
-        font-size: 17px;
+        font-size: 15px;
     }
 
     .card_designation-two,
@@ -101,7 +101,15 @@
         font-size: 20px;
     }
 
+    .template-two-title-back {
+        margin-top: 60px;
+    }
+
     @media only screen and (max-width: 1350px) {
+        .template-two-title-back {
+            margin-top: 140px;
+        }
+
         .punch-card-container {
             width: 100%;
             height: auto;
@@ -157,16 +165,17 @@
                 <div>
                     <!-- Company Logo -->
                     <div class="d-flex justify-content-center template-two-logo-ebox">
-                        <img class="img-fluid card_logo" width="100px" src="https://i.ibb.co/CWsWHTM/lgoo.png" alt="" />
+                        <img class="img-fluid card_logo" width="100px" src="https://i.ibb.co/CWsWHTM/lgoo.png"
+                            alt="" />
                     </div>
 
                     <!-- Front Info -->
                     <div class=" template-two-title main-content-tem2">
-                        <h1 class="text-white text-center card_name">Rasheduzzaman</h1>
+                        <h3 class="text-white text-center card_name">Rasheduzzaman</h3>
                         <p class="text-center card_designation">Frontend Designer</p>
                         {{-- <p class="pb-4 text-white text-start tow-company-name">
                             GoFlixza</p> --}}
-                        <div class="half">
+                        <div class="half mt-5 pt-5">
                             <div class="icons-box-two text-center">
                                 <i class="fas fa-phone"></i>
                             </div>
@@ -205,14 +214,10 @@
                     </div>
 
                     <!-- Front Info -->
-                    <div class="template-two-title pt-5"
-                        style="width: 60%;margin: auto;margin-top: 90px;margin-left: 45px;">
-                        <div class="half mt-4">
-                            <div class="">
-                                <i class="fa-solid fa-envelope"></i>
-                            </div>
-                            <div class="ps-3">
-                                <p class="mb-0 card_email">info@gmail.com</p>
+                    <div class="template-two-title-back pt-5">
+                        <div class="mt-4">
+                            <div class="ps-3 text-center">
+                                <p class="mb-0 card_email text-white">info@gmail.com</p>
                             </div>
                         </div>
                     </div>
