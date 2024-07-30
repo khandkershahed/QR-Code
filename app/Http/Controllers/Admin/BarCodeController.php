@@ -409,7 +409,7 @@ class BarCodeController extends Controller
 
                 $mergedImage = $canvas->encode('png', 100); // 100 for high quality
 
-                $filename = 'barcode_page_' . $currentPage . '.png';
+                $filename = $code . '_barcode_page_' . $currentPage . '.png';
                 Storage::put('public/barcodes/images/' . $filename, $mergedImage);
 
                 BarcodeImage::create([

@@ -79,7 +79,7 @@
                                                             <div>
                                                                 <a href="{{ asset($barCodeImage->image) }}" class="menu-link px-3"
                                                                     download data-kt-docs-table-filter="edit_row">
-                                                                    PNG
+                                                                    Download
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -108,7 +108,7 @@
                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-2">
                                     <i class="fas fa-pen"></i>
                                 </a> --}}
-                                {{-- <a href="#" class="btn btn-light btn-active-light-primary btn-sm"
+                                <a href="#" class="btn btn-light btn-active-light-primary btn-sm"
                                     data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end"
                                     data-kt-menu-flip="top-end">
                                     Download
@@ -130,7 +130,7 @@
                                 <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
                                     data-kt-menu="true" style="">
                                     <!--begin::Menu item-->
-                                    @if (!empty($bar_code->bar_code_png))
+                                    {{-- @if (!empty($bar_code->bar_code_png))
                                         <div class="menu-item px-3">
                                             <a href="{{ asset($bar_code->bar_code_png) }}" class="menu-link px-3"
                                                 download data-kt-docs-table-filter="edit_row">
@@ -145,7 +145,7 @@
                                                 JPG
                                             </a>
                                         </div>
-                                    @endif
+                                    @endif --}}
                                     @if (!empty($bar_code->bar_code_pdf))
                                         <div class="menu-item px-3">
                                             <a href="{{ asset($bar_code->bar_code_pdf) }}" class="menu-link px-3"
@@ -155,7 +155,7 @@
                                         </div>
                                     @endif
                                     <!--end::Menu item-->
-                                </div> --}}
+                                </div>
 
                             </td>
                         </tr>

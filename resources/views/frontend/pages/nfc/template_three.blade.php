@@ -1478,17 +1478,19 @@
                                 </div>
                             </div>
                             <!-- SHape -->
-                            <div class="qr-code-img">
-                                {{-- Demo QR Here Place Your Actual QR --}}
-                                <img class="img-fluid"
-                                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/800px-QR_code_for_mobile_English_Wikipedia.svg.png"
-                                    alt="">
-                            </div>
-                            <div class="tem3-footer-shape">
-                                <p class="text-center text-white special-font" style="position: relative; top: 5px">
-                                    Scan Me
-                                </p>
-                            </div>
+                            @if (!empty($nfc_card->nfc_qr) && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc_qr)))
+                                <div class="qr-code-img">
+                                    {{-- Demo QR Here Place Your Actual QR --}}
+                                    <img class="img-fluid"
+                                        src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
+                                        alt="">
+                                </div>
+                                <div class="tem3-footer-shape">
+                                    <p class="text-center text-white special-font" style="position: relative; top: 5px">
+                                        Scan Me
+                                    </p>
+                                </div>
+                            @endif
                         @endif
                     </div>
                 </section>
