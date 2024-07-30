@@ -12,6 +12,12 @@
             height: 152px;
         }
     }
+
+    @media (max-width: 768px) {
+        .custom-nfc-template {
+            height: auto;
+        }
+    }
 </style>
 <div class="row">
     @foreach ($cardtemplates as $cardtemplate)
