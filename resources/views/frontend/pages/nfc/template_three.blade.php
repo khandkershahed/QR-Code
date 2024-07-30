@@ -536,7 +536,7 @@
                                 <div class="d-flex justify-content-center align-items-center">
                                     @if ($nfc_card->social_links_show == '1')
                                         <div class="social-icon-tem3">
-                                            <a href="#" class="{{ optional($nfc_card->nfcData)->facebook_url }}">
+                                            {{-- <a href="#" class="{{ optional($nfc_card->nfcData)->facebook_url }}">
                                                 <i class="fa-brands fa-facebook"></i>
                                             </a>
                                             <a href="#"
@@ -551,8 +551,32 @@
                                             </a>
                                             <a href="#" class="{{ optional($nfc_card->nfcData)->youtube_url }}">
                                                 <i class="fa-brands fa-youtube"></i>
-                                            </a>
+                                            </a> --}}
+
+
+                                            @if (!empty(optional($nfc_card->nfcData)->facebook_url))
+                                            <a href="{{ optional($nfc_card->nfcData)->facebook_url }}"
+                                                class="social-link-tem2"><i class="fa-brands fa-facebook-f"></i></a>
+                                        @endif
+                                        @if (!empty(optional($nfc_card->nfcData)->instagram_url))
+                                            <a href="{{ optional($nfc_card->nfcData)->instagram_url }}"
+                                                class="social-link-tem2"><i class="fa-brands fa-instagram"></i></a>
+                                        @endif
+                                        @if (!empty(optional($nfc_card->nfcData)->linkedin_url))
+                                            <a href="{{ optional($nfc_card->nfcData)->linkedin_url }}"
+                                                class="social-link-tem2"><i
+                                                    class="fa-brands fa-linkedin-in"></i></a>
+                                        @endif
+                                        @if (!empty(optional($nfc_card->nfcData)->whatsapp_url))
+                                            <a href="{{ optional($nfc_card->nfcData)->whatsapp_url }}"
+                                                class="social-link-tem2"><i class="fa-brands fa-whatsapp"></i></a>
+                                        @endif
+                                        @if (!empty(optional($nfc_card->nfcData)->twitter_url))
+                                            <a href="{{ optional($nfc_card->nfcData)->twitter_url }}"
+                                                class="social-link-tem2"><i class="fa-brands fa-twitter"></i></a>
+                                        @endif
                                         </div>
+
                                     @endif
                                 </div>
                             </div>
@@ -631,7 +655,7 @@
                                                 </div>
                                                 <div class="ps-3 pt-1">
                                                     <h6 class="special-font text-white mb-0">Email</h6>
-                                                    <p class="text-white mb-0">
+                                                    <p class="text-white mb-0 w-75">
                                                         {{ $nfc_card->nfcData->email_personal }}
                                                     </p>
                                                     <p class="text-white mb-0">{{ $nfc_card->nfcData->email_work }}

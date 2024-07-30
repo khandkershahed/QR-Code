@@ -1,4 +1,4 @@
-<ul class="nav nav-tabs nav-pills flex-row border-0 flex-md-column mb-3 mb-md-0 fs-6 w-100 pb-3" role="tablist" style="height: 101vh;">
+<ul class="nav nav-tabs nav-pills flex-row border-0 flex-md-column mb-3 mb-md-0 fs-6 w-100 pb-3" role="tablist">
     <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
         <a class="nav-link active w-100 btn btn-flex btn-active-info fs-6 fw-normal" data-bs-toggle="tab"
             href="#generalInfo" aria-selected="false" role="tab" tabindex="-1">
@@ -511,7 +511,7 @@
                         opacity="1" data-original="#fbc700"></path>
                 </g>
             </svg>
-            <span class="ps-2">Welcome Notice</span>
+            <span class="ps-2 text-start">Welcome Notice</span>
         </a>
     </li>
     <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
@@ -734,7 +734,7 @@
                         opacity="1" data-original="#6464ff"></path>
                 </g>
             </svg>
-            <span class="ps-2">Social links - Website</span>
+            <span class="ps-2 text-start">Social links</span>
         </a>
     </li>
     <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
@@ -818,7 +818,7 @@
                         opacity="1" data-original="url(#b)"></path>
                 </g>
             </svg>
-            <span class="ps-2">Terms & Condition</span>
+            <span class="ps-2 text-start"">Terms</span>
         </a>
     </li>
     <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
@@ -1129,7 +1129,7 @@
                         opacity="1" data-original="#4073c8" class=""></path>
                 </g>
             </svg>
-            <span class="ps-2">Setting Section</span>
+            <span class="ps-2 text-start">Edit Section</span>
         </a>
     </li>
 </ul>
