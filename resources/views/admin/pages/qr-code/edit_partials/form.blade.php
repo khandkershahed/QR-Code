@@ -64,8 +64,8 @@
             <p class="text-center mb-0">Upload Your Image or Link Here For QR Code.</p>
         </div>
         <div class="row pt-4">
-            <div class="d-flex align-items-center">
-                <x-metronic.label for="qr_data_image" class="form-label">{{ __('Upload Image') }}</x-metronic.label>
+            <div class="">
+                <x-metronic.label for="qr_data_image" class="form-label">{{ __('Upload Image') }}</x-metronic.label> <br>
                 <x-metronic.input id="qr_data_image" type="file" name="qr_data_image" :value="old('qr_data_image')"
                     placeholder="Upload Image" />
             </div>

@@ -45,7 +45,7 @@
             <div class="card card-p-0 card-flush p-3 mt-10">
                 <div class="py-2 px-2">
                     <div class="card-title">
-                        <h2 class="mb-0">List Of Your QRs</h2>
+                        <h2 class="mb-0">List Of Your QR</h2>
                     </div>
                 </div>
                 <div class="card-body">

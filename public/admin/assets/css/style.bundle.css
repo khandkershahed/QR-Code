@@ -54772,13 +54772,13 @@ label.rating-label:hover ~ .rating-label > i {
     display: none;
 }
 
-.stepper.stepper-pills .stepper-item.completed .stepper-label .stepper-title,
+/* .stepper.stepper-pills .stepper-item.completed .stepper-label .stepper-title,
 .stepper.stepper-pills
     .stepper-item.current:last-child
     .stepper-label
     .stepper-title {
     color: #ffffff;
-}
+} */
 
 .stepper.stepper-pills .stepper-item.completed .stepper-label .stepper-desc,
 .stepper.stepper-pills

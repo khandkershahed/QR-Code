@@ -74,14 +74,14 @@
         'value' => 'audio',
         'title' => 'Audio',
         'text' => 'Link to your phone number for quick calls',
-        'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/business-page.svg',
+        'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/mp3.svg',
     ],
     [
         'id' => 12,
         'value' => 'business_page',
         'title' => 'Business Page',
-        'text' => 'Link to your phone number for quick calls',
-        'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/mp3.svg',
+        'text' => 'Share your Business',
+        'image' => 'https://dashboard.uniqode.com/assets/img/dynamic-qr/business-page.svg',
     ],
     [
         'id' => 13,

@@ -3,12 +3,12 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="card mt-10">
-                    <div class="card-body">
+                    <div class="card-body p-0">
                         <div class="stepper stepper-pills p-0" id="generateQRCode">
-                            <div class="stepper-nav flex-center flex-wrap mb-10 fv-row">
+                            <div class="stepper-nav flex-center flex-wrap mb-10 fv-row bg-info">
                                 <div class="stepper-item mx-2 my-4 current" data-kt-stepper-element="nav"
                                     data-kt-stepper-action="step">
-                                    <div class="stepper-line w-40px"></div>
+                                    {{-- <div class="stepper-line w-40px"></div> --}}
 
                                     <div class="stepper-icon w-40px h-40px">
                                         <i class="stepper-check fas fa-check"></i>
@@ -16,7 +16,7 @@
                                     </div>
 
                                     <div class="stepper-label">
-                                        <h3 class="stepper-title">
+                                        <h3 class="stepper-title ps-2 pe-2">
                                             Input Data
                                         </h3>
                                     </div>
@@ -32,7 +32,7 @@
                                     </div>
 
                                     <div class="stepper-label">
-                                        <h3 class="stepper-title">
+                                        <h3 class="stepper-title px-3">
                                             Customize
                                         </h3>
                                     </div>
@@ -48,7 +48,7 @@
                                     </div>
 
                                     <div class="stepper-label">
-                                        <h3 class="stepper-title">
+                                        <h3 class="stepper-title px-3">
                                             Done
                                         </h3>
                                     </div>
@@ -108,7 +108,7 @@
                                     </div>
                                 </div>
 
-                                <div class="d-flex flex-stack">
+                                <div class="d-flex flex-stack p-5">
                                     <div class="me-2">
                                         <button type="button" class="btn btn-light btn-active-light-primary"
                                             data-kt-stepper-action="previous">
@@ -134,10 +134,12 @@
             <div class="col-lg-3">
                 <div class="card mt-10 bg-transparent shadow-sm ">
                     {{-- position-fixed --}}
+                    <div class="stepper-nav flex-center flex-wrap p-9 fv-row bg-info">
+                        <h3 class="text-center text-white">Preview</h3>
+                    </div>
                     <div class="card-body bg-transparent ">
                         <div class="d-flex flex-column justify-content-center align-items-center">
                             {{-- id="generatedQRCodeContainer" --}}
-                            <h3>Preview</h3>
                             <div id="generatedQRCodeContainer">
                                 <div class="preview">
                                     <img id="generatedQRCode" class="img-fluid generatedQRCode" src="{{ $qr->qr_png_url }}" alt="QR Code">
