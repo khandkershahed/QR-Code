@@ -73,11 +73,11 @@
                                                         <div class="col-lg-4 d-flex justify-content-center align-items-center">
                                                             <div>
                                                                 <img class="img-fluid"
-                                                                    src="{{ asset($barCodeImage->image) }}"
+                                                                    src="{{ asset('storage/'.$barCodeImage->image) }}"
                                                                     alt="">
                                                             </div>
                                                             <div>
-                                                                <a href="{{ asset($barCodeImage->image) }}" class="menu-link px-3"
+                                                                <a href="{{ asset('storage/'.$barCodeImage->image) }}" class="menu-link px-3"
                                                                     download data-kt-docs-table-filter="edit_row">
                                                                     Download
                                                                 </a>
@@ -148,7 +148,7 @@
                                     @endif --}}
                                     @if (!empty($bar_code->bar_code_pdf))
                                         <div class="menu-item px-3">
-                                            <a href="{{ asset($bar_code->bar_code_pdf) }}" class="menu-link px-3"
+                                            <a href="{{ asset('storage/'.$bar_code->bar_code_pdf) }}" class="menu-link px-3"
                                                 download data-kt-docs-table-filter="edit_row">
                                                 PDF
                                             </a>
