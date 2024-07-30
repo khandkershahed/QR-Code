@@ -70,7 +70,7 @@
     }
 
     .main-content-tem2 {
-        margin-top: 45px;
+        margin-top: 190px;
     }
 
     .half {
@@ -156,20 +156,20 @@
             <div class="card_two border-0 card-two-front rounded-0">
                 <div>
                     <!-- Company Logo -->
-                    <div class="d-flex justify-content-center template-two-logo-ebox">
+                    {{-- <div class="d-flex justify-content-center template-two-logo-ebox">
                         @if (!empty($nfc_card->card_logo) && file_exists(public_path('storage/nfc/' . $nfc_card->card_logo)))
                             <img class="img-fluid card_logo" width="100px"
                                 src="{{ asset('storage/nfc/' . $nfc_card->card_logo) }}" alt="" />
                         @endif
-                    </div>
+                    </div> --}}
 
                     <!-- Front Info -->
                     <div class=" template-two-title main-content-tem2">
-                        <h1 class="text-white text-center card_name">{{ $nfc_card->card_name }}</h1>
-                        <p class="text-center card_designation">{{ $nfc_card->card_designation }}</p>
+                        <h3 class="text-white text-center card_name">{{ $nfc_card->card_name }}</h3>
+                        <p class="text-center card_designation pb-5">{{ $nfc_card->card_designation }}</p>
                         {{-- <p class="pb-4 text-white text-start tow-company-name">
                             GoFlixza</p> --}}
-                        <div class="half">
+                        <div class="half pt-3">
                             <div class="icons-box-two text-center">
                                 <i class="fas fa-phone"></i>
                             </div>
@@ -191,7 +191,7 @@
                             <div class="icons-box-two text-center">
                                 <i class="fas fa-envelope"></i>
                             </div>
-                            <div class="ps-5 ps-lg-4">
+                            <div class="ps-5 ps-lg-4" style="width: 80%;">
                                 <p class="mb-0 text-start ps-2 card_email">{{ $nfc_card->card_email }}</p>
                             </div>
                         </div>
@@ -210,13 +210,11 @@
 
                     <!-- Front Info -->
                     <div class="template-two-title pt-5"
-                        style="width: 60%;margin: auto;margin-top: 90px;margin-left: 45px;">
+                        style="text-align: center;width: 100%;margin: auto;margin-top: 80px;">
                         <div class="half mt-4">
                             <div class="">
-                                <i class="fa-solid fa-envelope"></i>
-                            </div>
-                            <div class="ps-3">
                                 <p class="mb-0 card_email">{{ $nfc_card->card_email }}</p>
+                                <p class="mb-0 card_phone">{{ $nfc_card->card_phone }}</p>
                             </div>
                         </div>
                     </div>

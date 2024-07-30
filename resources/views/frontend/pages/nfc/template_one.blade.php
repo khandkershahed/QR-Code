@@ -488,7 +488,8 @@
                                             <div>
                                                 <div class="d-flex align-items-center">
                                                     <div class="bg-white p-3">
-                                                        <i class="fa-solid fa-flag-usa social_icons text-black fs-3"></i>
+                                                        <i
+                                                            class="fa-solid fa-flag-usa social_icons text-black fs-3"></i>
                                                     </div>
                                                     <div class="text-white ps-3">
                                                         <small class="mb-0">Country</small>
@@ -574,7 +575,8 @@
                                                     </div>
                                                 </div> --}}
                                                 <div class="col-md-12 pe-0">
-                                                    <div style="display: flex;justify-content: center;align-items: center;">
+                                                    <div
+                                                        style="display: flex;justify-content: center;align-items: center;">
                                                         @if (!empty($company->company_facebook))
                                                             <a href="{{ $company->company_facebook }}"
                                                                 class="btn btn-dark rounded-0 mb-2">

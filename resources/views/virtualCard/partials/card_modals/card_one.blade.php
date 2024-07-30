@@ -1,11 +1,13 @@
 <style>
     @import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
 
-    .card-container {
+    .card-container-one {
         display: flex;
         justify-content: center;
         align-items: center;
-        /* height: 100vh; */
+        height: auto;
+        width: 80%;
+        margin: auto;
     }
 
     .nfc_card_one {
@@ -17,7 +19,7 @@
         margin: 10px;
     }
 
-    .card-front {
+    .card-front-one {
         background-image: url({{ asset('frontend/images/card_images/card_one_front.png') }});
         background-repeat: no-repeat;
         background-size: cover;
@@ -26,7 +28,7 @@
         box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     }
 
-    .card-back {
+    .card-back-one {
         background-image: url({{ asset('frontend/images/card_images/card_one_back.png') }});
         background-repeat: no-repeat;
         background-size: cover;
@@ -57,7 +59,7 @@
         padding: 10px;
     }
 
-    .card-back p {
+    .card-back-one p {
         font-size: 15px;
     }
 
@@ -73,8 +75,8 @@
 
     @media (max-width: 1350px) {
 
-        .punch-card-container,
-        .punch-card-container-back {
+        .punch-card-container-one,
+        .punch-card-container-one-back {
             max-width: 100%;
         }
 
@@ -97,8 +99,8 @@
 
 <div class="container">
     <div class="row mt-5">
-        <div class="card-container">
-            <div class="nfc_card_one border-0 card-front rounded-0">
+        <div class="card-container-one">
+            <div class="nfc_card_one border-0 card-front-one rounded-0">
                 <div>
                     <!-- Company Logo -->
                     <div class="d-flex justify-content-center template-logo-ebox">
@@ -116,7 +118,7 @@
                     </div>
                 </div>
             </div>
-            <div class="nfc_card_one border-0 card-back rounded-0">
+            <div class="nfc_card_one border-0 card-back-one rounded-0">
                 <div>
                     <!-- Company Logo -->
                     <div class="d-flex justify-content-center template-logo-back">
