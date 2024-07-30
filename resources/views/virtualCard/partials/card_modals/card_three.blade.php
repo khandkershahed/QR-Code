@@ -255,9 +255,9 @@
                 <div class="credit-card-inner d-flex justify-content-center align-items-center"
                     style="background-color: #cccccc6e; border-radius: 20px">
                     <div>
-                        @if (!empty($nfc_card->nfc_qr) && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc_qr)))
+                        @if (!empty($nfc_card->nfc->nfc_qr) && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc->nfc_qr)))
                             <img class="nfc_qr" width="100px"
-                                src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}" alt="" />
+                                src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc->nfc_qr) }}" alt="" />
                         @endif
                     </div>
                 </div>

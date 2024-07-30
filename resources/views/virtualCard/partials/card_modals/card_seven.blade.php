@@ -101,9 +101,9 @@
                 <div class="col-4 d-flex justify-content-start align-items-center font">
                     <div class="">
                         <div class="d-flex justify-content-center">
-                            @if (!empty($nfc_card->nfc_qr) && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc_qr)))
+                            @if (!empty($nfc_card->nfc->nfc_qr) && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc->nfc_qr)))
                             <img class="img-fluid bg-white nfc_qr" style="width: 100px;"
-                                src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}" alt="" />
+                                src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc->nfc_qr) }}" alt="" />
                         @endif
                         </div>
                     </div>
