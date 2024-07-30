@@ -1,60 +1,68 @@
 <style>
-    .card-mail-one {
-        position: relative;
-        top: 35px;
-        text-align: center;
-        color: #0e3648;
+    @import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+    .card-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* height: 100vh; */
     }
 
-    .title-devider-tem-one {
-        height: 2px;
-        width: 120px;
-        background-color: #0e3648;
-        margin: auto;
-        position: relative;
-        left: 30px;
+    .nfc_card_one {
+        width: 100%;
+        /* max-width: 300px; */
+        height: 520px;
+        aspect-ratio: 300 / 285;
+        /* Maintain the aspect ratio */
+        margin: 10px;
     }
 
-    .punch-card-container-back-one {
-        height: 23vh;
-        object-fit: fill;
+    .card-front-one {
+        background-image: url(https://i.ibb.co/kQDKvJG/bg.png);
         background-repeat: no-repeat;
         background-size: cover;
+        object-fit: cover;
         background-position: center;
-        border-radius: 5px;
+        /* box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
     }
 
-    .punch-card-logo,
-    .punch-card-qr,
-    .punch-card-logo-back {
-        max-width: 100%;
+    .card-back-one {
+        background-image: url(https://i.ibb.co/9ZQZ3FB/gradient.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        object-fit: cover;
+        background-position: center;
+        /* box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
     }
 
-    .content-area {
-        color: #0e3648;
+    .template-logo-ebox {
+        margin-top: 230px;
     }
 
-    .card_name_one {
-        color: #0e3648;
-        font-weight: bold;
+    .template-logo-back {
+        margin-top: 75px;
     }
 
-    .card_designation_one,
-    .card_phone_one,
-    .card_email_one,
-    .card_address_one {
-        color: #0e3648;
-        font-weight: bold;
+    .template-title {
+        font-family: "Chakra Petch", sans-serif;
+        font-weight: 800;
+        color: white;
     }
 
-    .tem-one-main-color {
-        color: #0e3648;
+    .icons-box {
+        background-color: #fff;
+        color: #000;
+        width: 100px;
+        height: 40px;
+        padding: 10px;
     }
 
-    .fa-phone,
-    .fa-envelope,
-    .fa-map-marker-alt {
-        margin-left: 5px;
+    .card-back-one p {
+        font-size: 15px;
+    }
+
+    .nfc_qr {
+        width: 210px;
     }
 
     @media (max-width: 767px) {
@@ -66,55 +74,96 @@
             top: 20px;
         }
     }
+
+    @media (max-width: 1350px) {
+
+        .punch-card-container,
+        .punch-card-container-back {
+            max-width: 100%;
+        }
+
+        .nfc-preview-box {
+            width: 335px;
+            margin: auto;
+            height: auto;
+        }
+
+        .nfc_card_one {
+            width: 100%;
+            height: 430px;
+        }
+
+        .template-logo-back {
+            margin-top: 30px;
+        }
+
+        .nfc_qr {
+            width: 125px;
+        }
+
+        .main-content-tem2 h1 {
+            margin-left: -25px;
+        }
+    }
 </style>
 
-<div class="row mt-5">
-    <div class="col-12">
-        <!-- Visiting Card Box Container -->
-        <div class="punch-card-container mb-2" style="background-image: url('https://i.ibb.co/cgBNBXk/5073118.gif');">
-            <div class="row p-5 align-items-center">
-                <div class="col-lg-4 text-center text-lg-start">
-                    <div class="ps-lg-4">
-                        <img class="punch-card-logo card_logo" src="https://i.ibb.co/BNBTVN4/logo.png" alt="Logo" />
+<div class="container">
+    <div class="row mt-5">
+        <div class="card-container">
+            <div class="nfc_card_one border-0 card-front-one rounded-0">
+                <div>
+                    <!-- Company Logo -->
+                    <div class="d-flex justify-content-center template-logo-ebox">
+                        <img class="img-fluid card_logo" width="100px" src="https://i.ibb.co/CWsWHTM/lgoo.png"
+                            alt="" />
                     </div>
-                    <div class="mt-4 mt-lg-0">
-                        <img class="punch-card-qr" src="https://i.ibb.co/M7KMQC0/qr.png" alt="QR Code"
-                            style="width: 200px;background-size: contain;height: 100px;text-align: start;margin-bottom: 0px !important;display: flex;justify-content: start;position: relative;left: 0px;object-fit: contain;" />
+
+                    <!-- Front Info -->
+                    <div class="text-center template-title">
+                        <h2 class="card_name text-white">GoFlixza</h2>
+                        <p class="card_designation text-white">Frontend Designer</p>
+                        {{-- <h3 class="pt-4 mb-0">Rasheduzzaman</h3> --}}
                     </div>
                 </div>
-                <div class="col-lg-8 mt-4 mt-lg-0">
-                    <div class="text-center text-lg-end content-area">
-                        <h4 class="fw-bold mb-0 card_name">Robert Bruno</h4>
-                        <p class="fw-bold mb-0 card_designation">Frontend Developer</p>
-                        <div class="me-auto mt-2 title-devider-tem-one"></div>
-                        <div>
-                            <p class="fw-bold pt-3 mb-0">
-                                <span class="card_phone">015 7661 4451</span> <i
-                                    class="fas fa-phone tem-one-main-color "></i>
-                            </p>
-                            <p class="fw-bold mb-0">
-                                <span class="card_email">goflixza@mail.com</span> <i
-                                    class="fas fa-envelope tem-one-main-color "></i>
-                            </p>
+            </div>
+            <div class="nfc_card_one border-0 card-back-one rounded-0">
+                <div>
+                    <!-- Company Logo -->
+                    <div class="d-flex justify-content-center template-logo-back">
+                        <img class="img-fluid bg-white nfc_qr" width="150px"
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/800px-QR_code_for_mobile_English_Wikipedia.svg.png"
+                            alt="" />
+                    </div>
+
+                    <!-- Front Info -->
+                    <div class="template-title pt-5" style="width: 60%; margin: auto">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <div class="icons-box w-25 text-center">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="ps-3 w-75">
+                                <p class="mb-0 card_phone">01620222616</p>
+                            </div>
                         </div>
-                        <div>
-                            <p class="fw-bold mb-0">
-                                <span class="card_address">New York, United States</span> <i
-                                    class="fas fa-map-marker-alt tem-one-main-color"></i>
-                            </p>
+                        <div class="d-flex justify-content-center align-items-center mt-4">
+                            <div class="icons-box w-25 text-center">
+                                <i class="fa-solid fa-house-flag"></i>
+                            </div>
+                            <div class="ps-3 w-75">
+                                <p class="mb-0 card_address">Khilkhet, Dhaka, Bangladesh</p>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center mt-4">
+                            <div class="icons-box w-25 text-center">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="ps-3 w-75">
+                                <p class="mb-0 card_email">info@gmail.com</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="punch-card-container-back" style="background-image: url('https://i.ibb.co/sVxG7gh/2.gif');">
-            <div class="row p-5 align-items-center" style="height: 27.5vh;">
-                <div class="col-12 d-flex justify-content-center align-items-center">
-                    <img class="punch-card-logo-back card_logo pt-8" src="https://i.ibb.co/BNBTVN4/logo.png"
-                        alt="Logo Back" />
-                </div>
-            </div>
-        </div>
-        <!-- Visiting Card Box Container End-->
     </div>
 </div>

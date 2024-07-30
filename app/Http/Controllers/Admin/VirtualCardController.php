@@ -339,15 +339,19 @@ class VirtualCardController extends Controller
         $totalScans = count($maps);
 
         foreach ($locations as $map) {
-            $city = $map->cityName;
-            if (!isset($cities[$city])) {
-                $cities[$city] = [
-                    'state_province' => $map->regionName,
-                    'country' => $map->countryName,
-                    'scans' => 1,
-                ];
-            } else {
-                $cities[$city]['scans']++;
+
+            if ($map) {
+                $city = $map->cityName ?? 'Not Available';
+
+                if (!isset($cities[$city])) {
+                    $cities[$city] = [
+                        'state_province' => $map->regionName,
+                        'country' => $map->countryName,
+                        'scans' => 1,
+                    ];
+                } else {
+                    $cities[$city]['scans']++;
+                }
             }
         }
 
@@ -359,7 +363,10 @@ class VirtualCardController extends Controller
             'totalScans' => $totalScans,
             'users'      => $users,
         ];
-        return view('user.pages.nfc-card.show', $data);
+        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
+        $view = $isUserRoute ? 'user.pages.nfc-card.show' : 'admin.pages.nfc-card.show';
+        return view($view, $data);
+        // return view('user.pages.nfc-card.show', $data);
     }
 
     /**
@@ -448,10 +455,25 @@ class VirtualCardController extends Controller
         return response()->json(['success' => true]);
     }
 
+    // public function checkUrlAlias(Request $request)
+    // {
+    //     $urlAlias = $request->query('url_alias');
+    //     $isUnique = !NfcCard::where('url_alias', $urlAlias)->exists();
+
+    //     return response()->json(['is_unique' => $isUnique]);
+    // }
     public function checkUrlAlias(Request $request)
     {
         $urlAlias = $request->query('url_alias');
-        $isUnique = !NfcCard::where('url_alias', $urlAlias)->exists();
+        $id = $request->query('card_id');
+
+        // Check if url_alias is unique, excluding the current record if updating
+        $query = NfcCard::where('url_alias', $urlAlias);
+        if ($id) {
+            $query->where('id', '!=', $id);
+        }
+
+        $isUnique = !$query->exists();
 
         return response()->json(['is_unique' => $isUnique]);
     }

@@ -3,16 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 
+use App\Models\VirtualCard;
 use Illuminate\Http\Request;
-use App\Models\Admin\NfcCard;
 
+use App\Models\Admin\NfcCard;
 use App\Http\Controllers\Controller;
+
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Storage;
 use App\Models\Admin\NfcShippingDetails;
-use App\Models\VirtualCard;
 
 
 class NfcCardController extends Controller
@@ -23,8 +25,8 @@ class NfcCardController extends Controller
         $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
         $user = Auth::user();
         $nfc_cards = $isUserRoute
-            ? NfcCard::with('nfcData', 'nfcMessages', 'virtualCard', 'shippingDetails')->where('user_id', $user->id)->latest('id')->get()
-            : NfcCard::with('nfcData', 'nfcMessages', 'virtualCard', 'shippingDetails')->latest('id')->get();
+            ? VirtualCard::with('nfc', 'shippingDetails')->where('user_id', $user->id)->latest('id')->get()
+            : VirtualCard::with('nfc', 'shippingDetails')->latest('id')->get();
 
         $view = $isUserRoute ? 'user.pages.virtualCard.index' : 'admin.pages.virtualCard.index';
 
@@ -39,11 +41,13 @@ class NfcCardController extends Controller
      */
     public function create()
     {
+        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
         $user = Auth::user();
         $data = [
-            'nfc_cards' => NfcCard::with('nfcData')->where('user_id', $user->id)->latest('id')->get(),
+            'nfc_cards' => $isUserRoute
+                ? NfcCard::with('nfcData', 'nfcMessages', 'virtualCard', 'shippingDetails')->where('user_id', $user->id)->latest('id')->get()
+                : NfcCard::with('nfcData', 'nfcMessages', 'virtualCard', 'shippingDetails')->latest('id')->get(),
         ];
-        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
         $view = $isUserRoute ? 'user.pages.virtualCard.create' : 'admin.pages.virtualCard.create';
         return view($view, $data);
         // return view('user.pages.virtualCard.create', $data);
@@ -103,7 +107,7 @@ class NfcCardController extends Controller
             }
 
             // Create VirtualCard
-            VirtualCard::create([
+            $card = VirtualCard::create([
                 'card_id'               => $request->card_id,
                 'virtual_card_template' => $request->virtual_card_template,
                 'card_logo'             => $uploadedFiles['card_logo']['status'] == 1 ? $uploadedFiles['card_logo']['file_name'] : null,
@@ -120,7 +124,7 @@ class NfcCardController extends Controller
 
             // Create NfcShippingDetails
             NfcShippingDetails::create([
-                'card_id'              => $request->card_id,
+                'card_id'              => $card->id,
                 'shipping_name'        => $request->shipping_name,
                 'shipping_phone'       => $request->shipping_phone,
                 'shipping_address'     => $request->shipping_address,
@@ -173,6 +177,38 @@ class NfcCardController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+
+        $nfc = VirtualCard::with('shippingDetails')->findOrFail($id);
+
+        // Define the files and file path
+        $files = [
+            'card_logo'     => $nfc->card_logo,
+            'card_bg_front' => $nfc->card_bg_front,
+            'card_bg_back'  => $nfc->card_bg_back,
+        ];
+
+        $filePath = 'public/nfc/';
+
+        // Delete the files if they exist
+        foreach ($files as $file) {
+            if (!empty($file) && Storage::exists($filePath . $file)) {
+                Storage::delete($filePath . $file);
+            }
+        }
+
+        // Delete the shipping details
+        if ($nfc->shippingDetails) {
+            $nfc->shippingDetails->delete();
+        }
+
+        // Delete the virtual card
+        $nfc->delete();
+    }
+
+    public function getNfcData(Request $request)
+    {
+        $nfc = NfcCard::with('nfcData')->where('id', $request->card_id)->first();
+        $nfcData = $nfc->nfcData;
+        return response()->json(['nfc' => $nfc,'nfcData' => $nfcData]);
     }
 }

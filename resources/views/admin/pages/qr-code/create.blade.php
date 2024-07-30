@@ -5,7 +5,7 @@
                 <div class="card-body p-0">
                     <div class="stepper stepper-pills" id="kt_stepper_example_clickable">
                         <div class="stepper-nav flex-center flex-wrap steaper-header">
-                            <div class="stepper-item mx-3 my-4 p-0 current" data-kt-stepper-element="nav"
+                            <div class="stepper-item mx-3 my-4 p-0 rounded-0  current" data-kt-stepper-element="nav"
                                 data-kt-stepper-action="step">
                                 <div class="stepper-wrapper d-flex align-items-center">
                                     <div class="stepper-icon w-40px h-40px me-2">
@@ -22,7 +22,7 @@
                                 <div class="stepper-line h-40px"></div>
                             </div>
 
-                            <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
+                            <div class="stepper-item mx-3 my-4 p-0 rounded-0 " data-kt-stepper-element="nav"
                                 data-kt-stepper-action="step">
                                 <div class="stepper-wrapper d-flex align-items-center">
                                     <div class="stepper-icon w-40px h-40px me-2">
@@ -40,7 +40,7 @@
                                 <div class="stepper-line h-40px"></div>
                             </div>
 
-                            <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
+                            <div class="stepper-item mx-3 my-4 p-0 rounded-0 " data-kt-stepper-element="nav"
                                 data-kt-stepper-action="step">
                                 <div class="stepper-wrapper d-flex align-items-center">
                                     <div class="stepper-icon w-40px h-40px me-2">
@@ -58,7 +58,7 @@
                                 <div class="stepper-line h-40px"></div>
                             </div>
 
-                            <div class="stepper-item mx-3 my-4 p-0" data-kt-stepper-element="nav"
+                            <div class="stepper-item mx-3 my-4 p-0 rounded-0 " data-kt-stepper-element="nav"
                                 data-kt-stepper-action="step">
                                 <div class="stepper-wrapper d-flex align-items-center">
                                     <div class="stepper-icon w-40px h-40px me-2">
@@ -172,10 +172,12 @@
                                                 class="spinner-border spinner-border-sm align-middle ms-2"></span>
                                         </span>
                                     </button>
-
-                                    <button type="button" class="btn btn-primary">
+                                    <button type="button" class="btn btn-primary" data-kt-stepper-action="next">
                                         Continue
                                     </button>
+                                    {{-- <button type="button" class="btn btn-primary">
+                                        Continue
+                                    </button> --}}
                                 </div>
                             </div>
                         </form>
@@ -188,8 +190,8 @@
             <div class="card">
                 <div class="card-header px-0 border-0">
                     <div class="d-flex flex-column justify-content-center align-items-center"
-                        style="width: 100%; background: #0098da3d; border-top-left-radius: 5px; border-top-right-radius: 5px; padding: 15px;">
-                        <h3 class="">Preview</h3>
+                        style="width: 100%; background: #7239e9; border-top-left-radius: 5px; border-top-right-radius: 5px; padding: 15px;">
+                        <h3 class="text-white">Preview</h3>
                     </div>
                 </div>
                 <div class="card-body custom-card-body overflow-auto px-0 mx-auto">

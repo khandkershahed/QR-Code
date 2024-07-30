@@ -88,16 +88,16 @@
                                 <option value="EAN5" @selected(old('barcode_pattern' == 'EAN5'))>EAN5</option>
                                 <option value="EAN8" @selected(old('barcode_pattern' == 'EAN8'))>EAN8</option>
                                 <option value="EAN13" @selected(old('barcode_pattern' == 'EAN13'))>EAN13</option>
-                                <option value="UPCA" @selected(old('barcode_pattern' == 'UPCA'))>UPCA</option>
+                                {{-- <option value="UPCA" @selected(old('barcode_pattern' == 'UPCA'))>UPCA</option> --}}
                                 <option value="UPCE" @selected(old('barcode_pattern' == 'UPCE'))>UPCE</option>
-                                <option value="MSI" @selected(old('barcode_pattern' == 'MSI'))>MSI</option>
+                                {{-- <option value="MSI" @selected(old('barcode_pattern' == 'MSI'))>MSI</option> --}}
                                 <option value="MSI+" @selected(old('barcode_pattern' == 'MSI+'))>MSI+</option>
-                                <option value="POSTNET" @selected(old('barcode_pattern' == 'POSTNET'))>POSTNET</option>
-                                <option value="PLANET" @selected(old('barcode_pattern' == 'PLANET'))>PLANET</option>
-                                <option value="RMS4CC" @selected(old('barcode_pattern' == 'RMS4CC'))>RMS4CC</option>
-                                <option value="KIX" @selected(old('barcode_pattern' == 'KIX'))>KIX</option>
-                                <option value="IMB" @selected(old('barcode_pattern' == 'IMB'))>IMB</option>
-                                <option value="CODABAR" @selected(old('barcode_pattern' == 'CODABAR'))>CODABAR</option>
+                                {{-- <option value="POSTNET" @selected(old('barcode_pattern' == 'POSTNET'))>POSTNET</option> --}}
+                                {{-- <option value="PLANET" @selected(old('barcode_pattern' == 'PLANET'))>PLANET</option> --}}
+                                {{-- <option value="RMS4CC" @selected(old('barcode_pattern' == 'RMS4CC'))>RMS4CC</option> --}}
+                                {{-- <option value="KIX" @selected(old('barcode_pattern' == 'KIX'))>KIX</option> --}}
+                                {{-- <option value="IMB" @selected(old('barcode_pattern' == 'IMB'))>IMB</option> --}}
+                                {{-- <option value="CODABAR" @selected(old('barcode_pattern' == 'CODABAR'))>CODABAR</option> --}}
                                 <option value="CODE11" @selected(old('barcode_pattern' == 'CODE11'))>CODE11</option>
                                 <option value="PHARMA" @selected(old('barcode_pattern' == 'PHARMA'))>PHARMA</option>
                                 <option value="PHARMA2T" @selected(old('barcode_pattern' == 'PHARMA2T'))>PHARMA2T</option>
@@ -282,78 +282,78 @@
             }
 
             // Function to handle form submission
-            $('.bar_code_create_form').submit(function(e) {
-                e.preventDefault(); // Prevent default form submission
+            // $('.bar_code_create_form').submit(function(e) {
+            //     e.preventDefault(); // Prevent default form submission
 
-                var form = $(this);
-                var formData = new FormData(form[0]);
-                var isValid = true;
+            //     var form = $(this);
+            //     var formData = new FormData(form[0]);
+            //     var isValid = true;
 
-                // Remove any existing error messages and red borders
-                form.find('.error-message').remove();
-                form.find('.form-control').removeClass('is-invalid');
+            //     // Remove any existing error messages and red borders
+            //     form.find('.error-message').remove();
+            //     form.find('.form-control').removeClass('is-invalid');
 
-                // Validate each required field
-                form.find('[name="product_name"], [name="bar_code_quantity"]').each(function() {
-                    var fieldValue = $(this).val().trim();
-                    if (!fieldValue) {
-                        // Show error message for the current field
-                        $(this).addClass('is-invalid');
-                        $(this).after(
-                            '<p class="error-message text-danger">This field is required.</p>');
-                        isValid = false;
-                    }
-                });
+            //     // Validate each required field
+            //     form.find('[name="product_name"], [name="bar_code_quantity"]').each(function() {
+            //         var fieldValue = $(this).val().trim();
+            //         if (!fieldValue) {
+            //             // Show error message for the current field
+            //             $(this).addClass('is-invalid');
+            //             $(this).after(
+            //                 '<p class="error-message text-danger">This field is required.</p>');
+            //             isValid = false;
+            //         }
+            //     });
 
-                if (isValid) {
-                    // Perform AJAX form submission
-                    $.ajax({
-                        url: form.attr('action'), // Form action URL
-                        type: 'POST',
-                        data: formData,
-                        processData: false,
-                        contentType: false,
-                        success: function(response) {
-                            // Optionally handle success response
-                            // For example, show success message with SweetAlert
-                            Swal.fire({
-                                text: 'Form submitted successfully!',
-                                icon: 'success',
-                                buttonsStyling: false,
-                                confirmButtonText: 'Ok, got it!',
-                                customClass: {
-                                    confirmButton: 'btn btn-primary'
-                                }
-                            });
-                        },
-                        error: function(xhr, status, error) {
-                            console.error('Failed to submit form.', error);
+            //     if (isValid) {
+            //         // Perform AJAX form submission
+            //         $.ajax({
+            //             url: form.attr('action'), // Form action URL
+            //             type: 'POST',
+            //             data: formData,
+            //             processData: false,
+            //             contentType: false,
+            //             success: function(response) {
+            //                 // Optionally handle success response
+            //                 // For example, show success message with SweetAlert
+            //                 Swal.fire({
+            //                     text: 'Form submitted successfully!',
+            //                     icon: 'success',
+            //                     buttonsStyling: false,
+            //                     confirmButtonText: 'Ok, got it!',
+            //                     customClass: {
+            //                         confirmButton: 'btn btn-primary'
+            //                     }
+            //                 });
+            //             },
+            //             error: function(xhr, status, error) {
+            //                 console.error('Failed to submit form.', error);
 
-                            // Show SweetAlert error message for AJAX error
-                            Swal.fire({
-                                text: 'Failed to submit form. Please try again later.',
-                                icon: 'error',
-                                buttonsStyling: false,
-                                confirmButtonText: 'Ok, got it!',
-                                customClass: {
-                                    confirmButton: 'btn btn-primary'
-                                }
-                            });
-                        }
-                    });
-                } else {
-                    // Show SweetAlert error message for validation errors
-                    Swal.fire({
-                        text: 'Some input fields are not filled up!',
-                        icon: 'error',
-                        buttonsStyling: false,
-                        confirmButtonText: 'Ok, got it!',
-                        customClass: {
-                            confirmButton: 'btn btn-primary'
-                        }
-                    });
-                }
-            });
+            //                 // Show SweetAlert error message for AJAX error
+            //                 Swal.fire({
+            //                     text: 'Failed to submit form. Please try again later.',
+            //                     icon: 'error',
+            //                     buttonsStyling: false,
+            //                     confirmButtonText: 'Ok, got it!',
+            //                     customClass: {
+            //                         confirmButton: 'btn btn-primary'
+            //                     }
+            //                 });
+            //             }
+            //         });
+            //     } else {
+            //         // Show SweetAlert error message for validation errors
+            //         Swal.fire({
+            //             text: 'Some input fields are not filled up!',
+            //             icon: 'error',
+            //             buttonsStyling: false,
+            //             confirmButtonText: 'Ok, got it!',
+            //             customClass: {
+            //                 confirmButton: 'btn btn-primary'
+            //             }
+            //         });
+            //     }
+            // });
 
             // Optional: Hide error message and remove red border on input change
             $('.bar_code_create_form input, .bar_code_create_form select').on('input change', function() {

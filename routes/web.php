@@ -141,6 +141,7 @@ Route::post('newsletter/store', [NewsLetterController::class, 'store'])
 
 
 Route::get('/check-url-alias', [VirtualCardController::class, 'checkUrlAlias']);
+Route::get('/get-nfc-data', [NfcCardController::class, 'getNfcData']);
 Route::post('general-info/store', [VirtualCardFormController::class, 'generalInfoStore'])->name('nfc.general_info.add');
 Route::post('business-hours/store', [VirtualCardFormController::class, 'businessHoursStore'])->name('nfc.business_hours.add');
 Route::post('social-links/store', [VirtualCardFormController::class, 'socialLinksStore'])->name('nfc.social_links.add');

@@ -114,6 +114,7 @@
                             <option value=""></option>
                             <option value="nfc" @selected($plan->type == 'nfc')>NFC</option>
                             <option value="qr" @selected($plan->type == 'qr')>QR</option>
+                            <option value="barcode" @selected($plan->type == 'barcode')>BarCode</option>
                         </x-metronic.select-option>
                     </div>
 

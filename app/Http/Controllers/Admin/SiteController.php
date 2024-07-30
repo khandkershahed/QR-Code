@@ -44,8 +44,6 @@ class SiteController extends Controller
 
         $webSetting = Site::firstOrNew([]);
 
-        $webSetting                = Site::firstOrNew([]);
-
         $siteIconMainFile          = $request->file('site_icon');
         // dd($siteIconMainFile);
         $systemLogoWhiteMainFile   = $request->file('system_logo_white');
@@ -67,7 +65,7 @@ class SiteController extends Controller
                     }
                 }
             }
-            $globalFunSiteIcon  = uploadImage($siteIconMainFile, $siteIconUploadPath);
+            $globalFunSiteIcon  = customUpload($siteIconMainFile, $siteIconUploadPath, $name = 'site_icon');
         } else {
             $globalFunSiteIcon = ['status' => 0];
         }
@@ -84,7 +82,7 @@ class SiteController extends Controller
                     }
                 }
             }
-            $globalFunSystemLogoWhite  = uploadImage($systemLogoWhiteMainFile, $systemLogoWhiteUploadPath);
+            $globalFunSystemLogoWhite  = customUpload($systemLogoWhiteMainFile, $systemLogoWhiteUploadPath, $name = 'system_logo_white');
         } else {
             $globalFunSystemLogoWhite = ['status' => 0];
         }
@@ -101,7 +99,7 @@ class SiteController extends Controller
                     }
                 }
             }
-            $globalFunSystemLogoBlack  = uploadImage($systemLogoBlackMainFile, $systemLogoBlackUploadPath);
+            $globalFunSystemLogoBlack  = customUpload($systemLogoBlackMainFile, $systemLogoBlackUploadPath, $name = 'system_logo_black');
         } else {
             $globalFunSystemLogoBlack = ['status' => 0];
         }

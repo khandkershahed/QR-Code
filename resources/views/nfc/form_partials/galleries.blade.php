@@ -47,7 +47,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{ route('nfc.gallery.destroy', $gallery->id) }}" class="text-danger"
+                                    <a href="javascript:void(0)" class="text-danger"
                                         onclick="deleteGallery(event, '{{ route('nfc.gallery.destroy', $gallery->id) }}')">Delete
                                         <i class="fa-solid fa-trash text-danger"></i></a>
                                 </td>
@@ -87,10 +87,10 @@
                         </div>
                         <div class="fv-row col-lg-6 col-12 mb-5">
                             <x-metronic.label class="fw-semibold fs-6 mb-3">Choose Gallery Type</x-metronic.label>
-                            <select class="form-select" id="galleryTypeSelect" data-control="select2"
+                            <select class="form-control select" id="galleryTypeSelect"
                                 data-placeholder="Choose Gallery Type" name="gallery_type"
                                 onchange="toggleGalleryType()">
-                                <option value="" selected disabled>Choose Gallery Type</option>
+                                <option value="">Choose Gallery Type</option>
                                 <option value="image" @selected(old('gallery_type') == 'image')>Image</option>
                                 <option value="video" @selected(old('gallery_type') == 'video')>Video</option>
                             </select>
@@ -176,149 +176,35 @@
 @push('scripts')
     <script>
         function toggleGalleryType() {
-            var galleryType = document.getElementById('galleryTypeSelect').value;
-            var chooseImage = document.getElementById('chooseImage');
-            var chooseVideo = document.getElementById('chooseVideo');
+            var galleryType = $('#galleryTypeSelect').val();
+            var chooseImage = $('#chooseImage');
+            var chooseVideo = $('#chooseVideo');
 
             if (galleryType === 'image') {
-                chooseImage.style.display = 'block';
-                chooseVideo.style.display = 'none';
+                chooseImage.show();
+                chooseVideo.hide();
             } else if (galleryType === 'video') {
-                chooseImage.style.display = 'none';
-                chooseVideo.style.display = 'block';
+                chooseImage.hide();
+                chooseVideo.show();
             } else {
-                chooseImage.style.display = 'none';
-                chooseVideo.style.display = 'none';
+                chooseImage.hide();
+                chooseVideo.hide();
             }
         }
-    </script>
-    <script>
         $(document).ready(function() {
-            // Function to toggle between image and video sections based on selection
-            function toggleGalleryType() {
-                var galleryType = $('#galleryTypeSelect').val();
-                var chooseImage = $('#chooseImage');
-                var chooseVideo = $('#chooseVideo');
-
-                if (galleryType === 'image') {
-                    chooseImage.show();
-                    chooseVideo.hide();
-                } else if (galleryType === 'video') {
-                    chooseImage.hide();
-                    chooseVideo.show();
-                } else {
-                    chooseImage.hide();
-                    chooseVideo.hide();
-                }
-            }
-
             // Initial call to set the correct section visibility on page load
             toggleGalleryType();
-
             // Handle changes in gallery type select
             $('#galleryTypeSelect').on('change', function() {
                 toggleGalleryType();
             });
-
-            // Function to submit the gallery form
-            function submitGalleryForm(event) {
-                event.preventDefault(); // Prevent default form submission
-
-                var form = $('.gallery_form');
-                var url = form.attr('action');
-                var formData = new FormData(form[0]);
-                var gallery_container = $('.gallery_container');
-                var modalElement = document.getElementById('galleryCreateModal');
-                var modalInstance = bootstrap.Modal.getInstance(modalElement);
-                var submitButton = form.find('.kt_docs_formvalidation_text_submit');
-                var isValid = true;
-
-                // Remove any existing error messages and red borders
-                form.find('.error-message').remove();
-                form.find('.form-control').removeClass('is-invalid');
-
-                // Validate each required field (adjust field names as needed)
-                form.find('[name="gallery_title"], [name="gallery_type"]')
-                    .each(function() {
-                        var fieldValue = $(this).val().trim();
-                        if (!fieldValue) {
-                            // Show error message for the current field
-                            $(this).addClass('is-invalid');
-                            $(this).after('<p class="error-message text-danger">This field is required.</p>');
-                            isValid = false;
-                        }
-                    });
-
-                if (isValid) {
-                    // Disable the submit button to prevent multiple submissions
-                    submitButton.prop('disabled', true).addClass('disabled');
-
-                    $.ajax({
-                        type: 'POST',
-                        url: url,
-                        data: formData,
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        beforeSend: function() {
-                            // Show loading spinner or indicator
-                            submitButton.find('.indicator-label').hide();
-                            submitButton.find('.indicator-progress').show();
-                        },
-                        success: function(response) {
-                            console.log('Form submitted successfully:', response);
-                            if (response.gallery_view) {
-                                console.log('Updating container with new HTML');
-                                modalInstance.hide(); // Use Bootstrap's modal hide method
-                                gallery_container.html(response.gallery_view); // Replace HTML directly
-                                toastr.success('Data saved successfully!', 'Success');
-                            } else {
-                                console.error('Unexpected response format:', response);
-                                toastr.error('Unexpected response format.', 'Error');
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            console.error('Error:', error);
-                            toastr.error('An error occurred while saving data.', 'Error');
-                        },
-                        complete: function() {
-                            submitButton.prop('disabled', false).removeClass('disabled');
-                            submitButton.find('.indicator-label').show();
-                            submitButton.find('.indicator-progress').hide();
-                        }
-                    });
-                } else {
-                    // Show SweetAlert error message for validation errors
-                    Swal.fire({
-                        text: 'Some input fields are not filled up!',
-                        icon: 'error',
-                        buttonsStyling: false,
-                        confirmButtonText: 'Ok, got it!',
-                        customClass: {
-                            confirmButton: 'btn btn-primary'
-                        }
-                    });
-                }
-            }
-
-            // Attach the submit handler to the gallery form
-            $('.gallery_form').on('submit', function(event) {
-                submitGalleryForm(event);
-            });
-
-            // Re-enable the submit button when any input field is changed
-            $('.gallery_form input, .gallery_form select').on('input change', function() {
-                var submitButton = $('.gallery_form').find('.kt_docs_formvalidation_text_submit');
-                submitButton.prop('disabled', false).removeClass('disabled');
-                $(this).removeClass('is-invalid');
-                $(this).next('.error-message').remove();
-            });
         });
     </script>
+
     <script>
-        function deleteTestimonial(event, deleteUrl) {
+        function deleteGallery(event, deleteUrl) {
             event.preventDefault(); // Prevent the default link action
-            var gallery_form = $('.gallery_form');
+            var gallery_container = $('.gallery_container');
             Swal.fire({
                 title: "Are you sure?",
                 text: "You won't be able to revert this!",
@@ -340,25 +226,118 @@
                             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
                         },
                         success: function(response) {
-                            $('.gallery_form').html('');
-                            $('.gallery_form').html(response
-                                .testimonial_delete_view); // Replace HTML directly
-                            Swal.fire("Deleted!", "Your service has been deleted.", "success").then(
+                            $('.gallery_container').html('');
+                            $('.gallery_container').html(response
+                                .gallery_delete_view); // Replace HTML directly
+                            Swal.fire("Deleted!", "Your gallery has been deleted.", "success").then(
                                 function() {
                                     console.log('Updating container with new HTML');
                                 });
                             console.log('Updating container with new HTML');
-                            toastr.success('Service deleted successfully!', 'Success');
+                            toastr.success('gallery deleted successfully!', 'Success');
                         },
                         error: function(xhr, status, error) {
                             Swal.fire("Error Occurred!",
-                                "An error occurred while deleting the service.", "error");
+                                "An error occurred while deleting the gallery.", "error");
                         },
                     });
                 } else if (result.dismiss === Swal.DismissReason.cancel) {
-                    Swal.fire("Cancelled", "Your service is safe :)", "error");
+                    Swal.fire("Cancelled", "Your gallery is safe :)", "error");
                 }
             });
         }
+    </script>
+    <script>
+        function submitGalleryForm() {
+            // Detach any existing event handler to prevent multiple bindings
+            $('.gallery_form').off('submit').on('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                var form = $(this);
+                var url = form.attr('action');
+                var formData = new FormData(form[0]);
+                var submitButton = form.find('.kt_docs_formvalidation_text_submit');
+                var modalElement = document.getElementById('galleryCreateModal');
+                var modalInstance = bootstrap.Modal.getInstance(modalElement);
+                var isValid = true;
+
+                // Remove any existing error messages and red borders
+                form.find('.text-danger').hide().text('');
+                form.find('.form-control').removeClass('is-invalid');
+
+                // Validate required fields
+                form.find('[name="gallery_title"], [name="gallery_type"]').each(function() {
+                    var fieldValue = $(this).val().trim();
+                    if (!fieldValue) {
+                        // Show error message for the current field
+                        $(this).addClass('is-invalid');
+                        $(this).after('<p class="error-message text-danger">This field is required.</p>');
+                        isValid = false;
+                    }
+                });
+
+                if (isValid) {
+                    // Disable the submit button to prevent multiple submissions
+                    submitButton.prop('disabled', true).addClass('disabled');
+
+                    $.ajax({
+                        type: 'POST',
+                        url: url,
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        beforeSend: function() {
+                            submitButton.find('.indicator-label').hide();
+                            submitButton.find('.indicator-progress').show();
+                        },
+                        success: function(response) {
+                            if (response.gallery_view) {
+                                // Update form with new values
+                                $('.gallery_container').html(response.gallery_view);
+
+                                toastr.success('Data saved successfully!', 'Success');
+                                // Reattach the event handler to the new form
+                                submitGalleryForm();
+                                modalInstance.hide();
+                            } else {
+                                toastr.error('Unexpected response format.', 'Error');
+                            }
+                        },
+                        error: function(xhr) {
+                            let errors = xhr.responseJSON.errors;
+                            for (let key in errors) {
+                                $(`#${key}_feedback`).text(errors[key][0]).show();
+                            }
+                            toastr.error('An error occurred while saving data.', 'Error');
+                        },
+                        complete: function() {
+                            submitButton.prop('disabled', false).removeClass('disabled');
+                            submitButton.find('.indicator-label').show();
+                            submitButton.find('.indicator-progress').hide();
+                        }
+                    });
+                } else {
+                    Swal.fire({
+                        text: 'Some input fields are not filled up!',
+                        icon: 'error',
+                        buttonsStyling: false,
+                        confirmButtonText: 'Ok, got it!',
+                        customClass: {
+                            confirmButton: 'btn btn-primary'
+                        }
+                    });
+                }
+            });
+
+            // Optional: Hide error message and remove red border on input change
+            $('.gallery_form input, .gallery_form select').off('input change').on('input change', function() {
+                $(this).removeClass('is-invalid');
+                $(this).next('.text-danger').hide().text('');
+            });
+        }
+
+        $(document).ready(function() {
+            submitGalleryForm(); // Bind form submission event handler on document ready
+        });
     </script>
 @endpush

@@ -202,24 +202,7 @@
             });
         });
     </script>
-    {{-- Download XLSX Demo File --}}
-    <script>
-        // document.addEventListener('DOMContentLoaded', function() {
-        //     const downloadXlsxBtn = document.getElementById('downloadXlsxBtn');
 
-        //     downloadXlsxBtn.addEventListener('click', function() {
-        //         // Assuming the XLSX file URL is stored in a variable or hardcoded
-        //         const xlsxUrl = 'path_to_your_xlsx_file.xlsx';
-
-        //         // Create a temporary anchor element to initiate the download
-        //         const downloadAnchor = document.createElement('a');
-        //         downloadAnchor.href = xlsxUrl;
-        //         downloadAnchor.download = 'demo.xlsx'; // Specify the filename you want users to download
-        //         downloadAnchor.click();
-        //     });
-        // });
-    </script>
-    {{-- Show No XLSX File Selected --}}
     {{-- Fixed Column Height --}}
     <script>
         function setEqualHeight() {
@@ -295,7 +278,7 @@
     <script>
         function generateRandomSerial() {
             // Generate a random 9-digit number
-            const randomSerial = Math.floor(Math.random() * 900000000) + 100000000;
+            const randomSerial = Math.floor(Math.random() * 9000000000) + 1000000000;
             // Set the generated number as the value of the input field
             document.getElementById('product-id-input').value = randomSerial;
         }
