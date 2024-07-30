@@ -9,8 +9,9 @@
                         <th width="20%">Image</th>
                         {{-- <th width="10%">Virtual Card</th> --}}
                         <th width="25%">Name </th>
-                        <th width="15%">Link</th>
+                        <th width="15%">VCard Page</th>
                         <th width="15%">QR</th>
+                        <th width="15%">Request NFC</th>
                         <th width="15%" class="text-center">Action</th>
                     </tr>
                 </thead>
@@ -75,7 +76,7 @@
                             </td>
                             <td>
                                 <a href="{{ $nfc_card->nfc_url }}" target="_blank" class="text-primary">
-                                    <button class="btn btn-sm btn-info">NFC <i class="fas fa-link ps-2"></i></button>
+                                    <button class="btn btn-sm btn-info">VCard <i class="fas fa-link ps-2"></i></button>
                                 </a>
                             </td>
                             <td>
@@ -83,6 +84,13 @@
                                     data-bs-target="#virtual_card_modal_{{ $nfc_card->id }}" class="text-primary">
                                     <button class="btn btn-sm btn-info"><i class="fas fa-eye pe-2"></i>
                                         QR</button>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="javascript:void(0)" data-bs-toggle="modal"
+                                    data-bs-target="#virtual_card_modal_{{ $nfc_card->id }}" class="text-primary">
+                                    <button class="btn btn-sm btn-info"><i class="fas fa-eye pe-2"></i>
+                                       Request NFC</button>
                                 </a>
                             </td>
 

@@ -131,7 +131,7 @@ class VirtualCardController extends Controller
         $qrFileName = $code . '_nfc_qr.png';
         $qrCodePath = '../public/storage/nfc/qrs/' . $qrFileName;
 
-        QrCode::size(300)->format('png')->margin(2)->errorCorrection('H')->encoding('UTF-8')->generate($nfc_url, $qrCodePath);
+        // QrCode::size(300)->format('png')->margin(2)->errorCorrection('H')->encoding('UTF-8')->generate($nfc_url, $qrCodePath);
 
         $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
         $userId = $isUserRoute ? Auth::user()->id : null;
