@@ -375,7 +375,7 @@
                         'image' => 'frontend/images/eye_ball/square-shape.svg',
                     ],
                     [
-                        'id' => 311,
+                        'id' => 312,
                         'value' => 'rounded-square',
                         'image' => 'frontend/images/eye_ball/rounded-square.svg',
                     ],
