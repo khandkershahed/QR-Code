@@ -108,12 +108,8 @@
                                 <x-metronic.label for="gallery_link"
                                     class="col-form-label fw-bold fs-6">{{ __('Youtube Video') }}</x-metronic.label>
                                 <x-metronic.input type="text" class="form-control form-control-solid form-control-sm"
-                                    name="gallery_link" id="gallery_link" required placeholder="stUArCsWBt8"
+                                    name="gallery_link" id="gallery_link" required placeholder="Add youtube video url"
                                     :value="old('gallery_link')" />
-                                 <p class="text-danger pt-2">Just upload the youtube video id, demo in image</p>
-                                 <div>
-                                    <img class="img-fluid" src="https://i.ibb.co/PQrRRCy/Screenshot-2.png" alt="">
-                                 </div>
                             </div>
                         </div>
                     </div>
