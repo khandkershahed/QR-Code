@@ -543,8 +543,9 @@ class BarCodeController extends Controller
             $row = array_combine($headers, $row);
 
             if (!isset($row['Product ID']) || !isset($row['Product Name']) || !isset($row['Product Price']) || !isset($row['Per Page'])) {
-                Session::flash('error', 'Missing data in row: ' . $row);
-                Log::warning('Missing data in row: ', $row);
+                $rowJson = json_encode($row);
+                Session::flash('error', 'Missing data in row: ' . $rowJson);
+                Log::warning('Missing data in row: ' . $rowJson);
                 continue;
             }
             // dd($row['Product ID']);
