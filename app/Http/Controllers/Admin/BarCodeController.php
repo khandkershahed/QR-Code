@@ -411,7 +411,7 @@ class BarCodeController extends Controller
 
                 $filename = $code . '_barcode_page_' . $currentPage . '.png';
                 Storage::put('public/barcodes/images/' . $filename, $mergedImage);
-                
+
                 $htmlContent = '<img src="' . asset('storage/barcodes/images/' . $filename) . '" alt="barcode"/><p>Page: ' . $currentPage . ' / ' . $totalPages . '</p>';
                 $pdf->loadHTML($htmlContent);
                 BarcodeImage::create([
