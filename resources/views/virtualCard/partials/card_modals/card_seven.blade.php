@@ -72,10 +72,9 @@
                     <div>
                         <div class="d-flex justify-content-center">
                             @if (!empty($nfc_card->nfc->nfc_qr) && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc->nfc_qr)))
-                            <img class="img-fluid" style="width: 100px;" 
-                                 src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc->nfc_qr) }}" 
-                                 alt="QR Code" />
-                        @endif
+                                <img class="img-fluid" style="width: 100px;"
+                                    src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc->nfc_qr) }}" alt="QR Code" />
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -110,15 +109,12 @@
             <div class="row p-5 align-items-center">
                 <div class="col-12 d-flex justify-content-center align-items-center">
                     @if (!empty($nfc_card->card_logo) && file_exists(public_path('storage/nfc/' . $nfc_card->card_logo)))
-    <img class="punch-card-logo-back-seven card_logo"
-         src="{{ asset('storage/nfc/' . $nfc_card->card_logo) }}" 
-         alt="Card Logo" />
-@elseif (!empty($nfc_card->nfc->nfc_qr) && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc->nfc_qr)))
-    <img class="img-fluid" style="width: 100px;"
-         src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc->nfc_qr) }}" 
-         alt="QR Code" />
-@endif
-
+                        <img class="punch-card-logo-back-seven card_logo"
+                            src="{{ asset('storage/nfc/' . $nfc_card->card_logo) }}" alt="Card Logo" />
+                    @elseif (!empty($nfc_card->nfc->nfc_qr) && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc->nfc_qr)))
+                        <img class="img-fluid" style="width: 100px;"
+                            src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc->nfc_qr) }}" alt="QR Code" />
+                    @endif
                 </div>
             </div>
         </div>
