@@ -131,43 +131,34 @@
 @push('scripts')
     <script>
         function printImage(imageUrl) {
-            // Create a hidden iframe
-            var iframe = document.createElement('iframe');
-            iframe.style.position = 'absolute';
-            iframe.style.width = '0';
-            iframe.style.height = '0';
-            iframe.style.border = 'none';
-            document.body.appendChild(iframe);
+            // Create a new print window
+            var printWindow = window.open('', '_blank');
 
-            // Get the iframe document
-            var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+            // Define HTML content for the print window
+            var htmlContent = `
+                <div class="print-container text-center" style="text-align:center;">
+                    <img width="400px" src="${imageUrl}" />
+                </div>
+        `;
 
-            // Construct HTML content for the iframe
-            iframeDoc.open();
-            iframeDoc.write(`
-                <html>
-                <head>
-                    <title>Print Barcode</title>
-                    <style>
-                        body { text-align: center; margin: 0; }
-                        img { width: 100%; max-width: 600px; }
-                    </style>
-                </head>
-                <body>
-                    <img src="${imageUrl}" />
-                </body>
-                </html>
-            `);
-            iframeDoc.close();
+            // Write HTML content to the new window
+            printWindow.document.open();
+            printWindow.document.write(htmlContent);
+            printWindow.document.close();
 
-            // Print the iframe content once it's fully loaded
-            iframe.onload = function() {
-                iframe.contentWindow.focus();
-                iframe.contentWindow.print();
-                document.body.removeChild(iframe); // Remove iframe after printing
+            // Ensure content is loaded before printing
+            printWindow.onload = function() {
+                // Add a slight delay before printing to ensure all resources are fully loaded
+                setTimeout(function() {
+                    printWindow.focus();
+                    printWindow.print();
+                    printWindow.close();
+                }, 600); // Adjust delay as needed
             };
         }
     </script>
+
+
 
     <script>
         "use strict";
