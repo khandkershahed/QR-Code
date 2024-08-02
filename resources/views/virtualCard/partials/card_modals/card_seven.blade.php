@@ -71,9 +71,9 @@
                 <div class="col-lg-5 col-md-12 d-flex justify-content-center">
                     <div>
                         <div class="d-flex justify-content-center">
-                            @if (!empty($nfc_card->nfc_qr) && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc_qr)))
+                            @if (!empty($nfc_card->nfc->nfc_qr && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc->nfc_qr))
                                 <img class="img-fluid" style="width: 100px;"
-                                    src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}" alt="QR Code" />
+                                    src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc->nfc_qr }}" alt="QR Code" />
                             @endif
                         </div>
                     </div>
@@ -111,9 +111,9 @@
                     @if (!empty($nfc_card->card_logo) && file_exists(public_path('storage/nfc/' . $nfc_card->card_logo)))
                         <img class="punch-card-logo-back-seven card_logo"
                             src="{{ asset('storage/nfc/' . $nfc_card->card_logo) }}" alt="Card Logo" />
-                    @elseif (!empty($nfc_card->nfc_qr) && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc_qr)))
+                    @elseif (!empty($nfc_card->nfc->nfc_qr && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc->nfc_qr))
                         <img class="img-fluid" style="width: 100px;"
-                            src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}" alt="QR Code" />
+                            src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc->nfc_qr }}" alt="QR Code" />
                     @endif
                 </div>
             </div>
