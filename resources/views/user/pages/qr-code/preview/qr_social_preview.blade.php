@@ -6,7 +6,7 @@
     .nfc-mobile-frame {
         /* max-width: 100; */
         width: 100%;
-         
+
         /* border: 2px solid #1026bf; */
         border-radius: 20px;
         overflow: hidden;
@@ -115,7 +115,7 @@
         text-align: center;
         font-family: var(--tem-one-name-font-family);
         font-size: 40px;
-        color: #ff7355;
+        color: #fff;
     }
 
     .divider {
@@ -178,7 +178,8 @@
     <div class="row">
         <div class="col-lg-12 d-flex justify-content-center align-items-center px-0">
             <div class="nfc-mobile-frame shadow-sm">
-                <div class="card p-0 bg-none border-0 rounded-0 shadow-none bg-transparent" style="overflow-x: hidden">
+                <div class="card p-0 bg-none border-0 rounded-0 shadow-none bg-transparent"
+                    style="overflow-x: hidden;background-image: linear-gradient(to right top, #6d327c, #485DA6, #00a1ba, #00BF98, #36C486);">
                     <div
                         class="card-header bg-none border-0 rounded-0 shadow-none bg-transparent p-0 d-flex justify-content-center align-items-center">
                         <div class="text-center text-lg-center mobile-images-profile pt-5">
@@ -196,11 +197,6 @@
                                 Lorem ipsum dolor sit amet consectetur, adipisicing
                                 elit. Iure, commodi!
                             </p>
-                        </div>
-                        <div>
-                            <img class="img-fluid qr_data_social_background_image"
-                                src="https://d3nvy39jvu7woe.cloudfront.net/static/images/social_media/social_media_back.png"
-                                alt="" />
                         </div>
                         <div>
                             <p class="text-center headling-title-social mb-0">Check Here</p>
