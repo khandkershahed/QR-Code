@@ -639,7 +639,7 @@
                                                             src="{{ !empty($gallery->gallery_attachment) && file_exists(public_path('storage/nfc/gallery/' . optional($gallery)->gallery_attachment)) ? asset('storage/nfc/gallery/' . optional($gallery)->gallery_attachment) : asset('frontend/images/no_image.png') }}"
                                                             alt="" />
                                                     @else
-                                                        <iframe src="{{ optional($gallery)->gallery_attachment }}"
+                                                        <iframe src="{{ optional($gallery)->gallery_link }}"
                                                             frameborder="0"></iframe>
                                                     @endif
                                                 </div>
