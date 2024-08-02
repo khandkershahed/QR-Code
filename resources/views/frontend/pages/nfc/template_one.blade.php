@@ -999,61 +999,63 @@
                 @endif
                 <!-- Testimonial -->
                 @if ($nfc_card->testimonials_show == '1')
-                    <section>
-                        <div class="container pb-5">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="text-center">
-                                        <h1 class="special-font text-white">My Testimonial</h1>
-                                        <div class="d-flex align-items-center px-5 w-50 mx-auto">
-                                            <span class="divider-tem1"></span>
-                                            <span class="divider-tem1-icons text-center"><i
-                                                    class="fa-solid fa-diamond text-white"></i></span>
-                                            <span class="divider-tem1"></span>
+                    @if ($nfc_card->nfcTestimonial)
+                        <section>
+                            <div class="container pb-5">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="text-center">
+                                            <h1 class="special-font text-white">My Testimonial</h1>
+                                            <div class="d-flex align-items-center px-5 w-50 mx-auto">
+                                                <span class="divider-tem1"></span>
+                                                <span class="divider-tem1-icons text-center"><i
+                                                        class="fa-solid fa-diamond text-white"></i></span>
+                                                <span class="divider-tem1"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-10 col-offset-md-1 mx-auto">
+                                        <div class="testimonial-slide">
+                                            @foreach ($nfc_card->nfcTestimonial as $testimonial)
+                                                <div class="card p-0 bg-dark border-0 p-0 mt-5">
+                                                    <div class="card-body rounded-0 border-0">
+                                                        <div class="d-flex justify-content-center"
+                                                            style="margin-top: -40px">
+                                                            <img class="img-fluid" width="80px" height="80px"
+                                                                src="{{ !empty($testimonial->testimonial_image) && file_exists(public_path('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image)) ? asset('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image) : asset('frontend/images/no_image.png') }}"
+                                                                alt="" />
+                                                        </div>
+                                                        <h4 class="special-font text-white text-center pt-3">
+                                                            {{ $testimonial->testimonial_name }}
+                                                        </h4>
+                                                        {{-- <p class="text-white text-center pt-3">
+                                                        Real Estate Broker
+                                                    </p> --}}
+                                                        <p class="mb-0 text-white text-center">
+                                                            {{ $testimonial->testimonial_description }}
+                                                        </p>
+                                                        <div class="d-flex justify-content-center pt-3">
+                                                            <a href="" style="text-decoration: none">
+                                                                <i class="fa-solid fa-star text-warning"></i>
+                                                            </a>
+                                                            <a href="" style="text-decoration: none">
+                                                                <i class="fa-solid fa-star text-warning"></i>
+                                                            </a>
+                                                            <a href="" style="text-decoration: none">
+                                                                <i class="fa-solid fa-star text-warning"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-10 col-offset-md-1 mx-auto">
-                                    <div class="testimonial-slide">
-                                        @foreach ($nfc_card->nfcTestimonial as $testimonial)
-                                            <div class="card p-0 bg-dark border-0 p-0 mt-5">
-                                                <div class="card-body rounded-0 border-0">
-                                                    <div class="d-flex justify-content-center"
-                                                        style="margin-top: -40px">
-                                                        <img class="img-fluid" width="80px" height="80px"
-                                                            src="{{ !empty($testimonial->testimonial_image) && file_exists(public_path('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image)) ? asset('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image) : asset('frontend/images/no_image.png') }}"
-                                                            alt="" />
-                                                    </div>
-                                                    <h4 class="special-font text-white text-center pt-3">
-                                                        {{ $testimonial->testimonial_name }}
-                                                    </h4>
-                                                    {{-- <p class="text-white text-center pt-3">
-                                                        Real Estate Broker
-                                                    </p> --}}
-                                                    <p class="mb-0 text-white text-center">
-                                                        {{ $testimonial->testimonial_description }}
-                                                    </p>
-                                                    <div class="d-flex justify-content-center pt-3">
-                                                        <a href="" style="text-decoration: none">
-                                                            <i class="fa-solid fa-star text-warning"></i>
-                                                        </a>
-                                                        <a href="" style="text-decoration: none">
-                                                            <i class="fa-solid fa-star text-warning"></i>
-                                                        </a>
-                                                        <a href="" style="text-decoration: none">
-                                                            <i class="fa-solid fa-star text-warning"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+                        </section>
+                    @endif
                 @endif
                 <!-- Testimonial -->
                 @if ($nfc_card->show_qr_code == '1')

@@ -1423,8 +1423,8 @@
                                                             src="{{ !empty($gallery->gallery_attachment) && file_exists(public_path('storage/nfc/gallery/' . optional($gallery)->gallery_attachment)) ? asset('storage/nfc/gallery/' . optional($gallery)->gallery_attachment) : asset('frontend/images/no_image.png') }}"
                                                             alt="" />
                                                     @else
-                                                    <iframe src="{{ optional($gallery)->gallery_attachment }}"
-                                                        frameborder="0"></iframe>
+                                                        <iframe src="{{ optional($gallery)->gallery_attachment }}"
+                                                            frameborder="0"></iframe>
                                                     @endif
                                                 </div>
                                             </div>
@@ -1435,6 +1435,7 @@
                         @endif
                         <!-- Testimonial -->
                         @if ($nfc_card->testimonials_show == '1')
+                        @if ($nfc_card->nfcTestimonial)
                             <div class="row pt-5">
                                 <div class="col-sm-12">
                                     <div class="text-center">
@@ -1477,21 +1478,22 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- SHape -->
-                            @if (!empty($nfc_card->nfc_qr) && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc_qr)))
-                                <div class="qr-code-img">
-                                    {{-- Demo QR Here Place Your Actual QR --}}
-                                    <img class="img-fluid"
-                                        src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
-                                        alt="">
-                                </div>
-                                <div class="tem3-footer-shape">
-                                    <p class="text-center text-white special-font" style="position: relative; top: 5px">
-                                        Scan Me
-                                    </p>
-                                </div>
-                            @endif
                         @endif
+                        @endif
+                        <!-- SHape -->
+                        @if (!empty($nfc_card->nfc_qr) && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc_qr)))
+                            <div class="qr-code-img">
+                                {{-- Demo QR Here Place Your Actual QR --}}
+                                <img class="img-fluid" src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
+                                    alt="">
+                            </div>
+                            <div class="tem3-footer-shape">
+                                <p class="text-center text-white special-font" style="position: relative; top: 5px">
+                                    Scan Me
+                                </p>
+                            </div>
+                        @endif
+
                     </div>
                 </section>
                 <!-- Footer -->

@@ -652,60 +652,69 @@
                     @endif
                     <!-- Testimonial -->
                     @if ($nfc_card->testimonials_show == '1')
-                        <section>
-                            <div class="container pb-5">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="text-center">
-                                            <h1 class="special-font text-white">My Testimonial</h1>
+                        @if ($nfc_card->nfcTestimonial)
+                            <section>
+                                <div class="container pb-5">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="text-center">
+                                                <h1 class="special-font text-white">My Testimonial</h1>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-10 col-offset-md-1 mx-auto">
-                                        <div class="testimonial-slide">
-                                            @foreach ($nfc_card->nfcTestimonial as $testimonial)
-                                                <div class="card p-0 bg-white border-0 p-0 mt-5">
-                                                    <div class="card-body rounded-0 border-0 d-flex">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-sm-4">
-                                                                <div class="d-flex justify-content-center">
-                                                                    <img class="img-fluid rounded-3" width="100px"
-                                                                        height="100px" style="object-fit: fill"
-                                                                        src="{{ !empty($testimonial->testimonial_image) && file_exists(public_path('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image)) ? asset('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image) : asset('frontend/images/no_image.png') }}"
-                                                                        alt="" />
+                                    <div class="row">
+                                        <div class="col-md-10 col-offset-md-1 mx-auto">
+                                            <div class="testimonial-slide">
+                                                @foreach ($nfc_card->nfcTestimonial as $testimonial)
+                                                    <div class="card p-0 bg-white border-0 p-0 mt-5">
+                                                        <div class="card-body rounded-0 border-0 d-flex">
+                                                            <div class="row align-items-center">
+                                                                <div class="col-sm-4">
+                                                                    <div class="d-flex justify-content-center">
+                                                                        <img class="img-fluid rounded-3"
+                                                                            width="100px" height="100px"
+                                                                            style="object-fit: fill"
+                                                                            src="{{ !empty($testimonial->testimonial_image) && file_exists(public_path('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image)) ? asset('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image) : asset('frontend/images/no_image.png') }}"
+                                                                            alt="" />
+                                                                    </div>
+                                                                    <h4 class="special-font text-center pt-3">
+                                                                        {{ $testimonial->testimonial_name }}
+                                                                    </h4>
+                                                                    <div class="d-flex justify-content-center">
+                                                                        <a href=""
+                                                                            style="text-decoration: none">
+                                                                            <i
+                                                                                class="fa-solid fa-star text-warning"></i>
+                                                                        </a>
+                                                                        <a href=""
+                                                                            style="text-decoration: none">
+                                                                            <i
+                                                                                class="fa-solid fa-star text-warning"></i>
+                                                                        </a>
+                                                                        <a href=""
+                                                                            style="text-decoration: none">
+                                                                            <i
+                                                                                class="fa-solid fa-star text-warning"></i>
+                                                                        </a>
+                                                                    </div>
                                                                 </div>
-                                                                <h4 class="special-font text-center pt-3">
-                                                                    {{ $testimonial->testimonial_name }}
-                                                                </h4>
-                                                                <div class="d-flex justify-content-center">
-                                                                    <a href="" style="text-decoration: none">
-                                                                        <i class="fa-solid fa-star text-warning"></i>
-                                                                    </a>
-                                                                    <a href="" style="text-decoration: none">
-                                                                        <i class="fa-solid fa-star text-warning"></i>
-                                                                    </a>
-                                                                    <a href="" style="text-decoration: none">
-                                                                        <i class="fa-solid fa-star text-warning"></i>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-8">
-                                                                <div>
-                                                                    <p class="mb-0 text-justify">
-                                                                        {{ $testimonial->testimonial_description }}
-                                                                    </p>
+                                                                <div class="col-sm-8">
+                                                                    <div>
+                                                                        <p class="mb-0 text-justify">
+                                                                            {{ $testimonial->testimonial_description }}
+                                                                        </p>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            @endforeach
+                                                @endforeach
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </section>
+                            </section>
+                        @endif
                     @endif
                     <!-- Testimonial -->
                     <section>
