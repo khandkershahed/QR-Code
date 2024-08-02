@@ -351,8 +351,8 @@ class BarCodeController extends Controller
             $padding = 30;
             $barcodesPerRow = 4;
             $barcodesPerPage = $perPage;
-            $maximumWidth = 2000;
-            $maximumHeight = 2000;
+            $maximumWidth = 1000;
+            $maximumHeight = 1000;
             $htmlContent = '';
 
             // Create BarCode record
