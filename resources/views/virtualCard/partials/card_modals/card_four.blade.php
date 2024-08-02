@@ -175,7 +175,7 @@
             <div class="card-four border-0 card-four-back rounded-0">
                 <div>
                     <!-- Company Logo -->
-                    <div class="tem-4-logo">
+                    <div class="tem-4-logo pt-4">
                         <div class="d-flex align-items-center">
                             @if (!empty($nfc_card->card_logo) && file_exists(public_path('storage/nfc/' . $nfc_card->card_logo)))
                                 <img class="img-fluid card_logo" width="100px"

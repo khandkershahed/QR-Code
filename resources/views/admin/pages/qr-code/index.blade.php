@@ -5,7 +5,7 @@
         <div class="col-lg-12">
             <div class="card border-transparent mt-10" data-bs-theme="light" style="background-color: #1C325E;">
                 <div class="card-body row ps-xl-15 align-items-center">
-                    <div class="m-0 col-lg-10">
+                    <div class="m-0 col-lg-9">
                         <div class="position-relative fs-2x z-index-2 fw-bold text-white mb-7">
                             <span class="me-2">
                                 You have Created Total
@@ -50,7 +50,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-2">
+                    <div class="col-lg-3">
                         <div class="">
                             <div class="d-flex align-items-center justify-content-end">
                                 <a href="{{ route('admin.qr-code.create') }}" class="btn btn-info shadow-sm w-100 pulse fs-3 d-flex justify-content-center align-items-center pulse pulse-warning">
@@ -72,30 +72,25 @@
             </div>
         </div>
         <div class="col-lg-12">
-            <div class="card card-p-0 card-flush p-3 mt-10">
-                <div class="py-2 px-2">
-                    <div class="card-title">
-                        <h2 class="mb-0">List Of Your QR</h2>
-                    </div>
+            <div class="card card-p-0 card-flush mt-10 mb-5">
+                <div class="card-header bg-info align-items-center">
+                    <h1 class="mb-0 text-center w-100 text-white">Manage Your QR Code</h1>
                 </div>
                 <div class="card-body">
-                    <div>
-                        <table
-                            class="table align-middle border rounded table-row-dashed table-striped table-hover  fs-6 g-5"
-                            id="qr_code_admin">
-                            <thead>
-                                <tr class="text-gray-500 fw-bold fs-7 text-uppercase text-center">
-                                    <th width="5">SL</th>
-                                    <th width="10">Image</th>
-                                    <th width="35">Content</th>
-                                    <th width="15">Type</th>
-                                    <th width="10">Scaned</th>
-                                    <th width="10">Status</th>
-                                    <th width="15">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody class="fw-semibold text-gray-600">
-                                @foreach ($qrs as $qr)
+                    <table class="table my-datatable table-striped table-row-bordered gy-5 gs-7 border rounded">
+                        <thead>
+                            <tr class="fw-bold fs-6 text-gray-800 px-7">
+                                <th width="5">SL</th>
+                                <th width="10" class="text-center">Image</th>
+                                <th width="40">Content</th>
+                                <th width="15">Type</th>
+                                <th width="10">Scaned</th>
+                                <th width="10" class="text-center">Status</th>
+                                <th width="10" class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($qrs as $qr)
                                     <tr class="odd text-center">
                                         <td>
                                             {{ $loop->iteration }}
@@ -103,7 +98,7 @@
                                         <td>
                                             <img class="img-fluid w-50px" src="{{ $qr->qr_png_url }}" alt="">
                                         </td>
-                                        <td data-order="2022-03-10T14:40:00+05:00">
+                                        <td data-order="2022-03-10T14:40:00+05:00" class="text-start">
                                             {{-- title --}}
                                             <span><span class="fw-bold text-black">Title :
                                                 </span>{{ $qr->qr_name }}</span><br>
@@ -235,9 +230,8 @@
                                         </td>
                                     </tr>
                                 @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

@@ -111,7 +111,7 @@
                     </div>
 
                     <!-- Front Info -->
-                    <div class="text-center template-title">
+                    <div class="text-center template-title pt-5">
                         <h2 class="card_name text-white">{{ $nfc_card->card_name }}</h2>
                         <p class="card_designation text-white">{{ $nfc_card->card_designation }}</p>
                         {{-- <h3 class="pt-4 mb-0">Rasheduzzaman</h3> --}}

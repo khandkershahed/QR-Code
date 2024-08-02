@@ -94,6 +94,36 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
     <script src="{{ asset('admin/js/custom.js') }}"></script>
     <script>
+        class DataTableInitializer {
+            constructor(selector) {
+                this.selector = selector;
+                this.init();
+            }
+
+            init() {
+                $(this.selector).DataTable({
+                    "language": {
+                        "lengthMenu": "Show _MENU_",
+                    },
+                    "dom": "<'row mb-2'" +
+                        "<'col-sm-6 d-flex align-items-center justify-content-start dt-toolbar'l>" +
+                        "<'col-sm-6 d-flex align-items-center justify-content-end dt-toolbar'f>" +
+                        ">" +
+                        "<'table-responsive'tr>" +
+                        "<'row'" +
+                        "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
+                        "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
+                        ">"
+                });
+            }
+        }
+
+        // Initialize DataTables for elements with class 'my-datatable'
+        $(document).ready(function() {
+            new DataTableInitializer('.my-datatable');
+        });
+    </script>
+    <script>
         "use strict";
 
         // Class definition
