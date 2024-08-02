@@ -177,9 +177,9 @@
 <div class="qr_card_preview">
     <div class="row">
         <div class="col-lg-12 d-flex justify-content-center align-items-center px-0">
-            <div class="nfc-mobile-frame shadow-sm">
+            <div class="nfc-mobile-frame shadow-sm" style="margin-left: 31px !important;margin-right: 30px !important;">
                 <div class="card p-0 bg-none border-0 rounded-0 shadow-none bg-transparent"
-                    style="overflow-x: hidden;background-image: linear-gradient(to right top, #6d327c, #485DA6, #00a1ba, #00BF98, #36C486);">
+                    style="overflow-x: hidden;background: linear-gradient(to right, rgb(142, 45, 226), rgb(74, 0, 224));">
                     <div
                         class="card-header bg-none border-0 rounded-0 shadow-none bg-transparent p-0 d-flex justify-content-center align-items-center">
                         <div class="text-center text-lg-center mobile-images-profile pt-5">
@@ -189,78 +189,53 @@
                                 alt="banner" />
                         </div>
                     </div>
-                    <div class="card-body p-0">
+                    <div class="card-body p-5">
                         <div>
-                            <h1 class="fs-3 text-muted text-center qr_data_social_header">Folow Us On !</h1>
+                            <h1 class="fs-3 text-white text-center qr_data_social_header">Folow Us On !</h1>
                             <h1 class="headling-title-social qr_data_social_title">My Social Platform</h1>
-                            <p class="tex-muted text-center w-50 mx-auto qr_data_social_message">
+                            <p class="text-white text-center w-50 mx-auto qr_data_social_message">
                                 Lorem ipsum dolor sit amet consectetur, adipisicing
                                 elit. Iure, commodi!
                             </p>
                         </div>
                         <div>
-                            <p class="text-center headling-title-social mb-0">Check Here</p>
+                            <p class="text-center" style="color: white; font-size: 22px;">Check Social Links</p>
                             <div class="divider"></div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-6 offset-lg-3 mx-auto">
-                                <ul class="d-flex justify-content-center align-items-center ps-0 pt-5"
-                                    style="list-style-type: none">
-                                    <li class="qr_data_social_facebook_icon qr_data_social_icon" style="display: none;">
-                                        <a href="" class="qr_data_social_facebook">
-                                            <i class="fab fa-facebook link-icon" title="FACEBOOK"
-                                                style="background-image: linear-gradient(to bottom,transparent 20%,white 20%,transparent 93%);">
-                                            </i>
-                                        </a>
-                                    </li>
-                                    <li class="qr_data_social_instagram_icon qr_data_social_icon"
-                                        style="display: none;">
-                                        <a href="" class="qr_data_social_instagram"><i
-                                                class="fab fa-instagram link-icon" title="INSTAGRAM"></i></a>
-                                    </li>
-                                    <li class="qr_data_social_linkedin_icon qr_data_social_icon" style="display: none;">
-                                        <a href="" class="qr_data_social_linkedin"><i
-                                                class="fab fa-linkedin link-icon" title="LINKEDIN"></i></a>
-                                    </li>
-                                    <li class="qr_data_social_twitter_icon qr_data_social_icon" style="display: none;">
-                                        <a href="" class="qr_data_social_twitter"><i
-                                                class="fab fa-twitter link-icon" title="TWITTER"></i></a>
-                                    </li>
-                                </ul>
-                                <ul class="d-flex justify-content-center align-items-center ps-0"
-                                    style="list-style-type: none">
-                                    <li class="qr_data_social_youtube_icon qr_data_social_icon" style="display: none;">
-                                        <a href="" class="qr_data_social_youtube"><i
-                                                class="fab fa-youtube link-icon" title="YOUTUBE"></i></a>
-                                    </li>
-                                    <li class="qr_data_social_pinterest_icon qr_data_social_icon"
-                                        style="display: none;">
-                                        <a href="" class="qr_data_social_pinterest"><i
-                                                class="fab fa-pinterest link-icon" title="PINTEREST"></i></a>
-                                    </li>
-                                    <li class="qr_data_social_website_icon qr_data_social_icon" style="display: none;">
-                                        <a href="" class="qr_data_social_website"><i
-                                                class="fab fa-globe link-icon" title="Website"></i></a>
-                                    </li>
-                                </ul>
-                                <ul class="d-flex justify-content-center align-items-center ps-0"
-                                    style="list-style-type: none">
-                                    <li class="qr_data_social_whatsapp_icon qr_data_social_icon" style="display: none;">
-                                        <a href="" class="qr_data_social_whatsapp"><i
-                                                class="fab fa-whatsapp link-icon" title="WHATSAPP"></i></a>
-                                    </li>
-                                    <li class="qr_data_social_snapchat_icon qr_data_social_icon" style="display: none;">
-                                        <a href="" class="qr_data_social_snapchat"><i
-                                                class="fab fa-snapchat link-icon" title="SNAPCHAT"></i></a>
-                                    </li>
-                                </ul>
-                                <ul class="d-flex justify-content-center align-items-center ps-0"
-                                    style="list-style-type: none">
-                                    <li class="qr_data_social_tiktok_icon qr_data_social_icon" style="display: none;">
-                                        <a href="" class="qr_data_social_tiktok"><i
-                                                class="fab fa-tiktok link-icon" title="TIKTOK"></i></a>
-                                    </li>
-                                </ul>
+                            <div class="col-lg-10 offset-lg-1 mx-auto">
+                                <div>
+                                    <a href="" class="qr_data_social_facebook_icon btn btn-light w-100 mb-3 rounded-pill" style="display: none;">
+                                        <i class="fab fa-facebook" title="FACEBOOK"></i> Facebook
+                                    </a>
+                                    <a href="" class="qr_data_social_instagram_icon btn btn-light w-100 mb-3 rounded-pill" style="display: none;">
+                                        <i class="fab fa-instagram" title="INSTAGRAM"></i> Instagram
+                                    </a>
+                                    <a href="" class="qr_data_social_linkedin_icon btn btn-light w-100 mb-3 rounded-pill" style="display: none;">
+                                        <i class="fab fa-linkedin" title="LINKEDIN"></i> Linkedin
+                                    </a>
+                                    <a href="" class="qr_data_social_twitter_icon btn btn-light w-100 mb-3 rounded-pill" style="display: none;">
+                                        <i class="fab fa-twitter" title="Twitter"></i> Twitter
+                                    </a>
+                                    <a href="" class="qr_data_social_youtube_icon btn btn-light w-100 mb-3 rounded-pill" style="display: none;">
+                                        <i class="fab fa-youtube" title="Youtube"></i> Youtube
+                                    </a>
+                                    <a href="" class="qr_data_social_pinterest_icon btn btn-light w-100 mb-3 rounded-pill" style="display: none;">
+                                        <i class="fab fa-pinterest" title="Pinterest"></i> Pinterest
+                                    </a>
+                                    <a href="" class="qr_data_social_website_icon btn btn-light w-100 mb-3 rounded-pill" style="display: none;">
+                                        <i class="fab fa-globe" title="Website"></i> Website
+                                    </a>
+                                    <a href="" class="qr_data_social_whatsapp_icon btn btn-light w-100 mb-3 rounded-pill" style="display: none;">
+                                        <i class="fab fa-whatsapp" title="whatsapp"></i> Whatsapp
+                                    </a>
+                                    <a href="" class="qr_data_social_snapchat_icon btn btn-light w-100 mb-3 rounded-pill" style="display: none;">
+                                        <i class="fab fa-snapchat" title="snapchat"></i> Snapchat
+                                    </a>
+                                    <a href="" class="qr_data_social_tiktok_icon btn btn-light w-100 mb-3 rounded-pill" style="display: none;">
+                                        <i class="fab fa-tiktok" title="tiktok"></i> Tiktok
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>

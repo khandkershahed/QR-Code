@@ -188,7 +188,7 @@
                         <h3 class="text-white">Preview</h3>
                     </div>
                 </div>
-                <div class="card-body custom-card-body overflow-auto px-0 mx-auto">
+                <div class="card-body custom-card-body overflow-auto px-0 mx-auto d-flex justify-content-center align-items-center">
                     @include('user.pages.qr-code.partials.qr_preview')
                 </div>
             </div>
