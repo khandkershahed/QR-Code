@@ -45349,7 +45349,7 @@ input[type="color" i] {
         height: auto; /* Allow the first card to expand based on content */
     }
 }
-@media (max-width: 1350px) {
+@media (max-width: 1366px) {
     .stepper.stepper-pills .stepper-nav {
         display: flex;
         justify-content: space-around;

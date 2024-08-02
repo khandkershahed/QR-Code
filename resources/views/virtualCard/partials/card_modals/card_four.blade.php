@@ -100,7 +100,7 @@
         }
     }
 
-    @media (max-width: 1350px) {
+    @media (max-width: 1366px) {
         .tem-4-qr {
             position: relative;
             top: 300px;
@@ -147,7 +147,7 @@
                         <div class="three-content">
                             <div class="d-flex justify-content-center align-items-center">
                                 <div class="ps-3 w-75 pt-4">
-                                    <p class="mb-0 text-start ps-2 card_email">i{{ $nfc_card->card_email }}</p>
+                                    <p class="mb-0 text-start ps-2 card_email">{{ $nfc_card->card_email }}</p>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-center align-items-center pt-1">
@@ -157,7 +157,8 @@
                             </div>
                             <div class="d-flex justify-content-center align-items-center pt-2">
                                 <div class="ps-3 w-75 pt-4">
-                                    <p class="mb-0 text-start ps-2 text-black card_phone">{{ $nfc_card->card_phone }}</p>
+                                    <p class="mb-0 text-start ps-2 text-black card_phone">{{ $nfc_card->card_phone }}
+                                    </p>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-center align-items-center pt-2">
@@ -177,12 +178,9 @@
                     <div class="tem-4-logo">
                         <div class="d-flex align-items-center">
                             @if (!empty($nfc_card->card_logo) && file_exists(public_path('storage/nfc/' . $nfc_card->card_logo)))
-                            <img class="img-fluid card_logo" width="100px"
-                                src="{{ asset('storage/nfc/' . $nfc_card->card_logo) }}" alt="" />
-                        @endif
-                            {{-- <div>
-                                <h4>GoFlixza</h4>
-                            </div> --}}
+                                <img class="img-fluid card_logo" width="100px"
+                                    src="{{ asset('storage/nfc/' . $nfc_card->card_logo) }}" alt="" />
+                            @endif
                         </div>
                     </div>
                     <div class="tem-4-qr">

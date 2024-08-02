@@ -100,7 +100,7 @@
         }
     }
 
-    @media (max-width: 1350px) {
+    @media (max-width: 1366px) {
         .tem-4-qr {
             position: relative;
             top: 300px;
