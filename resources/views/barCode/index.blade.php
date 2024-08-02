@@ -70,9 +70,11 @@
                                                 <div class="row">
                                                     @foreach ($bar_code->barCodeImages as $barCodeImage)
                                                         <div class="col-lg-4 p-5">
+                                                            <div id="printableArea" style="display: none;"></div>
                                                             <div class="border-1 border-dashed py-4">
                                                                 <div>
-                                                                    <img class="img-fluid w-225px"
+                                                                    <img id="barcode-{{ $barCodeImage->id }}"
+                                                                        class="img-fluid w-225px"
                                                                         src="{{ asset('storage/' . $barCodeImage->image) }}"
                                                                         alt="">
                                                                 </div>
@@ -136,23 +138,7 @@
                                 </a>
                                 <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
                                     data-kt-menu="true" style="">
-                                    <!--begin::Menu item-->
-                                    {{-- @if (!empty($bar_code->bar_code_png))
-                                        <div class="menu-item px-3">
-                                            <a href="{{ asset($bar_code->bar_code_png) }}" class="menu-link px-3"
-                                                download data-kt-docs-table-filter="edit_row">
-                                                PNG
-                                            </a>
-                                        </div>
-                                    @endif
-                                    @if (!empty($bar_code->bar_code_jpg))
-                                        <div class="menu-item px-3">
-                                            <a href="{{ asset($bar_code->bar_code_jpg) }}" class="menu-link px-3"
-                                                download data-kt-docs-table-filter="edit_row">
-                                                JPG
-                                            </a>
-                                        </div>
-                                    @endif --}}
+
                                     @if (!empty($bar_code->bar_code_pdf))
                                         <div class="menu-item px-3">
                                             <a href="{{ asset('storage/' . $bar_code->bar_code_pdf) }}"
@@ -179,77 +165,136 @@
     <script>
         function printImage(imageId) {
             var img = document.getElementById(imageId);
-            var popup = window.open('', '_blank');
-            popup.document.write('<html><head><title>Print Barcode</title></head><body>');
-            popup.document.write('<img src="' + img.src + '" style="width:100%;">');
-            popup.document.write('</body></html>');
-            popup.document.close();
-            popup.focus();
-            popup.print();
-            popup.close();
-        }
+
+            // Check if the image element is found
+            if (!img) {
+                console.error("Image not found for ID:", imageId);
+                return;
+            }
+
+            // Get the printable area
+            var printableArea = document.getElementById('printableArea');
+
+            // Clear the printable area
+            printableArea.innerHTML = '';
+
+            // Clone the image and add it to the printable area
+            var imgClone = img.cloneNode();
+            printableArea.appendChild(imgClone);
+
+            // Print the image
+            var printWindow = window.open('', '_blank');
+            printWindow.document.open();
+            printWindow.document.write(`
+                    <html>
+                    <head>
+                        <title>Print Barcode</title>
+                        <style>
+                            /* Styles for the print page */
+                            body, html {
+                                margin: 0;
+                                padding: 0;
+                                width: 100%;
+                                height: 100%;
+                            }
+                            img {
+                                width: 100%;
+                                height: auto;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        ${printableArea.innerHTML}
+                        <script>
+                            window.onload = function() {
+                                window.print();
+                                window.close();
+                            };
     </script>
+    </body>
+
+    </html>
+    `);
+    printWindow.document.close();
+    }
+    </script>
+
     <script>
         "use strict";
 
         // Class definition
-        var KTDatatablesExample = function() {
+        var KTDatatablesExample = (function() {
             // Shared variables
             var table;
             var datatable;
 
             // Private functions
             var initDatatable = function() {
-                // Check if the DataTable is already initialized
+                // Ensure the table exists
+                if (!table) {
+                    console.error("Table not found for initialization.");
+                    return;
+                }
+
+                // Destroy existing DataTable instance if it exists
                 if ($.fn.DataTable.isDataTable(table)) {
-                    // Destroy the existing instance
                     $(table).DataTable().destroy();
                 }
 
-                // Set date data order
+                // Format the date for ordering
                 const tableRows = table.querySelectorAll('tbody tr');
 
                 tableRows.forEach(row => {
-                    const dateRow = row.querySelectorAll('td');
-                    const realDate = moment(dateRow[3].innerHTML, "DD MMM YYYY, LT")
-                        .format(); // select date from 4th column in table
-                    dateRow[3].setAttribute('data-order', realDate);
+                    const dateCell = row.querySelector(
+                        'td:nth-child(4)'); // Select date from the 4th column
+                    if (dateCell) {
+                        const realDate = moment(dateCell.innerHTML, "DD MMM YYYY, LT").format();
+                        dateCell.setAttribute('data-order', realDate);
+                    }
                 });
 
-                // Init datatable --- more info on datatables: https://datatables.net/manual/
+                // Initialize DataTable
                 datatable = $(table).DataTable({
                     "info": false,
-                    'order': [],
-                    'pageLength': 10,
+                    "order": [], // Customize ordering as needed
+                    "pageLength": 10, // Set the number of entries per page
                 });
             }
 
-            // Search Datatable --- official docs reference: https://datatables.net/reference/api/search()
-            var handleSearchDatatable = () => {
+            // Handle search input for the DataTable
+            var handleSearchDatatable = function() {
                 const filterSearch = document.querySelector('[data-kt-filter="search"]');
-                filterSearch.addEventListener('keyup', function(e) {
-                    datatable.search(e.target.value).draw();
-                });
+                if (filterSearch) {
+                    filterSearch.addEventListener('keyup', function(e) {
+                        datatable.search(e.target.value).draw();
+                    });
+                }
+            }
+
+            // Export buttons functionality (if needed)
+            var exportButtons = function() {
+                // Add export functionality here if required
             }
 
             // Public methods
             return {
                 init: function() {
-                    table = document.querySelector('#bar_code_admin_admin');
+                    table = document.querySelector('#bar_code_admin');
 
                     if (!table) {
+                        console.error("DataTable element not found.");
                         return;
                     }
 
                     initDatatable();
-                    exportButtons();
                     handleSearchDatatable();
+                    exportButtons(); // Initialize export buttons if used
                 }
             };
-        }();
+        })();
 
         // On document ready
-        KTUtil.onDOMContentLoaded(function() {
+        document.addEventListener('DOMContentLoaded', function() {
             KTDatatablesExample.init();
         });
     </script>
