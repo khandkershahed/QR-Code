@@ -105,10 +105,23 @@
         margin-top: 60px;
     }
 
-    @media only screen and (max-width: 1350px) {
-        .card_email{
-            width: 60%;
+    .card_email-box {
+        width: 70%;
+    }
+
+    .card_address-box {
+        width: 70%;
+    }
+
+    @media only screen and (max-width: 1366px) {
+        .card_email-box {
+            width: 70%;
         }
+
+        .card_address-box {
+            width: 70%;
+        }
+
         .template-two-title-back {
             margin-top: 140px;
         }
@@ -190,8 +203,8 @@
                             <div class="icons-box-two text-center">
                                 <i class="fa-solid fa-house-flag"></i>
                             </div>
-                            <div class="ps-5 ps-lg-4">
-                                <p class="mb-0 text-start ps-2 w-50 card_address">
+                            <div class="ps-5 ps-lg-4 card_address-box">
+                                <p class="mb-0 text-start ps-2 card_address">
                                     Khilkhet, Dhaka, Bangladesh
                                 </p>
                             </div>
@@ -200,7 +213,7 @@
                             <div class="icons-box-two text-center">
                                 <i class="fas fa-envelope"></i>
                             </div>
-                            <div class="ps-5 ps-lg-4">
+                            <div class="ps-5 ps-lg-4 card_email-box">
                                 <p class="mb-0 text-start ps-2 card_email">info@gmail.com</p>
                             </div>
                         </div>

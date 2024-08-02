@@ -468,7 +468,7 @@
                                         </div>
                                     @endif
                                     @if (!empty($nfc_card->nfcData->phone_personal) || !empty($nfc_card->nfcData->phone_work))
-                                        <div class="col-md-6">
+                                        <div class="col-md-6 mt-4">
                                             <div>
                                                 <div class="d-flex align-items-center">
                                                     <div class="bg-white p-3">

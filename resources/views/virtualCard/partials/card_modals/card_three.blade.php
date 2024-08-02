@@ -208,7 +208,7 @@
         }
     }
 
-    @media (max-width: 1350px) {
+    @media (max-width: 1366px) {
         .credit-card-wrap {
             width: 400px;
             height: 255px;

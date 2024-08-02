@@ -2,8 +2,8 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card border-transparent mt-10" data-bs-theme="light" style="background-color: #1C325E;">
-                <div class="card-body row ps-xl-15">
-                    <div class="m-0 col-lg-7">
+                <div class="card-body row ps-xl-15 align-items-center">
+                    <div class="m-0 col-lg-10">
                         <div class="position-relative fs-2x z-index-2 fw-bold text-white mb-7">
                             <span class="me-2">
                                 You have Created Total
@@ -67,11 +67,11 @@
                         </div>
                     </div>
 
-                    <div class=" col-lg-5">
+                    <div class="col-lg-2">
                         <div class="">
-                            <div class="d-flex align-items-center pt-20 justify-content-center ms-20">
+                            <div class="d-flex align-items-center justify-content-end">
                                 <a href="{{ route('admin.barcode.create') }}"
-                                    class="btn btn-info shadow-sm w-50 pulse fs-3 d-flex justify-content-center align-items-center pulse pulse-warning">
+                                    class="btn btn-info shadow-sm w-100 pulse fs-3 d-flex justify-content-center align-items-center pulse pulse-warning">
                                     <span class="pulse-ring"></span>
                                     <span class="pe-2 text-white">Create Barcode</span>
                                     <span>
@@ -90,10 +90,6 @@
                                         </svg>
                                     </span>
                                 </a>
-                            </div>
-                            <div>
-                                <img src="https://preview.keenthemes.com/metronic8/demo1/assets/media/illustrations/sigma-1/17-dark.png"
-                                    class="position-absolute me-3 bottom-0 end-0 create-img ps-2" alt="">
                             </div>
                         </div>
                     </div>

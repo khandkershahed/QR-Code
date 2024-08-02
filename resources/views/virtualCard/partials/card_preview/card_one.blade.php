@@ -75,7 +75,7 @@
         }
     }
 
-    @media (max-width: 1350px) {
+    @media (max-width: 1366px) {
 
         .punch-card-container,
         .punch-card-container-back {

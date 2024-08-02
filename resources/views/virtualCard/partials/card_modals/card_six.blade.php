@@ -40,7 +40,7 @@
         align-items: center;
     }
 
-    @media (max-width: 1350px) {
+    @media (max-width: 1366px) {
         .card-container {
             padding: 15px;
         }
