@@ -33,7 +33,7 @@
                 --tem-one-name-font-family: "Raleway", sans-serif !important;
                 --body-font-family: "Raleway", sans-serif !important;
                 --tem-one-designation-font-family: "Raleway", sans-serif;
-                @else
+            @else
                 --tem-one-name-font-family: "Raleway", sans-serif !important;
                 --body-font-family: "Raleway", sans-serif !important;
                 --tem-one-designation-font-family: "Raleway", sans-serif;
@@ -70,6 +70,20 @@
             color: white;
         }
 
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            padding-top: 25px;
+            height: 0;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
 
         .nfc-mobile-frame {
 
@@ -477,7 +491,8 @@
                                             @if (!empty($nfc_card->nfcData->service_section_title))
                                                 <div class="pt-4">
                                                     @if (!empty($nfc_card->nfcData->service_section_title))
-                                                        <p class="text-white w-25 text-center rounded-2 py-2 mb-0 fw-bold">
+                                                        <p
+                                                            class="text-white w-25 text-center rounded-2 py-2 mb-0 fw-bold">
                                                             {{ $nfc_card->nfcData->service_section_title }}
                                                         </p>
                                                     @endif
@@ -590,7 +605,8 @@
                                                                 <div class="fv-row my-3">
                                                                     <x-metronic.label
                                                                         class="fw-semibold fs-6 mb-2 required">Name
-                                                                        <span class="text-danger fs-1" style="position: relative;top: 0.6rem;">*</span>
+                                                                        <span class="text-danger fs-1"
+                                                                            style="position: relative;top: 0.6rem;">*</span>
                                                                     </x-metronic.label>
                                                                     <x-metronic.input type="text" name="name"
                                                                         value="{{ old('name') }}"
@@ -602,7 +618,8 @@
                                                                 <div class="fv-row my-3">
                                                                     <x-metronic.label
                                                                         class="fw-semibold fs-6 mb-2 required">Email
-                                                                        <span class="text-danger fs-1" style="position: relative;top: 0.6rem;">*</span>
+                                                                        <span class="text-danger fs-1"
+                                                                            style="position: relative;top: 0.6rem;">*</span>
                                                                     </x-metronic.label>
                                                                     <x-metronic.input type="email" name="email"
                                                                         value="{{ old('email') }}"
@@ -638,7 +655,8 @@
                                                                 <div class="fv-row my-3">
                                                                     <x-metronic.label
                                                                         class="fw-semibold fs-6 mb-2 required">Message
-                                                                        <span class="text-danger fs-1" style="position: relative;top: 0.6rem;">*</span>
+                                                                        <span class="text-danger fs-1"
+                                                                            style="position: relative;top: 0.6rem;">*</span>
                                                                     </x-metronic.label>
                                                                     <textarea class="form-control form-control-solid" rows="5" name="message" value="{{ old('message') }}"
                                                                         placeholder="Enter Message" required></textarea>

@@ -190,7 +190,7 @@
                     </div>
                     <div class="card-body p-0">
                         <div>
-                            <h1 class="fs-3 text-muted text-center qr_data_social_header">Folow Us On !</h1>
+                            <h1 class="fs-3 text-muted text-center qr_data_social_header">Folow Us On asd!</h1>
                             <h1 class="headling-title-social qr_data_social_title">My Social Platform</h1>
                             <p class="tex-muted text-center w-50 mx-auto qr_data_social_message">
                                 Lorem ipsum dolor sit amet consectetur, adipisicing

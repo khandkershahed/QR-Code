@@ -15,7 +15,9 @@
         content="{{ !empty(optional($nfc_card->nfcSeo)->site_title) ? optional($nfc_card->nfcSeo)->site_title : $nfc_card->vcard_name }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <link rel="shortcut icon" href="{{ !empty($nfc_card->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card)->profile_image) : 'https://i.ibb.co/BNBTVN4/logo.png' }}" type="image/x-icon" />
+    <link rel="shortcut icon"
+        href="{{ !empty($nfc_card->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card)->profile_image) : 'https://i.ibb.co/BNBTVN4/logo.png' }}"
+        type="image/x-icon" />
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
@@ -42,6 +44,21 @@
             --template-one-font-fmly-Roboto: "Roboto", sans-serif;
             --template-one-font-fmly-Poppins: "Poppins", sans-serif;
             --template-one-font-fmly-Raleway: "Raleway", sans-serif;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            padding-top: 25px;
+            height: 0;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
 
         .mobile-frame {
@@ -986,8 +1003,17 @@
                                                         src="{{ !empty($gallery->gallery_attachment) && file_exists(public_path('storage/nfc/gallery/' . optional($gallery)->gallery_attachment)) ? asset('storage/nfc/gallery/' . optional($gallery)->gallery_attachment) : asset('frontend/images/no_image.png') }}"
                                                         alt="" />
                                                 @else
-                                                    <iframe src="{{ optional($gallery)->gallery_link }}"
-                                                        frameborder="0"></iframe>
+                                                    {{-- <iframe width="100%" height="100%"
+                                                        src="https://www.youtube.com/embed/{{ optional($gallery)->gallery_link }}"
+                                                        title="YouTube video player" frameborder="0"
+                                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                        referrerpolicy="strict-origin-when-cross-origin"
+                                                        allowfullscreen></iframe> --}}
+                                                    <div class="video-wrapper">
+                                                        <iframe width="600" height="338"
+                                                            src="https://www.youtube.com/embed/{{ optional($gallery)->gallery_link }}"
+                                                            frameborder="0" allowfullscreen></iframe>
+                                                    </div>
                                                 @endif
                                             </div>
                                         @endforeach

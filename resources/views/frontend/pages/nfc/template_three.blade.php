@@ -15,7 +15,9 @@
         content="{{ !empty(optional($nfc_card->nfcSeo)->site_title) ? optional($nfc_card->nfcSeo)->site_title : $nfc_card->vcard_name }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <link rel="shortcut icon" href="{{ !empty($nfc_card->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card)->profile_image) : 'https://i.ibb.co/BNBTVN4/logo.png' }}" type="image/x-icon" />
+    <link rel="shortcut icon"
+        href="{{ !empty($nfc_card->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card)->profile_image) : 'https://i.ibb.co/BNBTVN4/logo.png' }}"
+        type="image/x-icon" />
 
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -63,6 +65,21 @@
         .page-content-wrapper {
             width: 100%;
             margin: auto;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            padding-top: 25px;
+            height: 0;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
 
         .text-justify {
@@ -1423,8 +1440,11 @@
                                                             src="{{ !empty($gallery->gallery_attachment) && file_exists(public_path('storage/nfc/gallery/' . optional($gallery)->gallery_attachment)) ? asset('storage/nfc/gallery/' . optional($gallery)->gallery_attachment) : asset('frontend/images/no_image.png') }}"
                                                             alt="" />
                                                     @else
-                                                        <iframe src="{{ optional($gallery)->gallery_link }}"
-                                                            frameborder="0"></iframe>
+                                                    <div class="video-wrapper">
+                                                        <iframe width="600" height="338"
+                                                            src="https://www.youtube.com/embed/{{ optional($gallery)->gallery_link }}"
+                                                            frameborder="0" allowfullscreen></iframe>
+                                                    </div>
                                                     @endif
                                                 </div>
                                             </div>
@@ -1435,50 +1455,53 @@
                         @endif
                         <!-- Testimonial -->
                         @if ($nfc_card->testimonials_show == '1')
-                        @if ($nfc_card->nfcTestimonial)
-                            <div class="row pt-5">
-                                <div class="col-sm-12">
-                                    <div class="text-center">
-                                        <h3 class="special-font">My Testimonial</h3>
-                                        <p
-                                            style="height: 2px;background-color: var(--template-three-color-primary);width: 50px;margin: auto; ">
-                                        </p>
+                            @if ($nfc_card->nfcTestimonial)
+                                <div class="row pt-5">
+                                    <div class="col-sm-12">
+                                        <div class="text-center">
+                                            <h3 class="special-font">My Testimonial</h3>
+                                            <p
+                                                style="height: 2px;background-color: var(--template-three-color-primary);width: 50px;margin: auto; ">
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-sm-12 mt-4">
-                                    <div class="testimonial-slide">
-                                        @foreach ($nfc_card->nfcTestimonial as $testimonial)
-                                            <div class="testimonial-items">
-                                                <div class="row p-3 align-items-center">
-                                                    <div class="col-sm-3">
-                                                        <div>
-                                                            <img class="img-fluid rounded-2"
-                                                                src="{{ !empty($testimonial->testimonial_image) && file_exists(public_path('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image)) ? asset('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image) : asset('frontend/images/no_image.png') }}"
-                                                                alt="" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-9">
-                                                        <div class="d-flex justify-content-between">
-                                                            <h6 class="special-font">
-                                                                {{ $testimonial->testimonial_name }}Rodela Bruce</h6>
-                                                            <div class="pe-3">
-                                                                <i class="fa-solid fa-star" style="color: yellow"></i>
-                                                                <i class="fa-solid fa-star" style="color: yellow"></i>
-                                                                <i class="fa-solid fa-star-half"
-                                                                    style="color: yellow"></i>
+                                    <div class="col-sm-12 mt-4">
+                                        <div class="testimonial-slide">
+                                            @foreach ($nfc_card->nfcTestimonial as $testimonial)
+                                                <div class="testimonial-items">
+                                                    <div class="row p-3 align-items-center">
+                                                        <div class="col-sm-3">
+                                                            <div>
+                                                                <img class="img-fluid rounded-2"
+                                                                    src="{{ !empty($testimonial->testimonial_image) && file_exists(public_path('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image)) ? asset('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image) : asset('frontend/images/no_image.png') }}"
+                                                                    alt="" />
                                                             </div>
                                                         </div>
-                                                        <p>
-                                                            {{ $testimonial->testimonial_description }}
-                                                        </p>
+                                                        <div class="col-sm-9">
+                                                            <div class="d-flex justify-content-between">
+                                                                <h6 class="special-font">
+                                                                    {{ $testimonial->testimonial_name }}Rodela Bruce
+                                                                </h6>
+                                                                <div class="pe-3">
+                                                                    <i class="fa-solid fa-star"
+                                                                        style="color: yellow"></i>
+                                                                    <i class="fa-solid fa-star"
+                                                                        style="color: yellow"></i>
+                                                                    <i class="fa-solid fa-star-half"
+                                                                        style="color: yellow"></i>
+                                                                </div>
+                                                            </div>
+                                                            <p>
+                                                                {{ $testimonial->testimonial_description }}
+                                                            </p>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        @endforeach
+                                            @endforeach
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endif
+                            @endif
                         @endif
                         <!-- SHape -->
                         @if (!empty($nfc_card->nfc_qr) && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc_qr)))
