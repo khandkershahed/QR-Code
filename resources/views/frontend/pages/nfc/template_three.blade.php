@@ -10,6 +10,7 @@
     <meta name="description" content="{{ optional($nfc_card->nfcSeo)->meta_description }}" />
     <meta name="keywords" content="{{ optional($nfc_card->nfcSeo)->meta_keyword }}" />
     <meta property="og:title" content="{{ optional($nfc_card->nfcSeo)->home_title }}" />
+    <meta property="og:description" content="{{ optional($nfc_card)->bio_description }}" />
     <meta property="og:url" content="{{ optional($nfc_card->nfcSeo)->site_title }}" />
     <meta property="og:site_name"
         content="{{ !empty(optional($nfc_card->nfcSeo)->site_title) ? optional($nfc_card->nfcSeo)->site_title : $nfc_card->vcard_name }}" />

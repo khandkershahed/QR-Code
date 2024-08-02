@@ -351,8 +351,8 @@ class BarCodeController extends Controller
             $padding = 30;
             $barcodesPerRow = 4;
             $barcodesPerPage = $perPage;
-            $maximumWidth = 350;
-            $maximumHeight = 300;
+            $maximumWidth = 2000;
+            $maximumHeight = 2000;
             $htmlContent = '';
 
             // Create BarCode record
@@ -411,15 +411,15 @@ class BarCodeController extends Controller
 
                 $filename = $code . '_barcode_page_' . $currentPage . '.png';
                 Storage::put('public/barcodes/images/' . $filename, $mergedImage);
-                
+
                 $htmlContent = '<img src="' . asset('storage/barcodes/images/' . $filename) . '" alt="barcode"/><p>Page: ' . $currentPage . ' / ' . $totalPages . '</p>';
-                $pdf->loadHTML($htmlContent);
+                // $pdf->loadHTML($htmlContent);
                 BarcodeImage::create([
                     'barcode_id' => $bar_code->id,
                     'page_number' => $currentPage,
                     'image' => 'barcodes/images/' . $filename,
                 ]);
-                $htmlContent = '<div class="d-flex justify-content-center align-items-center text-center"><div><img src="data:image/png;base64,' . base64_encode($mergedImage) . '" alt="barcode"/></div><div><p>Page: ' . $currentPage . ' / ' . $totalPages . '</p></div></div>';
+                $htmlContent = '<div class="d-flex justify-content-center align-items-center text-center"><div><img width="350px" src="data:image/png;base64,' . base64_encode($mergedImage) . '" alt="barcode"/></div><div><p>Page: ' . $currentPage . ' / ' . $totalPages . '</p></div></div>';
                 $htmlContents[] = $htmlContent;
 
                 $currentPage++;
