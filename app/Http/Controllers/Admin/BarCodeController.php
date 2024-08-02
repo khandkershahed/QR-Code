@@ -351,26 +351,12 @@ class BarCodeController extends Controller
             $padding = 30;
             $barcodesPerRow = 4;
             $barcodesPerPage = $perPage;
-            $maximumWidth = 2000;
-            $maximumHeight = 2000;
-            $htmlContent = '';
+            $maximumWidth = 2000; // 2K resolution width
+            $maximumHeight = 2000; // 2K resolution height
 
-            // Create BarCode record
-            $bar_code = BarCode::create([
-                'user_id' => $isUserRoute ? Auth::user()->id : null,
-                'admin_id' => $isUserRoute ? null : Auth::guard('admin')->user()->id,
-                'barcode_type' => 'single_upload',
-                'barcode_pattern' => $barcodePattern,
-                'barcode_color' => json_encode($barcodeColor),
-                'code' => $code,
-                'product_name' => $request->product_name,
-                'product_id' => $productId,
-                'product_price' => $request->product_price,
-                'per_page' => $request->per_page,
-                'barcode_width' => $barcodeWidth,
-                'barcode_height' => $barcodeHeight,
-                'bulk_file' => $request->bulk_file,
-            ]);
+            $pdf = \App::make('dompdf.wrapper');
+            $pdf->getDomPDF()->set_option('isHtml5ParserEnabled', true);
+            $pdf->getDomPDF()->set_option('isRemoteEnabled', true);
 
             // Loop through barcodes and create canvases/pages
             while ($barcodes) {
@@ -378,12 +364,26 @@ class BarCodeController extends Controller
                 $canvasWidth = $barcodesPerRow * ($maximumWidth + $padding * 2);
                 $canvasHeight = $rows * ($maximumHeight + $padding * 2);
 
-                // Create high-resolution canvas (2K resolution)
                 $canvas = Image::canvas($canvasWidth + $padding * 2, $canvasHeight + $padding * 2, '#ffffff');
 
                 $x = $padding;
                 $y = $padding;
                 $count = 0;
+                $bar_code = BarCode::create([
+                    'user_id' => $isUserRoute ? Auth::user()->id : null,
+                    'admin_id' => $isUserRoute ? null : Auth::guard('admin')->user()->id,
+                    'barcode_type' => 'single_upload',
+                    'barcode_pattern' => $barcodePattern,
+                    'barcode_color' => json_encode($barcodeColor),
+                    'code' => $code,
+                    'product_name' => $request->product_name,
+                    'product_id' => $productId,
+                    'product_price' => $request->product_price,
+                    'per_page' => $request->per_page,
+                    'barcode_width' => $barcodeWidth,
+                    'barcode_height' => $barcodeHeight,
+                    'bulk_file' => $request->bulk_file,
+                ]);
 
                 foreach ($barcodes as $key => $barcode) {
                     if ($count >= $barcodesPerPage) {
@@ -409,55 +409,38 @@ class BarCodeController extends Controller
 
                 $mergedImage = $canvas->encode('png', 100); // 100 for high quality
 
-                $filename = $code . '_barcode_page_' . $currentPage . '.png';
+                $filename = 'barcode_page_' . $currentPage . '.png';
                 Storage::put('public/barcodes/images/' . $filename, $mergedImage);
 
                 $htmlContent = '<img src="' . asset('storage/barcodes/images/' . $filename) . '" alt="barcode"/><p>Page: ' . $currentPage . ' / ' . $totalPages . '</p>';
-                // $pdf->loadHTML($htmlContent);
+                $pdf->loadHTML($htmlContent);
+
                 BarcodeImage::create([
-                    'barcode_id' => $bar_code->id,
+                    'barcode_id' => $bar_code ? $bar_code->id : null,
                     'page_number' => $currentPage,
                     'image' => 'barcodes/images/' . $filename,
                 ]);
-                $htmlContent = '<div class="d-flex justify-content-center align-items-center text-center"><div><img width="350px" src="data:image/png;base64,' . base64_encode($mergedImage) . '" alt="barcode"/></div><div><p>Page: ' . $currentPage . ' / ' . $totalPages . '</p></div></div>';
-                $htmlContents[] = $htmlContent;
 
                 $currentPage++;
-                // $htmlContent .= '<div style="page-break-after: always; text-align: center;">
-                //                     <img src="' . asset('storage/barcodes/images/' . $filename) . '" style="width:100%; max-width:800px;" alt="barcode"/>
-                //                     <p>Page: ' . $currentPage . ' / ' . $totalPages . '</p>
-                //                 </div>';
-                // $htmlContent .= '<div style="page-break-after: always;">
-                //                     <img src="data:image/png;base64,' . $mergedImage . '" src="' . asset('storage/barcodes/images/' . $filename) . '" alt="barcode"/>
-                //                     <p>Page: ' . $currentPage . ' / ' . $totalPages . '</p>
-                //                 </div>';
-
-                // $currentPage++;
             }
 
-            // Generate PDF from HTML content
-            $directory = public_path("storage/barcodes/pdf/");
-            if (!file_exists($directory)) {
-                mkdir($directory, 0777, true);
-            }
-            $filePath = "$directory$code.pdf";
-            $pdf = \App::make('dompdf.wrapper');
-            $pdf->loadHTML(implode('<br>', $htmlContents), 'UTF-8');
+            $filePath = public_path("storage/barcodes/pdf/{$code}.pdf");
             $pdf->save($filePath);
 
             $bar_code->update([
-                'bar_code_pdf' => "storage/barcodes/pdf/$code.pdf",
+                'bar_code_pdf' => "storage/barcodes/pdf/{$code}.pdf",
             ]);
 
             if ($isUserRoute) {
-                return redirect()->route('user.barcode.index')->with('success', 'NFC Created successfully.');
+                return redirect()->route('user.barcode.index')->with('success', 'Barcodes created successfully.');
             } else {
-                return redirect()->route('admin.barcode.index')->with('success', 'NFC Created successfully.');
+                return redirect()->route('admin.barcode.index')->with('success', 'Barcodes created successfully.');
             }
         } catch (\Exception $e) {
             return redirect()->back()->withInput()->with('error', ['error' => $e->getMessage()]);
         }
     }
+
 
 
 
@@ -543,8 +526,9 @@ class BarCodeController extends Controller
             $row = array_combine($headers, $row);
 
             if (!isset($row['Product ID']) || !isset($row['Product Name']) || !isset($row['Product Price']) || !isset($row['Per Page'])) {
-                Session::flash('error', 'Missing data in row: ' . $row);
-                Log::warning('Missing data in row: ', $row);
+                $rowJson = json_encode($row);
+                Session::flash('error', 'Missing data in row: ' . $rowJson);
+                Log::warning('Missing data in row: ' . $rowJson);
                 continue;
             }
             // dd($row['Product ID']);
