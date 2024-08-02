@@ -1587,6 +1587,20 @@
 
     <!-- On Page Load Show Modal -->
     <script>
+        // Function to replace YouTube watch URL with embed URL
+        function replaceYouTubeSrc() {
+            document.querySelectorAll('.video-wrapper iframe').forEach(function(iframe) {
+                let src = iframe.src;
+                if (src.startsWith('https://www.youtube.com/watch?v=')) {
+                    iframe.src = src.replace('https://www.youtube.com/watch?v=', 'https://www.youtube.com/embed/');
+                }
+            });
+        }
+
+        // Call the function after the DOM has fully loaded
+        document.addEventListener('DOMContentLoaded', replaceYouTubeSrc);
+    </script>
+    <script>
         var myModal = new bootstrap.Modal(document.getElementById("myModal"), {
             keyboard: false, // Optional: Disable closing modal with keyboard Esc key
         });

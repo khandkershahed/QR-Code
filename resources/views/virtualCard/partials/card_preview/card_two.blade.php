@@ -106,6 +106,9 @@
     }
 
     @media only screen and (max-width: 1350px) {
+        .card_email{
+            width: 60%;
+        }
         .template-two-title-back {
             margin-top: 140px;
         }
@@ -217,7 +220,7 @@
                     <div class="template-two-title-back pt-5">
                         <div class="mt-4">
                             <div class="ps-3 text-center">
-                                <p class="mb-0 card_email text-white">info@gmail.com</p>
+                                <p class="mb-0 card_email-bottom text-white">info@gmail.com</p>
                             </div>
                         </div>
                     </div>
