@@ -20,44 +20,29 @@
                 <tbody class="fw-semibold text-gray-600">
                     @foreach ($bar_codes as $bar_code)
                         <tr>
-                            <td>
-                                {{ $loop->iteration }}
-                            </td>
+                            <td>{{ $loop->iteration }}</td>
                             {{-- <td>
-                                <img src="{{ asset($bar_code->bar_code_png) }}" width="120px"
-                                    alt="{{ $bar_code->product_name }}">
+                                <img src="{{ asset($bar_code->bar_code_png) }}" width="120px" alt="{{ $bar_code->product_name }}">
                             </td> --}}
                             <td>
                                 <div class="d-flex flex-column">
-                                    @if (strpos(Route::current()->getName(), 'user.') === 0)
-                                        <a href="javascript:void(0)" class="mb-1 text-decoration-none fs-6">
-                                            Name : {{ $bar_code->product_name }}
-                                        </a>
-                                    @else
-                                        <a href="javascript:void(0)" class="mb-1 text-decoration-none fs-6">
-                                            Name : {{ $bar_code->product_name }}
-                                        </a>
-                                    @endif
-
+                                    <a href="javascript:void(0)" class="mb-1 text-decoration-none fs-6">
+                                        Name : {{ $bar_code->product_name }}
+                                    </a>
                                     <span class="fs-6">Code : {{ $bar_code->product_id }}</span>
                                 </div>
                             </td>
-                            <td>
-                                {{ $bar_code->barcode_pattern }}
-                            </td>
-
+                            <td>{{ $bar_code->barcode_pattern }}</td>
                             <td class="text-center">
                                 <a href="javascript:void(0)" data-bs-toggle="modal"
-                                    data-bs-target="#bar_code_modal{{ $bar_code->id }}" class="btn btn-sm btn-info"><i
-                                        class="fas fa-eye pe-2"></i>
-                                    Bar Code
+                                    data-bs-target="#bar_code_modal{{ $bar_code->id }}" class="btn btn-sm btn-info">
+                                    <i class="fas fa-eye pe-2"></i> Bar Code
                                 </a>
                                 <div class="modal fade" id="bar_code_modal{{ $bar_code->id }}" tabindex="-1"
                                     data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
                                     aria-labelledby="modalTitleId" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl"
                                         role="document">
-
                                         <div class="modal-content">
                                             <div class="modal-header py-3" style="background-color: #5028a3;">
                                                 <h5 class="modal-title text-white" id="modalTitleId">
@@ -86,7 +71,7 @@
                                                                     </a>
                                                                     <button
                                                                         class="btn btn-light btn-active-light-primary btn-sm"
-                                                                        onclick="printImage('barcode-{{ $barCodeImage->id }}')">
+                                                                        onclick="printImage('{{ asset('storage/' . $barCodeImage->image) }}')">
                                                                         Print
                                                                     </button>
                                                                 </div>
@@ -95,28 +80,15 @@
                                                     @endforeach
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
                             </td>
-
                             <td class="pe-0 text-center">
-                                @if (strpos(Route::current()->getName(), 'user.') === 0)
-                                    <a href="{{ route('user.barcode.destroy', $bar_code->id) }}"
-                                        class="btn btn-icon btn-danger btn-bg-light btn-active-color-light btn-sm me-2 delete">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
-                                @else
-                                    <a href="{{ route('admin.barcode.destroy', $bar_code->id) }}"
-                                        class="btn btn-icon btn-danger btn-bg-light btn-active-color-light btn-sm me-2 delete">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
-                                @endif
-                                {{-- <a href="{{ route('admin.barcode.edit', $bar_code->code) }}"
-                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-2">
-                                    <i class="fas fa-pen"></i>
-                                </a> --}}
+                                <a href="{{ route('user.barcode.destroy', $bar_code->id) }}"
+                                    class="btn btn-icon btn-danger btn-bg-light btn-active-color-light btn-sm me-2 delete">
+                                    <i class="fas fa-trash"></i>
+                                </a>
                                 <a href="#" class="btn btn-light btn-active-light-primary btn-sm"
                                     data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end"
                                     data-kt-menu-flip="top-end">
@@ -138,7 +110,6 @@
                                 </a>
                                 <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
                                     data-kt-menu="true" style="">
-
                                     @if (!empty($bar_code->bar_code_pdf))
                                         <div class="menu-item px-3">
                                             <a href="{{ asset('storage/' . $bar_code->bar_code_pdf) }}"
@@ -147,9 +118,7 @@
                                             </a>
                                         </div>
                                     @endif
-                                    <!--end::Menu item-->
                                 </div>
-
                             </td>
                         </tr>
                     @endforeach
@@ -159,64 +128,45 @@
     </div>
 </div>
 
-
-
 @push('scripts')
     <script>
-        function printImage(imageId) {
-            var img = document.getElementById(imageId);
+        function printImage(imageUrl) {
+            // Create a hidden iframe
+            var iframe = document.createElement('iframe');
+            iframe.style.position = 'absolute';
+            iframe.style.width = '0';
+            iframe.style.height = '0';
+            iframe.style.border = 'none';
+            document.body.appendChild(iframe);
 
-            // Check if the image element is found
-            if (!img) {
-                console.error("Image not found for ID:", imageId);
-                return;
-            }
+            // Get the iframe document
+            var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 
-            // Get the printable area
-            var printableArea = document.getElementById('printableArea');
+            // Construct HTML content for the iframe
+            iframeDoc.open();
+            iframeDoc.write(`
+                <html>
+                <head>
+                    <title>Print Barcode</title>
+                    <style>
+                        body { text-align: center; margin: 0; }
+                        img { width: 100%; max-width: 600px; }
+                    </style>
+                </head>
+                <body>
+                    <img src="${imageUrl}" />
+                </body>
+                </html>
+            `);
+            iframeDoc.close();
 
-            // Clear the printable area
-            printableArea.innerHTML = '';
-
-            // Clone the image and add it to the printable area
-            var imgClone = img.cloneNode();
-            printableArea.appendChild(imgClone);
-
-            // Print the image
-            var printWindow = window.open('', '_blank');
-            printWindow.document.open();
-            printWindow.document.write(`
-                    <html>
-                    <head>
-                        <title>Print Barcode</title>
-                        <style>
-                            /* Styles for the print page */
-                            body, html {
-                                margin: 0;
-                                padding: 0;
-                                width: 100%;
-                                height: 100%;
-                            }
-                            img {
-                                width: 100%;
-                                height: auto;
-                            }
-                        </style>
-                    </head>
-                    <body>
-                        ${printableArea.innerHTML}
-                        <script>
-                            window.onload = function() {
-                                window.print();
-                                window.close();
-                            };
-    </script>
-    </body>
-
-    </html>
-    `);
-    printWindow.document.close();
-    }
+            // Print the iframe content once it's fully loaded
+            iframe.onload = function() {
+                iframe.contentWindow.focus();
+                iframe.contentWindow.print();
+                document.body.removeChild(iframe); // Remove iframe after printing
+            };
+        }
     </script>
 
     <script>

@@ -351,8 +351,8 @@ class BarCodeController extends Controller
             $padding = 30;
             $barcodesPerRow = 4;
             $barcodesPerPage = $perPage;
-            $maximumWidth = 2000; // 2K resolution width
-            $maximumHeight = 2000; // 2K resolution height
+            $maximumWidth = 1000; // 2K resolution width
+            $maximumHeight = 1000; // 2K resolution height
 
             $pdf = \App::make('dompdf.wrapper');
             $pdf->getDomPDF()->set_option('isHtml5ParserEnabled', true);

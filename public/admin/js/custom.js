@@ -61,128 +61,130 @@ $(document).ready(function () {
         $(this).find(".bi-eye-slash").toggleClass("d-none");
     });
 });
-function passwordMeter(inputElement, highlightElement, options) {
-    var checkSteps, score;
+// function passwordMeter(inputElement, highlightElement, options) {
+//     var checkSteps, score;
 
-    var check = function () {
-        var e = 0,
-            t = m();
-        !0 === l() && (e += t),
-            !0 === options.checkUppercase && !0 === s() && (e += t),
-            !0 === options.checkLowercase && !0 === u() && (e += t),
-            !0 === options.checkDigit && !0 === d() && (e += t),
-            !0 === options.checkChar && !0 === c() && (e += t),
-            (score = e),
-            f();
-    };
+//     var check = function () {
+//         var e = 0,
+//             t = m();
+//         !0 === l() && (e += t),
+//             !0 === options.checkUppercase && !0 === s() && (e += t),
+//             !0 === options.checkLowercase && !0 === u() && (e += t),
+//             !0 === options.checkDigit && !0 === d() && (e += t),
+//             !0 === options.checkChar && !0 === c() && (e += t),
+//             (score = e),
+//             f();
+//     };
 
-    var l = function () {
-        return inputElement.value.length >= options.minLength;
-    };
+//     var l = function () {
+//         return inputElement.value.length >= options.minLength;
+//     };
 
-    var s = function () {
-        return /[a-z]/.test(inputElement.value);
-    };
+//     var s = function () {
+//         return /[a-z]/.test(inputElement.value);
+//     };
 
-    var u = function () {
-        return /[A-Z]/.test(inputElement.value);
-    };
+//     var u = function () {
+//         return /[A-Z]/.test(inputElement.value);
+//     };
 
-    var d = function () {
-        return /[0-9]/.test(inputElement.value);
-    };
+//     var d = function () {
+//         return /[0-9]/.test(inputElement.value);
+//     };
 
-    var c = function () {
-        return /[~`!#@$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/g.test(
-            inputElement.value
-        );
-    };
+//     var c = function () {
+//         return /[~`!#@$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/g.test(
+//             inputElement.value
+//         );
+//     };
 
-    var m = function () {
-        var e = 1;
-        return (
-            !0 === options.checkUppercase && e++,
-            !0 === options.checkLowercase && e++,
-            !0 === options.checkDigit && e++,
-            !0 === options.checkChar && e++,
-            (checkSteps = e),
-            100 / checkSteps
-        );
-    };
+//     var m = function () {
+//         var e = 1;
+//         return (
+//             !0 === options.checkUppercase && e++,
+//             !0 === options.checkLowercase && e++,
+//             !0 === options.checkDigit && e++,
+//             !0 === options.checkChar && e++,
+//             (checkSteps = e),
+//             100 / checkSteps
+//         );
+//     };
 
-    var f = function () {
-        var e = [].slice.call(highlightElement.querySelectorAll("div")),
-            t = e.length,
-            i = 0,
-            r = m(),
-            o = g();
-        e.map(function (e) {
-            i++,
-                r * i * (checkSteps / t) <= o
-                    ? e.classList.add("active")
-                    : e.classList.remove("active");
-        });
-    };
+//     var f = function () {
+//         var e = [].slice.call(highlightElement.querySelectorAll("div")),
+//             t = e.length,
+//             i = 0,
+//             r = m(),
+//             o = g();
+//         e.map(function (e) {
+//             i++,
+//                 r * i * (checkSteps / t) <= o
+//                     ? e.classList.add("active")
+//                     : e.classList.remove("active");
+//         });
+//     };
 
-    var g = function () {
-        return score;
-    };
+//     var g = function () {
+//         return score;
+//     };
 
-    // Check the password strength on initialization
-    check();
+//     // Check the password strength on initialization
+//     check();
 
-    // Expose public methods
-    return {
-        check: check,
-        getScore: g,
-    };
-}
+//     // Expose public methods
+//     return {
+//         check: check,
+//         getScore: g,
+//     };
+// }
 
-$(document).ready(function () {
-    var inputElement = document.querySelector(".password_input");
-    var highlightElement = document.querySelector(
-        '.d-flex[data-kt-password-meter-control="highlight"]'
-    );
+// $(document).ready(function () {
+//     var inputElement = document.querySelector(".password_input");
+//     var highlightElement = document.querySelector(
+//         '.d-flex[data-kt-password-meter-control="highlight"]'
+//     );
 
-    var options = {
-        minLength: 8, // Minimum password length
-        checkUppercase: true, // Check for uppercase letters
-        checkLowercase: true, // Check for lowercase letters
-        checkDigit: true, // Check for digits
-        checkChar: true, // Check for special characters
-    };
+//     var options = {
+//         minLength: 8, // Minimum password length
+//         checkUppercase: true, // Check for uppercase letters
+//         checkLowercase: true, // Check for lowercase letters
+//         checkDigit: true, // Check for digits
+//         checkChar: true, // Check for special characters
+//     };
 
-    // Initialize password meter
-    var meter = passwordMeter(inputElement, highlightElement, options);
+//     // Initialize password meter
+//     var meter = passwordMeter(inputElement, highlightElement, options);
 
-    // Toggle password visibility
+//     // Toggle password visibility
 
-    // Example usage: Whenever the password input changes, update the password meter
-    inputElement.addEventListener("input", function () {
-        meter.check();
-    });
+//     // Example usage: Whenever the password input changes, update the password meter
+//     inputElement.addEventListener("input", function () {
+//         meter.check();
+//     });
 
-    document.querySelectorAll('.password_confirmation').forEach(function (element) {
-        element.addEventListener('keyup', function () {
-            var password = document.querySelector('.password_input').value;
-            var passwordConfirmation = this.value;
-            var messageElement = document.querySelector('.password-confirmation-message');
+//     document.querySelectorAll('.password_confirmation').forEach(function (element) {
+//         element.addEventListener('keyup', function () {
+//             var password = document.querySelector('.password_input').value;
+//             var passwordConfirmation = this.value;
+//             var messageElement = document.querySelector('.password-confirmation-message');
 
-            if (password === passwordConfirmation) {
-                messageElement.textContent = 'Password confirmed';
-                messageElement.classList.remove('text-danger');
-                messageElement.classList.add('text-success');
-            } else {
-                messageElement.textContent = 'Passwords do not match';
-                messageElement.classList.remove('text-success');
-                messageElement.classList.add('text-danger');
-            }
-        });
-    });
+//             if (password === passwordConfirmation) {
+//                 messageElement.textContent = 'Password confirmed';
+//                 messageElement.classList.remove('text-danger');
+//                 messageElement.classList.add('text-success');
+//             } else {
+//                 messageElement.textContent = 'Passwords do not match';
+//                 messageElement.classList.remove('text-success');
+//                 messageElement.classList.add('text-danger');
+//             }
+//         });
+//     });
 
-});
+// });
 
 // Delete action with reload page
+
+
 $(document).on("click", ".delete", function (e) {
     e.preventDefault();
 
@@ -317,87 +319,87 @@ $(document).on("click", ".delete-account", async function (e) {
 ("use strict");
 
 // Class definition
-var metronicModal = (function () {
-    // Shared variables
-    const element = document.querySelector(".metronic_modal");
-    // const form = element.querySelector('#kt_modal_add_permission_form');
-    const modal = new bootstrap.Modal(element);
+// var metronicModal = (function () {
+//     // Shared variables
+//     const element = document.querySelector(".metronic_modal");
+//     // const form = element.querySelector('#kt_modal_add_permission_form');
+//     const modal = new bootstrap.Modal(element);
 
-    // Init add schedule modal
-    var initModal = () => {
-        // Close button handler
-        const closeButton = element.querySelector(
-            '[data-kt-modal-action="close"]'
-        );
-        closeButton.addEventListener("click", (e) => {
-            e.preventDefault();
+//     // Init add schedule modal
+//     var initModal = () => {
+//         // Close button handler
+//         const closeButton = element.querySelector(
+//             '[data-kt-modal-action="close"]'
+//         );
+//         closeButton.addEventListener("click", (e) => {
+//             e.preventDefault();
 
-            Swal.fire({
-                text: "Are you sure you would like to close?",
-                icon: "warning",
-                showCancelButton: true,
-                buttonsStyling: false,
-                confirmButtonText: "Yes, close it!",
-                cancelButtonText: "No, return",
-                customClass: {
-                    confirmButton: "btn btn-primary",
-                    cancelButton: "btn btn-active-light",
-                },
-            }).then(function (result) {
-                if (result.value) {
-                    modal.hide(); // Hide modal
-                }
-            });
-        });
+//             Swal.fire({
+//                 text: "Are you sure you would like to close?",
+//                 icon: "warning",
+//                 showCancelButton: true,
+//                 buttonsStyling: false,
+//                 confirmButtonText: "Yes, close it!",
+//                 cancelButtonText: "No, return",
+//                 customClass: {
+//                     confirmButton: "btn btn-primary",
+//                     cancelButton: "btn btn-active-light",
+//                 },
+//             }).then(function (result) {
+//                 if (result.value) {
+//                     modal.hide(); // Hide modal
+//                 }
+//             });
+//         });
 
-        // Cancel button handler
-        const cancelButton = element.querySelector(
-            '[data-kt-modal-action="cancel"]'
-        );
-        cancelButton.addEventListener("click", (e) => {
-            e.preventDefault();
+//         // Cancel button handler
+//         const cancelButton = element.querySelector(
+//             '[data-kt-modal-action="cancel"]'
+//         );
+//         cancelButton.addEventListener("click", (e) => {
+//             e.preventDefault();
 
-            Swal.fire({
-                text: "Are you sure you would like to cancel?",
-                icon: "warning",
-                showCancelButton: true,
-                buttonsStyling: false,
-                confirmButtonText: "Yes, cancel it!",
-                cancelButtonText: "No, return",
-                customClass: {
-                    confirmButton: "btn btn-primary",
-                    cancelButton: "btn btn-active-light",
-                },
-            }).then(function (result) {
-                if (result.value) {
-                    modal.hide(); // Hide modal
-                } else if (result.dismiss === "cancel") {
-                    Swal.fire({
-                        text: "Your form has not been cancelled!.",
-                        icon: "error",
-                        buttonsStyling: false,
-                        confirmButtonText: "Ok, got it!",
-                        customClass: {
-                            confirmButton: "btn btn-primary",
-                        },
-                    });
-                }
-            });
-        });
-    };
+//             Swal.fire({
+//                 text: "Are you sure you would like to cancel?",
+//                 icon: "warning",
+//                 showCancelButton: true,
+//                 buttonsStyling: false,
+//                 confirmButtonText: "Yes, cancel it!",
+//                 cancelButtonText: "No, return",
+//                 customClass: {
+//                     confirmButton: "btn btn-primary",
+//                     cancelButton: "btn btn-active-light",
+//                 },
+//             }).then(function (result) {
+//                 if (result.value) {
+//                     modal.hide(); // Hide modal
+//                 } else if (result.dismiss === "cancel") {
+//                     Swal.fire({
+//                         text: "Your form has not been cancelled!.",
+//                         icon: "error",
+//                         buttonsStyling: false,
+//                         confirmButtonText: "Ok, got it!",
+//                         customClass: {
+//                             confirmButton: "btn btn-primary",
+//                         },
+//                     });
+//                 }
+//             });
+//         });
+//     };
 
-    return {
-        // Public functions
-        init: function () {
-            initModal();
-        },
-    };
-})();
+//     return {
+//         // Public functions
+//         init: function () {
+//             initModal();
+//         },
+//     };
+// })();
 
 // On document ready
-KTUtil.onDOMContentLoaded(function () {
-    metronicModal.init();
-});
+// KTUtil.onDOMContentLoaded(function () {
+//     metronicModal.init();
+// });
 
 // Qr code form
 
@@ -571,17 +573,17 @@ KTUtil.onDOMContentLoaded(function () {
 
 // Create Countdown
 var Countdown = {
-  
+
   // Backbone-like structure
   $el: $('.countdown'),
-  
+
   // Params
   countdown_interval: null,
   total_seconds     : 0,
-  
-  // Initialize the countdown  
+
+  // Initialize the countdown
   init: function() {
-    
+
     // DOM
 		this.$ = {
     	hours  : this.$el.find('.bloc-time.hours .figure'),
@@ -595,16 +597,16 @@ var Countdown = {
         minutes: this.$.minutes.parent().attr('data-init-value'),
         seconds: this.$.seconds.parent().attr('data-init-value'),
     };
-    
+
     // Initialize total seconds
     this.total_seconds = this.values.hours * 60 * 60 + (this.values.minutes * 60) + this.values.seconds;
 
-    // Animate countdown to the end 
-    this.count();    
+    // Animate countdown to the end
+    this.count();
   },
-  
+
   count: function() {
-    
+
     var that    = this,
         $hour_1 = this.$.hours.eq(0),
         $hour_2 = this.$.hours.eq(1),
@@ -612,12 +614,12 @@ var Countdown = {
         $min_2  = this.$.minutes.eq(1),
         $sec_1  = this.$.seconds.eq(0),
         $sec_2  = this.$.seconds.eq(1);
-    
+
         this.countdown_interval = setInterval(function() {
 
         if(that.total_seconds > 0) {
 
-            --that.values.seconds;              
+            --that.values.seconds;
 
             if(that.values.minutes >= 0 && that.values.seconds < 0) {
 
@@ -646,11 +648,11 @@ var Countdown = {
         else {
             clearInterval(that.countdown_interval);
         }
-    }, 1000);    
+    }, 1000);
   },
-  
+
   animateFigure: function($el, value) {
-    
+
      var that         = this,
 		     $top         = $el.find('.top'),
          $bottom      = $el.find('.bottom'),
@@ -678,16 +680,16 @@ var Countdown = {
         }
     });
 
-    TweenMax.to($back_top, 0.8, { 
+    TweenMax.to($back_top, 0.8, {
         rotationX           : 0,
         transformPerspective: 300,
-	      ease                : Quart.easeOut, 
-        clearProps          : 'all' 
-    });    
+	      ease                : Quart.easeOut,
+        clearProps          : 'all'
+    });
   },
-  
+
   checkHour: function(value, $el_1, $el_2) {
-    
+
     var val_1       = value.toString().charAt(0),
         val_2       = value.toString().charAt(1),
         fig_1_value = $el_1.find('.top').html(),
@@ -704,7 +706,7 @@ var Countdown = {
         // If we are under 10, replace first figure with 0
         if(fig_1_value !== '0') this.animateFigure($el_1, 0);
         if(fig_2_value !== val_1) this.animateFigure($el_2, val_1);
-    }    
+    }
   }
 };
 
