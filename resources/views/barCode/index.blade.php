@@ -1,4 +1,3 @@
-
 <div class="col-lg-12 mt-10 mb-10">
     <div class="card card-p-0 card-flush p-3 pt-0">
         <div class="p-5 pb-2">
@@ -56,13 +55,13 @@
                                 <div class="modal fade" id="bar_code_modal{{ $bar_code->id }}" tabindex="-1"
                                     data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
                                     aria-labelledby="modalTitleId" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-md"
+                                    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl"
                                         role="document">
 
                                         <div class="modal-content">
                                             <div class="modal-header py-3" style="background-color: #5028a3;">
                                                 <h5 class="modal-title text-white" id="modalTitleId">
-                                                    {{ $bar_code->product_id }}
+                                                    BarCode Preview ({{ $bar_code->product_id }})
                                                 </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
@@ -70,17 +69,25 @@
                                             <div class="modal-body">
                                                 <div class="row">
                                                     @foreach ($bar_code->barCodeImages as $barCodeImage)
-                                                        <div class="col-lg-4 d-flex justify-content-center align-items-center">
-                                                            <div>
-                                                                <img class="img-fluid"
-                                                                    src="{{ asset('storage/'.$barCodeImage->image) }}"
-                                                                    alt="">
-                                                            </div>
-                                                            <div>
-                                                                <a href="{{ asset('storage/'.$barCodeImage->image) }}" class="menu-link px-3"
-                                                                    download data-kt-docs-table-filter="edit_row">
-                                                                    Download
-                                                                </a>
+                                                        <div class="col-lg-4 p-5">
+                                                            <div class="border-1 border-dashed py-4">
+                                                                <div>
+                                                                    <img class="img-fluid w-225px"
+                                                                        src="{{ asset('storage/' . $barCodeImage->image) }}"
+                                                                        alt="">
+                                                                </div>
+                                                                <div>
+                                                                    <a href="{{ asset('storage/' . $barCodeImage->image) }}"
+                                                                        class="menu-link px-3 fs-2 fw-bolder me-3"
+                                                                        download data-kt-docs-table-filter="edit_row">
+                                                                        Download
+                                                                    </a>
+                                                                    <button
+                                                                        class="btn btn-light btn-active-light-primary btn-sm"
+                                                                        onclick="printImage('barcode-{{ $barCodeImage->id }}')">
+                                                                        Print
+                                                                    </button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     @endforeach
@@ -99,10 +106,10 @@
                                         <i class="fas fa-trash"></i>
                                     </a>
                                 @else
-                                <a href="{{ route('admin.barcode.destroy', $bar_code->id) }}"
-                                    class="btn btn-icon btn-danger btn-bg-light btn-active-color-light btn-sm me-2 delete">
-                                    <i class="fas fa-trash"></i>
-                                </a>
+                                    <a href="{{ route('admin.barcode.destroy', $bar_code->id) }}"
+                                        class="btn btn-icon btn-danger btn-bg-light btn-active-color-light btn-sm me-2 delete">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
                                 @endif
                                 {{-- <a href="{{ route('admin.barcode.edit', $bar_code->code) }}"
                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-2">
@@ -148,8 +155,8 @@
                                     @endif --}}
                                     @if (!empty($bar_code->bar_code_pdf))
                                         <div class="menu-item px-3">
-                                            <a href="{{ asset('storage/'.$bar_code->bar_code_pdf) }}" class="menu-link px-3"
-                                                download data-kt-docs-table-filter="edit_row">
+                                            <a href="{{ asset('storage/' . $bar_code->bar_code_pdf) }}"
+                                                class="menu-link px-3" download data-kt-docs-table-filter="edit_row">
                                                 PDF
                                             </a>
                                         </div>
@@ -169,6 +176,19 @@
 
 
 @push('scripts')
+    <script>
+        function printImage(imageId) {
+            var img = document.getElementById(imageId);
+            var popup = window.open('', '_blank');
+            popup.document.write('<html><head><title>Print Barcode</title></head><body>');
+            popup.document.write('<img src="' + img.src + '" style="width:100%;">');
+            popup.document.write('</body></html>');
+            popup.document.close();
+            popup.focus();
+            popup.print();
+            popup.close();
+        }
+    </script>
     <script>
         "use strict";
 

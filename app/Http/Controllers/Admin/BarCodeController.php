@@ -411,30 +411,42 @@ class BarCodeController extends Controller
 
                 $filename = $code . '_barcode_page_' . $currentPage . '.png';
                 Storage::put('public/barcodes/images/' . $filename, $mergedImage);
-
+                
+                $htmlContent = '<img src="' . asset('storage/barcodes/images/' . $filename) . '" alt="barcode"/><p>Page: ' . $currentPage . ' / ' . $totalPages . '</p>';
+                $pdf->loadHTML($htmlContent);
                 BarcodeImage::create([
                     'barcode_id' => $bar_code->id,
                     'page_number' => $currentPage,
                     'image' => 'barcodes/images/' . $filename,
                 ]);
-
-                $htmlContent .= '<div style="page-break-after: always;">
-                <img src="' . asset('storage/barcodes/images/' . $filename) . '" alt="barcode"/>
-                <p>Page: ' . $currentPage . ' / ' . $totalPages . '</p>
-            </div>';
+                $htmlContent = '<div class="d-flex justify-content-center align-items-center text-center"><div><img src="data:image/png;base64,' . base64_encode($mergedImage) . '" alt="barcode"/></div><div><p>Page: ' . $currentPage . ' / ' . $totalPages . '</p></div></div>';
+                $htmlContents[] = $htmlContent;
 
                 $currentPage++;
+                // $htmlContent .= '<div style="page-break-after: always; text-align: center;">
+                //                     <img src="' . asset('storage/barcodes/images/' . $filename) . '" style="width:100%; max-width:800px;" alt="barcode"/>
+                //                     <p>Page: ' . $currentPage . ' / ' . $totalPages . '</p>
+                //                 </div>';
+                // $htmlContent .= '<div style="page-break-after: always;">
+                //                     <img src="data:image/png;base64,' . $mergedImage . '" src="' . asset('storage/barcodes/images/' . $filename) . '" alt="barcode"/>
+                //                     <p>Page: ' . $currentPage . ' / ' . $totalPages . '</p>
+                //                 </div>';
+
+                // $currentPage++;
             }
 
             // Generate PDF from HTML content
+            $directory = public_path("storage/barcodes/pdf/");
+            if (!file_exists($directory)) {
+                mkdir($directory, 0777, true);
+            }
+            $filePath = "$directory$code.pdf";
             $pdf = \App::make('dompdf.wrapper');
-            $pdf->loadHTML($htmlContent, 'UTF-8');
-            $filePath = 'public/barcodes/pdf/' . $code . '.pdf';
-            Storage::put($filePath, $pdf->output());
+            $pdf->loadHTML(implode('<br>', $htmlContents), 'UTF-8');
+            $pdf->save($filePath);
 
-            // Update the BarCode record with the PDF path
             $bar_code->update([
-                'bar_code_pdf' => $filePath,
+                'bar_code_pdf' => "storage/barcodes/pdf/$code.pdf",
             ]);
 
             if ($isUserRoute) {
