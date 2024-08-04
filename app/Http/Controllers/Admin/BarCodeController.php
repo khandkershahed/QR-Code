@@ -307,7 +307,7 @@ class BarCodeController extends Controller
 
     public function store(Request $request)
     {
-        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
+        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 1;
 
         // Validate request inputs
         $request->validate([
@@ -333,7 +333,7 @@ class BarCodeController extends Controller
         $barcodeWidth = $request->input('barcode_width', 2);
         $barcodeHeight = !empty($request->input('barcode_height')) ? $request->input('barcode_height') : '50';
         $quantity = $request->input('bar_code_quantity', 1);
-        $perPage = $request->input('per_page', 36);
+        $perPage = !empty($request->input('per_page')) ? $request->input('per_page') : '20';
 
         $d = new DNS1D();
         $barcodes = [];
@@ -348,7 +348,7 @@ class BarCodeController extends Controller
             // Initialize variables for pagination
             $currentPage = 1;
             $totalPages = ceil(count($barcodes) / $perPage);
-            $padding = 30;
+            $padding = 40;
             $barcodesPerRow = 4;
             $barcodesPerPage = $perPage;
             $maximumWidth = 1000; // 1K resolution width
@@ -412,7 +412,7 @@ class BarCodeController extends Controller
                 Storage::put('public/barcodes/images/' . $filename, $mergedImage);
 
                 // Ensure the image path is correct
-                $htmlContent = '<img src="' . asset('storage/barcodes/images/' . $filename) . '" alt="barcode"/><p>Page: ' . $currentPage . ' / ' . $totalPages . '</p>';
+                $htmlContent = '<img width="350px" src="' . asset('storage/barcodes/images/' . $filename) . '" alt="barcode"/><p>Page: ' . $currentPage . ' / ' . $totalPages . '</p>';
                 $pdf->loadHTML($htmlContent);
 
                 BarcodeImage::create([
@@ -430,6 +430,12 @@ class BarCodeController extends Controller
             $bar_code->update([
                 'bar_code_pdf' => "storage/barcodes/pdf/{$code}.pdf",
             ]);
+
+            // echo '<img src="data:image/png;base64,' . base64_encode($mergedImage) . '" alt="barcode"/>';
+
+            // //             // Add pagination logic here if needed
+            // echo "<p>Page: $currentPage / $totalPages</p>";
+            // $currentPage++;
 
             if ($isUserRoute) {
                 return redirect()->route('user.barcode.index')->with('success', 'Barcodes created successfully.');
