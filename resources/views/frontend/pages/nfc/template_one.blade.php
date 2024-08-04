@@ -47,19 +47,18 @@
             --template-one-font-fmly-Raleway: "Raleway", sans-serif;
         }
 
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%;
-            padding-top: 25px;
-            height: 0;
-        }
-
-        .video-wrapper iframe {
-            position: absolute;
+        #preloader {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            background-color: #fff;
+            /* Change this to match your page background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
         }
 
         .mobile-frame {
@@ -131,7 +130,7 @@
 
         .social-link-tem1 {
             background: black;
-            padding: 10px 15px;
+            padding: 15px 15px;
             color: var(--template-one-color-white);
             box-shadow: rgba(255, 255, 255, 0.24) 0px 3px 8px;
             margin-left: 13px;
@@ -156,6 +155,7 @@
             width: 10%;
         }
 
+        /* Additional styles for the arrow buttons */
         .slick-prev,
         .slick-next {
             font-size: 0;
@@ -171,31 +171,13 @@
             -ms-transform: translate(0, -50%);
             transform: translate(0, -50%);
             cursor: pointer;
-            color: transparent;
             border: none;
             outline: none;
-            background: var(--template-one-color-primary);
+            background: #00000038;
             z-index: 5;
         }
 
-        .slick-dots li button:before {
-            font-family: "slick";
-            font-size: 20px;
-            line-height: 20px;
-            position: absolute;
-            top: -45px;
-            left: 0;
-            width: auto;
-            height: auto;
-            content: "•";
-            text-align: center;
-            opacity: 0.25;
-            color: var(--template-one-color-primary);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            background: transparent;
-        }
-
+        /* Arrow hover and focus styles */
         .slick-prev:hover,
         .slick-prev:focus,
         .slick-next:hover,
@@ -205,18 +187,18 @@
 
         .slick-prev:before,
         .slick-next:before {
+            font-family: 'Roboto' !important;
+        }
+
+        /* Arrow color */
+        .slick-prev::before,
+        .slick-next::before {
             color: var(--template-one-color-white);
         }
 
-        .product-img-tem1 {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            background-size: contain;
-        }
-
-        .slick-dots li button:before {
-            font-family: "slick";
+        /* Specific styling for slick dots */
+        .slick-dots li button::before {
+            font-family: 'slick';
             font-size: 6px;
             line-height: 20px;
             position: absolute;
@@ -224,7 +206,7 @@
             left: 0;
             width: 20px;
             height: 20px;
-            content: "•";
+            content: '•';
             text-align: center;
             opacity: 0.25;
             color: var(--template-one-color-primary);
@@ -232,6 +214,15 @@
             -moz-osx-font-smoothing: grayscale;
             background: var(--template-one-color-white);
         }
+
+        /* Specific styling for product images */
+        .product-img-tem1 {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background-size: contain;
+        }
+
 
         .footer-nav-area-tem1 {
             position: fixed;
@@ -317,11 +308,26 @@
             .footer-nav-tem1 {
                 width: 100%;
             }
+            .footer-nav-tem2{
+                width: 100%
+            }
+
+            .product-box {
+                margin: 10px;
+            }
+
+            .vcard-share {
+                width: 60%;
+                margin: auto;
+            }
         }
     </style>
 </head>
 
 <body>
+    <div id="preloader">
+        <img src="https://miro.medium.com/v2/resize:fit:512/0*pyRw1qikTI1eqGm9.gif" alt="Loading...">
+    </div>
     <main>
         <div class="mobile-frame">
             <div class="page-content-wrapper">
@@ -373,50 +379,30 @@
                                     </div>
                                     @if ($nfc_card->social_links_show == '1')
                                         <div class="d-flex justify-content-center align-items-center">
-                                            {{-- <a href="{{ optional($nfc_card->nfcData)->website_url }}"
-                                                class="social-link-tem1">
-                                                <i class="fa-solid fa-globe"></i>
-                                            </a> --}}
-                                            <a href="{{ optional($nfc_card->nfcData)->facebook_url }}"
-                                                class="social-link-tem1">
-                                                <i class="fa-brands fa-facebook-f"></i>
-                                            </a>
-                                            <a href="{{ optional($nfc_card->nfcData)->instagram_url }}"
-                                                class="social-link-tem1">
-                                                <i class="fa-brands fa-instagram"></i>
-                                            </a>
-                                            <a href="{{ optional($nfc_card->nfcData)->linkedin_url }}"
-                                                class="social-link-tem1">
-                                                <i class="fa-brands fa-linkedin-in"></i>
-                                            </a>
-                                            <a href="{{ optional($nfc_card->nfcData)->whatsapp_url }}"
-                                                class="social-link-tem1">
-                                                <i class="fa-brands fa-whatsapp"></i>
-                                            </a>
-                                            {{-- <a href="{{ optional($nfc_card->nfcData)->twitter_url }}"
-                                                class="social-link-tem1">
-                                                <i class="fa-brands fa-twitter"></i>
-                                            </a>
-                                            <a href="{{ optional($nfc_card->nfcData)->youtube_url }}"
-                                                class="social-link-tem1">
-                                                <i class="fa-brands fa-youtube"></i>
-                                            </a>
-                                            <a href="{{ optional($nfc_card->nfcData)->pinterest_url }}"
-                                                class="social-link-tem1">
-                                                <i class="fa-brands fa-pinterest"></i>
-                                            </a>
-                                            <a href="{{ optional($nfc_card->nfcData)->reddit_url }}"
-                                                class="social-link-tem1">
-                                                <i class="fa-brands fa-reddit"></i>
-                                            </a>
-                                            <a href="{{ optional($nfc_card->nfcData)->tumblr_url }}"
-                                                class="social-link-tem1">
-                                                <i class="fa-brands fa-tumblr"></i>
-                                            </a>
-                                            <a href="{{ optional($nfc_card->nfcData)->tiktok_url }}"
-                                                class="social-link-tem1">
-                                                <i class="fa-brands fa-tiktok"></i>
-                                            </a> --}}
+                                            @if (!empty(optional($nfc_card->nfcData)->facebook_url))
+                                                <a href="{{ optional($nfc_card->nfcData)->facebook_url }}"
+                                                    class="social-link-tem1">
+                                                    <i class="fa-brands fa-facebook-f"></i>
+                                                </a>
+                                            @endif
+                                            @if (!empty(optional($nfc_card->nfcData)->instagram_url))
+                                                <a href="{{ optional($nfc_card->nfcData)->instagram_url }}"
+                                                    class="social-link-tem1">
+                                                    <i class="fa-brands fa-instagram"></i>
+                                                </a>
+                                            @endif
+                                            @if (!empty(optional($nfc_card->nfcData)->linkedin_url))
+                                                <a href="{{ optional($nfc_card->nfcData)->linkedin_url }}"
+                                                    class="social-link-tem1">
+                                                    <i class="fa-brands fa-linkedin-in"></i>
+                                                </a>
+                                            @endif
+                                            @if (!empty(optional($nfc_card->nfcData)->whatsapp_url))
+                                                <a href="{{ optional($nfc_card->nfcData)->whatsapp_url }}"
+                                                    class="social-link-tem1">
+                                                    <i class="fa-brands fa-whatsapp"></i>
+                                                </a>
+                                            @endif
                                         </div>
                                     @endif
                                 </div>
@@ -468,7 +454,7 @@
                                         </div>
                                     @endif
                                     @if (!empty($nfc_card->nfcData->phone_personal) || !empty($nfc_card->nfcData->phone_work))
-                                        <div class="col-md-6 mt-4">
+                                        <div class="col-md-6 mt-4 mt-lg-0">
                                             <div>
                                                 <div class="d-flex align-items-center">
                                                     <div class="bg-white p-3">
@@ -945,7 +931,7 @@
                             <div class="row pt-3 product-slide">
                                 @foreach ($nfc_card->nfcProduct as $product)
                                     <div class="col-md-4 me-2">
-                                        <div class="card border-0">
+                                        <div class="card border-0 product-box">
                                             <div class="card-body p-0">
                                                 <div class="product-img-box">
                                                     <img class="img-fluid rounded-2 product-img-tem1"
@@ -1004,17 +990,11 @@
                                                         src="{{ !empty($gallery->gallery_attachment) && file_exists(public_path('storage/nfc/gallery/' . optional($gallery)->gallery_attachment)) ? asset('storage/nfc/gallery/' . optional($gallery)->gallery_attachment) : asset('frontend/images/no_image.png') }}"
                                                         alt="" />
                                                 @else
-                                                    {{-- <iframe width="100%" height="100%"
-                                                        src="https://www.youtube.com/embed/{{ optional($gallery)->gallery_link }}"
-                                                        title="YouTube video player" frameborder="0"
-                                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                        referrerpolicy="strict-origin-when-cross-origin"
-                                                        allowfullscreen></iframe> --}}
-                                                    <div class="video-wrapper">
+                                                    {{-- <div class="video-wrapper">
                                                         <iframe width="600" height="338"
-                                                            src="https://www.youtube.com/embed/{{ optional($gallery)->gallery_link }}"
+                                                            src="{{ optional($gallery)->gallery_link }}"
                                                             frameborder="0" allowfullscreen></iframe>
-                                                    </div>
+                                                    </div> --}}
                                                 @endif
                                             </div>
                                         @endforeach
@@ -1025,65 +1005,61 @@
                     </section>
                 @endif
                 <!-- Testimonial -->
-                @if ($nfc_card->testimonials_show == '1')
-                    @if ($nfc_card->nfcTestimonial)
-                        <section>
-                            <div class="container pb-5">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="text-center">
-                                            <h1 class="special-font text-white">My Testimonial</h1>
-                                            <div class="d-flex align-items-center px-5 w-50 mx-auto">
-                                                <span class="divider-tem1"></span>
-                                                <span class="divider-tem1-icons text-center"><i
-                                                        class="fa-solid fa-diamond text-white"></i></span>
-                                                <span class="divider-tem1"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-10 col-offset-md-1 mx-auto">
-                                        <div class="testimonial-slide">
-                                            @foreach ($nfc_card->nfcTestimonial as $testimonial)
-                                                <div class="card p-0 bg-dark border-0 p-0 mt-5">
-                                                    <div class="card-body rounded-0 border-0">
-                                                        <div class="d-flex justify-content-center"
-                                                            style="margin-top: -40px">
-                                                            <img class="img-fluid" width="80px" height="80px"
-                                                                src="{{ !empty($testimonial->testimonial_image) && file_exists(public_path('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image)) ? asset('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image) : asset('frontend/images/no_image.png') }}"
-                                                                alt="" />
-                                                        </div>
-                                                        <h4 class="special-font text-white text-center pt-3">
-                                                            {{ $testimonial->testimonial_name }}
-                                                        </h4>
-                                                        {{-- <p class="text-white text-center pt-3">
-                                                        Real Estate Broker
-                                                    </p> --}}
-                                                        <p class="mb-0 text-white text-center">
-                                                            {{ $testimonial->testimonial_description }}
-                                                        </p>
-                                                        <div class="d-flex justify-content-center pt-3">
-                                                            <a href="" style="text-decoration: none">
-                                                                <i class="fa-solid fa-star text-warning"></i>
-                                                            </a>
-                                                            <a href="" style="text-decoration: none">
-                                                                <i class="fa-solid fa-star text-warning"></i>
-                                                            </a>
-                                                            <a href="" style="text-decoration: none">
-                                                                <i class="fa-solid fa-star text-warning"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            @endforeach
+                @if ($nfc_card->testimonials_show == '1' && $nfc_card->nfcTestimonial && $nfc_card->nfcTestimonial->isNotEmpty())
+                    <section>
+                        <div class="container pb-5">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="text-center">
+                                        <h1 class="special-font text-white">My Testimonial</h1>
+                                        <div class="d-flex align-items-center px-5 w-50 mx-auto">
+                                            <span class="divider-tem1"></span>
+                                            <span class="divider-tem1-icons text-center"><i
+                                                    class="fa-solid fa-diamond text-white"></i></span>
+                                            <span class="divider-tem1"></span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </section>
-                    @endif
+                            <div class="row">
+                                <div class="col-md-10 col-offset-md-1 mx-auto">
+                                    <div class="testimonial-slide">
+                                        @foreach ($nfc_card->nfcTestimonial as $testimonial)
+                                            <div class="card p-0 bg-dark border-0 p-0 mt-5">
+                                                <div class="card-body rounded-0 border-0">
+                                                    <div class="d-flex justify-content-center"
+                                                        style="margin-top: -40px">
+                                                        <img class="img-fluid" width="80px" height="80px"
+                                                            src="{{ !empty($testimonial->testimonial_image) && file_exists(public_path('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image)) ? asset('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image) : asset('frontend/images/no_image.png') }}"
+                                                            alt="" />
+                                                    </div>
+                                                    <h4 class="special-font text-white text-center pt-3">
+                                                        {{ $testimonial->testimonial_name }}
+                                                    </h4>
+                                                    <p class="mb-0 text-white text-center">
+                                                        {{ $testimonial->testimonial_description }}
+                                                    </p>
+                                                    <div class="d-flex justify-content-center pt-3">
+                                                        <a href="" style="text-decoration: none">
+                                                            <i class="fa-solid fa-star text-warning"></i>
+                                                        </a>
+                                                        <a href="" style="text-decoration: none">
+                                                            <i class="fa-solid fa-star text-warning"></i>
+                                                        </a>
+                                                        <a href="" style="text-decoration: none">
+                                                            <i class="fa-solid fa-star text-warning"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 @endif
+
                 <!-- Testimonial -->
                 @if ($nfc_card->show_qr_code == '1')
                     <section>
@@ -1124,7 +1100,15 @@
                     </section>
                 @endif
                 <!-- Business Hours -->
-                @if ($nfc_card->business_hours_show == '1')
+                @if (
+                    $nfc_card->business_hours_show == '1' &&
+                        (optional($nfc_card->nfcData)->monday == '1' ||
+                            optional($nfc_card->nfcData)->tuesday == '1' ||
+                            optional($nfc_card->nfcData)->wednesday == '1' ||
+                            optional($nfc_card->nfcData)->thursday == '1' ||
+                            optional($nfc_card->nfcData)->friday == '1' ||
+                            optional($nfc_card->nfcData)->saturday == '1' ||
+                            optional($nfc_card->nfcData)->sunday == '1'))
                     <section>
                         <div class="container pb-5">
                             <div class="row">
@@ -1166,7 +1150,7 @@
                                                 <p class="mb-0 text-white special-font">Tuesday</p>
                                                 <p class="mb-0 text-white">
                                                     {{ optional($nfc_card->nfcData)->start_time_tuesday }} -
-                                                    {{ optional($nfc_card->nfcData)->end_time_monday }}</p>
+                                                    {{ optional($nfc_card->nfcData)->end_time_tuesday }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -1181,7 +1165,7 @@
                                                 <p class="mb-0 text-white special-font">Wednesday</p>
                                                 <p class="mb-0 text-white">
                                                     {{ optional($nfc_card->nfcData)->start_time_wednesday }} -
-                                                    {{ optional($nfc_card->nfcData)->end_time_monday }}</p>
+                                                    {{ optional($nfc_card->nfcData)->end_time_wednesday }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -1196,7 +1180,7 @@
                                                 <p class="mb-0 text-white special-font">Thursday</p>
                                                 <p class="mb-0 text-white">
                                                     {{ optional($nfc_card->nfcData)->start_time_thursday }} -
-                                                    {{ optional($nfc_card->nfcData)->end_time_monday }}</p>
+                                                    {{ optional($nfc_card->nfcData)->end_time_thursday }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -1211,7 +1195,7 @@
                                                 <p class="mb-0 text-white special-font">Friday</p>
                                                 <p class="mb-0 text-white">
                                                     {{ optional($nfc_card->nfcData)->start_time_friday }} -
-                                                    {{ optional($nfc_card->nfcData)->end_time_monday }}</p>
+                                                    {{ optional($nfc_card->nfcData)->end_time_friday }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -1226,7 +1210,7 @@
                                                 <p class="mb-0 text-white special-font">Saturday</p>
                                                 <p class="mb-0 text-white">
                                                     {{ optional($nfc_card->nfcData)->start_time_saturday }} -
-                                                    {{ optional($nfc_card->nfcData)->end_time_monday }}</p>
+                                                    {{ optional($nfc_card->nfcData)->end_time_saturday }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -1241,7 +1225,7 @@
                                                 <p class="mb-0 text-white special-font">Sunday</p>
                                                 <p class="mb-0 text-white">
                                                     {{ optional($nfc_card->nfcData)->start_time_sunday }} -
-                                                    {{ optional($nfc_card->nfcData)->end_time_monday }}</p>
+                                                    {{ optional($nfc_card->nfcData)->end_time_sunday }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -1250,6 +1234,7 @@
                         </div>
                     </section>
                 @endif
+
                 <!-- Contact Area -->
                 <section>
                     <div class="container pb-5">
@@ -1324,9 +1309,9 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-7 col-offset-lg-6 mx-auto">
+                            <div class="col-lg-7 col-offset-lg-6 mx-auto vcard-share">
                                 <a href="{{ $whatsappLink }}" target="_blank" rel="noopener noreferrer"
-                                    class="btn btn-dark w-100 p-3">
+                                    class="btn btn-dark w-100 p-3 ">
                                     <i class="fa-solid fa-paper-plane"></i> Share This Vcard
                                 </a>
 
@@ -1399,7 +1384,11 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
+    <script>
+        window.addEventListener('load', function() {
+            document.getElementById('preloader').style.display = 'none';
+        });
+    </script>
     <script>
         // Function to replace YouTube watch URL with embed URL
         function replaceYouTubeSrc() {
@@ -1477,6 +1466,13 @@
                 autoplay: true,
                 autoplaySpeed: 2000,
                 arrows: false,
+                responsive: [{
+                    breakpoint: 768, // This is the screen width at which the settings will change
+                    settings: {
+                        slidesToShow: 1, // Show only one slide on screens smaller than 768px
+                        slidesToScroll: 1
+                    }
+                }]
             });
             $(".galery-slide").slick({
                 infinite: true,
