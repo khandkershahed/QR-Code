@@ -307,7 +307,7 @@ class BarCodeController extends Controller
 
     public function store(Request $request)
     {
-        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
+        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 1;
 
         // Validate request inputs
         $request->validate([
