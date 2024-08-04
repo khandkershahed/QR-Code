@@ -348,7 +348,7 @@ class BarCodeController extends Controller
             // Initialize variables for pagination
             $currentPage = 1;
             $totalPages = ceil(count($barcodes) / $perPage);
-            $padding = 30;
+            $padding = 40;
             $barcodesPerRow = 4;
             $barcodesPerPage = $perPage;
             $maximumWidth = 1000; // 1K resolution width
