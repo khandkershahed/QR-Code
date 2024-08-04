@@ -3,7 +3,7 @@
         <div class="col-lg-12">
             <div class="card border-transparent mt-10" data-bs-theme="light" style="background-color: #1C325E;">
                 <div class="card-body row ps-xl-15 align-items-center">
-                    <div class="m-0 col-lg-10">
+                    <div class="m-0 col-lg-9">
                         <div class="position-relative fs-2x z-index-2 fw-bold text-white mb-7">
                             <span class="me-2">
                                 You have Created Total
@@ -56,8 +56,7 @@
                             </a>
                         </div>
                     </div>
-
-                    <div class="col-lg-2">
+                    <div class="col-lg-3">
                         <div class="">
                             <div class="d-flex align-items-center justify-content-end">
                                 <a href="{{ route('admin.nfc-card.create') }}"
@@ -112,8 +111,6 @@
                 </div>
             </div>
         </div>
-
-
         @include('virtualCard.virtualCard_index_partial')
     </div>
 

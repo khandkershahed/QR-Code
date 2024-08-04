@@ -4,9 +4,9 @@
             <h1 class="mb-0 text-center w-100 text-white">All List Of VCard</h1>
         </div>
         <div class="card-body table-responsive">
-            <table class="table align-middle border rounded table-row-dashed table-striped table-hover  fs-6 g-5 mb-0">
+            <table class="table my-datatable table-striped table-row-bordered gy-5 gs-7 border rounded">
                 <thead>
-                    <tr class="text-gray-500 fw-bold fs-7 text-uppercase">
+                    <tr class="fw-bold fs-6 text-gray-800 px-7">
                         <th width="5%">SL</th>
                         <th width="20%">VCard Name</th>
                         <th width="15%">Preview Card</th>

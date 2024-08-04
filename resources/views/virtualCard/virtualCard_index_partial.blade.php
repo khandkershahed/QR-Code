@@ -1,13 +1,12 @@
 <div class="col-lg-12 mt-10 pb-10">
-    <div class="card card-p-0 card-flush p-3 pt-0">
-        <div class="p-5 pb-2">
-            <h4 class="mb-0">View and manage your NFC Cards</h4>
+    <div class="card card-p-0 card-flush pt-0 mb-5">
+        <div class="card-header bg-info align-items-center">
+            <h1 class="mb-0 text-center w-100 text-white">Manage Your NFC</h1>
         </div>
         <div class="card-body table-responsive">
-            <table class="table align-middle border rounded table-row-dashed table-striped table-hover  fs-6 g-5"
-                id="nfc_card_admin">
+            <table class="table my-datatable table-striped table-row-bordered gy-5 gs-7 border rounded">
                 <thead>
-                    <tr class="text-gray-500 fw-bold fs-7 text-uppercase text-center">
+                    <tr class="fw-bold fs-6 text-gray-800 px-7">
                         <th width="5%">SL</th>
                         <th width="15%">Selected VCard</th>
                         <th width="15%">Selected NFC</th>

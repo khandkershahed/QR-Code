@@ -58,7 +58,7 @@
                             <div class="col-lg-6 mb-4">
                                 <div class="fv-row mb-4">
                                     <x-metronic.label for="company_logo"
-                                        class="col-form-label fw-bold fs-6 ">{{ __('Company Logo') }}</x-metronic.label>
+                                        class="col-form-label fw-bold fs-6 pt-0 pb-2">{{ __('Company Logo') }}</x-metronic.label>
                                     <x-metronic.file-input id="company_logo" name="company_logo"
                                         :value="old('company_logo')"></x-metronic.file-input>
                                 </div>

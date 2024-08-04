@@ -228,9 +228,8 @@
                     <div class="template-two-title pt-5"
                         style="text-align: center;width: 100%;margin: auto;margin-top: 80px;">
                         <div class="half mt-4">
-                            <div class="">
+                            <div class="w-75 mx-auto">
                                 <p class="mb-0 card_email">{{ $nfc_card->card_email }}</p>
-                                <p class="mb-0 card_phone">{{ $nfc_card->card_phone }}</p>
                             </div>
                         </div>
                     </div>

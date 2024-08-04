@@ -49,6 +49,20 @@
             --template-two-font-fmly-Raleway: "Raleway", sans-serif;
         }
 
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            /* Change this to match your page background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
         .mobile-frame {
             width: 535px;
             margin: auto;
@@ -102,6 +116,15 @@
 
         .product-content-tem2 {
             height: 75px;
+        }
+
+        .responsive-img {
+            width: 70px;
+            height: 70px;
+            background: var(--template-two-color-white);
+            padding: 12px;
+            border-radius: 100%;
+            object-fit: cover;
         }
 
         .company-btn-tem2 {
@@ -186,11 +209,11 @@
 
         .slick-dots li button:before {
             font-family: "slick";
-            font-size: 6px;
-            line-height: 20px;
+            font-size: 9px;
+            line-height: 23px;
             position: absolute;
             top: 0px;
-            left: 0;
+            left: 0px;
             width: 20px;
             height: 20px;
             content: "•";
@@ -280,10 +303,30 @@
             position: absolute;
             top: 0rem;
         }
+        @media only screen and (max-width: 600px) {
+            .footer-nav-tem1 {
+                width: 100%;
+            }
+            .footer-nav-tem2{
+                width: 100%
+            }
+
+            .product-box {
+                margin: 10px;
+            }
+
+            .vcard-share {
+                width: 60%;
+                margin: auto;
+            }
+        }
     </style>
 </head>
 
 <body>
+    <div id="preloader">
+        <img src="https://miro.medium.com/v2/resize:fit:512/0*pyRw1qikTI1eqGm9.gif" alt="Loading...">
+    </div>
     <main>
         <div class="mobile-frame">
             <div class="page-content-wrapper">
@@ -299,27 +342,6 @@
                                         src="{{ !empty($nfc_card->banner_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card)->banner_image)) ? asset('storage/nfc/' . optional($nfc_card)->banner_image) : asset('frontend/images/no_image.png') }}"
                                         alt="" />
                                 </div>
-                                {{-- <img class="img-fluid image-container-tem2 w-100"
-                                    src="https://cdn.pixabay.com/photo/2023/12/29/16/15/ai-generated-8476506_960_720.png"
-                                    alt="" /> --}}
-                                {{-- <div class="dropdown language-2">
-                                    <button class="btn btn-dark dropdown-toggle rounded-0" type="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        Language
-                                    </button>
-                                    <ul class="dropdown-menu rounded-0 w-100">
-                                        <li><a class="dropdown-item" href="#">Arabic</a></li>
-                                        <li>
-                                            <a class="dropdown-item" href="#">Chinese</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="#">English</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="#">English</a>
-                                        </li>
-                                    </ul>
-                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -351,9 +373,6 @@
                                             {{ optional($nfc_card->nfcData)->first_name }}
                                         </h1>
                                         <p class="text-white mb-0">{{ optional($nfc_card)->designation }} </p>
-                                        {{-- <p class="text-white">
-                                            <i class="fa-solid fa-location-dot pe-2"></i>From Canada
-                                        </p> --}}
                                     </div>
                                     @if ($nfc_card->social_links_show == '1')
                                         <div class="d-flex justify-content-start align-items-center social-rotate-tem2">
@@ -416,7 +435,7 @@
                                     @endif
                                     @if (!empty($nfc_card->nfcData->phone_personal) || !empty($nfc_card->nfcData->phone_work))
                                         <div class="col-md-6">
-                                            <div class="text-white text-center ps-3">
+                                            <div class="text-white text-center ps-3 mt-4 mt-lg-0">
                                                 <div class="">
                                                     <i
                                                         class="fa fa-phone social_icons fs-3 bg-white contact-icons-tem2"></i>
@@ -477,8 +496,7 @@
                                                         <div class="text-center text-white">
                                                             <div
                                                                 class="d-flex justify-content-center align-items-center">
-                                                                <img class="img-fluid" width="70px"
-                                                                    style="background: var(--template-two-color-white);padding: 12px;border-radius: 100%;"
+                                                                <img class="img-fluid responsive-img"
                                                                     src="{{ !empty($company->company_logo) && file_exists(public_path('storage/nfc/company/' . optional($company)->company_logo)) ? asset('storage/nfc/company/' . optional($company)->company_logo) : asset('frontend/images/no_image.png') }}"
                                                                     alt="" />
                                                             </div>
@@ -512,20 +530,19 @@
                                                     <div
                                                         class="col-md-6 align-items-center justify-content-center d-flex">
                                                         @if ($nfc_card->social_links_show == '1')
-                                                            <div class="px-3">
+                                                            <div class="px-3 d-flex">
                                                                 @if (!empty($company->company_facebook))
                                                                     <a href="{{ $company->company_facebook }}"
-                                                                        class="btn company-btn-tem2 rounded-0 mb-2 w-100">Facebook</a>
+                                                                        class="btn company-btn-tem2 rounded-0 mb-2 w-100 me-2">Facebook</a>
+                                                                @endif
+                                                                @if (!empty($company->company_likedin))
+                                                                    <a href="{{ $company->company_likedin }}"
+                                                                        class="btn company-btn-tem2 rounded-0 mb-2 w-100 me-2">Linkedin</a>
                                                                 @endif
                                                                 @if (!empty($company->company_instagram))
                                                                     <a href="{{ $company->company_instagram }}"
                                                                         class="btn company-btn-tem2 rounded-0 mb-2 w-100">Instagram</a>
                                                                 @endif
-                                                                @if (!empty($company->company_likedin))
-                                                                    <a href="{{ $company->company_likedin }}"
-                                                                        class="btn company-btn-tem2 rounded-0 mb-2 w-100">Linkedin</a>
-                                                                @endif
-
                                                             </div>
                                                         @endif
                                                     </div>
@@ -657,11 +674,11 @@
                                                             src="{{ !empty($gallery->gallery_attachment) && file_exists(public_path('storage/nfc/gallery/' . optional($gallery)->gallery_attachment)) ? asset('storage/nfc/gallery/' . optional($gallery)->gallery_attachment) : asset('frontend/images/no_image.png') }}"
                                                             alt="" />
                                                     @else
-                                                        <div class="video-wrapper">
+                                                        {{-- <div class="video-wrapper">
                                                             <iframe width="600" height="338"
                                                                 src="{{ optional($gallery)->gallery_link }}"
                                                                 frameborder="0" allowfullscreen></iframe>
-                                                        </div>
+                                                        </div> --}}
                                                     @endif
                                                 </div>
                                             @endforeach
@@ -1042,7 +1059,11 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
+    <script>
+        window.addEventListener('load', function() {
+            document.getElementById('preloader').style.display = 'none';
+        });
+    </script>
     <!-- On Page Load Show Modal -->
     <script>
         // Function to replace YouTube watch URL with embed URL
