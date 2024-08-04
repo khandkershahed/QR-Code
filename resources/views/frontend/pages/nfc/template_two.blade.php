@@ -55,7 +55,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #fff;
+            background-color: #1f0061;
             /* Change this to match your page background */
             display: flex;
             justify-content: center;
@@ -100,7 +100,7 @@
         .profile-img-tem2 img {
             width: 150px;
             height: 150px;
-            object-fit: contain;
+            object-fit: cover;
             border: 2px dashed var(--template-two-color-primary);
             padding: 5px;
             background: var(--template-two-color-primary);
@@ -118,7 +118,7 @@
             height: 75px;
         }
 
-        .responsive-img {
+        .company_logo {
             width: 70px;
             height: 70px;
             background: var(--template-two-color-white);
@@ -303,11 +303,20 @@
             position: absolute;
             top: 0rem;
         }
+
+        .card-img-top {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            margin: auto;
+        }
+
         @media only screen and (max-width: 600px) {
             .footer-nav-tem1 {
                 width: 100%;
             }
-            .footer-nav-tem2{
+
+            .footer-nav-tem2 {
                 width: 100%
             }
 
@@ -325,7 +334,7 @@
 
 <body>
     <div id="preloader">
-        <img src="https://miro.medium.com/v2/resize:fit:512/0*pyRw1qikTI1eqGm9.gif" alt="Loading...">
+        <img src="{{ asset('frontend') }}/assets/images/client-logos/preloader.svg" alt="Loading...">
     </div>
     <main>
         <div class="mobile-frame">
@@ -422,7 +431,7 @@
                                 <div class="row">
                                     @if (!empty($nfc_card->nfcData->email_personal) || !empty($nfc_card->nfcData->email_work))
                                         <div class="col-md-6">
-                                            <div class="text-white text-center ps-3">
+                                            <div class="text-white text-center ps-lg-3 ps-0">
                                                 <div class="">
                                                     <i
                                                         class="fa fa-envelope social_icons fs-3 bg-white contact-icons-tem2"></i>
@@ -435,7 +444,7 @@
                                     @endif
                                     @if (!empty($nfc_card->nfcData->phone_personal) || !empty($nfc_card->nfcData->phone_work))
                                         <div class="col-md-6">
-                                            <div class="text-white text-center ps-3 mt-4 mt-lg-0">
+                                            <div class="text-white text-center ps-lg-3 ps-0 mt-4 mt-lg-0">
                                                 <div class="">
                                                     <i
                                                         class="fa fa-phone social_icons fs-3 bg-white contact-icons-tem2"></i>
@@ -449,7 +458,7 @@
                                     @endif
                                     @if (!empty($nfc_card->nfcData->date_of_birth))
                                         <div class="col-md-6 mt-4">
-                                            <div class="text-white text-center ps-3">
+                                            <div class="text-white text-center ps-lg-3 ps-0">
                                                 <div class="">
                                                     <i
                                                         class="fa-solid fa-cake-candles social_icons fs-3 bg-white contact-icons-tem2"></i>
@@ -462,7 +471,7 @@
                                     @endif
                                     @if (!empty($nfc_card->nfcData->location))
                                         <div class="col-md-6 mt-4">
-                                            <div class="text-white text-center ps-3">
+                                            <div class="text-white text-center ps-lg-3 ps-0">
                                                 <div class="">
                                                     <i
                                                         class="fa fa-location-dot social_icons fs-3 bg-white contact-icons-tem2"></i>
@@ -494,9 +503,8 @@
                                                 <div class="row pt-3 align-items-center">
                                                     <div class="col-md-12">
                                                         <div class="text-center text-white">
-                                                            <div
-                                                                class="d-flex justify-content-center align-items-center">
-                                                                <img class="img-fluid responsive-img"
+                                                            <div class="d-flex justify-content-center align-items-center">
+                                                                <img class="img-fluid company_logo"
                                                                     src="{{ !empty($company->company_logo) && file_exists(public_path('storage/nfc/company/' . optional($company)->company_logo)) ? asset('storage/nfc/company/' . optional($company)->company_logo) : asset('frontend/images/no_image.png') }}"
                                                                     alt="" />
                                                             </div>
@@ -562,6 +570,8 @@
                                     <div class="col-lg-12">
                                         <div class="text-center">
                                             <h1 class="special-font text-white">My Services</h1>
+                                            <p class="px-4 pb-3 text-center text-white">Contact me to get more service details
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -609,6 +619,8 @@
                                     <div class="col-lg-12">
                                         <div class="text-center">
                                             <h1 class="special-font text-white">My Product</h1>
+                                            <p class="px-4 pb-3 text-center text-white">For order please fill up the form below
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -623,12 +635,12 @@
                                                             alt="" />
                                                     </div>
                                                     <div
-                                                        class="d-flex justify-content-between px-4 pt-3 align-items-center product-content-tem2">
+                                                        class="d-flex justify-content-between align-items-center px-4 pt-3 align-items-center product-content-tem2">
                                                         <h3 class="special-font mb-0">
                                                             {{ $product->product_name }}
                                                         </h3>
                                                         <div>
-                                                            <span class="special-font mb-0 text-danger fs-4">
+                                                            <h1 class="special-font mb-0">
                                                                 @if ($product->product_currency == 'taka')
                                                                     Tk
                                                                 @elseif ($product->product_currency == 'euro')
@@ -638,13 +650,10 @@
                                                                 @elseif ($product->product_currency == 'pound')
                                                                     £
                                                                 @endif
-                                                            </span>
-                                                            <h1 class="special-font mb-0">
                                                                 {{ $product->product_price }}
                                                             </h1>
                                                         </div>
                                                     </div>
-                                                    <p class="px-4 pb-3">For Order Please Fill Up The Form</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -654,42 +663,44 @@
                         </section>
                     @endif
                     <!-- Galery -->
-                    @if ($nfc_card->galleries_show == '1')
-                        <section>
-                            <div class="container pb-5">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="text-center">
-                                            <h1 class="special-font text-white">My Gallery</h1>
+                    @if ($nfc_card->galleries_show == '1' && $nfc_card->nfcGallery && $nfc_card->nfcGallery->isNotEmpty())
+                        @if ($nfc_card->galleries_show)
+                            <section>
+                                <div class="container pb-5">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="text-center">
+                                                <h1 class="special-font text-white">My Gallery</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row pt-3">
+                                        <div class="col-lg-12">
+                                            <div class="galery-slide">
+                                                @foreach ($nfc_card->nfcGallery as $gallery)
+                                                    <div>
+                                                        @if ($gallery->gallery_type == 'image')
+                                                            <img class="w-100 img-fluid rounded-3"
+                                                                src="{{ !empty($gallery->gallery_attachment) && file_exists(public_path('storage/nfc/gallery/' . optional($gallery)->gallery_attachment)) ? asset('storage/nfc/gallery/' . optional($gallery)->gallery_attachment) : asset('frontend/images/no_image.png') }}"
+                                                                alt="" />
+                                                        @else
+                                                            {{-- <div class="video-wrapper">
+                                        <iframe width="600" height="338"
+                                            src="{{ optional($gallery)->gallery_link }}"
+                                            frameborder="0" allowfullscreen></iframe>
+                                    </div> --}}
+                                                        @endif
+                                                    </div>
+                                                @endforeach
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row pt-3">
-                                    <div class="col-lg-12">
-                                        <div class="galery-slide">
-                                            @foreach ($nfc_card->nfcGallery as $gallery)
-                                                <div>
-                                                    @if ($gallery->gallery_type == 'image')
-                                                        <img class="w-100 img-fluid rounded-3"
-                                                            src="{{ !empty($gallery->gallery_attachment) && file_exists(public_path('storage/nfc/gallery/' . optional($gallery)->gallery_attachment)) ? asset('storage/nfc/gallery/' . optional($gallery)->gallery_attachment) : asset('frontend/images/no_image.png') }}"
-                                                            alt="" />
-                                                    @else
-                                                        {{-- <div class="video-wrapper">
-                                                            <iframe width="600" height="338"
-                                                                src="{{ optional($gallery)->gallery_link }}"
-                                                                frameborder="0" allowfullscreen></iframe>
-                                                        </div> --}}
-                                                    @endif
-                                                </div>
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
+                            </section>
+                        @endif
                     @endif
                     <!-- Testimonial -->
-                    @if ($nfc_card->testimonials_show == '1')
+                    @if ($nfc_card->testimonials_show == '1' && $nfc_card->nfcTestimonial && $nfc_card->nfcTestimonial->isNotEmpty())
                         @if ($nfc_card->nfcTestimonial)
                             <section>
                                 <div class="container pb-5">
@@ -786,7 +797,15 @@
                         </div>
                     </section>
                     <!-- Business Hours -->
-                    @if ($nfc_card->business_hours_show == '1')
+                    @if (
+                        $nfc_card->business_hours_show == '1' &&
+                            (optional($nfc_card->nfcData)->monday == '1' ||
+                                optional($nfc_card->nfcData)->tuesday == '1' ||
+                                optional($nfc_card->nfcData)->wednesday == '1' ||
+                                optional($nfc_card->nfcData)->thursday == '1' ||
+                                optional($nfc_card->nfcData)->friday == '1' ||
+                                optional($nfc_card->nfcData)->saturday == '1' ||
+                                optional($nfc_card->nfcData)->sunday == '1'))
                         <section>
                             <div class="container pb-5">
                                 <div class="row">

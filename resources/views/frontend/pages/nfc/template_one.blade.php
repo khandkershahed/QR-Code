@@ -53,7 +53,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #fff;
+            background-color: #1f0061;
             /* Change this to match your page background */
             display: flex;
             justify-content: center;
@@ -224,6 +224,17 @@
         }
 
 
+
+        .product-img-box {
+            widows: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .slick-slide {
+            height: auto;
+        }
+
         .footer-nav-area-tem1 {
             position: fixed;
             bottom: 0;
@@ -257,17 +268,6 @@
             -ms-flex: 1 1 0px;
             flex: 1 1 0;
         }
-
-        .product-img-box {
-            widows: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-
-        .slick-slide {
-            height: auto;
-        }
-
         .footer-nav-tem1 ul li a {
             position: relative;
             display: block;
@@ -308,7 +308,8 @@
             .footer-nav-tem1 {
                 width: 100%;
             }
-            .footer-nav-tem2{
+
+            .footer-nav-tem2 {
                 width: 100%
             }
 
@@ -326,7 +327,7 @@
 
 <body>
     <div id="preloader">
-        <img src="https://miro.medium.com/v2/resize:fit:512/0*pyRw1qikTI1eqGm9.gif" alt="Loading...">
+        <img src="{{ asset('frontend') }}/assets/images/client-logos/preloader.svg" alt="Loading...">
     </div>
     <main>
         <div class="mobile-frame">
@@ -951,8 +952,7 @@
                                                             $
                                                         @elseif ($product->product_currency == 'pound')
                                                             £
-                                                        @endif
-                                                        &nbsp;{{ $product->product_price }}
+                                                        @endif{{ $product->product_price }}
                                                     </h4>
                                                 </div>
                                             </div>
@@ -964,45 +964,47 @@
                     </section>
                 @endif
                 <!-- Galery -->
-                @if ($nfc_card->galleries_show == '1')
-                    <section>
-                        <div class="container pb-5">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="text-center">
-                                        <h1 class="special-font text-white">My Gallery</h1>
-                                        <div class="d-flex align-items-center px-5 w-50 mx-auto">
-                                            <span class="divider-tem1"></span>
-                                            <span class="divider-tem1-icons text-center"><i
-                                                    class="fa-solid fa-diamond text-white"></i></span>
-                                            <span class="divider-tem1"></span>
+                @if ($nfc_card->galleries_show == '1' && $nfc_card->nfcGallery && $nfc_card->nfcGallery->isNotEmpty())
+                    @if ($nfc_card->galleries_show)
+                        <section>
+                            <div class="container pb-5">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="text-center">
+                                            <h1 class="special-font text-white">My Gallery</h1>
+                                            <div class="d-flex align-items-center px-5 w-50 mx-auto">
+                                                <span class="divider-tem1"></span>
+                                                <span class="divider-tem1-icons text-center"><i
+                                                        class="fa-solid fa-diamond text-white"></i></span>
+                                                <span class="divider-tem1"></span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row pt-3">
-                                <div class="col-lg-12">
-                                    <div class="galery-slide">
-                                        @foreach ($nfc_card->nfcGallery as $gallery)
-                                            <div>
-                                                @if ($gallery->gallery_type == 'image')
-                                                    <img class="w-100 img-fluid"
-                                                        src="{{ !empty($gallery->gallery_attachment) && file_exists(public_path('storage/nfc/gallery/' . optional($gallery)->gallery_attachment)) ? asset('storage/nfc/gallery/' . optional($gallery)->gallery_attachment) : asset('frontend/images/no_image.png') }}"
-                                                        alt="" />
-                                                @else
-                                                    {{-- <div class="video-wrapper">
+                                <div class="row pt-3">
+                                    <div class="col-lg-12">
+                                        <div class="galery-slide">
+                                            @foreach ($nfc_card->nfcGallery as $gallery)
+                                                <div>
+                                                    @if ($gallery->gallery_type == 'image')
+                                                        <img class="w-100 img-fluid"
+                                                            src="{{ !empty($gallery->gallery_attachment) && file_exists(public_path('storage/nfc/gallery/' . optional($gallery)->gallery_attachment)) ? asset('storage/nfc/gallery/' . optional($gallery)->gallery_attachment) : asset('frontend/images/no_image.png') }}"
+                                                            alt="" />
+                                                    @else
+                                                        {{-- <div class="video-wrapper">
                                                         <iframe width="600" height="338"
                                                             src="{{ optional($gallery)->gallery_link }}"
                                                             frameborder="0" allowfullscreen></iframe>
                                                     </div> --}}
-                                                @endif
-                                            </div>
-                                        @endforeach
+                                                    @endif
+                                                </div>
+                                            @endforeach
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
+                        </section>
+                    @endif
                 @endif
                 <!-- Testimonial -->
                 @if ($nfc_card->testimonials_show == '1' && $nfc_card->nfcTestimonial && $nfc_card->nfcTestimonial->isNotEmpty())
