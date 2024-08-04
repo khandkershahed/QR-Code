@@ -412,7 +412,7 @@ class BarCodeController extends Controller
                 Storage::put('public/barcodes/images/' . $filename, $mergedImage);
 
                 // Ensure the image path is correct
-                $htmlContent = '<img src="' . asset('storage/barcodes/images/' . $filename) . '" alt="barcode"/><p>Page: ' . $currentPage . ' / ' . $totalPages . '</p>';
+                $htmlContent = '<img width="350px" src="' . asset('storage/barcodes/images/' . $filename) . '" alt="barcode"/><p>Page: ' . $currentPage . ' / ' . $totalPages . '</p>';
                 $pdf->loadHTML($htmlContent);
 
                 BarcodeImage::create([
@@ -431,11 +431,11 @@ class BarCodeController extends Controller
                 'bar_code_pdf' => "storage/barcodes/pdf/{$code}.pdf",
             ]);
 
-            echo '<img src="data:image/png;base64,' . base64_encode($mergedImage) . '" alt="barcode"/>';
+            // echo '<img src="data:image/png;base64,' . base64_encode($mergedImage) . '" alt="barcode"/>';
 
-            //             // Add pagination logic here if needed
-            echo "<p>Page: $currentPage / $totalPages</p>";
-            $currentPage++;
+            // //             // Add pagination logic here if needed
+            // echo "<p>Page: $currentPage / $totalPages</p>";
+            // $currentPage++;
 
             if ($isUserRoute) {
                 return redirect()->route('user.barcode.index')->with('success', 'Barcodes created successfully.');
