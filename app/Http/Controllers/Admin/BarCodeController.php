@@ -546,7 +546,7 @@ class BarCodeController extends Controller
             $productPrice = $row['Product Price'];
             $perPage = $row['Per Page'];
 
-            $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
+            $isUserRoute = strpos(Route::current()->getName(), 'user.') === 1;
             $typePrefix = 'BAR';
             $today = date('dm');
             $userId = $isUserRoute ? Auth::id() : null;
@@ -583,7 +583,11 @@ class BarCodeController extends Controller
                 Log::error('Failed to generate barcode for product ID ' . $productId . ': ' . $e->getMessage());
             }
         }
-        return redirect()->back()->with('success', 'Barcodes generated successfully.');
+        if ($isUserRoute) {
+            return redirect()->route('user.barcode.index')->with('success', 'Barcodes created successfully.');
+        } else {
+            return redirect()->route('admin.barcode.index')->with('success', 'Barcodes created successfully.');
+        }
     }
 
     private function generateBarcodes($dns1d, $productId, $code, $pattern, $width, $height, $color)
