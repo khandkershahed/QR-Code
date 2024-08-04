@@ -27,16 +27,16 @@
                             </td>
                             <td>
                                 @if (optional($nfc_card->nfc)->nfc_template == 'template-one')
-                                    <img class="img-fluid w-50px"
-                                        src="{{ asset('frontend/assets/images/nfc-templates/template_one.jpg') }}"
+                                    <img class="img-fluid w-45px h-60px"
+                                        src="{{ asset('frontend/assets/images/nfc-templates/template_one.png') }}"
                                         alt="">
                                 @elseif (optional($nfc_card->nfc)->nfc_template == 'template-two')
-                                    <img class="img-fluid w-50px"
-                                        src="{{ asset('frontend/assets/images/nfc-templates/template_two.jpg') }}"
+                                    <img class="img-fluid w-45px h-60px"
+                                        src="{{ asset('frontend/assets/images/nfc-templates/template_two.png') }}"
                                         alt="">
                                 @elseif (optional($nfc_card->nfc)->nfc_template == 'template-three')
-                                    <img class="img-fluid w-50px"
-                                        src="{{ asset('frontend/assets/images/nfc-templates/template_three.jpg') }}"
+                                    <img class="img-fluid w-45px h-60px"
+                                        src="{{ asset('frontend/assets/images/nfc-templates/template_three.png') }}"
                                         alt="">
                                 @elseif (optional($nfc_card->nfc)->nfc_template == 'template-four')
                                     <img class="img-fluid w-50px"

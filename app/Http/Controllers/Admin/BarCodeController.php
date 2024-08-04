@@ -333,7 +333,7 @@ class BarCodeController extends Controller
         $barcodeWidth = $request->input('barcode_width', 2);
         $barcodeHeight = !empty($request->input('barcode_height')) ? $request->input('barcode_height') : '50';
         $quantity = $request->input('bar_code_quantity', 1);
-        $perPage = $request->input('per_page', 36);
+        $perPage = !empty($request->input('per_page')) ? $request->input('per_page') : '20';
 
         $d = new DNS1D();
         $barcodes = [];
@@ -430,6 +430,12 @@ class BarCodeController extends Controller
             $bar_code->update([
                 'bar_code_pdf' => "storage/barcodes/pdf/{$code}.pdf",
             ]);
+
+            echo '<img src="data:image/png;base64,' . base64_encode($mergedImage) . '" alt="barcode"/>';
+
+            //             // Add pagination logic here if needed
+            echo "<p>Page: $currentPage / $totalPages</p>";
+            $currentPage++;
 
             if ($isUserRoute) {
                 return redirect()->route('user.barcode.index')->with('success', 'Barcodes created successfully.');

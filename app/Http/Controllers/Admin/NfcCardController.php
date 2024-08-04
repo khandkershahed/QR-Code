@@ -58,7 +58,7 @@ class NfcCardController extends Controller
      */
     public function store(Request $request)
     {
-
+        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
         try {
             // Set Stripe API key
             // Stripe::setApiKey(env('STRIPE_SECRET'));
@@ -105,10 +105,13 @@ class NfcCardController extends Controller
                     $uploadedFiles[$key] = ['status' => 0];
                 }
             }
-
+            $userId = $isUserRoute ? Auth::user()->id : null;
+            $adminId = $isUserRoute ? null : Auth::guard('admin')->user()->id;
             // Create VirtualCard
             $card = VirtualCard::create([
                 'card_id'               => $request->card_id,
+                'user_id'               => $userId,
+                'admin_id'              => $adminId,
                 'virtual_card_template' => $request->virtual_card_template,
                 'card_logo'             => $uploadedFiles['card_logo']['status'] == 1 ? $uploadedFiles['card_logo']['file_name'] : null,
                 'card_bg_front'         => $uploadedFiles['card_bg_front']['status'] == 1 ? $uploadedFiles['card_bg_front']['file_name'] : null,
@@ -239,6 +242,6 @@ class NfcCardController extends Controller
     {
         $nfc = NfcCard::with('nfcData')->where('id', $request->card_id)->first();
         $nfcData = $nfc->nfcData;
-        return response()->json(['nfc' => $nfc,'nfcData' => $nfcData]);
+        return response()->json(['nfc' => $nfc, 'nfcData' => $nfcData]);
     }
 }

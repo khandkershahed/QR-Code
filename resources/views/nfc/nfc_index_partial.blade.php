@@ -49,6 +49,10 @@
                                             <img class="img-fluid w-45px h-60px"
                                                 src="{{ asset('frontend/assets/images/nfc-templates/template_six.jpg') }}"
                                                 alt="">
+                                        @else
+                                            <img class="img-fluid w-45px h-60px"
+                                                src="{{ asset('frontend/assets/images/nfc-templates/template_one.png') }}"
+                                                alt="">
                                         @endif
                                     </div>
                                     <div class="d-flex flex-column">
@@ -114,9 +118,10 @@
                                 @else
                                     <a href="{{ route('admin.virtual-card.show', $nfc_card->code) }}" target="_blank"
                                         class="text-primary">
-                                        <button class="btn btn-sm btn-info">Summary <svg xmlns="http://www.w3.org/2000/svg"
-                                                version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="20"
-                                                height="20" x="0" y="0" viewBox="0 0 512 512"
+                                        <button class="btn btn-sm btn-info">Summary <svg
+                                                xmlns="http://www.w3.org/2000/svg" version="1.1"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20"
+                                                x="0" y="0" viewBox="0 0 512 512"
                                                 style="enable-background:new 0 0 512 512" xml:space="preserve"
                                                 class="">
                                                 <g>
