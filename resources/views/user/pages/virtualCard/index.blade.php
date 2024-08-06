@@ -1,4 +1,4 @@
-<x-app-layout :title="'Virtual Card List'">
+<x-app-layout :title="'NFC Card List'">
     <div class="row">
         <div class="col-lg-12">
             <div class="d-flex align-items-center rounded py-5 px-5 bg-light-primary" style="border: 1px dashed blue;">
@@ -8,12 +8,12 @@
                 <!--begin::Description-->
                 <div class="d-flex justify-content-between align-items-center w-100">
                     <div class="text-gray-700 fw-bold d-flex ">
-                        <strong class=""> Virtual Card Lists 
+                        <strong class=""> NFC Card Lists
                         </strong>
                     </div>
                     <div>
-                        <a href="{{ route('user.virtual-card.create') }}" class="btn btn-sm btn-primary rounded-2 me-3">
-                            Create Virtual Card
+                        <a href="{{ route('user.nfc-card.create') }}" class="btn btn-sm btn-primary rounded-2 me-3">
+                            Create NFC Card
                         </a>
                     </div>
                 </div>
@@ -24,5 +24,5 @@
         @include('virtualCard.virtualCard_index_partial')
     </div>
 
-  
+
 </x-app-layout>
