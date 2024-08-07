@@ -307,7 +307,7 @@ class BarCodeController extends Controller
 
     public function store(Request $request)
     {
-        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 1;
+        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
 
         // Validate request inputs
         $request->validate([
@@ -546,7 +546,7 @@ class BarCodeController extends Controller
             $productPrice = $row['Product Price'];
             $perPage = $row['Per Page'];
 
-            $isUserRoute = strpos(Route::current()->getName(), 'user.') === 1;
+            $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
             $typePrefix = 'BAR';
             $today = date('dm');
             $userId = $isUserRoute ? Auth::id() : null;
