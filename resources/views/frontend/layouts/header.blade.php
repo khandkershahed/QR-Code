@@ -246,6 +246,7 @@
                                         <li><a href="{{ route('reseller.pricing') }}">Reseller Pricing</a></li>
                                     </ul>
                                 </li> --}}
+                                <li><a href="{{ route('barCode') }}">BAR CODE</a></li>
                                 <li><a href="{{ route('pricing') }}">PRICING</a></li>
                                 <li><a href="{{ route('services') }}">SERVICES</a></li>
                             </ul>

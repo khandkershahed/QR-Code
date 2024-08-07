@@ -360,7 +360,7 @@
                             <img src="{{ asset('frontend') }}/assets/images/icons/iconic-box1.png" alt="Icon" />
                         </div>
                         <div class="content">
-                            <h5><a href="service-details.html">AppLink</a></h5>
+                            <h5><a href="">AppLink</a></h5>
                             <p>
                                 Drive app downloads effortlessly by generating QR codes that
                                 instantly direct users to your mobile app on app.
@@ -380,7 +380,7 @@
                         </div>
                         <div class="content">
                             <h5>
-                                <a href="service-details.html">LocationLink</a>
+                                <a href="javascript:void(0)">LocationLink</a>
                             </h5>
                             <p>
                                 Enable quick access to specific locations by creating QR
@@ -400,7 +400,7 @@
                             <img src="{{ asset('frontend') }}/assets/images/icons/iconic-box3.png" alt="Icon" />
                         </div>
                         <div class="content">
-                            <h5><a href="service-details.html">CallCode</a></h5>
+                            <h5><a href="javascript:void(0)">CallCode</a></h5>
                             <p>
                                 Enhance accessibility and convenience by generating QR codes
                                 that initiate phone calls when scanned.
@@ -419,7 +419,7 @@
                             <img src="{{ asset('frontend') }}/assets/images/icons/iconic-box4.png" alt="Icon" />
                         </div>
                         <div class="content">
-                            <h5><a href="service-details.html">PageLink</a></h5>
+                            <h5><a href="javascript:void(0)">PageLink</a></h5>
                             <p>
                                 Drive traffic to your business page or website by creating
                                 QR codes that lead users directly to your online presence.

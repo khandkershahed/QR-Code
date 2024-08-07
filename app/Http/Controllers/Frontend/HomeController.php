@@ -64,6 +64,10 @@ class HomeController extends Controller
     {
         return view('frontend.pages.qrCode');
     }
+    public function barCode()
+    {
+        return view('frontend.pages.barCode');
+    }
     public function nfcCard()
     {
         return view('frontend.pages.nfcCard');

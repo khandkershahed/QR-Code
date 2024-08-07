@@ -42,6 +42,7 @@ Route::get('/user-pricing', [HomeController::class, 'userPricing'])->name('norma
 Route::get('/reseller-pricing', [HomeController::class, 'resellerPricing'])->name('reseller.pricing');
 Route::get('/pricing', [HomeController::class, 'pricing'])->name('pricing');
 Route::get('/qr-code', [HomeController::class, 'qrCode'])->name('qrCode');
+Route::get('/barcode', [HomeController::class, 'barCode'])->name('barCode');
 Route::get('/nfc-card', [HomeController::class, 'nfcCard'])->name('nfcCard');
 Route::get('/card-buying-guide', [HomeController::class, 'cardGuide'])->name('cardGuide');
 Route::get('/digital-business-card', [HomeController::class, 'digitalCard'])->name('digitalCard');
