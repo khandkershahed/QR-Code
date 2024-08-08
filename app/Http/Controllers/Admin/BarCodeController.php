@@ -307,6 +307,8 @@ class BarCodeController extends Controller
 
     public function store(Request $request)
     {
+        set_time_limit(300); // Increase the maximum execution time to 5 minutes
+
         $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
 
         // Validate request inputs
@@ -355,8 +357,6 @@ class BarCodeController extends Controller
             $maximumHeight = 1000; // 1K resolution height
 
             $pdf = \App::make('dompdf.wrapper');
-            // $pdf->getDomPDF()->set_option('isHtml5ParserEnabled', true);
-            // $pdf->getDomPDF()->set_option('isRemoteEnabled', true);
             $bar_code = BarCode::create([
                 'user_id' => $isUserRoute ? Auth::user()->id : null,
                 'admin_id' => $isUserRoute ? null : Auth::guard('admin')->user()->id,
@@ -372,6 +372,7 @@ class BarCodeController extends Controller
                 'barcode_height' => $barcodeHeight,
                 'bulk_file' => $request->bulk_file,
             ]);
+
             // Loop through barcodes and create canvases/pages
             while ($barcodes) {
                 $rows = ceil($barcodesPerPage / $barcodesPerRow);
@@ -431,12 +432,6 @@ class BarCodeController extends Controller
                 'bar_code_pdf' => "storage/barcodes/pdf/{$code}.pdf",
             ]);
 
-            // echo '<img src="data:image/png;base64,' . base64_encode($mergedImage) . '" alt="barcode"/>';
-
-            // //             // Add pagination logic here if needed
-            // echo "<p>Page: $currentPage / $totalPages</p>";
-            // $currentPage++;
-
             if ($isUserRoute) {
                 return redirect()->route('user.barcode.index')->with('success', 'Barcodes created successfully.');
             } else {
@@ -448,6 +443,7 @@ class BarCodeController extends Controller
             return redirect()->back()->withInput()->with('error', ['error' => 'An error occurred while generating the barcode PDF.']);
         }
     }
+
 
 
 
