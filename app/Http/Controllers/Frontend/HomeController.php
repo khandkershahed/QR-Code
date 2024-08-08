@@ -62,15 +62,31 @@ class HomeController extends Controller
     }
     public function qrCode()
     {
-        return view('frontend.pages.qrCode');
+        $data = [
+            'qr_plans' => Plan::orderBy('price', 'asc')->where('type', 'qr')->get(),
+        ];
+        return view('frontend.pages.qrCode', $data);
     }
     public function barCode()
     {
-        return view('frontend.pages.barCode');
+        $data = [
+            'barcode_plans' => Plan::orderBy('price', 'asc')->where('type', 'barcode')->get(),
+        ];
+        return view('frontend.pages.barCode', $data);
     }
     public function nfcCard()
     {
-        return view('frontend.pages.nfcCard');
+        $data = [
+            'nfc_plans' => Plan::orderBy('price', 'asc')->where('type', 'nfc')->get(),
+        ];
+        return view('frontend.pages.nfcCard', $data);
+    }
+    public function digitalCard()
+    {
+        $data = [
+            'nfc_plans' => Plan::orderBy('price', 'asc')->where('type', 'nfc')->get(),
+        ];
+        return view('frontend.pages.digitalCard', $data);
     }
     public function faq()
     {
@@ -90,10 +106,6 @@ class HomeController extends Controller
     public function cardGuide()
     {
         return view('frontend.pages.cardGuide');
-    }
-    public function digitalCard()
-    {
-        return view('frontend.pages.digitalCard');
     }
     public function staticNfc()
     {

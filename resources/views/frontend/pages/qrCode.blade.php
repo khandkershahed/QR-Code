@@ -43,7 +43,62 @@
             <span></span><span></span>
         </div>
     </section>
-    <section class="countries-area rel z-1 pb-70 rpb-40">
+    <section>
+        <div class="container">
+            <div class="row pt-50">
+                <div class="col-xl-7 col-lg-9 col-md-11 mx-auto ">
+                    <div class="section-title text-center mb-60 aos-init aos-animate" data-aos="fade-up"
+                        data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
+                        <h2 class="text-center">QR Code Pricing Plans</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                @foreach ($qr_plans as $qr_plan)
+                    <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate"
+                        data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                        <div class="pricing-item style-five">
+                            <div class="title-price">
+                                <h5 class="title">{{ $qr_plan->title }}</h5>
+                                <div class="price"><span
+                                        class="prev">$</span>{{ $qr_plan->price }}<span
+                                        class="next">/
+                                        @if ($qr_plan->billing_cycle == 'year')
+                                            year
+                                        @elseif ($qr_plan->billing_cycle == 'month')
+                                            month
+                                            {{-- @elseif ($qr_plan->billing_cycle == 'half_year')
+                                        Half Yearly --}}
+                                        @else
+                                            Trial Period
+                                        @endif
+                                    </span></div>
+                            </div>
+                            <hr>
+                            {{-- <div class="text">For small nfces looking to reach more consumers
+                            </div> --}}
+                            @php
+                                $descriptions = is_array($qr_plan->descriptions)
+                                    ? $qr_plan->descriptions
+                                    : json_decode($qr_plan->descriptions);
+                            @endphp
+                            @if (!empty($descriptions))
+                                <ul class="icon-list">
+                                    @foreach ($descriptions as $description)
+                                        <li><i class="ion-checkmark"></i> {{ $description }}</li>
+                                    @endforeach
+                                </ul>
+                            @endif
+                            <a href="{{ route('user_subscribe.register', $qr_plan->slug) }}"
+                                class="theme-btn style-two">Buy Now <i
+                                    class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+    <section class="countries-area rel z-1 pb-70 rpb-40 pt-50">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-5 col-lg-7 col-md-9 col-sm-11">

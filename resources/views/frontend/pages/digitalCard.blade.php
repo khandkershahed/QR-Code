@@ -18,7 +18,9 @@
                 <span class="subtitle-one mb-20 aos-init aos-animate" data-aos="fade-up" data-aos-duration="1500"
                     data-aos-offset="50"><i class="fas fa-rocket-launch"></i> Analytics you’ll enjoy using</span>
                 <h1 data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50"
-                    class="aos-init aos-animate">Only Customer Communication platform you'll ever need</h1>
+                    class="aos-init aos-animate">Only Customer Communication platform you'll ever need,</h1>
+                <h1 data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50"
+                    class="aos-init aos-animate">Digital Card Pricing Plans</h1>
                 <div class="row justify-content-center pt-5 rpt-0 pb-25 aos-init aos-animate" data-aos="fade-up"
                     data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
                     <div class="col-xl-7 col-lg-9">
@@ -26,7 +28,7 @@
                             laudantium, totam rem aperiam eaque quae abillo inventore veritatis</p>
                     </div>
                 </div>
-                <a href="contact.html" class="theme-btn">Sign Up For Free <i class="far fa-arrow-right"></i></a>
+                <a href="contact.html" class="theme-btn">Sign Up For Free <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
         <div class="hero-bg-wave-shapes">
@@ -39,7 +41,39 @@
     </section>
     <div class="hero-image-area rel z-1 aos-init aos-animate" data-aos="zoom-in-up" data-aos-duration="1500" data-aos-offset="50">
         <div class="container container-1370">
-            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/hero/hero-five.png" alt="Hero">
+            <div class="row justify-content-center">
+                @foreach ($nfc_plans as $nfc_plan)
+                    <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate"
+                        data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                        <div class="pricing-item style-five">
+                            <div class="title-price">
+                                <h5 class="title">{{ $nfc_plan->title }}</h5>
+                                <div class="price"><span
+                                        class="prev">$</span>{{ $nfc_plan->price }}<span
+                                        class="next">/{{ $nfc_plan->billing_cycle }}</span></div>
+                            </div>
+                            <hr>
+                            {{-- <div class="text">For small nfces looking to reach more consumers
+                            </div> --}}
+                            @php
+                                $descriptions = is_array($nfc_plan->descriptions)
+                                    ? $nfc_plan->descriptions
+                                    : json_decode($nfc_plan->descriptions);
+                            @endphp
+                            @if (!empty($descriptions))
+                                <ul class="icon-list">
+                                    @foreach ($descriptions as $description)
+                                        <li><i class="ion-checkmark"></i> {{ $description }}</li>
+                                    @endforeach
+                                </ul>
+                            @endif
+                            <a href="{{ route('user_subscribe.register', $nfc_plan->slug) }}"
+                                class="theme-btn style-two">Buy Now <i
+                                    class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
         </div>
     </div>
     <section class="feature-image-box-area pt-95 rpt-75 pb-70 rpb-50 rel z-1">
