@@ -78,7 +78,7 @@
     }
 
     .main-content-tem2 {
-        margin-top: 190px;
+        margin-top: 100px;
     }
 
     .half {
