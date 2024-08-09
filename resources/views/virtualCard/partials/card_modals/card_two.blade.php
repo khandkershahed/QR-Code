@@ -181,10 +181,14 @@
                 <div>
                     <!-- Company Logo -->
                     <div class="d-flex justify-content-center template-two-logo-ebox">
-                        @if (!empty($nfc_card->card_logo) && file_exists(public_path('storage/nfc/' . $nfc_card->card_logo)))
+                        @if (!empty($nfc_card->card_logo) || file_exists(public_path('storage/nfc/' . $nfc_card->card_logo)))
+                            <img class="" width="100px" src="{{ asset('storage/nfc/' . $nfc_card->card_logo) }}"
+                                alt="" />
+                        @endif
+                        {{-- @if (!empty($nfc_card->card_logo) && file_exists(public_path('storage/nfc/' . $nfc_card->card_logo)))
                             <img class="img-fluid card_logo" width="100px"
                                 src="{{ asset('storage/nfc/' . $nfc_card->card_logo) }}" alt="" />
-                        @endif
+                        @endif --}}
                     </div>
 
                     <!-- Front Info -->
