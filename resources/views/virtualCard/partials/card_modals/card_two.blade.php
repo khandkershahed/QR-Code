@@ -16,6 +16,14 @@
         margin: 10px;
     }
 
+    @media only screen and (max-width: 576px) {
+        .card_two {
+            height: 100% !important;
+            width: 100% !important;
+            /* max-width: 230px; */
+        }
+    }
+
     .card-two-front {
         background-image: url({{ asset('frontend/images/card_images/card_two_front.png') }});
         background-repeat: no-repeat;
@@ -172,12 +180,12 @@
             <div class="card_two border-0 card-two-front rounded-0">
                 <div>
                     <!-- Company Logo -->
-                    {{-- <div class="d-flex justify-content-center template-two-logo-ebox">
+                    <div class="d-flex justify-content-center template-two-logo-ebox">
                         @if (!empty($nfc_card->card_logo) && file_exists(public_path('storage/nfc/' . $nfc_card->card_logo)))
                             <img class="img-fluid card_logo" width="100px"
                                 src="{{ asset('storage/nfc/' . $nfc_card->card_logo) }}" alt="" />
                         @endif
-                    </div> --}}
+                    </div>
 
                     <!-- Front Info -->
                     <div class=" template-two-title main-content-tem2">

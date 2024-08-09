@@ -52764,6 +52764,11 @@ div.dataTables_wrapper div.dataTables_filter {
     z-index: 9999;
     background-color: #1f0061;
 }
+@media (max-width: 576px) {
+    .card {
+        height: 100% !important;
+    }
+}
 #whole-content {
     display: block;
 }

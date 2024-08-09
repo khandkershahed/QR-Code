@@ -15,7 +15,13 @@
         /* Maintain the aspect ratio */
         margin: 10px;
     }
-
+    @media only screen and (max-width: 576px) {
+    .card_two {
+        height: 100% !important;
+        width: 100% !important;
+        /* max-width: 230px; */
+    }
+}
     .card-two-front {
         background-image: url(https://i.ibb.co/wRN75GW/bg-2.png);
         background-repeat: no-repeat;
