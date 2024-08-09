@@ -175,10 +175,10 @@
                                             </a>
                                         </div>
                                         <div class="menu-item px-3">
-                                            <a href="{{ route('admin.nfc-card.edit', $nfc_card->id) }}"
+                                            {{-- <a href="{{ route('admin.nfc-card.edit', $nfc_card->id) }}"
                                                 class="menu-link px-3">
                                                 Edit
-                                            </a>
+                                            </a> --}}
                                         </div>
                                         <div class="menu-item px-3">
                                             <a href="{{ route('admin.nfc-card.destroy', $nfc_card->id) }}"
