@@ -9,7 +9,7 @@
 
     @media (max-width: 1366px) {
         .custom-nfc-template {
-            height: 152px;
+          height: 100px;
         }
     }
 
