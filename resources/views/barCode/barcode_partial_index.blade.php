@@ -50,33 +50,62 @@
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <div class="row">
-                                                    @foreach ($bar_code->barCodeImages as $barCodeImage)
-                                                        <div class="col-lg-4 p-5">
+                                                @if ($bar_code->barcode_type == 'single_upload')
+                                                    <div class="row">
+                                                        @foreach ($bar_code->barCodeImages as $barCodeImage)
+                                                            <div class="col-lg-4 p-5">
+                                                                <div id="printableArea" style="display: none;"></div>
+                                                                <div class="border-1 border-dashed py-4">
+                                                                    <div>
+                                                                        <img id="barcode-{{ $barCodeImage->id }}"
+                                                                            class="img-fluid w-225px"
+                                                                            src="{{ asset('storage/' . $barCodeImage->image) }}"
+                                                                            alt="">
+                                                                    </div>
+                                                                    <div>
+                                                                        <a href="{{ asset('storage/' . $barCodeImage->image) }}"
+                                                                            class="menu-link px-3 fs-2 fw-bolder me-3"
+                                                                            download
+                                                                            data-kt-docs-table-filter="edit_row">
+                                                                            Download
+                                                                        </a>
+                                                                        <button
+                                                                            class="btn btn-light btn-active-light-primary btn-sm"
+                                                                            onclick="printImage('{{ asset('storage/' . $barCodeImage->image) }}')">
+                                                                            Print
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                @else
+                                                    <div class="row">
+                                                        <div class="col-lg-6 offset-lg-3">
                                                             <div id="printableArea" style="display: none;"></div>
                                                             <div class="border-1 border-dashed py-4">
                                                                 <div>
-                                                                    <img id="barcode-{{ $barCodeImage->id }}"
-                                                                        class="img-fluid w-225px"
-                                                                        src="{{ asset('storage/' . $barCodeImage->image) }}"
+                                                                    <img id="barcode-{{ $bar_code->id }}"
+                                                                        class="img-fluid pb-4"
+                                                                        src="{{ asset($bar_code->bar_code_png) }}"
                                                                         alt="">
                                                                 </div>
-                                                                <div>
-                                                                    <a href="{{ asset('storage/' . $barCodeImage->image) }}"
+                                                                <div class="pt-4">
+                                                                    <a href="{{ asset($bar_code->bar_code_png) }}"
                                                                         class="menu-link px-3 fs-2 fw-bolder me-3"
                                                                         download data-kt-docs-table-filter="edit_row">
                                                                         Download
                                                                     </a>
                                                                     <button
                                                                         class="btn btn-light btn-active-light-primary btn-sm"
-                                                                        onclick="printImage('{{ asset('storage/' . $barCodeImage->image) }}')">
+                                                                        onclick="printImage('{{ asset('storage/' . $bar_code->bar_code_png) }}')">
                                                                         Print
                                                                     </button>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    @endforeach
-                                                </div>
+                                                    </div>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
