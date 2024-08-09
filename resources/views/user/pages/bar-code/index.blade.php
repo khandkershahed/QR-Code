@@ -21,7 +21,7 @@
         </div>
 
 
-        @include('barCode.index')
+        @include('barCode.barcode_partial_index')
     </div>
-    
+
 </x-app-layout>

@@ -97,7 +97,7 @@
             </div>
         </div>
 
-        @include('barCode.index')
+        @include('barCode.barcode_partial_index')
     </div>
 
 </x-admin-app-layout>

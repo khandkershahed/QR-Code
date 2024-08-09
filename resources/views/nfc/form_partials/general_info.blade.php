@@ -135,7 +135,7 @@
             <x-metronic.input type="text" class="form-control form-control-solid form-control-sm" name="job_title"
                 :value="optional($nfc_card->nfcData)->job_title" placeholder="Enter Job Title " />
         </div>
-        <div class="fv-row col-lg-4 col-6 mb-4">
+        {{-- <div class="fv-row col-lg-4 col-6 mb-4">
             <x-metronic.label class="fw-semibold fs-6 mb-2">Default
                 Language</x-metronic.label>
             <select class="form-select" data-control="select2" data-placeholder="English" name="default_language"
@@ -146,7 +146,7 @@
                 <option value="arabic">Arabic</option>
                 <option value="bangla">Bangla</option>
             </select>
-        </div>
+        </div> --}}
     </div>
 
     <div class="d-flex justify-content-end">

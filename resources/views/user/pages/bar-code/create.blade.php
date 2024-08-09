@@ -1,5 +1,5 @@
 <x-app-layout :title="'Bar Code Generate'">
 
-@include('barCode.create')
+@include('barCode.barcode_partial_create')
 
 </x-app-layout>
