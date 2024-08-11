@@ -3,10 +3,10 @@
         <div class="card-body">
             @if (strpos(Route::current()->getName(), 'user.') === 0)
                 <form id="kt_docs_formvalidation_text" class="form bar_code_create_form"
-                    action="{{ route('user.single-barcode.store') }}" autocomplete="off" method="post">
+                    action="{{ route('user.single-barcode.store') }}" autocomplete="off" method="post" enctype="multipart/form-data">
                 @else
                     <form id="kt_docs_formvalidation_text" class="form bar_code_create_form"
-                        action="{{ route('admin.single-barcode.store') }}" autocomplete="off" method="post">
+                        action="{{ route('admin.single-barcode.store') }}" autocomplete="off" method="post" enctype="multipart/form-data">
             @endif
 
             @csrf
