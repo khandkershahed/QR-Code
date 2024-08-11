@@ -107,7 +107,9 @@ Route::middleware('auth:admin', 'role:admin')->prefix('admin')->name('admin.')->
 
     Route::get('template/qrcode', [QrCodeController::class, 'qrTemplate'])->name('qr.template');
     Route::get('template/nfc-card', [VirtualCardController::class, 'nfcTemplate'])->name('nfc.template');
-
+    Route::post('single-barcode/store', [BarCodeController::class, 'store'])->name('single-barcode.store');
+    Route::post('bulk-barcode/store', [BarCodeController::class, 'bulkStore'])->name('bulk-barcode.store');
+    
     Route::controller(DynamicCssController::class)->group(function () {
         Route::get('/dynamic-css', 'index')->name('css.index');
         Route::put('/dynamic-css/{id}/update', 'update')->name('css.update');

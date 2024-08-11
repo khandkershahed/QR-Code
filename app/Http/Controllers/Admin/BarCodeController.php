@@ -322,7 +322,6 @@ class BarCodeController extends Controller
         $typePrefix = 'BAR';
         $today = date('dm');
         $userId = $isUserRoute ? Auth::user()->id : null;
-
         $lastCode = BarCode::where('code', 'like', $typePrefix . $today . $userId . '%')
             ->orderBy('id', 'desc')->first();
         $newNumber = $lastCode ? (int)substr($lastCode->code, -2) + 1 : 1;
@@ -440,7 +439,7 @@ class BarCodeController extends Controller
         } catch (\Exception $e) {
             // Log the error for debugging
             Log::error('Barcode generation error: ' . $e->getMessage());
-            return redirect()->back()->withInput()->with('error', ['error' => 'An error occurred while generating the barcode PDF.']);
+            return redirect()->back()->withInput()->with('error', 'An error occurred while creating the barcode: ' . $e->getMessage());
         }
     }
 
@@ -562,7 +561,7 @@ class BarCodeController extends Controller
             $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
             $typePrefix = 'BAR';
             $today = date('dm');
-            $userId = $isUserRoute ? Auth::id() : null;
+            $userId = $isUserRoute ? Auth::user()->id : null;
 
             $lastCode = BarCode::where('code', 'like', $typePrefix . $today . $userId . '%')
                 ->orderBy('id', 'desc')->first();
@@ -574,7 +573,7 @@ class BarCodeController extends Controller
 
                 BarCode::create([
                     'user_id'            => $isUserRoute ? Auth::id() : null,
-                    'admin_id'           => $isUserRoute ? null : Auth::guard('admin')->id(),
+                    'admin_id'           => $isUserRoute ? null : Auth::guard('admin')->user()->id,
                     'barcode_type'       => 'bulk_upload',
                     'barcode_color'      => json_encode($barcodeColor),
                     'barcode_pattern'    => $barcodePattern,
@@ -716,7 +715,7 @@ class BarCodeController extends Controller
 
     //             BarCode::create([
     //                 'user_id'            => $isUserRoute ? Auth::id() : null,
-    //                 'admin_id'           => $isUserRoute ? null : Auth::guard('admin')->id(),
+    //                 'admin_id'           => $isUserRoute ? null : Auth::guard('admin')->user()->id,
     //                 'barcode_type'       => 'bulk_upload',
     //                 'barcode_color'      => json_encode($barcodeColor),
     //                 'barcode_pattern'    => $barcodePattern,
