@@ -139,7 +139,7 @@
                                     data-kt-menu="true" style="">
                                     @if (!empty($bar_code->bar_code_pdf))
                                         <div class="menu-item px-3">
-                                            <a href="{{ asset('storage/' . $bar_code->bar_code_pdf) }}"
+                                            <a href="{{ asset($bar_code->bar_code_pdf) }}"
                                                 class="menu-link px-3" download data-kt-docs-table-filter="edit_row">
                                                 PDF
                                             </a>
