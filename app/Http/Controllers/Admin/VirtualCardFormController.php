@@ -76,7 +76,7 @@ class VirtualCardFormController extends Controller
 
             $qrFileName = $nfc_card->code . '_nfc_qr.png';
             $qrCodePath = '../public/storage/nfc/qrs/' . $qrFileName;
-            // QrCode::size(300)->format('png')->margin(2)->errorCorrection('H')->encoding('UTF-8')->generate($nfc_url, $qrCodePath);
+            QrCode::size(300)->format('png')->margin(2)->errorCorrection('H')->encoding('UTF-8')->generate($nfc_url, $qrCodePath);
         }
 
         // Update NfcCard
