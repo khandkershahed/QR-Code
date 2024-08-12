@@ -20,7 +20,7 @@
     }
 
     .card-four-front {
-        background-image: url(https://i.ibb.co/R78XyqB/asdasd.png);
+        background-image: url({{ asset('frontend/images/card_images/card_four_front.png') }});
         background-repeat: no-repeat;
         background-size: cover;
         object-fit: cover;
@@ -31,7 +31,7 @@
     }
 
     .card-four-back {
-        background-image: url(https://i.ibb.co/Fn68zTt/bg-33.png);
+        background-image: url({{ asset('frontend/images/card_images/card_four_back.png') }});
         background-repeat: no-repeat;
         background-size: cover;
         object-fit: cover;
@@ -76,6 +76,12 @@
 
     .card-four-user-info {
         margin-left: 58px;
+    }
+
+    .tem-4-logo-bottom {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
     }
 
     @media (max-width: 576px) {
@@ -176,7 +182,7 @@
                     <!-- Company Logo -->
                     <div class="tem-4-logo">
                         <div class="d-flex align-items-center">
-                            <img class="img-fluid card_logo" width="100px" src="https://i.ibb.co/CWsWHTM/lgoo.png"
+                            <img class="img-fluid card_logo tem-4-logo-bottom" src="https://i.ibb.co/CWsWHTM/lgoo.png"
                                 alt="" />
                             {{-- <div>
                                 <h4>GoFlixza</h4>

@@ -15,13 +15,15 @@
         /* Maintain the aspect ratio */
         margin: 10px;
     }
+
     @media only screen and (max-width: 576px) {
-    .card_two {
-        height: 100% !important;
-        width: 100% !important;
-        /* max-width: 230px; */
+        .card_two {
+            height: 100% !important;
+            width: 100% !important;
+            /* max-width: 230px; */
+        }
     }
-}
+
     .card-two-front {
         background-image: url(https://i.ibb.co/wRN75GW/bg-2.png);
         background-repeat: no-repeat;
@@ -119,6 +121,12 @@
         width: 70%;
     }
 
+    .card_logo-tem-2 {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+
     @media only screen and (max-width: 1366px) {
         .card_email-box {
             width: 70%;
@@ -187,8 +195,8 @@
                 <div>
                     <!-- Company Logo -->
                     <div class="d-flex justify-content-center template-two-logo-ebox">
-                        <img class="img-fluid card_logo" width="100px" src="https://i.ibb.co/CWsWHTM/lgoo.png"
-                            alt="" />
+                        <img class="img-fluid card_logo card_logo-tem-2" width="100px"
+                            src="https://i.ibb.co/CWsWHTM/lgoo.png" alt="" />
                     </div>
 
                     <!-- Front Info -->

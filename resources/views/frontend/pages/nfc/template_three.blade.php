@@ -91,6 +91,12 @@
             }
         }
 
+        .company_logo-tem-3 {
+            width: 150px;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .testimonial-img-top {
             width: 150px;
             height: 150px;
@@ -403,6 +409,12 @@
             background: var(--template-two-color-white);
             padding: 12px;
             border-radius: 100%;
+            object-fit: cover;
+        }
+
+        .company_logo-tem-3 {
+            width: 150px;
+            height: 100%;
             object-fit: cover;
         }
 
@@ -993,25 +1005,14 @@
                                     <div class="company-slide">
                                         @foreach ($nfc_card->nfcCompany as $company)
                                             <div class="items px-4">
-                                                <div class="row">
-                                                    <div class="col-lg-12">
-                                                        <div class="d-flex justify-content-center">
-                                                            <div>
-                                                                <div
-                                                                    class="d-flex justify-content-center align-items-center">
-                                                                    <img class="img-fluid company_logo"
-                                                                        style="background: var(--template-two-color-white);padding: 12px;border-radius: 100%;"
-                                                                        src="{{ !empty($company->company_logo) && file_exists(public_path('storage/nfc/company/' . optional($company)->company_logo)) ? asset('storage/nfc/company/' . optional($company)->company_logo) : asset('frontend/images/no_image.png') }}"
-                                                                        alt="" />
-                                                                </div>
-                                                                <div>
-                                                                    <h5 class="text-center special-font">
-                                                                        {{ $company->company_name }}</h5>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                <div class="row align-items-center">
                                                     <div class="col-sm-5">
+                                                        <div class="d-flex justify-content-start align-items-center">
+                                                            <img class="img-fluid company_logo company_logo-tem-3"
+                                                                style="background: var(--template-two-color-white);padding: 12px;border-radius: 100%;"
+                                                                src="{{ !empty($company->company_logo) && file_exists(public_path('storage/nfc/company/' . optional($company)->company_logo)) ? asset('storage/nfc/company/' . optional($company)->company_logo) : asset('frontend/images/no_image.png') }}"
+                                                                alt="" />
+                                                        </div>
                                                         <div class="special-font">
                                                             <p class="text-white">
                                                                 <i class="fa-solid fa-location-dot pe-2"></i>
@@ -1029,6 +1030,8 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-7">
+                                                        <h5 class="text-start special-font">
+                                                            {{ $company->company_name }}</h5>
                                                         <p class="text-white">
                                                             {{ $company->company_description }}
                                                         </p>
@@ -1391,24 +1394,25 @@
                                         <div class="testimonial-slide">
                                             @foreach ($nfc_card->nfcTestimonial as $testimonial)
                                                 <div class="testimonial-items">
-                                                    <div class="row p-3 align-items-center"
+                                                    <div class="row align-items-center"
                                                         style="background-color: #f8f9fa1c; border-radius: 5px;">
-                                                        <div class="col-sm-3">
-                                                            <div class="testimonial-img-top">
+                                                        <div class="col-sm-3 px-0">
+                                                            <div class="testimonial-img-top p-3">
                                                                 <img class="img-fluid rounded-2"
                                                                     src="{{ !empty($testimonial->testimonial_image) && file_exists(public_path('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image)) ? asset('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image) : asset('frontend/images/no_image.png') }}"
                                                                     alt="" />
                                                             </div>
                                                         </div>
-                                                        <div class="col-sm-9">
-                                                            <div class="d-flex justify-content-between">
+                                                        <div class="col-sm-9 px-0">
+                                                            <div style="background: #00000047;padding: 10px;">
                                                                 <h6 class="special-font">
                                                                     {{ $testimonial->testimonial_name }}Rodela Bruce
                                                                 </h6>
+                                                                <p class="text-white">
+                                                                    {{ $testimonial->testimonial_description }}
+                                                                </p>
                                                             </div>
-                                                            <p>
-                                                                {{ $testimonial->testimonial_description }}
-                                                            </p>
+
                                                         </div>
                                                     </div>
                                                 </div>

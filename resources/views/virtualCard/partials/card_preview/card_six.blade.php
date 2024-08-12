@@ -35,6 +35,12 @@
         align-items: center;
     }
 
+    .card_logo-6-bottom {
+        width: 150px;
+        height: 100%;
+        object-fit: cover;
+    }
+
     @media (max-width: 1366px) {
 
         .punch-card-container,
@@ -55,7 +61,7 @@
         <!-- Visiting Card Box Container -->
         <div class="punch-card-container mb-2 card-front-six">
             <div class="row p-5 align-items-center card-six-info">
-                <div class="col-lg-6 d-flex justify-content-start font">
+                <div class="col-lg-5 d-flex justify-content-start font">
                     <div class="">
                         <div class="d-flex justify-content-center">
                             <img class="img-fluid bg-white nfc_qr" style="width: 100px;"
@@ -64,7 +70,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 text-lg-start text-end">
+                <div class="col-lg-7 text-lg-start text-end">
                     <div class="text-start content-area font">
                         <h1 class="fw-bold mb-0 card_name fs-4" style="color: #fff">
                             Nicholas Shelton
@@ -85,7 +91,8 @@
                         </div>
                         <div>
                             <p class="fw-bold mb-0 text-white">
-                                <i class="fas fa-map-marker-alt pe-2 pt-3 text-white"></i> <span class="card_address">New
+                                <i class="fas fa-map-marker-alt pe-2 pt-3 text-white"></i> <span
+                                    class="card_address">New
                                     York, United
                                     State</span>
                             </p>
@@ -97,7 +104,7 @@
         <div class="punch-card-container-back card-back-six">
             <div class="row p-5 align-items-center">
                 <div class="col-12 d-flex justify-content-center align-items-center">
-                    <img class="punch-card-logo-back card_logo"
+                    <img class="punch-card-logo-back card_logo card_logo-6-bottom"
                         src="https://i.ibb.co/vhZg1xp/png-clipart-light-white-line-light-angle-white-removebg-preview.png"
                         alt="Logo Back" />
                 </div>

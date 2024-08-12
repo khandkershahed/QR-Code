@@ -78,6 +78,12 @@
         margin-left: 58px;
     }
 
+    .tem-4-logo-bottom {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+
     @media (max-width: 576px) {
         .card-four-front {
             height: 1030px;
@@ -178,7 +184,7 @@
                     <div class="tem-4-logo pt-4">
                         <div class="d-flex align-items-center">
                             @if (!empty($nfc_card->card_logo) && file_exists(public_path('storage/nfc/' . $nfc_card->card_logo)))
-                                <img class="img-fluid card_logo" width="100px"
+                                <img class="img-fluid card_logo tem-4-logo-bottom"
                                     src="{{ asset('storage/nfc/' . $nfc_card->card_logo) }}" alt="" />
                             @endif
                         </div>
