@@ -36,11 +36,12 @@
                         <div class="navbar-collapse collapse clearfix">
                             <ul class="navigation onepage clearfix">
                                 <li><a href="{{ route('homePage') }}">HOME</a></li>
-                                <li class="dropdown position-static">
-                                    <a href="{{ route('qrCode') }}"
+                                <li>
+                                    <a href="{{ route('qrCode') }}" target="_blank">QR CODES</a>
+                                    {{-- <a href="{{ route('qrCode') }}"
                                         onclick="window.location.href = '{{ route('qrCode') }}'; return false;">QR
-                                        CODES</a>
-                                    <ul class="w-100" style="display: none;">
+                                        CODES</a> --}}
+                                    {{-- <ul class="w-100" style="display: none;">
                                         <div class="row">
                                             <div class="col-lg-4">
                                                 <div class="card border-0 shadow-none ps-3"
@@ -139,10 +140,12 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </ul>
+                                    </ul> --}}
                                 </li>
                                 <li class="dropdown position-static">
-                                    <a href="{{ route('digitalCard') }}"
+                                    <a href="{{ route('digitalCard') }}" target="_blank">DIGITAL
+                                        BUSINESS CARDS</a>
+                                    {{-- <a href="{{ route('digitalCard') }}"
                                         onclick="window.location.href = '{{ route('digitalCard') }}'; return false;">DIGITAL
                                         BUSINESS CARDS</a>
                                     <ul class="w-100" style="display: none;">
@@ -237,7 +240,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </ul>
+                                    </ul> --}}
                                 </li>
                                 {{-- <li class="dropdown ">
                                     <a href="">Pricing</a>
@@ -246,9 +249,10 @@
                                         <li><a href="{{ route('reseller.pricing') }}">Reseller Pricing</a></li>
                                     </ul>
                                 </li> --}}
-                                <li><a href="{{ route('barCode') }}">BAR CODE</a></li>
+                                <li><a href="{{ route('barCode') }}" target="_blank">BAR CODE</a></li>
                                 <li><a href="{{ route('pricing') }}">PRICING</a></li>
                                 <li><a href="{{ route('services') }}">SERVICES</a></li>
+                                <li><a href="{{ route('services') }}">BLOGS</a></li>
                             </ul>
                         </div>
                     </nav>

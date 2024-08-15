@@ -1,7 +1,7 @@
 <x-frontend-app-layout :title="'Digital Business Cards || GoFlixza - Your Hub for QR, Bar Codes & NFC V.Cards'">
     <!-- Page Banner Start -->
     <section class="page-banner-area overlay py-120 rpy-120 rel z-1 bgs-cover text-center"
-        style="background-image: url(https://webtendtheme.net/html/2024/akpager/assets/images/backgrounds/banner.jpg); height: 400px;"">
+        style="background-image: url({{ asset('frontend/newimage/banner.jpg') }}); height: 400px;"">
         <div class="container">
             <div class="banner-inner pt-70 rpt-60 text-black">
                 <h1 class="page-title" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
@@ -11,14 +11,48 @@
         </div>
     </section>
     <!-- Page Banner End -->
-    <section class="hero-area-five py-130 rpy-100 rel z-1">
+    <section class="app-stor-area pt-30 pb-30 rpb-150 rel z-1">
+        <div class="container mb-30">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-xl-5 col-lg-6">
+                    <div class="about-eight-content rel z-2 my-55 rmb-25 aos-init aos-animate" data-aos="fade-left"
+                        data-aos-duration="1500" data-aos-offset="50">
+                        <div class="section-title mb-30">
+                            <h2>Digital Business Cards</h2>
+                        </div>
+                        <p>Efficiently generate and store barcodes for your inventory with our intuitive barcode
+                            creation and management tool. Easily input product details, customize barcode settings, and
+                            save barcodes for seamless tracking and organization. Streamline your inventory process and
+                            enhance accuracy with our user-friendly interface.</p>
+                        <div class="play-app-stor pt-10">
+                            <a href="#"><img
+                                    src="https://webtendtheme.net/html/2024/akpager/assets/images/icons/play-stor.png"
+                                    alt="Play Stor"></a>
+                            <a href="#"><img
+                                    src="https://webtendtheme.net/html/2024/akpager/assets/images/icons/app-stor.png"
+                                    alt="App Stor"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="aos-init aos-animate" data-aos="fade-right" data-aos-duration="1500"
+                        data-aos-offset="50">
+                        <img class="rounded-3"
+                            src="https://techcrunch.com/wp-content/uploads/2018/07/Scandit-Barcode-Scanning-with-Samsung-Tablet.png"
+                            alt="About">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-lines">
+            <span></span><span></span>
+            <span></span><span></span>
+        </div>
+    </section>
+    <section class="hero-area-five py-10 rpy-100 rel z-1">
         <div class="container">
             <div class="hero-content style-five text-center aos-init aos-animate" data-aos="fade-up"
                 data-aos-duration="1500" data-aos-offset="50">
-                <span class="subtitle-one mb-20 aos-init aos-animate" data-aos="fade-up" data-aos-duration="1500"
-                    data-aos-offset="50"><i class="fas fa-rocket-launch"></i> Analytics you’ll enjoy using</span>
-                <h1 data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50"
-                    class="aos-init aos-animate">Only Customer Communication platform you'll ever need,</h1>
                 <h1 data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50"
                     class="aos-init aos-animate">Digital Card Pricing Plans</h1>
                 <div class="row justify-content-center pt-5 rpt-0 pb-25 aos-init aos-animate" data-aos="fade-up"
@@ -28,7 +62,7 @@
                             laudantium, totam rem aperiam eaque quae abillo inventore veritatis</p>
                     </div>
                 </div>
-                <a href="contact.html" class="theme-btn">Sign Up For Free <i class="fas fa-arrow-right"></i></a>
+
             </div>
         </div>
         <div class="hero-bg-wave-shapes">

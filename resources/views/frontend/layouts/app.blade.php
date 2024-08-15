@@ -60,8 +60,9 @@
     <div class="page-wrapper">
         <!-- Preloader -->
         <div class="preloader">
-            {{-- <div class="custom-loader"></div> --}}
-            <img src="{{ asset('frontend') }}/assets/images/client-logos/preloader.svg" alt="Client Logo" />
+            <img width="150px"
+                src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}"
+                alt="Client Logo" />
         </div>
 
         <!-- header start-->

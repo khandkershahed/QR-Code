@@ -37,7 +37,7 @@ body::-webkit-scrollbar-thumb {
     -webkit-box-shadow: none;
     box-shadow: none;
 }
-  
+
   h1, h2, h3, h4, h5, h6 {
     position: relative;
     color: #222;
@@ -46,7 +46,7 @@ body::-webkit-scrollbar-thumb {
     font-weight: 600;
     font-family: "Jost", sans-serif;
   }
-  
+
 
 body {
     font-size: 16px;
@@ -522,7 +522,7 @@ input[type="radio"] {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
-    background-color: #1f0060;
+    background-color: #1e0060fa;
     background-repeat: no-repeat;
     background-position: center center;
 }
@@ -532,7 +532,7 @@ input[type="radio"] {
     height: 75px;
     border-radius: 50%;
     background-color: transparent;
-    border: 2px solid #1f0060;
+    border: 2px solid #1e0060;
     border-top: 2px solid var(--primary-color);
     border-bottom: 2px solid var(--primary-color);
     -webkit-animation: 1s preloader linear infinite;
@@ -10574,13 +10574,13 @@ a.theme-btn.style-four:hover {
 }
 
 .accordion-button.collapsed::after {
-    background-image: 
+    background-image:
     url('data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 16 16\' fill=\'%230c63e4\'%3e%3cpath fill-rule=\'evenodd\' d=\'M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z\'/%3e%3c/svg%3e') !important;
     transform: rotate(-0deg);
 }
 
 .accordion-button::after{
-    background-image: 
+    background-image:
     url('data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 16 16\' fill=\'%230c63e4\'%3e%3cpath fill-rule=\'evenodd\' d=\'M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z\'/%3e%3c/svg%3e') !important;
     transform: rotate(-180deg);
 }

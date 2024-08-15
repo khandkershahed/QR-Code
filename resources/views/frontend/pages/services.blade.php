@@ -1,7 +1,7 @@
 <x-frontend-app-layout :title="'Services'">
     <!-- Page Banner Start -->
     <section class="page-banner-area overlay py-120 rpy-120 rel z-1 bgs-cover text-center"
-        style="background-image: url(https://webtendtheme.net/html/2024/akpager/assets/images/backgrounds/banner.jpg); height: 400px;"">
+        style="background-image: url({{ asset('frontend/newimage/banner.jpg') }}); height: 400px;"">
         <div class="container">
             <div class="banner-inner pt-70 rpt-60 text-black">
                 <h1 class="page-title" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
