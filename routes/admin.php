@@ -9,9 +9,11 @@ use App\Http\Controllers\Admin\SiteController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\QrCodeController;
 use App\Http\Controllers\Admin\BarCodeController;
+use App\Http\Controllers\Admin\BlogTagController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\NfcCardController;
 use App\Http\Controllers\RequestedCardController;
+use App\Http\Controllers\Admin\BlogPostController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DynamicCssController;
 use App\Http\Controllers\Admin\NewsLetterController;
@@ -19,6 +21,7 @@ use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\ActivityLogController;
 use App\Http\Controllers\Admin\VirtualCardController;
 use App\Http\Controllers\Subscription\PlanController;
+use App\Http\Controllers\Admin\BlogCategoryController;
 use App\Http\Controllers\Admin\EmailSettingController;
 use App\Http\Controllers\RestaurantCategoryController;
 use App\Http\Controllers\Admin\Auth\PasswordController;
@@ -85,9 +88,17 @@ Route::middleware('auth:admin', 'role:admin')->prefix('admin')->name('admin.')->
             'permission'     => PermissionController::class,
             'email-settings' => EmailSettingController::class,
             'plans'          => PlanController::class,
+            'blog-post'      => BlogPostController::class,
             'faq'            => FaqController::class,
         ],
         ['except' => ['show']]
+    );
+    Route::resources(
+        [
+            'blog-category'       => BlogCategoryController::class, //done
+            'blog-tags'           => BlogTagController::class, //done
+        ],
+        ['except' => ['show', 'create', 'edit']]
     );
     Route::resources(
         [
@@ -109,7 +120,7 @@ Route::middleware('auth:admin', 'role:admin')->prefix('admin')->name('admin.')->
     Route::get('template/nfc-card', [VirtualCardController::class, 'nfcTemplate'])->name('nfc.template');
     Route::post('single-barcode/store', [BarCodeController::class, 'store'])->name('single-barcode.store');
     Route::post('bulk-barcode/store', [BarCodeController::class, 'bulkStore'])->name('bulk-barcode.store');
-    
+
     Route::controller(DynamicCssController::class)->group(function () {
         Route::get('/dynamic-css', 'index')->name('css.index');
         Route::put('/dynamic-css/{id}/update', 'update')->name('css.update');
