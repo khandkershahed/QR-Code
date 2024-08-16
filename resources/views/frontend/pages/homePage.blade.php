@@ -1,4 +1,6 @@
-<x-frontend-app-layout :title="'GoFlixza || Your Hub for QR, Bar Codes, NFC V.Cards'">
+
+
+x-frontend-app-layout :title="'GoFlixza || Your Hub for QR, Bar Codes, NFC V.Cards'">
     <section id="about" class="hero-area-nine pt-165 rpt-150 pb-110 rpb-80 rel z-1">
         <div class="container">
             <div class="row gap-70 align-items-center">
@@ -84,7 +86,7 @@
                             <h4><a href="">Instant QR Code Generator</a></h4>
                             <p>Quickly create and customize QR codes for all your needs—business cards, websites, and
                                 more. Fast, easy, and user-friendly!</p>
-                            <a href="{{ route('routeName') }}" class="theme-btn style-two mt-25">Order Now <i
+                            <a href="{{ route('qrCode') }}" class="theme-btn style-two mt-25">Order Now <i
                                     class="fas fa-arrow-right"></i></a>
                             <img src="{{ asset('frontend/newimage/service1.png') }}" alt="Number Box">
                         </div>
@@ -97,7 +99,7 @@
                             <h4><a href="">NFC & Virtual Card Creator</a></h4>
                             <p>Easily create and share NFC tags and virtual business cards. Perfect for seamless,
                                 contactless connections in the digital world.</p>
-                            <a href="#" class="theme-btn style-two mt-25">Order Now <i
+                            <a href="{{ route('digitalCard') }}" class="theme-btn style-two mt-25">Order Now <i
                                     class="fas fa-arrow-right"></i></a>
                             <img src="{{ asset('frontend/newimage/service2.png') }}" alt="Number Box">
                         </div>
@@ -110,7 +112,7 @@
                             <h4><a href="">Barcode Generator</a></h4>
                             <p>Effortlessly create and customize barcodes for products, inventory, and more. Fast,
                                 reliable, and ready for all your needs.</p>
-                            <a href="#" class="theme-btn style-two mt-25">Order Now <i
+                            <a href="{{ route('barCode') }}" class="theme-btn style-two mt-25">Order Now <i
                                     class="fas fa-arrow-right"></i></a>
                             <img src="{{ asset('frontend/newimage/service3.png') }}" alt="Number Box">
                         </div>
@@ -644,6 +646,77 @@
         </div>
         <div class="bg-lines">
             <span></span><span></span> <span></span><span></span>
+        </div>
+    </section>
+    <section id="blog" class="blog-area-two pt-120 rpt-100">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-7 col-lg-9">
+                    <div class="section-title text-center mb-55 aos-init aos-animate" data-aos="fade-up"
+                        data-aos-duration="1500" data-aos-offset="50">
+                        <h2>Get Every Single Updates and Learn Our News &amp; <span>Blog</span></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-xl-4 col-md-6 col-sm-10">
+                    <div class="blog-item aos-init aos-animate" data-aos="fade-up" data-aos-duration="1000"
+                        data-aos-offset="50">
+                        <div class="image">
+                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/blog/blog1.png"
+                                alt="Blog">
+                            <div class="date"><b>25</b><span>Sep</span></div>
+                        </div>
+                        <div class="content">
+                            <a href="#" class="category">Lead Capture</a>
+                            <h5><a href="blog-details.html">Meet Success the Cale Smashing Book By Addy Osmania</a>
+                            </h5>
+                            <ul class="blog-meta">
+                                <li><i class="far fa-user-circle"></i> <a href="#">Roger J. Spaulding</a></li>
+                                <li><i class="far fa-comment-lines"></i> <a href="#">Comments(5)</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6 col-sm-10">
+                    <div class="blog-item aos-init aos-animate" data-aos="fade-up" data-aos-delay="200"
+                        data-aos-duration="1000" data-aos-offset="50">
+                        <div class="image">
+                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/blog/blog2.png"
+                                alt="Blog">
+                            <div class="date"><b>28</b><span>Sep</span></div>
+                        </div>
+                        <div class="content">
+                            <a href="#" class="category">Lead Capture</a>
+                            <h5><a href="blog-details.html">Practical Design Tips Guidelines For Beginner Designers</a>
+                            </h5>
+                            <ul class="blog-meta">
+                                <li><i class="far fa-user-circle"></i> <a href="#">Roger J. Spaulding</a></li>
+                                <li><i class="far fa-comment-lines"></i> <a href="#">Comments(5)</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6 col-sm-10">
+                    <div class="blog-item aos-init aos-animate" data-aos="fade-up" data-aos-delay="400"
+                        data-aos-duration="1000" data-aos-offset="50">
+                        <div class="image">
+                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/blog/blog3.png"
+                                alt="Blog">
+                            <div class="date"><b>30</b><span>Sep</span></div>
+                        </div>
+                        <div class="content">
+                            <a href="#" class="category">Lead Capture</a>
+                            <h5><a href="blog-details.html">Meet Success the Cale Smashing Book By Addy Osmania</a>
+                            </h5>
+                            <ul class="blog-meta">
+                                <li><i class="far fa-user-circle"></i> <a href="#">Roger J. Spaulding</a></li>
+                                <li><i class="far fa-comment-lines"></i> <a href="#">Comments(5)</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </x-frontend-app-layout>
