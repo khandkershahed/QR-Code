@@ -1,5 +1,5 @@
 <x-frontend-app-layout :title="'Bar Code || GoFlixza - Your Hub for QR, Bar Codes & NFC V.Cards'">
-    <section class="page-banner-area overlay py-120 rpy-120 rel z-1 bgs-cover text-center"
+    <section class="page-banner-area overlay py-50 pt-100 rpy-120 rel z-1 bgs-cover text-center"
         style="background-image: url({{ asset('frontend/newimage/banner.jpg') }});">
         <div class="container">
             <div class="banner-inner pt-70 rpt-60 text-black">
@@ -8,19 +8,21 @@
             </div>
         </div>
     </section>
-    <section class="app-stor-area pt-200 pb-200 rpb-150 rel z-1">
+    <section class="app-stor-area pt-100 pb-100 rpb-150 rel z-1">
         <div class="container mb-30">
             <div class="row justify-content-between align-items-center">
                 <div class="col-xl-5 col-lg-6">
                     <div class="about-eight-content rel z-2 my-55 rmb-25 aos-init aos-animate" data-aos="fade-left"
                         data-aos-duration="1500" data-aos-offset="50">
                         <div class="section-title mb-30">
-                            <h2>Barcode Creation and Management</h2>
+                            <h2>Generate Your Custom Barcodes Easily</h2>
                         </div>
-                        <p>Efficiently generate and store barcodes for your inventory with our intuitive barcode
-                            creation and management tool. Easily input product details, customize barcode settings, and
-                            save barcodes for seamless tracking and organization. Streamline your inventory process and
-                            enhance accuracy with our user-friendly interface.</p>
+                        <p>Create high-quality barcodes for your products, inventory, or any other needs with our
+                            easy-to-use barcode generator. Customize your barcodes with different formats and styles to
+                            fit your requirements. Whether you need a single barcode or bulk generation, our tool
+                            provides a fast and efficient solution to streamline your processes. Generate barcodes
+                            instantly and download them in various formats for seamless integration into your business
+                            operations.</p>
                         <div class="play-app-stor pt-10">
                             <a href="#"><img
                                     src="https://webtendtheme.net/html/2024/akpager/assets/images/icons/play-stor.png"
