@@ -1651,9 +1651,7 @@
             if (location || locationUrl) {
                 vcard += `${makeVCardLocation(location, locationUrl)}\n`;
             }
-            if (language) {
-                vcard += `${makeVCardLanguage(language)}\n`;
-            }
+            
 
             vcard += `${makeVCardTimeStamp()}\nEND:VCARD`;
 
