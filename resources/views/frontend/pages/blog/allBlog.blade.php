@@ -31,10 +31,10 @@
                                             <a href="#">{{ $blog_post->author }}</a>
                                         </li>
                                         <li><i class="fas fa-calendar-alt"></i> <a
-                                                href="#">{{ $blog_post->created_at->format('M d Y') }}</a>
+                                                href="{{ route('blog.details', $blog_post->slug) }}">{{ $blog_post->created_at->format('M d Y') }}</a>
                                         </li>
                                     </ul>
-                                    <h3><a href="blog.details.html">{{ $blog_post->title }}</a>
+                                    <h3><a href="{{ route('blog.details', $blog_post->slug) }}">{{ $blog_post->title }}</a>
                                     </h3>
                                     <p>{{ $blog_post->header }}
                                     </p>
