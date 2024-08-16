@@ -168,7 +168,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        {{ $qr->author }}
+                                        {{ optional($qr->user)->name }}
                                     </td>
                                     <td class="text-start">
                                         <button class="btn btn-light-primary">{{ ucfirst($qr->qr_type) }}</button>

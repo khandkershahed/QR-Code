@@ -8,27 +8,32 @@
                 <thead>
                     <tr class="fw-bold fs-6 text-gray-800 px-7">
                         <th width="5%">SL</th>
-                        {{-- <th width="30%">Image</th> --}}
-                        <th width="25%">Product </th>
-                        <th width="12%">Pattern</th>
-                        <th width="13%" class="text-center">BarCode</th>
-                        <th width="15%" class="text-center">Action</th>
+                        <th width="15%">Image</th>
+                        <th width="20%">Product </th>
+                        <th width="20%">Author</th>
+                        <th width="10%">Pattern</th>
+                        <th width="15%" class="text-center">BarCode</th>
+                        <th width="25%" class="text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody class="fw-semibold text-gray-600">
                     @foreach ($bar_codes as $bar_code)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            {{-- <td>
-                                <img src="{{ asset($bar_code->bar_code_png) }}" width="120px" alt="{{ $bar_code->product_name }}">
-                            </td> --}}
+                            <td>
+                                <img class="" width="50px" src="{{ $bar_code->qr_png_url }}" alt="">
+                            </td>
                             <td>
                                 <div class="d-flex flex-column">
                                     <a href="javascript:void(0)" class="mb-1 text-decoration-none fs-6">
                                         Name : {{ $bar_code->product_name }}
                                     </a>
                                     <span class="fs-6">Code : {{ $bar_code->product_id }}</span>
+                                    <span>Create: {{ $bar_code->created_at }}</span>
                                 </div>
+                            </td>
+                            <td>
+                                {{ optional($bar_code->user)->name }}
                             </td>
                             <td>{{ $bar_code->barcode_pattern }}</td>
                             <td class="text-center">
@@ -139,8 +144,8 @@
                                     data-kt-menu="true" style="">
                                     @if (!empty($bar_code->bar_code_pdf))
                                         <div class="menu-item px-3">
-                                            <a href="{{ asset($bar_code->bar_code_pdf) }}"
-                                                class="menu-link px-3" download data-kt-docs-table-filter="edit_row">
+                                            <a href="{{ asset($bar_code->bar_code_pdf) }}" class="menu-link px-3"
+                                                download data-kt-docs-table-filter="edit_row">
                                                 PDF
                                             </a>
                                         </div>
