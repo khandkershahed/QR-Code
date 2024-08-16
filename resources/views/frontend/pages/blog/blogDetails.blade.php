@@ -60,20 +60,22 @@
                             <hr>
                         </div>
 
-                        <div class="admin-comment bgc-lighter mt-60 aos-init" data-aos="fade-up"
-                            data-aos-duration="1500" data-aos-offset="50">
-                            <div class="comment-body">
-                                <div class="author-thumb">
-                                    <img src="{{ optional($blog)->logo ? asset('storage/' . optional($blog)->logo) : asset('frontend/newimage/blognoimage.webp') }}"
-                                        alt="Author"
-                                        style="width: 100px;height: 100px;object-fit: cover;"
-                                        onerror="this.onerror=null;this.src='{{ asset('frontend/newimage/blognoimage.webp') }}';">
-                                </div>
-                                <div class="content">
-                                    <h5>{{ optional($blog)->author }}</h5>
+                        @if (!empty(optional($blog)->author))
+                            <div class="admin-comment bgc-lighter mt-60 aos-init" data-aos="fade-up"
+                                data-aos-duration="1500" data-aos-offset="50">
+                                <div class="comment-body">
+                                    <div class="author-thumb">
+                                        <img src="{{ optional($blog)->logo ? asset('storage/' . optional($blog)->logo) : asset('frontend/newimage/blognoimage.webp') }}"
+                                            alt="Author"
+                                            style="width: 100px;height: 100px;object-fit: cover;"
+                                            onerror="this.onerror=null;this.src='{{ asset('frontend/newimage/blognoimage.webp') }}';">
+                                    </div>
+                                    <div class="content">
+                                        <h5>{{ optional($blog)->author }}</h5>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @endif
 
                         {{-- <h4 class="comment-title mb-20 pt-50">Comments</h4>
                         <div class="comments">

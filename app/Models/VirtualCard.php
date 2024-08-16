@@ -19,4 +19,8 @@ class VirtualCard extends Model
     {
         return $this->hasOne(NfcShippingDetails::class, 'card_id');
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

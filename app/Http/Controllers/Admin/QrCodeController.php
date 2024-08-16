@@ -1564,7 +1564,21 @@ class QrCodeController extends Controller
 
     public function destroy(string $id)
     {
-        Qr::find($id)->delete();
+        $qr = Qr::find($id)->delete();
+        $files = [
+            'card_logo'     => $qr->card_logo,
+            'card_bg_front' => $qr->card_bg_front,
+            'card_bg_back'  => $qr->card_bg_back,
+        ];
+
+        $filePath = 'public/nfc/';
+
+        // Delete the files if they exist
+        foreach ($files as $file) {
+            if (!empty($file) && Storage::exists($filePath . $file)) {
+                Storage::delete($filePath . $file);
+            }
+        }
         $qr_data = QrData::where('code_id', $id)->first();
         if (!empty($qr_data)) {
             $qr_data->delete();
