@@ -1,6 +1,4 @@
-
-
-x-frontend-app-layout :title="'GoFlixza || Your Hub for QR, Bar Codes, NFC V.Cards'">
+<x-frontend-app-layout :title="'GoFlixza || Your Hub for QR, Bar Codes, NFC V.Cards'">
     <section id="about" class="hero-area-nine pt-165 rpt-150 pb-110 rpb-80 rel z-1">
         <div class="container">
             <div class="row gap-70 align-items-center">

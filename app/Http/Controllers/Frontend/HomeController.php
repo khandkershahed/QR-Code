@@ -135,6 +135,14 @@ class HomeController extends Controller
     {
         return view('frontend.pages.dynamicQr');
     }
+    public function allBlog()
+    {
+        return view('frontend.pages.blog.allBlog');
+    }
+    public function blogDetails()
+    {
+        return view('frontend.pages.blog.blogDetails');
+    }
     public function mailTest()
     {
         return view('frontend.pages.mailTest');
