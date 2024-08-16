@@ -1,5 +1,5 @@
 <x-admin-app-layout :title="'Blog Posts'">
-    <div class="card">
+    <div class="card my-10">
         <div class="card-header bg-info d-flex justify-content-between align-items-center">
             <h1 class="mb-0 text-white">Manage Your Blog Posts</h1>
             <a href="{{ route('admin.blog-post.create') }}" class="btn btn-light-primary rounded-2">
@@ -21,12 +21,12 @@
             <table class="table my-datatable table-striped table-row-bordered gy-5 gs-7">
                 <thead class="">
                     <tr class="fw-semibold fs-6 text-gray-800">
-                        <th width="10%" class="text-center">Sl No.</th>
-                        <th width="40%">Title</th>
-                        <th width="15%">Author</th>
-                        <th width="10%">Create date</th>
-                        <th width="12%">Status</th>
-                        <th width="13%" class="text-end">Action</th>
+                        <th width="5%" class="text-center">Sl</th>
+                        <th width="35%">Title</th>
+                        <th width="20%">Author</th>
+                        <th width="20%">Create date</th>
+                        <th width="10%">Status</th>
+                        <th width="10%" class="text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,7 +38,7 @@
                             <td>{{ $post->created_at->format('d-M-Y') }}</td>
                             <td><span class="badge {{ $post->status == 'publish' ? 'bg-success' : 'bg-danger' }}">
                                     {{ $post->status == 'publish' ? 'Publish' : 'Unpublish' }}</td>
-                            <td  class="text-end">
+                            <td  class="text-center">
                                 {{-- <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
                                     data-bs-toggle="modal" data-bs-target="#faqViewModal_{{ $post->id }}">
                                     <i class="fa-solid fa-expand"></i>

@@ -38,7 +38,7 @@
                                 <i class="fas fa-circle-check"></i> Insightful Analytics
                             </li>
                         </ul>
-                        <a href="about.html" class="theme-btn">Learn More <i class="fas fa-arrow-right"></i></a>
+                        <a href="{{ asset('about') }}" class="theme-btn">Learn More <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
