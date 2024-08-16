@@ -1,10 +1,10 @@
 <x-frontend-app-layout :title="'Blog Details || GoFlixza - Your Hub for QR, Bar Codes & NFC V.Cards'">
     <section class="page-banner-area overlay py-120 rpy-120 rel z-1 bgs-cover text-center"
-        style="background-image: url({{ asset('frontend/newimage/banner.jpg') }}); height: 400px;"">
+        style="background-image: url({{ asset('frontend/newimage/banner.jpg') }}); height: 400px;">
         <div class="container">
             <div class="banner-inner pt-70 rpt-60 text-black">
                 <h1 class="page-title" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                    Blog Title
+                    {{ $blog->title }}
                 </h1>
             </div>
         </div>
@@ -17,27 +17,19 @@
                         <div class="blog-details-content">
                             <div class="image mb-30 aos-init aos-animate" data-aos="fade-up" data-aos-duration="1500"
                                 data-aos-offset="50">
-                                <img src="https://webtendtheme.net/html/2024/akpager/assets/images/blog/blog-standard1.png" alt="Blog">
+                                <img src="{{ asset('storage/' . $blog->banner_image) }}" alt="{{ $blog->title }}"
+                                    alt="Blog"
+                                    onerror="this.onerror=null;this.src='{{ asset('frontend/newimage/blognoimage.webp') }}';">
                             </div>
 
-                            <h3>Elegant Design Runway to Real Life</h3>
-                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                                architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
-                                sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
-                                voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit
-                                amet <br>
-                                consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore
-                                et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
-                                exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi
-                                consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam
-                                nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-                                pariatur</p>
+                            <h3>{{ $blog->title }}</h3>
+                            <p>{!! $blog->header !!} <br>
+                                {!! $blog->short_description !!} <br>
+                                {!! $blog->long_description !!}</p>
 
                             <blockquote class="blockquote-two bgc-lighter my-40 aos-init" data-aos="fade-up"
                                 data-aos-duration="1500" data-aos-offset="50">
-                                <div class="text">Handling Mounting And Unmounting Of Given Navigation Routes In React
-                                    Native</div>
+                                <div class="text">{!! $blog->footer !!}</div>
                                 <span class="blockquote-footer">Johnny M. Martin</span>
                             </blockquote>
 
@@ -76,7 +68,8 @@
                             data-aos-duration="1500" data-aos-offset="50">
                             <div class="comment-body">
                                 <div class="author-thumb">
-                                    <img src="https://webtendtheme.net/html/2024/akpager/assets/images/blog/admin-author.jpg" alt="Author">
+                                    <img src="https://webtendtheme.net/html/2024/akpager/assets/images/blog/admin-author.jpg"
+                                        alt="Author">
                                 </div>
                                 <div class="content">
                                     <h5>Richard M. Fudge</h5>
@@ -95,7 +88,8 @@
                             <div class="item aos-init" data-aos="fade-left" data-aos-duration="1500"
                                 data-aos-offset="50">
                                 <div class="image">
-                                    <img src="https://webtendtheme.net/html/2024/akpager/assets/images/widget/news4.jpg" alt="News">
+                                    <img src="https://webtendtheme.net/html/2024/akpager/assets/images/widget/news4.jpg"
+                                        alt="News">
                                 </div>
                                 <div class="content">
                                     <span class="date">September 20, 2023</span>
@@ -106,7 +100,8 @@
                             <div class="item aos-init" data-aos="fade-right" data-aos-duration="1500"
                                 data-aos-offset="50">
                                 <div class="image">
-                                    <img src="https://webtendtheme.net/html/2024/akpager/assets/images/widget/news5.jpg" alt="News">
+                                    <img src="https://webtendtheme.net/html/2024/akpager/assets/images/widget/news5.jpg"
+                                        alt="News">
                                 </div>
                                 <div class="content">
                                     <span class="date">September 20, 2023</span>
@@ -120,7 +115,8 @@
                             <div class="comment-body aos-init" data-aos="fade-up" data-aos-duration="1500"
                                 data-aos-offset="50">
                                 <div class="author-thumb">
-                                    <img src="https://webtendtheme.net/html/2024/akpager/assets/images/blog/comment-author1.png" alt="Author">
+                                    <img src="https://webtendtheme.net/html/2024/akpager/assets/images/blog/comment-author1.png"
+                                        alt="Author">
                                 </div>
                                 <div class="content">
                                     <ul class="comment-header">
@@ -136,10 +132,11 @@
                                     <a class="read-more" href="#">Reply <i class="far fa-arrow-right"></i></a>
                                 </div>
                             </div>
-                            <div class="comment-body comment-child aos-init" data-aos="fade-up" data-aos-duration="1500"
-                                data-aos-offset="50">
+                            <div class="comment-body comment-child aos-init" data-aos="fade-up"
+                                data-aos-duration="1500" data-aos-offset="50">
                                 <div class="author-thumb">
-                                    <img src="https://webtendtheme.net/html/2024/akpager/assets/images/blog/comment-author2.png" alt="Author">
+                                    <img src="https://webtendtheme.net/html/2024/akpager/assets/images/blog/comment-author2.png"
+                                        alt="Author">
                                 </div>
                                 <div class="content">
                                     <ul class="comment-header">
@@ -221,7 +218,8 @@
                             <ul>
                                 <li>
                                     <div class="image">
-                                        <img src="https://webtendtheme.net/html/2024/akpager/assets/images/widget/news1.jpg" alt="News">
+                                        <img src="https://webtendtheme.net/html/2024/akpager/assets/images/widget/news1.jpg"
+                                            alt="News">
                                     </div>
                                     <div class="content">
                                         <span class="date">September 20, 2023</span>
@@ -231,7 +229,8 @@
                                 </li>
                                 <li>
                                     <div class="image">
-                                        <img src="https://webtendtheme.net/html/2024/akpager/assets/images/widget/news2.jpg" alt="News">
+                                        <img src="https://webtendtheme.net/html/2024/akpager/assets/images/widget/news2.jpg"
+                                            alt="News">
                                     </div>
                                     <div class="content">
                                         <span class="date">September 20, 2023</span>
@@ -241,7 +240,8 @@
                                 </li>
                                 <li>
                                     <div class="image">
-                                        <img src="https://webtendtheme.net/html/2024/akpager/assets/images/widget/news3.jpg" alt="News">
+                                        <img src="https://webtendtheme.net/html/2024/akpager/assets/images/widget/news3.jpg"
+                                            alt="News">
                                     </div>
                                     <div class="content">
                                         <span class="date">September 20, 2023</span>
@@ -268,7 +268,9 @@
                             <h3>Boost your Digital Product marketing?</h3>
                             <a href="contact.html" class="theme-btn">Contact Us <i
                                     class="far fa-arrow-right"></i></a>
-                            <div class="man"><img src="https://webtendtheme.net/html/2024/akpager/assets/images/widget/cta-man.png" alt="CTA"></div>
+                            <div class="man"><img
+                                    src="https://webtendtheme.net/html/2024/akpager/assets/images/widget/cta-man.png"
+                                    alt="CTA"></div>
                             <div class="bg bgs-cover" style="background-image: url(assets/images/widget/cta-bg.png);">
                             </div>
                         </div>

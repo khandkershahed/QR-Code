@@ -141,15 +141,32 @@ class HomeController extends Controller
     public function allBlog()
     {
         $data = [
-            'blog_posts'     => BlogPost::latest('id')->where('status', 'publish')->get(),
+            'blog_posts'     => BlogPost::latest('id')->where('status', 'publish')->paginate(10),
             'blog_categorys' => BlogCategory::latest('id')->where('status', 'active')->get(),
             'blog_tags'      => BlogTag::latest('id')->where('status', 'active')->get(),
+            'recent_posts'   => BlogPost::latest('created_at')->where('status', 'publish')->take(5)->get(),
         ];
         return view('frontend.pages.blog.allBlog', $data);
     }
-    public function blogDetails()
+    public function getBlogPosts(Request $request)
+{
+    $blog_posts = BlogPost::paginate(5); // Load 5 blog posts per page
+
+    if ($request->ajax()) {
+        return view('frontend.pages.blog._blog_posts', compact('blog_posts'))->render();
+    }
+
+    return view('frontend.pages.blog.allBlog', compact('blog_posts'));
+}
+    public function blogDetails($slug)
     {
-        return view('frontend.pages.blog.blogDetails');
+        $data = [
+            'blog'           => BlogPost::where('slug', $slug)->first(),
+            'blog_categorys' => BlogCategory::latest('id')->where('status', 'active')->get(),
+            'blog_tags'      => BlogTag::latest('id')->where('status', 'active')->get(),
+        ];
+
+        return view('frontend.pages.blog.blogDetails', $data);
     }
     public function mailTest()
     {

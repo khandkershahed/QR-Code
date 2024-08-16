@@ -1,6 +1,6 @@
 <x-admin-app-layout :title="'Blog Posts'">
     <div class="card">
-        <div class="card-header bg-primary d-flex justify-content-between align-items-center">
+        <div class="card-header bg-info d-flex justify-content-between align-items-center">
             <h1 class="mb-0 text-white">Manage Your Blog Posts</h1>
             <a href="{{ route('admin.blog-post.create') }}" class="btn btn-light-primary rounded-2">
                 <span class="svg-icon svg-icon-3">
@@ -21,24 +21,24 @@
             <table class="table my-datatable table-striped table-row-bordered gy-5 gs-7">
                 <thead class="">
                     <tr class="fw-semibold fs-6 text-gray-800">
-                        <th width="5%">Sl No.</th>
-                        <th width="45%">Title</th>
+                        <th width="10%" class="text-center">Sl No.</th>
+                        <th width="40%">Title</th>
                         <th width="15%">Author</th>
                         <th width="10%">Create date</th>
                         <th width="12%">Status</th>
-                        <th width="13%">Action</th>
+                        <th width="13%" class="text-end">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($blogPosts as $post)
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
+                            <td class="text-center">{{ $loop->iteration }}</td>
                             <td>{{ $post->title }}</td>
                             <td>{{ $post->author }}</td>
                             <td>{{ $post->created_at->format('d-M-Y') }}</td>
                             <td><span class="badge {{ $post->status == 'publish' ? 'bg-success' : 'bg-danger' }}">
                                     {{ $post->status == 'publish' ? 'Publish' : 'Unpublish' }}</td>
-                            <td>
+                            <td  class="text-end">
                                 {{-- <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
                                     data-bs-toggle="modal" data-bs-target="#faqViewModal_{{ $post->id }}">
                                     <i class="fa-solid fa-expand"></i>
