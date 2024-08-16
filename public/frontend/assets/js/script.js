@@ -551,5 +551,5 @@
     // // Set a timeout to remove or hide the preloader after 2 seconds
     setTimeout(function () {
         document.querySelector(".preloader").style.display = "none"; // hides the preloader
-    }, 500); // 2000 milliseconds = 2 seconds
+    }, 1000); // 2000 milliseconds = 2 seconds
 })(window.jQuery);

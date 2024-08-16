@@ -113,28 +113,26 @@
                             <div class="tab-pane fade active show" id="tabFour1">
                                 <div class="row justify-content-center">
                                     @foreach ($qr_plans as $qr_plan)
-                                        <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate"
-                                            data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                                            <div class="pricing-item style-five">
-                                                <div class="title-price">
-                                                    <h5 class="title">{{ $qr_plan->title }}</h5>
-                                                    <div class="price"><span
-                                                            class="prev">$</span>{{ $qr_plan->price }}<span
-                                                            class="next">/
-                                                            @if ($qr_plan->billing_cycle == 'year')
-                                                                year
-                                                            @elseif ($qr_plan->billing_cycle == 'month')
-                                                                month
-                                                                {{-- @elseif ($qr_plan->billing_cycle == 'half_year')
-                                                            Half Yearly --}}
-                                                            @else
-                                                                Trial Period
-                                                            @endif
-                                                        </span></div>
+                                        <div class="col-xl-3 col-md-6 col-sm-10 aos-init" data-aos="fade-up"
+                                            data-aos-duration="1500" data-aos-offset="50">
+                                            <div class="pricing-item style-four">
+                                                <div class="icon">
+                                                    <i class="flaticon-educational-school-hand-drawn-tools"></i>
                                                 </div>
+                                                <h4 class="title">{{ $qr_plan->title }}</h4>
+                                                <div class="price"><span
+                                                        class="prev">$</span>{{ $qr_plan->price }}<span
+                                                        class="next">/
+                                                        @if ($qr_plan->billing_cycle == 'year')
+                                                            year
+                                                        @elseif ($qr_plan->billing_cycle == 'month')
+                                                            month
+                                                        @else
+                                                            Trial Period
+                                                        @endif
+                                                    </span></div>
+                                                <div class="text">No credit card required</div>
                                                 <hr>
-                                                {{-- <div class="text">For small nfces looking to reach more consumers
-                                                </div> --}}
                                                 @php
                                                     $descriptions = is_array($qr_plan->descriptions)
                                                         ? $qr_plan->descriptions
@@ -143,14 +141,13 @@
                                                 @if (!empty($descriptions))
                                                     <ul class="icon-list">
                                                         @foreach ($descriptions as $description)
-                                                            <li><i class="ion-checkmark"></i> {{ $description }}</li>
+                                                            <li><i class="fas fa-checkmark"></i> {{ $description }}</li>
                                                         @endforeach
                                                     </ul>
                                                 @endif
                                                 <a href="{{ route('user_subscribe.register', $qr_plan->slug) }}"
-                                                    class="theme-btn style-two">Buy Now <i
-                                                        class="fas fa-arrow-right"></i></a>
-                                            </div>
+                                                    class="theme-btn">Order Now</a>
+                                            </div> <!-- Missing closing div -->
                                         </div>
                                     @endforeach
                                 </div>
@@ -158,18 +155,26 @@
                             <div class="tab-pane fade" id="tabFour2">
                                 <div class="row justify-content-center">
                                     @foreach ($nfc_plans as $nfc_plan)
-                                        <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate"
-                                            data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                                            <div class="pricing-item style-five">
-                                                <div class="title-price">
-                                                    <h5 class="title">{{ $nfc_plan->title }}</h5>
-                                                    <div class="price"><span
-                                                            class="prev">$</span>{{ $nfc_plan->price }}<span
-                                                            class="next">/{{ $nfc_plan->billing_cycle }}</span></div>
+                                        <div class="col-xl-4 col-md-6 col-sm-10 aos-init" data-aos="fade-up"
+                                            data-aos-duration="1500" data-aos-offset="50">
+                                            <div class="pricing-item style-four">
+                                                <div class="icon">
+                                                    <i class="flaticon-educational-school-hand-drawn-tools"></i>
                                                 </div>
+                                                <h4 class="title">{{ $nfc_plan->title }}</h4>
+                                                <div class="price"><span
+                                                        class="prev">$</span>{{ $nfc_plan->price }}<span
+                                                        class="next">/
+                                                        @if ($nfc_plan->billing_cycle == 'year')
+                                                            year
+                                                        @elseif ($nfc_plan->billing_cycle == 'month')
+                                                            month
+                                                        @else
+                                                            Trial Period
+                                                        @endif
+                                                    </span></div>
+                                                <div class="text">No credit card required</div>
                                                 <hr>
-                                                {{-- <div class="text">For small nfces looking to reach more consumers
-                                                </div> --}}
                                                 @php
                                                     $descriptions = is_array($nfc_plan->descriptions)
                                                         ? $nfc_plan->descriptions
@@ -178,14 +183,13 @@
                                                 @if (!empty($descriptions))
                                                     <ul class="icon-list">
                                                         @foreach ($descriptions as $description)
-                                                            <li><i class="ion-checkmark"></i> {{ $description }}</li>
+                                                            <li><i class="fas fa-checkmark"></i> {{ $description }}</li>
                                                         @endforeach
                                                     </ul>
                                                 @endif
                                                 <a href="{{ route('user_subscribe.register', $nfc_plan->slug) }}"
-                                                    class="theme-btn style-two">Buy Now <i
-                                                        class="fas fa-arrow-right"></i></a>
-                                            </div>
+                                                    class="theme-btn">Order Now</a>
+                                            </div> <!-- Missing closing div -->
                                         </div>
                                     @endforeach
                                 </div>
@@ -193,18 +197,26 @@
                             <div class="tab-pane fade" id="tabFour3">
                                 <div class="row justify-content-center">
                                     @foreach ($barcode_plans as $barcode_plan)
-                                        <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate"
-                                            data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                                            <div class="pricing-item style-five">
-                                                <div class="title-price">
-                                                    <h5 class="title">{{ $barcode_plan->title }}</h5>
-                                                    <div class="price"><span
-                                                            class="prev">$</span>{{ $barcode_plan->price }}<span
-                                                            class="next">/{{ $barcode_plan->billing_cycle }}</span></div>
+                                        <div class="col-xl-4 col-md-6 col-sm-10 aos-init" data-aos="fade-up"
+                                            data-aos-duration="1500" data-aos-offset="50">
+                                            <div class="pricing-item style-four">
+                                                <div class="icon">
+                                                    <i class="flaticon-educational-school-hand-drawn-tools"></i>
                                                 </div>
+                                                <h4 class="title">{{ $barcode_plan->title }}</h4>
+                                                <div class="price"><span
+                                                        class="prev">$</span>{{ $barcode_plan->price }}<span
+                                                        class="next">/
+                                                        @if ($barcode_plan->billing_cycle == 'year')
+                                                            year
+                                                        @elseif ($barcode_plan->billing_cycle == 'month')
+                                                            month
+                                                        @else
+                                                            Trial Period
+                                                        @endif
+                                                    </span></div>
+                                                <div class="text">No credit card required</div>
                                                 <hr>
-                                                {{-- <div class="text">For small nfces looking to reach more consumers
-                                                </div> --}}
                                                 @php
                                                     $descriptions = is_array($barcode_plan->descriptions)
                                                         ? $barcode_plan->descriptions
@@ -213,14 +225,13 @@
                                                 @if (!empty($descriptions))
                                                     <ul class="icon-list">
                                                         @foreach ($descriptions as $description)
-                                                            <li><i class="ion-checkmark"></i> {{ $description }}</li>
+                                                            <li><i class="fas fa-checkmark"></i> {{ $description }}</li>
                                                         @endforeach
                                                     </ul>
                                                 @endif
                                                 <a href="{{ route('user_subscribe.register', $barcode_plan->slug) }}"
-                                                    class="theme-btn style-two">Buy Now <i
-                                                        class="fas fa-arrow-right"></i></a>
-                                            </div>
+                                                    class="theme-btn">Order Now</a>
+                                            </div> <!-- Missing closing div -->
                                         </div>
                                     @endforeach
                                 </div>
@@ -230,14 +241,6 @@
                 </div>
             </div>
         </div>
-        {{-- <div class="pricing-three-shapes">
-            <div class="shape one">
-                <img src="https://webtendtheme.net/html/2024/akpager/assets/images/shapes/price1.png" alt="Shape">
-            </div>
-            <div class="shape two">
-                <img src="https://webtendtheme.net/html/2024/akpager/assets/images/shapes/price2.png" alt="Shape">
-            </div>
-        </div> --}}
     </section>
     @push('scripts')
     @endpush

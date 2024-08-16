@@ -15,7 +15,12 @@ class HomeController extends Controller
 {
     public function homePage()
     {
-        return view('frontend.pages.homePage');
+        $data = [
+            'qr_plans' => Plan::orderBy('price', 'asc')->where('type', 'qr')->get(),
+            'nfc_plans' => Plan::orderBy('price', 'asc')->where('type', 'nfc')->get(),
+            'barcode_plans' => Plan::orderBy('price', 'asc')->where('type', 'barcode')->get(),
+        ];
+        return view('frontend.pages.homePage', $data);
     }
 
     public function contact()
@@ -30,8 +35,7 @@ class HomeController extends Controller
     public function services()
     {
         $data = [
-            'monthly_plans' => Plan::orderBy('price', 'asc')->where('billing_cycle', 'monthly')->get(),
-            'yearly_plans' => Plan::orderBy('price', 'asc')->where('billing_cycle', 'yearly')->get(),
+            'nfc_plans' => Plan::orderBy('price', 'asc')->where('type', 'nfc')->get(),
         ];
         return view('frontend.pages.services', $data);
     }

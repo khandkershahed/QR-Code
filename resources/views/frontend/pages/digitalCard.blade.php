@@ -53,7 +53,7 @@
         <div class="container">
             <div class="hero-content style-five text-center aos-init aos-animate" data-aos="fade-up"
                 data-aos-duration="1500" data-aos-offset="50">
-                <h1 data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50"
+                <h1 data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500"ca data-aos-offset="50"
                     class="aos-init aos-animate">Digital Card Pricing Plans</h1>
                 <div class="row justify-content-center pt-5 rpt-0 pb-25 aos-init aos-animate" data-aos="fade-up"
                     data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
