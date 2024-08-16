@@ -1,7 +1,7 @@
 <x-frontend-app-layout :title="'Digital Business Cards || GoFlixza - Your Hub for QR, Bar Codes & NFC V.Cards'">
     <!-- Page Banner Start -->
     <section class="page-banner-area overlay py-120 rpy-120 rel z-1 bgs-cover text-center"
-        style="background-image: url({{ asset('frontend/newimage/banner.jpg') }}); height: 400px;"">
+        style="background-image: url({{ asset('frontend/newimage/banner.jpg') }}); height: 300px;"">
         <div class="container">
             <div class="banner-inner pt-70 rpt-60 text-black">
                 <h1 class="page-title" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
@@ -51,7 +51,7 @@
     </section>
     <section class="hero-area-five py-10 rpy-100 rel z-1">
         <div class="container">
-            <div class="hero-content style-five text-center aos-init aos-animate" data-aos="fade-up"
+            <div class="hero-content style-five text-center aos-init aos-animate pt-130" data-aos="fade-up"
                 data-aos-duration="1500" data-aos-offset="50">
                 <h1 data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500"ca data-aos-offset="50"
                     class="aos-init aos-animate">Digital Card Pricing Plans</h1>
@@ -73,22 +73,50 @@
             <span></span><span></span>
         </div>
     </section>
-    <div class="hero-image-area rel z-1 aos-init aos-animate" data-aos="zoom-in-up" data-aos-duration="1500" data-aos-offset="50">
+    <div class="hero-image-area rel z-1 aos-init aos-animate" data-aos="zoom-in-up" data-aos-duration="1500"
+        data-aos-offset="50">
         <div class="container container-1370">
             <div class="row justify-content-center">
+                @if ($nfc_plans->isEmpty())
+                    <div class="col-12 text-center">
+                        <p>No barcode plans available at the moment. Please check back later.</p>
+                    </div>
+                @else
                 @foreach ($nfc_plans as $nfc_plan)
-                    <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate"
-                        data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                        <div class="pricing-item style-five">
-                            <div class="title-price">
-                                <h5 class="title">{{ $nfc_plan->title }}</h5>
-                                <div class="price"><span
-                                        class="prev">$</span>{{ $nfc_plan->price }}<span
-                                        class="next">/{{ $nfc_plan->billing_cycle }}</span></div>
+                    @php
+                        $imageCounts = [
+                            'Basic Card' => 1,
+                            'Premium Card' => 2,
+                            'Enterprise Card' => 3,
+                        ];
+
+                        $imageCount = $imageCounts[$nfc_plan->title] ?? 0;
+                    @endphp
+
+                    <div class="col-xl-3 col-md-6 col-sm-10 aos-init" data-aos="fade-up" data-aos-duration="1500"
+                        data-aos-offset="50">
+                        <div class="pricing-item style-four">
+                            <div class="icon">
+                                @for ($i = 0; $i <= $imageCount; $i++)
+                                    <img width="30px" src="{{ asset('frontend/newimage/pro.png') }}" alt="">
+                                @endfor
                             </div>
+
+                            <h4 class="title">{{ $nfc_plan->title }}</h4>
+                            <div class="price">
+                                <span class="prev">$</span>{{ $nfc_plan->price }}
+                                <span class="next">/
+                                    @if ($nfc_plan->billing_cycle == 'year')
+                                        year
+                                    @elseif ($nfc_plan->billing_cycle == 'month')
+                                        month
+                                    @else
+                                        Trial Period
+                                    @endif
+                                </span>
+                            </div>
+                            <div class="text">No credit card required</div>
                             <hr>
-                            {{-- <div class="text">For small nfces looking to reach more consumers
-                            </div> --}}
                             @php
                                 $descriptions = is_array($nfc_plan->descriptions)
                                     ? $nfc_plan->descriptions
@@ -97,16 +125,17 @@
                             @if (!empty($descriptions))
                                 <ul class="icon-list">
                                     @foreach ($descriptions as $description)
-                                        <li><i class="ion-checkmark"></i> {{ $description }}</li>
+                                        <li><i class="fas fa-checkmark"></i> {{ $description }}
+                                        </li>
                                     @endforeach
                                 </ul>
                             @endif
-                            <a href="{{ route('user_subscribe.register', $nfc_plan->slug) }}"
-                                class="theme-btn style-two">Buy Now <i
-                                    class="fas fa-arrow-right"></i></a>
+                            <a href="{{ route('user_subscribe.register', $nfc_plan->slug) }}" class="theme-btn">Order
+                                Now</a>
                         </div>
                     </div>
                 @endforeach
+                @endif
             </div>
         </div>
     </div>
@@ -114,43 +143,54 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-7 col-lg-9 col-md-11">
-                    <div class="section-title text-center mb-55 aos-init aos-animate" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                       <span class="subtitle-one style-two mb-20"><i class="fas fa-rocket-launch"></i> Best Communication System</span>
+                    <div class="section-title text-center mb-55 aos-init aos-animate" data-aos="fade-up"
+                        data-aos-duration="1500" data-aos-offset="50">
+                        <span class="subtitle-one style-two mb-20"><i class="fas fa-rocket-launch"></i> Best
+                            Communication System</span>
                         <h2>Support your customers on their preferred channels</h2>
                     </div>
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-xl-4 col-md-6">
-                    <div class="feature-image-box aos-init aos-animate" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                    <div class="feature-image-box aos-init aos-animate" data-aos="fade-up" data-aos-duration="1500"
+                        data-aos-offset="50">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/services/feature1.png" alt="Feature">
+                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/services/feature1.png"
+                                alt="Feature">
                         </div>
                         <div class="content">
                             <h5><a href="service-details.html">Share Inbox</a></h5>
-                            <p>Sed uterspiciatis unde omnis natus error voluptatem accusantium doloremque ways laudantium totam aperiam eaque</p>
+                            <p>Sed uterspiciatis unde omnis natus error voluptatem accusantium doloremque ways
+                                laudantium totam aperiam eaque</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-4 col-md-6">
-                    <div class="feature-image-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
+                    <div class="feature-image-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="100"
+                        data-aos-duration="1500" data-aos-offset="50">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/services/feature2.png" alt="Feature">
+                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/services/feature2.png"
+                                alt="Feature">
                         </div>
                         <div class="content">
                             <h5><a href="service-details.html">Custom Analytics</a></h5>
-                            <p>Quis autem vel eumiure reprehenderit qui in ea voluptate velit esse quam molestiae consequatur vel illum qui dolorem</p>
+                            <p>Quis autem vel eumiure reprehenderit qui in ea voluptate velit esse quam molestiae
+                                consequatur vel illum qui dolorem</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-4 col-md-6">
-                    <div class="feature-image-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
+                    <div class="feature-image-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="200"
+                        data-aos-duration="1500" data-aos-offset="50">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/services/feature3.png" alt="Feature">
+                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/services/feature3.png"
+                                alt="Feature">
                         </div>
                         <div class="content">
                             <h5><a href="service-details.html">Contacts CRM</a></h5>
-                            <p>To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage</p>
+                            <p>To take a trivial example, which of us ever undertakes laborious physical exercise,
+                                except to obtain some advantage</p>
                         </div>
                     </div>
                 </div>
@@ -158,8 +198,8 @@
         </div>
 
         <div class="bg-lines">
-           <span></span><span></span>
-           <span></span><span></span>
+            <span></span><span></span>
+            <span></span><span></span>
         </div>
     </section>
     @push('scripts')

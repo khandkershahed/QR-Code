@@ -1,6 +1,6 @@
 <x-frontend-app-layout :title="'QR-Code || GoFlixza - Your Hub for QR, Bar Codes & NFC V.Cards'">
     <section class="page-banner-area overlay py-120 rpy-120 rel z-1 bgs-cover text-center"
-        style="background-image: url({{ asset('frontend/newimage/banner.jpg') }}); height: 400px;">
+        style="background-image: url({{ asset('frontend/newimage/banner.jpg') }}); height: 300px;">
         <div class="container">
             <div class="banner-inner pt-70 rpt-60 text-black">
                 <h1 class="page-title  aos-init aos-animate" data-aos="fade-up" data-aos-duration="1500"

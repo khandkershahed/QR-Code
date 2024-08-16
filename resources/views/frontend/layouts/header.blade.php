@@ -252,7 +252,7 @@
                                 <li><a href="{{ route('barCode') }}" target="_blank">BAR CODE</a></li>
                                 <li><a href="{{ route('pricing') }}">PRICING</a></li>
                                 <li><a href="{{ route('services') }}">SERVICES</a></li>
-                                <li><a href="{{ route('services') }}">BLOGS</a></li>
+                                <li><a href="{{ route('allBlog') }}">BLOGS</a></li>
                             </ul>
                         </div>
                     </nav>

@@ -1,6 +1,6 @@
 <x-frontend-app-layout :title="'All Blogs || GoFlixza - Your Hub for QR, Bar Codes & NFC V.Cards'">
     <section class="page-banner-area overlay py-120 rpy-120 rel z-1 bgs-cover text-center"
-        style="background-image: url({{ asset('frontend/newimage/banner.jpg') }}); height: 400px;"">
+        style="background-image: url({{ asset('frontend/newimage/banner.jpg') }}); height: 300px;"">
         <div class="container">
             <div class="banner-inner pt-70 rpt-60 text-black">
                 <h1 class="page-title" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
@@ -18,18 +18,23 @@
                             <div class="blog-standard-item aos-init aos-animate" data-aos="fade-up"
                                 data-aos-duration="1500" data-aos-offset="50">
                                 <div class="image">
-                                    <img src="{{ asset('storage/' . $blog_post->image) }}" alt="Blog">
+                                    <img src="{{ asset('storage/' . $blog_post->image) }}" alt="Blog"
+                                        onerror="this.onerror=null;this.src='{{ asset('frontend/newimage/blognoimage.webp') }}';">
                                 </div>
                                 <div class="content">
                                     <ul class="blog-meta">
-                                        <li><a class="category" href="#">{{ $blog_post->badge }}</a></li>
-                                        <li><img src="{{ asset('storage/' . $blog_post->logo) }}" alt="Author"> <a
-                                                href="#">{{ $blog_post->author }}</a></li>
+                                        <li><a class="category"
+                                                href="{{ route('blog.details', $blog_post->slug) }}">{{ $blog_post->badge }}</a>
+                                        </li>
+                                        <li><img src="{{ asset('storage/' . $blog_post->logo) }}" alt="Author"
+                                                onerror="this.onerror=null;this.src='{{ asset('frontend/newimage/blognoimage.webp') }}';">
+                                            <a href="#">{{ $blog_post->author }}</a>
+                                        </li>
                                         <li><i class="fas fa-calendar-alt"></i> <a
                                                 href="#">{{ $blog_post->created_at->format('M d Y') }}</a>
                                         </li>
                                     </ul>
-                                    <h3><a href="blog-details.html">{{ $blog_post->title }}</a>
+                                    <h3><a href="blog.details.html">{{ $blog_post->title }}</a>
                                     </h3>
                                     <p>{{ $blog_post->header }}
                                     </p>
@@ -71,68 +76,38 @@
                             data-aos-duration="1500" data-aos-offset="50">
                             <h5 class="widget-title">Category</h5>
                             <ul>
-                                <li><a href="blog.html">Marketing <i class="fas fa-arrow-right"></i></a></li>
-                                <li><a href="blog.html">SEO optimization <i class="fas fa-arrow-right"></i></a></li>
-                                <li><a href="blog.html">Content Marketing <i class="fas fa-arrow-right"></i></a></li>
-                                <li><a href="blog.html">Keywords Research <i class="fas fa-arrow-right"></i></a></li>
-                                <li><a href="blog.html">Technical Adult <i class="fas fa-arrow-right"></i></a></li>
+                                @foreach ($blog_categorys as $category)
+                                    <li><a href="{{ route('blog.details', $blog_post->slug) }}">{{ $category->name }}
+                                            <i class="fas fa-arrow-right"></i></a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                         <div class="widget widget-recent-news aos-init" data-aos="fade-up" data-aos-delay="50"
                             data-aos-duration="1500" data-aos-offset="50">
                             <h4 class="widget-title">Recent News</h4>
                             <ul>
-                                <li>
-                                    <div class="image">
-                                        <img src="https://webtendtheme.net/html/2024/akpager/assets/images/widget/news1.jpg"
-                                            alt="News">
-                                    </div>
-                                    <div class="content">
-                                        <span class="date">September 20, 2023</span>
-                                        <h6><a href="blog-details.html">Achieving Fashion Elegant se Runway to Real
-                                                Life</a></h6>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="image">
-                                        <img src="https://webtendtheme.net/html/2024/akpager/assets/images/widget/news2.jpg"
-                                            alt="News">
-                                    </div>
-                                    <div class="content">
-                                        <span class="date">September 20, 2023</span>
-                                        <h6><a href="blog-details.html">Achieving Fashion Elegant se Runway to Real
-                                                Life</a></h6>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="image">
-                                        <img src="https://webtendtheme.net/html/2024/akpager/assets/images/widget/news3.jpg"
-                                            alt="News">
-                                    </div>
-                                    <div class="content">
-                                        <span class="date">September 20, 2023</span>
-                                        <h6><a href="blog-details.html">Achieving Fashion Elegant se Runway to Real
-                                                Life</a></h6>
-                                    </div>
-                                </li>
+                                @foreach ($recent_posts as $recent_post)
+                                    <li>
+                                        <div class="image">
+                                            <img src="{{ asset('storage/' . $recent_post->image) }}"
+                                                alt="{{ $recent_post->title }}"
+                                                onerror="this.onerror=null;this.src='{{ asset('frontend/newimage/blognoimage.webp') }}';">
+                                        </div>
+                                        <div class="content">
+                                            <span class="date">{{ $recent_post->created_at->format('M d Y') }}</span>
+                                            <h6><a
+                                                    href="{{ route('blog.details', $recent_post->slug) }}">{{ $recent_post->title }}</a>
+                                            </h6>
+                                        </div>
+                                    </li>
+                                @endforeach
                             </ul>
-                        </div>
-                        <div class="widget widget-tag-cloud aos-init" data-aos="fade-up" data-aos-delay="50"
-                            data-aos-duration="1500" data-aos-offset="50">
-                            <h4 class="widget-title">Popular Tags</h4>
-                            <div class="tag-coulds">
-                                <a href="blog.html">Marketing</a>
-                                <a href="blog.html">Product</a>
-                                <a href="blog.html">Social Media</a>
-                                <a href="blog.html">SEO Optimize</a>
-                                <a href="blog.html">Content</a>
-                                <a href="blog.html">Design</a>
-                            </div>
                         </div>
                         <div class="widget widget-cta aos-init" data-aos="fade-up" data-aos-delay="50"
                             data-aos-duration="1500" data-aos-offset="50">
-                            <h3>Boost your Digital Product marketing?</h3>
-                            <a href="contact.html" class="theme-btn">Contact Us <i
+                            <h3>Create Your First QR, NFC, Barcode With magic.</h3>
+                            <a href="{{ route('contact') }}" class="theme-btn">Contact Us <i
                                     class="fas fa-angle-double-right"></i></a>
                             <div class="man"><img
                                     src="https://webtendtheme.net/html/2024/akpager/assets/images/widget/cta-man.png"
