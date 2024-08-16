@@ -8,7 +8,7 @@
                             enctype="multipart/form-data">
                             @csrf
                             <div class="text-center mb-11">
-                                <h1 class="text-gray-900 fw-bolder mb-3">
+                                <h1 class="text-gray-900 fw-bolder mb-3 fs-1">
                                     Sign In
                                 </h1>
 

@@ -81,50 +81,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <h4 class="comment-title mb-20 pt-50">Comments</h4>
-                        <div class="comments">
-                            <div class="comment-body aos-init" data-aos="fade-up" data-aos-duration="1500"
-                                data-aos-offset="50">
-                                <div class="author-thumb">
-                                    <img src="https://webtendtheme.net/html/2024/akpager/assets/images/blog/comment-author1.png"
-                                        alt="Author">
-                                </div>
-                                <div class="content">
-                                    <ul class="comment-header">
-                                        <li>
-                                            <h6>William L. Jackson</h6>
-                                        </li>
-                                        <li>
-                                            <a href="#">Sep 25, 2023</a>
-                                        </li>
-                                    </ul>
-                                    <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse molestiae
-                                        consequatur qui dolorem eum fugiat voluptas</p>
-                                    <a class="read-more" href="#">Reply <i class="fas fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                            <div class="comment-body comment-child aos-init" data-aos="fade-up" data-aos-duration="1500"
-                                data-aos-offset="50">
-                                <div class="author-thumb">
-                                    <img src="https://webtendtheme.net/html/2024/akpager/assets/images/blog/comment-author2.png"
-                                        alt="Author">
-                                </div>
-                                <div class="content">
-                                    <ul class="comment-header">
-                                        <li>
-                                            <h6>James M. Stovall</h6>
-                                        </li>
-                                        <li>
-                                            <a href="#">February 25, 2024</a>
-                                        </li>
-                                    </ul>
-                                    <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse molestiae
-                                        consequatur qui dolorem eum fugiat voluptas</p>
-                                    <a class="read-more" href="#">Reply <i class="fas fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
                         <form id="comment-form" class="comment-form br-15 bgc-lighter mt-75 aos-init" data-aos="fade-up"
                             data-aos-duration="1500" data-aos-offset="50" name="comment-form" action="#"
                             method="post">
@@ -165,14 +121,6 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="main-sidebar rmt-75">
-                        <div class="widget widget-search aos-init aos-animate" data-aos="fade-up" data-aos-delay="50"
-                            data-aos-duration="1500" data-aos-offset="50">
-                            <h5 class="widget-title">Search</h5>
-                            <form action="#" class="default-search-form">
-                                <input type="text" placeholder="Keywords" required="">
-                                <button type="submit" class="searchbutton fas fa-search"></button>
-                            </form>
-                        </div>
                         <div class="widget widget-category aos-init" data-aos="fade-up" data-aos-delay="50"
                             data-aos-duration="1500" data-aos-offset="50">
                             <h5 class="widget-title">Category</h5>

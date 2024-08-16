@@ -64,14 +64,6 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="main-sidebar rmt-75">
-                        <div class="widget widget-search aos-init aos-animate" data-aos="fade-up" data-aos-delay="50"
-                            data-aos-duration="1500" data-aos-offset="50">
-                            <h5 class="widget-title">Search</h5>
-                            <form action="#" class="default-search-form">
-                                <input type="text" placeholder="Keywords" required="">
-                                <button type="submit" class="searchbutton fas fa-search"></button>
-                            </form>
-                        </div>
                         <div class="widget widget-category aos-init" data-aos="fade-up" data-aos-delay="50"
                             data-aos-duration="1500" data-aos-offset="50">
                             <h5 class="widget-title">Category</h5>
