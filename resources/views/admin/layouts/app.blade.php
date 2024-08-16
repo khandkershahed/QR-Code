@@ -299,6 +299,20 @@
         // });
     </script>
     <script>
+        document.querySelectorAll('.ckeditor').forEach(element => {
+            if (!element.classList.contains('ck-editor__editable_inline')) {
+                ClassicEditor
+                    .create(element)
+                    .then(editor => {
+                        console.log('CKEditor initialized:', editor);
+                    })
+                    .catch(error => {
+                        console.error('CKEditor initialization error:', error);
+                    });
+            }
+        });
+    </script>
+    {{-- <script>
         class CKEditorInitializer {
             constructor(selector) {
                 this.selector = selector;
@@ -322,7 +336,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             new CKEditorInitializer('.kt_docs_ckeditor_classic');
         });
-    </script>
+    </script> --}}
     @stack('scripts')
 </body>
 

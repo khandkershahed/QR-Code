@@ -33,7 +33,7 @@
                                 <span class="blockquote-footer">{{ optional($blog)->author }}</span>
                             </blockquote>
 
-                            <p>{!! optional($blog)->long_description!!}</p>
+                            <p>{!! optional($blog)->long_description !!}</p>
 
                             {{-- <div class="tag-share pt-15 pb-40">
                                 <div class="item aos-init" data-aos="fade-left" data-aos-duration="1500"
@@ -66,6 +66,7 @@
                                 <div class="author-thumb">
                                     <img src="{{ optional($blog)->logo ? asset('storage/' . optional($blog)->logo) : asset('frontend/newimage/blognoimage.webp') }}"
                                         alt="Author"
+                                        style="width: 100px;height: 100px;object-fit: cover;"
                                         onerror="this.onerror=null;this.src='{{ asset('frontend/newimage/blognoimage.webp') }}';">
                                 </div>
                                 <div class="content">
@@ -187,8 +188,7 @@
                                                 onerror="this.onerror=null;this.src='{{ asset('frontend/newimage/blognoimage.webp') }}';">
                                         </div>
                                         <div class="content">
-                                            <span
-                                                class="date">{{ $recent_post->created_at->format('M d Y') }}</span>
+                                            <span class="date">{{ $recent_post->created_at->format('M d Y') }}</span>
                                             <h6><a
                                                     href="{{ route('blog.details', $recent_post->slug) }}">{{ $recent_post->title }}</a>
                                             </h6>
