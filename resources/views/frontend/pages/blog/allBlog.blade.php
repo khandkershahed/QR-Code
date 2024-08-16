@@ -44,7 +44,8 @@
                             </div>
                         @endforeach
                         <ul class="pagination mt-25 flex-wrap">
-                            <li class="page-item disabled">
+                            {{ $blog_posts->links() }}
+                            {{-- <li class="page-item disabled">
                                 <span class="page-link"><i class="fas fa-angle-left"></i></span>
                             </li>
                             <li class="page-item active">
@@ -58,20 +59,20 @@
                             <li class="page-item"><a class="page-link" href="#">4</a></li>
                             <li class="page-item">
                                 <a class="page-link" href="#"><i class="fas fa-angle-right"></i></a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="main-sidebar rmt-75">
-                        <div class="widget widget-search aos-init aos-animate" data-aos="fade-up" data-aos-delay="50"
+                        {{-- <div class="widget widget-search aos-init aos-animate" data-aos="fade-up" data-aos-delay="50"
                             data-aos-duration="1500" data-aos-offset="50">
                             <h5 class="widget-title">Search</h5>
                             <form action="#" class="default-search-form">
                                 <input type="text" placeholder="Keywords" required="">
                                 <button type="submit" class="searchbutton fas fa-search"></button>
                             </form>
-                        </div>
+                        </div> --}}
                         <div class="widget widget-category aos-init" data-aos="fade-up" data-aos-delay="50"
                             data-aos-duration="1500" data-aos-offset="50">
                             <h5 class="widget-title">Category</h5>
