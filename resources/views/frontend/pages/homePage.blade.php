@@ -768,7 +768,7 @@
                             <div class="content p-3">
                                 <a href="{{ route('blog.details', $blog_post->slug) }}"
                                     class="category">{{ $blog_post->badge }}</a>
-                                <h5><a href="blog-details.html">{{ $blog_post->title }}</a>
+                                <h5><a href="{{ route('blog.details', $blog_post->slug) }}">{{ $blog_post->title }}</a>
                                 </h5>
                                 <hr>
                                 <p>{{ $blog_post->header }}

@@ -10883,33 +10883,39 @@ a.theme-btn.style-four:hover {
 .blockquote-one .author .name h5 {
     margin: 0 10px 0 0;
 }
-
+/* General blockquote styling */
 .blockquote-two {
     position: relative;
-    border-radius: 12px;
     padding: 28px 50px 30px 130px;
+    border-left: 4px solid #eee;
+    border-radius: 12px;
 }
 
+/* Icon styling */
+.blockquote-two:before {
+    content: "\f10d"; /* Font Awesome content code for fa-quote-left */
+    font-size: 45px; /* Size of the icon */
+    font-weight: 900; /* Font Awesome Free Solid icons weight */
+    position: absolute;
+    left: 20px; /* Position from the left edge */
+    top: 20px; /* Position from the top edge */
+    color: var(--heading-color); /* Color of the icon */
+    font-family: "Font Awesome 5 Free"; /* Font Awesome font family */
+    z-index: 1; /* Ensure icon is on top of other content */
+}
+
+/* Media queries */
 @media only screen and (max-width: 575px) {
     .blockquote-two {
         padding-left: 80px;
         padding-right: 30px;
     }
-}
 
-@media only screen and (max-width: 375px) {
-    .blockquote-two {
-        padding-left: 30px;
+    .blockquote-two:before {
+        left: 15px;
+        font-size: 35px;
     }
-}
 
-.blockquote-two .text {
-    font-size: 27px;
-    line-height: 1.2;
-    letter-spacing: -0.81px;
-}
-
-@media only screen and (max-width: 575px) {
     .blockquote-two .text {
         font-size: 22px;
         letter-spacing: -0.4px;
@@ -10923,6 +10929,28 @@ a.theme-btn.style-four:hover {
     }
 }
 
+@media only screen and (max-width: 375px) {
+    .blockquote-two {
+        padding-left: 30px;
+    }
+
+    .blockquote-two:before {
+        display: none;
+    }
+
+    .blockquote-two .text {
+        font-size: 18px;
+    }
+}
+
+/* Text styling */
+.blockquote-two .text {
+    font-size: 27px;
+    line-height: 1.2;
+    letter-spacing: -0.81px;
+}
+
+/* Footer styling */
 .blockquote-two .blockquote-footer {
     margin-top: 25px;
     margin-bottom: 0;
@@ -10934,32 +10962,6 @@ a.theme-btn.style-four:hover {
     margin-right: 25px;
     letter-spacing: -3px;
 }
-
-.blockquote-two:before {
-    line-height: 1;
-    font-size: 45px;
-    content: "\f10e";
-    font-weight: 300;
-    position: absolute;
-    left: 50px;
-    top: 33px;
-    color: var(--heading-color);
-    font-family: "Font Awesome 5 Pro";
-}
-
-@media only screen and (max-width: 575px) {
-    .blockquote-two:before {
-        left: 25px;
-        font-size: 35px;
-    }
-}
-
-@media only screen and (max-width: 375px) {
-    .blockquote-two:before {
-        display: none;
-    }
-}
-
 .blockquote-three {
     border-radius: 12px;
     padding: 40px 60px 45px;
