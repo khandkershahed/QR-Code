@@ -137,7 +137,7 @@
                                         <span><span class="fw-bold text-black">Org :
                                             </span>{{ $qr->qr_name }}</span><br>
                                         <span>
-                                            <p class="mb-0">Create: {{ $nfc_card->created_at->format('d F Y') }}</p>
+                                            <p class="mb-0">Create: {{ $qr->created_at->format('d F Y') }}</p>
                                             <br>
                                             <div class="modal fade" id="image-{{ $qr->id }}" tabindex="-1"
                                                 data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
