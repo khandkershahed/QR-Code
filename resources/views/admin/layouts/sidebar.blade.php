@@ -271,7 +271,7 @@
                                 <span class="menu-title">Blog Category</span>
                             </a>
                         </div>
-                        <div class="menu-item">
+                        {{-- <div class="menu-item">
                             <a class="menu-link {{ Route::is('admin.blog-tags.index') ? 'active' : '' }}"
                                 href="{{ route('admin.blog-tags.index') }}">
                                 <span class="menu-bullet">
@@ -279,7 +279,7 @@
                                 </span>
                                 <span class="menu-title">Blog Tags</span>
                             </a>
-                        </div>
+                        </div> --}}
                         <div class="menu-item">
                             <a class="menu-link {{ Route::is('admin.blog-post.index', 'admin.blog-post.create', 'admin.blog-post.edit') ? 'active' : '' }}"
                                 href="{{ route('admin.blog-post.index') }}">

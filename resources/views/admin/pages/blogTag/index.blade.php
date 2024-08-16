@@ -22,12 +22,12 @@
             <table class="table my-datatable table-striped table-row-bordered gy-5 gs-7">
                 <thead class="">
                     <tr class="fw-semibold fs-6 text-gray-800">
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
+                        <th width="8%">SL No.</th>
+                        <th width="12%">Image</th>
+                        <th width="28%">Name</th>
+                        <th width="27%">Meta Title</th>
+                        <th width="15%">Status</th>
+                        <th width="12%">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -139,12 +139,12 @@
                             <div class="fv-row mb-5">
                                 <x-metronic.label class="required fw-semibold fs-6 mb-2">Title</x-metronic.label>
                                 <x-metronic.input type="text" name="name" class="form-control mb-3 mb-lg-0"
-                                    placeholder="Set Title" :valu="old('name',$category->name)" />
+                                    placeholder="Set Title" :value="old('name',$category->name)" />
                             </div>
                             <div class="fv-row mb-5">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Meta Title</x-metronic.label>
                                 <x-metronic.input type="text" name="meta_title" class="form-control mb-3 mb-lg-0"
-                                    placeholder="Set Meta Title" :valu="old('meta_title',$category->meta_title)" />
+                                    placeholder="Set Meta Title" :value="old('meta_title',$category->meta_title)" />
                             </div>
                             <div class="fv-row mb-5">
                                 <x-metronic.label for="image" class="col-form-label fw-bold fs-6 ">{{ __('Blog Image') }}

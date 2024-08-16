@@ -3,6 +3,9 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Models\Admin\NfcCard;
+use App\Models\Admin\Qr;
 use Laravel\Cashier\Billable;
 use Spatie\Permission\Traits\HasRoles;
 use Laravel\Sanctum\HasApiTokens;
@@ -49,5 +52,21 @@ class User extends Authenticatable
     public function subscriptions()
     {
         return $this->hasMany(Subscription::class);
+    }
+    public function qr()
+    {
+        return $this->hasMany(Qr::class);
+    }
+    public function nfc()
+    {
+        return $this->hasMany(NfcCard::class);
+    }
+    public function vcard()
+    {
+        return $this->hasMany(VirtualCard::class);
+    }
+    public function barCode()
+    {
+        return $this->hasMany(BarCode::class);
     }
 }

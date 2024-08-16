@@ -13,4 +13,8 @@ class BarCode extends Model
     {
         return $this->hasMany(BarcodeImage::class, 'barcode_id');
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

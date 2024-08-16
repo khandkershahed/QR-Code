@@ -11,6 +11,7 @@ use App\Models\NfcSeo;
 use App\Models\NfcService;
 use App\Models\VirtualCard;
 use App\Models\NfcTestimonial;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -61,6 +62,10 @@ class NfcCard extends Model
     public function nfcSeo()
     {
         return $this->hasOne(NfcSeo::class, 'card_id');
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
     public function shippingDetails()
     {

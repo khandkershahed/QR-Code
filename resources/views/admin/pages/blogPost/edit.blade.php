@@ -239,7 +239,7 @@
                                         @endforeach
                                     </x-metronic.select-option>
                                 </div>
-                                <div class="fv-row">
+                                {{-- <div class="fv-row">
                                     <x-metronic.label class="form-label">Tag Id</x-metronic.label>
                                     <x-metronic.select-option class="form-select mb-2" name="tag_id[]" id="tag_id"
                                         data-control="select2" data-placeholder="Select an option"
@@ -252,7 +252,7 @@
                                             </option>
                                         @endforeach
                                     </x-metronic.select-option>
-                                </div>
+                                </div> --}}
                                 <div class="fv-row">
                                     <div class="mb-5">
                                         <x-metronic.label class="form-label">Blog Author</x-metronic.label>
