@@ -17,6 +17,24 @@
                                     enctype="multipart/form-data" method="post" id="virtual_card_create_form">
                         @endif
                         @csrf
+                        <div class="row mb-3">
+                            <x-metronic.label class="fw-semibold fs-12 mb-2 required">Choose Template</x-metronic.label>
+                            <x-vcard.template :templates="[
+                                [
+                                    'value' => 'template-one',
+                                    'image' => 'frontend/images/nfc_template/template_one.jpg',
+                                ],
+                                [
+                                    'value' => 'template-two',
+                                    'image' => 'frontend/images/nfc_template/template_two.jpg',
+                                ],
+                                [
+                                    'value' => 'template-three',
+                                    'image' => 'frontend/images/nfc_template/template_three.jpg',
+                                ],
+                            ]" />
+
+                        </div>
                         <div class="row">
                             <div class="col-lg-12 mb-5">
                                 <div class="row">
@@ -340,7 +358,7 @@
                             } else {
                                 showError(
                                     'This URL alias is already taken. Please choose another one.'
-                                    );
+                                );
                             }
                         },
                         error: function(xhr, status, error) {
@@ -373,7 +391,7 @@
                     event.preventDefault();
                     showError(
                         'Please enter a valid alias. Only letters, numbers, and non-consecutive hyphens are allowed.'
-                        );
+                    );
                 }
             });
         });

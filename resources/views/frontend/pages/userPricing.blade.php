@@ -23,8 +23,9 @@
                 </div>
                 <div class="col-lg-7 text-center aos-init aos-animate" data-aos="fade-up" data-aos-delay="50"
                     data-aos-duration="1500" data-aos-offset="50">
-                    <span class="save-percent"
-                        style="background-image: url({{ asset('frontend/assets/images/shapes/title-shape.png') }});">Save 40%</span>
+                    {{-- <span class="save-percent"
+                        style="background-image: url({{ asset('frontend/assets/images/shapes/title-shape.png') }});">Save 40%</span> --}}
+                    <span class="save-percent">Save 40%</span>
                     <ul class="nav pricing-tab mb-55" role="tablist">
                         <li>
                             <button class="nav-link" data-bs-toggle="tab" data-bs-target="#monthly">Monthly</button>

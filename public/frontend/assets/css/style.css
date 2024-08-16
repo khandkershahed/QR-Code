@@ -4691,7 +4691,7 @@ a.theme-btn.style-four:hover {
 
 .section-title h2 span {
     color: var(--primary-color);
-    background-image: url(../images/shapes/title-shape.png);
+    /* background-image: url(../images/shapes/title-shape.png); */
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: 100%;
@@ -4729,7 +4729,7 @@ a.theme-btn.style-four:hover {
 
 .section-title.text-white h2 span {
     color: var(--secondary-color);
-    background-image: url(../images/shapes/title-shape-for-white.png);
+    /* background-image: url(../images/shapes/title-shape-for-white.png); */
 }
 
 /*******************************************************/
@@ -8895,7 +8895,7 @@ a.theme-btn.style-four:hover {
 
 .save-percent {
     font-weight: 400;
-    background-image: url(../images/shapes/title-shape-two.png);
+    /* background-image: url(../images/shapes/title-shape-two.png); */
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: 100%;

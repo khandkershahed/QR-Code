@@ -58,7 +58,7 @@ Route::get('/terms', [HomeController::class, 'terms'])->name('terms');
 Route::get('/mail-test', [HomeController::class, 'mailTest'])->name('mailTest');
 Route::post('/mail-test', [HomeController::class, 'mailTestStore'])->name('mailTest.store');
 Route::get('/blogs', [HomeController::class, 'allBlog'])->name('allBlog');
-Route::get('/blog/details/{slug}', [HomeController::class, 'blogDetails'])->name('blogDetails');
+Route::get('/blog/details/{slug}', [HomeController::class, 'blogDetails'])->name('blog.details');
 // Route::get('/nfc/{name}/{code}', [HomeController::class, 'nfcPage'])->name('nfc.page');
 // Route::get('/nfc/{name}', [HomeController::class, 'nfcPage'])->name('nfc.page');
 Route::get('/nfc/{name}', [HomeController::class, 'nfcPage'])->where('name', '.*')->name('nfc.page');
