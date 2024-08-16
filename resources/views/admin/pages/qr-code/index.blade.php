@@ -155,10 +155,10 @@
                                                 class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                 <i class="fas fa-pen"></i>
                                             </a>
-                                            {{-- <a href="{{ route('admin.qr-code.destroy', $qr->id) }}"
+                                            <a href="{{ route('admin.qr-code.destroy', $qr->id) }}"
                                                 class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1 delete">
                                                 <i class="fas fa-trash-alt text-danger"></i>
-                                            </a> --}}
+                                            </a>
                                             <a href="#" class="btn btn-light btn-active-light-primary btn-sm"
                                                 data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end"
                                                 data-kt-menu-flip="top-end">

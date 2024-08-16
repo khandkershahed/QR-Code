@@ -21,7 +21,7 @@
                         <div class="image-input image-input-empty image-input-outline image-input-placeholder mb-3"
                             data-kt-image-input="true">
                             <div class="image-input-wrapper w-150px h-150px"
-                                style="background-image: url({{ !empty($blogPost->image) ? asset("storage/" . $blogPost->image) : '' }});">
+                                style="background-image: url({{ !empty($blogPost->image) ? asset('storage/' . $blogPost->image) : '' }});">
                             </div>
                             <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
                                 data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change image">
@@ -59,7 +59,7 @@
                         <div class="image-input image-input-empty image-input-outline image-input-placeholder mb-3 mt-4"
                             data-kt-image-input="true">
                             <div class="image-input-wrapper w-150px h-150px"
-                                style="background-image: url({{ !empty($blogPost->logo) ? asset("storage/" . $blogPost->logo) : '' }});">
+                                style="background-image: url({{ !empty($blogPost->logo) ? asset('storage/' . $blogPost->logo) : '' }});">
                             </div>
                             <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
                                 data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change logo">
@@ -171,14 +171,12 @@
                                 </div>
                                 <div class="mb-5 fv-row">
                                     <x-metronic.label class="form-label">{{ __('Blog Header') }}</x-metronic.label>
-                                    <textarea id="header" name="header" placeholder="Add Blog Header"
-                                        class="form-control mb-2" cols="30"
+                                    <textarea id="header" name="header" placeholder="Add Blog Header" class="form-control mb-2" cols="30"
                                         rows="3">{{ old('header', $blogPost->header) }}</textarea>
                                 </div>
                                 <div class="mb-5 fv-row">
                                     <x-metronic.label class="form-label">{{ __('Address') }}</x-metronic.label>
-                                    <textarea id="address" name="address" placeholder="Add Blog Address"
-                                        class="form-control mb-2" cols="30"
+                                    <textarea id="address" name="address" placeholder="Add Blog Address" class="form-control mb-2" cols="30"
                                         rows="3">{{ old('address', $blogPost->address) }}</textarea>
                                 </div>
                                 <div class="mb-5 fv-row">
@@ -223,12 +221,13 @@
                                         data-allow-clear="true" id="category_id" multiple>
                                         <option></option>
                                         @php
+                                            // Ensure $categoryIds is an array
                                             $categoryIds = isset($blogPost->category_id)
                                                 ? json_decode($blogPost->category_id, true)
                                                 : [];
-                                            $tagIds = isset($blogPost->tag_id)
-                                                ? json_decode($blogPost->tag_id, true)
-                                                : [];
+                                            if (!is_array($categoryIds)) {
+                                                $categoryIds = [];
+                                            }
                                         @endphp
 
                                         @foreach ($blogCategories as $blogcategory)
@@ -288,6 +287,5 @@
             new Tagify(input2);
         </script>
         {{-- Tagify END --}}
-
     @endpush
 </x-admin-app-layout>

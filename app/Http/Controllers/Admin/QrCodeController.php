@@ -1561,27 +1561,56 @@ class QrCodeController extends Controller
         return view($view, $data);
     }
 
-
     public function destroy(string $id)
     {
-        $qr = Qr::find($id)->delete();
-        $files = [
-            'card_logo'     => $qr->card_logo,
-            'card_bg_front' => $qr->card_bg_front,
-            'card_bg_back'  => $qr->card_bg_back,
+        // Find the QR code record
+        $qr = Qr::find($id);
+
+        if (!$qr) {
+            return response()->json(['message' => 'QR code not found'], 404);
+        }
+
+        // Delete associated files
+        $this->deleteFiles($qr);
+
+        // Delete associated QR data records
+        QrData::where('code_id', $id)->delete();
+
+        // Delete the QR code record
+        $qr->delete();
+    }
+
+    private function deleteFiles($qr)
+    {
+        // Define directories and fields for file deletion
+        $fileFields = [
+            'qr_logo' => 'logos/',
+            'qr_data_pdf' => 'pdfs/',
+            'qr_data_image' => 'images/',
+            'qr_data_audio_file' => 'audios/',
+            'qr_data_coupon_logo' => 'coupons/',
+            'qr_data_social_logo' => 'socials/',
+            'qr_data_social_bg' => 'socials/',
+            'qr_data_facebook_page_logo' => 'facebook_pages/',
+            'qr_data_facebook_page_bg' => 'facebook_pages/',
+            'qr_data_business_page_logo' => 'business_pages/',
         ];
 
-        $filePath = 'public/nfc/';
-
-        // Delete the files if they exist
-        foreach ($files as $file) {
-            if (!empty($file) && Storage::exists($filePath . $file)) {
-                Storage::delete($filePath . $file);
+        // Check and delete each file
+        foreach ($fileFields as $field => $directory) {
+            $filePath = $qr->$field;
+            if ($filePath && file_exists(storage_path('app/public/qr_codes/' . $directory . basename($filePath)))) {
+                unlink(storage_path('app/public/qr_codes/' . $directory . basename($filePath)));
             }
         }
-        $qr_data = QrData::where('code_id', $id)->first();
-        if (!empty($qr_data)) {
-            $qr_data->delete();
+
+        // Delete the QR code files
+        $qrFormats = ['png', 'jpg', 'eps', 'pdf'];
+        foreach ($qrFormats as $format) {
+            $filePath = storage_path('app/public/qr_codes/qrs/' . $format . '/' . $qr->code . '.' . $format);
+            if (file_exists($filePath)) {
+                unlink($filePath);
+            }
         }
     }
 }
