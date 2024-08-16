@@ -22,18 +22,18 @@
                                     onerror="this.onerror=null;this.src='{{ asset('frontend/newimage/blognoimage.webp') }}';">
                             </div>
 
-                            <h3>{{ optional($blog)->title ?? 'Default Title' }}</h3>
-                            <p>{!! optional($blog)->header ?? 'Default header' !!} <br>
-                                {!! optional($blog)->short_description ?? 'Default short description' !!} <br>
+                            <h3>{{ optional($blog)->title }}</h3>
+                            <p>{!! optional($blog)->header !!} <br>
+                                {!! optional($blog)->short_description !!} <br>
                             </p>
 
                             <blockquote class="blockquote-two bgc-lighter my-40 aos-init" data-aos="fade-up"
                                 data-aos-duration="1500" data-aos-offset="50">
                                 <div class="text">{!! optional($blog)->footer ?? 'Default footer content' !!}</div>
-                                <span class="blockquote-footer">{{ optional($blog)->author ?? 'Unknown Author' }}</span>
+                                <span class="blockquote-footer">{{ optional($blog)->author }}</span>
                             </blockquote>
 
-                            <p>{!! optional($blog)->long_description ?? 'Default long description' !!}</p>
+                            <p>{!! optional($blog)->long_description!!}</p>
 
                             {{-- <div class="tag-share pt-15 pb-40">
                                 <div class="item aos-init" data-aos="fade-left" data-aos-duration="1500"
@@ -69,20 +69,12 @@
                                         onerror="this.onerror=null;this.src='{{ asset('frontend/newimage/blognoimage.webp') }}';">
                                 </div>
                                 <div class="content">
-                                    <h5>{{ optional($blog)->author ?? 'Unknown Author' }}</h5>
-                                    <p>{{ optional($blog)->description ?? 'We denounce with righteous indignation and dislike men ways to beguiled demoralized by the charms of pleasure' }}
-                                    </p>
-                                    <div class="social-icons">
-                                        <a href="contact.html"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="contact.html"><i class="fab fa-twitter"></i></a>
-                                        <a href="contact.html"><i class="fab fa-linkedin-in"></i></a>
-                                        <a href="contact.html"><i class="fab fa-instagram"></i></a>
-                                    </div>
+                                    <h5>{{ optional($blog)->author }}</h5>
                                 </div>
                             </div>
                         </div>
 
-                        <h4 class="comment-title mb-20 pt-50">Comments</h4>
+                        {{-- <h4 class="comment-title mb-20 pt-50">Comments</h4>
                         <div class="comments">
                             <div class="comment-body aos-init" data-aos="fade-up" data-aos-duration="1500"
                                 data-aos-offset="50">
@@ -160,19 +152,19 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        </form> --}}
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="main-sidebar rmt-75">
-                        <div class="widget widget-search aos-init aos-animate" data-aos="fade-up" data-aos-delay="50"
+                        {{-- <div class="widget widget-search aos-init aos-animate" data-aos="fade-up" data-aos-delay="50"
                             data-aos-duration="1500" data-aos-offset="50">
                             <h5 class="widget-title">Search</h5>
                             <form action="#" class="default-search-form">
                                 <input type="text" placeholder="Keywords" required="">
                                 <button type="submit" class="searchbutton fas fa-search"></button>
                             </form>
-                        </div>
+                        </div> --}}
                         <div class="widget widget-category aos-init" data-aos="fade-up" data-aos-delay="50"
                             data-aos-duration="1500" data-aos-offset="50">
                             <h5 class="widget-title">Category</h5>
