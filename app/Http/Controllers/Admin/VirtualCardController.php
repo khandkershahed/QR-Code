@@ -163,7 +163,7 @@ class VirtualCardController extends Controller
             'scan_count'         => $request->scan_count,
             'created_at'         => Carbon::now(),
         ]);
-
+ 
         session()->forget('error');
         if ($isUserRoute) {
             return redirect()->route('user.virtual-card.edit', $nfc_card->code);

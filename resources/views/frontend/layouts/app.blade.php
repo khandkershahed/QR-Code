@@ -41,7 +41,7 @@
     <!-- Flaticon -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/flaticon.min.css') }}" />
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/fontawesome-5.14.0.min.css') }}" />
+    {{-- <link rel="stylesheet" href="{{ asset('frontend/assets/css/fontawesome-5.14.0.min.css') }}" /> --}}
     <!-- Bootstrap -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap.min.css') }}" />
     <!-- Magnific Popup -->
