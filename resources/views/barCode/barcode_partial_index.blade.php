@@ -29,7 +29,7 @@
                                         Name : {{ $bar_code->product_name }}
                                     </a>
                                     <span class="fs-6">Code : {{ $bar_code->product_id }}</span>
-                                    <span>Create: {{ $bar_code->created_at }}</span>
+                                    <p class="mb-0">Created: {{ $nfc_card->created_at->format('d F Y') }}</p>
                                 </div>
                             </td>
                             <td>

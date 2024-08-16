@@ -136,36 +136,38 @@
                                                 Link</a></span><br>
                                         <span><span class="fw-bold text-black">Org :
                                             </span>{{ $qr->qr_name }}</span><br>
-                                        <span><span class="fw-bold text-black">Created at
-                                                :</span>:{{ $qr->created_at }}</span><br>
-                                        <div class="modal fade" id="image-{{ $qr->id }}" tabindex="-1"
-                                            data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
-                                            aria-labelledby="modalTitleId" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-md"
-                                                role="document">
+                                        <span>
+                                            <p class="mb-0">Create: {{ $nfc_card->created_at->format('d F Y') }}</p>
+                                            <br>
+                                            <div class="modal fade" id="image-{{ $qr->id }}" tabindex="-1"
+                                                data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
+                                                aria-labelledby="modalTitleId" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-md"
+                                                    role="document">
 
-                                                <div class="modal-content">
-                                                    <div class="modal-header bg-primary py-3">
-                                                        <h5 class="modal-title text-white" id="modalTitleId">
-                                                            Scan Generated QR
-                                                        </h5>
-                                                        <button type="button" class="btn-close"
-                                                            data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <div class="row">
-                                                            <div class="col-lg-8 offset-lg-2 mx-auto">
-                                                                <div>
-                                                                    <img class="img-fluid"
-                                                                        src="{{ $qr->qr_png_url }}" alt="">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header bg-primary py-3">
+                                                            <h5 class="modal-title text-white" id="modalTitleId">
+                                                                Scan Generated QR
+                                                            </h5>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="row">
+                                                                <div class="col-lg-8 offset-lg-2 mx-auto">
+                                                                    <div>
+                                                                        <img class="img-fluid"
+                                                                            src="{{ $qr->qr_png_url }}"
+                                                                            alt="">
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
 
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
                                     </td>
                                     <td>
                                         {{ optional($qr->user)->name }}

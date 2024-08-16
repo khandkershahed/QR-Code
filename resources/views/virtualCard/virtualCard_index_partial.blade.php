@@ -8,19 +8,19 @@
                 <thead>
                     <tr class="fw-bold fs-6 text-gray-800 px-7">
                         <th width="5%">SL</th>
-                        <th width="15%">Selected VCard</th>
-                        <th width="15%">Selected NFC</th>
-                        <th width="10%">Name </th>
-                        <th width="13%">Link</th>
+                        <th width="10%"><i class="fa-solid fa-circle-check text-success"></i> VCard</th>
+                        <th width="10%"><i class="fa-solid fa-circle-check text-success"></i> NFC</th>
+                        <th width="20%">Name </th>
+                        <th width="15%">Link</th>
                         <th width="15%">Show NFC</th>
                         <th width="15%">Delivery</th>
                         {{-- <th width="16%">Download</th> --}}
-                        <th width="12%" class="text-center">Action</th>
+                        <th width="10%" class="text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody class="fw-semibold text-gray-600">
                     @foreach ($nfc_cards as $nfc_card)
-                        <tr class="text-center">
+                        <tr>
                             {{-- @dd($nfc_card) --}}
                             <td>
                                 {{ $loop->iteration }}

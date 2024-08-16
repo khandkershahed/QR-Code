@@ -11,7 +11,8 @@
                         <th width="20%">VCard Name</th>
                         <th width="15%">Preview Card</th>
                         <th width="15%">QR</th>
-                        <th width="15%">Viewer</th>
+                        <th width="10%">Author</th>
+                        <th width="5%">Viewer</th>
                         <th width="15%">Performance</th>
                         <th width="15%" class="text-center">Action</th>
                     </tr>
@@ -66,6 +67,7 @@
                                                 class="mb-1 text-decoration-none fs-6">
                                                 {{ $nfc_card->vcard_name }}
                                             </a>
+                                            <p class="mb-0">{{ $nfc_card->created_at->format('d F Y') }}</p>
                                         @endif
 
                                         <span class="fs-6">{{ $nfc_card->designation }}</span>
@@ -85,6 +87,9 @@
                                     <button class="btn btn-sm btn-info"><i class="fas fa-eye pe-2"></i>
                                         QR</button>
                                 </a>
+                            </td>
+                            <td>
+                                {{ optional($nfc_card->user)->name }}
                             </td>
                             <td>
                                 @if (strpos(Route::current()->getName(), 'user.') === 0)
