@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\BlogTag;
 use App\Models\NfcScan;
+use App\Models\BlogPost;
 use App\Models\Admin\Faq;
 use App\Models\Admin\Plan;
 use Jenssegers\Agent\Agent;
+use App\Models\BlogCategory;
 use Illuminate\Http\Request;
 use App\Models\Admin\NfcCard;
 use App\Http\Controllers\Controller;
@@ -137,7 +140,12 @@ class HomeController extends Controller
     }
     public function allBlog()
     {
-        return view('frontend.pages.blog.allBlog');
+        $data = [
+            'blog_posts'     => BlogPost::latest('id')->where('status', 'publish')->get(),
+            'blog_categorys' => BlogCategory::latest('id')->where('status', 'active')->get(),
+            'blog_tags'      => BlogTag::latest('id')->where('status', 'active')->get(),
+        ];
+        return view('frontend.pages.blog.allBlog', $data);
     }
     public function blogDetails()
     {
