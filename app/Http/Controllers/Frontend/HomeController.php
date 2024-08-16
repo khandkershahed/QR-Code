@@ -22,6 +22,11 @@ class HomeController extends Controller
             'qr_plans' => Plan::orderBy('price', 'asc')->where('type', 'qr')->get(),
             'nfc_plans' => Plan::orderBy('price', 'asc')->where('type', 'nfc')->get(),
             'barcode_plans' => Plan::orderBy('price', 'asc')->where('type', 'barcode')->get(),
+
+            'blog_posts'     => BlogPost::latest('id')->where('status', 'publish')->paginate(10),
+            'blog_categorys' => BlogCategory::latest('id')->where('status', 'active')->get(),
+            'blog_tags'      => BlogTag::latest('id')->where('status', 'active')->get(),
+            'recent_posts'   => BlogPost::latest('created_at')->where('status', 'publish')->take(5)->get(),
         ];
         return view('frontend.pages.homePage', $data);
     }
@@ -164,6 +169,7 @@ class HomeController extends Controller
             'blog'           => BlogPost::where('slug', $slug)->first(),
             'blog_categorys' => BlogCategory::latest('id')->where('status', 'active')->get(),
             'blog_tags'      => BlogTag::latest('id')->where('status', 'active')->get(),
+            'recent_posts'   => BlogPost::latest('created_at')->where('status', 'publish')->take(5)->get(),
         ];
 
         return view('frontend.pages.blog.blogDetails', $data);

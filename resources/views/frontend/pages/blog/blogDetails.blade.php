@@ -1,10 +1,10 @@
 <x-frontend-app-layout :title="'Blog Details || GoFlixza - Your Hub for QR, Bar Codes & NFC V.Cards'">
     <section class="page-banner-area overlay py-120 rpy-120 rel z-1 bgs-cover text-center"
-        style="background-image: url({{ asset('frontend/newimage/banner.jpg') }}); height: 400px;">
+        style="background-image: url({{ asset('frontend/newimage/banner.jpg') }}); height: 300px;">
         <div class="container">
-            <div class="banner-inner pt-70 rpt-60 text-black">
+            <div class="banner-inner pt-30 rpt-60 text-black">
                 <h1 class="page-title" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                    {{ $blog->title }}
+                    Blog Details
                 </h1>
             </div>
         </div>
@@ -17,29 +17,25 @@
                         <div class="blog-details-content">
                             <div class="image mb-30 aos-init aos-animate" data-aos="fade-up" data-aos-duration="1500"
                                 data-aos-offset="50">
-                                <img src="{{ asset('storage/' . $blog->banner_image) }}" alt="{{ $blog->title }}"
-                                    alt="Blog"
+                                <img src="{{ optional($blog)->banner_image ? asset('storage/' . optional($blog)->banner_image) : asset('frontend/newimage/blognoimage.webp') }}"
+                                    alt="{{ optional($blog)->title ?? 'Blog' }}"
                                     onerror="this.onerror=null;this.src='{{ asset('frontend/newimage/blognoimage.webp') }}';">
                             </div>
 
-                            <h3>{{ $blog->title }}</h3>
-                            <p>{!! $blog->header !!} <br>
-                                {!! $blog->short_description !!} <br>
-                                {!! $blog->long_description !!}</p>
+                            <h3>{{ optional($blog)->title ?? 'Default Title' }}</h3>
+                            <p>{!! optional($blog)->header ?? 'Default header' !!} <br>
+                                {!! optional($blog)->short_description ?? 'Default short description' !!} <br>
+                            </p>
 
                             <blockquote class="blockquote-two bgc-lighter my-40 aos-init" data-aos="fade-up"
                                 data-aos-duration="1500" data-aos-offset="50">
-                                <div class="text">{!! $blog->footer !!}</div>
-                                <span class="blockquote-footer">Johnny M. Martin</span>
+                                <div class="text">{!! optional($blog)->footer ?? 'Default footer content' !!}</div>
+                                <span class="blockquote-footer">{{ optional($blog)->author ?? 'Unknown Author' }}</span>
                             </blockquote>
 
-                            <h3>Get Your Service to Improve Business</h3>
-                            <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-                                velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam
-                                aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam
-                            </p>
+                            <p>{!! optional($blog)->long_description ?? 'Default long description' !!}</p>
 
-                            <div class="tag-share pt-15 pb-40">
+                            {{-- <div class="tag-share pt-15 pb-40">
                                 <div class="item aos-init" data-aos="fade-left" data-aos-duration="1500"
                                     data-aos-offset="50">
                                     <b>Tags </b>
@@ -59,7 +55,7 @@
                                         <a href="#"><i class="fab fa-instagram"></i></a>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <hr>
                         </div>
@@ -68,13 +64,14 @@
                             data-aos-duration="1500" data-aos-offset="50">
                             <div class="comment-body">
                                 <div class="author-thumb">
-                                    <img src="https://webtendtheme.net/html/2024/akpager/assets/images/blog/admin-author.jpg"
-                                        alt="Author">
+                                    <img src="{{ optional($blog)->logo ? asset('storage/' . optional($blog)->logo) : asset('frontend/newimage/blognoimage.webp') }}"
+                                        alt="Author"
+                                        onerror="this.onerror=null;this.src='{{ asset('frontend/newimage/blognoimage.webp') }}';">
                                 </div>
                                 <div class="content">
-                                    <h5>Richard M. Fudge</h5>
-                                    <p>We denounce with righteous indignation and dislike men ways to beguiled
-                                        demoralized by the charms of pleasure</p>
+                                    <h5>{{ optional($blog)->author ?? 'Unknown Author' }}</h5>
+                                    <p>{{ optional($blog)->description ?? 'We denounce with righteous indignation and dislike men ways to beguiled demoralized by the charms of pleasure' }}
+                                    </p>
                                     <div class="social-icons">
                                         <a href="contact.html"><i class="fab fa-facebook-f"></i></a>
                                         <a href="contact.html"><i class="fab fa-twitter"></i></a>
@@ -84,33 +81,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="next-prev-blog pt-60 pb-40">
-                            <div class="item aos-init" data-aos="fade-left" data-aos-duration="1500"
-                                data-aos-offset="50">
-                                <div class="image">
-                                    <img src="https://webtendtheme.net/html/2024/akpager/assets/images/widget/news4.jpg"
-                                        alt="News">
-                                </div>
-                                <div class="content">
-                                    <span class="date">September 20, 2023</span>
-                                    <h6><a href="blog-details.html">Achieving Fashion Elegant se Runway to Real Life</a>
-                                    </h6>
-                                </div>
-                            </div>
-                            <div class="item aos-init" data-aos="fade-right" data-aos-duration="1500"
-                                data-aos-offset="50">
-                                <div class="image">
-                                    <img src="https://webtendtheme.net/html/2024/akpager/assets/images/widget/news5.jpg"
-                                        alt="News">
-                                </div>
-                                <div class="content">
-                                    <span class="date">September 20, 2023</span>
-                                    <h6><a href="blog-details.html">Achieving Fashion Elegant se Runway to Real Life</a>
-                                    </h6>
-                                </div>
-                            </div>
-                        </div>
-                        <h4 class="comment-title mb-20">Comments</h4>
+
+                        <h4 class="comment-title mb-20 pt-50">Comments</h4>
                         <div class="comments">
                             <div class="comment-body aos-init" data-aos="fade-up" data-aos-duration="1500"
                                 data-aos-offset="50">
@@ -129,11 +101,11 @@
                                     </ul>
                                     <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse molestiae
                                         consequatur qui dolorem eum fugiat voluptas</p>
-                                    <a class="read-more" href="#">Reply <i class="far fa-arrow-right"></i></a>
+                                    <a class="read-more" href="#">Reply <i class="fas fa-arrow-right"></i></a>
                                 </div>
                             </div>
-                            <div class="comment-body comment-child aos-init" data-aos="fade-up"
-                                data-aos-duration="1500" data-aos-offset="50">
+                            <div class="comment-body comment-child aos-init" data-aos="fade-up" data-aos-duration="1500"
+                                data-aos-offset="50">
                                 <div class="author-thumb">
                                     <img src="https://webtendtheme.net/html/2024/akpager/assets/images/blog/comment-author2.png"
                                         alt="Author">
@@ -149,13 +121,13 @@
                                     </ul>
                                     <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse molestiae
                                         consequatur qui dolorem eum fugiat voluptas</p>
-                                    <a class="read-more" href="#">Reply <i class="far fa-arrow-right"></i></a>
+                                    <a class="read-more" href="#">Reply <i class="fas fa-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
-                        <form id="comment-form" class="comment-form br-15 bgc-lighter mt-75 aos-init"
-                            data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50" name="comment-form"
-                            action="#" method="post">
+                        <form id="comment-form" class="comment-form br-15 bgc-lighter mt-75 aos-init" data-aos="fade-up"
+                            data-aos-duration="1500" data-aos-offset="50" name="comment-form" action="#"
+                            method="post">
                             <h4>Leave a Reply</h4>
                             <div class="row mt-30">
                                 <div class="col-md-6">
@@ -184,7 +156,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group mb-0">
                                         <button type="submit" class="theme-btn">Send Comments <i
-                                                class="far fa-arrow-right"></i></button>
+                                                class="fas fa-arrow-right"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -198,76 +170,46 @@
                             <h5 class="widget-title">Search</h5>
                             <form action="#" class="default-search-form">
                                 <input type="text" placeholder="Keywords" required="">
-                                <button type="submit" class="searchbutton far fa-search"></button>
+                                <button type="submit" class="searchbutton fas fa-search"></button>
                             </form>
                         </div>
                         <div class="widget widget-category aos-init" data-aos="fade-up" data-aos-delay="50"
                             data-aos-duration="1500" data-aos-offset="50">
                             <h5 class="widget-title">Category</h5>
                             <ul>
-                                <li><a href="blog.html">Marketing <i class="far fa-arrow-right"></i></a></li>
-                                <li><a href="blog.html">SEO optimization <i class="far fa-arrow-right"></i></a></li>
-                                <li><a href="blog.html">Content Marketing <i class="far fa-arrow-right"></i></a></li>
-                                <li><a href="blog.html">Keywords Research <i class="far fa-arrow-right"></i></a></li>
-                                <li><a href="blog.html">Technical Adult <i class="far fa-arrow-right"></i></a></li>
+                                @foreach ($blog_categorys as $category)
+                                    <li><a href="{{ route('blog.details', $category->slug) }}">{{ $category->name }}
+                                            <i class="fas fa-arrow-right"></i></a></li>
+                                @endforeach
                             </ul>
                         </div>
                         <div class="widget widget-recent-news aos-init" data-aos="fade-up" data-aos-delay="50"
                             data-aos-duration="1500" data-aos-offset="50">
                             <h4 class="widget-title">Recent News</h4>
                             <ul>
-                                <li>
-                                    <div class="image">
-                                        <img src="https://webtendtheme.net/html/2024/akpager/assets/images/widget/news1.jpg"
-                                            alt="News">
-                                    </div>
-                                    <div class="content">
-                                        <span class="date">September 20, 2023</span>
-                                        <h6><a href="blog-details.html">Achieving Fashion Elegant se Runway to Real
-                                                Life</a></h6>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="image">
-                                        <img src="https://webtendtheme.net/html/2024/akpager/assets/images/widget/news2.jpg"
-                                            alt="News">
-                                    </div>
-                                    <div class="content">
-                                        <span class="date">September 20, 2023</span>
-                                        <h6><a href="blog-details.html">Achieving Fashion Elegant se Runway to Real
-                                                Life</a></h6>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="image">
-                                        <img src="https://webtendtheme.net/html/2024/akpager/assets/images/widget/news3.jpg"
-                                            alt="News">
-                                    </div>
-                                    <div class="content">
-                                        <span class="date">September 20, 2023</span>
-                                        <h6><a href="blog-details.html">Achieving Fashion Elegant se Runway to Real
-                                                Life</a></h6>
-                                    </div>
-                                </li>
+                                @foreach ($recent_posts as $recent_post)
+                                    <li>
+                                        <div class="image">
+                                            <img src="{{ asset('storage/' . $recent_post->image) }}"
+                                                alt="{{ $recent_post->title }}"
+                                                onerror="this.onerror=null;this.src='{{ asset('frontend/newimage/blognoimage.webp') }}';">
+                                        </div>
+                                        <div class="content">
+                                            <span
+                                                class="date">{{ $recent_post->created_at->format('M d Y') }}</span>
+                                            <h6><a
+                                                    href="{{ route('blog.details', $recent_post->slug) }}">{{ $recent_post->title }}</a>
+                                            </h6>
+                                        </div>
+                                    </li>
+                                @endforeach
                             </ul>
-                        </div>
-                        <div class="widget widget-tag-cloud aos-init" data-aos="fade-up" data-aos-delay="50"
-                            data-aos-duration="1500" data-aos-offset="50">
-                            <h4 class="widget-title">Popular Tags</h4>
-                            <div class="tag-coulds">
-                                <a href="blog.html">Marketing</a>
-                                <a href="blog.html">Product</a>
-                                <a href="blog.html">Social Media</a>
-                                <a href="blog.html">SEO Optimize</a>
-                                <a href="blog.html">Content</a>
-                                <a href="blog.html">Design</a>
-                            </div>
                         </div>
                         <div class="widget widget-cta aos-init" data-aos="fade-up" data-aos-delay="50"
                             data-aos-duration="1500" data-aos-offset="50">
                             <h3>Boost your Digital Product marketing?</h3>
-                            <a href="contact.html" class="theme-btn">Contact Us <i
-                                    class="far fa-arrow-right"></i></a>
+                            <a href="{{ route('contact') }}" class="theme-btn">Contact Us <i
+                                    class="fas fa-arrow-right"></i></a>
                             <div class="man"><img
                                     src="https://webtendtheme.net/html/2024/akpager/assets/images/widget/cta-man.png"
                                     alt="CTA"></div>

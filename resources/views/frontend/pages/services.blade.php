@@ -1,7 +1,7 @@
 <x-frontend-app-layout :title="'Services'">
     <!-- Page Banner Start -->
     <section class="page-banner-area overlay py-120 rpy-120 rel z-1 bgs-cover text-center"
-        style="background-image: url({{ asset('frontend/newimage/banner.jpg') }}); height: 400px;"">
+        style="background-image: url({{ asset('frontend/newimage/banner.jpg') }}); height: 300px;"">
         <div class="container">
             <div class="banner-inner pt-70 rpt-60 text-black">
                 <h1 class="page-title" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
@@ -214,100 +214,63 @@
     </section>
     <!-- CTA Area End -->
 
-    <!-- Client Logos Area Start -->
-    <section class="client-logo-area-two pt-130 rpt-100 pb-95 rpb-65">
-        <div class="section-title text-center mb-30" data-aos="fade-up" data-aos-duration="1500"
-            data-aos-offset="50">
-            <h4>
-                I’ve <span>1253</span>+ Global Clients & lot’s of Project Complete
-            </h4>
-        </div>
+    <!-- Client Logo Area Start -->
+    <section class="client-logo-area pt-100 pb-90 rpb-60 rel z-2">
         <div class="container">
-            <div class="row justify-content-center row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-2">
-                <div class="col">
-                    <div class="client-logo-item style-three" data-aos="fade-up" data-aos-duration="1500"
+            <div class="row justify-content-center">
+                <div class="col-xl-8 col-lg-9 col-md-11">
+                    <div class="section-title text-center mb-60" data-aos="fade-up" data-aos-duration="1500"
                         data-aos-offset="50">
-                        <a href="#"><img
-                                src="https://webtendtheme.net/html/2024/akpager/assets/images/client-logos/client-logo-two1.png"
-                                alt="Client Logo" /></a>
+                        <span class="subtitle-three mb-10">Meet Our Global Clients</span>
+                        <h2>We’ve 1253+ Global Clients & lot’s of Project Complete</h2>
                     </div>
                 </div>
+            </div>
+            <div
+                class="row align-items-center justify-content-center row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-2">
                 <div class="col">
-                    <div class="client-logo-item style-three" data-aos="fade-up" data-aos-delay="50"
-                        data-aos-duration="1500" data-aos-offset="50">
-                        <a href="#"><img
-                                src="https://webtendtheme.net/html/2024/akpager/assets/images/client-logos/client-logo-two2.png"
-                                alt="Client Logo" /></a>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="client-logo-item style-three" data-aos="fade-up" data-aos-delay="100"
-                        data-aos-duration="1500" data-aos-offset="50">
-                        <a href="#"><img
-                                src="https://webtendtheme.net/html/2024/akpager/assets/images/client-logos/client-logo-two3.png"
-                                alt="Client Logo" /></a>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="client-logo-item style-three" data-aos="fade-up" data-aos-delay="150"
-                        data-aos-duration="1500" data-aos-offset="50">
-                        <a href="#"><img
-                                src="https://webtendtheme.net/html/2024/akpager/assets/images/client-logos/client-logo-two4.png"
-                                alt="Client Logo" /></a>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="client-logo-item style-three" data-aos="fade-up" data-aos-delay="200"
-                        data-aos-duration="1500" data-aos-offset="50">
-                        <a href="#"><img
-                                src="https://webtendtheme.net/html/2024/akpager/assets/images/client-logos/client-logo-two9.png"
-                                alt="Client Logo" /></a>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="client-logo-item style-three" data-aos="fade-up" data-aos-duration="1500"
+                    <div class="client-logo-item style-four py-45 rpy-25" data-aos="fade-up" data-aos-duration="1500"
                         data-aos-offset="50">
-                        <a href="#"><img
-                                src="https://webtendtheme.net/html/2024/akpager/assets/images/client-logos/client-logo-two5.png"
+                        <a href="https://shahnawazgroup.us/">
+                            <img src="{{ asset('frontend/newimage/clientLogos/nawazgroup.us.webp') }}"
                                 alt="Client Logo" /></a>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="client-logo-item style-three" data-aos="fade-up" data-aos-delay="50"
+                    <div class="client-logo-item style-four py-65 rpy-25" data-aos="fade-up" data-aos-delay="50"
                         data-aos-duration="1500" data-aos-offset="50">
-                        <a href="#"><img
-                                src="https://webtendtheme.net/html/2024/akpager/assets/images/client-logos/client-logo-two10.png"
+                        <a href="https://ajkal.us/"><img
+                                src="{{ asset('frontend/newimage/clientLogos/ajkalus.webp') }}"
                                 alt="Client Logo" /></a>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="client-logo-item style-three" data-aos="fade-up" data-aos-delay="100"
+                    <div class="client-logo-item style-four py-45 rpy-25" data-aos="fade-up" data-aos-delay="100"
                         data-aos-duration="1500" data-aos-offset="50">
-                        <a href="#"><img
-                                src="https://webtendtheme.net/html/2024/akpager/assets/images/client-logos/client-logo-two7.png"
+                        <a href="https://www.era-consulting.eu/en/"><img
+                                src="{{ asset('frontend/newimage/clientLogos/eracounsulting.webp') }}"
                                 alt="Client Logo" /></a>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="client-logo-item style-three" data-aos="fade-up" data-aos-delay="150"
+                    <div class="client-logo-item style-four py-65 rpy-25" data-aos="fade-up" data-aos-delay="150"
                         data-aos-duration="1500" data-aos-offset="50">
-                        <a href="#"><img
-                                src="https://webtendtheme.net/html/2024/akpager/assets/images/client-logos/client-logo-two6.png"
-                                alt="Client Logo" /></a>
+                        <a href="https://www.jbaconsulting.com/"><img
+                                src="{{ asset('frontend/newimage/clientLogos/jba.webp') }}" alt="Client Logo" /></a>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="client-logo-item style-three" data-aos="fade-up" data-aos-delay="200"
+                    <div class="client-logo-item style-four py-45 rpy-25" data-aos="fade-up" data-aos-delay="200"
                         data-aos-duration="1500" data-aos-offset="50">
-                        <a href="#"><img
-                                src="https://webtendtheme.net/html/2024/akpager/assets/images/client-logos/client-logo-two8.png"
+                        <a href="https://careeracademy.com/"><img
+                                src="{{ asset('frontend/newimage/clientLogos/careeracademyny.webp') }}"
                                 alt="Client Logo" /></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Client Logos Area End -->
+    <!-- Client Logo Area End -->
     @push('scripts')
     @endpush
 </x-frontend-app-layout>

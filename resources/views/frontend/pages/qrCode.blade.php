@@ -8,7 +8,7 @@
             </div>
         </div>
     </section>
-    <section class="app-stor-area pt-200 pb-200 rpb-150 rel z-1">
+    <section class="app-stor-area pt-100 pb-100 rpb-150 rel z-1">
         <div class="container mb-30">
             <div class="row justify-content-between align-items-center">
                 <div class="col-xl-5 col-lg-6">
@@ -47,58 +47,78 @@
         <div class="container">
             <div class="row pt-50">
                 <div class="col-xl-7 col-lg-9 col-md-11 mx-auto ">
-                    <div class="section-title text-center mb-60 aos-init aos-animate" data-aos="fade-up"
+                    <div class="section-title text-center mb-60 aos-init aos-animate mb-0" data-aos="fade-up"
                         data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
                         <h2 class="text-center">QR Code Pricing Plans</h2>
                     </div>
                 </div>
             </div>
             <div class="row justify-content-center">
-                @foreach ($qr_plans as $qr_plan)
-                    <div class="col-xl-3 col-md-6 col-sm-10 aos-init aos-animate"
-                        data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                        <div class="pricing-item style-five">
-                            <div class="title-price">
-                                <h5 class="title">{{ $qr_plan->title }}</h5>
-                                <div class="price"><span
-                                        class="prev">$</span>{{ $qr_plan->price }}<span
-                                        class="next">/
+                @if ($qr_plans->isEmpty())
+                    <div class="col-12 text-center">
+                        <p>No barcode plans available at the moment. Please check back later.</p>
+                    </div>
+                @else
+                    @foreach ($qr_plans as $qr_plan)
+                        @php
+                            $imageCounts = [
+                                'GO Basic' => 1,
+                                'GO Spark' => 2,
+                                'GO Pro' => 3,
+                                'GO Business' => 4,
+                            ];
+
+                            $imageCount = $imageCounts[$qr_plan->title] ?? 0;
+                        @endphp
+
+                        <div class="col-xl-3 col-md-6 col-sm-10 aos-init" data-aos="fade-up" data-aos-duration="1500"
+                            data-aos-offset="50">
+                            <div class="pricing-item style-four">
+                                <div class="icon">
+                                    @for ($i = 1; $i <= $imageCount; $i++)
+                                        <img width="30px" src="{{ asset('frontend/newimage/pro.png') }}"
+                                            alt="">
+                                    @endfor
+                                </div>
+
+                                <h4 class="title">{{ $qr_plan->title }}</h4>
+                                <div class="price">
+                                    <span class="prev">$</span>{{ $qr_plan->price }}
+                                    <span class="next">/
                                         @if ($qr_plan->billing_cycle == 'year')
                                             year
                                         @elseif ($qr_plan->billing_cycle == 'month')
                                             month
-                                            {{-- @elseif ($qr_plan->billing_cycle == 'half_year')
-                                        Half Yearly --}}
                                         @else
                                             Trial Period
                                         @endif
-                                    </span></div>
+                                    </span>
+                                </div>
+                                <div class="text">No credit card required</div>
+                                <hr>
+                                @php
+                                    $descriptions = is_array($qr_plan->descriptions)
+                                        ? $qr_plan->descriptions
+                                        : json_decode($qr_plan->descriptions);
+                                @endphp
+                                @if (!empty($descriptions))
+                                    <ul class="icon-list">
+                                        @foreach ($descriptions as $description)
+                                            <li><i class="fas fa-checkmark"></i> {{ $description }}
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+                                <a href="{{ route('user_subscribe.register', $qr_plan->slug) }}" class="theme-btn">Order
+                                    Now</a>
                             </div>
-                            <hr>
-                            {{-- <div class="text">For small nfces looking to reach more consumers
-                            </div> --}}
-                            @php
-                                $descriptions = is_array($qr_plan->descriptions)
-                                    ? $qr_plan->descriptions
-                                    : json_decode($qr_plan->descriptions);
-                            @endphp
-                            @if (!empty($descriptions))
-                                <ul class="icon-list">
-                                    @foreach ($descriptions as $description)
-                                        <li><i class="ion-checkmark"></i> {{ $description }}</li>
-                                    @endforeach
-                                </ul>
-                            @endif
-                            <a href="{{ route('user_subscribe.register', $qr_plan->slug) }}"
-                                class="theme-btn style-two">Buy Now <i
-                                    class="fas fa-arrow-right"></i></a>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                @endif
             </div>
         </div>
     </section>
-    <section class="countries-area rel z-1 pb-70 rpb-40 pt-50">
+    <section class="countries-area rel z-1 pb-70 rpb-40 pt-130">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-5 col-lg-7 col-md-9 col-sm-11">
@@ -113,8 +133,8 @@
             <div class="slick-list draggable" style="padding: 0px 50px;">
                 <div class="slick-track"
                     style="opacity: 1; width: 45000px; transform: translate3d(-798px, 0px, 0px); transition: transform 8000ms linear 0s;">
-                    <div class="marquee-iconic-box slick-slide" data-slick-index="-2" id=""
-                        aria-hidden="true" tabindex="-1">
+                    <div class="marquee-iconic-box slick-slide" data-slick-index="-2" id="" aria-hidden="true"
+                        tabindex="-1">
                         <div class="image">
                             <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag6.png"
                                 alt="Flag">
@@ -123,8 +143,8 @@
                             <h6 class="title">Kazakhstan</h6>
                         </div>
                     </div>
-                    <div class="marquee-iconic-box slick-slide" data-slick-index="-1" id=""
-                        aria-hidden="true" tabindex="-1">
+                    <div class="marquee-iconic-box slick-slide" data-slick-index="-1" id="" aria-hidden="true"
+                        tabindex="-1">
                         <div class="image">
                             <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag9.png"
                                 alt="Flag">
@@ -142,7 +162,8 @@
                             <h6 class="title">United States</h6>
                         </div>
                     </div>
-                    <div class="marquee-iconic-box slick-slide" data-slick-index="1" aria-hidden="true" tabindex="-1">
+                    <div class="marquee-iconic-box slick-slide" data-slick-index="1" aria-hidden="true"
+                        tabindex="-1">
                         <div class="image">
                             <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag2.png"
                                 alt="Flag">
@@ -151,7 +172,8 @@
                             <h6 class="title">South Africa</h6>
                         </div>
                     </div>
-                    <div class="marquee-iconic-box slick-slide" data-slick-index="2" aria-hidden="true" tabindex="-1">
+                    <div class="marquee-iconic-box slick-slide" data-slick-index="2" aria-hidden="true"
+                        tabindex="-1">
                         <div class="image">
                             <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag3.png"
                                 alt="Flag">
@@ -160,7 +182,8 @@
                             <h6 class="title">Russia</h6>
                         </div>
                     </div>
-                    <div class="marquee-iconic-box slick-slide" data-slick-index="3" aria-hidden="true" tabindex="-1">
+                    <div class="marquee-iconic-box slick-slide" data-slick-index="3" aria-hidden="true"
+                        tabindex="-1">
                         <div class="image">
                             <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag4.png"
                                 alt="Flag">
@@ -522,7 +545,8 @@
         </div>
         <div class="container">
             <div class="image mt-40 text-center aos-init aos-animate" data-aos="zoom-in-up" data-aos-duration="1500">
-                <img src="https://webtendtheme.net/html/2024/akpager/assets/images/backgrounds/map-locations.png" alt="Map Locations">
+                <img src="https://webtendtheme.net/html/2024/akpager/assets/images/backgrounds/map-locations.png"
+                    alt="Map Locations">
             </div>
         </div>
     </section>
