@@ -134,7 +134,7 @@
                             class="col-form-label fw-bold fs-6 ">{{ __('Description') }}
                         </x-metronic.label>
 
-                        <x-metronic.textarea id="default-editor" name="description"></x-metronic.textarea>
+                        <textarea id="default-editor" name="description"></textarea>
                     </div>
                 </div>
                 <div class="text-center pt-15">

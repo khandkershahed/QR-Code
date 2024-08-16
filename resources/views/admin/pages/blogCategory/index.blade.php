@@ -100,9 +100,9 @@
                         </div>
                         <div class="fv-row mb-5">
                             <x-metronic.label class="fw-semibold fs-6 mb-2">Description</x-metronic.label>
-                            <x-metronic.textarea class="form-control" placeholder="Set The Description"
+                            <textarea class="form-control" placeholder="Set The Description"
                                 name="description" id="floatingTextarea2" style="height: 100px"
-                                :valu="old('description')"></x-metronic.textarea>
+                                :valu="old('description')"></textarea>
                         </div>
                         <div class="d-flex justify-content-end">
                             {{-- <button id="kt_docs_formvalidation_text_submit" type="submit" class="btn btn-primary">
@@ -164,9 +164,9 @@
                             </div>
                             <div class="fv-row mb-5">
                                 <x-metronic.label class="fw-semibold fs-6 mb-2">Description</x-metronic.label>
-                                <x-metronic.textarea class="form-control" placeholder="Set The Description"
+                                <textarea class="form-control" placeholder="Set The Description"
                                     name="description" id="floatingTextarea2" style="height: 100px"
-                                    :valu="old('description')">{!! $category->description !!}</x-metronic.textarea>
+                                    :valu="old('description')">{!! $category->description !!}</textarea>
                             </div>
                             <div class="d-flex justify-content-end">
                                 <button type="submit" class="btn btn-primary">

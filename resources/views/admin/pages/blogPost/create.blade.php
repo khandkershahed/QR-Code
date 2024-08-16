@@ -153,15 +153,15 @@
                                 </div>
                                 <div class="mb-5 fv-row">
                                     <x-metronic.label class="form-label">{{ __('Blog Header') }}</x-metronic.label>
-                                    <x-metronic.textarea id="header" :value="old('header')" name="header"
+                                    <textarea id="header" :value="old('header')" name="header"
                                         placeholder="Add Blog Header" class="form-control mb-2" cols="30"
-                                        rows="3">{{ old('header') }}</x-metronic.textarea>
+                                        rows="3">{{ old('header') }}</textarea>
                                 </div>
                                 <div class="mb-5 fv-row">
                                     <x-metronic.label class="form-label">{{ __('Address') }}</x-metronic.label>
-                                    <x-metronic.textarea id="address" :value="old('address')" name="address"
+                                    <textarea id="address" :value="old('address')" name="address"
                                         placeholder="Add Blog Address" class="form-control mb-2" cols="30"
-                                        rows="3">{{ old('address') }}</x-metronic.textarea>
+                                        rows="3">{{ old('address') }}</textarea>
                                 </div>
                                 <div class="mb-5 fv-row">
                                     <x-metronic.label
