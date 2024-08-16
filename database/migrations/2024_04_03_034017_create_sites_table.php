@@ -34,6 +34,15 @@ return new class extends Migration
             $table->string('contact_email', 100)->nullable();
             $table->string('support_email', 100)->nullable();
             $table->string('info_email', 100)->nullable();
+            $table->text('copyright_title')->nullable();
+            $table->text('copyright_url')->nullable();
+            $table->string('site_title', 250)->nullable();
+            $table->text('site_url')->nullable();
+            $table->text('meta_keyword')->nullable();
+            $table->string('meta_image')->nullable();
+            $table->text('meta_description')->nullable();
+            $table->text('google_analytics')->nullable();
+            $table->text('google_adsense')->nullable();
             $table->string('facebook_url', 255)->nullable();
             $table->string('twitter_url', 255)->nullable();
             $table->string('instagram_url', 255)->nullable();

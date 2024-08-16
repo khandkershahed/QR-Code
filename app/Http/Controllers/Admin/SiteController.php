@@ -48,10 +48,12 @@ class SiteController extends Controller
         // dd($siteIconMainFile);
         $systemLogoWhiteMainFile   = $request->file('system_logo_white');
         $systemLogoBlackMainFile   = $request->file('system_logo_black');
+        $systemMetaImageMainFile   = $request->file('meta_image');
 
         $siteIconUploadPath        = storage_path('app/public/webSetting/siteIcon/');
         $systemLogoWhiteUploadPath = storage_path('app/public/webSetting/systemLogoWhite/');
         $systemLogoBlackUploadPath = storage_path('app/public/webSetting/systemLogoBlack/');
+        $systemMetaImageUploadPath = storage_path('app/public/webSetting/meta_image/');
 
         if ($request->hasFile('site_icon')) {
             if (!empty($webSetting->site_icon)) {
@@ -87,6 +89,23 @@ class SiteController extends Controller
             $globalFunSystemLogoWhite = ['status' => 0];
         }
 
+        if ($request->hasFile('meta_image')) {
+            if (!empty($webSetting->meta_image)) {
+                $filePaths = [
+                    storage_path("app/public/webSetting/meta_image/" . $webSetting->meta_image),
+                ];
+
+                foreach ($filePaths as $filePath) {
+                    if (File::exists($filePath)) {
+                        File::delete($filePath);
+                    }
+                }
+            }
+            $globalFunSystemMetaImage  = customUpload($systemMetaImageMainFile, $systemMetaImageUploadPath, $name = 'meta_image');
+        } else {
+            $globalFunSystemMetaImage = ['status' => 0];
+        }
+
         if ($request->hasFile('system_logo_black')) {
             if (!empty($webSetting->system_logo_black)) {
                 $filePaths = [
@@ -108,9 +127,6 @@ class SiteController extends Controller
         Site::updateOrCreate([], [
             'website_name'               => $request->website_name,
             'site_motto'                 => $request->site_motto,
-            'site_icon'                  => $globalFunSiteIcon['status'] == 1 ? $globalFunSiteIcon['file_name'] : $webSetting->site_icon,
-            'system_logo_white'          => $globalFunSystemLogoWhite['status'] == 1 ? $globalFunSystemLogoWhite['file_name'] : $webSetting->system_logo_white,
-            'system_logo_black'          => $globalFunSystemLogoBlack['status'] == 1 ? $globalFunSystemLogoBlack['file_name'] : $webSetting->system_logo_black,
             'about'                      => $request->about,
             'address_line_one'           => $request->address_line_one,
             'address_line_two'           => $request->address_line_two,
@@ -123,18 +139,30 @@ class SiteController extends Controller
             'phone_two'                  => $request->phone_two,
             'whatsapp_number'            => $request->whatsapp_number,
             'default_language'           => $request->default_language,
-            'default_language'           => $request->default_language,
+            'default_currency'           => $request->default_currency,
             'contact_email'              => $request->contact_email,
             'support_email'              => $request->support_email,
             'info_email'                 => $request->info_email,
+            'copyright_title'            => $request->copyright_title,
+            'copyright_url'              => $request->copyright_url,
+            'site_title'                 => $request->site_title,
+            'site_url'                   => $request->site_url,
+            'meta_keyword'               => $request->meta_keyword,
+            'meta_description'           => $request->meta_description,
+            'google_analytics'           => $request->google_analytics,
+            'google_adsense'             => $request->google_adsense,
             'facebook_url'               => $request->facebook_url,
             'twitter_url'                => $request->twitter_url,
             'instagram_url'              => $request->instagram_url,
             'linkedin_url'               => $request->linkedin_url,
+            'pinterest_url'              => $request->pinterest_url,
             'youtube_url'                => $request->youtube_url,
-            'pinterest_url'               => $request->pinterest_url,
             'service_days'               => $request->service_days,
             'service_time'               => $request->service_time,
+            'site_icon'                  => $globalFunSiteIcon['status'] == 1 ? $globalFunSiteIcon['file_name'] : $webSetting->site_icon,
+            'system_logo_white'          => $globalFunSystemLogoWhite['status'] == 1 ? $globalFunSystemLogoWhite['file_name'] : $webSetting->system_logo_white,
+            'system_logo_black'          => $globalFunSystemLogoBlack['status'] == 1 ? $globalFunSystemLogoBlack['file_name'] : $webSetting->system_logo_black,
+            'meta_image'                 => $globalFunSystemMetaImage['status'] == 1 ? $globalFunSystemMetaImage['file_name'] : $webSetting->meta_image,
 
         ]);
 
