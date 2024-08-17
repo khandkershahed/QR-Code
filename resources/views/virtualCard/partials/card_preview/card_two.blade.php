@@ -258,7 +258,7 @@
                     </div>
                     <!-- Front Info -->
                     <div class="template-two-title pt-5"
-                        style="text-align: center;width: 100%;margin: auto;margin-top: 80px;">
+                        style="text-align: center;width: 100%;margin: auto;margin-top: -90px;">
                         <div class="half mt-4">
                             <div class="w-75 mx-auto">
                                 <p class="mb-0 card_email card-two-mail">info@gmail.com</p>
