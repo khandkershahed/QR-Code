@@ -1120,7 +1120,7 @@
                             </div>
                             <div class="row pt-5">
                                 @if (optional($nfc_card->nfcData)->monday == '1')
-                                    <div class="col-md-6 mb-2">
+                                    <div class="col-md-6 mb-4">
                                         <div>
                                             <div class="text-center text-white">
                                                 <i class="fa fa-calendar houricon"></i>
@@ -1135,7 +1135,7 @@
                                     </div>
                                 @endif
                                 @if (optional($nfc_card->nfcData)->tuesday == '1')
-                                    <div class="col-md-6 mb-2">
+                                    <div class="col-md-6 mb-4">
                                         <div>
                                             <div class="text-center text-white">
                                                 <i class="fa fa-calendar houricon"></i>
@@ -1150,7 +1150,7 @@
                                     </div>
                                 @endif
                                 @if (optional($nfc_card->nfcData)->wednesday == '1')
-                                    <div class="col-md-6 mb-2">
+                                    <div class="col-md-6 mb-4">
                                         <div>
                                             <div class="text-center text-white">
                                                 <i class="fa fa-calendar houricon"></i>
@@ -1165,7 +1165,7 @@
                                     </div>
                                 @endif
                                 @if (optional($nfc_card->nfcData)->thursday == '1')
-                                    <div class="col-md-6 mb-2">
+                                    <div class="col-md-6 mb-4">
                                         <div>
                                             <div class="text-center text-white">
                                                 <i class="fa fa-calendar houricon"></i>
@@ -1180,7 +1180,7 @@
                                     </div>
                                 @endif
                                 @if (optional($nfc_card->nfcData)->friday == '1')
-                                    <div class="col-md-6 mb-2">
+                                    <div class="col-md-6 mb-4">
                                         <div>
                                             <div class="text-center text-white">
                                                 <i class="fa fa-calendar houricon"></i>
@@ -1195,7 +1195,7 @@
                                     </div>
                                 @endif
                                 @if (optional($nfc_card->nfcData)->saturday == '1')
-                                    <div class="col-md-6 mb-2">
+                                    <div class="col-md-6 mb-4">
                                         <div>
                                             <div class="text-center text-white">
                                                 <i class="fa fa-calendar houricon"></i>
@@ -1210,7 +1210,7 @@
                                     </div>
                                 @endif
                                 @if (optional($nfc_card->nfcData)->sunday == '1')
-                                    <div class="col-md-6 mb-2">
+                                    <div class="col-md-6 mb-4">
                                         <div>
                                             <div class="text-center text-white">
                                                 <i class="fa fa-calendar houricon"></i>
