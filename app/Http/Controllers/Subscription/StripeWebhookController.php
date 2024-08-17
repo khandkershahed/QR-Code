@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Cache;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use Stripe\Exception\SignatureVerificationException;
+use Stripe\Exception\ApiErrorException;
 use Laravel\Cashier\Http\Controllers\WebhookController as CashierWebhookController;
 
 class StripeWebhookController extends CashierWebhookController
@@ -95,35 +96,70 @@ class StripeWebhookController extends CashierWebhookController
         $data['plan'] = Plan::where('slug', $id)->first();
         $data['intent'] = auth()->user()->createSetupIntent();
         $data['user_id'] = Auth::user()->id;
-        return view('frontend.pages.checkout',$data);
+        return view('frontend.pages.checkout', $data);
     }
     public function stripePayment(Request $request)
     {
-        $user = User::find($request->user_id);
-        $user->createOrGetStripeCustomer();
-        $plan = Plan::find($request->plan);
-        $subscription = $user->newSubscription($plan->slug, $plan->stripe_plan)->create($request->token);
-        $subscription->update([
-            'subscription_ends_at' => now()->addDays($plan->interval),
+        $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'plan' => 'required|exists:plans,id',
+            'token' => 'required|string',
         ]);
-        // Check if the subscription was successfully created
-        if ($subscription) {
-            // Retrieve the active subscription
-            $activeSubscription = Subscription::where('user_id', $user->id)->active()->first();
 
-            // Ensure an active subscription exists
-            if ($activeSubscription) {
-                Mail::to($user->email)->send(new UserRegistrationMail($user->name));
-                return redirect(RouteServiceProvider::HOME)->with('success', 'You have successfully registered with the ' . $activeSubscription->plan->title );
+        try {
+            $user = User::findOrFail($request->user_id);
+            $user->createOrGetStripeCustomer();
+
+            $plan = Plan::findOrFail($request->plan);
+
+            // Check for an existing active subscription
+            $existingSubscription = Subscription::where('user_id', $user->id)
+                ->active()
+                ->first();
+
+            if ($existingSubscription) {
+                return redirect()->route('register')->with('error', 'You already have an active subscription.');
+            }
+
+            $subscription = $user->newSubscription($plan->slug, $plan->stripe_plan)->create($request->token);
+
+            // Set the subscription end date
+            $subscription->update([
+                'subscription_ends_at' => now()->addDays($plan->interval),
+            ]);
+
+            // Ensure the subscription was successfully created
+            if ($subscription) {
+                // Retrieve the active subscription
+                $activeSubscription = Subscription::where('user_id', $user->id)->active()->first();
+
+                if ($activeSubscription) {
+                    try {
+                        Mail::to($user->email)->send(new UserRegistrationMail($user->name));
+                    } catch (\Exception $e) {
+                        // Log the email sending failure
+                        Log::error('Failed to send registration email to ' . $user->email . ': ' . $e->getMessage());
+
+                        // Notify the admin
+                    }
+
+                    return redirect(RouteServiceProvider::HOME)->with('success', 'You have successfully registered with the ' . $activeSubscription->plan->title);
+                } else {
+                    // Subscription not found, handle the error
+                    $user->delete();
+                    return redirect()->route('register')->with('error', 'Error occurred while subscribing to a plan.');
+                }
             } else {
-                // Subscription not found, handle the error
+                // Subscription creation failed, handle the error
                 $user->delete();
                 return redirect()->route('register')->with('error', 'Error occurred while subscribing to a plan.');
             }
-        } else {
-            // Subscription creation failed, handle the error
-            $user->delete();
-            return redirect()->route('register')->with('error', 'Error occurred while subscribing to a plan.');
+        } catch (ApiErrorException $e) {
+            // Handle Stripe API errors
+            return redirect()->route('register')->with('error', 'Payment failed: ' . $e->getMessage());
+        } catch (\Exception $e) {
+            // Handle other errors
+            return redirect()->route('register')->with('error', 'An unexpected error occurred: ' . $e->getMessage());
         }
     }
 
@@ -136,7 +172,9 @@ class StripeWebhookController extends CashierWebhookController
 
         try {
             $event = \Stripe\Webhook::constructEvent(
-                $payload, $sigHeader, $endpointSecret
+                $payload,
+                $sigHeader,
+                $endpointSecret
             );
         } catch (\UnexpectedValueException $e) {
             return response()->json(['error' => 'Invalid payload'], 400);
@@ -147,7 +185,7 @@ class StripeWebhookController extends CashierWebhookController
         if ($event->type == 'checkout.session.completed') {
             $session = $event->data->object;
             $this->handleCheckoutSessionCompleted($session);
-        }elseif ($event->type == 'checkout.session.async_payment_failed' || $event->type == 'checkout.session.expired') {
+        } elseif ($event->type == 'checkout.session.async_payment_failed' || $event->type == 'checkout.session.expired') {
             $session = $event->data->object;
             $this->handleCheckoutSessionFailed($session);
         }
@@ -201,7 +239,6 @@ class StripeWebhookController extends CashierWebhookController
     protected function handleCheckoutSessionFailed($session)
     {
         $user = User::find($session->client_reference_id);
-            $user->delete();
+        $user->delete();
     }
-
 }

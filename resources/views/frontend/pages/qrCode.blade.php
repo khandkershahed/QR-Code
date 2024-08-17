@@ -15,24 +15,15 @@
                     <div class="about-eight-content rel z-2 my-55 rmb-25 aos-init aos-animate" data-aos="fade-left"
                         data-aos-duration="1500" data-aos-offset="50">
                         <div class="section-title mb-30">
-                            <h2>Fintech Forward Transforming Finance for Tomorrow</h2>
+                            <h2>Dynamic QR Code Generator</h2>
                         </div>
-                        <p>Many financial institutions and mobile apps offer user-friendly interfaces and secure
-                            platforms that facilitate instantaneous transactions, often with just a few clicks</p>
-                        <div class="play-app-stor pt-10">
-                            <a href="#"><img
-                                    src="https://webtendtheme.net/html/2024/akpager/assets/images/icons/play-stor.png"
-                                    alt="Play Stor"></a>
-                            <a href="#"><img
-                                    src="https://webtendtheme.net/html/2024/akpager/assets/images/icons/app-stor.png"
-                                    alt="App Stor"></a>
-                        </div>
+                        <p>Unlock the full potential of QR codes with our dynamic generator. Create versatile QR codes for social media sharing, file transfers, images, videos, discounts, restaurant menus, business hours, locations, and more. Customize your QR codes to fit your brand, and download them in high-resolution formats like PDF, EPS, JPEG, and PNG for professional-quality print and digital use. Effortlessly manage and update your QR codes to stay current and engaging.</p>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="about-eight-image-part aos-init aos-animate" data-aos="fade-right"
                         data-aos-duration="1500" data-aos-offset="50">
-                        <img src="https://webtendtheme.net/html/2024/akpager/assets/images/about/about-eight-two.png"
+                        <img src="{{ asset('frontend/newimage/qrCodeGenerator.png') }}"
                             alt="About">
                     </div>
                 </div>
@@ -116,6 +107,65 @@
                     @endforeach
                 @endif
             </div>
+        </div>
+    </section>
+    <section class="feature-image-box-area pt-95 rpt-75 pb-70 rpb-50 rel z-1">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-7 col-lg-9 col-md-11">
+                    <div class="section-title text-center mb-55 aos-init aos-animate" data-aos="fade-up"
+                        data-aos-duration="1500" data-aos-offset="50">
+                        <h2>Standout Features of Our Digital Visiting Cards</h2>
+                        <span class="subtitle-one style-two mb-20"><i class="fas fa-rocket-launch"></i> Unlock powerful features with our digital visiting cards—custom templates, real-time updates, and seamless device integration for an unforgettable networking experience.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-xl-4 col-md-6">
+                    <div class="feature-image-box aos-init aos-animate" data-aos="fade-up" data-aos-duration="1500"
+                        data-aos-offset="50">
+                        <div class="image">
+                            <img src="{{ asset('frontend/newimage/templates.webp') }}"
+                                alt="Feature">
+                        </div>
+                        <div class="content">
+                            <h5><a href="service-details.html">Elegant Designed Templates</a></h5>
+                            <p>Choose from a variety of beautifully designed templates to create a digital visiting card that matches your style. Customize every detail, from colors to fonts, ensuring your card perfectly represents your personal or business brand.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6">
+                    <div class="feature-image-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="100"
+                        data-aos-duration="1500" data-aos-offset="50">
+                        <div class="image">
+                            <img src="{{ asset('frontend/newimage/realTimeUpdate.webp') }}"
+                                alt="Feature">
+                        </div>
+                        <div class="content">
+                            <h5><a href="service-details.html">Real-Time Updates</a></h5>
+                            <p>Keep your digital visiting card dynamic and interactive with real-time updates. Add photo galleries, videos, and contact forms, allowing you to showcase your work and make it easy for others to connect with you instantly.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6">
+                    <div class="feature-image-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="200"
+                        data-aos-duration="1500" data-aos-offset="50">
+                        <div class="image">
+                            <img src="{{ asset('frontend/newimage/NFCCard.webp') }}"
+                                alt="Feature">
+                        </div>
+                        <div class="content">
+                            <h5><a href="service-details.html">NFC Cards for Contactless Sharing</a></h5>
+                            <p>Upgrade your business card to an NFC-enabled smart card for seamless, contactless sharing. Impress your connections with a modern, tech-savvy way to exchange information instantly with just a tap.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-lines">
+            <span></span><span></span>
+            <span></span><span></span>
         </div>
     </section>
     <section class="countries-area rel z-1 pb-70 rpb-40 pt-130">
