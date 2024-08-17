@@ -1505,7 +1505,7 @@
                         <div class="modal-body">
                             {{ optional($nfc_card->nfcBanner)->banner_description }}
                             <div class="pt-3">
-                                <a href="{{ optional($nfc_card->nfcBanner)->banner_url }}"
+                                <a href="{{ !empty(optional($nfc_card->nfcBanner)->banner_url ) ? optional($nfc_card->nfcBanner)->banner_url : 'javascript:void(0)'}}"
                                     class="btn border-0 rounded-2 btn-sm text-white"
                                     style="background-color: var(--template-three-color-primary);">View</a>
                             </div>

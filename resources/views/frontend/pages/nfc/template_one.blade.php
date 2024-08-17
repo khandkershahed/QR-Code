@@ -129,8 +129,8 @@
         }
 
         .social-link-tem1 {
-            background: black;
-            padding: 15px 15px;
+            background: #464646;
+            padding: 15px 17px;
             color: var(--template-one-color-white);
             box-shadow: rgba(255, 255, 255, 0.24) 0px 3px 8px;
             margin-left: 13px;
@@ -900,7 +900,7 @@
                                                     {!! $service->service_description !!}
                                                 </p>
                                                 <div class="w-50 mx-auto">
-                                                    <a href="{{ $service->service_url }}"
+                                                    <a href="{{ !empty(optional($service)->service_url ) ? optional($service)->service_url : 'javascript:void(0)'}}"
                                                         class="btn btn-light rounded-0 w-100 border-2 border-dark py-2">
                                                         View Service <i class="fa-solid fa-arrow-right-long"></i>
                                                     </a>
@@ -1359,7 +1359,7 @@
                             {{ optional($nfc_card->nfcBanner)->banner_description }}
                         </div>
                         <div class="modal-footer">
-                            <a href="{{ optional($nfc_card->nfcBanner)->banner_url }}"
+                            <a href="{{ !empty(optional($nfc_card->nfcBanner)->banner_url ) ? optional($nfc_card->nfcBanner)->banner_url : 'javascript:void(0)'}}"
                                 class="btn btn-sm btn-dark text-black"
                                 style="background-color: var(--template-three-color-primary);">View</a>
                         </div>

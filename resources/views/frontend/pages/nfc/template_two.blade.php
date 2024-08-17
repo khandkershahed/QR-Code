@@ -595,7 +595,9 @@
                                                                         <h4 class="mb-0 special-font"
                                                                             style="color: var(--template-two-color-primary)">
                                                                             <a
-                                                                                href="{{ $service->service_url }}">{{ $service->service_name }}</a>
+                                                                                href="{{ !empty(optional($service)->service_url) ? optional($service)->service_url : 'javascript:void(0)' }}">
+                                                                                {{ $service->service_name }}
+                                                                            </a>
                                                                         </h4>
                                                                         <p class="">
                                                                             {{ $service->service_description }}
@@ -1061,7 +1063,7 @@
                         </div>
                         @if (!empty(optional($nfc_card->nfcBanner)->banner_url))
                             <div class="modal-footer">
-                                <a href="{{ optional($nfc_card->nfcBanner)->banner_url }}"
+                                <a href="{{ !empty(optional($nfc_card->nfcBanner)->banner_url) ? optional($nfc_card->nfcBanner)->banner_url : 'javascript:void(0)' }}"
                                     class="btn btn-sm btn-dark text-black"
                                     style="background-color: var(--template-three-color-primary);">View</a>
                             </div>
