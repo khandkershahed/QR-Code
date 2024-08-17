@@ -1683,7 +1683,6 @@
         const makeVCardTitle = (title) => `TITLE:${title || ''}`;
         const makeVCardPhoto = (imgBase64) => `PHOTO;ENCODING=b;TYPE=JPEG:${imgBase64}`;
         const makeVCardTel = (phone, type = 'CELL') => `TEL;TYPE=${type}:${phone || ''}`;
-        const makeVCardAdr = (addressLine1, addressLine2) => `ADR;TYPE=HOME:;;${addressLine1 || ''};${addressLine2 || ''};;;;`;
 
         const makeVCardAdr = (addressLine1, addressLine2) =>
             `ADR;TYPE=HOME:;;${addressLine1 || ''};${addressLine2 || ''};;;;`;
