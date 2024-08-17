@@ -129,8 +129,8 @@
         }
 
         .social-link-tem1 {
-            background: black;
-            padding: 15px 15px;
+            background: #464646;
+            padding: 15px 17px;
             color: var(--template-one-color-white);
             box-shadow: rgba(255, 255, 255, 0.24) 0px 3px 8px;
             margin-left: 13px;
@@ -143,6 +143,7 @@
 
         .special-font {
             font-family: var(--template-one-font-fmly-Bebas);
+            letter-spacing: 2px;
         }
 
         .divider-tem1 {
@@ -438,7 +439,7 @@
                             <div class="container py-5 pt-0">
                                 <div class="row">
                                     @if (!empty($nfc_card->nfcData->email_personal) || !empty($nfc_card->nfcData->email_work))
-                                        <div class="col-md-6">
+                                        <div class="col-12">
                                             <div>
                                                 <div class="d-flex align-items-center">
                                                     <div class="bg-white p-3">
@@ -456,7 +457,7 @@
                                         </div>
                                     @endif
                                     @if (!empty($nfc_card->nfcData->phone_personal) || !empty($nfc_card->nfcData->phone_work))
-                                        <div class="col-md-6 mt-4 mt-lg-0">
+                                        <div class="col-12 mt-4">
                                             <div>
                                                 <div class="d-flex align-items-center">
                                                     <div class="bg-white p-3">
@@ -474,7 +475,7 @@
                                         </div>
                                     @endif
                                     @if (!empty($nfc_card->nfcData->date_of_birth))
-                                        <div class="col-md-6 mt-4">
+                                        <div class="col-12 mt-4">
                                             <div>
                                                 <div class="d-flex align-items-center">
                                                     <div class="bg-white p-3">
@@ -490,7 +491,7 @@
                                         </div>
                                     @endif
                                     @if (!empty($nfc_card->nfcData->location))
-                                        <div class="col-md-6 mt-4">
+                                        <div class="col-12 mt-4">
                                             <div>
                                                 <div class="d-flex align-items-center">
                                                     <div class="bg-white p-3">
@@ -549,7 +550,7 @@
                                                                         class="fa-solid fa-diamond pe-3"></i>{{ $company->company_website }}</span>
                                                             </p>
                                                             <p class="mb-0">
-                                                                <span><i class="fa-solid fa-diamond pe-3"></i>+1
+                                                                <span><i class="fa-solid fa-diamond pe-3"></i>
                                                                     {{ $company->company_phone }}</span>
                                                             </p>
                                                             <p class="mb-0">
@@ -899,7 +900,7 @@
                                                     {!! $service->service_description !!}
                                                 </p>
                                                 <div class="w-50 mx-auto">
-                                                    <a href="{{ $service->service_url }}"
+                                                    <a href="{{ !empty(optional($service)->service_url) ? optional($service)->service_url : 'javascript:void(0)' }}"
                                                         class="btn btn-light rounded-0 w-100 border-2 border-dark py-2">
                                                         View Service <i class="fa-solid fa-arrow-right-long"></i>
                                                     </a>
@@ -1042,17 +1043,7 @@
                                                     <p class="mb-0 text-white text-center">
                                                         {{ $testimonial->testimonial_description }}
                                                     </p>
-                                                    <div class="d-flex justify-content-center pt-3">
-                                                        <a href="" style="text-decoration: none">
-                                                            <i class="fa-solid fa-star text-warning"></i>
-                                                        </a>
-                                                        <a href="" style="text-decoration: none">
-                                                            <i class="fa-solid fa-star text-warning"></i>
-                                                        </a>
-                                                        <a href="" style="text-decoration: none">
-                                                            <i class="fa-solid fa-star text-warning"></i>
-                                                        </a>
-                                                    </div>
+
                                                 </div>
                                             </div>
                                         @endforeach
@@ -1129,7 +1120,7 @@
                             </div>
                             <div class="row pt-5">
                                 @if (optional($nfc_card->nfcData)->monday == '1')
-                                    <div class="col-md-6 mb-2">
+                                    <div class="col-md-6 mb-4">
                                         <div>
                                             <div class="text-center text-white">
                                                 <i class="fa fa-calendar houricon"></i>
@@ -1144,7 +1135,7 @@
                                     </div>
                                 @endif
                                 @if (optional($nfc_card->nfcData)->tuesday == '1')
-                                    <div class="col-md-6 mb-2">
+                                    <div class="col-md-6 mb-4">
                                         <div>
                                             <div class="text-center text-white">
                                                 <i class="fa fa-calendar houricon"></i>
@@ -1159,7 +1150,7 @@
                                     </div>
                                 @endif
                                 @if (optional($nfc_card->nfcData)->wednesday == '1')
-                                    <div class="col-md-6 mb-2">
+                                    <div class="col-md-6 mb-4">
                                         <div>
                                             <div class="text-center text-white">
                                                 <i class="fa fa-calendar houricon"></i>
@@ -1174,7 +1165,7 @@
                                     </div>
                                 @endif
                                 @if (optional($nfc_card->nfcData)->thursday == '1')
-                                    <div class="col-md-6 mb-2">
+                                    <div class="col-md-6 mb-4">
                                         <div>
                                             <div class="text-center text-white">
                                                 <i class="fa fa-calendar houricon"></i>
@@ -1189,7 +1180,7 @@
                                     </div>
                                 @endif
                                 @if (optional($nfc_card->nfcData)->friday == '1')
-                                    <div class="col-md-6 mb-2">
+                                    <div class="col-md-6 mb-4">
                                         <div>
                                             <div class="text-center text-white">
                                                 <i class="fa fa-calendar houricon"></i>
@@ -1204,7 +1195,7 @@
                                     </div>
                                 @endif
                                 @if (optional($nfc_card->nfcData)->saturday == '1')
-                                    <div class="col-md-6 mb-2">
+                                    <div class="col-md-6 mb-4">
                                         <div>
                                             <div class="text-center text-white">
                                                 <i class="fa fa-calendar houricon"></i>
@@ -1219,7 +1210,7 @@
                                     </div>
                                 @endif
                                 @if (optional($nfc_card->nfcData)->sunday == '1')
-                                    <div class="col-md-6 mb-2">
+                                    <div class="col-md-6 mb-4">
                                         <div>
                                             <div class="text-center text-white">
                                                 <i class="fa fa-calendar houricon"></i>
@@ -1367,11 +1358,13 @@
                         <div class="modal-body">
                             {{ optional($nfc_card->nfcBanner)->banner_description }}
                         </div>
-                        <div class="modal-footer">
-                            <a href="{{ optional($nfc_card->nfcBanner)->banner_url }}"
-                                class="btn btn-sm btn-dark text-black"
-                                style="background-color: var(--template-three-color-primary);">View</a>
-                        </div>
+                        @if (!empty(optional($nfc_card->nfcBanner)->banner_url) || !empty(optional($nfc_card->nfcBanner)->banner_button))
+                            <div class="modal-footer">
+                                <a href="{{ !empty(optional($nfc_card->nfcBanner)->banner_url) ? optional($nfc_card->nfcBanner)->banner_url : 'javascript:void(0)' }}"
+                                    class="btn btn-sm btn-dark text-black"
+                                    style="background-color: var(--template-three-color-primary);">{{ optional($nfc_card->nfcBanner)->banner_button }}</a>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -1551,30 +1544,30 @@
         const makeVCardCompany = (company) => `ORG:${company || ''}`;
 
         function makeVCard(profileImageBase64) {
-            const firstName = '{{ optional($nfc_card->nfcData)->first_name }}';
-            const lastName = '{{ optional($nfc_card->nfcData)->last_name }}';
-            const designation = '{{ optional($nfc_card)->job_title }}';
-            const phonePersonal = '{{ optional($nfc_card->nfcData)->phone_personal }}';
-            const phoneWork = '{{ optional($nfc_card->nfcData)->phone_work }}';
-            const emailPersonal = '{{ optional($nfc_card->nfcData)->email_personal }}';
-            const emailWork = '{{ optional($nfc_card->nfcData)->email_work }}';
-            const addressLine1 = '{{ optional($nfc_card->nfcData)->address_line_one }}';
-            const addressLine2 = '{{ optional($nfc_card->nfcData)->address_line_two }}';
-            const website = '{{ optional($nfc_card->nfcData)->website_url }}';
-            const linkedin = '{{ optional($nfc_card->nfcData)->linkedin_url }}';
-            const facebook = '{{ optional($nfc_card->nfcData)->facebook_url }}';
-            const instagram = '{{ optional($nfc_card->nfcData)->instagram_url }}';
-            const whatsapp = '{{ optional($nfc_card->nfcData)->whatsapp_url }}';
-            const twitter = '{{ optional($nfc_card->nfcData)->twitter_url }}';
-            const youtube = '{{ optional($nfc_card->nfcData)->youtube_url }}';
-            const pinterest = '{{ optional($nfc_card->nfcData)->pinterest_url }}';
-            const reddit = '{{ optional($nfc_card->nfcData)->reddit_url }}';
-            const tumblr = '{{ optional($nfc_card->nfcData)->tumblr_url }}';
-            const tiktok = '{{ optional($nfc_card->nfcData)->tiktok_url }}';
-            const location = '{{ optional($nfc_card->nfcData)->location }}';
-            const locationUrl = '{{ optional($nfc_card->nfcData)->location_url }}';
-            const dob = '{{ optional($nfc_card->nfcData)->date_of_birth }}';
-            const companyName = '{{ optional($nfc_card->nfcData)->company_name }}';
+            const firstName = "{{ optional($nfc_card->nfcData)->first_name }}";
+            const lastName = "{{ optional($nfc_card->nfcData)->last_name }}";
+            const designation = "{{ optional($nfc_card)->job_title }}";
+            const phonePersonal = "{{ optional($nfc_card->nfcData)->phone_personal }}";
+            const phoneWork = "{{ optional($nfc_card->nfcData)->phone_work }}";
+            const emailPersonal = "{{ optional($nfc_card->nfcData)->email_personal }}";
+            const emailWork = "{{ optional($nfc_card->nfcData)->email_work }}";
+            const addressLine1 = "{{ optional($nfc_card->nfcData)->address_line_one }}";
+            const addressLine2 = "{{ optional($nfc_card->nfcData)->address_line_two }}";
+            const website = "{{ optional($nfc_card->nfcData)->website_url }}";
+            const linkedin = "{{ optional($nfc_card->nfcData)->linkedin_url }}";
+            const facebook = "{{ optional($nfc_card->nfcData)->facebook_url }}";
+            const instagram = "{{ optional($nfc_card->nfcData)->instagram_url }}";
+            const whatsapp = "{{ optional($nfc_card->nfcData)->whatsapp_url }}";
+            const twitter = "{{ optional($nfc_card->nfcData)->twitter_url }}";
+            const youtube = "{{ optional($nfc_card->nfcData)->youtube_url }}";
+            const pinterest = "{{ optional($nfc_card->nfcData)->pinterest_url }}";
+            const reddit = "{{ optional($nfc_card->nfcData)->reddit_url }}";
+            const tumblr = "{{ optional($nfc_card->nfcData)->tumblr_url }}";
+            const tiktok = "{{ optional($nfc_card->nfcData)->tiktok_url }}";
+            const location = `{{ optional($nfc_card->nfcData)->location }}`;
+            const locationUrl = "{{ optional($nfc_card->nfcData)->location_url }}";
+            const dob = "{{ optional($nfc_card->nfcData)->date_of_birth }}";
+            const companyName = "{{ optional($nfc_card->nfcData)->company_name }}";
 
             let vcard = `BEGIN:VCARD\n${makeVCardVersion()}\n`;
             vcard += `${makeVCardInfo(lastName, firstName)}\n`;

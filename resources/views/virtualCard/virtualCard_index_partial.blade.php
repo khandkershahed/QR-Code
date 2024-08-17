@@ -409,7 +409,7 @@
             showAndCaptureModal(modalId, () => {
                 html2canvas(document.querySelector('#' + modalId + ' #card-container')).then(canvas => {
                     // Add padding to the canvas
-                    const padding = 20; // Adjust the padding size as needed
+                    const padding = 10; // Adjust the padding size as needed
                     const paddedCanvas = document.createElement('canvas');
                     paddedCanvas.width = canvas.width + 2 * padding;
                     paddedCanvas.height = canvas.height + 2 * padding;

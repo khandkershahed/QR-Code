@@ -1512,11 +1512,14 @@
                         </div>
                         <div class="modal-body">
                             {{ optional($nfc_card->nfcBanner)->banner_description }}
-                            <div class="pt-3">
-                                <a href="{{ optional($nfc_card->nfcBanner)->banner_url }}"
-                                    class="btn border-0 rounded-2 btn-sm text-white"
-                                    style="background-color: var(--template-three-color-primary);">View</a>
-                            </div>
+                            @if (!empty(optional($nfc_card->nfcBanner)->banner_url ) || !empty(optional($nfc_card->nfcBanner)->banner_button ))
+                                <div class="pt-3">
+                                    <a href="{{ !empty(optional($nfc_card->nfcBanner)->banner_url ) ? optional($nfc_card->nfcBanner)->banner_url : 'javascript:void(0)'}}"
+                                        class="btn border-0 rounded-2 btn-sm text-white"
+                                        style="background-color: var(--template-three-color-primary);">{{ optional($nfc_card->nfcBanner)->banner_button }}
+                                    </a>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -1688,8 +1691,6 @@
         const makeVCardTitle = (title) => `TITLE:${title || ''}`;
         const makeVCardPhoto = (imgBase64) => `PHOTO;ENCODING=b;TYPE=JPEG:${imgBase64}`;
         const makeVCardTel = (phone, type = 'CELL') => `TEL;TYPE=${type}:${phone || ''}`;
-        const makeVCardAdr = (addressLine1, addressLine2) =>
-            `ADR;TYPE=HOME:;;${addressLine1 || ''};${addressLine2 || ''};;;;`;
 
         const makeVCardAdr = (addressLine1, addressLine2) =>
             `ADR;TYPE=HOME:;;${addressLine1 || ''};${addressLine2 || ''};;;;`;
@@ -1702,30 +1703,30 @@
         const makeVCardCompany = (company) => `ORG:${company || ''}`;
 
         function makeVCard(profileImageBase64) {
-            const firstName = '{{ optional($nfc_card->nfcData)->first_name }}';
-            const lastName = '{{ optional($nfc_card->nfcData)->last_name }}';
-            const designation = '{{ optional($nfc_card)->job_title }}';
-            const phonePersonal = '{{ optional($nfc_card->nfcData)->phone_personal }}';
-            const phoneWork = '{{ optional($nfc_card->nfcData)->phone_work }}';
-            const emailPersonal = '{{ optional($nfc_card->nfcData)->email_personal }}';
-            const emailWork = '{{ optional($nfc_card->nfcData)->email_work }}';
-            const addressLine1 = '{{ optional($nfc_card->nfcData)->address_line_one }}';
-            const addressLine2 = '{{ optional($nfc_card->nfcData)->address_line_two }}';
-            const website = '{{ optional($nfc_card->nfcData)->website_url }}';
-            const linkedin = '{{ optional($nfc_card->nfcData)->linkedin_url }}';
-            const facebook = '{{ optional($nfc_card->nfcData)->facebook_url }}';
-            const instagram = '{{ optional($nfc_card->nfcData)->instagram_url }}';
-            const whatsapp = '{{ optional($nfc_card->nfcData)->whatsapp_url }}';
-            const twitter = '{{ optional($nfc_card->nfcData)->twitter_url }}';
-            const youtube = '{{ optional($nfc_card->nfcData)->youtube_url }}';
-            const pinterest = '{{ optional($nfc_card->nfcData)->pinterest_url }}';
-            const reddit = '{{ optional($nfc_card->nfcData)->reddit_url }}';
-            const tumblr = '{{ optional($nfc_card->nfcData)->tumblr_url }}';
-            const tiktok = '{{ optional($nfc_card->nfcData)->tiktok_url }}';
-            const location = '{{ optional($nfc_card->nfcData)->location }}';
-            const locationUrl = '{{ optional($nfc_card->nfcData)->location_url }}';
-            const dob = '{{ optional($nfc_card->nfcData)->date_of_birth }}';
-            const companyName = '{{ optional($nfc_card->nfcData)->company_name }}';
+            const firstName = "{{ optional($nfc_card->nfcData)->first_name }}";
+            const lastName = "{{ optional($nfc_card->nfcData)->last_name }}";
+            const designation = "{{ optional($nfc_card)->job_title }}";
+            const phonePersonal = "{{ optional($nfc_card->nfcData)->phone_personal }}";
+            const phoneWork = "{{ optional($nfc_card->nfcData)->phone_work }}";
+            const emailPersonal = "{{ optional($nfc_card->nfcData)->email_personal }}";
+            const emailWork = "{{ optional($nfc_card->nfcData)->email_work }}";
+            const addressLine1 = "{{ optional($nfc_card->nfcData)->address_line_one }}";
+            const addressLine2 = "{{ optional($nfc_card->nfcData)->address_line_two }}";
+            const website = "{{ optional($nfc_card->nfcData)->website_url }}";
+            const linkedin = "{{ optional($nfc_card->nfcData)->linkedin_url }}";
+            const facebook = "{{ optional($nfc_card->nfcData)->facebook_url }}";
+            const instagram = "{{ optional($nfc_card->nfcData)->instagram_url }}";
+            const whatsapp = "{{ optional($nfc_card->nfcData)->whatsapp_url }}";
+            const twitter = "{{ optional($nfc_card->nfcData)->twitter_url }}";
+            const youtube = "{{ optional($nfc_card->nfcData)->youtube_url }}";
+            const pinterest = "{{ optional($nfc_card->nfcData)->pinterest_url }}";
+            const reddit = "{{ optional($nfc_card->nfcData)->reddit_url }}";
+            const tumblr = "{{ optional($nfc_card->nfcData)->tumblr_url }}";
+            const tiktok = "{{ optional($nfc_card->nfcData)->tiktok_url }}";
+            const location = `{{ optional($nfc_card->nfcData)->location }}`;
+            const locationUrl = "`{{ optional($nfc_card->nfcData)->location_url }}`";
+            const dob = "{{ optional($nfc_card->nfcData)->date_of_birth }}";
+            const companyName = "{{ optional($nfc_card->nfcData)->company_name }}";
 
             let vcard = `BEGIN:VCARD\n${makeVCardVersion()}\n`;
             vcard += `${makeVCardInfo(lastName, firstName)}\n`;
