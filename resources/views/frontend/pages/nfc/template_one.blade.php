@@ -143,6 +143,7 @@
 
         .special-font {
             font-family: var(--template-one-font-fmly-Bebas);
+            letter-spacing: 2px;
         }
 
         .divider-tem1 {
@@ -438,7 +439,7 @@
                             <div class="container py-5 pt-0">
                                 <div class="row">
                                     @if (!empty($nfc_card->nfcData->email_personal) || !empty($nfc_card->nfcData->email_work))
-                                        <div class="col-md-6">
+                                        <div class="col-12">
                                             <div>
                                                 <div class="d-flex align-items-center">
                                                     <div class="bg-white p-3">
@@ -456,7 +457,7 @@
                                         </div>
                                     @endif
                                     @if (!empty($nfc_card->nfcData->phone_personal) || !empty($nfc_card->nfcData->phone_work))
-                                        <div class="col-md-6 mt-4 mt-lg-0">
+                                        <div class="col-12 mt-4 mt-lg-0">
                                             <div>
                                                 <div class="d-flex align-items-center">
                                                     <div class="bg-white p-3">
@@ -474,7 +475,7 @@
                                         </div>
                                     @endif
                                     @if (!empty($nfc_card->nfcData->date_of_birth))
-                                        <div class="col-md-6 mt-4">
+                                        <div class="col-12 mt-4">
                                             <div>
                                                 <div class="d-flex align-items-center">
                                                     <div class="bg-white p-3">
@@ -490,7 +491,7 @@
                                         </div>
                                     @endif
                                     @if (!empty($nfc_card->nfcData->location))
-                                        <div class="col-md-6 mt-4">
+                                        <div class="col-12 mt-4">
                                             <div>
                                                 <div class="d-flex align-items-center">
                                                     <div class="bg-white p-3">
@@ -1651,7 +1652,7 @@
             if (location || locationUrl) {
                 vcard += `${makeVCardLocation(location, locationUrl)}\n`;
             }
-            
+
 
             vcard += `${makeVCardTimeStamp()}\nEND:VCARD`;
 
