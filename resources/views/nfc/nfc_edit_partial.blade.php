@@ -10,7 +10,7 @@
 
 <div class="summury_box">
     <div class="row gy-5 gx-xl-10 m-auto d-flex justify-content-center">
-        <div class="col-sm-6 col-xl-2 mb-2 mb-xl-5">
+        <div class="col-md-3 mb-2 mb-xl-5">
             <div class="card h-lg-100">
                 <div class="card-body d-flex justify-content-between align-items-start flex-column p-3">
                     <div class="m-0 d-flex">
@@ -49,7 +49,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 col-xl-2 mb-2 mb-xl-5">
+        <div class="col-md-3 mb-2 mb-xl-5">
             <div class="card h-lg-100">
                 <div class="card-body d-flex justify-content-between align-items-start flex-column p-3">
                     <div class="m-0 d-flex">
@@ -318,7 +318,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 col-xl-2 mb-2 mb-xl-5">
+        <div class="col-md-3 mb-2 mb-xl-5">
             <div class="card h-lg-100">
                 <div class="card-body d-flex justify-content-between align-items-start flex-column p-3">
                     <div class="m-0 d-flex">
@@ -412,7 +412,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 col-xl-2 mb-2 mb-xl-5">
+        <div class="col-md-3 mb-2 mb-xl-5">
             <div class="card h-lg-100">
                 <div class="card-body d-flex justify-content-between align-items-start flex-column p-3">
                     <div class="m-0 d-flex">
@@ -705,7 +705,6 @@
                         background-repeat: no-repeat;
                         background-size: cover;
                         background-position: center;
-                        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
                         text-align: center;
                         margin-bottom: 20px;
                     }
@@ -717,7 +716,6 @@
                         background-repeat: no-repeat;
                         background-size: cover;
                         background-position: center;
-                        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
                         text-align: center;
                         margin-bottom: 20px;
                     }

@@ -113,6 +113,21 @@
         width: 70%;
     }
 
+    .two-company-logo {
+        width: 100px;
+        height: 100px;
+        margin: auto;
+        position: relative;
+        top: 55px;
+        z-index: 5;
+    }
+
+    .two-company-logo img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+
     @media only screen and (max-width: 1366px) {
         .card_email-box {
             width: 70%;
@@ -137,6 +152,7 @@
         .card_two {
             width: auto;
             max-width: 230px;
+            border: 1px solid #eee !important;
         }
 
         .half {
@@ -147,7 +163,14 @@
         }
 
         .template-two-title {
-            margin-left: 20px;
+            position: relative;
+            top: 35px;
+        }
+
+        .content-box-two {
+            position: relative;
+            left: 15px;
+            z-index: 5;
         }
 
         .punch-card-container,
@@ -167,6 +190,12 @@
             margin-left: 30px;
             font-size: 20px;
         }
+
+        .card-two-mail {
+            position: relative;
+            top: 145px;
+            z-index: 5;
+        }
     }
 </style>
 
@@ -174,49 +203,50 @@
     <div class="row mt-5">
         <div class="card-container-two" style="background: transparent;">
             <div class="card_two border-0 card-two-front rounded-0">
-                <div>
+                <div class="">
                     <!-- Company Logo -->
-                    <div class="d-flex justify-content-center template-two-logo-ebox">
-                        @if (!empty($nfc_card->card_logo) || file_exists(public_path('storage/nfc/' . $nfc_card->card_logo)))
-                            <img class="" width="100px" src="{{ asset('storage/nfc/' . $nfc_card->card_logo) }}"
-                                alt="" />
-                        @endif
-                        {{-- @if (!empty($nfc_card->card_logo) && file_exists(public_path('storage/nfc/' . $nfc_card->card_logo)))
-                            <img class="img-fluid card_logo" width="100px"
-                                src="{{ asset('storage/nfc/' . $nfc_card->card_logo) }}" alt="" />
-                        @endif --}}
+                    <div class="d-flex justify-content-center">
+                        <div class="two-company-logo">
+                            @if (!empty($nfc_card->card_logo) || file_exists(public_path('storage/nfc/' . $nfc_card->card_logo)))
+                                <img class="" width="100px"
+                                    src="{{ asset('storage/nfc/' . $nfc_card->card_logo) }}"
+                                    alt="Card Logo" />
+                            @endif
+                        </div>
                     </div>
 
                     <!-- Front Info -->
-                    <div class=" template-two-title main-content-tem2">
+                    <div class=" template-two-title main-content-tem2 w-100">
                         <h3 class="text-white text-center card_name">{{ $nfc_card->card_name }}</h3>
                         <p class="text-center card_designation pb-5">{{ $nfc_card->card_designation }}</p>
                         {{-- <p class="pb-4 text-white text-start tow-company-name">
                             GoFlixza</p> --}}
-                        <div class="half pt-3">
-                            <div class="icons-box-two text-center">
-                                <i class="fas fa-phone"></i>
+                        <div class="content-box-two">
+                            <div class="half pt-5">
+                                <div class="icons-box-two text-center">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="ps-5 ps-lg-4">
+                                    <p class="mb-0 text-start ps-2 card_phone">{{ $nfc_card->card_phone }}</p>
+                                </div>
                             </div>
-                            <div class="ps-5 ps-lg-4">
-                                <p class="mb-0 text-start ps-2 card_phone">{{ $nfc_card->card_phone }}</p>
+                            <div class="half pt-5">
+                                <div class="icons-box-two text-center">
+                                    <i class="fa-solid fa-house-flag"></i>
+                                </div>
+                                <div class="ps-5 ps-lg-4 card_address-box">
+                                    <p class="mb-0 text-start ps-2 card_address">
+                                        {{ $nfc_card->card_address }}
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="half mt-2">
-                            <div class="icons-box-two text-center">
-                                <i class="fa-solid fa-house-flag"></i>
-                            </div>
-                            <div class="ps-5 ps-lg-4 card_address-box">
-                                <p class="mb-0 text-start ps-2 card_address">
-                                    {{ $nfc_card->card_address }}
-                                </p>
-                            </div>
-                        </div>
-                        <div class="half mt-2">
-                            <div class="icons-box-two text-center">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="ps-5 ps-lg-4 card_email-box">
-                                <p class="mb-0 text-start ps-2 card_email">{{ $nfc_card->card_email }}</p>
+                            <div class="half pt-5">
+                                <div class="icons-box-two text-center">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="ps-5 ps-lg-4 card_email-box">
+                                    <p class="mb-0 text-start ps-2 card_email">{{ $nfc_card->card_email }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -228,16 +258,16 @@
                     <div class="d-flex justify-content-center template-two-logo-back">
                         @if (!empty($nfc_card->nfc->nfc_qr) && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc->nfc_qr)))
                             <img class="img-fluid bg-white" width="170px"
-                                src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc->nfc_qr) }}" alt="" />
+                                src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc->nfc_qr) }}" alt=""
+                                onerror="this.onerror=null;this.src='https://c8.alamy.com/comp/2R7A415/half-circle-logo-design-the-concept-of-working-together-design-badge-logo-icon-emblem-vector-illustration-2R7A415.jpg';" />
                         @endif
                     </div>
-
                     <!-- Front Info -->
                     <div class="template-two-title pt-5"
                         style="text-align: center;width: 100%;margin: auto;margin-top: 80px;">
                         <div class="half mt-4">
                             <div class="w-75 mx-auto">
-                                <p class="mb-0 card_email">{{ $nfc_card->card_email }}</p>
+                                <p class="mb-0 card_email card-two-mail">{{ $nfc_card->card_email }}</p>
                             </div>
                         </div>
                     </div>

@@ -25,7 +25,6 @@
         background-size: cover;
         object-fit: cover;
         background-position: center;
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     }
 
     .card-back-one {
@@ -34,7 +33,6 @@
         background-size: cover;
         object-fit: cover;
         background-position: center;
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     }
 
     .template-logo-ebox {
@@ -89,6 +87,7 @@
         .nfc_card_one {
             width: 100%;
             height: 430px;
+            border: 1px solid #eee;
         }
 
         .template-logo-back {

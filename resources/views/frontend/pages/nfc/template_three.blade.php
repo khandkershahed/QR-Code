@@ -226,11 +226,14 @@
         .service-img-tem3 {
             display: flex;
             justify-content: center;
+            width: 200px;
+            height: 180px;
+            margin: auto;
         }
 
         .service-img-tem3 img {
-            width: 200px;
-            height: 200px;
+            width: 100px;
+            height: 100px;
             object-fit: cover;
             margin: auto;
         }
@@ -313,12 +316,15 @@
         .qr-code-img {
             background-color: white;
             width: 200px;
-            height: 240px;
+            height: 325px;
             object-fit: cover;
             display: flex;
             margin: auto;
             margin-bottom: -50px;
             border-radius: 7px;
+            position: relative;
+            top: 60px;
+
         }
 
         .qr-code-img img {
@@ -1426,8 +1432,8 @@
                         @if (!empty($nfc_card->nfc_qr) && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc_qr)))
                             <div class="qr-code-img">
                                 {{-- Demo QR Here Place Your Actual QR --}}
-                                <img class="img-fluid" src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
-                                    alt="">
+                                {{-- <img class="img-fluid" src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
+                                    alt=""> --}}
                             </div>
                             <div class="tem3-footer-shape">
                                 <p class="text-center text-white special-font" style="position: relative; top: 5px">
@@ -1435,6 +1441,8 @@
                                 </p>
                             </div>
                         @endif
+                        <img class="img-fluid" src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
+                            alt="">
                     </div>
                     @php
                         $currentUrl = request()->url();
@@ -1680,7 +1688,8 @@
         const makeVCardTitle = (title) => `TITLE:${title || ''}`;
         const makeVCardPhoto = (imgBase64) => `PHOTO;ENCODING=b;TYPE=JPEG:${imgBase64}`;
         const makeVCardTel = (phone, type = 'CELL') => `TEL;TYPE=${type}:${phone || ''}`;
-        const makeVCardAdr = (addressLine1, addressLine2) => `ADR;TYPE=HOME:;;${addressLine1 || ''};${addressLine2 || ''};;;;`;
+        const makeVCardAdr = (addressLine1, addressLine2) =>
+            `ADR;TYPE=HOME:;;${addressLine1 || ''};${addressLine2 || ''};;;;`;
 
         const makeVCardAdr = (addressLine1, addressLine2) =>
             `ADR;TYPE=HOME:;;${addressLine1 || ''};${addressLine2 || ''};;;;`;

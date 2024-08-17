@@ -25,25 +25,20 @@
     }
 
     .card-two-front {
-        background-image: url(https://i.ibb.co/wRN75GW/bg-2.png);
+        background-image: url({{ asset('frontend/images/card_images/card_two_front.png') }});
         background-repeat: no-repeat;
         background-size: cover;
         object-fit: cover;
         background-position: center;
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-            rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-            rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     }
 
     .card-two-back {
-        background-image: url(https://i.ibb.co/BLV6kHn/bg2.png);
+        background-image: url({{ asset('frontend/images/card_images/card_two_back.png') }});
         background-repeat: no-repeat;
         background-size: cover;
         object-fit: cover;
         background-position: center;
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-            rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-            rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
     }
 
     .template-two-logo-ebox {
@@ -66,7 +61,7 @@
     }
 
     .card-two-back p {
-        font-size: 15px;
+        font-size: 17px;
     }
 
     .card_designation-two,
@@ -78,7 +73,8 @@
     }
 
     .main-content-tem2 {
-        margin-top: 45px;
+        /* margin-top: 45px; */
+        margin-top: 26%;
     }
 
     .half {
@@ -109,10 +105,6 @@
         font-size: 20px;
     }
 
-    .template-two-title-back {
-        margin-top: 60px;
-    }
-
     .card_email-box {
         width: 70%;
     }
@@ -121,7 +113,16 @@
         width: 70%;
     }
 
-    .card_logo-tem-2 {
+    .two-company-logo {
+        width: 100px;
+        height: 100px;
+        margin: auto;
+        position: relative;
+        top: 55px;
+        z-index: 5;
+    }
+
+    .two-company-logo img {
         width: 100px;
         height: 100px;
         object-fit: cover;
@@ -134,10 +135,6 @@
 
         .card_address-box {
             width: 70%;
-        }
-
-        .template-two-title-back {
-            margin-top: 140px;
         }
 
         .punch-card-container {
@@ -155,6 +152,7 @@
         .card_two {
             width: auto;
             max-width: 230px;
+            border: 1px solid #eee !important;
         }
 
         .half {
@@ -165,7 +163,14 @@
         }
 
         .template-two-title {
-            margin-left: 20px;
+            position: relative;
+            top: 35px;
+        }
+
+        .content-box-two {
+            position: relative;
+            left: 15px;
+            z-index: 5;
         }
 
         .punch-card-container,
@@ -185,50 +190,61 @@
             margin-left: 30px;
             font-size: 20px;
         }
+
+        .card-two-mail {
+            position: relative;
+            top: 145px;
+            z-index: 5;
+        }
     }
 </style>
 
 <div class="container">
     <div class="row mt-5">
-        <div class="card-container-two">
+        <div class="card-container-two" style="background: transparent;">
             <div class="card_two border-0 card-two-front rounded-0">
-                <div>
+                <div class="">
                     <!-- Company Logo -->
-                    <div class="d-flex justify-content-center template-two-logo-ebox">
-                        <img class="img-fluid card_logo card_logo-tem-2" width="100px"
-                            src="https://i.ibb.co/CWsWHTM/lgoo.png" alt="" />
+                    <div class="d-flex justify-content-center">
+                        <div class="two-company-logo">
+                            <img class="card_logo" width="100px"
+                                src="https://i.ibb.co/CWsWHTM/lgoo.png"
+                                alt="Card Logo" />
+                        </div>
                     </div>
 
                     <!-- Front Info -->
-                    <div class=" template-two-title main-content-tem2">
+                    <div class=" template-two-title main-content-tem2 w-100">
                         <h3 class="text-white text-center card_name">Rasheduzzaman</h3>
-                        <p class="text-center card_designation">Frontend Designer</p>
+                        <p class="text-center card_designation pb-5">Frontend Designer</p>
                         {{-- <p class="pb-4 text-white text-start tow-company-name">
                             GoFlixza</p> --}}
-                        <div class="half mt-5 pt-5">
-                            <div class="icons-box-two text-center">
-                                <i class="fas fa-phone"></i>
+                        <div class="content-box-two">
+                            <div class="half pt-5">
+                                <div class="icons-box-two text-center">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="ps-5 ps-lg-4">
+                                    <p class="mb-0 text-start ps-2 card_phone">01620222616</p>
+                                </div>
                             </div>
-                            <div class="ps-5 ps-lg-4">
-                                <p class="mb-0 text-start ps-2 card_phone">01620222616</p>
+                            <div class="half pt-5">
+                                <div class="icons-box-two text-center">
+                                    <i class="fa-solid fa-house-flag"></i>
+                                </div>
+                                <div class="ps-5 ps-lg-4 card_address-box">
+                                    <p class="mb-0 text-start ps-2 card_address">
+                                        Khilkhet, Dhaka, Bangladesh
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="half mt-2">
-                            <div class="icons-box-two text-center">
-                                <i class="fa-solid fa-house-flag"></i>
-                            </div>
-                            <div class="ps-5 ps-lg-4 card_address-box">
-                                <p class="mb-0 text-start ps-2 card_address">
-                                    Khilkhet, Dhaka, Bangladesh
-                                </p>
-                            </div>
-                        </div>
-                        <div class="half mt-2">
-                            <div class="icons-box-two text-center">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="ps-5 ps-lg-4 card_email-box">
-                                <p class="mb-0 text-start ps-2 card_email">info@gmail.com</p>
+                            <div class="half pt-5">
+                                <div class="icons-box-two text-center">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="ps-5 ps-lg-4 card_email-box">
+                                    <p class="mb-0 text-start ps-2 card_email">info@gmail.com</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -238,16 +254,14 @@
                 <div>
                     <!-- Company Logo -->
                     <div class="d-flex justify-content-center template-two-logo-back">
-                        <img class="img-fluid bg-white nfc_qr" width="170px"
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/800px-QR_code_for_mobile_English_Wikipedia.svg.png"
-                            alt="" />
+                        <img class="img-fluid bg-white" width="170px" src="" alt="">
                     </div>
-
                     <!-- Front Info -->
-                    <div class="template-two-title-back pt-5">
-                        <div class="mt-4">
-                            <div class="ps-3 text-center">
-                                <p class="mb-0 card_email-bottom text-white">info@gmail.com</p>
+                    <div class="template-two-title pt-5"
+                        style="text-align: center;width: 100%;margin: auto;margin-top: 80px;">
+                        <div class="half mt-4">
+                            <div class="w-75 mx-auto">
+                                <p class="mb-0 card_email card-two-mail">info@gmail.com</p>
                             </div>
                         </div>
                     </div>

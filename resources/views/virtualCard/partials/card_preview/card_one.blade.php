@@ -76,6 +76,13 @@
     }
 
     @media (max-width: 1366px) {
+        .icons-box {
+            background-color: #fff;
+            color: #000;
+            width: 35px !important;
+            height: 40px;
+            padding: 10px;
+        }
 
         .punch-card-container,
         .punch-card-container-back {

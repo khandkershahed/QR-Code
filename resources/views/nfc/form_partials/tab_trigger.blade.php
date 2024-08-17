@@ -33,7 +33,7 @@
                         fill="#000000" opacity="1" data-original="#000000" class=""></path>
                 </g>
             </svg>
-            <span class="ps-2">General Information</span>
+            <span class="ps-2 text-start">General Information</span>
         </a>
     </li>
     <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
@@ -83,7 +83,7 @@
                         opacity="1" data-original="#71c4d1" class=""></path>
                 </g>
             </svg>
-            <span class="ps-2">VCard Templates</span>
+            <span class="ps-2 text-start">VCard Templates</span>
         </a>
     </li>
     <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
@@ -154,7 +154,7 @@
                         opacity="1" data-original="#ffc14f"></path>
                 </g>
             </svg>
-            <span class="ps-2">Business Hours</span>
+            <span class="ps-2 text-start">Business Hours</span>
         </a>
     </li>
     <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
@@ -251,7 +251,7 @@
                         opacity="1" data-original="#33527d"></path>
                 </g>
             </svg>
-            <span class="ps-2">Companies</span>
+            <span class="ps-2 text-start">Companies</span>
         </a>
     </li>
     <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
@@ -364,7 +364,7 @@
                         fill="#000000" opacity="1" data-original="#000000" class=""></path>
                 </g>
             </svg>
-            <span class="ps-2">Services</span>
+            <span class="ps-2 text-start">Services</span>
         </a>
     </li>
     <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
@@ -431,7 +431,7 @@
                         opacity="1" data-original="#bee341"></path>
                 </g>
             </svg>
-            <span class="ps-2">Products</span>
+            <span class="ps-2 text-start">Products</span>
         </a>
     </li>
     <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
@@ -470,7 +470,7 @@
                         data-original="url(#c)"></circle>
                 </g>
             </svg>
-            <span class="ps-2">Galleries</span>
+            <span class="ps-2 text-start">Galleries</span>
         </a>
     </li>
     <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
@@ -546,7 +546,7 @@
                     </g>
                 </g>
             </svg>
-            <span class="ps-2">Testimonials</span>
+            <span class="ps-2 text-start">Testimonials</span>
         </a>
     </li>
     <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
@@ -672,7 +672,7 @@
                         opacity="1" data-original="#ffffff"></path>
                 </g>
             </svg>
-            <span class="ps-2">Seo</span>
+            <span class="ps-2 text-start">Seo</span>
         </a>
     </li>
     <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
@@ -789,7 +789,7 @@
                         opacity="1" data-original="#e8b800"></path>
                 </g>
             </svg>
-            <span class="ps-2"> Privacy Policy</span>
+            <span class="ps-2 text-start"> Privacy Policy</span>
         </a>
     </li>
     <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
@@ -953,7 +953,7 @@
                         opacity="1" data-original="url(#y)"></path>
                 </g>
             </svg>
-            <span class="ps-2">Fonts</span></a>
+            <span class="ps-2 text-start">Fonts</span></a>
     </li>
     <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
         <a class="nav-link w-100 btn btn-flex btn-active-info fs-6 fw-normal" data-bs-toggle="tab" href="#advance"
@@ -1086,7 +1086,7 @@
                     </g>
                 </g>
             </svg>
-            <span class="ps-2">Advanced</span>
+            <span class="ps-2 text-start">Advanced</span>
         </a>
     </li>
     <li class="nav-item w-100 me-0" role="presentation">

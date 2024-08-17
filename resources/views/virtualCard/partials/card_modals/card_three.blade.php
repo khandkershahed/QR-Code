@@ -59,7 +59,6 @@
         background: #5d4157;
         background: -webkit-linear-gradient(to left, #5d4157, #a8caba);
         background: linear-gradient(to left, #5d4157, #a8caba);
-        box-shadow: 2px 2px rgba(0, 0, 0, 0.4);
     }
 
     .credit-card-wrap .mk-icon-world-map {
@@ -113,7 +112,6 @@
         height: 40px;
         display: inline-block;
         background-color: #dc143c;
-        box-shadow: -2px 2px 0 rgba(255, 255, 255, 0.8);
         border-radius: 40px 0 40px 40px;
         transform: rotate(-45deg);
     }
@@ -134,8 +132,6 @@
         color: #fff;
         font-size: 18px;
         font-family: "Titillium Web", sans-serif;
-        text-shadow: -1px -1px 0px rgba(255, 255, 255, 0.3),
-            1px 1px 0px rgba(0, 0, 0, 0.8);
     }
 
     .credit-card-wrap .credit-card-number {

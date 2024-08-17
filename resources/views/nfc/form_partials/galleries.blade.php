@@ -79,13 +79,19 @@
                     @csrf
                     <input type="hidden" name="card_id" value="{{ $nfc_card->id }}">
                     <div class="row">
-                        <div class="fv-row col-lg-6 col-12 mb-5">
+                        <div class="fv-row  mb-5">
                             <x-metronic.label class="required fw-semibold fs-6 mb-3">Gallery Name</x-metronic.label>
                             <x-metronic.input type="text" class="form-control form-control-solid form-control-sm"
                                 name="gallery_title" id="gallery_title" required placeholder="Gallery Name"
                                 :value="old('gallery_title')" />
                         </div>
-                        <div class="fv-row col-lg-6 col-12 mb-5">
+                        <div class="fv-row mb-5">
+                            <x-metronic.label for="gallery_attachment"
+                                class="col-form-label fw-bold fs-6 mb-3">{{ __('Gallery Image') }}</x-metronic.label>
+                            <x-metronic.file-input id="gallery_attachment" name="gallery_attachment"
+                                :value="old('gallery_attachment')"></x-metronic.file-input>
+                        </div>
+                        {{-- <div class="fv-row col-lg-6 col-12 mb-5">
                             <x-metronic.label class="fw-semibold fs-6 mb-3">Choose Gallery Type</x-metronic.label>
                             <select class="form-control select" id="galleryTypeSelect"
                                 data-placeholder="Choose Gallery Type" name="gallery_type"
@@ -111,7 +117,7 @@
                                     name="gallery_link" id="gallery_link" required placeholder="Add youtube video url"
                                     :value="old('gallery_link')" />
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="d-flex justify-content-end mt-10">
                         <button type="submit" onclick="submitGalleryForm()"

@@ -1485,7 +1485,7 @@
                 autoplay: true,
                 autoplaySpeed: 2000,
                 arrows: false,
-                dots: true,
+                dots: false,
             });
             $(".testimonial-slide").slick({
                 infinite: true,
@@ -1651,7 +1651,7 @@
             if (location || locationUrl) {
                 vcard += `${makeVCardLocation(location, locationUrl)}\n`;
             }
-            
+
 
             vcard += `${makeVCardTimeStamp()}\nEND:VCARD`;
 

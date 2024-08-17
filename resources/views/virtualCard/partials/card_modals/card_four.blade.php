@@ -17,6 +17,7 @@
         aspect-ratio: 300 / 230;
         /* Maintain the aspect ratio */
         margin: 10px;
+        border: 1px solid #eee !important;
     }
 
     .card-four-front {
@@ -25,9 +26,6 @@
         background-size: cover;
         object-fit: cover;
         background-position: center;
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-            rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-            rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     }
 
     .card-four-back {
@@ -36,9 +34,6 @@
         background-size: cover;
         object-fit: cover;
         background-position: center;
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-            rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-            rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     }
 
 
@@ -83,6 +78,8 @@
         height: 100px;
         object-fit: cover;
     }
+
+    .card_phone {}
 
     @media (max-width: 576px) {
         .card-four-front {
@@ -156,11 +153,6 @@
                                     <p class="mb-0 text-start ps-2 card_email">{{ $nfc_card->card_email }}</p>
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-center align-items-center pt-1">
-                                <div class="ps-3 w-75 pt-4">
-                                    <p class="mb-0 text-start ps-2">{{ $nfc_card->card_designation }}</p>
-                                </div>
-                            </div>
                             <div class="d-flex justify-content-center align-items-center pt-2">
                                 <div class="ps-3 w-75 pt-4">
                                     <p class="mb-0 text-start ps-2 text-black card_phone">{{ $nfc_card->card_phone }}
@@ -181,7 +173,7 @@
             <div class="card-four border-0 card-four-back rounded-0">
                 <div>
                     <!-- Company Logo -->
-                    <div class="tem-4-logo pt-4">
+                    <div class="tem-4-logo">
                         <div class="d-flex align-items-center">
                             @if (!empty($nfc_card->card_logo) && file_exists(public_path('storage/nfc/' . $nfc_card->card_logo)))
                                 <img class="img-fluid card_logo tem-4-logo-bottom"

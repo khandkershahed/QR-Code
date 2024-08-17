@@ -109,7 +109,7 @@
             </div>
         </div>
     </section>
-    <section class="feature-image-box-area pt-95 rpt-75 pb-70 rpb-50 rel z-1">
+    <section class="feature-image-box-area pt-130 rpt-75 pb-130 rpb-50 rel z-1">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-7 col-lg-9 col-md-11">

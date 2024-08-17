@@ -7,15 +7,15 @@
             <table class="table my-datatable table-striped table-row-bordered gy-5 gs-7 border rounded">
                 <thead>
                     <tr class="fw-bold fs-6 text-gray-800 px-7">
-                        <th width="5%">SL</th>
-                        <th width="10%"><i class="fa-solid fa-circle-check text-success"></i> VCard</th>
+                        <th width="4%">SL</th>
+                        <th width="14%"><i class="fa-solid fa-circle-check text-success"></i> VCard</th>
                         <th width="10%"><i class="fa-solid fa-circle-check text-success"></i> NFC</th>
                         <th width="20%">Name </th>
-                        <th width="15%">Link</th>
+                        <th width="12%">Link</th>
                         <th width="15%">Show NFC</th>
-                        <th width="15%">Delivery</th>
+                        <th width="10%">Delivery</th>
                         {{-- <th width="16%">Download</th> --}}
-                        <th width="10%" class="text-center">Action</th>
+                        <th width="15%" class="text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody class="fw-semibold text-gray-600">
@@ -84,33 +84,23 @@
                             </td>
                             <td>
                                 <a href="{{ optional($nfc_card->nfc)->nfc_url }}" target="_blank" class="text-primary">
-                                    <button class="btn btn-sm btn-info">NFC <i class="fas fa-link ps-2"></i></button>
+                                    <button class="btn btn-sm btn-info p-2 px-3">NFC <i class="fas fa-link ps-2"></i></button>
                                 </a>
                             </td>
                             <td>
                                 <a href="javascript:void(0)" data-bs-toggle="modal"
                                     data-bs-target="#virtual_card_modal_{{ $nfc_card->id }}" class="text-primary">
-                                    <button class="btn btn-sm btn-info"><i class="fas fa-eye pe-2"></i>
+                                    <button class="btn btn-sm btn-info p-2 px-3"><i class="fas fa-eye pe-2"></i>
                                         CARD</button>
                                 </a>
                             </td>
                             <td>
                                 <a href="javascript:void(0)" data-bs-toggle="modal"
                                     data-bs-target="#shipping_address_modal_{{ $nfc_card->id }}" class="text-primary">
-                                    <button class="btn btn-sm btn-info"><i class="fas fa-eye pe-2"></i>
+                                    <button class="btn btn-sm btn-info p-2 px-3">
                                         Shipping</button>
                                 </a>
                             </td>
-                            {{-- <td class="text-center">
-                                <button class="download-button border-0 btn btn-info btn-sm p-2 px-3 me-3"
-                                    id="convertButton" data-modal-id="virtual_card_modal_{{ $nfc_card->id }}">
-                                    <span title="Download Image">PNG</span>
-                                </button>
-                                <button class="download-eps-button border-0 btn btn-info btn-sm p-2 px-3"
-                                    data-modal-id="virtual_card_modal_{{ $nfc_card->id }}">
-                                    <span title="Download EPS">EPS</span>
-                                </button>
-                            </td> --}}
                             <td class="pe-0 text-center">
                                 <a href="#" class="btn btn-light-primary btn-active-light-primary btn-sm"
                                     data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end"
