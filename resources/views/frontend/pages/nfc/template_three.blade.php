@@ -1504,11 +1504,14 @@
                         </div>
                         <div class="modal-body">
                             {{ optional($nfc_card->nfcBanner)->banner_description }}
-                            <div class="pt-3">
-                                <a href="{{ !empty(optional($nfc_card->nfcBanner)->banner_url ) ? optional($nfc_card->nfcBanner)->banner_url : 'javascript:void(0)'}}"
-                                    class="btn border-0 rounded-2 btn-sm text-white"
-                                    style="background-color: var(--template-three-color-primary);">View</a>
-                            </div>
+                            @if (!empty(optional($nfc_card->nfcBanner)->banner_url ) || !empty(optional($nfc_card->nfcBanner)->banner_button ))
+                                <div class="pt-3">
+                                    <a href="{{ !empty(optional($nfc_card->nfcBanner)->banner_url ) ? optional($nfc_card->nfcBanner)->banner_url : 'javascript:void(0)'}}"
+                                        class="btn border-0 rounded-2 btn-sm text-white"
+                                        style="background-color: var(--template-three-color-primary);">{{ optional($nfc_card->nfcBanner)->banner_button }}
+                                    </a>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>

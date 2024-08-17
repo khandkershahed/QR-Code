@@ -900,7 +900,7 @@
                                                     {!! $service->service_description !!}
                                                 </p>
                                                 <div class="w-50 mx-auto">
-                                                    <a href="{{ !empty(optional($service)->service_url ) ? optional($service)->service_url : 'javascript:void(0)'}}"
+                                                    <a href="{{ !empty(optional($service)->service_url) ? optional($service)->service_url : 'javascript:void(0)' }}"
                                                         class="btn btn-light rounded-0 w-100 border-2 border-dark py-2">
                                                         View Service <i class="fa-solid fa-arrow-right-long"></i>
                                                     </a>
@@ -1358,11 +1358,13 @@
                         <div class="modal-body">
                             {{ optional($nfc_card->nfcBanner)->banner_description }}
                         </div>
-                        <div class="modal-footer">
-                            <a href="{{ !empty(optional($nfc_card->nfcBanner)->banner_url ) ? optional($nfc_card->nfcBanner)->banner_url : 'javascript:void(0)'}}"
-                                class="btn btn-sm btn-dark text-black"
-                                style="background-color: var(--template-three-color-primary);">View</a>
-                        </div>
+                        @if (!empty(optional($nfc_card->nfcBanner)->banner_url) || !empty(optional($nfc_card->nfcBanner)->banner_button))
+                            <div class="modal-footer">
+                                <a href="{{ !empty(optional($nfc_card->nfcBanner)->banner_url) ? optional($nfc_card->nfcBanner)->banner_url : 'javascript:void(0)' }}"
+                                    class="btn btn-sm btn-dark text-black"
+                                    style="background-color: var(--template-three-color-primary);">{{ optional($nfc_card->nfcBanner)->banner_button }}</a>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

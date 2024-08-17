@@ -822,7 +822,7 @@
                                 </div>
                                 <div class="row pt-5">
                                     @if (optional($nfc_card->nfcData)->monday == '1')
-                                        <div class="col-md-6 mb-2">
+                                        <div class="col-md-6 mb-4">
                                             <div>
                                                 <div class="text-center text-white">
                                                     <i class="fa fa-calendar houricon"></i>
@@ -838,7 +838,7 @@
                                         </div>
                                     @endif
                                     @if (optional($nfc_card->nfcData)->tuesday == '1')
-                                        <div class="col-md-6 mb-2">
+                                        <div class="col-md-6 mb-4">
                                             <div>
                                                 <div class="text-center text-white">
                                                     <i class="fa fa-calendar houricon"></i>
@@ -854,7 +854,7 @@
                                         </div>
                                     @endif
                                     @if (optional($nfc_card->nfcData)->wednesday == '1')
-                                        <div class="col-md-6 mb-2">
+                                        <div class="col-md-6 mb-4">
                                             <div>
                                                 <div class="text-center text-white">
                                                     <i class="fa fa-calendar houricon"></i>
@@ -869,7 +869,7 @@
                                         </div>
                                     @endif
                                     @if (optional($nfc_card->nfcData)->thursday == '1')
-                                        <div class="col-md-6 mb-2">
+                                        <div class="col-md-6 mb-4">
                                             <div>
                                                 <div class="text-center text-white">
                                                     <i class="fa fa-calendar houricon"></i>
@@ -884,7 +884,7 @@
                                         </div>
                                     @endif
                                     @if (optional($nfc_card->nfcData)->friday == '1')
-                                        <div class="col-md-6 mb-2">
+                                        <div class="col-md-6 mb-4">
                                             <div>
                                                 <div class="text-center text-white">
                                                     <i class="fa fa-calendar houricon"></i>
@@ -899,7 +899,7 @@
                                         </div>
                                     @endif
                                     @if (optional($nfc_card->nfcData)->saturday == '1')
-                                        <div class="col-md-6 mb-2">
+                                        <div class="col-md-6 mb-4">
                                             <div>
                                                 <div class="text-center text-white">
                                                     <i class="fa fa-calendar houricon"></i>
@@ -914,7 +914,7 @@
                                         </div>
                                     @endif
                                     @if (optional($nfc_card->nfcData)->sunday == '1')
-                                        <div class="col-md-6 mb-2">
+                                        <div class="col-md-6 mb-4">
                                             <div>
                                                 <div class="text-center text-white">
                                                     <i class="fa fa-calendar houricon"></i>
@@ -1062,11 +1062,14 @@
                             {{ optional($nfc_card->nfcBanner)->banner_description }}
                         </div>
                         @if (!empty(optional($nfc_card->nfcBanner)->banner_url))
-                            <div class="modal-footer">
-                                <a href="{{ !empty(optional($nfc_card->nfcBanner)->banner_url) ? optional($nfc_card->nfcBanner)->banner_url : 'javascript:void(0)' }}"
-                                    class="btn btn-sm btn-dark text-black"
-                                    style="background-color: var(--template-three-color-primary);">View</a>
-                            </div>
+                            @if (!empty(optional($nfc_card->nfcBanner)->banner_url) || !empty(optional($nfc_card->nfcBanner)->banner_button))
+                                <div class="modal-footer">
+                                    <a href="{{ !empty(optional($nfc_card->nfcBanner)->banner_url) ? optional($nfc_card->nfcBanner)->banner_url : 'javascript:void(0)' }}"
+                                        class="btn btn-sm btn-dark text-black"
+                                        style="background-color: var(--template-three-color-primary);">{{ optional($nfc_card->nfcBanner)->banner_button }}
+                                    </a>
+                                </div>
+                            @endif
                         @endif
                     </div>
                 </div>
