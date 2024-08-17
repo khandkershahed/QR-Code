@@ -55,7 +55,7 @@
                                 <option value="I25+" @selected(old('barcode_pattern' == 'I25+'))>I25+</option> --}}
                             <option value="C128" @selected(old('barcode_pattern' == 'C128'))>C128</option>
                             <option value="C128A" @selected(old('barcode_pattern' == 'C128A'))>C128A</option>
-                            <option value="C128B" @selected(old('barcode_pattern' == 'C128B'))>C128B</option>
+                            {{-- <option value="C128B" @selected(old('barcode_pattern' == 'C128B'))>C128B</option> --}}
                             <option value="C128C" @selected(old('barcode_pattern' == 'C128C'))>C128C</option>
                             {{-- <option value="GS1-128" @selected(old('barcode_pattern' == 'GS1-128'))>GS1-128</option> --}}
                             {{-- <option value="EAN2" @selected(old('barcode_pattern' == 'EAN2'))>EAN2</option>

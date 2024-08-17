@@ -2,130 +2,171 @@
 
 namespace App\Http\Controllers\Subscription;
 
+
 use App\Models\Admin\Plan;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Stripe\Exception\ApiErrorException;
 
 class SubscriptionController extends Controller
 {
-    // $data['subscriptions'] = Subscription::with('plan', 'user')->get();
     public function index()
     {
-        // Fetch all subscriptions with their associated plan and user
-        $subscriptions = Subscription::with('plan', 'user')->get();
+        try {
+            $subscriptions = Subscription::with('plan', 'user')->get();
+            $subscriptionsWithInvoices = [];
 
-        // Initialize an array to hold the subscriptions with invoices
-        $subscriptionsWithInvoices = [];
-
-        // Loop through each subscription to fetch its invoices through the user
-        foreach ($subscriptions as $subscription) {
-            // Ensure the subscription has an associated user
-            if ($subscription->user) {
-                // Fetch the invoices for the user associated with the current subscription
-                $invoices = $subscription->user->invoices();
-
-                // Add the subscription and its invoices to the array
-                $subscriptionsWithInvoices[] = [
-                    'subscription' => $subscription,
-                    'invoices' => $invoices,
-                ];
-            } else {
-                // Add the subscription with an empty invoices collection if no user is associated
-                $subscriptionsWithInvoices[] = [
-                    'subscription' => $subscription,
-                    'invoices' => collect(), // Empty collection
-                ];
+            foreach ($subscriptions as $subscription) {
+                if ($subscription->user) {
+                    $invoices = $subscription->user->invoices();
+                    $subscriptionsWithInvoices[] = [
+                        'subscription' => $subscription,
+                        'invoices' => $invoices,
+                    ];
+                } else {
+                    $subscriptionsWithInvoices[] = [
+                        'subscription' => $subscription,
+                        'invoices' => collect(),
+                    ];
+                }
             }
+
+            $data['subscriptionsWithInvoices'] = $subscriptionsWithInvoices;
+
+            return view('admin.pages.user-subscription.index', $data);
+        } catch (\Exception $e) {
+            // Log error and show an appropriate message to the user
+            return redirect()->back()->withErrors(['message' => 'Error fetching subscriptions.']);
         }
-
-        // Pass the data to the view
-        $data['subscriptionsWithInvoices'] = $subscriptionsWithInvoices;
-
-        return view('admin.pages.user-subscription.index', $data);
     }
-
 
     public function showSubscriptionForm()
     {
-        $data = [
-            'monthly_plans' => Plan::orderBy('price', 'asc')->where('billing_cycle', 'monthly')->get(),
-            'yearly_plans' => Plan::orderBy('price', 'asc')->where('billing_cycle', 'yearly')->get(),
-        ];
-        return view('frontend.pages.subscription_plan', $data);
+        try {
+            $data = [
+                'monthly_plans' => Plan::orderBy('price', 'asc')->where('billing_cycle', 'monthly')->get(),
+                'yearly_plans' => Plan::orderBy('price', 'asc')->where('billing_cycle', 'yearly')->get(),
+            ];
+            return view('frontend.pages.subscription_plan', $data);
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['message' => 'Error showing subscription plans.']);
+        }
     }
 
     public function subscribe(Request $request, $id)
     {
-
-        $data['plan'] = Plan::where('slug', $id)->first();
-        $data['intent'] = auth()->user()->createSetupIntent();
-        // return view("frontend.pages.subscribe", $data);
-        return view("user.pages.subscription.subscribe", $data);
+        try {
+            $data['plan'] = Plan::where('slug', $id)->firstOrFail();
+            $data['intent'] = auth()->user()->createSetupIntent();
+            return view("user.pages.subscription.subscribe", $data);
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['message' => 'Error fetching subscription details.']);
+        }
     }
-
-
 
     public function subscription(Request $request)
     {
-        // dd($request->all());
-        $plan = Plan::find($request->plan);
+        $this->validate($request, [
+            'plan' => 'required|exists:plans,id',
+            'token' => 'required|string',
+        ]);
 
-        $subscription = $request->user()->newSubscription($plan->slug, $plan->stripe_plan)->create($request->token);
-        $request->user()->syncStripePlan();
-        return view("frontend.pages.subscription_success");
+        try {
+            $plan = Plan::findOrFail($request->plan);
+
+            // Check if the user already has an active subscription
+            $existingSubscription = $request->user()->subscription('default');
+            if ($existingSubscription && $existingSubscription->active()) {
+                return redirect()->back()->withErrors(['message' => 'You already have an active subscription.']);
+            }
+
+            $subscription = $request->user()->newSubscription($plan->slug, $plan->stripe_plan)->create($request->token);
+            $request->user()->syncStripePlan();
+
+            return view("frontend.pages.subscription_success");
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['message' => 'Error creating subscription.']);
+        }
     }
 
     public function cancelSubscription(Request $request)
     {
-        $user = $request->user();
+        try {
+            $user = $request->user();
 
-        $user->subscription('default')->cancel();
+            if ($user->subscription('default')) {
+                $user->subscription('default')->cancel();
+            }
 
-        return redirect()->route('home')->with('success', 'Subscription canceled!');
+            return redirect()->route('home')->with('success', 'Subscription canceled!');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['message' => 'Error canceling subscription.']);
+        }
     }
+
     public function __construct()
     {
         $this->middleware('auth');
     }
+
     public function retrievePlans()
     {
-        $key = \config('services.stripe.secret');
-        $stripe = new \Stripe\StripeClient($key);
-        $plansraw = $stripe->plans->all();
-        $plans = $plansraw->data;
+        try {
+            $key = \config('services.stripe.secret');
+            $stripe = new \Stripe\StripeClient($key);
+            $plansraw = $stripe->plans->all();
+            $plans = $plansraw->data;
 
-        foreach ($plans as $plan) {
-            $prod = $stripe->products->retrieve(
-                $plan->product,
-                []
-            );
-            $plan->product = $prod;
+            foreach ($plans as $plan) {
+                $prod = $stripe->products->retrieve($plan->product, []);
+                $plan->product = $prod;
+            }
+            return $plans;
+        } catch (ApiErrorException $e) {
+            return [];
         }
-        return $plans;
     }
+
     public function showSubscription()
     {
-        $plans = $this->retrievePlans();
-        $user = Auth::user();
+        try {
+            $plans = $this->retrievePlans();
+            $user = Auth::user();
 
-        return view('seller.pages.subscribe', [
-            'user' => $user,
-            'intent' => $user->createSetupIntent(),
-            'plans' => $plans
-        ]);
+            return view('seller.pages.subscribe', [
+                'user' => $user,
+                'intent' => $user->createSetupIntent(),
+                'plans' => $plans
+            ]);
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['message' => 'Error showing subscription page.']);
+        }
     }
+
     public function processSubscription(Request $request)
     {
+        $this->validate($request, [
+            'payment_method' => 'required|string',
+            'plan' => 'required|string',
+        ]);
+
         $user = Auth::user();
         $paymentMethod = $request->input('payment_method');
-
-        $user->createOrGetStripeCustomer();
-        $user->addPaymentMethod($paymentMethod);
         $plan = $request->input('plan');
+
         try {
+            $user->createOrGetStripeCustomer();
+            $user->addPaymentMethod($paymentMethod);
+
+            // Check if the user already has an active subscription
+            $existingSubscription = $user->subscription('default');
+            if ($existingSubscription && $existingSubscription->active()) {
+                return back()->withErrors(['message' => 'You already have an active subscription.']);
+            }
+
             $user->newSubscription('default', $plan)->create($paymentMethod, [
                 'email' => $user->email
             ]);

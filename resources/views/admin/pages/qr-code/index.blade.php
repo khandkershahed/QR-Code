@@ -137,7 +137,7 @@
                                         <span><span class="fw-bold text-black">Org :
                                             </span>{{ $qr->qr_name }}</span><br>
                                         <span>
-                                            <p class="mb-0">Create: {{ $nfc_card->created_at->format('d F Y') }}</p>
+                                            <p class="mb-0">Create: {{ $qr->created_at->format('d F Y') }}</p>
                                             <br>
                                             <div class="modal fade" id="image-{{ $qr->id }}" tabindex="-1"
                                                 data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
@@ -187,10 +187,10 @@
                                             class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                             <i class="fas fa-pen"></i>
                                         </a>
-                                        {{-- <a href="{{ route('admin.qr-code.destroy', $qr->id) }}"
+                                        <a href="{{ route('admin.qr-code.destroy', $qr->id) }}"
                                                 class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1 delete">
                                                 <i class="fas fa-trash-alt text-danger"></i>
-                                            </a> --}}
+                                            </a>
                                         <a href="#" class="btn btn-light btn-active-light-primary btn-sm"
                                             data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end"
                                             data-kt-menu-flip="top-end">
