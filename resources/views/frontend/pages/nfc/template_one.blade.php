@@ -1572,7 +1572,7 @@
             const reddit = "{{ optional($nfc_card->nfcData)->reddit_url }}";
             const tumblr = "{{ optional($nfc_card->nfcData)->tumblr_url }}";
             const tiktok = "{{ optional($nfc_card->nfcData)->tiktok_url }}";
-            const location = "{{ optional($nfc_card->nfcData)->location }}";
+            const location = `{{ optional($nfc_card->nfcData)->location }}`;
             const locationUrl = "{{ optional($nfc_card->nfcData)->location_url }}";
             const dob = "{{ optional($nfc_card->nfcData)->date_of_birth }}";
             const companyName = "{{ optional($nfc_card->nfcData)->company_name }}";
