@@ -457,7 +457,7 @@
                                         </div>
                                     @endif
                                     @if (!empty($nfc_card->nfcData->phone_personal) || !empty($nfc_card->nfcData->phone_work))
-                                        <div class="col-12 mt-4 mt-lg-0">
+                                        <div class="col-12 mt-4">
                                             <div>
                                                 <div class="d-flex align-items-center">
                                                     <div class="bg-white p-3">
@@ -1552,30 +1552,30 @@
         const makeVCardCompany = (company) => `ORG:${company || ''}`;
 
         function makeVCard(profileImageBase64) {
-            const firstName = '{{ optional($nfc_card->nfcData)->first_name }}';
-            const lastName = '{{ optional($nfc_card->nfcData)->last_name }}';
-            const designation = '{{ optional($nfc_card)->job_title }}';
-            const phonePersonal = '{{ optional($nfc_card->nfcData)->phone_personal }}';
-            const phoneWork = '{{ optional($nfc_card->nfcData)->phone_work }}';
-            const emailPersonal = '{{ optional($nfc_card->nfcData)->email_personal }}';
-            const emailWork = '{{ optional($nfc_card->nfcData)->email_work }}';
-            const addressLine1 = '{{ optional($nfc_card->nfcData)->address_line_one }}';
-            const addressLine2 = '{{ optional($nfc_card->nfcData)->address_line_two }}';
-            const website = '{{ optional($nfc_card->nfcData)->website_url }}';
-            const linkedin = '{{ optional($nfc_card->nfcData)->linkedin_url }}';
-            const facebook = '{{ optional($nfc_card->nfcData)->facebook_url }}';
-            const instagram = '{{ optional($nfc_card->nfcData)->instagram_url }}';
-            const whatsapp = '{{ optional($nfc_card->nfcData)->whatsapp_url }}';
-            const twitter = '{{ optional($nfc_card->nfcData)->twitter_url }}';
-            const youtube = '{{ optional($nfc_card->nfcData)->youtube_url }}';
-            const pinterest = '{{ optional($nfc_card->nfcData)->pinterest_url }}';
-            const reddit = '{{ optional($nfc_card->nfcData)->reddit_url }}';
-            const tumblr = '{{ optional($nfc_card->nfcData)->tumblr_url }}';
-            const tiktok = '{{ optional($nfc_card->nfcData)->tiktok_url }}';
-            const location = '{{ optional($nfc_card->nfcData)->location }}';
-            const locationUrl = '{{ optional($nfc_card->nfcData)->location_url }}';
-            const dob = '{{ optional($nfc_card->nfcData)->date_of_birth }}';
-            const companyName = '{{ optional($nfc_card->nfcData)->company_name }}';
+            const firstName = "{{ optional($nfc_card->nfcData)->first_name }}";
+            const lastName = "{{ optional($nfc_card->nfcData)->last_name }}";
+            const designation = "{{ optional($nfc_card)->job_title }}";
+            const phonePersonal = "{{ optional($nfc_card->nfcData)->phone_personal }}";
+            const phoneWork = "{{ optional($nfc_card->nfcData)->phone_work }}";
+            const emailPersonal = "{{ optional($nfc_card->nfcData)->email_personal }}";
+            const emailWork = "{{ optional($nfc_card->nfcData)->email_work }}";
+            const addressLine1 = "{{ optional($nfc_card->nfcData)->address_line_one }}";
+            const addressLine2 = "{{ optional($nfc_card->nfcData)->address_line_two }}";
+            const website = "{{ optional($nfc_card->nfcData)->website_url }}";
+            const linkedin = "{{ optional($nfc_card->nfcData)->linkedin_url }}";
+            const facebook = "{{ optional($nfc_card->nfcData)->facebook_url }}";
+            const instagram = "{{ optional($nfc_card->nfcData)->instagram_url }}";
+            const whatsapp = "{{ optional($nfc_card->nfcData)->whatsapp_url }}";
+            const twitter = "{{ optional($nfc_card->nfcData)->twitter_url }}";
+            const youtube = "{{ optional($nfc_card->nfcData)->youtube_url }}";
+            const pinterest = "{{ optional($nfc_card->nfcData)->pinterest_url }}";
+            const reddit = "{{ optional($nfc_card->nfcData)->reddit_url }}";
+            const tumblr = "{{ optional($nfc_card->nfcData)->tumblr_url }}";
+            const tiktok = "{{ optional($nfc_card->nfcData)->tiktok_url }}";
+            const location = "{{ optional($nfc_card->nfcData)->location }}";
+            const locationUrl = "{{ optional($nfc_card->nfcData)->location_url }}";
+            const dob = "{{ optional($nfc_card->nfcData)->date_of_birth }}";
+            const companyName = "{{ optional($nfc_card->nfcData)->company_name }}";
 
             let vcard = `BEGIN:VCARD\n${makeVCardVersion()}\n`;
             vcard += `${makeVCardInfo(lastName, firstName)}\n`;
