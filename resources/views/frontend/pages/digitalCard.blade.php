@@ -20,25 +20,14 @@
                         <div class="section-title mb-30">
                             <h2>Digital Business Cards</h2>
                         </div>
-                        <p>Efficiently generate and store barcodes for your inventory with our intuitive barcode
-                            creation and management tool. Easily input product details, customize barcode settings, and
-                            save barcodes for seamless tracking and organization. Streamline your inventory process and
-                            enhance accuracy with our user-friendly interface.</p>
-                        <div class="play-app-stor pt-10">
-                            <a href="#"><img
-                                    src="https://webtendtheme.net/html/2024/akpager/assets/images/icons/play-stor.png"
-                                    alt="Play Stor"></a>
-                            <a href="#"><img
-                                    src="https://webtendtheme.net/html/2024/akpager/assets/images/icons/app-stor.png"
-                                    alt="App Stor"></a>
-                        </div>
+                        <p>Modernize your networking with Digital Business Cards that go beyond the limitations of traditional paper cards. Instantly share your contact information, social media profiles, and even your portfolio with just a tap. Our customizable digital cards are always up-to-date, ensuring you leave a lasting impression wherever you go. Perfect for professionals, entrepreneurs, and businesses, these eco-friendly cards are not only convenient but also showcase your tech-savvy approach. Embrace the future of networking with a seamless, stylish, and sustainable solution.</p>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="aos-init aos-animate" data-aos="fade-right" data-aos-duration="1500"
                         data-aos-offset="50">
                         <img class="rounded-3"
-                            src="https://techcrunch.com/wp-content/uploads/2018/07/Scandit-Barcode-Scanning-with-Samsung-Tablet.png"
+                            src="{{ asset('frontend/newimage/digitalbusinesscard.webp') }}"
                             alt="About">
                     </div>
                 </div>
@@ -57,9 +46,8 @@
                     class="aos-init aos-animate">Digital Card Pricing Plans</h1>
                 <div class="row justify-content-center pt-5 rpt-0 pb-25 aos-init aos-animate" data-aos="fade-up"
                     data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
-                    <div class="col-xl-7 col-lg-9">
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                            laudantium, totam rem aperiam eaque quae abillo inventore veritatis</p>
+                    <div class="col-xl-9 col-lg-9">
+                        <p>Choose the plan that best suits your needs and budget. Our flexible pricing options are designed to offer you the right balance of features and affordability, whether you're a solo entrepreneur or a growing business. Get the tools you need to generate QR codes, barcodes, and NFC cards with ease, all at a price that works for you. Explore our plans and find the perfect fit to elevate your business operations today.</p>
                     </div>
                 </div>
 
@@ -79,7 +67,7 @@
             <div class="row justify-content-center">
                 @if ($nfc_plans->isEmpty())
                     <div class="col-12 text-center">
-                        <p>No barcode plans available at the moment. Please check back later.</p>
+                        <p>No Business Card plans available at the moment. Please check back later.</p>
                     </div>
                 @else
                 @foreach ($nfc_plans as $nfc_plan)
@@ -145,9 +133,8 @@
                 <div class="col-xl-7 col-lg-9 col-md-11">
                     <div class="section-title text-center mb-55 aos-init aos-animate" data-aos="fade-up"
                         data-aos-duration="1500" data-aos-offset="50">
-                        <span class="subtitle-one style-two mb-20"><i class="fas fa-rocket-launch"></i> Best
-                            Communication System</span>
-                        <h2>Support your customers on their preferred channels</h2>
+                        <h2>Standout Features of Our Digital Visiting Cards</h2>
+                        <span class="subtitle-one style-two mb-20"><i class="fas fa-rocket-launch"></i> Unlock powerful features with our digital visiting cards—custom templates, real-time updates, and seamless device integration for an unforgettable networking experience.</span>
                     </div>
                 </div>
             </div>
@@ -156,13 +143,12 @@
                     <div class="feature-image-box aos-init aos-animate" data-aos="fade-up" data-aos-duration="1500"
                         data-aos-offset="50">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/services/feature1.png"
+                            <img src="{{ asset('frontend/newimage/templates.webp') }}"
                                 alt="Feature">
                         </div>
                         <div class="content">
-                            <h5><a href="service-details.html">Share Inbox</a></h5>
-                            <p>Sed uterspiciatis unde omnis natus error voluptatem accusantium doloremque ways
-                                laudantium totam aperiam eaque</p>
+                            <h5><a href="service-details.html">Elegant Designed Templates</a></h5>
+                            <p>Choose from a variety of beautifully designed templates to create a digital visiting card that matches your style. Customize every detail, from colors to fonts, ensuring your card perfectly represents your personal or business brand.</p>
                         </div>
                     </div>
                 </div>
@@ -170,13 +156,12 @@
                     <div class="feature-image-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="100"
                         data-aos-duration="1500" data-aos-offset="50">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/services/feature2.png"
+                            <img src="{{ asset('frontend/newimage/realTimeUpdate.webp') }}"
                                 alt="Feature">
                         </div>
                         <div class="content">
-                            <h5><a href="service-details.html">Custom Analytics</a></h5>
-                            <p>Quis autem vel eumiure reprehenderit qui in ea voluptate velit esse quam molestiae
-                                consequatur vel illum qui dolorem</p>
+                            <h5><a href="service-details.html">Real-Time Updates</a></h5>
+                            <p>Keep your digital visiting card dynamic and interactive with real-time updates. Add photo galleries, videos, and contact forms, allowing you to showcase your work and make it easy for others to connect with you instantly.</p>
                         </div>
                     </div>
                 </div>
@@ -184,13 +169,12 @@
                     <div class="feature-image-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="200"
                         data-aos-duration="1500" data-aos-offset="50">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/services/feature3.png"
+                            <img src="{{ asset('frontend/newimage/NFCCard.webp') }}"
                                 alt="Feature">
                         </div>
                         <div class="content">
-                            <h5><a href="service-details.html">Contacts CRM</a></h5>
-                            <p>To take a trivial example, which of us ever undertakes laborious physical exercise,
-                                except to obtain some advantage</p>
+                            <h5><a href="service-details.html">NFC Cards for Contactless Sharing</a></h5>
+                            <p>Upgrade your business card to an NFC-enabled smart card for seamless, contactless sharing. Impress your connections with a modern, tech-savvy way to exchange information instantly with just a tap.</p>
                         </div>
                     </div>
                 </div>
