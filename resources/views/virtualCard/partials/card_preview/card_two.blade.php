@@ -207,8 +207,7 @@
                     <!-- Company Logo -->
                     <div class="d-flex justify-content-center">
                         <div class="two-company-logo">
-                            <img class="card_logo" width="100px"
-                                src="https://i.ibb.co/CWsWHTM/lgoo.png"
+                            <img class="card_logo" width="100px" src="https://i.ibb.co/CWsWHTM/lgoo.png"
                                 alt="Card Logo" />
                         </div>
                     </div>
@@ -254,7 +253,9 @@
                 <div>
                     <!-- Company Logo -->
                     <div class="d-flex justify-content-center template-two-logo-back">
-                        <img class="img-fluid bg-white" width="170px" src="https://www.goflixza.com/storage/nfc/qrs/NFC7201_nfc_qr.png" alt="">
+                        <img class="img-fluid bg-white" width="170px"
+                            src="https://www.goflixza.com/storage/nfc/qrs/NFC7201_nfc_qr.png" alt="">
+                    </div>
                     <!-- Front Info -->
                     <div class="template-two-title pt-5"
                         style="text-align: center;width: 100%;margin: auto;margin-top: 80px;">
