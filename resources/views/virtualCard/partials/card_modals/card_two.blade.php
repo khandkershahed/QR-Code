@@ -125,7 +125,7 @@
     .two-company-logo img {
         width: 100px;
         height: 100px;
-        object-fit: cover;
+        object-fit: contain;
     }
 
     @media only screen and (max-width: 1366px) {
