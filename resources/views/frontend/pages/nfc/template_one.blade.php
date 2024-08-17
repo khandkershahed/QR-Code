@@ -550,7 +550,7 @@
                                                                         class="fa-solid fa-diamond pe-3"></i>{{ $company->company_website }}</span>
                                                             </p>
                                                             <p class="mb-0">
-                                                                <span><i class="fa-solid fa-diamond pe-3"></i>+1
+                                                                <span><i class="fa-solid fa-diamond pe-3"></i>
                                                                     {{ $company->company_phone }}</span>
                                                             </p>
                                                             <p class="mb-0">
@@ -1043,17 +1043,7 @@
                                                     <p class="mb-0 text-white text-center">
                                                         {{ $testimonial->testimonial_description }}
                                                     </p>
-                                                    <div class="d-flex justify-content-center pt-3">
-                                                        <a href="" style="text-decoration: none">
-                                                            <i class="fa-solid fa-star text-warning"></i>
-                                                        </a>
-                                                        <a href="" style="text-decoration: none">
-                                                            <i class="fa-solid fa-star text-warning"></i>
-                                                        </a>
-                                                        <a href="" style="text-decoration: none">
-                                                            <i class="fa-solid fa-star text-warning"></i>
-                                                        </a>
-                                                    </div>
+
                                                 </div>
                                             </div>
                                         @endforeach
