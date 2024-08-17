@@ -254,8 +254,7 @@
                 <div>
                     <!-- Company Logo -->
                     <div class="d-flex justify-content-center template-two-logo-back">
-                        <img class="img-fluid bg-white" width="170px" src="" alt="">
-                    </div>
+                        <img class="img-fluid bg-white" width="170px" src="https://www.goflixza.com/storage/nfc/qrs/NFC7201_nfc_qr.png" alt="">
                     <!-- Front Info -->
                     <div class="template-two-title pt-5"
                         style="text-align: center;width: 100%;margin: auto;margin-top: 80px;">
