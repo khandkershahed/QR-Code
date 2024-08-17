@@ -193,22 +193,28 @@
 
         .card-two-mail {
             position: relative;
-            top: 145px;
+            top: 58px;
             z-index: 5;
         }
-        .tempmail{
+
+        .tempmail {
             text-align: center;
             width: 100%;
             margin: auto;
-            margin-top: -90px;
+            margin-top: 0px !important;
+        }
+
+        .email-box-area {
+            padding-top: 0px;
         }
     }
-    .tempmail{
-            text-align: center;
-            width: 100%;
-            margin: auto;
-            margin-top: 85px;
-        }
+
+    .tempmail {
+        text-align: center;
+        width: 100%;
+        margin: auto;
+        margin-top: 90px;
+    }
 </style>
 
 <div class="container">
@@ -269,10 +275,9 @@
                             src="https://www.goflixza.com/storage/nfc/qrs/NFC7201_nfc_qr.png" alt="">
                     </div>
                     <!-- Front Info -->
-                    <div class="template-two-title pt-5 tempmail"
-                        style="">
+                    <div class="template-two-title pt-5 tempmail" style="">
                         <div class="half mt-4">
-                            <div class="w-75 mx-auto">
+                            <div class="w-75 mx-auto email-box-area">
                                 <p class="mb-0 card_email card-two-mail">info@gmail.com</p>
                             </div>
                         </div>

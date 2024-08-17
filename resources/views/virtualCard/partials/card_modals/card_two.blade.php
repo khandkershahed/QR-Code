@@ -203,12 +203,6 @@
             margin-top: -90px;
         }
     }
-    .tempmail{
-            text-align: center;
-            width: 100%;
-            margin: auto;
-            margin-top: 85px;
-        }
 </style>
 
 <div class="container">
