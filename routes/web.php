@@ -156,6 +156,8 @@ Route::delete('/product/delete/{id}', [VirtualCardFormController::class, 'produc
 
 Route::post('company/store', [VirtualCardFormController::class, 'companyStore'])->name('nfc.company.add');
 Route::delete('/company/delete/{id}', [VirtualCardFormController::class, 'companyDestroy'])->name('nfc.company.destroy');
+Route::put('/nfc/company/{id}', [VirtualCardFormController::class, 'companyUpdate'])->name('nfc.company.update');
+
 
 Route::post('privacy/store', [VirtualCardFormController::class, 'privacyStore'])->name('nfc.privacy.add');
 Route::delete('/privacy/delete/{id}', [VirtualCardFormController::class, 'privacyDestroy'])->name('nfc.privacy.destroy');
