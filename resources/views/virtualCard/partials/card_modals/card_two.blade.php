@@ -196,6 +196,12 @@
             top: 145px;
             z-index: 5;
         }
+        .tempmail{
+            text-align: center;
+            width: 100%;
+            margin: auto;
+            margin-top: -90px;
+        }
     }
 </style>
 
@@ -263,8 +269,8 @@
                         @endif
                     </div>
                     <!-- Front Info -->
-                    <div class="template-two-title pt-5"
-                        style="text-align: center;width: 100%;margin: auto;margin-top: -100px;">
+                    <div class="template-two-title pt-5 tempmail"
+                        style="">
                         <div class="half mt-4">
                             <div class="w-75 mx-auto">
                                 <p class="mb-0 card_email card-two-mail">{{ $nfc_card->card_email }}</p>
