@@ -421,6 +421,7 @@ class VirtualCardFormController extends Controller
 
         foreach ($files as $key => $file) {
             if (!empty($file)) {
+
                 $uploadedFiles[$key] = customUpload($file, $filePath, $name = $nfc_card->code . '_' . $key);
                 if ($uploadedFiles[$key]['status'] === 0) {
                     return redirect()->back()->with('error', $uploadedFiles[$key]['error_message']);
@@ -456,11 +457,67 @@ class VirtualCardFormController extends Controller
         return response()->json(['company_view' => $view]);
     }
 
+    public function companyUpdate(Request $request, $id)
+    {
+        $company = NfcCompany::findOrFail($id);
+        $card_id = $request->card_id;
+        $nfc_card = NfcCard::findOrFail($card_id);
+        $files = [
+            'company_logo' => $request->file('company_logo'),
+        ];
+
+        $filePath = 'public/nfc/company/';
+        $uploadedFiles = [];
+
+        foreach ($files as $key => $file) {
+            if (!empty($file)) {
+                $folderPath = storage_path('app/public/nfc/company/' . $company->company_logo);
+
+                if (File::exists($folderPath)) {
+                    File::delete($folderPath);
+                }
+                $uploadedFiles[$key] = customUpload($file, $filePath, $name = $nfc_card->code . '_' . $key);
+                if ($uploadedFiles[$key]['status'] === 0) {
+                    return redirect()->back()->with('error', $uploadedFiles[$key]['error_message']);
+                }
+            } else {
+                $uploadedFiles[$key] = ['status' => 0];
+            }
+        }
+
+        $company->update([
+
+            'company_name'             => $request->company_name,
+            'company_email'            => $request->company_email,
+            'company_phone'            => $request->company_phone,
+            'company_logo'             => $uploadedFiles['company_logo']['status'] == 1 ? $uploadedFiles['company_logo']['file_name'] : $company->company_logo,
+            'company_website'          => $request->company_website,
+            'company_description'      => $request->company_description,
+            'company_address_line_one' => $request->company_address_line_one,
+            'company_address_line_two' => $request->company_address_line_two,
+            'company_facebook'         => $request->company_facebook,
+            'company_twitter'          => $request->company_twitter,
+            'company_linkedin'         => $request->company_linkedin,
+            'company_youtube'          => $request->company_youtube,
+            'company_instagram'        => $request->company_instagram,
+        ]);
+
+        $nfc_card = NfcCard::with('nfcCompany')->where('id', $card_id)->first();
+        $view = view('nfc.form_partials.companies', compact('nfc_card'))->render();
+
+        return response()->json(['company_view' => $view]);
+    }
+
+
 
     public function companyDestroy(string $id)
     {
         $nfc_company = NfcCompany::findOrFail($id);
         $card_id = $nfc_company->card_id;
+        $folderPath = storage_path('app/public/nfc/company/' . $nfc_company->company_logo);
+        if (File::exists($folderPath)) {
+            File::delete($folderPath);
+        }
         $nfc_company->delete();
         $nfc_card = NfcCard::with('nfcCompany')->where('id', $card_id)->first();
         $view = view('nfc.form_partials.companies', compact('nfc_card'))->render();
