@@ -340,6 +340,48 @@ class VirtualCardFormController extends Controller
         return response()->json(['service_view' => $view]);
     }
 
+    public function serviceUpdate(Request $request, $id)
+    {
+        $service = NfcService::findOrFail($id);
+        $card_id = $request->card_id;
+        $nfc_card = NfcCard::findOrFail($card_id);
+        $files = [
+            'service_icon' => $request->file('service_icon'),
+        ];
+
+        $filePath = 'public/nfc/service/';
+        $uploadedFiles = [];
+
+        foreach ($files as $key => $file) {
+            if (!empty($file)) {
+                $folderPath = storage_path('app/public/nfc/service/' . $service->service_icon);
+
+                if (File::exists($folderPath)) {
+                    File::delete($folderPath);
+                }
+                $uploadedFiles[$key] = customUpload($file, $filePath, $name = $nfc_card->code . '_' . $key);
+                if ($uploadedFiles[$key]['status'] === 0) {
+                    return redirect()->back()->with('error', $uploadedFiles[$key]['error_message']);
+                }
+            } else {
+                $uploadedFiles[$key] = ['status' => 0];
+            }
+        }
+
+        $service->update([
+            'card_id'             => $request->card_id,
+            'service_name'        => $request->service_name,
+            'service_url'         => $request->service_url,
+            'service_description' => $request->service_description,
+            'service_icon'        => $uploadedFiles['service_icon']['status'] == 1 ? $uploadedFiles['service_icon']['file_name'] : $service->service_icon,
+        ]);
+
+        $nfc_card = NfcCard::with('nfcService')->where('id', $card_id)->first();
+        $view = view('nfc.form_partials.services', compact('nfc_card'))->render();
+
+        return response()->json(['service_view' => $view]);
+    }
+
     public function serviceDestroy(string $id)
     {
         $nfc_service = NfcService::findOrFail($id);
@@ -392,6 +434,49 @@ class VirtualCardFormController extends Controller
 
         $view = view('nfc.form_partials.products', compact('nfc_card'))->render();
 
+        return response()->json(['product_view' => $view]);
+    }
+
+    public function productUpdate(Request $request, $id)
+    {
+        $product = NfcProduct::findOrFail($id);
+        $card_id = $request->card_id;
+        $nfc_card = NfcCard::findOrFail($card_id);
+        $files = [
+            'product_icon' => $request->file('product_icon'),
+        ];
+
+        $filePath = 'public/nfc/product/';
+        $uploadedFiles = [];
+
+        foreach ($files as $key => $file) {
+            if (!empty($file)) {
+                $folderPath = storage_path('app/public/nfc/product/' . $product->product_icon);
+
+                if (File::exists($folderPath)) {
+                    File::delete($folderPath);
+                }
+                $uploadedFiles[$key] = customUpload($file, $filePath, $name = $nfc_card->code . '_' . $key);
+                if ($uploadedFiles[$key]['status'] === 0) {
+                    return redirect()->back()->with('error', $uploadedFiles[$key]['error_message']);
+                }
+            } else {
+                $uploadedFiles[$key] = ['status' => 0];
+            }
+        }
+
+        $product->update([
+            'card_id'             => $request->card_id,
+            'product_name'        => $request->product_name,
+            'product_currency'    => $request->product_currency,
+            'product_price'       => $request->product_price,
+            'product_url'         => $request->product_url,
+            'product_description' => $request->product_description,
+            'product_icon'        => $uploadedFiles['product_icon']['status'] == 1 ? $uploadedFiles['product_icon']['file_name'] : $product->product_icon,
+        ]);
+
+        $nfc_card = NfcCard::with('nfcProduct')->where('id', $card_id)->first();
+        $view = view('nfc.form_partials.products', compact('nfc_card'))->render();
         return response()->json(['product_view' => $view]);
     }
 
@@ -625,8 +710,6 @@ class VirtualCardFormController extends Controller
         return response()->json(['setting_view' => $setting_view]);
     }
 
-
-
     public function seoStore(Request $request)
     {
         $card_id = $request->card_id;
@@ -699,6 +782,50 @@ class VirtualCardFormController extends Controller
         return response()->json(['testimonial_view' => $view]);
     }
 
+    public function testimonialUpdate(Request $request, $id)
+    {
+        $testimonial = NfcTestimonial::findOrFail($id);
+        $card_id = $request->card_id;
+        $nfc_card = NfcCard::findOrFail($card_id);
+        $files = [
+            'testimonial_image' => $request->file('testimonial_image'),
+        ];
+
+        $filePath = 'public/nfc/testimonial/';
+        $uploadedFiles = [];
+
+        foreach ($files as $key => $file) {
+            if (!empty($file)) {
+                $folderPath = storage_path('app/public/nfc/testimonial/' . $testimonial->testimonial_image);
+
+                if (File::exists($folderPath)) {
+                    File::delete($folderPath);
+                }
+                $uploadedFiles[$key] = customUpload($file, $filePath, $name = $nfc_card->code . '_' . $key);
+                if ($uploadedFiles[$key]['status'] === 0) {
+                    return redirect()->back()->with('error', $uploadedFiles[$key]['error_message']);
+                }
+            } else {
+                $uploadedFiles[$key] = ['status' => 0];
+            }
+        }
+
+        $testimonial->update([
+            'card_id'                  => $request->card_id,
+            'testimonial_name'         => $request->testimonial_name,
+            'testimonial_description'  => $request->testimonial_description,
+            'testimonial_image'        => $uploadedFiles['testimonial_image']['status'] == 1 ? $uploadedFiles['testimonial_image']['file_name'] : $testimonial->testimonial_image,
+        ]);
+
+        $nfc_card = NfcCard::with(
+            'nfcTestimonial',
+        )->where('id', $card_id)->first();
+
+        $view = view('nfc.form_partials.testimonials', compact('nfc_card'))->render();
+
+        return response()->json(['testimonial_view' => $view]);
+    }
+
     public function testimonialDestroy(string $id)
     {
         $nfc_testimonial = NfcTestimonial::findOrFail($id);
@@ -742,6 +869,49 @@ class VirtualCardFormController extends Controller
             'gallery_link'          => $request->gallery_link,
             'gallery_attachment'    => $uploadedFiles['gallery_attachment']['status'] == 1 ? $uploadedFiles['gallery_attachment']['file_name'] : null,
 
+        ]);
+
+        $nfc_card = NfcCard::with(
+            'nfcGallery',
+        )->where('id', $card_id)->first();
+
+        $view = view('nfc.form_partials.galleries', compact('nfc_card'))->render();
+
+        return response()->json(['gallery_view' => $view]);
+    }
+
+    public function galleryUpdate(Request $request, $id)
+    {
+        $gallery = NfcGallery::findOrFail($id);
+        $card_id = $request->card_id;
+        $nfc_card = NfcCard::findOrFail($card_id);
+        $files = [
+            'gallery_attachment' => $request->file('gallery_attachment'),
+        ];
+
+        $filePath = 'public/nfc/gallery/';
+        $uploadedFiles = [];
+
+        foreach ($files as $key => $file) {
+            if (!empty($file)) {
+                $folderPath = storage_path('app/public/nfc/gallery/' . $gallery->gallery_attachment);
+
+                if (File::exists($folderPath)) {
+                    File::delete($folderPath);
+                }
+                $uploadedFiles[$key] = customUpload($file, $filePath, $name = $nfc_card->code . '_' . $key);
+                if ($uploadedFiles[$key]['status'] === 0) {
+                    return redirect()->back()->with('error', $uploadedFiles[$key]['error_message']);
+                }
+            } else {
+                $uploadedFiles[$key] = ['status' => 0];
+            }
+        }
+
+        $gallery->update([
+            'card_id'               => $request->card_id,
+            'gallery_title'         => $request->gallery_title,
+            'gallery_attachment'   => $uploadedFiles['gallery_attachment']['status'] == 1 ? $uploadedFiles['gallery_attachment']['file_name'] : $gallery->gallery_attachment,
         ]);
 
         $nfc_card = NfcCard::with(

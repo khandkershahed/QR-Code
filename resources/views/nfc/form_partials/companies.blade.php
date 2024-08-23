@@ -218,12 +218,12 @@
                                         Url <i class="fa-solid fa-link text-primary"></i></a>
                                 </td>
                                 <td>
-                                    <a href="javascript:void(0)" class="text-primary" data-bs-toggle="modal"
-                                        data-bs-target="#companyEditModal{{ $company->id }}">Edit
+                                    <a href="javascript:void(0)" class="text-primary me-3" data-bs-toggle="modal"
+                                        data-bs-target="#companyEditModal{{ $company->id }}">
                                         <i class="fa-solid fa-pen text-primary"></i>
                                     </a>
                                     <a href="javascript:void(0)" class="text-danger"
-                                        onclick="deleteCompany(event, '{{ route('nfc.company.destroy', $company->id) }}')">Delete
+                                        onclick="deleteCompany(event, '{{ route('nfc.company.destroy', $company->id) }}')">
                                         <i class="fa-solid fa-trash text-danger"></i>
                                     </a>
                                 </td>
@@ -254,7 +254,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form class="company_form form" method="POST"
+                    <form class="company_form_{{ $company->id }}" method="POST"
                         action="{{ route('nfc.company.update', $company->id) }}" autocomplete="off"
                         enctype="multipart/form-data">
                         @csrf
@@ -292,7 +292,7 @@
                                 <div class="fv-row mb-4">
                                     <x-metronic.label for="company_logo"
                                         class="col-form-label fw-bold fs-6 pt-0 pb-2">{{ __('Company Logo') }}</x-metronic.label>
-                                    <x-metronic.file-input id="company_logo" name="company_logo"
+                                    <x-metronic.file-input id="company_logo" name="company_logo" :source="asset('storage/nfc/company/' . $company->company_logo)"
                                         :value="old('company_logo', $company->company_logo)"></x-metronic.file-input>
                                 </div>
                             </div>
@@ -382,7 +382,7 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-end mt-10">
-                            <button type="submit" onclick="submitCompanyForm()"
+                            <button type="submit" onclick="updateCompanyForm($company->id)"
                                 class="kt_docs_formvalidation_text_submit btn btn-primary">
                                 <span class="indicator-label">
                                     Save
@@ -399,6 +399,7 @@
         </div>
     </div>
 @endforeach
+
 
 {{-- Modal End --}}
 
@@ -450,101 +451,8 @@
         }
     </script>
     <script>
-        // function submitCompanyForm() {
-        //     // Detach any existing event handler to prevent multiple bindings
-        //     $('.company_form').off('submit').on('submit', function(event) {
-        //         event.preventDefault(); // Prevent default form submission
-
-        //         var form = $(this);
-        //         var url = form.attr('action');
-        //         var formData = new FormData(form[0]);
-        //         var submitButton = form.find('.kt_docs_formvalidation_text_submit');
-        //         var modalElement = document.getElementById('companyCreateModal');
-        //         var modalInstance = bootstrap.Modal.getInstance(modalElement);
-        //         var isValid = true;
-
-        //         // Remove any existing error messages and red borders
-        //         form.find('.text-danger').hide().text('');
-        //         form.find('.form-control').removeClass('is-invalid');
-
-        //         // Validate required fields
-        //         form.find('[name="company_name"], [name="company_email"], [name="company_phone"]').each(function() {
-        //             var fieldValue = $(this).val().trim();
-        //             if (!fieldValue) {
-        //                 // Show error message for the current field
-        //                 $(this).addClass('is-invalid');
-        //                 $(this).after('<p class="error-message text-danger">This field is required.</p>');
-        //                 isValid = false;
-        //             }
-        //         });
-
-        //         if (isValid) {
-        //             // Disable the submit button to prevent multiple submissions
-        //             submitButton.prop('disabled', true).addClass('disabled');
-
-        //             $.ajax({
-        //                 type: 'POST',
-        //                 url: url,
-        //                 data: formData,
-        //                 processData: false,
-        //                 contentType: false,
-        //                 beforeSend: function() {
-        //                     submitButton.find('.indicator-label').hide();
-        //                     submitButton.find('.indicator-progress').show();
-        //                 },
-        //                 success: function(response) {
-        //                     if (response.company_view) {
-        //                         // Update form with new values
-        //                         $('.company_container').html(response.company_view);
-
-        //                         toastr.success('Data saved successfully!', 'Success');
-        //                         // Reattach the event handler to the new form
-        //                         submitCompanyForm();
-        //                         modalInstance.hide();
-        //                     } else {
-        //                         toastr.error('Unexpected response format.', 'Error');
-        //                     }
-        //                 },
-        //                 error: function(xhr) {
-        //                     let errors = xhr.responseJSON.errors;
-        //                     for (let key in errors) {
-        //                         $(`#${key}_feedback`).text(errors[key][0]).show();
-        //                     }
-        //                     toastr.error('An error occurred while saving data.', 'Error');
-        //                 },
-        //                 complete: function() {
-        //                     submitButton.prop('disabled', false).removeClass('disabled');
-        //                     submitButton.find('.indicator-label').show();
-        //                     submitButton.find('.indicator-progress').hide();
-        //                 }
-        //             });
-        //         } else {
-        //             Swal.fire({
-        //                 text: 'Some input fields are not filled up!',
-        //                 icon: 'error',
-        //                 buttonsStyling: false,
-        //                 confirmButtonText: 'Ok, got it!',
-        //                 customClass: {
-        //                     confirmButton: 'btn btn-primary'
-        //                 }
-        //             });
-        //         }
-        //     });
-
-        //     // Optional: Hide error message and remove red border on input change
-        //     $('.company_form input, .company_form select').off('input change').on('input change', function() {
-        //         $(this).removeClass('is-invalid');
-        //         $(this).next('.text-danger').hide().text('');
-        //     });
-        // }
-
-        // $(document).ready(function() {
-        //     submitCompanyForm(); // Bind form submission event handler on document ready
-        // });
-    </script>
-    <script>
         function submitCompanyForm() {
-            // Attach the event handler to the form
+            // Detach any existing event handler to prevent multiple bindings
             $('.company_form').off('submit').on('submit', function(event) {
                 event.preventDefault(); // Prevent default form submission
 
@@ -552,8 +460,7 @@
                 var url = form.attr('action');
                 var formData = new FormData(form[0]);
                 var submitButton = form.find('.kt_docs_formvalidation_text_submit');
-                // var modalElement = document.getElementById('companyCreateModal');
-                var modalElement = document.querySelector('.modal');
+                var modalElement = document.getElementById('companyCreateModal');
                 var modalInstance = bootstrap.Modal.getInstance(modalElement);
                 var isValid = true;
 
@@ -588,10 +495,12 @@
                         },
                         success: function(response) {
                             if (response.company_view) {
-                                // Update the table with the new data
+                                // Update form with new values
                                 $('.company_container').html(response.company_view);
 
                                 toastr.success('Data saved successfully!', 'Success');
+                                // Reattach the event handler to the new form
+                                submitCompanyForm();
                                 modalInstance.hide();
                             } else {
                                 toastr.error('Unexpected response format.', 'Error');
@@ -600,7 +509,7 @@
                         error: function(xhr) {
                             let errors = xhr.responseJSON.errors;
                             for (let key in errors) {
-                                $('#' + key + '_feedback').text(errors[key][0]).show();
+                                $(`#${key}_feedback`).text(errors[key][0]).show();
                             }
                             toastr.error('An error occurred while saving data.', 'Error');
                         },
@@ -632,6 +541,96 @@
 
         $(document).ready(function() {
             submitCompanyForm(); // Bind form submission event handler on document ready
+        });
+    </script>
+    <script>
+        function updateCompanyForm(id) {
+            // Use jQuery's `on` to bind the form submit handler
+            $(document).on('submit', '.company_form_' + id, function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                var form = $(this);
+                var url = form.attr('action');
+                var formData = new FormData(form[0]);
+                var submitButton = form.find('.kt_docs_formvalidation_text_submit');
+                var modalElement = document.getElementById('companyEditModal' + id);
+                var modalInstance = bootstrap.Modal.getInstance(modalElement);
+                var isValid = true;
+
+                // Remove existing error messages and red borders
+                form.find('.text-danger').hide().text('');
+                form.find('.form-control').removeClass('is-invalid');
+
+                // Validate required fields
+                form.find('[name="company_name"], [name="company_email"], [name="company_phone"]').each(function() {
+                    var fieldValue = $(this).val().trim();
+                    if (!fieldValue) {
+                        $(this).addClass('is-invalid');
+                        $(this).after('<p class="error-message text-danger">This field is required.</p>');
+                        isValid = false;
+                    }
+                });
+
+                if (isValid) {
+                    // Disable the submit button to prevent multiple submissions
+                    submitButton.prop('disabled', true).addClass('disabled');
+
+                    $.ajax({
+                        type: 'POST',
+                        url: url,
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        beforeSend: function() {
+                            submitButton.find('.indicator-label').hide();
+                            submitButton.find('.indicator-progress').show();
+                        },
+                        success: function(response) {
+                            if (response.company_view) {
+                                // Update form with new values
+                                $('.company_container').html(response.company_view);
+
+                                toastr.success('Data saved successfully!', 'Success');
+                                @foreach ($nfc_card->nfcCompany as $company)
+                                    updateCompanyForm(
+                                    {{ $company->id }}); // Bind form submission event handler for each form
+                                @endforeach
+                                modalInstance.hide();
+                            } else {
+                                toastr.error('Unexpected response format.', 'Error');
+                            }
+                        },
+                        error: function(xhr) {
+                            let errors = xhr.responseJSON.errors;
+                            for (let key in errors) {
+                                $(`#${key}_feedback`).text(errors[key][0]).show();
+                            }
+                            toastr.error('An error occurred while saving data.', 'Error');
+                        },
+                        complete: function() {
+                            submitButton.prop('disabled', false).removeClass('disabled');
+                            submitButton.find('.indicator-label').show();
+                            submitButton.find('.indicator-progress').hide();
+                        }
+                    });
+                } else {
+                    Swal.fire({
+                        text: 'Some input fields are not filled up!',
+                        icon: 'error',
+                        buttonsStyling: false,
+                        confirmButtonText: 'Ok, got it!',
+                        customClass: {
+                            confirmButton: 'btn btn-primary'
+                        }
+                    });
+                }
+            });
+        }
+
+        $(document).ready(function() {
+            @foreach ($nfc_card->nfcCompany as $company)
+                updateCompanyForm({{ $company->id }}); // Bind form submission event handler for each form
+            @endforeach
         });
     </script>
 @endpush
