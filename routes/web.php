@@ -150,12 +150,16 @@ Route::post('business-hours/store', [VirtualCardFormController::class, 'business
 Route::post('social-links/store', [VirtualCardFormController::class, 'socialLinksStore'])->name('nfc.social_links.add');
 Route::post('service/store', [VirtualCardFormController::class, 'serviceStore'])->name('nfc.service.add');
 Route::delete('/service/delete/{id}', [VirtualCardFormController::class, 'serviceDestroy'])->name('nfc.service.destroy');
+Route::put('/nfc/service/{id}', [VirtualCardFormController::class, 'serviceUpdate'])->name('nfc.service.update');
 
 Route::post('product/store', [VirtualCardFormController::class, 'productStore'])->name('nfc.product.add');
 Route::delete('/product/delete/{id}', [VirtualCardFormController::class, 'productDestroy'])->name('nfc.product.destroy');
+Route::put('/nfc/product/{id}', [VirtualCardFormController::class, 'productUpdate'])->name('nfc.product.update');
 
 Route::post('company/store', [VirtualCardFormController::class, 'companyStore'])->name('nfc.company.add');
 Route::delete('/company/delete/{id}', [VirtualCardFormController::class, 'companyDestroy'])->name('nfc.company.destroy');
+Route::put('/nfc/company/{id}', [VirtualCardFormController::class, 'companyUpdate'])->name('nfc.company.update');
+
 
 Route::post('privacy/store', [VirtualCardFormController::class, 'privacyStore'])->name('nfc.privacy.add');
 Route::delete('/privacy/delete/{id}', [VirtualCardFormController::class, 'privacyDestroy'])->name('nfc.privacy.destroy');
@@ -168,6 +172,7 @@ Route::delete('/seo/delete/{id}', [VirtualCardFormController::class, 'seoDestroy
 
 Route::post('testimonial/store', [VirtualCardFormController::class, 'testimonialStore'])->name('nfc.testimonial.add');
 Route::delete('/testimonial/delete/{id}', [VirtualCardFormController::class, 'testimonialDestroy'])->name('nfc.testimonial.destroy');
+Route::put('/nfc/testimonial/{id}', [VirtualCardFormController::class, 'testimonialUpdate'])->name('nfc.testimonial.update');
 
 Route::post('fonts/store', [VirtualCardFormController::class, 'fontsStore'])->name('nfc.fonts.add');
 Route::post('template/store', [VirtualCardFormController::class, 'templateStore'])->name('nfc.template.add');
@@ -178,6 +183,7 @@ Route::post('banner/store', [VirtualCardFormController::class, 'bannerStore'])->
 
 Route::post('gallery/store', [VirtualCardFormController::class, 'galleryStore'])->name('nfc.gallery.add');
 Route::delete('/gallery/delete/{id}', [VirtualCardFormController::class, 'galleryDestroy'])->name('nfc.gallery.destroy');
+Route::put('/nfc/gallery/{id}', [VirtualCardFormController::class, 'galleryUpdate'])->name('nfc.gallery.update');
 // Route::post('general-info/store', [ContactController::class, 'generalInfoStore'])->name('nfc.general_info.add');
 
 

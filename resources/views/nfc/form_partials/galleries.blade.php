@@ -38,15 +38,20 @@
                                 </td>
                                 <td>
                                     @if ($gallery->gallery_type == 'image')
-                                        <a href="{{ asset('storage/nfc/gallery/' . $gallery->gallery_attachment) }}"
+                                    <img class="w-75px" src="{{ asset('storage/nfc/gallery/' . $gallery->gallery_attachment) }}" alt="">
+                                        {{-- <a href="{{ asset('storage/nfc/gallery/' . $gallery->gallery_attachment) }}"
                                             target="_blank"
-                                            class="text-primary">{{ asset('storage/nfc/gallery/' . $gallery->gallery_attachment) }}</a>
+                                            class="text-primary">{{ asset('storage/nfc/gallery/' . $gallery->gallery_attachment) }}</a> --}}
                                     @else
                                         <a href="{{ $gallery->gallery_link }}" target="_blank"
                                             class="text-primary">{{ $gallery->gallery_link }}</a>
                                     @endif
                                 </td>
                                 <td>
+                                    {{-- <a href="javascript:void(0)" class="text-primary me-3" data-bs-toggle="modal"
+                                        data-bs-target="#galleryEditModal{{ $gallery->id }}">
+                                        <i class="fa-solid fa-pen text-primary"></i>
+                                    </a> --}}
                                     <a href="javascript:void(0)" class="text-danger"
                                         onclick="deleteGallery(event, '{{ route('nfc.gallery.destroy', $gallery->id) }}')">Delete
                                         <i class="fa-solid fa-trash text-danger"></i></a>
@@ -78,6 +83,7 @@
                     autocomplete="off" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="card_id" value="{{ $nfc_card->id }}">
+                    <input type="hidden" name="gallery_type" value="image">
                     <div class="row">
                         <div class="fv-row  mb-5">
                             <x-metronic.label class="required fw-semibold fs-6 mb-3">Gallery Name</x-metronic.label>
@@ -133,6 +139,55 @@
     </div>
 </div>
 
+
+@foreach ($nfc_card->nfcGallery as $gallery)
+    <div class="modal fade" id="galleryEditModal{{ $gallery->id }}" tabindex="-1" data-bs-backdrop="static"
+        data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleIdgallery" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitleIdgallery">
+                        Edit Gallery
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="gallery_form_{{ $gallery->id }}" method="POST"
+                        action="{{ route('nfc.gallery.update', $gallery->id) }}" autocomplete="off"
+                        enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+                        <input type="hidden" name="card_id" value="{{ $nfc_card->id }}">
+                        <div class="fv-row  mb-5">
+                            <x-metronic.label class="required fw-semibold fs-6 mb-3">Gallery Name</x-metronic.label>
+                            <x-metronic.input type="text" class="form-control form-control-solid form-control-sm"
+                                name="gallery_title" id="gallery_title" required placeholder="Gallery Name"
+                                :value="old('gallery_title',$gallery->gallery_title)" />
+                        </div>
+                        <div class="fv-row mb-5">
+                            <x-metronic.label for="gallery_attachment"
+                                class="col-form-label fw-bold fs-6 mb-3">{{ __('Gallery Image') }}</x-metronic.label>
+                            <x-metronic.file-input id="gallery_attachment" name="gallery_attachment" :source="asset('storage/nfc/gallery/' . $gallery->gallery_attachment)"
+                                :value="old('gallery_attachment')"></x-metronic.file-input>
+                        </div>
+                        <div class="d-flex justify-content-end mt-10">
+                            <button type="submit" onclick="updateGalleryForm($gallery->id)"
+                                class="kt_docs_formvalidation_text_submit btn btn-primary">
+                                <span class="indicator-label">
+                                    Save
+                                </span>
+                                <span class="indicator-progress">
+                                    Please wait... <span
+                                        class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                </span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+@endforeach
 {{-- <div class="modal fade" id="galleryUpdateModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleIdgallery" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
@@ -344,6 +399,97 @@
 
         $(document).ready(function() {
             submitGalleryForm(); // Bind form submission event handler on document ready
+        });
+    </script>
+
+    <script>
+        function updateGalleryForm(id) {
+            // Use jQuery's `on` to bind the form submit handler
+            $('.gallery_form_' + id).off('submit').on('submit', function(event) {
+                // $(document).on('submit', '.gallery_form_' + id, function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                var form = $(this);
+                var url = form.attr('action');
+                var formData = new FormData(form[0]);
+                var submitButton = form.find('.kt_docs_formvalidation_text_submit');
+                var modalElement = document.getElementById('galleryEditModal' + id);
+                var modalInstance = bootstrap.Modal.getInstance(modalElement);
+                var isValid = true;
+
+                // Remove existing error messages and red borders
+                form.find('.text-danger').hide().text('');
+                form.find('.form-control').removeClass('is-invalid');
+
+                // Validate required fields
+                form.find('[name="gallery_title"], [name="gallery_attachment"]').each(function() {
+                    var fieldValue = $(this).val().trim();
+                    if (!fieldValue) {
+                        $(this).addClass('is-invalid');
+                        $(this).after('<p class="error-message text-danger">This field is required.</p>');
+                        isValid = false;
+                    }
+                });
+
+                if (isValid) {
+                    // Disable the submit button to prevent multiple submissions
+                    submitButton.prop('disabled', true).addClass('disabled');
+
+                    $.ajax({
+                        type: 'POST',
+                        url: url,
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        beforeSend: function() {
+                            submitButton.find('.indicator-label').hide();
+                            submitButton.find('.indicator-progress').show();
+                        },
+                        success: function(response) {
+                            if (response.gallery_view) {
+                                // Update form with new values
+                                $('.gallery_container').html(response.gallery_view);
+
+                                toastr.success('Data saved successfully!', 'Success');
+                                @foreach ($nfc_card->nfcGallery as $gallery)
+                                updateGalleryForm({{ $gallery->id }}); // Bind form submission event handler for each form
+                                @endforeach
+                                modalInstance.hide();
+                            } else {
+                                toastr.error('Unexpected response format.', 'Error');
+                            }
+                        },
+                        error: function(xhr) {
+                            let errors = xhr.responseJSON.errors;
+                            for (let key in errors) {
+                                $(`#${key}_feedback`).text(errors[key][0]).show();
+                            }
+                            toastr.error('An error occurred while saving data.', 'Error');
+                        },
+                        complete: function() {
+                            submitButton.prop('disabled', false).removeClass('disabled');
+                            submitButton.find('.indicator-label').show();
+                            submitButton.find('.indicator-progress').hide();
+                        }
+                    });
+                } else {
+                    Swal.fire({
+                        text: 'Some input fields are not filled up!',
+                        icon: 'error',
+                        buttonsStyling: false,
+                        confirmButtonText: 'Ok, got it!',
+                        customClass: {
+                            confirmButton: 'btn btn-primary'
+                        }
+                    });
+                }
+            });
+        }
+
+        $(document).ready(function() {
+            @foreach ($nfc_card->nfcGallery as $gallery)
+                updateGalleryForm({{ $gallery->id }}); // Bind form submission event handler for each form
+            @endforeach
         });
     </script>
 @endpush
