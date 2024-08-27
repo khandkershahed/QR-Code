@@ -62,6 +62,8 @@
 
     .card-two-back p {
         font-size: 17px;
+        line-height: 1.3;
+        letter-spacing: 1.2px;
         position: relative;
         top: 85px;
         text-align: center;
