@@ -113,6 +113,8 @@
 
     .card_email-box {
         width: 70%;
+        line-height: 1.2;
+        letter-spacing: 1px;
     }
 
     .card_address-box {
