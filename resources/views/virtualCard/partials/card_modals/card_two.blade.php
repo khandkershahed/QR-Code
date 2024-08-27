@@ -62,6 +62,9 @@
 
     .card-two-back p {
         font-size: 17px;
+        position: relative;
+        top: 85px;
+        text-align: center;
     }
 
     .card_designation-two,
@@ -74,7 +77,8 @@
 
     .main-content-tem2 {
         /* margin-top: 45px; */
-        margin-top: 26%;
+        /* margin-top: 26%; */
+        margin-top: 30%;
     }
 
     .half {
