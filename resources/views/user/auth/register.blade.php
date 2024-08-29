@@ -115,14 +115,14 @@
                                                     <x-input-label class="form-label" for="password"
                                                         :value="__('Password')" />
                                                     <div class="input-group">
-                                                        <span class="input-group-text" id="toggle_password">
-                                                            <i class="fas fa-lock text-success"></i>
-                                                            <i class="fas fa-unlock" style="display: none"></i>
-                                                        </span>
                                                         <x-text-input id="password" aria-describedby="toggle_password"
                                                             class="form-control bg-transparent password_input"
                                                             type="password" name="password" required
                                                             autocomplete="new-password" />
+                                                        <span class="input-group-text" id="toggle_password">
+                                                            <i class="fa-solid fa-eye text-success"></i>
+                                                            <i class="fa-solid fa-eye-slash" style="display: none"></i>
+                                                        </span>
                                                         <x-input-error :messages="$errors->get('password')" class="mt-2" />
                                                     </div>
                                                 </div>
@@ -153,15 +153,15 @@
                                             <br>
 
                                             <div class="input-group ">
-                                                <span class="input-group-text" id="toggle_confirm_password">
-                                                    <i class="fas fa-lock text-success"></i>
-                                                    <i class="fas fa-unlock" style="display: none"></i>
-                                                </span>
                                                 <x-text-input id="password_confirmation"
                                                     aria-describedby="toggle_confirm_password"
                                                     class="form-control bg-transparent password_confirmation flex-column"
                                                     type="password" name="password_confirmation" required
                                                     autocomplete="new-password" />
+                                                <span class="input-group-text" id="toggle_confirm_password">
+                                                    <i class="fa-solid fa-eye text-success"></i>
+                                                    <i class="fa-solid fa-eye-slash" style="display: none"></i>
+                                                </span>
                                             </div>
                                             <div id="password-confirmation-message"
                                                 class="password-confirmation-message">
@@ -231,6 +231,7 @@
     @push('scripts')
         <!-- Add jQuery library -->
         <script src="https://js.stripe.com/v3/"></script>
+        <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
         <script>
             document.querySelectorAll('.password_confirmation').forEach(function(element) {
                 element.addEventListener('keyup', function() {
@@ -255,8 +256,8 @@
             $(document).ready(function() {
                 $('#toggle_confirm_password').click(function() {
                     var input = $("#password_confirmation");
-                    var icon1 = $(this).find('.fa-lock');
-                    var icon2 = $(this).find('.fa-unlock');
+                    var icon1 = $(this).find('.fa-eye');
+                    var icon2 = $(this).find('.fa-eye-slash');
 
                     if (input.attr('type') === 'password') {
                         input.attr('type', 'text');
@@ -278,8 +279,8 @@
 
                 $('#toggle_password').click(function() {
                     var input = $("#password");
-                    var icon1 = $(this).find('.fa-lock');
-                    var icon2 = $(this).find('.fa-unlock');
+                    var icon1 = $(this).find('.fa-eye');
+                    var icon2 = $(this).find('.fa-eye-slash');
 
                     if (input.attr('type') === 'password') {
                         input.attr('type', 'text');
