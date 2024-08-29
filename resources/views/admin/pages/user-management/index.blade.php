@@ -55,10 +55,9 @@
                             </div>
                         </th>
                         <th class="min-w-125px">User</th>
-                        <th class="min-w-125px">Role</th>
                         {{-- <th class="min-w-125px">Last login</th>
-                        <th class="min-w-125px">Two-step</th>
-                        <th class="min-w-125px">Joined Date</th> --}}
+                        <th class="min-w-125px">Two-step</th> --}}
+                        <th class="min-w-125px">Joined Date</th>
                         <th class="text-end min-w-100px">Actions</th>
                     </tr>
                 </thead>
@@ -85,12 +84,7 @@
                             </div>
                         </td>
                         <td>
-                            @forelse ($user->getRoleNames() as $role)
-                            <div class="badge badge-light-success fw-bolder">{{ $role }}</div>
-
-                            @empty
-                            <div class="badge badge-light-danger fw-bolder">No Role</div>
-                            @endforelse
+                            {{ $user->created_at->format('d M, Y') }}
                         </td>
                         <td class="text-end">
                             <a href="#" class="btn btn-light btn-active-light-primary btn-sm"

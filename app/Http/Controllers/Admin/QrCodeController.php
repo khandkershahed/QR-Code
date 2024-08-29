@@ -86,18 +86,20 @@ class QrCodeController extends Controller
                     return redirect()->back();
                 }
             } else {
-                // Check if the user has not exceeded the QR code limit or if 14 days have passed since account creation
-                if (10 - $qrs->count() > 0 || $createdAtPlus14Days->lessThan($today)) {
-                    $categories = $isUserRoute
-                        ? RestaurantCategory::where('user_id', Auth::user()->id)->latest('id')->get()
-                        : RestaurantCategory::latest('id')->get();
-                    $view = $isUserRoute ? 'user.pages.qr-code.create' : 'admin.pages.qr-code.create';
-                    return view($view, ['categories' => $categories]);
-                } else {
-                    return redirect()->back()->with('error', 'Your QR limitation is exceeded');
-                    // session()->flash('qrExceededModal', true);
-                    // return redirect()->back();
-                }
+                // // Check if the user has not exceeded the QR code limit or if 14 days have passed since account creation
+                // if (10 - $qrs->count() > 0 || $createdAtPlus14Days->lessThan($today)) {
+                //     $categories = $isUserRoute
+                //         ? RestaurantCategory::where('user_id', Auth::user()->id)->latest('id')->get()
+                //         : RestaurantCategory::latest('id')->get();
+                //     $view = $isUserRoute ? 'user.pages.qr-code.create' : 'admin.pages.qr-code.create';
+                //     return view($view, ['categories' => $categories]);
+                // } else {
+                //     return redirect()->back()->with('error', 'Your QR limitation is exceeded');
+                //     // session()->flash('qrExceededModal', true);
+                //     // return redirect()->back();
+                // }
+                session()->flash('qrExceededModal', true);
+                return redirect()->back();
             }
         } else {
             return view('admin.pages.qr-code.create', ['categories' => $categories]);

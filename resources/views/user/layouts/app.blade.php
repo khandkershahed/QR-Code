@@ -185,6 +185,17 @@
             });
         </script>
     @endif
+    @if (session('barcodeExceededModal'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var myModal = new bootstrap.Modal(document.getElementById('toastr_barcode_modal'), {
+                    backdrop: 'static',
+                    keyboard: false
+                });
+                myModal.show();
+            });
+        </script>
+    @endif
 
 </body>
 
