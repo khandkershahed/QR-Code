@@ -169,7 +169,6 @@
                             </thead>
                             <tbody>
                                 @forelse ($invoices as $invoice)
-                                {{-- @dd($invoice) --}}
                                     <tr>
                                         <td>{{ $invoice->number }}</td>
                                         <td>{{ $invoice->number }}</td>
