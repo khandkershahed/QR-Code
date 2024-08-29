@@ -73,6 +73,9 @@
                                                 <li class="nav-item">
                                                     <a class="nav-link btn text-black btn-active btn-active-secondary px-6 py-3" data-bs-toggle="tab" href="#qr_tab">QR</a>
                                                 </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link btn text-black btn-active btn-active-secondary px-6 py-3" data-bs-toggle="tab" href="#barcode_tab">Bar Code</a>
+                                                </li>
                                             </ul>
 
                                         </div>
@@ -169,6 +172,55 @@
                                                                     </div>
 
                                                                     <a href="{{ route('user.subscribe.post', $qr_plan->slug) }}"
+                                                                        class="btn btn-sm btn-primary">Select</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="barcode_tab" role="tabpanel">
+                                                <div class="row g-10">
+                                                    @foreach ($barcode_plans as $barcode_plan)
+                                                        <div class="col-xl-4">
+                                                            <div class="d-flex h-100 align-items-center">
+                                                                <div
+                                                                    class="w-100 d-flex flex-column flex-center rounded-3 bg-light bg-opacity-75 py-15 px-10">
+                                                                    <div class="mb-7 text-center">
+
+                                                                        <h1 class="text-gray-900 mb-5 fw-bolder">
+                                                                            {{ $barcode_plan->title }}</h1>
+                                                                        <div class="text-center">
+                                                                            <span
+                                                                                class="mb-2 text-primary">{{ $barcode_plan->currency }}</span>
+
+                                                                            <span class="fs-3x fw-bold text-primary"
+                                                                                data-kt-plan-price-month="39"
+                                                                                data-kt-plan-price-annual="399">
+                                                                                {{ $barcode_plan->price }}</span>
+
+                                                                            <span class="fs-7 fw-semibold opacity-50">/
+                                                                                <span
+                                                                                    data-kt-element="period">Mon</span>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="w-100 mb-10">
+                                                                        @foreach (json_decode($barcode_plan->descriptions ?? '[]') as $description)
+                                                                            <div class="d-flex align-items-center mb-5">
+                                                                                <span
+                                                                                    class="fw-semibold fs-6 text-gray-800 flex-grow-1 pe-3">
+                                                                                    {{ $description }}</span>
+                                                                                <i
+                                                                                    class="ki-duotone ki-check-circle fs-1 text-success"><span
+                                                                                        class="path1"></span><span
+                                                                                        class="path2"></span></i>
+                                                                            </div>
+                                                                        @endforeach
+                                                                    </div>
+
+                                                                    <a href="{{ route('user.subscribe.post', $barcode_plan->slug) }}"
                                                                         class="btn btn-sm btn-primary">Select</a>
                                                                 </div>
                                                             </div>

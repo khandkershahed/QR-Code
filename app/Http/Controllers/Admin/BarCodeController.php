@@ -29,7 +29,7 @@ class BarCodeController extends Controller
         $subscription = $isUserRoute
             ? Subscription::with('plan')->where('user_id', $user->id)
             ->whereHas('plan', function ($query) {
-                $query->where('type', 'qr');
+                $query->where('type', 'barcode');
             })->active()->first()
             : null;
         $bar_codes = $isUserRoute ?
