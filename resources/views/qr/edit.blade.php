@@ -22,7 +22,7 @@
                                     </div>
                                 </div>
 
-                                <div class="stepper-item mx-2 my-4" data-kt-stepper-element="nav"
+                                {{-- <div class="stepper-item mx-2 my-4" data-kt-stepper-element="nav"
                                     data-kt-stepper-action="step">
                                     <div class="stepper-line w-40px"></div>
 
@@ -36,7 +36,7 @@
                                             Customize
                                         </h3>
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <div class="stepper-item mx-2 my-4" data-kt-stepper-element="nav"
                                     data-kt-stepper-action="step">
@@ -69,7 +69,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="flex-column" data-kt-stepper-element="content">
+                                    {{-- <div class="flex-column" data-kt-stepper-element="content">
                                         <div class="card">
                                             <div class="row text-center justify-content-center">
                                                 <h2 class="text-center mb-0">Choose QR Code Design!</h2>
@@ -78,7 +78,7 @@
                                                 @include('user.pages.qr-code.edit_partials.customize')
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="flex-column" data-kt-stepper-element="content">
                                         <div class="card">

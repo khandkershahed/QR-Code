@@ -62,6 +62,11 @@
 
     .card-two-back p {
         font-size: 17px;
+        line-height: 1.3;
+        letter-spacing: 1.2px;
+        position: relative;
+        top: 85px;
+        text-align: center;
     }
 
     .card_designation-two,
@@ -74,7 +79,8 @@
 
     .main-content-tem2 {
         /* margin-top: 45px; */
-        margin-top: 26%;
+        /* margin-top: 26%; */
+        margin-top: 30%;
     }
 
     .half {
@@ -107,6 +113,8 @@
 
     .card_email-box {
         width: 70%;
+        line-height: 1.2;
+        letter-spacing: 1px;
     }
 
     .card_address-box {
@@ -272,7 +280,7 @@
                     <div class="template-two-title pt-5 tempmail"
                         style="">
                         <div class="half mt-4">
-                            <div class="w-75 mx-auto">
+                            <div class="w-100 mx-auto">
                                 <p class="mb-0 card_email card-two-mail">{{ $nfc_card->card_email }}</p>
                             </div>
                         </div>

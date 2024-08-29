@@ -8,8 +8,8 @@
         'image' => 'frontend/images/virtual_card/card_2.png',
     ],
     [
-        'value' => 'virtual-card-three',
-        'image' => 'frontend/images/virtual_card/card_3.png',
+        'value' => 'virtual-card-eight',
+        'image' => 'frontend/images/virtual_card/demo-7.jpg',
     ],
     [
         'value' => 'virtual-card-four',
@@ -22,5 +22,9 @@
     [
         'value' => 'virtual-card-seven',
         'image' => 'frontend/images/virtual_card/virtual_card_7.png',
+    ],
+    [
+        'value' => 'virtual-card-three',
+        'image' => 'frontend/images/virtual_card/card_3.png',
     ],
 ]" />

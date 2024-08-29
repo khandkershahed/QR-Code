@@ -277,7 +277,7 @@
                     <!-- Front Info -->
                     <div class="template-two-title pt-5 tempmail" style="">
                         <div class="half mt-4">
-                            <div class="w-75 mx-auto email-box-area">
+                            <div class="w-100 mx-auto email-box-area">
                                 <p class="mb-0 card_email card-two-mail">info@gmail.com</p>
                             </div>
                         </div>
