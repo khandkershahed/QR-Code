@@ -10,7 +10,7 @@
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="" />
-    <meta property="og:url" content="" />
+    <meta property="og:url" content="" /> 
     <meta property="og:site_name" content="GoFlixza || Admin Dashboard" />
     <link rel="shortcut icon" href="https://i.ibb.co/BNBTVN4/logo.png" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
