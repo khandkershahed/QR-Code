@@ -290,14 +290,16 @@
         </div>
     </div>
     <div class="modal fade metronic_modal" id="update_account_{{ $user->id }}" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h2 class="fw-bolder">Update Your Profile</h2>
+                <div class="modal-header bg-info">
+                    <h2 class="fw-bolder text-white">Update Your Profile</h2>
                     <!--begin::Close-->
                     <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
                         aria-label="Close">
-                        <span class="svg-icon svg-icon-2x fs-1">X</span>
+                        <span class="svg-icon svg-icon-2x fs-1">
+                            <i class="fa-solid fa-xmark"></i>
+                        </span>
                     </div>
                     <!--end::Close-->
                 </div>
@@ -307,13 +309,19 @@
                         @csrf
                         @method('PATCH')
                         <div class="row">
-                            <div class="mb-5 col-lg-6">
+                            <div class="mb-5 col-lg-4">
                                 <x-metronic.label for="name"
-                                    class="form-label">{{ __('Name') }}</x-metronic.label>
+                                    class="form-label">{{ __('First Name') }}</x-metronic.label>
                                 <x-metronic.input id="name" type="text" name="name" :value="old('name', $user->name)"
-                                    placeholder="Enter Your name"></x-metronic.input>
+                                    placeholder="Enter Your First Name"></x-metronic.input>
                             </div>
-                            <div class="mb-5 col-lg-6">
+                            <div class="mb-5 col-lg-4">
+                                <x-metronic.label for="last_name"
+                                    class="form-label">{{ __('Last Name') }}</x-metronic.label>
+                                <x-metronic.input id="last_name" type="text" name="last_name" :value="old('last_name', $user->last_name)"
+                                    placeholder="Enter Your Last Name"></x-metronic.input>
+                            </div>
+                            <div class="mb-5 col-lg-4">
                                 <x-metronic.label class="form-label">{{ __('Email') }}</x-metronic.label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
@@ -343,12 +351,12 @@
                                 @endif
 
                             </div>
-                            <div class="mb-5 col-lg-4">
+                            {{-- <div class="mb-5 col-lg-4">
                                 <x-metronic.label for="designation"
                                     class="form-label">{{ __('Designation') }}</x-metronic.label>
                                 <x-metronic.input id="designation" type="text" name="designation"
                                     :value="old('designation', $user->designation)" placeholder="Enter Your Designation"></x-metronic.input>
-                            </div>
+                            </div> --}}
                             <div class="mb-5 col-lg-4">
                                 <x-metronic.label for="profile_image"
                                     class="form-label">{{ __('Profile Image') }}</x-metronic.label>
@@ -356,13 +364,12 @@
                                 <x-metronic.input id="profile_image" type="file" name="profile_image"
                                     :value="old('profile_image', $user->profile_image)"></x-metronic.input>
                             </div>
-                            <div class="mb-5 col-lg-4">
+                            {{-- <div class="mb-5 col-lg-4">
                                 <x-metronic.label for="company_logo"
                                     class="form-label">{{ __('Company Logo') }}</x-metronic.label>
-                                {{-- <input type="file" id="company_logo" name="company_logo" placeholder="Enter Your Company Logo" class="form-control @error('company_logo') is-invalid @enderror"> --}}
                                 <x-metronic.input id="company_logo" type="file" name="company_logo"
                                     :value="old('company_logo', $user->company_logo)"></x-metronic.input>
-                            </div>
+                            </div> --}}
                             <div class="mb-5 col-lg-4">
                                 <x-metronic.label for="company_name"
                                     class="form-label">{{ __('Company Name') }}</x-metronic.label>
@@ -377,15 +384,15 @@
                             </div>
                             <div class="mb-5 col-lg-4">
                                 <x-metronic.label for="address_line_one"
-                                    class="form-label">{{ __('Address Line One') }}</x-metronic.label>
+                                    class="form-label">{{ __('Street Address') }}</x-metronic.label>
                                 <x-metronic.input id="address_line_one" type="text" name="address_line_one"
-                                    :value="old('address_line_one', $user->address_line_one)" placeholder="Enter Your Address Line One"></x-metronic.input>
+                                    :value="old('address_line_one', $user->address_line_one)" placeholder="Enter Your Street Address"></x-metronic.input>
                             </div>
                             <div class="mb-5 col-lg-4">
                                 <x-metronic.label for="address_line_two"
-                                    class="form-label">{{ __('Address Line Two') }}</x-metronic.label>
+                                    class="form-label">{{ __('Street Address Two') }}</x-metronic.label>
                                 <x-metronic.input id="address_line_two" type="text" name="address_line_two"
-                                    :value="old('address_line_two', $user->address_line_two)" placeholder="Enter Your Address Line Two"></x-metronic.input>
+                                    :value="old('address_line_two', $user->address_line_two)" placeholder="Enter Your Street Address Two"></x-metronic.input>
                             </div>
                             <div class="mb-5 col-lg-4">
                                 <x-metronic.label for="city"
@@ -394,59 +401,65 @@
                                     placeholder="Enter Your City"></x-metronic.input>
                             </div>
                             <div class="mb-5 col-lg-4">
+                                <x-metronic.label for="state"
+                                    class="form-label">{{ __('State') }}</x-metronic.label>
+                                <x-metronic.input id="state" type="text" name="state" :value="old('state', $user->state)"
+                                    placeholder="Enter Your State"></x-metronic.input>
+                            </div>
+                            <div class="mb-5 col-lg-4">
+                                <x-metronic.label for="postal"
+                                    class="form-label">{{ __('Postcode') }}</x-metronic.label>
+                                <x-metronic.input id="postal" type="number" name="postal" :value="old('postal', $user->postal)"
+                                    placeholder="Enter Your Postcode"></x-metronic.input>
+                            </div>
+                            <div class="mb-5 col-lg-4">
                                 <x-metronic.label for="country"
                                     class="form-label">{{ __('Country') }}</x-metronic.label>
                                 <x-metronic.input id="country" type="text" name="country" :value="old('country', $user->country)"
                                     placeholder="Enter Your Country"></x-metronic.input>
                             </div>
-                            <div class="mb-5 col-lg-4">
-                                <x-metronic.label for="postal"
-                                    class="form-label">{{ __('Postal') }}</x-metronic.label>
-                                <x-metronic.input id="postal" type="number" name="postal" :value="old('postal', $user->postal)"
-                                    placeholder="Enter Your Postal"></x-metronic.input>
-                            </div>
-                            <div class="mb-5 col-lg-4">
+                            {{-- <div class="mb-5 col-lg-4">
                                 <x-metronic.label for="facebook_id"
                                     class="form-label">{{ __('Facebook Id') }}</x-metronic.label>
                                 <x-metronic.input id="facebook_id" type="url" name="facebook_id"
                                     :value="old('facebook_id', $user->facebook_id)" placeholder="Enter Your Facebook Id"></x-metronic.input>
-                            </div>
-                            <div class="mb-5 col-lg-4">
+                            </div> --}}
+                            {{-- <div class="mb-5 col-lg-4">
                                 <x-metronic.label for="google_id"
                                     class="form-label">{{ __('Google Id') }}</x-metronic.label>
                                 <x-metronic.input id="google_id" type="url" name="google_id" :value="old('google_id', $user->google_id)"
                                     placeholder="Enter Your Google Id"></x-metronic.input>
-                            </div>
-                            <div class="mb-5 col-lg-4">
+                            </div> --}}
+                            {{-- <div class="mb-5 col-lg-4">
                                 <x-metronic.label for="github_id"
                                     class="form-label">{{ __('Github Id') }}</x-metronic.label>
                                 <x-metronic.input id="github_id" type="url" name="github_id" :value="old('github_id', $user->github_id)"
                                     placeholder="Enter Your Github Id"></x-metronic.input>
-                            </div>
-                            <div class="mb-5 col-lg-4">
+                            </div> --}}
+                            {{-- <div class="mb-5 col-lg-4">
                                 <x-metronic.label for="apple_id"
                                     class="form-label">{{ __('Apple Id') }}</x-metronic.label>
                                 <x-metronic.input id="apple_id" type="url" name="apple_id" :value="old('apple_id', $user->apple_id)"
                                     placeholder="Enter Your Apple Id"></x-metronic.input>
-                            </div>
-                            <div class="mb-5 col-lg-4">
+                            </div> --}}
+                            {{-- <div class="mb-5 col-lg-4">
                                 <x-metronic.label for="instagram_id"
                                     class="form-label">{{ __('Instagram Id') }}</x-metronic.label>
                                 <x-metronic.input id="instagram_id" type="url" name="instagram_id"
                                     :value="old('instagram_id', $user->instagram_id)" placeholder="Enter Your Instagram Id"></x-metronic.input>
-                            </div>
-                            <div class="mb-5 col-lg-4">
+                            </div> --}}
+                            {{-- <div class="mb-5 col-lg-4">
                                 <x-metronic.label for="pinterest_id"
                                     class="form-label">{{ __('Printerest Id') }}</x-metronic.label>
                                 <x-metronic.input id="pinterest_id" type="url" name="pinterest_id"
                                     :value="old('pinterest_id', $user->pinterest_id)" placeholder="Enter Your Printerest Id"></x-metronic.input>
-                            </div>
-                            <div class="mb-5 col-lg-4">
+                            </div> --}}
+                            {{-- <div class="mb-5 col-lg-4">
                                 <x-metronic.label for="linked_in_id"
                                     class="form-label">{{ __('Likedin Id') }}</x-metronic.label>
                                 <x-metronic.input id="linked_in_id" type="url" name="linked_in_id"
                                     :value="old('linked_in_id', $user->linked_in_id)" placeholder="Enter Your Likedin Id"></x-metronic.input>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="text-end pt-10">
                             <x-metronic.button type="submit" class="primary">

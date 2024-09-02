@@ -161,6 +161,7 @@
                             <thead>
                                 <tr>
                                     <th>Invoice No</th>
+                                    {{-- <th>Service Name</th> --}}
                                     <th>Date</th>
                                     <th>Total</th>
                                     <th>Download</th>
@@ -168,9 +169,9 @@
                             </thead>
                             <tbody>
                                 @forelse ($invoices as $invoice)
-                                {{-- @dd($invoice) --}}
                                     <tr>
                                         <td>{{ $invoice->number }}</td>
+                                        {{-- <td>{{ $invoice->number }}</td> --}}
                                         <td>{{ $invoice->date()->toFormattedDateString() }}</td>
                                         <td>{{ $invoice->total() }}</td>
                                         <td>

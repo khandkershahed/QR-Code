@@ -29,7 +29,7 @@ class BarCodeController extends Controller
         $subscription = $isUserRoute
             ? Subscription::with('plan')->where('user_id', $user->id)
             ->whereHas('plan', function ($query) {
-                $query->where('type', 'qr');
+                $query->where('type', 'barcode');
             })->active()->first()
             : null;
         $bar_codes = $isUserRoute ?
@@ -37,12 +37,28 @@ class BarCodeController extends Controller
             BarCode::with('barCodeImages')->latest('id')->get();
 
         $view = $isUserRoute ? 'user.pages.bar-code.index' : 'admin.pages.bar-code.index';
-
-        // dd($user->subscribed());
         return view($view, [
             'bar_codes'    => $bar_codes,
             'subscription' => $subscription,
         ]);
+        // if ($isUserRoute) {
+        //     if (!empty($subscription->plan)) {
+
+        //         return view($view, [
+        //             'bar_codes'    => $bar_codes,
+        //             'subscription' => $subscription,
+        //         ]);
+        //     } else {
+        //         session()->flash('barcodeExceededModal', true);
+        //         return redirect()->back();
+        //     }
+        // } else {
+        //     return view($view, [
+        //         'bar_codes'    => $bar_codes,
+        //         'subscription' => $subscription,
+        //     ]);
+        // }
+
     }
 
     /**
@@ -51,10 +67,34 @@ class BarCodeController extends Controller
     public function create()
     {
         $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
+        $user = Auth::user();
+
+        // Determine the view file based on the route
         $view = $isUserRoute ? 'user.pages.bar-code.create' : 'admin.pages.bar-code.create';
+
+        if ($isUserRoute) {
+            // Fetch the subscription for the user with the necessary plan type
+            $subscription = Subscription::with('plan')
+                ->where('user_id', $user->id)
+                ->whereHas('plan', function ($query) {
+                    $query->where('type', 'barcode');
+                })
+                ->active()
+                ->first();
+
+            // Check if the subscription exists and has a plan
+            if ($subscription && $subscription->plan) {
+                return view($view);
+            } else {
+                session()->flash('barcodeExceededModal', true);
+                return redirect()->back();
+            }
+        }
+
+        // Return the view for admin routes
         return view($view);
-        // return view('admin.pages.bar-code.create');
     }
+
 
     /**
      * Store a newly created resource in storage.
