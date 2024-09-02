@@ -6,12 +6,11 @@
                     All Site Settings
                 </div>
             </div>
-            <div class="card-body p-0">
-                <form class="form" action="{{ route('admin.site.setting') }}" method="POST"
-                    enctype="multipart/form-data">
+            <form class="form" action="{{ route('admin.site.setting') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+                <div class="card-body p-0">
                     <div class="d-flex flex-column flex-md-row rounded border p-10 bg-white">
-                        @csrf
-                        @method('PUT')
 
                         <ul class="nav nav-tabs nav-pills bg-white flex-row border-0 flex-md-column me-5 mb-3 mb-md-0 fs-6 min-w-lg-250px shadow-sm"
                             role="tablist">
@@ -191,9 +190,15 @@
                             </div>
                         </div>
                     </div>
-                </form>
-            </div>
-
+                </div>
+                <div class="card-footer py-3">
+                    <div class="text-end">
+                        <x-metronic.button type="submit" class="primary">
+                            {{ __('Submit') }}
+                        </x-metronic.button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
     {{-- Script Not Working --}}
