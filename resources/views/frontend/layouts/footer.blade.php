@@ -54,7 +54,7 @@
                         <h6 class="footer-title text-white">Contact</h6>
                         <ul>
                             <li>
-                                <i class="fa fa-map-marker-alt"></i> <span>{{ !empty($site->address_line_one) ? $site->address_line_one : '' }} {{ !empty($site->address_line_two) ? ', ' . $site->address_line_two : '' }}</span>
+                                <i class="fa fa-map-marker-alt"></i> <span>{{ !empty($site->address_line_one) ? $site->address_line_one : '' }} {{ !empty($site->address_line_two) ? '' . $site->address_line_two : '' }}</span>
                             </li>
                             <li><i class="fa fa-envelope"></i> <a href="mailto:{{ !empty($site->contact_email) ? $site->contact_email : '' }}">{{ !empty($site->contact_email) ? $site->contact_email : '' }}</a>
                             </li>

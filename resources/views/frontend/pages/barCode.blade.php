@@ -8,6 +8,7 @@
             </div>
         </div>
     </section>
+
     <section class="app-stor-area pt-100 pb-100 rpb-150 rel z-1">
         <div class="container mb-30">
             <div class="row justify-content-between align-items-center">
@@ -46,6 +47,77 @@
         <div class="bg-lines">
             <span></span><span></span>
             <span></span><span></span>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="row pt-130">
+                <div class="col-xl-7 col-lg-9 col-md-11 mx-auto ">
+                    <div class="section-title text-center mb-60 aos-init aos-animate" data-aos="fade-up"
+                        data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
+                        <h2 class="text-center">Bar Code Pricing Plans</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                @if ($barcode_plans->isEmpty())
+                    <div class="col-12 text-center">
+                        <p>No barcode plans available at the moment. Please check back later.</p>
+                    </div>
+                @else
+                    @foreach ($barcode_plans as $barcode_plan)
+                        @php
+                            $imageCounts = [
+                                'Standard' => 1,
+                                'Enhanced' => 2,
+                                'Professional' => 3,
+                            ];
+
+                            $imageCount = $imageCounts[$barcode_plan->title] ?? 0;
+                        @endphp
+
+                        <div class="col-xl-3 col-md-6 col-sm-10 aos-init" data-aos="fade-up" data-aos-duration="1500"
+                            data-aos-offset="50">
+                            <div class="pricing-item style-four">
+                                <div class="icon">
+                                    @for ($i = 0; $i < $imageCount; $i++)
+                                        <!-- Changed <= to < to correctly match image count -->
+                                        <img width="30px" src="{{ asset('frontend/newimage/pro.png') }}"
+                                            alt="">
+                                    @endfor
+                                </div>
+
+                                <h4 class="title">{{ $barcode_plan->title }}</h4>
+                                <div class="price d-flex justify-content-center">
+                                    <span class="prev">$</span>{{ number_format($barcode_plan->price / 12, 2) }}
+                                    <span class="next ps-3">
+                                        <div class="d-flex flex-column">
+                                            <span><span class="fw-bold">USD</span>/month</span>
+                                            <small class="pt-2 text-info">Billed Yearly</small>
+                                        </div>
+                                    </span>
+                                </div>
+                                <hr>
+                                @php
+                                    $descriptions = is_array($barcode_plan->descriptions)
+                                        ? $barcode_plan->descriptions
+                                        : json_decode($barcode_plan->descriptions);
+                                @endphp
+                                @if (!empty($descriptions))
+                                    <ul class="icon-list">
+                                        @foreach ($descriptions as $description)
+                                            <li><i class="fas fa-checkmark"></i> {{ $description }}</li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+                                <a href="{{ route('user_subscribe.register', $barcode_plan->slug) }}"
+                                    class="theme-btn">Order Now</a>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
+
+            </div>
         </div>
     </section>
     <section class="how-to-manage-area bgc-lighter pt-125 rpt-105 pb-125 rpb-80">
@@ -155,81 +227,6 @@
         <div class="bg-lines">
             <span></span><span></span>
             <span></span><span></span>
-        </div>
-    </section>
-    <section>
-        <div class="container">
-            <div class="row pt-130">
-                <div class="col-xl-7 col-lg-9 col-md-11 mx-auto ">
-                    <div class="section-title text-center mb-60 aos-init aos-animate" data-aos="fade-up"
-                        data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
-                        <h2 class="text-center">Bar Code Pricing Plans</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                @if ($barcode_plans->isEmpty())
-                    <div class="col-12 text-center">
-                        <p>No barcode plans available at the moment. Please check back later.</p>
-                    </div>
-                @else
-                    @foreach ($barcode_plans as $barcode_plan)
-                        @php
-                            $imageCounts = [
-                                'Standard' => 1,
-                                'Enhanced' => 2,
-                                'Professional' => 3,
-                            ];
-
-                            $imageCount = $imageCounts[$barcode_plan->title] ?? 0;
-                        @endphp
-
-                        <div class="col-xl-3 col-md-6 col-sm-10 aos-init" data-aos="fade-up" data-aos-duration="1500"
-                            data-aos-offset="50">
-                            <div class="pricing-item style-four">
-                                <div class="icon">
-                                    @for ($i = 0; $i < $imageCount; $i++)
-                                        <!-- Changed <= to < to correctly match image count -->
-                                        <img width="30px" src="{{ asset('frontend/newimage/pro.png') }}"
-                                            alt="">
-                                    @endfor
-                                </div>
-
-                                <h4 class="title">{{ $barcode_plan->title }}</h4>
-                                <div class="price">
-                                    <span class="prev">$</span>{{ $barcode_plan->price }}
-                                    <span class="next">/
-                                        @if ($barcode_plan->billing_cycle == 'year')
-                                            year
-                                        @elseif ($barcode_plan->billing_cycle == 'month')
-                                            month
-                                        @else
-                                            Trial Period
-                                        @endif
-                                    </span>
-                                </div>
-                                <div class="text">No credit card required</div>
-                                <hr>
-                                @php
-                                    $descriptions = is_array($barcode_plan->descriptions)
-                                        ? $barcode_plan->descriptions
-                                        : json_decode($barcode_plan->descriptions);
-                                @endphp
-                                @if (!empty($descriptions))
-                                    <ul class="icon-list">
-                                        @foreach ($descriptions as $description)
-                                            <li><i class="fas fa-checkmark"></i> {{ $description }}</li>
-                                        @endforeach
-                                    </ul>
-                                @endif
-                                <a href="{{ route('user_subscribe.register', $barcode_plan->slug) }}"
-                                    class="theme-btn">Order Now</a>
-                            </div>
-                        </div>
-                    @endforeach
-                @endif
-
-            </div>
         </div>
     </section>
     <section class="numbered-box-area rel pt-130 rpt-100 rel z-2">
