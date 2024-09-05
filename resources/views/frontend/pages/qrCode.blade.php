@@ -127,7 +127,7 @@
                     <div class="feature-image-box aos-init aos-animate" data-aos="fade-up" data-aos-duration="1500"
                         data-aos-offset="50">
                         <div class="image">
-                            <img src="{{ asset('frontend/newimage/templates.webp') }}" alt="Feature">
+                            <img src="{{ asset('frontend/newimage/qrcreate.webp') }}" alt="Feature">
                         </div>
                         <div class="content">
                             <h5><a href="service-details.html">Elegant Designed Templates</a></h5>

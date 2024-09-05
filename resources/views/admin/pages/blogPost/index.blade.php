@@ -14,7 +14,7 @@
                             fill="currentColor" />
                     </svg>
                 </span>
-                <span class="pt-2">Add Blogs</span>
+                <span class="pt-2">Add BLOG</span>
             </a>
         </div>
         <div class="card-body py-0">

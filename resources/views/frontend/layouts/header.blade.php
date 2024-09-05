@@ -252,7 +252,7 @@
                                 <li><a href="{{ route('barCode') }}">BAR CODE</a></li>
                                 <li><a href="{{ route('pricing') }}">PRICING</a></li>
                                 <li><a href="{{ route('services') }}">SERVICES</a></li>
-                                <li><a href="{{ route('allBlog') }}">BLOGS</a></li>
+                                <li><a href="{{ route('allBlog') }}">BLOG</a></li>
                             </ul>
                         </div>
                     </nav>
@@ -648,7 +648,7 @@
                                                 </g>
                                             </g>
                                         </svg>
-                                        <span class="ps-3">BLOGS</span>
+                                        <span class="ps-3">BLOG</span>
                                     </a>
                                 </li>
                             </ul>

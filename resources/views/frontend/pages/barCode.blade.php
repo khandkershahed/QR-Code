@@ -24,21 +24,14 @@
                             provides a fast and efficient solution to streamline your processes. Generate barcodes
                             instantly and download them in various formats for seamless integration into your business
                             operations.</p>
-                        <div class="play-app-stor pt-10">
-                            <a href="#"><img
-                                    src="https://webtendtheme.net/html/2024/akpager/assets/images/icons/play-stor.png"
-                                    alt="Play Stor"></a>
-                            <a href="#"><img
-                                    src="https://webtendtheme.net/html/2024/akpager/assets/images/icons/app-stor.png"
-                                    alt="App Stor"></a>
-                        </div>
+
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="aos-init aos-animate" data-aos="fade-right" data-aos-duration="1500"
                         data-aos-offset="50">
                         <img class="rounded-3"
-                            src="https://techcrunch.com/wp-content/uploads/2018/07/Scandit-Barcode-Scanning-with-Samsung-Tablet.png"
+                            src="{{ asset('frontend/newimage/barcode-main.webp') }}"
                             alt="About">
                     </div>
                 </div>
@@ -135,7 +128,7 @@
                 <div class="col-lg-6">
                     <div class="how-to-manage-image rmb-55 aos-init aos-animate" data-aos="fade-left"
                         data-aos-duration="1500" data-aos-offset="50">
-                        <img src="https://webtendtheme.net/html/2024/akpager/assets/images/about/how-to-manage.png"
+                        <img src="{{ asset('frontend/newimage/how-to-manage.webp') }}"
                             alt="How To Manage">
                     </div>
                 </div>
@@ -214,10 +207,10 @@
                 <div class="col-lg-6">
                     <div class="about-seven-right-images mb-25 rmb-0 rmt-15 aos-init aos-animate" data-aos="fade-left"
                         data-aos-duration="1500" data-aos-offset="50">
-                        <img src="https://webtendtheme.net/html/2024/akpager/assets/images/about/about-seven-two1.png"
+                        <img src="{{ asset('frontend/newimage/about-seven-two1.webp') }}"
                             alt="About">
                         <div class="about-over">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/about/about-seven-two2.png"
+                            <img src="{{ asset('frontend/newimage/barcode-generator.webp') }}"
                                 alt="About">
                         </div>
                     </div>
@@ -252,9 +245,7 @@
                             <p>offer a range of solutions to fit your needs, from basic to advanced features. Whether
                                 you're just starting out or managing a large-scale operation, our plans are designed to
                                 provide reliable and effective barcode management.</p>
-                            <a href="{{ route('user.barcode.index') }}" class="read-more">Read More <i
-                                    class="fas fa-arrow-right"></i></a>
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/services/number-box1.png"
+                            <img src="{{ asset('frontend/newimage/barcode-create.webp') }}"
                                 alt="Number Box">
                         </div>
                     </div>
@@ -267,9 +258,7 @@
                             <p>Easily manage and streamline your data with our bulk upload feature. This allows you to
                                 upload large quantities of information in one go, saving time and reducing manual entry
                                 errors. Perfect for handling extensive data sets, whether it's product inventories.</p>
-                            <a href="{{ route('user.barcode.index') }}" class="read-more">Read More <i
-                                    class="fas fa-arrow-right"></i></a>
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/services/number-box2.png"
+                            <img src="{{ asset('frontend/newimage/bulk-barcode.webp') }}"
                                 alt="Number Box">
                         </div>
                     </div>
@@ -282,9 +271,7 @@
                             <p>Accelerate your workflow with our Fast Generate/Create feature. Instantly produce or set
                                 up items, content, or data with minimal effort and time. Designed for efficiency, this
                                 tool allows you to quickly generate multiple entries, streamline repetitive tasks.</p>
-                            <a href="{{ route('user.barcode.index') }}" class="read-more">Read More <i
-                                    class="fas fa-arrow-right"></i></a>
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/services/number-box3.png"
+                            <img src="{{ asset('frontend/newimage/barcodespeed.webp') }}"
                                 alt="Number Box">
                         </div>
                     </div>

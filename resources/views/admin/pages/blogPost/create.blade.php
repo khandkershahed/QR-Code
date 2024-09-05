@@ -120,12 +120,12 @@
                             <div class="mb-5">
                                 <x-metronic.label class="form-label">{{ __('Badge') }}</x-metronic.label>
                                 <x-metronic.input type="text" name="badge" class="form-control mb-2"
-                                    placeholder="Set the blogs badge" :value="old('badge')"></x-metronic.input>
+                                    placeholder="Set the blog badge" :value="old('badge')"></x-metronic.input>
                             </div>
                             <div class="">
                                 <x-metronic.label class="form-label">{{ __('Additional Url') }}</x-metronic.label>
                                 <x-metronic.input type="url" name="additional_url" class="form-control mb-2"
-                                    placeholder="Set the blogs additional url" :value="old('additional_url')"></x-metronic.input>
+                                    placeholder="Set the blog additional url" :value="old('additional_url')"></x-metronic.input>
                             </div>
                         </div>
                     </div>

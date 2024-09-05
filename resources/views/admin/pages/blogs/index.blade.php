@@ -5,7 +5,7 @@
                 <h1 class="mb-0 text-center w-100 text-white">Manage Your Blog</h1>
             </div>
             <div>
-                <a href="{{ route('admin.blogs.create') }}" class="btn btn-light-primary rounded-2">
+                <a href="{{ route('admin.blog.create') }}" class="btn btn-light-primary rounded-2">
                     <span class="svg-icon svg-icon-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none">
@@ -71,8 +71,8 @@
             <!--begin::Card toolbar-->
             <div class="card-toolbar">
                 <!--begin::Button-->
-                <a href="{{ route('admin.blogs.create') }}" class="btn btn-light-primary rounded-2">
-                    <!--begin::Svg Icon | path: blogs/duotune/general/gen035.svg-->
+                <a href="{{ route('admin.blog.create') }}" class="btn btn-light-primary rounded-2">
+                    <!--begin::Svg Icon | path: blog/duotune/general/gen035.svg-->
                     <span class="svg-icon svg-icon-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none">
@@ -119,7 +119,7 @@
                 var table = $('.blogsDT').DataTable({
                     processing: true,
                     serverSide: true,
-                    ajax: "{{ route('admin.blogs.index') }}",
+                    ajax: "{{ route('admin.blog.index') }}",
                     columns: [{
                             data: null,
                             render: function(data, type, row, meta) {
@@ -154,7 +154,7 @@
 
                 $(document).on('change', '.status-toggle', function() {
                     const id = $(this).data('id');
-                    const route = "{{ route('admin.blogs.toggle-status', ':id') }}".replace(':id', id);
+                    const route = "{{ route('admin.blog.toggle-status', ':id') }}".replace(':id', id);
                     toggleStatus(route, id);
                 });
             });
