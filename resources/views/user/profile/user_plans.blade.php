@@ -4,7 +4,7 @@
             <div class="col-lg-12">
                 <div class="card" id="kt_pricing">
                     <div class="card-body p-lg-17">
-                        @if (!empty($subscription))
+                        @if ($subscription)
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div

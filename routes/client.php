@@ -43,3 +43,4 @@ Route::middleware('auth')->prefix('user')->name('user.')->group(function () {
 });
 Route::post('user/qrcode/preview', [QrCodeController::class, 'qrPreview'])->name('user.qr.preview');
 Route::get('/{Qr}', [QrCodeController::class, 'showQr'])->name('showQr');
+ 
