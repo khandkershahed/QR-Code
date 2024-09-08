@@ -156,19 +156,16 @@
                                                 </div>
 
                                                 <h4 class="title">{{ $qr_plan->title }}</h4>
-                                                <div class="price">
-                                                    <span class="prev">$</span>{{ $qr_plan->price }}
-                                                    <span class="next">/
-                                                        @if ($qr_plan->billing_cycle == 'year')
-                                                            year
-                                                        @elseif ($qr_plan->billing_cycle == 'month')
-                                                            month
-                                                        @else
-                                                            Trial Period
-                                                        @endif
+                                                <div class="price d-flex justify-content-center">
+                                                    <span
+                                                        class="prev">$</span>{{ number_format($qr_plan->price / 12, 2) }}
+                                                    <span class="next ps-3">
+                                                        <div class="d-flex flex-column justify-content-start text-start">
+                                                            <span><span class="fw-bold">USD</span>/month</span>
+                                                            <small class="pt-2 text-info">Billed Yearly</small>
+                                                        </div>
                                                     </span>
                                                 </div>
-                                                <div class="text">No credit card required</div>
                                                 <hr>
                                                 @php
                                                     $descriptions = is_array($qr_plan->descriptions)
@@ -217,19 +214,16 @@
                                                 </div>
 
                                                 <h4 class="title">{{ $nfc_plan->title }}</h4>
-                                                <div class="price">
-                                                    <span class="prev">$</span>{{ $nfc_plan->price }}
-                                                    <span class="next">/
-                                                        @if ($nfc_plan->billing_cycle == 'year')
-                                                            year
-                                                        @elseif ($nfc_plan->billing_cycle == 'month')
-                                                            month
-                                                        @else
-                                                            Trial Period
-                                                        @endif
+                                                <div class="price d-flex justify-content-center">
+                                                    <span
+                                                        class="prev">$</span>{{ number_format($nfc_plan->price / 12, 2) }}
+                                                    <span class="next ps-3">
+                                                        <div class="d-flex flex-column justify-content-start text-start">
+                                                            <span><span class="fw-bold">USD</span>/month</span>
+                                                            <small class="pt-2 text-info">Billed Yearly</small>
+                                                        </div>
                                                     </span>
                                                 </div>
-                                                <div class="text">No credit card required</div>
                                                 <hr>
                                                 @php
                                                     $descriptions = is_array($nfc_plan->descriptions)
@@ -278,9 +272,10 @@
                                                 </div>
 
                                                 <h4 class="title">{{ $barcode_plan->title }}</h4>
-                                                <div class="price">
-                                                    <span class="prev">$</span>{{ $barcode_plan->price }}
-                                                    <span class="next">/
+                                                <div class="price d-flex justify-content-center">
+                                                    <span
+                                                        class="prev">$</span>{{ number_format($barcode_plan->price / 12, 2) }}
+                                                    {{-- <span class="next">/
                                                         @if ($barcode_plan->billing_cycle == 'year')
                                                             year
                                                         @elseif ($barcode_plan->billing_cycle == 'month')
@@ -288,9 +283,14 @@
                                                         @else
                                                             Trial Period
                                                         @endif
+                                                    </span> --}}
+                                                    <span class="next ps-3">
+                                                        <div class="d-flex flex-column justify-content-start text-start">
+                                                            <span><span class="fw-bold">USD</span>/month</span>
+                                                            <small class="pt-2 text-info">Billed Yearly</small>
+                                                        </div>
                                                     </span>
                                                 </div>
-                                                <div class="text">No credit card required</div>
                                                 <hr>
                                                 @php
                                                     $descriptions = is_array($barcode_plan->descriptions)

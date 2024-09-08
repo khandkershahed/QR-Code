@@ -114,7 +114,5 @@ class UserNotificationController extends Controller
     {
         $notification = NotificationMessage::findOrFail($id);
         $notification->delete();
-
-        return redirect()->back()->with('success', 'Notification deleted successfully!');
     }
 }

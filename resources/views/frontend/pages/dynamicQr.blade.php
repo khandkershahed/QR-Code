@@ -227,9 +227,6 @@
                            <span class="subtitle-one style-two mb-20"><i class="fas fa-rocket-launch"></i> How to get Started</span>
                             <h2>Getting started takes less than 2 minutes</h2>
                         </div>
-                        <ul class="icon-list mt-40 mb-40">
-                            <li><i class="fal fa-arrow-right"></i> No credit card required</li>
-                        </ul>
                         <a href="about.html" class="theme-btn">Learn More <i class="far fa-arrow-right"></i></a>
                     </div>
                 </div>

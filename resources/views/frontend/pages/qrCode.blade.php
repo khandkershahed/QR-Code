@@ -17,14 +17,18 @@
                         <div class="section-title mb-30">
                             <h2>Dynamic QR Code Generator</h2>
                         </div>
-                        <p>Unlock the full potential of QR codes with our dynamic generator. Create versatile QR codes for social media sharing, file transfers, images, videos, discounts, restaurant menus, business hours, locations, and more. Customize your QR codes to fit your brand, and download them in high-resolution formats like PDF, EPS, JPEG, and PNG for professional-quality print and digital use. Effortlessly manage and update your QR codes to stay current and engaging.</p>
+                        <p>Unlock the full potential of QR codes with our dynamic generator. Create versatile QR codes
+                            for social media sharing, file transfers, images, videos, discounts, restaurant menus,
+                            business hours, locations, and more. Customize your QR codes to fit your brand, and download
+                            them in high-resolution formats like PDF, EPS, JPEG, and PNG for professional-quality print
+                            and digital use. Effortlessly manage and update your QR codes to stay current and engaging.
+                        </p>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="about-eight-image-part aos-init aos-animate" data-aos="fade-right"
                         data-aos-duration="1500" data-aos-offset="50">
-                        <img src="{{ asset('frontend/newimage/qrCodeGenerator.png') }}"
-                            alt="About">
+                        <img src="{{ asset('frontend/newimage/qrCodeGenerator.png') }}" alt="About">
                     </div>
                 </div>
             </div>
@@ -73,19 +77,15 @@
                                 </div>
 
                                 <h4 class="title">{{ $qr_plan->title }}</h4>
-                                <div class="price">
-                                    <span class="prev">$</span>{{ $qr_plan->price }}
-                                    <span class="next">/
-                                        @if ($qr_plan->billing_cycle == 'year')
-                                            year
-                                        @elseif ($qr_plan->billing_cycle == 'month')
-                                            month
-                                        @else
-                                            Trial Period
-                                        @endif
+                                <div class="price d-flex justify-content-center">
+                                    <span class="prev">$</span>{{ number_format($qr_plan->price / 12, 2) }}
+                                    <span class="next ps-3">
+                                        <div class="d-flex flex-column text-start">
+                                            <span><span class="fw-bold">USD</span>/month</span>
+                                            <small class="pt-2 text-info">Billed Yearly</small>
+                                        </div>
                                     </span>
                                 </div>
-                                <div class="text">No credit card required</div>
                                 <hr>
                                 @php
                                     $descriptions = is_array($qr_plan->descriptions)
@@ -116,7 +116,9 @@
                     <div class="section-title text-center mb-55 aos-init aos-animate" data-aos="fade-up"
                         data-aos-duration="1500" data-aos-offset="50">
                         <h2>Standout Features of Our Digital Visiting Cards</h2>
-                        <span class="subtitle-one style-two mb-20"><i class="fas fa-rocket-launch"></i> Unlock powerful features with our digital visiting cards—custom templates, real-time updates, and seamless device integration for an unforgettable networking experience.</span>
+                        <span class="subtitle-one style-two mb-20"><i class="fas fa-rocket-launch"></i> Unlock powerful
+                            features with our digital visiting cards—custom templates, real-time updates, and seamless
+                            device integration for an unforgettable networking experience.</span>
                     </div>
                 </div>
             </div>
@@ -125,12 +127,13 @@
                     <div class="feature-image-box aos-init aos-animate" data-aos="fade-up" data-aos-duration="1500"
                         data-aos-offset="50">
                         <div class="image">
-                            <img src="{{ asset('frontend/newimage/templates.webp') }}"
-                                alt="Feature">
+                            <img src="{{ asset('frontend/newimage/qrcreate.webp') }}" alt="Feature">
                         </div>
                         <div class="content">
                             <h5><a href="service-details.html">Elegant Designed Templates</a></h5>
-                            <p>Choose from a variety of beautifully designed templates to create a digital visiting card that matches your style. Customize every detail, from colors to fonts, ensuring your card perfectly represents your personal or business brand.</p>
+                            <p>Choose from a variety of beautifully designed templates to create a digital visiting card
+                                that matches your style. Customize every detail, from colors to fonts, ensuring your
+                                card perfectly represents your personal or business brand.</p>
                         </div>
                     </div>
                 </div>
@@ -138,12 +141,13 @@
                     <div class="feature-image-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="100"
                         data-aos-duration="1500" data-aos-offset="50">
                         <div class="image">
-                            <img src="{{ asset('frontend/newimage/realTimeUpdate.webp') }}"
-                                alt="Feature">
+                            <img src="{{ asset('frontend/newimage/realTimeUpdate.webp') }}" alt="Feature">
                         </div>
                         <div class="content">
                             <h5><a href="service-details.html">Real-Time Updates</a></h5>
-                            <p>Keep your digital visiting card dynamic and interactive with real-time updates. Add photo galleries, videos, and contact forms, allowing you to showcase your work and make it easy for others to connect with you instantly.</p>
+                            <p>Keep your digital visiting card dynamic and interactive with real-time updates. Add photo
+                                galleries, videos, and contact forms, allowing you to showcase your work and make it
+                                easy for others to connect with you instantly.</p>
                         </div>
                     </div>
                 </div>
@@ -151,12 +155,13 @@
                     <div class="feature-image-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="200"
                         data-aos-duration="1500" data-aos-offset="50">
                         <div class="image">
-                            <img src="{{ asset('frontend/newimage/NFCCard.webp') }}"
-                                alt="Feature">
+                            <img src="{{ asset('frontend/newimage/NFCCard.webp') }}" alt="Feature">
                         </div>
                         <div class="content">
                             <h5><a href="service-details.html">NFC Cards for Contactless Sharing</a></h5>
-                            <p>Upgrade your business card to an NFC-enabled smart card for seamless, contactless sharing. Impress your connections with a modern, tech-savvy way to exchange information instantly with just a tap.</p>
+                            <p>Upgrade your business card to an NFC-enabled smart card for seamless, contactless
+                                sharing. Impress your connections with a modern, tech-savvy way to exchange information
+                                instantly with just a tap.</p>
                         </div>
                     </div>
                 </div>
@@ -183,8 +188,8 @@
             <div class="slick-list draggable" style="padding: 0px 50px;">
                 <div class="slick-track"
                     style="opacity: 1; width: 45000px; transform: translate3d(-798px, 0px, 0px); transition: transform 8000ms linear 0s;">
-                    <div class="marquee-iconic-box slick-slide" data-slick-index="-2" id="" aria-hidden="true"
-                        tabindex="-1">
+                    <div class="marquee-iconic-box slick-slide" data-slick-index="-2" id=""
+                        aria-hidden="true" tabindex="-1">
                         <div class="image">
                             <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag6.png"
                                 alt="Flag">
@@ -193,8 +198,8 @@
                             <h6 class="title">Kazakhstan</h6>
                         </div>
                     </div>
-                    <div class="marquee-iconic-box slick-slide" data-slick-index="-1" id="" aria-hidden="true"
-                        tabindex="-1">
+                    <div class="marquee-iconic-box slick-slide" data-slick-index="-1" id=""
+                        aria-hidden="true" tabindex="-1">
                         <div class="image">
                             <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag9.png"
                                 alt="Flag">
@@ -203,7 +208,8 @@
                             <h6 class="title">Algeria</h6>
                         </div>
                     </div>
-                    <div class="marquee-iconic-box slick-slide" data-slick-index="0" aria-hidden="true" tabindex="-1">
+                    <div class="marquee-iconic-box slick-slide" data-slick-index="0" aria-hidden="true"
+                        tabindex="-1">
                         <div class="image">
                             <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag1.png"
                                 alt="Flag">

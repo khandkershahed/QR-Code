@@ -8,6 +8,7 @@
             </div>
         </div>
     </section>
+
     <section class="app-stor-area pt-100 pb-100 rpb-150 rel z-1">
         <div class="container mb-30">
             <div class="row justify-content-between align-items-center">
@@ -23,21 +24,14 @@
                             provides a fast and efficient solution to streamline your processes. Generate barcodes
                             instantly and download them in various formats for seamless integration into your business
                             operations.</p>
-                        <div class="play-app-stor pt-10">
-                            <a href="#"><img
-                                    src="https://webtendtheme.net/html/2024/akpager/assets/images/icons/play-stor.png"
-                                    alt="Play Stor"></a>
-                            <a href="#"><img
-                                    src="https://webtendtheme.net/html/2024/akpager/assets/images/icons/app-stor.png"
-                                    alt="App Stor"></a>
-                        </div>
+
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="aos-init aos-animate" data-aos="fade-right" data-aos-duration="1500"
                         data-aos-offset="50">
                         <img class="rounded-3"
-                            src="https://techcrunch.com/wp-content/uploads/2018/07/Scandit-Barcode-Scanning-with-Samsung-Tablet.png"
+                            src="{{ asset('frontend/newimage/barcode-main.webp') }}"
                             alt="About">
                     </div>
                 </div>
@@ -46,6 +40,77 @@
         <div class="bg-lines">
             <span></span><span></span>
             <span></span><span></span>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="row pt-130">
+                <div class="col-xl-7 col-lg-9 col-md-11 mx-auto ">
+                    <div class="section-title text-center mb-60 aos-init aos-animate" data-aos="fade-up"
+                        data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
+                        <h2 class="text-center">Bar Code Pricing Plans</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                @if ($barcode_plans->isEmpty())
+                    <div class="col-12 text-center">
+                        <p>No barcode plans available at the moment. Please check back later.</p>
+                    </div>
+                @else
+                    @foreach ($barcode_plans as $barcode_plan)
+                        @php
+                            $imageCounts = [
+                                'Standard' => 1,
+                                'Enhanced' => 2,
+                                'Professional' => 3,
+                            ];
+
+                            $imageCount = $imageCounts[$barcode_plan->title] ?? 0;
+                        @endphp
+
+                        <div class="col-xl-3 col-md-6 col-sm-10 aos-init" data-aos="fade-up" data-aos-duration="1500"
+                            data-aos-offset="50">
+                            <div class="pricing-item style-four">
+                                <div class="icon">
+                                    @for ($i = 0; $i < $imageCount; $i++)
+                                        <!-- Changed <= to < to correctly match image count -->
+                                        <img width="30px" src="{{ asset('frontend/newimage/pro.png') }}"
+                                            alt="">
+                                    @endfor
+                                </div>
+
+                                <h4 class="title">{{ $barcode_plan->title }}</h4>
+                                <div class="price d-flex justify-content-center">
+                                    <span class="prev">$</span>{{ number_format($barcode_plan->price / 12, 2) }}
+                                    <span class="next ps-3">
+                                        <div class="d-flex flex-column">
+                                            <span><span class="fw-bold">USD</span>/month</span>
+                                            <small class="pt-2 text-info">Billed Yearly</small>
+                                        </div>
+                                    </span>
+                                </div>
+                                <hr>
+                                @php
+                                    $descriptions = is_array($barcode_plan->descriptions)
+                                        ? $barcode_plan->descriptions
+                                        : json_decode($barcode_plan->descriptions);
+                                @endphp
+                                @if (!empty($descriptions))
+                                    <ul class="icon-list">
+                                        @foreach ($descriptions as $description)
+                                            <li><i class="fas fa-checkmark"></i> {{ $description }}</li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+                                <a href="{{ route('user_subscribe.register', $barcode_plan->slug) }}"
+                                    class="theme-btn">Order Now</a>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
+
+            </div>
         </div>
     </section>
     <section class="how-to-manage-area bgc-lighter pt-125 rpt-105 pb-125 rpb-80">
@@ -63,7 +128,7 @@
                 <div class="col-lg-6">
                     <div class="how-to-manage-image rmb-55 aos-init aos-animate" data-aos="fade-left"
                         data-aos-duration="1500" data-aos-offset="50">
-                        <img src="https://webtendtheme.net/html/2024/akpager/assets/images/about/how-to-manage.png"
+                        <img src="{{ asset('frontend/newimage/how-to-manage.webp') }}"
                             alt="How To Manage">
                     </div>
                 </div>
@@ -142,10 +207,10 @@
                 <div class="col-lg-6">
                     <div class="about-seven-right-images mb-25 rmb-0 rmt-15 aos-init aos-animate" data-aos="fade-left"
                         data-aos-duration="1500" data-aos-offset="50">
-                        <img src="https://webtendtheme.net/html/2024/akpager/assets/images/about/about-seven-two1.png"
+                        <img src="{{ asset('frontend/newimage/about-seven-two1.webp') }}"
                             alt="About">
                         <div class="about-over">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/about/about-seven-two2.png"
+                            <img src="{{ asset('frontend/newimage/barcode-generator.webp') }}"
                                 alt="About">
                         </div>
                     </div>
@@ -155,81 +220,6 @@
         <div class="bg-lines">
             <span></span><span></span>
             <span></span><span></span>
-        </div>
-    </section>
-    <section>
-        <div class="container">
-            <div class="row pt-130">
-                <div class="col-xl-7 col-lg-9 col-md-11 mx-auto ">
-                    <div class="section-title text-center mb-60 aos-init aos-animate" data-aos="fade-up"
-                        data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
-                        <h2 class="text-center">Bar Code Pricing Plans</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                @if ($barcode_plans->isEmpty())
-                    <div class="col-12 text-center">
-                        <p>No barcode plans available at the moment. Please check back later.</p>
-                    </div>
-                @else
-                    @foreach ($barcode_plans as $barcode_plan)
-                        @php
-                            $imageCounts = [
-                                'Standard' => 1,
-                                'Enhanced' => 2,
-                                'Professional' => 3,
-                            ];
-
-                            $imageCount = $imageCounts[$barcode_plan->title] ?? 0;
-                        @endphp
-
-                        <div class="col-xl-3 col-md-6 col-sm-10 aos-init" data-aos="fade-up" data-aos-duration="1500"
-                            data-aos-offset="50">
-                            <div class="pricing-item style-four">
-                                <div class="icon">
-                                    @for ($i = 0; $i < $imageCount; $i++)
-                                        <!-- Changed <= to < to correctly match image count -->
-                                        <img width="30px" src="{{ asset('frontend/newimage/pro.png') }}"
-                                            alt="">
-                                    @endfor
-                                </div>
-
-                                <h4 class="title">{{ $barcode_plan->title }}</h4>
-                                <div class="price">
-                                    <span class="prev">$</span>{{ $barcode_plan->price }}
-                                    <span class="next">/
-                                        @if ($barcode_plan->billing_cycle == 'year')
-                                            year
-                                        @elseif ($barcode_plan->billing_cycle == 'month')
-                                            month
-                                        @else
-                                            Trial Period
-                                        @endif
-                                    </span>
-                                </div>
-                                <div class="text">No credit card required</div>
-                                <hr>
-                                @php
-                                    $descriptions = is_array($barcode_plan->descriptions)
-                                        ? $barcode_plan->descriptions
-                                        : json_decode($barcode_plan->descriptions);
-                                @endphp
-                                @if (!empty($descriptions))
-                                    <ul class="icon-list">
-                                        @foreach ($descriptions as $description)
-                                            <li><i class="fas fa-checkmark"></i> {{ $description }}</li>
-                                        @endforeach
-                                    </ul>
-                                @endif
-                                <a href="{{ route('user_subscribe.register', $barcode_plan->slug) }}"
-                                    class="theme-btn">Order Now</a>
-                            </div>
-                        </div>
-                    @endforeach
-                @endif
-
-            </div>
         </div>
     </section>
     <section class="numbered-box-area rel pt-130 rpt-100 rel z-2">
@@ -255,9 +245,7 @@
                             <p>offer a range of solutions to fit your needs, from basic to advanced features. Whether
                                 you're just starting out or managing a large-scale operation, our plans are designed to
                                 provide reliable and effective barcode management.</p>
-                            <a href="{{ route('user.barcode.index') }}" class="read-more">Read More <i
-                                    class="fas fa-arrow-right"></i></a>
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/services/number-box1.png"
+                            <img src="{{ asset('frontend/newimage/barcode-create.webp') }}"
                                 alt="Number Box">
                         </div>
                     </div>
@@ -270,9 +258,7 @@
                             <p>Easily manage and streamline your data with our bulk upload feature. This allows you to
                                 upload large quantities of information in one go, saving time and reducing manual entry
                                 errors. Perfect for handling extensive data sets, whether it's product inventories.</p>
-                            <a href="{{ route('user.barcode.index') }}" class="read-more">Read More <i
-                                    class="fas fa-arrow-right"></i></a>
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/services/number-box2.png"
+                            <img src="{{ asset('frontend/newimage/bulk-barcode.webp') }}"
                                 alt="Number Box">
                         </div>
                     </div>
@@ -285,9 +271,7 @@
                             <p>Accelerate your workflow with our Fast Generate/Create feature. Instantly produce or set
                                 up items, content, or data with minimal effort and time. Designed for efficiency, this
                                 tool allows you to quickly generate multiple entries, streamline repetitive tasks.</p>
-                            <a href="{{ route('user.barcode.index') }}" class="read-more">Read More <i
-                                    class="fas fa-arrow-right"></i></a>
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/services/number-box3.png"
+                            <img src="{{ asset('frontend/newimage/barcodespeed.webp') }}"
                                 alt="Number Box">
                         </div>
                     </div>

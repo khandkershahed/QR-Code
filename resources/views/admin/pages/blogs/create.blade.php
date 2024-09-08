@@ -7,8 +7,8 @@
             <!--begin::Card toolbar-->
             <div class="card-toolbar">
                 <!--begin::Button-->
-                <a href="{{ route('admin.blogs.index') }}" class="btn btn-light-info rounded-2">
-                    <!--begin::Svg Blog | path: blogs/duotune/general/gen035.svg-->
+                <a href="{{ route('admin.blog.index') }}" class="btn btn-light-info rounded-2">
+                    <!--begin::Svg Blog | path: blog/duotune/general/gen035.svg-->
                     <span class="svg-icon svg-icon-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none">
@@ -26,7 +26,7 @@
         </div>
         <div class="card-body pt-0">
             <!--begin::Form-->
-            <form class="form" action="{{ route('admin.blogs.store') }}" method="POST" enctype="multipart/form-data">
+            <form class="form" action="{{ route('admin.blog.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <!--begin::Input group-->
                 <div class="row">
