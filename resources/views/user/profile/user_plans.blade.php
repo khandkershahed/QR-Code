@@ -9,9 +9,10 @@
                                 <div class="col-lg-12">
                                     <div
                                         class="notice d-flex bg-light-warning rounded border-warning border border-dashed  p-6">
-                                        <i class="ki-duotone ki-bank fs-2tx text-primary me-4"><span
-                                                class="path1"></span><span class="path2"></span></i>
-
+                                        <i class="ki-duotone ki-bank fs-2tx text-primary me-4">
+                                            <span class="path1"></span>
+                                            <span class="path2"></span>
+                                        </i>
                                         <div class="d-flex flex-stack flex-grow-1 flex-wrap flex-md-nowrap">
                                             <div class="mb-3 mb-md-0 fw-semibold">
                                                 <h4 class="text-gray-900 fw-bold">Your Current Plan
@@ -23,6 +24,8 @@
                                                         @endif
                                                     </span>
                                                 </h4>
+
+                                                <p class="text-gray-900 fw-bold mt-3"> Subscription ends at : {{ $subscription->subscription_ends_at->format('d M, Y') }}</p>
 
                                                 <div class="fs-6 text-gray-700 pe-7">Please check our plans and upgrade
                                                     if needed.</div>
@@ -68,13 +71,16 @@
                                         <div class="nav-group nav-group-outline mx-auto mb-8">
                                             <ul class="nav nav-tabs nav-line-tabs border-0">
                                                 <li class="nav-item">
-                                                    <a class="nav-link btn text-black btn-active btn-active-secondary px-6 py-3 me-2 active" data-bs-toggle="tab" href="#nfc_tab">NFC</a>
+                                                    <a class="nav-link btn text-black btn-active btn-active-secondary px-6 py-3 me-2 active"
+                                                        data-bs-toggle="tab" href="#nfc_tab">NFC</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link btn text-black btn-active btn-active-secondary px-6 py-3" data-bs-toggle="tab" href="#qr_tab">QR</a>
+                                                    <a class="nav-link btn text-black btn-active btn-active-secondary px-6 py-3"
+                                                        data-bs-toggle="tab" href="#qr_tab">QR</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link btn text-black btn-active btn-active-secondary px-6 py-3" data-bs-toggle="tab" href="#barcode_tab">Bar Code</a>
+                                                    <a class="nav-link btn text-black btn-active btn-active-secondary px-6 py-3"
+                                                        data-bs-toggle="tab" href="#barcode_tab">Bar Code</a>
                                                 </li>
                                             </ul>
 
@@ -208,7 +214,8 @@
 
                                                                     <div class="w-100 mb-10">
                                                                         @foreach (json_decode($barcode_plan->descriptions ?? '[]') as $description)
-                                                                            <div class="d-flex align-items-center mb-5">
+                                                                            <div
+                                                                                class="d-flex align-items-center mb-5">
                                                                                 <span
                                                                                     class="fw-semibold fs-6 text-gray-800 flex-grow-1 pe-3">
                                                                                     {{ $description }}</span>

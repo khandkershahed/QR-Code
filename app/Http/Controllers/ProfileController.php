@@ -200,7 +200,7 @@ class ProfileController extends Controller
             'qr_plans'      => Plan::orderBy('price', 'asc')->where('type', 'qr')->get(),
             'nfc_plans'     => Plan::orderBy('price', 'asc')->where('type', 'nfc')->get(),
             'barcode_plans' => Plan::orderBy('price', 'asc')->where('type', 'barcode')->get(),
-            'subscriptions' => Subscription::where('user_id',$user->id)->active()->latest('id')->first(),
+            'subscription'  => Subscription::with('plan')->where('user_id',$user->id)->where('stripe_price', 'active')->latest('id')->first(),
         ];
 
         return view('user.profile.user_plans', $data);
