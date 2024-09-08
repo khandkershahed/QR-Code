@@ -45,7 +45,7 @@
     </section>
     <section class="hero-area-five py-10 rpy-100 rel z-1">
         <div class="container">
-            <div class="hero-content style-five text-center aos-init aos-animate pt-130" data-aos="fade-up"
+            <div class="hero-content style-five text-center aos-init aos-animate pt-lg-5 pt-0" data-aos="fade-up"
                 data-aos-duration="1500" data-aos-offset="50">
                 <h1 data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500"ca data-aos-offset="50"
                     class="aos-init aos-animate">Digital Card Pricing Plans</h1>

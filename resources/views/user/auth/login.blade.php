@@ -17,7 +17,7 @@
                                 </div>
                             </div>
 
-                            <div class="row g-3 mb-9">
+                            {{-- <div class="row g-3 mb-9">
                                 <div class="col-md-6 mx-auto">
                                     <a href="{{ route('auth.google') }}"
                                         class="btn btn-flex border btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
@@ -26,7 +26,7 @@
                                             class="h-15px me-3">
                                         Sign in with Google
                                     </a>
-                                </div>
+                                </div> --}}
 
                                 {{-- <div class="col-md-6">
                                     <a href="{{ route('auth.facebook') }}"
@@ -36,12 +36,12 @@
                                             class="theme-light-show h-25px me-3">
                                         Sign in with Facebook
                                     </a>
-                                </div> --}}
-                            </div>
+                                </div>
+                            </div>--}}
 
-                            <div class="separator separator-content my-14">
+                            {{-- <div class="separator separator-content my-14">
                                 <span class="w-125px text-gray-500 fw-semibold fs-7">Or with email</span>
-                            </div>
+                            </div> --}}
 
                             {{-- <div class="fv-row mb-8 fv-plugins-icon-container">
                                 <x-input-label class="form-label" for="email" :value="__('Email')" />

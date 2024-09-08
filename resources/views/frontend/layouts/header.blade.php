@@ -652,10 +652,11 @@
                                     </a>
                                 </li>
                             </ul>
-                            <div class="text-dark order-2 order-md-1 mt-4 pt-4">
-                                <span class="text-muted fw-bold me-1">2024©</span>
-                                <a href="https://www.goflixza.com/" target="_blank"
-                                    class="text-gray-800 text-hover-primary">GO-QR</a>
+                            <div class="text-dark order-2 order-md-1 mt-5 py-5">
+                                <a href="{{ route('reseller.login') }}" target="_blank"
+                                    class="text-muted fw-bold me-1 text-hover-primary">Login</a>
+                                <a href="{{ route('reseller.register') }}" target="_blank"
+                                    class="text-muted fw-bold me-1 text-hover-primary">Register</a>
                             </div>
                             <div>
                                 <span>{{ !empty($site->address_line_one) ? $site->address_line_one : '' }}

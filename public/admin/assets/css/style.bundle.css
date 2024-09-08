@@ -52764,11 +52764,15 @@ div.dataTables_wrapper div.dataTables_filter {
     z-index: 9999;
     background-color: #1f0061;
 }
-@media (max-width: 576px) {
+/* @media (max-width: 576px) {
     .card {
         height: 100% !important;
     }
-}
+} */
+ .nfc-ev-templates{
+    width: 50px;
+    height: 100px;
+ }
 #whole-content {
     display: block;
 }
@@ -52828,6 +52832,12 @@ div.dataTables_wrapper div.dataTables_filter {
     opacity: 1;
 }
 
+@media (max-width: 768px) {
+    .nfc-ev-templates{
+        width: 20px !important;
+        height: 50px !important;
+     }
+}
 @media (max-width: 991.98px) {
     .scrolltop {
         bottom: 30px;

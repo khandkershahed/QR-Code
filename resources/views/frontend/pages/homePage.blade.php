@@ -606,7 +606,7 @@
         </div>
     </section>
     <!-- CTA Area End -->
-    <section id="faqs" class="faqs-area-seven pt-50 rpt-95  rpb-85 rel z-1">
+    <section id="faqs" class="faqs-area-seven  rpb-85 rel z-1">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-7 col-lg-9 aos-init aos-animate" data-aos="fade-up" data-aos-duration="1500"

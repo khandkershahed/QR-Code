@@ -9,7 +9,7 @@
         </div>
     </section>
 
-    <section class="app-stor-area pt-100 pb-100 rpb-150 rel z-1">
+    <section class="app-stor-area pt-100 pb-0 pb-lg-5 rpb-150 rel z-1">
         <div class="container mb-30">
             <div class="row justify-content-between align-items-center">
                 <div class="col-xl-5 col-lg-6">
@@ -42,9 +42,9 @@
             <span></span><span></span>
         </div>
     </section>
-    <section>
+    <section class="mt-5">
         <div class="container">
-            <div class="row pt-130">
+            <div class="row pt-0 pt-lg-5">
                 <div class="col-xl-7 col-lg-9 col-md-11 mx-auto ">
                     <div class="section-title text-center mb-60 aos-init aos-animate" data-aos="fade-up"
                         data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">

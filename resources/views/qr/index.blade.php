@@ -3,7 +3,7 @@
     {{-- {!! QrCode::size(500)->eye('square')->eyeColor(1, 222, 18, 222,222, 18, 222 )->eyeColor(1, 222, 18, 222,222, 18, 222 )->eyeColor(2, 222, 18, 222,222, 18, 222 )->style('dot', 0.8)->errorCorrection('H')->generate('Make me into a QrCode!'); !!} --}}
     <div class="row">
         <div class="col-lg-12">
-            <div class="d-flex align-items-center rounded py-5 px-5 bg-light-primary" style="border: 1px dashed blue;">
+            <div class="d-flex align-items-center rounded py-5 px-5 bg-light-primary mt-5 mt-lg-0" style="border: 1px dashed blue;">
                 <i class="ki-duotone ki-information-5 fs-3x text-warning me-5">
                     <span class="path1"></span><span class="path2"></span><span class="path3"></span>
                 </i>
