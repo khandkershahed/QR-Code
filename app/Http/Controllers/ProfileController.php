@@ -59,7 +59,7 @@ class ProfileController extends Controller
         return view('user.profile.edit', [
             'user' => $request->user(),
             'notifications' => UserNotification::where('user_id', Auth::user()->id)->with('notificationMessage')->orderBy('created_at', 'desc')->get(),
-            'login_sessions'=> UserLoginDetails::where('user_id', Auth::user()->id)->latest('id')->get(),
+            'login_sessions' => UserLoginDetails::where('user_id', Auth::user()->id)->latest('id')->get(),
             'last_login'    => UserLoginDetails::where('user_id', Auth::user()->id)->latest('id')->first(),
             'qrs'           => Qr::where('user_id', Auth::user()->id)->latest('id')->get(['id']),
             'nfc_cards'     => NfcCard::where('user_id', Auth::user()->id)->latest('id')->get(['id']),
@@ -92,26 +92,25 @@ class ProfileController extends Controller
         $logoPath = 'public/user/company_logo/';
         // Handle profile image upload
         if ($request->hasFile('profile_image')) {
-            $profile_image = customUpload($request->file('profile_image'), $imagePath , 'profile_image');
+            $profile_image = customUpload($request->file('profile_image'), $imagePath, 'profile_image');
             if ($profile_image['status'] == 1) {
-                        File::delete(public_path('/storage/user/profile_image/') . $request->user()->profile_image);
-                        File::delete(public_path('/storage/user/profile_image/requestImg/') . $request->user()->profile_image);
-                        File::delete(public_path('/storage/user/profile_image/thumb/') . $request->user()->profile_image);
-                    }
-
-        }else{
+                File::delete(public_path('/storage/user/profile_image/') . $request->user()->profile_image);
+                File::delete(public_path('/storage/user/profile_image/requestImg/') . $request->user()->profile_image);
+                File::delete(public_path('/storage/user/profile_image/thumb/') . $request->user()->profile_image);
+            }
+        } else {
             $profile_image['status'] = 0;
         }
 
         // Handle company logo upload
         if ($request->hasFile('company_logo')) {
-            $company_logo = customUpload($request->file('company_logo'), $logoPath , 'company_logo');
+            $company_logo = customUpload($request->file('company_logo'), $logoPath, 'company_logo');
             if ($company_logo['status'] == 1) {
                 File::delete(public_path('storage/user/company_logo/') . $request->user()->company_logo);
                 File::delete(public_path('storage/user/company_logo/requestImg/') . $request->user()->company_logo);
                 File::delete(public_path('storage/user/company_logo/thumb/') . $request->user()->company_logo);
             }
-        }else{
+        } else {
             $company_logo['status'] = 0;
         }
 
@@ -133,7 +132,7 @@ class ProfileController extends Controller
             'instagram_id'     => $request->instagram_id ?? $request->user()->instagram_id,
             'pinterest_id'     => $request->pinterest_id ?? $request->user()->pinterest_id,
             'linked_in_id'     => $request->linked_in_id ?? $request->user()->linked_in_id,
-            'profile_image'    => $profile_image['status'] == 1 ? $profile_image['file_name']: $request->user()->profile_image,
+            'profile_image'    => $profile_image['status'] == 1 ? $profile_image['file_name'] : $request->user()->profile_image,
             'company_logo'     => $company_logo['status']  == 1 ? $company_logo['file_name'] : $request->user()->company_logo,
             'password'         => $request->filled('password') ? Hash::make($request->password) : $request->user()->password,
         ]);
@@ -188,7 +187,7 @@ class ProfileController extends Controller
         $data = [
             'monthly_plans' => Plan::orderBy('price', 'asc')->where('billing_cycle', 'monthly')->get(),
             'yearly_plans' => Plan::orderBy('price', 'asc')->where('billing_cycle', 'yearly')->get(),
-            'subscriptions' => Subscription::where('user_id',$user->id)->active()->get(),
+            'subscriptions' => Subscription::where('user_id', $user->id)->active()->get(),
         ];
 
         return view('user.profile.subscription_plan', $data);
@@ -196,13 +195,17 @@ class ProfileController extends Controller
     public function upgradePlan(): View
     {
         $user = Auth::user();
+        $subscription = Subscription::with('plan')->where('user_id', $user->id)->where('stripe_status', 'active')->latest('id')->first();
+
+        if ($subscription && !($subscription->subscription_ends_at instanceof \Carbon\Carbon)) {
+            $subscription->subscription_ends_at = \Carbon\Carbon::parse($subscription->subscription_ends_at);
+        }
         $data = [
             'qr_plans'      => Plan::orderBy('price', 'asc')->where('type', 'qr')->get(),
             'nfc_plans'     => Plan::orderBy('price', 'asc')->where('type', 'nfc')->get(),
             'barcode_plans' => Plan::orderBy('price', 'asc')->where('type', 'barcode')->get(),
-            'subscriptions' => Subscription::where('user_id',$user->id)->active()->latest('id')->first(),
+            'subscription'  => $subscription
         ];
-
         return view('user.profile.user_plans', $data);
     }
 }
