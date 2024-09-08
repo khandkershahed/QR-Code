@@ -195,7 +195,7 @@ class ProfileController extends Controller
     public function upgradePlan(): View
     {
         $user = Auth::user();
-        $subscription = Subscription::with('plan')->where('user_id', $user->id)->where('stripe_price', 'active')->latest('id')->first();
+        $subscription = Subscription::with('plan')->where('user_id', $user->id)->where('stripe_status', 'active')->latest('id')->first();
 
         if ($subscription && !($subscription->subscription_ends_at instanceof \Carbon\Carbon)) {
             $subscription->subscription_ends_at = \Carbon\Carbon::parse($subscription->subscription_ends_at);
