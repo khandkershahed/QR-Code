@@ -261,8 +261,8 @@ class QrCodeController extends Controller
         $qr_template             = $request->qr_template;
         $qr_logo                 = $request->qr_logo;
         $qr_saved_logo           = $request->qr_saved_logo;
-        $qr_logo_size            = $request->input('qr_logo_size', 65); // Default size if not provided
-        $qr_logo_space           = $request->input('qr_logo_space', 30); // Default size if not provided
+        $qr_logo_size            = $request->input('qr_logo_size', 75); // Default size if not provided
+        $qr_logo_space           = $request->input('qr_logo_space', 40); // Default size if not provided
         $qr_logo_bg_color        = $this->hexToRgb($request->qr_logo_bg_color);
         $qr_eye_ball             = $request->qr_eye_ball ?? 'square';
         $qr_eye_ball_color       = $this->hexToRgb($request->qr_eye_ball_color ?? '#000000');
@@ -1389,8 +1389,8 @@ class QrCodeController extends Controller
         $qr_template             = $request->qr_template;
         $qr_logo                 = $request->file('qr_logo');
         $qr_saved_logo           = $request->qr_saved_logo;
-        $qr_logo_size            = $request->input('qr_logo_size', 65); // Default size if not provided
-        $qr_logo_space           = $request->input('qr_logo_space', 30); // Default size if not provided
+        $qr_logo_size            = $request->input('qr_logo_size', 75); // Default size if not provided
+        $qr_logo_space           = $request->input('qr_logo_space', 40); // Default size if not provided
         $qr_logo_bg_color        = $this->hexToRgb($request->qr_logo_bg_color);
         $qr_eye_ball             = $request->qr_eye_ball;
         $qr_eye_ball_color       = $this->hexToRgb($request->qr_eye_ball_color);
