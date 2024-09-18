@@ -491,7 +491,7 @@
                     <div class="">
                         <div class="d-flex justify-content-between py-3 px-3 align-items-center bg-white">
                             <div class="me-2">
-                                <button type="button" class="btn btn-light btn-active-light-primary"
+                                <button type="button" class="btn btn-light btn-active-light-danger"
                                     data-kt-stepper-action="previous">
                                     Back
                                 </button>
@@ -524,7 +524,7 @@
                     <p class="mb-0 text-white">Your Choosen Template</p>
                 </div>
             </div>
-            
+
             <div
                 class="card-body custom-card-body overflow-auto px-0 pt-3 d-flex justify-content-center align-items-center">
                 @include('virtualCard.partials.virtual_card_preview')

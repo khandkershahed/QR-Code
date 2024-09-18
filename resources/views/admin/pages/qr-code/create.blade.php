@@ -176,7 +176,7 @@
 
                                 <div class="d-flex justify-content-between py-3 px-3 align-items-center bg-white">
                                     <div class="me-2">
-                                        <button type="button" class="btn btn-light btn-active-light-primary"
+                                        <button type="button" class="btn btn-light btn-active-light-danger"
                                             data-kt-stepper-action="previous">
                                             Back
                                         </button>
