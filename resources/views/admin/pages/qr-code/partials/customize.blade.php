@@ -189,7 +189,7 @@
                                         oninput="updateLogoSizeValue(this.value)">
                                     <span id="sizeValue">10%</span>
                                 </div>
-                            </div>1
+                            </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="ps-4 pt-3">
