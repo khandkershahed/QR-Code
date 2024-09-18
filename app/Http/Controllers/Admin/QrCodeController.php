@@ -685,7 +685,7 @@ class QrCodeController extends Controller
             }
             if (!empty($qr_saved_logo)) {
                 $logoFullPath = '../public/frontend/images/qr_logo/' . $qr_saved_logo . '.png';
-                $qrCode->merge($logoFullPath, 0.4, true);
+                $qrCode->merge($logoFullPath, 0.3, true);
             }
             if (!empty($qr_eye_ball)) {
                 $qrCode->eye($qr_eye_ball, 0.5);
@@ -1470,7 +1470,7 @@ class QrCodeController extends Controller
         }
         if (!empty($qr_saved_logo)) {
             $logoFullPath = '../public/frontend/images/qr_logo/' . $qr_saved_logo . '.png';
-            $qrCode->merge($logoFullPath, 0.4, true);
+            $qrCode->merge($logoFullPath, 0.3, true);
         }
         if (!empty($qr_eye_ball_color)) {
             $qrCode->eyeColor(0, $qr_eye_ball_color['r'], $qr_eye_ball_color['g'], $qr_eye_ball_color['b'], $qr_eye_frame_color['r'], $qr_eye_frame_color['g'], $qr_eye_frame_color['b'],);
