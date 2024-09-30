@@ -34,7 +34,9 @@
     @foreach ($types as $type)
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 qr_type_hover qr_type_hover-type">
             <input type="radio" class="btn-check qr_type_radio" name="qr_type" value="{{ $type['value'] }}"
-                {{ $loop->first ? 'checked' : '' }} id="type-{{ $type['id'] }}" />
+                id="type-{{ $type['id'] }}" />
+            {{-- <input type="radio" class="btn-check qr_type_radio" name="qr_type" value="{{ $type['value'] }}"
+                {{ $loop->first ? 'checked' : '' }} id="type-{{ $type['id'] }}" /> --}}
             <label
                 class="btn btn-outline btn-outline-dashed btn-outline-default d-flex align-items-center mb-5 p-0 checkbbox-for-qr"
                 for="type-{{ $type['id'] }}">
