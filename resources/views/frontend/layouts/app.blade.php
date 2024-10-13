@@ -5,6 +5,11 @@
     <meta charset="utf-8" />
     @props(['title'])
     <meta name="title" content="{{ $title ?? config('app.name', '| Go QR') }}">
+    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains; preload">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="Referrer-Policy" content="no-referrer-when-downgrade">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(self), microphone=()">
     <meta name="description"
         content="Generate custom QR Codes for URLs, vCards, and create NFC Cards. Personalize with logos, colors, and frames. Create your free QR Codes today!">
     <meta name="keywords"
@@ -33,6 +38,7 @@
     <meta name="twitter:image" content="frontend/assets/images/logos/logo.png">
     <!-- Favicon Icon -->
     <link rel="shortcut icon" href="https://i.ibb.co/BNBTVN4/logo.png" type="image/x-icon" />
+
     <!-- Google Fonts -->
     {{-- <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Work+Sans:wght@400;500;600&display=swap"
