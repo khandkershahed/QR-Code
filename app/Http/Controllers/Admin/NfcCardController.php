@@ -82,17 +82,16 @@ class NfcCardController extends Controller
                 'billing' => 'send_invoice',
                 // 'due_date' => now()->addDays(30)->timestamp,
             ]);
-            
-            $paymentMethod = $request->stripeToken;
-            $user = Auth::user();
-            if (!$user) {
-                throw new \Exception('User not found.');
-            }
-            // Attempt to create the charge through Cashier
-            $charge = $user->charge(4999, $paymentMethod);
 
-            $invoice = $user->invoiceFor('NFC Card Payment', 4999);
-            // Send invoice through email
+            // $paymentMethod = $request->stripeToken;
+            // $user = Auth::user();
+            // if (!$user) {
+            //     throw new \Exception('User not found.');
+            // }
+            // $charge = $user->charge(4999, $paymentMethod);
+
+            // $invoice = $user->invoiceFor('NFC Card Payment', 4999);
+            
             $email = $request->customer_email;
             try {
                 Mail::send('emails.invoice', ['invoice' => $invoice], function ($message) use ($email) {

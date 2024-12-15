@@ -3,16 +3,17 @@
 namespace App\Http\Controllers\Reseller\Auth;
 
 use App\Models\User;
+use App\Models\Reseller;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
-use App\Mail\ResellerRegistrationMail;
-use App\Models\Reseller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\RedirectResponse;
+use App\Mail\ResellerRegistrationMail;
 use Illuminate\Auth\Events\Registered;
 use App\Notifications\UserRegistration;
 use App\Providers\RouteServiceProvider;
@@ -49,7 +50,13 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
         // $user->notify(new UserRegistration($user->name));
         Auth::login($user);
-        Mail::to($user->email)->send(new ResellerRegistrationMail($user->name));
+        try {
+            Mail::to($user->email)->send(new ResellerRegistrationMail($user->name));
+        } catch (\Exception $e) {
+            // Session::flash('error', '');
+            Log::error('Error sending email: ' . $e->getMessage());
+        }
+
         flash()->addSuccess('You have successfully registered.');
         return redirect(RouteServiceProvider::RESELLER_HOME);
     }

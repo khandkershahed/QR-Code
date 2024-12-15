@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 use App\Mail\UserRegistrationMail;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -18,6 +19,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Auth\Events\Registered;
 use App\Notifications\UserRegistration;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class RegisteredUserController extends Controller
@@ -48,7 +50,13 @@ class RegisteredUserController extends Controller
         $plan = Plan::find($request->plan);
         Auth::login($user);
         if ($plan->billing_cycle == 'trial_period') {
-            Mail::to($user->email)->send(new UserRegistrationMail($user->name));
+            try {
+                Mail::to($user->email)->send(new UserRegistrationMail($user->name));
+            } catch (\Exception $e) {
+                // Session::flash('error', '');
+                Log::error('Error sending email: ' . $e->getMessage());
+            }
+
             return redirect(RouteServiceProvider::HOME)->with('success', 'You have successfully registered with the plan.');
         } else {
             return redirect()->route('stripe.checkout',$plan->slug);
