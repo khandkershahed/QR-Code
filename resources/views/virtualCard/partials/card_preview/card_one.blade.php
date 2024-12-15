@@ -3,9 +3,10 @@
 
     .card-container {
         display: flex;
-        justify-content: center;
+        /* justify-content: center; */
         align-items: center;
         /* height: 100vh; */
+        width: 320px
     }
 
     .nfc_card_one {
