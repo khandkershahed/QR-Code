@@ -185,8 +185,11 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         $data = [
-            'monthly_plans' => Plan::orderBy('price', 'asc')->where('billing_cycle', 'monthly')->get(),
-            'yearly_plans' => Plan::orderBy('price', 'asc')->where('billing_cycle', 'yearly')->get(),
+            'qr_plans'             => Plan::orderBy('price', 'asc')->where('type', 'qr')->get(),
+            'nfc_plans'            => Plan::orderBy('price', 'asc')->where('type', 'nfc')->get(),
+            'barcode_plans'        => Plan::orderBy('price', 'asc')->where('type', 'barcode')->get(),
+            // 'monthly_plans' => Plan::orderBy('price', 'asc')->where('billing_cycle', 'monthly')->get(),
+            // 'yearly_plans' => Plan::orderBy('price', 'asc')->where('billing_cycle', 'yearly')->get(),
             'subscriptions' => Subscription::where('user_id', $user->id)->active()->get(),
         ];
 
