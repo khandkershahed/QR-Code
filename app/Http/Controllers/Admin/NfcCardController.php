@@ -3,19 +3,24 @@
 namespace App\Http\Controllers\Admin;
 
 
-use App\Models\VirtualCard;
-use Illuminate\Http\Request;
+use Stripe\Charge;
+use Stripe\Stripe;
 
+use Stripe\Invoice;
+use App\Models\VirtualCard;
+
+// use Laravel\Cashier\Invoice;
+
+use Illuminate\Http\Request;
 use App\Models\Admin\NfcCard;
 use App\Http\Controllers\Controller;
-
 use Illuminate\Support\Facades\Auth;
-
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Admin\NfcShippingDetails;
-
 
 class NfcCardController extends Controller
 {
@@ -77,12 +82,25 @@ class NfcCardController extends Controller
                 'billing' => 'send_invoice',
                 // 'due_date' => now()->addDays(30)->timestamp,
             ]);
+            
+            $paymentMethod = $request->stripeToken;
+            $user = Auth::user();
+            if (!$user) {
+                throw new \Exception('User not found.');
+            }
+            // Attempt to create the charge through Cashier
+            $charge = $user->charge(4999, $paymentMethod);
 
+            $invoice = $user->invoiceFor('NFC Card Payment', 4999);
             // Send invoice through email
-            $email = $request->customer_email; // Use card_email field for sending invoice
-            Mail::send('emails.invoice', ['invoice' => $invoice], function ($message) use ($email) {
-                $message->to($email)->subject('NFC Card Payment Invoice');
-            });
+            $email = $request->customer_email;
+            try {
+                Mail::send('emails.invoice', ['invoice' => $invoice], function ($message) use ($email) {
+                    $message->to($email)->subject('NFC Card Payment Invoice');
+                });
+            } catch (\Exception $e) {
+                Session::flash('error', "Email sent will be delayed due to server issue.");
+            }
             $nfc = NfcCard::find($request->card_id);
             $code = $nfc->code;
             // Handle file uploads
