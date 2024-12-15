@@ -4,8 +4,8 @@
             <div class="card">
                 <div class="card-body d-flex justify-content-between align-items-center">
                     <h2 class="mb-0">Manage All Invoices</h2>
-                    <h3 class=" bg-info p-3 text-white mb-0">Total : <span
-                            class="text-warning">{{ $invoices->count() }}</span> Invoice</h3>
+                    <h3 class="bg-info p-3 text-white mb-0">Total: <span
+                            class="text-warning">{{ $invoices->count() }}</span> Invoices</h3>
                 </div>
             </div>
         </div>
@@ -27,13 +27,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($invoices as $invoice)
+                                @foreach ($invoices as $invoice)
                                     <tr>
                                         <td>{{ $invoice->number }}</td>
-                                        <td>{{ $invoice->stripe_product ?? 'No name found' }}</td>
-                                        <td>{{ $invoice->date()->toFormattedDateString() }}</td>
-                                        <td>{{ $invoice->date()->toFormattedDateString() }}</td>
-                                        <td>{{ $invoice->total() }}</td>
+                                        <td>{{ $invoice->lines->data[0]->description }}</td>
+                                        <td>{{ \Carbon\Carbon::createFromTimestamp($invoice->created)->toFormattedDateString() }}
+                                        </td>
+                                        <td>{{ \Carbon\Carbon::createFromTimestamp($invoice->lines->data[0]->period->end)->toFormattedDateString() }}
+                                        </td>
+                                        <td>${{ number_format($invoice->total / 100, 2) }}</td>
                                         <td class="text-center">
                                             <a class="btn btn-info btn-sm" data-bs-toggle="modal"
                                                 data-bs-target="#invoiceViewModal_{{ $invoice->id }}">View Details</a>
@@ -41,11 +43,7 @@
                                                 class="btn btn-primary btn-sm">Download</a>
                                         </td>
                                     </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="3">No invoices found.</td>
-                                    </tr>
-                                @endforelse
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -53,42 +51,67 @@
             </div>
         </div>
     </div>
+
     @foreach ($invoices as $invoice)
-        <div class="modal fade" id="invoiceViewModal_{{ $invoice->id }}" data-backdrop="static">
+        <div class="modal fade" id="invoiceViewModal_{{ $invoice->id }}" data-backdrop="static" tabindex="-1"
+            aria-labelledby="invoiceModalLabel{{ $invoice->id }}" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content rounded-0 border-0 shadow-sm">
-                    <div class="modal-header">
+                    <!-- Modal Header -->
+                    <div class="modal-header d-flex justify-content-between align-items-center">
+                        <div>
+                            <!-- Company Logo (replace with your logo URL) -->
+                            <img src="{{ asset('images/logo.png') }}" alt="Company Logo" style="height: 50px;">
+                        </div>
                         <h5 class="modal-title" id="invoiceModalLabel{{ $invoice->id }}">Invoice Details</h5>
                         <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
                             aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </div>
                     </div>
+
+                    <!-- Modal Body -->
                     <div class="modal-body">
-                        <p><strong>Invoice:</strong> {{ $invoice->number }}</p>
-                        <p><strong>Date:</strong> {{ $invoice->date()->toFormattedDateString() }}</p>
-                        <p><strong>Total:</strong> {{ $invoice->total() }}</p>
-                        <p><strong>Total:</strong> {{ $invoice->stripe_title }}</p>
-                        <p><strong>Status:</strong> {{ $invoice->status }}</p>
-                        <p><strong>Customer:</strong> {{ $invoice->customer_name }} ({{ $invoice->customer_email }})
-                        </p>
-                        <h5>Items</h5>
+                        <div class="row">
+                            <!-- Invoice Information -->
+                            <div class="col-md-6">
+                                <h6><strong>Invoice No:</strong> {{ $invoice->number }}</h6>
+                                <p><strong>Date:</strong>
+                                    {{ \Carbon\Carbon::createFromTimestamp($invoice->created)->toFormattedDateString() }}
+                                </p>
+                                <p><strong>Status:</strong> {{ ucfirst($invoice->status) }}</p>
+                            </div>
+                            <div class="col-md-6 text-md-end">
+                                <h6><strong>Customer:</strong></h6>
+                                <p>{{ $invoice->customer_name }} ({{ $invoice->customer_email }})</p>
+                                <p><strong>Total:</strong> ${{ number_format($invoice->total / 100, 2) }}</p>
+                            </div>
+                        </div>
+
+                        <!-- Items List -->
+                        <h5 class="mt-4">Items</h5>
                         <ul>
                             @foreach ($invoice->lines->data as $line)
-                                <li>{{ $line->description }}: $ {{ $line->amount / 100 }}</li>
+                                <li>{{ $line->description }}: ${{ number_format($line->amount / 100, 2) }}</li>
                             @endforeach
                         </ul>
-                        <h5>Invoice PDF</h5>
-                        <a href="{{ $invoice->invoice_pdf }}" target="_blank">Download PDF</a>
+
+                        <!-- Invoice PDF Link -->
+                        <h5 class="mt-4">Invoice PDF</h5>
+                        <a href="{{ $invoice->invoice_pdf }}" target="_blank" class="btn btn-primary btn-sm">
+                            <i class="bi bi-file-earmark-pdf"></i> Download PDF
+                        </a>
                     </div>
+
+                    <!-- Modal Footer -->
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Invoice Details Modal -->
     @endforeach
+
     @push('scripts')
     @endpush
 </x-app-layout>
