@@ -61,28 +61,28 @@ class NfcCardController extends Controller
         $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
         try {
             // Set Stripe API key
-            // Stripe::setApiKey(env('STRIPE_SECRET'));
+            Stripe::setApiKey(env('STRIPE_SECRET'));
 
-            // // Create charge
-            // $charge = Charge::create([
-            //     "amount" => 4999, // Amount in cents
-            //     "currency" => "usd",
-            //     "source" => $request->stripeToken,
-            //     "description" => "NFC Card Payment"
-            // ]);
+            // Create charge
+            $charge = Charge::create([
+                "amount" => 4999, // Amount in cents
+                "currency" => "usd",
+                "source" => $request->stripeToken,
+                "description" => "NFC Card Payment"
+            ]);
 
-            // // Create invoice
-            // $invoice = Invoice::create([
-            //     'customer' => $charge->customer,
-            //     'billing' => 'send_invoice',
-            //     // 'due_date' => now()->addDays(30)->timestamp,
-            // ]);
+            // Create invoice
+            $invoice = Invoice::create([
+                'customer' => $charge->customer,
+                'billing' => 'send_invoice',
+                // 'due_date' => now()->addDays(30)->timestamp,
+            ]);
 
-            // // Send invoice through email
-            // $email = $request->customer_email; // Use card_email field for sending invoice
-            // Mail::send('emails.invoice', ['invoice' => $invoice], function ($message) use ($email) {
-            //     $message->to($email)->subject('NFC Card Payment Invoice');
-            // });
+            // Send invoice through email
+            $email = $request->customer_email; // Use card_email field for sending invoice
+            Mail::send('emails.invoice', ['invoice' => $invoice], function ($message) use ($email) {
+                $message->to($email)->subject('NFC Card Payment Invoice');
+            });
             $nfc = NfcCard::find($request->card_id);
             $code = $nfc->code;
             // Handle file uploads
