@@ -186,7 +186,7 @@
                     <div class="text-center p-3">
                         <img class="p-5 img-fluid qr_data_business_page_logo"
                             style="width: 100px;border-radius: 100%;position: relative;z-index: 15;"
-                            src="https://i.ibb.co/BNBTVN4/logo.png" alt="banner" />
+                            src="{{ asset('images/logo.png') }}" alt="banner" />
                     </div>
                     <div class="text-center p-3">
                         <h2 class="mb-0 title fw-bold sub_title-2 qr_data_business_page_business_name">
