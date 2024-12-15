@@ -12,7 +12,8 @@
                         data-aos-offset="50">
                         <div class="logo mb-10">
                             <a href="{{ route('homePage') }}">
-                                <img width="100px" src="{{ (!empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white))) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('https://i.ibb.co/BNBTVN4/logo.png') }}"
+                                <img width="100px"
+                                    src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : "no img" }}"
                                     alt="Logo"></a>
                         </div>
                     </div>
@@ -54,11 +55,16 @@
                         <h6 class="footer-title text-white">Contact</h6>
                         <ul>
                             <li>
-                                <i class="fa fa-map-marker-alt"></i> <span>{{ !empty($site->address_line_one) ? $site->address_line_one : '' }} {{ !empty($site->address_line_two) ? '' . $site->address_line_two : '' }}</span>
+                                <i class="fa fa-map-marker-alt"></i>
+                                <span>{{ !empty($site->address_line_one) ? $site->address_line_one : '' }}
+                                    {{ !empty($site->address_line_two) ? '' . $site->address_line_two : '' }}</span>
                             </li>
-                            <li><i class="fa fa-envelope"></i> <a href="mailto:{{ !empty($site->contact_email) ? $site->contact_email : '' }}">{{ !empty($site->contact_email) ? $site->contact_email : '' }}</a>
+                            <li><i class="fa fa-envelope"></i> <a
+                                    href="mailto:{{ !empty($site->contact_email) ? $site->contact_email : '' }}">{{ !empty($site->contact_email) ? $site->contact_email : '' }}</a>
                             </li>
-                            <li><i class="fa fa-phone"></i> <a href="callto:{{ !empty($site->phone_one) ? $site->phone_one : '' }}">{{ !empty($site->phone_one) ? $site->phone_one : '' }}</a></li>
+                            <li><i class="fa fa-phone"></i> <a
+                                    href="callto:{{ !empty($site->phone_one) ? $site->phone_one : '' }}">{{ !empty($site->phone_one) ? $site->phone_one : '' }}</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -66,7 +72,7 @@
                     <div class="row">
                         <div class="col-sm-4 col-6">
                             <div class="footer-widget widget-links aos-init" data-aos="fade-up" data-aos-delay="400"
-                            data-aos-duration="1500" data-aos-offset="50">
+                                data-aos-duration="1500" data-aos-offset="50">
                                 <h6 class="footer-title text-white">Resources</h6>
                                 <ul>
                                     <li><a href="{{ route('services') }}">Services</a></li>
@@ -77,7 +83,7 @@
                         </div>
                         <div class="col-sm-4 col-6">
                             <div class="footer-widget widget-links aos-init" data-aos="fade-up" data-aos-delay="400"
-                            data-aos-duration="1500" data-aos-offset="50">
+                                data-aos-duration="1500" data-aos-offset="50">
                                 <h6 class="footer-title text-white">Quick Link</h6>
                                 <ul>
                                     <li><a href="{{ route('pricing') }}">Pricing</a></li>
@@ -88,7 +94,7 @@
                         </div>
                         <div class="col-sm-4 col-6">
                             <div class="footer-widget widget-links aos-init" data-aos="fade-up" data-aos-delay="400"
-                            data-aos-duration="1500" data-aos-offset="50">
+                                data-aos-duration="1500" data-aos-offset="50">
                                 <h6 class="footer-title text-white">Condition</h6>
                                 <ul>
                                     <li><a href="{{ route('terms') }}">Terms & Conditions</a></li>
@@ -103,9 +109,10 @@
             <div class="footer-bottom mt-100 py-15">
                 <div class="row align-items-center">
                     <div class="col-xl-12 col-lg-6">
-                        <div class="copyright-text pt-10 text-lg-start text-center aos-init" data-aos="fade-up" data-aos-delay="400"
-                        data-aos-duration="1500" data-aos-offset="50">
-                            <p class="text-muted">Copyright @2024, <a href="{{ route('homePage') }}">GoFlixza</a> All Rights Reserved</p>
+                        <div class="copyright-text pt-10 text-lg-start text-center aos-init" data-aos="fade-up"
+                            data-aos-delay="400" data-aos-duration="1500" data-aos-offset="50">
+                            <p class="text-muted">Copyright @2024, <a href="{{ route('homePage') }}">GoFlixza</a> All
+                                Rights Reserved</p>
                         </div>
                     </div>
                 </div>

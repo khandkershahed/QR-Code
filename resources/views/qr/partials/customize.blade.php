@@ -169,7 +169,7 @@
                         </div>
                         <div class="col-lg-1">
                             <x-metronic.label for="qr_logo" class="form-label">{{ __('Preview') }}</x-metronic.label>
-                            <img class="img-fluid qr_logo" src="https://i.ibb.co/BNBTVN4/logo.png" alt="">
+                            <img class="img-fluid qr_logo" src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}" alt="">
                         </div>
                         <div class="col-lg-6">
                             <div class="row colorCodeContainer ps-5">

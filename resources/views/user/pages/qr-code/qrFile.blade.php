@@ -61,7 +61,7 @@
     <div class="container">
         <div class="row mb-5 text-center">
             <a href="{{ url('/') }}" class="pt-lg-10 pt-5">
-                <img alt="Logo" src="https://i.ibb.co/BNBTVN4/logo.png" class="h-40px" />
+                <img alt="Logo" src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}" class="h-40px" />
             </a>
         </div>
         <div class="row mb-10">

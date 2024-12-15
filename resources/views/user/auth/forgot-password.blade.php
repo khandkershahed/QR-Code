@@ -15,7 +15,7 @@
             <div class="d-flex flex-center flex-lg-start flex-column">
                 <!--begin::Logo-->
                 <a href="{{ route('homePage') }}" class="mb-7">
-                    <img alt="Logo" src="https://i.ibb.co/BNBTVN4/logo.png">
+                    <img alt="Logo" src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}">
                 </a>
                 <!--end::Logo-->
 

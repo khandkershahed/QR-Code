@@ -241,7 +241,7 @@
                                 </div>
                             </div>
                             <div class="pull-right">
-                                <img class="card_logo" src="https://i.ibb.co/BNBTVN4/logo.png" width="60px" />
+                                <img class="card_logo" src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}" width="60px" />
                             </div>
                         </div>
                     </footer>
