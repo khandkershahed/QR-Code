@@ -4,7 +4,8 @@
             <div class="card">
                 <div class="card-body d-flex justify-content-between align-items-center">
                     <h2 class="mb-0">Manage All Invoices</h2>
-                    <h3 class=" bg-info p-3 text-white mb-0">Total : {{ $invoices->count() }} </h3>
+                    <h3 class=" bg-info p-3 text-white mb-0">Total : <span
+                            class="text-warning">{{ $invoices->count() }}</span> Invoice</h3>
                 </div>
             </div>
         </div>
@@ -13,7 +14,7 @@
                 <div class="card-body">
                     <div>
                         <table
-                            class="table align-middle border rounded table-row-dashed table-striped table-hover  fs-6 g-5"
+                            class="table align-middle border rounded table-row-dashed table-striped table-hover fs-6 g-5"
                             id="kt_datatable_example">
                             <thead>
                                 <tr>
