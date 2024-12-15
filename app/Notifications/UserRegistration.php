@@ -21,7 +21,7 @@ class UserRegistration extends Notification
     public function __construct($data)
     {
         $this->data = $data;
-        $this->logoUrl = 'https://i.ibb.co/BNBTVN4/logo.png';
+        $this->logoUrl = asset('images/logo.png');
     }
 
     /**
