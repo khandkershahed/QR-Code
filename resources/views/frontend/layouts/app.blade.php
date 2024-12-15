@@ -26,7 +26,7 @@
         content="Simplify your digital interactions with GoFlixza. Generate QR codes, barcodes, and NFC V.cards effortlessly.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.goflixza.com">
-    <meta property="og:image" content="frontend/assets/images/logos/logo.png">
+    <meta property="og:image" content="{{ asset('frontend/assets/images/logos/logo.png') }}">
     <meta property="og:image:alt" content="GoFlixza Logo">
     <meta property="og:site_name" content="GoFlixza">
 
@@ -35,9 +35,9 @@
     <meta name="twitter:title" content="GoFlixza || Create QR Codes, Bar Codes & NFC V.Cards">
     <meta name="twitter:description"
         content="Simplify your digital interactions with GoFlixza. Generate QR codes, barcodes, and NFC V.cards effortlessly.">
-    <meta name="twitter:image" content="frontend/assets/images/logos/logo.png">
+    <meta name="twitter:image" content="{{ asset('frontend/assets/images/logos/logo.png') }}">
     <!-- Favicon Icon -->
-    <link rel="shortcut icon" href="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}" type="image/x-icon" />
+    <link rel="shortcut icon" href="https://i.ibb.co/BNBTVN4/logo.png" type="image/x-icon" />
 
     <!-- Google Fonts -->
     {{-- <link
