@@ -253,7 +253,7 @@ class HomeController extends Controller
                 'user_device' => $user_device,
             ]);
 
-            $data = ['nfc_card' => $nfc_card];
+            $data = ['nfc_card' => $nfc_card]; 
 
             switch ($nfc_card->nfc_template) {
                 case 'template-one':

@@ -195,16 +195,31 @@ class ProfileController extends Controller
     public function upgradePlan(): View
     {
         $user = Auth::user();
+        $qr_subscription = Subscription::with('plan')->where('user_id', $user->id)
+            ->whereHas('plan', function ($query) {
+                $query->where('type', 'qr');
+            })->active()->first();
+        $nfc_subscription = Subscription::with('plan')->where('user_id', $user->id)
+            ->whereHas('plan', function ($query) {
+                $query->where('type', 'nfc');
+            })->active()->first();
+        $barcode_subscription = Subscription::with('plan')->where('user_id', $user->id)
+            ->whereHas('plan', function ($query) {
+                $query->where('type', 'barcode');
+            })->active()->first();
         $subscription = Subscription::with('plan')->where('user_id', $user->id)->where('stripe_status', 'active')->latest('id')->first();
 
         if ($subscription && !($subscription->subscription_ends_at instanceof \Carbon\Carbon)) {
             $subscription->subscription_ends_at = \Carbon\Carbon::parse($subscription->subscription_ends_at);
         }
         $data = [
-            'qr_plans'      => Plan::orderBy('price', 'asc')->where('type', 'qr')->get(),
-            'nfc_plans'     => Plan::orderBy('price', 'asc')->where('type', 'nfc')->get(),
-            'barcode_plans' => Plan::orderBy('price', 'asc')->where('type', 'barcode')->get(),
-            'subscription'  => $subscription
+            'qr_plans'             => Plan::orderBy('price', 'asc')->where('type', 'qr')->get(),
+            'nfc_plans'            => Plan::orderBy('price', 'asc')->where('type', 'nfc')->get(),
+            'barcode_plans'        => Plan::orderBy('price', 'asc')->where('type', 'barcode')->get(),
+            'subscription'         => $subscription,
+            'qr_subscription'      => $qr_subscription,
+            'nfc_subscription'     => $nfc_subscription,
+            'barcode_subscription' => $barcode_subscription,
         ];
         return view('user.profile.user_plans', $data);
     }
