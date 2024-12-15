@@ -3,7 +3,7 @@
 
     .nfc-mobile-frame {
         width: 100%;
-         
+
         border-radius: 20px;
         overflow: hidden;
         position: relative;
@@ -142,7 +142,7 @@
                         <div class="text-center text-lg-center mobile-images-profile pt-5 ">
                             <img class="p-5 img-fluid qr_data_facebook_page_logo"
                                 style="width: 100px;border-radius: 100%;position: relative;z-index: 15;"
-                                src="https://i.ibb.co/BNBTVN4/logo.png" alt="banner" />
+                                src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}" alt="banner" />
                         </div>
                     </div>
                     <div class="card-body p-0">

@@ -3,7 +3,7 @@
         <div class="d-flex flex-column flex-column-fluid">
             <div class="d-flex flex-column flex-column-fluid text-center p-10 py-lg-15">
                 <a href="{{ url('/') }}" class="mb-10 pt-lg-10">
-                    <img alt="Logo" src="https://i.ibb.co/BNBTVN4/logo.png" class="h-40px mb-5" />
+                    <img alt="Logo" src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}" class="h-40px mb-5" />
                 </a>
                 <div class="pt-lg-10 mb-10">
                     <h1 class="fw-bolder fs-2qx text-gray-800 mb-10">500</h1>

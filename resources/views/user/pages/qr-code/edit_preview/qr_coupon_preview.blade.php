@@ -69,7 +69,7 @@
                     </div>
                     <div class="p-3 mx-auto rounded-circle" style="background-color: #eeee; width: 20%">
                         <img width="50px" class="img-fluid qr_data_coupon_logo"
-                            src="https://i.ibb.co/BNBTVN4/logo.png" alt="" />
+                            src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}" alt="" />
                     </div>
                     <h1 class="fw-bold mb-0 py-3 qr_data_coupon_description_header"
                         style="color: #fff;font-family: var(--tem-one-name-font-family);">

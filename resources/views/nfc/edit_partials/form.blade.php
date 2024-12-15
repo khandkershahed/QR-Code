@@ -83,7 +83,7 @@
                                         src="{{ !empty($nfc_card->nfcData->banner_image) &&
                                         file_exists(public_path('storage/nfc/' . $nfc_card->nfcData->banner_image))
                                             ? asset('storage/nfc/' . $nfc_card->nfcData->banner_image)
-                                            : asset('https://i.ibb.co/BNBTVN4/logo.png') }}"
+                                            : asset('{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}') }}"
                                         alt="Banner Image">
                                 </div>
 
@@ -102,7 +102,7 @@
                             <div class="fv-row my-3">
                                 <div>
                                     <img width="30px" height="30px" class="rounded-circle border profile_image mt-10"
-                                        src="{{ !empty($nfc_card->nfcData->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) : asset('https://i.ibb.co/BNBTVN4/logo.png') }}"
+                                        src="{{ !empty($nfc_card->nfcData->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) : asset('{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}') }}"
                                         alt="">
                                 </div>
                             </div>
