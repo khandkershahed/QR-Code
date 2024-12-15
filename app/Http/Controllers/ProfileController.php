@@ -184,6 +184,18 @@ class ProfileController extends Controller
     public function userPlan(): View
     {
         $user = Auth::user();
+        $qr_subscription = Subscription::with('plan')->where('user_id', $user->id)
+            ->whereHas('plan', function ($query) {
+                $query->where('type', 'qr');
+            })->active()->first();
+        $nfc_subscription = Subscription::with('plan')->where('user_id', $user->id)
+            ->whereHas('plan', function ($query) {
+                $query->where('type', 'nfc');
+            })->active()->first();
+        $barcode_subscription = Subscription::with('plan')->where('user_id', $user->id)
+            ->whereHas('plan', function ($query) {
+                $query->where('type', 'barcode');
+            })->active()->first();
         $data = [
             'qr_plans'             => Plan::orderBy('price', 'asc')->where('type', 'qr')->get(),
             'nfc_plans'            => Plan::orderBy('price', 'asc')->where('type', 'nfc')->get(),
@@ -191,85 +203,42 @@ class ProfileController extends Controller
             // 'monthly_plans' => Plan::orderBy('price', 'asc')->where('billing_cycle', 'monthly')->get(),
             // 'yearly_plans' => Plan::orderBy('price', 'asc')->where('billing_cycle', 'yearly')->get(),
             'subscriptions' => Subscription::where('user_id', $user->id)->active()->get(),
+            'qr_subscription'      => $qr_subscription,
+            'nfc_subscription'     => $nfc_subscription,
+            'barcode_subscription' => $barcode_subscription,
         ];
 
         return view('user.profile.subscription_plan', $data);
     }
-    // public function upgradePlan(): View
-    // {
-    //     $user = Auth::user();
-    //     $qr_subscription = Subscription::with('plan')->where('user_id', $user->id)
-    //         ->whereHas('plan', function ($query) {
-    //             $query->where('type', 'qr');
-    //         })->active()->first();
-    //     $nfc_subscription = Subscription::with('plan')->where('user_id', $user->id)
-    //         ->whereHas('plan', function ($query) {
-    //             $query->where('type', 'nfc');
-    //         })->active()->first();
-    //     $barcode_subscription = Subscription::with('plan')->where('user_id', $user->id)
-    //         ->whereHas('plan', function ($query) {
-    //             $query->where('type', 'barcode');
-    //         })->active()->first();
-    //     $subscription = Subscription::with('plan')->where('user_id', $user->id)->where('stripe_status', 'active')->latest('id')->first();
-
-    //     if ($subscription && !($subscription->subscription_ends_at instanceof \Carbon\Carbon)) {
-    //         $subscription->subscription_ends_at = \Carbon\Carbon::parse($subscription->subscription_ends_at);
-    //     }
-    //     $data = [
-    //         'qr_plans'             => Plan::orderBy('price', 'asc')->where('type', 'qr')->get(),
-    //         'nfc_plans'            => Plan::orderBy('price', 'asc')->where('type', 'nfc')->get(),
-    //         'barcode_plans'        => Plan::orderBy('price', 'asc')->where('type', 'barcode')->get(),
-    //         'subscription'         => $subscription,
-    //         'qr_subscription'      => $qr_subscription,
-    //         'nfc_subscription'     => $nfc_subscription,
-    //         'barcode_subscription' => $barcode_subscription,
-    //     ];
-    //     return view('user.profile.user_plans', $data);
-    // }
-
     public function upgradePlan(): View
     {
         $user = Auth::user();
+        $qr_subscription = Subscription::with('plan')->where('user_id', $user->id)
+            ->whereHas('plan', function ($query) {
+                $query->where('type', 'qr');
+            })->active()->first();
+        $nfc_subscription = Subscription::with('plan')->where('user_id', $user->id)
+            ->whereHas('plan', function ($query) {
+                $query->where('type', 'nfc');
+            })->active()->first();
+        $barcode_subscription = Subscription::with('plan')->where('user_id', $user->id)
+            ->whereHas('plan', function ($query) {
+                $query->where('type', 'barcode');
+            })->active()->first();
+        $subscription = Subscription::with('plan')->where('user_id', $user->id)->where('stripe_status', 'active')->latest('id')->first();
 
-        // Retrieve all active subscriptions for the user, grouped by plan type
-        $subscriptions = Subscription::with('plan')
-            ->where('user_id', $user->id)
-            ->whereIn('plan.type', ['qr', 'nfc', 'barcode'])
-            ->active() // assuming 'active' is a scope that filters active subscriptions
-            ->get()
-            ->groupBy(function ($subscription) {
-                return $subscription->plan->type;
-            });
-
-        // Get the most recent active subscription for the user
-        $subscription = Subscription::with('plan')
-            ->where('user_id', $user->id)
-            ->where('stripe_status', 'active')
-            ->latest('id')
-            ->first();
-
-        // Convert 'subscription_ends_at' to Carbon instance if necessary
         if ($subscription && !($subscription->subscription_ends_at instanceof \Carbon\Carbon)) {
             $subscription->subscription_ends_at = \Carbon\Carbon::parse($subscription->subscription_ends_at);
         }
-
-        // Retrieve all plans and group them by type
-        $plans = Plan::whereIn('type', ['qr', 'nfc', 'barcode'])
-            ->orderBy('price', 'asc')
-            ->get()
-            ->groupBy('type');
-
-        // Prepare data for the view
         $data = [
-            'qr_plans'             => $plans->get('qr', collect()), // Default to empty collection if no plans exist
-            'nfc_plans'            => $plans->get('nfc', collect()),
-            'barcode_plans'        => $plans->get('barcode', collect()),
+            'qr_plans'             => Plan::orderBy('price', 'asc')->where('type', 'qr')->get(),
+            'nfc_plans'            => Plan::orderBy('price', 'asc')->where('type', 'nfc')->get(),
+            'barcode_plans'        => Plan::orderBy('price', 'asc')->where('type', 'barcode')->get(),
             'subscription'         => $subscription,
-            'qr_subscription'      => $subscriptions->get('qr', collect())->first(),
-            'nfc_subscription'     => $subscriptions->get('nfc', collect())->first(),
-            'barcode_subscription' => $subscriptions->get('barcode', collect())->first(),
+            'qr_subscription'      => $qr_subscription,
+            'nfc_subscription'     => $nfc_subscription,
+            'barcode_subscription' => $barcode_subscription,
         ];
-
         return view('user.profile.user_plans', $data);
     }
 }
