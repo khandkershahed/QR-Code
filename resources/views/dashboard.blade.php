@@ -309,14 +309,14 @@
                                 <div class="separator separator-dashed my-3"></div>
 
                                 <div class="d-flex flex-stack">
-                                    <a href="#" class="text-primary fw-semibold fs-6 me-2">See All Plans</a>
+                                    <a href="{{ route('user.plan') }}" class="text-primary fw-semibold fs-6 me-2">See All Plans</a>
 
                                     <button type="button"
                                         class="btn btn-icon btn-sm h-auto btn-color-gray-500 btn-active-color-primary justify-content-end">
                                         <i class="ki-duotone ki-exit-right-corner fs-2"><span
                                                 class="path1"></span><span class="path2"></span></i> </button>
                                 </div>
-                                <div class="separator separator-dashed my-3"></div>
+                                {{-- <div class="separator separator-dashed my-3"></div>
 
                                 <div class="d-flex flex-stack">
                                     <a href="#" class="text-primary fw-semibold fs-6 me-2">Resale QR & NFC</a>
@@ -325,7 +325,7 @@
                                         class="btn btn-icon btn-sm h-auto btn-color-gray-500 btn-active-color-primary justify-content-end">
                                         <i class="ki-duotone ki-exit-right-corner fs-2"><span
                                                 class="path1"></span><span class="path2"></span></i> </button>
-                                </div>
+                                </div> --}}
 
 
 

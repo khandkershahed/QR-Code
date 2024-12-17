@@ -78,7 +78,13 @@ class ResellerSocialLoginController extends Controller
                 ]);
                 // $newUser->notify(new UserRegistration($user->name));
                 Auth::login($newUser);
-                Mail::to($user->email)->send(new ResellerRegistrationMail($user->name));
+                try {
+                    Mail::to($user->email)->send(new ResellerRegistrationMail($user->name));
+                } catch (\Exception $e) {
+                    // Session::flash('error', '');
+                    Log::error('Error sending email: ' . $e->getMessage());
+                }
+
 
                 return redirect()->intended(RouteServiceProvider::RESELLER_HOME)->with('success', 'You have logged in Successfully.');
             }
@@ -120,7 +126,13 @@ class ResellerSocialLoginController extends Controller
                 ]);
                 // $newUser->notify(new UserRegistration($user->name));
                 Auth::login($newUser);
-                Mail::to($user->email)->send(new ResellerRegistrationMail($user->name));
+                try {
+                    Mail::to($user->email)->send(new ResellerRegistrationMail($user->name));
+                } catch (\Exception $e) {
+                    // Session::flash('error', '');
+                    Log::error('Error sending email: ' . $e->getMessage());
+                }
+
 
                 return redirect()->intended(RouteServiceProvider::RESELLER_HOME)->with('success', 'You have logged in Successfully.');
             }

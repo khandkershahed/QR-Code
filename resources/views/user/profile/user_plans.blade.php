@@ -25,7 +25,8 @@
                                                     </span>
                                                 </h4>
 
-                                                <p class="text-gray-900 fw-bold mt-3"> Subscription ends at : {{ $subscription->subscription_ends_at->format('d M, Y') }}</p>
+                                                <p class="text-gray-900 fw-bold mt-3"> Subscription ends at :
+                                                    {{ $subscription->subscription_ends_at->format('d M, Y') }}</p>
 
                                                 <div class="fs-6 text-gray-700 pe-7">Please check our plans and upgrade
                                                     if needed.</div>
@@ -128,8 +129,13 @@
                                                                         @endforeach
                                                                     </div>
 
-                                                                    <a href="{{ route('user.subscribe.post', $nfc_plan->slug) }}"
-                                                                        class="btn btn-sm btn-primary">Select</a>
+                                                                    @if (!empty(optional($nfc_subscription)->plan) && optional($nfc_subscription->plan)->id == $nfc_plan->id)
+                                                                        <a href="javascript:void(0)"
+                                                                            class="btn btn-sm btn-secondary">Purchased</a>
+                                                                    @else
+                                                                        <a href="{{ route('user.subscribe.post', $nfc_plan->slug) }}"
+                                                                            class="btn btn-sm btn-primary">Select</a>
+                                                                    @endif
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -176,9 +182,14 @@
                                                                             </div>
                                                                         @endforeach
                                                                     </div>
+                                                                    @if (!empty(optional($qr_subscription)->plan) && optional($qr_subscription->plan)->id == $qr_plan->id)
+                                                                        <a href="javascript:void(0)"
+                                                                            class="btn btn-sm btn-secondary">Purchased</a>
+                                                                    @else
+                                                                        <a href="{{ route('user.subscribe.post', $qr_plan->slug) }}"
+                                                                            class="btn btn-sm btn-primary">Select</a>
+                                                                    @endif
 
-                                                                    <a href="{{ route('user.subscribe.post', $qr_plan->slug) }}"
-                                                                        class="btn btn-sm btn-primary">Select</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -220,15 +231,20 @@
                                                                                     class="fw-semibold fs-6 text-gray-800 flex-grow-1 pe-3">
                                                                                     {{ $description }}</span>
                                                                                 <i
-                                                                                    class="ki-duotone ki-check-circle fs-1 text-success"><span
-                                                                                        class="path1"></span><span
-                                                                                        class="path2"></span></i>
+                                                                                    class="ki-duotone ki-check-circle fs-1 text-success">
+                                                                                    <span class="path1"></span>
+                                                                                    <span class="path2"></span>
+                                                                                </i>
                                                                             </div>
                                                                         @endforeach
                                                                     </div>
-
-                                                                    <a href="{{ route('user.subscribe.post', $barcode_plan->slug) }}"
-                                                                        class="btn btn-sm btn-primary">Select</a>
+                                                                    @if (!empty(optional($barcode_subscription)->plan) && optional($barcode_subscription->plan)->id == $barcode_plan->id)
+                                                                        <a href="javascript:void(0)"
+                                                                            class="btn btn-sm btn-secondary">Purchased</a>
+                                                                    @else
+                                                                        <a href="{{ route('user.subscribe.post', $barcode_plan->slug) }}"
+                                                                            class="btn btn-sm btn-primary">Select</a>
+                                                                    @endif
                                                                 </div>
                                                             </div>
                                                         </div>

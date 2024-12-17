@@ -3,11 +3,22 @@
 
     .card-container {
         display: flex;
-        justify-content: center;
+        /* justify-content: center; */
         align-items: center;
         width: 50%;
         margin: auto;
         /* height: 100vh; */
+        width: 320px;
+    }
+
+    @media only screen and (max-width: 1500px) {
+        .card-container {
+            display: flex;
+            /* justify-content: center; */
+            align-items: center;
+            /* height: 100vh; */
+            width: 270px;
+        }
     }
 
     .nfc_card_one {

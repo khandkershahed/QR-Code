@@ -1,6 +1,6 @@
 <div class="container">
     @if (strpos(Route::current()->getName(), 'user.') === 0)
-        {{-- <div class="row p-5 bg-light">
+        <div class="row p-5 bg-light">
             <div class="col-lg-6">
                 <div class="fv-row my-3">
                     <x-metronic.label for="customer_name" class="form-label ">
@@ -17,7 +17,7 @@
                         name="customer_email" />
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="fv-row my-3">
                     <x-metronic.label for="card_email" class="form-label ">
                         {{ __('Card Details') }}</x-metronic.label>
@@ -25,7 +25,7 @@
                     <div id="card-errors" role="alert"></div>
                 </div>
             </div>
-        </div> --}}
+        </div>
     @else
         <div class="row p-5 bg-light">
             <h5 class="text-center">Submit to generate Card</h5>

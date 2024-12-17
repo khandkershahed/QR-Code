@@ -6,7 +6,7 @@
 <head>
     <base href="../../../">
     @props(['title'])
-    <title>GoFlixza || Admin Dashboard</title>
+    <title>GoFlixza || Dashboard</title>
     <meta charset="utf-8" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -14,7 +14,7 @@
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="" />
-    <meta property="og:site_name" content="GoFlixza || Admin Dashboard" />
+    <meta property="og:site_name" content="GoFlixza || Dashboard" />
     <link rel="shortcut icon" href="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}" />
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />

@@ -15749,3 +15749,6 @@ a.theme-btn.style-four:hover {
     font-size: 20px;
     font-weight: bold;
 }
+.active-link a{
+    color: #6610f2;
+}

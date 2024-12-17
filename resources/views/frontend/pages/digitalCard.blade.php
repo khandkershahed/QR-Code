@@ -11,7 +11,7 @@
         </div>
     </section>
     <!-- Page Banner End -->
-    <section class="app-stor-area pt-30 pb-30 rpb-150 rel z-1">
+    <section class="app-stor-area mt-30 rpb-150 rel z-1">
         <div class="container mb-30">
             <div class="row justify-content-between align-items-center">
                 <div class="col-xl-5 col-lg-6">
@@ -141,7 +141,8 @@
                     <div class="section-title text-center mb-55 aos-init aos-animate" data-aos="fade-up"
                         data-aos-duration="1500" data-aos-offset="50">
                         <h2>Standout Features of Our Digital Visiting Cards</h2>
-                        <span class="subtitle-one style-two mb-20"><i class="fas fa-rocket-launch"></i> Unlock powerful
+                        <span class="subtitle-two style-two mb-20 bg-transparent text-muted">
+                            <i class="fas fa-rocket-launch"></i> Unlock powerful
                             features with our digital visiting cards—custom templates, real-time updates, and seamless
                             device integration for an unforgettable networking experience.</span>
                     </div>
@@ -152,7 +153,7 @@
                     <div class="feature-image-box aos-init aos-animate" data-aos="fade-up" data-aos-duration="1500"
                         data-aos-offset="50">
                         <div class="image">
-                            <img src="{{ asset('frontend/newimage/templates.webp') }}" alt="Feature">
+                            <img class="img-fluid" src="{{ asset('frontend/newimage/templates.webp') }}" alt="Feature">
                         </div>
                         <div class="content">
                             <h5><a href="service-details.html">Elegant Designed Templates</a></h5>
@@ -166,7 +167,8 @@
                     <div class="feature-image-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="100"
                         data-aos-duration="1500" data-aos-offset="50">
                         <div class="image">
-                            <img src="{{ asset('frontend/newimage/realTimeUpdate.webp') }}" alt="Feature">
+                            <img class="img-fluid" src="{{ asset('frontend/newimage/realTimeUpdate.webp') }}"
+                                alt="Feature">
                         </div>
                         <div class="content">
                             <h5><a href="service-details.html">Real-Time Updates</a></h5>
@@ -180,7 +182,8 @@
                     <div class="feature-image-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="200"
                         data-aos-duration="1500" data-aos-offset="50">
                         <div class="image">
-                            <img src="{{ asset('frontend/newimage/NFCCard.webp') }}" alt="Feature">
+                            <img class="img-fluid" src="{{ asset('frontend/newimage/NFCCard.webp') }}"
+                                alt="Feature">
                         </div>
                         <div class="content">
                             <h5><a href="service-details.html">NFC Cards for Contactless Sharing</a></h5>

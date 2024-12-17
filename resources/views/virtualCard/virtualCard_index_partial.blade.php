@@ -22,7 +22,7 @@
                     @foreach ($nfc_cards as $nfc_card)
                         <tr>
                             {{-- @dd($nfc_card) --}}
-                            <td>
+                            <td> 
                                 {{ $loop->iteration }}
                             </td>
                             <td>

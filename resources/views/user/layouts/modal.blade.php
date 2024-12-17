@@ -1,6 +1,6 @@
 <!-- Modal trigger button -->
 @php
-use App\Models\Admin\Plan;
+    use App\Models\Admin\Plan;
     $qr_plans = Plan::orderBy('price', 'asc')->where('type', 'qr')->get();
     $nfc_plans = Plan::orderBy('price', 'asc')->where('type', 'nfc')->get();
     $barcode_plans = Plan::orderBy('price', 'asc')->where('type', 'barcode')->get();

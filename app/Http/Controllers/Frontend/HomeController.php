@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use App\Models\Admin\NfcCard;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -154,15 +155,15 @@ class HomeController extends Controller
         return view('frontend.pages.blog.allBlog', $data);
     }
     public function getBlogPosts(Request $request)
-{
-    $blog_posts = BlogPost::paginate(5); // Load 5 blog posts per page
+    {
+        $blog_posts = BlogPost::paginate(5); // Load 5 blog posts per page
 
-    if ($request->ajax()) {
-        return view('frontend.pages.blog._blog_posts', compact('blog_posts'))->render();
+        if ($request->ajax()) {
+            return view('frontend.pages.blog._blog_posts', compact('blog_posts'))->render();
+        }
+
+        return view('frontend.pages.blog.allBlog', compact('blog_posts'));
     }
-
-    return view('frontend.pages.blog.allBlog', compact('blog_posts'));
-}
     public function blogDetails($slug)
     {
         $data = [
@@ -184,8 +185,13 @@ class HomeController extends Controller
         // dd($id);
         $data['plan'] = Plan::where('slug', $id)->first();
         // $data['intent'] = auth()->user()->createSetupIntent();
-        return view("user.auth.register", $data);
+        if (Auth::check()) {
+            return redirect()->route('stripe.checkout', $data['plan']->slug);
+        } else {
+            return view("user.auth.register", $data);
+        }
     }
+
 
     public function mailTestStore(Request $request)
     {
@@ -269,7 +275,7 @@ class HomeController extends Controller
                 case 'template-six':
                     return view('frontend.pages.nfc.template_six', $data);
                 default:
-                return view('frontend.pages.nfc.template_one', $data);
+                    return view('frontend.pages.nfc.template_one', $data);
             }
         } else {
             return redirect()->route('homePage')->with('error', 'Page not found');
