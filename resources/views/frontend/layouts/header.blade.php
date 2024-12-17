@@ -12,8 +12,6 @@
                         </a>
                     </div>
                 </div>
-
-
                 <div class="nav-outer ms-lg-5 ps-lg-5 clearfix">
                     <!-- Main Menu -->
                     <nav class="main-menu navbar-expand-lg">
@@ -35,238 +33,29 @@
                         </div>
                         <div class="navbar-collapse collapse clearfix">
                             <ul class="navigation onepage clearfix">
-                                <li><a href="{{ route('homePage') }}">HOME</a></li>
-                                <li>
+                                <li class="{{ Route::current()->getName() == 'homePage' ? 'active-link' : '' }}"><a
+                                        href="{{ route('homePage') }}">HOME</a></li>
+                                <li class="{{ Route::current()->getName() == 'qrCode' ? 'active-link' : '' }}">
                                     <a href="{{ route('qrCode') }}">QR CODES</a>
-                                    {{-- <a href="{{ route('qrCode') }}"
-                                        onclick="window.location.href = '{{ route('qrCode') }}'; return false;">QR
-                                        CODES</a> --}}
-                                    {{-- <ul class="w-100" style="display: none;">
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                <div class="card border-0 shadow-none ps-3"
-                                                    style="background-color:#ddefff; height: 28rem">
-                                                    <div class="card-body">
-                                                        <h6>PRODUCT</h6>
-                                                        <h3>QR Code Generator</h3>
-                                                        <p>Elevate your networking game with the precision of QR codes.
-                                                        </p>
-                                                        <div>
-                                                            <img class="img-fluid"
-                                                                src="https://www.uniqode.com/_next/static/media/find-campaign.a5267f65.png"
-                                                                alt="QR Code Generator">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="card border-0 shadow-none">
-                                                    <div class="card-body">
-                                                        <h6>Information</h6>
-                                                        <div class="pt-50">
-                                                            <a href="{{ route('qrGuide') }}"
-                                                                class="d-flex align-items-center mb-2">
-                                                                <div class="pe-2">
-                                                                    <i class="fas fa-arrow-right menu_icons"
-                                                                        aria-hidden="true"></i>
-                                                                </div>
-                                                                <div>
-                                                                    <p class="m-0 p-0">QR Code Guide</p>
-                                                                </div>
-                                                            </a>
-                                                            <a href="" class="d-flex align-items-center mb-2">
-                                                                <div class="pe-2">
-                                                                    <i class="fas fa-arrow-right menu_icons"
-                                                                        aria-hidden="true"></i>
-                                                                </div>
-                                                                <div>
-                                                                    <p class="m-0 p-0">Digital QR Code
-                                                                    </p>
-                                                                </div>
-                                                            </a>
-                                                            <a href="" class="d-flex align-items-center mb-2">
-                                                                <div class="pe-2">
-                                                                    <i class="fas fa-arrow-right menu_icons"
-                                                                        aria-hidden="true"></i>
-                                                                </div>
-                                                                <div>
-                                                                    <p class="m-0 p-0">Statistic QR</p>
-                                                                </div>
-                                                            </a>
-                                                            <a href="" class="d-flex align-items-center mb-2">
-                                                                <div class="pe-2">
-                                                                    <i class="fas fa-arrow-right menu_icons"
-                                                                        aria-hidden="true"></i>
-                                                                </div>
-                                                                <div>
-                                                                    <p class="m-0 p-0">Dynamic QR</p>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div>
-                                                            <p class="pt-3">Scan, connect, explore. QR code business
-                                                                cards unlock a world of information with a simple scan,
-                                                                making networking efficient.</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="card border-0 shadow-none ps-3"
-                                                    style="background-color:#ddefff; height: 28rem">
-                                                    <div class="card-body">
-                                                        <h6>Template</h6>
-                                                        <h3>Some QR Code Template</h3>
-                                                        <p>Empower your networking endeavors with our advanced QR Code
-                                                            Generator, simplifying connections and expanding
-                                                            opportunities effortlessly.</p>
-                                                        <div class="d-flex">
-                                                            <img class="img-fluid me-2" width="150px"
-                                                                src="https://cdn1.vectorstock.com/i/1000x1000/10/60/qr-code-sample-vector-12061060.jpg"
-                                                                alt="Some QR Code Template">
-                                                            <img class="img-fluid me-2" width="150px"
-                                                                src="https://cdn1.vectorstock.com/i/1000x1000/10/60/qr-code-sample-vector-12061060.jpg"
-                                                                alt="Some QR Code Template">
-                                                            <img class="img-fluid" width="150px"
-                                                                src="https://cdn1.vectorstock.com/i/1000x1000/10/60/qr-code-sample-vector-12061060.jpg"
-                                                                alt="Some QR Code Template">
-                                                        </div>
-                                                        <div class="mt-4">
-                                                            <a href="{{ route('normaluser.pricing') }}"
-                                                                class="btn btn-primary text-white">Start Your Free
-                                                                Trial</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </ul> --}}
                                 </li>
-                                <li class="dropdown position-static">
+                                <li
+                                    class="dropdown position-static {{ Route::current()->getName() == 'digitalCard' ? 'active-link' : '' }}">
                                     <a href="{{ route('digitalCard') }}">DIGITAL
                                         BUSINESS CARDS</a>
-                                    {{-- <a href="{{ route('digitalCard') }}"
-                                        onclick="window.location.href = '{{ route('digitalCard') }}'; return false;">DIGITAL
-                                        BUSINESS CARDS</a>
-                                    <ul class="w-100" style="display: none;">
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                <div class="card border-0 shadow-none ps-3"
-                                                    style="background-color:#ddefff; height: 28rem">
-                                                    <div class="card-body">
-                                                        <h6>PRODUCT</h6>
-                                                        <h3>NFC Card Generator</h3>
-                                                        <p>Measure your networking with digital business cards</p>
-                                                        <div>
-                                                            <img class="img-fluid"
-                                                                src="https://www.uniqode.com/videos/Header/header-qr.png"
-                                                                alt="Some NFC Template">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="card border-0 shadow-none ps-3" style="height: 28rem">
-                                                    <div class="card-body">
-                                                        <h6>Template</h6>
-                                                        <h3>Some NFC Template</h3>
-                                                        <p>Measure your networking with digital business cards</p>
-                                                        <div class="d-flex">
-                                                            <img class="img-fluid me-2"
-                                                                src="https://d33v4339jhl8k0.cloudfront.net/docs/assets/62a7296313dd0f2bb7daeac5/images/63773acdbedde91b3d8c95ff/file-WiV9vxVvCU.png"
-                                                                alt="Some NFC Template">
-                                                        </div>
-                                                        <div class="mt-4">
-                                                            <a href="" class="btn btn-primary text-white">Start
-                                                                Your Free
-                                                                Trial</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="card border-0 shadow-none">
-                                                    <div class="card-body">
-                                                        <h6>Information</h6>
-                                                        <div class="pt-50">
-                                                            <a href="{{ route('cardGuide') }}"
-                                                                class="d-flex align-items-center mb-2">
-                                                                <div class="pe-2">
-                                                                    <i class="fas fa-arrow-right menu_icons"
-                                                                        aria-hidden="true"></i>
-                                                                </div>
-                                                                <div>
-                                                                    <p class="m-0 p-0">Card Buying Guide</p>
-                                                                </div>
-                                                            </a>
-                                                            <a href="{{ route('digitalCard') }}"
-                                                                class="d-flex align-items-center mb-2">
-                                                                <div class="pe-2">
-                                                                    <i class="fas fa-arrow-right menu_icons"
-                                                                        aria-hidden="true"></i>
-                                                                </div>
-                                                                <div>
-                                                                    <p class="m-0 p-0">Digital Business Cards
-                                                                    </p>
-                                                                </div>
-                                                            </a>
-                                                            <a href="{{ route('staticNfc') }}"
-                                                                class="d-flex align-items-center mb-2">
-                                                                <div class="pe-2">
-                                                                    <i class="fas fa-arrow-right menu_icons"
-                                                                        aria-hidden="true"></i>
-                                                                </div>
-                                                                <div>
-                                                                    <p class="m-0 p-0">Statistic NFC</p>
-                                                                </div>
-                                                            </a>
-                                                            <a href="{{ route('dynamicNfc') }}"
-                                                                class="d-flex align-items-center mb-2">
-                                                                <div class="pe-2">
-                                                                    <i class="fas fa-arrow-right menu_icons"
-                                                                        aria-hidden="true"></i>
-                                                                </div>
-                                                                <div>
-                                                                    <p class="m-0 p-0">Dynamic NFC</p>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div>
-                                                            <p class="pt-3">Tap, connect, impress. NFC business cards
-                                                                bridge the physical and digital worlds seamlessly,
-                                                                leaving a lasting impression effortlessly.</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </ul> --}}
                                 </li>
-                                {{-- <li class="dropdown ">
-                                    <a href="">Pricing</a>
-                                    <ul class="" style="display: none;">
-                                        <li><a href="{{ route('normaluser.pricing') }}">User Pricing</a></li>
-                                        <li><a href="{{ route('reseller.pricing') }}">Reseller Pricing</a></li>
-                                    </ul>
-                                </li> --}}
-                                <li><a href="{{ route('barCode') }}">BAR CODE</a></li>
-                                <li><a href="{{ route('pricing') }}">PRICING</a></li>
-                                <li><a href="{{ route('services') }}">SERVICES</a></li>
-                                <li><a href="{{ route('allBlog') }}">BLOG</a></li>
+                                <li class="{{ Route::current()->getName() == 'barCode' ? 'active-link' : '' }}"><a
+                                        href="{{ route('barCode') }}">BAR CODE</a></li>
+                                <li class="{{ Route::current()->getName() == 'pricing' ? 'active-link' : '' }}"><a
+                                        href="{{ route('pricing') }}">PRICING</a></li>
+                                <li class="{{ Route::current()->getName() == 'services' ? 'active-link' : '' }}"><a
+                                        href="{{ route('services') }}">SERVICES</a></li>
+                                <li class="{{ Route::current()->getName() == 'allBlog' ? 'active-link' : '' }}"><a
+                                        href="{{ route('allBlog') }}">BLOG</a></li>
                             </ul>
                         </div>
                     </nav>
                     <!-- Main Menu End-->
                 </div>
-
-                <!-- Nav Search -->
-                {{-- <div class="nav-search ms-xl-2 ms-4 me-lg-auto py-10">
-                    <button class="fas fa-magnifying-glass"></button>
-                    <form action="#" class="hide">
-                        <input type="text" placeholder="Search" class="searchbox" required />
-                        <button type="submit" class="searchbutton fas fa-magnifying-glass"></button>
-                    </form>
-                </div> --}}
 
                 <!-- Menu Button -->
                 <div class="menu-btns ms-lg-auto">
@@ -275,11 +64,7 @@
                         <a href="{{ route('dashboard') }}" class="light-btn"><i class="fas fa-user me-1"></i> My
                             Dashboard</a>
                     @else
-                        {{-- <div class="navbar-collapse collapse clearfix"> --}}
-
                         <a href="{{ route('login') }}" class="light-btn"><i class="fas fa-user me-1"></i> LOGIN</a>
-                        {{-- </div> --}}
-                        {{-- <a href="{{ route('register') }}" class="light-btn">Sign Up</a> --}}
                     @endauth
                     <a href="{{ route('pricing') }}" class="theme-btn style-two rounded-0">Get Started
                         <i class="fas fa-arrow-right"></i>
@@ -670,5 +455,4 @@
             </div>
         </div>
     </div>
-    {{-- Offcanvas Menu On Mobile End --}}
 </header>

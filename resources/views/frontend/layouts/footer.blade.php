@@ -13,7 +13,7 @@
                         <div class="logo mb-10">
                             <a href="{{ route('homePage') }}">
                                 <img width="100px"
-                                    src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : "no img" }}"
+                                    src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}"
                                     alt="Logo"></a>
                         </div>
                     </div>

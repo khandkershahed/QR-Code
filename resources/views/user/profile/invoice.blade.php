@@ -174,7 +174,7 @@
                                         </div>
 
                                         <!-- Policy Section -->
-                                        <div class="mt-10">
+                                        <div class="pb-10">
                                             <h5 class="fw-bold text-gray-800 mb-3">Policy</h5>
                                             <ul class="fs-6 text-gray-600">
                                                 <li>All formats are valid for the duration mentioned on the invoice.
@@ -189,15 +189,15 @@
                                     </div>
                                 </div>
                                 <!-- Buttons -->
-                                <div class="d-flex flex-stack flex-wrap">
+                                <div class="d-flex justify-content-between align-items-center">
                                     <div class="my-1 me-5">
-                                        <button type="button" class="btn btn-success my-1 me-12"
-                                            onclick="printInvoice()">
-                                            Print Invoice
+                                        <button type="button" class="btn btn-info my-1 me-12" onclick="printInvoice()">
+                                            <i class="fa-solid fa-print pe-3"></i> Print Invoice
                                         </button>
-                                        <button type="button" class="btn btn-light-success my-1"
-                                            onclick="downloadPDF()">
-                                            Download Invoice as PDF
+                                    </div>
+                                    <div class="my-1 me-5">
+                                        <button type="button" class="btn btn-success my-1" onclick="downloadPDF()">
+                                            <i class="fa-solid fa-file-arrow-down pe-3"></i> Download Invoice as PDF
                                         </button>
                                     </div>
                                 </div>

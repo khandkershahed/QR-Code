@@ -111,7 +111,7 @@
                             <a href="{{ route('contact') }}" class="theme-btn">Contact Us <i
                                     class="fas fa-angle-double-right"></i></a>
                             <div class="man"><img
-                                    src="https://webtendtheme.net/html/2024/akpager/assets/images/widget/cta-man.png"
+                                    src="{{ asset('images/iconic-box-bg.png') }}"
                                     alt="CTA"></div>
                             <div class="bg bgs-cover" style="background-image: url(assets/images/widget/cta-bg.png);">
                             </div>

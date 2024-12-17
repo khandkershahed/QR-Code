@@ -44,7 +44,7 @@
                 <div class="col-lg-6">
                     <div class="about-images-service-page">
                         <div class="for-responsive">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/about/services-page.png"
+                            <img class="img-fluid rounded-3" src="{{ asset('images/Flags/identidad-digital-que-es.jpg') }}"
                                 alt="About" />
                         </div>
                     </div>
@@ -80,7 +80,7 @@
                             </p>
                         </div>
                         <div class="bg">
-                            <img src="	https://webtendtheme.net/html/2024/akpager/assets/images/shapes/iconic-box-seven-bg.png"
+                            <img src="{{ asset('images/price-circle.png') }}"
                                 alt="Shape" />
                         </div>
                     </div>
@@ -100,7 +100,7 @@
                             </p>
                         </div>
                         <div class="bg">
-                            <img src="	https://webtendtheme.net/html/2024/akpager/assets/images/shapes/iconic-box-seven-bg.png"
+                            <img src="{{ asset('images/price-circle.png') }}"
                                 alt="Shape" />
                         </div>
                     </div>
@@ -120,7 +120,7 @@
                             </p>
                         </div>
                         <div class="bg">
-                            <img src="	https://webtendtheme.net/html/2024/akpager/assets/images/shapes/iconic-box-seven-bg.png"
+                            <img src="{{ asset('images/price-circle.png') }}"
                                 alt="Shape" />
                         </div>
                     </div>
@@ -139,7 +139,7 @@
                             </p>
                         </div>
                         <div class="bg">
-                            <img src="	https://webtendtheme.net/html/2024/akpager/assets/images/shapes/iconic-box-seven-bg.png"
+                            <img src="{{ asset('images/price-circle.png') }}"
                                 alt="Shape" />
                         </div>
                     </div>
@@ -159,7 +159,7 @@
                             </p>
                         </div>
                         <div class="bg">
-                            <img src="	https://webtendtheme.net/html/2024/akpager/assets/images/shapes/iconic-box-seven-bg.png"
+                            <img src="{{ asset('images/price-circle.png') }}"
                                 alt="Shape" />
                         </div>
                     </div>
@@ -177,7 +177,7 @@
                             </p>
                         </div>
                         <div class="bg">
-                            <img src="	https://webtendtheme.net/html/2024/akpager/assets/images/shapes/iconic-box-seven-bg.png"
+                            <img src="{{ asset('images/price-circle.png') }}"
                                 alt="Shape" />
                         </div>
                     </div>
@@ -189,7 +189,7 @@
 
     <!-- CTA Area Start -->
     <section class="cta-area bgs-cover py-130 rpy-100"
-        style="background-image: url(https://webtendtheme.net/html/2024/akpager/assets/images/backgrounds/cta.jpg)">
+        style="background-image: url({{ asset('images/ctga.jpg') }})">
         <div class="container">
             <div class="row align-items-center justify-content-between">
                 <div class="col-xl-6 col-lg-8">
