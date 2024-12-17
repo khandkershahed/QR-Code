@@ -1,12 +1,19 @@
 <x-app-layout :title="'My Subscription Plan'">
-    <div id="kt_app_content_container" class="app-container  container-xxl ">
+    <div id="kt_app_content_container" class="app-container container-fluid">
         <div class="row">
             <div class="col-lg-12">
+                <div class="card mb-4 mt-10">
+                    <div class="card-body">
+                        <h2 class="mb-0">All Subscribe Plans</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
                 <div class="card" id="kt_pricing">
-                    <div class="card-body p-lg-17">
+                    <div class="card-body">
                         @if (count($subscriptions) > 0)
                             <div class="row">
-                                <table class="table table-striped align-middle table-row-dashed fs-6 gy-5 mb-0">
+                                <table class="table table-striped align-middle table-row-dashed fs-6 gy-5 m-0">
                                     <thead>
                                         <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                             <th width="5%" class="ps-4">Sl</th>

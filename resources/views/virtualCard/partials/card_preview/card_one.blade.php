@@ -5,6 +5,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        width: 50%;
+        margin: auto;
         /* height: 100vh; */
     }
 
