@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Stripe\Exception\ApiErrorException;
 
 class SubscriptionController extends Controller
@@ -39,7 +40,8 @@ class SubscriptionController extends Controller
             return view('admin.pages.user-subscription.index', $data);
         } catch (\Exception $e) {
             // Log error and show an appropriate message to the user
-            return redirect()->back()->withErrors(['message' => 'Error fetching subscriptions.']);
+            Session::flash('error',$e->getMessage());
+            return redirect()->back();
         }
     }
 
