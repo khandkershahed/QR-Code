@@ -22,7 +22,7 @@
                     @foreach ($nfc_cards as $nfc_card)
                         <tr>
                             {{-- @dd($nfc_card) --}}
-                            <td> 
+                            <td>
                                 {{ $loop->iteration }}
                             </td>
                             <td>
@@ -122,7 +122,7 @@
                                     </span>
                                 </a>
                                 <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
-                                    data-kt-menu="true" style="">
+                                    data-kt-menu="true ">
 
                                     @if (strpos(Route::current()->getName(), 'user.') === 0)
                                         <div class="menu-item px-3">
@@ -316,7 +316,7 @@
                                                 aria-label="Phone number must be active"
                                                 data-bs-original-title="Phone number must be active"
                                                 data-kt-initialized="1">
-                                                <i class="ki-duotone ki-information-5 text-gray-500 fs-6"><span
+                                                <i class="fa-solid fa-information-5 text-gray-500 fs-6"><span
                                                         class="path1"></span><span class="path2"></span><span
                                                         class="path3"></span></i></span>
                                         </label>

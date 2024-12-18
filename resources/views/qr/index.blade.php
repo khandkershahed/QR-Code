@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="d-flex align-items-center rounded py-5 px-5 bg-light-primary mt-5 mt-lg-0" style="border: 1px dashed blue;">
-                <i class="ki-duotone ki-information-5 fs-3x text-warning me-5">
+                <i class="fa-solid fa-information-5 fs-3x text-warning me-5">
                     <span class="path1"></span><span class="path2"></span><span class="path3"></span>
                 </i>
                 <!--begin::Description-->
@@ -155,7 +155,7 @@
                                                 </span>
                                             </a>
                                             <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
-                                                data-kt-menu="true" style="">
+                                                data-kt-menu="true ">
                                                 <!--begin::Menu item-->
                                                 @if (!empty($qr->qr_png))
                                                     <div class="menu-item px-3">

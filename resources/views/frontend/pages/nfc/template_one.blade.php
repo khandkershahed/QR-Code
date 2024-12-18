@@ -892,7 +892,7 @@
                                                     src="{{ !empty($service->service_icon) && file_exists(public_path('storage/nfc/service/' . optional($service)->service_icon)) ? asset('storage/nfc/service/' . optional($service)->service_icon) : asset('frontend/images/no_image.png') }}"
                                                     alt="" />
                                             </div>
-                                            <div class="mt-3 text-center" style="">
+                                            <div class="mt-3 text-center ">
                                                 <h4 class="mb-0 special-font text-white">
                                                     {{ $service->service_name }}
                                                 </h4>

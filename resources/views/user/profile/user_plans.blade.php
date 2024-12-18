@@ -9,7 +9,7 @@
                                 <div class="col-lg-12">
                                     <div
                                         class="notice d-flex bg-light-warning rounded border-warning border border-dashed  p-6">
-                                        <i class="ki-duotone ki-bank fs-2tx text-primary me-4">
+                                        <i class="fa-solid fa-bank fs-2tx text-primary me-4">
                                             <span class="path1"></span>
                                             <span class="path2"></span>
                                         </i>
@@ -41,7 +41,7 @@
                                     <div
                                         class="notice d-flex bg-light-warning rounded border-warning border border-dashed  p-6">
 
-                                        <i class="ki-duotone ki-bank fs-2tx text-primary me-4"><span
+                                        <i class="fa-solid fa-bank fs-2tx text-primary me-4"><span
                                                 class="path1"></span><span class="path2"></span></i>
 
                                         <div class="d-flex flex-stack flex-grow-1 flex-wrap flex-md-nowrap">
@@ -122,7 +122,7 @@
                                                                                     class="fw-semibold fs-6 text-gray-800 flex-grow-1 pe-3">
                                                                                     {{ $description }}</span>
                                                                                 <i
-                                                                                    class="ki-duotone ki-check-circle fs-1 text-success"><span
+                                                                                    class="fa-solid fa-check-circle fs-1 text-success"><span
                                                                                         class="path1"></span><span
                                                                                         class="path2"></span></i>
                                                                             </div>
@@ -176,7 +176,7 @@
                                                                                     class="fw-semibold fs-6 text-gray-800 flex-grow-1 pe-3">
                                                                                     {{ $description }}</span>
                                                                                 <i
-                                                                                    class="ki-duotone ki-check-circle fs-1 text-success"><span
+                                                                                    class="fa-solid fa-check-circle fs-1 text-success"><span
                                                                                         class="path1"></span><span
                                                                                         class="path2"></span></i>
                                                                             </div>
@@ -231,7 +231,7 @@
                                                                                     class="fw-semibold fs-6 text-gray-800 flex-grow-1 pe-3">
                                                                                     {{ $description }}</span>
                                                                                 <i
-                                                                                    class="ki-duotone ki-check-circle fs-1 text-success">
+                                                                                    class="fa-solid fa-check-circle fs-1 text-success">
                                                                                     <span class="path1"></span>
                                                                                     <span class="path2"></span>
                                                                                 </i>

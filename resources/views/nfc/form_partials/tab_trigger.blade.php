@@ -8,22 +8,22 @@
                 <g>
                     <path
                         d="M394.007 502h-364c-11.046 0-20-8.954-20-20V30c0-11.046 8.954-20 20-20h364c11.046 0 20 8.954 20 20v452c0 11.046-8.954 20-20 20z"
-                        style="" fill="#ffffff" data-original="#ffffff" class=""></path>
-                    <circle cx="212.01" cy="146" r="82" style="" fill="#fe6663" data-original="#fe6663"
+                          fill="#ffffff" data-original="#ffffff" class=""></path>
+                    <circle cx="212.01" cy="146" r="82"   fill="#fe6663" data-original="#fe6663"
                         class=""></circle>
                     <path
                         d="M238.007 135.5v6.5c0 14.359-11.641 26-26 26s-26-11.641-26-26v-6.5c0-14.359 11.641-26 26-26s26 11.641 26 26z"
-                        style="" fill="#ffcdac" data-original="#ffcdac"></path>
+                          fill="#ffcdac" data-original="#ffcdac"></path>
                     <path
                         d="M212.007 168c-25.38 0-47.064 15.767-55.832 38.033C170.815 219.655 190.432 228 212.007 228s41.192-8.345 55.832-21.967C259.071 183.767 237.387 168 212.007 168z"
-                        style="" fill="#a5ddff" data-original="#a5ddff" class=""></path>
+                          fill="#a5ddff" data-original="#a5ddff" class=""></path>
                     <path
                         d="m436.574 160.59 5.714-9.897c8.837-15.305 28.407-20.549 43.713-11.713 15.305 8.837 20.549 28.407 11.713 43.713L371.873 400.656l-55.426-32 54.282-94.02 65.845-114.046z"
-                        style="" fill="#ffbc53" data-original="#ffbc53"></path>
+                          fill="#ffbc53" data-original="#ffbc53"></path>
                     <path
                         d="M486.002 138.98c-15.305-8.837-34.876-3.593-43.713 11.713l-14.857 25.733 55.426 32 14.857-25.733c8.836-15.305 3.592-34.876-11.713-43.713z"
-                        style="" fill="#fe6663" data-original="#fe6663" class=""></path>
-                    <path d="M371.873 400.656 307.589 448l8.858-79.344z" style="" fill="#9ad8ff"
+                          fill="#fe6663" data-original="#fe6663" class=""></path>
+                    <path d="M371.873 400.656 307.589 448l8.858-79.344z"   fill="#9ad8ff"
                         data-original="#9ad8ff"></path>
                     <path
                         d="M414.007 398.328c-5.522 0-10 4.477-10 10V482c0 5.514-4.486 10-10 10h-364c-5.514 0-10-4.486-10-10V30c0-5.514 4.486-10 10-10h364c5.514 0 10 4.486 10 10v108.75c0 5.523 4.478 10 10 10s10-4.477 10-10V30c0-16.542-13.458-30-30-30h-364c-16.542 0-30 13.458-30 30v452c0 16.542 13.458 30 30 30h364c16.542 0 30-13.458 30-30v-73.672c0-5.523-4.478-10-10-10z"

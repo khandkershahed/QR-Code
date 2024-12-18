@@ -22,7 +22,7 @@
                                         <tr>
                                             <td class="text-muted">
                                                 <div class="d-flex align-items-center">
-                                                    <i class="ki-duotone ki-calendar fs-2 me-2"><span
+                                                    <i class="fa-solid fa-calendar fs-2 me-2"><span
                                                             class="path1"></span><span class="path2"></span></i> Order
                                                     Date
                                                 </div>
@@ -32,7 +32,7 @@
                                         {{-- <tr>
                                             <td class="text-muted">
                                                 <div class="d-flex align-items-center">
-                                                    <i class="ki-duotone ki-wallet fs-2 me-2"><span
+                                                    <i class="fa-solid fa-wallet fs-2 me-2"><span
                                                             class="path1"></span><span class="path2"></span><span
                                                             class="path3"></span><span class="path4"></span></i>
                                                     Payment Method
@@ -47,7 +47,7 @@
                                         <tr>
                                             <td class="text-muted">
                                                 <div class="d-flex align-items-center">
-                                                    <i class="ki-duotone ki-truck fs-2 me-2"><span
+                                                    <i class="fa-solid fa-truck fs-2 me-2"><span
                                                             class="path1"></span><span class="path2"></span><span
                                                             class="path3"></span><span class="path4"></span><span
                                                             class="path5"></span></i> Order Items
@@ -58,14 +58,14 @@
                                         <tr>
                                             <td class="text-muted">
                                                 <div class="d-flex align-items-center">
-                                                    <i class="ki-duotone ki-discount fs-2 me-2"><span
+                                                    <i class="fa-solid fa-discount fs-2 me-2"><span
                                                             class="path1"></span><span class="path2"></span></i>
                                                     Total Payable
 
 
                                                     <span class="ms-1" data-bs-toggle="tooltip"
                                                         title="Reward value earned by customer when purchasing this order">
-                                                        <i class="ki-duotone ki-information-5 text-gray-500 fs-6"><span
+                                                        <i class="fa-solid fa-information-5 text-gray-500 fs-6"><span
                                                                 class="path1"></span><span
                                                                 class="path2"></span><span
                                                                 class="path3"></span></i></span>
@@ -91,7 +91,7 @@
                                         <tr>
                                             <td class="text-muted">
                                                 <div class="d-flex align-items-center">
-                                                    <i class="ki-duotone ki-profile-circle fs-2 me-2"><span
+                                                    <i class="fa-solid fa-profile-circle fs-2 me-2"><span
                                                             class="path1"></span><span class="path2"></span><span
                                                             class="path3"></span></i> Customer
                                                 </div>
@@ -115,7 +115,7 @@
                                         <tr>
                                             <td class="text-muted">
                                                 <div class="d-flex align-items-center">
-                                                    <i class="ki-duotone ki-sms fs-2 me-2"><span
+                                                    <i class="fa-solid fa-sms fs-2 me-2"><span
                                                             class="path1"></span><span class="path2"></span></i> Email
                                                 </div>
                                             </td>
@@ -127,7 +127,7 @@
                                         <tr>
                                             <td class="text-muted">
                                                 <div class="d-flex align-items-center">
-                                                    <i class="ki-duotone ki-phone fs-2 me-2"><span
+                                                    <i class="fa-solid fa-phone fs-2 me-2"><span
                                                             class="path1"></span><span class="path2"></span></i> Phone
                                                 </div>
                                             </td>
@@ -153,7 +153,7 @@
                                         <tr>
                                             <td class="text-muted">
                                                 <div class="d-flex align-items-center">
-                                                    <i class="ki-duotone ki-devices fs-2 me-2"><span
+                                                    <i class="fa-solid fa-devices fs-2 me-2"><span
                                                             class="path1"></span><span class="path2"></span><span
                                                             class="path3"></span><span class="path4"></span><span
                                                             class="path5"></span></i> Invoice
@@ -161,7 +161,7 @@
 
                                                     <span class="ms-1" data-bs-toggle="tooltip"
                                                         title="View the invoice generated by this order.">
-                                                        <i class="ki-duotone ki-information-5 text-gray-500 fs-6"><span
+                                                        <i class="fa-solid fa-information-5 text-gray-500 fs-6"><span
                                                                 class="path1"></span><span class="path2"></span><span
                                                                 class="path3"></span></i></span>
                                                 </div>
@@ -171,7 +171,7 @@
                                         <tr>
                                             <td class="text-muted">
                                                 <div class="d-flex align-items-center">
-                                                    <i class="ki-duotone ki-truck fs-2 me-2"><span
+                                                    <i class="fa-solid fa-truck fs-2 me-2"><span
                                                             class="path1"></span><span class="path2"></span><span
                                                             class="path3"></span><span class="path4"></span><span
                                                             class="path5"></span></i> Shipping
@@ -179,7 +179,7 @@
 
                                                     <span class="ms-1" data-bs-toggle="tooltip"
                                                         title="View the shipping manifest generated by this order.">
-                                                        <i class="ki-duotone ki-information-5 text-gray-500 fs-6"><span
+                                                        <i class="fa-solid fa-information-5 text-gray-500 fs-6"><span
                                                                 class="path1"></span><span
                                                                 class="path2"></span><span
                                                                 class="path3"></span></i></span>
@@ -191,14 +191,14 @@
                                         <tr>
                                             <td class="text-muted">
                                                 <div class="d-flex align-items-center">
-                                                    <i class="ki-duotone ki-discount fs-2 me-2"><span
+                                                    <i class="fa-solid fa-discount fs-2 me-2"><span
                                                             class="path1"></span><span class="path2"></span></i>
                                                     Total Payable
 
 
                                                     <span class="ms-1" data-bs-toggle="tooltip"
                                                         title="Reward value earned by customer when purchasing this order">
-                                                        <i class="ki-duotone ki-information-5 text-gray-500 fs-6"><span
+                                                        <i class="fa-solid fa-information-5 text-gray-500 fs-6"><span
                                                                 class="path1"></span><span
                                                                 class="path2"></span><span
                                                                 class="path3"></span></i></span>
@@ -268,7 +268,7 @@
     </div>
 
 
- 
+
 
     {{-- <div class="row">
         <div class="col-lg-12">

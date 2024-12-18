@@ -45356,11 +45356,11 @@ input[type="color" i] {
         flex-wrap: nowrap !important;
         padding: 5px;
     }
-    .create-img{
+    .create-img {
         height: 150px !important;
     }
 }
-.create-img{
+.create-img {
     height: 220px;
 }
 .stepper.stepper-pills .stepper-nav {
@@ -52769,10 +52769,10 @@ div.dataTables_wrapper div.dataTables_filter {
         height: 100% !important;
     }
 } */
- .nfc-ev-templates{
+.nfc-ev-templates {
     width: 50px;
     height: 100px;
- }
+}
 #whole-content {
     display: block;
 }
@@ -52833,10 +52833,10 @@ div.dataTables_wrapper div.dataTables_filter {
 }
 
 @media (max-width: 768px) {
-    .nfc-ev-templates{
+    .nfc-ev-templates {
         width: 20px !important;
         height: 50px !important;
-     }
+    }
 }
 @media (max-width: 991.98px) {
     .scrolltop {
@@ -55408,8 +55408,12 @@ label.rating-label:hover ~ .rating-label > i {
     color: #009ef7;
     background-color: rgba(239, 242, 245, 0.4);
 }
-table.dataTable>thead .sorting:after, table.dataTable>thead .sorting_asc:after, table.dataTable>thead .sorting_asc_disabled:after, table.dataTable>thead .sorting_desc:after, table.dataTable>thead .sorting_desc_disabled:after {
-    right: .5em;
+table.dataTable > thead .sorting:after,
+table.dataTable > thead .sorting_asc:after,
+table.dataTable > thead .sorting_asc_disabled:after,
+table.dataTable > thead .sorting_desc:after,
+table.dataTable > thead .sorting_desc_disabled:after {
+    right: 0.5em;
     content: "↓";
     top: 30px;
 }
@@ -59354,4 +59358,41 @@ body {
     box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
     border-radius: 10px;
     height: 230px;
+}
+.cst-shadow {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+        rgba(0, 0, 0, 0.1) 0px 0px 1px 0px !important;
+}
+#DataTables_Table_0_wrapper .row {
+    margin-bottom: 0 !important;
+}
+.table.dataTable {
+    margin-top: 0 !important;
+}
+table.dataTable > thead .sorting:before,
+table.dataTable > thead .sorting_asc:before,
+table.dataTable > thead .sorting_asc_disabled:before,
+table.dataTable > thead .sorting_desc:before,
+table.dataTable > thead .sorting_desc_disabled:before {
+    right: 1em;
+    content: "↑";
+    top: 1em !important;
+}
+table.dataTable > thead .sorting:after,
+table.dataTable > thead .sorting_asc:after,
+table.dataTable > thead .sorting_asc_disabled:after,
+table.dataTable > thead .sorting_desc:after,
+table.dataTable > thead .sorting_desc_disabled:after {
+    right: 1em;
+    content: "↑";
+    top: 12px !important;
+}
+
+th {
+    padding: 15px !important;
+}
+
+th:last-of-type {
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
 }

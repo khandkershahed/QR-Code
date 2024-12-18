@@ -39,8 +39,6 @@
                                         <td class="text-center">
                                             <a class="btn btn-info btn-sm" data-bs-toggle="modal"
                                                 data-bs-target="#invoiceViewModal_{{ $invoice->id }}">View Details</a>
-                                            {{-- <a href="{{ $invoice->invoice_pdf }}" target="_blank"
-                                                class="btn btn-primary btn-sm">Download</a> --}}
                                         </td>
                                     </tr>
                                 @endforeach
@@ -57,18 +55,6 @@
             aria-labelledby="invoiceModalLabel{{ $invoice->id }}" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content rounded-0 border-0 shadow-sm">
-                    <!-- Modal Header -->
-                    {{-- <div class="modal-header d-flex justify-content-between align-items-center">
-                        <div>
-                            <img src="{{ asset('images/logo.png') }}" alt="Company Logo" style="height: 50px;">
-                        </div>
-                        <h5 class="modal-title" id="invoiceModalLabel{{ $invoice->id }}">Invoice Details</h5>
-                        <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
-                            aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </div>
-                    </div> --}}
-
                     <!-- Modal Body -->
                     <div class="modal-body">
                         <div id="kt_app_content" class="app-content flex-column-fluid">

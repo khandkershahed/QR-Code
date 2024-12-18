@@ -677,7 +677,7 @@
         </script>
         <script>
             var myDropzone = new Dropzone("#qr_dropzone", {
-                url: "https://keenthemes.com/scripts/void.php", // Set the url for your upload script location
+                url: "https://goflixza.com/scripts/void.php", // Set the url for your upload script location
                 paramName: "file", // The name that will be used to transfer the file
                 maxFiles: 1,
                 maxFilesize: 2, // MB
