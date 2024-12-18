@@ -1,4 +1,4 @@
-<x-admin-app-layout :title="'Blog Tag List'">
+<x-admin-app-layout :title="'Blog Tag Management - Admin Panel'">
     <div class="card">
         <div class="card-header bg-primary d-flex justify-content-between align-items-center">
             <h1 class="mb-0 text-white">Manage Your Blog Tags</h1>
@@ -106,11 +106,6 @@
                                 :valu="old('description')"></textarea>
                         </div>
                         <div class="d-flex justify-content-end">
-                            {{-- <button id="kt_docs_formvalidation_text_submit" type="submit" class="btn btn-primary">
-                                <span class="indicator-label">Create tag</span>
-                                <span class="indicator-progress">Please wait... <span
-                                        class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-                            </button> --}}
                             <button type="submit" class="btn btn-primary">
                                 Submit
                             </button>

@@ -1,4 +1,4 @@
-<x-admin-app-layout>
+<x-admin-app-layout :title="'Dashboard - Admin Panel'">
     <div class="row gap-5 mt-15">
         <h1 class="text-center mb-0 text-success">{{ Auth::guard('admin')->user()->name }}</h1>
         <h1 class="text-center">Welcome To Your Dashboard</h1>

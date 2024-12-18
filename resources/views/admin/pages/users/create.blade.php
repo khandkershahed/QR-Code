@@ -1,4 +1,4 @@
-<x-admin-app-layout :title="'Add Admin'">
+<x-admin-app-layout :title="'Add Admin - Admin Panel'">
     <div class="card card-flash my-15">
         <div class="card-body scroll-y mx-5 my-7">
             <form class="form" method="POST" action="{{ route('admin.user.store') }}">
@@ -38,22 +38,10 @@
                                 @foreach ($roles as $role)
                                     <div class="d-flex fv-row">
                                         <div class="form-check form-check-custom form-check-solid mb-2">
-
                                             <x-metronic.checkbox id="role-name-{{ $role->id }}" type="radio"
                                                 name="roles[]" :value="$role->name"></x-metronic.checkbox>
-
-
-                                            {{-- <input class="form-check-input me-3" name="roles[]" type="radio" value="0"
-                                            id="kt_modal_update_role_option_0" checked='checked' /> --}}
                                             <x-metronic.label for="role-name-{{ $role->id }}"
                                                 class="form-check-radio ps-2 text-capitalize ">{{ $role->name }}</x-metronic.label>
-                                            {{-- <label class="form-check-label" for="kt_modal_update_role_option_0">
-                                            <div class="fw-bolder text-gray-800">
-                                                {{ $role->name }}</div>
-                                            <div class="text-gray-600">Best for
-                                                business owners and company
-                                                administrators</div>
-                                        </label> --}}
                                         </div>
                                     </div>
                                 @endforeach
@@ -83,62 +71,4 @@
             </form>
         </div>
     </div>
-    {{-- <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <form method="POST" action="{{ route('admin.user.store') }}">
-                @csrf
-
-                <div>
-                    <x-input-label for="name" :value="__('Name')" />
-                    <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
-                        :value="old('name')" required autofocus autocomplete="name" />
-                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
-                </div>
-
-                <div class="mt-4">
-                    <x-input-label for="email" :value="__('Email')" />
-                    <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
-                        :value="old('email')" required autocomplete="username" />
-                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
-                </div>
-
-                <div class="mt-4">
-                    <x-input-label for="password" :value="__('Password')" />
-
-                    <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required
-                        autocomplete="new-password" />
-
-                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
-                </div>
-
-                <div class="mt-4">
-                    <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                    <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password"
-                        name="password_confirmation" required autocomplete="new-password" />
-
-                    <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-                </div>
-
-                <div class="mb-4">
-                    <label for="role" class="block text-gray-700 text-sm font-bold mb-2">Role</label>
-                    <select name="roles[]" id="role" multiple
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline js-example-basic-multiple">
-                        @foreach ($roles as $role)
-                            <option value="{{ $role->name }}">{{ $role->name }}</option>
-                        @endforeach
-                    </select>
-                    @error('role')
-                        <p class="text-red-500 text-xs italic mt-4">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <div class="flex items-center justify-end mt-4">
-                    <x-primary-button class="ml-4">
-                        {{ __('Register') }}
-                    </x-primary-button>
-                </div>
-            </form>
-        </div>
-    </div> --}}
 </x-admin-app-layout>

@@ -1,4 +1,4 @@
-<x-admin-app-layout :title="'Logs'">
+<x-admin-app-layout :title="'Logs - Admin Panel'">
     <!--begin::Post-->
     <div class="post d-flex flex-column-fluid" id="kt_post">
         <!--begin::Container-->

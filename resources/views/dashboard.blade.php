@@ -1,4 +1,4 @@
-<x-app-layout :title="'My Dashboard'">
+<x-app-layout :title="'My Dashboard - Admin Panel'">
     <div class="container-fluid">
         <div class="row">
             <h1 class="text-center py-10">

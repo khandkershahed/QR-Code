@@ -1,4 +1,4 @@
-<x-admin-app-layout :title="'Email-settings Add'">
+<x-admin-app-layout :title="'Email-settings - Admin Panel'">
     <div class="card card-flash">
 
         <div class="card-body scroll-y">

@@ -1,4 +1,4 @@
-<x-admin-app-layout>
+<x-admin-app-layout :title="'Category Management - Admin Panel'">
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <form method="POST" action="{{ route('admin.categories.store') }}">
@@ -45,11 +45,9 @@
                     </div>
                     <div class="card-footer">
                         <div class="d-flex justify-content-end">
-                            <!--begin::Button-->
                             <x-metronic.button type="submit" class="success">
                                 {{ __('Save Changes') }}
                             </x-metronic.button>
-                            <!--end::Button-->
                         </div>
                     </div>
                 </div>

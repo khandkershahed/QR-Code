@@ -1,6 +1,101 @@
 <style>
-    td{
+    td {
         vertical-align: middle;
+    }
+
+    .punch-card-container {
+        width: 600px;
+        height: 300px;
+        border-radius: 8px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .punch-card-container-back {
+        width: 600px;
+        height: 300px;
+        border-radius: 8px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .text-start {
+        text-align: start;
+    }
+
+    .text-lg-start {
+        text-align: start !important;
+        /* Specific override for large screens */
+    }
+
+    .card_logo {
+        max-width: 100%;
+        height: 100px;
+        width: 100px;
+    }
+
+    .punch-card-logo-back-three {
+        width: 200px;
+    }
+
+    .card_name {
+        color: #fff;
+        font-size: 2rem;
+    }
+
+    .card_designation {
+        color: #fff;
+        font-size: 1.2rem;
+    }
+
+    .card_phone,
+    .card_email,
+    .card_address {
+        color: #fff;
+    }
+
+    .title-divider {
+        height: 2px;
+        width: 120px;
+        background-color: #fff;
+        margin: 0;
+    }
+
+    .nfc-text-title {
+        font-size: 4rem;
+        color: #fff;
+    }
+
+    .punch-card-container-back-one {
+        height: 33vh;
+        object-fit: fill;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        border-radius: 5px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+        .text-lg-start {
+            text-align: center !important;
+        }
+    }
+
+    @media only screen and (min-width: 1368px) {
+        .punch-card-container {
+            width: 100%;
+            height: auto;
+            margin: auto;
+        }
     }
 </style>
 <div class="col-lg-12 mt-10">
@@ -83,7 +178,8 @@
 
                             <td>
                                 <a href="{{ $nfc_card->nfc_url }}" target="_blank" class="text-primary">
-                                    <button class="btn btn-sm btn-info p-2 px-3">VCard <i class="fas fa-link ps-2"></i></button>
+                                    <button class="btn btn-sm btn-info p-2 px-3">VCard <i
+                                            class="fas fa-link ps-2"></i></button>
                                 </a>
                             </td>
                             <td>
@@ -185,7 +281,6 @@
                                             </a>
                                         </div>
                                     @endif
-
                                 </div>
                             </td>
                         </tr>
@@ -195,25 +290,17 @@
         </div>
     </div>
 </div>
-
-
-
 @foreach ($nfc_cards as $nfc_card)
     <div class="modal fade" tabindex="-1" id="message_modal_{{ $nfc_card->id }}">
         <div class="modal-dialog modal-xl">
             <div class="modal-content position-absolute">
                 <div class="modal-header">
                     <h5 class="modal-title">All Messages of your NFC</h5>
-
-                    <!--begin::Close-->
                     <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
                         aria-label="Close">
-                        <i class="fa-solid fa-cross fs-2x"><span class="path1"></span><span
-                                class="path2"></span></i>
+                        <i class="fa-solid fa-cross fs-2x"></i>
                     </div>
-                    <!--end::Close-->
                 </div>
-
                 <div class="modal-body">
                     <div class="card">
                         <table
@@ -268,18 +355,12 @@
                                             </a>
                                             <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
                                                 data-kt-menu="true ">
-                                                <!--begin::Menu item-->
-
-                                                <!--end::Menu item-->
-
-                                                <!--begin::Menu item-->
                                                 <div class="menu-item px-3">
                                                     <a href="{{ route('individual-message.destroy', $nfc_message->id) }}"
                                                         class="menu-link px-3 delete">
                                                         Delete
                                                     </a>
                                                 </div>
-                                                <!--end::Menu item-->
                                             </div>
                                         </td>
                                     </tr>
@@ -288,15 +369,12 @@
                         </table>
                     </div>
                 </div>
-
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
                 </div>
             </div>
         </div>
     </div>
-
     <div class="modal fade" tabindex="-1" id="virtual_card_modal_{{ $nfc_card->id }}">
         <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width: 645px !important;">
             <div class="modal-content position-absolute">
@@ -304,107 +382,10 @@
                     <h5 class="modal-title">Generated QR</h5>
                     <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
                         aria-label="Close">
-                        <i class="fa-solid fa-cross fs-2x"><span class="path1"></span><span
-                                class="path2"></span></i>
+                        <i class="fa-solid fa-cross fs-2x"></i>
                     </div>
                 </div>
                 <div class="modal-body pb-0">
-                    <style>
-                        .punch-card-container {
-                            width: 600px;
-                            height: 300px;
-                            border-radius: 8px;
-                            background-repeat: no-repeat;
-                            background-size: cover;
-                            background-position: center;
-                            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-                            text-align: center;
-                            margin-bottom: 20px;
-                        }
-
-                        .punch-card-container-back {
-                            width: 600px;
-                            height: 300px;
-                            border-radius: 8px;
-                            background-repeat: no-repeat;
-                            background-size: cover;
-                            background-position: center;
-                            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-                            text-align: center;
-                            margin-bottom: 20px;
-                        }
-
-                        .text-start {
-                            text-align: start;
-                        }
-
-                        .text-lg-start {
-                            text-align: start !important;
-                            /* Specific override for large screens */
-                        }
-
-                        .card_logo {
-                            max-width: 100%;
-                            height: 100px;
-                            width: 100px;
-                        }
-
-                        .punch-card-logo-back-three {
-                            width: 200px;
-                        }
-
-                        .card_name {
-                            color: #fff;
-                            font-size: 2rem;
-                        }
-
-                        .card_designation {
-                            color: #fff;
-                            font-size: 1.2rem;
-                        }
-
-                        .card_phone,
-                        .card_email,
-                        .card_address {
-                            color: #fff;
-                        }
-
-                        .title-divider {
-                            height: 2px;
-                            width: 120px;
-                            background-color: #fff;
-                            margin: 0;
-                        }
-
-                        .nfc-text-title {
-                            font-size: 4rem;
-                            color: #fff;
-                        }
-
-                        .punch-card-container-back-one {
-                            height: 33vh;
-                            object-fit: fill;
-                            background-repeat: no-repeat;
-                            background-size: cover;
-                            background-position: center;
-                            border-radius: 5px;
-                        }
-
-                        /* Responsive adjustments */
-                        @media (max-width: 992px) {
-                            .text-lg-start {
-                                text-align: center !important;
-                            }
-                        }
-
-                        @media only screen and (min-width: 1368px) {
-                            .punch-card-container {
-                                width: 100%;
-                                height: auto;
-                                margin: auto;
-                            }
-                        }
-                    </style>
                     <div class="card">
                         <div class="row">
                             <div class="col-lg-12 text-center">
@@ -419,34 +400,25 @@
                                     </a>
                                 </h5>
                             </div>
-
                         </div>
                     </div>
                 </div>
-
                 <div class="modal-footer border-0 pt-0">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
                 </div>
             </div>
         </div>
     </div>
-
     <div class="modal fade" tabindex="-1" id="shipping_address_modal_{{ $nfc_card->id }}">
         <div class="modal-dialog modal-xl">
             <div class="modal-content position-absolute">
                 <div class="modal-header">
                     <h5 class="modal-title">Card Shipping Address</h5>
-
-                    <!--begin::Close-->
                     <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
                         aria-label="Close">
-                        <i class="fa-solid fa-cross fs-2x"><span class="path1">X</span><span
-                                class="path2"></span></i>
+                        <i class="fa-solid fa-cross fs-2x"></i>
                     </div>
-                    <!--end::Close-->
                 </div>
-
                 <div class="modal-body">
                     <div class="card">
                         <div class="card-body">
@@ -511,10 +483,8 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
                 </div>
             </div>
         </div>
@@ -525,7 +495,6 @@
 @push('scripts')
     <script>
         "use strict";
-
         // Class definition
         var KTDatatablesExample = function() {
             // Shared variables

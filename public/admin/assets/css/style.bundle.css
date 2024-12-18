@@ -45295,7 +45295,7 @@ input[type="color" i] {
 }
 
 .btn.btn-outline.btn-outline-dashed {
-    border-width: 1px;
+    border-width: 2px;
     border-style: dashed;
 }
 .steaper-header {
