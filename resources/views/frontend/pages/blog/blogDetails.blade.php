@@ -34,29 +34,6 @@
                             </blockquote>
 
                             <p>{!! optional($blog)->long_description !!}</p>
-
-                            {{-- <div class="tag-share pt-15 pb-40">
-                                <div class="item aos-init" data-aos="fade-left" data-aos-duration="1500"
-                                    data-aos-offset="50">
-                                    <b>Tags </b>
-                                    <div class="tag-coulds">
-                                        <a href="blog.html">Marketing</a>
-                                        <a href="blog.html">Product</a>
-                                        <a href="blog.html">Social Media</a>
-                                    </div>
-                                </div>
-                                <div class="item aos-init" data-aos="fade-right" data-aos-duration="1500"
-                                    data-aos-offset="50">
-                                    <b>Share </b>
-                                    <div class="social-style-one">
-                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                        <a href="#"><i class="fab fa-instagram"></i></a>
-                                    </div>
-                                </div>
-                            </div> --}}
-
                             <hr>
                         </div>
 
@@ -66,8 +43,7 @@
                                 <div class="comment-body">
                                     <div class="author-thumb">
                                         <img src="{{ optional($blog)->logo ? asset('storage/' . optional($blog)->logo) : asset('frontend/newimage/blognoimage.webp') }}"
-                                            alt="Author"
-                                            style="width: 100px;height: 100px;object-fit: cover;"
+                                            alt="Author" style="width: 100px;height: 100px;object-fit: cover;"
                                             onerror="this.onerror=null;this.src='{{ asset('frontend/newimage/blognoimage.webp') }}';">
                                     </div>
                                     <div class="content">
@@ -77,97 +53,11 @@
                             </div>
                         @endif
 
-                        {{-- <h4 class="comment-title mb-20 pt-50">Comments</h4>
-                        <div class="comments">
-                            <div class="comment-body aos-init" data-aos="fade-up" data-aos-duration="1500"
-                                data-aos-offset="50">
-                                <div class="author-thumb">
-                                    <img src="https://webtendtheme.net/html/2024/akpager/assets/images/blog/comment-author1.png"
-                                        alt="Author">
-                                </div>
-                                <div class="content">
-                                    <ul class="comment-header">
-                                        <li>
-                                            <h6>William L. Jackson</h6>
-                                        </li>
-                                        <li>
-                                            <a href="#">Sep 25, 2023</a>
-                                        </li>
-                                    </ul>
-                                    <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse molestiae
-                                        consequatur qui dolorem eum fugiat voluptas</p>
-                                    <a class="read-more" href="#">Reply <i class="fas fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                            <div class="comment-body comment-child aos-init" data-aos="fade-up" data-aos-duration="1500"
-                                data-aos-offset="50">
-                                <div class="author-thumb">
-                                    <img src="https://webtendtheme.net/html/2024/akpager/assets/images/blog/comment-author2.png"
-                                        alt="Author">
-                                </div>
-                                <div class="content">
-                                    <ul class="comment-header">
-                                        <li>
-                                            <h6>James M. Stovall</h6>
-                                        </li>
-                                        <li>
-                                            <a href="#">February 25, 2024</a>
-                                        </li>
-                                    </ul>
-                                    <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse molestiae
-                                        consequatur qui dolorem eum fugiat voluptas</p>
-                                    <a class="read-more" href="#">Reply <i class="fas fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <form id="comment-form" class="comment-form br-15 bgc-lighter mt-75 aos-init" data-aos="fade-up"
-                            data-aos-duration="1500" data-aos-offset="50" name="comment-form" action="#"
-                            method="post">
-                            <h4>Leave a Reply</h4>
-                            <div class="row mt-30">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" id="full-name" name="full-name" class="form-control"
-                                            value="" placeholder="Full Name" required="">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" id="blog-phone" name="blog-phone" class="form-control"
-                                            value="" placeholder="Phone" required="">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <input type="email" id="blog-email" name="blog-email" class="form-control"
-                                            value="" placeholder="Email Address" required="">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <textarea name="message" id="message" class="form-control" rows="4" placeholder="Comments" required=""></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group mb-0">
-                                        <button type="submit" class="theme-btn">Send Comments <i
-                                                class="fas fa-arrow-right"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form> --}}
+
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="main-sidebar rmt-75">
-                        {{-- <div class="widget widget-search aos-init aos-animate" data-aos="fade-up" data-aos-delay="50"
-                            data-aos-duration="1500" data-aos-offset="50">
-                            <h5 class="widget-title">Search</h5>
-                            <form action="#" class="default-search-form">
-                                <input type="text" placeholder="Keywords" required="">
-                                <button type="submit" class="searchbutton fas fa-search"></button>
-                            </form>
-                        </div> --}}
                         <div class="widget widget-category aos-init" data-aos="fade-up" data-aos-delay="50"
                             data-aos-duration="1500" data-aos-offset="50">
                             <h5 class="widget-title">Category</h5>
