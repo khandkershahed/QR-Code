@@ -156,7 +156,7 @@
                             <img class="img-fluid" src="{{ asset('frontend/newimage/templates.webp') }}" alt="Feature">
                         </div>
                         <div class="content">
-                            <h5><a href="service-details.html">Elegant Designed Templates</a></h5>
+                            <h5><a href="javascript:void(0)">Elegant Designed Templates</a></h5>
                             <p>Choose from a variety of beautifully designed templates to create a digital visiting card
                                 that matches your style. Customize every detail, from colors to fonts, ensuring your
                                 card perfectly represents your personal or business brand.</p>
@@ -171,7 +171,7 @@
                                 alt="Feature">
                         </div>
                         <div class="content">
-                            <h5><a href="service-details.html">Real-Time Updates</a></h5>
+                            <h5><a href="javascript:void(0)">Real-Time Updates</a></h5>
                             <p>Keep your digital visiting card dynamic and interactive with real-time updates. Add photo
                                 galleries, videos, and contact forms, allowing you to showcase your work and make it
                                 easy for others to connect with you instantly.</p>
@@ -186,7 +186,7 @@
                                 alt="Feature">
                         </div>
                         <div class="content">
-                            <h5><a href="service-details.html">NFC Cards for Contactless Sharing</a></h5>
+                            <h5><a href="javascript:void(0)">NFC Cards for Contactless Sharing</a></h5>
                             <p>Upgrade your business card to an NFC-enabled smart card for seamless, contactless
                                 sharing. Impress your connections with a modern, tech-savvy way to exchange information
                                 instantly with just a tap.</p>
@@ -201,6 +201,4 @@
             <span></span><span></span>
         </div>
     </section>
-    @push('scripts')
-    @endpush
 </x-frontend-app-layout>

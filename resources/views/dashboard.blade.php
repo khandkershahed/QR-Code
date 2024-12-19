@@ -1,11 +1,9 @@
 <x-app-layout :title="'My Dashboard - Admin Panel'">
     <div class="container-fluid">
         <div class="row">
-            <h1 class="text-center py-10">
-                Hello
-                <span class="text-success">{{ Auth::user()->name }}.</span>
-                Welcome To Your Dashboard!
-            </h1>
+            <h1 class="text-center py-10">Hello <span class="text-success">{{ Auth::user()->name }}.</span> Welcome To
+                Your Dashboard!</h1>
+
         </div>
         <div class="row g-5 gx-xl-10 mb-5 mb-xl-10">
             <div class="col-lg-6 mb-md-5 mb-xl-10">
@@ -48,9 +46,9 @@
                                     $links = [
                                         ['route' => 'user.qr-code.create', 'label' => 'Create QR'],
                                         ['route' => 'user.nfc-card.create', 'label' => 'Create NFC'],
-                                        ['route' => '#', 'label' => 'Current Status'],
+                                        // ['route' => '#', 'label' => 'Current Status'],
                                         ['route' => 'user.plan', 'label' => 'Upgrade Plan'],
-                                        ['route' => '#', 'label' => 'My Profile'],
+                                        // ['route' => '#', 'label' => 'My Profile'],
                                         ['route' => 'user.plan', 'label' => 'See All Plans'],
                                     ];
                                 @endphp
