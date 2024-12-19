@@ -62,17 +62,15 @@
             <div class="col-lg-12 mb-7">
                 <x-metronic.label for="logo"
                     class="fw-semibold fs-6 mb-2">{{ __('Description') }}</x-metronic.label>
-                <textarea name="bio_description" class="form-control form-control-solid form-control-sm" rows="11">{{ optional($nfc_card)->bio_description }}</textarea>
+                <textarea name="bio_description" class="form-control form-control-solid form-control-sm" rows="12">{{ optional($nfc_card)->bio_description }}</textarea>
             </div>
         </div>
     </div>
-    <div class="separator separator-dashed separator-content border-info my-15">
-        <i class="fa-solid fa-diamond fs-1 text-info"></i>
+    <div class="separator separator-dashed separator-content border-info my-15 fw-bold">
+        <i class="fa-solid fa-diamond fs-1 text-info"></i><span class="fs-2 px-3">Details</span><i
+            class="fa-solid fa-diamond fs-1 text-info"></i>
     </div>
     <div class="row">
-        <div>
-            <h1 class="text-start">VCard Details</h1>
-        </div>
         <div class="fv-row col-lg-4 col-6 mb-4">
             <x-metronic.label class="required fw-semibold fs-6 mb-2">First
                 Name</x-metronic.label>
@@ -107,67 +105,43 @@
             <x-metronic.input type="text" class="form-control form-control-solid form-control-sm"
                 name="phone_work" :value="optional($nfc_card->nfcData)->phone_work" placeholder="(+1 05)" />
         </div>
-        <div class="fv-row col-lg-4 col-6 mb-4">
-            <x-metronic.label class="fw-semibold fs-6 mb-2">Location</x-metronic.label>
-            {{-- <x-metronic.input type="text" class="form-control form-control-solid form-control-sm" name="location" :value="old('location')"
-                placeholder="Enter Location" /> --}}
-            <textarea name="location" class="form-control form-control-solid" rows="1">{{ optional($nfc_card->nfcData)->location }}</textarea>
-        </div>
-        <div class="fv-row col-lg-4 col-6 mb-4">
+        <div class="fv-row col-lg-3 col-6 mb-4">
             <x-metronic.label class="fw-semibold fs-6 mb-2">Location URL</x-metronic.label>
             <x-metronic.input type="text" class="form-control form-control-solid form-control-sm"
                 name="location_url" :value="optional($nfc_card->nfcData)->location_url" placeholder="Enter Location URl " />
         </div>
-        <div class="fv-row col-lg-4 col-6 mb-4">
+        <div class="fv-row col-lg-3 col-6 mb-4">
             <x-metronic.label class="fw-semibold fs-6 mb-2">Date Of
                 Birth</x-metronic.label>
             <x-metronic.input type="date" class="form-control form-control-solid form-control-sm"
                 name="date_of_birth" :value="optional($nfc_card->nfcData)->date_of_birth" placeholder="Enter Date Of Birth " />
         </div>
-        <div class="fv-row col-lg-4 col-6 mb-4">
+        <div class="fv-row col-lg-3 col-6 mb-4">
             <x-metronic.label class="fw-semibold fs-6 mb-2">Company</x-metronic.label>
             <x-metronic.input type="text" class="form-control form-control-solid form-control-sm"
                 name="company_name" :value="optional($nfc_card->nfcData)->company_name" placeholder="Enter Company Name " />
         </div>
-        <div class="fv-row col-lg-4 col-6 mb-4">
+        <div class="fv-row col-lg-3 col-6 mb-4">
             <x-metronic.label class="fw-semibold fs-6 mb-2">Job
                 Title</x-metronic.label>
             <x-metronic.input type="text" class="form-control form-control-solid form-control-sm" name="job_title"
                 :value="optional($nfc_card->nfcData)->job_title" placeholder="Enter Job Title " />
         </div>
-        {{-- <div class="fv-row col-lg-4 col-6 mb-4">
-            <x-metronic.label class="fw-semibold fs-6 mb-2">Default
-                Language</x-metronic.label>
-            <select class="form-select" data-control="select2" data-placeholder="English" name="default_language"
-                :value="optional($nfc_card - > nfcData) - > default_language">
-                <option></option>
-                <option value="english" selected>English</option>
-                <option value="china">China</option>
-                <option value="arabic">Arabic</option>
-                <option value="bangla">Bangla</option>
-            </select>
-        </div> --}}
+        <div class="fv-row col-lg-12 col-12 mb-4">
+            <x-metronic.label for="location" class="fw-semibold fs-6 mb-2">{{ __('Location') }}</x-metronic.label>
+            <textarea name="location" class="form-control form-control-solid form-control-sm" rows="6">{{ optional($nfc_card)->location }}</textarea>
+        </div>
     </div>
 
     <div class="d-flex justify-content-end">
-        <button type="submit" class="kt_docs_formvalidation_text_submit btn btn-primary mt-5" id="submitBtn">
+        <button type="submit" class="kt_docs_formvalidation_text_submit btn btn-info mt-5" id="submitBtn">
             <span class="indicator-label">
-                Save Data
+                Save & Continue <i class="fa-solid fa-arrow-right-long"></i>
             </span>
             <span class="indicator-progress" style="display: none;">
                 Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
             </span>
         </button>
-    </div>
-    <div>
-        <div class="nav nav-tabs nav-pills" role="tablist">
-            <div class="nav-item w-100 me-0 mb-md-2" role="presentation">
-                <button class="nav-link" data-bs-toggle="tab"
-                    href="#vcardTemplate" aria-selected="true" role="tab">
-                    <span class="ps-2">VCard Templates</span>
-                </button>
-            </div>
-        </div>
     </div>
 </form>
 
