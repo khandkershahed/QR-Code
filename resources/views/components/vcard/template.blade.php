@@ -1,4 +1,58 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css">
 <style>
+    .wrapperss {
+        padding: 70px 0;
+    }
+
+    /* Default slide */
+    .center-sliders .slick-slide {
+        color: #FFF;
+        height: 510px;
+        margin: 0 15px 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: scale(0.8);
+        transition: all 0.4s ease-in-out;
+    }
+
+    .center-sliders .slick-slide,
+    .center-sliders .slick-slide[aria-hidden="true"]:not(.slick-cloned)~.slick-cloned[aria-hidden="true"] {
+        transform: scale(0.8, 0.8);
+        transition: all 0.4s ease-in-out;
+    }
+
+    /* Active center slide (You can change anything here for cenetr slide)*/
+    .center-sliders .slick-center,
+    .center-sliders .slick-slide[aria-hidden="true"]:not([tabindex="-1"])+.slick-cloned[aria-hidden="true"] {
+        transform: scale(1.1);
+    }
+
+    .center-sliders .slick-current.slick-active {
+        transform: scale(1.1);
+    }
+
+    .slick-next,
+    .slick-prev {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        z-index: 5;
+    }
+
+    .slick-next {
+        right: 15px;
+    }
+
+    .slick-prev {
+        left: 15px;
+    }
+
+    .slick-next:before,
+    .slick-prev:before {
+        color: #000;
+        font-size: 26px;
+    }
+
     .window {
         width: 230px;
         margin: auto;
@@ -74,6 +128,7 @@
 ])
 
 
+
 <div class="row mt-10">
     <div class="center-sliders">
         @php
@@ -101,4 +156,54 @@
     </div>
 </div>
 @push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.center-sliders').slick({
+                slidesToShow: 5,
+                slidesToScroll: 1,
+                centerMode: true,
+                arrows: true,
+                dots: false,
+                speed: 300,
+                centerPadding: '20px',
+                infinite: true,
+                autoplaySpeed: 5000,
+                autoplay: true,
+                responsive: [{
+                        breakpoint: 1200, // Screens smaller than 1200px
+                        settings: {
+                            slidesToShow: 4,
+                            slidesToScroll: 1,
+                            centerMode: true
+                        }
+                    },
+                    {
+                        breakpoint: 992, // Screens smaller than 992px
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 1,
+                            centerMode: false
+                        }
+                    },
+                    {
+                        breakpoint: 768, // Screens smaller than 768px
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 1,
+                            centerMode: false
+                        }
+                    },
+                    {
+                        breakpoint: 576, // Screens smaller than 576px
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            centerMode: false
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
 @endpush

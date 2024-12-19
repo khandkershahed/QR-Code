@@ -1,4 +1,4 @@
-<ul class="nav nav-tabs nav-pills flex-row border-0 flex-md-column mb-3 mb-md-0 fs-6 w-100 pb-3" role="tablist">
+<ul class="nav nav-tabs nav-pills flex-row border-0 flex-md-column mb-3 mb-md-0 fs-6 w-100 pb-3 ps-1" role="tablist">
     <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
         <a class="nav-link active w-100 btn btn-flex btn-active-info fs-6 fw-normal" data-bs-toggle="tab"
             href="#generalInfo" aria-selected="false" role="tab" tabindex="-1">
