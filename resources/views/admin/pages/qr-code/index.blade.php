@@ -1,6 +1,4 @@
-<x-admin-app-layout :title="'QR Code List'">
-
-    {{-- {!! QrCode::size(500)->eye('square')->eyeColor(1, 222, 18, 222,222, 18, 222 )->eyeColor(1, 222, 18, 222,222, 18, 222 )->eyeColor(2, 222, 18, 222,222, 18, 222 )->style('dot', 0.8)->errorCorrection('H')->generate('Make me into a QrCode!'); !!} --}}
+<x-admin-app-layout :title="'QR Code List - Admin Panel'">
     <div class="row">
         <div class="col-lg-12">
             <div class="card border-transparent mt-10" data-bs-theme="light" style="background-color: #1C325E;">
@@ -127,15 +125,30 @@
                                     </td>
                                     <td data-order="2022-03-10T14:40:00+05:00" class="text-start">
                                         {{-- title --}}
-                                        <span><span class="fw-bold text-black">Title :
-                                            </span>{{ $qr->qr_name }}</span><br>
-                                        <span><span class="fw-bold text-black">Link :
-                                            </span><a class="text-primary" href="javascript:void(0)"
-                                                data-bs-toggle="modal" data-bs-target="#image-{{ $qr->id }}">Go
-                                                to
-                                                Link</a></span><br>
-                                        <span><span class="fw-bold text-black">Org :
-                                            </span>{{ $qr->qr_name }}</span><br>
+                                        <span>
+                                            <span class="fw-bold text-black">
+                                                Title :
+                                            </span>
+                                            {{ $qr->qr_name }}
+                                        </span>
+                                        <br>
+                                        <span>
+                                            <span class="fw-bold text-black">
+                                                Link :
+                                            </span>
+                                            <a class="text-primary" href="javascript:void(0)" data-bs-toggle="modal"
+                                                data-bs-target="#image-{{ $qr->id }}">
+                                                Go to Link
+                                            </a>
+                                        </span>
+                                        <br>
+                                        <span>
+                                            <span class="fw-bold text-black">
+                                                Org :
+                                            </span>
+                                            {{ $qr->qr_name }}
+                                        </span>
+                                        <br>
                                         <span>
                                             <p class="mb-0">Create: {{ $qr->created_at->format('d F Y') }}</p>
                                             <br>
@@ -168,6 +181,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                        </span>
                                     </td>
                                     <td>
                                         {{ optional($qr->user)->name }}
@@ -188,9 +202,9 @@
                                             <i class="fas fa-pen"></i>
                                         </a>
                                         <a href="{{ route('admin.qr-code.destroy', $qr->id) }}"
-                                                class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1 delete">
-                                                <i class="fas fa-trash-alt text-danger"></i>
-                                            </a>
+                                            class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1 delete">
+                                            <i class="fas fa-trash-alt text-danger"></i>
+                                        </a>
                                         <a href="#" class="btn btn-light btn-active-light-primary btn-sm"
                                             data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end"
                                             data-kt-menu-flip="top-end">
@@ -212,8 +226,7 @@
                                             </span>
                                         </a>
                                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
-                                            data-kt-menu="true" style="">
-                                            <!--begin::Menu item-->
+                                            data-kt-menu="true ">
                                             @if (!empty($qr->qr_png))
                                                 <div class="menu-item px-3">
                                                     <a href="{{ $qr->qr_png_url }}" class="menu-link px-3" download
@@ -222,9 +235,7 @@
                                                     </a>
                                                 </div>
                                             @endif
-                                            <!--end::Menu item-->
 
-                                            <!--begin::Menu item-->
                                             @if (!empty($qr->qr_svg))
                                                 <div class="menu-item px-3">
                                                     <a href="{{ $qr->qr_svg_url }}" class="menu-link px-3" download
@@ -257,7 +268,6 @@
                                                     </a>
                                                 </div>
                                             @endif
-                                            <!--end::Menu item-->
                                         </div>
                                     </td>
                                 </tr>

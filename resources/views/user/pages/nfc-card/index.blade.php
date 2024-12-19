@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="d-flex align-items-center rounded py-5 px-5 bg-light-primary mt-5 mt-lg-0" style="border: 1px dashed blue;">
-                <i class="ki-duotone ki-information-5 fs-3x text-warning me-5">
+                <i class="fa-solid fa-information-5 fs-3x text-warning me-5">
                     <span class="path1"></span><span class="path2"></span><span class="path3"></span>
                 </i>
                 <!--begin::Description-->

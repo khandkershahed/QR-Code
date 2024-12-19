@@ -241,7 +241,9 @@
                                 </div>
                             </div>
                             <div class="pull-right">
-                                <img class="card_logo" src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}" width="60px" />
+                                <img class="card_logo"
+                                    src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}"
+                                    width="60px" />
                             </div>
                         </div>
                     </footer>
@@ -252,7 +254,8 @@
                 <div class="credit-card-inner d-flex justify-content-center align-items-center"
                     style="background-color: #cccccc6e; border-radius: 20px">
                     <div>
-                        <img class="nfc_qr" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/800px-QR_code_for_mobile_English_Wikipedia.svg.png"
+                        <img class="nfc_qr"
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/800px-QR_code_for_mobile_English_Wikipedia.svg.png"
                             width="100px" />
                     </div>
                 </div>

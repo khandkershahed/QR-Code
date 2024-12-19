@@ -191,7 +191,7 @@
                     <div class="marquee-iconic-box slick-slide" data-slick-index="-2" id=""
                         aria-hidden="true" tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag6.png"
+                            <img src="{{ asset('images/Flags/kazakhstan.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -201,7 +201,7 @@
                     <div class="marquee-iconic-box slick-slide" data-slick-index="-1" id=""
                         aria-hidden="true" tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag9.png"
+                            <img src="{{ asset('images/Flags/algeria.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -211,7 +211,7 @@
                     <div class="marquee-iconic-box slick-slide" data-slick-index="0" aria-hidden="true"
                         tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag1.png"
+                            <img src="{{ asset('images/Flags/united-states.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -221,7 +221,7 @@
                     <div class="marquee-iconic-box slick-slide" data-slick-index="1" aria-hidden="true"
                         tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag2.png"
+                            <img src="{{ asset('images/Flags/south-africa.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -231,7 +231,7 @@
                     <div class="marquee-iconic-box slick-slide" data-slick-index="2" aria-hidden="true"
                         tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag3.png"
+                            <img src="{{ asset('images/Flags/russia.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -241,7 +241,7 @@
                     <div class="marquee-iconic-box slick-slide" data-slick-index="3" aria-hidden="true"
                         tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag4.png"
+                            <img src="{{ asset('images/Flags/brazil.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -251,7 +251,7 @@
                     <div class="marquee-iconic-box slick-slide" data-slick-index="4" aria-hidden="true"
                         tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag5.png"
+                            <img src="{{ asset('images/Flags/australia.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -261,7 +261,7 @@
                     <div class="marquee-iconic-box slick-slide" data-slick-index="5" aria-hidden="true"
                         tabindex="0">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag6.png"
+                            <img src="{{ asset('images/Flags/china.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -271,7 +271,7 @@
                     <div class="marquee-iconic-box slick-slide slick-current slick-active slick-center"
                         data-slick-index="6" aria-hidden="false" tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag7.png"
+                            <img src="{{ asset('images/Flags/argentina.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -281,7 +281,7 @@
                     <div class="marquee-iconic-box slick-slide" data-slick-index="7" aria-hidden="true"
                         tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag6.png"
+                            <img src="{{ asset('images/Flags/kazakhstan.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -291,7 +291,7 @@
                     <div class="marquee-iconic-box slick-slide" data-slick-index="8" aria-hidden="true"
                         tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag9.png"
+                            <img src="{{ asset('images/Flags/algeria.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -301,7 +301,7 @@
                     <div class="marquee-iconic-box slick-slide" data-slick-index="9" id=""
                         aria-hidden="true" tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag1.png"
+                            <img src="{{ asset('images/Flags/united-states.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -311,7 +311,7 @@
                     <div class="marquee-iconic-box slick-slide" data-slick-index="10" id=""
                         aria-hidden="true" tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag2.png"
+                            <img src="{{ asset('images/Flags/south-africa.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -321,7 +321,7 @@
                     <div class="marquee-iconic-box slick-slide" data-slick-index="11" id=""
                         aria-hidden="true" tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag3.png"
+                            <img src="{{ asset('images/Flags/russia.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -331,7 +331,7 @@
                     <div class="marquee-iconic-box slick-slide" data-slick-index="12" id=""
                         aria-hidden="true" tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag4.png"
+                            <img src="{{ asset('images/Flags/brazil.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -341,7 +341,7 @@
                     <div class="marquee-iconic-box slick-slide" data-slick-index="13" id=""
                         aria-hidden="true" tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag5.png"
+                            <img src="{{ asset('images/Flags/australia.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -351,7 +351,7 @@
                     <div class="marquee-iconic-box slick-slide" data-slick-index="14" id=""
                         aria-hidden="true" tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag6.png"
+                            <img src="{{ asset('images/Flags/china.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -361,7 +361,7 @@
                     <div class="marquee-iconic-box slick-slide" data-slick-index="15" id=""
                         aria-hidden="true" tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag7.png"
+                            <img src="{{ asset('images/Flags/argentina.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -371,7 +371,7 @@
                     <div class="marquee-iconic-box slick-slide" data-slick-index="16" id=""
                         aria-hidden="true" tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag6.png"
+                            <img src="{{ asset('images/Flags/kazakhstan.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -381,7 +381,7 @@
                     <div class="marquee-iconic-box slick-slide" data-slick-index="17" id=""
                         aria-hidden="true" tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag9.png"
+                            <img src="{{ asset('images/Flags/algeria.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -399,7 +399,7 @@
                     <div class="marquee-iconic-box slick-slide" data-slick-index="-2" id=""
                         aria-hidden="true" tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag17.png"
+                            <img src="{{ asset('images/Flags/ethiopia.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -409,7 +409,7 @@
                     <div class="marquee-iconic-box slick-slide" data-slick-index="-1" id=""
                         aria-hidden="true" tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag18.png"
+                            <img src="{{ asset('images/Flags/nigeria.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -419,7 +419,7 @@
                     <div class="marquee-iconic-box slick-slide" data-slick-index="0" aria-hidden="true"
                         tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag10.png"
+                            <img src="{{ asset('images/Flags/denmark.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -429,7 +429,7 @@
                     <div class="marquee-iconic-box slick-slide" data-slick-index="1" aria-hidden="true"
                         tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag11.png"
+                            <img src="{{ asset('images/Flags/saudi-arabia.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -439,7 +439,7 @@
                     <div class="marquee-iconic-box slick-slide" data-slick-index="2" aria-hidden="true"
                         tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag12.png"
+                            <img src="{{ asset('images/Flags/mexico.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -449,7 +449,7 @@
                     <div class="marquee-iconic-box slick-slide" data-slick-index="3" aria-hidden="true"
                         tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag13.png"
+                            <img src="{{ asset('images/Flags/indonesia.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -459,7 +459,7 @@
                     <div class="marquee-iconic-box slick-slide" data-slick-index="4" aria-hidden="true"
                         tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag14.png"
+                            <img src="{{ asset('images/Flags/sudan.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -469,27 +469,27 @@
                     <div class="marquee-iconic-box slick-slide" data-slick-index="5" aria-hidden="true"
                         tabindex="0">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag15.png"
+                            <img src="{{ asset('images/Flags/algeria.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
-                            <h6 class="title">Mongolia</h6>
+                            <h6 class="title">Algeria</h6>
                         </div>
                     </div>
                     <div class="marquee-iconic-box slick-slide slick-current slick-active slick-center"
                         data-slick-index="6" aria-hidden="false" tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag16.png"
+                            <img src="{{ asset('images/Flags/china.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
-                            <h6 class="title">Colombia</h6>
+                            <h6 class="title">China</h6>
                         </div>
                     </div>
                     <div class="marquee-iconic-box slick-slide" data-slick-index="7" aria-hidden="true"
                         tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag17.png"
+                            <img src="{{ asset('images/Flags/ethiopia.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -499,7 +499,7 @@
                     <div class="marquee-iconic-box slick-slide" data-slick-index="8" aria-hidden="true"
                         tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag18.png"
+                            <img src="{{ asset('images/Flags/nigeria.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -509,7 +509,7 @@
                     <div class="marquee-iconic-box slick-slide" data-slick-index="9" id=""
                         aria-hidden="true" tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag10.png"
+                            <img src="{{ asset('images/Flags/denmark.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -519,7 +519,7 @@
                     <div class="marquee-iconic-box slick-slide" data-slick-index="10" id=""
                         aria-hidden="true" tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag11.png"
+                            <img src="{{ asset('images/Flags/saudi-arabia.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -529,7 +529,7 @@
                     <div class="marquee-iconic-box slick-slide" data-slick-index="11" id=""
                         aria-hidden="true" tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag12.png"
+                            <img src="{{ asset('images/Flags/mexico.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -539,7 +539,7 @@
                     <div class="marquee-iconic-box slick-slide" data-slick-index="12" id=""
                         aria-hidden="true" tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag13.png"
+                            <img src="{{ asset('images/Flags/indonesia.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -549,7 +549,7 @@
                     <div class="marquee-iconic-box slick-slide" data-slick-index="13" id=""
                         aria-hidden="true" tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag14.png"
+                            <img src="{{ asset('images/Flags/sudan.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -559,27 +559,27 @@
                     <div class="marquee-iconic-box slick-slide" data-slick-index="14" id=""
                         aria-hidden="true" tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag15.png"
+                            <img src="{{ asset('images/Flags/mexico.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
-                            <h6 class="title">Mongolia</h6>
+                            <h6 class="title">Mexico</h6>
                         </div>
                     </div>
                     <div class="marquee-iconic-box slick-slide" data-slick-index="15" id=""
                         aria-hidden="true" tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag16.png"
+                            <img src="{{ asset('images/Flags/china.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
-                            <h6 class="title">Colombia</h6>
+                            <h6 class="title">China</h6>
                         </div>
                     </div>
                     <div class="marquee-iconic-box slick-slide" data-slick-index="16" id=""
                         aria-hidden="true" tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag17.png"
+                            <img src="{{ asset('images/Flags/ethiopia.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -589,7 +589,7 @@
                     <div class="marquee-iconic-box slick-slide" data-slick-index="17" id=""
                         aria-hidden="true" tabindex="-1">
                         <div class="image">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/marquee-box/flag18.png"
+                            <img src="{{ asset('images/Flags/nigeria.png') }}"
                                 alt="Flag">
                         </div>
                         <div class="content">
@@ -597,12 +597,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="image mt-40 text-center aos-init aos-animate" data-aos="zoom-in-up" data-aos-duration="1500">
-                <img src="https://webtendtheme.net/html/2024/akpager/assets/images/backgrounds/map-locations.png"
-                    alt="Map Locations">
             </div>
         </div>
     </section>

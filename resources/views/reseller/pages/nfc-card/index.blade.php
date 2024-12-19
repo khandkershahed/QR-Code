@@ -95,7 +95,7 @@
                                             </span>
                                         </a>
                                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
-                                            data-kt-menu="true" style="">
+                                            data-kt-menu="true ">
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-3">
                                                 <a href="#" class="menu-link px-3" data-bs-toggle="modal"
@@ -134,7 +134,7 @@
                         <!--begin::Close-->
                         <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
                             aria-label="Close">
-                            <i class="ki-duotone ki-cross fs-2x"><span class="path1"></span><span
+                            <i class="fa-solid fa-cross fs-2x"><span class="path1"></span><span
                                     class="path2"></span></i>
                         </div>
                         <!--end::Close-->
@@ -192,7 +192,7 @@
                                                     </span>
                                                 </a>
                                                 <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
-                                                    data-kt-menu="true" style="">
+                                                    data-kt-menu="true ">
                                                     <!--begin::Menu item-->
 
                                                     <!--end::Menu item-->

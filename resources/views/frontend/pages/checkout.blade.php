@@ -58,12 +58,12 @@
                                         <h1 style="font-size: 40px; border-right: 2px solid #eee;"> <strong
                                                 class="pe-3">$ {{ $plan->price }}</strong></h1>
                                         <p class="ps-3">
-                                            @if ($plan->billing_cycle == 'yearly')
+                                            @if ($plan->billing_cycle == 'year')
                                                 Per year
-                                            @elseif ($plan->billing_cycle == 'monthly')
+                                            @elseif ($plan->billing_cycle == 'month')
                                                 Per month
-                                            @elseif ($plan->billing_cycle == 'half_yearly')
-                                                Per Half Year
+                                            @elseif ($plan->billing_cycle == 'trial_period')
+                                            Trial Period
                                             @else
                                                 Trial Period
                                             @endif
@@ -378,7 +378,7 @@
                                                     <option value="UA">Ukraine</option>
                                                     <option value="AE">United Arab Emirates</option>
                                                     <option value="GB">United Kingdom</option>
-                                                    <option value="US">United States</option>
+                                                    <option value="US" selected>United States</option>
                                                     <option value="UY">Uruguay</option>
                                                     <option value="UZ">Uzbekistan</option>
                                                     <option value="VU">Vanuatu</option>

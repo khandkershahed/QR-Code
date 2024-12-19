@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
     <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
-    
+
     <!-- Styles -->
     <style>
         .preloader {
@@ -33,7 +33,6 @@
     <div class="preloader">
         <img src="https://i.pinimg.com/originals/34/ed/db/34eddb31008bd92d6367d1bccbe341e8.gif" alt="Client Logo" />
     </div>
-
     <div class="container py-5 my-4">
         <div class="d-flex justify-content-center align-items-center mt-5">
             <div class="card">
@@ -77,7 +76,6 @@
             </div>
         </div>
     </div>
-
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -95,5 +93,4 @@
         });
     </script>
 </body>
-
 </html>

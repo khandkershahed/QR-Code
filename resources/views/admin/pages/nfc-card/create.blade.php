@@ -1,4 +1,4 @@
-<x-admin-app-layout :title="'VCard Card Create'">
+<x-admin-app-layout :title="'VCard Card Create - Admin Panel'">
 
     @if (session('error'))
         <div class="alert alert-danger">

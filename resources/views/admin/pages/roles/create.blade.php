@@ -1,4 +1,4 @@
-<x-admin-app-layout :title="'Role Add'">
+<x-admin-app-layout :title="'Role Add - Admin Panel'">
     <div class="row">
         <div class="col-lg-6 offset-lg-3">
             <div class="card card-flush my-15">
@@ -13,7 +13,7 @@
                             <x-metronic.input id="role-name" type="text" name="name" :value="old('name')"
                                 placeholder="Enter the Role name"></x-metronic.input>
                         </div>
-                        <label class="fs-5 fw-bolder form-label mb-2 ps-3 mb-3">Role Permissions</label>
+                        <label class="fs-5 fw-bolder form-label ps-3 mb-3">Role Permissions</label>
                         <div class="fv-row bg-info p-5 pt-2 rounded-1">
                             <div class="table-responsive">
                                 <table class="table fs-6 gy-5">
@@ -53,7 +53,7 @@
                                                 </td>
                                             </tr>
                                         @endforeach
-        
+
                                     </tbody>
                                 </table>
                             </div>

@@ -252,7 +252,7 @@
             <label for="exampleFormControlInput1" class="required form-label">Logo</label>
             <div class="dropzone dz-clickable w-100" id="kt_dropzonejs_example_1">
                 <div class="dz-message needsclick">
-                    <i class="ki-duotone ki-file-up fs-3x text-primary">
+                    <i class="fa-solid fa-file-up fs-3x text-primary">
                         <span class="path1"></span>
                         <span class="path2"></span>
                     </i>
@@ -443,7 +443,7 @@
             <label for="exampleFormControlInput1" class="required form-label">Brand Logo</label>
             <div class="dropzone dz-clickable w-100" id="kt_dropzonejs_example_1">
                 <div class="dz-message needsclick">
-                    <i class="ki-duotone ki-file-up fs-3x text-primary">
+                    <i class="fa-solid fa-file-up fs-3x text-primary">
                         <span class="path1"></span>
                         <span class="path2"></span>
                     </i>
@@ -458,7 +458,7 @@
             <label for="exampleFormControlInput1" class="required form-label">Brand Image</label>
             <div class="dropzone dz-clickable w-100" id="kt_dropzonejs_example_1">
                 <div class="dz-message needsclick">
-                    <i class="ki-duotone ki-file-up fs-3x text-primary">
+                    <i class="fa-solid fa-file-up fs-3x text-primary">
                         <span class="path1"></span>
                         <span class="path2"></span>
                     </i>

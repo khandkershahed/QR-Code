@@ -1,10 +1,10 @@
 <style>
     .window {
-        width: 400px;
+        width: 230px;
         margin: auto;
         border: 7px solid #1d505d;
         border-radius: 5px;
-        box-shadow: 0px 20px 46px 2px #bcc6ff;
+        box-shadow: 15px 5px 36px 2px #bcc6ff;
         cursor: n-resize;
     }
 
@@ -12,7 +12,7 @@
         width: 100%;
         object-fit: cover;
         object-position: top;
-        height: 270px;
+        height: 400px;
         transition: 11s all ease;
     }
 
@@ -75,27 +75,30 @@
 
 
 <div class="row mt-10">
-    @php
-        $counter = 0;
-    @endphp
-
-    @foreach ($templates as $template)
-        <div class="col-lg-3 position-relative">
-            <div>
-                <input type="radio" class="btn-check template-btn-check" name="nfc_template"
-                    value="{{ $template['value'] }}" id="{{ $template['value'] }}"
-                    @if ($counter === 0) checked @endif @checked($template['value'] == $selectedTemplate) />
-                <label
-                    class="btn template-btn btn-outline btn-outline-dashed btn-active-light-primary custom-active p-4 d-flex align-items-center mb-5 custom-radio"
-                    for="{{ $template['value'] }}" style="">
-                    <div class="window">
-                        <img src="{{ asset($template['image']) }}" alt="{{ $template['value'] }}">
-                    </div>
-                </label>
-            </div>
-        </div>
+    <div class="center-sliders">
         @php
-            $counter++;
+            $counter = 0;
         @endphp
-    @endforeach
+        @foreach ($templates as $template)
+            <div class="col-lg-3 position-relative pe-0">
+                <div>
+                    <input type="radio" class="btn-check template-btn-check" name="nfc_template"
+                        value="{{ $template['value'] }}" id="{{ $template['value'] }}"
+                        @if ($counter === 0) checked @endif @checked($template['value'] == $selectedTemplate) />
+                    <label
+                        class="btn template-btn btn-outline btn-outline-dashed btn-active-primary custom-active p-4 d-flex align-items-center mb-5 custom-radio"
+                        for="{{ $template['value'] }}">
+                        <div class="window">
+                            <img src="{{ asset($template['image']) }}" alt="{{ $template['value'] }}">
+                        </div>
+                    </label>
+                </div>
+            </div>
+            @php
+                $counter++;
+            @endphp
+        @endforeach
+    </div>
 </div>
+@push('scripts')
+@endpush

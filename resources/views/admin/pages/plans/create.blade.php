@@ -1,151 +1,164 @@
-<x-admin-app-layout :title="'Plan Create'">
-
-    <div class="card card-flash mt-15">
-        <div class="card-body scroll-y mx-5">
+<x-admin-app-layout :title="'Plan Management - Admin Panel'">
+    <div class="card my-10 rounded-0">
+        <div class="card-header p-5 align-items-center rounded-0 bg-info m-0">
+            <div>
+                <h1 class="mb-0 mt-0 card-title fs-2 text-white">All Plans!</h1>
+                <p class="text-white mt-2 mb-0">Create plans information in this page.</p>
+            </div>
+        </div>
+        <div class="card-body">
             <form class="form" action="{{ route('admin.plans.store') }}" method="POST">
                 @csrf
                 <div class="row">
-                    <div class="col-lg-6 mb-5">
-                        <x-metronic.label for="title" class="col-form-label fw-bold fs-6">{{ __('Title') }}
-                        </x-metronic.label>
+                    <div class="col-lg-7">
+                        <div class="row">
+                            <!-- Title Input -->
+                            <div class="col-lg-12 mb-5">
+                                <x-metronic.label for="title"
+                                    class="col-form-label fw-bold fs-6">{{ __('Title') }}</x-metronic.label>
+                                <x-metronic.input id="title" type="text" name="title" :value="old('title')"
+                                    placeholder="Enter the Plan Title" required />
+                            </div>
 
-                        <x-metronic.input id="title" type="text" name="title" :value="old('title')"
-                            placeholder="Enter the Plan Title"></x-metronic.input>
-                    </div>
-                    {{-- <div class="col-lg-6 mb-5">
-                        <x-metronic.label for="stripe_plan" class="col-form-label fw-bold fs-6">{{ __('Stripe ID') }}
-                        </x-metronic.label>
+                            <!-- Billing Cycle -->
+                            <div class="col-lg-6 mb-5">
+                                <x-metronic.label for="billing_cycle"
+                                    class="col-form-label required fw-bold fs-6">{{ __('Billing Cycle') }}</x-metronic.label>
+                                <x-metronic.select-option id="billing_cycle" name="billing_cycle"
+                                    data-hide-search="true" data-placeholder="Select an option" required>
+                                    <option></option>
+                                    <option value="trial_period">Trial Period</option>
+                                    <option value="month">Monthly</option>
+                                    <option value="year">Yearly</option>
+                                </x-metronic.select-option>
+                            </div>
 
-                        <x-metronic.input id="stripe_plan" type="text" name="stripe_plan" :value="old('stripe_plan')"
-                            placeholder="Enter the Plan Stripe ID"></x-metronic.input>
-                    </div> --}}
-                    <div class="col-lg-3 mb-5">
-                        <x-metronic.label for="billing_cycle" class="col-form-label required fw-bold fs-6">
-                            {{ __('Billing Cycle') }}</x-metronic.label>
-                        <x-metronic.select-option id="billing_cycle" name="billing_cycle" data-hide-search="true"
-                            data-placeholder="Select an option">
-                            <option></option>
-                            <option value="trial_period">Trial Period</option>
-                            {{-- <option value="day">Daily</option>
-                            <option value="week">Weekly</option> --}}
-                            <option value="month">Monthly</option>
-                            {{-- <option value="quarter">Every 3 months</option>
-                            <option value="semiannual">Every 6 months</option> --}}
-                            <option value="year">Yearly</option>
-                        </x-metronic.select-option>
-                    </div>
+                            <!-- Interval Input -->
+                            <div class="col-lg-6 mb-5">
+                                <x-metronic.label for="interval"
+                                    class="required col-form-label fw-bold fs-6">{{ __('Interval (In days)') }}</x-metronic.label>
+                                <x-metronic.input id="interval" type="number" name="interval" :value="old('interval')"
+                                    placeholder="Enter Days" required />
+                            </div>
 
-                    <div class="col-lg-3 mb-5">
-                        <x-metronic.label for="interval"
-                            class="required col-form-label fw-bold fs-6">{{ __('Interval (In days)') }}
-                        </x-metronic.label>
-                        <x-metronic.input id="interval" type="number" name="interval" :value="old('interval')"
-                            placeholder="From Start Date to End Days" required></x-metronic.input>
-                    </div>
-                    <div class="col-lg-3 mb-5">
-                        <x-metronic.label for="price" class="col-form-label fw-bold fs-6">{{ __('Price') }}
-                        </x-metronic.label>
-                        <x-metronic.input id="price" type="number" name="price" :value="old('price')"
-                            placeholder="Enter the Plan Price"></x-metronic.input>
-                    </div>
-                    <div class="col-lg-3 mb-5">
-                        <x-metronic.label for="currency" class="col-form-label fw-bold fs-6">{{ __('Currency') }}
-                        </x-metronic.label>
-                        <x-metronic.select-option id="currency" name="currency" data-hide-search="true"
-                            data-placeholder="Select an option">
-                            <option></option>
-                            <option value="gbp">Pound</option>
-                            <option value="usd">US Dollar</option>
-                        </x-metronic.select-option>
-                        {{-- <x-metronic.input id="currency" type="text" name="currency" :value="old('currency')"
-                            placeholder="Enter the Plan Currency"></x-metronic.input> --}}
-                    </div>
-                    {{-- <div class="col-lg-3 mb-5">
-                        <x-metronic.label for="payment_link"
-                            class="col-form-label fw-bold fs-6">{{ __('Payment Page Link') }}
-                        </x-metronic.label>
-                        <x-metronic.input id="payment_link" type="url" name="payment_link" :value="old('payment_link')"
-                             placeholder="Stripe payment link"></x-metronic.input>
-                    </div> --}}
+                            <!-- Price Input -->
+                            <div class="col-lg-6 mb-5">
+                                <x-metronic.label for="price"
+                                    class="col-form-label fw-bold fs-6">{{ __('Price') }}</x-metronic.label>
+                                <x-metronic.input id="price" type="number" name="price" :value="old('price')"
+                                    placeholder="Enter the Plan Price" required />
+                            </div>
 
+                            <!-- Currency Selector -->
+                            <div class="col-lg-6 mb-5">
+                                <x-metronic.label for="currency"
+                                    class="col-form-label fw-bold fs-6">{{ __('Currency') }}</x-metronic.label>
+                                <x-metronic.select-option id="currency" name="currency" data-hide-search="true"
+                                    data-placeholder="Select an option" required>
+                                    <option></option>
+                                    <option value="gbp">Pound</option>
+                                    <option value="usd">US Dollar</option>
+                                </x-metronic.select-option>
+                            </div>
 
-                    <div class="col-lg-3 mb-5">
-                        <x-metronic.label for="type" class="col-form-label required fw-bold fs-6">
-                            {{ __('Plan For') }}
-                        </x-metronic.label>
-                        <x-metronic.select-option id="type" name="type" data-hide-search="true"
-                            data-placeholder="Select an option" onchange="toggleInputs()" required>
-                            <option value=""></option>
-                            <option value="nfc">NFC</option>
-                            <option value="qr">QR</option>
-                            <option value="barcode">BarCode</option>
-                        </x-metronic.select-option>
-                    </div>
+                            <!-- Plan Type Selector -->
+                            <div class="col-lg-6 mb-5">
+                                <x-metronic.label for="type"
+                                    class="col-form-label required fw-bold fs-6">{{ __('Plan For') }}</x-metronic.label>
+                                <x-metronic.select-option id="type" name="type" data-hide-search="true"
+                                    data-placeholder="Select an option" onchange="toggleInputs()" required>
+                                    <option></option>
+                                    <option value="nfc">NFC</option>
+                                    <option value="qr">QR</option>
+                                    <option value="barcode">BarCode</option>
+                                </x-metronic.select-option>
+                            </div>
 
-                    <div class="col-lg-3 mb-5" id="qr-input" style="display: none;">
-                        <x-metronic.label for="qr" class="col-form-label fw-bold fs-6">
-                            {{ __('Number of QR Code') }}
-                        </x-metronic.label>
-                        <x-metronic.input id="qr" type="number" name="qr" :value="old('qr')"
-                            placeholder="Number of QR Code"></x-metronic.input>
-                    </div>
+                            <!-- QR Input -->
+                            <div class="col-lg-6 mb-5" id="qr-input" style="display: none;">
+                                <x-metronic.label for="qr"
+                                    class="col-form-label fw-bold fs-6">{{ __('Number of QR Code') }}</x-metronic.label>
+                                <x-metronic.input id="qr" type="number" name="qr" :value="old('qr')"
+                                    placeholder="Enter QR Code Count" />
+                            </div>
 
-                    <div class="col-lg-3 mb-5" id="nfc-input" style="display: none;">
-                        <x-metronic.label for="nfc" class="col-form-label fw-bold fs-6">
-                            {{ __('Number of NFC Card') }}
-                        </x-metronic.label>
-                        <x-metronic.input id="nfc" type="number" name="nfc" :value="old('nfc')"
-                            placeholder="Number of NFC Card"></x-metronic.input>
-                    </div>
+                            <!-- NFC Input -->
+                            <div class="col-lg-6 mb-5" id="nfc-input" style="display: none;">
+                                <x-metronic.label for="nfc"
+                                    class="col-form-label fw-bold fs-6">{{ __('Number of NFC Card') }}</x-metronic.label>
+                                <x-metronic.input id="nfc" type="number" name="nfc" :value="old('nfc')"
+                                    placeholder="Enter NFC Card Count" />
+                            </div>
 
-                    <div class="col-lg-3 mb-5">
-                        <x-metronic.label for="status" class="col-form-label required fw-bold fs-6">
-                            {{ __('Select a Status ') }}</x-metronic.label>
-                        <x-metronic.select-option id="status" name="status" data-hide-search="true"
-                            data-placeholder="Select an option" required>
-                            <option></option>
-                            <option value="active">Active</option>
-                            <option value="inactive">Inactive</option>
-                        </x-metronic.select-option>
+                            <!-- Status Selector -->
+                            <div class="col-lg-6 mb-5">
+                                <x-metronic.label for="status"
+                                    class="col-form-label required fw-bold fs-6">{{ __('Select a Status') }}</x-metronic.label>
+                                <x-metronic.select-option id="status" name="status" data-hide-search="true"
+                                    data-placeholder="Select an option" required>
+                                    <option></option>
+                                    <option value="active">Active</option>
+                                    <option value="inactive">Inactive</option>
+                                </x-metronic.select-option>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-8 mt-3 mb-5 p-4 mx-auto">
-                        <x-metronic.label for="status" class="col-form-label fw-bold fs-6">
-                            {{ __('Add Provided Services') }}</x-metronic.label>
-                        <div class="table-responsive">
-                            <table class="table product text-center table-striped ">
-                                <thead>
-                                    <tr class="align-items-center bg-light-primary rounded-2">
-                                        <th width="5%" class="text-center fw-bold py-0 pb-5"> Sl</th>
-                                        <th width="90%" class="text-center fw-bold py-0 pb-5"> Plan Details</th>
-                                        <th width="5%">
-                                            <a href="javascript:void(0)"
-                                                class="btn btn-success px-5 py-3 addRow btn-sm">
-                                                <i class="fas fa-plus icons_design text-white pe-0"></i>
-                                            </a>
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody class="repeater">
-                                    <tr>
-                                        <td class="text-center">1</td>
-                                        <td> <input type="text" class="form-control form-control-sm w-100"
-                                                name="descriptions[]" placeholder="5 Qr & 3 Nfc" required></td>
-                                        <td class="text-center" style="vertical-align: middle;"> <a
-                                                href="javascript:void(0)"
-                                                class="btn btn-danger px-5 py-3 addRow btn-sm removeRow"><i
-                                                    class="fas fa-minus icons_design text-white pe-0"></i></a></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                    <div class="col-lg-5">
+                        <!-- Provided Services -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card shadow-sm p-0 mt-13">
+                                    <div class="p-3 py-5">
+                                        <h3 class="mb-0 fw-normal">Add Provided Services</h3>
+                                    </div>
+                                    <div class="card-body p-0">
+                                        <div class="table-responsive">
+                                            <table class="table product text-center table-striped "
+                                                style="margin-bottom: 0;">
+                                                <thead style="vertical-align: middle">
+                                                    <tr class="bg-info">
+                                                        <th width="5%" class="fw-bold text-white text-center">Sl
+                                                        </th>
+                                                        <th width="90%"class="fw-bold text-white text-center">Plan
+                                                            Details
+                                                        </th>
+                                                        <th width="5%">
+                                                            <div class="text-end">
+                                                                <button type="button"
+                                                                    class="btn btn-sm fw-bold btn-white pe-2 ps-3 py-1 addRow">
+                                                                    <i class="fas fa-plus text-info"></i>
+                                                                </button>
+                                                            </div>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="repeater" style="vertical-align: middle;">
+                                                    <tr>
+                                                        <td class="text-center">01</td>
+                                                        <td><input type="text"
+                                                                class="form-control form-control form-control-sm"
+                                                                name="descriptions[]" placeholder="Enter Details"
+                                                                required />
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <button type="button"
+                                                                class="btn btn-sm fw-bold btn-danger pe-2 ps-3 removeRow">
+                                                                <i class="fas fa-trash text-white"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!-- Submit Button -->
                 <div class="text-end pt-5">
-                    <x-metronic.button type="submit" class="primary">
-                        {{ __('Save Changes') }}
-                    </x-metronic.button>
+                    <button type="submit" class="btn btn-info">{{ __('Save Plans') }}</button>
                 </div>
             </form>
         </div>
@@ -155,32 +168,11 @@
         <script>
             function toggleInputs() {
                 const type = document.getElementById('type').value;
-                const qrInput = document.getElementById('qr-input');
-                const nfcInput = document.getElementById('nfc-input');
-
-                if (type === 'qr') {
-                    qrInput.style.display = 'block';
-                    nfcInput.style.display = 'none';
-                    $('input[name="nfc"]').val();
-                    $('input[name="qr"]').val();
-                } else if (type === 'nfc') {
-                    qrInput.style.display = 'none';
-                    nfcInput.style.display = 'block';
-                    $('input[name="nfc"]').val();
-                    $('input[name="qr"]').val();
-                } else {
-                    qrInput.style.display = 'none';
-                    nfcInput.style.display = 'none';
-                    $('input[name="nfc"]').val();
-                    $('input[name="qr"]').val();
-                }
+                document.getElementById('qr-input').style.display = type === 'qr' ? 'block' : 'none';
+                document.getElementById('nfc-input').style.display = type === 'nfc' ? 'block' : 'none';
             }
-        </script>
-        <script>
-            $(document).ready(function() {
-                // Add Row
-                var slNo = 1;
 
+            $(document).ready(function() {
                 function updateSerialNumbers() {
                     $(".repeater tr").each(function(index) {
                         $(this).find("td:first-child").text(index + 1);
@@ -188,13 +180,17 @@
                 }
 
                 $(".addRow").on("click", function() {
-                    slNo++;
-                    var newRow =
-                        '<tr><td>' + slNo + '</td>' +
-                        '<td><input type="text" class="form-control form-control-sm w-100" name="descriptions[]" placeholder="Enter Service" required></td>' +
-                        '<td class="text-center" style="vertical-align: middle;"><a href="javascript:void(0)" class="btn btn-danger px-5 py-3 btn-sm removeRow">' +
-                        '<i class="fas fa-minus icons_design text-white"></i></a></td></tr>';
-
+                    const newRow = `
+                        <tr>
+                            <td></td>
+                            <td><input type="text" class="form-control form-control-sm" name="descriptions[]" placeholder="Enter Details" required /></td>
+                            <td class="text-center">
+                                <button type="button"
+                                    class="btn btn-sm fw-bold btn-danger pe-2 ps-3 removeRow">
+                                    <i class="fas fa-trash text-white"></i>
+                                </button>
+                            </td>
+                        </tr>`;
                     $(".repeater").append(newRow);
                     updateSerialNumbers();
                 });

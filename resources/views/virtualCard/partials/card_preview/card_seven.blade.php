@@ -69,7 +69,7 @@
                 </div>
             </div>
         </div>
-        <div class="punch-card-container-back card-back-seven" style="">
+        <div class="punch-card-container-back card-back-seven ">
             <div class="row p-5 align-items-center card-seven-info">
                 <div class="col-8 d-flex justify-content-start align-items-center">
                     <div class="text-start content-area font">

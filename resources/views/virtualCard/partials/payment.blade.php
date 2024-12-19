@@ -17,7 +17,7 @@
                         name="customer_email" />
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="fv-row my-3">
                     <x-metronic.label for="card_email" class="form-label ">
                         {{ __('Card Details') }}</x-metronic.label>

@@ -572,7 +572,7 @@
                             <div class="card-body">
                                 <div class="dropzone dz-clickable w-100 mt-4" id="kt_dropzonejs_example_1">
                                     <div class="dz-message needsclick">
-                                        <i class="ki-duotone ki-file-up fs-3x text-primary"><span
+                                        <i class="fa-solid fa-file-up fs-3x text-primary"><span
                                                 class="path1"></span><span class="path2"></span></i>
 
                                         <div class="ms-4">

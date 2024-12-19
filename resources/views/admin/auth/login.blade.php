@@ -2,8 +2,8 @@
     <div class="d-flex flex-column flex-column-fluid bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed"
         style="background-image: url({{ asset('admin/assets/media/illustrations/sketchy-1/14.png') }}">
         <div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
-            <a href="../../demo1/dist/index.html" class="mb-12">
-                <img alt="Logo" src="{{ asset('{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}') }}" class="h-100px" />
+            <a href="javascript:void(0)" class="mb-12">
+                <img alt="Logo" src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}" class="h-100px" />
             </a>
             <div class="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
 

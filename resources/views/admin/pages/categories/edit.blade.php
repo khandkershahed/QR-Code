@@ -1,10 +1,9 @@
-<x-admin-app-layout>
+<x-admin-app-layout :title="'Category Management - Admin Panel'">
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <form method="POST" action="{{ route('admin.categories.update', $category->id) }}">
                 @csrf
                 @method('PUT')
-
                 <div class="card shadow-sm">
                     <div class="card-header">
                         <h3 class="card-title">Category Edit</h3>
@@ -25,14 +24,12 @@
                                     {!! $categoriesOptions !!}
                                 </x-metronic.select-option>
                             </div>
-
                             <div class="col-lg-5">
                                 <x-metronic.label for="name"
                                     class="col-form-label required fw-bold fs-6">{{ __('Category Name') }}</x-metronic.label>
                                 <x-metronic.input id="name" type="text" name="name" :value="old('name', $category->name)"
                                     placeholder="Enter the name"></x-metronic.input>
                             </div>
-
                             <div class="col-lg-2">
                                 <x-metronic.label for="status" class="col-form-label required fw-bold fs-6">
                                     {{ __('Select a Status ') }}</x-metronic.label>
@@ -49,11 +46,9 @@
                     </div>
                     <div class="card-footer">
                         <div class="d-flex justify-content-end">
-                            <!--begin::Button-->
                             <x-metronic.button type="submit" class="success">
                                 {{ __('Update Changes') }}
                             </x-metronic.button>
-                            <!--end::Button-->
                         </div>
                     </div>
                 </div>

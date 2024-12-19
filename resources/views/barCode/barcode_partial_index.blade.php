@@ -82,7 +82,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        @endforeach 
+                                                        @endforeach
                                                     </div>
                                                 @else
                                                     <div class="row">
@@ -141,7 +141,7 @@
                                     </span>
                                 </a>
                                 <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
-                                    data-kt-menu="true" style="">
+                                    data-kt-menu="true ">
                                     @if (!empty($bar_code->bar_code_pdf))
                                         <div class="menu-item px-3">
                                             <a href="{{ asset($bar_code->bar_code_pdf) }}" class="menu-link px-3"

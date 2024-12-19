@@ -5,7 +5,6 @@
         </div>
     </div>
     <div class="card-body pb-0">
-
         <div class="mb-7">
             @if (count($notifications))
                 @foreach ($notifications as $notification)
@@ -34,13 +33,6 @@
                     No Message available for you.
                 </h5>
             @endif
-
-
         </div>
-
-
-
-
     </div>
-
 </div>
