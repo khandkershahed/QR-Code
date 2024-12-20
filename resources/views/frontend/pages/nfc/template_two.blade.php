@@ -381,7 +381,8 @@
                                         <h1 class="name-title-tem2 mb-0">
                                             {{ optional($nfc_card->nfcData)->first_name }}
                                         </h1>
-                                        <p class="text-white mb-0">{{ optional($nfc_card)->designation }} </p>
+                                        <p class="text-white mb-2">{{ optional($nfc_card)->designation }} </p>
+                                        <p class="text-white">{{ optional($nfc_card->nfcData)->company_name }} </p>
                                     </div>
                                     @if ($nfc_card->social_links_show == '1')
                                         <div class="d-flex justify-content-start align-items-center social-rotate-tem2">
