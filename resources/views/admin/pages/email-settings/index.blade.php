@@ -1,4 +1,4 @@
-<x-admin-app-layout :title="'Email Settings List'">
+<x-admin-app-layout :title="'Email Settings List - Admin Panel'">
     <div class="card card-flash my-5">
         <div class="card-body pt-0">
             <table class="emailDT table table-striped  align-middle table-row-dashed fs-6 gy-5 mb-0"

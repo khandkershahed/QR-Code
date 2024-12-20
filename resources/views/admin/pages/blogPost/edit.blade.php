@@ -1,4 +1,4 @@
-<x-admin-app-layout :title="'Blog Edit'">
+<x-admin-app-layout :title="'Blog Edit - Admin Panel'">
     <style>
         .image-input-placeholder {
             background-image: url({{ asset('admin/assets/media/svg/files/blank-image.svg') }});

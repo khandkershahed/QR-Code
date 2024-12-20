@@ -1,4 +1,4 @@
-<x-admin-app-layout :title="'Your Profile'">
+<x-admin-app-layout :title="'Your Profile - Admin Panel'">
     <div class="container-fluid my-8 px-0">
         <div class="row mb-5">
             <div class="col-lg-12">
@@ -26,14 +26,11 @@
                             </div>
                         </div>
                         <img class="mx-auto h-150px h-lg-200px theme-light-show"
-                            src="{{ asset('images/mange-profile.webp') }}"
-                            alt="">
+                            src="{{ asset('images/mange-profile.webp') }}" alt="">
                     </div>
                 </div>
             </div>
         </div>
-
-
         <div class="row">
             <div class="col-lg-3">
                 @include('admin.profile.partials.update-profile-information-form')

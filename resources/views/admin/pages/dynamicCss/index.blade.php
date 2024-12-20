@@ -1,4 +1,4 @@
-<x-admin-app-layout :title="'Dynamic CSS'">
+<x-admin-app-layout :title="'Dynamic CSS - Admin Panel'">
     <div class="card card-flash">
         <!--begin::Modal body-->
         <div class="card-body scroll-y mx-5 mx-xl-15 my-7">

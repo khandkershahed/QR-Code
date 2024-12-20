@@ -1,4 +1,4 @@
-<x-admin-app-layout :title="'Manage Your Site Information'">
+<x-admin-app-layout :title="'Manage Your Site Information - Admin Panel'">
     <div class="row mt-10">
         <div class="col-lg-12">
             <form class="form" action="{{ route('admin.site.setting') }}" method="POST" enctype="multipart/form-data">

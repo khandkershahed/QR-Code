@@ -12,22 +12,23 @@ use App\Models\BlogCategory;
 use Illuminate\Http\Request;
 use App\Models\Admin\NfcCard;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
     public function homePage()
     {
         $data = [
-            'qr_plans' => Plan::orderBy('price', 'asc')->where('type', 'qr')->get(),
-            'nfc_plans' => Plan::orderBy('price', 'asc')->where('type', 'nfc')->get(),
-            'barcode_plans' => Plan::orderBy('price', 'asc')->where('type', 'barcode')->get(),
+            'qr_plans'       => Plan::orderBy('price', 'asc')->where('type', 'qr')->get(),
+            'nfc_plans'      => Plan::orderBy('price', 'asc')->where('type', 'nfc')->get(),
+            'barcode_plans'  => Plan::orderBy('price', 'asc')->where('type', 'barcode')->get(),
 
             'blog_posts'     => BlogPost::latest('id')->where('status', 'publish')->paginate(10),
-            'blog_categorys' => BlogCategory::latest('id')->where('status', 'active')->get(),
-            'blog_tags'      => BlogTag::latest('id')->where('status', 'active')->get(),
-            'recent_posts'   => BlogPost::latest('created_at')->where('status', 'publish')->take(5)->get(),
+            // 'blog_categorys' => BlogCategory::latest('id')->where('status', 'active')->get(),
+            // 'blog_tags'      => BlogTag::latest('id')->where('status', 'active')->get(),
+            // 'recent_posts'   => BlogPost::latest('created_at')->where('status', 'publish')->take(5)->get(),
         ];
         return view('frontend.pages.homePage', $data);
     }
@@ -205,8 +206,8 @@ class HomeController extends Controller
                 ->subject($email_subject);
         });
 
-
-        return redirect()->back()->with('success', "Mail Sent Successfully");
+        Session::flash('success', "Mail Sent Successfully");
+        return redirect()->back();
     }
 
     public function nfcPage(Request $request, string $name)
@@ -278,7 +279,8 @@ class HomeController extends Controller
                     return view('frontend.pages.nfc.template_one', $data);
             }
         } else {
-            return redirect()->route('homePage')->with('error', 'Page not found');
+            Session::flash('error', 'Page not found');
+            return redirect()->route('homePage');
         }
     }
 }

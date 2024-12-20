@@ -3,45 +3,72 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="" />
-    <meta property="og:url" content="" />
-    <meta property="og:site_name" content="GoFlixza || Admin Dashboard" />
-    <link rel="shortcut icon" href="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Your hub for QR, Bar Codes, NFC V.Cards, and more. Manage and generate easily with GoFlixza Admin Dashboard.">
+    <meta name="keywords" content="QR Codes, Bar Codes, NFC Cards, Virtual Cards, Admin Dashboard">
+    <meta name="author" content="GoFlixza">
+
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ $title ?? config('app.name', 'GoFlixza') }}">
+    <meta property="og:description" content="Your hub for QR, Bar Codes, NFC V.Cards, and more.">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:site_name" content="GoFlixza Admin Dashboard">
+    <meta property="og:image" content="{{ asset('frontend/assets/images/logos/logo.png') }}">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $title ?? config('app.name', 'GoFlixza') }}">
+    <meta name="twitter:description" content="Your hub for QR, Bar Codes, NFC V.Cards, and more.">
+    <meta name="twitter:image" content="{{ asset('frontend/assets/images/logos/logo.png') }}">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon"
+        href="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+    <!-- Stylesheets -->
     <link href="{{ asset('admin/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet"
-        type="text/css" />
+        type="text/css">
     <link href="{{ asset('admin/assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"
-        type="text/css" />
+        type="text/css">
     <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
-    <link href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('admin/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
-
-    <link href="{{ asset('admin/assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"
-        type="text/css" />
+    <link href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('admin/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css">
     <link href="https://cdn.jsdelivr.net/npm/formvalidation@1.9.0/dist/css/formValidation.min.css" rel="stylesheet">
-    <!-- Include Timepicker CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css" rel="stylesheet">
 
+    <!-- Page Title -->
     @props(['title'])
-    <title>{{ $title ?? config('app.name', 'GoFlixza') }} || 'Your Hub for QR, Bar Codes, NFC V.Cards'</title>
+    <title>{{ $title ?? config('app.name', 'GoFlixza') }} | Your Hub for QR, Bar Codes, NFC V.Cards</title>
 </head>
+
 
 <body id="kt_body"
     class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed aside-enabled aside-fixed"
     style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px">
+
     <div class="d-flex flex-column flex-root">
+        <!-- Preloader -->
+        <div class="preloader">
+            <div class="ld-ripple">
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <!-- End Preloader -->
         <div class="page d-flex flex-column flex-column-fluid">
             @include('admin.layouts.sidebar')
             <div class="wrapper d-flex flex-column flex-row-fluid pt-20" id="kt_wrapper">
                 @include('admin.layouts.header')
                 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-                    {{-- @include('admin.layouts.toolbar') --}}
                     <div class="post d-flex flex-column-fluid" id="kt_post">
                         <div id="kt_content_container" class="container-fluid">
                             {{ $slot }}
@@ -52,6 +79,8 @@
             </div>
         </div>
     </div>
+
+
     <div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
         <span class="svg-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -68,7 +97,6 @@
     @endphp
     <script src="{{ asset($hostUrl . 'plugins/global/plugins.bundle.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/scripts.bundle.js') }}"></script>
-
     <script src="{{ asset($hostUrl . 'plugins/custom/datatables/datatables.bundle.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/documentation/general/datatables/buttons.js') }}"></script>
     <script src="{{ asset($hostUrl . 'plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
@@ -76,7 +104,6 @@
     <script src="{{ asset('frontend/assets/js/fontawesome.js') }}"></script>
     <script src="{{ asset($hostUrl . 'plugins/custom/formrepeater/formrepeater.bundle.js') }}"></script>
     <script src="{{ asset($hostUrl . 'plugins/custom/tinymce/tinymce.bundle.js') }}"></script>
-    {{-- <script src="{{ asset($hostUrl . 'js/custom/account/settings/signin-methods.js') }}"></script> --}}
     <script src="{{ asset($hostUrl . 'js/custom/account/settings/profile-details.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/account/settings/deactivate-account.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/apps/ecommerce/catalog/save-product.js') }}"></script>
@@ -86,7 +113,6 @@
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/create-account.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/create-app.js') }}"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <!-- Include FormValidation JS -->
     <script src="https://cdn.jsdelivr.net/npm/formvalidation@1.9.0/dist/js/FormValidation.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/formvalidation@1.9.0/dist/js/plugins/Bootstrap5.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/formvalidation@1.9.0/dist/js/plugins/Trigger.min.js"></script>
@@ -222,7 +248,6 @@
         });
         // Datatable End
     </script>
-
     <script>
         var options = {
             selector: ".tinymce"
@@ -260,7 +285,6 @@
             updateClock();
         });
     </script>
-
     <script>
         $(document).ready(function() {
             // Add event listener to radio inputs
@@ -279,25 +303,6 @@
             $('#' + selectedValue + '-form').show();
         });
     </script>
-
-
-    <script>
-        // var containers = document.querySelectorAll(".draggable-zone");
-
-        // if (containers.length === 0) {
-        //     return false;
-        // }
-
-        // var swappable = new Sortable.default(containers, {
-        //     draggable: ".draggable",
-        //     handle: ".draggable .draggable-handle",
-        //     mirror: {
-        //         //appendTo: selector,
-        //         appendTo: "body",
-        //         constrainDimensions: true
-        //     }
-        // });
-    </script>
     <script>
         document.querySelectorAll('.ckeditor').forEach(element => {
             if (!element.classList.contains('ck-editor__editable_inline')) {
@@ -312,31 +317,19 @@
             }
         });
     </script>
-    {{-- <script>
-        class CKEditorInitializer {
-            constructor(selector) {
-                this.selector = selector;
-                this.initializeEditors();
+    <script>
+        // Delay hiding preloader after 3 seconds
+        setTimeout(() => {
+            const preloader = document.querySelector('.preloader');
+            if (preloader) {
+                preloader.classList.add('fade-out'); // Add fade-out class
+                // Hide the preloader after fade-out animation completes
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 500); // Match the fade-out duration (500ms)
             }
-
-            initializeEditors() {
-                document.querySelectorAll(this.selector).forEach((element) => {
-                    ClassicEditor
-                        .create(element)
-                        .then(editor => {
-                            console.log('Editor initialized:', editor);
-                        })
-                        .catch(error => {
-                            console.error('Error initializing editor:', error);
-                        });
-                });
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            new CKEditorInitializer('.kt_docs_ckeditor_classic');
-        });
-    </script> --}}
+        }, 2000); // Wait for 3 seconds before starting the fade-out
+    </script>
     @stack('scripts')
 </body>
 

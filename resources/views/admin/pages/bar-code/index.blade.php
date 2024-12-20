@@ -1,4 +1,4 @@
-<x-admin-app-layout :title="'Bar Code List'">
+<x-admin-app-layout :title="'Bar Code List - Admin Panel'">
     <div class="row">
         <div class="col-lg-12">
             <div class="card border-transparent mt-10" data-bs-theme="light" style="background-color: #1C325E;">

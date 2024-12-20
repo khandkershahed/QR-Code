@@ -1,14 +1,10 @@
-<x-admin-app-layout :title="'Blog Add'">
+<x-admin-app-layout :title="'Blog Add - Admin Panel'">
     <div class="card card-flash">
-        <!--begin::Card header-->
         <div class="card-header mt-6">
             <div class="card-title"></div>
 
-            <!--begin::Card toolbar-->
             <div class="card-toolbar">
-                <!--begin::Button-->
                 <a href="{{ route('admin.blog.index') }}" class="btn btn-light-info rounded-2">
-                    <!--begin::Svg Blog | path: blog/duotune/general/gen035.svg-->
                     <span class="svg-icon svg-icon-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none">
@@ -20,15 +16,13 @@
                                 fill="currentColor" />
                         </svg>
                     </span>
-                    <!--end::Svg Blog-->Back to the list
+                    Back to the list
                 </a>
             </div>
         </div>
         <div class="card-body pt-0">
-            <!--begin::Form-->
             <form class="form" action="{{ route('admin.blog.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <!--begin::Input group-->
                 <div class="row">
                     <div class="col-lg-4">
                         <x-metronic.label for="admin_id"
@@ -142,24 +136,15 @@
                         {{ __('Submit') }}
                     </x-metronic.button>
                 </div>
-                <!--end::Actions-->
             </form>
-            <!--end::Form-->
         </div>
     </div>
     @push('scripts')
         <script>
             tinymce.init({
                 selector: 'textarea#default-editor',
-                // height: "480",
-                // toolbar: "advlist | autolink | link image | lists charmap | print preview",
-                // plugins: "advlist autolink link image lists charmap print preview"
                 plugins: 'a11ychecker advcode table advlist lists image media anchor link autoresize autosave code codesample directionality emoticons fullscreen hr imagetools insertdatetime legacyoutput nonbreaking noneditable pagebreak paste preview print save searchreplace tabfocus template textpattern toc visualblocks visualchars wordcount autosave charmap emoticons hr insertdatetime legacyoutput nonbreaking pagebreak preview print save searchreplace template toc visualblocks visualchars wordcount a11ychecker a11ycheckerchecker a11ychecklist advcode codesample directionality imagetools media textpattern noneditable tabfocus visualchars tabfocus',
                 toolbar: 'a11ycheck | blocks bold forecolor backcolor | bullist numlist | link image media anchor | table | code | formatselect | alignleft aligncenter alignright alignjustify | fontselect fontsizeselect | outdent indent | removeformat | help | fullscreen | preview print save | insertfile pagebreak | charmap emoticons | ltr rtl | visualchars visualblocks nonbreaking template | searchreplace | toc | insertdatetime | legacyoutput | autosave',
-                // a11y_advanced_options: true,
-                // a11ychecker_html_version: 'html5',
-                // a11ychecker_level: 'aaa',
-                // content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
             });
         </script>
     @endpush

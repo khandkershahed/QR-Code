@@ -1,4 +1,4 @@
-<x-admin-app-layout :title="'NFC Card Request'">
+<x-admin-app-layout :title="'NFC Card Request - Admin Panel'">
     <div class="post d-flex flex-column-fluid my-15" id="kt_post">
         <div class="container-fluid">
             <div class="card card-flush">
@@ -32,7 +32,6 @@
                                     <th width="10%" class="text-center">NFC Link</th>
                                     <th width="10%" class="text-center">V Card</th>
                                     <th width="10%" class="text-center">Delivery Address</th>
-                                    {{-- <th width="10%" class="text-center">Status</th> --}}
                                     <th width="10%" class="text-center min-w-70px">Action</th>
                                 </tr>
                             </thead>
@@ -129,15 +128,6 @@
                                                 data-bs-target="#deliveryModal-{{ $nfc_card->id }}">Delivery
                                                 Location</button>
                                         </td>
-                                        {{-- <td class="text-center">
-                                            <div
-                                                class="form-check form-switch form-check-custom form-check-solid justify-content-center">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                    id="flexSwitchChecked" checked="checked" />
-                                                <label class="form-check-label" for="flexSwitchChecked"
-                                                    id="switchLabel">Approved</label>
-                                            </div>
-                                        </td> --}}
                                         <td class="text-center">
                                             <button
                                                 class="border-0 bg-transparent download-button badge bg-primary me-3"

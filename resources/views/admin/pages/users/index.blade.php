@@ -1,4 +1,4 @@
-<x-admin-app-layout :title="'Users List'">
+<x-admin-app-layout :title="'Users List - Admin Panel'">
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
