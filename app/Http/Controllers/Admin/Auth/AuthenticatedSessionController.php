@@ -78,22 +78,42 @@ class AuthenticatedSessionController extends Controller
     //     }
     //     return view('admin.dashboard', compact('qr_plans', 'nfc_plans', 'notifications', 'qrs', 'users', 'nfc_cards', 'nfc_pending', 'qr_pending', 'nfc_completion_percentage', 'qr_completion_percentage', 'qr_users', 'nfc_users'));
     // }
+    // public function dashboard()
+    // {
+    //     $data = [
+    //         'qrs'           => Qr::latest()->get(),
+    //         'nfc_cards'     => NfcCard::latest()->get(),
+    //         'barcodes'      => BarCode::latest()->get(),
+    //         'virtual_cards' => VirtualCard::latest()->get(),
+    //         'subscriptions' => Subscription::with('plan', 'user')->get(),
+    //         'users'         => User::latest('id')->get(),
+    //         'qr_plans'      => Plan::orderBy('price', 'asc')->where('type', 'qr')->get(),
+    //         'nfc_plans'     => Plan::orderBy('price', 'asc')->where('type', 'nfc')->get(),
+    //         'barcode_plans' => Plan::orderBy('price', 'asc')->where('type', 'barcode')->get(),
+    //     ];
+
+    //     return view('admin.dashboard', $data);
+    // }
+
     public function dashboard()
     {
+        $plans = Plan::orderBy('price', 'asc')->get();
+
         $data = [
-            'qrs'           => Qr::latest()->get(),
-            'nfc_cards'     => NfcCard::latest()->get(),
-            'barcodes'      => BarCode::latest()->get(),
-            'virtual_cards' => VirtualCard::latest()->get(),
+            'qrs'           => Qr::latest()->take(50)->get(),  // Limit number of records
+            'nfc_cards'     => NfcCard::latest()->take(50)->get(),
+            'barcodes'      => BarCode::latest()->take(50)->get(),
+            'virtual_cards' => VirtualCard::latest()->take(50)->get(),
             'subscriptions' => Subscription::with('plan', 'user')->get(),
-            'users'         => User::latest('id')->get(),
-            'qr_plans'      => Plan::orderBy('price', 'asc')->where('type', 'qr')->get(),
-            'nfc_plans'     => Plan::orderBy('price', 'asc')->where('type', 'nfc')->get(),
-            'barcode_plans' => Plan::orderBy('price', 'asc')->where('type', 'barcode')->get(),
+            'users'         => User::latest('id')->select(['id', 'name', 'email'])->take(100)->get(),
+            'qr_plans'      => $plans->where('type', 'qr'),
+            'nfc_plans'     => $plans->where('type', 'nfc'),
+            'barcode_plans' => $plans->where('type', 'barcode'),
         ];
 
         return view('admin.dashboard', $data);
     }
+
 
 
 

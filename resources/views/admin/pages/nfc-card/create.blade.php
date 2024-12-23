@@ -9,8 +9,8 @@
     @include('nfc.nfc_create_partial')
 
     @push('scripts')
-        <script src="https://cdn.tiny.cloud/1/tv8ze2aprjlx1qoo8xnmh6r0e0w8hhgeukhe4esuhmhglca0/tinymce/7/tinymce.min.js"
-            referrerpolicy="origin"></script>
+    <script defer src="https://cdn.tiny.cloud/1/tv8ze2aprjlx1qoo8xnmh6r0e0w8hhgeukhe4esuhmhglca0/tinymce/7/tinymce.min.js"
+    referrerpolicy="origin"></script>
         <script>
             // Define form elements
             const forms = document.querySelectorAll('.kt_docs_formvalidation_text');

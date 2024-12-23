@@ -229,7 +229,7 @@
                                                 <label for="validationCustom010"
                                                     class="form-label required mb-0">Answer</label>
                                                 <textarea rows="4" name="answer"
-                                                    class="form-control form-control-sm form-control-solid kt_docs_tinymce_plugins" placeholder="Enter Answer"
+                                                    class="form-control form-control-sm form-control-solid" placeholder="Enter Answer"
                                                     required>{{ $faq->answer }}</textarea>
                                                 <div class="invalid-feedback"> Please Enter Answer</div>
                                             </div>
