@@ -71,8 +71,7 @@
     @include('user.layouts.modal')
 
     <!-- jQuery (Necessary for DataTables and other plugins) -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+    <script src="{{ asset('frontend/assets/js/jquery-3.6.0.min.js') }}"></script>
     <!-- Vendor Scripts -->
     <script src="{{ asset('admin/assets/plugins/global/plugins.bundle.js') }}"></script>
     <script src="{{ asset('admin/assets/js/scripts.bundle.js') }}"></script>
@@ -88,8 +87,9 @@
     <script src="{{ asset('frontend/assets/js/fontawesome.js') }}"></script>
 
     <!-- Google Maps (Deferred for performance) -->
-
-
+    <script defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbfUj9Hr1sqI5sb_nc2XSWFrRun3l_Vto&loading=async&callback=initMap">
+    </script>
     <!-- AlpineJS (Deferred for performance) -->
     <script defer src="{{ asset('frontend/assets/js/alpine.js') }}"></script>
 
@@ -172,9 +172,7 @@
             });
         </script>
     @endif
-    <script defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbfUj9Hr1sqI5sb_nc2XSWFrRun3l_Vto&loading=async&callback=initMap">
-    </script>
+
 </body>
 
 </html>

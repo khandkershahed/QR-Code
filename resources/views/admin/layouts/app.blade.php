@@ -125,41 +125,51 @@
         </span>
     </div>
 
-    <!-- Scripts -->
-    <script src="{{ asset('admin/assets/plugins/global/plugins.bundle.js') }}" defer></script>
-    <script src="{{ asset('admin/assets/js/scripts.bundle.js') }}" defer></script>
 
-    <!-- Lazy Load Non-Essential Scripts -->
-    <script src="{{ asset('admin/assets/plugins/custom/datatables/datatables.bundle.js') }}" defer></script>
-    <script src="{{ asset('admin/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js') }}" defer></script>
+    <!-- jQuery (Necessary for DataTables and other plugins) -->
+    <script src="{{ asset('frontend/assets/js/jquery-3.6.0.min.js') }}"></script>
+
+    <!-- Vendor Scripts -->
+    <script src="{{ asset('admin/assets/plugins/global/plugins.bundle.js') }}"></script>
+    <script src="{{ asset('admin/assets/js/scripts.bundle.js') }}"></script>
+    <script src="{{ asset('admin/assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
+    <script src="{{ asset('admin/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
+    <script src="{{ asset('admin/assets/plugins/custom/formrepeater/formrepeater.bundle.js') }}"></script>
+
     <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js" defer></script>
-
     <script src="{{ asset('frontend/assets/js/fontawesome.js') }}" defer></script>
 
-    <!-- Custom Scripts -->
+    <!-- AlpineJS (Deferred for performance) -->
+    <script defer src="{{ asset('frontend/assets/js/alpine.js') }}"></script>
+
+    <!-- Custom Scripts (Make sure they depend on the earlier scripts) -->
     <script src="{{ asset('admin/js/custom.js') }}" defer></script>
 
-    <!-- Additional Scripts -->
-    <script src="{{ asset('admin/assets/plugins/custom/formrepeater/formrepeater.bundle.js') }}"></script>
-    <script src="{{ asset('admin/assets/plugins/custom/tinymce/tinymce.bundle.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/custom/account/settings/profile-details.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/custom/account/settings/deactivate-account.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/custom/apps/ecommerce/catalog/save-product.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/widgets.bundle.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/custom/widgets.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/custom/apps/chat/chat.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/custom/utilities/modals/create-account.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/custom/utilities/modals/create-app.js') }}"></script>
+    <!-- Additional Custom Scripts -->
+    <script src="{{ asset('admin/assets/plugins/custom/tinymce/tinymce.bundle.js') }}" defer></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/formvalidation@1.9.0/dist/js/FormValidation.min.js" defer></script>
+    <!-- Specific Page Scripts (Load only for the pages that need them) -->
+    <script src="{{ asset('admin/assets/js/custom/account/settings/profile-details.js') }}" defer></script>
+    <script src="{{ asset('admin/assets/js/custom/account/settings/deactivate-account.js') }}" defer></script>
+    <script src="{{ asset('admin/assets/js/custom/apps/ecommerce/catalog/save-product.js') }}" defer></script>
+    <script src="{{ asset('admin/assets/js/widgets.bundle.js') }}" defer></script>
+    <script src="{{ asset('admin/assets/js/custom/widgets.js') }}" defer></script>
+    <script src="{{ asset('admin/assets/js/custom/apps/chat/chat.js') }}" defer></script>
+    <script src="{{ asset('admin/assets/js/custom/utilities/modals/create-account.js') }}" defer></script>
+    <script src="{{ asset('admin/assets/js/custom/utilities/modals/create-app.js') }}" defer></script>
+    <script src="{{ asset('frontend/assets/js/jquery_timepicker.js') }}" defer></script>
+    <script src="{{ asset('frontend/assets/js/form-validator.min.js') }}" defer></script>
+
+
+    <!-- External FormValidation & Timepicker Scripts -->
+    {{-- <script src="https://cdn.jsdelivr.net/npm/formvalidation@1.9.0/dist/js/FormValidation.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/formvalidation@1.9.0/dist/js/plugins/Bootstrap5.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/formvalidation@1.9.0/dist/js/plugins/Trigger.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/formvalidation@1.9.0/dist/js/plugins/SubmitButton.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js" defer></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/formvalidation@1.9.0/dist/js/plugins/SubmitButton.min.js" defer></script> --}}
 
     <!-- Inline JavaScript: Only the essential functions to make the page interactive -->
     <script>
+        // DataTable Initialization
         class DataTableInitializer {
             constructor(selector) {
                 this.selector = selector;
@@ -189,18 +199,16 @@
             new DataTableInitializer('.my-datatable');
         });
     </script>
+
     <script>
         "use strict";
 
-        // Class definition
+        // Datatable Example Initialization
         var KTDatatablesExample = function() {
-            // Shared variables
             var table;
             var datatable;
 
-            // Private functions
             var initDatatable = function() {
-                // Set date data order
                 const tableRows = table.querySelectorAll('tbody tr');
 
                 tableRows.forEach(row => {
@@ -210,7 +218,6 @@
                     dateRow[3].setAttribute('data-order', realDate);
                 });
 
-                // Init datatable --- more info on datatables: https://datatables.net/manual/
                 datatable = $(table).DataTable({
                     "info": false,
                     'order': [],
@@ -218,7 +225,6 @@
                 });
             }
 
-            // Hook export buttons
             var exportButtons = () => {
                 const documentTitle = $('.document_title').html();
                 var buttons = new $.fn.dataTable.Buttons(table, {
@@ -247,19 +253,14 @@
                 exportButtons.forEach(exportButton => {
                     exportButton.addEventListener('click', e => {
                         e.preventDefault();
-
-                        // Get clicked export value
                         const exportValue = e.target.getAttribute('data-kt-export');
                         const target = document.querySelector('.dt-buttons .buttons-' +
                             exportValue);
-
-                        // Trigger click event on hidden datatable export buttons
                         target.click();
                     });
                 });
             }
 
-            // Search Datatable --- official docs reference: https://datatables.net/reference/api/search()
             var handleSearchDatatable = () => {
                 const filterSearch = document.querySelector('[data-kt-filter="search"]');
                 filterSearch.addEventListener('keyup', function(e) {
@@ -267,14 +268,12 @@
                 });
             }
 
-            // Public methods
             return {
                 init: function() {
                     table = document.querySelector('.datatable');
                     if (!table) {
                         return;
                     }
-
                     initDatatable();
                     exportButtons();
                     handleSearchDatatable();
@@ -286,68 +285,47 @@
         KTUtil.onDOMContentLoaded(function() {
             KTDatatablesExample.init();
         });
-        // Datatable End
     </script>
+
+
+
     <script>
-        var options = {
-            selector: ".tinymce"
-        };
-
-        if (KTApp.isDarkMode()) {
-            options["skin"] = "oxide-dark";
-            options["content_css"] = "dark";
-        }
-
-        tinymce.init(options);
-
         $(document).ready(function() {
-            // Attach an input event listener to the color input
+            // Color code preview
             $('.colorCode').on('input', function() {
-                // Get the entered color code
                 var colorCode = $(this).val();
-
-                // Update the content of the preview element
                 $(this).closest('.row').find('.colorCodePreview').text(colorCode);
             });
 
+            // Live clock
             function updateClock() {
-                // Get the current time using moment.js
                 var currentTime = moment().format('YYYY-MM-DD HH:mm:ss');
-
-                // Update the content of the live clock element
                 $('#liveClock').text('Current Time: ' + currentTime);
             }
-
-            // Call updateClock function every second
             setInterval(updateClock, 1000);
-
-            // Run updateClock initially to set the initial time
             updateClock();
         });
     </script>
+
     <script>
         $(document).ready(function() {
-            // Add event listener to radio inputs
+            // Radio button change event for forms
             $('.form-container').hide();
             $('input[type="radio"]').change(function() {
-                // Hide all forms
                 $('.form-container').hide();
-
-                // Show the selected form based on the value of the checked radio input
                 const selectedValue = $('input[type="radio"]:checked').val();
                 $('#' + selectedValue + '-form').show();
             });
-
-            // Initially hide all forms except the one corresponding to the initially selected radio input
             const selectedValue = $('input[type="radio"]:checked').val();
             $('#' + selectedValue + '-form').show();
         });
     </script>
+
     <script>
+        // CKEditor Initialization
         document.querySelectorAll('.ckeditor').forEach(element => {
             if (!element.classList.contains('ck-editor__editable_inline')) {
-                ClassicEditor
-                    .create(element)
+                ClassicEditor.create(element)
                     .then(editor => {
                         console.log('CKEditor initialized:', editor);
                     })
@@ -357,22 +335,23 @@
             }
         });
     </script>
+
     <script>
-        // Delay hiding preloader after 3 seconds
+        // Preloader hide logic
         setTimeout(() => {
             const preloader = document.querySelector('.preloader');
             if (preloader) {
-                preloader.classList.add('fade-out'); // Add fade-out class
-                // Hide the preloader after fade-out animation completes
+                preloader.classList.add('fade-out');
                 setTimeout(() => {
                     preloader.style.display = 'none';
-                }, 500); // Match the fade-out duration (500ms)
+                }, 500); // Match the fade-out duration
             }
-        }, 2000); // Wait for 3 seconds before starting the fade-out
+        }, 2000);
     </script>
 
     <!-- Additional Custom Scripts as needed -->
     @stack('scripts')
+
 </body>
 
 </html>
