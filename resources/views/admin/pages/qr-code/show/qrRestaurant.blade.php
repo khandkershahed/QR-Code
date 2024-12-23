@@ -67,7 +67,7 @@
       }
 
       .nfc-mobile-frame {
-         
+
         width: 100%;
         max-width: 576px;
         border-radius: 20px;
@@ -158,7 +158,7 @@
                     <div
                       class="col-lg-6 pe-0 d-flex justify-content-center align-items-center"
                       style="
-                        background-image: url(https://i.pinimg.com/736x/e7/63/24/e7632495dd8e76e42fad24de2fc92f26.jpg);
+                        background-image: url('{{ asset('images/d-image/e7632495dd8e76e42fad24de2fc92f26.jpg') }}');
                         background-repeat: no-repeat;
                         background-size: cover;
                         background-position: center;
@@ -174,7 +174,7 @@
                           <div>
                             <img
                               class="img-fluid"
-                              src="https://i.ibb.co/wNckFnj/Restaurant-logo-with-chef-drawing-template-on-transparent-background-PNG-removebg-preview.png"
+                              src="{{ asset('images/d-image/Restaurant-logo-with-chef-drawing-template-on-transparent-background-PNG-removebg-preview.png') }}"
                               alt=""
                             />
                           </div>
