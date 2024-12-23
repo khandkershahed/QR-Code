@@ -1,4 +1,15 @@
-<x-admin-app-layout :title="'QR Code List - Admin Panel'">
+<x-admin-app-layout :title="'QR Code Management - Admin Panel'">
+    <style>
+        table.dataTable>thead .sorting:after,
+        table.dataTable>thead .sorting_asc:after,
+        table.dataTable>thead .sorting_asc_disabled:after,
+        table.dataTable>thead .sorting_desc:after,
+        table.dataTable>thead .sorting_desc_disabled:after {
+            right: 0px;
+            content: "↑";
+            top: 0px !important;
+        }
+    </style>
     <div class="row">
         <div class="col-lg-12">
             <div class="card border-transparent mt-10" data-bs-theme="light" style="background-color: #1C325E;">
@@ -96,34 +107,37 @@
             </div>
         </div>
         <div class="col-lg-12">
-            <div class="card card-p-0 card-flush mt-10 mb-5">
-                <div class="card-header bg-info align-items-center">
-                    <h1 class="mb-0 text-center w-100 text-white">Manage Your QR Code</h1>
+            <div class="card my-10 rounded-0">
+                <div class="card-header p-5 align-items-center rounded-0 bg-info m-0">
+                    <div>
+                        <h1 class="mb-0 mt-0 card-title fs-2 text-white">All QR Code!</h1>
+                        <p class="text-white mt-2 mb-0">View and manage all QR code information in this page.</p>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <table class="table my-datatable table-striped table-row-bordered gy-5 gs-7 border rounded">
+                <div class="card-body p-0 rounded-0">
+                    <table class="table my-datatable table-striped table-row-bordered mt-0">
                         <thead>
-                            <tr class="fw-bold fs-6 text-gray-800 px-7">
+                            <tr class="text-start bg-info text-white fw-bolder fs-7 text-uppercase gs-0">
                                 <th width="5%">SL</th>
                                 <th width="10%" class="text-center">Image</th>
                                 <th width="25%">Content</th>
-                                <th width="10%">Author</th>
-                                <th width="5%">Type</th>
-                                <th width="10%">Scaned</th>
+                                <th width="10%" class="text-center">Author</th>
+                                <th width="10%" class="text-center">Type</th>
+                                <th width="10%" class="text-center">Scaned & Summary</th>
                                 <th width="10%" class="text-center">Status</th>
-                                <th width="15%" class="text-end">Action</th>
+                                <th width="10%" class="text-end pe-15">Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="text-gray-600 fw-bold" style="vertical-align: middle;">
                             @foreach ($qrs as $qr)
-                                <tr class="odd text-center">
-                                    <td>
+                                <tr>
+                                    <td class="text-center">
                                         {{ $loop->iteration }}
                                     </td>
-                                    <td>
+                                    <td class="text-center">
                                         <img class="img-fluid w-50px" src="{{ $qr->qr_png_url }}" alt="">
                                     </td>
-                                    <td data-order="2022-03-10T14:40:00+05:00" class="text-start">
+                                    <td class="text-start">
                                         {{-- title --}}
                                         <span>
                                             <span class="fw-bold text-black">
@@ -183,91 +197,108 @@
                                             </div>
                                         </span>
                                     </td>
-                                    <td>
+                                    <td class="text-center">
                                         {{ optional($qr->user)->name }}
                                     </td>
-                                    <td class="text-start">
-                                        <button class="btn btn-light-primary">{{ ucfirst($qr->qr_type) }}</button>
+                                    <td class="text-center">
+                                        <span class="badge badge-info">{{ ucfirst($qr->qr_type) }}</span>
                                     </td>
-                                    <td class="text-start">
+                                    <td class="text-center">
                                         <a href="{{ route('admin.qr.summary', $qr->code) }}"
-                                            class="btn btn-light-primary">{{ $qr->qrScan->count() }}</a>
+                                            class="btn btn-light-primary border">
+                                            <div class="d-flex align-items-center">
+                                                <span class="pt-1 pe-1"> {{ $qr->qrScan->count() }}</span>
+                                                <span><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                                            </div>
+                                        </a>
                                     </td>
-                                    <td>
+                                    <td class="text-center">
                                         <div class="badge badge-light-success">Active</div>
                                     </td>
-                                    <td class="pe-0 text-end">
-                                        <a href="{{ route('admin.qr-code.edit', $qr->code) }}"
-                                            class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                            <i class="fas fa-pen"></i>
-                                        </a>
-                                        <a href="{{ route('admin.qr-code.destroy', $qr->id) }}"
-                                            class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1 delete">
-                                            <i class="fas fa-trash-alt text-danger"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-light btn-active-light-primary btn-sm"
-                                            data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end"
-                                            data-kt-menu-flip="top-end">
-                                            Download
-                                            <span class="svg-icon fs-5 m-0">
-                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
-                                                    height="24px" viewBox="0 0 24 24" version="1.1">
-                                                    <g stroke="none" stroke-width="1" fill="none"
-                                                        fill-rule="evenodd">
-                                                        <polygon points="0 0 24 0 24 24 0 24"></polygon>
-                                                        <path
-                                                            d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z"
-                                                            fill="currentColor" fill-rule="nonzero"
-                                                            transform="translate(12.000003, 11.999999) rotate(-180.000000) translate(-12.000003, -11.999999)">
-                                                        </path>
-                                                    </g>
-                                                </svg>
-                                            </span>
-                                        </a>
-                                        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
-                                            data-kt-menu="true ">
-                                            @if (!empty($qr->qr_png))
-                                                <div class="menu-item px-3">
-                                                    <a href="{{ $qr->qr_png_url }}" class="menu-link px-3" download
-                                                        data-kt-docs-table-filter="edit_row">
-                                                        PNG
+                                    <td class="text-end pe-15">
+                                        <div class="dropdown">
+                                            <button class="btn btn-light-danger dropdown-toggle" type="button"
+                                                id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                                                aria-expanded="false">
+                                                Actions
+                                            </button>
+                                            <ul class="dropdown-menu mt-0 pt-0 rounded-0"
+                                                aria-labelledby="dropdownMenuButton1">
+                                                <li class="text-muted">
+                                                    <a href="{{ route('admin.qr-code.edit', $qr->code) }}"
+                                                        class="menu-link px-3 delete dropdown-item">
+                                                        <i class="fa-solid fa-pen pe-2"></i> Edit
                                                     </a>
-                                                </div>
-                                            @endif
-
-                                            @if (!empty($qr->qr_svg))
-                                                <div class="menu-item px-3">
-                                                    <a href="{{ $qr->qr_svg_url }}" class="menu-link px-3" download
-                                                        data-kt-docs-table-filter="edit_row">
-                                                        SVG
+                                                </li>
+                                                <li class="text-muted">
+                                                    <a href="{{ route('admin.qr-code.destroy', $qr->id) }}"
+                                                        class="menu-link px-3 delete dropdown-item">
+                                                        <i class="fa-solid fa-trash pe-2"></i> Delete
                                                     </a>
-                                                </div>
-                                            @endif
-                                            @if (!empty($qr->qr_eps))
-                                                <div class="menu-item px-3">
-                                                    <a href="{{ $qr->qr_eps_url }}" class="menu-link px-3" download
-                                                        data-kt-docs-table-filter="edit_row">
-                                                        EPS
+                                                </li>
+                                                @if (!empty($bar_code->bar_code_pdf))
+                                                    <li class="text-muted">
+                                                        <a href="{{ asset($bar_code->bar_code_pdf) }}" download
+                                                            data-kt-docs-table-filter="edit_row"
+                                                            class="menu-link px-3 dropdown-item">
+                                                            <i class="fa-solid fa-file-pdf pe-2"></i> PDF
+                                                        </a>
+                                                    </li>
+                                                @endif
+                                                <li class="text-muted">
+                                                    <a href="javascript:void(0)" data-kt-menu-trigger="click"
+                                                        data-kt-menu-placement="bottom-end"
+                                                        data-kt-menu-flip="top-end"
+                                                        class="menu-link px-3 dropdown-item">
+                                                        <i class="fa-solid fa-cloud-arrow-down pe-2"></i> Download
                                                     </a>
-                                                </div>
-                                            @endif
-                                            @if (!empty($qr->qr_jpg))
-                                                <div class="menu-item px-3">
-                                                    <a href="{{ $qr->qr_jpg_url }}" class="menu-link px-3" download
-                                                        data-kt-docs-table-filter="edit_row">
-                                                        JPG
-                                                    </a>
-                                                </div>
-                                            @endif
-                                            @if (!empty($qr->qr_pdf))
-                                                <div class="menu-item px-3">
-                                                    <a href="{{ $qr->qr_pdf_url }}" class="menu-link px-3" download
-                                                        data-kt-docs-table-filter="edit_row">
-                                                        PDF
-                                                    </a>
-                                                </div>
-                                            @endif
+                                                </li>
+                                                @if (!empty($qr->qr_png))
+                                                    <li class="text-muted">
+                                                        <a href="{{ $qr->qr_png_url }}" download
+                                                            data-kt-docs-table-filter="edit_row"
+                                                            class="menu-link px-3 dropdown-item">
+                                                            <i class="fa-solid fa-cloud-arrow-down pe-2"></i> PNG
+                                                        </a>
+                                                    </li>
+                                                @endif
+                                                @if (!empty($qr->qr_svg))
+                                                    <li class="text-muted">
+                                                        <a href="{{ $qr->qr_svg_url }}" download
+                                                            data-kt-docs-table-filter="edit_row"
+                                                            class="menu-link px-3 dropdown-item">
+                                                            <i class="fa-solid fa-cloud-arrow-down pe-2"></i> SVG
+                                                        </a>
+                                                    </li>
+                                                @endif
+                                                @if (!empty($qr->qr_eps))
+                                                    <li class="text-muted">
+                                                        <a href="{{ $qr->qr_eps_url }}" download
+                                                            data-kt-docs-table-filter="edit_row"
+                                                            class="menu-link px-3 dropdown-item">
+                                                            <i class="fa-solid fa-cloud-arrow-down pe-2"></i> EPS
+                                                        </a>
+                                                    </li>
+                                                @endif
+                                                @if (!empty($qr->qr_jpg))
+                                                    <li class="text-muted">
+                                                        <a href="{{ $qr->qr_jpg_url }}" download
+                                                            data-kt-docs-table-filter="edit_row"
+                                                            class="menu-link px-3 dropdown-item">
+                                                            <i class="fa-solid fa-cloud-arrow-down pe-2"></i> JPG
+                                                        </a>
+                                                    </li>
+                                                @endif
+                                                @if (!empty($qr->qr_pdf))
+                                                    <li class="text-muted">
+                                                        <a href="{{ $qr->qr_pdf_url }}" download
+                                                            data-kt-docs-table-filter="edit_row"
+                                                            class="menu-link px-3 dropdown-item">
+                                                            <i class="fa-solid fa-cloud-arrow-down pe-2"></i> PDF
+                                                        </a>
+                                                    </li>
+                                                @endif
+                                            </ul>
                                         </div>
                                     </td>
                                 </tr>
@@ -278,71 +309,4 @@
             </div>
         </div>
     </div>
-
-    @push('scripts')
-        <script>
-            "use strict";
-
-            // Class definition
-            var KTDatatablesExample = function() {
-                // Shared variables
-                var table;
-                var datatable;
-
-                // Private functions
-                var initDatatable = function() {
-                    // Check if the DataTable is already initialized
-                    if ($.fn.DataTable.isDataTable(table)) {
-                        // Destroy the existing instance
-                        $(table).DataTable().destroy();
-                    }
-
-                    // Set date data order
-                    const tableRows = table.querySelectorAll('tbody tr');
-
-                    tableRows.forEach(row => {
-                        const dateRow = row.querySelectorAll('td');
-                        const realDate = moment(dateRow[3].innerHTML, "DD MMM YYYY, LT")
-                            .format(); // select date from 4th column in table
-                        dateRow[3].setAttribute('data-order', realDate);
-                    });
-
-                    // Init datatable --- more info on datatables: https://datatables.net/manual/
-                    datatable = $(table).DataTable({
-                        "info": false,
-                        'order': [],
-                        'pageLength': 10,
-                    });
-                }
-
-                // Search Datatable --- official docs reference: https://datatables.net/reference/api/search()
-                var handleSearchDatatable = () => {
-                    const filterSearch = document.querySelector('[data-kt-filter="search"]');
-                    filterSearch.addEventListener('keyup', function(e) {
-                        datatable.search(e.target.value).draw();
-                    });
-                }
-
-                // Public methods
-                return {
-                    init: function() {
-                        table = document.querySelector('#qr_code_admin');
-
-                        if (!table) {
-                            return;
-                        }
-
-                        initDatatable();
-                        exportButtons();
-                        handleSearchDatatable();
-                    }
-                };
-            }();
-
-            // On document ready
-            KTUtil.onDOMContentLoaded(function() {
-                KTDatatablesExample.init();
-            });
-        </script>
-    @endpush
 </x-admin-app-layout>
