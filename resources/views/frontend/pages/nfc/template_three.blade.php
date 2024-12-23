@@ -17,7 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
 
-        <link rel="shortcut icon"
+    <link rel="shortcut icon"
         href="{{ !empty($nfc_card->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card)->profile_image) : asset('frontend/assets/images/logos/logo.png') }}"
         type="image/x-icon" />
     <!-- Bootstrap CSS v5.2.1 -->
@@ -518,7 +518,8 @@
         <img src="{{ asset('frontend') }}/assets/images/client-logos/preloader.svg" alt="Loading...">
     </div>
     <main>
-        <div class="mobile-frame" style="background-image: url(https://i.ibb.co/vZh8yjs/bg.png)">
+        {{-- <div class="mobile-frame" style="background-image: url(https://i.ibb.co/vZh8yjs/bg.png)"> --}}
+        <div class="mobile-frame">
             <div class="page-content-wrapper">
                 <!-- Banner -->
                 <section>
@@ -1510,9 +1511,9 @@
                         </div>
                         <div class="modal-body">
                             {{ optional($nfc_card->nfcBanner)->banner_description }}
-                            @if (!empty(optional($nfc_card->nfcBanner)->banner_url ) || !empty(optional($nfc_card->nfcBanner)->banner_button ))
+                            @if (!empty(optional($nfc_card->nfcBanner)->banner_url) || !empty(optional($nfc_card->nfcBanner)->banner_button))
                                 <div class="pt-3">
-                                    <a href="{{ !empty(optional($nfc_card->nfcBanner)->banner_url ) ? optional($nfc_card->nfcBanner)->banner_url : 'javascript:void(0)'}}"
+                                    <a href="{{ !empty(optional($nfc_card->nfcBanner)->banner_url) ? optional($nfc_card->nfcBanner)->banner_url : 'javascript:void(0)' }}"
                                         class="btn border-0 rounded-2 btn-sm text-white"
                                         style="background-color: var(--template-three-color-primary);">{{ optional($nfc_card->nfcBanner)->banner_button }}
                                     </a>
