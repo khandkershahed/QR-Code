@@ -96,23 +96,19 @@
                                         </a>
                                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
                                             data-kt-menu="true ">
-                                            <!--begin::Menu item-->
                                             <div class="menu-item px-3">
                                                 <a href="#" class="menu-link px-3" data-bs-toggle="modal"
                                                     data-bs-target="#message_modal_{{ $nfc_card->id }}">
                                                     All messages
                                                 </a>
                                             </div>
-                                            <!--end::Menu item-->
 
-                                            <!--begin::Menu item-->
                                             <div class="menu-item px-3">
                                                 <a href="{{ route('reseller.nfc-card.destroy', $nfc_card->id) }}"
                                                     class="menu-link px-3 delete">
                                                     Delete
                                                 </a>
                                             </div>
-                                            <!--end::Menu item-->
                                         </div>
                                     </td>
                                 </tr>
@@ -131,13 +127,11 @@
                     <div class="modal-header">
                         <h5 class="modal-title">All Messages of your NFC</h5>
 
-                        <!--begin::Close-->
                         <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
                             aria-label="Close">
                             <i class="fa-solid fa-cross fs-2x"><span class="path1"></span><span
                                     class="path2"></span></i>
                         </div>
-                        <!--end::Close-->
                     </div>
 
                     <div class="modal-body">
@@ -158,14 +152,15 @@
                                     @foreach ($nfc_card->nfcMessages as $nfc_message)
                                         <tr>
                                             <td>
-                                                    {{ optional($nfc_message)->name }}
+                                                {{ optional($nfc_message)->name }}
                                             </td>
                                             <td class="text-start">
-                                                <a href="mailto:{{ optional($nfc_message)->email }}" target="_blank">{{ optional($nfc_message)->email }}</a>
+                                                <a href="mailto:{{ optional($nfc_message)->email }}"
+                                                    target="_blank">{{ optional($nfc_message)->email }}</a>
 
                                             </td>
                                             <td>
-                                                    {{ optional($nfc_message)->ip_address }}
+                                                {{ optional($nfc_message)->ip_address }}
                                             </td>
                                             <td class="text-start">
                                                 {{ optional($nfc_message)->message }}
@@ -193,18 +188,14 @@
                                                 </a>
                                                 <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
                                                     data-kt-menu="true ">
-                                                    <!--begin::Menu item-->
 
-                                                    <!--end::Menu item-->
 
-                                                    <!--begin::Menu item-->
                                                     <div class="menu-item px-3">
                                                         <a href="{{ route('individual-message.destroy', $nfc_message->id) }}"
                                                             class="menu-link px-3 delete">
                                                             Delete
                                                         </a>
                                                     </div>
-                                                    <!--end::Menu item-->
                                                 </div>
                                             </td>
                                         </tr>

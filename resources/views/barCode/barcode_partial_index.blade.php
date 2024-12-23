@@ -1,23 +1,17 @@
-<style>
-    table.dataTable>thead .sorting:after,
-    table.dataTable>thead .sorting_asc:after,
-    table.dataTable>thead .sorting_asc_disabled:after,
-    table.dataTable>thead .sorting_desc:after,
-    table.dataTable>thead .sorting_desc_disabled:after {
-        right: 0px;
-        content: "↑";
-        top: 0px !important;
-    }
-</style>
 <div class="col-lg-12">
-    <div class="card my-10 rounded-0">
+    <div class="card rounded-0">
         <div class="card-header p-5 align-items-center rounded-0 bg-info m-0">
             <div>
                 <h1 class="mb-0 mt-0 card-title fs-2 text-white">All Bar Code!</h1>
                 <p class="text-white mt-2 mb-0">View and manage all Bar Code information in this page.</p>
             </div>
+            <div>
+                <a href="{{ route('user.barcode.create') }}" class="btn btn-white btn-active-light-warning text-hover-inverse-white">
+                    <i class="fa-solid fa-user-plus"></i> Add Bar-Code
+                </a>
+            </div>
         </div>
-        <div class="card-body p-0 rounded-0">
+        <div class="card-body p-0 rounded-0 px-3">
             <table class="table my-datatable table-striped table-row-bordered mt-0">
                 <thead>
                     <tr class="text-start bg-info text-white fw-bolder fs-7 text-uppercase gs-0">

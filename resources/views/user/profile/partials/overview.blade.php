@@ -1,7 +1,8 @@
-<div class="card mb-5 mb-xxl-8">
-    <div class="card-header border-0">
-        <div class="card-title">
-            <h2>Admin Messages</h2>
+<div class="card rounded-0">
+    <div class="card-header p-5 align-items-center rounded-0 bg-light-info m-0">
+        <div>
+            <h1 class="mb-0 mt-0 card-title fs-2 text-primary">All Admin Messages!</h1>
+            <p class="text-primary mt-2 mb-0">View and manage all admin messages information in this page.</p>
         </div>
     </div>
     <div class="card-body pb-0">

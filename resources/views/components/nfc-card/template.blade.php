@@ -33,7 +33,6 @@
                     style="width: 100% !important; object-fit: scale-down !important;"
                     src="{{ asset($template['image']) }}" alt="{{ $template['value'] }}">
             </label>
-            <!--end::Option-->
         </div>
     @endforeach
 </div>

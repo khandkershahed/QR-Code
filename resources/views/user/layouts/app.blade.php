@@ -11,7 +11,8 @@
     <meta property="og:title" content="" />
     <meta property="og:url" content="" />
     <meta property="og:site_name" content="" />
-    <link rel="shortcut icon" href="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}" />
+    <link rel="shortcut icon"
+        href="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
     <link href="{{ asset('admin/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet"
@@ -104,7 +105,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbfUj9Hr1sqI5sb_nc2XSWFrRun3l_Vto&callback=initMap"></script>
-    <!--end::Vendors Javascript-->
     <script
         src="https://preview.keenthemes.com/html/metronic/docs/assets/js/custom/documentation/general/draggable/cards.js">
     </script>
@@ -112,7 +112,6 @@
     </script>
     <script src="https://preview.keenthemes.com/html/metronic/docs/assets/plugins/custom/prismjs/prismjs.bundle.js">
     </script>
-    <!--begin::Custom Javascript(used for this page only)-->
     <script src="{{ asset('admin/js/custom.js') }}"></script>
 
     <script>
@@ -134,23 +133,35 @@
         });
     </script>
     @stack('scripts')
-
     <script>
-        // var containers = document.querySelectorAll(".draggable-zone");
+        class DataTableInitializer {
+            constructor(selector) {
+                this.selector = selector;
+                this.init();
+            }
 
-        // if (containers.length === 0) {
-        //     return false;
-        // }
+            init() {
+                $(this.selector).DataTable({
+                    "language": {
+                        "lengthMenu": "Show _MENU_",
+                    },
+                    "dom": "<'row mb-2'" +
+                        "<'col-sm-6 d-flex align-items-center justify-content-start dt-toolbar'l>" +
+                        "<'col-sm-6 d-flex align-items-center justify-content-end dt-toolbar'f>" +
+                        ">" +
+                        "<'table-responsive'tr>" +
+                        "<'row'" +
+                        "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
+                        "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
+                        ">"
+                });
+            }
+        }
 
-        // var swappable = new Sortable.default(containers, {
-        //     draggable: ".draggable",
-        //     handle: ".draggable .draggable-handle",
-        //     mirror: {
-        //         //appendTo: selector,
-        //         appendTo: "body",
-        //         constrainDimensions: true
-        //     }
-        // });
+        // Initialize DataTables for elements with class 'my-datatable'
+        $(document).ready(function() {
+            new DataTableInitializer('.my-datatable');
+        });
     </script>
     <script>
         $(document).ready(function() {

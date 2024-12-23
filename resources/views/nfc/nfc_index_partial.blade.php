@@ -97,34 +97,59 @@
             margin: auto;
         }
     }
-
-    table.dataTable>thead .sorting:after,
-    table.dataTable>thead .sorting_asc:after,
-    table.dataTable>thead .sorting_asc_disabled:after,
-    table.dataTable>thead .sorting_desc:after,
-    table.dataTable>thead .sorting_desc_disabled:after {
-        right: 0px;
-        content: "↑";
-        top: 0px !important;
-    }
 </style>
 <div class="col-lg-12 mt-5">
     <div class="card my-5 rounded-0">
         <div class="card-header p-5 align-items-center rounded-0 bg-info m-0">
+            <div class="">
+                <div>
+                    <h1 class="mb-0 mt-0 card-title fs-2 text-white">All V-Card!</h1>
+                </div>
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <div class="text-white fw-bold d-flex ">
+                        @if (!empty($subscription->plan))
+                            <strong class=""> Total Created V-Card : {{ $nfc_cards->count() }}<span class="text-warning"> / </span> V-Card Limitation :
+                                {{ $subscription->plan->nfc }} <span class="text-warning"> / </span> V-Card Remaining :
+                                {{ $subscription->plan->nfc - $nfc_cards->count() }}<span class="text-warning"> / </span>Total Created V-Card :
+                                {{ $nfc_cards->count() }}
+                            </strong>
+                        @else
+                            <strong class="">Total Created V-Card : {{ $nfc_cards->count() }}<span class="text-warning"> / </span>
+                                QR Limitation : 10 (Trial Period)<span class="text-warning"> / </span> V-Card Remaining :
+                                {{ 10 - $nfc_cards->count() }}</strong>
+                        @endif
+                    </div>
+                </div>
+            </div>
             <div>
-                <h1 class="mb-0 mt-0 card-title fs-2 text-white">All V-Card!</h1>
-                <p class="text-white mt-2 mb-0">View and manage all virtual card information in this page.</p>
+                <div>
+                    @if (!empty($subscription->plan))
+                        @if ($subscription->plan->nfc - $nfc_cards->count() > 0)
+                            <a href="{{ route('user.virtual-card.create') }}"
+                                class="btn btn-white btn-active-light-warning text-hover-inverse-white">
+                                <i class="fa-solid fa-user-plus"></i> Create V-Card
+                            </a>
+                        @endif
+                    @else
+                        @if (10 - $nfc_cards->count() > 0)
+                            <a href="{{ route('user.virtual-card.create') }}"
+                                class="btn btn-white btn-active-light-warning text-hover-inverse-white">
+                                <i class="fa-solid fa-user-plus"></i> Create V-Card
+                            </a>
+                        @endif
+                    @endif
+                </div>
             </div>
         </div>
-        <div class="card-body p-0 rounded-0">
+        <div class="card-body p-0 px-2 rounded-0">
             <table class="table my-datatable table-striped table-row-bordered mt-0">
                 <thead>
                     <tr class="text-start bg-info text-white fw-bolder fs-7 text-uppercase gs-0">
                         <th width="5%">SL</th>
                         <th width="25%">VCard Name</th>
+                        <th width="20%">Author</th>
                         <th width="13%" class="text-center">Preview Card</th>
                         <th width="10%" class="text-center">QR Code</th>
-                        <th width="20%">Author</th>
                         <th width="12%">Viewer</th>
                         <th width="10%">Performance</th>
                         <th width="10%" class="text-center">Setting</th>
@@ -188,7 +213,9 @@
                                 </div>
 
                             </td>
-
+                            <td>
+                                {{ optional($nfc_card->user)->name }}
+                            </td>
                             <td class="text-white text-center">
                                 <a href="{{ $nfc_card->nfc_url }}" target="_blank" class="text-primary">
                                     <span class="badge badge-primary text-white p-2 px-3">VCard <i
@@ -202,9 +229,6 @@
                                             class="fas fa-eye pe-2 text-info"></i>
                                         QR</span>
                                 </a>
-                            </td>
-                            <td>
-                                {{ optional($nfc_card->user)->name }}
                             </td>
                             <td>
                                 @if (strpos(Route::current()->getName(), 'user.') === 0)

@@ -164,7 +164,6 @@
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
-                            <!--begin::Svg Icon | path: icons/duotune/general/gen022.svg-->
                             <span class="svg-icon svg-icon-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none">
@@ -182,7 +181,6 @@
                                         fill="currentColor"></path>
                                 </svg>
                             </span>
-                            <!--end::Svg Icon-->
                         </span>
                         <span class="menu-title">Template</span>
                         <span class="menu-arrow"></span>
@@ -259,15 +257,6 @@
                                 <span class="menu-title">My Profile</span>
                             </a>
                         </div>
-                        {{-- <div class="menu-item">
-                            <a class="menu-link "
-                                href="{{ route('normaluser.pricing') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Pricing</span>
-                            </a>
-                        </div> --}}
                     </div>
                 </div>
             </div>

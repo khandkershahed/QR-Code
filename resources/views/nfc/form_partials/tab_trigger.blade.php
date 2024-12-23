@@ -1,5 +1,5 @@
 <ul class="nav nav-tabs nav-pills flex-row border-0 flex-md-column mb-3 mb-md-0 fs-6 w-100 pb-3 ps-1" role="tablist">
-    <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
+    <li class="nav-item w-100 me-0 mb-md-2 ms-0" role="presentation">
         <a class="nav-link active w-100 btn btn-flex btn-active-info fs-6 fw-normal" data-bs-toggle="tab"
             href="#generalInfo" aria-selected="false" role="tab" tabindex="-1">
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -36,7 +36,7 @@
             <span class="ps-2 text-start">General Information</span>
         </a>
     </li>
-    <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
+    <li class="nav-item w-100 me-0 mb-md-2 ms-0" role="presentation">
         <a class="nav-link w-100 btn btn-flex btn-active-info fs-6 fw-normal" data-bs-toggle="tab" href="#vcardTemplate"
             aria-selected="true" role="tab">
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -86,7 +86,7 @@
             <span class="ps-2 text-start">VCard Templates</span>
         </a>
     </li>
-    <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
+    <li class="nav-item w-100 me-0 mb-md-2 ms-0" role="presentation">
         <a class="nav-link w-100 btn btn-flex btn-active-info fs-6 fw-normal" data-bs-toggle="tab"
             href="#businessHours" aria-selected="false" role="tab" tabindex="-1">
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -157,7 +157,7 @@
             <span class="ps-2 text-start">Business Hours</span>
         </a>
     </li>
-    <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
+    <li class="nav-item w-100 me-0 mb-md-2 ms-0" role="presentation">
         <a class="nav-link w-100 btn btn-flex btn-active-info fs-6 fw-normal" data-bs-toggle="tab" href="#companies"
             aria-selected="false" role="tab" tabindex="-1">
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -254,7 +254,7 @@
             <span class="ps-2 text-start">Companies</span>
         </a>
     </li>
-    <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
+    <li class="nav-item w-100 me-0 mb-md-2 ms-0" role="presentation">
         <a class="nav-link w-100 btn btn-flex btn-active-info fs-6 fw-normal" data-bs-toggle="tab" href="#services"
             aria-selected="false" role="tab" tabindex="-1">
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -367,7 +367,7 @@
             <span class="ps-2 text-start">Services</span>
         </a>
     </li>
-    <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
+    <li class="nav-item w-100 me-0 mb-md-2 ms-0" role="presentation">
         <a class="nav-link w-100 btn btn-flex btn-active-info fs-6 fw-normal" data-bs-toggle="tab" href="#products"
             aria-selected="false" role="tab" tabindex="-1">
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -434,7 +434,7 @@
             <span class="ps-2 text-start">Products</span>
         </a>
     </li>
-    <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
+    <li class="nav-item w-100 me-0 mb-md-2 ms-0" role="presentation">
         <a class="nav-link w-100 btn btn-flex btn-active-info fs-6 fw-normal" data-bs-toggle="tab" href="#galleries"
             aria-selected="false" role="tab" tabindex="-1">
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -473,7 +473,7 @@
             <span class="ps-2 text-start">Galleries</span>
         </a>
     </li>
-    <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
+    <li class="nav-item w-100 me-0 mb-md-2 ms-0" role="presentation">
         <a class="nav-link w-100 btn btn-flex btn-active-info fs-6 fw-normal" data-bs-toggle="tab" href="#banner"
             aria-selected="false" role="tab" tabindex="-1">
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -514,7 +514,7 @@
             <span class="ps-2 text-start">Welcome Notice</span>
         </a>
     </li>
-    <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
+    <li class="nav-item w-100 me-0 mb-md-2 ms-0" role="presentation">
         <a class="nav-link w-100 btn btn-flex btn-active-info fs-6 fw-normal" data-bs-toggle="tab"
             href="#testimonials" aria-selected="false" role="tab" tabindex="-1">
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -549,7 +549,7 @@
             <span class="ps-2 text-start">Testimonials</span>
         </a>
     </li>
-    <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
+    <li class="nav-item w-100 me-0 mb-md-2 ms-0" role="presentation">
         <a class="nav-link w-100 btn btn-flex btn-active-info fs-6 fw-normal" data-bs-toggle="tab" href="#seo"
             aria-selected="false" role="tab" tabindex="-1">
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -675,7 +675,7 @@
             <span class="ps-2 text-start">Seo</span>
         </a>
     </li>
-    <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
+    <li class="nav-item w-100 me-0 mb-md-2 ms-0" role="presentation">
         <a class="nav-link w-100 btn btn-flex btn-active-info fs-6 fw-normal" data-bs-toggle="tab"
             href="#socialLinks" aria-selected="false" role="tab" tabindex="-1">
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -737,7 +737,7 @@
             <span class="ps-2 text-start">Social links</span>
         </a>
     </li>
-    <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
+    <li class="nav-item w-100 me-0 mb-md-2 ms-0" role="presentation">
         <a class="nav-link w-100 btn btn-flex btn-active-info fs-6 fw-normal" data-bs-toggle="tab" href="#privacy"
             aria-selected="false" role="tab" tabindex="-1">
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -792,7 +792,7 @@
             <span class="ps-2 text-start"> Privacy Policy</span>
         </a>
     </li>
-    <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
+    <li class="nav-item w-100 me-0 mb-md-2 ms-0" role="presentation">
         <a class="nav-link w-100 btn btn-flex btn-active-info fs-6 fw-normal" data-bs-toggle="tab" href="#terms"
             aria-selected="false" role="tab" tabindex="-1">
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -821,7 +821,7 @@
             <span class="ps-2 text-start"">Terms</span>
         </a>
     </li>
-    <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
+    <li class="nav-item w-100 me-0 mb-md-2 ms-0" role="presentation">
         <a class="nav-link w-100 btn btn-flex btn-active-info fs-6 fw-normal" data-bs-toggle="tab" href="#fonts"
             aria-selected="false" role="tab" tabindex="-1">
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -955,7 +955,7 @@
             </svg>
             <span class="ps-2 text-start">Fonts</span></a>
     </li>
-    <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
+    <li class="nav-item w-100 me-0 mb-md-2 ms-0" role="presentation">
         <a class="nav-link w-100 btn btn-flex btn-active-info fs-6 fw-normal" data-bs-toggle="tab" href="#advance"
             aria-selected="false" role="tab" tabindex="-1">
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"

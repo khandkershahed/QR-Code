@@ -3,11 +3,11 @@
     {{-- {!! QrCode::size(500)->eye('square')->eyeColor(1, 222, 18, 222,222, 18, 222 )->eyeColor(1, 222, 18, 222,222, 18, 222 )->eyeColor(2, 222, 18, 222,222, 18, 222 )->style('dot', 0.8)->errorCorrection('H')->generate('Make me into a QrCode!'); !!} --}}
     <div class="row">
         <div class="col-lg-12">
-            <div class="d-flex align-items-center rounded py-5 px-5 bg-light-primary mt-5 mt-lg-0" style="border: 1px dashed blue;">
+            <div class="d-flex align-items-center rounded py-5 px-5 bg-light-primary mt-5 mt-lg-0"
+                style="border: 1px dashed blue;">
                 <i class="fa-solid fa-information-5 fs-3x text-warning me-5">
                     <span class="path1"></span><span class="path2"></span><span class="path3"></span>
                 </i>
-                <!--begin::Description-->
                 <div class="d-flex justify-content-between align-items-center w-100">
                     <div class="text-gray-700 fw-bold d-flex ">
                         @if (!empty($subscription->plan))
@@ -156,7 +156,6 @@
                                             </a>
                                             <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
                                                 data-kt-menu="true ">
-                                                <!--begin::Menu item-->
                                                 @if (!empty($qr->qr_png))
                                                     <div class="menu-item px-3">
                                                         <a href="{{ $qr->qr_png_url }}" class="menu-link px-3"
@@ -165,9 +164,7 @@
                                                         </a>
                                                     </div>
                                                 @endif
-                                                <!--end::Menu item-->
 
-                                                <!--begin::Menu item-->
                                                 @if (!empty($qr->qr_svg))
                                                     <div class="menu-item px-3">
                                                         <a href="{{ $qr->qr_svg_url }}" class="menu-link px-3"
@@ -200,7 +197,6 @@
                                                         </a>
                                                     </div>
                                                 @endif
-                                                <!--end::Menu item-->
                                             </div>
                                         </td>
                                     </tr>
@@ -214,69 +210,69 @@
     </div>
 
     @push('scripts')
-    <script>
-        "use strict";
+        <script>
+            "use strict";
 
-        // Class definition
-        var KTDatatablesExample = function() {
-            // Shared variables
-            var table;
-            var datatable;
+            // Class definition
+            var KTDatatablesExample = function() {
+                // Shared variables
+                var table;
+                var datatable;
 
-            // Private functions
-            var initDatatable = function() {
-                // Check if the DataTable is already initialized
-                if ($.fn.DataTable.isDataTable(table)) {
-                    // Destroy the existing instance
-                    $(table).DataTable().destroy();
-                }
-
-                // Set date data order
-                const tableRows = table.querySelectorAll('tbody tr');
-
-                tableRows.forEach(row => {
-                    const dateRow = row.querySelectorAll('td');
-                    const realDate = moment(dateRow[3].innerHTML, "DD MMM YYYY, LT")
-                .format(); // select date from 4th column in table
-                    dateRow[3].setAttribute('data-order', realDate);
-                });
-
-                // Init datatable --- more info on datatables: https://datatables.net/manual/
-                datatable = $(table).DataTable({
-                    "info": false,
-                    'order': [],
-                    'pageLength': 10,
-                });
-            }
-
-            // Search Datatable --- official docs reference: https://datatables.net/reference/api/search()
-            var handleSearchDatatable = () => {
-                const filterSearch = document.querySelector('[data-kt-filter="search"]');
-                filterSearch.addEventListener('keyup', function(e) {
-                    datatable.search(e.target.value).draw();
-                });
-            }
-
-            // Public methods
-            return {
-                init: function() {
-                    table = document.querySelector('#qr_code_admin');
-
-                    if (!table) {
-                        return;
+                // Private functions
+                var initDatatable = function() {
+                    // Check if the DataTable is already initialized
+                    if ($.fn.DataTable.isDataTable(table)) {
+                        // Destroy the existing instance
+                        $(table).DataTable().destroy();
                     }
 
-                    initDatatable();
-                    exportButtons();
-                    handleSearchDatatable();
-                }
-            };
-        }();
+                    // Set date data order
+                    const tableRows = table.querySelectorAll('tbody tr');
 
-        // On document ready
-        KTUtil.onDOMContentLoaded(function() {
-            KTDatatablesExample.init();
-        });
-    </script>
+                    tableRows.forEach(row => {
+                        const dateRow = row.querySelectorAll('td');
+                        const realDate = moment(dateRow[3].innerHTML, "DD MMM YYYY, LT")
+                            .format(); // select date from 4th column in table
+                        dateRow[3].setAttribute('data-order', realDate);
+                    });
+
+                    // Init datatable --- more info on datatables: https://datatables.net/manual/
+                    datatable = $(table).DataTable({
+                        "info": false,
+                        'order': [],
+                        'pageLength': 10,
+                    });
+                }
+
+                // Search Datatable --- official docs reference: https://datatables.net/reference/api/search()
+                var handleSearchDatatable = () => {
+                    const filterSearch = document.querySelector('[data-kt-filter="search"]');
+                    filterSearch.addEventListener('keyup', function(e) {
+                        datatable.search(e.target.value).draw();
+                    });
+                }
+
+                // Public methods
+                return {
+                    init: function() {
+                        table = document.querySelector('#qr_code_admin');
+
+                        if (!table) {
+                            return;
+                        }
+
+                        initDatatable();
+                        exportButtons();
+                        handleSearchDatatable();
+                    }
+                };
+            }();
+
+            // On document ready
+            KTUtil.onDOMContentLoaded(function() {
+                KTDatatablesExample.init();
+            });
+        </script>
     @endpush
 </x-app-layout>
