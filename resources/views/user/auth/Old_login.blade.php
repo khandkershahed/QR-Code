@@ -1,6 +1,3 @@
-
-
-
 <x-frontend-app-layout :title="'Login Page'">
     <!-- Session Status -->
     <x-auth-session-status class="mb-4 login_box" :status="session('status')" />
@@ -116,5 +113,51 @@
             </div>
         </div>
     </div>
-</x-frontend-app-layout>
 
+    {{-- <div class="row g-3 mb-9">
+                                <div class="col-md-6 mx-auto">
+                                    <a href="{{ route('auth.google') }}"
+                                        class="btn btn-flex border btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
+                                        <img alt="Logo"
+                                            src="https://preview.keenthemes.com/metronic8/demo1/assets/media/svg/brand-logos/google-icon.svg"
+                                            class="h-15px me-3">
+                                        Sign in with Google
+                                    </a>
+                                </div> --}}
+
+    {{-- <div class="col-md-6">
+                                    <a href="{{ route('auth.facebook') }}"
+                                        class="btn btn-flex border btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
+                                        <img alt="Logo"
+                                            src="https://i.ibb.co/4twXxBk/png-clipart-facebook-logo-computer-icons-facebook-logo-facebook-thumbnail-removebg-preview.png"
+                                            class="theme-light-show h-25px me-3">
+                                        Sign in with Facebook
+                                    </a>
+                                </div>
+                            </div> --}}
+
+    {{-- <div class="separator separator-content my-14">
+                                <span class="w-125px text-gray-500 fw-semibold fs-7">Or with email</span>
+                            </div> --}}
+
+    {{-- <div class="fv-row mb-8 fv-plugins-icon-container">
+                                <x-input-label class="form-label" for="email" :value="__('Email')" />
+                                <x-text-input id="email" class="form-control bg-transparent rounded-2"
+                                    type="email" name="email" :value="old('email')" required autocomplete="username" />
+                                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                            </div>
+
+                            <div class="fv-row mb-5 fv-plugins-icon-container">
+                                <x-input-label class="form-label" for="password" :value="__('Password')" />
+                                <div class="input-group">
+                                    <span class="input-group-text " id="toggle_password">
+                                        <i class="fas fa-lock text-success"></i>
+                                        <i class="fas fa-unlock" style="display: none"></i>
+                                    </span>
+                                    <x-text-input id="password" aria-describedby="toggle_password"
+                                        class="form-control bg-transparent password_input" type="password"
+                                        name="password" required autocomplete="new-password" />
+                                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                                </div>
+                            </div> --}}
+</x-frontend-app-layout>

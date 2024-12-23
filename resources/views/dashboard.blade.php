@@ -17,14 +17,15 @@
                                 <div class="card-title d-flex flex-column">
                                     <span
                                         class="fs-2hx fw-bold text-white me-2 lh-1 ls-n2">{{ $nfc_cards->count() }}</span>
-                                    <span class="text-white opacity-75 pt-1 fw-semibold fs-6">Total NFC Created</span>
+                                    <span class="text-white opacity-75 pt-1 fw-semibold fs-6">Total Virtual Card
+                                        Created</span>
                                 </div>
                             </div>
                             <div class="card-body d-flex align-items-end pt-0">
                                 <div class="d-flex align-items-center flex-column mt-3 w-100">
                                     <div
                                         class="d-flex justify-content-between fw-bold fs-6 text-white opacity-75 w-100 mt-auto mb-2">
-                                        <span>{{ $nfc_pending }} Pending NFC</span>
+                                        <span>{{ $nfc_pending }} Pending Virtual Card</span>
                                         <span>{{ $nfc_completion_percentage }}%</span>
                                     </div>
                                     <div class="h-8px mx-3 w-100 bg-white bg-opacity-50 rounded">
@@ -36,39 +37,8 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- External Links Card -->
-                        <div class="card card-flush">
-                            <div class="card-header pt-5">
-                                <h3 class="card-title text-gray-800 fw-bold">External Links</h3>
-                            </div>
-                            <div class="card-body pt-0">
-                                @php
-                                    $links = [
-                                        ['route' => 'user.qr-code.create', 'label' => 'Create QR'],
-                                        ['route' => 'user.nfc-card.create', 'label' => 'Create NFC'],
-                                        // ['route' => '#', 'label' => 'Current Status'],
-                                        ['route' => 'user.plan', 'label' => 'Upgrade Plan'],
-                                        // ['route' => '#', 'label' => 'My Profile'],
-                                        ['route' => 'user.plan', 'label' => 'See All Plans'],
-                                    ];
-                                @endphp
-                                @foreach ($links as $link)
-                                    <div class="d-flex flex-stack">
-                                        <a href="{{ route($link['route']) }}"
-                                            class="text-primary fw-semibold fs-6 me-2">{{ $link['label'] }}</a>
-                                        <button type="button"
-                                            class="btn btn-icon btn-sm h-auto btn-color-gray-500 btn-active-color-primary justify-content-end">
-                                            <i class="fa-solid fa-exit-right-corner fs-2"></i>
-                                        </button>
-                                    </div>
-                                    <div class="separator separator-dashed my-3"></div>
-                                @endforeach
-                            </div>
-                        </div>
                     </div>
-                    <!-- Right Column -->
                     <div class="col-lg-6">
-                        <!-- QR Stats Card -->
                         <div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-end h-md-60 mb-5 mb-xl-10"
                             style="background-color: #15a5aa; background-image: url('https://preview.keenthemes.com/metronic8/demo1/assets/media/patterns/vector-1.png')">
                             <div class="card-header pt-5">
@@ -93,7 +63,8 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- QR Viewers Card -->
+                    </div>
+                    <div class="col-lg-6">
                         <div class="card card-flush h-md-30 mb-2 mb-xl-10">
                             <div class="card-header pt-5">
                                 <div class="card-title d-flex flex-column">
@@ -105,12 +76,13 @@
                             <div class="card-body pe-0">
                                 <span class="fs-6 fw-bolder text-gray-800 d-block mb-2">QR Code Viewers</span>
                                 <div class="symbol-group symbol-hover flex-nowrap">
-                                    @foreach (array_slice($qr_users, 0, 5) as $qr_user)
+                                    @foreach (array_slice($qr_users->toArray(), 0, 5) as $qr_user)
                                         @if ($qr_user !== false)
                                             <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip"
-                                                data-bs-original-title="{{ $qr_user->countryName }}">
-                                                <span
-                                                    class="symbol-label bg-warning text-inverse-warning fw-bold">{{ $qr_user->countryCode }}</span>
+                                                data-bs-original-title="{{ optional($qr_user)->countryName }}">
+                                                {{-- <span class="symbol-label bg-warning text-inverse-warning fw-bold">{{ optional($qr_user)->countryCode }}</span> --}}
+                                                <span class="symbol-label bg-warning text-inverse-warning fw-bold"><i
+                                                        class="fas fa-user"></i></span>
                                             </div>
                                         @endif
                                     @endforeach
@@ -123,7 +95,8 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- NFC Viewers Card -->
+                    </div>
+                    <div class="col-lg-6">
                         <div class="card card-flush h-md-30 mb-5 mb-xl-10">
                             <div class="card-header pt-5">
                                 <div class="card-title d-flex flex-column">
@@ -135,12 +108,13 @@
                             <div class="card-body pe-0">
                                 <span class="fs-6 fw-bolder text-gray-800 d-block mb-2">NFC Viewer</span>
                                 <div class="symbol-group symbol-hover flex-nowrap">
-                                    @foreach (array_slice($nfc_users, 0, 5) as $nfc_user)
+                                    @foreach (array_slice($nfc_users->toArray(), 0, 5) as $nfc_user)
                                         @if ($nfc_user !== false)
                                             <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip"
-                                                data-bs-original-title="{{ $nfc_user->countryName }}">
-                                                <span
-                                                    class="symbol-label bg-warning text-inverse-warning fw-bold">{{ $nfc_user->countryCode }}</span>
+                                                data-bs-original-title="{{ optional($nfc_user)->countryName }}">
+                                                {{-- <span class="symbol-label bg-warning text-inverse-warning fw-bold">{{ optional($nfc_user)->countryCode }}</span> --}}
+                                                <span class="symbol-label bg-warning text-inverse-warning fw-bold"><i
+                                                        class="fas fa-user"></i></span>
                                             </div>
                                         @endif
                                     @endforeach
@@ -154,30 +128,37 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
                     <div class="col-lg-12">
-                        <div class="overflow-auto pb-5">
-                            <div class="notice d-flex bg-light-primary rounded border-primary border border-dashed p-6">
-                                <i class="fa-solid fa-devices-2 fs-2tx text-primary me-4"></i>
-                                <div class="d-flex flex-stack flex-grow-1 flex-wrap flex-md-nowrap">
-                                    <div class="fw-semibold">
-                                        <h4 class="text-gray-900 fw-bold">
-                                            Your Current Plan
-                                            <span style="color: orangered">
-                                                @if (!empty($subscription))
-                                                    {{ $subscription->plan->title }}
-                                                @else
-                                                    Trial Period
-                                                @endif
-                                            </span>
-                                        </h4>
-                                        <div class="fs-6 text-gray-700">You Can Check Your Plan Or Status By Clicking
-                                            Here!</div>
-                                    </div>
-                                    <a href="{{ route('user.plan') }}" class="btn btn-primary px-6 text-nowrap">
-                                        Check Current Status
-                                    </a>
+                        <!-- External Links Card -->
+                        <div class="card card-flush">
+                            <div class="card-header pt-5">
+                                <h3 class="card-title text-gray-800 fw-bold">External Links</h3>
+                            </div>
+                            <div class="card-body pt-0">
+                                @php
+                                    $links = [
+                                        ['route' => 'user.qr-code.create', 'label' => 'Create QR'],
+                                        ['route' => 'user.nfc-card.create', 'label' => 'Create Virtual Card'],
+                                        // ['route' => '#', 'label' => 'Current Status'],
+                                        ['route' => 'user.upgrade.plan', 'label' => 'Upgrade Plan'],
+                                        // ['route' => '#', 'label' => 'My Profile'],
+                                        ['route' => 'user.plan', 'label' => 'See My Plans'],
+                                    ];
+                                @endphp
+                                <div class="row">
+                                    @foreach ($links as $link)
+                                        <div class="col-6">
+                                            <div class="d-flex flex-stack">
+                                                <a href="{{ route($link['route']) }}"
+                                                    class="text-primary fw-semibold fs-6 me-2">{{ $link['label'] }}</a>
+                                                <button type="button"
+                                                    class="btn btn-icon btn-sm h-auto btn-color-gray-500 btn-active-color-primary justify-content-end">
+                                                    <i class="fa-solid fa-exit-right-corner fs-2"></i>
+                                                </button>
+                                            </div>
+                                            <div class="separator separator-dashed my-3"></div>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -186,7 +167,7 @@
 
             </div>
             <div class="col-xxl-6">
-                <div class="card card-flush h-md-60">
+                <div class="card card-flush h-md-60 mb-5 mb-xl-10">
                     <div class="card-body d-flex flex-column justify-content-between mt-9 bgi-no-repeat bgi-size-cover pb-0"
                         style="background-position: 100% 50%; background-image:url('https://preview.keenthemes.com/metronic8/demo1/assets/media/stock/900x600/42.png')">
                         <div class="mb-10">
@@ -204,7 +185,7 @@
                                 For Subscription!
                             </div>
                             <div class="text-center d-flex justify-content-center">
-                                <a href="{{ route('user.plan') }}" class="btn btn-sm btn-dark fw-bold me-3">
+                                <a href="{{ route('user.upgrade.plan') }}" class="btn btn-sm btn-dark fw-bold me-3">
                                     Upgrade Now
                                 </a>
                                 <a href="{{ route('user.plan') }}" class="btn btn-sm btn-dark fw-bold">
@@ -212,12 +193,39 @@
                                 </a>
                             </div>
                         </div>
-                        <img class="mx-auto h-150px h-lg-200px theme-light-show"
-                            src="https://preview.keenthemes.com/metronic8/demo1/assets/media/illustrations/misc/upgrade.svg"
-                            alt="">
-                        <img class="mx-auto h-150px h-lg-200px theme-dark-show"
-                            src="https://preview.keenthemes.com/metronic8/demo1/assets/media/illustrations/misc/upgrade-dark.svg"
-                            alt="">
+                    </div>
+                </div>
+                <div class="card card-flush h-md-60 mb-5 mb-xl-10">
+                    <div class="card-body d-flex flex-column justify-content-between mt-9 bgi-no-repeat bgi-size-cover pb-0"
+                        style="background-position: 100% 50%; background-image:url('https://preview.keenthemes.com/metronic8/demo1/assets/media/stock/900x600/42.png')">
+                        <div class="mb-10">
+                            <div class="overflow-auto pb-5">
+                                <div
+                                    class="notice d-flex bg-light-primary rounded border-primary border border-dashed p-6">
+                                    <i class="fa-solid fa-devices-2 fs-2tx text-primary me-4"></i>
+                                    <div class="d-flex flex-stack flex-grow-1 flex-wrap flex-md-nowrap">
+                                        <div class="fw-semibold">
+                                            <h4 class="text-gray-900 fw-bold">
+                                                Your Current Plan
+                                                <span style="color: orangered">
+                                                    @if (!empty($subscription))
+                                                        {{ $subscription->plan->title }}
+                                                    @else
+                                                        Trial Period
+                                                    @endif
+                                                </span>
+                                            </h4>
+                                            <div class="fs-6 text-gray-700">You Can Check Your Plan Or Status By
+                                                Clicking
+                                                Here!</div>
+                                        </div>
+                                        <a href="{{ route('user.plan') }}" class="btn btn-primary px-6 text-nowrap">
+                                            Check Current Status
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -346,19 +354,24 @@
             });
 
             document.addEventListener("DOMContentLoaded", function() {
+                var countdown = document.getElementById("tiles");
+
+                if (!countdown) {
+                    console.error('Countdown element not found');
+                    return;
+                }
+
                 var userCreated = new Date("{{ Auth::user()->created_at }}").getTime();
-                var trialPeriod = 14 * 24 * 60 * 60 * 1000;
+                var trialPeriod = 14 * 24 * 60 * 60 * 1000; // 14 days in milliseconds
                 var targetDate = userCreated + trialPeriod;
                 var currentDate = new Date().getTime();
                 var timeLeft = targetDate - currentDate;
 
                 if (timeLeft <= 0) {
                     $('.trial_end').html(
-                        '<h1 class="text-center text-danger pt-4 fw-bold">Your 14 day Free trial has ended. Your NFC and QRs will be deleted.</h1>'
+                        '<h1 class="text-center text-danger pt-4 fw-bold">Your 14-day Free trial has ended. Your NFC and QRs will be deleted.</h1>'
                     );
                 }
-
-                var countdown = document.getElementById("tiles");
 
                 function getCountdown() {
                     var currentDate = new Date().getTime();

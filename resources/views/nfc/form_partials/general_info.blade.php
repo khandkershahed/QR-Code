@@ -129,7 +129,7 @@
         </div>
         <div class="fv-row col-lg-12 col-12 mb-4">
             <x-metronic.label for="location" class="fw-semibold fs-6 mb-2">{{ __('Location') }}</x-metronic.label>
-            <textarea name="location" class="form-control form-control-solid form-control-sm" rows="6">{{ optional($nfc_card)->location }}</textarea>
+            <textarea name="location" class="form-control form-control-solid form-control-sm" rows="6">{{ optional($nfc_card->nfcData)->location }}</textarea>
         </div>
     </div>
 

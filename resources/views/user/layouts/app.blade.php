@@ -13,32 +13,24 @@
     <meta property="og:site_name" content="" />
     <link rel="shortcut icon" href="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
     <link href="{{ asset('admin/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet"
         type="text/css" />
     <link href="{{ asset('admin/assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"
         type="text/css" />
-    <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    {{-- <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet"> --}}
     <link href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('admin/css/custom.css') }}" rel="stylesheet" type="text/css" />
-
-    <link href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
-
-
+    <link href="{{ asset('admin/assets/css/slick.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('admin/assets/css/slick-theme.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/css/custom.css') }}" rel="stylesheet" type="text/css" />
 
 
-    <link rel="stylesheet" href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}">
-
-
-    <link href="{{ asset('admin/assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"
-        type="text/css" />
-
-    <link rel="stylesheet" type="text/css"
+    {{-- <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
     <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" /> --}}
 
 
     @props(['title'])
@@ -81,13 +73,14 @@
     @php
         $hostUrl = 'admin/assets/';
     @endphp
-    <script src="{{ asset($hostUrl . 'plugins/global/plugins.bundle.js') }}"></script>
-    <script src="{{ asset($hostUrl . 'js/scripts.bundle.js') }}"></script>
+    <script defer src="{{ asset($hostUrl . 'plugins/global/plugins.bundle.js') }}"></script>
+
+    <script defer src="{{ asset($hostUrl . 'js/scripts.bundle.js') }}"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ asset($hostUrl . 'plugins/custom/datatables/datatables.bundle.js') }}"></script>
     <script src="{{ asset($hostUrl . 'plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
-    <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
+    {{-- <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script> --}}
     <script src="{{ asset($hostUrl . 'plugins/custom/formrepeater/formrepeater.bundle.js') }}"></script>
 
 
@@ -99,19 +92,23 @@
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/create-account.js') }}"></script>
 
 
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    {{-- <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
+    <script src="{{ asset('frontend/assets/js/alpine.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/fontawesome.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbfUj9Hr1sqI5sb_nc2XSWFrRun3l_Vto&callback=initMap"></script>
-    <!--end::Vendors Javascript-->
+    <script src="{{ asset('frontend/assets/js/slick.min.js') }}"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script> --}}
     <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbfUj9Hr1sqI5sb_nc2XSWFrRun3l_Vto&loading=async&callback=initMap"></script>
+    <!--end::Vendors Javascript-->
+    {{-- <script
         src="https://preview.keenthemes.com/html/metronic/docs/assets/js/custom/documentation/general/draggable/cards.js">
     </script>
     <script src="https://preview.keenthemes.com/html/metronic/docs/assets/plugins/custom/draggable/draggable.bundle.js">
-    </script>
-    <script src="https://preview.keenthemes.com/html/metronic/docs/assets/plugins/custom/prismjs/prismjs.bundle.js">
-    </script>
+    </script> --}}
+    {{-- <script src="https://preview.keenthemes.com/html/metronic/docs/assets/plugins/custom/prismjs/prismjs.bundle.js">
+    </script> --}}
+    <script src="{{ asset('frontend/assets/js/prismjs.bundle.js') }}"></script>
+
     <!--begin::Custom Javascript(used for this page only)-->
     <script src="{{ asset('admin/js/custom.js') }}"></script>
 
@@ -135,23 +132,7 @@
     </script>
     @stack('scripts')
 
-    <script>
-        // var containers = document.querySelectorAll(".draggable-zone");
 
-        // if (containers.length === 0) {
-        //     return false;
-        // }
-
-        // var swappable = new Sortable.default(containers, {
-        //     draggable: ".draggable",
-        //     handle: ".draggable .draggable-handle",
-        //     mirror: {
-        //         //appendTo: selector,
-        //         appendTo: "body",
-        //         constrainDimensions: true
-        //     }
-        // });
-    </script>
     <script>
         $(document).ready(function() {
             $(".slick-slider").slick({
