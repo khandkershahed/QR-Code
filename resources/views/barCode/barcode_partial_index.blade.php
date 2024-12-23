@@ -1,5 +1,5 @@
 <div class="col-lg-12">
-    <div class="card rounded-0">
+    <div class="card rounded-0 mt-4">
         <div class="card-header p-5 align-items-center rounded-0 bg-info m-0">
             <div>
                 <h1 class="mb-0 mt-0 card-title fs-2 text-white">All Bar Code!</h1>
@@ -11,7 +11,7 @@
                 </a>
             </div>
         </div>
-        <div class="card-body p-0 rounded-0 px-3">
+        <div class="card-body p-0 rounded-0">
             <table class="table my-datatable table-striped table-row-bordered mt-0">
                 <thead>
                     <tr class="text-start bg-info text-white fw-bolder fs-7 text-uppercase gs-0">

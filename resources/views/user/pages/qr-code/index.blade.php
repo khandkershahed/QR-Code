@@ -40,17 +40,16 @@
                     </div>
                 </div>
                 <div class="card-body p-0 rounded-0 px-3">
-                    <table class="table my-datatable table-striped table-row-bordered mt-0">
+                    <table class="table my-datatable table-striped table-row-bordered my-0">
                         <thead>
-                            <tr class="text-start bg-info text-white fw-bolder fs-7 text-uppercase gs-0"
-                                id="qr_code_admin">
+                            <tr class="text-start bg-info text-white fw-bolder fs-7 text-uppercase gs-0">
                                 <th width="5%" class="text-center">SL</th>
                                 <th width="10%">Image</th>
-                                <th width="35%">Content</th>
+                                <th width="40%">Content</th>
                                 <th width="15%">Type</th>
                                 <th width="10%">Scaned</th>
                                 <th width="10%">Status</th>
-                                <th width="15%">Action</th>
+                                <th width="10%" class="text-end pe-15">Action</th>
                             </tr>
                         </thead>
                         <tbody class="fw-semibold text-gray-600" style="vertical-align: middle">
@@ -114,74 +113,75 @@
                                     <td>
                                         <div class="badge badge-light-success">Active</div>
                                     </td>
-                                    <td class="pe-0 text-end">
-                                        <a href="{{ route('user.qr-code.edit', $qr->code) }}"
-                                            class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                            <i class="fas fa-pen"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-light btn-active-light-primary btn-sm"
-                                            data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end"
-                                            data-kt-menu-flip="top-end">
-                                            Download
-                                            <span class="svg-icon fs-5 m-0">
-                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
-                                                    height="24px" viewBox="0 0 24 24" version="1.1">
-                                                    <g stroke="none" stroke-width="1" fill="none"
-                                                        fill-rule="evenodd">
-                                                        <polygon points="0 0 24 0 24 24 0 24"></polygon>
-                                                        <path
-                                                            d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z"
-                                                            fill="currentColor" fill-rule="nonzero"
-                                                            transform="translate(12.000003, 11.999999) rotate(-180.000000) translate(-12.000003, -11.999999)">
-                                                        </path>
-                                                    </g>
-                                                </svg>
-                                            </span>
-                                        </a>
-                                        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
-                                            data-kt-menu="true ">
-                                            @if (!empty($qr->qr_png))
-                                                <div class="menu-item px-3">
-                                                    <a href="{{ $qr->qr_png_url }}" class="menu-link px-3" download
-                                                        data-kt-docs-table-filter="edit_row">
-                                                        PNG
+                                    <td class="text-end ">
+                                        <div class="dropdown">
+                                            <button class="btn btn-light-danger dropdown-toggle" type="button"
+                                                id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                                                aria-expanded="false">
+                                                Actions
+                                            </button>
+                                            <ul class="dropdown-menu mt-0 pt-0 rounded-0"
+                                                aria-labelledby="dropdownMenuButton1">
+                                                <li class="text-muted">
+                                                    <a href="{{ route('user.qr-code.edit', $qr->code) }}"
+                                                        class="menu-link px-3 dropdown-item">
+                                                        <i class="fa-solid fa-pen pe-2"></i> Edit
                                                     </a>
-                                                </div>
-                                            @endif
-
-                                            @if (!empty($qr->qr_svg))
-                                                <div class="menu-item px-3">
-                                                    <a href="{{ $qr->qr_svg_url }}" class="menu-link px-3" download
-                                                        data-kt-docs-table-filter="edit_row">
-                                                        SVG
+                                                </li>
+                                                <li class="text-muted">
+                                                    <a href="{{ route('user.qr-code.edit', $qr->code) }}"
+                                                        data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end"
+                                                        data-kt-menu-flip="top-end"
+                                                        class="menu-link px-3 dropdown-item">
+                                                        <i class="fa-solid fa-cloud-arrow-down pe-2"></i> Download
                                                     </a>
-                                                </div>
-                                            @endif
-                                            @if (!empty($qr->qr_eps))
-                                                <div class="menu-item px-3">
-                                                    <a href="{{ $qr->qr_eps_url }}" class="menu-link px-3" download
-                                                        data-kt-docs-table-filter="edit_row">
-                                                        EPS
-                                                    </a>
-                                                </div>
-                                            @endif
-                                            @if (!empty($qr->qr_jpg))
-                                                <div class="menu-item px-3">
-                                                    <a href="{{ $qr->qr_jpg_url }}" class="menu-link px-3" download
-                                                        data-kt-docs-table-filter="edit_row">
-                                                        JPG
-                                                    </a>
-                                                </div>
-                                            @endif
-                                            @if (!empty($qr->qr_pdf))
-                                                <div class="menu-item px-3">
-                                                    <a href="{{ $qr->qr_pdf_url }}" class="menu-link px-3" download
-                                                        data-kt-docs-table-filter="edit_row">
-                                                        PDF
-                                                    </a>
-                                                </div>
-                                            @endif
+                                                </li>
+                                                @if (!empty($qr->qr_png))
+                                                    <li class="text-muted">
+                                                        <a href="{{ $qr->qr_png_url }}"
+                                                            class="menu-link px-3 dropdown-item" download
+                                                            data-kt-docs-table-filter="edit_row">
+                                                            <i class="fa-solid fa-cloud-arrow-down pe-2"></i> PNG
+                                                        </a>
+                                                    </li>
+                                                @endif
+                                                @if (!empty($qr->qr_svg))
+                                                    <li class="text-muted">
+                                                        <a href="{{ $qr->qr_svg_url }}"
+                                                            class="menu-link px-3 dropdown-item" download
+                                                            data-kt-docs-table-filter="edit_row">
+                                                            <i class="fa-solid fa-cloud-arrow-down pe-2"></i> SVG
+                                                        </a>
+                                                    </li>
+                                                @endif
+                                                @if (!empty($qr->qr_eps))
+                                                    <li class="text-muted">
+                                                        <a href="{{ $qr->qr_eps_url }}"
+                                                            class="menu-link px-3 dropdown-item" download
+                                                            data-kt-docs-table-filter="edit_row">
+                                                            <i class="fa-solid fa-cloud-arrow-down pe-2"></i> EPS
+                                                        </a>
+                                                    </li>
+                                                @endif
+                                                @if (!empty($qr->qr_jpg))
+                                                    <li class="text-muted">
+                                                        <a href="{{ $qr->qr_jpg_url }}"
+                                                            class="menu-link px-3 dropdown-item" download
+                                                            data-kt-docs-table-filter="edit_row">
+                                                            <i class="fa-solid fa-cloud-arrow-down pe-2"></i> JPG
+                                                        </a>
+                                                    </li>
+                                                @endif
+                                                @if (!empty($qr->qr_pdf))
+                                                    <li class="text-muted">
+                                                        <a href="{{ $qr->qr_pdf_url }}"
+                                                            class="menu-link px-3 dropdown-item" download
+                                                            data-kt-docs-table-filter="edit_row">
+                                                            <i class="fa-solid fa-cloud-arrow-down pe-2"></i> PDF
+                                                        </a>
+                                                    </li>
+                                                @endif
+                                            </ul>
                                         </div>
                                     </td>
                                 </tr>
@@ -192,4 +192,36 @@
             </div>
         </div>
     </div>
+    @push('scripts')
+        <script>
+            class DataTableInitializer {
+                constructor(selector) {
+                    this.selector = selector;
+                    this.init();
+                }
+
+                init() {
+                    $(this.selector).DataTable({
+                        "language": {
+                            "lengthMenu": "Show _MENU_",
+                        },
+                        "dom": "<'row mb-2'" +
+                            "<'col-sm-6 d-flex align-items-center justify-content-start dt-toolbar'l>" +
+                            "<'col-sm-6 d-flex align-items-center justify-content-end dt-toolbar'f>" +
+                            ">" +
+                            "<'table-responsive'tr>" +
+                            "<'row'" +
+                            "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
+                            "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
+                            ">"
+                    });
+                }
+            }
+
+            // Initialize DataTables for elements with class 'my-datatable'
+            $(document).ready(function() {
+                new DataTableInitializer('.my-datatable');
+            });
+        </script>
+    @endpush
 </x-app-layout>

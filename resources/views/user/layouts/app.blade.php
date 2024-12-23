@@ -80,6 +80,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ asset($hostUrl . 'plugins/custom/datatables/datatables.bundle.js') }}"></script>
+    <script src="{{ asset($hostUrl . 'js/custom/documentation/general/datatables/buttons.js') }}"></script>
     <script src="{{ asset($hostUrl . 'plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
     {{-- <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script> --}}
     <script src="{{ asset($hostUrl . 'plugins/custom/formrepeater/formrepeater.bundle.js') }}"></script>
@@ -93,24 +94,23 @@
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/create-account.js') }}"></script>
 
 
-    {{-- <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="{{ asset('frontend/assets/js/alpine.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/fontawesome.js') }}"></script>
-    <script src="{{ asset('frontend/assets/js/slick.min.js') }}"></script>
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbfUj9Hr1sqI5sb_nc2XSWFrRun3l_Vto&callback=initMap"></script>
     <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbfUj9Hr1sqI5sb_nc2XSWFrRun3l_Vto&loading=async&callback=initMap"></script>
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbfUj9Hr1sqI5sb_nc2XSWFrRun3l_Vto&loading=async&callback=initMap">
+    </script>
     <!--end::Vendors Javascript-->
-    {{-- <script
+    <script
         src="https://preview.keenthemes.com/html/metronic/docs/assets/js/custom/documentation/general/draggable/cards.js">
     </script>
     <script src="https://preview.keenthemes.com/html/metronic/docs/assets/plugins/custom/draggable/draggable.bundle.js">
-    </script> --}}
-    {{-- <script src="https://preview.keenthemes.com/html/metronic/docs/assets/plugins/custom/prismjs/prismjs.bundle.js">
-    </script> --}}
-    <script src="{{ asset('frontend/assets/js/prismjs.bundle.js') }}"></script>
-
-    <!--begin::Custom Javascript(used for this page only)-->
+    </script>
+    <script src="https://preview.keenthemes.com/html/metronic/docs/assets/plugins/custom/prismjs/prismjs.bundle.js">
+    </script>
     <script src="{{ asset('admin/js/custom.js') }}"></script>
 
     <script>
@@ -132,8 +132,135 @@
         });
     </script>
     @stack('scripts')
+    <script>
+        class DataTableInitializer {
+            constructor(selector) {
+                this.selector = selector;
+                this.init();
+            }
 
+            init() {
+                $(this.selector).DataTable({
+                    "language": {
+                        "lengthMenu": "Show _MENU_",
+                    },
+                    "dom": "<'row mb-2'" +
+                        "<'col-sm-6 d-flex align-items-center justify-content-start dt-toolbar'l>" +
+                        "<'col-sm-6 d-flex align-items-center justify-content-end dt-toolbar'f>" +
+                        ">" +
+                        "<'table-responsive'tr>" +
+                        "<'row'" +
+                        "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
+                        "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
+                        ">"
+                });
+            }
+        }
 
+        // Initialize DataTables for elements with class 'my-datatable'
+        $(document).ready(function() {
+            new DataTableInitializer('.my-datatable');
+        });
+    </script>
+    <script>
+        "use strict";
+
+        // Class definition
+        var KTDatatablesExample = function() {
+            // Shared variables
+            var table;
+            var datatable;
+
+            // Private functions
+            var initDatatable = function() {
+                // Set date data order
+                const tableRows = table.querySelectorAll('tbody tr');
+
+                tableRows.forEach(row => {
+                    const dateRow = row.querySelectorAll('td');
+                    const realDate = moment(dateRow[3].innerHTML, "DD MMM YYYY, LT")
+                        .format(); // select date from 4th column in table
+                    dateRow[3].setAttribute('data-order', realDate);
+                });
+
+                // Init datatable --- more info on datatables: https://datatables.net/manual/
+                datatable = $(table).DataTable({
+                    "info": false,
+                    'order': [],
+                    'pageLength': 10,
+                });
+            }
+
+            // Hook export buttons
+            var exportButtons = () => {
+                const documentTitle = $('.document_title').html();
+                var buttons = new $.fn.dataTable.Buttons(table, {
+                    buttons: [{
+                            extend: 'copyHtml5',
+                            title: documentTitle
+                        },
+                        {
+                            extend: 'excelHtml5',
+                            title: documentTitle
+                        },
+                        {
+                            extend: 'csvHtml5',
+                            title: documentTitle
+                        },
+                        {
+                            extend: 'pdfHtml5',
+                            title: documentTitle
+                        }
+                    ]
+                }).container().appendTo($('#kt_datatable_example_buttons'));
+
+                // Hook dropdown menu click event to datatable export buttons
+                const exportButtons = document.querySelectorAll(
+                    '#kt_datatable_example_export_menu [data-kt-export]');
+                exportButtons.forEach(exportButton => {
+                    exportButton.addEventListener('click', e => {
+                        e.preventDefault();
+
+                        // Get clicked export value
+                        const exportValue = e.target.getAttribute('data-kt-export');
+                        const target = document.querySelector('.dt-buttons .buttons-' +
+                            exportValue);
+
+                        // Trigger click event on hidden datatable export buttons
+                        target.click();
+                    });
+                });
+            }
+
+            // Search Datatable --- official docs reference: https://datatables.net/reference/api/search()
+            var handleSearchDatatable = () => {
+                const filterSearch = document.querySelector('[data-kt-filter="search"]');
+                filterSearch.addEventListener('keyup', function(e) {
+                    datatable.search(e.target.value).draw();
+                });
+            }
+
+            // Public methods
+            return {
+                init: function() {
+                    table = document.querySelector('.datatable');
+                    if (!table) {
+                        return;
+                    }
+
+                    initDatatable();
+                    exportButtons();
+                    handleSearchDatatable();
+                }
+            };
+        }();
+
+        // On document ready
+        KTUtil.onDOMContentLoaded(function() {
+            KTDatatablesExample.init();
+        });
+        // Datatable End
+    </script>
     <script>
         $(document).ready(function() {
             $(".slick-slider").slick({

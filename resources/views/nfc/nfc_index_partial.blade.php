@@ -108,14 +108,18 @@
                 <div class="d-flex justify-content-between align-items-center w-100">
                     <div class="text-white fw-bold d-flex ">
                         @if (!empty($subscription->plan))
-                            <strong class=""> Total Created V-Card : {{ $nfc_cards->count() }}<span class="text-warning"> / </span> V-Card Limitation :
+                            <strong class=""> Total Created V-Card : {{ $nfc_cards->count() }}<span
+                                    class="text-warning"> / </span> V-Card Limitation :
                                 {{ $subscription->plan->nfc }} <span class="text-warning"> / </span> V-Card Remaining :
-                                {{ $subscription->plan->nfc - $nfc_cards->count() }}<span class="text-warning"> / </span>Total Created V-Card :
+                                {{ $subscription->plan->nfc - $nfc_cards->count() }}<span class="text-warning"> /
+                                </span>Total Created V-Card :
                                 {{ $nfc_cards->count() }}
                             </strong>
                         @else
-                            <strong class="">Total Created V-Card : {{ $nfc_cards->count() }}<span class="text-warning"> / </span>
-                                QR Limitation : 10 (Trial Period)<span class="text-warning"> / </span> V-Card Remaining :
+                            <strong class="">Total Created V-Card : {{ $nfc_cards->count() }}<span
+                                    class="text-warning"> / </span>
+                                QR Limitation : 10 (Trial Period)<span class="text-warning"> / </span> V-Card Remaining
+                                :
                                 {{ 10 - $nfc_cards->count() }}</strong>
                         @endif
                     </div>
@@ -142,7 +146,7 @@
             </div>
         </div>
         <div class="card-body p-0 px-2 rounded-0">
-            <table class="table my-datatable table-striped table-row-bordered mt-0">
+            <table class="table my-datatable table-striped table-row-bordered my-0">
                 <thead>
                     <tr class="text-start bg-info text-white fw-bolder fs-7 text-uppercase gs-0">
                         <th width="5%">SL</th>
