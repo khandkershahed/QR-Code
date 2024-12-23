@@ -49,7 +49,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div>
+                    <div class="table-responsive">
                         <table
                             class="table my-datatable align-middle border rounded table-row-dashed table-striped table-hover fs-6 g-5"
                             id="qr_code_admin">

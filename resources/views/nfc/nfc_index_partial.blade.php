@@ -145,189 +145,194 @@
                 </div>
             </div>
         </div>
-        <div class="card-body p-0 px-2 rounded-0">
-            <table class="table my-datatable table-striped table-row-bordered my-0">
-                <thead>
-                    <tr class="text-start bg-info text-white fw-bolder fs-7 text-uppercase gs-0">
-                        <th width="5%">SL</th>
-                        <th width="25%">VCard Name</th>
-                        <th width="20%">Author</th>
-                        <th width="13%" class="text-center">Preview Card</th>
-                        <th width="10%" class="text-center">QR Code</th>
-                        <th width="12%">Viewer</th>
-                        <th width="10%">Performance</th>
-                        <th width="10%" class="text-center">Setting</th>
-                    </tr>
-                </thead>
-                <tbody class="fw-semibold text-gray-600">
-                    @foreach ($nfc_cards as $nfc_card)
-                        <tr>
-                            <td class="text-center">
-                                {{ $loop->iteration }}
-                            </td>
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    <div class="image image-circle image-mini me-3">
-                                        @if ($nfc_card->nfc_template == 'template-one')
-                                            <img class="img-fluid nfc-ev-templates" style="object-fit: cover;"
-                                                src="{{ asset('frontend/assets/images/nfc-templates/template_one.png') }}"
-                                                alt="">
-                                        @elseif ($nfc_card->nfc_template == 'template-two')
-                                            <img class="img-fluid nfc-ev-templates" style="object-fit: cover;"
-                                                src="{{ asset('frontend/assets/images/nfc-templates/template_two.png') }}"
-                                                alt="">
-                                        @elseif ($nfc_card->nfc_template == 'template-three')
-                                            <img class="img-fluid nfc-ev-templates" style="object-fit: cover;"
-                                                src="{{ asset('frontend/assets/images/nfc-templates/template_three.png') }}"
-                                                alt="">
-                                        @elseif ($nfc_card->nfc_template == 'template-four')
-                                            <img class="img-fluid nfc-ev-templates" style="object-fit: cover;"
-                                                src="{{ asset('frontend/assets/images/nfc-templates/template_four.jpg') }}"
-                                                alt="">
-                                        @elseif ($nfc_card->nfc_template == 'template-five')
-                                            <img class="img-fluid nfc-ev-templates" style="object-fit: cover;"
-                                                src="{{ asset('frontend/assets/images/nfc-templates/template_five.jpg') }}"
-                                                alt="">
-                                        @elseif ($nfc_card->nfc_template == 'template-six')
-                                            <img class="img-fluid nfc-ev-templates" style="object-fit: cover;"
-                                                src="{{ asset('frontend/assets/images/nfc-templates/template_six.jpg') }}"
-                                                alt="">
-                                        @else
-                                            <img class="img-fluid nfc-ev-templates" style="object-fit: cover;"
-                                                src="{{ asset('frontend/assets/images/nfc-templates/template_one.png') }}"
-                                                alt="">
-                                        @endif
-                                    </div>
-                                    <div class="d-flex flex-column">
-                                        @if (strpos(Route::current()->getName(), 'user.') === 0)
-                                            <a href="{{ route('user.virtual-card.edit', $nfc_card->code) }}"
-                                                class="mb-1 text-decoration-none fs-6">
-                                                {{ $nfc_card->vcard_name }}
-                                            </a>
-                                        @else
-                                            <a href="{{ route('admin.virtual-card.edit', $nfc_card->code) }}"
-                                                class="mb-1 text-decoration-none fs-6">
-                                                {{ $nfc_card->vcard_name }}
-                                            </a>
-                                            <p class="mb-0 fw-bold">{{ $nfc_card->created_at->format('d F Y') }}</p>
-                                        @endif
-
-                                        <span class="fs-6 text-info">{{ $nfc_card->designation }}</span>
-                                    </div>
-                                </div>
-
-                            </td>
-                            <td>
-                                {{ optional($nfc_card->user)->name }}
-                            </td>
-                            <td class="text-white text-center">
-                                <a href="{{ $nfc_card->nfc_url }}" target="_blank" class="text-primary">
-                                    <span class="badge badge-primary text-white p-2 px-3">VCard <i
-                                            class="fas fa-link ps-2 text-white"></i></span>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <a href="javascript:void(0)" data-bs-toggle="modal"
-                                    data-bs-target="#virtual_card_modal_{{ $nfc_card->id }}" class="text-primary">
-                                    <span class="badge badge-light  -info text-info p-2 px-3"><i
-                                            class="fas fa-eye pe-2 text-info"></i>
-                                        QR</span>
-                                </a>
-                            </td>
-                            <td>
-                                @if (strpos(Route::current()->getName(), 'user.') === 0)
-                                    <a href="{{ route('user.virtual-card.show', $nfc_card->code) }}"
-                                        class="btn btn-light-primary border"><i
-                                            class="fa-solid fa-user pe-1"></i>{{ $nfc_card->nfcScan->count() }}</a>
-                                @else
-                                    <a href="{{ route('admin.virtual-card.show', $nfc_card->code) }}"
-                                        class="btn btn-light-primary border"><i
-                                            class="fa-solid fa-user pe-1"></i>{{ $nfc_card->nfcScan->count() }}</a>
-                                @endif
-
-                            </td>
-                            <td>
-                                @if (strpos(Route::current()->getName(), 'user.') === 0)
-                                    <a href="{{ route('user.virtual-card.show', $nfc_card->code) }}" class="">
-                                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30"
-                                            x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512"
-                                            xml:space="preserve" class="">
-                                            <g>
-                                                <linearGradient id="a" x1="540.666" x2="83.165"
-                                                    y1="98.786" y2="556.286" gradientUnits="userSpaceOnUse">
-                                                    <stop offset="0" stop-color="#e93528"></stop>
-                                                    <stop offset="1" stop-color="#f8bc16"></stop>
-                                                </linearGradient>
-                                                <path fill="url(#a)"
-                                                    d="M466.493 143.212h-84.197c-8.837 0-16 7.164-16 16v33.286h-68.197c-8.837 0-16 7.164-16 16v33.287h-68.197c-8.837 0-16 7.164-16 16v45.607h-68.197c-8.837 0-16 7.164-16 16v30.847H45.507c-8.837 0-16 7.164-16 16V496c0 8.836 7.163 16 16 16h420.986c8.837 0 16-7.164 16-16V159.212c0-8.837-7.163-16-16-16zM61.507 382.238h52.197V480H61.507zm84.197-46.847h52.197V480h-52.197zm84.197-61.607h52.197V480h-52.197zm84.198-49.286h52.197V480h-52.197zM450.493 480h-52.197V175.212h52.197zM54.656 251.375c-2.685-8.419 1.965-17.42 10.384-20.104 98.057-31.267 246.258-120.707 331.414-198.465l-32.666.675a18.93 18.93 0 0 1-.337.003c-8.683 0-15.81-6.947-15.99-15.669-.182-8.835 6.832-16.145 15.667-16.327L434.923.005a15.912 15.912 0 0 1 12.003 5.054 16 16 0 0 1 4.269 12.305l-6.115 71.549c-.752 8.804-8.488 15.334-17.304 14.579-8.805-.752-15.332-8.5-14.579-17.304l2.353-27.525c-38.472 34.691-90.204 72.933-146.151 107.807-70.375 43.867-139.498 77.708-194.637 95.289a15.97 15.97 0 0 1-4.864.761c-6.78-.002-13.072-4.343-15.242-11.145z"
-                                                    opacity="1" data-original="url(#a)" class=""></path>
-                                            </g>
-                                        </svg>
-                                    </a>
-                                @else
-                                    <a href="{{ route('admin.virtual-card.show', $nfc_card->code) }}" target="_blank"
-                                        class="text-primary">
-                                        <span class="badge bg-info p-2 px-3">Summary</span>
-                                    </a>
-                                @endif
-                            </td>
-
-                            <td class="pe-5 text-center">
-                                <div class="dropdown">
-                                    <button class="btn btn-light-danger dropdown-toggle" type="button"
-                                        id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Actions
-                                    </button>
-                                    <ul class="dropdown-menu mt-0 pt-0 rounded-0"
-                                        aria-labelledby="dropdownMenuButton1">
-                                        @if (strpos(Route::current()->getName(), 'user.') === 0)
-                                            <li class="text-muted">
-                                                <a href="{{ route('user.virtual-card.show', $nfc_card->code) }}"
-                                                    class="px-3 dropdown-item menu-link">
-                                                    <span title="All Messages">All Messages</span>
-                                                </a>
-                                            </li>
-                                            <li class="text-muted">
-                                                <a href="{{ route('user.virtual-card.edit', $nfc_card->code) }}"
-                                                    class="menu-link px-3 dropdown-item">
-                                                    <span title="Edit">Edit</span>
-                                                </a>
-                                            </li>
-                                            <li class="text-muted">
-                                                <a href="{{ route('user.nfc-card.destroy', $nfc_card->id) }}"
-                                                    class="menu-link px-3 delete dropdown-item">
-                                                    Delete
-                                                </a>
-                                            </li>
-                                        @else
-                                            <li class="text-muted">
-                                                <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                    data-bs-target="#message_modal_{{ $nfc_card->id }}"
-                                                    class="menu-link px-3  dropdown-item">
-                                                    All messages
-                                                </a>
-                                            </li>
-                                            <li class="text-muted">
-                                                <a href="{{ route('admin.virtual-card.edit', $nfc_card->code) }}"
-                                                    class="menu-link px-3  dropdown-item">
-                                                    Edit
-                                                </a>
-                                            </li>
-                                            <li class="text-muted">
-                                                <a href="{{ route('admin.virtual-card.destroy', $nfc_card->id) }}"
-                                                    class="menu-link px-3 delete dropdown-item">
-                                                    Delete
-                                                </a>
-                                            </li>
-                                        @endif
-                                    </ul>
-                                </div>
-                            </td>
+        <div class="card-body p-0 px-3 rounded-0">
+            <div class="table-responsive">
+                <table class="table my-datatable table-striped table-row-bordered my-0" id="nfcCard_table">
+                    <thead>
+                        <tr class="text-start bg-info text-white fw-bolder fs-7 text-uppercase gs-0">
+                            <th width="5%">SL</th>
+                            <th width="25%">VCard Name</th>
+                            <th width="20%">Author</th>
+                            <th width="13%" class="text-center">Preview Card</th>
+                            <th width="10%" class="text-center">QR Code</th>
+                            <th width="12%">Viewer</th>
+                            <th width="10%">Performance</th>
+                            <th width="10%" class="text-center">Setting</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody class="fw-semibold text-gray-600">
+                        @foreach ($nfc_cards as $nfc_card)
+                            <tr>
+                                <td class="text-center">
+                                    {{ $loop->iteration }}
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="image image-circle image-mini me-3">
+                                            @if ($nfc_card->nfc_template == 'template-one')
+                                                <img class="img-fluid nfc-ev-templates" style="object-fit: cover;"
+                                                    src="{{ asset('frontend/assets/images/nfc-templates/template_one.png') }}"
+                                                    alt="">
+                                            @elseif ($nfc_card->nfc_template == 'template-two')
+                                                <img class="img-fluid nfc-ev-templates" style="object-fit: cover;"
+                                                    src="{{ asset('frontend/assets/images/nfc-templates/template_two.png') }}"
+                                                    alt="">
+                                            @elseif ($nfc_card->nfc_template == 'template-three')
+                                                <img class="img-fluid nfc-ev-templates" style="object-fit: cover;"
+                                                    src="{{ asset('frontend/assets/images/nfc-templates/template_three.png') }}"
+                                                    alt="">
+                                            @elseif ($nfc_card->nfc_template == 'template-four')
+                                                <img class="img-fluid nfc-ev-templates" style="object-fit: cover;"
+                                                    src="{{ asset('frontend/assets/images/nfc-templates/template_four.jpg') }}"
+                                                    alt="">
+                                            @elseif ($nfc_card->nfc_template == 'template-five')
+                                                <img class="img-fluid nfc-ev-templates" style="object-fit: cover;"
+                                                    src="{{ asset('frontend/assets/images/nfc-templates/template_five.jpg') }}"
+                                                    alt="">
+                                            @elseif ($nfc_card->nfc_template == 'template-six')
+                                                <img class="img-fluid nfc-ev-templates" style="object-fit: cover;"
+                                                    src="{{ asset('frontend/assets/images/nfc-templates/template_six.jpg') }}"
+                                                    alt="">
+                                            @else
+                                                <img class="img-fluid nfc-ev-templates" style="object-fit: cover;"
+                                                    src="{{ asset('frontend/assets/images/nfc-templates/template_one.png') }}"
+                                                    alt="">
+                                            @endif
+                                        </div>
+                                        <div class="d-flex flex-column">
+                                            @if (strpos(Route::current()->getName(), 'user.') === 0)
+                                                <a href="{{ route('user.virtual-card.edit', $nfc_card->code) }}"
+                                                    class="mb-1 text-decoration-none fs-6">
+                                                    {{ $nfc_card->vcard_name }}
+                                                </a>
+                                            @else
+                                                <a href="{{ route('admin.virtual-card.edit', $nfc_card->code) }}"
+                                                    class="mb-1 text-decoration-none fs-6">
+                                                    {{ $nfc_card->vcard_name }}
+                                                </a>
+                                                <p class="mb-0 fw-bold">{{ $nfc_card->created_at->format('d F Y') }}
+                                                </p>
+                                            @endif
+
+                                            <span class="fs-6 text-info">{{ $nfc_card->designation }}</span>
+                                        </div>
+                                    </div>
+
+                                </td>
+                                <td>
+                                    {{ optional($nfc_card->user)->name }}
+                                </td>
+                                <td class="text-white text-center">
+                                    <a href="{{ $nfc_card->nfc_url }}" target="_blank" class="text-primary">
+                                        <span class="badge badge-primary text-white p-2 px-3">VCard <i
+                                                class="fas fa-link ps-2 text-white"></i></span>
+                                    </a>
+                                </td>
+                                <td class="text-center">
+                                    <a href="javascript:void(0)" data-bs-toggle="modal"
+                                        data-bs-target="#virtual_card_modal_{{ $nfc_card->id }}" class="text-primary">
+                                        <span class="badge badge-light  -info text-info p-2 px-3"><i
+                                                class="fas fa-eye pe-2 text-info"></i>
+                                            QR</span>
+                                    </a>
+                                </td>
+                                <td>
+                                    @if (strpos(Route::current()->getName(), 'user.') === 0)
+                                        <a href="{{ route('user.virtual-card.show', $nfc_card->code) }}"
+                                            class="btn btn-light-primary border"><i
+                                                class="fa-solid fa-user pe-1"></i>{{ $nfc_card->nfcScan->count() }}</a>
+                                    @else
+                                        <a href="{{ route('admin.virtual-card.show', $nfc_card->code) }}"
+                                            class="btn btn-light-primary border"><i
+                                                class="fa-solid fa-user pe-1"></i>{{ $nfc_card->nfcScan->count() }}</a>
+                                    @endif
+
+                                </td>
+                                <td>
+                                    @if (strpos(Route::current()->getName(), 'user.') === 0)
+                                        <a href="{{ route('user.virtual-card.show', $nfc_card->code) }}"
+                                            class="">
+                                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="30"
+                                                height="30" x="0" y="0" viewBox="0 0 512 512"
+                                                style="enable-background:new 0 0 512 512" xml:space="preserve"
+                                                class="">
+                                                <g>
+                                                    <linearGradient id="a" x1="540.666" x2="83.165"
+                                                        y1="98.786" y2="556.286" gradientUnits="userSpaceOnUse">
+                                                        <stop offset="0" stop-color="#e93528"></stop>
+                                                        <stop offset="1" stop-color="#f8bc16"></stop>
+                                                    </linearGradient>
+                                                    <path fill="url(#a)"
+                                                        d="M466.493 143.212h-84.197c-8.837 0-16 7.164-16 16v33.286h-68.197c-8.837 0-16 7.164-16 16v33.287h-68.197c-8.837 0-16 7.164-16 16v45.607h-68.197c-8.837 0-16 7.164-16 16v30.847H45.507c-8.837 0-16 7.164-16 16V496c0 8.836 7.163 16 16 16h420.986c8.837 0 16-7.164 16-16V159.212c0-8.837-7.163-16-16-16zM61.507 382.238h52.197V480H61.507zm84.197-46.847h52.197V480h-52.197zm84.197-61.607h52.197V480h-52.197zm84.198-49.286h52.197V480h-52.197zM450.493 480h-52.197V175.212h52.197zM54.656 251.375c-2.685-8.419 1.965-17.42 10.384-20.104 98.057-31.267 246.258-120.707 331.414-198.465l-32.666.675a18.93 18.93 0 0 1-.337.003c-8.683 0-15.81-6.947-15.99-15.669-.182-8.835 6.832-16.145 15.667-16.327L434.923.005a15.912 15.912 0 0 1 12.003 5.054 16 16 0 0 1 4.269 12.305l-6.115 71.549c-.752 8.804-8.488 15.334-17.304 14.579-8.805-.752-15.332-8.5-14.579-17.304l2.353-27.525c-38.472 34.691-90.204 72.933-146.151 107.807-70.375 43.867-139.498 77.708-194.637 95.289a15.97 15.97 0 0 1-4.864.761c-6.78-.002-13.072-4.343-15.242-11.145z"
+                                                        opacity="1" data-original="url(#a)" class=""></path>
+                                                </g>
+                                            </svg>
+                                        </a>
+                                    @else
+                                        <a href="{{ route('admin.virtual-card.show', $nfc_card->code) }}"
+                                            target="_blank" class="text-primary">
+                                            <span class="badge bg-info p-2 px-3">Summary</span>
+                                        </a>
+                                    @endif
+                                </td>
+
+                                <td class="pe-5 text-center">
+                                    <div class="dropdown">
+                                        <button class="btn btn-light-danger dropdown-toggle" type="button"
+                                            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Actions
+                                        </button>
+                                        <ul class="dropdown-menu mt-0 pt-0 rounded-0"
+                                            aria-labelledby="dropdownMenuButton1">
+                                            @if (strpos(Route::current()->getName(), 'user.') === 0)
+                                                <li class="text-muted">
+                                                    <a href="{{ route('user.virtual-card.show', $nfc_card->code) }}"
+                                                        class="px-3 dropdown-item menu-link">
+                                                        <span title="All Messages">All Messages</span>
+                                                    </a>
+                                                </li>
+                                                <li class="text-muted">
+                                                    <a href="{{ route('user.virtual-card.edit', $nfc_card->code) }}"
+                                                        class="menu-link px-3 dropdown-item">
+                                                        <span title="Edit">Edit</span>
+                                                    </a>
+                                                </li>
+                                                <li class="text-muted">
+                                                    <a href="{{ route('user.nfc-card.destroy', $nfc_card->id) }}"
+                                                        class="menu-link px-3 delete dropdown-item">
+                                                        Delete
+                                                    </a>
+                                                </li>
+                                            @else
+                                                <li class="text-muted">
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                        data-bs-target="#message_modal_{{ $nfc_card->id }}"
+                                                        class="menu-link px-3  dropdown-item">
+                                                        All messages
+                                                    </a>
+                                                </li>
+                                                <li class="text-muted">
+                                                    <a href="{{ route('admin.virtual-card.edit', $nfc_card->code) }}"
+                                                        class="menu-link px-3  dropdown-item">
+                                                        Edit
+                                                    </a>
+                                                </li>
+                                                <li class="text-muted">
+                                                    <a href="{{ route('admin.virtual-card.destroy', $nfc_card->id) }}"
+                                                        class="menu-link px-3 delete dropdown-item">
+                                                        Delete
+                                                    </a>
+                                                </li>
+                                            @endif
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
@@ -547,66 +552,19 @@
 
 @push('scripts')
     <script>
-        "use strict";
-        // Class definition
-        var KTDatatablesExample = function() {
-            // Shared variables
-            var table;
-            var datatable;
-
-            // Private functions
-            var initDatatable = function() {
-                // Check if the DataTable is already initialized
-                if ($.fn.DataTable.isDataTable(table)) {
-                    // Destroy the existing instance
-                    $(table).DataTable().destroy();
-                }
-
-                // Set date data order
-                const tableRows = table.querySelectorAll('tbody tr');
-
-                tableRows.forEach(row => {
-                    const dateRow = row.querySelectorAll('td');
-                    const realDate = moment(dateRow[3].innerHTML, "DD MMM YYYY, LT")
-                        .format(); // select date from 4th column in table
-                    dateRow[3].setAttribute('data-order', realDate);
-                });
-
-                // Init datatable --- more info on datatables: https://datatables.net/manual/
-                datatable = $(table).DataTable({
-                    "info": false,
-                    'order': [],
-                    'pageLength': 10,
-                });
-            }
-
-            // Search Datatable --- official docs reference: https://datatables.net/reference/api/search()
-            var handleSearchDatatable = () => {
-                const filterSearch = document.querySelector('[data-kt-filter="search"]');
-                filterSearch.addEventListener('keyup', function(e) {
-                    datatable.search(e.target.value).draw();
-                });
-            }
-
-            // Public methods
-            return {
-                init: function() {
-                    table = document.querySelector('#nfc_card_admin');
-
-                    if (!table) {
-                        return;
-                    }
-
-                    initDatatable();
-                    exportButtons();
-                    handleSearchDatatable();
-                }
-            };
-        }();
-
-        // On document ready
-        KTUtil.onDOMContentLoaded(function() {
-            KTDatatablesExample.init();
+        $('#nfcCard_table').DataTable({
+            "language": {
+                "lengthMenu": "Show _MENU_",
+            },
+            "dom": "<'row'" +
+                "<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
+                "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
+                ">" +
+                "<'table-responsive'tr>" +
+                "<'row'" +
+                "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
+                "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
+                ">"
         });
     </script>
 @endpush

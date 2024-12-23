@@ -6,13 +6,15 @@
                 <p class="text-white mt-2 mb-0">View and manage all Bar Code information in this page.</p>
             </div>
             <div>
-                <a href="{{ route('user.barcode.create') }}" class="btn btn-white btn-active-light-warning text-hover-inverse-white">
+                <a href="{{ route('user.barcode.create') }}"
+                    class="btn btn-white btn-active-light-warning text-hover-inverse-white">
                     <i class="fa-solid fa-user-plus"></i> Add Bar-Code
                 </a>
             </div>
         </div>
-        <div class="card-body p-0 rounded-0">
-            <table class="table my-datatable table-striped table-row-bordered mt-0">
+        <div class="card-body p-0 px-3 rounded-0">
+            <div class="table-responsive">
+            <table class="table my-datatable table-striped table-row-bordered mt-0" id="barCode_table">
                 <thead>
                     <tr class="text-start bg-info text-white fw-bolder fs-7 text-uppercase gs-0">
                         <th width="5%">SL</th>
@@ -161,6 +163,7 @@
                 </tbody>
             </table>
         </div>
+        </div>
     </div>
 </div>
 
@@ -197,82 +200,19 @@
 
 
     <script>
-        "use strict";
-
-        // Class definition
-        var KTDatatablesExample = (function() {
-            // Shared variables
-            var table;
-            var datatable;
-
-            // Private functions
-            var initDatatable = function() {
-                // Ensure the table exists
-                if (!table) {
-                    console.error("Table not found for initialization.");
-                    return;
-                }
-
-                // Destroy existing DataTable instance if it exists
-                if ($.fn.DataTable.isDataTable(table)) {
-                    $(table).DataTable().destroy();
-                }
-
-                // Format the date for ordering
-                const tableRows = table.querySelectorAll('tbody tr');
-
-                tableRows.forEach(row => {
-                    const dateCell = row.querySelector(
-                        'td:nth-child(4)'); // Select date from the 4th column
-                    if (dateCell) {
-                        const realDate = moment(dateCell.innerHTML, "DD MMM YYYY, LT").format();
-                        dateCell.setAttribute('data-order', realDate);
-                    }
-                });
-
-                // Initialize DataTable
-                datatable = $(table).DataTable({
-                    "info": false,
-                    "order": [], // Customize ordering as needed
-                    "pageLength": 10, // Set the number of entries per page
-                });
-            }
-
-            // Handle search input for the DataTable
-            var handleSearchDatatable = function() {
-                const filterSearch = document.querySelector('[data-kt-filter="search"]');
-                if (filterSearch) {
-                    filterSearch.addEventListener('keyup', function(e) {
-                        datatable.search(e.target.value).draw();
-                    });
-                }
-            }
-
-            // Export buttons functionality (if needed)
-            var exportButtons = function() {
-                // Add export functionality here if required
-            }
-
-            // Public methods
-            return {
-                init: function() {
-                    table = document.querySelector('#bar_code_admin');
-
-                    if (!table) {
-                        console.error("DataTable element not found.");
-                        return;
-                    }
-
-                    initDatatable();
-                    handleSearchDatatable();
-                    exportButtons(); // Initialize export buttons if used
-                }
-            };
-        })();
-
-        // On document ready
-        document.addEventListener('DOMContentLoaded', function() {
-            KTDatatablesExample.init();
+        $('#barCode_table').DataTable({
+            "language": {
+                "lengthMenu": "Show _MENU_",
+            },
+            "dom": "<'row'" +
+                "<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
+                "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
+                ">" +
+                "<'table-responsive'tr>" +
+                "<'row'" +
+                "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
+                "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
+                ">"
         });
     </script>
 @endpush

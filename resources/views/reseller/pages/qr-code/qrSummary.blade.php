@@ -322,7 +322,6 @@
     </div>
 
     @push('scripts')
-        <script async src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
         <script>
             // Initialize and display the map
             function initMap() {
@@ -430,9 +429,6 @@
         //         });
         //     });
         // }
-    </script>
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
     </script>
     @endpush --}}
 
