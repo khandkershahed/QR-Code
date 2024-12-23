@@ -97,6 +97,16 @@
             margin: auto;
         }
     }
+
+    table.dataTable>thead .sorting:after,
+    table.dataTable>thead .sorting_asc:after,
+    table.dataTable>thead .sorting_asc_disabled:after,
+    table.dataTable>thead .sorting_desc:after,
+    table.dataTable>thead .sorting_desc_disabled:after {
+        right: 0px;
+        content: "↑";
+        top: 0px !important;
+    }
 </style>
 <div class="col-lg-12 mt-5">
     <div class="card my-5 rounded-0">
@@ -113,11 +123,11 @@
                         <th width="5%">SL</th>
                         <th width="25%">VCard Name</th>
                         <th width="13%" class="text-center">Preview Card</th>
-                        <th width="10%" class="text-center">QR</th>
+                        <th width="10%" class="text-center">QR Code</th>
                         <th width="20%">Author</th>
                         <th width="12%">Viewer</th>
                         <th width="10%">Performance</th>
-                        <th width="10%" class="text-center">Action</th>
+                        <th width="10%" class="text-center">Setting</th>
                     </tr>
                 </thead>
                 <tbody class="fw-semibold text-gray-600">
@@ -391,14 +401,14 @@
         </div>
     </div>
     <div class="modal fade" tabindex="-1" id="virtual_card_modal_{{ $nfc_card->id }}">
-        <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width: 645px !important;">
-            <div class="modal-content position-absolute">
-                <div class="modal-header">
-                    <h5 class="modal-title">Generated QR</h5>
-                    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
-                        aria-label="Close">
-                        <i class="fa-solid fa-cross fs-2x"></i>
-                    </div>
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content rounded-0">
+                <div class="modal-header py-3 bg-info rounded-0 pe-2">
+                    <h3 class="modal-title text-white">Showing Generated QR Code.</h3>
+                    <button type="button" class="btn btn-sm btn-transparent btn-active-info pe-2 ps-3"
+                        data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fa-solid fa-xmark fs-1"></i>
+                    </button>
                 </div>
                 <div class="modal-body pb-0">
                     <div class="card">
