@@ -145,7 +145,7 @@
                 </div>
             </div>
         </div>
-        <div class="card-body p-0 px-3 rounded-0">
+        <div class="card-body p-0 rounded-0">
             <div class="table-responsive">
                 <table class="table my-datatable table-striped table-row-bordered my-0" id="nfcCard_table">
                     <thead>

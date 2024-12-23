@@ -470,6 +470,19 @@
                                             </div>
                                         </div>
                                     @endif
+                                    @if (!empty($nfc_card->nfcData->date_of_birth))
+                                        <div class="col-md-6 mt-4">
+                                            <div class="text-white text-center ps-lg-3 ps-0">
+                                                <div class="">
+                                                    <i
+                                                        class="fa-solid fa-fax social_icons fs-3 bg-white contact-icons-tem2"></i>
+                                                </div>
+                                                <small class="mb-0">Fax Number</small>
+                                                <h5 class="mb-0 fs-5">(123)-456-7890</h5>
+                                            </div>
+                                        </div>
+                                    @endif
+
                                     @if (!empty($nfc_card->nfcData->location))
                                         <div class="col-md-6 mt-4">
                                             <div class="text-white text-center ps-lg-3 ps-0">

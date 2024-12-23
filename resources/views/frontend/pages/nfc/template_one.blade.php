@@ -323,6 +323,13 @@
                 width: 60%;
                 margin: auto;
             }
+
+            .img-container-tem1 img {
+                display: block;
+                width: 100%;
+                height: 280px;
+                object-fit: cover;
+            }
         }
     </style>
 </head>
@@ -485,7 +492,25 @@
                                                     <div class="text-white ps-3">
                                                         <small class="mb-0">Date Of Birth</small>
                                                         <p class="mb-0 fs-6 special-font">
-                                                            {{ $nfc_card->nfcData->date_of_birth }}</p>
+                                                            {{ \Carbon\Carbon::parse($nfc_card->nfcData->date_of_birth)->format('m-d-Y') }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    @if (!empty($nfc_card->nfcData->date_of_birth))
+                                        <div class="col-12 mt-4">
+                                            <div>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="bg-white p-3">
+                                                        <i class="fa-solid fa-fax social_icons text-black fs-3"></i>
+                                                    </div>
+                                                    <div class="text-white ps-3">
+                                                        <small class="mb-0">Fax Number</small>
+                                                        <p class="mb-0 fs-6 special-font">
+                                                            (123)-456-7890
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -497,10 +522,10 @@
                                                 <div class="d-flex align-items-center">
                                                     <div class="bg-white p-3">
                                                         <i
-                                                            class="fa-solid fa-flag-usa social_icons text-black fs-3"></i>
+                                                            class="fa-solid fa-location-dot social_icons text-black fs-3"></i>
                                                     </div>
                                                     <div class="text-white ps-3">
-                                                        <small class="mb-0">Country</small>
+                                                        <small class="mb-0">Address</small>
                                                         <p class="mb-0 fs-6 special-font">
                                                             {{ $nfc_card->nfcData->location }}</p>
                                                     </div>
@@ -943,7 +968,7 @@
                                                         alt="" />
                                                 </div>
                                                 <div
-                                                    class="d-flex justify-content-between px-4 py-3 align-items-center bg-dark">
+                                                    class="d-flex flex-column justify-content-between px-4 py-3 align-items-center bg-dark">
                                                     <h4 class="special-font mb-0 text-white">
                                                         {{ $product->product_name }}</h4>
                                                     <h4 class="special-font mb-0 text-white">

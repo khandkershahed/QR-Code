@@ -71,35 +71,41 @@
             class="fa-solid fa-diamond fs-1 text-info"></i>
     </div>
     <div class="row">
-        <div class="fv-row col-lg-4 col-6 mb-4">
+        <div class="fv-row col-lg-3 col-6 mb-4">
             <x-metronic.label class="required fw-semibold fs-6 mb-2">First
                 Name</x-metronic.label>
             <x-metronic.input type="text" class="form-control form-control-solid form-control-sm" name="first_name"
-                :value="optional($nfc_card->nfcData)->first_name" placeholder="Jone Robert" />
+                :value="optional($nfc_card->nfcData)->first_name" placeholder="Jone Robert" required />
         </div>
-        <div class="fv-row col-lg-4 col-6 mb-4">
+        <div class="fv-row col-lg-3 col-6 mb-4">
             <x-metronic.label class="required fw-semibold fs-6 mb-2">Last
                 Name</x-metronic.label>
             <x-metronic.input type="text" class="form-control form-control-solid form-control-sm" name="last_name"
-                :value="optional($nfc_card->nfcData)->last_name" placeholder="Washington" />
+                :value="optional($nfc_card->nfcData)->last_name" placeholder="Washington" required />
         </div>
-        <div class="fv-row col-lg-4 col-6 mb-4">
+        <div class="fv-row col-lg-3 col-6 mb-4">
             <x-metronic.label class="required fw-semibold fs-6 mb-2">Email</x-metronic.label>
             <x-metronic.input type="email" class="form-control form-control-solid form-control-sm"
-                name="email_personal" :value="optional($nfc_card->nfcData)->email_personal" placeholder="Washington@maill.com" />
+                name="email_personal" :value="optional($nfc_card->nfcData)->email_personal" placeholder="Washington@maill.com" required />
         </div>
-        <div class="fv-row col-lg-4 col-6 mb-4">
+        <div class="fv-row col-lg-3 col-6 mb-4">
             <x-metronic.label class="fw-semibold fs-6 mb-2">Alternative
                 Email</x-metronic.label>
             <x-metronic.input type="email" class="form-control form-control-solid form-control-sm" name="email_work"
                 :value="optional($nfc_card->nfcData)->email_work" placeholder="Washington@maill.com" />
         </div>
-        <div class="fv-row col-lg-4 col-6 mb-4">
-            <x-metronic.label class="required fw-semibold fs-6 mb-2">Phone</x-metronic.label>
+        <div class="fv-row col-lg-3 col-6 mb-4">
+            <x-metronic.label class="required fw-semibold fs-6 mb-2">Phone (Personal)</x-metronic.label>
             <x-metronic.input type="text" class="form-control form-control-solid form-control-sm"
-                name="phone_personal" :value="optional($nfc_card->nfcData)->phone_personal" placeholder="(+1 05)" />
+                name="phone_personal" :value="optional($nfc_card->nfcData)->phone_personal" placeholder="(+1 05)" required />
         </div>
-        <div class="fv-row col-lg-4 col-6 mb-4">
+        <div class="fv-row col-lg-3 col-6 mb-4">
+            <x-metronic.label class="fw-semibold fs-6 mb-2">FAX Number</x-metronic.label>
+            <x-metronic.input type="text" class="form-control form-control-solid form-control-sm"
+                name="fax_personal" placeholder="Your Fax Number" />
+        </div>
+
+        <div class="fv-row col-lg-3 col-6 mb-4">
             <x-metronic.label class="fw-semibold fs-6 mb-2">Alternative
                 Phone</x-metronic.label>
             <x-metronic.input type="text" class="form-control form-control-solid form-control-sm"
@@ -110,26 +116,27 @@
             <x-metronic.input type="text" class="form-control form-control-solid form-control-sm"
                 name="location_url" :value="optional($nfc_card->nfcData)->location_url" placeholder="Enter Location URl " />
         </div>
-        <div class="fv-row col-lg-3 col-6 mb-4">
+        <div class="fv-row col-lg-4 col-6 mb-4">
             <x-metronic.label class="fw-semibold fs-6 mb-2">Date Of
                 Birth</x-metronic.label>
             <x-metronic.input type="date" class="form-control form-control-solid form-control-sm"
                 name="date_of_birth" :value="optional($nfc_card->nfcData)->date_of_birth" placeholder="Enter Date Of Birth " />
         </div>
-        <div class="fv-row col-lg-3 col-6 mb-4">
+        <div class="fv-row col-lg-4 col-6 mb-4">
             <x-metronic.label class="fw-semibold fs-6 mb-2">Company</x-metronic.label>
             <x-metronic.input type="text" class="form-control form-control-solid form-control-sm"
                 name="company_name" :value="optional($nfc_card->nfcData)->company_name" placeholder="Enter Company Name " />
         </div>
-        <div class="fv-row col-lg-3 col-6 mb-4">
+        <div class="fv-row col-lg-4 col-6 mb-4">
             <x-metronic.label class="fw-semibold fs-6 mb-2">Job
                 Title</x-metronic.label>
             <x-metronic.input type="text" class="form-control form-control-solid form-control-sm" name="job_title"
                 :value="optional($nfc_card->nfcData)->job_title" placeholder="Enter Job Title " />
         </div>
         <div class="fv-row col-lg-12 col-12 mb-4">
-            <x-metronic.label for="location" class="fw-semibold fs-6 mb-2">{{ __('Location') }}</x-metronic.label>
-            <textarea name="location" class="form-control form-control-solid form-control-sm" rows="6">{{ optional($nfc_card->nfcData)->location }}</textarea>
+            <x-metronic.label for="location"
+                class="fw-semibold fs-6 mb-2">{{ __('Location / Address') }}</x-metronic.label>
+            <textarea name="location" class="form-control form-control-solid form-control-sm" rows="2">{{ optional($nfc_card->nfcData)->location }}</textarea>
         </div>
     </div>
 

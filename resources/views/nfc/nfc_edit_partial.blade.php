@@ -556,14 +556,14 @@
 @endif
 <div class="g-2" id="columns-container">
     <div class="row py-10 pt-0 gx-2">
-        <div class="col-lg-2 px-0 bg-white">
+        <div class="col-lg-2 px-0 bg-white" style="border-right: 1px solid #eee">
             <div class="custom-fixed-top">
                 <div class="d-flex flex-column flex-md-row rounded border-0 bg-white">
                     @include('nfc.form_partials.tab_trigger')
                 </div>
             </div>
         </div>
-        <div class="col-lg-10">
+        <div class="col-lg-10 bg-white">
             <div class="tab-content bg-white p-5" id="myTabContent">
                 <div class="tab-pane fade active show" id="generalInfo" role="tabpanel">
                     <div class="row">

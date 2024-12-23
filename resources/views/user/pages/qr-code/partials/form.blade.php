@@ -8,7 +8,7 @@
     <div class="row pt-4 bg-light p-5 mt-10 rounded-1">
         <div class="mb-4">
             <x-metronic.label for="qr_data_website_url"
-                class="form-label required">{{ __('Website Url') }}</x-metronic.label>
+                class="form-label">{{ __('Website Url') }}</x-metronic.label>
             <x-metronic.input id="qr_data_website_url" type="text" name="qr_data_website_url"
                 placeholder="Website Url" />
         </div>

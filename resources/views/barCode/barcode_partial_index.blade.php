@@ -12,7 +12,7 @@
                 </a>
             </div>
         </div>
-        <div class="card-body p-0 px-3 rounded-0">
+        <div class="card-body p-0 rounded-0">
             <div class="table-responsive">
             <table class="table my-datatable table-striped table-row-bordered mt-0" id="barCode_table">
                 <thead>
