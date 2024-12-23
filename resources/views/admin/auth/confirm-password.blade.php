@@ -31,7 +31,6 @@
             <div class="d-flex align-items-center fw-bold fs-6">
                 <a href="/" class="text-muted text-hover-primary px-2">About</a>
                 <a href="mailto:goflixza@gmail.com" class="text-muted text-hover-primary px-2">Contact</a>
-                <a href="/" class="text-muted text-hover-primary px-2">Contact Us</a>
             </div>
         </div>
     </div>

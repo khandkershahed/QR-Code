@@ -34,49 +34,15 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
 
-    <!-- Critical CSS (Inline for Faster Load) -->
-    <style>
-        /* Critical CSS: Only the essential styles needed for above-the-fold content */
-        body {
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .header-fixed {
-            position: fixed;
-            width: 100%;
-            top: 0;
-        }
-
-        /* Add more styles that are required to render the page immediately */
-    </style>
-
-    <!-- Lazy Load CSS -->
-    <link rel="stylesheet" href="{{ asset('admin/assets/css/style.bundle.css') }}" media="print"
-        onload="this.media='all'">
-    <noscript>
-        <link rel="stylesheet" href="{{ asset('admin/assets/css/style.bundle.css') }}">
-    </noscript>
-
-    <!-- Lazy Load DataTable and Calendar CSS -->
+    <!-- Stylesheets -->
+    <link href="{{ asset('admin/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('admin/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet"
-        media="print" onload="this.media='all'">
-    <noscript>
-        <link href="{{ asset('admin/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet">
-    </noscript>
-
-    <!-- Lazy Load DataTable Plugin CSS -->
+        type="text/css">
     <link href="{{ asset('admin/assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"
-        media="print" onload="this.media='all'">
-    <noscript>
-        <link href="{{ asset('admin/assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet">
-    </noscript>
+        type="text/css">
 
-    <link href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" media="print"
-        onload="this.media='all'">
-    <noscript>
-        <link href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet">
-    </noscript>
-
+    <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css">
     <link href="https://cdn.jsdelivr.net/npm/formvalidation@1.9.0/dist/css/formValidation.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css" rel="stylesheet">
 
@@ -85,9 +51,11 @@
     <title>{{ $title ?? config('app.name', 'GoFlixza') }} | Your Hub for QR, Bar Codes, NFC V.Cards</title>
 </head>
 
+
 <body id="kt_body"
     class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed aside-enabled aside-fixed"
     style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px">
+
     <div class="d-flex flex-column flex-root">
         <!-- Preloader -->
         <div class="preloader">
@@ -113,6 +81,7 @@
         </div>
     </div>
 
+
     <div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
         <span class="svg-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -124,41 +93,36 @@
             </svg>
         </span>
     </div>
+    @php
+        $hostUrl = 'admin/assets/';
+    @endphp
+    <script src="{{ asset($hostUrl . 'plugins/global/plugins.bundle.js') }}"></script>
+    <script src="{{ asset($hostUrl . 'js/scripts.bundle.js') }}"></script>
 
-    <!-- Scripts -->
-    <script src="{{ asset('admin/assets/plugins/global/plugins.bundle.js') }}" defer></script>
-    <script src="{{ asset('admin/assets/js/scripts.bundle.js') }}" defer></script>
+    <script src="{{ asset($hostUrl . 'plugins/custom/datatables/datatables.bundle.js') }}"></script>
+    <script src="{{ asset($hostUrl . 'js/custom/documentation/general/datatables/buttons.js') }}"></script>
+    <script src="{{ asset($hostUrl . 'plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+    <script src="{{ asset('frontend/assets/js/fontawesome.js') }}"></script>
 
-    <!-- Lazy Load Non-Essential Scripts -->
-    <script src="{{ asset('admin/assets/plugins/custom/datatables/datatables.bundle.js') }}" defer></script>
-    <script src="{{ asset('admin/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js') }}" defer></script>
-    <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js" defer></script>
-
-    <script src="{{ asset('frontend/assets/js/fontawesome.js') }}" defer></script>
-
-    <!-- Custom Scripts -->
-    <script src="{{ asset('admin/js/custom.js') }}" defer></script>
-
-    <!-- Additional Scripts -->
-    <script src="{{ asset('admin/assets/plugins/custom/formrepeater/formrepeater.bundle.js') }}"></script>
-    <script src="{{ asset('admin/assets/plugins/custom/tinymce/tinymce.bundle.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/custom/account/settings/profile-details.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/custom/account/settings/deactivate-account.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/custom/apps/ecommerce/catalog/save-product.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/widgets.bundle.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/custom/widgets.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/custom/apps/chat/chat.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/custom/utilities/modals/create-account.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/custom/utilities/modals/create-app.js') }}"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/formvalidation@1.9.0/dist/js/FormValidation.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/formvalidation@1.9.0/dist/js/plugins/Bootstrap5.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/formvalidation@1.9.0/dist/js/plugins/Trigger.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/formvalidation@1.9.0/dist/js/plugins/SubmitButton.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js" defer></script>
+    <script src="{{ asset($hostUrl . 'plugins/custom/formrepeater/formrepeater.bundle.js') }}"></script>
+    <script src="{{ asset($hostUrl . 'plugins/custom/tinymce/tinymce.bundle.js') }}"></script>
+    <script src="{{ asset($hostUrl . 'js/custom/account/settings/profile-details.js') }}"></script>
+    <script src="{{ asset($hostUrl . 'js/custom/account/settings/deactivate-account.js') }}"></script>
+    <script src="{{ asset($hostUrl . 'js/custom/apps/ecommerce/catalog/save-product.js') }}"></script>
+    <script src="{{ asset($hostUrl . 'js/widgets.bundle.js') }}"></script>
+    <script src="{{ asset($hostUrl . 'js/custom/widgets.js') }}"></script>
+    <script src="{{ asset($hostUrl . 'js/custom/apps/chat/chat.js') }}"></script>
+    <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/create-account.js') }}"></script>
+    <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/create-app.js') }}"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/formvalidation@1.9.0/dist/js/FormValidation.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/formvalidation@1.9.0/dist/js/plugins/Bootstrap5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/formvalidation@1.9.0/dist/js/plugins/Trigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/formvalidation@1.9.0/dist/js/plugins/SubmitButton.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
-    <!-- Inline JavaScript: Only the essential functions to make the page interactive -->
+    <script src="{{ asset('admin/js/custom.js') }}"></script>
     <script>
         class DataTableInitializer {
             constructor(selector) {
@@ -370,8 +334,6 @@
             }
         }, 2000); // Wait for 3 seconds before starting the fade-out
     </script>
-
-    <!-- Additional Custom Scripts as needed -->
     @stack('scripts')
 </body>
 

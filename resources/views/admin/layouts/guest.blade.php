@@ -21,10 +21,10 @@
 
     <link href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" type="text/css"
+    {{-- <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
     <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" /> --}}
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -44,7 +44,8 @@
     <script src="{{ asset('admin/assets/js/scripts.bundle.js') }}"></script>
     <script src="{{ asset('admin/assets/js/custom/authentication/sign-in/general.js') }}"></script>
 
-    <script src="https://kit.fontawesome.com/4cba8ce13c.js"></script>
+    <script src="{{ asset('frontend/assets/js/fontawesome.js') }}"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script>
         document.querySelectorAll('.toggle-password').forEach(function(toggle) {
