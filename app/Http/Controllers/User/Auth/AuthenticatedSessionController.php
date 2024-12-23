@@ -18,6 +18,7 @@ use App\Models\Admin\UserNotification;
 use App\Providers\RouteServiceProvider;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Models\Admin\NotificationMessage;
+use App\Models\VirtualCard;
 use Illuminate\Support\Facades\Session;
 use Stevebauman\Location\Facades\Location;
 
@@ -26,28 +27,33 @@ class AuthenticatedSessionController extends Controller
     /**
      * Display the login view.
      */
-    public function dashboard(): View
+    public function dashboard()
     {
         $user = Auth::user();
         $userId = $user->id;
         $subscription = Subscription::with('plan')->where('user_id', $user->id)->active()->first();
         $notifications = UserNotification::where('user_id', $userId)->with('notificationMessage')->latest('created_at')->get();
-        $qrs = Qr::with('qrData', 'qrScan')->where('user_id', $userId)->latest()->get();
-        $nfc_cards = NfcCard::with('nfcData', 'nfcMessages', 'nfcScan')->where('user_id', $userId)->latest()->get();
+        $qrs = Qr::with('qrScan')->where('user_id', $userId)->select('id')->get();
+        $nfc_cards = NfcCard::with('nfcScan')->where('user_id', $userId)->select('id')->get();
+
         $qr_subscription = Subscription::with('plan')->where('user_id', $user->id)
             ->whereHas('plan', function ($query) {
                 $query->where('type', 'qr');
             })->active()->first();
+
         $nfc_subscription = Subscription::with('plan')->where('user_id', $user->id)
             ->whereHas('plan', function ($query) {
                 $query->where('type', 'nfc');
             })->active()->first();
+
         $barcode_subscription = Subscription::with('plan')->where('user_id', $user->id)
             ->whereHas('plan', function ($query) {
                 $query->where('type', 'barcode');
             })->active()->first();
+
         $qr_wallet = !empty(optional($qr_subscription)->plan) ? optional($qr_subscription->plan)->qr : 10;
         $nfc_wallet = !empty(optional($nfc_subscription)->plan) ? optional($nfc_subscription->plan)->nfc : 10;
+
         $qr_pending = max(0, $qr_wallet - $qrs->count());
         $nfc_pending = max(0, $nfc_wallet - $nfc_cards->count());
         $qr_completion_percentage = ($qrs->count() / $qr_wallet) * 100;
@@ -58,36 +64,37 @@ class AuthenticatedSessionController extends Controller
         foreach ($qrs as $qr) {
             $qr_unique_ips = $qr_unique_ips->merge($qr->qrScan->unique('ip_address'));
         }
-        $qr_users = [];
-        foreach ($qr_unique_ips as $qr_unique_ip) {
-            $qr_user = Location::get($qr_unique_ip->ip_address);
-            // if ($qr_user !== false) {
-            $qr_users[] = $qr_user;
-            // } else {
-            //     Log::error("Failed to retrieve location for IP address: {$qr_unique_ip->ip_address}");
-            // }
-        }
-        // dd($qr_unique_ips);
-
         $nfc_unique_ips = collect();
 
         foreach ($nfc_cards as $nfc_card) {
             $nfc_unique_ips = $nfc_unique_ips->merge($nfc_card->nfcScan->unique('ip_address'));
         }
+        $qr_users = $qr_unique_ips;
+        $nfc_users = $nfc_unique_ips;
 
-        $nfc_users = [];
+        // $qr_users = [];
+        // foreach ($qr_unique_ips as $qr_unique_ip) {
+        //     $qr_user = Location::get($qr_unique_ip->ip_address);
+        //     $qr_users[] = $qr_user;
+        // }
 
-        foreach ($nfc_unique_ips as $nfc_unique_ip) {
-            $nfc_user = Location::get($nfc_unique_ip->ip_address);
-            // if ($nfc_user !== false) {
-            $nfc_users[] = $nfc_user;
-            // } else {
-            //     Log::error("Failed to retrieve location for IP address: {$nfc_unique_ip->ip_address}");
-            // }
-        }
+        // $nfc_unique_ips = collect();
+
+        // foreach ($nfc_cards as $nfc_card) {
+        //     $nfc_unique_ips = $nfc_unique_ips->merge($nfc_card->nfcScan->unique('ip_address'));
+        // }
+
+        // $nfc_users = [];
+
+        // foreach ($nfc_unique_ips as $nfc_unique_ip) {
+        //     $nfc_user = Location::get($nfc_unique_ip->ip_address);
+        //     $nfc_users[] = $nfc_user;
+        // }
 
         return view('dashboard', compact('subscription', 'notifications', 'qrs', 'nfc_cards', 'nfc_pending', 'qr_pending', 'nfc_completion_percentage', 'qr_completion_percentage', 'qr_users', 'nfc_users'));
     }
+    
+
 
     public function create(): View
     {
@@ -122,6 +129,7 @@ class AuthenticatedSessionController extends Controller
     /**
      * Destroy an authenticated session.
      */
+
     public function destroy(Request $request): RedirectResponse
     {
         Auth::guard('web')->logout();

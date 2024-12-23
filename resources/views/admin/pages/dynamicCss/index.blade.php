@@ -475,8 +475,6 @@
                     </div>
                 </div>
             </form>
-            <!--end::Form-->
         </div>
-        <!--end::Modal body-->
     </div>
 </x-admin-app-layout>

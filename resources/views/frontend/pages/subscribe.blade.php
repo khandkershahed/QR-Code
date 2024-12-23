@@ -23,7 +23,6 @@
                     <div class="col-lg-8 offset-2">
                         <div class="card">
                             <div class="card-body">
-                                <!-- Top Row -->
                                 <div class="row p-2">
                                     <div class="col-lg-12 d-flex justify-content-between align-items-center ">
                                         <div>
@@ -44,7 +43,6 @@
                                     </div>
                                 </div>
                                 <hr />
-                                <!-- Top Second Row -->
                                 <div class="row mx-1 p-2">
                                     <div class="col-lg-4">
                                         <ul>
@@ -99,7 +97,6 @@
                                         </div>
                                     </form>
                                 </div>
-                                <!-- Content Area End -->
                             </div>
                         </div>
                     </div>

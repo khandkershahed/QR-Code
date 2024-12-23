@@ -36,7 +36,6 @@
                 <img class="virtual_card-type-mobile p-3" src="{{ asset($cardtemplate['image']) }}"
                     alt="{{ $cardtemplate['value'] }}">
             </label>
-            <!--end::Option-->
         </div>
     @endforeach
 </div>

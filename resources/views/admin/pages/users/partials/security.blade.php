@@ -1,20 +1,12 @@
 <div class="card pt-4 mb-6 mb-xl-9">
-    <!--begin::Card header-->
     <div class="card-header border-0">
-        <!--begin::Card title-->
         <div class="card-title">
             <h2>Profile</h2>
         </div>
-        <!--end::Card title-->
     </div>
-    <!--end::Card header-->
-    <!--begin::Card body-->
     <div class="card-body pt-0 pb-5">
-        <!--begin::Table wrapper-->
         <div class="table-responsive">
-            <!--begin::Table-->
             <table class="table align-middle table-row-dashed gy-5" id="kt_table_users_login_session">
-                <!--begin::Table body-->
                 <tbody class="fs-6 fw-bold text-gray-600">
                     <tr>
                         <td>Email</td>
@@ -22,7 +14,6 @@
                         <td class="text-end">
                             <button type="button" class="btn btn-icon btn-active-light-primary w-30px h-30px ms-auto"
                                 data-bs-toggle="modal" data-bs-target="#update_email_{{ $user->id }}">
-                                <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
                                 <span class="svg-icon svg-icon-3">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                         viewBox="0 0 24 24" fill="none">
@@ -34,7 +25,6 @@
                                             fill="currentColor" />
                                     </svg>
                                 </span>
-                                <!--end::Svg Icon-->
                             </button>
                         </td>
                     </tr>
@@ -44,7 +34,6 @@
                         <td class="text-end">
                             <button type="button" class="btn btn-icon btn-active-light-primary w-30px h-30px ms-auto"
                                 data-bs-toggle="modal" data-bs-target="#update_password_{{ $user->id }}">
-                                <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
                                 <span class="svg-icon svg-icon-3">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                         viewBox="0 0 24 24" fill="none">
@@ -56,7 +45,6 @@
                                             fill="currentColor" />
                                     </svg>
                                 </span>
-                                <!--end::Svg Icon-->
                             </button>
                         </td>
                     </tr>
@@ -64,15 +52,12 @@
                         <td>Role</td>
                         <td>
                             @foreach ($user->getRoleNames() as $role)
-                                <!--begin::Badge-->
                                 <div class="badge badge-lg badge-light-primary d-inline">{{ $role }}</div>
-                                <!--begin::Badge-->
                             @endforeach
                         </td>
                         <td class="text-end">
                             <button type="button" class="btn btn-icon btn-active-light-primary w-30px h-30px ms-auto"
                                 data-bs-toggle="modal" data-bs-target="#update_role_{{ $user->id }}">
-                                <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
                                 <span class="svg-icon svg-icon-3">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                         viewBox="0 0 24 24" fill="none">
@@ -84,18 +69,12 @@
                                             fill="currentColor" />
                                     </svg>
                                 </span>
-                                <!--end::Svg Icon-->
                             </button>
                         </td>
                     </tr>
                 </tbody>
-                <!--end::Table body-->
             </table>
-            <!--end::Table-->
         </div>
-        <!--end::Table wrapper-->
     </div>
-    <!--end::Card body-->
-</div>
-<!--end::Card-->
+</div
 

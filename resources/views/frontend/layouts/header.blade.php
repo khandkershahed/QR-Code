@@ -1,5 +1,4 @@
 <header class="main-header menu-absolute no-border">
-    <!-- Start Header-Upper-->
     <div class="header-upper">
         <div class="container container-1660 clearfix">
             <div class="header-inner py-20 rel d-flex align-items-center">
@@ -13,7 +12,6 @@
                     </div>
                 </div>
                 <div class="nav-outer ms-lg-5 ps-lg-5 clearfix">
-                    <!-- Main Menu -->
                     <nav class="main-menu navbar-expand-lg">
                         <div class="navbar-header py-10">
                             <div class="mobile-logo">
@@ -23,7 +21,6 @@
                                         alt="Logo" title="Logo" />
                                 </a>
                             </div>
-                            <!-- Toggle Button -->
                             <button type="button" class="navbar-toggle" data-bs-toggle="offcanvas"
                                 data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
                                 <span class="icon-bar bg-dark"></span>
@@ -54,10 +51,7 @@
                             </ul>
                         </div>
                     </nav>
-                    <!-- Main Menu End-->
                 </div>
-
-                <!-- Menu Button -->
                 <div class="menu-btns ms-lg-auto">
                     @auth
 
@@ -73,8 +67,6 @@
             </div>
         </div>
     </div>
-    <!--End Header Upper-->
-    {{-- Offcanvas Menu On Mobile --}}
     <div class="offcanvas offcanvas-start w-50" tabindex="-1" id="staticBackdrop" aria-labelledby="offcanvasLabel"
         style="background: #dceaf0;">
         <div class="offcanvas-header">

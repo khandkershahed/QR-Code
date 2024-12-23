@@ -58,7 +58,7 @@ class NfcCardController extends Controller
         // return view('user.pages.virtualCard.create', $data);
     }
 
-    /**
+    /** 
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
@@ -91,7 +91,7 @@ class NfcCardController extends Controller
             // $charge = $user->charge(4999, $paymentMethod);
 
             // $invoice = $user->invoiceFor('NFC Card Payment', 4999);
-            
+
             $email = $request->customer_email;
             try {
                 Mail::send('emails.invoice', ['invoice' => $invoice], function ($message) use ($email) {

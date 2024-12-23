@@ -11,7 +11,6 @@
 
 
             <div class="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
-
                 <x-auth-session-status class="mb-4" :status="session('status')" />
 
 

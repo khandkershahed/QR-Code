@@ -1,12 +1,8 @@
 <x-app-layout :title="'QR Code Generate'">
     <div class="d-flex flex-column flex-lg-row">
-        <!--begin::Content-->
         <div class="flex-lg-row-fluid mb-10 mb-lg-0 me-lg-7 me-xl-10">
-            <!--begin::Card-->
             <div class="card">
-                <!--begin::Card body-->
                 <div class="card-body p-12">
-                    <!--begin::Form-->
                     <form id="generateQRCodeForm" enctype="multipart/form-data">
                         @csrf
                         <div class="row fav-row">
@@ -60,18 +56,11 @@
                                 class="btn btn-primary">{{ __('Generate') }}</button>
                         </div>
                     </form>
-                    <!--end::Form-->
                 </div>
-                <!--end::Card body-->
             </div>
-            <!--end::Card-->
         </div>
-        <!--end::Content-->
-        <!--begin::Sidebar-->
         <div class="flex-lg-auto min-w-lg-300px">
-            <!--begin::Card-->
             <div class="card">
-                <!--begin::Card body-->
                 <div class="card-body p-10">
                     <span class="text-center fs-2x fw-bolder text-gray-800">Preview</span>
                     <div class="card card-flush">
@@ -80,31 +69,23 @@
                                 <img id="generatedQRCode" src="https://i.ibb.co/XzHNWc0/no-qr.png" alt="QR Code">
                             </div>
                             <div class="mb-0">
-                                <!--begin::Row-->
                                 <div class="row mb-5">
-                                    <!--begin::Col-->
                                     <div class="col">
                                         <a href="#"
                                             class="btn btn-light btn-active-light-primary w-100">Preview</a>
                                     </div>
-                                    <!--end::Col-->
-                                    <!--begin::Col-->
                                     <div class="col">
                                         <a id="downloadLink" href="javascripti:void()" download style="display: none;"
                                             class="btn btn-light btn-active-light-primary w-100">Download</a>
                                     </div>
-                                    <!--end::Col-->
                                 </div>
                             </div>
                         </div>
 
                     </div>
                 </div>
-                <!--end::Card body-->
             </div>
-            <!--end::Card-->
         </div>
-        <!--end::Sidebar-->
     </div>
     @push('scripts')
         <script>

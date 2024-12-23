@@ -1,50 +1,51 @@
-<x-app-layout :title="'My All Invoices'">
+<x-app-layout :title="'My Purchases All Invoices - User Panel'">
     <div class="row mt-5">
         <div class="col-lg-12">
-            <div class="card">
-                <div class="card-body d-flex justify-content-between align-items-center">
-                    <h2 class="mb-0">Manage All Invoices</h2>
-                    <h3 class="bg-info p-3 text-white mb-0">Total: <span
-                            class="text-warning">{{ $invoices->count() }}</span> Invoices</h3>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-12">
-            <div class="card card-p-0 card-flush p-3 mt-5">
-                <div class="card-body">
+            <div class="card rounded-0">
+                <div class="card-header p-5 align-items-center rounded-0 bg-info m-0">
                     <div>
-                        <table
-                            class="table align-middle border rounded table-row-dashed table-striped table-hover fs-6 g-5"
-                            id="kt_datatable_example">
-                            <thead>
-                                <tr>
-                                    <th>Invoice No</th>
-                                    <th>Service Name</th>
-                                    <th>Start Date</th>
-                                    <th>End Date</th>
-                                    <th>Total</th>
-                                    <th class="text-center">Download</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($invoices as $invoice)
-                                    <tr>
-                                        <td>{{ $invoice->number }}</td>
-                                        <td>{{ $invoice->lines->data[0]->description }}</td>
-                                        <td>{{ \Carbon\Carbon::createFromTimestamp($invoice->created)->toFormattedDateString() }}
-                                        </td>
-                                        <td>{{ \Carbon\Carbon::createFromTimestamp($invoice->lines->data[0]->period->end)->toFormattedDateString() }}
-                                        </td>
-                                        <td>${{ number_format($invoice->total / 100, 2) }}</td>
-                                        <td class="text-center">
-                                            <a class="btn btn-info btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#invoiceViewModal_{{ $invoice->id }}">View Details</a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                        <h1 class="mb-0 mt-0 card-title fs-2 text-white">Manage All Invoices!</h1>
+                        <p class="text-white mt-2 mb-0">View and manage All Invoices information in this page.</p>
                     </div>
+                    <div>
+                        <button type="button" class="btn btn-white btn-active-light-warning text-hover-inverse-white">
+                            Total {{ $invoices->count() }}
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body rounded-0 px-3 py-0">
+                    <table class="table my-datatable table-striped table-row-bordered mt-0">
+                        <thead>
+                            <tr class="text-start bg-info text-white fw-bolder fs-7 text-uppercase gs-0">
+                                <th width="5%">SL No.</th>
+                                <th>Invoice No</th>
+                                <th>Service Name</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Total</th>
+                                <th class="text-center">Download</th>
+                            </tr>
+                        </thead>
+                        <tbody style="vertical-align: middle">
+                            @foreach ($invoices as $invoice)
+                                <tr>
+                                    <td class="text-center">{{ $loop->iteration }}</td>
+                                    <td>{{ $invoice->number }}</td>
+                                    <td>{{ $invoice->lines->data[0]->description }}</td>
+                                    <td>{{ \Carbon\Carbon::createFromTimestamp($invoice->created)->toFormattedDateString() }}
+                                    </td>
+                                    <td>{{ \Carbon\Carbon::createFromTimestamp($invoice->lines->data[0]->period->end)->toFormattedDateString() }}
+                                    </td>
+                                    <td>${{ number_format($invoice->total / 100, 2) }}</td>
+                                    <td class="text-center">
+                                        <a class="btn btn-info btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#invoiceViewModal_{{ $invoice->id }}">View
+                                            Details</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -69,7 +70,8 @@
                                                 </a>
                                             </div>
                                             <div>
-                                                <h4 class="fw-bolder text-sm-end text-gray-800 fs-2qx pe-5 pb-7">INVOICE
+                                                <h4 class="fw-bolder text-sm-end text-gray-800 fs-2qx pe-5 pb-7">
+                                                    INVOICE
                                                 </h4>
                                                 <div class="text-sm-end fw-semibold fs-4 text-muted mt-7">
                                                     <div>169-22 Hillside Avenue, FL 2 Jamaica,</div>
@@ -84,7 +86,8 @@
                                                     Dear {{ $invoice->customer_name }} <span
                                                         class="fs-6">({{ $invoice->customer_email }})</span>,
                                                     <br>
-                                                    <span class="text-muted fs-5">Here are your order details. We thank
+                                                    <span class="text-muted fs-5">Here are your order details. We
+                                                        thank
                                                         you for your purchase.</span>
                                                 </div>
                                                 <div class="separator"></div>
@@ -120,13 +123,15 @@
                                                             <tbody class="fw-semibold text-gray-600">
                                                                 @foreach ($invoice->lines->data as $line)
                                                                     <tr>
-                                                                        <td class="text-start">{{ $loop->iteration }}
+                                                                        <td class="text-start">
+                                                                            {{ $loop->iteration }}
                                                                         </td>
                                                                         <td>
                                                                             <div class="d-flex align-items-center">
                                                                                 <div>
                                                                                     <div class="fw-bold">
-                                                                                        {{ $line->description }}</div>
+                                                                                        {{ $line->description }}
+                                                                                    </div>
                                                                                     <div class="fs-7 text-muted">
                                                                                         {{ \Carbon\Carbon::createFromTimestamp($invoice->created)->toFormattedDateString() }}
                                                                                     </div>
@@ -141,7 +146,8 @@
                                                                     </tr>
                                                                 @endforeach
                                                                 <tr>
-                                                                    <td colspan="3" class="text-end">VAT (0%)</td>
+                                                                    <td colspan="3" class="text-end">VAT (0%)
+                                                                    </td>
                                                                     <td class="text-end">$0.00</td>
                                                                 </tr>
                                                                 <tr>
@@ -166,10 +172,12 @@
                                                 <li>All formats are valid for the duration mentioned on the invoice.
                                                 </li>
                                                 <li>Lost or damaged NFC cards will incur a replacement fee.</li>
-                                                <li>Do not share your QR code, barcode, or NFC card with unauthorized
+                                                <li>Do not share your QR code, barcode, or NFC card with
+                                                    unauthorized
                                                     individuals.</li>
                                                 <li>For support, contact us at <a
-                                                        href="mailto:goflixza@gmail.com">goflixza@gmail.com</a>.</li>
+                                                        href="mailto:goflixza@gmail.com">goflixza@gmail.com</a>.
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -183,7 +191,8 @@
                                     </div>
                                     <div class="my-1 me-5">
                                         <button type="button" class="btn btn-success my-1" onclick="downloadPDF()">
-                                            <i class="fa-solid fa-file-arrow-down pe-3"></i> Download Invoice as PDF
+                                            <i class="fa-solid fa-file-arrow-down pe-3"></i> Download Invoice as
+                                            PDF
                                         </button>
                                     </div>
                                 </div>

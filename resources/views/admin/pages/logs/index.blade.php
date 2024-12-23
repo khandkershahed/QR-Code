@@ -1,17 +1,10 @@
 <x-admin-app-layout :title="'Logs - Admin Panel'">
-    <!--begin::Post-->
     <div class="post d-flex flex-column-fluid" id="kt_post">
-        <!--begin::Container-->
         <div id="kt_content_container" class="container-fluid">
-            <!--begin::Category-->
             <div class="card card-flush">
-                <!--begin::Card header-->
                 <div class="card-header align-items-center py-5 gap-2 gap-md-5">
-                    <!--begin::Card title-->
                     <div class="card-title">
-                        <!--begin::Search-->
                         <div class="d-flex align-items-center position-relative my-1">
-                            <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
                             <span class="svg-icon svg-icon-1 position-absolute ms-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none">
@@ -22,22 +15,14 @@
                                         fill="currentColor" />
                                 </svg>
                             </span>
-                            <!--end::Svg Icon-->
                             <input type="text" data-kt-ecommerce-category-filter="search"
                                 class="form-control form-control-solid w-250px ps-14" placeholder="Search Category" />
                         </div>
-                        <!--end::Search-->
                     </div>
-                    <!--end::Card title-->
                 </div>
-                <!--end::Card header-->
-                <!--begin::Card body-->
                 <div class="card-body pt-0">
-                    <!--begin::Table-->
                     <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_ecommerce_category_table">
-                        <!--begin::Table head-->
                         <thead>
-                            <!--begin::Table row-->
                             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                 <th class="w-10px pe-2">
                                     <div class="form-check form-check-sm form-check-custom form-check-solid me-3">
@@ -53,60 +38,42 @@
                                 <th class="min-w-150px">File Size</th>
                                 <th class="text-end min-w-70px">Action</th>
                             </tr>
-                            <!--end::Table row-->
                         </thead>
-                        <!--end::Table head-->
-                        <!--begin::Table body-->
                         <tbody class="fw-bold text-gray-600">
                             @foreach ($logs as $log)
-                                <!--begin::Table row-->
                                 <tr>
-                                    <!--begin::Checkbox-->
                                     <td>
                                         <div class="form-check form-check-sm form-check-custom form-check-solid">
                                             <input class="form-check-input" type="checkbox" value="1" />
                                         </div>
                                     </td>
-                                    <!--end::Checkbox-->
                                     <td>
-                                        <!--begin::Sl-->
                                         <span class="fw-bolder">{{ $loop->iteration }}</span>
-                                        <!--end::Sl-->
                                     </td>
                                     <td>
-                                        <!--begin::Name-->
                                         <a href="{{ route('admin.log.show', $log['name']) }}"
                                             class="text-gray-800 text-hover-primary fs-5 fw-bolder mb-1"
                                             data-kt-ecommerce-category-filter=" {{ $log['name'] }}">
                                             {{ $log['name'] }}</a>
-                                        <!--end::Name-->
                                     </td>
                                     <td>
-                                        <!--begin::Date-->
                                         <span x-data="{ date: '{{ $log['date'] }}' }" x-text="date" x-init="setInterval(() => date = new Date().toLocaleString(), 1000)"
                                             class="fw-bolder">
                                         </span>
-                                        <!--end::Date-->
                                     </td>
                                     <td>
-                                        <!--begin::Sl-->
                                         <span class="fw-bolder">
                                             {{ $log['last_modified'] }}
                                         </span>
-                                        <!--end::Sl-->
                                     </td>
                                     <td>
-                                        <!--begin::Sl-->
                                         <span class="fw-bolder">
                                             {{ $log['size'] }}
                                         </span>
-                                        <!--end::Sl-->
                                     </td>
-                                    <!--begin::Action=-->
                                     <td class="text-end">
                                         <a href="#" class="btn btn-sm btn-light btn-active-light-primary"
                                             data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
-                                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
                                             <span class="svg-icon svg-icon-5 m-0">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                     viewBox="0 0 24 24" fill="none">
@@ -115,45 +82,28 @@
                                                         fill="currentColor" />
                                                 </svg>
                                             </span>
-                                            <!--end::Svg Icon--></a>
-                                        <!--begin::Menu-->
-                                        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
-                                            data-kt-menu="true">
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="{{ route('admin.log.show', $log['id']) }}"
-                                                    class="menu-link px-3">Preview</a>
+                                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
+                                                data-kt-menu="true">
+                                                <div class="menu-item px-3">
+                                                    <a href="{{ route('admin.log.show', $log['id']) }}"
+                                                        class="menu-link px-3">Preview</a>
+                                                </div>
+                                                <div class="menu-item px-3">
+                                                    <a href="{{ route('admin.log.download', $log['name']) }}"
+                                                        class="menu-link px-3">Download</a>
+                                                </div>
+                                                <div class="menu-item px-3">
+                                                    <a href="{{ route('admin.log.destroy', $log['id']) }}"
+                                                        class="menu-link px-3 delete">Delete</a>
+                                                </div>
                                             </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="{{ route('admin.log.download', $log['name']) }}"
-                                                    class="menu-link px-3">Download</a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="{{ route('admin.log.destroy', $log['id']) }}"
-                                                    class="menu-link px-3 delete">Delete</a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                        </div>
-                                        <!--end::Menu-->
                                     </td>
-                                    <!--end::Action=-->
                                 </tr>
-                                <!--end::Table row-->
                             @endforeach
                         </tbody>
-                        <!--end::Table body-->
                     </table>
-                    <!--end::Table-->
                 </div>
-                <!--end::Card body-->
             </div>
-            <!--end::Category-->
         </div>
-        <!--end::Container-->
     </div>
-    <!--end::Post-->
 </x-admin-app-layout>

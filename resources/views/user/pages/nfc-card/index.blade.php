@@ -1,48 +1,6 @@
-<x-app-layout :title="'V-Card List'">
+<x-app-layout :title="'V-Card List - User Panel'">
 
     <div class="row">
-        <div class="col-lg-12">
-            <div class="d-flex align-items-center rounded py-5 px-5 bg-light-primary mt-5 mt-lg-0" style="border: 1px dashed blue;">
-                <i class="fa-solid fa-information-5 fs-3x text-warning me-5">
-                    <span class="path1"></span><span class="path2"></span><span class="path3"></span>
-                </i>
-                <!--begin::Description-->
-                <div class="d-flex justify-content-between align-items-center w-100">
-                    <div class="text-gray-700 fw-bold d-flex ">
-                        @if (!empty($subscription->plan))
-                            <strong class=""> Total Created V-Card: {{ $nfc_cards->count() }}|| V-Card Limitation:
-                                {{ $subscription->plan->nfc }}|| V-Card Remaining:
-                                {{ $subscription->plan->nfc - $nfc_cards->count() }}||Total Created V-Card:
-                                {{ $nfc_cards->count() }}
-                            </strong>
-                        @else
-                            <strong class="">Total Created V-Card: {{ $nfc_cards->count() }} ||
-                                QR Limitation: 10 (Trial Period)|| V-Card Remaining:
-                                {{ 10 - $nfc_cards->count() }}</strong>
-                        @endif
-                    </div>
-                    <div>
-                        @if (!empty($subscription->plan))
-                            @if ($subscription->plan->nfc - $nfc_cards->count() > 0)
-                                <a href="{{ route('user.virtual-card.create') }}"
-                                    class="btn btn-sm btn-primary rounded-2 me-3">
-                                    Create V-Card
-                                </a>
-                            @endif
-                        @else
-                            @if (10 - $nfc_cards->count() > 0)
-                                <a href="{{ route('user.virtual-card.create') }}"
-                                    class="btn btn-sm btn-primary rounded-2 me-3">
-                                    Create V-Card
-                                </a>
-                            @endif
-                        @endif
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
         @include('nfc.nfc_index_partial')
     </div>
 

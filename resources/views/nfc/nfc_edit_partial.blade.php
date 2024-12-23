@@ -8,7 +8,7 @@
     @endphp
 @endif
 
-<div class="summury_box my-5">
+<div class="summury_box my-5 mt-0">
     <div class="row gy-5 gx-xl-10 m-auto d-flex justify-content-center">
         <div class="col-md-3 mb-2 mb-xl-5 ps-0">
             <div class="card h-lg-100">

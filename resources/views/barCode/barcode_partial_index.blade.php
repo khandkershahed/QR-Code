@@ -1,12 +1,20 @@
-<div class="col-lg-12 mt-10 mb-10">
-    <div class="card card-p-0 card-flush pt-0 mb-5">
-        <div class="card-header bg-info align-items-center">
-            <h1 class="mb-0 text-center w-100 text-white">Manage Your Barcode</h1>
+<div class="col-lg-12">
+    <div class="card rounded-0 mt-4">
+        <div class="card-header p-5 align-items-center rounded-0 bg-info m-0">
+            <div>
+                <h1 class="mb-0 mt-0 card-title fs-2 text-white">All Bar Code!</h1>
+                <p class="text-white mt-2 mb-0">View and manage all Bar Code information in this page.</p>
+            </div>
+            <div>
+                <a href="{{ route('user.barcode.create') }}" class="btn btn-white btn-active-light-warning text-hover-inverse-white">
+                    <i class="fa-solid fa-user-plus"></i> Add Bar-Code
+                </a>
+            </div>
         </div>
-        <div class="card-body table-responsive">
-            <table class="table my-datatable table-striped table-row-bordered gy-5 gs-7 border rounded">
+        <div class="card-body p-0 rounded-0">
+            <table class="table my-datatable table-striped table-row-bordered mt-0">
                 <thead>
-                    <tr class="fw-bold fs-6 text-gray-800 px-7">
+                    <tr class="text-start bg-info text-white fw-bolder fs-7 text-uppercase gs-0">
                         <th width="5%">SL</th>
                         <th width="15%">Image</th>
                         <th width="20%">Product </th>
@@ -19,7 +27,7 @@
                 <tbody class="fw-semibold text-gray-600">
                     @foreach ($bar_codes as $bar_code)
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
+                            <td class="text-center">{{ $loop->iteration }}</td>
                             <td>
                                 <img class="" width="50px" src="{{ $bar_code->qr_png_url }}" alt="">
                             </td>
@@ -116,40 +124,36 @@
                                     </div>
                                 </div>
                             </td>
-                            <td class="pe-0 text-center">
-                                <a href="{{ route('user.barcode.destroy', $bar_code->id) }}"
-                                    class="btn btn-icon btn-danger btn-bg-light btn-active-color-light btn-sm me-2 delete">
-                                    <i class="fas fa-trash"></i>
-                                </a>
-                                <a href="#" class="btn btn-light btn-active-light-primary btn-sm"
-                                    data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end"
-                                    data-kt-menu-flip="top-end">
-                                    Download
-                                    <span class="svg-icon fs-5 m-0">
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                            viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <polygon points="0 0 24 0 24 24 0 24"></polygon>
-                                                <path
-                                                    d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z"
-                                                    fill="currentColor" fill-rule="nonzero"
-                                                    transform="translate(12.000003, 11.999999) rotate(-180.000000) translate(-12.000003, -11.999999)">
-                                                </path>
-                                            </g>
-                                        </svg>
-                                    </span>
-                                </a>
-                                <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
-                                    data-kt-menu="true ">
-                                    @if (!empty($bar_code->bar_code_pdf))
-                                        <div class="menu-item px-3">
-                                            <a href="{{ asset($bar_code->bar_code_pdf) }}" class="menu-link px-3"
-                                                download data-kt-docs-table-filter="edit_row">
-                                                PDF
+                            <td class="pe-5 text-center">
+                                <div class="dropdown">
+                                    <button class="btn btn-light-danger dropdown-toggle" type="button"
+                                        id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Actions
+                                    </button>
+                                    <ul class="dropdown-menu mt-0 pt-0 rounded-0" aria-labelledby="dropdownMenuButton1">
+                                        @if (!empty($bar_code->bar_code_pdf))
+                                            <li class="text-muted">
+                                                <a href="{{ asset($bar_code->bar_code_pdf) }}" download
+                                                    data-kt-docs-table-filter="edit_row"
+                                                    class="menu-link px-3 dropdown-item">
+                                                    <i class="fa-solid fa-file-pdf pe-2"></i> PDF
+                                                </a>
+                                            </li>
+                                        @endif
+                                        <li class="text-muted">
+                                            <a href="javascript:void(0)" data-kt-menu-trigger="click"
+                                                data-kt-menu-placement="bottom-end" data-kt-menu-flip="top-end"
+                                                class="menu-link px-3 dropdown-item">
+                                                <i class="fa-solid fa-cloud-arrow-down pe-2"></i> Download
                                             </a>
-                                        </div>
-                                    @endif
+                                        </li>
+                                        <li class="text-muted">
+                                            <a href="{{ route('user.barcode.destroy', $bar_code->id) }}"
+                                                class="menu-link px-3 delete dropdown-item">
+                                                <i class="fa-solid fa-trash pe-2"></i> Delete
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </td>
                         </tr>
