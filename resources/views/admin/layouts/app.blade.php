@@ -2,6 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
+    <!-- Meta Tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -12,7 +13,7 @@
     <meta name="keywords" content="QR Codes, Bar Codes, NFC Cards, Virtual Cards, Admin Dashboard">
     <meta name="author" content="GoFlixza">
 
-    <!-- Open Graph Meta Tags for Social Sharing -->
+    <!-- Open Graph Meta Tags (For Social Sharing) -->
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="website">
     <meta property="og:title" content="{{ $title ?? config('app.name', 'GoFlixza') }}">
@@ -34,54 +35,18 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
 
-    <!-- Critical CSS (Inline for Faster Load) -->
-    <style>
-        /* Critical CSS: Only the essential styles needed for above-the-fold content */
-        body {
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .header-fixed {
-            position: fixed;
-            width: 100%;
-            top: 0;
-        }
-
-        /* Add more styles that are required to render the page immediately */
-    </style>
-
-    <!-- Lazy Load CSS -->
-    <link rel="stylesheet" href="{{ asset('admin/assets/css/style.bundle.css') }}" media="print"
-        onload="this.media='all'">
-    <noscript>
-        <link rel="stylesheet" href="{{ asset('admin/assets/css/style.bundle.css') }}">
-    </noscript>
-
-    <!-- Lazy Load DataTable and Calendar CSS -->
+    <!-- Stylesheets -->
+    <link href="{{ asset('admin/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('admin/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet"
-        media="print" onload="this.media='all'">
-    <noscript>
-        <link href="{{ asset('admin/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet">
-    </noscript>
-
-    <!-- Lazy Load DataTable Plugin CSS -->
+        type="text/css">
     <link href="{{ asset('admin/assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"
-        media="print" onload="this.media='all'">
-    <noscript>
-        <link href="{{ asset('admin/assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet">
-    </noscript>
-
-    <link href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" media="print"
-        onload="this.media='all'">
-    <noscript>
-        <link href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet">
-    </noscript>
-
-    <link href="https://cdn.jsdelivr.net/npm/formvalidation@1.9.0/dist/css/formValidation.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css" rel="stylesheet">
+        type="text/css">
+    {{-- <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet"> --}}
+    <link href="{{ asset('frontend/assets/css/jquery_timepicker.min.css') }}" rel="stylesheet" type="text/css">
+    {{-- <link href="https://cdn.jsdelivr.net/npm/formvalidation@1.9.0/dist/css/formValidation.min.css" rel="stylesheet"> --}}
 
     <!-- Page Title -->
-    @props(['title'])
     <title>{{ $title ?? config('app.name', 'GoFlixza') }} | Your Hub for QR, Bar Codes, NFC V.Cards</title>
 </head>
 
