@@ -51,7 +51,7 @@
                 <div class="card-body">
                     <div>
                         <table
-                            class="table align-middle border rounded table-row-dashed table-striped table-hover  fs-6 g-5"
+                            class="table my-datatable align-middle border rounded table-row-dashed table-striped table-hover fs-6 g-5"
                             id="qr_code_admin">
                             <thead>
                                 <tr class="text-gray-500 fw-bold fs-7 text-uppercase text-center">
@@ -211,68 +211,20 @@
 
     @push('scripts')
         <script>
-            "use strict";
-
-            // Class definition
-            var KTDatatablesExample = function() {
-                // Shared variables
-                var table;
-                var datatable;
-
-                // Private functions
-                var initDatatable = function() {
-                    // Check if the DataTable is already initialized
-                    if ($.fn.DataTable.isDataTable(table)) {
-                        // Destroy the existing instance
-                        $(table).DataTable().destroy();
-                    }
-
-                    // Set date data order
-                    const tableRows = table.querySelectorAll('tbody tr');
-
-                    tableRows.forEach(row => {
-                        const dateRow = row.querySelectorAll('td');
-                        const realDate = moment(dateRow[3].innerHTML, "DD MMM YYYY, LT")
-                            .format(); // select date from 4th column in table
-                        dateRow[3].setAttribute('data-order', realDate);
-                    });
-
-                    // Init datatable --- more info on datatables: https://datatables.net/manual/
-                    datatable = $(table).DataTable({
-                        "info": false,
-                        'order': [],
-                        'pageLength': 10,
-                    });
-                }
-
-                // Search Datatable --- official docs reference: https://datatables.net/reference/api/search()
-                var handleSearchDatatable = () => {
-                    const filterSearch = document.querySelector('[data-kt-filter="search"]');
-                    filterSearch.addEventListener('keyup', function(e) {
-                        datatable.search(e.target.value).draw();
-                    });
-                }
-
-                // Public methods
-                return {
-                    init: function() {
-                        table = document.querySelector('#qr_code_admin');
-
-                        if (!table) {
-                            return;
-                        }
-
-                        initDatatable();
-                        exportButtons();
-                        handleSearchDatatable();
-                    }
-                };
-            }();
-
-            // On document ready
-            KTUtil.onDOMContentLoaded(function() {
-                KTDatatablesExample.init();
-            });
+            $('#qr_code_admin').DataTable({
+                    "language": {
+                        "lengthMenu": "Show _MENU_",
+                    },
+                    "dom": "<'row'" +
+                        "<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
+                        "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
+                        ">" +
+                        "<'table-responsive'tr>" +
+                        "<'row'" +
+                        "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
+                        "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
+                        ">"
+                });
         </script>
     @endpush
 </x-app-layout>
