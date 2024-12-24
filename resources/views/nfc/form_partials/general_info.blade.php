@@ -67,7 +67,7 @@
         </div>
     </div>
     <div class="separator separator-dashed separator-content border-info my-15 fw-bold">
-        <i class="fa-solid fa-diamond fs-1 text-info"></i><span class="fs-2 px-3">Details</span><i
+        <i class="fa-solid fa-diamond fs-1 text-info"></i><span class="fs-2 px-3">Information</span><i
             class="fa-solid fa-diamond fs-1 text-info"></i>
     </div>
     <div class="row">
@@ -133,22 +133,28 @@
             <x-metronic.input type="text" class="form-control form-control-solid form-control-sm" name="job_title"
                 :value="optional($nfc_card->nfcData)->job_title" placeholder="Enter Job Title " />
         </div>
-
+        <div class="fv-row col-lg-12 col-12 mb-4">
+            <x-metronic.label for="location"
+                class="fw-semibold fs-6 mb-2">{{ __('Location / Address') }}</x-metronic.label>
+            <textarea name="location" class="form-control form-control-solid form-control-sm" rows="2">{{ optional($nfc_card->nfcData)->location }}</textarea>
+        </div>
         {{-- <form class="social_links_form form" method="POST" action="{{ route('nfc.social_links.add') }}" autocomplete="off"
     enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="card_id" value="{{ $nfc_card->id }}"> --}}
+        <div class="separator separator-dashed separator-content border-info my-15 fw-bold">
+            <i class="fa-solid fa-diamond fs-1 text-info"></i><span class="fs-2 px-3">Social</span><i
+                class="fa-solid fa-diamond fs-1 text-info"></i>
+        </div>
         <div class="fv-row col-lg-4 mb-7">
-            <x-metronic.label class="fw-semibold fs-6 mb-2 required"><i
-                    class="fs-3 fa-solid fa-globe pe-2"></i>WebSite
+            <x-metronic.label class="fw-semibold fs-6 mb-2"><i class="fs-3 fa-solid fa-globe pe-2"></i>WebSite
                 URL</x-metronic.label>
             <x-metronic.input type="text" name="website_url"
                 value="{{ optional($nfc_card->nfcData)->website_url }}"
                 class="form-control form-control-solid mb-3 mb-lg-0" placeholder="WebSite URL" />
         </div>
         <div class="fv-row col-lg-4 mb-7">
-            <x-metronic.label class="fw-semibold fs-6 mb-2 required"><i
-                    class="fs-3 fa-brands fa-facebook pe-2"></i>Facebook
+            <x-metronic.label class="fw-semibold fs-6 mb-2"><i class="fs-3 fa-brands fa-facebook pe-2"></i>Facebook
                 URL</x-metronic.label>
             <x-metronic.input type="text" name="facebook_url"
                 value="{{ optional($nfc_card->nfcData)->facebook_url }}"
@@ -179,7 +185,7 @@
                 class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Youtube URL" />
         </div>
         <div class="fv-row col-lg-4 mb-7">
-            <x-metronic.label class="fw-semibold fs-6 mb-2 required"><i
+            <x-metronic.label class="fw-semibold fs-6 mb-2"><i
                     class="fs-3 fa-brands fa-linkedin pe-2 "></i>{{ __('Linkedin URL') }}</x-metronic.label>
             <x-metronic.input type="text" name="linkedin_url"
                 value="{{ optional($nfc_card->nfcData)->linkedin_url }}"
@@ -205,11 +211,6 @@
             <x-metronic.input type="text" name="youtube_url"
                 value="{{ optional($nfc_card->nfcData)->youtube_url }}"
                 class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Youtube URL" />
-        </div>
-        <div class="fv-row col-lg-12 col-12 mb-4">
-            <x-metronic.label for="location"
-                class="fw-semibold fs-6 mb-2">{{ __('Location / Address') }}</x-metronic.label>
-            <textarea name="location" class="form-control form-control-solid form-control-sm" rows="2">{{ optional($nfc_card->nfcData)->location }}</textarea>
         </div>
     </div>
     {{-- <div class="fv-row col-lg-4 mb-7">

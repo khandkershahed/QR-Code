@@ -5,7 +5,7 @@
     <x-vcard.template :templates="[
         [
             'value' => 'template-one',
-            'image' => 'frontend/images/nfc_template/template_one.jpg',
+            'image' => 'frontend/images/nfc_template/template_one.png',
         ],
         [
             'value' => 'template-two',
@@ -21,19 +21,15 @@
         ],
         [
             'value' => 'template-five',
-            'image' => 'frontend/images/nfc_template/template_five.jpg',
+            'image' => 'frontend/images/nfc_template/template_five.png',
         ],
         [
             'value' => 'template-six',
-            'image' => 'frontend/images/nfc_template/template_six.jpg',
+            'image' => 'frontend/images/nfc_template/template_six.png',
         ],
         [
             'value' => 'template-seven',
-            'image' => 'frontend/images/nfc_template/template_seven.jpg',
-        ],
-        [
-            'value' => 'template-eight',
-            'image' => 'frontend/images/nfc_template/template_eight.jpg',
+            'image' => 'frontend/images/nfc_template/template_seven.png',
         ],
     ]" :selectedTemplate="$nfc_card->nfc_template" />
 

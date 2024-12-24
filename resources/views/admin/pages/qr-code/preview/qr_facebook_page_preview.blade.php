@@ -155,7 +155,6 @@
                             <div class="d-flex justify-content-center align-items-center pb-5">
                                 <a href="" class="like__btn text-decoration-none qr_data_facebook_page_facebook" target="_blank">
                                     <span id="icon"><i class="far fa-thumbs-up"></i></span>
-                                    {{-- <span id="count">0</span> --}}
                                     Like
                                 </a>
                             </div>

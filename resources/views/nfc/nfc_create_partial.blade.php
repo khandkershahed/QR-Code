@@ -79,7 +79,7 @@
                             <x-vcard.template :templates="[
                                 [
                                     'value' => 'template-one',
-                                    'image' => 'frontend/images/nfc_template/template_one.jpg',
+                                    'image' => 'frontend/images/nfc_template/template_one.png',
                                 ],
                                 [
                                     'value' => 'template-two',
@@ -104,10 +104,6 @@
                                 [
                                     'value' => 'template-seven',
                                     'image' => 'frontend/images/nfc_template/template_seven.png',
-                                ],
-                                [
-                                    'value' => 'template-eight',
-                                    'image' => 'frontend/images/nfc_template/template_eight.png',
                                 ],
                                 [
                                     'value' => 'template-nine',
