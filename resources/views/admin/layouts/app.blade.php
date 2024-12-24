@@ -27,14 +27,11 @@
     <meta name="twitter:title" content="{{ $title ?? config('app.name', 'GoFlixza') }}">
     <meta name="twitter:description" content="Your hub for QR, Bar Codes, NFC V.Cards, and more.">
     <meta name="twitter:image" content="{{ asset('frontend/assets/images/logos/logo.png') }}">
-
     <!-- Favicon -->
     <link rel="shortcut icon"
         href="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}">
-
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
-
     <!-- Stylesheets -->
     <link href="{{ asset('admin/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css">
@@ -42,10 +39,7 @@
         type="text/css">
     <link href="{{ asset('admin/assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"
         type="text/css">
-    {{-- <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet"> --}}
     <link href="{{ asset('frontend/assets/css/jquery_timepicker.min.css') }}" rel="stylesheet" type="text/css">
-    {{-- <link href="https://cdn.jsdelivr.net/npm/formvalidation@1.9.0/dist/css/formValidation.min.css" rel="stylesheet"> --}}
-
     <!-- Page Title -->
     <title>{{ $title ?? config('app.name', 'GoFlixza') }} | Your Hub for QR, Bar Codes, NFC V.Cards</title>
 </head>
@@ -77,7 +71,6 @@
             </div>
         </div>
     </div>
-
     <div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
         <span class="svg-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -89,31 +82,22 @@
             </svg>
         </span>
     </div>
-
-
     <!-- jQuery (Necessary for DataTables and other plugins) -->
     <script src="{{ asset('frontend/assets/js/jquery-3.6.0.min.js') }}"></script>
-
     <!-- Vendor Scripts -->
     <script src="{{ asset('admin/assets/plugins/global/plugins.bundle.js') }}"></script>
     <script src="{{ asset('admin/assets/js/scripts.bundle.js') }}"></script>
     <script src="{{ asset('admin/assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
     <script src="{{ asset('admin/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
     <script src="{{ asset('admin/assets/plugins/custom/formrepeater/formrepeater.bundle.js') }}"></script>
-
     <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js" defer></script>
     <script src="{{ asset('frontend/assets/js/fontawesome.js') }}" defer></script>
-
     <!-- AlpineJS (Deferred for performance) -->
     <script defer src="{{ asset('frontend/assets/js/alpine.js') }}"></script>
-
     <!-- Custom Scripts (Make sure they depend on the earlier scripts) -->
     <script src="{{ asset('admin/js/custom.js') }}" defer></script>
-
     <!-- Additional Custom Scripts -->
     <script src="{{ asset('admin/assets/plugins/custom/tinymce/tinymce.bundle.js') }}" defer></script>
-
-    <!-- Specific Page Scripts (Load only for the pages that need them) -->
     <script src="{{ asset('admin/assets/js/custom/account/settings/profile-details.js') }}" defer></script>
     <script src="{{ asset('admin/assets/js/custom/account/settings/deactivate-account.js') }}" defer></script>
     <script src="{{ asset('admin/assets/js/custom/apps/ecommerce/catalog/save-product.js') }}" defer></script>
@@ -124,14 +108,6 @@
     <script src="{{ asset('admin/assets/js/custom/utilities/modals/create-app.js') }}" defer></script>
     <script src="{{ asset('frontend/assets/js/jquery_timepicker.js') }}" defer></script>
     <script src="{{ asset('frontend/assets/js/form-validator.min.js') }}" defer></script>
-
-
-    <!-- External FormValidation & Timepicker Scripts -->
-    {{-- <script src="https://cdn.jsdelivr.net/npm/formvalidation@1.9.0/dist/js/FormValidation.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/formvalidation@1.9.0/dist/js/plugins/Bootstrap5.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/formvalidation@1.9.0/dist/js/plugins/Trigger.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/formvalidation@1.9.0/dist/js/plugins/SubmitButton.min.js" defer></script> --}}
-
     <!-- Inline JavaScript: Only the essential functions to make the page interactive -->
     <script>
         // DataTable Initialization

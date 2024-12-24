@@ -227,7 +227,7 @@
                               <img
                                 width="60px"
                                 class="img-fluid"
-                                src="https://d3nvy39jvu7woe.cloudfront.net/static/images/restaurantmenu/breakfast.png"
+                                src="{{ asset('images/d-image/breakfast.png') }}"
                                 alt=""
                               />
                             </div>
@@ -255,7 +255,7 @@
                               <img
                                 width="60px"
                                 class="img-fluid"
-                                src="https://d3nvy39jvu7woe.cloudfront.net/static/images/restaurantmenu/breakfast.png"
+                                src="{{ asset('images/d-image/breakfast.png') }}"
                                 alt=""
                               />
                             </div>

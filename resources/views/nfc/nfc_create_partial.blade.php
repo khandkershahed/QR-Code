@@ -1,5 +1,3 @@
-{{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css"> --}}
 <style>
     .wrapperss {
         padding: 70px 0;
@@ -55,7 +53,7 @@
 </style>
 <div class="row">
     <div class="col-lg-12">
-        <div class="card my-10 rounded-0">
+        <div class="card my-10 mt-5 rounded-0">
             <div class="card-header p-5 align-items-center rounded-0 bg-info m-0">
                 <div>
                     <h1 class="mb-0 mt-0 card-title fs-2 text-white">Create New VCard</h1>
@@ -388,56 +386,6 @@
                         'Please enter a valid alias. Only letters, numbers, and non-consecutive hyphens are allowed.'
                     );
                 }
-            });
-        });
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('.center-sliders').slick({
-                slidesToShow: 5,
-                slidesToScroll: 1,
-                centerMode: true,
-                arrows: true,
-                dots: false,
-                speed: 300,
-                centerPadding: '20px',
-                infinite: true,
-                autoplaySpeed: 5000,
-                autoplay: true,
-                responsive: [{
-                        breakpoint: 1200, // Screens smaller than 1200px
-                        settings: {
-                            slidesToShow: 4,
-                            slidesToScroll: 1,
-                            centerMode: true
-                        }
-                    },
-                    {
-                        breakpoint: 992, // Screens smaller than 992px
-                        settings: {
-                            slidesToShow: 3,
-                            slidesToScroll: 1,
-                            centerMode: false
-                        }
-                    },
-                    {
-                        breakpoint: 768, // Screens smaller than 768px
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 1,
-                            centerMode: false
-                        }
-                    },
-                    {
-                        breakpoint: 576, // Screens smaller than 576px
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1,
-                            centerMode: false
-                        }
-                    }
-                ]
             });
         });
     </script>

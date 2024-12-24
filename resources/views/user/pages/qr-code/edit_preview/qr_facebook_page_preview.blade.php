@@ -161,7 +161,7 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-center">
-                            <img class="img-fluid qr_data_facebook_page_background_image" src="{{ asset('images/d-image/faceboook-page.png') }}" alt="" />
+                            <img class="img-fluid qr_data_facebook_page_background_image" src="{{ asset('images/d-image/social-media-like-banner.webp') }}" alt="" />
                         </div>
                     </div>
                 </div>
