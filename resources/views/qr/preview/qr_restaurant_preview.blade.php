@@ -138,7 +138,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 px-0 d-flex flex-column justify-content-center align-items-center ps-2">
+                        <div class="col-lg-6 px-0 d-flex flex-column justify-content-center align-items-center ps-2 border">
                             <h4>All Menus</h4>
                             <div class="w-100 d-flex flex-column justify-content-center align-items-center">
                                 <!-- First Menu -->
