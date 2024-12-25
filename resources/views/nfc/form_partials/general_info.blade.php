@@ -102,7 +102,7 @@
         <div class="fv-row col-lg-3 col-6 mb-4">
             <x-metronic.label class="fw-semibold fs-6 mb-2">FAX Number</x-metronic.label>
             <x-metronic.input type="text" class="form-control form-control-solid form-control-sm"
-                name="fax_personal" placeholder="Your Fax Number" />
+                name="fax" :value="optional($nfc_card->nfcData)->fax" placeholder="Your Fax Number" />
         </div>
 
         <div class="fv-row col-lg-3 col-6 mb-4">

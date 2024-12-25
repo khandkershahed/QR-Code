@@ -421,17 +421,17 @@
                     </section>
                     <!-- Date Area -->
                     @if (
-                        !empty($nfc_card->nfcData->email_personal) ||
-                            !empty($nfc_card->nfcData->email_work) ||
-                            !empty($nfc_card->nfcData->phone_personal) ||
-                            !empty($nfc_card->nfcData->phone_work) ||
-                            !empty($nfc_card->nfcData->location) ||
-                            !empty($nfc_card->nfcData->date_of_birth) ||
-                            !empty($nfc_card->nfcData->address_line_two))
+                        !empty(optional($nfc_card->nfcData)->email_personal) ||
+                            !empty(optional($nfc_card->nfcData)->email_work) ||
+                            !empty(optional($nfc_card->nfcData)->phone_personal) ||
+                            !empty(optional($nfc_card->nfcData)->phone_work) ||
+                            !empty(optional($nfc_card->nfcData)->location) ||
+                            !empty(optional($nfc_card->nfcData)->date_of_birth) ||
+                            !empty(optional($nfc_card->nfcData)->address_line_two))
                         <section>
                             <div class="container py-5">
                                 <div class="row justify-content-center">
-                                    @if (!empty($nfc_card->nfcData->email_personal) || !empty($nfc_card->nfcData->email_work))
+                                    @if (!empty(optional($nfc_card->nfcData)->email_personal) || !empty(optional($nfc_card->nfcData)->email_work))
                                         <div class="col-md-6">
                                             <div class="text-white text-center ps-lg-3 ps-0">
                                                 <div class="">
@@ -439,12 +439,12 @@
                                                         class="fa fa-envelope social_icons fs-3 bg-white contact-icons-tem2"></i>
                                                 </div>
                                                 <small class="mb-0">E-Mail Address</small>
-                                                <h5 class="mb-0">{{ $nfc_card->nfcData->email_personal }}</h5>
-                                                <h5 class="mb-0">{{ $nfc_card->nfcData->email_work }}</h5>
+                                                <h5 class="mb-0">{{ optional($nfc_card->nfcData)->email_personal }}</h5>
+                                                <h5 class="mb-0">{{ optional($nfc_card->nfcData)->email_work }}</h5>
                                             </div>
                                         </div>
                                     @endif
-                                    @if (!empty($nfc_card->nfcData->phone_personal) || !empty($nfc_card->nfcData->phone_work))
+                                    @if (!empty(optional($nfc_card->nfcData)->phone_personal) || !empty(optional($nfc_card->nfcData)->phone_work))
                                         <div class="col-md-6">
                                             <div class="text-white text-center ps-lg-3 ps-0 mt-4 mt-lg-0">
                                                 <div class="">
@@ -452,13 +452,13 @@
                                                         class="fa fa-phone social_icons fs-3 bg-white contact-icons-tem2"></i>
                                                 </div>
                                                 <small class="mb-0">Phone</small>
-                                                <h5 class="mb-0 fs-5">{{ $nfc_card->nfcData->phone_personal }}
+                                                <h5 class="mb-0 fs-5">{{ optional($nfc_card->nfcData)->phone_personal }}
                                                 </h5>
-                                                <h5 class="mb-0 fs-5">{{ $nfc_card->nfcData->phone_work }}</h5>
+                                                <h5 class="mb-0 fs-5">{{ optional($nfc_card->nfcData)->phone_work }}</h5>
                                             </div>
                                         </div>
                                     @endif
-                                    @if (!empty($nfc_card->nfcData->date_of_birth))
+                                    @if (!empty(optional($nfc_card->nfcData)->date_of_birth))
                                         <div class="col-md-6 mt-4">
                                             <div class="text-white text-center ps-lg-3 ps-0">
                                                 <div class="">
@@ -466,12 +466,12 @@
                                                         class="fa-solid fa-cake-candles social_icons fs-3 bg-white contact-icons-tem2"></i>
                                                 </div>
                                                 <small class="mb-0">Date Of Birth</small>
-                                                <h5 class="mb-0 fs-5">{{ $nfc_card->nfcData->date_of_birth }}
+                                                <h5 class="mb-0 fs-5">{{ optional($nfc_card->nfcData)->date_of_birth }}
                                                 </h5>
                                             </div>
                                         </div>
                                     @endif
-                                    @if (!empty($nfc_card->nfcData->date_of_birth))
+                                    @if (!empty(optional($nfc_card->nfcData)->fax))
                                         <div class="col-md-6 mt-4">
                                             <div class="text-white text-center ps-lg-3 ps-0">
                                                 <div class="">
@@ -479,12 +479,12 @@
                                                         class="fa-solid fa-fax social_icons fs-3 bg-white contact-icons-tem2"></i>
                                                 </div>
                                                 <small class="mb-0">Fax Number</small>
-                                                <h5 class="mb-0 fs-5">(123)-456-7890</h5>
+                                                <h5 class="mb-0 fs-5">{{ optional($nfc_card->nfcData)->fax }}</h5>
                                             </div>
                                         </div>
                                     @endif
 
-                                    @if (!empty($nfc_card->nfcData->location))
+                                    @if (!empty(optional($nfc_card->nfcData)->location))
                                         <div class="col-md-6 mt-4">
                                             <div class="text-white text-center ps-lg-3 ps-0">
                                                 <div class="">
@@ -492,7 +492,7 @@
                                                         class="fa fa-location-dot social_icons fs-3 bg-white contact-icons-tem2"></i>
                                                 </div>
                                                 <small class="mb-0">Location</small>
-                                                <h5 class="mb-0 fs-5">{{ $nfc_card->nfcData->location }}</h5>
+                                                <h5 class="mb-0 fs-5">{{ optional($nfc_card->nfcData)->location }}</h5>
                                             </div>
                                         </div>
                                     @endif
