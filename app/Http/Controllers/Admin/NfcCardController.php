@@ -99,7 +99,7 @@ class NfcCardController extends Controller
                 });
             } catch (\Exception $e) {
                 Session::flash('error', "Email sent will be delayed due to server issue.");
-            }
+            } 
             $nfc = NfcCard::find($request->card_id);
             $code = $nfc->code;
             // Handle file uploads
