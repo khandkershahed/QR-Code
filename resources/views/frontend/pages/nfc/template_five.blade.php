@@ -3,163 +3,90 @@
 
 <head>
     <title>{{ optional($nfc_card->nfcData)->first_name }} {{ optional($nfc_card->nfcData)->last_name }}</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link rel="shortcut icon" href="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}" type="image/x-icon" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon"
+        href="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}"
+        type="image/x-icon">
 
-    <!-- Bootstrap CSS v5.2.1 -->
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- Slick CSS -->
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
-    <!-- Style Here -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
+    <!-- Custom Styles -->
     <style>
-        @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-        /* CSS for centering the mobile frame */
         :root {
             --white: #fff;
-            --tem-one-name-color: #fff;
-
-            @if ($nfc_card->font_family == 'bebas_neue')
-                --body-font-family: "Bebas Neue", sans-serif !important;
-                --tem-one-name-font-family: "Bebas Neue", sans-serif !important;
-                --tem-one-designation-font-family: "Bebas Neue", sans-serif !important;
-            @elseif($nfc_card->font_family == 'raleway')
-                --tem-one-name-font-family: "Raleway", sans-serif !important;
-                --body-font-family: "Raleway", sans-serif !important;
-                --tem-one-designation-font-family: "Raleway", sans-serif;
-            @else
-                --tem-one-name-font-family: "Raleway", sans-serif !important;
-                --body-font-family: "Raleway", sans-serif !important;
-                --tem-one-designation-font-family: "Raleway", sans-serif;
-            @endif
-
-            --tem-one-name-font-size: 40px;
-            --tem-one-designation-font-family: "Raleway",
-            sans-serif;
-            --tem-one-designation-color: #fff;
-            --tem-one-bio-title-color: #624aac;
-            --tem-profile-image-bg: #624aac;
-            --tem-one-social-icons-color: #fff;
-            --tem-one-social-icons-bg: #fff;
-            --tem-one-social-icons-font-size: 18px;
-            --tem-one-bio-title-font-size: 30px;
-            --tem-one-service-title-color: #fff;
-            --tem-one-service-title-font-size: 20px;
-            --tem-one-service-box-bg: #624aac;
-            --tem-one-address-color: #fff;
             --button_bg_color: {{ $nfc_card->button_bg_color }};
             --button_title_color: {{ $nfc_card->button_title_color }};
+            --tem-one-name-font-size: 40px;
+            --tem-one-name-color: #fff;
+            --tem-one-designation-color: #fff;
+            --tem-one-service-box-bg: #624aac;
+            --tem-one-service-title-color: #fff;
+            --tem-one-bio-title-color: #624aac;
+            --tem-one-social-icons-color: #fff;
+            --tem-one-social-icons-font-size: 18px;
+            --tem-profile-image-bg: #624aac;
+            --body-font-family: "Poppins", sans-serif;
         }
 
         body {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: auto;
             margin: 0;
             padding: 0;
             font-family: var(--body-font-family);
-            letter-spacing: 2px;
         }
 
         .nfc-mobile-frame {
             max-width: 576px;
-
             min-height: 100vh;
-            /* border: 2px solid #1026bf; */
-            border-radius: 20px;
             overflow: hidden;
-            position: relative;
         }
 
-        /* CSS for the card inside the mobile frame */
         .nfc-mobile-frame .card {
             background-color: var(--white);
             width: 100%;
             height: 100%;
-            border-radius: 20px;
             overflow-y: auto;
-        }
-
-        .nfc-mobile-frame .card title {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-        }
-
-        .nfc-one-cover-img-box {
-            position: relative;
-            max-width: 100%;
         }
 
         .nfc-one-cover-img {
             background-size: cover;
-            height: 300px;
+            height: 400px;
             background-position: center;
         }
 
         .slick-slide {
             margin-right: 20px;
-            /* Adjust the value to set the desired gap */
         }
 
-        /* Ensure last slide doesn't have margin */
         .slick-slide:last-child {
             margin-right: 0;
             border-radius: 10px;
         }
 
-        /* Media query for smaller screens */
         @media only screen and (max-width: 768px) {
-
-            html,
-            body {
-                width: 100%;
-                overflow-x: hidden;
-            }
-
-            .mobile-profiles {
-                padding-top: 65px;
-            }
-
-            .mobile-images-profile {
-                margin-top: 0 !important;
-                text-align: center;
-            }
-
-            .mobile-images-profile img {
-                left: auto !important;
-            }
-
             .nfc-mobile-frame {
                 max-width: 390px;
                 width: 100%;
             }
 
             .nfc-mobile-frame .card {
-                border-radius: 0px !important;
-            }
-
-            .contact-info {
-                margin-left: 0px !important;
-            }
-
-            .mobile-d-none {
-                display: none;
+                border-radius: 0;
             }
         }
 
         .video-wrapper {
             position: relative;
             padding-bottom: 56.25%;
-            padding-top: 25px;
             height: 0;
         }
 
@@ -170,8 +97,230 @@
             width: 100%;
             height: 100%;
         }
+
+        .gradient-border {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(90deg, #b24592, #f15f79);
+            padding: 4px;
+            /* Adjust for the border thickness */
+            position: relative;
+            z-index: 15;
+        }
+
+        .gradient-border img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #ffffff70;
+            object-fit: cover;
+        }
+
+        .social-icon-five {
+            background: linear-gradient(90deg, #b24592, #f15f79);
+            box-shadow: 3px 2px 15px hsla(0, 0%, 62%, .8);
+            cursor: pointer;
+            height: 64px;
+            min-width: 64px;
+            transition: all .3s ease;
+            width: 64px;
+            text-decoration: none
+        }
+
+        .social-icons {
+            color: white;
+            margin-left: 3px;
+        }
+
+        .name-title {
+            background: linear-gradient(90deg, #b24592, #f15f79);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .event-card {
+            border-radius: 10px;
+            box-shadow: -6px -2px 16px hsla(0, 0%, 100%, .8), 6px 5px 20px hsla(0, 0%, 62%, .4);
+        }
+
+        .event-name {
+            color: #181818;
+            font-size: 14px;
+        }
+
+        .event-name-contact {
+            color: #181818;
+            font-size: 12px;
+            word-break: break-all;
+        }
+
+        .heading-left,
+        .vcard-nine .heading-right {
+            background: linear-gradient(90deg, #b24592, #f15f79);
+            color: #fff;
+            font-size: 24px;
+            font-weight: 600;
+            padding: 16px 30px;
+            width: -moz-fit-content;
+            width: fit-content;
+        }
+
+        .heading-left {
+            border-radius: 0 0 50px 0;
+            margin-left: -16px;
+        }
+
+        .heading-right,
+        .vcard-nine .heading-right {
+            background: linear-gradient(90deg, #b24592, #f15f79);
+            color: #fff;
+            font-size: 24px;
+            font-weight: 600;
+            padding: 16px 30px;
+            width: -moz-fit-content;
+            width: fit-content;
+        }
+
+        .heading-right {
+            border-radius: 0 0 0 50px;
+            margin-left: auto;
+            margin-right: -16px;
+        }
+
+        .qr-code-scanner {
+            border: 1px solid #505050;
+            border-radius: 20px;
+        }
+
+        .qr-profile img {
+            height: 180px;
+            min-width: 180px;
+            -o-object-fit: cover;
+            object-fit: cover;
+            width: 180px;
+        }
+
+        .product-profile img {
+            -o-object-fit: cover;
+            height: 200px;
+            min-width: 200px;
+            object-fit: cover;
+            width: 200px;
+        }
+
+        .product-block {
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        }
+
+        .business-card .calendar-icon {
+            height: 60px;
+            background: linear-gradient(90deg, #b24592, #f15f79);
+            border-radius: 50px !important;
+        }
+
+        .business-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 40px;
+        }
+
+        .gallery-img-four {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px, rgba(0, 0, 0, 0.1) 0px 0px 1px;
+        }
+
+        .swiper-slide {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 200ms linear;
+            transform: scale(0.8);
+        }
+
+        .swiper-slide.swiper-slide-active {
+            transform: scale(1);
+            background: transparent;
+        }
+
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            display: none !important;
+        }
+
+        .custom-next i,
+        .custom-prev i {
+            font-size: 24px;
+            color: #000;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .custom-next i {
+            right: 10px;
+        }
+
+        .custom-prev i {
+            left: 10px;
+        }
+
+        .testimonial-sliders {
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .footer-nav-tem1 {
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            background-color: var(--info-500);
+            width: 575px;
+            height: 62px;
+            margin: auto;
+        }
+
+        .footer-nav-tem1 ul {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            list-style: none;
+            box-shadow: rgb(255 255 255 / 20%) 0px 2px 8px;
+            background: white;
+        }
+
+        .footer-nav-tem1 ul li {
+            flex: 1;
+        }
+
+        .footer-nav-tem1 ul li a {
+            display: block;
+            font-size: var(--template-one-others-font-size);
+            text-align: center;
+            font-weight: 600;
+            text-transform: capitalize;
+            line-height: 1;
+            color: var(--template-one-color-white);
+            text-decoration: none;
+        }
+
+        .footer-nav-tem1 ul li.active a {
+            background: linear-gradient(90deg, #b24592, #f15f79);
+            padding: 24px;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            html,
+            body {
+                width: 100%;
+                overflow-x: hidden;
+            }
+        }
     </style>
-    <!-- Style Here End -->
 </head>
 
 <body>
@@ -182,46 +331,50 @@
                     <div class="col-lg-12 d-flex justify-content-center align-items-center px-0">
                         <div class="nfc-mobile-frame shadow-sm">
                             <div class="card p-0 border-0 shadow-none tem-one-scroll" style="overflow-x: hidden">
-                                <div class="card-header p-0 border-0 border-0">
+                                <div class="card-header p-0 border-0">
                                     <div class="nfc-one-cover-img-box">
                                         <div class="nfc-one-cover-img"
-                                            style="
-                          background-image: url({{ !empty($nfc_card->nfcData->banner_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->banner_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->banner_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }});
-                        ">
+                                            style="background-image: url({{ !empty($nfc_card->banner_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card)->banner_image)) ? asset('storage/nfc/' . optional($nfc_card)->banner_image) : asset('frontend/images/no_image.png') }});">
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="card-body p-0 tem-one-about-content">
+                                <div class="card-body p-0 px-4 tem-one-about-content">
                                     <div class="w-100">
                                         <div class="row align-items-center gx-0"
                                             style="background-color: {{ $nfc_card->background_color }};">
-                                            <div class="col-lg-4">
-                                                <div class="text-center text-lg-end mobile-images-profile"
+                                            <div class="col-lg-12" style="background-image: url({{ asset('images/appointment-bg.png') }})">
+                                                <div class="text-center d-flex justify-content-center align-items-center mobile-images-profile"
                                                     style="margin-top: -70px; position: relative">
-                                                    <img class=""
-                                                        style="width: 150px;height: 150px;border-radius: 100%;border: 6px solid white;position: relative;z-index: 15;background: #ffffff70;"
-                                                        src="{{ !empty($nfc_card->nfcData->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
-                                                        class="img-fluid banner-image" alt="banner" />
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-8">
-                                                <div class="text-center text-lg-end shadow-sm mobile-profiles"
-                                                    style="position: relative;border-top-left-radius: 20px;border-bottom-left-radius: 20px;z-index: 10;background: white;">
-                                                    <div class="p-3" style="margin-top: -60px">
-                                                        <h2
-                                                            style="font-size: 40px;font-family: var(--tem-one-name-font-family);">
-                                                            <span
-                                                                class="first_name">{{ optional($nfc_card->nfcData)->first_name }}</span>
-                                                            &nbsp;
-                                                            <span
-                                                                class="last_name">{{ optional($nfc_card->nfcData)->last_name }}</span>
-                                                        </h2>
-                                                        <h6 class="fw-bolder">
-                                                            {{ optional($nfc_card->nfcData)->designation }}</h6>
+                                                    <div class="gradient-border">
+                                                        <img src="{{ !empty($nfc_card->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card)->profile_image) : asset('frontend/images/no_image.png') }}"
+                                                            class="img-fluid banner-image" alt="banner" />
                                                     </div>
                                                 </div>
+                                                <div>
+                                                    <h2 class="text-center pt-4 fw-bold">
+                                                        <span
+                                                            class="first_name">{{ optional($nfc_card->nfcData)->first_name }}</span>
+                                                        <span
+                                                            class="last_name name-title">{{ optional($nfc_card->nfcData)->last_name }}</span>
+                                                    </h2>
+                                                    <p class="text-mute text-center mb-0">
+                                                        {{ optional($nfc_card)->designation }}</p>
+                                                    @if (!empty($nfc_card->nfcData))
+                                                        @php
+                                                            $nfcData = $nfc_card->nfcData;
+                                                        @endphp
+                                                        @if (!empty($nfcData->company_name))
+                                                            <p class="fw-bolder text-center">
+                                                                {{ $nfcData->company_name }}</p>
+                                                        @else
+                                                            <p>No company title found.</p>
+                                                        @endif
+                                                    @else
+                                                        <p>No NFC data available.</p>
+                                                    @endif
+                                                </div>
                                             </div>
+                                            {{-- Social --}}
                                             <div class="col-lg-12">
                                                 @if (
                                                     !empty($nfc_card->nfcData->facebook_url) ||
@@ -229,33 +382,41 @@
                                                         !empty($nfc_card->nfcData->youtube_url) ||
                                                         !empty($nfc_card->nfcData->google_plus_url))
                                                     <div
-                                                        class="rounded-5 mt-5 pb-4 d-flex justify-content-center align-items-center">
-                                                        @if (!empty($nfc_card->nfcData->facebook_url))
+                                                        class="rounded-5 py-4 d-flex justify-content-center align-items-center">
+                                                        @if (optional($nfc_card->nfcData)->facebook_url)
                                                             <a href="{{ optional($nfc_card->nfcData)->facebook_url }}"
-                                                                class="fa fa-facebook facebook_url icon fa-2x"
-                                                                style="text-decoration: none;width: 20%;color: {{ $nfc_card->title_color }};">
-                                                                {{-- <i class="fab fa-facebook facebook-icon icon fa-2x" title="Facebook"></i> --}}
+                                                                class="social-icon-five fa-2x rounded-circle d-flex justify-content-center align-items-center m-sm-3 m-1">
+                                                                <i class="fa-brands fa-facebook-f social-icons"></i>
                                                             </a>
                                                         @endif
-                                                        @if (!empty($nfc_card->nfcData->instagram_url))
+                                                        @if (optional($nfc_card->nfcData)->instagram_url)
                                                             <a href="{{ optional($nfc_card->nfcData)->instagram_url }}"
-                                                                class="fa fa-instagram instagram_url icon fa-2x"
-                                                                style="text-decoration: none;width: 20%;color: {{ $nfc_card->title_color }};">
-                                                                {{-- <i class="fab fa-facebook facebook-icon icon fa-2x" title="Facebook"></i> --}}
+                                                                class="social-icon-five fa-2x rounded-circle d-flex justify-content-center align-items-center m-sm-3 m-1">
+                                                                <i class="fa-brands fa-instagram social-icons"></i>
                                                             </a>
                                                         @endif
-                                                        @if (!empty($nfc_card->nfcData->youtube_url))
+                                                        @if (optional($nfc_card->nfcData)->youtube_url)
                                                             <a href="{{ optional($nfc_card->nfcData)->youtube_url }}"
-                                                                class="fa fa-youtube youtube_url icon fa-2x"
-                                                                style="text-decoration: none;width: 20%;color: {{ $nfc_card->title_color }};">
-                                                                {{-- <i class="fab fa-facebook facebook-icon icon fa-2x" title="Facebook"></i> --}}
+                                                                class="social-icon-five fa-2x rounded-circle d-flex justify-content-center align-items-center m-sm-3 m-1">
+                                                                <i class="fa-brands fa-youtube social-icons"></i>
                                                             </a>
                                                         @endif
-                                                        @if (!empty($nfc_card->nfcData->google_plus_url))
-                                                            <a href="{{ optional($nfc_card->nfcData)->google_plus_url }}"
-                                                                class="fa fa-google google_plus_url icon fa-2x"
-                                                                style="text-decoration: none;width: 20%;color: {{ $nfc_card->title_color }};">
-                                                                {{-- <i class="fab fa-facebook facebook-icon icon fa-2x" title="Facebook"></i> --}}
+                                                        @if (optional($nfc_card->nfcData)->linkedin_url)
+                                                            <a href="{{ optional($nfc_card->nfcData)->linkedin_url }}"
+                                                                class="social-icon-five fa-2x rounded-circle d-flex justify-content-center align-items-center m-sm-3 m-1">
+                                                                <i class="fa-brands fa-linkedin-in social-icons"></i>
+                                                            </a>
+                                                        @endif
+                                                        @if (optional($nfc_card->nfcData)->whatsapp_url)
+                                                            <a href="{{ optional($nfc_card->nfcData)->whatsapp_url }}"
+                                                                class="social-icon-five fa-2x rounded-circle d-flex justify-content-center align-items-center m-sm-3 m-1">
+                                                                <i class="fa-brands fa-whatsapp social-icons"></i>
+                                                            </a>
+                                                        @endif
+                                                        @if (optional($nfc_card->nfcData)->twitter_url)
+                                                            <a href="{{ optional($nfc_card->nfcData)->twitter_url }}"
+                                                                class="social-icon-five fa-2x rounded-circle d-flex justify-content-center align-items-center m-sm-3 m-1">
+                                                                <i class="fa-brands fa-twitter social-icons"></i>
                                                             </a>
                                                         @endif
                                                     </div>
@@ -266,286 +427,531 @@
                                                     </p>
                                                 @endif
                                             </div>
-                                        </div>
-                                        <div class="px-3">
-                                            <!-- personal Detailis -->
-                                            <!-- Contact Info -->
-                                            <div class="my-3 pt-4">
-                                                <div>
-                                                    <p class="bg-black text-white w-25 text-center rounded-2 py-2 mb-0">
-                                                        Contact
-                                                    </p>
-                                                    <div style="background-color: black;height: 3px;margin-top: -20px;">
-                                                    </div>
+                                            <div class="col-lg-12">
+                                                <div class="pt-2">
+                                                    @if (!empty($nfc_card->bio_description))
+                                                        <p class="text-center event-name">
+                                                            {{ $nfc_card->bio_description }}
+                                                        </p>
+                                                    @endif
                                                 </div>
-                                                <div class="row gx-3 align-items-lg-end">
-                                                    <div class="col-lg-6 d-lg-block d-none">
-                                                        <div>
-                                                            <img class="img-fluid"
-                                                                src="{{ !empty($nfc_card->nfcData->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
-                                                                alt="" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
+                                            </div>
+                                            {{-- Contact Info --}}
+                                            <div class="col-lg-12">
+                                                @if (!empty($nfc_card->nfcData))
+                                                    <div class="row mt-5 mb-4 justify-content-center">
                                                         @if (!empty($nfc_card->nfcData->email_personal) || !empty($nfc_card->nfcData->email_work))
-                                                            <div class="row align-items-center shadow-sm p-3">
-                                                                <div class="col-lg-4 text-center text-lg-start">
-                                                                    <img class="https://i.ibb.co/QjWnMtq/email.png"
-                                                                        src="" />
-                                                                </div>
-                                                                <div class="col-lg-8 text-center text-lg-start">
-                                                                    <div class="ps-3 pt-3 pt-lg-0">
-                                                                        <h6 class="text-black mb-0">E-mail</h6>
-                                                                        @if (!empty($nfc_card->nfcData->email_personal))
-                                                                            <small class="text-black">
-                                                                                <span
-                                                                                    class="email_personal">{{ optional($nfc_card->nfcData)->email_personal }}</span>
-                                                                                (personal)
-                                                                            </small>
-                                                                        @endif
+                                                            <div class="col-6 mb-4">
+                                                                <div class="card event-card px-3 py-4 h-100 border-0">
+                                                                    <span class="event-icon">
+                                                                        <img src="{{ asset('images/vcard5-email.png') }}"
+                                                                            alt="email">
+                                                                    </span>
+                                                                    <div class="event-detail mt-4">
+                                                                        <h6 class="text-sm-start text-center">
+                                                                            Email
+                                                                        </h6>
+                                                                        <div style="margin-bottom: -5px !important;">
+                                                                            @if (!empty($nfc_card->nfcData->email_personal))
+                                                                                <a href="mailto:{{ $nfc_card->nfcData->email_personal }}"
+                                                                                    class="event-name-contact text-sm-start text-center mb-0 text-decoration-none">
+                                                                                    {{ $nfc_card->nfcData->email_personal }}
+                                                                                    <small>(Personal)</small>
+                                                                                </a>
+                                                                            @endif
+                                                                        </div>
                                                                         @if (!empty($nfc_card->nfcData->email_work))
-                                                                            <br>
-                                                                            <small class="text-black">
-                                                                                <span
-                                                                                    class="email_work">{{ optional($nfc_card->nfcData)->email_work }}</span>
-                                                                                (work)
-                                                                            </small>
+                                                                            <a href="mailto:{{ $nfc_card->nfcData->email_work }}"
+                                                                                class="event-name-contact text-sm-start text-center mb-0 text-decoration-none">
+                                                                                {{ $nfc_card->nfcData->email_work }}
+                                                                                <small>(Work)</small>
+                                                                            </a>
                                                                         @endif
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         @endif
                                                         @if (!empty($nfc_card->nfcData->phone_personal) || !empty($nfc_card->nfcData->phone_work))
-                                                            <div class="row align-items-center shadow-sm mt-3 p-3">
-                                                                <div class="col-lg-4 text-center text-lg-start">
-                                                                    <img class=""
-                                                                        src="https://i.ibb.co/0fdd3KY/call.png" />
-                                                                </div>
-                                                                <div class="col-lg-8 text-center text-lg-start">
-                                                                    <div class="ps-3 pt-3 pt-lg-0">
-                                                                        <h6 class="text-black mb-0">Phone</h6>
-                                                                        @if (!empty($nfc_card->nfcData->phone_personal))
-                                                                            <small class="text-black">
-                                                                                <span
-                                                                                    class="phone_personal">{{ optional($nfc_card->nfcData)->phone_personal }}</span>
-                                                                                (personal)
-                                                                            </small>
-                                                                        @endif
+                                                            <div class="col-6 mb-4">
+                                                                <div class="card event-card px-3 py-4 h-100 border-0">
+                                                                    <span class="event-icon">
+                                                                        <img src="{{ asset('images/vcard5-phone.png') }}"
+                                                                            alt="email">
+                                                                    </span>
+                                                                    <div class="event-detail mt-4">
+                                                                        <h6 class="text-sm-start text-center">
+                                                                            Mobile Number
+                                                                        </h6>
+                                                                        <div style="margin-bottom: -5px !important;">
+                                                                            @if (!empty($nfc_card->nfcData->phone_personal))
+                                                                                <a href="mailto:{{ $nfc_card->nfcData->phone_personal }}"
+                                                                                    class="event-name-contact text-sm-start text-center mb-0 text-decoration-none">
+                                                                                    {{ $nfc_card->nfcData->phone_personal }}
+                                                                                    <small>(Personal)</small>
+                                                                                </a>
+                                                                            @endif
+                                                                        </div>
                                                                         @if (!empty($nfc_card->nfcData->phone_work))
-                                                                            <br>
-                                                                            <small class="text-black">
-                                                                                <span
-                                                                                    class="phone_work">{{ optional($nfc_card->nfcData)->phone_work }}</span>
-                                                                                (work)
-                                                                            </small>
+                                                                            <a href="mailto:{{ $nfc_card->nfcData->phone_work }}"
+                                                                                class="event-name-contact text-sm-start text-center mb-0 text-decoration-none">
+                                                                                {{ $nfc_card->nfcData->phone_work }}
+                                                                                <small>(Work)</small>
+                                                                            </a>
                                                                         @endif
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         @endif
-                                                        @if (!empty($nfc_card->nfcData->address_line_one) || !empty($nfc_card->nfcData->address_line_two))
-                                                            <div class="row align-items-center shadow-sm mt-3 p-3">
-                                                                <div class="col-lg-2 text-center text-lg-start">
-                                                                    <img class=""
-                                                                        src="https://i.ibb.co/61xkjbV/map.png" />
-                                                                </div>
-                                                                <div class="col-lg-10 text-center text-lg-start">
-                                                                    <div class="ps-3 pt-3 pt-lg-0">
-                                                                        <h6 class="text-black mb-0">Address</h6>
+                                                        @if (
+                                                            !empty($nfc_card->nfcData->location) ||
+                                                                !empty($nfc_card->nfcData->address_line_one) ||
+                                                                !empty($nfc_card->nfcData->address_line_two))
+                                                            <div class="col-6 mb-4">
+                                                                <div class="card event-card px-3 py-4 h-100 border-0">
+                                                                    <span class="event-icon">
+                                                                        <i class="fa-solid fa-location-dot fs-2"
+                                                                            style="color: #c84e89;"></i>
+                                                                    </span>
+                                                                    <div class="event-detail mt-4">
+                                                                        <h6 class="text-sm-start text-center">
+                                                                            Location
+                                                                        </h6>
+                                                                        <div style="margin-bottom: -5px !important;">
+                                                                            @if (!empty($nfc_card->nfcData->location))
+                                                                                <a href="javascript:void(0)"
+                                                                                    class="event-name-contact text-sm-start text-center mb-0 text-decoration-none">
+                                                                                    {{ $nfc_card->nfcData->location }}
+                                                                                </a>
+                                                                            @endif
+                                                                        </div>
                                                                         @if (!empty($nfc_card->nfcData->address_line_one))
-                                                                            <small class="text-black address_line_one">
+                                                                            <a href="javascript:void(0)"
+                                                                                class="event-name-contact text-sm-start text-center mb-0 text-decoration-none">
                                                                                 {{ $nfc_card->nfcData->address_line_one }}
-                                                                            </small>
+                                                                            </a>
                                                                         @endif
-                                                                        @if (!empty($nfc_card->nfcData->address_line_two))
-                                                                            <small class="text-black address_line_one">
-
-                                                                                {{ $nfc_card->nfcData->address_line_two }}
-
-                                                                            </small>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @endif
+                                                        @if (!empty($nfc_card->nfcData->phone_personal) || !empty($nfc_card->nfcData->phone_work))
+                                                            <div class="col-6 mb-4">
+                                                                <div class="card event-card px-3 py-4 h-100 border-0">
+                                                                    <span class="event-icon">
+                                                                        <img src="{{ asset('images/vcard5-birthday.png') }}"
+                                                                            alt="email">
+                                                                    </span>
+                                                                    <div class="event-detail mt-4">
+                                                                        <h6 class="text-sm-start text-center">
+                                                                            Date Of Birth
+                                                                        </h6>
+                                                                        <div style="margin-bottom: -5px !important;">
+                                                                            @if (!empty($nfc_card->nfcData->phone_personal))
+                                                                                <a href="tel:{{ $nfc_card->nfcData->phone_personal }}"
+                                                                                    class="event-name-contact text-sm-start text-center mb-0 text-decoration-none">
+                                                                                    {{ $nfc_card->nfcData->phone_personal }}
+                                                                                    <small>(Personal)</small>
+                                                                                </a>
+                                                                            @endif
+                                                                        </div>
+                                                                        @if (!empty($nfc_card->nfcData->phone_work))
+                                                                            <a href="tel:{{ $nfc_card->nfcData->phone_work }}"
+                                                                                class="event-name-contact text-sm-start text-center mb-0 text-decoration-none">
+                                                                                {{ $nfc_card->nfcData->phone_work }}
+                                                                                <small>(Work)</small>
+                                                                            </a>
                                                                         @endif
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @endif
+                                                        @if (
+                                                            !empty($nfc_card->nfcData->location) ||
+                                                                !empty($nfc_card->nfcData->address_line_one) ||
+                                                                !empty($nfc_card->nfcData->address_line_two))
+                                                            <div class="col-6 mb-4">
+                                                                <div class="card event-card px-3 py-4 h-100 border-0">
+                                                                    <span class="event-icon">
+                                                                        <i class="fa-solid fa-fax fs-2"
+                                                                            style="color: #c84e89;"></i>
+                                                                    </span>
+                                                                    <div class="event-detail mt-4">
+                                                                        <h6 class="text-sm-start text-center">
+                                                                            FAX Number
+                                                                        </h6>
+                                                                        {{-- @if (!empty($nfc_card->nfcData->address_line_one)) --}}
+                                                                        <a href="tel:"
+                                                                            class="event-name-contact text-sm-start text-center mb-0 text-decoration-none">
+                                                                            {{-- {{ $nfc_card->nfcData->address_line_one }} --}}
+                                                                            (1-888-473-2963)
+                                                                        </a>
+                                                                        {{-- @endif --}}
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         @endif
                                                     </div>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body py-0">
+                                    <div class="row">
+                                        {{-- Services Hours --}}
+                                        <div class="col-lg-12">
+                                            <h4 class="heading-right position-relative text-center mt-4">Services</h4>
+                                            <div class="row g-2 py-5">
+                                                @foreach ($nfc_card->nfcService as $service)
+                                                    <div class="col-6 mb-2">
+                                                        <div class="card border-0 shadow-sm">
+                                                            <img class="card-img-top"
+                                                                src="{{ !empty($service->service_icon) && file_exists(public_path('storage/nfc/service/' . optional($service)->service_icon)) ? asset('storage/nfc/service/' . optional($service)->service_icon) : asset('frontend/images/no_image.png') }}"
+                                                                alt="Card image cap">
+                                                            <div class="card-body">
+                                                                <h6 class="name-title">{{ $service->service_name }}
+                                                                </h6>
+                                                                <p class="card-text" style="font-size: 14px">
+                                                                    {{ $service->service_description }}</p>
+                                                                <a href="/"
+                                                                    class="btn btn-sm btn-primary border-0 rounded-pill"
+                                                                    style="background: linear-gradient(90deg, #b24592, #f15f79);">See
+                                                                    Now</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                        {{-- QR Code --}}
+                                        <div class="col-lg-12">
+                                            <h4 class="heading-left position-relative text-center">QR Code</h4>
+                                            <div class="d-flex justify-content-center align-items-center py-5">
+                                                <div class="qr-profile">
+                                                    <img src="{{ !empty($nfc_card->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card)->profile_image) : asset('frontend/images/no_image.png') }}"
+                                                        class="img-fluid rounded-4" alt="banner" />
+                                                </div>
+                                                <div class="qr-code-scanner mx-md-4 mx-2 p-4 bg-white"
+                                                    id="qr-code-nine">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                                                        width="130" height="130" viewBox="0 0 130 130">
+                                                        <rect x="0" y="0" width="130" height="130"
+                                                            fill="#ffffff">
+                                                        </rect>
+                                                        <g transform="scale(4.483)">
+                                                            <g transform="translate(0,0)">
+                                                                <path fill-rule="evenodd"
+                                                                    d="M9 0L9 1L10 1L10 2L8 2L8 3L9 3L9 4L10 4L10 5L9 5L9 6L8 6L8 8L4 8L4 9L3 9L3 8L0 8L0 10L1 10L1 12L2 12L2 13L1 13L1 14L2 14L2 16L4 16L4 17L5 17L5 16L4 16L4 15L5 15L5 14L6 14L6 15L8 15L8 16L9 16L9 17L10 17L10 20L5 20L5 19L4 19L4 18L3 18L3 17L2 17L2 19L1 19L1 18L0 18L0 19L1 19L1 20L0 20L0 21L1 21L1 20L2 20L2 21L3 21L3 19L4 19L4 20L5 20L5 21L8 21L8 25L10 25L10 26L8 26L8 29L10 29L10 26L11 26L11 25L12 25L12 26L13 26L13 25L14 25L14 24L16 24L16 26L17 26L17 29L18 29L18 28L19 28L19 29L24 29L24 28L22 28L22 27L20 27L20 25L24 25L24 26L23 26L23 27L26 27L26 26L28 26L28 27L27 27L27 29L29 29L29 28L28 28L28 27L29 27L29 25L28 25L28 24L29 24L29 21L26 21L26 22L25 22L25 20L26 20L26 19L25 19L25 18L27 18L27 20L28 20L28 19L29 19L29 16L28 16L28 15L29 15L29 12L28 12L28 11L29 11L29 9L28 9L28 10L26 10L26 9L27 9L27 8L26 8L26 9L25 9L25 10L23 10L23 8L20 8L20 10L21 10L21 11L22 11L22 12L20 12L20 20L19 20L19 19L18 19L18 18L17 18L17 17L18 17L18 16L19 16L19 14L18 14L18 10L17 10L17 9L19 9L19 8L18 8L18 7L19 7L19 6L20 6L20 7L21 7L21 5L20 5L20 3L21 3L21 1L20 1L20 0L19 0L19 2L18 2L18 5L16 5L16 4L17 4L17 2L16 2L16 0L15 0L15 2L14 2L14 5L13 5L13 6L12 6L12 8L11 8L11 6L10 6L10 5L11 5L11 4L12 4L12 3L13 3L13 1L14 1L14 0L12 0L12 1L10 1L10 0ZM11 2L11 3L12 3L12 2ZM19 2L19 3L20 3L20 2ZM15 3L15 4L16 4L16 3ZM14 5L14 6L13 6L13 7L14 7L14 6L15 6L15 7L16 7L16 6L15 6L15 5ZM9 6L9 7L10 7L10 6ZM17 6L17 7L18 7L18 6ZM9 8L9 9L6 9L6 10L5 10L5 9L4 9L4 10L3 10L3 13L2 13L2 14L3 14L3 13L5 13L5 12L4 12L4 11L6 11L6 12L8 12L8 13L6 13L6 14L9 14L9 15L10 15L10 16L12 16L12 15L11 15L11 13L12 13L12 12L13 12L13 11L16 11L16 9L17 9L17 8L14 8L14 9L13 9L13 8L12 8L12 10L10 10L10 8ZM1 9L1 10L2 10L2 9ZM6 10L6 11L7 11L7 10ZM9 10L9 11L8 11L8 12L9 12L9 11L10 11L10 10ZM25 10L25 12L23 12L23 14L21 14L21 16L23 16L23 18L25 18L25 15L24 15L24 14L25 14L25 12L26 12L26 17L27 17L27 18L28 18L28 17L27 17L27 14L28 14L28 13L27 13L27 11L26 11L26 10ZM11 11L11 12L12 12L12 11ZM14 12L14 14L13 14L13 15L14 15L14 14L15 14L15 15L17 15L17 14L16 14L16 12ZM9 13L9 14L10 14L10 13ZM0 15L0 16L1 16L1 15ZM6 16L6 17L7 17L7 16ZM14 16L14 17L12 17L12 18L11 18L11 19L13 19L13 18L14 18L14 21L15 21L15 23L16 23L16 24L17 24L17 23L19 23L19 25L17 25L17 26L18 26L18 27L19 27L19 25L20 25L20 23L19 23L19 20L18 20L18 21L17 21L17 19L16 19L16 16ZM21 17L21 18L22 18L22 17ZM6 18L6 19L8 19L8 18ZM22 19L22 20L23 20L23 19ZM11 20L11 22L10 22L10 21L9 21L9 22L10 22L10 23L11 23L11 24L10 24L10 25L11 25L11 24L13 24L13 23L12 23L12 21L13 21L13 20ZM15 20L15 21L16 21L16 22L17 22L17 21L16 21L16 20ZM21 21L21 24L24 24L24 21ZM22 22L22 23L23 23L23 22ZM26 22L26 24L25 24L25 26L26 26L26 25L27 25L27 22ZM14 26L14 27L13 27L13 28L12 28L12 27L11 27L11 28L12 28L12 29L14 29L14 27L15 27L15 26ZM0 0L0 7L7 7L7 0ZM1 1L1 6L6 6L6 1ZM2 2L2 5L5 5L5 2ZM22 0L22 7L29 7L29 0ZM23 1L23 6L28 6L28 1ZM24 2L24 5L27 5L27 2ZM0 22L0 29L7 29L7 22ZM1 23L1 28L6 28L6 23ZM2 24L2 27L5 27L5 24Z"
+                                                                    fill="#000000">
+                                                                </path>
+                                                            </g>
+                                                        </g>
+                                                    </svg>
+
                                                 </div>
                                             </div>
-                                            <!-- QR -->
-                                            @if (!empty($nfc_card->nfc_qr) && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc_qr)))
-                                                <div class="my-3 pt-4">
-                                                    <div>
-                                                        <p
-                                                            class="bg-black text-white w-25 text-center rounded-2 py-2 mb-0">
-                                                            QR Code
-                                                        </p>
-                                                        <div
-                                                            style="background-color: black;height: 3px;margin-top: -20px;">
+                                        </div>
+                                        {{-- Products --}}
+                                        <div class="col-lg-12">
+                                            @if ($nfc_card->products_show == '1' && $nfc_card->nfcProduct && $nfc_card->nfcProduct->isNotEmpty())
+                                                <h4 class="heading-right heading-line position-relative text-center">
+                                                    Products
+                                                </h4>
+                                                <div class="row py-5">
+                                                    @foreach ($nfc_card->nfcProduct as $product)
+                                                        <div class="col-lg-6">
+                                                            <a href="https://mydigitalnfccard.com/a" target="_blank"
+                                                                class="text-decoration-none fs-6" loading="lazy"
+                                                                tabindex="0">
+                                                                <div
+                                                                    class="card product-card p-3 border-0 w-100 product-block h-100">
+                                                                    <div class="product-profile">
+                                                                        <img src="{{ !empty($product->product_icon) &&
+                                                                        file_exists(public_path('storage/nfc/product/' . optional($product)->product_icon))
+                                                                            ? asset('storage/nfc/product/' . optional($product)->product_icon)
+                                                                            : asset('frontend/images/no_image.png') }}"
+                                                                            alt="{{ $product->product_name }}">
+                                                                    </div>
+                                                                    <div class="product-details mt-3">
+                                                                        <h6 class="fw-bold">
+                                                                            {{ $product->product_name }}</h6>
+                                                                        <small class="mb-2">
+                                                                            Dolore quidem necess
+                                                                        </small> <br>
+                                                                        <p class="text-black pt-3 mb-0">
+                                                                            @if ($product->product_currency == 'taka')
+                                                                                Tk
+                                                                            @elseif($product->product_currency == 'euro')
+                                                                                €
+                                                                            @elseif($product->product_currency == 'dollar')
+                                                                                $
+                                                                            @elseif($product->product_currency == 'pound')
+                                                                                £
+                                                                            @endif
+                                                                            {{ $product->product_price }}
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </a>
                                                         </div>
-                                                    </div>
-
-                                                    <div class="text-center pt-4">
-                                                        <img class=""
-                                                            style="margin-bottom: -3rem;position: relative;z-index: 5;border-radius: 100%;width: 100px;"
-                                                            src="{{ !empty($nfc_card->nfcData->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->profile_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
-                                                            alt="banner" />
-                                                    </div>
-                                                    <div>
-                                                        <div class="" style="width: 90%; margin: auto">
-                                                            <div class="card border-0"
-                                                                style="box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);">
-                                                                <div class="card-body">
-                                                                    <div class="p-2 pt-5 text-center">
-                                                                        <img class="" width="200px"
-                                                                            src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
-                                                                            alt="" />
+                                                    @endforeach
+                                                </div>
+                                            @endif
+                                        </div>
+                                        {{-- Business Hours --}}
+                                        <div class="col-lg-12">
+                                            @if (
+                                                $nfc_card->business_hours_show == '1' &&
+                                                    (optional($nfc_card->nfcData)->monday == '1' ||
+                                                        optional($nfc_card->nfcData)->tuesday == '1' ||
+                                                        optional($nfc_card->nfcData)->wednesday == '1' ||
+                                                        optional($nfc_card->nfcData)->thursday == '1' ||
+                                                        optional($nfc_card->nfcData)->friday == '1' ||
+                                                        optional($nfc_card->nfcData)->saturday == '1' ||
+                                                        optional($nfc_card->nfcData)->sunday == '1'))
+                                                <h4 class="heading-left position-relative text-center mt-4">Business
+                                                    Hours</h4>
+                                                <div class="row g-2 py-5">
+                                                    @if (optional($nfc_card->nfcData)->monday == '1')
+                                                        <div class="col-12 mb-2">
+                                                            <div class="card business-card flex-row py-2">
+                                                                <div class="calendar-icon p-2 ms-2">
+                                                                    <i
+                                                                        class="fa-solid fa-calendar-days fs-1 text-white"></i>
+                                                                </div>
+                                                                <div class="me-3 text-end">
+                                                                    <div class="text-muted business-hour-day-text">
+                                                                        Monday
+                                                                    </div>
+                                                                    <div
+                                                                        class="fw-semibold mt-2 fs-6 business-hour-time-text">
+                                                                        {{ optional($nfc_card->nfcData)->start_time_monday }}
+                                                                        -
+                                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            @endif
-                                            <!-- Bio -->
-                                            {{-- <div class="my-3 pt-4">
-                                                <div>
-                                                    <p
-                                                        class="bg-black text-white w-25 text-center rounded-2 py-2 mb-0">
-                                                        Bio
-                                                    </p>
-                                                    <div
-                                                        style="background-color: black;height: 3px;margin-top: -20px;">
-                                                    </div>
-                                                </div>
-                                                <p class="text-start pt-5 px-3 px-lg-0">
-                                                    Lorem ipsum dolor sit amet consectetur adipisicing
-                                                    elit. Praesentium porro voluptate ex quibusdam a ad,
-                                                    sit alias omnis aliquam nemo sed non libero dolores
-                                                    in! Vel illum ex ea pariatur et maxime ducimus eaque
-                                                    dicta magni adipisci, rem ipsum temporibus!
-                                                </p>
-                                            </div> --}}
-                                            <!-- Company -->
-                                            @if (
-                                                !empty($nfc_card->nfcData->company_title) ||
-                                                    !empty($nfc_card->nfcData->company_name) ||
-                                                    !empty($nfc_card->nfcData->company_phone) ||
-                                                    !empty($nfc_card->nfcData->company_email) ||
-                                                    !empty($nfc_card->nfcData->company_address_line_one) ||
-                                                    !empty($nfc_card->nfcData->company_address_line_two) ||
-                                                    !empty($nfc_card->nfcData->company_about_title) ||
-                                                    !empty($nfc_card->nfcData->company_about_description))
-                                                <div class="my-3 pt-4 text-start">
-                                                    @if (!empty($nfc_card->nfcData->company_title))
-                                                        <div>
-                                                            <p
-                                                                class="bg-black text-white w-50 w-lg-25 text-center rounded-2 py-2 mb-0">
-                                                                {{ optional($nfc_card->nfcData)->company_title }}
-                                                            </p>
-                                                            <div
-                                                                style="background-color: black;height: 3px;margin-top: -20px;">
+                                                    @endif
+                                                    @if (optional($nfc_card->nfcData)->tuesday == '1')
+                                                        <div class="col-12 mb-2">
+                                                            <div class="card business-card flex-row py-2">
+                                                                <div class="calendar-icon p-2 ms-2">
+                                                                    <i
+                                                                        class="fa-solid fa-calendar-days fs-1 text-white"></i>
+                                                                </div>
+                                                                <div class="me-3 text-end">
+                                                                    <div class="text-muted business-hour-day-text">
+                                                                        Tuesday
+                                                                    </div>
+                                                                    <div
+                                                                        class="fw-semibold mt-2 fs-6 business-hour-time-text">
+                                                                        {{ optional($nfc_card->nfcData)->start_time_tuesday }}
+                                                                        -
+                                                                        {{ optional($nfc_card->nfcData)->end_time_tuesday }}
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     @endif
-                                                    <div class="px-3 px-lg-0">
-                                                        @if (!empty($nfc_card->nfcData->company_name))
-                                                            <h6 class="fw-bold pt-5">
-                                                                {{ optional($nfc_card->nfcData)->company_name }}</h6>
-                                                        @endif
-                                                        @if (!empty($nfc_card->nfcData->company_phone))
-                                                            <small>{{ optional($nfc_card->nfcData)->company_phone }}</small>
-                                                        @endif
-                                                        <br />
-                                                        @if (!empty($nfc_card->nfcData->company_email))
-                                                            <small>{{ optional($nfc_card->nfcData)->company_email }}</small>
-                                                        @endif
-                                                        <br />
-                                                        @if (!empty($nfc_card->nfcData->company_address_line_one))
-                                                            <small
-                                                                class="company_address_line_one">{{ optional($nfc_card->nfcData)->company_address_line_one }}</small>
-                                                        @endif
-                                                        @if (!empty($nfc_card->nfcData->company_address_line_two))
-                                                            <br />
-                                                            <small
-                                                                class="company_address_line_two">{{ optional($nfc_card->nfcData)->company_address_line_two }}</small>
-                                                        @endif
-                                                    </div>
-                                                    @if (!empty($nfc_card->nfcData->company_about_title) || !empty($nfc_card->nfcData->company_about_description))
-                                                        <p class="pt-2 px-3 px-lg-0">
-                                                            @if (!empty($nfc_card->nfcData->company_about_title))
-                                                                <span
-                                                                    class="fw-bold company_about_title">{{ optional($nfc_card->nfcData)->company_about_title }}</span>
-                                                            @endif
-                                                            @if (!empty($nfc_card->nfcData->company_about_description))
-                                                                <br />
-                                                                <span class="company_about_description">
-                                                                    {{ optional($nfc_card->nfcData)->company_about_description }}
-                                                                </span>
-                                                            @endif
-                                                        </p>
+                                                    @if (optional($nfc_card->nfcData)->wednesday == '1')
+                                                        <div class="col-12 mb-2">
+                                                            <div class="card business-card flex-row py-2">
+                                                                <div class="calendar-icon p-2 ms-2">
+                                                                    <i
+                                                                        class="fa-solid fa-calendar-days fs-1 text-white"></i>
+                                                                </div>
+                                                                <div class="me-3 text-end">
+                                                                    <div class="text-muted business-hour-day-text">
+                                                                        Wednesday
+                                                                    </div>
+                                                                    <div
+                                                                        class="fw-semibold mt-2 fs-6 business-hour-time-text">
+                                                                        {{ optional($nfc_card->nfcData)->start_time_wednesday }}
+                                                                        -
+                                                                        {{ optional($nfc_card->nfcData)->end_time_wednesday }}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                    @if (optional($nfc_card->nfcData)->thursday == '1')
+                                                        <div class="col-12 mb-2">
+                                                            <div class="card business-card flex-row py-2">
+                                                                <div class="calendar-icon p-2 ms-2">
+                                                                    <i
+                                                                        class="fa-solid fa-calendar-days fs-1 text-white"></i>
+                                                                </div>
+                                                                <div class="me-3 text-end">
+                                                                    <div class="text-muted business-hour-day-text">
+                                                                        Thursday
+                                                                    </div>
+                                                                    <div
+                                                                        class="fw-semibold mt-2 fs-6 business-hour-time-text">
+                                                                        {{ optional($nfc_card->nfcData)->start_time_thursday }}
+                                                                        -
+                                                                        {{ optional($nfc_card->nfcData)->end_time_thursday }}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                    @if (optional($nfc_card->nfcData)->friday == '1')
+                                                        <div class="col-12 mb-2">
+                                                            <div class="card business-card flex-row py-2">
+                                                                <div class="calendar-icon p-2 ms-2">
+                                                                    <i
+                                                                        class="fa-solid fa-calendar-days fs-1 text-white"></i>
+                                                                </div>
+                                                                <div class="me-3 text-end">
+                                                                    <div class="text-muted business-hour-day-text">
+                                                                        Friday
+                                                                    </div>
+                                                                    <div
+                                                                        class="fw-semibold mt-2 fs-6 business-hour-time-text">
+                                                                        {{ optional($nfc_card->nfcData)->start_time_friday }}
+                                                                        -
+                                                                        {{ optional($nfc_card->nfcData)->end_time_friday }}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                    @if (optional($nfc_card->nfcData)->saturday == '1')
+                                                        <div class="col-12 mb-2">
+                                                            <div class="card business-card flex-row py-2">
+                                                                <div class="calendar-icon p-2 ms-2">
+                                                                    <i
+                                                                        class="fa-solid fa-calendar-days fs-1 text-white"></i>
+                                                                </div>
+                                                                <div class="me-3 text-end">
+                                                                    <div class="text-muted business-hour-day-text">
+                                                                        Saturday
+                                                                    </div>
+                                                                    <div
+                                                                        class="fw-semibold mt-2 fs-6 business-hour-time-text">
+                                                                        {{ optional($nfc_card->nfcData)->start_time_saturday }}
+                                                                        -
+                                                                        {{ optional($nfc_card->nfcData)->end_time_saturday }}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                    @if (optional($nfc_card->nfcData)->sunday == '1')
+                                                        <div class="col-12 mb-2">
+                                                            <div class="card business-card flex-row py-2">
+                                                                <div class="calendar-icon p-2 ms-2">
+                                                                    <i
+                                                                        class="fa-solid fa-calendar-days fs-1 text-white"></i>
+                                                                </div>
+                                                                <div class="me-3 text-end">
+                                                                    <div class="text-muted business-hour-day-text">
+                                                                        sunday
+                                                                    </div>
+                                                                    <div
+                                                                        class="fw-semibold mt-2 fs-6 business-hour-time-text">
+                                                                        {{ optional($nfc_card->nfcData)->start_time_sunday }}
+                                                                        -
+                                                                        {{ optional($nfc_card->nfcData)->end_time_sunday }}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     @endif
                                                 </div>
                                             @endif
-                                            <!-- Service -->
-                                            @if (
-                                                !empty($nfc_card->nfcData->service_one_image) ||
-                                                    !empty($nfc_card->nfcData->service_two_image) ||
-                                                    !empty($nfc_card->nfcData->service_three_image))
-                                                @if (!empty($nfc_card->nfcData->service_section_title))
-                                                    <div class="pt-4">
-                                                        <p
-                                                            class="bg-black text-white w-50 w-lg-25 text-center rounded-2 py-2 mb-0 service_section_title">
-                                                            {{ $nfc_card->nfcData->service_section_title }}
-                                                        </p>
-                                                        <div class=""
-                                                            style="background-color: black;height: 3px;margin-top: -20px;">
+                                        </div>
+                                        <!-- Gallery -->
+                                        <div class="col-12">
+                                            @if ($nfc_card->galleries_show == '1' && $nfc_card->nfcGallery && $nfc_card->nfcGallery->isNotEmpty())
+                                                <h4 class="heading-right heading-line position-relative text-center">
+                                                    Gallery
+                                                </h4>
+                                                @if ($nfc_card->galleries_show)
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="row p-4">
+                                                                @foreach ($nfc_card->nfcGallery as $gallery)
+                                                                    <div class="col-6 mb-4">
+                                                                        @if ($gallery->gallery_type == 'image')
+                                                                            <img class="img-fluid gallery-img-four"
+                                                                                src="{{ !empty($gallery->gallery_attachment) && file_exists(public_path('storage/nfc/gallery/' . optional($gallery)->gallery_attachment)) ? asset('storage/nfc/gallery/' . optional($gallery)->gallery_attachment) : asset('frontend/images/no_image.png') }}"
+                                                                                alt="" />
+                                                                        @else
+                                                                            <div class="video-wrapper">
+                                                                                <iframe width="600" height="338"
+                                                                                    src="https://www.youtube.com/embed/{{ optional($gallery)->gallery_link }}"
+                                                                                    frameborder="0"
+                                                                                    allowfullscreen></iframe>
+                                                                            </div>
+                                                                        @endif
+                                                                    </div>
+                                                                @endforeach
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 @endif
-                                                <div class=""
-                                                    style="border-radius: 10px;background-color: #1f1f1f !important;background-image: url(https://my.cybercard.ma/assets/img/vcard16/gallery-bg.png);margin-top: 35px !important; margin-bottom: 35px !important;">
-                                                    <div class="slick-slider p-4">
-                                                        <div>
-                                                            <img class="img-fluid service_one_image"
-                                                                style="background-size: cover;width: 100%;height: 300px;object-fit: cover;border-radius: 10px;"
-                                                                src="{{ !empty($nfc_card->nfcData->service_one_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->service_one_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->service_one_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
-                                                                alt="Slide 1" />
-                                                            <div class="text-white" style="background-color: #000">
-                                                            </div>
-                                                        </div>
-                                                        <div>
-                                                            <img class="img-fluid service_two_image"
-                                                                style="background-size: cover;width: 100%;height: 300px;object-fit: cover;border-radius: 10px;"
-                                                                src="{{ !empty($nfc_card->nfcData->service_two_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->service_two_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->service_two_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
-                                                                alt="Slide 2" />
-                                                            <div class="text-white" style="background-color: #000">
-                                                            </div>
-                                                        </div>
-                                                        <div>
-                                                            <img class="img-fluid service_two_image"
-                                                                style="background-size: cover;width: 100%;height: 300px;object-fit: cover;border-radius: 10px;"
-                                                                src="{{ !empty($nfc_card->nfcData->service_three_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card->nfcData)->service_three_image)) ? asset('storage/nfc/' . optional($nfc_card->nfcData)->service_three_image) : asset('https://i.ibb.co/64KBNBC/temp-one.webp') }}"
-                                                                alt="Slide 3" />
-                                                            <div class="text-white"
-                                                                style="background-color: #000;border-bottom-left-radius: 10px;">
-                                                            </div>
-                                                        </div>
-                                                        <!-- Add more divs with images for additional slides -->
-                                                    </div>
-                                                </div>
                                             @endif
-                                            <!-- Form -->
-                                            <div>
-                                                <div>
-                                                    <p
-                                                        class="bg-black text-white w-25 text-center rounded-2 py-2 mb-0">
-                                                        Inquiry
-                                                    </p>
-                                                    <div
-                                                        style="background-color: black;height: 3px;margin-top: -20px;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body py-0 px-0">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <h4 class="heading-left heading-line position-relative text-center">
+                                                Testimonials
+                                            </h4>
+                                            <div class="testimonial-sliders swiper-container py-5"
+                                                style="background-image: url({{ asset('images/testimonial-bg.png') }})">
+                                                <!-- Additional required wrapper -->
+                                                <div class="swiper-wrapper">
+                                                    <!-- Dynamic Slides -->
+                                                    <div class="swiper-slide">
+                                                        <div class="card rounded-5">
+                                                            <div class="card-body text-center">
+                                                                <p style="font-size: 14px">
+                                                                    "The platform offers a diverse collection of
+                                                                    high-quality profile picture icons in various
+                                                                    formats like SVG, PNG, and EPS. It's my go-to
+                                                                    resource for professional designs."
+                                                                </p>
+                                                                <div class="d-flex align-items-center">
+                                                                    <div>
+                                                                        <img class="rounded-circle" width="50px"
+                                                                            height="50px" style="object-fit: cover;"
+                                                                            src="https://media.istockphoto.com/id/1437816897/photo/business-woman-manager-or-human-resources-portrait-for-career-success-company-we-are-hiring.jpg?s=612x612&w=0&k=20&c=tyLvtzutRh22j9GqSGI33Z4HpIwv9vL_MZw_xOE19NQ="
+                                                                            alt="profile">
+                                                                    </div>
+                                                                    <div class="text-start ps-4">
+                                                                        <h6 class="mb-0">
+                                                                            Nelson Smith
+                                                                        </h6>
+                                                                        <p class="mb-0">
+                                                                            <small class="name-title">BitByte
+                                                                                Soft</small>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="p-2 pt-4">
+                                                <!-- Custom Font Awesome navigation buttons -->
+                                                <div class="swiper-button-next custom-next">
+                                                    <i class="fas fa-long-arrow-alt-right"></i>
+                                                </div>
+                                                <div class="swiper-button-prev custom-prev">
+                                                    <i class="fas fa-long-arrow-alt-left"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="mt-5">
+                                                <h3 class="fw-bold text-center pt-2" style="color: #1c344f;">
+                                                    Inquiry
+                                                </h3>
+                                                <div class="px-3">
                                                     <form action="{{ route('individual-message.store') }}"
                                                         method="post">
                                                         @csrf
@@ -557,59 +963,59 @@
                                                             value="{{ optional($nfc_card)->code }}">
                                                         <div class="row">
                                                             <div class="col mb-2">
-                                                                <div class="fv-row my-3">
+                                                                <div class="fv-row">
                                                                     <x-metronic.label
-                                                                        class="fw-semibold fs-6 mb-2 required">Name
+                                                                        class="fw-semibold fs-6 required">Name
                                                                         <span class="text-danger fs-1"
                                                                             style="position: relative;top: 0.6rem;">*</span>
                                                                     </x-metronic.label>
                                                                     <x-metronic.input type="text" name="name"
                                                                         value="{{ old('name') }}"
-                                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                        class="form-control form-control-solid"
                                                                         placeholder="Robert Duff" required />
                                                                 </div>
                                                             </div>
                                                             <div class="col mb-2">
-                                                                <div class="fv-row my-3">
+                                                                <div class="fv-row">
                                                                     <x-metronic.label
-                                                                        class="fw-semibold fs-6 mb-2 required">Email
+                                                                        class="fw-semibold fs-6 required">Email
                                                                         <span class="text-danger fs-1"
                                                                             style="position: relative;top: 0.6rem;">*</span>
                                                                     </x-metronic.label>
                                                                     <x-metronic.input type="email" name="email"
                                                                         value="{{ old('email') }}"
-                                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                        class="form-control form-control-solid"
                                                                         placeholder="example@mail.com" required />
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col mb-2">
-                                                                <div class="fv-row my-3">
+                                                                <div class="fv-row">
                                                                     <x-metronic.label
                                                                         class="fw-semibold fs-6 mb-2">Phone</x-metronic.label>
                                                                     <x-metronic.input type="text" name="phone"
                                                                         value="{{ old('phone') }}"
-                                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                        class="form-control form-control-solid"
                                                                         placeholder="01*******" />
                                                                 </div>
                                                             </div>
                                                             <div class="col mb-2">
-                                                                <div class="fv-row my-3">
+                                                                <div class="fv-row">
                                                                     <x-metronic.label
                                                                         class="fw-semibold fs-6 mb-2">Headline</x-metronic.label>
                                                                     <x-metronic.input type="text" name="headline"
                                                                         value="{{ old('headline') }}"
-                                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                        class="form-control form-control-solid"
                                                                         placeholder="Headline" />
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col mb-2">
-                                                                <div class="fv-row my-3">
+                                                                <div class="fv-row">
                                                                     <x-metronic.label
-                                                                        class="fw-semibold fs-6 mb-2 required">Message
+                                                                        class="fw-semibold fs-6 required">Message
                                                                         <span class="text-danger fs-1"
                                                                             style="position: relative;top: 0.6rem;">*</span>
                                                                     </x-metronic.label>
@@ -618,38 +1024,48 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="row" style="margin-bottom: 2.5rem">
-                                                            <div class="col mb-2 text-center">
+                                                        <div class="row mb-5 pb-5" style="margin-bottom: 2.5rem;">
+                                                            <div class="col mb-2 text-end">
                                                                 <button type="submit"
-                                                                    class="btn btn-sm mt-2 px-4 rounded-pill"
-                                                                    style="background-color: #000; color: #fff">
-                                                                    Send Messages
+                                                                    class="btn btn-sm mt-2 p-3 rounded-pill"
+                                                                    style="background: linear-gradient(90deg, #b24592, #f15f79);;color: #fff;">
+                                                                    <i class="fa-regular fa-paper-plane"></i> Send
+                                                                    Message
                                                                 </button>
                                                             </div>
                                                         </div>
                                                     </form>
                                                 </div>
                                             </div>
-                                            <div class="row fixed-bottom w-25 mx-auto mobile-d-none">
-                                                <div class="col mb-2 text-center">
-                                                    <a href="tel:+{{ optional($nfc_card->nfcData)->phone_personal }}"
-                                                        class="btn btn-sm mt-2 p-2 w-100 nfc_contact_btn nfc_contact_btn_pc"
-                                                        style="background-color: #f44336; color: #fff">
-                                                        <i class="fas fa-contact pe-1 fa-address-book"></i>
-                                                        Save Contact
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div
-                                                class="row fixed-bottom w-sm-100 w-lg-25 d-sm-block d-lg-none mx-auto">
-                                                <div class="col mb-2 text-center">
-                                                    <a href="tel:+{{ optional($nfc_card->nfcData)->phone_personal }}"
-                                                        class="btn btn-sm mt-2 p-2 w-100 nfc_contact_btn nfc_contact_btn_mobile"
-                                                        style="background-color: #f44336; color: #fff">
-                                                        <i class="fas fa-contact pe-1 fa-address-book"></i>
-                                                        Save Contact
-                                                    </a>
-                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- Footer --}}
+                                <div class="container">
+                                    <div class="row fixed-bottom footer-nav-area-tem1">
+                                        <div class="col-lg-12">
+                                            <div class="footer-nav-tem1 position-relative">
+                                                <ul
+                                                    class="h-100 d-flex align-items-center justify-content-between ps-0">
+                                                    <li class="active">
+                                                        <a href="" download="">
+                                                            <i class="fa-solid fa-qrcode"></i>
+                                                            <span>QR</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="copy-link">
+                                                            <i class="fa-solid fa-copy"></i>
+                                                            <span>Copy Link</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="nfc_contact_btn_pc">
+                                                            <i class="fa-solid fa-file-arrow-down"></i>
+                                                            <span>Add Contact</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
@@ -669,6 +1085,7 @@
     <!-- Slick JS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
     <script>
         // Initialize Slick Slider
         $(document).ready(function() {
@@ -806,6 +1223,26 @@
 
         document.querySelector('.nfc_contact_btn_mobile').addEventListener('click', (event) => {
             handleContactButtonClick(event, true);
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            var mySwiper = new Swiper(".testimonial-sliders", {
+                spaceBetween: 1,
+                slidesPerView: 2,
+                centeredSlides: true,
+                roundLengths: true,
+                autoplay: {
+                    delay: 2500,
+                    disableOnInteraction: false,
+                },
+                loop: true,
+                loopAdditionalSlides: 30,
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev"
+                }
+            });
         });
     </script>
 </body>

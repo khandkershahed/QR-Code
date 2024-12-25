@@ -92,6 +92,10 @@
                                     'value' => 'template-four',
                                     'image' => 'frontend/images/nfc_template/template_four.jpg',
                                 ],
+                                [
+                                    'value' => 'template-five',
+                                    'image' => 'frontend/images/nfc_template/template_five.png',
+                                ],
                             ]" />
                         </div>
                         <div class="card bg-white w-100">

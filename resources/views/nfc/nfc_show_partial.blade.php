@@ -24,7 +24,7 @@
                                         alt="">
                                 @elseif ($nfc_card->nfc_template == 'template-five')
                                     <img class="img-fluid w-50px"
-                                        src="{{ asset('frontend/assets/images/nfc-templates/template_five.jpg') }}"
+                                        src="{{ asset('frontend/assets/images/nfc-templates/template_five.png') }}"
                                         alt="">
                                 @elseif ($nfc_card->nfc_template == 'template-six')
                                     <img class="img-fluid w-50px"

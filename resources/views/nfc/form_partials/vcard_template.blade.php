@@ -19,6 +19,10 @@
             'value' => 'template-four',
             'image' => 'frontend/images/nfc_template/template_four.jpg',
         ],
+        [
+            'value' => 'template-five',
+            'image' => 'frontend/images/nfc_template/template_five.png',
+        ],
     ]" :selectedTemplate="$nfc_card->nfc_template" />
 
     <div class="d-flex justify-content-end">

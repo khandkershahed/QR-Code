@@ -198,7 +198,6 @@
         .swiper-slide {
             height: 100%;
             display: flex;
-            background: #eee;
             align-items: center;
             justify-content: center;
             transition: all 200ms linear;
@@ -304,7 +303,7 @@
                             <div class="card-header p-0 border-0">
                                 <div class="nfc-one-cover-img-box">
                                     <div class="nfc-one-cover-img"
-                                        style=" background-image: url({{ !empty($nfc_card->banner_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card)->banner_image)) ? asset('storage/nfc/' . optional($nfc_card)->banner_image) : asset('frontend/images/no_image.png') }});">
+                                        style="background-image: url({{ !empty($nfc_card->banner_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card)->banner_image)) ? asset('storage/nfc/' . optional($nfc_card)->banner_image) : asset('frontend/images/no_image.png') }})">
                                     </div>
                                 </div>
                             </div>
@@ -435,7 +434,6 @@
                                                             </div>
                                                         </div>
                                                     @endif
-
                                                     {{-- Phone Section --}}
                                                     @if (!empty($nfc_card->nfcData->phone_personal) || !empty($nfc_card->nfcData->phone_work))
                                                         <div class="col-sm-6">
@@ -472,7 +470,6 @@
                                                             </div>
                                                         </div>
                                                     @endif
-
                                                     {{-- Location Section --}}
                                                     @if (
                                                         !empty($nfc_card->nfcData->location) ||
@@ -534,7 +531,6 @@
                                                             </div>
                                                         </div>
                                                     @endif
-
                                                     {{-- Date of Birth Section --}}
                                                     @if (!empty($nfc_card->nfcData->date_of_birth))
                                                         <div class="col-sm-6 mt-4">
@@ -686,7 +682,6 @@
                                                             </div>
                                                         @endforeach
                                                     </div>
-
                                                     <!-- Custom Font Awesome navigation buttons -->
                                                     <div class="swiper-button-next custom-next">
                                                         <i class="fas fa-long-arrow-alt-right"></i>
@@ -732,7 +727,6 @@
                                                             </div>
                                                         @endforeach
                                                     </div>
-
                                                     <!-- Custom Font Awesome navigation buttons -->
                                                     <div class="swiper-button-next custom-next">
                                                         <i class="fas fa-long-arrow-alt-right"></i>
@@ -746,7 +740,7 @@
                                         <!-- Form -->
                                         <div class="mt-5">
                                             <h3 class="fw-bold text-center pt-2"
-                                                style="color: #1c344f; margin-bottom: 2rem">
+                                                style="color: #1c344f;">
                                                 Inquiry
                                             </h3>
                                             <div class="pt-4 px-5">
@@ -885,18 +879,14 @@
             $(".slick-slider").slick({
                 slidesToShow: 2,
                 slidesToScroll: 2,
-
                 autoplay: true,
-
                 responsive: [{
-
                         settings: {
                             slidesToShow: 1,
                             slidesToScroll: 1,
                         },
                     },
                     {
-
                         settings: {
                             slidesToShow: 3,
                             slidesToScroll: 3,
@@ -908,7 +898,6 @@
     </script>
     <script>
         'use strict';
-
         function downloadToFile(content, filename, contentType) {
             const a = document.createElement('a');
             const file = new Blob([content], {

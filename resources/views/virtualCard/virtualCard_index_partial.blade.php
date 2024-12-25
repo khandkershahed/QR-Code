@@ -6,7 +6,7 @@
                 <p class="text-white mt-2 mb-0">View and manage all NFC information in this page.</p>
             </div>
         </div>
-        
+
         <div class="card-body p-0 px-3 rounded-0">
             <div class="table-responsive">
                 <table class="table my-datatable table-striped table-row-bordered mt-0" id="virtualCard_table">
@@ -47,7 +47,7 @@
                                             alt="">
                                     @elseif (optional($nfc_card->nfc)->nfc_template == 'template-five')
                                         <img class="img-fluid w-50px"
-                                            src="{{ asset('frontend/assets/images/nfc-templates/template_five.jpg') }}"
+                                            src="{{ asset('frontend/assets/images/nfc-templates/template_five.png') }}"
                                             alt="">
                                     @elseif (optional($nfc_card->nfc)->nfc_template == 'template-six')
                                         <img class="img-fluid w-50px"

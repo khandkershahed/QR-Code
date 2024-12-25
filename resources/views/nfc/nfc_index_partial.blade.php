@@ -187,7 +187,7 @@
                                                     alt="">
                                             @elseif ($nfc_card->nfc_template == 'template-five')
                                                 <img class="img-fluid nfc-ev-templates" style="object-fit: cover;"
-                                                    src="{{ asset('frontend/assets/images/nfc-templates/template_five.jpg') }}"
+                                                    src="{{ asset('frontend/assets/images/nfc-templates/template_five.png') }}"
                                                     alt="">
                                             @elseif ($nfc_card->nfc_template == 'template-six')
                                                 <img class="img-fluid nfc-ev-templates" style="object-fit: cover;"
@@ -335,7 +335,7 @@
             </div>
         </div>
     </div>
-    
+
 </div>
 @foreach ($nfc_cards as $nfc_card)
     <div class="modal fade" tabindex="-1" id="message_modal_{{ $nfc_card->id }}">
