@@ -94,7 +94,12 @@ class UserSocialLoginController extends Controller
                 ]);
                 // $newUser->notify(new UserRegistration($user->name));
                 Auth::login($newUser);
-                Mail::to($user->email)->send(new UserRegistrationMail($user->name));
+                try {
+                    Mail::to($user->email)->send(new UserRegistrationMail($user->name));
+                } catch (\Exception $e) {
+                    Log::error('Error sending email: ' . $e->getMessage());
+                }
+
 
                 return redirect()->intended(RouteServiceProvider::HOME)->with('success', 'You have logged in Successfully.');
             }
@@ -136,8 +141,12 @@ class UserSocialLoginController extends Controller
                 ]);
                 // $newUser->notify(new UserRegistration($user->name));
                 Auth::login($newUser);
-                Mail::to($user->email)->send(new UserRegistrationMail($user->name));
-
+                
+                try {
+                    Mail::to($user->email)->send(new UserRegistrationMail($user->name));
+                } catch (\Exception $e) {
+                    Log::error('Error sending email: ' . $e->getMessage());
+                }
                 return redirect()->intended(RouteServiceProvider::HOME)->with('success', 'You have logged in Successfully.');
             }
         } catch (Exception $e) {

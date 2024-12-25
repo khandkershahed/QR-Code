@@ -2,7 +2,7 @@
     @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
     .nfc-mobile-frame {
-         
+
         width: 100%;
         border-radius: 20px;
         overflow: hidden;
@@ -142,7 +142,7 @@
                         <div class="text-center text-lg-center mobile-images-profile pt-5 ">
                             <img class="p-5 img-fluid qr_data_facebook_page_logo "
                                 style="width: 100px; height: 100px; border-radius: 100%;position: relative;z-index: 15;"
-                                src="https://i.ibb.co/BNBTVN4/logo.png" alt="banner" />
+                                src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}" alt="banner" />
                         </div>
                     </div>
                     <div class="card-body p-0">
@@ -155,13 +155,12 @@
                             <div class="d-flex justify-content-center align-items-center pb-5">
                                 <a href="" class="like__btn text-decoration-none qr_data_facebook_page_facebook" target="_blank">
                                     <span id="icon"><i class="far fa-thumbs-up"></i></span>
-                                    {{-- <span id="count">0</span> --}}
                                     Like
                                 </a>
                             </div>
                         </div>
                         <div class="d-flex justify-content-center">
-                            <img class="img-fluid qr_data_facebook_page_background_image" src="https://i.ibb.co/S0jBHrz/faceboook-page.png" alt="" />
+                            <img class="img-fluid qr_data_facebook_page_background_image" src="{{ asset('images/d-image/social-media-like-banner.webp') }}" alt="" />
                         </div>
                     </div>
                 </div>

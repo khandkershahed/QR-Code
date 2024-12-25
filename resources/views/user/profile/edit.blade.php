@@ -1,15 +1,16 @@
-<x-app-layout :title="'My Profile : ' . Auth::user()->name">
+{{-- <x-app-layout :title="'My Profile ' . Auth::user()->name"> --}}
+<x-app-layout :title="'My Profile '">
     <style>
         .nav-tabs .nav-item.show .nav-link,
         .nav-tabs .nav-link {
             background-color: transparent;
         }
     </style>
-    <div class="d-flex flex-column flex-lg-row">
-        <div class="flex-column flex-lg-row-auto w-lg-250px w-xl-350px mb-10">
-            <div class="card mb-5 mb-xl-8">
-                <div class="card-body">
-                    <div class="d-flex flex-center flex-column py-5">
+    <div class="row mt-3">
+        <div class="col-lg-3">
+            <div class="card mb-5 mb-xl-8 rounded-0">
+                <div class="card-body p-0">
+                    <div class="d-flex flex-center flex-column py-5 bg-light-info border">
                         <div class="symbol symbol-100px symbol-circle mb-7">
                             <img src="{{ !empty($user->profile_image) && file_exists(public_path('storage/user/profile_image/' . $user->profile_image)) ? asset('storage/user/profile_image/' . $user->profile_image) : asset('https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->name)) }}"
                                 alt="{{ $user->name }}">
@@ -27,150 +28,97 @@
                                 data-bs-content="Number of created NFC and QR Codes."></i>
                         </div>
                         <div class="d-flex flex-wrap flex-center">
-                            <div class="border border-gray-300 border-dashed rounded py-3 px-3 mb-3">
-                                <div class="fs-4 fw-bolder text-gray-700">
-                                    <span class="w-75px">{{ $nfc_cards->count() }}</span>
-                                    {{-- <span class="svg-icon svg-icon-3 svg-icon-success">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none">
-                                            <rect opacity="0.5" x="13" y="6" width="13" height="2"
-                                                rx="1" transform="rotate(90 13 6)" fill="currentColor" />
-                                            <path
-                                                d="M12.5657 8.56569L16.75 12.75C17.1642 13.1642 17.8358 13.1642 18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25L12.7071 5.70711C12.3166 5.31658 11.6834 5.31658 11.2929 5.70711L5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75C6.16421 13.1642 6.83579 13.1642 7.25 12.75L11.4343 8.56569C11.7467 8.25327 12.2533 8.25327 12.5657 8.56569Z"
-                                                fill="currentColor" />
-                                        </svg>
-                                    </span> --}}
-                                </div>
-                                <div class="fw-bold text-muted">NFC</div>
+                            <div
+                                class="border border-gray-300 border-dashed rounded d-flex align-items-center p-3 me-2">
+                                <p class="mb-0 me-2">{{ $nfc_cards->count() }}</p>
+                                <p class="fw-bold mb-0 text-warning">NFC</p>
                             </div>
-                            <div class="border border-gray-300 border-dashed rounded py-3 px-3 mx-4 mb-3">
-                                <div class="fs-4 fw-bolder text-gray-700">
-                                    <span class="w-50px">{{ $qrs->count() }}</span>
-                                    {{-- <span class="svg-icon svg-icon-3 svg-icon-danger">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none">
-                                            <rect opacity="0.5" x="11" y="18" width="13" height="2"
-                                                rx="1" transform="rotate(-90 11 18)" fill="currentColor" />
-                                            <path
-                                                d="M11.4343 15.4343L7.25 11.25C6.83579 10.8358 6.16421 10.8358 5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75L11.2929 18.2929C11.6834 18.6834 12.3166 18.6834 12.7071 18.2929L18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25C17.8358 10.8358 17.1642 10.8358 16.75 11.25L12.5657 15.4343C12.2533 15.7467 11.7467 15.7467 11.4343 15.4343Z"
-                                                fill="currentColor" />
-                                        </svg>
-                                    </span> --}}
-                                </div>
-                                <div class="fw-bold text-muted">QR</div>
+                            <div class="border border-gray-300 border-dashed rounded d-flex align-items-center p-3">
+                                <p class="mb-0 me-2">{{ $qrs->count() }}</p>
+                                <p class="fw-bold mb-0 text-warning">QR</p>
                             </div>
-                            {{-- <div class="border border-gray-300 border-dashed rounded py-3 px-3 mb-3">
-                                <div class="fs-4 fw-bolder text-gray-700">
-                                    <span class="w-50px">188</span>
-                                    <span class="svg-icon svg-icon-3 svg-icon-success">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none">
-                                            <rect opacity="0.5" x="13" y="6" width="13" height="2"
-                                                rx="1" transform="rotate(90 13 6)" fill="currentColor" />
-                                            <path
-                                                d="M12.5657 8.56569L16.75 12.75C17.1642 13.1642 17.8358 13.1642 18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25L12.7071 5.70711C12.3166 5.31658 11.6834 5.31658 11.2929 5.70711L5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75C6.16421 13.1642 6.83579 13.1642 7.25 12.75L11.4343 8.56569C11.7467 8.25327 12.2533 8.25327 12.5657 8.56569Z"
-                                                fill="currentColor" />
-                                        </svg>
-                                    </span>
-                                </div>
-                                <div class="fw-bold text-muted">Open</div>
-                            </div> --}}
                         </div>
                     </div>
-                    <div class="d-flex flex-stack fs-4 py-3">
-                        <div class="fw-bolder rotate collapsible" data-bs-toggle="collapse"
-                            data-bs-target="#user_collapse_details_{{ $user->id }}" role="button"
-                            aria-expanded="false" aria-controls="user_collapse_details_{{ $user->id }}">
-                            Details
-                            <span class="ms-2 rotate-180">
-                                <span class="svg-icon svg-icon-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                        viewBox="0 0 24 24" fill="none">
-                                        <path
-                                            d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
-                                            fill="currentColor" />
-                                    </svg>
-                                </span>
+                    <div class="">
+                        <div class="separator"></div>
+                        <div class="d-flex flex-stack fs-4 py-3 bg-info px-4">
+                            <div class="fw-bolder rotate collapsible text-white" data-bs-toggle="collapse"
+                                data-bs-target="#user_collapse_details_{{ $user->id }}" role="button"
+                                aria-expanded="false" aria-controls="user_collapse_details_{{ $user->id }}">
+                                Details
+                            </div>
+                            <span data-bs-toggle="tooltip" data-bs-trigger="hover" title="Edit User Details">
+                                <a href="javascript:void(0)" data-bs-toggle="modal"
+                                    data-bs-target="#update_account_{{ $user->id }}"
+                                    class="btn btn-sm btn-light-primary"><i class="fa-solid fa-pen"></i> Edit</a>
                             </span>
                         </div>
-                        <span data-bs-toggle="tooltip" data-bs-trigger="hover" title="Edit User Details">
-                            <a href="javascript:void(0)" data-bs-toggle="modal"
-                                data-bs-target="#update_account_{{ $user->id }}"
-                                class="btn btn-sm btn-light-primary">Edit</a>
-                        </span>
-                    </div>
-                    <div class="separator"></div>
-                    <div class="collapse show" id="user_collapse_details_{{ $user->id }}">
-                        <div class="pb-5 fs-6">
-                            @if (!empty($user->email))
-                                <div class="fw-bolder mt-5">Email</div>
-                                <div class="text-gray-600">
-                                    <a href="#" class="text-gray-600 text-hover-primary">{{ $user->email }}</a>
-                                </div>
-                            @endif
-                            @if (!empty($user->address))
-                                <div class="fw-bolder mt-5">Address</div>
-                                <div class="text-gray-600">{{ $user->address_line_one }}
-                                    {{ !empty($user->address_line_two) ? ',' : '' }}
-                                    {{ $user->address_line_two }}</div>
-                            @endif
-                            <div class="fw-bolder mt-5">Default Language</div>
-                            <div class="text-gray-600">English</div>
-                            <div class="fw-bolder mt-5">Last Login</div>
-                            <div class="text-gray-600">{{ optional($last_login)->login_time }}</div>
+                        <div class="separator"></div>
+                        <div class="collapse show px-4" id="user_collapse_details_{{ $user->id }}">
+                            <div class="pb-5 fs-6">
+                                @if (!empty($user->email))
+                                    <div class="fw-bolder mt-5">Email</div>
+                                    <div class="text-gray-600">
+                                        <a href="#"
+                                            class="text-gray-600 text-hover-primary">{{ $user->email }}</a>
+                                    </div>
+                                @endif
+                                @if (!empty($user->address))
+                                    <div class="fw-bolder mt-5">Address</div>
+                                    <div class="text-gray-600">{{ $user->address_line_one }}
+                                        {{ !empty($user->address_line_two) ? ',' : '' }}
+                                        {{ $user->address_line_two }}</div>
+                                @endif
+                                <div class="fw-bolder mt-5">Default Language</div>
+                                <div class="text-gray-600">English</div>
+                                <div class="fw-bolder mt-5">Last Login</div>
+                                <div class="text-gray-600">{{ optional($last_login)->login_time }}</div>
+                            </div>
                         </div>
                     </div>
-
                 </div>
             </div>
-
         </div>
-        <div class="flex-lg-row-fluid ms-lg-15">
-            <ul class="nav nav-custom nav-tabs nav-line-tabs nav-line-tabs-2x border-0 fs-4 fw-bold mb-8">
-                <li class="nav-item">
-                    <a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab"
-                        href="#kt_user_view_overview_tab">Overview</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-active-primary pb-4" data-kt-countup-tabs="true" data-bs-toggle="tab"
-                        href="#kt_user_view_overview_security">Security</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-                        href="#kt_user_view_overview_events_and_logs_tab">Events &amp; Logs</a>
-                </li>
-
-            </ul>
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="kt_user_view_overview_tab" role="tabpanel">
-                    @include('user.profile.partials.overview')
-                </div>
-                <div class="tab-pane fade" id="kt_user_view_overview_security" role="tabpanel">
-                    @include('user.profile.partials.security')
-                </div>
-                <div class="tab-pane fade" id="kt_user_view_overview_events_and_logs_tab" role="tabpanel">
-                    @include('user.profile.partials.activity_logs')
+        <div class="col-lg-9">
+            <div>
+                <ul class="nav nav-custom nav-tabs nav-line-tabs nav-line-tabs-2x border-0 fs-4 fw-bold mb-1 bg-white">
+                    <li class="nav-item">
+                        <a class="nav-link text-active-primary p-5 active" data-bs-toggle="tab"
+                            href="#kt_user_view_overview_tab">Overview</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-active-primary p-5" data-kt-countup-tabs="true" data-bs-toggle="tab"
+                            href="#kt_user_view_overview_security">Security</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-active-primary p-5" data-bs-toggle="tab"
+                            href="#kt_user_view_overview_events_and_logs_tab">Events &amp; Logs</a>
+                    </li>
+                </ul>
+                <div class="tab-content mt-0 rounded-0" id="myTabContent">
+                    <div class="tab-pane fade show active" id="kt_user_view_overview_tab" role="tabpanel">
+                        @include('user.profile.partials.overview')
+                    </div>
+                    <div class="tab-pane fade" id="kt_user_view_overview_security" role="tabpanel">
+                        @include('user.profile.partials.security')
+                    </div>
+                    <div class="tab-pane fade" id="kt_user_view_overview_events_and_logs_tab" role="tabpanel">
+                        @include('user.profile.partials.activity_logs')
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="modal fade metronic_modal" id="update_email_{{ $user->id }}" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered mw-650px">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2 class="fw-bolder">Update Email</h2>
-                    <div class="btn btn-icon btn-sm btn-active-icon-primary" data-kt-modal-action="close">
-                        <span class="svg-icon svg-icon-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24" fill="none">
-                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1"
-                                    transform="rotate(-45 6 17.3137)" fill="currentColor" />
-                                <rect x="7.41422" y="6" width="16" height="2" rx="1"
-                                    transform="rotate(45 7.41422 6)" fill="currentColor" />
-                            </svg>
-                        </span>
-                    </div>
+        <div class="modal-dialog modal-dialog-centered modal-md">
+            <div class="modal-content rounded-0">
+                <div class="modal-header py-3 bg-info rounded-0 pe-2">
+                    <h3 class="modal-title text-white">Update Email</h3>
+                    <button type="button" class="btn btn-sm btn-transparent btn-active-info pe-2 ps-3"
+                        data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fa-solid fa-xmark fs-1"></i>
+                    </button>
                 </div>
                 <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                     <form class="form" method="POST" action="{{ route('profile.update', $user->id) }}">
@@ -219,16 +167,14 @@
     </div>
 
     <div class="modal fade metronic_modal" id="update_password_{{ $user->id }}" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered mw-650px">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2 class="fw-bolder">Update User Password</h2>
-                    <!--begin::Close-->
-                    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
-                        aria-label="Close">
-                        <span class="svg-icon svg-icon-2x fs-1">X</span>
-                    </div>
-                    <!--end::Close-->
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content rounded-0">
+                <div class="modal-header py-3 bg-info rounded-0 pe-2">
+                    <h3 class="modal-title text-white">Update Password</h3>
+                    <button type="button" class="btn btn-sm btn-transparent btn-active-info pe-2 ps-3"
+                        data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fa-solid fa-xmark fs-1"></i>
+                    </button>
                 </div>
                 <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                     <form class="form" method="POST" action="{{ route('profile.update', $user->id) }}"
@@ -291,17 +237,13 @@
     </div>
     <div class="modal fade metronic_modal" id="update_account_{{ $user->id }}" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header bg-info">
-                    <h2 class="fw-bolder text-white">Update Your Profile</h2>
-                    <!--begin::Close-->
-                    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
-                        aria-label="Close">
-                        <span class="svg-icon svg-icon-2x fs-1">
-                            <i class="fa-solid fa-xmark"></i>
-                        </span>
-                    </div>
-                    <!--end::Close-->
+            <div class="modal-content rounded-0">
+                <div class="modal-header py-3 bg-info rounded-0 pe-2">
+                    <h3 class="modal-title text-white">Update Your Profile</h3>
+                    <button type="button" class="btn btn-sm btn-transparent btn-active-info pe-2 ps-3"
+                        data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fa-solid fa-xmark fs-1"></i>
+                    </button>
                 </div>
                 <div class="modal-body scroll-y">
                     <form class="form" method="POST" action="{{ route('profile.update', $user->id) }}"
@@ -323,8 +265,6 @@
                             </div>
                             <div class="mb-5 col-lg-4">
                                 <x-metronic.label class="form-label">{{ __('Email') }}</x-metronic.label>
-                                <!--end::Label-->
-                                <!--begin::Input-->
                                 <x-metronic.input type="email" name="email"
                                     class="form-control form-control-lg form-control-solid"
                                     placeholder="Enter your email address" value="{{ old('email', $user->email) }}"
@@ -351,25 +291,12 @@
                                 @endif
 
                             </div>
-                            {{-- <div class="mb-5 col-lg-4">
-                                <x-metronic.label for="designation"
-                                    class="form-label">{{ __('Designation') }}</x-metronic.label>
-                                <x-metronic.input id="designation" type="text" name="designation"
-                                    :value="old('designation', $user->designation)" placeholder="Enter Your Designation"></x-metronic.input>
-                            </div> --}}
                             <div class="mb-5 col-lg-4">
                                 <x-metronic.label for="profile_image"
                                     class="form-label">{{ __('Profile Image') }}</x-metronic.label>
-                                {{-- <input type="file" id="profile_image" name="profile_image" placeholder="Enter Your Profile Image" class="form-control @error('profile_image') is-invalid @enderror"> --}}
                                 <x-metronic.input id="profile_image" type="file" name="profile_image"
                                     :value="old('profile_image', $user->profile_image)"></x-metronic.input>
                             </div>
-                            {{-- <div class="mb-5 col-lg-4">
-                                <x-metronic.label for="company_logo"
-                                    class="form-label">{{ __('Company Logo') }}</x-metronic.label>
-                                <x-metronic.input id="company_logo" type="file" name="company_logo"
-                                    :value="old('company_logo', $user->company_logo)"></x-metronic.input>
-                            </div> --}}
                             <div class="mb-5 col-lg-4">
                                 <x-metronic.label for="company_name"
                                     class="form-label">{{ __('Company Name') }}</x-metronic.label>
@@ -418,60 +345,15 @@
                                 <x-metronic.input id="country" type="text" name="country" :value="old('country', $user->country)"
                                     placeholder="Enter Your Country"></x-metronic.input>
                             </div>
-                            {{-- <div class="mb-5 col-lg-4">
-                                <x-metronic.label for="facebook_id"
-                                    class="form-label">{{ __('Facebook Id') }}</x-metronic.label>
-                                <x-metronic.input id="facebook_id" type="url" name="facebook_id"
-                                    :value="old('facebook_id', $user->facebook_id)" placeholder="Enter Your Facebook Id"></x-metronic.input>
-                            </div> --}}
-                            {{-- <div class="mb-5 col-lg-4">
-                                <x-metronic.label for="google_id"
-                                    class="form-label">{{ __('Google Id') }}</x-metronic.label>
-                                <x-metronic.input id="google_id" type="url" name="google_id" :value="old('google_id', $user->google_id)"
-                                    placeholder="Enter Your Google Id"></x-metronic.input>
-                            </div> --}}
-                            {{-- <div class="mb-5 col-lg-4">
-                                <x-metronic.label for="github_id"
-                                    class="form-label">{{ __('Github Id') }}</x-metronic.label>
-                                <x-metronic.input id="github_id" type="url" name="github_id" :value="old('github_id', $user->github_id)"
-                                    placeholder="Enter Your Github Id"></x-metronic.input>
-                            </div> --}}
-                            {{-- <div class="mb-5 col-lg-4">
-                                <x-metronic.label for="apple_id"
-                                    class="form-label">{{ __('Apple Id') }}</x-metronic.label>
-                                <x-metronic.input id="apple_id" type="url" name="apple_id" :value="old('apple_id', $user->apple_id)"
-                                    placeholder="Enter Your Apple Id"></x-metronic.input>
-                            </div> --}}
-                            {{-- <div class="mb-5 col-lg-4">
-                                <x-metronic.label for="instagram_id"
-                                    class="form-label">{{ __('Instagram Id') }}</x-metronic.label>
-                                <x-metronic.input id="instagram_id" type="url" name="instagram_id"
-                                    :value="old('instagram_id', $user->instagram_id)" placeholder="Enter Your Instagram Id"></x-metronic.input>
-                            </div> --}}
-                            {{-- <div class="mb-5 col-lg-4">
-                                <x-metronic.label for="pinterest_id"
-                                    class="form-label">{{ __('Printerest Id') }}</x-metronic.label>
-                                <x-metronic.input id="pinterest_id" type="url" name="pinterest_id"
-                                    :value="old('pinterest_id', $user->pinterest_id)" placeholder="Enter Your Printerest Id"></x-metronic.input>
-                            </div> --}}
-                            {{-- <div class="mb-5 col-lg-4">
-                                <x-metronic.label for="linked_in_id"
-                                    class="form-label">{{ __('Likedin Id') }}</x-metronic.label>
-                                <x-metronic.input id="linked_in_id" type="url" name="linked_in_id"
-                                    :value="old('linked_in_id', $user->linked_in_id)" placeholder="Enter Your Likedin Id"></x-metronic.input>
-                            </div> --}}
                         </div>
                         <div class="text-end pt-10">
-                            <x-metronic.button type="submit" class="primary">
-                                {{ __('Save Changes') }}
-                            </x-metronic.button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa-solid fa-cloud-arrow-up pe-2"></i> {{ __('Save Changes') }}
+                            </button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    {{-- @include('user.profile.partials.update-profile-information-form')
-    @include('user.profile.partials.update-password-form')
-    @include('user.profile.partials.delete-user-form') --}}
 </x-app-layout>

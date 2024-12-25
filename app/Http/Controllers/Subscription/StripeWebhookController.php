@@ -139,8 +139,6 @@ class StripeWebhookController extends CashierWebhookController
                     } catch (\Exception $e) {
                         // Log the email sending failure
                         Log::error('Failed to send registration email to ' . $user->email . ': ' . $e->getMessage());
-
-                        // Notify the admin
                     }
 
                     return redirect(RouteServiceProvider::HOME)->with('success', 'You have successfully registered with the ' . $activeSubscription->plan->title);
@@ -230,7 +228,12 @@ class StripeWebhookController extends CashierWebhookController
         Auth::login($user);
 
         // Send registration email
-        Mail::to($user->email)->send(new UserRegistrationMail($user->name));
+        try {
+            Mail::to($user->email)->send(new UserRegistrationMail($user->name));
+        } catch (\Exception $e) {
+            Log::error('Error sending email: ' . $e->getMessage());
+        }
+
 
         flash()->addSuccess('You have successfully registered.');
 

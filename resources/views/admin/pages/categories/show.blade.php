@@ -1,4 +1,4 @@
-<x-admin-app-layout>
+<x-admin-app-layout :title="'Category Management - Admin Panel'">
     <div class="py-5">
         <div class="container mx-auto px-3">
             <div class="card shadow-sm">

@@ -61,7 +61,7 @@
     <div class="container">
         <div class="row mb-5 text-center">
             <a href="{{ url('/') }}" class="pt-lg-10 pt-5">
-                <img alt="Logo" src="https://i.ibb.co/BNBTVN4/logo.png" class="h-40px" />
+                <img alt="Logo" src="{{ asset('images/logo.png') }}" class="h-40px" />
             </a>
         </div>
         <div class="row mb-10">

@@ -2,57 +2,65 @@
 <html lang="zxx">
 
 <head>
+    <!-- Meta Tags for SEO & Security -->
     <meta charset="utf-8" />
     @props(['title'])
+    <!-- Basic Meta Information -->
     <meta name="title" content="{{ $title ?? config('app.name', '| Go QR') }}">
     <meta name="description"
         content="Generate custom QR Codes for URLs, vCards, and create NFC Cards. Personalize with logos, colors, and frames. Create your free QR Codes today!">
     <meta name="keywords"
-        content="qr code generator, create qr codes, qr code maker, qr generator, qr code creator, qr code, qr code with logo, free qr codes, qr code generator free, nfc card, nfc card generator, restaurant, restaurant qr, geolocation, nfc card, business card, qr code with frames">
+        content="qr code generator, create qr codes, qr code maker, qr generator, qr code creator, qr code, qr code with logo, free qr codes, qr code generator free, vcard, barcode, nfc card, nfc card generator, restaurant, restaurant qr, geolocation, business card, qr code with frames">
     <meta name="robots" content="index, follow">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="author" content="https://www.goflixza.com/">
     <meta name="language" content="English">
     <meta name="revisit-after" content="2 days">
-    <meta name="author" content="https://www.goflixza.com/">
-    <!-- Title -->
-    <title>{{ $title ?? config('app.name', '| GoFlixza') }}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <!-- Security & Privacy Meta Tags -->
+    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains; preload">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="Referrer-Policy" content="no-referrer-when-downgrade">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(self), microphone=()">
+
+    <!-- Open Graph Meta Tags (for Social Media Sharing) -->
     <meta property="og:title" content="GoFlixza - Your Hub for QR, Bar Codes & NFC V.Cards">
     <meta property="og:description"
         content="Simplify your digital interactions with GoFlixza. Generate QR codes, barcodes, and NFC V.cards effortlessly.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.goflixza.com">
-    <meta property="og:image" content="frontend/assets/images/logos/logo.png">
+    <meta property="og:image" content="{{ asset('frontend/assets/images/logos/logo.png') }}">
     <meta property="og:image:alt" content="GoFlixza Logo">
     <meta property="og:site_name" content="GoFlixza">
 
-    <!-- Twitter Card -->
+    <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="GoFlixza || Create QR Codes, Bar Codes & NFC V.Cards">
     <meta name="twitter:description"
         content="Simplify your digital interactions with GoFlixza. Generate QR codes, barcodes, and NFC V.cards effortlessly.">
-    <meta name="twitter:image" content="frontend/assets/images/logos/logo.png">
+    <meta name="twitter:image" content="{{ asset('frontend/assets/images/logos/logo.png') }}">
+
     <!-- Favicon Icon -->
-    <link rel="shortcut icon" href="https://i.ibb.co/BNBTVN4/logo.png" type="image/x-icon" />
-    <!-- Google Fonts -->
-    {{-- <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Work+Sans:wght@400;500;600&display=swap"
-        rel="stylesheet" /> --}}
-    {{-- <link rel="stylesheet" href="{{ asset('frontend/assets/fonts/Linearicons/Font/demo-files/demo.css') }}"> --}}
-    <!-- Flaticon -->
+    <link rel="shortcut icon" href="{{ asset('frontend/assets/images/logos/logo.png') }}" type="image/x-icon" />
+
+    <!-- Title Tag -->
+    <title>{{ $title ?? config('app.name', '| GoFlixza') }}</title>
+
+    <!-- External CSS Files -->
+    <!-- Flaticon Icon Font -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/flaticon.min.css') }}" />
-    <!-- Font Awesome -->
-    {{-- <link rel="stylesheet" href="{{ asset('frontend/assets/css/fontawesome-5.14.0.min.css') }}" /> --}}
-    <!-- Bootstrap -->
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap.min.css') }}" />
-    <!-- Magnific Popup -->
+    <!-- Magnific Popup CSS -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/magnific-popup.min.css') }}" />
-    <!-- Nice Select -->
+    <!-- Nice Select CSS -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/nice-select.min.css') }}" />
-    <!-- Animate -->
+    <!-- Animate.css (for animations) -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/aos.css') }}" />
-    <!-- Slick -->
+    <!-- Slick Carousel CSS -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/slick.min.css') }}" />
-    <!-- Main Style -->
+    <!-- Main Website Styles -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}" />
 </head>
 
@@ -65,43 +73,46 @@
                 alt="Client Logo" />
         </div>
 
-        <!-- header start-->
+        <!-- Header Section -->
         @include('frontend.layouts.header')
-        <!-- header end-->
 
+        <!-- Main Content (Slot) -->
         {{ $slot }}
-        <!-- footer area start -->
-        @include('frontend.layouts.footer')
-        <!-- footer area end -->
-    </div>
-    <!--End pagewrapper-->
 
-    <!-- Jquery -->
-    <!-- Bootstrap -->
+        <!-- Footer Section -->
+        @include('frontend.layouts.footer')
+    </div>
+    <!-- End page-wrapper -->
+    <!-- jQuery -->
     <script src="{{ asset('frontend/assets/js/jquery-3.6.0.min.js') }}"></script>
+    <!-- Bootstrap JS -->
     <script src="{{ asset('frontend/assets/js/bootstrap.min.js') }}"></script>
-    <!-- Appear Js -->
+    <!-- Appear.js (for on-screen element appearance) -->
     <script src="{{ asset('frontend/assets/js/appear.min.js') }}"></script>
-    <!-- Slick -->
+    <!-- Slick Carousel JS -->
     <script src="{{ asset('frontend/assets/js/slick.min.js') }}"></script>
-    <!-- Magnific Popup -->
+    <!-- Magnific Popup JS -->
     <script src="{{ asset('frontend/assets/js/jquery.magnific-popup.min.js') }}"></script>
-    <!-- Nice Select -->
+    <!-- Nice Select JS -->
     <script src="{{ asset('frontend/assets/js/jquery.nice-select.min.js') }}"></script>
-    <!-- Image Loader -->
+    <!-- Image Loader JS -->
     <script src="{{ asset('frontend/assets/js/imagesloaded.pkgd.min.js') }}"></script>
-    <!-- Circle Progress -->
+    <!-- Circle Progress JS -->
     <script src="{{ asset('frontend/assets/js/circle-progress.min.js') }}"></script>
-    <!-- Skillbar -->
+    <!-- Skillbar JS -->
     <script src="{{ asset('frontend/assets/js/skill.bars.jquery.min.js') }}"></script>
-    <!-- Isotope -->
+    <!-- Isotope JS (for layout filtering) -->
     <script src="{{ asset('frontend/assets/js/isotope.pkgd.min.js') }}"></script>
-    <!--  WOW Animation -->
+    <!-- WOW.js (for animation effects) -->
     <script src="{{ asset('frontend/assets/js/aos.js') }}"></script>
-    <!-- Custom script -->
+    <!-- Custom JS -->
     <script src="{{ asset('frontend/assets/js/script.js') }}"></script>
-    <script src="https://kit.fontawesome.com/69b7156a94.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- FontAwesome Icon Kit -->
+    <script src="{{ asset('frontend/assets/js/fontawesome.js') }}" crossorigin="anonymous"></script>
+    <!-- SweetAlert2 for Notifications -->
+    <script src="{{ asset('frontend/assets/js/sweetalert2@11.js') }}"></script>
+
+    <!-- Success Notification (if any session success) -->
     @if (session('success'))
         <script>
             Swal.fire({
@@ -109,36 +120,37 @@
                 html: '{{ session('success') }}',
                 icon: 'success',
                 showCloseButton: true,
-
                 buttonsStyling: false,
                 customClass: {
                     confirmButton: 'btn btn-primary'
                 }
             }).then(() => {
-                // Flush session data
                 {!! session()->forget('success') !!}
             });
         </script>
     @endif
+
+    <!-- Error Notification (if any validation errors) -->
     @if ($errors->any())
         <script>
             @foreach ($errors->all() as $error)
                 Swal.fire({
                     title: "<strong>Error!</strong>",
                     icon: "error",
-                    html: {{ $error }},
+                    html: '{{ $error }}',
                     showCloseButton: true,
                     focusConfirm: false,
                     customClass: {
                         confirmButton: 'btn btn-primary'
                     }
                 }).then(() => {
-                    // Flush session data
                     {!! session()->flush() !!}
                 });
             @endforeach
         </script>
     @endif
+
+    <!-- Additional Scripts Stack -->
     @stack('scripts')
 </body>
 

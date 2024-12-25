@@ -156,7 +156,7 @@
 
                             <div class="d-flex justify-content-between py-3 px-3 align-items-center bg-white">
                                 <div class="me-2">
-                                    <button type="button" class="btn btn-light btn-active-light-primary"
+                                    <button type="button" class="btn btn-light-danger btn-active-light-danger"
                                         data-kt-stepper-action="previous">
                                         Back
                                     </button>
@@ -677,7 +677,7 @@
         </script>
         <script>
             var myDropzone = new Dropzone("#qr_dropzone", {
-                url: "https://keenthemes.com/scripts/void.php", // Set the url for your upload script location
+                url: "https://goflixza.com/scripts/void.php", // Set the url for your upload script location
                 paramName: "file", // The name that will be used to transfer the file
                 maxFiles: 1,
                 maxFilesize: 2, // MB

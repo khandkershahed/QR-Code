@@ -124,7 +124,7 @@
 
                             <div class="d-flex flex-stack p-3">
                                 <div class="me-2">
-                                    <button type="button" class="btn btn-light btn-active-light-primary"
+                                    <button type="button" class="btn btn-light-danger btn-active-light-danger"
                                         data-kt-stepper-action="previous">
                                         Back
                                     </button>

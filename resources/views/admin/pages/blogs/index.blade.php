@@ -1,4 +1,4 @@
-<x-admin-app-layout :title="'Blog List'">
+<x-admin-app-layout :title="'Blog List - Admin Panel'">
     <div class="card">
         <div class="card-header bg-info align-items-center d-flex justify-content-between">
             <div>
@@ -63,16 +63,12 @@
         </div>
     </div>
     <div class="card card-flash">
-        <!--begin::Card header-->
         <div class="card-header mt-6">
             <div class="card-title">
             </div>
 
-            <!--begin::Card toolbar-->
             <div class="card-toolbar">
-                <!--begin::Button-->
                 <a href="{{ route('admin.blog.create') }}" class="btn btn-light-primary rounded-2">
-                    <!--begin::Svg Icon | path: blog/duotune/general/gen035.svg-->
                     <span class="svg-icon svg-icon-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none">
@@ -84,32 +80,24 @@
                                 fill="currentColor" />
                         </svg>
                     </span>
-                    <!--end::Svg Icon-->Add Blog
+                    Add Blog
                 </a>
             </div>
         </div>
         <div class="card-body pt-0">
-            <!--begin::Table-->
             <table class="blogsDT table align-middle table-row-dashed fs-6 gy-5 mb-0" id="kt_permissions_table">
-                <!--begin::Table head-->
                 <thead>
-                    <!--begin::Table row-->
                     <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                         <th>Sl</th>
                         <th>Name</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
-                    <!--end::Table row-->
                 </thead>
-                <!--end::Table head-->
-                <!--begin::Table body-->
                 <tbody class="fw-bold text-gray-600">
 
                 </tbody>
-                <!--end::Table body-->
             </table>
-            <!--end::Table-->
         </div>
     </div>
 

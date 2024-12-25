@@ -278,7 +278,7 @@
                     </div>
                     <!-- Front Info -->
                     <div class="template-two-title pt-5 tempmail"
-                        style="">
+                         >
                         <div class="half mt-4">
                             <div class="w-100 mx-auto">
                                 <p class="mb-0 card_email card-two-mail">{{ $nfc_card->card_email }}</p>

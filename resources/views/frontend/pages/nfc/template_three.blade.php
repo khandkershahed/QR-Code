@@ -16,10 +16,10 @@
         content="{{ !empty(optional($nfc_card->nfcSeo)->site_title) ? optional($nfc_card->nfcSeo)->site_title : $nfc_card->vcard_name }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <link rel="shortcut icon"
-        href="{{ !empty($nfc_card->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card)->profile_image) : 'https://i.ibb.co/BNBTVN4/logo.png' }}"
-        type="image/x-icon" />
 
+    <link rel="shortcut icon"
+        href="{{ !empty($nfc_card->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card)->profile_image) : asset('frontend/assets/images/logos/logo.png') }}"
+        type="image/x-icon" />
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
@@ -114,15 +114,9 @@
 
         .banner-image {
             opacity: 0.8;
-            height: 478px;
-            clip-path: polygon(60% 0%,
-                    70% 0%,
-                    100% 0,
-                    100% 70%,
-                    50% 100%,
-                    50% 100%,
-                    0% 70%,
-                    0 0);
+            height: 340px;
+            clip-path: polygon(60% 0%, 70% 0%, 100% 0, 100% 70%, 50% 100%, 50% 100%, 0% 70%, 0 0);
+            object-fit: cover;
         }
 
         .overlay {
@@ -221,29 +215,30 @@
 
         .date-card-tem3 {
             background-color: #ff00008c;
+            height: 100%;
         }
 
         .service-img-tem3 {
             display: flex;
             justify-content: center;
-            width: 200px;
-            height: 180px;
+            width: 100%;
+            height: 100%;
             margin: auto;
         }
 
         .service-img-tem3 img {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            margin: auto;
-        }
-
-        .card-img-top {
-            width: 200px;
+            width: 100%;
             height: 200px;
             object-fit: cover;
             margin: auto;
         }
+
+        /* .card-img-top {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            margin: auto;
+        } */
 
         .service-header-tem3 {
             border-bottom: 5px solid var(--template-three-color-primary);
@@ -518,8 +513,8 @@
         <img src="{{ asset('frontend') }}/assets/images/client-logos/preloader.svg" alt="Loading...">
     </div>
     <main>
-        <div class="mobile-frame" style="background-image: url(https://i.ibb.co/vZh8yjs/bg.png)">
-            <div class="page-content-wrapper">
+        <div class="mobile-frame">
+            <div class="page-content-wrapper" style="background-image: url({{ asset('images/bg.png') }})">
                 <!-- Banner -->
                 <section>
                     <div class="container px-0">
@@ -607,389 +602,411 @@
                             </div>
                         </div>
                         @if (
-                            !empty($nfc_card->nfcData->email_personal) ||
-                                !empty($nfc_card->nfcData->email_work) ||
-                                !empty($nfc_card->nfcData->phone_personal) ||
-                                !empty($nfc_card->nfcData->phone_work) ||
-                                !empty($nfc_card->nfcData->location) ||
-                                !empty($nfc_card->nfcData->date_of_birth) ||
-                                !empty($nfc_card->nfcData->address_line_two))
+                            !empty(optional($nfc_card->nfcData)->email_personal) ||
+                                !empty(optional($nfc_card->nfcData)->email_work) ||
+                                !empty(optional($nfc_card->nfcData)->phone_personal) ||
+                                !empty(optional($nfc_card->nfcData)->phone_work) ||
+                                !empty(optional($nfc_card->nfcData)->location) ||
+                                !empty(optional($nfc_card->nfcData)->date_of_birth) ||
+                                !empty(optional($nfc_card->nfcData)->address_line_two))
                             <!-- Date Area -->
                             <div class="row pt-5">
-                                @if (!empty($nfc_card->nfcData->email_personal) || !empty($nfc_card->nfcData->email_work))
+                                @if (!empty(optional($nfc_card->nfcData)->email_personal) || !empty(optional($nfc_card->nfcData)->email_work))
                                     <div class="col-sm-6">
                                         <div class="card date-card-tem3">
-                                            <div class="card-body d-flex align-content-center p-2">
-                                                <div>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
-                                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="50"
-                                                        height="50" x="0" y="0" viewBox="0 0 48 48"
-                                                        style="enable-background: new 0 0 512 512" xml:space="preserve"
-                                                        class="">
-                                                        <g>
-                                                            <linearGradient id="b" x1="24" x2="24"
-                                                                y1="4.274" y2="30.545"
-                                                                gradientUnits="userSpaceOnUse">
-                                                                <stop offset="0" stop-color="#fd9b02"></stop>
-                                                                <stop offset="1" stop-color="#ff7302"></stop>
-                                                            </linearGradient>
-                                                            <linearGradient id="c" x1="24"
-                                                                x2="24" y1="6.108" y2="30.882"
-                                                                gradientUnits="userSpaceOnUse">
-                                                                <stop offset="0" stop-color="#edf1f2"></stop>
-                                                                <stop offset=".336" stop-color="#e9edee"></stop>
-                                                                <stop offset=".636" stop-color="#dee2e3"></stop>
-                                                                <stop offset=".921" stop-color="#ccd1d2"></stop>
-                                                                <stop offset="1" stop-color="#c6cbcc"></stop>
-                                                            </linearGradient>
-                                                            <linearGradient id="d" x1="16.755"
-                                                                x2="29.756" y1="9.755" y2="22.756"
-                                                                gradientUnits="userSpaceOnUse">
-                                                                <stop offset="0" stop-color="#4793eb"></stop>
-                                                                <stop offset="1" stop-color="#2367ec"></stop>
-                                                            </linearGradient>
-                                                            <linearGradient id="a" x1="-6.372"
-                                                                x2="34.443" y1="-3.856" y2="42.463"
-                                                                gradientUnits="userSpaceOnUse">
-                                                                <stop offset="0" stop-color="#fed200"></stop>
-                                                                <stop offset="1" stop-color="#f59815"></stop>
-                                                            </linearGradient>
-                                                            <linearGradient xlink:href="#a" id="e"
-                                                                x1="15.463" x2="35.412" y1="28.773"
-                                                                y2="62.365">
-                                                            </linearGradient>
-                                                            <path fill="url(#b)"
-                                                                d="M40 46H8c-2.757 0-5-2.243-5-5V19.8c0-1.527.684-2.95 1.876-3.904l16-12.8a4.97 4.97 0 0 1 6.247 0l16 12.8a4.975 4.975 0 0 1 1.876 3.904V41c0 2.757-2.243 5-5 5z"
-                                                                opacity="1" data-original="url(#b)"></path>
-                                                            <path fill="url(#c)"
-                                                                d="M39 38H9a1 1 0 0 1-1-1V9c0-1.654 1.346-3 3-3h26c1.654 0 3 1.346 3 3v28a1 1 0 0 1-1 1z"
-                                                                opacity="1" data-original="url(#c)"
-                                                                class="">
-                                                            </path>
-                                                            <path fill="url(#d)"
-                                                                d="M28.12 23.859a1 1 0 0 0-1.032-1.714 5.981 5.981 0 0 1-3.089.855c-3.309 0-6-2.691-6-6s2.691-6 6-6 6 2.691 6 6.028c-.005 1.069-.969 1.973-2.106 1.973a.94.94 0 0 1-.687-.295.936.936 0 0 1-.258-.701l.152-2.9c.028-.545-.171-1.085-.547-1.481s-.904-.623-1.45-.623h-.446c-2.453 0-4.554 1.993-4.682 4.451-.049.941.276 1.83.916 2.504a3.344 3.344 0 0 0 2.452 1.045c.91 0 1.752-.36 2.399-.937l.014.019a2.963 2.963 0 0 0 2.137.919h.001c2.254 0 4.096-1.778 4.106-4 0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8c1.455 0 2.88-.395 4.12-1.141zm-3.145-6.411v.004c-.045.839-.792 1.547-1.632 1.547-.388 0-.744-.15-1.001-.421a1.373 1.373 0 0 1-.369-1.031C22.045 16.166 23.275 15 24.658 15h.446l-.128 2.448z"
-                                                                opacity="1" data-original="url(#d)"></path>
-                                                            <path fill="url(#a)"
-                                                                d="M27.125 31.912a5.031 5.031 0 0 1-6.25 0L3.376 17.911A5 5 0 0 0 3 19.8V41c0 2.757 2.243 5 5 5h32c2.757 0 5-2.243 5-5V19.8a5 5 0 0 0-.376-1.889z"
-                                                                opacity="1" data-original="url(#a)"></path>
-                                                            <path fill="url(#e)"
-                                                                d="M27.125 29.22a5.031 5.031 0 0 0-6.25 0L3.493 43.127C4.295 44.819 6.007 46 8 46h32c1.993 0 3.705-1.181 4.507-2.873z"
-                                                                opacity="1" data-original="url(#e)"></path>
-                                                        </g>
-                                                    </svg>
-                                                </div>
-                                                <div class="ps-3 pt-1">
-                                                    <h6 class="special-font text-white mb-0">Email</h6>
-                                                    <p class="text-white mb-0 w-75">
-                                                        {{ $nfc_card->nfcData->email_personal }}
-                                                    </p>
-                                                    <p class="text-white mb-0">{{ $nfc_card->nfcData->email_work }}
-                                                    </p>
+                                            <div class="card-body p-2">
+                                                <div class="d-flex align-items-center">
+                                                    <div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="50"
+                                                            height="50" x="0" y="0" viewBox="0 0 48 48"
+                                                            style="enable-background: new 0 0 512 512"
+                                                            xml:space="preserve" class="">
+                                                            <g>
+                                                                <linearGradient id="b" x1="24"
+                                                                    x2="24" y1="4.274" y2="30.545"
+                                                                    gradientUnits="userSpaceOnUse">
+                                                                    <stop offset="0" stop-color="#fd9b02"></stop>
+                                                                    <stop offset="1" stop-color="#ff7302"></stop>
+                                                                </linearGradient>
+                                                                <linearGradient id="c" x1="24"
+                                                                    x2="24" y1="6.108" y2="30.882"
+                                                                    gradientUnits="userSpaceOnUse">
+                                                                    <stop offset="0" stop-color="#edf1f2"></stop>
+                                                                    <stop offset=".336" stop-color="#e9edee"></stop>
+                                                                    <stop offset=".636" stop-color="#dee2e3"></stop>
+                                                                    <stop offset=".921" stop-color="#ccd1d2"></stop>
+                                                                    <stop offset="1" stop-color="#c6cbcc"></stop>
+                                                                </linearGradient>
+                                                                <linearGradient id="d" x1="16.755"
+                                                                    x2="29.756" y1="9.755" y2="22.756"
+                                                                    gradientUnits="userSpaceOnUse">
+                                                                    <stop offset="0" stop-color="#4793eb"></stop>
+                                                                    <stop offset="1" stop-color="#2367ec"></stop>
+                                                                </linearGradient>
+                                                                <linearGradient id="a" x1="-6.372"
+                                                                    x2="34.443" y1="-3.856" y2="42.463"
+                                                                    gradientUnits="userSpaceOnUse">
+                                                                    <stop offset="0" stop-color="#fed200"></stop>
+                                                                    <stop offset="1" stop-color="#f59815"></stop>
+                                                                </linearGradient>
+                                                                <linearGradient xlink:href="#a" id="e"
+                                                                    x1="15.463" x2="35.412" y1="28.773"
+                                                                    y2="62.365">
+                                                                </linearGradient>
+                                                                <path fill="url(#b)"
+                                                                    d="M40 46H8c-2.757 0-5-2.243-5-5V19.8c0-1.527.684-2.95 1.876-3.904l16-12.8a4.97 4.97 0 0 1 6.247 0l16 12.8a4.975 4.975 0 0 1 1.876 3.904V41c0 2.757-2.243 5-5 5z"
+                                                                    opacity="1" data-original="url(#b)"></path>
+                                                                <path fill="url(#c)"
+                                                                    d="M39 38H9a1 1 0 0 1-1-1V9c0-1.654 1.346-3 3-3h26c1.654 0 3 1.346 3 3v28a1 1 0 0 1-1 1z"
+                                                                    opacity="1" data-original="url(#c)"
+                                                                    class="">
+                                                                </path>
+                                                                <path fill="url(#d)"
+                                                                    d="M28.12 23.859a1 1 0 0 0-1.032-1.714 5.981 5.981 0 0 1-3.089.855c-3.309 0-6-2.691-6-6s2.691-6 6-6 6 2.691 6 6.028c-.005 1.069-.969 1.973-2.106 1.973a.94.94 0 0 1-.687-.295.936.936 0 0 1-.258-.701l.152-2.9c.028-.545-.171-1.085-.547-1.481s-.904-.623-1.45-.623h-.446c-2.453 0-4.554 1.993-4.682 4.451-.049.941.276 1.83.916 2.504a3.344 3.344 0 0 0 2.452 1.045c.91 0 1.752-.36 2.399-.937l.014.019a2.963 2.963 0 0 0 2.137.919h.001c2.254 0 4.096-1.778 4.106-4 0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8c1.455 0 2.88-.395 4.12-1.141zm-3.145-6.411v.004c-.045.839-.792 1.547-1.632 1.547-.388 0-.744-.15-1.001-.421a1.373 1.373 0 0 1-.369-1.031C22.045 16.166 23.275 15 24.658 15h.446l-.128 2.448z"
+                                                                    opacity="1" data-original="url(#d)"></path>
+                                                                <path fill="url(#a)"
+                                                                    d="M27.125 31.912a5.031 5.031 0 0 1-6.25 0L3.376 17.911A5 5 0 0 0 3 19.8V41c0 2.757 2.243 5 5 5h32c2.757 0 5-2.243 5-5V19.8a5 5 0 0 0-.376-1.889z"
+                                                                    opacity="1" data-original="url(#a)"></path>
+                                                                <path fill="url(#e)"
+                                                                    d="M27.125 29.22a5.031 5.031 0 0 0-6.25 0L3.493 43.127C4.295 44.819 6.007 46 8 46h32c1.993 0 3.705-1.181 4.507-2.873z"
+                                                                    opacity="1" data-original="url(#e)"></path>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="ps-3 pt-1">
+                                                        <h6 class="special-font text-white mb-0">Email</h6>
+                                                        <p class="text-white mb-0 w-75">
+                                                            {{ optional($nfc_card->nfcData)->email_personal }} <small><small>(Personal)</small></small>
+                                                        </p>
+                                                        <p class="text-white mb-0">
+                                                            {{ optional($nfc_card->nfcData)->email_work }}
+                                                        </p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 @endif
-                                @if (!empty($nfc_card->nfcData->phone_personal) || !empty($nfc_card->nfcData->phone_work))
+                                @if (!empty(optional($nfc_card->nfcData)->phone_personal) || !empty(optional($nfc_card->nfcData)->phone_work))
                                     <div class="col-sm-6">
                                         <div class="card date-card-tem3 mt-4 mt-lg-0">
                                             <div class="card-body d-flex align-content-center p-2">
-                                                <div>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
-                                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="50"
-                                                        height="50" x="0" y="0" viewBox="0 0 512 512"
-                                                        style="enable-background: new 0 0 512 512"
-                                                        xml:space="preserve" class="">
-                                                        <g>
-                                                            <path fill="#fed843"
-                                                                d="M406 31H286c-57.891 0-106 47.109-106 105 0 52.808 40.185 96.636 91 103.931V286a14.983 14.983 0 0 0 9.258 13.857c5.533 2.309 12.023 1.071 16.348-3.252L346 247.211l6.211-6.211H406c57.891 0 106-47.109 106-105S463.891 31 406 31z"
-                                                                opacity="1" data-original="#fed843"
-                                                                class="">
-                                                            </path>
-                                                            <path fill="#fabe2c"
-                                                                d="M406 241c57.891 0 106-47.109 106-105S463.891 31 406 31h-60v216.211l6.211-6.211z"
-                                                                opacity="1" data-original="#fabe2c"
-                                                                class="">
-                                                            </path>
-                                                            <path fill="#ff641a"
-                                                                d="M382 376v60c0 26.1-21.31 45-44.79 45-86.41 0-170.71-40.85-233.41-103.3S0 231.2 0 144.79C0 119.97 20.19 100 45 100h60c6.46 0 12.19 4.13 14.22 10.25l30 89.79c1.47 4.4.82 9.22-1.74 13.07l-25.44 38.17c9.64 20.22 26.7 42.32 46.4 61.78 19.71 19.45 42.06 36.26 62.28 45.9l38.17-25.44c3.87-2.55 8.67-3.22 13.07-1.74l90 30c6.12 2.03 10.04 7.76 10.04 14.22z"
-                                                                opacity="1" data-original="#ff641a"></path>
-                                                            <path fill="#f03800"
-                                                                d="M382 376v60c0 26.1-21.31 45-44.79 45-86.41 0-170.71-40.85-233.41-103.3l64.64-64.64c19.71 19.45 42.06 36.26 62.28 45.9l38.17-25.44c3.87-2.55 8.67-3.22 13.07-1.74l90 30c6.12 2.03 10.04 7.76 10.04 14.22z"
-                                                                opacity="1" data-original="#f03800"></path>
-                                                            <circle cx="285.999" cy="135.999" r="15"
-                                                                fill="#613d5c" opacity="1"
-                                                                data-original="#613d5c"></circle>
-                                                            <circle cx="346" cy="135.998" r="15"
-                                                                fill="#613d5c" opacity="1"
-                                                                data-original="#613d5c"></circle>
-                                                            <g fill="#4b2746">
-                                                                <path
-                                                                    d="M361 135.998c0-8.284-6.716-15-15-15v30c8.284 0 15-6.716 15-15z"
-                                                                    fill="#4b2746" opacity="1"
-                                                                    data-original="#4b2746" class=""></path>
-                                                                <circle cx="405.999" cy="135.999" r="15"
-                                                                    fill="#4b2746" opacity="1"
-                                                                    data-original="#4b2746" class="">
-                                                                </circle>
-                                                            </g>
-                                                        </g>
-                                                    </svg>
-                                                </div>
-                                                <div class="ps-3 pt-1">
-                                                    <h6 class="special-font text-white mb-0">Phone</h6>
-                                                    <p class="text-white mb-0">
-                                                        {{ $nfc_card->nfcData->phone_personal }}
-                                                    </p>
-                                                    <p class="text-white mb-0">{{ $nfc_card->nfcData->phone_work }}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endif
-                                @if (!empty($nfc_card->nfcData->location))
-                                    <div class="col-sm-6 mt-4">
-                                        <div class="card date-card-tem3">
-                                            <div class="card-body d-flex align-content-center p-2">
-                                                <div>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
-                                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="50"
-                                                        height="50" x="0" y="0" viewBox="0 0 14249 15442"
-                                                        style="enable-background: new 0 0 512 512"
-                                                        xml:space="preserve" fill-rule="evenodd" class="">
-                                                        <g>
-                                                            <path fill="#00dcab"
-                                                                d="m7804 187 5505 3179c432 249 680 678 680 1177v6356c0 499-248 928-680 1177l-5505 3179c-432 249-927 249-1359 0L940 12076c-433-249-680-678-680-1177V4543c0-499 247-928 680-1177L6445 187c432-249 927-249 1359 0z"
-                                                                opacity="1" data-original="#00dcab"
-                                                                class="">
-                                                            </path>
-                                                            <path fill="#1c3b5c"
-                                                                d="M1101 4074h12046c243 0 442 199 442 442v7805c0 243-199 441-442 441H1101c-243 0-441-198-441-441V4516c0-243 198-442 441-442z"
-                                                                opacity="1" data-original="#1c3b5c"></path>
-                                                            <path fill="#e1e3e8"
-                                                                d="M347 14315h13555c191 0 347-156 347-347v-564c0-191-156-347-347-347H347c-191 0-347 156-347 347v564c0 191 156 347 347 347z"
-                                                                opacity="1" data-original="#e1e3e8"></path>
-                                                            <path fill="#53b4ed" d="M1287 4682h11675v7472H1287z"
-                                                                opacity="1" data-original="#53b4ed"></path>
-                                                            <g fill="#205081">
-                                                                <path
-                                                                    d="M2672 12484h1015v573H2672zM10561 12484h1016v573h-1016z"
-                                                                    fill="#205081" opacity="1"
-                                                                    data-original="#205081">
+                                                <div class="d-flex align-items-center">
+                                                    <div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="50"
+                                                            height="50" x="0" y="0" viewBox="0 0 512 512"
+                                                            style="enable-background: new 0 0 512 512"
+                                                            xml:space="preserve" class="">
+                                                            <g>
+                                                                <path fill="#fed843"
+                                                                    d="M406 31H286c-57.891 0-106 47.109-106 105 0 52.808 40.185 96.636 91 103.931V286a14.983 14.983 0 0 0 9.258 13.857c5.533 2.309 12.023 1.071 16.348-3.252L346 247.211l6.211-6.211H406c57.891 0 106-47.109 106-105S463.891 31 406 31z"
+                                                                    opacity="1" data-original="#fed843"
+                                                                    class="">
                                                                 </path>
-                                                            </g>
-                                                            <g fill="#c5c7cb">
-                                                                <path
-                                                                    d="M5441 13057h3367v399H5441zM14076 13986H172c-62 0-121-17-172-46v28c0 191 156 347 347 347h13555c191 0 347-156 347-347v-28c-51 29-110 46-173 46z"
-                                                                    fill="#c5c7cb" opacity="1"
-                                                                    data-original="#c5c7cb">
+                                                                <path fill="#fabe2c"
+                                                                    d="M406 241c57.891 0 106-47.109 106-105S463.891 31 406 31h-60v216.211l6.211-6.211z"
+                                                                    opacity="1" data-original="#fabe2c"
+                                                                    class="">
                                                                 </path>
-                                                            </g>
-                                                            <g fill="#fff">
-                                                                <path
-                                                                    d="M8901 5467h1722v173H8901zM10900 5467h919v173h-919zM10098 6141h1145v173h-1145zM8901 6141h919v173h-919zM8901 6834h1722v173H8901zM10900 6834h919v173h-919z"
-                                                                    fill="#ffffff" opacity="1"
-                                                                    data-original="#ffffff">
-                                                                </path>
-                                                            </g>
-                                                            <path fill="#ffc42e" d="M8901 7766h919v173h-919z"
-                                                                opacity="1" data-original="#ffc42e"></path>
-                                                            <path fill="#ffffff" d="M1937 4011h6142v8143H1937z"
-                                                                opacity="1" data-original="#ffffff"></path>
-                                                            <path fill="#205081"
-                                                                d="M2402 3082h5213c256 0 465 209 465 465v464H1937v-464c0-256 209-465 465-465z"
-                                                                opacity="1" data-original="#205081"></path>
-                                                            <rect width="3025" height="272" x="2499" y="3410"
-                                                                fill="#55ace0" rx="214" ry="136"
-                                                                opacity="1" data-original="#55ace0"></rect>
-                                                            <circle cx="6257" cy="3547" r="170"
-                                                                fill="#ff576b" opacity="1"
-                                                                data-original="#ff576b"></circle>
-                                                            <circle cx="6860" cy="3547" r="170"
-                                                                fill="#ffc42e" opacity="1"
-                                                                data-original="#ffc42e"></circle>
-                                                            <circle cx="7464" cy="3547" r="170"
-                                                                fill="#53b4ed" opacity="1"
-                                                                data-original="#53b4ed"></circle>
-                                                            <path fill="#00dcab" d="M2344 7244h1394v840H2344z"
-                                                                opacity="1" data-original="#00dcab"
-                                                                class="">
-                                                            </path>
-                                                            <g fill="#afb0b5">
-                                                                <path
-                                                                    d="M2344 8279h943v123h-943zM2344 8535h1117v62H2344zm0 369h840v61h-840zm0-185h1117v62H2344z"
-                                                                    fill="#afb0b5" opacity="1"
-                                                                    data-original="#afb0b5">
-                                                                </path>
-                                                            </g>
-                                                            <path fill="#ff576b" d="M4312 7244h1394v840H4312z"
-                                                                opacity="1" data-original="#ff576b"></path>
-                                                            <g fill="#afb0b5">
-                                                                <path
-                                                                    d="M4312 8279h943v123h-943zM4312 8535h1117v62H4312zm0 369h840v61h-840zm0-185h1117v62H4312z"
-                                                                    fill="#afb0b5" opacity="1"
-                                                                    data-original="#afb0b5">
-                                                                </path>
-                                                            </g>
-                                                            <path fill="#ffc42e" d="M6279 7244h1394v840H6279z"
-                                                                opacity="1" data-original="#ffc42e"></path>
-                                                            <g fill="#afb0b5">
-                                                                <path
-                                                                    d="M6279 8279h943v123h-943zM6279 8535h1117v62H6279zm0 369h841v61h-841zm0-185h1117v62H6279z"
-                                                                    fill="#afb0b5" opacity="1"
-                                                                    data-original="#afb0b5">
-                                                                </path>
-                                                            </g>
-                                                            <path fill="#ffffff" d="M1937 4011h6142v922H1937z"
-                                                                opacity="1" data-original="#ffffff"></path>
-                                                            <path fill="#ffc42e" d="M1937 4933h6142v2059H1937z"
-                                                                opacity="1" data-original="#ffc42e"></path>
-                                                            <g fill="#ff576b">
-                                                                <circle cx="5008" cy="4402" r="221"
-                                                                    fill="#ff576b" opacity="1"
-                                                                    data-original="#ff576b"></circle>
-                                                                <path d="M4840 4709h363.104v54.275H4840z"
-                                                                    fill="#ff576b" opacity="1"
-                                                                    data-original="#ff576b"></path>
-                                                            </g>
-                                                            <g fill="#fff">
-                                                                <path fill-rule="nonzero"
-                                                                    d="M2580 5642c89 0 169 36 227 94s93 138 93 226c0 89-35 169-93 226v1c-58 57-138 93-227 93-88 0-168-36-226-93v-1c-58-57-94-137-94-226 0-88 36-168 94-226s138-94 226-94zm191 130c-49-49-116-79-191-79-74 0-141 30-190 79-49 48-79 116-79 190 0 75 30 142 79 191s116 79 190 79c75 0 142-30 191-79s79-116 79-191c0-74-30-142-79-190z"
-                                                                    fill="#ffffff" opacity="1"
-                                                                    data-original="#ffffff">
-                                                                </path>
-                                                                <path d="m2473 5962 141-141v282z" fill="#ffffff"
-                                                                    opacity="1" data-original="#ffffff"></path>
-                                                                <path fill-rule="nonzero"
-                                                                    d="M7322 5642c-89 0-169 36-227 94s-93 138-93 226c0 89 35 169 93 226v1c58 57 138 93 227 93 88 0 168-36 226-93v-1c58-57 94-137 94-226 0-88-36-168-94-226s-138-94-226-94zm-191 130c49-49 116-79 191-79 74 0 141 30 190 79 49 48 79 116 79 190 0 75-30 142-79 191s-116 79-190 79c-75 0-142-30-191-79s-79-116-79-191c0-74 30-142 79-190z"
-                                                                    fill="#ffffff" opacity="1"
-                                                                    data-original="#ffffff">
-                                                                </path>
-                                                                <path
-                                                                    d="m7429 5962-141-141v282zM3395 6423h1872v73H3395zm0-271h3227v73H3395zm0-270h3227v73H3395zm670-442h1887v187H4065z"
-                                                                    fill="#ffffff" opacity="1"
-                                                                    data-original="#ffffff">
-                                                                </path>
-                                                            </g>
-                                                            <path fill="#ff576b" d="M2344 9274h1394v840H2344z"
-                                                                opacity="1" data-original="#ff576b"></path>
-                                                            <g fill="#afb0b5">
-                                                                <path
-                                                                    d="M2344 10309h943v123h-943zM2344 10565h1117v62H2344zm0 369h840v62h-840zm0-184h1117v61H2344z"
-                                                                    fill="#afb0b5" opacity="1"
-                                                                    data-original="#afb0b5">
-                                                                </path>
-                                                            </g>
-                                                            <path fill="#ffc42e" d="M4312 9274h1394v840H4312z"
-                                                                opacity="1" data-original="#ffc42e"></path>
-                                                            <g fill="#afb0b5">
-                                                                <path
-                                                                    d="M4312 10309h943v123h-943zM4312 10565h1117v62H4312zm0 369h840v62h-840zm0-184h1117v61H4312z"
-                                                                    fill="#afb0b5" opacity="1"
-                                                                    data-original="#afb0b5">
-                                                                </path>
-                                                            </g>
-                                                            <path fill="#00dcab" d="M6279 9274h1394v840H6279z"
-                                                                opacity="1" data-original="#00dcab"
-                                                                class="">
-                                                            </path>
-                                                            <g fill="#afb0b5">
-                                                                <path
-                                                                    d="M6279 10309h943v123h-943zM6279 10565h1117v62H6279zm0 369h841v62h-841zm0-184h1117v61H6279z"
-                                                                    fill="#afb0b5" opacity="1"
-                                                                    data-original="#afb0b5">
-                                                                </path>
-                                                            </g>
-                                                            <path fill="#ffffff"
-                                                                d="M10098 8440h1145v173h-1145zM8901 8440h919v173h-919zM8901 9133h1722v173H8901zM10900 9133h919v173h-919z"
-                                                                opacity="1" data-original="#ffffff"></path>
-                                                            <path fill="#ffc42e" d="M8901 10113h919v173h-919z"
-                                                                opacity="1" data-original="#ffc42e"></path>
-                                                            <path fill="#ffffff"
-                                                                d="M10098 10787h1145v173h-1145zM8901 10787h919v173h-919zM8901 11480h1722v173H8901zM10900 11480h919v173h-919z"
-                                                                opacity="1" data-original="#ffffff"></path>
-                                                            <path fill="#ffc42e" d="M8901 4947h1722v173H8901z"
-                                                                opacity="1" data-original="#ffc42e"></path>
-                                                        </g>
-                                                    </svg>
-                                                </div>
-                                                <div class="ps-3 pt-1">
-                                                    <h6 class="special-font text-white mb-0">Location</h6>
-                                                    <p class="text-white mb-0">{{ $nfc_card->nfcData->location }}</p>
-                                                    <p class="text-white mb-0">
-                                                        {{ $nfc_card->nfcData->address_line_two }}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endif
-                                @if (!empty($nfc_card->nfcData->date_of_birth))
-                                    <div class="col-sm-6 mt-4">
-                                        <div class="card date-card-tem3">
-                                            <div class="card-body d-flex align-content-center p-2">
-                                                <div>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
-                                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="50"
-                                                        height="50" x="0" y="0" viewBox="0 0 48 48"
-                                                        style="enable-background: new 0 0 512 512"
-                                                        xml:space="preserve" class="">
-                                                        <g>
-                                                            <g data-name="Calendar Birthday">
-                                                                <g fill="#4294ff">
+                                                                <path fill="#ff641a"
+                                                                    d="M382 376v60c0 26.1-21.31 45-44.79 45-86.41 0-170.71-40.85-233.41-103.3S0 231.2 0 144.79C0 119.97 20.19 100 45 100h60c6.46 0 12.19 4.13 14.22 10.25l30 89.79c1.47 4.4.82 9.22-1.74 13.07l-25.44 38.17c9.64 20.22 26.7 42.32 46.4 61.78 19.71 19.45 42.06 36.26 62.28 45.9l38.17-25.44c3.87-2.55 8.67-3.22 13.07-1.74l90 30c6.12 2.03 10.04 7.76 10.04 14.22z"
+                                                                    opacity="1" data-original="#ff641a"></path>
+                                                                <path fill="#f03800"
+                                                                    d="M382 376v60c0 26.1-21.31 45-44.79 45-86.41 0-170.71-40.85-233.41-103.3l64.64-64.64c19.71 19.45 42.06 36.26 62.28 45.9l38.17-25.44c3.87-2.55 8.67-3.22 13.07-1.74l90 30c6.12 2.03 10.04 7.76 10.04 14.22z"
+                                                                    opacity="1" data-original="#f03800"></path>
+                                                                <circle cx="285.999" cy="135.999" r="15"
+                                                                    fill="#613d5c" opacity="1"
+                                                                    data-original="#613d5c"></circle>
+                                                                <circle cx="346" cy="135.998" r="15"
+                                                                    fill="#613d5c" opacity="1"
+                                                                    data-original="#613d5c"></circle>
+                                                                <g fill="#4b2746">
                                                                     <path
-                                                                        d="M41 6v1a1 1 0 0 1-2 0V6zM28 6v1a1 1 0 0 1-2 0V6zM15 6v1a1 1 0 0 1-2 0V6z"
-                                                                        fill="#4294ff" opacity="1"
-                                                                        data-original="#4294ff" class=""></path>
+                                                                        d="M361 135.998c0-8.284-6.716-15-15-15v30c8.284 0 15-6.716 15-15z"
+                                                                        fill="#4b2746" opacity="1"
+                                                                        data-original="#4b2746" class=""></path>
+                                                                    <circle cx="405.999" cy="135.999" r="15"
+                                                                        fill="#4b2746" opacity="1"
+                                                                        data-original="#4b2746" class="">
+                                                                    </circle>
                                                                 </g>
-                                                                <path fill="#e6ecff"
-                                                                    d="M43 6H5a5 5 0 0 0-5 5v32a5 5 0 0 0 5 5h33l10-10V11a5 5 0 0 0-5-5z"
-                                                                    opacity="1" data-original="#e6ecff"></path>
-                                                                <path fill="#4294ff"
-                                                                    d="M43 6H5a5.006 5.006 0 0 0-5 5v5h48v-5a5.006 5.006 0 0 0-5-5z"
-                                                                    opacity="1" data-original="#4294ff"
-                                                                    class="">
-                                                                </path>
-                                                                <path fill="#d0dbf7" d="M41 38a3 3 0 0 0-3 3v7l10-10z"
-                                                                    opacity="1" data-original="#d0dbf7"></path>
-                                                                <path fill="#376cfb"
-                                                                    d="M41 4v2h-2V4a2 2 0 0 0-4 0v5a2.006 2.006 0 0 0 2 2h1a1 1 0 0 1 0 2h-1a3.999 3.999 0 0 1-4-4V4a4 4 0 0 1 8 0zM28 4v2h-2V4a2 2 0 0 0-4 0v5a2.006 2.006 0 0 0 2 2h1a1 1 0 0 1 0 2h-1a3.999 3.999 0 0 1-4-4V4a4 4 0 0 1 8 0zM15 4v2h-2V4a2 2 0 0 0-4 0v5a2.006 2.006 0 0 0 2 2h1a1 1 0 0 1 0 2h-1a3.999 3.999 0 0 1-4-4V4a4 4 0 0 1 8 0z"
-                                                                    opacity="1" data-original="#376cfb"></path>
-                                                                <path fill="#4294ff"
-                                                                    d="M24 30a1 1 0 0 1-1-1v-3a1 1 0 0 1 2 0v3a1 1 0 0 1-1 1z"
-                                                                    opacity="1" data-original="#4294ff"
-                                                                    class="">
-                                                                </path>
-                                                                <path fill="#376cfb"
-                                                                    d="M24.688 20.274a.999.999 0 0 0-1.376 0C22.77 20.788 21 22.576 21 24a3 3 0 0 0 6 0c0-1.424-1.77-3.212-2.312-3.726z"
-                                                                    opacity="1" data-original="#376cfb"></path>
-                                                                <path fill="#4294ff"
-                                                                    d="M30 28H18a2.002 2.002 0 0 0-2 2v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-6a2.002 2.002 0 0 0-2-2z"
-                                                                    opacity="1" data-original="#4294ff"
-                                                                    class="">
-                                                                </path>
-                                                                <path fill="#376cfb"
-                                                                    d="M30 28H18a2.002 2.002 0 0 0-2 2v2h16v-2a2.002 2.002 0 0 0-2-2z"
-                                                                    opacity="1" data-original="#376cfb"></path>
-                                                                <path fill="#4294ff"
-                                                                    d="M33 35H15a2.002 2.002 0 0 0-2 2v6a1 1 0 0 0 1 1h20a1 1 0 0 0 1-1v-6a2.002 2.002 0 0 0-2-2z"
-                                                                    opacity="1" data-original="#4294ff"
-                                                                    class="">
-                                                                </path>
-                                                                <path fill="#376cfb"
-                                                                    d="M33 35H15a2.002 2.002 0 0 0-2 2v2h22v-2a2.002 2.002 0 0 0-2-2z"
-                                                                    opacity="1" data-original="#376cfb"></path>
                                                             </g>
-                                                        </g>
-                                                    </svg>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="ps-3 pt-1">
+                                                        <h6 class="special-font text-white mb-0">Phone</h6>
+                                                        <p class="text-white mb-0">
+                                                            {{ optional($nfc_card->nfcData)->phone_personal }} <small><small>(Personal)</small></small>
+                                                        </p>
+                                                        <p class="text-white mb-0">
+                                                            {{ optional($nfc_card->nfcData)->phone_work }}
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                                <div class="ps-3 pt-1">
-                                                    <h6 class="special-font text-white mb-0">
-                                                        Date Of Birth
-                                                    </h6>
-                                                    <p class="text-white mb-0">{{ $nfc_card->nfcData->date_of_birth }}
-                                                    </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                                @if (!empty(optional($nfc_card->nfcData)->location))
+                                    <div class="col-sm-6 mt-4">
+                                        <div class="card date-card-tem3">
+                                            <div class="card-body d-flex align-content-center p-2">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                                                                xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                width="50" height="50" x="0" y="0"
+                                                                viewBox="0 0 14249 15442"
+                                                                style="enable-background: new 0 0 512 512"
+                                                                xml:space="preserve" fill-rule="evenodd"
+                                                                class="">
+                                                                <g>
+                                                                    <path fill="#00dcab"
+                                                                        d="m7804 187 5505 3179c432 249 680 678 680 1177v6356c0 499-248 928-680 1177l-5505 3179c-432 249-927 249-1359 0L940 12076c-433-249-680-678-680-1177V4543c0-499 247-928 680-1177L6445 187c432-249 927-249 1359 0z"
+                                                                        opacity="1" data-original="#00dcab"
+                                                                        class="">
+                                                                    </path>
+                                                                    <path fill="#1c3b5c"
+                                                                        d="M1101 4074h12046c243 0 442 199 442 442v7805c0 243-199 441-442 441H1101c-243 0-441-198-441-441V4516c0-243 198-442 441-442z"
+                                                                        opacity="1" data-original="#1c3b5c"></path>
+                                                                    <path fill="#e1e3e8"
+                                                                        d="M347 14315h13555c191 0 347-156 347-347v-564c0-191-156-347-347-347H347c-191 0-347 156-347 347v564c0 191 156 347 347 347z"
+                                                                        opacity="1" data-original="#e1e3e8"></path>
+                                                                    <path fill="#53b4ed"
+                                                                        d="M1287 4682h11675v7472H1287z" opacity="1"
+                                                                        data-original="#53b4ed"></path>
+                                                                    <g fill="#205081">
+                                                                        <path
+                                                                            d="M2672 12484h1015v573H2672zM10561 12484h1016v573h-1016z"
+                                                                            fill="#205081" opacity="1"
+                                                                            data-original="#205081">
+                                                                        </path>
+                                                                    </g>
+                                                                    <g fill="#c5c7cb">
+                                                                        <path
+                                                                            d="M5441 13057h3367v399H5441zM14076 13986H172c-62 0-121-17-172-46v28c0 191 156 347 347 347h13555c191 0 347-156 347-347v-28c-51 29-110 46-173 46z"
+                                                                            fill="#c5c7cb" opacity="1"
+                                                                            data-original="#c5c7cb">
+                                                                        </path>
+                                                                    </g>
+                                                                    <g fill="#fff">
+                                                                        <path
+                                                                            d="M8901 5467h1722v173H8901zM10900 5467h919v173h-919zM10098 6141h1145v173h-1145zM8901 6141h919v173h-919zM8901 6834h1722v173H8901zM10900 6834h919v173h-919z"
+                                                                            fill="#ffffff" opacity="1"
+                                                                            data-original="#ffffff">
+                                                                        </path>
+                                                                    </g>
+                                                                    <path fill="#ffc42e" d="M8901 7766h919v173h-919z"
+                                                                        opacity="1" data-original="#ffc42e"></path>
+                                                                    <path fill="#ffffff" d="M1937 4011h6142v8143H1937z"
+                                                                        opacity="1" data-original="#ffffff"></path>
+                                                                    <path fill="#205081"
+                                                                        d="M2402 3082h5213c256 0 465 209 465 465v464H1937v-464c0-256 209-465 465-465z"
+                                                                        opacity="1" data-original="#205081"></path>
+                                                                    <rect width="3025" height="272" x="2499"
+                                                                        y="3410" fill="#55ace0" rx="214"
+                                                                        ry="136" opacity="1"
+                                                                        data-original="#55ace0"></rect>
+                                                                    <circle cx="6257" cy="3547" r="170"
+                                                                        fill="#ff576b" opacity="1"
+                                                                        data-original="#ff576b"></circle>
+                                                                    <circle cx="6860" cy="3547" r="170"
+                                                                        fill="#ffc42e" opacity="1"
+                                                                        data-original="#ffc42e"></circle>
+                                                                    <circle cx="7464" cy="3547" r="170"
+                                                                        fill="#53b4ed" opacity="1"
+                                                                        data-original="#53b4ed"></circle>
+                                                                    <path fill="#00dcab" d="M2344 7244h1394v840H2344z"
+                                                                        opacity="1" data-original="#00dcab"
+                                                                        class="">
+                                                                    </path>
+                                                                    <g fill="#afb0b5">
+                                                                        <path
+                                                                            d="M2344 8279h943v123h-943zM2344 8535h1117v62H2344zm0 369h840v61h-840zm0-185h1117v62H2344z"
+                                                                            fill="#afb0b5" opacity="1"
+                                                                            data-original="#afb0b5">
+                                                                        </path>
+                                                                    </g>
+                                                                    <path fill="#ff576b" d="M4312 7244h1394v840H4312z"
+                                                                        opacity="1" data-original="#ff576b"></path>
+                                                                    <g fill="#afb0b5">
+                                                                        <path
+                                                                            d="M4312 8279h943v123h-943zM4312 8535h1117v62H4312zm0 369h840v61h-840zm0-185h1117v62H4312z"
+                                                                            fill="#afb0b5" opacity="1"
+                                                                            data-original="#afb0b5">
+                                                                        </path>
+                                                                    </g>
+                                                                    <path fill="#ffc42e" d="M6279 7244h1394v840H6279z"
+                                                                        opacity="1" data-original="#ffc42e"></path>
+                                                                    <g fill="#afb0b5">
+                                                                        <path
+                                                                            d="M6279 8279h943v123h-943zM6279 8535h1117v62H6279zm0 369h841v61h-841zm0-185h1117v62H6279z"
+                                                                            fill="#afb0b5" opacity="1"
+                                                                            data-original="#afb0b5">
+                                                                        </path>
+                                                                    </g>
+                                                                    <path fill="#ffffff" d="M1937 4011h6142v922H1937z"
+                                                                        opacity="1" data-original="#ffffff"></path>
+                                                                    <path fill="#ffc42e" d="M1937 4933h6142v2059H1937z"
+                                                                        opacity="1" data-original="#ffc42e"></path>
+                                                                    <g fill="#ff576b">
+                                                                        <circle cx="5008" cy="4402" r="221"
+                                                                            fill="#ff576b" opacity="1"
+                                                                            data-original="#ff576b"></circle>
+                                                                        <path d="M4840 4709h363.104v54.275H4840z"
+                                                                            fill="#ff576b" opacity="1"
+                                                                            data-original="#ff576b"></path>
+                                                                    </g>
+                                                                    <g fill="#fff">
+                                                                        <path fill-rule="nonzero"
+                                                                            d="M2580 5642c89 0 169 36 227 94s93 138 93 226c0 89-35 169-93 226v1c-58 57-138 93-227 93-88 0-168-36-226-93v-1c-58-57-94-137-94-226 0-88 36-168 94-226s138-94 226-94zm191 130c-49-49-116-79-191-79-74 0-141 30-190 79-49 48-79 116-79 190 0 75 30 142 79 191s116 79 190 79c75 0 142-30 191-79s79-116 79-191c0-74-30-142-79-190z"
+                                                                            fill="#ffffff" opacity="1"
+                                                                            data-original="#ffffff">
+                                                                        </path>
+                                                                        <path d="m2473 5962 141-141v282z"
+                                                                            fill="#ffffff" opacity="1"
+                                                                            data-original="#ffffff"></path>
+                                                                        <path fill-rule="nonzero"
+                                                                            d="M7322 5642c-89 0-169 36-227 94s-93 138-93 226c0 89 35 169 93 226v1c58 57 138 93 227 93 88 0 168-36 226-93v-1c58-57 94-137 94-226 0-88-36-168-94-226s-138-94-226-94zm-191 130c49-49 116-79 191-79 74 0 141 30 190 79 49 48 79 116 79 190 0 75-30 142-79 191s-116 79-190 79c-75 0-142-30-191-79s-79-116-79-191c0-74 30-142 79-190z"
+                                                                            fill="#ffffff" opacity="1"
+                                                                            data-original="#ffffff">
+                                                                        </path>
+                                                                        <path
+                                                                            d="m7429 5962-141-141v282zM3395 6423h1872v73H3395zm0-271h3227v73H3395zm0-270h3227v73H3395zm670-442h1887v187H4065z"
+                                                                            fill="#ffffff" opacity="1"
+                                                                            data-original="#ffffff">
+                                                                        </path>
+                                                                    </g>
+                                                                    <path fill="#ff576b" d="M2344 9274h1394v840H2344z"
+                                                                        opacity="1" data-original="#ff576b"></path>
+                                                                    <g fill="#afb0b5">
+                                                                        <path
+                                                                            d="M2344 10309h943v123h-943zM2344 10565h1117v62H2344zm0 369h840v62h-840zm0-184h1117v61H2344z"
+                                                                            fill="#afb0b5" opacity="1"
+                                                                            data-original="#afb0b5">
+                                                                        </path>
+                                                                    </g>
+                                                                    <path fill="#ffc42e" d="M4312 9274h1394v840H4312z"
+                                                                        opacity="1" data-original="#ffc42e"></path>
+                                                                    <g fill="#afb0b5">
+                                                                        <path
+                                                                            d="M4312 10309h943v123h-943zM4312 10565h1117v62H4312zm0 369h840v62h-840zm0-184h1117v61H4312z"
+                                                                            fill="#afb0b5" opacity="1"
+                                                                            data-original="#afb0b5">
+                                                                        </path>
+                                                                    </g>
+                                                                    <path fill="#00dcab" d="M6279 9274h1394v840H6279z"
+                                                                        opacity="1" data-original="#00dcab"
+                                                                        class="">
+                                                                    </path>
+                                                                    <g fill="#afb0b5">
+                                                                        <path
+                                                                            d="M6279 10309h943v123h-943zM6279 10565h1117v62H6279zm0 369h841v62h-841zm0-184h1117v61H6279z"
+                                                                            fill="#afb0b5" opacity="1"
+                                                                            data-original="#afb0b5">
+                                                                        </path>
+                                                                    </g>
+                                                                    <path fill="#ffffff"
+                                                                        d="M10098 8440h1145v173h-1145zM8901 8440h919v173h-919zM8901 9133h1722v173H8901zM10900 9133h919v173h-919z"
+                                                                        opacity="1" data-original="#ffffff"></path>
+                                                                    <path fill="#ffc42e" d="M8901 10113h919v173h-919z"
+                                                                        opacity="1" data-original="#ffc42e"></path>
+                                                                    <path fill="#ffffff"
+                                                                        d="M10098 10787h1145v173h-1145zM8901 10787h919v173h-919zM8901 11480h1722v173H8901zM10900 11480h919v173h-919z"
+                                                                        opacity="1" data-original="#ffffff"></path>
+                                                                    <path fill="#ffc42e" d="M8901 4947h1722v173H8901z"
+                                                                        opacity="1" data-original="#ffc42e"></path>
+                                                                </g>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="ps-3 pt-1">
+                                                            <h6 class="special-font text-white mb-0">Location</h6>
+                                                            <p class="text-white mb-0">
+                                                                {{ optional($nfc_card->nfcData)->location }}
+                                                            </p>
+                                                            <p class="text-white mb-0">
+                                                                {{ optional($nfc_card->nfcData)->address_line_two }}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                                @if (!empty(optional($nfc_card->nfcData)->date_of_birth))
+                                    <div class="col-sm-6 mt-4">
+                                        <div class="card date-card-tem3">
+                                            <div class="card-body d-flex align-content-center p-2">
+                                                <div class="d-flex align-items-center">
+                                                    <div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="50"
+                                                            height="50" x="0" y="0" viewBox="0 0 48 48"
+                                                            style="enable-background: new 0 0 512 512"
+                                                            xml:space="preserve" class="">
+                                                            <g>
+                                                                <g data-name="Calendar Birthday">
+                                                                    <g fill="#4294ff">
+                                                                        <path
+                                                                            d="M41 6v1a1 1 0 0 1-2 0V6zM28 6v1a1 1 0 0 1-2 0V6zM15 6v1a1 1 0 0 1-2 0V6z"
+                                                                            fill="#4294ff" opacity="1"
+                                                                            data-original="#4294ff" class="">
+                                                                        </path>
+                                                                    </g>
+                                                                    <path fill="#e6ecff"
+                                                                        d="M43 6H5a5 5 0 0 0-5 5v32a5 5 0 0 0 5 5h33l10-10V11a5 5 0 0 0-5-5z"
+                                                                        opacity="1" data-original="#e6ecff"></path>
+                                                                    <path fill="#4294ff"
+                                                                        d="M43 6H5a5.006 5.006 0 0 0-5 5v5h48v-5a5.006 5.006 0 0 0-5-5z"
+                                                                        opacity="1" data-original="#4294ff"
+                                                                        class="">
+                                                                    </path>
+                                                                    <path fill="#d0dbf7"
+                                                                        d="M41 38a3 3 0 0 0-3 3v7l10-10z"
+                                                                        opacity="1" data-original="#d0dbf7"></path>
+                                                                    <path fill="#376cfb"
+                                                                        d="M41 4v2h-2V4a2 2 0 0 0-4 0v5a2.006 2.006 0 0 0 2 2h1a1 1 0 0 1 0 2h-1a3.999 3.999 0 0 1-4-4V4a4 4 0 0 1 8 0zM28 4v2h-2V4a2 2 0 0 0-4 0v5a2.006 2.006 0 0 0 2 2h1a1 1 0 0 1 0 2h-1a3.999 3.999 0 0 1-4-4V4a4 4 0 0 1 8 0zM15 4v2h-2V4a2 2 0 0 0-4 0v5a2.006 2.006 0 0 0 2 2h1a1 1 0 0 1 0 2h-1a3.999 3.999 0 0 1-4-4V4a4 4 0 0 1 8 0z"
+                                                                        opacity="1" data-original="#376cfb"></path>
+                                                                    <path fill="#4294ff"
+                                                                        d="M24 30a1 1 0 0 1-1-1v-3a1 1 0 0 1 2 0v3a1 1 0 0 1-1 1z"
+                                                                        opacity="1" data-original="#4294ff"
+                                                                        class="">
+                                                                    </path>
+                                                                    <path fill="#376cfb"
+                                                                        d="M24.688 20.274a.999.999 0 0 0-1.376 0C22.77 20.788 21 22.576 21 24a3 3 0 0 0 6 0c0-1.424-1.77-3.212-2.312-3.726z"
+                                                                        opacity="1" data-original="#376cfb"></path>
+                                                                    <path fill="#4294ff"
+                                                                        d="M30 28H18a2.002 2.002 0 0 0-2 2v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-6a2.002 2.002 0 0 0-2-2z"
+                                                                        opacity="1" data-original="#4294ff"
+                                                                        class="">
+                                                                    </path>
+                                                                    <path fill="#376cfb"
+                                                                        d="M30 28H18a2.002 2.002 0 0 0-2 2v2h16v-2a2.002 2.002 0 0 0-2-2z"
+                                                                        opacity="1" data-original="#376cfb"></path>
+                                                                    <path fill="#4294ff"
+                                                                        d="M33 35H15a2.002 2.002 0 0 0-2 2v6a1 1 0 0 0 1 1h20a1 1 0 0 0 1-1v-6a2.002 2.002 0 0 0-2-2z"
+                                                                        opacity="1" data-original="#4294ff"
+                                                                        class="">
+                                                                    </path>
+                                                                    <path fill="#376cfb"
+                                                                        d="M33 35H15a2.002 2.002 0 0 0-2 2v2h22v-2a2.002 2.002 0 0 0-2-2z"
+                                                                        opacity="1" data-original="#376cfb"></path>
+                                                                </g>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="ps-3 pt-1">
+                                                        <h6 class="special-font text-white mb-0">
+                                                            Date Of Birth
+                                                        </h6>
+                                                        <p class="text-white mb-0">
+                                                            {{ optional($nfc_card->nfcData)->date_of_birth }}
+                                                        </p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -1008,7 +1025,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
-                                    <div class="company-slide">
+                                    <div class="company-slide py-4">
                                         @foreach ($nfc_card->nfcCompany as $company)
                                             <div class="items px-4">
                                                 <div class="row align-items-center">
@@ -1036,7 +1053,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-7">
-                                                        <h5 class="text-start special-font">
+                                                        <h5 class="text-start special-font text-white">
                                                             {{ $company->company_name }}</h5>
                                                         <p class="text-white">
                                                             {{ $company->company_description }}
@@ -1412,7 +1429,7 @@
                                                         <div class="col-sm-9 px-0">
                                                             <div style="background: #00000047;padding: 10px;">
                                                                 <h6 class="special-font">
-                                                                    {{ $testimonial->testimonial_name }}Rodela Bruce
+                                                                    {{ $testimonial->testimonial_name }}
                                                                 </h6>
                                                                 <p class="text-white">
                                                                     {{ $testimonial->testimonial_description }}
@@ -1510,9 +1527,9 @@
                         </div>
                         <div class="modal-body">
                             {{ optional($nfc_card->nfcBanner)->banner_description }}
-                            @if (!empty(optional($nfc_card->nfcBanner)->banner_url ) || !empty(optional($nfc_card->nfcBanner)->banner_button ))
+                            @if (!empty(optional($nfc_card->nfcBanner)->banner_url) || !empty(optional($nfc_card->nfcBanner)->banner_button))
                                 <div class="pt-3">
-                                    <a href="{{ !empty(optional($nfc_card->nfcBanner)->banner_url ) ? optional($nfc_card->nfcBanner)->banner_url : 'javascript:void(0)'}}"
+                                    <a href="{{ !empty(optional($nfc_card->nfcBanner)->banner_url) ? optional($nfc_card->nfcBanner)->banner_url : 'javascript:void(0)' }}"
                                         class="btn border-0 rounded-2 btn-sm text-white"
                                         style="background-color: var(--template-three-color-primary);">{{ optional($nfc_card->nfcBanner)->banner_button }}
                                     </a>
@@ -1524,7 +1541,7 @@
             </div>
         @endif
     </main>
-    <script src="https://kit.fontawesome.com/69b7156a94.js" crossorigin="anonymous"></script>
+    <script src="{{ asset('frontend/assets/js/fontawesome.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -1841,125 +1858,6 @@
             handleContactButtonClick(event, true);
         });
     </script>
-    {{-- <script>
-        'use strict';
-
-        function downloadToFile(content, filename, contentType) {
-            const a = document.createElement('a');
-            const file = new Blob([content], {
-                type: contentType
-            });
-
-            a.href = URL.createObjectURL(file);
-            a.download = filename;
-            a.click();
-
-            URL.revokeObjectURL(a.href);
-        }
-
-        function getBase64Image(imgUrl, callback) {
-            const img = new Image();
-            img.crossOrigin = 'Anonymous';
-            img.onload = () => {
-                const canvas = document.createElement('canvas');
-                canvas.width = img.width;
-                canvas.height = img.height;
-                const ctx = canvas.getContext('2d');
-                ctx.drawImage(img, 0, 0);
-                const dataURL = canvas.toDataURL('image/jpeg');
-                callback(dataURL.replace(/^data:image\/(png|jpeg);base64,/, ''));
-            };
-            img.onerror = () => {
-                console.error('Failed to load image:', imgUrl);
-                callback(null);
-            };
-            img.src = imgUrl;
-        }
-
-        const makeVCardVersion = () => `VERSION:3.0`;
-        const makeVCardInfo = (lastName, firstName) => `N:${lastName || ''};${firstName || ''};;;`;
-        const makeVCardName = (firstName, lastName) => `FN:${firstName || ''} ${lastName || ''}`;
-        const makeVCardOrg = (org) => `ORG:${org || ''}`;
-        const makeVCardTitle = (title) => `TITLE:${title || ''}`;
-        const makeVCardPhoto = (imgBase64) => `PHOTO;ENCODING=b;TYPE=JPEG:${imgBase64}`;
-        const makeVCardTel = (phone) => `TEL;TYPE=CELL:${phone || ''}`;
-        const makeVCardAdr = (addressLine1, addressLine2) =>
-            `ADR;TYPE=HOME:;;${addressLine1 || ''};${addressLine2 || ''};;;;`;
-        const makeVCardEmail = (email) => `EMAIL:${email || ''}`;
-        const makeVCardUrl = (url) => `URL:${url || ''}`;
-        const makeVCardSocialProfile = (type, url) => `X-SOCIALPROFILE;TYPE=${type}:${url || ''}`;
-        const makeVCardTimeStamp = () => `REV:${new Date().toISOString()}`;
-
-        function makeVCard(profileImageBase64) {
-            const firstName = '{{ optional($nfc_card->nfcData)->first_name }}';
-            const lastName = '{{ optional($nfc_card->nfcData)->last_name }}';
-            const designation = '{{ optional($nfc_card)->designation }}';
-            const phone = '{{ optional($nfc_card->nfcData)->phone_personal }}';
-            const email = '{{ optional($nfc_card->nfcData)->email_personal }}';
-            const addressLine1 = '{{ optional($nfc_card->nfcData)->address_line_one }}';
-            const addressLine2 = '{{ optional($nfc_card->nfcData)->address_line_two }}';
-            const linkedin = '{{ optional($nfc_card->nfcData)->linkedin_url }}';
-
-            let vcard = `BEGIN:VCARD\n${makeVCardVersion()}\n`;
-            vcard += `${makeVCardInfo(lastName, firstName)}\n`;
-            vcard += `${makeVCardName(firstName, lastName)}\n`;
-            vcard += `${makeVCardTitle(designation)}\n`;
-
-            if (profileImageBase64) {
-                vcard += `${makeVCardPhoto(profileImageBase64)}\n`;
-            }
-
-            vcard += `${makeVCardTel(phone)}\n`;
-
-            if (addressLine1 || addressLine2) {
-                vcard += `${makeVCardAdr(addressLine1, addressLine2)}\n`;
-            }
-
-            if (email) {
-                vcard += `${makeVCardEmail(email)}\n`;
-            }
-
-            if (linkedin) {
-                vcard += `${makeVCardUrl(linkedin)}\n`;
-                vcard += `${makeVCardSocialProfile('linkedin', linkedin)}\n`;
-            }
-
-            vcard += `${makeVCardTimeStamp()}\nEND:VCARD`;
-
-            return vcard;
-        }
-
-        function handleContactButtonClick(event, isMobile) {
-            event.preventDefault(); // Prevent default link behavior
-
-            const profileImage = '{{ asset('storage/nfc/' . optional($nfc_card)->profile_image) }}';
-
-            getBase64Image(profileImage, (base64Image) => {
-                const vcard = makeVCard(base64Image);
-
-                if (isMobile) {
-                    // Open vCard details in contact app for mobile
-                    const encodedVcfContent = encodeURIComponent(vcard);
-                    const uri = 'data:text/vcard;charset=utf-8,' + encodedVcfContent;
-                    window.location.href = uri;
-                } else {
-                    // Download vCard for PC
-                    const firstName = '{{ optional($nfc_card->nfcData)->first_name }}';
-                    const lastName = '{{ optional($nfc_card->nfcData)->last_name }}';
-                    const fileName = `${firstName}_${lastName}_contact.vcf`;
-                    downloadToFile(vcard, fileName, 'text/vcard');
-                }
-            });
-        }
-
-        document.querySelector('.nfc_contact_btn_pc').addEventListener('click', (event) => {
-            handleContactButtonClick(event, false);
-        });
-
-        document.querySelector('.nfc_contact_btn_mobile').addEventListener('click', (event) => {
-            handleContactButtonClick(event, true);
-        });
-    </script> --}}
 </body>
 
 </html>

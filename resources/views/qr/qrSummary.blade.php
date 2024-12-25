@@ -82,7 +82,7 @@
                                             <i class="fas fa-download fs-4 me-2"></i> Download
                                         </button>
                                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px"
-                                            data-kt-menu="true" style="">
+                                            data-kt-menu="true ">
                                             <div class="menu-item px-3">
                                                 <div class="menu-content fs-6 text-gray-900 fw-bold px-3 py-4">
                                                     Download QR
@@ -99,9 +99,7 @@
                                                     </a>
                                                 </div>
                                             @endif
-                                            <!--end::Menu item-->
 
-                                            <!--begin::Menu item-->
                                             @if (!empty($qr->qr_svg))
                                                 <div class="menu-item px-3">
                                                     <a href="{{ $qr->qr_svg_url }}" class="menu-link px-3" download
@@ -134,12 +132,9 @@
                                                     </a>
                                                 </div>
                                             @endif
-                                            <!--end::Menu item-->
                                             <div class="separator mt-3 opacity-75"></div>
                                         </div>
                                     </div>
-                                    {{-- <a href="#" class="btn btn-danger w-100 mb-2"><i
-                                            class="bi bi-trash fs-4 me-2"></i> Delete</a> --}}
                                 </div>
                             </div>
                         </div>
@@ -148,7 +143,7 @@
             </div>
         </div>
         <div class="row g-5 g-xl-8 mt-5">
-            <div class="{{ $qr->qrScan->count() < '99' ? 'col-xl-2' : 'col-xl-3'}}">
+            <div class="{{ $qr->qrScan->count() < '99' ? 'col-xl-2' : 'col-xl-3' }}">
                 <div class="card card-flush bgi-no-repeat bgi-size-cover bgi-position-x-end h-xl-100"
                     style="background-color: #F1416C;background-image:url({{ asset('admin/assets/media/svg/shapes/wave-bg-red.svg') }})">
                     <div class="card-body d-flex align-items-center justify-content-center">
@@ -161,7 +156,7 @@
                     </div>
                 </div>
             </div>
-            <div class="{{ count($users) < '99' ? 'col-xl-2' : 'col-xl-3'}}">
+            <div class="{{ count($users) < '99' ? 'col-xl-2' : 'col-xl-3' }}">
                 <div class="card card-flush bgi-no-repeat bgi-size-cover bgi-position-x-end h-xl-100"
                     style="background-color: #7239EA;background-image:url({{ asset('admin/assets/media/svg/shapes/wave-bg-purple.svg') }})">
                     <div class="card-body d-flex align-items-center justify-content-center">
@@ -225,24 +220,8 @@
 
                             <span class="text-muted fw-semibold fs-7">History of Device</span>
                         </h3>
-
-                        {{-- <div class="card-toolbar" data-kt-buttons="true" data-kt-initialized="1">
-                            <a class="btn btn-sm btn-color-muted btn-active btn-active-primary active px-4 me-1"
-                                id="kt_charts_widget_3_year_btn">Year</a>
-
-                            <a class="btn btn-sm btn-color-muted btn-active btn-active-primary px-4 me-1"
-                                id="kt_charts_widget_3_month_btn">Month</a>
-
-                            <a class="btn btn-sm btn-color-muted btn-active btn-active-primary px-4"
-                                id="kt_charts_widget_3_week_btn">Week</a>
-                        </div> --}}
                     </div>
-
                     <div class="card-body p-0">
-                        {{-- <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29211.866683082448!2d90.33816573476561!3d23.765797000000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c0a0fd8bbf63%3A0x578e43f255f711a4!2sMohammadpur%20Agrecultural%20Market%20Complex%2C%20Ring%20Rd%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1714968885877!5m2!1sen!2sbd"
-                            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe> --}}
                         <div id="map" style="height: 400px;
                             width: 100%;"></div>
                     </div>

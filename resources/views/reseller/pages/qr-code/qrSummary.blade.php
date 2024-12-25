@@ -85,7 +85,7 @@
                                             <i class="bi bi-file-download fs-4 me-2"></i> Download
                                         </button>
                                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px"
-                                            data-kt-menu="true" style="">
+                                            data-kt-menu="true ">
                                             <div class="menu-item px-3">
                                                 <div class="menu-content fs-6 text-gray-900 fw-bold px-3 py-4">
                                                     Download QR
@@ -136,7 +136,7 @@
             <div class="col-xl-3">
                 <a href="#" class="card bg-body hoverable card-xl-stretch mb-xl-8">
                     <div class="card-body">
-                        <i class="ki-duotone ki-cheque text-gray-100 fs-2x ms-n1"><span class="path1"></span><span
+                        <i class="fa-solid fa-cheque text-gray-100 fs-2x ms-n1"><span class="path1"></span><span
                                 class="path2"></span><span class="path3"></span><span class="path4"></span><span
                                 class="path5"></span><span class="path6"></span><span class="path7"></span></i>
                         <div class="text-gray-900 fw-bold fs-2 mb-2 mt-5">10</div>
@@ -149,7 +149,7 @@
             <div class="col-xl-3">
                 <a href="#" class="card bg-dark hoverable card-xl-stretch mb-xl-8">
                     <div class="card-body">
-                        <i class="ki-duotone ki-cheque text-gray-100 fs-2x ms-n1"><span class="path1"></span><span
+                        <i class="fa-solid fa-cheque text-gray-100 fs-2x ms-n1"><span class="path1"></span><span
                                 class="path2"></span><span class="path3"></span><span class="path4"></span><span
                                 class="path5"></span><span class="path6"></span><span class="path7"></span></i>
                         <div class="text-white fw-bold fs-2 mb-2 mt-5">3</div>
@@ -162,7 +162,7 @@
             <div class="col-xl-3">
                 <a href="#" class="card bg-warning hoverable card-xl-stretch mb-xl-8">
                     <div class="card-body">
-                        <i class="ki-duotone ki-briefcase text-white fs-2x ms-n1"><span class="path1"></span><span
+                        <i class="fa-solid fa-briefcase text-white fs-2x ms-n1"><span class="path1"></span><span
                                 class="path2"></span></i>
 
                         <div class="text-white fw-bold fs-2 mb-2 mt-5">06</div>
@@ -175,7 +175,7 @@
             <div class="col-xl-3">
                 <a href="#" class="card bg-info hoverable card-xl-stretch mb-5 mb-xl-8">
                     <div class="card-body">
-                        <i class="ki-duotone ki-chart-pie-simple text-white fs-2x ms-n1"><span
+                        <i class="fa-solid fa-chart-pie-simple text-white fs-2x ms-n1"><span
                                 class="path1"></span><span class="path2"></span></i>
                         <div class="text-white fw-bold fs-2 mb-2 mt-5">03</div>
                         <div class="text-gray-100 fw-bold fs-2 mb-2 mt-5">New Country</div>
@@ -364,7 +364,6 @@
         </script>
 
         <!-- Load the Google Maps JavaScript API -->
-        <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
     @endpush
 
 
@@ -430,9 +429,6 @@
         //         });
         //     });
         // }
-    </script>
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
     </script>
     @endpush --}}
 

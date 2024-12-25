@@ -1,4 +1,4 @@
-<x-admin-app-layout :title="'Blog Add'">
+<x-admin-app-layout :title="'Blog Add - Admin Panel'">
     <style>
         .image-input-placeholder {
             background-image: url("https://preview.keenthemes.com/metronic8/demo1/assets/media/svg/files/blank-image.svg");

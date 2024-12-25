@@ -11,36 +11,21 @@
     <meta property="og:title" content="" />
     <meta property="og:url" content="" />
     <meta property="og:site_name" content="" />
-    <link rel="shortcut icon" href="https://i.ibb.co/BNBTVN4/logo.png" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="shortcut icon"
+        href="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+    <link href="{{ asset('admin/assets/css/slick.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/assets/css/slick-theme.min.css') }}" rel="stylesheet">
+    <!-- Keenthemes & Vendor CSS -->
+    <link href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('admin/assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"
+        type="text/css" />
     <link href="{{ asset('admin/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet"
         type="text/css" />
-    <link href="{{ asset('admin/assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"
-        type="text/css" />
-    <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
-    <link href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
+    <!-- Main Stylesheets -->
     <link href="{{ asset('admin/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/css/custom.css') }}" rel="stylesheet" type="text/css" />
-
-    <link href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
-
-
-    <link href="{{ asset('admin/css/custom.css') }}" rel="stylesheet" type="text/css" />
-
-
-    <link rel="stylesheet" href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}">
-
-
-    <link href="{{ asset('admin/assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"
-        type="text/css" />
-
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
-
-
     @props(['title'])
     <title>{{ $title ?? config('app.name', 'GoFlixza') }} || 'Your Hub for QR, Bar Codes, NFC V.Cards'</title>
 </head>
@@ -48,13 +33,24 @@
 <body id="kt_body"
     class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed aside-enabled aside-fixed"
     style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px">
+    <div id="preloader">
+        <div class="dot-spinner">
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+        </div>
+    </div>
     <div class="d-flex flex-column flex-root">
         <div class="page d-flex flex-row flex-column-fluid">
             @include('user.layouts.sidebar')
             <div class="wrapper d-flex flex-column flex-row-fluid pt-15" id="kt_wrapper">
                 @include('user.layouts.header')
                 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-                    {{-- @include('user.layouts.toolbar') --}}
                     <div class="post d-flex flex-column-fluid" id="kt_post">
                         <div id="kt_content_container" class="container-fluid">
                             {{ $slot }}
@@ -76,45 +72,43 @@
             </svg>
         </span>
     </div>
-
     @include('user.layouts.modal')
-    @php
-        $hostUrl = 'admin/assets/';
-    @endphp
-    <script src="{{ asset($hostUrl . 'plugins/global/plugins.bundle.js') }}"></script>
-    <script src="{{ asset($hostUrl . 'js/scripts.bundle.js') }}"></script>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="{{ asset($hostUrl . 'plugins/custom/datatables/datatables.bundle.js') }}"></script>
-    <script src="{{ asset($hostUrl . 'plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
-    <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
-    <script src="{{ asset($hostUrl . 'plugins/custom/formrepeater/formrepeater.bundle.js') }}"></script>
-
-
-
-
-    <script src="{{ asset($hostUrl . 'js/widgets.bundle.js') }}"></script>
-    <script src="{{ asset($hostUrl . 'js/custom/widgets.js') }}"></script>
-
-    <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/create-account.js') }}"></script>
-
-
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="https://kit.fontawesome.com/69b7156a94.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbfUj9Hr1sqI5sb_nc2XSWFrRun3l_Vto&callback=initMap"></script>
-    <!--end::Vendors Javascript-->
+    <!-- jQuery (Necessary for DataTables and other plugins) -->
+    <script src="{{ asset('frontend/assets/js/jquery-3.6.0.min.js') }}"></script>
+    <!-- Vendor Scripts -->
+    <script src="{{ asset('admin/assets/plugins/global/plugins.bundle.js') }}"></script>
+    <script src="{{ asset('admin/assets/js/scripts.bundle.js') }}"></script>
+    <script src="{{ asset('admin/assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
+    <script src="{{ asset('admin/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
+    <script src="{{ asset('admin/assets/plugins/custom/formrepeater/formrepeater.bundle.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/slick.min.js') }}"></script>
+    <!-- FontAwesome -->
+    <script src="{{ asset('frontend/assets/js/fontawesome.js') }}"></script>
+    <!-- Google Maps (Deferred for performance) -->
+    <script defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbfUj9Hr1sqI5sb_nc2XSWFrRun3l_Vto&loading=async&callback=initMap">
+    </script>
+    <script defer src="{{ asset('frontend/assets/js/alpine.js') }}"></script>
     <script
         src="https://preview.keenthemes.com/html/metronic/docs/assets/js/custom/documentation/general/draggable/cards.js">
     </script>
     <script src="https://preview.keenthemes.com/html/metronic/docs/assets/plugins/custom/draggable/draggable.bundle.js">
     </script>
-    <script src="https://preview.keenthemes.com/html/metronic/docs/assets/plugins/custom/prismjs/prismjs.bundle.js">
-    </script>
-    <!--begin::Custom Javascript(used for this page only)-->
+    <script src="{{ asset('frontend/assets/js/prismjs.bundle.js') }}"></script>
+    <!-- Custom Scripts -->
+    <script src="{{ asset('admin/assets/js/widgets.bundle.js') }}"></script>
+    <script src="{{ asset('admin/assets/js/custom/widgets.js') }}"></script>
+    <script src="{{ asset('admin/assets/js/custom/utilities/modals/create-account.js') }}"></script>
     <script src="{{ asset('admin/js/custom.js') }}"></script>
-
+    <!-- Scripts -->
+    <script>
+        setTimeout(function() {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                preloader.style.display = 'none'; // Hide the preloader
+            }
+        }, 2000); // Adjust the timeout duration as needed (e.g., 2000ms = 2 seconds)
+    </script>
     <script>
         $(document).ready(function() {
             // Add event listener to radio inputs
@@ -134,24 +128,6 @@
         });
     </script>
     @stack('scripts')
-
-    <script>
-        // var containers = document.querySelectorAll(".draggable-zone");
-
-        // if (containers.length === 0) {
-        //     return false;
-        // }
-
-        // var swappable = new Sortable.default(containers, {
-        //     draggable: ".draggable",
-        //     handle: ".draggable .draggable-handle",
-        //     mirror: {
-        //         //appendTo: selector,
-        //         appendTo: "body",
-        //         constrainDimensions: true
-        //     }
-        // });
-    </script>
     <script>
         $(document).ready(function() {
             $(".slick-slider").slick({
@@ -196,7 +172,6 @@
             });
         </script>
     @endif
-
 </body>
 
 </html>

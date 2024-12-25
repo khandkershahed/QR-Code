@@ -458,16 +458,16 @@ nfcForm.find('input, textarea').on('keyup change', function () {
 
 
 // Tiny MCE Start
-document.addEventListener('DOMContentLoaded', function () {
-    tinymce.init({
-        selector: '.kt_docs_tinymce_plugins'
-    });
-});
-document.addEventListener('DOMContentLoaded', function () {
-    tinymce.init({
-        selector: '.overview'
-    });
-});
+// document.addEventListener('DOMContentLoaded', function () {
+//     tinymce.init({
+//         selector: '.kt_docs_tinymce_plugins'
+//     });
+// });
+// document.addEventListener('DOMContentLoaded', function () {
+//     tinymce.init({
+//         selector: '.overview'
+//     });
+// });
 // Tiny MCE End
 
 // Datatable Start

@@ -4,7 +4,7 @@
     /* CSS for centering the mobile frame */
 
     .nfc-mobile-frame {
-         
+
         width: 100%;
         max-width: 576px;
         border-radius: 20px;
@@ -98,7 +98,7 @@
                     <div class="card-body p-0 rounded-0 row">
                         <div class="col-lg-6 pe-0 d-flex justify-content-center align-items-center"
                             style="
-                        background-image: url(https://i.pinimg.com/736x/e7/63/24/e7632495dd8e76e42fad24de2fc92f26.jpg);
+                        background-image: url('{{ asset('images/d-image/e7632495dd8e76e42fad24de2fc92f26.jpg') }}');
                         background-repeat: no-repeat;
                         background-size: cover;
                         background-position: center;
@@ -109,7 +109,7 @@
                                     <div class="py-3" style="background-color: rgba(0, 0, 0, 0.561)">
                                         <div>
                                             <img class="img-fluid qr_data_restaurant_logo"
-                                                src="https://i.ibb.co/wNckFnj/Restaurant-logo-with-chef-drawing-template-on-transparent-background-PNG-removebg-preview.png"
+                                                src="{{ asset('images/d-image/Restaurant-logo-with-chef-drawing-template-on-transparent-background-PNG-removebg-preview.png') }}"
                                                 alt="" />
                                         </div>
                                         <h3 class="text-white mb-0 qr_data_restaurant_name"
@@ -138,7 +138,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 px-0 d-flex flex-column justify-content-center align-items-center ps-2">
+                        <div class="col-lg-6 px-0 d-flex flex-column justify-content-center align-items-center ps-2 border">
                             <h4>All Menus</h4>
                             <div class="w-100 d-flex flex-column justify-content-center align-items-center">
                                 <!-- First Menu -->

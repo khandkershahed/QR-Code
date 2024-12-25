@@ -8046,7 +8046,7 @@ a.theme-btn.style-four:hover {
     display: -webkit-inline-box;
     display: -ms-inline-flexbox;
     display: inline-flex;
-    width: 800px !important;
+    width: 718px !important;
     padding: 10px;
     border-radius: 10px;
 }
@@ -8080,6 +8080,17 @@ a.theme-btn.style-four:hover {
     margin: -5%;
 }
 
+@media only screen and (max-width: 468px) {
+    .advanced-tab.style-fours {
+        background: #eaecef;
+        display: -webkit-inline-box;
+        display: -ms-inline-flexbox;
+        display: inline-flex;
+        width: 100% !important;
+        padding: 10px;
+        border-radius: 10px;
+    }
+}
 @media only screen and (max-width: 991px) {
     .tab-image {
         margin: -8%;
@@ -12973,8 +12984,8 @@ a.theme-btn.style-four:hover {
 .about-images .about-over {
     position: absolute;
     right: 0;
-    bottom: 30px;
     max-width: 55%;
+    top: 210px;
 }
 
 .about-images .about-over img {
@@ -15737,4 +15748,7 @@ a.theme-btn.style-four:hover {
     text-align: start;
     font-size: 20px;
     font-weight: bold;
+}
+.active-link a{
+    color: #6610f2;
 }

@@ -4,7 +4,7 @@
     data-kt-drawer-toggle="#kt_aside_mobile_toggle">
     <div class="aside-logo flex-column-auto" id="kt_aside_logo">
         <a href="{{ route('admin.dashboard') }}">
-            <img alt="Logo" src="https://i.ibb.co/BNBTVN4/logo.png" class="h-60px logo">
+            <img alt="Logo" src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}" class="h-60px logo">
         </a>
         <div id="kt_aside_toggle" class="btn btn-icon w-auto px-0 btn-active-color-info aside-toggle active"
             data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body"
@@ -176,13 +176,10 @@
                         <span class="menu-title">My NFC Cards</span>
                     </a>
                 </div>
-
-
                 <div data-kt-menu-trigger="click"
                     class="menu-item {{ Route::is('admin.qr.template', 'admin.nfc.template') ? 'here show' : '' }} menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
-                            <!--begin::Svg Icon | path: icons/duotune/general/gen022.svg-->
                             <span class="svg-icon svg-icon-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
                                     xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" x="0"
@@ -255,7 +252,6 @@
                                     </g>
                                 </svg>
                             </span>
-                            <!--end::Svg Icon-->
                         </span>
                         <span class="menu-title">Blog Management</span>
                         <span class="menu-arrow"></span>
@@ -271,15 +267,6 @@
                                 <span class="menu-title">Blog Category</span>
                             </a>
                         </div>
-                        {{-- <div class="menu-item">
-                            <a class="menu-link {{ Route::is('admin.blog-tags.index') ? 'active' : '' }}"
-                                href="{{ route('admin.blog-tags.index') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Blog Tags</span>
-                            </a>
-                        </div> --}}
                         <div class="menu-item">
                             <a class="menu-link {{ Route::is('admin.blog-post.index', 'admin.blog-post.create', 'admin.blog-post.edit') ? 'active' : '' }}"
                                 href="{{ route('admin.blog-post.index') }}">
@@ -295,7 +282,6 @@
                     class="menu-item {{ Route::is('admin.qr.template', 'admin.nfc.template') ? 'here show' : '' }} menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
-                            <!--begin::Svg Icon | path: icons/duotune/general/gen022.svg-->
                             <span class="svg-icon svg-icon-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
                                     xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" x="0"
@@ -320,7 +306,6 @@
                                     </g>
                                 </svg>
                             </span>
-                            <!--end::Svg Icon-->
                         </span>
                         <span class="menu-title">Template</span>
                         <span class="menu-arrow"></span>
@@ -359,48 +344,48 @@
                                     <g>
                                         <path
                                             d="M27.703 437.829h86.874V74.171H27.703C16.545 74.171 7.5 83.216 7.5 94.374v323.252c0 11.158 9.045 20.203 20.203 20.203z"
-                                            style="" fill="#c8effe" data-original="#c8effe" class="">
+                                              fill="#c8effe" data-original="#c8effe" class="">
                                         </path>
-                                        <path d="M84.272 74.171h30.305V437.83H84.272z" style="" fill="#99e6fc"
+                                        <path d="M84.272 74.171h30.305V437.83H84.272z"   fill="#99e6fc"
                                             data-original="#99e6fc"></path>
                                         <path
                                             d="M114.577 387.321v-30.305H62.049a8.081 8.081 0 0 0-8.081 8.081v14.142a8.081 8.081 0 0 0 8.081 8.081h52.528z"
-                                            style="" fill="#8bc727" data-original="#8bc727"></path>
+                                              fill="#8bc727" data-original="#8bc727"></path>
                                         <path
                                             d="M114.577 205.492v-30.305H55.988a8.081 8.081 0 0 0-8.081 8.081v14.142a8.081 8.081 0 0 0 8.081 8.081h58.589z"
-                                            style="" fill="#3c87d0" data-original="#3c87d0"></path>
+                                              fill="#3c87d0" data-original="#3c87d0"></path>
                                         <path
                                             d="M377.22 478.236H134.781c-11.158 0-20.203-9.045-20.203-20.203V53.967c0-11.158 9.045-20.203 20.203-20.203H377.22c11.158 0 20.203 9.045 20.203 20.203v404.065c0 11.158-9.046 20.204-20.203 20.204z"
-                                            style="" fill="#dff6fd" data-original="#dff6fd" class="">
+                                              fill="#dff6fd" data-original="#dff6fd" class="">
                                         </path>
                                         <path
                                             d="M484.297 437.829h-86.874V74.171h86.874c11.158 0 20.203 9.045 20.203 20.203v323.252c0 11.158-9.045 20.203-20.203 20.203z"
-                                            style="" fill="#c8effe" data-original="#c8effe" class="">
+                                              fill="#c8effe" data-original="#c8effe" class="">
                                         </path>
-                                        <path d="M397.423 74.171h30.305V437.83h-30.305z" style="" fill="#99e6fc"
+                                        <path d="M397.423 74.171h30.305V437.83h-30.305z"   fill="#99e6fc"
                                             data-original="#99e6fc"></path>
                                         <path
                                             d="M195.39 429.748v-14.142a8.081 8.081 0 0 1 8.081-8.081h105.057a8.081 8.081 0 0 1 8.081 8.081v14.142a8.081 8.081 0 0 1-8.081 8.081H203.472a8.081 8.081 0 0 1-8.082-8.081z"
-                                            style="" fill="#a2e62e" data-original="#a2e62e"></path>
+                                              fill="#a2e62e" data-original="#a2e62e"></path>
                                         <path
                                             d="M397.423 387.321v-30.305h52.528a8.081 8.081 0 0 1 8.081 8.081v14.142a8.081 8.081 0 0 1-8.081 8.081h-52.528z"
-                                            style="" fill="#8bc727" data-original="#8bc727"></path>
+                                              fill="#8bc727" data-original="#8bc727"></path>
                                         <path
                                             d="M308.528 407.524h-30.305a8.081 8.081 0 0 1 8.081 8.081v14.142a8.081 8.081 0 0 1-8.081 8.081h30.305a8.081 8.081 0 0 0 8.081-8.081v-14.142a8.08 8.08 0 0 0-8.081-8.081z"
-                                            style="" fill="#97d729" data-original="#97d729"></path>
+                                              fill="#97d729" data-original="#97d729"></path>
                                         <path
                                             d="M377.22 33.764h-32.325c11.158 0 20.203 9.045 20.203 20.203v404.065c0 11.158-9.045 20.203-20.203 20.203h32.325c11.158 0 20.203-9.045 20.203-20.203V53.967c0-11.157-9.046-20.203-20.203-20.203z"
-                                            style="" fill="#c8effe" data-original="#c8effe" class="">
+                                              fill="#c8effe" data-original="#c8effe" class="">
                                         </path>
                                         <path
                                             d="M273.509 98.415 256 74.171l-17.509 24.244-32.999-14.143 10.102 60.61h80.812l10.102-60.61z"
-                                            style="" fill="#ffd15b" data-original="#ffd15b"></path>
+                                              fill="#ffd15b" data-original="#ffd15b"></path>
                                         <path
                                             d="M144.882 197.411v-14.142a8.081 8.081 0 0 1 8.081-8.081h206.073a8.081 8.081 0 0 1 8.081 8.081v14.142a8.081 8.081 0 0 1-8.081 8.081H152.963a8.081 8.081 0 0 1-8.081-8.081z"
-                                            style="" fill="#5f99d7" data-original="#5f99d7"></path>
+                                              fill="#5f99d7" data-original="#5f99d7"></path>
                                         <path
                                             d="M397.423 205.492v-30.305h58.589a8.081 8.081 0 0 1 8.081 8.081v14.142a8.081 8.081 0 0 1-8.081 8.081h-58.589zM359.037 175.187h-30.305a8.081 8.081 0 0 1 8.081 8.081v14.142a8.081 8.081 0 0 1-8.081 8.081h30.305a8.081 8.081 0 0 0 8.081-8.081v-14.142a8.081 8.081 0 0 0-8.081-8.081z"
-                                            style="" fill="#3c87d0" data-original="#3c87d0"></path>
+                                              fill="#3c87d0" data-original="#3c87d0"></path>
                                         <path
                                             d="M114.577 357.016H62.049a8.081 8.081 0 0 0-8.081 8.081v14.142a8.081 8.081 0 0 0 8.081 8.081h52.528M114.577 175.187H55.988a8.081 8.081 0 0 0-8.081 8.081v14.142a8.081 8.081 0 0 0 8.081 8.081h58.589M114.577 235.797H37.805M114.577 276.203H37.805M114.577 316.61H37.805"
                                             style="stroke-width:15;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;"
@@ -446,14 +431,12 @@
                                 <span class="menu-title">Subscription Plans List</span>
                             </a>
                         </div>
-
                     </div>
                 </div>
                 <div data-kt-menu-trigger="click"
                     class="menu-item menu-accordion  {{ Route::is('admin.contact.index', 'admin.newsletter.index') ? 'here show' : '' }}">
                     <span class="menu-link">
                         <span class="menu-icon">
-                            <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm002.svg-->
                             <span class="svg-icon svg-icon-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
                                     xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" x="0"
@@ -534,7 +517,6 @@
                                     </g>
                                 </svg>
                             </span>
-                            <!--end::Svg Icon-->
                         </span>
                         <span class="menu-title">Customer Support</span>
                         <span class="menu-arrow"></span>
@@ -573,7 +555,6 @@
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
                     <span class="menu-link">
                         <span class="menu-icon">
-                            <!--begin::Svg Icon | path: icons/duotune/general/gen051.svg-->
                             <span class="svg-icon svg-icon-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
                                     xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" x="0"
@@ -620,7 +601,6 @@
                                     </g>
                                 </svg>
                             </span>
-                            <!--end::Svg Icon-->
                         </span>
                         <span class="menu-title">User Management</span>
                         <span class="menu-arrow"></span>
@@ -655,108 +635,14 @@
                                         <span class="menu-title">Send Notification</span>
                                     </a>
                                 </div>
-                                {{-- <div class="menu-item">
-                                    <a class="menu-link" href="{{ route('admin.user.create') }}">
-                                        <span class="menu-bullet">
-                                            <span class="bullet bullet-dot"></span>
-                                        </span>
-                                        <span class="menu-title">Add User</span>
-                                    </a>
-                                </div> --}}
                             </div>
                         </div>
-                        {{-- <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                            <span class="menu-link">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Roles</span>
-                                <span class="menu-arrow"></span>
-                            </span>
-                            <div class="menu-sub menu-sub-accordion">
-                                <div class="menu-item">
-                                    <a class="menu-link" href="{{ route('admin.role.index') }}">
-                                        <span class="menu-bullet">
-                                            <span class="bullet bullet-dot"></span>
-                                        </span>
-                                        <span class="menu-title">Roles List</span>
-                                    </a>
-                                </div>
-                                <div class="menu-item">
-                                    <a class="menu-link" href="{{ route('admin.role.create') }}">
-                                        <span class="menu-bullet">
-                                            <span class="bullet bullet-dot"></span>
-                                        </span>
-                                        <span class="menu-title">Add Role</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="menu-item">
-                            <a class="menu-link" href="{{ route('admin.permission.index') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Permissions</span>
-                            </a>
-                        </div> --}}
                     </div>
                 </div>
-                {{-- <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
-                    <span class="menu-link">
-                        <span class="menu-icon">
-                            <!--begin::Svg Icon | path: icons/duotune/general/gen051.svg-->
-                            <span class="svg-icon svg-icon-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none">
-                                    <path opacity="0.3"
-                                        d="M20.5543 4.37824L12.1798 2.02473C12.0626 1.99176 11.9376 1.99176 11.8203 2.02473L3.44572 4.37824C3.18118 4.45258 3 4.6807 3 4.93945V13.569C3 14.6914 3.48509 15.8404 4.4417 16.984C5.17231 17.8575 6.18314 18.7345 7.446 19.5909C9.56752 21.0295 11.6566 21.912 11.7445 21.9488C11.8258 21.9829 11.9129 22 12.0001 22C12.0872 22 12.1744 21.983 12.2557 21.9488C12.3435 21.912 14.4326 21.0295 16.5541 19.5909C17.8169 18.7345 18.8277 17.8575 19.5584 16.984C20.515 15.8404 21 14.6914 21 13.569V4.93945C21 4.6807 20.8189 4.45258 20.5543 4.37824Z"
-                                        fill="currentColor" />
-                                    <path
-                                        d="M14.854 11.321C14.7568 11.2282 14.6388 11.1818 14.4998 11.1818H14.3333V10.2272C14.3333 9.61741 14.1041 9.09378 13.6458 8.65628C13.1875 8.21876 12.639 8 12 8C11.361 8 10.8124 8.21876 10.3541 8.65626C9.89574 9.09378 9.66663 9.61739 9.66663 10.2272V11.1818H9.49999C9.36115 11.1818 9.24306 11.2282 9.14583 11.321C9.0486 11.4138 9 11.5265 9 11.6591V14.5227C9 14.6553 9.04862 14.768 9.14583 14.8609C9.24306 14.9536 9.36115 15 9.49999 15H14.5C14.6389 15 14.7569 14.9536 14.8542 14.8609C14.9513 14.768 15 14.6553 15 14.5227V11.6591C15.0001 11.5265 14.9513 11.4138 14.854 11.321ZM13.3333 11.1818H10.6666V10.2272C10.6666 9.87594 10.7969 9.57597 11.0573 9.32743C11.3177 9.07886 11.6319 8.9546 12 8.9546C12.3681 8.9546 12.6823 9.07884 12.9427 9.32743C13.2031 9.57595 13.3333 9.87594 13.3333 10.2272V11.1818Z"
-                                        fill="currentColor" />
-                                </svg>
-                            </span>
-                            <!--end::Svg Icon-->
-                        </span>
-                        <span class="menu-title">Seller Management</span>
-                        <span class="menu-arrow"></span>
-                    </span>
-                    <div class="menu-sub menu-sub-accordion">
-                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
-                            <span class="menu-link">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Seller</span>
-                                <span class="menu-arrow"></span>
-                            </span>
-                            <div class="menu-sub menu-sub-accordion">
-                                <div class="menu-item">
-                                    <a class="menu-link" href="{{ route('admin.user.index') }}">
-                                        <span class="menu-bullet">
-                                            <span class="bullet bullet-dot"></span>
-                                        </span>
-                                        <span class="menu-title">Seller List</span>
-                                    </a>
-                                </div>
-                                <div class="menu-item">
-                                    <a class="menu-link" href="{{ route('admin.user.index') }}">
-                                        <span class="menu-bullet">
-                                            <span class="bullet bullet-dot"></span>
-                                        </span>
-                                        <span class="menu-title">Seller Statistic</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
                 <div data-kt-menu-trigger="click"
                     class="menu-item menu-accordion  {{ Route::is('admin.setting.index', 'admin.css.index', 'admin.email-settings.index') ? 'here show' : '' }}">
                     <span class="menu-link">
                         <span class="menu-icon">
-                            <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm002.svg-->
                             <span class="svg-icon svg-icon-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
                                     xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" x="0"
@@ -765,24 +651,23 @@
                                     <g>
                                         <path
                                             d="m500.603 211.604-25.595-6.298c-5.401-24.297-14.998-47.395-28.198-68.392l12.9-21.596c3.596-5.999 2.699-13.498-2.102-18.298l-20.996-20.997-21.596-21.596c-4.8-4.8-12.299-5.699-18.301-2.1l-21.596 12.898c-20.996-13.198-44.094-22.797-68.392-28.196l-6.298-25.597C298.928 4.832 292.93.033 286.032.033h-59.993c-6.898 0-12.896 4.798-14.397 11.399l-6.298 25.597c-24.299 5.399-47.396 14.998-68.392 28.196l-21.598-12.898c-5.999-3.6-13.498-2.701-18.298 2.1L54.459 97.021c-4.8 4.798-5.699 12.297-2.1 18.298l12.898 21.596c-13.198 20.997-22.797 44.095-28.196 68.392l-25.597 6.298c-6.6 1.501-11.399 7.499-11.399 14.399v59.992c0 6.898 4.798 12.898 11.399 14.397l25.597 6.3c6.898 30.296 20.397 59.092 38.995 83.99l45.294 45.294c24.898 18.598 53.692 32.096 83.99 38.995l6.298 25.597c1.501 6.598 7.499 11.399 14.397 11.399h59.993c6.898 0 12.896-4.8 14.397-11.399l6.298-25.597c24.299-5.399 47.396-14.998 68.392-28.197l21.596 12.898c6.001 3.6 13.5 2.701 18.301-2.1l42.593-42.594c4.8-4.798 5.697-12.297 2.102-18.298l-12.9-21.598c13.2-20.997 22.797-44.093 28.198-68.39l25.595-6.3c6.602-1.5 11.399-7.499 11.399-14.397v-59.992c.002-6.901-4.794-12.899-11.396-14.4zm-244.57 179.379c-35.094 0-67.192-13.198-90.89-35.696-1.5-.901-2.699-2.1-4.198-3.6-24.597-24.297-39.896-58.193-39.896-95.688 0-74.691 60.292-134.983 134.983-134.983 37.495 0 71.391 15.298 95.686 39.894 1.501 1.501 2.703 2.701 3.604 4.199 22.497 23.698 35.694 55.793 35.694 90.89 0 74.691-60.292 134.984-134.983 134.984z"
-                                            style="" fill="#b7e0f6" data-original="#b7e0f6" class="">
+                                              fill="#b7e0f6" data-original="#b7e0f6" class="">
                                         </path>
                                         <path
                                             d="M512.001 226.003v59.992c0 6.898-4.796 12.898-11.399 14.397l-25.595 6.3c-5.401 24.297-14.998 47.393-28.198 68.39l12.9 21.598c3.596 5.999 2.699 13.498-2.102 18.298l-42.593 42.594c-4.8 4.8-12.299 5.699-18.301 2.1l-21.596-12.898c-20.996 13.198-44.094 22.797-68.392 28.197l-6.298 25.597c-1.501 6.598-7.499 11.399-14.397 11.399h-59.993c-6.898 0-12.896-4.8-14.397-11.399l-6.298-25.597c-30.298-6.898-59.094-20.397-83.99-38.995l-22.497-22.497 62.092-61.792c1.5 1.5 2.699 2.699 4.198 3.6 23.698 22.497 55.796 35.696 90.89 35.696 74.691 0 134.983-60.292 134.983-134.983 0-35.097-13.196-67.192-35.694-90.89-.901-1.5-2.102-2.699-3.604-4.199l84.891-84.888 20.996 20.997c4.8 4.798 5.697 12.297 2.102 18.298l-12.9 21.596c13.2 20.997 22.797 44.095 28.198 68.392l25.595 6.298c6.603 1.501 11.399 7.499 11.399 14.399z"
-                                            style="" fill="#a4d9f5" data-original="#a4d9f5" class="">
+                                              fill="#a4d9f5" data-original="#a4d9f5" class="">
                                         </path>
                                         <path
                                             d="M357.609 228.932a14.994 14.994 0 0 0-10.555-10.806 14.994 14.994 0 0 0-14.596 3.867l-34.008 34.008c-5.653 5.653-13.182 8.759-21.208 8.759s-15.555-3.105-21.208-8.759c-11.688-11.688-11.688-30.728 0-42.417l34.241-34.241c3.768-3.768 5.222-9.266 3.813-14.403s-5.466-9.131-10.63-10.443c-12.859-3.267-29.649-4.782-46.933-1.741-42.314 7.763-75.972 41.421-83.75 83.808-3.354 18.748-1.86 37.422 4.276 54.617-8.535 8.535-140.349 140.347-143.892 143.892-17.591 17.591-17.591 46.21.278 64.079 17.702 16.78 44.813 17.486 63.522-.278l143.892-143.892c23.043 8.224 48.742 8.057 73.89-.817 33.967-11.987 57.472-43.336 64.535-78.656l.015-.073c3.033-16.962 1.546-33.641-1.682-46.504z"
-                                            style="" fill="#17ace8" data-original="#17ace8" class="">
+                                              fill="#17ace8" data-original="#17ace8" class="">
                                         </path>
                                         <path
                                             d="m76.961 498.873 143.892-143.892c23.043 8.224 48.742 8.057 73.891-.817 33.968-11.987 57.472-43.336 64.535-78.656l.015-.073c3.06-17.117 1.518-33.946-1.772-46.856a14.822 14.822 0 0 0-10.445-10.634 14.819 14.819 0 0 0-14.399 3.827L298.452 256c-5.653 5.653-13.182 8.759-21.208 8.759-7.889 0-15.254-3.065-20.875-8.535L13.438 499.152c17.702 16.779 44.813 17.486 63.523-.279z"
-                                            style="" fill="#1689fc" data-original="#1689fc" class="">
+                                              fill="#1689fc" data-original="#1689fc" class="">
                                         </path>
                                     </g>
                                 </svg>
                             </span>
-                            <!--end::Svg Icon-->
                         </span>
                         <span class="menu-title">Settings</span>
                         <span class="menu-arrow"></span>
@@ -798,24 +683,6 @@
                                 <span class="menu-title">Website Setting</span>
                             </a>
                         </div>
-                        {{-- <div class="menu-item">
-                            <a class="menu-link {{ Route::is('admin.css.index') ? 'active' : '' }}"
-                                href="{{ route('admin.css.index') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">CSS Setting</span>
-                            </a>
-                        </div> --}}
-                        {{-- <div class="menu-item">
-                            <a class="menu-link {{ Route::is('admin.email-settings.index') ? 'active' : '' }}"
-                                href="{{ route('admin.email-settings.index') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Email Setting</span>
-                            </a>
-                        </div> --}}
                     </div>
                 </div>
             </div>

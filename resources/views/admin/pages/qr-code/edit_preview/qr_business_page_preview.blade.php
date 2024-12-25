@@ -180,13 +180,14 @@
                 <div class="card-body px-0">
                     <div class="d-flex justify-content-center">
                         <img class="img-fluid" width="200px"
-                            src="https://i.ibb.co/9rR2kd4/97-971813-molduras-arabescos-image-transparent-download-arabesque-png.png"
+                            src="{{ asset('images/d-image/molduras-arabescos-image-transparent-download-arabesque.png') }}"
                             alt="">
                     </div>
                     <div class="text-center p-3">
                         <img class="p-5 img-fluid qr_data_business_page_logo"
                             style="width: 100px;border-radius: 100%;position: relative;z-index: 15;"
-                            src="https://i.ibb.co/BNBTVN4/logo.png" alt="banner" />
+                            src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}"
+                            alt="banner" />
                     </div>
                     <div class="text-center p-3">
                         <h2 class="mb-0 title fw-bold sub_title-2 qr_data_business_page_business_name">
@@ -199,8 +200,7 @@
                         <div class="col-lg-12">
                             <div class="text-center px-0 px-lg-1 m-2 mobile-design">
                                 <div class="qr_data_business_page_start_time_monday_time" style="display: none;">
-                                    <div
-                                        class="d-flex justify-content-between align-items-center shadow-sm mt-0">
+                                    <div class="d-flex justify-content-between align-items-center shadow-sm mt-0">
                                         <p class="mb-0 fw-bold mt-0 ps-2">Monday</p>
                                         <p class="mb-0 mt-0 time-start qr_data_business_page_start_time_monday">9:00</p>
                                         <span class="title fw-bold">To</span>
@@ -208,8 +208,7 @@
                                     </div>
                                 </div>
                                 <div class="qr_data_business_page_start_time_tuesday_time" style="display: none;">
-                                    <div
-                                        class="d-flex justify-content-between align-items-center shadow-sm mt-0">
+                                    <div class="d-flex justify-content-between align-items-center shadow-sm mt-0">
                                         <p class="mb-0 fw-bold mt-0 ps-2">Tuesday</p>
                                         <p class="mb-0 mt-0 time-start qr_data_business_page_start_time_tuesday">9:00
                                         </p>
@@ -218,8 +217,7 @@
                                     </div>
                                 </div>
                                 <div class="qr_data_business_page_start_time_wednesday_time" style="display: none;">
-                                    <div
-                                        class="d-flex justify-content-between align-items-center shadow-sm mt-0">
+                                    <div class="d-flex justify-content-between align-items-center shadow-sm mt-0">
                                         <p class="mb-0 fw-bold mt-0 ps-2">Wednesday</p>
                                         <p class="mb-0 mt-0 time-start qr_data_business_page_start_time_wednesday">9:00
                                         </p>
@@ -228,8 +226,7 @@
                                     </div>
                                 </div>
                                 <div class="qr_data_business_page_start_time_thursday_time" style="display: none;">
-                                    <div
-                                        class="d-flex justify-content-between align-items-center shadow-sm mt-0">
+                                    <div class="d-flex justify-content-between align-items-center shadow-sm mt-0">
                                         <p class="mb-0 fw-bold mt-0 ps-2">Thursday</p>
                                         <p class="mb-0 mt-0 time-start qr_data_business_page_start_time_thursday">9:00
                                         </p>
@@ -238,8 +235,7 @@
                                     </div>
                                 </div>
                                 <div class="qr_data_business_page_start_time_friday_time" style="display: none;">
-                                    <div
-                                        class="d-flex justify-content-between align-items-center shadow-sm mt-0">
+                                    <div class="d-flex justify-content-between align-items-center shadow-sm mt-0">
                                         <p class="mb-0 fw-bold mt-0 ps-2">Friday</p>
                                         <p class="mb-0 mt-0 time-start qr_data_business_page_start_time_friday">9:00</p>
                                         <span class="title fw-bold">To</span>
@@ -247,8 +243,7 @@
                                     </div>
                                 </div>
                                 <div class="qr_data_business_page_start_time_saturday_time" style="display: none;">
-                                    <div
-                                        class="d-flex justify-content-between align-items-center shadow-sm mt-0">
+                                    <div class="d-flex justify-content-between align-items-center shadow-sm mt-0">
                                         <p class="mb-0 fw-bold mt-0 ps-2">Saturday</p>
                                         <p class="mb-0 mt-0 time-start qr_data_business_page_start_time_saturday">9:00
                                         </p>
@@ -257,8 +252,7 @@
                                     </div>
                                 </div>
                                 <div class="qr_data_business_page_start_time_sunday_time" style="display: none;">
-                                    <div
-                                        class="d-flex justify-content-between align-items-center shadow-sm mt-0">
+                                    <div class="d-flex justify-content-between align-items-center shadow-sm mt-0">
                                         <p class="mb-0 fw-bold mt-0 ps-2">Sunday</p>
                                         <p class="mb-0 mt-0 time-start qr_data_business_page_start_time_sunday">9:00</p>
                                         <span class="title fw-bold">To</span>
@@ -284,7 +278,7 @@
                     </div>
                     <div class="d-flex justify-content-center">
                         <img class="img-fluid" width="200px" style="transform: rotate(180deg)"
-                            src="https://i.ibb.co/9rR2kd4/97-971813-molduras-arabescos-image-transparent-download-arabesque-png.png"
+                            src="{{ asset('images/d-image/molduras-arabescos-image-transparent-download-arabesque.png') }}"
                             alt="">
                     </div>
                 </div>

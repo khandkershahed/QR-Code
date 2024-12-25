@@ -275,7 +275,7 @@
                             src="https://www.goflixza.com/storage/nfc/qrs/NFC7201_nfc_qr.png" alt="">
                     </div>
                     <!-- Front Info -->
-                    <div class="template-two-title pt-5 tempmail" style="">
+                    <div class="template-two-title pt-5 tempmail ">
                         <div class="half mt-4">
                             <div class="w-100 mx-auto email-box-area">
                                 <p class="mb-0 card_email card-two-mail">info@gmail.com</p>

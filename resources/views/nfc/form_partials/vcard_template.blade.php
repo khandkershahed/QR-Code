@@ -5,15 +5,23 @@
     <x-vcard.template :templates="[
         [
             'value' => 'template-one',
-            'image' => 'frontend/images/nfc_template/template_one.jpg',
+            'image' => 'frontend/images/nfc_template/template_one.png',
         ],
         [
             'value' => 'template-two',
-            'image' => 'frontend/images/nfc_template/template_two.jpg',
+            'image' => 'frontend/images/nfc_template/template_two.png',
         ],
         [
             'value' => 'template-three',
             'image' => 'frontend/images/nfc_template/template_three.jpg',
+        ],
+        [
+            'value' => 'template-four',
+            'image' => 'frontend/images/nfc_template/template_four.jpg',
+        ],
+        [
+            'value' => 'template-five',
+            'image' => 'frontend/images/nfc_template/template_five.png',
         ],
     ]" :selectedTemplate="$nfc_card->nfc_template" />
 
@@ -45,19 +53,6 @@
                 // Remove any existing error messages and red borders
                 form.find('.error-message').remove();
                 form.find('.form-control').removeClass('is-invalid');
-
-                // Validate each required field (adjust field names as needed)
-                // form.find('[name="nfc_template"]') // Replace with your actual field names
-                //     .each(function() {
-                //         var fieldValue = $(this).val().trim();
-                //         if (!fieldValue) {
-                //             // Show error message for the current field
-                //             $(this).addClass('is-invalid');
-                //             $(this).after('<p class="error-message text-danger">This field is required.</p>');
-                //             isValid = false;
-                //         }
-                //     });
-
                 if (isValid) {
                     // Disable the submit button to prevent multiple submissions
                     submitButton.prop('disabled', true).addClass('disabled');

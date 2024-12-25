@@ -3,19 +3,24 @@
 namespace App\Http\Controllers\Admin;
 
 
-use App\Models\VirtualCard;
-use Illuminate\Http\Request;
+use Stripe\Charge;
+use Stripe\Stripe;
 
+use Stripe\Invoice;
+use App\Models\VirtualCard;
+
+// use Laravel\Cashier\Invoice;
+
+use Illuminate\Http\Request;
 use App\Models\Admin\NfcCard;
 use App\Http\Controllers\Controller;
-
 use Illuminate\Support\Facades\Auth;
-
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Admin\NfcShippingDetails;
-
 
 class NfcCardController extends Controller
 {
@@ -53,7 +58,7 @@ class NfcCardController extends Controller
         // return view('user.pages.virtualCard.create', $data);
     }
 
-    /**
+    /** 
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
@@ -61,28 +66,40 @@ class NfcCardController extends Controller
         $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
         try {
             // Set Stripe API key
-            // Stripe::setApiKey(env('STRIPE_SECRET'));
+            Stripe::setApiKey(env('STRIPE_SECRET'));
 
-            // // Create charge
-            // $charge = Charge::create([
-            //     "amount" => 4999, // Amount in cents
-            //     "currency" => "usd",
-            //     "source" => $request->stripeToken,
-            //     "description" => "NFC Card Payment"
-            // ]);
+            // Create charge
+            $charge = Charge::create([
+                "amount" => 4999, // Amount in cents
+                "currency" => "usd",
+                "source" => $request->stripeToken,
+                "description" => "NFC Card Payment"
+            ]);
 
-            // // Create invoice
-            // $invoice = Invoice::create([
-            //     'customer' => $charge->customer,
-            //     'billing' => 'send_invoice',
-            //     // 'due_date' => now()->addDays(30)->timestamp,
-            // ]);
+            // Create invoice
+            $invoice = Invoice::create([
+                'customer' => $charge->customer,
+                'billing' => 'send_invoice',
+                // 'due_date' => now()->addDays(30)->timestamp,
+            ]);
 
-            // // Send invoice through email
-            // $email = $request->customer_email; // Use card_email field for sending invoice
-            // Mail::send('emails.invoice', ['invoice' => $invoice], function ($message) use ($email) {
-            //     $message->to($email)->subject('NFC Card Payment Invoice');
-            // });
+            // $paymentMethod = $request->stripeToken;
+            // $user = Auth::user();
+            // if (!$user) {
+            //     throw new \Exception('User not found.');
+            // }
+            // $charge = $user->charge(4999, $paymentMethod);
+
+            // $invoice = $user->invoiceFor('NFC Card Payment', 4999);
+
+            $email = $request->customer_email;
+            try {
+                Mail::send('emails.invoice', ['invoice' => $invoice], function ($message) use ($email) {
+                    $message->to($email)->subject('NFC Card Payment Invoice');
+                });
+            } catch (\Exception $e) {
+                Session::flash('error', "Email sent will be delayed due to server issue.");
+            } 
             $nfc = NfcCard::find($request->card_id);
             $code = $nfc->code;
             // Handle file uploads

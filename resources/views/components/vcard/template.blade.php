@@ -1,10 +1,10 @@
 <style>
     .window {
-        width: 400px;
+        width: 350px;
         margin: auto;
         border: 7px solid #1d505d;
         border-radius: 5px;
-        box-shadow: 0px 20px 46px 2px #bcc6ff;
+        box-shadow: 15px 5px 36px 2px #bcc6ff;
         cursor: n-resize;
     }
 
@@ -12,48 +12,12 @@
         width: 100%;
         object-fit: cover;
         object-position: top;
-        height: 270px;
-        transition: 11s all ease;
+        height: 400px;
+        transition: 25s all ease;
     }
 
     .window img:hover {
         object-position: bottom;
-    }
-
-    .credit {
-        font-weight: 300;
-        text-align: center;
-        margin-top: 6rem;
-        color: #b6bee8;
-        font-size: 14px;
-    }
-
-    .credit:hover span {
-        color: #e91e63;
-    }
-
-    .credit:hover a {
-        color: #e91e63;
-        border-color: #e91e63;
-    }
-
-    .credit span {
-        color: #b6bee8;
-        transition: ease all 8s;
-    }
-
-    .credit a {
-        color: #b6bee8;
-        transition: ease-in all 700ms;
-        -webkit-text-decoration: none;
-        text-decoration: none;
-        border-bottom: 2px solid #b6bee8;
-    }
-
-    .credit a:hover {
-        color: #fff;
-        box-shadow: inset 0 -5.5rem 0 #e91e63;
-        border-bottom: 2px solid #e91e63;
     }
 
     .btn-check:active+.btn.custom-active,
@@ -73,29 +37,29 @@
     'selectedTemplate' => null, // Default to null if not provided
 ])
 
-
-<div class="row mt-10">
-    @php
-        $counter = 0;
-    @endphp
-
-    @foreach ($templates as $template)
-        <div class="col-lg-3 position-relative">
-            <div>
-                <input type="radio" class="btn-check template-btn-check" name="nfc_template"
-                    value="{{ $template['value'] }}" id="{{ $template['value'] }}"
-                    @if ($counter === 0) checked @endif @checked($template['value'] == $selectedTemplate) />
-                <label
-                    class="btn template-btn btn-outline btn-outline-dashed btn-active-light-primary custom-active p-4 d-flex align-items-center mb-5 custom-radio"
-                    for="{{ $template['value'] }}" style="">
-                    <div class="window">
-                        <img src="{{ asset($template['image']) }}" alt="{{ $template['value'] }}">
-                    </div>
-                </label>
-            </div>
-        </div>
+<div style="margin: auto" class="px-10">
+    <div class="row mt-5">
         @php
-            $counter++;
+            $counter = 0;
         @endphp
-    @endforeach
+        @foreach ($templates as $template)
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-2">
+                <div>
+                    <input type="radio" class="btn-check template-btn-check" name="nfc_template"
+                        value="{{ $template['value'] }}" id="{{ $template['value'] }}"
+                        @if ($counter === 0) checked @endif @checked($template['value'] == $selectedTemplate) />
+                    <label
+                        class="btn template-btn btn-outline btn-outline-dashed btn-active-primary custom-active p-4 d-flex align-items-center mb-5 custom-radio"
+                        for="{{ $template['value'] }}">
+                        <div class="window">
+                            <img src="{{ asset($template['image']) }}" alt="{{ $template['value'] }}">
+                        </div>
+                    </label>
+                </div>
+            </div>
+            @php
+                $counter++;
+            @endphp
+        @endforeach
+    </div>
 </div>

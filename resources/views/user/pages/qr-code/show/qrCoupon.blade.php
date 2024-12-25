@@ -84,7 +84,7 @@
                 <!-- First Part -->
                 <div class="d-flex justify-content-center qr_data_coupon_logo"
                     style="
-                      background-image: url(https://i.ibb.co/wJKbkb9/coupon-first.png);
+                      background-image: url('{{ asset('images/d-image/coupon-first-part.png') }}');
                       height: 320px;
                       background-repeat: no-repeat;
                       background-position: center;
@@ -108,7 +108,7 @@
                 </div>
                 <!-- Second Part -->
                 <div class="d-flex justify-content-center"
-                    style="background-image: url(https://i.ibb.co/p4zLfcR/coupon-last.png);height: 320px;margin-top: -25px;background-repeat: no-repeat;background-position: center;">
+                    style="background-image: url('{{ asset('images/d-image/coupon-first-part.png') }}');height: 320px;margin-top: -25px;background-repeat: no-repeat;background-position: center;">
                     <div class="text-center d-flex justify-content-center flex-column align-items-center">
                         <div class="input-group mb-3">
                             <input type="text" class="form-control border-0 text-white rounded-0 qr_data_coupon_code"

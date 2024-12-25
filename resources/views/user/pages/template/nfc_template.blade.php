@@ -1,59 +1,50 @@
 <x-app-layout :title="'NFC Templates'">
-    <div class="row">
-        <h3 class="text-center py-10">All NFC Templates</h3>
-        <div class="col-lg-3">
-            <div class="card card-flush bg-transparent  mb-10">
-                <div class="card-body pt-2 pb-0">
-                    <img class="img-fluid"
-                        src="https://www.goflixza.com/frontend/assets/images/nfc-templates/template_one.jpeg"
-                        alt="First Template">
+    <div class="card my-5 rounded-0">
+        <div class="card-header p-5 align-items-center rounded-0 bg-info m-0">
+            <div>
+                <h1 class="mb-0 mt-0 card-title fs-2 text-white">All V-Card Template!</h1>
+                <p class="text-white mt-2 mb-0">View all Template in this page.</p>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="border">
+                        <img class="img-fluid" src="{{ asset('admin/Nfc_templates/template_one.jpg') }}"
+                            alt="First Template">
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="border">
+                        <img class="img-fluid" src="{{ asset('admin/Nfc_templates/template_two.png') }}"
+                            alt="Second Template">
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="border">
+                        <img class="img-fluid" src="{{ asset('admin/Nfc_templates/template_three.jpg') }}"
+                            alt="Third Template">
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="border">
+                        <img class="img-fluid" src="{{ asset('admin/Nfc_templates/template_four.jpg') }}"
+                            alt="Fourth Template">
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="border">
+                        <img class="img-fluid" src="{{ asset('admin/Nfc_templates/template_five.png') }}"
+                            alt="Fifth Template">
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="border">
+                        <img class="img-fluid" src="{{ asset('admin/Nfc_templates/template_six.png') }}"
+                            alt="Sixth Template">
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-3">
-            <div class="card card-flush bg-transparent  mb-10">
-                <div class="card-body pt-2 pb-0">
-                    <img class="img-fluid"
-                        src="https://www.goflixza.com/frontend/assets/images/nfc-templates/template_two.jpg"
-                        alt="Second Template">
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3">
-            <div class="card card-flush bg-transparent  mb-10">
-                <div class="card-body pt-2 pb-0">
-                    <img class="img-fluid"
-                        src="https://www.goflixza.com/frontend/assets/images/nfc-templates/template_three.jpeg"
-                        alt="Third Template">
-                </div>
-            </div>
-        </div>
-        {{-- <div class="col-lg-3">
-            <div class="card card-flush bg-transparent  mb-10">
-                <div class="card-body pt-2 pb-0">
-                    <img class="img-fluid"
-                        src="https://www.goflixza.com/frontend/assets/images/nfc-templates/template_four.jpg"
-                        alt="Fourth Template">
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3">
-            <div class="card card-flush bg-transparent  mb-10">
-                <div class="card-body pt-2 pb-0">
-                    <img class="img-fluid"
-                        src="https://www.goflixza.com/frontend/assets/images/nfc-templates/template_five.jpg"
-                        alt="Fifth Template">
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3">
-            <div class="card card-flush bg-transparent  mb-10">
-                <div class="card-body pt-2 pb-0">
-                    <img class="img-fluid"
-                        src="https://www.goflixza.com/frontend/assets/images/nfc-templates/template_six.jpg"
-                        alt="Sixth Template">
-                </div>
-            </div>
-        </div> --}}
     </div>
 </x-app-layout>

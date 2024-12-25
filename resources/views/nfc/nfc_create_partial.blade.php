@@ -1,10 +1,65 @@
-<div class="row py-15">
+<style>
+    .wrapperss {
+        padding: 70px 0;
+    }
+
+    .center-sliders .slick-slide {
+        color: #FFF;
+        height: 510px;
+        margin: 0 15px 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: scale(0.8);
+        transition: all 0.4s ease-in-out;
+    }
+
+    .center-sliders .slick-slide,
+    .center-sliders .slick-slide[aria-hidden="true"]:not(.slick-cloned)~.slick-cloned[aria-hidden="true"] {
+        transform: scale(0.8, 0.8);
+        transition: all 0.4s ease-in-out;
+    }
+
+    .center-sliders .slick-center,
+    .center-sliders .slick-slide[aria-hidden="true"]:not([tabindex="-1"])+.slick-cloned[aria-hidden="true"] {
+        transform: scale(1.1);
+    }
+
+    .center-sliders .slick-current.slick-active {
+        transform: scale(1.1);
+    }
+
+    .slick-next,
+    .slick-prev {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        z-index: 5;
+    }
+
+    .slick-next {
+        right: 15px;
+    }
+
+
+    .slick-prev {
+        left: 15px;
+    }
+
+    .slick-next:before,
+    .slick-prev:before {
+        color: #000;
+        font-size: 26px;
+    }
+</style>
+<div class="row">
     <div class="col-lg-12">
-        <div class="card rounded-0">
-            <div class="card-header d-flex align-items-center" style="background: #7239e9;">
-                <h2 class="text-center mb-0 text-white">Create New VCard</h2>
+        <div class="card my-10 mt-5 rounded-0">
+            <div class="card-header p-5 align-items-center rounded-0 bg-info m-0">
+                <div>
+                    <h1 class="mb-0 mt-0 card-title fs-2 text-white">Create New VCard</h1>
+                    <p class="text-white mt-2 mb-0">Choose your VCard template or design in this page.</p>
+                </div>
             </div>
-            <div class="card-body ">
+            <div class="card-body p-0">
                 <div class="row">
                     <div class="col-lg-12">
                         @if (strpos(Route::current()->getName(), 'user.') === 0)
@@ -17,37 +72,51 @@
                                     enctype="multipart/form-data" method="post" id="virtual_card_create_form">
                         @endif
                         @csrf
-                        <div class="row mb-3">
-                            <x-metronic.label class="fw-semibold fs-12 mb-2 required">Choose Template</x-metronic.label>
+                        <div class="row my-5">
+                            <x-metronic.label class="fw-semibold fs-2 mb-2 required text-center">Choose
+                                Template</x-metronic.label>
                             <x-vcard.template :templates="[
                                 [
                                     'value' => 'template-one',
-                                    'image' => 'frontend/images/nfc_template/template_one.jpg',
+                                    'image' => 'frontend/images/nfc_template/template_one.png',
                                 ],
                                 [
                                     'value' => 'template-two',
-                                    'image' => 'frontend/images/nfc_template/template_two.jpg',
+                                    'image' => 'frontend/images/nfc_template/template_two.png',
                                 ],
                                 [
                                     'value' => 'template-three',
                                     'image' => 'frontend/images/nfc_template/template_three.jpg',
                                 ],
+                                [
+                                    'value' => 'template-four',
+                                    'image' => 'frontend/images/nfc_template/template_four.jpg',
+                                ],
+                                [
+                                    'value' => 'template-five',
+                                    'image' => 'frontend/images/nfc_template/template_five.png',
+                                ],
                             ]" />
-
                         </div>
-                        <div class="row">
-                            <div class="col-lg-12 mb-5">
+                        <div class="card bg-white w-100">
+                            <div
+                                class="card-header p-5 d-flex justify-content-center align-items-center rounded-0 bg-info m-0">
+                                <div class="text-center">
+                                    <h1 class="mb-0 mt-0 fs-2 text-white">Add V-Card Content!</h1>
+                                    <p class="text-white mt-2 mb-0">Add Information to create awesome V-Card.</p>
+                                </div>
+                            </div>
+                            <div class="card-body">
                                 <div class="row">
-                                    <div class="fv-row mb-4 col-lg-5">
+                                    <div class="fv-row mb-4 col-lg-4">
                                         <x-metronic.label class="required fw-semibold fs-6 mb-2">URL
                                             Alias
                                             <span class="m2-1" data-bs-toggle="tooltip"
                                                 aria-label="Your billing numbers will be calculated based on your API method"
                                                 data-bs-original-title="Your billing numbers will be calculated based on your API method"
                                                 data-kt-initialized="1">
-                                                <i class="fa-solid fa-circle-info fs-7"></i><span
-                                                    class="path1"></span><span class="path2"></span><span
-                                                    class="path3"></span></i> </span>
+                                                <i class="fa-solid fa-circle-info fs-7"></i></i>
+                                            </span>
                                         </x-metronic.label>
                                         <div class="input-group">
                                             <x-metronic.input type="text"
@@ -57,7 +126,7 @@
                                         </div>
                                         <span id="url_alias_feedback" class="text-danger" style="display: none;"></span>
                                     </div>
-                                    <div class="fv-row mb-4 col-lg-7">
+                                    <div class="fv-row mb-4 col-lg-4">
                                         <x-metronic.label class="required fw-semibold fs-6 mb-2">VCard
                                             Name</x-metronic.label>
                                         <div class="input-group">
@@ -67,50 +136,51 @@
                                                 :value="old('vcard_name')" />
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-5">
-                                <div class="row">
-                                    <div class="fv-row mb-5 col-lg-12">
+                                    <div class="fv-row mb-5 col-lg-4">
                                         <x-metronic.label class="fw-semibold fs-12 mb-2">Occupation</x-metronic.label>
                                         <x-metronic.input type="text"
                                             class="form-control form-control-solid form-control-sm" name="designation"
                                             placeholder="Enter Occupation Name" :value="old('designation')" />
                                     </div>
-                                    <div class="col-lg-12 mb-5">
+                                    <div class="col-lg-6 mb-5">
                                         <x-metronic.label for="profile_image"
                                             class="fw-semibold fs-6 mb-2">{{ __('Profile Image') }}</x-metronic.label>
                                         <x-metronic.file-input id="profile_image" name="profile_image"
                                             class="form-control form-control-solid form-control-sm"
                                             :value="old('profile_image')"></x-metronic.file-input>
                                     </div>
-                                    <div class="col-lg-12 mb-5">
+                                    <div class="col-lg-6 mb-5">
                                         <x-metronic.label for="banner_image"
                                             class="fw-semibold fs-6 mb-2">{{ __('Cover Image ') }}</x-metronic.label>
                                         <x-metronic.file-input id="banner_image" name="banner_image"
                                             class="form-control form-control-solid form-control-sm"
                                             :value="old('banner_image')"></x-metronic.file-input>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-7">
-                                <div class="col-lg-12 mb-7">
-                                    <x-metronic.label for="logo"
-                                        class="fw-semibold fs-6 mb-2">{{ __('Description') }}</x-metronic.label>
-                                    <textarea name="bio_description" class="form-control form-control-solid form-control-sm" rows="7">{{ old('bio_description') }}</textarea>
+                                    <div class="col-lg-12 mb-7">
+                                        <x-metronic.label for="logo"
+                                            class="fw-semibold fs-6 mb-2">{{ __('Description') }}</x-metronic.label>
+                                        <textarea name="bio_description" class="form-control form-control-solid form-control-sm" rows="7"
+                                            placeholder="Enter Your Description">{{ old('bio_description') }}</textarea>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="d-flex justify-content-end">
+                                            <button type="submit" class="virtual_card_create_form_submit btn btn-info"
+                                                disabled>
+                                                <span class="indicator-label">
+                                                    Save & Continue <i class="fa-solid fa-arrow-right-long ps-3"></i>
+                                                </span>
+                                                <span class="indicator-progress">
+                                                    Please wait...
+                                                    <span
+                                                        class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="virtual_card_create_form_submit btn btn-primary" disabled>
-                            <span class="indicator-label">
-                                <i class="fa-solid fa-door-open"></i> Save
-                            </span>
-                            <span class="indicator-progress">
-                                Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                            </span>
-                        </button>
                         </form>
-
                     </div>
                 </div>
             </div>
@@ -214,101 +284,7 @@
                     }
                 });
             });
-
-            // URL Alias uniqueness check
-            // $('input[name="url_alias"]').on('keyup', function() {
-            //     let urlAlias = $(this).val();
-            //     let feedbackElement = $('#url_alias_feedback');
-
-            //     if (urlAlias.length > 0) {
-            //         $.ajax({
-            //             url: '/check-url-alias', // The route to check the uniqueness
-            //             type: 'GET',
-            //             data: {
-            //                 url_alias: urlAlias
-            //             },
-            //             success: function(response) {
-            //                 if (response.is_unique) {
-            //                     feedbackElement.hide();
-            //                     $('.virtual_card_create_form_submit').prop('disabled', false);
-            //                 } else {
-            //                     feedbackElement.text(
-            //                         'This URL alias is already taken. Please choose another one.'
-            //                     );
-            //                     feedbackElement.show();
-            //                     feedbackElement.addClass('is-invalid');
-            //                     $('.virtual_card_create_form_submit').prop('disabled', true);
-            //                 }
-            //             },
-            //             error: function(xhr, status, error) {
-            //                 console.error(error);
-            //                 feedbackElement.text(
-            //                     'An error occurred while checking the URL alias.');
-            //                 feedbackElement.show();
-            //             }
-            //         });
-            //     } else {
-            //         feedbackElement.hide();
-            //     }
-            // });
         });
-
-        // $(document).ready(function() {
-        //     function validateUrlAlias() {
-        //         var inputValue = $('#basic-url').val().trim();
-        //         var isValid = /^[a-zA-Z0-9-]+$/.test(inputValue) && !/--/.test(inputValue);
-
-        //         if (!isValid) {
-        //             $('#url_alias_feedback').text(
-        //                 'Only plain letters, numbers, and non-consecutive hyphens are allowed.').show();
-        //             $('#basic-url').addClass('is-invalid');
-        //             $('.virtual_card_create_form_submit').prop('disabled', true);
-        //         } else {
-        //             $('#url_alias_feedback').text('').hide();
-        //             $('#basic-url').removeClass('is-invalid');
-        //             if (inputValue !== '') {
-        //                 $('.virtual_card_create_form_submit').prop('disabled', false);
-        //             } else {
-        //                 $('.virtual_card_create_form_submit').prop('disabled', true);
-        //             }
-        //         }
-        //     }
-
-        //     $('#basic-url').on('keypress', function(event) {
-        //         var charCode = event.which || event.keyCode;
-        //         var charStr = String.fromCharCode(charCode);
-        //         var inputValue = $(this).val();
-
-        //         // Allow only letters, numbers, and hyphens, but no consecutive hyphens
-        //         if (!/^[a-zA-Z0-9]$/.test(charStr) && (charStr !== '-' || inputValue.endsWith('-'))) {
-        //             event.preventDefault();
-        //             $('#url_alias_feedback').text(
-        //                 'Only plain letters, numbers, and non-consecutive hyphens are allowed.').show();
-        //             $(this).addClass('is-invalid');
-        //             $('.virtual_card_create_form_submit').prop('disabled', true);
-        //         } else {
-        //             $('#url_alias_feedback').text('').hide();
-        //             $(this).removeClass('is-invalid');
-        //             validateUrlAlias();
-        //         }
-        //     });
-
-        //     $('#basic-url').on('input', validateUrlAlias);
-
-        //     // Optional: Validate on form submit to prevent invalid submissions
-        //     $('.product_form').on('submit', function(event) {
-        //         var inputValue = $('#basic-url').val().trim();
-        //         var isValid = /^[a-zA-Z0-9-]+$/.test(inputValue) && !/--/.test(inputValue);
-
-        //         if (!isValid) {
-        //             event.preventDefault(); // Prevent form submission
-        //             $('#url_alias_feedback').text(
-        //                 'Please enter a valid alias. Only letters, numbers, and non-consecutive hyphens are allowed.'
-        //             ).show();
-        //             $('#basic-url').addClass('is-invalid');
-        //         }
-        //     });
-        // });
 
         $(document).ready(function() {
             let urlInput = $('input[name="url_alias"]');

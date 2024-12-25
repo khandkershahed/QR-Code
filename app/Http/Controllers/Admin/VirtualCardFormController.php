@@ -112,6 +112,7 @@ class VirtualCardFormController extends Controller
             'email_work'           => $request->email_work,
             'phone_personal'       => $request->phone_personal,
             'phone_work'           => $request->phone_work,
+            'fax'                  => $request->fax,
             'location'             => $request->location,
             'location_url'         => $request->location_url,
             'date_of_birth'        => $request->date_of_birth,

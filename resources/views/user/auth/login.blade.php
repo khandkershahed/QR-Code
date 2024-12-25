@@ -17,56 +17,11 @@
                                 </div>
                             </div>
 
-                            <div class="row g-3 mb-9">
-                                <div class="col-md-6 mx-auto">
-                                    <a href="{{ route('auth.google') }}"
-                                        class="btn btn-flex border btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
-                                        <img alt="Logo"
-                                            src="https://preview.keenthemes.com/metronic8/demo1/assets/media/svg/brand-logos/google-icon.svg"
-                                            class="h-15px me-3">
-                                        Sign in with Google
-                                    </a>
-                                </div>
 
-                                {{-- <div class="col-md-6">
-                                    <a href="{{ route('auth.facebook') }}"
-                                        class="btn btn-flex border btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
-                                        <img alt="Logo"
-                                            src="https://i.ibb.co/4twXxBk/png-clipart-facebook-logo-computer-icons-facebook-logo-facebook-thumbnail-removebg-preview.png"
-                                            class="theme-light-show h-25px me-3">
-                                        Sign in with Facebook
-                                    </a>
-                                </div> --}}
-                            </div>
-
-                            <div class="separator separator-content my-14">
-                                <span class="w-125px text-gray-500 fw-semibold fs-7">Or with email</span>
-                            </div>
-
-                            {{-- <div class="fv-row mb-8 fv-plugins-icon-container">
-                                <x-input-label class="form-label" for="email" :value="__('Email')" />
-                                <x-text-input id="email" class="form-control bg-transparent rounded-2"
-                                    type="email" name="email" :value="old('email')" required autocomplete="username" />
-                                <x-input-error :messages="$errors->get('email')" class="mt-2" />
-                            </div>
-
-                            <div class="fv-row mb-5 fv-plugins-icon-container">
-                                <x-input-label class="form-label" for="password" :value="__('Password')" />
-                                <div class="input-group">
-                                    <span class="input-group-text " id="toggle_password">
-                                        <i class="fas fa-lock text-success"></i>
-                                        <i class="fas fa-unlock" style="display: none"></i>
-                                    </span>
-                                    <x-text-input id="password" aria-describedby="toggle_password"
-                                        class="form-control bg-transparent password_input" type="password"
-                                        name="password" required autocomplete="new-password" />
-                                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
-                                </div>
-                            </div> --}}
                             <div class="fv-row mb-10">
                                 <x-metronic.label
                                     class="form-label fs-6 fw-bolder text-dark">{{ __('Email') }}</x-metronic.label>
-                                <x-metronic.input type="email" name="email"
+                                <x-metronic.input type="email" name="email" id="email"
                                     class="form-control form-control-lg form-control-solid"
                                     placeholder="Enter your email address" value="{{ old('email') }}"
                                     autocomplete="off"></x-metronic.input>
@@ -77,7 +32,7 @@
                                         class="form-label fw-bolder text-dark fs-6 mb-0">{{ __('Password') }}</x-metronic.label>
                                 </div>
                                 <div class="position-relative mb-3">
-                                    <x-metronic.input type="password" name="password"
+                                    <x-metronic.input type="password" name="password" id="password"
                                         class="form-control form-control-lg form-control-solid"
                                         placeholder="Enter your password" autocomplete="off"></x-metronic.input>
                                     <span
@@ -123,23 +78,13 @@
                         </form>
                     </div>
                 </div>
-
-                {{-- <div class="w-lg-500px d-flex justify-content-center px-10 mx-auto">
-                    <div class="d-flex fw-semibold text-primary fs-base gap-5">
-                        <a href="/metronic8/demo1/pages/team.html" target="_blank">Terms</a>
-
-                        <a href="/metronic8/demo1/pages/pricing/column.html" target="_blank">Plans</a>
-
-                        <a href="/metronic8/demo1/pages/contact.html" target="_blank">Contact Us</a>
-                    </div>
-                </div> --}}
             </div>
 
             <div class="d-flex flex-lg-row-fluid w-lg-50 bgi-size-cover bgi-position-center order-1 order-lg-2"
                 style="background-image: url(https://preview.keenthemes.com/metronic8/demo1/assets/media/misc/auth-bg.png)">
                 <div class="d-flex flex-column flex-center py-7 py-lg-15 px-5 px-md-15 w-100">
                     <a href="{{ route('homePage') }}" class="mb-0 mb-lg-12">
-                        <img alt="Logo" src="https://i.ibb.co/BNBTVN4/logo.png" class="h-60px h-lg-75px">
+                        <img alt="Logo" src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}" class="h-60px h-lg-75px">
                     </a>
 
                     <img class="d-none d-lg-block mx-auto w-275px w-md-50 w-xl-500px mb-10 mb-lg-20"

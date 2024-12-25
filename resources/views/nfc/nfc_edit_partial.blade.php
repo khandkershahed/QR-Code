@@ -1,5 +1,5 @@
 @if (strpos(Route::current()->getName(), 'user.') === 0)
-    @php
+    @php 
         $nfc = route('user.nfc-card.create');
     @endphp
 @else
@@ -8,14 +8,14 @@
     @endphp
 @endif
 
-<div class="summury_box">
+<div class="summury_box my-5 mt-0">
     <div class="row gy-5 gx-xl-10 m-auto d-flex justify-content-center">
-        <div class="col-md-3 mb-2 mb-xl-5">
+        <div class="col-md-3 mb-2 mb-xl-5 ps-0">
             <div class="card h-lg-100">
-                <div class="card-body d-flex justify-content-between align-items-start flex-column p-3">
-                    <div class="m-0 d-flex">
+                <div class="card-body d-flex justify-content-between align-items-center p-0 bg-light-primary shadow-sm">
+                    <div class="m-0 ps-5">
                         <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
-                            width="50" height="50" x="0" y="0" viewBox="0 0 512.011 512.011"
+                            width="100" height="80" x="0" y="0" viewBox="0 0 512.011 512.011"
                             style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
                             <g>
                                 <path fill="#8ac9fe"
@@ -39,22 +39,26 @@
                                     opacity="1" data-original="#97d729"></path>
                             </g>
                         </svg>
-                        <div class="d-flex flex-column my-7">
-                            <span class="fw-semibold fs-2x text-info lh-1 ls-n2">Order NFC</span>
+                        <div class="d-flex flex-column">
+                            <span class="fw-bold fs-2x text-info lh-1 ls-n2" style="margin-top: -22px">Order NFC</span>
                         </div>
                     </div>
-                    <a href="{{ $nfc }}" class="btn btn-info rounded-0 w-100">
-                        NFC
+                    <a href="{{ $nfc }}"
+                        class="btn btn-info rounded-0 h-100 d-flex justify-content-center align-items-center">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        <span>
+                            NFC
+                        </span>
                     </a>
                 </div>
             </div>
         </div>
-        <div class="col-md-3 mb-2 mb-xl-5">
+        <div class="col-md-3 mb-2 mb-xl-5 ps-0">
             <div class="card h-lg-100">
-                <div class="card-body d-flex justify-content-between align-items-start flex-column p-3">
-                    <div class="m-0 d-flex">
+                <div class="card-body d-flex justify-content-between align-items-center p-0 bg-light-info shadow-sm">
+                    <div class="m-0 ps-5">
                         <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
-                            xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" x="0" y="0"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" width="70" height="60" x="0" y="0"
                             viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve"
                             class="">
                             <g>
@@ -309,21 +313,28 @@
                                     opacity="1" data-original="url(#g)"></path>
                             </g>
                         </svg>
-                        <div class="d-flex flex-column my-7">
-                            <span class="fw-semibold fs-2x text-info lh-1 ls-n2">VCard Live</span>
+                        <div class="d-flex flex-column">
+                            <span class="fw-bold fs-2x text-info lh-1 ls-n2" style="margin-top: 0px">VCard
+                                Live</span>
                         </div>
                     </div>
-                    <a class="btn btn-info rounded-0 w-100" href="{{ $nfc_card->nfc_url }}" target="_blank"
-                        rel="noopener noreferrer">Preview VCard</a>
+                    <a class="btn btn-info rounded-0 h-100 d-flex justify-content-center align-items-center"
+                        href="{{ $nfc_card->nfc_url }}" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-solid fa-expand"></i>
+                        <span>
+                            Preview
+                        </span>
+                    </a>
                 </div>
             </div>
         </div>
-        <div class="col-md-3 mb-2 mb-xl-5">
+        <div class="col-md-3 mb-2 mb-xl-5 ps-0">
             <div class="card h-lg-100">
-                <div class="card-body d-flex justify-content-between align-items-start flex-column p-3">
-                    <div class="m-0 d-flex">
+                <div
+                    class="card-body d-flex justify-content-between align-items-center p-0 bg-light-warning shadow-sm">
+                    <div class="m-0 ps-5">
                         <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
-                            xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" x="0" y="0"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" width="60" height="60" x="0" y="0"
                             viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve"
                             class="">
                             <g>
@@ -401,23 +412,23 @@
                                 </g>
                             </g>
                         </svg>
-                        <div class="d-flex flex-column my-7">
-                            <span class="fw-semibold fs-2x text-info lh-1 ls-n2">QR Code</span>
+                        <div class="d-flex flex-column">
+                            <span class="fw-bold fs-2x text-info lh-1 ls-n2">QR Code</span>
                         </div>
                     </div>
                     <a href="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}" download=""
-                        class="btn btn-info rounded-0 w-100">
-                        Download <i class="fa-solid fa-file-arrow-down ps-2"></i>
+                        class="btn btn-info rounded-0 h-100 d-flex justify-content-center align-items-center">
+                        <i class="fa-solid fa-qrcode"></i><span> Download</span>
                     </a>
                 </div>
             </div>
         </div>
-        <div class="col-md-3 mb-2 mb-xl-5">
+        <div class="col-md-3 mb-2 mb-xl-5 ps-0">
             <div class="card h-lg-100">
-                <div class="card-body d-flex justify-content-between align-items-start flex-column p-3">
-                    <div class="m-0 d-flex">
+                <div class="card-body d-flex justify-content-between align-items-center p-0 bg-light-danger shadow-sm">
+                    <div class="m-0 p-5">
                         <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
-                            xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" x="0" y="0"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" width="60" height="60" x="0" y="0"
                             viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve"
                             class="">
                             <g>
@@ -510,13 +521,17 @@
                                     opacity="1" data-original="#a9afc4"></path>
                             </g>
                         </svg>
-                        <div class="d-flex flex-column my-7">
-                            <span class="fw-semibold fs-2x text-info lh-1 ls-n2">Free Card</span>
+                        <div class="d-flex flex-column">
+                            <span class="fw-bold fs-2x text-info lh-1 ls-n2">Free Card</span>
                         </div>
                     </div>
-                    <button class="btn btn-info rounded-0 w-100 download-button" id="convertButton"
-                        data-modal-id="virtual_card_modal_{{ $nfc_card->id }}">
-                        <span title="Download Card">Download</span>
+                    <button
+                        class="btn btn-info rounded-0 h-100 d-flex justify-content-center align-items-center download-button"
+                        id="convertButton" data-modal-id="virtual_card_modal_{{ $nfc_card->id }}">
+                        <i class="fa-solid fa-cloud-arrow-down"></i>
+                        <span title="Download Card">
+                            Download
+                        </span>
                     </button>
                 </div>
             </div>
@@ -524,9 +539,12 @@
     </div>
 </div>
 <div class="">
-    <div class="p-4 mb-2 mx-2 ms-0" style="background: #7239e9;position: relative; left: -2px;">
-        <div class="d-flex justify-content-between align-items-center">
-            <h2 class="text-center mb-0 text-white">Update Your NFC Profile!</h2>
+    <div class="card rounded-0">
+        <div class="card-header p-5 align-items-center rounded-0 bg-info m-0">
+            <div>
+                <h1 class="mb-0 mt-0 card-title fs-2 text-white">Update Your NFC Profile!</h1>
+                <p class="text-white mt-2 mb-0">View and manage all NFC Profile information in this page.</p>
+            </div>
         </div>
     </div>
 </div>
@@ -536,16 +554,16 @@
         {{ session('error') }}
     </div>
 @endif
-<div class="row g-2" id="columns-container">
+<div class="g-2" id="columns-container">
     <div class="row py-10 pt-0 gx-2">
-        <div class="col-lg-2 px-0">
+        <div class="col-lg-2 px-0 bg-white" style="border-right: 1px solid #eee">
             <div class="custom-fixed-top">
-                <div class="d-flex flex-column flex-md-row rounded border bg-white">
+                <div class="d-flex flex-column flex-md-row rounded border-0 bg-white">
                     @include('nfc.form_partials.tab_trigger')
                 </div>
             </div>
         </div>
-        <div class="col-lg-10">
+        <div class="col-lg-10 bg-white">
             <div class="tab-content bg-white p-5" id="myTabContent">
                 <div class="tab-pane fade active show" id="generalInfo" role="tabpanel">
                     <div class="row">
@@ -1008,7 +1026,3 @@
         });
     </script>
 @endpush
-
-
-
-

@@ -11,7 +11,7 @@
         </div>
     </section>
     <!-- Page Banner End -->
-    <section class="app-stor-area pt-30 pb-30 rpb-150 rel z-1">
+    <section class="app-stor-area mt-30 rpb-150 rel z-1">
         <div class="container mb-30">
             <div class="row justify-content-between align-items-center">
                 <div class="col-xl-5 col-lg-6">
@@ -45,7 +45,7 @@
     </section>
     <section class="hero-area-five py-10 rpy-100 rel z-1">
         <div class="container">
-            <div class="hero-content style-five text-center aos-init aos-animate pt-130" data-aos="fade-up"
+            <div class="hero-content style-five text-center aos-init aos-animate pt-lg-5 pt-0" data-aos="fade-up"
                 data-aos-duration="1500" data-aos-offset="50">
                 <h1 data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500"ca data-aos-offset="50"
                     class="aos-init aos-animate">Digital Card Pricing Plans</h1>
@@ -141,7 +141,8 @@
                     <div class="section-title text-center mb-55 aos-init aos-animate" data-aos="fade-up"
                         data-aos-duration="1500" data-aos-offset="50">
                         <h2>Standout Features of Our Digital Visiting Cards</h2>
-                        <span class="subtitle-one style-two mb-20"><i class="fas fa-rocket-launch"></i> Unlock powerful
+                        <span class="subtitle-two style-two mb-20 bg-transparent text-muted">
+                            <i class="fas fa-rocket-launch"></i> Unlock powerful
                             features with our digital visiting cards—custom templates, real-time updates, and seamless
                             device integration for an unforgettable networking experience.</span>
                     </div>
@@ -152,10 +153,10 @@
                     <div class="feature-image-box aos-init aos-animate" data-aos="fade-up" data-aos-duration="1500"
                         data-aos-offset="50">
                         <div class="image">
-                            <img src="{{ asset('frontend/newimage/templates.webp') }}" alt="Feature">
+                            <img class="img-fluid" src="{{ asset('frontend/newimage/templates.webp') }}" alt="Feature">
                         </div>
                         <div class="content">
-                            <h5><a href="service-details.html">Elegant Designed Templates</a></h5>
+                            <h5><a href="javascript:void(0)">Elegant Designed Templates</a></h5>
                             <p>Choose from a variety of beautifully designed templates to create a digital visiting card
                                 that matches your style. Customize every detail, from colors to fonts, ensuring your
                                 card perfectly represents your personal or business brand.</p>
@@ -166,10 +167,11 @@
                     <div class="feature-image-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="100"
                         data-aos-duration="1500" data-aos-offset="50">
                         <div class="image">
-                            <img src="{{ asset('frontend/newimage/realTimeUpdate.webp') }}" alt="Feature">
+                            <img class="img-fluid" src="{{ asset('frontend/newimage/realTimeUpdate.webp') }}"
+                                alt="Feature">
                         </div>
                         <div class="content">
-                            <h5><a href="service-details.html">Real-Time Updates</a></h5>
+                            <h5><a href="javascript:void(0)">Real-Time Updates</a></h5>
                             <p>Keep your digital visiting card dynamic and interactive with real-time updates. Add photo
                                 galleries, videos, and contact forms, allowing you to showcase your work and make it
                                 easy for others to connect with you instantly.</p>
@@ -180,10 +182,11 @@
                     <div class="feature-image-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="200"
                         data-aos-duration="1500" data-aos-offset="50">
                         <div class="image">
-                            <img src="{{ asset('frontend/newimage/NFCCard.webp') }}" alt="Feature">
+                            <img class="img-fluid" src="{{ asset('frontend/newimage/NFCCard.webp') }}"
+                                alt="Feature">
                         </div>
                         <div class="content">
-                            <h5><a href="service-details.html">NFC Cards for Contactless Sharing</a></h5>
+                            <h5><a href="javascript:void(0)">NFC Cards for Contactless Sharing</a></h5>
                             <p>Upgrade your business card to an NFC-enabled smart card for seamless, contactless
                                 sharing. Impress your connections with a modern, tech-savvy way to exchange information
                                 instantly with just a tap.</p>
@@ -198,6 +201,4 @@
             <span></span><span></span>
         </div>
     </section>
-    @push('scripts')
-    @endpush
 </x-frontend-app-layout>

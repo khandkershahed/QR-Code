@@ -1,5 +1,4 @@
 @props(['title'])
-<!--begin::Toolbar-->
 <div class="toolbar" id="kt_toolbar">
     <div id="kt_toolbar_container" class="container-fluid d-flex flex-stack">
         <div data-kt-swapper="true" data-kt-swapper-mode="prepend"
@@ -27,4 +26,3 @@
         </div>
     </div>
 </div>
-<!--end::Toolbar-->

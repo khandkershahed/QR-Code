@@ -1,4 +1,4 @@
-<x-admin-app-layout>
+<x-admin-app-layout :title="'Permission Management - Admin Panel'">
     <x-slot name="header">
         <div class="grid grid-cols-2">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">

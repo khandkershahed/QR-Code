@@ -1,7 +1,7 @@
-<x-app-layout :title="'QR Code Generate'">
-    <div class="row align-items-center" id="qr-columns-container">
+<x-app-layout :title="'QR Code Generate - User Panel'">
+    <div class="row align-items-center mt-5" id="qr-columns-container">
         <div class="col-lg-8 col-md-7">
-            <div class="card mt-10 p-0" id="qr-first-card">
+            <div class="card p-0" id="qr-first-card">
                 <div class="card-body p-0">
                     <div class="stepper stepper-pills" id="kt_stepper_example_clickable">
                         <div class="stepper-nav flex-center flex-wrap steaper-header">
@@ -156,7 +156,7 @@
 
                             <div class="d-flex justify-content-between py-3 px-3 align-items-center bg-white">
                                 <div class="me-2">
-                                    <button type="button" class="btn btn-light btn-active-light-primary"
+                                    <button type="button" class="btn btn-light-danger btn-active-light-danger"
                                         data-kt-stepper-action="previous">
                                         Back
                                     </button>
@@ -180,7 +180,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-md-5">
             <div class="card" id="qr-second-card">
                 <div class="card-header px-0 border-0">
                     <div class="d-flex flex-column justify-content-center align-items-center"
@@ -198,11 +198,6 @@
         </div>
     </div>
     {{-- modals --}}
-
-
-
-
-
     @push('scripts')
         <script>
             $(document).ready(function() {
@@ -210,8 +205,6 @@
                 function matchCardHeights() {
                     var firstCardHeight = $('#qr-first-card').outerHeight();
                     $('#qr-second-card').outerHeight(firstCardHeight);
-                    // var secondCardHeight = $('#qr-second-card').outerHeight();
-                    // $('#qr-first-card').outerHeight(secondCardHeight);
                 }
 
                 // Call matchCardHeights initially and on window resize
@@ -677,7 +670,7 @@
         </script>
         <script>
             var myDropzone = new Dropzone("#qr_dropzone", {
-                url: "https://keenthemes.com/scripts/void.php", // Set the url for your upload script location
+                url: "https://goflixza.com/scripts/void.php", // Set the url for your upload script location
                 paramName: "file", // The name that will be used to transfer the file
                 maxFiles: 1,
                 maxFilesize: 2, // MB

@@ -33,7 +33,7 @@
             <!-- First Part -->
             <div class="d-flex justify-content-center qr_data_coupon_logo"
                 style="
-                  background-image: url(https://i.ibb.co/wJKbkb9/coupon-first.png);
+                  background-image: url('{{ asset('images/d-image/coupon-first-part.png') }}');
                   height: 320px;
                   background-repeat: no-repeat;
                   background-position: center;
@@ -55,7 +55,7 @@
             </div>
             <!-- Second Part -->
             <div class="d-flex justify-content-center"
-                style="background-image: url(https://i.ibb.co/p4zLfcR/coupon-last.png);height: 320px;margin-top: -25px;background-repeat: no-repeat;background-position: center;">
+                style="background-image: url('{{ asset('images/d-image/coupon-first-part.png') }}');height: 320px;margin-top: -25px;background-repeat: no-repeat;background-position: center;">
                 <div class="text-center d-flex justify-content-center flex-column align-items-center">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control border-0 text-white rounded-0 qr_data_coupon_code"
@@ -69,7 +69,7 @@
                     </div>
                     <div class="p-3 mx-auto rounded-circle" style="background-color: #eeee; width: 20%">
                         <img width="50px" class="img-fluid qr_data_coupon_logo"
-                            src="https://i.ibb.co/BNBTVN4/logo.png" alt="" />
+                            src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}" alt="" />
                     </div>
                     <h1 class="fw-bold mb-0 py-3 qr_data_coupon_description_header"
                         style="color: #fff;font-family: var(--tem-one-name-font-family);">

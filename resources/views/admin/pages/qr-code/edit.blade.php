@@ -8,8 +8,6 @@
                             <div class="stepper-nav flex-center flex-wrap mb-10 fv-row bg-info">
                                 <div class="stepper-item mx-2 my-4 current" data-kt-stepper-element="nav"
                                     data-kt-stepper-action="step">
-                                    {{-- <div class="stepper-line w-40px"></div> --}}
-
                                     <div class="stepper-icon w-40px h-40px">
                                         <i class="stepper-check fas fa-check"></i>
                                         <span class="stepper-number">1</span>
@@ -21,23 +19,6 @@
                                         </h3>
                                     </div>
                                 </div>
-
-                                {{-- <div class="stepper-item mx-2 my-4" data-kt-stepper-element="nav"
-                                    data-kt-stepper-action="step">
-                                    <div class="stepper-line w-40px"></div>
-
-                                    <div class="stepper-icon w-40px h-40px">
-                                        <i class="stepper-check fas fa-check"></i>
-                                        <span class="stepper-number">2</span>
-                                    </div>
-
-                                    <div class="stepper-label">
-                                        <h3 class="stepper-title px-3">
-                                            Customize
-                                        </h3>
-                                    </div>
-                                </div> --}}
-
                                 <div class="stepper-item mx-2 my-4" data-kt-stepper-element="nav"
                                     data-kt-stepper-action="step">
                                     <div class="stepper-line w-40px"></div>
@@ -56,7 +37,8 @@
                             </div>
 
                             <form class="form w-100 mx-auto fv-row" novalidate="novalidate" id="generateQRCodeForm"
-                                action="{{ route('admin.qr-code.update',$qr->code) }}" method="POST" enctype="multipart/form-data">
+                                action="{{ route('admin.qr-code.update', $qr->code) }}" method="POST"
+                                enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="mb-5">
@@ -67,27 +49,12 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    {{-- <div class="flex-column" data-kt-stepper-element="content">
-                                        <div class="card">
-                                            <div class="row text-center justify-content-center">
-                                                <h2 class="text-center mb-0">Choose QR Code Design!</h2>
-                                            </div>
-                                            <div class="card-body">
-                                                @include('admin.pages.qr-code.edit_partials.customize')
-                                            </div>
-                                        </div>
-                                    </div> --}}
-
                                     <div class="flex-column" data-kt-stepper-element="content">
                                         <div class="card">
                                             <div class="pt-5 ps-5">
                                                 <h2 class="text-center">Congratulations!</h2>
                                                 <p class="text-center">Some Information Need To
                                                     Ready The QR</p>
-                                                {{-- <p>Still want to make changes?
-                                                    <a href="#">Modify your QR code</a>
-                                                </p> --}}
                                             </div>
                                             <div class="card-body px-0">
                                                 <div class="row">
@@ -110,7 +77,7 @@
 
                                 <div class="d-flex flex-stack p-5">
                                     <div class="me-2">
-                                        <button type="button" class="btn btn-light btn-active-light-primary"
+                                        <button type="button" class="btn btn-light-danger btn-active-light-danger"
                                             data-kt-stepper-action="previous">
                                             Back
                                         </button>
@@ -139,18 +106,15 @@
                     </div>
                     <div class="card-body bg-transparent ">
                         <div class="d-flex flex-column justify-content-center align-items-center">
-                            {{-- id="generatedQRCodeContainer" --}}
                             <div id="generatedQRCodeContainer">
                                 <div class="preview">
-                                    <img id="generatedQRCode" class="img-fluid generatedQRCode" src="{{ $qr->qr_png_url }}" alt="QR Code">
+                                    <img id="generatedQRCode" class="img-fluid generatedQRCode"
+                                        src="{{ $qr->qr_png_url }}" alt="QR Code">
                                 </div>
                             </div>
-                            {{-- <img src="" alt="website" class="img-fluid" width="300px"> --}}
-                            {{-- @include('admin.pages.qr-code.edit_partials.qr_preview') --}}
-                            {{-- {!! QrCode::size(220)->eye('left-leaf', 0.1)->eyeColor(0, 255, 255, 255, 0, 0, 0)->eyeColor(1, 222, 18, 222, 222, 18, 222)->eyeColor(2, 222, 18, 222, 222, 18, 222)->style('dot', 0.8)->errorCorrection('H')->generate('Make me into a QrCode!') !!} --}}
                         </div>
-                        <a id="downloadLink" href="javascripti:void()" download
-                            class="btn btn-light btn-primary w-100" style="display: none;">Download</a>
+                        <a id="downloadLink" href="javascripti:void()" download class="btn btn-light btn-primary w-100"
+                            style="display: none;">Download</a>
                     </div>
                 </div>
             </div>
@@ -158,31 +122,6 @@
     </div>
 
     @push('scripts')
-        {{-- <script>
-            $(document).ready(function() {
-                $('input[name="qr_type"]').change(function() {
-                    $(".qr-card").hide();
-                    const qrTemplateValue = $('input[name="qr_type"]:checked').val();
-                    if (qrTemplateValue != null) {
-                        $("." + qrTemplateValue).show();
-                    } else {
-                        $(".qr-card").hide();
-                    }
-                    if (qrTemplateValue == 'coupon_code') {
-                        $("#generatedQRCodeContainer").hide();
-                        $("#qrCouponPreview").show();
-                    } else {
-                        $("#generatedQRCodeContainer").show();
-                        $("#qrCouponPreview").hide();
-                    }
-                });
-
-                const initiallySelectedValue = "{{$qr->qr_type}}";
-                $("." + initiallySelectedValue).show();
-            });
-        </script> --}}
-
-
         <script>
             $('input[name="qr_data_coupon_code"], input[name="qr_data_coupon_expire_date"], input[name="qr_data_coupon_header"], input[name="qr_data_coupon_message"], input[name="qr_data_coupon_description_header"], input[name="qr_data_coupon_description_body"], input[name="qr_data_coupon_website"], input[name="qr_data_coupon_company"], input[name="qr_data_coupon_policy"], input[name="qr_data_coupon_logo"]')
                 .on('keyup change', function() {
@@ -308,45 +247,7 @@
                 transparentContent.style.display = 'block';
             });
         </script>
-
-        {{-- For Valitdation --}}
-
-        {{-- For Valitdation End --}}
-        {{-- <script>
-            $(document).ready(function() {
-                $('#generateQRCodeForm').on('submit', function(e) {
-                    e.preventDefault(); // Prevent default form submission behavior
-                    // $('#generateButton').hide();
-                    var formData = new FormData(this);
-
-                    $.ajax({
-                        url: '{{ route('admin.qr-code.store') }}',
-                        type: 'POST',
-                        data: formData,
-                        processData: false,
-                        contentType: false,
-                        success: function(response) {
-                            if (response.qrCodePath) {
-                                $('#generatedQRCode').attr('src', '');
-                                $('#generatedQRCode').attr('src', response.qrCodePath);
-                                $('#downloadLink').attr('href', response.qrCodePath).show();
-                                $('#generatedQRCodeContainer').clear();
-                                $('#generatedQRCodeContainer').show();
-                                $('#generateButton').show();
-                            } else {
-                                console.error('QR code path not found in the response.');
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            console.error(xhr.responseText);
-                        }
-                    });
-                });
-            });
-        </script> --}}
         <script>
-            // $(document).ready(function() { 2
-            // $('#generateQRCodeForm input:not([name="qr_type"]), #generateQRCodeForm input:not([name="qr_data_coupon_code"]),#generateQRCodeForm input:not([name="qr_data_coupon_expire_date"]),#generateQRCodeForm input:not([name="qr_data_coupon_header"]),#generateQRCodeForm input:not([name="qr_data_coupon_message"]),#generateQRCodeForm input:not([name="qr_data_coupon_description_header"]),#generateQRCodeForm input:not([name="qr_data_coupon_description_body"]),#generateQRCodeForm input:not([name="qr_data_coupon_website"]),#generateQRCodeForm input:not([name="qr_data_coupon_company"]),#generateQRCodeForm input:not([name="qr_data_coupon_policy"]),#generateQRCodeForm input:not([name="qr_data_coupon_logo"]) ,#generateQRCodeForm textarea, #generateQRCodeForm select')
             $('#generateQRCodeForm input, #generateQRCodeForm textarea, #generateQRCodeForm select').not(
                 '[name="qr_type"], [name="qr_data_coupon_code"], [name="qr_data_coupon_expire_date"], [name="qr_data_coupon_header"], [name="qr_data_coupon_message"], [name="qr_data_coupon_description_header"], [name="qr_data_coupon_description_body"], [name="qr_data_coupon_website"], [name="qr_data_coupon_company"], [name="qr_data_coupon_policy"], [name="qr_data_coupon_logo"]'
             ).on('keyup change', function(e) {
@@ -407,22 +308,22 @@
         {{-- PDF Preview --}}
         <script>
             $('input[name="qr_data_pdf"]')
-                    .on('keyup change', function() {
-                const file = event.target.files[0];
-                const pdfPreviewContainer = document.getElementById('pdfPreviewContainer');
-                const noPdfMessage = document.getElementById('noPdfMessage');
-                const pdfPreview = document.getElementById('pdfPreview');
+                .on('keyup change', function() {
+                    const file = event.target.files[0];
+                    const pdfPreviewContainer = document.getElementById('pdfPreviewContainer');
+                    const noPdfMessage = document.getElementById('noPdfMessage');
+                    const pdfPreview = document.getElementById('pdfPreview');
 
-                if (file && file.type === "application/pdf") {
-                    const fileReader = new FileReader();
-                    fileReader.onload = function() {
-                        pdfPreview.src = fileReader.result;
-                    };
-                    fileReader.readAsDataURL(file);
-                } else {
-                    alert("Please upload a valid PDF file.");
-                }
-            });
-            </script>
+                    if (file && file.type === "application/pdf") {
+                        const fileReader = new FileReader();
+                        fileReader.onload = function() {
+                            pdfPreview.src = fileReader.result;
+                        };
+                        fileReader.readAsDataURL(file);
+                    } else {
+                        alert("Please upload a valid PDF file.");
+                    }
+                });
+        </script>
     @endpush
 </x-admin-app-layout>

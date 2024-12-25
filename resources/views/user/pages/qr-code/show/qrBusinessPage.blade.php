@@ -183,7 +183,7 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-center">
                                     <img class="img-fluid" width="200px"
-                                        src="https://i.ibb.co/9rR2kd4/97-971813-molduras-arabescos-image-transparent-download-arabesque-png.png"
+                                        src="{{ asset('images/d-image/molduras-arabescos-image-transparent-download-arabesque.png') }}"
                                         alt="">
                                 </div>
                                 <div class="text-center">
@@ -283,7 +283,7 @@
                                 </div>
                                 <div class="d-flex justify-content-center">
                                     <img class="img-fluid" width="200px" style="transform: rotate(180deg)"
-                                        src="https://i.ibb.co/9rR2kd4/97-971813-molduras-arabescos-image-transparent-download-arabesque-png.png"
+                                        src="{{ asset('images/d-image/molduras-arabescos-image-transparent-download-arabesque.png') }}"
                                         alt="" />
                                 </div>
                             </div>

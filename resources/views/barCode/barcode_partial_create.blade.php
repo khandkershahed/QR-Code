@@ -3,7 +3,6 @@
         display: flex;
         flex-wrap: wrap;
         gap: 0.5rem;
-        /* Adjust this value for desired gap */
     }
 
     .equal-height1>.col-lg-6 {
@@ -42,7 +41,7 @@
     <div>
         <img src="{{ asset('admin') }}/assets/media/custom/insturction.png" alt="">
     </div>
-    <button id="hideOneClick" class="btn btn-info fa-bounce w-25">Continue To Generate Barcode <i
+    <button id="hideOneClick" class="btn btn-info fa-bounce w-lg-25 w-100">Continue To Generate Barcode <i
             class="fa-solid fa-arrow-right-long ps-4"></i>
     </button>
 </div>
@@ -111,8 +110,6 @@
                 </div>
             </div>
         </div>
-        {{--  --}}
-        {{-- Toggler form End --}}
     </div>
 </div>
 

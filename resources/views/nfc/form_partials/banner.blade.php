@@ -28,9 +28,9 @@
             </div>
         </div>
         <div class="col-lg-5 col-sm-12">
-            <h3 class="text-center">Sample</h3>
+            <h3 class="text-center">Sample/Demo</h3>
             <div class="d-flex justify-content-center">
-                <img class="img-fluid rounded-2" src="https://i.ibb.co/cC5wYSN/banner-modal.png" alt="">
+                <img class="img-fluid rounded-2" src="{{ asset('images/welcome-notice.png') }}" alt="">
             </div>
         </div>
     </div>

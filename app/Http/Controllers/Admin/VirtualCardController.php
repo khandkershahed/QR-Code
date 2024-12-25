@@ -138,7 +138,7 @@ class VirtualCardController extends Controller
         $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
         $userId = $isUserRoute ? Auth::user()->id : null;
 
-        $nfc_card = NfcCard::create([
+        $nfc_card = NfcCard::create([ 
             'user_id'            => $userId,
             'reseller_id'        => $request->reseller_id,
             'code'               => $code,
@@ -150,7 +150,7 @@ class VirtualCardController extends Controller
             'profile_image'      => $uploadedFiles['profile_image']['status'] == 1 ? $uploadedFiles['profile_image']['file_name'] : null,
             'designation'        => $request->designation,
             'bio_description'    => $request->bio_description,
-            'nfc_template'       => $request->nfc_template,
+            'nfc_template'       => !empty($request->nfc_template) ? $request->nfc_template : 'template_one',
             'primary_color'      => $request->primary_color,
             'text_color'         => $request->text_color,
             'title_color'        => $request->title_color,

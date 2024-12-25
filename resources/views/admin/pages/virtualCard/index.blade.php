@@ -1,4 +1,4 @@
-<x-admin-app-layout :title="'NFC Card List'">
+<x-admin-app-layout :title="'NFC Card List - Admin Panel'">
     <div class="row">
         <div class="col-lg-12">
             <div class="card border-transparent mt-10" data-bs-theme="light" style="background-color: #1C325E;">
@@ -16,7 +16,6 @@
                                 </span>
                             </span>
                         </div>
-
                         <div class="mb-3">
                             <a href="{{ route('admin.virtual-card.create') }}" class="btn btn-info fw-semibold me-2">
                                 Create VCard <span class="svg-icon svg-icon-2">
@@ -37,7 +36,6 @@
                                     </svg>
                                 </span>
                             </a>
-
                             <a href="{{ route('admin.barcode.create') }}"
                                 class="btn btn-color-white bg-white bg-opacity-15 bg-hover-opacity-25 fw-semibold">
                                 Create Barcode <span class="svg-icon svg-icon-2 pt-5">
@@ -57,55 +55,53 @@
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <div class="">
-                            <div class="d-flex align-items-center justify-content-end">
-                                <a href="{{ route('admin.nfc-card.create') }}"
-                                    class="btn btn-info shadow-sm w-100 pulse fs-3 d-flex justify-content-center align-items-center pulse pulse-warning me-5">
-                                    <span class="pulse-ring"></span>
-                                    <span class="pe-2 text-white">Create NFC</span>
-                                    <span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50"
-                                            x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512"
-                                            xml:space="preserve" class="">
-                                            <g>
-                                                <path fill="#5faa46"
-                                                    d="M480 288c-8.836 0-16-7.163-16-16 0-114.691-93.309-208-208-208-8.836 0-16-7.163-16-16s7.164-16 16-16c64.106 0 124.375 24.964 169.706 70.294S496 207.894 496 272c0 8.837-7.164 16-16 16z"
-                                                    opacity="1" data-original="#5faa46" class=""></path>
-                                                <path fill="#5faa46"
-                                                    d="M416 288c-8.836 0-16-7.163-16-16 0-79.402-64.598-144-144-144-8.836 0-16-7.163-16-16s7.164-16 16-16c97.047 0 176 78.953 176 176 0 8.837-7.164 16-16 16z"
-                                                    opacity="1" data-original="#5faa46" class=""></path>
-                                                <path fill="#5faa46"
-                                                    d="M352 288c-8.836 0-16-7.163-16-16 0-44.112-35.888-80-80-80-8.836 0-16-7.163-16-16s7.164-16 16-16c61.757 0 112 50.243 112 112 0 8.837-7.164 16-16 16z"
-                                                    opacity="1" data-original="#5faa46" class=""></path>
-                                                <path fill="#91c83c"
-                                                    d="M414.39 129.61a15.95 15.95 0 0 1-11.315-4.688C363.798 85.636 311.565 64 256 64c-8.836 0-16-7.163-16-16s7.164-16 16-16c64.115 0 124.384 24.966 169.705 70.298 6.248 6.249 6.247 16.38-.002 22.628a15.952 15.952 0 0 1-11.313 4.684zM369.14 174.86a15.95 15.95 0 0 1-11.312-4.685C330.622 142.979 294.458 128 256 128c-8.836 0-16-7.163-16-16s7.164-16 16-16c47.004 0 91.202 18.306 124.452 51.545 6.249 6.247 6.251 16.378.003 22.627a15.949 15.949 0 0 1-11.315 4.688zM323.88 220.12a15.95 15.95 0 0 1-11.317-4.689C297.462 200.321 277.374 192 256 192c-8.836 0-16-7.163-16-16s7.164-16 16-16c29.925 0 58.051 11.652 79.197 32.81 6.247 6.25 6.244 16.381-.006 22.627a15.952 15.952 0 0 1-11.311 4.683z"
-                                                    opacity="1" data-original="#91c83c" class=""></path>
-                                                <path fill="#4182c3"
-                                                    d="M288 480H64c-26.51 0-48-21.49-48-48V272c0-26.51 21.49-48 48-48h224c26.51 0 48 21.49 48 48v160c0 26.51-21.49 48-48 48z"
-                                                    opacity="1" data-original="#4182c3"></path>
-                                                <path fill="#64afe1"
-                                                    d="M256 480H64c-26.51 0-48-21.49-48-48V272c0-26.51 21.49-48 48-48h192c26.51 0 48 21.49 48 48v160c0 26.51-21.49 48-48 48z"
-                                                    opacity="1" data-original="#64afe1" class=""></path>
-                                                <path fill="#463c4b"
-                                                    d="M256 464H64c-17.673 0-32-14.327-32-32V272c0-17.673 14.327-32 32-32h192c17.673 0 32 14.327 32 32v160c0 17.673-14.327 32-32 32z"
-                                                    opacity="1" data-original="#463c4b" class=""></path>
-                                                <circle cx="256" cy="272" r="16" fill="#5faa46"
-                                                    opacity="1" data-original="#5faa46" class=""></circle>
-                                                <path fill="#91c83c"
-                                                    d="M248 280a8 8 0 0 0 8-8v-16c-8.837 0-16 7.163-16 16a8 8 0 0 0 8 8z"
-                                                    opacity="1" data-original="#91c83c" class=""></path>
-                                                <g fill="#faa019">
-                                                    <path
-                                                        d="M112 312a8 8 0 0 0-8 8v30.111l-16.845-33.689A8 8 0 0 0 72 320v64a8 8 0 0 0 16 0v-30.111l16.845 33.689a8.002 8.002 0 0 0 8.993 4.208A8 8 0 0 0 120 384v-64a8 8 0 0 0-8-8zM176 312h-32a8 8 0 0 0-8 8v64a8 8 0 0 0 16 0v-24h8a8 8 0 0 0 0-16h-8v-16h24a8 8 0 0 0 0-16zM232 360a8 8 0 0 0-8 8c0 4.411-3.589 8-8 8s-8-3.589-8-8v-32c0-4.411 3.589-8 8-8s8 3.589 8 8a8 8 0 0 0 16 0c0-13.233-10.767-24-24-24s-24 10.767-24 24v32c0 13.233 10.767 24 24 24s24-10.767 24-24a8 8 0 0 0-8-8z"
-                                                        fill="#faa019" opacity="1" data-original="#faa019"
-                                                        class=""></path>
-                                                </g>
+                        <div class="d-flex align-items-center justify-content-end">
+                            <a href="{{ route('admin.nfc-card.create') }}"
+                                class="btn btn-info shadow-sm w-100 pulse fs-3 d-flex justify-content-center align-items-center pulse pulse-warning me-5">
+                                <span class="pulse-ring"></span>
+                                <span class="pe-2 text-white">Create NFC</span>
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" x="0"
+                                        y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512"
+                                        xml:space="preserve" class="">
+                                        <g>
+                                            <path fill="#5faa46"
+                                                d="M480 288c-8.836 0-16-7.163-16-16 0-114.691-93.309-208-208-208-8.836 0-16-7.163-16-16s7.164-16 16-16c64.106 0 124.375 24.964 169.706 70.294S496 207.894 496 272c0 8.837-7.164 16-16 16z"
+                                                opacity="1" data-original="#5faa46" class=""></path>
+                                            <path fill="#5faa46"
+                                                d="M416 288c-8.836 0-16-7.163-16-16 0-79.402-64.598-144-144-144-8.836 0-16-7.163-16-16s7.164-16 16-16c97.047 0 176 78.953 176 176 0 8.837-7.164 16-16 16z"
+                                                opacity="1" data-original="#5faa46" class=""></path>
+                                            <path fill="#5faa46"
+                                                d="M352 288c-8.836 0-16-7.163-16-16 0-44.112-35.888-80-80-80-8.836 0-16-7.163-16-16s7.164-16 16-16c61.757 0 112 50.243 112 112 0 8.837-7.164 16-16 16z"
+                                                opacity="1" data-original="#5faa46" class=""></path>
+                                            <path fill="#91c83c"
+                                                d="M414.39 129.61a15.95 15.95 0 0 1-11.315-4.688C363.798 85.636 311.565 64 256 64c-8.836 0-16-7.163-16-16s7.164-16 16-16c64.115 0 124.384 24.966 169.705 70.298 6.248 6.249 6.247 16.38-.002 22.628a15.952 15.952 0 0 1-11.313 4.684zM369.14 174.86a15.95 15.95 0 0 1-11.312-4.685C330.622 142.979 294.458 128 256 128c-8.836 0-16-7.163-16-16s7.164-16 16-16c47.004 0 91.202 18.306 124.452 51.545 6.249 6.247 6.251 16.378.003 22.627a15.949 15.949 0 0 1-11.315 4.688zM323.88 220.12a15.95 15.95 0 0 1-11.317-4.689C297.462 200.321 277.374 192 256 192c-8.836 0-16-7.163-16-16s7.164-16 16-16c29.925 0 58.051 11.652 79.197 32.81 6.247 6.25 6.244 16.381-.006 22.627a15.952 15.952 0 0 1-11.311 4.683z"
+                                                opacity="1" data-original="#91c83c" class=""></path>
+                                            <path fill="#4182c3"
+                                                d="M288 480H64c-26.51 0-48-21.49-48-48V272c0-26.51 21.49-48 48-48h224c26.51 0 48 21.49 48 48v160c0 26.51-21.49 48-48 48z"
+                                                opacity="1" data-original="#4182c3"></path>
+                                            <path fill="#64afe1"
+                                                d="M256 480H64c-26.51 0-48-21.49-48-48V272c0-26.51 21.49-48 48-48h192c26.51 0 48 21.49 48 48v160c0 26.51-21.49 48-48 48z"
+                                                opacity="1" data-original="#64afe1" class=""></path>
+                                            <path fill="#463c4b"
+                                                d="M256 464H64c-17.673 0-32-14.327-32-32V272c0-17.673 14.327-32 32-32h192c17.673 0 32 14.327 32 32v160c0 17.673-14.327 32-32 32z"
+                                                opacity="1" data-original="#463c4b" class=""></path>
+                                            <circle cx="256" cy="272" r="16" fill="#5faa46" opacity="1"
+                                                data-original="#5faa46" class=""></circle>
+                                            <path fill="#91c83c"
+                                                d="M248 280a8 8 0 0 0 8-8v-16c-8.837 0-16 7.163-16 16a8 8 0 0 0 8 8z"
+                                                opacity="1" data-original="#91c83c" class=""></path>
+                                            <g fill="#faa019">
+                                                <path
+                                                    d="M112 312a8 8 0 0 0-8 8v30.111l-16.845-33.689A8 8 0 0 0 72 320v64a8 8 0 0 0 16 0v-30.111l16.845 33.689a8.002 8.002 0 0 0 8.993 4.208A8 8 0 0 0 120 384v-64a8 8 0 0 0-8-8zM176 312h-32a8 8 0 0 0-8 8v64a8 8 0 0 0 16 0v-24h8a8 8 0 0 0 0-16h-8v-16h24a8 8 0 0 0 0-16zM232 360a8 8 0 0 0-8 8c0 4.411-3.589 8-8 8s-8-3.589-8-8v-32c0-4.411 3.589-8 8-8s8 3.589 8 8a8 8 0 0 0 16 0c0-13.233-10.767-24-24-24s-24 10.767-24 24v32c0 13.233 10.767 24 24 24s24-10.767 24-24a8 8 0 0 0-8-8z"
+                                                    fill="#faa019" opacity="1" data-original="#faa019"
+                                                    class=""></path>
                                             </g>
-                                        </svg>
-                                    </span>
-                                </a>
-                            </div>
+                                        </g>
+                                    </svg>
+                                </span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -113,5 +109,4 @@
         </div>
         @include('virtualCard.virtualCard_index_partial')
     </div>
-
 </x-admin-app-layout>

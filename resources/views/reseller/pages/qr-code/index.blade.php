@@ -80,10 +80,6 @@
                                                         <div class="badge badge-light-success">Active</div>
                                                     </td>
                                                     <td class="pe-0 text-end">
-                                                        {{-- <a href="{{ route('reseller.qr-code.edit', $qr->id) }}"
-                                                            class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                                            <i class="fas fa-pen"></i>
-                                                        </a> --}}
                                                         <a href="{{ route('reseller.qr-code.destroy', $qr->id) }}"
                                                             class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1 delete">
                                                             <i class="fas fa-trash-alt text-danger"></i>
@@ -112,8 +108,7 @@
                                                             </span>
                                                         </a>
                                                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
-                                                            data-kt-menu="true" style="">
-                                                            <!--begin::Menu item-->
+                                                            data-kt-menu="true ">
                                                             @if (!empty($qr->qr_png))
                                                                 <div class="menu-item px-3">
                                                                     <a href="{{ $qr->qr_png_url }}" class="menu-link px-3" download
@@ -122,9 +117,7 @@
                                                                     </a>
                                                                 </div>
                                                             @endif
-                                                            <!--end::Menu item-->
 
-                                                            <!--begin::Menu item-->
                                                             @if (!empty($qr->qr_svg))
                                                                 <div class="menu-item px-3">
                                                                     <a href="{{ $qr->qr_svg_url }}" class="menu-link px-3" download
@@ -157,7 +150,6 @@
                                                                     </a>
                                                                 </div>
                                                             @endif
-                                                            <!--end::Menu item-->
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -215,10 +207,6 @@
                                                             <div class="badge badge-light-success">Active</div>
                                                         </td>
                                                         <td class="pe-0 text-end">
-                                                            {{-- <a href="{{ route('reseller.qr-code.edit', $qr->id) }}"
-                                                                class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                                                <i class="fas fa-pen"></i>
-                                                            </a> --}}
                                                             <a href="{{ route('reseller.qr-code.destroy', $qr->id) }}"
                                                                 class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1 delete">
                                                                 <i class="fas fa-trash-alt text-danger"></i>
@@ -247,8 +235,7 @@
                                                                 </span>
                                                             </a>
                                                             <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
-                                                                data-kt-menu="true" style="">
-                                                                <!--begin::Menu item-->
+                                                                data-kt-menu="true ">
                                                                 @if (!empty($qr->qr_png))
                                                                     <div class="menu-item px-3">
                                                                         <a href="{{ $qr->qr_png_url }}" class="menu-link px-3" download
@@ -257,9 +244,7 @@
                                                                         </a>
                                                                     </div>
                                                                 @endif
-                                                                <!--end::Menu item-->
 
-                                                                <!--begin::Menu item-->
                                                                 @if (!empty($qr->qr_svg))
                                                                     <div class="menu-item px-3">
                                                                         <a href="{{ $qr->qr_svg_url }}" class="menu-link px-3" download
@@ -292,7 +277,6 @@
                                                                         </a>
                                                                     </div>
                                                                 @endif
-                                                                <!--end::Menu item-->
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -351,10 +335,6 @@
                                                             <div class="badge badge-light-success">Active</div>
                                                         </td>
                                                         <td class="pe-0 text-end">
-                                                            {{-- <a href="{{ route('reseller.qr-code.edit', $qr->id) }}"
-                                                                class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                                                <i class="fas fa-pen"></i>
-                                                            </a> --}}
                                                             <a href="{{ route('reseller.qr-code.destroy', $qr->id) }}"
                                                                 class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1 delete">
                                                                 <i class="fas fa-trash-alt text-danger"></i>
@@ -383,8 +363,7 @@
                                                                 </span>
                                                             </a>
                                                             <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
-                                                                data-kt-menu="true" style="">
-                                                                <!--begin::Menu item-->
+                                                                data-kt-menu="true ">
                                                                 @if (!empty($qr->qr_png))
                                                                     <div class="menu-item px-3">
                                                                         <a href="{{ $qr->qr_png_url }}" class="menu-link px-3" download
@@ -393,9 +372,7 @@
                                                                         </a>
                                                                     </div>
                                                                 @endif
-                                                                <!--end::Menu item-->
 
-                                                                <!--begin::Menu item-->
                                                                 @if (!empty($qr->qr_svg))
                                                                     <div class="menu-item px-3">
                                                                         <a href="{{ $qr->qr_svg_url }}" class="menu-link px-3" download
@@ -428,7 +405,6 @@
                                                                         </a>
                                                                     </div>
                                                                 @endif
-                                                                <!--end::Menu item-->
                                                             </div>
                                                         </td>
                                                     </tr>

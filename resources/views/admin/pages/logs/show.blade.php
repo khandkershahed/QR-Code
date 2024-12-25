@@ -1,4 +1,4 @@
-<x-admin-app-layout :title="'Log Show'">
+<x-admin-app-layout :title="'Log Show - Admin Panel'">
     @foreach ($chunks as $chunk)
         @foreach ($chunk as $line)
             <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">

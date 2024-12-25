@@ -32,11 +32,10 @@
                 required {{ $loop->first ? 'checked' : '' }} id="{{ $cardtemplate['value'] }}">
             <label
                 class="btn btn-outline btn-outline-dashed btn-outline-default custom-nfc-template p-7 d-flex align-items-center mb-5"
-                style="" for="{{ $cardtemplate['value'] }}">
+                  for="{{ $cardtemplate['value'] }}">
                 <img class="virtual_card-type-mobile p-3" src="{{ asset($cardtemplate['image']) }}"
                     alt="{{ $cardtemplate['value'] }}">
             </label>
-            <!--end::Option-->
         </div>
     @endforeach
 </div>

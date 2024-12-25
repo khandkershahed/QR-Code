@@ -297,7 +297,7 @@
             <div class="fv-row my-3 pt-5">
                 <div>
                     <img width="30px" height="30px" class="rounded-circle border banner_image mt-3"
-                        id="profile_image_preview" src="https://i.ibb.co/BNBTVN4/logo.png" alt="">
+                        id="profile_image_preview" src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}" alt="">
                 </div>
             </div>
         </div>
@@ -311,7 +311,7 @@
             <div class="fv-row my-3 pt-5">
                 <div>
                     <img width="30px" height="30px" class="rounded-circle border banner_image mt-3"
-                        id="profile_image_preview" src="https://i.ibb.co/BNBTVN4/logo.png" alt="">
+                        id="profile_image_preview" src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}" alt="">
                 </div>
             </div>
         </div>
@@ -817,7 +817,7 @@
             <div class="fv-row my-3 pt-5">
                 <div>
                     <img width="30px" height="30px" class="rounded-circle border banner_image mt-10"
-                        id="profile_image_preview" src="https://i.ibb.co/BNBTVN4/logo.png" alt="">
+                        id="profile_image_preview" src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}" alt="">
                 </div>
             </div>
         </div> --}}
@@ -845,7 +845,7 @@
             <div class="fv-row my-3 pt-5">
                 <div>
                     <img width="30px" height="30px" class="rounded-circle border banner_image mt-10"
-                        id="profile_image_preview" src="https://i.ibb.co/BNBTVN4/logo.png" alt="">
+                        id="profile_image_preview" src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}" alt="">
                 </div>
             </div>
         </div> --}}

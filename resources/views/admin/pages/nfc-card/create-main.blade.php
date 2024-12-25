@@ -1,4 +1,4 @@
-<x-admin-app-layout :title="'NFC Card Create'">
+<x-admin-app-layout :title="'NFC Card Create - Admin Panel'">
     <h1 class="text-center mb-10 mt-5">Make Your NFC Profile!</h1>
     @if (session('error'))
         <div class="alert alert-danger">

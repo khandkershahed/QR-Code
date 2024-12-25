@@ -1,4 +1,4 @@
-<!-- sidebar.blade.php -->
+
 
 @props(['routes'])
 
@@ -6,7 +6,6 @@
     data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-height="auto"
     data-kt-scroll-dependencies="#kt_aside_logo, #kt_aside_footer" data-kt-scroll-wrappers="#kt_aside_menu"
     data-kt-scroll-offset="0">
-    <!--begin::Menu-->
     <div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500"
         id="#kt_aside_menu" data-kt-menu="true" data-kt-menu-expand="false">
         @foreach ($routes as $route)
@@ -14,7 +13,6 @@
                 class="menu-item menu-accordion {{ request()->routeIs($route['activePattern']) ? 'menu-item-active' : '' }}">
                 <span class="menu-link">
                     <span class="menu-icon">
-                        <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm002.svg-->
                         <span class="svg-icon svg-icon-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
@@ -29,7 +27,6 @@
                                     fill="currentColor" />
                             </svg>
                         </span>
-                        <!--end::Svg Icon-->
                     </span>
                     <span class="menu-title">{{ ucfirst($route['title']) }}</span>
                     <span class="menu-arrow"></span>
@@ -50,5 +47,4 @@
             </div>
         @endforeach
     </div>
-    <!--end::Menu-->
 </div>

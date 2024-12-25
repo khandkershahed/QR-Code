@@ -1,200 +1,220 @@
-<div class="col-lg-12 mt-10 pb-10">
-    <div class="card card-p-0 card-flush pt-0 mb-5">
-        <div class="card-header bg-info align-items-center">
-            <h1 class="mb-0 text-center w-100 text-white">Manage Your NFC</h1>
+<div class="col-lg-12 mt-5 pb-10">
+    <div class="card my-5 rounded-0">
+        <div class="card-header p-5 align-items-center rounded-0 bg-info m-0">
+            <div>
+                <h1 class="mb-0 mt-0 card-title fs-2 text-white">All Your NFC!</h1>
+                <p class="text-white mt-2 mb-0">View and manage all NFC information in this page.</p>
+            </div>
         </div>
-        <div class="card-body table-responsive">
-            <table class="table my-datatable table-striped table-row-bordered gy-5 gs-7 border rounded">
-                <thead>
-                    <tr class="fw-bold fs-6 text-gray-800 px-7">
-                        <th width="4%">SL</th>
-                        <th width="14%"><i class="fa-solid fa-circle-check text-success"></i> VCard</th>
-                        <th width="10%"><i class="fa-solid fa-circle-check text-success"></i> NFC</th>
-                        <th width="20%">Name </th>
-                        <th width="12%">Link</th>
-                        <th width="15%">Show NFC</th>
-                        <th width="10%">Delivery</th>
-                        {{-- <th width="16%">Download</th> --}}
-                        <th width="15%" class="text-center">Action</th>
-                    </tr>
-                </thead>
-                <tbody class="fw-semibold text-gray-600">
-                    @foreach ($nfc_cards as $nfc_card)
-                        <tr>
-                            {{-- @dd($nfc_card) --}}
-                            <td>
-                                {{ $loop->iteration }}
-                            </td>
-                            <td>
-                                @if (optional($nfc_card->nfc)->nfc_template == 'template-one')
-                                    <img class="img-fluid w-45px h-60px"
-                                        src="{{ asset('frontend/assets/images/nfc-templates/template_one.png') }}"
-                                        alt="">
-                                @elseif (optional($nfc_card->nfc)->nfc_template == 'template-two')
-                                    <img class="img-fluid w-45px h-60px"
-                                        src="{{ asset('frontend/assets/images/nfc-templates/template_two.png') }}"
-                                        alt="">
-                                @elseif (optional($nfc_card->nfc)->nfc_template == 'template-three')
-                                    <img class="img-fluid w-45px h-60px"
-                                        src="{{ asset('frontend/assets/images/nfc-templates/template_three.png') }}"
-                                        alt="">
-                                @elseif (optional($nfc_card->nfc)->nfc_template == 'template-four')
-                                    <img class="img-fluid w-50px"
-                                        src="{{ asset('frontend/assets/images/nfc-templates/template_four.jpg') }}"
-                                        alt="">
-                                @elseif (optional($nfc_card->nfc)->nfc_template == 'template-five')
-                                    <img class="img-fluid w-50px"
-                                        src="{{ asset('frontend/assets/images/nfc-templates/template_five.jpg') }}"
-                                        alt="">
-                                @elseif (optional($nfc_card->nfc)->nfc_template == 'template-six')
-                                    <img class="img-fluid w-50px"
-                                        src="{{ asset('frontend/assets/images/nfc-templates/template_six.jpg') }}"
-                                        alt="">
-                                @endif
-                            </td>
-                            <td>
-                                @if (optional($nfc_card)->virtual_card_template == 'virtual-card-one')
-                                    <img class="img-fluid w-65px"
-                                        src="{{ asset('frontend/images/virtual_card/card_1.png') }}" alt="">
-                                @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-two')
-                                    <img class="img-fluid w-65px"
-                                        src="{{ asset('frontend/images/virtual_card/card_2.png') }}" alt="">
-                                @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-three')
-                                    <img class="img-fluid w-65px"
-                                        src="{{ asset('frontend/images/virtual_card/card_3.png') }}" alt="">
-                                @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-four')
-                                    <img class="img-fluid w-65px"
-                                        src="{{ asset('frontend/images/virtual_card/card_4.png') }}" alt="">
-                                @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-five')
-                                    <img class="img-fluid w-65px"
-                                        src="{{ asset('frontend/images/virtual_card/card_5.png') }}" alt="">
-                                @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-six')
-                                    <img class="img-fluid w-65px"
-                                        src="{{ asset('frontend/images/virtual_card/card_6.png') }}" alt="">
-                                @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-seven')
-                                    <img class="img-fluid w-65px"
-                                        src="{{ asset('frontend/images/virtual_card/card_7.png') }}" alt="">
-                                @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-eight')
-                                    <img class="img-fluid w-65px"
-                                        src="{{ asset('frontend/images/virtual_card/card_8.png') }}" alt="">
-                                @endif
-                            </td>
-                            <td>
-                                <div class="text-success">{{ optional($nfc_card)->card_name }}</div>
-                            </td>
-                            <td>
-                                <a href="{{ optional($nfc_card->nfc)->nfc_url }}" target="_blank" class="text-primary">
-                                    <button class="btn btn-sm btn-info p-2 px-3">NFC <i class="fas fa-link ps-2"></i></button>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="javascript:void(0)" data-bs-toggle="modal"
-                                    data-bs-target="#virtual_card_modal_{{ $nfc_card->id }}" class="text-primary">
-                                    <button class="btn btn-sm btn-info p-2 px-3"><i class="fas fa-eye pe-2"></i>
-                                        CARD</button>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="javascript:void(0)" data-bs-toggle="modal"
-                                    data-bs-target="#shipping_address_modal_{{ $nfc_card->id }}" class="text-primary">
-                                    <button class="btn btn-sm btn-info p-2 px-3">
-                                        Shipping</button>
-                                </a>
-                            </td>
-                            <td class="pe-0 text-center">
-                                <a href="#" class="btn btn-light-primary btn-active-light-primary btn-sm"
-                                    data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end"
-                                    data-kt-menu-flip="top-end">
-                                    Actions
-                                    <span class="svg-icon fs-5 m-0">
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                            viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <polygon points="0 0 24 0 24 24 0 24"></polygon>
-                                                <path
-                                                    d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z"
-                                                    fill="currentColor" fill-rule="nonzero"
-                                                    transform="translate(12.000003, 11.999999) rotate(-180.000000) translate(-12.000003, -11.999999)">
-                                                </path>
-                                            </g>
-                                        </svg>
-                                    </span>
-                                </a>
-                                <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
-                                    data-kt-menu="true" style="">
 
-                                    @if (strpos(Route::current()->getName(), 'user.') === 0)
-                                        <div class="menu-item px-3">
-                                            <a href="javascript:void(0)" class="download-button menu-link px-3"
-                                                id="convertButton"
-                                                data-modal-id="virtual_card_modal_{{ $nfc_card->id }}">
-                                                <span title="Download Image">PNG</span>
-                                            </a>
-                                        </div>
-                                        <div class="menu-item px-3">
-                                            <a href="javascript:void(0)" class="download-eps-button menu-link px-3"
-                                                data-modal-id="virtual_card_modal_{{ $nfc_card->id }}">
-                                                <span title="Download EPS">EPS</span>
-                                            </a>
-                                        </div>
-                                        <div class="menu-item px-3">
-                                            <a href="{{ route('user.nfc-card.edit', $nfc_card->id) }}"
-                                                class="menu-link px-3">
-                                                Edit
-                                            </a>
-                                        </div>
-                                        <div class="menu-item px-3">
-                                            <a href="{{ route('user.nfc-card.destroy', $nfc_card->id) }}"
-                                                class="menu-link px-3 delete">
-                                                Delete
-                                            </a>
-                                        </div>
-                                    @else
-                                        <div class="menu-item px-3">
-                                            <a href="javascript:void(0)" class="download-button menu-link px-3"
-                                                id="convertButton"
-                                                data-modal-id="virtual_card_modal_{{ $nfc_card->id }}">
-                                                <span title="Download Image">PNG</span>
-                                            </a>
-                                        </div>
-                                        <div class="menu-item px-3">
-                                            <a href="javascript:void(0)" class="download-eps-button menu-link px-3"
-                                                data-modal-id="virtual_card_modal_{{ $nfc_card->id }}">
-                                                <span title="Download EPS">EPS</span>
-                                            </a>
-                                        </div>
-                                        <div class="menu-item px-3">
-                                            {{-- <a href="{{ route('admin.nfc-card.edit', $nfc_card->id) }}"
-                                                class="menu-link px-3">
-                                                Edit
-                                            </a> --}}
-                                        </div>
-                                        <div class="menu-item px-3">
-                                            <a href="{{ route('admin.nfc-card.destroy', $nfc_card->id) }}"
-                                                class="menu-link px-3 delete">
-                                                Delete
-                                            </a>
-                                        </div>
-                                    @endif
-
-                                </div>
-                            </td>
+        <div class="card-body p-0 px-3 rounded-0">
+            <div class="table-responsive">
+                <table class="table my-datatable table-striped table-row-bordered mt-0" id="virtualCard_table">
+                    <thead>
+                        <tr class="bg-info text-white fw-bolder fs-7 text-uppercase gs-0">
+                            <th width="5%">SL</th>
+                            <th width="10%"><i class="fa-solid fa-circle-check text-success"></i> VCard</th>
+                            <th width="10%"><i class="fa-solid fa-circle-check text-success"></i> NFC</th>
+                            <th width="20%">Name</th>
+                            <th width="10%" class="text-center">Link</th>
+                            <th width="15%" class="text-center">Preview</th>
+                            <th width="10%" class="text-center">Delivery</th>
+                            <th width="15%" class="text-end pe-15">Action</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody class="fw-semibold text-gray-600" style="vertical-align: middle">
+                        @foreach ($nfc_cards as $nfc_card)
+                            <tr>
+                                <td class="text-center">
+                                    {{ $loop->iteration }}
+                                </td>
+                                <td>
+                                    @if (optional($nfc_card->nfc)->nfc_template == 'template-one')
+                                        <img class="img-fluid w-45px h-60px"
+                                            src="{{ asset('frontend/assets/images/nfc-templates/template_one.png') }}"
+                                            alt="">
+                                    @elseif (optional($nfc_card->nfc)->nfc_template == 'template-two')
+                                        <img class="img-fluid w-45px h-60px"
+                                            src="{{ asset('frontend/assets/images/nfc-templates/template_two.png') }}"
+                                            alt="">
+                                    @elseif (optional($nfc_card->nfc)->nfc_template == 'template-three')
+                                        <img class="img-fluid w-45px h-60px"
+                                            src="{{ asset('frontend/assets/images/nfc-templates/template_three.png') }}"
+                                            alt="">
+                                    @elseif (optional($nfc_card->nfc)->nfc_template == 'template-four')
+                                        <img class="img-fluid w-50px"
+                                            src="{{ asset('frontend/assets/images/nfc-templates/template_four.jpg') }}"
+                                            alt="">
+                                    @elseif (optional($nfc_card->nfc)->nfc_template == 'template-five')
+                                        <img class="img-fluid w-50px"
+                                            src="{{ asset('frontend/assets/images/nfc-templates/template_five.png') }}"
+                                            alt="">
+                                    @elseif (optional($nfc_card->nfc)->nfc_template == 'template-six')
+                                        <img class="img-fluid w-50px"
+                                            src="{{ asset('frontend/assets/images/nfc-templates/template_six.jpg') }}"
+                                            alt="">
+                                    @else
+                                        <img class="img-fluid w-50px"
+                                            src="{{ !empty($site->system_logo_white) &&
+                                            file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white))
+                                                ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)
+                                                : asset('frontend/assets/images/logos/logo.png') }}"
+                                            alt="Default Logo">
+                                    @endif
+                                </td>
+                                <td>
+                                    @if (optional($nfc_card)->virtual_card_template == 'virtual-card-one')
+                                        <img class="img-fluid w-65px"
+                                            src="{{ asset('frontend/images/virtual_card/card_1.png') }}" alt="">
+                                    @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-two')
+                                        <img class="img-fluid w-65px"
+                                            src="{{ asset('frontend/images/virtual_card/card_2.png') }}" alt="">
+                                    @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-three')
+                                        <img class="img-fluid w-65px"
+                                            src="{{ asset('frontend/images/virtual_card/card_3.png') }}"
+                                            alt="">
+                                    @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-four')
+                                        <img class="img-fluid w-65px"
+                                            src="{{ asset('frontend/images/virtual_card/card_4.png') }}"
+                                            alt="">
+                                    @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-five')
+                                        <img class="img-fluid w-65px"
+                                            src="{{ asset('frontend/images/virtual_card/card_5.png') }}"
+                                            alt="">
+                                    @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-six')
+                                        <img class="img-fluid w-65px"
+                                            src="{{ asset('frontend/images/virtual_card/card_6.png') }}"
+                                            alt="">
+                                    @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-seven')
+                                        <img class="img-fluid w-65px"
+                                            src="{{ asset('frontend/images/virtual_card/card_7.png') }}"
+                                            alt="">
+                                    @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-eight')
+                                        <img class="img-fluid w-65px"
+                                            src="{{ asset('frontend/images/virtual_card/card_8.png') }}"
+                                            alt="">
+                                    @else
+                                        <img class="img-fluid w-50px"
+                                            src="{{ !empty($site->system_logo_white) &&
+                                            file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white))
+                                                ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)
+                                                : asset('frontend/assets/images/logos/logo.png') }}"
+                                            alt="Default Logo">
+                                    @endif
+                                </td>
+                                <td>
+                                    <div class="text-muted">{{ optional($nfc_card)->card_name }}</div>
+                                </td>
+                                <td class="text-center">
+                                    <a href="{{ optional($nfc_card->nfc)->nfc_url }}" target="_blank"
+                                        class="text-primary">
+                                        <span class="badge badge-light-success text-info p-2 px-3">
+                                            NFC Card
+                                            <i class="fas fa-link ps-2"></i>
+                                        </span>
+                                    </a>
+                                </td>
+                                <td class="text-center">
+                                    <a href="javascript:void(0)" data-bs-toggle="modal"
+                                        data-bs-target="#virtual_card_modal_{{ $nfc_card->id }}" class="text-primary">
+                                        <span class="badge badge-light-warning text-info p-2 px-3">
+                                            <i class="fas fa-eye text-info pe-2"></i>
+                                            NFC Preview
+                                        </span>
+                                    </a>
+                                </td>
+                                <td class="text-center">
+                                    <a href="javascript:void(0)" data-bs-toggle="modal"
+                                        data-bs-target="#shipping_address_modal_{{ $nfc_card->id }}"
+                                        class="text-primary">
+                                        <span class="badge bg-info p-2 px-3">
+                                            Shipping</span>
+                                    </a>
+                                </td>
+                                <td class="text-end pe-5">
+                                    <div class="dropdown">
+                                        <button class="btn btn-light-danger dropdown-toggle" type="button"
+                                            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Actions
+                                        </button>
+                                        <ul class="dropdown-menu mt-0 pt-0 rounded-0"
+                                            aria-labelledby="dropdownMenuButton1">
+                                            @if (strpos(Route::current()->getName(), 'user.') === 0)
+                                                <li class="text-muted">
+                                                    <a href="javascript:void(0)"
+                                                        class="download-button px-3 dropdown-item" id="convertButton"
+                                                        data-modal-id="virtual_card_modal_{{ $nfc_card->id }}">
+                                                        <span title="Download Image">PNG</span>
+                                                    </a>
+                                                </li>
+                                                <li class="text-muted">
+                                                    <a href="javascript:void(0)"
+                                                        class="download-eps-button menu-link px-3 dropdown-item"
+                                                        data-modal-id="virtual_card_modal_{{ $nfc_card->id }}">
+                                                        <span title="Download EPS">EPS</span>
+                                                    </a>
+                                                </li>
+                                                <li class="text-muted">
+                                                    <a href="{{ route('user.nfc-card.edit', $nfc_card->id) }}"
+                                                        class="menu-link px-3 dropdown-item">
+                                                        Edit
+                                                    </a>
+                                                </li>
+                                                <li class="text-muted">
+                                                    <a href="{{ route('user.nfc-card.destroy', $nfc_card->id) }}"
+                                                        class="menu-link px-3 delete dropdown-item">
+                                                        Delete
+                                                    </a>
+                                                </li>
+                                            @else
+                                                <li class="text-muted">
+                                                    <a href="javascript:void(0)"
+                                                        class="download-button menu-link px-3 dropdown-item"
+                                                        id="convertButton"
+                                                        data-modal-id="virtual_card_modal_{{ $nfc_card->id }}">
+                                                        <span title="Download Image">PNG</span>
+                                                    </a>
+                                                </li>
+                                                <li class="text-muted">
+                                                    <a href="javascript:void(0)"
+                                                        class="download-eps-button menu-link px-3 dropdown-item"
+                                                        data-modal-id="virtual_card_modal_{{ $nfc_card->id }}">
+                                                        <span title="Download EPS">EPS</span>
+                                                    </a>
+                                                </li>
+                                                <li class="text-muted">
+                                                    <a href="{{ route('admin.nfc-card.destroy', $nfc_card->id) }}"
+                                                        class="menu-link px-3 delete dropdown-item">
+                                                        Delete
+                                                    </a>
+                                                </li>
+                                            @endif
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
 
 @foreach ($nfc_cards as $nfc_card)
     <div class="modal fade" tabindex="-1" id="virtual_card_modal_{{ $nfc_card->id }}">
-        <div class="modal-dialog modal-dialog-centered modal-xl" style="max-width: 845px !important;">
-            <div class="modal-content position-absolute">
-                <div class="modal-body pb-0">
-                    <div class="card">
-                        <div id="card-container" class="p-5">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content rounded-0">
+                <div class="modal-header py-3 bg-info rounded-0 pe-2">
+                    <h3 class="modal-title text-white">Showing NFC Card</h3>
+                    <button type="button" class="btn btn-sm btn-transparent btn-active-info pe-2 ps-3"
+                        data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fa-solid fa-xmark fs-1"></i>
+                    </button>
+                </div>
+                <div class="card">
+                    <div class="card-body pt-0">
+                        <div id="card-container">
                             @if (optional($nfc_card)->virtual_card_template == 'virtual-card-one')
                                 @include('virtualCard.partials.card_modals.card_one')
                             @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-two')
@@ -203,39 +223,29 @@
                                 @include('virtualCard.partials.card_modals.card_three')
                             @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-four')
                                 @include('virtualCard.partials.card_modals.card_four')
-                                {{-- @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-five') --}}
                             @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-six')
                                 @include('virtualCard.partials.card_modals.card_six')
                             @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-seven')
                                 @include('virtualCard.partials.card_modals.card_seven')
-                                {{-- @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-eight') --}}
                             @endif
                         </div>
-                    </div>
-
-                    <div class="modal-footer border-0 pt-0">
-                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                        {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    </div>
 
     <div class="modal fade" tabindex="-1" id="shipping_address_modal_{{ $nfc_card->id }}">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content position-absolute">
-                <div class="modal-header bg-light-info">
-                    <h5 class="modal-title">Card Shipping Address</h5>
-
-
-                    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
-                        aria-label="Close">
-                        <i class="fa-solid fa-xmark fs-2x"></i>
-                    </div>
-
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content rounded-0">
+                <div class="modal-header py-3 bg-info rounded-0 pe-2">
+                    <h3 class="modal-title text-white">Card Shipping Details</h3>
+                    <button type="button" class="btn btn-sm btn-transparent btn-active-info pe-2 ps-3"
+                        data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fa-solid fa-xmark fs-1"></i>
+                    </button>
                 </div>
-
                 <div class="modal-body p-0">
                     <div class="card">
                         <div id="kt_account_settings_profile_details" class="collapse show">
@@ -243,9 +253,8 @@
                                 class="form fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate">
                                 <div class="card-body border-top p-9">
                                     <div class="row mb-6">
-                                        <label class="col-lg-4 col-form-label fw-semibold fs-6">Avatar</label>
-                                        <div class="col-lg-8">
-
+                                        <label class="col-lg-3 col-form-label fw-semibold fs-6">Avatar</label>
+                                        <div class="col-lg-9">
                                             <div class="image-input image-input-outline" data-kt-image-input="true"
                                                 style="background-image: url('/metronic8/demo1/assets/media/svg/avatars/blank.svg')">
 
@@ -284,9 +293,9 @@
                                         </div>
                                     </div>
                                     <div class="row mb-6">
-                                        <label class="col-lg-4 col-form-label required fw-semibold fs-6">Contact
+                                        <label class="col-lg-3 col-form-label required fw-semibold fs-6">Contact
                                             Person</label>
-                                        <div class="col-lg-8">
+                                        <div class="col-lg-9">
                                             <div class="row">
                                                 <div class="col-lg-6 fv-row fv-plugins-icon-container">
                                                     <input type="text" name="fname"
@@ -310,18 +319,18 @@
                                     </div>
 
                                     <div class="row mb-6">
-                                        <label class="col-lg-4 col-form-label fw-semibold fs-6">
+                                        <label class="col-lg-3 col-form-label fw-semibold fs-6">
                                             <span class="required">Contact Phone</span>
                                             <span class="ms-1" data-bs-toggle="tooltip"
                                                 aria-label="Phone number must be active"
                                                 data-bs-original-title="Phone number must be active"
                                                 data-kt-initialized="1">
-                                                <i class="ki-duotone ki-information-5 text-gray-500 fs-6"><span
+                                                <i class="fa-solid fa-information-5 text-gray-500 fs-6"><span
                                                         class="path1"></span><span class="path2"></span><span
                                                         class="path3"></span></i></span>
                                         </label>
 
-                                        <div class="col-lg-8 fv-row fv-plugins-icon-container">
+                                        <div class="col-lg-9 fv-row fv-plugins-icon-container">
                                             <input type="tel" name="phone"
                                                 class="form-control form-control-lg form-control-solid"
                                                 placeholder="Phone number"
@@ -332,57 +341,62 @@
                                         </div>
                                     </div>
                                     <div class="row mb-6">
-                                        <label class="col-lg-4 col-form-label fw-semibold fs-6">Address</label>
-                                        <div class="col-lg-2 fv-row">
-                                            <input type="text" name="house"
-                                                class="form-control form-control-lg form-control-solid"
-                                                placeholder="33-Block, State House"
-                                                value="{{ optional($nfc_card->shippingDetails)->shipping_address }}">
-                                        </div>
+                                        <label class="col-lg-3 col-form-label fw-semibold fs-6">Address</label>
+                                        <div class="col-lg-9">
+                                            <div class="row">
+                                                <div class="col-lg-3 fv-row">
+                                                    <input type="text" name="house"
+                                                        class="form-control form-control-lg form-control-solid"
+                                                        placeholder="33-Block, State House"
+                                                        value="{{ optional($nfc_card->shippingDetails)->shipping_address }}">
+                                                </div>
 
-                                        <div class="col-lg-2 fv-row">
-                                            <input type="text" name="city"
-                                                class="form-control form-control-lg form-control-solid"
-                                                placeholder="Menchesta City"
-                                                value="{{ optional($nfc_card->shippingDetails)->shipping_city }}">
-                                        </div>
+                                                <div class="col-lg-3 fv-row">
+                                                    <input type="text" name="city"
+                                                        class="form-control form-control-lg form-control-solid"
+                                                        placeholder="Menchesta City"
+                                                        value="{{ optional($nfc_card->shippingDetails)->shipping_city }}">
+                                                </div>
 
-                                        <div class="col-lg-2 fv-row">
-                                            <input type="text" name="zip-code"
-                                                class="form-control form-control-lg form-control-solid"
-                                                placeholder="42386"
-                                                value="{{ optional($nfc_card->shippingDetails)->shipping_zip_code }}">
-                                        </div>
+                                                <div class="col-lg-3 fv-row">
+                                                    <input type="text" name="zip-code"
+                                                        class="form-control form-control-lg form-control-solid"
+                                                        placeholder="42386"
+                                                        value="{{ optional($nfc_card->shippingDetails)->shipping_zip_code }}">
+                                                </div>
 
-                                        <div class="col-lg-2 fv-row">
-                                            <input type="text" name="country"
-                                                class="form-control form-control-lg form-control-solid"
-                                                placeholder="United State"
-                                                value="{{ optional($nfc_card->shippingDetails)->shipping_country }}">
+                                                <div class="col-lg-3 fv-row">
+                                                    <input type="text" name="country"
+                                                        class="form-control form-control-lg form-control-solid"
+                                                        placeholder="United State"
+                                                        value="{{ optional($nfc_card->shippingDetails)->shipping_country }}">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row mb-0">
-                                        <label class="col-lg-4 col-form-label fw-semibold fs-6">Instruction</label>
-                                        <div class="col-lg-8 d-flex align-items-center">
-                                            <div class="form-floating">
+                                        <label class="col-lg-3 col-form-label fw-semibold fs-6">Instruction</label>
+                                        <div class="col-lg-9">
+                                            <div>
                                                 <textarea class="form-control form-control-solid w-100" placeholder="Leave a comment here" id="floatingTextarea2"
-                                                    style="height: 100px;width: 715px !important;"></textarea>
+                                                    style="height: 100px;width: 100% !important;"></textarea>
                                                 <label
                                                     for="floatingTextarea2">{{ optional($nfc_card->shippingDetails)->shipping_instruction }}</label>
                                             </div>
                                         </div>
-
                                     </div>
-                                </div>
-                                <div class="card-footer d-flex justify-content-end py-6 px-9">
-                                    <button type="submit" class="btn btn-primary"
-                                        id="kt_account_profile_details_submit">Save Changes</button>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="d-flex justify-content-end">
+                                                <button type="submit" class="btn btn-info"
+                                                    id="kt_account_profile_details_submit">Save Changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <input type="hidden">
                             </form>
-
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -509,6 +523,22 @@
                     captureAndDownloadEPS(modalId);
                 });
             });
+        });
+    </script>
+    <script>
+        $('#virtualCard_table').DataTable({
+            "language": {
+                "lengthMenu": "Show _MENU_",
+            },
+            "dom": "<'row'" +
+                "<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
+                "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
+                ">" +
+                "<'table-responsive'tr>" +
+                "<'row'" +
+                "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
+                "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
+                ">"
         });
     </script>
 @endpush

@@ -17,7 +17,7 @@
                                 </div>
                             </div>
 
-                            <div class="row g-3 mb-9">
+                            {{-- <div class="row g-3 mb-9">
                                 <div class="col-md-6">
                                     <a href="{{ route('reseller.auth.google') }}"
                                         class="btn btn-flex border btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
@@ -37,11 +37,11 @@
                                         Sign in with Facebook
                                     </a>
                                 </div>
-                            </div>
+                            </div> --}}
 
-                            <div class="separator separator-content my-14">
+                            {{-- <div class="separator separator-content my-14">
                                 <span class="w-125px text-gray-500 fw-semibold fs-7">Or with email</span>
-                            </div>
+                            </div> --}}
 
                             {{-- <div class="fv-row mb-8 fv-plugins-icon-container">
                                 <x-input-label class="form-label" for="email" :value="__('Email')" />
@@ -140,7 +140,7 @@
                 style="background-image: url(https://preview.keenthemes.com/metronic8/demo1/assets/media/misc/auth-bg.png)">
                 <div class="d-flex flex-column flex-center py-7 py-lg-15 px-5 px-md-15 w-100">
                     <a href="{{ route('homePage') }}" class="mb-0 mb-lg-12">
-                        <img alt="Logo" src="https://i.ibb.co/BNBTVN4/logo.png" class="h-60px h-lg-75px">
+                        <img alt="Logo" src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}" class="h-60px h-lg-75px">
                     </a>
 
                     <img class="d-none d-lg-block mx-auto w-275px w-md-50 w-xl-500px mb-10 mb-lg-20"
