@@ -183,7 +183,7 @@
                                                     alt="">
                                             @elseif ($nfc_card->nfc_template == 'template-four')
                                                 <img class="img-fluid nfc-ev-templates" style="object-fit: cover;"
-                                                    src="{{ asset('frontend/assets/images/nfc-templates/template_four.jpg') }}"
+                                                    src="{{ asset('frontend/assets/images/nfc-templates/template_four.png') }}"
                                                     alt="">
                                             @elseif ($nfc_card->nfc_template == 'template-five')
                                                 <img class="img-fluid nfc-ev-templates" style="object-fit: cover;"
