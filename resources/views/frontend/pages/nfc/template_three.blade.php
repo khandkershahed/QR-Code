@@ -1413,7 +1413,7 @@
                                                         <div class="col-sm-9 px-0">
                                                             <div style="background: #00000047;padding: 10px;">
                                                                 <h6 class="special-font">
-                                                                    {{ $testimonial->testimonial_name }}Rodela Bruce
+                                                                    {{ $testimonial->testimonial_name }}
                                                                 </h6>
                                                                 <p class="text-white">
                                                                     {{ $testimonial->testimonial_description }}

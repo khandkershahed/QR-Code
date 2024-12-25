@@ -1013,7 +1013,7 @@
                             <div class="row align-items-center mb-3">
                                 <div class="col-sm-6 offse-sm-3 mx-auto">
                                     <div>
-                                        <img class="img-fluid" src="https://i.ibb.co/44x9nc9/handrising.png"
+                                        <img class="img-fluid" src="{{ asset('images/d-image/Animated-Hand-No-Background.png') }}"
                                             alt="" />
                                     </div>
                                     <div class="d-flex align-items-center justify-content-center">
