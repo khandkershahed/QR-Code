@@ -349,7 +349,7 @@
                             <div class="col-sm-12 px-0 img-container-tem1">
                                 <img src="{{ !empty($nfc_card->banner_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card)->banner_image)) ? asset('storage/nfc/' . optional($nfc_card)->banner_image) : asset('frontend/images/no_image.png') }}"
                                     alt="" />
-                                
+
                             </div>
                         </div>
                     </div>
@@ -439,10 +439,10 @@
                                                     </div>
                                                     <div class="text-white ps-3">
                                                         <small class="mb-0">E-Mail Address</small>
-                                                        <p class="mb-0 special-font fs-6">
-                                                            {{ optional($nfc_card->nfcData)->email_personal }}</p>
-                                                        <p class="mb-0 special-font fs-6">
-                                                            {{ optional($nfc_card->nfcData)->email_work }}</p>
+                                                        <p class="mb-0 fs-6">
+                                                            {{ optional($nfc_card->nfcData)->email_personal }} <small>(Personal)</small></p>
+                                                        <p class="mb-0 fs-6">
+                                                            {{ optional($nfc_card->nfcData)->email_work }} <small>(Work)</small></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -457,10 +457,10 @@
                                                     </div>
                                                     <div class="text-white ps-3">
                                                         <small class="mb-0">Mobile Number</small>
-                                                        <p class="mb-0 fs-6 special-font">
-                                                            {{ optional($nfc_card->nfcData)->phone_personal }}</p>
-                                                        <p class="mb-0 fs-6 special-font">
-                                                            {{ optional($nfc_card->nfcData)->phone_work }}</p>
+                                                        <p class="mb-0 fs-6">
+                                                            {{ optional($nfc_card->nfcData)->phone_personal }} <small>(Personal)</small></p>
+                                                        <p class="mb-0 fs-6">
+                                                            {{ optional($nfc_card->nfcData)->phone_work }} <small>(Work)</small></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -475,7 +475,7 @@
                                                     </div>
                                                     <div class="text-white ps-3">
                                                         <small class="mb-0">Date Of Birth</small>
-                                                        <p class="mb-0 fs-6 special-font">
+                                                        <p class="mb-0 fs-6">
                                                             {{ \Carbon\Carbon::parse(optional($nfc_card->nfcData)->date_of_birth)->format('m-d-Y') }}
                                                         </p>
                                                     </div>
@@ -492,7 +492,7 @@
                                                     </div>
                                                     <div class="text-white ps-3">
                                                         <small class="mb-0">Fax Number</small>
-                                                        <p class="mb-0 fs-6 special-font">
+                                                        <p class="mb-0 fs-6">
                                                             {{ optional($nfc_card->nfcData)->fax }}
                                                         </p>
                                                     </div>
@@ -510,7 +510,7 @@
                                                     </div>
                                                     <div class="text-white ps-3">
                                                         <small class="mb-0">Address</small>
-                                                        <p class="mb-0 fs-6 special-font">
+                                                        <p class="mb-0 fs-6">
                                                             {{ optional($nfc_card->nfcData)->location }}</p>
                                                     </div>
                                                 </div>
