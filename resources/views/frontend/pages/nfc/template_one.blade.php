@@ -1367,7 +1367,7 @@
                         <div class="modal-body">
                             {{ optional($nfc_card->nfcBanner)->banner_description }}
                         </div>
-                        @if (!empty(optional($nfc_card->nfcBanner)->banner_url) || !empty(optional($nfc_card->nfcBanner)->banner_button))
+                        @if (!empty(optional($nfc_card->nfcBanner)->banner_url) && !empty(optional($nfc_card->nfcBanner)->banner_button))
                             <div class="modal-footer">
                                 <a href="{{ !empty(optional($nfc_card->nfcBanner)->banner_url) ? optional($nfc_card->nfcBanner)->banner_url : 'javascript:void(0)' }}"
                                     class="btn btn-sm btn-dark text-black"
