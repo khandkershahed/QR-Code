@@ -349,24 +349,7 @@
                             <div class="col-sm-12 px-0 img-container-tem1">
                                 <img src="{{ !empty($nfc_card->banner_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card)->banner_image)) ? asset('storage/nfc/' . optional($nfc_card)->banner_image) : asset('frontend/images/no_image.png') }}"
                                     alt="" />
-                                {{-- <div class="dropdown language-tem1">
-                                    <button class="btn btn-dark dropdown-toggle rounded-0" type="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        Dropdown button
-                                    </button>
-                                    <ul class="dropdown-menu rounded-0 w-100">
-                                        <li><a class="dropdown-item" href="#">Arabic</a></li>
-                                        <li>
-                                            <a class="dropdown-item" href="#">Chinese</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="#">English</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="#">English</a>
-                                        </li>
-                                    </ul>
-                                </div> --}}
+                                
                             </div>
                         </div>
                     </div>
@@ -437,17 +420,17 @@
                     @endif
                     <!-- Date Area -->
                     @if (
-                        !empty($nfc_card->nfcData->email_personal) ||
-                            !empty($nfc_card->nfcData->email_work) ||
-                            !empty($nfc_card->nfcData->phone_personal) ||
-                            !empty($nfc_card->nfcData->phone_work) ||
-                            !empty($nfc_card->nfcData->location) ||
-                            !empty($nfc_card->nfcData->date_of_birth) ||
-                            !empty($nfc_card->nfcData->address_line_two))
+                        !empty(optional($nfc_card->nfcData)->email_personal) ||
+                            !empty(optional($nfc_card->nfcData)->email_work) ||
+                            !empty(optional($nfc_card->nfcData)->phone_personal) ||
+                            !empty(optional($nfc_card->nfcData)->phone_work) ||
+                            !empty(optional($nfc_card->nfcData)->location) ||
+                            !empty(optional($nfc_card->nfcData)->date_of_birth) ||
+                            !empty(optional($nfc_card->nfcData)->address_line_two))
                         <section>
                             <div class="container py-5 pt-0">
                                 <div class="row">
-                                    @if (!empty($nfc_card->nfcData->email_personal) || !empty($nfc_card->nfcData->email_work))
+                                    @if (!empty(optional($nfc_card->nfcData)->email_personal) || !empty(optional($nfc_card->nfcData)->email_work))
                                         <div class="col-12">
                                             <div>
                                                 <div class="d-flex align-items-center">
@@ -457,15 +440,15 @@
                                                     <div class="text-white ps-3">
                                                         <small class="mb-0">E-Mail Address</small>
                                                         <p class="mb-0 special-font fs-6">
-                                                            {{ $nfc_card->nfcData->email_personal }}</p>
+                                                            {{ optional($nfc_card->nfcData)->email_personal }}</p>
                                                         <p class="mb-0 special-font fs-6">
-                                                            {{ $nfc_card->nfcData->email_work }}</p>
+                                                            {{ optional($nfc_card->nfcData)->email_work }}</p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     @endif
-                                    @if (!empty($nfc_card->nfcData->phone_personal) || !empty($nfc_card->nfcData->phone_work))
+                                    @if (!empty(optional($nfc_card->nfcData)->phone_personal) || !empty(optional($nfc_card->nfcData)->phone_work))
                                         <div class="col-12 mt-4">
                                             <div>
                                                 <div class="d-flex align-items-center">
@@ -475,15 +458,15 @@
                                                     <div class="text-white ps-3">
                                                         <small class="mb-0">Mobile Number</small>
                                                         <p class="mb-0 fs-6 special-font">
-                                                            {{ $nfc_card->nfcData->phone_personal }}</p>
+                                                            {{ optional($nfc_card->nfcData)->phone_personal }}</p>
                                                         <p class="mb-0 fs-6 special-font">
-                                                            {{ $nfc_card->nfcData->phone_work }}</p>
+                                                            {{ optional($nfc_card->nfcData)->phone_work }}</p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     @endif
-                                    @if (!empty($nfc_card->nfcData->date_of_birth))
+                                    @if (!empty(optional($nfc_card->nfcData)->date_of_birth))
                                         <div class="col-12 mt-4">
                                             <div>
                                                 <div class="d-flex align-items-center">
@@ -493,14 +476,14 @@
                                                     <div class="text-white ps-3">
                                                         <small class="mb-0">Date Of Birth</small>
                                                         <p class="mb-0 fs-6 special-font">
-                                                            {{ \Carbon\Carbon::parse($nfc_card->nfcData->date_of_birth)->format('m-d-Y') }}
+                                                            {{ \Carbon\Carbon::parse(optional($nfc_card->nfcData)->date_of_birth)->format('m-d-Y') }}
                                                         </p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     @endif
-                                    @if (!empty($nfc_card->nfcData->date_of_birth))
+                                    @if (!empty(optional($nfc_card->nfcData)->fax))
                                         <div class="col-12 mt-4">
                                             <div>
                                                 <div class="d-flex align-items-center">
@@ -510,14 +493,14 @@
                                                     <div class="text-white ps-3">
                                                         <small class="mb-0">Fax Number</small>
                                                         <p class="mb-0 fs-6 special-font">
-                                                            (123)-456-7890
+                                                            {{ optional($nfc_card->nfcData)->fax }}
                                                         </p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     @endif
-                                    @if (!empty($nfc_card->nfcData->location))
+                                    @if (!empty(optional($nfc_card->nfcData)->location))
                                         <div class="col-12 mt-4">
                                             <div>
                                                 <div class="d-flex align-items-center">
@@ -528,7 +511,7 @@
                                                     <div class="text-white ps-3">
                                                         <small class="mb-0">Address</small>
                                                         <p class="mb-0 fs-6 special-font">
-                                                            {{ $nfc_card->nfcData->location }}</p>
+                                                            {{ optional($nfc_card->nfcData)->location }}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1385,7 +1368,7 @@
                         <div class="modal-body">
                             {{ optional($nfc_card->nfcBanner)->banner_description }}
                         </div>
-                        @if (!empty(optional($nfc_card->nfcBanner)->banner_url) || !empty(optional($nfc_card->nfcBanner)->banner_button))
+                        @if (!empty(optional($nfc_card->nfcBanner)->banner_url) && !empty(optional($nfc_card->nfcBanner)->banner_button))
                             <div class="modal-footer">
                                 <a href="{{ !empty(optional($nfc_card->nfcBanner)->banner_url) ? optional($nfc_card->nfcBanner)->banner_url : 'javascript:void(0)' }}"
                                     class="btn btn-sm btn-dark text-black"

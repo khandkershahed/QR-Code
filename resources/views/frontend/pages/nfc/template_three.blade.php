@@ -602,16 +602,16 @@
                             </div>
                         </div>
                         @if (
-                            !empty($nfc_card->nfcData->email_personal) ||
-                                !empty($nfc_card->nfcData->email_work) ||
-                                !empty($nfc_card->nfcData->phone_personal) ||
-                                !empty($nfc_card->nfcData->phone_work) ||
-                                !empty($nfc_card->nfcData->location) ||
-                                !empty($nfc_card->nfcData->date_of_birth) ||
-                                !empty($nfc_card->nfcData->address_line_two))
+                            !empty(optional($nfc_card->nfcData)->email_personal) ||
+                                !empty(optional($nfc_card->nfcData)->email_work) ||
+                                !empty(optional($nfc_card->nfcData)->phone_personal) ||
+                                !empty(optional($nfc_card->nfcData)->phone_work) ||
+                                !empty(optional($nfc_card->nfcData)->location) ||
+                                !empty(optional($nfc_card->nfcData)->date_of_birth) ||
+                                !empty(optional($nfc_card->nfcData)->address_line_two))
                             <!-- Date Area -->
                             <div class="row pt-5">
-                                @if (!empty($nfc_card->nfcData->email_personal) || !empty($nfc_card->nfcData->email_work))
+                                @if (!empty(optional($nfc_card->nfcData)->email_personal) || !empty(optional($nfc_card->nfcData)->email_work))
                                     <div class="col-sm-6">
                                         <div class="card date-card-tem3">
                                             <div class="card-body p-2">
@@ -677,10 +677,10 @@
                                                     <div class="ps-3 pt-1">
                                                         <h6 class="special-font text-white mb-0">Email</h6>
                                                         <p class="text-white mb-0 w-75">
-                                                            {{ $nfc_card->nfcData->email_personal }} <small><small>(Personal)</small></small>
+                                                            {{ optional($nfc_card->nfcData)->email_personal }} <small><small>(Personal)</small></small>
                                                         </p>
                                                         <p class="text-white mb-0">
-                                                            {{ $nfc_card->nfcData->email_work }}
+                                                            {{ optional($nfc_card->nfcData)->email_work }}
                                                         </p>
                                                     </div>
                                                 </div>
@@ -688,7 +688,7 @@
                                         </div>
                                     </div>
                                 @endif
-                                @if (!empty($nfc_card->nfcData->phone_personal) || !empty($nfc_card->nfcData->phone_work))
+                                @if (!empty(optional($nfc_card->nfcData)->phone_personal) || !empty(optional($nfc_card->nfcData)->phone_work))
                                     <div class="col-sm-6">
                                         <div class="card date-card-tem3 mt-4 mt-lg-0">
                                             <div class="card-body d-flex align-content-center p-2">
@@ -738,10 +738,10 @@
                                                     <div class="ps-3 pt-1">
                                                         <h6 class="special-font text-white mb-0">Phone</h6>
                                                         <p class="text-white mb-0">
-                                                            {{ $nfc_card->nfcData->phone_personal }} <small><small>(Personal)</small></small>
+                                                            {{ optional($nfc_card->nfcData)->phone_personal }} <small><small>(Personal)</small></small>
                                                         </p>
                                                         <p class="text-white mb-0">
-                                                            {{ $nfc_card->nfcData->phone_work }}
+                                                            {{ optional($nfc_card->nfcData)->phone_work }}
                                                         </p>
                                                     </div>
                                                 </div>
@@ -749,7 +749,7 @@
                                         </div>
                                     </div>
                                 @endif
-                                @if (!empty($nfc_card->nfcData->location))
+                                @if (!empty(optional($nfc_card->nfcData)->location))
                                     <div class="col-sm-6 mt-4">
                                         <div class="card date-card-tem3">
                                             <div class="card-body d-flex align-content-center p-2">
@@ -925,10 +925,10 @@
                                                         <div class="ps-3 pt-1">
                                                             <h6 class="special-font text-white mb-0">Location</h6>
                                                             <p class="text-white mb-0">
-                                                                {{ $nfc_card->nfcData->location }}
+                                                                {{ optional($nfc_card->nfcData)->location }}
                                                             </p>
                                                             <p class="text-white mb-0">
-                                                                {{ $nfc_card->nfcData->address_line_two }}
+                                                                {{ optional($nfc_card->nfcData)->address_line_two }}
                                                             </p>
                                                         </div>
                                                     </div>
@@ -937,7 +937,7 @@
                                         </div>
                                     </div>
                                 @endif
-                                @if (!empty($nfc_card->nfcData->date_of_birth))
+                                @if (!empty(optional($nfc_card->nfcData)->date_of_birth))
                                     <div class="col-sm-6 mt-4">
                                         <div class="card date-card-tem3">
                                             <div class="card-body d-flex align-content-center p-2">
@@ -1004,7 +1004,7 @@
                                                             Date Of Birth
                                                         </h6>
                                                         <p class="text-white mb-0">
-                                                            {{ $nfc_card->nfcData->date_of_birth }}
+                                                            {{ optional($nfc_card->nfcData)->date_of_birth }}
                                                         </p>
                                                     </div>
                                                 </div>

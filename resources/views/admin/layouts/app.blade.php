@@ -109,7 +109,7 @@
     <script src="{{ asset('frontend/assets/js/jquery_timepicker.js') }}" defer></script>
     <script src="{{ asset('frontend/assets/js/form-validator.min.js') }}" defer></script>
     <!-- Inline JavaScript: Only the essential functions to make the page interactive -->
-    <script>
+    {{-- <script>
         // DataTable Initialization
         class DataTableInitializer {
             constructor(selector) {
@@ -226,7 +226,7 @@
         KTUtil.onDOMContentLoaded(function() {
             KTDatatablesExample.init();
         });
-    </script>
+    </script> --}}
 
 
 

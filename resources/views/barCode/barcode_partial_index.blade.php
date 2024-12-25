@@ -2,17 +2,17 @@
     <div class="table-responsive">
         <table class="table my-datatable table-striped table-row-bordered mt-0" id="barCode_table">
             <thead>
-                <tr class="text-start bg-info text-white fw-bolder fs-7 text-uppercase gs-0">
+                <tr class="text-center bg-info text-white fw-bolder fs-7 text-uppercase gs-0">
                     <th width="5%">SL</th>
                     <th width="15%">Image</th>
                     <th width="20%">Product </th>
                     <th width="20%">Author</th>
                     <th width="10%">Pattern</th>
-                    <th width="15%" class="text-center">BarCode</th>
-                    <th width="25%" class="text-center">Action</th>
+                    <th width="15%">BarCode</th>
+                    <th width="25%">Action</th>
                 </tr>
             </thead>
-            <tbody class="fw-semibold text-gray-600">
+            <tbody class="text-center fw-semibold text-gray-600">
                 @foreach ($bar_codes as $bar_code)
                     <tr>
                         <td class="text-center">{{ $loop->iteration }}</td>
