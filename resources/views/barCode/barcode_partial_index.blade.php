@@ -5,12 +5,6 @@
                 <h1 class="mb-0 mt-0 card-title fs-2 text-white">All Bar Code!</h1>
                 <p class="text-white mt-2 mb-0">View and manage all Bar Code information in this page.</p>
             </div>
-            <div>
-                <a href="{{ route('user.barcode.create') }}"
-                    class="btn btn-white btn-active-light-warning text-hover-inverse-white">
-                    <i class="fa-solid fa-user-plus"></i> Add Bar-Code
-                </a>
-            </div>
         </div>
 
         <div class="card-body p-0 rounded-0">
