@@ -1533,8 +1533,10 @@
         const makeVCardTitle = (title) => `TITLE:${title || ''}`;
         const makeVCardPhoto = (imgBase64) => `PHOTO;ENCODING=b;TYPE=JPEG:${imgBase64}`;
         const makeVCardTel = (phone, type = 'CELL') => `TEL;TYPE=${type}:${phone || ''}`;
-        const makeVCardAdr = (addressLine1, addressLine2) =>
-            `ADR;TYPE=HOME:;;${addressLine1 || ''};${addressLine2 || ''};;;;`;
+        const makeVCardAdr = (location, locationUrl) =>
+            `ADR;TYPE=HOME:;;${location || ''};${locationUrl || ''};;;;`;
+        // const makeVCardAdr = (addressLine1, addressLine2) =>
+        //     `ADR;TYPE=HOME:;;${addressLine1 || ''};${addressLine2 || ''};;;;`;
         const makeVCardEmail = (email, type = 'INTERNET') => `EMAIL;TYPE=${type}:${email || ''}`;
         const makeVCardUrl = (url) => `URL:${url || ''}`;
         const makeVCardSocialProfile = (type, url) => `X-SOCIALPROFILE;TYPE=${type}:${url || ''}`;
@@ -1585,6 +1587,11 @@
             if (addressLine1 || addressLine2) {
                 vcard += `${makeVCardAdr(addressLine1, addressLine2)}\n`;
             }
+
+            if (addressLine1 || addressLine2) {
+                vcard += `${makeVCardAdr(addressLine1, addressLine2)}\n`;
+            }
+
 
             if (emailPersonal) {
                 vcard += `${makeVCardEmail(emailPersonal)}\n`;

@@ -712,7 +712,10 @@
         const makeVCardTitle = (title) => `TITLE:${title}`;
         const makeVCardPhoto = (imgBase64) => `PHOTO;ENCODING=b;TYPE=JPEG:${imgBase64}`;
         const makeVCardTel = (phone) => `TEL;TYPE=CELL:${phone}`;
-        const makeVCardAdr = (addressLine1, addressLine2) => `ADR;TYPE=HOME:;;${addressLine1};${addressLine2};;;;`;
+        const makeVCardAdr = (location, locationUrl) =>
+            `ADR;TYPE=HOME:;;${location || ''};${locationUrl || ''};;;;`;
+        // const makeVCardAdr = (addressLine1, addressLine2) =>
+        //     `ADR;TYPE=HOME:;;${addressLine1 || ''};${addressLine2 || ''};;;;`;
         const makeVCardEmail = (email) => `EMAIL:${email}`;
         const makeVCardUrl = (url) => `URL:${url}`;
         const makeVCardSocialProfile = (type, url) => `X-SOCIALPROFILE;TYPE=${type}:${url}`;
