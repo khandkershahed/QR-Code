@@ -97,7 +97,7 @@
                             <div
                                 class="btn template-btn btn-outline btn-outline-dashed btn-active-light-primary custom-active p-4 d-flex align-items-center mb-5 custom-radio">
                                 <div class="window">
-                                    <img class="img-fluid" src="{{ asset('admin/Nfc_templates/template_two.jpg') }}"
+                                    <img class="img-fluid" src="{{ asset('admin/Nfc_templates/template_two.png') }}"
                                         alt="Second Template">
                                 </div>
                             </div>

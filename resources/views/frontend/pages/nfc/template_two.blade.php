@@ -290,7 +290,8 @@
 
         .image-container-tem2 {
             height: 385px;
-            widows: 100% object-fit: cover;
+            width: 100%;
+            object-fit: cover;
         }
 
         .shape-container-tem2 {
@@ -429,7 +430,7 @@
                             !empty($nfc_card->nfcData->address_line_two))
                         <section>
                             <div class="container py-5">
-                                <div class="row">
+                                <div class="row justify-content-center">
                                     @if (!empty($nfc_card->nfcData->email_personal) || !empty($nfc_card->nfcData->email_work))
                                         <div class="col-md-6">
                                             <div class="text-white text-center ps-lg-3 ps-0">
@@ -1013,7 +1014,8 @@
                             <div class="row align-items-center mb-3">
                                 <div class="col-sm-6 offse-sm-3 mx-auto">
                                     <div>
-                                        <img class="img-fluid" src="{{ asset('images/d-image/Animated-Hand-No-Background.png') }}"
+                                        <img class="img-fluid"
+                                            src="{{ asset('images/d-image/Animated-Hand-No-Background.png') }}"
                                             alt="" />
                                     </div>
                                     <div class="d-flex align-items-center justify-content-center">
@@ -1066,7 +1068,8 @@
                 aria-hidden="true">
                 <div class="modal-dialog load-modal modal-dialog-centered">
                     <div class="modal-content rounded-0">
-                        <div class="modal-header bg-dark rounded-0 text-white">
+                        <div class="modal-header rounded-0 text-white"
+                            style="background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);">
                             <h5 class="modal-title" id="exampleModalLabel">
                                 {{ optional($nfc_card->nfcBanner)->banner_title }}</h5>
                             <button type="button" class="btn-close text-white close-btns" data-bs-dismiss="modal"

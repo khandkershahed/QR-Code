@@ -12984,8 +12984,8 @@ a.theme-btn.style-four:hover {
 .about-images .about-over {
     position: absolute;
     right: 0;
-    bottom: 30px;
     max-width: 55%;
+    top: 210px;
 }
 
 .about-images .about-over img {

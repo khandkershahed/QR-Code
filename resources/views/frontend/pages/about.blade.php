@@ -18,10 +18,10 @@
                 <div class="col-lg-6">
                     <div class="about-images my-40 aos-init aos-animate" data-aos="fade-left" data-aos-duration="1500"
                         data-aos-offset="50">
-                        <img src="https://webtendtheme.net/html/2024/akpager/assets/images/about/about-page.png"
+                        <img src="{{ asset('images/d-image/about-first.jpg') }}"
                             alt="About" />
                         <div class="about-over">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/about/about2.png"
+                            <img src="{{ asset('images/d-image/How-QR-Codes-are-Prepared.jpg') }}"
                                 alt="About" />
                         </div>
                     </div>
@@ -81,7 +81,7 @@
                             </p>
                         </div>
                         <div class="bg">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/shapes/iconic-box-seven-bg2.png"
+                            <img src="{{ asset('images/price-circle.png') }}"
                                 alt="Shape" />
                         </div>
                     </div>
@@ -101,7 +101,7 @@
                             </p>
                         </div>
                         <div class="bg">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/shapes/iconic-box-seven-bg2.png"
+                            <img src="{{ asset('images/price-circle.png') }}"
                                 alt="Shape" />
                         </div>
                     </div>
@@ -119,7 +119,7 @@
                             </p>
                         </div>
                         <div class="bg">
-                            <img src="https://webtendtheme.net/html/2024/akpager/assets/images/shapes/iconic-box-seven-bg2.png"
+                            <img src="{{ asset('images/price-circle.png') }}"
                                 alt="Shape" />
                         </div>
                     </div>
@@ -127,8 +127,9 @@
             </div>
         </div>
     </section>
+
     <section class="cta-area bgs-cover py-130 rpy-100"
-        style="background-image: url(https://webtendtheme.net/html/2024/akpager/assets/images/backgrounds/cta.jpg)">
+        style="background-image: url({{ asset('images/d-image/main-about-banner.jpg') }})">
         <div class="container">
             <div class="row align-items-center justify-content-between">
                 <div class="col-xl-6 col-lg-8">
@@ -182,12 +183,8 @@
                     <div class="management-images float-lg-end my-40 aos-init aos-animate" data-aos="fade-right"
                         data-aos-duration="1500" data-aos-offset="50">
                         <img class="rounded-0"
-                            src="https://webtendtheme.net/html/2024/akpager/assets/images/about/management-four.png"
+                            src="{{ asset('images/d-image/filters_format(png).png') }}"
                             alt="Management" />
-                        <div class="management-over">
-                            <img src="	https://webtendtheme.net/html/2024/akpager/assets/images/about/management-four1.png"
-                                alt="Management" />
-                        </div>
                     </div>
                 </div>
             </div>
