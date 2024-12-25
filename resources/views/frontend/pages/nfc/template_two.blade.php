@@ -1020,7 +1020,7 @@
                                     </div>
                                     <div class="d-flex align-items-center justify-content-center">
                                         <a href="{{ $whatsappLink }}" target="_blank" rel="noopener noreferrer"
-                                            class="btn company-btn-tem2 rounded-0 mb-2 p-3">
+                                            class="btn company-btn-tem2 rounded-0 mb-2 p-3" style="width: 240px;">
                                             <i class="fa-solid fa-share-nodes"
                                                 style="color: var(--template-two-color-primary)"></i>
                                             Share This Vcard
