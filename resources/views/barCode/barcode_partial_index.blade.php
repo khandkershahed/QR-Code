@@ -6,7 +6,6 @@
                 <p class="text-white mt-2 mb-0">View and manage all Bar Code information in this page.</p>
             </div>
         </div>
-
         <div class="card-body p-0 rounded-0">
             <div class="table-responsive">
             <table class="table my-datatable table-striped table-row-bordered mt-0" id="barCode_table">
@@ -165,7 +164,10 @@
 @push('scripts')
     <script>
         function printImage(imageUrl) {
+            // Create a new print window
             var printWindow = window.open('', '_blank');
+
+            // Define HTML content for the print window
             var htmlContent = `
                 <div class="print-container text-center" style="text-align:center;">
                     <img width="400px" src="${imageUrl}" />
