@@ -335,6 +335,7 @@
             </div>
         </div>
     </div>
+    
 </div>
 @foreach ($nfc_cards as $nfc_card)
     <div class="modal fade" tabindex="-1" id="message_modal_{{ $nfc_card->id }}">
