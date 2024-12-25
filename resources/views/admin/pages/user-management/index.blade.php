@@ -13,7 +13,7 @@
                 </a>
             </div>
         </div>
-        <div class="card-body p-0 rounded-0">
+        <div class="card-body p-0 px-3 rounded-0">
             <table class="table my-datatable table-striped table-row-bordered mt-0">
                 <thead>
                     <tr class="text-start bg-info text-white fw-bolder fs-7 text-uppercase gs-0">

@@ -16,7 +16,7 @@
                 </div>
                 <div class="col-lg-3">
                     <div class="border">
-                        <img class="img-fluid" src="{{ asset('admin/Nfc_templates/template_two.jpg') }}"
+                        <img class="img-fluid" src="{{ asset('admin/Nfc_templates/template_two.png') }}"
                             alt="Second Template">
                     </div>
                 </div>

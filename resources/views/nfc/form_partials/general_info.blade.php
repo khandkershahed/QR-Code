@@ -16,7 +16,7 @@
                     <div class="input-group">
                         <x-metronic.input type="text" class="form-control form-control-solid form-control-sm"
                             name="url_alias" id="basic-url" required aria-describedby="basic-addon3"
-                            placeholder="my-vcard-page-url" :value="optional($nfc_card)->url_alias" />
+                            placeholder="my-vcard-page-url" :value="optional($nfc_card)->url_alias" disabled/>
                     </div>
                     <span id="url_alias_feedback" class="text-danger" style="display: none;"></span>
                 </div>

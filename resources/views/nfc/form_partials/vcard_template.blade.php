@@ -9,7 +9,7 @@
         ],
         [
             'value' => 'template-two',
-            'image' => 'frontend/images/nfc_template/template_two.jpg',
+            'image' => 'frontend/images/nfc_template/template_two.png',
         ],
         [
             'value' => 'template-three',
