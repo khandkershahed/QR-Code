@@ -6,6 +6,7 @@
                 <p class="text-white mt-2 mb-0">View and manage all NFC information in this page.</p>
             </div>
         </div>
+        
         <div class="card-body p-0 px-3 rounded-0">
             <div class="table-responsive">
                 <table class="table my-datatable table-striped table-row-bordered mt-0" id="virtualCard_table">

@@ -3,7 +3,6 @@
         display: flex;
         flex-wrap: wrap;
         gap: 0.5rem;
-        /* Adjust this value for desired gap */
     }
 
     .equal-height1>.col-lg-6 {
@@ -111,8 +110,6 @@
                 </div>
             </div>
         </div>
-        {{--  --}}
-        {{-- Toggler form End --}}
     </div>
 </div>
 

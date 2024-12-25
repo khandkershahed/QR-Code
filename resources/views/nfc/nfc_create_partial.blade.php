@@ -3,7 +3,6 @@
         padding: 70px 0;
     }
 
-    /* Default slide */
     .center-sliders .slick-slide {
         color: #FFF;
         height: 510px;
@@ -21,7 +20,6 @@
         transition: all 0.4s ease-in-out;
     }
 
-    /* Active center slide (You can change anything here for cenetr slide)*/
     .center-sliders .slick-center,
     .center-sliders .slick-slide[aria-hidden="true"]:not([tabindex="-1"])+.slick-cloned[aria-hidden="true"] {
         transform: scale(1.1);
@@ -40,6 +38,7 @@
     .slick-next {
         right: 15px;
     }
+
 
     .slick-prev {
         left: 15px;

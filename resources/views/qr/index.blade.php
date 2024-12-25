@@ -48,7 +48,8 @@
                         <h2 class="mb-0">List Of Your QR</h2>
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="card-body"> 
+                    
                     <div class="table-responsive">
                         <table
                             class="table my-datatable align-middle border rounded table-row-dashed table-striped table-hover fs-6 g-5"

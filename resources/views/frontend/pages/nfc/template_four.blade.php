@@ -655,13 +655,10 @@
                                                     </div>
                                                 </div>
                                                 <div class="product-sliders swiper-container">
-                                                    <!-- Additional required wrapper -->
                                                     <div class="swiper-wrapper">
-                                                        <!-- Dynamic Slides -->
                                                         @foreach ($nfc_card->nfcProduct as $product)
                                                             <div class="swiper-slide">
                                                                 <div class="card rounded-5">
-                                                                    <!-- Product Image -->
                                                                     <img class="img-fluid"
                                                                         style="border-top-right-radius: 30px; border-top-left-radius: 30px"
                                                                         src="{{ !empty($product->product_icon) &&
@@ -669,7 +666,6 @@
                                                                             ? asset('storage/nfc/product/' . optional($product)->product_icon)
                                                                             : asset('frontend/images/no_image.png') }}"
                                                                         alt="{{ $product->product_name }}">
-                                                                    <!-- Product Details -->
                                                                     <div class="card-body">
                                                                         <h5 class="card-title">
                                                                             {{ $product->product_name }}</h5>
@@ -708,7 +704,7 @@
                                                         <h4 class="fw-bold text-center">
                                                             <span
                                                                 style="border-bottom: 4px solid #FF9419; border-radius: 10px; padding: 5px;">
-                                                                Products
+                                                                Testimonial
                                                             </span>
                                                         </h4>
                                                     </div>
@@ -720,12 +716,10 @@
                                                         @foreach ($nfc_card->nfcTestimonial as $testimonial)
                                                             <div class="swiper-slide">
                                                                 <div class="card rounded-5">
-                                                                    <!-- Product Image -->
                                                                     <img class="img-fluid"
                                                                         style="border-top-right-radius: 30px; border-top-left-radius: 30px"
                                                                         src="{{ !empty($testimonial->testimonial_image) && file_exists(public_path('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image)) ? asset('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image) : asset('frontend/images/no_image.png') }}"
                                                                         alt="{{ $product->product_name }}">
-                                                                    <!-- Product Details -->
                                                                     <div class="card-body">
                                                                         <h5 class="">
                                                                             {{ $testimonial->testimonial_name }}
