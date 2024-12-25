@@ -400,7 +400,7 @@
                                             @if (!empty($nfc_card->nfcData))
                                                 <div class="row pt-5">
                                                     {{-- Email Section --}}
-                                                    @if (!empty($nfc_card->nfcData->email_personal) || !empty($nfc_card->nfcData->email_work))
+                                                    @if (!empty(optional($nfc_card->nfcData)->email_personal) || !empty(optional($nfc_card->nfcData)->email_work))
                                                         <div class="col-sm-6">
                                                             <div class="card date-card-tem3 border-0">
                                                                 <div class="card-header border-0 bg-transparent"
@@ -414,19 +414,19 @@
                                                                     class="card-body d-flex align-content-center p-2 contact-box-body-four">
                                                                     <div class="ps-3 pt-3">
                                                                         <div style="margin-bottom: -5px !important">
-                                                                            @if (!empty($nfc_card->nfcData->email_personal))
-                                                                                <small class="fw-bold text-mute">E-mail
-                                                                                    Address</small>
-                                                                                <small class="text-mute mb-0">
-                                                                                    {{ $nfc_card->nfcData->email_personal }}
-                                                                                </small>
+                                                                            @if (!empty(optional($nfc_card->nfcData)->email_personal))
+                                                                                <p class="fw-bold text-mute">E-mail Address (Personal)</p>
+                                                                                <p class="text-mute mb-0">
+                                                                                    {{ optional($nfc_card->nfcData)->email_personal }}
+                                                                                </p>
                                                                             @endif
                                                                         </div>
                                                                         <div>
-                                                                            @if (!empty($nfc_card->nfcData->email_work))
-                                                                                <small class="text-mute mb-0">
-                                                                                    {{ $nfc_card->nfcData->email_work }}
-                                                                                </small>
+                                                                            @if (!empty(optional($nfc_card->nfcData)->email_work))
+                                                                            <p class="fw-bold text-mute">E-mail Address (Work)</p>
+                                                                            <p class="text-mute mb-0">
+                                                                                    {{ optional($nfc_card->nfcData)->email_work }}
+                                                                                </p>
                                                                             @endif
                                                                         </div>
                                                                     </div>
@@ -435,7 +435,7 @@
                                                         </div>
                                                     @endif
                                                     {{-- Phone Section --}}
-                                                    @if (!empty($nfc_card->nfcData->phone_personal) || !empty($nfc_card->nfcData->phone_work))
+                                                    @if (!empty(optional($nfc_card->nfcData)->phone_personal) || !empty(optional($nfc_card->nfcData)->phone_work))
                                                         <div class="col-sm-6">
                                                             <div class="card date-card-tem3 mt-lg-0 border-0">
                                                                 <div class="card-header border-0 bg-transparent"
@@ -448,21 +448,20 @@
                                                                 <div
                                                                     class="card-body d-flex align-content-center p-2 contact-box-body-four">
                                                                     <div class="ps-3 pt-3">
-                                                                        <small class="fw-bold text-mute">Mobile
-                                                                            Number</small>
+                                                                        <p class="fw-bold text-mute">Mobile Number</p>
                                                                         <div style="margin-bottom: -5px !important">
-                                                                            @if (!empty($nfc_card->nfcData->phone_personal))
-                                                                                <small class="text-mute mb-0">
-                                                                                    {{ $nfc_card->nfcData->phone_personal }}
+                                                                            @if (!empty(optional($nfc_card->nfcData)->phone_personal))
+                                                                                <p class="text-mute mb-0">
+                                                                                    {{ optional($nfc_card->nfcData)->phone_personal }}
                                                                                     <small>(Personal)</small>
-                                                                                </small>
+                                                                                </p>
                                                                             @endif
                                                                         </div>
                                                                         <div>
-                                                                            @if (!empty($nfc_card->nfcData->phone_work))
-                                                                                <small class="text-mute mb-0">
-                                                                                    {{ $nfc_card->nfcData->phone_work }}
-                                                                                </small>
+                                                                            @if (!empty(optional($nfc_card->nfcData)->phone_work))
+                                                                                <p class="text-mute mb-0">
+                                                                                    {{ optional($nfc_card->nfcData)->phone_work }} <small>(Work)</small>
+                                                                                </p>
                                                                             @endif
                                                                         </div>
                                                                     </div>
@@ -472,9 +471,9 @@
                                                     @endif
                                                     {{-- Location Section --}}
                                                     @if (
-                                                        !empty($nfc_card->nfcData->location) ||
-                                                            !empty($nfc_card->nfcData->address_line_one) ||
-                                                            !empty($nfc_card->nfcData->address_line_two))
+                                                        !empty(optional($nfc_card->nfcData)->location) ||
+                                                            !empty(optional($nfc_card->nfcData)->address_line_one) ||
+                                                            !empty(optional($nfc_card->nfcData)->address_line_two))
                                                         <div class="col-sm-6 mt-4">
                                                             <div class="card date-card-tem3 mt-lg-0 border-0">
                                                                 <div class="card-header border-0 bg-transparent"
@@ -491,10 +490,10 @@
                                                                             class="fw-bold text-mute">Location</small>
                                                                         <br>
                                                                         <div style="margin-bottom: -5px !important">
-                                                                            @if (!empty($nfc_card->nfcData->location))
+                                                                            @if (!empty(optional($nfc_card->nfcData)->location))
                                                                                 @php
                                                                                     $location =
-                                                                                        $nfc_card->nfcData->location;
+                                                                                        optional($nfc_card->nfcData)->location;
                                                                                     $halfLength = strlen($location) / 2;
                                                                                     $firstHalf = substr(
                                                                                         $location,
@@ -513,16 +512,16 @@
                                                                             @endif
                                                                         </div>
                                                                         <div style="margin-bottom: -5px !important">
-                                                                            @if (!empty($nfc_card->nfcData->address_line_one))
+                                                                            @if (!empty(optional($nfc_card->nfcData)->address_line_one))
                                                                                 <small class="text-mute mb-0">
-                                                                                    {{ $nfc_card->nfcData->address_line_one }}
+                                                                                    {{ optional($nfc_card->nfcData)->address_line_one }}
                                                                                 </small>
                                                                             @endif
                                                                         </div>
                                                                         <div>
-                                                                            @if (!empty($nfc_card->nfcData->address_line_two))
+                                                                            @if (!empty(optional($nfc_card->nfcData)->address_line_two))
                                                                                 <small class="text-mute mb-0">
-                                                                                    {{ $nfc_card->nfcData->address_line_two }}
+                                                                                    {{ optional($nfc_card->nfcData)->address_line_two }}
                                                                                 </small>
                                                                             @endif
                                                                         </div>
@@ -532,7 +531,7 @@
                                                         </div>
                                                     @endif
                                                     {{-- Date of Birth Section --}}
-                                                    @if (!empty($nfc_card->nfcData->date_of_birth))
+                                                    @if (!empty(optional($nfc_card->nfcData)->date_of_birth))
                                                         <div class="col-sm-6 mt-4">
                                                             <div class="card date-card-tem3 mt-lg-0 border-0">
                                                                 <div class="card-header border-0 bg-transparent"
@@ -549,7 +548,7 @@
                                                                             Birth</small>
                                                                         <br>
                                                                         <small class="text-muted mb-0">
-                                                                            {{ \Carbon\Carbon::parse($nfc_card->nfcData->date_of_birth)->format('m-j-Y') }}
+                                                                            {{ \Carbon\Carbon::parse(optional($nfc_card->nfcData)->date_of_birth)->format('m-j-Y') }}
                                                                             (DB)
                                                                         </small>
                                                                     </div>

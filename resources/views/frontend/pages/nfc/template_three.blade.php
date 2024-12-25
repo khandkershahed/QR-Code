@@ -676,12 +676,16 @@
                                                     </div>
                                                     <div class="ps-3 pt-1">
                                                         <h6 class="special-font text-white mb-0">Email</h6>
-                                                        <p class="text-white mb-0 w-75">
-                                                            {{ optional($nfc_card->nfcData)->email_personal }} <small><small>(Personal)</small></small>
-                                                        </p>
-                                                        <p class="text-white mb-0">
-                                                            {{ optional($nfc_card->nfcData)->email_work }}
-                                                        </p>
+                                                        @if (!empty(optional($nfc_card->nfcData)->email_personal))
+                                                            <p class="text-white mb-0">
+                                                                {{ optional($nfc_card->nfcData)->email_personal }} <small>(Personal)</small>
+                                                            </p>
+                                                        @endif
+                                                        @if (!empty(optional($nfc_card->nfcData)->email_work))
+                                                            <p class="text-white mb-0">
+                                                                {{ optional($nfc_card->nfcData)->email_work }} <small>(Work)</small>
+                                                            </p>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
@@ -737,12 +741,16 @@
                                                     </div>
                                                     <div class="ps-3 pt-1">
                                                         <h6 class="special-font text-white mb-0">Phone</h6>
-                                                        <p class="text-white mb-0">
-                                                            {{ optional($nfc_card->nfcData)->phone_personal }} <small><small>(Personal)</small></small>
-                                                        </p>
-                                                        <p class="text-white mb-0">
-                                                            {{ optional($nfc_card->nfcData)->phone_work }}
-                                                        </p>
+                                                        @if (!empty(optional($nfc_card->nfcData)->phone_personal))
+                                                            <p class="text-white mb-0">
+                                                                {{ optional($nfc_card->nfcData)->phone_personal }} <small>(Personal)</small>
+                                                            </p>
+                                                        @endif
+                                                        @if (!empty(optional($nfc_card->nfcData)->phone_work))
+                                                            <p class="text-white mb-0">
+                                                                {{ optional($nfc_card->nfcData)->phone_work }} <small>(Work)</small>
+                                                            </p>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>

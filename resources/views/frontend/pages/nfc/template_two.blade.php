@@ -439,8 +439,18 @@
                                                         class="fa fa-envelope social_icons fs-3 bg-white contact-icons-tem2"></i>
                                                 </div>
                                                 <small class="mb-0">E-Mail Address</small>
-                                                <h5 class="mb-0">{{ optional($nfc_card->nfcData)->email_personal }}</h5>
-                                                <h5 class="mb-0">{{ optional($nfc_card->nfcData)->email_work }}</h5>
+                                                @if (!empty(optional($nfc_card->nfcData)->email_personal))
+                                                    <h5 class="mb-0 fs-5">
+                                                        {{ optional($nfc_card->nfcData)->email_personal }}
+                                                        <small>(Personal)</small>
+                                                    </h5>
+                                                @endif
+                                                @if (!empty(optional($nfc_card->nfcData)->email_work))
+                                                    <h5 class="mb-0 fs-5">
+                                                        {{ optional($nfc_card->nfcData)->email_work }}
+                                                        <small>(Work)</small>
+                                                    </h5>
+                                                @endif
                                             </div>
                                         </div>
                                     @endif
@@ -452,9 +462,20 @@
                                                         class="fa fa-phone social_icons fs-3 bg-white contact-icons-tem2"></i>
                                                 </div>
                                                 <small class="mb-0">Phone</small>
-                                                <h5 class="mb-0 fs-5">{{ optional($nfc_card->nfcData)->phone_personal }}
-                                                </h5>
-                                                <h5 class="mb-0 fs-5">{{ optional($nfc_card->nfcData)->phone_work }}</h5>
+
+                                                @if (!empty(optional($nfc_card->nfcData)->phone_personal))
+                                                    <h5 class="mb-0 fs-5">
+                                                        {{ optional($nfc_card->nfcData)->phone_personal }}
+                                                        <small>(Personal)</small>
+                                                    </h5>
+                                                @endif
+                                                @if (!empty(optional($nfc_card->nfcData)->phone_work))
+                                                    <h5 class="mb-0 fs-5">
+                                                        {{ optional($nfc_card->nfcData)->phone_work }}
+                                                        <small>(Work)</small>
+                                                    </h5>
+                                                @endif
+
                                             </div>
                                         </div>
                                     @endif
@@ -492,7 +513,8 @@
                                                         class="fa fa-location-dot social_icons fs-3 bg-white contact-icons-tem2"></i>
                                                 </div>
                                                 <small class="mb-0">Location</small>
-                                                <h5 class="mb-0 fs-5">{{ optional($nfc_card->nfcData)->location }}</h5>
+                                                <h5 class="mb-0 fs-5">{{ optional($nfc_card->nfcData)->location }}
+                                                </h5>
                                             </div>
                                         </div>
                                     @endif

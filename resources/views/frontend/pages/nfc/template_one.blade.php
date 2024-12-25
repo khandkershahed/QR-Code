@@ -439,10 +439,16 @@
                                                     </div>
                                                     <div class="text-white ps-3">
                                                         <small class="mb-0">E-Mail Address</small>
-                                                        <p class="mb-0 fs-6">
-                                                            {{ optional($nfc_card->nfcData)->email_personal }} <small>(Personal)</small></p>
-                                                        <p class="mb-0 fs-6">
-                                                            {{ optional($nfc_card->nfcData)->email_work }} <small>(Work)</small></p>
+                                                        @if (!empty(optional($nfc_card->nfcData)->email_personal))
+                                                            <p class="mb-0 fs-6">
+                                                                {{ optional($nfc_card->nfcData)->email_personal }} <small>(Personal)</small>
+                                                            </p>
+                                                        @endif
+                                                        @if (!empty(optional($nfc_card->nfcData)->email_work))
+                                                            <p class="mb-0 fs-6">
+                                                                {{ optional($nfc_card->nfcData)->email_work }} <small>(Work)</small>
+                                                            </p>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
@@ -457,10 +463,14 @@
                                                     </div>
                                                     <div class="text-white ps-3">
                                                         <small class="mb-0">Mobile Number</small>
-                                                        <p class="mb-0 fs-6">
-                                                            {{ optional($nfc_card->nfcData)->phone_personal }} <small>(Personal)</small></p>
-                                                        <p class="mb-0 fs-6">
-                                                            {{ optional($nfc_card->nfcData)->phone_work }} <small>(Work)</small></p>
+                                                        @if (!empty(optional($nfc_card->nfcData)->phone_personal))
+                                                            <p class="mb-0 fs-6">
+                                                                {{ optional($nfc_card->nfcData)->phone_personal }} <small>(Personal)</small></p>
+                                                        @endif
+                                                        @if (!empty(optional($nfc_card->nfcData)->phone_work))
+                                                            <p class="mb-0 fs-6">
+                                                                {{ optional($nfc_card->nfcData)->phone_work }} <small>(Work)</small></p>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
