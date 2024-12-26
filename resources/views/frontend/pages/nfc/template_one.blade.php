@@ -844,6 +844,7 @@
                                                                 </svg>
                                                             </a>
                                                         @endif
+                                                        
                                                         @if (!empty($company->company_twitter))
                                                             <a href="{{ $company->company_twitter }}"
                                                                 class="btn btn-dark rounded-0 mb-2">
@@ -887,7 +888,7 @@
                     </section>
                 @endif
                 <!-- Servies Box -->
-                @if ($nfc_card->services_show == '1')
+                @if ($nfc_card->services_show == '1' && ($nfc_card->nfcService->count() > 0))
                     <section>
                         <div class="container pb-5">
                             <div class="row">
@@ -935,7 +936,7 @@
                 @endif
 
                 <!-- Product -->
-                @if ($nfc_card->products_show == '1')
+                @if ($nfc_card->products_show == '1' && ($nfc_card->nfcProduct->count() > 0))
                     <section>
                         <div class="container pb-5">
                             <div class="row">
