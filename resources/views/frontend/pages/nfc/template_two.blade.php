@@ -30,6 +30,18 @@
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Almendra+SC&family=Anton&family=Anton+SC&family=Bebas+Neue&family=Jost:ital,wght@0,100..900;1,100..900&family=Margarine&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
 
+        body{
+            background: linear-gradient(to top,
+                    rgba(0, 0, 0, 1),
+                    /* Solid black at the bottom */
+                    rgba(0, 0, 0, 0.8) 40%,
+                    /* Slightly lighter black */
+                    rgba(0, 0, 0, 0.6) 70%,
+                    /* Even lighter black */
+                    transparent 100%
+                    /* Fully transparent at the top */
+                );
+        }
         :root {
             --template-two-color-white: #fff;
             --template-two-color-black: #000;
@@ -63,6 +75,10 @@
             z-index: 9999;
         }
 
+        a {
+            text-decoration: none;
+        }
+
         .mobile-frame {
             width: 535px;
             margin: auto;
@@ -89,21 +105,20 @@
         .page-content-wrapper {
             width: 100%;
             margin: auto;
-            background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+            background-color: #000000;
+            background-image: linear-gradient(147deg, #000000 0%, #2c3e50 74%);
         }
 
         .section-top-tem2 {
-            margin-top: -168px;
+            margin-top: -70px;
             position: relative;
         }
 
         .profile-img-tem2 img {
-            width: 150px;
-            height: 150px;
+            width: 190px;
+            height: 190px;
             object-fit: cover;
             border: 2px dashed var(--template-two-color-primary);
-            padding: 5px;
-            background: var(--template-two-color-primary);
         }
 
         .name-title-tem2 {
@@ -149,14 +164,15 @@
 
         .social-link-tem2 {
             background: var(--template-two-color-white);
-            padding: 10px 0px 0px 13px;
+            padding: 5px 0px 0px 12px;
             width: 40px;
             height: 40px;
             color: var(--template-two-color-primary);
             box-shadow: rgba(255, 255, 255, 0.24) 0px 3px 8px;
-            margin-left: 10px;
+            margin-right: 10px;
             border-radius: 50%;
             font: var(--template-two-others-font-size);
+            font-size: 20px;
         }
 
         .text-justify {
@@ -203,7 +219,7 @@
 
         .product-img {
             width: 100%;
-            height: 350px;
+            height: 205px;
             object-fit: cover;
         }
 
@@ -312,6 +328,50 @@
             margin: auto;
         }
 
+        .overlay-container {
+            position: relative;
+            display: inline-block;
+            /* Adjust as per your layout needs */
+            width: 100%;
+            /* Ensure it spans the same width as the image */
+        }
+
+        .overlay-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top,
+                    rgba(0, 0, 0, 1),
+                    /* Solid black at the bottom */
+                    rgba(0, 0, 0, 0.8) 40%,
+                    /* Slightly lighter black */
+                    rgba(0, 0, 0, 0.6) 70%,
+                    /* Even lighter black */
+                    transparent 100%
+                    /* Fully transparent at the top */
+                );
+            pointer-events: none;
+            /* Ensures the overlay doesn't block interactions */
+            z-index: 1;
+            /* Stacks the overlay above the image */
+        }
+
+        .image-container-tem2 {
+            display: block;
+            /* Ensures proper image rendering */
+            width: 100%;
+            /* Maintains responsiveness */
+        }
+
+        .service-two-images {
+            height: 180px;
+            object-fit: cover;
+            width: 100%;
+        }
+
         @media only screen and (max-width: 600px) {
             .footer-nav-tem1 {
                 width: 100%;
@@ -330,6 +390,38 @@
                 margin: auto;
             }
         }
+
+        .two-profile {
+            position: relative;
+            z-index: 10;
+        }
+
+        .btn-link {
+            color: #ffffff;
+            font-size: 12px;
+            padding: 2px 5px !important;
+            text-decoration: none;
+            background-color: #000000a8;
+        }
+
+        .load-more-btn-box {
+            background: linear-gradient(to top, rgb(37 51 66 / 0%),
+                    /* Solid black at the bottom */
+                    rgb(36 52 67) 40%,
+                    /* Slightly lighter black */
+                    rgb(36 50 65 / 64%) 70%,
+                    /* Even lighter black */
+                    transparent 100%
+                    /* Fully transparent at the top */
+                );
+            height: 170px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: -65px !important;
+            z-index: 555;
+            position: relative;
+        }
     </style>
 </head>
 
@@ -344,10 +436,8 @@
                 <section>
                     <div class="container">
                         <div class="row">
-                            <div class="col-sm-12 px-0">
-                                <div
-                                    style="clip-path: polygon(20% 0%, 100% 0, 100% 20%, 100% 100%, 0 55%, 0 57%, 0 56%, 0 0);">
-
+                            <div class="col-12 px-0">
+                                <div class="overlay-container">
                                     <img class="img-fluid image-container-tem2 w-100"
                                         src="{{ !empty($nfc_card->banner_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card)->banner_image)) ? asset('storage/nfc/' . optional($nfc_card)->banner_image) : asset('frontend/images/no_image.png') }}"
                                         alt="" />
@@ -362,11 +452,54 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <div class="d-flex justify-content-between">
+                                    <div class="d-flex align-items-center two-profile">
                                         <div class="profile-img-tem2">
                                             <img class="img-fluid"
                                                 src="{{ !empty($nfc_card->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card)->profile_image) : asset('frontend/images/no_image.png') }}"
                                                 alt="" />
+                                        </div>
+                                        <div class="user-name-rotate-tem2 ps-4">
+                                            <h1 class="name-title-tem2 mb-0">
+                                                {{ optional($nfc_card->nfcData)->first_name }}
+                                                {{ optional($nfc_card->nfcData)->last_name }}
+                                            </h1>
+                                            <div class="pt-2">
+                                                <p class="text-white mb-1">{{ optional($nfc_card)->designation }} </p>
+                                                <p class="text-white">{{ optional($nfc_card->nfcData)->company_name }}
+                                                </p>
+                                                <div>
+                                                    @if ($nfc_card->social_links_show == '1')
+                                                        <div
+                                                            class="d-flex justify-content-start align-items-center social-rotate-tem2">
+                                                            @if (!empty(optional($nfc_card->nfcData)->facebook_url))
+                                                                <a href="{{ optional($nfc_card->nfcData)->facebook_url }}"
+                                                                    class="social-link-tem2"><i
+                                                                        class="fa-brands fa-facebook-f"></i></a>
+                                                            @endif
+                                                            @if (!empty(optional($nfc_card->nfcData)->instagram_url))
+                                                                <a href="{{ optional($nfc_card->nfcData)->instagram_url }}"
+                                                                    class="social-link-tem2"><i
+                                                                        class="fa-brands fa-instagram"></i></a>
+                                                            @endif
+                                                            @if (!empty(optional($nfc_card->nfcData)->linkedin_url))
+                                                                <a href="{{ optional($nfc_card->nfcData)->linkedin_url }}"
+                                                                    class="social-link-tem2"><i
+                                                                        class="fa-brands fa-linkedin-in"></i></a>
+                                                            @endif
+                                                            @if (!empty(optional($nfc_card->nfcData)->whatsapp_url))
+                                                                <a href="{{ optional($nfc_card->nfcData)->whatsapp_url }}"
+                                                                    class="social-link-tem2"><i
+                                                                        class="fa-brands fa-whatsapp"></i></a>
+                                                            @endif
+                                                            @if (!empty(optional($nfc_card->nfcData)->twitter_url))
+                                                                <a href="{{ optional($nfc_card->nfcData)->twitter_url }}"
+                                                                    class="social-link-tem2"><i
+                                                                        class="fa-brands fa-twitter"></i></a>
+                                                            @endif
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -378,38 +511,6 @@
                         <div class="container py-4 pt-3">
                             <div class="row align-items-center">
                                 <div class="col-sm-12">
-                                    <div class="user-name-rotate-tem2 ps-2">
-                                        <h1 class="name-title-tem2 mb-0">
-                                            {{ optional($nfc_card->nfcData)->first_name }}
-                                        </h1>
-                                        <p class="text-white mb-1">{{ optional($nfc_card)->designation }} </p>
-                                        <p class="text-white">{{ optional($nfc_card->nfcData)->company_name }} </p>
-                                    </div>
-                                    @if ($nfc_card->social_links_show == '1')
-                                        <div class="d-flex justify-content-start align-items-center social-rotate-tem2">
-                                            @if (!empty(optional($nfc_card->nfcData)->facebook_url))
-                                                <a href="{{ optional($nfc_card->nfcData)->facebook_url }}"
-                                                    class="social-link-tem2"><i class="fa-brands fa-facebook-f"></i></a>
-                                            @endif
-                                            @if (!empty(optional($nfc_card->nfcData)->instagram_url))
-                                                <a href="{{ optional($nfc_card->nfcData)->instagram_url }}"
-                                                    class="social-link-tem2"><i class="fa-brands fa-instagram"></i></a>
-                                            @endif
-                                            @if (!empty(optional($nfc_card->nfcData)->linkedin_url))
-                                                <a href="{{ optional($nfc_card->nfcData)->linkedin_url }}"
-                                                    class="social-link-tem2"><i
-                                                        class="fa-brands fa-linkedin-in"></i></a>
-                                            @endif
-                                            @if (!empty(optional($nfc_card->nfcData)->whatsapp_url))
-                                                <a href="{{ optional($nfc_card->nfcData)->whatsapp_url }}"
-                                                    class="social-link-tem2"><i class="fa-brands fa-whatsapp"></i></a>
-                                            @endif
-                                            @if (!empty(optional($nfc_card->nfcData)->twitter_url))
-                                                <a href="{{ optional($nfc_card->nfcData)->twitter_url }}"
-                                                    class="social-link-tem2"><i class="fa-brands fa-twitter"></i></a>
-                                            @endif
-                                        </div>
-                                    @endif
                                     @if (!empty($nfc_card->bio_description))
                                         <p class="text-white mb-0 text-justify pt-4">
                                             {{ $nfc_card->bio_description }}
@@ -439,18 +540,18 @@
                                                         class="fa fa-envelope social_icons fs-3 bg-white contact-icons-tem2"></i>
                                                 </div>
                                                 <div class="ps-3">
-                                                    <small class="mb-0">E-Mail Address</small>
+                                                    <p class="mb-0 fw-bold">E-Mail Address</p>
                                                     @if (!empty(optional($nfc_card->nfcData)->email_personal))
-                                                        <h5 class="mb-0">
+                                                        <p class="mb-0">
                                                             {{ optional($nfc_card->nfcData)->email_personal }}
                                                             <small>(Personal)</small>
-                                                        </h5>
+                                                        </p>
                                                     @endif
                                                     @if (!empty(optional($nfc_card->nfcData)->email_work))
-                                                        <h5 class="mb-0">
+                                                        <p class="mb-0">
                                                             {{ optional($nfc_card->nfcData)->email_work }}
                                                             <small>(Work)</small>
-                                                        </h5>
+                                                        </p>
                                                     @endif
                                                 </div>
                                             </div>
@@ -464,19 +565,19 @@
                                                         class="fa fa-phone social_icons fs-3 bg-white contact-icons-tem2"></i>
                                                 </div>
                                                 <div class="ps-3">
-                                                    <small class="mb-0">Phone</small>
-                                                    @if (!empty(optional($nfc_card->nfcData)->phone_personal))
-                                                        <h5 class="mb-0">
-                                                            {{ optional($nfc_card->nfcData)->phone_personal }}
-                                                            <small>(Personal)</small>
-                                                        </h5>
-                                                    @endif
-                                                    @if (!empty(optional($nfc_card->nfcData)->phone_work))
-                                                        <h5 class="mb-0">
-                                                            {{ optional($nfc_card->nfcData)->phone_work }}
-                                                            <small>(Work)</small>
-                                                        </h5>
-                                                    @endif
+                                                    <p class="mb-0 fw-bold">Phone</small>
+                                                        @if (!empty(optional($nfc_card->nfcData)->phone_personal))
+                                                            <p class="mb-0">
+                                                                {{ optional($nfc_card->nfcData)->phone_personal }}
+                                                                <small>(Personal)</small>
+                                                            </p>
+                                                        @endif
+                                                        @if (!empty(optional($nfc_card->nfcData)->phone_work))
+                                                            <p class="mb-0">
+                                                                {{ optional($nfc_card->nfcData)->phone_work }}
+                                                                <small>(Work)</small>
+                                                            </p>
+                                                        @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -489,10 +590,10 @@
                                                         class="fa-solid fa-cake-candles social_icons fs-3 bg-white contact-icons-tem2"></i>
                                                 </div>
                                                 <div>
-                                                    <small class="mb-0">Date Of Birth</small>
-                                                    <h5 class="mb-0">
+                                                    <p class="mb-0 fw-bold">Date Of Birth</small>
+                                                    <p class="mb-0">
                                                         {{ optional($nfc_card->nfcData)->date_of_birth }}
-                                                    </h5>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -505,8 +606,8 @@
                                                         class="fa-solid fa-fax social_icons fs-3 bg-white contact-icons-tem2"></i>
                                                 </div>
                                                 <div class="ps-3">
-                                                    <small class="mb-0">Fax Number</small>
-                                                    <h5 class="mb-0">{{ optional($nfc_card->nfcData)->fax }}</h5>
+                                                    <p class="mb-0 fw-bold">Fax Number</small>
+                                                    <p class="mb-0">{{ optional($nfc_card->nfcData)->fax }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -520,9 +621,9 @@
                                                         class="fa fa-location-dot social_icons fs-3 bg-white contact-icons-tem2"></i>
                                                 </div>
                                                 <div class="ps-3">
-                                                    <small class="mb-0">Location</small>
-                                                    <h5 class="mb-0">{{ optional($nfc_card->nfcData)->location }}
-                                                    </h5>
+                                                    <p class="mb-0 fw-bold">Location</small>
+                                                    <p class="mb-0">{{ optional($nfc_card->nfcData)->location }}
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -534,7 +635,7 @@
                     <!-- Company Info -->
                     @if ($nfc_card->companies_show == '1')
                         <section>
-                            <div class="container py-5">
+                            <div class="container py-5 pt-0">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="text-center">
@@ -561,38 +662,58 @@
                                                             </p>
                                                         </div>
                                                     </div>
-                                                    <div class="col-6">
-                                                        <div class="ps-4 pb-3">
+                                                    <div class="col-8">
+                                                        <div class="ps-4">
                                                             <p class="mb-0">
-                                                                <span><i
-                                                                        class="fa-solid fa-globe pe-3"></i>{{ $company->company_website }}</span>
+                                                                <span>
+                                                                    <i class="fa-solid fa-globe pe-3"></i>
+                                                                    {{ $company->company_website }}
+                                                                </span>
                                                             </p>
                                                             <p class="mb-0">
-                                                                <span><i
-                                                                        class="fa-solid fa-phone pe-3"></i>{{ $company->company_phone }}</span>
+                                                                <span>
+                                                                    <i class="fa-solid fa-phone pe-3"></i>
+                                                                    {{ $company->company_phone }}
+                                                                </span>
                                                             </p>
                                                             <p class="mb-0">
-                                                                <span><i
-                                                                        class="fa-regular fa-envelope pe-3"></i>{{ $company->company_email }}</span>
+                                                                <span>
+                                                                    <i class="fa-regular fa-envelope pe-3"></i>
+                                                                    {{ $company->company_email }}
+                                                                </span>
                                                             </p>
                                                             <p class="mb-0">
-                                                                <span><i
-                                                                        class="fa-solid fa-location pe-3"></i>{{ $company->company_address_line_one }}
-                                                                    {{ $company->company_address_line_two }}</span>
+                                                                <span>
+                                                                    <i class="fa-solid fa-location pe-3"></i>
+                                                                    {{ $company->company_address_line_one }}
+                                                                    {{ $company->company_address_line_two }}
+                                                                </span>
                                                             </p>
                                                         </div>
                                                     </div>
                                                     <div
-                                                        class="col-6 align-items-center justify-content-center d-flex">
+                                                        class="col-4 align-items-center justify-content-center d-flex">
                                                         @if ($nfc_card->social_links_show == '1')
-                                                            <div class="px-3 d-flex">
+                                                            <div class="px-3 d-flex flex-column">
+                                                                @if (!empty($company->company_website))
+                                                                    <a href="{{ $company->company_website }}"
+                                                                        class="btn btn-sm company-btn-tem2 rounded-0 mb-2 w-100 me-2">Website</a>
+                                                                @endif
                                                                 @if (!empty($company->company_facebook))
                                                                     <a href="{{ $company->company_facebook }}"
                                                                         class="btn company-btn-tem2 rounded-0 mb-2 w-100 me-2">Facebook</a>
                                                                 @endif
-                                                                @if (!empty($company->company_likedin))
-                                                                    <a href="{{ $company->company_likedin }}"
+                                                                @if (!empty($company->company_twitter))
+                                                                    <a href="{{ $company->company_twitter }}"
+                                                                        class="btn company-btn-tem2 rounded-0 mb-2 w-100 me-2">Twitter</a>
+                                                                @endif
+                                                                @if (!empty($company->company_linkedin))
+                                                                    <a href="{{ $company->company_linkedin }}"
                                                                         class="btn company-btn-tem2 rounded-0 mb-2 w-100 me-2">Linkedin</a>
+                                                                @endif
+                                                                @if (!empty($company->company_youtube))
+                                                                    <a href="{{ $company->company_youtube }}"
+                                                                        class="btn company-btn-tem2 rounded-0 mb-2 w-100 me-2">Youtube</a>
                                                                 @endif
                                                                 @if (!empty($company->company_instagram))
                                                                     <a href="{{ $company->company_instagram }}"
@@ -612,7 +733,7 @@
                     <!-- Servies Box -->
                     @if ($nfc_card->services_show == '1')
                         <section>
-                            <div class="container pb-5">
+                            <div class="container">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="text-center">
@@ -623,39 +744,49 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="serviceCarousel" class="carousel slide" data-ride="carousel">
-                                    <div class="carousel-inner">
-                                        @foreach ($nfc_card->nfcService->chunk(2) as $serviceChunk)
-                                            <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                                                <div class="row">
-                                                    @foreach ($serviceChunk as $service)
-                                                        <div class="col-lg-6 col-6 mb-4">
-                                                            <div class="card rounded-0 border-0 h-100">
-                                                                <div class="card-body border-0 d-flex flex-column">
-                                                                    <div>
-                                                                        <img class="card-img-top"
-                                                                            src="{{ !empty($service->service_icon) && file_exists(public_path('storage/nfc/service/' . optional($service)->service_icon)) ? asset('storage/nfc/service/' . optional($service)->service_icon) : asset('frontend/images/no_image.png') }}"
-                                                                            alt="" />
-                                                                    </div>
-                                                                    <div class="mt-3 text-center flex-grow-1">
-                                                                        <h4 class="mb-0 special-font"
-                                                                            style="color: var(--template-two-color-primary)">
-                                                                            <a
-                                                                                href="{{ !empty(optional($service)->service_url) ? optional($service)->service_url : 'javascript:void(0)' }}">
-                                                                                {{ $service->service_name }}
-                                                                            </a>
-                                                                        </h4>
-                                                                        <p class="">
-                                                                            {{ $service->service_description }}
-                                                                        </p>
-                                                                    </div>
+                                <div>
+                                    <div class="container">
+                                        <div class="row" id="service-container">
+                                            @foreach ($nfc_card->nfcService as $index => $service)
+                                                <div class="col-lg-6 col-md-6 col-sm-12 mb-4 service-item"
+                                                    data-index="{{ $index }}"
+                                                    style="{{ $index > 1 ? 'display: none;' : '' }}">
+                                                    <a
+                                                        href="{{ !empty(optional($service)->service_url) ? optional($service)->service_url : 'javascript:void(0)' }}">
+                                                        <div class="card rounded-0 border-0 h-100">
+                                                            <div class="card-header p-0 border-0">
+                                                                <img class="img-fluid service-two-images"
+                                                                    src="{{ !empty($service->service_icon) && file_exists(public_path('storage/nfc/service/' . optional($service)->service_icon)) ? asset('storage/nfc/service/' . optional($service)->service_icon) : asset('frontend/images/no_image.png') }}"
+                                                                    alt="" />
+                                                            </div>
+                                                            <div class="card-body border-0 p-0 d-flex flex-column">
+                                                                <div class="mt-3 text-center flex-grow-1">
+                                                                    <h6>{{ $service->service_name }}</h6>
+                                                                    <p class="service-description">
+                                                                        <span
+                                                                            class="short-text">{{ Str::limit($service->service_description, 20) }}</span>
+                                                                        <span
+                                                                            class="full-text d-none">{{ $service->service_description }}</span>
+                                                                        <br>
+                                                                        <button
+                                                                            class="my-3 rounded-0 btn btn-link p-0 read-more text-mute"
+                                                                            onclick="toggleText(this)">Read
+                                                                            More</button>
+                                                                    </p>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    @endforeach
+                                                    </a>
                                                 </div>
-                                            </div>
-                                        @endforeach
+                                            @endforeach
+                                        </div>
+                                        <div class="text-center load-more-btn-box mt-4">
+                                            <button id="load-more-btn" class="btn btn-light fa-beat">
+                                                <i class="fa-solid fa-arrow-down text-black"></i>
+                                            </button>
+                                            <button id="collapse-btn" class="btn btn-dark d-none fa-beat"><i
+                                                    class="fa-solid fa-arrow-up text-white"></i></button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -687,11 +818,11 @@
                                                     </div>
                                                     <div
                                                         class="d-flex justify-content-between align-items-center px-4 pt-3 align-items-center product-content-tem2">
-                                                        <h3 class="special-font mb-0">
+                                                        <h4 class="mb-0">
                                                             {{ $product->product_name }}
-                                                        </h3>
+                                                        </h4>
                                                         <div>
-                                                            <h1 class="special-font mb-0">
+                                                            <p class="mb-0">
                                                                 @if ($product->product_currency == 'taka')
                                                                     Tk
                                                                 @elseif ($product->product_currency == 'euro')
@@ -702,7 +833,7 @@
                                                                     £
                                                                 @endif
                                                                 {{ $product->product_price }}
-                                                            </h1>
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -766,7 +897,7 @@
                                         <div class="col-10 col-offset-md-1 mx-auto">
                                             <div class="testimonial-slide">
                                                 @foreach ($nfc_card->nfcTestimonial as $testimonial)
-                                                    <div class="card p-0 bg-white border-0 p-0 mt-5">
+                                                    <div class="card p-0 bg-white border-0 mt-5">
                                                         <div class="card-body rounded-0 border-0 d-flex">
                                                             <div class="row align-items-center">
                                                                 <div class="col-sm-4">
@@ -868,13 +999,15 @@
                                 </div>
                                 <div class="row pt-5">
                                     @if (optional($nfc_card->nfcData)->monday == '1')
-                                        <div class="col-6 mb-4">
+                                        <div class="col-12 mb-4">
                                             <div>
-                                                <div class="text-center text-white">
+                                                <div class="rounded-pill d-flex justify-content-between align-items-center border py-2">
                                                     <i class="fa fa-calendar houricon"></i>
                                                 </div>
+                                                <div>
+                                                    <h6 class="mb-0 text-white pt-2">Monday</h6>
+                                                </div>
                                                 <div class="text-center">
-                                                    <p class="mb-0 text-white special-font">Monday</p>
                                                     <p class="mb-0 text-white">
                                                         {{ optional($nfc_card->nfcData)->start_time_monday }} -
                                                         {{ optional($nfc_card->nfcData)->end_time_monday }}
@@ -884,92 +1017,115 @@
                                         </div>
                                     @endif
                                     @if (optional($nfc_card->nfcData)->tuesday == '1')
-                                        <div class="col-6 mb-4">
-                                            <div>
-                                                <div class="text-center text-white">
-                                                    <i class="fa fa-calendar houricon"></i>
+                                        <div class="col-12 mb-4">
+                                            <div
+                                                class="rounded-pill d-flex justify-content-between align-items-center border py-2">
+                                                <div class=" text-white ps-4">
+                                                    <i class="fa fa-calendar houricon fs-2"></i>
                                                 </div>
-                                                <div class="text-center">
-                                                    <p class="mb-0 text-white special-font">Tuesday</p>
+                                                <div>
+                                                    <h6 class="mb-0 text-white pt-2">Tuesday</p>
+                                                </div>
+                                                <div class="text-end pe-4">
                                                     <p class="mb-0 text-white">
                                                         {{ optional($nfc_card->nfcData)->start_time_tuesday }} -
-                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}
+                                                        {{ optional($nfc_card->nfcData)->end_time_tuesday }}
                                                     </p>
                                                 </div>
                                             </div>
                                         </div>
                                     @endif
                                     @if (optional($nfc_card->nfcData)->wednesday == '1')
-                                        <div class="col-6 mb-4">
-                                            <div>
-                                                <div class="text-center text-white">
-                                                    <i class="fa fa-calendar houricon"></i>
+                                        <div class="col-12 mb-4">
+                                            <div
+                                                class="rounded-pill d-flex justify-content-between align-items-center border py-2">
+                                                <div class=" text-white ps-4">
+                                                    <i class="fa fa-calendar houricon fs-2"></i>
                                                 </div>
-                                                <div class="text-center">
-                                                    <p class="mb-0 text-white special-font">Wednesday</p>
+                                                <div>
+                                                    <h6 class="mb-0 text-white pt-2">Wednesday</p>
+                                                </div>
+                                                <div class="text-end pe-4">
                                                     <p class="mb-0 text-white">
                                                         {{ optional($nfc_card->nfcData)->start_time_wednesday }} -
-                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}</p>
+                                                        {{ optional($nfc_card->nfcData)->end_time_wednesday }}
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
                                     @endif
                                     @if (optional($nfc_card->nfcData)->thursday == '1')
-                                        <div class="col-6 mb-4">
-                                            <div>
-                                                <div class="text-center text-white">
-                                                    <i class="fa fa-calendar houricon"></i>
+                                        <div class="col-12 mb-4">
+                                            <div
+                                                class="rounded-pill d-flex justify-content-between align-items-center border py-2">
+                                                <div class=" text-white ps-4">
+                                                    <i class="fa fa-calendar houricon fs-2"></i>
                                                 </div>
-                                                <div class="text-center">
-                                                    <p class="mb-0 text-white special-font">Thursday</p>
+                                                <div>
+                                                    <h6 class="mb-0 text-white pt-2">Thursday</p>
+                                                </div>
+                                                <div class="text-end pe-4">
                                                     <p class="mb-0 text-white">
                                                         {{ optional($nfc_card->nfcData)->start_time_thursday }} -
-                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}</p>
+                                                        {{ optional($nfc_card->nfcData)->end_time_thursday }}
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
                                     @endif
                                     @if (optional($nfc_card->nfcData)->friday == '1')
-                                        <div class="col-6 mb-4">
-                                            <div>
-                                                <div class="text-center text-white">
-                                                    <i class="fa fa-calendar houricon"></i>
+                                        <div class="col-12 mb-4">
+                                            <div
+                                                class="rounded-pill d-flex justify-content-between align-items-center border py-2">
+                                                <div class=" text-white ps-4">
+                                                    <i class="fa fa-calendar houricon fs-2"></i>
                                                 </div>
-                                                <div class="text-center">
-                                                    <p class="mb-0 text-white special-font">Friday</p>
+                                                <div>
+                                                    <h6 class="mb-0 text-white pt-2">Friday</p>
+                                                </div>
+                                                <div class="text-end pe-4">
                                                     <p class="mb-0 text-white">
                                                         {{ optional($nfc_card->nfcData)->start_time_friday }} -
-                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}</p>
+                                                        {{ optional($nfc_card->nfcData)->end_time_friday }}
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
                                     @endif
                                     @if (optional($nfc_card->nfcData)->saturday == '1')
-                                        <div class="col-6 mb-4">
-                                            <div>
-                                                <div class="text-center text-white">
-                                                    <i class="fa fa-calendar houricon"></i>
+                                        <div class="col-12 mb-4">
+                                            <div
+                                                class="rounded-pill d-flex justify-content-between align-items-center border py-2">
+                                                <div class=" text-white ps-4">
+                                                    <i class="fa fa-calendar houricon fs-2"></i>
                                                 </div>
-                                                <div class="text-center">
-                                                    <p class="mb-0 text-white special-font">Satarday</p>
+                                                <div>
+                                                    <h6 class="mb-0 text-white pt-2">Saturday</p>
+                                                </div>
+                                                <div class="text-end pe-4">
                                                     <p class="mb-0 text-white">
                                                         {{ optional($nfc_card->nfcData)->start_time_saturday }} -
-                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}</p>
+                                                        {{ optional($nfc_card->nfcData)->end_time_saturday }}
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
                                     @endif
                                     @if (optional($nfc_card->nfcData)->sunday == '1')
-                                        <div class="col-6 mb-4">
-                                            <div>
-                                                <div class="text-center text-white">
-                                                    <i class="fa fa-calendar houricon"></i>
+                                        <div class="col-12 mb-4">
+                                            <div
+                                                class="rounded-pill d-flex justify-content-between align-items-center border py-2">
+                                                <div class=" text-white ps-4">
+                                                    <i class="fa fa-calendar houricon fs-2"></i>
                                                 </div>
-                                                <div class="text-center">
-                                                    <p class="mb-0 text-white special-font">Satarday</p>
+                                                <div>
+                                                    <h6 class="mb-0 text-white pt-2">Sunday</p>
+                                                </div>
+                                                <div class="text-end pe-4">
                                                     <p class="mb-0 text-white">
                                                         {{ optional($nfc_card->nfcData)->start_time_sunday }} -
-                                                        {{ optional($nfc_card->nfcData)->end_time_monday }}</p>
+                                                        {{ optional($nfc_card->nfcData)->end_time_sunday }}
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1136,6 +1292,79 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const itemsPerPage = 2; // Number of items to show per load
+            const loadMoreBtn = document.getElementById('load-more-btn');
+            const collapseBtn = document.getElementById('collapse-btn');
+            const serviceContainer = document.getElementById('service-container');
+            const serviceItems = Array.from(serviceContainer.getElementsByClassName('service-item'));
+
+            let visibleCount = 4; // Initial visible items
+
+            // Check if we need to hide the Load More button initially
+            if (serviceItems.length <= visibleCount) {
+                loadMoreBtn.classList.add('d-none');
+            }
+
+            // Display the initial 4 items
+            serviceItems.forEach((item, index) => {
+                item.style.display = index < visibleCount ? 'block' : 'none';
+            });
+
+            loadMoreBtn.addEventListener('click', () => {
+                // Show the next set of items
+                for (let i = visibleCount; i < visibleCount + itemsPerPage; i++) {
+                    if (serviceItems[i]) {
+                        serviceItems[i].style.display = 'block';
+                    }
+                }
+
+                // Update the visible count
+                visibleCount += itemsPerPage;
+
+                // If all items are visible, hide the Load More button and show the Collapse button
+                if (visibleCount >= serviceItems.length) {
+                    loadMoreBtn.classList.add('d-none');
+                    collapseBtn.classList.remove('d-none');
+                }
+            });
+
+            collapseBtn.addEventListener('click', () => {
+                // Collapse all items except the first 4
+                serviceItems.forEach((item, index) => {
+                    item.style.display = index < 4 ? 'block' : 'none';
+                });
+
+                // Reset the visible count and button visibility
+                visibleCount = 4;
+                loadMoreBtn.classList.remove('d-none');
+                collapseBtn.classList.add('d-none');
+
+                // Hide the Load More button if only 4 or fewer items are available
+                if (serviceItems.length <= visibleCount) {
+                    loadMoreBtn.classList.add('d-none');
+                }
+            });
+        });
+    </script>
+    <script>
+        function toggleText(button) {
+            const parent = button.closest('.service-description');
+            const shortText = parent.querySelector('.short-text');
+            const fullText = parent.querySelector('.full-text');
+
+            if (fullText.classList.contains('d-none')) {
+                shortText.classList.add('d-none');
+                fullText.classList.remove('d-none');
+                button.textContent = 'Read Less';
+            } else {
+                fullText.classList.add('d-none');
+                shortText.classList.remove('d-none');
+                button.textContent = 'Read More';
+            }
+        }
+    </script>
+    <script>
         window.addEventListener('load', function() {
             document.getElementById('preloader').style.display = 'none';
         });
@@ -1213,7 +1442,7 @@
             $(".product-slide").slick({
                 infinite: true,
                 speed: 500,
-                slidesToShow: 1,
+                slidesToShow: 2,
                 slidesToScroll: 1,
                 autoplay: true,
                 autoplaySpeed: 2000,
