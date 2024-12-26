@@ -122,7 +122,7 @@
             width: 70px;
             height: 70px;
             background: var(--template-two-color-white);
-            padding: 12px;
+            padding: 4px;
             border-radius: 100%;
             object-fit: cover;
         }
@@ -430,91 +430,100 @@
                             !empty(optional($nfc_card->nfcData)->address_line_two))
                         <section>
                             <div class="container py-5">
-                                <div class="row justify-content-center">
+                                <div class="row">
                                     @if (!empty(optional($nfc_card->nfcData)->email_personal) || !empty(optional($nfc_card->nfcData)->email_work))
-                                        <div class="col-md-6">
-                                            <div class="text-white text-center ps-lg-3 ps-0">
+                                        <div class="col-12">
+                                            <div class="text-white d-flex align-items-center mb-4">
                                                 <div class="">
                                                     <i
                                                         class="fa fa-envelope social_icons fs-3 bg-white contact-icons-tem2"></i>
                                                 </div>
-                                                <small class="mb-0">E-Mail Address</small>
-                                                @if (!empty(optional($nfc_card->nfcData)->email_personal))
-                                                    <h5 class="mb-0 fs-5">
-                                                        {{ optional($nfc_card->nfcData)->email_personal }}
-                                                        <small>(Personal)</small>
-                                                    </h5>
-                                                @endif
-                                                @if (!empty(optional($nfc_card->nfcData)->email_work))
-                                                    <h5 class="mb-0 fs-5">
-                                                        {{ optional($nfc_card->nfcData)->email_work }}
-                                                        <small>(Work)</small>
-                                                    </h5>
-                                                @endif
+                                                <div class="ps-3">
+                                                    <small class="mb-0">E-Mail Address</small>
+                                                    @if (!empty(optional($nfc_card->nfcData)->email_personal))
+                                                        <h5 class="mb-0">
+                                                            {{ optional($nfc_card->nfcData)->email_personal }}
+                                                            <small>(Personal)</small>
+                                                        </h5>
+                                                    @endif
+                                                    @if (!empty(optional($nfc_card->nfcData)->email_work))
+                                                        <h5 class="mb-0">
+                                                            {{ optional($nfc_card->nfcData)->email_work }}
+                                                            <small>(Work)</small>
+                                                        </h5>
+                                                    @endif
+                                                </div>
                                             </div>
                                         </div>
                                     @endif
                                     @if (!empty(optional($nfc_card->nfcData)->phone_personal) || !empty(optional($nfc_card->nfcData)->phone_work))
-                                        <div class="col-md-6">
-                                            <div class="text-white text-center ps-lg-3 ps-0 mt-4 mt-lg-0">
+                                        <div class="col-12">
+                                            <div class="text-white d-flex align-items-center mb-4">
                                                 <div class="">
                                                     <i
                                                         class="fa fa-phone social_icons fs-3 bg-white contact-icons-tem2"></i>
                                                 </div>
-                                                <small class="mb-0">Phone</small>
-
-                                                @if (!empty(optional($nfc_card->nfcData)->phone_personal))
-                                                    <h5 class="mb-0 fs-5">
-                                                        {{ optional($nfc_card->nfcData)->phone_personal }}
-                                                        <small>(Personal)</small>
-                                                    </h5>
-                                                @endif
-                                                @if (!empty(optional($nfc_card->nfcData)->phone_work))
-                                                    <h5 class="mb-0 fs-5">
-                                                        {{ optional($nfc_card->nfcData)->phone_work }}
-                                                        <small>(Work)</small>
-                                                    </h5>
-                                                @endif
-
+                                                <div class="ps-3">
+                                                    <small class="mb-0">Phone</small>
+                                                    @if (!empty(optional($nfc_card->nfcData)->phone_personal))
+                                                        <h5 class="mb-0">
+                                                            {{ optional($nfc_card->nfcData)->phone_personal }}
+                                                            <small>(Personal)</small>
+                                                        </h5>
+                                                    @endif
+                                                    @if (!empty(optional($nfc_card->nfcData)->phone_work))
+                                                        <h5 class="mb-0">
+                                                            {{ optional($nfc_card->nfcData)->phone_work }}
+                                                            <small>(Work)</small>
+                                                        </h5>
+                                                    @endif
+                                                </div>
                                             </div>
                                         </div>
                                     @endif
                                     @if (!empty(optional($nfc_card->nfcData)->date_of_birth))
-                                        <div class="col-md-6 mt-4">
-                                            <div class="text-white text-center ps-lg-3 ps-0">
+                                        <div class="col-12">
+                                            <div class="text-white d-flex align-items-center ps-lg-3 ps-0">
                                                 <div class="">
                                                     <i
                                                         class="fa-solid fa-cake-candles social_icons fs-3 bg-white contact-icons-tem2"></i>
                                                 </div>
-                                                <small class="mb-0">Date Of Birth</small>
-                                                <h5 class="mb-0 fs-5">{{ optional($nfc_card->nfcData)->date_of_birth }}
-                                                </h5>
+                                                <div>
+                                                    <small class="mb-0">Date Of Birth</small>
+                                                    <h5 class="mb-0">
+                                                        {{ optional($nfc_card->nfcData)->date_of_birth }}
+                                                    </h5>
+                                                </div>
                                             </div>
                                         </div>
                                     @endif
                                     @if (!empty(optional($nfc_card->nfcData)->fax))
-                                        <div class="col-md-6 mt-4">
-                                            <div class="text-white text-center ps-lg-3 ps-0">
+                                        <div class="col-12">
+                                            <div class="text-white d-flex align-items-center mb-4">
                                                 <div class="">
                                                     <i
                                                         class="fa-solid fa-fax social_icons fs-3 bg-white contact-icons-tem2"></i>
                                                 </div>
-                                                <small class="mb-0">Fax Number</small>
-                                                <h5 class="mb-0 fs-5">{{ optional($nfc_card->nfcData)->fax }}</h5>
+                                                <div class="ps-3">
+                                                    <small class="mb-0">Fax Number</small>
+                                                    <h5 class="mb-0">{{ optional($nfc_card->nfcData)->fax }}</h5>
+                                                </div>
                                             </div>
                                         </div>
                                     @endif
 
                                     @if (!empty(optional($nfc_card->nfcData)->location))
-                                        <div class="col-md-6 mt-4">
-                                            <div class="text-white text-center ps-lg-3 ps-0">
+                                        <div class="col-12">
+                                            <div class="text-white d-flex align-items-center mb-4">
                                                 <div class="">
                                                     <i
                                                         class="fa fa-location-dot social_icons fs-3 bg-white contact-icons-tem2"></i>
                                                 </div>
-                                                <small class="mb-0">Location</small>
-                                                <h5 class="mb-0 fs-5">{{ optional($nfc_card->nfcData)->location }}
-                                                </h5>
+                                                <div class="ps-3">
+                                                    <small class="mb-0">Location</small>
+                                                    <h5 class="mb-0">{{ optional($nfc_card->nfcData)->location }}
+                                                    </h5>
+                                                </div>
                                             </div>
                                         </div>
                                     @endif
@@ -538,7 +547,7 @@
                                         @foreach ($nfc_card->nfcCompany as $company)
                                             <div class="">
                                                 <div class="row pt-3 align-items-center">
-                                                    <div class="col-md-12">
+                                                    <div class="col-12">
                                                         <div class="text-center text-white">
                                                             <div
                                                                 class="d-flex justify-content-center align-items-center">
@@ -552,7 +561,7 @@
                                                             </p>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6">
+                                                    <div class="col-6">
                                                         <div class="ps-4 pb-3">
                                                             <p class="mb-0">
                                                                 <span><i
@@ -574,7 +583,7 @@
                                                         </div>
                                                     </div>
                                                     <div
-                                                        class="col-md-6 align-items-center justify-content-center d-flex">
+                                                        class="col-6 align-items-center justify-content-center d-flex">
                                                         @if ($nfc_card->social_links_show == '1')
                                                             <div class="px-3 d-flex">
                                                                 @if (!empty($company->company_facebook))
@@ -620,7 +629,7 @@
                                             <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
                                                 <div class="row">
                                                     @foreach ($serviceChunk as $service)
-                                                        <div class="col-lg-6 col-md-6 mb-4">
+                                                        <div class="col-lg-6 col-6 mb-4">
                                                             <div class="card rounded-0 border-0 h-100">
                                                                 <div class="card-body border-0 d-flex flex-column">
                                                                     <div>
@@ -668,7 +677,7 @@
                                 </div>
                                 <div class="row pt-3 product-slide">
                                     @foreach ($nfc_card->nfcProduct as $product)
-                                        <div class="col-md-4 me-2">
+                                        <div class="col-4 me-2">
                                             <div class="card border-0 ms-2">
                                                 <div class="card-body p-0">
                                                     <div>
@@ -754,7 +763,7 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-10 col-offset-md-1 mx-auto">
+                                        <div class="col-10 col-offset-md-1 mx-auto">
                                             <div class="testimonial-slide">
                                                 @foreach ($nfc_card->nfcTestimonial as $testimonial)
                                                     <div class="card p-0 bg-white border-0 p-0 mt-5">
@@ -818,7 +827,7 @@
                                 </div>
                             </div>
                             <div class="row pt-3">
-                                <div class="col-md-12">
+                                <div class="col-12">
                                     <div class="w-50 mx-auto">
                                         @if (!empty($nfc_card->nfc_qr) && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc_qr)))
                                             <img class="img-fluid"
@@ -859,7 +868,7 @@
                                 </div>
                                 <div class="row pt-5">
                                     @if (optional($nfc_card->nfcData)->monday == '1')
-                                        <div class="col-md-6 mb-4">
+                                        <div class="col-6 mb-4">
                                             <div>
                                                 <div class="text-center text-white">
                                                     <i class="fa fa-calendar houricon"></i>
@@ -875,7 +884,7 @@
                                         </div>
                                     @endif
                                     @if (optional($nfc_card->nfcData)->tuesday == '1')
-                                        <div class="col-md-6 mb-4">
+                                        <div class="col-6 mb-4">
                                             <div>
                                                 <div class="text-center text-white">
                                                     <i class="fa fa-calendar houricon"></i>
@@ -891,7 +900,7 @@
                                         </div>
                                     @endif
                                     @if (optional($nfc_card->nfcData)->wednesday == '1')
-                                        <div class="col-md-6 mb-4">
+                                        <div class="col-6 mb-4">
                                             <div>
                                                 <div class="text-center text-white">
                                                     <i class="fa fa-calendar houricon"></i>
@@ -906,7 +915,7 @@
                                         </div>
                                     @endif
                                     @if (optional($nfc_card->nfcData)->thursday == '1')
-                                        <div class="col-md-6 mb-4">
+                                        <div class="col-6 mb-4">
                                             <div>
                                                 <div class="text-center text-white">
                                                     <i class="fa fa-calendar houricon"></i>
@@ -921,7 +930,7 @@
                                         </div>
                                     @endif
                                     @if (optional($nfc_card->nfcData)->friday == '1')
-                                        <div class="col-md-6 mb-4">
+                                        <div class="col-6 mb-4">
                                             <div>
                                                 <div class="text-center text-white">
                                                     <i class="fa fa-calendar houricon"></i>
@@ -936,7 +945,7 @@
                                         </div>
                                     @endif
                                     @if (optional($nfc_card->nfcData)->saturday == '1')
-                                        <div class="col-md-6 mb-4">
+                                        <div class="col-6 mb-4">
                                             <div>
                                                 <div class="text-center text-white">
                                                     <i class="fa fa-calendar houricon"></i>
@@ -951,7 +960,7 @@
                                         </div>
                                     @endif
                                     @if (optional($nfc_card->nfcData)->sunday == '1')
-                                        <div class="col-md-6 mb-4">
+                                        <div class="col-6 mb-4">
                                             <div>
                                                 <div class="text-center text-white">
                                                     <i class="fa fa-calendar houricon"></i>
