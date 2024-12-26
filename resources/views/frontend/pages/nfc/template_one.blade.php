@@ -21,10 +21,13 @@
         type="image/x-icon" />
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" type="text/css"
-        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/css/swiper.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/css/slick.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/css/slick_theme.min.css') }}" />
+    {{-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" /> --}}
+    {{-- <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" /> --}}
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css"> --}}
 
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Almendra+SC&family=Anton&family=Anton+SC&family=Bebas+Neue&family=Jost:ital,wght@0,100..900;1,100..900&family=Margarine&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
@@ -60,6 +63,10 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
+        }
+
+        body {
+            height: 100%;
         }
 
         .mobile-frame {
@@ -374,6 +381,12 @@
                                     </div>
                                     @if ($nfc_card->social_links_show == '1')
                                         <div class="d-flex justify-content-center align-items-center">
+                                            @if (!empty(optional($nfc_card->nfcData)->website_url))
+                                                <a href="{{ optional($nfc_card->nfcData)->website_url }}"
+                                                    class="social-link-tem1">
+                                                    <i class="fa-solid fa-globe"></i>
+                                                </a>
+                                            @endif
                                             @if (!empty(optional($nfc_card->nfcData)->facebook_url))
                                                 <a href="{{ optional($nfc_card->nfcData)->facebook_url }}"
                                                     class="social-link-tem1">
@@ -396,6 +409,24 @@
                                                 <a href="{{ optional($nfc_card->nfcData)->whatsapp_url }}"
                                                     class="social-link-tem1">
                                                     <i class="fa-brands fa-whatsapp"></i>
+                                                </a>
+                                            @endif
+                                            @if (!empty(optional($nfc_card->nfcData)->twitter_url))
+                                                <a href="{{ optional($nfc_card->nfcData)->twitter_url }}"
+                                                    class="social-link-tem1">
+                                                    <i class="fa-brands fa-twitter"></i>
+                                                </a>
+                                            @endif
+                                            @if (!empty(optional($nfc_card->nfcData)->youtube_url))
+                                                <a href="{{ optional($nfc_card->nfcData)->youtube_url }}"
+                                                    class="social-link-tem1">
+                                                    <i class="fa-brands fa-youtube"></i>
+                                                </a>
+                                            @endif
+                                            @if (!empty(optional($nfc_card->nfcData)->pinterest_url))
+                                                <a href="{{ optional($nfc_card->nfcData)->pinterest_url }}"
+                                                    class="social-link-tem1">
+                                                    <i class="fa-brands fa-pinterest"></i>
                                                 </a>
                                             @endif
                                         </div>
@@ -441,12 +472,14 @@
                                                         <small class="mb-0">E-Mail Address</small>
                                                         @if (!empty(optional($nfc_card->nfcData)->email_personal))
                                                             <p class="mb-0 fs-6">
-                                                                {{ optional($nfc_card->nfcData)->email_personal }} <small>(Personal)</small>
+                                                                {{ optional($nfc_card->nfcData)->email_personal }}
+                                                                <small>(Personal)</small>
                                                             </p>
                                                         @endif
                                                         @if (!empty(optional($nfc_card->nfcData)->email_work))
                                                             <p class="mb-0 fs-6">
-                                                                {{ optional($nfc_card->nfcData)->email_work }} <small>(Work)</small>
+                                                                {{ optional($nfc_card->nfcData)->email_work }}
+                                                                <small>(Work)</small>
                                                             </p>
                                                         @endif
                                                     </div>
@@ -465,11 +498,13 @@
                                                         <small class="mb-0">Mobile Number</small>
                                                         @if (!empty(optional($nfc_card->nfcData)->phone_personal))
                                                             <p class="mb-0 fs-6">
-                                                                {{ optional($nfc_card->nfcData)->phone_personal }} <small>(Personal)</small></p>
+                                                                {{ optional($nfc_card->nfcData)->phone_personal }}
+                                                                <small>(Personal)</small></p>
                                                         @endif
                                                         @if (!empty(optional($nfc_card->nfcData)->phone_work))
                                                             <p class="mb-0 fs-6">
-                                                                {{ optional($nfc_card->nfcData)->phone_work }} <small>(Work)</small></p>
+                                                                {{ optional($nfc_card->nfcData)->phone_work }}
+                                                                <small>(Work)</small></p>
                                                         @endif
                                                     </div>
                                                 </div>
@@ -844,7 +879,7 @@
                                                                 </svg>
                                                             </a>
                                                         @endif
-                                                        
+
                                                         @if (!empty($company->company_twitter))
                                                             <a href="{{ $company->company_twitter }}"
                                                                 class="btn btn-dark rounded-0 mb-2">
@@ -888,7 +923,7 @@
                     </section>
                 @endif
                 <!-- Servies Box -->
-                @if ($nfc_card->services_show == '1' && ($nfc_card->nfcService->count() > 0))
+                @if ($nfc_card->services_show == '1' && $nfc_card->nfcService->count() > 0)
                     <section>
                         <div class="container pb-5">
                             <div class="row">
@@ -936,7 +971,7 @@
                 @endif
 
                 <!-- Product -->
-                @if ($nfc_card->products_show == '1' && ($nfc_card->nfcProduct->count() > 0))
+                @if ($nfc_card->products_show == '1' && $nfc_card->nfcProduct->count() > 0)
                     <section>
                         <div class="container pb-5">
                             <div class="row">
@@ -963,9 +998,9 @@
                                                         alt="" />
                                                 </div>
                                                 <div
-                                                    class="d-flex flex-column justify-content-between px-4 py-3 align-items-center bg-dark">
-                                                    <h4 class="special-font mb-0 text-white">
-                                                        {{ $product->product_name }}</h4>
+                                                    class="d-flex flex-column justify-content-between px-4 py-3 align-items-center bg-dark" style="height: 7rem">
+                                                    <h6 class="special-font mb-0 text-white">
+                                                        {{ $product->product_name }}</h6>
                                                     <h4 class="special-font mb-0 text-white">
                                                         @if ($product->product_currency == 'taka')
                                                             Tk
@@ -1008,12 +1043,12 @@
                                     <div class="col-lg-12">
                                         <div class="galery-slide">
                                             @foreach ($nfc_card->nfcGallery as $gallery)
-                                                <div>
+                                                <div style="height: 30rem; ">
                                                     @if ($gallery->gallery_type == 'image')
                                                         <img class="w-100 img-fluid"
                                                             src="{{ !empty($gallery->gallery_attachment) && file_exists(public_path('storage/nfc/gallery/' . optional($gallery)->gallery_attachment)) ? asset('storage/nfc/gallery/' . optional($gallery)->gallery_attachment) : asset('frontend/images/no_image.png') }}"
                                                             alt="" />
-                                                    @else
+                                                        {{-- @else --}}
                                                         {{-- <div class="video-wrapper">
                                                         <iframe width="600" height="338"
                                                             src="{{ optional($gallery)->gallery_link }}"
@@ -1323,7 +1358,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row pb-5">
                             <div class="col-lg-7 col-offset-lg-6 mx-auto vcard-share">
                                 <a href="{{ $whatsappLink }}" target="_blank" rel="noopener noreferrer"
                                     class="btn btn-dark w-100 p-3 ">
@@ -1394,13 +1429,20 @@
         <!-- On Page Load Show Modal End -->
     </main>
 
-    <script src="{{ asset('frontend/assets/js/fontawesome.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    <!-- jQuery -->
+    <script src="{{ asset('frontend/assets/js/jquery-3.6.0.min.js') }}"></script>
 
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="{{ asset('frontend/assets/js/popper.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/bootstrap.min.js') }}"></script>
+
+    <!-- Font Awesome -->
+    <script src="{{ asset('frontend/assets/js/fontawesome.js') }}"></script>
+
+    <!-- Slick Carousel -->
+    <script src="{{ asset('frontend/assets/js/slick.min.js') }}"></script>
+
+
     <script>
         window.addEventListener('load', function() {
             document.getElementById('preloader').style.display = 'none';
