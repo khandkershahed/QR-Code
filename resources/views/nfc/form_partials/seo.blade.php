@@ -27,20 +27,23 @@
                 class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Meta Description" />
         </div>
         <div class="fv-row col-lg-12 mb-7">
-
             <x-metronic.label class="fw-semibold fs-6 mb-2">Google Analytics</x-metronic.label>
             <textarea class="form-control form-control-solid mb-3 mb-lg-0" name="google_analytics" id="" rows="7">{!! optional($nfc_card->nfcSeo)->google_analytics !!}</textarea>
         </div>
     </div>
 
     <div class="d-flex justify-content-end mt-10">
-        <button type="submit" onclick="submitSeoForm()" class="kt_docs_formvalidation_text_submit btn btn-primary">
+        <button type="submit" onclick="submitSeoForm()" class="kt_docs_formvalidation_text_submit btn btn-primary me-2">
             <span class="indicator-label">
                 Save
             </span>
             <span class="indicator-progress">
                 Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
             </span>
+        </button>
+        <button class="kt_docs_formvalidation_text_submit btn btn-primary d-flex align-items-center">
+            <span>Next</span>
+            <span><i class="fa-solid fa-arrow-right-long ps-2"></i></span>
         </button>
     </div>
 </form>

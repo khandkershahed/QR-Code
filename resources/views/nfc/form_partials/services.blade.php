@@ -63,6 +63,14 @@
             </table>
         </div>
     </div>
+    <div class="col-lg-12">
+        <div class="text-end d-flex justify-content-end">
+            <button class="kt_docs_formvalidation_text_submit btn btn-primary mt-6 d-flex align-items-center">
+                <span>Next</span>
+                <span><i class="fa-solid fa-arrow-right-long ps-2"></i></span>
+            </button>
+        </div>
+    </div>
 </div>
 {{-- Add Service modal --}}
 <div class="modal fade" id="serviceCreateModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
@@ -346,7 +354,7 @@
                 form.find('.form-control').removeClass('is-invalid');
 
                 // Validate required fields
-                
+
 
                 if (isValid) {
                     // Disable the submit button to prevent multiple submissions

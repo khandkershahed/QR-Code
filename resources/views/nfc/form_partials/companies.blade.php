@@ -238,6 +238,14 @@
             </table>
         </div>
     </div>
+    <div class="col-lg-12">
+        <div class="text-end d-flex justify-content-end">
+            <button class="kt_docs_formvalidation_text_submit btn btn-primary mt-6 d-flex align-items-center">
+                <span>Next</span>
+                <span><i class="fa-solid fa-arrow-right-long ps-2"></i></span>
+            </button>
+        </div>
+    </div>
 </div>
 {{-- Add company modal --}}
 
@@ -383,7 +391,7 @@
                         </div>
                         <div class="d-flex justify-content-end mt-10">
                             <button type="submit" onclick="updateCompanyForm($company->id)"
-                                class="kt_docs_formvalidation_text_submit btn btn-primary">
+                                class="kt_docs_formvalidation_text_submit btn btn-primary me-2">
                                 <span class="indicator-label">
                                     Save
                                 </span>

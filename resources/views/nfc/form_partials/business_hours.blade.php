@@ -189,10 +189,14 @@
         </div>
     </div>
     <div class="d-flex justify-content-end">
-        <button type="submit" class="kt_docs_formvalidation_text_submit btn btn-primary mt-5">
+        <button type="submit" class="kt_docs_formvalidation_text_submit btn btn-primary mt-5 me-2">
             <span class="indicator-label">Save Business Hours</span>
             <span class="indicator-progress" style="display: none;">Please wait... <span
                     class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+        </button>
+        <button class="kt_docs_formvalidation_text_submit btn btn-primary mt-5 d-flex align-items-center">
+            <span>Next</span>
+            <span><i class="fa-solid fa-arrow-right-long ps-2"></i></span>
         </button>
     </div>
 </form>

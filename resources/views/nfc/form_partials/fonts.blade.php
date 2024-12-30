@@ -29,13 +29,17 @@
     </div>
 
     <div class="d-flex justify-content-end mt-10">
-        <button type="submit" onclick="submitFontsForm()" class="kt_docs_formvalidation_text_submit btn btn-primary">
+        <button type="submit" onclick="submitFontsForm()" class="kt_docs_formvalidation_text_submit btn btn-primary me-2">
             <span class="indicator-label">
                 Save Fonts
             </span>
             <span class="indicator-progress">
                 Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
             </span>
+        </button>
+        <button class="kt_docs_formvalidation_text_submit btn btn-primary d-flex align-items-center">
+            <span>Next</span>
+            <span><i class="fa-solid fa-arrow-right-long ps-2"></i></span>
         </button>
     </div>
 </form>

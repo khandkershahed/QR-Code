@@ -1,4 +1,71 @@
 <x-frontend-app-layout :title="'GoFlixza || Your Hub for QR, Bar Codes, NFC V.Cards'">
+    <style>
+        .product-slider-card .slick-slide {
+            margin-top: 25px;
+            margin: 20px 10px;
+            padding: 25px;
+        }
+
+        .product-slider-card {
+            margin: 0 -10px;
+            position: relative;
+        }
+
+        .slick-prev,
+        .slick-next {
+            position: absolute;
+            top: 50%;
+            z-index: 1000;
+            background: #6610f2;
+            color: #fff;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: translateY(-50%);
+        }
+
+        .slick-prev {
+            left: 50px;
+        }
+
+        .slick-next {
+            right: 50px;
+        }
+
+        .slick-prev:hover,
+        .slick-next:hover {
+            background: #555;
+        }
+
+        .slick-center {
+            transform: scale(1.2);
+            transition: transform 0.3s ease;
+            margin: 0 -10px;
+        }
+
+        .package-details {
+            line-height: 1.3;
+            font-family: poppins, sans-serif;
+        }
+
+        .slick-center .package-details {
+            line-height: 1.3;
+            font-family: poppins, sans-serif;
+            font-size: 14px;
+        }
+
+        .product-slider-card .card {
+            height: 490px;
+        }
+
+        .product-slider-card .card img {
+            height: 250px;
+            object-fit: contain;
+        }
+    </style>
     <section id="about" class="hero-area-nine pt-165 rpt-150 pb-110 rpb-80 rel z-1">
         <div class="container">
             <div class="row gap-70 align-items-center">
@@ -281,7 +348,8 @@
 
                                                     <h4 class="title">{{ $qr_plan->title }}</h4>
                                                     <div class="price d-flex justify-content-center">
-                                                        <span class="prev">$</span>{{ number_format($qr_plan->price / 12, 2) }}
+                                                        <span
+                                                            class="prev">$</span>{{ number_format($qr_plan->price / 12, 2) }}
                                                         {{-- <span class="next">/
                                                             @if ($qr_plan->billing_cycle == 'year')
                                                                 year
@@ -552,6 +620,245 @@
             </div>
         </div>
     </section>
+    <section class="artificial-intelligence-area rel pt-50 rpt-20 pb-50 rpb-100 z-2">
+        <div class="container-fluid px-0">
+            <div class="row pb-30 rpb-65 gap-100 align-items-center">
+                <div class="col-lg-12 order-lg-2">
+                    <div class="ai-image aos-init aos-animate pb-50" data-aos="fade-left" data-aos-duration="1500"
+                        data-aos-offset="50">
+                        <div class="text-center">
+                            <h3>All Social In A Card.</h3>
+                            <p class="mt-3">Connect with all your favorite platforms in one place. Share, engage, and
+                                stay updated effortlessly.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 order-lg-2">
+                    <div class="ai-image aos-init aos-animate" data-aos="fade-left" data-aos-duration="1500"
+                        data-aos-offset="50">
+                        <div class="product-slider-card row">
+                            <div class="">
+                                <a href="">
+                                    <div class="card border-0 shadow-sm bg-light">
+                                        <div class="card-header border-0">
+                                            <div>
+                                                <img class="img-fluid"
+                                                    src="https://cdn.shopify.com/s/files/1/0542/1999/7359/files/dot-thin-basic.png?v=1701958444"
+                                                    alt="Product 1">
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <h6 class="mb-0">V-Card With NFC</h6>
+                                                    <h6 class="text-mute mb-0">
+                                                        <small>Metal,Plastic,Silver Card</small>
+                                                    </h6>
+                                                </div>
+                                                <h6 class="mb-0">$500.00</h6>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="">
+                                                <div>
+                                                    <p class="mb-0 package-details text-start">The ideal gift for clients,
+                                                        coworkers, employees, or friends. employees, or friends. employees,
+                                                        or friends.</p>
+                                                </div>
+                                                <div class="mt-4">
+                                                    <button class="theme-btn style-two rounded-0 btn-sm"
+                                                        style="width: 100%;">Purchase</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="">
+                                    <div class="card border-0 shadow-sm bg-light">
+                                        <div class="card-header border-0">
+                                            <div>
+                                                <img class="img-fluid"
+                                                    src="https://cdn.shopify.com/s/files/1/0542/1999/7359/files/dot-thin-basic.png?v=1701958444"
+                                                    alt="Product 1">
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <h6 class="mb-0">V-Card With NFC</h6>
+                                                    <h6 class="text-mute mb-0">
+                                                        <small>Metal,Plastic,Silver Card</small>
+                                                    </h6>
+                                                </div>
+                                                <h6 class="mb-0">$500.00</h6>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="">
+                                                <div>
+                                                    <p class="mb-0 package-details text-start">The ideal gift for clients,
+                                                        coworkers, employees, or friends. employees, or friends. employees,
+                                                        or friends.</p>
+                                                </div>
+                                                <div class="mt-4">
+                                                    <button class="theme-btn style-two rounded-0 btn-sm"
+                                                        style="width: 100%;">Purchase</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="">
+                                    <div class="card border-0 shadow-sm bg-light">
+                                        <div class="card-header border-0">
+                                            <div>
+                                                <img class="img-fluid"
+                                                    src="https://cdn.shopify.com/s/files/1/0542/1999/7359/files/dot-thin-basic.png?v=1701958444"
+                                                    alt="Product 1">
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <h6 class="mb-0">V-Card With NFC</h6>
+                                                    <h6 class="text-mute mb-0">
+                                                        <small>Metal,Plastic,Silver Card</small>
+                                                    </h6>
+                                                </div>
+                                                <h6 class="mb-0">$500.00</h6>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="">
+                                                <div>
+                                                    <p class="mb-0 package-details text-start">The ideal gift for clients,
+                                                        coworkers, employees, or friends. employees, or friends. employees,
+                                                        or friends.</p>
+                                                </div>
+                                                <div class="mt-4">
+                                                    <button class="theme-btn style-two rounded-0 btn-sm"
+                                                        style="width: 100%;">Purchase</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="">
+                                    <div class="card border-0 shadow-sm bg-light">
+                                        <div class="card-header border-0">
+                                            <div>
+                                                <img class="img-fluid"
+                                                    src="https://cdn.shopify.com/s/files/1/0542/1999/7359/files/dot-thin-basic.png?v=1701958444"
+                                                    alt="Product 1">
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <h6 class="mb-0">V-Card With NFC</h6>
+                                                    <h6 class="text-mute mb-0">
+                                                        <small>Metal,Plastic,Silver Card</small>
+                                                    </h6>
+                                                </div>
+                                                <h6 class="mb-0">$500.00</h6>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="">
+                                                <div>
+                                                    <p class="mb-0 package-details text-start">The ideal gift for clients,
+                                                        coworkers, employees, or friends. employees, or friends. employees,
+                                                        or friends.</p>
+                                                </div>
+                                                <div class="mt-4">
+                                                    <button class="theme-btn style-two rounded-0 btn-sm"
+                                                        style="width: 100%;">Purchase</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="">
+                                    <div class="card border-0 shadow-sm bg-light">
+                                        <div class="card-header border-0">
+                                            <div>
+                                                <img class="img-fluid"
+                                                    src="https://cdn.shopify.com/s/files/1/0542/1999/7359/files/dot-thin-basic.png?v=1701958444"
+                                                    alt="Product 1">
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <h6 class="mb-0">V-Card With NFC</h6>
+                                                    <h6 class="text-mute mb-0">
+                                                        <small>Metal,Plastic,Silver Card</small>
+                                                    </h6>
+                                                </div>
+                                                <h6 class="mb-0">$500.00</h6>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="">
+                                                <div>
+                                                    <p class="mb-0 package-details text-start">The ideal gift for clients,
+                                                        coworkers, employees, or friends. employees, or friends. employees,
+                                                        or friends.</p>
+                                                </div>
+                                                <div class="mt-4">
+                                                    <button class="theme-btn style-two rounded-0 btn-sm"
+                                                        style="width: 100%;">Purchase</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="">
+                                    <div class="card border-0 shadow-sm bg-light">
+                                        <div class="card-header border-0">
+                                            <div>
+                                                <img class="img-fluid"
+                                                    src="https://cdn.shopify.com/s/files/1/0542/1999/7359/files/dot-thin-basic.png?v=1701958444"
+                                                    alt="Product 1">
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center py-4">
+                                                <div>
+                                                    <h6 class="mb-0">V-Card With NFC</h6>
+                                                    <h6 class="text-mute mb-0">
+                                                        <small>Metal,Plastic,Silver Card</small>
+                                                    </h6>
+                                                </div>
+                                                <h6 class="mb-0">$500.00</h6>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="">
+                                                <div>
+                                                    <p class="mb-0 package-details text-start">The ideal gift for clients,
+                                                        coworkers, employees, or friends. employees, or friends. employees,
+                                                        or friends.</p>
+                                                </div>
+                                                <div class="mt-4">
+                                                    <button class="theme-btn style-two rounded-0 btn-sm"
+                                                        style="width: 100%;">Purchase</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- About Area End -->
 
     <section class="artificial-intelligence-area rel pt-50 rpt-20 pb-130 rpb-100 z-2">
@@ -800,4 +1107,36 @@
             </div>
         </div>
     </section>
+    @push('scripts')
+        <script>
+            $(document).ready(function() {
+                $('.product-slider-card').slick({
+                    centerMode: true, // Enables center active functionality
+                    centerPadding: '50px', // Adds space around the center slide
+                    slidesToShow: 5, // Number of slides visible
+                    autoplay: true,
+                    autoplaySpeed: 2000,
+                    gap: 20,
+                    arrows: true, // Enables navigation arrows
+                    prevArrow: '<button type="button" class="slick-prev">←</button>',
+                    nextArrow: '<button type="button" class="slick-next">→</button>',
+                    responsive: [{
+                            breakpoint: 768,
+                            settings: {
+                                slidesToShow: 1,
+                                centerPadding: '30px'
+                            }
+                        },
+                        {
+                            breakpoint: 480,
+                            settings: {
+                                slidesToShow: 1,
+                                centerPadding: '20px'
+                            }
+                        }
+                    ]
+                });
+            });
+        </script>
+    @endpush
 </x-frontend-app-layout>
