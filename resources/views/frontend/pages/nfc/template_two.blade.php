@@ -30,7 +30,7 @@
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Almendra+SC&family=Anton&family=Anton+SC&family=Bebas+Neue&family=Jost:ital,wght@0,100..900;1,100..900&family=Margarine&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
 
-        body{
+        body {
             background: linear-gradient(to top,
                     rgba(0, 0, 0, 1),
                     /* Solid black at the bottom */
@@ -42,6 +42,7 @@
                     /* Fully transparent at the top */
                 );
         }
+
         :root {
             --template-two-color-white: #fff;
             --template-two-color-black: #000;
@@ -119,12 +120,20 @@
             height: 190px;
             object-fit: cover;
             border: 2px dashed var(--template-two-color-primary);
+            /* Existing dashed border */
+            border-radius: 8px;
+            /* Optional: Adjust border radius if you want rounded corners */
+            border-image: linear-gradient(45deg, #ff7e5f, #feb47b) 1;
+            /* Gradient border */
+            padding: 4px;
+            /* Padding to create space for the gradient border */
+            background-clip: content-box;
+            /* Ensures the gradient doesn't overlap the image */
         }
 
         .name-title-tem2 {
             font-family: var(--template-two-font-fmly-Bebas);
             color: var(--template-two-color-white);
-            font-size: var(--template-two-title-font-size);
         }
 
         .user-name-rotate-tem2 {}
@@ -162,17 +171,28 @@
             font: var(--template-two-others-font-size);
         }
 
+        .social_icons {
+
+            background: linear-gradient(45deg, #ff7e5f, #feb47b);
+            color: white;
+        }
+
         .social-link-tem2 {
-            background: var(--template-two-color-white);
+            background: linear-gradient(45deg, #ff7e5f, #feb47b);
+            color: white;
+            /* Gradient background */
             padding: 5px 0px 0px 12px;
             width: 40px;
             height: 40px;
             color: var(--template-two-color-primary);
             box-shadow: rgba(255, 255, 255, 0.24) 0px 3px 8px;
             margin-right: 10px;
-            border-radius: 50%;
             font: var(--template-two-others-font-size);
             font-size: 20px;
+        }
+
+        .social-link-tem2 i {
+            color: white;
         }
 
         .text-justify {
@@ -265,7 +285,7 @@
             width: 100%;
             list-style-type: none;
             box-shadow: rgb(255 255 255 / 20%) 0px 2px 8px 0px;
-            background: var(--template-two-color-primary);
+            background: linear-gradient(45deg, #ff7e5f, #feb47b);
         }
 
         .footer-nav-tem2 ul li {
@@ -343,12 +363,11 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(to top,
-                    rgba(0, 0, 0, 1),
+            background: linear-gradient(to top, rgba(0, 0, 0, 1),
                     /* Solid black at the bottom */
-                    rgba(0, 0, 0, 0.8) 40%,
+                    rgb(0 0 0 / 52%) 40%,
                     /* Slightly lighter black */
-                    rgba(0, 0, 0, 0.6) 70%,
+                    rgb(0 0 0 / 0%) 70%,
                     /* Even lighter black */
                     transparent 100%
                     /* Fully transparent at the top */
@@ -422,6 +441,19 @@
             z-index: 555;
             position: relative;
         }
+        .btn-dark{
+            background: linear-gradient(45deg, #ff7e5f, #feb47b);
+            border: 2px solid #ff7e5f;
+        }
+        .btn-dark:hover{
+            background: transparent;
+            border: 2px solid #ff7e5f;
+        }
+        .testmonial-cards{
+            height: 200px;
+            display: flex;
+            align-content: center;
+        }
     </style>
 </head>
 
@@ -434,9 +466,9 @@
             <div class="page-content-wrapper">
                 <!-- Banner -->
                 <section>
-                    <div class="container">
+                    <div class="container px-0">
                         <div class="row">
-                            <div class="col-12 px-0">
+                            <div class="col-12">
                                 <div class="overlay-container">
                                     <img class="img-fluid image-container-tem2 w-100"
                                         src="{{ !empty($nfc_card->banner_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card)->banner_image)) ? asset('storage/nfc/' . optional($nfc_card)->banner_image) : asset('frontend/images/no_image.png') }}"
@@ -446,10 +478,10 @@
                         </div>
                     </div>
                 </section>
-                <div class="section-top-tem2">
+                <div class="section-top-tem2 px-4">
                     <!-- Profile Info -->
                     <section>
-                        <div class="container">
+                        <div class="container px-3">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="d-flex align-items-center two-profile">
@@ -459,10 +491,10 @@
                                                 alt="" />
                                         </div>
                                         <div class="user-name-rotate-tem2 ps-4">
-                                            <h1 class="name-title-tem2 mb-0">
+                                            <h2 class="name-title-tem2 mb-0">
                                                 {{ optional($nfc_card->nfcData)->first_name }}
                                                 {{ optional($nfc_card->nfcData)->last_name }}
-                                            </h1>
+                                            </h2>
                                             <div class="pt-2">
                                                 <p class="text-white mb-1">{{ optional($nfc_card)->designation }} </p>
                                                 <p class="text-white">{{ optional($nfc_card->nfcData)->company_name }}
@@ -536,11 +568,10 @@
                                         <div class="col-12">
                                             <div class="text-white d-flex align-items-center mb-4">
                                                 <div class="">
-                                                    <i
-                                                        class="fa fa-envelope social_icons fs-3 bg-white contact-icons-tem2"></i>
+                                                    <i class="fa fa-envelope social_icons fs-3 contact-icons-tem2"></i>
                                                 </div>
                                                 <div class="ps-3">
-                                                    <p class="mb-0 fw-bold">E-Mail Address</p>
+                                                    <p class="mb-2 fw-bold">E-Mail Address</p>
                                                     @if (!empty(optional($nfc_card->nfcData)->email_personal))
                                                         <p class="mb-0">
                                                             {{ optional($nfc_card->nfcData)->email_personal }}
@@ -561,11 +592,10 @@
                                         <div class="col-12">
                                             <div class="text-white d-flex align-items-center mb-4">
                                                 <div class="">
-                                                    <i
-                                                        class="fa fa-phone social_icons fs-3 bg-white contact-icons-tem2"></i>
+                                                    <i class="fa fa-phone social_icons fs-3 contact-icons-tem2"></i>
                                                 </div>
                                                 <div class="ps-3">
-                                                    <p class="mb-0 fw-bold">Phone</small>
+                                                    <p class="mb-2 fw-bold">Phone</small>
                                                         @if (!empty(optional($nfc_card->nfcData)->phone_personal))
                                                             <p class="mb-0">
                                                                 {{ optional($nfc_card->nfcData)->phone_personal }}
@@ -584,13 +614,13 @@
                                     @endif
                                     @if (!empty(optional($nfc_card->nfcData)->date_of_birth))
                                         <div class="col-12">
-                                            <div class="text-white d-flex align-items-center ps-lg-3 ps-0">
+                                            <div class="text-white d-flex align-items-center mb-4">
                                                 <div class="">
                                                     <i
-                                                        class="fa-solid fa-cake-candles social_icons fs-3 bg-white contact-icons-tem2"></i>
+                                                        class="fa-solid fa-cake-candles social_icons fs-3 contact-icons-tem2"></i>
                                                 </div>
-                                                <div>
-                                                    <p class="mb-0 fw-bold">Date Of Birth</small>
+                                                <div class="ps-3">
+                                                    <p class="fw-bold mb-2">Date Of Birth</small>
                                                     <p class="mb-0">
                                                         {{ optional($nfc_card->nfcData)->date_of_birth }}
                                                     </p>
@@ -603,10 +633,10 @@
                                             <div class="text-white d-flex align-items-center mb-4">
                                                 <div class="">
                                                     <i
-                                                        class="fa-solid fa-fax social_icons fs-3 bg-white contact-icons-tem2"></i>
+                                                        class="fa-solid fa-fax social_icons fs-3 contact-icons-tem2"></i>
                                                 </div>
                                                 <div class="ps-3">
-                                                    <p class="mb-0 fw-bold">Fax Number</small>
+                                                    <p class="mb-2 fw-bold">Fax Number</small>
                                                     <p class="mb-0">{{ optional($nfc_card->nfcData)->fax }}</p>
                                                 </div>
                                             </div>
@@ -618,10 +648,10 @@
                                             <div class="text-white d-flex align-items-center mb-4">
                                                 <div class="">
                                                     <i
-                                                        class="fa fa-location-dot social_icons fs-3 bg-white contact-icons-tem2"></i>
+                                                        class="fa fa-location-dot social_icons fs-3 contact-icons-tem2 text-center"></i>
                                                 </div>
                                                 <div class="ps-3">
-                                                    <p class="mb-0 fw-bold">Location</small>
+                                                    <p class="mb-2 fw-bold">Location</small>
                                                     <p class="mb-0">{{ optional($nfc_card->nfcData)->location }}
                                                     </p>
                                                 </div>
@@ -656,10 +686,16 @@
                                                                     src="{{ !empty($company->company_logo) && file_exists(public_path('storage/nfc/company/' . optional($company)->company_logo)) ? asset('storage/nfc/company/' . optional($company)->company_logo) : asset('frontend/images/no_image.png') }}"
                                                                     alt="" />
                                                             </div>
-                                                            <h5>{{ $company->company_name }}</h5>
-                                                            <p class="p-3 mb-0" style="text-align: justify">
-                                                                {{ $company->company_description }}
-                                                            </p>
+                                                            <h5 class="pt-4">{{ $company->company_name }}</h5>
+                                                            <div class="mb-4">
+                                                                <p class="p-3 mb-0" style="text-align: justify"
+                                                                    id="company-description">
+                                                                    {{ Str::limit($company->company_description, 150) }}
+                                                                </p>
+                                                                <button class="btn btn-link rounded-0 p-0"
+                                                                    id="show-more-btn" style="display: none;">Show
+                                                                    More</button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-8">
@@ -733,7 +769,7 @@
                     <!-- Servies Box -->
                     @if ($nfc_card->services_show == '1')
                         <section>
-                            <div class="container">
+                            <div class="container px-0">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="text-center">
@@ -745,7 +781,7 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <div class="container">
+                                    <div class="container px-0">
                                         <div class="row" id="service-container">
                                             @foreach ($nfc_card->nfcService as $index => $service)
                                                 <div class="col-lg-6 col-md-6 col-sm-12 mb-4 service-item"
@@ -818,9 +854,9 @@
                                                     </div>
                                                     <div
                                                         class="d-flex justify-content-between align-items-center px-4 pt-3 align-items-center product-content-tem2">
-                                                        <h4 class="mb-0">
+                                                        <h6 class="mb-0">
                                                             {{ $product->product_name }}
-                                                        </h4>
+                                                        </h6>
                                                         <div>
                                                             <p class="mb-0">
                                                                 @if ($product->product_currency == 'taka')
@@ -897,7 +933,7 @@
                                         <div class="col-10 col-offset-md-1 mx-auto">
                                             <div class="testimonial-slide">
                                                 @foreach ($nfc_card->nfcTestimonial as $testimonial)
-                                                    <div class="card p-0 bg-white border-0 mt-5">
+                                                    <div class="card p-0 bg-white border-0 mt-4 testmonial-cards">
                                                         <div class="card-body rounded-0 border-0 d-flex">
                                                             <div class="row align-items-center">
                                                                 <div class="col-sm-4">
@@ -908,9 +944,9 @@
                                                                             src="{{ !empty($testimonial->testimonial_image) && file_exists(public_path('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image)) ? asset('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image) : asset('frontend/images/no_image.png') }}"
                                                                             alt="" />
                                                                     </div>
-                                                                    <h4 class="special-font text-center pt-3">
+                                                                    <h6 class="text-center pt-3">
                                                                         {{ $testimonial->testimonial_name }}
-                                                                    </h4>
+                                                                    </h6>
                                                                     <div class="d-flex justify-content-center">
                                                                         <a href=""
                                                                             style="text-decoration: none">
@@ -931,7 +967,7 @@
                                                                 </div>
                                                                 <div class="col-sm-8">
                                                                     <div>
-                                                                        <p class="mb-0 text-justify">
+                                                                        <p class="mb-0">
                                                                             {{ $testimonial->testimonial_description }}
                                                                         </p>
                                                                     </div>
@@ -967,10 +1003,10 @@
                                                 alt="" />
                                         @endif
                                         @if ($nfc_card->enable_download_qr_code == '1')
-                                            <div>
+                                            <div class="d-flex justify-content-center ">
                                                 <a href="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
-                                                    class="btn btn-dark rounded-0 w-100 border-2 border-dark">Download
-                                                    QR</a>
+                                                    class="btn btn-dark rounded-0 border-2 border-dark">Download
+                                                    QR <i class="fa-solid fa-file-arrow-down ps-2"></i></a>
                                             </div>
                                         @endif
                                     </div>
@@ -1000,14 +1036,15 @@
                                 <div class="row pt-5">
                                     @if (optional($nfc_card->nfcData)->monday == '1')
                                         <div class="col-12 mb-4">
-                                            <div>
-                                                <div class="rounded-pill d-flex justify-content-between align-items-center border py-2">
-                                                    <i class="fa fa-calendar houricon"></i>
+                                            <div
+                                                class="rounded-pill d-flex justify-content-between align-items-center border py-2">
+                                                <div class=" text-white ps-4">
+                                                    <i class="fa fa-calendar houricon fs-2"></i>
                                                 </div>
                                                 <div>
-                                                    <h6 class="mb-0 text-white pt-2">Monday</h6>
+                                                    <h6 class="mb-0 text-white pt-2">Monday</p>
                                                 </div>
-                                                <div class="text-center">
+                                                <div class="text-end pe-4">
                                                     <p class="mb-0 text-white">
                                                         {{ optional($nfc_card->nfcData)->start_time_monday }} -
                                                         {{ optional($nfc_card->nfcData)->end_time_monday }}
@@ -1153,29 +1190,29 @@
                                         <input type="hidden" name="nfc_id" value="{{ optional($nfc_card)->id }}">
                                         <input type="hidden" name="nfc_code"
                                             value="{{ optional($nfc_card)->code }}">
-                                        <div class="row px-5">
+                                        <div class="row">
                                             <div class="col-sm-6 mb-3">
                                                 <input type="text" name="name"
-                                                    class="form-control form-control-sm rounded-0 rounded-1 p-2"
+                                                    class="form-control form-control-sm rounded-0 p-2"
                                                     placeholder="Enter Your Names" />
                                             </div>
                                             <div class="col-sm-6 mb-3">
                                                 <input type="email" name="email"
-                                                    class="form-control form-control-sm rounded-0 rounded-1 p-2"
+                                                    class="form-control form-control-sm rounded-0 p-2"
                                                     placeholder="Enter Your Email" />
                                             </div>
                                             <div class="col-sm-12 mb-3">
                                                 <input type="text" name="phone"
-                                                    class="form-control form-control-sm rounded-0 rounded-1 p-2"
+                                                    class="form-control form-control-sm rounded-0 p-2"
                                                     placeholder="Enter Your Phone" />
                                             </div>
                                             <div class="col-sm-12 mb-3">
-                                                <textarea name="message" class="form-control form-control-sm rounded-0 rounded-1 p-2" id="" rows="5"></textarea>
+                                                <textarea name="message" class="form-control form-control-sm rounded-0 p-2" id="" rows="5"></textarea>
                                             </div>
                                             <div class="col-lg-12 w-75 mx-auto px-2">
                                                 <div class="d-flex justify-content-center">
                                                     <button type="submit"
-                                                        class="btn company-btn-tem2 rounded-0 mb-2">
+                                                        class="btn btn-dark rounded-0 border-2 border-dark mt-3">
                                                         Send Message
                                                         <i class="fa-solid fa-paper-plane"
                                                             style="color: var(--template-two-color-primary)"></i>
@@ -1291,6 +1328,34 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const descriptionElement = document.getElementById("company-description");
+            const showMoreBtn = document.getElementById("show-more-btn");
+
+            // Full and limited content
+            const fullText = `{{ $company->company_description }}`;
+            const limitedText = `{{ Str::limit($company->company_description, 150) }}`;
+
+            // Check if the content needs a "Show More" button
+            if (fullText.trim() && fullText.length > 150) {
+                showMoreBtn.style.display = "inline-block"; // Show the button if text exceeds the limit
+            }
+
+            // Toggle content visibility
+            let isExpanded = false;
+            showMoreBtn.addEventListener("click", function() {
+                if (isExpanded) {
+                    descriptionElement.innerText = limitedText;
+                    showMoreBtn.innerText = "Show More";
+                } else {
+                    descriptionElement.innerText = fullText;
+                    showMoreBtn.innerText = "Show Less";
+                }
+                isExpanded = !isExpanded;
+            });
+        });
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const itemsPerPage = 2; // Number of items to show per load

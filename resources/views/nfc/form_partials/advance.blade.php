@@ -65,49 +65,6 @@
 </form>
 
 @push('scripts')
-    {{-- <script>
-        function submitAdvanceForm() {
-            var form = $('.advance_form');
-            var url = form.attr('action');
-            var formData = new FormData(form[0]);
-            var advance_container = $('.advance_container');
-
-            var submitButton = form.find('.kt_docs_formvalidation_text_submit');
-            submitButton.prop('disabled', true).addClass('disabled');
-
-            $.ajax({
-                type: 'POST', // Ensure this is POST
-                url: url,
-                data: formData,
-                cache: false,
-                contentType: false,
-                processData: false,
-                beforeSend: function() {
-                    submitButton.find('.indicator-label').hide();
-                    submitButton.find('.indicator-progress').show();
-                },
-                success: function(response) {
-                    console.log('Form submitted successfully:', response);
-                    if (response.advance_view) {
-                        advance_container.empty().html(response.advance_view);
-                        toastr.success('Data saved successfully!', 'Success');
-                    } else {
-                        console.error('Unexpected response format:', response);
-                        toastr.error('Unexpected response format.', 'Error');
-                    }
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error:', error);
-                    toastr.error('An error occurred while saving data.', 'Error');
-                },
-                complete: function() {
-                    submitButton.prop('disabled', false).removeClass('disabled');
-                    submitButton.find('.indicator-label').show();
-                    submitButton.find('.indicator-progress').hide();
-                }
-            });
-        }
-    </script> --}}
     <script>
         function submitAdvanceForm() {
             // Detach any existing event handler to prevent multiple bindings

@@ -314,11 +314,18 @@
         }
 
         @media (max-width: 768px) {
+
             html,
             body {
                 width: 100%;
                 overflow-x: hidden;
             }
+        }
+
+        .service-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
         }
     </style>
 </head>
@@ -342,7 +349,8 @@
                                     <div class="w-100">
                                         <div class="row align-items-center gx-0"
                                             style="background-color: {{ $nfc_card->background_color }};">
-                                            <div class="col-lg-12" style="background-image: url({{ asset('images/appointment-bg.png') }})">
+                                            <div class="col-lg-12">
+                                                {{-- style="background-image: url({{ asset('images/appointment-bg.png') }})" --}}
                                                 <div class="text-center d-flex justify-content-center align-items-center mobile-images-profile"
                                                     style="margin-top: -70px; position: relative">
                                                     <div class="gradient-border">
@@ -357,21 +365,23 @@
                                                         <span
                                                             class="last_name name-title">{{ optional($nfc_card->nfcData)->last_name }}</span>
                                                     </h2>
-                                                    <p class="text-mute text-center mb-0">
-                                                        {{ optional($nfc_card)->designation }}</p>
-                                                    @if (!empty($nfc_card->nfcData))
-                                                        @php
-                                                            $nfcData = $nfc_card->nfcData;
-                                                        @endphp
-                                                        @if (!empty($nfcData->company_name))
-                                                            <p class="fw-bolder text-center">
-                                                                {{ $nfcData->company_name }}</p>
+                                                    <div class="pt-3">
+                                                        <p class="text-mute text-center mb-0">
+                                                            {{ optional($nfc_card)->designation }}</p>
+                                                        @if (!empty($nfc_card->nfcData))
+                                                            @php
+                                                                $nfcData = $nfc_card->nfcData;
+                                                            @endphp
+                                                            @if (!empty($nfcData->company_name))
+                                                                <p class="fw-bolder text-center">
+                                                                    {{ $nfcData->company_name }}</p>
+                                                            @else
+                                                                <p>No company title found.</p>
+                                                            @endif
                                                         @else
-                                                            <p>No company title found.</p>
+                                                            <p>No NFC data available.</p>
                                                         @endif
-                                                    @else
-                                                        <p>No NFC data available.</p>
-                                                    @endif
+                                                    </div>
                                                 </div>
                                             </div>
                                             {{-- Social --}}
@@ -422,7 +432,7 @@
                                                     </div>
                                                 @endif
                                                 @if (!empty($nfc_card->nfcData->bio_description))
-                                                    <p class="text-white text-center p-4">
+                                                    <p class="text-white p-4">
                                                         {{ optional($nfc_card->nfcData)->bio_description }}
                                                     </p>
                                                 @endif
@@ -430,7 +440,7 @@
                                             <div class="col-lg-12">
                                                 <div class="pt-2">
                                                     @if (!empty($nfc_card->bio_description))
-                                                        <p class="text-center event-name">
+                                                        <p class="event-name" style="text-align: justify">
                                                             {{ $nfc_card->bio_description }}
                                                         </p>
                                                     @endif
@@ -569,23 +579,25 @@
                                                             !empty($nfc_card->nfcData->location) ||
                                                                 !empty($nfc_card->nfcData->address_line_one) ||
                                                                 !empty($nfc_card->nfcData->address_line_two))
-                                                            <div class="col-6 mb-4">
+                                                            <div class="col-12 mb-4">
                                                                 <div class="card event-card px-3 py-4 h-100 border-0">
-                                                                    <span class="event-icon">
-                                                                        <i class="fa-solid fa-fax fs-2"
-                                                                            style="color: #c84e89;"></i>
-                                                                    </span>
-                                                                    <div class="event-detail mt-4">
-                                                                        <h6 class="text-sm-start text-center">
-                                                                            FAX Number
-                                                                        </h6>
-                                                                        {{-- @if (!empty($nfc_card->nfcData->address_line_one)) --}}
-                                                                        <a href="tel:"
-                                                                            class="event-name-contact text-sm-start text-center mb-0 text-decoration-none">
-                                                                            {{-- {{ $nfc_card->nfcData->address_line_one }} --}}
-                                                                            (1-888-473-2963)
-                                                                        </a>
-                                                                        {{-- @endif --}}
+                                                                    <div
+                                                                        class="d-flex justify-content-start align-items-center">
+                                                                        <div>
+                                                                            <span class="event-icon">
+                                                                                <i class="fa-solid fa-fax fs-2"
+                                                                                    style="color: #c84e89;"></i>
+                                                                            </span>
+                                                                        </div>
+                                                                        <div class="event-detail ps-4">
+                                                                            <h6 class="text-sm-start text-center">
+                                                                                FAX Number
+                                                                            </h6>
+                                                                            <a href="tel:"
+                                                                                class="event-name-contact text-sm-start text-center mb-0 text-decoration-none">
+                                                                                (1-888-473-2963)
+                                                                            </a>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -605,7 +617,7 @@
                                                 @foreach ($nfc_card->nfcService as $service)
                                                     <div class="col-6 mb-2">
                                                         <div class="card border-0 shadow-sm">
-                                                            <img class="card-img-top"
+                                                            <img class="service-img"
                                                                 src="{{ !empty($service->service_icon) && file_exists(public_path('storage/nfc/service/' . optional($service)->service_icon)) ? asset('storage/nfc/service/' . optional($service)->service_icon) : asset('frontend/images/no_image.png') }}"
                                                                 alt="Card image cap">
                                                             <div class="card-body">
@@ -627,7 +639,7 @@
                                         <div class="col-lg-12">
                                             <h4 class="heading-left position-relative text-center">QR Code</h4>
                                             <div class="d-flex justify-content-center align-items-center py-5">
-                                                <div class="qr-profile">
+                                                <div class="qr-profile border rounded-4">
                                                     <img src="{{ !empty($nfc_card->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card)->profile_image) : asset('frontend/images/no_image.png') }}"
                                                         class="img-fluid rounded-4" alt="banner" />
                                                 </div>
@@ -657,9 +669,9 @@
                                                 <h4 class="heading-right heading-line position-relative text-center">
                                                     Products
                                                 </h4>
-                                                <div class="row py-5">
+                                                <div class="row py-5 pb-3">
                                                     @foreach ($nfc_card->nfcProduct as $product)
-                                                        <div class="col-lg-6">
+                                                        <div class="col-lg-6 mb-4">
                                                             <a href="https://mydigitalnfccard.com/a" target="_blank"
                                                                 class="text-decoration-none fs-6" loading="lazy"
                                                                 tabindex="0">
@@ -896,146 +908,145 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-body py-0 px-0">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <h4 class="heading-left heading-line position-relative text-center">
-                                                Testimonials
-                                            </h4>
-                                            <div class="testimonial-sliders swiper-container py-5"
-                                                style="background-image: url({{ asset('images/testimonial-bg.png') }})">
-                                                <!-- Additional required wrapper -->
-                                                <div class="swiper-wrapper">
-                                                    <!-- Dynamic Slides -->
-                                                    <div class="swiper-slide">
-                                                        <div class="card rounded-5">
-                                                            <div class="card-body text-center">
-                                                                <p style="font-size: 14px">
-                                                                    "The platform offers a diverse collection of
-                                                                    high-quality profile picture icons in various
-                                                                    formats like SVG, PNG, and EPS. It's my go-to
-                                                                    resource for professional designs."
-                                                                </p>
-                                                                <div class="d-flex align-items-center">
-                                                                    <div>
-                                                                        <img class="rounded-circle" width="50px"
-                                                                            height="50px" style="object-fit: cover;"
-                                                                            src="https://media.istockphoto.com/id/1437816897/photo/business-woman-manager-or-human-resources-portrait-for-career-success-company-we-are-hiring.jpg?s=612x612&w=0&k=20&c=tyLvtzutRh22j9GqSGI33Z4HpIwv9vL_MZw_xOE19NQ="
-                                                                            alt="profile">
-                                                                    </div>
-                                                                    <div class="text-start ps-4">
-                                                                        <h6 class="mb-0">
-                                                                            Nelson Smith
-                                                                        </h6>
-                                                                        <p class="mb-0">
-                                                                            <small class="name-title">BitByte
-                                                                                Soft</small>
+                                @if ($nfc_card->testimonials_show == '1' && $nfc_card->nfcTestimonial && $nfc_card->nfcTestimonial->isNotEmpty())
+                                    <div class="card-body py-0 px-0">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <h4 class="heading-right heading-line position-relative text-center">
+                                                    Testimonials
+                                                </h4>
+                                                <div class="testimonial-sliders swiper-container py-5"
+                                                    style="background-image: url({{ asset('images/testimonial-bg.png') }})">
+                                                    <!-- Additional required wrapper -->
+                                                    <div class="swiper-wrapper">
+                                                        @foreach ($nfc_card->nfctestimonial as $testimonial)
+                                                            <div class="swiper-slide">
+                                                                <div class="card rounded-5">
+                                                                    <div class="card-body text-center">
+                                                                        <p style="font-size: 14px">
+                                                                            "{{ Str::limit($testimonial->testimonial_description) }}"
                                                                         </p>
+                                                                        <div class="d-flex align-items-center">
+                                                                            <div>
+                                                                                <img class="rounded-circle"
+                                                                                    width="50px" height="50px"
+                                                                                    style="object-fit: cover;"
+                                                                                    src="{{ !empty($testimonial->testimonial_image) && file_exists(public_path('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image)) ? asset('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image) : asset('frontend/images/no_image.png') }}"
+                                                                                    alt="{{ $testimonial->testimonial_name }}">
+                                                                            </div>
+                                                                            <div class="text-start ps-4">
+                                                                                <h6 class="mb-0">
+                                                                                    {{ $testimonial->testimonial_name }}
+                                                                                </h6>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        @endforeach
                                                     </div>
-                                                </div>
-                                                <!-- Custom Font Awesome navigation buttons -->
-                                                <div class="swiper-button-next custom-next">
-                                                    <i class="fas fa-long-arrow-alt-right"></i>
-                                                </div>
-                                                <div class="swiper-button-prev custom-prev">
-                                                    <i class="fas fa-long-arrow-alt-left"></i>
+                                                    <!-- Custom Font Awesome navigation buttons -->
+                                                    <div class="swiper-button-next custom-next">
+                                                        <i class="fas fa-long-arrow-alt-right"></i>
+                                                    </div>
+                                                    <div class="swiper-button-prev custom-prev">
+                                                        <i class="fas fa-long-arrow-alt-left"></i>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-12">
-                                            <div class="mt-5">
-                                                <h3 class="fw-bold text-center pt-2" style="color: #1c344f;">
-                                                    Inquiry
-                                                </h3>
-                                                <div class="px-3">
-                                                    <form action="{{ route('individual-message.store') }}"
-                                                        method="post">
-                                                        @csrf
-                                                        <input type="hidden" name="user_id"
-                                                            value="{{ optional($nfc_card)->user_id }}">
-                                                        <input type="hidden" name="nfc_id"
-                                                            value="{{ optional($nfc_card)->id }}">
-                                                        <input type="hidden" name="nfc_code"
-                                                            value="{{ optional($nfc_card)->code }}">
-                                                        <div class="row">
-                                                            <div class="col mb-2">
-                                                                <div class="fv-row">
-                                                                    <x-metronic.label
-                                                                        class="fw-semibold fs-6 required">Name
-                                                                        <span class="text-danger fs-1"
-                                                                            style="position: relative;top: 0.6rem;">*</span>
-                                                                    </x-metronic.label>
-                                                                    <x-metronic.input type="text" name="name"
-                                                                        value="{{ old('name') }}"
-                                                                        class="form-control form-control-solid"
-                                                                        placeholder="Robert Duff" required />
-                                                                </div>
-                                                            </div>
-                                                            <div class="col mb-2">
-                                                                <div class="fv-row">
-                                                                    <x-metronic.label
-                                                                        class="fw-semibold fs-6 required">Email
-                                                                        <span class="text-danger fs-1"
-                                                                            style="position: relative;top: 0.6rem;">*</span>
-                                                                    </x-metronic.label>
-                                                                    <x-metronic.input type="email" name="email"
-                                                                        value="{{ old('email') }}"
-                                                                        class="form-control form-control-solid"
-                                                                        placeholder="example@mail.com" required />
-                                                                </div>
+                                    </div>
+                                @endif
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mt-5">
+                                            <h4 class="heading-left heading-line position-relative text-center">
+                                                Inquiry
+                                            </h4>
+                                            <div class="px-3 py-5">
+                                                <form action="{{ route('individual-message.store') }}"
+                                                    method="post">
+                                                    @csrf
+                                                    <input type="hidden" name="user_id"
+                                                        value="{{ optional($nfc_card)->user_id }}">
+                                                    <input type="hidden" name="nfc_id"
+                                                        value="{{ optional($nfc_card)->id }}">
+                                                    <input type="hidden" name="nfc_code"
+                                                        value="{{ optional($nfc_card)->code }}">
+                                                    <div class="row">
+                                                        <div class="col mb-2">
+                                                            <div class="fv-row">
+                                                                <x-metronic.label
+                                                                    class="fw-semibold fs-6 required">Name
+                                                                    <span class="text-danger fs-1"
+                                                                        style="position: relative;top: 0.6rem;">*</span>
+                                                                </x-metronic.label>
+                                                                <x-metronic.input type="text" name="name"
+                                                                    value="{{ old('name') }}"
+                                                                    class="form-control form-control-solid"
+                                                                    placeholder="Robert Duff" required />
                                                             </div>
                                                         </div>
-                                                        <div class="row">
-                                                            <div class="col mb-2">
-                                                                <div class="fv-row">
-                                                                    <x-metronic.label
-                                                                        class="fw-semibold fs-6 mb-2">Phone</x-metronic.label>
-                                                                    <x-metronic.input type="text" name="phone"
-                                                                        value="{{ old('phone') }}"
-                                                                        class="form-control form-control-solid"
-                                                                        placeholder="01*******" />
-                                                                </div>
-                                                            </div>
-                                                            <div class="col mb-2">
-                                                                <div class="fv-row">
-                                                                    <x-metronic.label
-                                                                        class="fw-semibold fs-6 mb-2">Headline</x-metronic.label>
-                                                                    <x-metronic.input type="text" name="headline"
-                                                                        value="{{ old('headline') }}"
-                                                                        class="form-control form-control-solid"
-                                                                        placeholder="Headline" />
-                                                                </div>
+                                                        <div class="col mb-2">
+                                                            <div class="fv-row">
+                                                                <x-metronic.label
+                                                                    class="fw-semibold fs-6 required">Email
+                                                                    <span class="text-danger fs-1"
+                                                                        style="position: relative;top: 0.6rem;">*</span>
+                                                                </x-metronic.label>
+                                                                <x-metronic.input type="email" name="email"
+                                                                    value="{{ old('email') }}"
+                                                                    class="form-control form-control-solid"
+                                                                    placeholder="example@mail.com" required />
                                                             </div>
                                                         </div>
-                                                        <div class="row">
-                                                            <div class="col mb-2">
-                                                                <div class="fv-row">
-                                                                    <x-metronic.label
-                                                                        class="fw-semibold fs-6 required">Message
-                                                                        <span class="text-danger fs-1"
-                                                                            style="position: relative;top: 0.6rem;">*</span>
-                                                                    </x-metronic.label>
-                                                                    <textarea class="form-control form-control-solid" rows="5" name="message" value="{{ old('message') }}"
-                                                                        placeholder="Enter Message" required></textarea>
-                                                                </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col mb-2">
+                                                            <div class="fv-row">
+                                                                <x-metronic.label
+                                                                    class="fw-semibold fs-6 mb-2">Phone</x-metronic.label>
+                                                                <x-metronic.input type="text" name="phone"
+                                                                    value="{{ old('phone') }}"
+                                                                    class="form-control form-control-solid"
+                                                                    placeholder="01*******" />
                                                             </div>
                                                         </div>
-                                                        <div class="row mb-5 pb-5" style="margin-bottom: 2.5rem;">
-                                                            <div class="col mb-2 text-end">
-                                                                <button type="submit"
-                                                                    class="btn btn-sm mt-2 p-3 rounded-pill"
-                                                                    style="background: linear-gradient(90deg, #b24592, #f15f79);;color: #fff;">
-                                                                    <i class="fa-regular fa-paper-plane"></i> Send
-                                                                    Message
-                                                                </button>
+                                                        <div class="col mb-2">
+                                                            <div class="fv-row">
+                                                                <x-metronic.label
+                                                                    class="fw-semibold fs-6 mb-2">Headline</x-metronic.label>
+                                                                <x-metronic.input type="text" name="headline"
+                                                                    value="{{ old('headline') }}"
+                                                                    class="form-control form-control-solid"
+                                                                    placeholder="Headline" />
                                                             </div>
                                                         </div>
-                                                    </form>
-                                                </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col mb-2">
+                                                            <div class="fv-row">
+                                                                <x-metronic.label
+                                                                    class="fw-semibold fs-6 required">Message
+                                                                    <span class="text-danger fs-1"
+                                                                        style="position: relative;top: 0.6rem;">*</span>
+                                                                </x-metronic.label>
+                                                                <textarea class="form-control form-control-solid" rows="5" name="message" value="{{ old('message') }}"
+                                                                    placeholder="Enter Message" required></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-5 pb-5" style="margin-bottom: 2.5rem;">
+                                                        <div class="col mb-2 text-end">
+                                                            <button type="submit"
+                                                                class="btn btn-sm mt-2 p-3 rounded-pill"
+                                                                style="background: linear-gradient(90deg, #b24592, #f15f79);;color: #fff;">
+                                                                <i class="fa-regular fa-paper-plane"></i> Send
+                                                                Message
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>

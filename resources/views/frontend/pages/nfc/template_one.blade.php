@@ -92,19 +92,25 @@
         }
 
         .img-container-tem1::before {
-            content: "";
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to top,
-                    rgb(0, 0, 0),
-                    rgba(255, 255, 255, 0));
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 1),
+                    /* Solid black at the bottom */
+                    rgb(0 0 0 / 52%) 40%,
+                    /* Slightly lighter black */
+                    rgb(0 0 0 / 0%) 70%,
+                    /* Even lighter black */
+                    transparent 100%
+                    /* Fully transparent at the top */
+                );
             pointer-events: none;
-            /* Allows clicks to pass through the overlay */
+            /* Ensures the overlay doesn't block interactions */
             z-index: 1;
-            /* Make sure it's on top of the image */
+            /* Stacks the overlay above the image */
         }
 
         .img-container-tem1 img {
@@ -127,7 +133,14 @@
         .profile-img-tem1 img {
             width: 150px;
             height: 150px;
-            border: 8px solid white;
+            border: 8px solid transparent;
+            /* Use transparent border to allow the gradient to show */
+            border-radius: 50%;
+            /* Optional: to make the border round if the image is circular */
+            background-image: linear-gradient(45deg, #464646, #252525);
+            /* Example gradient */
+            border-image: linear-gradient(45deg, #464646, #252525) 1;
+            /* Apply the gradient to the border */
             object-fit: cover;
         }
 
@@ -339,6 +352,12 @@
                 object-fit: cover;
             }
         }
+
+        .services-img-one img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
     </style>
 </head>
 
@@ -438,10 +457,10 @@
                     <!-- Bio Area -->
                     @if (!empty($nfc_card->bio_description))
                         <section>
-                            <div class="container py-5">
+                            <div class="container py-5 px-4">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <p class="text-center text-white">
+                                        <p class=" text-white" style="text-align: justify">
                                             {{ $nfc_card->bio_description }}
                                         </p>
                                     </div>
@@ -459,7 +478,7 @@
                             !empty(optional($nfc_card->nfcData)->date_of_birth) ||
                             !empty(optional($nfc_card->nfcData)->address_line_two))
                         <section>
-                            <div class="container py-5 pt-0">
+                            <div class="container py-5 pt-0 px-4">
                                 <div class="row">
                                     @if (!empty(optional($nfc_card->nfcData)->email_personal) || !empty(optional($nfc_card->nfcData)->email_work))
                                         <div class="col-12">
@@ -499,12 +518,14 @@
                                                         @if (!empty(optional($nfc_card->nfcData)->phone_personal))
                                                             <p class="mb-0 fs-6">
                                                                 {{ optional($nfc_card->nfcData)->phone_personal }}
-                                                                <small>(Personal)</small></p>
+                                                                <small>(Personal)</small>
+                                                            </p>
                                                         @endif
                                                         @if (!empty(optional($nfc_card->nfcData)->phone_work))
                                                             <p class="mb-0 fs-6">
                                                                 {{ optional($nfc_card->nfcData)->phone_work }}
-                                                                <small>(Work)</small></p>
+                                                                <small>(Work)</small>
+                                                            </p>
                                                         @endif
                                                     </div>
                                                 </div>
@@ -570,7 +591,7 @@
                 <!-- Company Info -->
                 @if ($nfc_card->companies_show == '1')
                     <section>
-                        <div class="container py-5">
+                        <div class="container py-5 px-4">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="text-center">
@@ -592,9 +613,15 @@
                                                 <div class="col-md-12 pb-3">
                                                     <div class="text-center text-white">
                                                         <h5>{{ $company->company_name }}</h5>
-                                                        <p class="p-3 mb-0" style="text-align: justify">
-                                                            {{ $company->company_description }}
-                                                        </p>
+                                                        <div>
+                                                            <p class="p-3 mb-0" style="text-align: justify"
+                                                                id="company-description">
+                                                                {{ Str::limit($company->company_description, 150) }}
+                                                            </p>
+                                                            <button class="btn btn-sm btn-light rounded-0 px-2"
+                                                                id="show-more-btn" style="display: none;">Show
+                                                                More</button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
@@ -621,21 +648,13 @@
                                                         </div>
                                                         <div class="col-lg-4 col-4">
                                                             <div class="d-flex justify-content-center">
-                                                                <img class="img-fluid" width="150px"
+                                                                <img class="img-fluid" width="100px"
                                                                     src="{{ !empty($company->company_logo) && file_exists(public_path('storage/nfc/company/' . optional($company)->company_logo)) ? asset('storage/nfc/company/' . optional($company)->company_logo) : asset('frontend/images/no_image.png') }}"
                                                                     alt="" />
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                {{-- <div class="col-md-4 bg-white d-flex justify-content-center mt-0"
-                                                    style="height: 218px; margin: auto">
-                                                    <div class="d-flex justify-content-center align-items-center">
-                                                        <img class="img-fluid" width="150px"
-                                                            src="{{ !empty($company->company_logo) && file_exists(public_path('storage/nfc/company/' . optional($company)->company_logo)) ? asset('storage/nfc/company/' . optional($company)->company_logo) : asset('frontend/images/no_image.png') }}"
-                                                            alt="" />
-                                                    </div>
-                                                </div> --}}
                                                 <div class="col-md-12 pe-0">
                                                     <div
                                                         style="display: flex;justify-content: center;align-items: center;">
@@ -925,7 +944,7 @@
                 <!-- Servies Box -->
                 @if ($nfc_card->services_show == '1' && $nfc_card->nfcService->count() > 0)
                     <section>
-                        <div class="container pb-5">
+                        <div class="container pb-5 px-4">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="text-center">
@@ -942,22 +961,22 @@
                             <div class="service-slide pt-3">
                                 @foreach ($nfc_card->nfcService as $service)
                                     <div class="card me-2 rounded-0 border-0 service-details-box">
-                                        <div class="card-body border-0 bg-dark">
-                                            <div>
-                                                <img class="card-img-top img-fluid"
+                                        <div class="card-body border-0 pt-0 px-0 bg-dark">
+                                            <div class="services-img-one">
+                                                <img class="img-fluid"
                                                     src="{{ !empty($service->service_icon) && file_exists(public_path('storage/nfc/service/' . optional($service)->service_icon)) ? asset('storage/nfc/service/' . optional($service)->service_icon) : asset('frontend/images/no_image.png') }}"
                                                     alt="" />
                                             </div>
-                                            <div class="mt-3 text-center ">
-                                                <h4 class="mb-0 special-font text-white">
+                                            <div class="mt-4 text-center ">
+                                                <h4 class="special-font text-white">
                                                     {{ $service->service_name }}
                                                 </h4>
                                                 <p class="text-white">
                                                     {!! $service->service_description !!}
                                                 </p>
-                                                <div class="w-50 mx-auto">
+                                                <div class="">
                                                     <a href="{{ !empty(optional($service)->service_url) ? optional($service)->service_url : 'javascript:void(0)' }}"
-                                                        class="btn btn-light rounded-0 w-100 border-2 border-dark py-2">
+                                                        class="btn btn-light rounded-0 px-3 btn-sm border-2 border-dark py-2">
                                                         View Service <i class="fa-solid fa-arrow-right-long"></i>
                                                     </a>
                                                 </div>
@@ -973,7 +992,7 @@
                 <!-- Product -->
                 @if ($nfc_card->products_show == '1' && $nfc_card->nfcProduct->count() > 0)
                     <section>
-                        <div class="container pb-5">
+                        <div class="container pb-5 px-5">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="text-center">
@@ -997,21 +1016,31 @@
                                                         src="{{ !empty($product->product_icon) && file_exists(public_path('storage/nfc/product/' . optional($product)->product_icon)) ? asset('storage/nfc/product/' . optional($product)->product_icon) : asset('frontend/images/no_image.png') }}"
                                                         alt="" />
                                                 </div>
-                                                <div
-                                                    class="d-flex flex-column justify-content-between px-4 py-3 align-items-center bg-dark" style="height: 7rem">
-                                                    <h6 class="special-font mb-0 text-white">
-                                                        {{ $product->product_name }}</h6>
-                                                    <h4 class="special-font mb-0 text-white">
-                                                        @if ($product->product_currency == 'taka')
-                                                            Tk
-                                                        @elseif ($product->product_currency == 'euro')
-                                                            €
-                                                        @elseif ($product->product_currency == 'dollar')
-                                                            $
-                                                        @elseif ($product->product_currency == 'pound')
-                                                            £
-                                                        @endif{{ $product->product_price }}
-                                                    </h4>
+                                                <div class="d-flex flex-column justify-content-between px-4 py-3 align-items-center bg-dark"
+                                                    style="height: 7rem">
+                                                    <h5 class="mb-0 text-white">
+                                                        {{ $product->product_name }}</h5>
+                                                    <div
+                                                        class="d-flex w-100 justify-content-between align-items-center">
+                                                        <div>
+                                                            <button
+                                                                class="btn-sm btn btn-light rounded-0">Show</button>
+                                                        </div>
+                                                        <div>
+                                                            <h6 class="mb-0 text-white">
+                                                                @if ($product->product_currency == 'taka')
+                                                                    Tk
+                                                                @elseif ($product->product_currency == 'euro')
+                                                                    €
+                                                                @elseif ($product->product_currency == 'dollar')
+                                                                    $
+                                                                @elseif ($product->product_currency == 'pound')
+                                                                    £
+                                                                @endif
+                                                                {{ $product->product_price }}
+                                                            </h6>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -1025,7 +1054,7 @@
                 @if ($nfc_card->galleries_show == '1' && $nfc_card->nfcGallery && $nfc_card->nfcGallery->isNotEmpty())
                     @if ($nfc_card->galleries_show)
                         <section>
-                            <div class="container pb-5">
+                            <div class="container pb-5 px-4">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="text-center">
@@ -1067,7 +1096,7 @@
                 <!-- Testimonial -->
                 @if ($nfc_card->testimonials_show == '1' && $nfc_card->nfcTestimonial && $nfc_card->nfcTestimonial->isNotEmpty())
                     <section>
-                        <div class="container pb-5">
+                        <div class="container pb-5 px-4">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="text-center">
@@ -1085,7 +1114,7 @@
                                 <div class="col-md-10 col-offset-md-1 mx-auto">
                                     <div class="testimonial-slide">
                                         @foreach ($nfc_card->nfcTestimonial as $testimonial)
-                                            <div class="card p-0 bg-dark border-0 p-0 mt-5">
+                                            <div class="card bg-dark border-0 p-0 mt-5">
                                                 <div class="card-body rounded-0 border-0">
                                                     <div class="d-flex justify-content-center"
                                                         style="margin-top: -40px">
@@ -1110,10 +1139,10 @@
                     </section>
                 @endif
 
-                <!-- Testimonial -->
+                <!-- QR -->
                 @if ($nfc_card->show_qr_code == '1')
                     <section>
-                        <div class="container pb-5">
+                        <div class="container pb-5 px-4">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="text-center">
@@ -1160,7 +1189,7 @@
                             optional($nfc_card->nfcData)->saturday == '1' ||
                             optional($nfc_card->nfcData)->sunday == '1'))
                     <section>
-                        <div class="container pb-5">
+                        <div class="container pb-5 px-4">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="text-center">
@@ -1284,10 +1313,9 @@
                         </div>
                     </section>
                 @endif
-
                 <!-- Contact Area -->
                 <section>
-                    <div class="container pb-5">
+                    <div class="container pb-5 px-4">
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="text-center">
@@ -1342,9 +1370,7 @@
                             $whatsappLink =
                                 'https://wa.me/?text=' . urlencode('Check out My NFC Profile: ' . $currentUrl);
                         @endphp
-
                         <!-- Create a button or link to share via WhatsApp -->
-
                         <div class="row py-5">
                             <div class="col-lg-12">
                                 <div class="text-center">
@@ -1441,7 +1467,34 @@
 
     <!-- Slick Carousel -->
     <script src="{{ asset('frontend/assets/js/slick.min.js') }}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const descriptionElement = document.getElementById("company-description");
+            const showMoreBtn = document.getElementById("show-more-btn");
 
+            // Full and limited content
+            const fullText = `{{ $company->company_description }}`;
+            const limitedText = `{{ Str::limit($company->company_description, 150) }}`;
+
+            // Check if the content needs a "Show More" button
+            if (fullText.trim() && fullText.length > 150) {
+                showMoreBtn.style.display = "inline-block"; // Show the button if text exceeds the limit
+            }
+
+            // Toggle content visibility
+            let isExpanded = false;
+            showMoreBtn.addEventListener("click", function() {
+                if (isExpanded) {
+                    descriptionElement.innerText = limitedText;
+                    showMoreBtn.innerText = "Show More";
+                } else {
+                    descriptionElement.innerText = fullText;
+                    showMoreBtn.innerText = "Show Less";
+                }
+                isExpanded = !isExpanded;
+            });
+        });
+    </script>
 
     <script>
         window.addEventListener('load', function() {
