@@ -148,7 +148,7 @@
 
         .gallery-img-four {
             width: 100%;
-            height: 400px;
+            height: 290px;
             object-fit: cover;
             box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px, rgba(0, 0, 0, 0.1) 0px 0px 1px;
         }
@@ -317,6 +317,22 @@
             background: black;
             padding: 10px;
         }
+
+        .service-images img {
+            width: 600px !important;
+            height: 350px !important;
+            object-fit: cover;
+        }
+
+        a {
+            text-decoration: none;
+            color: #252525;
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: #252525;
+        }
     </style>
     <!-- Style Here End -->
 </head>
@@ -435,7 +451,7 @@
                                                                     style="margin-bottom: -25px">
                                                                     <div class="four-contact-info"
                                                                         style="background-image: linear-gradient(to right bottom, #fd6da2, #fd679e, #fd619a, #fc5a96, #fc5392, #fc4f8f, #fc4b8d, #fc468a, #fc4489, #fc4288, #fc4086, #fc3e85);">
-                                                                        <i class="fa-solid fa-envelope ps-1"></i>
+                                                                        <i class="fa-solid fa-at ps-1"></i>
                                                                     </div>
                                                                 </div>
                                                                 <div
@@ -447,7 +463,9 @@
                                                                                     E-mail<small>(Personal)</small></p>
                                                                                 <p class="text-mute mb-0">
                                                                                     <small>
-                                                                                        {{ optional($nfc_card->nfcData)->email_personal }}</small>
+                                                                                        <a
+                                                                                            href="mailto:{{ optional($nfc_card->nfcData)->email_personal }}">{{ optional($nfc_card->nfcData)->email_personal }}</a>
+                                                                                    </small>
                                                                                 </p>
                                                                             @endif
                                                                         </div>
@@ -474,7 +492,8 @@
                                                                                 <p class="fw-bold text-mute">
                                                                                     E-mail<small>(Work)</small></p>
                                                                                 <p class="text-mute mb-0">
-                                                                                    <small>{{ optional($nfc_card->nfcData)->email_work }}</small>
+                                                                                    <small><a
+                                                                                            href="mailto:{{ optional($nfc_card->nfcData)->email_work }}">{{ optional($nfc_card->nfcData)->email_work }}</a></small>
                                                                                 </p>
                                                                             @endif
                                                                         </div>
@@ -491,7 +510,8 @@
                                                                     style="margin-bottom: -25px">
                                                                     <div class="four-contact-info"
                                                                         style="background-image: linear-gradient(to right bottom, #feb129, #feab25, #ffa522, #ff9f1f, #ff991c, #ff9218, #ff8c14, #ff8511, #ff7d0b, #ff7407, #ff6b04, #ff6103);">
-                                                                        <i class="fa-solid fa-phone ps-1"></i>
+                                                                        <i
+                                                                            class="fa-solid fa-mobile-screen-button ps-1"></i>
                                                                     </div>
                                                                 </div>
                                                                 <div
@@ -503,7 +523,8 @@
                                                                         <div style="margin-bottom: -5px !important">
                                                                             @if (!empty(optional($nfc_card->nfcData)->phone_personal))
                                                                                 <p class="text-mute mb-0">
-                                                                                    {{ optional($nfc_card->nfcData)->phone_personal }}
+                                                                                    <a
+                                                                                        href="tel:{{ optional($nfc_card->nfcData)->phone_personal }}">{{ optional($nfc_card->nfcData)->phone_personal }}</a>
                                                                                 </p>
                                                                             @endif
                                                                         </div>
@@ -519,7 +540,8 @@
                                                                     style="margin-bottom: -25px">
                                                                     <div class="four-contact-info"
                                                                         style="background-image: linear-gradient(to right bottom, #feb129, #feab25, #ffa522, #ff9f1f, #ff991c, #ff9218, #ff8c14, #ff8511, #ff7d0b, #ff7407, #ff6b04, #ff6103);">
-                                                                        <i class="fa-solid fa-phone ps-1"></i>
+                                                                        <i
+                                                                            class="fa-solid fa-mobile-screen-button fa-phone ps-1"></i>
                                                                     </div>
                                                                 </div>
                                                                 <div
@@ -531,7 +553,8 @@
                                                                         <div style="margin-bottom: -5px !important">
                                                                             @if (!empty(optional($nfc_card->nfcData)->phone_work))
                                                                                 <p class="text-mute mb-0">
-                                                                                    {{ optional($nfc_card->nfcData)->phone_work }}
+                                                                                    <a
+                                                                                        href="tel:{{ optional($nfc_card->nfcData)->phone_work }}">{{ optional($nfc_card->nfcData)->phone_work }}</a>
                                                                                 </p>
                                                                             @endif
                                                                         </div>
@@ -557,8 +580,7 @@
                                                                         <p class="fw-bold text-mute">Date Of
                                                                             Birth</p>
                                                                         <p class="text-muted mb-0">
-                                                                            {{ \Carbon\Carbon::parse(optional($nfc_card->nfcData)->date_of_birth)->format('m-j-Y') }}
-                                                                            (DB)
+                                                                            {{ optional($nfc_card->nfcData)->date_of_birth ? \Carbon\Carbon::parse(optional($nfc_card->nfcData)->date_of_birth)->format('l, F, Y') : '' }}
                                                                         </p>
                                                                     </div>
                                                                 </div>
@@ -664,9 +686,8 @@
                                                             @foreach ($nfc_card->nfcService as $service)
                                                                 <div class="service-slide border rounded-2">
                                                                     <div class="d-flex align-items-center">
-                                                                        <div>
+                                                                        <div class="service-images">
                                                                             <img class="rounded-2 img-fluid"
-                                                                                style="width: 250px; height: 250px; object-fit: cover;"
                                                                                 src="{{ !empty($service->service_icon) && file_exists(public_path('storage/nfc/service/' . optional($service)->service_icon)) ? asset('storage/nfc/service/' . optional($service)->service_icon) : asset('frontend/images/no_image.png') }}"
                                                                                 alt="" />
                                                                         </div>
@@ -674,7 +695,7 @@
                                                                             <h6 class="special-font fw-bold">
                                                                                 {{ $service->service_name }}
                                                                             </h6>
-                                                                            <p class="text-justify mb-0"
+                                                                            <p class="mb-0"
                                                                                 style="font-size: 14px !important">
                                                                                 {{ $service->service_description }}
                                                                             </p>
@@ -756,9 +777,9 @@
                                                                         src="{{ !empty($product->product_icon) && file_exists(public_path('storage/nfc/product/' . optional($product)->product_icon)) ? asset('storage/nfc/product/' . optional($product)->product_icon) : asset('frontend/images/no_image.png') }}"
                                                                         alt="" />
                                                                     <div class="card-body">
-                                                                        <h5 class="">
+                                                                        <h6 class="">
                                                                             {{ $product->product_name }}
-                                                                        </h5>
+                                                                        </h6>
                                                                         <p class="">
                                                                             @if ($product->product_currency == 'taka')
                                                                                 Tk
@@ -833,7 +854,6 @@
                                                 </div>
                                             </div>
                                         @endif
-                                        {{-- Business Hour --}}
                                         <!-- Business Hours -->
                                         @if (
                                             $nfc_card->business_hours_show == '1' &&
@@ -1123,7 +1143,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row" style="margin-bottom: 5rem;">
+                                                    <div class="row">
                                                         <div class="col text-center">
                                                             <button type="submit" class="btn"
                                                                 style="background-color: #1c344f;color: #fff;">
@@ -1132,6 +1152,43 @@
                                                         </div>
                                                     </div>
                                                 </form>
+                                            </div>
+                                        </div>
+                                        @php
+                                            $currentUrl = request()->url();
+                                            $whatsappLink =
+                                                'https://wa.me/?text=' .
+                                                urlencode('Check out My NFC Profile: ' . $currentUrl);
+                                        @endphp
+                                        <div class="row py-5 pb-0">
+                                            <div class="col-lg-12">
+                                                <div class="text-center">
+                                                    <h4 class="fw-bold text-center">
+                                                        <span
+                                                            style="border-bottom: 4px solid #FF9419; border-radius: 10px; padding: 5px;">
+                                                            Share VCard
+                                                        </span>
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-5">
+                                            <div class="col-sm-6 offse-sm-3 mx-auto">
+                                                <div>
+                                                    <img class="img-fluid"
+                                                        src="{{ asset('images/d-image/Animated-Hand-No-Background.png') }}"
+                                                        alt="" />
+                                                </div>
+                                                <div class="d-flex align-items-center justify-content-center mb-4">
+                                                    <a href="{{ $whatsappLink }}" target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        class="btn btn-outline-primary rounded-0 mb-2 p-3"
+                                                        style="width: 240px;">
+                                                        <i class="fa-solid fa-share-nodes"
+                                                            style="color: var(--template-two-color-primary)"></i>
+                                                        Share This Vcard
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

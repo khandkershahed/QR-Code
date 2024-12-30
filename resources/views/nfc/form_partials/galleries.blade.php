@@ -1,70 +1,75 @@
 <div class="row">
     <div class="col-lg-12">
-        <div class="d-flex justify-content-end" data-kt-docs-table-toolbar="base">
-            <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal"
-                data-bs-target="#galleryCreateModal">
-                Add Gallery
-            </button>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-lg-12">
-        <h3>All Gallery List</h3>
-        <div class="table-responsive">
-            <table class="table align-middle table-row-dashed table-border fs-6 gy-5">
-                <thead>
-                    <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
-                        <th width="5%">SL</th>
-                        <th width="12%">Type</th>
-                        <th width="30%">Title</th>
-                        <th width="40%">Link</th>
-                        <th width="13%">Action</th>
-                    </tr>
-                </thead>
-                <tbody class="text-gray-600 fw-semibold">
-                    @if ($nfc_card->nfcGallery)
-                        @foreach ($nfc_card->nfcGallery as $gallery)
-                            <tr>
-                                <td>
-                                    {{ $loop->iteration }}
-                                </td>
-                                <td>
-                                    <span class="badge badge-info">{{ $gallery->gallery_type }}</span>
-                                </td>
-                                <td>
-                                    <p class="mb-0">{{ $gallery->gallery_title }}</p>
-                                </td>
-                                <td>
-                                    @if ($gallery->gallery_type == 'image')
-                                    <img class="w-75px" src="{{ asset('storage/nfc/gallery/' . $gallery->gallery_attachment) }}" alt="">
-                                        {{-- <a href="{{ asset('storage/nfc/gallery/' . $gallery->gallery_attachment) }}"
-                                            target="_blank"
-                                            class="text-primary">{{ asset('storage/nfc/gallery/' . $gallery->gallery_attachment) }}</a> --}}
-                                    @else
-                                        <a href="{{ $gallery->gallery_link }}" target="_blank"
-                                            class="text-primary">{{ $gallery->gallery_link }}</a>
-                                    @endif
-                                </td>
-                                <td>
-                                    {{-- <a href="javascript:void(0)" class="text-primary me-3" data-bs-toggle="modal"
-                                        data-bs-target="#galleryEditModal{{ $gallery->id }}">
-                                        <i class="fa-solid fa-pen text-primary"></i>
-                                    </a> --}}
-                                    <a href="javascript:void(0)" class="text-danger"
-                                        onclick="deleteGallery(event, '{{ route('nfc.gallery.destroy', $gallery->id) }}')">Delete
-                                        <i class="fa-solid fa-trash text-danger"></i></a>
-                                </td>
-                            </tr>
-                        @endforeach
-                    @else
-                        <tr>
-                            <td class="text-center" colspan="6">No Gallery available</td>
+        <div class="card my-10 rounded-0">
+            <div class="card-header p-5 align-items-center rounded-0 bg-info m-0">
+                <div>
+                    <h1 class="mb-0 mt-0 card-title fs-2 text-white">All Gallery!</h1>
+                    <p class="text-white mt-2 mb-0">View and manage all gallery information in this page.</p>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-white btn-active-light-warning text-hover-inverse-white"
+                        data-bs-toggle="modal" data-bs-target="#galleryCreateModal" data-bs-toggle="tooltip"
+                        data-bs-dismiss="click" title="Want To Add New Gallery">
+                        <i class="fa-solid fa-user-plus"></i> Add Gallery
+                    </button>
+                </div>
+            </div>
+            <div class="card-body p-0 rounded-0">
+                <table class="table my-datatable table-striped table-row-bordered mt-0">
+                    <thead>
+                        <tr class="text-start bg-info text-white fw-bolder fs-7 text-uppercase gs-0">
+                            <th width="5%">SL</th>
+                            <th width="12%">Type</th>
+                            <th width="30%">Title</th>
+                            <th width="40%">Link</th>
+                            <th width="13%">Action</th>
                         </tr>
-                    @endif
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody class="text-gray-600 fw-semibold">
+                        @if ($nfc_card->nfcGallery)
+                            @foreach ($nfc_card->nfcGallery as $gallery)
+                                <tr>
+                                    <td>
+                                        {{ $loop->iteration }}
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-info">{{ $gallery->gallery_type }}</span>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">{{ $gallery->gallery_title }}</p>
+                                    </td>
+                                    <td>
+                                        @if ($gallery->gallery_type == 'image')
+                                            <img class="w-75px"
+                                                src="{{ asset('storage/nfc/gallery/' . $gallery->gallery_attachment) }}"
+                                                alt="">
+                                            {{-- <a href="{{ asset('storage/nfc/gallery/' . $gallery->gallery_attachment) }}"
+                                        target="_blank"
+                                        class="text-primary">{{ asset('storage/nfc/gallery/' . $gallery->gallery_attachment) }}</a> --}}
+                                        @else
+                                            <a href="{{ $gallery->gallery_link }}" target="_blank"
+                                                class="text-primary">{{ $gallery->gallery_link }}</a>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        {{-- <a href="javascript:void(0)" class="text-primary me-3" data-bs-toggle="modal"
+                                    data-bs-target="#galleryEditModal{{ $gallery->id }}">
+                                    <i class="fa-solid fa-pen text-primary"></i>
+                                </a> --}}
+                                        <a href="javascript:void(0)" class="text-danger"
+                                            onclick="deleteGallery(event, '{{ route('nfc.gallery.destroy', $gallery->id) }}')">Delete
+                                            <i class="fa-solid fa-trash text-danger"></i></a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr>
+                                <td class="text-center" colspan="6">No Gallery available</td>
+                            </tr>
+                        @endif
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <div class="col-lg-12">
@@ -170,7 +175,7 @@
                             <x-metronic.label class="required fw-semibold fs-6 mb-3">Gallery Name</x-metronic.label>
                             <x-metronic.input type="text" class="form-control form-control-solid form-control-sm"
                                 name="gallery_title" id="gallery_title" required placeholder="Gallery Name"
-                                :value="old('gallery_title',$gallery->gallery_title)" />
+                                :value="old('gallery_title', $gallery->gallery_title)" />
                         </div>
                         <div class="fv-row mb-5">
                             <x-metronic.label for="gallery_attachment"
@@ -460,7 +465,8 @@
 
                                 toastr.success('Data saved successfully!', 'Success');
                                 @foreach ($nfc_card->nfcGallery as $gallery)
-                                updateGalleryForm({{ $gallery->id }}); // Bind form submission event handler for each form
+                                    updateGalleryForm(
+                                    {{ $gallery->id }}); // Bind form submission event handler for each form
                                 @endforeach
                                 modalInstance.hide();
                             } else {

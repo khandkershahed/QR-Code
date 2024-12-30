@@ -24,10 +24,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/css/swiper.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/css/slick.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/css/slick_theme.min.css') }}" />
-    {{-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" /> --}}
-    {{-- <link rel="stylesheet" type="text/css"
-        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" /> --}}
-    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css"> --}}
 
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Almendra+SC&family=Anton&family=Anton+SC&family=Bebas+Neue&family=Jost:ital,wght@0,100..900;1,100..900&family=Margarine&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
@@ -58,7 +54,6 @@
             width: 100%;
             height: 100%;
             background-color: #1f0061;
-            /* Change this to match your page background */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -68,6 +63,25 @@
         body {
             height: 100%;
         }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .company-details::-webkit-scrollbar {
+            width: 0.2em;
+        }
+
+        .company-details::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .company-details::-webkit-scrollbar-thumb {
+            background-color: darkgrey;
+            outline: 0px solid slategrey;
+        }
+
 
         .mobile-frame {
             width: 535px;
@@ -88,7 +102,6 @@
         .img-container-tem1 {
             position: relative;
             display: inline-block;
-            /* Or any other display property that suits your layout */
         }
 
         .img-container-tem1::before {
@@ -99,18 +112,11 @@
             right: 0;
             bottom: 0;
             background: linear-gradient(to top, rgba(0, 0, 0, 1),
-                    /* Solid black at the bottom */
                     rgb(0 0 0 / 52%) 40%,
-                    /* Slightly lighter black */
                     rgb(0 0 0 / 0%) 70%,
-                    /* Even lighter black */
-                    transparent 100%
-                    /* Fully transparent at the top */
-                );
+                    transparent 100%);
             pointer-events: none;
-            /* Ensures the overlay doesn't block interactions */
             z-index: 1;
-            /* Stacks the overlay above the image */
         }
 
         .img-container-tem1 img {
@@ -134,13 +140,9 @@
             width: 150px;
             height: 150px;
             border: 8px solid transparent;
-            /* Use transparent border to allow the gradient to show */
             border-radius: 50%;
-            /* Optional: to make the border round if the image is circular */
             background-image: linear-gradient(45deg, #464646, #252525);
-            /* Example gradient */
             border-image: linear-gradient(45deg, #464646, #252525) 1;
-            /* Apply the gradient to the border */
             object-fit: cover;
         }
 
@@ -177,7 +179,6 @@
             width: 10%;
         }
 
-        /* Additional styles for the arrow buttons */
         .slick-prev,
         .slick-next {
             font-size: 0;
@@ -245,12 +246,17 @@
             background-size: contain;
         }
 
-
-
         .product-img-box {
-            widows: 100%;
-            height: 250px;
-            object-fit: cover;
+            width: 100%;
+            height: 210px;
+            display: flex;
+            align-items: center;
+        }
+
+        .product-img-box img {
+            width: 100%;
+            height: 220px;
+            object-fit: contain;
         }
 
         .slick-slide {
@@ -327,6 +333,17 @@
             margin: auto;
         }
 
+        .gallery-images img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .company-details {
+            overflow-y: auto;
+            height: 130px;
+        }
+
         @media only screen and (max-width: 600px) {
             .footer-nav-tem1 {
                 width: 100%;
@@ -357,6 +374,14 @@
             width: 100%;
             height: 400px;
             object-fit: cover;
+        }
+
+        .vcard-share-img img {
+            width: 270px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
         }
     </style>
 </head>
@@ -481,6 +506,28 @@
                             <div class="container py-5 pt-0 px-4">
                                 <div class="row">
                                     @if (!empty(optional($nfc_card->nfcData)->email_personal) || !empty(optional($nfc_card->nfcData)->email_work))
+                                        <div class="col-12 mb-4">
+                                            <div>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="bg-white p-3">
+                                                        <i class="fa-solid fa-at social_icons text-black fs-3"></i>
+                                                    </div>
+                                                    <div class="text-white ps-3">
+                                                        <p class="mb-0">E-Mail Address <small>(Personal)</small></p>
+                                                        @if (!empty(optional($nfc_card->nfcData)->email_personal))
+                                                            <p class="mb-0 fs-6">
+                                                                <a
+                                                                    href="mailto:{{ optional($nfc_card->nfcData)->email_personal }}">
+                                                                    {{ optional($nfc_card->nfcData)->email_personal }}
+                                                                </a>
+                                                            </p>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    @if (!empty(optional($nfc_card->nfcData)->email_personal) || !empty(optional($nfc_card->nfcData)->email_work))
                                         <div class="col-12">
                                             <div>
                                                 <div class="d-flex align-items-center">
@@ -488,17 +535,34 @@
                                                         <i class="fa fa-envelope social_icons text-black fs-3"></i>
                                                     </div>
                                                     <div class="text-white ps-3">
-                                                        <small class="mb-0">E-Mail Address</small>
-                                                        @if (!empty(optional($nfc_card->nfcData)->email_personal))
-                                                            <p class="mb-0 fs-6">
-                                                                {{ optional($nfc_card->nfcData)->email_personal }}
-                                                                <small>(Personal)</small>
-                                                            </p>
-                                                        @endif
+                                                        <p class="mb-0">E-Mail Address <small>(Work)</small></p>
                                                         @if (!empty(optional($nfc_card->nfcData)->email_work))
                                                             <p class="mb-0 fs-6">
-                                                                {{ optional($nfc_card->nfcData)->email_work }}
-                                                                <small>(Work)</small>
+                                                                <a
+                                                                    href="mailto:{{ optional($nfc_card->nfcData)->email_work }}">
+                                                                    {{ optional($nfc_card->nfcData)->email_work }}
+                                                                </a>
+                                                            </p>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    @if (!empty(optional($nfc_card->nfcData)->phone_personal) || !empty(optional($nfc_card->nfcData)->phone_work))
+                                        <div class="col-12 mt-4">
+                                            <div>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="bg-white p-3">
+                                                        <i
+                                                            class="fa-solid fa-mobile-screen social_icons text-black fs-3"></i>
+                                                    </div>
+                                                    <div class="text-white ps-3">
+                                                        <p class="mb-0">Mobile Number <small>(Personal)</small></p>
+                                                        @if (!empty(optional($nfc_card->nfcData)->phone_personal))
+                                                            <p class="mb-0 fs-6">
+                                                                <a
+                                                                    href="tel:{{ optional($nfc_card->nfcData)->phone_personal }}">{{ optional($nfc_card->nfcData)->phone_personal }}</a>
                                                             </p>
                                                         @endif
                                                     </div>
@@ -514,17 +578,11 @@
                                                         <i class="fa fa-phone social_icons text-black fs-3"></i>
                                                     </div>
                                                     <div class="text-white ps-3">
-                                                        <small class="mb-0">Mobile Number</small>
-                                                        @if (!empty(optional($nfc_card->nfcData)->phone_personal))
-                                                            <p class="mb-0 fs-6">
-                                                                {{ optional($nfc_card->nfcData)->phone_personal }}
-                                                                <small>(Personal)</small>
-                                                            </p>
-                                                        @endif
+                                                        <p class="mb-0">Mobile Number <small>(Work)</small></p>
                                                         @if (!empty(optional($nfc_card->nfcData)->phone_work))
                                                             <p class="mb-0 fs-6">
-                                                                {{ optional($nfc_card->nfcData)->phone_work }}
-                                                                <small>(Work)</small>
+                                                                <a
+                                                                    href="tel:{{ optional($nfc_card->nfcData)->phone_work }}">{{ optional($nfc_card->nfcData)->phone_work }}</a>
                                                             </p>
                                                         @endif
                                                     </div>
@@ -542,7 +600,7 @@
                                                     <div class="text-white ps-3">
                                                         <small class="mb-0">Date Of Birth</small>
                                                         <p class="mb-0 fs-6">
-                                                            {{ \Carbon\Carbon::parse(optional($nfc_card->nfcData)->date_of_birth)->format('m-d-Y') }}
+                                                            {{ optional($nfc_card->nfcData)->date_of_birth ? \Carbon\Carbon::parse(optional($nfc_card->nfcData)->date_of_birth)->format('l, F, Y') : '' }}
                                                         </p>
                                                     </div>
                                                 </div>
@@ -559,7 +617,8 @@
                                                     <div class="text-white ps-3">
                                                         <small class="mb-0">Fax Number</small>
                                                         <p class="mb-0 fs-6">
-                                                            {{ optional($nfc_card->nfcData)->fax }}
+                                                            <a
+                                                                href="tel:{{ optional($nfc_card->nfcData)->fax }}">{{ optional($nfc_card->nfcData)->fax }}</a>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -613,14 +672,10 @@
                                                 <div class="col-md-12 pb-3">
                                                     <div class="text-center text-white">
                                                         <h5>{{ $company->company_name }}</h5>
-                                                        <div>
-                                                            <p class="p-3 mb-0" style="text-align: justify"
-                                                                id="company-description">
-                                                                {{ Str::limit($company->company_description, 150) }}
+                                                        <div class="company-details">
+                                                            <p class="p-3 mb-0" style="text-align: justify">
+                                                                {{ $company->company_description }}
                                                             </p>
-                                                            <button class="btn btn-sm btn-light rounded-0 px-2"
-                                                                id="show-more-btn" style="display: none;">Show
-                                                                More</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -648,7 +703,7 @@
                                                         </div>
                                                         <div class="col-lg-4 col-4">
                                                             <div class="d-flex justify-content-center">
-                                                                <img class="img-fluid" width="100px"
+                                                                <img class="img-fluid rounded-2" width="100px"
                                                                     src="{{ !empty($company->company_logo) && file_exists(public_path('storage/nfc/company/' . optional($company)->company_logo)) ? asset('storage/nfc/company/' . optional($company)->company_logo) : asset('frontend/images/no_image.png') }}"
                                                                     alt="" />
                                                             </div>
@@ -997,12 +1052,6 @@
                                 <div class="col-lg-12">
                                     <div class="text-center">
                                         <h1 class="special-font text-white">My Product</h1>
-                                        <div class="d-flex align-items-center px-5 w-50 mx-auto">
-                                            <span class="divider-tem1"></span>
-                                            <span class="divider-tem1-icons text-center"><i
-                                                    class="fa-solid fa-diamond text-white"></i></span>
-                                            <span class="divider-tem1"></span>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1012,21 +1061,16 @@
                                         <div class="card border-0 product-box">
                                             <div class="card-body p-0">
                                                 <div class="product-img-box">
-                                                    <img class="img-fluid rounded-2 product-img-tem1"
+                                                    <img class="rounded-2 "
                                                         src="{{ !empty($product->product_icon) && file_exists(public_path('storage/nfc/product/' . optional($product)->product_icon)) ? asset('storage/nfc/product/' . optional($product)->product_icon) : asset('frontend/images/no_image.png') }}"
                                                         alt="" />
                                                 </div>
-                                                <div class="d-flex flex-column justify-content-between px-4 py-3 align-items-center bg-dark"
-                                                    style="height: 7rem">
-                                                    <h5 class="mb-0 text-white">
-                                                        {{ $product->product_name }}</h5>
-                                                    <div
-                                                        class="d-flex w-100 justify-content-between align-items-center">
-                                                        <div>
-                                                            <button
-                                                                class="btn-sm btn btn-light rounded-0">Show</button>
-                                                        </div>
-                                                        <div>
+                                                <div
+                                                    class="d-flex w-100 flex-column justify-content-between px-4 py-3 align-items-center bg-dark">
+                                                    <p class="mb-0 text-white">
+                                                        {{ $product->product_name }}</p>
+                                                    <div class="w-100">
+                                                        <div class="pt-3">
                                                             <h6 class="mb-0 text-white">
                                                                 @if ($product->product_currency == 'taka')
                                                                     Tk
@@ -1039,6 +1083,10 @@
                                                                 @endif
                                                                 {{ $product->product_price }}
                                                             </h6>
+                                                        </div>
+                                                        <div class="pt-3">
+                                                            <button
+                                                                class="btn-sm btn btn-light rounded-0 w-100">View</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1072,18 +1120,19 @@
                                     <div class="col-lg-12">
                                         <div class="galery-slide">
                                             @foreach ($nfc_card->nfcGallery as $gallery)
-                                                <div style="height: 30rem; ">
-                                                    @if ($gallery->gallery_type == 'image')
-                                                        <img class="w-100 img-fluid"
-                                                            src="{{ !empty($gallery->gallery_attachment) && file_exists(public_path('storage/nfc/gallery/' . optional($gallery)->gallery_attachment)) ? asset('storage/nfc/gallery/' . optional($gallery)->gallery_attachment) : asset('frontend/images/no_image.png') }}"
-                                                            alt="" />
-                                                        {{-- @else --}}
-                                                        {{-- <div class="video-wrapper">
-                                                        <iframe width="600" height="338"
-                                                            src="{{ optional($gallery)->gallery_link }}"
-                                                            frameborder="0" allowfullscreen></iframe>
-                                                    </div> --}}
-                                                    @endif
+                                                <div class="card bg-transparent border-0 p-0 rounded-0">
+                                                    <div class="card-header bg-white rounded-0">
+                                                        <p class="mb-0 text-center">{{ $gallery->gallery_title }}</p>
+                                                    </div>
+                                                    <div class="card-body border-0 p-0">
+                                                        <div class="gallery-images">
+                                                            @if ($gallery->gallery_type == 'image')
+                                                                <img class=""
+                                                                    src="{{ !empty($gallery->gallery_attachment) && file_exists(public_path('storage/nfc/gallery/' . optional($gallery)->gallery_attachment)) ? asset('storage/nfc/gallery/' . optional($gallery)->gallery_attachment) : asset('frontend/images/no_image.png') }}"
+                                                                    alt="{{ $gallery->gallery_title }}" />
+                                                            @endif
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             @endforeach
                                         </div>
@@ -1165,11 +1214,11 @@
                                                 alt="" />
                                         @endif
                                         @if ($nfc_card->enable_download_qr_code == '1')
-                                            <div>
+                                            <div class="mt-4">
                                                 <a href="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
                                                     download=""
                                                     class="btn btn-dark rounded-0 w-100 border-2 border-dark">Download
-                                                    QR</a>
+                                                    QR <i class="fa-solid fa-qrcode ps-3"></i></a>
                                             </div>
                                         @endif
                                     </div>
@@ -1339,27 +1388,29 @@
                                     <div class="row">
                                         <div class="col-lg-12 mb-3">
                                             <input type="text" name="name"
-                                                class="form-control form-control-sm rounded-0 w-75 mx-auto rounded-1 p-2"
+                                                class="form-control form-control-sm rounded-0 mx-auto rounded-1 p-2"
                                                 placeholder="Enter Your Names" />
                                         </div>
                                         <div class="col-lg-12 mb-3">
                                             <input type="email" name="email"
-                                                class="form-control form-control-sm rounded-0 w-75 mx-auto rounded-1 p-2"
+                                                class="form-control form-control-sm rounded-0 mx-auto rounded-1 p-2"
                                                 placeholder="Enter Your Email" />
                                         </div>
                                         <div class="col-lg-12 mb-3">
                                             <input type="text" name="phone"
-                                                class="form-control form-control-sm rounded-0 w-75 mx-auto rounded-1 p-2"
+                                                class="form-control form-control-sm rounded-0 mx-auto rounded-1 p-2"
                                                 placeholder="Enter Your Phone" />
                                         </div>
                                         <div class="col-lg-12 mb-3">
-                                            <textarea name="message" class="form-control form-control-sm rounded-0 w-75 mx-auto rounded-1 p-2" id=""
+                                            <textarea name="message" class="form-control form-control-sm rounded-0 mx-auto rounded-1 p-2" id=""
                                                 rows="5"></textarea>
                                         </div>
-                                        <div class="col-lg-12 w-75 mx-auto px-2">
-                                            <button type="submit" class="btn btn-dark w-100">
-                                                Send Message <i class="fa-solid fa-paper-plane"></i>
-                                            </button>
+                                        <div class="col-lg-12 px-2">
+                                            <div class="d-flex justify-content-center">
+                                                <button type="submit" class="btn btn-dark py-2 px-5">
+                                                    Send Message <i class="fa-solid fa-paper-plane"></i>
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </form>
@@ -1385,6 +1436,9 @@
                             </div>
                         </div>
                         <div class="row pb-5">
+                            <div class="col-lg-7 col-offset-lg-6 mx-auto vcard-share-img">
+                                <img src="{{ asset('images/share-now.png') }}" alt="">
+                            </div>
                             <div class="col-lg-7 col-offset-lg-6 mx-auto vcard-share">
                                 <a href="{{ $whatsappLink }}" target="_blank" rel="noopener noreferrer"
                                     class="btn btn-dark w-100 p-3 ">
@@ -1467,34 +1521,6 @@
 
     <!-- Slick Carousel -->
     <script src="{{ asset('frontend/assets/js/slick.min.js') }}"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const descriptionElement = document.getElementById("company-description");
-            const showMoreBtn = document.getElementById("show-more-btn");
-
-            // Full and limited content
-            const fullText = `{{ $company->company_description }}`;
-            const limitedText = `{{ Str::limit($company->company_description, 150) }}`;
-
-            // Check if the content needs a "Show More" button
-            if (fullText.trim() && fullText.length > 150) {
-                showMoreBtn.style.display = "inline-block"; // Show the button if text exceeds the limit
-            }
-
-            // Toggle content visibility
-            let isExpanded = false;
-            showMoreBtn.addEventListener("click", function() {
-                if (isExpanded) {
-                    descriptionElement.innerText = limitedText;
-                    showMoreBtn.innerText = "Show More";
-                } else {
-                    descriptionElement.innerText = fullText;
-                    showMoreBtn.innerText = "Show Less";
-                }
-                isExpanded = !isExpanded;
-            });
-        });
-    </script>
 
     <script>
         window.addEventListener('load', function() {

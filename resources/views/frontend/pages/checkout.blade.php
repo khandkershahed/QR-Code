@@ -78,7 +78,7 @@
                                         max-height: 100%;
                                     ">
                                         <img class="img-fluid" width="200px"
-                                            src="https://d1wqzb5bdbcre6.cloudfront.net/d111d73576dca0ef5e6e9e0effb33f099d23a7638b56c11b26974698fe0c8c93/68747470733a2f2f66696c65732e7374726970652e636f6d2f6c696e6b732f4d44423859574e6a6446387855455636613231495a464e6e4d56426c6332465a66475a7358327870646d56665447646e6130396a5632314356334d3151324a744e3038346258566d55555a7630304f643664734e7a58"
+                                            src="{{ asset('images/checkout-icons.png') }}"
                                             alt="">
                                     </div>
                                 </div>

@@ -1,21 +1,22 @@
 <div class="row">
-    <div class="col-lg-12">
-        <div class="d-flex justify-content-end" data-kt-docs-table-toolbar="base">
-            <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal"
-                data-bs-target="#productCreateModal">
-                Add Product
-            </button>
+    <div class="card my-10 rounded-0">
+        <div class="card-header p-5 align-items-center rounded-0 bg-info m-0">
+            <div>
+                <h1 class="mb-0 mt-0 card-title fs-2 text-white">All Product!</h1>
+                <p class="text-white mt-2 mb-0">View and manage all product information in this page.</p>
+            </div>
+            <div>
+                <button type="button" class="btn btn-white btn-active-light-warning text-hover-inverse-white"
+                    data-bs-toggle="modal" data-bs-target="#productCreateModal" data-bs-toggle="tooltip"
+                    data-bs-dismiss="click" title="Want To Add New Product">
+                    <i class="fa-solid fa-user-plus"></i> Add Product
+                </button>
+            </div>
         </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-lg-12">
-        <h3>All Product List</h3>
-        <div class="table-responsive">
-            <table class="table align-middle table-row-dashed table-border fs-6 gy-5">
+        <div class="card-body p-0 rounded-0">
+            <table class="table my-datatable table-striped table-row-bordered mt-0">
                 <thead>
-                    <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
+                    <tr class="text-start bg-info text-white fw-bolder fs-7 text-uppercase gs-0">
                         <th>Sl</th>
                         <th>PRODUCT IMAGE</th>
                         <th>PRODUCT NAME</th>
@@ -24,7 +25,7 @@
                         <th>ACTION</th>
                     </tr>
                 </thead>
-                <tbody class="text-gray-600 fw-semibold">
+                <tbody class="text-gray-600 fw-semibold" style="vertical-align: middlel;">
                     @if ($nfc_card->nfcProduct->count() > 0)
                         @foreach ($nfc_card->nfcProduct as $product)
                             <tr>
@@ -68,6 +69,9 @@
             </table>
         </div>
     </div>
+</div>
+
+<div class="row">
     <div class="col-lg-12">
         <div class="text-end d-flex justify-content-end">
             <button class="kt_docs_formvalidation_text_submit btn btn-primary mt-6 d-flex align-items-center">
@@ -179,17 +183,17 @@
                                     class="required fw-semibold fs-6 mb-2">{{ __('Product Name') }}</x-metronic.label>
                                 <x-metronic.input type="text"
                                     class="form-control form-control-solid form-control-sm" name="product_name"
-                                    :value="old('product_name',$product->product_name)" placeholder="Product Name" required />
+                                    :value="old('product_name', $product->product_name)" placeholder="Product Name" required />
                             </div>
                             <div class="fv-row mb-7 col-lg-6">
                                 <label class="required fw-semibold fs-6 mb-2">Currency</label>
                                 <select class="form-control select" name="product_currency"
                                     data-placeholder="Select a Currency">
                                     <option></option>
-                                    <option value="taka" @selected($product->product_currency == "taka")>Taka(Tk)</option>
-                                    <option value="euro" @selected($product->product_currency == "euro")>Euro(€)</option>
-                                    <option value="dollar" @selected($product->product_currency == "dollar")>Dollar($)</option>
-                                    <option value="pound" @selected($product->product_currency == "pound")>Pound(£)</option>
+                                    <option value="taka" @selected($product->product_currency == 'taka')>Taka(Tk)</option>
+                                    <option value="euro" @selected($product->product_currency == 'euro')>Euro(€)</option>
+                                    <option value="dollar" @selected($product->product_currency == 'dollar')>Dollar($)</option>
+                                    <option value="pound" @selected($product->product_currency == 'pound')>Pound(£)</option>
                                 </select>
                             </div>
                             <div class="fv-row mb-7 col-lg-6">
@@ -197,7 +201,7 @@
                                     class="required fw-semibold fs-6 mb-2">{{ __('Product Price') }}</x-metronic.label>
                                 <x-metronic.input type="number" step="0.01"
                                     class="form-control form-control-solid form-control-sm" name="product_price"
-                                    :value="old('product_price',$product->product_price)" placeholder="product price" required />
+                                    :value="old('product_price', $product->product_price)" placeholder="product price" required />
                             </div>
                             <div class="fv-row mb-7">
                                 <x-metronic.label for="product_icon"
@@ -212,12 +216,12 @@
                                     class="fw-semibold fs-6 mb-2">{{ __('Product URL') }}</x-metronic.label>
                                 <x-metronic.input type="url"
                                     class="form-control form-control-solid form-control-sm" name="product_url"
-                                    id="product_url" placeholder="Product URL" :value="old('product_url',$product->product_url)" />
+                                    id="product_url" placeholder="Product URL" :value="old('product_url', $product->product_url)" />
                             </div>
                             <div class="fv-row mb-7">
                                 <label class="fw-semibold fs-6 mb-2">{{ __('Description') }}</label>
                                 <textarea name="product_description" class="form-control form-control-solid mb-3 mb-lg-0" id="product_description"
-                                    rows="3">{{ old('product_description',$product->product_url) }}</textarea>
+                                    rows="3">{{ old('product_description', $product->product_url) }}</textarea>
                             </div>
                         </div>
                         <div class="d-flex justify-content-end mt-10">

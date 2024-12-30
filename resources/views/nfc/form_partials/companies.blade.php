@@ -1,16 +1,4 @@
 <div class="d-flex flex-stack mb-5">
-    <div class="d-flex align-items-center position-relative my-1">
-        {{-- <i class="fa-solid fa-magnifier fs-1 position-absolute ms-6"><span class="path1"></span><span
-                class="path2"></span></i>
-        <input type="text" data-kt-docs-table-filter="search" class="form-control form-control-solid w-250px ps-15"
-            placeholder="Search Customers" /> --}}
-    </div>
-    <div class="d-flex justify-content-end" data-kt-docs-table-toolbar="base">
-        <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#companyCreateModal">
-            Add Company
-        </button>
-    </div>
-    {{-- Add Company modal --}}
     <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
     <div class="modal fade" id="companyCreateModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
         role="dialog" aria-labelledby="modalTitleIdcompany" aria-hidden="true">
@@ -171,71 +159,86 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <div class="table-responsive">
-            <table class="table align-middle table-row-dashed table-border fs-6 gy-5">
-                <thead>
-                    <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
-                        <th width="5%">Sl</th>
-                        <th width="28%">Company Name</th>
-                        <th width="18%">Company Phone</th>
-                        <th width="22%">Company Address</th>
-                        <th width="15%">Website</th>
-                        <th width="12%">Action</th>
-                    </tr>
-                </thead>
-                <tbody class="text-gray-600 fw-semibold">
-                    @if ($nfc_card->nfcCompany->count() > 0)
-                        @foreach ($nfc_card->nfcCompany as $company)
-                            <tr>
-                                <td>
-                                    {{ $loop->iteration }}
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <div class="image image-circle image-mini me-3">
-                                            <img class="img-fluid w-45px"
-                                                src="{{ asset('storage/nfc/company/' . $company->company_logo) }}"
-                                                alt="">
-                                        </div>
-                                        <div class="d-flex flex-column">
-                                            <p class="mb-0">{{ $company->company_name }}</p>
-                                            <span class="fs-6">{{ $company->company_email }}</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    {{ $company->company_phone }}
-                                </td>
-                                <td>
-                                    <div class="d-flex flex-column">
-                                        <p class="mb-0">{{ $company->company_address_line_one }}</p>
-                                        <span class="fs-6">{{ $company->company_address_line_two }}</span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <a href="http://{{ $company->company_website }}" target="_blank"
-                                        class="text-primary">Company
-                                        Url <i class="fa-solid fa-link text-primary"></i></a>
-                                </td>
-                                <td>
-                                    <a href="javascript:void(0)" class="text-primary me-3" data-bs-toggle="modal"
-                                        data-bs-target="#companyEditModal{{ $company->id }}">
-                                        <i class="fa-solid fa-pen text-primary"></i>
-                                    </a>
-                                    <a href="javascript:void(0)" class="text-danger"
-                                        onclick="deleteCompany(event, '{{ route('nfc.company.destroy', $company->id) }}')">
-                                        <i class="fa-solid fa-trash text-danger"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        @endforeach
-                    @else
-                        <tr>
-                            <td class="text-center" colspan="6">No company available</td>
+        <div class="card rounded-0">
+            <div class="card-header p-5 align-items-center rounded-0 bg-info m-0">
+                <div>
+                    <h1 class="mb-0 mt-0 card-title fs-2 text-white">All Blog Category!</h1>
+                    <p class="text-white mt-2 mb-0">View and manage all blog category information in this page.</p>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-white btn-active-light-warning text-hover-inverse-white"
+                        data-bs-toggle="modal" data-bs-target="#companyCreateModal" data-bs-toggle="tooltip"
+                        data-bs-dismiss="click" title="Want To Add New company">
+                        <i class="fa-solid fa-user-plus"></i> Add Category
+                    </button>
+                </div>
+            </div>
+            <div class="card-body p-0 rounded-0">
+                <table class="table my-datatable table-striped table-row-bordered mt-0">
+                    <thead>
+                        <tr class="text-start bg-info text-white fw-bolder fs-7 text-uppercase gs-0">
+                            <th width="5%">Sl</th>
+                            <th width="28%">Company Name</th>
+                            <th width="18%">Company Phone</th>
+                            <th width="22%">Company Address</th>
+                            <th width="15%">Website</th>
+                            <th width="12%">Action</th>
                         </tr>
-                    @endif
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody class="text-gray-600 fw-semibold">
+                        @if ($nfc_card->nfcCompany->count() > 0)
+                            @foreach ($nfc_card->nfcCompany as $company)
+                                <tr>
+                                    <td>
+                                        {{ $loop->iteration }}
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="image image-circle image-mini me-3">
+                                                <img class="img-fluid w-45px"
+                                                    src="{{ asset('storage/nfc/company/' . $company->company_logo) }}"
+                                                    alt="">
+                                            </div>
+                                            <div class="d-flex flex-column">
+                                                <p class="mb-0">{{ $company->company_name }}</p>
+                                                <span class="fs-6">{{ $company->company_email }}</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        {{ $company->company_phone }}
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-column">
+                                            <p class="mb-0">{{ $company->company_address_line_one }}</p>
+                                            <span class="fs-6">{{ $company->company_address_line_two }}</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a href="http://{{ $company->company_website }}" target="_blank"
+                                            class="text-primary">Company
+                                            Url <i class="fa-solid fa-link text-primary"></i></a>
+                                    </td>
+                                    <td>
+                                        <a href="javascript:void(0)" class="text-primary me-3" data-bs-toggle="modal"
+                                            data-bs-target="#companyEditModal{{ $company->id }}">
+                                            <i class="fa-solid fa-pen text-primary"></i>
+                                        </a>
+                                        <a href="javascript:void(0)" class="text-danger"
+                                            onclick="deleteCompany(event, '{{ route('nfc.company.destroy', $company->id) }}')">
+                                            <i class="fa-solid fa-trash text-danger"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr>
+                                <td class="text-center" colspan="6">No company available</td>
+                            </tr>
+                        @endif
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <div class="col-lg-12">
@@ -601,7 +604,8 @@
                                 toastr.success('Data saved successfully!', 'Success');
                                 @foreach ($nfc_card->nfcCompany as $company)
                                     updateCompanyForm(
-                                    {{ $company->id }}); // Bind form submission event handler for each form
+                                        {{ $company->id }}
+                                    ); // Bind form submission event handler for each form
                                 @endforeach
                                 modalInstance.hide();
                             } else {

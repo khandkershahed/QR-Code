@@ -138,7 +138,7 @@ class VirtualCardController extends Controller
         $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
         $userId = $isUserRoute ? Auth::user()->id : null;
 
-        $nfc_card = NfcCard::create([ 
+        $nfc_card = NfcCard::create([
             'user_id'            => $userId,
             'reseller_id'        => $request->reseller_id,
             'code'               => $code,

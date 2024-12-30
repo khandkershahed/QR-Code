@@ -1,17 +1,19 @@
 <div class="row">
-    <div class="col-lg-12">
-        <div class="d-flex justify-content-end" data-kt-docs-table-toolbar="base">
-            <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal"
-                data-bs-target="#serviceCreateModal">
-                Add Service
-            </button>
+    <div class="card my-10 rounded-0">
+        <div class="card-header p-5 align-items-center rounded-0 bg-info m-0">
+            <div>
+                <h1 class="mb-0 mt-0 card-title fs-2 text-white">All Service!</h1>
+                <p class="text-white mt-2 mb-0">View and manage all service information in this page.</p>
+            </div>
+            <div>
+                <button type="button" class="btn btn-white btn-active-light-warning text-hover-inverse-white"
+                    data-bs-toggle="modal" data-bs-target="#serviceCreateModal" data-bs-toggle="tooltip"
+                    data-bs-dismiss="click" title="Want To Add New Service">
+                    <i class="fa-solid fa-user-plus"></i> Add Service
+                </button>
+            </div>
         </div>
-    </div>
-</div>
-<div class="row">
-    <h3>All Services List</h3>
-    <div class="col-lg-12">
-        <div class="table-responsive">
+        <div class="card-body p-0 rounded-0">
             <table class="table align-middle table-row-dashed table-border fs-6 gy-5">
                 <thead>
                     <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
@@ -63,6 +65,8 @@
             </table>
         </div>
     </div>
+</div>
+<div class="row">
     <div class="col-lg-12">
         <div class="text-end d-flex justify-content-end">
             <button class="kt_docs_formvalidation_text_submit btn btn-primary mt-6 d-flex align-items-center">
@@ -378,7 +382,8 @@
                                 toastr.success('Data saved successfully!', 'Success');
                                 @foreach ($nfc_card->nfcService as $service)
                                     updateServiceForm(
-                                    {{ $service->id }}); // Bind form submission event handler for each form
+                                        {{ $service->id }}
+                                        ); // Bind form submission event handler for each form
                                 @endforeach
                                 modalInstance.hide();
                             } else {
