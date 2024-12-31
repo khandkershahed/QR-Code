@@ -673,41 +673,43 @@
                                             @endif
                                         </div>
                                         <!-- Services-->
-                                        <div class="container mt-5">
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <h4 class="fw-bold text-center"><span
-                                                            style="border-bottom: 4px solid #FF9419; border-radius: 10px; padding: 5px;">Services</span>
-                                                    </h4>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <div class="pb-0 py-5">
-                                                        <div class="services-slider">
-                                                            @foreach ($nfc_card->nfcService as $service)
-                                                                <div class="service-slide border rounded-2">
-                                                                    <div class="d-flex align-items-center">
-                                                                        <div class="service-images">
-                                                                            <img class="rounded-2 img-fluid"
-                                                                                src="{{ !empty($service->service_icon) && file_exists(public_path('storage/nfc/service/' . optional($service)->service_icon)) ? asset('storage/nfc/service/' . optional($service)->service_icon) : asset('frontend/images/no_image.png') }}"
-                                                                                alt="" />
-                                                                        </div>
-                                                                        <div class="ps-3">
-                                                                            <h6 class="special-font fw-bold">
-                                                                                {{ $service->service_name }}
-                                                                            </h6>
-                                                                            <p class="mb-0"
-                                                                                style="font-size: 14px !important">
-                                                                                {{ $service->service_description }}
-                                                                            </p>
+                                        @if ($nfc_card->services_show == '1' && $nfc_card->nfcService->count() > 0)
+                                            <div class="container mt-5">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <h4 class="fw-bold text-center"><span
+                                                                style="border-bottom: 4px solid #FF9419; border-radius: 10px; padding: 5px;">Services</span>
+                                                        </h4>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="pb-0 py-5">
+                                                            <div class="services-slider">
+                                                                @foreach ($nfc_card->nfcService as $service)
+                                                                    <div class="service-slide border rounded-2">
+                                                                        <div class="d-flex align-items-center">
+                                                                            <div class="service-images">
+                                                                                <img class="rounded-2 img-fluid"
+                                                                                    src="{{ !empty($service->service_icon) && file_exists(public_path('storage/nfc/service/' . optional($service)->service_icon)) ? asset('storage/nfc/service/' . optional($service)->service_icon) : asset('frontend/images/no_image.png') }}"
+                                                                                    alt="" />
+                                                                            </div>
+                                                                            <div class="ps-3">
+                                                                                <h6 class="special-font fw-bold">
+                                                                                    {{ $service->service_name }}
+                                                                                </h6>
+                                                                                <p class="mb-0"
+                                                                                    style="font-size: 14px !important">
+                                                                                    {{ $service->service_description }}
+                                                                                </p>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                            @endforeach
+                                                                @endforeach
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        @endif
                                         <!-- Gallery -->
                                         @if ($nfc_card->galleries_show == '1' && $nfc_card->nfcGallery && $nfc_card->nfcGallery->isNotEmpty())
                                             @if ($nfc_card->galleries_show)
