@@ -12,6 +12,7 @@ use App\Models\BlogCategory;
 use Illuminate\Http\Request;
 use App\Models\Admin\NfcCard;
 use App\Http\Controllers\Controller;
+use App\Models\CardProduct;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
@@ -26,9 +27,7 @@ class HomeController extends Controller
             'barcode_plans'  => Plan::orderBy('price', 'asc')->where('type', 'barcode')->get(),
 
             'blog_posts'     => BlogPost::latest('id')->where('status', 'publish')->paginate(10),
-            // 'blog_categorys' => BlogCategory::latest('id')->where('status', 'active')->get(),
-            // 'blog_tags'      => BlogTag::latest('id')->where('status', 'active')->get(),
-            // 'recent_posts'   => BlogPost::latest('created_at')->where('status', 'publish')->take(5)->get(),
+            'cardProducts'   => CardProduct::where('status', 'active')->get(),
         ];
         return view('frontend.pages.homePage', $data);
     }

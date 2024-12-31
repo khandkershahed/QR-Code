@@ -35,6 +35,7 @@ use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\Admin\CardProductController;
 
 Route::middleware('guest:admin')->prefix('admin')->name('admin.')->group(function () {
 
@@ -110,6 +111,7 @@ Route::middleware('auth:admin', 'role:admin')->prefix('admin')->name('admin.')->
             'barcode'             => BarCodeController::class,
             'nfc-card'            => NfcCardController::class,
             'virtual-card'        => VirtualCardController::class,
+            'card-product'       => CardProductController::class,
             'requested-card'      => RequestedCardController::class,
             'restaurant-category' => RestaurantCategoryController::class,
 

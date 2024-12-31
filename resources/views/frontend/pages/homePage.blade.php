@@ -498,8 +498,7 @@
                                                     <div class="price">
                                                         <span
                                                             class="prev">$</span>{{ number_format($barcode_plan->price / 12, 2) }}
-                                                        per
-                                                        month
+                                                        per month
                                                         {{-- <span class="next">/
                                                             @if ($barcode_plan->billing_cycle == 'year')
                                                                 year
@@ -637,222 +636,57 @@
                     <div class="ai-image aos-init aos-animate" data-aos="fade-left" data-aos-duration="1500"
                         data-aos-offset="50">
                         <div class="product-slider-card row">
-                            <div class="">
-                                <a href="">
-                                    <div class="card border-0 shadow-sm bg-light">
-                                        <div class="card-header border-0">
-                                            <div>
-                                                <img class="img-fluid"
-                                                    src="https://cdn.shopify.com/s/files/1/0542/1999/7359/files/dot-thin-basic.png?v=1701958444"
-                                                    alt="Product 1">
-                                            </div>
-                                            <div class="d-flex justify-content-between align-items-center">
+                            @foreach ($cardProducts as $cardProduct)
+                                <div class="">
+                                    <a href="">
+                                        <div class="card border-0 shadow-sm bg-light">
+                                            <div class="card-header border-0">
                                                 <div>
-                                                    <h6 class="mb-0">V-Card With NFC</h6>
-                                                    <h6 class="text-mute mb-0">
-                                                        <small>Metal,Plastic,Silver Card</small>
+                                                    <img src="{{ asset('storage/' . $cardProduct->image) }}"
+                                                        alt="{{ $cardProduct->name }}"
+                                                        onerror="this.onerror=null;this.src='{{ asset('frontend/newimage/blognoimage.webp') }}';">
+                                                    {{-- <img class="img-fluid" src="{{ asset('') }}"
+                                                        alt="Product 1"> --}}
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div>
+                                                        <h6 class="mb-0">{{ $cardProduct->name }}</h6>
+                                                        {{-- <h6 class="text-mute mb-0">
+                                                            <small>Metal,Plastic,Silver Card</small>
+                                                        </h6> --}}
+                                                    </div>
+                                                    <h6 class="mb-0">
+                                                        @if ($cardProduct->currency == 'eur')
+                                                            €
+                                                        @elseif ($cardProduct->currency == 'gbp')
+                                                            £
+                                                        @elseif ($cardProduct->currency == 'usd')
+                                                            $
+                                                        @else
+                                                            $
+                                                        @endif
+                                                        {{ $cardProduct->price }}
                                                     </h6>
                                                 </div>
-                                                <h6 class="mb-0">$500.00</h6>
                                             </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="">
-                                                <div>
-                                                    <p class="mb-0 package-details text-start">The ideal gift for clients,
-                                                        coworkers, employees, or friends. employees, or friends. employees,
-                                                        or friends.</p>
+                                            <div class="card-body">
+                                                <div class="">
+                                                    <div>
+                                                        <p class="mb-0 package-details text-start">
+                                                            {!! $cardProduct->short_description !!}
+                                                        </p>
+                                                    </div>
+                                                    <div class="mt-4">
+                                                        <a href="{{ route('card.checkout',$cardProduct->slug) }}" class="theme-btn style-two rounded-0 btn-sm"
+                                                            style="width: 100%;">Purchase</a>
+                                                    </div>
                                                 </div>
-                                                <div class="mt-4">
-                                                    <button class="theme-btn style-two rounded-0 btn-sm"
-                                                        style="width: 100%;">Purchase</button>
-                                                </div>
-                                            </div>
 
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <a href="">
-                                    <div class="card border-0 shadow-sm bg-light">
-                                        <div class="card-header border-0">
-                                            <div>
-                                                <img class="img-fluid"
-                                                    src="https://cdn.shopify.com/s/files/1/0542/1999/7359/files/dot-thin-basic.png?v=1701958444"
-                                                    alt="Product 1">
-                                            </div>
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div>
-                                                    <h6 class="mb-0">V-Card With NFC</h6>
-                                                    <h6 class="text-mute mb-0">
-                                                        <small>Metal,Plastic,Silver Card</small>
-                                                    </h6>
-                                                </div>
-                                                <h6 class="mb-0">$500.00</h6>
                                             </div>
                                         </div>
-                                        <div class="card-body">
-                                            <div class="">
-                                                <div>
-                                                    <p class="mb-0 package-details text-start">The ideal gift for clients,
-                                                        coworkers, employees, or friends. employees, or friends. employees,
-                                                        or friends.</p>
-                                                </div>
-                                                <div class="mt-4">
-                                                    <button class="theme-btn style-two rounded-0 btn-sm"
-                                                        style="width: 100%;">Purchase</button>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <a href="">
-                                    <div class="card border-0 shadow-sm bg-light">
-                                        <div class="card-header border-0">
-                                            <div>
-                                                <img class="img-fluid"
-                                                    src="https://cdn.shopify.com/s/files/1/0542/1999/7359/files/dot-thin-basic.png?v=1701958444"
-                                                    alt="Product 1">
-                                            </div>
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div>
-                                                    <h6 class="mb-0">V-Card With NFC</h6>
-                                                    <h6 class="text-mute mb-0">
-                                                        <small>Metal,Plastic,Silver Card</small>
-                                                    </h6>
-                                                </div>
-                                                <h6 class="mb-0">$500.00</h6>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="">
-                                                <div>
-                                                    <p class="mb-0 package-details text-start">The ideal gift for clients,
-                                                        coworkers, employees, or friends. employees, or friends. employees,
-                                                        or friends.</p>
-                                                </div>
-                                                <div class="mt-4">
-                                                    <button class="theme-btn style-two rounded-0 btn-sm"
-                                                        style="width: 100%;">Purchase</button>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <a href="">
-                                    <div class="card border-0 shadow-sm bg-light">
-                                        <div class="card-header border-0">
-                                            <div>
-                                                <img class="img-fluid"
-                                                    src="https://cdn.shopify.com/s/files/1/0542/1999/7359/files/dot-thin-basic.png?v=1701958444"
-                                                    alt="Product 1">
-                                            </div>
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div>
-                                                    <h6 class="mb-0">V-Card With NFC</h6>
-                                                    <h6 class="text-mute mb-0">
-                                                        <small>Metal,Plastic,Silver Card</small>
-                                                    </h6>
-                                                </div>
-                                                <h6 class="mb-0">$500.00</h6>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="">
-                                                <div>
-                                                    <p class="mb-0 package-details text-start">The ideal gift for clients,
-                                                        coworkers, employees, or friends. employees, or friends. employees,
-                                                        or friends.</p>
-                                                </div>
-                                                <div class="mt-4">
-                                                    <button class="theme-btn style-two rounded-0 btn-sm"
-                                                        style="width: 100%;">Purchase</button>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <a href="">
-                                    <div class="card border-0 shadow-sm bg-light">
-                                        <div class="card-header border-0">
-                                            <div>
-                                                <img class="img-fluid"
-                                                    src="https://cdn.shopify.com/s/files/1/0542/1999/7359/files/dot-thin-basic.png?v=1701958444"
-                                                    alt="Product 1">
-                                            </div>
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div>
-                                                    <h6 class="mb-0">V-Card With NFC</h6>
-                                                    <h6 class="text-mute mb-0">
-                                                        <small>Metal,Plastic,Silver Card</small>
-                                                    </h6>
-                                                </div>
-                                                <h6 class="mb-0">$500.00</h6>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="">
-                                                <div>
-                                                    <p class="mb-0 package-details text-start">The ideal gift for clients,
-                                                        coworkers, employees, or friends. employees, or friends. employees,
-                                                        or friends.</p>
-                                                </div>
-                                                <div class="mt-4">
-                                                    <button class="theme-btn style-two rounded-0 btn-sm"
-                                                        style="width: 100%;">Purchase</button>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <a href="">
-                                    <div class="card border-0 shadow-sm bg-light">
-                                        <div class="card-header border-0">
-                                            <div>
-                                                <img class="img-fluid"
-                                                    src="https://cdn.shopify.com/s/files/1/0542/1999/7359/files/dot-thin-basic.png?v=1701958444"
-                                                    alt="Product 1">
-                                            </div>
-                                            <div class="d-flex justify-content-between align-items-center py-4">
-                                                <div>
-                                                    <h6 class="mb-0">V-Card With NFC</h6>
-                                                    <h6 class="text-mute mb-0">
-                                                        <small>Metal,Plastic,Silver Card</small>
-                                                    </h6>
-                                                </div>
-                                                <h6 class="mb-0">$500.00</h6>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="">
-                                                <div>
-                                                    <p class="mb-0 package-details text-start">The ideal gift for clients,
-                                                        coworkers, employees, or friends. employees, or friends. employees,
-                                                        or friends.</p>
-                                                </div>
-                                                <div class="mt-4">
-                                                    <button class="theme-btn style-two rounded-0 btn-sm"
-                                                        style="width: 100%;">Purchase</button>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+                                    </a>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

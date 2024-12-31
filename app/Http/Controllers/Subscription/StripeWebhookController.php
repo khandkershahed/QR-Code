@@ -5,19 +5,20 @@ namespace App\Http\Controllers\Subscription;
 use Stripe\Webhook;
 use App\Models\User;
 use App\Models\Admin\Plan;
+use App\Models\CardProduct;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 use App\Mail\UserRegistrationMail;
-use App\Models\Subscription;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Cache;
 use App\Providers\RouteServiceProvider;
+use Stripe\Exception\ApiErrorException;
 use Illuminate\Support\Facades\Validator;
 use Stripe\Exception\SignatureVerificationException;
-use Stripe\Exception\ApiErrorException;
 use Laravel\Cashier\Http\Controllers\WebhookController as CashierWebhookController;
 
 class StripeWebhookController extends CashierWebhookController
@@ -243,5 +244,19 @@ class StripeWebhookController extends CashierWebhookController
     {
         $user = User::find($session->client_reference_id);
         $user->delete();
+    }
+
+    public function cardCheckout($id)
+    {
+        $data['plan'] = Plan::where('slug', $id)->first();
+
+        if (Auth::check()) {
+            $data['intent'] = auth()->user()->createSetupIntent();
+            $data['user_id'] = Auth::user()->id;
+            return view('frontend.pages.checkout', $data);
+        } else {
+            // This will automatically store the current URL and redirect to the login page
+            return redirect()->route('login');
+        }
     }
 }

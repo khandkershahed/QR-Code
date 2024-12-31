@@ -93,7 +93,7 @@ class AuthenticatedSessionController extends Controller
 
         return view('dashboard', compact('subscription', 'notifications', 'qrs', 'nfc_cards', 'nfc_pending', 'qr_pending', 'nfc_completion_percentage', 'qr_completion_percentage', 'qr_users', 'nfc_users'));
     }
-    
+
 
 
     public function create(): View
@@ -123,6 +123,9 @@ class AuthenticatedSessionController extends Controller
         ]);
         // flash()->addSuccess('You have successfully logged in.');
         Session::flash('success', 'You have successfully logged in.');
+
+        // $redirectUrl = session('redirect_after_login', RouteServiceProvider::HOME);
+        // return redirect($redirectUrl);
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
