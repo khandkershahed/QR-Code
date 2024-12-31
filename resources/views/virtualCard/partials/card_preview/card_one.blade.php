@@ -3,12 +3,8 @@
 
     .card-container {
         display: flex;
-        /* justify-content: center; */
         align-items: center;
-        width: 50%;
-        margin: auto;
-        /* height: 100vh; */
-        width: 320px;
+        width: 365px;
     }
 
     @media only screen and (max-width: 1500px) {
