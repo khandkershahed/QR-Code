@@ -729,7 +729,7 @@
                         </section>
                     @endif
                     <!-- Company Info -->
-                    @if ($nfc_card->companies_show == '1')
+                    @if ($nfc_card->companies_show == '1' && $nfc_card->nfcCompany->count() > 0)
                         <section>
                             <div class="container py-5 pt-0">
                                 <div class="row">
@@ -931,10 +931,12 @@
                                                                 {{ $product->product_price }}
                                                             </p>
                                                         </div>
-                                                        <div class="pt-4">
-                                                            <a class="btn btn-sm btn-outline-dark w-100"
-                                                                href="{{ $product->product_url }}">View</a>
-                                                        </div>
+                                                        @if (!empty($product->product_url))
+                                                            <div class="pt-4">
+                                                                <a class="btn btn-sm btn-outline-dark w-100"
+                                                                    href="{{ $product->product_url }}">View</a>
+                                                            </div>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>

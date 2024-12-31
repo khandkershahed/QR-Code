@@ -648,7 +648,7 @@
                     @endif
                 @endif
                 <!-- Company Info -->
-                @if ($nfc_card->companies_show == '1')
+                @if ($nfc_card->companies_show == '1' && $nfc_card->nfcCompany->count() > 0)
                     <section>
                         <div class="container py-5 px-4">
                             <div class="row">
@@ -1029,12 +1029,14 @@
                                                 <p class="text-white">
                                                     {!! $service->service_description !!}
                                                 </p>
-                                                <div class="">
-                                                    <a href="{{ !empty(optional($service)->service_url) ? optional($service)->service_url : 'javascript:void(0)' }}"
-                                                        class="btn btn-light rounded-0 px-3 btn-sm border-2 border-dark py-2">
-                                                        View Service <i class="fa-solid fa-arrow-right-long"></i>
-                                                    </a>
-                                                </div>
+                                                @if (!empty(optional($service)->service_url))
+                                                    <div class="">
+                                                        <a href="{{ !empty(optional($service)->service_url) ? optional($service)->service_url : 'javascript:void(0)' }}"
+                                                            class="btn btn-light rounded-0 px-3 btn-sm border-2 border-dark py-2">
+                                                            View Service <i class="fa-solid fa-arrow-right-long"></i>
+                                                        </a>
+                                                    </div>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>

@@ -27,7 +27,7 @@
     }
 
     .card-front-one {
-        background-image: url(https://i.ibb.co/kQDKvJG/bg.png);
+        background-image: url('{{ asset('frontend/images/card_images/card_one_front.png') }}');
         background-repeat: no-repeat;
         background-size: cover;
         object-fit: cover;
@@ -36,7 +36,7 @@
     }
 
     .card-back-one {
-        background-image: url(https://i.ibb.co/9ZQZ3FB/gradient.png);
+        background-image: url('{{ asset('frontend/images/card_images/card_one_back.png') }}');
         background-repeat: no-repeat;
         background-size: cover;
         object-fit: cover;
@@ -130,7 +130,7 @@
                 <div>
                     <!-- Company Logo -->
                     <div class="d-flex justify-content-center template-logo-ebox">
-                        <img class="img-fluid card_logo" width="100px" src="https://i.ibb.co/CWsWHTM/lgoo.png"
+                        <img class="img-fluid card_logo" width="100px" src="{{ asset('frontend/assets/images/logos/logo.png') }}"
                             alt="" />
                     </div>
 

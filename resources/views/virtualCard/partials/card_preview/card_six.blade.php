@@ -1,6 +1,6 @@
 <style>
     .card-front-six {
-        background-image: url(https://i.ibb.co/51yxtsc/card-8.png);
+        background-image: url('{{ asset('frontend/images/card_images/card_six_front.png') }}');
         width: 460px;
         height: 255px;
         position: relative;
@@ -18,7 +18,7 @@
     }
 
     .card-back-six {
-        background-image: url(https://i.ibb.co/51yxtsc/card-8.png);
+        background-image: url('{{ asset('frontend/images/card_images/card_six_back.png') }}');
         width: 460px;
         height: 255px;
         position: relative;
@@ -105,7 +105,7 @@
             <div class="row p-5 align-items-center">
                 <div class="col-12 d-flex justify-content-center align-items-center">
                     <img class="punch-card-logo-back card_logo card_logo-6-bottom"
-                        src="https://i.ibb.co/vhZg1xp/png-clipart-light-white-line-light-angle-white-removebg-preview.png"
+                        src="{{ asset('frontend/assets/images/logos/logo.png') }}"
                         alt="Logo Back" />
                 </div>
             </div>

@@ -162,14 +162,14 @@
         <div class="card rounded-0">
             <div class="card-header p-5 align-items-center rounded-0 bg-info m-0">
                 <div>
-                    <h1 class="mb-0 mt-0 card-title fs-2 text-white">All Blog Category!</h1>
-                    <p class="text-white mt-2 mb-0">View and manage all blog category information in this page.</p>
+                    <h1 class="mb-0 mt-0 card-title fs-2 text-white">Companies!</h1>
+                    <p class="text-white mt-2 mb-0">View and manage all of your companies information in this page.</p>
                 </div>
                 <div>
                     <button type="button" class="btn btn-white btn-active-light-warning text-hover-inverse-white"
                         data-bs-toggle="modal" data-bs-target="#companyCreateModal" data-bs-toggle="tooltip"
                         data-bs-dismiss="click" title="Want To Add New company">
-                        <i class="fa-solid fa-user-plus"></i> Add Category
+                        <i class="fa-solid fa-user-plus"></i> Add Company
                     </button>
                 </div>
             </div>

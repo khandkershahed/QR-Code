@@ -708,10 +708,13 @@
                                                                 </h6>
                                                                 <p class="card-text" style="font-size: 14px">
                                                                     {{ $service->service_description }}</p>
-                                                                <a href="/"
-                                                                    class="btn btn-sm btn-primary border-0 rounded-pill"
-                                                                    style="background: linear-gradient(90deg, #b24592, #f15f79);">See
-                                                                    Now</a>
+                                                                @if (!empty(optional($service)->service_url))
+                                                                    <a href="{{ !empty(optional($service)->service_url) ? optional($service)->service_url : 'javascript:void(0)' }}"
+                                                                        class="btn btn-sm btn-primary border-0 rounded-pill"
+                                                                        style="background: linear-gradient(90deg, #b24592, #f15f79);">See
+                                                                        Now
+                                                                    </a>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>
@@ -768,7 +771,9 @@
                                                     <div class="row">
                                                         <div class="col-lg-12">
                                                             <div class="text-center">
-                                                                <h4 class="heading-right position-relative text-center">My Company</h4>
+                                                                <h4
+                                                                    class="heading-right position-relative text-center">
+                                                                    My Company</h4>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1278,7 +1283,7 @@
                                                         <div class="col-lg-6 mb-4 product-item"
                                                             data-index="{{ $index }}"
                                                             style="{{ $index > 1 ? 'display: none;' : '' }}">
-                                                            <a href="https://mydigitalnfccard.com/a" target="_blank"
+                                                            <a href="{{ !empty(optional($product)->product_url) ? optional($product)->product_url : 'javascript:void(0)' }}" target="_blank"
                                                                 class="text-decoration-none fs-6" loading="lazy"
                                                                 tabindex="0">
                                                                 <div

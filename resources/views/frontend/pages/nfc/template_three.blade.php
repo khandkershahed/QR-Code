@@ -1297,7 +1297,7 @@
                             </div>
                         </div>
                         <!-- Company Area -->
-                        @if ($nfc_card->companies_show == '1')
+                        @if ($nfc_card->companies_show == '1' && $nfc_card->nfcCompany->count() > 0)
                             <div class="row pt-5">
                                 <div class="col-sm-12 pb-5">
                                     <div class="text-center">

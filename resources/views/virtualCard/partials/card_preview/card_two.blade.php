@@ -225,7 +225,7 @@
                     <!-- Company Logo -->
                     <div class="d-flex justify-content-center">
                         <div class="two-company-logo">
-                            <img class="card_logo" width="100px" src="https://i.ibb.co/CWsWHTM/lgoo.png"
+                            <img class="card_logo" width="100px" src="{{ asset('frontend/assets/images/logos/logo.png') }}"
                                 alt="Card Logo" />
                         </div>
                     </div>

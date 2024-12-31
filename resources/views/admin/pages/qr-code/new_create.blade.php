@@ -66,7 +66,7 @@
                     <div class="card card-flush">
                         <div class="card-body">
                             <div id="generatedQRCodeContainer" class="mb-5">
-                                <img id="generatedQRCode" src="https://i.ibb.co/XzHNWc0/no-qr.png" alt="QR Code">
+                                <img id="generatedQRCode" src="{{ asset('images/bg.png') }}" alt="QR Code">
                             </div>
                             <div class="mb-0">
                                 <div class="row mb-5">

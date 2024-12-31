@@ -672,6 +672,62 @@
                                                 </div>
                                             @endif
                                         </div>
+                                        @if ($nfc_card->companies_show == '1' && $nfc_card->nfcCompany->count() > 0)
+                                            <div class="row pt-5">
+                                                <div class="col-12">
+                                                    <h4 class="fw-bold text-center"><span
+                                                            style="border-bottom: 4px solid #FF9419; border-radius: 10px; padding: 5px;">My
+                                                            Company</span>
+                                                    </h4>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <div class="company-slide py-4">
+                                                        @foreach ($nfc_card->nfcCompany as $company)
+                                                            <div class="items px-4">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-sm-12">
+                                                                        <div
+                                                                            class="d-flex justify-content-center align-items-center">
+                                                                            <img class="img-fluid company_logo company_logo-tem-3"
+                                                                                width="100px" height="100px"
+                                                                                style="background: var(--template-two-color-white);padding: 12px;border-radius: 100%;"
+                                                                                src="{{ !empty($company->company_logo) && file_exists(public_path('storage/nfc/company/' . optional($company)->company_logo)) ? asset('storage/nfc/company/' . optional($company)->company_logo) : asset('frontend/images/no_image.png') }}"
+                                                                                alt="" />
+                                                                        </div>
+                                                                        <div class="special-font text-center">
+                                                                            <p class="text-black mb-0">
+                                                                                {{ $company->company_address_line_one }}
+                                                                                <br>
+                                                                                {{ $company->company_address_line_two }}
+                                                                            </p>
+                                                                            <p class="text-black mb-0">
+                                                                                <a
+                                                                                    href="{{ $company->company_website ? preg_replace('/^(https?:\/\/)?(www\.)?/', '', $company->company_website) : '' }}">{{ $company->company_website ? preg_replace('/^(https?:\/\/)?(www\.)?/', '', $company->company_website) : '' }}</a>
+                                                                            </p>
+                                                                            <p class="text-black mb-0">
+                                                                                <a
+                                                                                    href="tel:{{ $company->company_phone }}">{{ $company->company_phone }}</a>
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-12 mt-4">
+                                                                        <h5
+                                                                            class="text-center special-font text-black">
+                                                                            {{ $company->company_name }}</h5>
+                                                                        <div class="company-details">
+                                                                            <p class="p-3 mb-0 text-black"
+                                                                                style="text-align: justify">
+                                                                                {{ $company->company_description }}
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
                                         <!-- Services-->
                                         @if ($nfc_card->services_show == '1' && $nfc_card->nfcService->count() > 0)
                                             <div class="container mt-5">
@@ -693,9 +749,13 @@
                                                                                     alt="" />
                                                                             </div>
                                                                             <div class="ps-3">
-                                                                                <h6 class="special-font fw-bold">
-                                                                                    {{ $service->service_name }}
-                                                                                </h6>
+                                                                                <a href="{{ !empty(optional($service)->service_url) ? optional($service)->service_url : 'javascript:void(0)' }}"
+                                                                                    target="_blank"
+                                                                                    rel="noopener noreferrer">
+                                                                                    <h6 class="special-font fw-bold">
+                                                                                        {{ $service->service_name }}
+                                                                                    </h6>
+                                                                                </a>
                                                                                 <p class="mb-0"
                                                                                     style="font-size: 14px !important">
                                                                                     {{ $service->service_description }}
@@ -1017,7 +1077,7 @@
                                                     <div class="row">
                                                         <div class="col-lg-12">
                                                             <div class="text-center">
-                                                                <h4 class="fw-bold text-center">
+                                                                <h4 class="fw-bold text-center mb-5">
                                                                     <span
                                                                         style="border-bottom: 4px solid #FF9419; border-radius: 10px; padding: 5px;">
                                                                         QR Code

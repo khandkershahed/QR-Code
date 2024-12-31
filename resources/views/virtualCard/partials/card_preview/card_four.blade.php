@@ -182,7 +182,7 @@
                     <!-- Company Logo -->
                     <div class="tem-4-logo">
                         <div class="d-flex align-items-center">
-                            <img class="img-fluid card_logo tem-4-logo-bottom" src="https://i.ibb.co/CWsWHTM/lgoo.png"
+                            <img class="img-fluid card_logo tem-4-logo-bottom" src="{{ asset('frontend/assets/images/logos/logo.png') }}"
                                 alt="" />
                             {{-- <div>
                                 <h4>GoFlixza</h4>
