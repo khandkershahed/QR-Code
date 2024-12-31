@@ -33,7 +33,7 @@
         :root {
             --template-three-color-white: #fff;
             --template-three-color-black: #000;
-            --template-three-color-primary: #ff0000;
+            --template-three-color-primary: #7239ea;
             --template-three-color-secoandary: #a5a3a3;
             --template-three-title-font-size: 48px;
             --template-three-others-font-size: 16px;
@@ -82,6 +82,10 @@
             margin: auto;
         }
 
+        body {
+            background-color: #eee;
+        }
+
         @media only screen and (max-width: 768px) {
 
             html,
@@ -93,7 +97,7 @@
 
         .company_logo-tem-3 {
             width: 150px;
-            height: 100%;
+            height: 150px;
             object-fit: cover;
         }
 
@@ -125,7 +129,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: #ff000096;
+            background: #7139ea3d;
             color: white;
             display: flex;
             align-items: center;
@@ -187,11 +191,18 @@
         /* <!-- Banner --> */
         .profile-image-tem3 {
             position: relative;
-            top: -80px;
+            top: -75px;
         }
 
         .profile-image-tem3 img {
-            border: 5px solid var(--template-three-color-white);
+            border: 5px solid transparent;
+            border-radius: 50%;
+            /* Optional for a circular image */
+            background: linear-gradient(90deg, #7239ea, #7139eacc, #7139ea3d);
+            padding: 5px;
+            /* Adjust to match border width */
+            background-clip: padding-box;
+            /* Ensures the gradient applies to the border area */
         }
 
         /* <!-- Social Area --> */
@@ -214,7 +225,7 @@
         }
 
         .date-card-tem3 {
-            background-color: #ff00008c;
+            background-color: #7239ea;
             height: 100%;
         }
 
@@ -281,7 +292,7 @@
         }
 
         .table> :not(caption)>*>* {
-            background-color: #eeeeee8c;
+            background-color: #7139ea3d;
             padding: 14px;
             color: white;
         }
@@ -331,12 +342,26 @@
         }
 
         .parallax-background {
+            position: relative;
             background-image: url("https://images.squarespace-cdn.com/content/v1/5fafd033cc2b52123f4e2391/1607273392573-RLL8GVFVA3GBZLTMTJCB/Model+1+-+Manhattan+Place+Ajax+-+Overlay.png");
             background-attachment: fixed;
             background-size: cover;
             background-position: center;
-            padding-top: 50px;
-            padding-bottom: 50px;
+            padding-top: 25px;
+            z-index: 1;
+        }
+
+        .parallax-background::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Adjust opacity for overlay intensity */
+            z-index: -1;
+            /* Ensures it stays behind content within the section */
         }
 
         .profile-main-image-tem3 {
@@ -372,14 +397,14 @@
 
         .tem3-footer-shape {
             height: 150px;
-            background: red;
+            background: #7239ea;
             clip-path: polygon(50% -15%, -3% 100%, 103% 100%);
             position: relative;
             top: -6px;
         }
 
         .company-slide {
-            background-color: #ff00008c;
+            background-color: #7239ea;
             border-radius: 10px;
         }
 
@@ -405,17 +430,9 @@
         }
 
         .company_logo {
-            width: 100%;
-            height: 100%;
             background: var(--template-two-color-white);
             padding: 12px;
             border-radius: 100%;
-            object-fit: cover;
-        }
-
-        .company_logo-tem-3 {
-            width: 150px;
-            height: 100%;
             object-fit: cover;
         }
 
@@ -505,6 +522,34 @@
                 margin: auto;
             }
         }
+
+        .company-details::-webkit-scrollbar {
+            width: 0.2em;
+        }
+
+        .company-details::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .company-details::-webkit-scrollbar-thumb {
+            background-color: darkgrey;
+            outline: 0px solid slategrey;
+        }
+
+        .company-details {
+            overflow-y: auto;
+            height: 150px;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+        .testi-images{
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+        }
     </style>
 </head>
 
@@ -514,7 +559,7 @@
     </div>
     <main>
         <div class="mobile-frame">
-            <div class="page-content-wrapper" style="background-image: url({{ asset('images/bg.png') }})">
+            <div class="page-content-wrapper">
                 <!-- Banner -->
                 <section>
                     <div class="container px-0">
@@ -550,25 +595,31 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- User Info -->
-                        <div class="row">
+                        <div class="row" style="margin-top: -35px;">
                             <div class="col-sm-12">
-                                <div style="margin-top: -60px !important;">
+                                <div>
                                     <h1 class="special-font text-center">{{ optional($nfc_card->nfcData)->first_name }}
                                         {{ optional($nfc_card->nfcData)->last_name }}
                                     </h1>
                                     <h6 class="special-font text-center">{{ optional($nfc_card)->designation }}</h6>
-
-                                    @if (!empty($nfc_card->bio_description))
-                                        <p class="text-justify">
-                                            {{ $nfc_card->bio_description }}
-                                        </p>
-                                    @endif
+                                    <h6 class="special-font text-center">
+                                        @if (!empty($nfc_card->nfcData))
+                                            @php
+                                                $nfcData = $nfc_card->nfcData;
+                                            @endphp
+                                            @if (!empty($nfcData->company_name))
+                                                <p class="fw-bolder text-center">
+                                                    {{ $nfcData->company_name }}</p>
+                                            @else
+                                                <p>No company title found.</p>
+                                            @endif
+                                        @else
+                                        @endif
+                                    </h6>
                                 </div>
                             </div>
                         </div>
-                        <!-- Social -->
-                        <div class="row pt-3">
+                        <div class="row pt-4 pb-3">
                             <div class="col-sm-12">
                                 <div class="d-flex justify-content-center align-items-center">
                                     @if ($nfc_card->social_links_show == '1')
@@ -601,6 +652,8 @@
                                 </div>
                             </div>
                         </div>
+                        {{--  --}}
+                        <!-- Social -->
                         @if (
                             !empty(optional($nfc_card->nfcData)->email_personal) ||
                                 !empty(optional($nfc_card->nfcData)->email_work) ||
@@ -612,7 +665,7 @@
                             <!-- Date Area -->
                             <div class="row pt-5">
                                 @if (!empty(optional($nfc_card->nfcData)->email_personal) || !empty(optional($nfc_card->nfcData)->email_work))
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-6 mb-4">
                                         <div class="card date-card-tem3">
                                             <div class="card-body p-2">
                                                 <div class="d-flex align-items-center">
@@ -675,15 +728,90 @@
                                                         </svg>
                                                     </div>
                                                     <div class="ps-3 pt-1">
-                                                        <h6 class="special-font text-white mb-0">Email</h6>
+                                                        <h6 class="special-font text-white mb-0">Email
+                                                            <small>(Personal)</small>
+                                                        </h6>
                                                         @if (!empty(optional($nfc_card->nfcData)->email_personal))
                                                             <p class="text-white mb-0">
-                                                                {{ optional($nfc_card->nfcData)->email_personal }} <small>(Personal)</small>
+                                                                {{ optional($nfc_card->nfcData)->email_personal }}
                                                             </p>
                                                         @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                                @if (!empty(optional($nfc_card->nfcData)->email_personal) || !empty(optional($nfc_card->nfcData)->email_work))
+                                    <div class="col-sm-6 mb-4">
+                                        <div class="card date-card-tem3">
+                                            <div class="card-body p-2">
+                                                <div class="d-flex align-items-center">
+                                                    <div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="50"
+                                                            height="50" x="0" y="0" viewBox="0 0 48 48"
+                                                            style="enable-background: new 0 0 512 512"
+                                                            xml:space="preserve" class="">
+                                                            <g>
+                                                                <linearGradient id="b" x1="24"
+                                                                    x2="24" y1="4.274" y2="30.545"
+                                                                    gradientUnits="userSpaceOnUse">
+                                                                    <stop offset="0" stop-color="#fd9b02"></stop>
+                                                                    <stop offset="1" stop-color="#ff7302"></stop>
+                                                                </linearGradient>
+                                                                <linearGradient id="c" x1="24"
+                                                                    x2="24" y1="6.108" y2="30.882"
+                                                                    gradientUnits="userSpaceOnUse">
+                                                                    <stop offset="0" stop-color="#edf1f2"></stop>
+                                                                    <stop offset=".336" stop-color="#e9edee"></stop>
+                                                                    <stop offset=".636" stop-color="#dee2e3"></stop>
+                                                                    <stop offset=".921" stop-color="#ccd1d2"></stop>
+                                                                    <stop offset="1" stop-color="#c6cbcc"></stop>
+                                                                </linearGradient>
+                                                                <linearGradient id="d" x1="16.755"
+                                                                    x2="29.756" y1="9.755" y2="22.756"
+                                                                    gradientUnits="userSpaceOnUse">
+                                                                    <stop offset="0" stop-color="#4793eb"></stop>
+                                                                    <stop offset="1" stop-color="#2367ec"></stop>
+                                                                </linearGradient>
+                                                                <linearGradient id="a" x1="-6.372"
+                                                                    x2="34.443" y1="-3.856" y2="42.463"
+                                                                    gradientUnits="userSpaceOnUse">
+                                                                    <stop offset="0" stop-color="#fed200"></stop>
+                                                                    <stop offset="1" stop-color="#f59815"></stop>
+                                                                </linearGradient>
+                                                                <linearGradient xlink:href="#a" id="e"
+                                                                    x1="15.463" x2="35.412" y1="28.773"
+                                                                    y2="62.365">
+                                                                </linearGradient>
+                                                                <path fill="url(#b)"
+                                                                    d="M40 46H8c-2.757 0-5-2.243-5-5V19.8c0-1.527.684-2.95 1.876-3.904l16-12.8a4.97 4.97 0 0 1 6.247 0l16 12.8a4.975 4.975 0 0 1 1.876 3.904V41c0 2.757-2.243 5-5 5z"
+                                                                    opacity="1" data-original="url(#b)"></path>
+                                                                <path fill="url(#c)"
+                                                                    d="M39 38H9a1 1 0 0 1-1-1V9c0-1.654 1.346-3 3-3h26c1.654 0 3 1.346 3 3v28a1 1 0 0 1-1 1z"
+                                                                    opacity="1" data-original="url(#c)"
+                                                                    class="">
+                                                                </path>
+                                                                <path fill="url(#d)"
+                                                                    d="M28.12 23.859a1 1 0 0 0-1.032-1.714 5.981 5.981 0 0 1-3.089.855c-3.309 0-6-2.691-6-6s2.691-6 6-6 6 2.691 6 6.028c-.005 1.069-.969 1.973-2.106 1.973a.94.94 0 0 1-.687-.295.936.936 0 0 1-.258-.701l.152-2.9c.028-.545-.171-1.085-.547-1.481s-.904-.623-1.45-.623h-.446c-2.453 0-4.554 1.993-4.682 4.451-.049.941.276 1.83.916 2.504a3.344 3.344 0 0 0 2.452 1.045c.91 0 1.752-.36 2.399-.937l.014.019a2.963 2.963 0 0 0 2.137.919h.001c2.254 0 4.096-1.778 4.106-4 0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8c1.455 0 2.88-.395 4.12-1.141zm-3.145-6.411v.004c-.045.839-.792 1.547-1.632 1.547-.388 0-.744-.15-1.001-.421a1.373 1.373 0 0 1-.369-1.031C22.045 16.166 23.275 15 24.658 15h.446l-.128 2.448z"
+                                                                    opacity="1" data-original="url(#d)"></path>
+                                                                <path fill="url(#a)"
+                                                                    d="M27.125 31.912a5.031 5.031 0 0 1-6.25 0L3.376 17.911A5 5 0 0 0 3 19.8V41c0 2.757 2.243 5 5 5h32c2.757 0 5-2.243 5-5V19.8a5 5 0 0 0-.376-1.889z"
+                                                                    opacity="1" data-original="url(#a)"></path>
+                                                                <path fill="url(#e)"
+                                                                    d="M27.125 29.22a5.031 5.031 0 0 0-6.25 0L3.493 43.127C4.295 44.819 6.007 46 8 46h32c1.993 0 3.705-1.181 4.507-2.873z"
+                                                                    opacity="1" data-original="url(#e)"></path>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="ps-3 pt-1">
+                                                        <h6 class="special-font text-white mb-0">Email
+                                                            <small>(Work)</small>
+                                                        </h6>
                                                         @if (!empty(optional($nfc_card->nfcData)->email_work))
                                                             <p class="text-white mb-0">
-                                                                {{ optional($nfc_card->nfcData)->email_work }} <small>(Work)</small>
+                                                                {{ optional($nfc_card->nfcData)->email_work }}
                                                             </p>
                                                         @endif
                                                     </div>
@@ -693,7 +821,7 @@
                                     </div>
                                 @endif
                                 @if (!empty(optional($nfc_card->nfcData)->phone_personal) || !empty(optional($nfc_card->nfcData)->phone_work))
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-6 mb-4">
                                         <div class="card date-card-tem3 mt-4 mt-lg-0">
                                             <div class="card-body d-flex align-content-center p-2">
                                                 <div class="d-flex align-items-center">
@@ -740,15 +868,12 @@
                                                         </svg>
                                                     </div>
                                                     <div class="ps-3 pt-1">
-                                                        <h6 class="special-font text-white mb-0">Phone</h6>
+                                                        <h6 class="special-font text-white mb-0">Phone
+                                                            <small>(Personal)</small>
+                                                        </h6>
                                                         @if (!empty(optional($nfc_card->nfcData)->phone_personal))
                                                             <p class="text-white mb-0">
-                                                                {{ optional($nfc_card->nfcData)->phone_personal }} <small>(Personal)</small>
-                                                            </p>
-                                                        @endif
-                                                        @if (!empty(optional($nfc_card->nfcData)->phone_work))
-                                                            <p class="text-white mb-0">
-                                                                {{ optional($nfc_card->nfcData)->phone_work }} <small>(Work)</small>
+                                                                {{ optional($nfc_card->nfcData)->phone_personal }}
                                                             </p>
                                                         @endif
                                                     </div>
@@ -757,8 +882,220 @@
                                         </div>
                                     </div>
                                 @endif
+                                @if (!empty(optional($nfc_card->nfcData)->phone_work) || !empty(optional($nfc_card->nfcData)->phone_work))
+                                    <div class="col-sm-6 mb-4">
+                                        <div class="card date-card-tem3 mt-4 mt-lg-0">
+                                            <div class="card-body d-flex align-content-center p-2">
+                                                <div class="d-flex align-items-center">
+                                                    <div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="50"
+                                                            height="50" x="0" y="0" viewBox="0 0 512 512"
+                                                            style="enable-background: new 0 0 512 512"
+                                                            xml:space="preserve" class="">
+                                                            <g>
+                                                                <path fill="#fed843"
+                                                                    d="M406 31H286c-57.891 0-106 47.109-106 105 0 52.808 40.185 96.636 91 103.931V286a14.983 14.983 0 0 0 9.258 13.857c5.533 2.309 12.023 1.071 16.348-3.252L346 247.211l6.211-6.211H406c57.891 0 106-47.109 106-105S463.891 31 406 31z"
+                                                                    opacity="1" data-original="#fed843"
+                                                                    class="">
+                                                                </path>
+                                                                <path fill="#fabe2c"
+                                                                    d="M406 241c57.891 0 106-47.109 106-105S463.891 31 406 31h-60v216.211l6.211-6.211z"
+                                                                    opacity="1" data-original="#fabe2c"
+                                                                    class="">
+                                                                </path>
+                                                                <path fill="#ff641a"
+                                                                    d="M382 376v60c0 26.1-21.31 45-44.79 45-86.41 0-170.71-40.85-233.41-103.3S0 231.2 0 144.79C0 119.97 20.19 100 45 100h60c6.46 0 12.19 4.13 14.22 10.25l30 89.79c1.47 4.4.82 9.22-1.74 13.07l-25.44 38.17c9.64 20.22 26.7 42.32 46.4 61.78 19.71 19.45 42.06 36.26 62.28 45.9l38.17-25.44c3.87-2.55 8.67-3.22 13.07-1.74l90 30c6.12 2.03 10.04 7.76 10.04 14.22z"
+                                                                    opacity="1" data-original="#ff641a"></path>
+                                                                <path fill="#f03800"
+                                                                    d="M382 376v60c0 26.1-21.31 45-44.79 45-86.41 0-170.71-40.85-233.41-103.3l64.64-64.64c19.71 19.45 42.06 36.26 62.28 45.9l38.17-25.44c3.87-2.55 8.67-3.22 13.07-1.74l90 30c6.12 2.03 10.04 7.76 10.04 14.22z"
+                                                                    opacity="1" data-original="#f03800"></path>
+                                                                <circle cx="285.999" cy="135.999" r="15"
+                                                                    fill="#613d5c" opacity="1"
+                                                                    data-original="#613d5c"></circle>
+                                                                <circle cx="346" cy="135.998" r="15"
+                                                                    fill="#613d5c" opacity="1"
+                                                                    data-original="#613d5c"></circle>
+                                                                <g fill="#4b2746">
+                                                                    <path
+                                                                        d="M361 135.998c0-8.284-6.716-15-15-15v30c8.284 0 15-6.716 15-15z"
+                                                                        fill="#4b2746" opacity="1"
+                                                                        data-original="#4b2746" class=""></path>
+                                                                    <circle cx="405.999" cy="135.999" r="15"
+                                                                        fill="#4b2746" opacity="1"
+                                                                        data-original="#4b2746" class="">
+                                                                    </circle>
+                                                                </g>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="ps-3 pt-1">
+                                                        <h6 class="special-font text-white mb-0">Phone
+                                                            <small>(Personal)</small>
+                                                        </h6>
+                                                        @if (!empty(optional($nfc_card->nfcData)->phone_work))
+                                                            <p class="text-white mb-0">
+                                                                {{ optional($nfc_card->nfcData)->phone_work }}
+                                                            </p>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                                @if (!empty(optional($nfc_card->nfcData)->date_of_birth))
+                                    <div class="col-sm-6 mt-2">
+                                        <div class="card date-card-tem3">
+                                            <div class="card-body d-flex align-content-center p-2">
+                                                <div class="d-flex align-items-center">
+                                                    <div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="50"
+                                                            height="50" x="0" y="0" viewBox="0 0 48 48"
+                                                            style="enable-background: new 0 0 512 512"
+                                                            xml:space="preserve" class="">
+                                                            <g>
+                                                                <g data-name="Calendar Birthday">
+                                                                    <g fill="#4294ff">
+                                                                        <path
+                                                                            d="M41 6v1a1 1 0 0 1-2 0V6zM28 6v1a1 1 0 0 1-2 0V6zM15 6v1a1 1 0 0 1-2 0V6z"
+                                                                            fill="#4294ff" opacity="1"
+                                                                            data-original="#4294ff" class="">
+                                                                        </path>
+                                                                    </g>
+                                                                    <path fill="#e6ecff"
+                                                                        d="M43 6H5a5 5 0 0 0-5 5v32a5 5 0 0 0 5 5h33l10-10V11a5 5 0 0 0-5-5z"
+                                                                        opacity="1" data-original="#e6ecff"></path>
+                                                                    <path fill="#4294ff"
+                                                                        d="M43 6H5a5.006 5.006 0 0 0-5 5v5h48v-5a5.006 5.006 0 0 0-5-5z"
+                                                                        opacity="1" data-original="#4294ff"
+                                                                        class="">
+                                                                    </path>
+                                                                    <path fill="#d0dbf7"
+                                                                        d="M41 38a3 3 0 0 0-3 3v7l10-10z"
+                                                                        opacity="1" data-original="#d0dbf7"></path>
+                                                                    <path fill="#376cfb"
+                                                                        d="M41 4v2h-2V4a2 2 0 0 0-4 0v5a2.006 2.006 0 0 0 2 2h1a1 1 0 0 1 0 2h-1a3.999 3.999 0 0 1-4-4V4a4 4 0 0 1 8 0zM28 4v2h-2V4a2 2 0 0 0-4 0v5a2.006 2.006 0 0 0 2 2h1a1 1 0 0 1 0 2h-1a3.999 3.999 0 0 1-4-4V4a4 4 0 0 1 8 0zM15 4v2h-2V4a2 2 0 0 0-4 0v5a2.006 2.006 0 0 0 2 2h1a1 1 0 0 1 0 2h-1a3.999 3.999 0 0 1-4-4V4a4 4 0 0 1 8 0z"
+                                                                        opacity="1" data-original="#376cfb"></path>
+                                                                    <path fill="#4294ff"
+                                                                        d="M24 30a1 1 0 0 1-1-1v-3a1 1 0 0 1 2 0v3a1 1 0 0 1-1 1z"
+                                                                        opacity="1" data-original="#4294ff"
+                                                                        class="">
+                                                                    </path>
+                                                                    <path fill="#376cfb"
+                                                                        d="M24.688 20.274a.999.999 0 0 0-1.376 0C22.77 20.788 21 22.576 21 24a3 3 0 0 0 6 0c0-1.424-1.77-3.212-2.312-3.726z"
+                                                                        opacity="1" data-original="#376cfb"></path>
+                                                                    <path fill="#4294ff"
+                                                                        d="M30 28H18a2.002 2.002 0 0 0-2 2v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-6a2.002 2.002 0 0 0-2-2z"
+                                                                        opacity="1" data-original="#4294ff"
+                                                                        class="">
+                                                                    </path>
+                                                                    <path fill="#376cfb"
+                                                                        d="M30 28H18a2.002 2.002 0 0 0-2 2v2h16v-2a2.002 2.002 0 0 0-2-2z"
+                                                                        opacity="1" data-original="#376cfb"></path>
+                                                                    <path fill="#4294ff"
+                                                                        d="M33 35H15a2.002 2.002 0 0 0-2 2v6a1 1 0 0 0 1 1h20a1 1 0 0 0 1-1v-6a2.002 2.002 0 0 0-2-2z"
+                                                                        opacity="1" data-original="#4294ff"
+                                                                        class="">
+                                                                    </path>
+                                                                    <path fill="#376cfb"
+                                                                        d="M33 35H15a2.002 2.002 0 0 0-2 2v2h22v-2a2.002 2.002 0 0 0-2-2z"
+                                                                        opacity="1" data-original="#376cfb"></path>
+                                                                </g>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="ps-3 pt-1">
+                                                        <h6 class="special-font text-white mb-0">
+                                                            Fax
+                                                        </h6>
+                                                        <p class="text-white mb-0">
+                                                            {{ optional($nfc_card->nfcData)->fax }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                                @if (!empty(optional($nfc_card->nfcData)->date_of_birth))
+                                    <div class="col-sm-6 mt-2">
+                                        <div class="card date-card-tem3">
+                                            <div class="card-body d-flex align-content-center p-2">
+                                                <div class="d-flex align-items-center">
+                                                    <div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="50"
+                                                            height="50" x="0" y="0" viewBox="0 0 48 48"
+                                                            style="enable-background: new 0 0 512 512"
+                                                            xml:space="preserve" class="">
+                                                            <g>
+                                                                <g data-name="Calendar Birthday">
+                                                                    <g fill="#4294ff">
+                                                                        <path
+                                                                            d="M41 6v1a1 1 0 0 1-2 0V6zM28 6v1a1 1 0 0 1-2 0V6zM15 6v1a1 1 0 0 1-2 0V6z"
+                                                                            fill="#4294ff" opacity="1"
+                                                                            data-original="#4294ff" class="">
+                                                                        </path>
+                                                                    </g>
+                                                                    <path fill="#e6ecff"
+                                                                        d="M43 6H5a5 5 0 0 0-5 5v32a5 5 0 0 0 5 5h33l10-10V11a5 5 0 0 0-5-5z"
+                                                                        opacity="1" data-original="#e6ecff"></path>
+                                                                    <path fill="#4294ff"
+                                                                        d="M43 6H5a5.006 5.006 0 0 0-5 5v5h48v-5a5.006 5.006 0 0 0-5-5z"
+                                                                        opacity="1" data-original="#4294ff"
+                                                                        class="">
+                                                                    </path>
+                                                                    <path fill="#d0dbf7"
+                                                                        d="M41 38a3 3 0 0 0-3 3v7l10-10z"
+                                                                        opacity="1" data-original="#d0dbf7"></path>
+                                                                    <path fill="#376cfb"
+                                                                        d="M41 4v2h-2V4a2 2 0 0 0-4 0v5a2.006 2.006 0 0 0 2 2h1a1 1 0 0 1 0 2h-1a3.999 3.999 0 0 1-4-4V4a4 4 0 0 1 8 0zM28 4v2h-2V4a2 2 0 0 0-4 0v5a2.006 2.006 0 0 0 2 2h1a1 1 0 0 1 0 2h-1a3.999 3.999 0 0 1-4-4V4a4 4 0 0 1 8 0zM15 4v2h-2V4a2 2 0 0 0-4 0v5a2.006 2.006 0 0 0 2 2h1a1 1 0 0 1 0 2h-1a3.999 3.999 0 0 1-4-4V4a4 4 0 0 1 8 0z"
+                                                                        opacity="1" data-original="#376cfb"></path>
+                                                                    <path fill="#4294ff"
+                                                                        d="M24 30a1 1 0 0 1-1-1v-3a1 1 0 0 1 2 0v3a1 1 0 0 1-1 1z"
+                                                                        opacity="1" data-original="#4294ff"
+                                                                        class="">
+                                                                    </path>
+                                                                    <path fill="#376cfb"
+                                                                        d="M24.688 20.274a.999.999 0 0 0-1.376 0C22.77 20.788 21 22.576 21 24a3 3 0 0 0 6 0c0-1.424-1.77-3.212-2.312-3.726z"
+                                                                        opacity="1" data-original="#376cfb"></path>
+                                                                    <path fill="#4294ff"
+                                                                        d="M30 28H18a2.002 2.002 0 0 0-2 2v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-6a2.002 2.002 0 0 0-2-2z"
+                                                                        opacity="1" data-original="#4294ff"
+                                                                        class="">
+                                                                    </path>
+                                                                    <path fill="#376cfb"
+                                                                        d="M30 28H18a2.002 2.002 0 0 0-2 2v2h16v-2a2.002 2.002 0 0 0-2-2z"
+                                                                        opacity="1" data-original="#376cfb"></path>
+                                                                    <path fill="#4294ff"
+                                                                        d="M33 35H15a2.002 2.002 0 0 0-2 2v6a1 1 0 0 0 1 1h20a1 1 0 0 0 1-1v-6a2.002 2.002 0 0 0-2-2z"
+                                                                        opacity="1" data-original="#4294ff"
+                                                                        class="">
+                                                                    </path>
+                                                                    <path fill="#376cfb"
+                                                                        d="M33 35H15a2.002 2.002 0 0 0-2 2v2h22v-2a2.002 2.002 0 0 0-2-2z"
+                                                                        opacity="1" data-original="#376cfb"></path>
+                                                                </g>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="ps-3 pt-1">
+                                                        <h6 class="special-font text-white mb-0">
+                                                            Date Of Birth
+                                                        </h6>
+                                                        <p class="text-white mb-0">
+                                                            {{ optional($nfc_card->nfcData)->date_of_birth }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
                                 @if (!empty(optional($nfc_card->nfcData)->location))
-                                    <div class="col-sm-6 mt-4">
+                                    <div class="col-sm-12 mt-4">
                                         <div class="card date-card-tem3">
                                             <div class="card-body d-flex align-content-center p-2">
                                                 <div class="d-flex align-items-center">
@@ -945,90 +1282,28 @@
                                         </div>
                                     </div>
                                 @endif
-                                @if (!empty(optional($nfc_card->nfcData)->date_of_birth))
-                                    <div class="col-sm-6 mt-4">
-                                        <div class="card date-card-tem3">
-                                            <div class="card-body d-flex align-content-center p-2">
-                                                <div class="d-flex align-items-center">
-                                                    <div>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="50"
-                                                            height="50" x="0" y="0" viewBox="0 0 48 48"
-                                                            style="enable-background: new 0 0 512 512"
-                                                            xml:space="preserve" class="">
-                                                            <g>
-                                                                <g data-name="Calendar Birthday">
-                                                                    <g fill="#4294ff">
-                                                                        <path
-                                                                            d="M41 6v1a1 1 0 0 1-2 0V6zM28 6v1a1 1 0 0 1-2 0V6zM15 6v1a1 1 0 0 1-2 0V6z"
-                                                                            fill="#4294ff" opacity="1"
-                                                                            data-original="#4294ff" class="">
-                                                                        </path>
-                                                                    </g>
-                                                                    <path fill="#e6ecff"
-                                                                        d="M43 6H5a5 5 0 0 0-5 5v32a5 5 0 0 0 5 5h33l10-10V11a5 5 0 0 0-5-5z"
-                                                                        opacity="1" data-original="#e6ecff"></path>
-                                                                    <path fill="#4294ff"
-                                                                        d="M43 6H5a5.006 5.006 0 0 0-5 5v5h48v-5a5.006 5.006 0 0 0-5-5z"
-                                                                        opacity="1" data-original="#4294ff"
-                                                                        class="">
-                                                                    </path>
-                                                                    <path fill="#d0dbf7"
-                                                                        d="M41 38a3 3 0 0 0-3 3v7l10-10z"
-                                                                        opacity="1" data-original="#d0dbf7"></path>
-                                                                    <path fill="#376cfb"
-                                                                        d="M41 4v2h-2V4a2 2 0 0 0-4 0v5a2.006 2.006 0 0 0 2 2h1a1 1 0 0 1 0 2h-1a3.999 3.999 0 0 1-4-4V4a4 4 0 0 1 8 0zM28 4v2h-2V4a2 2 0 0 0-4 0v5a2.006 2.006 0 0 0 2 2h1a1 1 0 0 1 0 2h-1a3.999 3.999 0 0 1-4-4V4a4 4 0 0 1 8 0zM15 4v2h-2V4a2 2 0 0 0-4 0v5a2.006 2.006 0 0 0 2 2h1a1 1 0 0 1 0 2h-1a3.999 3.999 0 0 1-4-4V4a4 4 0 0 1 8 0z"
-                                                                        opacity="1" data-original="#376cfb"></path>
-                                                                    <path fill="#4294ff"
-                                                                        d="M24 30a1 1 0 0 1-1-1v-3a1 1 0 0 1 2 0v3a1 1 0 0 1-1 1z"
-                                                                        opacity="1" data-original="#4294ff"
-                                                                        class="">
-                                                                    </path>
-                                                                    <path fill="#376cfb"
-                                                                        d="M24.688 20.274a.999.999 0 0 0-1.376 0C22.77 20.788 21 22.576 21 24a3 3 0 0 0 6 0c0-1.424-1.77-3.212-2.312-3.726z"
-                                                                        opacity="1" data-original="#376cfb"></path>
-                                                                    <path fill="#4294ff"
-                                                                        d="M30 28H18a2.002 2.002 0 0 0-2 2v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-6a2.002 2.002 0 0 0-2-2z"
-                                                                        opacity="1" data-original="#4294ff"
-                                                                        class="">
-                                                                    </path>
-                                                                    <path fill="#376cfb"
-                                                                        d="M30 28H18a2.002 2.002 0 0 0-2 2v2h16v-2a2.002 2.002 0 0 0-2-2z"
-                                                                        opacity="1" data-original="#376cfb"></path>
-                                                                    <path fill="#4294ff"
-                                                                        d="M33 35H15a2.002 2.002 0 0 0-2 2v6a1 1 0 0 0 1 1h20a1 1 0 0 0 1-1v-6a2.002 2.002 0 0 0-2-2z"
-                                                                        opacity="1" data-original="#4294ff"
-                                                                        class="">
-                                                                    </path>
-                                                                    <path fill="#376cfb"
-                                                                        d="M33 35H15a2.002 2.002 0 0 0-2 2v2h22v-2a2.002 2.002 0 0 0-2-2z"
-                                                                        opacity="1" data-original="#376cfb"></path>
-                                                                </g>
-                                                            </g>
-                                                        </svg>
-                                                    </div>
-                                                    <div class="ps-3 pt-1">
-                                                        <h6 class="special-font text-white mb-0">
-                                                            Date Of Birth
-                                                        </h6>
-                                                        <p class="text-white mb-0">
-                                                            {{ optional($nfc_card->nfcData)->date_of_birth }}
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endif
                             </div>
                         @endif
+                        <!-- User Info -->
+                        <div class="row mt-4">
+                            <div class="col-sm-12">
+                                <div>
+                                    @if (!empty($nfc_card->bio_description))
+                                        <p class="text-justify text-black">
+                                            {{ $nfc_card->bio_description }}
+                                        </p>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
                         <!-- Company Area -->
                         @if ($nfc_card->companies_show == '1')
                             <div class="row pt-5">
                                 <div class="col-sm-12 pb-5">
                                     <div class="text-center">
                                         <h3 class="special-font">My Company</h3>
-                                        <p style="height: 2px;;width: 50px;margin: auto; ">
+                                        <p
+                                            style="height: 2px;background-color: var(--template-three-color-primary);width: 50px;margin: auto; ">
                                         </p>
                                     </div>
                                 </div>
@@ -1037,35 +1312,38 @@
                                         @foreach ($nfc_card->nfcCompany as $company)
                                             <div class="items px-4">
                                                 <div class="row align-items-center">
-                                                    <div class="col-sm-5">
-                                                        <div class="d-flex justify-content-start align-items-center">
+                                                    <div class="col-sm-12">
+                                                        <div class="d-flex justify-content-center align-items-center">
                                                             <img class="img-fluid company_logo company_logo-tem-3"
+                                                                width="50px" height="50px"
                                                                 style="background: var(--template-two-color-white);padding: 12px;border-radius: 100%;"
                                                                 src="{{ !empty($company->company_logo) && file_exists(public_path('storage/nfc/company/' . optional($company)->company_logo)) ? asset('storage/nfc/company/' . optional($company)->company_logo) : asset('frontend/images/no_image.png') }}"
                                                                 alt="" />
                                                         </div>
-                                                        <div class="special-font">
-                                                            <p class="text-white">
-                                                                <i class="fa-solid fa-location-dot pe-2"></i>
+                                                        <div class="special-font text-center">
+                                                            <p class="text-white mb-0">
                                                                 {{ $company->company_address_line_one }} <br>
                                                                 {{ $company->company_address_line_two }}
                                                             </p>
-                                                            <p class="text-white">
-                                                                <i class="fa-solid fa-globe pe-2"></i>
-                                                                {{ $company->company_website ? preg_replace('/^(https?:\/\/)?(www\.)?/', '', $company->company_website) : '' }}
+                                                            <p class="text-white mb-0">
+                                                                <a
+                                                                    href="{{ $company->company_website ? preg_replace('/^(https?:\/\/)?(www\.)?/', '', $company->company_website) : '' }}">{{ $company->company_website ? preg_replace('/^(https?:\/\/)?(www\.)?/', '', $company->company_website) : '' }}</a>
                                                             </p>
-                                                            <p class="text-white">
-                                                                <i class="fa-solid fa-phone pe-2"></i>
-                                                                {{ $company->company_phone }}
+                                                            <p class="text-white mb-0">
+                                                                <a
+                                                                    href="tel:{{ $company->company_phone }}">{{ $company->company_phone }}</a>
                                                             </p>
                                                         </div>
                                                     </div>
-                                                    <div class="col-sm-7">
-                                                        <h5 class="text-start special-font text-white">
+                                                    <div class="col-sm-12 mt-4">
+                                                        <h5 class="text-center special-font text-white">
                                                             {{ $company->company_name }}</h5>
-                                                        <p class="text-white">
-                                                            {{ $company->company_description }}
-                                                        </p>
+                                                        <div class="company-details">
+                                                            <p class="p-3 mb-0 text-white"
+                                                                style="text-align: justify">
+                                                                {{ $company->company_description }}
+                                                            </p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1076,7 +1354,7 @@
                         @endif
                         <!-- Servies Box -->
                         @if ($nfc_card->services_show == '1')
-                            <div class="row pt-2">
+                            <div class="row pt-5">
                                 <div class="col-sm-12">
                                     <div class="text-center">
                                         <h3 class="special-font">My Services</h3>
@@ -1125,9 +1403,9 @@
                                         <div class="parallax-background px-0">
                                             <div class="container">
                                                 <div class="row">
-                                                    <div class="col-sm-12">
+                                                    <div class="col-sm-12 mb-3">
                                                         <div class="text-center">
-                                                            <h3 class="special-font">Business Hour</h3>
+                                                            <h3 class="special-font text-white">Business Hour</h3>
                                                             <p
                                                                 style="height: 2px;background-color: var( --template-three-color-primary);width: 50px;margin: auto; ">
                                                             </p>
@@ -1136,7 +1414,8 @@
                                                     <div class="col-sm-12">
                                                         <div class="table-responsive">
                                                             <table class="table bg-transparent">
-                                                                <thead class="text-center">
+                                                                <thead class="text-center"
+                                                                    style="background: #7139ea;">
                                                                     <tr>
                                                                         <th scope="col">
                                                                             Day
@@ -1337,7 +1616,8 @@
                                         <div class="row pt-4">
                                             @foreach ($nfc_card->nfcProduct as $product)
                                                 <div class="col-sm-6 mb-4">
-                                                    <div class="card border-0"
+                                                    <a href="{{ $product->product_url }}">
+                                                        <div class="card border-0"
                                                         style="background-color: var(--template-three-color-primary);">
                                                         <div class="card-header p-0 rounded-2 service-header-tem3">
                                                             <div class="product-img-tem3">
@@ -1365,6 +1645,7 @@
                                                             </p>
                                                         </div>
                                                     </div>
+                                                    </a>
                                                 </div>
                                             @endforeach
                                         </div>
@@ -1424,26 +1705,24 @@
                                     <div class="col-sm-12 mt-4">
                                         <div class="testimonial-slide">
                                             @foreach ($nfc_card->nfcTestimonial as $testimonial)
-                                                <div class="testimonial-items">
-                                                    <div class="row align-items-center"
-                                                        style="background-color: #f8f9fa1c; border-radius: 5px;">
-                                                        <div class="col-sm-3 px-0">
-                                                            <div class="testimonial-img-top p-3">
-                                                                <img class="img-fluid rounded-2"
-                                                                    src="{{ !empty($testimonial->testimonial_image) && file_exists(public_path('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image)) ? asset('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image) : asset('frontend/images/no_image.png') }}"
-                                                                    alt="" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-9 px-0">
-                                                            <div style="background: #00000047;padding: 10px;">
-                                                                <h6 class="special-font">
-                                                                    {{ $testimonial->testimonial_name }}
-                                                                </h6>
-                                                                <p class="text-white">
+                                                <div class="testimonial-items shadow-sm p-3">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-sm-12">
+                                                            <div>
+                                                                <p class="text-black text-center">
                                                                     {{ $testimonial->testimonial_description }}
                                                                 </p>
                                                             </div>
-
+                                                            <div class="d-flex justify-content-center align-items-center flex-column mt-3">
+                                                                <div>
+                                                                    <img class="testi-images"
+                                                                    src="{{ !empty($testimonial->testimonial_image) && file_exists(public_path('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image)) ? asset('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image) : asset('frontend/images/no_image.png') }}"
+                                                                    alt="" />
+                                                                </div>
+                                                                <h6 class="special-font">
+                                                                    {{ $testimonial->testimonial_name }}
+                                                                </h6>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1467,26 +1746,74 @@
                             </div>
                         @endif
                     </div>
+                    <div class="col-lg-12">
+                        <div class="text-center">
+                            <h3 class="special-font">QR Code</h3>
+                            <p
+                                style="height: 2px;background-color: var(--template-three-color-primary);width: 50px;margin: auto;">
+                            </p>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center py-5">
+                            <div class="qr-profile border rounded-4">
+                                <img src="{{ !empty($nfc_card->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card)->profile_image) : asset('frontend/images/no_image.png') }}"
+                                    class="img-fluid rounded-4" alt="banner" />
+                            </div>
+                            <div class="qr-code-scanner mx-md-4 mx-2 p-4 bg-white"
+                                id="qr-code-nine">
+                                @if (!empty($nfc_card->nfc_qr) && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc_qr)))
+                                    <img class="img-fluid"
+                                        src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
+                                        alt="" />
+                                @else
+                                    <img class="img-fluid"
+                                        src="{{ asset('images/Symbology-QR-code.svg') }}"
+                                        alt="Default QR Code" />
+                                @endif
+
+                                @if (
+                                    $nfc_card->enable_download_qr_code == '1' &&
+                                        !empty($nfc_card->nfc_qr) &&
+                                        file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc_qr)))
+                                    <div>
+                                        <a href="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
+                                            download=""
+                                            class="btn btn-dark rounded-0 w-100 border-2 border-dark">
+                                            Download QR
+                                        </a>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
                     @php
                         $currentUrl = request()->url();
                         $whatsappLink = 'https://wa.me/?text=' . urlencode('Check out My NFC Profile: ' . $currentUrl);
                     @endphp
                     <!-- Create a button or link to share via WhatsApp -->
-                    <div class="row py-5 pt-3 mb-5">
+                    <div class="row py-5 pt-3">
                         <div class="col-sm-12">
                             <div class="text-center">
-                                <h3 class="special-font">Share</h3>
+                                <h3 class="special-font">Share Now!</h3>
                                 <p
                                     style="height: 2px;background-color: var(--template-three-color-primary);width: 50px;margin: auto;">
                                 </p>
                             </div>
                         </div>
-                        <div class="col-lg-7 col-offset-lg-6 mx-auto mt-2 ">
-                            <div class="vcard-share">
-                                <a href="{{ $whatsappLink }}" target="_blank" rel="noopener noreferrer"
-                                    class="btn btn-dark w-100 p-3">
-                                    <i class="fa-solid fa-paper-plane"></i> Share This Vcard
-                                </a>
+                        <div class="row align-items-center ">
+                            <div class="col-sm-6 offse-sm-3 mx-auto">
+                                <div>
+                                    <img class="img-fluid" src="{{ asset('images/share-now.png') }}"
+                                        alt="" />
+                                </div>
+                                <div class="d-flex align-items-center justify-content-center mb-4">
+                                    <a href="{{ $whatsappLink }}" target="_blank" rel="noopener noreferrer"
+                                        class="btn btn-primary rounded-0 mb-2 p-3"
+                                        style="width: 240px;">
+                                        <i class="fa-solid fa-share-nodes"
+                                            style="color: var(--template-two-color-primary)"></i>
+                                        Share This Vcard
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1612,7 +1939,7 @@
                 autoplay: true, // Enable autoplay
                 autoplaySpeed: 2000, // Autoplay speed in milliseconds
                 gap: 10,
-                dots: true,
+                dots: false,
                 arrows: false,
                 prevArrow: '<button type="button" class="slick-prev"><i class="fas fa-chevron-left"></i></button>',
                 nextArrow: '<button type="button" class="slick-next"><i class="fas fa-chevron-right"></i></button>',
