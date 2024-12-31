@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Subscription;
 
+use Stripe\Charge;
+use Stripe\Stripe;
+use Stripe\Invoice;
 use Stripe\Webhook;
 use App\Models\User;
 use App\Models\Admin\Plan;
@@ -16,6 +19,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Cache;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Session;
 use Stripe\Exception\ApiErrorException;
 use Illuminate\Support\Facades\Validator;
 use Stripe\Exception\SignatureVerificationException;
@@ -161,68 +165,7 @@ class StripeWebhookController extends CashierWebhookController
             return redirect()->route('register')->with('error', 'An unexpected error occurred: ' . $e->getMessage());
         }
     }
-    public function cardPayment(Request $request)
-    {
-        $request->validate([
-            'user_id' => 'required|exists:users,id',
-            'plan' => 'required|exists:plans,id',
-            'token' => 'required|string',
-        ]);
 
-        try {
-            $user = User::findOrFail($request->user_id);
-            $user->createOrGetStripeCustomer();
-
-            $plan = Plan::findOrFail($request->plan);
-
-            // Check for an existing active subscription
-            $existingSubscription = Subscription::where('user_id', $user->id)
-                ->active()
-                ->first();
-
-            if ($existingSubscription) {
-                return redirect()->route('register')->with('error', 'You already have an active subscription.');
-            }
-
-            $subscription = $user->newSubscription($plan->slug, $plan->stripe_plan)->create($request->token);
-
-            // Set the subscription end date
-            $subscription->update([
-                'subscription_ends_at' => now()->addDays($plan->interval),
-            ]);
-
-            // Ensure the subscription was successfully created
-            if ($subscription) {
-                // Retrieve the active subscription
-                $activeSubscription = Subscription::where('user_id', $user->id)->active()->first();
-
-                if ($activeSubscription) {
-                    try {
-                        Mail::to($user->email)->send(new UserRegistrationMail($user->name));
-                    } catch (\Exception $e) {
-                        // Log the email sending failure
-                        Log::error('Failed to send registration email to ' . $user->email . ': ' . $e->getMessage());
-                    }
-
-                    return redirect(RouteServiceProvider::HOME)->with('success', 'You have successfully registered with the ' . $activeSubscription->plan->title);
-                } else {
-                    // Subscription not found, handle the error
-                    $user->delete();
-                    return redirect()->route('register')->with('error', 'Error occurred while subscribing to a plan.');
-                }
-            } else {
-                // Subscription creation failed, handle the error
-                $user->delete();
-                return redirect()->route('register')->with('error', 'Error occurred while subscribing to a plan.');
-            }
-        } catch (ApiErrorException $e) {
-            // Handle Stripe API errors
-            return redirect()->route('register')->with('error', 'Payment failed: ' . $e->getMessage());
-        } catch (\Exception $e) {
-            // Handle other errors
-            return redirect()->route('register')->with('error', 'An unexpected error occurred: ' . $e->getMessage());
-        }
-    }
 
 
     public function handleWebhook(Request $request)
@@ -310,15 +253,60 @@ class StripeWebhookController extends CashierWebhookController
 
     public function cardCheckout($id)
     {
-        $data['plan'] = Plan::where('slug', $id)->first();
+        $data['plan'] = CardProduct::where('slug', $id)->first();
 
         if (Auth::check()) {
             $data['intent'] = auth()->user()->createSetupIntent();
             $data['user_id'] = Auth::user()->id;
-            return view('frontend.pages.checkout', $data);
+            return view('frontend.pages.cardCheckout', $data);
         } else {
             // This will automatically store the current URL and redirect to the login page
             return redirect()->route('login');
+        }
+    }
+
+    public function cardPayment(Request $request)
+    {
+        $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'plan' => 'required|exists:plans,id',
+            'token' => 'required|string',
+        ]);
+
+        try {
+            $product = CardProduct::findOrFail($request->product_id);
+            $user = User::findOrFail($request->user_id);
+
+            Stripe::setApiKey(env('STRIPE_SECRET'));
+
+            // Create charge
+            $charge = Charge::create([
+                "amount" => $product->price * 100, // Amount in cents
+                "currency" => !empty($product->currency) ? $product->currency : "usd",
+                "source" => $request->stripeToken,
+                "description" => "NFC Card Payment"
+            ]);
+
+            // Create invoice
+            $invoice = Invoice::create([
+                'customer' => $charge->customer,
+                'billing' => 'send_invoice',
+                // 'due_date' => now()->addDays(30)->timestamp,
+            ]);
+            $email = $request->customer_email;
+            try {
+                Mail::send('emails.invoice', ['invoice' => $invoice,'product' => $product], function ($message) use ($email) {
+                    $message->to($email)->subject('NFC Card Payment Invoice');
+                });
+            } catch (\Exception $e) {
+                Session::flash('error', "Email sent will be delayed due to server issue.");
+            }
+        } catch (ApiErrorException $e) {
+            // Handle Stripe API errors
+            return redirect()->route('register')->with('error', 'Payment failed: ' . $e->getMessage());
+        } catch (\Exception $e) {
+            // Handle other errors
+            return redirect()->route('register')->with('error', 'An unexpected error occurred: ' . $e->getMessage());
         }
     }
 }

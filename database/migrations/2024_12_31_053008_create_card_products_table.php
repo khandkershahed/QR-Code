@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('billing_cycle')->nullable();
             $table->text('payment_link')->nullable();
             $table->string('type')->nullable();
-            $table->string('currency')->default('USD')->nullable();
+            $table->string('currency')->default('usd')->nullable();
             $table->string('interval')->comment('Interval in days')->nullable();
             $table->integer('max_users')->nullable();
             $table->integer('qr')->nullable();

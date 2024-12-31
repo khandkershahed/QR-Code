@@ -53,7 +53,7 @@
                                     </div>
                                 </div>
                                 <div class="" style="margin-top: 5rem">
-                                    <p>Subscribe to <strong class="text-info">{{ $plan->name }}</strong></p>
+                                    <h6 class="mb-5">Purchase <strong class="text-info">{{ $plan->name }}</strong></h6>
                                     <div class="d-flex align-items-center">
                                         <h1 style="font-size: 40px; border-right: 2px solid #eee;">
                                             <strong class="pe-3">
@@ -79,7 +79,7 @@
                                         max-height: 100%;
                                     ">
                                         <img class="img-fluid" width="200px"
-                                            src="{{ asset('images/checkout-icons.png') }}" alt="">
+                                            src="{{ asset('storage/'.$plan->image) }}" alt="">
                                     </div>
                                 </div>
                                 <div class="text-start">
@@ -99,7 +99,7 @@
                                 </div>
                                 <form action="{{ route('card.payment') }}" method="POST" id="payment-form">
                                     @csrf
-                                    <input type="hidden" name="plan" id="plan" value="{{ $plan->id }}">
+                                    <input type="hidden" name="product_id" id="plan" value="{{ $plan->id }}">
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="mb-5 pb-3">
