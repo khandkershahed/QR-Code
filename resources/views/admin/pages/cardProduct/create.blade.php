@@ -1,9 +1,16 @@
-<x-admin-app-layout :title="'Plan Management - Admin Panel'">
+<x-admin-app-layout :title="'Card Products Management - Admin Panel'">
     <div class="card my-10 rounded-0">
         <div class="card-header p-5 align-items-center rounded-0 bg-info m-0">
             <div>
-                <h1 class="mb-0 mt-0 card-title fs-2 text-white">All Plans!</h1>
-                <p class="text-white mt-2 mb-0">Create plans information in this page.</p>
+                <h1 class="mb-0 mt-0 card-title fs-2 text-white">All Card Products!</h1>
+                <p class="text-white mt-2 mb-0">Create Card Products information in this page.</p>
+            </div>
+            <div>
+                <a href="{{ route('admin.card-product.index') }}"
+                    class="btn btn-white btn-active-light-warning text-hover-inverse-white" data-bs-toggle="tooltip"
+                    data-bs-dismiss="click" title="Card Products">
+                    <i class="fa-solid fa-user-plus"></i>Card Products List
+                </a>
             </div>
         </div>
         <div class="card-body">

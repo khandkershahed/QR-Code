@@ -2,8 +2,15 @@
     <div class="card my-10 rounded-0">
         <div class="card-header p-5 align-items-center rounded-0 bg-info m-0">
             <div>
-                <h1 class="mb-0 mt-0 card-title fs-2 text-white">Edit Plan</h1>
-                <p class="text-white mt-2 mb-0">Update the details of the existing plan in this page.</p>
+                <h1 class="mb-0 mt-0 card-title fs-2 text-white">Edit Card Products</h1>
+                <p class="text-white mt-2 mb-0">Update the details of the existing Card Products in this page.</p>
+            </div>
+            <div>
+                <a href="{{ route('admin.card-product.index') }}"
+                    class="btn btn-white btn-active-light-warning text-hover-inverse-white" data-bs-toggle="tooltip"
+                    data-bs-dismiss="click" title="Card Products">
+                    <i class="fa-solid fa-user-plus"></i>Card Products List
+                </a>
             </div>
         </div>
         <div class="card-body">
@@ -11,7 +18,6 @@
                 enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="row">
