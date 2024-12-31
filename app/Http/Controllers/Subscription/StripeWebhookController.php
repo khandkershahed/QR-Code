@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Subscription;
 
+use Carbon\Carbon;
 use Stripe\Charge;
 use Stripe\Stripe;
 use Stripe\Invoice;
@@ -11,8 +12,10 @@ use App\Models\Admin\Plan;
 use App\Models\CardProduct;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
+use App\Models\UserCardProduct;
 use Illuminate\Validation\Rules;
 use App\Mail\UserRegistrationMail;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -265,47 +268,125 @@ class StripeWebhookController extends CashierWebhookController
         }
     }
 
+    // public function cardPayment(Request $request)
+    // {
+    //     $request->validate([
+    //         'user_id' => 'required|exists:users,id',
+    //         'plan' => 'required|exists:card_products,id',
+    //     ]);
+
+    //     try {
+    //         $product = CardProduct::findOrFail($request->product_id);
+    //         $user = User::findOrFail($request->user_id);
+
+    //         Stripe::setApiKey(env('STRIPE_SECRET'));
+
+    //         // Create charge
+    //         $charge = Charge::create([
+    //             "amount" => $product->price * 100, // Amount in cents
+    //             "currency" => !empty($product->currency) ? $product->currency : "usd",
+    //             "source" => $request->stripeToken,
+    //             "description" => "NFC Card Payment"
+    //         ]);
+
+    //         $usercardproduct = UserCardProduct::create([
+    //             'user_id' => $user->id,
+    //             'card_product_id' => $product->id,
+    //             'payment_status' => ($charge->status == 'succeeded') ? 'paid' : 'unpaid',
+    //             'status' => 'unused',
+    //             'paid_at' => Carbon::now(),
+    //         ]);
+    //         // Create invoice
+    //         $invoice = Invoice::create([
+    //             'customer' => $charge->customer,
+    //             'billing' => 'send_invoice',
+    //         ]);
+    //         $email = $request->customer_email;
+    //         try {
+    //             Mail::send('emails.invoice', ['invoice' => $invoice,'product' => $product], function ($message) use ($email) {
+    //                 $message->to($email)->subject('NFC Card Payment Invoice');
+    //             });
+    //         } catch (\Exception $e) {
+    //             Session::flash('error', "Email sent will be delayed due to server issue.");
+    //         }
+    //     } catch (ApiErrorException $e) {
+    //         return redirect()->route('register')->with('error', 'Payment failed: ' . $e->getMessage());
+    //     } catch (\Exception $e) {
+    //         return redirect()->route('register')->with('error', 'An unexpected error occurred: ' . $e->getMessage());
+    //     }
+    // }
     public function cardPayment(Request $request)
     {
+        // Validate the incoming request
         $request->validate([
             'user_id' => 'required|exists:users,id',
-            'plan' => 'required|exists:plans,id',
-            'token' => 'required|string',
+            'plan' => 'required|exists:card_products,id',
+            'stripeToken' => 'required|string', // Add validation for the stripeToken
         ]);
 
+        // Begin a database transaction to ensure atomic operations
+        DB::beginTransaction();
+
         try {
-            $product = CardProduct::findOrFail($request->product_id);
+            // Fetch product and user details
+            $product = CardProduct::findOrFail($request->plan); // Use 'plan' here
             $user = User::findOrFail($request->user_id);
 
+            // Set Stripe API key
             Stripe::setApiKey(env('STRIPE_SECRET'));
 
-            // Create charge
-            $charge = Charge::create([
-                "amount" => $product->price * 100, // Amount in cents
-                "currency" => !empty($product->currency) ? $product->currency : "usd",
-                "source" => $request->stripeToken,
-                "description" => "NFC Card Payment"
+            // Create a PaymentIntent for the transaction
+            $paymentIntent = \Stripe\PaymentIntent::create([
+                'amount' => $product->price * 100, // Amount in cents
+                'currency' => !empty($product->currency) ? $product->currency : "usd",
+                'description' => "NFC Card Payment",
+                'payment_method' => $request->stripeToken, // Payment method (the Stripe token from frontend)
+                'confirm' => true, // Immediately attempt to confirm the payment
             ]);
 
-            // Create invoice
-            $invoice = Invoice::create([
-                'customer' => $charge->customer,
-                'billing' => 'send_invoice',
-                // 'due_date' => now()->addDays(30)->timestamp,
+            // Check if the payment was successful
+            if ($paymentIntent->status !== 'succeeded') {
+                throw new \Exception('Payment was not successful');
+            }
+
+            // Create the user card product record
+            $usercardproduct = UserCardProduct::create([
+                'user_id' => $user->id,
+                'card_product_id' => $product->id,
+                'payment_status' => 'paid', // Only mark as paid if the payment succeeded
+                'status' => 'unused',
+                'paid_at' => Carbon::now(),
             ]);
-            $email = $request->customer_email;
+
+            // Create the invoice
+            $invoice = Invoice::create([
+                'customer' => $paymentIntent->customer,
+                'billing' => 'send_invoice', // Adjust depending on your actual invoice handling
+            ]);
+
+            // Send the invoice via email
             try {
-                Mail::send('emails.invoice', ['invoice' => $invoice,'product' => $product], function ($message) use ($email) {
+                $email = $request->customer_email;
+                Mail::send('emails.invoice', ['invoice' => $invoice, 'product' => $product], function ($message) use ($email) {
                     $message->to($email)->subject('NFC Card Payment Invoice');
                 });
             } catch (\Exception $e) {
+                // Flash a message if the email fails
                 Session::flash('error', "Email sent will be delayed due to server issue.");
             }
-        } catch (ApiErrorException $e) {
-            // Handle Stripe API errors
+
+            // Commit the transaction as everything is successful
+            DB::commit();
+
+            // Return success response if payment is successful
+            return redirect()->route('dashboard')->with('success', 'Payment successful!');
+        } catch (\Stripe\Exception\ApiErrorException $e) {
+            // Catch Stripe-specific errors (e.g., card declined, network issues)
+            DB::rollBack(); // Rollback transaction to avoid any database changes if payment fails
             return redirect()->route('register')->with('error', 'Payment failed: ' . $e->getMessage());
         } catch (\Exception $e) {
-            // Handle other errors
+            // Catch any other errors (e.g., database errors, system errors)
+            DB::rollBack(); // Rollback transaction
             return redirect()->route('register')->with('error', 'An unexpected error occurred: ' . $e->getMessage());
         }
     }
