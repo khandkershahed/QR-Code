@@ -53,21 +53,22 @@
                                     </div>
                                 </div>
                                 <div class="" style="margin-top: 5rem">
-                                    <p>Subscribe to <strong class="text-info">{{ $plan->title }}</strong></p>
+                                    <p>Subscribe to <strong class="text-info">{{ $plan->name }}</strong></p>
                                     <div class="d-flex align-items-center">
-                                        <h1 style="font-size: 40px; border-right: 2px solid #eee;"> <strong
-                                                class="pe-3">$ {{ $plan->price }}</strong></h1>
-                                        <p class="ps-3">
-                                            @if ($plan->billing_cycle == 'year')
-                                                Per year
-                                            @elseif ($plan->billing_cycle == 'month')
-                                                Per month
-                                            @elseif ($plan->billing_cycle == 'trial_period')
-                                            Trial Period
+                                        <h1 style="font-size: 40px; border-right: 2px solid #eee;">
+                                            <strong class="pe-3">
+                                                @if ($plan->currency == 'eur')
+                                                €
+                                            @elseif ($plan->currency == 'gbp')
+                                                £
+                                            @elseif ($plan->currency == 'usd')
+                                                $
                                             @else
-                                                Trial Period
+                                                $
                                             @endif
-                                        </p>
+                                            {{ $plan->price }}</strong>
+                                        </h1>
+
                                     </div>
                                     <div>
                                         <p>For larger teams needing enhanced management and collaboration</p>
@@ -78,8 +79,7 @@
                                         max-height: 100%;
                                     ">
                                         <img class="img-fluid" width="200px"
-                                            src="{{ asset('images/checkout-icons.png') }}"
-                                            alt="">
+                                            src="{{ asset('images/checkout-icons.png') }}" alt="">
                                     </div>
                                 </div>
                                 <div class="text-start">
@@ -97,7 +97,7 @@
                                     <p class="text-center devider-text">Countinue Payment Process</p>
                                     <div class="devider"></div>
                                 </div>
-                                <form action="{{ route('stripe.payment') }}" method="POST" id="payment-form">
+                                <form action="{{ route('card.payment') }}" method="POST" id="payment-form">
                                     @csrf
                                     <input type="hidden" name="plan" id="plan" value="{{ $plan->id }}">
                                     <div class="row">
@@ -116,7 +116,7 @@
                                                 <div id="card-element" class="border p-3 rounded"></div>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="col-lg-12">
                                             <div class="mb-5 pb-3">
                                                 <input type="hidden" name="user_id" value="{{ $user_id }}">

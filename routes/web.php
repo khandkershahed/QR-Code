@@ -72,6 +72,7 @@ Route::get('/stripe/checkout/{id}', [StripeWebhookController::class, 'stripeChec
 Route::post('/stripe/payment', [StripeWebhookController::class, 'stripePayment'])->name('stripe.payment');
 
 Route::post('/card/payment', [StripeWebhookController::class, 'cardPayment'])->name('card.payment');
+
 Route::post('/stripe/webhook', [StripeWebhookController::class, 'handleWebhook']);
 Route::get('stripe/success', function () {
     return redirect(RouteServiceProvider::HOME)->with('success', 'You have successfully registered with the plan.');

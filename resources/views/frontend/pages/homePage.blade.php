@@ -638,7 +638,7 @@
                         <div class="product-slider-card row">
                             @foreach ($cardProducts as $cardProduct)
                                 <div class="">
-                                    <a href="">
+                                    <a href="javascript:void(0)">
                                         <div class="card border-0 shadow-sm bg-light">
                                             <div class="card-header border-0">
                                                 <div>

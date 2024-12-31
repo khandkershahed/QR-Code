@@ -1237,7 +1237,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
-    <script>
+    {{-- <script>
         document.addEventListener("DOMContentLoaded", function() {
             const descriptionElement = document.getElementById("testimonial-description");
             const showMoreBtn = document.getElementById("show-more-btn");
@@ -1264,7 +1264,7 @@
                 isExpanded = !isExpanded;
             });
         });
-    </script>
+    </script> --}}
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize Slick Slider
