@@ -817,7 +817,7 @@
                         opacity="1" data-original="url(#b)"></path>
                 </g>
             </svg>
-            <span class="ps-2 text-start"">Terms</span>
+            <span class="ps-2 text-start">Terms</span>
         </a>
     </li>
     <li class="nav-item w-100 me-0 mb-md-2 ms-0" role="presentation">
@@ -1132,3 +1132,248 @@
         </a>
     </li>
 </ul>
+
+{{-- @push('scripts')
+<script>
+    document.getElementById("nextgeneralInfoButton").addEventListener("click", function(event) {
+    event.preventDefault();
+    
+        // Activate the "VCard Templates" tab
+        var nextTab = new bootstrap.Tab(document.querySelector('a[href="#vcardTemplate"]'));
+        nextTab.show(); // Show the VCard Templates tab
+
+        // Optionally, you can scroll the page to the new tab if needed
+        document.querySelector('#vcardTemplate').scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+</script>
+<script>
+    document.getElementById("nextvcardTemplateButton").addEventListener("click", function(event) {
+    event.preventDefault();
+    
+        // Activate the "VCard Templates" tab
+        var nextTab = new bootstrap.Tab(document.querySelector('a[href="#businessHours"]'));
+        nextTab.show(); // Show the VCard Templates tab
+
+        // Optionally, you can scroll the page to the new tab if needed
+        document.querySelector('#businessHours').scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+</script>
+<script>
+    document.getElementById("nextbusinessHoursButton").addEventListener("click", function(event) {
+    event.preventDefault();
+    
+        // Activate the "VCard Templates" tab
+        var nextTab = new bootstrap.Tab(document.querySelector('a[href="#companies"]'));
+        nextTab.show(); // Show the VCard Templates tab
+
+        // Optionally, you can scroll the page to the new tab if needed
+        document.querySelector('#companies').scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+</script>
+<script>
+    document.getElementById("nextcompaniesButton").addEventListener("click", function(event) {
+    event.preventDefault();
+    
+        // Activate the "VCard Templates" tab
+        var nextTab = new bootstrap.Tab(document.querySelector('a[href="#services"]'));
+        nextTab.show(); // Show the VCard Templates tab
+
+        // Optionally, you can scroll the page to the new tab if needed
+        document.querySelector('#services').scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+</script>
+<script>
+    document.getElementById("nextservicesButton").addEventListener("click", function(event) {
+    event.preventDefault();
+    
+        // Activate the "VCard Templates" tab
+        var nextTab = new bootstrap.Tab(document.querySelector('a[href="#products"]'));
+        nextTab.show(); // Show the VCard Templates tab
+
+        // Optionally, you can scroll the page to the new tab if needed
+        document.querySelector('#products').scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+</script>
+<script>
+    document.getElementById("nextproductsButton").addEventListener("click", function(event) {
+    event.preventDefault();
+    
+        // Activate the "VCard Templates" tab
+        var nextTab = new bootstrap.Tab(document.querySelector('a[href="#galleries"]'));
+        nextTab.show(); // Show the VCard Templates tab
+
+        // Optionally, you can scroll the page to the new tab if needed
+        document.querySelector('#galleries').scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+</script>
+@endpush --}}
+
+@push('scripts')
+    <script>
+        document.getElementById("nextgeneralInfoButton").addEventListener("click", function(event) {
+            event.preventDefault();
+            
+
+            var nextTab = new bootstrap.Tab(document.querySelector('a[href="#vcardTemplate"]'));
+            nextTab.show();
+            document.querySelector('#vcardTemplate').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
+    <script>
+        document.getElementById("nextvcardTemplateButton").addEventListener("click", function(event) {
+            event.preventDefault();
+            
+            var nextTab = new bootstrap.Tab(document.querySelector('a[href="#businessHours"]'));
+            nextTab.show();
+            document.querySelector('#businessHours').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
+    <script>
+        document.getElementById("nextbusinessHoursButton").addEventListener("click", function(event) {
+            event.preventDefault();
+            
+            var nextTab = new bootstrap.Tab(document.querySelector('a[href="#companies"]'));
+            nextTab.show();
+            document.querySelector('#companies').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
+    <script>
+        document.getElementById("nextcompaniesButton").addEventListener("click", function(event) {
+            event.preventDefault();
+            
+            var nextTab = new bootstrap.Tab(document.querySelector('a[href="#services"]'));
+            nextTab.show();
+            document.querySelector('#services').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
+    <script>
+        document.getElementById("nextservicesButton").addEventListener("click", function(event) {
+            event.preventDefault();
+            
+            var nextTab = new bootstrap.Tab(document.querySelector('a[href="#products"]'));
+            nextTab.show();
+            document.querySelector('#products').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
+    <script>
+        document.getElementById("nextproductsButton").addEventListener("click", function(event) {
+            event.preventDefault();
+            
+            var nextTab = new bootstrap.Tab(document.querySelector('a[href="#galleries"]'));
+            nextTab.show();
+            document.querySelector('#galleries').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
+    <script>
+        document.getElementById("nextgalleriesButton").addEventListener("click", function(event) {
+            event.preventDefault();
+            
+            var nextTab = new bootstrap.Tab(document.querySelector('a[href="#banner"]'));
+            nextTab.show();
+            document.querySelector('#banner').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
+    <script>
+        document.getElementById("nextbannerButton").addEventListener("click", function(event) {
+            event.preventDefault();
+            
+            var nextTab = new bootstrap.Tab(document.querySelector('a[href="#testimonials"]'));
+            nextTab.show();
+            document.querySelector('#testimonials').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
+    <script>
+        document.getElementById("nexttestimonialsButton").addEventListener("click", function(event) {
+            event.preventDefault();
+            
+            var nextTab = new bootstrap.Tab(document.querySelector('a[href="#seo"]'));
+            nextTab.show();
+            document.querySelector('#seo').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
+    <script>
+        document.getElementById("nextseoButton").addEventListener("click", function(event) {
+            event.preventDefault();
+            
+            var nextTab = new bootstrap.Tab(document.querySelector('a[href="#privacy"]'));
+            nextTab.show();
+            document.querySelector('#privacy').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
+    <script>
+        document.getElementById("nextprivacyButton").addEventListener("click", function(event) {
+            event.preventDefault();
+            
+            var nextTab = new bootstrap.Tab(document.querySelector('a[href="#terms"]'));
+            nextTab.show();
+            document.querySelector('#terms').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
+    {{-- <script>
+        document.getElementById("nexttermsButton").addEventListener("click", function(event) {
+        event.preventDefault();
+        
+            var nextTab = new bootstrap.Tab(document.querySelector('a[href="#fonts"]'));
+            nextTab.show();
+            document.querySelector('#fonts').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script> --}}
+    <script>
+        document.getElementById("nextfontsButton").addEventListener("click", function(event) {
+            event.preventDefault();
+            
+            var nextTab = new bootstrap.Tab(document.querySelector('a[href="#advance"]'));
+            nextTab.show();
+            document.querySelector('#advance').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
+    <script>
+        document.getElementById("nextadvanceButton").addEventListener("click", function(event) {
+            event.preventDefault();
+            
+            var nextTab = new bootstrap.Tab(document.querySelector('a[href="#setting"]'));
+            nextTab.show();
+            document.querySelector('#setting').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
+@endpush

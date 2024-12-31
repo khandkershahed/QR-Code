@@ -1,5 +1,5 @@
 @if (strpos(Route::current()->getName(), 'user.') === 0)
-    @php 
+    @php
         $nfc = route('user.nfc-card.create');
     @endphp
 @else
@@ -1025,4 +1025,6 @@
             });
         });
     </script>
+
+    
 @endpush

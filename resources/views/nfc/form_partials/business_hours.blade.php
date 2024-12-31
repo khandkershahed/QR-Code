@@ -187,7 +187,7 @@
             <span class="indicator-progress" style="display: none;">Please wait... <span
                     class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
         </button>
-        <button class="kt_docs_formvalidation_text_submit btn btn-primary mt-5 d-flex align-items-center">
+        <button id="nextbusinessHoursButton" class="btn btn-primary mt-5 d-flex align-items-center">
             <span>Next</span>
             <span><i class="fa-solid fa-arrow-right-long ps-2"></i></span>
         </button>
