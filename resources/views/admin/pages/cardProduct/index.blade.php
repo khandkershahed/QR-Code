@@ -18,11 +18,11 @@
                 <thead class="text-center">
                     <tr class="text-start bg-info text-white fw-bolder fs-7 text-uppercase gs-0">
                         <th width="5%" class="text-center">Sl</th>
-                        <th width="40%">Title</th>
-                        <th width="15%">Price</th>
-                        <th width="13%">Currency</th>
-                        <th width="13%">Status</th>
-                        <th width="14%">Action</th>
+                        <th width="40%" class="text-center">Name</th>
+                        <th width="15%" class="text-center">Price</th>
+                        <th width="13%" class="text-center">Currency</th>
+                        <th width="13%" class="text-center">Status</th>
+                        <th width="14%" class="text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody class="text-center fw-bold text-gray-600" style="vertical-align: middle;">
