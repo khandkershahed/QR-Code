@@ -18,9 +18,10 @@
                 <thead class="text-center">
                     <tr class="text-start bg-info text-white fw-bolder fs-7 text-uppercase gs-0">
                         <th width="5%" class="text-center">Sl</th>
-                        <th width="40%" class="text-center">Name</th>
+                        <th width="13%" class="text-center">Image</th>
+                        <th width="37%" class="text-center">Name</th>
                         <th width="15%" class="text-center">Price</th>
-                        <th width="13%" class="text-center">Currency</th>
+                        <th width="12%" class="text-center">Currency</th>
                         <th width="13%" class="text-center">Status</th>
                         <th width="14%" class="text-center">Action</th>
                     </tr>
@@ -29,6 +30,7 @@
                     @foreach ($card_products as $plan)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
+                            <td><img src="{{ asset('storage/'.$plan->image) }}" alt="" width="55px"></td>
                             <td>
                                 {{ $plan->name }}
                             </td>

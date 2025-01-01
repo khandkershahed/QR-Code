@@ -10,5 +10,6 @@ class CardProduct extends Model
 {
     use HasFactory,HasSlug;
     protected $slugSourceColumn = 'name';
+    
     protected $guarded = [];
 }
