@@ -622,7 +622,7 @@
                     <div class="ai-image aos-init aos-animate pb-50" data-aos="fade-left" data-aos-duration="1500"
                         data-aos-offset="50">
                         <div class="text-center">
-                            <h3>All Social In A Card.</h3>
+                            <h3>All Platform In A Card.</h3>
                             <p class="mt-3">Connect with all your favorite platforms in one place. Share, engage, and
                                 stay updated effortlessly.</p>
                         </div>
@@ -667,9 +667,9 @@
                                             </div>
                                             <div class="card-body">
                                                 <div class="">
-                                                    <div>
+                                                    <div style="height: 60px;" class="pt-2 d-flex justify-content-start align-items-center">
                                                         <p class="mb-0 package-details text-start">
-                                                            {!! $cardProduct->short_description !!}
+                                                            {!! implode(' ', array_slice(explode(' ', strip_tags($cardProduct->short_description)), 0, 15)) !!}...
                                                         </p>
                                                     </div>
                                                     <div class="mt-4">

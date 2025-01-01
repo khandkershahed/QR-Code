@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="card-body p-0 rounded-0">
-            <table class="table my-datatable table-striped table-row-bordered mt-0">
+            <table class="table table-striped table-row-bordered mt-0" id="mydatatable">
                 <thead class="text-center">
                     <tr class="text-start bg-info text-white fw-bolder fs-7 text-uppercase gs-0">
                         <th width="5%" class="text-center">Sl</th>
@@ -63,4 +63,22 @@
             </table>
         </div>
     </div>
+    @push('scripts')
+    <script>
+        $('#mydatatable').DataTable({
+            "language": {
+                "lengthMenu": "Show _MENU_",
+            },
+            "dom": "<'row'" +
+                "<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
+                "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
+                ">" +
+                "<'table-responsive'tr>" +
+                "<'row'" +
+                "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
+                "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
+                ">"
+        });
+    </script>
+    @endpush
 </x-admin-app-layout>

@@ -28,14 +28,14 @@
                             </div>
 
                             <!-- Price Input -->
-                            <div class="col-lg-6 mb-5">
+                            <div class="col-lg-3 mb-5">
                                 <x-metronic.label for="price"
                                     class="col-form-label fw-bold fs-6">{{ __('Price') }}</x-metronic.label>
                                 <x-metronic.input id="price" type="number" name="price" :value="old('price')"
                                     placeholder="Enter the Price" required />
                             </div>
                             <!-- Currency Selector -->
-                            <div class="col-lg-6 mb-5">
+                            <div class="col-lg-3 mb-5">
                                 <x-metronic.label for="currency"
                                     class="col-form-label fw-bold fs-6">{{ __('Currency') }}</x-metronic.label>
                                 <x-metronic.select-option id="currency" name="currency" data-hide-search="true"
@@ -48,7 +48,7 @@
                             </div>
 
                             <!-- Status Selector -->
-                            <div class="col-lg-5 mb-5">
+                            <div class="col-lg-3 mb-5">
                                 <x-metronic.label for="status"
                                     class="col-form-label required fw-bold fs-6">{{ __('Select a Status') }}</x-metronic.label>
                                 <x-metronic.select-option id="status" name="status" data-hide-search="true"
@@ -59,7 +59,7 @@
                                 </x-metronic.select-option>
                             </div>
 
-                            <div class="col-lg-7 mb-7">
+                            <div class="col-lg-3 mb-7">
                                 <x-metronic.label for="image"
                                     class="col-form-label required fw-bold fs-6 ">{{ __('Image') }}
                                 </x-metronic.label>
@@ -67,7 +67,7 @@
                                     required></x-metronic.file-input>
                             </div>
 
-                            <div class="col-lg-12 mb-5">
+                            <div class="col-lg-3 mb-5">
                                 <x-metronic.label for="short_description"
                                     class="col-form-label required fw-bold fs-6">{{ __('Short Description') }}</x-metronic.label>
                                 <textarea class="form-control @error('short_description')is-invalid @enderror" id="short_description"
@@ -81,7 +81,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-lg-12 mb-5">
+                            <div class="col-lg-3 mb-5">
                                 <x-metronic.label for="description"
                                     class="col-form-label fw-bold fs-6">{{ __('Description') }}</x-metronic.label>
                                 <textarea class="form-control @error('description')is-invalid @enderror" id="description" name="description"
@@ -95,7 +95,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-lg-12 mb-5">
+                            <div class="col-lg-3 mb-5">
                                 <x-metronic.label for="shipping_description"
                                     class="col-form-label fw-bold fs-6">{{ __('Shipping Description') }}</x-metronic.label>
                                 <textarea class="form-control @error('shipping_description')is-invalid @enderror" id="shipping_description"
@@ -108,7 +108,7 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="col-lg-12 mb-5">
+                            <div class="col-lg-3 mb-5">
                                 <x-metronic.label for="note"
                                     class="col-form-label fw-bold fs-6">{{ __('Short Note') }}</x-metronic.label>
                                 <textarea class="form-control @error('note')is-invalid @enderror" id="note" name="note"
