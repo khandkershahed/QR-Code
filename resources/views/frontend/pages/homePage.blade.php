@@ -644,7 +644,7 @@
                                                     {{-- <img class="img-fluid" src="{{ asset('') }}"
                                                         alt="Product 1"> --}}
                                                 </div>
-                                                <div class="d-flex justify-content-between align-items-center">
+                                                <div class="d-flex justify-content-between align-items-center p-3">
                                                     <div>
                                                         <h6 class="mb-0">{{ $cardProduct->name }}</h6>
                                                         {{-- <h6 class="text-mute mb-0">
