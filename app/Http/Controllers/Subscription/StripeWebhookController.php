@@ -264,7 +264,10 @@ class StripeWebhookController extends CashierWebhookController
             return view('frontend.pages.cardCheckout', $data);
         } else {
             // This will automatically store the current URL and redirect to the login page
+            // return redirect()->route('login');
+            session(['redirect_after_login' => route('card.checkout', $id)]);
             return redirect()->route('login');
+            // return redirect()->route('login')->with('redirectTo', route('card.checkout', $id));
         }
     }
 

@@ -96,7 +96,7 @@ class CardProductController extends Controller
                 'qr'                   => $request->qr,
                 'nfc'                  => $request->nfc,
                 'status'               => $request->status,
-                'image'                => $uploadedFiles['image']['status'] === 1 ? $uploadedFiles['image']['file_path'] : null,
+                'image'                => $uploadedFiles['image']['status'] == 1 ? $uploadedFiles['image']['file_path'] : null,
             ]);
 
             // Commit the transaction
@@ -174,13 +174,12 @@ class CardProductController extends Controller
                     $uploadedFiles[$key] = ['status' => 0];
                 }
             }
-            // dd($uploadedFiles);
             // Prepare the plan_descriptions data
             $planDescriptions = $request->has('plan_descriptions') ? json_encode($request->input('plan_descriptions')) : json_encode([]);
 
             // Find the existing CardProduct to update
             $cardProduct = CardProduct::findOrFail($id);
-
+            // dd($uploadedFiles['image']['file_path']);
             // Update the CardProduct record
             $cardProduct->update([
                 'name'                 => $request->name,
@@ -201,7 +200,7 @@ class CardProductController extends Controller
                 'qr'                   => $request->qr,
                 'nfc'                  => $request->nfc,
                 'status'               => $request->status,
-                'image'                => $uploadedFiles['image']['status'] == 1 ? $uploadedFiles['image']['file_path'] : $cardProduct->image,
+                'image'                => ($uploadedFiles['image']['status'] == 1) ? $uploadedFiles['image']['file_path'] : $cardProduct->image,
             ]);
 
             // Commit the transaction
