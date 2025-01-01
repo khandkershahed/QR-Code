@@ -48,7 +48,7 @@
                                             <h2 class="mb-0">FLIXZA GLOBAL LLC </h2>
                                         </div>
                                         <div>
-                                            <span class="badge bg-warning text-danger">Payment</span>
+                                            <span class="ms-5 badge bg-warning text-danger">Payment</span>
                                         </div>
                                     </div>
                                 </div>

@@ -124,9 +124,9 @@ class AuthenticatedSessionController extends Controller
         // flash()->addSuccess('You have successfully logged in.');
         Session::flash('success', 'You have successfully logged in.');
 
-        // $redirectUrl = session('redirect_after_login', RouteServiceProvider::HOME);
-        // return redirect($redirectUrl);
-        return redirect()->intended(RouteServiceProvider::HOME);
+        $redirectUrl = session('redirect_after_login', RouteServiceProvider::HOME);
+        return redirect()->to($redirectUrl);
+        // return redirect()->intended(RouteServiceProvider::HOME);
     }
 
     /**

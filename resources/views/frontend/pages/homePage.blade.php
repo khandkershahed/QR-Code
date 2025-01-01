@@ -57,13 +57,9 @@
             font-size: 14px;
         }
 
-        .product-slider-card .card {
-            height: 490px;
-        }
-
         .product-slider-card .card img {
             height: 250px;
-            object-fit: contain;
+            object-fit: cover;
         }
     </style>
     <section id="about" class="hero-area-nine pt-165 rpt-150 pb-110 rpb-80 rel z-1">
@@ -626,7 +622,7 @@
                     <div class="ai-image aos-init aos-animate pb-50" data-aos="fade-left" data-aos-duration="1500"
                         data-aos-offset="50">
                         <div class="text-center">
-                            <h3>All Social In A Card.</h3>
+                            <h3>All Platform In A Card.</h3>
                             <p class="mt-3">Connect with all your favorite platforms in one place. Share, engage, and
                                 stay updated effortlessly.</p>
                         </div>
@@ -639,8 +635,8 @@
                             @foreach ($cardProducts as $cardProduct)
                                 <div class="">
                                     <a href="javascript:void(0)">
-                                        <div class="card border-0 shadow-sm bg-light">
-                                            <div class="card-header border-0">
+                                        <div class="card border-0 shadow-sm bg-light p-0">
+                                            <div class="card-header border-0 p-0">
                                                 <div>
                                                     <img src="{{ asset('storage/' . $cardProduct->image) }}"
                                                         alt="{{ $cardProduct->name }}"
@@ -648,7 +644,7 @@
                                                     {{-- <img class="img-fluid" src="{{ asset('') }}"
                                                         alt="Product 1"> --}}
                                                 </div>
-                                                <div class="d-flex justify-content-between align-items-center">
+                                                <div class="d-flex justify-content-between align-items-center p-3">
                                                     <div>
                                                         <h6 class="mb-0">{{ $cardProduct->name }}</h6>
                                                         {{-- <h6 class="text-mute mb-0">
@@ -671,9 +667,9 @@
                                             </div>
                                             <div class="card-body">
                                                 <div class="">
-                                                    <div>
+                                                    <div style="height: 60px;" class="pt-2 d-flex justify-content-start align-items-center">
                                                         <p class="mb-0 package-details text-start">
-                                                            {!! $cardProduct->short_description !!}
+                                                            {!! implode(' ', array_slice(explode(' ', strip_tags($cardProduct->short_description)), 0, 15)) !!}...
                                                         </p>
                                                     </div>
                                                     <div class="mt-4">
