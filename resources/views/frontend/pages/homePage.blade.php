@@ -57,13 +57,9 @@
             font-size: 14px;
         }
 
-        .product-slider-card .card {
-            height: 490px;
-        }
-
         .product-slider-card .card img {
             height: 250px;
-            object-fit: contain;
+            object-fit: cover;
         }
     </style>
     <section id="about" class="hero-area-nine pt-165 rpt-150 pb-110 rpb-80 rel z-1">
@@ -639,8 +635,8 @@
                             @foreach ($cardProducts as $cardProduct)
                                 <div class="">
                                     <a href="javascript:void(0)">
-                                        <div class="card border-0 shadow-sm bg-light">
-                                            <div class="card-header border-0">
+                                        <div class="card border-0 shadow-sm bg-light p-0">
+                                            <div class="card-header border-0 p-0">
                                                 <div>
                                                     <img src="{{ asset('storage/' . $cardProduct->image) }}"
                                                         alt="{{ $cardProduct->name }}"
