@@ -1353,7 +1353,7 @@
                             </div>
                         @endif
                         <!-- Servies Box -->
-                        @if ($nfc_card->services_show == '1')
+                        @if ($nfc_card->services_show == '1' && $nfc_card->nfcService->count() > 0)
                             <div class="row pt-5">
                                 <div class="col-sm-12">
                                     <div class="text-center">
