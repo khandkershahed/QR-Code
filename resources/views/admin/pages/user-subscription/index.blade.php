@@ -1,17 +1,16 @@
 <x-admin-app-layout :title="'User Subscriptions - Admin Panel'">
-    <div class="card my-10 rounded-0">
-        <div class="card-header p-5 d-flex align-items-center rounded-0">
+    <div class="card rounded-0">
+        <div class="card-header p-5 align-items-center rounded-0 bg-info m-0">
             <div>
-                <h1 class="mb-0 card-title fs-2 text-info">All Subscriptions</h1>
-                <p class="text-muted mt-2 mb-0">View and manage all subscription information on this page.</p>
+                <h1 class="mb-0 mt-0 card-title fs-2 text-white">All Subscriptions</h1>
+                <p class="text-white mt-2 mb-0">View and manage all subscription information on this page.</p>
             </div>
         </div>
         <div class="card-body p-0">
             <div class="table-responsive">
-                <table class="table my-datatable table-striped table-row-bordered mb-0"
-                    style="margin-bottom: 0 !important;">
+                <table class="table my-datatable table-striped table-row-bordered mt-0">
                     <thead>
-                        <tr class="bg-info text-white fw-bolder fs-7 text-uppercase">
+                        <tr class="text-center bg-info text-white fw-bolder fs-7 text-uppercase gs-0">
                             <th width="5%" class="text-center">Sl</th>
                             <th width="20%">Plan Name</th>
                             <th width="15%">User Name</th>
@@ -84,4 +83,36 @@
             </div>
         </div>
     </div>
+    @push('scripts')
+        <script>
+            class DataTableInitializer {
+                constructor(tableClass, options = {}) {
+                    this.tableClass = tableClass;
+                    this.options = {
+                        language: {
+                            lengthMenu: "Show _MENU_",
+                        },
+                        dom: "<'row'" +
+                            "<'col-sm-6 d-flex align-items-center justify-content-start'l>" +
+                            "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
+                            ">" +
+                            "<'table-responsive'tr>" +
+                            "<'row'" +
+                            "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
+                            "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
+                            ">",
+                        ...options, // Allow overriding defaults
+                    };
+                }
+
+                init() {
+                    $(`.${this.tableClass}`).DataTable(this.options);
+                }
+            }
+
+            // Usage:
+            const myDataTable = new DataTableInitializer('my-datatable');
+            myDataTable.init();
+        </script>
+    @endpush
 </x-admin-app-layout>

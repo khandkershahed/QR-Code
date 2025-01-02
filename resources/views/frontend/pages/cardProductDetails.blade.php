@@ -44,24 +44,9 @@
                         </div>
                     </div>
                     <div class="col-lg-5 shadow-sm">
-                        <div class="row align-items-center">
+                        <div class="row align-items-center pt-30">
                             <div class="col-lg-8">
-                                <div class="">
-                                    <p class="badges-im"><span class="text-primary">{{ $cardProduct->slug }}</span></p>
-                                </div>
                                 <h3 class="mb-0">{{ $cardProduct->name }}</h3>
-                                <ul class="pt-3">
-                                    <li><i class="fa-regular fa-circle-check pe-2 text-success"></i>2 Virtual Card
-                                        Include</li>
-                                    <li><i class="fa-regular fa-circle-check pe-2 text-success"></i>1+ Near-field
-                                        Communication Card Include</li>
-                                    <li><i class="fa-regular fa-circle-check pe-2 text-success"></i>Fast Delivery
-                                        Service</li>
-                                    <li><i class="fa-regular fa-circle-check pe-2 text-success"></i>24/7 Customer
-                                        Support</li>
-                                    <li><i class="fa-regular fa-circle-check pe-2 text-success"></i>Customizable Card
-                                        Designs</li>
-                                </ul>
                             </div>
                             <div class="col-lg-4">
                                 <h3 class="mb-0 text-end">
@@ -76,6 +61,8 @@
                                 </h3>
                                 <h5 class="text-danger text-end pt-2"><del>$5,00.00</del></h5>
                             </div>
+                        </div>
+                        <div class="row align-items-center">
                             <div class="col-lg-12">
                                 <div class="py-10">
                                     <hr>
@@ -83,10 +70,37 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="row">
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-12">
+                                        <ul class="pb-4">
+                                            <li><i class="fa-regular fa-circle-check pe-2 text-success"></i>2 Virtual
+                                                Card
+                                                Include</li>
+                                            <li><i class="fa-regular fa-circle-check pe-2 text-success"></i>1+
+                                                Near-field
+                                                Communication Card Include</li>
+                                            <li><i class="fa-regular fa-circle-check pe-2 text-success"></i>Fast
+                                                Delivery
+                                                Service</li>
+                                            <li><i class="fa-regular fa-circle-check pe-2 text-success"></i>24/7
+                                                Customer
+                                                Support</li>
+                                            <li><i class="fa-regular fa-circle-check pe-2 text-success"></i>Customizable
+                                                Card
+                                                Designs</li>
+                                        </ul>
+                                        <div>
+                                            <p class="fw-bold">{{ $cardProduct->short_description }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="py-10">
+                                            <hr>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8">
                                         <label for="">Card Type?</label>
                                         <select class="form-select" aria-label="Default select example">
-                                            <option selected>Your Want?</option>
+                                            <option selected>What Type Of NFC Card Your Want?</option>
                                             <option value="metal">Metal</option>
                                             <option value="plastic">Plastic</option>
                                             <option value="sliver">Silver</option>
@@ -94,37 +108,63 @@
                                         </select>
                                     </div>
                                     <div class="col-lg-4">
-                                        <label for="">How Much V-Card?</label>
-                                        <select class="form-select" aria-label="Default select example">
-                                            <option selected>You Want?</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                            <option value="4">Four</option>
-                                            <option value="5">Five</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <label for="">How much NFC?</label>
+                                        <label for="">Aditional NFC Card?</label>
                                         {{-- Quantity Box --}}
                                         <div class="input-group quantity-box">
                                             <button class="btn btn-outline-secondary minus-btn" type="button"
                                                 style="height: 50px;">
                                                 <i class="fa-solid fa-minus"></i>
                                             </button>
-                                            <input type="number"
-                                                class="form-control text-center quantity-input bg-light" value="1"
-                                                min="1" style="height: 50px;">
+                                            <input type="number" class="form-control text-center quantity-input"
+                                                value="0" min="0"
+                                                style="height: 50px; background-color: #f1f5ff">
                                             <button class="btn btn-outline-secondary plus-btn" type="button"
                                                 style="height: 50px;">
                                                 <i class="fa-solid fa-plus"></i>
                                             </button>
                                         </div>
                                     </div>
-
                                 </div>
                                 <div class="pt-4">
-                                    <p class="fw-bold">{{ $cardProduct->short_description }}</p>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead style="background-color: #eee">
+                                                <tr>
+                                                    <th>SL</th>
+                                                    <th>Package Details</th>
+                                                    <th>QTY</th>
+                                                    <th class="text-end">Price</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>1 VCard & 1 NFC Card</td>
+                                                    <td>N/A</td>
+                                                    <td class="main-price text-end"
+                                                        data-unit-price="{{ $cardProduct->price }}">
+                                                        ${{ $cardProduct->price }}.00
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>Additional NFC Card Only</td>
+                                                    <td>
+                                                        <input type="number"
+                                                            class="form-control text-center quantity-input"
+                                                            value="1" min="1">
+                                                    </td>
+                                                    <td class="aditional-price text-end" data-unit-price="2">$0.00</td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot style="background-color: #eee">
+                                                <tr>
+                                                    <td colspan="3">Sub Total</td>
+                                                    <td class="subtotal text-end">${{ $cardProduct->price + 2 }}.00</td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-12 px-0">
@@ -132,9 +172,8 @@
                                     <a href="{{ route('card.payment') }}"
                                         class="theme-btn style-two rounded-0 w-100">Purchase</a>
                                     <div class="pt-3">
-                                        <p class="text-center" style="line-height: 1.3;">Please note production time is
-                                            30-45 days. <br>
-                                            You will receive a mockup after you order.</p>
+                                        <p class="text-center w-75 mx-auto" style="line-height: 1.3;">
+                                            {{ $cardProduct->note }}</p>
                                     </div>
                                     <div>
                                         <img src="{{ asset('images/social-icons.webp') }}" alt="">
@@ -156,16 +195,9 @@
                         role="tablist">
                         <li class="nav-item me-2" role="presentation">
                             <button class="nav-link cst-links active" id="description-tab" data-bs-toggle="tab"
-                                data-bs-target="#description" type="button" role="tab" aria-controls="description"
-                                aria-selected="true">
+                                data-bs-target="#description" type="button" role="tab"
+                                aria-controls="description" aria-selected="true">
                                 Description
-                            </button>
-                        </li>
-                        <li class="nav-item me-2" role="presentation">
-                            <button class="nav-link cst-links" id="note-tab" data-bs-toggle="tab"
-                                data-bs-target="#note" type="button" role="tab" aria-controls="note"
-                                aria-selected="false">
-                                Note
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
@@ -185,11 +217,6 @@
                                 <p>{{ $cardProduct->description }}</p>
                             </div>
                         </div>
-                        <div class="tab-pane" id="note" role="tabpanel" aria-labelledby="note-tab">
-                            <div class="py-2">
-                                <p>{{ $cardProduct->note }}</p>
-                            </div>
-                        </div>
                         <div class="tab-pane" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
                             <div class="py-2">
                                 <p>{{ $cardProduct->shipping_description }}</p>
@@ -202,6 +229,39 @@
         </div>
     </section>
     @push('scripts')
+        {{-- Update NFC Eatch Card Price --}}
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const quantityInput = document.querySelector(".quantity-input");
+                const priceCell = document.querySelector(".aditional-price");
+                const subtotalCell = document.querySelector(".subtotal");
+                const unitPrice = parseFloat(priceCell.getAttribute("data-unit-price"));
+
+                const updateSubtotal = () => {
+                    const quantity = parseInt(quantityInput.value) || 1;
+                    const mainPrice = parseFloat(document.querySelector(".main-price").getAttribute(
+                        "data-unit-price"));
+                    const additionalPrice = quantity * unitPrice;
+                    const subtotal = mainPrice + additionalPrice;
+
+                    priceCell.textContent = `$${additionalPrice.toFixed(2)}`;
+                    subtotalCell.textContent = `$${subtotal.toFixed(2)}`;
+                };
+
+                document.querySelector(".plus-btn").addEventListener("click", () => {
+                    quantityInput.value = parseInt(quantityInput.value || 0) + 1;
+                    updateSubtotal();
+                });
+
+                document.querySelector(".minus-btn").addEventListener("click", () => {
+                    quantityInput.value = Math.max(1, parseInt(quantityInput.value || 1) - 1);
+                    updateSubtotal();
+                });
+
+                quantityInput.addEventListener("input", updateSubtotal);
+            });
+        </script>
+        {{-- Update NFC Eatch Card Price End --}}
         <script>
             document.addEventListener("DOMContentLoaded", function() {
                 const minusButtons = document.querySelectorAll(".minus-btn");

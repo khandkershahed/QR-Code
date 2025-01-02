@@ -1,15 +1,5 @@
 <x-admin-app-layout :title="'QR Code Management - Admin Panel'">
-    <style>
-        table.dataTable>thead .sorting:after,
-        table.dataTable>thead .sorting_asc:after,
-        table.dataTable>thead .sorting_asc_disabled:after,
-        table.dataTable>thead .sorting_desc:after,
-        table.dataTable>thead .sorting_desc_disabled:after {
-            right: 0px;
-            content: "↑";
-            top: 0px !important;
-        }
-    </style>
+
     <div class="row">
         <div class="col-lg-12">
             <div class="card border-transparent mt-10" data-bs-theme="light" style="background-color: #1C325E;">

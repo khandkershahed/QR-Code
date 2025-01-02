@@ -2,14 +2,14 @@
     <div class="card my-10 rounded-0">
         <div class="card-header p-5 align-items-center rounded-0 bg-info m-0">
             <div>
-                <h1 class="mb-0 mt-0 card-title fs-2 text-white">All Card Products!</h1>
-                <p class="text-white mt-2 mb-0">Create Card Products information in this page.</p>
+                <h1 class="mb-0 mt-0 card-title fs-2 text-white">Create Card Products!</h1>
+                <p class="text-white mt-2 mb-0">All Information in this page for create a new card product..</p>
             </div>
             <div>
                 <a href="{{ route('admin.card-product.index') }}"
                     class="btn btn-white btn-active-light-warning text-hover-inverse-white" data-bs-toggle="tooltip"
                     data-bs-dismiss="click" title="Card Products">
-                    <i class="fa-solid fa-user-plus"></i>Card Products List
+                    <i class="fa-solid fa-id-badge"></i>Card Products List
                 </a>
             </div>
         </div>
@@ -22,22 +22,28 @@
                             <!-- Title Input -->
                             <div class="col-lg-12 mb-5">
                                 <x-metronic.label for="name"
-                                    class="col-form-label fw-bold fs-6">{{ __('Name') }}</x-metronic.label>
+                                    class="col-form-label fw-bold fs-6 required">{{ __('Name') }}</x-metronic.label>
                                 <x-metronic.input id="name" type="text" name="name" :value="old('name')"
                                     placeholder="Enter the Card Product name" required />
                             </div>
 
                             <!-- Price Input -->
-                            <div class="col-lg-3 mb-5">
+                            <div class="col-lg-2 mb-5">
                                 <x-metronic.label for="price"
-                                    class="col-form-label fw-bold fs-6">{{ __('Price') }}</x-metronic.label>
+                                    class="col-form-label fw-bold fs-6 required">{{ __('Package Price') }}</x-metronic.label>
+                                <x-metronic.input id="price" type="number" name="price" :value="old('price')"
+                                    placeholder="Enter the Price" required />
+                            </div>
+                            <div class="col-lg-2 mb-5">
+                                <x-metronic.label for="price"
+                                    class="col-form-label fw-bold fs-6 required">{{ __('Singel NFC Card Price') }}</x-metronic.label>
                                 <x-metronic.input id="price" type="number" name="price" :value="old('price')"
                                     placeholder="Enter the Price" required />
                             </div>
                             <!-- Currency Selector -->
-                            <div class="col-lg-3 mb-5">
+                            <div class="col-lg-2 mb-5">
                                 <x-metronic.label for="currency"
-                                    class="col-form-label fw-bold fs-6">{{ __('Currency') }}</x-metronic.label>
+                                    class="col-form-label fw-bold fs-6 required">{{ __('Currency') }}</x-metronic.label>
                                 <x-metronic.select-option id="currency" name="currency" data-hide-search="true"
                                     data-placeholder="Select an option" required>
                                     <option></option>
@@ -48,9 +54,9 @@
                             </div>
 
                             <!-- Status Selector -->
-                            <div class="col-lg-3 mb-5">
+                            <div class="col-lg-2 mb-5">
                                 <x-metronic.label for="status"
-                                    class="col-form-label required fw-bold fs-6">{{ __('Select a Status') }}</x-metronic.label>
+                                    class="col-form-label required fw-bold fs-6 required">{{ __('Select a Status') }}</x-metronic.label>
                                 <x-metronic.select-option id="status" name="status" data-hide-search="true"
                                     data-placeholder="Select an option" required>
                                     <option></option>
@@ -59,9 +65,9 @@
                                 </x-metronic.select-option>
                             </div>
 
-                            <div class="col-lg-3 mb-7">
+                            <div class="col-lg-4 mb-7">
                                 <x-metronic.label for="image"
-                                    class="col-form-label required fw-bold fs-6 ">{{ __('Image') }}
+                                    class="col-form-label required fw-bold fs-6 required">{{ __('Image') }}
                                 </x-metronic.label>
                                 <x-metronic.file-input id="image" type="file" name="image"
                                     required></x-metronic.file-input>
