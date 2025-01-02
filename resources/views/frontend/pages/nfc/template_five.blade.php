@@ -692,42 +692,44 @@
                                 <div class="card-body py-0">
                                     <div class="row">
                                         {{-- Services Hours --}}
-                                        <div class="col-lg-12">
-                                            <h4 class="heading-right position-relative text-center mt-4">Services</h4>
-                                            <div class="row g-2 py-2" id="service-container">
-                                                @foreach ($nfc_card->nfcService as $index => $service)
-                                                    <div class="col-6 mb-0 service-item"
-                                                        data-index="{{ $index }}"
-                                                        style="{{ $index > 1 ? 'display: none;' : '' }}">
-                                                        <div class="card border-0 shadow-sm">
-                                                            <img class="service-img"
-                                                                src="{{ !empty($service->service_icon) && file_exists(public_path('storage/nfc/service/' . optional($service)->service_icon)) ? asset('storage/nfc/service/' . optional($service)->service_icon) : asset('frontend/images/no_image.png') }}"
-                                                                alt="Card image cap">
-                                                            <div class="card-body">
-                                                                <h6 class="name-title">{{ $service->service_name }}
-                                                                </h6>
-                                                                <p class="card-text" style="font-size: 14px">
-                                                                    {{ $service->service_description }}</p>
-                                                                @if (!empty(optional($service)->service_url))
-                                                                    <a href="{{ !empty(optional($service)->service_url) ? optional($service)->service_url : 'javascript:void(0)' }}"
-                                                                        class="btn btn-sm btn-primary border-0 rounded-pill"
-                                                                        style="background: linear-gradient(90deg, #b24592, #f15f79);">See
-                                                                        Now
-                                                                    </a>
-                                                                @endif
+                                        @if ($nfc_card->services_show == '1' && $nfc_card->nfcService->count() > 0)
+                                            <div class="col-lg-12">
+                                                <h4 class="heading-right position-relative text-center mt-4">Services</h4>
+                                                <div class="row g-2 py-2" id="service-container">
+                                                    @foreach ($nfc_card->nfcService as $index => $service)
+                                                        <div class="col-6 mb-0 service-item"
+                                                            data-index="{{ $index }}"
+                                                            style="{{ $index > 1 ? 'display: none;' : '' }}">
+                                                            <div class="card border-0 shadow-sm">
+                                                                <img class="service-img"
+                                                                    src="{{ !empty($service->service_icon) && file_exists(public_path('storage/nfc/service/' . optional($service)->service_icon)) ? asset('storage/nfc/service/' . optional($service)->service_icon) : asset('frontend/images/no_image.png') }}"
+                                                                    alt="Card image cap">
+                                                                <div class="card-body">
+                                                                    <h6 class="name-title">{{ $service->service_name }}
+                                                                    </h6>
+                                                                    <p class="card-text" style="font-size: 14px">
+                                                                        {{ $service->service_description }}</p>
+                                                                    @if (!empty(optional($service)->service_url))
+                                                                        <a href="{{ !empty(optional($service)->service_url) ? optional($service)->service_url : 'javascript:void(0)' }}"
+                                                                            class="btn btn-sm btn-primary border-0 rounded-pill"
+                                                                            style="background: linear-gradient(90deg, #b24592, #f15f79);">See
+                                                                            Now
+                                                                        </a>
+                                                                    @endif
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                @endforeach
+                                                    @endforeach
+                                                </div>
+                                                <div class="text-center load-more-btn-box mt-4">
+                                                    <button id="load-more-btn" class="btn btn-light fa-beat">
+                                                        <i class="fa-solid fa-arrow-down text-black"></i>
+                                                    </button>
+                                                    <button id="collapse-btn" class="btn btn-dark d-none fa-beat"><i
+                                                            class="fa-solid fa-arrow-up text-white"></i></button>
+                                                </div>
                                             </div>
-                                            <div class="text-center load-more-btn-box mt-4">
-                                                <button id="load-more-btn" class="btn btn-light fa-beat">
-                                                    <i class="fa-solid fa-arrow-down text-black"></i>
-                                                </button>
-                                                <button id="collapse-btn" class="btn btn-dark d-none fa-beat"><i
-                                                        class="fa-solid fa-arrow-up text-white"></i></button>
-                                            </div>
-                                        </div>
+                                        @endif
                                         {{-- QR Code --}}
                                         <div class="col-lg-12">
                                             <h4 class="heading-left position-relative text-center">QR Code</h4>
@@ -1295,9 +1297,7 @@
                                                                     <div class="product-details mt-3 p-3">
                                                                         <h6 class="fw-bold">
                                                                             {{ $product->product_name }}</h6>
-                                                                        <small class="mb-2">
-                                                                            Dolore quidem necess
-                                                                        </small> <br>
+                                                                         <br>
                                                                         <p class="text-black pt-3 mb-0">
                                                                             @if ($product->product_currency == 'taka')
                                                                                 Tk
