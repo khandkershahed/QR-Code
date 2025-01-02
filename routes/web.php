@@ -72,6 +72,7 @@ Route::get('/stripe/checkout/{id}', [StripeWebhookController::class, 'stripeChec
 Route::post('/stripe/payment', [StripeWebhookController::class, 'stripePayment'])->name('stripe.payment');
 
 Route::get('/card/details/{slug}', [HomeController::class, 'cardDetails'])->name('card.details');
+
 Route::post('/card/payment', [StripeWebhookController::class, 'cardPayment'])->name('card.payment');
 
 Route::post('/stripe/webhook', [StripeWebhookController::class, 'handleWebhook']);
