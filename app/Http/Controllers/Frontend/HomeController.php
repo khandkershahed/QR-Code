@@ -175,6 +175,13 @@ class HomeController extends Controller
 
         return view('frontend.pages.blog.blogDetails', $data);
     }
+    public function cardDetails($slug)
+    {
+        $data = [
+            'cardProduct'   => CardProduct::where('slug', $slug)->first(),
+        ];
+        return view('frontend.pages.cardProductDetails', $data);
+    }
     public function mailTest()
     {
         return view('frontend.pages.mailTest');
