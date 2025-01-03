@@ -192,7 +192,7 @@
                             </div>
                             <div class="col-lg-12 px-0">
                                 <div>
-                                    <a href="{{ route('card.payment',$cardProduct->slug) }}"
+                                    <a href="{{ route('card.checkout',$cardProduct->slug) }}"
                                         class="theme-btn style-two rounded-0 w-100">Purchase</a>
                                     <div class="pt-3">
                                         <p class="text-center w-75 mx-auto" style="line-height: 1.3;">
