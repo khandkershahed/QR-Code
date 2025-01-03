@@ -187,7 +187,7 @@
                 </div>
             </div>
         </div>
-        <div class="row mt-5">
+        {{-- <div class="row mt-5">
             <div class="col-xl-12">
                 <div class="card card-xl-stretch mb-xl-8">
                     <div class="card-header border-0 pt-5">
@@ -204,7 +204,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
     @push('scripts')
         <script>

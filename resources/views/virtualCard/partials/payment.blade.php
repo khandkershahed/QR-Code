@@ -1,31 +1,33 @@
 <div class="container">
     @if (strpos(Route::current()->getName(), 'user.') === 0)
-        <div class="row p-5 bg-light">
-            <div class="col-lg-6">
-                <div class="fv-row my-3">
-                    <x-metronic.label for="customer_name" class="form-label ">
-                        {{ __('Card Holder Name') }}</x-metronic.label>
-                    <input id="customer_name" type="text" class="form-control form-control-outline mb-3 mb-lg-0"
-                        name="customer_name" />
+        @if ($count === 0)
+            <div class="row p-5 bg-light">
+                <div class="col-lg-6">
+                    <div class="fv-row my-3">
+                        <x-metronic.label for="customer_name" class="form-label ">
+                            {{ __('Card Holder Name') }}</x-metronic.label>
+                        <input id="customer_name" type="text" class="form-control form-control-outline mb-3 mb-lg-0"
+                            name="customer_name" />
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="fv-row my-3">
+                        <x-metronic.label for="customer_email" class="form-label ">
+                            {{ __('Card Email') }}</x-metronic.label>
+                        <input id="customer_email" type="email" class="form-control form-control-outline mb-3 mb-lg-0"
+                            name="customer_email" />
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="fv-row my-3">
+                        <x-metronic.label for="card_email" class="form-label ">
+                            {{ __('Card Details') }}</x-metronic.label>
+                        <div id="card-element" class="border p-4 rounded-2 bg-white"></div>
+                        <div id="card-errors" role="alert"></div>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-6">
-                <div class="fv-row my-3">
-                    <x-metronic.label for="customer_email" class="form-label ">
-                        {{ __('Card Email') }}</x-metronic.label>
-                    <input id="customer_email" type="email" class="form-control form-control-outline mb-3 mb-lg-0"
-                        name="customer_email" />
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="fv-row my-3">
-                    <x-metronic.label for="card_email" class="form-label ">
-                        {{ __('Card Details') }}</x-metronic.label>
-                    <div id="card-element" class="border p-4 rounded-2 bg-white"></div>
-                    <div id="card-errors" role="alert"></div>
-                </div>
-            </div>
-        </div>
+        @endif
     @else
         <div class="row p-5 bg-light">
             <h5 class="text-center">Submit to generate Card</h5>

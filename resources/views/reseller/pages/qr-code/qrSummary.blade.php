@@ -232,7 +232,7 @@
                 </div>
             </div>
         </div>
-        <div class="row mt-5">
+        {{-- <div class="row mt-5">
             <div class="col-xl-6">
                 <div class="card card-xl-stretch mb-xl-8">
                     <div class="card-header border-0 pt-5">
@@ -309,16 +309,12 @@
                     </div>
 
                     <div class="card-body p-0">
-                        {{-- <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29211.866683082448!2d90.33816573476561!3d23.765797000000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c0a0fd8bbf63%3A0x578e43f255f711a4!2sMohammadpur%20Agrecultural%20Market%20Complex%2C%20Ring%20Rd%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1714968885877!5m2!1sen!2sbd"
-                            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe> --}}
                         <div id="map" style="height: 400px;
                             width: 100%;"></div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 
     @push('scripts')

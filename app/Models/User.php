@@ -53,6 +53,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Subscription::class);
     }
+    public function cardProducts()
+    {
+        return $this->hasMany(UserCardProduct::class, 'user_id');
+    }
     public function qr()
     {
         return $this->hasMany(Qr::class);

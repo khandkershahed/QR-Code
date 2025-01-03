@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('payment_status')->default('paid')->nullable();
             $table->string('status')->default('active')->nullable();
             $table->timestamp('paid_at')->nullable();
-            $table->timestamps();
+            $table->timestamps(); 
         });
     }
 
