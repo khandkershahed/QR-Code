@@ -254,17 +254,21 @@ class StripeWebhookController extends CashierWebhookController
         $user->delete();
     }
 
-    public function cardCheckout($id)
+    public function cardCheckout($id, Request $request)
     {
         $data['plan'] = CardProduct::where('slug', $id)->first();
-
+        session([
+            'subtotal' => $request->input('subtotal', 0),
+            'quantity' => $request->input('quantity', 1),
+        ]);
         if (Auth::check()) {
             $data['intent'] = auth()->user()->createSetupIntent();
             $data['user_id'] = Auth::user()->id;
+            $data['subtotal'] = $request->input('subtotal', session('subtotal', $data['plan']->package_price));
+            $data['quantity'] = $request->input('quantity', session('quantity', 1));
             return view('frontend.pages.cardCheckout', $data);
         } else {
-            // This will automatically store the current URL and redirect to the login page
-            // return redirect()->route('login');
+
             session(['redirect_after_login' => route('card.checkout', $id)]);
             return redirect()->route('login');
             // return redirect()->route('login')->with('redirectTo', route('card.checkout', $id));
@@ -335,12 +339,18 @@ class StripeWebhookController extends CashierWebhookController
             $product = CardProduct::findOrFail($request->plan); // Use 'plan' here
             $user = User::findOrFail($request->user_id);
 
+            if ($request->subtotal && ($request->subtotal > 0)) {
+                $price = $request->subtotal;
+            } else {
+                $price = $product->package_price;
+            }
+
             // Set Stripe API key
             Stripe::setApiKey(env('STRIPE_SECRET'));
 
             // Create a PaymentIntent for the transaction
             $paymentIntent = \Stripe\PaymentIntent::create([
-                'amount' => $product->price * 100, // Amount in cents
+                'amount' => $price * 100, // Amount in cents
                 'currency' => !empty($product->currency) ? $product->currency : "usd",
                 'description' => "NFC Card Payment",
                 'payment_method' => $request->stripeToken, // Payment method (the Stripe token from frontend)

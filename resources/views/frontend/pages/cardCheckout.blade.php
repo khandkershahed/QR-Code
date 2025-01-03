@@ -100,6 +100,8 @@
                                 <form action="{{ route('card.payment') }}" method="POST" id="payment-form">
                                     @csrf
                                     <input type="hidden" name="product_id" id="plan" value="{{ $plan->id }}">
+                                    <input type="hidden" name="subtotal" id="plan" value="{{ $subtotal }}">
+                                    <input type="hidden" name="quantity" id="plan" value="{{ $quantity }}">
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="mb-5 pb-3">

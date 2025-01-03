@@ -34,8 +34,9 @@
             </div>
         </div>
     </section>
-    <section class="">
-        <form action="">
+    <section>
+        <form action="{{ route('card.checkout', $cardProduct->slug) }}" method="GET" id="product-form">
+            @csrf <!-- Add CSRF token for security -->
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-7">
@@ -80,9 +81,6 @@
                                                 </li>
                                             @endforeach
                                         </ul>
-                                        <div>
-                                            <p class="fw-bold">{{ $cardProduct->short_description }}</p>
-                                        </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="py-10">
@@ -92,7 +90,7 @@
                                     <div class="col-lg-8">
                                         <label for="">Card Type?</label>
                                         <select class="form-select" aria-label="Default select example">
-                                            <option selected>What Type Of NFC Card Your Want?</option>
+                                            <option selected>What Type Of NFC Card You Want?</option>
                                             <option value="metal">Metal</option>
                                             <option value="plastic">Plastic</option>
                                             <option value="sliver">Silver</option>
@@ -150,10 +148,9 @@
                                                 <tr>
                                                     <td>2</td>
                                                     <td>Additional NFC Card Only</td>
-                                                    <td class="quantity">
-                                                        {{-- Quantity will be updated here --}}
-                                                    </td>
-                                                    <td class="aditional-price text-end" data-unit-price="{{ $cardProduct->price }}">
+                                                    <td class="quantity"> {{-- Quantity will be updated here --}} </td>
+                                                    <td class="aditional-price text-end"
+                                                        data-unit-price="{{ $cardProduct->price }}">
                                                         @if ($cardProduct->currency === 'eur')
                                                             €
                                                         @elseif($cardProduct->currency === 'gbp')
@@ -190,8 +187,10 @@
                             </div>
                             <div class="col-lg-12 px-0">
                                 <div>
-                                    <a href="{{ route('card.checkout',$cardProduct->slug) }}"
-                                        class="theme-btn style-two rounded-0 w-100">Purchase</a>
+                                    <input type="hidden" name="subtotal" id="hidden-subtotal">
+                                    <input type="hidden" name="quantity" id="hidden-quantity">
+                                    <button type="submit" class="theme-btn style-two rounded-0 w-100"
+                                        id="purchase-btn">Purchase</button>
                                     <div class="pt-3">
                                         <p class="text-center w-75 mx-auto" style="line-height: 1.3;">
                                             {{ $cardProduct->note }}</p>
@@ -216,8 +215,8 @@
                         role="tablist">
                         <li class="nav-item me-2" role="presentation">
                             <button class="nav-link cst-links active" id="description-tab" data-bs-toggle="tab"
-                                data-bs-target="#description" type="button" role="tab" aria-controls="description"
-                                aria-selected="true">
+                                data-bs-target="#description" type="button" role="tab"
+                                aria-controls="description" aria-selected="true">
                                 Description
                             </button>
                         </li>
@@ -251,7 +250,7 @@
     </section>
     @push('scripts')
         {{-- Update NFC Each Card Price --}}
-        <script>
+        {{-- <script>
             document.addEventListener("DOMContentLoaded", function() {
                 const quantityInput = document.querySelector(".quantity-input");
                 const quantityContainer = document.querySelector(".quantity");
@@ -292,11 +291,53 @@
                 quantityInput.addEventListener("input", () => {
                     const quantity = parseInt(quantityInput.value) || 1;
                     // Ensure the value stays positive and at least 1
-                    if (quantity < 1) {
-                        quantityInput.value = 1;
+                    if (quantity < 0) {
+                        quantityInput.value = 0;
                     }
                     updateSubtotal();
                 });
+            });
+        </script> --}}
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const quantityInput = document.querySelector(".quantity-input");
+                const quantityContainer = document.querySelector(".quantity");
+                const priceCell = document.querySelector(".aditional-price");
+                const subtotalCell = document.querySelector(".subtotal");
+                const unitPrice = parseFloat(priceCell.getAttribute("data-unit-price"));
+                const mainPrice = parseFloat(document.querySelector(".main-price").getAttribute("data-unit-price"));
+
+                const updateSubtotal = () => {
+                    const quantity = parseInt(quantityInput.value) || 1;
+                    const additionalPrice = quantity * unitPrice;
+                    const subtotal = mainPrice + additionalPrice;
+
+                    priceCell.textContent = `${additionalPrice.toFixed(2)}`;
+                    subtotalCell.textContent = `${subtotal.toFixed(2)}`;
+                    quantityContainer.textContent = `${quantity}`;
+
+                    // Update hidden fields
+                    document.getElementById("hidden-subtotal").value = subtotal.toFixed(2);
+                    document.getElementById("hidden-quantity").value = quantity;
+                };
+
+                // Handling the plus button
+                document.querySelector(".plus-btn").addEventListener("click", () => {
+                    quantityInput.value = parseInt(quantityInput.value || 0) + 1;
+                    updateSubtotal();
+                });
+
+                // Handling the minus button
+                document.querySelector(".minus-btn").addEventListener("click", () => {
+                    quantityInput.value = Math.max(1, parseInt(quantityInput.value || 1) - 1);
+                    updateSubtotal();
+                });
+
+                // Handling direct input changes
+                quantityInput.addEventListener("input", updateSubtotal);
+
+                // Initialize the subtotal on page load
+                updateSubtotal();
             });
         </script>
     @endpush
