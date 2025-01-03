@@ -61,7 +61,6 @@
                                     @endif
                                     {{ $cardProduct->package_price }}.00
                                 </h3>
-                                {{-- <h5 class="text-danger text-end pt-2"><del>$5,00.00</del></h5> --}}
                             </div>
                         </div>
                         <div class="row align-items-center">
@@ -73,16 +72,14 @@
                             <div class="col-lg-12">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        {{-- @if (is_array($cardProduct->plan_descriptions)) --}}
-                                            <ul class="pb-4">
-                                                @foreach (json_decode($cardProduct->plan_descriptions ?? '[]') as $description)
-                                                    <li>
-                                                        <i class="fa-regular fa-circle-check pe-2 text-success"></i>
-                                                        {{ $description }}
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-                                        {{-- @endif --}}
+                                        <ul class="pb-4">
+                                            @foreach (json_decode($cardProduct->plan_descriptions ?? '[]') as $description)
+                                                <li>
+                                                    <i class="fa-regular fa-circle-check pe-2 text-success"></i>
+                                                    {{ $description }}
+                                                </li>
+                                            @endforeach
+                                        </ul>
                                         <div>
                                             <p class="fw-bold">{{ $cardProduct->short_description }}</p>
                                         </div>
@@ -103,7 +100,7 @@
                                         </select>
                                     </div>
                                     <div class="col-lg-4">
-                                        <label for="">Aditional NFC Card?</label>
+                                        <label for="">Additional NFC Card?</label>
                                         {{-- Quantity Box --}}
                                         <div class="input-group quantity-box">
                                             <button class="btn btn-outline-secondary minus-btn" type="button"
@@ -154,35 +151,36 @@
                                                     <td>2</td>
                                                     <td>Additional NFC Card Only</td>
                                                     <td class="quantity">
-                                                        {{-- <input type="number"
-                                                            class="form-control text-center quantity-input"
-                                                            value="1" min="1"> --}}
+                                                        {{-- Quantity will be updated here --}}
                                                     </td>
-                                                    <td class="aditional-price text-end" data-unit-price="{{ $cardProduct->price }}">@if ($cardProduct->currency === 'eur')
-                                                        €
-                                                    @elseif($cardProduct->currency === 'gbp')
-                                                        £
-                                                    @elseif($cardProduct->currency === 'usd')
-                                                        $
-                                                    @else
-                                                        $
-                                                    @endif
-                                                    0.00</td>
+                                                    <td class="aditional-price text-end" data-unit-price="{{ $cardProduct->price }}">
+                                                        @if ($cardProduct->currency === 'eur')
+                                                            €
+                                                        @elseif($cardProduct->currency === 'gbp')
+                                                            £
+                                                        @elseif($cardProduct->currency === 'usd')
+                                                            $
+                                                        @else
+                                                            $
+                                                        @endif
+                                                        0.00
+                                                    </td>
                                                 </tr>
                                             </tbody>
                                             <tfoot style="background-color: #eee">
                                                 <tr>
                                                     <td colspan="3">Sub Total</td>
-                                                    <td class="subtotal text-end">@if ($cardProduct->currency === 'eur')
-                                                        €
-                                                    @elseif($cardProduct->currency === 'gbp')
-                                                        £
-                                                    @elseif($cardProduct->currency === 'usd')
-                                                        $
-                                                    @else
-                                                        $
-                                                    @endif
-                                                    {{ $cardProduct->package_price }}.00
+                                                    <td class="subtotal text-end">
+                                                        @if ($cardProduct->currency === 'eur')
+                                                            €
+                                                        @elseif($cardProduct->currency === 'gbp')
+                                                            £
+                                                        @elseif($cardProduct->currency === 'usd')
+                                                            $
+                                                        @else
+                                                            $
+                                                        @endif
+                                                        {{ $cardProduct->package_price }}.00
                                                     </td>
                                                 </tr>
                                             </tfoot>
@@ -252,7 +250,7 @@
         </div>
     </section>
     @push('scripts')
-        {{-- Update NFC Eatch Card Price --}}
+        {{-- Update NFC Each Card Price --}}
         <script>
             document.addEventListener("DOMContentLoaded", function() {
                 const quantityInput = document.querySelector(".quantity-input");
@@ -260,11 +258,10 @@
                 const priceCell = document.querySelector(".aditional-price");
                 const subtotalCell = document.querySelector(".subtotal");
                 const unitPrice = parseFloat(priceCell.getAttribute("data-unit-price"));
+                const mainPrice = parseFloat(document.querySelector(".main-price").getAttribute("data-unit-price"));
 
                 const updateSubtotal = () => {
                     const quantity = parseInt(quantityInput.value) || 1;
-                    const mainPrice = parseFloat(document.querySelector(".main-price").getAttribute(
-                        "data-unit-price"));
                     const additionalPrice = quantity * unitPrice;
                     const subtotal = mainPrice + additionalPrice;
 
@@ -273,41 +270,32 @@
                     quantityContainer.textContent = `${quantity}`;
                 };
 
+                // Handling the plus button
                 document.querySelector(".plus-btn").addEventListener("click", () => {
+                    // Increase the value by 1
                     quantityInput.value = parseInt(quantityInput.value || 0) + 1;
+                    // Ensure quantityInput value doesn't go below 1
+                    if (quantityInput.value < 1) {
+                        quantityInput.value = 1;
+                    }
                     updateSubtotal();
                 });
 
+                // Handling the minus button
                 document.querySelector(".minus-btn").addEventListener("click", () => {
+                    // Decrease the value by 1, but not below 1
                     quantityInput.value = Math.max(1, parseInt(quantityInput.value || 1) - 1);
                     updateSubtotal();
                 });
 
-                quantityInput.addEventListener("input", updateSubtotal);
-            });
-        </script>
-        {{-- Update NFC Eatch Card Price End --}}
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                const minusButtons = document.querySelectorAll(".minus-btn");
-                const plusButtons = document.querySelectorAll(".plus-btn");
-
-                minusButtons.forEach(button => {
-                    button.addEventListener("click", function() {
-                        const input = this.nextElementSibling;
-                        const currentValue = parseInt(input.value) || 1;
-                        if (currentValue > 1) {
-                            input.value = currentValue - 1;
-                        }
-                    });
-                });
-
-                plusButtons.forEach(button => {
-                    button.addEventListener("click", function() {
-                        const input = this.previousElementSibling;
-                        const currentValue = parseInt(input.value) || 1;
-                        input.value = currentValue + 1;
-                    });
+                // Handling direct input changes (if someone manually changes the value)
+                quantityInput.addEventListener("input", () => {
+                    const quantity = parseInt(quantityInput.value) || 1;
+                    // Ensure the value stays positive and at least 1
+                    if (quantity < 1) {
+                        quantityInput.value = 1;
+                    }
+                    updateSubtotal();
                 });
             });
         </script>
