@@ -106,7 +106,7 @@
                                                 <i class="fa-solid fa-minus"></i>
                                             </button>
                                             <input type="number" class="form-control text-center quantity-input"
-                                                value="0" min="0"
+                                                value="1" min="0"
                                                 style="height: 50px; background-color: #f1f5ff">
                                             <button class="btn btn-outline-secondary plus-btn" type="button"
                                                 style="height: 50px;">

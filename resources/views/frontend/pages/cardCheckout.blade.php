@@ -66,7 +66,7 @@
                                             @else
                                                 $
                                             @endif
-                                            {{ $plan->price }}</strong>
+                                            {{ $subtotal }}</strong>
                                         </h1>
 
                                     </div>
