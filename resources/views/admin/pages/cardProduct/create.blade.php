@@ -14,7 +14,8 @@
             </div>
         </div>
         <div class="card-body">
-            <form class="form" action="{{ route('admin.card-product.store') }}" method="POST" enctype="multipart/form-data">
+            <form class="form" action="{{ route('admin.card-product.store') }}" method="POST"
+                enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-lg-12">
@@ -123,7 +124,7 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="col-lg-4">
+                    <div class="col-lg-6">
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="card shadow-sm p-0 mt-13">
@@ -174,7 +175,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
                 </div>
                 <!-- Submit Button -->
                 <div class="text-end pt-5">
@@ -186,6 +187,12 @@
 
     @push('scripts')
         <script>
+            function toggleInputs() {
+                const type = document.getElementById('type').value;
+                document.getElementById('qr-input').style.display = type === 'qr' ? 'block' : 'none';
+                document.getElementById('nfc-input').style.display = type === 'nfc' ? 'block' : 'none';
+            }
+
             $(document).ready(function() {
                 function updateSerialNumbers() {
                     $(".repeater tr").each(function(index) {
