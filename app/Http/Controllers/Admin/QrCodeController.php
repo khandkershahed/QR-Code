@@ -117,6 +117,8 @@ class QrCodeController extends Controller
 
     public function qrSummary($Qr)
     {
+        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
+        $view = $isUserRoute ? 'user.pages.qr-code.qrSummary' : 'admin.pages.qr-code.qrSummary';
 
         $qr = Qr::with('qrData')->where('code', $Qr)->first();
         $maps = QrScan::where('qr_code', $Qr)->get(['ip_address']);
@@ -150,9 +152,9 @@ class QrCodeController extends Controller
                 $cities[$city]['scans']++;
             }
         }
-
+        return view($view, compact('qr', 'maps', 'locations', 'cities', 'totalScans', 'users'));
         // dd($cities);
-        return view('user.pages.qr-code.qrSummary', compact('qr', 'maps', 'locations', 'cities', 'totalScans', 'users'));
+
     }
 
 
