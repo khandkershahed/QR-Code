@@ -55,7 +55,8 @@ class CardProductController extends Controller
 
             // Handle file uploads
             $files = [
-                'image' => $request->file('image'),
+                'image'           => $request->file('image'),
+                'thumbnail_image' => $request->file('thumbnail_image'),
             ];
 
             $uploadedFiles = [];
@@ -84,6 +85,7 @@ class CardProductController extends Controller
                 'shipping_description' => $request->shipping_description,
                 'manual'               => $request->manual,
                 'note'                 => $request->note,
+                'package_price'        => $request->package_price,
                 'price'                => $request->price,
                 'stripe_plan'          => $request->stripe_plan,
                 'plan_descriptions'    => $planDescriptions,
@@ -96,6 +98,7 @@ class CardProductController extends Controller
                 'qr'                   => $request->qr,
                 'nfc'                  => $request->nfc,
                 'status'               => $request->status,
+                'thumbnail_image'      => $uploadedFiles['thumbnail_image']['status'] == 1 ? $uploadedFiles['thumbnail_image']['file_path'] : null,
                 'image'                => $uploadedFiles['image']['status'] == 1 ? $uploadedFiles['image']['file_path'] : null,
             ]);
 
@@ -136,7 +139,7 @@ class CardProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        // dd($request->all());
         DB::beginTransaction();
         try {
             // Validation rules
@@ -155,7 +158,9 @@ class CardProductController extends Controller
 
             // Handle file uploads (image is optional for updates)
             $files = [
-                'image' => $request->file('image'),
+                'image'           => $request->file('image'),
+                'thumbnail_image' => $request->file('thumbnail_image'),
+
             ];
 
             $uploadedFiles = [];
@@ -188,6 +193,7 @@ class CardProductController extends Controller
                 'shipping_description' => $request->shipping_description,
                 'manual'               => $request->manual,
                 'note'                 => $request->note,
+                'package_price'        => $request->package_price,
                 'price'                => $request->price,
                 'stripe_plan'          => $request->stripe_plan,
                 'plan_descriptions'    => $planDescriptions,
@@ -200,6 +206,7 @@ class CardProductController extends Controller
                 'qr'                   => $request->qr,
                 'nfc'                  => $request->nfc,
                 'status'               => $request->status,
+                'thumbnail_image'      => $uploadedFiles['thumbnail_image']['status'] == 1 ? $uploadedFiles['thumbnail_image']['file_path'] : null,
                 'image'                => ($uploadedFiles['image']['status'] == 1) ? $uploadedFiles['image']['file_path'] : $cardProduct->image,
             ]);
 

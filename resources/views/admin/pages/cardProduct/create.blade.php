@@ -32,8 +32,8 @@
                             <div class="col-lg-2 mb-5">
                                 <x-metronic.label for="price"
                                     class="col-form-label fw-bold fs-6 required">{{ __('Package Price') }}</x-metronic.label>
-                                <x-metronic.input id="price" type="number" name="price" :value="old('price')"
-                                    placeholder="Enter the Price" required />
+                                <x-metronic.input id="package_price" type="number" name="package_price" :value="old('package_price')"
+                                    placeholder="Enter the package_Price" required />
                             </div>
                             <div class="col-lg-2 mb-5">
                                 <x-metronic.label for="price"
@@ -72,6 +72,13 @@
                                 </x-metronic.label>
                                 <x-metronic.file-input id="image" type="file" name="image"
                                     required></x-metronic.file-input>
+                            </div>
+                            <div class="col-lg-4 mb-7">
+                                <x-metronic.label for="thumbnail_image"
+                                    class="col-form-label fw-bold fs-6 required">{{ __('Thumbnail Image') }}
+                                </x-metronic.label>
+                                <x-metronic.file-input id="thumbnail_image" type="file" name="thumbnail_image"
+                                    ></x-metronic.file-input>
                             </div>
 
                             <div class="col-lg-3 mb-5">
@@ -210,7 +217,7 @@
                     const newRow = `
                         <tr>
                             <td></td>
-                            <td><input type="text" class="form-control form-control-sm" name="descriptions[]" placeholder="Enter Details" required /></td>
+                            <td><input type="text" class="form-control form-control-sm" name="plan_descriptions[]" placeholder="Enter Details" required /></td>
                             <td class="text-center">
                                 <button type="button"
                                     class="btn btn-sm fw-bold btn-danger pe-2 ps-3 removeRow">

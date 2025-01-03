@@ -56,10 +56,12 @@
                                         £
                                     @elseif($cardProduct->currency === 'usd')
                                         $
+                                    @else
+                                        $
                                     @endif
-                                    {{ $cardProduct->price }}.00
+                                    {{ $cardProduct->package_price }}.00
                                 </h3>
-                                <h5 class="text-danger text-end pt-2"><del>$5,00.00</del></h5>
+                                {{-- <h5 class="text-danger text-end pt-2"><del>$5,00.00</del></h5> --}}
                             </div>
                         </div>
                         <div class="row align-items-center">
@@ -71,23 +73,16 @@
                             <div class="col-lg-12">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <ul class="pb-4">
-                                            <li><i class="fa-regular fa-circle-check pe-2 text-success"></i>2 Virtual
-                                                Card
-                                                Include</li>
-                                            <li><i class="fa-regular fa-circle-check pe-2 text-success"></i>1+
-                                                Near-field
-                                                Communication Card Include</li>
-                                            <li><i class="fa-regular fa-circle-check pe-2 text-success"></i>Fast
-                                                Delivery
-                                                Service</li>
-                                            <li><i class="fa-regular fa-circle-check pe-2 text-success"></i>24/7
-                                                Customer
-                                                Support</li>
-                                            <li><i class="fa-regular fa-circle-check pe-2 text-success"></i>Customizable
-                                                Card
-                                                Designs</li>
-                                        </ul>
+                                        {{-- @if (is_array($cardProduct->plan_descriptions)) --}}
+                                            <ul class="pb-4">
+                                                @foreach (json_decode($cardProduct->plan_descriptions ?? '[]') as $description)
+                                                    <li>
+                                                        <i class="fa-regular fa-circle-check pe-2 text-success"></i>
+                                                        {{ $description }}
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        {{-- @endif --}}
                                         <div>
                                             <p class="fw-bold">{{ $cardProduct->short_description }}</p>
                                         </div>
@@ -140,27 +135,55 @@
                                                 <tr>
                                                     <td>1</td>
                                                     <td>1 VCard & 1 NFC Card</td>
-                                                    <td>N/A</td>
+                                                    <td>1</td>
                                                     <td class="main-price text-end"
-                                                        data-unit-price="{{ $cardProduct->price }}">
-                                                        ${{ $cardProduct->price }}.00
+                                                        data-unit-price="{{ $cardProduct->package_price }}">
+                                                        @if ($cardProduct->currency === 'eur')
+                                                            €
+                                                        @elseif($cardProduct->currency === 'gbp')
+                                                            £
+                                                        @elseif($cardProduct->currency === 'usd')
+                                                            $
+                                                        @else
+                                                            $
+                                                        @endif
+                                                        {{ $cardProduct->package_price }}.00
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>2</td>
                                                     <td>Additional NFC Card Only</td>
-                                                    <td>
-                                                        <input type="number"
+                                                    <td class="quantity">
+                                                        {{-- <input type="number"
                                                             class="form-control text-center quantity-input"
-                                                            value="1" min="1">
+                                                            value="1" min="1"> --}}
                                                     </td>
-                                                    <td class="aditional-price text-end" data-unit-price="2">$0.00</td>
+                                                    <td class="aditional-price text-end" data-unit-price="{{ $cardProduct->price }}">@if ($cardProduct->currency === 'eur')
+                                                        €
+                                                    @elseif($cardProduct->currency === 'gbp')
+                                                        £
+                                                    @elseif($cardProduct->currency === 'usd')
+                                                        $
+                                                    @else
+                                                        $
+                                                    @endif
+                                                    0.00</td>
                                                 </tr>
                                             </tbody>
                                             <tfoot style="background-color: #eee">
                                                 <tr>
                                                     <td colspan="3">Sub Total</td>
-                                                    <td class="subtotal text-end">${{ $cardProduct->price + 2 }}.00</td>
+                                                    <td class="subtotal text-end">@if ($cardProduct->currency === 'eur')
+                                                        €
+                                                    @elseif($cardProduct->currency === 'gbp')
+                                                        £
+                                                    @elseif($cardProduct->currency === 'usd')
+                                                        $
+                                                    @else
+                                                        $
+                                                    @endif
+                                                    {{ $cardProduct->package_price }}.00
+                                                    </td>
                                                 </tr>
                                             </tfoot>
                                         </table>
@@ -195,8 +218,8 @@
                         role="tablist">
                         <li class="nav-item me-2" role="presentation">
                             <button class="nav-link cst-links active" id="description-tab" data-bs-toggle="tab"
-                                data-bs-target="#description" type="button" role="tab"
-                                aria-controls="description" aria-selected="true">
+                                data-bs-target="#description" type="button" role="tab" aria-controls="description"
+                                aria-selected="true">
                                 Description
                             </button>
                         </li>
@@ -233,6 +256,7 @@
         <script>
             document.addEventListener("DOMContentLoaded", function() {
                 const quantityInput = document.querySelector(".quantity-input");
+                const quantityContainer = document.querySelector(".quantity");
                 const priceCell = document.querySelector(".aditional-price");
                 const subtotalCell = document.querySelector(".subtotal");
                 const unitPrice = parseFloat(priceCell.getAttribute("data-unit-price"));
@@ -244,8 +268,9 @@
                     const additionalPrice = quantity * unitPrice;
                     const subtotal = mainPrice + additionalPrice;
 
-                    priceCell.textContent = `$${additionalPrice.toFixed(2)}`;
-                    subtotalCell.textContent = `$${subtotal.toFixed(2)}`;
+                    priceCell.textContent = `${additionalPrice.toFixed(2)}`;
+                    subtotalCell.textContent = `${subtotal.toFixed(2)}`;
+                    quantityContainer.textContent = `${quantity}`;
                 };
 
                 document.querySelector(".plus-btn").addEventListener("click", () => {

@@ -28,7 +28,12 @@
                                 <x-metronic.input id="name" type="text" name="name" :value="old('name', $card_product->name)"
                                     placeholder="Enter the Card Product name" required />
                             </div>
-
+                            <div class="col-lg-2 mb-5">
+                                <x-metronic.label for="price"
+                                    class="col-form-label fw-bold fs-6 required">{{ __('Package Price') }}</x-metronic.label>
+                                <x-metronic.input id="package_price" type="number" name="package_price" :value="old('package_price', $card_product->package_price)"
+                                    placeholder="Enter the package_Price" required />
+                            </div>
                             <!-- Price Input -->
                             <div class="col-lg-6 mb-5">
                                 <x-metronic.label for="price"
@@ -66,12 +71,19 @@
                             <div class="col-lg-7 mb-7">
                                 <x-metronic.label for="image"
                                     class="col-form-label required fw-bold fs-6">{{ __('Image') }}</x-metronic.label>
-                                <x-metronic.file-input id="image" type="file"
+                                <x-metronic.file-input id="image" type="file" :source="asset('storage/'.$card_product->image)"
                                     name="image"></x-metronic.file-input>
-                                @if ($card_product->image)
+                                {{-- @if ($card_product->image)
                                     <img src="{{ asset($card_product->image) }}" alt="Card Product Image" class="mt-3"
                                         style="max-height: 100px;">
-                                @endif
+                                @endif --}}
+                            </div>
+                            <div class="col-lg-4 mb-7">
+                                <x-metronic.label for="thumbnail_image"
+                                    class="col-form-label fw-bold fs-6 required">{{ __('Thumbnail Image') }}
+                                </x-metronic.label>
+                                <x-metronic.file-input id="thumbnail_image" type="file" name="thumbnail_image" :source="asset('storage/'.$card_product->thumbnail_image)"
+                                    ></x-metronic.file-input>
                             </div>
 
                             <!-- Short Description -->
@@ -149,15 +161,15 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody class="repeater" style="vertical-align: middle;">
-                                                    @foreach (json_decode($plan->plan_descriptions ?? '[]') as $description)
+                                                    @foreach (json_decode($card_product->plan_descriptions ?? '[]') as $description)
                                                         <tr>
-                                                            <td>
+                                                            <td colspan="2">
                                                                 <input type="text"
                                                                     class="form-control form-control-sm w-100"
                                                                     name="plan_descriptions[]"
                                                                     value="{{ $description }}" required>
                                                                 </td>
-                                                            <td class="text-center" style="vertical-align: middle;">
+                                                            <td width="5%" class="text-center" style="vertical-align: middle;">
                                                                 <a href="javascript:void(0)"
                                                                     class="bg-danger removeRow p-1 px-2"><i
                                                                         class="fas fa-minus icons_design text-white"></i></a>
@@ -188,7 +200,7 @@
                 // Add Row
                 $(".addRow").on("click", function() {
                     var newRow =
-                        '<tr><td><input type="text" class="form-control form-control-sm" name="descriptions[]" required></td>' +
+                        '<tr><td colspan="2"><input type="text" class="form-control form-control-sm" name="plan_descriptions[]" required></td>' +
                         '<td class="text-center" style="vertical-align: middle;"><a href="javascript:void(0)" class="bg-danger removeRow p-1 px-2">' +
                         '<i class="fas fa-minus icons_design text-white"></i></a></td></tr>';
 

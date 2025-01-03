@@ -20,10 +20,12 @@ return new class extends Migration
             $table->mediumText('shipping_description')->nullable();
             $table->longText('manual')->nullable();
             $table->text('note')->nullable();
+            $table->double('package_price')->nullable();
             $table->double('price')->nullable();
             $table->string('stripe_plan')->nullable();
             $table->json('plan_descriptions')->nullable();
             $table->string('image')->nullable();
+            $table->string('thumbnail_image')->nullable();
             $table->string('billing_cycle')->nullable();
             $table->text('payment_link')->nullable();
             $table->string('type')->nullable();

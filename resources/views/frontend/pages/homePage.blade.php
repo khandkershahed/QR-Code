@@ -634,11 +634,11 @@
                         <div class="product-slider-card row">
                             @foreach ($cardProducts as $cardProduct)
                                 <div class="">
-                                    <a href="{{ route('card.payment',$cardProduct->slug) }}">
+                                    <a href="{{ route('card.details',$cardProduct->slug) }}">
                                         <div class="card border-0 shadow-sm bg-light p-0">
                                             <div class="card-header border-0 p-0">
                                                 <div>
-                                                    <img src="{{ asset('storage/' . $cardProduct->image) }}"
+                                                    <img src="{{ asset('storage/' . $cardProduct->thumbnail_image) }}"
                                                         alt="{{ $cardProduct->name }}"
                                                         onerror="this.onerror=null;this.src='{{ asset('frontend/newimage/blognoimage.webp') }}';">
                                                     {{-- <img class="img-fluid" src="{{ asset('') }}"
@@ -661,7 +661,7 @@
                                                         @else
                                                             $
                                                         @endif
-                                                        {{ $cardProduct->price }}
+                                                        {{ $cardProduct->package_price }}
                                                     </h6>
                                                 </div>
                                             </div>
