@@ -147,7 +147,7 @@
         </div>
         <div class="card-body p-0 rounded-0">
             <div class="table-responsive">
-                <table class="table my-datatable table-striped table-row-bordered my-0" id="nfcCard_table">
+                <table class="table my-datatable table-striped table-row-bordered my-0">
                     <thead>
                         <tr class="text-start bg-info text-white fw-bolder fs-7 text-uppercase gs-0">
                             <th width="5%">SL</th>
@@ -549,23 +549,3 @@
         </div>
     </div>
 @endforeach
-
-
-@push('scripts')
-    <script>
-        $('#nfcCard_table').DataTable({
-            "language": {
-                "lengthMenu": "Show _MENU_",
-            },
-            "dom": "<'row'" +
-                "<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
-                "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
-                ">" +
-                "<'table-responsive'tr>" +
-                "<'row'" +
-                "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
-                "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
-                ">"
-        });
-    </script>
-@endpush

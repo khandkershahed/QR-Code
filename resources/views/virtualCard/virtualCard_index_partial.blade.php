@@ -9,7 +9,7 @@
 
         <div class="card-body p-0 px-3 rounded-0">
             <div class="table-responsive">
-                <table class="table my-datatable table-striped table-row-bordered mt-0" id="virtualCard_table">
+                <table class="table my-datatable table-striped table-row-bordered mt-0">
                     <thead>
                         <tr class="bg-info text-white fw-bolder fs-7 text-uppercase gs-0">
                             <th width="5%">SL</th>
@@ -523,22 +523,6 @@
                     captureAndDownloadEPS(modalId);
                 });
             });
-        });
-    </script>
-    <script>
-        $('#virtualCard_table').DataTable({
-            "language": {
-                "lengthMenu": "Show _MENU_",
-            },
-            "dom": "<'row'" +
-                "<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
-                "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
-                ">" +
-                "<'table-responsive'tr>" +
-                "<'row'" +
-                "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
-                "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
-                ">"
         });
     </script>
 @endpush

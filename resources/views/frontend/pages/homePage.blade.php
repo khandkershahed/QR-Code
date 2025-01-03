@@ -622,7 +622,7 @@
                     <div class="ai-image aos-init aos-animate pb-50" data-aos="fade-left" data-aos-duration="1500"
                         data-aos-offset="50">
                         <div class="text-center">
-                            <h3>All Platform In A Card.</h3>
+                            <h3>All Social Platform In A Card.</h3>
                             <p class="mt-3">Connect with all your favorite platforms in one place. Share, engage, and
                                 stay updated effortlessly.</p>
                         </div>
@@ -634,7 +634,7 @@
                         <div class="product-slider-card row">
                             @foreach ($cardProducts as $cardProduct)
                                 <div class="">
-                                    <a href="javascript:void(0)">
+                                    <a href="{{ route('card.payment',$cardProduct->slug) }}">
                                         <div class="card border-0 shadow-sm bg-light p-0">
                                             <div class="card-header border-0 p-0">
                                                 <div>
@@ -673,8 +673,8 @@
                                                         </p>
                                                     </div>
                                                     <div class="mt-4">
-                                                        <a href="{{ route('card.checkout',$cardProduct->slug) }}" class="theme-btn style-two rounded-0 btn-sm"
-                                                            style="width: 100%;">Purchase</a>
+                                                        <a href="{{ route('card.details',$cardProduct->slug) }}" class="theme-btn style-two rounded-0 btn-sm"
+                                                            style="width: 100%;">Details</a>
                                                     </div>
                                                 </div>
 

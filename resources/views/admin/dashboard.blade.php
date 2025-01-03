@@ -5,7 +5,6 @@
     </div>
     <div id="kt_app_content_container" class="mt-10">
         <div class="row g-5 gx-xl-10 mb-5 mb-xl-10">
-
             <div class="col-xl-3">
                 <a href="{{ route('admin.qr-code.index') }}">
                     <div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-end h-xl-100"
@@ -107,64 +106,35 @@
                     </div>
                 </a>
             </div>
-
-
         </div>
-
         <div class="row g-5 g-xl-10">
-
             <div class="col-sm-6 col-xl-2 mb-xl-10">
-
-
                 <div class="card h-lg-100">
-
                     <div class="card-body d-flex justify-content-between align-items-start flex-column">
-
                         <div class="m-0">
                             <img src="{{ asset('admin/assets/media/svg/avatars/026-boy-10.svg') }}" class="w-35px"
                                 alt="">
                         </div>
-
-
-
                         <div class="d-flex flex-column my-7">
-
                             <span class="fw-semibold fs-3x text-gray-800 lh-1 ls-n2">{{ $users->count() }}</span>
-
-
-
                             <div class="m-0">
                                 <span class="fw-semibold fs-6 text-gray-500">Users Registered</span>
 
                             </div>
-
                         </div>
                     </div>
                 </div>
-
-
             </div>
             <div class="col-sm-6 col-xl-2 mb-xl-10">
-
-
                 <div class="card h-lg-100">
-
                     <div class="card-body d-flex justify-content-between align-items-start flex-column">
-
                         <div class="m-0">
                             <img src="{{ asset('admin/assets/media/svg/payment-methods/visa.svg') }}" class="w-35px"
                                 alt="">
                         </div>
-
-
-
                         <div class="d-flex flex-column my-7">
-
                             <span
                                 class="fw-semibold fs-3x text-gray-800 lh-1 ls-n2">{{ $subscriptions->count() }}</span>
-
-
-
                             <div class="m-0">
                                 <span class="fw-semibold fs-6 text-gray-500">Total Subscriptions</span>
 
@@ -173,22 +143,12 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
-
-
-
             <div class="col-xl-4 mb-5 mb-xl-10">
-
-
                 <div class="card card-flush border-0 h-lg-100" data-bs-theme="light" style="background-color: #7239EA">
-
                     <div class="card-header pt-2">
-
                         <h3 class="card-title">
                             <span class="text-white fs-3 fw-bold me-2">Subscription Plans</span>
-
                             <span class="badge badge-success">Active</span>
                         </h3>
                     </div>
