@@ -262,6 +262,7 @@
             display: inline-block;
             overflow: hidden;
             display: flex;
+            padding: 10px;
         }
 
         .product-img-tem3 img {
@@ -545,10 +546,22 @@
             text-decoration: none;
             color: white;
         }
-        .testi-images{
+
+        .testi-images {
             border-radius: 50%;
             width: 80px;
             height: 80px;
+            object-fit: cover;
+        }
+
+        .product-title {
+            height: 40px;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+        }
+        .qr-profile{
+            width: 385px;
         }
     </style>
 </head>
@@ -1618,33 +1631,37 @@
                                                 <div class="col-sm-6 mb-4">
                                                     <a href="{{ $product->product_url }}">
                                                         <div class="card border-0"
-                                                        style="background-color: var(--template-three-color-primary);">
-                                                        <div class="card-header p-0 rounded-2 service-header-tem3">
-                                                            <div class="product-img-tem3">
-                                                                <img class="img-fluid rounded-2"
-                                                                    src="{{ !empty($product->product_icon) && file_exists(public_path('storage/nfc/product/' . optional($product)->product_icon)) ? asset('storage/nfc/product/' . optional($product)->product_icon) : asset('frontend/images/no_image.png') }}"
-                                                                    alt="" />
+                                                            style="background-color: var(--template-three-color-primary);">
+                                                            <div class="card-header p-0 rounded-2 service-header-tem3">
+                                                                <div class="product-img-tem3">
+                                                                    <img class="img-fluid rounded-2"
+                                                                        src="{{ !empty($product->product_icon) && file_exists(public_path('storage/nfc/product/' . optional($product)->product_icon)) ? asset('storage/nfc/product/' . optional($product)->product_icon) : asset('frontend/images/no_image.png') }}"
+                                                                        alt="" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-body py-2">
+                                                                <h6
+                                                                    class="special-font fw-bold text-white product-title">
+                                                                    {{ $product->product_name }}
+                                                                </h6>
+                                                                <p class="text-justify text-white mb-0"
+                                                                    style="font-size: 14px !important">
+                                                                    @if ($product->product_currency == 'taka')
+                                                                        Tk
+                                                                    @elseif ($product->product_currency == 'euro')
+                                                                        €
+                                                                    @elseif ($product->product_currency == 'dollar')
+                                                                        $
+                                                                    @elseif ($product->product_currency == 'pound')
+                                                                        £
+                                                                    @endif
+                                                                    &nbsp;{{ $product->product_price }}
+                                                                </p>
+                                                            </div>
+                                                            <div class="mb-2">
+                                                                <a href="{{ $product->product_url }}" class="btn btn-sm btn-light w-10 mx-2">View</a>
                                                             </div>
                                                         </div>
-                                                        <div class="card-body py-2">
-                                                            <h6 class="special-font fw-bold text-white">
-                                                                {{ $product->product_name }}
-                                                            </h6>
-                                                            <p class="text-justify text-white mb-0"
-                                                                style="font-size: 14px !important">
-                                                                @if ($product->product_currency == 'taka')
-                                                                    Tk
-                                                                @elseif ($product->product_currency == 'euro')
-                                                                    €
-                                                                @elseif ($product->product_currency == 'dollar')
-                                                                    $
-                                                                @elseif ($product->product_currency == 'pound')
-                                                                    £
-                                                                @endif
-                                                                &nbsp;{{ $product->product_price }}
-                                                            </p>
-                                                        </div>
-                                                    </div>
                                                     </a>
                                                 </div>
                                             @endforeach
@@ -1713,11 +1730,12 @@
                                                                     {{ $testimonial->testimonial_description }}
                                                                 </p>
                                                             </div>
-                                                            <div class="d-flex justify-content-center align-items-center flex-column mt-3">
+                                                            <div
+                                                                class="d-flex justify-content-center align-items-center flex-column mt-3">
                                                                 <div>
                                                                     <img class="testi-images"
-                                                                    src="{{ !empty($testimonial->testimonial_image) && file_exists(public_path('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image)) ? asset('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image) : asset('frontend/images/no_image.png') }}"
-                                                                    alt="" />
+                                                                        src="{{ !empty($testimonial->testimonial_image) && file_exists(public_path('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image)) ? asset('storage/nfc/testimonial/' . optional($testimonial)->testimonial_image) : asset('frontend/images/no_image.png') }}"
+                                                                        alt="" />
                                                                 </div>
                                                                 <h6 class="special-font">
                                                                     {{ $testimonial->testimonial_name }}
@@ -1732,19 +1750,6 @@
                                 </div>
                             @endif
                         @endif
-                        <!-- SHape -->
-                        @if (!empty($nfc_card->nfc_qr) && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc_qr)))
-                            <div class="qr-code-img">
-                                {{-- Demo QR Here Place Your Actual QR --}}
-                                <img class="img-fluid" src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
-                                    alt="">
-                            </div>
-                            <div class="tem3-footer-shape">
-                                <p class="text-center text-white special-font" style="position: relative; top: 5px">
-                                    Scan Me
-                                </p>
-                            </div>
-                        @endif
                     </div>
                     <div class="col-lg-12">
                         <div class="text-center">
@@ -1754,19 +1759,16 @@
                             </p>
                         </div>
                         <div class="d-flex justify-content-center align-items-center py-5">
-                            <div class="qr-profile border rounded-4">
+                            <div class="qr-profile border rounded-4 mx-md-4 mx-2">
                                 <img src="{{ !empty($nfc_card->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card)->profile_image) : asset('frontend/images/no_image.png') }}"
                                     class="img-fluid rounded-4" alt="banner" />
                             </div>
-                            <div class="qr-code-scanner mx-md-4 mx-2 p-4 bg-white"
-                                id="qr-code-nine">
+                            <div class="qr-code-scanner mx-md-4 mx-2 p-4 bg-white" id="qr-code-nine">
                                 @if (!empty($nfc_card->nfc_qr) && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc_qr)))
-                                    <img class="img-fluid"
-                                        src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
+                                    <img class="img-fluid" src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
                                         alt="" />
                                 @else
-                                    <img class="img-fluid"
-                                        src="{{ asset('images/Symbology-QR-code.svg') }}"
+                                    <img class="img-fluid" src="{{ asset('images/Symbology-QR-code.svg') }}"
                                         alt="Default QR Code" />
                                 @endif
 
@@ -1775,8 +1777,7 @@
                                         !empty($nfc_card->nfc_qr) &&
                                         file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc_qr)))
                                     <div>
-                                        <a href="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
-                                            download=""
+                                        <a href="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}" download=""
                                             class="btn btn-dark rounded-0 w-100 border-2 border-dark">
                                             Download QR
                                         </a>
@@ -1807,8 +1808,7 @@
                                 </div>
                                 <div class="d-flex align-items-center justify-content-center mb-4">
                                     <a href="{{ $whatsappLink }}" target="_blank" rel="noopener noreferrer"
-                                        class="btn btn-primary rounded-0 mb-2 p-3"
-                                        style="width: 240px;">
+                                        class="btn btn-primary rounded-0 mb-2 p-3" style="width: 240px;">
                                         <i class="fa-solid fa-share-nodes"
                                             style="color: var(--template-two-color-primary)"></i>
                                         Share This Vcard
@@ -1831,13 +1831,13 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="copy-link" data-link="{{ $currentUrl }}">
+                                <a href="javascript:void(0)" class="copy-link" data-link="{{ $currentUrl }}">
                                     <i class="fa-solid fa-copy"></i>
                                     <span>Copy Link</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="nfc_contact_btn_pc">
+                                <a href="javascript:void(0)" class="nfc_contact_btn_pc">
                                     <i class="fa-solid fa-file-arrow-down"></i>
                                     <span>Add Contact</span>
                                 </a>
