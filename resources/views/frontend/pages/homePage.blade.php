@@ -644,25 +644,30 @@
                                                     {{-- <img class="img-fluid" src="{{ asset('') }}"
                                                         alt="Product 1"> --}}
                                                 </div>
-                                                <div class="d-flex justify-content-between align-items-center p-3">
+                                                <div class="p-3">
                                                     <div>
                                                         <h6 class="mb-0">{{ $cardProduct->name }}</h6>
                                                         {{-- <h6 class="text-mute mb-0">
                                                             <small>Metal,Plastic,Silver Card</small>
                                                         </h6> --}}
                                                     </div>
-                                                    <h6 class="mb-0">
-                                                        @if ($cardProduct->currency == 'eur')
-                                                            €
-                                                        @elseif ($cardProduct->currency == 'gbp')
-                                                            £
-                                                        @elseif ($cardProduct->currency == 'usd')
-                                                            $
-                                                        @else
-                                                            $
-                                                        @endif
-                                                        {{ $cardProduct->package_price }}
-                                                    </h6>
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <h6 class="mb-0 pt-3 text-danger">
+                                                            @if ($cardProduct->currency == 'eur')
+                                                                €
+                                                            @elseif ($cardProduct->currency == 'gbp')
+                                                                £
+                                                            @elseif ($cardProduct->currency == 'usd')
+                                                                $
+                                                            @else
+                                                                $
+                                                            @endif
+                                                            {{ $cardProduct->package_price }}
+                                                        </h6>
+                                                        {{-- <p class="mb-0 pt-3 text-muted">
+                                                            <small style="font-size: 10px;">Signle Card Price 2$</small>
+                                                        </p> --}}
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="card-body">

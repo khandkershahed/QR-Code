@@ -1334,13 +1334,13 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="copy-link" data-link="{{ $currentUrl }}">
+                                <a href="javascript:void(0)" class="copy-link" data-link="{{ $currentUrl }}">
                                     <i class="fa-solid fa-copy"></i>
                                     <span>Copy Link</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="nfc_contact_btn_pc">
+                                <a href="javascript:void(0)" class="nfc_contact_btn_pc">
                                     <i class="fa-solid fa-file-arrow-down"></i>
                                     <span>Add Contact</span>
                                 </a>

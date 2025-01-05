@@ -333,6 +333,30 @@
             text-decoration: none;
             color: #252525;
         }
+
+        .company-details::-webkit-scrollbar {
+            width: 0.2em;
+        }
+
+        .company-details::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .company-details::-webkit-scrollbar-thumb {
+            background-color: darkgrey;
+            outline: 0px solid slategrey;
+        }
+
+        .company-details {
+            overflow-y: auto;
+            height: 130px;
+        }
+
+        .company_logo-tem-3 {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
     </style>
     <!-- Style Here End -->
 </head>
@@ -362,8 +386,7 @@
                                     </div>
                                     <div class="px-4">
                                         <!-- personal Detailis -->
-                                        <div
-                                            style="background-image: url({{ asset('images/appointment-bg.png') }});background-position: center; background-repeat: no-repeat;">
+                                        <div>
                                             <div class="text-center pt-4">
                                                 <h2>
                                                     <span
@@ -689,7 +712,6 @@
                                                                         <div
                                                                             class="d-flex justify-content-center align-items-center">
                                                                             <img class="img-fluid company_logo company_logo-tem-3"
-                                                                                width="100px" height="100px"
                                                                                 style="background: var(--template-two-color-white);padding: 12px;border-radius: 100%;"
                                                                                 src="{{ !empty($company->company_logo) && file_exists(public_path('storage/nfc/company/' . optional($company)->company_logo)) ? asset('storage/nfc/company/' . optional($company)->company_logo) : asset('frontend/images/no_image.png') }}"
                                                                                 alt="" />
@@ -1268,19 +1290,19 @@
                     <div class="footer-nav-tem1 position-relative">
                         <ul class="h-100 d-flex align-items-center justify-content-between ps-0">
                             <li class="active">
-                                <a href="" download="">
+                                <a href="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}" download="">
                                     <i class="fa-solid fa-qrcode"></i>
                                     <span>QR</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="copy-link">
+                                <a href="javascript:void(0)" class="copy-link" data-link="{{ $currentUrl }}">
                                     <i class="fa-solid fa-copy"></i>
                                     <span>Copy Link</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="nfc_contact_btn_pc">
+                                <a href="javascript:void(0)" class="nfc_contact_btn_pc">
                                     <i class="fa-solid fa-file-arrow-down"></i>
                                     <span>Add Contact</span>
                                 </a>
@@ -1328,6 +1350,24 @@
         });
     </script> --}}
     <script>
+        document.addEventListener("DOMContentLoaded", (event) => {
+            document.querySelectorAll(".copy-link").forEach((element) => {
+                element.addEventListener("click", (event) => {
+                    event.preventDefault();
+                    const link = event.currentTarget.getAttribute("data-link");
+                    navigator.clipboard
+                        .writeText(link)
+                        .then(() => {
+                            alert("Link copied to clipboard!");
+                        })
+                        .catch((err) => {
+                            console.error("Failed to copy: ", err);
+                        });
+                });
+            });
+        });
+    </script>
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize Slick Slider
             $('.services-slider').slick({
@@ -1345,6 +1385,22 @@
                         slidesToScroll: 1
                     }
                 }]
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $(".company-slide").slick({
+                infinite: true, // Infinite looping
+                speed: 500, // Animation speed in milliseconds
+                slidesToShow: 1, // Number of slides to show at once
+                slidesToScroll: 1, // Number of slides to scroll at once
+                autoplay: true, // Enable autoplay
+                autoplaySpeed: 2000, // Autoplay speed in milliseconds
+                gap: 10,
+                arrows: false,
+                prevArrow: '<button type="button" class="slick-prev"><i class="fas fa-chevron-left"></i></button>',
+                nextArrow: '<button type="button" class="slick-next"><i class="fas fa-chevron-right"></i></button>',
             });
         });
     </script>
@@ -1392,7 +1448,7 @@
             });
         });
     </script>
-    <script>
+    {{-- <script>
         'use strict';
 
         function downloadToFile(content, filename, contentType) {
@@ -1492,6 +1548,204 @@
                     window.location.href = uri;
                 } else {
                     downloadToFile(vcard, 'contact.vcf', 'text/vcard');
+                }
+            });
+        }
+
+        document.querySelector('.nfc_contact_btn_pc').addEventListener('click', (event) => {
+            handleContactButtonClick(event, false);
+        });
+
+        document.querySelector('.nfc_contact_btn_mobile').addEventListener('click', (event) => {
+            handleContactButtonClick(event, true);
+        });
+    </script> --}}
+    <script>
+        'use strict';
+
+        function downloadToFile(content, filename, contentType) {
+            const a = document.createElement('a');
+            const file = new Blob([content], {
+                type: contentType
+            });
+
+            a.href = URL.createObjectURL(file);
+            a.download = filename;
+            a.click();
+
+            URL.revokeObjectURL(a.href);
+        }
+
+        function getBase64Image(imgUrl, callback) {
+            const img = new Image();
+            img.crossOrigin = 'Anonymous';
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                canvas.width = img.width;
+                canvas.height = img.height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0);
+                const dataURL = canvas.toDataURL('image/jpeg');
+                callback(dataURL.replace(/^data:image\/(png|jpeg);base64,/, ''));
+            };
+            img.onerror = () => {
+                console.error('Failed to load image:', imgUrl);
+                callback(null);
+            };
+            img.src = imgUrl;
+        }
+
+        const makeVCardVersion = () => `VERSION:3.0`;
+        const makeVCardInfo = (lastName, firstName) => `N:${lastName || ''};${firstName || ''};;;`;
+        const makeVCardName = (firstName, lastName) => `FN:${firstName || ''} ${lastName || ''}`;
+        const makeVCardOrg = (org) => `ORG:${org || ''}`;
+        const makeVCardTitle = (title) => `TITLE:${title || ''}`;
+        const makeVCardPhoto = (imgBase64) => `PHOTO;ENCODING=b;TYPE=JPEG:${imgBase64}`;
+        const makeVCardTel = (phone, type = 'CELL') => `TEL;TYPE=${type}:${phone || ''}`;
+        const makeVCardAdr = (location, locationUrl) =>
+            `ADR;TYPE=HOME:;;${location || ''};${locationUrl || ''};;;;`;
+        // const makeVCardAdr = (addressLine1, addressLine2) =>
+        //     `ADR;TYPE=HOME:;;${addressLine1 || ''};${addressLine2 || ''};;;;`;
+        const makeVCardEmail = (email, type = 'INTERNET') => `EMAIL;TYPE=${type}:${email || ''}`;
+        const makeVCardUrl = (url) => `URL:${url || ''}`;
+        const makeVCardSocialProfile = (type, url) => `X-SOCIALPROFILE;TYPE=${type}:${url || ''}`;
+        const makeVCardTimeStamp = () => `REV:${new Date().toISOString()}`;
+        const makeVCardBday = (dob) => `BDAY:${dob || ''}`;
+        const makeVCardLocation = (location, locationUrl) => `X-LOCATION:${location || ''};${locationUrl || ''}`;
+        const makeVCardCompany = (company) => `ORG:${company || ''}`;
+
+        function makeVCard(profileImageBase64) {
+            const firstName = "{{ optional($nfc_card->nfcData)->first_name }}";
+            const lastName = "{{ optional($nfc_card->nfcData)->last_name }}";
+            const designation = "{{ optional($nfc_card)->job_title }}";
+            const phonePersonal = "{{ optional($nfc_card->nfcData)->phone_personal }}";
+            const phoneWork = "{{ optional($nfc_card->nfcData)->phone_work }}";
+            const emailPersonal = "{{ optional($nfc_card->nfcData)->email_personal }}";
+            const emailWork = "{{ optional($nfc_card->nfcData)->email_work }}";
+            const addressLine1 = "{{ optional($nfc_card->nfcData)->address_line_one }}";
+            const addressLine2 = "{{ optional($nfc_card->nfcData)->address_line_two }}";
+            const website = "{{ optional($nfc_card->nfcData)->website_url }}";
+            const linkedin = "{{ optional($nfc_card->nfcData)->linkedin_url }}";
+            const facebook = "{{ optional($nfc_card->nfcData)->facebook_url }}";
+            const instagram = "{{ optional($nfc_card->nfcData)->instagram_url }}";
+            const whatsapp = "{{ optional($nfc_card->nfcData)->whatsapp_url }}";
+            const twitter = "{{ optional($nfc_card->nfcData)->twitter_url }}";
+            const youtube = "{{ optional($nfc_card->nfcData)->youtube_url }}";
+            const pinterest = "{{ optional($nfc_card->nfcData)->pinterest_url }}";
+            const reddit = "{{ optional($nfc_card->nfcData)->reddit_url }}";
+            const tumblr = "{{ optional($nfc_card->nfcData)->tumblr_url }}";
+            const tiktok = "{{ optional($nfc_card->nfcData)->tiktok_url }}";
+            const location = `{{ optional($nfc_card->nfcData)->location }}`;
+            const locationUrl = "{{ optional($nfc_card->nfcData)->location_url }}";
+            const dob = "{{ optional($nfc_card->nfcData)->date_of_birth }}";
+            const companyName = "{{ optional($nfc_card->nfcData)->company_name }}";
+
+            let vcard = `BEGIN:VCARD\n${makeVCardVersion()}\n`;
+            vcard += `${makeVCardInfo(lastName, firstName)}\n`;
+            vcard += `${makeVCardName(firstName, lastName)}\n`;
+            vcard += `${makeVCardTitle(designation)}\n`;
+            vcard += `${makeVCardCompany(companyName)}\n`;
+
+            if (profileImageBase64) {
+                vcard += `${makeVCardPhoto(profileImageBase64)}\n`;
+            }
+
+            vcard += `${makeVCardTel(phonePersonal)}\n`;
+            vcard += `${makeVCardTel(phoneWork, 'WORK')}\n`;
+
+            if (addressLine1 || addressLine2) {
+                vcard += `${makeVCardAdr(addressLine1, addressLine2)}\n`;
+            }
+
+            if (addressLine1 || addressLine2) {
+                vcard += `${makeVCardAdr(addressLine1, addressLine2)}\n`;
+            }
+
+
+            if (emailPersonal) {
+                vcard += `${makeVCardEmail(emailPersonal)}\n`;
+            }
+            if (emailWork) {
+                vcard += `${makeVCardEmail(emailWork, 'WORK')}\n`;
+            }
+
+            if (website) {
+                vcard += `${makeVCardUrl(website)}\n`;
+                vcard += `${makeVCardSocialProfile('website', website)}\n`;
+            }
+            if (linkedin) {
+                vcard += `${makeVCardUrl(linkedin)}\n`;
+                vcard += `${makeVCardSocialProfile('linkedin', linkedin)}\n`;
+            }
+            if (facebook) {
+                vcard += `${makeVCardUrl(facebook)}\n`;
+                vcard += `${makeVCardSocialProfile('facebook', facebook)}\n`;
+            }
+            if (instagram) {
+                vcard += `${makeVCardUrl(instagram)}\n`;
+                vcard += `${makeVCardSocialProfile('instagram', instagram)}\n`;
+            }
+            if (whatsapp) {
+                vcard += `${makeVCardUrl(whatsapp)}\n`;
+                vcard += `${makeVCardSocialProfile('whatsapp', whatsapp)}\n`;
+            }
+            if (twitter) {
+                vcard += `${makeVCardUrl(twitter)}\n`;
+                vcard += `${makeVCardSocialProfile('twitter', twitter)}\n`;
+            }
+            if (youtube) {
+                vcard += `${makeVCardUrl(youtube)}\n`;
+                vcard += `${makeVCardSocialProfile('youtube', youtube)}\n`;
+            }
+            if (pinterest) {
+                vcard += `${makeVCardUrl(pinterest)}\n`;
+                vcard += `${makeVCardSocialProfile('pinterest', pinterest)}\n`;
+            }
+            if (reddit) {
+                vcard += `${makeVCardUrl(reddit)}\n`;
+                vcard += `${makeVCardSocialProfile('reddit', reddit)}\n`;
+            }
+            if (tumblr) {
+                vcard += `${makeVCardUrl(tumblr)}\n`;
+                vcard += `${makeVCardSocialProfile('tumblr', tumblr)}\n`;
+            }
+            if (tiktok) {
+                vcard += `${makeVCardUrl(tiktok)}\n`;
+                vcard += `${makeVCardSocialProfile('tiktok', tiktok)}\n`;
+            }
+
+            if (dob) {
+                vcard += `${makeVCardBday(dob)}\n`;
+            }
+            if (location || locationUrl) {
+                vcard += `${makeVCardLocation(location, locationUrl)}\n`;
+            }
+
+
+            vcard += `${makeVCardTimeStamp()}\nEND:VCARD`;
+
+            return vcard;
+        }
+
+        function handleContactButtonClick(event, isMobile) {
+            event.preventDefault(); // Prevent default link behavior
+
+            const profileImage = '{{ asset('storage/nfc/' . optional($nfc_card)->profile_image) }}';
+
+            getBase64Image(profileImage, (base64Image) => {
+                const vcard = makeVCard(base64Image);
+
+                if (isMobile) {
+                    // Open vCard details in contact app for mobile
+                    const encodedVcfContent = encodeURIComponent(vcard);
+                    const uri = 'data:text/vcard;charset=utf-8,' + encodedVcfContent;
+                    window.location.href = uri;
+                } else {
+                    // Download vCard for PC
+                    const firstName = '{{ optional($nfc_card->nfcData)->first_name }}';
+                    const lastName = '{{ optional($nfc_card->nfcData)->last_name }}';
+                    const fileName = `${firstName}_${lastName}_contact.vcf`;
+                    downloadToFile(vcard, fileName, 'text/vcard');
                 }
             });
         }

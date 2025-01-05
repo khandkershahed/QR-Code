@@ -1026,5 +1026,5 @@
         });
     </script>
 
-    
+
 @endpush

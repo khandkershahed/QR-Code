@@ -216,7 +216,7 @@
                                                 aria-labelledby="dropdownMenuButton1">
                                                 <li class="text-muted">
                                                     <a href="{{ route('admin.qr-code.edit', $qr->code) }}"
-                                                        class="menu-link px-3 delete dropdown-item">
+                                                        class="menu-link px-3 dropdown-item">
                                                         <i class="fa-solid fa-pen pe-2"></i> Edit
                                                     </a>
                                                 </li>
