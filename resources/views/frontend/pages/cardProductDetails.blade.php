@@ -88,13 +88,15 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-8">
-                                        <label for="">Card Type?</label>
-                                        <select class="form-select" aria-label="Default select example">
-                                            <option selected>What Type Of NFC Card You Want?</option>
-                                            <option value="metal">Metal</option>
-                                            <option value="plastic">Plastic</option>
-                                            <option value="sliver">Silver</option>
-                                            <option value="gold">Gold</option>
+                                        <label for="">Card Color? <span class="text-danger">*</span></label>
+                                        <select class="form-select" name="color" aria-label="Default select example">
+                                            <option value="" selected>What Color Of NFC Card You Want?</option>
+                                            <option value="black"> Black</option>
+                                            <option value="blue"> Blue</option>
+                                            <option value="yellow"> Yellow</option>
+                                            <option value="green"> Green</option>
+                                            <option value="red"> Red</option>
+                                            <option value="white"> White</option>
                                         </select>
                                     </div>
                                     <div class="col-lg-4">

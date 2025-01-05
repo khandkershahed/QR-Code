@@ -53,7 +53,8 @@
                                     </div>
                                 </div>
                                 <div class="" style="margin-top: 5rem">
-                                    <h6 class="mb-5">Purchase <strong class="text-info">{{ $plan->name }}</strong></h6>
+                                    <h6 class="mb-3">Purchase <strong class="text-info">{{ $plan->name }}</strong></h6>
+                                    <h6 class="mb-5"> <strong class="text-black">Card Color :{{ $color }}</strong></h6>
                                     <div class="d-flex align-items-center">
                                         <h1 style="font-size: 40px; border-right: 2px solid #eee;">
                                             <strong class="pe-3">
@@ -100,8 +101,9 @@
                                 <form action="{{ route('card.payment') }}" method="POST" id="payment-form">
                                     @csrf
                                     <input type="hidden" name="product_id" id="plan" value="{{ $plan->id }}">
-                                    <input type="hidden" name="subtotal" id="plan" value="{{ $subtotal }}">
-                                    <input type="hidden" name="quantity" id="plan" value="{{ $quantity }}">
+                                    <input type="hidden" name="subtotal" id="subtotal" value="{{ $subtotal }}">
+                                    <input type="hidden" name="quantity" id="quantity" value="{{ $quantity }}">
+                                    <input type="hidden" name="color" id="color" value="{{ $color }}">
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="mb-5 pb-3">
