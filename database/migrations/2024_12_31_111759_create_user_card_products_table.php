@@ -15,10 +15,13 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade');
             $table->foreignId('card_product_id')->nullable()->constrained('card_products')->onDelete('cascade');
+            $table->double('amount')->nullable();
+            $table->integer('additional_nfc')->nullable();
+            $table->string('color')->nullable();
             $table->string('payment_status')->default('paid')->nullable();
             $table->string('status')->default('active')->nullable();
             $table->timestamp('paid_at')->nullable();
-            $table->timestamps(); 
+            $table->timestamps();
         });
     }
 

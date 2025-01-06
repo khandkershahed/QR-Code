@@ -260,12 +260,14 @@ class StripeWebhookController extends CashierWebhookController
         session([
             'subtotal' => $request->input('subtotal', 0),
             'quantity' => $request->input('quantity', 1),
+            'color' => $request->input('color'),
         ]);
         if (Auth::check()) {
             $data['intent'] = auth()->user()->createSetupIntent();
             $data['user_id'] = Auth::user()->id;
             $data['subtotal'] = $request->input('subtotal', session('subtotal', $data['plan']->package_price));
             $data['quantity'] = $request->input('quantity', session('quantity', 1));
+            $data['color'] = $request->input('color', session('color'));
             return view('frontend.pages.cardCheckout', $data);
         } else {
 
@@ -368,6 +370,9 @@ class StripeWebhookController extends CashierWebhookController
                 'card_product_id' => $product->id,
                 'payment_status' => 'paid', // Only mark as paid if the payment succeeded
                 'status' => 'unused',
+                'amount' => $request->subtotal,
+                'additional_nfc' => $request->quantity,
+                'color' => $request->color,
                 'paid_at' => Carbon::now(),
             ]);
 
