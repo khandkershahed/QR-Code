@@ -108,7 +108,7 @@
                                                 <i class="fa-solid fa-minus"></i>
                                             </button>
                                             <input type="number" class="form-control text-center quantity-input"
-                                                value="1" min="0"
+                                                value="0" min="0"
                                                 style="height: 50px; background-color: #f1f5ff">
                                             <button class="btn btn-outline-secondary plus-btn" type="button"
                                                 style="height: 50px;">
@@ -150,7 +150,7 @@
                                                 <tr>
                                                     <td>2</td>
                                                     <td>Additional NFC Card Only</td>
-                                                    <td class="quantity"> {{-- Quantity will be updated here --}} </td>
+                                                    <td class="quantity"></td>
                                                     <td class="aditional-price text-end"
                                                         data-unit-price="{{ $cardProduct->price }}">
                                                         @if ($cardProduct->currency === 'eur')
@@ -310,7 +310,7 @@
                 const mainPrice = parseFloat(document.querySelector(".main-price").getAttribute("data-unit-price"));
 
                 const updateSubtotal = () => {
-                    const quantity = parseInt(quantityInput.value) || 1;
+                    const quantity = parseInt(quantityInput.value) || 0;
                     const additionalPrice = quantity * unitPrice;
                     const subtotal = mainPrice + additionalPrice;
 
@@ -331,7 +331,7 @@
 
                 // Handling the minus button
                 document.querySelector(".minus-btn").addEventListener("click", () => {
-                    quantityInput.value = Math.max(1, parseInt(quantityInput.value || 1) - 1);
+                    quantityInput.value = Math.max(0, parseInt(quantityInput.value || 1) - 1);
                     updateSubtotal();
                 });
 
