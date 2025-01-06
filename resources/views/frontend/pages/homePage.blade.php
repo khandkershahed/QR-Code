@@ -3,7 +3,12 @@
         .product-slider-card .slick-slide {
             margin-top: 25px;
             margin: 20px 10px;
-            padding: 25px;
+            padding: 20px;
+        }
+
+        .slick-center {
+            padding: 20px;
+            padding-bottom: 40px !important;
         }
 
         .product-slider-card {
@@ -142,13 +147,13 @@
                 <div class="col-lg-12 order-lg-2">
                     <div class="ai-image aos-init aos-animate" data-aos="fade-left" data-aos-duration="1500"
                         data-aos-offset="50">
-                        <div class="product-slider-card row">
+                        <div class="product-slider-card row px-0">
                             @foreach ($cardProducts as $cardProduct)
                                 <div class="">
-                                    <a href="{{ route('card.details',$cardProduct->slug) }}">
+                                    <a href="{{ route('card.details', $cardProduct->slug) }}">
                                         <div class="card border-0 shadow-sm bg-light p-0">
                                             <div class="card-header border-0 p-0">
-                                                <div>
+                                                <div class="d-flex justify-content-center">
                                                     <img src="{{ asset('storage/' . $cardProduct->thumbnail_image) }}"
                                                         alt="{{ $cardProduct->name }}"
                                                         onerror="this.onerror=null;this.src='{{ asset('frontend/newimage/blognoimage.webp') }}';">
@@ -177,20 +182,23 @@
                                                             {{ $cardProduct->type }}
                                                         </h6>
                                                         <p class="mb-0 pt-3 text-muted">
-                                                            <small style="font-size: 10px;">{{ $cardProduct->type }}</small>
+                                                            <small
+                                                                style="font-size: 10px;">{{ $cardProduct->type }}</small>
                                                         </p>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="card-body">
                                                 <div class="">
-                                                    <div style="height: 60px;" class="pt-2 d-flex justify-content-start align-items-center">
+                                                    <div style="height: 60px;"
+                                                        class="pt-2 d-flex justify-content-start align-items-center">
                                                         <p class="mb-0 package-details text-start">
                                                             {!! implode(' ', array_slice(explode(' ', strip_tags($cardProduct->short_description)), 0, 15)) !!}...
                                                         </p>
                                                     </div>
                                                     <div class="mt-4">
-                                                        <a href="{{ route('card.details',$cardProduct->slug) }}" class="theme-btn style-two rounded-0 btn-sm"
+                                                        <a href="{{ route('card.details', $cardProduct->slug) }}"
+                                                            class="theme-btn style-two rounded-0 btn-sm"
                                                             style="width: 100%;">Details</a>
                                                     </div>
                                                 </div>
@@ -233,8 +241,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-md-6 aos-init" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500"
-                    data-aos-offset="50">
+                <div class="col-xl-4 col-md-6 aos-init" data-aos="fade-up" data-aos-delay="100"
+                    data-aos-duration="1500" data-aos-offset="50">
                     <div class="numbered-box style-three bg-two">
                         <div class="content">
                             <h4><a href="">NFC & Virtual Card Creator</a></h4>
@@ -246,8 +254,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-md-6 aos-init" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500"
-                    data-aos-offset="50">
+                <div class="col-xl-4 col-md-6 aos-init" data-aos="fade-up" data-aos-delay="200"
+                    data-aos-duration="1500" data-aos-offset="50">
                     <div class="numbered-box style-three bg-three">
                         <div class="content">
                             <h4><a href="">Barcode Generator</a></h4>
@@ -946,27 +954,47 @@
     @push('scripts')
         <script>
             $(document).ready(function() {
-                $('.product-slider-card').slick({
-                    centerMode: true, // Enables center active functionality
-                    centerPadding: '50px', // Adds space around the center slide
-                    slidesToShow: 5, // Number of slides visible
-                    autoplay: true,
+                const $slider = $('.product-slider-card');
+                const slideCount = $slider.children().length;
+
+                // Define dynamic settings
+                const centerMode = slideCount >= 5;
+                const centerPadding = slideCount >= 5 ? '50px' : '0px';
+                const slidesToShow = slideCount >= 5 ? 5 : slideCount;
+
+                // Wrap in container if fewer than 5 slides
+                if (slideCount < 5) {
+                    $slider.wrap('<div class="container-fluid"></div>');
+                }
+                if (slideCount < 4) {
+                    $slider.wrap('<div class="container"></div>');
+                }
+
+                // Initialize Slick slider
+                $slider.slick({
+                    centerMode: centerMode, // Enable or disable center mode
+                    centerPadding: centerPadding, // Dynamic padding
+                    slidesToShow: slidesToShow, // Dynamic slides to show
+                    autoplay: false,
                     autoplaySpeed: 2000,
-                    gap: 20,
                     arrows: true, // Enables navigation arrows
                     prevArrow: '<button type="button" class="slick-prev">←</button>',
                     nextArrow: '<button type="button" class="slick-next">→</button>',
                     responsive: [{
                             breakpoint: 768,
                             settings: {
-                                slidesToShow: 1,
+                                slidesToShow: slidesToShow < 5 ? slidesToShow :
+                                1, // Adapt for responsive views
+                                centerMode: false, // Disable center mode on small screens
                                 centerPadding: '30px'
                             }
                         },
                         {
                             breakpoint: 480,
                             settings: {
-                                slidesToShow: 1,
+                                slidesToShow: slidesToShow < 5 ? slidesToShow :
+                                1, // Adapt for responsive views
+                                centerMode: false, // Disable center mode on small screens
                                 centerPadding: '20px'
                             }
                         }
