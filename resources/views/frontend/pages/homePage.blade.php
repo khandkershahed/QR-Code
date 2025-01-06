@@ -126,6 +126,86 @@
         </div>
     </section>
     <!-- Hero area End -->
+    <section class="artificial-intelligence-area rel pt-50 rpt-20 pb-50 rpb-100 z-2">
+        <div class="container-fluid px-0">
+            <div class="row pb-30 rpb-65 gap-100 align-items-center">
+                <div class="col-lg-12 order-lg-2">
+                    <div class="ai-image aos-init aos-animate pb-50" data-aos="fade-left" data-aos-duration="1500"
+                        data-aos-offset="50">
+                        <div class="text-center">
+                            <h3>All Social Platform In A Card.</h3>
+                            <p class="mt-3">Connect with all your favorite platforms in one place. Share, engage, and
+                                stay updated effortlessly.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 order-lg-2">
+                    <div class="ai-image aos-init aos-animate" data-aos="fade-left" data-aos-duration="1500"
+                        data-aos-offset="50">
+                        <div class="product-slider-card row">
+                            @foreach ($cardProducts as $cardProduct)
+                                <div class="">
+                                    <a href="{{ route('card.details',$cardProduct->slug) }}">
+                                        <div class="card border-0 shadow-sm bg-light p-0">
+                                            <div class="card-header border-0 p-0">
+                                                <div>
+                                                    <img src="{{ asset('storage/' . $cardProduct->thumbnail_image) }}"
+                                                        alt="{{ $cardProduct->name }}"
+                                                        onerror="this.onerror=null;this.src='{{ asset('frontend/newimage/blognoimage.webp') }}';">
+                                                    {{-- <img class="img-fluid" src="{{ asset('') }}"
+                                                        alt="Product 1"> --}}
+                                                </div>
+                                                <div class="p-3">
+                                                    <div>
+                                                        <h6 class="mb-0">{{ $cardProduct->name }}</h6>
+                                                        {{-- <h6 class="text-mute mb-0">
+                                                            <small>Metal,Plastic,Silver Card</small>
+                                                        </h6> --}}
+                                                    </div>
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <h6 class="mb-0 pt-3 text-danger">
+                                                            @if ($cardProduct->currency == 'eur')
+                                                                €
+                                                            @elseif ($cardProduct->currency == 'gbp')
+                                                                £
+                                                            @elseif ($cardProduct->currency == 'usd')
+                                                                $
+                                                            @else
+                                                                $
+                                                            @endif
+                                                            {{ $cardProduct->package_price }}
+                                                            {{ $cardProduct->type }}
+                                                        </h6>
+                                                        <p class="mb-0 pt-3 text-muted">
+                                                            <small style="font-size: 10px;">{{ $cardProduct->type }}</small>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="">
+                                                    <div style="height: 60px;" class="pt-2 d-flex justify-content-start align-items-center">
+                                                        <p class="mb-0 package-details text-start">
+                                                            {!! implode(' ', array_slice(explode(' ', strip_tags($cardProduct->short_description)), 0, 15)) !!}...
+                                                        </p>
+                                                    </div>
+                                                    <div class="mt-4">
+                                                        <a href="{{ route('card.details',$cardProduct->slug) }}" class="theme-btn style-two rounded-0 btn-sm"
+                                                            style="width: 100%;">Details</a>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     {{-- Service Box --}}
     <section class="numbered-box-area rel rpt-100 rel z-2">
         <div class="container">
@@ -612,85 +692,6 @@
                             class="fas fa-arrow-right"></i></a>
                 </div>
 
-            </div>
-        </div>
-    </section>
-    <section class="artificial-intelligence-area rel pt-50 rpt-20 pb-50 rpb-100 z-2">
-        <div class="container-fluid px-0">
-            <div class="row pb-30 rpb-65 gap-100 align-items-center">
-                <div class="col-lg-12 order-lg-2">
-                    <div class="ai-image aos-init aos-animate pb-50" data-aos="fade-left" data-aos-duration="1500"
-                        data-aos-offset="50">
-                        <div class="text-center">
-                            <h3>All Social Platform In A Card.</h3>
-                            <p class="mt-3">Connect with all your favorite platforms in one place. Share, engage, and
-                                stay updated effortlessly.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 order-lg-2">
-                    <div class="ai-image aos-init aos-animate" data-aos="fade-left" data-aos-duration="1500"
-                        data-aos-offset="50">
-                        <div class="product-slider-card row">
-                            @foreach ($cardProducts as $cardProduct)
-                                <div class="">
-                                    <a href="{{ route('card.details',$cardProduct->slug) }}">
-                                        <div class="card border-0 shadow-sm bg-light p-0">
-                                            <div class="card-header border-0 p-0">
-                                                <div>
-                                                    <img src="{{ asset('storage/' . $cardProduct->thumbnail_image) }}"
-                                                        alt="{{ $cardProduct->name }}"
-                                                        onerror="this.onerror=null;this.src='{{ asset('frontend/newimage/blognoimage.webp') }}';">
-                                                    {{-- <img class="img-fluid" src="{{ asset('') }}"
-                                                        alt="Product 1"> --}}
-                                                </div>
-                                                <div class="p-3">
-                                                    <div>
-                                                        <h6 class="mb-0">{{ $cardProduct->name }}</h6>
-                                                        {{-- <h6 class="text-mute mb-0">
-                                                            <small>Metal,Plastic,Silver Card</small>
-                                                        </h6> --}}
-                                                    </div>
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <h6 class="mb-0 pt-3 text-danger">
-                                                            @if ($cardProduct->currency == 'eur')
-                                                                €
-                                                            @elseif ($cardProduct->currency == 'gbp')
-                                                                £
-                                                            @elseif ($cardProduct->currency == 'usd')
-                                                                $
-                                                            @else
-                                                                $
-                                                            @endif
-                                                            {{ $cardProduct->package_price }}
-                                                        </h6>
-                                                        {{-- <p class="mb-0 pt-3 text-muted">
-                                                            <small style="font-size: 10px;">Signle Card Price 2$</small>
-                                                        </p> --}}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="">
-                                                    <div style="height: 60px;" class="pt-2 d-flex justify-content-start align-items-center">
-                                                        <p class="mb-0 package-details text-start">
-                                                            {!! implode(' ', array_slice(explode(' ', strip_tags($cardProduct->short_description)), 0, 15)) !!}...
-                                                        </p>
-                                                    </div>
-                                                    <div class="mt-4">
-                                                        <a href="{{ route('card.details',$cardProduct->slug) }}" class="theme-btn style-two rounded-0 btn-sm"
-                                                            style="width: 100%;">Details</a>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>

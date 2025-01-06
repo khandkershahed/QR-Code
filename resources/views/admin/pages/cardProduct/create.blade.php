@@ -29,20 +29,20 @@
                             </div>
 
                             <!-- Price Input -->
-                            <div class="col-lg-2 mb-5">
+                            <div class="col-lg-3 mb-5">
                                 <x-metronic.label for="price"
                                     class="col-form-label fw-bold fs-6 required">{{ __('Package Price') }}</x-metronic.label>
                                 <x-metronic.input id="package_price" type="number" name="package_price" :value="old('package_price')"
                                     placeholder="Enter the package_Price" required />
                             </div>
-                            <div class="col-lg-2 mb-5">
+                            <div class="col-lg-3 mb-5">
                                 <x-metronic.label for="price"
                                     class="col-form-label fw-bold fs-6 required">{{ __('Singel NFC Card Price') }}</x-metronic.label>
                                 <x-metronic.input id="price" type="number" name="price" :value="old('price')"
                                     placeholder="Enter the Price" required />
                             </div>
                             <!-- Currency Selector -->
-                            <div class="col-lg-2 mb-5">
+                            <div class="col-lg-3 mb-5">
                                 <x-metronic.label for="currency"
                                     class="col-form-label fw-bold fs-6 required">{{ __('Currency') }}</x-metronic.label>
                                 <x-metronic.select-option id="currency" name="currency" data-hide-search="true"
@@ -55,7 +55,7 @@
                             </div>
 
                             <!-- Status Selector -->
-                            <div class="col-lg-2 mb-5">
+                            <div class="col-lg-3 mb-5">
                                 <x-metronic.label for="status"
                                     class="col-form-label required fw-bold fs-6 required">{{ __('Select a Status') }}</x-metronic.label>
                                 <x-metronic.select-option id="status" name="status" data-hide-search="true"
@@ -66,14 +66,14 @@
                                 </x-metronic.select-option>
                             </div>
 
-                            <div class="col-lg-4 mb-7">
+                            <div class="col-lg-6 mb-7">
                                 <x-metronic.label for="image"
                                     class="col-form-label required fw-bold fs-6 required">{{ __('Image') }}
                                 </x-metronic.label>
                                 <x-metronic.file-input id="image" type="file" name="image"
                                     required></x-metronic.file-input>
                             </div>
-                            <div class="col-lg-4 mb-7">
+                            <div class="col-lg-6 mb-7">
                                 <x-metronic.label for="thumbnail_image"
                                     class="col-form-label fw-bold fs-6 required">{{ __('Thumbnail Image') }}
                                 </x-metronic.label>
@@ -137,12 +137,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="card shadow-sm p-0 mt-13">
                                     <div class="p-3 py-5">
-                                        <h3 class="mb-0 fw-normal">Add Provided Services</h3>
+                                        <h3 class="mb-0 fw-normal">Add Provided Services Features</h3>
                                     </div>
                                     <div class="card-body p-0">
                                         <div class="table-responsive">
@@ -172,7 +172,7 @@
                                                             <input type="text"
                                                                 class="form-control form-control form-control-sm"
                                                                 name="plan_descriptions[]"
-                                                                placeholder="Enter Details" />
+                                                                placeholder="Enter Feature Details in this card like: 1 Vcard 1 Nfc Card package" />
                                                         </td>
                                                         <td class="text-center">
                                                             <button type="button"
