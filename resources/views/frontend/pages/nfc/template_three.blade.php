@@ -1642,7 +1642,7 @@
                                                             <div class="card-body py-2">
                                                                 <h6
                                                                     class="special-font fw-bold text-white product-title">
-                                                                    {{ $product->product_name }}
+                                                                    {{ \Illuminate\Support\Str::limit($product->product_name, 10, '') }}
                                                                 </h6>
                                                                 <p class="text-justify text-white mb-0"
                                                                     style="font-size: 14px !important">

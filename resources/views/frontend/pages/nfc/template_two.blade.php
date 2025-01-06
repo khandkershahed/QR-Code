@@ -915,7 +915,7 @@
                                                     </div>
                                                     <div class="product-content-tem2 px-3">
                                                         <h6 class="mb-0 pt-3">
-                                                            {{ $product->product_name }}
+                                                            {{ \Illuminate\Support\Str::limit($product->product_name, 10, '') }}
                                                         </h6>
                                                         <div class="pt-4">
                                                             <p class="mb-0 text-primary">
@@ -1071,8 +1071,10 @@
                                         @if ($nfc_card->enable_download_qr_code == '1')
                                             <div class="d-flex justify-content-center mt-4">
                                                 <a href="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
+                                                    download=""
                                                     class="btn btn-dark rounded-0 border-2 border-dark">Download
-                                                    QR <i class="fa-solid fa-file-arrow-down ps-2"></i></a>
+                                                    QR <i class="fa-solid fa-file-arrow-down ps-2"></i>
+                                                </a>
                                             </div>
                                         @endif
                                     </div>

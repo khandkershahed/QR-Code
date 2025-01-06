@@ -1070,7 +1070,7 @@
                                                 <div
                                                     class="d-flex w-100 flex-column justify-content-between px-4 py-3 align-items-center bg-dark">
                                                     <p class="mb-0 text-white">
-                                                        {{ $product->product_name }}</p>
+                                                        {{ \Illuminate\Support\Str::limit($product->product_name, 10, '...') }}</p>
                                                     <div class="w-100">
                                                         <div class="pt-3">
                                                             <h6 class="mb-0 text-white">
@@ -1087,8 +1087,8 @@
                                                             </h6>
                                                         </div>
                                                         <div class="pt-3">
-                                                            <button
-                                                                class="btn-sm btn btn-light rounded-0 w-100">View</button>
+                                                            <a href="{{ $product->product_url }}"
+                                                                class="btn-sm btn btn-light rounded-0 w-100">View</a>
                                                         </div>
                                                     </div>
                                                 </div>
