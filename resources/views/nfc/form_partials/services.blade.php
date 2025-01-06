@@ -69,10 +69,10 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="text-end d-flex justify-content-end">
-            <button id="nextservicesButton" class="btn btn-primary mt-6 d-flex align-items-center">
+            <a href="javascript:void(0)" onclick="goToTab(event, '#products')" class="btn btn-primary mt-6 d-flex align-items-center">
                 <span>Next</span>
                 <span><i class="fa-solid fa-arrow-right-long ps-2"></i></span>
-            </button>
+            </a>
         </div>
     </div>
 </div>

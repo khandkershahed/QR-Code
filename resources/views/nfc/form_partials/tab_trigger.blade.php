@@ -1134,95 +1134,21 @@
     </li>
 </ul>
 
-{{-- @push('scripts')
-<script>
-    document.getElementById("nextgeneralInfoButton").addEventListener("click", function(event) {
-    event.preventDefault();
-
-        // Activate the "VCard Templates" tab
-        var nextTab = new bootstrap.Tab(document.querySelector('a[href="#vcardTemplate"]'));
-        nextTab.show(); // Show the VCard Templates tab
-
-        // Optionally, you can scroll the page to the new tab if needed
-        document.querySelector('#vcardTemplate').scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-</script>
-<script>
-    document.getElementById("nextvcardTemplateButton").addEventListener("click", function(event) {
-    event.preventDefault();
-
-        // Activate the "VCard Templates" tab
-        var nextTab = new bootstrap.Tab(document.querySelector('a[href="#businessHours"]'));
-        nextTab.show(); // Show the VCard Templates tab
-
-        // Optionally, you can scroll the page to the new tab if needed
-        document.querySelector('#businessHours').scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-</script>
-<script>
-    document.getElementById("nextbusinessHoursButton").addEventListener("click", function(event) {
-    event.preventDefault();
-
-        // Activate the "VCard Templates" tab
-        var nextTab = new bootstrap.Tab(document.querySelector('a[href="#companies"]'));
-        nextTab.show(); // Show the VCard Templates tab
-
-        // Optionally, you can scroll the page to the new tab if needed
-        document.querySelector('#companies').scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-</script>
-<script>
-    document.getElementById("nextcompaniesButton").addEventListener("click", function(event) {
-    event.preventDefault();
-
-        // Activate the "VCard Templates" tab
-        var nextTab = new bootstrap.Tab(document.querySelector('a[href="#services"]'));
-        nextTab.show(); // Show the VCard Templates tab
-
-        // Optionally, you can scroll the page to the new tab if needed
-        document.querySelector('#services').scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-</script>
-<script>
-    document.getElementById("nextservicesButton").addEventListener("click", function(event) {
-    event.preventDefault();
-
-        // Activate the "VCard Templates" tab
-        var nextTab = new bootstrap.Tab(document.querySelector('a[href="#products"]'));
-        nextTab.show(); // Show the VCard Templates tab
-
-        // Optionally, you can scroll the page to the new tab if needed
-        document.querySelector('#products').scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-</script>
-<script>
-    document.getElementById("nextproductsButton").addEventListener("click", function(event) {
-    event.preventDefault();
-
-        // Activate the "VCard Templates" tab
-        var nextTab = new bootstrap.Tab(document.querySelector('a[href="#galleries"]'));
-        nextTab.show(); // Show the VCard Templates tab
-
-        // Optionally, you can scroll the page to the new tab if needed
-        document.querySelector('#galleries').scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-</script>
-@endpush --}}
-
 @push('scripts')
     <script>
+        function goToTab(event, target) {
+            event.preventDefault();
+            var nextTab = new bootstrap.Tab(document.querySelector('a[href="' + target + '"]'));
+            nextTab.show();
+            document.querySelector(target).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    </script>
+@endpush
+
+@push('scripts')
+    {{-- <script>
         document.getElementById("nextgeneralInfoButton").addEventListener("click", function(event) {
             event.preventDefault();
 
@@ -1334,17 +1260,19 @@
         });
     </script>
     <script>
-        document.getElementById("nextprivacyButton").addEventListener("click", function(event) {
-            event.preventDefault();
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById("nextprivacyButton").addEventListener("click", function(event) {
+                event.preventDefault();
 
-            var nextTab = new bootstrap.Tab(document.querySelector('a[href="#terms"]'));
-            nextTab.show();
-            document.querySelector('#terms').scrollIntoView({
-                behavior: 'smooth'
+                var nextTab = new bootstrap.Tab(document.querySelector('a[href="#terms"]'));
+                nextTab.show();
+                document.querySelector('#terms').scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
         });
     </script>
-    {{-- <script>
+    <script>
         document.getElementById("nexttermsButton").addEventListener("click", function(event) {
         event.preventDefault();
 
@@ -1354,7 +1282,7 @@
                 behavior: 'smooth'
             });
         });
-    </script> --}}
+    </script>
     <script>
         document.getElementById("nextfontsButton").addEventListener("click", function(event) {
             event.preventDefault();
@@ -1376,5 +1304,5 @@
                 behavior: 'smooth'
             });
         });
-    </script>
+    </script> --}}
 @endpush
