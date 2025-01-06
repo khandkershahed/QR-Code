@@ -319,9 +319,9 @@
         }
 
         .service-images img {
-            width: 600px !important;
-            height: 350px !important;
-            object-fit: cover;
+            height: 415px !important;
+            width: 100%;
+            object-fit: fill;
         }
 
         a {
@@ -764,13 +764,13 @@
                                                             <div class="services-slider">
                                                                 @foreach ($nfc_card->nfcService as $service)
                                                                     <div class="service-slide border rounded-2">
-                                                                        <div class="d-flex align-items-center">
+                                                                        <div class="">
                                                                             <div class="service-images">
                                                                                 <img class="rounded-2 img-fluid"
                                                                                     src="{{ !empty($service->service_icon) && file_exists(public_path('storage/nfc/service/' . optional($service)->service_icon)) ? asset('storage/nfc/service/' . optional($service)->service_icon) : asset('frontend/images/no_image.png') }}"
                                                                                     alt="" />
                                                                             </div>
-                                                                            <div class="ps-3">
+                                                                            <div class="p-3">
                                                                                 <a href="{{ !empty(optional($service)->service_url) ? optional($service)->service_url : 'javascript:void(0)' }}"
                                                                                     target="_blank"
                                                                                     rel="noopener noreferrer">
@@ -862,7 +862,7 @@
                                                                         alt="" />
                                                                     <div class="card-body">
                                                                         <h6 class="">
-                                                                            {{ $product->product_name }}
+                                                                            {{ \Illuminate\Support\Str::limit($product->product_name, 10, '') }}
                                                                         </h6>
                                                                         <p class="">
                                                                             @if ($product->product_currency == 'taka')
@@ -876,6 +876,10 @@
                                                                             @endif
                                                                             {{ $product->product_price }}
                                                                         </p>
+                                                                        <div class="pt-3">
+                                                                            <a href="{{ $product->product_url }}"
+                                                                                class="btn-sm btn btn-light rounded-0 w-100">View</a>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>

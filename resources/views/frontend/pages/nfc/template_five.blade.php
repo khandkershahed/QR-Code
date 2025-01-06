@@ -1296,7 +1296,7 @@
                                                                     </div>
                                                                     <div class="product-details mt-3 p-3">
                                                                         <h6 class="fw-bold">
-                                                                            {{ $product->product_name }}</h6>
+                                                                            {{ \Illuminate\Support\Str::limit($product->product_name, 10, '...') }}</h6>
                                                                          <br>
                                                                         <p class="text-black pt-3 mb-0">
                                                                             @if ($product->product_currency == 'taka')
@@ -1310,6 +1310,10 @@
                                                                             @endif
                                                                             {{ $product->product_price }}
                                                                         </p>
+                                                                        <div class="pt-3">
+                                                                            <a href="{{ $product->product_url }}"
+                                                                                class="btn-sm btn btn-light rounded-0 w-100">View</a>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </a>
