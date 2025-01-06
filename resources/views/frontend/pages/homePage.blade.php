@@ -975,7 +975,7 @@
                     centerMode: centerMode, // Enable or disable center mode
                     centerPadding: centerPadding, // Dynamic padding
                     slidesToShow: slidesToShow, // Dynamic slides to show
-                    autoplay: false,
+                    autoplay: true,
                     autoplaySpeed: 2000,
                     arrows: true, // Enables navigation arrows
                     prevArrow: '<button type="button" class="slick-prev">←</button>',
