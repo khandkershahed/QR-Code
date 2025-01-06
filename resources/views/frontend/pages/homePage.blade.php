@@ -139,10 +139,10 @@
                         <h3 class="text-center">Exclusive Metal Card Collection</h3>
                     </div>
                 </div>
-                <div class="col-lg-3">
-                    <div class="">
-                        @foreach ($cardProducts as $cardProduct)
-                            @if (str_contains(strtolower($cardProduct->name), 'metal'))
+                @foreach ($cardProducts as $cardProduct)
+                    @if (str_contains(strtolower($cardProduct->name), 'metal'))
+                        <div class="col-lg-3">
+                            <div class="">
                                 <div class="">
                                     <a href="{{ route('card.details', $cardProduct->slug) }}">
                                         <div class="card border-0 shadow-sm bg-light p-0">
@@ -191,10 +191,10 @@
                                         </div>
                                     </a>
                                 </div>
-                            @endif
-                        @endforeach
-                    </div>
-                </div>
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
             </div>
     </section>
     <section style="position: relative; z-index: 555;">
