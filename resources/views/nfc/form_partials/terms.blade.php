@@ -15,7 +15,7 @@
             <span class="indicator-label">Save Terms</span>
             <span class="indicator-progress">Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
         </button>
-        <a href="javascript:void(0)" onclick="bindNextButton()" class="btn btn-primary d-flex align-items-center">
+        <a href="javascript:void(0)" onclick="goToTab(event, '#fonts')" class="btn btn-primary d-flex align-items-center">
             <span>Next</span>
             <span><i class="fa-solid fa-arrow-right-long ps-2"></i></span>
         </a>
@@ -140,18 +140,18 @@
         }
 
         // Function to bind the Next button after HTML replacement
-        function bindNextButton() {
-                var nextTab = new bootstrap.Tab(document.querySelector(
-                'a[href="#fonts"]')); // Replace #fonts with the correct ID of the next tab
-                nextTab.show();
-                document.querySelector('#fonts').scrollIntoView({
-                    behavior: 'smooth'
-                });
-        }
+        // function bindNextButton() {
+        //         var nextTab = new bootstrap.Tab(document.querySelector(
+        //         'a[href="#fonts"]')); // Replace #fonts with the correct ID of the next tab
+        //         nextTab.show();
+        //         document.querySelector('#fonts').scrollIntoView({
+        //             behavior: 'smooth'
+        //         });
+        // }
 
-        // Reinitialize the "Next" button functionality on page load, in case it is already present
-        document.addEventListener('DOMContentLoaded', function() {
-            bindNextButton();
-        });
+        // // Reinitialize the "Next" button functionality on page load, in case it is already present
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     bindNextButton();
+        // });
     </script>
 @endpush

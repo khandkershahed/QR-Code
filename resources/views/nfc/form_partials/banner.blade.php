@@ -44,10 +44,10 @@
                 Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
             </span>
         </button>
-        <button id="nextbannerButton" class="btn btn-primary d-flex align-items-center">
+        <a href="javascript:void(0)" onclick="goToTab(event, '#testimonials')" class="btn btn-primary d-flex align-items-center">
             <span>Next</span>
             <span><i class="fa-solid fa-arrow-right-long ps-2"></i></span>
-        </button>
+        </a>
     </div>
 </form>
 

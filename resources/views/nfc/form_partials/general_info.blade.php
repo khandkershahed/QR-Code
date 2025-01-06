@@ -240,12 +240,12 @@
                 Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
             </span>
         </button>
-        <button class="btn btn-info mt-5 d-flex align-items-center" id="nextgeneralInfoButton">
+        <a href="javascript:void(0)" class="btn btn-info mt-5 d-flex align-items-center" onclick="goToTab(event, '#vcardTemplate')">
             <span>Next</span>
             <span>
                 <i class="fa-solid fa-arrow-right-long ps-2"></i>
             </span>
-        </button>
+        </a>
     </div>
 </form>
 
