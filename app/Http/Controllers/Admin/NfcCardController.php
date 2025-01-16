@@ -51,7 +51,8 @@ class NfcCardController extends Controller
     {
         $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
         $user = User::where('id', Auth::user()->id)->with('cardProducts')->first();
-        $userCardProduct = $user->cardProducts->where('status', 'unused')->first();
+        // $userCardProduct = $user->cardProducts->where('status', 'unused')->first();
+        $userCardProduct = optional($user->cardProducts->where('status', 'unused')->first());
         if ($userCardProduct) {
             $count = optional($userCardProduct)->count();
         } else {
