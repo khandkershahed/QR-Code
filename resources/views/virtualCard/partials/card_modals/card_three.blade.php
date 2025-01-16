@@ -1,262 +1,183 @@
-@include('virtualCard.partials.worldMapIcon')
-<style>
-    @import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
+{{-- <style>
+    @import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
 
-    .card-container-three {
-        font-family: "Titillium Web", sans-serif;
-        color: #fff;
+    .card-container {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
         align-items: center;
-        height: auto;
+        width: 365px;
     }
 
-    *,
-    :after,
-    :before {
-        box-sizing: border-box;
+    @media only screen and (max-width: 1500px) {
+        .card-container {
+            display: flex;
+            align-items: center;
+            width: 270px;
+        }
     }
 
-    .pull-left {
-        float: left;
-    }
-
-    .pull-right {
-        float: right;
-    }
-
-    .card-three-clearfix:after,
-    .card-three-clearfix:before {
-        content: "";
-        display: table;
-    }
-
-    .card-three-clearfix:after {
-        clear: both;
-        display: block;
-    }
-
-    /* .card {
-      width: 100%;
-      max-width: 300px;
-      height: 520px;
-      aspect-ratio: 300 / 285; Maintain the aspect ratio
-      margin: 10px;
-    } */
-
-    .credit-card-wrap .mk-icon-world-map:before,
-    .credit-card-wrap .credit-card-number:before {
-        content: "";
-        position: absolute;
-    }
-
-    .credit-card-wrap {
-        width: 460px;
-        height: 255px;
-        position: relative;
-        border-radius: 20px;
-        background: #5d4157;
-        background: -webkit-linear-gradient(to left, #5d4157, #a8caba);
-        background: linear-gradient(to left, #5d4157, #a8caba);
-    }
-
-    .credit-card-wrap .mk-icon-world-map {
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+    .nfc_card_one {
         width: 100%;
-        height: 100%;
-        overflow: hidden;
-        position: absolute;
-        border-radius: inherit;
+        height: 520px;
+        aspect-ratio: 300 / 285;
+        margin: 10px;
     }
 
-    .credit-card-wrap .mk-icon-world-map:before {
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 0;
-        background: rgba(0, 0, 0, 0.4);
-        background: radial-gradient(circle at 0% 50%,
-                rgba(96, 16, 48, 0) 9px,
-                rgba(0, 0, 0, 0.2) 10px,
-                rgba(96, 16, 48, 0) 11px) 0px 10px,
-            radial-gradient(at 100% 100%,
-                rgba(96, 16, 48, 0) 9px,
-                rgba(255, 255, 255, 0.2) 10px,
-                rgba(96, 16, 48, 0) 11px),
-            rgba(0, 0, 0, 0.6);
-        background-size: 20px 20px;
+    .card-front-one {
+        background-image: url('{{ asset('frontend/images/card_images/card_one_front.png') }}');
+        background-repeat: no-repeat;
+        background-size: cover;
+        object-fit: cover;
+        background-position: center;
     }
 
-    .credit-card-wrap .credit-card-inner {
-        z-index: 100;
-        padding: 30px;
-        width: inherit;
-        height: inherit;
-        position: relative;
+    .card-back-one {
+        background-image: url('{{ asset('frontend/images/card_images/card_one_back.png') }}');
+        background-repeat: no-repeat;
+        background-size: cover;
+        object-fit: cover;
+        background-position: center;
     }
 
-    .credit-card-wrap .credit-logo .text {
-        font-size: 32px;
-        font-weight: 500;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.8);
+    .template-logo-ebox {
+        margin-top: 230px;
     }
 
-    .credit-card-wrap .credit-logo .shape {
-        width: 40px;
+    .template-logo-back {
+        margin-top: 75px;
+    }
+
+    .template-title {
+        font-family: "Chakra Petch", sans-serif;
+        font-weight: 800;
+        color: white;
+    }
+
+    .icons-box {
+        background-color: #fff;
+        color: #000;
+        width: 100px;
         height: 40px;
-        display: inline-block;
-        background-color: #dc143c;
-        border-radius: 40px 0 40px 40px;
-        transform: rotate(-45deg);
+        padding: 10px;
     }
 
-    .credit-card-wrap .credit-logo .shape>.txt {
-        color: #ccc;
-        display: block;
-        width: inherit;
-        font-size: 14px;
-        height: inherit;
-        font-weight: 500;
-        line-height: 40px;
-        text-align: center;
-        transform: rotate(45deg);
+    .card-back-one p {
+        font-size: 15px;
     }
 
-    .credit-card-wrap .credit-font {
-        color: #fff;
-        font-size: 18px;
-        font-family: "Titillium Web", sans-serif;
+    .nfc_qr {
+        width: 210px;
     }
 
-    .credit-card-wrap .credit-card-number {
-        font-size: 26px;
-        text-align: center;
-        position: relative;
-        letter-spacing: 2px;
-        margin-bottom: 20px;
-        white-space: nowrap;
-    }
-
-    .credit-card-wrap .credit-card-number:before {
-        top: 100%;
-        font-size: 12px;
-        font-family: Roboto;
-        content: attr(data-text);
-    }
-
-    .credit-card-wrap .credit-card-date {
-        color: #fff;
-        text-align: center;
-    }
-
-    .credit-card-wrap .credit-card-date .title {
-        width: 50px;
-        color: #deb887;
-        font-size: 12px;
-        line-height: 14px;
-        text-align: right;
-        display: inline-block;
-        text-transform: uppercase;
-    }
-
-    .credit-card-wrap .credit-author {
-        padding-top: 10px;
-    }
-
-    .credit-card-wrap .mk-icon-sim {
-        width: 55px;
-        height: 40px;
-        margin: 20px 0;
-        border-radius: 8px;
-        background-color: #fdd76f;
-    }
-
-    .credit-card-wrap .mk-icon-visa {
-        width: 90px;
-        height: 45px;
-        bottom: -10px;
-        position: relative;
-    }
-
-    .credit-card-wrap .card-three-footer {
-        left: 30px;
-        right: 30px;
-        bottom: 30px;
-        position: absolute;
-    }
-
-    @media (max-width: 576px) {
-        .card-container-three {
-            flex-direction: column;
-            width: 335px;
-            margin: auto;
+    @media (max-width: 767px) {
+        .title-devider-tem-one {
+            left: 30px;
         }
 
-        .credit-card-wrap {
-            width: 350px;
-            height: 280px;
+        .card-mail-one {
+            top: 20px;
         }
     }
 
     @media (max-width: 1366px) {
-        .credit-card-wrap {
-            width: 400px;
-            height: 255px;
+        .icons-box {
+            background-color: #fff;
+            color: #000;
+            width: 35px !important;
+            height: 40px;
+            padding: 10px;
+        }
+
+        .punch-card-container,
+        .punch-card-container-back {
+            max-width: 100%;
+        }
+
+        .nfc-preview-box {
+            width: 335px;
+            margin: auto;
+            height: auto;
+        }
+
+        .nfc_card_one {
+            width: 100%;
+            height: 430px;
+        }
+
+        .template-logo-back {
+            margin-top: 30px;
+        }
+
+        .nfc_qr {
+            width: 125px;
+        }
+
+        .main-content-tem2 h1 {
+            margin-left: -25px;
         }
     }
-</style>
-<div class="container">
+</style> --}}
+
+{{-- <div class="container">
     <div class="row mt-5">
-        <div class="card-container-three">
-            <div class="credit-card-wrap">
-                <div class="mk-icon-world-map"></div>
-                <div class="credit-card-inner">
-                    <header class="header-three">
-                        <div class="credit-logo">
-                            <span class="text card_name">{{ $nfc_card->card_name }}</span>
-                            <p class="pt-3 ps-2 mb-0 card_designation">{{ $nfc_card->card_designation }}</p>
-                            <p class="ps-2 card_phone">{{ $nfc_card->card_phone }}</p>
-                        </div>
-                    </header>
-                    <footer class="card-three-footer">
-                        <div class="card-three-clearfix">
-                            <div class="pull-left">
-                                {{-- <div class="credit-font credit-author">GoFlixza</div> --}}
-                                <div class="credit-card-date text-start">
-                                    <span class="credit-font ps-0 card_email">{{ $nfc_card->card_email }}</span>
-                                    <br />
-                                    <span class="credit-font ps-0 card_address">
-                                        {{ $nfc_card->card_address }}
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="pull-right">
-                                @if (!empty($nfc_card->card_logo) && file_exists(public_path('storage/nfc/' . $nfc_card->card_logo)))
-                                    <img class="" width="60px"
-                                        src="{{ asset('storage/nfc/' . $nfc_card->card_logo) }}" alt="" />
-                                @endif
-                            </div>
-                        </div>
-                    </footer>
-                </div>
-            </div>
-            <div class="credit-card-wrap mt-4">
-                <div class="mk-icon-world-map"></div>
-                <div class="credit-card-inner d-flex justify-content-center align-items-center"
-                    style="background-color: #cccccc6e; border-radius: 20px">
-                    <div>
-                        @if (!empty($nfc_card->nfc->nfc_qr) && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc->nfc_qr)))
-                            <img class="nfc_qr" width="100px"
-                                src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc->nfc_qr) }}" alt="" />
-                        @endif
+        <div class="card-container">
+            <div class="nfc_card_one border-0 card-front-one rounded-0">
+                <div>
+                    <div class="d-flex justify-content-center template-logo-ebox">
+                        <img class="img-fluid card_logo" width="100px" src="{{ asset('frontend/assets/images/logos/logo.png') }}"
+                            alt="" />
+                    </div>
+
+                    <div class="text-center template-title">
+                        <h2 class="card_name text-white">GoFlixza</h2>
+                        <p class="card_designation text-white">Frontend Designer</p>
                     </div>
                 </div>
+            </div>
+            <div class="nfc_card_one border-0 card-back-one rounded-0">
+                <div>
+                    <div class="d-flex justify-content-center template-logo-back">
+                        <img class="img-fluid bg-white nfc_qr" width="150px"
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/800px-QR_code_for_mobile_English_Wikipedia.svg.png"
+                            alt="" />
+                    </div>
+
+                    <div class="template-title pt-5" style="width: 60%; margin: auto">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <div class="icons-box w-25 text-center">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="ps-3 w-75">
+                                <p class="mb-0 card_phone">01620222616</p>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center mt-4">
+                            <div class="icons-box w-25 text-center">
+                                <i class="fa-solid fa-house-flag"></i>
+                            </div>
+                            <div class="ps-3 w-75">
+                                <p class="mb-0 card_address">Khilkhet, Dhaka, Bangladesh</p>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center mt-4">
+                            <div class="icons-box w-25 text-center">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="ps-3 w-75">
+                                <p class="mb-0 card_email">info@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> --}}
+
+<div class="container p-0">
+    <div class="row">
+        <div class="col-lg-12">
+            <div>
+                <img class="img-fluid" src="{{ asset('frontend/images/virtual_card/card-3.jpg') }}" alt="">
             </div>
         </div>
     </div>

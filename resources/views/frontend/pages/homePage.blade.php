@@ -65,6 +65,7 @@
         .product-slider-card .card img {
             height: 250px;
             object-fit: cover;
+            width: 100%;
         }
     </style>
     <section id="about" class="hero-area-nine pt-165 rpt-150 pb-110 rpb-80 rel z-1">

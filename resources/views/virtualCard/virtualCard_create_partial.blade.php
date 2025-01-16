@@ -2,11 +2,8 @@
     .custom-row {
         display: flex;
         gap: 0.5rem;
-        /* Adjust the gap as needed */
         padding-top: 2.5rem;
-        /* Adjust the padding as needed */
         padding-bottom: 2.5rem;
-        /* Adjust the padding as needed */
     }
 
     .custom-col {
@@ -19,6 +16,29 @@
         flex: 1;
     }
 </style>
+<section class="mt-10 d-none">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="alert alert-light mt-40 p-50 d-flex justify-content-center align-items-center"
+                style="height: 80vh">
+                <div class="text-center">
+                    <div>
+                        <img class="img-fluid" width="100px" src="{{ asset('images/no-nfc-card.jpg') }}" alt="">
+                    </div>
+                    <h1 class="fs-1" style="font-size: 50px !important;">No NFC Card Available!</h1>
+                    <p class="py-10">Your have <span class="text-danger fw-bold">0</span> NFC card to use. You need to purchase an NFC card first. After that, <br> you can customize it or
+                        link your
+                        virtual card to the NFC card.</p>
+                    <a href="{{ route('homePage') }}" class="btn text-white" style="background-color: #7239e9; ">
+                        <span class="btn-label">
+                            Purchase Now
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <div class="row g-2 py-10">
     <div class="col-lg-6 custom-col">
         <div class="card content-column">
@@ -462,7 +482,7 @@
                             <div class="card flex-grow-1 rounded-0">
                                 <div class="card-header text-center border-0">
                                     <div class="pt-15 pb-15 ps-5 w-100">
-                                        <h2 class="text-success">Shipping Address For NFC Card Delivery!</h2>
+                                        <h2 class="">Shipping Address For NFC Card Delivery!</h2>
                                     </div>
                                 </div>
                                 <div
@@ -473,13 +493,6 @@
                         </div>
                         <div class="flex-column" data-kt-stepper-element="content">
                             <div class="card flex-grow-1 rounded-0">
-                                <div class="card-header text-center border-0">
-                                    <div class="pt-15 pb-15 ps-5 w-100">
-                                        <h2 class="fs-4">NFC Card Charge : <strong
-                                                class="text-success fs-1">49.99$</strong></h2>
-                                        <p>Your NFC Card is almost ready. Make Payment to complete the process!</p>
-                                    </div>
-                                </div>
                                 <div
                                     class="centered-card-body card-body d-flex flex-column justify-content-between mb-10 pt-0">
                                     @include('virtualCard.partials.payment')
@@ -526,7 +539,7 @@
             </div>
 
             <div
-                class="card-body custom-card-body overflow-auto px-0 pt-3 d-flex justify-content-center align-items-center">
+                class="card-body custom-card-body overflow-auto px-0 pt-3 d-flex justify-content-center align-items-center" style="background-color: #ebebeb;">
                 @include('virtualCard.partials.virtual_card_preview')
             </div>
         </div>

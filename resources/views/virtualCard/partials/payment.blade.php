@@ -29,9 +29,29 @@
             </div>
         @endif
     @else
-        <div class="row p-5 bg-light">
-            <h5 class="text-center">Submit to generate Card</h5>
-        </div>
+        <section class="mt-10">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="alert alert-light mt-40 p-50 d-flex justify-content-center align-items-center">
+                        <div class="text-center">
+                            <div class="mb-20">
+                                <img class="img-fluid" width="100px" src="{{ asset('images/no-nfc-card.jpg') }}"
+                                    alt="">
+                            </div>
+                            <h1 class="fs-1" style="font-size: 45px !important;">NFC Card Charge</h1>
+                            <p class="py-10">Your NFC Card is almost ready. <br> Make Payment to complete the process!
+                            </p>
+                            <a href="{{ route('homePage') }}" class="btn text-white"
+                                style="background-color: #7239e9; ">
+                                <span class="btn-label">
+                                    Submit to generate Card
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     @endif
 </div>
 

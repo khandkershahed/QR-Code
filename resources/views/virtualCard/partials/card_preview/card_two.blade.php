@@ -1,4 +1,4 @@
-<style>
+{{-- <style>
     @import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
 
     .card-container-two {
@@ -12,7 +12,6 @@
         max-width: 300px;
         height: 520px;
         aspect-ratio: 300 / 285;
-        /* Maintain the aspect ratio */
         margin: 10px;
     }
 
@@ -20,7 +19,6 @@
         .card_two {
             height: 100% !important;
             width: 100% !important;
-            /* max-width: 230px; */
         }
     }
 
@@ -73,7 +71,6 @@
     }
 
     .main-content-tem2 {
-        /* margin-top: 45px; */
         margin-top: 26%;
     }
 
@@ -222,7 +219,6 @@
         <div class="card-container-two" style="background: transparent;">
             <div class="card_two border-0 card-two-front rounded-0">
                 <div class="">
-                    <!-- Company Logo -->
                     <div class="d-flex justify-content-center">
                         <div class="two-company-logo">
                             <img class="card_logo" width="100px" src="{{ asset('frontend/assets/images/logos/logo.png') }}"
@@ -230,12 +226,10 @@
                         </div>
                     </div>
 
-                    <!-- Front Info -->
                     <div class=" template-two-title main-content-tem2 w-100">
                         <h3 class="text-white text-center card_name">Rasheduzzaman</h3>
                         <p class="text-center card_designation pb-5">Frontend Designer</p>
-                        {{-- <p class="pb-4 text-white text-start tow-company-name">
-                            GoFlixza</p> --}}
+                            GoFlixza</p>
                         <div class="content-box-two">
                             <div class="half pt-5">
                                 <div class="icons-box-two text-center">
@@ -269,12 +263,10 @@
             </div>
             <div class="card_two border-0 card-two-back rounded-0">
                 <div>
-                    <!-- Company Logo -->
                     <div class="d-flex justify-content-center template-two-logo-back">
                         <img class="img-fluid bg-white" width="170px"
                             src="https://www.goflixza.com/storage/nfc/qrs/NFC7201_nfc_qr.png" alt="">
                     </div>
-                    <!-- Front Info -->
                     <div class="template-two-title pt-5 tempmail ">
                         <div class="half mt-4">
                             <div class="w-100 mx-auto email-box-area">
@@ -283,6 +275,15 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div> --}}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div>
+                <img class="img-fluid" src="{{ asset('frontend/images/virtual_card/card-2.jpg') }}" alt="">
             </div>
         </div>
     </div>

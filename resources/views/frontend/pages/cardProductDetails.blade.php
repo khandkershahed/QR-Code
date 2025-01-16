@@ -451,7 +451,7 @@
                     </div>
                 </div>
                 <div class="col-lg-12">
-                    <div class="alert alert-warning mt-40 p-50" role="alert">
+                    <div class="alert alert-warning mt-40 p-50" style="border-radius: 22px;" role="alert">
                         <h2 class="mb-40">Important Notice:</h2>
                         <div class="d-flex">
                             <ul class="mb-0 ps-0">
@@ -465,8 +465,7 @@
                             <ul class="mb-0 ps-5">
                                 <li class="mb-2"><i class="fa-solid fa-arrow-right"></i> Review transaction limits
                                     in the settings section.</li>
-                                <li class="mb-2"><i class="fa-solid fa-arrow-right"></i> Enable two-factor
-                                    authentication for enhanced security.</li>
+                                <li class="mb-2"><i class="fa-solid fa-arrow-right"></i> Your all social links in a platform.</li>
                                 <li class="mb-2"><i class="fa-solid fa-arrow-right"></i> Check your email regularly
                                     for important updates and offers.</li>
                             </ul>

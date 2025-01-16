@@ -1,4 +1,4 @@
-@include('virtualCard.partials.worldMapIcon')
+{{-- @include('virtualCard.partials.worldMapIcon')
 <style>
     @import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
 
@@ -231,7 +231,7 @@
                     <footer class="card-three-footer">
                         <div class="card-three-clearfix">
                             <div class="pull-left">
-                                {{-- <div class="credit-font credit-author">GoFlixza</div> --}}
+                                {{-- <div class="credit-font credit-author">GoFlixza</div>
                                 <div class="credit-card-date text-start">
                                     <span class="credit-font ps-0 card_email">info@gmail.com</span>
                                     <br />
@@ -259,6 +259,17 @@
                             width="100px" />
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div> --}}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div>
+                <img class="img-fluid" src="{{ asset('frontend/images/virtual_card/card-3.jpg') }}" alt="">
             </div>
         </div>
     </div>

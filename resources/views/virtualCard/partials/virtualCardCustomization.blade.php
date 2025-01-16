@@ -1,6 +1,6 @@
 <div class="container p-0">
     <div class="row p-5 bg-light">
-        <div class="col-lg-8 offset-lg-2">
+        <div class="col-lg-4">
             <div class="fv-row my-3">
                 <x-metronic.label for="card_font_style" class="form-label required">
                     {{ __('Select NFC') }}</x-metronic.label>
@@ -12,6 +12,43 @@
                             {{ optional($nfc_card->nfcData)->last_name }}</option>
                     @endforeach
                 </select>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="fv-row my-3">
+                <x-metronic.label for="card_bg_back_color" class="form-label">
+                    {{ __('Card Color') }}
+                </x-metronic.label>
+                <div class="d-flex">
+                    <!-- Select Dropdown for Color Options -->
+                    <select id="card_bg_back_color" class="form-control form-control-outline mb-3 mb-lg-0 w-75"
+                        onchange="updateColorInput(this)">
+                        <option value="#000000">Black</option>
+                        <option value="#FFFFFF">White</option>
+                        <option value="#0000FF">Blue</option>
+                        <option value="#FF0000">Red</option>
+                        <option value="#008000">Green</option>
+                    </select>
+
+                    <!-- Input Field to Show Selected Color -->
+                    <input id="selected_color_display" type="color" class="form-control w-25 p-0 form-control-outline"
+                        name="selected_color" />
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="fv-row my-3">
+                <x-metronic.label for="card_type" class="form-label">
+                    {{ __('Card Type') }}
+                </x-metronic.label>
+                <div class="d-flex">
+                    <!-- Select Dropdown for Color Options -->
+                    <select class="form-control form-control-outline mb-3 mb-lg-0" name="card_type">
+                        <option disabled>Choose</option>
+                        <option value="Metal">Metal</option>
+                        <option value="Plastic">Plastic</option>
+                    </select>
+                </div>
             </div>
         </div>
         <div class="col-lg-6">
@@ -198,6 +235,16 @@
                     // For debugging
                     console.log("Input Name:", inputName, "Input Value:", inputValue);
                 });
+        }
+    </script>
+
+    <script>
+        function updateColorInput(selectElement) {
+            const selectedColor = selectElement.value;
+            const colorDisplayInput = document.getElementById('selected_color_display');
+
+            // Update the color input field's value
+            colorDisplayInput.value = selectedColor;
         }
     </script>
 @endpush

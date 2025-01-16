@@ -212,8 +212,8 @@
                         <i class="fa-solid fa-xmark fs-1"></i>
                     </button>
                 </div>
-                <div class="card">
-                    <div class="card-body pt-0">
+                <div class="card p-0">
+                    <div class="card-body p-0">
                         <div id="card-container">
                             @if (optional($nfc_card)->virtual_card_template == 'virtual-card-one')
                                 @include('virtualCard.partials.card_modals.card_one')

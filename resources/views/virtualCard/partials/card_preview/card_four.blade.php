@@ -1,4 +1,4 @@
-<style>
+{{-- <style>
     @import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
 
     .card-container-four {
@@ -160,7 +160,7 @@
                                 <div class="ps-3 w-75 pt-4">
                                     <p class="mb-0 text-start ps-2">www.portfolio.com</p>
                                 </div>
-                            </div> --}}
+                            </div>
                             <div class="d-flex justify-content-center align-items-center pt-2">
                                 <div class="ps-3 w-75 pt-4">
                                     <p class="mb-0 text-start ps-2 text-black card_phone">01620222616</p>
@@ -186,7 +186,7 @@
                                 alt="" />
                             {{-- <div>
                                 <h4>GoFlixza</h4>
-                            </div> --}}
+                            </div>
                         </div>
                     </div>
                     <div class="tem-4-qr">
@@ -195,6 +195,17 @@
                             alt="" />
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div> --}}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div>
+                <img class="img-fluid" src="{{ asset('frontend/images/virtual_card/card-4.jpg') }}" alt="">
             </div>
         </div>
     </div>
