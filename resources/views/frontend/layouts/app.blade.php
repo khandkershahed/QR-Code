@@ -108,7 +108,7 @@
     <!-- Custom JS -->
     <script src="{{ asset('frontend/assets/js/script.js') }}"></script>
     <!-- FontAwesome Icon Kit -->
-    <script src="{{ asset('frontend/assets/js/fontawesome.js') }}" crossorigin="anonymous"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <!-- SweetAlert2 for Notifications -->
     <script src="{{ asset('frontend/assets/js/sweetalert2@11.js') }}"></script>
 

@@ -1,5 +1,4 @@
 <x-frontend-app-layout :title="'GoFlixza || Your Hub for QR, Bar Codes, NFC V.Cards'">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         .product-slider-card .slick-slide {
             margin-top: 25px;
@@ -96,7 +95,7 @@
                         </div>
                         <ul class="icon-list pt-15">
                             <li>
-                                <i class="fa-solid fa-circle-check"></i> Free 14-day trial
+                                <i class="fas fa-circle-check"></i> Free 14-day trial
                             </li>
                             <li>
                                 <i class="fas fa-circle-check"></i> No credit card
@@ -135,105 +134,69 @@
     <!-- Hero area End -->
     <section style="position: relative; z-index: 555;">
         <div class="container pb-50">
-            <div class="row justify-content-center">
-                <div class="col-xl-6 col-lg-9 col-md-11">
-                    <div class="section-title text-center mb-45 aos-init aos-animate" data-aos="fade-up"
-                        data-aos-duration="1500" data-aos-offset="50">
-                        <h2>Explore Our Pricing Package <br> and choose your plan</h2>
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-12">
+                    <div class="pb-50">
+                        <h3 class="text-center">Exclusive Metal Card Collection</h3>
                     </div>
                 </div>
-                <div class="col-lg-7 text-center aos-init aos-animate" data-aos="fade-up" data-aos-delay="50"
-                    data-aos-duration="1500" data-aos-offset="50">
-                    <span class="save-percent"
-                        style="background-image: url(https://html.webtend.net/2024/akpager/assets/images/shapes/title-shape.png);">Save
-                        25%</span>
-                    <ul class="nav pricing-tab mb-55" role="tablist">
-                        <li>
-                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#monthly">Monthly</button>
-                        </li>
-                        <li>
-                            <button class="nav-link active" data-bs-toggle="tab"
-                                data-bs-target="#yearly">Yearly</button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-xl-4 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
-                    data-aos-duration="1500" data-aos-offset="50">
-                    <div class="pricing-item style-five">
-                        <div class="title-price">
-                            <div class="d-flex">
-                                <h5 class="title">Individual</h5>
-                                <div class="price ps-3"><span class="prev">$</span>15.<span class="next">/m</span>
+                @foreach ($cardProducts as $cardProduct)
+                    @if (str_contains(strtolower($cardProduct->name), 'metal'))
+                        <div class="col-lg-3">
+                            <div class="">
+                                <div class="">
+                                    <a href="{{ route('card.details', $cardProduct->slug) }}">
+                                        <div class="card border-0 shadow-sm bg-light p-0">
+                                            <div class="card-header border-0 p-0">
+                                                <div class="d-flex justify-content-center">
+                                                    <img src="{{ asset('storage/' . $cardProduct->thumbnail_image) }}"
+                                                        alt="{{ $cardProduct->name }}"
+                                                        onerror="this.onerror=null;this.src='{{ asset('frontend/newimage/blognoimage.webp') }}';">
+                                                </div>
+                                                <div class="p-3">
+                                                    <div>
+                                                        <h6 class="mb-0">{{ $cardProduct->name }}</h6>
+                                                    </div>
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <h6 class="mb-0 pt-3 text-danger">
+                                                            @if ($cardProduct->currency == 'eur')
+                                                                €
+                                                            @elseif ($cardProduct->currency == 'gbp')
+                                                                £
+                                                            @elseif ($cardProduct->currency == 'usd')
+                                                                $
+                                                            @else
+                                                                $
+                                                            @endif
+                                                            {{ $cardProduct->package_price }}
+                                                            {{ $cardProduct->type }}
+                                                        </h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="">
+                                                    <div style="height: 60px;"
+                                                        class="pt-2 d-flex justify-content-start align-items-center">
+                                                        <p class="mb-0 package-details text-start">
+                                                            {!! implode(' ', array_slice(explode(' ', strip_tags($cardProduct->short_description)), 0, 15)) !!}...
+                                                        </p>
+                                                    </div>
+                                                    <div class="mt-4">
+                                                        <a href="{{ route('card.details', $cardProduct->slug) }}"
+                                                            class="theme-btn style-two rounded-0 btn-sm"
+                                                            style="width: 100%;">Details</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
-                            <ul class="nav pricing-tab" role="tablist">
-                                <li>
-                                    <button class="nav-link" data-bs-toggle="tab"
-                                        data-bs-target="#monthly">Monthly</button>
-                                </li>
-                                <li>
-                                    <button class="nav-link active" data-bs-toggle="tab"
-                                        data-bs-target="#yearly">Yearly</button>
-                                </li>
-                            </ul>
                         </div>
-                        <hr>
-                        <div class="text">Ideal for solopreneurs.
-                        </div>
-                        <ul class="icon-list">
-                            <li><i class="fa-solid fa-check"></i> 2 Limited sites available</li>
-                            <li><i class="fa-solid fa-check"></i> 1 GB storage per site</li>
-                            <li><i class="fa-solid fa-check"></i> Up to 5 pages per site</li>
-                            <li class="hide"><i class="fa-solid fa-check"></i> Free SSL for custom domain</li>
-                            <li class="hide"><i class="fa-solid fa-check"></i> Connect custom domain</li>
-                        </ul>
-                        <a href="#" class="theme-btn style-two w-100">Choose Package <i
-                                class="fas fa-arrow-right"></i></a>
-                        <div class="footer-text text-center">See all features <i
-                            class="fas fa-arrow-right"></i></div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100"
-                    data-aos-duration="1500" data-aos-offset="50">
-                    <div class="pricing-item style-five">
-                        <div class="title-price">
-                            <div class="d-flex">
-                                <h5 class="title color-two">Teams</h5>
-                                <div class="price ps-3"><span class="prev">$</span>35.<span
-                                        class="next">/m</span>
-                                </div>
-                            </div>
-                            <ul class="nav pricing-tab" role="tablist">
-                                <li>
-                                    <button class="nav-link active" data-bs-toggle="tab"
-                                        data-bs-target="#monthly">Monthly</button>
-                                </li>
-                                <li>
-                                    <button class="nav-link " data-bs-toggle="tab"
-                                        data-bs-target="#yearly">Yearly</button>
-                                </li>
-                            </ul>
-                        </div>
-                        <hr>
-                        <div class="text">Perfect for Client facing teams.
-                        </div>
-                        <ul class="icon-list">
-                            <li><i class="fa-solid fa-check"></i> 2 Limited sites available</li>
-                            <li><i class="fa-solid fa-check"></i> 1 GB storage per site</li>
-                            <li><i class="fa-solid fa-check"></i> Up to 5 pages per site</li>
-                            <li><i class="fa-solid fa-check"></i> Free SSL for custom domain</li>
-                            <li class="hide"><i class="fa-solid fa-check"></i> Connect custom domain</li>
-                        </ul>
-                        <a href="#" class="theme-btn style-two w-100">Choose Package <i
-                                class="fas fa-arrow-right"></i></a>
-                        <div class="footer-text text-center">See all features <i
-                            class="fas fa-arrow-right"></i></div>
-                    </div>
-                </div>
+                    @endif
+                @endforeach
             </div>
-        </div>
     </section>
     <section style="position: relative; z-index: 555;">
         <div class="container pb-50">
