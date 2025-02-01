@@ -8771,7 +8771,7 @@ a.theme-btn.style-four:hover {
 }
 
 .pricing-item.style-five {
-    background: white;
+    background: #eee;
     border: 1px solid var(--border-color);
     padding-top: 40px;
     padding-bottom: 40px;
@@ -15793,4 +15793,66 @@ a.theme-btn.style-four:hover {
 .quantity-input::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.pricing-switch input[type="checkbox"] {
+    visibility: hidden;
+    display: none;
+}
+
+.pricing-switch *,
+.pricing-switch ::after,
+.pricing-switch ::before {
+    box-sizing: border-box;
+}
+
+.pricing-switch .switch {
+    width: 50px;
+    height: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+.pricing-switch .slider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 30px;
+    box-shadow: 0 0 0 2px #777, 0 0 4px #777;
+    cursor: pointer;
+    border: 4px solid transparent;
+    overflow: hidden;
+    transition: 0.2s;
+}
+
+.pricing-switch .slider:before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: #ff7a5d;
+    border-radius: 30px;
+    transform: translateX(-30px);
+    transition: 0.2s;
+}
+
+.pricing-switch input:checked + .slider:before {
+    transform: translateX(30px);
+    background-color: limeGreen;
+}
+
+.pricing-switch input:checked + .slider {
+    box-shadow: 0 0 0 2px limeGreen, 0 0 8px limeGreen;
+}
+
+.text-success {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.pricing-container {
+    margin-bottom: 30px;
+    text-align: center;
 }
