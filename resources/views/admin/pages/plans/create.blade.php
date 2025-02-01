@@ -40,6 +40,43 @@
                                 <x-metronic.input id="interval" type="number" name="interval" :value="old('interval')"
                                     placeholder="Enter Days" required />
                             </div>
+                            <div class="col-lg-6 mb-5">
+                                <x-metronic.label for="type"
+                                    class="col-form-label required fw-bold fs-6">{{ __('Plan For') }}</x-metronic.label>
+                                <x-metronic.select-option id="type" name="type" data-hide-search="true"
+                                    data-placeholder="Select an option" onchange="toggleInputs()" required>
+                                    <option></option>
+                                    <option value="nfc">NFC</option>
+                                    <option value="qr">QR</option>
+                                    <option value="barcode">BarCode</option>
+                                    <option value="card">Card</option>
+                                </x-metronic.select-option>
+                            </div>
+                            <div class="col-lg-6 mb-5" id="qr-input" style="display: none;">
+                                <x-metronic.label for="qr"
+                                    class="col-form-label fw-bold fs-6">{{ __('Number of QR Code') }}</x-metronic.label>
+                                <x-metronic.input id="qr" type="number" name="qr" :value="old('qr')"
+                                    placeholder="Enter QR Code Count" />
+                            </div>
+
+                            <!-- NFC Input -->
+                            <div class="col-lg-6 mb-5" id="nfc-input" style="display: none;">
+                                <x-metronic.label for="nfc"
+                                    class="col-form-label fw-bold fs-6">{{ __('Number of NFC Card') }}</x-metronic.label>
+                                <x-metronic.input id="nfc" type="number" name="nfc" :value="old('nfc')"
+                                    placeholder="Enter NFC Card Count" />
+                            </div>
+
+                                <div class="col-lg-6 mb-5 card-input" style="display: none;">
+                                    <x-metronic.label for="card_type"
+                                        class="col-form-label required fw-bold fs-6">{{ __('Select a Card Type') }}</x-metronic.label>
+                                    <x-metronic.select-option id="card_type" name="card_type" data-hide-search="true"
+                                        data-placeholder="Select an option" required>
+                                        <option></option>
+                                        <option value="team">Team</option>
+                                        <option value="individual">Individual</option>
+                                    </x-metronic.select-option>
+                                </div>
 
                             <!-- Price Input -->
                             <div class="col-lg-6 mb-5">
@@ -62,33 +99,9 @@
                             </div>
 
                             <!-- Plan Type Selector -->
-                            <div class="col-lg-6 mb-5">
-                                <x-metronic.label for="type"
-                                    class="col-form-label required fw-bold fs-6">{{ __('Plan For') }}</x-metronic.label>
-                                <x-metronic.select-option id="type" name="type" data-hide-search="true"
-                                    data-placeholder="Select an option" onchange="toggleInputs()" required>
-                                    <option></option>
-                                    <option value="nfc">NFC</option>
-                                    <option value="qr">QR</option>
-                                    <option value="barcode">BarCode</option>
-                                </x-metronic.select-option>
-                            </div>
 
                             <!-- QR Input -->
-                            <div class="col-lg-6 mb-5" id="qr-input" style="display: none;">
-                                <x-metronic.label for="qr"
-                                    class="col-form-label fw-bold fs-6">{{ __('Number of QR Code') }}</x-metronic.label>
-                                <x-metronic.input id="qr" type="number" name="qr" :value="old('qr')"
-                                    placeholder="Enter QR Code Count" />
-                            </div>
 
-                            <!-- NFC Input -->
-                            <div class="col-lg-6 mb-5" id="nfc-input" style="display: none;">
-                                <x-metronic.label for="nfc"
-                                    class="col-form-label fw-bold fs-6">{{ __('Number of NFC Card') }}</x-metronic.label>
-                                <x-metronic.input id="nfc" type="number" name="nfc" :value="old('nfc')"
-                                    placeholder="Enter NFC Card Count" />
-                            </div>
 
                             <!-- Status Selector -->
                             <div class="col-lg-6 mb-5">
@@ -170,6 +183,7 @@
                 const type = document.getElementById('type').value;
                 document.getElementById('qr-input').style.display = type === 'qr' ? 'block' : 'none';
                 document.getElementById('nfc-input').style.display = type === 'nfc' ? 'block' : 'none';
+                document.querySelector('.card-input').style.display = type === 'card' ? 'block' : 'none';
             }
 
             $(document).ready(function() {
