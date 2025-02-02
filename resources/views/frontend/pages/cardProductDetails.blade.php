@@ -732,7 +732,7 @@
         <script>
             $(document).ready(function() {
                 // Enable Next Button if plan or occupation is selected
-                $('input[name="plan"], input[name="occupation"]').on('change', function() {
+                $('input[name="plan"], input[name="card_preference"]').on('change', function() {
                     $('#nextBtn2').prop('disabled', false);
                 });
 
@@ -748,7 +748,7 @@
                 if (step === 1 && $('input[name="plan"]:checked').length) {
                     $('#step1').hide();
                     $('#step2').show();
-                } else if (step === 2 && $('input[name="occupation"]:checked').length) {
+                } else if (step === 2 && $('input[name="card_preference"]:checked').length) {
                     $('#step2').hide();
                     $('#step3').show();
                 } else if (step === 3 && $('#card_logo').val()) {
