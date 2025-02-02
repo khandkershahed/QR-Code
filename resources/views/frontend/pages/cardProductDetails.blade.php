@@ -368,10 +368,10 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="border-0 card plan">
-                        <div class="d-flex">
+                        {{-- <div class="d-flex">
                             <p class="py-3 title-badges">For Individual</p>
-                            <p class="py-3 title-badges-off">For Individual</p>
-                        </div>
+                            <p class="py-3 title-badges-off">For Team</p>
+                        </div> --}}
                         <div class="p-0 bg-transparent border-0 card-header">
                             <p class="mb-0 title">Individual</p>
                             <p class="mb-0">Complimentary Smart Card included.</p>
