@@ -122,14 +122,7 @@
                             From Real World Encounters to Digital Connections: Embracing
                             URL with QR Codes and Digital Business Cards
                         </p>
-                        {{-- <form class="mt-40 newsletter-form" action="{{route('newsletter.store')}}" method="POST">
-                            @csrf
-                            <label for="email-address"><i class="fas fa-envelope"></i></label>
-                            <input id="email-address" type="email" name="email" placeholder="Email Address" required/>
-                            <button type="submit">
-                                <b>Subscribe Now <i class="fas fa-arrow-right"></i></b>
-                            </button>
-                        </form> --}}
+
                         <div>
                             <a href="{{ route('register') }}" class="theme-btn rounded-0 style-two">Start Trial</a>
                             <a href="{{ route('pricing') }}" class="theme-btn rounded-0 style-one">View Pricing</a>
@@ -172,6 +165,7 @@
         </div>
     </section>
     <!-- Hero area End -->
+    <!-- Card Price area Start -->
     <section style="position: relative; z-index: 555;">
         <div class="container pb-50">
             <div class="row justify-content-center">
@@ -182,248 +176,201 @@
                     </div>
                 </div>
             </div>
-            <div class="row justify-content-center">
-                <!-- Individual Plan -->
-                <div class="col-xl-4 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
-                    data-aos-duration="1500" data-aos-offset="50">
-                    <div class="pricing-item style-five">
-                        <div class="title-price">
-                            <h2 class="mb-0">Individual Plan</h2>
-                            <p>Ideal for solopreneurs.</p>
-                        </div>
-                        <div class="image-selection">
-                            <div>
-                                <!-- Image Containers for Individual Plan -->
-                                <div id="individualImage1" class="image-container">
-                                    <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/66548de51d1febf4f19ea9e3_Standard_Silver.webp"
-                                        alt="Silver Image" />
+            @if ($individual_card || $team_card)
+                <div class="row justify-content-center">
+                    <!-- Individual Plan -->
+                    @if ($individual_card)
+                        <div class="col-xl-4 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
+                            data-aos-duration="1500" data-aos-offset="50">
+                            <div class="pricing-item style-five">
+                                <div class="title-price">
+                                    <h2 class="mb-0">{{ $individual_card->title }}</h2>
+                                    {{-- <p>Ideal for solopreneurs.</p> --}}
                                 </div>
-                                <div id="individualImage2" class="image-container">
-                                    <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/66548de5b8c7f03d3c0cc684_Standard_Gold.webp"
-                                        alt="Gold Image" />
-                                </div>
-                                <div id="individualImage3" class="image-container">
-                                    <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/66548de516665f6402cd5c86_Standard_CeramicWhite.webp"
-                                        alt="Ceramic White Image" />
-                                </div>
-                            </div>
-
-                            <!-- Radio Buttons for Individual Plan (with unique 'name' attribute) -->
-                            <div class="pt-3 mx-auto d-flex justify-content-center">
-                                <input type="radio" name="individualPlanImageOption" id="individualOption1"
-                                    onclick="showImage('individualImage1', 'individual')" checked />
-                                <label for="individualOption1" class="radio-label">
-                                    <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/66548de51d1febf4f19ea9e3_Standard_Silver.webp"
-                                        alt="Option 1" />
-                                </label>
-
-                                <input type="radio" name="individualPlanImageOption" id="individualOption2"
-                                    onclick="showImage('individualImage2', 'individual')" />
-                                <label for="individualOption2" class="radio-label">
-                                    <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/66548de5b8c7f03d3c0cc684_Standard_Gold.webp"
-                                        alt="Option 2" />
-                                </label>
-
-                                <input type="radio" name="individualPlanImageOption" id="individualOption3"
-                                    onclick="showImage('individualImage3', 'individual')" />
-                                <label for="individualOption3" class="radio-label">
-                                    <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/66548de516665f6402cd5c86_Standard_CeramicWhite.webp"
-                                        alt="Option 3" />
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- Monthly/Yearly Pricing Toggle -->
-                        <div>
-                            <div class="py-3 pb-1 text-center">
-                                <h2 class="mb-0" id="price-monthly-1">
-                                    <span class="text-success price-monthly">$99</span>/monthly
-                                </h2>
-                                <h2 class="mb-0" id="price-yearly-1" style="display:none;">
-                                    <span class="text-success price-yearly">$199</span>/year
-                                </h2>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-center">
-                                <span class="pe-2">Monthly</span>
-                                <div class="pt-3 pricing-switch">
-                                    <label class="switch">
-                                        <input type="checkbox" id="togglePricing-1">
-                                        <span class="slider"></span>
-                                    </label>
-                                </div>
-                                <span class="ps-2">Yearly</span>
-                            </div>
-                        </div>
-
-                        <!-- Features List -->
-                        <ul class="mt-2">
-                            <li><i class="fa-solid fa-user pe-2 text-muted"></i> 1 User</li>
-                            <li><i class="fa-solid fa-id-card pe-2 text-muted"></i> Standard Card Included</li>
-                            <li><i class="fa-solid fa-check pe-2 text-muted"></i> Customizable Profile</li>
-                            <li><i class="fa-solid fa-check pe-2 text-muted"></i> Contact Management</li>
-                            <li><i class="fa-solid fa-check pe-2 text-muted"></i> Apple / Google Wallet Pass</li>
-                            <li><i class="fa-solid fa-check pe-2 text-muted"></i> Advanced Analytics</li>
-                        </ul>
-                        <a href="#" class="mt-4 theme-btn style-two w-100">Choose Package <i
-                                class="fas fa-arrow-right"></i></a>
-                        <div class="text-center footer-text">See all features <i class="fas fa-arrow-right"></i></div>
-                    </div>
-                </div>
-
-                <!-- Team Plan -->
-                <div class="col-xl-4 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
-                    data-aos-duration="1500" data-aos-offset="50">
-                    <div class="pricing-item team-plan">
-                        <div class="text-center title-price">
-                            <h2 class="mb-0">Team Plan</h2>
-                            <p>Perfect for teams of 3-10.</p>
-                        </div>
-                        <div class="image-selection">
-                            <div>
-                                <!-- Image Containers for Team Plan -->
-                                <div id="teamImage1" class="image-container">
-                                    <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/657abc87badba336d2ba99d6_card%20image%203a-p-500.webp"
-                                        alt="Silver Image With logo" />
-                                </div>
-                                <div id="teamImage2" class="image-container">
-                                    <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/657abc87a5ef8a71e4a4b71f_card%20image%201a-p-500.webp"
-                                        alt="Gold Image With logo" />
-                                </div>
-                                <div id="teamImage3" class="image-container">
-                                    <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/657abc87e4e392a8e489a3b4_card%20image%204a-p-500.webp"
-                                        alt="Ceramic White Image With logo" />
-                                </div>
-                            </div>
-
-                            <!-- Radio Buttons for Team Plan (with unique 'name' attribute) -->
-                            <div class="pt-3 mx-auto d-flex justify-content-center">
-                                <input type="radio" name="teamPlanImageOption" id="teamOption1"
-                                    onclick="showImage('teamImage1', 'team')" checked />
-                                <label for="teamOption1" class="radio-label">
-                                    <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/657abc87badba336d2ba99d6_card%20image%203a-p-500.webp"
-                                        alt="Option 1" />
-                                </label>
-
-                                <input type="radio" name="teamPlanImageOption" id="teamOption2"
-                                    onclick="showImage('teamImage2', 'team')" />
-                                <label for="teamOption2" class="radio-label">
-                                    <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/657abc87a5ef8a71e4a4b71f_card%20image%201a-p-500.webp"
-                                        alt="Option 2" />
-                                </label>
-
-                                <input type="radio" name="teamPlanImageOption" id="teamOption3"
-                                    onclick="showImage('teamImage3', 'team')" />
-                                <label for="teamOption3" class="radio-label">
-                                    <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/657abc87e4e392a8e489a3b4_card%20image%204a-p-500.webp"
-                                        alt="Option 3" />
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- Monthly/Yearly Pricing Toggle -->
-                        <div>
-                            <div class="py-3 pb-1 text-center">
-                                <h2 class="mb-0" id="price-monthly-2">
-                                    <span class="text-success price-monthly">$199</span>/monthly
-                                </h2>
-                                <h2 class="mb-0" id="price-yearly-2" style="display:none;">
-                                    <span class="text-success price-yearly">$399</span>/year
-                                </h2>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-center">
-                                <span class="pe-2">Monthly</span>
-                                <div class="pt-3 pricing-switch">
-                                    <label class="switch">
-                                        <input type="checkbox" id="togglePricing-2">
-                                        <span class="slider"></span>
-                                    </label>
-                                </div>
-                                <span class="ps-2">Yearly</span>
-                            </div>
-                        </div>
-
-                        <!-- Features List -->
-                        <ul class="mt-2">
-                            <li><i class="fa-solid fa-users pe-2 text-muted"></i> 5 Users</li>
-                            <li><i class="fa-solid fa-id-card pe-2 text-muted"></i> Premium Card Included</li>
-                            <li><i class="fa-solid fa-check pe-2 text-muted"></i> Customizable Profiles</li>
-                            <li><i class="fa-solid fa-check pe-2 text-muted"></i> Contact Management</li>
-                            <li><i class="fa-solid fa-check pe-2 text-muted"></i> Apple / Google Wallet Pass</li>
-                            <li><i class="fa-solid fa-check pe-2 text-muted"></i> Advanced Analytics</li>
-                        </ul>
-                        <a href="#" class="mt-4 theme-btn style-two w-100">Choose Package <i
-                                class="fas fa-arrow-right"></i></a>
-                        <div class="text-center footer-text">See all features <i class="fas fa-arrow-right"></i></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section style="position: relative; z-index: 555;">
-        <div class="container pb-50">
-            <div class="row align-items-center justify-content-center">
-                <div class="col-lg-12">
-                    <div class="pb-50">
-                        <h3 class="text-center">Elite Plastic Card Selection</h3>
-                    </div>
-                </div>
-                @foreach ($cardProducts as $cardProduct)
-                    @if (str_contains(strtolower($cardProduct->name), 'plastic'))
-                        <div class="col-lg-3">
-                            <div class="">
-                                <div class="">
-                                    <a href="{{ route('card.details', $cardProduct->slug) }}">
-                                        <div class="p-0 border-0 shadow-sm card bg-light">
-                                            <div class="p-0 border-0 card-header">
-                                                <div class="d-flex justify-content-center">
-                                                    <img src="{{ asset('storage/' . $cardProduct->thumbnail_image) }}"
-                                                        alt="{{ $cardProduct->name }}"
-                                                        onerror="this.onerror=null;this.src='{{ asset('frontend/newimage/blognoimage.webp') }}';">
-                                                </div>
-                                                <div class="p-3">
-                                                    <div>
-                                                        <h6 class="mb-0">{{ $cardProduct->name }}</h6>
-                                                    </div>
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <h6 class="pt-3 mb-0 text-danger">
-                                                            @if ($cardProduct->currency == 'eur')
-                                                                €
-                                                            @elseif ($cardProduct->currency == 'gbp')
-                                                                £
-                                                            @elseif ($cardProduct->currency == 'usd')
-                                                                $
-                                                            @else
-                                                                $
-                                                            @endif
-                                                            {{ $cardProduct->package_price }}
-                                                            {{ $cardProduct->type }}
-                                                        </h6>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="">
-                                                    <div style="height: 60px;"
-                                                        class="pt-2 d-flex justify-content-start align-items-center">
-                                                        <p class="mb-0 package-details text-start">
-                                                            {!! implode(' ', array_slice(explode(' ', strip_tags($cardProduct->short_description)), 0, 15)) !!}...
-                                                        </p>
-                                                    </div>
-                                                    <div class="mt-4">
-                                                        <a href="{{ route('card.details', $cardProduct->slug) }}"
-                                                            class="theme-btn style-two rounded-0 btn-sm"
-                                                            style="width: 100%;">Details</a>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                <div class="image-selection">
+                                    <div>
+                                        <!-- Image Containers for Individual Plan -->
+                                        <div id="individualImage1" class="image-container">
+                                            <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/66548de51d1febf4f19ea9e3_Standard_Silver.webp"
+                                                alt="Silver Image" />
                                         </div>
+                                        <div id="individualImage2" class="image-container">
+                                            <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/66548de5b8c7f03d3c0cc684_Standard_Gold.webp"
+                                                alt="Gold Image" />
+                                        </div>
+                                        <div id="individualImage3" class="image-container">
+                                            <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/66548de516665f6402cd5c86_Standard_CeramicWhite.webp"
+                                                alt="Ceramic White Image" />
+                                        </div>
+                                    </div>
+
+                                    <!-- Radio Buttons for Individual Plan (with unique 'name' attribute) -->
+                                    <div class="pt-3 mx-auto d-flex justify-content-center">
+                                        <input type="radio" name="individualPlanImageOption" id="individualOption1"
+                                            onclick="showImage('individualImage1', 'individual')" checked />
+                                        <label for="individualOption1" class="radio-label">
+                                            <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/66548de51d1febf4f19ea9e3_Standard_Silver.webp"
+                                                alt="Option 1" />
+                                        </label>
+
+                                        <input type="radio" name="individualPlanImageOption" id="individualOption2"
+                                            onclick="showImage('individualImage2', 'individual')" />
+                                        <label for="individualOption2" class="radio-label">
+                                            <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/66548de5b8c7f03d3c0cc684_Standard_Gold.webp"
+                                                alt="Option 2" />
+                                        </label>
+
+                                        <input type="radio" name="individualPlanImageOption" id="individualOption3"
+                                            onclick="showImage('individualImage3', 'individual')" />
+                                        <label for="individualOption3" class="radio-label">
+                                            <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/66548de516665f6402cd5c86_Standard_CeramicWhite.webp"
+                                                alt="Option 3" />
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Monthly/Yearly Pricing Toggle -->
+                                <div>
+
+                                    @php
+                                        $individual_card_descriptions = is_array($individual_card->descriptions)
+                                            ? $individual_card->descriptions
+                                            : json_decode($individual_card->descriptions);
+                                    @endphp
+                                    <div class="py-3 pb-1 text-center">
+                                        <h2 class="mb-0" id="price-monthly-1">
+                                            <span
+                                                class="text-success price-monthly">$ {{ number_format($individual_card->price / 12, 2) }}</span>/monthly
+                                        </h2>
+                                        <h2 class="mb-0" id="price-yearly-1" style="display:none;">
+                                            <span
+                                                class="text-success price-yearly">$ {{ $individual_card->price }}</span>/year
+                                        </h2>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <span class="pe-2">Monthly</span>
+                                        <div class="pt-3 pricing-switch">
+                                            <label class="switch">
+                                                <input type="checkbox" id="togglePricing-1">
+                                                <span class="slider"></span>
+                                            </label>
+                                        </div>
+                                        <span class="ps-2">Yearly</span>
+                                    </div>
+                                </div>
+
+                                <!-- Features List -->
+                                <ul class="mt-2">
+                                    <li><i class="fa-solid fa-user pe-2 text-muted"></i> {{ $individual_card->max_users }} User</li>
+                                    @foreach ($individual_card_descriptions as $individual_card_description)
+                                        <li><i class="fa-solid fa-check pe-2 text-muted"></i> {{ $individual_card_description }}</li>
+                                    @endforeach
+                                </ul>
+                                <a href="{{ route('card.details', $individual_card->slug) }}" class="mt-4 theme-btn style-two w-100">Choose Package <i
+                                        class="fas fa-arrow-right"></i></a>
+                                <div class="text-center footer-text">
+                                    <a href="{{ route('card.details', $individual_card->slug) }}">
+                                        See all features <i
+                                        class="fas fa-arrow-right"></i>
                                     </a>
                                 </div>
                             </div>
                         </div>
                     @endif
-                @endforeach
-            </div>
+
+                    <!-- Team Plan -->
+                    @if ($team_card)
+                        <div class="col-xl-4 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
+                            data-aos-duration="1500" data-aos-offset="50">
+                            <div class="pricing-item team-plan">
+                                <div class="text-center title-price">
+                                    <h2 class="mb-0">Team Plan</h2>
+                                    <p>Perfect for teams of 3-10.</p>
+                                </div>
+                                <div class="image-selection">
+                                    <div>
+                                        <!-- Image Containers for Team Plan -->
+                                        <div id="teamImage1" class="image-container">
+                                            <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/657abc87badba336d2ba99d6_card%20image%203a-p-500.webp"
+                                                alt="Silver Image With logo" />
+                                        </div>
+                                        <div id="teamImage2" class="image-container">
+                                            <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/657abc87a5ef8a71e4a4b71f_card%20image%201a-p-500.webp"
+                                                alt="Gold Image With logo" />
+                                        </div>
+                                        <div id="teamImage3" class="image-container">
+                                            <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/657abc87e4e392a8e489a3b4_card%20image%204a-p-500.webp"
+                                                alt="Ceramic White Image With logo" />
+                                        </div>
+                                    </div>
+
+                                    <!-- Radio Buttons for Team Plan (with unique 'name' attribute) -->
+                                    <div class="pt-3 mx-auto d-flex justify-content-center">
+                                        <input type="radio" name="teamPlanImageOption" id="teamOption1"
+                                            onclick="showImage('teamImage1', 'team')" checked />
+                                        <label for="teamOption1" class="radio-label">
+                                            <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/657abc87badba336d2ba99d6_card%20image%203a-p-500.webp"
+                                                alt="Option 1" />
+                                        </label>
+
+                                        <input type="radio" name="teamPlanImageOption" id="teamOption2"
+                                            onclick="showImage('teamImage2', 'team')" />
+                                        <label for="teamOption2" class="radio-label">
+                                            <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/657abc87a5ef8a71e4a4b71f_card%20image%201a-p-500.webp"
+                                                alt="Option 2" />
+                                        </label>
+
+                                        <input type="radio" name="teamPlanImageOption" id="teamOption3"
+                                            onclick="showImage('teamImage3', 'team')" />
+                                        <label for="teamOption3" class="radio-label">
+                                            <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/657abc87e4e392a8e489a3b4_card%20image%204a-p-500.webp"
+                                                alt="Option 3" />
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Monthly/Yearly Pricing Toggle -->
+                                <div>
+                                    <div class="py-3 pb-1 text-center">
+                                        <h2 class="mb-0" id="price-monthly-2">
+                                            <span class="text-success price-monthly">$199</span>/monthly
+                                        </h2>
+                                        <h2 class="mb-0" id="price-yearly-2" style="display:none;">
+                                            <span class="text-success price-yearly">$399</span>/year
+                                        </h2>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <span class="pe-2">Monthly</span>
+                                        <div class="pt-3 pricing-switch">
+                                            <label class="switch">
+                                                <input type="checkbox" id="togglePricing-2">
+                                                <span class="slider"></span>
+                                            </label>
+                                        </div>
+                                        <span class="ps-2">Yearly</span>
+                                    </div>
+                                </div>
+
+                                <!-- Features List -->
+                                <ul class="mt-2">
+                                    <li><i class="fa-solid fa-users pe-2 text-muted"></i> 5 Users</li>
+                                    <li><i class="fa-solid fa-id-card pe-2 text-muted"></i> Premium Card Included</li>
+                                    <li><i class="fa-solid fa-check pe-2 text-muted"></i> Customizable Profiles</li>
+                                    <li><i class="fa-solid fa-check pe-2 text-muted"></i> Contact Management</li>
+                                    <li><i class="fa-solid fa-check pe-2 text-muted"></i> Apple / Google Wallet Pass
+                                    </li>
+                                    <li><i class="fa-solid fa-check pe-2 text-muted"></i> Advanced Analytics</li>
+                                </ul>
+                                <a href="#" class="mt-4 theme-btn style-two w-100">Choose Package <i
+                                        class="fas fa-arrow-right"></i></a>
+                                <div class="text-center footer-text">See all features <i
+                                        class="fas fa-arrow-right"></i></div>
+                            </div>
+                        </div>
+                    @endif
+                </div>
+            @endif
+        </div>
     </section>
     {{-- Service Box --}}
     <section class="numbered-box-area rel rpt-100 z-2">
@@ -645,7 +592,7 @@
                                                     <div class="price d-flex justify-content-center">
                                                         <span
                                                             class="prev">$</span>{{ number_format($qr_plan->price / 12, 2) }}
-                                                        
+
                                                         <span class="next ps-3">
                                                             <div class="d-flex flex-column">
                                                                 <span><span class="fw-bold">USD</span>/month</span>

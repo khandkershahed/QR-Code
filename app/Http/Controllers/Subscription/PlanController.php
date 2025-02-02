@@ -6,6 +6,7 @@ use Stripe\Plan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Plan as ModelPlan;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class PlanController extends Controller
@@ -40,11 +41,15 @@ class PlanController extends Controller
             'currency' => 'required|string',
             'billing_cycle' => 'required|string|in:day,week,month,year',
             'interval' => 'required|integer|min:1',
+            'card_type' => 'nullable',
         ]);
 
         // Check if validation fails
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+            foreach ($validator->messages()->all() as $message) {
+                Session::flash('error', $message);
+            }
+            return redirect()->back()->withInput();
         }
 
         // Determine interval_count based on billing cycle

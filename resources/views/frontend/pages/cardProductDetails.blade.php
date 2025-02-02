@@ -328,9 +328,9 @@
             <div class="text-black banner-inner pt-70 rpt-60">
                 <h1 class="page-title aos-init aos-animate" data-aos="fade-up" data-aos-duration="1500"
                     data-aos-offset="50">
-                    {{ $cardProduct->name }}
+                    {{ $cardProduct->title }}
                 </h1>
-                <p>{{ $cardProduct->short_description }}</p>
+                {{-- <p>{{ $cardProduct->short_description }}</p> --}}
             </div>
         </div>
     </section>

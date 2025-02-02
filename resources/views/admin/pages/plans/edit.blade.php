@@ -71,6 +71,7 @@
                             <option value="nfc" @selected($plan->type == 'nfc')>NFC</option>
                             <option value="qr" @selected($plan->type == 'qr')>QR</option>
                             <option value="barcode" @selected($plan->type == 'barcode')>BarCode</option>
+                            <option value="card" @selected($plan->type == 'card')>Card</option>
                         </x-metronic.select-option>
                     </div>
                     <div class="col-lg-3 mb-5" id="qr-input" style="display: none;">
@@ -86,6 +87,22 @@
                         </x-metronic.label>
                         <x-metronic.input id="nfc" type="number" name="nfc" :value="old('nfc', $plan->nfc)"
                             placeholder="Number of NFC Card"></x-metronic.input>
+                    </div>
+                    <div class="col-lg-3 mb-5 card-input" style="display: none;">
+                        <x-metronic.label for="card_type"
+                            class="col-form-label required fw-bold fs-6">{{ __('Select a Card Type') }}</x-metronic.label>
+                        <x-metronic.select-option id="card_type" name="card_type" data-hide-search="true"
+                            data-placeholder="Select an option" required>
+                            <option></option>
+                            <option value="team" @selected($plan->card_type == 'team')>Team</option>
+                            <option value="individual" @selected($plan->card_type == 'individual')>Individual</option>
+                        </x-metronic.select-option>
+                    </div>
+                    <div class="col-lg-3 mb-5 card-input" style="display: none;">
+                        <x-metronic.label for="card_type"
+                            class="col-form-label required fw-bold fs-6">{{ __('Max User') }}</x-metronic.label>
+                        <x-metronic.input id="max_users" type="number" name="max_users" :value="old('max_users', $plan->max_users)"
+                            placeholder="Enter the max users" required />
                     </div>
                     <div class="col-lg-3 mb-5">
                         <x-metronic.label for="status" class="col-form-label required fw-bold fs-6">
@@ -141,20 +158,29 @@
                 const type = document.getElementById('type').value;
                 const qrInput = document.getElementById('qr-input');
                 const nfcInput = document.getElementById('nfc-input');
+                const cardInputs = document.querySelectorAll('.card-input'); // This returns a NodeList
 
+                // Reset all inputs
+                $('input[name="nfc"]').val('');
+                $('input[name="qr"]').val('');
+
+                // Show/Hide based on selected type
                 if (type === 'qr') {
                     qrInput.style.display = 'block';
                     nfcInput.style.display = 'none';
-                    $('input[name="nfc"]').val('');
+                    cardInputs.forEach(input => input.style.display = 'none');
                 } else if (type === 'nfc') {
                     qrInput.style.display = 'none';
                     nfcInput.style.display = 'block';
-                    $('input[name="qr"]').val('');
+                    cardInputs.forEach(input => input.style.display = 'none');
+                } else if (type === 'card') {
+                    qrInput.style.display = 'none';
+                    nfcInput.style.display = 'none';
+                    cardInputs.forEach(input => input.style.display = 'block');
                 } else {
                     qrInput.style.display = 'none';
                     nfcInput.style.display = 'none';
-                    $('input[name="nfc"]').val('');
-                    $('input[name="qr"]').val('');
+                    cardInputs.forEach(input => input.style.display = 'none');
                 }
             }
 

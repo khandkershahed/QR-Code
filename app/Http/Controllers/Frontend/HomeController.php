@@ -22,12 +22,13 @@ class HomeController extends Controller
     public function homePage()
     {
         $data = [
-            'qr_plans'       => Plan::orderBy('price', 'asc')->where('type', 'qr')->get(),
-            'nfc_plans'      => Plan::orderBy('price', 'asc')->where('type', 'nfc')->get(),
-            'barcode_plans'  => Plan::orderBy('price', 'asc')->where('type', 'barcode')->get(),
-
-            'blog_posts'     => BlogPost::latest('id')->where('status', 'publish')->paginate(10),
-            'cardProducts'   => CardProduct::where('status', 'active')->get(),
+            'qr_plans'        => Plan::orderBy('price', 'asc')->where('type', 'qr')->get(),
+            'nfc_plans'       => Plan::orderBy('price', 'asc')->where('type', 'nfc')->get(),
+            'barcode_plans'   => Plan::orderBy('price', 'asc')->where('type', 'barcode')->get(),
+            'individual_card' => Plan::latest()->where('type', 'card')->where('card_type', 'individual')->first(),
+            'team_card'       => Plan::latest()->where('type', 'card')->where('card_type', 'team')->first(),
+            'blog_posts'      => BlogPost::latest('id')->where('status', 'publish')->paginate(10),
+            'cardProducts'    => CardProduct::where('status', 'active')->get(),
         ];
         return view('frontend.pages.homePage', $data);
     }
@@ -178,7 +179,7 @@ class HomeController extends Controller
     public function cardDetails($slug)
     {
         $data = [
-            'cardProduct'   => CardProduct::where('slug', $slug)->first(),
+            'cardProduct'   => Plan::where('slug', $slug)->first(),
         ];
         return view('frontend.pages.cardProductDetails', $data);
     }
