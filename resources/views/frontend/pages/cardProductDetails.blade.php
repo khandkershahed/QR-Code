@@ -320,6 +320,34 @@
             transform: scale(1);
             border-color: #dc3545;
         }
+
+        .main-img {
+            position: relative;
+            display: inline-block;
+        }
+
+        .card-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .card-design-box {
+            background-color: #eee;
+            padding-top: 30px;
+            padding-bottom: 30px;
+            border-radius: 10px;
+        }
+
+        .img-choice {
+            width: 70px;
+            height: 50px;
+            object-fit: contain;
+            border: 1px solid black;
+            border-radius: 6px;
+            padding: 5px;
+        }
     </style>
 
     <section class="text-center page-banner-area overlay py-120 rpy-120 rel z-1 bgs-cover"
@@ -400,10 +428,13 @@
 
                                     <!-- Step 2 -->
                                     <div class="form-step" id="step2" style="display:none;">
-                                        <p>Select a card that suits you best</p>
+                                        <div>
+                                            <h2>Choose Card Type!</h2>
+                                            <p>A card that suits you best</p>
+                                        </div>
                                         <div class="panel-group" id="accordion">
                                             <!-- First Card -->
-                                            <div class="panel panel-default">
+                                            {{-- <div class="panel panel-default">
                                                 <div class="panel-heading">
                                                     <h4 class="mb-0 panel-title">
                                                         <label class="w-100">
@@ -437,7 +468,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                             <!-- Second Card -->
                                             <div class="panel panel-default">
@@ -524,44 +555,69 @@
 
                                     <!-- Step 3 -->
                                     <div class="form-step" id="step3" style="display:none;">
-                                        <h2>Design Your Card</h2>
+                                        <div>
+                                            <h2>Card Customization</h2>
+                                            <p>Design Your Card</p>
+                                        </div>
+                                        <div
+                                            class="card-design-box d-flex justify-content-center align-items-center position-relative">
+                                            <div class="main-img position-relative">
+                                                <!-- Main Card Image -->
+                                                <img class="img-fluid" id="mainCardImage"
+                                                    src="{{ asset('images/metal-card.png') }}" alt="">
+                                                <div class="card-logo position-absolute">
+                                                    <!-- Image preview will be displayed here -->
+                                                    <img id="logoPreview" width="100" height="100"
+                                                        style="object-fit: contain;"
+                                                        src="{{ asset('images/logo.png') }}" alt="Card Logo Preview">
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                        <div>
-                                            <label for="email">Email</label>
-                                            <input type="email" name="email" id="email" required
-                                                onchange="validateStep3()">
+                                        <div class="mt-5">
+                                            <label>Choose Card Design</label>
+                                            <div class="card-selection">
+                                                <!-- Example of image choices -->
+                                                <label for="design1">
+                                                    <input type="radio" name="card_design_one" id="design1"
+                                                        class="card-design-option" value="design1"
+                                                        style="display:none;">
+                                                    <img src="{{ asset('images/metal-card.png') }}"
+                                                        alt="Card Design 1" class="img-choice"
+                                                        data-image="{{ asset('images/metal-card.png') }}">
+                                                </label>
+                                                <label for="design2">
+                                                    <input type="radio" name="card_design_two" id="design2"
+                                                        class="card-design-option" value="design2"
+                                                        style="display:none;">
+                                                    <img src="{{ asset('images/black-metal-card.png') }}"
+                                                        alt="Card Design 2" class="img-choice"
+                                                        data-image="{{ asset('images/black-metal-card.png') }}">
+                                                </label>
+                                                <label for="design3">
+                                                    <input type="radio" name="card_design_three" id="design3"
+                                                        class="card-design-option" value="design3"
+                                                        style="display:none;">
+                                                    <img src="{{ asset('images/white-metal-card.png') }}"
+                                                        alt="Card Design 3" class="img-choice"
+                                                        data-image="{{ asset('images/white-metal-card.png') }}">
+                                                </label>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <label for="name">Name</label>
-                                            <input type="text" name="name" id="name" required
-                                                onchange="validateStep3()">
+
+                                        <div class="mt-5">
+                                            <label for="card_logo">Upload Logo</label>
+                                            <input type="file" name="card_logo" id="card_logo" required
+                                                onchange="previewLogo()">
                                         </div>
-                                        <button type="button" id="nextBtn3" class="btn btn-primary"
-                                            onclick="goToNextStep(3)" disabled>Next</button>
-                                        <button type="button" onclick="previousStep(3)"
-                                            class="btn btn-secondary">Previous</button>
+
+                                        <div class="mt-30 d-flex">
+                                            <button type="submit" id="nextBtn3" class="py-3 btn btn-primary w-100 me-2"
+                                                disabled>Submit</button>
+                                            <button type="button" onclick="previousStep(3)"
+                                                class="py-3 btn btn-secondary">Previous</button>
+                                        </div>
                                     </div>
-
-                                    <!-- Step 4 (Final Step) -->
-                                    <div class="form-step" id="step4" style="display:none;">
-                                        <h2>Shipping Details</h2>
-
-                                        <div>
-                                            <label for="shippingEmail">Email</label>
-                                            <input type="email" name="shippingEmail" id="shippingEmail" required
-                                                onchange="validateStep4()">
-                                        </div>
-                                        <div>
-                                            <label for="shippingName">Name</label>
-                                            <input type="text" name="shippingName" id="shippingName" required
-                                                onchange="validateStep4()">
-                                        </div>
-                                        <button type="button" onclick="submitForm()" class="btn btn-primary"
-                                            id="submitBtn" disabled>Submit</button>
-                                        <button type="button" onclick="previousStep(4)"
-                                            class="btn btn-secondary">Previous</button>
-                                    </div>
-
                                 </form>
                             </div>
                         </div>
@@ -650,6 +706,7 @@
 
     @push('scripts')
         <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+        {{-- For Image Slider End --}}
         <script>
             $(document).ready(function() {
                 $('.image-slider').slick({
@@ -668,90 +725,87 @@
                 });
             });
         </script>
+        {{-- For Image Slider End --}}
+        {{-- For Multi Steper Form With Validation --}}
         <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                // Enable next button on selection for Step 2 (plan selection)
-                document.querySelectorAll('input[name="plan"]').forEach(input => {
-                    input.addEventListener("change", () => {
-                        document.getElementById("nextBtn2").disabled = false;
-                    });
+            $(document).ready(function() {
+                // Enable Next Button if plan or occupation is selected
+                $('input[name="plan"], input[name="occupation"]').on('change', function() {
+                    $('#nextBtn2').prop('disabled', false);
                 });
 
-                // Enable next button on card selection for Step 2 (card selection)
-                document.querySelectorAll('input[name="occupation"]').forEach(input => {
-                    input.addEventListener("change", () => {
-                        document.getElementById("nextBtn2").disabled = false;
-                    });
+                // Enable Next Button for Step 3 if card logo is uploaded
+                $('#card_logo').on('change', function() {
+                    validateStep3(); // Validate step 3 when file input changes
+                    previewLogo(); // Show the preview of the logo
                 });
             });
 
-            // Move to the next step based on the current step
+            // Navigate to the next step
             function goToNextStep(step) {
-                if (step === 1) {
-                    if (document.querySelector('input[name="plan"]:checked')) {
-                        document.getElementById('step1').style.display = 'none';
-                        document.getElementById('step2').style.display = 'block';
-                    } else {
-                        alert("Please select a plan.");
-                    }
-                } else if (step === 2) {
-                    if (document.querySelector('input[name="occupation"]:checked')) {
-                        document.getElementById('step2').style.display = 'none';
-                        document.getElementById('step3').style.display = 'block';
-                    } else {
-                        alert("Please select a card.");
-                    }
-                } else if (step === 3) {
-                    document.getElementById('step3').style.display = 'none';
-                    document.getElementById('step4').style.display = 'block';
+                if (step === 1 && $('input[name="plan"]:checked').length) {
+                    $('#step1').hide();
+                    $('#step2').show();
+                } else if (step === 2 && $('input[name="occupation"]:checked').length) {
+                    $('#step2').hide();
+                    $('#step3').show();
+                } else if (step === 3 && $('#card_logo').val()) {
+                    $('#step3').hide();
+                    // Assuming next step is another form step
+                    // Add your logic here for what happens after step 3
+                } else {
+                    alert("Please make a selection.");
                 }
             }
 
-            // Go to previous step
+            // Navigate to the previous step
             function previousStep(step) {
-                if (step === 2) {
-                    document.getElementById('step2').style.display = 'none';
-                    document.getElementById('step1').style.display = 'block';
-                } else if (step === 3) {
-                    document.getElementById('step3').style.display = 'none';
-                    document.getElementById('step2').style.display = 'block';
-                } else if (step === 4) {
-                    document.getElementById('step4').style.display = 'none';
-                    document.getElementById('step3').style.display = 'block';
-                }
+                $('#step' + step).hide();
+                $('#step' + (step - 1)).show();
             }
 
-            // Validate Step 3 form fields (email and name)
+            // Validate Step 3 (enable Next button if logo is selected)
             function validateStep3() {
-                const email = document.getElementById('email').value;
-                const name = document.getElementById('name').value;
-                const nextBtn3 = document.getElementById('nextBtn3');
-
-                if (email && name) {
-                    nextBtn3.disabled = false;
-                } else {
-                    nextBtn3.disabled = true;
-                }
+                $('#nextBtn3').prop('disabled', !$('#card_logo').val());
             }
 
-            // Validate Step 4 form fields (shipping email and name)
-            function validateStep4() {
-                const shippingEmail = document.getElementById('shippingEmail').value;
-                const shippingName = document.getElementById('shippingName').value;
-                const submitBtn = document.getElementById('submitBtn');
+            // Event listener to update the main card image when a new design is chosen
+            $(document).ready(function() {
+                $('.img-choice').on('click', function() {
+                    // Get the image source from the clicked image
+                    var newCardImage = $(this).data('image');
+                    // Change the main card image to the selected one
+                    $('#mainCardImage').attr('src', newCardImage);
+                });
 
-                if (shippingEmail && shippingName) {
-                    submitBtn.disabled = false;
-                } else {
-                    submitBtn.disabled = true;
+                // Handle the card logo preview
+                $('#card_logo').on('change', function() {
+                    previewLogo(); // Show the logo preview when a file is selected
+                });
+            });
+
+            // Function to preview the uploaded logo
+            function previewLogo() {
+                const fileInput = document.getElementById('card_logo');
+                const logoPreview = document.getElementById('logoPreview');
+
+                // Check if a file is selected
+                if (fileInput.files && fileInput.files[0]) {
+                    const reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        // Set the logo preview source to the selected image
+                        logoPreview.src = e.target.result;
+                    }
+
+                    // Read the selected image file as a data URL
+                    reader.readAsDataURL(fileInput.files[0]);
                 }
-            }
-
-            // Submit form (you can handle form submission logic here)
-            function submitForm() {
-                alert("Form submitted!");
             }
         </script>
+
+        {{-- For Multi Steper Form With Validation End --}}
+        {{-- For Accordion under image field --}}
         <script>
             $(document).ready(function() {
                 $('input[type="radio"]').on('change', function() {
@@ -766,6 +820,8 @@
                 });
             });
         </script>
+        {{-- For Accordion under image field end --}}
+        {{-- Radio With Accordion Start --}}
         <script>
             // Select all elements with class "accordion"
             const accordions = document.querySelectorAll('.accordion');
@@ -787,7 +843,6 @@
                 });
             });
         </script>
-        {{-- Slider --}}
-        {{-- Slider End --}}
+        {{-- Radio With Accordion End --}}
     @endpush
 </x-frontend-app-layout>
