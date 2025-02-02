@@ -49,12 +49,7 @@
                         <x-metronic.input id="interval" type="number" name="interval" :value="old('interval', $plan->interval)"
                             placeholder="From Start Date to End Days" required></x-metronic.input>
                     </div>
-                    <div class="col-lg-3 mb-5">
-                        <x-metronic.label for="price" class="col-form-label fw-bold fs-6">{{ __('Price') }}
-                        </x-metronic.label>
-                        <x-metronic.input id="price" type="number" name="price" :value="old('price', $plan->price)"
-                            placeholder="Enter the Plan Price" readonly></x-metronic.input>
-                    </div>
+
                     <div class="col-lg-3 mb-5">
                         <x-metronic.label for="currency" class="col-form-label fw-bold fs-6">{{ __('Currency') }}
                         </x-metronic.label>
@@ -74,6 +69,43 @@
                             <option value="card" @selected($plan->type == 'card')>Card</option>
                         </x-metronic.select-option>
                     </div>
+
+
+                    <div class="col-lg-3 mb-5 card-input" style="display: none;">
+                        <x-metronic.label for="card_type"
+                            class="col-form-label required fw-bold fs-6">{{ __('Select a Card Type') }}</x-metronic.label>
+                        <x-metronic.select-option id="card_type" name="card_type" data-hide-search="true"
+                            data-placeholder="Select an option" required>
+                            <option></option>
+                            <option value="team" @selected($plan->card_type == 'team')>Team</option>
+                            <option value="individual" @selected($plan->card_type == 'individual')>Individual</option>
+                        </x-metronic.select-option>
+                    </div>
+                    <div class="col-lg-3 mb-5">
+                        <x-metronic.label for="price" class="col-form-label fw-bold fs-6">{{ __('Plan Price') }}
+                        </x-metronic.label>
+                        <x-metronic.input id="price" type="number" name="price" :value="old('price',$plan->price)"
+                            placeholder="Enter the Plan Price" readonly></x-metronic.input>
+                    </div>
+
+                    <div class="col-lg-3 mb-5 card-input" style="display: none;">
+                        <x-metronic.label for="plastic_card_price"
+                            class="col-form-label required fw-bold fs-6">{{ __('Plastic Card Price') }}</x-metronic.label>
+                        <x-metronic.input id="plastic_card_price" type="number" name="plastic_card_price" :value="old('plastic_card_price',$plan->plastic_card_price)"
+                            placeholder="Enter the Plastic Card Price"  />
+                    </div>
+                    <div class="col-lg-3 mb-5 card-input" style="display: none;">
+                        <x-metronic.label for="metal_card_price"
+                            class="col-form-label required fw-bold fs-6">{{ __('Metal Card Price') }}</x-metronic.label>
+                        <x-metronic.input id="metal_card_price" type="number" name="metal_card_price" :value="old('metal_card_price',$plan->metal_card_price)"
+                            placeholder="Enter the Metal Card Price"/>
+                    </div>
+                    <div class="col-lg-3 mb-5 card-input" style="display: none;">
+                        <x-metronic.label for="card_type"
+                            class="col-form-label required fw-bold fs-6">{{ __('Max User') }}</x-metronic.label>
+                        <x-metronic.input id="max_users" type="number" name="max_users" :value="old('max_users', $plan->max_users)"
+                            placeholder="Enter the max users" required />
+                    </div>
                     <div class="col-lg-3 mb-5" id="qr-input" style="display: none;">
                         <x-metronic.label for="qr"
                             class="col-form-label fw-bold fs-6">{{ __('Number of QR Code') }}
@@ -87,22 +119,6 @@
                         </x-metronic.label>
                         <x-metronic.input id="nfc" type="number" name="nfc" :value="old('nfc', $plan->nfc)"
                             placeholder="Number of NFC Card"></x-metronic.input>
-                    </div>
-                    <div class="col-lg-3 mb-5 card-input" style="display: none;">
-                        <x-metronic.label for="card_type"
-                            class="col-form-label required fw-bold fs-6">{{ __('Select a Card Type') }}</x-metronic.label>
-                        <x-metronic.select-option id="card_type" name="card_type" data-hide-search="true"
-                            data-placeholder="Select an option" required>
-                            <option></option>
-                            <option value="team" @selected($plan->card_type == 'team')>Team</option>
-                            <option value="individual" @selected($plan->card_type == 'individual')>Individual</option>
-                        </x-metronic.select-option>
-                    </div>
-                    <div class="col-lg-3 mb-5 card-input" style="display: none;">
-                        <x-metronic.label for="card_type"
-                            class="col-form-label required fw-bold fs-6">{{ __('Max User') }}</x-metronic.label>
-                        <x-metronic.input id="max_users" type="number" name="max_users" :value="old('max_users', $plan->max_users)"
-                            placeholder="Enter the max users" required />
                     </div>
                     <div class="col-lg-3 mb-5">
                         <x-metronic.label for="status" class="col-form-label required fw-bold fs-6">

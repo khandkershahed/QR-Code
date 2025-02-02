@@ -375,7 +375,7 @@
                         <div class="p-0 bg-transparent border-0 card-header">
                             <p class="mb-0 title">For {{ ucfirst($cardProduct->card_type) }}</p>
                             @foreach ($individual_card_descriptions as $individual_card_description)
-                            <p class="mb-0">{{ $individual_card_description }}</p>
+                                <p class="mb-0">{{ $individual_card_description }}</p>
                             @endforeach
                             <div class="link">
                                 <a href="#">See all features</a>
@@ -394,7 +394,8 @@
                                     </div>
                                 </div>
 
-                                <form id="multiStepForm">
+                                <form action="{{ route('card.checkout', $cardProduct->slug) }}" method="GET" id="multiStepForm">
+                                    @csrf
                                     <!-- Step 1 -->
                                     <div class="form-step" id="step1">
                                         <div class="radio-card-container">
@@ -405,26 +406,18 @@
                                                     <div>
                                                         <h3 class="plan-title">Annual Plan</h3>
                                                         {{-- <p class="mb-0"><span class="badge">Save 31%</span></p> --}}
-                                                        <p class="mb-0"><small>Equal to $ {{ number_format($cardProduct->price / 12, 2) }}/mo</small></p>
+                                                        <p class="mb-0"><small>Equal to $
+                                                                {{ number_format($cardProduct->price / 12, 2) }}/mo</small>
+                                                        </p>
                                                     </div>
                                                     <div>
                                                         <h3 class="amount-title">$ {{ $cardProduct->price }}</h3>
-                                                        <p class="mb-0"><strong>$ {{ $cardProduct->price }}</strong> Billed Annually</p>
+                                                        <p class="mb-0"><strong>$ {{ $cardProduct->price }}</strong>
+                                                            Billed Annually</p>
                                                     </div>
                                                 </div>
                                             </label>
-                                            {{-- <label class="mt-20 radio-card">
-                                                <input type="radio" name="plan" value="trial"
-                                                    onchange="goToNextStep(1)">
-                                                <div class="card-content">
-                                                    <div>
-                                                        <h3 class="plan-title">Pay Monthly - ${{ number_format($cardProduct->price / 12, 2) }}/mo</h3>
-                                                    </div>
-                                                    <div>
-                                                        <h3 class="amount-title">${{ number_format($cardProduct->price / 12, 2) }}</h3>
-                                                    </div>
-                                                </div>
-                                            </label> --}}
+                                           
                                         </div>
                                     </div>
 
@@ -476,11 +469,17 @@
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
                                                     <h4 class="mb-0 panel-title">
-                                                        <label class="w-100">
+                                                        <label class="w-100 mb-0">
                                                             <input type="radio" id="r12" name="card_preference"
-                                                                value="custom" />
-                                                            <div class="custom-card">
-                                                                <h4 class="p-3 mb-0">Custom Card</h4>
+                                                                value="plastic" />
+                                                            <div class="custom-card d-flex justify-content-between">
+                                                                <div>
+                                                                    <h4 class="p-2 px-3 mb-0">Plastic Card</h4>
+                                                                </div>
+                                                                <div>
+                                                                    <h4 class="p-2 px-3 mb-0">+
+                                                                        {{ $cardProduct->plastic_card_price }} $</h4>
+                                                                </div>
                                                             </div>
                                                         </label>
                                                     </h4>
@@ -513,11 +512,17 @@
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
                                                     <h4 class="mb-0 panel-title">
-                                                        <label class="w-100">
+                                                        <label class="w-100 mb-0">
                                                             <input type="radio" id="r13" name="card_preference"
                                                                 value="metal" />
-                                                            <div class="custom-card">
-                                                                <h4 class="p-3 mb-0">Metal Card</h4>
+                                                            <div class="custom-card d-flex justify-content-between">
+                                                                <div>
+                                                                    <h4 class="p-2 px-3 mb-0">Metal Card</h4>
+                                                                </div>
+                                                                <div>
+                                                                    <h4 class="p-2 px-3 mb-0">+
+                                                                        {{ $cardProduct->metal_card_price }} $</h4>
+                                                                </div>
                                                             </div>
                                                         </label>
                                                     </h4>
@@ -609,8 +614,14 @@
 
                                         <div class="mt-5">
                                             <label for="card_logo">Upload Logo</label>
-                                            <input type="file" name="card_logo" id="card_logo" required
+                                            <input class="form-control" type="file" name="card_logo" id="card_logo" required
                                                 onchange="previewLogo()">
+                                        </div>
+                                        <div class="mt-5">
+                                            <label for="card_logo">Design Details</label>
+                                            <textarea class="form-control" name="design_note" id="" rows="3" placeholder="Examples: 'Logo in the middle', 'Name and title bottom left, logo top right'"></textarea>
+                                            {{-- <input type="t" name="card_logo" id="card_logo"
+                                                placeholder="Examples: 'Logo in the middle', 'Name and title bottom left, logo top right'"> --}}
                                         </div>
 
                                         <div class="mt-30 d-flex">

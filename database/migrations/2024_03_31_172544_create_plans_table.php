@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->json('descriptions')->nullable();
             $table->double('price')->nullable();
+            $table->double('plastic_card_price')->nullable();
+            $table->double('metal_card_price')->nullable();
             $table->string('billing_cycle')->nullable();
             $table->text('payment_link')->nullable();
             $table->string('type')->nullable();

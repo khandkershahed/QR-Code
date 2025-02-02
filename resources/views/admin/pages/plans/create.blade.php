@@ -71,7 +71,7 @@
                                 <x-metronic.label for="card_type"
                                     class="col-form-label required fw-bold fs-6">{{ __('Select a Card Type') }}</x-metronic.label>
                                 <x-metronic.select-option id="card_type" name="card_type" data-hide-search="true"
-                                    data-placeholder="Select an option" required>
+                                    data-placeholder="Select an option">
                                     <option></option>
                                     <option value="team">Team</option>
                                     <option value="individual">Individual</option>
@@ -81,17 +81,29 @@
                                 <x-metronic.label for="card_type"
                                     class="col-form-label required fw-bold fs-6">{{ __('Max User') }}</x-metronic.label>
                                 <x-metronic.input id="max_users" type="number" name="max_users" :value="old('max_users')"
-                                    placeholder="Enter the max users" required />
+                                    placeholder="Enter the max users"/>
                             </div>
+
 
                             <!-- Price Input -->
                             <div class="col-lg-6 mb-5">
                                 <x-metronic.label for="price"
-                                    class="col-form-label fw-bold fs-6">{{ __('Price') }}</x-metronic.label>
+                                    class="col-form-label fw-bold fs-6">{{ __('Plan Price') }}</x-metronic.label>
                                 <x-metronic.input id="price" type="number" name="price" :value="old('price')"
                                     placeholder="Enter the Plan Price" required />
                             </div>
-
+                            <div class="col-lg-6 mb-5 card-input" style="display: none;">
+                                <x-metronic.label for="plastic_card_price"
+                                    class="col-form-label required fw-bold fs-6">{{ __('Plastic Card Price') }}</x-metronic.label>
+                                <x-metronic.input id="plastic_card_price" type="number" name="plastic_card_price" :value="old('plastic_card_price')"
+                                    placeholder="Enter the Plastic Card Price"  />
+                            </div>
+                            <div class="col-lg-6 mb-5 card-input" style="display: none;">
+                                <x-metronic.label for="metal_card_price"
+                                    class="col-form-label required fw-bold fs-6">{{ __('Metal Card Price') }}</x-metronic.label>
+                                <x-metronic.input id="metal_card_price" type="number" name="metal_card_price" :value="old('metal_card_price')"
+                                    placeholder="Enter the Metal Card Price"/>
+                            </div>
                             <!-- Currency Selector -->
                             <div class="col-lg-6 mb-5">
                                 <x-metronic.label for="currency"
