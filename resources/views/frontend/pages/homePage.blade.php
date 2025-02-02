@@ -284,8 +284,8 @@
                             data-aos-duration="1500" data-aos-offset="50">
                             <div class="pricing-item team-plan">
                                 <div class="text-center title-price">
-                                    <h2 class="mb-0">Team Plan</h2>
-                                    <p>Perfect for teams of 3-10.</p>
+                                    <h2 class="mb-0">{{ $team_card->title }}</h2>
+                                    <p>Perfect for 2 to {{ $team_card->max_users }}.</p>
                                 </div>
                                 <div class="image-selection">
                                     <div>
@@ -328,17 +328,31 @@
                                         </label>
                                     </div>
                                 </div>
-
+                                @php
+                                $team_card_descriptions = is_array($team_card->descriptions)
+                                    ? $team_card->descriptions
+                                    : json_decode($team_card->descriptions);
+                            @endphp
                                 <!-- Monthly/Yearly Pricing Toggle -->
                                 <div>
                                     <div class="py-3 pb-1 text-center">
+                                        <h2 class="mb-0" id="price-monthly-2">
+                                            <span
+                                                class="text-success price-monthly">$ {{ number_format($team_card->price / 12, 2) }}</span>/monthly
+                                        </h2>
+                                        <h2 class="mb-0" id="price-yearly-2" style="display:none;">
+                                            <span
+                                                class="text-success price-yearly">$ {{ $team_card->price }}</span>/year
+                                        </h2>
+                                    </div>
+                                    {{-- <div class="py-3 pb-1 text-center">
                                         <h2 class="mb-0" id="price-monthly-2">
                                             <span class="text-success price-monthly">$199</span>/monthly
                                         </h2>
                                         <h2 class="mb-0" id="price-yearly-2" style="display:none;">
                                             <span class="text-success price-yearly">$399</span>/year
                                         </h2>
-                                    </div>
+                                    </div> --}}
                                     <div class="d-flex align-items-center justify-content-center">
                                         <span class="pe-2">Monthly</span>
                                         <div class="pt-3 pricing-switch">
@@ -353,18 +367,19 @@
 
                                 <!-- Features List -->
                                 <ul class="mt-2">
-                                    <li><i class="fa-solid fa-users pe-2 text-muted"></i> 5 Users</li>
-                                    <li><i class="fa-solid fa-id-card pe-2 text-muted"></i> Premium Card Included</li>
-                                    <li><i class="fa-solid fa-check pe-2 text-muted"></i> Customizable Profiles</li>
-                                    <li><i class="fa-solid fa-check pe-2 text-muted"></i> Contact Management</li>
-                                    <li><i class="fa-solid fa-check pe-2 text-muted"></i> Apple / Google Wallet Pass
-                                    </li>
-                                    <li><i class="fa-solid fa-check pe-2 text-muted"></i> Advanced Analytics</li>
+                                    <li><i class="fa-solid fa-user pe-2 text-muted"></i> {{ $team_card->max_users }} Users </li>
+                                    @foreach ($team_card_descriptions as $team_card_description)
+                                        <li><i class="fa-solid fa-check pe-2 text-muted"></i> {{ $team_card_description }}</li>
+                                    @endforeach
                                 </ul>
-                                <a href="#" class="mt-4 theme-btn style-two w-100">Choose Package <i
-                                        class="fas fa-arrow-right"></i></a>
-                                <div class="text-center footer-text">See all features <i
-                                        class="fas fa-arrow-right"></i></div>
+                                <a href="{{ route('card.details', $team_card->slug) }}" class="mt-4 theme-btn style-two w-100">Choose Package <i
+                                    class="fas fa-arrow-right"></i></a>
+                            <div class="text-center footer-text">
+                                <a href="{{ route('card.details', $team_card->slug) }}">
+                                    See all features <i
+                                    class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
                             </div>
                         </div>
                     @endif

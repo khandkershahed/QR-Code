@@ -362,19 +362,21 @@
             </div>
         </div>
     </section>
-
+    @php
+        $individual_card_descriptions = is_array($cardProduct->descriptions)
+            ? $cardProduct->descriptions
+            : json_decode($cardProduct->descriptions);
+    @endphp
     <section class="plan-box-container">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="border-0 card plan">
-                        {{-- <div class="d-flex">
-                            <p class="py-3 title-badges">For Individual</p>
-                            <p class="py-3 title-badges-off">For Team</p>
-                        </div> --}}
                         <div class="p-0 bg-transparent border-0 card-header">
-                            <p class="mb-0 title">Individual</p>
-                            <p class="mb-0">Complimentary Smart Card included.</p>
+                            <p class="mb-0 title">For {{ ucfirst($cardProduct->card_type) }}</p>
+                            @foreach ($individual_card_descriptions as $individual_card_description)
+                            <p class="mb-0">{{ $individual_card_description }}</p>
+                            @endforeach
                             <div class="link">
                                 <a href="#">See all features</a>
                             </div>
@@ -402,12 +404,12 @@
                                                 <div class="card-content">
                                                     <div>
                                                         <h3 class="plan-title">Annual Plan</h3>
-                                                        <p class="mb-0"><span class="badge">Save 31%</span></p>
-                                                        <p class="mb-0"><small>Equal to $8.25/mo</small></p>
+                                                        {{-- <p class="mb-0"><span class="badge">Save 31%</span></p> --}}
+                                                        <p class="mb-0"><small>Equal to $ {{ number_format($cardProduct->price / 12, 2) }}/mo</small></p>
                                                     </div>
                                                     <div>
-                                                        <h3 class="amount-title">$99</h3>
-                                                        <p class="mb-0"><strong>$99</strong> Billed Annually</p>
+                                                        <h3 class="amount-title">$ {{ $cardProduct->price }}</h3>
+                                                        <p class="mb-0"><strong>$ {{ $cardProduct->price }}</strong> Billed Annually</p>
                                                     </div>
                                                 </div>
                                             </label>
@@ -416,10 +418,10 @@
                                                     onchange="goToNextStep(1)">
                                                 <div class="card-content">
                                                     <div>
-                                                        <h3 class="plan-title">Pay Monthly - $12/mo</h3>
+                                                        <h3 class="plan-title">Pay Monthly - ${{ number_format($cardProduct->price / 12, 2) }}/mo</h3>
                                                     </div>
                                                     <div>
-                                                        <h3 class="amount-title">$12</h3>
+                                                        <h3 class="amount-title">${{ number_format($cardProduct->price / 12, 2) }}</h3>
                                                     </div>
                                                 </div>
                                             </label>
@@ -612,8 +614,8 @@
                                         </div>
 
                                         <div class="mt-30 d-flex">
-                                            <button type="submit" id="nextBtn3" class="py-3 btn btn-primary w-100 me-2"
-                                                disabled>Submit</button>
+                                            <button type="submit" id="nextBtn3"
+                                                class="py-3 btn btn-primary w-100 me-2" disabled>Submit</button>
                                             <button type="button" onclick="previousStep(3)"
                                                 class="py-3 btn btn-secondary">Previous</button>
                                         </div>
