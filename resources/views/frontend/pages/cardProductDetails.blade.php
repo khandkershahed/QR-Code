@@ -375,6 +375,10 @@
             /* Red border for checked radio button */
         }
 
+        #mainCardImage {
+            width: 250px;
+        }
+
         .shipping-card input:checked~label {
             padding: 14px;
             border: 1px solid red;
@@ -485,7 +489,7 @@
                                                         </label>
                                                     </h4>
                                                 </div>
-                                                <div id="collapseTwo" class="panel-collapse collapse">
+                                                {{-- <div id="collapseTwo" class="panel-collapse collapse">
                                                     <div class="panel-body">
                                                         <p>Extend your branding</p>
                                                         <div class="image-slider">
@@ -506,7 +510,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                             </div>
 
                                             <!-- Third Card -->
@@ -528,7 +532,7 @@
                                                         </label>
                                                     </h4>
                                                 </div>
-                                                <div id="collapseThree" class="panel-collapse collapse">
+                                                {{-- <div id="collapseThree" class="panel-collapse collapse">
                                                     <div class="panel-body">
                                                         <div class="pb-3">
                                                             <p>Extend your branding</p>
@@ -551,14 +555,14 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
+                                        {{-- <button type="button" onclick="previousStep(2)"
+                                            class="btn btn-secondary">Previous</button> --}}
                                         <button type="button" id="nextBtn2" class="py-3 btn btn-primary w-100"
                                             onclick="goToNextStep(2)" disabled>Continue <i
                                                 class="fa-solid fa-right-arrow"></i></button>
-                                        {{-- <button type="button" onclick="previousStep(2)"
-                                            class="btn btn-secondary">Previous</button> --}}
                                     </div>
 
                                     <!-- Step 3 -->
@@ -575,7 +579,7 @@
                                                     src="{{ asset('images/metal-card.png') }}" alt="">
                                                 <div class="card-logo position-absolute">
                                                     <!-- Image preview will be displayed here -->
-                                                    <img id="logoPreview" width="100" height="100"
+                                                    <img id="logoPreview" width="70px" height="70px"
                                                         style="object-fit: contain;"
                                                         src="{{ asset('images/logo.png') }}" alt="Card Logo Preview">
                                                 </div>
@@ -626,12 +630,13 @@
                                                 placeholder="Examples: 'Logo in the middle', 'Name and title bottom left, logo top right'"> --}}
                                         </div>
 
-                                        <div class="mt-30 d-flex">
+                                        <div class="mt-30 d-flex justify-content-between">
+                                            <button type="button" onclick="previousStep(3)"
+                                                class="py-3 btn btn-secondary">Previous</button>
                                             <button type="button" id="nextBtn3" class="py-3 btn btn-primary"
                                                 onclick="goToNextStep(3)" disabled>Continue <i
                                                     class="fa-solid fa-right-arrow"></i></button>
-                                            <button type="button" onclick="previousStep(3)"
-                                                class="py-3 btn btn-secondary">Previous</button>
+
                                         </div>
                                     </div>
                                     <div class="form-step" id="step4" style="display:none;">
@@ -697,7 +702,7 @@
                                             <p>Your email will be used for account creation and management.</p>
                                             <div class="mt-5">
                                                 <label for="email">Your Email</label>
-                                                <input class="form-control" type="file" name="email"
+                                                <input class="form-control" type="email" name="email"
                                                     id="email" required>
                                             </div>
                                         </div>
@@ -706,22 +711,16 @@
                                             <p>The ammount is for shipping and handling.</p>
                                             <div class="mt-3">
                                                 <label>Choose your shipping method</label>
+                                                @foreach ($shippingMethods as $shippingMethod)
+                                                    <div class="mb-3 shipping-card" id="card-regularMail">
+                                                        <input type="radio" id="regularMail" name="shipping"
+                                                            value="regularMail" checked>
+                                                        <label for="regularMail" class="p-3 w-100"
+                                                            style="cursor: pointer;">{{ $shippingMethod->title }} ($
+                                                            {{ $shippingMethod->price }})</label>
+                                                    </div>
+                                                @endforeach
 
-                                                <!-- Card for Regular Mail -->
-                                                <div class="mb-3 shipping-card" id="card-regularMail">
-                                                    <input type="radio" id="regularMail" name="shipping"
-                                                        value="regularMail" checked>
-                                                    <label for="regularMail" class="p-3 w-100"
-                                                        style="cursor: pointer;">Regular Mail ($1)</label>
-                                                </div>
-
-                                                <!-- Card for FedEx Express -->
-                                                <div class="mb-3 shipping-card" id="card-fedExExpress">
-                                                    <input type="radio" id="fedExExpress" name="shipping"
-                                                        value="fedExExpress">
-                                                    <label for="fedExExpress" class="p-3 w-100"
-                                                        style="cursor: pointer;">FedEx Express ($5)</label>
-                                                </div>
                                             </div>
                                         </div>
                                         <div class="mt-30 d-flex">
