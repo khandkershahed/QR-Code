@@ -103,6 +103,28 @@
             background-color: rgb(227, 227, 227);
         }
 
+        .panel-default {
+            align-self: stretch;
+            border-radius: 10px;
+            padding: 0px;
+            border: 1px solid rgb(227, 227, 227);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        .panel-body {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .panel-title {
+            margin-bottom: 0'
+
+        }
+
         .amount-title {
             color: rgb(1, 1, 1);
             font-size: 32px;
@@ -221,6 +243,83 @@
             margin-top: 24px;
             padding: 0 30px 25px;
         }
+
+        .checkbox-check {
+            padding: 5px;
+            width: 25px;
+            height: 25px;
+            line-height: 0;
+        }
+
+        .custom-card {
+            border: 2px solid transparent;
+            border-radius: 10px;
+            text-align: start;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        /* Hide the default radio button */
+        input[type="radio"] {
+            display: none;
+        }
+
+        /* Add border when checked */
+        input[type="radio"]:checked+.custom-card {
+            border: 2px solid #007bff;
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 0;
+        }
+
+        .slick-dots {
+            bottom: -5px;
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        .slick-dots li {
+            width: 60px;
+            /* Thumbnail size */
+            height: 60px;
+        }
+
+        .slick-dots li button {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            border: none;
+        }
+
+        .slick-dot-thumbnail {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+            /* Rounded thumbnails */
+        }
+
+        .slick-dots li:after {
+            content: "";
+            position: absolute;
+            left: -5px;
+            top: -5px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            border: 10px solid #dc3545;
+            -webkit-transition: 0.5s;
+            -o-transition: 0.5s;
+            transition: 0.5s;
+            -webkit-transform: scale(0);
+            -ms-transform: scale(0);
+            transform: scale(0);
+        }
+
+        .slick-dots li.slick-active::after {
+            transform: scale(1);
+            border-color: #dc3545;
+        }
     </style>
 
     <section class="text-center page-banner-area overlay py-120 rpy-120 rel z-1 bgs-cover"
@@ -257,7 +356,7 @@
                                 <div id="progressBarContainer" style="display: none">
                                     <div style="display: flex; justify-content: space-between;">
                                         <span>Choose a Plan</span>
-                                        <span>Step 2</span>
+                                        <span>Card Customize</span>
                                         <span>Step 3</span>
                                     </div>
                                     <div id="progressBar">
@@ -269,7 +368,6 @@
                                     <!-- Step 1 -->
                                     <div class="form-step" id="step1">
                                         <div class="radio-card-container">
-                                            <!-- First Option -->
                                             <label class="mt-10 radio-card ">
                                                 <input type="radio" name="plan" value="annual" required
                                                     onchange="goToNextStep(1)">
@@ -282,18 +380,6 @@
                                                     <div>
                                                         <h3 class="amount-title">$99</h3>
                                                         <p class="mb-0"><strong>$99</strong> Billed Annually</p>
-                                                        <button
-                                                            class="bg-transparent plan-continue plan-text fw-bold">Continue
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                height="24" viewBox="0 0 24 24" fill="none">
-                                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                                    d="M4 12C4 11.4477 4.44772 11 5 11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H5C4.44772 13 4 12.5523 4 12Z"
-                                                                    fill="currentColor"></path>
-                                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                                    d="M11.2929 4.29289C11.6834 3.90237 12.3166 3.90237 12.7071 4.29289L19.7071 11.2929C20.0976 11.6834 20.0976 12.3166 19.7071 12.7071L12.7071 19.7071C12.3166 20.0976 11.6834 20.0976 11.2929 19.7071C10.9024 19.3166 10.9024 18.6834 11.2929 18.2929L17.5858 12L11.2929 5.70711C10.9024 5.31658 10.9024 4.68342 11.2929 4.29289Z"
-                                                                    fill="currentColor"></path>
-                                                            </svg>
-                                                        </button>
                                                     </div>
                                                 </div>
                                             </label>
@@ -305,53 +391,177 @@
                                                         <h3 class="plan-title">Pay Monthly - $12/mo</h3>
                                                     </div>
                                                     <div>
-                                                        <button
-                                                            class="bg-transparent plan-continue plan-text fw-bold">Continue
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                height="24" viewBox="0 0 24 24" fill="none">
-                                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                                    d="M4 12C4 11.4477 4.44772 11 5 11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H5C4.44772 13 4 12.5523 4 12Z"
-                                                                    fill="currentColor"></path>
-                                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                                    d="M11.2929 4.29289C11.6834 3.90237 12.3166 3.90237 12.7071 4.29289L19.7071 11.2929C20.0976 11.6834 20.0976 12.3166 19.7071 12.7071L12.7071 19.7071C12.3166 20.0976 11.6834 20.0976 11.2929 19.7071C10.9024 19.3166 10.9024 18.6834 11.2929 18.2929L17.5858 12L11.2929 5.70711C10.9024 5.31658 10.9024 4.68342 11.2929 4.29289Z"
-                                                                    fill="currentColor"></path>
-                                                            </svg>
-                                                        </button>
+                                                        <h3 class="amount-title">$12</h3>
                                                     </div>
                                                 </div>
                                             </label>
                                         </div>
-                                        {{-- <button type="button" id="nextBtn1" class="btn btn-primary"
-                                            onclick="goToNextStep(1)" disabled>Next</button> --}}
                                     </div>
 
                                     <!-- Step 2 -->
                                     <div class="form-step" id="step2" style="display:none;">
-                                        <h2>Step 2: Personal Information</h2>
+                                        <p>Select a card that suits you best</p>
+                                        <div class="panel-group" id="accordion">
+                                            <!-- First Card -->
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="mb-0 panel-title">
+                                                        <label class="w-100">
+                                                            <input type="radio" id="r11" name="occupation"
+                                                                value="Standard Card" />
+                                                            <div class="custom-card">
+                                                                <h4 class="p-3 mb-0">Standard Card</h4>
+                                                            </div>
+                                                        </label>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapseOne" class="panel-collapse collapse">
+                                                    <div class="panel-body">
+                                                        <p>Minimalistic design</p>
+                                                        <div class="image-slider">
+                                                            <div>
+                                                                <img class="img-fluid rounded-2"
+                                                                    src="https://ovou.com/_next/image?url=https%3A%2F%2Fovou.com%2Fcdn-cgi%2Fimage%2Ffit%3Dscale-down%2Cwidth%3D1152%2Cheight%3D732%2Cquality%3D100%2Fhttps%3A%2F%2Fovou-production.nyc3.cdn.digitaloceanspaces.com%2Fproducts%2Fcards%2Fbanner%2Fstandard%2F1.png&w=640&q=100"
+                                                                    alt="">
+                                                            </div>
+                                                            <div>
+                                                                <img class="img-fluid rounded-2"
+                                                                    src="https://ovou.com/_next/image?url=https%3A%2F%2Fovou.com%2Fcdn-cgi%2Fimage%2Ffit%3Dscale-down%2Cwidth%3D1152%2Cheight%3D732%2Cquality%3D100%2Fhttps%3A%2F%2Fovou-production.nyc3.cdn.digitaloceanspaces.com%2Fproducts%2Fcards%2Fbanner%2Fstandard%2F2.png&w=640&q=100"
+                                                                    alt="">
+                                                            </div>
+                                                            <div>
+                                                                <img class="img-fluid rounded-2"
+                                                                    src="https://ovou.com/_next/image?url=https%3A%2F%2Fovou.com%2Fcdn-cgi%2Fimage%2Ffit%3Dscale-down%2Cwidth%3D1152%2Cheight%3D732%2Cquality%3D100%2Fhttps%3A%2F%2Fovou-production.nyc3.cdn.digitaloceanspaces.com%2Fproducts%2Fcards%2Fbanner%2Fstandard%2F3.png&w=640&q=100"
+                                                                    alt="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                        <label for="lastName">Last Name:</label>
-                                        <input type="text" id="lastName" name="lastName" required>
+                                            <!-- Second Card -->
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="mb-0 panel-title">
+                                                        <label class="w-100">
+                                                            <input type="radio" id="r12" name="occupation"
+                                                                value="Custom Card" />
+                                                            <div class="custom-card">
+                                                                <h4 class="p-3 mb-0">Custom Card</h4>
+                                                            </div>
+                                                        </label>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapseTwo" class="panel-collapse collapse">
+                                                    <div class="panel-body">
+                                                        <p>Extend your branding</p>
+                                                        <div class="image-slider">
+                                                            <div>
+                                                                <img class="img-fluid rounded-2"
+                                                                    src="https://ovou.com/_next/image?url=https%3A%2F%2Fovou.com%2Fcdn-cgi%2Fimage%2Ffit%3Dscale-down%2Cwidth%3D1152%2Cheight%3D732%2Cquality%3D100%2Fhttps%3A%2F%2Fovou-production.nyc3.cdn.digitaloceanspaces.com%2Fproducts%2Fcards%2Fbanner%2Fcustom%2F1.png&w=640&q=100"
+                                                                    alt="">
+                                                            </div>
+                                                            <div>
+                                                                <img class="img-fluid rounded-2"
+                                                                    src="https://ovou.com/_next/image?url=https%3A%2F%2Fovou.com%2Fcdn-cgi%2Fimage%2Ffit%3Dscale-down%2Cwidth%3D1152%2Cheight%3D732%2Cquality%3D100%2Fhttps%3A%2F%2Fovou-production.nyc3.cdn.digitaloceanspaces.com%2Fproducts%2Fcards%2Fbanner%2Fcustom%2F2.png&w=640&q=100"
+                                                                    alt="">
+                                                            </div>
+                                                            <div>
+                                                                <img class="img-fluid rounded-2"
+                                                                    src="https://ovou.com/_next/image?url=https%3A%2F%2Fovou.com%2Fcdn-cgi%2Fimage%2Ffit%3Dscale-down%2Cwidth%3D1152%2Cheight%3D732%2Cquality%3D100%2Fhttps%3A%2F%2Fovou-production.nyc3.cdn.digitaloceanspaces.com%2Fproducts%2Fcards%2Fbanner%2Fcustom%2F3.png&w=640&q=100"
+                                                                    alt="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                        <label for="email">Email:</label>
-                                        <input type="email" id="email" name="email" required>
-
-                                        <label for="phone">Phone:</label>
-                                        <input type="tel" id="phone" name="phone" required>
-
-                                        <button type="button" id="nextBtn2" class="btn btn-primary"
-                                            onclick="goToNextStep(2)" disabled>Next</button>
-                                        <button type="button" id="prevBtn2"
-                                            onclick="previousStep(2)">Previous</button>
+                                            <!-- Third Card -->
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="mb-0 panel-title">
+                                                        <label class="w-100">
+                                                            <input type="radio" id="r13" name="occupation"
+                                                                value="Metal Card" />
+                                                            <div class="custom-card">
+                                                                <h4 class="p-3 mb-0">Metal Card</h4>
+                                                            </div>
+                                                        </label>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapseThree" class="panel-collapse collapse">
+                                                    <div class="panel-body">
+                                                        <div class="pb-3">
+                                                            <p>Extend your branding</p>
+                                                            <div class="image-slider">
+                                                                <div>
+                                                                    <img class="img-fluid rounded-2"
+                                                                        src="https://ovou.com/_next/image?url=https%3A%2F%2Fovou.com%2Fcdn-cgi%2Fimage%2Ffit%3Dscale-down%2Cwidth%3D1152%2Cheight%3D732%2Cquality%3D100%2Fhttps%3A%2F%2Fovou-production.nyc3.cdn.digitaloceanspaces.com%2Fproducts%2Fcards%2Fbanner%2Fmetal%2F1.png&w=640&q=100"
+                                                                        alt="">
+                                                                </div>
+                                                                <div>
+                                                                    <img class="img-fluid rounded-2"
+                                                                        src="https://ovou.com/_next/image?url=https%3A%2F%2Fovou.com%2Fcdn-cgi%2Fimage%2Ffit%3Dscale-down%2Cwidth%3D1152%2Cheight%3D732%2Cquality%3D100%2Fhttps%3A%2F%2Fovou-production.nyc3.cdn.digitaloceanspaces.com%2Fproducts%2Fcards%2Fbanner%2Fmetal%2F2.png&w=640&q=100"
+                                                                        alt="">
+                                                                </div>
+                                                                <div>
+                                                                    <img class="img-fluid rounded-2"
+                                                                        src="https://ovou.com/_next/image?url=https%3A%2F%2Fovou.com%2Fcdn-cgi%2Fimage%2Ffit%3Dscale-down%2Cwidth%3D1152%2Cheight%3D732%2Cquality%3D100%2Fhttps%3A%2F%2Fovou-production.nyc3.cdn.digitaloceanspaces.com%2Fproducts%2Fcards%2Fbanner%2Fmetal%2F3.png&w=640&q=100"
+                                                                        alt="">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="button" id="nextBtn2" class="py-3 btn btn-primary w-100"
+                                            onclick="goToNextStep(2)" disabled>Continue <i
+                                                class="fa-solid fa-right-arrow"></i></button>
+                                        {{-- <button type="button" onclick="previousStep(2)"
+                                            class="btn btn-secondary">Previous</button> --}}
                                     </div>
 
                                     <!-- Step 3 -->
                                     <div class="form-step" id="step3" style="display:none;">
-                                        <h2>Step 3: Review and Submit</h2>
-                                        <p id="reviewData"></p>
+                                        <h2>Design Your Card</h2>
 
-                                        <button type="button" onclick="submitForm()">Submit</button>
-                                        <button type="button" onclick="previousStep(3)">Previous</button>
+                                        <div>
+                                            <label for="email">Email</label>
+                                            <input type="email" name="email" id="email" required
+                                                onchange="validateStep3()">
+                                        </div>
+                                        <div>
+                                            <label for="name">Name</label>
+                                            <input type="text" name="name" id="name" required
+                                                onchange="validateStep3()">
+                                        </div>
+                                        <button type="button" id="nextBtn3" class="btn btn-primary"
+                                            onclick="goToNextStep(3)" disabled>Next</button>
+                                        <button type="button" onclick="previousStep(3)"
+                                            class="btn btn-secondary">Previous</button>
                                     </div>
+
+                                    <!-- Step 4 (Final Step) -->
+                                    <div class="form-step" id="step4" style="display:none;">
+                                        <h2>Shipping Details</h2>
+
+                                        <div>
+                                            <label for="shippingEmail">Email</label>
+                                            <input type="email" name="shippingEmail" id="shippingEmail" required
+                                                onchange="validateStep4()">
+                                        </div>
+                                        <div>
+                                            <label for="shippingName">Name</label>
+                                            <input type="text" name="shippingName" id="shippingName" required
+                                                onchange="validateStep4()">
+                                        </div>
+                                        <button type="button" onclick="submitForm()" class="btn btn-primary"
+                                            id="submitBtn" disabled>Submit</button>
+                                        <button type="button" onclick="previousStep(4)"
+                                            class="btn btn-secondary">Previous</button>
+                                    </div>
+
                                 </form>
                             </div>
                         </div>
@@ -441,93 +651,120 @@
     @push('scripts')
         <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
         <script>
+            $(document).ready(function() {
+                $('.image-slider').slick({
+                    dots: true, // Enable dots
+                    infinite: true,
+                    speed: 500,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    autoplaySpeed: 3000,
+                    arrows: false,
+                    customPaging: function(slider, i) {
+                        var thumb = $(slider.$slides[i]).find("img").attr("src"); // Get image source
+                        return '<img src="' + thumb + '" class="slick-dot-thumbnail"/>'; // Return thumbnail
+                    }
+                });
+            });
+        </script>
+        <script>
             document.addEventListener("DOMContentLoaded", function() {
+                // Enable next button on selection for Step 2 (plan selection)
                 document.querySelectorAll('input[name="plan"]').forEach(input => {
                     input.addEventListener("change", () => {
-                        document.getElementById("nextBtn1").disabled = false;
-                        goToNextStep(1); // Auto move to next step
+                        document.getElementById("nextBtn2").disabled = false;
                     });
                 });
 
-                document.getElementById('lastName').addEventListener("input", () => {
-                    document.getElementById("nextBtn2").disabled = document.getElementById('lastName').value
-                        .trim() === "";
+                // Enable next button on card selection for Step 2 (card selection)
+                document.querySelectorAll('input[name="occupation"]').forEach(input => {
+                    input.addEventListener("change", () => {
+                        document.getElementById("nextBtn2").disabled = false;
+                    });
                 });
-
-                document.getElementById('email').addEventListener("input", checkStep2Validation);
-                document.getElementById('phone').addEventListener("input", checkStep2Validation);
             });
 
+            // Move to the next step based on the current step
             function goToNextStep(step) {
                 if (step === 1) {
                     if (document.querySelector('input[name="plan"]:checked')) {
                         document.getElementById('step1').style.display = 'none';
                         document.getElementById('step2').style.display = 'block';
-                        updateProgressBar(33); // Step 1 completed
                     } else {
                         alert("Please select a plan.");
                     }
                 } else if (step === 2) {
-                    let lastName = document.getElementById('lastName').value.trim();
-                    let email = document.getElementById('email').value.trim();
-                    let phone = document.getElementById('phone').value.trim();
-
-                    if (lastName !== "" && email !== "" && phone !== "") {
+                    if (document.querySelector('input[name="occupation"]:checked')) {
                         document.getElementById('step2').style.display = 'none';
                         document.getElementById('step3').style.display = 'block';
-                        updateProgressBar(66); // Step 2 completed
-                        populateReview();
                     } else {
-                        alert("All fields are required.");
+                        alert("Please select a card.");
                     }
-                }
-            }
-
-            function previousStep(step) {
-                document.getElementById('step' + step).style.display = 'none';
-                document.getElementById('step' + (step - 1)).style.display = 'block';
-            }
-
-            function updateProgressBar(percentage) {
-                document.getElementById('progress').style.width = percentage + '%';
-            }
-
-            function checkStep2Validation() {
-                let email = document.getElementById('email').value.trim();
-                let phone = document.getElementById('phone').value.trim();
-                document.getElementById("nextBtn2").disabled = (email === "" || phone === "");
-            }
-
-            function populateReview() {
-                const lastName = document.getElementById('lastName').value.trim();
-                const email = document.getElementById('email').value.trim();
-                const phone = document.getElementById('phone').value.trim();
-                const selectedPlan = document.querySelector('input[name="plan"]:checked')?.value || "Not Selected";
-
-                if (lastName && email && phone && selectedPlan) {
-                    const reviewContent = `
-                    <strong>Plan:</strong> ${selectedPlan} <br>
-                    <strong>Last Name:</strong> ${lastName} <br>
-                    <strong>Email:</strong> ${email} <br>
-                    <strong>Phone:</strong> ${phone} <br>
-                `;
-                    document.getElementById('reviewData').innerHTML = reviewContent;
-                } else {
-                    alert("Missing review data.");
-                }
-            }
-
-            function submitForm() {
-                if (document.getElementById('multiStepForm').checkValidity()) {
-                    alert('Form Submitted Successfully!');
-                    document.getElementById('multiStepForm').reset();
+                } else if (step === 3) {
                     document.getElementById('step3').style.display = 'none';
-                    document.getElementById('step1').style.display = 'block';
-                    updateProgressBar(0); // Reset progress bar to 0%
-                } else {
-                    alert('Please complete all required fields.');
+                    document.getElementById('step4').style.display = 'block';
                 }
             }
+
+            // Go to previous step
+            function previousStep(step) {
+                if (step === 2) {
+                    document.getElementById('step2').style.display = 'none';
+                    document.getElementById('step1').style.display = 'block';
+                } else if (step === 3) {
+                    document.getElementById('step3').style.display = 'none';
+                    document.getElementById('step2').style.display = 'block';
+                } else if (step === 4) {
+                    document.getElementById('step4').style.display = 'none';
+                    document.getElementById('step3').style.display = 'block';
+                }
+            }
+
+            // Validate Step 3 form fields (email and name)
+            function validateStep3() {
+                const email = document.getElementById('email').value;
+                const name = document.getElementById('name').value;
+                const nextBtn3 = document.getElementById('nextBtn3');
+
+                if (email && name) {
+                    nextBtn3.disabled = false;
+                } else {
+                    nextBtn3.disabled = true;
+                }
+            }
+
+            // Validate Step 4 form fields (shipping email and name)
+            function validateStep4() {
+                const shippingEmail = document.getElementById('shippingEmail').value;
+                const shippingName = document.getElementById('shippingName').value;
+                const submitBtn = document.getElementById('submitBtn');
+
+                if (shippingEmail && shippingName) {
+                    submitBtn.disabled = false;
+                } else {
+                    submitBtn.disabled = true;
+                }
+            }
+
+            // Submit form (you can handle form submission logic here)
+            function submitForm() {
+                alert("Form submitted!");
+            }
+        </script>
+        <script>
+            $(document).ready(function() {
+                $('input[type="radio"]').on('change', function() {
+                    $('.panel-collapse').collapse('hide'); // Hide all collapses
+                    if ($(this).attr('id') === 'r11') {
+                        $('#collapseOne').collapse('show');
+                    } else if ($(this).attr('id') === 'r12') {
+                        $('#collapseTwo').collapse('show');
+                    } else if ($(this).attr('id') === 'r13') {
+                        $('#collapseThree').collapse('show');
+                    }
+                });
+            });
         </script>
         <script>
             // Select all elements with class "accordion"
@@ -550,5 +787,7 @@
                 });
             });
         </script>
+        {{-- Slider --}}
+        {{-- Slider End --}}
     @endpush
 </x-frontend-app-layout>
