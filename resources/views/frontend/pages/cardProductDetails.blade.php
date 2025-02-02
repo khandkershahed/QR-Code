@@ -1,185 +1,232 @@
 <x-frontend-app-layout :title="'Card Product Details || GoFlixza - Your Hub for QR, Bar Codes & NFC V.Cards'">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <style>
-        .magnifier-container {
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            /* Adjust width as needed */
-            height: 100%;
-            /* Adjust height as needed */
-            cursor: crosshair;
+        /* Custom styling for error messages */
+        label.error {
+            color: red;
+            font-size: 12px;
         }
 
-        .magnifier-container img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-            /* Smooth zoom */
+        /* Custom styling for input fields when they have errors */
+        input.error {
+            border: 2px solid red;
+            background-color: #f8d7da;
         }
 
-        .magnifier-container:hover img {
-            transform: scale(1.5);
-            /* Adjust zoom level */
-            transition: transform 0.3s ease;
+        button:disabled {
+            background-color: #ddd;
+            cursor: not-allowed;
         }
 
-        .nav-tabs .nav-item.show .cst-links,
-        .nav-tabs .cst-links.active {
-            background-color: #2c16aa;
-            width: 150px;
-            color: white;
-            border-radius: 0;
-        }
-
-        .nav-tabs .nav-link {
-            width: 150px;
-            background-color: #eee;
-            color: black;
-            border-radius: 0;
-        }
-
-        .badges-im {
-            padding-top: 3rem;
-            padding-bottom: 1rem;
-        }
-
-        .swiper {
-            width: 100%;
-            height: 100%;
-        }
-
-        .swiper-slide {
-            text-align: center;
-            font-size: 18px;
-            background: #fff;
-            display: flex;
-            justify-content: center;
+        .title-badges {
+            display: inline-flex;
+            appearance: none;
+            -webkit-box-align: center;
             align-items: center;
+            -webkit-box-pack: center;
+            justify-content: center;
+            user-select: none;
+            position: relative;
+            white-space: nowrap;
+            vertical-align: middle;
+            outline: transparent solid 2px;
+            outline-offset: 2px;
+            line-height: 1.2;
+            transition-property: var(--chakra-transition-property-common);
+            transition-duration: var(--chakra-transition-duration-normal);
+            text-transform: capitalize;
+            height: var(--chakra-sizes-9);
+            min-width: var(--chakra-sizes-12);
+            padding-inline-start: var(--chakra-space-12);
+            padding-inline-end: var(--chakra-space-12);
+            background: rgb(1, 1, 1);
+            width: 50%;
+            border-top-left-radius: 6.25rem;
+            border-bottom-left-radius: 6.25rem;
+            font-size: var(--chakra-fontSizes-xs);
+            font-weight: 600;
+            padding: 0px 0.125rem;
+            color: rgb(255, 255, 255);
         }
 
-        .swiper-slide img {
-            display: block;
-            width: 100%;
+        .title-badges-off {
+            text-align: center;
+            width: 50%;
+            background-color: #eee;
+            border-top-right-radius: 6.25rem;
+            border-bottom-right-radius: 6.25rem;
+        }
+
+        .plan-box-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .plan .title {
+            color: transparent;
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 150%;
+            background-image: linear-gradient(94deg, rgb(179, 44, 14) 20%, rgb(255, 100, 58) 100%);
+            background-clip: text;
+        }
+
+        .plan .link a {
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 150%;
+            color: rgb(255, 100, 58);
+        }
+
+        .plan-text {
+            color: rgb(255, 100, 58);
+        }
+
+        /* .radio-card-container {
+            display: flex;
+            gap: 15px;
+        } */
+
+        .radio-card {
+            align-self: stretch;
+            border-radius: 10px;
+            gap: 24px;
+            padding: 16px;
+            border: 1px solid rgb(227, 227, 227);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .radio-card:hover {
+            background-color: rgb(227, 227, 227);
+        }
+
+        .amount-title {
+            color: rgb(1, 1, 1);
+            font-size: 32px;
+            font-weight: 800;
+            line-height: 110%;
+            align-self: stretch;
+            letter-spacing: -0.32px;
+            text-decoration: none;
+        }
+
+        .plan-title {
+            color: rgb(1, 1, 1);
+            font-size: 24px;
+            font-weight: 800;
+            line-height: 125%;
+            align-self: stretch;
+            letter-spacing: -0.24px;
+        }
+
+        .radio-card input {
+            display: none;
+        }
+
+        .card-content {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .radio-card .card-content {
+            padding-left: 10px;
+        }
+
+        .radio-card .badge {
+            background-color: #28a745;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        /* Highlight the border when selected */
+        .radio-card input:checked+.card-content {
+            border: 2px solid #007BFF;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        /* Progress bar styles */
+        #progressBarContainer {
+            margin-bottom: 20px;
+        }
+
+        #progressBar {
+            height: 8px;
+            background-color: #ddd;
+            border-radius: 5px;
+        }
+
+        #progress {
+            width: 0%;
             height: 100%;
-            object-fit: cover;
+            background-color: #28a745;
+            border-radius: 5px;
         }
 
-        .swiper-slide {
-            background-size: cover;
-            background-position: center;
+        .plan-continue {}
+
+        .gift-card {
+            background-color: rgb(0, 26, 64);
+            /* background-image: url((unknown)); */
+            padding: 16px;
+            gap: 12px;
+            border-radius: 10px;
+            margin: 32px 0px 8px;
         }
 
-        .mySwiper2 {
-            height: 80%;
-            width: 100%;
+        .gift-title {
+            color: transparent;
+            font-size: 21px;
+            font-weight: 800;
+            line-height: 26.25px;
+            margin-bottom: 8px;
+            background-image: linear-gradient(93deg, rgb(156, 156, 156) 2.81%, rgb(244, 244, 244) 29.58%);
+            background-clip: text;
         }
 
-        .mySwiper {
-            height: 20%;
-            box-sizing: border-box;
-            padding: 10px 0;
+        .gift-para {
+            font-size: 12px;
+            line-height: 18px;
+            color: rgb(255, 255, 255);
+            margin-bottom: 12px;
         }
 
-        .mySwiper .swiper-slide,
-        .mySwiperDesktop .swiper-slide {
-            width: 25%;
-            height: 100%;
-            opacity: 0.4;
+        .gift-link {
+            color: rgb(255, 255, 255);
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 21px;
+            text-align: right;
         }
 
-        .mySwiper .swiper-slide-thumb-active,
-        .mySwiperDesktop .swiper-slide-thumb-active {
-            opacity: 1;
+        .accordion-item .accordion-button {
+            font-size: 20px;
+            line-height: 1.3;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            background: white;
+            position: initial;
+            padding: 20px 30px;
+            border-radius: 14px;
+            letter-spacing: -0.4px;
+            border: 1.25px solid white;
         }
 
-        .mySwiperDesktop {
-            margin-bottom: 10px;
+        .accordion-item .accordion-collapse .accordion-body {
+            margin-top: 24px;
+            padding: 0 30px 25px;
         }
-
-        .swiper-slide img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-            padding: 24px;
-            border: 1px solid black;
-        }
-
-        .swiper-button-next,
-        .swiper-button-prev {
-            color: #fff !important;
-        }
-
-
-
-        @media (min-width: 768px) {
-            .mySwiper {
-                display: none;
-            }
-
-            .kovi-product-slider-wrapper {
-                display: flex;
-                flex-direction: row;
-            }
-
-            .mySwiper2 {
-                height: 100%;
-            }
-
-            .swiper {
-                width: 100%;
-                height: 850px;
-            }
-
-            .mySwiperDesktop .swiper-slide {
-                width: 100%;
-            }
-
-            .mySwiperDesktop {
-                width: calc(22% - 20px);
-            }
-
-            .mySwiper2 {
-                width: 78%;
-            }
-        }
-
-        @media (max-width: 767px) {
-            .kovi-product-slider-wrapper {
-                display: flex;
-                flex-direction: column;
-            }
-
-            .mySwiperDesktop {
-                display: none;
-            }
-
-            .kovi-product-slider-wrapper {
-                width: 100%;
-                height: 70%;
-            }
-
-            .mySwiperDesktop {
-                height: 250px;
-            }
-        }
-
-        .details-box {
-            height: 400px;
-        }
-
-        /* For Slider End */
     </style>
-    <section class="page-banner-area overlay py-120 rpy-120 rel z-1 bgs-cover text-center"
-        style="
-      background-image: url({{ asset('images/shop-page-banner-.jpg') }});
-    ">
+
+    <section class="text-center page-banner-area overlay py-120 rpy-120 rel z-1 bgs-cover"
+        style="background-image: url({{ asset('images/shop-page-banner-.jpg') }});">
         <div class="container">
-            <div class="banner-inner pt-70 rpt-60 text-black">
+            <div class="text-black banner-inner pt-70 rpt-60">
                 <h1 class="page-title aos-init aos-animate" data-aos="fade-up" data-aos-duration="1500"
                     data-aos-offset="50">
                     {{ $cardProduct->name }}
@@ -188,486 +235,318 @@
             </div>
         </div>
     </section>
-    <section>
-        <form action="{{ route('card.checkout', $cardProduct->slug) }}" method="GET" id="product-form">
-            @csrf <!-- Add CSRF token for security -->
-            <div class="container mt-80">
-                <div class="row">
-                    <div class="col-lg-7">
-                        <div class="kovi-product-slider-wrapper">
-                            <div thumbsSlider="" class="swiper mySwiperDesktop">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide magnifier-container">
-                                        <img src="{{ asset('storage/' . $cardProduct->image) }}" />
-                                    </div>
-                                    <div class="swiper-slide magnifier-container">
-                                        <img src="{{ asset('storage/' . $cardProduct->image) }}" />
-                                    </div>
-                                    <div class="swiper-slide magnifier-container">
-                                        <img src="{{ asset('storage/' . $cardProduct->image) }}" />
-                                    </div>
-                                    <div class="swiper-slide magnifier-container">
-                                        <img src="{{ asset('storage/' . $cardProduct->image) }}" />
-                                    </div>
-                                    <div class="swiper-slide magnifier-container">
-                                        <img src="{{ asset('storage/' . $cardProduct->image) }}" />
-                                    </div>
-                                    <div class="swiper-slide magnifier-container">
-                                        <img src="{{ asset('storage/' . $cardProduct->image) }}" />
-                                    </div>
-                                    <div class="swiper-slide magnifier-container">
-                                        <img src="{{ asset('storage/' . $cardProduct->image) }}" />
-                                    </div>
-                                    <div class="swiper-slide magnifier-container">
-                                        <img src="{{ asset('storage/' . $cardProduct->image) }}" />
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Swiper -->
-                            <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
-                                class="swiper mySwiper2">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide magnifier-container">
-                                        <img src="{{ asset('storage/' . $cardProduct->image) }}" />
-                                    </div>
-                                    <div class="swiper-slide magnifier-container">
-                                        <img src="{{ asset('storage/' . $cardProduct->image) }}" />
-                                    </div>
-                                    <div class="swiper-slide magnifier-container">
-                                        <img src="{{ asset('storage/' . $cardProduct->image) }}" />
-                                    </div>
-                                    <div class="swiper-slide magnifier-container">
-                                        <img src="{{ asset('storage/' . $cardProduct->image) }}" />
-                                    </div>
-                                    <div class="swiper-slide magnifier-container">
-                                        <img src="{{ asset('storage/' . $cardProduct->image) }}" />
-                                    </div>
-                                    <div class="swiper-slide magnifier-container">
-                                        <img src="{{ asset('storage/' . $cardProduct->image) }}" />
-                                    </div>
-                                    <div class="swiper-slide magnifier-container">
-                                        <img src="{{ asset('storage/' . $cardProduct->image) }}" />
-                                    </div>
-                                    <div class="swiper-slide magnifier-container">
-                                        <img src="{{ asset('storage/' . $cardProduct->image) }}" />
-                                    </div>
-                                </div>
-                                <div class="swiper-button-next"></div>
-                                <div class="swiper-button-prev"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-5 ">
-                        <div class="row align-items-center ">
-                            <div class="col-lg-8">
-                                <h3 class="mb-0">{{ $cardProduct->name }}</h3>
-                            </div>
-                            <div class="col-lg-4">
-                                <h3 class="mb-0 text-end text-danger">
-                                    @if ($cardProduct->currency === 'eur')
-                                        €
-                                    @elseif($cardProduct->currency === 'gbp')
-                                        £
-                                    @elseif($cardProduct->currency === 'usd')
-                                        $
-                                    @else
-                                        $
-                                    @endif
-                                    {{ $cardProduct->package_price }}.00
-                                </h3>
-                            </div>
-                        </div>
-                        <div class="row align-items-center">
-                            <div class="col-lg-12">
-                                <div class="py-10">
-                                    <hr>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <ul class="pb-0">
-                                            @foreach (json_decode($cardProduct->plan_descriptions ?? '[]') as $description)
-                                                <li>
-                                                    <i class="fa-regular fa-circle-check pe-2 text-success"></i>
-                                                    {{ $description }}
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="py-10">
-                                            <hr>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-8">
-                                        <label for="">Card Color? <span class="text-danger">*</span></label>
-                                        <select class="form-select" name="color" aria-label="Default select example">
-                                            <option value="" selected>What Color Of NFC Card You Want?</option>
-                                            <option value="black"> Black</option>
-                                            <option value="blue"> Blue</option>
-                                            <option value="yellow"> Yellow</option>
-                                            <option value="green"> Green</option>
-                                            <option value="red"> Red</option>
-                                            <option value="white"> White</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <label for="">Additional NFC Card?</label>
-                                        {{-- Quantity Box --}}
-                                        <div class="input-group quantity-box">
-                                            <button class="btn btn-outline-secondary minus-btn" type="button"
-                                                style="height: 50px;">
-                                                <i class="fa-solid fa-minus"></i>
-                                            </button>
-                                            <input type="number" class="form-control text-center quantity-input"
-                                                value="0" min="0"
-                                                style="height: 50px; background-color: #f1f5ff">
-                                            <button class="btn btn-outline-secondary plus-btn" type="button"
-                                                style="height: 50px;">
-                                                <i class="fa-solid fa-plus"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="pt-4">
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <thead style="background-color: #6710f262; color: white;">
-                                                <tr>
-                                                    <th>SL</th>
-                                                    <th>Package Details</th>
-                                                    <th>QTY</th>
-                                                    <th class="text-end">Price</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>1 VCard & 1 NFC Card</td>
-                                                    <td>1</td>
-                                                    <td class="main-price text-end"
-                                                        data-unit-price="{{ $cardProduct->package_price }}">
-                                                        @if ($cardProduct->currency === 'eur')
-                                                            €
-                                                        @elseif($cardProduct->currency === 'gbp')
-                                                            £
-                                                        @elseif($cardProduct->currency === 'usd')
-                                                            $
-                                                        @else
-                                                            $
-                                                        @endif
-                                                        {{ $cardProduct->package_price }}.00
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Additional NFC Card Only</td>
-                                                    <td class="quantity"></td>
-                                                    <td class="aditional-price text-end"
-                                                        data-unit-price="{{ $cardProduct->price }}">
-                                                        @if ($cardProduct->currency === 'eur')
-                                                            €
-                                                        @elseif($cardProduct->currency === 'gbp')
-                                                            £
-                                                        @elseif($cardProduct->currency === 'usd')
-                                                            $
-                                                        @else
-                                                            $
-                                                        @endif
-                                                        0.00
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                            <tfoot style="background-color: #eee">
-                                                <tr>
-                                                    <td colspan="3">Sub Total</td>
-                                                    <td class="subtotal text-end">
-                                                        @if ($cardProduct->currency === 'eur')
-                                                            €
-                                                        @elseif($cardProduct->currency === 'gbp')
-                                                            £
-                                                        @elseif($cardProduct->currency === 'usd')
-                                                            $
-                                                        @else
-                                                            $
-                                                        @endif
-                                                        {{ $cardProduct->package_price }}.00
-                                                    </td>
-                                                </tr>
-                                            </tfoot>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 px-0">
-                                <div class="shadow-sm">
-                                    <input type="hidden" name="subtotal" id="hidden-subtotal">
-                                    <input type="hidden" name="quantity" id="hidden-quantity">
-                                    <button type="submit" class="theme-btn style-two rounded-0 w-100"
-                                        id="purchase-btn">Purchase</button>
-                                    <div class="pt-3">
-                                        <p class="text-center w-75 mx-auto" style="line-height: 1.3;">
-                                            {{ $cardProduct->note }}</p>
-                                    </div>
-                                    <div>
-                                        <img src="{{ asset('images/social-icons.webp') }}" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </section>
-    <section class="mt-120">
+
+    <section class="plan-box-container">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2 class="text-center pb-50" style="font-size: 50px;">Card History</h2>
-                </div>
-                <div class="col-lg-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <iframe width="100%" height="400"
-                                src="https://www.youtube.com/embed/tnzjLZO2vgM?si=YRo1UGCYCme6Vvs8"
-                                title="YouTube video player" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="details-box">
-                        <div>
-                            <h4>Card Details</h4>
-                            <p>{{ $cardProduct->description }}</p>
-                        </div>
-                        <div>
-                            <h4>How To Shipping</h4>
-                            <p>{{ $cardProduct->shipping_description }}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="alert alert-warning mt-40 p-50" style="border-radius: 22px;" role="alert">
-                        <h2 class="mb-40">Important Notice:</h2>
+                    <div class="border-0 card plan">
                         <div class="d-flex">
-                            <ul class="mb-0 ps-0">
-                                <li class="mb-2"><i class="fa-solid fa-arrow-right"></i> Setup Your Card Color in
-                                    Dashboard.</li>
-                                <li class="mb-2"><i class="fa-solid fa-arrow-right"></i> Create Your Virtual Card or
-                                    Landing Profile/Page in Dashboard.</li>
-                                <li class="mb-2"><i class="fa-solid fa-arrow-right"></i> Ensure your account details
-                                    are up to date to avoid interruptions.</li>
-                            </ul>
-                            <ul class="mb-0 ps-5">
-                                <li class="mb-2"><i class="fa-solid fa-arrow-right"></i> Review transaction limits
-                                    in the settings section.</li>
-                                <li class="mb-2"><i class="fa-solid fa-arrow-right"></i> Your all social links in a platform.</li>
-                                <li class="mb-2"><i class="fa-solid fa-arrow-right"></i> Check your email regularly
-                                    for important updates and offers.</li>
-                            </ul>
+                            <p class="py-3 title-badges">For Individual</p>
+                            <p class="py-3 title-badges-off">For Individual</p>
+                        </div>
+                        <div class="p-0 bg-transparent border-0 card-header">
+                            <p class="mb-0 title">Individual</p>
+                            <p class="mb-0">Complimentary Smart Card included.</p>
+                            <div class="link">
+                                <a href="#">See all features</a>
+                            </div>
+                        </div>
+                        <div class="p-0 mt-30 card-body">
+                            <div class="form-container">
+                                <div id="progressBarContainer" style="display: none">
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <span>Choose a Plan</span>
+                                        <span>Step 2</span>
+                                        <span>Step 3</span>
+                                    </div>
+                                    <div id="progressBar">
+                                        <div id="progress"></div>
+                                    </div>
+                                </div>
+
+                                <form id="multiStepForm">
+                                    <!-- Step 1 -->
+                                    <div class="form-step" id="step1">
+                                        <div class="radio-card-container">
+                                            <!-- First Option -->
+                                            <label class="mt-10 radio-card ">
+                                                <input type="radio" name="plan" value="annual" required
+                                                    onchange="goToNextStep(1)">
+                                                <div class="card-content">
+                                                    <div>
+                                                        <h3 class="plan-title">Annual Plan</h3>
+                                                        <p class="mb-0"><span class="badge">Save 31%</span></p>
+                                                        <p class="mb-0"><small>Equal to $8.25/mo</small></p>
+                                                    </div>
+                                                    <div>
+                                                        <h3 class="amount-title">$99</h3>
+                                                        <p class="mb-0"><strong>$99</strong> Billed Annually</p>
+                                                        <button
+                                                            class="bg-transparent plan-continue plan-text fw-bold">Continue
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                height="24" viewBox="0 0 24 24" fill="none">
+                                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                    d="M4 12C4 11.4477 4.44772 11 5 11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H5C4.44772 13 4 12.5523 4 12Z"
+                                                                    fill="currentColor"></path>
+                                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                    d="M11.2929 4.29289C11.6834 3.90237 12.3166 3.90237 12.7071 4.29289L19.7071 11.2929C20.0976 11.6834 20.0976 12.3166 19.7071 12.7071L12.7071 19.7071C12.3166 20.0976 11.6834 20.0976 11.2929 19.7071C10.9024 19.3166 10.9024 18.6834 11.2929 18.2929L17.5858 12L11.2929 5.70711C10.9024 5.31658 10.9024 4.68342 11.2929 4.29289Z"
+                                                                    fill="currentColor"></path>
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                            <label class="mt-20 radio-card">
+                                                <input type="radio" name="plan" value="trial"
+                                                    onchange="goToNextStep(1)">
+                                                <div class="card-content">
+                                                    <div>
+                                                        <h3 class="plan-title">Pay Monthly - $12/mo</h3>
+                                                    </div>
+                                                    <div>
+                                                        <button
+                                                            class="bg-transparent plan-continue plan-text fw-bold">Continue
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                height="24" viewBox="0 0 24 24" fill="none">
+                                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                    d="M4 12C4 11.4477 4.44772 11 5 11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H5C4.44772 13 4 12.5523 4 12Z"
+                                                                    fill="currentColor"></path>
+                                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                    d="M11.2929 4.29289C11.6834 3.90237 12.3166 3.90237 12.7071 4.29289L19.7071 11.2929C20.0976 11.6834 20.0976 12.3166 19.7071 12.7071L12.7071 19.7071C12.3166 20.0976 11.6834 20.0976 11.2929 19.7071C10.9024 19.3166 10.9024 18.6834 11.2929 18.2929L17.5858 12L11.2929 5.70711C10.9024 5.31658 10.9024 4.68342 11.2929 4.29289Z"
+                                                                    fill="currentColor"></path>
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        {{-- <button type="button" id="nextBtn1" class="btn btn-primary"
+                                            onclick="goToNextStep(1)" disabled>Next</button> --}}
+                                    </div>
+
+                                    <!-- Step 2 -->
+                                    <div class="form-step" id="step2" style="display:none;">
+                                        <h2>Step 2: Personal Information</h2>
+
+                                        <label for="lastName">Last Name:</label>
+                                        <input type="text" id="lastName" name="lastName" required>
+
+                                        <label for="email">Email:</label>
+                                        <input type="email" id="email" name="email" required>
+
+                                        <label for="phone">Phone:</label>
+                                        <input type="tel" id="phone" name="phone" required>
+
+                                        <button type="button" id="nextBtn2" class="btn btn-primary"
+                                            onclick="goToNextStep(2)" disabled>Next</button>
+                                        <button type="button" id="prevBtn2"
+                                            onclick="previousStep(2)">Previous</button>
+                                    </div>
+
+                                    <!-- Step 3 -->
+                                    <div class="form-step" id="step3" style="display:none;">
+                                        <h2>Step 3: Review and Submit</h2>
+                                        <p id="reviewData"></p>
+
+                                        <button type="button" onclick="submitForm()">Submit</button>
+                                        <button type="button" onclick="previousStep(3)">Previous</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <a href="">
+                        <div class="card gift-card">
+                            <p class="mb-0 gift-title">OVOU Gift</p>
+                            <p class="mb-0 gift-para">Available as eGift or beautifully packaged Smart Cards, ideal
+                                for client appreciation or event giveaways.</p>
+                            <div>
+                                <p class="mb-0 gift-link">Buy as a Gift -></p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-12">
+                    <h2 class="mt-30">FAQ Accordion</h2>
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header rounded-0" id="headingOne">
+                                <button class="accordion-button rounded-0 collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
+                                    aria-controls="collapseOne">
+                                    Accordion Item #1
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>This is the first item's accordion body.</strong> It is shown by default,
+                                    until the collapse plugin adds the appropriate classes that we use to style each
+                                    element. These classes control the overall appearance, as well as the showing and
+                                    hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+                                    our default variables. It's also worth noting that just about any HTML can go within
+                                    the <code>.accordion-body</code>, though the transition does limit overflow.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header rounded-0" id="headingTwo">
+                                <button class="accordion-button collapsed rounded-0" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
+                                    aria-controls="collapseTwo">
+                                    Accordion Item #2
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>This is the second item's accordion body.</strong> It is hidden by default,
+                                    until the collapse plugin adds the appropriate classes that we use to style each
+                                    element. These classes control the overall appearance, as well as the showing and
+                                    hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+                                    our default variables. It's also worth noting that just about any HTML can go within
+                                    the <code>.accordion-body</code>, though the transition does limit overflow.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header rounded-0" id="headingThree">
+                                <button class="accordion-button collapsed rounded-0" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
+                                    aria-controls="collapseThree">
+                                    Accordion Item #3
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse"
+                                aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>This is the third item's accordion body.</strong> It is hidden by default,
+                                    until the collapse plugin adds the appropriate classes that we use to style each
+                                    element. These classes control the overall appearance, as well as the showing and
+                                    hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+                                    our default variables. It's also worth noting that just about any HTML can go within
+                                    the <code>.accordion-body</code>, though the transition does limit overflow.
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    {{-- <section class="py-120 pt-50">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!-- Nav tabs -->
-                    <ul class="nav nav-tabs d-flex  justify-content-center align-items-center" id="myTab"
-                        role="tablist">
-                        <li class="nav-item me-2" role="presentation">
-                            <button class="nav-link cst-links active" id="description-tab" data-bs-toggle="tab"
-                                data-bs-target="#description" type="button" role="tab"
-                                aria-controls="description" aria-selected="true">
-                                Description
-                            </button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link cst-links" id="shipping-tab" data-bs-toggle="tab"
-                                data-bs-target="#shipping" type="button" role="tab" aria-controls="shipping"
-                                aria-selected="false">
-                                Shipping
-                            </button>
-                        </li>
-                    </ul>
 
-                    <!-- Tab panes -->
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="description" role="tabpanel"
-                            aria-labelledby="description-tab">
-                            <div class="py-2">
-                                <p>{{ $cardProduct->description }}</p>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
-                            <div class="py-2">
-                                <p>{{ $cardProduct->shipping_description }}</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section> --}}
     @push('scripts')
-        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-        <script>
-            document.querySelectorAll('.magnifier-container').forEach(container => {
-                const img = container.querySelector('img');
-
-                container.addEventListener('mousemove', (e) => {
-                    const rect = container.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-
-                    const xPercent = (x / rect.width) * 100;
-                    const yPercent = (y / rect.height) * 100;
-
-                    img.style.transformOrigin = `${xPercent}% ${yPercent}%`;
-                    img.style.transform = "scale(2)"; // Zoom level
-                });
-
-                container.addEventListener('mouseleave', () => {
-                    img.style.transform = "scale(1)";
-                    img.style.transformOrigin = "center center";
-                });
-            });
-        </script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
         <script>
             document.addEventListener("DOMContentLoaded", function() {
-                const quantityInput = document.querySelector(".quantity-input");
-                const quantityContainer = document.querySelector(".quantity");
-                const priceCell = document.querySelector(".aditional-price");
-                const subtotalCell = document.querySelector(".subtotal");
-                const unitPrice = parseFloat(priceCell.getAttribute("data-unit-price"));
-                const mainPrice = parseFloat(document.querySelector(".main-price").getAttribute("data-unit-price"));
-
-                const updateSubtotal = () => {
-                    const quantity = parseInt(quantityInput.value) || 0;
-                    const additionalPrice = quantity * unitPrice;
-                    const subtotal = mainPrice + additionalPrice;
-
-                    priceCell.textContent = `${additionalPrice.toFixed(2)}`;
-                    subtotalCell.textContent = `${subtotal.toFixed(2)}`;
-                    quantityContainer.textContent = `${quantity}`;
-
-                    // Update hidden fields
-                    document.getElementById("hidden-subtotal").value = subtotal.toFixed(2);
-                    document.getElementById("hidden-quantity").value = quantity;
-                };
-
-                // Handling the plus button
-                document.querySelector(".plus-btn").addEventListener("click", () => {
-                    quantityInput.value = parseInt(quantityInput.value || 0) + 1;
-                    updateSubtotal();
+                document.querySelectorAll('input[name="plan"]').forEach(input => {
+                    input.addEventListener("change", () => {
+                        document.getElementById("nextBtn1").disabled = false;
+                        goToNextStep(1); // Auto move to next step
+                    });
                 });
 
-                // Handling the minus button
-                document.querySelector(".minus-btn").addEventListener("click", () => {
-                    quantityInput.value = Math.max(0, parseInt(quantityInput.value || 1) - 1);
-                    updateSubtotal();
+                document.getElementById('lastName').addEventListener("input", () => {
+                    document.getElementById("nextBtn2").disabled = document.getElementById('lastName').value
+                        .trim() === "";
                 });
 
-                // Handling direct input changes
-                quantityInput.addEventListener("input", updateSubtotal);
-
-                // Initialize the subtotal on page load
-                updateSubtotal();
+                document.getElementById('email').addEventListener("input", checkStep2Validation);
+                document.getElementById('phone').addEventListener("input", checkStep2Validation);
             });
+
+            function goToNextStep(step) {
+                if (step === 1) {
+                    if (document.querySelector('input[name="plan"]:checked')) {
+                        document.getElementById('step1').style.display = 'none';
+                        document.getElementById('step2').style.display = 'block';
+                        updateProgressBar(33); // Step 1 completed
+                    } else {
+                        alert("Please select a plan.");
+                    }
+                } else if (step === 2) {
+                    let lastName = document.getElementById('lastName').value.trim();
+                    let email = document.getElementById('email').value.trim();
+                    let phone = document.getElementById('phone').value.trim();
+
+                    if (lastName !== "" && email !== "" && phone !== "") {
+                        document.getElementById('step2').style.display = 'none';
+                        document.getElementById('step3').style.display = 'block';
+                        updateProgressBar(66); // Step 2 completed
+                        populateReview();
+                    } else {
+                        alert("All fields are required.");
+                    }
+                }
+            }
+
+            function previousStep(step) {
+                document.getElementById('step' + step).style.display = 'none';
+                document.getElementById('step' + (step - 1)).style.display = 'block';
+            }
+
+            function updateProgressBar(percentage) {
+                document.getElementById('progress').style.width = percentage + '%';
+            }
+
+            function checkStep2Validation() {
+                let email = document.getElementById('email').value.trim();
+                let phone = document.getElementById('phone').value.trim();
+                document.getElementById("nextBtn2").disabled = (email === "" || phone === "");
+            }
+
+            function populateReview() {
+                const lastName = document.getElementById('lastName').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const selectedPlan = document.querySelector('input[name="plan"]:checked')?.value || "Not Selected";
+
+                if (lastName && email && phone && selectedPlan) {
+                    const reviewContent = `
+                    <strong>Plan:</strong> ${selectedPlan} <br>
+                    <strong>Last Name:</strong> ${lastName} <br>
+                    <strong>Email:</strong> ${email} <br>
+                    <strong>Phone:</strong> ${phone} <br>
+                `;
+                    document.getElementById('reviewData').innerHTML = reviewContent;
+                } else {
+                    alert("Missing review data.");
+                }
+            }
+
+            function submitForm() {
+                if (document.getElementById('multiStepForm').checkValidity()) {
+                    alert('Form Submitted Successfully!');
+                    document.getElementById('multiStepForm').reset();
+                    document.getElementById('step3').style.display = 'none';
+                    document.getElementById('step1').style.display = 'block';
+                    updateProgressBar(0); // Reset progress bar to 0%
+                } else {
+                    alert('Please complete all required fields.');
+                }
+            }
         </script>
         <script>
-            $(function() {
-                var galleryTop, galleryThumbs;
+            // Select all elements with class "accordion"
+            const accordions = document.querySelectorAll('.accordion');
 
-                function initSwiper() {
-                    // Destroy existing Swiper instances if they exist
-                    if (galleryTop) {
-                        galleryTop.destroy(true, true);
-                    }
-                    if (galleryThumbs) {
-                        galleryThumbs.destroy(true, true);
-                    }
+            accordions.forEach(accordion => {
+                accordion.addEventListener('click', function() {
+                    // Toggle the "active" class on the clicked accordion button
+                    this.classList.toggle('active');
 
-                    if ($(window).width() > 768) {
-                        // Initialize Swiper for mobile
-                        galleryTop = new Swiper(".mySwiperDesktop", {
-                            spaceBetween: 10,
-                            slidesPerView: 4,
-                            direction: 'vertical', // Default slides per view for mobile
-                            freeMode: false,
-                            watchSlidesProgress: true,
-                            breakpoints: {
-                                768: {
-                                    slidesPerView: 4,
-                                },
-                                530: {
-                                    slidesPerView: 3,
-                                },
-                                300: {
-                                    slidesPerView: 2,
-                                },
-                            }
-                        });
-                        galleryThumbs = new Swiper(".mySwiper2", {
-                            spaceBetween: 10,
-                            navigation: {
-                                nextEl: ".swiper-button-next",
-                                prevEl: ".swiper-button-prev",
-                            },
-                            a11y: {
-                                prevSlideMessage: "Previous slide",
-                                nextSlideMessage: "Next slide",
-                            },
-                            thumbs: {
-                                swiper: galleryTop,
-                            },
-                        });
+                    // Select the next element sibling which is the corresponding panel
+                    const panel = this.nextElementSibling;
+
+                    // Toggle the display style of the panel
+                    if (panel.style.display === 'block') {
+                        panel.style.display = 'none';
                     } else {
-                        // Initialize Swiper for desktop
-                        galleryTop = new Swiper(".mySwiper", {
-                            spaceBetween: 10,
-                            slidesPerView: 4,
-                            freeMode: false,
-                            watchSlidesProgress: true,
-                        });
-                        galleryThumbs = new Swiper(".mySwiper2", {
-                            spaceBetween: 10,
-                            navigation: {
-                                nextEl: ".swiper-button-next",
-                                prevEl: ".swiper-button-prev",
-                            },
-                            a11y: {
-                                prevSlideMessage: "Previous slide",
-                                nextSlideMessage: "Next slide",
-                            },
-                            thumbs: {
-                                swiper: galleryTop,
-                            },
-                        });
+                        panel.style.display = 'block';
                     }
-
-                    // Sync the slide change between galleryTop and galleryThumbs
-                    galleryTop.on("slideChangeTransitionStart", function() {
-                        galleryThumbs.slideTo(galleryTop.activeIndex);
-                    });
-                    galleryThumbs.on("transitionStart", function() {
-                        galleryTop.slideTo(galleryThumbs.activeIndex);
-                    });
-                }
-
-                initSwiper();
-
-                // Reinitialize Swiper on window resize
-                $(window).resize(function() {
-                    initSwiper();
                 });
             });
         </script>
