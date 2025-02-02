@@ -27,8 +27,8 @@
                                 <x-metronic.select-option id="billing_cycle" name="billing_cycle"
                                     data-hide-search="true" data-placeholder="Select an option" required>
                                     <option></option>
-                                    <option value="trial_period">Trial Period</option>
-                                    <option value="month">Monthly</option>
+                                    {{-- <option value="trial_period">Trial Period</option> --}}
+                                    {{-- <option value="month">Monthly</option> --}}
                                     <option value="year">Yearly</option>
                                 </x-metronic.select-option>
                             </div>
@@ -67,16 +67,22 @@
                                     placeholder="Enter NFC Card Count" />
                             </div>
 
-                                <div class="col-lg-6 mb-5 card-input" style="display: none;">
-                                    <x-metronic.label for="card_type"
-                                        class="col-form-label required fw-bold fs-6">{{ __('Select a Card Type') }}</x-metronic.label>
-                                    <x-metronic.select-option id="card_type" name="card_type" data-hide-search="true"
-                                        data-placeholder="Select an option" required>
-                                        <option></option>
-                                        <option value="team">Team</option>
-                                        <option value="individual">Individual</option>
-                                    </x-metronic.select-option>
-                                </div>
+                            <div class="col-lg-6 mb-5 card-input" style="display: none;">
+                                <x-metronic.label for="card_type"
+                                    class="col-form-label required fw-bold fs-6">{{ __('Select a Card Type') }}</x-metronic.label>
+                                <x-metronic.select-option id="card_type" name="card_type" data-hide-search="true"
+                                    data-placeholder="Select an option" required>
+                                    <option></option>
+                                    <option value="team">Team</option>
+                                    <option value="individual">Individual</option>
+                                </x-metronic.select-option>
+                            </div>
+                            <div class="col-lg-6 mb-5 card-input" style="display: none;">
+                                <x-metronic.label for="card_type"
+                                    class="col-form-label required fw-bold fs-6">{{ __('Max User') }}</x-metronic.label>
+                                <x-metronic.input id="max_users" type="number" name="max_users" :value="old('max_users')"
+                                    placeholder="Enter the max users" required />
+                            </div>
 
                             <!-- Price Input -->
                             <div class="col-lg-6 mb-5">
@@ -93,7 +99,7 @@
                                 <x-metronic.select-option id="currency" name="currency" data-hide-search="true"
                                     data-placeholder="Select an option" required>
                                     <option></option>
-                                    <option value="gbp">Pound</option>
+                                    {{-- <option value="gbp">Pound</option> --}}
                                     <option value="usd">US Dollar</option>
                                 </x-metronic.select-option>
                             </div>
@@ -181,10 +187,27 @@
         <script>
             function toggleInputs() {
                 const type = document.getElementById('type').value;
-                document.getElementById('qr-input').style.display = type === 'qr' ? 'block' : 'none';
-                document.getElementById('nfc-input').style.display = type === 'nfc' ? 'block' : 'none';
-                document.querySelector('.card-input').style.display = type === 'card' ? 'block' : 'none';
+
+                // QR input visibility
+                const qrInput = document.getElementById('qr-input');
+                qrInput.style.display = type === 'qr' ? 'block' : 'none';
+
+                // NFC input visibility
+                const nfcInput = document.getElementById('nfc-input');
+                nfcInput.style.display = type === 'nfc' ? 'block' : 'none';
+
+                // Card input visibility (handles both card-related fields)
+                const cardInputs = document.querySelectorAll('.card-input');
+                cardInputs.forEach(input => {
+                    input.style.display = type === 'card' ? 'block' : 'none';
+                });
             }
+
+            // Call toggleInputs on page load to check the initially selected value
+            document.addEventListener('DOMContentLoaded', function() {
+                toggleInputs();
+            });
+
 
             $(document).ready(function() {
                 function updateSerialNumbers() {

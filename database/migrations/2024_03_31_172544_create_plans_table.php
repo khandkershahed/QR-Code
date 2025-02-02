@@ -9,7 +9,7 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void 
+    public function up(): void
     {
         Schema::create('plans', function (Blueprint $table) {
             $table->id();
@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('billing_cycle')->nullable();
             $table->text('payment_link')->nullable();
             $table->string('type')->nullable();
+            $table->string('card_type')->nullable();
             $table->string('currency')->default('USD')->nullable();
             $table->string('interval')->comment('Interval in days')->nullable();
             $table->integer('max_users')->nullable();

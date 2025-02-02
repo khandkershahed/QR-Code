@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('card_products', function (Blueprint $table) { 
+        Schema::create('card_products', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
             $table->string('slug')->unique();
@@ -21,6 +21,8 @@ return new class extends Migration
             $table->longText('manual')->nullable();
             $table->text('note')->nullable();
             $table->double('package_price')->nullable();
+            $table->double('custom_card_price')->nullable();
+            $table->double('metal_card_price')->nullable();
             $table->double('price')->nullable();
             $table->string('stripe_plan')->nullable();
             $table->json('plan_descriptions')->nullable();
