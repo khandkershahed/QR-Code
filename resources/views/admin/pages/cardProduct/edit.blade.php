@@ -19,7 +19,7 @@
                 @csrf
                 @method('PUT')
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-7">
                         <div class="row">
                             <!-- Title Input -->
                             <div class="col-lg-12 mb-5">
@@ -28,7 +28,7 @@
                                 <x-metronic.input id="name" type="text" name="name" :value="old('name', $card_product->name)"
                                     placeholder="Enter the Card Product name" required />
                             </div>
-                            <div class="col-lg-2 mb-5">
+                            <div class="col-lg-6 mb-5">
                                 <x-metronic.label for="price"
                                     class="col-form-label fw-bold fs-6 required">{{ __('Package Price') }}</x-metronic.label>
                                 <x-metronic.input id="package_price" type="number" name="package_price" :value="old('package_price', $card_product->package_price)"
@@ -56,7 +56,7 @@
                             </div>
 
                             <!-- Status Selector -->
-                            <div class="col-lg-5 mb-5">
+                            <div class="col-lg-6 mb-5">
                                 <x-metronic.label for="status"
                                     class="col-form-label required fw-bold fs-6">{{ __('Select a Status') }}</x-metronic.label>
                                 <x-metronic.select-option id="status" name="status" data-hide-search="true"
@@ -68,7 +68,7 @@
                             </div>
 
                             <!-- Image Upload -->
-                            <div class="col-lg-7 mb-7">
+                            <div class="col-lg-6 mb-5">
                                 <x-metronic.label for="image"
                                     class="col-form-label required fw-bold fs-6">{{ __('Image') }}</x-metronic.label>
                                 <x-metronic.file-input id="image" type="file" :source="asset('storage/'.$card_product->image)"
@@ -78,7 +78,7 @@
                                         style="max-height: 100px;">
                                 @endif --}}
                             </div>
-                            <div class="col-lg-4 mb-7">
+                            <div class="col-lg-6 mb-5">
                                 <x-metronic.label for="thumbnail_image"
                                     class="col-form-label fw-bold fs-6 required">{{ __('Thumbnail Image') }}
                                 </x-metronic.label>
@@ -133,9 +133,9 @@
                     </div>
 
                     <!-- Additional Plan Descriptions -->
-                    <div class="col-lg-6">
+                    <div class="col-lg-5">
                         <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-12">
                                 <div class="card shadow-sm p-0 mt-13">
                                     <div class="p-3 py-5">
                                         <h3 class="mb-0 fw-normal">Add Provided Services</h3>

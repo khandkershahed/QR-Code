@@ -1,4 +1,7 @@
 <x-frontend-app-layout :title="'GoFlixza || Your Hub for QR, Bar Codes, NFC V.Cards'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         .product-slider-card .slick-slide {
             margin-top: 25px;
@@ -67,6 +70,44 @@
             object-fit: cover;
             width: 100%;
         }
+
+        /* For Radio Button */
+        /* Hide the default radio button */
+        input[type="radio"] {
+            display: none;
+        }
+
+        /* Style for image radio buttons */
+        .radio-label {
+            cursor: pointer;
+            display: inline-block;
+            margin-right: 10px;
+            border: 2px solid transparent;
+        }
+
+        .radio-label img {
+            width: 30px;
+            height: 30px;
+            border-radius: 100%;
+            object-fit: cover;
+        }
+
+        input[type="radio"]:checked+label img {
+            border: 3px solid #dc3545;
+        }
+
+        .image-container {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .image-container img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 8px;
+        }
+
+        /* For Radio Button */
     </style>
     <section id="about" class="hero-area-nine pt-165 rpt-150 pb-110 rpb-80 rel z-1">
         <div class="container">
@@ -81,7 +122,7 @@
                             From Real World Encounters to Digital Connections: Embracing
                             URL with QR Codes and Digital Business Cards
                         </p>
-                        {{-- <form class="newsletter-form mt-40" action="{{route('newsletter.store')}}" method="POST">
+                        {{-- <form class="mt-40 newsletter-form" action="{{route('newsletter.store')}}" method="POST">
                             @csrf
                             <label for="email-address"><i class="fas fa-envelope"></i></label>
                             <input id="email-address" type="email" name="email" placeholder="Email Address" required/>
@@ -95,7 +136,7 @@
                         </div>
                         <ul class="icon-list pt-15">
                             <li>
-                                <i class="fas fa-circle-check"></i> Free 14-day trial
+                                <i class="fa-solid fa-circle-check"></i> Free 14-day trial
                             </li>
                             <li>
                                 <i class="fas fa-circle-check"></i> No credit card
@@ -121,7 +162,6 @@
                 </div>
             </div>
         </div>
-
         <div class="hero-nine-shapes">
             <div class="shape one">
                 <img src="{{ asset('frontend') }}/assets/images/shapes/hero-nine.png" alt="Shape" />
@@ -134,69 +174,190 @@
     <!-- Hero area End -->
     <section style="position: relative; z-index: 555;">
         <div class="container pb-50">
-            <div class="row align-items-center justify-content-center">
-                <div class="col-lg-12">
-                    <div class="pb-50">
-                        <h3 class="text-center">Exclusive Metal Card Collection</h3>
+            <div class="row justify-content-center">
+                <div class="col-xl-6 col-lg-9 col-md-11">
+                    <div class="text-center section-title mb-45 aos-init aos-animate" data-aos="fade-up"
+                        data-aos-duration="1500" data-aos-offset="50">
+                        <h2>Explore Our Pricing Package <br> and choose your plan</h2>
                     </div>
                 </div>
-                @foreach ($cardProducts as $cardProduct)
-                    @if (str_contains(strtolower($cardProduct->name), 'metal'))
-                        <div class="col-lg-3">
-                            <div class="">
-                                <div class="">
-                                    <a href="{{ route('card.details', $cardProduct->slug) }}">
-                                        <div class="card border-0 shadow-sm bg-light p-0">
-                                            <div class="card-header border-0 p-0">
-                                                <div class="d-flex justify-content-center">
-                                                    <img src="{{ asset('storage/' . $cardProduct->thumbnail_image) }}"
-                                                        alt="{{ $cardProduct->name }}"
-                                                        onerror="this.onerror=null;this.src='{{ asset('frontend/newimage/blognoimage.webp') }}';">
-                                                </div>
-                                                <div class="p-3">
-                                                    <div>
-                                                        <h6 class="mb-0">{{ $cardProduct->name }}</h6>
-                                                    </div>
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <h6 class="mb-0 pt-3 text-danger">
-                                                            @if ($cardProduct->currency == 'eur')
-                                                                €
-                                                            @elseif ($cardProduct->currency == 'gbp')
-                                                                £
-                                                            @elseif ($cardProduct->currency == 'usd')
-                                                                $
-                                                            @else
-                                                                $
-                                                            @endif
-                                                            {{ $cardProduct->package_price }}
-                                                            {{ $cardProduct->type }}
-                                                        </h6>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="">
-                                                    <div style="height: 60px;"
-                                                        class="pt-2 d-flex justify-content-start align-items-center">
-                                                        <p class="mb-0 package-details text-start">
-                                                            {!! implode(' ', array_slice(explode(' ', strip_tags($cardProduct->short_description)), 0, 15)) !!}...
-                                                        </p>
-                                                    </div>
-                                                    <div class="mt-4">
-                                                        <a href="{{ route('card.details', $cardProduct->slug) }}"
-                                                            class="theme-btn style-two rounded-0 btn-sm"
-                                                            style="width: 100%;">Details</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
+            </div>
+            <div class="row justify-content-center">
+                <!-- Individual Plan -->
+                <div class="col-xl-4 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
+                    data-aos-duration="1500" data-aos-offset="50">
+                    <div class="pricing-item style-five">
+                        <div class="title-price">
+                            <h2 class="mb-0">Individual Plan</h2>
+                            <p>Ideal for solopreneurs.</p>
+                        </div>
+                        <div class="image-selection">
+                            <div>
+                                <!-- Image Containers for Individual Plan -->
+                                <div id="individualImage1" class="image-container">
+                                    <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/66548de51d1febf4f19ea9e3_Standard_Silver.webp"
+                                        alt="Silver Image" />
+                                </div>
+                                <div id="individualImage2" class="image-container">
+                                    <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/66548de5b8c7f03d3c0cc684_Standard_Gold.webp"
+                                        alt="Gold Image" />
+                                </div>
+                                <div id="individualImage3" class="image-container">
+                                    <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/66548de516665f6402cd5c86_Standard_CeramicWhite.webp"
+                                        alt="Ceramic White Image" />
                                 </div>
                             </div>
+
+                            <!-- Radio Buttons for Individual Plan (with unique 'name' attribute) -->
+                            <div class="pt-3 mx-auto d-flex justify-content-center">
+                                <input type="radio" name="individualPlanImageOption" id="individualOption1"
+                                    onclick="showImage('individualImage1', 'individual')" checked />
+                                <label for="individualOption1" class="radio-label">
+                                    <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/66548de51d1febf4f19ea9e3_Standard_Silver.webp"
+                                        alt="Option 1" />
+                                </label>
+
+                                <input type="radio" name="individualPlanImageOption" id="individualOption2"
+                                    onclick="showImage('individualImage2', 'individual')" />
+                                <label for="individualOption2" class="radio-label">
+                                    <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/66548de5b8c7f03d3c0cc684_Standard_Gold.webp"
+                                        alt="Option 2" />
+                                </label>
+
+                                <input type="radio" name="individualPlanImageOption" id="individualOption3"
+                                    onclick="showImage('individualImage3', 'individual')" />
+                                <label for="individualOption3" class="radio-label">
+                                    <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/66548de516665f6402cd5c86_Standard_CeramicWhite.webp"
+                                        alt="Option 3" />
+                                </label>
+                            </div>
                         </div>
-                    @endif
-                @endforeach
+
+                        <!-- Monthly/Yearly Pricing Toggle -->
+                        <div>
+                            <div class="py-3 pb-1 text-center">
+                                <h2 class="mb-0" id="price-monthly-1">
+                                    <span class="text-success price-monthly">$99</span>/monthly
+                                </h2>
+                                <h2 class="mb-0" id="price-yearly-1" style="display:none;">
+                                    <span class="text-success price-yearly">$199</span>/year
+                                </h2>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-center">
+                                <span class="pe-2">Monthly</span>
+                                <div class="pt-3 pricing-switch">
+                                    <label class="switch">
+                                        <input type="checkbox" id="togglePricing-1">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <span class="ps-2">Yearly</span>
+                            </div>
+                        </div>
+
+                        <!-- Features List -->
+                        <ul class="mt-2">
+                            <li><i class="fa-solid fa-user pe-2 text-muted"></i> 1 User</li>
+                            <li><i class="fa-solid fa-id-card pe-2 text-muted"></i> Standard Card Included</li>
+                            <li><i class="fa-solid fa-check pe-2 text-muted"></i> Customizable Profile</li>
+                            <li><i class="fa-solid fa-check pe-2 text-muted"></i> Contact Management</li>
+                            <li><i class="fa-solid fa-check pe-2 text-muted"></i> Apple / Google Wallet Pass</li>
+                            <li><i class="fa-solid fa-check pe-2 text-muted"></i> Advanced Analytics</li>
+                        </ul>
+                        <a href="#" class="mt-4 theme-btn style-two w-100">Choose Package <i
+                                class="fas fa-arrow-right"></i></a>
+                        <div class="text-center footer-text">See all features <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </div>
+
+                <!-- Team Plan -->
+                <div class="col-xl-4 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
+                    data-aos-duration="1500" data-aos-offset="50">
+                    <div class="pricing-item team-plan">
+                        <div class="text-center title-price">
+                            <h2 class="mb-0">Team Plan</h2>
+                            <p>Perfect for teams of 3-10.</p>
+                        </div>
+                        <div class="image-selection">
+                            <div>
+                                <!-- Image Containers for Team Plan -->
+                                <div id="teamImage1" class="image-container">
+                                    <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/657abc87badba336d2ba99d6_card%20image%203a-p-500.webp"
+                                        alt="Silver Image With logo" />
+                                </div>
+                                <div id="teamImage2" class="image-container">
+                                    <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/657abc87a5ef8a71e4a4b71f_card%20image%201a-p-500.webp"
+                                        alt="Gold Image With logo" />
+                                </div>
+                                <div id="teamImage3" class="image-container">
+                                    <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/657abc87e4e392a8e489a3b4_card%20image%204a-p-500.webp"
+                                        alt="Ceramic White Image With logo" />
+                                </div>
+                            </div>
+
+                            <!-- Radio Buttons for Team Plan (with unique 'name' attribute) -->
+                            <div class="pt-3 mx-auto d-flex justify-content-center">
+                                <input type="radio" name="teamPlanImageOption" id="teamOption1"
+                                    onclick="showImage('teamImage1', 'team')" checked />
+                                <label for="teamOption1" class="radio-label">
+                                    <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/657abc87badba336d2ba99d6_card%20image%203a-p-500.webp"
+                                        alt="Option 1" />
+                                </label>
+
+                                <input type="radio" name="teamPlanImageOption" id="teamOption2"
+                                    onclick="showImage('teamImage2', 'team')" />
+                                <label for="teamOption2" class="radio-label">
+                                    <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/657abc87a5ef8a71e4a4b71f_card%20image%201a-p-500.webp"
+                                        alt="Option 2" />
+                                </label>
+
+                                <input type="radio" name="teamPlanImageOption" id="teamOption3"
+                                    onclick="showImage('teamImage3', 'team')" />
+                                <label for="teamOption3" class="radio-label">
+                                    <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/657abc87e4e392a8e489a3b4_card%20image%204a-p-500.webp"
+                                        alt="Option 3" />
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Monthly/Yearly Pricing Toggle -->
+                        <div>
+                            <div class="py-3 pb-1 text-center">
+                                <h2 class="mb-0" id="price-monthly-2">
+                                    <span class="text-success price-monthly">$199</span>/monthly
+                                </h2>
+                                <h2 class="mb-0" id="price-yearly-2" style="display:none;">
+                                    <span class="text-success price-yearly">$399</span>/year
+                                </h2>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-center">
+                                <span class="pe-2">Monthly</span>
+                                <div class="pt-3 pricing-switch">
+                                    <label class="switch">
+                                        <input type="checkbox" id="togglePricing-2">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <span class="ps-2">Yearly</span>
+                            </div>
+                        </div>
+
+                        <!-- Features List -->
+                        <ul class="mt-2">
+                            <li><i class="fa-solid fa-users pe-2 text-muted"></i> 5 Users</li>
+                            <li><i class="fa-solid fa-id-card pe-2 text-muted"></i> Premium Card Included</li>
+                            <li><i class="fa-solid fa-check pe-2 text-muted"></i> Customizable Profiles</li>
+                            <li><i class="fa-solid fa-check pe-2 text-muted"></i> Contact Management</li>
+                            <li><i class="fa-solid fa-check pe-2 text-muted"></i> Apple / Google Wallet Pass</li>
+                            <li><i class="fa-solid fa-check pe-2 text-muted"></i> Advanced Analytics</li>
+                        </ul>
+                        <a href="#" class="mt-4 theme-btn style-two w-100">Choose Package <i
+                                class="fas fa-arrow-right"></i></a>
+                        <div class="text-center footer-text">See all features <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </div>
             </div>
+        </div>
     </section>
     <section style="position: relative; z-index: 555;">
         <div class="container pb-50">
@@ -212,8 +373,8 @@
                             <div class="">
                                 <div class="">
                                     <a href="{{ route('card.details', $cardProduct->slug) }}">
-                                        <div class="card border-0 shadow-sm bg-light p-0">
-                                            <div class="card-header border-0 p-0">
+                                        <div class="p-0 border-0 shadow-sm card bg-light">
+                                            <div class="p-0 border-0 card-header">
                                                 <div class="d-flex justify-content-center">
                                                     <img src="{{ asset('storage/' . $cardProduct->thumbnail_image) }}"
                                                         alt="{{ $cardProduct->name }}"
@@ -224,7 +385,7 @@
                                                         <h6 class="mb-0">{{ $cardProduct->name }}</h6>
                                                     </div>
                                                     <div class="d-flex justify-content-between align-items-center">
-                                                        <h6 class="mb-0 pt-3 text-danger">
+                                                        <h6 class="pt-3 mb-0 text-danger">
                                                             @if ($cardProduct->currency == 'eur')
                                                                 €
                                                             @elseif ($cardProduct->currency == 'gbp')
@@ -265,11 +426,11 @@
             </div>
     </section>
     {{-- Service Box --}}
-    <section class="numbered-box-area rel rpt-100 rel z-2">
+    <section class="numbered-box-area rel rpt-100 z-2">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-7 col-lg-9 col-md-11">
-                    <div class="section-title text-center mb-60 aos-init aos-animate" data-aos="fade-up"
+                    <div class="text-center section-title mb-60 aos-init aos-animate" data-aos="fade-up"
                         data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
                         <h2>Comprehensive Code & Card Solutions</h2>
                         <p>Easily generate QR codes, barcodes, and NFC cards with our all-in-one solution. Simplify data
@@ -329,7 +490,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-6 col-lg-9 col-md-11">
-                    <div class="section-title text-center mb-45 aos-init aos-animate" data-aos="fade-up"
+                    <div class="text-center section-title mb-45 aos-init aos-animate" data-aos="fade-up"
                         data-aos-duration="1500" data-aos-offset="50">
                         <h2>QR Code, Virtual Card & Barcode <br>
                             Pricing & Plans</h2>
@@ -341,10 +502,10 @@
                 <div class="col-lg-12">
                     <div class="tap-five-content rmb-55 aos-init aos-animate" data-aos="fade-left"
                         data-aos-duration="1500" data-aos-offset="50">
-                        <ul class="nav advanced-tab style-fours mb-40 d-flex justify-content-center mx-auto"
+                        <ul class="mx-auto mb-40 nav advanced-tab style-fours d-flex justify-content-center"
                             role="tablist">
                             <li>
-                                <button class="nav-link active text-decoration-none pt-3 text-black"
+                                <button class="pt-3 text-black nav-link active text-decoration-none"
                                     data-bs-toggle="tab" data-bs-target="#tabFour1">
                                     <span style="position: relative;top: -3px;">
                                         <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
@@ -374,7 +535,7 @@
                                 </button>
                             </li>
                             <li>
-                                <button class="nav-link text-decoration-none pt-3 text-black" data-bs-toggle="tab"
+                                <button class="pt-3 text-black nav-link text-decoration-none" data-bs-toggle="tab"
                                     data-bs-target="#tabFour2">
                                     <span style="position: relative;top: -3px;">
                                         <!-- Digital V.Card SVG Icon -->
@@ -429,7 +590,7 @@
                                 </button>
                             </li>
                             <li>
-                                <button class="nav-link text-decoration-none pt-3 text-black" data-bs-toggle="tab"
+                                <button class="pt-3 text-black nav-link text-decoration-none" data-bs-toggle="tab"
                                     data-bs-target="#tabFour3">
                                     <span>
                                         <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
@@ -453,7 +614,7 @@
                             <div class="tab-pane fade active show" id="tabFour1">
                                 <div class="row justify-content-center">
                                     @if ($qr_plans->isEmpty())
-                                        <div class="col-12 text-center">
+                                        <div class="text-center col-12">
                                             <p>No barcode plans available at the moment. Please check back later.</p>
                                         </div>
                                     @else
@@ -528,7 +689,7 @@
                             <div class="tab-pane fade" id="tabFour2">
                                 <div class="row justify-content-center">
                                     @if ($nfc_plans->isEmpty())
-                                        <div class="col-12 text-center">
+                                        <div class="text-center col-12">
                                             <p>No barcode plans available at the moment. Please check back later.</p>
                                         </div>
                                     @else
@@ -602,7 +763,7 @@
                             <div class="tab-pane fade" id="tabFour3">
                                 <div class="row justify-content-center">
                                     @if ($barcode_plans->isEmpty())
-                                        <div class="col-12 text-center">
+                                        <div class="text-center col-12">
                                             <p>No barcode plans available at the moment. Please check back later.</p>
                                         </div>
                                     @else
@@ -683,9 +844,9 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-8 col-lg-9 col-md-11">
-                    <div class="section-title text-center mb-60" data-aos="fade-up" data-aos-duration="1500"
+                    <div class="text-center section-title mb-60" data-aos="fade-up" data-aos-duration="1500"
                         data-aos-offset="50">
-                        <span class="subtitle-three mb-10">Meet Our Global Clients</span>
+                        <span class="mb-10 subtitle-three">Meet Our Global Clients</span>
                         <h2>We’ve 1253+ Global Clients & lot’s of Project Complete</h2>
                     </div>
                 </div>
@@ -737,9 +898,9 @@
     <!-- Client Logo Area End -->
 
     <!-- About Area Start -->
-    <section class="client-logo-area pt-60 rpt-50 pb-1 rpb-50 bgc-navyblue">
+    <section class="pb-1 client-logo-area pt-60 rpt-50 rpb-50 bgc-navyblue">
         <div class="container">
-            <div class="row justify-content-center section-title text-center text-white mb-60 aos-init aos-animate"
+            <div class="text-center text-white row justify-content-center section-title mb-60 aos-init aos-animate"
                 data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                 <div class="col-lg-10">
                     <h4>Unlock the Best Value for Your Investment</h4>
@@ -755,8 +916,8 @@
     </section>
     <!-- About Area End -->
     {{-- All Cards --}}
-    <section class="artificial-intelligence-area rel pt-50 rpt-20 pb-50 rpb-100 z-2">
-        <div class="container-fluid px-0">
+    {{-- <section class="artificial-intelligence-area rel pt-50 rpt-20 pb-50 rpb-100 z-2">
+        <div class="px-0 container-fluid">
             <div class="row pb-30 rpb-65 gap-100 align-items-center">
                 <div class="col-lg-12 order-lg-2">
                     <div class="ai-image aos-init aos-animate pb-50" data-aos="fade-left" data-aos-duration="1500"
@@ -771,28 +932,24 @@
                 <div class="col-lg-12 order-lg-2">
                     <div class="ai-image aos-init aos-animate" data-aos="fade-left" data-aos-duration="1500"
                         data-aos-offset="50">
-                        <div class="product-slider-card row px-0">
+                        <div class="px-0 product-slider-card row">
                             @foreach ($cardProducts as $cardProduct)
                                 <div class="">
                                     <a href="{{ route('card.details', $cardProduct->slug) }}">
-                                        <div class="card border-0 shadow-sm bg-light p-0">
-                                            <div class="card-header border-0 p-0">
+                                        <div class="p-0 border-0 shadow-sm card bg-light">
+                                            <div class="p-0 border-0 card-header">
                                                 <div class="d-flex justify-content-center">
                                                     <img src="{{ asset('storage/' . $cardProduct->thumbnail_image) }}"
                                                         alt="{{ $cardProduct->name }}"
                                                         onerror="this.onerror=null;this.src='{{ asset('frontend/newimage/blognoimage.webp') }}';">
-                                                    {{-- <img class="img-fluid" src="{{ asset('') }}"
-                                                    alt="Product 1"> --}}
-                                                </div>
+
                                                 <div class="p-3">
                                                     <div>
                                                         <h6 class="mb-0">{{ $cardProduct->name }}</h6>
-                                                        {{-- <h6 class="text-mute mb-0">
-                                                        <small>Metal,Plastic,Silver Card</small>
-                                                    </h6> --}}
+
                                                     </div>
                                                     <div class="d-flex justify-content-between align-items-center">
-                                                        <h6 class="mb-0 pt-3 text-danger">
+                                                        <h6 class="pt-3 mb-0 text-danger">
                                                             @if ($cardProduct->currency == 'eur')
                                                                 €
                                                             @elseif ($cardProduct->currency == 'gbp')
@@ -833,7 +990,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     {{-- All Cards End --}}
     {{--  --}}
     <section class="artificial-intelligence-area rel pt-50 rpt-20 pb-130 rpb-100 z-2">
@@ -846,7 +1003,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="ai-content mb-40 rmb-0 aos-init aos-animate" data-aos="fade-right"
+                    <div class="mb-40 ai-content rmb-0 aos-init aos-animate" data-aos="fade-right"
                         data-aos-duration="1500" data-aos-offset="50">
                         <span class="subtitle">Effortless Updates and Real-Time Adaptability</span>
                         <h3>Dynamic QR Code Generator</h3>
@@ -888,12 +1045,12 @@
         </div>
     </section>
     <!-- CTA Area End -->
-    <section id="faqs" class="faqs-area-seven  rpb-85 rel z-1">
+    <section id="faqs" class="faqs-area-seven rpb-85 rel z-1">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-7 col-lg-9 aos-init aos-animate" data-aos="fade-up" data-aos-duration="1500"
                     data-aos-offset="50">
-                    <div class="section-title text-center mb-60">
+                    <div class="text-center section-title mb-60">
                         <h2>Have Any Question On Mind! Asked Questions</h2>
                     </div>
                 </div>
@@ -1050,7 +1207,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-7 col-lg-9">
-                    <div class="section-title text-center mb-55 aos-init aos-animate" data-aos="fade-up"
+                    <div class="text-center section-title mb-55 aos-init aos-animate" data-aos="fade-up"
                         data-aos-duration="1500" data-aos-offset="50">
                         <h2>Get Every Single <br> Updates and Learn Our News &amp; <span>Blog</span></h2>
                     </div>
@@ -1059,14 +1216,14 @@
             <div class="row justify-content-center">
                 @foreach ($blog_posts as $blog_post)
                     <div class="col-xl-4 col-md-6 col-sm-10">
-                        <div class="blog-item aos-init aos-animate shadow-sm" data-aos="fade-up"
+                        <div class="shadow-sm blog-item aos-init aos-animate" data-aos="fade-up"
                             data-aos-duration="1000" data-aos-offset="50">
                             <div class="image">
                                 <img src="{{ asset('storage/' . $blog_post->image) }}" alt="Blog"
                                     onerror="this.onerror=null;this.src='{{ asset('frontend/newimage/blognoimage.webp') }}';">
                                 <div class="date"><span>{{ $blog_post->created_at->format('M d Y') }}</span></div>
                             </div>
-                            <div class="content p-3">
+                            <div class="p-3 content">
                                 <a href="{{ route('blog.details', $blog_post->slug) }}"
                                     class="category">{{ $blog_post->badge }}</a>
                                 <h5><a
@@ -1083,6 +1240,51 @@
         </div>
     </section>
     @push('scripts')
+        <script>
+            $(document).ready(function() {
+                // Set default selected radio and image for Individual Plan
+                $('#individualOption1').prop('checked', true);
+                showImage('individualImage1', 'individual');
+
+                // Set default selected radio and image for Team Plan
+                $('#teamOption1').prop('checked', true);
+                showImage('teamImage1', 'team');
+
+                // Individual Plan Pricing Toggle
+                $('#togglePricing-1').change(function() {
+                    if ($(this).prop('checked')) {
+                        $('#price-monthly-1').hide();
+                        $('#price-yearly-1').show();
+                    } else {
+                        $('#price-monthly-1').show();
+                        $('#price-yearly-1').hide();
+                    }
+                });
+
+                // Team Plan Pricing Toggle
+                $('#togglePricing-2').change(function() {
+                    if ($(this).prop('checked')) {
+                        $('#price-monthly-2').hide();
+                        $('#price-yearly-2').show();
+                    } else {
+                        $('#price-monthly-2').show();
+                        $('#price-yearly-2').hide();
+                    }
+                });
+            });
+
+            // Function to show selected image for both Individual and Team Plan
+            function showImage(imageId, plan) {
+                // Hide all images for the respective plan
+                $("#" + plan + "Image1, #" + plan + "Image2, #" + plan + "Image3").hide();
+
+                // Show the selected image for the respective plan
+                $("#" + imageId).show();
+            }
+        </script>
+
+        {{-- For Team --}}
+        {{-- For Team --}}
         <script>
             $(document).ready(function() {
                 const $slider = $('.product-slider-card');

@@ -645,15 +645,7 @@
                                                     <div class="price d-flex justify-content-center">
                                                         <span
                                                             class="prev">$</span>{{ number_format($qr_plan->price / 12, 2) }}
-                                                        {{-- <span class="next">/
-                                                            @if ($qr_plan->billing_cycle == 'year')
-                                                                year
-                                                            @elseif ($qr_plan->billing_cycle == 'month')
-                                                                month
-                                                            @else
-                                                                Trial Period
-                                                            @endif
-                                                        </span> --}}
+                                                        
                                                         <span class="next ps-3">
                                                             <div class="d-flex flex-column">
                                                                 <span><span class="fw-bold">USD</span>/month</span>
@@ -719,15 +711,7 @@
                                                     <div class="price d-flex justify-content-center">
                                                         <span
                                                             class="prev">$</span>{{ number_format($nfc_plan->price / 12, 2) }}
-                                                        {{-- <span class="next">/
-                                                            @if ($nfc_plan->billing_cycle == 'year')
-                                                                year
-                                                            @elseif ($nfc_plan->billing_cycle == 'month')
-                                                                month
-                                                            @else
-                                                                Trial Period
-                                                            @endif
-                                                        </span> --}}
+
                                                         <span class="next ps-3">
                                                             <div class="d-flex flex-column">
                                                                 <span><span class="fw-bold">USD</span>/month</span>
@@ -794,15 +778,7 @@
                                                         <span
                                                             class="prev">$</span>{{ number_format($barcode_plan->price / 12, 2) }}
                                                         per month
-                                                        {{-- <span class="next">/
-                                                            @if ($barcode_plan->billing_cycle == 'year')
-                                                                year
-                                                            @elseif ($barcode_plan->billing_cycle == 'month')
-                                                                month
-                                                            @else
-                                                                Trial Period
-                                                            @endif
-                                                        </span> --}}
+
                                                         <span class="next ps-3">
                                                             <div class="d-flex flex-column">
                                                                 <span><span class="fw-bold">USD</span>/month</span>
@@ -914,89 +890,7 @@
             </div>
         </div>
     </section>
-    <!-- About Area End -->
-    {{-- All Cards --}}
-    <section class="artificial-intelligence-area rel pt-50 rpt-20 pb-50 rpb-100 z-2">
-        <div class="px-0 container-fluid">
-            <div class="row pb-30 rpb-65 gap-100 align-items-center">
-                <div class="col-lg-12 order-lg-2">
-                    <div class="ai-image aos-init aos-animate pb-50" data-aos="fade-left" data-aos-duration="1500"
-                        data-aos-offset="50">
-                        <div class="text-center">
-                            <h3>All Social Platform In A Card.</h3>
-                            <p class="mt-3">Connect with all your favorite platforms in one place. Share, engage, and
-                                stay updated effortlessly.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 order-lg-2">
-                    <div class="ai-image aos-init aos-animate" data-aos="fade-left" data-aos-duration="1500"
-                        data-aos-offset="50">
-                        <div class="px-0 product-slider-card row">
-                            @foreach ($cardProducts as $cardProduct)
-                                <div class="">
-                                    <a href="{{ route('card.details', $cardProduct->slug) }}">
-                                        <div class="p-0 border-0 shadow-sm card bg-light">
-                                            <div class="p-0 border-0 card-header">
-                                                <div class="d-flex justify-content-center">
-                                                    <img src="{{ asset('storage/' . $cardProduct->thumbnail_image) }}"
-                                                        alt="{{ $cardProduct->name }}"
-                                                        onerror="this.onerror=null;this.src='{{ asset('frontend/newimage/blognoimage.webp') }}';">
-                                                    {{-- <img class="img-fluid" src="{{ asset('') }}"
-                                                    alt="Product 1"> --}}
-                                                </div>
-                                                <div class="p-3">
-                                                    <div>
-                                                        <h6 class="mb-0">{{ $cardProduct->name }}</h6>
-                                                        {{-- <h6 class="mb-0 text-mute">
-                                                        <small>Metal,Plastic,Silver Card</small>
-                                                    </h6> --}}
-                                                    </div>
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <h6 class="pt-3 mb-0 text-danger">
-                                                            @if ($cardProduct->currency == 'eur')
-                                                                €
-                                                            @elseif ($cardProduct->currency == 'gbp')
-                                                                £
-                                                            @elseif ($cardProduct->currency == 'usd')
-                                                                $
-                                                            @else
-                                                                $
-                                                            @endif
-                                                            {{ $cardProduct->package_price }}
-                                                            {{ $cardProduct->type }}
-                                                        </h6>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="">
-                                                    <div style="height: 60px;"
-                                                        class="pt-2 d-flex justify-content-start align-items-center">
-                                                        <p class="mb-0 package-details text-start">
-                                                            {!! implode(' ', array_slice(explode(' ', strip_tags($cardProduct->short_description)), 0, 15)) !!}...
-                                                        </p>
-                                                    </div>
-                                                    <div class="mt-4">
-                                                        <a href="{{ route('card.details', $cardProduct->slug) }}"
-                                                            class="theme-btn style-two rounded-0 btn-sm"
-                                                            style="width: 100%;">Details</a>
-                                                    </div>
-                                                </div>
 
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    {{-- All Cards End --}}
-    {{--  --}}
     <section class="artificial-intelligence-area rel pt-50 rpt-20 pb-130 rpb-100 z-2">
         <div class="container container-1070">
             <div class="row pb-30 rpb-65 gap-100 align-items-center">
