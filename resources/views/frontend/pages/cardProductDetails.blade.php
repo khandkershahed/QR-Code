@@ -413,7 +413,7 @@
                                                     </div>
                                                 </div>
                                             </label>
-                                            <label class="mt-20 radio-card">
+                                            {{-- <label class="mt-20 radio-card">
                                                 <input type="radio" name="plan" value="trial"
                                                     onchange="goToNextStep(1)">
                                                 <div class="card-content">
@@ -424,7 +424,7 @@
                                                         <h3 class="amount-title">${{ number_format($cardProduct->price / 12, 2) }}</h3>
                                                     </div>
                                                 </div>
-                                            </label>
+                                            </label> --}}
                                         </div>
                                     </div>
 
@@ -477,8 +477,8 @@
                                                 <div class="panel-heading">
                                                     <h4 class="mb-0 panel-title">
                                                         <label class="w-100">
-                                                            <input type="radio" id="r12" name="occupation"
-                                                                value="Custom Card" />
+                                                            <input type="radio" id="r12" name="card_preference"
+                                                                value="custom" />
                                                             <div class="custom-card">
                                                                 <h4 class="p-3 mb-0">Custom Card</h4>
                                                             </div>
@@ -514,8 +514,8 @@
                                                 <div class="panel-heading">
                                                     <h4 class="mb-0 panel-title">
                                                         <label class="w-100">
-                                                            <input type="radio" id="r13" name="occupation"
-                                                                value="Metal Card" />
+                                                            <input type="radio" id="r13" name="card_preference"
+                                                                value="metal" />
                                                             <div class="custom-card">
                                                                 <h4 class="p-3 mb-0">Metal Card</h4>
                                                             </div>
