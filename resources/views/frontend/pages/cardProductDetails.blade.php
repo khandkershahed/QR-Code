@@ -348,6 +348,43 @@
             border-radius: 6px;
             padding: 5px;
         }
+
+        .shipping-card {
+            border-radius: 10px;
+            padding: 0px;
+            border: 1px solid rgb(227, 227, 227);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        .shipping-card input:checked+label {
+            font-weight: bold;
+        }
+
+        /* Red border for checked radio button */
+        .shipping-card input:checked {
+            padding: 14px;
+            border: 1px solid red;
+            cursor: pointer;
+            flex-direction: column;
+            position: relative;
+            margin-bottom: 10px;
+            /* Red border for checked radio button */
+        }
+
+        .shipping-card input:checked~label {
+            padding: 14px;
+            border: 1px solid red;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            margin: 0px;
+            /* Red border around the label */
+        }
     </style>
 
     <section class="text-center page-banner-area overlay py-120 rpy-120 rel z-1 bgs-cover"
@@ -394,7 +431,8 @@
                                     </div>
                                 </div>
 
-                                <form action="{{ route('card.checkout', $cardProduct->slug) }}" method="GET" id="multiStepForm">
+                                <form action="{{ route('card.checkout', $cardProduct->slug) }}" method="GET"
+                                    id="multiStepForm">
                                     @csrf
                                     <!-- Step 1 -->
                                     <div class="form-step" id="step1">
@@ -417,7 +455,7 @@
                                                     </div>
                                                 </div>
                                             </label>
-                                           
+
                                         </div>
                                     </div>
 
@@ -428,48 +466,11 @@
                                             <p>A card that suits you best</p>
                                         </div>
                                         <div class="panel-group" id="accordion">
-                                            <!-- First Card -->
-                                            {{-- <div class="panel panel-default">
-                                                <div class="panel-heading">
-                                                    <h4 class="mb-0 panel-title">
-                                                        <label class="w-100">
-                                                            <input type="radio" id="r11" name="occupation"
-                                                                value="Standard Card" />
-                                                            <div class="custom-card">
-                                                                <h4 class="p-3 mb-0">Standard Card</h4>
-                                                            </div>
-                                                        </label>
-                                                    </h4>
-                                                </div>
-                                                <div id="collapseOne" class="panel-collapse collapse">
-                                                    <div class="panel-body">
-                                                        <p>Minimalistic design</p>
-                                                        <div class="image-slider">
-                                                            <div>
-                                                                <img class="img-fluid rounded-2"
-                                                                    src="https://ovou.com/_next/image?url=https%3A%2F%2Fovou.com%2Fcdn-cgi%2Fimage%2Ffit%3Dscale-down%2Cwidth%3D1152%2Cheight%3D732%2Cquality%3D100%2Fhttps%3A%2F%2Fovou-production.nyc3.cdn.digitaloceanspaces.com%2Fproducts%2Fcards%2Fbanner%2Fstandard%2F1.png&w=640&q=100"
-                                                                    alt="">
-                                                            </div>
-                                                            <div>
-                                                                <img class="img-fluid rounded-2"
-                                                                    src="https://ovou.com/_next/image?url=https%3A%2F%2Fovou.com%2Fcdn-cgi%2Fimage%2Ffit%3Dscale-down%2Cwidth%3D1152%2Cheight%3D732%2Cquality%3D100%2Fhttps%3A%2F%2Fovou-production.nyc3.cdn.digitaloceanspaces.com%2Fproducts%2Fcards%2Fbanner%2Fstandard%2F2.png&w=640&q=100"
-                                                                    alt="">
-                                                            </div>
-                                                            <div>
-                                                                <img class="img-fluid rounded-2"
-                                                                    src="https://ovou.com/_next/image?url=https%3A%2F%2Fovou.com%2Fcdn-cgi%2Fimage%2Ffit%3Dscale-down%2Cwidth%3D1152%2Cheight%3D732%2Cquality%3D100%2Fhttps%3A%2F%2Fovou-production.nyc3.cdn.digitaloceanspaces.com%2Fproducts%2Fcards%2Fbanner%2Fstandard%2F3.png&w=640&q=100"
-                                                                    alt="">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> --}}
-
                                             <!-- Second Card -->
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
                                                     <h4 class="mb-0 panel-title">
-                                                        <label class="w-100 mb-0">
+                                                        <label class="mb-0 w-100">
                                                             <input type="radio" id="r12" name="card_preference"
                                                                 value="plastic" />
                                                             <div class="custom-card d-flex justify-content-between">
@@ -512,7 +513,7 @@
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
                                                     <h4 class="mb-0 panel-title">
-                                                        <label class="w-100 mb-0">
+                                                        <label class="mb-0 w-100">
                                                             <input type="radio" id="r13" name="card_preference"
                                                                 value="metal" />
                                                             <div class="custom-card d-flex justify-content-between">
@@ -614,19 +615,118 @@
 
                                         <div class="mt-5">
                                             <label for="card_logo">Upload Logo</label>
-                                            <input class="form-control" type="file" name="card_logo" id="card_logo" required
-                                                onchange="previewLogo()">
+                                            <input class="form-control" type="file" name="card_logo"
+                                                id="card_logo" required onchange="previewLogo()">
                                         </div>
                                         <div class="mt-5">
                                             <label for="card_logo">Design Details</label>
-                                            <textarea class="form-control" name="design_note" id="" rows="3" placeholder="Examples: 'Logo in the middle', 'Name and title bottom left, logo top right'"></textarea>
+                                            <textarea class="form-control" name="design_note" id="" rows="3"
+                                                placeholder="Examples: 'Logo in the middle', 'Name and title bottom left, logo top right'"></textarea>
                                             {{-- <input type="t" name="card_logo" id="card_logo"
                                                 placeholder="Examples: 'Logo in the middle', 'Name and title bottom left, logo top right'"> --}}
                                         </div>
 
                                         <div class="mt-30 d-flex">
+                                            <button type="button" id="nextBtn3" class="py-3 btn btn-primary"
+                                                onclick="goToNextStep(3)" disabled>Continue <i
+                                                    class="fa-solid fa-right-arrow"></i></button>
+                                            <button type="button" onclick="previousStep(3)"
+                                                class="py-3 btn btn-secondary">Previous</button>
+                                        </div>
+                                    </div>
+                                    <div class="form-step" id="step4" style="display:none;">
+                                        <div>
+                                            <h2>Order Summary</h2>
+                                            <p>Design Your Card</p>
+                                        </div>
+                                        <div>
+                                            <div class="accordion" id="accordionExample">
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header rounded-0" id="headingOne">
+                                                        <button class="accordion-button rounded-0" type="button"
+                                                            data-bs-toggle="collapse" data-bs-target="#orderSummary"
+                                                            aria-expanded="true" aria-controls="orderSummary">
+                                                            Summary
+                                                        </button>
+                                                    </h2>
+                                                    <div id="orderSummary" class="accordion-collapse collapse show"
+                                                        aria-labelledby="headingOne"
+                                                        data-bs-parent="#accordionExample">
+                                                        <div class="py-2 mt-0 border accordion-body">
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center">
+                                                                <div>
+                                                                    <img class="img-fluid" width="50"
+                                                                        src="https://ovou.com/_next/image?url=https%3A%2F%2Fovou-production.nyc3.cdn.digitaloceanspaces.com%2Fproducts%2Fsummery%2Fplan.png&w=320&q=75"
+                                                                        alt="">
+                                                                </div>
+                                                                <div class="ps-3">
+                                                                    <h6 class="mb-0">Individual</h6>
+                                                                    <p class="mb-0">Annual Plan</p>
+                                                                    <p class="mb-0">Your subscription gives you
+                                                                        complete access to
+                                                                        OVOU’s Individual features.</p>
+                                                                </div>
+                                                                <div>
+                                                                    <h3>$99</h3>
+                                                                </div>
+                                                            </div>
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center">
+                                                                <div>
+                                                                    <img class="img-fluid" width="50"
+                                                                        src="https://ovou.com/_next/image?url=https%3A%2F%2Fovou-production.nyc3.cdn.digitaloceanspaces.com%2Fproducts%2Fsummery%2Fmetal.png&w=320&q=75"
+                                                                        alt="">
+                                                                </div>
+                                                                <div class="ps-3">
+                                                                    <h6 class="mb-0"> Metal Card</h6>
+                                                                    <p class="mb-0">Elegantly engraved with your
+                                                                        unique logo</p>
+                                                                </div>
+                                                                <div>
+                                                                    <h3>$99</h3>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h3>Account Information</h3>
+                                            <p>Your email will be used for account creation and management.</p>
+                                            <div class="mt-5">
+                                                <label for="email">Your Email</label>
+                                                <input class="form-control" type="file" name="email"
+                                                    id="email" required>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h3>Shipping Information</h3>
+                                            <p>The ammount is for shipping and handling.</p>
+                                            <div class="mt-3">
+                                                <label>Choose your shipping method</label>
+
+                                                <!-- Card for Regular Mail -->
+                                                <div class="mb-3 shipping-card" id="card-regularMail">
+                                                    <input type="radio" id="regularMail" name="shipping"
+                                                        value="regularMail" checked>
+                                                    <label for="regularMail" class="p-3 w-100"
+                                                        style="cursor: pointer;">Regular Mail ($1)</label>
+                                                </div>
+
+                                                <!-- Card for FedEx Express -->
+                                                <div class="mb-3 shipping-card" id="card-fedExExpress">
+                                                    <input type="radio" id="fedExExpress" name="shipping"
+                                                        value="fedExExpress">
+                                                    <label for="fedExExpress" class="p-3 w-100"
+                                                        style="cursor: pointer;">FedEx Express ($5)</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mt-30 d-flex">
                                             <button type="submit" id="nextBtn3"
-                                                class="py-3 btn btn-primary w-100 me-2" disabled>Submit</button>
+                                                class="py-3 btn btn-primary w-100 me-2">Submit</button>
                                             <button type="button" onclick="previousStep(3)"
                                                 class="py-3 btn btn-secondary">Previous</button>
                                         </div>
@@ -744,12 +844,12 @@
             $(document).ready(function() {
                 // Enable Next Button if plan or occupation is selected
                 $('input[name="plan"], input[name="card_preference"]').on('change', function() {
-                    $('#nextBtn2').prop('disabled', false);
+                    $('#nextBtn2').prop('disabled', false); // Enable Continue button for Step 2
                 });
 
                 // Enable Next Button for Step 3 if card logo is uploaded
                 $('#card_logo').on('change', function() {
-                    validateStep3(); // Validate step 3 when file input changes
+                    validateStep3(); // Validate Step 3 when file input changes
                     previewLogo(); // Show the preview of the logo
                 });
             });
@@ -762,12 +862,11 @@
                 } else if (step === 2 && $('input[name="card_preference"]:checked').length) {
                     $('#step2').hide();
                     $('#step3').show();
-                } else if (step === 3 && $('#card_logo').val()) {
+                } else if (step === 3 && $('#card_logo')[0].files.length > 0) {
                     $('#step3').hide();
-                    // Assuming next step is another form step
-                    // Add your logic here for what happens after step 3
+                    $('#step4').show();
                 } else {
-                    alert("Please make a selection.");
+                    alert("Please make a selection or upload a logo.");
                 }
             }
 
@@ -777,9 +876,10 @@
                 $('#step' + (step - 1)).show();
             }
 
-            // Validate Step 3 (enable Next button if logo is selected)
+            // Validate Step 3 (Enable Next button if logo is selected)
             function validateStep3() {
-                $('#nextBtn3').prop('disabled', !$('#card_logo').val());
+                // Enable or disable the "Continue" button based on whether a file is uploaded
+                $('#nextBtn3').prop('disabled', $('#card_logo')[0].files.length === 0);
             }
 
             // Event listener to update the main card image when a new design is chosen
