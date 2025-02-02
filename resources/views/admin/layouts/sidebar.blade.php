@@ -333,7 +333,7 @@
                     </div>
                 </div>
                 <div data-kt-menu-trigger="click"
-                    class="menu-item {{ Route::is('admin.user.subscriptions', 'admin.plans.index', 'admin.plans.create','admin.card-product.index','admin.card-product.create','admin.card-product.edit') ? 'here show' : '' }} menu-accordion">
+                    class="menu-item {{ Route::is('admin.user.subscriptions', 'admin.plans.index','admin.plans.create','admin.plans.edit','admin.shipping-method.index','admin.shipping-method.create','admin.shipping-method.edit') ? 'here show' : '' }} menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
@@ -412,7 +412,7 @@
                         <span class="menu-arrow"></span>
                     </span>
                     <div
-                        class="menu-sub menu-sub-accordion {{ Route::is('admin.user.subscriptions', 'admin.plans.index', 'admin.plans.create') ? 'menu-active-bg' : '' }}">
+                        class="menu-sub menu-sub-accordion {{ Route::is('admin.user.subscriptions', 'admin.plans.index','admin.plans.create','admin.plans.edit') ? 'menu-active-bg' : '' }}">
                         <div class="menu-item">
                             <a class="menu-link {{ Route::is('admin.user.subscriptions') ? 'active' : '' }}"
                                 href="{{ route('admin.user.subscriptions') }}">
@@ -423,7 +423,7 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link {{ Route::is('admin.plans.index') ? 'active' : '' }}"
+                            <a class="menu-link {{ Route::is('admin.plans.index','admin.plans.create','admin.plans.edit') ? 'active' : '' }}"
                                 href="{{ route('admin.plans.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
@@ -432,12 +432,12 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link {{ Route::is('admin.card-product.index','admin.card-product.create','admin.card-product.edit') ? 'active' : '' }}"
-                                href="{{ route('admin.card-product.index') }}">
+                            <a class="menu-link {{ Route::is('admin.shipping-method.index','admin.shipping-method.create','admin.shipping-method.edit') ? 'active' : '' }}"
+                                href="{{ route('admin.shipping-method.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Card Products List</span>
+                                <span class="menu-title">Shipping Method List</span>
                             </a>
                         </div>
                     </div>

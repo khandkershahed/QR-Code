@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use App\Models\Admin\NfcCard;
 use App\Http\Controllers\Controller;
 use App\Models\CardProduct;
+use App\Models\CardShippingMethod;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
@@ -179,7 +180,8 @@ class HomeController extends Controller
     public function cardDetails($slug)
     {
         $data = [
-            'cardProduct'   => Plan::where('slug', $slug)->first(),
+            'shippingMethods'   => CardShippingMethod::get(),
+            'cardProduct'       => Plan::where('slug', $slug)->first(),
         ];
         return view('frontend.pages.cardProductDetails', $data);
     }
