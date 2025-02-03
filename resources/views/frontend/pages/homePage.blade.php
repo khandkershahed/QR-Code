@@ -166,17 +166,18 @@
     </section>
     <!-- Hero area End -->
     <!-- Card Price area Start -->
-    <section style="position: relative; z-index: 555;">
-        <div class="container pb-50">
-            <div class="row justify-content-center">
-                <div class="col-xl-6 col-lg-9 col-md-11">
-                    <div class="text-center section-title mb-45 aos-init aos-animate" data-aos="fade-up"
-                        data-aos-duration="1500" data-aos-offset="50">
-                        <h2>Explore Our Pricing Package <br> and choose your plan</h2>
+    @if ($individual_card || $team_card)
+        <section style="position: relative; z-index: 555;">
+            <div class="container pb-50">
+                <div class="row justify-content-center">
+                    <div class="col-xl-6 col-lg-9 col-md-11">
+                        <div class="text-center section-title mb-45 aos-init aos-animate" data-aos="fade-up"
+                            data-aos-duration="1500" data-aos-offset="50">
+                            <h2>Explore Our Pricing Package <br> and choose your plan</h2>
+                        </div>
                     </div>
                 </div>
-            </div>
-            @if ($individual_card || $team_card)
+
                 <div class="row justify-content-center">
                     <!-- Individual Plan -->
                     @if ($individual_card)
@@ -239,12 +240,12 @@
                                     @endphp
                                     <div class="py-3 pb-1 text-center">
                                         <h2 class="mb-0" id="price-monthly-1">
-                                            <span
-                                                class="text-success price-monthly">$ {{ number_format($individual_card->price / 12, 2) }}</span>/monthly
+                                            <span class="text-success price-monthly">$
+                                                {{ number_format($individual_card->price / 12, 2) }}</span>/monthly
                                         </h2>
                                         <h2 class="mb-0" id="price-yearly-1" style="display:none;">
-                                            <span
-                                                class="text-success price-yearly">$ {{ $individual_card->price }}</span>/year
+                                            <span class="text-success price-yearly">$
+                                                {{ $individual_card->price }}</span>/year
                                         </h2>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-center">
@@ -261,17 +262,19 @@
 
                                 <!-- Features List -->
                                 <ul class="mt-2">
-                                    <li><i class="fa-solid fa-user pe-2 text-muted"></i> {{ $individual_card->max_users }} User</li>
+                                    <li><i class="fa-solid fa-user pe-2 text-muted"></i>
+                                        {{ $individual_card->max_users }} User</li>
                                     @foreach ($individual_card_descriptions as $individual_card_description)
-                                        <li><i class="fa-solid fa-check pe-2 text-muted"></i> {{ $individual_card_description }}</li>
+                                        <li><i class="fa-solid fa-check pe-2 text-muted"></i>
+                                            {{ $individual_card_description }}</li>
                                     @endforeach
                                 </ul>
-                                <a href="{{ route('card.details', $individual_card->slug) }}" class="mt-4 theme-btn style-two w-100">Choose Package <i
+                                <a href="{{ route('card.details', $individual_card->slug) }}"
+                                    class="mt-4 theme-btn style-two w-100">Choose Package <i
                                         class="fas fa-arrow-right"></i></a>
                                 <div class="text-center footer-text">
                                     <a href="{{ route('card.details', $individual_card->slug) }}">
-                                        See all features <i
-                                        class="fas fa-arrow-right"></i>
+                                        See all features <i class="fas fa-arrow-right"></i>
                                     </a>
                                 </div>
                             </div>
@@ -329,20 +332,20 @@
                                     </div>
                                 </div>
                                 @php
-                                $team_card_descriptions = is_array($team_card->descriptions)
-                                    ? $team_card->descriptions
-                                    : json_decode($team_card->descriptions);
-                            @endphp
+                                    $team_card_descriptions = is_array($team_card->descriptions)
+                                        ? $team_card->descriptions
+                                        : json_decode($team_card->descriptions);
+                                @endphp
                                 <!-- Monthly/Yearly Pricing Toggle -->
                                 <div>
                                     <div class="py-3 pb-1 text-center">
                                         <h2 class="mb-0" id="price-monthly-2">
-                                            <span
-                                                class="text-success price-monthly">$ {{ number_format($team_card->price / 12, 2) }}</span>/monthly
+                                            <span class="text-success price-monthly">$
+                                                {{ number_format($team_card->price / 12, 2) }}</span>/monthly
                                         </h2>
                                         <h2 class="mb-0" id="price-yearly-2" style="display:none;">
-                                            <span
-                                                class="text-success price-yearly">$ {{ $team_card->price }}</span>/year
+                                            <span class="text-success price-yearly">$
+                                                {{ $team_card->price }}</span>/year
                                         </h2>
                                     </div>
                                     {{-- <div class="py-3 pb-1 text-center">
@@ -367,26 +370,28 @@
 
                                 <!-- Features List -->
                                 <ul class="mt-2">
-                                    <li><i class="fa-solid fa-user pe-2 text-muted"></i> {{ $team_card->max_users }} Users </li>
+                                    <li><i class="fa-solid fa-user pe-2 text-muted"></i> {{ $team_card->max_users }}
+                                        Users </li>
                                     @foreach ($team_card_descriptions as $team_card_description)
-                                        <li><i class="fa-solid fa-check pe-2 text-muted"></i> {{ $team_card_description }}</li>
+                                        <li><i class="fa-solid fa-check pe-2 text-muted"></i>
+                                            {{ $team_card_description }}</li>
                                     @endforeach
                                 </ul>
-                                <a href="{{ route('card.details', $team_card->slug) }}" class="mt-4 theme-btn style-two w-100">Choose Package <i
-                                    class="fas fa-arrow-right"></i></a>
-                            <div class="text-center footer-text">
-                                <a href="{{ route('card.details', $team_card->slug) }}">
-                                    See all features <i
-                                    class="fas fa-arrow-right"></i>
-                                </a>
-                            </div>
+                                <a href="{{ route('card.details', $team_card->slug) }}"
+                                    class="mt-4 theme-btn style-two w-100">Choose Package <i
+                                        class="fas fa-arrow-right"></i></a>
+                                <div class="text-center footer-text">
+                                    <a href="{{ route('card.details', $team_card->slug) }}">
+                                        See all features <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     @endif
                 </div>
-            @endif
-        </div>
-    </section>
+            </div>
+        </section>
+    @endif
     {{-- Service Box --}}
     <section class="numbered-box-area rel rpt-100 z-2">
         <div class="container">
