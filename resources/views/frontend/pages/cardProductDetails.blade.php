@@ -439,22 +439,22 @@
                                     id="multiStepForm">
                                     @csrf
                                     <!-- Step 1 -->
+                                    <input class="form-control" type="number" name="card_user">
                                     <div class="form-step" id="step1">
                                         <div class="radio-card-container">
                                             <label class="mt-10 radio-card ">
-                                                <input type="radio" name="plan" value="annual" required
-                                                    onchange="goToNextStep(1)">
+                                                <input type="radio" name="plan" value="{{ $cardProduct->price }}"
+                                                    required onchange="goToNextStep(1)">
                                                 <div class="card-content">
                                                     <div>
                                                         <h3 class="plan-title">Annual Plan</h3>
-                                                        {{-- <p class="mb-0"><span class="badge">Save 31%</span></p> --}}
                                                         <p class="mb-0"><small>Equal to $
                                                                 {{ number_format($cardProduct->price / 12, 2) }}/mo</small>
                                                         </p>
                                                     </div>
                                                     <div>
                                                         <h3 class="amount-title">$ {{ $cardProduct->price }}</h3>
-                                                        <p class="mb-0"><strong>$ {{ $cardProduct->price }}</strong>
+                                                        <p class="mb-0"><strong>$ <span class="annualCharge">{{ $cardProduct->price }}</span></strong>
                                                             Billed Annually</p>
                                                     </div>
                                                 </div>
@@ -476,7 +476,8 @@
                                                     <h4 class="mb-0 panel-title">
                                                         <label class="mb-0 w-100">
                                                             <input type="radio" id="r12" name="card_preference"
-                                                                value="plastic" />
+                                                                data-card_price="{{ $cardProduct->plastic_card_price }}"
+                                                                value="plastic" data-card_title="Plastic" />
                                                             <div class="custom-card d-flex justify-content-between">
                                                                 <div>
                                                                     <h4 class="p-2 px-3 mb-0">Plastic Card</h4>
@@ -489,28 +490,6 @@
                                                         </label>
                                                     </h4>
                                                 </div>
-                                                {{-- <div id="collapseTwo" class="panel-collapse collapse">
-                                                    <div class="panel-body">
-                                                        <p>Extend your branding</p>
-                                                        <div class="image-slider">
-                                                            <div>
-                                                                <img class="img-fluid rounded-2"
-                                                                    src="https://ovou.com/_next/image?url=https%3A%2F%2Fovou.com%2Fcdn-cgi%2Fimage%2Ffit%3Dscale-down%2Cwidth%3D1152%2Cheight%3D732%2Cquality%3D100%2Fhttps%3A%2F%2Fovou-production.nyc3.cdn.digitaloceanspaces.com%2Fproducts%2Fcards%2Fbanner%2Fcustom%2F1.png&w=640&q=100"
-                                                                    alt="">
-                                                            </div>
-                                                            <div>
-                                                                <img class="img-fluid rounded-2"
-                                                                    src="https://ovou.com/_next/image?url=https%3A%2F%2Fovou.com%2Fcdn-cgi%2Fimage%2Ffit%3Dscale-down%2Cwidth%3D1152%2Cheight%3D732%2Cquality%3D100%2Fhttps%3A%2F%2Fovou-production.nyc3.cdn.digitaloceanspaces.com%2Fproducts%2Fcards%2Fbanner%2Fcustom%2F2.png&w=640&q=100"
-                                                                    alt="">
-                                                            </div>
-                                                            <div>
-                                                                <img class="img-fluid rounded-2"
-                                                                    src="https://ovou.com/_next/image?url=https%3A%2F%2Fovou.com%2Fcdn-cgi%2Fimage%2Ffit%3Dscale-down%2Cwidth%3D1152%2Cheight%3D732%2Cquality%3D100%2Fhttps%3A%2F%2Fovou-production.nyc3.cdn.digitaloceanspaces.com%2Fproducts%2Fcards%2Fbanner%2Fcustom%2F3.png&w=640&q=100"
-                                                                    alt="">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div> --}}
                                             </div>
 
                                             <!-- Third Card -->
@@ -519,7 +498,8 @@
                                                     <h4 class="mb-0 panel-title">
                                                         <label class="mb-0 w-100">
                                                             <input type="radio" id="r13" name="card_preference"
-                                                                value="metal" />
+                                                                value="metal" data-card_title="Metal"
+                                                                data-card_price="{{ $cardProduct->metal_card_price }}" />
                                                             <div class="custom-card d-flex justify-content-between">
                                                                 <div>
                                                                     <h4 class="p-2 px-3 mb-0">Metal Card</h4>
@@ -623,17 +603,15 @@
                                                 id="card_logo" required onchange="previewLogo()">
                                         </div>
                                         <div class="mt-5">
-                                            <label for="card_logo">Design Details</label>
-                                            <textarea class="form-control" name="design_note" id="" rows="3"
+                                            <label for="design_note">Design Details</label>
+                                            <textarea class="form-control" name="design_note" id="design_note" rows="3"
                                                 placeholder="Examples: 'Logo in the middle', 'Name and title bottom left, logo top right'"></textarea>
-                                            {{-- <input type="t" name="card_logo" id="card_logo"
-                                                placeholder="Examples: 'Logo in the middle', 'Name and title bottom left, logo top right'"> --}}
                                         </div>
 
                                         <div class="mt-30 d-flex justify-content-between">
                                             <button type="button" onclick="previousStep(3)"
-                                                class="py-3 btn btn-secondary">Previous</button>
-                                            <button type="button" id="nextBtn3" class="py-3 btn btn-primary"
+                                                class="p-2 px-3 btn btn-secondary">Previous</button>
+                                            <button type="button" id="nextBtn3" class="p-2 px-3 btn btn-primary"
                                                 onclick="goToNextStep(3)" disabled>Continue <i
                                                     class="fa-solid fa-right-arrow"></i></button>
 
@@ -652,6 +630,7 @@
                                                             data-bs-toggle="collapse" data-bs-target="#orderSummary"
                                                             aria-expanded="true" aria-controls="orderSummary">
                                                             Summary
+                                                            <span class="ms-4 fw-boldest text-end summary"></span>
                                                         </button>
                                                     </h2>
                                                     <div id="orderSummary" class="accordion-collapse collapse show"
@@ -665,15 +644,16 @@
                                                                         src="https://ovou.com/_next/image?url=https%3A%2F%2Fovou-production.nyc3.cdn.digitaloceanspaces.com%2Fproducts%2Fsummery%2Fplan.png&w=320&q=75"
                                                                         alt="">
                                                                 </div>
+                                                                <input type="hidden" name="subtotal"
+                                                                    id="hidden-subtotal">
+                                                                <input type="hidden" name="plan_id"
+                                                                    value="{{ $cardProduct->id }}" id="plan_id">
                                                                 <div class="ps-3">
-                                                                    <h6 class="mb-0">Individual</h6>
+                                                                    <h6 class="mb-0">{{ $cardProduct->title }}</h6>
                                                                     <p class="mb-0">Annual Plan</p>
-                                                                    <p class="mb-0">Your subscription gives you
-                                                                        complete access to
-                                                                        OVOU’s Individual features.</p>
                                                                 </div>
                                                                 <div>
-                                                                    <h3>$99</h3>
+                                                                    <h3>$ {{ $cardProduct->price }}</h3>
                                                                 </div>
                                                             </div>
                                                             <div
@@ -684,12 +664,21 @@
                                                                         alt="">
                                                                 </div>
                                                                 <div class="ps-3">
-                                                                    <h6 class="mb-0"> Metal Card</h6>
-                                                                    <p class="mb-0">Elegantly engraved with your
-                                                                        unique logo</p>
+                                                                    <h6 class="mb-0"><span id="card_title"></span>
+                                                                        Card</h6>
                                                                 </div>
                                                                 <div>
-                                                                    <h3>$99</h3>
+                                                                    <h3>$ <span id="card_price"></span> </h3>
+                                                                </div>
+                                                            </div>
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center">
+
+                                                                <div class="ps-3">
+                                                                    <h6 class="mb-0" id="shipping_title"></h6>
+                                                                </div>
+                                                                <div>
+                                                                    <h3 id="shipping_charge"></h3>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -700,7 +689,7 @@
                                         <div>
                                             <h3>Account Information</h3>
                                             <p>Your email will be used for account creation and management.</p>
-                                            <div class="mt-5">
+                                            <div class="my-5">
                                                 <label for="email">Your Email</label>
                                                 <input class="form-control" type="email" name="email"
                                                     id="email" required>
@@ -713,9 +702,12 @@
                                                 <label>Choose your shipping method</label>
                                                 @foreach ($shippingMethods as $shippingMethod)
                                                     <div class="mb-3 shipping-card" id="card-regularMail">
-                                                        <input type="radio" id="regularMail" name="shipping"
-                                                            value="regularMail" checked>
-                                                        <label for="regularMail" class="p-3 w-100"
+                                                        <input type="radio"
+                                                            id="regularMail{{ $shippingMethod->id }}"
+                                                            name="shipping_charge" data-shipping_title="{{ $shippingMethod->title }}"
+                                                            value="{{ $shippingMethod->price }}">
+                                                        <label for="regularMail{{ $shippingMethod->id }}"
+                                                            class="p-3 w-100"
                                                             style="cursor: pointer;">{{ $shippingMethod->title }} ($
                                                             {{ $shippingMethod->price }})</label>
                                                     </div>
@@ -725,9 +717,9 @@
                                         </div>
                                         <div class="mt-30 d-flex">
                                             <button type="submit" id="nextBtn3"
-                                                class="py-3 btn btn-primary w-100 me-2">Submit</button>
+                                                class="p-2 px-3 btn btn-primary w-100 me-2">Submit</button>
                                             <button type="button" onclick="previousStep(3)"
-                                                class="py-3 btn btn-secondary">Previous</button>
+                                                class="p-2 px-3 btn btn-secondary">Previous</button>
                                         </div>
                                     </div>
                                 </form>
@@ -738,8 +730,8 @@
                 <div class="col-lg-12">
                     <a href="">
                         <div class="card gift-card">
-                            <p class="mb-0 gift-title">OVOU Gift</p>
-                            <p class="mb-0 gift-para">Available as eGift or beautifully packaged Smart Cards, ideal
+                            <p class="mb-0 gift-title">Gift Card</p>
+                            <p class="mb-0 gift-para">Available as e-Gift or beautifully packaged Smart Cards, ideal
                                 for client appreciation or event giveaways.</p>
                             <div>
                                 <p class="mb-0 gift-link">Buy as a Gift -></p>
@@ -818,6 +810,43 @@
 
     @push('scripts')
         <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const updateSubtotal = () => {
+                    const plan_price = parseFloat($('input[name="plan"]:checked').val()) || {{ $cardProduct->price }};
+                    const cardUser = parseFloat($('input[name="card_user"]').val()) || 1;
+                    const planPrice = plan_price * cardUser;
+                    const cardPrice = parseFloat($('input[name="card_preference"]:checked').data("card_price")) ||
+                        0;
+                    const shippingPrice = parseFloat($('input[name="shipping_charge"]:checked').val()) || 0;
+
+                    const cardTitle = $('input[name="card_preference"]:checked').data("card_title") || '';
+                    const shippingTitle = $('input[name="shipping_charge"]:checked').data("shipping_title") || '';
+
+                    const subtotal = planPrice + cardPrice + shippingPrice;
+                    $('input[name="subtotal"]').val(subtotal.toFixed(2));
+
+                    $('#card_title').text(cardTitle);
+                    $('.summary').text(subtotal.toFixed(2));
+                    $('.annualCharge').text(subtotal.toFixed(2));
+                    $('#card_price').text(cardPrice.toFixed(2));
+                    $('#shipping_title').text(shippingTitle);
+                    $('#shipping_charge').text('$ ' + shippingPrice.toFixed(2));
+
+                };
+
+                $('input[name="plan"], input[name="card_preference"], input[name="shipping_charge"]').on('change',
+                    function() {
+                        updateSubtotal();
+                    });
+                $('input[name="card_user"]').on('input',
+                    function() {
+                        updateSubtotal();
+                    });
+
+                updateSubtotal();
+            });
+        </script>
         {{-- For Image Slider End --}}
         <script>
             $(document).ready(function() {

@@ -29,7 +29,7 @@ class HomeController extends Controller
             'individual_card' => Plan::latest()->where('type', 'card')->where('card_type', 'individual')->first(),
             'team_card'       => Plan::latest()->where('type', 'card')->where('card_type', 'team')->first(),
             'blog_posts'      => BlogPost::latest('id')->where('status', 'publish')->paginate(10),
-            'cardProducts'    => CardProduct::where('status', 'active')->get(),
+            'cardProducts'    => '',
         ];
         return view('frontend.pages.homePage', $data);
     }
