@@ -425,25 +425,6 @@
                             <div class="link">
                                 <a href="#">See all features</a>
                             </div>
-                            <div class="mt-30 border py-3 px-3">
-                                <div class="d-flex align-items-end">
-                                    <div class="pe-2">
-                                        <img src="{{ asset('images/user.webp') }}" alt="">
-                                    </div>
-                                    <div class="">
-                                        <input type="email"
-                                            class="form-control p-2 py-0 bg-transparent rounded-0 text-center"
-                                            placeholder="1" value="5"
-                                            style="width: 40px; border-bottom: 1px solid #252525; border-top: 0px; border-right: 0px; border-left: 0px;"
-                                            id="exampleFormControlInput1">
-                                    </div>
-                                    <p class="mb-0 ps-2">USER</p>
-                                    <div class="ps-2 slidecontainer">
-                                        <input type="range" class="p-0" id="rangeSlider" min="5"
-                                            max="100" value="5">
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <div class="p-0 mt-30 card-body">
                             <div class="form-container">
@@ -462,7 +443,25 @@
                                     id="multiStepForm">
                                     @csrf
                                     <!-- Step 1 -->
-                                    <input class="form-control" type="number" name="card_user">
+                                    <div class="mt-30 border py-3 px-3">
+                                        <div class="d-flex align-items-end">
+                                            <div class="pe-2">
+                                                <img src="{{ asset('images/user.webp') }}" alt="">
+                                            </div>
+                                            <div class="">
+                                                <input type="number" name="card_user"
+                                                    class="form-control p-2 py-0 bg-transparent rounded-0 text-center"
+                                                    placeholder="1" value="5"
+                                                    style="width: 40px; border-bottom: 1px solid #252525; border-top: 0px; border-right: 0px; border-left: 0px;"
+                                                    id="exampleFormControlInput1">
+                                            </div>
+                                            <p class="mb-0 ps-2">USER</p>
+                                            <div class="ps-2 slidecontainer">
+                                                <input type="range" class="p-0" id="rangeSlider" min="5"
+                                                    max="100" value="5">
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="form-step" id="step1">
                                         <div class="radio-card-container">
                                             <label class="mt-10 radio-card ">
