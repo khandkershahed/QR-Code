@@ -393,6 +393,14 @@
         .slidecontainer {
             width: 100%;
         }
+
+        .user-slider-range {
+            width: 40px;
+            border-bottom: 1px solid #252525;
+            border-top: 0px;
+            border-right: 0px;
+            border-left: 0px;
+        }
     </style>
 
     <section class="text-center page-banner-area overlay py-120 rpy-120 rel z-1 bgs-cover"
@@ -450,10 +458,8 @@
                                             </div>
                                             <div class="">
                                                 <input type="number" name="card_user"
-                                                    class="form-control p-2 py-0 bg-transparent rounded-0 text-center"
-                                                    placeholder="1" value="5"
-                                                    style="width: 40px; border-bottom: 1px solid #252525; border-top: 0px; border-right: 0px; border-left: 0px;"
-                                                    id="exampleFormControlInput1">
+                                                    class="form-control p-2 py-0 bg-transparent rounded-0 text-center user-slider-range"
+                                                    placeholder="1" value="5" id="userSliderRange">
                                             </div>
                                             <p class="mb-0 ps-2">USER</p>
                                             <div class="ps-2 slidecontainer">
@@ -476,7 +482,8 @@
                                                     </div>
                                                     <div>
                                                         <h3 class="amount-title">$ {{ $cardProduct->price }}</h3>
-                                                        <p class="mb-0"><strong>$ <span class="annualCharge">{{ $cardProduct->price }}</span></strong>
+                                                        <p class="mb-0"><strong>$ <span
+                                                                    class="annualCharge">{{ $cardProduct->price }}</span></strong>
                                                             Billed Annually</p>
                                                     </div>
                                                 </div>
@@ -726,7 +733,8 @@
                                                     <div class="mb-3 shipping-card" id="card-regularMail">
                                                         <input type="radio"
                                                             id="regularMail{{ $shippingMethod->id }}"
-                                                            name="shipping_charge" data-shipping_title="{{ $shippingMethod->title }}"
+                                                            name="shipping_charge"
+                                                            data-shipping_title="{{ $shippingMethod->title }}"
                                                             value="{{ $shippingMethod->price }}">
                                                         <label for="regularMail{{ $shippingMethod->id }}"
                                                             class="p-3 w-100"
@@ -836,7 +844,7 @@
         <script>
             $(document).ready(function() {
                 let $rangeSlider = $("#rangeSlider");
-                let $inputField = $("#exampleFormControlInput1");
+                let $inputField = $("#userSliderRange");
 
                 // Update input field when slider changes
                 $rangeSlider.on("input", function() {
@@ -847,7 +855,7 @@
                 $inputField.on("input", function() {
                     let value = parseInt($(this).val());
                     if (!isNaN(value) && value >= $rangeSlider.attr("min") && value <= $rangeSlider.attr(
-                        "max")) {
+                            "max")) {
                         $rangeSlider.val(value);
                     }
                 });
