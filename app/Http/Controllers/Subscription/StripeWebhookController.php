@@ -256,74 +256,34 @@ class StripeWebhookController extends CashierWebhookController
 
     public function cardCheckout($id, Request $request)
     {
-        $data['plan'] = CardProduct::where('slug', $id)->first();
+        // dd($request->all());
+        $data['plan'] = Plan::where('slug', $id)->first();
+
         session([
             'subtotal' => $request->input('subtotal', 0),
             'quantity' => $request->input('quantity', 1),
             'color' => $request->input('color'),
         ]);
-        if (Auth::check()) {
-            $data['intent'] = auth()->user()->createSetupIntent();
-            $data['user_id'] = Auth::user()->id;
-            $data['subtotal'] = $request->input('subtotal', session('subtotal', $data['plan']->package_price));
-            $data['quantity'] = $request->input('quantity', session('quantity', 1));
-            $data['color'] = $request->input('color', session('color'));
-            return view('frontend.pages.cardCheckout', $data);
-        } else {
+        $data['card'] = $request->card_preference;
+        $data['user_id'] = User::where('email',$request->email)->first(['id']);
+        // $data['intent'] = auth()->user()->createSetupIntent();
+        $data['subtotal'] = $request->input('subtotal', session('subtotal', $data['plan']->package_price));
+        return view('frontend.pages.cardCheckout', $data);
+        // if (Auth::check()) {
 
-            session(['redirect_after_login' => route('card.checkout', $id)]);
-            return redirect()->route('login');
-            // return redirect()->route('login')->with('redirectTo', route('card.checkout', $id));
-        }
+
+        //     $data['quantity'] = $request->input('quantity', session('quantity', 1));
+        //     $data['color'] = $request->input('color', session('color'));
+        //     return view('frontend.pages.cardCheckout', $data);
+        // } else {
+
+        //     session(['redirect_after_login' => route('card.checkout', $id)]);
+        //     return redirect()->route('login');
+        //     // return redirect()->route('login')->with('redirectTo', route('card.checkout', $id));
+        // }
     }
 
-    // public function cardPayment(Request $request)
-    // {
-    //     $request->validate([
-    //         'user_id' => 'required|exists:users,id',
-    //         'plan' => 'required|exists:card_products,id',
-    //     ]);
 
-    //     try {
-    //         $product = CardProduct::findOrFail($request->product_id);
-    //         $user = User::findOrFail($request->user_id);
-
-    //         Stripe::setApiKey(env('STRIPE_SECRET'));
-
-    //         // Create charge
-    //         $charge = Charge::create([
-    //             "amount" => $product->price * 100, // Amount in cents
-    //             "currency" => !empty($product->currency) ? $product->currency : "usd",
-    //             "source" => $request->stripeToken,
-    //             "description" => "NFC Card Payment"
-    //         ]);
-
-    //         $usercardproduct = UserCardProduct::create([
-    //             'user_id' => $user->id,
-    //             'card_product_id' => $product->id,
-    //             'payment_status' => ($charge->status == 'succeeded') ? 'paid' : 'unpaid',
-    //             'status' => 'unused',
-    //             'paid_at' => Carbon::now(),
-    //         ]);
-    //         // Create invoice
-    //         $invoice = Invoice::create([
-    //             'customer' => $charge->customer,
-    //             'billing' => 'send_invoice',
-    //         ]);
-    //         $email = $request->customer_email;
-    //         try {
-    //             Mail::send('emails.invoice', ['invoice' => $invoice,'product' => $product], function ($message) use ($email) {
-    //                 $message->to($email)->subject('NFC Card Payment Invoice');
-    //             });
-    //         } catch (\Exception $e) {
-    //             Session::flash('error', "Email sent will be delayed due to server issue.");
-    //         }
-    //     } catch (ApiErrorException $e) {
-    //         return redirect()->route('register')->with('error', 'Payment failed: ' . $e->getMessage());
-    //     } catch (\Exception $e) {
-    //         return redirect()->route('register')->with('error', 'An unexpected error occurred: ' . $e->getMessage());
-    //     }
-    // }
     public function cardPayment(Request $request)
     {
         // Validate the incoming request

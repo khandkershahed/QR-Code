@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use App\Models\Admin\NfcCard;
 use App\Http\Controllers\Controller;
 use App\Models\CardProduct;
+use App\Models\CardShippingMethod;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
@@ -28,7 +29,7 @@ class HomeController extends Controller
             'individual_card' => Plan::latest()->where('type', 'card')->where('card_type', 'individual')->first(),
             'team_card'       => Plan::latest()->where('type', 'card')->where('card_type', 'team')->first(),
             'blog_posts'      => BlogPost::latest('id')->where('status', 'publish')->paginate(10),
-            'cardProducts'    => CardProduct::where('status', 'active')->get(),
+            'cardProducts'    => '',
         ];
         return view('frontend.pages.homePage', $data);
     }
@@ -179,7 +180,8 @@ class HomeController extends Controller
     public function cardDetails($slug)
     {
         $data = [
-            'cardProduct'   => Plan::where('slug', $slug)->first(),
+            'shippingMethods'   => CardShippingMethod::get(),
+            'cardProduct'       => Plan::where('slug', $slug)->first(),
         ];
         return view('frontend.pages.cardProductDetails', $data);
     }

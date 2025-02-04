@@ -36,6 +36,7 @@ use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Admin\CardProductController;
+use App\Http\Controllers\Subscription\CardShippingMethodController;
 
 Route::middleware('guest:admin')->prefix('admin')->name('admin.')->group(function () {
 
@@ -85,12 +86,13 @@ Route::middleware('auth:admin', 'role:admin')->prefix('admin')->name('admin.')->
 
     Route::resources(
         [
-            'role'           => RoleController::class,
-            'permission'     => PermissionController::class,
-            'email-settings' => EmailSettingController::class,
-            'plans'          => PlanController::class,
-            'blog-post'      => BlogPostController::class,
-            'faq'            => FaqController::class,
+            'role'                => RoleController::class,
+            'permission'          => PermissionController::class,
+            'email-settings'      => EmailSettingController::class,
+            'plans'               => PlanController::class,
+            'blog-post'           => BlogPostController::class,
+            'faq'                 => FaqController::class,
+            'shipping-method'     => CardShippingMethodController::class,
         ],
         ['except' => ['show']]
     );
