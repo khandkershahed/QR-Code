@@ -185,6 +185,13 @@ class HomeController extends Controller
         ];
         return view('frontend.pages.cardProductDetails', $data);
     }
+    public function cardFeatures($slug)
+    {
+        $data = [
+            'cardPlan'       => Plan::where('slug', $slug)->first(),
+        ];
+        return view('frontend.pages.cardFeatures', $data);
+    }
     public function mailTest()
     {
         return view('frontend.pages.mailTest');
