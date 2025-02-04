@@ -389,6 +389,18 @@
             margin: 0px;
             /* Red border around the label */
         }
+
+        .slidecontainer {
+            width: 100%;
+        }
+
+        .user-slider-range {
+            width: 40px;
+            border-bottom: 1px solid #252525;
+            border-top: 0px;
+            border-right: 0px;
+            border-left: 0px;
+        }
     </style>
 
     <section class="text-center page-banner-area overlay py-120 rpy-120 rel z-1 bgs-cover"
@@ -439,7 +451,23 @@
                                     id="multiStepForm">
                                     @csrf
                                     <!-- Step 1 -->
-                                    <input class="form-control" type="number" name="card_user">
+                                    <div class="mt-30 border py-3 px-3">
+                                        <div class="d-flex align-items-end">
+                                            <div class="pe-2">
+                                                <img src="{{ asset('images/user.webp') }}" alt="">
+                                            </div>
+                                            <div class="">
+                                                <input type="number" name="card_user"
+                                                    class="form-control p-2 py-0 bg-transparent rounded-0 text-center user-slider-range"
+                                                    placeholder="1" value="5" id="userSliderRange">
+                                            </div>
+                                            <p class="mb-0 ps-2">USER</p>
+                                            <div class="ps-2 slidecontainer">
+                                                <input type="range" class="p-0" id="rangeSlider" min="5"
+                                                    max="100" value="5">
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="form-step" id="step1">
                                         <div class="radio-card-container">
                                             <label class="mt-10 radio-card ">
@@ -454,7 +482,8 @@
                                                     </div>
                                                     <div>
                                                         <h3 class="amount-title">$ {{ $cardProduct->price }}</h3>
-                                                        <p class="mb-0"><strong>$ <span class="annualCharge">{{ $cardProduct->price }}</span></strong>
+                                                        <p class="mb-0"><strong>$ <span
+                                                                    class="annualCharge">{{ $cardProduct->price }}</span></strong>
                                                             Billed Annually</p>
                                                     </div>
                                                 </div>
@@ -704,7 +733,8 @@
                                                     <div class="mb-3 shipping-card" id="card-regularMail">
                                                         <input type="radio"
                                                             id="regularMail{{ $shippingMethod->id }}"
-                                                            name="shipping_charge" data-shipping_title="{{ $shippingMethod->title }}"
+                                                            name="shipping_charge"
+                                                            data-shipping_title="{{ $shippingMethod->title }}"
                                                             value="{{ $shippingMethod->price }}">
                                                         <label for="regularMail{{ $shippingMethod->id }}"
                                                             class="p-3 w-100"
@@ -810,43 +840,29 @@
 
     @push('scripts')
         <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+        {{-- Slider Range --}}
         <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                const updateSubtotal = () => {
-                    const plan_price = parseFloat($('input[name="plan"]:checked').val()) || {{ $cardProduct->price }};
-                    const cardUser = parseFloat($('input[name="card_user"]').val()) || 1;
-                    const planPrice = plan_price * cardUser;
-                    const cardPrice = parseFloat($('input[name="card_preference"]:checked').data("card_price")) ||
-                        0;
-                    const shippingPrice = parseFloat($('input[name="shipping_charge"]:checked').val()) || 0;
+            $(document).ready(function() {
+                let $rangeSlider = $("#rangeSlider");
+                let $inputField = $("#userSliderRange");
 
-                    const cardTitle = $('input[name="card_preference"]:checked').data("card_title") || '';
-                    const shippingTitle = $('input[name="shipping_charge"]:checked').data("shipping_title") || '';
+                // Update input field when slider changes
+                $rangeSlider.on("input", function() {
+                    $inputField.val(this.value);
+                });
 
-                    const subtotal = planPrice + cardPrice + shippingPrice;
-                    $('input[name="subtotal"]').val(subtotal.toFixed(2));
-
-                    $('#card_title').text(cardTitle);
-                    $('.summary').text(subtotal.toFixed(2));
-                    $('.annualCharge').text(subtotal.toFixed(2));
-                    $('#card_price').text(cardPrice.toFixed(2));
-                    $('#shipping_title').text(shippingTitle);
-                    $('#shipping_charge').text('$ ' + shippingPrice.toFixed(2));
-
-                };
-
-                $('input[name="plan"], input[name="card_preference"], input[name="shipping_charge"]').on('change',
-                    function() {
-                        updateSubtotal();
-                    });
-                $('input[name="card_user"]').on('input',
-                    function() {
-                        updateSubtotal();
-                    });
-
-                updateSubtotal();
+                // Update slider when input field changes
+                $inputField.on("input", function() {
+                    let value = parseInt($(this).val());
+                    if (!isNaN(value) && value >= $rangeSlider.attr("min") && value <= $rangeSlider.attr(
+                            "max")) {
+                        $rangeSlider.val(value);
+                    }
+                });
             });
         </script>
+
+        {{-- Slider Range End --}}
         {{-- For Image Slider End --}}
         <script>
             $(document).ready(function() {
