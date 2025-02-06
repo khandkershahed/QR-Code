@@ -175,9 +175,8 @@
         /* For Slider End */
     </style>
     <section class="page-banner-area overlay py-120 rpy-120 rel z-1 bgs-cover text-center"
-        style="
-      background-image: url({{ asset('images/shop-page-banner-.jpg') }});
-    ">
+    style="background-image: url('{{ asset('images/shop-page-banner.jpg') }}')">
+
         <div class="container">
             <div class="banner-inner pt-70 rpt-60 text-black">
                 <h1 class="page-title aos-init aos-animate" data-aos="fade-up" data-aos-duration="1500"
@@ -265,13 +264,13 @@
                             <div class="col-lg-4">
                                 <h3 class="mb-0 text-end text-danger">
                                     @if ($cardProduct->currency === 'eur')
-                                        €
+                                    €
                                     @elseif($cardProduct->currency === 'gbp')
-                                        £
+                                    £
                                     @elseif($cardProduct->currency === 'usd')
-                                        $
+                                    $
                                     @else
-                                        $
+                                    $
                                     @endif
                                     {{ $cardProduct->package_price }}.00
                                 </h3>
@@ -288,10 +287,10 @@
                                     <div class="col-lg-12">
                                         <ul class="pb-0">
                                             @foreach (json_decode($cardProduct->plan_descriptions ?? '[]') as $description)
-                                                <li>
-                                                    <i class="fa-regular fa-circle-check pe-2 text-success"></i>
-                                                    {{ $description }}
-                                                </li>
+                                            <li>
+                                                <i class="fa-regular fa-circle-check pe-2 text-success"></i>
+                                                {{ $description }}
+                                            </li>
                                             @endforeach
                                         </ul>
                                     </div>
@@ -349,13 +348,13 @@
                                                     <td class="main-price text-end"
                                                         data-unit-price="{{ $cardProduct->package_price }}">
                                                         @if ($cardProduct->currency === 'eur')
-                                                            €
+                                                        €
                                                         @elseif($cardProduct->currency === 'gbp')
-                                                            £
+                                                        £
                                                         @elseif($cardProduct->currency === 'usd')
-                                                            $
+                                                        $
                                                         @else
-                                                            $
+                                                        $
                                                         @endif
                                                         {{ $cardProduct->package_price }}.00
                                                     </td>
@@ -367,13 +366,13 @@
                                                     <td class="aditional-price text-end"
                                                         data-unit-price="{{ $cardProduct->price }}">
                                                         @if ($cardProduct->currency === 'eur')
-                                                            €
+                                                        €
                                                         @elseif($cardProduct->currency === 'gbp')
-                                                            £
+                                                        £
                                                         @elseif($cardProduct->currency === 'usd')
-                                                            $
+                                                        $
                                                         @else
-                                                            $
+                                                        $
                                                         @endif
                                                         0.00
                                                     </td>
@@ -384,13 +383,13 @@
                                                     <td colspan="3">Sub Total</td>
                                                     <td class="subtotal text-end">
                                                         @if ($cardProduct->currency === 'eur')
-                                                            €
+                                                        €
                                                         @elseif($cardProduct->currency === 'gbp')
-                                                            £
+                                                        £
                                                         @elseif($cardProduct->currency === 'usd')
-                                                            $
+                                                        $
                                                         @else
-                                                            $
+                                                        $
                                                         @endif
                                                         {{ $cardProduct->package_price }}.00
                                                     </td>
@@ -408,7 +407,8 @@
                                         id="purchase-btn">Purchase</button>
                                     <div class="pt-3">
                                         <p class="text-center w-75 mx-auto" style="line-height: 1.3;">
-                                            {{ $cardProduct->note }}</p>
+                                            {{ $cardProduct->note }}
+                                        </p>
                                     </div>
                                     <div>
                                         <img src="{{ asset('images/social-icons.webp') }}" alt="">
@@ -504,172 +504,172 @@
                             aria-labelledby="description-tab">
                             <div class="py-2">
                                 <p>{{ $cardProduct->description }}</p>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
-                            <div class="py-2">
-                                <p>{{ $cardProduct->shipping_description }}</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+    </div>
+    </div>
+    <div class="tab-pane" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
+        <div class="py-2">
+            <p>{{ $cardProduct->shipping_description }}</p>
         </div>
+    </div>
+    </div>
+
+    </div>
+    </div>
+    </div>
     </section> --}}
     @push('scripts')
-        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-        <script>
-            document.querySelectorAll('.magnifier-container').forEach(container => {
-                const img = container.querySelector('img');
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        document.querySelectorAll('.magnifier-container').forEach(container => {
+            const img = container.querySelector('img');
 
-                container.addEventListener('mousemove', (e) => {
-                    const rect = container.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
+            container.addEventListener('mousemove', (e) => {
+                const rect = container.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
 
-                    const xPercent = (x / rect.width) * 100;
-                    const yPercent = (y / rect.height) * 100;
+                const xPercent = (x / rect.width) * 100;
+                const yPercent = (y / rect.height) * 100;
 
-                    img.style.transformOrigin = `${xPercent}% ${yPercent}%`;
-                    img.style.transform = "scale(2)"; // Zoom level
-                });
-
-                container.addEventListener('mouseleave', () => {
-                    img.style.transform = "scale(1)";
-                    img.style.transformOrigin = "center center";
-                });
+                img.style.transformOrigin = `${xPercent}% ${yPercent}%`;
+                img.style.transform = "scale(2)"; // Zoom level
             });
-        </script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                const quantityInput = document.querySelector(".quantity-input");
-                const quantityContainer = document.querySelector(".quantity");
-                const priceCell = document.querySelector(".aditional-price");
-                const subtotalCell = document.querySelector(".subtotal");
-                const unitPrice = parseFloat(priceCell.getAttribute("data-unit-price"));
-                const mainPrice = parseFloat(document.querySelector(".main-price").getAttribute("data-unit-price"));
 
-                const updateSubtotal = () => {
-                    const quantity = parseInt(quantityInput.value) || 0;
-                    const additionalPrice = quantity * unitPrice;
-                    const subtotal = mainPrice + additionalPrice;
+            container.addEventListener('mouseleave', () => {
+                img.style.transform = "scale(1)";
+                img.style.transformOrigin = "center center";
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const quantityInput = document.querySelector(".quantity-input");
+            const quantityContainer = document.querySelector(".quantity");
+            const priceCell = document.querySelector(".aditional-price");
+            const subtotalCell = document.querySelector(".subtotal");
+            const unitPrice = parseFloat(priceCell.getAttribute("data-unit-price"));
+            const mainPrice = parseFloat(document.querySelector(".main-price").getAttribute("data-unit-price"));
 
-                    priceCell.textContent = `${additionalPrice.toFixed(2)}`;
-                    subtotalCell.textContent = `${subtotal.toFixed(2)}`;
-                    quantityContainer.textContent = `${quantity}`;
+            const updateSubtotal = () => {
+                const quantity = parseInt(quantityInput.value) || 0;
+                const additionalPrice = quantity * unitPrice;
+                const subtotal = mainPrice + additionalPrice;
 
-                    // Update hidden fields
-                    document.getElementById("hidden-subtotal").value = subtotal.toFixed(2);
-                    document.getElementById("hidden-quantity").value = quantity;
-                };
+                priceCell.textContent = `${additionalPrice.toFixed(2)}`;
+                subtotalCell.textContent = `${subtotal.toFixed(2)}`;
+                quantityContainer.textContent = `${quantity}`;
 
-                // Handling the plus button
-                document.querySelector(".plus-btn").addEventListener("click", () => {
-                    quantityInput.value = parseInt(quantityInput.value || 0) + 1;
-                    updateSubtotal();
-                });
+                // Update hidden fields
+                document.getElementById("hidden-subtotal").value = subtotal.toFixed(2);
+                document.getElementById("hidden-quantity").value = quantity;
+            };
 
-                // Handling the minus button
-                document.querySelector(".minus-btn").addEventListener("click", () => {
-                    quantityInput.value = Math.max(0, parseInt(quantityInput.value || 1) - 1);
-                    updateSubtotal();
-                });
-
-                // Handling direct input changes
-                quantityInput.addEventListener("input", updateSubtotal);
-
-                // Initialize the subtotal on page load
+            // Handling the plus button
+            document.querySelector(".plus-btn").addEventListener("click", () => {
+                quantityInput.value = parseInt(quantityInput.value || 0) + 1;
                 updateSubtotal();
             });
-        </script>
-        <script>
-            $(function() {
-                var galleryTop, galleryThumbs;
 
-                function initSwiper() {
-                    // Destroy existing Swiper instances if they exist
-                    if (galleryTop) {
-                        galleryTop.destroy(true, true);
-                    }
-                    if (galleryThumbs) {
-                        galleryThumbs.destroy(true, true);
-                    }
+            // Handling the minus button
+            document.querySelector(".minus-btn").addEventListener("click", () => {
+                quantityInput.value = Math.max(0, parseInt(quantityInput.value || 1) - 1);
+                updateSubtotal();
+            });
 
-                    if ($(window).width() > 768) {
-                        // Initialize Swiper for mobile
-                        galleryTop = new Swiper(".mySwiperDesktop", {
-                            spaceBetween: 10,
-                            slidesPerView: 4,
-                            direction: 'vertical', // Default slides per view for mobile
-                            freeMode: false,
-                            watchSlidesProgress: true,
-                            breakpoints: {
-                                768: {
-                                    slidesPerView: 4,
-                                },
-                                530: {
-                                    slidesPerView: 3,
-                                },
-                                300: {
-                                    slidesPerView: 2,
-                                },
-                            }
-                        });
-                        galleryThumbs = new Swiper(".mySwiper2", {
-                            spaceBetween: 10,
-                            navigation: {
-                                nextEl: ".swiper-button-next",
-                                prevEl: ".swiper-button-prev",
-                            },
-                            a11y: {
-                                prevSlideMessage: "Previous slide",
-                                nextSlideMessage: "Next slide",
-                            },
-                            thumbs: {
-                                swiper: galleryTop,
-                            },
-                        });
-                    } else {
-                        // Initialize Swiper for desktop
-                        galleryTop = new Swiper(".mySwiper", {
-                            spaceBetween: 10,
-                            slidesPerView: 4,
-                            freeMode: false,
-                            watchSlidesProgress: true,
-                        });
-                        galleryThumbs = new Swiper(".mySwiper2", {
-                            spaceBetween: 10,
-                            navigation: {
-                                nextEl: ".swiper-button-next",
-                                prevEl: ".swiper-button-prev",
-                            },
-                            a11y: {
-                                prevSlideMessage: "Previous slide",
-                                nextSlideMessage: "Next slide",
-                            },
-                            thumbs: {
-                                swiper: galleryTop,
-                            },
-                        });
-                    }
+            // Handling direct input changes
+            quantityInput.addEventListener("input", updateSubtotal);
 
-                    // Sync the slide change between galleryTop and galleryThumbs
-                    galleryTop.on("slideChangeTransitionStart", function() {
-                        galleryThumbs.slideTo(galleryTop.activeIndex);
+            // Initialize the subtotal on page load
+            updateSubtotal();
+        });
+    </script>
+    <script>
+        $(function() {
+            var galleryTop, galleryThumbs;
+
+            function initSwiper() {
+                // Destroy existing Swiper instances if they exist
+                if (galleryTop) {
+                    galleryTop.destroy(true, true);
+                }
+                if (galleryThumbs) {
+                    galleryThumbs.destroy(true, true);
+                }
+
+                if ($(window).width() > 768) {
+                    // Initialize Swiper for mobile
+                    galleryTop = new Swiper(".mySwiperDesktop", {
+                        spaceBetween: 10,
+                        slidesPerView: 4,
+                        direction: 'vertical', // Default slides per view for mobile
+                        freeMode: false,
+                        watchSlidesProgress: true,
+                        breakpoints: {
+                            768: {
+                                slidesPerView: 4,
+                            },
+                            530: {
+                                slidesPerView: 3,
+                            },
+                            300: {
+                                slidesPerView: 2,
+                            },
+                        }
                     });
-                    galleryThumbs.on("transitionStart", function() {
-                        galleryTop.slideTo(galleryThumbs.activeIndex);
+                    galleryThumbs = new Swiper(".mySwiper2", {
+                        spaceBetween: 10,
+                        navigation: {
+                            nextEl: ".swiper-button-next",
+                            prevEl: ".swiper-button-prev",
+                        },
+                        a11y: {
+                            prevSlideMessage: "Previous slide",
+                            nextSlideMessage: "Next slide",
+                        },
+                        thumbs: {
+                            swiper: galleryTop,
+                        },
+                    });
+                } else {
+                    // Initialize Swiper for desktop
+                    galleryTop = new Swiper(".mySwiper", {
+                        spaceBetween: 10,
+                        slidesPerView: 4,
+                        freeMode: false,
+                        watchSlidesProgress: true,
+                    });
+                    galleryThumbs = new Swiper(".mySwiper2", {
+                        spaceBetween: 10,
+                        navigation: {
+                            nextEl: ".swiper-button-next",
+                            prevEl: ".swiper-button-prev",
+                        },
+                        a11y: {
+                            prevSlideMessage: "Previous slide",
+                            nextSlideMessage: "Next slide",
+                        },
+                        thumbs: {
+                            swiper: galleryTop,
+                        },
                     });
                 }
 
-                initSwiper();
-
-                // Reinitialize Swiper on window resize
-                $(window).resize(function() {
-                    initSwiper();
+                // Sync the slide change between galleryTop and galleryThumbs
+                galleryTop.on("slideChangeTransitionStart", function() {
+                    galleryThumbs.slideTo(galleryTop.activeIndex);
                 });
+                galleryThumbs.on("transitionStart", function() {
+                    galleryTop.slideTo(galleryThumbs.activeIndex);
+                });
+            }
+
+            initSwiper();
+
+            // Reinitialize Swiper on window resize
+            $(window).resize(function() {
+                initSwiper();
             });
-        </script>
+        });
+    </script>
     @endpush
 </x-frontend-app-layout>
