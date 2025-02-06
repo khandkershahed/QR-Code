@@ -1,22 +1,26 @@
 <form action="{{ route('card.checkout', $cardProduct->slug) }}" method="GET" id="multiStepForm">
     @csrf
     <!-- Step 1 -->
-    <div class="mt-30 border py-3 px-3">
-        <div class="d-flex align-items-end">
-            <div class="pe-2">
-                <img src="{{ asset('images/user.webp') }}" alt="">
-            </div>
-            <div class="">
-                <input type="number" name="card_user"
-                    class="form-control p-2 py-0 bg-transparent rounded-0 text-center user-slider-range" placeholder="1"
-                    value="5" id="userSliderRange">
-            </div>
-            <p class="mb-0 ps-2">USER</p>
-            <div class="ps-2 slidecontainer">
-                <input type="range" class="p-0" id="rangeSlider" min="5" max="100" value="5">
+    @if ($cardProduct->card_type == "team")
+        <div class="mt-30 border py-3 px-3">
+            <div class="d-flex align-items-end">
+                <div class="pe-2">
+                    <img src="{{ asset('images/user.webp') }}" alt="">
+                </div>
+                <div class="">
+                    <input type="number" name="card_user"
+                        class="form-control p-2 py-0 bg-transparent rounded-0 text-center user-slider-range" placeholder="1"
+                        value="5" id="userSliderRange">
+                </div>
+                <p class="mb-0 ps-2">USER</p>
+                <div class="ps-2 slidecontainer">
+                    <input type="range" class="p-0" id="rangeSlider" min="5" max="100" value="5">
+                </div>
             </div>
         </div>
-    </div>
+    @else
+    <input type="hidden" name="card_user" value="1">
+    @endif
     <div class="form-step" id="step1">
         <div class="radio-card-container">
             <label class="mt-10 radio-card ">

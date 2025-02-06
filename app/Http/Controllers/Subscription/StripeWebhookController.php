@@ -256,7 +256,7 @@ class StripeWebhookController extends CashierWebhookController
 
     public function cardCheckout($id, Request $request)
     {
-        // dd($request->all());
+        dd($request->all());
         $data['plan'] = Plan::where('slug', $id)->first();
 
         session([

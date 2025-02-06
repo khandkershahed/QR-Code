@@ -395,7 +395,7 @@
         }
 
         .user-slider-range {
-            width: 40px;
+            width: 80px;
             border-bottom: 1px solid #252525;
             border-top: 0px;
             border-right: 0px;
@@ -538,7 +538,7 @@
         {{-- Slider Range --}}
         <script>
             document.addEventListener("DOMContentLoaded", function() {
-                window.updateSubtotal = () => { // Define globally
+                const updateSubtotal = () => {
                     const plan_price = parseFloat($('input[name="plan"]:checked').val()) ||
                         {{ $cardProduct->price }};
                     const cardUser = parseFloat($('input[name="card_user"]').val()) || 1;
@@ -561,19 +561,24 @@
                     $('#shipping_charge').text('$ ' + shippingPrice.toFixed(2));
                 };
 
-                updateSubtotal();
-            });
-        </script>
+                // Update the subtotal whenever an input is changed
+                $('input[name="plan"], input[name="card_preference"], input[name="shipping_charge"]').on('change',
+                    function() {
+                        updateSubtotal();
+                    });
+                $('input[name="card_user"]').on('input',
+                    function() {
+                        updateSubtotal();
+                    });
 
-        <script>
-            $(document).ready(function() {
+                // Range slider handling
                 let $rangeSlider = $("#rangeSlider");
                 let $inputField = $("#userSliderRange");
 
                 // Update input field when slider changes
                 $rangeSlider.on("input", function() {
                     $inputField.val(this.value);
-                    updateSubtotal(); // Now accessible globally
+                    updateSubtotal();
                 });
 
                 // Update slider when input field changes
@@ -582,11 +587,15 @@
                     if (!isNaN(value) && value >= $rangeSlider.attr("min") && value <= $rangeSlider.attr(
                         "max")) {
                         $rangeSlider.val(value);
+                        updateSubtotal();
                     }
-                    updateSubtotal(); // Ensure subtotal is updated
                 });
+
+                // Initial subtotal update
+                updateSubtotal();
             });
         </script>
+
 
 
         {{-- Slider Range End --}}
