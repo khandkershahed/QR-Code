@@ -67,7 +67,7 @@
             font-size: 40px;
             font-weight: 700;
             line-height: 150%;
-            background-image: linear-gradient(94deg, rgb(179, 44, 14) 20%, rgb(255, 100, 58) 100%);
+            background-image: linear-gradient(94deg, rgb(179, 44, 14) 0%, rgb(255, 100, 58) 100%);
             background-clip: text;
         }
 

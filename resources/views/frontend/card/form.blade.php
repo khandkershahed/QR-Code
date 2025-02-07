@@ -2,19 +2,24 @@
     {{-- @csrf --}}
     <!-- Step 1 -->
     @if ($cardProduct->card_type == 'team')
-        <div class="mt-30 border py-3 px-3" style="border-radius: 8px">
+        <div class="mt-30 border" style="border-radius: 8px">
             <div class="d-flex align-items-end">
-                <div class="pe-2">
-                    <img class="" width="60px" src="{{ asset('images/user.webp') }}" alt="">
+                <div class="bg-light d-flex align-items-center px-4 py-4">
+                    <div class="pe-2">
+                        <img class="" width="50px" src="{{ asset('images/user.webp') }}" alt="">
+                    </div>
+                    <div class="">
+                        <input type="number" name="card_user"
+                            class="form-control p-2 py-0 bg-transparent rounded-0 text-center user-slider-range"
+                            placeholder="1" value="5" id="userSliderRange">
+                    </div>
                 </div>
-                <div class="">
-                    <input type="number" name="card_user"
-                        class="form-control p-2 py-0 bg-transparent rounded-0 text-center user-slider-range"
-                        placeholder="1" value="5" id="userSliderRange">
-                </div>
-                <p class="mb-0 ps-2">USERS</p>
-                <div class="ps-2 slidecontainer">
-                    <input type="range" class="p-0" id="rangeSlider" min="5" max="100" value="5">
+                <div class="pb-2 w-100 pe-2">
+                    <p class="mb-0 ps-2 text-info">USERS</p>
+                    <div class="ps-2 slidecontainer">
+                        <input type="range" class="p-0 w-100" id="rangeSlider" min="5" max="100"
+                            value="5">
+                    </div>
                 </div>
             </div>
         </div>
@@ -41,7 +46,7 @@
                     <div class="text-end">
                         <h3 class="amount-title">$ {{ $cardProduct->price }}</h3>
                         <p class="mb-0"><strong>$ <span class="annualCharge">{{ $cardProduct->price }}</span></strong>
-                         <small class="text-muted">/Yearly</small>
+                            <small class="text-muted">/Yearly</small>
                         </p>
                         <div class="link ">
                             <a href="javascript:void(0)" target="_blank">Continue <i
