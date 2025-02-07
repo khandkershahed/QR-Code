@@ -472,18 +472,17 @@
                                 <button class="accordion-button rounded-0 collapsed" type="button"
                                     data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
                                     aria-controls="collapseOne">
-                                    Accordion Item #1
+                                    How many cards are included in the Teams subscription?
                                 </button>
                             </h2>
                             <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    <strong>This is the first item's accordion body.</strong> It is shown by default,
-                                    until the collapse plugin adds the appropriate classes that we use to style each
-                                    element. These classes control the overall appearance, as well as the showing and
-                                    hiding via CSS transitions. You can modify any of this with custom CSS or overriding
-                                    our default variables. It's also worth noting that just about any HTML can go within
-                                    the <code>.accordion-body</code>, though the transition does limit overflow.
+                                    Each subscription seat includes a complimentary NFC smart card, allowing seamless
+                                    access and functionality. If your team requires additional smart cards, you can
+                                    purchase them separately for $39 each. These cards are designed for durability and
+                                    security, ensuring that every team member has access to the necessary features
+                                    without interruption.
                                 </div>
                             </div>
                         </div>
@@ -492,18 +491,17 @@
                                 <button class="accordion-button collapsed rounded-0" type="button"
                                     data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
                                     aria-controls="collapseTwo">
-                                    Accordion Item #2
+                                    What if we lose a card?
                                 </button>
                             </h2>
                             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    <strong>This is the second item's accordion body.</strong> It is hidden by default,
-                                    until the collapse plugin adds the appropriate classes that we use to style each
-                                    element. These classes control the overall appearance, as well as the showing and
-                                    hiding via CSS transitions. You can modify any of this with custom CSS or overriding
-                                    our default variables. It's also worth noting that just about any HTML can go within
-                                    the <code>.accordion-body</code>, though the transition does limit overflow.
+                                    Losing a card is not a problem! You can easily order a replacement NFC smart card
+                                    for $39 each. To ensure your security, we recommend deactivating the lost card
+                                    immediately and activating the new one upon receipt. This prevents unauthorized use
+                                    and ensures your team continues to operate smoothly. Our support team is also
+                                    available to assist with any issues related to lost or misplaced cards.
                                 </div>
                             </div>
                         </div>
@@ -512,18 +510,59 @@
                                 <button class="accordion-button collapsed rounded-0" type="button"
                                     data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
                                     aria-controls="collapseThree">
-                                    Accordion Item #3
+                                    How do we customize our smart cards?
                                 </button>
                             </h2>
                             <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    <strong>This is the third item's accordion body.</strong> It is hidden by default,
-                                    until the collapse plugin adds the appropriate classes that we use to style each
-                                    element. These classes control the overall appearance, as well as the showing and
-                                    hiding via CSS transitions. You can modify any of this with custom CSS or overriding
-                                    our default variables. It's also worth noting that just about any HTML can go within
-                                    the <code>.accordion-body</code>, though the transition does limit overflow.
+                                    We offer full customization options to align your NFC smart cards with your brand
+                                    identity. Once you provide your logo, brand colors, and any specific design
+                                    preferences, our professional design team will create a high-quality proof for you
+                                    to review. You can request modifications until you're satisfied with the final
+                                    design. Once approved, your customized NFC smart cards will be produced and shipped
+                                    to you, ensuring they match your company’s branding and enhance your professional
+                                    presence.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header rounded-0" id="headingFour">
+                                <button class="accordion-button collapsed rounded-0" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
+                                    aria-controls="collapseFour">
+                                    Can we use these smart cards for multiple purposes?
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Absolutely! Our NFC smart cards are highly versatile and can be programmed for
+                                    multiple functions. They can be used for secure office access, digital business
+                                    cards, membership verification, time tracking, and more. Depending on your needs,
+                                    you can integrate them with your existing systems or use them with compatible
+                                    NFC-enabled devices. If you need help setting up multiple functions, our team is
+                                    happy to assist.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header rounded-0" id="headingSevenn">
+                                <button class="accordion-button collapsed rounded-0" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseSevenn" aria-expanded="false"
+                                    aria-controls="collapseSevenn">
+                                    How long do NFC smart cards last?
+                                </button>
+                            </h2>
+                            <div id="collapseSevenn" class="accordion-collapse collapse"
+                                aria-labelledby="headingSevenn" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Our NFC smart cards are designed for long-term use, with an average lifespan of 3 to
+                                    5 years, depending on usage and handling. They are built using durable materials to
+                                    withstand daily wear and tear, ensuring reliability over time. Proper care—such as
+                                    keeping them away from extreme heat, water, and strong magnetic fields—will help
+                                    extend their lifespan. If your card becomes damaged, you can easily order a
+                                    replacement.
                                 </div>
                             </div>
                         </div>
@@ -585,7 +624,7 @@
                 $inputField.on("input", function() {
                     let value = parseInt($(this).val());
                     if (!isNaN(value) && value >= $rangeSlider.attr("min") && value <= $rangeSlider.attr(
-                        "max")) {
+                            "max")) {
                         $rangeSlider.val(value);
                         updateSubtotal();
                     }
