@@ -256,13 +256,13 @@ class StripeWebhookController extends CashierWebhookController
         $user->delete();
     }
 
-    public function cardCheckout($id, Request $request)
+    public function cardCheckout(Request $request)
     {
         ini_set('max_execution_time', 300);
         if (Auth::check()) {
             $user_id = auth()->id();
         } else {
-            $user = User::where('email', $request->input('shipping_email'))->first();
+            $user = User::where('email', $request->input('email'))->first();
             if ($user) {
                 Auth::login($user);
                 $request->session()->regenerate();
@@ -270,24 +270,17 @@ class StripeWebhookController extends CashierWebhookController
                 $password = Str::random(8);
                 $hashedPassword = Hash::make($password);
                 $user = User::create([
-                    'first_name'  => $request->input('shipping_first_name'),
-                    'last_name'   => $request->input('shipping_last_name'),
-                    'email'       => $request->input('shipping_email'),
-                    'phone'       => $request->input('shipping_phone'),
-                    'address_one' => $request->input('shipping_address'),
-                    'zipcode'     => $request->input('shipping_postcode'),
+                    'name'        => $request->input('name'),
+                    'email'       => $request->input('email'),
                     'status'      => 'active',
                     'password'    => $hashedPassword,
                 ]);
-
-
                 // Send email
                 $data = [
-                    'name'     => $request->input('shipping_first_name') . ' ' . $request->input('shipping_last_name'),
-                    'email'    => $request->input('shipping_email'),
-                    'password' => $password, // send plain password to user (for new accounts)
+                    'name'     => $request->input('name'),
+                    'email'    => $request->input('email'),
+                    'password' => $password,
                 ];
-
                 // Send mail (ensure Mail is configured)
                 try {
                     Mail::to($user->email)->send(new UserCheckoutRegistration($data));
@@ -295,16 +288,14 @@ class StripeWebhookController extends CashierWebhookController
                     Log::error('Error sending registration email: ' . $e->getMessage());
                     Session::flash('error', 'Mail Not Send :' . $e->getMessage());
                 }
-
-                // Log the user in
                 Auth::login($user);
                 $request->session()->regenerate();
             }
             $user_id = auth()->id();
         }
-        dd($request->all());
+        // dd($user_id);
 
-        $data['plan'] = Plan::where('slug', $id)->first();
+        $data['plan'] = Plan::where('id', $request->plan_id)->first();
 
         $request->session()->put('card_checkout', [
             "card_user"       => $request->card_user,
@@ -319,22 +310,11 @@ class StripeWebhookController extends CashierWebhookController
         ]);
 
         $data['card'] = $request->card_preference;
-        $data['user_id'] = User::where('email', $request->email)->first(['id']);
-        // $data['intent'] = auth()->user()->createSetupIntent();
+        $data['user_id'] = $user_id;
+        $data['intent'] = auth()->user()->createSetupIntent();
         $data['subtotal'] = $request->input('subtotal', session('subtotal', $data['plan']->package_price));
         return view('frontend.pages.cardCheckout', $data);
-        // if (Auth::check()) {
 
-
-        //     $data['quantity'] = $request->input('quantity', session('quantity', 1));
-        //     $data['color'] = $request->input('color', session('color'));
-        //     return view('frontend.pages.cardCheckout', $data);
-        // } else {
-
-        //     session(['redirect_after_login' => route('card.checkout', $id)]);
-        //     return redirect()->route('login');
-        //     // return redirect()->route('login')->with('redirectTo', route('card.checkout', $id));
-        // }
     }
 
 

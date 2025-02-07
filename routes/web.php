@@ -66,7 +66,7 @@ Route::get('/nfc/{name}', [HomeController::class, 'nfcPage'])->where('name', '.*
 Route::get('/user-subscription/register/{id}', [HomeController::class, 'subscribeRegister'])->name('user_subscribe.register');
 
 
-Route::get('/card/checkout/{slug}', [StripeWebhookController::class, 'cardCheckout'])->name('card.checkout');
+Route::get('/card/checkout', [StripeWebhookController::class, 'cardCheckout'])->name('card.checkout');
 
 Route::get('/stripe/checkout/{id}', [StripeWebhookController::class, 'stripeCheckout'])->name('stripe.checkout');
 Route::post('/stripe/payment', [StripeWebhookController::class, 'stripePayment'])->name('stripe.payment');

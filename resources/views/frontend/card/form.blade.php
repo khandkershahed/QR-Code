@@ -1,5 +1,5 @@
-<form action="{{ route('card.checkout', $cardProduct->slug) }}" method="GET" id="multiStepForm">
-    @csrf
+<form action="{{ route('card.checkout') }}" method="GET" id="multiStepForm">
+    {{-- @csrf --}}
     <!-- Step 1 -->
     @if ($cardProduct->card_type == "team")
         <div class="mt-30 border py-3 px-3">

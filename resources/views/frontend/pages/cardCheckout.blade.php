@@ -110,7 +110,7 @@
                                                 <label for="exampleInputEmail1" class="form-label">Email</label>
                                                 <input type="email" class="form-control" id="card-holder-email"
                                                     name=email aria-describedby="emailHelp"
-                                                    placeholder="demo@example.com">
+                                                    placeholder="demo@example.com" value="{{ Auth::user()->email }}">
                                             </div>
                                         </div>
 
@@ -127,7 +127,7 @@
                                                 <label for="card-holder-name" class="form-label">Cardholder
                                                     Name</label>
                                                 <input type="text" class="form-control" id="card-holder-name"
-                                                    name=name aria-describedby="emailHelp"
+                                                    name=cardholder_name aria-describedby="emailHelp"
                                                     placeholder="Name on the card">
                                             </div>
                                         </div>
@@ -400,10 +400,7 @@
                                             <div class="py-5">
                                                 <button type="submit" class="btn btn-primary rounded-2 w-100"
                                                     id="card-button"
-                                                    data-secret="">Subscribe</button>
-                                                {{-- <button type="submit" class="btn btn-primary rounded-2 w-100"
-                                                    id="card-button"
-                                                    data-secret="{{ $intent->client_secret }}">Subscribe</button> --}}
+                                                    data-secret="{{ $intent->client_secret }}">Subscribe</button>
                                                 {{-- <a href="{{ route('pricing') }}" class="btn btn-primary rounded-2 w-100">VSubscribe</a> --}}
                                             </div>
                                         </div>
