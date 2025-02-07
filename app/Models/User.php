@@ -53,9 +53,13 @@ class User extends Authenticatable
     {
         return $this->hasMany(Subscription::class);
     }
+    // public function cardProducts()
+    // {
+    //     return $this->hasMany(UserCardProduct::class, 'user_id');
+    // }
     public function cardProducts()
     {
-        return $this->hasMany(UserCardProduct::class, 'user_id');
+        return $this->hasMany(UserCardPlan::class, 'user_id');
     }
     public function qr()
     {

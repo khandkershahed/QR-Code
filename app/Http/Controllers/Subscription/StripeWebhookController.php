@@ -10,8 +10,10 @@ use Stripe\Webhook;
 use App\Models\User;
 use App\Models\Admin\Plan;
 use App\Models\CardProduct;
+use App\Models\VirtualCard;
 use Illuminate\Support\Str;
 use App\Models\Subscription;
+use App\Models\UserCardPlan;
 use Illuminate\Http\Request;
 use App\Models\UserCardProduct;
 use Illuminate\Validation\Rules;
@@ -23,10 +25,10 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Cache;
 use App\Mail\UserCheckoutRegistration;
-use App\Models\UserCardPlan;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Session;
 use Stripe\Exception\ApiErrorException;
+use App\Models\Admin\NfcShippingDetails;
 use Illuminate\Support\Facades\Validator;
 use Stripe\Exception\SignatureVerificationException;
 use Laravel\Cashier\Http\Controllers\WebhookController as CashierWebhookController;
@@ -306,6 +308,7 @@ class StripeWebhookController extends CashierWebhookController
             "design_note"     => $request->design_note,
             "subtotal"        => $request->subtotal,
             "plan_id"         => $request->plan_id,
+            "name"            => $request->name,
             "email"           => $request->email,
             "shipping_charge" => $request->shipping_charge,
         ]);
@@ -315,74 +318,93 @@ class StripeWebhookController extends CashierWebhookController
         $data['intent'] = auth()->user()->createSetupIntent();
         $data['subtotal'] = $request->input('subtotal', session('subtotal', $data['plan']->package_price));
         return view('frontend.pages.cardCheckout', $data);
-
     }
 
 
     public function cardPayment(Request $request)
     {
-        dd($request->all());
-        // Validate the incoming request
+        $cardCheckout = session('card_checkout');
+        // dd($request->all());
+        dd($cardCheckout);
         $request->validate([
             'user_id'       => 'required|exists:users,id',
             'plan_id'       => 'required|exists:plans,id',
-            'token'         => 'required|string', // Add validation for the stripeToken
+            'token'         => 'required|string',
         ]);
 
-        // Begin a database transaction to ensure atomic operations
         DB::beginTransaction();
 
         try {
-            // Fetch product and user details
-            $product = Plan::findOrFail($request->plan_id); // Use 'plan' here
+            $product = Plan::findOrFail($request->plan_id);
             $user = User::findOrFail($request->user_id);
 
-            if ($request->subtotal && ($request->subtotal > 0)) {
-                $price = $request->subtotal;
-            } else {
-                $price = $product->price;
-            }
+            $price = $request->subtotal;
 
-            // Set Stripe API key
             Stripe::setApiKey(env('STRIPE_SECRET'));
 
-            // Create a PaymentIntent for the transaction
             $paymentIntent = \Stripe\PaymentIntent::create([
-                'amount' => $price * 100, // Amount in cents
+                'amount' => $price * 100,
                 'currency' => !empty($product->currency) ? $product->currency : "usd",
                 'description' => "NFC Card Payment",
-                'payment_method' => $request->stripeToken, // Payment method (the Stripe token from frontend)
-                'confirm' => true, // Immediately attempt to confirm the payment
+                'payment_method' => $request->token,
+                'confirm' => true,
+                'return_url' => route('user.nfc-card.index'),
             ]);
 
             // Check if the payment was successful
             if ($paymentIntent->status !== 'succeeded') {
                 throw new \Exception('Payment was not successful');
+                Session::flash('error', 'Error occurred while subscribing to a plan.');
+                return redirect()->back();
             }
 
-            // Create the user card product record
-            $usercardproduct = UserCardPlan::create([
-                'plan_id'              => $user->id,
-                'user_id'              => $product->id,
-                'admin_id'             => 'paid', // Only mark as paid if the payment succeeded
-                'plan_cycle'           => 'unused',
-                'card_preference'      => $request->subtotal,
-                'card_logo'            => $request->quantity,
-                'design_note'          => $request->color,
-                'max_user'             => Carbon::now(),
-                'amount'               => $user->id,
-                'shipping_name'        => $request->shipping_name,
-                'shipping_charge'      => $request->shipping_charge,
-                'shipping_email'       => $request->shipping_email,
-                'shipping_phone'       => $request->shipping_phone,
-                'shipping_address'     => $request->shipping_address,
-                'shipping_city'        => $request->shipping_city,
-                'shipping_state'       => $request->shipping_state,
-                'shipping_zip_code'    => $request->shipping_zip_code,
-                'shipping_country'     => $request->shipping_country,
-                'subscription_ends_at' => Carbon::now(),
-            ]);
+            if ($paymentIntent->status == 'succeeded') {
+                $usercardplan = UserCardPlan::create([
+                    'plan_id'              => $request->plan_id,
+                    'user_id'              => $request->user_id,
+                    // 'admin_id'             => $request->,
+                    'plan_cycle'           => $product->billing_cycle,
+                    'card_preference'      => $cardCheckout['card_preference'],
+                    'card_logo'            => $cardCheckout['card_logo'],
+                    'design_note'          => $cardCheckout['design_note'],
+                    'max_user'             => $cardCheckout['card_user'],
+                    'amount'               => $request->subtotal,
+                    'shipping_charge'      => $cardCheckout['shipping_charge'],
+                    'shipping_name'        => $request->shipping_name,
+                    'shipping_email'       => $request->shipping_email,
+                    'shipping_phone'       => $request->shipping_phone,
+                    'shipping_address'     => $request->shipping_address,
+                    'shipping_city'        => $request->shipping_city,
+                    'shipping_state'       => $request->shipping_state,
+                    'shipping_zip_code'    => $request->shipping_zip_code,
+                    'shipping_country'     => $request->shipping_country,
+                    'subscription_ends_at' => now()->addDays($product->interval),
+                ]);
+                $card = VirtualCard::create([
+                    'card_id'               => $request->card_id,
+                    'user_id'               => $request->user_id,
+                    'virtual_card_template' => 'virtual-card-one',
+                    'card_logo'             => $cardCheckout['card_logo'] ?? null,
+                    'card_name'             => $cardCheckout['name'] ?? null,
+                    'card_email'            => $cardCheckout['email'] ?? null,
+                ]);
 
+                NfcShippingDetails::create([
+                    'card_id'              => $card->id,
+                    'shipping_name'        => $request->shipping_name,
+                    'shipping_phone'       => $request->shipping_phone,
+                    'shipping_address'     => $request->shipping_address,
+                    'shipping_city'        => $request->shipping_city,
+                    'shipping_state'       => $request->shipping_state,
+                    'shipping_zip_code'    => $request->shipping_zip_code,
+                    'shipping_country'     => $request->shipping_country,
+                ]);
+                Session::flash('error', 'Plan .');
+                session()->forget('card_checkout');
+            } else {
+                Session::flash('error', 'Error occurred while subscribing to a plan.');
+                return redirect()->back();
+            }
             // Create the invoice
             $invoice = Invoice::create([
                 'customer' => $paymentIntent->customer,
@@ -391,28 +413,22 @@ class StripeWebhookController extends CashierWebhookController
 
             // Send the invoice via email
             try {
-                $email = $request->customer_email;
+                $email = $user->email;
                 Mail::send('emails.invoice', ['invoice' => $invoice, 'product' => $product], function ($message) use ($email) {
                     $message->to($email)->subject('NFC Card Payment Invoice');
                 });
             } catch (\Exception $e) {
-                // Flash a message if the email fails
                 Session::flash('error', "Email sent will be delayed due to server issue.");
             }
-
-            // Commit the transaction as everything is successful
             DB::commit();
-
-            // Return success response if payment is successful
-            return redirect()->route('dashboard')->with('success', 'Payment successful!');
+            Session::flash('error', 'Plan Activated Successfully');
+            return redirect()->route('user.nfc-card.index');
         } catch (\Stripe\Exception\ApiErrorException $e) {
-            // Catch Stripe-specific errors (e.g., card declined, network issues)
-            DB::rollBack(); // Rollback transaction to avoid any database changes if payment fails
-            return redirect()->route('register')->with('error', 'Payment failed: ' . $e->getMessage());
+            DB::rollBack();
+            return redirect()->back()->with('error', 'Payment failed: ' . $e->getMessage());
         } catch (\Exception $e) {
-            // Catch any other errors (e.g., database errors, system errors)
-            DB::rollBack(); // Rollback transaction
-            return redirect()->route('register')->with('error', 'An unexpected error occurred: ' . $e->getMessage());
+            DB::rollBack();
+            return redirect()->back()->with('error', 'An unexpected error occurred: ' . $e->getMessage());
         }
     }
 }
