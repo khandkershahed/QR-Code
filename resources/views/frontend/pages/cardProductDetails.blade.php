@@ -776,5 +776,36 @@
             });
         </script>
         {{-- Radio With Accordion End --}}
+        <script>
+            document.getElementById('multiStepForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                var formData = new FormData(this); // Collect all form data
+
+                // Create an AJAX request using Fetch API
+                fetch("{{ route('card.checkout') }}", {
+                        method: "GET", // Using GET method
+                        headers: {
+                            "Accept": "application/json"
+                        },
+                        body: formData
+                    })
+                    .then(response => response.json()) // Assuming the server returns JSON
+                    .then(data => {
+                        console.log(data); // Handle the response from the server (e.g., show a success message)
+                        // You can also update the page dynamically or redirect the user
+                        if (data.success) {
+                            // Redirect or update the UI as needed
+                            window.location.href = "{{ route('success.page') }}"; // Example redirect
+                        } else {
+                            alert("There was an error!");
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert("An error occurred!");
+                    });
+            });
+        </script>
     @endpush
 </x-frontend-app-layout>

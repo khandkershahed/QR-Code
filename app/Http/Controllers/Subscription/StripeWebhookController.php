@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Cache;
 use App\Mail\UserCheckoutRegistration;
+use App\Models\UserCardPlan;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Session;
 use Stripe\Exception\ApiErrorException;
@@ -320,11 +321,12 @@ class StripeWebhookController extends CashierWebhookController
 
     public function cardPayment(Request $request)
     {
+        dd($request->all());
         // Validate the incoming request
         $request->validate([
-            'user_id' => 'required|exists:users,id',
-            'plan' => 'required|exists:card_products,id',
-            'stripeToken' => 'required|string', // Add validation for the stripeToken
+            'user_id'       => 'required|exists:users,id',
+            'plan_id'       => 'required|exists:plans,id',
+            'token'         => 'required|string', // Add validation for the stripeToken
         ]);
 
         // Begin a database transaction to ensure atomic operations
@@ -332,13 +334,13 @@ class StripeWebhookController extends CashierWebhookController
 
         try {
             // Fetch product and user details
-            $product = CardProduct::findOrFail($request->plan); // Use 'plan' here
+            $product = Plan::findOrFail($request->plan_id); // Use 'plan' here
             $user = User::findOrFail($request->user_id);
 
             if ($request->subtotal && ($request->subtotal > 0)) {
                 $price = $request->subtotal;
             } else {
-                $price = $product->package_price;
+                $price = $product->price;
             }
 
             // Set Stripe API key
@@ -359,15 +361,26 @@ class StripeWebhookController extends CashierWebhookController
             }
 
             // Create the user card product record
-            $usercardproduct = UserCardProduct::create([
-                'user_id' => $user->id,
-                'card_product_id' => $product->id,
-                'payment_status' => 'paid', // Only mark as paid if the payment succeeded
-                'status' => 'unused',
-                'amount' => $request->subtotal,
-                'additional_nfc' => $request->quantity,
-                'color' => $request->color,
-                'paid_at' => Carbon::now(),
+            $usercardproduct = UserCardPlan::create([
+                'plan_id'              => $user->id,
+                'user_id'              => $product->id,
+                'admin_id'             => 'paid', // Only mark as paid if the payment succeeded
+                'plan_cycle'           => 'unused',
+                'card_preference'      => $request->subtotal,
+                'card_logo'            => $request->quantity,
+                'design_note'          => $request->color,
+                'max_user'             => Carbon::now(),
+                'amount'               => $user->id,
+                'shipping_name'        => $request->shipping_name,
+                'shipping_charge'      => $request->shipping_charge,
+                'shipping_email'       => $request->shipping_email,
+                'shipping_phone'       => $request->shipping_phone,
+                'shipping_address'     => $request->shipping_address,
+                'shipping_city'        => $request->shipping_city,
+                'shipping_state'       => $request->shipping_state,
+                'shipping_zip_code'    => $request->shipping_zip_code,
+                'shipping_country'     => $request->shipping_country,
+                'subscription_ends_at' => Carbon::now(),
             ]);
 
             // Create the invoice

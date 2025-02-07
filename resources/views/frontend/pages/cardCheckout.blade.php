@@ -33,11 +33,11 @@
     </style>
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 offset-lg-2 mx-auto">
+            <div class="col-lg-10 offset-lg-1 mx-auto">
                 <div class="card">
                     <div class="card-body pt-0">
                         <div class="row payment-container">
-                            <div class="col-lg-6 ">
+                            <div class="col-lg-4">
                                 <div class="d-flex align-items-center colum-padding">
                                     <a href="" class="pe-3"><i class="fas fa-arrow-left-long"></i></a>
                                     <div class="d-flex align-items-center">
@@ -53,21 +53,24 @@
                                     </div>
                                 </div>
                                 <div class="" style="margin-top: 5rem">
-                                    <h6 class="mb-3">Purchase <strong class="text-info">{{ $plan->title }}</strong></h6>
-                                    <h6 class="mb-5"> <strong class="text-black">Card :{{ $card }}</strong></h6>
+                                    <h6 class="mb-3">Purchase <strong class="text-info">{{ $plan->title }}</strong>
+                                    </h6>
+                                    <h6 class="mb-5"> <strong class="text-black">Card :{{ $card }}</strong>
+                                    </h6>
                                     <div class="d-flex align-items-center">
                                         <h1 style="font-size: 40px; border-right: 2px solid #eee;">
                                             <strong class="pe-3">
                                                 @if ($plan->currency == 'eur')
-                                                €
-                                            @elseif ($plan->currency == 'gbp')
-                                                £
-                                            @elseif ($plan->currency == 'usd')
-                                                $
-                                            @else
-                                                $
-                                            @endif
-                                            {{ $subtotal }}</strong>
+                                                    €
+                                                @elseif ($plan->currency == 'gbp')
+                                                    £
+                                                @elseif ($plan->currency == 'usd')
+                                                    $
+                                                @else
+                                                    $
+                                                @endif
+                                                {{ $subtotal }}
+                                            </strong>
                                         </h1>
 
                                     </div>
@@ -79,8 +82,8 @@
                                         height: 30rem;
                                         max-height: 100%;
                                     ">
-                                        <img class="img-fluid" width="200px"
-                                            src="{{ asset('storage/'.$plan->image) }}" alt="">
+                                        <img class="img-fluid" width="200px" src="{{ asset('storage/' . $plan->image) }}"
+                                            alt="">
                                     </div>
                                 </div>
                                 <div class="text-start">
@@ -92,7 +95,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="col-lg-6 card-column">
+                            <div class="col-lg-8 card-column">
                                 <div class="text-center  colum-padding">
                                     <h1>Pay With Card</h1>
                                     <p class="text-center devider-text">Countinue Payment Process</p>
@@ -100,20 +103,11 @@
                                 </div>
                                 <form action="{{ route('card.payment') }}" method="POST" id="payment-form">
                                     @csrf
-                                    <input type="hidden" name="product_id" id="plan" value="{{ $plan->id }}">
+                                    <input type="hidden" name="plan_id" id="plan" value="{{ $plan->id }}">
                                     <input type="hidden" name="subtotal" id="subtotal" value="{{ $subtotal }}">
                                     {{-- <input type="hidden" name="quantity" id="quantity" value="{{ $quantity }}">
                                     <input type="hidden" name="color" id="color" value="{{ $color }}"> --}}
                                     <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="mb-5 pb-3">
-                                                <label for="exampleInputEmail1" class="form-label">Email</label>
-                                                <input type="email" class="form-control" id="card-holder-email"
-                                                    name=email aria-describedby="emailHelp"
-                                                    placeholder="demo@example.com" value="{{ Auth::user()->email }}">
-                                            </div>
-                                        </div>
-
                                         <div class="col-lg-12">
                                             <div class="mb-5 pb-3">
                                                 <label for="card-number-element">Card Inormation</label>
@@ -131,13 +125,73 @@
                                                     placeholder="Name on the card">
                                             </div>
                                         </div>
+                                        <div class="text-center py-3">
+                                            <p class="text-center devider-text">Shipping Details</p>
+                                            <div class="devider"></div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-5 pb-3">
+                                                <label for="shipping_name" class="form-label required">Shipping
+                                                    Name</label>
+                                                <input type="text" class="form-control" id="shipping_name"
+                                                    name="shipping_name" aria-describedby="shipping_name"
+                                                    placeholder="Eg: John emo"
+                                                    value="{{ old('shipping_name', Auth::user()->name) }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-5 pb-3">
+                                                <label for="shipping_email" class="form-label required">Shipping
+                                                    Email</label>
+                                                <input type="email" class="form-control" id="shipping_email"
+                                                    name="shipping_email" aria-describedby="shipping_email"
+                                                    placeholder="demo@example.com"
+                                                    value="{{ old('shipping_email', Auth::user()->email) }}">
+                                            </div>
+                                        </div>
                                         <div class="col-lg-12">
                                             <div class="mb-5 pb-3">
-                                                <label for="exampleInputEmail1" class="form-label">Country Or
-                                                    Rigion</label>
-                                                <select id="billingCountry" name="billingCountry" class="form-select"
-                                                    autocomplete="billing country" aria-label="Country or region"
-                                                    class="Select-source">
+                                                <label for="shipping_address" class="form-label required">Shipping
+                                                    Address</label>
+                                                <textarea class="form-control" id="shipping_address" name="shipping_address" aria-describedby="shipping_address"
+                                                    placeholder="address">{{ old('shipping_address', Auth::user()->address) }}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-5 pb-3">
+                                                <label for="shipping_phone" class="form-label required">Shipping
+                                                    Phone</label>
+                                                <input type="text" class="form-control" id="shipping_phone"
+                                                    name="shipping_phone" aria-describedby="shipping_phone"
+                                                    placeholder="Eg: 02*****"
+                                                    value="{{ old('shipping_phone', Auth::user()->phone) }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-5 pb-3">
+                                                <label for="shipping_zip_code" class="form-label required">Shipping
+                                                    ZipCode</label>
+                                                <input type="text" class="form-control" id="shipping_zip_code"
+                                                    name="shipping_zip_code" aria-describedby="shipping_zip_code"
+                                                    placeholder="Eg: 25236" value="{{ old('shipping_zip_code') }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-5 pb-3">
+                                                <label for="shipping_city" class="form-label required">Shipping
+                                                    City</label>
+                                                <input type="text" class="form-control" id="shipping_city"
+                                                    name="shipping_city" aria-describedby="shipping_city"
+                                                    placeholder="Eg: New York" value="{{ old('shipping_city') }}">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <div class="mb-5 pb-3">
+                                                <label for="shipping_country" class="form-label required">Country</label>
+                                                <select id="shipping_country" name="shipping_country"
+                                                    class="form-select" autocomplete="billing country"
+                                                    aria-label="Country or region" class="Select-source">
                                                     <option value="" disabled="" hidden=""></option>
                                                     <option value="AF">Afghanistan</option>
                                                     <option value="AX">Åland Islands</option>
@@ -432,13 +486,18 @@
 
             const form = document.getElementById('payment-form')
             const cardBtn = document.getElementById('card-button')
-            const cardHolderName = document.getElementById('card-holder-name')
+            // const cardHolderName = document.getElementById('card-holder-name')
             const cardHolderEmail = document.getElementById('card-holder-email')
-            const billingCountry = document.getElementById('billingCountry')
+            const shipping_name = document.getElementById('shipping_name')
+            const shipping_email = document.getElementById('shipping_email')
+            const shipping_address = document.getElementById('shipping_address')
+            const shipping_phone = document.getElementById('shipping_phone')
+            const shipping_zip_code = document.getElementById('shipping_zip_code')
+            const shipping_city = document.getElementById('shipping_city')
+            const shipping_country = document.getElementById('shipping_country')
 
             form.addEventListener('submit', async (e) => {
                 e.preventDefault()
-
                 cardBtn.disabled = true
                 const {
                     setupIntent,
@@ -448,10 +507,10 @@
                         payment_method: {
                             card: cardElement,
                             billing_details: {
-                                name: cardHolderName.value,
-                                email: cardHolderEmail.value,
+                                name: shipping_name.value,
+                                email: shipping_email.value,
                                 address: {
-                                    country: billingCountry.value
+                                    country: shipping_country.value
                                 }
                             }
                         }
