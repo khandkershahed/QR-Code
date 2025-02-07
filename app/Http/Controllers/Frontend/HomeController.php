@@ -187,8 +187,12 @@ class HomeController extends Controller
     }
     public function cardFeatures($slug)
     {
+        $cardPlan = Plan::where('slug', $slug)->first();
         $data = [
-            'cardPlan'       => Plan::where('slug', $slug)->first(),
+            'cardPlan'  => $cardPlan,
+            'features'  => is_array($cardPlan->descriptions)
+            ? $cardPlan->descriptions
+            : json_decode($cardPlan->descriptions),
         ];
         return view('frontend.pages.cardFeatures', $data);
     }

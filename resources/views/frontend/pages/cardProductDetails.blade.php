@@ -431,7 +431,7 @@
                                 <p class="mb-0">{{ $individual_card_description }}</p>
                             @endforeach
                             <div class="link">
-                                <a href="#">See all features</a>
+                                <a href="{{ route('card.features',$cardProduct->slug) }}" target="_blank">See all features</a>
                             </div>
                         </div>
                         <div class="p-0 mt-30 card-body">
@@ -796,7 +796,6 @@
                         // You can also update the page dynamically or redirect the user
                         if (data.success) {
                             // Redirect or update the UI as needed
-                            window.location.href = "{{ route('success.page') }}"; // Example redirect
                         } else {
                             alert("There was an error!");
                         }
