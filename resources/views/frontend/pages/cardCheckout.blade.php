@@ -82,8 +82,8 @@
                                         height: 30rem;
                                         max-height: 100%;
                                     ">
-                                        <img class="img-fluid" width="200px" src="{{ asset('storage/' . $plan->image) }}"
-                                            alt="">
+                                        <img class="img-fluid" width="200px"
+                                            src="{{ asset('storage/' . $plan->image) }}" alt="">
                                     </div>
                                 </div>
                                 <div class="text-start">
@@ -103,6 +103,7 @@
                                 </div>
                                 <form action="{{ route('card.payment') }}" method="POST" id="payment-form">
                                     @csrf
+                                    <input type='hidden' name='stripeToken' id='stripe-token-id'> 
                                     <input type="hidden" name="plan_id" id="plan" value="{{ $plan->id }}">
                                     <input type="hidden" name="subtotal" id="subtotal" value="{{ $subtotal }}">
                                     {{-- <input type="hidden" name="quantity" id="quantity" value="{{ $quantity }}">
@@ -188,7 +189,8 @@
 
                                         <div class="col-lg-6">
                                             <div class="mb-5 pb-3">
-                                                <label for="shipping_country" class="form-label required">Country</label>
+                                                <label for="shipping_country"
+                                                    class="form-label required">Country</label>
                                                 <select id="shipping_country" name="shipping_country"
                                                     class="form-select" autocomplete="billing country"
                                                     aria-label="Country or region" class="Select-source">
@@ -452,9 +454,13 @@
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="py-5">
-                                                <button type="submit" class="btn btn-primary rounded-2 w-100"
+                                                <button id='pay-btn' class="btn btn-success mt-3" type="button"
+                                                    style="margin-top: 20px; width: 100%;padding: 7px;"
+                                                    onclick="createToken()">Subscribe
+                                                </button>
+                                                {{-- <button type="submit" class="btn btn-primary rounded-2 w-100"
                                                     id="card-button"
-                                                    data-secret="{{ $intent->client_secret }}">Subscribe</button>
+                                                    data-secret="{{ $intent->client_secret }}">Subscribe</button> --}}
                                                 {{-- <a href="{{ route('pricing') }}" class="btn btn-primary rounded-2 w-100">VSubscribe</a> --}}
                                             </div>
                                         </div>
@@ -477,59 +483,85 @@
     @push('scripts')
         <script src="https://js.stripe.com/v3/"></script>
         <script>
-            const stripe = Stripe('{{ env('STRIPE_KEY') }}')
+            // const stripe = Stripe('{{ env('STRIPE_KEY') }}')
 
-            const elements = stripe.elements()
-            const cardElement = elements.create('card')
+            // const elements = stripe.elements()
+            // const cardElement = elements.create('card')
 
-            cardElement.mount('#card-element')
+            // cardElement.mount('#card-element')
 
-            const form = document.getElementById('payment-form')
-            const cardBtn = document.getElementById('card-button')
-            // const cardHolderName = document.getElementById('card-holder-name')
-            const cardHolderEmail = document.getElementById('card-holder-email')
-            const shipping_name = document.getElementById('shipping_name')
-            const shipping_email = document.getElementById('shipping_email')
-            const shipping_address = document.getElementById('shipping_address')
-            const shipping_phone = document.getElementById('shipping_phone')
-            const shipping_zip_code = document.getElementById('shipping_zip_code')
-            const shipping_city = document.getElementById('shipping_city')
-            const shipping_country = document.getElementById('shipping_country')
+            // const form = document.getElementById('payment-form')
+            // const cardBtn = document.getElementById('card-button')
+            // // const cardHolderName = document.getElementById('card-holder-name')
+            // const cardHolderEmail = document.getElementById('card-holder-email')
+            // const shipping_name = document.getElementById('shipping_name')
+            // const shipping_email = document.getElementById('shipping_email')
+            // const shipping_address = document.getElementById('shipping_address')
+            // const shipping_phone = document.getElementById('shipping_phone')
+            // const shipping_zip_code = document.getElementById('shipping_zip_code')
+            // const shipping_city = document.getElementById('shipping_city')
+            // const shipping_country = document.getElementById('shipping_country')
 
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault()
-                cardBtn.disabled = true
-                const {
-                    setupIntent,
-                    error
-                } = await stripe.confirmCardSetup(
-                    cardBtn.dataset.secret, {
-                        payment_method: {
-                            card: cardElement,
-                            billing_details: {
-                                name: shipping_name.value,
-                                email: shipping_email.value,
-                                address: {
-                                    country: shipping_country.value
-                                }
-                            }
-                        }
+            // form.addEventListener('submit', async (e) => {
+            //     e.preventDefault()
+            //     cardBtn.disabled = true
+            //     const {
+            //         setupIntent,
+            //         error
+            //     } = await stripe.confirmCardSetup(
+            //         cardBtn.dataset.secret, {
+            //             payment_method: {
+            //                 card: cardElement,
+            //                 billing_details: {
+            //                     name: shipping_name.value,
+            //                     email: shipping_email.value,
+            //                     address: {
+            //                         country: shipping_country.value
+            //                     }
+            //                 }
+            //             }
+            //         }
+            //     )
+
+            //     if (error) {
+            //         cardBtn.disabled = false
+            //         console.error(error)
+            //         // Optionally, display error message to the user
+            //     } else {
+            //         let token = document.createElement('input')
+            //         token.setAttribute('type', 'hidden')
+            //         token.setAttribute('name', 'token')
+            //         token.setAttribute('value', setupIntent.payment_method)
+            //         form.appendChild(token)
+            //         form.submit()
+            //     }
+            // })
+            var stripe = Stripe('{{ env('STRIPE_KEY') }}')
+            var elements = stripe.elements();
+            var cardElement = elements.create('card');
+            cardElement.mount('#card-element');
+
+            /*------------------------------------------
+            --------------------------------------------
+            Create Token Code
+            --------------------------------------------
+            --------------------------------------------*/
+            function createToken() {
+                document.getElementById("pay-btn").disabled = true;
+                stripe.createToken(cardElement).then(function(result) {
+
+                    if (typeof result.error != 'undefined') {
+                        document.getElementById("pay-btn").disabled = false;
+                        alert(result.error.message);
                     }
-                )
 
-                if (error) {
-                    cardBtn.disabled = false
-                    console.error(error)
-                    // Optionally, display error message to the user
-                } else {
-                    let token = document.createElement('input')
-                    token.setAttribute('type', 'hidden')
-                    token.setAttribute('name', 'token')
-                    token.setAttribute('value', setupIntent.payment_method)
-                    form.appendChild(token)
-                    form.submit()
-                }
-            })
+                    /* creating token success */
+                    if (typeof result.token != 'undefined') {
+                        document.getElementById("stripe-token-id").value = result.token.id;
+                        document.getElementById('payment-form').submit();
+                    }
+                });
+            }
         </script>
     @endpush
 

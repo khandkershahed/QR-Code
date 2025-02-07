@@ -325,11 +325,11 @@ class StripeWebhookController extends CashierWebhookController
     {
         $cardCheckout = session('card_checkout');
         // dd($request->all());
-        dd($cardCheckout);
+        // dd($cardCheckout);
         $request->validate([
             'user_id'       => 'required|exists:users,id',
             'plan_id'       => 'required|exists:plans,id',
-            'token'         => 'required|string',
+            'stripeToken'         => 'required|string',
         ]);
 
         DB::beginTransaction();
@@ -342,14 +342,20 @@ class StripeWebhookController extends CashierWebhookController
 
             Stripe::setApiKey(env('STRIPE_SECRET'));
 
-            $paymentIntent = \Stripe\PaymentIntent::create([
-                'amount' => $price * 100,
-                'currency' => !empty($product->currency) ? $product->currency : "usd",
+            $paymentIntent = \Stripe\Charge::create([
+                "amount" => $price * 100,
+                "currency" => "usd",
+                "source" => $request->stripeToken,
                 'description' => "NFC Card Payment",
-                'payment_method' => $request->token,
-                'confirm' => true,
-                'return_url' => route('user.nfc-card.index'),
             ]);
+            // $paymentIntent = \Stripe\Charge::create([
+            //     'amount' => $price * 100,
+            //     'currency' => !empty($product->currency) ? $product->currency : "usd",
+            //     'description' => "NFC Card Payment",
+            //     "source" => $request->stripeToken,
+            //     // 'payment_method' => $request->token,
+            //     // 'confirm' => true,
+            // ]);
 
             // Check if the payment was successful
             if ($paymentIntent->status !== 'succeeded') {
@@ -362,7 +368,6 @@ class StripeWebhookController extends CashierWebhookController
                 $usercardplan = UserCardPlan::create([
                     'plan_id'              => $request->plan_id,
                     'user_id'              => $request->user_id,
-                    // 'admin_id'             => $request->,
                     'plan_cycle'           => $product->billing_cycle,
                     'card_preference'      => $cardCheckout['card_preference'],
                     'card_logo'            => $cardCheckout['card_logo'],
@@ -408,7 +413,7 @@ class StripeWebhookController extends CashierWebhookController
             // Create the invoice
             $invoice = Invoice::create([
                 'customer' => $paymentIntent->customer,
-                'billing' => 'send_invoice', // Adjust depending on your actual invoice handling
+                // 'billing' => 'send_invoice', // Adjust depending on your actual invoice handling
             ]);
 
             // Send the invoice via email
