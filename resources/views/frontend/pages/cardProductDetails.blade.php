@@ -609,7 +609,6 @@
                     function() {
                         updateSubtotal();
                     });
-
                 // Range slider handling
                 let $rangeSlider = $("#rangeSlider");
                 let $inputField = $("#userSliderRange");
@@ -634,9 +633,6 @@
                 updateSubtotal();
             });
         </script>
-
-
-
         {{-- Slider Range End --}}
         {{-- For Image Slider End --}}
         <script>
