@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <div class="pb-2 w-100 pe-2">
-                    <p class="mb-0 ps-2 text-info">USERS</p>
+                    <p class="mb-0 ps-2 text-muted"><small>Updated USERS</small></p>
                     <div class="ps-2 slidecontainer">
                         <input type="range" class="p-0 w-100" id="rangeSlider" min="5" max="100"
                             value="5">
@@ -50,18 +50,17 @@
                         </p>
                         <div class="link ">
                             <a href="javascript:void(0)" target="_blank">Continue <i
-                                    class="fas fa-arrow-right-long"></i></a>
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
             </label>
-
         </div>
     </div>
 
     <!-- Step 2 -->
     <div class="form-step" id="step2" style="display:none;">
-        <div>
+        <div class="pt-30">
             <h2>Choose Card Type!</h2>
             <p>A card that suits you best</p>
         </div>
@@ -74,43 +73,22 @@
                             <input type="radio" id="r12" name="card_preference"
                                 data-card_price="{{ $cardProduct->plastic_card_price }}" value="plastic"
                                 data-card_title="Plastic" />
-                            <div class="custom-card d-flex justify-content-between">
+                            <div class="custom-card d-flex justify-content-between align-items-center">
                                 <div>
-                                    <h4 class="p-2 px-3 mb-0">Plastic Card</h4>
+                                    <h4 class="px-3 mb-0">Plastic Card</h4>
+                                    <small class="mb-0 ps-3" style="font-size: 12px">Extend your branding</small>
                                 </div>
                                 <div>
-                                    <h4 class="p-2 px-3 mb-0">+
+                                    <h4 class="px-3 mb-0"> <i class="fas fa-circle-check text-danger"></i>
                                         {{ $cardProduct->plastic_card_price }} $</h4>
                                 </div>
                             </div>
                         </label>
                     </h4>
                 </div>
-            </div>
-
-            <!-- Third Card -->
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="mb-0 panel-title">
-                        <label class="mb-0 w-100">
-                            <input type="radio" id="r13" name="card_preference" value="metal"
-                                data-card_title="Metal" data-card_price="{{ $cardProduct->metal_card_price }}" />
-                            <div class="custom-card d-flex justify-content-between">
-                                <div>
-                                    <h4 class="p-2 px-3 mb-0">Metal Card</h4>
-                                </div>
-                                <div>
-                                    <h4 class="p-2 px-3 mb-0">+
-                                        {{ $cardProduct->metal_card_price }} $</h4>
-                                </div>
-                            </div>
-                        </label>
-                    </h4>
-                </div>
-                {{-- <div id="collapseThree" class="panel-collapse collapse">
+                <div id="collapseTwo" class="panel-collapse collapse">
                     <div class="panel-body">
                         <div class="pb-3">
-                            <p>Extend your branding</p>
                             <div class="image-slider">
                                 <div>
                                     <img class="img-fluid rounded-2"
@@ -130,25 +108,79 @@
                             </div>
                         </div>
                     </div>
-                </div> --}}
+                </div>
+            </div>
+
+            <!-- Third Card -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="mb-0 panel-title">
+                        <label class="mb-0 w-100">
+                            <input type="radio" id="r13" name="card_preference" value="metal"
+                                data-card_title="Metal" data-card_price="{{ $cardProduct->metal_card_price }}" />
+                            <div class="custom-card d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h4 class="px-3 mb-0">Metal Card</h4>
+                                    <small class="mb-0 ps-3" style="font-size: 12px">Extend your branding</small>
+                                </div>
+                                <div>
+                                    <h4 class="px-3 mb-0"><i class="fas fa-circle-check text-danger"></i>
+                                        {{ $cardProduct->metal_card_price }} $</h4>
+                                </div>
+                            </div>
+                        </label>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class="pb-3">
+                            <div class="image-slider">
+                                <div>
+                                    <img class="img-fluid rounded-2"
+                                        src="https://ovou.com/_next/image?url=https%3A%2F%2Fovou.com%2Fcdn-cgi%2Fimage%2Ffit%3Dscale-down%2Cwidth%3D1152%2Cheight%3D732%2Cquality%3D100%2Fhttps%3A%2F%2Fovou-production.nyc3.cdn.digitaloceanspaces.com%2Fproducts%2Fcards%2Fbanner%2Fmetal%2F1.png&w=640&q=100"
+                                        alt="">
+                                </div>
+                                <div>
+                                    <img class="img-fluid rounded-2"
+                                        src="https://ovou.com/_next/image?url=https%3A%2F%2Fovou.com%2Fcdn-cgi%2Fimage%2Ffit%3Dscale-down%2Cwidth%3D1152%2Cheight%3D732%2Cquality%3D100%2Fhttps%3A%2F%2Fovou-production.nyc3.cdn.digitaloceanspaces.com%2Fproducts%2Fcards%2Fbanner%2Fmetal%2F2.png&w=640&q=100"
+                                        alt="">
+                                </div>
+                                <div>
+                                    <img class="img-fluid rounded-2"
+                                        src="https://ovou.com/_next/image?url=https%3A%2F%2Fovou.com%2Fcdn-cgi%2Fimage%2Ffit%3Dscale-down%2Cwidth%3D1152%2Cheight%3D732%2Cquality%3D100%2Fhttps%3A%2F%2Fovou-production.nyc3.cdn.digitaloceanspaces.com%2Fproducts%2Fcards%2Fbanner%2Fmetal%2F3.png&w=640&q=100"
+                                        alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         {{-- <button type="button" onclick="previousStep(2)"
             class="btn btn-secondary">Previous</button> --}}
-        <button type="button" id="nextBtn2" class="py-3 btn btn-primary w-100" onclick="goToNextStep(2)"
-            disabled>Continue <i class="fa-solid fa-right-arrow"></i></button>
+
+
+
+        <div class="mt-30 d-flex justify-content-between">
+            <button type="button" onclick="previousStep(2)" class="p-2 px-3 btn btn-secondary"><i
+                    class="fas fa-angle-left"></i> Back</button>
+            <button type="button" id="nextBtn2" class="theme-btn style-two" style="border-radius: 10px;"
+                onclick="goToNextStep(2)" disabled>Continue <i class="fas fa-arrow-right"></i></button>
+
+        </div>
     </div>
 
     <!-- Step 3 -->
     <div class="form-step" id="step3" style="display:none;">
-        <div>
+        <div class="pt-30">
             <h2>Card Customization</h2>
             <p>Design Your Card</p>
         </div>
         <div class="card-design-box d-flex justify-content-center align-items-center position-relative">
             <div class="main-img position-relative">
                 <!-- Main Card Image -->
-                <img class="img-fluid" id="mainCardImage" src="{{ asset('images/metal-card.png') }}" alt="">
+                <img class="img-fluid" id="mainCardImage" src="{{ asset('images/metal-card.png') }}"
+                    alt="">
                 <div class="card-logo position-absolute">
                     <!-- Image preview will be displayed here -->
                     <img id="logoPreview" width="70px" height="70px" style="object-fit: contain;"
@@ -183,7 +215,7 @@
         </div>
 
         <div class="mt-5">
-            <label for="card_logo">Upload Logo</label>
+            <label for="card_logo">Upload Logo <span class="text-danger">*</span></label>
             <input class="form-control" type="file" name="card_logo" id="card_logo" required
                 onchange="previewLogo()">
         </div>
@@ -194,14 +226,15 @@
         </div>
 
         <div class="mt-30 d-flex justify-content-between">
-            <button type="button" onclick="previousStep(3)" class="p-2 px-3 btn btn-secondary">Previous</button>
-            <button type="button" id="nextBtn3" class="p-2 px-3 btn btn-primary" onclick="goToNextStep(3)"
-                disabled>Continue <i class="fa-solid fa-right-arrow"></i></button>
+            <button type="button" onclick="previousStep(3)" class="p-2 px-3 btn btn-secondary"><i
+                    class="fas fa-angle-left"></i> Back</button>
+            <button type="button" id="nextBtn3" class="theme-btn style-two" style="border-radius: 10px;"
+                onclick="goToNextStep(3)" disabled>Continue <i class="fas fa-arrow-right"></i></button>
 
         </div>
     </div>
     <div class="form-step" id="step4" style="display:none;">
-        <div>
+        <div class="pt-30">
             <h2>Order Summary</h2>
             <p>Design Your Card</p>
         </div>
@@ -217,44 +250,39 @@
                     </h2>
                     <div id="orderSummary" class="accordion-collapse collapse show" aria-labelledby="headingOne"
                         data-bs-parent="#accordionExample">
-                        <div class="py-2 mt-0 border accordion-body">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
+                        <div class="py-4 mt-0 border accordion-body">
+                            <div class="d-flex justify-content-between align-items-center mb-5">
+                                <div class="d-flex justify-content-between align-items-center">
                                     <img class="img-fluid" width="50"
                                         src="https://ovou.com/_next/image?url=https%3A%2F%2Fovou-production.nyc3.cdn.digitaloceanspaces.com%2Fproducts%2Fsummery%2Fplan.png&w=320&q=75"
                                         alt="">
+                                        <h6 class="mb-0 ps-4">{{ $cardProduct->title }} Plans</h6>
                                 </div>
                                 <input type="hidden" name="subtotal" id="hidden-subtotal">
                                 <input type="hidden" name="plan_id" value="{{ $cardProduct->id }}" id="plan_id">
-                                <div class="ps-3">
-                                    <h6 class="mb-0">{{ $cardProduct->title }}</h6>
-                                    <p class="mb-0">Annual Plan</p>
-                                </div>
                                 <div>
-                                    <h3>$ {{ $cardProduct->price }}</h3>
+                                    <h6 class="mb-0">$ {{ $cardProduct->price }}</h6>
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
+                            <div class="d-flex justify-content-between align-items-center mb-5">
+                                <div class="d-flex align-items-center">
                                     <img class="img-fluid" width="50"
                                         src="https://ovou.com/_next/image?url=https%3A%2F%2Fovou-production.nyc3.cdn.digitaloceanspaces.com%2Fproducts%2Fsummery%2Fmetal.png&w=320&q=75"
                                         alt="">
-                                </div>
-                                <div class="ps-3">
-                                    <h6 class="mb-0"><span id="card_title"></span>
+                                    <h6 class="mb-0 ps-4"><span id="card_title"></span>
                                         Card</h6>
                                 </div>
                                 <div>
-                                    <h3>$ <span id="card_price"></span> </h3>
+                                    <h6 class="mb-0">$ <span id="card_price"></span> </h6>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-between align-items-center">
 
-                                <div class="ps-3">
+                                <div>
                                     <h6 class="mb-0" id="shipping_title"></h6>
                                 </div>
                                 <div>
-                                    <h3 id="shipping_charge"></h3>
+                                    <h6 class="mb-0" id="shipping_charge"></h6>
                                 </div>
                             </div>
                         </div>
@@ -266,18 +294,20 @@
             <h3>Account Information</h3>
             <p>Your email will be used for account creation and management.</p>
             <div class="my-5">
-                <label for="name">Your Name</label>
+                <label for="name">Your Name <span class="text-danger">*</span></label>
                 <input class="form-control" type="text" name="name" id="name" required>
             </div>
             <div class="my-5">
-                <label for="email">Your Email</label>
+                <label for="email">Your Email <span class="text-danger">*</span></label>
                 <input class="form-control" type="email" name="email" id="email" required>
             </div>
         </div>
         <div>
-            <h3>Shipping Information</h3>
-            <p>The ammount is for shipping and handling.</p>
-            <div class="mt-3">
+            <div class="pt-30">
+                <h3 class="mb-0">Shipping Information</h3>
+                <p class="mb-0">The ammount is for shipping and handling.</p>
+            </div>
+            <div>
                 <label>Choose your shipping method</label>
                 @foreach ($shippingMethods as $shippingMethod)
                     <div class="mb-3 shipping-card" id="card-regularMail">
@@ -291,9 +321,11 @@
 
             </div>
         </div>
-        <div class="mt-30 d-flex">
-            <button type="submit" id="nextBtn3" class="p-2 px-3 btn btn-primary w-100 me-2">Submit</button>
-            <button type="button" onclick="previousStep(3)" class="p-2 px-3 btn btn-secondary">Previous</button>
+        <div class="mt-30 d-flex justify-content-between align-items-center">
+            <button type="button" onclick="previousStep(4)" class="p-2 px-3 btn btn-secondary"><i
+                    class="fas fa-angle-left"></i> Back</button>
+            <button type="submit" id="nextBtn3" class="theme-btn style-two" style="border-radius: 10px;">Submit <i
+                    class="fas fa-arrow-right"></i></button>
         </div>
     </div>
 </form>

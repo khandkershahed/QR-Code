@@ -257,6 +257,7 @@
             text-align: start;
             cursor: pointer;
             transition: all 0.3s ease;
+            padding: 10px;
         }
 
         /* Hide the default radio button */
@@ -266,10 +267,9 @@
 
         /* Add border when checked */
         input[type="radio"]:checked+.custom-card {
-            border: 2px solid #007bff;
+            border: 2px solid #6610f2;
             background-color: #f8f9fa;
             padding: 15px;
-            border-radius: 0;
         }
 
         .slick-dots {
