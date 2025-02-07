@@ -12,7 +12,7 @@
         <tbody>
             <tr>
                 <td align="center" valign="center" style="text-align:center; padding: 10px 40px">
-                    <a href="{{ route('home') }}" rel="noopener" target="_blank">
+                    <a href="{{ route('homePage') }}" rel="noopener" target="_blank">
                         <img alt="Logo" src="{{ asset('images/logo.png') }}" width="100px" />
                     </a>
                 </td>
@@ -73,7 +73,7 @@
             <tr>
                 <td align="center" valign="center"
                     style="font-size: 13px; text-align:center;padding: 20px; color: #6d6e7c;">
-                    <p>Copyright © <a href="{{ route('home') }}" rel="noopener" target="_blank">Go Qr</a>.</p>
+                    <p>Copyright © <a href="{{ route('homePage') }}" rel="noopener" target="_blank">Go Qr</a>.</p>
                 </td>
             </tr>
         </tbody>

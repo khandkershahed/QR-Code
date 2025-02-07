@@ -404,29 +404,29 @@ class StripeWebhookController extends CashierWebhookController
                     'shipping_zip_code'    => $request->shipping_zip_code,
                     'shipping_country'     => $request->shipping_country,
                 ]);
-                Session::flash('error', 'Plan .');
+                // Session::flash('success', 'Plan activated successfully.');
                 session()->forget('card_checkout');
             } else {
                 Session::flash('error', 'Error occurred while subscribing to a plan.');
                 return redirect()->back();
             }
             // Create the invoice
-            $invoice = Invoice::create([
-                'customer' => $paymentIntent->customer,
-                // 'billing' => 'send_invoice', // Adjust depending on your actual invoice handling
-            ]);
+            // $invoice = Invoice::create([
+            //     'customer' => $paymentIntent->customer,
+            //     // 'billing' => 'send_invoice', // Adjust depending on your actual invoice handling
+            // ]);
 
-            // Send the invoice via email
-            try {
-                $email = $user->email;
-                Mail::send('emails.invoice', ['invoice' => $invoice, 'product' => $product], function ($message) use ($email) {
-                    $message->to($email)->subject('NFC Card Payment Invoice');
-                });
-            } catch (\Exception $e) {
-                Session::flash('error', "Email sent will be delayed due to server issue.");
-            }
+            // // Send the invoice via email
+            // try {
+            //     $email = $user->email;
+            //     Mail::send('emails.invoice', ['invoice' => $invoice, 'product' => $product], function ($message) use ($email) {
+            //         $message->to($email)->subject('NFC Card Payment Invoice');
+            //     });
+            // } catch (\Exception $e) {
+            //     Session::flash('error', "Email sent will be delayed due to server issue.");
+            // }
             DB::commit();
-            Session::flash('error', 'Plan Activated Successfully');
+            Session::flash('success', 'Plan Activated Successfully');
             return redirect()->route('user.nfc-card.index');
         } catch (\Stripe\Exception\ApiErrorException $e) {
             DB::rollBack();
