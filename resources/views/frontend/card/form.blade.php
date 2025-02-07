@@ -251,6 +251,10 @@
             <h3>Account Information</h3>
             <p>Your email will be used for account creation and management.</p>
             <div class="my-5">
+                <label for="name">Your Name</label>
+                <input class="form-control" type="text" name="name" id="name" required>
+            </div>
+            <div class="my-5">
                 <label for="email">Your Email</label>
                 <input class="form-control" type="email" name="email" id="email" required>
             </div>

@@ -10,6 +10,7 @@ use Stripe\Webhook;
 use App\Models\User;
 use App\Models\Admin\Plan;
 use App\Models\CardProduct;
+use Illuminate\Support\Str;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 use App\Models\UserCardProduct;
@@ -21,6 +22,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Cache;
+use App\Mail\UserCheckoutRegistration;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Session;
 use Stripe\Exception\ApiErrorException;
@@ -256,16 +258,68 @@ class StripeWebhookController extends CashierWebhookController
 
     public function cardCheckout($id, Request $request)
     {
+        ini_set('max_execution_time', 300);
+        if (Auth::check()) {
+            $user_id = auth()->id();
+        } else {
+            $user = User::where('email', $request->input('shipping_email'))->first();
+            if ($user) {
+                Auth::login($user);
+                $request->session()->regenerate();
+            } else {
+                $password = Str::random(8);
+                $hashedPassword = Hash::make($password);
+                $user = User::create([
+                    'first_name'  => $request->input('shipping_first_name'),
+                    'last_name'   => $request->input('shipping_last_name'),
+                    'email'       => $request->input('shipping_email'),
+                    'phone'       => $request->input('shipping_phone'),
+                    'address_one' => $request->input('shipping_address'),
+                    'zipcode'     => $request->input('shipping_postcode'),
+                    'status'      => 'active',
+                    'password'    => $hashedPassword,
+                ]);
+
+
+                // Send email
+                $data = [
+                    'name'     => $request->input('shipping_first_name') . ' ' . $request->input('shipping_last_name'),
+                    'email'    => $request->input('shipping_email'),
+                    'password' => $password, // send plain password to user (for new accounts)
+                ];
+
+                // Send mail (ensure Mail is configured)
+                try {
+                    Mail::to($user->email)->send(new UserCheckoutRegistration($data));
+                } catch (\Exception $e) {
+                    Log::error('Error sending registration email: ' . $e->getMessage());
+                    Session::flash('error', 'Mail Not Send :' . $e->getMessage());
+                }
+
+                // Log the user in
+                Auth::login($user);
+                $request->session()->regenerate();
+            }
+            $user_id = auth()->id();
+        }
         dd($request->all());
+
         $data['plan'] = Plan::where('slug', $id)->first();
 
-        session([
-            'subtotal' => $request->input('subtotal', 0),
-            'quantity' => $request->input('quantity', 1),
-            'color' => $request->input('color'),
+        $request->session()->put('card_checkout', [
+            "card_user"       => $request->card_user,
+            "plan"            => $request->plan,
+            "card_preference" => $request->card_preference,
+            "card_logo"       => $request->card_logo,
+            "design_note"     => $request->design_note,
+            "subtotal"        => $request->subtotal,
+            "plan_id"         => $request->plan_id,
+            "email"           => $request->email,
+            "shipping_charge" => $request->shipping_charge,
         ]);
+
         $data['card'] = $request->card_preference;
-        $data['user_id'] = User::where('email',$request->email)->first(['id']);
+        $data['user_id'] = User::where('email', $request->email)->first(['id']);
         // $data['intent'] = auth()->user()->createSetupIntent();
         $data['subtotal'] = $request->input('subtotal', session('subtotal', $data['plan']->package_price));
         return view('frontend.pages.cardCheckout', $data);
