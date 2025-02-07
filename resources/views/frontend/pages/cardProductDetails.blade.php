@@ -781,7 +781,7 @@
             });
         </script>
         {{-- Radio With Accordion End --}}
-        <script>
+        {{-- <script>
             document.getElementById('multiStepForm').addEventListener('submit', function(event) {
                 event.preventDefault(); // Prevent the default form submission
 
@@ -810,6 +810,6 @@
                         alert("An error occurred!");
                     });
             });
-        </script>
+        </script> --}}
     @endpush
 </x-frontend-app-layout>
