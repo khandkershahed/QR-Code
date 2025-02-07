@@ -1,25 +1,25 @@
 <form action="{{ route('card.checkout') }}" method="GET" id="multiStepForm">
     {{-- @csrf --}}
     <!-- Step 1 -->
-    @if ($cardProduct->card_type == "team")
-        <div class="mt-30 border py-3 px-3">
+    @if ($cardProduct->card_type == 'team')
+        <div class="mt-30 border py-3 px-3" style="border-radius: 8px">
             <div class="d-flex align-items-end">
                 <div class="pe-2">
-                    <img src="{{ asset('images/user.webp') }}" alt="">
+                    <img class="" width="60px" src="{{ asset('images/user.webp') }}" alt="">
                 </div>
                 <div class="">
                     <input type="number" name="card_user"
-                        class="form-control p-2 py-0 bg-transparent rounded-0 text-center user-slider-range" placeholder="1"
-                        value="5" id="userSliderRange">
+                        class="form-control p-2 py-0 bg-transparent rounded-0 text-center user-slider-range"
+                        placeholder="1" value="5" id="userSliderRange">
                 </div>
-                <p class="mb-0 ps-2">USER</p>
+                <p class="mb-0 ps-2">USERS</p>
                 <div class="ps-2 slidecontainer">
                     <input type="range" class="p-0" id="rangeSlider" min="5" max="100" value="5">
                 </div>
             </div>
         </div>
     @else
-    <input type="hidden" name="card_user" value="1">
+        <input type="hidden" name="card_user" value="1">
     @endif
     <div class="form-step" id="step1">
         <div class="radio-card-container">
@@ -29,14 +29,24 @@
                 <div class="card-content">
                     <div>
                         <h3 class="plan-title">Annual Plan</h3>
+                        @if ($cardProduct->card_type == 'team')
+                            <p class="mb-0"><span class="badge bg-success">Team Plans</span></p>
+                        @else
+                            <p class="mb-0"><span class="badge bg-success">Individual Plans</span></p>
+                        @endif
                         <p class="mb-0"><small>Equal to $
                                 {{ number_format($cardProduct->price / 12, 2) }}/mo</small>
                         </p>
                     </div>
-                    <div>
+                    <div class="text-end">
                         <h3 class="amount-title">$ {{ $cardProduct->price }}</h3>
                         <p class="mb-0"><strong>$ <span class="annualCharge">{{ $cardProduct->price }}</span></strong>
-                            Billed Annually</p>
+                         <small class="text-muted">/Yearly</small>
+                        </p>
+                        <div class="link ">
+                            <a href="javascript:void(0)" target="_blank">Continue <i
+                                    class="fas fa-arrow-right-long"></i></a>
+                        </div>
                     </div>
                 </div>
             </label>

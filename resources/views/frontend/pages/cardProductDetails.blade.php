@@ -395,7 +395,7 @@
         }
 
         .user-slider-range {
-            width: 80px;
+            width: 60px;
             border-bottom: 1px solid #252525;
             border-top: 0px;
             border-right: 0px;
@@ -425,16 +425,26 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="border-0 card plan">
-                        <div class="p-0 bg-transparent border-0 card-header">
-                            <p class="mb-0 title">For {{ ucfirst($cardProduct->card_type) }}</p>
-                            @foreach ($individual_card_descriptions as $individual_card_description)
-                                <p class="mb-0">{{ $individual_card_description }}</p>
-                            @endforeach
+                        <div class="p-0 bg-transparent border-0 card-header mt-20">
+                            <p class="mb-0 title">For {{ ucfirst($cardProduct->card_type) }}
+                                @if ($cardProduct->card_type == 'team')
+                                    <i class="fas fa-users"></i>
+                                @else
+                                    <i class="fas fa-user-tie"></i>
+                                @endif
+                            </p>
+                            @if ($cardProduct->card_type == 'team')
+                                <p class="mb-0">Complimentary Custom Smart Cards Included with Your Initial Sign Up.
+                                </p>
+                            @else
+                                <p class="mb-0">Complimentary Smart Card included.</p>
+                            @endif
                             <div class="link">
-                                <a href="{{ route('card.features',$cardProduct->slug) }}" target="_blank">See all features</a>
+                                <a href="{{ route('card.features', $cardProduct->slug) }}" target="_blank">See all
+                                    features <i class="fas fa-arrow-right-long"></i></a>
                             </div>
                         </div>
-                        <div class="p-0 mt-30 card-body">
+                        <div class="p-0  card-body">
                             <div class="form-container">
                                 <div id="progressBarContainer" style="display: none">
                                     <div style="display: flex; justify-content: space-between;">
@@ -446,7 +456,6 @@
                                         <div id="progress"></div>
                                     </div>
                                 </div>
-
                                 @include('frontend.card.form')
                             </div>
                         </div>
@@ -609,7 +618,6 @@
                     function() {
                         updateSubtotal();
                     });
-
                 // Range slider handling
                 let $rangeSlider = $("#rangeSlider");
                 let $inputField = $("#userSliderRange");
@@ -634,9 +642,6 @@
                 updateSubtotal();
             });
         </script>
-
-
-
         {{-- Slider Range End --}}
         {{-- For Image Slider End --}}
         <script>
