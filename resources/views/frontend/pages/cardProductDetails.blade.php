@@ -431,7 +431,7 @@
                                 <p class="mb-0">{{ $individual_card_description }}</p>
                             @endforeach
                             <div class="link">
-                                <a href="#">See all features</a>
+                                <a href="{{ route('card.features',$cardProduct->slug) }}" target="_blank">See all features</a>
                             </div>
                         </div>
                         <div class="p-0 mt-30 card-body">
@@ -772,5 +772,35 @@
             });
         </script>
         {{-- Radio With Accordion End --}}
+        <script>
+            document.getElementById('multiStepForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                var formData = new FormData(this); // Collect all form data
+
+                // Create an AJAX request using Fetch API
+                fetch("{{ route('card.checkout') }}", {
+                        method: "GET", // Using GET method
+                        headers: {
+                            "Accept": "application/json"
+                        },
+                        body: formData
+                    })
+                    .then(response => response.json()) // Assuming the server returns JSON
+                    .then(data => {
+                        console.log(data); // Handle the response from the server (e.g., show a success message)
+                        // You can also update the page dynamically or redirect the user
+                        if (data.success) {
+                            // Redirect or update the UI as needed
+                        } else {
+                            alert("There was an error!");
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert("An error occurred!");
+                    });
+            });
+        </script>
     @endpush
 </x-frontend-app-layout>

@@ -9,21 +9,17 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class UserRegistrationMail extends Mailable
+class UserCheckoutRegistration extends Mailable
 {
     use Queueable, SerializesModels;
 
     public $data;
-    public $logoUrl;
-    public $logoLink;
-
     /**
      * Create a new notification instance.
      */
     public function __construct($data)
     {
         $this->data = $data;
-        $this->logoUrl = asset('images/logo.png');
     }
 
     /**
@@ -35,17 +31,16 @@ class UserRegistrationMail extends Mailable
     public function build()
     {
         return $this->from('support@goflixza.com', 'GO QR')
-        ->subject('Welcome to GoFlixza! Your Account is Ready.')
-        ->view('vendor.mail.template.user_registration', [
-            'data' => $this->data,
-            'logoUrl' => $this->logoUrl,
-        ]);
+            ->subject('Welcome to GO QR')
+            ->view('mail.user_checkout_registration', [
+                'data' => $this->data,
+            ]);
     }
 
     public function envelope()
     {
         return new Envelope(
-            subject: 'Welcome to GoFlixza! Your Account is Ready',
+            subject: 'Welcome to GO QR',
         );
     }
 

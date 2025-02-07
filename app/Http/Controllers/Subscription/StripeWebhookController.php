@@ -10,6 +10,7 @@ use Stripe\Webhook;
 use App\Models\User;
 use App\Models\Admin\Plan;
 use App\Models\CardProduct;
+use Illuminate\Support\Str;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 use App\Models\UserCardProduct;
@@ -21,6 +22,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Cache;
+use App\Mail\UserCheckoutRegistration;
+use App\Models\UserCardPlan;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Session;
 use Stripe\Exception\ApiErrorException;
@@ -254,43 +257,76 @@ class StripeWebhookController extends CashierWebhookController
         $user->delete();
     }
 
-    public function cardCheckout($id, Request $request)
+    public function cardCheckout(Request $request)
     {
-        dd($request->all());
-        $data['plan'] = Plan::where('slug', $id)->first();
+        ini_set('max_execution_time', 300);
+        if (Auth::check()) {
+            $user_id = auth()->id();
+        } else {
+            $user = User::where('email', $request->input('email'))->first();
+            if ($user) {
+                Auth::login($user);
+                $request->session()->regenerate();
+            } else {
+                $password = Str::random(8);
+                $hashedPassword = Hash::make($password);
+                $user = User::create([
+                    'name'        => $request->input('name'),
+                    'email'       => $request->input('email'),
+                    'status'      => 'active',
+                    'password'    => $hashedPassword,
+                ]);
+                // Send email
+                $data = [
+                    'name'     => $request->input('name'),
+                    'email'    => $request->input('email'),
+                    'password' => $password,
+                ];
+                // Send mail (ensure Mail is configured)
+                try {
+                    Mail::to($user->email)->send(new UserCheckoutRegistration($data));
+                } catch (\Exception $e) {
+                    Log::error('Error sending registration email: ' . $e->getMessage());
+                    Session::flash('error', 'Mail Not Send :' . $e->getMessage());
+                }
+                Auth::login($user);
+                $request->session()->regenerate();
+            }
+            $user_id = auth()->id();
+        }
+        // dd($user_id);
 
-        session([
-            'subtotal' => $request->input('subtotal', 0),
-            'quantity' => $request->input('quantity', 1),
-            'color' => $request->input('color'),
+        $data['plan'] = Plan::where('id', $request->plan_id)->first();
+
+        $request->session()->put('card_checkout', [
+            "card_user"       => $request->card_user,
+            "plan"            => $request->plan,
+            "card_preference" => $request->card_preference,
+            "card_logo"       => $request->card_logo,
+            "design_note"     => $request->design_note,
+            "subtotal"        => $request->subtotal,
+            "plan_id"         => $request->plan_id,
+            "email"           => $request->email,
+            "shipping_charge" => $request->shipping_charge,
         ]);
+
         $data['card'] = $request->card_preference;
-        $data['user_id'] = User::where('email',$request->email)->first(['id']);
-        // $data['intent'] = auth()->user()->createSetupIntent();
+        $data['user_id'] = $user_id;
+        $data['intent'] = auth()->user()->createSetupIntent();
         $data['subtotal'] = $request->input('subtotal', session('subtotal', $data['plan']->package_price));
         return view('frontend.pages.cardCheckout', $data);
-        // if (Auth::check()) {
 
-
-        //     $data['quantity'] = $request->input('quantity', session('quantity', 1));
-        //     $data['color'] = $request->input('color', session('color'));
-        //     return view('frontend.pages.cardCheckout', $data);
-        // } else {
-
-        //     session(['redirect_after_login' => route('card.checkout', $id)]);
-        //     return redirect()->route('login');
-        //     // return redirect()->route('login')->with('redirectTo', route('card.checkout', $id));
-        // }
     }
 
 
     public function cardPayment(Request $request)
     {
+        dd($request->all());
         // Validate the incoming request
         $request->validate([
-            'user_id' => 'required|exists:users,id',
-            'plan' => 'required|exists:card_products,id',
-            'stripeToken' => 'required|string', // Add validation for the stripeToken
+            'user_id'       => 'required|exists:users,id',
+            'plan_id'       => 'required|exists:plans,id',
+            'token'         => 'required|string', // Add validation for the stripeToken
         ]);
 
         // Begin a database transaction to ensure atomic operations
@@ -298,13 +334,13 @@ class StripeWebhookController extends CashierWebhookController
 
         try {
             // Fetch product and user details
-            $product = CardProduct::findOrFail($request->plan); // Use 'plan' here
+            $product = Plan::findOrFail($request->plan_id); // Use 'plan' here
             $user = User::findOrFail($request->user_id);
 
             if ($request->subtotal && ($request->subtotal > 0)) {
                 $price = $request->subtotal;
             } else {
-                $price = $product->package_price;
+                $price = $product->price;
             }
 
             // Set Stripe API key
@@ -325,15 +361,26 @@ class StripeWebhookController extends CashierWebhookController
             }
 
             // Create the user card product record
-            $usercardproduct = UserCardProduct::create([
-                'user_id' => $user->id,
-                'card_product_id' => $product->id,
-                'payment_status' => 'paid', // Only mark as paid if the payment succeeded
-                'status' => 'unused',
-                'amount' => $request->subtotal,
-                'additional_nfc' => $request->quantity,
-                'color' => $request->color,
-                'paid_at' => Carbon::now(),
+            $usercardproduct = UserCardPlan::create([
+                'plan_id'              => $user->id,
+                'user_id'              => $product->id,
+                'admin_id'             => 'paid', // Only mark as paid if the payment succeeded
+                'plan_cycle'           => 'unused',
+                'card_preference'      => $request->subtotal,
+                'card_logo'            => $request->quantity,
+                'design_note'          => $request->color,
+                'max_user'             => Carbon::now(),
+                'amount'               => $user->id,
+                'shipping_name'        => $request->shipping_name,
+                'shipping_charge'      => $request->shipping_charge,
+                'shipping_email'       => $request->shipping_email,
+                'shipping_phone'       => $request->shipping_phone,
+                'shipping_address'     => $request->shipping_address,
+                'shipping_city'        => $request->shipping_city,
+                'shipping_state'       => $request->shipping_state,
+                'shipping_zip_code'    => $request->shipping_zip_code,
+                'shipping_country'     => $request->shipping_country,
+                'subscription_ends_at' => Carbon::now(),
             ]);
 
             // Create the invoice
