@@ -186,7 +186,7 @@
                             <div class="pricing-item style-five">
                                 <div class="title-price">
                                     <h2 class="mb-0">{{ $individual_card->title }}</h2>
-                                    {{-- <p>Ideal for solopreneurs.</p> --}}
+                                    <p>Ideal for solopreneurs.</p>
                                 </div>
                                 <div class="image-selection">
                                     <div>

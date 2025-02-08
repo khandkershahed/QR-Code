@@ -1,4 +1,10 @@
 <x-frontend-app-layout :title="'Card Features || GoFlixza - Your Hub for QR, Bar Codes & NFC V.Cards'">
+    <style>
+        .table-striped > tbody > tr:nth-of-type(odd){
+            background-color: #6210ef36;
+            color: #252525;
+        }
+    </style>
     <section class="text-center page-banner-area overlay py-120 rpy-120 rel z-1 bgs-cover"
         style="background-image: url({{ asset('images/feature-img.png') }});">
         <div class="container">
@@ -11,18 +17,52 @@
             </div>
         </div>
     </section>
+    <section class="plan-box-container pt-50 pb-50 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="card border-0 bg-transparent">
+                        <div class="card-body p-0">
+                            <h2 class="my-3 title text-center">For Your {{ ucfirst($cardPlan->card_type) }} <i
+                                    class="fa-solid fa-users-cog"></i> Plans!</h2>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped mb-0">
+                                    <thead class="" style="background-color: #6310ef;">
+                                        <tr>
+                                            <th class="text-white ps-3">Feature</th>
+                                            <th class="text-center text-white">Include</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($features as $feature)
+                                            <tr>
+                                                <td class="text-start ps-3"><strong>{{ $feature }}</strong></td>
+                                                <td class="text-center">
+                                                    <i class="fas fa-circle-check" style="color: #ff643a; font-size: 20px;"></i>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     {{-- Static Section --}}
     <section id="features" class="features-area item-full text-center cell-items default-padding ">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="site-heading text-center pt-50">
+                    <div class="site-heading text-center pt-50 mb-0 pb-20">
                         <h2><span>What’s Ahead & What You Get</span></h2>
                         <h4>Enhance Your Networking with NFC & Digital vCards</h4>
                     </div>
                 </div>
             </div>
-            <div class="row features-items">
+            <div class="row features-items pb-30">
                 <div class="col-md-4 col-sm-6 equal-height">
                     <div class="item">
                         <div class="icon">
@@ -100,106 +140,72 @@
     </section>
 
     {{-- Static Section End --}}
-    <section class="plan-box-container pt-50 pb-50 bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 offset-lg-3">
-                    <div class="card border-0">
-                        <div class="card-body p-0">
-                            <h2 class="my-3 title text-center">For Your {{ ucfirst($cardPlan->card_type) }} <i
-                                    class="fa-solid fa-users-cog"></i> Plans!</h2>
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-striped mb-0">
-                                    <thead class="table-dark">
-                                        <tr>
-                                            <th>Feature</th>
-                                            <th class="text-center">Include</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($features as $feature)
-                                            <tr>
-                                                <td class="text-start"><strong>{{ $feature }}</strong></td>
-                                                <td class="text-center">
-                                                    <i class="fa-solid fa-check text-info"></i>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <section>
-        <div>
-            <img src="{{ asset('images/compare.jpg') }}" alt="">
+        <div class="d-flex justify-content-center mx-auto">
+            <img class="img-fluid" src="{{ asset('images/compare.png') }}" alt="">
         </div>
     </section>
     <section>
         <div class="container mt-50">
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
-                    <h2 class="mb-3 title text-center">Compare Our <br> <span class="text-success">Team &
-                            Individual</span> Plans Features!</h2>
+                    <h2 class="mb-3 title text-center">Compare Our Feature</h2>
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped">
-                            <thead class="table-dark">
+                            <thead style="background-color: #6310ef;">
                                 <tr>
-                                    <th>Feature</th>
-                                    <th class="text-center">Individual</th>
-                                    <th class="text-center">Teams</th>
+                                    <th class="text-white">Feature</th>
+                                    <th class="text-center text-white">Individual</th>
+                                    <th class="text-center text-white">Teams</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td class="text-start">Branded Profile</td>
-                                    <td class="text-center"><i class="fa-solid fa-check text-success"></i></td>
-                                    <td class="text-center"><i class="fa-solid fa-check text-success"></i></td>
+                                    <td class="text-center"><i class="fas fa-circle-check" style="color: #ff643a; font-size: 20px;"></i></td>
+                                    <td class="text-center"><i class="fas fa-circle-check" style="color: #ff643a; font-size: 20px;"></i></td>
                                 </tr>
                                 <tr>
                                     <td class="text-start">Lead Capture</td>
-                                    <td class="text-center"><i class="fa-solid fa-check text-success"></i></td>
-                                    <td class="text-center"><i class="fa-solid fa-check text-success"></i></td>
+                                    <td class="text-center"><i class="fas fa-circle-check" style="color: #ff643a; font-size: 20px;"></i></td>
+                                    <td class="text-center"><i class="fas fa-circle-check" style="color: #ff643a; font-size: 20px;"></i></td>
                                 </tr>
                                 <tr>
                                     <td class="text-start">Social Media Integration</td>
-                                    <td class="text-center"><i class="fa-solid fa-check text-success"></i></td>
-                                    <td class="text-center"><i class="fa-solid fa-check text-success"></i></td>
+                                    <td class="text-center"><i class="fas fa-circle-check" style="color: #ff643a; font-size: 20px;"></i></td>
+                                    <td class="text-center"><i class="fas fa-circle-check" style="color: #ff643a; font-size: 20px;"></i></td>
                                 </tr>
                                 <tr>
                                     <td class="text-start">Custom Links</td>
-                                    <td class="text-center"><i class="fa-solid fa-check text-success"></i></td>
-                                    <td class="text-center"><i class="fa-solid fa-check text-success"></i></td>
+                                    <td class="text-center"><i class="fas fa-circle-check" style="color: #ff643a; font-size: 20px;"></i></td>
+                                    <td class="text-center"><i class="fas fa-circle-check" style="color: #ff643a; font-size: 20px;"></i></td>
                                 </tr>
                                 <tr>
                                     <td class="text-start">Photo Gallery</td>
-                                    <td class="text-center"><i class="fa-solid fa-check text-success"></i></td>
-                                    <td class="text-center"><i class="fa-solid fa-check text-success"></i></td>
+                                    <td class="text-center"><i class="fas fa-circle-check" style="color: #ff643a; font-size: 20px;"></i></td>
+                                    <td class="text-center"><i class="fas fa-circle-check" style="color: #ff643a; font-size: 20px;"></i></td>
                                 </tr>
                                 <tr>
                                     <td class="text-start">Embed Videos</td>
-                                    <td class="text-center"><i class="fa-solid fa-check text-success"></i></td>
-                                    <td class="text-center"><i class="fa-solid fa-check text-success"></i></td>
+                                    <td class="text-center"><i class="fas fa-circle-check" style="color: #ff643a; font-size: 20px;"></i></td>
+                                    <td class="text-center"><i class="fas fa-circle-check" style="color: #ff643a; font-size: 20px;"></i></td>
                                 </tr>
                                 <tr>
                                     <td class="text-start">Upload Files</td>
-                                    <td class="text-center"><i class="fa-solid fa-check text-success"></i></td>
-                                    <td class="text-center"><i class="fa-solid fa-check text-success"></i></td>
+                                    <td class="text-center"><i class="fas fa-circle-check" style="color: #ff643a; font-size: 20px;"></i></td>
+                                    <td class="text-center"><i class="fas fa-circle-check" style="color: #ff643a; font-size: 20px;"></i></td>
                                 </tr>
                                 <tr>
                                     <td class="text-start">Company Profile</td>
-                                    <td class="text-center"><i class="fa-solid fa-times text-danger"></i></td>
-                                    <td class="text-center"><i class="fa-solid fa-check text-success"></i></td>
+                                    <td class="text-center"><i class="fas fa-ban text-danger" style="color: #ff643a; font-size: 20px;"></i></td>
+                                    <td class="text-center"><i class="fas fa-circle-check" style="color: #ff643a; font-size: 20px;"></i></td>
                                 </tr>
                                 <tr>
                                     <td class="text-start">Team Directory</td>
-                                    <td class="text-center"><i class="fa-solid fa-times text-danger"></i></td>
-                                    <td class="text-center"><i class="fa-solid fa-check text-success"></i></td>
+                                    <td class="text-center"><i class="fas fa-ban text-danger" style="color: #ff643a; font-size: 20px;"></i></td>
+                                    <td class="text-center"><i class="fas fa-circle-check" style="color: #ff643a; font-size: 20px;"></i></td>
                                 </tr>
                                 <tr>
                                     <td class="text-start">Number of Profiles</td>
@@ -208,13 +214,13 @@
                                 </tr>
                                 <tr>
                                     <td class="text-start">Apple & Google Wallet Integration</td>
-                                    <td class="text-center"><i class="fa-solid fa-check text-success"></i></td>
-                                    <td class="text-center"><i class="fa-solid fa-check text-success"></i></td>
+                                    <td class="text-center"><i class="fas fa-circle-check" style="color: #ff643a; font-size: 20px;"></i></td>
+                                    <td class="text-center"><i class="fas fa-circle-check" style="color: #ff643a; font-size: 20px;"></i></td>
                                 </tr>
                                 <tr>
                                     <td class="text-start">Smart NFC Card Included</td>
-                                    <td class="text-center"><i class="fa-solid fa-check text-success"></i></td>
-                                    <td class="text-center"><i class="fa-solid fa-check text-success"></i></td>
+                                    <td class="text-center"><i class="fas fa-circle-check" style="color: #ff643a; font-size: 20px;"></i></td>
+                                    <td class="text-center"><i class="fas fa-circle-check" style="color: #ff643a; font-size: 20px;"></i></td>
                                 </tr>
                             </tbody>
                         </table>
