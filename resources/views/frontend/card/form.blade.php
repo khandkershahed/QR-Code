@@ -2,15 +2,15 @@
     {{-- @csrf --}}
     <!-- Step 1 -->
     @if ($cardProduct->card_type == 'team')
-        <div class="mt-30 border" style="border-radius: 8px">
+        <div class="border mt-30" style="border-radius: 8px">
             <div class="d-flex align-items-end">
-                <div class="bg-light d-flex align-items-center px-4 py-4">
+                <div class="px-4 py-4 bg-light d-flex align-items-center">
                     <div class="pe-2">
                         <img class="" width="50px" src="{{ asset('images/user.webp') }}" alt="">
                     </div>
                     <div class="">
                         <input type="number" name="card_user"
-                            class="form-control p-2 py-0 bg-transparent rounded-0 text-center user-slider-range"
+                            class="p-2 py-0 text-center bg-transparent form-control rounded-0 user-slider-range"
                             placeholder="1" value="5" id="userSliderRange">
                     </div>
                 </div>
@@ -49,8 +49,7 @@
                             <small class="text-muted">/Yearly</small>
                         </p>
                         <div class="link ">
-                            <a href="javascript:void(0)" target="_blank">Continue <i
-                                    class="fas fa-arrow-right"></i></a>
+                            <a href="javascript:void(0)" target="_blank">Continue <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -90,20 +89,29 @@
                     <div class="panel-body">
                         <div class="pb-3">
                             <div class="image-slider">
-                                <div>
-                                    <img class="img-fluid rounded-2"
-                                        src="https://ovou.com/_next/image?url=https%3A%2F%2Fovou.com%2Fcdn-cgi%2Fimage%2Ffit%3Dscale-down%2Cwidth%3D1152%2Cheight%3D732%2Cquality%3D100%2Fhttps%3A%2F%2Fovou-production.nyc3.cdn.digitaloceanspaces.com%2Fproducts%2Fcards%2Fbanner%2Fmetal%2F1.png&w=640&q=100"
+                                <div class="mt-3">
+                                    <img class="img-fluid rounded-2" src="{{ asset('images/Black/BlackMockup.webp') }}"
                                         alt="">
                                 </div>
-                                <div>
+                                <div class="mt-3">
                                     <img class="img-fluid rounded-2"
-                                        src="https://ovou.com/_next/image?url=https%3A%2F%2Fovou.com%2Fcdn-cgi%2Fimage%2Ffit%3Dscale-down%2Cwidth%3D1152%2Cheight%3D732%2Cquality%3D100%2Fhttps%3A%2F%2Fovou-production.nyc3.cdn.digitaloceanspaces.com%2Fproducts%2Fcards%2Fbanner%2Fmetal%2F2.png&w=640&q=100"
-                                        alt="">
+                                        src="{{ asset('images/Black/BlackMockup-3.webp') }}" alt="">
                                 </div>
-                                <div>
+                                <div class="mt-3">
                                     <img class="img-fluid rounded-2"
-                                        src="https://ovou.com/_next/image?url=https%3A%2F%2Fovou.com%2Fcdn-cgi%2Fimage%2Ffit%3Dscale-down%2Cwidth%3D1152%2Cheight%3D732%2Cquality%3D100%2Fhttps%3A%2F%2Fovou-production.nyc3.cdn.digitaloceanspaces.com%2Fproducts%2Fcards%2Fbanner%2Fmetal%2F3.png&w=640&q=100"
-                                        alt="">
+                                        src="{{ asset('images/Black/BlackMockup-4.webp') }}" alt="">
+                                </div>
+                                <div class="mt-3">
+                                    <img class="img-fluid rounded-2"
+                                        src="{{ asset('images/Black/BlackMockup-5.webp') }}" alt="">
+                                </div>
+                                <div class="mt-3">
+                                    <img class="img-fluid rounded-2"
+                                        src="{{ asset('images/Black/BlackMockup-6.webp') }}" alt="">
+                                </div>
+                                <div class="mt-3">
+                                    <img class="img-fluid rounded-2"
+                                        src="{{ asset('images/Black/BlackMockup-7.webp') }}" alt="">
                                 </div>
                             </div>
                         </div>
@@ -135,20 +143,29 @@
                     <div class="panel-body">
                         <div class="pb-3">
                             <div class="image-slider">
-                                <div>
-                                    <img class="img-fluid rounded-2"
-                                        src="https://ovou.com/_next/image?url=https%3A%2F%2Fovou.com%2Fcdn-cgi%2Fimage%2Ffit%3Dscale-down%2Cwidth%3D1152%2Cheight%3D732%2Cquality%3D100%2Fhttps%3A%2F%2Fovou-production.nyc3.cdn.digitaloceanspaces.com%2Fproducts%2Fcards%2Fbanner%2Fmetal%2F1.png&w=640&q=100"
+                                <div class="mt-3">
+                                    <img class="img-fluid rounded-2" src="{{ asset('images/Gold/GoldMockup.webp') }}"
                                         alt="">
                                 </div>
-                                <div>
+                                <div class="mt-3">
                                     <img class="img-fluid rounded-2"
-                                        src="https://ovou.com/_next/image?url=https%3A%2F%2Fovou.com%2Fcdn-cgi%2Fimage%2Ffit%3Dscale-down%2Cwidth%3D1152%2Cheight%3D732%2Cquality%3D100%2Fhttps%3A%2F%2Fovou-production.nyc3.cdn.digitaloceanspaces.com%2Fproducts%2Fcards%2Fbanner%2Fmetal%2F2.png&w=640&q=100"
-                                        alt="">
+                                        src="{{ asset('images/Gold/GoldMockup-3.webp') }}" alt="">
                                 </div>
-                                <div>
+                                <div class="mt-3">
                                     <img class="img-fluid rounded-2"
-                                        src="https://ovou.com/_next/image?url=https%3A%2F%2Fovou.com%2Fcdn-cgi%2Fimage%2Ffit%3Dscale-down%2Cwidth%3D1152%2Cheight%3D732%2Cquality%3D100%2Fhttps%3A%2F%2Fovou-production.nyc3.cdn.digitaloceanspaces.com%2Fproducts%2Fcards%2Fbanner%2Fmetal%2F3.png&w=640&q=100"
-                                        alt="">
+                                        src="{{ asset('images/Gold/GoldMockup-4.webp') }}" alt="">
+                                </div>
+                                <div class="mt-3">
+                                    <img class="img-fluid rounded-2"
+                                        src="{{ asset('images/Gold/GoldMockup-5.webp') }}" alt="">
+                                </div>
+                                <div class="mt-3">
+                                    <img class="img-fluid rounded-2"
+                                        src="{{ asset('images/Gold/GoldMockup-6.webp') }}" alt="">
+                                </div>
+                                <div class="mt-3">
+                                    <img class="img-fluid rounded-2"
+                                        src="{{ asset('images/Gold/GoldMockup-7.webp') }}" alt="">
                                 </div>
                             </div>
                         </div>
@@ -179,7 +196,7 @@
         <div class="card-design-box d-flex justify-content-center align-items-center position-relative">
             <div class="main-img position-relative">
                 <!-- Main Card Image -->
-                <img class="img-fluid" id="mainCardImage" src="{{ asset('images/metal-card.png') }}"
+                <img class="img-fluid" id="mainCardImage" src="{{ asset('images/Black/BlackCard.webp') }}"
                     alt="">
                 <div class="card-logo position-absolute">
                     <!-- Image preview will be displayed here -->
@@ -196,28 +213,27 @@
                 <label for="design1">
                     <input type="radio" name="card_design_one" id="design1" class="card-design-option"
                         value="design1" style="display:none;">
-                    <img src="{{ asset('images/metal-card.png') }}" alt="Card Design 1" class="img-choice"
-                        data-image="{{ asset('images/metal-card.png') }}">
+                    <img src="{{ asset('images/Black/BlackCard.webp') }}" alt="Card Design 1" class="img-choice"
+                        data-image="{{ asset('images/Black/BlackCard.webp') }}">
                 </label>
                 <label for="design2">
                     <input type="radio" name="card_design_two" id="design2" class="card-design-option"
                         value="design2" style="display:none;">
-                    <img src="{{ asset('images/black-metal-card.png') }}" alt="Card Design 2" class="img-choice"
-                        data-image="{{ asset('images/black-metal-card.png') }}">
+                    <img src="{{ asset('images/Gold/GoldCard.webp') }}" alt="Card Design 2" class="img-choice"
+                        data-image="{{ asset('images/Gold/GoldCard.webp') }}">
                 </label>
-                <label for="design3">
+                {{-- <label for="design3">
                     <input type="radio" name="card_design_three" id="design3" class="card-design-option"
                         value="design3" style="display:none;">
                     <img src="{{ asset('images/white-metal-card.png') }}" alt="Card Design 3" class="img-choice"
                         data-image="{{ asset('images/white-metal-card.png') }}">
-                </label>
+                </label> --}}
             </div>
         </div>
 
         <div class="mt-5">
             <label for="card_logo">Upload Logo <span class="text-danger">*</span></label>
-            <input class="form-control" type="file" name="card_logo" id="card_logo" required
-                onchange="previewLogo()">
+            <input class="form-control" type="file" name="card_logo" id="card_logo" onchange="previewLogo()">
         </div>
         <div class="mt-5">
             <label for="design_note">Design Details</label>
@@ -234,6 +250,39 @@
         </div>
     </div>
     <div class="form-step" id="step4" style="display:none;">
+        <div>
+            <div class="pt-30">
+                <h3 class="mb-0">Shipping Information</h3>
+                <p class="mb-0">The ammount is for shipping and handling.</p>
+            </div>
+            {{-- <div>
+                <label>Choose your shipping method</label>
+                @foreach ($shippingMethods as $shippingMethod)
+                    <div class="mb-3 shipping-card" id="card-regularMail">
+                        <input type="radio" id="regularMail{{ $shippingMethod->id }}" name="shipping_charge"
+                            data-shipping_title="{{ $shippingMethod->title }}" value="{{ $shippingMethod->price }}">
+                        <label for="regularMail{{ $shippingMethod->id }}" class="p-3 w-100"
+                            style="cursor: pointer;">{{ $shippingMethod->title }} ($
+                            {{ $shippingMethod->price }})</label>
+                    </div>
+                @endforeach
+            </div> --}}
+            <div>
+                <label>Choose your shipping method</label>
+                @foreach ($shippingMethods as $index => $shippingMethod)
+                    <div class="mb-3 shipping-card" id="card-regularMail">
+                        <input type="radio" id="regularMail{{ $shippingMethod->id }}" name="shipping_charge"
+                            data-shipping_title="{{ $shippingMethod->title }}" value="{{ $shippingMethod->price }}"
+                            {{ $loop->first ? 'checked' : '' }}>
+                        <label for="regularMail{{ $shippingMethod->id }}" class="p-3 w-100"
+                            style="cursor: pointer;">{{ $shippingMethod->title }}
+                            (${{ $shippingMethod->price }})
+                        </label>
+                    </div>
+                @endforeach
+            </div>
+
+        </div>
         <div class="pt-30">
             <h2>Order Summary</h2>
             <p>Design Your Card</p>
@@ -251,12 +300,12 @@
                     <div id="orderSummary" class="accordion-collapse collapse show" aria-labelledby="headingOne"
                         data-bs-parent="#accordionExample">
                         <div class="py-4 mt-0 border accordion-body">
-                            <div class="d-flex justify-content-between align-items-center mb-5">
+                            <div class="mb-5 d-flex justify-content-between align-items-center">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <img class="img-fluid" width="50"
-                                        src="https://ovou.com/_next/image?url=https%3A%2F%2Fovou-production.nyc3.cdn.digitaloceanspaces.com%2Fproducts%2Fsummery%2Fplan.png&w=320&q=75"
+                                        src="{{ asset('images/Black/BlackCard.webp') }}"
                                         alt="">
-                                        <h6 class="mb-0 ps-4">{{ $cardProduct->title }} Plans</h6>
+                                    <h6 class="mb-0 ps-4">{{ $cardProduct->title }} Plans</h6>
                                 </div>
                                 <input type="hidden" name="subtotal" id="hidden-subtotal">
                                 <input type="hidden" name="plan_id" value="{{ $cardProduct->id }}" id="plan_id">
@@ -264,11 +313,16 @@
                                     <h6 class="mb-0">$ {{ $cardProduct->price }}</h6>
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-between align-items-center mb-5">
+                            <div class="mb-5 d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center">
-                                    <img class="img-fluid" width="50"
-                                        src="https://ovou.com/_next/image?url=https%3A%2F%2Fovou-production.nyc3.cdn.digitaloceanspaces.com%2Fproducts%2Fsummery%2Fmetal.png&w=320&q=75"
-                                        alt="">
+                                    {{-- @php
+                                        $imageSrc =
+                                            $cardProduct->title == 'Plastic Card'
+                                                ? asset('images/Black/BlackCard.webp')
+                                                : asset('images/Gold/GoldCard.webp');
+                                    @endphp --}}
+
+                                    <img class="img-fluid" width="50" src="{{ asset('images/Gold/GoldCard.webp') }}" alt="">
                                     <h6 class="mb-0 ps-4"><span id="card_title"></span>
                                         Card</h6>
                                 </div>
@@ -300,25 +354,6 @@
             <div class="my-5">
                 <label for="email">Your Email <span class="text-danger">*</span></label>
                 <input class="form-control" type="email" name="email" id="email" required>
-            </div>
-        </div>
-        <div>
-            <div class="pt-30">
-                <h3 class="mb-0">Shipping Information</h3>
-                <p class="mb-0">The ammount is for shipping and handling.</p>
-            </div>
-            <div>
-                <label>Choose your shipping method</label>
-                @foreach ($shippingMethods as $shippingMethod)
-                    <div class="mb-3 shipping-card" id="card-regularMail">
-                        <input type="radio" id="regularMail{{ $shippingMethod->id }}" name="shipping_charge"
-                            data-shipping_title="{{ $shippingMethod->title }}" value="{{ $shippingMethod->price }}">
-                        <label for="regularMail{{ $shippingMethod->id }}" class="p-3 w-100"
-                            style="cursor: pointer;">{{ $shippingMethod->title }} ($
-                            {{ $shippingMethod->price }})</label>
-                    </div>
-                @endforeach
-
             </div>
         </div>
         <div class="mt-30 d-flex justify-content-between align-items-center">

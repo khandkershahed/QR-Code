@@ -425,7 +425,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="border-0 card plan">
-                        <div class="p-0 bg-transparent border-0 card-header mt-20">
+                        <div class="p-0 mt-20 bg-transparent border-0 card-header">
                             <p class="mb-0 title">For {{ ucfirst($cardProduct->card_type) }}
                                 @if ($cardProduct->card_type == 'team')
                                     <i class="fas fa-users"></i>
@@ -434,7 +434,7 @@
                                 @endif
                             </p>
                             @if ($cardProduct->card_type == 'team')
-                                <p class="mb-0">Complimentary Custom Smart Cards Included with Your Initial Sign Up.
+                                <p class="mb-0">Select your preferred card, available in durable plastic or premium metal.
                                 </p>
                             @else
                                 <p class="mb-0">Complimentary Smart Card included.</p>
@@ -444,7 +444,7 @@
                                     features <i class="fas fa-arrow-right-long"></i></a>
                             </div>
                         </div>
-                        <div class="p-0  card-body">
+                        <div class="p-0 card-body">
                             <div class="form-container">
                                 <div id="progressBarContainer" style="display: none">
                                     <div style="display: flex; justify-content: space-between;">

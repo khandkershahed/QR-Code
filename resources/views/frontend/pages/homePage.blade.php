@@ -188,48 +188,33 @@
                                     <h2 class="mb-0">{{ $individual_card->title }}</h2>
                                     <p>Ideal for solopreneurs.</p>
                                 </div>
+
                                 <div class="image-selection">
                                     <div>
                                         <!-- Image Containers for Individual Plan -->
                                         <div id="individualImage1" class="image-container">
-                                            <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/66548de51d1febf4f19ea9e3_Standard_Silver.webp"
-                                                alt="Silver Image" />
+                                            <img src="{{ asset('images/Black/BlackCard.webp') }}" alt="Silver Image" />
                                         </div>
                                         <div id="individualImage2" class="image-container">
-                                            <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/66548de5b8c7f03d3c0cc684_Standard_Gold.webp"
-                                                alt="Gold Image" />
-                                        </div>
-                                        <div id="individualImage3" class="image-container">
-                                            <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/66548de516665f6402cd5c86_Standard_CeramicWhite.webp"
-                                                alt="Ceramic White Image" />
+                                            <img src="{{ asset('images/Gold/GoldCard.webp') }}" alt="Gold Image" />
                                         </div>
                                     </div>
-
+                                    <p class="pt-3 mb-0 text-center">Plastic Card (+34)</p>
                                     <!-- Radio Buttons for Individual Plan (with unique 'name' attribute) -->
-                                    <div class="pt-3 mx-auto d-flex justify-content-center">
+                                    <div class="mx-auto d-flex justify-content-center">
                                         <input type="radio" name="individualPlanImageOption" id="individualOption1"
                                             onclick="showImage('individualImage1', 'individual')" checked />
                                         <label for="individualOption1" class="radio-label">
-                                            <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/66548de51d1febf4f19ea9e3_Standard_Silver.webp"
-                                                alt="Option 1" />
+                                            <img src="{{ asset('images/Black/BlackCard.webp') }}" alt="Option 1" />
                                         </label>
 
                                         <input type="radio" name="individualPlanImageOption" id="individualOption2"
                                             onclick="showImage('individualImage2', 'individual')" />
                                         <label for="individualOption2" class="radio-label">
-                                            <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/66548de5b8c7f03d3c0cc684_Standard_Gold.webp"
-                                                alt="Option 2" />
-                                        </label>
-
-                                        <input type="radio" name="individualPlanImageOption" id="individualOption3"
-                                            onclick="showImage('individualImage3', 'individual')" />
-                                        <label for="individualOption3" class="radio-label">
-                                            <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/66548de516665f6402cd5c86_Standard_CeramicWhite.webp"
-                                                alt="Option 3" />
+                                            <img src="{{ asset('images/Gold/GoldCard.webp') }}" alt="Option 2" />
                                         </label>
                                     </div>
                                 </div>
-
                                 <!-- Monthly/Yearly Pricing Toggle -->
                                 <div>
 
@@ -292,42 +277,29 @@
                                 </div>
                                 <div class="image-selection">
                                     <div>
-                                        <!-- Image Containers for Team Plan -->
                                         <div id="teamImage1" class="image-container">
-                                            <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/657abc87badba336d2ba99d6_card%20image%203a-p-500.webp"
+                                            <img src="{{ asset('images/Black/BlackCard.webp') }}"
                                                 alt="Silver Image With logo" />
                                         </div>
+                                        <!-- Image Containers for Team Plan -->
                                         <div id="teamImage2" class="image-container">
-                                            <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/657abc87a5ef8a71e4a4b71f_card%20image%201a-p-500.webp"
+                                            <img src="{{ asset('images/Gold/GoldCard.webp') }}"
                                                 alt="Gold Image With logo" />
                                         </div>
-                                        <div id="teamImage3" class="image-container">
-                                            <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/657abc87e4e392a8e489a3b4_card%20image%204a-p-500.webp"
-                                                alt="Ceramic White Image With logo" />
-                                        </div>
+
                                     </div>
-
+                                    <p class="pt-3 mb-0 text-center">Metal Card (+49)</p>
                                     <!-- Radio Buttons for Team Plan (with unique 'name' attribute) -->
-                                    <div class="pt-3 mx-auto d-flex justify-content-center">
+                                    <div class="mx-auto d-flex justify-content-center">
                                         <input type="radio" name="teamPlanImageOption" id="teamOption1"
-                                            onclick="showImage('teamImage1', 'team')" checked />
+                                            onclick="showImage('teamImage1', 'team')" />
                                         <label for="teamOption1" class="radio-label">
-                                            <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/657abc87badba336d2ba99d6_card%20image%203a-p-500.webp"
-                                                alt="Option 1" />
+                                            <img src="{{ asset('images/Black/BlackCard.webp') }}" alt="Option 1" />
                                         </label>
-
                                         <input type="radio" name="teamPlanImageOption" id="teamOption2"
-                                            onclick="showImage('teamImage2', 'team')" />
+                                            onclick="showImage('teamImage2', 'team')" checked />
                                         <label for="teamOption2" class="radio-label">
-                                            <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/657abc87a5ef8a71e4a4b71f_card%20image%201a-p-500.webp"
-                                                alt="Option 2" />
-                                        </label>
-
-                                        <input type="radio" name="teamPlanImageOption" id="teamOption3"
-                                            onclick="showImage('teamImage3', 'team')" />
-                                        <label for="teamOption3" class="radio-label">
-                                            <img src="https://cdn.prod.website-files.com/6548c25e22a83d74eaba935f/657abc87e4e392a8e489a3b4_card%20image%204a-p-500.webp"
-                                                alt="Option 3" />
+                                            <img src="{{ asset('images/Gold/GoldCard.webp') }}" alt="Option 2" />
                                         </label>
                                     </div>
                                 </div>
@@ -1112,8 +1084,8 @@
                 showImage('individualImage1', 'individual');
 
                 // Set default selected radio and image for Team Plan
-                $('#teamOption1').prop('checked', true);
-                showImage('teamImage1', 'team');
+                $('#teamOption2').prop('checked', true);
+                showImage('teamImage2', 'team');
 
                 // Individual Plan Pricing Toggle
                 $('#togglePricing-1').change(function() {
