@@ -299,6 +299,18 @@
             /* Rounded thumbnails */
         }
 
+        .img-choice {
+            border: 3px solid transparent;
+            /* Default border */
+            cursor: pointer;
+            transition: border 0.3s ease;
+        }
+
+        .img-choice.active-design {
+            border: 3px solid red;
+            /* Red border when selected */
+        }
+
         .slick-dots li:after {
             content: "";
             position: absolute;
@@ -328,9 +340,18 @@
 
         .card-logo {
             position: absolute;
-            top: 50%;
-            left: 50%;
+            top: 20%;
+            left: 15%;
             transform: translate(-50%, -50%);
+        }
+
+        .card-info {
+            top: 75%;
+            left: 57%;
+            line-height: 1.2;
+            transform: translate(-50%, -50%);
+            color: white;
+            width: 100%;
         }
 
         .card-design-box {
@@ -434,7 +455,8 @@
                                 @endif
                             </p>
                             @if ($cardProduct->card_type == 'team')
-                                <p class="mb-0">Select your preferred card, available in durable plastic or premium metal.
+                                <p class="mb-0">Select your preferred card, available in durable plastic or premium
+                                    metal.
                                 </p>
                             @else
                                 <p class="mb-0">Complimentary Smart Card included.</p>
@@ -464,11 +486,12 @@
                 <div class="col-lg-12">
                     <a href="">
                         <div class="card gift-card">
-                            <p class="mb-0 gift-title">Gift Card</p>
-                            <p class="mb-0 gift-para">Available as e-Gift or beautifully packaged Smart Cards, ideal
-                                for client appreciation or event giveaways.</p>
+                            <p class="mb-0 gift-title">Gift A Purchased Card</p>
+                            <p class="mb-0 gift-para">Purchase a card and gift it to others, available as an e-Gift or a
+                                beautifully packaged Smart Card—perfect for client appreciation or event giveaways.</p>
+
                             <div>
-                                <p class="mb-0 gift-link">Buy as a Gift -></p>
+                                <p class="mb-0 gift-link">Get It Now -></p>
                             </div>
                         </div>
                     </a>
@@ -726,18 +749,25 @@
                 const fileInput = document.getElementById('card_logo');
                 const logoPreview = document.getElementById('logoPreview');
 
-                // Check if a file is selected
                 if (fileInput.files && fileInput.files[0]) {
                     const reader = new FileReader();
-
                     reader.onload = function(e) {
-                        // Set the logo preview source to the selected image
                         logoPreview.src = e.target.result;
-                    }
-
-                    // Read the selected image file as a data URL
+                    };
                     reader.readAsDataURL(fileInput.files[0]);
                 }
+            }
+
+            function previewName() {
+                const nameInput = document.getElementById('card_holder_name').value;
+                const namePreview = document.querySelector('.card-info p:nth-child(1)');
+                namePreview.textContent = nameInput || "Your Name";
+            }
+
+            function previewDesignation() {
+                const designationInput = document.getElementById('card_holder_designation').value;
+                const designationPreview = document.querySelector('.card-info p:nth-child(2)');
+                designationPreview.textContent = designationInput || "Your Designation";
             }
         </script>
 
@@ -780,36 +810,33 @@
                 });
             });
         </script>
-        {{-- Radio With Accordion End --}}
-        {{-- <script>
-            document.getElementById('multiStepForm').addEventListener('submit', function(event) {
-                event.preventDefault(); // Prevent the default form submission
+        {{-- In Card Choose Active Radio Card Color --}}
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const designOptions = document.querySelectorAll(".card-design-option");
 
-                var formData = new FormData(this); // Collect all form data
+                designOptions.forEach(option => {
+                    option.addEventListener("change", function() {
+                        // Remove 'active-design' from all images
+                        document.querySelectorAll(".img-choice").forEach(img => {
+                            img.classList.remove("active-design");
+                        });
 
-                // Create an AJAX request using Fetch API
-                fetch("{{ route('card.checkout') }}", {
-                        method: "GET", // Using GET method
-                        headers: {
-                            "Accept": "application/json"
-                        },
-                        body: formData
-                    })
-                    .then(response => response.json()) // Assuming the server returns JSON
-                    .then(data => {
-                        console.log(data); // Handle the response from the server (e.g., show a success message)
-                        // You can also update the page dynamically or redirect the user
-                        if (data.success) {
-                            // Redirect or update the UI as needed
-                        } else {
-                            alert("There was an error!");
+                        // Add 'active-design' to the selected image
+                        const selectedImage = this.nextElementSibling;
+                        if (selectedImage) {
+                            selectedImage.classList.add("active-design");
                         }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        alert("An error occurred!");
                     });
+                });
+
+                // Select the first radio button by default and trigger change event
+                const firstOption = document.querySelector(".card-design-option:checked");
+                if (firstOption) {
+                    firstOption.dispatchEvent(new Event("change"));
+                }
             });
-        </script> --}}
+        </script>
+        {{-- In Card Choose Active Radio Card Color End --}}
     @endpush
 </x-frontend-app-layout>

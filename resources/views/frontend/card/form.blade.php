@@ -48,8 +48,9 @@
                         <p class="mb-0"><strong>$ <span class="annualCharge">{{ $cardProduct->price }}</span></strong>
                             <small class="text-muted">/Yearly</small>
                         </p>
-                        <div class="link ">
-                            <a href="javascript:void(0)" target="_blank">Continue <i class="fas fa-arrow-right"></i></a>
+                        <div class="link main-color">
+                            <p style="color: #ff3e3b;" class="fw-bold mb-0">Continue <i class="fas fa-arrow-right"></i>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -98,8 +99,8 @@
                                         src="{{ asset('images/Black/BlackMockup-3.webp') }}" alt="">
                                 </div>
                                 <div class="mt-3">
-                                    <img class="img-fluid rounded-2"
-                                        src="{{ asset('images/Black/BlackMockup-4.webp') }}" alt="">
+                                    <img class="img-fluid rounded-2" src="{{ asset('images/Gold/GoldMockup-4.webp') }}"
+                                        alt="">
                                 </div>
                                 <div class="mt-3">
                                     <img class="img-fluid rounded-2"
@@ -107,7 +108,7 @@
                                 </div>
                                 <div class="mt-3">
                                     <img class="img-fluid rounded-2"
-                                        src="{{ asset('images/Black/BlackMockup-6.webp') }}" alt="">
+                                        src="{{ asset('images/Gold/GoldMockup-6.webp') }}" alt="">
                                 </div>
                                 <div class="mt-3">
                                     <img class="img-fluid rounded-2"
@@ -153,7 +154,7 @@
                                 </div>
                                 <div class="mt-3">
                                     <img class="img-fluid rounded-2"
-                                        src="{{ asset('images/Gold/GoldMockup-4.webp') }}" alt="">
+                                        src="{{ asset('images/Black/BlackMockup-4.webp') }}" alt="">
                                 </div>
                                 <div class="mt-3">
                                     <img class="img-fluid rounded-2"
@@ -161,7 +162,7 @@
                                 </div>
                                 <div class="mt-3">
                                     <img class="img-fluid rounded-2"
-                                        src="{{ asset('images/Gold/GoldMockup-6.webp') }}" alt="">
+                                        src="{{ asset('images/Black/BlackMockup-6.webp') }}" alt="">
                                 </div>
                                 <div class="mt-3">
                                     <img class="img-fluid rounded-2"
@@ -196,12 +197,16 @@
         <div class="card-design-box d-flex justify-content-center align-items-center position-relative">
             <div class="main-img position-relative">
                 <!-- Main Card Image -->
-                <img class="img-fluid" id="mainCardImage" src="{{ asset('images/Black/BlackCard.webp') }}"
+                <img class="img-fluid" id="mainCardImage" src="{{ asset('images/Choosen-card/BlackCardBack-mockup.webp') }}"
                     alt="">
                 <div class="card-logo position-absolute">
                     <!-- Image preview will be displayed here -->
-                    <img id="logoPreview" width="70px" height="70px" style="object-fit: contain;"
+                    <img id="logoPreview" width="50px" height="50px" style="object-fit: contain;"
                         src="{{ asset('images/logo.png') }}" alt="Card Logo Preview">
+                </div>
+                <div class="card-info position-absolute">
+                    <p class="mb-0 fw-bold">MD BADRODDUJA SAGAR</p>
+                    <p class="mb-0"><small>President & CEO</small></p>
                 </div>
             </div>
         </div>
@@ -211,36 +216,63 @@
             <div class="card-selection">
                 <!-- Example of image choices -->
                 <label for="design1">
-                    <input type="radio" name="card_design_one" id="design1" class="card-design-option"
-                        value="design1" style="display:none;">
-                    <img src="{{ asset('images/Black/BlackCard.webp') }}" alt="Card Design 1" class="img-choice"
-                        data-image="{{ asset('images/Black/BlackCard.webp') }}">
+                    <input type="radio" name="card_design" id="design1" class="card-design-option"
+                        value="design1" style="display:none;" checked>
+                    <img src="{{ asset('images/Choosen-card/BlackCardBack-mockup.webp') }}" alt="Card Design 1" class="img-choice"
+                        data-image="{{ asset('images/Choosen-card/BlackCardBack-mockup.webp') }}">
                 </label>
                 <label for="design2">
-                    <input type="radio" name="card_design_two" id="design2" class="card-design-option"
+                    <input type="radio" name="card_design" id="design2" class="card-design-option"
                         value="design2" style="display:none;">
-                    <img src="{{ asset('images/Gold/GoldCard.webp') }}" alt="Card Design 2" class="img-choice"
-                        data-image="{{ asset('images/Gold/GoldCard.webp') }}">
+                    <img src="{{ asset('images/Choosen-card/GoldCardBack-mockup.webp') }}" alt="Card Design 2" class="img-choice"
+                        data-image="{{ asset('images/Choosen-card/GoldCardBack-mockup.webp') }}">
                 </label>
-                {{-- <label for="design3">
-                    <input type="radio" name="card_design_three" id="design3" class="card-design-option"
-                        value="design3" style="display:none;">
-                    <img src="{{ asset('images/white-metal-card.png') }}" alt="Card Design 3" class="img-choice"
-                        data-image="{{ asset('images/white-metal-card.png') }}">
-                </label> --}}
             </div>
         </div>
 
-        <div class="mt-5">
-            <label for="card_logo">Upload Logo <span class="text-danger">*</span></label>
-            <input class="form-control" type="file" name="card_logo" id="card_logo" onchange="previewLogo()">
+        <div class="row">
+            <div class="col-6">
+                <div class="mt-5">
+                    <label for="card_logo">Upload Logo </label>
+                    <input class="form-control border" type="file" name="card_logo" id="card_logo"
+                        onchange="previewLogo()">
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="mt-5">
+                    <label for="card_holder_name">Holder Name </label>
+                    <input class="form-control border" type="text" name="card_holder_name" id="card_holder_name"
+                        oninput="previewName()" placeholder="Enter Card Holder Name">
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="mt-5">
+                    <label for="card_holder_designation">Holder Designation </label>
+                    <input class="form-control border" type="text" name="card_holder_designation"
+                        id="card_holder_designation" oninput="previewDesignation()"
+                        placeholder="Enter Card Holder Designation">
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="mt-5">
+                    <label for="card_holder_designation">Choose Card Color</label>
+                    <select class="form-select" name="card_holder_designation" aria-label="Default select example"
+                        id="card_holder_designation" onchange="previewName()"
+                        style="border-radius: 14px; font-weight: 400; padding: 14px 40px 14px 20px !important; border-radius: 12px;">
+                        <option selected>Card Color</option>
+                        <option value="black">Black</option>
+                        <option value="gold">Gold</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="mt-5">
+                    <label for="design_note">Design Details</label>
+                    <textarea class="form-control border" name="design_note" id="design_note" rows="3"
+                        placeholder="Examples: 'Logo in the middle', 'Name and title bottom left, logo top right'"></textarea>
+                </div>
+            </div>
         </div>
-        <div class="mt-5">
-            <label for="design_note">Design Details</label>
-            <textarea class="form-control" name="design_note" id="design_note" rows="3"
-                placeholder="Examples: 'Logo in the middle', 'Name and title bottom left, logo top right'"></textarea>
-        </div>
-
         <div class="mt-30 d-flex justify-content-between">
             <button type="button" onclick="previousStep(3)" class="p-2 px-3 btn btn-secondary"><i
                     class="fas fa-angle-left"></i> Back</button>
@@ -302,8 +334,7 @@
                             <div class="mb-5 d-flex justify-content-between align-items-center">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <img class="img-fluid" width="50"
-                                        src="{{ asset('images/Black/BlackCard.webp') }}"
-                                        alt="">
+                                        src="{{ asset('images/Black/BlackCard.webp') }}" alt="">
                                     <h6 class="mb-0 ps-4">{{ $cardProduct->title }} Plans</h6>
                                 </div>
                                 <input type="hidden" name="subtotal" id="hidden-subtotal">
@@ -321,7 +352,8 @@
                                                 : asset('images/Gold/GoldCard.webp');
                                     @endphp --}}
 
-                                    <img class="img-fluid" width="50" src="{{ asset('images/Gold/GoldCard.webp') }}" alt="">
+                                    <img class="img-fluid" width="50"
+                                        src="{{ asset('images/Gold/GoldCard.webp') }}" alt="">
                                     <h6 class="mb-0 ps-4"><span id="card_title"></span>
                                         Card</h6>
                                 </div>
