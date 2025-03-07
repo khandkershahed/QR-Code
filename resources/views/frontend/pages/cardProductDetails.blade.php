@@ -619,8 +619,9 @@
                         {{ $cardProduct->price }};
                     const cardUser = parseFloat($('input[name="card_user"]').val()) || 1;
                     const planPrice = plan_price * cardUser;
-                    const cardPrice = parseFloat($('input[name="card_preference"]:checked').data("card_price")) ||
+                    const card_price = parseFloat($('input[name="card_preference"]:checked').data("card_price")) ||
                         0;
+                    const cardPrice = card_price * cardUser;
                     const shippingPrice = parseFloat($('input[name="shipping_charge"]:checked').val()) || 0;
 
                     const cardTitle = $('input[name="card_preference"]:checked').data("card_title") || '';
