@@ -270,7 +270,7 @@
                     @if ($team_card)
                         <div class="col-xl-4 col-md-6 col-sm-10 aos-init aos-animate" data-aos="fade-up"
                             data-aos-duration="1500" data-aos-offset="50">
-                            <div class="pricing-item team-plan">
+                            <div class="pricing-item team-plan style-five">
                                 <div class="text-center title-price">
                                     <h2 class="mb-0">{{ $team_card->title }}</h2>
                                     <p>Perfect for 2 to {{ $team_card->max_users }}.</p>
