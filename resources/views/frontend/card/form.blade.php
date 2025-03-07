@@ -44,7 +44,11 @@
                         </p>
                     </div>
                     <div class="text-end">
-                        <h3 class="amount-title">$ {{ $cardProduct->price }}</h3>
+                        @if ($cardProduct->card_type == 'team')
+                            <h3 class="amount-title">$ {{ $cardProduct->price * 2 }}</h3>
+                        @else
+                            <h3 class="amount-title">$ {{ $cardProduct->price }}</h3>
+                        @endif
                         <p class="mb-0"><strong>$ <span class="annualCharge">{{ $cardProduct->price }}</span></strong>
                             <small class="text-muted">/Yearly</small>
                         </p>
@@ -197,8 +201,8 @@
         <div class="card-design-box d-flex justify-content-center align-items-center position-relative">
             <div class="main-img position-relative">
                 <!-- Main Card Image -->
-                <img class="img-fluid" id="mainCardImage" src="{{ asset('images/Choosen-card/BlackCardBack-mockup.webp') }}"
-                    alt="">
+                <img class="img-fluid" id="mainCardImage"
+                    src="{{ asset('images/Choosen-card/BlackCardBack-mockup.webp') }}" alt="">
                 <div class="card-logo position-absolute">
                     <!-- Image preview will be displayed here -->
                     <img id="logoPreview" width="50px" height="50px" style="object-fit: contain;"
@@ -218,14 +222,14 @@
                 <label for="design1">
                     <input type="radio" name="card_design" id="design1" class="card-design-option"
                         value="design1" style="display:none;" checked>
-                    <img src="{{ asset('images/Choosen-card/BlackCardBack-mockup.webp') }}" alt="Card Design 1" class="img-choice"
-                        data-image="{{ asset('images/Choosen-card/BlackCardBack-mockup.webp') }}">
+                    <img src="{{ asset('images/Choosen-card/BlackCardBack-mockup.webp') }}" alt="Card Design 1"
+                        class="img-choice" data-image="{{ asset('images/Choosen-card/BlackCardBack-mockup.webp') }}">
                 </label>
                 <label for="design2">
                     <input type="radio" name="card_design" id="design2" class="card-design-option"
                         value="design2" style="display:none;">
-                    <img src="{{ asset('images/Choosen-card/GoldCardBack-mockup.webp') }}" alt="Card Design 2" class="img-choice"
-                        data-image="{{ asset('images/Choosen-card/GoldCardBack-mockup.webp') }}">
+                    <img src="{{ asset('images/Choosen-card/GoldCardBack-mockup.webp') }}" alt="Card Design 2"
+                        class="img-choice" data-image="{{ asset('images/Choosen-card/GoldCardBack-mockup.webp') }}">
                 </label>
             </div>
         </div>
@@ -304,7 +308,8 @@
                 @foreach ($shippingMethods as $index => $shippingMethod)
                     <div class="mb-3 shipping-card" id="card-regularMail">
                         <input type="radio" id="regularMail{{ $shippingMethod->id }}" name="shipping_charge"
-                            data-shipping_title="{{ $shippingMethod->title }}" value="{{ $shippingMethod->price }}" required>
+                            data-shipping_title="{{ $shippingMethod->title }}" value="{{ $shippingMethod->price }}"
+                            required>
                         <label for="regularMail{{ $shippingMethod->id }}" class="p-3 w-100"
                             style="cursor: pointer;">{{ $shippingMethod->title }}
                             (${{ $shippingMethod->price }})
