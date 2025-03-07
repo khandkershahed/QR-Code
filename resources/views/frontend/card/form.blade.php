@@ -345,25 +345,18 @@
                                 <input type="hidden" name="subtotal" id="hidden-subtotal">
                                 <input type="hidden" name="plan_id" value="{{ $cardProduct->id }}" id="plan_id">
                                 <div>
-                                    <h6 class="mb-0">$ {{ $cardProduct->price }}</h6>
+                                    <h6 class="mb-0">$ {{ $cardProduct->price }} * <span class="userSummary me-5"></span> <span class="planSummary"></span></h6>
                                 </div>
                             </div>
                             <div class="mb-5 d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center">
-                                    {{-- @php
-                                        $imageSrc =
-                                            $cardProduct->title == 'Plastic Card'
-                                                ? asset('images/Black/BlackCard.webp')
-                                                : asset('images/Gold/GoldCard.webp');
-                                    @endphp --}}
-
                                     <img class="img-fluid" width="50"
                                         src="{{ asset('images/Gold/GoldCard.webp') }}" alt="">
                                     <h6 class="mb-0 ps-4"><span id="card_title"></span>
                                         Card</h6>
                                 </div>
                                 <div>
-                                    <h6 class="mb-0">$ <span id="card_price"></span> </h6>
+                                    <h6 class="mb-0"> <span class="cardSummary me-5"></span>  * <span class="userSummary me-5"></span> <span id="card_price"></span> </h6>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-between align-items-center">

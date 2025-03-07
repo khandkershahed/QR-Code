@@ -633,9 +633,17 @@
                     $('#card_title').text(cardTitle);
                     $('.summary').text(subtotal.toFixed(2));
                     $('.annualCharge').text(subtotal.toFixed(2));
-                    $('#card_price').text(cardPrice.toFixed(2));
                     $('#shipping_title').text(shippingTitle);
-                    $('#shipping_charge').text('$ ' + shippingPrice.toFixed(2));
+
+
+                    $('#card_price').text('$ ' + cardPrice.toFixed(2));
+                    $('.planSummary').text('$ ' + planPrice.toFixed(2));
+                    $('.cardSummary').text('$ ' + card_price.toFixed(2));
+
+                    if ($('input[name="shipping_charge"]:checked')) {
+                        $('#shipping_charge').text('$ ' + shippingPrice.toFixed(2));
+                    }
+
                 };
 
                 // Update the subtotal whenever an input is changed
