@@ -436,6 +436,11 @@
             </div>
         </div>
     </section>
+    @if ($cardProduct->card_type == 'team')
+        @php
+            $cardProduct->price = $cardProduct->price / 2;
+        @endphp
+    @endif
     @php
         $individual_card_descriptions = is_array($cardProduct->descriptions)
             ? $cardProduct->descriptions

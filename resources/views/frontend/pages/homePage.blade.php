@@ -273,7 +273,7 @@
                             <div class="pricing-item team-plan style-five">
                                 <div class="text-center title-price">
                                     <h2 class="mb-0">{{ $team_card->title }}</h2>
-                                    <p>Perfect for 2 to {{ $team_card->max_users }}.</p>
+                                    <p>Perfect for Team or Business</p>
                                 </div>
                                 <div class="image-selection">
                                     <div>
