@@ -11,14 +11,14 @@
                     <div class="">
                         <input type="number" name="card_user"
                             class="p-2 py-0 text-center bg-transparent form-control rounded-0 user-slider-range"
-                            placeholder="1" value="5" id="userSliderRange">
+                            placeholder="1" value="2" id="userSliderRange">
                     </div>
                 </div>
                 <div class="pb-2 w-100 pe-2">
                     <p class="mb-0 ps-2 text-muted"><small>Updated USERS</small></p>
                     <div class="ps-2 slidecontainer">
-                        <input type="range" class="p-0 w-100" id="rangeSlider" min="5" max="100"
-                            value="5">
+                        <input type="range" class="p-0 w-100" id="rangeSlider" min="2" max="100"
+                            value="2">
                     </div>
                 </div>
             </div>
@@ -268,12 +268,11 @@
                 @endforeach
             </div> --}}
             <div>
-                <label>Choose your shipping method</label>
+                <label>Choose your shipping method <span class="text-danger">*</span></label>
                 @foreach ($shippingMethods as $index => $shippingMethod)
                     <div class="mb-3 shipping-card" id="card-regularMail">
                         <input type="radio" id="regularMail{{ $shippingMethod->id }}" name="shipping_charge"
-                            data-shipping_title="{{ $shippingMethod->title }}" value="{{ $shippingMethod->price }}"
-                            {{ $loop->first ? 'checked' : '' }}>
+                            data-shipping_title="{{ $shippingMethod->title }}" value="{{ $shippingMethod->price }}" required>
                         <label for="regularMail{{ $shippingMethod->id }}" class="p-3 w-100"
                             style="cursor: pointer;">{{ $shippingMethod->title }}
                             (${{ $shippingMethod->price }})

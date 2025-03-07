@@ -288,7 +288,7 @@
                                         </div>
 
                                     </div>
-                                    <p class="pt-3 mb-0 text-center">Metal Card (+49)</p>
+                                    <p class="pt-3 mb-0 text-center">Metal Card (+49)</p>
                                     <!-- Radio Buttons for Team Plan (with unique 'name' attribute) -->
                                     <div class="mx-auto d-flex justify-content-center">
                                         <input type="radio" name="teamPlanImageOption" id="teamOption1"
