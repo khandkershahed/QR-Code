@@ -356,7 +356,7 @@
                                         Card</h6>
                                 </div>
                                 <div>
-                                    <h6 class="mb-0"> <span class="cardSummary me-5"></span>  * <span class="userSummary me-5"></span> <span id="card_price"></span> </h6>
+                                    <h6 class="mb-0"> <span class="cardSummary"></span>  * <span class="userSummary me-5"></span> <span id="card_price"></span> </h6>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-between align-items-center">
