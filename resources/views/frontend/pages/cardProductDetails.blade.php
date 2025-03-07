@@ -639,10 +639,13 @@
                     $('#card_price').text('$ ' + cardPrice.toFixed(2));
                     $('.planSummary').text('$ ' + planPrice.toFixed(2));
                     $('.cardSummary').text('$ ' + card_price.toFixed(2));
-                    $('.userSummary').text(cardUser.toFixed(2));
+                    $('.userSummary').text(cardUser);
 
                     if ($('input[name="shipping_charge"]:checked')) {
                         $('#shipping_charge').text('$ ' + shippingPrice.toFixed(2));
+                    }
+                    else {
+                        $('#shipping_charge').text('');
                     }
 
                 };
