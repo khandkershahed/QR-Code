@@ -102,6 +102,36 @@
     <script src="{{ asset('admin/js/custom.js') }}"></script>
     <!-- Scripts -->
     <script>
+        class DataTableInitializer {
+            constructor(tableClass, options = {}) {
+                this.tableClass = tableClass;
+                this.options = {
+                    language: {
+                        lengthMenu: "Show _MENU_",
+                    },
+                    dom: "<'row'" +
+                        "<'col-sm-6 d-flex align-items-center justify-content-start'l>" +
+                        "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
+                        ">" +
+                        "<'table-responsive'tr>" +
+                        "<'row'" +
+                        "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
+                        "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
+                        ">",
+                    ...options, // Allow overriding defaults
+                };
+            }
+
+            init() {
+                $(`.${this.tableClass}`).DataTable(this.options);
+            }
+        }
+
+        // Usage:
+        const myDataTable = new DataTableInitializer('my-datatable');
+        myDataTable.init();
+    </script>
+    <script>
         setTimeout(function() {
             const preloader = document.getElementById('preloader');
             if (preloader) {

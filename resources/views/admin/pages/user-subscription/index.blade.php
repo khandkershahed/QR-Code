@@ -8,9 +8,9 @@
         </div>
         <div class="card-body p-0">
             <div class="table-responsive">
-                <table class="table my-datatable table-striped table-row-bordered mt-0">
+                <table id="kt_datatable_dom_positioning" class="table my-datatable table-striped table-row-bordered mt-0">
                     <thead>
-                        <tr class="text-center bg-info text-white fw-bolder fs-7 text-uppercase gs-0">
+                        <tr class="text-startz bg-info text-white fw-bolder fs-7 text-uppercase gs-0">
                             <th width="5%" class="text-center">Sl</th>
                             <th width="20%">Plan Name</th>
                             <th width="15%">User Name</th>
@@ -39,7 +39,7 @@
                             </tr>
                             <tr class="collapse" id="invoices-{{ $item['subscription']->id }}">
                                 <td colspan="7">
-                                    <table class="table table-striped align-middle mb-0 bg-primary">
+                                    {{-- <table class="table table-striped align-middle mb-0 bg-primary">
                                         <thead>
                                             <tr class="text-white fw-bolder fs-7 text-uppercase">
                                                 <th width="5%" class="text-center">Sl</th>
@@ -70,7 +70,7 @@
                                                 </tr>
                                             @endforelse
                                         </tbody>
-                                    </table>
+                                    </table> --}}
                                 </td>
                             </tr>
                         @empty
@@ -85,34 +85,22 @@
     </div>
     @push('scripts')
         <script>
-            class DataTableInitializer {
-                constructor(tableClass, options = {}) {
-                    this.tableClass = tableClass;
-                    this.options = {
-                        language: {
-                            lengthMenu: "Show _MENU_",
-                        },
-                        dom: "<'row'" +
-                            "<'col-sm-6 d-flex align-items-center justify-content-start'l>" +
-                            "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
-                            ">" +
-                            "<'table-responsive'tr>" +
-                            "<'row'" +
-                            "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
-                            "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
-                            ">",
-                        ...options, // Allow overriding defaults
-                    };
-                }
-
-                init() {
-                    $(`.${this.tableClass}`).DataTable(this.options);
-                }
+            if (!$.fn.DataTable.isDataTable("#kt_datatable_dom_positioning")) {
+                $("#kt_datatable_dom_positioning").DataTable({
+                    "language": {
+                        "lengthMenu": "Show _MENU_",
+                    },
+                    "dom": "<'row mb-2'" +
+                        "<'col-sm-6 d-flex align-items-center justify-conten-start dt-toolbar'l>" +
+                        "<'col-sm-6 d-flex align-items-center justify-content-end dt-toolbar'f>" +
+                        ">" +
+                        "<'table-responsive'tr>" +
+                        "<'row'" +
+                        "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
+                        "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
+                        ">"
+                });
             }
-
-            // Usage:
-            const myDataTable = new DataTableInitializer('my-datatable');
-            myDataTable.init();
         </script>
     @endpush
 </x-admin-app-layout>

@@ -118,24 +118,16 @@
                         <h1 data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
                             Instantly Create QR Codes, VCards, NFC & Barcodes!
                         </h1>
-                        <p>
+                        <p class="w-75 mb-40">
                             From Real World Encounters to Digital Connections: Embracing
                             URL with QR Codes and Digital Business Cards
                         </p>
 
-                        <div>
-                            <a href="{{ route('register') }}" class="theme-btn rounded-0 style-two">Start Trial</a>
-                            <a href="{{ route('pricing') }}" class="theme-btn rounded-0 style-one">View Pricing</a>
+                        <div class="">
+                            <a href="{{ route('pricing') }}" class="theme-btn rounded-0 style-two">View Pricing
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
                         </div>
-                        <ul class="icon-list pt-15">
-                            <li>
-                                <i class="fa-solid fa-circle-check"></i> Free 14-day trial
-                            </li>
-                            <li>
-                                <i class="fas fa-circle-check"></i> No credit card
-                                required
-                            </li>
-                        </ul>
                     </div>
                 </div>
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500"
@@ -273,7 +265,7 @@
                             <div class="pricing-item team-plan style-five">
                                 <div class="text-center title-price">
                                     <h2 class="mb-0">{{ $team_card->title }}</h2>
-                                    <p>Perfect for Team or Business</p>
+                                    <p>Perfect for team or business</p>
                                 </div>
                                 <div class="image-selection">
                                     <div>

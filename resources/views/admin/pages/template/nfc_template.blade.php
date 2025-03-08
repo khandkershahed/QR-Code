@@ -3,7 +3,7 @@
         .window {
             width: 400px;
             margin: auto;
-            border: 7px solid #1d505d;
+            border: 7px solid #7239e9;
             border-radius: 5px;
             box-shadow: 0px 20px 46px 2px #bcc6ff;
             cursor: n-resize;
@@ -83,8 +83,11 @@
                             <div
                                 class="btn template-btn btn-outline btn-outline-dashed btn-active-light-primary custom-active p-4 d-flex align-items-center mb-5 custom-radio">
                                 <div class="window">
-                                    <img class="img-fluid" src="{{ asset('admin/Nfc_templates/template_one.jpg') }}"
+                                    <img class="img-fluid"
+                                        src="{{ asset('frontend/images/nfc_template/template_one.png') }}"
                                         alt="First Template">
+                                    <p class="text-center py-4 rounded-0 m-0 text-white"
+                                        style="background-color: #7239e9;">Virtual Profile One</p>
                                 </div>
                             </div>
 
@@ -97,8 +100,11 @@
                             <div
                                 class="btn template-btn btn-outline btn-outline-dashed btn-active-light-primary custom-active p-4 d-flex align-items-center mb-5 custom-radio">
                                 <div class="window">
-                                    <img class="img-fluid" src="{{ asset('admin/Nfc_templates/template_two.png') }}"
+                                    <img class="img-fluid"
+                                        src="{{ asset('frontend/images/nfc_template/template_two.png') }}"
                                         alt="Second Template">
+                                    <p class="text-center py-4 rounded-0 m-0 text-white"
+                                        style="background-color: #7239e9;">Virtual Profile Two</p>
                                 </div>
                             </div>
                         </div>
@@ -110,8 +116,11 @@
                             <div
                                 class="btn template-btn btn-outline btn-outline-dashed btn-active-light-primary custom-active p-4 d-flex align-items-center mb-5 custom-radio">
                                 <div class="window">
-                                    <img class="img-fluid" src="{{ asset('admin/Nfc_templates/template_three.jpg') }}"
+                                    <img class="img-fluid"
+                                        src="{{ asset('frontend/images/nfc_template/template_three.jpg') }}"
                                         alt="Third Template">
+                                    <p class="text-center py-4 rounded-0 m-0 text-white"
+                                        style="background-color: #7239e9;">Virtual Profile Three</p>
                                 </div>
                             </div>
                         </div>
@@ -123,8 +132,11 @@
                             <div
                                 class="btn template-btn btn-outline btn-outline-dashed btn-active-light-primary custom-active p-4 d-flex align-items-center mb-5 custom-radio">
                                 <div class="window">
-                                    <img class="img-fluid" src="{{ asset('admin/Nfc_templates/template_four.jpg') }}"
+                                    <img class="img-fluid"
+                                        src="{{ asset('frontend/images/nfc_template/template_four.jpg') }}"
                                         alt="Fourth Template">
+                                    <p class="text-center py-4 rounded-0 m-0 text-white"
+                                        style="background-color: #7239e9;">Virtual Profile Four</p>
                                 </div>
                             </div>
                         </div>
@@ -136,8 +148,11 @@
                             <div
                                 class="btn template-btn btn-outline btn-outline-dashed btn-active-light-primary custom-active p-4 d-flex align-items-center mb-5 custom-radio">
                                 <div class="window">
-                                    <img class="img-fluid" src="{{ asset('admin/Nfc_templates/template_five.png') }}"
+                                    <img class="img-fluid"
+                                        src="{{ asset('frontend/images/nfc_template/template_five.png') }}"
                                         alt="Fifth Template">
+                                    <p class="text-center py-4 rounded-0 m-0 text-white"
+                                        style="background-color: #7239e9;">Virtual Profile Five</p>
                                 </div>
                             </div>
                         </div>
@@ -149,8 +164,27 @@
                             <div
                                 class="btn template-btn btn-outline btn-outline-dashed btn-active-light-primary custom-active p-4 d-flex align-items-center mb-5 custom-radio">
                                 <div class="window">
-                                    <img class="img-fluid" src="{{ asset('admin/Nfc_templates/template_six.png') }}"
+                                    <img class="img-fluid"
+                                        src="{{ asset('frontend/images/nfc_template/template_six.png') }}"
                                         alt="Sixth Template">
+                                    <p class="text-center py-4 rounded-0 m-0 text-white"
+                                        style="background-color: #7239e9;">Virtual Profile Six</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="card card-flush bg-transparent ">
+                        <div class="card-body p-0">
+                            <div
+                                class="btn template-btn btn-outline btn-outline-dashed btn-active-light-primary custom-active p-4 d-flex align-items-center mb-5 custom-radio">
+                                <div class="window">
+                                    <img class="img-fluid"
+                                        src="{{ asset('frontend/images/nfc_template/new-template.png') }}"
+                                        alt="Sixth Template">
+                                    <p class="text-center py-4 rounded-0 m-0 text-white"
+                                        style="background-color: #7239e9;">Virtual Profile Seven</p>
                                 </div>
                             </div>
                         </div>

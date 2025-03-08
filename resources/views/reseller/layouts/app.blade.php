@@ -37,9 +37,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
     <link href="{{ asset('admin/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet"
         type="text/css" />
-    <link href="{{ asset('admin/assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"
-        type="text/css" />
-    <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     <link href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/css/custom.css') }}" rel="stylesheet" type="text/css" />
@@ -112,13 +109,43 @@
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/two-factor-authentication.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/users-search.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
+    {{-- <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <script src="{{ asset('frontend/assets/js/fontawesome.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbfUj9Hr1sqI5sb_nc2XSWFrRun3l_Vto&callback=initMap" async
         defer></script>
     <script src="{{ asset('admin/js/custom.js') }}"></script>
+    <script>
+        class DataTableInitializer {
+            constructor(tableClass, options = {}) {
+                this.tableClass = tableClass;
+                this.options = {
+                    language: {
+                        lengthMenu: "Show _MENU_",
+                    },
+                    dom: "<'row'" +
+                        "<'col-sm-6 d-flex align-items-center justify-content-start'l>" +
+                        "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
+                        ">" +
+                        "<'table-responsive'tr>" +
+                        "<'row'" +
+                        "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
+                        "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
+                        ">",
+                    ...options, // Allow overriding defaults
+                };
+            }
+
+            init() {
+                $(`.${this.tableClass}`).DataTable(this.options);
+            }
+        }
+
+        // Usage:
+        const myDataTable = new DataTableInitializer('my-datatable');
+        myDataTable.init();
+    </script>
     <script>
         $(document).ready(function() {
             // Add event listener to radio inputs
