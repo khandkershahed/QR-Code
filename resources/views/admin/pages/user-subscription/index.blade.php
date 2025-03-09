@@ -8,69 +8,42 @@
         </div>
         <div class="card-body p-0">
             <div class="table-responsive">
-                <table class="table my-datatable table-striped table-row-bordered mt-0">
+                <table id="kt_datatable_dom_positioning" class="table my-datatable table-striped table-row-bordered mt-0">
                     <thead>
-                        <tr class="text-center bg-info text-white fw-bolder fs-7 text-uppercase gs-0">
+                        <tr class="text-startz bg-info text-white fw-bolder fs-7 text-uppercase gs-0">
                             <th width="5%" class="text-center">Sl</th>
-                            <th width="20%">Plan Name</th>
-                            <th width="15%">User Name</th>
-                            <th width="15%">Price</th>
+                            <th width="10%">Plan Name</th>
+                            <th width="15%">Service Name</th>
+                            <th width="20%">User Name</th>
+                            <th width="10%">Price</th>
                             <th width="15%">Start Date</th>
                             <th width="15%">End Date</th>
-                            <th width="10%" class="text-center">Action</th>
+                            <th width="10%" class="text-center">Expire & Invoices</th>
                         </tr>
+
                     </thead>
                     <tbody>
                         @forelse ($subscriptionsWithInvoices as $index => $item)
                             <tr>
                                 <td class="text-center">{{ $index + 1 }}</td>
                                 <td>{{ $item['subscription']->plan->title }}</td>
+                                <td>{{ $item['subscription']->plan->name ?? "N/A"}}</td>
                                 <td>{{ $item['subscription']->user->name ?? 'N/A' }}</td>
                                 <td>{{ $item['subscription']->plan->price }}</td>
-                                <td>{{ $item['subscription']->created_at }}</td>
-                                <td>{{ $item['subscription']->subscription_ends_at ?? 'N/A' }}</td>
+                                <td>{{ \Carbon\Carbon::parse($item['subscription']->created_at)->format('d-F-Y h:i:s A') }}</td>
+                                <td>{{ \Carbon\Carbon::parse($item['subscription']->subscription_ends_at)->format('d-F-Y h:i:s A') }}</td>
                                 <td class="text-center">
-                                    <button class="btn btn-sm fw-bold btn-info" data-bs-toggle="collapse"
-                                        data-bs-target="#invoices-{{ $item['subscription']->id }}"
-                                        aria-expanded="false">
-                                        <i class="fas fa-eye pe-2"></i>Invoices
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr class="collapse" id="invoices-{{ $item['subscription']->id }}">
-                                <td colspan="7">
-                                    <table class="table table-striped align-middle mb-0 bg-primary">
-                                        <thead>
-                                            <tr class="text-white fw-bolder fs-7 text-uppercase">
-                                                <th width="5%" class="text-center">Sl</th>
-                                                <th width="25%" class="text-center">Invoice ID</th>
-                                                <th width="25%" class="text-center">Amount</th>
-                                                <th width="25%" class="text-center">Date</th>
-                                                <th width="20%" class="text-end">Download</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @forelse ($item['invoices'] as $invoice)
-                                                <tr>
-                                                    <td class="text-center">{{ $loop->iteration }}</td>
-                                                    <td class="text-center">{{ $invoice->id }}</td>
-                                                    <td class="text-center">{{ $invoice->amount }}</td>
-                                                    <td class="text-center">
-                                                        {{ $invoice->date()->toFormattedDateString() }}
-                                                    </td>
-                                                    <td class="text-end">
-                                                        <a href="{{ $invoice->invoice_pdf }}" target="_blank"
-                                                            class="btn btn-sm btn-primary">Download</a>
-                                                    </td>
-                                                </tr>
-                                            @empty
-                                                <tr>
-                                                    <td colspan="5" class="text-center">No invoices found for this
-                                                        subscription.</td>
-                                                </tr>
-                                            @endforelse
-                                        </tbody>
-                                    </table>
+                                    @if ($item['invoices']->isNotEmpty())
+                                        <select class="form-select form-select-sm" onchange="window.open(this.value, '_blank')">
+                                            <option>Click To Download</option>
+                                            @foreach ($item['invoices'] as $invoice)
+                                                <option value="{{ $invoice->invoice_pdf }}">
+                                                    {{ $invoice->date()->toFormattedDateString() }}->{{ $invoice->id }}</option>
+                                            @endforeach
+                                        </select>
+                                    @else
+                                        <span class="text-muted">No invoices</span>
+                                    @endif
                                 </td>
                             </tr>
                         @empty
@@ -85,34 +58,22 @@
     </div>
     @push('scripts')
         <script>
-            class DataTableInitializer {
-                constructor(tableClass, options = {}) {
-                    this.tableClass = tableClass;
-                    this.options = {
-                        language: {
-                            lengthMenu: "Show _MENU_",
-                        },
-                        dom: "<'row'" +
-                            "<'col-sm-6 d-flex align-items-center justify-content-start'l>" +
-                            "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
-                            ">" +
-                            "<'table-responsive'tr>" +
-                            "<'row'" +
-                            "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
-                            "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
-                            ">",
-                        ...options, // Allow overriding defaults
-                    };
-                }
-
-                init() {
-                    $(`.${this.tableClass}`).DataTable(this.options);
-                }
+            if (!$.fn.DataTable.isDataTable("#kt_datatable_dom_positioning")) {
+                $("#kt_datatable_dom_positioning").DataTable({
+                    "language": {
+                        "lengthMenu": "Show _MENU_",
+                    },
+                    "dom": "<'row mb-2'" +
+                        "<'col-sm-6 d-flex align-items-center justify-conten-start dt-toolbar'l>" +
+                        "<'col-sm-6 d-flex align-items-center justify-content-end dt-toolbar'f>" +
+                        ">" +
+                        "<'table-responsive'tr>" +
+                        "<'row'" +
+                        "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
+                        "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
+                        ">"
+                });
             }
-
-            // Usage:
-            const myDataTable = new DataTableInitializer('my-datatable');
-            myDataTable.init();
         </script>
     @endpush
 </x-admin-app-layout>
