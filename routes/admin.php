@@ -113,7 +113,7 @@ Route::middleware('auth:admin', 'role:admin')->prefix('admin')->name('admin.')->
             'barcode'             => BarCodeController::class,
             'nfc-card'            => NfcCardController::class,
             'virtual-card'        => VirtualCardController::class,
-            'card-product'       => CardProductController::class,
+            'card-product'        => CardProductController::class,
             'requested-card'      => RequestedCardController::class,
             'restaurant-category' => RestaurantCategoryController::class,
 
