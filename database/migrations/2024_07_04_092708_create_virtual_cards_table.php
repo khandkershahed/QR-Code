@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade');
             $table->foreignId('admin_id')->nullable()->constrained('admins')->onDelete('cascade');
             $table->string('virtual_card_template')->nullable();
+            $table->string('card_preference')->nullable();
             $table->string('card_logo')->nullable();
             $table->string('card_bg_front')->nullable();
             $table->string('card_bg_back')->nullable();

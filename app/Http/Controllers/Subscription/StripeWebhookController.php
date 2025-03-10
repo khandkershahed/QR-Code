@@ -299,12 +299,30 @@ class StripeWebhookController extends CashierWebhookController
         // dd($user_id);
 
         $data['plan'] = Plan::where('id', $request->plan_id)->first();
+        $files = [
+            'card_logo' => $request->file('card_logo'),
+        ];
+
+        $uploadedFiles = [];
+        foreach ($files as $key => $file) {
+            if ($file) {
+                $filePath = 'card_products/' . $key;
+                $uploadedFiles[$key] = customUploadEcommerce($file, $filePath);
+
+                // Check upload status and handle errors
+                if ($uploadedFiles[$key]['status'] === 0) {
+                    return redirect()->back()->with('error', $uploadedFiles[$key]['error_message']);
+                }
+            } else {
+                $uploadedFiles[$key] = ['status' => 0];
+            }
+        }
 
         $request->session()->put('card_checkout', [
             "card_user"        => $request->card_user,
             "plan"             => $request->plan,
             "card_preference"  => $request->card_preference,
-            "card_logo"        => $request->card_logo,
+            "card_logo"        => $uploadedFiles['card_logo']['status'] == 1 ? $uploadedFiles['card_logo']['file_path'] : null,
             "card_name"        => $request->card_name,
             "card_designation" => $request->card_designation,
             "card_color"       => $request->card_color,
@@ -401,6 +419,7 @@ class StripeWebhookController extends CashierWebhookController
                     'card_id'               => $request->card_id,
                     'user_id'               => $request->user_id,
                     'virtual_card_template' => 'virtual-card-one',
+                    'card_preference'       => $cardCheckout['card_preference'],
                     'card_logo'             => $cardCheckout['card_logo'],
                     'card_name'             => $cardCheckout['card_name'],
                     'card_designation'      => $cardCheckout['card_designation'],

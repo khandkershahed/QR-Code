@@ -202,7 +202,7 @@
                 </div>
                 <div class="card-info position-absolute">
                     <p class="mb-0 fw-bold">MD BADRODDUJA SAGAR</p>
-                    <p class="mb-0"><small>President & CEO</small></p>
+                    <p class="mb-0"><small>President & CEO</small></p>
                 </div>
             </div>
         </div>
@@ -235,14 +235,14 @@
             </div>
             <div class="col-6">
                 <div class="mt-5">
-                    <label for="card_holder_name">Holder Name <span class="text-danger">*</span></label>
+                    <label for="card_holder_name">Card Holder Name <span class="text-danger">*</span></label>
                     <input class="form-control border" type="text" name="card_holder_name" id="card_holder_name"
                         oninput="previewName()" placeholder="Enter Card Holder Name">
                 </div>
             </div>
             <div class="col-6">
                 <div class="mt-5">
-                    <label for="card_holder_designation">Holder Designation <span class="text-danger">*</span></label>
+                    <label for="card_holder_designation">Card Holder Designation <span class="text-danger">*</span></label>
                     <input class="form-control border" type="text" name="card_holder_designation"
                         id="card_holder_designation" oninput="previewDesignation()"
                         placeholder="Enter Card Holder Designation">
@@ -251,8 +251,8 @@
             <div class="col-6">
                 <div class="mt-5">
                     <label for="card_holder_designation">Choose Card Color</label>
-                    <select class="form-select" name="card_holder_color" aria-label="Default select example"
-                        id="card_holder_color" onchange="previewName()"
+                    <select class="form-select" name="card_color" aria-label="Default select example"
+                        id="card_color" onchange="previewName()"
                         style="border-radius: 14px; font-weight: 400; padding: 14px 40px 14px 20px !important; border-radius: 12px;">
                         <option>Card Color</option>
                         <option value="black">Black</option>

@@ -1,6 +1,6 @@
 <div class="container p-0">
     <div class="row p-5 bg-light">
-        <div class="col-lg-4">
+        <div class="col-lg-6">
             <div class="fv-row my-3">
                 <x-metronic.label for="card_font_style" class="form-label required">
                     {{ __('Select NFC') }}</x-metronic.label>
@@ -14,32 +14,33 @@
                 </select>
             </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-6">
             <div class="fv-row my-3">
                 <x-metronic.label for="card_bg_back_color" class="form-label">
                     {{ __('Card Color') }}
                 </x-metronic.label>
                 <div class="d-flex">
                     <!-- Select Dropdown for Color Options -->
-                    <select id="card_color" class="form-control form-control-outline mb-3 mb-lg-0 w-75"
+                    <select id="card_color" class="form-control form-control-outline mb-3 mb-lg-0"
                         onchange="updateColorInput(this)">
                         <option value="#000000">Black</option>
-                        <option value="#FFFFFF">White</option>
+                        <option value="#000000">Gold</option>
+                        {{-- <option value="#FFFFFF">White</option>
                         <option value="#0000FF">Blue</option>
                         <option value="#FF0000">Red</option>
-                        <option value="#008000">Green</option>
+                        <option value="#008000">Green</option> --}}
                     </select>
 
                     <!-- Input Field to Show Selected Color -->
-                    <input id="selected_color_display" type="color" class="form-control w-25 p-0 form-control-outline"
-                        name="selected_color" />
+                    {{-- <input id="selected_color_display" type="color" class="form-control w-25 p-0 form-control-outline"
+                        name="selected_color" /> --}}
                 </div>
             </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-6">
             <div class="fv-row my-3">
                 <x-metronic.label for="card_type" class="form-label">
-                    {{ __('Card Type') }}
+                    {{ __('Card Preference') }}
                 </x-metronic.label>
                 <div class="d-flex">
                     <!-- Select Dropdown for Color Options -->
@@ -95,23 +96,23 @@
                     placeholder="Your Designation"></x-metronic.input>
             </div>
         </div>
-        <div class="col-lg-6">
+        {{-- <div class="col-lg-6">
             <div class="fv-row my-3">
                 <x-metronic.label for="card_phone" class="form-label ">
                     {{ __('Card Phone') }}</x-metronic.label>
                 <x-metronic.input id="card_phone" type="text" class="form-control form-control-outline mb-3 mb-lg-0"
                     name="card_phone" placeholder="Your Phone"></x-metronic.input>
             </div>
-        </div>
-        <div class="col-lg-6">
+        </div> --}}
+        {{-- <div class="col-lg-6">
             <div class="fv-row my-3">
                 <x-metronic.label for="card_email" class="form-label ">
                     {{ __('Card Email') }}</x-metronic.label>
                 <x-metronic.input id="card_email" type="email" class="form-control form-control-outline mb-3 mb-lg-0"
                     name="card_email" placeholder="example@example.com"></x-metronic.input>
             </div>
-        </div>
-        <div class="col-lg-6">
+        </div> --}}
+        {{-- <div class="col-lg-6">
             <div class="fv-row my-3">
                 <x-metronic.label for="card_address" class="form-label ">
                     {{ __('Card Address') }}</x-metronic.label>
@@ -120,7 +121,7 @@
                     placeholder="Your Address"></x-metronic.input>
 
             </div>
-        </div>
+        </div> --}}
         {{-- <div class="col-lg-3">
 
             <div class="fv-row my-3">
