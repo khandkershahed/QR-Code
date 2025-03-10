@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('card_bg_back')->nullable();
             $table->string('card_name')->nullable();
             $table->string('card_designation')->nullable();
+            $table->string('card_color')->nullable();
             $table->string('card_phone')->nullable();
             $table->string('card_email')->nullable();
             $table->string('card_address')->nullable();

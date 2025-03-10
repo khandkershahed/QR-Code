@@ -301,21 +301,24 @@ class StripeWebhookController extends CashierWebhookController
         $data['plan'] = Plan::where('id', $request->plan_id)->first();
 
         $request->session()->put('card_checkout', [
-            "card_user"       => $request->card_user,
-            "plan"            => $request->plan,
-            "card_preference" => $request->card_preference,
-            "card_logo"       => $request->card_logo,
-            "design_note"     => $request->design_note,
-            "subtotal"        => $request->subtotal,
-            "plan_id"         => $request->plan_id,
-            "name"            => $request->name,
-            "email"           => $request->email,
-            "shipping_charge" => $request->shipping_charge,
+            "card_user"        => $request->card_user,
+            "plan"             => $request->plan,
+            "card_preference"  => $request->card_preference,
+            "card_logo"        => $request->card_logo,
+            "card_name"        => $request->card_name,
+            "card_designation" => $request->card_designation,
+            "card_color"       => $request->card_color,
+            "design_note"      => $request->design_note,
+            "subtotal"         => $request->subtotal,
+            "plan_id"          => $request->plan_id,
+            "name"             => $request->name,
+            "email"            => $request->email,
+            "shipping_charge"  => $request->shipping_charge,
         ]);
 
-        $data['card'] = $request->card_preference;
-        $data['user_id'] = $user_id;
-        $data['intent'] = auth()->user()->createSetupIntent();
+        $data['card']     = $request->card_preference;
+        $data['user_id']  = $user_id;
+        $data['intent']   = auth()->user()->createSetupIntent();
         $data['subtotal'] = $request->input('subtotal', session('subtotal', $data['plan']->package_price));
         return view('frontend.pages.cardCheckout', $data);
     }
@@ -329,7 +332,7 @@ class StripeWebhookController extends CashierWebhookController
         $request->validate([
             'user_id'       => 'required|exists:users,id',
             'plan_id'       => 'required|exists:plans,id',
-            'stripeToken'         => 'required|string',
+            'stripeToken'   => 'required|string',
         ]);
 
         DB::beginTransaction();
@@ -347,6 +350,12 @@ class StripeWebhookController extends CashierWebhookController
                 "currency" => "usd",
                 "source" => $request->stripeToken,
                 'description' => "NFC Card Payment",
+            ]);
+            $subscription = $user->newSubscription($product->slug, $product->stripe_plan)->create($request->stripeToken);
+
+            // Set the subscription end date
+            $subscription->update([
+                'subscription_ends_at' => now()->addDays($product->interval),
             ]);
             // $paymentIntent = \Stripe\Charge::create([
             //     'amount' => $price * 100,
@@ -371,6 +380,9 @@ class StripeWebhookController extends CashierWebhookController
                     'plan_cycle'           => $product->billing_cycle,
                     'card_preference'      => $cardCheckout['card_preference'],
                     'card_logo'            => $cardCheckout['card_logo'],
+                    'card_name'            => $cardCheckout['card_name'],
+                    'card_designation'     => $cardCheckout['card_designation'],
+                    'card_color'           => $cardCheckout['card_color'],
                     'design_note'          => $cardCheckout['design_note'],
                     'max_user'             => $cardCheckout['card_user'],
                     'amount'               => $request->subtotal,
@@ -389,8 +401,10 @@ class StripeWebhookController extends CashierWebhookController
                     'card_id'               => $request->card_id,
                     'user_id'               => $request->user_id,
                     'virtual_card_template' => 'virtual-card-one',
-                    'card_logo'             => $cardCheckout['card_logo'] ?? null,
-                    'card_name'             => $cardCheckout['name'] ?? null,
+                    'card_logo'             => $cardCheckout['card_logo'],
+                    'card_name'             => $cardCheckout['card_name'],
+                    'card_designation'      => $cardCheckout['card_designation'],
+                    'card_color'            => $cardCheckout['card_color'],
                     'card_email'            => $cardCheckout['email'] ?? null,
                 ]);
 

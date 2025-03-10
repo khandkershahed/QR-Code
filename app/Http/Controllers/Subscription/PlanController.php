@@ -36,12 +36,12 @@ class PlanController extends Controller
     {
         // Validate the incoming request data
         $validator = Validator::make($request->all(), [
-            'title' => 'required|string|max:255',
-            'price' => 'required|min:1',
-            'currency' => 'required|string',
+            'title'         => 'required|string|max:255',
+            'price'         => 'required|min:1',
+            'currency'      => 'required|string',
             'billing_cycle' => 'required|string|in:day,week,month,year',
-            'interval' => 'required|integer|min:1',
-            'card_type' => 'nullable',
+            'interval'      => 'required|integer|min:1',
+            'card_type'     => 'nullable',
         ]);
 
         // Check if validation fails

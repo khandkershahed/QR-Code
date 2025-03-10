@@ -354,15 +354,23 @@ class NfcCardController extends Controller
     public function edit(string $id)
     {
 
-        // $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
-        // $user = Auth::user();
-        // $data = [
-        //     'nfc' => $isUserRoute
-        //         ? VirtualCard::with('shippingDetails','nfc')->findOrFail($id)
-        //         : VirtualCard::with('shippingDetails','nfc')->findOrFail($id),
-        // ];
-        // $view = $isUserRoute ? 'user.pages.virtualCard.edit' : 'admin.pages.virtualCard.edit';
-        // return view($view, $data);
+        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
+        $user = Auth::user();
+        $data = [
+            'nfc' => $isUserRoute
+                ? VirtualCard::with('shippingDetails','nfc')->findOrFail($id)
+                : VirtualCard::with('shippingDetails','nfc')->findOrFail($id),
+        ];
+        $data = [
+            // 'count' => $count,
+            'nfc_cards' => $isUserRoute
+                ? NfcCard::with('nfcData', 'nfcMessages', 'virtualCard', 'shippingDetails')->where('user_id', $user->id)->latest('id')->get()
+                : NfcCard::with('nfcData', 'nfcMessages', 'virtualCard', 'shippingDetails')->latest('id')->get(),
+        ];
+        $view = $isUserRoute ? 'user.pages.virtualCard.edit' : 'admin.pages.virtualCard.edit';
+        return view($view, $data);
+        return view('user.pages.virtualCard.edit', $data);
+
     }
 
     /**

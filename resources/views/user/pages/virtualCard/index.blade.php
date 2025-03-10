@@ -11,11 +11,11 @@
                         <strong class=""> NFC Card Lists
                         </strong>
                     </div>
-                    <div>
+                    {{-- <div>
                         <a href="{{ route('user.nfc-card.create') }}" class="btn btn-sm btn-primary rounded-2 me-3">
                             Create NFC Card
                         </a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

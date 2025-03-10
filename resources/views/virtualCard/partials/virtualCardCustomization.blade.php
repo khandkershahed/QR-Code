@@ -21,7 +21,7 @@
                 </x-metronic.label>
                 <div class="d-flex">
                     <!-- Select Dropdown for Color Options -->
-                    <select id="card_bg_back_color" class="form-control form-control-outline mb-3 mb-lg-0 w-75"
+                    <select id="card_color" class="form-control form-control-outline mb-3 mb-lg-0 w-75"
                         onchange="updateColorInput(this)">
                         <option value="#000000">Black</option>
                         <option value="#FFFFFF">White</option>

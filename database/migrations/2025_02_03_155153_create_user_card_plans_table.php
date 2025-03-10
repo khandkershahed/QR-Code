@@ -19,7 +19,10 @@ return new class extends Migration
             $table->string('plan_cycle')->nullable();
             $table->string('card_preference')->nullable();
             $table->string('card_logo')->nullable();
-            $table->string('design_note')->nullable();
+            $table->string('card_name')->nullable();
+            $table->string('card_designation')->nullable();
+            $table->string('card_color')->nullable();
+            $table->text('design_note')->nullable();
             $table->integer('max_user')->nullable();
             $table->double('amount')->nullable();
             $table->string('shipping_name')->nullable();
