@@ -106,34 +106,15 @@
                                                 <label for="exampleInputEmail1" class="form-label">Email</label>
                                                 <input type="email" class="form-control" id="card-holder-email"
                                                     name=email aria-describedby="emailHelp"
-                                                    placeholder="demo@example.com">
+                                                    placeholder="write the email">
                                             </div>
                                         </div>
-                                        {{-- <div class="col-lg-12">
-                                            <div class="mb-5 pb-3">
-                                                <label for="exampleInputEmail1" class="form-label">Card
-                                                    Information</label>
-                                                <div id="card-element" class="border p-3 rounded"></div>
-                                            </div>
-                                        </div> --}}
                                         <div class="col-lg-12">
                                             <div class="mb-5 pb-3">
                                                 <label for="card-number-element">Card Inormation</label>
                                                 <div id="card-element" class="border p-3 rounded"></div>
                                             </div>
                                         </div>
-                                        {{-- <div class="col-lg-6 pe-0">
-                                            <div class="mb-5 pb-3">
-                                                <label for="card-expiry-element">Expiration Date</label>
-                                                <div id="card-expiry-element" class="border p-3 rounded"></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 ps-0">
-                                            <div class="mb-5 pb-3">
-                                                <label for="card-cvc-element">CVC</label>
-                                                <div id="card-cvc-element" class="border p-3 rounded"></div>
-                                            </div>
-                                        </div> --}}
                                         <div class="col-lg-12">
                                             <div class="mb-5 pb-3">
                                                 <input type="hidden" name="user_id" value="{{ $user_id }}">
@@ -141,7 +122,7 @@
                                                     Name</label>
                                                 <input type="text" class="form-control" id="card-holder-name"
                                                     name=name aria-describedby="emailHelp"
-                                                    placeholder="Name on the card">
+                                                    placeholder="write the name on the card" >
                                             </div>
                                         </div>
                                         <div class="col-lg-12">

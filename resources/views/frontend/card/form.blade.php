@@ -61,11 +61,10 @@
             </label>
         </div>
     </div>
-
     <!-- Step 2 -->
     <div class="form-step" id="step2" style="display:none;">
         <div class="pt-30">
-            <h2>Choose Card Type!</h2>
+            <h4>Choose Card Type!</h4>
             <p>A card that suits you best</p>
         </div>
         <div class="panel-group" id="accordion">
@@ -178,24 +177,17 @@
                 </div>
             </div>
         </div>
-        {{-- <button type="button" onclick="previousStep(2)"
-            class="btn btn-secondary">Previous</button> --}}
-
-
-
         <div class="mt-30 d-flex justify-content-between">
-            <button type="button" onclick="previousStep(2)" class="p-2 px-3 btn btn-secondary"><i
-                    class="fas fa-angle-left"></i> Back</button>
-            <button type="button" id="nextBtn2" class="theme-btn style-two" style="border-radius: 10px;"
+            <button type="button" onclick="previousStep(2)" class="theme-btn style-one"><i
+                    class="fas fa-arrow-left pe-2"></i> Back</button>
+            <button type="button" id="nextBtn2" class="theme-btn style-two rounded-0" style="border-radius: 10px;"
                 onclick="goToNextStep(2)" disabled>Continue <i class="fas fa-arrow-right"></i></button>
-
         </div>
     </div>
-
     <!-- Step 3 -->
     <div class="form-step" id="step3" style="display:none;">
         <div class="pt-30">
-            <h2>Card Customization</h2>
+            <h4>Card Customization</h4>
             <p>Design Your Card</p>
         </div>
         <div class="card-design-box d-flex justify-content-center align-items-center position-relative">
@@ -214,7 +206,6 @@
                 </div>
             </div>
         </div>
-
         <div class="mt-5">
             <label>Choose Card Design</label>
             <div class="card-selection">
@@ -237,21 +228,21 @@
         <div class="row">
             <div class="col-6">
                 <div class="mt-5">
-                    <label for="card_logo">Upload Logo </label>
+                    <label for="card_logo">Upload Logo <span class="text-danger">*</span></label>
                     <input class="form-control border" type="file" name="card_logo" id="card_logo"
                         onchange="previewLogo()">
                 </div>
             </div>
             <div class="col-6">
                 <div class="mt-5">
-                    <label for="card_holder_name">Holder Name </label>
+                    <label for="card_holder_name">Holder Name <span class="text-danger">*</span></label>
                     <input class="form-control border" type="text" name="card_holder_name" id="card_holder_name"
                         oninput="previewName()" placeholder="Enter Card Holder Name">
                 </div>
             </div>
             <div class="col-6">
                 <div class="mt-5">
-                    <label for="card_holder_designation">Holder Designation </label>
+                    <label for="card_holder_designation">Holder Designation <span class="text-danger">*</span></label>
                     <input class="form-control border" type="text" name="card_holder_designation"
                         id="card_holder_designation" oninput="previewDesignation()"
                         placeholder="Enter Card Holder Designation">
@@ -260,10 +251,10 @@
             <div class="col-6">
                 <div class="mt-5">
                     <label for="card_holder_designation">Choose Card Color</label>
-                    <select class="form-select" name="card_holder_designation" aria-label="Default select example"
-                        id="card_holder_designation" onchange="previewName()"
+                    <select class="form-select" name="card_holder_color" aria-label="Default select example"
+                        id="card_holder_color" onchange="previewName()"
                         style="border-radius: 14px; font-weight: 400; padding: 14px 40px 14px 20px !important; border-radius: 12px;">
-                        <option selected>Card Color</option>
+                        <option>Card Color</option>
                         <option value="black">Black</option>
                         <option value="gold">Gold</option>
                     </select>
@@ -288,84 +279,89 @@
     <div class="form-step" id="step4" style="display:none;">
         <div>
             <div class="pt-30">
-                <h3 class="mb-0">Shipping Information</h3>
+                <h4 class="mb-0">Shipping Order Information</h4>
                 <p class="mb-0">The ammount is for shipping and handling.</p>
             </div>
-            {{-- <div>
-                <label>Choose your shipping method</label>
-                @foreach ($shippingMethods as $shippingMethod)
-                    <div class="mb-3 shipping-card" id="card-regularMail">
-                        <input type="radio" id="regularMail{{ $shippingMethod->id }}" name="shipping_charge"
-                            data-shipping_title="{{ $shippingMethod->title }}" value="{{ $shippingMethod->price }}">
-                        <label for="regularMail{{ $shippingMethod->id }}" class="p-3 w-100"
-                            style="cursor: pointer;">{{ $shippingMethod->title }} ($
-                            {{ $shippingMethod->price }})</label>
-                    </div>
-                @endforeach
-            </div> --}}
             <div>
+                <!-- From Uiverse.io by Pradeepsaranbishnoi -->
                 <label>Choose your shipping method <span class="text-danger">*</span></label>
+                @php
+                    $totalShippingMethods = count($shippingMethods);
+                    $inputType = $totalShippingMethods > 1 ? 'radio' : 'checkbox'; // If one item, use checkbox, else radio
+                @endphp
                 @foreach ($shippingMethods as $index => $shippingMethod)
-                    <div class="mb-3 shipping-card" id="card-regularMail">
-                        <input type="radio" id="regularMail{{ $shippingMethod->id }}" name="shipping_charge"
-                            data-shipping_title="{{ $shippingMethod->title }}" value="{{ $shippingMethod->price }}"
-                            required>
-                        <label for="regularMail{{ $shippingMethod->id }}" class="p-3 w-100"
-                            style="cursor: pointer;">{{ $shippingMethod->title }}
-                            (${{ $shippingMethod->price }})
+                    <div class="radio-input">
+                        <label class="label">
+                            <input type="{{ $inputType }}" id="regularMail{{ $shippingMethod->id }}"
+                                name="shipping_charge" data-shipping_title="{{ $shippingMethod->title }}"
+                                value="{{ $shippingMethod->price }}" required />
+                            <p class="text mb-0">{{ $shippingMethod->title }} (${{ $shippingMethod->price }})</p>
                         </label>
                     </div>
                 @endforeach
             </div>
 
         </div>
-        <div class="pt-30">
-            <h2>Order Summary</h2>
-            <p>Design Your Card</p>
-        </div>
         <div>
-            <div class="accordion" id="accordionExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header rounded-0" id="headingOne">
-                        <button class="accordion-button rounded-0" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#orderSummary" aria-expanded="true" aria-controls="orderSummary">
-                            Summary
-                            <span class="ms-4 fw-boldest text-end summary"></span>
-                        </button>
-                    </h2>
-                    <div id="orderSummary" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                        data-bs-parent="#accordionExample">
-                        <div class="py-4 mt-0 border accordion-body">
-                            <div class="mb-5 d-flex justify-content-between align-items-center">
+            <div id="accordionContainer" style="display: none;">
+                <div class="accordion mt-5" id="accordionExample">
+                    <div class="accordion-item">
+                        <h4 class="accordion-header rounded-0" id="headingOne">
+                            <button class="accordion-button rounded-0" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#orderSummary" aria-expanded="true" aria-controls="orderSummary">
+                                Order Summary
+                                {{-- <span class="ms-4 fw-boldest text-end summary"></span> --}}
+                            </button>
+                        </h4>
+                        <div id="orderSummary" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                            data-bs-parent="#accordionExample">
+                            <div class="py-4 mt-0 border accordion-body">
+                                <div class="mb-5 d-flex justify-content-between align-items-center">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <img class="img-fluid" width="50"
+                                            src="{{ asset('images/Black/BlackCard.webp') }}" alt="">
+                                        <p class="mb-0 ps-4">{{ $cardProduct->title }} Plans</p>
+                                    </div>
+                                    <input type="hidden" name="subtotal" id="hidden-subtotal">
+                                    <input type="hidden" name="plan_id" value="{{ $cardProduct->id }}"
+                                        id="plan_id">
+                                    <div>
+                                        <p class="mb-0">$ {{ $cardProduct->price }} * <span
+                                                class="userSummary me-5"></span> <span class="planSummary"></span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="mb-5 d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <img class="img-fluid" width="50"
+                                            src="{{ asset('images/Gold/GoldCard.webp') }}" alt="">
+                                        <p class="mb-0 ps-4"><span id="card_title"></span>
+                                            Card</p>
+                                    </div>
+                                    <div>
+                                        <p class="mb-0"> <span class="cardSummary"></span> * <span
+                                                class="userSummary me-5"></span> <span id="card_price"></span> </p>
+                                    </div>
+                                </div>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <img class="img-fluid" width="50"
-                                        src="{{ asset('images/Black/BlackCard.webp') }}" alt="">
-                                    <h6 class="mb-0 ps-4">{{ $cardProduct->title }} Plans</h6>
-                                </div>
-                                <input type="hidden" name="subtotal" id="hidden-subtotal">
-                                <input type="hidden" name="plan_id" value="{{ $cardProduct->id }}" id="plan_id">
-                                <div>
-                                    <h6 class="mb-0">$ {{ $cardProduct->price }} * <span class="userSummary me-5"></span> <span class="planSummary"></span></h6>
-                                </div>
-                            </div>
-                            <div class="mb-5 d-flex justify-content-between align-items-center">
-                                <div class="d-flex align-items-center">
-                                    <img class="img-fluid" width="50"
-                                        src="{{ asset('images/Gold/GoldCard.webp') }}" alt="">
-                                    <h6 class="mb-0 ps-4"><span id="card_title"></span>
-                                        Card</h6>
+                                    <div class="d-flex align-items-center">
+                                        <img class="img-fluid" width="50"
+                                            src="{{ asset('images/Gold/GoldCard.webp') }}" alt="">
+                                            <p class="mb-0 ps-4" id="shipping_title"></p>
+                                    </div>
+                                    <div>
+                                        <p class="mb-0" id="shipping_charge"></p>
+                                    </div>
                                 </div>
                                 <div>
-                                    <h6 class="mb-0"> <span class="cardSummary"></span>  * <span class="userSummary me-5"></span> <span id="card_price"></span> </h6>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center">
-
-                                <div>
-                                    <h6 class="mb-0" id="shipping_title"></h6>
-                                </div>
-                                <div>
-                                    <h6 class="mb-0" id="shipping_charge"></h6>
+                                    <hr>
+                                   <div class="d-flex justify-content-between align-items-center">
+                                    <h6 class="mb-0">Total Amount</h6>
+                                     <div>
+                                        <span>$</span>
+                                        <span class="fw-boldest text-end summary"></span>
+                                     </div>
+                                   </div>
                                 </div>
                             </div>
                         </div>
