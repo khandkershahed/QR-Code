@@ -423,6 +423,112 @@
             border-left: 0px;
         }
     </style>
+    <style>
+        /* Container for radio buttons */
+        .radio-input {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* Default label style with a border */
+        .radio-input label {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 0px 20px;
+            width: 100%;
+            cursor: pointer;
+            height: 50px;
+            position: relative;
+            border: 2px solid #ccc;
+            /* Default border */
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Hover effect */
+        .radio-input label:hover {
+            background-color: #f5f5f5;
+        }
+
+        /* Change border when checked */
+        .radio-input input[type="radio"]:checked+p,
+        .radio-input input[type="checkbox"]:checked+p {
+            font-weight: bold;
+            color: #435dd8;
+        }
+
+        /* Change border when checked */
+        .radio-input input[type="radio"]:checked~label,
+        .radio-input input[type="checkbox"]:checked~label {
+            border-color: #435dd8;
+        }
+
+        /* Hide default radio button */
+        .radio-input input[type="radio"],
+        .radio-input input[type="checkbox"] {
+            appearance: none;
+            width: 5px;
+            height: 10px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ABABAB;
+            border: 2px solid #435dd8;
+            transition: all 0.3sease-in-out;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        /* Change radio/checkbox appearance when checked */
+        .radio-input input[type="radio"]:checked,
+        .radio-input input[type="checkbox"]:checked {
+            background-color: #435dd8;
+            border-color: #435dd8;
+            animation: pulse 0.7s forwards;
+            /* Pulse animation */
+        }
+
+        /* Add a small dot inside the checked radio button */
+        .radio-input input[type="radio"]:before,
+        .radio-input input[type="checkbox"]:before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: transparent;
+            transition: all 0.1s ease-in-out;
+        }
+
+        /* Show the dot inside the checked radio */
+        .radio-input input[type="radio"]:checked::before,
+        .radio-input input[type="checkbox"]:checked::before {
+            background-color: #fff;
+        }
+
+        /* Checked label background */
+        .radio-input input[type="radio"]:checked+.text,
+        .radio-input input[type="checkbox"]:checked+.text {
+            font-weight: bold;
+        }
+
+        /* ✅ Pulse Animation */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(67, 93, 216, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(67, 93, 216, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(67, 93, 216, 0);
+            }
+        }
+    </style>
 
     <section class="text-center page-banner-area overlay py-120 rpy-120 rel z-1 bgs-cover"
         style="background-image: url({{ asset('images/shop-page-banner-.jpg') }});">
@@ -643,8 +749,7 @@
 
                     if ($('input[name="shipping_charge"]:checked')) {
                         $('#shipping_charge').text('$ ' + shippingPrice.toFixed(2));
-                    }
-                    else {
+                    } else {
                         $('#shipping_charge').text('');
                     }
 
@@ -719,6 +824,24 @@
                 });
             });
 
+            $(document).ready(function() {
+                // Automatically go to Step 2 when a plan is selected
+                $('input[name="plan"]').on('change', function() {
+                    goToNextStep(1);
+                });
+
+                // Automatically go to Step 3 when a card preference is selected
+                $('input[name="card_preference"]').on('change', function() {
+                    goToNextStep(2);
+                });
+
+                // Enable Next Button for Step 3 when logo is uploaded
+                $('#card_logo').on('change', function() {
+                    validateStep3(); // Validate Step 3 when file input changes
+                    previewLogo(); // Show the preview of the logo
+                });
+            });
+
             // Navigate to the next step
             function goToNextStep(step) {
                 if (step === 1 && $('input[name="plan"]:checked').length) {
@@ -739,13 +862,64 @@
             function previousStep(step) {
                 $('#step' + step).hide();
                 $('#step' + (step - 1)).show();
+
+                // If returning to Step 1, uncheck all selected plans
+                if (step - 1 === 1) {
+                    $('input[name="plan"]').prop('checked', false);
+                }
             }
 
-            // Validate Step 3 (Enable Next button if logo is selected)
+
+            // Validate Step 3 (Enable Next button if logo, name, designation, and color are selected)
             function validateStep3() {
-                // Enable or disable the "Continue" button based on whether a file is uploaded
-                $('#nextBtn3').prop('disabled', $('#card_logo')[0].files.length === 0);
+                // Default validation flag
+                let isValid = true;
+
+                // 1. Validate Card Logo Upload (File Input)
+                if ($('#card_logo')[0].files.length === 0) {
+                    isValid = false;
+                }
+
+                // 2. Validate Card Holder Name (Text Input)
+                if ($('#card_holder_name').val().trim() === '') {
+                    isValid = false;
+                }
+
+                // 3. Validate Card Holder Designation (Text Input)
+                if ($('#card_holder_designation').val().trim() === '') {
+                    isValid = false;
+                }
+
+                // 4. Validate Card Holder Color (Text Input or Select)
+                if ($('#card_holder_color').is('select')) {
+                    if ($('#card_holder_color').val() === '') {
+                        isValid = false;
+                    }
+                } else if ($('#card_holder_color').val().trim() === '') {
+                    isValid = false;
+                }
+
+                // 5. Enable or Disable the "Continue" button
+                if (isValid) {
+                    $('#nextBtn3').prop('disabled', false).css({
+                        'opacity': '1',
+                        'cursor': 'pointer'
+                    });
+                } else {
+                    $('#nextBtn3').prop('disabled', true).css({
+                        'opacity': '0.5',
+                        'cursor': 'not-allowed'
+                    });
+                }
+
+                return isValid; // Return validation status
             }
+
+            // Call validateStep3 when necessary (e.g., after any field change or before moving to Step 4)
+            $('#card_logo, #card_holder_name, #card_holder_designation, #card_holder_color').on('input change', function() {
+                validateStep3();
+            });
+
 
             // Event listener to update the main card image when a new design is chosen
             $(document).ready(function() {
@@ -854,7 +1028,28 @@
                     firstOption.dispatchEvent(new Event("change"));
                 }
             });
+
+            // Show the order summuery accordion when shpping is
         </script>
-        {{-- In Card Choose Active Radio Card Color End --}}
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const shippingInputs = document.querySelectorAll('input[name="shipping_charge"]');
+                const accordionContainer = document.getElementById("accordionContainer");
+
+                // Hide accordion initially
+                accordionContainer.style.display = "none";
+
+                shippingInputs.forEach(input => {
+                    input.addEventListener("change", function() {
+                        // Show accordion when a shipping method is selected
+                        if (document.querySelector('input[name="shipping_charge"]:checked')) {
+                            accordionContainer.style.display = "block";
+                        } else {
+                            accordionContainer.style.display = "none";
+                        }
+                    });
+                });
+            });
+        </script>
     @endpush
 </x-frontend-app-layout>

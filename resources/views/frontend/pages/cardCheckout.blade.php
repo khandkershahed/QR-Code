@@ -103,7 +103,7 @@
                                 </div>
                                 <form action="{{ route('card.payment') }}" method="POST" id="payment-form">
                                     @csrf
-                                    <input type='hidden' name='stripeToken' id='stripe-token-id'> 
+                                    <input type='hidden' name='stripeToken' id='stripe-token-id'>
                                     <input type="hidden" name="plan_id" id="plan" value="{{ $plan->id }}">
                                     <input type="hidden" name="subtotal" id="subtotal" value="{{ $subtotal }}">
                                     {{-- <input type="hidden" name="quantity" id="quantity" value="{{ $quantity }}">
@@ -123,7 +123,7 @@
                                                     Name</label>
                                                 <input type="text" class="form-control" id="card-holder-name"
                                                     name=cardholder_name aria-describedby="emailHelp"
-                                                    placeholder="Name on the card">
+                                                    placeholder="write the card holder name here">
                                             </div>
                                         </div>
                                         <div class="text-center py-3">
@@ -136,7 +136,7 @@
                                                     Name</label>
                                                 <input type="text" class="form-control" id="shipping_name"
                                                     name="shipping_name" aria-describedby="shipping_name"
-                                                    placeholder="Eg: John emo"
+                                                    placeholder="Add shpping person name"
                                                     value="{{ old('shipping_name', Auth::user()->name) }}">
                                             </div>
                                         </div>
@@ -146,7 +146,7 @@
                                                     Email</label>
                                                 <input type="email" class="form-control" id="shipping_email"
                                                     name="shipping_email" aria-describedby="shipping_email"
-                                                    placeholder="demo@example.com"
+                                                    placeholder="write the shipping email"
                                                     value="{{ old('shipping_email', Auth::user()->email) }}">
                                             </div>
                                         </div>
@@ -155,7 +155,7 @@
                                                 <label for="shipping_address" class="form-label required">Shipping
                                                     Address</label>
                                                 <textarea class="form-control" id="shipping_address" name="shipping_address" aria-describedby="shipping_address"
-                                                    placeholder="address">{{ old('shipping_address', Auth::user()->address) }}</textarea>
+                                                    placeholder="write full shopping address">{{ old('shipping_address', Auth::user()->address) }}</textarea>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
@@ -164,7 +164,7 @@
                                                     Phone</label>
                                                 <input type="text" class="form-control" id="shipping_phone"
                                                     name="shipping_phone" aria-describedby="shipping_phone"
-                                                    placeholder="Eg: 02*****"
+                                                    placeholder="Write your phone number"
                                                     value="{{ old('shipping_phone', Auth::user()->phone) }}">
                                             </div>
                                         </div>
@@ -174,7 +174,7 @@
                                                     ZipCode</label>
                                                 <input type="text" class="form-control" id="shipping_zip_code"
                                                     name="shipping_zip_code" aria-describedby="shipping_zip_code"
-                                                    placeholder="Eg: 25236" value="{{ old('shipping_zip_code') }}">
+                                                    placeholder="write your zip code : 1216" value="{{ old('shipping_zip_code') }}">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
@@ -183,7 +183,7 @@
                                                     City</label>
                                                 <input type="text" class="form-control" id="shipping_city"
                                                     name="shipping_city" aria-describedby="shipping_city"
-                                                    placeholder="Eg: New York" value="{{ old('shipping_city') }}">
+                                                    placeholder="write the chipping city" value="{{ old('shipping_city') }}">
                                             </div>
                                         </div>
 
