@@ -231,7 +231,7 @@
             </div>
         </div>
         {{-- Modal Start For Check Plan  --}}
-        @if (empty($subscription))
+        {{-- @if (empty($subscription))
             <div class="modal fade bg-dark bg-opacity-75 show" id="kt_app_engage_prebuilts_modal" tabindex="-1"
                 aria-modal="true" role="dialog" style="display: block">
                 <div class="modal-dialog modal-dialog-centered modal-lg p-5 p-lg-10"
@@ -340,7 +340,7 @@
                     </div>
                 </div>
             </div>
-        @endif
+        @endif --}}
         {{-- Modal Start For Check Plan  --}}
     </div>
     @push('scripts')
