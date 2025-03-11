@@ -111,14 +111,14 @@
 
             <!-- Logo Positioned on the Image -->
             <div class="card-logo">
-                <img id="logoPreview" style="object-fit: contain;" src="{{ asset('images/logo.png') }}"
+                <img id="logoPreview" style="object-fit: contain;" src="{{ !empty(optional($nfc_card)->card_logo) ? asset('storage/'.optional($nfc_card)->card_logo) : asset('images/logo.png') }}"
                     alt="Card Logo Preview">
             </div>
 
             <!-- Card Info Placed Below the Image -->
             <div class="card-info">
-                <h3 class="mb-0 fw-bold">MD BADRODDUJA SAGAR</h3>
-                <p class="mb-0"><small>President & CEO</small></p>
+                <h3 class="mb-0 fw-bold card-info-name" id="card-info-name">{{ optional($nfc_card)->card_name }}</h3>
+                <p class="mb-0"><small class="card-info-designation" id="card-info-designation">{{ optional($nfc_card)->card_designation }}</small></p>
             </div>
         </div>
     </div>

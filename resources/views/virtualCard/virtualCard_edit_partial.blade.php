@@ -26,7 +26,8 @@
                         <img class="img-fluid" width="100px" src="{{ asset('images/no-nfc-card.jpg') }}" alt="">
                     </div>
                     <h1 class="fs-1" style="font-size: 50px !important;">No NFC Card Available!</h1>
-                    <p class="py-10">Your have <span class="text-danger fw-bold">0</span> NFC card to use. You need to purchase an NFC card first. After that, <br> you can customize it or
+                    <p class="py-10">Your have <span class="text-danger fw-bold">0</span> NFC card to use. You need to
+                        purchase an NFC card first. After that, <br> you can customize it or
                         link your
                         virtual card to the NFC card.</p>
                     <a href="{{ route('homePage') }}" class="btn text-white" style="background-color: #7239e9; ">
@@ -79,12 +80,14 @@
                     <!-- Stepper content and form -->
                     @if (strpos(Route::current()->getName(), 'user.') === 0)
                         <form class="form flex-grow-1 d-flex flex-column" novalidate="novalidate"
-                            id="kt_stepper_example_clickable_form" action="{{ route('user.nfc-card.update',optional($nfc_card)->id) }}"
-                            method="POST" enctype="multipart/form-data">
+                            id="kt_stepper_example_clickable_form"
+                            action="{{ route('user.nfc-card.update', optional($nfc_card)->id) }}" method="POST"
+                            enctype="multipart/form-data">
                         @else
                             <form class="form flex-grow-1 d-flex flex-column" novalidate="novalidate"
-                                id="kt_stepper_example_clickable_form" action="{{ route('admin.nfc-card.update',optional($nfc_card)->id) }}"
-                                method="POST" enctype="multipart/form-data">
+                                id="kt_stepper_example_clickable_form"
+                                action="{{ route('admin.nfc-card.update', optional($nfc_card)->id) }}" method="POST"
+                                enctype="multipart/form-data">
                     @endif
 
                     @csrf
@@ -156,8 +159,8 @@
                 </div>
             </div>
 
-            <div
-                class="card-body custom-card-body overflow-auto px-0 pt-3 d-flex justify-content-center align-items-center" style="background-color: #ebebeb;">
+            <div class="card-body custom-card-body overflow-auto px-0 pt-3 d-flex justify-content-center align-items-center"
+                style="background-color: #ebebeb;">
                 @include('virtualCard.partials.virtual_card_preview')
             </div>
         </div>
@@ -178,7 +181,7 @@
             $(window).resize(matchCardHeights);
         });
     </script>
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             $('#kt_stepper_example_clickable_form input:not([type="radio"]), #kt_stepper_example_clickable_form textarea, #kt_stepper_example_clickable_form input:not([type="color"])')
                 .on('keyup change', function() {
@@ -211,9 +214,8 @@
                     console.log("Input Name:", inputName, "Input Value:", inputValue);
                 });
         });
+    </script> --}}
 
-
-    </script>
 
 
 
@@ -232,7 +234,7 @@
             stepper.goPrevious(); // go previous step
         });
     </script>
-    
+
 
     <script>
         $(document).ready(function() {
