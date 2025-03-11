@@ -23,7 +23,7 @@
                     <!-- Select Dropdown for Color Options -->
                     <select id="card_color" class="form-select form-select-outline mb-3 mb-lg-0"
                         onchange="updateColorInput(this)">
-                        <option disabled selected>Choose</option>
+                        <option disabled>Choose</option>
                         <option value="black" @selected(optional($nfc_card)->card_color == "black")>Black</option>
                         <option value="gold" @selected(optional($nfc_card)->card_color == "gold")>Gold</option>
                         {{-- <option value="#FFFFFF">White</option>
@@ -46,7 +46,7 @@
                 <div class="d-flex">
                     <!-- Select Dropdown for Color Options -->
                     <select class="form-select form-select-outline mb-3 mb-lg-0" name="card_preference">
-                        <option disabled selected>Choose</option>
+                        <option disabled>Choose</option>
                         <option value="plastic" @selected(optional($nfc_card)->card_preference == "plastic")>Plastic</option>
                         <option value="metal" @selected(optional($nfc_card)->card_preference == "metal")>Metal</option>
                     </select>
