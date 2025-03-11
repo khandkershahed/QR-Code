@@ -355,7 +355,7 @@
         }
 
         .card-design-box {
-            background-color: #eee;
+            background-color: transparent;
             padding-top: 30px;
             padding-bottom: 30px;
             border-radius: 10px;
@@ -439,9 +439,9 @@
             padding: 0px 20px;
             width: 100%;
             cursor: pointer;
-            height: 50px;
+            height: 70px;
             position: relative;
-            border: 2px solid #ccc;
+            border: 1px solid #eee;
             /* Default border */
             border-radius: 10px;
             transition: all 0.3s ease-in-out;
@@ -476,7 +476,7 @@
             justify-content: center;
             align-items: center;
             background-color: #ABABAB;
-            border: 2px solid #435dd8;
+            border: 4px solid #fa903c;
             transition: all 0.3sease-in-out;
             cursor: pointer;
             padding: 10px;
@@ -528,6 +528,48 @@
                 box-shadow: 0 0 0 0 rgba(67, 93, 216, 0);
             }
         }
+
+        .continue-back {
+            background: transparent;
+            border: 2px solid #ABABAB;
+            padding: 2px 18px;
+            color: #ABABAB;
+            border-radius: 14px !important;
+        }
+
+        .continue-back:hover {
+            background: #ABABAB;
+            border: 2px solid #ABABAB;
+            padding: 2px 18px;
+            color: #000;
+            border-radius: 14px !important;
+        }
+
+        .continue-next {
+            background: transparent;
+            border: 2px solid #fd793a;
+            padding: 2px 18px;
+            color: #fd793a;
+            border-radius: 14px !important;
+        }
+
+        .continue-next:hover {
+            background: #fd793a;
+            border: 2px solid #fd793a;
+            padding: 2px 18px;
+            color: #fff;
+            border-radius: 14px !important;
+        }
+
+        .chosen-card-bg {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 0px;
+            background: #6610f21f;
+            border-radius: 10px;
+        }
     </style>
 
     <section class="text-center page-banner-area overlay py-120 rpy-120 rel z-1 bgs-cover"
@@ -552,160 +594,343 @@
             ? $cardProduct->descriptions
             : json_decode($cardProduct->descriptions);
     @endphp
-    <section class="plan-box-container">
+    <section class="py-0 plan-box-container">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="border-0 card plan">
-                        <div class="p-0 mt-20 bg-transparent border-0 card-header">
-                            <p class="mb-0 title">For {{ ucfirst($cardProduct->card_type) }}
-                                @if ($cardProduct->card_type == 'team')
-                                    <i class="fas fa-users"></i>
-                                @else
-                                    <i class="fas fa-user-tie"></i>
-                                @endif
-                            </p>
-                            @if ($cardProduct->card_type == 'team')
-                                <p class="mb-0">Select your preferred card, available in durable plastic or premium
-                                    metal.
+                <div class="pb-20 mb-30 bg-light"
+                    style="border-bottom-left-radius: 20px;border-bottom-right-radius: 20px;">
+                    <div class="col-lg-12">
+                        <div class="bg-transparent border-0 card plan">
+                            <div class="p-0 mt-20 text-center bg-transparent border-0 card-header">
+                                <p class="mb-0 title">For {{ ucfirst($cardProduct->card_type) }}
+                                    @if ($cardProduct->card_type == 'team')
+                                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="60" height="60"
+                                            x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512"
+                                            xml:space="preserve" class="">
+                                            <g>
+                                                <path fill="#11bef7"
+                                                    d="M411.466 51.409c-1.645 2.863-5.301 3.884-8.164 2.24-2.863-1.616-3.883-5.272-2.239-8.164l21.572-38.013c2.409-4.649 8.476-4.649 10.885 0l21.572 38.013c1.644 2.891.624 6.548-2.239 8.164a5.984 5.984 0 0 1-8.164-2.24l-10.602-18.708v244.29c0 3.316-2.693 6.009-6.009 6.009s-6.009-2.693-6.009-6.009V32.701l-10.602 18.708z"
+                                                    opacity="1" data-original="#11bef7"></path>
+                                                <path fill="#00ade6" d="M9.995 189.457h348.35v39.033H9.995z"
+                                                    opacity="1" data-original="#00ade6"></path>
+                                                <path fill="#11bef7" d="M33.409 189.457h324.935v39.033H33.409z"
+                                                    opacity="1" data-original="#11bef7"></path>
+                                                <g fill-rule="evenodd">
+                                                    <path fill="#a0a9b0"
+                                                        d="M139.113 329.12 9.995 228.49h348.35L229.199 329.12v95.754h-90.085V329.12z"
+                                                        opacity="1" data-original="#a0a9b0"></path>
+                                                    <path fill="#cd212d"
+                                                        d="M233.479 112.128c1.984-54.198 122.882-54.198 124.866 0v29.197H233.479z"
+                                                        opacity="1" data-original="#cd212d" class=""></path>
+                                                    <path fill="#ee2b39"
+                                                        d="M305.677 71.961c27.156 2.58 51.761 15.959 52.667 40.167v29.197H253.037v-29.197c.879-24.208 25.512-37.587 52.64-40.167z"
+                                                        opacity="1" data-original="#ee2b39" class=""></path>
+                                                    <path fill="#e2b698"
+                                                        d="M295.897 9.995c18.227 0 33.024 14.797 33.024 33.024s-14.797 32.995-33.024 32.995-32.995-14.768-32.995-32.995 14.769-33.024 32.995-33.024z"
+                                                        opacity="1" data-original="#e2b698" class=""></path>
+                                                    <path fill="#efc9ae"
+                                                        d="M302.814 10.732c14.91 3.175 26.107 16.413 26.107 32.287s-11.197 29.112-26.107 32.287c-14.938-3.175-26.107-16.441-26.107-32.287s11.168-29.112 26.107-32.287z"
+                                                        opacity="1" data-original="#efc9ae" class=""></path>
+                                                    <path fill="#f2992c"
+                                                        d="M134.861 112.128c-1.984-54.198-122.882-54.198-124.866 0v29.197h124.866z"
+                                                        opacity="1" data-original="#f2992c"></path>
+                                                    <path fill="#faa845"
+                                                        d="M134.861 112.128c-.879-24.208-25.512-37.587-52.639-40.167-27.156 2.58-51.761 15.959-52.64 40.167v29.197h105.279z"
+                                                        opacity="1" data-original="#faa845" class=""></path>
+                                                    <path fill="#e2b698"
+                                                        d="M72.442 9.995c-18.227 0-33.023 14.797-33.023 33.024s14.797 32.995 33.023 32.995 32.995-14.768 32.995-32.995S90.669 9.995 72.442 9.995z"
+                                                        opacity="1" data-original="#e2b698" class=""></path>
+                                                    <path fill="#efc9ae"
+                                                        d="M79.331 75.306c14.91-3.175 26.107-16.441 26.107-32.287S94.241 13.907 79.331 10.732c-14.91 3.175-26.107 16.413-26.107 32.287s11.197 29.112 26.107 32.287z"
+                                                        opacity="1" data-original="#efc9ae" class=""></path>
+                                                    <path fill="#00ade6"
+                                                        d="M246.603 137.894c-1.984-54.17-122.882-54.17-124.866 0v29.197h124.866z"
+                                                        opacity="1" data-original="#00ade6"></path>
+                                                    <path fill="#11bef7"
+                                                        d="M246.603 137.894c-.879-24.179-25.512-37.587-52.639-40.167-27.156 2.58-51.761 15.988-52.64 40.167v29.197h105.279z"
+                                                        opacity="1" data-original="#11bef7"></path>
+                                                    <path fill="#e2b698"
+                                                        d="M184.156 35.79c-18.227 0-32.995 14.769-32.995 32.995s14.769 33.024 32.995 33.024S217.18 87.04 217.18 68.785 202.411 35.79 184.156 35.79z"
+                                                        opacity="1" data-original="#e2b698" class=""></path>
+                                                    <path fill="#efc9ae"
+                                                        d="M191.072 101.072c14.91-3.175 26.107-16.413 26.107-32.287s-11.197-29.112-26.107-32.258c-14.91 3.146-26.107 16.413-26.107 32.258s11.197 29.112 26.107 32.287z"
+                                                        opacity="1" data-original="#efc9ae" class=""></path>
+                                                </g>
+                                                <path fill="#11bef7"
+                                                    d="M178.175 424.874c0-3.316 2.693-6.009 5.981-6.009a6.013 6.013 0 0 1 6.01 6.009v71.121h231.959l-.028-92.835c0-3.288 2.665-5.953 5.981-5.953 3.288 0 5.981 2.665 5.981 5.953l.057 98.844a6.013 6.013 0 0 1-6.009 6.01h-243.95c-3.288 0-5.981-2.693-5.981-6.01v-77.131z"
+                                                    opacity="1" data-original="#11bef7"></path>
+                                                <path fill="#f7b84e" fill-rule="evenodd"
+                                                    d="M428.077 276.991c40.819 0 73.928 33.109 73.928 73.956s-33.109 73.927-73.928 73.927-73.928-33.109-73.928-73.927 33.081-73.956 73.928-73.956z"
+                                                    opacity="1" data-original="#f7b84e"></path>
+                                                <path fill="#ffcb5b" fill-rule="evenodd"
+                                                    d="M436.326 277.473c36.935 4.082 65.679 35.433 65.679 73.474s-28.744 69.364-65.679 73.446c-36.936-4.082-65.679-35.405-65.679-73.446s28.744-69.392 65.679-73.474z"
+                                                    opacity="1" data-original="#ffcb5b"></path>
+                                                <path fill="#faa845"
+                                                    d="M454.184 330.962c0 3.316-2.693 5.981-6.009 5.981s-6.009-2.665-6.009-5.981c0-10.233-15.619-15.364-24.407-7.767-2.324 2.013-3.798 4.762-3.798 7.767 0 19.162 43.2 2.891 43.2 37.361 0 13.039-10.488 23.046-23.074 25.427v6.917c0 3.317-2.693 6.01-6.009 6.01s-6.009-2.693-6.009-6.01v-6.917c-12.586-2.381-23.103-12.387-23.103-25.427 0-3.317 2.693-6.01 6.009-6.01s6.01 2.693 6.01 6.01c0 12.529 18.878 18.794 29.508 9.609 2.892-2.523 4.677-5.896 4.677-9.609 0-22.337-43.2-4.904-43.2-37.361 0-11.509 9.071-20.438 20.098-22.762v-7.002c0-3.316 2.693-6.01 6.009-6.01s6.009 2.693 6.009 6.01v7.002c11.027 2.324 20.098 11.253 20.098 22.762z"
+                                                    opacity="1" data-original="#faa845" class=""></path>
+                                                <path fill="#b0b7bd" fill-rule="evenodd"
+                                                    d="M162.527 329.12 33.409 228.49h324.935L229.198 329.12v95.754h-66.671z"
+                                                    opacity="1" data-original="#b0b7bd"></path>
+                                            </g>
+                                        </svg>
+                                    @else
+                                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="60" height="60"
+                                            x="0" y="0" viewBox="0 0 16.933 16.933"
+                                            style="enable-background:new 0 0 512 512" xml:space="preserve"
+                                            class="">
+                                            <g>
+                                                <path fill="#d0e5f8"
+                                                    d="m6.59 9.787-2.257.91c-.746.3-1.283.675-1.446 1.476l-.508 2.228c-.182.797.645 1.477 1.446 1.477h11.372c.801 0 1.628-.68 1.446-1.477l-.508-2.228c-.163-.8-.7-1.175-1.446-1.476l-2.258-.91z"
+                                                    opacity="1" data-original="#d0e5f8" class=""></path>
+                                                <g fill="#b0d2f0">
+                                                    <path
+                                                        d="m4.598 10.858-.365-.01c-.746.3-1.18.791-1.344 1.592l-.12.524h1.2a.528.528 0 1 0 0-1.058h.529a.528.528 0 0 0 .1-1.048zM9.79 11.904l-.795 3.968h1.853l-.794-4.233zM11.641 9.522l1.059.53-1.583 2.116-1.063-1.323z"
+                                                        fill="#b0d2f0" opacity="1" data-original="#b0d2f0"></path>
+                                                    <path
+                                                        d="m11.11 11.507-1.059.794-1.057-.794.795-.794h.53zM11.373 9.787l2.258.91c.745.3 1.282.675 1.446 1.476l.508 2.228c.182.797-.645 1.477-1.446 1.477h1.058c.801 0 1.628-.68 1.446-1.477l-.508-2.228c-.163-.8-.7-1.175-1.446-1.476l-2.258-.91z"
+                                                        fill="#b0d2f0" opacity="1" data-original="#b0d2f0"></path>
+                                                </g>
+                                                <path fill="#d0e5f8"
+                                                    d="M2.381 8.996V7.938H.794a.528.528 0 1 1 0-1.059h.529V5.821h-.53a.528.528 0 1 1 0-1.058h1.588v-.265a.528.528 0 1 1 1.059 0v4.498z"
+                                                    opacity="1" data-original="#d0e5f8" class=""></path>
+                                                <path fill="#549ad4"
+                                                    d="M2.375 5.47a.265.265 0 0 0-.26.268v1.125c0 .353.53.353.53 0V5.738a.265.265 0 0 0-.27-.268z"
+                                                    opacity="1" data-original="#549ad4"></path>
+                                                <path fill="#b0d2f0"
+                                                    d="M3.017 3.98C2.842 6.848 1.249 7.444.28 7.537c.057.23.263.4.511.4H2.38v5.821h1.058v-9.26a.528.528 0 0 0-.42-.518z"
+                                                    opacity="1" data-original="#b0d2f0"></path>
+                                                <path fill="#ffd1b5"
+                                                    d="M2.38 8.731c-.585 0-1.057.472-1.057 1.058v2.117c0 .586.472 1.058 1.058 1.058h1.323a.528.528 0 1 0 0-1.058h.529a.528.528 0 1 0 0-1.058.528.528 0 1 0 0-1.059h-.53a.528.528 0 1 0 0-1.058z"
+                                                    opacity="1" data-original="#ffd1b5" class=""></path>
+                                                <path fill="#ffb98d"
+                                                    d="M3.61 8.731c.291 2.008-1.17 3.14-2.162 3.667.177.336.525.566.933.566h1.323a.528.528 0 1 0 0-1.058h.529a.528.528 0 1 0 0-1.058.528.528 0 1 0 0-1.059h-.53a.528.528 0 1 0 0-1.058z"
+                                                    opacity="1" data-original="#ffb98d"></path>
+                                                <path fill="#427096"
+                                                    d="M12.433 13.49h2.116c.147 0 .265.12.265.266v.528a.264.264 0 0 1-.265.265h-2.116a.264.264 0 0 1-.265-.265v-.528c0-.147.118-.265.265-.265z"
+                                                    opacity="1" data-original="#427096" class=""></path>
+                                                <path fill="#ffd1b5"
+                                                    d="M7.937 8.464v1.323l1.323 1.058h.53l1.322-1.058V8.464z"
+                                                    opacity="1" data-original="#ffd1b5" class=""></path>
+                                                <path fill="#427096" d="m9.26 10.71-.794 5.162h2.117l-.794-5.163z"
+                                                    opacity="1" data-original="#427096" class=""></path>
+                                                <path fill="#365b7a"
+                                                    d="M9.807 10.803c.072 2.191-.608 3.854-1.229 4.342l-.112.727h2.117z"
+                                                    opacity="1" data-original="#365b7a" class=""></path>
+                                                <path fill="#ffb98d"
+                                                    d="M11.112 8.569c-.264.953-1.371 1.622-2.214 1.987l.362.29h.53l1.322-1.059z"
+                                                    opacity="1" data-original="#ffb98d"></path>
+                                                <path fill="#365b7a"
+                                                    d="m10.581 11.374-1.059.794-1.058-.794.796-.793h.53z"
+                                                    opacity="1" data-original="#365b7a" class=""></path>
+                                                <path fill="#427096"
+                                                    d="M9.125 0a6.96 6.96 0 0 0-1.99.313c-2.517.798-1.747 3.732-1.249 5.038l2.475-1.168a9.885 9.885 0 0 0 1.23-.226c.321-.086 1.096-.21 1.729-.07.316.07.592.2.787.413.195.211.326.512.326.99-.002.288.395.37.508.105 0 0 .447-1.019.535-2.105.045-.543.004-1.116-.265-1.596-.27-.48-.786-.833-1.583-.901-.617-.586-1.553-.8-2.503-.793z"
+                                                    opacity="1" data-original="#427096" class=""></path>
+                                                <path fill="#ffd1b5"
+                                                    d="M6.275 4.764a1.058 1.058 0 1 0 .461 2.04c.165.512.518 1.348 1.2 1.924.51.433 1.057.53 1.587.53s1.09-.082 1.587-.53c.662-.596 1.02-1.423 1.192-1.93a1.058 1.058 0 1 0 .381-2.038c-.166-1.322-1.57-1.323-1.57-1.323-4.499 1.323-5.028 0-5.028 0z"
+                                                    opacity="1" data-original="#ffd1b5" class=""></path>
+                                                <path fill="#365b7a"
+                                                    d="M9.125 0c-.058 0-.115.006-.173.008.824.045 1.607.273 2.147.785.796.068 1.313.421 1.583.901.27.48.31 1.053.265 1.596-.08.982-.437 1.868-.508 2.037.034.256.394.321.502.068 0 0 .447-1.019.535-2.105.045-.543.004-1.116-.265-1.596-.27-.48-.786-.833-1.583-.9-.617-.586-1.553-.8-2.503-.794z"
+                                                    opacity="1" data-original="#365b7a" class=""></path>
+                                                <path fill="#ffb98d"
+                                                    d="M11.112 3.437c-4.044 1.19-4.874.248-5.002.044-.005.018-.007.037-.01.056l.071.505c.5.849 3.002.282 3.351.188.714-.19 3.175-.529 3.175 1.588 0 0 .183-.425.334-1.003a1.058 1.058 0 0 0-.348-.054c-.145-1.335-1.24-1.438-1.571-1.324z"
+                                                    opacity="1" data-original="#ffb98d"></path>
+                                                <path fill="#ffb98d"
+                                                    d="M11.572 3.509c.477 3.217-1.9 4.918-3.63 5.224.51.428 1.054.524 1.58.524.53 0 1.092-.081 1.588-.529.662-.596 1.02-1.423 1.192-1.93a1.058 1.058 0 1 0 .381-2.038c-.103-.822-.686-1.133-1.111-1.251z"
+                                                    opacity="1" data-original="#ffb98d"></path>
+                                                <path fill="#365b7a"
+                                                    d="M6.083 3.172c0 .702.86.836 1.725.793-.654-.038-1.196-.237-1.196-.793 0-1.183 2.288-1.323 2.288-1.323s-2.817 0-2.817 1.323z"
+                                                    opacity="1" data-original="#365b7a" class=""></path>
+                                                <path fill="#74a2c8"
+                                                    d="M6.83 1.528c-.188.109-.4.095-.472-.03s.022-.316.21-.425.4-.095.472.03-.021.316-.21.425zM7.427 1.021c-.088.05-.186.045-.22-.014-.033-.058.01-.146.098-.197.087-.05.185-.044.219.015.034.058-.01.146-.097.196zM7.319 3.11c-.14.075-.294.06-.344-.034-.05-.094.024-.23.164-.304s.294-.06.344.034c.05.094-.024.23-.164.304zM7.767 2.756c-.065.035-.137.028-.16-.016s.011-.106.076-.14c.065-.035.137-.028.16.015s-.011.107-.076.141z"
+                                                    opacity="1" data-original="#74a2c8"></path>
+                                                <path fill="#427096"
+                                                    d="m7.67 9.258-1.058.529 1.583 2.117 1.063-1.323zM11.375 9.258l1.058.529-1.583 2.117-1.063-1.323z"
+                                                    opacity="1" data-original="#427096" class=""></path>
+                                                <path fill="#365b7a"
+                                                    d="M11.58 9.36c.061 1.221-.732 2.015-1.146 2.025l.416.518 1.583-2.116z"
+                                                    opacity="1" data-original="#365b7a" class=""></path>
+                                                <path fill="#3588cb"
+                                                    d="M2.644 5.749a3.17 3.17 0 0 1-.53.87v.244c.009.344.522.344.53 0z"
+                                                    opacity="1" data-original="#3588cb"></path>
+                                                <path fill="#d0e5f8"
+                                                    d="M4.76 15.081a1.852 1.852 0 1 1-3.704 0 1.852 1.852 0 0 1 3.704 0z"
+                                                    opacity="1" data-original="#d0e5f8" class=""></path>
+                                                <path fill="#b0d2f0"
+                                                    d="M3.926 13.536a1.852 1.852 0 0 1-1.547 2.868c-.362 0-.717-.107-1.019-.307a1.852 1.852 0 1 0 2.566-2.561z"
+                                                    opacity="1" data-original="#b0d2f0"></path>
+                                                <path fill="#549ad4"
+                                                    d="M3.702 15.081a.794.794 0 1 1-1.588 0 .794.794 0 0 1 1.588 0z"
+                                                    opacity="1" data-original="#549ad4"></path>
+                                                <path fill="#3588cb"
+                                                    d="M2.114 15.081c0 .35.23.66.565.76a.794.794 0 0 1 .758-1.024c.078 0 .155.011.23.034a.794.794 0 0 0-1.553.23z"
+                                                    opacity="1" data-original="#3588cb"></path>
+                                            </g>
+                                        </svg>
+                                    @endif
                                 </p>
-                            @else
-                                <p class="mb-0">Complimentary Smart Card included.</p>
-                            @endif
-                            <div class="link">
-                                <a href="{{ route('card.features', $cardProduct->slug) }}" target="_blank">See all
-                                    features <i class="fas fa-arrow-right-long"></i></a>
+                                @if ($cardProduct->card_type == 'team')
+                                    <p class="mb-0">Select your preferred card, available in durable <br> plastic or
+                                        premium
+                                        metal.
+                                    </p>
+                                @else
+                                    <p class="mb-0">Complimentary Smart Card included.</p>
+                                @endif
+                                <div class="link">
+                                    <a href="{{ route('card.features', $cardProduct->slug) }}" target="_blank">See all
+                                        features <i class="fas fa-arrow-right-long"></i></a>
+                                </div>
+                            </div>
+                            <div class="p-0 card-body">
+                                <div class="form-container">
+                                    <div id="progressBarContainer" style="display: none">
+                                        <div style="display: flex; justify-content: space-between;">
+                                            <span>Choose a Plan</span>
+                                            <span>Card Customize</span>
+                                            <span>Step 3</span>
+                                        </div>
+                                        <div id="progressBar">
+                                            <div id="progress"></div>
+                                        </div>
+                                    </div>
+                                    @include('frontend.card.form')
+                                </div>
                             </div>
                         </div>
-                        <div class="p-0 card-body">
-                            <div class="form-container">
-                                <div id="progressBarContainer" style="display: none">
-                                    <div style="display: flex; justify-content: space-between;">
-                                        <span>Choose a Plan</span>
-                                        <span>Card Customize</span>
-                                        <span>Step 3</span>
-                                    </div>
-                                    <div id="progressBar">
-                                        <div id="progress"></div>
-                                    </div>
+                    </div>
+                    <div class=" col-lg-12">
+                        <div class="mb-10 card nfc-card gift-card">
+                            <p class="mb-0 gift-title">Purchase an NFC as Profile</p>
+                            <p class="mb-0 gift-para">Get a smart, contactless NFC card or a secure virtual
+                                card—ideal for seamless transactions, networking, and digital interactions.</p>
+                            <div class="mt-2 d-flex justify-content-between align-items-end">
+                                <div>
+                                    <p class="pb-0 mb-0 gift-para">✔ Instant activation and easy setup</p>
+                                    <p class="pb-0 mb-0 gift-para">✔ Secure and contactless transactions</p>
                                 </div>
-                                @include('frontend.card.form')
+
+                                <div>
+                                    <p class="mb-0 card-link gift-title">Get Yours Now -></p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-12">
-                    <a href="">
-                        <div class="card gift-card">
-                            <p class="mb-0 gift-title">Gift A Purchased Card</p>
-                            <p class="mb-0 gift-para">Purchase a card and gift it to others, available as an e-Gift or a
-                                beautifully packaged Smart Card—perfect for client appreciation or event giveaways.</p>
-
-                            <div>
-                                <p class="mb-0 gift-link">Get It Now -></p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-12">
-                    <h2 class="mt-30">FAQ Accordion</h2>
-                    <div class="accordion" id="accordionExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header rounded-0" id="headingOne">
-                                <button class="accordion-button rounded-0 collapsed" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
-                                    aria-controls="collapseOne">
-                                    How many cards are included in the Teams subscription?
-                                </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    Each subscription seat includes a complimentary NFC smart card, allowing seamless
-                                    access and functionality. If your team requires additional smart cards, you can
-                                    purchase them separately for $39 each. These cards are designed for durability and
-                                    security, ensuring that every team member has access to the necessary features
-                                    without interruption.
+                <div class=" bg-light" style="border-top-left-radius: 20px;border-top-right-radius: 20px;">
+                    <div class="col-lg-12">
+                        <h2 class="pt-4">FAQ Accordion</h2>
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header rounded-0" id="headingOne">
+                                    <button class="accordion-button rounded-0 collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
+                                        aria-controls="collapseOne">
+                                        How many cards are included in the Teams subscription?
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse"
+                                    aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        Each subscription seat includes a complimentary NFC smart card, allowing
+                                        seamless
+                                        access and functionality. If your team requires additional smart cards, you can
+                                        purchase them separately for $39 each. These cards are designed for durability
+                                        and
+                                        security, ensuring that every team member has access to the necessary features
+                                        without interruption.
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header rounded-0" id="headingTwo">
-                                <button class="accordion-button collapsed rounded-0" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
-                                    aria-controls="collapseTwo">
-                                    What if we lose a card?
-                                </button>
-                            </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    Losing a card is not a problem! You can easily order a replacement NFC smart card
-                                    for $39 each. To ensure your security, we recommend deactivating the lost card
-                                    immediately and activating the new one upon receipt. This prevents unauthorized use
-                                    and ensures your team continues to operate smoothly. Our support team is also
-                                    available to assist with any issues related to lost or misplaced cards.
+                            <div class="accordion-item">
+                                <h2 class="accordion-header rounded-0" id="headingTwo">
+                                    <button class="accordion-button collapsed rounded-0" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
+                                        aria-controls="collapseTwo">
+                                        What if we lose a card?
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse"
+                                    aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        Losing a card is not a problem! You can easily order a replacement NFC smart
+                                        card
+                                        for $39 each. To ensure your security, we recommend deactivating the lost card
+                                        immediately and activating the new one upon receipt. This prevents unauthorized
+                                        use
+                                        and ensures your team continues to operate smoothly. Our support team is also
+                                        available to assist with any issues related to lost or misplaced cards.
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header rounded-0" id="headingThree">
-                                <button class="accordion-button collapsed rounded-0" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
-                                    aria-controls="collapseThree">
-                                    How do we customize our smart cards?
-                                </button>
-                            </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    We offer full customization options to align your NFC smart cards with your brand
-                                    identity. Once you provide your logo, brand colors, and any specific design
-                                    preferences, our professional design team will create a high-quality proof for you
-                                    to review. You can request modifications until you're satisfied with the final
-                                    design. Once approved, your customized NFC smart cards will be produced and shipped
-                                    to you, ensuring they match your company’s branding and enhance your professional
-                                    presence.
+                            <div class="accordion-item">
+                                <h2 class="accordion-header rounded-0" id="headingThree">
+                                    <button class="accordion-button collapsed rounded-0" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                                        aria-expanded="false" aria-controls="collapseThree">
+                                        How do we customize our smart cards?
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse"
+                                    aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        We offer full customization options to align your NFC smart cards with your
+                                        brand
+                                        identity. Once you provide your logo, brand colors, and any specific design
+                                        preferences, our professional design team will create a high-quality proof for
+                                        you
+                                        to review. You can request modifications until you're satisfied with the final
+                                        design. Once approved, your customized NFC smart cards will be produced and
+                                        shipped
+                                        to you, ensuring they match your company’s branding and enhance your
+                                        professional
+                                        presence.
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header rounded-0" id="headingFour">
-                                <button class="accordion-button collapsed rounded-0" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
-                                    aria-controls="collapseFour">
-                                    Can we use these smart cards for multiple purposes?
-                                </button>
-                            </h2>
-                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    Absolutely! Our NFC smart cards are highly versatile and can be programmed for
-                                    multiple functions. They can be used for secure office access, digital business
-                                    cards, membership verification, time tracking, and more. Depending on your needs,
-                                    you can integrate them with your existing systems or use them with compatible
-                                    NFC-enabled devices. If you need help setting up multiple functions, our team is
-                                    happy to assist.
+                            <div class="accordion-item">
+                                <h2 class="accordion-header rounded-0" id="headingFour">
+                                    <button class="accordion-button collapsed rounded-0" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseFour"
+                                        aria-expanded="false" aria-controls="collapseFour">
+                                        Can we use these smart cards for multiple purposes?
+                                    </button>
+                                </h2>
+                                <div id="collapseFour" class="accordion-collapse collapse"
+                                    aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        Absolutely! Our NFC smart cards are highly versatile and can be programmed for
+                                        multiple functions. They can be used for secure office access, digital business
+                                        cards, membership verification, time tracking, and more. Depending on your
+                                        needs,
+                                        you can integrate them with your existing systems or use them with compatible
+                                        NFC-enabled devices. If you need help setting up multiple functions, our team is
+                                        happy to assist.
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header rounded-0" id="headingSevenn">
-                                <button class="accordion-button collapsed rounded-0" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#collapseSevenn" aria-expanded="false"
-                                    aria-controls="collapseSevenn">
-                                    How long do NFC smart cards last?
-                                </button>
-                            </h2>
-                            <div id="collapseSevenn" class="accordion-collapse collapse"
-                                aria-labelledby="headingSevenn" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    Our NFC smart cards are designed for long-term use, with an average lifespan of 3 to
-                                    5 years, depending on usage and handling. They are built using durable materials to
-                                    withstand daily wear and tear, ensuring reliability over time. Proper care—such as
-                                    keeping them away from extreme heat, water, and strong magnetic fields—will help
-                                    extend their lifespan. If your card becomes damaged, you can easily order a
-                                    replacement.
+                            <div class="accordion-item">
+                                <h2 class="accordion-header rounded-0" id="headingSevenn">
+                                    <button class="accordion-button collapsed rounded-0" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseSevenn"
+                                        aria-expanded="false" aria-controls="collapseSevenn">
+                                        How long do NFC smart cards last?
+                                    </button>
+                                </h2>
+                                <div id="collapseSevenn" class="accordion-collapse collapse"
+                                    aria-labelledby="headingSevenn" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        Our NFC smart cards are designed for long-term use, with an average lifespan of
+                                        3 to
+                                        5 years, depending on usage and handling. They are built using durable materials
+                                        to
+                                        withstand daily wear and tear, ensuring reliability over time. Proper care—such
+                                        as
+                                        keeping them away from extreme heat, water, and strong magnetic fields—will help
+                                        extend their lifespan. If your card becomes damaged, you can easily order a
+                                        replacement.
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -830,10 +1055,10 @@
                     goToNextStep(1);
                 });
 
-                // Automatically go to Step 3 when a card preference is selected
-                $('input[name="card_preference"]').on('change', function() {
-                    goToNextStep(2);
-                });
+                // // Automatically go to Step 3 when a card preference is selected
+                // $('input[name="card_preference"]').on('change', function() {
+                //     goToNextStep(2);
+                // });
 
                 // Enable Next Button for Step 3 when logo is uploaded
                 $('#card_logo').on('change', function() {
@@ -870,6 +1095,7 @@
             }
 
 
+            // Validate Step 3 (Enable Next button if logo, name, designation, and color are selected)
             $(document).ready(function() {
                 function validateStep3() {
                     let isValid = true;
