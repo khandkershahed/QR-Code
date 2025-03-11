@@ -64,7 +64,7 @@
     </div>
     <!-- Step 2 -->
     <div class="form-step" id="step2" style="display:none;">
-        <div class="text-center pt-30">
+        <div class="text-center pt-30 mt-30 mb-50">
             <h4 class="mb-0">2.Choose Card Type!</h4>
             <p class="mb-0">A card that suits you best, order now.</p>
         </div>
@@ -578,17 +578,17 @@
             </div>
             <div class="col-6">
                 <div class="mt-5">
-                    <label for="card_holder_name">Card Holder Name <span class="text-danger">*</span></label>
-                    <input class="border form-control" type="text" name="card_holder_name" id="card_holder_name"
+                    <label for="card_name">Card Holder Name <span class="text-danger">*</span></label>
+                    <input class="border form-control" type="text" name="card_name" id="card_name"
                         oninput="previewName()" placeholder="Enter Card Holder Name">
                 </div>
             </div>
             <div class="col-6">
                 <div class="mt-5">
-                    <label for="card_holder_designation">Card Holder Designation <span
+                    <label for="card_designation">Card Holder Designation <span
                             class="text-danger">*</span></label>
-                    <input class="border form-control" type="text" name="card_holder_designation"
-                        id="card_holder_designation" oninput="previewDesignation()"
+                    <input class="border form-control" type="text" name="card_designation"
+                        id="card_designation" oninput="previewDesignation()"
                         placeholder="Enter Card Holder Designation">
                 </div>
             </div>

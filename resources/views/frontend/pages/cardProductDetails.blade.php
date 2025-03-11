@@ -800,7 +800,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class=" col-lg-12">
+                    <div class="mt-50 col-lg-12">
                         <div class="mb-10 card nfc-card gift-card">
                             <p class="mb-0 gift-title">Purchase an NFC as Profile</p>
                             <p class="mb-0 gift-para">Get a smart, contactless NFC card or a secure virtual
@@ -1106,12 +1106,12 @@
                     }
 
                     // Validate Card Holder Name
-                    if ($('#card_holder_name').val().trim() === '') {
+                    if ($('#card_name').val().trim() === '') {
                         isValid = false;
                     }
 
                     // Validate Card Holder Designation
-                    if ($('#card_holder_designation').val().trim() === '') {
+                    if ($('#card_designation').val().trim() === '') {
                         isValid = false;
                     }
 
@@ -1125,7 +1125,7 @@
                 }
 
                 // Attach Event Listeners
-                $('#card_logo, #card_holder_name, #card_holder_designation').on('input change', validateStep3);
+                $('#card_logo, #card_name, #card_designation').on('input change', validateStep3);
 
                 // Initial validation check in case fields are prefilled
                 validateStep3();

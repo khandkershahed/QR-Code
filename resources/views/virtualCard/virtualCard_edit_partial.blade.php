@@ -40,7 +40,7 @@
     </div>
 </section>
 <div class="row g-2 py-10">
-    <div class="col-lg-12 custom-col">
+    <div class="col-lg-7 custom-col">
         <div class="card content-column">
             <div class="card-body custom-card-body overflow-auto p-0">
                 <div class="stepper stepper-pills flex-grow-1 d-flex flex-column" id="kt_stepper_example_clickable">
@@ -146,7 +146,7 @@
             </div>
         </div>
     </div>
-    {{-- <div class="col-lg-6 custom-col">
+    <div class="col-lg-5 custom-col">
         <div class="card content-column">
             <div class="card-header px-0 border-0">
                 <div class="d-flex flex-column justify-content-center align-items-center"
@@ -161,7 +161,7 @@
                 @include('virtualCard.partials.virtual_card_preview')
             </div>
         </div>
-    </div> --}}
+    </div>
 </div>
 
 @push('scripts')
@@ -212,39 +212,7 @@
                 });
         });
 
-        // function cardValueUpdate() {
-        //     var card_name = $('#card_name').val('');
-        //     var card_designation = $('#card_designation').val('');
-        //     var card_phone = $('#card_phone').val('');
-        //     var card_email = $('#card_email').val('');
-        //     var card_address = $('#card_address').val('');
-        //     var inputValue = $(this).val();
-        //     var inputName = $(this).attr('name');
-        //     var nfcCardElement = $('.nfc-card .' + inputName);
-        //     var virtualCardElement = $('.virtual_card .' + inputName);
-        //     if (nfcCardElement.length > 0 | virtualCardElement.length > 0) {
-        //         if ($(this).is('input[type="file"]')) {
-        //             if ($(this).prop('files') && $(this).prop('files')[0]) {
-        //                 var file = $(this).prop('files')[0];
-        //                 var reader = new FileReader();
-        //                 reader.onload = function(e) {
-        //                     nfcCardElement.attr('src', e.target.result);
-        //                     virtualCardElement.attr('src', e.target.result);
-        //                 }
-        //                 reader.readAsDataURL(file);
-        //             }
-        //         } else if ($(this).is('input[type="url"]')) {
-        //             nfcCardElement.attr('href', inputValue);
-        //             virtualCardElement.attr('href', inputValue);
-        //         } else {
-        //             nfcCardElement.text(inputValue);
-        //             virtualCardElement.text(inputValue);
-        //         }
-        //     }
 
-        //     // For debugging
-        //     console.log("Input Name:", inputName, "Input Value:", inputValue);
-        // }
     </script>
 
 
@@ -264,59 +232,7 @@
             stepper.goPrevious(); // go previous step
         });
     </script>
-    <script>
-        $(document).ready(function() {
-            var initiallySelectedValue = $('input[name="virtual_card_template"]:checked').val();
-            $("." + initiallySelectedValue).show();
-
-            function updateCardPreview() {
-                const virtualCardValue = $('input[name="virtual_card_template"]:checked').val();
-                if (virtualCardValue != null) {
-                    $(".virtual_card").hide();
-                    $(".nfc-card").hide();
-                    $("." + virtualCardValue).show();
-                } else {
-                    $(".nfc-card").hide();
-                }
-            }
-
-
-
-            // On change event for radio buttons
-            $('input[name="virtual_card_template"]').change(function() {
-                updateCardPreview();
-            });
-
-
-        });
-
-        function changeCardFontColor() {
-            var selectedCardFontColor = $('input[name="card_font_color"]').val();
-            $('.card_name, .card_designation, .card_phone, .card_email, .card_address').css('color', selectedCardFontColor);
-        }
-
-        function changeBgFront(input) {
-            if (input.files && input.files[0]) {
-                var file = input.files[0];
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $('.punch-card-container').css('background-image', 'url(' + e.target.result + ')');
-                }
-                reader.readAsDataURL(file);
-            }
-        }
-
-        function changeBgBack(input) {
-            if (input.files && input.files[0]) {
-                var file = input.files[0];
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $('.punch-card-container-back').css('background-image', 'url(' + e.target.result + ')');
-                }
-                reader.readAsDataURL(file);
-            }
-        }
-    </script>
+    
 
     <script>
         $(document).ready(function() {

@@ -1,4 +1,4 @@
-<x-app-layout :title="'My Dashboard - Admin Panel'">
+<x-app-layout :title="'My Dashboard'">
     <div class="container-fluid">
         <div class="row">
             <h1 class="text-center py-10">Hello <span class="text-success">{{ Auth::user()->name }}.</span> Welcome To
@@ -195,39 +195,40 @@
                         </div>
                     </div>
                 </div>
-                <div class="card card-flush h-md-60 mb-5 mb-xl-10">
-                    <div class="card-body d-flex flex-column justify-content-between mt-9 bgi-no-repeat bgi-size-cover pb-0"
-                        style="background-position: 100% 50%; background-image:url('https://preview.keenthemes.com/metronic8/demo1/assets/media/stock/900x600/42.png')">
-                        <div class="mb-10">
-                            <div class="overflow-auto pb-5">
-                                <div
-                                    class="notice d-flex bg-light-primary rounded border-primary border border-dashed p-6">
-                                    <i class="fa-solid fa-devices-2 fs-2tx text-primary me-4"></i>
-                                    <div class="d-flex flex-stack flex-grow-1 flex-wrap flex-md-nowrap">
-                                        <div class="fw-semibold">
-                                            <h4 class="text-gray-900 fw-bold">
-                                                Your Current Plan
-                                                <span style="color: orangered">
-                                                    @if (!empty($subscription))
-                                                        {{ $subscription->plan->title }}
-                                                    @else
-                                                        Trial Period
-                                                    @endif
-                                                </span>
-                                            </h4>
-                                            <div class="fs-6 text-gray-700">You Can Check Your Plan Or Status By
-                                                Clicking
-                                                Here!</div>
+                @if (!empty($subscription))
+                    <div class="card card-flush h-md-60 mb-5 mb-xl-10">
+                        <div class="card-body d-flex flex-column justify-content-between mt-9 bgi-no-repeat bgi-size-cover pb-0"
+                            style="background-position: 100% 50%; background-image:url('https://preview.keenthemes.com/metronic8/demo1/assets/media/stock/900x600/42.png')">
+                            <div class="mb-10">
+                                <div class="overflow-auto pb-5">
+                                    <div
+                                        class="notice d-flex bg-light-primary rounded border-primary border border-dashed p-6">
+                                        <i class="fa-solid fa-devices-2 fs-2tx text-primary me-4"></i>
+                                        <div class="d-flex flex-stack flex-grow-1 flex-wrap flex-md-nowrap">
+                                            <div class="fw-semibold">
+                                                <h4 class="text-gray-900 fw-bold">
+                                                    Your Current Plan
+                                                    <span style="color: orangered">
+                                                        @if (!empty($subscription))
+                                                            {{ $subscription->plan->title }}
+
+                                                        @endif
+                                                    </span>
+                                                </h4>
+                                                <div class="fs-6 text-gray-700">You Can Check Your Plan Or Status By
+                                                    Clicking
+                                                    Here!</div>
+                                            </div>
+                                            <a href="{{ route('user.plan') }}" class="btn btn-primary px-6 text-nowrap">
+                                                Check Current Status
+                                            </a>
                                         </div>
-                                        <a href="{{ route('user.plan') }}" class="btn btn-primary px-6 text-nowrap">
-                                            Check Current Status
-                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endif
             </div>
         </div>
         {{-- Modal Start For Check Plan  --}}

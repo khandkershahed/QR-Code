@@ -73,7 +73,7 @@
                                         <i class="fas fa-expand"></i>
                                     </a> --}}
                                     <a href="{{ route('user.nfc-card.edit', $nfc_card->id) }}"
-                                        class="btn btn-sm fw-bold btn-info pe-2 ps-3">
+                                        class="btn btn-sm fw-bold btn-info pe-2 ps-3 me-3">
                                         <i class="fas fa-pen"></i>
                                     </a>
                                     <a href="{{ route('user.nfc-card.destroy', $nfc_card->id) }}"
