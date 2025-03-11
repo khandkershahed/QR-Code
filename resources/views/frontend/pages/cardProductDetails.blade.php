@@ -870,55 +870,41 @@
             }
 
 
-            // Validate Step 3 (Enable Next button if logo, name, designation, and color are selected)
-            function validateStep3() {
-                // Default validation flag
-                let isValid = true;
+            $(document).ready(function() {
+                function validateStep3() {
+                    let isValid = true;
 
-                // 1. Validate Card Logo Upload (File Input)
-                if ($('#card_logo')[0].files.length === 0) {
-                    isValid = false;
-                }
-
-                // 2. Validate Card Holder Name (Text Input)
-                if ($('#card_holder_name').val().trim() === '') {
-                    isValid = false;
-                }
-
-                // 3. Validate Card Holder Designation (Text Input)
-                if ($('#card_holder_designation').val().trim() === '') {
-                    isValid = false;
-                }
-
-                // 4. Validate Card Holder Color (Text Input or Select)
-                if ($('#card_holder_color').is('select')) {
-                    if ($('#card_holder_color').val() === '') {
+                    // Validate Card Logo Upload
+                    if ($('#card_logo')[0].files.length === 0) {
                         isValid = false;
                     }
-                } else if ($('#card_holder_color').val().trim() === '') {
-                    isValid = false;
+
+                    // Validate Card Holder Name
+                    if ($('#card_holder_name').val().trim() === '') {
+                        isValid = false;
+                    }
+
+                    // Validate Card Holder Designation
+                    if ($('#card_holder_designation').val().trim() === '') {
+                        isValid = false;
+                    }
+
+                    // Enable/Disable Continue Button
+                    $('#nextBtn3').prop('disabled', !isValid).css({
+                        'opacity': isValid ? '1' : '0.5',
+                        'cursor': isValid ? 'pointer' : 'not-allowed'
+                    });
+
+                    return isValid;
                 }
 
-                // 5. Enable or Disable the "Continue" button
-                if (isValid) {
-                    $('#nextBtn3').prop('disabled', false).css({
-                        'opacity': '1',
-                        'cursor': 'pointer'
-                    });
-                } else {
-                    $('#nextBtn3').prop('disabled', true).css({
-                        'opacity': '0.5',
-                        'cursor': 'not-allowed'
-                    });
-                }
+                // Attach Event Listeners
+                $('#card_logo, #card_holder_name, #card_holder_designation').on('input change', validateStep3);
 
-                return isValid; // Return validation status
-            }
-
-            // Call validateStep3 when necessary (e.g., after any field change or before moving to Step 4)
-            $('#card_logo, #card_holder_name, #card_holder_designation, #card_holder_color').on('input change', function() {
+                // Initial validation check in case fields are prefilled
                 validateStep3();
             });
+
 
 
             // Event listener to update the main card image when a new design is chosen
