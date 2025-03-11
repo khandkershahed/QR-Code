@@ -40,12 +40,12 @@
     </div>
 </section>
 <div class="row g-2 py-10">
-    <div class="col-lg-6 custom-col">
+    <div class="col-lg-12 custom-col">
         <div class="card content-column">
             <div class="card-body custom-card-body overflow-auto p-0">
                 <div class="stepper stepper-pills flex-grow-1 d-flex flex-column" id="kt_stepper_example_clickable">
                     <div class="stepper-nav flex-center flex-wrap steaper-header">
-                        
+
                         <div class="stepper-item mx-3 my-4 p-0 rounded-1 current" data-kt-stepper-element="nav"
                             data-kt-stepper-action="step">
                             <div class="stepper-wrapper d-flex align-items-center">
@@ -145,7 +145,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-6 custom-col">
+    {{-- <div class="col-lg-6 custom-col">
         <div class="card content-column">
             <div class="card-header px-0 border-0">
                 <div class="d-flex flex-column justify-content-center align-items-center"
@@ -160,7 +160,7 @@
                 @include('virtualCard.partials.virtual_card_preview')
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
 
 @push('scripts')
