@@ -14,7 +14,7 @@
 
     <div class="col-2 mt-n7">
         <img id="{{ $id ?? 'file-input' }}-preview" src="{{ $source ? $source : '' }}"
-            alt="Image Preview" class="img-thumbnail" style="display: {{ $source ? 'block' : 'none' }};" width="55px"
+            alt="Image Preview" class="img-thumbnail" style="display: {{ $source ? 'block' : 'none' }};" width="100%"
             height="68px">
     </div>
 </div>

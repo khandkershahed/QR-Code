@@ -357,11 +357,9 @@ class NfcCardController extends Controller
         $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
         $user = Auth::user();
         $data = [
-            'nfc' => $isUserRoute
-                ? VirtualCard::with('shippingDetails','nfc')->findOrFail($id)
-                : VirtualCard::with('shippingDetails','nfc')->findOrFail($id),
-        ];
-        $data = [
+            'nfc_card' => $isUserRoute
+                ? VirtualCard::with('shippingDetails', 'nfc')->findOrFail($id)
+                : VirtualCard::with('shippingDetails', 'nfc')->findOrFail($id),
             // 'count' => $count,
             'nfc_cards' => $isUserRoute
                 ? NfcCard::with('nfcData', 'nfcMessages', 'virtualCard', 'shippingDetails')->where('user_id', $user->id)->latest('id')->get()
@@ -370,7 +368,6 @@ class NfcCardController extends Controller
         $view = $isUserRoute ? 'user.pages.virtualCard.edit' : 'admin.pages.virtualCard.edit';
         return view($view, $data);
         return view('user.pages.virtualCard.edit', $data);
-
     }
 
     /**
@@ -378,28 +375,65 @@ class NfcCardController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        // $vcard = NfcCard::find($nfc->card_id);
-        //     $code = $nfc->code;
-        //     // Handle file uploads
-        //     $files = [
-        //         'card_logo'           => $request->file('card_logo'),
-        //         'card_bg_front'       => $request->file('card_bg_front'),
-        //         'card_bg_back'        => $request->file('card_bg_back'),
-        //     ];
+        $nfc_card = VirtualCard::with('shippingDetails')->findOrFail($id);
+        $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
+        // Handle file uploads
+        $files = [
+            'card_logo' => $request->file('card_logo'),
+        ];
 
-        //     $filePath = 'public/nfc/';
-        //     $uploadedFiles = [];
+        $uploadedFiles = [];
+        foreach ($files as $key => $file) {
+            if ($file) {
+                $filePath = 'card_products/' . $key;
+                $oldFile = $nfc_card->$key ?? null;
 
-        //     foreach ($files as $key => $file) {
-        //         if (!empty($file)) {
-        //             $uploadedFiles[$key] = customUpload($file, $filePath, $code . '_' . $key);
-        //             if ($uploadedFiles[$key]['status'] === 0) {
-        //                 throw new \Exception("Error uploading file: " . $uploadedFiles[$key]['error_message']);
-        //             }
-        //         } else {
-        //             $uploadedFiles[$key] = ['status' => 0];
-        //         }
-        //     }
+                if ($oldFile) {
+                    Storage::delete("public/" . $oldFile);
+                }
+                $uploadedFiles[$key] = customUploadEcommerce($file, $filePath);
+
+                // Check upload status and handle errors
+                if ($uploadedFiles[$key]['status'] === 0) {
+                    return redirect()->back()->with('error', $uploadedFiles[$key]['error_message']);
+                }
+            } else {
+                $uploadedFiles[$key] = ['status' => 0];
+            }
+        }
+        $userId = $isUserRoute ? Auth::user()->id : null;
+        $adminId = $isUserRoute ? null : Auth::guard('admin')->user()->id;
+
+        $nfc_card->update([
+            'card_id'               => $request->card_id,
+            'user_id'               => $userId,
+            'admin_id'              => $adminId,
+            'virtual_card_template' => $request->virtual_card_template,
+            'card_logo'             => $uploadedFiles['card_logo']['status']  == 1 ? $uploadedFiles['card_logo']['file_path'] : $nfc_card->card_logo,
+            'card_name'             => $request->card_name,
+            'card_designation'      => $request->card_designation,
+            'card_phone'            => $request->card_phone,
+            'card_email'            => $request->card_email,
+            'card_address'          => $request->card_address,
+            'card_font_color'       => $request->card_font_color,
+            'card_font_style'       => $request->card_font_style,
+            'card_preference'       => $request->card_preference,
+            'card_logo'             => $request->card_logo,
+            'card_color'            => $request->card_color,
+        ]);
+
+        $nfc_card->shippingDetails->update([
+            'card_id'              => $nfc_card->id,
+            'shipping_name'        => $request->shipping_name,
+            'shipping_phone'       => $request->shipping_phone,
+            'shipping_address'     => $request->shipping_address,
+            'shipping_city'        => $request->shipping_city,
+            'shipping_state'       => $request->shipping_state,
+            'shipping_zip_code'    => $request->shipping_zip_code,
+            'shipping_country'     => $request->shipping_country,
+            'shipping_instruction' => $request->shipping_instruction,
+        ]);
+        return redirect()->back()->with('success', 'NFC Data updated successfully.');
     }
 
     /**

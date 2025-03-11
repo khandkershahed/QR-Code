@@ -111,16 +111,19 @@
                             <strong class=""> Total Created V-Card : {{ $nfc_cards->count() }}<span
                                     class="text-warning"> / </span> V-Card Limitation :
                                 {{ $subscription->plan->nfc }} <span class="text-warning"> / </span> V-Card Remaining :
-                                {{ $subscription->plan->nfc - $nfc_cards->count() }}<span class="text-warning"> /
-                                </span>Total Created V-Card :
-                                {{ $nfc_cards->count() }}
+                                {{ $subscription->plan->nfc - $nfc_cards->count() }}
+                            </strong>
+                            @elseif ($card_product_users > 0)
+                            <strong class="">Total Created V-Card : {{ $nfc_cards->count() }}<span
+                                class="text-warning"> / </span> V-Card Limitation :
+                            {{ $card_product_users }} <span class="text-warning"> / </span> V-Card Remaining :
+                            {{ $card_product_users - $nfc_cards->count() }}
                             </strong>
                         @else
-                            <strong class="">Total Created V-Card : {{ $nfc_cards->count() }}<span
-                                    class="text-warning"> / </span>
-                                QR Limitation : 10 (Trial Period)<span class="text-warning"> / </span> V-Card Remaining
-                                :
-                                {{ 10 - $nfc_cards->count() }}</strong>
+                            <strong class="">Total Created V-Card : 0 &nbsp;&nbsp;
+                                <a href="{{ route('user.virtual-card.create') }}" class="text-warning"> Subscribe a plan
+                                    first</a>
+                            </strong>
                         @endif
                     </div>
                 </div>
@@ -134,13 +137,11 @@
                                 <i class="fa-solid fa-user-plus"></i> Create V-Card
                             </a>
                         @endif
-                    @else
-                        @if (10 - $nfc_cards->count() > 0)
-                            <a href="{{ route('user.virtual-card.create') }}"
-                                class="btn btn-white btn-active-light-warning text-hover-inverse-white">
-                                <i class="fa-solid fa-user-plus"></i> Create V-Card
-                            </a>
-                        @endif
+                    @elseif ($card_product_users > 0)
+                        <a href="{{ route('user.virtual-card.create') }}"
+                            class="btn btn-white btn-active-light-warning text-hover-inverse-white">
+                            <i class="fa-solid fa-user-plus"></i> Create V-Card
+                        </a>
                     @endif
                 </div>
             </div>
@@ -253,8 +254,8 @@
                                         <a href="{{ route('user.virtual-card.show', $nfc_card->code) }}"
                                             class="">
                                             <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="30"
-                                                height="30" x="0" y="0" viewBox="0 0 512 512"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30"
+                                                x="0" y="0" viewBox="0 0 512 512"
                                                 style="enable-background:new 0 0 512 512" xml:space="preserve"
                                                 class="">
                                                 <g>

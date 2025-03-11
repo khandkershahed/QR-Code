@@ -32,10 +32,78 @@
                                     {{ optional($nfc_card)->created_at->format('d M, Y') }}
                                 </td>
                                 <td>
-                                    <img src="{{ asset('storage/'.optional($nfc_card)->card_logo) }}" width="50px" alt="">
+                                    @if (optional($nfc_card->nfc)->nfc_template == 'template-one')
+                                        <img class="img-fluid w-45px h-60px"
+                                            src="{{ asset('frontend/assets/images/nfc-templates/template_one.png') }}"
+                                            alt="">
+                                    @elseif (optional($nfc_card->nfc)->nfc_template == 'template-two')
+                                        <img class="img-fluid w-45px h-60px"
+                                            src="{{ asset('frontend/assets/images/nfc-templates/template_two.png') }}"
+                                            alt="">
+                                    @elseif (optional($nfc_card->nfc)->nfc_template == 'template-three')
+                                        <img class="img-fluid w-45px h-60px"
+                                            src="{{ asset('frontend/assets/images/nfc-templates/template_three.png') }}"
+                                            alt="">
+                                    @elseif (optional($nfc_card->nfc)->nfc_template == 'template-four')
+                                        <img class="img-fluid w-50px"
+                                            src="{{ asset('frontend/assets/images/nfc-templates/template_four.jpg') }}"
+                                            alt="">
+                                    @elseif (optional($nfc_card->nfc)->nfc_template == 'template-five')
+                                        <img class="img-fluid w-50px"
+                                            src="{{ asset('frontend/assets/images/nfc-templates/template_five.png') }}"
+                                            alt="">
+                                    @elseif (optional($nfc_card->nfc)->nfc_template == 'template-six')
+                                        <img class="img-fluid w-50px"
+                                            src="{{ asset('frontend/assets/images/nfc-templates/template_six.jpg') }}"
+                                            alt="">
+                                    @else
+                                        <img class="img-fluid w-50px"
+                                            src="{{ !empty($site->system_logo_white) &&
+                                            file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white))
+                                                ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)
+                                                : asset('frontend/assets/images/logos/logo.png') }}"
+                                            alt="Default Logo">
+                                    @endif
                                 </td>
                                 <td>
-                                    {{ ucfirst(optional($nfc_card)->card_preference) }}
+                                    @if (optional($nfc_card)->virtual_card_template == 'virtual-card-one')
+                                        <img class="img-fluid w-65px"
+                                            src="{{ asset('frontend/images/virtual_card/card_1.png') }}" alt="">
+                                    @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-two')
+                                        <img class="img-fluid w-65px"
+                                            src="{{ asset('frontend/images/virtual_card/card_2.png') }}" alt="">
+                                    @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-three')
+                                        <img class="img-fluid w-65px"
+                                            src="{{ asset('frontend/images/virtual_card/card_3.png') }}"
+                                            alt="">
+                                    @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-four')
+                                        <img class="img-fluid w-65px"
+                                            src="{{ asset('frontend/images/virtual_card/card_4.png') }}"
+                                            alt="">
+                                    @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-five')
+                                        <img class="img-fluid w-65px"
+                                            src="{{ asset('frontend/images/virtual_card/card_5.png') }}"
+                                            alt="">
+                                    @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-six')
+                                        <img class="img-fluid w-65px"
+                                            src="{{ asset('frontend/images/virtual_card/card_6.png') }}"
+                                            alt="">
+                                    @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-seven')
+                                        <img class="img-fluid w-65px"
+                                            src="{{ asset('frontend/images/virtual_card/card_7.png') }}"
+                                            alt="">
+                                    @elseif (optional($nfc_card)->virtual_card_template == 'virtual-card-eight')
+                                        <img class="img-fluid w-65px"
+                                            src="{{ asset('frontend/images/virtual_card/card_8.png') }}"
+                                            alt="">
+                                    @else
+                                        <img class="img-fluid w-50px"
+                                            src="{{ !empty($site->system_logo_white) &&
+                                            file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white))
+                                                ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)
+                                                : asset('frontend/assets/images/logos/logo.png') }}"
+                                            alt="Default Logo">
+                                    @endif
                                 </td>
                                 <td>
                                     {{ optional($nfc_card)->card_name }}

@@ -79,15 +79,16 @@
                     <!-- Stepper content and form -->
                     @if (strpos(Route::current()->getName(), 'user.') === 0)
                         <form class="form flex-grow-1 d-flex flex-column" novalidate="novalidate"
-                            id="kt_stepper_example_clickable_form" action="{{ route('user.nfc-card.store') }}"
+                            id="kt_stepper_example_clickable_form" action="{{ route('user.nfc-card.update',optional($nfc_card)->id) }}"
                             method="POST" enctype="multipart/form-data">
                         @else
                             <form class="form flex-grow-1 d-flex flex-column" novalidate="novalidate"
-                                id="kt_stepper_example_clickable_form" action="{{ route('admin.nfc-card.store') }}"
+                                id="kt_stepper_example_clickable_form" action="{{ route('admin.nfc-card.update',optional($nfc_card)->id) }}"
                                 method="POST" enctype="multipart/form-data">
                     @endif
 
                     @csrf
+                    @method('PUT')
                     <div class="row pt-10">
 
                         <div class="flex-column current" data-kt-stepper-element="content">

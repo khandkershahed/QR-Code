@@ -8,7 +8,7 @@
                     data-placeholder="Select NFC from your generated list" required>
                     <option></option>
                     @foreach ($nfc_cards as $nfc_card)
-                        <option value="{{ $nfc_card->id }}">{{ optional($nfc_card->nfcData)->first_name }}
+                        <option value="{{ $nfc_card->id }}" @selected(optional($nfc_card->nfcData)->card_id == $nfc_card->id)>{{ optional($nfc_card->nfcData)->first_name }}
                             {{ optional($nfc_card->nfcData)->last_name }}</option>
                     @endforeach
                 </select>
@@ -21,10 +21,11 @@
                 </x-metronic.label>
                 <div class="d-flex">
                     <!-- Select Dropdown for Color Options -->
-                    <select id="card_color" class="form-control form-control-outline mb-3 mb-lg-0"
+                    <select id="card_color" class="form-select form-select-outline mb-3 mb-lg-0"
                         onchange="updateColorInput(this)">
-                        <option value="#000000">Black</option>
-                        <option value="#000000">Gold</option>
+                        <option disabled selected>Choose</option>
+                        <option value="black" @selected(optional($nfc_card)->card_color == "black")>Black</option>
+                        <option value="gold" @selected(optional($nfc_card)->card_color == "gold")>Gold</option>
                         {{-- <option value="#FFFFFF">White</option>
                         <option value="#0000FF">Blue</option>
                         <option value="#FF0000">Red</option>
@@ -39,15 +40,15 @@
         </div>
         <div class="col-lg-6">
             <div class="fv-row my-3">
-                <x-metronic.label for="card_type" class="form-label">
+                <x-metronic.label for="card_preference" class="form-label">
                     {{ __('Card Preference') }}
                 </x-metronic.label>
                 <div class="d-flex">
                     <!-- Select Dropdown for Color Options -->
-                    <select class="form-control form-control-outline mb-3 mb-lg-0" name="card_type">
-                        <option disabled>Choose</option>
-                        <option value="Metal">Metal</option>
-                        <option value="Plastic">Plastic</option>
+                    <select class="form-select form-select-outline mb-3 mb-lg-0" name="card_preference">
+                        <option disabled selected>Choose</option>
+                        <option value="plastic" @selected(optional($nfc_card)->card_preference == "plastic")>Plastic</option>
+                        <option value="metal" @selected(optional($nfc_card)->card_preference == "metal")>Metal</option>
                     </select>
                 </div>
             </div>
@@ -56,7 +57,7 @@
             <div class="fv-row my-3">
                 <x-metronic.label for="card_logo" class="form-label ">{{ __('Card Logo') }}</x-metronic.label>
                 <x-metronic.file-input id="card_logo" type="file"
-                    class="form-control form-control-outline mb-3 mb-lg-0" name="card_logo"
+                    class="form-control form-control-outline mb-3 mb-lg-0" name="card_logo" :source="asset('storage/'.optional($nfc_card)->card_logo)"
                     onchange="previewBannerImage(this)" accept="image/*"></x-metronic.file-input>
 
                 {{-- <input id="card_logo" type="file" class="form-control form-control-outline mb-3 mb-lg-0" name="card_logo"
@@ -84,7 +85,7 @@
                 <x-metronic.label for="card_name" class="form-label ">
                     {{ __('Card Name') }}</x-metronic.label>
                 <x-metronic.input id="card_name" type="text" class="form-control form-control-outline mb-3 mb-lg-0"
-                    name="card_name" placeholder="Your Name"></x-metronic.input>
+                    name="card_name" :value="old('card_name',optional($nfc_card)->card_name)" placeholder="Your Name"></x-metronic.input>
             </div>
         </div>
         <div class="col-lg-6">
@@ -92,7 +93,7 @@
                 <x-metronic.label for="card_designation" class="form-label ">
                     {{ __('Card Designation') }}</x-metronic.label>
                 <x-metronic.input id="card_designation" type="text"
-                    class="form-control form-control-outline mb-3 mb-lg-0" name="card_designation"
+                    class="form-control form-control-outline mb-3 mb-lg-0" name="card_designation" :value="old('card_designation',optional($nfc_card)->card_designation)"
                     placeholder="Your Designation"></x-metronic.input>
             </div>
         </div>

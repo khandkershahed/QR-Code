@@ -77,4 +77,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(BarCode::class);
     }
+    // public function userCardPlan()
+    // {
+    //     return $this->hasMany(BarCode::class);
+    // }
 }

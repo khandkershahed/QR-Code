@@ -6,7 +6,7 @@
                 {{ __('Contact Person Name') }}
             </x-metronic.label>
             <input id="shipping_name" type="text" class="form-control form-control-outline mb-3 mb-lg-0"
-                name="shipping_name" value="{{ old('shipping_name') }}"
+                name="shipping_name" value="{{ old('shipping_name',optional($nfc_card->shippingDetails)->shipping_name) }}"
                 placeholder="Enter contact person name" />
         </div>
     </div>
@@ -18,7 +18,7 @@
                 {{ __('Phone') }}
             </x-metronic.label>
             <input id="shipping_phone" type="text" class="form-control form-control-outline mb-3 mb-lg-0" name="shipping_phone"
-                value="{{ old('shipping_phone') }}" placeholder="Enter phone number" />
+                value="{{ old('shipping_phone',optional($nfc_card->shippingDetails)->shipping_phone) }}" placeholder="Enter phone number" />
         </div>
     </div>
 
@@ -29,7 +29,7 @@
                 {{ __('Address') }}
             </x-metronic.label>
             <input id="shipping_address" type="text" class="form-control form-control-outline mb-3 mb-lg-0" name="shipping_address"
-                value="{{ old('shipping_address') }}" placeholder="Enter address" />
+                value="{{ old('shipping_address',optional($nfc_card->shippingDetails)->shipping_address) }}" placeholder="Enter address" />
         </div>
     </div>
 
@@ -40,7 +40,7 @@
                 {{ __('City') }}
             </x-metronic.label>
             <input id="shipping_city" type="text" class="form-control form-control-outline mb-3 mb-lg-0" name="shipping_city"
-                value="{{ old('shipping_city') }}" placeholder="Enter city" />
+                value="{{ old('shipping_city',optional($nfc_card->shippingDetails)->shipping_city) }}" placeholder="Enter city" />
         </div>
     </div>
 
@@ -51,7 +51,7 @@
                 {{ __('State') }}
             </x-metronic.label>
             <input id="shipping_state" type="text" class="form-control form-control-outline mb-3 mb-lg-0" name="shipping_state"
-                value="{{ old('shipping_state') }}" placeholder="Enter Shipping State" />
+                value="{{ old('shipping_state',optional($nfc_card->shippingDetails)->shipping_state) }}" placeholder="Enter Shipping State" />
         </div>
     </div>
 
@@ -62,7 +62,7 @@
                 {{ __('Zip') }}
             </x-metronic.label>
             <input id="shipping_zip_code" type="text" class="form-control form-control-outline mb-3 mb-lg-0" name="shipping_zip_code"
-                value="{{ old('shipping_zip_code') }}" placeholder="Enter Shipping Zip Code" />
+                value="{{ old('shipping_zip_code',optional($nfc_card->shippingDetails)->shipping_zip_code) }}" placeholder="Enter Shipping Zip Code" />
         </div>
     </div>
 
@@ -73,7 +73,7 @@
                 {{ __('Country') }}
             </x-metronic.label>
             <input id="shipping_country" type="text" class="form-control form-control-outline mb-3 mb-lg-0" name="shipping_country"
-                value="{{ old('shipping_country') }}" placeholder="Enter Shipping Country" />
+                value="{{ old('shipping_country',optional($nfc_card->shippingDetails)->shipping_country) }}" placeholder="Enter Shipping Country" />
         </div>
     </div>
 
@@ -84,7 +84,7 @@
                 {{ __('Instruction') }}
             </x-metronic.label>
             <textarea id="shipping_instruction" class="form-control form-control-outline mb-3 mb-lg-0" name="shipping_instruction" rows="3"
-                placeholder="Enter instructions">{{ old('shipping_instruction') }}</textarea>
+                placeholder="Enter instructions">{{ old('shipping_instruction',optional($nfc_card->shippingDetails)->shipping_instruction) }}</textarea>
         </div>
     </div>
 </div>
