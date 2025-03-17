@@ -30,7 +30,7 @@ class VirtualCardController extends Controller
         $card_products = $user->cardProducts;
 
         $card_product_users = $card_products ? $card_products->sum('max_user') : 0;
-        dd($card_products);
+        // dd($card_products);
         // dd($card_product_users);
         $subscription = $isUserRoute
             ? Subscription::with('plan')->where('user_id', $user->id)
