@@ -113,11 +113,11 @@
                                 {{ $subscription->plan->nfc }} <span class="text-warning"> / </span> V-Card Remaining :
                                 {{ $subscription->plan->nfc - $nfc_cards->count() }}
                             </strong>
-                            @elseif ($card_product_users > 0)
+                        @elseif ($card_product_users > 0)
                             <strong class="">Total Created V-Card : {{ $nfc_cards->count() }}<span
-                                class="text-warning"> / </span> V-Card Limitation :
-                            {{ $card_product_users }} <span class="text-warning"> / </span> V-Card Remaining :
-                            {{ $card_product_users - $nfc_cards->count() }}
+                                    class="text-warning"> / </span> V-Card Limitation :
+                                {{ $card_product_users }} <span class="text-warning"> / </span> V-Card Remaining :
+                                {{ $card_product_users - $nfc_cards->count() }}
                             </strong>
                         @else
                             <strong class="">Total Created V-Card : 0 &nbsp;&nbsp;
@@ -254,8 +254,8 @@
                                         <a href="{{ route('user.virtual-card.show', $nfc_card->code) }}"
                                             class="">
                                             <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30"
-                                                x="0" y="0" viewBox="0 0 512 512"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="30"
+                                                height="30" x="0" y="0" viewBox="0 0 512 512"
                                                 style="enable-background:new 0 0 512 512" xml:space="preserve"
                                                 class="">
                                                 <g>

@@ -28,8 +28,9 @@ class VirtualCardController extends Controller
         $isUserRoute = strpos(Route::current()->getName(), 'user.') === 0;
         $user = Auth::user();
         $card_products = $user->cardProducts;
+
         $card_product_users = $card_products ? $card_products->sum('max_user') : 0;
-        // dd($card_products);
+        dd($card_products);
         // dd($card_product_users);
         $subscription = $isUserRoute
             ? Subscription::with('plan')->where('user_id', $user->id)
@@ -45,8 +46,8 @@ class VirtualCardController extends Controller
 
         return view($view, [
             'card_product_users' => $card_product_users,
-            'nfc_cards' => $nfc_cards,
-            'subscription' => $subscription,
+            'nfc_cards'          => $nfc_cards,
+            'subscription'       => $subscription,
         ]);
     }
 
