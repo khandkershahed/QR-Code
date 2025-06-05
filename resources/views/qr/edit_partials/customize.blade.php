@@ -81,7 +81,7 @@
             <div class="d-flex align-items-center">
                 <div class="pe-3">
                     <x-metronic.label for="qr_logo" class="form-label">{{ __('Logo') }}</x-metronic.label>
-                    <x-metronic.input id="qr_logo" type="file" name="qr_logo" accept="image/*" placeholder="Upload Logo" />
+                    <x-metronic.file-input id="qr_logo" type="file"  name="qr_logo" :value="old('qr_logo',$qr->qr_logo)" accept="image/*" placeholder="Upload Logo" />
                 </div>
                 <div class="ps-4">
                     <x-metronic.label for="qr_logo_size" class="form-label">{{ __('Logo Size (in Pixel)') }}</x-metronic.label>
