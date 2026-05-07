@@ -1610,7 +1610,7 @@
                                                     <div class="row">
                                                         <div class="col-lg-12">
                                                             <div class="row p-4" id="gallery-container">
-                                                                @foreach ($nfc_card->nfcGallery as $gallery)
+                                                                @foreach ($nfc_card->nfcGallery as $index => $gallery)
                                                                     <div class="col-6 mb-4 gallery-item"
                                                                         data-index="{{ $index }}"
                                                                         style="{{ $index > 1 ? 'display: none;' : '' }}">
