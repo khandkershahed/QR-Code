@@ -1,3 +1,7 @@
+@php
+    $selectedNfcCard = $selectedNfcCard ?? null;
+    $nfc_cards = $nfc_cards ?? collect();
+@endphp
 <style>
     .custom-row {
         display: flex;
