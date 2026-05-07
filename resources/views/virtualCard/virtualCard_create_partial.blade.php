@@ -26,7 +26,8 @@
                         <img class="img-fluid" width="100px" src="{{ asset('images/no-nfc-card.jpg') }}" alt="">
                     </div>
                     <h1 class="fs-1" style="font-size: 50px !important;">No NFC Card Available!</h1>
-                    <p class="py-10">Your have <span class="text-danger fw-bold">0</span> NFC card to use. You need to purchase an NFC card first. After that, <br> you can customize it or
+                    <p class="py-10">Your have <span class="text-danger fw-bold">0</span> NFC card to use. You need to
+                        purchase an NFC card first. After that, <br> you can customize it or
                         link your
                         virtual card to the NFC card.</p>
                     <a href="{{ route('homePage') }}" class="btn text-white" style="background-color: #7239e9; ">
@@ -538,8 +539,8 @@
                 </div>
             </div>
 
-            <div
-                class="card-body custom-card-body overflow-auto px-0 pt-3 d-flex justify-content-center align-items-center" style="background-color: #ebebeb;">
+            <div class="card-body custom-card-body overflow-auto px-0 pt-3 d-flex justify-content-center align-items-center"
+                style="background-color: #ebebeb;">
                 @include('virtualCard.partials.virtual_card_preview')
             </div>
         </div>
@@ -646,7 +647,7 @@
             stepper.goPrevious(); // go previous step
         });
     </script>
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             var initiallySelectedValue = $('input[name="virtual_card_template"]:checked').val();
             $("." + initiallySelectedValue).show();
@@ -698,8 +699,115 @@
                 reader.readAsDataURL(file);
             }
         }
-    </script>
+    </script> --}}
+    <script>
+        $(document).ready(function() {
+            function updateCardPreview() {
+                const selectedTemplateInput = $('input[name="virtual_card_template"]:checked');
+                const selectedTemplateValue = selectedTemplateInput.val();
 
+                if (!selectedTemplateValue) {
+                    $('.nfc-card').hide();
+                    $('.virtual_card').show();
+                    return;
+                }
+
+                /*
+                 * IMPORTANT:
+                 * Do NOT hide ".virtual_card" here.
+                 * The right-side preview wrapper itself has class "virtual_card".
+                 * Hiding it makes the preview disappear after selecting an NFC template.
+                 */
+                $('.virtual_card').show();
+
+                /*
+                 * Only hide/show extra template preview blocks if they exist.
+                 * This keeps your existing template selection logic safe without breaking
+                 * the single card preview design.
+                 */
+                if ($('.nfc-card').length > 0) {
+                    $('.nfc-card').hide();
+
+                    const selectedPreview = $('.' + selectedTemplateValue);
+
+                    if (selectedPreview.length > 0) {
+                        selectedPreview.show();
+                    }
+                }
+
+                syncVirtualCardPreview();
+            }
+
+            function syncVirtualCardPreview() {
+                const cardName = $('#card_name').val();
+                const cardDesignation = $('#card_designation').val();
+                const selectedColorOption = $('#card_color').find(':selected');
+                const selectedColorImage = selectedColorOption.data('image');
+
+                if ($('#card-info-name').length > 0) {
+                    $('#card-info-name').text(cardName || '');
+                }
+
+                if ($('#card-info-designation').length > 0) {
+                    $('#card-info-designation').text(cardDesignation || '');
+                }
+
+                if ($('#mainCardImage').length > 0 && selectedColorImage) {
+                    $('#mainCardImage').attr('src', selectedColorImage);
+                }
+            }
+
+            updateCardPreview();
+
+            $('input[name="virtual_card_template"]').on('change', function() {
+                updateCardPreview();
+            });
+
+            $('#card_name').on('input keyup change', function() {
+                $('#card-info-name').text($(this).val());
+            });
+
+            $('#card_designation').on('input keyup change', function() {
+                $('#card-info-designation').text($(this).val());
+            });
+
+            $('#card_color').on('change', function() {
+                updateColor(this);
+                syncVirtualCardPreview();
+            });
+        });
+
+        function changeCardFontColor() {
+            var selectedCardFontColor = $('input[name="card_font_color"]').val();
+            $('.card_name, .card_designation, .card_phone, .card_email, .card_address').css('color', selectedCardFontColor);
+        }
+
+        function changeBgFront(input) {
+            if (input.files && input.files[0]) {
+                var file = input.files[0];
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('.punch-card-container').css('background-image', 'url(' + e.target.result + ')');
+                };
+
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function changeBgBack(input) {
+            if (input.files && input.files[0]) {
+                var file = input.files[0];
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('.punch-card-container-back').css('background-image', 'url(' + e.target.result + ')');
+                };
+
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
     <script>
         $(document).ready(function() {
             $('#submitButton').on('submit', function() {
