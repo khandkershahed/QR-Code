@@ -2,24 +2,107 @@
 <html lang="en">
 
 <head>
-    <title>{{ optional($nfc_card->nfcData)->first_name }} {{ optional($nfc_card->nfcData)->last_name }}</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="shortcut icon"
-        href="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('frontend/assets/images/logos/logo.png') }}"
-        type="image/x-icon">
+    @php
+        $nfcDataForSeo = optional($nfc_card->nfcData);
 
-    <!-- Bootstrap CSS -->
+        $pageTitle = trim(($nfcDataForSeo->first_name ?? '') . ' ' . ($nfcDataForSeo->last_name ?? ''));
+        $pageTitle = $pageTitle !== '' ? $pageTitle : 'Digital Business Card';
+
+        $designationForSeo = $nfc_card->designation ?? ($nfc_card->job_title ?? '');
+        $companyNameForSeo = $nfcDataForSeo->company_name ?? '';
+        $bioDescriptionForSeo = $nfc_card->bio_description ?? ($nfcDataForSeo->bio_description ?? '');
+
+        $seoDescription = trim($designationForSeo . ' ' . $companyNameForSeo . ' ' . $bioDescriptionForSeo);
+        $seoDescription = \Illuminate\Support\Str::limit(strip_tags($seoDescription), 155, '');
+
+        if (empty($seoDescription)) {
+            $seoDescription =
+                'View digital business card, contact information, company details, gallery, QR code, and business hours.';
+        }
+
+        $profileImageUrl =
+            !empty($nfc_card->profile_image) &&
+            file_exists(public_path('storage/nfc/' . optional($nfc_card)->profile_image))
+                ? asset('storage/nfc/' . optional($nfc_card)->profile_image)
+                : asset('frontend/images/no_image.png');
+
+        $bannerImageUrl =
+            !empty($nfc_card->banner_image) &&
+            file_exists(public_path('storage/nfc/' . optional($nfc_card)->banner_image))
+                ? asset('storage/nfc/' . optional($nfc_card)->banner_image)
+                : asset('frontend/images/no_image.png');
+
+        $faviconUrl =
+            !empty($site->system_logo_white) &&
+            file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white))
+                ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)
+                : asset('frontend/assets/images/logos/logo.png');
+
+        $canonicalUrl = url()->current();
+        $pageFullTitle = $pageTitle . (!empty($companyNameForSeo) ? ' - ' . $companyNameForSeo : '');
+    @endphp
+
+    <title>{{ $pageFullTitle }}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ $seoDescription }}">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="{{ $pageTitle }}">
+    <link rel="canonical" href="{{ $canonicalUrl }}">
+
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="{{ $pageFullTitle }}">
+    <meta property="og:description" content="{{ $seoDescription }}">
+    <meta property="og:image" content="{{ $profileImageUrl }}">
+    <meta property="og:url" content="{{ $canonicalUrl }}">
+    <meta property="og:site_name" content="{{ config('app.name') }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $pageFullTitle }}">
+    <meta name="twitter:description" content="{{ $seoDescription }}">
+    <meta name="twitter:image" content="{{ $profileImageUrl }}">
+
+    <link rel="shortcut icon" href="{{ $faviconUrl }}" type="image/x-icon">
+
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://code.jquery.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="preload" as="image" href="{{ $profileImageUrl }}" fetchpriority="high">
+    <link rel="preload" as="image" href="{{ $bannerImageUrl }}" fetchpriority="high">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- Slick CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": @json($pageTitle),
+            "jobTitle": @json($designationForSeo),
+            "description": @json($seoDescription),
+            "image": @json($profileImageUrl),
+            "url": @json($canonicalUrl),
+            "worksFor": {
+                "@type": "Organization",
+                "name": @json($companyNameForSeo)
+            },
+            "email": @json($nfcDataForSeo->email_work ?? $nfcDataForSeo->email_personal ?? null),
+            "telephone": @json($nfcDataForSeo->phone_work ?? $nfcDataForSeo->phone_personal ?? null),
+            "address": @json($nfcDataForSeo->location ?? null)
+        }
+    </script>
+
     <!-- Custom Styles -->
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
         :root {
             --white: #fff;
             --button_bg_color: {{ $nfc_card->button_bg_color }};
@@ -381,38 +464,45 @@
             overflow-y: auto;
             height: 130px;
         }
+
         /* New Template Design Start */
-        .new-template-top{
+        .new-template-top {
             height: 260px;
             background-color: #103474;
         }
-        .new-template-top .top-content{
+
+        .new-template-top .top-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .new-template-profile{
+
+        .new-template-profile {
             margin-top: -8rem;
             margin-bottom: 2rem;
             border-radius: 24px;
             margin-left: 10px;
             margin-right: 10px;
         }
-        .new-tem-profile{
+
+        .new-tem-profile {
             width: 100%;
             height: 300px;
             object-fit: cover;
             border-top-left-radius: 24px;
             border-bottom-left-radius: 24px;
         }
-        .new-tem-profile-title{
+
+        .new-tem-profile-title {
             background-color: #2351A4;
             border-top-right-radius: 24px;
             border-bottom-right-radius: 24px;
         }
-        .new-tem-solid-bg{
+
+        .new-tem-solid-bg {
             background-color: #2351A4;
         }
+
         /* New Template Design Start End */
     </style>
 </head>
@@ -426,7 +516,10 @@
                         <div class="new-template-top">
                             <div class="top-content">
                                 <div class="p-3">
-                                    <img width="50" height="30" class="img-fluid" src="http://127.0.0.1:8000/frontend/assets/images/logos/logo.png" alt="">
+                                    <img width="50" height="30" class="img-fluid"
+                                        src="{{ asset('frontend/assets/images/logos/logo.png') }}"
+                                        alt="{{ config('app.name') }}" width="50" height="30"
+                                        fetchpriority="high" decoding="async">
                                 </div>
                                 <div>
                                     <a class="btn btn-outline-light me-3">Get Your Card</a>
@@ -440,7 +533,8 @@
                                 <div class="row gx-0">
                                     <div class="col-6">
                                         <div>
-                                            <img class="img-fluid new-tem-profile" src="{{ asset('images/badruzza-shagor.jpg') }}" alt="">
+                                            <img class="img-fluid new-tem-profile"
+                                                src="{{ asset('images/badruzza-shagor.jpg') }}" alt="">
                                         </div>
                                     </div>
                                     <div class="col-6 new-tem-profile-title d-flex align-items-center">
@@ -457,7 +551,9 @@
                     <div class="col-12">
                         <div class="d-flex align-items-center justify-content-between mb-5">
                             <a href="" class="btn btn-outline-dark text-muted w-50 me-3 py-3">Save Contact</a>
-                            <a href="" class="btn btn-outline-dark w-50 py-3 new-tem-solid-bg border-0 text-white">Share Card</a>
+                            <a href=""
+                                class="btn btn-outline-dark w-50 py-3 new-tem-solid-bg border-0 text-white">Share
+                                Card</a>
                         </div>
                     </div>
                     <div class="col-12">
@@ -501,7 +597,7 @@
                                 <div class="card-header p-0 border-0">
                                     <div class="nfc-one-cover-img-box">
                                         <div class="nfc-one-cover-img"
-                                            style="background-image: url({{ !empty($nfc_card->banner_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card)->banner_image)) ? asset('storage/nfc/' . optional($nfc_card)->banner_image) : asset('frontend/images/no_image.png') }});">
+                                            style="background-image: url({{ $bannerImageUrl }});">
                                         </div>
                                     </div>
                                 </div>
@@ -514,8 +610,10 @@
                                                 <div class="text-center d-flex justify-content-center align-items-center mobile-images-profile"
                                                     style="margin-top: -70px; position: relative">
                                                     <div class="gradient-border">
-                                                        <img src="{{ !empty($nfc_card->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card)->profile_image) : asset('frontend/images/no_image.png') }}"
-                                                            class="img-fluid banner-image" alt="banner" />
+                                                        <img src="{{ $profileImageUrl }}"
+                                                            class="img-fluid banner-image" alt="{{ $pageTitle }}"
+                                                            width="150" height="150" fetchpriority="high"
+                                                            decoding="async" />
                                                     </div>
                                                 </div>
                                                 <div>
@@ -800,7 +898,8 @@
                                         {{-- Services Hours --}}
                                         @if ($nfc_card->services_show == '1' && $nfc_card->nfcService->count() > 0)
                                             <div class="col-lg-12">
-                                                <h4 class="heading-right position-relative text-center mt-4">Services</h4>
+                                                <h4 class="heading-right position-relative text-center mt-4">Services
+                                                </h4>
                                                 <div class="row g-2 py-2" id="service-container">
                                                     @foreach ($nfc_card->nfcService as $index => $service)
                                                         <div class="col-6 mb-0 service-item"
@@ -811,7 +910,8 @@
                                                                     src="{{ !empty($service->service_icon) && file_exists(public_path('storage/nfc/service/' . optional($service)->service_icon)) ? asset('storage/nfc/service/' . optional($service)->service_icon) : asset('frontend/images/no_image.png') }}"
                                                                     alt="Card image cap">
                                                                 <div class="card-body">
-                                                                    <h6 class="name-title">{{ $service->service_name }}
+                                                                    <h6 class="name-title">
+                                                                        {{ $service->service_name }}
                                                                     </h6>
                                                                     <p class="card-text" style="font-size: 14px">
                                                                         {{ $service->service_description }}</p>
@@ -841,15 +941,17 @@
                                             <h4 class="heading-left position-relative text-center">QR Code</h4>
                                             <div class="d-flex justify-content-center align-items-center py-5">
                                                 <div class="qr-profile border rounded-4">
-                                                    <img src="{{ !empty($nfc_card->profile_image) && file_exists(public_path('storage/nfc/' . optional($nfc_card)->profile_image)) ? asset('storage/nfc/' . optional($nfc_card)->profile_image) : asset('frontend/images/no_image.png') }}"
-                                                        class="img-fluid rounded-4" alt="banner" />
+                                                    <img src="{{ $profileImageUrl }}" class="img-fluid rounded-4"
+                                                        alt="{{ $pageTitle }} profile image" width="180"
+                                                        height="180" loading="lazy" decoding="async" />
                                                 </div>
                                                 <div class="qr-code-scanner mx-md-4 mx-2 p-4 bg-white"
                                                     id="qr-code-nine">
                                                     @if (!empty($nfc_card->nfc_qr) && file_exists(public_path('storage/nfc/qrs/' . $nfc_card->nfc_qr)))
                                                         <img class="img-fluid"
                                                             src="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
-                                                            alt="" />
+                                                            alt="{{ $pageTitle }} QR Code" width="180"
+                                                            height="180" loading="lazy" decoding="async" />
                                                     @else
                                                         <img class="img-fluid"
                                                             src="{{ asset('images/Symbology-QR-code.svg') }}"
@@ -1391,9 +1493,9 @@
                                                         <div class="col-lg-6 mb-4 product-item"
                                                             data-index="{{ $index }}"
                                                             style="{{ $index > 1 ? 'display: none;' : '' }}">
-                                                            <a href="{{ !empty(optional($product)->product_url) ? optional($product)->product_url : 'javascript:void(0)' }}" target="_blank"
-                                                                class="text-decoration-none fs-6" loading="lazy"
-                                                                tabindex="0">
+                                                            <a href="{{ !empty(optional($product)->product_url) ? optional($product)->product_url : 'javascript:void(0)' }}"
+                                                                target="_blank" class="text-decoration-none fs-6"
+                                                                loading="lazy" tabindex="0">
                                                                 <div
                                                                     class="card product-card p-0 border-0 w-100 product-block h-100">
                                                                     <div class="product-profile">
@@ -1402,8 +1504,9 @@
                                                                     </div>
                                                                     <div class="product-details mt-3 p-3">
                                                                         <h6 class="fw-bold">
-                                                                            {{ \Illuminate\Support\Str::limit($product->product_name, 10, '...') }}</h6>
-                                                                         <br>
+                                                                            {{ \Illuminate\Support\Str::limit($product->product_name, 10, '...') }}
+                                                                        </h6>
+                                                                        <br>
                                                                         <p class="text-black pt-3 mb-0">
                                                                             @if ($product->product_currency == 'taka')
                                                                                 Tk
@@ -1831,13 +1934,15 @@
                                                 <ul
                                                     class="h-100 d-flex align-items-center justify-content-between ps-0">
                                                     <li class="active">
-                                                        <a href="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}" download="">
+                                                        <a href="{{ asset('storage/nfc/qrs/' . $nfc_card->nfc_qr) }}"
+                                                            download="">
                                                             <i class="fa-solid fa-qrcode"></i>
                                                             <span>QR</span>
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="javascript:void(0)" class="copy-link" data-link="{{ $currentUrl }}">
+                                                        <a href="javascript:void(0)" class="copy-link"
+                                                            data-link="{{ $currentUrl }}">
                                                             <i class="fa-solid fa-copy"></i>
                                                             <span>Copy Link</span>
                                                         </a>
@@ -1860,332 +1965,238 @@
             </div>
         </section>
     </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
-    {{-- <script src="https://kit.fontawesome.com/4cba8ce13c.js"></script> --}}
     <script src="{{ asset('frontend/assets/js/fontawesome.js') }}"></script>
-    <!-- Slick JS -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $(".company-slide").slick({
-                infinite: true, // Infinite looping
-                speed: 500, // Animation speed in milliseconds
-                slidesToShow: 1, // Number of slides to show at once
-                slidesToScroll: 1, // Number of slides to scroll at once
-                autoplay: true, // Enable autoplay
-                autoplaySpeed: 2000, // Autoplay speed in milliseconds
+
+    <script>
+        'use strict';
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeCompanySlider();
+            initializeGenericSlickSlider();
+            initializeCopyLinkButtons();
+            initializeLoadMoreSection({
+                containerId: 'service-container',
+                loadMoreBtnId: 'load-more-btn',
+                collapseBtnId: 'collapse-btn',
+                itemClass: 'service-item',
+                initialVisible: 2,
+                itemsPerPage: 2
+            });
+            initializeLoadMoreSection({
+                containerId: 'product-container',
+                loadMoreBtnId: 'product-load-more-btn',
+                collapseBtnId: 'product-collapse-btn',
+                itemClass: 'product-item',
+                initialVisible: 2,
+                itemsPerPage: 2
+            });
+            initializeLoadMoreSection({
+                containerId: 'gallery-container',
+                loadMoreBtnId: 'gallery-load-more-btn',
+                collapseBtnId: 'gallery-collapse-btn',
+                itemClass: 'gallery-item',
+                initialVisible: 2,
+                itemsPerPage: 2
+            });
+            initializeVCardButtons();
+            initializeTestimonialSlider();
+        });
+
+        function initializeCompanySlider() {
+            if (typeof window.jQuery === 'undefined' || typeof window.jQuery.fn.slick === 'undefined') {
+                return;
+            }
+
+            const companySlider = window.jQuery('.company-slide');
+
+            if (!companySlider.length || companySlider.hasClass('slick-initialized')) {
+                return;
+            }
+
+            companySlider.slick({
+                infinite: true,
+                speed: 500,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000,
                 gap: 10,
                 arrows: false,
                 prevArrow: '<button type="button" class="slick-prev"><i class="fas fa-chevron-left"></i></button>',
-                nextArrow: '<button type="button" class="slick-next"><i class="fas fa-chevron-right"></i></button>',
+                nextArrow: '<button type="button" class="slick-next"><i class="fas fa-chevron-right"></i></button>'
             });
-        });
-    </script>
-        <script>
-            document.addEventListener("DOMContentLoaded", (event) => {
-                document.querySelectorAll(".copy-link").forEach((element) => {
-                    element.addEventListener("click", (event) => {
-                        event.preventDefault();
-                        const link = event.currentTarget.getAttribute("data-link");
-                        navigator.clipboard
-                            .writeText(link)
-                            .then(() => {
-                                alert("Link copied to clipboard!");
+        }
+
+        function initializeGenericSlickSlider() {
+            if (typeof window.jQuery === 'undefined' || typeof window.jQuery.fn.slick === 'undefined') {
+                return;
+            }
+
+            const sliders = window.jQuery('.slick-slider');
+
+            if (!sliders.length) {
+                return;
+            }
+
+            sliders.each(function() {
+                const slider = window.jQuery(this);
+
+                if (slider.hasClass('slick-initialized')) {
+                    return;
+                }
+
+                slider.slick({
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    draggable: true,
+                    autoplay: true,
+                    autoplaySpeed: 2000,
+                    responsive: [{
+                            breakpoint: 768,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1
+                            }
+                        },
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                                slidesToShow: 3,
+                                slidesToScroll: 3
+                            }
+                        }
+                    ]
+                });
+            });
+        }
+
+        function initializeCopyLinkButtons() {
+            document.querySelectorAll('.copy-link').forEach(function(element) {
+                element.addEventListener('click', function(event) {
+                    event.preventDefault();
+
+                    const link = event.currentTarget.getAttribute('data-link');
+
+                    if (!link) {
+                        return;
+                    }
+
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(link)
+                            .then(function() {
+                                alert('Link copied to clipboard!');
                             })
-                            .catch((err) => {
-                                console.error("Failed to copy: ", err);
+                            .catch(function() {
+                                fallbackCopyText(link);
                             });
-                    });
+                    } else {
+                        fallbackCopyText(link);
+                    }
                 });
             });
-        </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const itemsPerPage = 2; // Number of items to show per load
-            const loadMoreBtn = document.getElementById('product-load-more-btn');
-            const collapseBtn = document.getElementById('product-collapse-btn');
-            const serviceContainer = document.getElementById('product-container');
-            const serviceItems = Array.from(serviceContainer.getElementsByClassName('product-item'));
+        }
 
-            let visibleCount = 2; // Initial visible items
+        function fallbackCopyText(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.setAttribute('readonly', 'readonly');
+            textarea.style.position = 'absolute';
+            textarea.style.left = '-9999px';
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            alert('Link copied to clipboard!');
+        }
 
-            // Utility function for fade effect
-            const fadeIn = (element, display = 'block') => {
-                element.style.opacity = 0;
-                element.style.display = display;
-                let opacity = 0;
-                const timer = setInterval(() => {
-                    if (opacity >= 1) {
-                        clearInterval(timer);
-                    }
-                    opacity += 0.1;
-                    element.style.opacity = opacity;
-                }, 30);
-            };
+        function initializeLoadMoreSection(options) {
+            const container = document.getElementById(options.containerId);
+            const loadMoreBtn = document.getElementById(options.loadMoreBtnId);
+            const collapseBtn = document.getElementById(options.collapseBtnId);
 
-            const fadeOut = (element) => {
-                let opacity = 1;
-                const timer = setInterval(() => {
-                    if (opacity <= 0) {
-                        clearInterval(timer);
-                        element.style.display = 'none';
-                    }
-                    opacity -= 0.1;
-                    element.style.opacity = opacity;
-                }, 30);
-            };
-
-            // Check if we need to hide the Load More button initially
-            if (serviceItems.length <= visibleCount) {
-                loadMoreBtn.classList.add('d-none');
+            if (!container || !loadMoreBtn || !collapseBtn) {
+                return;
             }
 
-            // Display the initial 2 items
-            serviceItems.forEach((item, index) => {
+            const items = Array.from(container.getElementsByClassName(options.itemClass));
+            const itemsPerPage = options.itemsPerPage || 2;
+            const initialVisible = options.initialVisible || 2;
+            let visibleCount = initialVisible;
+
+            items.forEach(function(item, index) {
                 item.style.display = index < visibleCount ? 'block' : 'none';
             });
 
-            loadMoreBtn.addEventListener('click', () => {
-                // Show the next set of items with fade-in effect
+            if (items.length <= visibleCount) {
+                loadMoreBtn.classList.add('d-none');
+            }
+
+            loadMoreBtn.addEventListener('click', function() {
                 for (let i = visibleCount; i < visibleCount + itemsPerPage; i++) {
-                    if (serviceItems[i]) {
-                        fadeIn(serviceItems[i]);
+                    if (items[i]) {
+                        fadeIn(items[i]);
                     }
                 }
 
-                // Update the visible count
                 visibleCount += itemsPerPage;
 
-                // If all items are visible, hide the Load More button and show the Collapse button
-                if (visibleCount >= serviceItems.length) {
+                if (visibleCount >= items.length) {
                     loadMoreBtn.classList.add('d-none');
                     collapseBtn.classList.remove('d-none');
                 }
             });
 
-            collapseBtn.addEventListener('click', () => {
-                // Collapse all items except the first 2 with fade-out effect
-                serviceItems.forEach((item, index) => {
-                    if (index >= 2) {
+            collapseBtn.addEventListener('click', function() {
+                items.forEach(function(item, index) {
+                    if (index >= initialVisible) {
                         fadeOut(item);
                     }
                 });
 
-                // Reset the visible count and button visibility
-                visibleCount = 2;
+                visibleCount = initialVisible;
                 loadMoreBtn.classList.remove('d-none');
                 collapseBtn.classList.add('d-none');
 
-                // Hide the Load More button if only 2 or fewer items are available
-                if (serviceItems.length <= visibleCount) {
+                if (items.length <= visibleCount) {
                     loadMoreBtn.classList.add('d-none');
                 }
             });
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const itemsPerPage = 2; // Number of items to show per load
-            const loadMoreBtn = document.getElementById('gallery-load-more-btn');
-            const collapseBtn = document.getElementById('gallery-collapse-btn');
-            const serviceContainer = document.getElementById('gallery-container');
-            const serviceItems = Array.from(serviceContainer.getElementsByClassName('gallery-item'));
+        }
 
-            let visibleCount = 2; // Initial visible items
+        function fadeIn(element, display) {
+            element.style.opacity = 0;
+            element.style.display = display || 'block';
 
-            // Utility function for fade effect
-            const fadeIn = (element, display = 'block') => {
-                element.style.opacity = 0;
-                element.style.display = display;
-                let opacity = 0;
-                const timer = setInterval(() => {
-                    if (opacity >= 1) {
-                        clearInterval(timer);
-                    }
-                    opacity += 0.1;
-                    element.style.opacity = opacity;
-                }, 30);
-            };
-
-            const fadeOut = (element) => {
-                let opacity = 1;
-                const timer = setInterval(() => {
-                    if (opacity <= 0) {
-                        clearInterval(timer);
-                        element.style.display = 'none';
-                    }
-                    opacity -= 0.1;
-                    element.style.opacity = opacity;
-                }, 30);
-            };
-
-            // Check if we need to hide the Load More button initially
-            if (serviceItems.length <= visibleCount) {
-                loadMoreBtn.classList.add('d-none');
-            }
-
-            // Display the initial 2 items
-            serviceItems.forEach((item, index) => {
-                item.style.display = index < visibleCount ? 'block' : 'none';
-            });
-
-            loadMoreBtn.addEventListener('click', () => {
-                // Show the next set of items with fade-in effect
-                for (let i = visibleCount; i < visibleCount + itemsPerPage; i++) {
-                    if (serviceItems[i]) {
-                        fadeIn(serviceItems[i]);
-                    }
+            let opacity = 0;
+            const timer = setInterval(function() {
+                if (opacity >= 1) {
+                    clearInterval(timer);
                 }
 
-                // Update the visible count
-                visibleCount += itemsPerPage;
+                opacity += 0.1;
+                element.style.opacity = opacity;
+            }, 30);
+        }
 
-                // If all items are visible, hide the Load More button and show the Collapse button
-                if (visibleCount >= serviceItems.length) {
-                    loadMoreBtn.classList.add('d-none');
-                    collapseBtn.classList.remove('d-none');
-                }
-            });
+        function fadeOut(element) {
+            let opacity = 1;
 
-            collapseBtn.addEventListener('click', () => {
-                // Collapse all items except the first 2 with fade-out effect
-                serviceItems.forEach((item, index) => {
-                    if (index >= 2) {
-                        fadeOut(item);
-                    }
-                });
-
-                // Reset the visible count and button visibility
-                visibleCount = 2;
-                loadMoreBtn.classList.remove('d-none');
-                collapseBtn.classList.add('d-none');
-
-                // Hide the Load More button if only 2 or fewer items are available
-                if (serviceItems.length <= visibleCount) {
-                    loadMoreBtn.classList.add('d-none');
-                }
-            });
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const itemsPerPage = 2; // Number of items to show per load
-            const loadMoreBtn = document.getElementById('load-more-btn');
-            const collapseBtn = document.getElementById('collapse-btn');
-            const serviceContainer = document.getElementById('service-container');
-            const serviceItems = Array.from(serviceContainer.getElementsByClassName('service-item'));
-
-            let visibleCount = 2; // Initial visible items
-
-            // Utility function for fade effect
-            const fadeIn = (element, display = 'block') => {
-                element.style.opacity = 0;
-                element.style.display = display;
-                let opacity = 0;
-                const timer = setInterval(() => {
-                    if (opacity >= 1) {
-                        clearInterval(timer);
-                    }
-                    opacity += 0.1;
-                    element.style.opacity = opacity;
-                }, 30);
-            };
-
-            const fadeOut = (element) => {
-                let opacity = 1;
-                const timer = setInterval(() => {
-                    if (opacity <= 0) {
-                        clearInterval(timer);
-                        element.style.display = 'none';
-                    }
-                    opacity -= 0.1;
-                    element.style.opacity = opacity;
-                }, 30);
-            };
-
-            // Check if we need to hide the Load More button initially
-            if (serviceItems.length <= visibleCount) {
-                loadMoreBtn.classList.add('d-none');
-            }
-
-            // Display the initial 2 items
-            serviceItems.forEach((item, index) => {
-                item.style.display = index < visibleCount ? 'block' : 'none';
-            });
-
-            loadMoreBtn.addEventListener('click', () => {
-                // Show the next set of items with fade-in effect
-                for (let i = visibleCount; i < visibleCount + itemsPerPage; i++) {
-                    if (serviceItems[i]) {
-                        fadeIn(serviceItems[i]);
-                    }
+            const timer = setInterval(function() {
+                if (opacity <= 0) {
+                    clearInterval(timer);
+                    element.style.display = 'none';
                 }
 
-                // Update the visible count
-                visibleCount += itemsPerPage;
-
-                // If all items are visible, hide the Load More button and show the Collapse button
-                if (visibleCount >= serviceItems.length) {
-                    loadMoreBtn.classList.add('d-none');
-                    collapseBtn.classList.remove('d-none');
-                }
-            });
-
-            collapseBtn.addEventListener('click', () => {
-                // Collapse all items except the first 2 with fade-out effect
-                serviceItems.forEach((item, index) => {
-                    if (index >= 2) {
-                        fadeOut(item);
-                    }
-                });
-
-                // Reset the visible count and button visibility
-                visibleCount = 2;
-                loadMoreBtn.classList.remove('d-none');
-                collapseBtn.classList.add('d-none');
-
-                // Hide the Load More button if only 2 or fewer items are available
-                if (serviceItems.length <= visibleCount) {
-                    loadMoreBtn.classList.add('d-none');
-                }
-            });
-        });
-    </script>
-
-    <script>
-        // Initialize Slick Slider
-        $(document).ready(function() {
-            $(".slick-slider").slick({
-                slidesToShow: 2,
-                slidesToScroll: 2,
-                draggable: true, // This line defines draggable
-                autoplay: true,
-                autoplaySpeed: 2000, // Adjust autoplay speed in milliseconds
-                responsive: [{
-                        breakpoint: 768, // define breakpoint at 768px screen width
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1,
-                        },
-                    },
-                    {
-                        breakpoint: 1024, // define breakpoint at 1024px screen width
-                        settings: {
-                            slidesToShow: 3,
-                            slidesToScroll: 3,
-                        },
-                    },
-                    // Add more breakpoints and settings as needed
-                ],
-            });
-        });
-    </script>
-    <script>
-        'use strict';
+                opacity -= 0.1;
+                element.style.opacity = opacity;
+            }, 30);
+        }
 
         function downloadToFile(content, filename, contentType) {
             const a = document.createElement('a');
@@ -2196,14 +2207,18 @@
             a.href = URL.createObjectURL(file);
             a.download = filename;
             a.click();
-
             URL.revokeObjectURL(a.href);
         }
 
         function getBase64Image(imgUrl, callback) {
+            if (!imgUrl) {
+                callback(null);
+                return;
+            }
+
             const img = new Image();
             img.crossOrigin = 'Anonymous';
-            img.onload = () => {
+            img.onload = function() {
                 const canvas = document.createElement('canvas');
                 canvas.width = img.width;
                 canvas.height = img.height;
@@ -2212,57 +2227,80 @@
                 const dataURL = canvas.toDataURL('image/jpeg');
                 callback(dataURL.replace(/^data:image\/(png|jpeg);base64,/, ''));
             };
-            img.onerror = () => {
-                console.error('Failed to load image:', imgUrl);
+            img.onerror = function() {
                 callback(null);
             };
             img.src = imgUrl;
         }
 
-        const makeVCardVersion = () => `VERSION:3.0`;
-        const makeVCardInfo = (lastName, firstName) => `N:${lastName || ''};${firstName || ''};;;`;
-        const makeVCardName = (firstName, lastName) => `FN:${firstName || ''} ${lastName || ''}`;
-        const makeVCardOrg = (org) => `ORG:${org || ''}`;
-        const makeVCardTitle = (title) => `TITLE:${title || ''}`;
-        const makeVCardPhoto = (imgBase64) => `PHOTO;ENCODING=b;TYPE=JPEG:${imgBase64}`;
-        const makeVCardTel = (phone, type = 'CELL') => `TEL;TYPE=${type}:${phone || ''}`;
-        const makeVCardAdr = (location, locationUrl) =>
-            `ADR;TYPE=HOME:;;${location || ''};${locationUrl || ''};;;;`;
-        // const makeVCardAdr = (addressLine1, addressLine2) =>
-        //     `ADR;TYPE=HOME:;;${addressLine1 || ''};${addressLine2 || ''};;;;`;
-        const makeVCardEmail = (email, type = 'INTERNET') => `EMAIL;TYPE=${type}:${email || ''}`;
-        const makeVCardUrl = (url) => `URL:${url || ''}`;
-        const makeVCardSocialProfile = (type, url) => `X-SOCIALPROFILE;TYPE=${type}:${url || ''}`;
-        const makeVCardTimeStamp = () => `REV:${new Date().toISOString()}`;
-        const makeVCardBday = (dob) => `BDAY:${dob || ''}`;
-        const makeVCardLocation = (location, locationUrl) => `X-LOCATION:${location || ''};${locationUrl || ''}`;
-        const makeVCardCompany = (company) => `ORG:${company || ''}`;
+        const makeVCardVersion = function() {
+            return 'VERSION:3.0';
+        };
+        const makeVCardInfo = function(lastName, firstName) {
+            return `N:${lastName || ''};${firstName || ''};;;`;
+        };
+        const makeVCardName = function(firstName, lastName) {
+            return `FN:${firstName || ''} ${lastName || ''}`;
+        };
+        const makeVCardTitle = function(title) {
+            return `TITLE:${title || ''}`;
+        };
+        const makeVCardPhoto = function(imgBase64) {
+            return `PHOTO;ENCODING=b;TYPE=JPEG:${imgBase64}`;
+        };
+        const makeVCardTel = function(phone, type) {
+            return `TEL;TYPE=${type || 'CELL'}:${phone || ''}`;
+        };
+        const makeVCardAdr = function(addressLine1, addressLine2) {
+            return `ADR;TYPE=HOME:;;${addressLine1 || ''};${addressLine2 || ''};;;;`;
+        };
+        const makeVCardEmail = function(email, type) {
+            return `EMAIL;TYPE=${type || 'INTERNET'}:${email || ''}`;
+        };
+        const makeVCardUrl = function(url) {
+            return `URL:${url || ''}`;
+        };
+        const makeVCardSocialProfile = function(type, url) {
+            return `X-SOCIALPROFILE;TYPE=${type}:${url || ''}`;
+        };
+        const makeVCardTimeStamp = function() {
+            return `REV:${new Date().toISOString()}`;
+        };
+        const makeVCardBday = function(dob) {
+            return `BDAY:${dob || ''}`;
+        };
+        const makeVCardLocation = function(location, locationUrl) {
+            return `X-LOCATION:${location || ''};${locationUrl || ''}`;
+        };
+        const makeVCardCompany = function(company) {
+            return `ORG:${company || ''}`;
+        };
 
         function makeVCard(profileImageBase64) {
-            const firstName = "{{ optional($nfc_card->nfcData)->first_name }}";
-            const lastName = "{{ optional($nfc_card->nfcData)->last_name }}";
-            const designation = "{{ optional($nfc_card)->job_title }}";
-            const phonePersonal = "{{ optional($nfc_card->nfcData)->phone_personal }}";
-            const phoneWork = "{{ optional($nfc_card->nfcData)->phone_work }}";
-            const emailPersonal = "{{ optional($nfc_card->nfcData)->email_personal }}";
-            const emailWork = "{{ optional($nfc_card->nfcData)->email_work }}";
-            const addressLine1 = "{{ optional($nfc_card->nfcData)->address_line_one }}";
-            const addressLine2 = "{{ optional($nfc_card->nfcData)->address_line_two }}";
-            const website = "{{ optional($nfc_card->nfcData)->website_url }}";
-            const linkedin = "{{ optional($nfc_card->nfcData)->linkedin_url }}";
-            const facebook = "{{ optional($nfc_card->nfcData)->facebook_url }}";
-            const instagram = "{{ optional($nfc_card->nfcData)->instagram_url }}";
-            const whatsapp = "{{ optional($nfc_card->nfcData)->whatsapp_url }}";
-            const twitter = "{{ optional($nfc_card->nfcData)->twitter_url }}";
-            const youtube = "{{ optional($nfc_card->nfcData)->youtube_url }}";
-            const pinterest = "{{ optional($nfc_card->nfcData)->pinterest_url }}";
-            const reddit = "{{ optional($nfc_card->nfcData)->reddit_url }}";
-            const tumblr = "{{ optional($nfc_card->nfcData)->tumblr_url }}";
-            const tiktok = "{{ optional($nfc_card->nfcData)->tiktok_url }}";
-            const location = `{{ optional($nfc_card->nfcData)->location }}`;
-            const locationUrl = "{{ optional($nfc_card->nfcData)->location_url }}";
-            const dob = "{{ optional($nfc_card->nfcData)->date_of_birth }}";
-            const companyName = "{{ optional($nfc_card->nfcData)->company_name }}";
+            const firstName = @json(optional($nfc_card->nfcData)->first_name);
+            const lastName = @json(optional($nfc_card->nfcData)->last_name);
+            const designation = @json(optional($nfc_card)->job_title ?? optional($nfc_card)->designation);
+            const phonePersonal = @json(optional($nfc_card->nfcData)->phone_personal);
+            const phoneWork = @json(optional($nfc_card->nfcData)->phone_work);
+            const emailPersonal = @json(optional($nfc_card->nfcData)->email_personal);
+            const emailWork = @json(optional($nfc_card->nfcData)->email_work);
+            const addressLine1 = @json(optional($nfc_card->nfcData)->address_line_one);
+            const addressLine2 = @json(optional($nfc_card->nfcData)->address_line_two);
+            const website = @json(optional($nfc_card->nfcData)->website_url);
+            const linkedin = @json(optional($nfc_card->nfcData)->linkedin_url);
+            const facebook = @json(optional($nfc_card->nfcData)->facebook_url);
+            const instagram = @json(optional($nfc_card->nfcData)->instagram_url);
+            const whatsapp = @json(optional($nfc_card->nfcData)->whatsapp_url);
+            const twitter = @json(optional($nfc_card->nfcData)->twitter_url);
+            const youtube = @json(optional($nfc_card->nfcData)->youtube_url);
+            const pinterest = @json(optional($nfc_card->nfcData)->pinterest_url);
+            const reddit = @json(optional($nfc_card->nfcData)->reddit_url);
+            const tumblr = @json(optional($nfc_card->nfcData)->tumblr_url);
+            const tiktok = @json(optional($nfc_card->nfcData)->tiktok_url);
+            const location = @json(optional($nfc_card->nfcData)->location);
+            const locationUrl = @json(optional($nfc_card->nfcData)->location_url);
+            const dob = @json(optional($nfc_card->nfcData)->date_of_birth);
+            const companyName = @json(optional($nfc_card->nfcData)->company_name);
 
             let vcard = `BEGIN:VCARD\n${makeVCardVersion()}\n`;
             vcard += `${makeVCardInfo(lastName, firstName)}\n`;
@@ -2274,77 +2312,54 @@
                 vcard += `${makeVCardPhoto(profileImageBase64)}\n`;
             }
 
-            vcard += `${makeVCardTel(phonePersonal)}\n`;
-            vcard += `${makeVCardTel(phoneWork, 'WORK')}\n`;
+            if (phonePersonal) {
+                vcard += `${makeVCardTel(phonePersonal)}\n`;
+            }
 
-            if (addressLine1 || addressLine2) {
-                vcard += `${makeVCardAdr(addressLine1, addressLine2)}\n`;
+            if (phoneWork) {
+                vcard += `${makeVCardTel(phoneWork, 'WORK')}\n`;
             }
 
             if (addressLine1 || addressLine2) {
                 vcard += `${makeVCardAdr(addressLine1, addressLine2)}\n`;
             }
-
 
             if (emailPersonal) {
                 vcard += `${makeVCardEmail(emailPersonal)}\n`;
             }
+
             if (emailWork) {
                 vcard += `${makeVCardEmail(emailWork, 'WORK')}\n`;
             }
 
-            if (website) {
-                vcard += `${makeVCardUrl(website)}\n`;
-                vcard += `${makeVCardSocialProfile('website', website)}\n`;
-            }
-            if (linkedin) {
-                vcard += `${makeVCardUrl(linkedin)}\n`;
-                vcard += `${makeVCardSocialProfile('linkedin', linkedin)}\n`;
-            }
-            if (facebook) {
-                vcard += `${makeVCardUrl(facebook)}\n`;
-                vcard += `${makeVCardSocialProfile('facebook', facebook)}\n`;
-            }
-            if (instagram) {
-                vcard += `${makeVCardUrl(instagram)}\n`;
-                vcard += `${makeVCardSocialProfile('instagram', instagram)}\n`;
-            }
-            if (whatsapp) {
-                vcard += `${makeVCardUrl(whatsapp)}\n`;
-                vcard += `${makeVCardSocialProfile('whatsapp', whatsapp)}\n`;
-            }
-            if (twitter) {
-                vcard += `${makeVCardUrl(twitter)}\n`;
-                vcard += `${makeVCardSocialProfile('twitter', twitter)}\n`;
-            }
-            if (youtube) {
-                vcard += `${makeVCardUrl(youtube)}\n`;
-                vcard += `${makeVCardSocialProfile('youtube', youtube)}\n`;
-            }
-            if (pinterest) {
-                vcard += `${makeVCardUrl(pinterest)}\n`;
-                vcard += `${makeVCardSocialProfile('pinterest', pinterest)}\n`;
-            }
-            if (reddit) {
-                vcard += `${makeVCardUrl(reddit)}\n`;
-                vcard += `${makeVCardSocialProfile('reddit', reddit)}\n`;
-            }
-            if (tumblr) {
-                vcard += `${makeVCardUrl(tumblr)}\n`;
-                vcard += `${makeVCardSocialProfile('tumblr', tumblr)}\n`;
-            }
-            if (tiktok) {
-                vcard += `${makeVCardUrl(tiktok)}\n`;
-                vcard += `${makeVCardSocialProfile('tiktok', tiktok)}\n`;
-            }
+            const socials = {
+                website: website,
+                linkedin: linkedin,
+                facebook: facebook,
+                instagram: instagram,
+                whatsapp: whatsapp,
+                twitter: twitter,
+                youtube: youtube,
+                pinterest: pinterest,
+                reddit: reddit,
+                tumblr: tumblr,
+                tiktok: tiktok
+            };
+
+            Object.keys(socials).forEach(function(type) {
+                if (socials[type]) {
+                    vcard += `${makeVCardUrl(socials[type])}\n`;
+                    vcard += `${makeVCardSocialProfile(type, socials[type])}\n`;
+                }
+            });
 
             if (dob) {
                 vcard += `${makeVCardBday(dob)}\n`;
             }
+
             if (location || locationUrl) {
                 vcard += `${makeVCardLocation(location, locationUrl)}\n`;
             }
-
 
             vcard += `${makeVCardTimeStamp()}\nEND:VCARD`;
 
@@ -2352,55 +2367,70 @@
         }
 
         function handleContactButtonClick(event, isMobile) {
-            event.preventDefault(); // Prevent default link behavior
+            event.preventDefault();
 
-            const profileImage = '{{ asset('storage/nfc/' . optional($nfc_card)->profile_image) }}';
+            const profileImage = @json($profileImageUrl);
 
-            getBase64Image(profileImage, (base64Image) => {
+            getBase64Image(profileImage, function(base64Image) {
                 const vcard = makeVCard(base64Image);
 
                 if (isMobile) {
-                    // Open vCard details in contact app for mobile
                     const encodedVcfContent = encodeURIComponent(vcard);
-                    const uri = 'data:text/vcard;charset=utf-8,' + encodedVcfContent;
-                    window.location.href = uri;
+                    window.location.href = 'data:text/vcard;charset=utf-8,' + encodedVcfContent;
                 } else {
-                    // Download vCard for PC
-                    const firstName = '{{ optional($nfc_card->nfcData)->first_name }}';
-                    const lastName = '{{ optional($nfc_card->nfcData)->last_name }}';
-                    const fileName = `${firstName}_${lastName}_contact.vcf`;
+                    const firstName = @json(optional($nfc_card->nfcData)->first_name ?? 'contact');
+                    const lastName = @json(optional($nfc_card->nfcData)->last_name ?? '');
+                    const fileName = `${firstName}_${lastName}_contact.vcf`.replace(/\s+/g, '_');
                     downloadToFile(vcard, fileName, 'text/vcard');
                 }
             });
         }
 
-        document.querySelector('.nfc_contact_btn_pc').addEventListener('click', (event) => {
-            handleContactButtonClick(event, false);
-        });
+        function initializeVCardButtons() {
+            const pcButton = document.querySelector('.nfc_contact_btn_pc');
+            const mobileButton = document.querySelector('.nfc_contact_btn_mobile');
 
-        document.querySelector('.nfc_contact_btn_mobile').addEventListener('click', (event) => {
-            handleContactButtonClick(event, true);
-        });
-    </script>
-    <script>
-        $(document).ready(function() {
-            var mySwiper = new Swiper(".testimonial-sliders", {
+            if (pcButton) {
+                pcButton.addEventListener('click', function(event) {
+                    handleContactButtonClick(event, false);
+                });
+            }
+
+            if (mobileButton) {
+                mobileButton.addEventListener('click', function(event) {
+                    handleContactButtonClick(event, true);
+                });
+            }
+        }
+
+        function initializeTestimonialSlider() {
+            if (typeof window.Swiper === 'undefined') {
+                return;
+            }
+
+            const testimonialSlider = document.querySelector('.testimonial-sliders');
+
+            if (!testimonialSlider) {
+                return;
+            }
+
+            new Swiper('.testimonial-sliders', {
                 spaceBetween: 1,
                 slidesPerView: 2,
                 centeredSlides: true,
                 roundLengths: true,
                 autoplay: {
                     delay: 2500,
-                    disableOnInteraction: false,
+                    disableOnInteraction: false
                 },
                 loop: true,
                 loopAdditionalSlides: 30,
                 navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev"
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev'
                 }
             });
-        });
+        }
     </script>
 </body>
 
