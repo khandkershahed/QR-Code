@@ -46,7 +46,7 @@
                                 {{ $user->email }}
                             </td>
                             <td>
-                                {{ $user->created_at->format('d M, Y') }}
+                                {{ optional($user->created_at)->format('d M, Y') ?? 'N/A' }}
                             </td>
                             <td class="">
                                 <div class="d-flex justify-content-end me-4">
